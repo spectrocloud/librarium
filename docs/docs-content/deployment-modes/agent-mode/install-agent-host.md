@@ -36,9 +36,7 @@ Palette. You will then create a cluster profile and use the registered host to d
 
 - Clusters with Flannel CNI is not verified for airgap deployments.
 
-- If you configure a local agent mode cluster to use Network Time Protocol servers,
-  [`systemd-timesyncd`](https://www.freedesktop.org/software/systemd/man/latest/systemd-timesyncd.service.html) must be
-  installed and enabled on your host.
+- Agent mode is only supported on Linux distributions that have [systemd](https://www.freedesktop.org/software/systemd/man/latest/systemd.html) installed and available.
 
 ## Prerequisites
 
