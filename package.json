@@ -64,7 +64,7 @@
     "react-markdown": "9.0.1",
     "react-select": "^5.8.0",
     "remark-gfm": "4.0.0",
-    "sass": "^1.80.6",
+    "sass": "^1.82.0",
     "semver": "^7.3.7"
   },
   "devDependencies": {
