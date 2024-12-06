@@ -36,7 +36,8 @@ Palette. You will then create a cluster profile and use the registered host to d
 
 - Clusters with Flannel CNI is not verified for airgap deployments.
 
-- Agent mode is only supported on Linux distributions that have [systemd](https://www.freedesktop.org/software/systemd/man/latest/systemd.html) installed and available.
+- Agent mode is only supported on Linux distributions that have
+  [systemd](https://www.freedesktop.org/software/systemd/man/latest/systemd.html) installed and available.
 
 ## Prerequisites
 
