@@ -9,11 +9,34 @@ const { generateMarkdownTable } = require("../helpers/affected-table");
 const { generateRevisionHistory } = require("../helpers/revision-history");
 
 async function getSecurityBulletins(payload) {
+  const limit = 100;
+  const maxIterations = 1000;
+  let results = [];
+
   try {
-    return await callRateLimitAPI(() => api.post(`https://dso.teams.spectrocloud.com/v1/advisories`, payload));
+    let request = await callRateLimitAPI(() =>
+      api.post(`https://dso.teams.spectrocloud.com/v1/advisories?limit=${limit}`, payload)
+    );
+    results = request.data.advisories;
+    let iteration = 0;
+    while (request.data.continue && iteration < maxIterations) {
+      iteration++;
+      request = await callRateLimitAPI(() =>
+        api.post(
+          `https://dso.teams.spectrocloud.com/v1/advisories?${limit}&offset=${request.data.offset + limit}`,
+          payload
+        )
+      );
+      results = results.concat(request.data.advisories);
+    }
+
+    if (iteration === maxIterations) {
+      logger.warn("Max iterations reached. Verify the API response is setting the continue flag correctly.");
+    }
+
+    return { data: results };
   } catch (error) {
-    logger.error(error);
-    logger.error("Error:", error.response ? error.response.data || error.response.status : error.message);
+    logger.error("Error:", error.response ? `${error.response.status} - ${error.response.data}` : error.message);
   }
 }
 
@@ -58,7 +81,7 @@ async function generateCVEs() {
           },
           {
             field: "status.state",
-            options: ["Analyzed", "Modified", "Awaiting Analyses", "Reopened"],
+            options: ["Analyzed", "Modified", "Awaiting Analyses", "Reopened", "Resolved"],
             operator: "in",
           },
         ],
@@ -80,7 +103,7 @@ async function generateCVEs() {
           },
           {
             field: "status.state",
-            options: ["Analyzed", "Modified", "Awaiting Analyses", "Reopened"],
+            options: ["Analyzed", "Modified", "Awaiting Analyses", "Reopened", "Resolved"],
             operator: "in",
           },
         ],
@@ -102,7 +125,7 @@ async function generateCVEs() {
           },
           {
             field: "status.state",
-            options: ["Analyzed", "Modified", "Awaiting Analyses", "Reopened"],
+            options: ["Analyzed", "Modified", "Awaiting Analyses", "Reopened", "Resolved"],
             operator: "in",
           },
         ],
@@ -124,18 +147,27 @@ async function generateCVEs() {
           },
           {
             field: "status.state",
-            options: ["Analyzed", "Modified", "Awaiting Analyses", "Reopened"],
+            options: ["Analyzed", "Modified", "Awaiting Analyses", "Reopened", "Resolved"],
             operator: "in",
           },
         ],
       });
+
+      pLenght = palette.data.length;
+      pALenght = paletteAirgap.data.length;
+      vLenght = vertex.data.length;
+      vALenght = vertexAirgap.data.length;
+
+      logger.info(`Palette CVEs:", ${pLenght}`);
+      console.log("Palette Airgap CVEs:", pALenght);
+      console.log("Vertex CVEs:", vLenght);
+      console.log("Vertex Airgap CVEs:", vALenght);
 
       securityBulletins.set("palette", palette);
       securityBulletins.set("paletteAirgap", paletteAirgap);
       securityBulletins.set("vertex", vertex);
       securityBulletins.set("vertexAirgap", vertexAirgap);
 
-      // const plainObject = Object.fromEntries(securityBulletins);
       const plainObject = Object.fromEntries(
         Array.from(securityBulletins.entries()).map(([key, value]) => [key, value.data])
       );
@@ -299,5 +331,8 @@ ${revisionHistory ? revisionHistory : "No revision history available."}
     });
 }
 
-// Call the main function to generate CVEs
-generateCVEs();
+try {
+  generateCVEs();
+} catch (error) {
+  process.exit(5);
+}
