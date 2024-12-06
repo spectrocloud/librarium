@@ -6,8 +6,8 @@ partial_name: cloud-provider-config
 
 
 When using public cloud providers, {props.edition} automatically downloads the required infrastructure provider images from our public registries to set up a workload cluster. 
-For example, if you are wanting to deploy an AWS cluster, {props.edition} downloads the required Amazon Machine Image (AMI) that contains the desired Operation System (OS) and Kubernetes binaries specified in the cluster profile. 
-The exception to this is when you are using a custom image, in which case you must provide the image yourself through  the Bring Your Own OS (BYOOS) <VersionedLink text="workflow" url="/byoos/image-builder/"  />.
+For example, if you want to deploy an AWS cluster, {props.edition} downloads the required Amazon Machine Image (AMI) that contains the desired Operation System (OS) and Kubernetes binaries specified in the cluster profile. 
+The exception to this is when you are using a custom image, in which case you must provide the image yourself through the Bring Your Own OS (BYOOS) <VersionedLink text="workflow" url="/byoos/image-builder/"  />.
 
 In the event you need to enable new cloud providers, or rotate the credentials used to access our infrastructure provider images, you can do so through the [System API](https://docs.spectrocloud.com/api/v1/system/).
 Use the following steps to modify the cloud provider configuration for your self-hosted {props.edition} instance.
@@ -21,7 +21,7 @@ Use the following steps to modify the cloud provider configuration for your self
      url="/system-management/account-management"
    /> page to learn more about system administrator roles.
 
-- You need Spectro Cloud cloud credentials to download the required infrastructure provider images. Reach out to our support team at [support@spectrocloud.com](mailto:support@spectrocloud.com) to obtain these credentials.
+- You need cloud credentials from us to download the required infrastructure provider images. Reach out to our support team at [support@spectrocloud.com](mailto:support@spectrocloud.com) to obtain these credentials.
 
 - `curl` or similar tool to make API requests.
 
