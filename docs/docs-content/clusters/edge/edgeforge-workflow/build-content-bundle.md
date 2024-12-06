@@ -127,6 +127,15 @@ Creating a content bundle provides several benefits that may address common use 
    INFO[0144] ISO file created successfully
    ```
 
+   :::warning
+
+   Ensure that between all the profiles you include in the content bundle, only one infrastructure layer exists. For
+   example, you can have one infrastructure profile and many add-on files, or one full profile and many add-on files,
+   but you cannot have multiple infrastructure and full-on profiles. For more information about the types of profiles,
+   refer to [Cluster Profile](../../../profiles/profiles.md)
+
+   :::
+
 The result is a content bundle that you can use to preload into your installer. Alternatively, you can use the ISO
 version of the content bundle and transfer it to a USB drive to be used separately at the time of Edge host
 installation.
