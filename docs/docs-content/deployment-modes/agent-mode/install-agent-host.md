@@ -36,6 +36,8 @@ Palette. You will then create a cluster profile and use the registered host to d
 
 - Clusters with Flannel CNI is not verified for airgap deployments.
 
+- If you configure a local agent mode cluster to use Network Time Protocol servers, [`systemd-timesyncd`](https://www.freedesktop.org/software/systemd/man/latest/systemd-timesyncd.service.html) must be installed and enabled on your host.
+
 ## Prerequisites
 
 - A physical or virtual host with SSH access, access to the internet, and connection to Palette. For airgap deployments,
@@ -61,6 +63,7 @@ Palette. You will then create a cluster profile and use the registered host to d
   - [jq](https://jqlang.github.io/jq/download/)
   - [Zstandard](https://facebook.github.io/zstd/)
   - [Rsync](https://github.com/RsyncProject/rsync)
+  - [`systemd-timesyncd`](https://www.freedesktop.org/software/systemd/man/latest/systemd-timesyncd.service.html)
   - [conntrack](https://conntrack-tools.netfilter.org/downloads.html). This requirement is specific for clusters that
     use PXKE as the Kubernetes layer.
   - (Airgap only) [Crane](https://github.com/google/go-containerregistry/blob/main/cmd/crane/README.md) is installed and
