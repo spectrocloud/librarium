@@ -14,7 +14,7 @@ Palette Network Pack(s) helps provision resources for setting up Cluster network
 network model design goals visit
 [here](https://kubernetes.io/docs/concepts/cluster-administration/networking/#the-kubernetes-network-model).
 
-Palette supports **Cilium**, an open-source software for securing and observing network connectivity between
+Palette supports **Cilium**, an open source software for securing and observing network connectivity between
 cloud-native container workloads. Cilium is underpinned by a Linux Kernel technology called eBPF, to enable dynamic and
 strong security visibility and control logic within Linux. As eBPF runs within the Linux Kernel, Cilium security
 policies are applied and updated independent of the application code or container configuration.

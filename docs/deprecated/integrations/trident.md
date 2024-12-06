@@ -10,7 +10,7 @@ logoUrl: "https://registry.spectrocloud.com/v1/csi-trident/blobs/sha256:d4dd2ecf
 tags: ["packs", "trident", "storage"]
 ---
 
-Astra Trident, is an open-source project backed and maintained by [NetApp](https://www.netapp.com/) and is designed to
+Astra Trident, is an open source project backed and maintained by [NetApp](https://www.netapp.com/) and is designed to
 provide persistence storage to containerized applications using industry-standard interfaces, such as the Container
 Storage Interface (CSI).
 

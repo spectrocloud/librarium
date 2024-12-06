@@ -7,9 +7,7 @@ const darkCodeTheme = themes.dracula;
 const redirects = require("./redirects");
 const { pluginPacksAndIntegrationsData } = require("./plugins/packs-integrations");
 const { pluginImportFontAwesomeIcons } = require("./plugins/font-awesome");
-
 import path from "path";
-import { Logger } from "sass";
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -27,6 +25,7 @@ const config = {
   onBrokenAnchors: "throw",
   onBrokenMarkdownLinks: "throw",
   trailingSlash: true,
+  noIndex: true,
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
   // to replace "en" with "zh-Hans".
@@ -34,7 +33,22 @@ const config = {
     defaultLocale: "en",
     locales: ["en"],
   },
-  staticDirectories: ["static", "static/assets/docs/images", "static/assets"],
+  future: {
+    experimental_faster: {
+      swcJsLoader: false,
+      // Set to 'false' as Netlify builds fail with this enabled.
+      swcJsMinimizer: true,
+      swcHtmlMinimizer: true,
+      lightningCssMinimizer: true,
+      rspackBundler: true,
+      mdxCrossCompilerCache: true,
+    },
+  },
+  customFields: {
+    // Used to access the environment variable in the build process during the client-side step
+    DISABLE_PACKS_INTEGRATIONS: process.env.DISABLE_PACKS_INTEGRATIONS,
+  },
+  staticDirectories: ["static", "static/assets/docs/images", "static/assets", "static/img/"],
   headTags: [
     {
       tagName: "script",
@@ -195,7 +209,9 @@ const config = {
     ],
     [
       pluginPacksAndIntegrationsData,
-      { repositories: ["Palette Registry", "Public Repo", "Spectro Addon Repo", "Palette Community Registry"] },
+      {
+        repositories: ["Palette Registry", "Public Repo", "Spectro Addon Repo", "Palette Community Registry"],
+      },
     ],
     pluginImportFontAwesomeIcons,
     function () {
@@ -321,7 +337,7 @@ const config = {
         {
           highlight: "bash",
           language: "curl",
-          logoClass: "bash",
+          logoClass: "curl",
         },
         {
           highlight: "python",
@@ -403,7 +419,6 @@ const config = {
     },
 };
 module.exports = config;
-
 export default function (context, options) {
   return {
     name: "@docusaurus/plugin-content-docs",

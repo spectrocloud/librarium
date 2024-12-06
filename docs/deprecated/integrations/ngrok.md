@@ -13,7 +13,7 @@ tags: ["packs", "ngrok", "network", "kubernetes"]
 The ngrok [Ingress Controller for Kubernetes](https://github.com/ngrok/kubernetes-ingress-controller) adds public and
 secure ingress traffic to Kubernetes applications. Enforce authentication and authorization at the edge with ngrok,
 preventing unauthorized traffic from ever reaching your cluster and rogue webhooks from looping and spamming your
-service. This open-source
+service. This open source
 [Ingress Controller](https://kubernetes.io/docs/concepts/services-networking/ingress-controllers) works with Palette to
 provide ingress to your applications, APIs, or other resources while also offloading network ingress and middleware
 execution to ngrok's platform. Balance traffic between multiple redundant Points of Presence (PoPs) in ngrok’s global

@@ -7,18 +7,27 @@ hide_table_of_contents: false
 sidebar_position: 20
 ---
 
-# Add a Custom Pack
+You can add a custom pack to Palette to add new integrations or applications to your cluster profiles.
 
-Custom packs are built by users and deployed to custom registries using the Spectro Cloud CLI tool. To get started with
-Spectro Cloud CLI, review the Spectro Cloud CLI installation [instructions](spectro-cli-reference.md).
+:::further
+
+Check out the tutorial [Deploy a Custom Pack](../tutorials/profiles/deploy-pack.md) to learn how to deploy a custom pack
+to a custom registry.
+
+:::
 
 ## Prerequsites
 
 The following items are required to create a custom pack.
 
-- [Spectro Cloud CLI](spectro-cli-reference.md)
-- A Spectro Cloud [account](https://www.spectrocloud.com/)
-- [Custom Pack registry](adding-a-custom-registry.md)
+- [ORAS CLI](https://oras.land/docs/installation) v1.0.0 or the [Spectro Cloud CLI](spectro-cli-reference.md) if you are
+  using the legacy Spectro Registry. We recommend using Oras CLI with an Open Container Initiative (OCI) compliant
+  registry.
+- A custom Pack registry registered in Palette. Check out the following guides for additional help on how to set up a
+  custom pack registry:
+  - [OCI Pack Registry](./oci-registry/add-pack-oci/add-pack-oci-basic.md)
+  - [AWS ECR Pack Registry](./oci-registry/add-pack-oci/add-pack-oci-ecr.md)
+  - [Legacy Spectro Pack Registry](./adding-a-custom-registry.md)
 
 ## JSON Schema
 
@@ -32,18 +41,14 @@ attributes.
 | layer         | String    | True     | Relevant layer that this pack should be part of; such as os, k8s, cni, csi, addon                                                                                                                                                                                                                                                         |
 | addonType     | String    | False    | Addon-type must be set for packs that have the layer set to Addon. The value must be one of the following: logging, monitoring, load balancer, authentication, ingress, security. Setting a relevant correct addon type ensures packs are organized correctly on the management console making it easy for profile authors to find packs. |
 | version       | String    | True     | A Semantic version for the pack. It is recommended that the pack version be the same as the underlying integration it is being created for. For example, the version for the pack that will install Prometheus 2.3.4, should set to 2.3.4.                                                                                                |
-| cloudTypes    | Array     | True     | You can provide one or more types for a pack. Supported values are as follows: <br /><br />**all**, **aws**, **azure**, **gcp**, **tencent**, **vsphere**, **openstack**, **baremetal**, **maas**, **aks**, **eks**, **tke**, **edge**, **edge-native**, **coxedge**, and **libvirt** (virtualized edge).                                 |
+| cloudTypes    | Array     | True     | You can provide one or more types for a pack. Supported values are as follows: **all**, **aws**, **azure**, **gcp**, **tencent**, **vsphere**, **openstack**, **baremetal**, **maas**, **aks**, **eks**, **tke**, **edge**, **edge-native**, **coxedge**, and **libvirt** (virtualized edge).                                             |
 | group         | String    | False    | Optional categorization of packs. For example, LTS can be set for Ubuntu OS packs.                                                                                                                                                                                                                                                        |
 | annotations   | Array     | False    | Optional key-value pairs required during pack installation. Typically, custom packs do not need to set annotations. Some packs like the ones for OS require annotations that need to be set with an image id.                                                                                                                             |
 | eol           | String    | False    | End of life date for integration.                                                                                                                                                                                                                                                                                                         |
 | KubeManifests | Array     | False    | Relative path to Kubernetes manifest yaml files.                                                                                                                                                                                                                                                                                          |
-| ansibleRoles  | Array     | False    | Relative part to the Ansible role folders. These folders should contain all the artifacts required by Ansible. Please refer to the Ansible documentation for more details on how Ansible roles are constructed.                                                                                                                           |
-|               |           |          | In Palette, Ansible roles are used to customize the OS image used for cluster nodes. Typically, these are roles that perform tasks like hardening the OS, installing monitoring agents, etc.                                                                                                                                              |
 | charts        | Array     | False    | Relative path to the helm chart archives.                                                                                                                                                                                                                                                                                                 |
 
 The following is the JSON schema for packs. Review the schema to ensure your JSON configuration is defined correctly.
-
-<br />
 
 ```json
 {
@@ -118,12 +123,6 @@ The following is the JSON schema for packs. Review the schema to ensure your JSO
     },
     "addonSubType": {
       "type": "string"
-    },
-    "ansibleRoles": {
-      "type": "array",
-      "items": {
-        "type": "string"
-      }
     },
     "charts": {
       "type": "array",
@@ -251,7 +250,6 @@ Follow the steps below to create a custom pack.
      "annotations": {
        "name": "value"
      },
-     "ansibleRoles": [],
      "displayName": "<PACK_DISPLAY_NAME>",
      "eol": "2028-04-30",
      "group": "<PACK_GROUP>",
@@ -322,8 +320,6 @@ The OS is one of the Core Layers in a cluster profile. An OS pack can be built t
 nodes. This might be desirable if an organization wants to use an approved hardened OS image for their infrastructure.
 There are typically the following two scenarios for the OS image:
 
-<br />
-
 1. **Pre-Installed Kubernetes** - The OS image has the desired version of Kubernetes components like kubelet, kubectl,
    etc installed.
 
@@ -358,7 +354,6 @@ profile. If Kubernetes is pre-installed in the image, set the flag `skipK8sInsta
       "sshUsername": "centos",
       "skipK8sInstall": "false",
     },
-  "ansibleRoles": ["harden_os"],
   "cloudTypes": ["aws"],
   "displayName": "CentOS",
   "eol": "2024-06-30",
@@ -388,7 +383,6 @@ profile. If Kubernetes is pre-installed in the image, set the flag `skipK8sInsta
       "sshUsername": "centos",
       "skipK8sInstall": "true",
     },
-  "ansibleRoles": ["harden_os"],
   "cloudTypes": ["azure"],
   "displayName": "CentOS",
   "eol": "2024-06-30",
@@ -418,7 +412,6 @@ profile. If Kubernetes is pre-installed in the image, set the flag `skipK8sInsta
       "sshUsername": "root",
       "skipK8sInstall": "false",
     },
-  "ansibleRoles": ["harden_os"],
   "cloudTypes": ["vsphere"],
   "displayName": "CentOS",
   "eol": "2024-06-30",
@@ -443,7 +436,6 @@ profile. If Kubernetes is pre-installed in the image, set the flag `skipK8sInsta
       "sshUsername": "ubuntu",
       "skipK8sInstall": "false",
     },
-  "ansibleRoles": ["harden_os"],
   "cloudTypes": ["vsphere"],
   "displayName": "Ubuntu",
   "eol": "2028-04-30",
@@ -458,31 +450,3 @@ profile. If Kubernetes is pre-installed in the image, set the flag `skipK8sInsta
 </TabItem>
 
 </Tabs>
-
-## Ansible Roles
-
-In all the previous examples, additional customization in the form of an Ansible role called `harden_os` is specified in
-the pack manifest. The tasks and other files for the implementation of this role need to be included in the pack. The
-final directory structure of for the pack would be as follows:
-
-```
-./pack.json
-./logo.png
-./values.yaml
-./harden_os
-./harden_os/tasks
-./harden_os/tasks/main.yml
-./harden_os/files
-./harden_os/files/sec_harden.sh
-```
-
-Ansible roles are optional and only required if additional runtime customization is required. Once an OS pack is
-constructed, push it to the pack registry using the Spectro CLI tool.
-
-:::warning
-
-During the image customization phase of a cluster deployment, failures related to missing packages or package version
-mismatch could occur when using a custom OS pack. These errors are presented on the console. The image needs to be
-updated to resolve any such issues.
-
-:::

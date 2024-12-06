@@ -28,12 +28,12 @@ Review our [Maintenance Policy](maintenance-policy.md) to learn about pack updat
 
 ## What is PXK-E?
 
-PXK-E is a customized version of the open-source Cloud Native Computing Foundation (CNCF) distribution of Kubernetes.
+PXK-E is a customized version of the open source Cloud Native Computing Foundation (CNCF) distribution of Kubernetes.
 This Kubernetes distribution is customized and optimized for edge computing environments and can be deployed through
 Palette. PXK-E is the Kubernetes distribution Palette defaults to when deploying Edge clusters.
 
-PXK-E differs from the upstream open-source Kubernetes version by optimizing for operations in an edge computing
-environment. PXK-E also differentiates itself by using the Kairos open-source project as the base operating system (OS).
+PXK-E differs from the upstream open source Kubernetes version by optimizing for operations in an edge computing
+environment. PXK-E also differentiates itself by using the Kairos open source project as the base operating system (OS).
 PXK-E’s use of Kairos means the OS is immutable, which significantly improves the security posture and reduces potential
 attack surfaces.
 
@@ -50,13 +50,13 @@ PXK-E manages the underlying OS and the Kubernetes layer together, which reduces
 maintaining two separate components.
 
 PXK-E allows you to apply different flavors of container storage interfaces (CSI) and container network interfaces
-(CNI). Other open-source Kubernetes distributions such as MicroK8s, RKE2, and K3s come with a default CSI and CNI. There
+(CNI). Other open source Kubernetes distributions such as MicroK8s, RKE2, and K3s come with a default CSI and CNI. There
 is additional complexity and overhead when you want to consume different interface plugins with traditional Kubernetes
 distributions. Using PXK-E, you select the interface plugin you want to apply without additional overhead and
 complexity.
 
 There are no changes to the Kubernetes source code used in PXK-E, and it follows the same versioning schema as the
-upstream open-source Kubernetes distribution.
+upstream open source Kubernetes distribution.
 
 :::info
 
@@ -105,7 +105,7 @@ four months. Once we stop supporting the minor version, we initiate the deprecat
 | `cluster.config.initConfiguration.nodeRegistration.kubeletExtraArgs` | This parameter contains extra arguments for kubelet during node registration, such as setting feature gates, protecting kernel defaults, and disabling the read-only port.                                                                                                                 |
 | `pack.palette.config.oidc.identityProvider`                          | Dynamically enabled OpenID Connect (OIDC) Identity Provider (IDP) setting based on your UI selection when you add the PXK-E pack to your profile. This parameter appears in the YAML file after you make a selection. Refer to [Configure OIDC Identity Provider](#configure-custom-oidc). |
 
-You can add cloud-init stages exposed by [Kairos](https://kairos.io/docs/architecture/cloud-init/), an open-source
+You can add cloud-init stages exposed by [Kairos](https://kairos.io/docs/architecture/cloud-init/), an open source
 project. For more information, check out the [Cloud Init Stages](../clusters/edge/edge-configuration/cloud-init.md)
 reference.
 
@@ -490,7 +490,7 @@ In this example, Palette is used as the IDP, and all users in the `dev-east-2` w
 | `cluster.config.initConfiguration.nodeRegistration.kubeletExtraArgs` | This parameter contains extra arguments for kubelet during node registration, such as setting feature gates, protecting kernel defaults, and disabling the read-only port.                                                                                                                 |
 | `pack.palette.config.oidc.identityProvider`                          | Dynamically enabled OpenID Connect (OIDC) Identity Provider (IDP) setting based on your UI selection when you add the PXK-E pack to your profile. This parameter appears in the YAML file after you make a selection. Refer to [Configure OIDC Identity Provider](#configure-custom-oidc). |
 
-You can add cloud-init stages exposed by [Kairos](https://kairos.io/docs/architecture/cloud-init/), an open-source
+You can add cloud-init stages exposed by [Kairos](https://kairos.io/docs/architecture/cloud-init/), an open source
 project. For more information, check out the [Cloud Init Stages](../clusters/edge/edge-configuration/cloud-init.md)
 reference.
 
@@ -876,7 +876,7 @@ In this example, Palette is used as the IDP, and all users in the `dev-east-2` w
 | `cluster.config.initConfiguration.nodeRegistration.kubeletExtraArgs` | This parameter contains extra arguments for kubelet during node registration, such as setting feature gates, protecting kernel defaults, and disabling the read-only port.                                                                                                                 |
 | `pack.palette.config.oidc.identityProvider`                          | Dynamically enabled OpenID Connect (OIDC) Identity Provider (IDP) setting based on your UI selection when you add the PXK-E pack to your profile. This parameter appears in the YAML file after you make a selection. Refer to [Configure OIDC Identity Provider](#configure-custom-oidc). |
 
-You can add cloud-init stages exposed by [Kairos](https://kairos.io/docs/architecture/cloud-init/), an open-source
+You can add cloud-init stages exposed by [Kairos](https://kairos.io/docs/architecture/cloud-init/), an open source
 project. For more information, check out the [Cloud Init Stages](../clusters/edge/edge-configuration/cloud-init.md)
 reference.
 
@@ -1262,7 +1262,7 @@ In this example, Palette is used as the IDP, and all users in the `dev-east-2` w
 | `cluster.config.initConfiguration.nodeRegistration.kubeletExtraArgs` | This parameter contains extra arguments for kubelet during node registration, such as setting feature gates, protecting kernel defaults, and disabling the read-only port.                                                                                                                 |
 | `pack.palette.config.oidc.identityProvider`                          | Dynamically enabled OpenID Connect (OIDC) Identity Provider (IDP) setting based on your UI selection when you add the PXK-E pack to your profile. This parameter appears in the YAML file after you make a selection. Refer to [Configure OIDC Identity Provider](#configure-custom-oidc). |
 
-You can add cloud-init stages exposed by [Kairos](https://kairos.io/docs/architecture/cloud-init/), an open-source
+You can add cloud-init stages exposed by [Kairos](https://kairos.io/docs/architecture/cloud-init/), an open source
 project. For more information, check out the [Cloud Init Stages](../clusters/edge/edge-configuration/cloud-init.md)
 reference.
 
@@ -1649,7 +1649,7 @@ In this example, Palette is used as the IDP, and all users in the `dev-east-2` w
 | `cluster.config.initConfiguration.nodeRegistration.kubeletExtraArgs` | This parameter contains extra arguments for kubelet during node registration, such as setting feature gates, protecting kernel defaults, and disabling the read-only port.                                                                                                                 |
 | `pack.palette.config.oidc.identityProvider`                          | Dynamically enabled OpenID Connect (OIDC) Identity Provider (IDP) setting based on your UI selection when you add the PXK-E pack to your profile. This parameter appears in the YAML file after you make a selection. Refer to [Configure OIDC Identity Provider](#configure-custom-oidc). |
 
-You can add cloud-init stages exposed by [Kairos](https://kairos.io/docs/architecture/cloud-init/), an open-source
+You can add cloud-init stages exposed by [Kairos](https://kairos.io/docs/architecture/cloud-init/), an open source
 project. For more information, check out the [Cloud Init Stages](../clusters/edge/edge-configuration/cloud-init.md)
 reference.
 
