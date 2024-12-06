@@ -37,6 +37,11 @@ has the necessary network connectivity for VerteX to operate successfully.
 - The Kubernetes cluster must have a Container Storage Interface (CSI) installed and configured. VerteX requires a CSI
   to store persistent data. You may install any CSI that is compatible with your Kubernetes cluster.
 
+- If you are using MongoDB Atlas, or a self-hosted MongoDB instance, ensure the MongoDB database has a user named
+  `hubble` with the permission `readWriteAnyDatabase`. Refer to the
+  [Add a Database User](https://www.mongodb.com/docs/guides/atlas/db-user/) guide for guidance on how to create a
+  database user in Atlas.
+
 - We recommend the following resources for VerteX. Refer to the
   [VerteX size guidelines](../install-palette-vertex.md#size-guidelines) for additional sizing information.
 
@@ -379,7 +384,7 @@ your environment. Reach out to our support team if you need assistance.
 
     <TabItem label="OCI Registry" value="oci">
 
-    ```yaml {53,68-75,110-115}
+    ```yaml {53,68-75,87-96,110-115}
     #########################
     # Spectro Cloud VerteX #
     #########################
@@ -466,15 +471,15 @@ your environment. Reach out to our support team if you need assistance.
       #  insecureSkipVerify: false
       #  caCert: ""
 
-      # ociImageRegistry:
-      #   endpoint: "" #<Contact Spectro Cloud Sales for More info>
-      #   name: "" #<Contact Spectro Cloud Sales for More info>
-      #   password: "" #<Contact Spectro Cloud Sales for More info>
-      #   username: "" #<Contact Spectro Cloud Sales for More info>
-      #   baseContentPath: "" #<Contact Spectro Cloud Sales for More info>
-      #   insecureSkipVerify: false
-      #   caCert: ""
-      #   mirrorRegistries: ""
+       ociImageRegistry:
+         endpoint: "example.harbor.org" #<Contact Spectro Cloud Sales for More info>
+         name: "Palette Packs OCI" #<Contact Spectro Cloud Sales for More info>
+         password: "**************" #<Contact Spectro Cloud Sales for More info>
+         username: "**************" #<Contact Spectro Cloud Sales for More info>
+         baseContentPath: "spectro-images" #<Contact Spectro Cloud Sales for More info>
+         insecureSkipVerify: false
+         caCert: ""
+         mirrorRegistries: ""
 
       # Instruction for mirrorRegistries.
       # ----------------------------------
@@ -629,8 +634,8 @@ your environment. Reach out to our support team if you need assistance.
 5.  This step is only required if you are installing Palette in an environment where a network proxy must be configured
     for Palette to access the internet. If you are not using a network proxy, skip to the next step.
 
-    Install the reach-system chart using the following command. Point to the **values.yaml** file you configured in the
-    previous step.
+    Install the reach-system chart using the following command. Point to the **values.yaml** file you configured in step
+    four. Make sure you configure the `reach-system.enable` section in the **values.yaml** file.
 
     ```shell
     helm upgrade --values vertex/values.yaml \
@@ -646,6 +651,25 @@ your environment. Reach out to our support team if you need assistance.
     REVISION: 1
     TEST SUITE: None
     ```
+
+    <!-- prettier-ignore -->
+    <details>
+    <summary>How to update containerd to use proxy configurations</summary>
+
+    If your Kubernetes cluster is behind a network proxy, ensure the containerd service is configured to use proxy
+    settings. You can do this by updating the containerd configuration file on each node in the cluster. The
+    configuration file is typically located at ` /etc/systemd/system/containerd.service.d/http-proxy.conf`. Below is an
+    example of the configuration file. Replace the values with your proxy settings. Ask your network administrator for
+    guidance.
+
+    ```
+    [Service]
+    Environment="HTTP_PROXY=http://example.com:9090"
+    Environment="HTTPS_PROXY=http://example.com:9090"
+    Environment="NO_PROXY=127.0.0.1,localhost,100.64.0.0/17,192.168.0.0/16,172.16.0.0/12,10.0.0.0/8,,.cluster.local"
+    ```
+
+    </details>
 
 6.  Install the Palette Helm Chart using the following command.
 
@@ -674,7 +698,7 @@ your environment. Reach out to our support team if you need assistance.
 
     :::tip
 
-    For a more user-friendly experience, use the open-source tool [k9s](https://k9scli.io/) to monitor the installation
+    For a more user-friendly experience, use the open source tool [k9s](https://k9scli.io/) to monitor the installation
     process.
 
     :::

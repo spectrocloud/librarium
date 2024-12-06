@@ -32,6 +32,11 @@ You can use the Palette Helm Chart to install Palette in a multi-node Kubernetes
 - The Kubernetes cluster must have a Container Storage Interface (CSI) installed and configured. Palette requires a CSI
   to store persistent data. You may install any CSI that is compatible with your Kubernetes cluster.
 
+- If you are using MongoDB Atlas, or a self-hosted MongoDB instance, ensure the MongoDB database has a user named
+  `hubble` with the permission `readWriteAnyDatabase`. Refer to the
+  [Add a Database User](https://www.mongodb.com/docs/guides/atlas/db-user/) guide for guidance on how to create a
+  database user in Atlas.
+
 - We recommended the following resources for Palette. Refer to the
   [Palette size guidelines](../install-palette.md#size-guidelines) for additional sizing information.
 
@@ -368,7 +373,7 @@ your environment. Reach out to our support team if you need assistance.
 
     <TabItem label="OCI Registry" value="oci">
 
-    ```yaml {53,68-75,110-115}
+    ```yaml {53,68-75,87-96,110-115}
     #########################
     # Spectro Cloud Palette #
     #########################
@@ -455,15 +460,15 @@ your environment. Reach out to our support team if you need assistance.
       #  insecureSkipVerify: false
       #  caCert: ""
 
-      # ociImageRegistry:
-      #   endpoint: "" #<Contact Spectro Cloud Sales for More info>
-      #   name: "" #<Contact Spectro Cloud Sales for More info>
-      #   password: "" #<Contact Spectro Cloud Sales for More info>
-      #   username: "" #<Contact Spectro Cloud Sales for More info>
-      #   baseContentPath: "" #<Contact Spectro Cloud Sales for More info>
-      #   insecureSkipVerify: false
-      #   caCert: ""
-      #   mirrorRegistries: ""
+       ociImageRegistry:
+         endpoint: "example.harbor.org" #<Contact Spectro Cloud Sales for More info>
+         name: "Palette Packs OCI" #<Contact Spectro Cloud Sales for More info>
+         password: "**************" #<Contact Spectro Cloud Sales for More info>
+         username: "**************" #<Contact Spectro Cloud Sales for More info>
+         baseContentPath: "spectro-images" #<Contact Spectro Cloud Sales for More info>
+         insecureSkipVerify: false
+         caCert: ""
+         mirrorRegistries: ""
 
       # Instruction for mirrorRegistries.
       # ----------------------------------
@@ -615,7 +620,47 @@ your environment. Reach out to our support team if you need assistance.
 
     :::
 
-5.  Install the Palette Helm Chart using the following command.
+5.  This step is only required if you are installing Palette in an environment where a network proxy must be configured
+    for Palette to access the internet. If you are not using a network proxy, skip to the next step.
+
+    Install the reach-system chart using the following command. Point to the **values.yaml** file you configured in step
+    four. Make sure you configure the `reach-system.enable` section in the **values.yaml** file.
+
+    ```shell
+    helm upgrade --values palette/values.yaml \
+    reach-system extras/reach-system/reach-system-*.tgz --install
+    ```
+
+    ```shell hideClipboard
+    Release "reach-system" does not exist. Installing it now.
+    NAME: reach-system
+    LAST DEPLOYED: Mon Jan 29 17:04:23 2024
+    NAMESPACE: default
+    STATUS: deployed
+    REVISION: 1
+    TEST SUITE: None
+    ```
+
+    <!-- prettier-ignore -->
+    <details>
+    <summary>How to update containerd to use proxy configurations</summary>
+
+    If your Kubernetes cluster is behind a network proxy, ensure the containerd service is configured to use proxy
+    settings. You can do this by updating the containerd configuration file on each node in the cluster. The
+    configuration file is typically located at ` /etc/systemd/system/containerd.service.d/http-proxy.conf`. Below is an
+    example of the configuration file. Replace the values with your proxy settings. Ask your network administrator for
+    guidance.
+
+    ```
+    [Service]
+    Environment="HTTP_PROXY=http://example.com:9090"
+    Environment="HTTPS_PROXY=http://example.com:9090"
+    Environment="NO_PROXY=127.0.0.1,localhost,100.64.0.0/17,192.168.0.0/16,172.16.0.0/12,10.0.0.0/8,,.cluster.local"
+    ```
+
+    </details>
+
+6.  Install the Palette Helm Chart using the following command.
 
     ```shell
      helm upgrade --values palette/values.yaml \
@@ -632,7 +677,7 @@ your environment. Reach out to our support team if you need assistance.
     TEST SUITE: None
     ```
 
-6.  Track the installation process using the command below. Palette is ready when the deployments in the namespaces
+7.  Track the installation process using the command below. Palette is ready when the deployments in the namespaces
     `cp-system`, `hubble-system`, `ingress-nginx`, `jet-system` , and `ui-system` reach the _Ready_ state. The
     installation takes between two to three minutes to complete.
 
@@ -642,12 +687,12 @@ your environment. Reach out to our support team if you need assistance.
 
     :::tip
 
-    For a more user-friendly experience, use the open-source tool [k9s](https://k9scli.io/) to monitor the installation
+    For a more user-friendly experience, use the open source tool [k9s](https://k9scli.io/) to monitor the installation
     process.
 
     :::
 
-7.  Create a DNS CNAME record that is mapped to the Palette `ingress-nginx-controller` load balancer. You can use the
+8.  Create a DNS CNAME record that is mapped to the Palette `ingress-nginx-controller` load balancer. You can use the
     following command to retrieve the load balancer IP address. You may require the assistance of your network
     administrator to create the DNS record.
 
@@ -665,7 +710,7 @@ your environment. Reach out to our support team if you need assistance.
 
     :::
 
-8.  Use the custom domain name or the IP address of the load balancer to visit the Palette system console. To access the
+9.  Use the custom domain name or the IP address of the load balancer to visit the Palette system console. To access the
     system console, open a web browser and paste the custom domain URL in the address bar and append the value
     `/system`. Replace the domain name in the URL with your custom domain name or the IP address of the load balancer.
     Alternatively, you can use the load balancer IP address with the appended value `/system` to access the system
@@ -677,7 +722,7 @@ your environment. Reach out to our support team if you need assistance.
 
     ![Screenshot of the Palette system console showing Username and Password fields.](/palette_installation_install-on-vmware_palette-system-console.webp)
 
-9.  Log in to the system console using the following default credentials. Refer to the
+10. Log in to the system console using the following default credentials. Refer to the
     [password requirements](../../system-management/account-management/credentials.md#password-requirements-and-security)
     documentation page to learn more about password requirements
 
@@ -692,7 +737,7 @@ your environment. Reach out to our support team if you need assistance.
     Refer to the [Account Management](../../system-management/account-management/account-management.md) documentation
     page for more information.
 
-10. After login, a summary page is displayed. Palette is installed with a self-signed SSL certificate. To assign a
+11. After login, a summary page is displayed. Palette is installed with a self-signed SSL certificate. To assign a
     different SSL certificate you must upload the SSL certificate, SSL certificate key, and SSL certificate authority
     files to Palette. You can upload the files using the Palette system console. Refer to the
     [Configure HTTPS Encryption](../../system-management/ssl-certificate-management.md) page for instructions on how to

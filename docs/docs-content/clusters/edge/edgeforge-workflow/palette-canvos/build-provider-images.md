@@ -41,9 +41,18 @@ artifacts at the same time.
 
 - [Git](https://git-scm.com/downloads). You can ensure git installation by issuing the `git --version` command.
 
-- [Docker Engine](https://docs.docker.com/engine/install/) version 18.09.x or later. You can use the `docker --version`
-  command to view the existing Docker version. You should have root-level or `sudo` privileges on your Linux machine to
-  create privileged containers.
+- (Optional) [Earthly](https://earthly.dev/) is installed and available. If you do not install Earthly, you can still
+  build the artifacts, but it would require root privileges, and some of the resulting artifacts will be owned by the
+  root user.
+
+- An image management tool such as [Docker](https://docs.docker.com/engine/install/) or
+  [crane](https://github.com/google/go-containerregistry/blob/main/cmd/crane/README.md) is installed and available.
+
+  :::info
+
+  If you do not install Earthly, you must install Docker.
+
+  :::
 
 ## Build Provider Images
 
@@ -106,8 +115,9 @@ artifacts at the same time.
    the JSON object corresponding to your Kubernetes distribution.
 
    If you are using a tag that is earlier than v4.4.12, the **k8s_versions.json** file does not exist in those tags.
-   Instead, open the **Earthfile** in the CanvOS directory. Under `build-provider-images`, remove the lines containing
-   Kubernetes versions that you do not need.
+   Instead, open the **Earthfile** in the CanvOS directory. In the file, find the block that starts with
+   `build-provider-images-fips:` and delete the Kubernetes versions that you do not want. This will speed up the build
+   process and save storage space.
 
 10. Issue the command below to create an **.arg** file. The **.arg** file uses the default values for the remaining
     arguments.
@@ -135,12 +145,28 @@ artifacts at the same time.
     key can be uploaded to the Edge host through Local UI. This includes both the content bundle and cluster definition.
     For more information, refer to [Embed Public Key in Edge Artifacts](./signed-content.md).
 
-12. CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. Issue the following command to
-    start the build process.
+12. CanvOS utility uses [Earthly](https://earthly.dev/)(https://earthly.dev/) to build the target artifacts. Issue the
+    following command to start the build process.
+
+   <Tabs group="earthly">
+
+   <TabItem value="Earthly Installed">
+
+    ```bash
+    earthly +build-provider-images
+    ```
+
+   </TabItem>
+
+   <TabItem value="Earthly Not Installed">
 
     ```bash
     sudo ./earthly.sh +build-provider-images
     ```
+
+   </TabItem>
+
+   </Tabs>
 
     ```hideClipboard bash {2}
     # Output condensed for readability

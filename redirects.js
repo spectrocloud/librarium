@@ -1,4 +1,29 @@
-const redirects = [
+const fetchAndFilterUrls = require("./utils/xml/packExtracter");
+
+/*
+The logigc below is all related to the event that the environment variable DISABLE_PACKS_INTEGRATIONS is set to true.
+The function fetchAndFilterUrls is used to fetch the sitemap.xml file from production. 
+The assumption is that the sitemap.xml file is up to date and contains all the URLs for the packs integrations.
+We then filter the URLs that start with the prefix "https://docs.spectrocloud.com/integrations/packs/" and store them in the packRedirects array.
+The redirects array is then updated with the packRedirects array.
+This allows to prevent broken links when the packs integrations are disabled.
+*/
+
+let packRedirects = [];
+
+if (process.env.DISABLE_PACKS_INTEGRATIONS === "true") {
+  const sitemapUrl = "https://docs.spectrocloud.com/sitemap.xml";
+  const urlPrefix = "https://docs.spectrocloud.com/integrations/packs/";
+
+  fetchAndFilterUrls(sitemapUrl, urlPrefix).then((paths) => {
+    packRedirects = paths.map((path) => ({
+      from: path,
+      to: "/integrations/",
+    }));
+  });
+}
+
+let redirects = [
   {
     from: `/api/`,
     to: `/api/introduction/`,
@@ -410,7 +435,7 @@ const redirects = [
   },
   {
     from: "/enterprise-version/install-palette/airgap/vmware-vsphere-airgap-instructions/",
-    to: "/enterprise-version/install-palette/install-on-vmware/airgap-install/vmware-vsphere-airgap-instructions/",
+    to: "/enterprise-version/install-palette/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions/",
   },
   {
     from: "/vertex/install-palette-vertex/airgap/kubernetes-airgap-instructions/",
@@ -418,7 +443,7 @@ const redirects = [
   },
   {
     from: "/vertex/install-palette-vertex/airgap/vmware-vsphere-airgap-instructions/",
-    to: "/vertex/install-palette-vertex/install-on-vmware/airgap-install/vmware-vsphere-airgap-instructions/",
+    to: "/vertex/install-palette-vertex/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions/",
   },
   {
     from: "/vertex/install-palette-vertex/airgap/checklist/",
@@ -554,6 +579,14 @@ const redirects = [
     to: "/automation/palette-cli/commands/ec/",
   },
   {
+    from: "/enterprise-version/install-palette/install-on-vmware/airgap-install/vmware-vsphere-airgap-instructions/",
+    to: "/enterprise-version/install-palette/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions/",
+  },
+  {
+    from: "/vertex/install-palette-vertex/install-on-vmware/airgap-install/vmware-vsphere-airgap-instructions/",
+    to: "/vertex/install-palette-vertex/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions/",
+  },
+  {
     from: "/legal-licenses/oss-licenses/",
     to: "/legal-licenses/oss-licenses-index/",
   },
@@ -596,6 +629,7 @@ const redirects = [
       "/integrations/trident",
       "/integrations/ubuntu",
       "/integrations/vsphere-csi",
+      "/integrations/ngrok",
     ],
     to: "/integrations/",
   },
@@ -615,6 +649,111 @@ const redirects = [
     ],
     to: "/security-bulletins/reports/",
   },
+  {
+    from: "/clusters/cluster-management/cluster-tag-filter/",
+    to: "tenant-settings/filters/",
+  },
+  {
+    from: "/clusters/cluster-management/cluster-tag-filter/create-add-filter/",
+    to: "tenant-settings/filters/",
+  },
+  {
+    from: "/user-management/new-user/",
+    to: "/user-management/users-and-teams/create-user/",
+  },
+  {
+    from: "/user-management/project-association/",
+    to: "/user-management/palette-rbac/assign-a-role/",
+  },
+  {
+    from: [
+      "/security-bulletins/reports/cve-2005-2541",
+      "/security-bulletins/reports/cve-2012-2663",
+      "/security-bulletins/reports/cve-2015-20107",
+      "/security-bulletins/reports/cve-2015-8855",
+      "/security-bulletins/reports/cve-2016-1585",
+      "/security-bulletins/reports/cve-2016-20013",
+      "/security-bulletins/reports/cve-2017-11164",
+      "/security-bulletins/reports/cve-2018-20225",
+      "/security-bulletins/reports/cve-2018-20657",
+      "/security-bulletins/reports/cve-2018-20796",
+      "/security-bulletins/reports/cve-2018-20839",
+      "/security-bulletins/reports/cve-2019-1010022",
+      "/security-bulletins/reports/cve-2019-12900",
+      "/security-bulletins/reports/cve-2019-17543",
+      "/security-bulletins/reports/cve-2019-19244",
+      "/security-bulletins/reports/cve-2019-9192",
+      "/security-bulletins/reports/cve-2019-9674",
+      "/security-bulletins/reports/cve-2019-9923",
+      "/security-bulletins/reports/cve-2019-9936",
+      "/security-bulletins/reports/cve-2019-9937",
+      "/security-bulletins/reports/cve-2020-35512",
+      "/security-bulletins/reports/cve-2020-36325",
+      "/security-bulletins/reports/cve-2021-3737",
+      "/security-bulletins/reports/cve-2021-39537",
+      "/security-bulletins/reports/cve-2021-42694",
+      "/security-bulletins/reports/cve-2021-46848",
+      "/security-bulletins/reports/cve-2022-0391",
+      "/security-bulletins/reports/cve-2022-23990",
+      "/security-bulletins/reports/cve-2022-25883",
+      "/security-bulletins/reports/cve-2022-28357",
+      "/security-bulletins/reports/cve-2022-28948",
+      "/security-bulletins/reports/cve-2022-41409",
+      "/security-bulletins/reports/cve-2022-41723",
+      "/security-bulletins/reports/cve-2022-41724",
+      "/security-bulletins/reports/cve-2022-41725",
+      "/security-bulletins/reports/cve-2022-45061",
+      "/security-bulletins/reports/cve-2022-48560",
+      "/security-bulletins/reports/cve-2022-48565",
+      "/security-bulletins/reports/cve-2022-4899",
+      "/security-bulletins/reports/cve-2023-0464",
+      "/security-bulletins/reports/cve-2023-24329",
+      "/security-bulletins/reports/cve-2023-24534",
+      "/security-bulletins/reports/cve-2023-24536",
+      "/security-bulletins/reports/cve-2023-24537",
+      "/security-bulletins/reports/cve-2023-24538",
+      "/security-bulletins/reports/cve-2023-24539",
+      "/security-bulletins/reports/cve-2023-24540",
+      "/security-bulletins/reports/cve-2023-26604",
+      "/security-bulletins/reports/cve-2023-27534",
+      "/security-bulletins/reports/cve-2023-29400",
+      "/security-bulletins/reports/cve-2023-29403",
+      "/security-bulletins/reports/cve-2023-29499",
+      "/security-bulletins/reports/cve-2023-32636",
+      "/security-bulletins/reports/cve-2023-37920",
+      "/security-bulletins/reports/cve-2023-39325",
+      "/security-bulletins/reports/cve-2023-4156",
+      "/security-bulletins/reports/cve-2023-44487",
+      "/security-bulletins/reports/cve-2023-45142",
+      "/security-bulletins/reports/cve-2023-45287",
+      "/security-bulletins/reports/cve-2023-47108",
+      "/security-bulletins/reports/cve-2023-49569",
+      "/security-bulletins/reports/cve-2023-52356",
+      "/security-bulletins/reports/cve-2024-0743",
+      "/security-bulletins/reports/cve-2024-0760",
+      "/security-bulletins/reports/cve-2024-1737",
+      "/security-bulletins/reports/cve-2024-1975",
+      "/security-bulletins/reports/cve-2024-21626",
+      "/security-bulletins/reports/cve-2024-24790",
+      "/security-bulletins/reports/cve-2024-32002",
+      "/security-bulletins/reports/cve-2024-35325",
+      "/security-bulletins/reports/cve-2024-3651",
+      "/security-bulletins/reports/cve-2024-37370",
+      "/security-bulletins/reports/cve-2024-37371",
+      "/security-bulletins/reports/cve-2024-38428",
+      "/security-bulletins/reports/cve-2024-45490",
+      "/security-bulletins/reports/cve-2024-45491",
+      "/security-bulletins/reports/cve-2024-45492",
+      "/security-bulletins/reports/cve-2024-6197",
+      "/security-bulletins/reports/cve-2024-6232",
+      "/security-bulletins/reports/cve-2024-7592",
+    ],
+    to: "/security-bulletins/reports/",
+  },
 ];
+
+if (packRedirects.length > 0) {
+  redirects = redirects.concat(packRedirects);
+}
 
 module.exports = redirects;
