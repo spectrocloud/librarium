@@ -8,7 +8,7 @@ sidebar_position: 50
 ---
 
 Palette requires proper Amazon Web Services (AWS) permissions to operate and perform actions on your behalf. The
-following policies include all the permissions needed for cluster provisioning with Palette.
+following policies include all the permissions needed for Palette to deploy and manage clusters on AWS.
 
 - **PaletteControllerPolicy**
 
@@ -30,9 +30,19 @@ into a custom-managed policy. You can learn more about AWS IAM limits in the
 
 :::
 
+If you want to narrow down the IAM permissions, you can use the [Minimum Permissions](#minimum-permissions) policies.
+These policies are designed to follow the
+[principle of least privilege](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#grant-least-privilege).
+You can also use the Static Policy for deploying clusters within an existing VPC without provisioning or deleting
+foundational network resources.
+
+## Core IAM Policies
+
+The four core IAM policies are required for Palette to operate.
+
 <Tabs queryString="iam-policies">
 
-<TabItem label="Controllers Policy" value="Controllers Policy">
+<TabItem label="Controller Policy" value="Controller Policy">
 
 **Last Update**: April 20, 2023
 
@@ -534,124 +544,297 @@ into a custom-managed policy. You can learn more about AWS IAM limits in the
 
 </Tabs>
 
-## Restricting Palette VPC Permissions
+### Controllers EKS Policy
 
-You can choose to have Palette operate in a static or dynamic environment. You can configure Palette to perform an AWS
-cluster creation into an existing VPC. The following policy allows Palette to operate but restricts its access to the
-[Principle of Least Privilege](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#grant-least-privilege).
+If you plan to deploy host clusters to AWS EKS, make sure to attach the **PaletteControllersEKSPolicy**.
 
-<Tabs queryString="min-permissions">
-<TabItem label="Minimum Dynamic Permissions" value="Minimum Dynamic Permissions">
-
-This is a policy for those who want to restrict Palette to a single VPC and not give Palette access to create or delete
-VPCs.
-
-### Minimum Dynamic Permissions
+**Last Update**: April 20, 2023
 
 ```json
 {
   "Version": "2012-10-17",
   "Statement": [
     {
-      "Sid": "VisualEditor0",
-      "Effect": "Allow",
+      "Action": ["ssm:GetParameter"],
+      "Resource": ["arn:*:ssm:*:*:parameter/aws/service/eks/optimized-ami/*"],
+      "Effect": "Allow"
+    },
+    {
+      "Condition": {
+        "StringLike": {
+          "iam:AWSServiceName": "eks.amazonaws.com"
+        }
+      },
+      "Action": ["iam:CreateServiceLinkedRole"],
+      "Resource": ["arn:*:iam::*:role/aws-service-role/eks.amazonaws.com/AWSServiceRoleForAmazonEKS"],
+      "Effect": "Allow"
+    },
+    {
+      "Condition": {
+        "StringLike": {
+          "iam:AWSServiceName": "eks-nodegroup.amazonaws.com"
+        }
+      },
+      "Action": ["iam:CreateServiceLinkedRole"],
+      "Resource": [
+        "arn:*:iam::*:role/aws-service-role/eks-nodegroup.amazonaws.com/AWSServiceRoleForAmazonEKSNodegroup"
+      ],
+      "Effect": "Allow"
+    },
+    {
+      "Condition": {
+        "StringLike": {
+          "iam:AWSServiceName": "eks-fargate.amazonaws.com"
+        }
+      },
+      "Action": ["iam:CreateServiceLinkedRole"],
+      "Resource": [
+        "arn:*:iam::*:role/aws-service-role/eks-fargate-pods.amazonaws.com/AWSServiceRoleForAmazonEKSForFargate"
+      ],
+      "Effect": "Allow"
+    },
+    {
       "Action": [
-        "ec2:AuthorizeSecurityGroupIngress",
-        "ec2:DescribeInstances",
-        "iam:RemoveRoleFromInstanceProfile",
-        "ec2:AttachInternetGateway",
-        "iam:AddRoleToInstanceProfile",
-        "ec2:DeleteRouteTable",
-        "ec2:AssociateRouteTable",
-        "ec2:DescribeInternetGateways",
-        "ec2:CreateRoute",
-        "ec2:CreateInternetGateway",
-        "ec2:DescribeVolumes",
-        "ec2:DescribeKeyPairs",
-        "ec2:DescribeNetworkAcls",
-        "ec2:DescribeRouteTables",
-        "ec2:CreateTags",
-        "ec2:CreateRouteTable",
-        "ec2:RunInstances",
-        "ec2:ModifyInstanceAttribute",
-        "ec2:TerminateInstances",
-        "ec2:DetachInternetGateway",
-        "ec2:DisassociateRouteTable",
-        "ec2:RevokeSecurityGroupIngress",
-        "ec2:DescribeIpv6Pools",
-        "ec2:DeleteVpc",
-        "ec2:CreateSubnet",
-        "ec2:DescribeSubnets",
-        "iam:CreateInstanceProfile",
-        "ec2:DisassociateAddress",
-        "ec2:DescribeAddresses",
-        "ec2:CreateNatGateway",
-        "ec2:DescribeRegions",
-        "ec2:CreateVpc",
-        "ec2:DescribeDhcpOptions",
-        "ec2:DescribeVpcAttribute",
-        "ec2:DescribeNetworkInterfaces",
-        "ec2:DescribeAvailabilityZones",
-        "ec2:DescribeNetworkInterfaceAttribute",
-        "ec2:CreateSecurityGroup",
-        "ec2:ModifyVpcAttribute",
-        "iam:DeleteInstanceProfile",
-        "ec2:ReleaseAddress",
-        "iam:GetInstanceProfile",
-        "ec2:DescribeTags",
-        "ec2:DeleteRoute",
-        "ec2:DescribeNatGateways",
-        "ec2:DescribeIpamPools",
-        "ec2:AllocateAddress",
-        "ec2:DescribeSecurityGroups",
-        "ec2:DescribeImages",
-        "ec2:DescribeVpcs",
-        "elasticloadbalancing:DeleteLoadBalancer",
-        "elasticloadbalancing:DescribeLoadBalancers",
-        "elasticloadbalancing:DescribeLoadBalancerAttributes",
-        "elasticloadbalancing:CreateLoadBalancer",
-        "elasticloadbalancing:ModifyLoadBalancerAttributes",
-        "elasticloadbalancing:DescribeTags",
-        "secretsmanager:CreateSecret",
-        "secretsmanager:DeleteSecret",
-        "secretsmanager:TagResource",
-        "secretsmanager:GetSecretValue",
-        "autoscaling:StartInstanceRefresh",
-        "elasticloadbalancing:DeregisterInstancesFromLoadBalancer",
-        "elasticloadbalancing:RegisterInstancesWithLoadBalancer",
+        "iam:AddClientIDToOpenIDConnectProvider",
+        "iam:CreateOpenIDConnectProvider",
+        "iam:DeleteOpenIDConnectProvider",
+        "iam:ListOpenIDConnectProviders",
+        "iam:UpdateOpenIDConnectProviderThumbprint"
+      ],
+      "Resource": ["*"],
+      "Effect": "Allow"
+    },
+    {
+      "Action": [
+        "iam:GetRole",
+        "iam:ListAttachedRolePolicies",
+        "iam:DetachRolePolicy",
+        "iam:DeleteRole",
+        "iam:CreateRole",
+        "iam:TagRole",
+        "iam:AttachRolePolicy"
+      ],
+      "Resource": ["arn:*:iam::*:role/*"],
+      "Effect": "Allow"
+    },
+    {
+      "Action": ["iam:GetPolicy"],
+      "Resource": ["arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"],
+      "Effect": "Allow"
+    },
+    {
+      "Action": [
         "eks:DescribeCluster",
         "eks:ListClusters",
+        "eks:CreateCluster",
+        "eks:TagResource",
+        "eks:UpdateClusterVersion",
+        "eks:DeleteCluster",
+        "eks:UpdateClusterConfig",
+        "eks:UntagResource",
+        "eks:UpdateNodegroupVersion",
+        "eks:DescribeNodegroup",
+        "eks:DeleteNodegroup",
+        "eks:UpdateNodegroupConfig",
+        "eks:CreateNodegroup",
+        "eks:AssociateEncryptionConfig",
+        "eks:ListIdentityProviderConfigs",
+        "eks:AssociateIdentityProviderConfig",
+        "eks:DescribeIdentityProviderConfig",
+        "eks:DisassociateIdentityProviderConfig"
+      ],
+      "Resource": ["arn:*:eks:*:*:cluster/*", "arn:*:eks:*:*:nodegroup/*/*/*"],
+      "Effect": "Allow"
+    },
+    {
+      "Action": [
+        "ec2:AssociateVpcCidrBlock",
+        "ec2:DisassociateVpcCidrBlock",
+        "eks:ListAddons",
+        "eks:CreateAddon",
+        "eks:DescribeAddonVersions",
+        "eks:DescribeAddon",
+        "eks:DeleteAddon",
+        "eks:UpdateAddon",
+        "eks:TagResource",
+        "eks:DescribeFargateProfile",
+        "eks:CreateFargateProfile",
+        "eks:DeleteFargateProfile"
+      ],
+      "Resource": ["*"],
+      "Effect": "Allow"
+    },
+    {
+      "Condition": {
+        "StringEquals": {
+          "iam:PassedToService": "eks.amazonaws.com"
+        }
+      },
+      "Action": ["iam:PassRole"],
+      "Resource": ["*"],
+      "Effect": "Allow"
+    },
+    {
+      "Condition": {
+        "ForAnyValue:StringLike": {
+          "kms:ResourceAliases": "alias/cluster-api-provider-aws-*"
+        }
+      },
+      "Action": ["kms:CreateGrant", "kms:DescribeKey"],
+      "Resource": ["*"],
+      "Effect": "Allow"
+    }
+  ]
+}
+```
+
+## Minimum Permissions
+
+The following policies are designed from the
+[principle of least privilege](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#grant-least-privilege).
+You can use these policies to narrow the permissions Palette requires to operate instead of using the
+[Core IAM Policies](#core-iam-policies).
+
+The **Minimum Dynamic Permissions** grants broad permissions across EC2, VPC, and Elastic Container Registry (ECR),
+allowing complete control over the lifecycle of virtual network and compute resources. This includes creating,
+modifying, and deleting VPCs, subnets, internet gateways, and route tables, as well as managing Docker images in ECR.
+
+In contrast, the **Static Policy** is more restrictive, omitting permissions for creating and deleting core VPC
+components and excluding ECR access. However, it includes additional permissions for managing EC2 volumes and accessing
+S3 bucket encryption configurations.
+
+Both policies provide similar access to CloudFormation, Elastic Load Balancing, IAM roles, and Secrets Manager. However,
+the **Dynamic Policy** supports full EC2 and network resource control, while the **Static Policy** is tailored for
+managing existing infrastructure without provisioning or deleting foundational network resources.
+
+<Tabs queryString="min-permissions">
+<TabItem label="Minimum Dynamic Permissions" value="Minimum Dynamic Permissions">
+
+The following policy allows Palette to operate and create VPC resources as needed while retaining minimal permissions
+for deploying clusters through Palette.
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "PalettedynamicPermissions",
+      "Effect": "Allow",
+      "Action": [
+        "autoscaling:StartInstanceRefresh",
         "cloudformation:CreateStack",
         "cloudformation:DescribeStacks",
         "cloudformation:UpdateStack",
-        "ecr:GetAuthorizationToken",
-        "iam:PassRole",
-        "elasticloadbalancing:ConfigureHealthCheck",
-        "elasticloadbalancing:DescribeTargetHealth",
-        "ecr:BatchCheckLayerAvailability",
-        "ecr:GetDownloadUrlForLayer",
-        "ecr:GetRepositoryPolicy",
-        "ecr:DescribeRepositories",
-        "ecr:ListImages",
-        "ecr:BatchGetImage",
+        "ec2:AllocateAddress",
+        "ec2:AssociateAddress",
+        "ec2:AttachInternetGateway",
+        "ec2:AuthorizeSecurityGroupIngress",
+        "ec2:CreateInternetGateway",
+        "ec2:CreateNatGateway",
+        "ec2:CreateRoute",
+        "ec2:CreateRouteTable",
+        "ec2:CreateSecurityGroup",
+        "ec2:CreateSnapshot",
+        "ec2:CreateSubnet",
+        "ec2:CreateTags",
+        "ec2:CreateVpc",
         "ec2:DeleteInternetGateway",
         "ec2:DeleteNatGateway",
         "ec2:DeleteNetworkInterface",
+        "ec2:DeleteRoute",
+        "ec2:DeleteRouteTable",
         "ec2:DeleteSecurityGroup",
+        "ec2:DeleteSnapshot",
         "ec2:DeleteSubnet",
         "ec2:DeleteTags",
+        "ec2:DeleteVpc",
+        "ec2:DescribeAddresses",
+        "ec2:DescribeAvailabilityZones",
+        "ec2:DescribeDhcpOptions",
+        "ec2:DescribeImages",
+        "ec2:DescribeInstances",
+        "ec2:DescribeInternetGateways",
+        "ec2:DescribeIpv6Pools",
+        "ec2:DescribeKeyPairs",
+        "ec2:DescribeNatGateways",
+        "ec2:DescribeNetworkAcls",
+        "ec2:DescribeNetworkInterfaceAttribute",
+        "ec2:DescribeNetworkInterfaces",
+        "ec2:DescribeRegions",
+        "ec2:DescribeRouteTables",
+        "ec2:DescribeSecurityGroups",
+        "ec2:DescribeSnapshots",
+        "ec2:DescribeSubnets",
+        "ec2:DescribeTags",
+        "ec2:DescribeVolumes",
+        "ec2:DescribeVolumesModifications",
+        "ec2:DescribeVpcAttribute",
+        "ec2:DescribeVpcs",
+        "ec2:DisassociateAddress",
+        "ec2:DisassociateRouteTable",
+        "ec2:ModifyInstanceAttribute",
+        "ec2:ModifyNetworkInterfaceAttribute",
+        "ec2:ModifySubnetAttribute",
+        "ec2:ModifyVpcAttribute",
+        "ec2:ReleaseAddress",
+        "ec2:ReplaceRoute",
+        "ec2:RevokeSecurityGroupIngress",
+        "ec2:RunInstances",
+        "ec2:TerminateInstances",
+        "ecr:BatchCheckLayerAvailability",
+        "ecr:BatchGetImage",
+        "ecr:DescribeRepositories",
+        "ecr:GetAuthorizationToken",
+        "ecr:GetDownloadUrlForLayer",
+        "ecr:GetRepositoryPolicy",
+        "ecr:ListImages",
+        "eks:DescribeCluster",
+        "eks:ListClusters",
+        "elasticloadbalancing:ConfigureHealthCheck",
+        "elasticloadbalancing:CreateLoadBalancer",
+        "elasticloadbalancing:DeleteLoadBalancer",
+        "elasticloadbalancing:DeregisterInstancesFromLoadBalancer",
+        "elasticloadbalancing:DescribeLoadBalancerAttributes",
+        "elasticloadbalancing:DescribeLoadBalancers",
+        "elasticloadbalancing:DescribeTargetHealth",
+        "elasticloadbalancing:DescribeTags",
+        "elasticloadbalancing:ModifyLoadBalancerAttributes",
+        "elasticloadbalancing:RegisterInstancesWithLoadBalancer",
+        "iam:AddRoleToInstanceProfile",
+        "iam:AddUserToGroup",
+        "iam:AttachGroupPolicy",
+        "iam:CreateGroup",
+        "iam:CreateInstanceProfile",
+        "iam:CreatePolicy",
+        "iam:CreatePolicyVersion",
+        "iam:CreateUser",
+        "iam:DeleteGroup",
+        "iam:DeleteInstanceProfile",
+        "iam:DeletePolicy",
+        "iam:DeletePolicyVersion",
+        "iam:DetachGroupPolicy",
+        "iam:GetGroup",
+        "iam:GetInstanceProfile",
+        "iam:GetPolicy",
+        "iam:GetUser",
+        "iam:ListPolicies",
+        "iam:ListPolicyVersions",
+        "iam:PassRole",
+        "iam:RemoveRoleFromInstanceProfile",
+        "iam:RemoveUserFromGroup",
+        "pricing:GetProducts",
+        "secretsmanager:CreateSecret",
+        "secretsmanager:DeleteSecret",
+        "secretsmanager:GetSecretValue",
+        "secretsmanager:TagResource",
         "ssm:UpdateInstanceInformation",
         "ssmmessages:CreateControlChannel",
         "ssmmessages:CreateDataChannel",
         "ssmmessages:OpenControlChannel",
         "ssmmessages:OpenDataChannel",
-        "pricing:GetProducts",
         "sts:AssumeRole",
-        "ec2:ReplaceRoute",
-        "ec2:ModifyNetworkInterfaceAttribute",
-        "ec2:AssociateAddress",
-        "tag:GetResources",
-        "ec2:ModifySubnetAttribute"
+        "sts:GetServiceBearerToken",
+        "tag:GetResources"
       ],
       "Resource": "*"
     },
@@ -668,92 +851,109 @@ VPCs.
 
 <TabItem label="Minimum Static Permissions" value="Minimum Static Permissions">
 
-This is a policy for those who want to restrict Palette to a single VPC and not give Palette access to create or delete
-VPCs.
-
-### Minimum Static Permissions
+The following policy allows Palette to operate within an existing VPC while retaining minimal permissions for deploying
+clusters through Palette.
 
 ```json
 {
   "Version": "2012-10-17",
   "Statement": [
     {
-      "Sid": "VisualEditor0",
+      "Sid": "PaletteStaticPermissions",
       "Effect": "Allow",
       "Action": [
-        "ec2:AuthorizeSecurityGroupIngress",
-        "ec2:DescribeInstances",
-        "iam:RemoveRoleFromInstanceProfile",
-        "pricing:GetProducts",
-        "sts:AssumeRole",
-        "ec2:DescribeRegions",
-        "ec2:DescribeKeyPairs",
-        "ec2:DescribeVpcs",
-        "ec2:DescribeVpcAttribute",
-        "ec2:DescribeSubnets",
-        "cloudformation:DescribeStacks",
+        "autoscaling:StartInstanceRefresh",
         "cloudformation:CreateStack",
+        "cloudformation:DescribeStacks",
         "cloudformation:UpdateStack",
-        "ec2:DescribeRouteTables",
+        "ec2:AllocateAddress",
+        "ec2:AssociateAddress",
+        "ec2:AttachVolume",
+        "ec2:AuthorizeSecurityGroupIngress",
+        "ec2:CreateSecurityGroup",
+        "ec2:CreateSnapshot",
+        "ec2:CreateTags",
+        "ec2:DeleteNetworkInterface",
+        "ec2:DeleteSecurityGroup",
+        "ec2:DeleteSnapshot",
+        "ec2:DeleteTags",
+        "ec2:DescribeAddresses",
+        "ec2:DescribeAvailabilityZones",
+        "ec2:DescribeImages",
+        "ec2:DescribeInstances",
+        "ec2:DescribeKeyPairs",
         "ec2:DescribeNatGateways",
+        "ec2:DescribeNetworkInterfaceAttribute",
+        "ec2:DescribeNetworkInterfaces",
+        "ec2:DescribeRegions",
+        "ec2:DescribeRouteTables",
         "ec2:DescribeSecurityGroups",
+        "ec2:DescribeSnapshots",
+        "ec2:DescribeSubnets",
+        "ec2:DescribeTags",
+        "ec2:DescribeVpcs",
+        "ec2:DescribeVolumes",
+        "ec2:DescribeVolumesModifications",
+        "ec2:DisassociateAddress",
+        "ec2:ModifyInstanceAttribute",
+        "ec2:ModifyNetworkInterfaceAttribute",
+        "ec2:ModifyVpcAttribute",
+        "ec2:ModifyVolume",
+        "ec2:RevokeSecurityGroupIngress",
+        "ec2:ReleaseAddress",
+        "ec2:RunInstances",
+        "ec2:TerminateInstances",
+        "ec2:DetachVolume",
+        "ec2:DetachInternetGateway",
+        "eks:DescribeCluster",
+        "eks:ListClusters",
+        "elasticloadbalancing:AddTags",
+        "elasticloadbalancing:ConfigureHealthCheck",
+        "elasticloadbalancing:CreateLoadBalancer",
+        "elasticloadbalancing:DeleteLoadBalancer",
+        "elasticloadbalancing:DeregisterInstancesFromLoadBalancer",
         "elasticloadbalancing:DescribeLoadBalancers",
         "elasticloadbalancing:DescribeLoadBalancerAttributes",
         "elasticloadbalancing:DescribeTags",
-        "secretsmanager:CreateSecret",
-        "secretsmanager:TagResource",
-        "secretsmanager:GetSecretValue",
-        "secretsmanager:DeleteSecret",
-        "iam:GetInstanceProfile",
-        "iam:AddRoleToInstanceProfile",
-        "iam:CreateInstanceProfile",
-        "iam:DeleteInstanceProfile",
-        "ec2:RunInstances",
-        "ec2:ModifyInstanceAttribute",
-        "ec2:TerminateInstances",
-        "autoscaling:StartInstanceRefresh",
-        "elasticloadbalancing:DeregisterInstancesFromLoadBalancer",
+        "elasticloadbalancing:DescribeTargetHealth",
+        "elasticloadbalancing:ModifyLoadBalancerAttributes",
         "elasticloadbalancing:RegisterInstancesWithLoadBalancer",
-        "elasticloadbalancing:AddTags",
+        "elasticloadbalancing:DetachLoadBalancerFromSubnets",
+        "iam:AddRoleToInstanceProfile",
+        "iam:AddUserToGroup",
+        "iam:AttachGroupPolicy",
+        "iam:CreateGroup",
+        "iam:CreateInstanceProfile",
+        "iam:CreatePolicy",
+        "iam:CreatePolicyVersion",
+        "iam:CreateUser",
+        "iam:DeleteGroup",
+        "iam:DeleteInstanceProfile",
+        "iam:DeletePolicy",
+        "iam:DeletePolicyVersion",
+        "iam:DetachGroupPolicy",
+        "iam:GetGroup",
+        "iam:GetInstanceProfile",
+        "iam:GetPolicy",
+        "iam:GetUser",
+        "iam:ListPolicies",
+        "iam:ListPolicyVersions",
+        "iam:RemoveRoleFromInstanceProfile",
+        "iam:RemoveUserFromGroup",
+        "pricing:GetProducts",
+        "s3:GetEncryptionConfiguration",
+        "secretsmanager:CreateSecret",
+        "secretsmanager:DeleteSecret",
+        "secretsmanager:GetSecretValue",
+        "secretsmanager:TagResource",
         "ssm:UpdateInstanceInformation",
-        "ec2:DescribeAvailabilityZones",
-        "ec2:DescribeTags",
-        "eks:DescribeCluster",
-        "eks:ListClusters",
-        "ec2:CreateSecurityGroup",
-        "ec2:DeleteSecurityGroup",
-        "ec2:DeleteTags",
-        "ec2:RevokeSecurityGroupIngress",
         "ssmmessages:CreateControlChannel",
         "ssmmessages:CreateDataChannel",
         "ssmmessages:OpenControlChannel",
         "ssmmessages:OpenDataChannel",
-        "elasticloadbalancing:ConfigureHealthCheck",
-        "elasticloadbalancing:DescribeTargetHealth",
-        "ec2:CreateTags",
-        "ec2:DescribeNetworkInterfaces",
-        "elasticloadbalancing:DeleteLoadBalancer",
-        "elasticloadbalancing:CreateLoadBalancer",
-        "elasticloadbalancing:ModifyLoadBalancerAttributes",
-        "ec2:DisassociateAddress",
-        "ec2:DescribeAddresses",
-        "ec2:DescribeVolumes",
-        "ec2:DescribeImages",
-        "ec2:ModifyVpcAttribute",
-        "s3:GetEncryptionConfiguration",
-        "ec2:ModifyVolume",
-        "ec2:AttachVolume",
-        "ec2:DescribeVolumesModifications",
-        "ec2:DetachVolume",
-        "elasticloadbalancing:DetachLoadBalancerFromSubnets",
-        "ec2:DetachInternetGateway",
-        "ec2:DeleteNetworkInterface",
-        "tag:GetResources",
-        "ec2:ReleaseAddress",
-        "ec2:ModifyNetworkInterfaceAttribute",
-        "ec2:DescribeNetworkInterfaceAttribute",
-        "ec2:AllocateAddress",
-        "ec2:AssociateAddress"
+        "sts:AssumeRole",
+        "sts:GetServiceBearerToken",
+        "tag:GetResources"
       ],
       "Resource": "*"
     },
@@ -770,17 +970,23 @@ VPCs.
 
 </Tabs>
 
-:::info
+:::warning
 
 The following are important points to be aware of.
 
-- Ensure that the role created contain all the policies defined above.
+- These permissions specified do not include all the permissions required for all possible use cases and for taking full
+  advantage of all Palette features. Additional permissions may be required based on the specific use case.
+
+- Ensure that the IAM Role or IAM User created contain all the core policies defined above, or one of the minimum
+  permissions policies.
 
 - These IAM policies cannot be used as an inline policy, as it exceeds the 2048 non-whitespace character limit by AWS.
+  Break policy into multiple inline policies or create new managed policies.
 
-- The following warning is expected and can be ignored: These policies define some actions, resources, or conditions
-  that do not provide permissions. To grant access, policies must have an action that has an applicable resource or
-  condition.
+- The following IAM warning is expected and can be ignored:
+
+> These policies define some actions, resources, or conditions that do not provide permissions. _To grant access,
+> policies must have an action that has an applicable resource or condition_.
 
 :::
 

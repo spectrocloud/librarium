@@ -86,8 +86,8 @@ and use private access for the Azure storage account.
 
 You can assign tags to clusters deployed to Azure. Tags can help you with user access control management and more
 granularly restrict access to various Palette resources, including clusters. Check out the
-[Resource Filters](../../cluster-management/cluster-tag-filter/create-add-filter.md) documentation page to learn more
-about using tags to restrict resource access.
+[Resource Filters](../../../tenant-settings/filters.md) documentation page to learn more about using tags to restrict
+resource access.
 
 The custom tags you create are assigned to the clusters during the creation process. Tags follow the key-value pair
 format: `department:finance`.

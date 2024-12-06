@@ -106,12 +106,11 @@ are only visible in the **Default** project. Therefore, you will need to create 
 Navigate to the left **Main Menu** and click on **Profiles**. Click on **Import Cluster Profile**. The **Import Cluster
 Profile** pane opens.
 
-Paste the following in the text editor. Click on **Validate**. The **Select repositories** dialog appears.
+Paste the following in the text editor. Click on **Validate**.
 
 <PartialsComponent category="getting-started" name="import-hello-uni-aws" />
 
-Click on **Confirm**. Then, click on **Confirm** on the **Import Cluster Profile** pane. Palette creates a new cluster
-profile named **aws-profile**.
+Click on **Confirm**. Palette creates a new cluster profile named **aws-profile**.
 
 On the **Profiles** list, select **Project** from the **Contexts** drop-down. Your newly created cluster profile
 displays. The Palette UI confirms that the cluster profile was created in the scope of the

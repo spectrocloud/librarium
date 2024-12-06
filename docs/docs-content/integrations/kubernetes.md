@@ -379,14 +379,25 @@ In this example, Palette is used as the IDP, and all users in the `dev-east-2` w
 
 ![A subject of the type group is assigned as the subject in a RoleBinding](/clusters_cluster-management_cluster-rbac_cluster-subject-group.webp)
 
-### Custom MAAS Endpoint
+### Custom API Server Endpoint for MAAS Clusters
 
-You can specify a custom MAAS endpoint and port that instructs Palette to direct all MAAS API requests to the provided
-endpoint URL. Use the `cloud.maas.customEndpoint` and `cloud.maas.customEndpointPort` parameters to specify the custom
-MAAS API URL and port. This is useful in scenarios where the MAAS API endpoint is not resolvable outside of the MAAS
-network.
+By default, Palette registers a DNS record in MAAS for the deployed cluster and links it to the IP addresses of the
+control plane nodes of the cluster. However, you may choose not to depend on MAAS for your cluster DNS record. The
+Kubernetes pack allows you to configure a custom API server endpoint for your cluster instead. This feature is only
+supported in Palette eXtended Kubernetes (PXK).
 
-The following example shows how to specify a custom MAAS endpoint and port in the Kubernetes YAML file. Make sure the
+:::warning
+
+The custom API server endpoint must exist before the cluster gets deployed. Otherwise, your cluster deployment will fail
+as components will not be able to connect to the cluster API endpoint.
+
+When you configure a custom endpoint, a DNS record will not be created in MAAS and the configured endpoint will be used
+instead. If you use this option, you are responsible for ensuring the Full Qualified Domain Name (FQDN) of the endpoint
+can be resolved by your DNS infrastructure and that it can connect to the API server port on your control plane nodes.
+
+:::
+
+The following snippet demonstrates how to specify a custom API server endpoint in the Kubernetes pack. Note that the
 `cloud.maas` section is at the same level as the `pack` section.
 
 ```yaml hideClipboard {10-14}
@@ -394,15 +405,28 @@ pack:
   k8sHardening: True
   podCIDR: "192.168.0.0/16"
   serviceClusterIpRange: "10.96.0.0/12"
-  palette:
-    config:
-      dashboard:
-        identityProvider: palette
 
 cloud:
   maas:
-    customEndpoint: "maas-api.example.maas.org"
-    customEndpointPort: "6443"
+    customEndpoint: "cluster-123.baremetal.company.com"
+    customEndpointPort: 6443
+```
+
+In order to prevent the need for per-cluster profile adjustments which can become difficult to maintain at scale, we
+recommend to use a system macro to automatically populate the cluster name. This approach allows the cluster profile to
+dynamically populate the endpoint name without requiring the user to do it manually. The following snippet demonstrates
+how to use macros for endpoint specification.
+
+```yaml hideClipboard {10-14}
+pack:
+  k8sHardening: True
+  podCIDR: "192.168.0.0/16"
+  serviceClusterIpRange: "10.96.0.0/12"
+
+cloud:
+  maas:
+    customEndpoint: "{{ .spectro.system.cluster.name }}.baremetal.company.com"
+    customEndpointPort: 6443
 ```
 
 </TabItem>
@@ -711,6 +735,56 @@ pack with all the correct OIDC settings, you could then create a role binding fo
 In this example, Palette is used as the IDP, and all users in the `dev-east-2` would inherit the `cluster-admin` role.
 
 ![A subject of the type group is assigned as the subject in a RoleBinding](/clusters_cluster-management_cluster-rbac_cluster-subject-group.webp)
+
+### Custom API Server Endpoint for MAAS Clusters
+
+By default, Palette registers a DNS record in MAAS for the deployed cluster and links it to the IP addresses of the
+control plane nodes of the cluster. However, you may choose not to depend on MAAS for your cluster DNS record. The
+Kubernetes pack allows you configure a custom API server endpoint for your cluster instead. This feature is only
+supported in Palette eXtended Kubernetes (PXK).
+
+:::warning
+
+The custom API server endpoint must exist before the cluster gets deployed. Otherwise, your cluster deployment will fail
+as components will not be able to connect to the cluster API endpoint.
+
+When you configure a custom endpoint, a DNS record will not be created in MAAS and the configured endpoint will be used
+instead. If you use this option, you are responsible for ensuring the Full Qualified Domain Name (FQDN) of the endpoint
+can be resolved by your DNS infrastructure and that it can connect to the API server port on your control plane nodes.
+
+:::
+
+The following snippet demonstrates how to specify a custom API server endpoint in the Kubernetes pack. Note that the
+`cloud.maas` section is at the same level as the `pack` section.
+
+```yaml hideClipboard {10-14}
+pack:
+  k8sHardening: True
+  podCIDR: "192.168.0.0/16"
+  serviceClusterIpRange: "10.96.0.0/12"
+
+cloud:
+  maas:
+    customEndpoint: "cluster-123.baremetal.company.com"
+    customEndpointPort: 6443
+```
+
+In order to prevent the need for per-cluster profile adjustments which can become difficult to maintain at scale, we
+recommend to use a system macro to automatically populate the cluster name. This approach allows the cluster profile to
+dynamically populate the endpoint name without requiring the user to do it manually. The following snippet demonstrates
+how to use macros for endpoint specification.
+
+```yaml hideClipboard {10-14}
+pack:
+  k8sHardening: True
+  podCIDR: "192.168.0.0/16"
+  serviceClusterIpRange: "10.96.0.0/12"
+
+cloud:
+  maas:
+    customEndpoint: "{{ .spectro.system.cluster.name }}.baremetal.company.com"
+    customEndpointPort: 6443
+```
 
 </TabItem>
 
