@@ -153,15 +153,11 @@ async function generateCVEs() {
         ],
       });
 
-      pLenght = palette.data.length;
-      pALenght = paletteAirgap.data.length;
-      vLenght = vertex.data.length;
-      vALenght = vertexAirgap.data.length;
-
-      logger.info(`Palette CVEs:", ${pLenght}`);
-      console.log("Palette Airgap CVEs:", pALenght);
-      console.log("Vertex CVEs:", vLenght);
-      console.log("Vertex Airgap CVEs:", vALenght);
+      // Debug logs
+      // logger.info(`Palette CVEs:", ${palette.data.length}`);
+      // logger.info(`Palette Airgap CVEs:", ${paletteAirgap.data.length}`);
+      // logger.info(`Vertex CVEs:", ${vertex.data.length}`);
+      // logger.info(`Vertex Airgap CVEs:", ${vertexAirgap.data.length}`);
 
       securityBulletins.set("palette", palette);
       securityBulletins.set("paletteAirgap", paletteAirgap);
