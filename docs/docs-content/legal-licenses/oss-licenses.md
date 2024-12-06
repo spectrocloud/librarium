@@ -1,14 +1,14 @@
 ---
-sidebar_label: "Open-source Licenses"
-title: "Open-source Licenses"
-description: "Review the open-source licenses tied to the libraries and modules currently in use by Palette."
+sidebar_label: "Open source Licenses"
+title: "Open source Licenses"
+description: "Review the open source licenses tied to the libraries and modules currently in use by Palette."
 sidebar_position: 30
 tags: ["legal", "licenses"]
 ---
 
 <!-- vale off -->
 
-The following table lists the open-source licenses tied to the libraries and modules currently in use by Palette. If you
+The following table lists the open source licenses tied to the libraries and modules currently in use by Palette. If you
 have any questions or concerns, contact us at support@spectrocloud.com
 
 | **Library**                                      | **Version**                              | **License**                                                 |
