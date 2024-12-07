@@ -23,7 +23,7 @@ through how to create a cluster using Local UI.
 
 - Network access to the Edge device’s IP and port where Local UI is exposed. The default port is 5080.
 
-- Credentials to log into Local UI. Any OS user can be used to log in to Local UI.
+- Credentials to log in to Local UI. Any OS user can be used to log in to Local UI.
 
 - You have uploaded the necessary software artifacts to the Edge host or included the artifacts in the Edge Installer
   ISO during EdgeForge. For more information, refer to [Upload Content Bundle](./upload-content-bundle.md) and
@@ -38,9 +38,14 @@ through how to create a cluster using Local UI.
   - Enable network overlay on your Edge cluster. Network overlay can only be enabled during cluster creation. For more
     information about network overlay, refer to [Enable Overlay Network](../../networking/vxlan-overlay.md).
 
+- If you configure a local [Agent Mode](../../../../deployment-modes/agent-mode/agent-mode.md) cluster to use Network
+  Time Protocol (NTP) servers, you must have
+  [`systemd-timesyncd`](https://www.freedesktop.org/software/systemd/man/latest/systemd-timesyncd.service.html)
+  installed and enabled on your host.
+
 ## Create Local Cluster
 
-1. Log into Local UI by visiting the 5080 port of your Edge device's IP address or domain name. For more information,
+1. Log in to Local UI by visiting the 5080 port of your Edge device's IP address or domain name. For more information,
    refer to [Access Local UI](../host-management/access-console.md).
 
 2. From the left **Main Menu**, click **Cluster**.
@@ -72,13 +77,13 @@ through how to create a cluster using Local UI.
    Enter the values for the profile variables and click **Next**.
 
 7. In the **Cluster Config** step, enter a virtual IP address to be used by your cluster. Optionally, you can also
-   specify a Network Time Protocol server and an SSH public key.
+   specify an NTP server and an SSH public key.
 
-   | Parameter                   | Description                                                                                   |
-   | --------------------------- | --------------------------------------------------------------------------------------------- |
-   | Network Time Protocol (NTP) | Specify the IP address for any Network Time Protocol (NTP) servers the cluster can reference. |
-   | SSH keys                    | Provide the public key of an SSH key pair that you will use to connect to the Edge host.      |
-   | Virtual IP address          | Provide the virtual IP address to be used by the cluster.                                     |
+   | Parameter                   | Description                                                                              |
+   | --------------------------- | ---------------------------------------------------------------------------------------- |
+   | Virtual IP Address (VIP)    | Provide the virtual IP address to be used by the cluster.                                |
+   | Network Time Protocol (NTP) | Specify the IP address for any NTP servers the cluster can reference.                    |
+   | SSH Keys                    | Provide the public key of an SSH key pair that you will use to connect to the Edge host. |
 
    Optionally, you can also enable network overlay, especially if your cluster will operate in an DHCP environment. For
    more information, refer to [Enable Overlay Network](../../networking/vxlan-overlay.md). If you enable the overlay
