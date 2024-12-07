@@ -56,7 +56,6 @@
     "docusaurus-plugin-sass": "^0.2.5",
     "docusaurus-theme-openapi-docs": "0.0.0-949",
     "fuse.js": "^6.6.2",
-    "markdown-to-jsx": "^7.0.0",
     "node-fetch": "^3.1.0",
     "p-ratelimit": "^1.0.1",
     "prism-react-renderer": "^2.1.0",
@@ -65,7 +64,7 @@
     "react-markdown": "9.0.1",
     "react-select": "^5.8.0",
     "remark-gfm": "4.0.0",
-    "sass": "^1.80.6",
+    "sass": "^1.82.0",
     "semver": "^7.3.7"
   },
   "devDependencies": {
@@ -99,7 +98,7 @@
     "jest-config-docusaurus": "^0.1.1",
     "jest-environment-jsdom": "^29.6.2",
     "jest-fetch-mock": "^3.0.3",
-    "linkinator": "^6.1.1",
+    "linkinator": "^6.1.2",
     "lint-staged": "^15.2.10",
     "netlify-cli": "^17.37.1",
     "prettier": "3.3.2",
