@@ -71,13 +71,13 @@ This is the recommended best practice for updating a cluster in Palette.
 
 7. Click **Review & Save**. Palette prompts you to preview the change summary.
 
-8. Click **Review changes in Editor**. Palette displays the changes, with the current configuration on the left and the
-   incoming configuration on the right. Review the changes and click **Apply Changes**.
+8. Click **Review changes in Editor**. Palette displays the changes, with the **Current Configuration** on the left and
+   the **Pending Configuration** on the right. Review the changes and click **Apply Changes**.
 
    :::info
 
-   Make sure to preserve any existing cluster profile overrides by using the editor on the right. Otherwise, the
-   incoming configuration will be applied as indicated.
+   Make sure to preserve any existing cluster profile overrides by using the editor on the right. Otherwise, the pending
+   configuration will be applied as indicated.
 
    :::
 

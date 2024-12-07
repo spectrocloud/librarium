@@ -38,9 +38,11 @@ or Palette VerteX, review the [Install VMO in Airgap Environments](./install-vmo
 [Create a VMO Profile](./create-vmo-profile.md) guide to prepare everything you need to deploy your first VMO cluster.
 
 Once your VMO cluster is up and healthy, refer to the [Create and Manage VMs](./create-manage-vm/create-manage-vm.md)
-section for information on deploying VMs from existing Palette templates and performing standard VM operations.
-Alternatively, review the [Advanced Topics](./create-manage-vm/advanced-topics/advanced-topics.md) section to understand
-how you can create VM and disk templates, manage the VM resources, and perform other advanced operations.
+section for information on deploying VMs from existing Palette templates and performing standard VM operations. You can
+also learn how to migrate VMs from VMware vSphere to a VMO cluster using the
+[Virtual Machine Migration Assistant](./vm-migration-assistant/vm-migration-assistant.md). Alternatively, review the
+[Advanced Topics](./create-manage-vm/advanced-topics/advanced-topics.md) section to understand how you can create VM and
+disk templates, manage the VM resources, and perform other advanced operations.
 
 Finally, refer to the [Role-based Access Control (RBAC)](./rbac/rbac.md) section for information on configuring roles
 and permissions for your VMs.
@@ -57,8 +59,8 @@ and permissions for your VMs.
 
 - [Advanced Topics](./create-manage-vm/advanced-topics/advanced-topics.md)
 
-- [Migrate a VM to a VMO cluster](./create-manage-vm/advanced-topics/migrate-vm-kubevirt.md)
-
 - [Import and Deploy OVAs to Palette VMO](./create-manage-vm/advanced-topics/deploy-import-ova.md)
 
 - [RBAC](./rbac/rbac.md)
+
+- [Virtual Machine Migration Assistant](./vm-migration-assistant/vm-migration-assistant.md)

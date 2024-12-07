@@ -136,9 +136,31 @@ Use the following instructions to build the Edge Installer ISO. The optional ste
    through Local UI. This includes both the content bundle and cluster definition. For more information, refer to
    [Embed Public Key in Edge Artifacts](./signed-content.md).
 
+### Provide Client Certificates for Proxy Servers
+
+8. (Optional) This step is only required if your builds occur in a proxied network environment, and your proxy servers
+   require client certificates, or if your base image is in a registry that requires client certificates.
+
+   You can provide the base-64 encoded certificates in PEM format in the **certs** folder at the root directory of the
+   **CanvOS** repository. You can provide as many certificates as you need in the folder.
+
+   If you are using a CanvOS tag that is earlier than `4.5.b`, you need to use the `PROXY_CERT_PATH` build argument in
+   the **.arg** file to provide a path to the certificate. This approach only allows you to specify one certificate. For
+   more information, refer to [Earthly Build Arguments](../../edgeforge-workflow/palette-canvos/arg.md).
+
+   :::warning
+
+   These proxy settings are only configured for the build process itself, when your builder machine needs to pull
+   certain images to build the Edge artifacts. These certificates will not be present on the host after it has been
+   deployed. To configure the proxy network settings for a host, refer to
+   [Configure HTTP Proxy](../../local-ui/host-management/configure-proxy.md) or
+   [Configure Proxy in User Data](../prepare-user-data.md#configure-proxy-settings-optional).
+
+   :::
+
 ### Prepare User Data
 
-8. Refer to [Prepare User Data](./../prepare-user-data.md) to prepare the **user-data** file in the root directory of
+9. Refer to [Prepare User Data](./../prepare-user-data.md) to prepare the **user-data** file in the root directory of
    the **CanvOS** directory.
 
    User data contains installer configuration and is required for an installer ISO. If you do not supply user data
@@ -156,26 +178,26 @@ If you do not include content bundle in your Edge Installer ISO, you can still b
 a disconnected Edge host instance via [Local UI](../../local-ui/local-ui.md). For more information, refer to
 [Upload Content Bundle](../../local-ui/cluster-management/upload-content-bundle.md).
 
-9. Refer to [Build Content Bundle](build-content-bundle.md) to learn how to build content bundles for your ISO image.
-   Since you are including the content bundle in the Installer ISO, you should choose either the zst format or the tar
-   format for the content bundle. Do not build the content bundle as an ISO image.
+10. Refer to [Build Content Bundle](build-content-bundle.md) to learn how to build content bundles for your ISO image.
+    Since you are including the content bundle in the Installer ISO, you should choose either the ZST format or the tar
+    format for the content bundle. Do not build the content bundle as an ISO image.
 
-   :::info
+    :::info
 
-   If you are embedding a public key in your ISO, you do not need to sign the content bundle with the corresponding
-   private key when building the content bundle.
+    If you are embedding a public key in your ISO, you do not need to sign the content bundle with the corresponding
+    private key when building the content bundle.
 
-   This is because the public key and the content bundle are provided by the same entity during build time, and
-   therefore verification is not needed. However, after the build is completed and an Edge host has already been
-   installed, content bundles that are uploaded through Local UI must have the correct signature in order to be accepted
-   by the Edge host.
+    This is because the public key and the content bundle are provided by the same entity during build time, and
+    therefore verification is not needed. However, after the build is completed and an Edge host has already been
+    installed, content bundles that are uploaded through Local UI must have the correct signature in order to be
+    accepted by the Edge host.
 
-   :::
+    :::
 
-10. When the content bundle build finishes, the output will be in a directory named **content-XXXXXX**, where XXXXXX is
+11. When the content bundle build finishes, the output will be in a directory named **content-XXXXXX**, where XXXXXX is
     a random alphanumerical string. Inside the directory is the content bundle file.
 
-11. Place the directory containing the content bundle file in the root directory of the **CanvOS** directory.
+12. Place the directory containing the content bundle file in the root directory of the **CanvOS** directory.
 
 ### Prepare Cluster Definition (Tech Preview)
 
@@ -186,12 +208,12 @@ API endpoint.
 If you do not include cluster definitions in your Edge Installer ISO, you can still import the cluster definition from
 Local UI once you finish installing Palette on the Edge host.
 
-12. Refer to [Export Cluster Definition](../../local-ui/cluster-management/export-cluster-definition.md) to learn how to
+13. Refer to [Export Cluster Definition](../../local-ui/cluster-management/export-cluster-definition.md) to learn how to
     export cluster definitions.
 
-13. Put the cluster definition tgz file in the **CanvOS/** directory.
+14. Put the cluster definition tgz file in the **CanvOS/** directory.
 
-14. In the **.arg** file, add an argument `CLUSTERCONFIG` and set it to the name of the cluster configuration file. For
+15. In the **.arg** file, add an argument `CLUSTERCONFIG` and set it to the name of the cluster configuration file. For
     example:
 
     ```
@@ -200,14 +222,14 @@ Local UI once you finish installing Palette on the Edge host.
 
 ### Build Edge Installer ISO
 
-15. Ensure that all components of the ISO you want to include are in the **CanvOS/** directory:
+16. Ensure that all components of the ISO you want to include are in the **CanvOS/** directory:
 
     - **.args** file: **CanvOS/.args**
     - User data: **CanvOS/user-data**
     - Content bundle: **CanvOS/content-XXXXX/core-spectro-content**
     - Cluster definition: **CanvOS/cluster-name-XXXX.tgz**
 
-16. Issue the following command to build the ISO image.
+17. Issue the following command to build the ISO image.
 
     <Tabs group="earthly">
 
