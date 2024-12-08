@@ -77,6 +77,31 @@ type CveDataUnion =
       vertexAirgap: MinimizedCve[];
     };
 
+// generateCVEOfficialDetailsUrl returns a URL that is used to link to the official CVE report.
+// The URL is generated based on the cveId.
+// The function checks if the cveId starts with "ghsa" and returns a GitHub Security Advisory URL. Other formal sites can be added in the future.
+// The default URL is the NVD official CVE report.
+function generateCVEOfficialDetailsUrl(cveId: string) {
+  let url;
+
+  // If cveId is empty, return the default reports page URL
+  if (!cveId) {
+    return "/security-bulletins/reports/";
+  }
+
+  switch (true) {
+    // GitHub Security Advisory
+    case cveId.toLocaleLowerCase().startsWith("ghsa"):
+      url = `https://github.com/advisories/${cveId.toLocaleLowerCase()}`;
+      break;
+    // Default CVE URL
+    default:
+      url = `https://nvd.nist.gov/vuln/detail/${cveId.toLocaleLowerCase()}`;
+  }
+
+  return url;
+}
+
 export default function CveReportsTable() {
   const [data, setData] = useState<CveDataUnion | null>(null);
   const [loading, setLoading] = useState(true);
@@ -146,11 +171,13 @@ export default function CveReportsTable() {
         dataIndex: ["metadata", "cve"],
         key: "cve",
         sorter: (a, b) => a.metadata.cve.localeCompare(b.metadata.cve),
-        render: (cve: string, record) => (
-          <Link to={`/security-bulletins/reports/${record.metadata.uid.toLowerCase()}`} style={{ color: "#1890ff" }}>
-            {cve}
-          </Link>
-        ),
+        render: (cve: string, record) => {
+          return (
+            <Link to={record.metadata.uid} style={{ color: "#1890ff" }}>
+              {cve}
+            </Link>
+          );
+        },
       },
       {
         title: "Initial Pub Date",
@@ -199,9 +226,10 @@ export default function CveReportsTable() {
         dataIndex: ["metadata", "cvssScore"],
         key: "baseScore",
         sorter: (a, b) => a.metadata.cvssScore - b.metadata.cvssScore,
-        render: (baseScore: number, record) => (
-          <Link to={`https://nvd.nist.gov/vuln/detail/${record.metadata.cve}`}>{baseScore}</Link>
-        ),
+        render: (baseScore: number, record) => {
+          const url = generateCVEOfficialDetailsUrl(record.metadata.cve.toLocaleLowerCase());
+          return <Link to={url}>{baseScore}</Link>;
+        },
       },
       {
         title: "Status",
