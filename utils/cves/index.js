@@ -7,6 +7,7 @@ const { formatDateCveDetails } = require("../helpers/date");
 const { escapeMDXSpecialChars } = require("../helpers/string");
 const { generateMarkdownTable } = require("../helpers/affected-table");
 const { generateRevisionHistory } = require("../helpers/revision-history");
+const { generateCVEOfficialDetailsUrl } = require("../helpers/urls");
 
 async function getSecurityBulletins(payload) {
   const limit = 100;
@@ -269,7 +270,7 @@ tags: ["security", "cve"]
 
 ## CVE Details
 
-[${upperCaseCve}](https://nvd.nist.gov/vuln/detail/${upperCaseCve})
+Visit the official vulnerability details page for [${upperCaseCve}](${generateCVEOfficialDetailsUrl(item.metadata.cve)}) to learn more.
 
 ## Initial Publication
 
@@ -288,7 +289,7 @@ ${escapeMDXSpecialChars(item.metadata.summary)}
 
 ## CVE Severity
 
-${item.metadata.cvssScore}
+[${item.metadata.cvssScore}](${generateCVEOfficialDetailsUrl(item.metadata.cve)})
 
 ## Our Official Summary
 
