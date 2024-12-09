@@ -21,4 +21,5 @@ To learn more about Palette and Amazon EKS Hybrid Nodes, check out the following
 - [Architecture](./architecture.md)
 - [Import EKS Cluster and Enable Hybrid Mode](./import-eks-cluster-enable-hybrid-mode.md)
 - [Configure CNI for Hybrid Nodes](./configure-cni-hybrid-nodes.md)
+- [Add Hybrid Node Pools](./add-hybrid-node-pools.md)
 - [Bringing Amazon EKS Hybrid Nodes to life with Palette](https://www.spectrocloud.com/blog/eks-hybrid-nodes)

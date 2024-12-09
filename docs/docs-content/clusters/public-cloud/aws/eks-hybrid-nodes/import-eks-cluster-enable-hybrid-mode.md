@@ -4,7 +4,7 @@ title: "Import EKS Cluster and Enable Hybrid Mode"
 description: "Learn how to import Amazon EKS clusters and enable hybrid mode with Palette."
 hide_table_of_contents: false
 tags: ["public cloud", "aws", "eks hybrid nodes"]
-sidebar_position: 20
+sidebar_position: 10
 ---
 
 This section guides you on how to import an existing Amazon EKS cluster and enable hybrid mode.
