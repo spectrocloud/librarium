@@ -173,7 +173,7 @@ export default function CveReportsTable() {
         sorter: (a, b) => a.metadata.cve.localeCompare(b.metadata.cve),
         render: (cve: string, record) => {
           return (
-            <Link to={record.metadata.uid} style={{ color: "#1890ff" }}>
+            <Link to={`/security-bulletins/reports/${record.metadata.uid.toLowerCase()}`} style={{ color: "#1890ff" }}>
               {cve}
             </Link>
           );
