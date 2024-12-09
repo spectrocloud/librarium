@@ -3,7 +3,7 @@ sidebar_label: "Upgrade Palette Agent on Airgap Clusters"
 title: "Upgrade Palette Agent on Airgap Clusters"
 description: "Learn how to upgrade the Palette agent on airgap clusters. "
 hide_table_of_contents: false
-sidebar_position: 80
+sidebar_position: 30
 tags: ["edge", "architecture"]
 ---
 

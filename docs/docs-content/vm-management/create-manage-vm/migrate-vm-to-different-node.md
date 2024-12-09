@@ -1,5 +1,5 @@
 ---
-sidebar_label: "Migrate a VM"
+sidebar_label: "Migrate a VM to a Different Node"
 title: "Migrate a VM to a Different Node"
 description: "Learn how to migrate a VM to another physical host in the cluster using Palette."
 hide_table_of_contents: false

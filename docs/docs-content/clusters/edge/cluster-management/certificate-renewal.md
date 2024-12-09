@@ -3,7 +3,7 @@ sidebar_label: "Renew Certificates for Airgap Clusters"
 title: "Renew Certificates for Airgap Clusters"
 description: "Learn how to renew certificates for different Kubernetes components in your cluster."
 hide_table_of_contents: false
-sidebar_position: 80
+sidebar_position: 20
 tags: ["edge", "architecture"]
 ---
 

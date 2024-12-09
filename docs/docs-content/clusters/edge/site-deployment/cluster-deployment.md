@@ -33,6 +33,12 @@ Use the following steps to create a new host cluster so that you can add Edge ho
 - In a multi-node cluster with PXK-E as its Kubernetes layer, you cannot change custom Network Interface Card (NIC).
   When you add an Edge host to such a cluster, leave the NIC field as its default value.
 
+<!-- prettier-ignore -->
+- For multi-node clusters, do not use the
+  <VersionedLink text="Local Path Provisioner Pack" url="/integrations/packs/?pack=csi-local-path-provisioner" />. This
+  is because whenever a node is drained during an upgrade or for any other reason, the volumes will not dynamically move
+  with the local path provisioner.
+
 ### Prerequisites
 
 - One or more registered Edge host. For more information about Edge host registration, refer to

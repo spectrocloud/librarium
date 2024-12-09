@@ -76,7 +76,7 @@ Where:
 - Values for **N** and **M** for each instance type can be referred from
   [this document](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html#AvailableIpPerENI).
 
-## Example Calculation:
+### Example Calculation
 
 - For instance type = t3.medium
 - For values of N = 3, and M = 6 (values derived from AWS
@@ -126,3 +126,46 @@ balancer service. Add the following tags Virtual Private Network (VPC) public su
 - `sigs.k8s.io/cluster-api-provider-aws/role = public`
 - `kubernetes.io/cluster/[yourClusterName] = shared`
 - `sigs.k8s.io/cluster-api-provider-aws/cluster/[yourClusterName] = owned`
+
+## Custom Security Group Ingress Rules
+
+Palette provisions a Virtual Private Network (VPC) for the control plane and worker nodes of AWS IaaS clusters. It then
+also creates multiple security groups, which help manage and secure the resources within the VPC. By default, the API
+Load Balancer security group allows all inbound traffic, specified using an ingress rule with the CIDR range `0.0.0.0/0`
+and port `6443`.
+
+:::warning
+
+Security groups with CIDR range `0.0.0.0/0` will be automatically removed in AWS environments configured with
+[auto remediation](https://docs.aws.amazon.com/config/latest/developerguide/setup-autoremediation.html). The cluster
+will then become inaccessible.
+
+We recommend that you configure custom security group ingress rules to all the cluster profiles that you will be deploy
+to AWS IaaS on secure environments.
+
+:::
+
+You can change the load balancer security group ingress rule by specifying a custom CIDR range in the Kubernetes pack
+**Values** of your cluster profile. This custom ingress rule allows node to node communication within the specified CIDR
+range.
+
+```yaml
+cloud:
+  aws:
+    nodePortCIDRBlocks:
+      - 10.0.0.0/16
+```
+
+Similarly, the bastion node also receives a security group ingress rule of `0.0.0.0/0`. You can specify a custom ingress
+rule for your bastion node to only allow traffic from hosts in the specified IP range.
+
+```yaml
+cloud:
+  aws:
+    bastion:
+      allowedCIDRBlocks:
+        - 10.0.0.0/16
+```
+
+You can change your specified ingress rules by editing your cluster profile at any point, before or after cluster
+deployment.
