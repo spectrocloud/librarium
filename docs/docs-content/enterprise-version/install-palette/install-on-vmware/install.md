@@ -157,14 +157,14 @@ Use the following steps to install Palette.
     | **Pod CIDR**                      | Enter the CIDR pool IP that will be used to assign IP addresses to pods in the EC cluster. The pod IP addresses should be unique and not overlap with any machine IPs in the environment.                                                                                                                     |
     | **Service IP Range**              | Enter the IP address range that will be used to assign IP addresses to services in the EC cluster. The service IP addresses should be unique and not overlap with any machine IPs in the environment.                                                                                                         |
 
-11. Choose the image registry configuration. By default, our support team will provide you with credentials for the AWS
-    ECR registry containing packs. Use the following table for guidance.
+11. Choose the image registry configuration. By default, our support team will provide you with the credentials for the AWS
+    ECR registry that contains the packs. Use the following table for guidance.
 
     #### Pack & Image Registry Configuration
 
     | **Parameter**                                    | **Description**                                                                                                                                 |
     | ------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Registry Type**                                | Specify the type of registry. Allowed values are `OCI` or `OCI` Select `OCI ECR` if you received credentials for the ECR registry from support. |
+    | **Registry Type**                                | Specify the type of registry. Allowed values are `OCI` or `OCI ECR`. Select `OCI ECR` if you received credentials for the ECR registry from support. |
     | **Registry Name**                                | Enter the name of the registry.                                                                                                                 |
     | **Registry Endpoint**                            | Enter the registry endpoint.                                                                                                                    |
     | **Registry Base Path**                           | Enter the registry base path. Use the value `production` if you are using the Palette AWS ECR registry.                                         |
@@ -173,7 +173,7 @@ Use the following steps to install Palette.
     | **Registry Username** or **Registry Access Key** | Enter the registry username or the access key if using `OCI ECR`.                                                                               |
     | **Registry Password** or **Registry Secret Key** | Enter the registry password or the secret key if using `OCI ECR`.                                                                               |
     | **Registry Region**                              | Enter the registry region. Use `us-east-1` unless told otherwise by our support team. This option is only available if you are using `OCI ECR`. |
-    | **ECR Registry Private**                         | Type `y` as the `OCI ECR` registry required credentials.                                                                                        |
+    | **ECR Registry Private**                         | Type `y` as the `OCI ECR` registry requires credentials.                                                                                        |
     | **Pull images from public registries**           | Type `y` to use a public registry for images.                                                                                                   |
 
         	When prompted to **Pull images from public registry**, type `y`.

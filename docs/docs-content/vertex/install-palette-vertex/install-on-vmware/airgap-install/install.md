@@ -199,7 +199,7 @@ Use the following steps to install Palette VerteX.
     | **Registry Name**                                | Enter the name of the registry.                                                                                                                  |
     | **Registry Endpoint**                            | Enter the registry endpoint. Airgap users, provide the **Spectro Cloud Repository** URL or hostname shared by the airgap setup script.           |
     | **Registry Base Path**                           | Enter the registry base path.                                                                                                                    |
-    | **Allow Insecure Connection**                    | Bypasses x509 verification. Type `n` to specify a certificate authority in the follow-up prompt. Airgap user, ensure you select `n`.             |
+    | **Allow Insecure Connection**                    | Bypasses x509 verification. Type `n` to specify a certificate authority in the following prompt. Airgap user, ensure you select `n`.             |
     | **Registry CA certificate filepath**             | Specify the file path to the certificate authority. Use absolute paths. Airgap users, provide the filepath displayed by the airgap setup script. |
     | **Registry Username** or **Registry Access Key** | Enter the registry username or the access key if using `OCI ECR`.                                                                                |
     | **Registry Password** or **Registry Secret Key** | Enter the registry password or the secret key if using `OCI ECR`.                                                                                |
