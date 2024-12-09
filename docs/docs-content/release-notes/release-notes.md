@@ -69,11 +69,12 @@ tags: ["release-notes"]
 
 #### Features
 
-- <TpBadge /> Palette now supports the ability to link Edge hosts for the purpose of creating a multi-node cluster
-  through Local UI. Previously, Local UI only supported single-node clusters. Host linking provides Edge hosts with the
-  necessary network and security infrastructure to form a cluster. This feature allows you to create multi-node clusters
-  using Local UI, providing you with more flexibility when deploying Edge clusters. Check out the [Link
-  Hosts](../clusters/edge/local-ui/cluster-management/cluster-management.md) guide to learn more about this feature.
+- <TpBadge /> Palette now supports the ability to link Edge hosts deployed in disconnected environments for the purpose
+  of creating a multi-node cluster through Local UI. Previously, Local UI only supported single-node clusters. Host
+  linking provides Edge hosts with the necessary network and security infrastructure to form a cluster. This feature
+  allows you to create multi-node clusters using Local UI, providing you with more flexibility when deploying Edge
+  clusters. Check out the [Link Hosts](../clusters/edge/local-ui/cluster-management/cluster-management.md) guide to
+  learn more about this feature.
 
 #### Improvements
 
@@ -82,6 +83,12 @@ tags: ["release-notes"]
   directory. The **certs** folder is automatically included in the CanvOS build process. Refer to the
   [Build Provider Images](../clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images.md) for guidance on
   using the **certs** folder to pass multiple proxy certificates to the CanvOS build process.
+
+<!-- prettier-ignore -->
+- The Edge <VersionedLink text="BYOS" url="/integrations/packs/?pack=edge-native-byoi" />
+  pack has new parameters that allow you to configure node draining behavior during cluster upgrades or repaves.
+  Previously, nodes were always drained during upgrades and repaves, even for single-node clusters. Refer to
+  [Skip Node Draining](../clusters/edge/cluster-management/skip-draining.md) for guidance on configuring draining behavior.
 
 #### Deprecations and Removals
 
