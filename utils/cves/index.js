@@ -7,6 +7,7 @@ const { formatDateCveDetails } = require("../helpers/date");
 const { escapeMDXSpecialChars } = require("../helpers/string");
 const { generateMarkdownTable } = require("../helpers/affected-table");
 const { generateRevisionHistory } = require("../helpers/revision-history");
+const { generateCVEOfficialDetailsUrl } = require("../helpers/urls");
 
 async function getSecurityBulletins(payload) {
   const limit = 100;
@@ -38,6 +39,21 @@ async function getSecurityBulletins(payload) {
   } catch (error) {
     logger.error("Error:", error.response ? `${error.response.status} - ${error.response.data}` : error.message);
   }
+}
+
+// This function filters the items by UID and returns only the items that start with the keyword, such as "PA-", "VA-", etc.
+function filterByUID(items, keyword) {
+  if (!Array.isArray(items)) {
+    throw new Error("Input must be an array of objects");
+  }
+
+  return items.filter((item) => {
+    if (!item.metadata || typeof item.metadata.uid !== "string") {
+      console.warn("Skipping item due to missing or invalid metadata.uid:", item);
+      return false;
+    }
+    return item.metadata.uid.startsWith(keyword);
+  });
 }
 
 async function generateCVEs() {
@@ -153,19 +169,25 @@ async function generateCVEs() {
         ],
       });
 
-      // Debug logs
-      // logger.info(`Palette CVEs:", ${palette.data.length}`);
-      // logger.info(`Palette Airgap CVEs:", ${paletteAirgap.data.length}`);
-      // logger.info(`Vertex CVEs:", ${vertex.data.length}`);
-      // logger.info(`Vertex Airgap CVEs:", ${vertexAirgap.data.length}`);
+      // There is no way to filter by product in the API, so we need to filter the results manually to get a list of CVEs for each product
+      const filterdPalette = filterByUID(palette.data, "PC-");
+      const filterdPaletteAirgap = filterByUID(paletteAirgap.data, "PA-");
+      const filterdVertex = filterByUID(vertex.data, "VC-");
+      const filterdVertexAirgap = filterByUID(vertexAirgap.data, "VA-");
 
-      securityBulletins.set("palette", palette);
-      securityBulletins.set("paletteAirgap", paletteAirgap);
-      securityBulletins.set("vertex", vertex);
-      securityBulletins.set("vertexAirgap", vertexAirgap);
+      // Debug logs
+      // logger.info(`Palette CVEs:", ${filterdPalette.length}`);
+      // logger.info(`Palette Airgap CVEs:", ${filterdPaletteAirgap.length}`);
+      // logger.info(`Vertex CVEs:", ${filterdVertex.length}`);
+      // logger.info(`Vertex Airgap CVEs:", ${filterdVertexAirgap.length}`);
+
+      securityBulletins.set("palette", filterdPalette);
+      securityBulletins.set("paletteAirgap", filterdPaletteAirgap);
+      securityBulletins.set("vertex", filterdVertex);
+      securityBulletins.set("vertexAirgap", filterdVertexAirgap);
 
       const plainObject = Object.fromEntries(
-        Array.from(securityBulletins.entries()).map(([key, value]) => [key, value.data])
+        Array.from(securityBulletins.entries()).map(([key, value]) => [key, value])
       );
       GlobalCVEData = plainObject;
 
@@ -269,7 +291,7 @@ tags: ["security", "cve"]
 
 ## CVE Details
 
-[${upperCaseCve}](https://nvd.nist.gov/vuln/detail/${upperCaseCve})
+Visit the official vulnerability details page for [${upperCaseCve}](${generateCVEOfficialDetailsUrl(item.metadata.cve)}) to learn more.
 
 ## Initial Publication
 
@@ -288,7 +310,7 @@ ${escapeMDXSpecialChars(item.metadata.summary)}
 
 ## CVE Severity
 
-${item.metadata.cvssScore}
+[${item.metadata.cvssScore}](${generateCVEOfficialDetailsUrl(item.metadata.cve)})
 
 ## Our Official Summary
 
