@@ -70,7 +70,7 @@
   "devDependencies": {
     "@argos-ci/cli": "^2.4.2",
     "@argos-ci/playwright": "^2.0.0",
-    "@playwright/test": "^1.42.1",
+    "@playwright/test": "^1.49.0",
     "@semantic-release/changelog": "^6.0.1",
     "@semantic-release/exec": "^6.0.3",
     "@semantic-release/git": "latest",
@@ -87,7 +87,7 @@
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-jsx-a11y": "^6.9.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-mdx": "^3.1.5",
     "eslint-plugin-n": "^17.10.0",
     "eslint-plugin-promise": "^7.1.0",
