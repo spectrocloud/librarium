@@ -72,7 +72,7 @@ The default installation of Portworx will deploy the following components in the
 - [Lighthouse](https://portworx.com/blog/manage-portworx-clusters-using-lighthouse/)
 
 - [Stork](https://github.com/libopenstorage/stork) and
-  [Stork on Portworx](https://docs.portworx.com/portworx-enterprise/platform/openshift/ocp-gcp/operations/storage-operations/stork.html)
+  [Stork on Portworx](https://docs.portworx.com/portworx-enterprise/platform/openshift/ocp-gcp/operations/storage-operations/stateful-applications/stork)
 
 - Storage class making use of portworx-volume provisioner.
 

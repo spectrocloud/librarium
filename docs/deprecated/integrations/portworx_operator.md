@@ -89,7 +89,7 @@ The default installation of Portworx /w Operator will deploy the following compo
 
 - `StorageClass` resource for dynamic provisioning of `PersistentVolumes`` using the `pxd.portworx.com` provisioner.
 
-- [Stork](https://docs.portworx.com/portworx-enterprise/operations/operate-kubernetes/storage-operations/stork.html).
+- [Stork](https://docs.portworx.com/portworx-enterprise/operations/operate-kubernetes/storage-operations/stateful-applications/stork).
   Portworx's storage scheduler for Kubernetes.
 
 <!-- Optionally for Portworx 2.x, you can enable Lighthouse for basic monitoring of the Portworx cluster. -->
@@ -762,7 +762,7 @@ The default installation of Portworx /w Operator will deploy the following compo
 
 - `StorageClass` resource for dynamic provisioning of `PersistentVolumes`` using the `pxd.portworx.com` provisioner.
 
-- [Stork](https://docs.portworx.com/portworx-enterprise/operations/operate-kubernetes/storage-operations/stork.html).
+- [Stork](https://docs.portworx.com/portworx-enterprise/operations/operate-kubernetes/storage-operations/stateful-applications/stork).
   Portworx's storage scheduler for Kubernetes.
 
 - [Lighthouse](https://portworx.com/blog/manage-portworx-clusters-using-lighthouse/). Portworx's monitoring and alerting
@@ -1351,7 +1351,7 @@ The default installation of Portworx /w Operator will deploy the following compo
 
 - `StorageClass` resource for dynamic provisioning of `PersistentVolumes`` using the `pxd.portworx.com` provisioner.
 
-- [Stork](https://docs.portworx.com/portworx-enterprise/operations/operate-kubernetes/storage-operations/stork.html).
+- [Stork](https://docs.portworx.com/portworx-enterprise/operations/operate-kubernetes/storage-operations/stateful-applications/stork).
   Portworx's storage scheduler for Kubernetes.
 
 - [Lighthouse](https://portworx.com/blog/manage-portworx-clusters-using-lighthouse/). Portworx's monitoring and alerting
@@ -1906,7 +1906,7 @@ data "spectrocloud_pack_simple" "portworx-operator" {
 
 - [Portworx Supported Kubernetes versions](https://docs.portworx.com/portworx-enterprise/install-portworx/prerequisites#supported-kubernetes-versions)
 
-- [Stork](https://docs.portworx.com/portworx-enterprise/operations/operate-kubernetes/storage-operations/stork.html)
+- [Stork](https://docs.portworx.com/portworx-enterprise/operations/operate-kubernetes/storage-operations/stateful-applications/stork)
 
 - [Portworx Central](https://docs.portworx.com/portworx-central-on-prem/install/px-central.html)
 
