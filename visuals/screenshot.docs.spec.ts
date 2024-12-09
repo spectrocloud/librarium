@@ -11,22 +11,28 @@ const stylesheet = fs.readFileSync(stylesheetPath).toString();
 test.describe.configure({ mode: "parallel" });
 
 function isVersionedDocsPathname(pathname: string, excludeList: string[]): boolean {
-  if (excludeList.some((excludedPath) => pathname === excludedPath || pathname.startsWith(excludedPath))) {
-    console.log(`Excluding ${pathname} because it matches or starts with an exclude list pattern`);
+  if (
+    excludeList.some((excludedPath) => {
+      if (excludedPath.endsWith("/*")) {
+        // Let's remove the trailing "/*" to match sub-paths
+        const basePath = excludedPath.slice(0, -2);
+        // Exclude sub-paths only, not the index page
+        return pathname.startsWith(basePath) && pathname !== `${basePath}/`;
+      }
+      // This is an exact match
+      return pathname === excludedPath;
+    })
+  ) {
     return false;
   }
 
+  // Additional exclusion criteria
   if (pathname.startsWith("/api/") || pathname.match(/\/\d+\.\d+\.x\//)) {
     return false;
   }
 
   return true;
 }
-
-test.beforeAll(() => {
-  console.log("Excluded pages: ", excludeList);
-  console.log("Total pages: ", extractSitemapPathnames(sitemapPath).length);
-});
 
 function screenshotPathname(pathname: string) {
   test(`pathname ${pathname}`, async ({ page }) => {
