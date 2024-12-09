@@ -1,4 +1,5 @@
-import { PlaywrightTestConfig } from "@playwright/test";
+import { devices } from "@playwright/test";
+import type { PlaywrightTestConfig } from "@playwright/test";
 
 const config: PlaywrightTestConfig = {
   snapshotDir: "screenshots/",
@@ -20,6 +21,14 @@ const config: PlaywrightTestConfig = {
     url: "http://127.0.0.1:3000",
     reuseExistingServer: !process.env.CI,
   },
+  projects: [
+    {
+      name: "chromium",
+      use: {
+        ...devices["Desktop Chrome"],
+      },
+    },
+  ],
 };
 
 export default config;

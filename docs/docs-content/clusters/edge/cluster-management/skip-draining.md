@@ -1,7 +1,7 @@
 ---
-sidebar_label: "Skip Node Draining During Upgrades"
-title: "Skip Node Draining During Upgrades"
-description: "Learn how to skip node draining during cluster upgrades. "
+sidebar_label: "Skip Node Draining
+title: "Skip Node Draining
+description: "Learn how to skip node draining during cluster upgrades and cluster repaves."
 icon: ""
 sidebar_position: 40
 hide_table_of_contents: false
@@ -15,8 +15,11 @@ minimize application downtime. For more information what changes will cause rebo
 
 However, the benefits of draining a node in a single-node cluster are minimal because there are no other nodes to
 schedule the workloads onto. In addition, if system-critical workloads are drained, the cluster may get stuck in an
-unmanageable state. You can configure your cluster to skip node draining to avoid such outcomes. These configurations
-will apply to both appliance mode and [agent mode](../../../deployment-modes/agent-mode/agent-mode.md) deployments.
+unmanageable state.
+
+By default, Palette will only drain nodes in multi-node Edge clusters. You can configure draining behavior via the OS
+layer of the cluster profile. These configurations will apply to both appliance mode and
+[agent mode](../../../deployment-modes/agent-mode/agent-mode.md) deployments.
 
 ## Prerequisites
 
@@ -28,38 +31,40 @@ will apply to both appliance mode and [agent mode](../../../deployment-modes/age
   [Edge Host Registration](../site-deployment/site-installation/edge-host-registration.md) and
   [Deployment](../site-deployment/site-deployment.md).
 
-## Skip Node Draining During Upgrades
+- Palette version 4.5.b or higher, with Palette agent version 4.5.11 or higher.
+
+## Skip Node Draining During Upgrades or Repaves
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
 2. From the left **Main Menu**, click **Profiles**.
 
-3. Select the cluster profile you use to provision the clusters for which you want to skip node draining during
-   upgrades.
+3. Select the cluster profile you use to provision the clusters for which you want to skip node draining during upgrades
+   or repaves.
 
-4. Select the operating system layer of your profile, and add the following lines.
+4. Select the BYOS Edge OS layer of your profile, and configure the `pack.drain` section.
 
    ```yaml {2,3}
    pack:
-     drainPods: false
-     podSelector: upgrade.cattle.io/plan!=control-plan,upgrade.cattle.io/plan!=worker-plan,app!=spectro,app!=spectro-proxy,app!=palette-webhook
+     drain:
+       drainPods: false
    ```
 
    The following table provides a brief description of the parameters.
 
-   | Parameter     | Description                                                                                                                                                                                                                                                                                                                                                                                            | Default |
-   | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------- |
-   | `drainPods`   | Controls the node drain behavior during a cluster upgrade. `true` means nodes will be drained. `false` means nodes will not be drained. `auto` means nodes will only be drained for multi-node clusters, while single-node clusters will not drain nodes during an upgrade.                                                                                                                            | `auto`  |
-   | `podSelector` | If `drainPods` is set to `true` for either single-node or multi-node clusters, or set to `auto` for multi-node clusters, only pods matching the selectors will be drained. <br /> <br /> Pods with any of the following labels are always protected from draining: `upgrade.cattle.io/plan=control-plan`,`upgrade.cattle.io/plan=worker-plan`,`app=spectro`,`app=spectro-proxy` ,`app=palette-webhook` | None    |
+   | Parameter     | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          | Default |
+   | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+   | `drainPods`   | Controls the node drain behavior during a cluster upgrade. `true` means nodes will always be drained. `false` means nodes will never be drained. `auto` means nodes will only be drained for multi-node clusters, while single-node clusters will not drain nodes during an upgrade.                                                                                                                                                                                                                                                                                                                                                                 | `auto`  |
+   | `podSelector` | If `drainPods` is set to `true` for either single-node or multi-node clusters, or set to `auto` for multi-node clusters, only pods matching the selectors will be drained. You can use positive or negative matches. For example, `upgrade.cattle.io/plan!=control-plan` means pods with the `upgrade.cattle.io/plan=control-plan` label are not drained, and `app=web` means pods with the label `app=web` are drained. <br /> <br /> Pods with any of the following labels are always protected from draining: `upgrade.cattle.io/plan=control-plan`,`upgrade.cattle.io/plan=worker-plan`,`app=spectro`,`app=spectro-proxy` ,`app=palette-webhook` | None    |
 
    :::warning
 
    In single-node clusters, disabling node draining means normal workloads and the upgrade process happen in parallel.
    This will increase memory usage, and may cause your node to become unresponsive if your host is memory-constrained.
 
-   In such cases, you may set the `pack.drainPods` parameter to `true`, and set `pack.disableEviction` to `true`. This
-   will prevent the drain process from hanging indefinitely due to `PodDisruptionBudget` constraints, while the default
-   `podSelector` will protect most critical pods.
+   In such cases, you may set the `pack.drain.drainPods` parameter to `true`, and set `pack.drain.disableEviction` to
+   `true`. This will prevent the drain process from hanging indefinitely due to `PodDisruptionBudget` constraints, while
+   the default `podSelector` will protect most critical system pods.
 
    :::
 

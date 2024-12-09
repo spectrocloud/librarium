@@ -1,9 +1,8 @@
 import React, { useEffect, useState, useMemo, ReactElement } from "react";
 import styles from "./PacksReadme.module.scss";
-import { Tabs, ConfigProvider, theme, TreeSelect } from "antd";
+import { ConfigProvider, theme, TreeSelect, Tabs } from "antd";
 import CustomLabel from "../Technologies/CategorySelector/CustomLabel";
 import PackCardIcon from "../Technologies/PackCardIcon";
-import Markdown from "markdown-to-jsx";
 import { useHistory } from "react-router-dom";
 import "./PacksReadme.antd.css";
 import { usePluginData } from "@docusaurus/useGlobalData";
@@ -14,10 +13,12 @@ import { useColorMode } from "@docusaurus/theme-common";
 import { packTypeNames, cloudDisplayNames } from "../../constants/packs";
 import Admonition from "@theme/Admonition";
 import { Redirect } from "react-router-dom";
-
+import useIsBrowser from "@docusaurus/useIsBrowser";
+import ReactMarkDown from "react-markdown";
+import remarkGfm from "remark-gfm";
 interface PackReadmeProps {
   customDescription: string;
-  packUidMap: Record<string, { deprecated?: boolean; readme?: string; registryUid?: string }>;
+  packUidMap: Record<string, { deprecated?: boolean; readme?: ReactElement; registryUid?: string }>;
   versions: Version[];
   title: string;
   logoUrl: string;
@@ -62,11 +63,12 @@ function versionChange(
   setSelectedPackUid: React.Dispatch<React.SetStateAction<string>>,
   getParentVersion: (version: string) => Version | undefined,
   history: ReturnType<typeof useHistory>,
-  packName: string
+  packName: string,
+  selectedTabPane: string = "main"
 ) {
   const [version, packUid] = item.split("===");
   const parentVersion = getParentVersion(version)?.title || "";
-  history.replace({ search: `?pack=${packName}&version=${version}&parent=${parentVersion}` });
+  history.replace({ search: `?pack=${packName}&version=${version}&parent=${parentVersion}&tab=${selectedTabPane}` });
   setSelectedVersion(version);
   setSelectedPackUid(packUid);
 }
@@ -110,61 +112,68 @@ function renderVersionOptions(packData: PackData) {
     }));
 }
 
-function renderTabs(selectedPackUid: string, packData: PackData, customReadme: ReactElement<any, any> | null) {
-  const empty_icon_light = useBaseUrl("/img/empty_icon_table_light.svg");
-  const empty_icon_dark = useBaseUrl("/img/empty_icon_table_dark.svg");
-  const readme = selectedPackUid ? packData.packUidMap[selectedPackUid]?.readme : "";
-  const tabs = [
-    readme && {
-      label: `README`,
-      key: "1",
-      children: <Markdown>{readme}</Markdown>,
-    },
-    customReadme && {
-      label: `Additional Details`,
-      key: "2",
-      children: customReadme,
-    },
-  ].filter(Boolean) as { label: string; key: string; children: JSX.Element }[];
-
-  if (tabs.length > 1) {
-    return (
-      <Tabs defaultActiveKey="1">
-        {tabs.map((item) => (
-          <Tabs.TabPane tab={item.label} key={item.key}>
-            {item.children}
-          </Tabs.TabPane>
-        ))}
-      </Tabs>
-    );
-  }
-  if (tabs.length === 1) {
-    return tabs[0].children;
-  }
-  return (
-    <div className={styles.emptyContent}>
-      <ThemedImage
-        alt="Docusaurus themed image"
-        sources={{
-          light: empty_icon_light,
-          dark: empty_icon_dark,
-        }}
-        width={120}
-        height={120}
-      />
-      <div className={styles.emptyContentTitle}>No README found</div>
-    </div>
-  );
-}
-
 function getProviders(packData: PackData) {
   if (packData.provider.includes("all")) {
     return "All";
   }
-
   return packData.provider
     .map((provider) => cloudDisplayNames[provider as keyof typeof cloudDisplayNames] || provider)
     .join(", ");
+}
+
+function processPackUiMap(
+  packUidMap: Record<string, { readme?: string }>
+): Record<string, { deprecated?: boolean; readme?: ReactElement; registryUid?: string }> {
+  const newPackUidMap: Record<string, { deprecated?: boolean; readme?: ReactElement; registryUid?: string }> = {};
+  Object.entries(packUidMap).map(([key, value]) => {
+    if (key) {
+      const readmeFileName = packUidMap[key].readme;
+      let module;
+      if (readmeFileName) {
+        module = (
+          <ReactMarkDown
+            remarkPlugins={[remarkGfm]}
+            components={{
+              h1: (props) => {
+                const headingId = props.children?.toString().replace(/\s+/g, "-").toLowerCase();
+                return (
+                  <h1 id={headingId}>
+                    {props.children}
+                    <a href={`#${headingId}`} className="hash-link" />
+                  </h1>
+                );
+              },
+              h2: (props) => {
+                const headingId = props.children?.toString().replace(/\s+/g, "-").toLowerCase();
+                return (
+                  <h2 id={headingId}>
+                    {props.children}
+                    <a href={`#${headingId}`} className="hash-link" />
+                  </h2>
+                );
+              },
+              h3: (props) => {
+                const headingId = props.children?.toString().replace(/\s+/g, "-").toLowerCase();
+                return (
+                  <h3 id={headingId}>
+                    {props.children}
+                    <a href={`#${headingId}`} className="hash-link" />
+                  </h3>
+                );
+              },
+            }}
+          >
+            {readmeFileName}
+          </ReactMarkDown>
+        );
+      }
+      newPackUidMap[key] = {
+        ...value,
+        readme: module ? (module as ReactElement) : undefined,
+      };
+    }
+  });
+  return newPackUidMap;
 }
 
 function getRegistries(packData: PackData, selectedVersion: string, selectedPackUid: string) {
@@ -186,19 +195,28 @@ function getRegistries(packData: PackData, selectedVersion: string, selectedPack
 export default function PacksReadme() {
   try {
     const { packs, repositories } = usePluginData("plugin-packs-integrations") as PacksIntegrationsPluginData;
-
+    const [fragmentIdentifier, setFragmentIdentifier] = useState<string>("");
     const [customReadme, setCustomReadme] = useState<ReactElement<any, any> | null>(null);
     const [packName, setPackName] = useState<string>("");
     const [selectedPackUid, setSelectedPackUid] = useState<string>("");
     const { colorMode } = useColorMode();
     const { defaultAlgorithm, darkAlgorithm } = theme;
+    const [selectedTabPane, setSelectedTabPane] = useState<string>("");
     const [selectedVersion, setSelectedVersion] = useState<string>("");
     const history = useHistory();
+    const isBrowser = useIsBrowser();
 
     useEffect(() => {
-      const searchParams = window ? new URLSearchParams(window.location.search) : null;
-      const pckName = searchParams?.get("pack") || "";
-      setPackName(pckName);
+      let pckName = "";
+      if (isBrowser) {
+        const searchParams = window ? new URLSearchParams(window.location.search) : null;
+        const hashLocationValue = window ? window.location.hash : "";
+        pckName = searchParams?.get("pack") || "";
+        setPackName(pckName);
+        if (hashLocationValue) {
+          setFragmentIdentifier(hashLocationValue);
+        }
+      }
       const importComponent = async () => {
         try {
           const module: MarkdownFile = await import(`../../../docs/docs-content/integrations/${pckName}.md`);
@@ -223,7 +241,7 @@ export default function PacksReadme() {
       if (pack) {
         const packDataInfo: PackReadmeProps = {
           customDescription: pack.description,
-          packUidMap: pack.packUidMap,
+          packUidMap: processPackUiMap(pack.packUidMap),
           versions: pack.versions,
           title: pack.title,
           logoUrl: pack.logoUrl,
@@ -252,8 +270,24 @@ export default function PacksReadme() {
     }, [packName]);
 
     useEffect(() => {
-      const searchParams = window ? new URLSearchParams(window.location.search) : null;
+      if (isBrowser && fragmentIdentifier) {
+        const timeoutId = setTimeout(() => {
+          const elementId = fragmentIdentifier.replace("#", "");
+          const parent = document.getElementById?.(elementId);
+          parent?.querySelector?.("a")?.click();
+        }, 1000);
+        return () => clearTimeout(timeoutId);
+      }
+    }, [fragmentIdentifier]);
+
+    useEffect(() => {
+      let searchParams;
+      if (isBrowser) {
+        searchParams = new URLSearchParams(window.location.search);
+      }
       const urlParamVersion = searchParams?.get("version");
+      const urlParamTag = searchParams?.get("tab");
+      setSelectedTabPane(urlParamTag || "main");
       const version = urlParamVersion || packData?.latestVersion || packData?.versions[0]?.title || "";
       if (version && !version.endsWith(".x")) {
         const parentVersionObj = getParentVersion(version, packData);
@@ -264,6 +298,59 @@ export default function PacksReadme() {
         }
       }
     }, [packData]);
+
+    const renderTabs = () => {
+      const empty_icon_light = useBaseUrl("/img/empty_icon_table_light.svg");
+      const empty_icon_dark = useBaseUrl("/img/empty_icon_table_dark.svg");
+      const ReadMe = selectedPackUid ? packData.packUidMap[selectedPackUid]?.readme : null;
+
+      const tabs = [
+        ReadMe && {
+          label: `README`,
+          key: "main",
+          children: ReadMe,
+        },
+        customReadme && {
+          label: `Additional Details`,
+          key: "custom",
+          children: customReadme,
+        },
+      ].filter(Boolean) as { label: string; key: string; children: JSX.Element }[];
+      if (tabs.length > 1) {
+        return (
+          <div>
+            <Tabs
+              defaultActiveKey={selectedTabPane || "main"}
+              items={tabs}
+              onChange={(key) => {
+                setSelectedTabPane(key);
+                const parentVersion = getParentVersion(selectedVersion, packData)?.title || "";
+                history.replace({
+                  search: `?pack=${packName}&version=${selectedVersion}&parent=${parentVersion}&tab=${key}`,
+                });
+              }}
+            />
+          </div>
+        );
+      }
+      if (tabs.length === 1) {
+        return tabs[0].children;
+      }
+      return (
+        <div className={styles.emptyContent}>
+          <ThemedImage
+            alt="Docusaurus themed image"
+            sources={{
+              light: empty_icon_light,
+              dark: empty_icon_dark,
+            }}
+            width={120}
+            height={120}
+          />
+          <div className={styles.emptyContentTitle}>No README found</div>
+        </div>
+      );
+    };
 
     return (
       <div className={styles.wrapper}>
@@ -292,7 +379,8 @@ export default function PacksReadme() {
                     setSelectedPackUid,
                     (version) => getParentVersion(version, packData),
                     history,
-                    packName
+                    packName,
+                    selectedTabPane
                   )
                 }
                 treeData={renderVersionOptions(packData)}
@@ -322,7 +410,7 @@ export default function PacksReadme() {
         </div>
         <div className={styles.tabPane}>
           <ConfigProvider theme={{ algorithm: colorMode === "dark" ? darkAlgorithm : defaultAlgorithm }}>
-            {renderTabs(selectedPackUid, packData, customReadme)}
+            {renderTabs()}
           </ConfigProvider>
         </div>
       </div>
