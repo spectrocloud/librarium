@@ -41,6 +41,21 @@ async function getSecurityBulletins(payload) {
   }
 }
 
+// This function filters the items by UID and returns only the items that start with the keyword, such as "PA-", "VA-", etc.
+function filterByUID(items, keyword) {
+  if (!Array.isArray(items)) {
+    throw new Error("Input must be an array of objects");
+  }
+
+  return items.filter((item) => {
+    if (!item.metadata || typeof item.metadata.uid !== "string") {
+      console.warn("Skipping item due to missing or invalid metadata.uid:", item);
+      return false;
+    }
+    return item.metadata.uid.startsWith(keyword);
+  });
+}
+
 async function generateCVEs() {
   let GlobalCVEData = {};
 
@@ -154,19 +169,25 @@ async function generateCVEs() {
         ],
       });
 
-      // Debug logs
-      // logger.info(`Palette CVEs:", ${palette.data.length}`);
-      // logger.info(`Palette Airgap CVEs:", ${paletteAirgap.data.length}`);
-      // logger.info(`Vertex CVEs:", ${vertex.data.length}`);
-      // logger.info(`Vertex Airgap CVEs:", ${vertexAirgap.data.length}`);
+      // There is no way to filter by product in the API, so we need to filter the results manually to get a list of CVEs for each product
+      const filterdPalette = filterByUID(palette.data, "PC-");
+      const filterdPaletteAirgap = filterByUID(paletteAirgap.data, "PA-");
+      const filterdVertex = filterByUID(vertex.data, "VC-");
+      const filterdVertexAirgap = filterByUID(vertexAirgap.data, "VA-");
 
-      securityBulletins.set("palette", palette);
-      securityBulletins.set("paletteAirgap", paletteAirgap);
-      securityBulletins.set("vertex", vertex);
-      securityBulletins.set("vertexAirgap", vertexAirgap);
+      // Debug logs
+      // logger.info(`Palette CVEs:", ${filterdPalette.length}`);
+      // logger.info(`Palette Airgap CVEs:", ${filterdPaletteAirgap.length}`);
+      // logger.info(`Vertex CVEs:", ${filterdVertex.length}`);
+      // logger.info(`Vertex Airgap CVEs:", ${filterdVertexAirgap.length}`);
+
+      securityBulletins.set("palette", filterdPalette);
+      securityBulletins.set("paletteAirgap", filterdPaletteAirgap);
+      securityBulletins.set("vertex", filterdVertex);
+      securityBulletins.set("vertexAirgap", filterdVertexAirgap);
 
       const plainObject = Object.fromEntries(
-        Array.from(securityBulletins.entries()).map(([key, value]) => [key, value.data])
+        Array.from(securityBulletins.entries()).map(([key, value]) => [key, value])
       );
       GlobalCVEData = plainObject;
 
