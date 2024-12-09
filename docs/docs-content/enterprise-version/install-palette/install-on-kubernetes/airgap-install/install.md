@@ -234,7 +234,7 @@ environment. Reach out to our support team if you need assistance.
 
     <TabItem label="OCI Registry" value="oci">
 
-    ```yaml {23,53,87-95,97-102,104-106,109}
+    ```yaml {23,53,68-75,87-95,111-113}
     #########################
     # Spectro Cloud Palette #
     #########################
@@ -330,6 +330,20 @@ environment. Reach out to our support team if you need assistance.
         insecureSkipVerify: true
         caCert: ""
         mirrorRegistries: "docker.io::my-oci-registry.com/v2/spectro-images/docker.io,gcr.io::my-oci-registry.com/v2/spectro-images/gcr.io,ghcr.io::my-oci-registry.com/v2/spectro-images/ghcr.io,k8s.gcr.io::my-oci-registry.com/v2/spectro-images/k8s.gcr.io,registry.k8s.io::my-oci-registry.com/v2/spectro-images/registry.k8s.io,quay.io::my-oci-registry.com/v2/spectro-images/quay.io"
+
+      #
+      # Instruction for mirrorRegistries.
+      # ----------------------------------
+      # Please provide the registry endpoint for the following registries, separated by double colons (::):
+      # docker.io
+      # gcr.io
+      # ghcr.io
+      # k8s.gcr.io
+      # registry.k8s.io
+      # quay.io
+      # For each registry, follow this example format:
+      # docker.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<DOCKER_IO_ENDPOINT>,gcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<GCR_IO_ENDPOINT>,ghcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<GHCR_IO_ENDPOINT>,k8s.gcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<K8S_IO_ENDPOINT>,registry.k8s.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<REGISTRY_K8S_IO_ENDPOINT>,quay.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<QUAY_IO_ENDPOINT>
+      # Replace <PLACE_HOLDER_FOR_ENDPOINT> with your actual registry endpoint and <DOCKER_IO_ENDPOINT>, <GCR_IO_ENDPOINT>, <GHCR_IO_ENDPOINT>, <K8S_IO_ENDPOINT>, <REGISTRY_K8S_IO_ENDPOINT>, and <QUAY_IO_ENDPOINT> with the specific endpoint details for each registry.
 
       imageSwapImages:
         imageSwapInitImage: "my-oci-registry.com/spectro-images/gcr.io/spectro-images-public/release-fips/thewebroot/imageswap-init:v1.5.2"
@@ -454,7 +468,7 @@ environment. Reach out to our support team if you need assistance.
 
     <TabItem label="AWS ECR Registry" value="ecr">
 
-    ```yaml {23,53,77-85,87-95,110-115}
+    ```yaml {23,53,77-85,87-95,110-112}
     #########################
     # Spectro Cloud Palette #
     #########################
