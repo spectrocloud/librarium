@@ -4,188 +4,123 @@
 # Source a .env file with the variables or export them in your shell.
 # You can use the following command to generate the file. 
 # Assuming you have a .env file in the current directory.
-# source ../../.env && envsubst < palette-airgap-install.tape > palette-airgap-install-creds.tape
-Require palette
-Output palette-airgap-install.mp4
+# source .env && envsubst < palette-airgap-install.tape > palette-airgap-install-creds.tape
 
+############################################################################
+# THIS SCRIPT IS ASSUMED TO BE INVOKED INSIDE THE AIRGAP SUPPORT VM
+############################################################################
+
+Require palette
+Output "/home/ubuntu/palette-airgap-install.mp4"
+
+Set WindowBar Colorful
 Set FontSize 14
+Set TypingSpeed 0.1
 Set Width 950
 Set Height 500
-Set TypingSpeed 0.1
-Set WindowBar Colorful
 Set Margin 20
-Set BorderRadius 10
 
-
+Hide
+Type "export HOME=/root"
+Enter
+Type "rm ~/.palette/palette.yaml"
+Enter
+Type "clear"
+Enter
+Sleep 2s
 Show
 Type "palette ec install"
-Sleep 5s
+Enter
+Sleep 4s
+Enter
+Sleep 2s
+Type "y"
+Sleep 2s
+Type "${UBUNTU_PRO}"
+Enter
+Sleep 2s
+Enter
+Sleep 500ms
+Enter
+Sleep 500ms
+Enter 2
+Sleep 500ms
+Enter
+Sleep 2s
+Type "y"
+Sleep 3s
+Type "n"
+Sleep 2s
+Type "n"
+Sleep 2s
+Type "y"
+Sleep 2.5s
+Escape
+Sleep 500ms
+Type ":wq"
+Enter
+Sleep 2s
+Enter
+Sleep 1s
+Type "vcenter.spectrocloud.dev"
+Enter
+Sleep 3.5s
+Type "${VCENTER_USER}"
+Enter
+Sleep 2.5s
+Type "${VCENTER_PASSWORD}"
+Sleep 500ms
+Enter
+Sleep 500ms
+Type "y"
+Sleep 3.5s
+Enter
+Sleep 2s
+Type "sp-karl"
+Sleep 500ms
 Enter
 Sleep 1s
 Enter
+Sleep 3.5s
+Down
+Enter
+Sleep 1s
+Down
+Sleep 500ms
+Enter
+Sleep 2s
+Enter
+Sleep 500ms
+Enter
+Sleep 500ms
+Type "n"
+Enter
+Sleep 5.5s
+Type "ddssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDW3S6ugyQ0nkqs/X7bglMSPXEbF9Tr5ii7yrXiFPAy/VbUXf26KOedn7jcETFW74Dlu2NWBnU5Q2Ij6Hpv8/BkorkBIC5EySnt6NkS+P+B8T15UoDG4Z0LOW2yfnTuuebrVmqTP6X4emTALTdiI/SRmIYzYhWIZFWY00jOyTVguS0X4q6Tq7W/g7WqspGPAAoMH8v9ifzOkjRZvrjb6Qv5wwIOiepkySKf2lOlsxc7LikAcbwEIwFrxgSTk1CZ2MxTfN4djwd4U0kJ//Mq6genPx/SVpoSZhu6vPjFiNa4jHBnJb7uN0JRcCMtSMSpLtbIr7vGkzNF8+eJWmHPRsJra8CAiCR+HWjtBJbKqktMz2hCEAaezTOyH4vvdV/e40qvVDHwqk58sLCTm7M9N/7QZXy93RrPqn8ISlt/5IzXvO8MZkYuaU2bfkL6bID/Z53CaIDSirNHHu1xt3MuptBKIYGrpEpiQ62es5G3KaGj80GQRrShln77NYxwfuDXlPM= your_email@example.com"
+Enter
+Sleep 500ms
+Escape
+Type ":wq"
+Enter
+Sleep 1s
+Type "10.10.100.0"
+Enter
+Type "10.10.100.249"
+Sleep 500ms
+Enter 2
+Sleep 500ms
+Type "10.10.128.1"
+Enter
+Sleep 1s
+Type "10.10.128.8"
+Enter
+Sleep 500ms
+Type "example.dev"
+Enter
+Sleep 500ms
+Enter
+Sleep 1.5s
 Type "y"
-Sleep 2s
-Type "${UBUNTU_PRO}" # Ubuntu Pro Token. This is not required for a normal Palette installation.
-Enter
-Type "${AIRGAP_FILE_SERVER}" # Specify File Server
-Sleep 2s
-Enter
-Type "admin" # Username
-Sleep 2s
-Enter
-Type "admin" # Password
-Sleep 2s
-Enter
-Type "y" # Allow insecure connection
-Sleep 4s
-Enter # Select VMware
-Sleep 2s
-Enter # Cluster Name
-Sleep 2s
-Type "http://10.10.180.0:3128" # HTTPS Proxy
-Sleep 2s
-Enter
-Type "http://10.10.180.0:3128" # HTTP Proxy
-Sleep 2s
-Enter
-Escape
-Type "dd"
-Type "dd"
-Type "dd"
-Type "i"
-Type "10.10.128.10"
-Enter
-Type ".spectrocloud.dev"
-Enter
-Type "10.0.0.0/8"
-Escape
-Sleep 2s
-Type ":wq"
-Sleep 2s
-Enter
-Sleep 2s
-Enter # Proxy CA Cert
-Sleep 2s
-Enter # POD CIDR
-Sleep 2s
-Enter # Service IP Range
-Sleep 2s
-Enter # OCI Registry Choice
-Sleep 2s
-Type "Airgap Packs OCI"
-Enter
-Sleep 2s
-Type "${AIRGAP_OCI_REGISTRY}" # OCI Registry URL
-Enter
-Sleep 2s
-Type "${AIRGAP_PACKS_REPOSITORY}" # Base Path
-Enter
-Sleep 4s
-Escape
-Type ":wq"
-Sleep 2s
-Enter
-Sleep 2s
-Type "n" # Allow insecure connection
-Sleep 2s
-Type "/tmp/oci-airgap.crt" # OCI Registry CA Cert
-Enter
-Sleep 2s
-Type "${AIRGAP_OCI_REGISTRY_USERNAME}" # Username
-Enter
-Sleep 2s
-Type "${AIRGAP_OCI_REGISTRY_PASSWORD}" # Password
-Enter
-Sleep 2s
-Type "n"
-Sleep 2s
-Sleep 2s
-Type "n"
-Sleep 2s
-Type "Airgap Images OCI"
-Enter
-Sleep 2s
-Type "${AIRGAP_OCI_REGISTRY}" # OCI Registry URL
-Enter
-Sleep 2s
-Type "${AIRGAP_IMAGES_REPOSITORY}" # Base Path
-Enter
-Sleep 2s
-Escape
-Type ":wq"
-Sleep 2s
-Enter
-Sleep 2s
-Type "n" # Allow insecure connection
-Sleep 2s
-Type "/tmp/oci-airgap.crt" # OCI Registry CA Cert
-Enter
-Sleep 2s
-Type "${AIRGAP_OCI_REGISTRY_USERNAME}" # Username
-Enter
-Sleep 2s
-Type "${AIRGAP_OCI_REGISTRY_PASSWORD}" # Password
-Enter
-Sleep 2s
-Type "vcenter.spectrocloud.dev"
-Enter
-Sleep 2s
-Type "${VCENTER_USER}"
-Enter
-Sleep 2s
-Type "${VCENTER_PASSWORD}"
-Enter
-Sleep 2s
-Type "n" # Allow insecure connection
-Sleep 4s
-Enter # Select Datacenter
-Sleep 3s
-Type "sp-karl" # Select Folder
-Enter
-Sleep 3s
-Down 1
-Enter # Select Cluster
-Sleep 3s
-Down 1 # VM Network
-Enter
-Sleep 4s
-Enter # Resource Pool
-Sleep 3s
-Enter # Storage Policy
-Sleep 3s
-Enter # Select Datastore
-Sleep 2s
-Type "n" # Add another fault domain
-Sleep 2s 
-Enter # NTP Servers
-Sleep 2s
-Type "dd"
-Type "i"
-Type "ssh-rsa AAAAB3NzaC1yc2EAA...."
-Escape
-Sleep 3s
-Type@500ms ":wq"
-Enter
-Sleep 2s
-Type "${AIRGAP_IP_START_RANGE}" # IP Start Range
-Enter
-Sleep 2s
-Type "${AIRGAP_IP_END_RANGE}" # IP End Range
-Enter
-Sleep 2s
-Enter # Network Prefix
-Sleep 2s
-Type "${AIRGAP_GATEWAY}" # Gateway
-Enter
-Type "${AIRGAP_DNS_SERVER}" # DNS Server
-Enter
-Type "spectrocloud.dev" # Name Server Domain
-Enter
-Sleep 2s
-Down 1 # Medium VM Size
-Enter
-Sleep 2s
-Type "y" # Node Affinity
-
-
-Sleep 35s
+Sleep 180s
+Hide
+Ctrl+C

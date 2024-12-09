@@ -38,8 +38,3 @@ installation.
 - [ ] Start the airgap setup binary and verified the setup completed successfully.
 
 - [ ] Review the list of pack binaries to download and upload to your OCI registry.
-
-- [ ] Extract the manifest content from the airgap setup binary to an HTTP file server.
-
-- [ ] Ensure the manifest content is hosted on an HTTP file server accessible from the environment to which you are
-      installing Palette.
