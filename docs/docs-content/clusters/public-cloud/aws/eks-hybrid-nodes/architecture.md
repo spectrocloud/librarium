@@ -49,57 +49,69 @@ for guidance on all available options.
 If using a VPN or AWS Direct Connect between AWS and your on-premises and edge environments, review the following
 configuration requirements.
 
-- Configure your EKS cluster with static placement so that your nodes are assigned to specific Availability Zones (AZs)
-  and fixed networking configurations. This is required because of the following reasons:
+#### AWS
 
-  - The VPN configuration must be set up with predefined routes and IP ranges.
-  - Node placement cannot change dynamically across AZs.
-  - Network paths need to remain consistent for VPN tunnels to function properly.
+Configure your EKS cluster with static placement so that your nodes are assigned to specific Availability Zones (AZs) and fixed networking configurations. This is required because of the following reasons:
 
-- Traffic routing in the Amazon EKS VPC requires the following mapping for hybrid nodes:
+- The VPN configuration must be set up with predefined routes and IP ranges.
+- Node placement cannot change dynamically across AZs.
+- Network paths need to remain consistent for VPN tunnels to function properly.
 
-  - Route table entries mapping hybrid node CIDR ranges to VPN endpoint.  
-    For example, Hybrid Node CIDR 10.200.0.0/16 → VPN endpoint 172.16.0.1.
+Traffic routing in the Amazon EKS VPC requires the following mapping for hybrid nodes:
 
-  - Route table entries mapping hybrid pod CIDR ranges to VPN endpoint.  
-    For example, Hybrid Pod CIDR 192.168.0.0/16 → VPN endpoint 172.16.0.1.
+- Route table entries mapping hybrid node CIDR ranges to VPN endpoint.  
+  For example, Hybrid Node CIDR 10.200.0.0/16 → VPN endpoint 172.16.0.1.
 
-  - For AWS Direct Connect, map traffic to appropriate private subnet CIDR.  
-    For example, Both CIDRs 10.200.0.0/16 & 192.168.0.0/16 → Private subnet 172.16.1.0/24.
+- Route table entries mapping hybrid pod CIDR ranges to VPN endpoint.  
+  For example, Hybrid Pod CIDR 192.168.0.0/16 → VPN endpoint 172.16.0.1.
 
-- For AWS VPNs, configure two static routes for each of the following connections:
+- For AWS Direct Connect, map traffic to appropriate private subnet CIDR.  
+  For example, Both CIDRs 10.200.0.0/16 & 192.168.0.0/16 → Private subnet 172.16.1.0/24.
 
-  - Hybrid Node CIDR block.  
-    For example, Hybrid Node CIDR 10.200.0.0/16 → VPN endpoint 172.16.0.1.
+For AWS VPNs, configure two static routes for each of the following connections:
 
-  - Hybrid Pod CIDR block.  
-    For example, Hybrid Pod CIDR 192.168.0.0/16 → VPN endpoint 172.16.0.1.
+- Hybrid Node CIDR block.  
+  For example, Hybrid Node CIDR 10.200.0.0/16 → VPN endpoint 172.16.0.1.
 
-  If you're using a Virtual Private Gateway or Transit Gateway, route propagation can be enabled to automatically
-  populate your VPC route tables. Ensure you verify your route tables after propagation.
+- Hybrid Pod CIDR block.  
+  For example, Hybrid Pod CIDR 192.168.0.0/16 → VPN endpoint 172.16.0.1.
 
-- For on-premises and edge VPNs, set up IPsec Phase 1 tunnels with Phase 2 security associations for the following:
+If you're using a Virtual Private Gateway or Transit Gateway, route propagation can be enabled to automatically populate your VPC route tables. Ensure you verify your route tables after propagation.
 
-  - Hybrid Node subnet to EKS VPC CIDR.  
-    For example, Hybrid Node Subnet 10.201.0.0/16 → EKS VPC CIDR 10.100.0.0/16.
+#### On-Premises and Edge Locations
 
-  - Hybrid Node pod CIDR to EKS VPC CIDR.  
-    For example, Hybrid Node Pod CIDR 192.168.0.0/16 → EKS VPC CIDR 10.100.0.0/16.
+For on-premises and edge VPNs, set up IPsec Phase 1 tunnels with Phase 2 security associations for the following:
 
-  You should also enable either Border Gateway Protocol (BGP) routing or static routes to ensure proper traffic flow
-  through VPN tunnels.
+- Hybrid Node subnet to EKS VPC CIDR.  
+  For example, Hybrid Node Subnet 10.201.0.0/16 → EKS VPC CIDR 10.100.0.0/16.
 
-- For non-primary VPN servers, either broadcast routes via BGP or configure static routes to redirect EKS VPC CIDR
-  traffic appropriately.
+- Hybrid Node pod CIDR to EKS VPC CIDR.  
+  For example, Hybrid Node Pod CIDR 192.168.0.0/16 → EKS VPC CIDR 10.100.0.0/16.
+
+You should also enable either Border Gateway Protocol (BGP) routing or static routes to ensure proper traffic flow through VPN tunnels.
+
+For non-primary VPN servers, either broadcast routes via BGP or configure static routes to redirect EKS VPC CIDR traffic appropriately.
 
 ## Operating System Compatibility
 
-Palette supports the same operating systems as AWS. Refer to
-[Prepare operating system for hybrid nodes](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-os.html) for
-guidance.
+Palette supports the operating systems available to edge hosts registered through [Agent Mode](../../../../deployment-modes/agent-mode/agent-mode.md) or by using [Provider Images](../../../edge/edgeforge-workflow/palette-canvos/build-provider-images.md).
 
-Edge hosts require additional dependencies and you can build these into provider images using the
-[EdgeForge Workflow](../../../edge/edgeforge-workflow/edgeforge-workflow.md).
+## Supported Edge Hosts
+
+Palette allows you to use your edge hosts as your Amazon EKS Hybrid Nodes. Your edge hosts need to be registered with Palette before you can add them to your node pools.
+
+If you want to use your edge hosts as Amazon EKS Hybrid Nodes, they must have been registered through [Agent Mode](../../../../deployment-modes/agent-mode/agent-mode.md) or by using [Provider Images](../../../edge/edgeforge-workflow/palette-canvos/build-provider-images.md).
+
+:::warning
+
+If using Provider Images, you must include the following in your `.arg` file during the [build steps](../../../edge/edgeforge-workflow/palette-canvos/build-provider-images.md#build-provider-images).
+
+```shell
+K8S_DISTRIBUTION=nodeadm
+K8S_VERSION=1.29.0  # supported versions: [ 1.29.0 | 1.30.0 ]
+```
+
+:::
 
 ## Authentication and Access Management
 
