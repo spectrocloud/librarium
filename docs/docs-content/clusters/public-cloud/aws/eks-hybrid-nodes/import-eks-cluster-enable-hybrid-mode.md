@@ -86,7 +86,7 @@ The following limitations apply after importing an existing Amazon EKS cluster.
    
    :::tip
    
-   Refer to [Access Amazon EKS Cluster with Kubectl](#access-amazon-eks-cluster-with-kubectl) for guidance on setting up kubectl to access your cluster.
+   Refer to [Access Imported Cluster with Kubectl](#access-imported-cluster-with-kubectl) for guidance on setting up kubectl to access your cluster.
 
    :::
 
