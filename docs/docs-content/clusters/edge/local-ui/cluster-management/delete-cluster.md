@@ -7,7 +7,7 @@ sidebar_position: 90
 tags: ["edge"]
 ---
 
-You can delete an active cluster using Local UI. Deleting a cluster will return all nodes in the cluster to **Ready**
+You can delete an active cluster using Local UI. Deleting a cluster will return all hosts in the cluster to **Ready**
 status. Deleting a cluster does not unlink the linked hosts. If you want to use the hosts that were freed from the
 cluster, you must unlink them first. For more information about linking or unlinking hosts, refer to
 [Link Hosts](./link-hosts.md).
@@ -16,8 +16,8 @@ cluster, you must unlink them first. For more information about linking or unlin
 
 :::
 
-When you delete a cluster, the node where you performed the delete action from will be the new leader node of the group.
-For more information about leader nodes, refer to [Link Hosts](link-hosts.md#leader-nodes).
+When you delete a cluster, the host where you performed the delete action from will be the new leader host of the group.
+For more information about leader hosts, refer to [Link Hosts](link-hosts.md#leader-hosts).
 
 ## Prerequisites
 
@@ -28,7 +28,7 @@ For more information about leader nodes, refer to [Link Hosts](link-hosts.md#lea
 
 ## Delete a Cluster
 
-1. Log in to [Local UI](../host-management/access-console.md) on the leader node where your cluster is deployed.
+1. Log in to [Local UI](../host-management/access-console.md) on a control plane node where your cluster is deployed.
 
 2. From the left **Main Menu**, click **Cluster**.
 
@@ -37,7 +37,7 @@ For more information about leader nodes, refer to [Link Hosts](link-hosts.md#lea
 4. In the **drop-down Menu** that appears, click **Delete**.
 
 5. In the pop-up window that appears, click **Confirm**. During the deletion of the cluster, Local UI will become
-   unavailable as the nodes reboot after cluster deletion.
+   unavailable as the hosts reboot after cluster deletion.
 
 ## Validate
 
