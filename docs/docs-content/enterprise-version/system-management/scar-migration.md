@@ -171,7 +171,7 @@ SCAR endpoint.
 
 7.  Check the **Contains Spectro Manifests** box, click **Validate**, and then click **Confirm**.
 
-    ![View of the 'Contains Spectro Manifests' OCI registry box.](/enterprise-version_system-management_scar-migration.png)
+    ![View of the 'Contains Spectro Manifests' OCI registry box.](/enterprise-version_system-management_scar-migration.webp)
 
 8.  In a terminal with connectivity to your Palette cluster, issue the following command to verify that the `Specman`
     service is fetching the content pushed to the OCI registry in step **4** of this guide, with the tag `0.0.0`.
