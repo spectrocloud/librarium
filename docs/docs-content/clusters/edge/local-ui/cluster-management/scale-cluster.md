@@ -10,6 +10,10 @@ tags: ["edge"]
 Once a cluster is operational, you have the option of scaling up the cluster by adding additional nodes, or scale down
 the cluster by removing nodes from the cluster using Local UI.
 
+:::preview
+
+:::
+
 ## Scale up a Cluster
 
 To scale up a cluster is to add additional nodes to an active cluster. You can scale up a cluster deployed on hosts

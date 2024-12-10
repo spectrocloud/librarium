@@ -12,6 +12,10 @@ status. Deleting a cluster does not unlink the linked hosts. If you want to use 
 cluster, you must unlink them first. For more information about linking or unlinking hosts, refer to
 [Link Hosts](./link-hosts.md).
 
+:::preview
+
+:::
+
 When you delete a cluster, the node where you performed the delete action from will be the new leader node of the group.
 For more information about leader nodes, refer to [Link Hosts](link-hosts.md#leader-nodes).
 
