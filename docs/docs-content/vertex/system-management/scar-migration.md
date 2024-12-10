@@ -7,8 +7,8 @@ description:
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 125
-tags: ["enterprise", "management", "scar"]
-keywords: ["self-hosted", "enterprise"]
+tags: ["vertex", "management", "scar"]
+keywords: ["self-hosted", "vertex"]
 ---
 
 import ScarMigration from "../../../../_partials/self-hosted/_scar-migration.mdx";
