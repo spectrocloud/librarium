@@ -26,7 +26,7 @@ tags: ["release-notes"]
 - The Spectro Cloud Artifact Repository (SCAR) is now hosted inside an Open Container Initiative (OCI) repository.
   Previously, airgaped self-hosted Palette or VerteX installations required a file server to host the SCAR repository.
   With this release, the SCAR repository is now hosted inside the same OCI registry hosting packs and images. This
-  removes the need for a file server to host the SCAR content. New installations of Palette Enterprise and VerteX will automatically use the new architecture. Existing installations will need to be upgraded to the latest version to take advantage of this feature.
+  removes the need for a file server to host the SCAR content. New installations of Palette Enterprise and VerteX will automatically use the new architecture. Existing self-hosted Palette Enteprise and VerteX installations are not affected by this change.
 
 #### Improvements
 

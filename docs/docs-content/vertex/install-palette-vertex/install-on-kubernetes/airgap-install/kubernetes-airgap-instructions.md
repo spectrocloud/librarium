@@ -9,7 +9,7 @@ tags: ["vertex", "enterprise", "airgap", "kubernetes"]
 keywords: ["self-hosted", "vertex"]
 ---
 
-![Overview diagram of the pre-install steps eager-load](/enterprise-version_air-gap-repo_overview-order-diagram-focus.webp)
+![Overview diagram of the pre-install steps eager-load](/enterprise-version_air-gap-repo_k8s-overview-order-diagram-clean.webp)
 
 This guide provides instructions to prepare your airgap environment for a Palette VerteX installation by completing the
 required preparatory steps one through four shown in the diagram. The respective installation guides for each platform

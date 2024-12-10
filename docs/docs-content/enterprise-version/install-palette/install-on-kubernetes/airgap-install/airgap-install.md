@@ -29,7 +29,7 @@ is utilized to store images and packs.
 Before you can install Palette in an airgap environment, you must first set up your environment as outlined in the
 following diagram.
 
-![An architecture diagram outlining the five different installation phases](/enterprise-version_air-gap-repo_overview-order-diagram.webp)
+![An architecture diagram outlining the five different installation phases](/enterprise-version_air-gap-repo_k8s-points-overview-order-diagram.webp)
 
 1. In an environment with internet access, download the airgap setup binary from the URL provided by our support team.
    The airgap setup binary is a self-extracting archive that contains the Palette platform manifests, images, and

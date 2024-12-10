@@ -9,7 +9,7 @@ tags: ["self-hosted", "enterprise", "airgap", "kubernetes"]
 keywords: ["self-hosted", "enterprise"]
 ---
 
-![Overview diagram of the pre-install steps eager-load](/enterprise-version_air-gap-repo_overview-order-diagram-focus.webp)
+![Overview diagram of the pre-install steps eager-load](/enterprise-version_air-gap-repo_k8s-overview-order-diagram-clean.webp)
 
 This guide provides instructions on how to prepare your airgap environment before installing self-hosted Palette by
 completing the required preparatory steps one through four, as shown in the diagram.
