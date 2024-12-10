@@ -166,31 +166,31 @@ When viewing logs for enterprise management clusters or management clusters usin
 Repeat the following process for each node in your management cluster.
 
 1. Log in to a node in your management cluster.
-
-```bash
-ssh -i <key-name> <user@hostname>
-```
-
+   
+   ```bash
+   ssh -i <key-name> <user@hostname>
+   ```
+   
 2. Switch to `sudo` mode.
-
-```bash
-sudo --login
-```
+   
+   ```bash
+   sudo --login
+   ```
 
 3. Increase the maximum number of file descriptors that the kernel can allocate system-wide.
-
-```bash
-echo "fs.file-max = 1000000" > /etc/sysctl.d/99-maxfiles.conf
-```
+     
+   ```bash
+   echo "fs.file-max = 1000000" > /etc/sysctl.d/99-maxfiles.conf
+   ```
 
 4. Apply the updated `sysctl` settings.
 
-```bash
-sysctl -p /etc/sysctl.d/99-maxfiles.conf
-```
+   ```bash
+   sysctl -p /etc/sysctl.d/99-maxfiles.conf
+   ```
 
 5. Restart the `kubelet` and `containerd` services.
 
-```bash
-systemctl restart kubelet containerd
-```
+   ```bash
+   systemctl restart kubelet containerd
+   ```
