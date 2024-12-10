@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## December 7, 2024 - Release 4.5.12
+## December 15, 2024 - Release 4.5.13
 
 ### Palette {#palette-enterprise-4-5-12}
 
@@ -26,8 +26,7 @@ tags: ["release-notes"]
 - The Spectro Cloud Artifact Repository (SCAR) is now hosted inside an Open Container Initiative (OCI) repository.
   Previously, airgaped self-hosted Palette or VerteX installations required a file server to host the SCAR repository.
   With this release, the SCAR repository is now hosted inside the same OCI registry hosting packs and images. This
-  removes the need for a file server to host the SCAR content. If you have an existing self-hosted installation of
-  Palette Enterprise or VerteX, reach out to our support team before upgrading to this release.
+  removes the need for a file server to host the SCAR content. New installations of Palette Enterprise and VerteX will automatically use the new architecture. Existing installations will need to be upgraded to the latest version to take advantage of this feature.
 
 #### Improvements
 
