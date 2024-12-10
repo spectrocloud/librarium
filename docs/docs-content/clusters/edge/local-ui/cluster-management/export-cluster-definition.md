@@ -3,7 +3,7 @@ sidebar_label: "Export Cluster Definition"
 title: "Export Cluster Definition"
 description: "Instructions for exporting cluster definition."
 hide_table_of_contents: false
-sidebar_position: 50
+sidebar_position: 10
 tags: ["edge"]
 ---
 

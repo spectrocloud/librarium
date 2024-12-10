@@ -9,7 +9,7 @@ tags: ["vertex", "enterprise", "airgap", "kubernetes"]
 keywords: ["self-hosted", "vertex"]
 ---
 
-![Overview diagram of the pre-install steps eager-load](/enterprise-version_air-gap-repo_overview-order-diagram-focus.webp)
+![Overview diagram of the pre-install steps eager-load](/enterprise-version_air-gap-repo_k8s-overview-order-diagram-clean.webp)
 
 This guide provides instructions to prepare your airgap environment for a Palette VerteX installation by completing the
 required preparatory steps one through four shown in the diagram. The respective installation guides for each platform
@@ -30,7 +30,7 @@ Each prerequisite is required for a successful installation.
 
 - An x86 Linux jumpbox or bastion host with connectivity to the target platform where you are installing VerteX.
 
-- 30 GB of disk space available for the airgap setup binary and temporary files. The airgap content uncompressed is
+- 120 GB of disk space available for the airgap setup binary and temporary files. The uncompressed airgap content is
   approximately 20 GB.
 
 - An OCI registry such as [Harbor](https://goharbor.io/) or [AWS ECR](https://aws.amazon.com/ecr/) to store VerteX
@@ -42,23 +42,6 @@ Each prerequisite is required for a successful installation.
   Ensure the OCI registries are set up with HTTPS. AWS ECR is enabled with HTTPS by default. Harbor requires you to
   enable HTTPS. If you are using Harbor, you must enable HTTPS to authenticate with the registry. Refer to the
   [Harbor](https://goharbor.io/docs/2.9.0/install-config/configure-https) documentation for guidance.
-
-  :::
-
-- An HTTP file server to host the VerteX manifest. The file server must be accessible from the target environment where
-  VerteX will be installed. Below is a list of common file servers:
-
-  - [Apache HTTP Server](https://httpd.apache.org/)
-
-  - [Nginx](https://www.nginx.com/)
-
-  - [Caddy](https://caddyserver.com/)
-
-  :::warning
-
-  Take the necessary steps to secure your file server and ensure it can automatically recover from a failure. The file
-  server is a critical component of the airgap installation and must be available post-install for VerteX to function
-  properly.
 
   :::
 
@@ -262,7 +245,7 @@ Complete the following steps before deploying the airgap VerteX installation.
     - Pushing image gcr.io/cloud-provider-vsphere/cpi/release/manager:v1.22.8
     .....
     Preparing Manifests Archive
-    Manifests are available in /tmp/spectro-manifests-1696971110.zip. Extract the archive to a file server to serve as a Spectro Cloud Repository
+    Manifests are available in /tmp/spectro-manifests-1696971110.zip.
     Setup Completed
     ```
 
@@ -273,40 +256,12 @@ Complete the following steps before deploying the airgap VerteX installation.
 
     :::
 
-13. Move the manifest file located in your temporary directory to the location of your file server. Unzip the manifest
-    file to a folder accessible by the file server. Replace the file name below with the name of the manifest file
-    provided to you by the airgap setup.
-
-    ```shell
-    unzip spectro-manifests-XXXXXXXXXXXX.zip -d /target/folder
-    ```
-
-    :::tip
-
-    If you want to get started quickly with a file server, install
-    [Caddy](https://caddyserver.com/docs/quick-starts/static-files) or use Python3's
-    [http sever](https://docs.python.org/3/library/http.server.html) and issue one of the following commands in the
-    folder where you unzipped the manifest content. Each command will start a file server on port 2015.
-
-    ```shell
-    caddy file-server --listen :2015 --browse
-    ```
-
-    ```shell
-    python3 -m http.server 2015
-    ```
-
-    We do not recommend serving the manifest content over HTTP, but it is an option if you want to get started quickly.
-    For production workloads, enable HTTPS on your file server.
-
-    :::
-
-14. Review the additional packs available for download. The supplemental packs are optional and not required for a
+13. Review the additional packs available for download. The supplemental packs are optional and not required for a
     successful installation. However, to create cluster profiles you may require several of the packs available for
     download. Refer to the [Additional Packs](../../airgap/supplemental-packs.md) resource for a list of available
     packs.
 
-15. Once you select the packs you want to install, download the pack binaries and start the binary to initiate the
+14. Once you select the packs you want to install, download the pack binaries and start the binary to initiate the
     upload process. This step requires internet access, so you may have to download the binaries on a separate machine
     outside the airgap environment and transfer them to the airgap environment using an approved method.
 
@@ -326,7 +281,7 @@ Complete the following steps before deploying the airgap VerteX installation.
       Setup Completed
     ```
 
-16. Repeat step 13 for each pack you want to install.
+15. Repeat step 13 for each pack you want to install.
 
 You now have completed the preparation steps for an airgap installation. Check out the [Validate](#validate) section to
 ensure the airgap setup process completed successfully.
@@ -337,35 +292,8 @@ Use the following steps to validate the airgap setup process completed successfu
 
 1. Log in to your OCI registry and verify the VerteX images and packs are available.
 
-2. Verify the manifest file is accessible from the file server. The manifest file is required for the VerteX
-   installation process. The screenshot below is an example of a file server hosting the unzipped manifest content. The
-   example is using Caddy as the file server.
-
-   ![Example of a file server hosting the unzipped manifest content](/enterprise-version_airgap_airgap-instructions_file-server-caddy.webp)
-
-3. Ensure your file server is accessible from the environment you are installing VerteX. Use the following command to
-   verify the manifest content is accessible from the file server. Replace the hostname or IP address below with your
-   file server hostname or IP address.
-
-   ```shell
-   curl http://<hostname>:<port>/roar/nickfury/versions.yaml
-   ```
-
-   ```yaml hideClipboard
-   versions:
-     - version: "3.3"
-       filepath: "/roar/nickfury/3.3/version.yaml"
-       patchVersionsFilepath: "/roar/nickfury/3.3/versions.yaml"
-     - version: "3.4"
-       filepath: "/roar/nickfury/3.4/version.yaml"
-       patchVersionsFilepath: "/roar/nickfury/3.4/versions.yaml"
-     - version: "4.0"
-       filepath: "/roar/nickfury/4.0/version.yaml"
-       patchVersionsFilepath: "/roar/nickfury/4.0/versions.yaml"
-   ```
-
 ## Next Steps
 
 You are now ready to deploy the airgap VerteX installation. The important difference is that you will specify your OCI
-registry and file server during the installation process. Refer to the [VerteX Install](./install.md) guide for detailed
-guidance on installing VerteX.
+registry during the installation process. Refer to the [VerteX Install](./install.md) guide for detailed guidance on
+installing VerteX.

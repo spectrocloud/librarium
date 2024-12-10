@@ -43,11 +43,7 @@ following diagram outlines the major pre-installation steps for an airgap instal
 
 3. The airgap script will push the required images and packs to your private OCI registry.
 
-4. Extract the manifest content from the airgap setup binary. The manifest content must be hosted on a web server that
-   is accessible from the airgap environment. You can use the same Linux VM from step 2 to host the manifest content or
-   use a different web server.
-
-5. Install Palette using the Palette CLI or the Kubernetes Helm chart.
+4. Install Palette using the Palette CLI or the Kubernetes Helm chart.
 
 Configure your Palette environment
 

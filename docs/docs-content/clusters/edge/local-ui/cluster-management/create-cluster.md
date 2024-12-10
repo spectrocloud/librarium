@@ -1,14 +1,14 @@
 ---
 sidebar_label: "Create Local Cluster"
 title: "Create Local Cluster"
-description: "Instructions for creating a locally manageg cluster in Edge Host Management Console."
+description: "Instructions for creating a locally managed cluster in Edge Host Management Console."
 hide_table_of_contents: false
-sidebar_position: 30
+sidebar_position: 20
 tags: ["edge"]
 ---
 
-You can create and manage a single-node cluster on an airgapped Edge host locally from Local UI. This page guides you
-through how to create a cluster using Local UI.
+You can create and manage single-node as well as multi-node clusters on airgapped hosts locally from Local UI. This page
+teaches you how to create a cluster using Local UI.
 
 :::preview
 
@@ -16,21 +16,41 @@ through how to create a cluster using Local UI.
 
 ## Limitations
 
-- You can only create single-node clusters consisting solely of the Edge host you create the cluster from. You cannot
-  include other Edge hosts in the same local or remote network.
+- For multi-node clusters, all hosts must be deployed in the same deployment mode. For more information, refer to
+  [Deployment Modes](../../../../deployment-modes/deployment-modes.md).
+
+- For hosts that are deployed in agent mode, all hosts must share the same Operating System (OS).
+
+<!-- prettier-ignore -->
+- For multi-node clusters, do not use the
+  <VersionedLink text="Local Path Provisioner Pack" url="/integrations/packs/?pack=csi-local-path-provisioner" />. This
+  is because whenever a node is drained during an upgrade or for any other reason, the volumes will not dynamically move
+  with the local path provisioner.
 
 ## Prerequisites
 
 - Network access to the Edge device’s IP and port where Local UI is exposed. The default port is 5080.
 
-- Credentials to log in to Local UI. Any OS user can be used to log in to Local UI.
+- The `stylus.enableMultiNode` parameter is set to `true` in your user data configuration. For more information, refer
+  to [Prepare User Data](../../edgeforge-workflow/prepare-user-data.md).
+
+- The `stylus.installationMode` parameter is set to `airgap` in your user data configuration for all your hosts.
+
+- Credentials to log into Local UI. Any OS user can be used to log in to Local UI.
 
 - You have uploaded the necessary software artifacts to the Edge host or included the artifacts in the Edge Installer
   ISO during EdgeForge. For more information, refer to [Upload Content Bundle](./upload-content-bundle.md) and
   [Build Content Bundle](../../edgeforge-workflow/palette-canvos/build-content-bundle.md).
 
-- You must ensure that the Edge host has a stable IP address. You have the following options to achieve a stable IP
-  address:
+  :::warning
+
+  Content bundles must be built with a Palette Edge CLI version that is later than `4.5.7`. Visit the
+  [Downloads](../../../../spectro-downloads.md#palette-edge-cli) page to download the appropriate version of the Palette
+  Edge CLI to build the content bundle.
+
+  :::
+
+- You must ensure your hosts have stable IP addresses. You have the following options to achieve a stable IP address:
 
   - Use a static IP address. Contact your network administrator to assign the Edge host a static IP address.
   - Use Dynamic Host Configuration Protocol (DHCP) reservations to reserve an IP address in a DHCP network. Contact your
@@ -38,6 +58,8 @@ through how to create a cluster using Local UI.
   - Enable network overlay on your Edge cluster. Network overlay can only be enabled during cluster creation. For more
     information about network overlay, refer to [Enable Overlay Network](../../networking/vxlan-overlay.md).
 
+- To create multi-node clusters, all nodes to be included in the cluster must be linked. For more information, refer to
+  [Link Hosts](./link-hosts.md).
 - If you configure a local [Agent Mode](../../../../deployment-modes/agent-mode/agent-mode.md) cluster to use Network
   Time Protocol (NTP) servers, you must have
   [`systemd-timesyncd`](https://www.freedesktop.org/software/systemd/man/latest/systemd-timesyncd.service.html)
@@ -89,7 +111,12 @@ through how to create a cluster using Local UI.
    more information, refer to [Enable Overlay Network](../../networking/vxlan-overlay.md). If you enable the overlay
    network, you need to specify a CIDR range to be used by the overlay network.
 
-8. In the **Node Config** step, you can specify configurations for the control plane pool of your single-node cluster.
+8. In the **Node Config** step, you can specify configurations for worker pools and control plane pools. To assign a
+   host to a node pool, click **Add Edge Hosts** in the corresponding node pool and select the host to add to the pool.
+   For multi-node clusters, the leader node is a mandatory control plane node and cannot be unassigned. Additionally,
+   you must ensure that you have an odd number of nodes in the control plane. Once a cluster is formed, every node in
+   the control plane will be considered a leader node.
+
    For more information about node pool configurations, refer to [Node pools](../../../cluster-management/node-pool.md).
    After you finish configuration, click **Next**.
 
@@ -98,6 +125,6 @@ through how to create a cluster using Local UI.
 
 ## Validate
 
-1. Log in to Local UI.
+1. Log in to [Local UI](../host-management/access-console.md).
 
 2. Click **Cluster**. Verify that your cluster has entered the running status.

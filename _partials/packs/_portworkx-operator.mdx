@@ -1671,3 +1671,18 @@ certificates will not be imported correctly and will result in Portworx deployme
 </TabItem>
 
 </Tabs>
+
+## Cluster Backups
+
+You must add the following snippet under the `manifests.volume-snapshot-class` field if you are using 
+Portworx as your CSI layer on a cluster deployed to a MAAS environment. 
+These labels ensure that the <VersionedLink text="Volume Snapshot Controller" url="/integrations/packs/?pack=volume-snapshot-controller" /> pack installs correctly.
+Refer to the <VersionedLink text="Create Cluster Backup" url="/clusters/cluster-management/backup-restore/create-cluster-backup" /> 
+guide for further information.
+
+```yaml
+extraLabels:
+  pod-security.kubernetes.io/enforce: privileged
+  pod-security.kubernetes.io/audit: privileged
+  pod-security.kubernetes.io/warn: privileged
+```
