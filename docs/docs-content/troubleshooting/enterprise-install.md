@@ -159,9 +159,11 @@ automatically resolve this issue. If you have self-hosted instances of Palette i
 
 ## Scenario - "Too Many Open Files" in Management Cluster
 
-When viewing logs for enterprise or private cloud gateway management clusters, you may encounter a "too many open files" error, which prevents logs from tailing after a certain point. To resolve this issue, you must increase the maximum number of file descriptors for each node on your cluster.
+When viewing logs for enterprise or private cloud gateway management clusters, you may encounter a "too many open files" error, which prevents logs from tailing after a certain point. To resolve this issue, you must increase the maximum number of file descriptors for each node on your cluster. 
 
 ### Debug Steps
+
+Repeat the following process for each node in your management cluster.
 
 1. Log in to a node in your management cluster.
 
@@ -192,5 +194,3 @@ sysctl -p /etc/sysctl.d/99-maxfiles.conf
 ```bash
 systemctl restart kubelet containerd
 ```
-
-6. Repeat the above process for each node. 
