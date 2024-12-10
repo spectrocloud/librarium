@@ -13,4 +13,4 @@ keywords: ["self-hosted", "enterprise"]
 
 import ScarMigration from "../../../../_partials/self-hosted/_scar-migration.mdx";
 
-<ScarMigration name="scar-migration" edition="VerteX" />
+<ScarMigration name="scar-migration" edition="Palette" />
