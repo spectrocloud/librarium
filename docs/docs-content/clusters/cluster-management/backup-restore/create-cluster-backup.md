@@ -55,7 +55,7 @@ months. Additionally, you can initiate a backup on demand for an existing cluste
       deletionPolicy: "Retain"
    ```
 
-   Additionally, you must add the following snippet under the `manifests.volume-snapshot-class` field if you are using <VersionedLink text="Portworx" url="/integrations/packs/?pack=csi-portworx-generic" /> as your CSI layer on a cluster deployed to a MaaS environment. These labels ensure that the <VersionedLink text="Volume Snapshot Controller" url="/integrations/packs/?pack=volume-snapshot-controller" /> pack installs correctly.
+   Additionally, you must add the following snippet under the `manifests.volume-snapshot-class` field if you are using <VersionedLink text="Portworx" url="/integrations/packs/?pack=csi-portworx-generic" /> as your CSI layer on a cluster deployed to a MAAS environment. These labels ensure that the <VersionedLink text="Volume Snapshot Controller" url="/integrations/packs/?pack=volume-snapshot-controller" /> pack installs correctly.
 
    ```yaml
    extraLabels:
@@ -169,8 +169,8 @@ months. Additionally, you can initiate a backup on demand for an existing cluste
       driver: ""
       deletionPolicy: "Retain"
    ```
-   
-   Additionally, you must add the following snippet under the `manifests.volume-snapshot-class` field if you are using <VersionedLink text="Portworx" url="/integrations/packs/?pack=csi-portworx-generic" /> as your CSI layer on a cluster deployed to a MaaS environment. These labels ensure that the <VersionedLink text="Volume Snapshot Controller" url="/integrations/packs/?pack=volume-snapshot-controller" /> pack installs correctly.
+
+   Additionally, you must add the following snippet under the `manifests.volume-snapshot-class` field if you are using <VersionedLink text="Portworx" url="/integrations/packs/?pack=csi-portworx-generic" /> as your CSI layer on a cluster deployed to a MAAS environment. These labels ensure that the <VersionedLink text="Volume Snapshot Controller" url="/integrations/packs/?pack=volume-snapshot-controller" /> pack installs correctly.
 
    ```yaml
    extraLabels:
