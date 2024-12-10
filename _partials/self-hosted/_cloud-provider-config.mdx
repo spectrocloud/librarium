@@ -59,14 +59,11 @@ Ensure you replace the credentials below with your system console credentials.
       ```json
       CONFIG_JSON=$(cat <<EOF
       {
-        "clientId": "**************",
-        "clientSecret": "**************",
-        "tenantId": "**************",
-        "subscriptionId": "**************",
-        "storage": {
-          "accessKey": "**************",
-          "storageName": "**************",
-          "container": "**************"
+        "spec": {
+          "clientId": "**************",
+          "clientSecret": "**************",
+          "tenantId": "**************",
+          "subscriptionId": "**************"
         }
       }
       EOF
@@ -80,8 +77,10 @@ Ensure you replace the credentials below with your system console credentials.
       ```json
       CONFIG_JSON=$(cat <<EOF
       {
-        "accessKey": "**************",
-        "secretKey": "**************"
+        "spec": {
+          "accessKey": "**************",
+          "secretKey": "**************"
+        }
       }
       EOF
       )
@@ -94,7 +93,9 @@ Ensure you replace the credentials below with your system console credentials.
       ```json
       CONFIG_JSON=$(cat <<EOF
       {
-        "jsonCredentials": "**************"
+        "spec": {
+          "json": "**************"
+        }
       }
       EOF
       )
