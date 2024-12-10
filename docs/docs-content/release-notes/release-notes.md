@@ -84,7 +84,7 @@ tags: ["release-notes"]
   using the **certs** folder to pass multiple proxy certificates to the CanvOS build process.
 
 <!-- prettier-ignore -->
-- The Edge <VersionedLink text="BYOS" url="/integrations/packs/?pack=edge-native-byoi" />
+- The Edge <VersionedLink text="BYOOS" url="/integrations/packs/?pack=edge-native-byoi" />
   pack has new parameters that allow you to configure node draining behavior during cluster upgrades or repaves.
   Previously, nodes were always drained during upgrades and repaves, even for single-node clusters. Refer to
   [Skip Node Draining](../clusters/edge/cluster-management/skip-draining.md) for guidance on configuring draining behavior.
