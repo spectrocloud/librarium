@@ -158,8 +158,8 @@ The following limitations apply after importing an existing Amazon EKS cluster.
     | Profile ARN | The ARN of the IAM Roles Anywhere profile that defines which roles can be assumed. | `arn:aws:rolesanywhere:us-east-2:123456789012:profile/abcd1234-5678-90ef-ghij-klmnopqrstuv` |
     | Role ARN | The ARN of the IAM role specified in the IAM Roles Anywhere profile that defines the permissions and policies for roles that can be assumed by hybrid nodes. | `arn:aws:iam::123456789012:role/IRAHybridNodesRole` |
     | Trust Anchor ARN | The ARN of the IAM Roles Anywhere trust anchor that contains your certificate authority configuration. | `arn:aws:rolesanywhere:us-east-2:123456789012:trust-anchor/abcd1234-5678-90ef-ghij-klmnopqrstuv` |
-    | Root CA Certificate | The PEM-encoded certificate of your Certificate Authority (CA) that serves as the trust anchor. This certificate is used by IAM Roles Anywhere to validate the authenticity of the client certificates presented by your hybrid nodes. | `-----BEGIN CERTIFICATE-----\nMIIEBjCCAu6gAwIBAgIJAMc0ZzaSUK51MA0...\n-----END CERTIFICATE-----` |
-    | Root CA Private Key | The private key corresponding to your CA's certificate, used to sign client certificates. | `-----BEGIN RSA PRIVATE KEY-----\nMIIEpAIBAAKCAQEA4RFvKSZ+XVmRE3URXU...\n-----END RSA PRIVATE KEY-----` |
+    | Root CA Certificate | The PEM-encoded certificate of your Certificate Authority (CA) that serves as the trust anchor. This certificate is used by IAM Roles Anywhere to validate the authenticity of the client certificates presented by your hybrid nodes. | |
+    | Root CA Private Key | The private key corresponding to your CA's certificate, used to sign client certificates. | |
 
 13. Click **Save Changes** when complete.
 
