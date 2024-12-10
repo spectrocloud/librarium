@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Skip Node Draining
-title: "Skip Node Draining
+sidebar_label: "Skip Node Draining"
+title: "Skip Node Draining"
 description: "Learn how to skip node draining during cluster upgrades and cluster repaves."
 icon: ""
 sidebar_position: 40
