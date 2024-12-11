@@ -63,7 +63,7 @@ Palette. You will then create a cluster profile and use the registered host to d
 
   - [jq](https://jqlang.github.io/jq/download/)
   - [Zstandard](https://facebook.github.io/zstd/)
-  - [Rsync](https://github.com/RsyncProject/rsync)
+  - [rsync](https://github.com/RsyncProject/rsync)
   - [systemd-timesyncd](https://www.freedesktop.org/software/systemd/man/latest/systemd-timesyncd.service.html)
   - [conntrack](https://conntrack-tools.netfilter.org/downloads.html). This requirement is specific for clusters that
     use PXKE as the Kubernetes layer.
