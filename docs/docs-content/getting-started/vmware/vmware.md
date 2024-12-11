@@ -48,7 +48,7 @@ Once your cluster is deployed, you can update it using cluster profile updates.
       title: "Deploy a Cluster",
       description: "Deploy a Palette host cluster to VMware.",
       buttonText: "Learn more",
-      url: "./deploy-k8s-cluster",
+      url: "/getting-started/vmware/deploy-k8s-cluster",
     },
     {
       title: "Deploy Cluster Profile Updates",
