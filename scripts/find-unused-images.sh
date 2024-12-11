@@ -5,7 +5,7 @@ set -e
 
 # Create a list of all the images we have and save it to a json.
 # Trim the path static/assets/docs/images.
-find static/assets/docs/images -type f \( -name "*.gif" -o -name "*.webp" \) ! -name ".DS_STORE" ! -name ".DS_Store" | sed 's|static/assets/docs/images||g'  > all_images.json
+find static/assets/docs/images README.md -type f \( -name "*.gif" -o -name "*.webp" \) ! -name ".DS_STORE" ! -name ".DS_Store" | sed 's|static/assets/docs/images||g'  > all_images.json
 image_count=$(wc -l < all_images.json)
 echo "Detected $image_count .webp and .gif assets in static/assets/docs/images..." 
 
@@ -28,9 +28,10 @@ echo "$branches" > evaluated_branches.json
 for current_branch in $branches; do    
     git checkout $current_branch
 
+    grep -Hn -E "\.webp|\.gif" README.md > readme_used_images.json
     find docs -type f -name "*.md" -exec grep -Hn -E "\.webp|\.gif" {} \; > docs_used_images.json
     find _partials -type f -name "*.mdx" -exec grep -Hn -E "\.webp|\.gif" {} \; > partials_used_images.json
-    cat docs_used_images.json partials_used_images.json > used_images.json
+    cat readme_used_images.json docs_used_images.json partials_used_images.json > used_images.json
 
     line_number=1
     for img in $(cat all_images.json); do
@@ -48,6 +49,7 @@ echo "Detected $unused_image_count unused webp assets in static/assets/docs/imag
 
 # Clean up files
 rm all_images.json
+rm readme_used_images.json
 rm docs_used_images.json
 rm partials_used_images.json
 rm used_images.json
