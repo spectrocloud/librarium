@@ -159,10 +159,9 @@ automatically resolve this issue. If you have self-hosted instances of Palette i
 
 ## Scenario - "Too Many Open Files" in Cluster
 
-When viewing logs for Enterprise or
-[Private Cloud Gateway](../clusters/pcg/pcg.md) clusters, you may encounter a "too many open files" error, which prevents logs
-from tailing after a certain point. To resolve this issue, you must increase the maximum number of file descriptors for
-each node on your cluster.
+When viewing logs for Enterprise or [Private Cloud Gateway](../clusters/pcg/pcg.md) clusters, you may encounter a "too
+many open files" error, which prevents logs from tailing after a certain point. To resolve this issue, you must increase
+the maximum number of file descriptors for each node on your cluster.
 
 ### Debug Steps
 
@@ -173,9 +172,9 @@ Repeat the following process for each node in your cluster.
    ```bash
    ssh -i <key-name> <spectro@hostname>
    ```
-   
-2. Switch to `sudo` mode using the command that best fits your system and preferences. 
-   
+
+2. Switch to `sudo` mode using the command that best fits your system and preferences.
+
    ```bash
    sudo --login
    ```
