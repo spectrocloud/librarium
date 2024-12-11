@@ -7,7 +7,8 @@ tags: ["public cloud", "aws", "eks hybrid nodes"]
 sidebar_position: 30
 ---
 
-This section guides you on how to create a cluster profile to collectively manage your hybrid nodes. You can then create hybrid node pools and add your edge hosts to them.
+This section guides you on how to create a cluster profile to collectively manage your hybrid nodes. You can then create
+hybrid node pools and add your edge hosts to them.
 
 ## Limitations
 
@@ -18,11 +19,14 @@ This section guides you on how to create a cluster profile to collectively manag
 
 ### Prerequisites
 
-- Edge hosts have been registered with Palette through [Agent Mode](../../../../deployment-modes/agent-mode/agent-mode.md) or by using [Provider Images](../../../edge/edgeforge-workflow/palette-canvos/build-provider-images.md).
+- Edge hosts have been registered with Palette through
+  [Agent Mode](../../../../deployment-modes/agent-mode/agent-mode.md) or by using
+  [Provider Images](../../../edge/edgeforge-workflow/palette-canvos/build-provider-images.md).
 
   :::warning
 
-  If using Provider Images, you must include the following in your `.arg` file during the [build steps](../../../edge/edgeforge-workflow/palette-canvos/build-provider-images.md#build-provider-images).
+  If using Provider Images, you must include the following in your `.arg` file during the
+  [build steps](../../../edge/edgeforge-workflow/palette-canvos/build-provider-images.md#build-provider-images).
 
   ```shell
   K8S_DISTRIBUTION=nodeadm
@@ -38,36 +42,15 @@ This section guides you on how to create a cluster profile to collectively manag
 ### Create Profile
 
 OS:
-* Agent Mode = `byoi-agent-mode 1.0.0`
-* Provider Images = `Kairos Edge OS Pack`
+
+- Agent Mode = `byoi-agent-mode 1.0.0`
+- Provider Images = `Kairos Edge OS Pack`
 
 Kubernetes = `edge-nodeadm 1.29.x` or `edge-nodeadm 1.30.x`
 
 Network = `cni-custom 0.1.0` (dummy)
 
 ### Validate
-
-
-## Hybrid Network ConfigMap (placeholder)
-
-Before creating any hybrid pools, the user may need to create a `kube-system/hybrid-config` ConfigMap containing `serviceCIDR` and/or `vpcCIDR` keys, whose values are the service CIDR and VPC CIDR for the imported EKS hybrid cluster, respectively. See bullets below for additional detail.
-
-* The `serviceCIDR` key is only required if one or more edge hosts require proxy configuration. If the ConfigMap is not found (or the key is not found), `10.96.0.0/12` will be used by default. The service CIDR is used to compute the value of `NO_PROXY` to ensure that traffic destined for Kubernetes service endpoints is not sent to the proxy server.
-
-* The `vpcCIDRkey` is only required if a VPN Server IP is configured for one or more edge hosts in a hybrid pool. In this scenario, the ConfigMap must exist and the `vpcCIDRkey` must be defined.
-
-* Example:
-
-  ```yaml
-  apiVersion: v1
-  kind: ConfigMap
-  metadata:
-    name: hybrid-config
-    namespace: kube-system
-  data:
-    serviceCIDR: "192.168.0.0/16"
-    vpcCIDR: "10.200.0.0/16"
-  ```
 
 ## Create Hybrid Node Pool
 
@@ -76,6 +59,5 @@ Before creating any hybrid pools, the user may need to create a `kube-system/hyb
 - TBA
 
 ### Create Node Pool
-
 
 ### Validate

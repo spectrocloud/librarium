@@ -51,7 +51,8 @@ configuration requirements.
 
 #### AWS
 
-Configure your EKS cluster with static placement so that your nodes are assigned to specific Availability Zones (AZs) and fixed networking configurations. This is required because of the following reasons:
+Configure your EKS cluster with static placement so that your nodes are assigned to specific Availability Zones (AZs)
+and fixed networking configurations. This is required because of the following reasons:
 
 - The VPN configuration must be set up with predefined routes and IP ranges.
 - Node placement cannot change dynamically across AZs.
@@ -76,7 +77,8 @@ For AWS VPNs, configure two static routes for each of the following connections:
 - Hybrid Pod CIDR block.  
   For example, Hybrid Pod CIDR 192.168.0.0/16 → VPN endpoint 172.16.0.1.
 
-If you're using a Virtual Private Gateway or Transit Gateway, route propagation can be enabled to automatically populate your VPC route tables. Ensure you verify your route tables after propagation.
+If you're using a Virtual Private Gateway or Transit Gateway, route propagation can be enabled to automatically populate
+your VPC route tables. Ensure you verify your route tables after propagation.
 
 #### On-Premises and Edge Locations
 
@@ -88,28 +90,41 @@ For on-premises and edge VPNs, set up IPsec Phase 1 tunnels with Phase 2 securit
 - Hybrid Node pod CIDR to EKS VPC CIDR.  
   For example, Hybrid Node Pod CIDR 192.168.0.0/16 → EKS VPC CIDR 10.100.0.0/16.
 
-You should also enable either Border Gateway Protocol (BGP) routing or static routes to ensure proper traffic flow through VPN tunnels.
+You should also enable either Border Gateway Protocol (BGP) routing or static routes to ensure proper traffic flow
+through VPN tunnels.
 
-For non-primary VPN servers, either broadcast routes via BGP or configure static routes to redirect EKS VPC CIDR traffic appropriately.
+For non-primary VPN servers, either broadcast routes via BGP or configure static routes to redirect EKS VPC CIDR traffic
+appropriately.
 
 ## Operating System Compatibility
 
-Palette supports the operating systems available to edge hosts registered through [Agent Mode](../../../../deployment-modes/agent-mode/agent-mode.md) or by using [Provider Images](../../../edge/edgeforge-workflow/palette-canvos/build-provider-images.md).
+Palette supports the same operating systems as AWS. Refer to
+[Prepare operating system for hybrid nodes](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-os.html) for
+details.
 
 ## Supported Edge Hosts
 
-Palette allows you to use your edge hosts as your Amazon EKS Hybrid Nodes. Your edge hosts need to be registered with Palette before you can add them to your node pools.
+Palette allows you to use your edge hosts as your Amazon EKS Hybrid Nodes. Your edge hosts need to be registered with
+Palette before you can add them to your node pools.
 
-If you want to use your edge hosts as Amazon EKS Hybrid Nodes, they must have been registered through [Agent Mode](../../../../deployment-modes/agent-mode/agent-mode.md) or by using [Provider Images](../../../edge/edgeforge-workflow/palette-canvos/build-provider-images.md).
+If you want to use your edge hosts as Amazon EKS Hybrid Nodes, they must have been registered using one of the following
+methods:
+
+- [Agent Mode](../../../../deployment-modes/agent-mode/agent-mode.md)
+- [Provider images](../../../edge/edgeforge-workflow/palette-canvos/build-provider-images.md)
+  - Provider images are [Kairos-based images](https://kairos.io/) containing the OS and the desired Kubernetes versions.
 
 :::warning
 
-If using Provider Images, you must include the following in your `.arg` file during the [build steps](../../../edge/edgeforge-workflow/palette-canvos/build-provider-images.md#build-provider-images).
+If using provider images, you must include the following in your `.arg` file during the
+[build steps](../../../edge/edgeforge-workflow/palette-canvos/build-provider-images.md#build-provider-images).
 
 ```shell
 K8S_DISTRIBUTION=nodeadm
-K8S_VERSION=1.29.0  # supported versions: [ 1.29.0 | 1.30.0 ]
+K8S_VERSION=1.29.0  # supported versions: [ 1.28.0 | 1.29.0 | 1.30.0 | 1.31.0 ]
 ```
+
+Replace the `K8S_VERSION` value with your version of Kubernetes.
 
 :::
 
