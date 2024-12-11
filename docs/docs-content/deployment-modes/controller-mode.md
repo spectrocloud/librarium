@@ -42,12 +42,11 @@ You can deploy clusters in controller mode across a range of environments to mee
 table below provides an overview of the different use cases and the corresponding supported environments for controller
 mode deployments.
 
-| Use Case          | Supported Environments                                                                                                                           |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Public Cloud**  | [AWS](../clusters/public-cloud/aws/aws.md)<br />[Azure](../clusters/public-cloud/azure/azure.md)<br />[GCP](../clusters/public-cloud/gcp/gcp.md) |
-| **Data Center**   | [VMware vSphere](../clusters/data-center/vmware/vmware.md)                                                                                       |
-| **Bare Metal**    | [MAAS](../clusters/data-center/maas/maas.md)                                                                                                     |
-| **Private Cloud** | [Nutanix](../clusters/data-center/nutanix/nutanix.md)<br />[Openstack](../clusters/data-center/openstack.md)                                     |
+| Use Case         | Supported Environments                                                                                                                                                          |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Public Cloud** | [AWS](../clusters/public-cloud/aws/aws.md)<br />[Azure](../clusters/public-cloud/azure/azure.md)<br />[GCP](../clusters/public-cloud/gcp/gcp.md)                                |
+| **Data Center**  | [VMware vSphere](../clusters/data-center/vmware/vmware.md) <br /> [Nutanix](../clusters/data-center/nutanix/nutanix.md) <br />[Openstack](../clusters/data-center/openstack.md) |
+| **Bare Metal**   | [MAAS](../clusters/data-center/maas/maas.md)                                                                                                                                    |
 
 ## Resources
 

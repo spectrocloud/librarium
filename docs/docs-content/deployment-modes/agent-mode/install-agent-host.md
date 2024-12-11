@@ -63,10 +63,11 @@ Palette. You will then create a cluster profile and use the registered host to d
 
   - [jq](https://jqlang.github.io/jq/download/)
   - [Zstandard](https://facebook.github.io/zstd/)
-  - [Rsync](https://github.com/RsyncProject/rsync)
-  - [`systemd-timesyncd`](https://www.freedesktop.org/software/systemd/man/latest/systemd-timesyncd.service.html)
+  - [rsync](https://github.com/RsyncProject/rsync)
+  - [systemd-timesyncd](https://www.freedesktop.org/software/systemd/man/latest/systemd-timesyncd.service.html)
   - [conntrack](https://conntrack-tools.netfilter.org/downloads.html). This requirement is specific for clusters that
     use PXKE as the Kubernetes layer.
+  - [iptables](https://linux.die.net/man/8/iptables)
   - (Airgap only) [Crane](https://github.com/google/go-containerregistry/blob/main/cmd/crane/README.md) is installed and
     available.
   - (Airgap only) [Palette Edge CLI](../../spectro-downloads.md#palette-edge-cli) is installed and available.
