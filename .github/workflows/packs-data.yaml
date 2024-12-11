@@ -26,13 +26,26 @@ jobs:
           secretId: ${{ secrets.VAULT_SECRET_ID }}
           secrets: /providers/github/organizations/spectrocloud/token?org_name=spectrocloud token | VAULT_GITHUB_TOKEN
 
-      - uses: actions-hub/gcloud@master
-        env:
-          PROJECT_ID: spectro-common-dev
-          APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+
+      - uses: 'google-github-actions/auth@v2'
         with:
-          args: cp gs://docs-education-automation/packs_inventory/packs_report.json  ./packs_report.json
-          cli: gsutil
+          project_id: spectro-common-dev
+          credentials_json: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+          cleanup_credentials: true
+
+
+      - name: 'Set up Cloud SDK'
+        uses: 'google-github-actions/setup-gcloud@v2'
+        with:
+          version: '>= 363.0.0'    
+
+      # - uses: actions-hub/gcloud@master
+      #   env:
+      #     PROJECT_ID: spectro-common-dev
+      #     APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+      #   with:
+      #     args: cp gs://docs-education-automation/packs_inventory/packs_report.json  ./packs_report.json
+      #     cli: gsutil
 
       - name: Upload to S3
         run: |
