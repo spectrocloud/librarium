@@ -121,10 +121,10 @@ If using provider images, you must include the following in your `.arg` file dur
 
 ```shell
 K8S_DISTRIBUTION=nodeadm
-K8S_VERSION=1.29.0  # supported versions: [ 1.28.0 | 1.29.0 | 1.30.0 | 1.31.0 ]
+K8S_VERSION=<kubernetesVersion>  # supported versions: [ 1.28.0 | 1.29.0 | 1.30.0 | 1.31.0 ]
 ```
 
-Replace the `K8S_VERSION` value with your version of Kubernetes.
+Replace `<kubernetesVersion>` with your version of Kubernetes. For example, `1.29.0`.
 
 :::
 

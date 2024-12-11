@@ -66,7 +66,6 @@ Import your Amazon EKS cluster and enable hybrid mode to be able to create edge 
 
   If you are using IAM Roles Anywhere, you will need to provide the following details during the import steps:
 
-  - The ARN of the IAM role that the hybrid node _directly assumes_ to access AWS services and perform operations.
   - The ARN of the IAM Roles Anywhere profile that defines which roles can be assumed.
   - The ARN of the IAM role specified in the IAM Roles Anywhere profile that defines the permissions and policies for
     roles that can be assumed by hybrid nodes.
@@ -186,7 +185,6 @@ Import your Amazon EKS cluster and enable hybrid mode to be able to create edge 
 
     | **Field**           | **Description**                                                                                                                                                                                                                        | **Example**                                                                                      |
     | ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-    | Assume Role ARN     | The ARN of the IAM role that the hybrid node _directly assumes_ to access AWS services and perform operations.                                                                                                                         | `arn:aws:iam::123456789012:role/AmazonEKSHybridNodesRole`                                        |
     | Profile ARN         | The ARN of the IAM Roles Anywhere profile that defines which roles can be assumed.                                                                                                                                                     | `arn:aws:rolesanywhere:us-east-2:123456789012:profile/abcd1234-5678-90ef-ghij-klmnopqrstuv`      |
     | Role ARN            | The ARN of the IAM role specified in the IAM Roles Anywhere profile that defines the permissions and policies for roles that can be assumed by hybrid nodes.                                                                           | `arn:aws:iam::123456789012:role/IRAHybridNodesRole`                                              |
     | Trust Anchor ARN    | The ARN of the IAM Roles Anywhere trust anchor that contains your certificate authority configuration.                                                                                                                                 | `arn:aws:rolesanywhere:us-east-2:123456789012:trust-anchor/abcd1234-5678-90ef-ghij-klmnopqrstuv` |
@@ -214,7 +212,7 @@ Import your Amazon EKS cluster and enable hybrid mode to be able to create edge 
 15. If the `aws-auth` ConfigMap does not exist, create the following ConfigMap in the `kube-system` namespace using the
     following command.
 
-    Ensure to replace `<assumeRoleArn>` with the **Assume Role ARN** entry from step 12.
+    Ensure to replace `<roleArn>` with the **Role ARN** entry from step 12.
 
     ```shell
     kubectl create -f=/dev/stdin <<-EOF
@@ -228,7 +226,7 @@ Import your Amazon EKS cluster and enable hybrid mode to be able to create edge 
         - groups:
           - system:bootstrappers
           - system:nodes
-          rolearn: <assumeRoleArn>
+          rolearn: <roleArn>
           username: system:node:{{SessionName}}
     EOF
     ```
@@ -242,7 +240,7 @@ Import your Amazon EKS cluster and enable hybrid mode to be able to create edge 
     ```
 
     The following example shows the `mapRoles` entry appended below an existing entry. Ensure to replace
-    `<assumeRoleArn>` with the **Assume Role ARN** entry from step 12.
+    `<roleArn>` with the **Role ARN** entry from step 12.
 
     ```yaml {13-17} hideClipboard
     apiVersion: v1
@@ -260,7 +258,7 @@ Import your Amazon EKS cluster and enable hybrid mode to be able to create edge 
         - groups:
           - system:bootstrappers
           - system:nodes
-          rolearn: <assumeRoleArn>
+          rolearn: <roleArn>
           username: system:node:{{SessionName}}
     ```
 
@@ -339,33 +337,35 @@ must also complete the following prerequisites:
 
 ### Add CNI Cluster Profile
 
-1. From the left **Main Menu**, select **Profiles**.
+1. Log in to [Palette](https://spectrocloud.com).
 
-2. On the **Profiles** page, click **Add Cluster Profile**.
+2. From the left **Main Menu**, select **Profiles**.
 
-3. Fill out the basic information and ensure **Type** is set to **Add-on**. Click **Next** when done.
+3. On the **Profiles** page, click **Add Cluster Profile**.
 
-4. In **Profile Layers**, click **Add New Pack**.
+4. Fill out the basic information and ensure **Type** is set to **Add-on**. Click **Next** when done.
 
-5. Enter **Cilium** in the search box, and select it. It appears in the **System App** category and must be version
+5. In **Profile Layers**, click **Add New Pack**.
+
+6. Enter **Cilium** in the search box, and select it. It appears in the **System App** category and must be version
    **1.16.0** or above.
 
-6. Click the **Presets drop-down Menu**.
+7. Click the **Presets drop-down Menu**.
 
-7. For **IPAM mode**, select **Cluster Pool**.
+8. For **IPAM mode**, select **Cluster Pool**.
 
-8. In the YAML editor, search for **clusterPoolIPv4PodCIDRList**. This parameter specifies the overall IP ranges
+9.  In the YAML editor, search for **clusterPoolIPv4PodCIDRList**. This parameter specifies the overall IP ranges
    available for pod networking across all your hybrid nodes.
 
    Adjust the pod CIDR list for hybrid pods in other networks that need to connect to this cluster. For example,
    `192.168.0.0`.
 
-9. In the YAML editor, search for **clusterPoolIPv4MaskSize**. This parameter determines the subnet mask size used for
+10. In the YAML editor, search for **clusterPoolIPv4MaskSize**. This parameter determines the subnet mask size used for
    pod IP allocation within each hybrid node.
 
    Adjust the mask size based on your required pods per hybrid node. For example, `/25`.
 
-10. In the Presets, find the **cilium-agent - Hybrid Nodes Affinity** option, and select **Amazon EKS**.
+11. In the Presets, find the **cilium-agent - Hybrid Nodes Affinity** option, and select **Amazon EKS**.
 
     This will add the following entry to `charts.cilium.affinity`. No changes are required afterwards.
 
@@ -387,21 +387,21 @@ must also complete the following prerequisites:
 
     :::
 
-11. Click **Confirm & Create**.
+12. Click **Confirm & Create**.
 
-12. Click **Next**, and then click **Finish Configuration**.
+13. Click **Next**, and then click **Finish Configuration**.
 
-13. From the left **Main Menu**, select **Clusters**.
+14. From the left **Main Menu**, select **Clusters**.
 
-14. Select your cluster to view its **Overview** tab.
+15. Select your cluster to view its **Overview** tab.
 
-15. Click **Attach Profile**.
+16. Click **Attach Profile**.
 
-16. Select the **Cilium** add-on profile that was created, and click **Confirm**.
+17. Select the **Cilium** add-on profile that was created, and click **Confirm**.
 
-17. In the **Cluster profiles** page, click **Save**. This will add the profile to your cluster.
+18. In the **Cluster profiles** page, click **Save**. This will add the profile to your cluster.
 
-18. If enabling [Cilium Envoy](https://docs.cilium.io/en/latest/security/network/proxy/envoy/) or other Cilium add-ons,
+19. If enabling [Cilium Envoy](https://docs.cilium.io/en/latest/security/network/proxy/envoy/) or other Cilium add-ons,
     you must apply the following label to all AWS cloud worker nodes.
 
     ```yaml
