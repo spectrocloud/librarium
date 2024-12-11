@@ -280,7 +280,7 @@ Use the following steps to install Palette.
     attempt. For example:
 
     ```bash
-    palette ec install --config /home/spectro/.palette/ec/ec-20230706150945/ec.yaml
+    palette ec install --config-file /home/spectro/.palette/ec/ec-20230706150945/ec.yaml
     ```
 
     :::
