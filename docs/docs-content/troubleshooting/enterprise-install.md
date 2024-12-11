@@ -157,21 +157,21 @@ automatically resolve this issue. If you have self-hosted instances of Palette i
    Events:  <none>
    ```
 
-## Scenario - "Too Many Open Files" in Management Cluster
+## Scenario - "Too Many Open Files" in Cluster
 
-When viewing logs for enterprise management clusters or management clusters using a
-[Private Cloud Gateway](../clusters/pcg/pcg.md), you may encounter a "too many open files" error, which prevents logs
+When viewing logs for Enterprise or
+[Private Cloud Gateway](../clusters/pcg/pcg.md) clusters, you may encounter a "too many open files" error, which prevents logs
 from tailing after a certain point. To resolve this issue, you must increase the maximum number of file descriptors for
 each node on your cluster.
 
 ### Debug Steps
 
-Repeat the following process for each node in your management cluster.
+Repeat the following process for each node in your cluster.
 
-1. Log in to a node in your management cluster.
+1. Log in to a node in your cluster.
 
    ```bash
-   ssh -i <key-name> <user@hostname>
+   ssh -i <key-name> <spectro@hostname>
    ```
    
 2. Switch to `sudo` mode using the command that best fits your system and preferences. 
@@ -186,10 +186,14 @@ Repeat the following process for each node in your management cluster.
    echo "fs.file-max = 1000000" > /etc/sysctl.d/99-maxfiles.conf
    ```
 
-4. Apply the updated `sysctl` settings.
+4. Apply the updated `sysctl` settings. The increased limit is returned.
 
    ```bash
    sysctl -p /etc/sysctl.d/99-maxfiles.conf
+   ```
+
+   ```bash hideClipboard
+   fs.file-max = 1000000
    ```
 
 5. Restart the `kubelet` and `containerd` services.
