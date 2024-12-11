@@ -5,6 +5,9 @@ on:
     # Runs at 5 minutes past the hour, every 6 hours.
     - cron: "5 */6 * * *"
   workflow_dispatch:
+  pull_request:
+    branches-ignore: "master"
+
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_S3_ACCESS_KEY }}
