@@ -171,7 +171,7 @@ Repeat the following process for each node in your management cluster.
    ssh -i <key-name> <user@hostname>
    ```
    
-2. Switch to `sudo` mode.
+2. Switch to `sudo` mode using the command that best fits your system and preferences. 
    
    ```bash
    sudo --login
@@ -193,4 +193,14 @@ Repeat the following process for each node in your management cluster.
 
    ```bash
    systemctl restart kubelet containerd
+   ```
+
+6. Confirm the changes are applied.
+
+   ```bash
+   sysctl fs.file-max
+   ```
+
+   ```bash hideClipboard
+   fs.file-max = 1000000
    ```
