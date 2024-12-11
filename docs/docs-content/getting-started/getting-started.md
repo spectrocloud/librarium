@@ -49,8 +49,6 @@ orchestration.
 
 Explore more through the following pages.
 
-<VersionedLink url="/getting-started/introduction" text="Test" />
-
 <!-- vale off -->
 
 <SimpleCardGrid
