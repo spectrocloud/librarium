@@ -181,6 +181,11 @@ Import your Amazon EKS cluster and enable hybrid mode to be able to create edge 
     | Remote Pod CIDRs  | The CIDR ranges for hybrid pods in other networks that need to connect to this cluster.                                  | `192.168.0.0/16`                 |
     | Access Management | The Access Management mode for the Amazon EKS Hybrid Nodes. Select either **Systems Manager** or **IAM Roles Anywhere**. |                                  |
 
+12. If selecting **Systems Manager**, you must provide the following additional details (TBA).
+
+    - Activation ID
+    - Activation Code
+
 12. If selecting **IAM Roles Anywhere**, you must provide the following additional details.
 
     | **Field**           | **Description**                                                                                                                                                                                                                        | **Example**                                                                                      |
@@ -271,11 +276,11 @@ Import your Amazon EKS cluster and enable hybrid mode to be able to create edge 
     apiVersion: v1
     kind: ConfigMap
     metadata:
-    name: hybrid-config
-    namespace: kube-system
+      name: hybrid-config
+      namespace: kube-system
     data:
-    serviceCIDR: "<serviceCidrIp>" # Only required if using a proxy configuration for edge hosts. If not specified, defaults to 10.96.0.0/12.
-    vpcCIDR: "<vpcCidrIp>" # Only required if a VPN server IP is configured for one or more edge hosts. No default value.
+      serviceCIDR: "<serviceCidrIp>" # Only required if using a proxy configuration for edge hosts. If not specified, defaults to 10.96.0.0/12.
+      vpcCIDR: "<vpcCidrIp>" # Only required if a VPN server IP is configured for one or more edge hosts. No default value.
     ```
 
 18. Replace `<serviceCidrIp>` with your hybrid pod CIDR list. For example, `192.168.0.0/16`. The `serviceCIDR`

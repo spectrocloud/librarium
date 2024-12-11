@@ -19,24 +19,6 @@ hybrid node pools and add your edge hosts to them.
 
 ### Prerequisites
 
-- Edge hosts have been registered with Palette through
-  [Agent Mode](../../../../deployment-modes/agent-mode/agent-mode.md) or by using
-  [provider images](../../../edge/edgeforge-workflow/palette-canvos/build-provider-images.md).
-
-  :::warning
-
-  If using provider images, you must include the following in your `.arg` file during the
-  [build steps](../../../edge/edgeforge-workflow/palette-canvos/build-provider-images.md#build-provider-images).
-
-  ```shell
-  K8S_DISTRIBUTION=nodeadm
-  K8S_VERSION=<kubernetesVersion>  # supported versions: [ 1.28.0 | 1.29.0 | 1.30.0 | 1.31.0 ]
-  ```
-
-  Replace `<kubernetesVersion>` with your version of Kubernetes. For example, `1.29.0`.
-
-  :::
-
 - Your Palette account role must have the `clusterProfile.create` permission to create a cluster profile. Refer to the
   [Cluster Profile](../../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile)
   permissions for guidance.
@@ -53,7 +35,7 @@ hybrid node pools and add your edge hosts to them.
 
 5. Select **Edge Native** from the **Infrastructure provider** list, and click **Next**.
 
-6. Select your base OS pack depending on how you have registered your edge hosts.
+6. Select your base OS pack depending on how you will register your edge hosts.
 
    - For Agent Mode, select **BYOS - Agent Mode**.
    - For provider images, select **BYOS - Edge OS**.
@@ -100,14 +82,94 @@ Your cluster profile for hybrid nodes is now created and can be used in the [Cre
 
 ### Prerequisites
 
-- TBA
+- An Amazon EKS cluster imported with hybrid mode enabled. Refer to [Import EKS Cluster and Enable Hybrid Mode](./import-eks-cluster-enable-hybrid-mode.md) for guidance.
+
+- Edge hosts have been registered with Palette through
+  [Agent Mode](../../../../deployment-modes/agent-mode/agent-mode.md) or by using
+  [provider images](../../../edge/edgeforge-workflow/palette-canvos/build-provider-images.md).
+
+  :::warning
+
+  If using provider images, you must include the following in your `.arg` file during the
+  [build steps](../../../edge/edgeforge-workflow/palette-canvos/build-provider-images.md#build-provider-images).
+
+  ```shell
+  K8S_DISTRIBUTION=nodeadm
+  K8S_VERSION=<kubernetesVersion>  # supported versions: [ 1.28.0 | 1.29.0 | 1.30.0 | 1.31.0 ]
+  ```
+
+  Replace `<kubernetesVersion>` with your version of Kubernetes. For example, `1.29.0`.
+
+  :::
+
+- A cluster profile created for your hybrid nodes. Refer to [Create Cluster Profile for Hybrid Node Pools](#create-cluster-profile-for-hybrid-node-pools) for steps.
 
 ### Create Node Pool
 
+1. Log in to [Palette](https://spectrocloud.com).
+
+2. From the left **Main Menu**, select **Clusters**.
+
+3. Select your cluster to view its **Overview** tab.
+
+4. Select the **Nodes** tab.
+
+5. In the top-right, click **New Node Pool**.
+
+6. In the pop-up window, fill in the following fields.
+
+   | **Field** | **Description** |
+   | --- | --- |
+   | **Node pool name** | A descriptive name for the hybrid node pool. |
+   | **Additional Labels (Optional)**           | Labels can apply placement constraints on a pod. For example, you can add a label to make a node eligible to receive the workload. To learn more, refer to the [Node Labels](../../../cluster-management/node-labels.md) guide.  |
+   | **Taints**                      | Sets toleration to pods and allows (but does not require) the pods to schedule onto nodes with matching taints. To learn more, refer to the [Taints and Tolerations](../../../cluster-management/taints.md) guide.  |
+   | **Hybrid Profile**             | Click in the field and select the cluster profile you [created for your hybrid nodes](#create-cluster-profile-for-hybrid-node-pools). Click **Configure**. Review the layers and click **Confirm**.  |
+   | **Architecture**               | Select the architecture type for your edge hosts. Either **AMD64** or **ARM64**.  |
+   | **NTP Servers (Optional)**          | The Network Time Protocol (NTP) servers to use for the hybrid nodes. For example, `pool.ntp.org`. |
+   | **Nodes (edge hosts)** | Click **Add Edge Hosts**. Select your edge hosts from the table by clicking the checkbox next to the **Machine ID**. Click **Confirm** once done. |
+
+7. Once your edge hosts have been selected, click **Configure** next to each edge host to review and configure individual host options.
+
+   | **Field** | **Description** |
+   | --- | --- |
+   | **Host Name (Optional)** | Provide a optional name for the edge host that will be displayed in Palette. |
+   | **NIC Name**           | Select a specific Network Interface Card (NIC) from the **drop-down Menu**, or leave it on **Auto**.  |
+   | **VPN server IP**                      | Specify the VPN server's IP if the hybrid nodes in the pool use a VPN. If provided, a static route will be configured on edge hosts to route traffic to the Amazon EKS VPC CIDR through the VPN server. If not specified, ensure your hybrid node network routes traffic to the Amazon EKS VPC CIDR through the default gateway.  |
+
+   Click **Confirm** once done.
+
+8. Repeat step 7 for each edge host added to your node pool.
+
+9. Click **Confirm** on the **Add node pool** pop-up window to add the hybrid node pool to your cluster.
+
+The hybrid node pool will then be provisioned and added to your cluster. This will take up to 15 minutes.
+
 ### Validate
+
+1. Log in to [Palette](https://spectrocloud.com).
+
+2. From the left **Main Menu**, select **Clusters**.
+
+3. Select your cluster to view its **Overview** tab.
+
+4. Select the **Nodes** tab.
+
+5. Your newly added hybrid node pool displays as **Running**.
+
+   ![A running hybrid pool on the Nodes tab](/aws_eks-hybrid_create-hybrid-node-pools_running-hybrid-pool.webp)
+
+## Hybrid Node Configuration for Static Networking
+
+TBC
+
+## Workaround
+
+![Edit Hybrid Profile](/aws_eks-hybrid_create-hybrid-node-pools_edit-hybrid-profile.webp)
 
 ## Resources
 
 - [Agent Mode](../../../../deployment-modes/agent-mode/agent-mode.md)
 
 - [Build Provider Images](../../../edge/edgeforge-workflow/palette-canvos/build-provider-images.md)
+
+- [Worker Node Pool](../../../cluster-management/node-pool.md#worker-node-pool)
