@@ -35,7 +35,7 @@ fi
 
 # Check if context is branch-deploy and current branch matches version-*
 if [[ "$context" == "branch-deploy" ]]; then
-  if [[ "$current_branch" == version-* ]]; then
+  if [[ "$current_branch" == "kapa" ]]; then
     allowed=1
   else
     allowed=0
