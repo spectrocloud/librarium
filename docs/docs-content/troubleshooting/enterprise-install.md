@@ -10,7 +10,7 @@ tags: ["troubleshooting", "self-hosted", "palette", "vertex"]
 
 Refer to the following sections to troubleshoot errors encountered when installing an Enterprise Cluster.
 
-## Scenario - Self-linking Error
+## Scenario - Self-Linking Error
 
 When installing an Enterprise Cluster, you may encounter an error stating that the enterprise cluster is unable to
 self-link. Self-linking is the process of Palette or VerteX becoming aware of the Kubernetes cluster it is installed on.
@@ -78,7 +78,7 @@ following steps to restart the management pod.
    pod "mgmt-f7f97f4fd-lds69" deleted
    ```
 
-## Non-unique vSphere CNS Mapping
+## Scenario - Non-Unique vSphere CNS Mapping
 
 In Palette and VerteX releases 4.4.8 and earlier, Persistent Volume Claims (PVCs) metadata do not use a unique
 identifier for self-hosted Palette clusters. This causes incorrect Cloud Native Storage (CNS) mappings in vSphere,
@@ -151,7 +151,7 @@ automatically resolve this issue. If you have self-hosted instances of Palette i
    Events:  <none>
    ```
 
-   ## Volume Attachment Errors Volume in VMware Environment
+## Volume Attachment Errors Volume in VMware Environment
 
 If you deployed Palette in a VMware vSphere environment and are experiencing volume attachment errors for the MongoDB
 pods during the upgrade process, it may be due to duplicate resources in the cluster causing resource creation errors.
@@ -275,3 +275,57 @@ IDs. Use the following steps to correctly identify the issue and resolve it.
 
     If you continue to encounter issues, contact our support team by emailing
     [support@spectrocloud.com](mailto:support@spectrocloud.com) so that we can provide you with further guidance.
+
+## Scenario - "Too Many Open Files" in Cluster
+
+When viewing logs for Enterprise or [Private Cloud Gateway](../clusters/pcg/pcg.md) clusters, you may encounter a "too
+many open files" error, which prevents logs from tailing after a certain point. To resolve this issue, you must increase
+the maximum number of file descriptors for each node on your cluster.
+
+### Debug Steps
+
+Repeat the following process for each node in your cluster.
+
+1. Log in to a node in your cluster.
+
+   ```bash
+   ssh -i <key-name> <spectro@hostname>
+   ```
+
+2. Switch to `sudo` mode using the command that best fits your system and preferences.
+
+   ```bash
+   sudo --login
+   ```
+
+3. Increase the maximum number of file descriptors that the kernel can allocate system-wide.
+
+   ```bash
+   echo "fs.file-max = 1000000" > /etc/sysctl.d/99-maxfiles.conf
+   ```
+
+4. Apply the updated `sysctl` settings. The increased limit is returned.
+
+   ```bash
+   sysctl -p /etc/sysctl.d/99-maxfiles.conf
+   ```
+
+   ```bash hideClipboard
+   fs.file-max = 1000000
+   ```
+
+5. Restart the `kubelet` and `containerd` services.
+
+   ```bash
+   systemctl restart kubelet containerd
+   ```
+
+6. Confirm that the change was applied.
+
+   ```bash
+   sysctl fs.file-max
+   ```
+
+   ```bash hideClipboard
+   fs.file-max = 1000000
+   ```
