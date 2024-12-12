@@ -29,7 +29,7 @@ Each prerequisite is required for a successful installation.
 
 - An x86 Linux jumpbox or bastion host with connectivity to the target platform where you are installing VerteX.
 
-- 30 GB of disk space available for the airgap setup binary and temporary files. The airgap content uncompressed is
+- 120 GB of disk space available for the airgap setup binary and temporary files. The airgap content uncompressed is
   approximately 20 GB.
 
 - An OCI registry such as [Harbor](https://goharbor.io/) or [AWS ECR](https://aws.amazon.com/ecr/) to store VerteX
