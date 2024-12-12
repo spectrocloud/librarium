@@ -241,7 +241,7 @@ nodes. Before proceeding, consider the following points:
 
    | **Field**          | **Description**                                                                                                         | **Example**        |
    | ------------------ | ----------------------------------------------------------------------------------------------------------------------- | ------------------ |
-   | Destination        | Use the podCIDRs value for the hybrid node.                                                                             | `192.168.4.128/25` |
+   | Destination        | Use the `podCIDRs` value for the hybrid node discovered in step 2.                                                      | `192.168.4.128/25` |
    | Next Hop / Gateway | Specify the IP address of the hybrid node as listed in the CiliumNode resource under `internalIP` discovered in step 1. | `192.168.5.101`    |
 
 5. Ensure the routes are saved and applied. The process varies depending on the VPN solution.
