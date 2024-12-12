@@ -48,7 +48,30 @@ const config = {
     DISABLE_PACKS_INTEGRATIONS: process.env.DISABLE_PACKS_INTEGRATIONS,
   },
   staticDirectories: ["static", "static/assets/docs/images", "static/assets", "static/img/"],
-  headTags: [],
+  headTags: [
+    {
+      tagName: "link",
+      attributes: {
+        rel: "preconnect",
+        href: "https://api.usercentrics.eu",
+      },
+    },
+    {
+      tagName: "link",
+      attributes: {
+        rel: "preconnect",
+        href: "https://app.usercentrics.eu",
+      },
+    },
+    {
+      tagName: "link",
+      attributes: {
+        rel: "preload",
+        href: "app.usercentrics.eu/browser-ui/latest/loader.js",
+        as: "script",
+      },
+    },
+  ],
   stylesheets: [],
   presets: [
     [
@@ -208,6 +231,12 @@ const config = {
       },
     ],
   ].filter(Boolean),
+  /* IMPORTANT
+  Any script added below must have the "data-usercentrics" attribute with the name of the script as the value. 
+  This is used to identify the script for Usercentrics CMP.
+  Scripts also need to have the type attribute set to "text/plain" to prevent them from being executed by the browser in the event that the user has not given consent to the script.
+  The exception to the text/plain rule is the Usercentrics CMP script which must be loaded as a script tag.
+  */
   scripts: [
     {
       src: `https://w.appzi.io/w.js?token=${process.env.APPZI_TOKEN}`,
@@ -228,6 +257,7 @@ const config = {
       id: "usercentrics-cmp",
       async: "true",
       "data-settings-id": "0IhiFXOBwy0Z2U",
+      type: "text/javascript",
     },
   ],
   themes: ["docusaurus-theme-openapi-docs"],
