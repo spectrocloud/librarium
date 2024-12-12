@@ -82,7 +82,8 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
 3.  Right-click on your cluster or resource group and select **Deploy OVF Template**.
 
 4.  In the **Deploy OVF Template** wizard, enter the following URL to import the Operating System (OS) and Kubernetes
-    distribution OVA required for the installation.
+    distribution OVA required for the installation. Contact your support representative to learn if the version of
+    Palette you are installing requires a new OS and Kubernetes OVA.
 
     Consider the following example for reference.
 
