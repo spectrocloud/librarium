@@ -565,8 +565,8 @@ component will automatically display the badge in the correct color based on the
 ### Simple Card Grid
 
 This is a custom component that creates a grid of simple text cards with two columns, styled according to our color
-scheme. The rows of cards are dynamically created according to the list of specified cards. This component used the
-`VersionedLink` under the covers and links should be specified as discussed in the [Internal Links](#internal-links)
+scheme. The rows of cards are dynamically created according to the list of specified cards. This component uses the
+`VersionedLink` under the covers. URLs should be specified as discussed in the [Internal Links](#internal-links)
 section.
 
 ```js
