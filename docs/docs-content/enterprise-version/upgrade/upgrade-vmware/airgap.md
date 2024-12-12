@@ -85,8 +85,6 @@ steps one through four. Otherwise, start at step five.
    [Deploy an OVF or OVA Template](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-AFEDC48B-C96F-4088-9C1F-4F0A30E965DE.html)
    guide for more information on deploying OVAs in vCenter.
 
-   :::tip
-
 5. In your terminal, use the following command template to SSH into the Palette airgap support VM. Enter the path to
    your private SSH key, your username, and the IP or domain of the airgap support VM. The default username is `ubuntu`.
 
