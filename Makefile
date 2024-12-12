@@ -18,6 +18,7 @@ ALOGLIA_CONFIG=$(shell cat docsearch.dev.config.json | jq -r tostring)
 # Remove all /deprecated paths because we don't want to maintain their links
 VERIFY_URL_PATHS=$(shell find ./docs -name "*.md" | cut -c 3- | \
 	sed '/security-bulletins/d' | \
+	sed '/cve-reports/d' | \
 	sed '/oss-licenses/d' | \
 	sed '/deprecated/d' )
 
