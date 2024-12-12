@@ -261,11 +261,20 @@ const config = {
       src: `https://w.appzi.io/w.js?token=${process.env.APPZI_TOKEN}`,
       defer: true,
     },
+    {
+      src: "https://widget.kapa.ai/kapa-widget.bundle.js",
+      "data-website-id": "9c212df9-d1fc-4f65-9c93-8bcd9c8ec6ca",
+      "data-project-name": "Spectro Cloud Docs AI",
+      "data-project-color": "#3679c6",
+      "data-consent-required": true,
+      "data-project-logo": "/img/spectrocloud-logo-no-text.svg",
+      "data-modal-title": "Spectro Cloud - Ask Docs",
+      "data-modal-disclaimer":
+        "This is a custom LLM with access to all [Spectro Cloud public documentation](https://docs.spectrocloud.com). This instance is for internal testing and feedback purposes only. If you have any feedback, please share them in the Spectro Cloud #docs internal Slack channel.",
+      async: true,
+    },
   ],
   themes: ["docusaurus-theme-openapi-docs"],
-  customFields: {
-    // Put your custom environment here
-  },
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     {
