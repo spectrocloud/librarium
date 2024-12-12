@@ -8,8 +8,9 @@ sidebar_position: 30
 ---
 
 This section guides you on how to create a cluster profile to collectively manage your hybrid nodes. You can then create
-hybrid node pools and add your edge hosts to them. You may then need to configure your networking to allow traffic to
-reach the pods on your hybrid nodes.
+hybrid node pools and add your edge hosts to them.
+
+You may then need to configure your networking to allow traffic to reach the pods on your hybrid nodes.
 
 ## Limitations
 
@@ -272,9 +273,18 @@ nodes. Before proceeding, consider the following points:
    round-trip min/avg/max/stddev = 27.359/28.875/30.345/1.091 ms
    ```
 
-<!-- ## Workaround
+<!-- ## Configuration Changes Requiring Manual Hybrid Node Pool Repaves
 
-TBC
+Under the following scenarios, you will need to manually trigger a repave of your hybrid node pools:
+
+- Editing any of the Access Management details in the Hybrid Configuration in Cluster Settings.
+- Editing the VPN Server IP for an individual edge host.
+
+These configuration changes remain inactive until a workaround is performed.
+
+### Workaround
+
+Edit the hybrid profile for your hybrid node pool and adjust the CNI dummy profile entry to something else.
 
 ![Edit Hybrid Profile](/aws_eks-hybrid_create-hybrid-node-pools_edit-hybrid-profile.webp) -->
 
