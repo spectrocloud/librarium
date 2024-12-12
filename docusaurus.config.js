@@ -91,7 +91,7 @@ const config = {
     {
       tagName: "script",
       attributes: {
-        type: "text/javascript",
+        type: "text/plain",
         "data-usercentrics": "Google Tag Manager",
         src: "/scripts/googleTagManager.js",
       },
