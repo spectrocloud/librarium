@@ -91,7 +91,7 @@ Import your Amazon EKS cluster and enable hybrid mode to be able to create edge 
 
 ### Import Cluster
 
-1. Log in to [Palette](https://spectrocloud.com).
+1. Log in to [Palette](https://console.spectrocloud.com/).
 
 2. Navigate to the left **Main Menu** and select **Clusters**.
 
@@ -317,7 +317,7 @@ Import your Amazon EKS cluster and enable hybrid mode to be able to create edge 
 
 ### Validate
 
-1. Log in to [Palette](https://spectrocloud.com).
+1. Log in to [Palette](https://console.spectrocloud.com/).
 
 2. Navigate to the left **Main Menu** and select **Clusters**.
 
@@ -351,7 +351,7 @@ must also complete the following prerequisites:
 
 ### Add CNI Cluster Profile
 
-1. Log in to [Palette](https://spectrocloud.com).
+1. Log in to [Palette](https://console.spectrocloud.com/).
 
 2. From the left **Main Menu**, select **Profiles**.
 
@@ -433,7 +433,7 @@ Adjust the mask size based on your required pods per hybrid node. For example, `
 
 ### Validate
 
-1. Log in to [Palette](https://spectrocloud.com).
+1. Log in to [Palette](https://console.spectrocloud.com/).
 
 2. Navigate to the left **Main Menu** and select **Clusters**.
 

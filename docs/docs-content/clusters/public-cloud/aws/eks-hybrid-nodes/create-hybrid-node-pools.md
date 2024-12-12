@@ -27,7 +27,7 @@ You may then need to configure your networking to allow traffic to reach the pod
 
 ### Create Profile
 
-1. Log in to [Palette](https://spectrocloud.com).
+1. Log in to [Palette](https://console.spectrocloud.com/).
 
 2. From the left **Main Menu**, select **Profiles**.
 
@@ -63,8 +63,14 @@ You may then need to configure your networking to allow traffic to reach the pod
 14. In the YAML editor on the **Configure Pack** page, change the value of `manifests.byo-cni.contents.data.custom-cni`
     from `calico` to `dummy`.
 
+    :::info
+
     While this change is not required for the pack to function, setting it to 'dummy' better indicates that this pack
-    serves as a placeholder only.
+    serves as a placeholder only. This is because the Container Network Interface (CNI) was already created for hybrid
+    nodes during the [Add CNI Cluster Profile](./import-eks-cluster-enable-hybrid-mode.md#add-cni-cluster-profile)
+    steps.
+
+    :::
 
 15. Click **Confirm** when complete.
 
@@ -77,7 +83,7 @@ Your cluster profile for hybrid nodes is now created and can be used in the
 
 ### Validate
 
-1. Log in to [Palette](https://spectrocloud.com).
+1. Log in to [Palette](https://console.spectrocloud.com/).
 
 2. From the left **Main Menu**, select **Profiles**.
 
@@ -115,7 +121,7 @@ Your cluster profile for hybrid nodes is now created and can be used in the
 
 ### Create Node Pool
 
-1. Log in to [Palette](https://spectrocloud.com).
+1. Log in to [Palette](https://console.spectrocloud.com/).
 
 2. From the left **Main Menu**, select **Clusters**.
 
@@ -156,7 +162,7 @@ The hybrid node pool will then be provisioned and added to your cluster. This wi
 
 ### Validate
 
-1. Log in to [Palette](https://spectrocloud.com).
+1. Log in to [Palette](https://console.spectrocloud.com/).
 
 2. From the left **Main Menu**, select **Clusters**.
 
@@ -166,7 +172,7 @@ The hybrid node pool will then be provisioned and added to your cluster. This wi
 
 5. Your newly added hybrid node pool displays as **Running**.
 
-   ![A running hybrid pool on the Nodes tab](/aws_eks-hybrid_create-hybrid-node-pools_running-hybrid-pool.webp)
+   ![An active hybrid node pool on the Nodes tab](/aws_eks-hybrid_create-hybrid-node-pools_running-hybrid-pool.webp)
 
 ## Configure Hybrid Node Networking for VPN Solutions
 
@@ -217,7 +223,7 @@ nodes. Before proceeding, consider the following points:
    edge-xyz987uvw6543210example2           192.168.6.102      10.200.2.34   3h
    ```
 
-2. For each hybrid node, retrieve the `spec.ipam.podCIDRs` field to find the CIDR block allocated for pods running on
+2. For each hybrid node, retrieve the `spec.ipam.podCIDRs` field to find the CIDR block allocated for pods active on
    that node.
 
    Replace `<nodeName>` with the name of your hybrid node discovered in step 1. Repeat this step for each hybrid node
@@ -273,20 +279,83 @@ nodes. Before proceeding, consider the following points:
    round-trip min/avg/max/stddev = 27.359/28.875/30.345/1.091 ms
    ```
 
-<!-- ## Configuration Changes Requiring Manual Hybrid Node Pool Repaves
+## When to Manually Repave Hybrid Node Pools
 
-Under the following scenarios, you will need to manually trigger a repave of your hybrid node pools:
+Your hybrid node pools require manual repaving in these scenarios:
 
-- Editing any of the Access Management details in the Hybrid Configuration in Cluster Settings.
-- Editing the VPN Server IP for an individual edge host.
+- After modifying the **Access Management** settings of your Amazon EKS cluster in Palette. Refer to steps 11 through 13
+  in [Import Cluster](./import-eks-cluster-enable-hybrid-mode.md#import-cluster).
+- After changing an edge host's **VPN Server IP**. Refer to step 7 in [Create Node Pool](#create-node-pool).
 
-These configuration changes remain inactive until a workaround is performed.
+These changes do not take effect until you repave the affected node pools.
 
-### Workaround
+- For **Access Management** changes, repave all hybrid node pools.
+- For **VPN Server IP** changes, repave only the node pool containing the modified edge host.
 
-Edit the hybrid profile for your hybrid node pool and adjust the CNI dummy profile entry to something else.
+### Prerequisites
 
-![Edit Hybrid Profile](/aws_eks-hybrid_create-hybrid-node-pools_edit-hybrid-profile.webp) -->
+- Your Palette account role must have the `cluster.update` permission to edit clusters. Refer to the
+  [Cluster Profile](../../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile)
+  permissions for guidance.
+
+### Trigger Repave on Hybrid Node Pool
+
+Use the following steps to manually trigger a repave on a hybrid node pool.
+
+1. Log in to [Palette](https://console.spectrocloud.com/).
+
+2. From the left **Main Menu**, select **Profiles**.
+
+3. On the **Profiles** page, click on your hybrid node pool cluster profile.
+
+4. You can confirm that this cluster profile is managing your hybrid node pool by viewing the **In Use Clusters** list.
+   Your hybrid node pool names are listed here.
+
+   ![Edit Hybrid Profile](/aws_eks-hybrid_create-hybrid-node-pools_in-use-clusters.webp)
+
+5. Click on the **cni-custom 0.1.0** network layer to view the **Edit Pack** page.
+
+6. In the YAML editor on the right, change the value for `manifests.byo-cni.contents.data.custom-cni` to something
+   different.
+
+   Example.
+
+   ```yaml
+   custom-cni: "dummy-repave-1"
+   ```
+
+   As mentioned in step 14 during the [Create Profile](#create-profile) steps, the specific value you enter does not
+   affect your hybrid node pool's functionality, but any change to this field will trigger the required repave.
+
+7. Click **Confirm Updates** when done, then click **Save Changes**.
+
+8. From the left **Main Menu**, select **Clusters**.
+
+9. Select your cluster to view its **Overview** tab.
+
+10. Select the **Nodes** tab.
+
+11. On the **Nodes** tab, once the profile change has been processed, an **Updates pending** banner appears. Click on
+    **Node Pool Updates** in the banner.
+
+12. On the **Pool changes summary** pop-up window, click the checkbox next to **Upcoming changes in hybridPoolName
+    configuration**. Click **Confirm** afterwards.
+
+13. On the **Review update changes** window, review your changes and click **Confirm** to start the repave.
+
+The hybrid node pool repave will now complete. This can take up to one hour.
+
+### Validate
+
+1. Log in to [Palette](https://console.spectrocloud.com/).
+
+2. Navigate to the left **Main Menu** and click on **Clusters**.
+
+3. Select your cluster to view its **Overview** tab.
+
+4. Click on the **Nodes** tab.
+
+5. Verify that all hybrid node pools are in the healthy status.
 
 ## Resources
 
