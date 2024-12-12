@@ -49,53 +49,53 @@ const config = {
   },
   staticDirectories: ["static", "static/assets/docs/images", "static/assets", "static/img/"],
   headTags: [
-    {
-      tagName: "script",
-      attributes: {
-        type: "text/plain",
-        "data-usercentrics": "FullStory",
-        src: "/scripts/fullstory.js",
-      },
-    },
-    {
-      tagName: "link",
-      attributes: {
-        rel: "preconnect",
-        href: "https://api.usercentrics.eu",
-      },
-    },
-    {
-      tagName: "link",
-      attributes: {
-        rel: "preload",
-        href: "https://app.usercentrics.eu/browser-ui/latest/loader.js",
-        as: "script",
-      },
-    },
-    {
-      tagName: "script",
-      attributes: {
-        src: "https://app.usercentrics.eu/browser-ui/latest/loader.js",
-        "data-settings-id": "0IhiFXOBwy0Z2U",
-        id: "usercentrics-cmp",
-        async: "true",
-      },
-    },
-    {
-      tagName: "link",
-      attributes: {
-        rel: "preconnect",
-        href: "https://www.googletagmanager.com",
-      },
-    },
-    {
-      tagName: "script",
-      attributes: {
-        type: "text/plain",
-        "data-usercentrics": "Google Tag Manager",
-        src: "/scripts/googleTagManager.js",
-      },
-    },
+    // {
+    //   tagName: "script",
+    //   attributes: {
+    //     type: "text/plain",
+    //     "data-usercentrics": "FullStory",
+    //     src: "/scripts/fullstory.js",
+    //   },
+    // },
+    // {
+    //   tagName: "link",
+    //   attributes: {
+    //     rel: "preconnect",
+    //     href: "https://api.usercentrics.eu",
+    //   },
+    // },
+    // {
+    //   tagName: "link",
+    //   attributes: {
+    //     rel: "preload",
+    //     href: "https://app.usercentrics.eu/browser-ui/latest/loader.js",
+    //     as: "script",
+    //   },
+    // },
+    // {
+    //   tagName: "script",
+    //   attributes: {
+    //     src: "https://app.usercentrics.eu/browser-ui/latest/loader.js",
+    //     "data-settings-id": "0IhiFXOBwy0Z2U",
+    //     id: "usercentrics-cmp",
+    //     async: "true",
+    //   },
+    // },
+    // {
+    //   tagName: "link",
+    //   attributes: {
+    //     rel: "preconnect",
+    //     href: "https://www.googletagmanager.com",
+    //   },
+    // },
+    // {
+    //   tagName: "script",
+    //   attributes: {
+    //     type: "text/plain",
+    //     "data-usercentrics": "Google Tag Manager",
+    //     src: "/scripts/googleTagManager.js",
+    //   },
+    // },
   ],
   stylesheets: [],
   presets: [
@@ -260,6 +260,22 @@ const config = {
     {
       src: `https://w.appzi.io/w.js?token=${process.env.APPZI_TOKEN}`,
       defer: true,
+    },
+    {
+      src: "/scripts/fullstory.js",
+      type: "text/plain",
+      "data-usercentrics": "FullStory",
+    },
+    {
+      type: "text/plain",
+      src: "/scripts/googleTagManager.js",
+      "data-usercentrics": "Google Tag Manager",
+    },
+    {
+      src: "https://app.usercentrics.eu/browser-ui/latest/loader.js",
+      id: "usercentrics-cmp",
+      async: "true",
+      "data-settings-id": "0IhiFXOBwy0Z2U",
     },
   ],
   themes: ["docusaurus-theme-openapi-docs"],
