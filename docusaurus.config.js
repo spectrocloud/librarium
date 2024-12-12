@@ -48,55 +48,7 @@ const config = {
     DISABLE_PACKS_INTEGRATIONS: process.env.DISABLE_PACKS_INTEGRATIONS,
   },
   staticDirectories: ["static", "static/assets/docs/images", "static/assets", "static/img/"],
-  headTags: [
-    // {
-    //   tagName: "script",
-    //   attributes: {
-    //     type: "text/plain",
-    //     "data-usercentrics": "FullStory",
-    //     src: "/scripts/fullstory.js",
-    //   },
-    // },
-    // {
-    //   tagName: "link",
-    //   attributes: {
-    //     rel: "preconnect",
-    //     href: "https://api.usercentrics.eu",
-    //   },
-    // },
-    // {
-    //   tagName: "link",
-    //   attributes: {
-    //     rel: "preload",
-    //     href: "https://app.usercentrics.eu/browser-ui/latest/loader.js",
-    //     as: "script",
-    //   },
-    // },
-    // {
-    //   tagName: "script",
-    //   attributes: {
-    //     src: "https://app.usercentrics.eu/browser-ui/latest/loader.js",
-    //     "data-settings-id": "0IhiFXOBwy0Z2U",
-    //     id: "usercentrics-cmp",
-    //     async: "true",
-    //   },
-    // },
-    // {
-    //   tagName: "link",
-    //   attributes: {
-    //     rel: "preconnect",
-    //     href: "https://www.googletagmanager.com",
-    //   },
-    // },
-    // {
-    //   tagName: "script",
-    //   attributes: {
-    //     type: "text/plain",
-    //     "data-usercentrics": "Google Tag Manager",
-    //     src: "/scripts/googleTagManager.js",
-    //   },
-    // },
-  ],
+  headTags: [],
   stylesheets: [],
   presets: [
     [
