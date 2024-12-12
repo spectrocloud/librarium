@@ -270,7 +270,7 @@ Palette upgrade.
     `cainjectorImage`,`controllerImage`, `webhookImage`, and `amceResolverImage` image URLs and with your OCI image
     registry URL and the `/spectro-images/` namespace.
 
-    ```yaml
+    ```yaml {2-5}
     image:
     cainjectorImage: "<your-oci-registry-url>/spectro-images/gcr.io/spectro-images-public/release-fips/jetstack/cert-manager-cainjector:spectro-v1.11.0-20230427"
     controllerImage: "<your-oci-registry-url>/spectro-images/gcr.io/spectro-images-public/release-fips/jetstack/cert-manager-controller:spectro-v1.11.0-20230427"
@@ -282,7 +282,7 @@ Palette upgrade.
 
     Consider the following example for reference.
 
-    ```yaml
+    ```yaml {2-5}
     image:
     cainjectorImage: "harbor.docs.spectro.dev/spectro-images/gcr.io/spectro-images-public/release-fips/jetstack/cert-manager-cainjector:spectro-v1.11.0-20230427"
     controllerImage: "harbor.docs.spectro.dev/spectro-images/gcr.io/spectro-images-public/release-fips/jetstack/cert-manager-controller:spectro-v1.11.0-20230427"
