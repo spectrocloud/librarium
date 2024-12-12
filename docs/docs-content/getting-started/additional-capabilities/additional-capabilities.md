@@ -55,6 +55,8 @@ Started section to learn how they can grow with Palette and have a long-term rel
 In this section, you get an overview of other parts of Palette not yet covered by your Getting Started journey so far.
 Explore more through the following pages.
 
+<!-- vale off -->
+
 <SimpleCardGrid
   hideNumber="true"
   cards={[
