@@ -233,9 +233,13 @@ const config = {
   ].filter(Boolean),
   /* IMPORTANT
   Any script added below must have the "data-usercentrics" attribute with the name of the script as the value. 
+  We also need to notify marketing about the script being added so that they can update the Usercentrics CMP.
+  Marketing needs to know what to label the script as, for example Analytics, Marketing, etc. And, if it's essential or not.
+  Essential scripts are always loaded, non-essential scripts are loaded based on user consent.
   This is used to identify the script for Usercentrics CMP.
   Scripts also need to have the type attribute set to "text/plain" to prevent them from being executed by the browser in the event that the user has not given consent to the script.
   The exception to the text/plain rule is the Usercentrics CMP script which must be loaded as a script tag.
+  To learn more about attributes and values, visit https://docs.usercentrics.com/#/direct-implementation-guide?id=change-script-type-textjavascript-becomes-textplain
   */
   scripts: [
     {
