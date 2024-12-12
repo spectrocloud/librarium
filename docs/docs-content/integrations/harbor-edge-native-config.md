@@ -237,29 +237,6 @@ through the command-line.
 5. Deploy the resources into the namespace. Since the namespace has the label `stylus.io/imageswap=disable`, the Palette
    agent will pull the image from registiries you specify instead of from the Harbor registry.
 
-## Troubleshooting
-
-### Scenario - Harbor DB Pod Fails to Start
-
-When you start a cluster with the Harbor pack, the **harbor-database** pod might fail to start and get stuck on the
-**CrashLoopBackoff** state. It's possible that this is due to known issue with the Harbor pack related to file
-permissions. The workaround is to delete the pod and a new pod will be automatically created.
-
-#### Debug Steps
-
-1. Issue the following command to identify the pods with names that start with `harbor-database`.
-
-```shell
-kubectl get pods --namespace harbor --output wide
-```
-
-2. Delete the pod you identified in the previous step. Replace `POD_NAME` with the name of the pods. If there are
-   multiple pods, use the command for each pod.
-
-```shell
-kubectl delete pod POD_NAME --namespace harbor
-```
-
 </TabItem>
 </Tabs>
 
@@ -285,11 +262,6 @@ kubectl get pods --namespace harbor --output wide
 ```shell
 kubectl delete pod POD_NAME --namespace harbor
 ```
-
-### Scenario - Cluster Stuck in the Provisioning State
-
-A cluster may get stuck in the provisioning state if it uses Longhorn as its storage layer. If this happens, remove the
-cluster and try again.
 
 </TabItem>
 </Tabs>
