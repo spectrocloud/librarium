@@ -64,9 +64,16 @@ Import your Amazon EKS cluster and enable hybrid mode to be able to create edge 
   [Prepare credentials for hybrid nodes](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-creds.html) for
   guidance.
 
+  If you are using Systems Manager, you will need to provide the following details during the import steps:
+
+  - The Activation ID assigned by AWS Systems Manager when creating an activation. This ID is used to associate hybrid
+    nodes with your AWS account in Systems Manager.
+  - The Activation Code that is generated alongside the Activation ID. It is required to authenticate hybrid nodes with
+    AWS Systems Manager.
+
   If you are using IAM Roles Anywhere, you will need to provide the following details during the import steps:
 
-  - The ARN of the IAM Roles Anywhere profile that defines which roles can be assumed.
+  - The ARN of the IAM Roles Anywhere profile that defines which roles can be assumed by hybrid nodes.
   - The ARN of the IAM role specified in the IAM Roles Anywhere profile that defines the permissions and policies for
     roles that can be assumed by hybrid nodes.
   - The ARN of the IAM Roles Anywhere trust anchor that contains your certificate authority configuration.
@@ -181,24 +188,26 @@ Import your Amazon EKS cluster and enable hybrid mode to be able to create edge 
     | Remote Pod CIDRs  | The CIDR ranges for hybrid pods in other networks that need to connect to this cluster.                                  | `192.168.0.0/16`                 |
     | Access Management | The Access Management mode for the Amazon EKS Hybrid Nodes. Select either **Systems Manager** or **IAM Roles Anywhere**. |                                  |
 
-12. If selecting **Systems Manager**, you must provide the following additional details (TBA).
+12. If selecting **Systems Manager**, you must provide the following additional details.
 
-    - Activation ID
-    - Activation Code
+    | **Field**       | **Description**                                                                                                                                                    | **Example**                            |
+    | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------- |
+    | Activation ID   | The Activation ID assigned by AWS Systems Manager when creating an activation. This ID is used to associate hybrid nodes with your AWS account in Systems Manager. | `5743558d-563b-4457-8682-d16c3EXAMPLE` |
+    | Activation Code | The Activation Code that is generated alongside the Activation ID. It is required to authenticate hybrid nodes with AWS Systems Manager.                           |                                        |
 
-12. If selecting **IAM Roles Anywhere**, you must provide the following additional details.
+13. If selecting **IAM Roles Anywhere**, you must provide the following additional details.
 
     | **Field**           | **Description**                                                                                                                                                                                                                        | **Example**                                                                                      |
     | ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-    | Profile ARN         | The ARN of the IAM Roles Anywhere profile that defines which roles can be assumed.                                                                                                                                                     | `arn:aws:rolesanywhere:us-east-2:123456789012:profile/abcd1234-5678-90ef-ghij-klmnopqrstuv`      |
+    | Profile ARN         | The ARN of the IAM Roles Anywhere profile that defines which roles can be assumed by hybrid nodes.                                                                                                                                     | `arn:aws:rolesanywhere:us-east-2:123456789012:profile/abcd1234-5678-90ef-ghij-klmnopqrstuv`      |
     | Role ARN            | The ARN of the IAM role specified in the IAM Roles Anywhere profile that defines the permissions and policies for roles that can be assumed by hybrid nodes.                                                                           | `arn:aws:iam::123456789012:role/IRAHybridNodesRole`                                              |
     | Trust Anchor ARN    | The ARN of the IAM Roles Anywhere trust anchor that contains your certificate authority configuration.                                                                                                                                 | `arn:aws:rolesanywhere:us-east-2:123456789012:trust-anchor/abcd1234-5678-90ef-ghij-klmnopqrstuv` |
     | Root CA Certificate | The PEM-encoded certificate of your Certificate Authority (CA) that serves as the trust anchor. This certificate is used by IAM Roles Anywhere to validate the authenticity of the client certificates presented by your hybrid nodes. |                                                                                                  |
     | Root CA Private Key | The private key corresponding to your CA's certificate, used to sign client certificates.                                                                                                                                              |                                                                                                  |
 
-13. Click **Save Changes** when complete.
+14. Click **Save Changes** when complete.
 
-14. If you are using IAM Roles Anywhere, check whether the `aws-auth` ConfigMap exists.
+15. If you are using IAM Roles Anywhere, check whether the `aws-auth` ConfigMap exists.
 
     ```shell
     kubectl get configmap aws-auth --namespace kube-system
@@ -214,10 +223,10 @@ Import your Amazon EKS cluster and enable hybrid mode to be able to create edge 
     If it does not exist, you will receive an error similar to
     `Error from server (NotFound): configmaps "aws-auth" not found`.
 
-15. If the `aws-auth` ConfigMap does not exist, create the following ConfigMap in the `kube-system` namespace using the
+16. If the `aws-auth` ConfigMap does not exist, create the following ConfigMap in the `kube-system` namespace using the
     following command.
 
-    Ensure to replace `<roleArn>` with the **Role ARN** entry from step 12.
+    Ensure to replace `<roleArn>` with the **Role ARN** entry from step 13.
 
     ```shell
     kubectl create -f=/dev/stdin <<-EOF
@@ -236,7 +245,7 @@ Import your Amazon EKS cluster and enable hybrid mode to be able to create edge 
     EOF
     ```
 
-16. If the `aws-auth` ConfigMap already exists, append the `mapRoles` entry in your existing ConfigMap.
+17. If the `aws-auth` ConfigMap already exists, append the `mapRoles` entry in your existing ConfigMap.
 
     You can edit the existing configmap using the following command.
 
@@ -244,8 +253,8 @@ Import your Amazon EKS cluster and enable hybrid mode to be able to create edge 
     kubectl edit configmap aws-auth --namespace kube-system
     ```
 
-    The following example shows the `mapRoles` entry appended below an existing entry. Ensure to replace
-    `<roleArn>` with the **Role ARN** entry from step 12.
+    The following example shows the `mapRoles` entry appended below an existing entry. Ensure to replace `<roleArn>`
+    with the **Role ARN** entry from step 13.
 
     ```yaml {13-17} hideClipboard
     apiVersion: v1
@@ -267,9 +276,9 @@ Import your Amazon EKS cluster and enable hybrid mode to be able to create edge 
           username: system:node:{{SessionName}}
     ```
 
-17. If you need to configure proxies for edge host communication or you plan to use VPN connectivity for your edge
+18. If you need to configure proxies for edge host communication or you plan to use VPN connectivity for your edge
     hosts, create a ConfigMap using the following template.
-    
+
     You can omit the `serviceCIDR` or `vpcCIDR` entries if they are not required.
 
     ```yaml
@@ -283,13 +292,13 @@ Import your Amazon EKS cluster and enable hybrid mode to be able to create edge 
       vpcCIDR: "<vpcCidrIp>" # Only required if a VPN server IP is configured for one or more edge hosts. No default value.
     ```
 
-18. Replace `<serviceCidrIp>` with your hybrid pod CIDR list. For example, `192.168.0.0/16`. The `serviceCIDR`
+19. Replace `<serviceCidrIp>` with your hybrid pod CIDR list. For example, `192.168.0.0/16`. The `serviceCIDR`
     configures `NO_PROXY` to prevent Kubernetes service traffic from routing through the proxy server.
 
-19. Replace `<vpcCidrIp>` with your hybrid node CIDR list. For example, `10.200.0.0/16`. The `vpcCIDR` defines the
+20. Replace `<vpcCidrIp>` with your hybrid node CIDR list. For example, `10.200.0.0/16`. The `vpcCIDR` defines the
     network range for VPC resources to ensure proper routing through the VPN.
 
-20. Apply the ConfigMap to your cluster.
+21. Apply the ConfigMap to your cluster.
 
     Example command.
 
@@ -359,16 +368,16 @@ must also complete the following prerequisites:
 
 8. For **IPAM mode**, select **Cluster Pool**.
 
-9.  In the YAML editor, search for **clusterPoolIPv4PodCIDRList**. This parameter specifies the overall IP ranges
+9. In the YAML editor, search for **clusterPoolIPv4PodCIDRList**. This parameter specifies the overall IP ranges
    available for pod networking across all your hybrid nodes.
 
-   Adjust the pod CIDR list for hybrid pods in other networks that need to connect to this cluster. For example,
-   `192.168.0.0`.
+Adjust the pod CIDR list for hybrid pods in other networks that need to connect to this cluster. For example,
+`192.168.0.0`.
 
 10. In the YAML editor, search for **clusterPoolIPv4MaskSize**. This parameter determines the subnet mask size used for
-   pod IP allocation within each hybrid node.
+    pod IP allocation within each hybrid node.
 
-   Adjust the mask size based on your required pods per hybrid node. For example, `/25`.
+Adjust the mask size based on your required pods per hybrid node. For example, `/25`.
 
 11. In the Presets, find the **cilium-agent - Hybrid Nodes Affinity** option, and select **Amazon EKS**.
 
