@@ -7,8 +7,9 @@ tags: ["public cloud", "aws", "architecture", "eks hybrid nodes"]
 sidebar_position: 0
 ---
 
-Palette enables importing and managing Amazon Elastic Kubernetes Service (Amazon EKS) Hybrid Nodes. Review the following
-architectural highlights when using Palette to manage your Amazon EKS Hybrid Nodes.
+Palette enables importing and managing Amazon Elastic Kubernetes Service (Amazon EKS) Hybrid Nodes. For an overview of all necessary prerequisites, refer to [Prerequisite setup for hybrid nodes](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-prereqs.html).
+
+These are some of the architectural highlights when using Palette to manage your Amazon EKS Hybrid Nodes.
 
 - Create hybrid node pools comprised of edge hosts that have been registered with Palette.
 

@@ -206,7 +206,7 @@ nodes. Before proceeding, consider the following points:
 1. Issue the following kubectl command to list all CiliumNode resources in your cluster.
 
    ```shell
-   kubectl get ciliumnode -o wide
+   kubectl get ciliumnode --output wide
    ```
 
    Example output.
@@ -224,7 +224,7 @@ nodes. Before proceeding, consider the following points:
    found.
 
    ```shell
-   kubectl get ciliumnode <nodeName> -o yaml | grep "podCIDRs" -A 1
+   kubectl get ciliumnode <nodeName> --output yaml | grep "podCIDRs" --after-context 1
    ```
 
    Example output.
@@ -254,7 +254,7 @@ nodes. Before proceeding, consider the following points:
    on a hybrid node.
 
    ```shell
-   kubectl exec -it <podName> -- ping <hybridPodIp>
+   kubectl exec --interactive --tty <podName> -- ping <hybridPodIp>
    ```
 
 2. Check that the ping statistics from the output show a healthy connection.
