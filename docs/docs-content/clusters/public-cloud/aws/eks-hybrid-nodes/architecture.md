@@ -13,19 +13,19 @@ all necessary prerequisites, refer to
 
 These are some of the architectural highlights when using Palette to manage your Amazon EKS Hybrid Nodes.
 
+- Add Container Network Interface (CNI) layers to handle networking for hybrid nodes using affinity rules.
+
 - Create hybrid node pools comprised of edge hosts that have been registered with Palette.
 
 - Define cluster profiles to collectively manage your hybrid nodes. Each cluster profile for a hybrid node pool includes
-  the following layers:
+  the following configurable layers:
 
-  - Configure Operating System (OS) layers to reference the provider image built during the
+  - Configure the Operating System (OS) layer to reference the provider image built during the
     [EdgeForge](../../../edge/edgeforge-workflow/edgeforge-workflow.md) workflow and optional customizations for your
     hybrid nodes.
 
-  - Configure Kubernetes layers to specify the correct [Amazon EKS Distro](https://distro.eks.amazonaws.com/) version to
-    be installed on hybrid nodes.
-
-  - Configure Container Network Interface (CNI) layers to handle networking for hybrid nodes using affinity rules.
+  - Configure the Kubernetes layer to specify the correct [Amazon EKS Distro](https://distro.eks.amazonaws.com/) kubelet
+    version to be installed on hybrid nodes.
 
 ## Hybrid Network Connectivity
 
@@ -54,12 +54,13 @@ configuration requirements.
 
 #### AWS
 
-Configure your EKS cluster with static placement so that your nodes are assigned to specific Availability Zones (AZs)
+<!-- Commented out until greenfield provisioning is available -->
+<!-- Configure your EKS cluster with static placement so that your nodes are assigned to specific Availability Zones (AZs)
 and fixed networking configurations. This is required because of the following reasons:
 
 - The VPN configuration must be set up with predefined routes and IP ranges.
 - Node placement cannot change dynamically across AZs.
-- Network paths need to remain consistent for VPN tunnels to function properly.
+- Network paths need to remain consistent for VPN tunnels to function properly. -->
 
 Traffic routing in the Amazon EKS VPC requires the following mapping for hybrid nodes:
 
@@ -72,7 +73,7 @@ Traffic routing in the Amazon EKS VPC requires the following mapping for hybrid 
 - For AWS Direct Connect, map traffic to appropriate private subnet CIDR.  
   For example, Both CIDRs 10.200.0.0/16 & 192.168.0.0/16 → Private subnet 172.16.1.0/24.
 
-For AWS VPNs, configure two static routes for each of the following connections:
+For AWS VPNs, configure two static routes for each of the following CIDRs:
 
 - Hybrid Node CIDR block.  
   For example, Hybrid Node CIDR 10.200.0.0/16 → VPN endpoint 172.16.0.1.
@@ -93,11 +94,14 @@ For on-premises and edge VPNs, set up IPsec Phase 1 tunnels with Phase 2 securit
 - Hybrid Node pod CIDR to EKS VPC CIDR.  
   For example, Hybrid Node Pod CIDR 192.168.0.0/16 → EKS VPC CIDR 10.100.0.0/16.
 
-You should also enable either Border Gateway Protocol (BGP) routing or static routes to ensure proper traffic flow
-through VPN tunnels.
+You should also configure Border Gateway Protocol (BGP) or static routes on your on-premises or edge location router to
+ensure network traffic reaches the correct hybrid nodes. For static routing, this is explained in more detail during the
+[Configure Hybrid Node Networking for VPN Solutions](./create-hybrid-node-pools.md#configure-hybrid-node-networking-for-vpn-solutions)
+steps.
 
-For non-primary VPN servers, either broadcast routes via BGP or configure static routes to redirect EKS VPC CIDR traffic
-appropriately.
+A route must exist to send all traffic destined for the Amazon EKS VPC through a centralized VPN gateway, or
+alternatively, a unique VPN server IP can be defined for each hybrid node during the
+[Create Hybrid Node Pool](./create-hybrid-node-pools.md#create-hybrid-node-pool) steps.
 
 ## Operating System Compatibility
 

@@ -10,7 +10,7 @@ sidebar_position: 30
 This section guides you on how to create a cluster profile to collectively manage your hybrid nodes. You can then create
 hybrid node pools and add your edge hosts to them.
 
-You may then need to configure your networking to allow traffic to reach the pods on your hybrid nodes.
+You must then configure your networking to allow traffic to reach the pods on your hybrid nodes.
 
 ## Limitations
 
@@ -146,11 +146,11 @@ Your cluster profile for hybrid nodes is now created and can be used in the
 7. Once your edge hosts have been selected, click **Configure** next to each edge host to review and configure
    individual host options.
 
-   | **Field**                | **Description**                                                                                                                                                                                                                                                                                                                  |
-   | ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Host Name (Optional)** | Provide a optional name for the edge host that will be displayed in Palette.                                                                                                                                                                                                                                                     |
-   | **NIC Name**             | Select a specific Network Interface Card (NIC) on the edge host from the **drop-down Menu**, or leave it on **Auto**.                                                                                                                                                                                                            |
-   | **VPN server IP**        | Specify the VPN server's IP if the hybrid nodes in the pool use a VPN. If provided, a static route will be configured on edge hosts to route traffic to the Amazon EKS VPC CIDR through the VPN server. If not specified, ensure your hybrid node network routes traffic to the Amazon EKS VPC CIDR through the default gateway. |
+   | **Field**                | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+   | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+   | **Host Name (Optional)** | Provide a optional name for the edge host that will be displayed in Palette.                                                                                                                                                                                                                                                                                                                                                                     |
+   | **NIC Name**             | Select a specific Network Interface Card (NIC) on the edge host from the **drop-down Menu**, or leave it on **Auto**.                                                                                                                                                                                                                                                                                                                            |
+   | **VPN server IP**        | Specify the VPN server's IP if the hybrid nodes in the pool use a VPN _and_ the hybrid node's network does not automatically route traffic to the EKS VPC CIDR through the VPN server. If provided, a static route will be configured on edge hosts to route traffic to the Amazon EKS VPC CIDR through the VPN server. If not specified, ensure your hybrid node network routes traffic to the Amazon EKS VPC CIDR through the default gateway. |
 
    Click **Confirm** once done.
 

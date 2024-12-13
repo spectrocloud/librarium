@@ -79,7 +79,7 @@ Import your Amazon EKS cluster and enable hybrid mode to be able to create edge 
   - The ARN of the IAM Roles Anywhere trust anchor that contains your certificate authority configuration.
   - The PEM-encoded certificate of your Certificate Authority (CA) that serves as the trust anchor. This certificate is
     used by IAM Roles Anywhere to validate the authenticity of the client certificates presented by your hybrid nodes.
-  - The private key corresponding to your CA's certificate, used to sign client certificates.
+  - The private key corresponding to your CA certificate, used to sign client certificates.
 
 - An existing Amazon EKS cluster that has been enabled for hybrid nodes. Refer to
   [Create an Amazon EKS cluster with hybrid nodes](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-cluster-create.html)
@@ -203,7 +203,7 @@ Import your Amazon EKS cluster and enable hybrid mode to be able to create edge 
     | Role ARN            | The ARN of the IAM role specified in the IAM Roles Anywhere profile that defines the permissions and policies for roles that can be assumed by hybrid nodes.                                                                           | `arn:aws:iam::123456789012:role/IRAHybridNodesRole`                                              |
     | Trust Anchor ARN    | The ARN of the IAM Roles Anywhere trust anchor that contains your certificate authority configuration.                                                                                                                                 | `arn:aws:rolesanywhere:us-east-2:123456789012:trust-anchor/abcd1234-5678-90ef-ghij-klmnopqrstuv` |
     | Root CA Certificate | The PEM-encoded certificate of your Certificate Authority (CA) that serves as the trust anchor. This certificate is used by IAM Roles Anywhere to validate the authenticity of the client certificates presented by your hybrid nodes. |                                                                                                  |
-    | Root CA Private Key | The private key corresponding to your CA's certificate, used to sign client certificates.                                                                                                                                              |                                                                                                  |
+    | Root CA Private Key | The private key corresponding to your CA certificate, used to sign client certificates.                                                                                                                                                |                                                                                                  |
 
 14. Click **Save Changes** when complete.
 
@@ -276,8 +276,8 @@ Import your Amazon EKS cluster and enable hybrid mode to be able to create edge 
           username: system:node:{{SessionName}}
     ```
 
-18. If you need to configure proxies for edge host communication or you plan to use VPN connectivity for your edge
-    hosts, create a ConfigMap using the following template.
+18. If you need to configure proxies for edge host communication or you plan to specify a VPN server IP for one or more
+    edge hosts, create a ConfigMap using the following template.
 
     You can omit the `serviceCIDR` or `vpcCIDR` entries if they are not required.
 
