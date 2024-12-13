@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## December 15, 2024 - Release 4.5.13
+## December 15, 2024 - Release 4.5.15
 
 ### Palette {#palette-enterprise-4-5-12}
 
