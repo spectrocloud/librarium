@@ -15,7 +15,12 @@ ALOGLIA_CONFIG=$(shell cat docsearch.dev.config.json | jq -r tostring)
 # Find all *.md files in docs, cut the prefix ./ 
 # Remove all security-bulletins and cve-reports.md because they are rate limited by nvd.nist.gov
 # Remove oss-licenses.md because they are rate limited by npmjs.com
-VERIFY_URL_PATHS=$(shell find ./docs -name "*.md" | cut -c 3- | sed '/security-bulletins/d' | sed '/cve-reports/d' | sed '/oss-licenses/d')
+# Remove all /deprecated paths because we don't want to maintain their links
+VERIFY_URL_PATHS=$(shell find ./docs -name "*.md" | cut -c 3- | \
+	sed '/security-bulletins/d' | \
+	sed '/cve-reports/d' | \
+	sed '/oss-licenses/d' | \
+	sed '/deprecated/d' )
 
 RATE_LIMITED_FILES_LIST:="docs/docs-content/security-bulletins/**/*.md" \
 	"docs/docs-content/security-bulletins/*.md" \
