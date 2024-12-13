@@ -61,6 +61,14 @@ active nodes and pods at any given time.
 | Medium (Recommended) | Up to 3000 Nodes each with 30 Pods (90,000 Pods)  |
 | Large                | Up to 5000 Nodes each with 30 Pods (150,000 Pods) |
 
+## Kubernetes Requirements
+
+The following table presents the Kubernetes version corresponding to each Palette version. It provides the download URLs
+for the Operating System and Kubernetes distribution OVA required for the install. Ensure that you use FIPS OVA URL if
+you require a <VersionedLink text="FIPS" url="/vertex/fips/" /> compliant installation.
+
+<PartialsComponent category="self-hosted" name="kubernetes-palette-versions" />
+
 ## Proxy Requirements
 
 <PartialsComponent category="self-hosted" name="required-domains" edition="Palette" />

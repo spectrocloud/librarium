@@ -390,8 +390,56 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
 
     Once the airgap binary completes its tasks, you will receive a **Setup Completed** success message.
 
-23. Review the [Additional Packs](../../airgap/supplemental-packs.md) page and identify any additional packs you want to
-    add to your OCI registry. You can also add additional packs after the installation is complete.
+23. Review the [Additional Packs](../../../airgap/supplemental-packs.md) page and identify any additional packs you want
+    to add to your OCI registry. You can also add additional packs after the installation is complete.
+
+24. Navigate back to the vSphere console and create a vSphere VM and Template folder named `spectro-templates`. Ensure
+    you can access this folder with the user account you plan to use when deploying the VerteX installation. You can
+    choose a different name for the folder if you prefer, but ensure you use the same name when the Palette CLI prompts
+    you for the folder name.
+
+25. Right-click on your cluster or resource group and select **Deploy OVF Template**.
+
+26. In the **Deploy OVF Template** wizard, enter the following URL to import the Operating System (OS) and Kubernetes
+    distribution OVA required for the installation. Contact your support representative to learn if the version of
+    Palette you are installing requires a new OS and Kubernetes OVA.
+
+        Consider the following example for reference.
+
+        <!-- prettier-ignore -->
+        <Tabs>
+        <TabItem value="non-fips" label="Non-FIPS">
+
+        ```url
+        https://vmwaregoldenimage-console.s3.amazonaws.com/u-2204-0-k-1294-0.ova
+        ```
+        <!-- prettier-ignore -->
+        </TabItem>
+        <TabItem value="fips" label="FIPS">
+
+        ```url
+        https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-1294-fips.ova
+        ```
+        <!-- prettier-ignore -->
+        </TabItem>
+        </Tabs>
+
+        Place the OVA in the **spectro-templates** folder or in the folder you created in step **21**. Append the `r_` prefix,
+        and remove the `.ova` suffix when assigning its name and target location. For example, the final output should look like
+        `r_u-2204-0-k-1294-0`. This naming convention is required for the installation process to identify the OVA. Refer to the
+        [Supplement Packs](../../../airgap/supplemental-packs.md#additional-ovas) page for a list of additional OS OVAs.
+
+        You can terminate the deployment after the OVA is available in the `spectro-templates` folder. Refer to the
+        [Deploy an OVF or OVA Template](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-AFEDC48B-C96F-4088-9C1F-4F0A30E965DE.html)
+        guide for more information about deploying an OVA in vCenter.
+
+:::warning
+
+If you encounter an error message during the OVA deployment stating unable to retrieve manifest or certificate, refer to
+this [known issue](https://kb.vmware.com/s/article/79986) from VMware's knowledge base for guidance on how to resolve
+the issue.
+
+:::
 
 You have now completed the preparation steps for an airgap installation. Check out the [Validate](#validate) section to
 ensure the airgap setup process is completed successfully. After you validate the airgap setup process completion,

@@ -31,6 +31,21 @@ existing Kubernetes cluster. Refer to the table below to learn more about the su
 | Other          | ❌                   | The PCG cluster is deployed into an existing Kubernetes cluster that is not managed by Palette. | [Deploy a PCG to an Existing Kubernetes Cluster](./deploy-pcg-k8s.md) |
 | VMware vSphere | ✅                   | The PCG is deployed into a VMware vSphere environment.                                          | [Deploy a VMware vSphere](./deploy-pcg/vmware.md)                     |
 
+## Kubernetes Requirements
+
+The following table presents the Kubernetes version corresponding to each Palette version. It provides the download URLs
+for the Operating System and Kubernetes distribution OVA required for the PCG install. Ensure that you use FIPS OVA URL
+if you require a <VersionedLink text="FIPS" url="/vertex/fips/" /> compliant installation.
+
+:::warning
+
+The versions included in the following table apply for PCG installs on VMware vSphere and MAAS. The Kubernetes version
+for OpenStack is 1.24.10 on all the Palette versions included below.
+
+:::
+
+<PartialsComponent category="self-hosted" name="kubernetes-palette-versions" />
+
 ## Resources
 
 - [Architecture](./architecture.md)
