@@ -13,7 +13,8 @@ all necessary prerequisites, refer to
 
 These are some of the architectural highlights when using Palette to manage your Amazon EKS Hybrid Nodes.
 
-- Add Container Network Interface (CNI) layers to your Amazon EKS cluster to handle networking for hybrid nodes using affinity rules.
+- Add a [Cilium](https://cilium.io/) Container Network Interface (CNI) layer to your Amazon EKS cluster to handle
+  networking for hybrid nodes using affinity rules.
 
 - Create hybrid node pools comprised of edge hosts that have been registered with Palette.
 

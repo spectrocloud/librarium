@@ -281,6 +281,8 @@ nodes. Before proceeding, consider the following points:
 
 ## When to Manually Repave Hybrid Node Pools
 
+<!-- This section may be removed as the workaround is not currently working. There may also be repave logic included to resolve this for 4.5.c. -->
+
 Your hybrid node pools require manual repaving in these scenarios:
 
 - After modifying the **Access Management** settings of your Amazon EKS cluster in Palette. Refer to steps 11 through 13
