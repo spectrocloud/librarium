@@ -75,7 +75,7 @@ explains how you can create an Azure AKS cluster managed by Palette.
 6.  Under **Managed Kubernetes**, select **Azure AKS** and select your Azure AKS cluster profile.
 
 7.  Palette displays the cluster profile layers. Review the profile layers and customize parameters as desired in the
-    YAML files that display when you select a layer.    
+    YAML files that display when you select a layer.
 
     You can configure custom OpenID Connect (OIDC) for Azure clusters at the Kubernetes layer. Check out
     [Configure OIDC Identity Provider](../../../integrations/kubernetes.md#configure-oidc-identity-provider) for more
@@ -123,7 +123,10 @@ explains how you can create an Azure AKS cluster managed by Palette.
           - <admin-group-object-id-2>
     ```
 
-    Additionally, if you want to disable [local accounts](https://learn.microsoft.com/en-us/azure/aks/manage-local-accounts-managed-azure-ad), add the `disableLocalAccounts: true` entry to your Kubernetes cluster profile layer within the `managedControlPlane.aadProfile` section.
+    Additionally, if you want to disable
+    [local accounts](https://learn.microsoft.com/en-us/azure/aks/manage-local-accounts-managed-azure-ad), add the
+    `disableLocalAccounts: true` entry to your Kubernetes cluster profile layer within the
+    `managedControlPlane.aadProfile` section.
 
     ```yaml {7}
     managedControlPlane:
