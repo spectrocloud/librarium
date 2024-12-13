@@ -38,47 +38,27 @@ function generateMarkdownTable(cveImpactMap) {
   const separator = `| - | -------- | -------- | -------- | -------- |\n`;
 
   // Create rows for each version
-  // const rows = uniqueVersions
-  //   .map((version) => {
-  //     const row = [
-  //       `| ${version}`,
-  //       impactData["Palette Enterprise"].impacts && impactData["Palette Enterprise"].versions.includes(version)
-  //         ? "⚠️ Impacted"
-  //         : "✅ No Impact",
-  //       impactData["Palette Enterprise Airgap"].impacts &&
-  //       impactData["Palette Enterprise Airgap"].versions.includes(version)
-  //         ? "⚠️ Impacted"
-  //         : "✅ No Impact",
-  //       impactData["VerteX"].impacts && impactData["VerteX"].versions.includes(version)
-  //         ? "⚠️ Impacted"
-  //         : "✅ No Impact",
-  //       impactData["VerteX Airgap"].impacts && impactData["VerteX Airgap"].versions.includes(version)
-  //         ? "⚠️ Impacted"
-  //         : "✅ No Impact",
-  //     ].join(" | ");
-  //     return row + " |";
-  //   })
-  //   .join("\n");
   const rows = uniqueVersions
     .map((version) => {
       const row = [
         `| ${version}`,
         impactData["Palette Enterprise"].impacts && impactData["Palette Enterprise"].versions.includes(version)
-          ? "Impacted"
-          : "No Impact",
+          ? "⚠️ Impacted"
+          : "✅ No Impact",
         impactData["Palette Enterprise Airgap"].impacts &&
         impactData["Palette Enterprise Airgap"].versions.includes(version)
-          ? "Impacted"
-          : "No Impact",
-        impactData["VerteX"].impacts && impactData["VerteX"].versions.includes(version) ? "Impacted" : "No Impact",
+          ? "⚠️ Impacted"
+          : "✅ No Impact",
+        impactData["VerteX"].impacts && impactData["VerteX"].versions.includes(version)
+          ? "⚠️ Impacted"
+          : "✅ No Impact",
         impactData["VerteX Airgap"].impacts && impactData["VerteX Airgap"].versions.includes(version)
-          ? "Impacted"
-          : "No Impact",
+          ? "⚠️ Impacted"
+          : "✅ No Impact",
       ].join(" | ");
       return row + " |";
     })
     .join("\n");
-
   return header + separator + rows;
 }
 
