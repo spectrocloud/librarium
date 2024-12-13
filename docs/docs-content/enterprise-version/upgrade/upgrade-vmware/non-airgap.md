@@ -28,6 +28,9 @@ Palette upgrade.
 
 - Access to the Palette system console.
 - A diff or text comparison tool of your choice.
+- The Kubernetes cluster must be set up on a version of Kubernetes that is compatible to your upgraded version. Refer to
+  the [Kubernetes Requirements](../../install-palette/install-palette.md#kubernetes-requirements) section to find the
+  version required for your Palette installation.
 
 ## Upgrade
 
