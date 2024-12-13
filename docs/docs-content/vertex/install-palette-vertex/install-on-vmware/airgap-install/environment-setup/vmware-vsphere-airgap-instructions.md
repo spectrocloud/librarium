@@ -87,7 +87,8 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
 3.  Right-click on your cluster or resource group and select **Deploy OVF Template**.
 
 4.  In the **Deploy OVF Template** wizard, enter the following URL to import the Operating System (OS) and Kubernetes
-    distribution OVA required for the installation.
+    distribution OVA required for the installation. Contact your support representative to learn if the version of
+    VerteX you are installing requires a new OS and Kubernetes OVA.
 
         Consider the following example for reference.
 
@@ -488,15 +489,13 @@ Complete all the Palette CLI steps outlined in the [Install VerteX](../install.m
 The table below maps the airgap script output values to their respective Palette CLI prompts and example values. The
 example values are for reference only.
 
-| Output Value                          | Palette CLI Prompt                   | Example Value                                         |
-| ------------------------------------- | ------------------------------------ | ----------------------------------------------------- |
-| **Spectro Cloud Repository Location** | **SCAR Location**                    | `https://vertex.example.com:8443` or `10.10.1.1:8443` |
-| **CA certificate filepath**           | **SCAR CA certificate filepath**     | `/opt/spectro/ssl/server.crt`                         |
-| **OCI Registry**                      | **Registry Type**                    | `OCI`                                                 |
-| **Pack OCI Registry**                 | **Registry Endpoint**                | `https://vertex.example.com` or `10.10.1.1`           |
-| **CA certificate Filepath**           | **Registry CA certificate filepath** | `/opt/spectro/ssl/server.crt`                         |
-| **Image OCI Registry**                | **Registry Endpoint**                | `https://vertex.example.com` or `10.10.1.1`           |
-| **CA certificate Filepath**           | **Registry CA certificate filepath** | `/opt/spectro/ssl/server.crt`                         |
+| Output Value                | Palette CLI Prompt                   | Example Value                               |
+| --------------------------- | ------------------------------------ | ------------------------------------------- |
+| **OCI Registry**            | **Registry Type**                    | `OCI`                                       |
+| **Pack OCI Registry**       | **Registry Endpoint**                | `https://vertex.example.com` or `10.10.1.1` |
+| **CA certificate Filepath** | **Registry CA certificate filepath** | `/opt/spectro/ssl/server.crt`               |
+| **Image OCI Registry**      | **Registry Endpoint**                | `https://vertex.example.com` or `10.10.1.1` |
+| **CA certificate Filepath** | **Registry CA certificate filepath** | `/opt/spectro/ssl/server.crt`               |
 
 When prompted for **Allow Insecure Connection (Bypass x509 Verification)?**, enter `n` to continue and specify the
 server certificate filepath from the script output.

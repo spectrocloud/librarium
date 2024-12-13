@@ -17,26 +17,26 @@ communicate with each other securely.
 Host linking provides the hosts with the necessary network and security infrastructure to form a cluster together. In a
 group of linked hosts, hosts can broadcast information to all its peers.
 
-## Leader Nodes
+## Leader Hosts
 
-To link hosts together, you designate one node as the leader node. The leader node has two obligations:
+To link hosts together, you designate one host as the leader. The leader host has two obligations:
 
-- Generate tokens with its IP address and One-Time Password (OTP) credentials, which you can use to link other nodes as
+- Generate tokens with its IP address and One-Time Password (OTP) credentials, which you can use to link other hosts as
   followers.
-- Sync content bundles uploaded to the node and configuration changes made to the node to the rest of the cluster.
+- Sync content bundles uploaded to the host and configuration changes made to the host to the rest of the cluster.
 
-A group of linked hosts that have not formed a cluster only has one leader node, where you can upload content bundles
-and create a cluster.
+A group of linked hosts that have not formed a cluster only has one leader, where you can upload content bundles and
+create a cluster.
 
-Once a cluster is formed, every control plane node will be generating the pairing tokens and can act as the leader node.
-When you perform an action on any control plane node, that node will act as the leader and propagate the action to the
-rest of the cluster. For example, if you upload a content bundle to a control plane node, the content bundle will be
-synced from that node to the rest of the cluster, even if the control plane node was not the leader node before a
-cluster is formed. This design removes the need to memorize which node was the leader before forming a cluster.
+Once a cluster is formed, every control plane node will be generating the pairing tokens and can act as the leader. When
+you perform an action on any control plane node, that node will act as the leader and propagate the action to the rest
+of the cluster. For example, if you upload a content bundle to a control plane node, the content bundle will be synced
+from that node to the rest of the cluster, even if the control plane node was not the leader before a cluster is formed.
+This design removes the need to memorize which host was the leader before forming a cluster.
 
-When you [delete a cluster](../cluster-management/delete-cluster.md), all nodes will return to the **Ready** state, but
-will remain linked. Since the group of hosts no longer have a cluster, they will only have one leader node, which is the
-host where you performed the delete action from.
+When you [delete a cluster](../cluster-management/delete-cluster.md), all hosts will return to the **Ready** state, but
+will remain linked. Since the group of hosts no longer have a cluster, they will only have one leader, which is the host
+where you performed the delete action from.
 
 ## Link Hosts
 
@@ -51,7 +51,7 @@ with each other.
 - For hosts that are deployed in [agent mode](../../../../deployment-modes/agent-mode/agent-mode.md), all hosts must
   share the same Operating System (OS).
 
-- You cannot update the IP address of a linked node.
+- You cannot update the IP address of a linked host.
 
 ### Prerequisites
 
@@ -70,46 +70,46 @@ with each other.
 
 ### Procedure
 
-1. Decide on a node that you plan to use as the leader of the group. Log in to
-   [Local UI](../host-management/access-console.md) of that node.
+1. Decide on host that you plan to use as the leader of the group. Log in to
+   [Local UI](../host-management/access-console.md) of that host.
 
 2. From the left **Main Menu**, click **Linked Edge Hosts**.
 
 3. Click **Generate token**. This will make the host start generating tokens you will use to link this host with other
-   hosts. The base-64 encoded token contains the IP address of the node, as well as an OTP that will expire in two
-   minutes. Once a token expires, the leader node generates another token automatically.
+   hosts. The base-64 encoded token contains the IP address of the host, as well as an OTP that will expire in two
+   minutes. Once a token expires, the leader generates another token automatically.
 
    If you have already made the
 
 4. Click the **Copy** button to copy the token.
 
-5. Log in to [Local UI](../host-management/access-console.md) on the node that you want to link to the leader node.
+5. Log in to [Local UI](../host-management/access-console.md) on the host that you want to link to the leader host.
 
 6. From the left **Main Menu**, click **Linked Edge Hosts**.
 
 7. Click **Link this device to another**.
 
-8. In the pop-up box that appears, enter the token you copied from the leader node.
+8. In the pop-up box that appears, enter the token you copied from the leader host.
 
 9. Click **Confirm**.
 
-10. Repeat this process for every node you want to link to the leader node.
+10. Repeat this process for every host you want to link to the leader host.
 
 ### Validate
 
-1. Log in to [Local UI](../host-management/access-console.md) on the leader node.
+1. Log in to [Local UI](../host-management/access-console.md) on the leader host.
 
 2. From the left **Main Menu**, click **Linked Edge Hosts**.
 
-3. Confirm that all nodes you linked together show up in the **Linked Edge Hosts** table.
+3. Confirm that all hosts you linked together show up in the **Linked Edge Hosts** table.
 
 ## Unlink Hosts
 
 You can unlink a host to either link it to another host or to use it for independent workloads. You can only unlink a
 follower host. Once all follower hosts have been unlinked, you can
-[remove its leader status](#remove-leader-node-status) and link it to another node.
+[remove its leader status](#remove-leader-node-status) and link it to another host.
 
-You can unlink a follower host on the follower host itself or from the leader node.
+You can unlink a follower host on the follower host itself or from the leader host.
 
 ### Prerequisites
 
@@ -125,14 +125,14 @@ You can unlink a follower host on the follower host itself or from the leader no
 
 <Tabs>
 
-<TabItem value="From Leader Node">
+<TabItem value="From Leader Host">
 
-1. Log in to Local UI on the leader node.
+1. Log in to Local UI on the leader host.
 
 2. From the left **Main Menu**, click **Linked Edge Hosts**.
 
-3. In the list of linked nodes, identify the node you want to unlink and click the **three-dot button** next to the IP
-   address of the node.
+3. In the list of linked hosts, identify the host you want to unlink and click the **three-dot button** next to the IP
+   address of the host.
 
 4. Click **Unlink**.
 
@@ -140,9 +140,9 @@ You can unlink a follower host on the follower host itself or from the leader no
 
 </TabItem>
 
-<TabItem value="On Follower Node">
+<TabItem value="On Follower Host">
 
-1. Log in to Local UI on the node you want to unlink.
+1. Log in to Local UI on the host you want to unlink.
 
 2. From the left **Main Menu**, click **Linked Edge Hosts**.
 
@@ -156,23 +156,23 @@ You can unlink a follower host on the follower host itself or from the leader no
 
 ### Validate
 
-1. Log in to Local UI on the node you unlinked.
+1. Log in to Local UI on the host you unlinked.
 
 2. From the left **Main Menu**, click **Linked Edge Hosts**.
 
-3. Confirm that the node has been unlinked from the leader and is ready to be paired with another node.
+3. Confirm that the host has been unlinked from the leader and is ready to be paired with another host.
 
 ## Remove Leader Node Status
 
-Removing the leader node status of a node allows you to link the node to another group of linked nodes as a follower.
-You can only do this when the node is not part of an active cluster.
+Removing the leader host status of a host allows you to link the host to another group of linked hosts as a follower.
+You can only do this when the host is not part of an active cluster.
 
 ### Prerequisites
 
 - Access to Local UI on a host that generates pairing tokens.
 
 - The host is not linked with any other host. If your host is still linked with other hosts, you must unlink all its
-  follower nodes.
+  follower hosts.
 
 ### Procedure
 
@@ -181,7 +181,7 @@ You can only do this when the node is not part of an active cluster.
 2. From the left **Main Menu**, click **Linked Edge Hosts**.
 
 3. Click the red **Stop token generation** button to stop the host from generating pairing tokens. This will make it
-   ready to be paired with other nodes again as a follower.
+   ready to be paired with other hosts again as a follower.
 
 ### Validate
 
