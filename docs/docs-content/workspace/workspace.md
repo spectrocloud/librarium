@@ -17,49 +17,35 @@ distributed environment.
 
 The following sections describe various aspects of multi-cluster management via workspaces.
 
-## Namespace Management
+## Namespace and Resource Management
 
-Workspaces automate the creation and deletion of namespaces common to all clusters within the workspace. A workspace can
-hold a set of namespaces. Spectro Cloud Palette will periodically reconcile the workspace definition and add/remove
-namespaces if required from all clusters part of the workspace.
+Workspaces in Spectro Cloud Palette automate the creation and management of namespaces across all clusters in the
+workspace. This includes:
 
-## Quota Control
+- **Namespace Creation**: Creating namespaces across all clusters in your workspace if a cluster does not have a
+  specified namespace.
+- **Resource Quotas**: Defining and enforcing CPU and memory usage limits within namespaces, applied uniformly across
+  all clusters in the workspace.
 
-Usage quota in terms of CPU and memory usage limits is specified within the namespaces. Spectro Cloud Palette sets the
-specified limits across all the clusters in the namespaces.
+## Centralized Access Control
 
-## Role Based Access Control(RBAC)
+Workspaces simplify Role-Based Access Control (RBAC) by centralizing management of role bindings and cluster role
+bindings. You can specifying role bindings and cluster role bindings within the workspace to automatically apply them to
+all clusters, ensuring consistent and secure access policies across all clusters in a workspace.
 
-Role bindings and cluster role bindings are specified within workspaces. Furthermore, these role bindings and cluster
-role bindings are created in every cluster within the workspaces, thus enabling centralized RBAC.
+## Visibility and Insights
 
-## Utilization
+Workspaces enhance operational visibility and provide actionable insights through:
 
-Spectro Cloud Palette reports detailed resource utilization of workloads deployed in all the namespaces in the workspace
-across clusters. In addition, the CPU and memory usage trends within the workspace provide valuable insights into the
-consumption patterns of an application distributed across clusters.
+- **Workload Visibility**: A centralized workload browser aggregates and displays workloads (pods, deployments, jobs,
+  stateful sets, etc.) across all namespaces and clusters in the workspace.
+- **Resource Utilization**: Detailed reporting on CPU and memory usage trends across clusters to understand consumption
+  patterns.
+- **Cost Attribution**: Calculating costs for workloads based on resource utilization, enabling internal charge-back or
+  show-back for teams or applications.
 
-## Cost Attribution
+## Backup and Disaster Recovery
 
-Spectro Cloud Palette computes utilization costs for workloads deployed in all the namespaces that are part of the
-workspace across all the clusters based on the detailed resource utilization data. This can be used for internal
-charge-back or show-back purposes to determine the cost incurred by an application or team.
-
-## Workload Visibility
-
-Workspaces provide a workload browser to view all the workloads such as pods, deployment, jobs, stateful sets, etc.,
-deployed in all the namespaces that are part of the workspace across all the clusters. The workload browser aggregates
-resources across clusters from relevant namespaces and presents them with centralized visibility.
-
-## Backup and Restore
-
-A workspace-based backup is similar to a cluster backup, with the additional coverage of multiple clusters, should the
-workspace include more than one. The prerequisites and detailed instructions to backup and restore clusters are
-specified on the [Backup and Restore](../clusters/cluster-management/backup-restore/backup-restore.md) page.
-
-## Regex for Namespaces
-
-Palette leverages [Regex Pattern matching](workload-features.md#regex-for-namespaces) to select multiple namespaces to
-apply Role binding concurrently. When we have many namespaces to be configured for role binding, the user can provide a
-Regex pattern matching multiple namespaces instead of giving a single namespace. This will help select all the
-namespaces matching the given Regex pattern to be selected together for role binding. >
+**Workspace-Based Backup**: extends cluster-level backups to include namespaces in all clusters within a workspace. For
+detailed prerequisites and instructions, refer to the
+[Backup and Restore](../clusters/cluster-management/backup-restore/backup-restore.md) page.
