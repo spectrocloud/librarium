@@ -541,7 +541,9 @@ To add a video, use the following syntax. Ensure you capitalize the letter "V":
 ### Simple Card Grid
 
 This is a custom component that creates a grid of simple text cards with two columns, styled according to our color
-scheme. The rows of cards are dynamically created according to the list of specified cards.
+scheme. The rows of cards are dynamically created according to the list of specified cards. This component uses the
+`VersionedLink` under the covers. URLs should be specified as discussed in the [Internal Links](#internal-links)
+section.
 
 ```js
 <SimpleCardGrid
@@ -550,19 +552,19 @@ scheme. The rows of cards are dynamically created according to the list of speci
       title: "Lorem Ipsum",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       buttonText: "Learn more",
-      relativeURL: "./link",
+      url: "/path/to/link",
     },
     {
       title: "Lorem Ipsum",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       buttonText: "Learn more",
-      relativeURL: "./link",
+      url: "/path/to/link",
     },
     {
       title: "Lorem Ipsum",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       buttonText: "Learn more",
-      relativeURL: "./link",
+      url: "/path/to/link",
     },
   ]}
 />
