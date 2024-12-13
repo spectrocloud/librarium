@@ -371,8 +371,8 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
 
 24. In the **Deploy OVF Template** wizard, enter the following URL to import the Operating System (OS) and Kubernetes
     distribution OVA required for the installation. Refer to the
-    [Kubernetes Requirements](../../../install-palette-vertex.md#kubernetes-requirements) section to learn if the
-    version of Palette you are installing requires a new OS and Kubernetes OVA.
+    [Kubernetes Requirements](../../../install-palette-vertex/install-palette-vertex.md#kubernetes-requirements) section
+    to learn if the version of Palette you are installing requires a new OS and Kubernetes OVA.
 
         Consider the following example for reference.
 
