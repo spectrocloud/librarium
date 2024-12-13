@@ -5,38 +5,75 @@ function generateMarkdownTable(cveImpactMap) {
     throw new Error("Invalid input: cveImpactMap must be an object.");
   }
 
+  // Extract impact data and ensure consistency
   const impactData = {
-    "Palette Enterprise": cveImpactMap.impactsPaletteEnterprise,
-    "Palette Enterprise Airgap": cveImpactMap.impactsPaletteEnterpriseAirgap,
-    VerteX: cveImpactMap.impactsVerteX,
-    "VerteX Airgap": cveImpactMap.impactsVerteXAirgap,
+    "Palette Enterprise": cveImpactMap.palette,
+    "Palette Enterprise Airgap": cveImpactMap.paletteAirgap,
+    VerteX: cveImpactMap.vertex,
+    "VerteX Airgap": cveImpactMap.vertexAirgap,
   };
 
-  const allProductsFalse = Object.values(impactData).every((value) => value === false);
+  // Check if all products are not impacted
+  const allProductsFalse = Object.values(impactData).every((product) => product.impacts === false);
   if (allProductsFalse) {
-    return "Investigation is ongoing to determine how this vulnerability affects our products";
+    return "Investigation is ongoing to determine how this vulnerability affects our products.";
   }
 
-  const anyProductTrue = Object.values(impactData).some((value) => value === true);
-  if (anyProductTrue && (!cveImpactMap.versions || cveImpactMap.versions.length === 0)) {
+  // Check for any product impacted but no versions provided
+  const anyProductTrueNoVersions = Object.values(impactData).some(
+    (product) => product.impacts && (!product.versions || product.versions.length === 0)
+  );
+  if (anyProductTrueNoVersions) {
     throw new Error("Error: Data inconsistency - Products impacted but no versions provided.");
   }
 
-  // Create the header row with the specified order
+  // Collect all unique versions across all products
+  const allVersions = Object.values(impactData)
+    .flatMap((product) => product.versions || [])
+    .filter((version) => semver.valid(version));
+  const uniqueVersions = Array.from(new Set(allVersions)).sort(semver.rcompare);
+
+  // Create the header row
   const header = `| Version | Palette Enterprise | Palette Enterprise Airgap | VerteX | VerteX Airgap |\n`;
   const separator = `| - | -------- | -------- | -------- | -------- |\n`;
 
-  // const uniqueVersions = Array.from(new Set(cveImpactMap.versions)).sort((a, b) => b.localeCompare(a));
-  const uniqueVersions = Array.from(new Set(cveImpactMap.versions)).sort(semver.rcompare);
-
+  // Create rows for each version
+  // const rows = uniqueVersions
+  //   .map((version) => {
+  //     const row = [
+  //       `| ${version}`,
+  //       impactData["Palette Enterprise"].impacts && impactData["Palette Enterprise"].versions.includes(version)
+  //         ? "⚠️ Impacted"
+  //         : "✅ No Impact",
+  //       impactData["Palette Enterprise Airgap"].impacts &&
+  //       impactData["Palette Enterprise Airgap"].versions.includes(version)
+  //         ? "⚠️ Impacted"
+  //         : "✅ No Impact",
+  //       impactData["VerteX"].impacts && impactData["VerteX"].versions.includes(version)
+  //         ? "⚠️ Impacted"
+  //         : "✅ No Impact",
+  //       impactData["VerteX Airgap"].impacts && impactData["VerteX Airgap"].versions.includes(version)
+  //         ? "⚠️ Impacted"
+  //         : "✅ No Impact",
+  //     ].join(" | ");
+  //     return row + " |";
+  //   })
+  //   .join("\n");
   const rows = uniqueVersions
     .map((version) => {
       const row = [
         `| ${version}`,
-        impactData["Palette Enterprise"] ? "Impacted" : "No Impact",
-        impactData["Palette Enterprise Airgap"] ? "Impacted" : "No Impact",
-        impactData["VerteX"] ? "Impacted" : "No Impact",
-        impactData["VerteX Airgap"] ? "Impacted" : "No Impact",
+        impactData["Palette Enterprise"].impacts && impactData["Palette Enterprise"].versions.includes(version)
+          ? "Impacted"
+          : "No Impact",
+        impactData["Palette Enterprise Airgap"].impacts &&
+        impactData["Palette Enterprise Airgap"].versions.includes(version)
+          ? "Impacted"
+          : "No Impact",
+        impactData["VerteX"].impacts && impactData["VerteX"].versions.includes(version) ? "Impacted" : "No Impact",
+        impactData["VerteX Airgap"].impacts && impactData["VerteX Airgap"].versions.includes(version)
+          ? "Impacted"
+          : "No Impact",
       ].join(" | ");
       return row + " |";
     })

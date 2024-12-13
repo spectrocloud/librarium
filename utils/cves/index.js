@@ -8,6 +8,7 @@ const { escapeMDXSpecialChars } = require("../helpers/string");
 const { generateMarkdownTable } = require("../helpers/affected-table");
 const { generateRevisionHistory } = require("../helpers/revision-history");
 const { generateCVEOfficialDetailsUrl } = require("../helpers/urls");
+const { generateCVEMap } = require("../helpers/cveHelpers");
 
 async function getSecurityBulletins(payload) {
   const limit = 100;
@@ -210,48 +211,7 @@ async function generateMarkdownForCVEs(GlobalCVEData) {
 
   // To generate the Impact Product & Versions table we need to track all the instances of the same CVE
   // The following hashmap will store the data for each CVE and aggregate the impact data for each product
-  const cveImpactMap = {};
-
-  for (const item of allCVEs) {
-    // Let's add the CVE to the map if it doesn't exist
-    // We can take all of the values from the first instance of the CVE
-    // Future instances will update the values if they are true
-    if (!cveImpactMap[item.metadata.cve]) {
-      cveImpactMap[item.metadata.cve] = {
-        versions: item.spec.impact.impactedVersions,
-        impactsPaletteEnterprise: item.spec.impact.impactedProducts.palette,
-        impactsPaletteEnterpriseAirgap: item.spec.impact.impactedDeployments.airgap,
-        impactsVerteX: item.spec.impact.impactedProducts.vertex,
-        impactsVerteXAirgap: item.spec.impact.impactedDeployments.airgap,
-      };
-    }
-
-    // If the CVE already exists in the map, we need to update the values
-    // But only if the value is true. If the value is false, we don't need to update it.
-    if (cveImpactMap[item.metadata.cve]) {
-      cveImpactMap[item.metadata.cve].versions = [
-        ...cveImpactMap[item.metadata.cve].versions,
-        ...item.spec.impact.impactedVersions,
-      ];
-
-      // Palette Enterprise
-      if (item.spec.impact.impactedProducts.palette && !item.spec.impact.impactedDeployments.airgap) {
-        cveImpactMap[item.metadata.cve].impactsPaletteEnterprise = true;
-      }
-      // Palette Enterprise Airgap
-      if (item.spec.impact.impactedProducts.palette && item.spec.impact.impactedDeployments.airgap) {
-        cveImpactMap[item.metadata.cve].impactsPaletteEnterpriseAirgap = true;
-      }
-      // Palette VerteX
-      if (item.spec.impact.impactedProducts.vertex && !item.spec.impact.impactedDeployments.airgap) {
-        cveImpactMap[item.metadata.cve].impactsVerteX = true;
-      }
-      // Palette VerteX Airgap
-      if (item.spec.impact.impactedProducts.vertex && item.spec.impact.impactedDeployments.airgap) {
-        cveImpactMap[item.metadata.cve].impactsVerteXAirgap = true;
-      }
-    }
-  }
+  const cveImpactMap = generateCVEMap(allCVEs);
 
   console.log(cveImpactMap["CVE-2023-26604"]);
 
