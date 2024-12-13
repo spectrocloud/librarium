@@ -353,8 +353,8 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
 
     Once the airgap binary completes its tasks, you will receive a **Setup Completed** success message.
 
-21. Review the [Additional Packs](../../../airgap/supplemental-packs.md) page and identify any additional packs you want
-    to add to your OCI registry. You can also add additional packs after the installation is complete.
+21. Review the [Additional Packs](../../airgap/supplemental-packs.md) page and identify any additional packs you want to
+    add to your OCI registry. You can also add additional packs after the installation is complete.
 
 22. Navigate back to the vSphere console and create a vSphere VM and Template folder named `spectro-templates`. Ensure
     you can access this folder with the user account you plan to use when deploying the VerteX installation. You can
@@ -390,7 +390,7 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
         Place the OVA in the **spectro-templates** folder or in the folder you created in step **21**. Append the `r_` prefix,
         and remove the `.ova` suffix when assigning its name and target location. For example, the final output should look like
         `r_u-2204-0-k-1294-0`. This naming convention is required for the installation process to identify the OVA. Refer to the
-        [Supplement Packs](../../../airgap/supplemental-packs.md#additional-ovas) page for a list of additional OS OVAs.
+        [Supplement Packs](../../airgap/supplemental-packs.md#additional-ovas) page for a list of additional OS OVAs.
 
         You can terminate the deployment after the OVA is available in the `spectro-templates` folder. Refer to the
         [Deploy an OVF or OVA Template](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-AFEDC48B-C96F-4088-9C1F-4F0A30E965DE.html)
