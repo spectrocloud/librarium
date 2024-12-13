@@ -11,7 +11,7 @@ const { generateCVEOfficialDetailsUrl } = require("../helpers/urls");
 const { generateCVEMap } = require("../helpers/cveHelpers");
 
 async function getSecurityBulletins(payload) {
-  const limit = 100;
+  const limit = 300;
   const maxIterations = 1000;
   let results = [];
 
@@ -212,8 +212,6 @@ async function generateMarkdownForCVEs(GlobalCVEData) {
   // To generate the Impact Product & Versions table we need to track all the instances of the same CVE
   // The following hashmap will store the data for each CVE and aggregate the impact data for each product
   const cveImpactMap = generateCVEMap(allCVEs);
-
-  console.log(cveImpactMap["CVE-2023-26604"]);
 
   const markdownPromises = allCVEs.map((item) =>
     createCveMarkdown(item, cveImpactMap[item.metadata.cve], "docs/docs-content/security-bulletins/reports/")
