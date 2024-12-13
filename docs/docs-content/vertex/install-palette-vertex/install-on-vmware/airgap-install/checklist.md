@@ -12,7 +12,7 @@ keywords: ["self-hosted", "enterprise"]
 ---
 
 Use the following checklist to ensure you have completed all the required steps before deploying the airgap Palette
-installation.
+installation. Review this checklist with your VerteX support team to ensure you have all the required assets.
 
 - [ ] Create a vSphere VM and Template folder named `spectro-templates`.
 
@@ -33,6 +33,8 @@ installation.
 
 - [ ] Review the list of [pack binaries](../../airgap/supplemental-packs.md) to download and upload to your OCI
       registry.
+
+- [ ] Download the required third-party binary that contains the core packs and images required for the installation.
 
 - [ ] If you have custom SSL certificates you want to include, copy the custom SSL certificates, in base64 PEM format,
       to the support VM. The custom certificates must be placed in the **/opt/spectro/ssl** folder. Include the
