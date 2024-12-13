@@ -106,12 +106,11 @@ are only visible in the **Default** project. Therefore, you will need to create 
 Navigate to the left **Main Menu** and click on **Profiles**. Click on **Import Cluster Profile**. The **Import Cluster
 Profile** pane opens.
 
-Paste the following in the text editor. Click on **Validate**. The **Select repositories** dialog appears.
+Paste the following in the text editor. Click on **Validate**.
 
 <PartialsComponent category="getting-started" name="import-hello-uni-azure" />
 
-Click on **Confirm**. Then, click on **Confirm** on the **Import Cluster Profile** pane. Palette creates a new cluster
-profile named **azure-profile**.
+Click on **Confirm**. Palette creates a new cluster profile named **azure-profile**.
 
 On the **Profiles** list, select **Project** from the **Contexts** drop-down. Your newly created cluster profile
 displays. The Palette UI confirms that the cluster profile was created in the scope of the
@@ -252,7 +251,7 @@ vulnerabilities. You can perform four types of scans on your cluster.
 | --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Kubernetes Configuration Security | This scan examines the compliance of deployed security features against the CIS Kubernetes Benchmarks, which are consensus-driven security guidelines for Kubernetes. By default, the test set will execute based on the cluster Kubernetes version.                     |
 | Kubernetes Penetration Testing    | This scan evaluates Kubernetes-related open-ports for any configuration issues that can leave the tenant clusters exposed to attackers. It hunts for security issues in your clusters and increases visibility of the security controls in your Kubernetes environments. |
-| Kubernetes Conformance Testing    | This scan validates your Kubernetes configuration to ensure that it conforms to CNCF specifications. Palette leverages an open-source tool called [Sonobuoy](https://sonobuoy.io) to perform this scan.                                                                  |
+| Kubernetes Conformance Testing    | This scan validates your Kubernetes configuration to ensure that it conforms to CNCF specifications. Palette leverages an open source tool called [Sonobuoy](https://sonobuoy.io) to perform this scan.                                                                  |
 | Software Bill of Materials (SBOM) | This scan details the various third-party components and dependencies used by your workloads and helps to manage security and compliance risks associated with those components.                                                                                         |
 
 Navigate to the left **Main Menu** and select **Clusters**. Select your cluster to view its **Overview** tab.
