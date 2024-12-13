@@ -22,7 +22,7 @@ before deleting the profile.
 - An existing cluster profile.
 
 - Your Palette account role must have the `clusterProfile.delete` permission to delete a profile. Refer to the
-  [Cluster Profile permissions](../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin).
+  [Cluster Profile permissions](../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile).
 
 ## Delete Profile
 

@@ -373,7 +373,19 @@ resource "spectrocloud_cluster_aws" "aws-cluster" {
 ## Terraform Tests
 
 Before starting the cluster deployment, test the Terraform code to ensure the resources will be provisioned correctly.
-Issue the following command in your terminal.
+
+Issue the following command in your terminal to initialize Terraform. The `init` command initializes the working
+directory that contains the Terraform files.
+
+```shell
+terraform init
+```
+
+```text hideClipboard
+Terraform has been successfully initialized!
+```
+
+Next, issue the `terraform test` command to start the tests.
 
 ```bash
 terraform test
@@ -428,8 +440,10 @@ the control plane or worker node pools as needed.
 
 :::warning
 
-Ensure that the SSH key pair specified in `aws-key-pair-name` is available in the same region specified by `aws-region`.
-For example, if `aws-region` is set to `us-east-1`, use the name of a key pair that exists in the `us-east-1` region.
+Note that `aws-cloud-account-name` must be replaced with the name of the AWS cloud account registered in Palette.
+Additionally, ensure that the SSH key pair specified in `aws-key-pair-name` is available in the same region specified by
+`aws-region`. For example, if `aws-region` is set to `us-east-1`, use the name of a key pair that exists in the
+`us-east-1` region.
 
 :::
 
@@ -470,17 +484,6 @@ environment variable. This step allows the Terraform code to authenticate with t
 
 ```bash
 export SPECTROCLOUD_APIKEY=<Your-Spectro-Cloud-API-key>
-```
-
-Next, issue the following command to initialize Terraform. The `init` command initializes the working directory that
-contains the Terraform files.
-
-```shell
-terraform init
-```
-
-```text hideClipboard
-Terraform has been successfully initialized!
 ```
 
 :::warning

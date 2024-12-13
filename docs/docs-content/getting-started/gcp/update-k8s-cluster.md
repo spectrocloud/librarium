@@ -149,6 +149,7 @@ This file enables you and other users to issue kubectl commands against the host
 ![Image that the kubeconfig file](/getting-started/gcp/getting-started_update-k8s-cluster_download-kubeconfig.webp)
 
 Open a terminal window and set the environment variable `KUBECONFIG` to point to the kubeconfig file you downloaded.
+Issue the following command, replacing `~/Downloads/admin.gcp-cluster.kubeconfig` with the path to your kubeconfig file.
 
 ```shell
 export KUBECONFIG=~/Downloads/admin.gcp-cluster.kubeconfig

@@ -27,9 +27,9 @@ existing Kubernetes cluster. Refer to the table below to learn more about the su
 | Environment    | Palette CLI Install? | Description                                                                                     | Install Guide                                                         |
 | -------------- | -------------------- | ----------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
 | MAAS           | ✅                   | The PCG cluster is deployed into a MAAS environment.                                            | [Deploy to MAAS](deploy-pcg/maas.md)                                  |
-| OpenStack      | ✅                   | The PCG cluster is deployed into an OpenStack environment.                                      | [Deploy a OpenStack](deploy-pcg/openstack.md)                         |
+| OpenStack      | ✅                   | The PCG cluster is deployed into an OpenStack environment.                                      | [Deploy to OpenStack](deploy-pcg/openstack.md)                        |
+| VMware vSphere | ✅                   | The PCG is deployed into a VMware vSphere environment.                                          | [Deploy to VMware vSphere](./deploy-pcg/vmware.md)                    |
 | Other          | ❌                   | The PCG cluster is deployed into an existing Kubernetes cluster that is not managed by Palette. | [Deploy a PCG to an Existing Kubernetes Cluster](./deploy-pcg-k8s.md) |
-| VMware vSphere | ✅                   | The PCG is deployed into a VMware vSphere environment.                                          | [Deploy a VMware vSphere](./deploy-pcg/vmware.md)                     |
 
 ## Kubernetes Requirements
 
