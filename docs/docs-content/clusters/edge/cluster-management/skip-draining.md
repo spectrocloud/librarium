@@ -31,7 +31,7 @@ layer of the cluster profile. These configurations will apply to both appliance 
   [Edge Host Registration](../site-deployment/site-installation/edge-host-registration.md) and
   [Deployment](../site-deployment/site-deployment.md).
 
-- Palette version 4.5.b or higher, with Palette agent version 4.5.11 or higher.
+- Palette version 4.5.15 or higher, with Palette agent version 4.5.11 or higher.
 
 ## Skip Node Draining During Upgrades or Repaves
 
