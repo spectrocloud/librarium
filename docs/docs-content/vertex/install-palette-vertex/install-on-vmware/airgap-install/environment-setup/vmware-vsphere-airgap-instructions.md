@@ -34,6 +34,7 @@ VerteX.
   - If you are using a generic OVA, ensure you download the airgap VerteX installation binary for the version of VerteX
     you plan to install.
   - An OVA with the operating system and Kubernetes distribution required for the VerteX nodes.
+  - The third-party binary that contains the core packs and images required for the installation.
 
   For sensitive environments, you can download the OVAs to a system with internet access and then transfer them to your
   airgap environment.

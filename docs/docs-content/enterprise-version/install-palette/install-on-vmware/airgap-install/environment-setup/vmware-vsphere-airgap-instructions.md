@@ -34,6 +34,7 @@ Palette.
   - If you are using a generic OVA, ensure you download the airgap Palette installation binary for the version of
     Palette you plan to install.
   - An OVA with the operating system and Kubernetes distribution required for the Palette nodes.
+  - The third-party binary that contains the core packs and images required for the installation.
 
   For sensitive environments, you can download the OVAs to a system with internet access and then transfer them to your
   airgap environment.
