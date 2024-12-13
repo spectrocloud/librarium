@@ -234,23 +234,26 @@ async function generateMarkdownForCVEs(GlobalCVEData) {
         ...item.spec.impact.impactedVersions,
       ];
 
-      if (item.spec.impact.impactedProducts.palette) {
+      // Palette Enterprise
+      if (item.spec.impact.impactedProducts.palette && !item.spec.impact.impactedDeployments.airgap) {
         cveImpactMap[item.metadata.cve].impactsPaletteEnterprise = true;
       }
-
-      if (item.spec.impact.impactedDeployments.airgap) {
+      // Palette Enterprise Airgap
+      if (item.spec.impact.impactedProducts.palette && item.spec.impact.impactedDeployments.airgap) {
         cveImpactMap[item.metadata.cve].impactsPaletteEnterpriseAirgap = true;
       }
-
-      if (item.spec.impact.impactedProducts.vertex) {
+      // Palette VerteX
+      if (item.spec.impact.impactedProducts.vertex && !item.spec.impact.impactedDeployments.airgap) {
         cveImpactMap[item.metadata.cve].impactsVerteX = true;
       }
-
-      if (item.spec.impact.impactedDeployments.airgap) {
+      // Palette VerteX Airgap
+      if (item.spec.impact.impactedProducts.vertex && item.spec.impact.impactedDeployments.airgap) {
         cveImpactMap[item.metadata.cve].impactsVerteXAirgap = true;
       }
     }
   }
+
+  console.log(cveImpactMap["CVE-2023-26604"]);
 
   const markdownPromises = allCVEs.map((item) =>
     createCveMarkdown(item, cveImpactMap[item.metadata.cve], "docs/docs-content/security-bulletins/reports/")
