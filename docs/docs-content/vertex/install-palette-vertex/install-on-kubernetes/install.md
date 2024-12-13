@@ -28,7 +28,9 @@ has the necessary network connectivity for VerteX to operate successfully.
 
 - Ensure `unzip` or a similar extraction utility is installed on your system.
 
-- The Kubernetes cluster must be set up on a supported version of Kubernetes, which includes versions v1.25 to v1.27.
+- The Kubernetes cluster must be set up on a version of Kubernetes that is compatible to your upgraded version. Refer to
+  the [Kubernetes Requirements](../install-palette-vertex.md#kubernetes-requirements) section to find the version
+  required for your Palette installation.
 
 - Ensure the Kubernetes cluster does not have Cert Manager installed. VerteX requires a unique Cert Manager
   configuration to be installed as part of the installation process. If Cert Manager is already installed, you must
