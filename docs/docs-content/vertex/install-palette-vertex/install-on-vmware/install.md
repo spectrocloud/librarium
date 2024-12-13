@@ -121,14 +121,12 @@ Use the following steps to install Palette VerteX.
 2.  Create a vSphere VM and Template folder with the name `spectro-templates`. Ensure this folder is accessible by the
     user account you will use to deploy the VerteX installation.
 
-3.  Use the URL below to import the Operating System and Kubernetes distribution OVA required for the install. Place the
-    OVA in the `spectro-templates` folder. Refer to the
+3.  Find the OVA download URL corresponding to your Palette VerteX version in the
+    [Kubernetes Requirements](../install-palette-vertex.md#kubernetes-requirements) section. Use the identified URL to
+    import the Operating System and Kubernetes distribution OVA required for the install. Place the OVA in the
+    `spectro-templates` folder. Refer to the
     [Import Items to a Content Library](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-B413FBAE-8FCB-4598-A3C2-8B6DDA772D5C.html?hWord=N4IghgNiBcIJYFsAOB7ATgFwAQYKbIjDwGcQBfIA)
     guide for information about importing an OVA in vCenter.
-
-    ```url
-     https://vmwaregoldenimage.s3.amazonaws.com/u-2204-0-k-12813-0.ova
-    ```
 
 4.  Append an `r_` prefix to the OVA name and remove the `.ova` suffix after the import. For example, the final output
     should look like `r_u-2204-0-k-12813-0`. This naming convention is required for the install process to identify the

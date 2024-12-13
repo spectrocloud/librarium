@@ -71,6 +71,9 @@ development and testing environments.
     to the [PCG Sizing](#pcg-sizing) section for more information.
   - A Container Network Interface plugin installed.
   - A Container Storage Interface plugin installed.
+  - The Kubernetes cluster must be set up on a version of Kubernetes that is compatible to your PCG version. Refer to
+    the [Kubernetes Requirements](./pcg.md#kubernetes-requirements) section to find the version required for your
+    Palette installation
 
 - PCG IP address requirements:
 
