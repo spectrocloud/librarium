@@ -47,18 +47,16 @@ function SimpleCard({ title, index, description, buttonText, url, hideNumber }: 
 
 function SimpleCardBody(title: string, description: string, buttonText: string, index?: number, hideNumber?: boolean) {
   return (
-    <div>
-      <div className={styles.simpleCard}>
-        <SimpleCardHeader index={index} title={title} hideNumber={hideNumber} />
-        <div className={styles.simpleCardBody}>
-          <p className={styles.simpleCardDescription}>{description}</p>
-        </div>
-        <div className={styles.simpleCardFooter}>
-          <button className={styles.simpleCardFooterBtn}>
-            {buttonText}
-            <SimpleCardFooterArrow index={index} />
-          </button>
-        </div>
+    <div className={styles.simpleCard}>
+      <SimpleCardHeader index={index} title={title} hideNumber={hideNumber} />
+      <div className={styles.simpleCardBody}>
+        <p className={styles.simpleCardDescription}>{description}</p>
+      </div>
+      <div className={styles.simpleCardFooter}>
+        <button className={styles.simpleCardFooterBtn}>
+          {buttonText}
+          <SimpleCardFooterArrow index={index} />
+        </button>
       </div>
     </div>
   );
