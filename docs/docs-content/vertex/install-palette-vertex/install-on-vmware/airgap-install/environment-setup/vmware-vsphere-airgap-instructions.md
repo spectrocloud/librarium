@@ -123,7 +123,7 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
     private SSH key and the IP address with the IP address or domain name of the airgap support VM.
 
     ```shell
-    ssh -identity_file /path/to/private/key ubuntu@vertex.example.com
+    ssh -i /path/to/private/key ubuntu@vertex.example.com
     ```
 
 12. Change the password for the `ubuntu` user account. You will be prompted to change the password the first time you
