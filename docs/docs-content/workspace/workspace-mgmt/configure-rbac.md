@@ -17,16 +17,21 @@ workspaces, and Edge hosts and its subjects are Palette users. Workspace RBAC is
 model. It regulates access to Kubernetes objects in the clusters encompassed by the workspace, and its subjects are
 Kubernetes users, groups and service accounts.
 
-|                       | Workspace RBAC                                  | Palette RBAC                                             |
-| --------------------- | ----------------------------------------------- | -------------------------------------------------------- |
-| Access control domain | Kubernetes clusters in the workspace.           | Palette resources.                                       |
-| Subjects              | Kubernetes users, groups, and service accounts. | Palette users and teams                                  |
-| Example resources     | ConfigMaps, Secrets, Pods, StatefulSets, etc.   | Cluster profiles, clusters, workspaces, Edge hosts, etc. |
+|                       | Workspace RBAC                                           | Palette RBAC                                             |
+| --------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
+| Access control domain | Kubernetes API objects in the clusters in the workspace. | Palette resources.                                       |
+| Subjects              | Kubernetes users, groups, and service accounts.          | Palette users and teams                                  |
+| Example resources     | ConfigMaps, Secrets, Pods, StatefulSets, etc.            | Cluster profiles, clusters, workspaces, Edge hosts, etc. |
 
-## Create Role Bindings in Namespaces in All Clusters
+## Create Workspace-Level Role Bindings
 
-You can create role bindings in the namespaces that are included in your workspace across all the clusters in your
-namespace or use Regular Expressions (regex) to create role bindings in all namespaces that match the regex.
+By creating a workspace-level role binding, you create role bindings in the all clusters in the workspace in the
+namespaces you choose. You can also use Regular Expressions (regex) to create role bindings in all namespaces that match
+the regex.
+
+For example, if you create a role binding that binds the cluster role `podReader` to the service account
+`podReaderAccount` in the `default` namespace. Every cluster in your workspace will get a role binding that binds the
+cluster role `podReader` to the service account `podReaderAccount` in that cluster's `default` namespace.
 
 ### Prerequisites
 
@@ -85,6 +90,59 @@ namespace or use Regular Expressions (regex) to create role bindings in all name
 
 3. On the left **Main Menu**, click **Workspaces**. Select your workspace.
 
-4. Switch to the **Role Bindings** or **Cluster Role Bindings** tab.
+4. Switch to the **Role Bindings** tab.
 
-5. Search for an entry that starts with **spectro-on-demand-**.
+5. Search for entries that starts with **spectro-on-demand-**. Open the these entries to confirm that the role bindings
+   bind the expected role to the expected subject.
+
+## Configure Cluster Role Binding in All Clusters
+
+By creating a workspace-level cluster role binding, you create the same cluster role binding in every cluster in your
+workspace.
+
+For example, if you create a cluster role binding that binds the cluster role `podReader` to the service account
+`podReaderAccount`, every cluster will get the role binding that binds the the cluster role `podReader` to the service
+account `podReaderAccount`.
+
+### Prerequisites
+
+- An existing workspace. Refer to [Create a Workspace](../adding-a-new-workspace.md) to learn how to create a workspace.
+
+- You are logged in as a Palette user that has the permission to modify workspaces. For more information, refer to
+  [Permissions](../../user-management/palette-rbac/permissions.md).
+
+### Procedure
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. In the **Drop-Down Menu** at the top of the page, choose the project that has your workspace.
+
+3. On the left **Main Menu**, click **Workspaces**.
+
+4. Click on the workspace you want to update.
+
+5. In the upper-right corner, click **Settings**. Then click **Clusters**.
+
+6. Click **Add New Binding**.
+
+7. In the **Cluster Role name** field, enter the name of the cluster role. In the **Subjects** field, enter the type and
+   name of the subject. You can enter as many subjects as you need.
+
+   As is with role bindings, neither the cluster role nor the subjects referenced need to exist when you create the
+   cluster role binding. However, you must make create them in each cluster. Otherwise, the cluster role binding will
+   have no effect.
+
+8. Click **Confirm**.
+
+### Validate
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. In the **Drop-Down Menu** at the top of the page, choose the project that has your workspace.
+
+3. On the left **Main Menu**, click **Workspaces**. Select your workspace.
+
+4. Switch to the **Cluster Role Bindings** tab.
+
+5. Search for entries that starts with **spectro-on-demand-**. Open the these entries to confirm that the role bindings
+   bind the expected role to the expected subject.
