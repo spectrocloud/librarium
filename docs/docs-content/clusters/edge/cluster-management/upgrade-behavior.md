@@ -3,7 +3,7 @@ sidebar_label: "Edge Cluster Upgrade Behavior"
 title: "Edge Cluster Upgrade Behavior"
 description: "Learn about how Palette Edge responds to upgrades of the cluster profile."
 hide_table_of_contents: false
-sidebar_position: 80
+sidebar_position: 10
 tags: ["edge", "architecture"]
 ---
 

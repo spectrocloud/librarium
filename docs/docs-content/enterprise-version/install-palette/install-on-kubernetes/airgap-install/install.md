@@ -225,7 +225,6 @@ environment. Reach out to our support team if you need assistance.
     | `ociImageRegistry.mirrorRegistries` | Replace the placeholder string with the respective values of your OCI registry repository that is hosting the images. Do not use the same values you provided to the image-swap **values.yaml**. The placeholders require a `/v2/` endpoint if your OCI registry supports the Docker Registry protocol v2, otherwise container pull images will fail. |
     | `imageSwapImages`                   | The image swap configuration for Palette. If you are using an OCI registry, such as Harbor. Replace the prefix URLs with your OCI registry URL that includes the image namespace or project: `<registry-url>/<namespace>`.                                                                                                                            | object   |
     | `imageSwapConfig.isEKSCluster`      | If you are NOT installing Palette on an EKS cluster, set this value to `false`.                                                                                                                                                                                                                                                                       | boolean  |
-    | `scar`                              | Specify your HTTP file server values. If your HTTP file server requires credentials ensure the provided values are base64-encoded. Example of the string "admin" encoded in base64 - `YWRtaW4=`.                                                                                                                                                      | object   |
     | `ingress.enabled`                   | Whether to install the Nginx ingress controller. Set this to `false` if you already have an Nginx controller deployed in the cluster.                                                                                                                                                                                                                 | boolean  |
     | `reach-system`                      | Set `reach-system.enabled` to `true` and configure the `reach-system.proxySettings` parameters for Palette to use a network proxy in your environment.                                                                                                                                                                                                | object   |
 
@@ -237,7 +236,7 @@ environment. Reach out to our support team if you need assistance.
 
     <TabItem label="OCI Registry" value="oci">
 
-    ```yaml {23,53,87-95,97-102,104-106,109}
+    ```yaml {23,53,68-75,87-95,111-113}
     #########################
     # Spectro Cloud Palette #
     #########################
@@ -334,12 +333,19 @@ environment. Reach out to our support team if you need assistance.
         caCert: ""
         mirrorRegistries: "docker.io::my-oci-registry.com/v2/spectro-images/docker.io,gcr.io::my-oci-registry.com/v2/spectro-images/gcr.io,ghcr.io::my-oci-registry.com/v2/spectro-images/ghcr.io,k8s.gcr.io::my-oci-registry.com/v2/spectro-images/k8s.gcr.io,registry.k8s.io::my-oci-registry.com/v2/spectro-images/registry.k8s.io,quay.io::my-oci-registry.com/v2/spectro-images/quay.io"
 
-      scar:
-        endpoint: "http://10.15.20.15:2015"
-        username: "YWRtaW4="
-        password: "YWRtaW4="
-        insecureSkipVerify: true
-        caCert: ""
+      #
+      # Instruction for mirrorRegistries.
+      # ----------------------------------
+      # Please provide the registry endpoint for the following registries, separated by double colons (::):
+      # docker.io
+      # gcr.io
+      # ghcr.io
+      # k8s.gcr.io
+      # registry.k8s.io
+      # quay.io
+      # For each registry, follow this example format:
+      # docker.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<DOCKER_IO_ENDPOINT>,gcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<GCR_IO_ENDPOINT>,ghcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<GHCR_IO_ENDPOINT>,k8s.gcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<K8S_IO_ENDPOINT>,registry.k8s.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<REGISTRY_K8S_IO_ENDPOINT>,quay.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<QUAY_IO_ENDPOINT>
+      # Replace <PLACE_HOLDER_FOR_ENDPOINT> with your actual registry endpoint and <DOCKER_IO_ENDPOINT>, <GCR_IO_ENDPOINT>, <GHCR_IO_ENDPOINT>, <K8S_IO_ENDPOINT>, <REGISTRY_K8S_IO_ENDPOINT>, and <QUAY_IO_ENDPOINT> with the specific endpoint details for each registry.
 
       imageSwapImages:
         imageSwapInitImage: "my-oci-registry.com/spectro-images/gcr.io/spectro-images-public/release-fips/thewebroot/imageswap-init:v1.5.2"
@@ -464,7 +470,7 @@ environment. Reach out to our support team if you need assistance.
 
     <TabItem label="AWS ECR Registry" value="ecr">
 
-    ```yaml {23,53,77-85,87-95,110-115}
+    ```yaml {23,53,77-85,87-95,110-112}
     #########################
     # Spectro Cloud Palette #
     #########################
@@ -573,13 +579,6 @@ environment. Reach out to our support team if you need assistance.
       # For each registry, follow this example format:
       # docker.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<DOCKER_IO_ENDPOINT>,gcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<GCR_IO_ENDPOINT>,ghcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<GHCR_IO_ENDPOINT>,k8s.gcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<K8S_IO_ENDPOINT>,registry.k8s.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<REGISTRY_K8S_IO_ENDPOINT>,quay.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<QUAY_IO_ENDPOINT>
       # Replace <PLACE_HOLDER_FOR_ENDPOINT> with your actual registry endpoint and <DOCKER_IO_ENDPOINT>, <GCR_IO_ENDPOINT>, <GHCR_IO_ENDPOINT>, <K8S_IO_ENDPOINT>, <REGISTRY_K8S_IO_ENDPOINT>, and <QUAY_IO_ENDPOINT> with the specific endpoint details for each registry.
-
-      scar:
-        endpoint: "http://10.15.20.15:2015"
-        username: "YWRtaW4="
-        password: "YWRtaW4="
-        insecureSkipVerify: true
-        caCert: ""
 
       imageSwapImages:
         imageSwapInitImage: "public.ecr.aws/123456789/gcr.io/spectro-images-public/release-fips/thewebroot/imageswap-init:v1.5.2"
