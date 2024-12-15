@@ -5,8 +5,9 @@
 # You can use the following command to generate the file. 
 # Assuming you have a .env file in the current directory.
 # source .env && envsubst < palette-install.tape > palette-install-creds.tape
-Require palette
+
 Output palette-install.mp4
+
 
 Set FontSize 14
 Set Width 950
@@ -16,116 +17,126 @@ Set WindowBar Colorful
 Set Margin 20
 Set BorderRadius 10
 
-Show
+
+
+Sleep 6.5s
 Type "palette ec install"
-Sleep 5s
+Enter
+Sleep 1.5s
+Enter
+Sleep 500ms
+Type "y"
+Sleep 4s
+Type "${UBUNTU_PRO}"
+Sleep 1.5s
+Enter
+Sleep 2.5s
+Enter
+Sleep 500ms
+Enter
+Sleep 500ms
+Enter
+Sleep 500ms
+Enter
+Sleep 500ms
+Enter
+Sleep 1s
+Down
+Enter
+Sleep 500ms
+Type "Palette Packs"
+Enter
+Sleep 3.5s
+Type "https://415789037893.dkr.ecr.us-east-1.amazonaws.com"
+Enter
+Sleep 500ms
+Type "production"
+Enter
+Sleep 1.5s
+Type "y"
+Sleep 2s
+Type "${PACKS_PROD_REGISTRY_ACCESS_KEY}"
+Enter
+Sleep 4.5s
+Type "${PACKS_PROD_REGISTRY_SECRET_KEY}"
+Enter
+Sleep 500ms
+Type "us-east-1"
+Enter
+Sleep 500ms
+Type "y"
+Sleep 1s
+Type "y"
+Sleep 3s
+Enter
+Sleep 3.5s
+Type "vcenter.spectrocloud.dev"
+Enter
+Sleep 3.5s
+Type "${VCENTER_USER}"
+Enter
+Sleep 3s
+Type "${VCENTER_PASSWORD}"
+Enter
+Sleep 1.5s
+Type "y"
+Sleep 9.5s
+Enter
+Sleep 4.5s
+Type "sp-karl"
+Enter
+Sleep 1s
+Type "spectro"
+Sleep 500ms
 Enter
 Sleep 1s
 Enter
-Type "y"
-Sleep 2s
-Type "${UBUNTU_PRO}" # Ubuntu Pro Token. This is not required for a normal Palette installation.
-Enter
-Type "${PROD_SCAR_URL}"
-Enter
-Type@200ms "username"
-Hide
-Backspace 15
-Type "${PROD_SCAR_USERNAME}"
-Enter
-Show
-Sleep 2s
-Type "${PROD_SCAR_PASSWORD}" # FIPS Packs Repository Password
-Enter
-Sleep 2s
-Type "y" # Allow Insecure Connection
+Sleep 4s
+Down
 Sleep 2s
 Enter
-Sleep 3s
-Enter # Select VMware vSphere
+Sleep 1.5s
+Down
+Enter
+Sleep 1s
+Enter
+Sleep 500ms
+Enter
+Sleep 1s
+Type "n"
+Sleep 1.5s
+Enter
 Sleep 2s
-Enter  # Cluster Name
-Sleep 2s
-Enter  # HTTPS Proxy
-Sleep 2s
-Enter  # HTTP Proxy
-Sleep 2s
+Type "dddssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDW3S6ugyQ0nkqs/X7bglMSPXEbF9Tr5ii7yrXiFPAy/VbUXf26KOedn7jcETFW74Dlu2NWBnU5Q2Ij6Hpv8/BkorkBIC5EySnt6NkS+P+B8T15UoDG4Z0LOW2yfnTuuebrVmqTP6X4emTALTdiI/SRmIYzYhWIZFWY00jOyTVguS0X4q6Tq7W/g7WqspGPAAoMH8v9ifzOkjRZvrjb6Qv5wwIOiepkySKf2lOlsxc7LikAcbwEIwFrxgSTk1CZ2MxTfN4djwd4U0kJ//Mq6genPx/SVpoSZhu6vPjFiNa4jHBnJb7uN0JRcCMtSMSpLtbIr7vGkzNF8+eJWmHPRsJra8CAiCR+HWjtBJbKqktMz2hCEAaezTOyH4vvdV/e40qvVDHwqk58sLCTm7M9N/7QZXy93RrPqn8ISlt/5IzXvO8MZkYuaU2bfkL6bID/Z53CaIDSirNHHu1xt3MuptBKIYGrpEpiQ62es5G3KaGj80GQRrShln77NYxwfuDXlPM= your_email@example.com"
+Enter
+Sleep 500ms
 Escape
 Type ":wq"
-Sleep 2s
+Sleep 500ms
 Enter
-Sleep 2s
-Enter # Proxy CA Cert
-Sleep 2s
-Enter # POD CIDR
-Sleep 2s
-Enter # Service IP Range
-Sleep 2s
-Type "y" # Use default pack registry
+Sleep 500ms
+Type "10.10.100.0"
 Enter
-Sleep 2s
-Type "vcenter.spectrocloud.dev"
+Type "10.10.100.249"
 Enter
-Sleep 2s
-Type "${VCENTER_USER}"
+Sleep 500ms
 Enter
-Sleep 2s
-Type "${VCENTER_PASSWORD}"
+Sleep 1s
+Type "10.10.128.1"
 Enter
-Sleep 2s
-Type "y" # Allow insecure connection
+Sleep 1.5s
+Type "10.10.128.8"
 Enter
-Sleep 4s
-Enter # Select Datacenter
-Sleep 3s
-Type "sp-karl" # Select Folder
+Sleep 1s
+Type "s"
+Backspace
+Type "example.dev"
 Enter
-Sleep 3s
-Down 1
-Enter # Select Cluster
-Sleep 3s
-Down 1 # VM Network
+Sleep 1s
 Enter
-Sleep 4s
-Enter # Resource Pool
-Sleep 3s
-Enter # Storage Policy
-Sleep 3s
-Enter # Select Datastore
-Sleep 2s
-Type "n" # Add another fault domain
-Sleep 2s
-Enter
-Sleep 2s 
-Enter # NTP Servers
-Sleep 2s
-Type "dd"
-Type "i"
-Type "ssh-rsa AAAAB3NzaC1yc2EAA...."
-Escape
-Sleep 3s
-Type@500ms ":wq"
-Enter
-Sleep 2s
-Type "${NON_AIRGAP_IP_START_RANGE}" # IP Start Range
-Enter
-Sleep 2s
-Type "${NON_AIRGAP_IP_END_RANGE}" # IP End Range
-Enter
-Sleep 2s
-Enter # Network Prefix
-Sleep 2s
-Type "${NON_AIRGAP_GATEWAY}" # Gateway
-Enter
-Type "${NON_AIRGAP_DNS_SERVER}" # DNS Server
-Enter
-Type "spectrocloud.dev" # Name Server Domain
-Enter
-Sleep 2s
-Down 1 # Medium VM Size
-Enter
-Sleep 2s
-Type "y" # Node Affinity
-Enter
+Sleep 1.5s
+Type "y"
+Sleep 58s
+Ctrl+C
+Sleep 500ms
 
-Sleep 35s

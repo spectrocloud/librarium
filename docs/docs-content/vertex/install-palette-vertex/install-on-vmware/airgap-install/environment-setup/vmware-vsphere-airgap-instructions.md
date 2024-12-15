@@ -496,15 +496,13 @@ Complete all the Palette CLI steps outlined in the [Install VerteX](../install.m
 The table below maps the airgap script output values to their respective Palette CLI prompts and example values. The
 example values are for reference only.
 
-| Output Value                          | Palette CLI Prompt                   | Example Value                                         |
-| ------------------------------------- | ------------------------------------ | ----------------------------------------------------- |
-| **Spectro Cloud Repository Location** | **SCAR Location**                    | `https://vertex.example.com:8443` or `10.10.1.1:8443` |
-| **CA certificate filepath**           | **SCAR CA certificate filepath**     | `/opt/spectro/ssl/server.crt`                         |
-| **OCI Registry**                      | **Registry Type**                    | `OCI`                                                 |
-| **Pack OCI Registry**                 | **Registry Endpoint**                | `https://vertex.example.com` or `10.10.1.1`           |
-| **CA certificate Filepath**           | **Registry CA certificate filepath** | `/opt/spectro/ssl/server.crt`                         |
-| **Image OCI Registry**                | **Registry Endpoint**                | `https://vertex.example.com` or `10.10.1.1`           |
-| **CA certificate Filepath**           | **Registry CA certificate filepath** | `/opt/spectro/ssl/server.crt`                         |
+| Output Value                | Palette CLI Prompt                   | Example Value                               |
+| --------------------------- | ------------------------------------ | ------------------------------------------- |
+| **OCI Registry**            | **Registry Type**                    | `OCI`                                       |
+| **Pack OCI Registry**       | **Registry Endpoint**                | `https://vertex.example.com` or `10.10.1.1` |
+| **CA certificate Filepath** | **Registry CA certificate filepath** | `/opt/spectro/ssl/server.crt`               |
+| **Image OCI Registry**      | **Registry Endpoint**                | `https://vertex.example.com` or `10.10.1.1` |
+| **CA certificate Filepath** | **Registry CA certificate filepath** | `/opt/spectro/ssl/server.crt`               |
 
 When prompted for **Allow Insecure Connection (Bypass x509 Verification)?**, enter `n` to continue and specify the
 server certificate filepath from the script output.

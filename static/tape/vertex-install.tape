@@ -5,8 +5,8 @@
 # You can use the following command to generate the file. 
 # Assuming you have a .env file in the current directory.
 # source ../../.env && envsubst < vertex-install.tape > vertex-install-creds.tape
-Require palette
 Output vertex-install.mp4
+
 
 Set FontSize 14
 Set Width 950
@@ -16,139 +16,116 @@ Set WindowBar Colorful
 Set Margin 20
 Set BorderRadius 10
 
-Show
+
+
+Sleep 2s
 Type "palette ec install"
-Enter 1
-Sleep 3s
-# Palette VerteX
-Down 1
+Enter
+Sleep 4s
+Down
+Enter
 Sleep 1s
 Enter
-Sleep 2s
-Enter 1
-Sleep  2s
+Sleep 1s
 Type "y"
-Sleep 2s
-# Ubuntu Pro Token. This is not required for a normal Palette installation.
-Type "${UBUNTU_PRO}" 
-Enter 1
-Type "${PROD_FIPS_SCAR_URL}"
+Sleep 3.5s
+Type "${UBUNTU_PRO}"
 Enter
-Type@200ms "username"
-Hide
-Backspace 15
-Type "${PROD_FIPS_SCAR_USERNAME}"
-Enter 1
-Show
-Sleep 2s
-# FIPS Packs Repository Password
-Type "${PROD_FIPS_SCAR_PASSWORD}" 
+Sleep 500ms
 Enter
-Sleep 2s
-# Allow Insecure Connection
-Type "y" 
-Sleep 2s
-Enter 1
+Sleep 500ms
+Enter 2
+Sleep 500ms
+Enter 2
+Sleep 500ms
+Down
+Enter
+Type "Palette FIPS Packs"
+Enter
 Sleep 3s
-# Select VMware vSphere
+Type "https://415789037893.dkr.ecr.us-west-2.amazonaws.com"
 Enter
-Sleep 2s
-# Cluster Name
+Type "production-fips"
 Enter
-Sleep 2s
-# HTTPS Proxy
-Enter 
-Sleep 2s
-# HTTP Proxy
+Sleep 500ms
 Enter
-Sleep 2s
-# POD CIDR
+Sleep 3s
+Type "${PACKS_PROD_FIPS_REGISTRY_ACCESS_KEY}"
 Enter
-Sleep 2s
-# Use default pack registry
+Sleep 2.5s
+Type "${PACKS_PROD_FIPS_REGISTRY_SECRET_KEY}"
+Sleep 500ms
+Enter
+Sleep 1s
+Type "us-west-2"
+Enter
+Sleep 1s
 Type "y"
-Enter 1
-Sleep 2s
+Sleep 1.5s
+Type "y"
+Sleep 2.5s
+Enter
+Sleep 4s
 Type "vcenter.spectrocloud.dev"
 Enter
-Sleep 2s
+Sleep 2.5s
 Type "${VCENTER_USER}"
-Enter 1
+Enter
 Sleep 2s
 Type "${VCENTER_PASSWORD}"
 Enter
-Sleep 2s
-# Allow insecure connection
+Sleep 1.5s
 Type "y"
-Sleep 5s
-# Select Datacenter
-Enter 
 Sleep 4s
-# Select Folder
-Type "sp-karl" 
-Enter 1
-Sleep 3s
-Type "spectro-templates"
+Enter
+Sleep 4.5s
+Type "sp-karl"
+Enter
+Sleep 500ms
+Type "spectr"
+Enter
+Sleep 500ms
+Enter
+Sleep 3.5s
+Down
+Enter
+Sleep 1s
+Down
+Enter
+Sleep 500ms
+Enter
 Sleep 1s
 Enter
-# Select Cluster
-Enter 
-Sleep 3s
-# VM-NETWORK
-Down 1
-Sleep 1s
-Enter 1
-Sleep 4s
-# Resource Pool
-Down 1
-Enter 
-Sleep 3s
-# Storage Policy
-Enter 
-Sleep 3s
-# Select Datastore
-Enter 
-Sleep 2s
-# Add another fault domain
+Sleep 500ms
 Type "n"
-Sleep 3s
+Sleep 1.5s
 Enter
-Sleep 2s
+Sleep 8.5s
 Type "dd"
-Type "i"
-Type@10ms "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDCawOoc0B3UMrOrydXn7VC+f9gJytuE0gIrm8RHow/NDIkQnzqIQPbbjxOr39vSCirNcXWqqDFsfeitfavzFKnFQf0UdfK9XivLY1nw1fpImZrGzVoyCUef44lsFr3M8+CcTDvmPybOvZH1nmJxP39BuzsmcqrFTzw5BLj0j391QxiP68K7iOOfSrpJlditBwq55++CQ8fwqdvEOLd/ebjEt1rZ6AXPV8k3pvkuWAfRJAZ+LelXFcN6/RNb8brdIrW/IllAHTspb7VlvOoKtOpqsy3dp7Rom0WlxlkZwbiFmbxAOL7UpvDLBMtDMchYqQekthD+/Lkm5VK+w2RZbyJ"
+Sleep 1s
+Type "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDW3S6ugyQ0nkqs/X7bglMSPXEbF9Tr5ii7yrXiFPAy/VbUXf26KOedn7jcETFW74Dlu2NWBnU5Q2Ij6Hpv8/BkorkBIC5EySnt6NkS+P+B8T15UoDG4Z0LOW2yfnTuuebrVmqTP6X4emTALTdiI/SRmIYzYhWIZFWY00jOyTVguS0X4q6Tq7W/g7WqspGPAAoMH8v9ifzOkjRZvrjb6Qv5wwIOiepkySKf2lOlsxc7LikAcbwEIwFrxgSTk1CZ2MxTfN4djwd4U0kJ//Mq6genPx/SVpoSZhu6vPjFiNa4jHBnJb7uN0JRcCMtSMSpLtbIr7vGkzNF8+eJWmHPRsJra8CAiCR+HWjtBJbKqktMz2hCEAaezTOyH4vvdV/e40qvVDHwqk58sLCTm7M9N/7QZXy93RrPqn8ISlt/5IzXvO8MZkYuaU2bfkL6bID/Z53CaIDSirNHHu1xt3MuptBKIYGrpEpiQ62es5G3KaGj80GQRrShln77NYxwfuDXlPM= your_email@example.com"
 Escape
-Sleep 3s
-Type@500ms ":wq"
-Enter 1
-Sleep 2s
-# IP Start Range
-Type "${NON_AIRGAP_IP_START_RANGE}"
+Type ":wq"
 Enter
-Sleep 2s
-# IP End Range
-Type "${NON_AIRGAP_IP_END_RANGE}"
-Enter 1
-Sleep 2s
-# Network Prefix
-Enter 
-Sleep 2s
-# Gateway
-Type "${NON_AIRGAP_GATEWAY}" 
+Sleep 500ms
+Type "10.10.100.0"
 Enter
-# DNS Server
-Type "${NON_AIRGAP_DNS_SERVER}"
+Sleep 500ms
+Type "10.10.100.249"
 Enter
-# Name Server Domain
-Type "spectrocloud.dev" 
+Sleep 500ms
 Enter
-Sleep 2s
-# Medium VM Size
-Down 1 
-Enter 1
-Sleep 2s
-# Node Affinity
-Type "y" 
+Sleep 1s
+Type "10.10.128.1"
 Enter
+Type "10.10.128.8"
+Enter
+Sleep 500ms
+Type "example.dev"
+Enter
+Sleep 1.5s
+Enter
+Sleep 1.5s
+Type "y"
+Sleep 45s
 
-Sleep 35s
