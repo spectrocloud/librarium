@@ -4,7 +4,7 @@ title: "Share Local UI Authentication"
 description:
   "Learn how to integration your application and have your application share Local UI's authentication token."
 hide_table_of_contents: false
-sidebar_position: 50
+sidebar_position: 60
 tags: ["edge"]
 ---
 
