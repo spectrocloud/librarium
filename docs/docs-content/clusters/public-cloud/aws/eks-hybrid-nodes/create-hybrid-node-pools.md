@@ -7,8 +7,8 @@ tags: ["public cloud", "aws", "eks hybrid nodes"]
 sidebar_position: 30
 ---
 
-This section guides you on how to create a cluster profile to collectively manage your hybrid nodes. You can then create
-hybrid node pools and add your edge hosts to them.
+This section guides you on how to create a cluster profile to collectively manage your Amazon Elastic Kubernetes Service
+(Amazon EKS) Hybrid Nodes. You can then create hybrid node pools and add your edge hosts to them.
 
 You must then configure your networking to allow traffic to reach the pods on your hybrid nodes.
 
@@ -42,9 +42,8 @@ You must then configure your networking to allow traffic to reach the pods on yo
    - For Agent Mode, select **BYOS - Agent Mode**.
    - For provider images, select **BYOS - Edge OS**.
 
-7. If selecting **BYOS - Agent Mode**, on the **Configure Pack** page, click **Values** under **Pack Details**.
-
-   Click on **Presets** on the right-hand side, and select **Agent Mode**.
+7. If selecting **BYOS - Agent Mode**, on the **Configure Pack** page, click **Values** under **Pack Details**. Then,
+   click on **Presets** on the right-hand side, and select **Agent Mode**.
 
 8. Click **Next layer** to continue.
 
@@ -65,7 +64,7 @@ You must then configure your networking to allow traffic to reach the pods on yo
 
     :::info
 
-    While this change is not required for the pack to function, setting it to 'dummy' better indicates that this pack
+    While this change is not required for the pack to function, setting it to `dummy` better indicates that this pack
     serves as a placeholder only. This is because the Container Network Interface (CNI) was already created for hybrid
     nodes during the [Add CNI Cluster Profile](./import-eks-cluster-enable-hybrid-mode.md#add-cni-cluster-profile)
     steps.
@@ -146,17 +145,17 @@ Your cluster profile for hybrid nodes is now created and can be used in the
 7. Once your edge hosts have been selected, click **Configure** next to each edge host to review and configure
    individual host options.
 
-   | **Field**                | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-   | ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-   | **Host Name (Optional)** | Provide a optional name for the edge host that will be displayed in Palette.                                                                                                                                                                                                                                                                                                                                                                     |
-   | **NIC Name**             | Select a specific Network Interface Card (NIC) on the edge host from the **drop-down Menu**, or leave it on **Auto**.                                                                                                                                                                                                                                                                                                                            |
-   | **VPN server IP**        | Specify the VPN server's IP if the hybrid nodes in the pool use a VPN _and_ the hybrid node's network does not automatically route traffic to the EKS VPC CIDR through the VPN server. If provided, a static route will be configured on edge hosts to route traffic to the Amazon EKS VPC CIDR through the VPN server. If not specified, ensure your hybrid node network routes traffic to the Amazon EKS VPC CIDR through the default gateway. |
+   | **Field**                | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+   | ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Host Name (Optional)** | Provide an optional name for the edge host that will be displayed in Palette.                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+   | **NIC Name**             | Select a specific Network Interface Card (NIC) on the edge host from the **drop-down Menu**, or leave it on **Auto**.                                                                                                                                                                                                                                                                                                                                                                                                               |
+   | **VPN server IP**        | Specify the Virtual Private Network (VPN) server's IP if the hybrid nodes in the pool use a VPN _and_ the hybrid node's network does not automatically route traffic to the EKS Virtual Private Cloud (VPC) Classless Inter-Domain Routing (CIDR) through the VPN server. If provided, a static route will be configured on edge hosts to route traffic to the Amazon EKS VPC CIDR through the VPN server. If not specified, ensure your hybrid node network routes traffic to the Amazon EKS VPC CIDR through the default gateway. |
 
-   Click **Confirm** once done.
+8. Click **Confirm** once done.
 
-8. Repeat step 7 for each edge host added to your node pool as needed.
+9. Repeat step 7 and 8 for each edge host added to your node pool as needed.
 
-9. Click **Confirm** on the **Add node pool** pop-up window to add the hybrid node pool to your cluster.
+10. Click **Confirm** on the **Add node pool** pop-up window to add the hybrid node pool to your cluster.
 
 The hybrid node pool will then be provisioned and added to your cluster. This will take up to 15 minutes.
 
@@ -217,7 +216,7 @@ nodes. Before proceeding, consider the following points:
 
    Example output.
 
-   ```shell
+   ```shell hideClipboard
    NAME                                    CILIUMINTERNALIP   INTERNALIP    AGE
    edge-abc123def4567890example1           192.168.5.101      10.200.1.23   2h
    edge-xyz987uvw6543210example2           192.168.6.102      10.200.2.34   3h
@@ -235,7 +234,7 @@ nodes. Before proceeding, consider the following points:
 
    Example output.
 
-   ```shell
+   ```shell hideClipboard
        podCIDRs:
        - 192.168.5.0/25
    ```
@@ -245,10 +244,10 @@ nodes. Before proceeding, consider the following points:
 
 4. For each hybrid node, add the following entries.
 
-   | **Field**          | **Description**                                                                                                         | **Example**        |
-   | ------------------ | ----------------------------------------------------------------------------------------------------------------------- | ------------------ |
-   | Destination        | Use the `podCIDRs` value for the hybrid node discovered in step 2.                                                      | `192.168.4.128/25` |
-   | Next Hop / Gateway | Specify the IP address of the hybrid node as listed in the CiliumNode resource under `internalIP` discovered in step 1. | `192.168.5.101`    |
+   | **Field**              | **Description**                                                                                                         | **Example**        |
+   | ---------------------- | ----------------------------------------------------------------------------------------------------------------------- | ------------------ |
+   | **Destination**        | Use the `podCIDRs` value for the hybrid node discovered in step 2.                                                      | `192.168.4.128/25` |
+   | **Next Hop / Gateway** | Specify the IP address of the hybrid node as listed in the CiliumNode resource under `internalIP` discovered in step 1. | `192.168.5.101`    |
 
 5. Ensure the routes are saved and applied. The process varies depending on the VPN solution.
 
@@ -267,7 +266,7 @@ nodes. Before proceeding, consider the following points:
 
    Example healthy output.
 
-   ```shell
+   ```shell hideClipboard
    PING 192.168.5.10 (192.168.5.10): 56 data bytes
    64 bytes from 192.168.5.10: icmp_seq=1 ttl=63 time=28.382 ms
    64 bytes from 192.168.5.10: icmp_seq=2 ttl=63 time=27.359 ms
@@ -341,7 +340,7 @@ Use the following steps to manually trigger a repave on a hybrid node pool.
     **Node Pool Updates** in the banner.
 
 12. On the **Pool changes summary** pop-up window, click the checkbox next to **Upcoming changes in hybridPoolName
-    configuration**. Click **Confirm** afterwards.
+    configuration**. Click **Confirm** afterward.
 
 13. On the **Review update changes** window, review your changes and click **Confirm** to start the repave.
 

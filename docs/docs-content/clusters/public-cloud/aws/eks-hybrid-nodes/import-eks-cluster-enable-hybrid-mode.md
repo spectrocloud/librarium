@@ -8,8 +8,8 @@ tags: ["public cloud", "aws", "eks hybrid nodes"]
 sidebar_position: 10
 ---
 
-This section guides you on how to import an existing Amazon EKS cluster, enable hybrid mode, and configure a Container
-Network Interface (CNI) add-on cluster profile for your hybrid nodes.
+This section guides you on how to import an existing Amazon Elastic Kubernetes Service (Amazon EKS) cluster, enable
+hybrid mode, and configure a Container Network Interface (CNI) add-on cluster profile for your Amazon EKS Hybrid Nodes.
 
 ## Limitations
 
@@ -31,7 +31,7 @@ Import your Amazon EKS cluster and enable hybrid mode to be able to create edge 
 
 - Access to an AWS cloud account.
 
-- Palette integration with AWS account. Review [Add AWS Account](../add-aws-accounts.md) for guidance.
+- Palette integration with AWS account. Review [Add an AWS Account tp Palette](../add-aws-accounts.md) for guidance.
 
 - Your Palette account role must have the `clusterProfile.create` permission to import a cluster profile. Refer to the
   [Cluster Profile](../../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile)
@@ -47,7 +47,7 @@ Import your Amazon EKS cluster and enable hybrid mode to be able to create edge 
 - Access to your Amazon EKS cluster through kubectl.
 
   - To access your cluster with kubectl, you can use the AWS CLI's built-in authentication capabilities. If you are
-    using a custom OIDC provider, you will need to configure your kubeconfig to use your OIDC provider.
+    using a custom OpenID Connect (OIDC) provider, you will need to configure your kubeconfig to use your OIDC provider.
 
     Refer to the [Access Imported Cluster with Kubectl](#access-imported-cluster-with-kubectl) section for more
     information.
@@ -56,7 +56,7 @@ Import your Amazon EKS cluster and enable hybrid mode to be able to create edge 
   [Prepare networking for hybrid nodes](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-networking.html)
   for guidance. You will need to provide the following details during the import steps:
 
-  - The VPC CIDR range where your EKS cluster resides.
+  - The Virtual Private Cloud (VPC) Classless Inter-Domain Routing (CIDR) range where your EKS cluster resides.
   - The CIDR ranges for hybrid nodes in other networks that need to connect to this cluster.
   - The CIDR ranges for hybrid pods in other networks that need to connect to this cluster.
 
@@ -73,7 +73,8 @@ Import your Amazon EKS cluster and enable hybrid mode to be able to create edge 
 
   If you are using IAM Roles Anywhere, you will need to provide the following details during the import steps:
 
-  - The ARN of the IAM Roles Anywhere profile that defines which roles can be assumed by hybrid nodes.
+  - The Amazon Resource Name (ARN) of the IAM Roles Anywhere profile that defines which roles can be assumed by hybrid
+    nodes.
   - The ARN of the IAM role specified in the IAM Roles Anywhere profile that defines the permissions and policies for
     roles that can be assumed by hybrid nodes.
   - The ARN of the IAM Roles Anywhere trust anchor that contains your certificate authority configuration.
@@ -97,15 +98,15 @@ Import your Amazon EKS cluster and enable hybrid mode to be able to create edge 
 
 3. Click on **Add New Cluster** and select **Import Cluster** in the pop-up box.
 
-4. Fill out the required information:
+4. Fill out the required information.
 
-   | **Field**                       | **Description**                                                                                                                                  |
-   | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-   | Cluster Name                    | The name of the cluster you want to import. Ensure it matches the cluster name in AWS.                                                           |
-   | Cloud Type                      | The cloud infrastructure type. Select **Amazon** from the **drop-down Menu**.                                                                    |
-   | Host Path (Optional)            | Specify the Certificate Authority (CA) file path for the cluster. This is the location on the physical host machine where the CA file is stored. |
-   | Container Mount Path (Optional) | Specify the container mount path where the CA file is mounted in the container.                                                                  |
-   | Import mode                     | The Palette permission mode for the imported cluster. Select **Full-permission mode**.                                                           |
+   | **Field**                           | **Description**                                                                                                          |
+   | ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------ |
+   | **Cluster Name**                    | The name of the cluster you want to import. Ensure it matches the cluster name in AWS.                                   |
+   | **Cloud Type**                      | The cloud infrastructure type. Select **Amazon** from the **drop-down Menu**.                                            |
+   | **Host Path (Optional)**            | Specify the CA file path for the cluster. This is the location on the physical host machine where the CA file is stored. |
+   | **Container Mount Path (Optional)** | Specify the container mount path where the CA file is mounted in the container.                                          |
+   | **Import mode**                     | The Palette permission mode for the imported cluster. Select **Full-permission mode**.                                   |
 
 5. Click on **Create & Open Cluster Instance** to start the import.
 
@@ -197,13 +198,13 @@ Import your Amazon EKS cluster and enable hybrid mode to be able to create edge 
 
 13. If selecting **IAM Roles Anywhere**, you must provide the following additional details.
 
-    | **Field**           | **Description**                                                                                                                                                                                                                        | **Example**                                                                                      |
-    | ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-    | Profile ARN         | The ARN of the IAM Roles Anywhere profile that defines which roles can be assumed by hybrid nodes.                                                                                                                                     | `arn:aws:rolesanywhere:us-east-2:123456789012:profile/abcd1234-5678-90ef-ghij-klmnopqrstuv`      |
-    | Role ARN            | The ARN of the IAM role specified in the IAM Roles Anywhere profile that defines the permissions and policies for roles that can be assumed by hybrid nodes.                                                                           | `arn:aws:iam::123456789012:role/IRAHybridNodesRole`                                              |
-    | Trust Anchor ARN    | The ARN of the IAM Roles Anywhere trust anchor that contains your certificate authority configuration.                                                                                                                                 | `arn:aws:rolesanywhere:us-east-2:123456789012:trust-anchor/abcd1234-5678-90ef-ghij-klmnopqrstuv` |
-    | Root CA Certificate | The PEM-encoded certificate of your Certificate Authority (CA) that serves as the trust anchor. This certificate is used by IAM Roles Anywhere to validate the authenticity of the client certificates presented by your hybrid nodes. |                                                                                                  |
-    | Root CA Private Key | The private key corresponding to your CA certificate, used to sign client certificates.                                                                                                                                                |                                                                                                  |
+    | **Field**           | **Description**                                                                                                                                                                                                | **Example**                                                                                      |
+    | ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+    | Profile ARN         | The ARN of the IAM Roles Anywhere profile that defines which roles can be assumed by hybrid nodes.                                                                                                             | `arn:aws:rolesanywhere:us-east-2:123456789012:profile/abcd1234-5678-90ef-ghij-klmnopqrstuv`      |
+    | Role ARN            | The ARN of the IAM role specified in the IAM Roles Anywhere profile that defines the permissions and policies for roles that can be assumed by hybrid nodes.                                                   | `arn:aws:iam::123456789012:role/IRAHybridNodesRole`                                              |
+    | Trust Anchor ARN    | The ARN of the IAM Roles Anywhere trust anchor that contains your certificate authority configuration.                                                                                                         | `arn:aws:rolesanywhere:us-east-2:123456789012:trust-anchor/abcd1234-5678-90ef-ghij-klmnopqrstuv` |
+    | Root CA Certificate | The PEM-encoded certificate of your CA that serves as the trust anchor. This certificate is used by IAM Roles Anywhere to validate the authenticity of the client certificates presented by your hybrid nodes. |                                                                                                  |
+    | Root CA Private Key | The private key corresponding to your CA certificate, used to sign client certificates.                                                                                                                        |                                                                                                  |
 
 14. Click **Save Changes** when complete.
 
@@ -226,7 +227,7 @@ Import your Amazon EKS cluster and enable hybrid mode to be able to create edge 
 16. If the `aws-auth` ConfigMap does not exist, create the following ConfigMap in the `kube-system` namespace using the
     following command.
 
-    Ensure to replace `<roleArn>` with the **Role ARN** entry from step 13.
+    Replace `<roleArn>` with the **Role ARN** entry from step 13.
 
     ```shell
     kubectl create -f=/dev/stdin <<-EOF
@@ -253,8 +254,8 @@ Import your Amazon EKS cluster and enable hybrid mode to be able to create edge 
     kubectl edit configmap aws-auth --namespace kube-system
     ```
 
-    The following example shows the `mapRoles` entry appended below an existing entry. Ensure to replace `<roleArn>`
-    with the **Role ARN** entry from step 13.
+    The following example shows the `mapRoles` entry appended below an existing entry. Replace `<roleArn>` with the
+    **Role ARN** entry from step 13.
 
     ```yaml {13-17} hideClipboard
     apiVersion: v1
@@ -336,18 +337,18 @@ Cilium handles IP Address Management (IPAM) and Border Gateway Protocol (BGP) fo
   [Cluster Profile](../../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile)
   permissions for guidance.
 
-If enabling [Cilium Envoy](https://docs.cilium.io/en/latest/security/network/proxy/envoy/) or other Cilium add-ons, you
-must also complete the following prerequisites:
+- If enabling [Cilium Envoy](https://docs.cilium.io/en/latest/security/network/proxy/envoy/) or other Cilium add-ons,
+  you must also complete the following prerequisites:
 
-- Ensure [kubectl](https://kubernetes.io/docs/tasks/tools/) is installed and available in your local workstation.
+  - Ensure [kubectl](https://kubernetes.io/docs/tasks/tools/) is installed and available in your local workstation.
 
-- Access to your Amazon EKS cluster through kubectl.
+  - Access to your Amazon EKS cluster through kubectl.
 
-  - To access your cluster with kubectl, you can use the AWS CLI's built-in authentication capabilities. If you are
-    using a custom OIDC provider, you will need to configure your kubeconfig to use your OIDC provider.
+    - To access your cluster with kubectl, you can use the AWS CLI's built-in authentication capabilities. If you are
+      using a custom OIDC provider, you will need to configure your kubeconfig to use your OIDC provider.
 
-    Refer to the [Access Imported Cluster with Kubectl](#access-imported-cluster-with-kubectl) section for more
-    information.
+      Refer to the [Access Imported Cluster with Kubectl](#access-imported-cluster-with-kubectl) section for more
+      information.
 
 ### Add CNI Cluster Profile
 
@@ -371,13 +372,13 @@ must also complete the following prerequisites:
 9. In the YAML editor, search for **clusterPoolIPv4PodCIDRList**. This parameter specifies the overall IP ranges
    available for pod networking across all your hybrid nodes.
 
-Adjust the pod CIDR list for hybrid pods in other networks that need to connect to this cluster. For example,
-`192.168.0.0`.
+   Adjust the pod CIDR list for hybrid pods in other networks that need to connect to this cluster. For example,
+   `192.168.0.0`.
 
 10. In the YAML editor, search for **clusterPoolIPv4MaskSize**. This parameter determines the subnet mask size used for
     pod IP allocation within each hybrid node.
 
-Adjust the mask size based on your required pods per hybrid node. For example, `/25`.
+    Adjust the mask size based on your required pods per hybrid node. For example, `/25`.
 
 11. In the Presets, find the **cilium-agent - Hybrid Nodes Affinity** option, and select **Amazon EKS**.
 
@@ -468,8 +469,8 @@ Once you have downloaded your kubeconfig, you can use kubectl to access your clu
 
 ### Custom OIDC Provider
 
-To access an Amazon EKS cluster with a custom [OpenID Connect (OIDC)](https://openid.net/developers/how-connect-works/)
-provider, you need to do the following:
+To access an Amazon EKS cluster with a custom [OIDC](https://openid.net/developers/how-connect-works/) provider, you
+need to do the following:
 
 - If you have not yet installed an OIDC provider for your cluster, install
   [kubelogin](https://github.com/int128/kubelogin). We recommend kubelogin for its ease of authentication. Visit

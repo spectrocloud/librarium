@@ -16,7 +16,7 @@ These are some of the architectural highlights when using Palette to manage your
 - Add a [Cilium](https://cilium.io/) Container Network Interface (CNI) layer to your Amazon EKS cluster to handle
   networking for hybrid nodes using affinity rules.
 
-- Create hybrid node pools comprised of edge hosts that have been registered with Palette.
+- Create hybrid node pools comprising edge hosts that have been registered with Palette.
 
 - Define cluster profiles to collectively manage your hybrid nodes. Each cluster profile for a hybrid node pool includes
   the following configurable layers:
@@ -72,7 +72,7 @@ Traffic routing in the Amazon EKS VPC requires the following mapping for hybrid 
   For example, Hybrid Pod CIDR 192.168.0.0/16 → VPN endpoint 172.16.0.1.
 
 - For AWS Direct Connect, map traffic to appropriate private subnet CIDR.  
-  For example, Both CIDRs 10.200.0.0/16 & 192.168.0.0/16 → Private subnet 172.16.1.0/24.
+  For example, both CIDRs 10.200.0.0/16 & 192.168.0.0/16 → Private subnet 172.16.1.0/24.
 
 For AWS VPNs, configure two static routes for each of the following CIDRs:
 
@@ -145,4 +145,4 @@ Palette supports the following authentication methods for your hybrid nodes:
 
 Refer to
 [Prepare credentials for hybrid nodes](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-creds.html) for
-guidance on how to setup credentials for your hybrid nodes.
+guidance on how to set up credentials for your hybrid nodes.
