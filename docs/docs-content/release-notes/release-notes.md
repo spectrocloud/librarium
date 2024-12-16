@@ -93,6 +93,8 @@ tags: ["release-notes"]
 
   <!-- prettier-ignore-end -->
 
+#### Bug Fixes
+
 - Upgrading the Palette agent from 4.4.x to 4.5.11 and later will now automatically renew the Certificate Authority (CA)
   certificate for `stylus-webhook` Mutating Webhook Configuration. The corresponding Palette version for Palette agent
   4.5.11 is 4.5.15.
