@@ -37,14 +37,6 @@ below and take necessary actions to avoid any disruptions in your environment.
 | The EdgeForge build process utility, CanvOS has an argument variable named `PROXY_CERT_PATH`. This variable is deprecated and no longer the recommended way to pass proxy certificates to the CanvOS build process. Use the **certs** folder in the root of the project directory to store proxy certificates. The **certs** folder is automatically included in the CanvOS build process. Refer to the [Build Provider Images](../clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images.md) for guidance on using the **certs** folder to pass proxy certificates to the CanvOS build process. | March 15, 2025 | December 7, 2024  |
 | The Terraform resource, `spectrocloud_cluster_import` is deprecated. To import a cluster deployed outside of the context of Palette, refer to the [Import a Cluster](../clusters/imported-clusters/cluster-import.md) guide.                                                                                                                                                                                                                                                                                                                                                                                    | January, 2025  | November 15, 2024 |
 
-| The EdgeForge build process utility, CanvOS has an argument variable named `PROXY_CERT_PATH`. This variable is
-deprecated and no longer the recommended way to pass proxy certificates to the CanvOS build process. Use the **certs**
-folder in the root of the project directory to store proxy certificates. The **certs** folder is automatically included
-in the CanvOS build process. Refer to the
-[Build Provider Images](../clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images.md) for guidance on
-using the **certs** folder to pass proxy certificates to the CanvOS build process. | February, 2025 | December 7th, 2024
-|
-
 ## Implemented Changes
 
 You can review previously implemented changes in Palette and VerteX in the following table. Refer to respective release
