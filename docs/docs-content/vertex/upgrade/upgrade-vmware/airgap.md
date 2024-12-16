@@ -17,7 +17,7 @@ section for details.
 
 If you are upgrading from a Palette VerteX version that is older than 4.4.14, ensure that you have executed the utility
 script to make the CNS mapping unique for the associated PVC. For more information, refer to the
-[Troubleshooting guide](../../../troubleshooting/enterprise-install.md#non-unique-vsphere-cns-mapping).
+[Troubleshooting guide](../../../troubleshooting/enterprise-install.md#scenario---non-unique-vsphere-cns-mapping).
 
 :::
 
@@ -87,20 +87,18 @@ one through four. Otherwise, start at step five.
    [Deploy an OVF or OVA Template](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-AFEDC48B-C96F-4088-9C1F-4F0A30E965DE.html)
    guide for more information on deploying OVAs in vCenter.
 
-   :::tip
-
 5. In your terminal, use the following command template to SSH into the Palette VerteX airgap support VM. Enter the path
    to your private SSH key, your username, and the IP or domain of the airgap support VM. The default username is
    `ubuntu`.
 
    ```shell
-   ssh -identity_file </path/to/private/key> ubuntu@<vm-ip-or-domain>
+   ssh -i </path/to/private/key> ubuntu@<vm-ip-or-domain>
    ```
 
    Consider the following command example for reference.
 
    ```shell
-   ssh -identity_file /docs/ssh-private-key.pem ubuntu@palette.example.com
+   ssh -i /docs/ssh-private-key.pem ubuntu@palette.example.com
    ```
 
 6. Use the following command to switch to the `root` user account, which you need to proceed with the upgrade.

@@ -31,7 +31,7 @@ layer of the cluster profile. These configurations will apply to both appliance 
   [Edge Host Registration](../site-deployment/site-installation/edge-host-registration.md) and
   [Deployment](../site-deployment/site-deployment.md).
 
-- Palette version 4.5.b or higher, with Palette agent version 4.5.11 or higher.
+- Palette version 4.5.15 or higher, with Palette agent version 4.5.11 or higher.
 
 ## Skip Node Draining During Upgrades or Repaves
 
@@ -59,8 +59,8 @@ layer of the cluster profile. These configurations will apply to both appliance 
 
    :::warning
 
-   In single-node clusters, disabling node draining means normal workloads and the upgrade process happen in parallel.
-   This will increase memory usage, and may cause your node to become unresponsive if your host is memory-constrained.
+   Disabling node draining means normal workloads and the upgrade process happen in parallel. This will increase memory
+   usage, and may cause your node to become unresponsive if your host is memory-constrained.
 
    In such cases, you may set the `pack.drain.drainPods` parameter to `true`, and set `pack.drain.disableEviction` to
    `true`. This will prevent the drain process from hanging indefinitely due to `PodDisruptionBudget` constraints, while

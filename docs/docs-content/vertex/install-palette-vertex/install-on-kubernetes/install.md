@@ -28,7 +28,9 @@ has the necessary network connectivity for VerteX to operate successfully.
 
 - Ensure `unzip` or a similar extraction utility is installed on your system.
 
-- The Kubernetes cluster must be set up on a supported version of Kubernetes, which includes versions v1.28 to v1.29.
+- The Kubernetes cluster must be set up on a version of Kubernetes that is compatible to your upgraded version. Refer to
+  the [Kubernetes Requirements](../install-palette-vertex.md#kubernetes-requirements) section to find the version
+  required for your Palette installation.
 
 - Ensure the Kubernetes cluster does not have Cert Manager installed. VerteX requires a unique Cert Manager
   configuration to be installed as part of the installation process. If Cert Manager is already installed, you must
@@ -143,7 +145,6 @@ your environment. Reach out to our support team if you need assistance.
     | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
     | `env.rootDomain`                          | The URL name or IP address you will use for the VerteX installation.                                                                                          | string   |
     | `ociPackRegistry` or `ociPackEcrRegistry` | The OCI registry credentials for VerteX FIPS packs. These credentials are provided by our support team.                                                       | object   |
-    | `scar`                                    | The Spectro Cloud Artifact Repository (SCAR) credentials for VerteX FIPS images. These credentials are provided by our support team.                          | object   |
     | `ingress.enabled`                         | Whether to install the Nginx ingress controller. Set this to `false` if you already have an Nginx controller deployed in the cluster.                         | boolean  |
     | `reach-system`                            | Set `reach-system.enabled` to `true` and configure the `reach-system.proxySettings` parameters to configure VerteX to use a network proxy in your environment | object   |
 
@@ -157,7 +158,7 @@ your environment. Reach out to our support team if you need assistance.
 
     <TabItem label="AWS ECR Registry" value="ecr">
 
-    ```yaml {53,77-85,97-102}
+    ```yaml {53,77-85}
     #########################
     # Spectro Cloud Palette #
     #########################
@@ -253,13 +254,6 @@ your environment. Reach out to our support team if you need assistance.
       #   insecureSkipVerify: false
       #   caCert: ""
       #   mirrorRegistries: ""
-
-      scar:
-        endpoint: "https://saas-repo-fips.console.spectrocloud.com"
-        username: "**********"
-        password: "**********"
-        insecureSkipVerify: true
-        caCert: ""
 
       imageSwapImages:
         imageSwapInitImage: "gcr.io/spectro-images-public/release-fips/thewebroot/imageswap-init:v1.5.2"
@@ -384,7 +378,7 @@ your environment. Reach out to our support team if you need assistance.
 
     <TabItem label="OCI Registry" value="oci">
 
-    ```yaml {53,68-75,87-96,110-115}
+    ```yaml {53,68-75,87-95}
     #########################
     # Spectro Cloud VerteX #
     #########################
@@ -493,13 +487,6 @@ your environment. Reach out to our support team if you need assistance.
       # For each registry, follow this example format:
       # docker.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<DOCKER_IO_ENDPOINT>,gcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<GCR_IO_ENDPOINT>,ghcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<GHCR_IO_ENDPOINT>,k8s.gcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<K8S_IO_ENDPOINT>,registry.k8s.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<REGISTRY_K8S_IO_ENDPOINT>,quay.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<QUAY_IO_ENDPOINT>
       # Replace <PLACE_HOLDER_FOR_ENDPOINT> with your actual registry endpoint and <DOCKER_IO_ENDPOINT>, <GCR_IO_ENDPOINT>, <GHCR_IO_ENDPOINT>, <K8S_IO_ENDPOINT>, <REGISTRY_K8S_IO_ENDPOINT>, and <QUAY_IO_ENDPOINT> with the specific endpoint details for each registry.
-
-      scar:
-        endpoint: "https://saas-repo-fips.console.spectrocloud.com"
-        username: "**********"
-        password: "**********"
-        insecureSkipVerify: true
-        caCert: ""
 
       imageSwapImages:
         imageSwapInitImage: "gcr.io/spectro-images-public/release-fips/thewebroot/imageswap-init:v1.5.2"
