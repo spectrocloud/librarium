@@ -272,8 +272,8 @@ selection to remove the cluster profile.
 ## Wrap-Up
 
 In this tutorial, you created deployed cluster profile updates. After the cluster was deployed to AWS, you updated the
-cluster profile through three different methods: create a new cluster profile version, update a cluster profile in
-place, and cluster profile overrides. After you made your changes, the Hello Universe application functioned as a
+cluster profile through three different methods: creating a new cluster profile version, updating a cluster profile in
+place, and using cluster profile overrides. After you made your changes, the Hello Universe application functioned as a
 three-tier application with a REST API backend server.
 
 Cluster profiles provide consistency during the cluster creation process, as well as when maintaining your clusters.
