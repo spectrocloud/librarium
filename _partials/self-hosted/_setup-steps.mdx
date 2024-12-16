@@ -51,9 +51,12 @@ partial_name: setup-steps
 3.  Right-click on your cluster or resource group and select **Deploy OVF Template**.
 
 4.  In the **Deploy OVF Template** wizard, enter the following URL to import the Operating System (OS) and Kubernetes
-    distribution OVA required for the {props.edition} nodes creation. Contact your {props.edition} support representative to learn if
-    the version of {props.edition} you are using requires a new OS and Kubernetes OVA.
+    distribution OVA required for the {props.edition} nodes creation. Refer to the 
+    <VersionedLink text="Kubernetes Requirements" url={props.requirementsURL} /> section to learn if the version of
+    {props.edition} you are installing requires a new OS and Kubernetes OVA.
 
+    {props.requirementsURL}
+    
     <Tabs>
     <TabItem value="non-fips" label="Non-FIPS">
 

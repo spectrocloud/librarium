@@ -146,7 +146,7 @@ artifacts at the same time.
     You can provide the base-64 encoded certificates in PEM format in the **certs** folder at the root directory of the
     **CanvOS** repository. You can provide as many certificates as you need in the folder.
 
-    If you are using a CanvOS tag that is earlier than `4.5.b`, you need to use the `PROXY_CERT_PATH` build argument to
+    If you are using a CanvOS tag that is earlier than `4.5.15`, you need to use the `PROXY_CERT_PATH` build argument to
     provide a path to the certificate. This approach only allows you to specify one certificate. For more information,
     refer to [Earthly Build Arguments](../../edgeforge-workflow/palette-canvos/arg.md).
 

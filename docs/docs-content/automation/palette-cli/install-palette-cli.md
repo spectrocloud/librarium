@@ -62,7 +62,7 @@ palette version
 ```
 
 ```shell hideClipboard
-Palette CLI version: 4.5.1
+Palette CLI version: 4.5.4
 ```
 
 ## Next Steps
