@@ -89,6 +89,24 @@ tags: ["release-notes"]
   Previously, nodes were always drained during upgrades and repaves, even for single-node clusters. Refer to
   [Skip Node Draining](../clusters/edge/cluster-management/skip-draining.md) for guidance on configuring draining behavior.
 
+- Upgrading the Palette from 4.4.x to 4.5.15 and later will now automatically renew the Certificate Authority (CA) 
+  certificate for Mutating Webhook Handler (MWH). This was an issue that affected 4.4.x and prior versions and was 
+  partially addressed in 4.5.0. The new version fully addresses the issue by automatically renewing the CA certificate 
+  for 10 years during an upgrade. In previous 4.5.x versions, while you would not encounter the certificate expiry issue
+  if your cluster was created using a 4.5.x version of the Palette agent, upgrading from 4.4.x would not have renewed
+  the certificate automatically.
+
+#### Bug Fixes
+
+- Fixed an issue where the Certificate Authority (CA) certificate for Mutating Webhook Handler (MWH) expires after 90
+  days and does not get automatically renewed, which affects cluster health. This issue affected Palette versions 4.4.20
+  and prior and was fixed in 4.5.11. However, upgrading
+
+  However, if you upgrade a cluster from 4.4.x to 4.5.x, this issue does not get addressed automatically. You must
+  manually delete the related secret and webhook using the commands
+  `kubectl delete secret --namespace spectro-system stylus-webhook-tls && kubectl delete mutatingwebhookconfiguration stylus-webhook`
+  and Palette agent will recreate them.
+
 #### Deprecations and Removals
 
 - The EdgeForge build process utility, CanvOS has an argument variable named `PROXY_CERT_PATH`. This variable is
