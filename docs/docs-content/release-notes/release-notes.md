@@ -96,17 +96,6 @@ tags: ["release-notes"]
   if your cluster was created using a 4.5.x version of the Palette agent, upgrading from 4.4.x would not have renewed
   the certificate automatically.
 
-#### Bug Fixes
-
-- Fixed an issue where the Certificate Authority (CA) certificate for Mutating Webhook Handler (MWH) expires after 90
-  days and does not get automatically renewed, which affects cluster health. This issue affected Palette versions 4.4.20
-  and prior and was fixed in 4.5.11. However, upgrading
-
-  However, if you upgrade a cluster from 4.4.x to 4.5.x, this issue does not get addressed automatically. You must
-  manually delete the related secret and webhook using the commands
-  `kubectl delete secret --namespace spectro-system stylus-webhook-tls && kubectl delete mutatingwebhookconfiguration stylus-webhook`
-  and Palette agent will recreate them.
-
 #### Deprecations and Removals
 
 - The EdgeForge build process utility, CanvOS has an argument variable named `PROXY_CERT_PATH`. This variable is
