@@ -44,6 +44,11 @@ jobs:
     name: Build Website (Self-Hosted Runner)
     runs-on: ["self-hosted", "linux", "x64", "vcenter3"]
     steps:
+
+      - name: Force Failure
+        run: exit 1
+
+
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
@@ -158,3 +163,15 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
         run: npx semantic-release
+
+      - name: Slack Notification
+        if: ${{ failure() }}
+        uses: rtCamp/action-slack-notify@v2.3.2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
+          SLACK_USERNAME: "spectromate"
+          SLACK_ICON_EMOJI: ":robot_panic:"
+          SLACK_COLOR: "danger"
+          SLACKIFY_MARKDOWN: true
+          ENABLE_ESCAPES: true
+          SLACK_MESSAGE: "The release build for `${{ github.workflow }}` in `${{ github.repository }}` failed. `<${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View details>`."
