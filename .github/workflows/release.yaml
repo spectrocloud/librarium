@@ -44,11 +44,6 @@ jobs:
     name: Build Website (Self-Hosted Runner)
     runs-on: ["self-hosted", "linux", "x64", "vcenter3"]
     steps:
-
-      - name: Force Failure
-        run: exit 1
-
-
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
