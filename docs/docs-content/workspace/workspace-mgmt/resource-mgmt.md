@@ -27,6 +27,18 @@ You can view more workloads by selecting the corresponding tab. For example, sel
 monitor pod workloads. Each tab will show you the CPU and memory consumption of the corresponding workload in the entire
 workspace.
 
+| **Resource**           | **Description availed from Workspace**                                                                                                                                       |
+| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Namespaces**         | Cluster Specific namespaces with CPU and Memory utilization.                                                                                                                 |
+| **Pods**               | Lists all the pods running on a particular namespace with cluster names with the detailed health status, age, and resource utilization of each of them.                      |
+| **Deployments**        | All the running deployments specific to clusters belonging to the Workspace with namespace to which these deployments belong, pods details, replicas, and age are enumerated |
+| **DaemonSets**         | DaemonSet resource utilization is described, with details on namespaces, pods, and age of individual Daemon sets                                                             |
+| **StatefulSets**       | All the active StatefulSets specific to clusters belonging to the Workspace with corresponding namespace, pods details, replicas, and age are enumerated                     |
+| **Jobs**               | A Job creates one or more Pods and will continue to retry execution of the Pods until a specified number of them successfully terminate.                                     |
+| **CronJobs**           | Cron Jobs are regularly scheduled actions or jobs such as backups, report generation, etc. Each of these jobs will recur as scheduled.                                       |
+| **RoleBinding**        | A role binding grants the permissions defined in a role to a user or set of users.                                                                                           |
+| **ClusterRoleBinding** | A Cluster Role binding defines the permissions defined across a cluster.                                                                                                     |
+
 ## Implement Resource Quotas
 
 You can implement resource quotas on an entire workspace, as well as implement them on individual namespaces.

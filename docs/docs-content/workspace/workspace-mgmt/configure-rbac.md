@@ -58,9 +58,17 @@ cluster role `podReader` to the service account `podReaderAccount` in that clust
    the namespace in the workspace and Palette users who have access to this workspace will be able to see its workloads
    and resource consumption.
 
-   Alternatively, enter a regex that match the namespaces where you want to create the role binding. Using regex will
-   not include all the namespaces that match the regex in the namespace. It will still allow you to create the role
-   bindings, but the workloads in those namespaces will not be visible.
+   Alternatively, enter a regex that match the namespaces where you want to create the role binding. Each regex needs to
+   start and end with a forward slash`/`. For example `/palette-.*/` will match any namespace that starts with
+   `palette-`. You may also use the negation symbol `~` to select all namespaces that do not match the regex. For
+   example, `~/palette-.*/` matches everything that does not start with `palette-`.
+
+   :::info
+
+   Using regex will _not_ include all the namespaces that match the regex in the workspace. It will still allow you to
+   create the role bindings, but the workloads in those namespaces will not be visible.
+
+   :::
 
 7. Click **Add New Binding**.
 
