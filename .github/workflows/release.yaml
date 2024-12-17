@@ -164,7 +164,7 @@ jobs:
           GITHUB_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
         run: npx semantic-release
 
-      - name: Slack Notification
+      - name: Slack Notification on Failure
         if: ${{ failure() }}
         uses: rtCamp/action-slack-notify@v2.3.2
         env:
