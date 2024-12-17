@@ -47,8 +47,8 @@ jobs:
 
       - name: Force Failure
         run: | 
-        echo "CURRENT_STEP=Force Failure" >> $GITHUB_ENV
-        exit 1
+          echo "CURRENT_STEP=Force Failure" >> $GITHUB_ENV
+          exit 1
 
       - name: Checkout Repository
         run: echo "CURRENT_STEP=Checkout Repository" >> $GITHUB_ENV
@@ -132,7 +132,7 @@ jobs:
 
       - name: Versions
         run: |
-        echo "CURRENT_STEP=Versions" >> $GITHUB_ENV
+          echo "CURRENT_STEP=Versions" >> $GITHUB_ENV
       
       - name: Build
         run: |
