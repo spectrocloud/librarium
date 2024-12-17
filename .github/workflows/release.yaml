@@ -92,7 +92,8 @@ jobs:
           SLACK_COLOR: "danger"
           SLACKIFY_MARKDOWN: true
           ENABLE_ESCAPES: true
-          SLACK_MESSAGE: "The self-hosted runner release job for `${{ github.workflow }}` in `${{ github.repository }}` failed. <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View details>."
+          SLACK_MESSAGE: "The self-hosted runner release job for `${{ github.workflow }}` in `${{ github.repository }}` failed. [View details](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})."
+
 
 #  Use this workflow if you want to use the GitHub-hosted large runner. Useful for scenarios when you need a change to deploy faster than the self-hosted runner can build it.
   build-large-runner:
@@ -148,7 +149,7 @@ jobs:
           SLACK_COLOR: "danger"
           SLACKIFY_MARKDOWN: true
           ENABLE_ESCAPES: true
-          SLACK_MESSAGE: "The large runner release job for `${{ github.workflow }}` in `${{ github.repository }}` failed. <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View details>."
+          SLACK_MESSAGE: "The large runner release job for `${{ github.workflow }}` in `${{ github.repository }}` failed. [View details](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})."
 
   release:
     name: "Release"
@@ -197,4 +198,4 @@ jobs:
           SLACK_COLOR: "danger"
           SLACKIFY_MARKDOWN: true
           ENABLE_ESCAPES: true
-          SLACK_MESSAGE: "The release job for `${{ github.workflow }}` in `${{ github.repository }}` failed. <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|View details>."
+          SLACK_MESSAGE: "The release job for `${{ github.workflow }}` in `${{ github.repository }}` failed. [View details](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})."
