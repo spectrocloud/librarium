@@ -9,7 +9,10 @@ tags: ["workspace", "resource-management"]
 ---
 
 Workspaces give you a unified view of resource consumption in specified namespaces across all clusters in the workspace.
-Additionally, you can implement resource quotas for the workspace as a whole, or for individual namespaces.
+Additionally, you can implement resource quotas for the workspace as a whole, or for individual namespaces. The resource
+quotas are implemented using the native Kubernetes ResourceQuota object. Refer to
+[Kubernetes documentation](https://kubernetes.io/docs/concepts/policy/resource-quotas) to learn more about resource
+quotas.
 
 ## Monitor Resource Consumption
 
@@ -30,7 +33,10 @@ You can implement resource quotas on an entire workspace, as well as implement t
 
 ### Prerequisites
 
--
+- An active Palette workspace. Refer to [Create a Workspace](../adding-a-new-workspace.md) to learn how to create one.
+
+- You are logged in as a Palette user that has the permission to modify workspaces. For more information, refer to
+  [Permissions](../../user-management/palette-rbac/permissions.md).
 
 ### Procedure
 
@@ -57,3 +63,13 @@ You can implement resource quotas on an entire workspace, as well as implement t
    quota.
 
 ### Validate
+
+1. Connect to a cluster in your workspace using kubectl. For more information, refer to
+   [Access Cluster with kubectl](../../clusters/cluster-management/palette-webctl.md).
+
+2. Issue the following command to view the resource quotas created for your cluster. Confirm that the corresponding
+   resource quotas have been created. You may also use the `--namespace` flag to choose a specific namespace to examine.
+
+   ```shell
+   kubectl get resourcequota --all-namespaces
+   ```
