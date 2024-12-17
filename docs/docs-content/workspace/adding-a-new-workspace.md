@@ -1,7 +1,7 @@
 ---
-sidebar_label: "Adding a Workspace"
-title: "Adding a workspace"
-description: "How to create multi-cluster workspace in Palette"
+sidebar_label: "Create a Workspace"
+title: "Create a workspace"
+description: "How to create multi-cluster workspace in Palette."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 0

@@ -38,6 +38,3 @@ You can configure namespaces and RBAC from within a cluster or from a Palette wo
 In a cluster group, all RoleBindings must occur at the namespace level. For details, review the
 [Cluster RBAC](../../clusters/cluster-management/cluster-rbac.md) and
 [workspace RBAC](../../workspace/workspace-mgmt/configure-rbac.md) guides.
-
-Palette leverages Regex Pattern matching so you can select multiple namespaces to apply role bindings. Check out
-[Regex for Namespaces](../../workspace/workload-features.md#regex-for-namespaces) to learn more.
