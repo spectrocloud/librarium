@@ -10,7 +10,7 @@ tags: ["getting-started", "aws", "tutorial"]
 
 Palette has in-built features to help with the automation of Day-2 operations. Upgrading and maintaining a deployed
 cluster is typically complex because you need to consider any possible impact on service availability. Palette provides
-out-of-the-box functionality for upgrades, observability, granular Role Based Access Control (RBAC), backup and security
+out-of-the-box functionality for upgrades, observability, granular Role Based Access Control (RBAC), backup, and security
 scans.
 
 This tutorial will teach you how to use the Palette UI to perform scale and maintenance tasks on your clusters. You will
@@ -33,7 +33,7 @@ Additionally, you should install kubectl locally. Use the Kubernetes
 ## Create Palette Projects
 
 Palette projects help you organize and manage cluster resources, providing logical groupings. They also allow you to
-manage user access control through Role Based Access Control (RBAC). You can assign users and teams with specific roles
+manage user access control through RBAC. You can assign users and teams with specific roles
 to specific projects. All resources created within a project are scoped to that project and only available to that
 project, but a tenant can have multiple projects.
 
@@ -407,18 +407,18 @@ Switch back to Palette in your web browser. Navigate to the left **Main Menu** a
 cluster profile deployed to your cluster, named `aws-profile`. Ensure that the **1.1.0** version is selected.
 
 Click on the **hellouniverse 1.2.0** layer. The manifest editor appears. Set the
-`manifests.hello-universe.ui.useTolerations` field on line 20 to `true`. Then, set the
-`manifests.hello-universe.ui.effect` field on line 22 to `NoExecute`. This toleration describes that the UI pods of
-Hello Universe will tolerate the taint with the key `app`, value `ui` and effect `NoExecute`. The tolerations of the UI
+`manifests.hello-universe.ui.useTolerations` field on line 19 to `true`. Then, set the
+`manifests.hello-universe.ui.effect` field on line 21 to `NoExecute`. This toleration describes that the UI pods of
+Hello Universe will tolerate the taint with the effect `NoExecute`, key `app`, and value `ui`. The tolerations of the UI
 pods should be as below.
 
 ```yaml
 ui:
   useTolerations: true
   tolerations:
-  effect: NoExecute
-  key: app
-  value: ui
+    effect: NoExecute
+    key: app
+    value: ui
 ```
 
 Click on **Confirm Updates**. The manifest editor closes. Then, click on **Save Changes** to persist your changes.
