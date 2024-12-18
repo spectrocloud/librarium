@@ -29,8 +29,20 @@ Kubernetes cluster through Palette.
 | ----------------- | ------------------------------------ | ------------ |
 | **AWS EKS**       | **Amazon EKS optimized Linux 1.0.0** | `ec2-user`   |
 | **Azure AKS**     | **Linux 22.04**                      | `azureuser`  |
-| **GCP GKE**       | **Container-Optimized OS**           | TBC          |
+| **GCP GKE**       | **Container-Optimized OS**           | N/A          |
 | **TKE** (Tencent) | TBC                                  | TBC          |
+
+:::info
+
+It is not possible to configure GCP GKE clusters with an SSH key during cluster creation. If SSH access to your GCP GKE nodes is critical, consider one of the following options:
+
+- Configure project or node-level metadata to include your SSH key. Refer to [Predefined and custom metadata keys](https://cloud.google.com/compute/docs/metadata/overview#predefined-and-custom-metadata-keys) for guidance.
+
+- Enable OS Login and associate your SSH key with your IAM identity. Refer to [How OS Login works](https://cloud.google.com/compute/docs/oslogin#how_os_login_works) for guidance.
+
+- Customize startup scripts or metadata to add your SSH key during node creation in a managed instance group. Refer to [Using startup scripts on Linux VMs](https://cloud.google.com/compute/docs/instances/startup-scripts/linux) for guidance.
+
+:::
 
 ## Data Center
 
