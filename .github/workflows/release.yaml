@@ -119,9 +119,6 @@ jobs:
           echo "CURRENT_STEP=npm ci" >> $GITHUB_ENV
           npm ci
 
-      - name: Versions
-        run: |
-          echo "CURRENT_STEP=Versions" >> $GITHUB_ENV
       
       - name: Build
         run: |
