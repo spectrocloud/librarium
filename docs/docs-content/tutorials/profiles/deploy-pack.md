@@ -230,6 +230,10 @@ Review each of the following five files in the **hello-universe-pack** folder.
   ```json
   {
     "addonType": "app services",
+    "annotations": {
+      "source": "community",
+      "contributor": "spectrocloud",
+    }
     "cloudTypes": ["all"],
     "displayName": "Hello Universe",
     "kubeManifests": ["manifests/hello-universe.yaml"],
