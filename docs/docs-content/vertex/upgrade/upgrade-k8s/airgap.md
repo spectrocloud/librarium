@@ -240,26 +240,12 @@ Palette VerteX upgrade.
     ...
     // highlight-start
     Preparing Manifests Archive
-    Manifests are available in /tmp/spectro-manifests-1696971110.zip. Extract the archive to a file server to serve as a Spectro Cloud Repository
+    Manifests are available in /tmp/spectro-manifests-1696971110.zip.
     // highlight-end
     Setup Completed
     ```
 
-7.  Move the `spectro-manifests` archive to a directory that your file server can access and use the following command
-    template to unzip it.
-
-    ```shell
-    unzip spectro-manifests-<file-id>.zip -d /target/folder
-    ```
-
-    :::warning
-
-    Do not remove or replace the existing files inside your target folder that is served by the file server. The
-    previous content is necessary for the upgrade process.
-
-    :::
-
-8.  Refer to the [Additional Packs](../../install-palette-vertex/airgap/supplemental-packs.md) page and update the
+7.  Refer to the [Additional Packs](../../install-palette-vertex/airgap/supplemental-packs.md) page and update the
     packages you are currently using. You must update each package separately.
 
     :::info
@@ -269,20 +255,20 @@ Palette VerteX upgrade.
 
     :::
 
-9.  Navigate to the directory with the Palette VerteX installation zip file. Unzip the file to a **palette-install**
+8.  Navigate to the directory with the Palette VerteX installation zip file. Unzip the file to a **palette-install**
     directory.
 
     ```shell
     unzip release-*.zip -d palette-install
     ```
 
-10. Navigate to the release directory inside **palette-install**.
+9.  Navigate to the release directory inside **palette-install**.
 
     ```shell
     cd palette-install/charts/release-*
     ```
 
-11. In a code editor of your choice, open the **extras/cert-manager/values.yaml** file and replace the
+10. In a code editor of your choice, open the **extras/cert-manager/values.yaml** file and replace the
     `cainjectorImage`,`controllerImage`, `webhookImage`, and `amceResolverImage` image URLs and with your OCI image
     registry URL and the `/spectro-images/` namespace.
 
@@ -308,7 +294,7 @@ Palette VerteX upgrade.
     featureGates: "AdditionalCertificateOutputFormats=true"
     ```
 
-12. Update the cert-manager chart using the following command.
+11. Update the cert-manager chart using the following command.
 
     ```shell
     helm upgrade --values extras/cert-manager/values.yaml \
@@ -327,7 +313,7 @@ Palette VerteX upgrade.
     TEST SUITE: None
     ```
 
-13. Prepare the Palette VerteX configuration file `values.yaml`. If you saved `values.yaml` used during the Palette
+12. Prepare the Palette VerteX configuration file `values.yaml`. If you saved `values.yaml` used during the Palette
     VerteX installation, you can reuse it for the upgrade. Alternatively, follow the
     [Kubernetes Installation Instructions](../../install-palette-vertex/install-on-kubernetes/install.md) to populate
     your `values.yaml`.
@@ -340,7 +326,7 @@ Palette VerteX upgrade.
 
     :::
 
-14. Upgrade the image-swap chart with the following command. Point to the `palette/values.yaml` file from step twelve.
+13. Upgrade the image-swap chart with the following command. Point to the `palette/values.yaml` file from step twelve.
 
     ```shell
     helm upgrade --values palette/values.yaml \
@@ -359,7 +345,7 @@ Palette VerteX upgrade.
     TEST SUITE: None
     ```
 
-15. Upgrade the reach-system chart with the following command. Point to the `palette/values.yaml` file from step twelve.
+14. Upgrade the reach-system chart with the following command. Point to the `palette/values.yaml` file from step twelve.
 
     ```shell
     helm upgrade --values palette/values.yaml \
@@ -378,7 +364,7 @@ Palette VerteX upgrade.
     TEST SUITE: None
     ```
 
-16. Upgrade Palette VerteX with the following command.
+15. Upgrade Palette VerteX with the following command.
 
     ```shell
     helm upgrade --values palette/values.yaml \
@@ -397,7 +383,7 @@ Palette VerteX upgrade.
     TEST SUITE: None
     ```
 
-17. Use the following command to track the upgrade process.
+16. Use the following command to track the upgrade process.
 
     ```shell
     kubectl get pods --all-namespaces --watch

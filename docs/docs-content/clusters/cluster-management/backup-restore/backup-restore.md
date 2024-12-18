@@ -95,6 +95,17 @@ or
 [Add a Backup Location using Dynamic Credentials](/clusters/cluster-management/backup-restore/add-backup-location-dynamic)
 guide.
 
+### Backup Cluster Resources
+
+Palette backups are safe to restore to any cluster and include persistent data. A cluster-wide backup operation of the
+source cluster can be configured using three options. The following table summarizes the different options.
+
+| **Backup Configuration** | **Description**                                                                                                                                                             |
+| ------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Always**               | Include all cluster-wide resources regardless of any selected namespaces. This option is designed for restore operations to be performed exclusively on the source cluster. |
+| **Auto**                 | Include persistent volumes that are linked to claims within the selected namespaces, but exclude cluster-wide resources. This is the default option for new backups.        |
+| **Never**                | Excludes all cluster-wide resources, including persistent volumes.                                                                                                          |
+
 ## Volume Snapshots
 
 <!-- prettier-ignore -->
