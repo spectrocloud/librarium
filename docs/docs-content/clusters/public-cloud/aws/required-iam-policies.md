@@ -518,6 +518,8 @@ The four core IAM policies are required for Palette to operate.
         "ec2:DescribeSnapshots",
         "ec2:DescribeTags",
         "ec2:DescribeVolumesModifications",
+        "ec2:DescribeKeyPairs",
+        "ec2:DeleteNetworkInterface",
         "iam:AttachGroupPolicy",
         "iam:CreatePolicy",
         "iam:CreatePolicyVersion",
