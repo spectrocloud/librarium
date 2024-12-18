@@ -10,12 +10,13 @@ tags: ["workspace"]
 
 A workspaces in Palette consists of a group of clusters and namespaces and the resources scoped in those clusters and
 namespaces. Using workspaces enables you to provide application or team-specific governance and visibility into
-workloads, cost, and usage metrics. For example, the application or team workload may be deployed into namespaces across
-clusters to achieve High Availability (HA), Disaster Recovery (DR), or other organization-specific placement policies.
-Grouping such namespaces and clusters into a workspace provide central management and governance in a multi-cluster
-distributed environment.
+workloads, cost, and usage metrics.
 
-The following sections describe various aspects of multi-cluster management via workspaces.
+For example, the application or team workload may be deployed into namespaces across clusters to achieve High
+Availability (HA), Disaster Recovery (DR), or other organization-specific placement policies. Grouping such namespaces
+and clusters into a workspace allows centralized management and governance in a multi-cluster distributed environment.
+
+The following sections describe what Palette workspaces can help you achieve.
 
 ## Namespace and Resource Management
 
@@ -49,3 +50,9 @@ Workspaces enhance operational visibility and provide actionable insights throug
 **Workspace-Based Backup**: extends cluster-level backups to include namespaces in all clusters within a workspace. For
 detailed prerequisites and instructions, refer to the
 [Backup and Restore](../clusters/cluster-management/backup-restore/backup-restore.md) page.
+
+## Resources
+
+- [Create a Workspace](./adding-a-new-workspace.md)
+
+- [Workspace Management](./workspace-mgmt/workspace-mgmt.md)

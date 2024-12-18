@@ -67,12 +67,12 @@ You can implement resource quotas on an entire workspace, as well as implement t
 7. Under **Workspace Quota**, you can specify the amount of CPU and memory that the entire workspace is allowed to
    consume. The default value is 0, which imposes no limit.
 
-8. If you want to limit resource use based on namespaces, enter the desired CPU and memory limit in the next to the
-   namespace entry.
+8. If you want to limit resource use based on namespaces, enter the desired CPU and memory limit in the **Allocate CPU**
+   and **Allocate memory** columns next to the namespace entry.
 
-   You can impose the limit more granularly by expanding the namespace row and enter the limit on the namespace in one
-   particular cluster. You must ensure that resources alloted to individual namespaces do not exceed the workspace
-   quota.
+   By default, the namespace in each cluster has the same resource limit. You can change this and enter the limit on the
+   namespace in one particular cluster. You must ensure that resources alloted to individual namespaces do not exceed
+   the workspace quota when added together.
 
 ### Validate
 

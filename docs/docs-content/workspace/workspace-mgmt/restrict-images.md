@@ -9,11 +9,17 @@ tags: ["workspace"]
 ---
 
 You can specify image URLs in a workspace to restrict access to images in your workspace for specific namespaces.
-Restricted images cannot be loaded into any cluster in the namespaces you specify. Under the hood, access control to
-images is achieved using Kyverno policies. For more information about Kyverno, refer to
+Restricted images cannot be loaded into any cluster in the namespaces you specify.
+
+Access control to images is achieved using Kyverno policies. For more information about Kyverno, refer to
 [Kyverno documentation](https://kyverno.io/).
 
 ## Prerequisites
+
+- An active Palette workspace. Refer to [Create a Workspace](../adding-a-new-workspace.md) to learn how to create one.
+
+- You are logged in as a Palette user that has the permission to modify workspaces. For more information, refer to
+  [Permissions](../../user-management/palette-rbac/permissions.md).
 
 ## Restrict Container Image
 
