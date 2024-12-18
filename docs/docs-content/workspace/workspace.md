@@ -20,8 +20,8 @@ The following sections describe what Palette workspaces can help you achieve.
 
 ## Namespace and Resource Management
 
-Workspaces in Spectro Cloud Palette automate the creation and management of namespaces across all clusters in the
-workspace. This includes:
+Workspaces in Palette automate the creation and management of namespaces across all clusters in the workspace. This
+includes:
 
 - **Namespace Creation**: Creating namespaces across all clusters in your workspace if a cluster does not have a
   specified namespace.
@@ -36,7 +36,7 @@ all clusters, ensuring consistent and secure access policies across all clusters
 
 ## Visibility and Insights
 
-Workspaces enhance operational visibility and provide actionable insights through:
+Workspaces enhance operational visibility and provide actionable insights
 
 - **Workload Visibility**: A centralized workload browser aggregates and displays workloads (pods, deployments, jobs,
   stateful sets, etc.) across all namespaces and clusters in the workspace.
