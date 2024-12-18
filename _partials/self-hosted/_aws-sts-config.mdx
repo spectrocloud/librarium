@@ -1,0 +1,99 @@
+---
+partial_category: self-hosted
+partial_name: sts-config
+---
+
+{props.edition} allows tenants to use AWS Secret Token Service (STS) to add an AWS cloud accounts to their {props.edition} environment. 
+In order to do this, {props.edition} relies on a system-level AWS cloud account that is configured on the {props.edition} instance 
+to assume a custom role created on the tenant's AWS account. 
+
+This custom role establishes a trust relationship between the tenant's AWS account and the system-level AWS account bound to the {props.edition} instance. 
+It allows the system-level AWS account to receive temporary credentials from the tenant's AWS account to deploy infrastructure in AWS using STS.  
+For more information on how to add an AWS cloud account using STS, refer to the  <VersionedLink text="Add an AWS Account to Palette" url="/clusters/public-cloud/aws/add-aws-accounts/" /> guide.
+
+You must configure your {props.edition} instance with the system-level AWS account before your tenants can add AWS cloud accounts 
+to deploy clusters in AWS using STS. Without this configuration, the STS option will be greyed out when your tenants try to add an AWS account. 
+
+## Prerequisites
+
+- Access to the {props.edition} system console.
+
+- The role of Root Administrator or Account Administrator.
+
+- An AWS IAM user that is allowed to assume cross-account IAM roles. 
+
+## Configure System-Level AWS account
+
+1. Log in to the system console using the `/v1/auth/syslogin` endpoint and retrieve the authorization JWT token.
+
+   ```shell
+   curl --insecure --location 'https://palette.domain.example/v1/auth/syslogin' \
+    --header 'Content-Type: application/json' \
+    --data '{
+    "password": "**********",
+    "username": "**********"
+    }'
+   ```
+
+   Replace the username and password fields with the username and password of your system console user. A successful request will return a JWT token.
+
+   ```json
+   {
+    "Authorization": "****",
+    "IsEmailSet": true,
+    "IsEmailVerified": false,
+    "IsMfa": false,
+    "IsPasswordReset": true
+   }
+   ```
+
+2. Issue the following commend to invoke the {props.edition} API to configure the system-level AWS account.
+
+    <Tabs>
+
+    <TabItem value="AWS">
+
+    ```bash
+    curl --request POST \
+        --url https://<palette-api-url>/v1/system/config/aws/account \
+        --header 'Authorization: *******' \
+        --data '{
+            "accessKey": "**********",
+            "secretKey": "**********",
+            "accountId": "123456789"
+        }'
+    ```
+
+    </TabItem>
+
+    <TabItem value="AWS GOV">
+
+    ```bash
+    curl --request POST \
+        --url https://<palette-api-url>/v1/system/config/awsgov/sts/account \
+        --header 'Authorization: *******' \
+        --data '{
+            "accessKey": "**********",
+            "secretKey": "**********",
+            "accountId": "123456789"
+        }'
+    ```
+
+    </TabItem>
+
+    </Tabs>
+
+    Replace the `accessKey`, `secretKey`, and `accountId` fields with the AWS access key, secret key, and account ID of your AWS account.
+
+    
+## Validate 
+
+Issue the following command to make an API call that confirms that the credentials were configured successfully.
+
+```bash
+curl --request POST \
+        --url https://<palette-api-url>/v1/system/config/aws/account \
+        --header 'Authorization: *******'
+```
+
+If you receive a response that contains the `accessKey`, `secretKey`, and `accountId` fields you configured, the configuration was successful.
