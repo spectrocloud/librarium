@@ -4,14 +4,14 @@ partial_name: sts-config
 ---
 
 {props.edition} allows tenants to use AWS Secret Token Service (STS) to add an AWS cloud accounts to their {props.edition} environment. 
-In order to do this, {props.edition} relies on a system-level AWS cloud account that is configured on the {props.edition} instance 
+In order to do this, {props.edition} relies on another AWS cloud account that is configured on the {props.edition} instance 
 to assume a custom role created on the tenant's AWS account. 
 
-This custom role establishes a trust relationship between the tenant's AWS account and the system-level AWS account bound to the {props.edition} instance. 
-It allows the system-level AWS account to receive temporary credentials from the tenant's AWS account to deploy infrastructure in AWS using STS.  
-For more information on how to add an AWS cloud account using STS, refer to the  <VersionedLink text="Add an AWS Account to Palette" url="/clusters/public-cloud/aws/add-aws-accounts/" /> guide.
+This custom role establishes a trust relationship between the tenant's AWS account and the AWS account bound to the {props.edition} instance. 
+It allows the {props.edition}-bound AWS account to receive temporary credentials from the tenant's AWS account to deploy infrastructure in AWS using STS.  
+For more information on how to add an AWS cloud account to a tenant using STS, refer to the  <VersionedLink text="Add an AWS Account to Palette" url="/clusters/public-cloud/aws/add-aws-accounts/" /> guide.
 
-You must configure your {props.edition} instance with the system-level AWS account before your tenants can add AWS cloud accounts 
+You must configure your {props.edition} instance with an STS AWS account before your tenants can add AWS cloud accounts 
 to deploy clusters in AWS using STS. Without this configuration, the STS option will be greyed out when your tenants try to add an AWS account. 
 
 ## Prerequisites
@@ -22,30 +22,38 @@ to deploy clusters in AWS using STS. Without this configuration, the STS option 
 
 - An AWS IAM user that is allowed to assume cross-account IAM roles. 
 
-## Configure System-Level AWS account
+## Enable Adding AWS Accounts Using STS
 
-1. Log in to the system console using the `/v1/auth/syslogin` endpoint and retrieve the authorization JWT token.
+1. Open a terminal session.
+
+2. Log in to the {props.edition} System API by using the `/v1/auth/syslogin` endpoint. 
+   Use the curl command below and replace the `example.com` placeholder URL with the URL of your {props.edition} instance. 
+   Ensure you replace the credentials below with your system console credentials.
 
    ```shell
-   curl --insecure --location 'https://palette.domain.example/v1/auth/syslogin' \
+   TOKEN=$(curl --insecure --location 'https://example.com/v1/auth/syslogin' \
     --header 'Content-Type: application/json' \
     --data '{
     "password": "**********",
     "username": "**********"
-    }'
+    }')
    ```
 
-   Replace the username and password fields with the username and password of your system console user. A successful request will return a JWT token.
+3. Next, prepare a payload for the AWS account you want to configure. 
+   Use the following JSON payload as a template and replace the `accessKey`, `secretKey`, and `accountId` fields with the AWS access key, secret key, and account ID of your AWS account.
 
-   ```json
-   {
-    "Authorization": "****",
-    "IsEmailSet": true,
-    "IsEmailVerified": false,
-    "IsMfa": false,
-    "IsPasswordReset": true
-   }
-   ```
+    ```json
+    CONFIG_JSON=$(cat <<EOF
+    {
+    "accessKey": "**********",
+    "secretKey": "**********",
+    "accountId": "123456789"
+    }
+    EOF
+    )
+    ```
+
+    This avoids exposing sensitive information in the command line.
 
 2. Issue the following commend to invoke the {props.edition} API to configure the system-level AWS account.
 
@@ -56,12 +64,8 @@ to deploy clusters in AWS using STS. Without this configuration, the STS option 
     ```bash
     curl --request POST \
         --url https://<palette-api-url>/v1/system/config/aws/account \
-        --header 'Authorization: *******' \
-        --data '{
-            "accessKey": "**********",
-            "secretKey": "**********",
-            "accountId": "123456789"
-        }'
+        --header 'Authorization: $TOKEN' \
+        --data '$CONFIG_JSON'
     ```
 
     </TabItem>
@@ -71,19 +75,13 @@ to deploy clusters in AWS using STS. Without this configuration, the STS option 
     ```bash
     curl --request POST \
         --url https://<palette-api-url>/v1/system/config/awsgov/sts/account \
-        --header 'Authorization: *******' \
-        --data '{
-            "accessKey": "**********",
-            "secretKey": "**********",
-            "accountId": "123456789"
-        }'
+        --header 'Authorization: $TOKEN' \
+        --data  '$CONFIG_JSON'
     ```
 
     </TabItem>
 
     </Tabs>
-
-    Replace the `accessKey`, `secretKey`, and `accountId` fields with the AWS access key, secret key, and account ID of your AWS account.
 
     
 ## Validate 
@@ -93,7 +91,7 @@ Issue the following command to make an API call that confirms that the credentia
 ```bash
 curl --request POST \
         --url https://<palette-api-url>/v1/system/config/aws/account \
-        --header 'Authorization: *******'
+        --header 'Authorization: $TOKEN'
 ```
 
-If you receive a response that contains the `accessKey`, `secretKey`, and `accountId` fields you configured, the configuration was successful.
+If you receive a response that contains the payload you configured, the configuration was successful.
