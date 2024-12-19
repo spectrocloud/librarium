@@ -10,9 +10,9 @@ tags: ["getting-started", "gcp"]
 
 Palette offers profile-based management for Kubernetes, enabling consistency, repeatability, and operational efficiency
 across multiple clusters. A cluster profile allows you to customize the cluster infrastructure stack, allowing you to
-choose the desired Operating System (OS), Kubernetes, Container Network Interfaces (CNI), Container Storage Interfaces
-(CSI). You can further customize the stack with add-on application layers. For more information about cluster profile
-types, refer to [Cluster Profiles](../introduction.md#cluster-profiles).
+choose the desired Operating System (OS), Kubernetes, Container Network Interfaces (CNIs), and Container Storage
+Interfaces (CSIs). You can further customize the stack with add-on application layers. For more information about
+cluster profile types, refer to [Cluster Profiles](../introduction.md#cluster-profiles).
 
 In this tutorial, you create a full profile directly from the Palette dashboard. Then, you add a layer to your cluster
 profile by using a [community pack](../../integrations/community_packs.md) to deploy a web application. The concepts you
@@ -102,8 +102,6 @@ The pack requires two values to be replaced for the authorization token and for 
 preset. Replace these values with your own base64 encoded values. The
 [_hello-universe_](https://github.com/spectrocloud/hello-universe?tab=readme-ov-file#single-load-balancer) repository
 provides an unencoded token that you can use.
-
-Click on **Confirm Updates**. The manifest editor closes.
 
 Click on **Confirm & Create** to save the manifest. Then, click on **Save Changes** to save this new layer to the
 cluster profile.
