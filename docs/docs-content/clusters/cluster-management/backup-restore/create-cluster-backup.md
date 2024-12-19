@@ -29,6 +29,10 @@ specify the backup expiry period, meaning the duration after which Palette will 
 example, you can schedule a backup for every week on Sunday at midnight and automatically expire the backup after three
 months. Additionally, you can initiate a backup on demand for an existing cluster.
 
+## Limitations
+
+- Nodes in [Maintenance Mode](../maintenance-mode.md) are not included in the backup process.
+
 ## Schedule a Backup
 
 ### Prerequisites
