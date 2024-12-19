@@ -396,7 +396,7 @@ guide to learn how to create a Cluster Group.
 
 ### Bug Fixes
 
-- Fixed an issue where cluster tags were not propagated to AWS volumes when creating a new AWS IaaS cluster.
+- Fixed an issue where cluster tags were not propagated to AWS volumes when creating new AWS IaaS clusters.
 
 ## October 26, 2024 - Release 4.5.5
 
