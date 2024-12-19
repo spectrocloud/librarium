@@ -64,7 +64,8 @@ panel.
 
 ![Image that shows how to add a cluster tag](/getting-started/aws/getting-started_update-k8s-cluster_add-service-tag.webp)
 
-Navigate to the left **Main Menu** and select **Clusters** to view your deployed clusters. Click the **filter** icon to expand the **All Filters** pane, and below **Tags**, enter **service:hello-universe-frontend**. 
+Navigate to the left **Main Menu** and select **Clusters** to view your deployed clusters. Click the **filter** icon to
+expand the **All Filters** pane, and below **Tags**, enter **service:hello-universe-frontend**.
 
 ![Image that shows how to add a frontend service filter](/getting-started/aws/getting-started_update-k8s-cluster_apply-frontend-filter.webp)
 
@@ -197,7 +198,8 @@ The previous state of the cluster profile will not be saved once it is overwritt
 
 Navigate to the left **Main Menu** and select **Clusters**. Select the `aws-cluster` to view its **Overview** tab.
 
-Select the **Profile** tab. Then, select the **hello-universe** pack. Change the `replicas` field on line `15` to `2` and **Save** your changes. The editor is closed.
+Select the **Profile** tab. Then, select the **hello-universe** pack. Change the `replicas` field on line `15` to `2`
+and **Save** your changes. The editor is closed.
 
 This cluster now contains an override over its cluster profile. Palette uses the configuration you have just provided
 for the single cluster over its cluster profile and begins making the appropriate changes.
@@ -212,11 +214,13 @@ corresponding to your _hello-universe-frontend_ cluster. It is named `aws-profil
 
 Click on it to view its details. Select **1.0.0** in the version dropdown.
 
-Select the **hello-universe** pack. Change the `replicas` field on line `15` to `3`. Click on **Confirm Updates**. The editor is closed.
+Select the **hello-universe** pack. Change the `replicas` field on line `15` to `3`. Click on **Confirm Updates**. The
+editor is closed.
 
 Click on **Save Changes** to confirm the changes you have made to your profile.
 
-Navigate to the left **Main Menu** and select **Clusters**. Palette indicates that the cluster associated with the cluster profile you edited has updates available.
+Navigate to the left **Main Menu** and select **Clusters**. Palette indicates that the cluster associated with the
+cluster profile you edited has updates available.
 
 ![Image that shows the pending updates ](/getting-started/aws/getting-started_update-k8s-cluster_pending-update-clusters-view.webp)
 
@@ -224,9 +228,10 @@ Select this cluster to open its **Overview** tab. Click on **Updates** to begin 
 
 ![Image that shows the Updates button](/getting-started/aws/getting-started_update-k8s-cluster_updates-available-button-cluster-overview.webp)
 
-A dialog appears, showing a summary of packs changed. Select **Review changes in Editor** to review your changes. Ensure the only change is the
-`replicas` field value. The pending update removes your cluster override and sets the `replicas` field to `3`. At this
-point, you can choose to apply the pending changes or make additional changes by modifying the **Pending Configuration** pane on the right side of the editor.
+A dialog appears, showing a summary of packs changed. Select **Review changes in Editor** to review your changes. Ensure
+the only change is the `replicas` field value. The pending update removes your cluster override and sets the `replicas`
+field to `3`. At this point, you can choose to apply the pending changes or make additional changes by modifying the
+**Pending Configuration** pane on the right side of the editor.
 
 ![Image that shows the available updates dialog ](/getting-started/aws/getting-started_update-k8s-cluster_available-updates-dialog.webp)
 

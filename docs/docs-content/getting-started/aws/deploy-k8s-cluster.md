@@ -38,7 +38,8 @@ To complete this tutorial, you will need the following.
 
 The following steps will guide you through deploying the cluster infrastructure.
 
-Navigate to the left **Main Menu** and select **Clusters**. Click on **Create Cluster**. If there are existing clusters, choose **Add New Cluster**.
+Navigate to the left **Main Menu** and select **Clusters**. Click on **Create Cluster**. If there are existing clusters,
+choose **Add New Cluster**.
 
 ![Palette clusters overview page](/getting-started/getting-started_deploy-k8s-cluster_new_cluster.webp)
 
@@ -107,8 +108,8 @@ Navigate to the left **Main Menu** and select **Clusters**.
 ![Update the cluster](/getting-started/aws/getting-started_deploy-k8s-cluster_create_cluster.webp)
 
 The cluster deployment process can take 15 to 30 minutes. Deployment time varies depending on the cloud provider,
-cluster profile, cluster size, and node pool configurations provided. You can learn more about the deployment
-progress by reviewing the event log. Choose your cluster and select the **Events** tab to view the log.
+cluster profile, cluster size, and node pool configurations provided. You can learn more about the deployment progress
+by reviewing the event log. Choose your cluster and select the **Events** tab to view the log.
 
 ![Update the cluster](/getting-started/aws/getting-started_deploy-k8s-cluster_event_log.webp)
 

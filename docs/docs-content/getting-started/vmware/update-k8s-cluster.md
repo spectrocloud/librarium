@@ -64,7 +64,8 @@ panel.
 
 ![Image that shows how to add a cluster tag](/getting-started/vmware/getting-started_update-k8s-cluster_add-service-tag.webp)
 
-Navigate to the left **Main Menu** and select **Clusters** to view your deployed clusters. Click the **filter** icon to expand the **All Filters** pane, and below **Tags**, enter **service:hello-universe-frontend**. 
+Navigate to the left **Main Menu** and select **Clusters** to view your deployed clusters. Click the **filter** icon to
+expand the **All Filters** pane, and below **Tags**, enter **service:hello-universe-frontend**.
 
 ![Image that shows how to add a frontend service filter](/getting-started/vmware/getting-started_update-k8s-cluster_apply-frontend-filter.webp)
 
@@ -204,7 +205,8 @@ The previous state of the cluster profile will not be saved once it is overwritt
 
 Navigate to the left **Main Menu** and select **Clusters**. Select the `vmware-cluster` to view its **Overview** tab.
 
-Select the **Profile** tab. Then, select the **hello-universe** pack. Change the `replicas` field on line `15` to `2` and **Save** your changes. The editor is closed.
+Select the **Profile** tab. Then, select the **hello-universe** pack. Change the `replicas` field on line `15` to `2`
+and **Save** your changes. The editor is closed.
 
 This cluster now contains an override over its cluster profile. Palette uses the configuration you have just provided
 for the single cluster over its cluster profile and begins making the appropriate changes.
@@ -219,7 +221,8 @@ corresponding to your _hello-universe-frontend_ cluster, named `vmware-profile`.
 
 Click on it to view its details. Select **1.0.0** in the version dropdown.
 
-Select the **hello-universe** pack. Change the `replicas` field on line `15` to `3`. Click on **Confirm Updates**. The editor is closed.
+Select the **hello-universe** pack. Change the `replicas` field on line `15` to `3`. Click on **Confirm Updates**. The
+editor is closed.
 
 Click on **Save Changes** to confirm the changes you have made to your profile.
 
@@ -233,9 +236,10 @@ Select this cluster to open its **Overview** tab. Click on **Updates** to begin 
 
 ![Image that shows the Updates button](/getting-started/vmware/getting-started_update-k8s-cluster_updates-available-button-cluster-overview.webp)
 
-A dialog appears, showing a summary of packs changed. Select **Review changes in Editor** to review your changes. Ensure the only change is the
-`replicas` field value. The pending update removes your cluster override and sets the `replicas` field to `3`. At this
-point, you can choose to apply the pending changes or make additional changes by modifying the **Pending Configuration** pane on the right side of the editor.
+A dialog appears, showing a summary of packs changed. Select **Review changes in Editor** to review your changes. Ensure
+the only change is the `replicas` field value. The pending update removes your cluster override and sets the `replicas`
+field to `3`. At this point, you can choose to apply the pending changes or make additional changes by modifying the
+**Pending Configuration** pane on the right side of the editor.
 
 ![Image that shows the available updates dialog ](/getting-started/vmware/getting-started_update-k8s-cluster_available-updates-dialog.webp)
 
@@ -281,9 +285,9 @@ selection to remove the cluster profile.
 ## Wrap-Up
 
 In this tutorial, you created deployed cluster profile updates. After the cluster was deployed to VMware, you updated
-the cluster profile through three different methods: creating a new cluster profile version, updating a cluster profile in
-place, and using cluster profile overrides. After you made your changes, the Hello Universe application functioned as a
-three-tier application with a REST API backend server.
+the cluster profile through three different methods: creating a new cluster profile version, updating a cluster profile
+in place, and using cluster profile overrides. After you made your changes, the Hello Universe application functioned as
+a three-tier application with a REST API backend server.
 
 Cluster profiles provide consistency during the cluster creation process, as well as when maintaining your clusters.
 They can be versioned to keep a record of previously working cluster states, giving you visibility when updating or

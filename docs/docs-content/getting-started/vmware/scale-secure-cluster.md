@@ -10,8 +10,8 @@ tags: ["getting-started", "vmware", "tutorial"]
 
 Palette has in-built features to help with the automation of Day-2 operations. Upgrading and maintaining a deployed
 cluster is typically complex because you need to consider any possible impact on service availability. Palette provides
-out-of-the-box functionality for upgrades, observability, granular Role Based Access Control (RBAC), backup, and security
-scans.
+out-of-the-box functionality for upgrades, observability, granular Role Based Access Control (RBAC), backup, and
+security scans.
 
 This tutorial will teach you how to use the Palette UI to perform scale and maintenance tasks on your clusters. You will
 learn how to create Palette projects and teams, import a cluster profile, safely upgrade the Kubernetes version of a
@@ -36,9 +36,9 @@ Additionally, you should install kubectl locally. Use the Kubernetes
 ## Create Palette Projects
 
 Palette projects help you organize and manage cluster resources, providing logical groupings. They also allow you to
-manage user access control through RBAC. You can assign users and teams with specific roles
-to specific projects. All resources created within a project are scoped to that project and only available to that
-project, but a tenant can have multiple projects.
+manage user access control through RBAC. You can assign users and teams with specific roles to specific projects. All
+resources created within a project are scoped to that project and only available to that project, but a tenant can have
+multiple projects.
 
 Log in to [Palette](https://console.spectrocloud.com).
 
