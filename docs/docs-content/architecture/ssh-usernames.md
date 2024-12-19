@@ -17,22 +17,26 @@ Kubernetes cluster through Palette.
 
 ### Infrastructure Provider
 
-| Provider       | Operating System | SSH Username |
+| Provider       | Operating System Pack | SSH Username |
 | -------------- | ---------------- | ------------ |
-| **AWS IaaS**   | TBC              | TBC          |
-| **Azure IaaS** | TBC              | TBC          |
-| **GCP IaaS**   | TBC              | TBC          |
+| **AWS IaaS**   | **Ubuntu**       | `ubuntu`          |
+| **AWS IaaS**   | **CentOS**       | `centos`          |
+| **Azure IaaS** | **Ubuntu**              | `ubuntu`          |
+| **Azure IaaS** | **CentOS**              | `centos`          |
+| **GCP IaaS**   | **Ubuntu**              | `ubuntu`          |
+| **GCP IaaS**   | **CentOS**              | `centos`          |
 
 ### Managed Kubernetes
 
-| Provider          | Operating System                     | SSH Username |
+| Provider          | Operating System Pack                     | SSH Username |
 | ----------------- | ------------------------------------ | ------------ |
-| **AWS EKS**       | **Amazon EKS optimized Linux 1.0.0** | `ec2-user`   |
-| **Azure AKS**     | **Linux 22.04**                      | `azureuser`  |
+| **AWS EKS**       | **Amazon EKS optimized Linux** | `ec2-user`   |
+| **Azure AKS**     | **Linux**                      | `azureuser`  |
 | **GCP GKE**       | **Container-Optimized OS**           | N/A          |
-| **TKE** (Tencent) | TBC                                  | TBC          |
+| **TKE** (Tencent) | **TKE Managed OS** (Ubuntu)          | `ubuntu`     |
+| **TKE** (Tencent) | **TKE Managed OS** (CentOS)          | `centos` or `root`       |
 
-:::info
+#### SSH Configuration on GCP GKE
 
 It is not possible to configure GCP GKE clusters with an SSH key during cluster creation. If SSH access to your GCP GKE nodes is critical, consider one of the following options:
 
@@ -42,21 +46,21 @@ It is not possible to configure GCP GKE clusters with an SSH key during cluster 
 
 - Customize startup scripts or metadata to add your SSH key during node creation in a managed instance group. Refer to [Using startup scripts on Linux VMs](https://cloud.google.com/compute/docs/instances/startup-scripts/linux) for guidance.
 
-:::
-
 ## Data Center
 
-| Provider       | Operating System | SSH Username |
+| Provider       | Operating System Pack | SSH Username |
 | -------------- | ---------------- | ------------ |
-| MAAS           | TBC              | TBC          |
-| Openstack      | TBC              | TBC          |
-| VMware vSphere | TBC              | `spectro`    |
+| MAAS           | **Ubuntu**              | `ubuntu`          |
+| Openstack      | **Ubuntu**              | `ubuntu`          |
+| VMware vSphere | **Ubuntu**              | `ubuntu`    |
+| VMware vSphere | **CentOS**              | `centos`    |
 
 ## Edge
 
-| Provider    | SSH Username |
-| ----------- | ------------ | --- |
-| Edge Native | TBC          | TBC |
+This is dependent on the operating system you provide for your edge hosts. This is achieved by using one of the following methods:
+
+- [Agent Mode](../deployment-modes/agent-mode/agent-mode.md)
+- [Provider images](../clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images.md)
 
 ## Resources
 
