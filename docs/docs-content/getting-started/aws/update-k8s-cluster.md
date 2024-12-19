@@ -197,8 +197,7 @@ The previous state of the cluster profile will not be saved once it is overwritt
 
 Navigate to the left **Main Menu** and select **Clusters**. Select the `aws-cluster` to view its **Overview** tab.
 
-Select the **Profile** tab. Then, select the **hello-universe** pack. Change the `replicas` field on line `15` to `2` and **Save** your changes.
-The editor is closed.
+Select the **Profile** tab. Then, select the **hello-universe** pack. Change the `replicas` field on line `15` to `2` and **Save** your changes. The editor is closed.
 
 This cluster now contains an override over its cluster profile. Palette uses the configuration you have just provided
 for the single cluster over its cluster profile and begins making the appropriate changes.
@@ -213,8 +212,7 @@ corresponding to your _hello-universe-frontend_ cluster. It is named `aws-profil
 
 Click on it to view its details. Select **1.0.0** in the version dropdown.
 
-Select the **hello-universe** pack. Change the `replicas` field on line `15` to `3`. Click on
-**Confirm Updates**. The editor is closed.
+Select the **hello-universe** pack. Change the `replicas` field on line `15` to `3`. Click on **Confirm Updates**. The editor is closed.
 
 Click on **Save Changes** to confirm the changes you have made to your profile.
 
