@@ -241,7 +241,8 @@ Click on **Apply Changes** once you have finished reviewing your changes. This r
 Palette updates your cluster according to cluster profile specifications. Once these changes are complete, select the
 **Workloads** tab. Then, select the **hello-universe** namespace.
 
-Three **ui** pods are available. The cluster profile update is now reflected by your cluster. If your changes are not displayed, use the **refresh** icon.
+Three **ui** pods are available. The cluster profile update is now reflected by your cluster. If your changes are not
+displayed, use the **refresh** icon.
 
 ## Cluster Observability
 
