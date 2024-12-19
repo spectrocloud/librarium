@@ -394,6 +394,10 @@ guide to learn how to create a Cluster Group.
 | ---------------------- | ----------- |
 | vSphere No-Provisioner | 1.0.0       |
 
+### Bug Fixes
+
+- Fixed an issue where cluster tags were not propagated to AWS volumes when creating a new AWS IaaS cluster.
+
 ## October 26, 2024 - Release 4.5.5
 
 ### Breaking Changes
