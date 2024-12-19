@@ -8,8 +8,7 @@ In order to do this, {props.edition} relies on another AWS cloud account that is
 to assume a custom role created on the tenant's AWS account. 
 
 This custom role establishes a trust relationship between the tenant's AWS account and the AWS account bound to the {props.edition} instance. 
-It allows the {props.edition}-bound AWS account to receive temporary credentials from the tenant's AWS account to deploy infrastructure in AWS using STS.  
-For more information on how to add an AWS cloud account to a tenant using STS, refer to the  <VersionedLink text="Add an AWS Account to Palette" url="/clusters/public-cloud/aws/add-aws-accounts/" /> guide.
+It allows the {props.edition}-bound AWS account to receive temporary credentials from the tenant's AWS account to deploy infrastructure in AWS using STS. For more information on how to add an AWS cloud account to a tenant using STS, refer to the  <VersionedLink text="Add an AWS Account to Palette" url="/clusters/public-cloud/aws/add-aws-accounts/" /> guide.
 
 You must configure your {props.edition} instance with an STS AWS account before your tenants can add AWS cloud accounts 
 to deploy clusters in AWS using STS. Without this configuration, the STS option will be greyed out when your tenants try to add an AWS account. 
@@ -55,7 +54,7 @@ to deploy clusters in AWS using STS. Without this configuration, the STS option 
 
     This avoids exposing sensitive information in the command line.
 
-2. Issue the following commend to invoke the {props.edition} API to configure the system-level AWS account.
+2. Issue the following commend to invoke the {props.edition} API to configure the AWS account to your instance.
 
     <Tabs>
 
