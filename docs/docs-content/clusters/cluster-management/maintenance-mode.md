@@ -7,7 +7,7 @@ sidebar_position: 240
 tags: ["clusters", "cluster management"]
 ---
 
-Similar to `kubectl` commands `cordon` and `drain`, maintenance mode allows you to temporarily disable scheduling for a running control plane node or worker node and migrate running workloads to other healthy nodes within the cluster without service disruptions. Using maintenance mode facilitates performing necessary maintenance tasks, addressing node issues, and optimizing workload distribution while maintaining the desired level of performance and availability.
+Similar to `kubectl` commands `cordon` and `drain`, maintenance mode allows you to temporarily disable scheduling for a running control plane node or worker node. When a node is placed in maintenance mode, running workloads are migrated automatically to other healthy nodes in the cluster without services being distrupted. Using maintenance mode facilitates performing necessary maintenance tasks, addressing node issues, and optimizing workload distribution while maintaining the desired level of performance and availability.
 
 ## Prerequistes
 
@@ -39,15 +39,15 @@ Similar to `kubectl` commands `cordon` and `drain`, maintenance mode allows you 
    
 5. When maintenance mode is activated, the **Health** icon changes to a set of tools, and the tooltip states **Maintenance Mode: Initiated**. When Maintenance Mode is finished, the tooltip changes to **Maintenance Mode: Complete**.
 
-![Node in maintenance mode](/clusters_cluster-management_maintenance_mode.webp)
-
-Palette reminds you in several locations that you have a node in Maintenance Mode:
+Palette reminds you in several locations that you have a node in maintenance mode:
 
 - Beside the **Settings** drop-down while viewing your cluster
 
 - On the cluster’s **Overview** tab beneath **Health** status
 
 - On the cluster’s **Nodes** tab in the node’s **Health** column
+
+![Node in maintenance mode](/clusters_cluster-management_maintenance_mode.webp)
 
 ## Validate
 
@@ -61,22 +61,22 @@ Palette reminds you in several locations that you have a node in Maintenance Mod
    
 4. Open a terminal window and set the environment variable `KUBECONFIG` to point to the kubeconfig file you downloaded.
 
-```bash
-export KUBECONFIG=~/Downloads/admin.aws-maintenance-test.kubeconfig
-```
+    ```bash
+    export KUBECONFIG=~/Downloads/admin.aws-maintenance-test.kubeconfig
+    ```
 
 5. Confirm that the node is in a maintenance state, indictated by a `STATUS` of `SchedulingDisabled`.
 
-```bash
-kubectl get nodes
-```
+    ```bash
+    kubectl get nodes
+    ```
 
-```bash hideClipboard
-NAME                            STATUS                      ROLES           AGE     VERSION
-ip-10-0-1-174.ec2.internal      Ready                       control-plane   177m    v1.30.6
-ip-10-0-1-26.ec2.internal       Ready                       <none>          174m    v1.30.6
-ip-10-0-1-235.ec2.internal      Ready,SchedulingDisabled    <none>          174m    v1.30.6     
-```
+    ```bash hideClipboard
+    NAME                            STATUS                      ROLES           AGE     VERSION
+    ip-10-0-1-174.ec2.internal      Ready                       control-plane   177m    v1.30.6
+    ip-10-0-1-26.ec2.internal       Ready                       <none>          174m    v1.30.6
+    ip-10-0-1-235.ec2.internal      Ready,SchedulingDisabled    <none>          174m    v1.30.6     
+    ```
 
 ## Disable Maintenance Mode
 

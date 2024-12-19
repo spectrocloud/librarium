@@ -86,4 +86,4 @@ The following sections describe these capabilities in detail:
 
 - [Image Swap](image-swap.md) - Learn how to use image swap capabilities with Palette.
 
-- [Maintenance Mode](./maintenance-mode.md) - Turns off scheduling (cordons) and then drains nodes, migrating workloads to other healthy nodes in the cluster without any service disruptions.
+- [Maintenance Mode](./maintenance-mode.md) - Turn off scheduling (cordon) and drain nodes, migrating workloads to other healthy nodes in the cluster without service disruptions.
