@@ -39,6 +39,10 @@ Palette upgrade.
 
 - A diff or text comparison tool of your choice.
 
+- The Kubernetes cluster must be set up on a version of Kubernetes that is compatible to your upgraded version. Refer to
+  the [Kubernetes Requirements](../../install-palette/install-palette.md#kubernetes-requirements) section to find the
+  version required for your Palette installation.
+
 ## Upgrade
 
 :::info
@@ -90,13 +94,13 @@ steps one through four. Otherwise, start at step five.
    your private SSH key, your username, and the IP or domain of the airgap support VM. The default username is `ubuntu`.
 
    ```shell
-   ssh -identity_file </path/to/private/key> ubuntu@<vm-ip-or-domain>
+   ssh -i </path/to/private/key> ubuntu@<vm-ip-or-domain>
    ```
 
    Consider the following command example for reference.
 
    ```shell
-   ssh -identity_file /docs/ssh-private-key.pem ubuntu@palette.example.com
+   ssh -i /docs/ssh-private-key.pem ubuntu@palette.example.com
    ```
 
 6. Use the following command to switch to the `root` user account, which you need to proceed with the upgrade.
