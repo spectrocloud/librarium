@@ -3,8 +3,6 @@ sidebar_label: "Resource Management"
 title: "Resource Management"
 description: "Learn how to monitor workload resource consumption and implement resource quotas for your workspace."
 hide_table_of_contents: false
-sidebar_custom_props:
-  icon: "workspaces"
 tags: ["workspace", "resource-management"]
 ---
 
