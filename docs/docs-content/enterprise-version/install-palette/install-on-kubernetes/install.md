@@ -31,10 +31,11 @@ You can use the Palette Helm Chart to install Palette in a multi-node Kubernetes
   configuration to be installed as part of the installation process. If Cert Manager is already installed, you must
   uninstall it before installing Palette.
 
-- If you are using a _self-hosted database_, such as MongoDB, the Kubernetes cluster must have a Container Storage Interface (CSI) installed and configured. Palette requires a CSI
-  to store persistent data. You may install any CSI that is compatible with your Kubernetes cluster.
+- If you are using a _self-hosted MongoDB_ instance, such as MongoDB Atlas, the Kubernetes cluster must have a Container
+  Storage Interface (CSI) installed and configured. Palette requires a CSI to create Persistest Volume, which is used to
+  store persistent data. You may install any CSI that is compatible with your Kubernetes cluster.
 
-- If you are using MongoDB Atlas, or a self-hosted MongoDB instance, ensure the MongoDB database has a user named
+- If you are using a _self-hosted MongoDB_ instance, such as MongoDB Atlas, ensure the MongoDB database has a user named
   `hubble` with the permission `readWriteAnyDatabase`. Refer to the
   [Add a Database User](https://www.mongodb.com/docs/guides/atlas/db-user/) guide for guidance on how to create a
   database user in Atlas.
@@ -46,11 +47,7 @@ You can use the Palette Helm Chart to install Palette in a multi-node Kubernetes
 
   - 16 GB Memory per node.
 
-  - 100 GB Disk Space per node.
-  
-  - If you are using a _self-hosted database_, such as MongoDB, a CSI for persistent data.
-
-  - If you are using an _external database_, such as MongoDB Atlas, a Persistent Volume Claim (PVC) of at least 10 GB for persistent data.
+  - 110 GB Disk Space per node.
 
   - A minimum of three worker nodes or three untainted control plane nodes.
 
