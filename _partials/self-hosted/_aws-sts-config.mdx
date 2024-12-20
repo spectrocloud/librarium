@@ -85,12 +85,27 @@ to deploy clusters in AWS using STS. Without this configuration, the STS option 
     
 ## Validate 
 
-Issue the following command to make an API call that confirms that the credentials were configured successfully.
+1. Open a terminal session.
 
-```bash
-curl --request POST \
-        --url https://<palette-api-url>/v1/system/config/aws/account \
-        --header 'Authorization: $TOKEN'
-```
+2. Log in to the {props.edition} System API by using the `/v1/auth/syslogin` endpoint. 
+   Use the curl command below and replace the `example.com` placeholder URL with the URL of your {props.edition} instance. 
+   Ensure you replace the credentials below with your system console credentials.
 
-If you receive a response that contains the payload you configured, the configuration was successful.
+   ```shell
+   TOKEN=$(curl --insecure --location 'https://example.com/v1/auth/syslogin' \
+    --header 'Content-Type: application/json' \
+    --data '{
+    "password": "**********",
+    "username": "**********"
+    }')
+
+2. Issue the following command to make an API call that confirms that the credentials were configured successfully.
+
+    ```shell
+    curl --request GET \
+            --url https://<palette-api-url>/v1/system/config/aws/account \
+            --header 'Authorization: $TOKEN'
+    ```
+
+    If you receive a response that contains the payload you configured, the configuration was successful.
+
