@@ -36,9 +36,8 @@ has the necessary network connectivity for VerteX to operate successfully.
   configuration to be installed as part of the installation process. If Cert Manager is already installed, you must
   uninstall it before installing VerteX.
 
-- If you are using a _self-hosted MongoDB_ instance, such as MongoDB Atlas, the Kubernetes cluster must have a Container
-  Storage Interface (CSI) installed and configured. Palette requires a CSI to create Persistest Volume, which is used to
-  store persistent data. You may install any CSI that is compatible with your Kubernetes cluster.
+- Palette requires a Container Storage Interface (CSI) to create Persistest Volume, which is used to store persistent
+  data. You may install any CSI that is compatible with your Kubernetes cluster.
 
 - If you are using a _self-hosted MongoDB_ instance, such as MongoDB Atlas, ensure the MongoDB database has a user named
   `hubble` with the permission `readWriteAnyDatabase`. Refer to the
