@@ -9,5 +9,4 @@ tags: ["palette", "management", "account", "credentials"]
 keywords: ["self-hosted", "vertex"]
 ---
 
-
 <PartialsComponent category="self-hosted" name="sts-config" edition="VerteX" />

@@ -9,6 +9,4 @@ tags: ["palette", "management", "account", "credentials"]
 keywords: ["self-hosted", "palette"]
 ---
 
-
 <PartialsComponent category="self-hosted" name="sts-config" edition="Palette" />
-
