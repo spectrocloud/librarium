@@ -1,72 +1,136 @@
 ---
-sidebar_label: "Adding a Workspace"
-title: "Adding a workspace"
-description: "How to create multi-cluster workspace in Palette"
+sidebar_label: "Create a Workspace"
+title: "Create a Workspace"
+description: "How to create a multi-cluster workspace in Palette."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 0
 tags: ["workspace"]
 ---
 
-Palette enables multi-cluster management and governance capabilities by introducing Workspaces. This section explains
-how a workspace can be created in the Palette console.
+Palette enables multi-cluster management and governance capabilities by introducing workspaces. This page teaches you
+how to create a workspace in Palette. All workspace settings can be updated after creation.
 
 ## Prerequisites
 
-- One or more running workload clusters within the project.
-- Cluster must not be imported with read-only mode.
-- RBAC should not be set at cluster level but to be included at workspace level.
-- Palette Virtual Clusters cannot be part of the workspace.
+- One or more active workload clusters within the project where the workspace is to be created. The clusters cannot be
+  imported in read-only mode. Palette virtual clusters also cannot be part of a workspace.
+- You have the permission to create workspaces. For more information, refer to
+  [Permissions](../user-management/palette-rbac/permissions.md).
 
 ## Create Your Workspace
 
-1. Add the Basic Information Provide the basic information for the workspace such as:
+1. Log in to [Palette](https://console.spectrocloud.com).
 
-   - Unique Name
-   - Optional Description
-   - Optional Tag
+2. In the **Drop-Down Menu** at the top of the page, choose the project you want to create the workspace in. Workspaces
+   are always scoped to a project.
 
-2. Associate Clusters
+3. On the left **Main Menu**, click **Workspaces**. Then click **New Workspace**.
 
-   - Select the clusters to be added to the workspace. (See [New Clusters](../clusters/clusters.md) to learn how to add
-     a new Cluster.) Palette clusters, as well as brownfield clusters, can be added to your workspace.
+4. Provide the basic information for the workspace.
 
-   - Configure the Cluster Role Binding (optional). Role bindings can be created on all workspace clusters.
+   - **Name**: The workspace name must be unique in the project.
+   - **Description**: An optional description for the workspace.
+   - **Tag**: Optional tags for the workspace.
 
-   - As step 2 of the new Workspace creation, select **Add Cluster Role Binding**.
-   - Provide the name of the role for which the cluster role binding needs to be created. The role should be
-     pre-existing or an in-built system role. Palette does not create cluster roles.
-   - Subjects for the cluster role binding can be groups, users, or service accounts.
+   When you are finished, click **Next**.
 
-     | **Subject Type**    | **Subject Name**          | **Subject Namespace**                                                                                                                                              |
-     | ------------------- | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-     | **User**            | a valid path segment name | NA                                                                                                                                                                 |
-     | **Group**           | a valid path segment name | NA                                                                                                                                                                 |
-     | **Service Account** | a valid path segment name | Granting super-user access to all service accounts <br /> cluster-wide is strongly discouraged. Hence, grant a <br /> role to all service accounts in a namespace. |
+5. Choose clusters you want to include in the workspace. A cluster may be included in multiple workspaces. Refer to
+   [Create a Cluster](../clusters/clusters.md) to learn how to add a new cluster.
 
-3. Associate Namespaces
+6. On the **Clusters** page, you can optionally create cluster role bindings. To create a new cluster role binding,
+   click **Add New Binding**. Enter the name of the cluster role you want to reference in the cluster role binding.
 
-   - Enter one or more namespaces that need to be part of the workspace. The combination of workspace and cluster is
-     unique across workspaces in a project. Palette ensures that all the namespaces are created for all the clusters in
-     the workspaces, in case they are not pre-existing.
+   After specifying the role, you need to specify the subject to which the cluster role binding is applied to. Select
+   the subject type and then enter the name of the subject. The name of the subject must be the same as it is defined in
+   the cluster.
 
-   - Add the resource quota for the namespaces by specifying CPU and Memory limits (optional).
+   :::info
 
-   - Configure the Role Binding (optional). The following information is required for each role binding:
-     - Select a namespace name or the Regex for namespaces for selecting multiple namespaces.
-     - Specific name for the role which is pre-existing
-     - Make the selection of Subjects from the dropdown list (User, Group, or ServiceAccount). For the subject selected,
-       provide a valid path segment name. For the subject, ServiceAccount select namespace name as granting super-user
-       access to all service accounts cluster-wide is strongly discouraged due to security concerns.
-     - Confirm the information provided to complete the configuration of role binding.
+   Unlike Palette RBAC, the users you reference here are Kubernetes user objects in the cluster, not users in your
+   Palette environment.
 
-4. Settings
+   :::
 
-   - [Schedule Backups](../clusters/cluster-management/backup-restore/backup-restore.md) - set the backup and restore
-     policies.
-   - [Container Image](workload-features.md#restrict-container-images-to-a-workspace) - list out the container images to
-     be restricted within a Workspace namespace.
+   While this action will create the same role binding across all the clusters that are part of the workspace, it does
+   not define the cluster role nor the subject the role is bound to. You need to define the role yourself in each
+   cluster as well as define the subject the role is bound to. Otherwise, the cluster role binding will not have any
+   effect.
 
-## Validation
+   :::info
 
-Review and finish the configuration and complete the deployment.
+   If the cluster role in each cluster has different permissions, then the subjects that the role is bound to will also
+   have different permissions across clusters, even though they have the same cluster role binding. The same applies to
+   namespace-scoped role bindings defined in the next step.
+
+   :::
+
+7. Enter the namespaces you want to include in the workspace. If a cluster that is part of your workspace has that
+   namespace, the namespace and all resources that are scoped within it will be included in the workspace. If any
+   cluster in the workspace is missing the namespace you entered, the namespace will be created on that cluster.
+
+   You must use the names of the namespaces exactly, not regular expressions. The regular expression entries are only
+   used for creating role bindings in a later step.
+
+8. After selecting the namespaces, you can specify resource limits that the workspace is allowed to consume in the
+   **Workspace Quota** section. The **Maximum CPU** and **Maximum Memory** allow you to specif the maximum amount of CPU
+   cores and memory that all resources in the entire workspace are allowed to consume.
+
+9. You may also specify resource limits on specific namespaces.
+
+   For example, if you have two clusters, `cluster1` and `cluster2`, and they each have a namespace called `default`. If
+   you impose a 2 Gi memory limit on the namespace default, then the `default` namespace in both clusters will be able
+   to consume 2 Gi memory each. For more information about resource quotas, refer to
+   [Resource Management](./workspace-mgmt/resource-mgmt.md).
+
+   You must ensure that the namespaced limits, when added together, do not exceed the total workspace limit you
+   configured. If you impose a workspace quota of 4 Gi memory for a two-cluster workspace, then a namespace cannot have
+   more than 2 Gi of memory as its limit, since there are two such namespaces in the workspace and both of them added
+   together are allowed 4 Gi of memory.
+
+10. On the same **Namsespaces** page, you can optionally configure role bindings. When you configure a role binding for
+    a namespace, you are configuring the same role binding in that namespace in every cluster. Like in Kubernetes, you
+    can use either a role or a cluster role in a role binding. Similar to cluster role bindings, this action does not
+    create the roles or the subject for you. You must ensure that the corresponding role and subject referenced in the
+    role binding exists in the namespaces you configured.
+
+    You can use Regular Expressions (regex) to create role bindings in multiple namespaces that match a certain pattern.
+    To do so, enter the regex in the namespace field. For example, `/palette-.*/` will match all namespaces that start
+    with `palette-`. When creating the role binding, you can select the regex as the namespace.
+
+    :::info
+
+    Regex entries in the **Namespaces** field do not add the namespaces that match the regex to the workspace. You will
+    not be able to monitor resource usage, impose resource limits, or create backups unless you specifically add a
+    namespace by its name.
+
+    :::
+
+    When you are finished, click **Next**.
+
+11. In the **Setting** page, you can schedule backups for select namespaces. These backups are created for each cluster
+    in the workspace.
+
+    Like cluster backups in Palette, restoring a backup requires the source cluster to be available. When you restore a
+    backup, the namespaces that are backed up are restored to each cluster in the workspace. If you delete a cluster
+    from the workspace, that cluster's backup will not be restored.
+
+    For more information about backups, refer to
+    [Backup and Restore](../clusters/cluster-management/backup-restore/backup-restore.md).
+
+12. Lastly, you can restrict certain container images from being loaded in the namespaces that are managed by the
+    workspace. To restrict images from being loaded by resources in a namespace, click **Add New Container Image**.
+    Select a namespace you want to restrict the image in, and enter the image URLs in a comma-separated list. When you
+    are done, click **Next**.
+
+13. Review your configurations and click **Finish Configuration** to create the workspace.
+
+## Validate
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. In the **drop-down Menu** at the top of the page, choose the project you created the workspace in.
+
+3. On the left **Main Menu**, click **Workspaces**.
+
+4. Confirm the workspace has been created with the right configurations.
