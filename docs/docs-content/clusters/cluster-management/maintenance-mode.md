@@ -49,7 +49,7 @@ Palette reminds you in several locations that you have a node in maintenance mod
 
 ![Node in maintenance mode](/clusters_cluster-management_maintenance_mode.webp)
 
-## Validate
+### Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -80,10 +80,47 @@ Palette reminds you in several locations that you have a node in maintenance mod
 
 ## Disable Maintenance Mode
 
-When you are ready to change the node back to a schedulable state, select the three-dot **Menu** beside the maintenance node, and **Turn off maintenance mode**. 
+1. Log in to [Palette](https://console.spectrocloud.com).
+   
+2. Navigate to the left **Main Menu** and select **Clusters**.
+   
+3. Select the desired cluster and navigate to the **Nodes** tab of the cluster.
+   
+4. Select the **three-dot Menu** beside the maintenance node and **Turn off maintenance mode**.
+
+5. When maintenance mode is disabled, the **Health** icon reverts to a checkmark.
 
 :::info
 
 Taking a node out of maintenance mode does not automatically rebalance workloads. 
 
 :::
+
+### Validate
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. Navigate to the left **Main Menu** and select **Clusters**
+
+3. Select the desired cluster and download the [kubeconfig](./kubeconfig.md) file.
+
+![The cluster details page with the two Kubeconfig files elements highlighted](/clusters_cluster--management_kubeconfig_cluster-details-kubeconfig-files.webp)
+   
+4. Open a terminal window and set the environment variable `KUBECONFIG` to point to the kubeconfig file you downloaded.
+
+    ```bash
+    export KUBECONFIG=~/Downloads/admin.aws-maintenance-test.kubeconfig
+    ```
+
+5. Confirm that scheduling is no longer disabled for the node, indictated by a `STATUS` of `Ready`.
+
+    ```bash
+    kubectl get nodes
+    ```
+
+    ```bash hideClipboard
+    NAME                            STATUS      ROLES           AGE     VERSION
+    ip-10-0-1-174.ec2.internal      Ready       control-plane   177m    v1.30.6
+    ip-10-0-1-26.ec2.internal       Ready       <none>          174m    v1.30.6
+    ip-10-0-1-235.ec2.internal      Ready       <none>          174m    v1.30.6     
+    ```
