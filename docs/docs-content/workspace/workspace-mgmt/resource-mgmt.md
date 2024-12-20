@@ -9,7 +9,7 @@ tags: ["workspace", "resource-management"]
 
 Workspaces give you a unified view of resource consumption in specified namespaces across all clusters in the workspace.
 Additionally, you can implement resource quotas for the workspace as a whole, or for individual namespaces. The resource
-quotas are implemented using the native Kubernetes ResourceQuota object. Refer to
+quotas are implemented using the native Kubernetes ResourceQuota object. Refer to the
 [Kubernetes documentation](https://kubernetes.io/docs/concepts/policy/resource-quotas) to learn more about resource
 quotas.
 
@@ -26,10 +26,10 @@ You can view more workloads by selecting the corresponding tab. For example, sel
 monitor pod workloads. Each tab will show you the CPU and memory consumption of the corresponding workload in the entire
 workspace.
 
-| **Resource**           | **Available information**                                                                                                        |
+| **Resource**           | **Available Information**                                                                                                        |
 | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| **Namespaces**         | CPU and memory utilization of the namespace s in each cluster.                                                                   |
-| **Pods**               | Lists all the pods in a particular namespace with cluster names with the detailed health status, age, and resource utilization.. |
+| **Namespaces**         | CPU and memory utilization of the namespace in each cluster.                                                                   |
+| **Pods**               | Lists all the pods in a particular namespace with cluster names with detailed health status, age, and resource utilization. |
 | **Deployments**        | All deployments in the namespaces included in the workspace and their age, pods, and resource utilization.                       |
 | **DaemonSets**         | All daemon set in the namespaces included in the workspace and their age, pods, and resource utilization.                        |
 | **StatefulSets**       | All the active StatefulSets in the namespaces included in the workspace and their age, pods, replicas, and resource utilization. |
@@ -55,7 +55,7 @@ refer to [Kubernetes documentation](https://kubernetes.io/docs/concepts/policy/r
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. In the **Drop-Down Menu** at the top of the page, choose the project that has your workspace.
+2. In the **drop-down Menu** at the top of the page, choose the project that has your workspace.
 
 3. On the left **Main Menu**, click **Workspaces**.
 
@@ -76,7 +76,7 @@ refer to [Kubernetes documentation](https://kubernetes.io/docs/concepts/policy/r
    the workspace quota when added together.
 
    For example, if you have two clusters in the workspace and impose a workspace-level quota of 8 Gi of memory and 8
-   CPUs. When each instance of the namespace in each cluster are added together, the total memory and CPU quota cannot
+   CPUs, when each instance of the namespace in each cluster is added together, the total memory and CPU quota cannot
    exceed 8 Gi of memory and 8 CPUs.
 
    The following resource quota configuration is not allowed for a workspace with 8 Gi of memory and 8 CPUs because the

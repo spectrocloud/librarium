@@ -24,7 +24,7 @@ Access control to images is achieved using Kyverno policies. For more informatio
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. In the **Drop-Down Menu** at the top of the page, choose the project that has your workspace.
+2. In the **drop-down Menu** at the top of the page, choose the project that has your workspace.
 
 3. On the left **Main Menu**, click **Workspaces**.
 
