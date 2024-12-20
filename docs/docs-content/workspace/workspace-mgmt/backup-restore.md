@@ -15,7 +15,7 @@ Velero-based approach as regular cluster backups and are subject to the same lim
 The backup files will be stored in a backup location you configure. Each cluster will have its own backup files. When
 you delete a workspace, the backup files will not be deleted.
 
-## Create a workspace backup
+## Create a Workspace Backup
 
 Backing up a workspace creates a backup file for every cluster in your workspace. Each cluster backup file will contain
 all Kubernetes objects as well as volumes in the namespaces selected.
@@ -61,7 +61,7 @@ all Kubernetes objects as well as volumes in the namespaces selected.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. In the **Drop-Down Menu** at the top of the page, choose the project that has your workspace.
+2. In the **drop-down Menu** at the top of the page, choose the project that has your workspace.
 
 3. On the left **Main Menu**, click **Workspaces**.
 
@@ -94,7 +94,7 @@ The backup process will take some time ranging from 15 minutes to hours dependin
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. In the **Drop-Down Menu** at the top of the page, choose the project that has your workspace.
+2. In the **drop-down Menu** at the top of the page, choose the project that has your workspace.
 
 3. On the left **Main Menu**, click **Workspaces**.
 
@@ -104,10 +104,10 @@ The backup process will take some time ranging from 15 minutes to hours dependin
 
 6. Confirm that your backup is in progress or completed.
 
-## Restore a workspace backup
+## Restore a Workspace Backup
 
-Restoring a workspace will restore the selected namespaces every cluster that is currently in the workspace to the same
-state from which the backup was created. The clusters being restored must be healthy and reachable, because the restore
+Restoring a workspace will restore the selected namespaces in every cluster that is currently in the workspace to the same
+state from which the backup was created. The clusters being restored must be healthy and reachable, because the restore process
 relies on access to the Kubernetes API. If you have deleted a cluster from the workspace, the deleted cluster will not
 be restored.
 
@@ -124,7 +124,7 @@ be restored.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. In the **Drop-Down Menu** at the top of the page, choose the project that has your workspace.
+2. In the **drop-down Menu** at the top of the page, choose the project that has your workspace.
 
 3. On the left **Main Menu**, click **Workspaces**.
 
@@ -139,16 +139,16 @@ be restored.
    | Option                    | Description                                                           |
    | ------------------------- | --------------------------------------------------------------------- |
    | Include Cluster Resources | Check the box to restore all the cluster scoped resources.            |
-   | Preserve Node Ports       | Check the box to preserve ports for node port service in the cluster. |
+   | Preserve Node Ports       | Check the box to preserve ports for the node port service in the cluster. |
    | Restore PVs               | Check the box to restore the persistent volumes.                      |
 
-7, Click **Restore Backup**.
+8. Click **Restore Backup**.
 
 ### Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. In the **Drop-Down Menu** at the top of the page, choose the project that has your workspace.
+2. In the **drop-down Menu** at the top of the page, choose the project that has your workspace.
 
 3. On the left **Main Menu**, click **Workspaces**.
 

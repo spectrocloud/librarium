@@ -1,14 +1,14 @@
 ---
 sidebar_label: "Create a Workspace"
-title: "Create a workspace"
-description: "How to create multi-cluster workspace in Palette."
+title: "Create a Workspace"
+description: "How to create a multi-cluster workspace in Palette."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 0
 tags: ["workspace"]
 ---
 
-Palette enables multi-cluster management and governance capabilities by introducing Workspaces. This page teaches you
+Palette enables multi-cluster management and governance capabilities by introducing workspaces. This page teaches you
 how to create a workspace in Palette. All workspace settings can be updated after creation.
 
 ## Prerequisites
@@ -27,11 +27,11 @@ how to create a workspace in Palette. All workspace settings can be updated afte
 
 3. On the left **Main Menu**, click **Workspaces**. Then click **New Workspace**.
 
-4. Add the Basic Information Provide the basic information for the workspace such as。
+4. Provide the basic information for the workspace.
 
-   - **Name**. The workspace name must be unique in the project.
-   - **Description**. An optional description for the workspace.
-   - **Tag**. Optional tags for the workspace.
+   - **Name**: The workspace name must be unique in the project.
+   - **Description**: An optional description for the workspace.
+   - **Tag**: Optional tags for the workspace.
 
    When you are finished, click **Next**.
 
@@ -65,7 +65,7 @@ how to create a workspace in Palette. All workspace settings can be updated afte
 
    :::
 
-7. Enter the namespaces you want to include in the workspace. If the a cluster that is part of your workspace has that
+7. Enter the namespaces you want to include in the workspace. If a cluster that is part of your workspace has that
    namespace, the namespace and all resources that are scoped within it will be included in the workspace. If any
    cluster in the workspace is missing the namespace you entered, the namespace will be created on that cluster.
 
@@ -78,8 +78,8 @@ how to create a workspace in Palette. All workspace settings can be updated afte
 
 9. You may also specify resource limits on specific namespaces.
 
-   For example, if you have two clusters `cluster1` and `cluster2`, and they each have a namespace called `default`. If
-   you impose a 2Gi memory limit on the namespace default, then the `default` namespace in both clusters will be able to
+   For example, if you have two clusters, `cluster1` and `cluster2`, and they each have a namespace called `default`. If
+   you impose a 2 Gi memory limit on the namespace default, then the `default` namespace in both clusters will be able to
    consume 2 Gi memory each. For more information about resource quotas, refer to
    [Resource Management](./workspace-mgmt/resource-mgmt.md).
 
@@ -112,11 +112,11 @@ how to create a workspace in Palette. All workspace settings can be updated afte
     in the workspace.
 
     Like cluster backups in Palette, restoring a backup requires the source cluster to be available. When you restore a
-    back up, the namespaces that are backed up are restored to each cluster in the workspace. If you delete a cluster
+    backup, the namespaces that are backed up are restored to each cluster in the workspace. If you delete a cluster
     from the workspace, that cluster's backup will not be restored.
 
     For more information about backups, refer to
-    [Backup and Restore](../clusters/cluster-management/backup-restore/backup-restore.md)
+    [Backup and Restore](../clusters/cluster-management/backup-restore/backup-restore.md).
 
 12. Lastly, you can restrict certain container images from being loaded in the namespaces that are managed by the
     workspace. To restrict images from being loaded by resources in a namespace, click **Add New Container Image**.
@@ -129,7 +129,7 @@ how to create a workspace in Palette. All workspace settings can be updated afte
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. In the **Drop-Down Menu** at the top of the page, choose the project you created the workspace in.
+2. In the **drop-down Menu** at the top of the page, choose the project you created the workspace in.
 
 3. On the left **Main Menu**, click **Workspaces**.
 

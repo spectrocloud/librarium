@@ -43,8 +43,8 @@ To get started with creating a backup, check out the
 :::info
 
 If you are using a workspace, refer to the
-[Manage Palette Workspace](../../../workspace/workspace-mgmt/workspace-mgmt.md) guide to learn more about backup and
-restore actions for a workspace.
+[Manage Palette Workspace](../../../workspace/workspace-mgmt/workspace-mgmt.md) guide to learn more about workspace backup and
+restore actions.
 
 :::
 
