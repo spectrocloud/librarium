@@ -101,7 +101,7 @@ to deploy clusters in AWS using STS. Without this configuration, the STS option 
 
 2. Issue the following command to make an API call that confirms that the credentials were configured successfully.
 
-    ```bash
+    ```shell
     curl --request GET \
             --url https://<palette-api-url>/v1/system/config/aws/account \
             --header 'Authorization: $TOKEN'
