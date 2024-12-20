@@ -136,11 +136,11 @@ be restored.
 
 7. You have the following options for restoring the backup.
 
-   | Option                    | Description                                                                   |
-   | ------------------------- | ----------------------------------------------------------------------------- |
-   | Include Cluster Resources | Check the box to restore all the cluster scoped resources.                    |
-   | Preserve Node Ports       | Check the box to preserve ports for node port service running in the cluster. |
-   | Restore PVs               | Check the box to restore the persistent volumes.                              |
+   | Option                    | Description                                                           |
+   | ------------------------- | --------------------------------------------------------------------- |
+   | Include Cluster Resources | Check the box to restore all the cluster scoped resources.            |
+   | Preserve Node Ports       | Check the box to preserve ports for node port service in the cluster. |
+   | Restore PVs               | Check the box to restore the persistent volumes.                      |
 
 7, Click **Restore Backup**.
 

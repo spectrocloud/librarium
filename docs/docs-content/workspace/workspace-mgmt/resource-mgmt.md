@@ -26,17 +26,17 @@ You can view more workloads by selecting the corresponding tab. For example, sel
 monitor pod workloads. Each tab will show you the CPU and memory consumption of the corresponding workload in the entire
 workspace.
 
-| **Resource**           | **Available information**                                                                                                                |
-| ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
-| **Namespaces**         | CPU and memory utilization of the namespace s in each cluster.                                                                           |
-| **Pods**               | Lists all the pods running on a particular namespace with cluster names with the detailed health status, age, and resource utilization.. |
-| **Deployments**        | All deployments in the namespaces included in the workspace and their age, pods, and resource utilization.                               |
-| **DaemonSets**         | All daemon set in the namespaces included in the workspace and their age, pods, and resource utilization.                                |
-| **StatefulSets**       | All the active StatefulSets in the namespaces included in the workspace and their age, pods, replicas, and resource utilization.         |
-| **Jobs**               | All jobs in the namespaces included in the workspace and their status.                                                                   |
-| **CronJobs**           | All cron jobs in the namespaces included in the workspace and their status.                                                              |
-| **RoleBinding**        | All role bindings in the namespaces included in the workspace, including the role name and the subject name.                             |
-| **ClusterRoleBinding** | All cluster role bindings in the clusters included in the workspace.                                                                     |
+| **Resource**           | **Available information**                                                                                                        |
+| ---------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| **Namespaces**         | CPU and memory utilization of the namespace s in each cluster.                                                                   |
+| **Pods**               | Lists all the pods in a particular namespace with cluster names with the detailed health status, age, and resource utilization.. |
+| **Deployments**        | All deployments in the namespaces included in the workspace and their age, pods, and resource utilization.                       |
+| **DaemonSets**         | All daemon set in the namespaces included in the workspace and their age, pods, and resource utilization.                        |
+| **StatefulSets**       | All the active StatefulSets in the namespaces included in the workspace and their age, pods, replicas, and resource utilization. |
+| **Jobs**               | All jobs in the namespaces included in the workspace and their status.                                                           |
+| **CronJobs**           | All cron jobs in the namespaces included in the workspace and their status.                                                      |
+| **RoleBinding**        | All role bindings in the namespaces included in the workspace, including the role name and the subject name.                     |
+| **ClusterRoleBinding** | All cluster role bindings in the clusters included in the workspace.                                                             |
 
 ## Implement Resource Quotas
 
