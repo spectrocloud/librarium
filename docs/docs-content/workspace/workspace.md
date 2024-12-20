@@ -8,7 +8,7 @@ sidebar_custom_props:
 tags: ["workspace"]
 ---
 
-A workspaces in Palette consists of a group of clusters and namespaces and the resources scoped in those clusters and
+A workspace in Palette consists of a group of clusters and namespaces and the resources scoped in those clusters and
 namespaces. Using workspaces enables you to provide application or team-specific governance and visibility into
 workloads, cost, and usage metrics.
 
@@ -31,7 +31,7 @@ includes:
 ## Centralized Access Control
 
 Workspaces simplify Role-Based Access Control (RBAC) by centralizing management of role bindings and cluster role
-bindings. You can specifying role bindings and cluster role bindings within the workspace to automatically apply them to
+bindings. You can specify role bindings and cluster role bindings within the workspace to automatically apply them to
 all clusters, ensuring consistent and secure access policies across all clusters in a workspace.
 
 ## Visibility and Insights
@@ -47,7 +47,7 @@ Workspaces enhance operational visibility and provide actionable insights
 
 ## Backup and Disaster Recovery
 
-**Workspace-Based Backup**: extends cluster-level backups to include namespaces in all clusters within a workspace. For
+**Workspace-Based Backup**: Extends cluster-level backups to include namespaces in all clusters within a workspace. For
 detailed prerequisites and instructions, refer to the
 [Backup and Restore](../clusters/cluster-management/backup-restore/backup-restore.md) page.
 
