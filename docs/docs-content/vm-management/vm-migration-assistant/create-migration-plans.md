@@ -550,7 +550,7 @@ Follow this guide to create migration plans using the VM Migration Assistant.
    | **Target namespace**    | Select the target namespace for the VM migration from the drop-down Menu.                                                                                                                                                              | `myVmMigrationNamespace`                  |
    | **Network map**         | A storage map defines the mapping of source storage domains to target storage classes or datastores, ensuring VM disks are correctly placed in the destination environment. Adjust the mapping, or leave the default mapping in place. | `VM Network` / `Pod Networking`           |
    | **Storage map**         | A network map defines the mapping of source networks to target networks, ensuring VM network interfaces are correctly connected in the destination environment. Adjust the mapping, or leave the default mapping in place.             | `vsanDatastore` / `spectro-storage-class` |
-   | **Preserve static IPs** | Choose whether to preserve the static IPs of the VMs migrated from vSphere.                                                                                                                                                            | :white_check_mark: |
+   | **Preserve static IPs** | Choose whether to preserve the static IPs of the VMs migrated from vSphere.                                                                                                                                                            | :white_check_mark:                        |
 
 9. Click **Create migration plan**. The **Details** tab for the plan is then displayed.
 
