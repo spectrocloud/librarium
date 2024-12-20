@@ -3,6 +3,7 @@ sidebar_label: Backup and Restore
 title: Backup and Restore
 description: "Learn how to configure backup and restore for your workspaces."
 hide_table_of_contents: false
+sidebar_position: 30
 tags: ["workspace"]
 ---
 

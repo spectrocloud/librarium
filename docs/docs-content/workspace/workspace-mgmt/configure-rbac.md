@@ -3,6 +3,7 @@ sidebar_label: "Configure RBAC in Workspaces"
 title: "Configure RBAC in Workspaces"
 description: "Learn how to configure RBAC in workspaces."
 hide_table_of_contents: false
+sidebar_position: 0
 tags: ["workspace", "rbac"]
 ---
 

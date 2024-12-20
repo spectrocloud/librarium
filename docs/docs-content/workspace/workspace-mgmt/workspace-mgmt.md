@@ -18,6 +18,8 @@ quotas.
 
 - [Resource Management](resource-mgmt.md)
 
+- [Backup and Restore](./backup-restore.md)
+
 - [Restrict Container Images](restrict-images.md)
 
 - [Delete Workspace](./delete-workspace.md)
