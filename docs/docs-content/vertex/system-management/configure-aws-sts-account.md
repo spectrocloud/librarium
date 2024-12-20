@@ -9,6 +9,5 @@ tags: ["palette", "management", "account", "credentials"]
 keywords: ["self-hosted", "vertex"]
 ---
 
-import StsConfig from "../../../../_partials/self-hosted/_aws-sts-config.mdx";
 
-<StsConfig name="sts-config" edition="VerteX" />
+<PartialsComponent category="self-hosted" name="sts-config" edition="VerteX" />

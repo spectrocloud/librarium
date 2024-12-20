@@ -44,7 +44,7 @@ cloud account.
 
 ### Prerequisites
 
-- If you are using a self-hosted Palette or Vertex instance, you have configured an AWS account at the instance-level to
+- If you are using a self-hosted Palette or Vertex instance, you must configure an AWS account at the instance-level to
   allow tenants to add AWS accounts using STS. For more information, refer to
   [Enable Adding AWS Accounts Using STS - Palette](../../../enterprise-version/system-management/configure-aws-sts-account.md)
   or [Enable Adding AWS Accounts Using STS - VerteX](../../../vertex/system-management/configure-aws-sts-account.md)
@@ -221,7 +221,7 @@ multiple cloud accounts.
 
 ### Prerequisites
 
-- If you are using a self-hosted Palette or Vertex instance, you have configured an AWS account at the instance-level to
+- If you are using a self-hosted Palette or Vertex instance, you must configure an AWS account at the instance-level to
   allow tenants to add AWS accounts using STS. For more information, refer to
   [Enable Adding AWS Accounts Using STS - Palette](../../../enterprise-version/system-management/configure-aws-sts-account.md)
   or [Enable Adding AWS Accounts Using STS - VerteX](../../../vertex/system-management/configure-aws-sts-account.md)
