@@ -12,7 +12,8 @@ included in the workspace, across every cluster in the workspace. The backup fea
 Velero-based approach as regular cluster backups and are subject to the same limitations. For more information, refer to
 [Cluster Backup and Restore](../../clusters/cluster-management/backup-restore/backup-restore.md).
 
-The backup files will be stored in a backup location you configure. Each cluster will have its own backup files.
+The backup files will be stored in a backup location you configure. Each cluster will have its own backup files. When
+you delete a workspace, the backup files will not be deleted.
 
 ## Create a workspace backup
 
@@ -24,7 +25,7 @@ all Kubernetes objects as well as volumes in the namespaces selected.
 - You have configured at least one backup location for cluster backups. Refer to
   [Add Backup Location using Static Credentials](../../clusters/cluster-management/backup-restore/add-backup-location-static.md).
 
-- You are logged in as a Palette user that has the permission to modify workspaces. For more information, refer to
+- You are logged in as a Palette user that has the permission to back up workspaces. For more information, refer to
   [Permissions](../../user-management/palette-rbac/permissions.md).
 
 - The clusters in the workspace you want to backup are healthy and available. Unhealthy clusters will not be backed up.
@@ -87,7 +88,7 @@ all Kubernetes objects as well as volumes in the namespaces selected.
 
 10. Click **Save Changes**.
 
-The backup process will take some time ranging from 15 mins to hours depending on the scope of the backup.
+The backup process will take some time ranging from 15 minutes to hours depending on the scope of the backup.
 
 ### Validate
 
@@ -114,7 +115,7 @@ be restored.
 
 - You have created a backup file for the workspace.
 
-- You are logged in as a Palette user that has the permission to modify workspaces. For more information, refer to
+- You are logged in as a Palette user that has the permission to restore workspaces. For more information, refer to
   [Permissions](../../user-management/palette-rbac/permissions.md).
 
 - The clusters you want to restore are healthy and available.

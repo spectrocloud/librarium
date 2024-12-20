@@ -11,6 +11,8 @@ This page teaches you how to delete a workspace. Deleting a workspace removes re
 using the workspace, such as role bindings, cluster role bindings, and resource quotas. Deleting a workspace does not
 delete any of the clusters inside the workspace.
 
+Deleting the workspace will not automatically delete any backup files you created for the workspace.
+
 ## Prerequisites
 
 - An existing workspace. Refer to [Create a Workspace](../adding-a-new-workspace.md) to learn how to create a workspace.

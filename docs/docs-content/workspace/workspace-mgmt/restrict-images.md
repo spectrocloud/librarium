@@ -7,8 +7,8 @@ sidebar_position: 60
 tags: ["workspace"]
 ---
 
-You can specify image URLs in a workspace to restrict access to images in your workspace for specific namespaces.
-Restricted images cannot be loaded into any cluster in the namespaces you specify.
+You can specify image URLs in a workspace to restrict access to those images for specific namespaces. Restricted images
+cannot be loaded into any cluster in the namespaces you specify.
 
 Access control to images is achieved using Kyverno policies. For more information about Kyverno, refer to
 [Kyverno documentation](https://kyverno.io/).

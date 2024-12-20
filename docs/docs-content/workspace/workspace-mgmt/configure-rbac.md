@@ -22,6 +22,10 @@ Kubernetes users, groups and service accounts.
 | Subjects              | Kubernetes users, groups, and service accounts.          | Palette users and teams                                  |
 | Example resources     | ConfigMaps, Secrets, Pods, StatefulSets, etc.            | Cluster profiles, clusters, workspaces, Edge hosts, etc. |
 
+Because workspace RBAC is built on top of Kubernetes RBAC, we recommend you becoming familiar with Kubernetes' RBAC
+model before using workspace RBAC. For more information about RBAC in Kubernetes, refer to
+[Kubernetes Documentation](https://kubernetes.io/docs/reference/access-authn-authz/rbac/)
+
 ## Create Workspace-Level Role Bindings
 
 By creating a workspace-level role binding, you create role bindings in the all clusters in the workspace in the
@@ -54,7 +58,7 @@ cluster role `podReader` to the service account `podReaderAccount` in that clust
 6. If the namespace where you want to include are already in the workspace, skip this step.
 
    At the top of the page, enter the namespace you want to create the role bindings in. Note that doing so will include
-   the namespace in the workspace and Palette users who have access to this workspace will be able to see its workloads
+   the namespace in the workspace and Palette users who have access to this workspace will be able to view its workloads
    and resource consumption.
 
    Alternatively, enter a regex that match the namespaces where you want to create the role binding. Each regex needs to
@@ -64,8 +68,9 @@ cluster role `podReader` to the service account `podReaderAccount` in that clust
 
    :::info
 
-   Using regex will _not_ include all the namespaces that match the regex in the workspace. It will still allow you to
-   create the role bindings, but the workloads in those namespaces will not be visible.
+   Using regex will _not_ include the namespaces that match the regex in the workspace. It will still allow you to
+   create the role bindings, but the workloads in those namespaces will not be visible, and you cannot backup those
+   namespaces.
 
    :::
 
@@ -108,7 +113,7 @@ By creating a workspace-level cluster role binding, you create the same cluster 
 workspace.
 
 For example, if you create a cluster role binding that binds the cluster role `podReader` to the service account
-`podReaderAccount`, every cluster will get the role binding that binds the the cluster role `podReader` to the service
+`podReaderAccount`, every cluster will get the role binding that binds the cluster role `podReader` to the service
 account `podReaderAccount`.
 
 ### Prerequisites
