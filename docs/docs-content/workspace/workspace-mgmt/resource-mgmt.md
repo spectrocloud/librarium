@@ -28,8 +28,8 @@ workspace.
 
 | **Resource**           | **Available Information**                                                                                                        |
 | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
-| **Namespaces**         | CPU and memory utilization of the namespace in each cluster.                                                                   |
-| **Pods**               | Lists all the pods in a particular namespace with cluster names with detailed health status, age, and resource utilization. |
+| **Namespaces**         | CPU and memory utilization of the namespace in each cluster.                                                                     |
+| **Pods**               | Lists all the pods in a particular namespace with cluster names with detailed health status, age, and resource utilization.      |
 | **Deployments**        | All deployments in the namespaces included in the workspace and their age, pods, and resource utilization.                       |
 | **DaemonSets**         | All daemon set in the namespaces included in the workspace and their age, pods, and resource utilization.                        |
 | **StatefulSets**       | All the active StatefulSets in the namespaces included in the workspace and their age, pods, replicas, and resource utilization. |

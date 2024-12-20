@@ -106,10 +106,10 @@ The backup process will take some time ranging from 15 minutes to hours dependin
 
 ## Restore a Workspace Backup
 
-Restoring a workspace will restore the selected namespaces in every cluster that is currently in the workspace to the same
-state from which the backup was created. The clusters being restored must be healthy and reachable, because the restore process
-relies on access to the Kubernetes API. If you have deleted a cluster from the workspace, the deleted cluster will not
-be restored.
+Restoring a workspace will restore the selected namespaces in every cluster that is currently in the workspace to the
+same state from which the backup was created. The clusters being restored must be healthy and reachable, because the
+restore process relies on access to the Kubernetes API. If you have deleted a cluster from the workspace, the deleted
+cluster will not be restored.
 
 ### Prerequisites
 
@@ -136,11 +136,11 @@ be restored.
 
 7. You have the following options for restoring the backup.
 
-   | Option                    | Description                                                           |
-   | ------------------------- | --------------------------------------------------------------------- |
-   | Include Cluster Resources | Check the box to restore all the cluster scoped resources.            |
+   | Option                    | Description                                                               |
+   | ------------------------- | ------------------------------------------------------------------------- |
+   | Include Cluster Resources | Check the box to restore all the cluster scoped resources.                |
    | Preserve Node Ports       | Check the box to preserve ports for the node port service in the cluster. |
-   | Restore PVs               | Check the box to restore the persistent volumes.                      |
+   | Restore PVs               | Check the box to restore the persistent volumes.                          |
 
 8. Click **Restore Backup**.
 

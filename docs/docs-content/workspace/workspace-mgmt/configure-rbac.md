@@ -19,7 +19,7 @@ Kubernetes users, groups, and service accounts.
 |                       | Workspace RBAC                                           | Palette RBAC                                             |
 | --------------------- | -------------------------------------------------------- | -------------------------------------------------------- |
 | Access control domain | Kubernetes API objects in the clusters in the workspace. | Palette resources.                                       |
-| Subjects              | Kubernetes users, groups, and service accounts.          | Palette users and teams.                                  |
+| Subjects              | Kubernetes users, groups, and service accounts.          | Palette users and teams.                                 |
 | Example resources     | ConfigMaps, Secrets, Pods, StatefulSets, etc.            | Cluster profiles, clusters, workspaces, Edge hosts, etc. |
 
 Because workspace RBAC is built on top of Kubernetes RBAC, we recommend you becoming familiar with Kubernetes' RBAC
@@ -28,9 +28,8 @@ model before using workspace RBAC. For more information about RBAC in Kubernetes
 
 ## Create Workspace-Level Role Bindings
 
-By creating a workspace-level role binding, you create role bindings in all clusters in the workspace in the
-namespaces you choose. You can also use Regular Expressions (regex) to create role bindings in all namespaces that match
-the regex.
+By creating a workspace-level role binding, you create role bindings in all clusters in the workspace in the namespaces
+you choose. You can also use Regular Expressions (regex) to create role bindings in all namespaces that match the regex.
 
 For example, if you create a role binding that binds the cluster role `podReader` to the service account
 `podReaderAccount` in the `default` namespace, every cluster in your workspace will get a role binding that binds the
@@ -61,8 +60,8 @@ cluster role `podReader` to the service account `podReaderAccount` in that clust
    the namespace in the workspace and Palette users who have access to this workspace will be able to view its workloads
    and resource consumption.
 
-   Alternatively, enter a regex that matches the namespaces where you want to create the role binding. Each regex needs to
-   start and end with a forward slash `/`. For example `/palette-.*/` will match any namespace that starts with
+   Alternatively, enter a regex that matches the namespaces where you want to create the role binding. Each regex needs
+   to start and end with a forward slash `/`. For example `/palette-.*/` will match any namespace that starts with
    `palette-`. You may also use the negation symbol `~` to select all namespaces that do not match the regex. For
    example, `~/palette-.*/` matches everything that does not start with `palette-`.
 
@@ -89,8 +88,8 @@ cluster role `podReader` to the service account `podReaderAccount` in that clust
 
    :::
 
-9. In the **Subject** fields, choose the type of the subject and enter the subject name. You can enter as many
-   subjects as you need.
+9. In the **Subject** fields, choose the type of the subject and enter the subject name. You can enter as many subjects
+   as you need.
 
 10. Click **Confirm**.
 
@@ -104,8 +103,8 @@ cluster role `podReader` to the service account `podReaderAccount` in that clust
 
 4. Switch to the **Role Bindings** tab.
 
-5. Search for entries that starts with **spectro-on-demand-**. Open these entries to confirm that the role bindings
-   bind the expected role to the expected subject.
+5. Search for entries that starts with **spectro-on-demand-**. Open these entries to confirm that the role bindings bind
+   the expected role to the expected subject.
 
 ## Configure Cluster Role Binding in All Clusters
 
@@ -141,8 +140,8 @@ account `podReaderAccount`.
    name of the subject. You can enter as many subjects as you need.
 
    As is with role bindings, neither the cluster role nor the subjects referenced need to exist when you create the
-   cluster role binding. However, you must create them in each cluster. Otherwise, the cluster role binding will
-   have no effect.
+   cluster role binding. However, you must create them in each cluster. Otherwise, the cluster role binding will have no
+   effect.
 
 8. Click **Confirm**.
 
@@ -156,5 +155,5 @@ account `podReaderAccount`.
 
 4. Switch to the **Cluster Role Bindings** tab.
 
-5. Search for entries that start with **spectro-on-demand-**. Open these entries to confirm that the role bindings
-   bind the expected role to the expected subject.
+5. Search for entries that start with **spectro-on-demand-**. Open these entries to confirm that the role bindings bind
+   the expected role to the expected subject.

@@ -79,8 +79,8 @@ how to create a workspace in Palette. All workspace settings can be updated afte
 9. You may also specify resource limits on specific namespaces.
 
    For example, if you have two clusters, `cluster1` and `cluster2`, and they each have a namespace called `default`. If
-   you impose a 2 Gi memory limit on the namespace default, then the `default` namespace in both clusters will be able to
-   consume 2 Gi memory each. For more information about resource quotas, refer to
+   you impose a 2 Gi memory limit on the namespace default, then the `default` namespace in both clusters will be able
+   to consume 2 Gi memory each. For more information about resource quotas, refer to
    [Resource Management](./workspace-mgmt/resource-mgmt.md).
 
    You must ensure that the namespaced limits, when added together, do not exceed the total workspace limit you
