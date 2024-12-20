@@ -75,7 +75,7 @@ refer to [Kubernetes documentation](https://kubernetes.io/docs/concepts/policy/r
    namespace in one particular cluster. You must ensure that resources configured to individual namespaces do not exceed
    the workspace quota when added together.
 
-   For example, if you have three clusters in the workspace and impose a workspace-level quota of 8 Gi of memory and 8
+   For example, if you have two clusters in the workspace and impose a workspace-level quota of 8 Gi of memory and 8
    CPUs. When each instance of the namespace in each cluster are added together, the total memory and CPU quota cannot
    exceed 8 Gi of memory and 8 CPUs.
 
