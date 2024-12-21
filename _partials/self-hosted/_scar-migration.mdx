@@ -41,6 +41,7 @@ SCAR endpoint.
   :::
 
 - Access to the file server that hosts the {props.edition} manifests.
+- Ensure the Kubernetes cluster has a Container Storage Interface (CSI) available and at least 10 GB of free space. The Specman service requires this to create a Persistent Volume Claim (PVC) for storing content.
 - The {props.edition} cluster must have been upgraded to version `4.5.13` or later. This is required for the SCAR migration to
   function properly.
 - Access to the {props.edition} system console.
