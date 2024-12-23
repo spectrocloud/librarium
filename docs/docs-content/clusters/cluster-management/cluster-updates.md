@@ -34,7 +34,7 @@ upgrading, you review the information provided in the
   - For PXK and PXK-E, refer to
     [Upgrade Kubeadm Clusters](https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/).
   - For K3s, refer to [K3s Upgrades](https://docs.k3s.io/upgrades#version-specific-caveats)
-  - For RKE2, refer to [RKE2 Manual Upgrades](https://docs.rke2.io/upgrade/manual_upgrade)
+  - For RKE2, refer to [RKE2 Manual Upgrades](https://docs.rke2.io/upgrades/manual_upgrade)
 
 ## Prerequisites
 
