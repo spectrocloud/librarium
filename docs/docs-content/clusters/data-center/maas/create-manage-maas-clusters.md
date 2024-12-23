@@ -96,8 +96,8 @@ To deploy a new MAAS cluster:
         servers to only those that have at least the amount of CPU and Memory selected.
 
       - Tags: Specify the MAAS machine tags so that Palette can deploy nodes onto the MAAS machines that match the
-        provided tags. To learn more about MAAS tags, refer to the [MAAS Tags](https://maas.io/docs/how-to-tag-machines)
-        documentation.
+        provided tags. To learn more about MAAS tags, refer to the
+        [MAAS Tags](https://maas.io/docs/how-to-use-group-machines#p-19384-tags-and-annotations) documentation.
 
 11. You can configure the following cluster management features now if needed, or you can do it later:
 
