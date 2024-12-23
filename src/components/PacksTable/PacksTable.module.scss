@@ -46,6 +46,31 @@
   }
 }
 
+.tableContainer {
+  margin: 16px 0;
+  overflow: auto;
+
+  @media screen and (max-width: 768px) {
+    display: none;
+  }
+
+  :global {
+    .ant-input-search {
+      margin-bottom: 16px;
+    }
+  }
+}
+
+.tableWrapper {
+  border: 1px solid var(--ifm-toc-border-color);
+  border-radius: 4px;
+  padding: 16px;
+
+  @media screen and (max-width: 768px) {
+    padding: 8px;
+  }
+}
+
 .green {
   background-color: var(--ifm-color-success-contrast-background);
   color: var(--ifm-color-success-contrast-foreground);
@@ -60,32 +85,27 @@
   border-radius: 16px;
 }
 
-.tableWrapper {
-  border: 1px solid var(--ifm-toc-border-color);
-  padding: 16px;
+.disabled,
+.deleted,
+.deprecated {
   padding: 4px 8px;
-  border-radius: 4px;
+  border-radius: 16px;
+  display: inline-block;
 }
 
 .disabled {
   background-color: var(--ifm-color-warning-contrast-background);
   color: var(--ifm-color-warning-contrast-foreground);
-  padding: 4px 8px;
-  border-radius: 16px;
 }
 
 .deleted {
   background-color: var(--ifm-color-danger-contrast-background);
   color: var(--ifm-color-danger-contrast-foreground);
-  padding: 4px 8px;
-  border-radius: 16px;
 }
 
 .deprecated {
   background-color: var(--ifm-color-info-contrast-background);
   color: var(--ifm-color-info-contrast-foreground);
-  padding: 4px 8px;
-  border-radius: 16px;
 }
 
 .error {
@@ -93,5 +113,18 @@
   justify-content: center;
   align-items: center;
   min-height: 400px;
-  color: red;
+  color: var(--ifm-color-danger);
+}
+
+.unsupportedMessage {
+  display: none;
+  margin: 16px 0;
+
+  @media screen and (max-width: 768px) {
+    display: block;
+  }
+}
+
+.searchContainer {
+  margin-bottom: 16px;
 }
