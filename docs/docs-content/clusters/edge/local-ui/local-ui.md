@@ -44,22 +44,25 @@ be able to access Local UI.
 
 Cluster management features are only available to airgapped Edge hosts.
 
+- [Link Hosts](./cluster-management/link-hosts.md)
+
 - [Upload Content Bundles](./cluster-management/upload-content-bundle.md)
 
 - [Export Cluster Definition](./cluster-management/export-cluster-definition.md)
 
 - [Create Local Cluster](./cluster-management/create-cluster.md)
 
+- [Scale a Cluster](./cluster-management/scale-cluster.md)
+
 ## Host Management
 
-Most host management features, with the exception of Factory Reset, are available on both airgapped and connected Edge
-hosts.
+Most host management features, with the exception of reset, are available on both airgapped and connected Edge hosts.
 
 - [Access Local UI](./host-management/access-console.md)
 
 - [Configure HTTP Proxy in Local UI](./host-management/configure-proxy.md)
 
-- [Reset Edge Host to Factory Default](./host-management/reset-reboot.md)
+- [Reset Edge Host](./host-management/reset-reboot.md)
 
 - [Customize Local UI Theme](./host-management/theming.md)
 

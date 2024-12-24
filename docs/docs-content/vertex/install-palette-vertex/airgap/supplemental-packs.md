@@ -13,6 +13,9 @@ Review the following table to determine which pack binaries you need to download
 
 | **File Name**                                                         | **Download URL**                                                                                                                  |
 | --------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
+| `airgap-vertex-pack-cni-calico-3.29.0.bin`                            | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-cni-calico-3.29.0.bin                            |
+| `airgap-vertex-pack-cni-calico-azure-fips-3.29.0.bin`                 | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-cni-calico-azure-fips-3.29.0.bin                 |
+| `airgap-vertex-pack-cni-cilium-fips-1.16.0.bin`                       | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-cni-cilium-fips-1.16.0.bin                       |
 | `airgap-vertex-pack-edge-k8s-1.28.14.bin`                             | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-k8s-1.28.14.bin                             |
 | `airgap-vertex-pack-edge-k8s-1.29.9.bin`                              | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-k8s-1.29.9.bin                              |
 | `airgap-vertex-pack-edge-k8s-1.30.5.bin`                              | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-k8s-1.30.5.bin                              |
@@ -124,6 +127,7 @@ want to use for your workload clusters.
 | RKE2 1.29.8            | u-2004-0-k-rke2-1298-fips.ova  | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-1298-fips.ova`  |
 | RKE2 1.30.3            | u-2004-0-k-rke2-1303-fips.ova  | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-1303-fips.ova`  |
 | RKE2 1.30.4            | u-2004-0-k-rke2-1304-fips.ova  | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-1304-fips.ova`  |
+| RKE2 1.30.5            | u-2004-0-k-rke2-1305-fips.ova  | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-1305-fips.ova`  |
 
 ### Usage Instructions
 

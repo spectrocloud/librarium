@@ -34,6 +34,7 @@ Palette.
   - If you are using a generic OVA, ensure you download the airgap Palette installation binary for the version of
     Palette you plan to install.
   - An OVA with the operating system and Kubernetes distribution required for the Palette nodes.
+  - The third-party binary that contains the core packs and images required for the installation.
 
   For sensitive environments, you can download the OVAs to a system with internet access and then transfer them to your
   airgap environment.
@@ -77,69 +78,24 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
 
 1.  Log in to your vCenter environment.
 
-2.  Create a vSphere VM and Template folder named `spectro-templates`. Ensure you can access this folder with the user
-    account you plan to use when deploying the Palette installation.
-
-3.  Right-click on your cluster or resource group and select **Deploy OVF Template**.
-
-4.  In the **Deploy OVF Template** wizard, enter the following URL to import the Operating System (OS) and Kubernetes
-    distribution OVA required for the installation.
-
-        Consider the following example for reference.
-
-        <!-- prettier-ignore -->
-        <Tabs>
-        <TabItem value="non-fips" label="Non-FIPS">
-
-        ```url
-        https://vmwaregoldenimage-console.s3.amazonaws.com/u-2204-0-k-1294-0.ova
-        ```
-        <!-- prettier-ignore -->
-        </TabItem>
-        <TabItem value="fips" label="FIPS">
-
-        ```url
-        https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-1294-fips.ova
-        ```
-        <!-- prettier-ignore -->
-        </TabItem>
-        </Tabs>
-
-        Place the OVA in the **spectro-templates** folder. Append the `r_` prefix, and remove the `.ova` suffix when
-        assigning its name and target location. For example, the final output should look like `r_u-2204-0-k-1294-0`. This
-        naming convention is required for the installation process to identify the OVA. Refer to the
-        [Supplement Packs](../../../airgap/supplemental-packs.md#additional-ovas) page for a list of additional OS OVAs.
-
-        You can terminate the deployment after the OVA is available in the `spectro-templates` folder. Refer to the
-        [Deploy an OVF or OVA Template](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-AFEDC48B-C96F-4088-9C1F-4F0A30E965DE.html)
-        guide for more information about deploying an OVA in vCenter.
-
-        :::warning
-
-        If you encounter an error message during the OVA deployment stating unable to retrieve manifest or certificate,
-        refer to this [known issue](https://kb.vmware.com/s/article/79986) from VMware's knowledge base for guidance on how
-        to resolve the issue.
-
-        :::
-
-5.  Next, deploy the airgap installation OVA by using the **Deploy OVF Template** wizard again in vSphere. Insert the
-    Palette install OVA URL in the **URL** field. The URL is provided to you by your Palette support representative.
-    Click on **Next** to continue.
+2.  Deploy the airgap installation OVA by using the **Deploy OVF Template** wizard again in vSphere. Insert the Palette
+    install OVA URL in the **URL** field. The URL is provided to you by your Palette support representative. Click on
+    **Next** to continue.
 
     ![View of the OVF deploy wizard](/vertex_airgap_vmware-vsphere-airgap-instructions_ovf-wizard.webp)
 
-6.  Assign a name to the virtual machine and select a target location. Click on **Next** to continue.
+3.  Assign a name to the virtual machine and select a target location. Click on **Next** to continue.
 
-7.  Select a compute resource and click on **Next** to continue.
+4.  Select a compute resource and click on **Next** to continue.
 
-8.  Review the details and click on **Ignore All** to dismiss any warning messages. The OVA contains a self-signed
+5.  Review the details and click on **Ignore All** to dismiss any warning messages. The OVA contains a self-signed
     certificate, which causes vSphere to issue a warning. Click on **Next** to continue.
 
-9.  Select the storage location and click on **Next** to continue.
+6.  Select the storage location and click on **Next** to continue.
 
-10. Select the network and click on **Next** to continue.
+7.  Select the network and click on **Next** to continue.
 
-11. The last step is to customize the template. Review the table below to learn more about each field. Click on **Next**
+8.  The last step is to customize the template. Review the table below to learn more about each field. Click on **Next**
     after you have completed the customization to continue.
 
     | Parameter                                  | Description                                                                                                                                                            | Required |
@@ -151,22 +107,22 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
     | **Hostname**                               | Enter a fully qualified hostname for the airgap support VM. For example, `palette.example.com`. The default value is `ubuntuguest`.                                    | Yes      |
     | **Url to seed instance data from**         | You can specify a URL to seed instance data from. You can leave this value empty.                                                                                      | No       |
 
-12. Review the details and click on **Finish** to deploy the airgap support VM.
+9.  Review the details and click on **Finish** to deploy the airgap support VM.
 
-13. It takes a while for the airgap support VM to deploy, approximately 45 min or more depending on your internet
+10. It takes a while for the airgap support VM to deploy, approximately 45 min or more depending on your internet
     connection. The download of the OVA takes up majority of the time. The image is over 30 GB and contains all the
     dependencies required to deploy a Palette. Once the deployment is complete, the airgap support VM is displayed in
     the vSphere inventory. The VM will be powered off. Power on the VM to continue.
 
-14. SSH into the airgap support VM. Use the following command to SSH into the VM. Replace the IP address below with the
+11. SSH into the airgap support VM. Use the following command to SSH into the VM. Replace the IP address below with the
     IP address or hostname of the airgap support VM. The default user account is `ubuntu`. Replace the path to the
     private SSH key and the IP address with the IP address or domain name of the airgap support VM.
 
     ```shell
-    ssh -identity_file /path/to/private/key ubuntu@palette.example.com
+    ssh -i /path/to/private/key ubuntu@palette.example.com
     ```
 
-15. Change the password for the `ubuntu` user account. You will be prompted to change the password the first time you
+12. Change the password for the `ubuntu` user account. You will be prompted to change the password the first time you
     log in through SSH. The new password must meet the following requirements:
 
     - At least 14 characters long
@@ -176,7 +132,7 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
     - At least 1 number
     - At least 1 special character
 
-16. Once you change the password, the SSH session will be terminated. SSH back into the airgap support VM with the new
+13. Once you change the password, the SSH session will be terminated. SSH back into the airgap support VM with the new
     password.
 
     :::info
@@ -191,7 +147,7 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
     Connection to palette.example.com closed.
     ```
 
-17. If you want to assign a static IP address to the airgap support VM, you can do so now. Click on the box below to
+14. If you want to assign a static IP address to the airgap support VM, you can do so now. Click on the box below to
     expand the instructions. Otherwise, proceed to the next step.
 
     <details>
@@ -249,13 +205,13 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
 
     </details>
 
-18. Switch to the `root` user account. You will need to use the `root` user account to complete the remaining steps.
+15. Switch to the `root` user account. You will need to use the `root` user account to complete the remaining steps.
 
     ```shell
     sudo --login
     ```
 
-19. If you have custom SSL certificates you want to apply to the image and pack registry, and the Spectro Cloud
+16. If you have custom SSL certificates you want to apply to the image and pack registry, and the Spectro Cloud
     Repository, copy the custom SSL certificates, in base64 PEM format, to the airgap support VM.
 
     If you do not provide a custom SSL certificate, the airgap setup process will generate a self-signed certificate for
@@ -284,7 +240,7 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
     - **server.crt**
     - **server.key**
 
-20. Start the airgap initialization process by issuing the following command. The script requires the hostname or IP
+17. Start the airgap initialization process by issuing the following command. The script requires the hostname or IP
     address of the airgap support VM. Choose the preferred method for your environment. Be aware that the script will
     generate a self-signed certificate for the value you provide.
 
@@ -365,24 +321,25 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
         </TabItem>
         </Tabs>
 
-21. The output of the script contains credentials and values you will need when completing the installation with the
+18. The output of the script contains credentials and values you will need when completing the installation with the
     Palette CLI. If you need to review this information in the future, invoke the script again.
 
-22. If you have used a release-specific installation OVA, skip this step. Otherwise, if you have used a generic
-    installation OVA, use the following command to execute the Palette airgap installation binary.
+19. Next, download the third party binary. Your support representative will provide you with credentials to access the
+    third-party binary. Use the following command to download the third-party binary. Replace the `XXXXX` and `YYYYY`
+    placeholders with the credentials provided to you. Replace the `X.X` placeholder with the version of the third-party
+    binary you are downloading. Ask your support representative for the version of the third-party binary you need.
 
     ```shell
-    chmod +x airgap-<version>.bin && ./airgap-<version>.bin
+    curl --user XXXXX:YYYYY https://software-private.spectrocloud.com/airgap/thirdparty/airgap-thirdparty-X.X.X.bin \
+    --output airgap-upload.bin
     ```
 
-    Consider the following example for reference.
+20. Use the following command to start the third-party binary. The third-party binary uploads the release-specific packs
+    and images to the registry configured in step **17** of this guide. This process may take some time to complete.
 
     ```shell
-    chmod +x airgap-v4.4.14.bin && ./airgap-v4.4.14.bin
+    chmod +x airgap-upload.bin && ./airgap-upload.bin
     ```
-
-    After the Palette airgap installation binary is verified and uncompressed, it uploads the release-specific packs and
-    images to the registry configured in step **20** of this guide. This process may take some time to complete.
 
     ```text hideClipboard
     Verifying archive integrity...  100%   MD5 checksums are OK. All good.
@@ -397,8 +354,57 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
 
     Once the airgap binary completes its tasks, you will receive a **Setup Completed** success message.
 
-23. Review the [Additional Packs](../../../airgap/supplemental-packs.md) page and identify any additional packs you want
+21. Review the [Additional Packs](../../../airgap/supplemental-packs.md) page and identify any additional packs you want
     to add to your OCI registry. You can also add additional packs after the installation is complete.
+
+22. Navigate back to the vSphere console and create a vSphere VM and Template folder named `spectro-templates`. Ensure
+    you can access this folder with the user account you plan to use when deploying the VerteX installation. You can
+    choose a different name for the folder if you prefer, but ensure you use the same name when the Palette CLI prompts
+    you for the folder name.
+
+23. Right-click on your cluster or resource group and select **Deploy OVF Template**.
+
+24. In the **Deploy OVF Template** wizard, enter the following URL to import the Operating System (OS) and Kubernetes
+    distribution OVA required for the installation. Refer to the
+    [Kubernetes Requirements](../../../install-palette.md#kubernetes-requirements) section to learn if the version of
+    Palette you are installing requires a new OS and Kubernetes OVA.
+
+        Consider the following example for reference.
+
+        <!-- prettier-ignore -->
+        <Tabs>
+        <TabItem value="non-fips" label="Non-FIPS">
+
+        ```url
+        https://vmwaregoldenimage-console.s3.amazonaws.com/u-2204-0-k-1294-0.ova
+        ```
+        <!-- prettier-ignore -->
+        </TabItem>
+        <TabItem value="fips" label="FIPS">
+
+        ```url
+        https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-1294-fips.ova
+        ```
+        <!-- prettier-ignore -->
+        </TabItem>
+        </Tabs>
+
+        Place the OVA in the **spectro-templates** folder or in the folder you created in step **21**. Append the `r_` prefix,
+        and remove the `.ova` suffix when assigning its name and target location. For example, the final output should look like
+        `r_u-2204-0-k-1294-0`. This naming convention is required for the installation process to identify the OVA. Refer to the
+        [Supplement Packs](../../../airgap/supplemental-packs.md#additional-ovas) page for a list of additional OS OVAs.
+
+        You can terminate the deployment after the OVA is available in the `spectro-templates` folder. Refer to the
+        [Deploy an OVF or OVA Template](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-AFEDC48B-C96F-4088-9C1F-4F0A30E965DE.html)
+        guide for more information about deploying an OVA in vCenter.
+
+:::warning
+
+If you encounter an error message during the OVA deployment stating unable to retrieve manifest or certificate, refer to
+this [known issue](https://kb.vmware.com/s/article/79986) from VMware's knowledge base for guidance on how to resolve
+the issue.
+
+:::
 
 You have now completed the preparation steps for an airgap installation. Check out the [Validate](#validate) section to
 ensure the airgap setup process is completed successfully. After you validate the airgap setup process completion,
@@ -482,15 +488,13 @@ Complete all the Palette CLI steps outlined in the [Install Palette](../install.
 The table below maps the airgap script output values to their respective Palette CLI prompts and example values. The
 example values are for reference only.
 
-| Output Value                          | Palette CLI Prompt                   | Example Value                                          |
-| ------------------------------------- | ------------------------------------ | ------------------------------------------------------ |
-| **Spectro Cloud Repository Location** | **SCAR Location**                    | `https://palette.example.com:8443` or `10.10.1.1:8443` |
-| **CA certificate filepath**           | **SCAR CA certificate filepath**     | `/opt/spectro/ssl/server.crt`                          |
-| **OCI Registry**                      | **Registry Type**                    | `OCI`                                                  |
-| **Pack OCI Registry**                 | **Registry Endpoint**                | `https://palette.example.com` or `10.10.1.1`           |
-| **CA certificate Filepath**           | **Registry CA certificate filepath** | `/opt/spectro/ssl/server.crt`                          |
-| **Image OCI Registry**                | **Registry Endpoint**                | `https://palette.example.com` or `10.10.1.1`           |
-| **CA certificate Filepath**           | **Registry CA certificate filepath** | `/opt/spectro/ssl/server.crt`                          |
+| Output Value                | Palette CLI Prompt                   | Example Value                                |
+| --------------------------- | ------------------------------------ | -------------------------------------------- |
+| **OCI Registry**            | **Registry Type**                    | `OCI`                                        |
+| **Pack OCI Registry**       | **Registry Endpoint**                | `https://palette.example.com` or `10.10.1.1` |
+| **CA certificate Filepath** | **Registry CA certificate filepath** | `/opt/spectro/ssl/server.crt`                |
+| **Image OCI Registry**      | **Registry Endpoint**                | `https://palette.example.com` or `10.10.1.1` |
+| **CA certificate Filepath** | **Registry CA certificate filepath** | `/opt/spectro/ssl/server.crt`                |
 
 When prompted for **Allow Insecure Connection (Bypass x509 Verification)?**, enter `n` to continue and specify the
 server certificate filepath from the script output.

@@ -26,6 +26,9 @@ This guide is for preparing your airgap environment only. For instructions on in
 
 - Currently, `9.4` is the only supported RHEL version.
 
-import SetupSteps from "../../../../../../../_partials/self-hosted/_setup-steps.mdx";
-
-<PartialsComponent category="self-hosted" name="setup-steps" edition="Palette" />
+<PartialsComponent
+  category="self-hosted"
+  name="setup-steps"
+  edition="Palette"
+  requirementsURL="/enterprise-version/install-palette#kubernetes-requirements"
+/>
