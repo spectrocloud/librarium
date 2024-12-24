@@ -51,14 +51,6 @@ const config = {
   staticDirectories: ["static", "static/assets/docs/images", "static/assets", "static/img/"],
   headTags: [
     {
-      tagName: "script",
-      attributes: {
-        type: "text/plain",
-        "data-usercentrics": "FullStory",
-        src: "/scripts/fullstory.js",
-      },
-    },
-    {
       tagName: "link",
       attributes: {
         rel: "preconnect",
@@ -68,33 +60,16 @@ const config = {
     {
       tagName: "link",
       attributes: {
-        rel: "preload",
-        href: "https://app.usercentrics.eu/browser-ui/latest/loader.js",
-        as: "script",
-      },
-    },
-    {
-      tagName: "script",
-      attributes: {
-        src: "https://app.usercentrics.eu/browser-ui/latest/loader.js",
-        "data-settings-id": "0IhiFXOBwy0Z2U",
-        id: "usercentrics-cmp",
-        async: "true",
+        rel: "preconnect",
+        href: "https://app.usercentrics.eu",
       },
     },
     {
       tagName: "link",
       attributes: {
-        rel: "preconnect",
-        href: "https://www.googletagmanager.com",
-      },
-    },
-    {
-      tagName: "script",
-      attributes: {
-        type: "text/javascript",
-        "data-usercentrics": "Google Tag Manager",
-        src: "/scripts/googleTagManager.js",
+        rel: "preload",
+        href: "app.usercentrics.eu/browser-ui/latest/loader.js",
+        as: "script",
       },
     },
   ],
@@ -244,10 +219,37 @@ const config = {
       },
     ],
   ].filter(Boolean),
+  /* IMPORTANT
+  Any script added below must have the "data-usercentrics" attribute with the name of the script as the value. 
+  We also need to notify marketing about the script being added so that they can update the Usercentrics CMP.
+  Marketing needs to know what to label the script as, for example Analytics, Marketing, etc. And, if it's essential or not.
+  Essential scripts are always loaded, non-essential scripts are loaded based on user consent.
+  This is used to identify the script for Usercentrics CMP.
+  Scripts also need to have the type attribute set to "text/plain" to prevent them from being executed by the browser in the event that the user has not given consent to the script.
+  The exception to the text/plain rule is the Usercentrics CMP script which must be loaded as a script tag.
+  To learn more about attributes and values, visit https://docs.usercentrics.com/#/direct-implementation-guide?id=change-script-type-textjavascript-becomes-textplain
+  */
   scripts: [
     {
       src: `https://w.appzi.io/w.js?token=${process.env.APPZI_TOKEN}`,
       defer: true,
+    },
+    {
+      src: "/scripts/fullstory.js",
+      type: "text/plain",
+      "data-usercentrics": "FullStory",
+    },
+    {
+      type: "text/plain",
+      src: "/scripts/googleTagManager.js",
+      "data-usercentrics": "Google Tag Manager",
+    },
+    {
+      src: "https://app.usercentrics.eu/browser-ui/latest/loader.js",
+      id: "usercentrics-cmp",
+      async: "true",
+      "data-settings-id": "0IhiFXOBwy0Z2U",
+      type: "text/javascript",
     },
   ],
   themes: ["docusaurus-theme-openapi-docs"],
