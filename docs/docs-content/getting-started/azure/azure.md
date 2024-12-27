@@ -11,7 +11,7 @@ tags: ["getting-started", "azure"]
 Palette supports integration with [Microsoft Azure](https://azure.microsoft.com/en-us). You can deploy and manage
 [Host Clusters](../../glossary-all.md#host-cluster) in Azure or Azure Government. The concepts you learn about in the
 Getting Started section are centered around a fictional case study company. This approach gives you a solution focused
-approach, while introducing you with Palette workflows and capabilities.
+approach, while introducing you to Palette workflows and capabilities.
 
 ## 🧑‍🚀 Welcome to Spacetastic!
 
