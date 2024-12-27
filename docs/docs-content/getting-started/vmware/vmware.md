@@ -11,7 +11,7 @@ tags: ["getting-started", "vmware"]
 Palette supports integration with [VMware](https://www.vmware.com). You can deploy and manage
 [Host Clusters](../../glossary-all.md#host-cluster) on VMware. The concepts you learn about in the Getting Started
 section are centered around a fictional case study company. This approach gives you a solution focused approach, while
-introducing you with Palette workflows and capabilities.
+introducing you to Palette workflows and capabilities.
 
 ## 🧑‍🚀 Welcome to Spacetastic!
 
