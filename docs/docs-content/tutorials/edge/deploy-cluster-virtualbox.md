@@ -61,7 +61,7 @@ To complete this tutorial, you will need the following prerequisites in place.
     management tools like [crane](https://github.com/google/go-containerregistry/blob/main/cmd/crane/README.md) instead
     of Docker.
   - [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-  - [VirtualBox](https://www.virtualbox.org/wiki/Downloads) version 7.0
+  - [VirtualBox](https://www.oracle.com/virtualization/technologies/vm/downloads/virtualbox-downloads.html) version 7.0
 
 ## EdgeForge Workflow
 
