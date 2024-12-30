@@ -54,7 +54,7 @@ To complete this tutorial, you will need the following prerequisites in place.
   - A text editor such as Vi or Nano. This tutorial uses Vi as an example.
   - [Docker Engine](https://docs.docker.com/engine/install/) with `sudo` privileges
   - [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-  - [VirtualBox](https://www.virtualbox.org/wiki/Downloads) version 7.0
+  - [VirtualBox](https://www.oracle.com/virtualization/technologies/vm/downloads/virtualbox-downloads.html) version 7.0
 
 ## EdgeForge Workflow
 
