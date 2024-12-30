@@ -7,7 +7,7 @@ sidebar_position: 240
 tags: ["clusters", "cluster management"]
 ---
 
-Similar to `kubectl` commands `cordon` and `drain`, maintenance mode allows you to temporarily disable scheduling for a running control plane node or worker node. When a node is placed in maintenance mode, running workloads are migrated automatically to other healthy nodes in the cluster without services being distrupted. Using maintenance mode facilitates performing necessary maintenance tasks, addressing node issues, and optimizing workload distribution while maintaining the desired level of performance and availability.
+Similar to `kubectl` commands `cordon` and `drain`, maintenance mode allows you to temporarily disable scheduling for a running control plane node or worker node. When a node is placed in maintenance mode, running workloads are migrated automatically to other healthy nodes in the cluster without services being distrupted. Using maintenance mode makes it easier to perform necessary maintenance tasks, address node issues, and optimize workload distribution while maintaining the desired level of performance and availability.
 
 ## Prerequistes
 
@@ -41,11 +41,11 @@ Similar to `kubectl` commands `cordon` and `drain`, maintenance mode allows you 
 
 Palette reminds you in several locations that you have a node in maintenance mode:
 
-- Beside the **Settings** drop-down while viewing your cluster
+- Beside the **Settings** drop-down while viewing your cluster.
 
-- On the cluster’s **Overview** tab beneath **Health** status
+- On the cluster’s **Overview** tab beneath **Health** status.
 
-- On the cluster’s **Nodes** tab in the node’s **Health** column
+- On the cluster’s **Nodes** tab in the node’s **Health** column.
 
 ![Node in maintenance mode](/clusters_cluster-management_maintenance_mode.webp)
 
@@ -53,7 +53,7 @@ Palette reminds you in several locations that you have a node in maintenance mod
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. Navigate to the left **Main Menu** and select **Clusters**
+2. Navigate to the left **Main Menu** and select **Clusters**.
 
 3. Select the cluster with maintenance mode active and download the [kubeconfig](./kubeconfig.md) file.
 
@@ -100,7 +100,7 @@ Taking a node out of maintenance mode does not automatically rebalance workloads
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. Navigate to the left **Main Menu** and select **Clusters**
+2. Navigate to the left **Main Menu** and select **Clusters**.
 
 3. Select the desired cluster and download the [kubeconfig](./kubeconfig.md) file.
 
