@@ -28,7 +28,7 @@ to create an IaaS Kubernetes cluster in Azure that Palette manages.
 - Palette integration with Azure account. Review [Register and Manage Azure Cloud Account](azure-cloud.md) for guidance.
 
 - A Secure Shell (SSH) key pre-configured in your Azure environment. Refer to the
-  [SSH Keys](../../cluster-management/ssh-keys.md) guide for more information about creating and managing SSH keys in
+  [SSH Keys](../../cluster-management/ssh-keys/ssh-keys.md) guide for more information about creating and managing SSH keys in
   Palette.
 
 - An infrastructure cluster profile for Azure. Review

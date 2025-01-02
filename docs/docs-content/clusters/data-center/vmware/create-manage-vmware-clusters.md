@@ -95,7 +95,7 @@ Before you begin, ensure that you have the following prerequisites:
    | **Deployment Folder**     | The folder in the datacenter where the cluster and its nodes will be deployed. Check the box **Append cluster name** if you want the cluster name appended to the folder name.                          | Yes      |
    | **Image Template Folder** | The folder in the datacenter where the image templates are stored. This is typically in the **spectro-templates** folder.                                                                               | Yes      |
    | **Network Type**          | The network type to use for the cluster. Select **Static IP** if you want to use static IP addresses. Select **DHCP** if you want to use Dynamic Host Configuration Protocol (DHCP).                    | Yes      |
-   | **SSH Key**               | The SSH key to use for the cluster. Check out the [Create and Upload an SSH Key](../../cluster-management/ssh-keys.md#create-and-upload-an-ssh-key) guide to learn how to upload an SSH key to Palette. | No       |
+   | **SSH Key**               | The SSH key to use for the cluster. Check out the [Create and Upload an SSH Key](../../cluster-management/ssh-keys/ssh-keys.md#create-and-upload-an-ssh-key) guide to learn how to upload an SSH key to Palette. | No       |
    | **NTP Servers**           | The Network Time Protocol (NTP) servers to use for the cluster.                                                                                                                                         | No       |
 
    :::warning
