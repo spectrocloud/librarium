@@ -16,10 +16,14 @@ import ReleaseNotesVersions from "@site/src/components/ReleaseNotesVersions/inde
 import PartialsComponent from "@site/src/components/PartialsComponent";
 import VersionedLink from "@site/src/components/VersionedLink";
 import PaletteVertexUrlMapper from "@site/src/components/PaletteVertexUrlMapper/PaletteVertexUrlMapper";
+import Accordion from "@site/src/components/Accordion";
+import AccordionPanel from "@site/src/components/AccordionPanel";
 
 export default {
   ...MDXComponents,
   ...customMdxComponents,
+  Accordion,
+  AccordionPanel,
   Tabs,
   TabItem,
   Tooltip,

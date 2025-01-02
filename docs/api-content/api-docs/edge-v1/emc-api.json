@@ -16,6 +16,40 @@
   },
   "paths": {
     "/v1/edge-mgmt/cluster": {
+      "get": {
+        "description": "Get the details of the cluster.",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Get the details of the cluster.",
+        "operationId": "v1ClusterConfig",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1ClusterConfiguration"
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "default": {
+            "description": "generic error response",
+            "schema": {
+              "$ref": "#/definitions/apiError"
+            }
+          }
+        }
+      },
       "post": {
         "description": "Creates a cluster with the provided cluster configuration",
         "tags": [
@@ -38,6 +72,34 @@
             "description": "(empty)",
             "schema": {
               "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      },
+      "delete": {
+        "description": "Delete a cluster",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Delete a cluster",
+        "operationId": "v1DeleteCluster",
+        "responses": {
+          "202": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
             }
           },
           "500": {
@@ -133,6 +195,12 @@
               "$ref": "#/definitions/v1CertificateDetails"
             }
           },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
           "500": {
             "description": "Internal server error",
             "schema": {
@@ -204,6 +272,118 @@
             "description": "generic error response",
             "schema": {
               "$ref": "#/definitions/apiError"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/cluster/pair": {
+      "post": {
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Creates a pairing request",
+        "operationId": "v1ClusterPair",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1ClusterPairMeta"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1ClusterPairInfoResponse"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/cluster/pair/details": {
+      "get": {
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Get all existing pairing requests",
+        "operationId": "v1ClusterPairDetails",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1ClusterPairDetailsResponse"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/cluster/pair/reject": {
+      "post": {
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Rejects a pairing request",
+        "operationId": "v1ClusterPairReject",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/cluster/pair/verify-connection": {
+      "post": {
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Verifies whether all cluster hosts are able to connect to palette",
+        "operationId": "v1ClusterPairVerifyConnection",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1ClusterPairMeta"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1ClusterPairVerifiedConnectionResponse"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
             }
           }
         }
@@ -433,6 +613,12 @@
               "$ref": "#/definitions/v1AcceptedResponseWithMessage"
             }
           },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
           "500": {
             "description": "Internal server error",
             "schema": {
@@ -470,6 +656,12 @@
             "description": "(empty)",
             "schema": {
               "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
             }
           },
           "500": {
@@ -522,6 +714,258 @@
           },
           "default": {
             "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/clusters/current/machinepools": {
+      "get": {
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Fetch the cluster node pool details including edge host details.",
+        "operationId": "v1MachinePoolDetail",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/definitions/v1EdgeNativeMachinePoolConfig"
+                  }
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Create a machine pool",
+        "operationId": "v1ClusterMachinePoolCreate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1EdgeNativeMachinePoolConfig"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "machine pool created",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "400": {
+            "description": "Bad request, invalid input",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/clusters/current/machinepools/{poolName}": {
+      "put": {
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Update machine pools",
+        "operationId": "v1ClusterMachinePoolUpdate",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1EdgeNativeMachinePoolConfig"
+            }
+          },
+          {
+            "type": "string",
+            "description": "Name of the machine pool to be updated",
+            "name": "poolName",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "machine pool configurations updated",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "400": {
+            "description": "Bad request, invalid input",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Delete machine pools",
+        "operationId": "v1ClusterMachinePoolDelete",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Name of the machine pool to be deleted",
+            "name": "poolName",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Patch machine pools",
+        "operationId": "v1ClusterMachinePoolPatch",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1MachinePoolPatch"
+            }
+          },
+          {
+            "type": "string",
+            "description": "Name of the machine pool to be patched",
+            "name": "poolName",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "machine pool configurations patched",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "400": {
+            "description": "Bad request, invalid input",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/clusters/current/machinepools/{poolName}/nodes/{nodeName}": {
+      "delete": {
+        "description": "Delete a node from the machine pool",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Delete a machine pool node",
+        "operationId": "v1ClusterMachinePoolNodeDelete",
+        "parameters": [
+          {
+            "type": "string",
+            "description": "Name of the machine pool",
+            "name": "poolName",
+            "in": "path",
+            "required": true
+          },
+          {
+            "type": "string",
+            "description": "Name of the node",
+            "name": "nodeName",
+            "in": "path",
+            "required": true
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "400": {
+            "description": "Bad request, invalid input",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
             "schema": {
               "$ref": "#/definitions/v1Error"
             }
@@ -965,6 +1409,12 @@
               "$ref": "#/definitions/v1NotFoundResponseWithMessage"
             }
           },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
           "default": {
             "description": "generic error response",
             "schema": {
@@ -1379,8 +1829,168 @@
               "$ref": "#/definitions/v1LinkStatus"
             }
           },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
           "500": {
             "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/unlink": {
+      "post": {
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Unlink edge host from other edge hosts",
+        "operationId": "v1EdgeHostUnlink",
+        "parameters": [
+          {
+            "type": "string",
+            "name": "peerId",
+            "in": "query",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "400": {
+            "description": "Bad request, invalid input",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/uploaded-content/details": {
+      "get": {
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Get metadata of last uploaded content archive file",
+        "operationId": "v1UploadedContentDetails",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1UploadedContentDetails"
+            }
+          },
+          "404": {
+            "description": "Not found",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/edgehosts/current/userdata": {
+      "get": {
+        "description": "Get edge host userdata",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Get edge host userdata",
+        "operationId": "v1GetEdgeHostUserdata",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1CloudInit"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      },
+      "put": {
+        "description": "Update edge host userdata",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Update edge host userdata",
+        "operationId": "v1PutEdgeHostUserdata",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1CloudInit"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Accepted response with message",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      },
+      "post": {
+        "description": "Update edge host userdata",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Update edge host userdata",
+        "operationId": "v1PostEdgeHostUserdata",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1CloudInit"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Accepted response with message",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "500": {
+            "description": "Internal server error.",
             "schema": {
               "$ref": "#/definitions/v1Error"
             }
@@ -1919,6 +2529,36 @@
         }
       }
     },
+    "v1CloudInit": {
+      "type": "object",
+      "properties": {
+        "hostName": {
+          "description": "Host name (optional)",
+          "type": "string"
+        },
+        "network": {
+          "description": "Network configuration",
+          "$ref": "#/definitions/v1NetworkConfig"
+        },
+        "registryCredentials": {
+          "$ref": "#/definitions/v1RegistryCredentials"
+        },
+        "stages": {
+          "description": "base64 encoded cloud init stages in yaml format",
+          "type": "string"
+        },
+        "tags": {
+          "description": "Key-value pairs of tags",
+          "type": "object",
+          "additionalProperties": {
+            "type": "object"
+          }
+        },
+        "v1Management": {
+          "$ref": "#/definitions/v1Management"
+        }
+      }
+    },
     "v1Cluster": {
       "description": "Cluster provides details about cluster.",
       "type": "object",
@@ -2129,6 +2769,81 @@
         }
       }
     },
+    "v1ClusterPairDetailsResponse": {
+      "type": "object",
+      "properties": {
+        "insecure": {
+          "description": "Connect to palette insecurely",
+          "type": "boolean"
+        },
+        "message": {
+          "description": "any custom message",
+          "type": "string"
+        },
+        "pairingUid": {
+          "description": "unique pairing uid",
+          "type": "string"
+        },
+        "paletteEndpoint": {
+          "description": "Palette endpoint to pair to",
+          "type": "string"
+        },
+        "registrationToken": {
+          "description": "Token used to authenticate pairing request to palette",
+          "type": "string"
+        },
+        "status": {
+          "description": "current pairing status",
+          "type": "string",
+          "enum": [
+            "Pairing",
+            "Paired",
+            "Rejected",
+            "Failed"
+          ]
+        }
+      }
+    },
+    "v1ClusterPairInfoResponse": {
+      "description": "Cluster Pair Info received from palette",
+      "type": "object",
+      "properties": {
+        "pairingUid": {
+          "description": "unique pairing uid",
+          "type": "string"
+        }
+      }
+    },
+    "v1ClusterPairMeta": {
+      "type": "object",
+      "properties": {
+        "insecure": {
+          "description": "Connect to palette insecurely",
+          "type": "boolean"
+        },
+        "paletteEndpoint": {
+          "description": "Palette endpoint to pair to",
+          "type": "string"
+        },
+        "registrationToken": {
+          "description": "Token used to authenticate pairing request to palette",
+          "type": "string"
+        }
+      }
+    },
+    "v1ClusterPairVerifiedConnectionResponse": {
+      "type": "object",
+      "properties": {
+        "message": {
+          "description": "any custom message",
+          "type": "string"
+        },
+        "verified": {
+          "description": "whether all cluster hosts can connect to palette",
+          "type": "boolean"
+        }
+      }
+    },
     "v1ClusterPatch": {
       "type": "object",
       "properties": {
@@ -2273,6 +2988,9 @@
         },
         "clusterState": {
           "$ref": "#/definitions/v1State"
+        },
+        "clusterStateReason": {
+          "type": "string"
         },
         "health": {
           "$ref": "#/definitions/v1Health"
@@ -2727,17 +3445,36 @@
           "type": "string",
           "default": ""
         },
+        "networkInfo": {
+          "description": "List network interfaces of an EH",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Nic"
+          }
+        },
         "nic": {
-          "description": "Edge native nic",
+          "description": "Edge native nic. (Depricated)",
           "$ref": "#/definitions/v1Nic"
         },
         "nicName": {
           "description": "Deprecated. Edge host nic name",
           "type": "string"
         },
+        "nodeInfo": {
+          "description": "node information if edgehost is part of a cluster",
+          "x-omitempty": true,
+          "$ref": "#/definitions/v1NodeInfo"
+        },
         "staticIP": {
           "description": "Deprecated. Edge host static IP",
           "type": "string"
+        },
+        "tags": {
+          "description": "tags set via userdata.",
+          "additionalProperties": {
+            "type": "object"
+          },
+          "x-omitempty": true
         },
         "twoNodeCandidatePriority": {
           "description": "Set the edgehost candidate priority as primary or secondary, if the edgehost is nominated as two node candidate",
@@ -3324,6 +4061,17 @@
         }
       }
     },
+    "v1MachinePoolPatch": {
+      "type": "object",
+      "properties": {
+        "machinePoolConfigPatches": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1HttpPatch"
+          }
+        }
+      }
+    },
     "v1MachinePoolProperties": {
       "description": "Machine pool specific properties",
       "type": "object",
@@ -3332,6 +4080,38 @@
           "description": "Architecture type of the pool. Default value is 'amd64'",
           "x-omitempty": false,
           "$ref": "#/definitions/v1ArchType"
+        }
+      }
+    },
+    "v1Management": {
+      "type": "object",
+      "required": [
+        "type"
+      ],
+      "properties": {
+        "edgeHostToken": {
+          "description": "Edge host token. Required for remote management",
+          "type": "string"
+        },
+        "insecure": {
+          "description": "Whether to allow insecure connections (optional)",
+          "type": "boolean"
+        },
+        "paletteEndpoint": {
+          "description": "URL for remote palette endpoint (optional)",
+          "type": "string"
+        },
+        "projectName": {
+          "description": "Project name (optional)",
+          "type": "string"
+        },
+        "type": {
+          "description": "Management type (local/remote)",
+          "type": "string",
+          "enum": [
+            "local",
+            "remote"
+          ]
         }
       }
     },
@@ -3412,6 +4192,64 @@
         }
       }
     },
+    "v1NetworkConfig": {
+      "type": "object",
+      "properties": {
+        "caCerts": {
+          "description": "List of CA certificates (optional)",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "x-omitempty": true
+        },
+        "httpProxy": {
+          "type": "string"
+        },
+        "httpsProxy": {
+          "type": "string"
+        },
+        "interfaces": {
+          "description": "Mapping of interface names to their configuration",
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/definitions/v1NetworkInterface"
+          }
+        },
+        "noProxy": {
+          "type": "string"
+        }
+      }
+    },
+    "v1NetworkInterface": {
+      "type": "object",
+      "required": [
+        "type"
+      ],
+      "properties": {
+        "gateway": {
+          "type": "string"
+        },
+        "ipAddress": {
+          "type": "string"
+        },
+        "nameserver": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "x-omitempty": true
+        },
+        "type": {
+          "description": "Type of network interface (e.g., static, dhcp)",
+          "type": "string",
+          "enum": [
+            "static",
+            "dhcp"
+          ]
+        }
+      }
+    },
     "v1Nic": {
       "description": "Nic is the specification of the network interface card on the edge host.",
       "type": "object",
@@ -3444,6 +4282,38 @@
     },
     "v1NoContent": {
       "description": "No Content"
+    },
+    "v1NodeInfo": {
+      "type": "object",
+      "properties": {
+        "age": {
+          "type": "string"
+        },
+        "architecture": {
+          "type": "string"
+        },
+        "conditions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/v1Condition"
+          }
+        },
+        "health": {
+          "$ref": "#/definitions/v1Health"
+        },
+        "ipv4": {
+          "type": "string"
+        },
+        "k8sVersion": {
+          "type": "string"
+        },
+        "nodeName": {
+          "type": "string"
+        },
+        "nodeState": {
+          "type": "string"
+        }
+      }
     },
     "v1NodeRole": {
       "type": "string",
@@ -3749,6 +4619,41 @@
         }
       }
     },
+    "v1RegistryCredentials": {
+      "type": "object",
+      "properties": {
+        "certificates": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "domain": {
+          "description": "Registry domain (optional)",
+          "type": "string"
+        },
+        "encodedPassword": {
+          "description": "Whether the password is encoded (optional, defaults to false)",
+          "type": "boolean"
+        },
+        "insecure": {
+          "description": "Whether to allow insecure registry connections (optional)",
+          "type": "boolean"
+        },
+        "password": {
+          "description": "Registry password (**masked in response**)",
+          "type": "string"
+        },
+        "repositoryName": {
+          "description": "Repository name (optional)",
+          "type": "string"
+        },
+        "username": {
+          "description": "Username for registry access (optional)",
+          "type": "string"
+        }
+      }
+    },
     "v1RelatedObject": {
       "description": "The object for which the event is related",
       "type": "object",
@@ -3871,6 +4776,37 @@
             "RollingUpdateScaleOut",
             "RollingUpdateScaleIn"
           ]
+        }
+      }
+    },
+    "v1UploadedContentDetails": {
+      "type": "object",
+      "properties": {
+        "fileName": {
+          "description": "Name of last uploaded content archive file",
+          "type": "string"
+        },
+        "sha256Hash": {
+          "description": "Hash of last uploaded content archive file",
+          "type": "string"
+        },
+        "sizeInBytes": {
+          "description": "Size of last uploaded content archive file in bytes",
+          "type": "integer"
+        },
+        "sizeInGiB": {
+          "description": "Size of last uploaded content archive file in GiB",
+          "type": "number",
+          "format": "float"
+        },
+        "sizeInMiB": {
+          "description": "Size of last uploaded content archive file in MiB",
+          "type": "number",
+          "format": "float"
+        },
+        "uploadDateTime": {
+          "type": "string",
+          "format": "date-time"
         }
       }
     },

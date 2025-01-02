@@ -22,43 +22,45 @@ introducing you with Palette workflows and capabilities.
 In this section, you learn how to create a cluster profile. Then, you deploy a cluster to AWS by using Palette. Once
 your cluster is deployed, you can update it using cluster profile updates.
 
+<!-- vale off -->
+
 <SimpleCardGrid
   cards={[
     {
       title: "Set up Palette with AWS",
       description: "Set up the prerequisites of using Palette with AWS.",
       buttonText: "Learn more",
-      relativeURL: "./setup",
+      url: "/getting-started/aws/setup",
     },
     {
       title: "Create a Cluster Profile",
       description: "Create a full cluster profile in Palette.",
       buttonText: "Learn more",
-      relativeURL: "./create-cluster-profile",
+      url: "/getting-started/aws/create-cluster-profile",
     },
     {
       title: "Deploy a Cluster",
       description: "Deploy a Palette host cluster to AWS.",
       buttonText: "Learn more",
-      relativeURL: "./deploy-k8s-cluster",
+      url: "/getting-started/aws/deploy-k8s-cluster",
     },
     {
       title: "Deploy Cluster Profile Updates",
       description: "Update your deployed clusters using Palette Cluster Profiles.",
       buttonText: "Learn more",
-      relativeURL: "./update-k8s-cluster",
+      url: "/getting-started/aws/update-k8s-cluster",
     },
     {
       title: "Cluster Management with Terraform",
       description: "Deploy and update a Palette host cluster with Terraform.",
       buttonText: "Learn more",
-      relativeURL: "./deploy-manage-k8s-cluster-tf",
+      url: "/getting-started/aws/deploy-manage-k8s-cluster-tf",
     },
     {
       title: "Scale, Upgrade, and Secure Clusters",
       description: "Learn how to scale, upgrade, and secure Palette host clusters deployed to AWS.",
       buttonText: "Learn more",
-      relativeURL: "./scale-secure-cluster",
+      url: "/getting-started/aws/scale-secure-cluster",
     },
   ]}
 />

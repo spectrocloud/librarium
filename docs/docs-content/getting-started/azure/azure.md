@@ -22,43 +22,45 @@ approach, while introducing you with Palette workflows and capabilities.
 In this section, you learn how to create a cluster profile. Then, you deploy a cluster to Azure by using Palette. Once
 your cluster is deployed, you can update it using cluster profile updates.
 
+<!-- vale off -->
+
 <SimpleCardGrid
   cards={[
     {
       title: "Set up Palette with Azure",
       description: "Set up the prerequisites of using Palette with Azure.",
       buttonText: "Learn more",
-      relativeURL: "./setup",
+      url: "/getting-started/azure/setup",
     },
     {
       title: "Create a Cluster Profile",
       description: "Create a full cluster profile in Palette.",
       buttonText: "Learn more",
-      relativeURL: "./create-cluster-profile",
+      url: "/getting-started/azure/create-cluster-profile",
     },
     {
       title: "Deploy a Cluster",
       description: "Deploy a Palette host cluster to Azure.",
       buttonText: "Learn more",
-      relativeURL: "./deploy-k8s-cluster",
+      url: "/getting-started/azure/deploy-k8s-cluster",
     },
     {
       title: "Deploy Cluster Profile Updates",
       description: "Update your deployed clusters using Palette Cluster Profiles.",
       buttonText: "Learn more",
-      relativeURL: "./update-k8s-cluster",
+      url: "/getting-started/azure/update-k8s-cluster",
     },
     {
       title: "Cluster Management with Terraform",
       description: "Deploy and update a Palette host cluster with Terraform.",
       buttonText: "Learn more",
-      relativeURL: "./deploy-manage-k8s-cluster-tf",
+      url: "/getting-started/azure/deploy-manage-k8s-cluster-tf",
     },
     {
       title: "Scale, Upgrade, and Secure Clusters",
       description: "Learn how to scale, upgrade, and secure Palette host clusters deployed to Azure.",
       buttonText: "Learn more",
-      relativeURL: "./scale-secure-cluster",
+      url: "/getting-started/azure/scale-secure-cluster",
     },
   ]}
 />

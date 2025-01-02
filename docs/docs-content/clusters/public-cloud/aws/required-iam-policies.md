@@ -43,7 +43,7 @@ The four core IAM policies are required for Palette to operate.
 
 <Tabs queryString="iam-policies">
 
-<TabItem label="Controllers Policy" value="Controllers Policy">
+<TabItem label="Controller Policy" value="Controller Policy">
 
 **Last Update**: April 20, 2023
 
@@ -343,6 +343,7 @@ The four core IAM policies are required for Palette to operate.
         "ec2:DescribeTags",
         "ec2:DescribeVolumesModifications",
         "ec2:DescribeKeyPairs",
+        "ec2:DeleteNetworkInterface",
         "iam:AttachGroupPolicy",
         "iam:CreatePolicy",
         "iam:CreatePolicyVersion",

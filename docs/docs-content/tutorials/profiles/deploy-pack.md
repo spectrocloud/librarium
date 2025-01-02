@@ -230,6 +230,10 @@ Review each of the following five files in the **hello-universe-pack** folder.
   ```json
   {
     "addonType": "app services",
+    "annotations": {
+      "source": "community",
+      "contributor": "spectrocloud",
+    }
     "cloudTypes": ["all"],
     "displayName": "Hello Universe",
     "kubeManifests": ["manifests/hello-universe.yaml"],
@@ -310,34 +314,19 @@ you want to use.
 
 <Tabs groupId="registry-server">
 
-<TabItem label="Spectro Registry" value="Spectro_Registry">
+<TabItem label="Basic" value="Basic_Registry">
 
-Start the registry server by issuing the following command from the tutorial container bash session initialized in the
-[Set Up the Tutorial Environment](#set-up-the-tutorial-environment) section.
+Once you have an active Harbor registry server, access its domain on your web browser and log in using your Harbor
+credentials. If you have kept the default credentials, the username and password are **admin** and **Harbor12345**,
+respectively.
 
-```bash
-registry serve /etc/spectro/config.yml > /var/log/registry.log 2>&1 &
-```
+![Screenshot of Harbor login](/tutorials/deploy-pack/registries-and-packs_deploy-pack_harbor-login.webp)
 
-The registry server starts in HTTP mode. If you want to deploy an HTTPS registry server, refer to the
-[Add a Custom Registry](../../registries-and-packs/adding-a-custom-registry.md) guide.
+In the **Projects** section, click on **New Project**. A project in Harbor contains all repositories of an application.
+This tutorial uses **spectro-oci-registry** as the project name. Keep the default settings for the remaining
+configuration options and proceed by clicking **OK**.
 
-Next, make the registry server accessible to the public using [Ngrok](https://ngrok.com/) reverse proxy so that you can
-configure it later in Palette. Execute the command below to expose the registry server listening on port 5000 via an
-HTTP tunnel.
-
-```bash
-ngrok http 5000 --log-level debug
-```
-
-This command reserves the current bash session and displays the status of each HTTP request made to the Ngrok server.
-The image below shows the registry server successfully exposed via Ngrok.
-
-![Screenshot of registry server exposed via ngrok](/tutorials/deploy-pack/registries-and-packs_deploy-pack_ngrok-start.webp)
-
-Check if the registry server is accessible from outside the tutorial container by visiting the `/health` endpoint. Open
-your browser and go to `https://Your-URL-Here/health`, replacing the base URL with the Ngrok URL output. You should get
-a `{"status":"UP"}` response.
+![Screenshot of Harbor project](/tutorials/deploy-pack/registries-and-packs_deploy-pack_harbor-project.webp)
 
 </TabItem>
 
@@ -401,19 +390,34 @@ Registry.
 
 </TabItem>
 
-<TabItem label="Basic" value="Basic_Registry">
+<TabItem label="Spectro Registry" value="Spectro_Registry">
 
-Once you have an active Harbor registry server, access its domain on your web browser and log in using your Harbor
-credentials. If you have kept the default credentials, the username and password are **admin** and **Harbor12345**,
-respectively.
+Start the registry server by issuing the following command from the tutorial container bash session initialized in the
+[Set Up the Tutorial Environment](#set-up-the-tutorial-environment) section.
 
-![Screenshot of Harbor login](/tutorials/deploy-pack/registries-and-packs_deploy-pack_harbor-login.webp)
+```bash
+registry serve /etc/spectro/config.yml > /var/log/registry.log 2>&1 &
+```
 
-In the **Projects** section, click on **New Project**. A project in Harbor contains all repositories of an application.
-This tutorial uses **spectro-oci-registry** as the project name. Keep the default settings for the remaining
-configuration options and proceed by clicking **OK**.
+The registry server starts in HTTP mode. If you want to deploy an HTTPS registry server, refer to the
+[Add a Custom Registry](../../registries-and-packs/adding-a-custom-registry.md) guide.
 
-![Screenshot of Harbor project](/tutorials/deploy-pack/registries-and-packs_deploy-pack_harbor-project.webp)
+Next, make the registry server accessible to the public using [Ngrok](https://ngrok.com/) reverse proxy so that you can
+configure it later in Palette. Execute the command below to expose the registry server listening on port 5000 via an
+HTTP tunnel.
+
+```bash
+ngrok http 5000 --log-level debug
+```
+
+This command reserves the current bash session and displays the status of each HTTP request made to the Ngrok server.
+The image below shows the registry server successfully exposed via Ngrok.
+
+![Screenshot of registry server exposed via ngrok](/tutorials/deploy-pack/registries-and-packs_deploy-pack_ngrok-start.webp)
+
+Check if the registry server is accessible from outside the tutorial container by visiting the `/health` endpoint. Open
+your browser and go to `https://Your-URL-Here/health`, replacing the base URL with the Ngrok URL output. You should get
+a `{"status":"UP"}` response.
 
 </TabItem>
 
@@ -422,6 +426,66 @@ configuration options and proceed by clicking **OK**.
 ### Log in to the Registry Server
 
 <Tabs groupId="registry-server">
+
+<TabItem label="Basic" value="Basic_Registry">
+
+After creating the projects, proceed with the Harbor authentication. In the tutorial container bash session, export the
+`HARBOR_ADDRESS` variable, which will store your Harbor address. Do not include the "https://" prefix.
+
+```bash
+export HARBOR_ADDRESS=<Your_Harbor_Address>
+```
+
+Now, issue the command `oras login`. [ORAS](https://oras.land/docs/) is a CLI tool to push and pull OCI artifacts to and
+from OCI registries.
+
+:::warning
+
+If you are not using the tutorial container, ensure you have ORAS version `1.0.0` installed. This version is explicitly
+required for pushing packs to OCI registries.
+
+:::
+
+```bash
+oras login $HARBOR_ADDRESS
+```
+
+You will be prompted for your Harbor username and password. If the login is successful, you will receive the following
+confirmation message.
+
+```hideClipboard
+Username: admin
+Password:
+Login Succeeded
+```
+
+</TabItem>
+
+<TabItem label="ECR" value="ECR_Registry">
+
+After you have created the repositories, authenticate to your ECR registry using the `aws ecr get-login-password`
+command. The ECR authorization token is then passed to the `oras login` command with **AWS** as username and the
+registry Uniform Resource Identifier (URI). [ORAS](https://oras.land/docs/) is a CLI tool to push and pull OCI artifacts
+to and from OCI registries.
+
+:::warning
+
+If you are not using the tutorial container, ensure you have ORAS version `1.0.0` installed. This version is explicitly
+required for pushing packs to OCI registries.
+
+:::
+
+```bash
+aws ecr get-login-password --region $AWS_DEFAULT_REGION | oras login --username AWS --password-stdin $ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
+```
+
+If the login is successful, you will receive the following confirmation message.
+
+```hideClipboard
+Login Succeeded
+```
+
+</TabItem>
 
 <TabItem label="Spectro Registry" value="Spectro_Registry">
 
@@ -475,148 +539,11 @@ Login Succeeded
 
 </TabItem>
 
-<TabItem label="ECR" value="ECR_Registry">
-
-After you have created the repositories, authenticate to your ECR registry using the `aws ecr get-login-password`
-command. The ECR authorization token is then passed to the `oras login` command with **AWS** as username and the
-registry Uniform Resource Identifier (URI). [ORAS](https://oras.land/docs/) is a CLI tool to push and pull OCI artifacts
-to and from OCI registries.
-
-:::warning
-
-If you are not using the tutorial container, ensure you have ORAS version `1.0.0` installed. This version is explicitly
-required for pushing packs to OCI registries.
-
-:::
-
-```bash
-aws ecr get-login-password --region $AWS_DEFAULT_REGION | oras login --username AWS --password-stdin $ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
-```
-
-If the login is successful, you will receive the following confirmation message.
-
-```hideClipboard
-Login Succeeded
-```
-
-</TabItem>
-
-<TabItem label="Basic" value="Basic_Registry">
-
-After creating the projects, proceed with the Harbor authentication. In the tutorial container bash session, export the
-`HARBOR_ADDRESS` variable, which will store your Harbor address. Do not include the "https://" prefix.
-
-```bash
-export HARBOR_ADDRESS=<Your_Harbor_Address>
-```
-
-Now, issue the command `oras login`. [ORAS](https://oras.land/docs/) is a CLI tool to push and pull OCI artifacts to and
-from OCI registries.
-
-:::warning
-
-If you are not using the tutorial container, ensure you have ORAS version `1.0.0` installed. This version is explicitly
-required for pushing packs to OCI registries.
-
-:::
-
-```bash
-oras login $HARBOR_ADDRESS
-```
-
-You will be prompted for your Harbor username and password. If the login is successful, you will receive the following
-confirmation message.
-
-```hideClipboard
-Username: admin
-Password:
-Login Succeeded
-```
-
-</TabItem>
-
 </Tabs>
 
 ### Push the Pack to the Registry Server
 
 <Tabs groupId="registry-server">
-
-<TabItem label="Spectro Registry" value="Spectro_Registry">
-
-Once you are logged in, push the pack to the registry server using the following command.
-
-```bash
-spectro pack push /packs/hello-universe-pack/
-```
-
-To confirm that the pack is now in the registry, use the `ls` command. This command lists all packs available in the
-registry.
-
-```bash
-spectro pack ls
-```
-
-Check if the pushed pack is listed, as shown in the image below.
-
-![Screenshot of spectro pack ls](/tutorials/deploy-pack/registries-and-packs_deploy-pack_pack-push.webp)
-
-For assistance with Spectro CLI commands, refer to the
-[Spectro CLI Commands](../../registries-and-packs/spectro-cli-reference.md#commands) guide.
-
-</TabItem>
-
-<TabItem label="ECR" value="ECR_Registry">
-
-Once you are authenticated to your ECR registry, navigate to the **packs** directory, which contains the pack folder,
-**hello-universe-pack**.
-
-```bash
-cd /packs
-```
-
-Before pushing the pack to the registry, compress the contents of the pack folder into an archive file. Issue the
-command below to create the archive file.
-
-```bash
-tar -czvf $NAME-$VERSION.tar.gz hello-universe-pack
-```
-
-Now, proceed to push the **Hello Universe** pack to the ECR registry.
-
-```bash
-oras push $ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$REGISTRY_NAME/spectro-packs/archive/$NAME:$VERSION $NAME-$VERSION.tar.gz
-```
-
-You can use the `aws ecr describe-images` command to check if the pushed pack is listed in your ECR repository.
-
-```bash
-aws ecr describe-images --repository-name $REGISTRY_NAME/spectro-packs/archive/$NAME --region $AWS_DEFAULT_REGION
-```
-
-The snippet below displays the output of the `aws ecr describe-images` command, confirming the presence of the Hello
-Universe pack in the repository.
-
-```plainText {5-8} hideClipboard
-{
-    "imageDetails": [
-        {
-            "registryId": "<YourRegistryId>
-            "repositoryName": "spectro-oci-registry/spectro-packs/archive/hellouniverse",
-            "imageDigest": "sha256:<YourImageSha>",
-            "imageTags": [
-                "1.0.0"
-	        ],
-            "imageSizeInBytes": 19059,
-            "imagePushedAt": "2023-11-06T11:19:48+00:00",
-            "imageManifestMediaType": "application/vnd.oci.image.manifest.v1+json",
-            "artifactMediaType": "application/vnd.unknown.config.v1+json",
-            "lastRecordedPullTime": "2023-11-17T00:00:48.649000+00:00"
-		    }
-	  ]
-}
-```
-
-</TabItem>
 
 <TabItem label="Basic" value="Basic_Registry">
 
@@ -675,45 +602,119 @@ in the image below.
 
 </TabItem>
 
+<TabItem label="ECR" value="ECR_Registry">
+
+Once you are authenticated to your ECR registry, navigate to the **packs** directory, which contains the pack folder,
+**hello-universe-pack**.
+
+```bash
+cd /packs
+```
+
+Before pushing the pack to the registry, compress the contents of the pack folder into an archive file. Issue the
+command below to create the archive file.
+
+```bash
+tar -czvf $NAME-$VERSION.tar.gz hello-universe-pack
+```
+
+Now, proceed to push the **Hello Universe** pack to the ECR registry.
+
+```bash
+oras push $ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$REGISTRY_NAME/spectro-packs/archive/$NAME:$VERSION $NAME-$VERSION.tar.gz
+```
+
+You can use the `aws ecr describe-images` command to check if the pushed pack is listed in your ECR repository.
+
+```bash
+aws ecr describe-images --repository-name $REGISTRY_NAME/spectro-packs/archive/$NAME --region $AWS_DEFAULT_REGION
+```
+
+The snippet below displays the output of the `aws ecr describe-images` command, confirming the presence of the Hello
+Universe pack in the repository.
+
+```plainText {5-8} hideClipboard
+{
+    "imageDetails": [
+        {
+            "registryId": "<YourRegistryId>
+            "repositoryName": "spectro-oci-registry/spectro-packs/archive/hellouniverse",
+            "imageDigest": "sha256:<YourImageSha>",
+            "imageTags": [
+                "1.0.0"
+	        ],
+            "imageSizeInBytes": 19059,
+            "imagePushedAt": "2023-11-06T11:19:48+00:00",
+            "imageManifestMediaType": "application/vnd.oci.image.manifest.v1+json",
+            "artifactMediaType": "application/vnd.unknown.config.v1+json",
+            "lastRecordedPullTime": "2023-11-17T00:00:48.649000+00:00"
+		    }
+	  ]
+}
+```
+
+</TabItem>
+
+<TabItem label="Spectro Registry" value="Spectro_Registry">
+
+Once you are logged in, push the pack to the registry server using the following command.
+
+```bash
+spectro pack push /packs/hello-universe-pack/
+```
+
+To confirm that the pack is now in the registry, use the `ls` command. This command lists all packs available in the
+registry.
+
+```bash
+spectro pack ls
+```
+
+Check if the pushed pack is listed, as shown in the image below.
+
+![Screenshot of spectro pack ls](/tutorials/deploy-pack/registries-and-packs_deploy-pack_pack-push.webp)
+
+For assistance with Spectro CLI commands, refer to the
+[Spectro CLI Commands](../../registries-and-packs/spectro-cli-reference.md#commands) guide.
+
+</TabItem>
+
 </Tabs>
 
 ### Configure the Registry Server in Palette
 
 <Tabs groupId="registry-server">
 
-<TabItem label="Spectro Registry" value="Spectro_Registry">
+<TabItem label="Basic" value="Basic_Registry">
 
-After pushing the pack to the registry server, follow the next steps to log in to Palette and add the registry server to
+After pushing the pack to the Harbor registry, follow the next steps to log in to Palette and add the Harbor registry to
 it.
 
 Log in to [Palette](https://console.spectrocloud.com) and switch to the **Tenant Admin** view.
 
 ![Screenshot of Palette tenant settings.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_tenant-admin.webp)
 
-Navigate to the **Tenant Settings** > **Registries** > **Pack Registries** section and click on **Add New Pack
-Registry**. Palette will open a pop-up window prompting you for the required fields to configure a custom pack registry.
+Navigate to the **Tenant Settings** > **Registries** > **OCI Registries** section and click on **Add New OCI Registry**.
+Palette will open a pop-up window prompting you for the required fields to configure an OCI registry.
 
-![A screenshot highlighting the fields to configure a custom pack registry. ](/tutorials/deploy-pack/registries-and-packs_adding-a-custom-registry-tls_certificate.webp)
+![A screenshot highlighting the fields to configure an OCI registry.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_basic-oci-registry.webp)
 
-Provide the pack registry name, endpoint, and user credentials in the pop-up window. For consistency, we suggest using
-the registry name **spectro-pack-registry**. Use your Ngrok URL as the pack registry endpoint. Ensure to add "https://"
-as the prefix in the pack registry endpoint. Set both the username and password as **admin**.
+Provide the registry name. For consistency, we suggest using the registry name **harbor-registry**. Choose **Pack** as
+the provider and select **Basic** as the OCI authentication type. Complete the **Endpoint** field with your Harbor
+registry address. Ensure to include "https://" as the prefix.
 
-In the **TLS Configuration** section, select the **Insecure Skip TLS Verify** checkbox. This tutorial does not establish
-a secure HTTPS connection between Palette and your pack registry server. Therefore, you can skip the TLS verification.
-Instead, this tutorial uses an unencrypted HTTP connection. However, in a production environment, you can upload your
-certificate in the **TLS Configuration** section if you need Palette to establish a secure HTTPS connection while
-communicating with the pack registry server.
+Next, set the base content path as **spectro-oci-registry**, which corresponds to your Harbor project name. Then, enter
+your Harbor credentials in the **Username** and **Password** fields.
 
-Click on **Validate** to ensure the provided URL and credentials are correct, then click on **Confirm** to finish the
-registry server configuration.
+Last, click on **Validate** to ensure the provided URL and credentials are correct. After validation, click on
+**Confirm** to complete the Harbor registry configuration.
 
-![Screenshot of registry server edit option in Palette tenant settings.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_registry-edit.webp)
+![Screenshot of OCI registry fields in Palette tenant settings.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_basic-oci-registry-edit.webp)
 
-Palette automatically syncs the registry server. However, you can sync it manually by clicking the **three-dot Menu**
-next to the registry server name and selecting **Sync**.
+Palette automatically syncs the registry. However, you can sync it manually by clicking the **three-dot Menu** next to
+the registry name and selecting **Sync**.
 
-![Screenshot of registry server sync in Palette](/tutorials/deploy-pack/registries-and-packs_deploy-pack_registry-sync.webp)
+![Screenshot of OCI registry sync in Palette](/tutorials/deploy-pack/registries-and-packs_deploy-pack_basic-oci-registry-sync.webp)
 
 </TabItem>
 
@@ -750,36 +751,39 @@ the registry name and selecting **Sync**.
 
 </TabItem>
 
-<TabItem label="Basic" value="Basic_Registry">
+<TabItem label="Spectro Registry" value="Spectro_Registry">
 
-After pushing the pack to the Harbor registry, follow the next steps to log in to Palette and add the Harbor registry to
+After pushing the pack to the registry server, follow the next steps to log in to Palette and add the registry server to
 it.
 
 Log in to [Palette](https://console.spectrocloud.com) and switch to the **Tenant Admin** view.
 
 ![Screenshot of Palette tenant settings.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_tenant-admin.webp)
 
-Navigate to the **Tenant Settings** > **Registries** > **OCI Registries** section and click on **Add New OCI Registry**.
-Palette will open a pop-up window prompting you for the required fields to configure an OCI registry.
+Navigate to the **Tenant Settings** > **Registries** > **Pack Registries** section and click on **Add New Pack
+Registry**. Palette will open a pop-up window prompting you for the required fields to configure a custom pack registry.
 
-![A screenshot highlighting the fields to configure an OCI registry.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_basic-oci-registry.webp)
+![A screenshot highlighting the fields to configure a custom pack registry. ](/tutorials/deploy-pack/registries-and-packs_adding-a-custom-registry-tls_certificate.webp)
 
-Provide the registry name. For consistency, we suggest using the registry name **harbor-registry**. Choose **Pack** as
-the provider and select **Basic** as the OCI authentication type. Complete the **Endpoint** field with your Harbor
-registry address. Ensure to include "https://" as the prefix.
+Provide the pack registry name, endpoint, and user credentials in the pop-up window. For consistency, we suggest using
+the registry name **spectro-pack-registry**. Use your Ngrok URL as the pack registry endpoint. Ensure to add "https://"
+as the prefix in the pack registry endpoint. Set both the username and password as **admin**.
 
-Next, set the base content path as **spectro-oci-registry**, which corresponds to your Harbor project name. Then, enter
-your Harbor credentials in the **Username** and **Password** fields.
+In the **TLS Configuration** section, select the **Insecure Skip TLS Verify** checkbox. This tutorial does not establish
+a secure HTTPS connection between Palette and your pack registry server. Therefore, you can skip the TLS verification.
+Instead, this tutorial uses an unencrypted HTTP connection. However, in a production environment, you can upload your
+certificate in the **TLS Configuration** section if you need Palette to establish a secure HTTPS connection while
+communicating with the pack registry server.
 
-Last, click on **Validate** to ensure the provided URL and credentials are correct. After validation, click on
-**Confirm** to complete the Harbor registry configuration.
+Click on **Validate** to ensure the provided URL and credentials are correct, then click on **Confirm** to finish the
+registry server configuration.
 
-![Screenshot of OCI registry fields in Palette tenant settings.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_basic-oci-registry-edit.webp)
+![Screenshot of registry server edit option in Palette tenant settings.](/tutorials/deploy-pack/registries-and-packs_deploy-pack_registry-edit.webp)
 
-Palette automatically syncs the registry. However, you can sync it manually by clicking the **three-dot Menu** next to
-the registry name and selecting **Sync**.
+Palette automatically syncs the registry server. However, you can sync it manually by clicking the **three-dot Menu**
+next to the registry server name and selecting **Sync**.
 
-![Screenshot of OCI registry sync in Palette](/tutorials/deploy-pack/registries-and-packs_deploy-pack_basic-oci-registry-sync.webp)
+![Screenshot of registry server sync in Palette](/tutorials/deploy-pack/registries-and-packs_deploy-pack_registry-sync.webp)
 
 </TabItem>
 

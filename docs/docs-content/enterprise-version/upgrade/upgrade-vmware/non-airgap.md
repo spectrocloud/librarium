@@ -16,7 +16,7 @@ version available. Refer to the [Supported Upgrade Paths](../upgrade.md#supporte
 
 If you are upgrading from a Palette version that is older than 4.4.14, ensure that you have executed the utility script
 to make the CNS mapping unique for the associated PVC. For more information, refer to the
-[Troubleshooting guide](../../../troubleshooting/enterprise-install.md#non-unique-vsphere-cns-mapping).
+[Troubleshooting guide](../../../troubleshooting/enterprise-install.md#scenario---non-unique-vsphere-cns-mapping).
 
 :::
 
@@ -28,6 +28,9 @@ Palette upgrade.
 
 - Access to the Palette system console.
 - A diff or text comparison tool of your choice.
+- The Kubernetes cluster must be set up on a version of Kubernetes that is compatible to your upgraded version. Refer to
+  the [Kubernetes Requirements](../../install-palette/install-palette.md#kubernetes-requirements) section to find the
+  version required for your Palette installation.
 
 ## Upgrade
 

@@ -4,7 +4,7 @@ title: "User Authentication"
 description: "Learn about User Interface authentication method in Palette."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 10
+sidebar_position: 20
 tags: ["user-management", "authentication", "user-interface"]
 ---
 
@@ -18,29 +18,25 @@ identity provider, such as GitHub or Google.
 
 ## Account Sign Up
 
-You can sign up for a Palette SaaS account by visiting [Palette](https://console.spectrocloud.com) or an Enterprise
-Palette account under your organization by using your organization's custom Palette URL.
-
-When you create an account, you can create a username and password or create the account through a third-party identity
-provider, GitHub, Google, or other OIDC providers that are enabled for your organization. For Palette SaaS, GitHub and
-Google are automatically enabled for SSO integration.
+To sign up for a Palette account, ask you Palette tenant administrator to send you an invitation email. Check out the
+[Create and Manage a User](../users-and-teams/create-user.md) guide for more information.
 
 ## Sign In Flow
 
-Starting with Palette 3.2, the user sign-in flow can be different depending on how you created your Palette account. If
-you created your user with a username and password, then you may be prompted to select the organization you wish to log
-in to. If you are a member of a single organization, then you will not be prompted for an organization selection.
+If you created your user with a username and password, then you may be prompted to select the tenant you wish to log in
+to. If you are a member of a single tenant, then you will not be prompted for a tenant selection.
 
-If you created an account through SSO and are a member of different organizations, then you must first select the
-organization name you wish to log in to. Click on the **Sign in to your organization** button for the option to specify
-the organization name. If you need help remembering the organization name, click on the **Forgot your organization
-name?** button and provide your email address to receive an email containing your organization name and its login URL.
-
-<br />
+If you created an account through SSO and are a member of different tenant, then you must first select the tenant name
+you wish to log in to. Click on the **Sign in to your tenant** button for the option to specify the tenant name.
 
 :::info
 
-If you are a Palette Enterprise user, use the custom Palette URL for an optimized login experience and avoid specifying
-the organization name. Ask your Palette system administrator for the custom Palette URL.
+If you are a self-hosted Palette user, use the custom Palette URL for an optimized login experience and avoid specifying
+the tenant name. Ask your Palette system administrator for the custom Palette URL.
 
 :::
+
+## Switch Tenant
+
+If you are a member of multiple tenants, you can switch between tenants in Palette without logging out. Check out the
+[Switch Tenant](./switch-tenant.md) guide for more information.

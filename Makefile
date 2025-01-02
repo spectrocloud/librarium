@@ -15,7 +15,12 @@ ALOGLIA_CONFIG=$(shell cat docsearch.dev.config.json | jq -r tostring)
 # Find all *.md files in docs, cut the prefix ./ 
 # Remove all security-bulletins and cve-reports.md because they are rate limited by nvd.nist.gov
 # Remove oss-licenses.md because they are rate limited by npmjs.com
-VERIFY_URL_PATHS=$(shell find ./docs -name "*.md" | cut -c 3- | sed '/security-bulletins/d' | sed '/cve-reports/d' | sed '/oss-licenses/d')
+# Remove all /deprecated paths because we don't want to maintain their links
+VERIFY_URL_PATHS=$(shell find ./docs -name "*.md" | cut -c 3- | \
+	sed '/security-bulletins/d' | \
+	sed '/cve-reports/d' | \
+	sed '/oss-licenses/d' | \
+	sed '/deprecated/d' )
 
 RATE_LIMITED_FILES_LIST:="docs/docs-content/security-bulletins/**/*.md" \
 	"docs/docs-content/security-bulletins/*.md" \
@@ -32,7 +37,7 @@ initialize: ## Initialize the repository dependencies
 	npx husky-init
 	vale sync
 
-clean: ## Clean common artifacts
+clean: clean-security ## Clean common artifacts
 	npm run clear && npm run clean-api-docs
 	rm -rfv build
 
@@ -54,6 +59,11 @@ clean-versions: ## Clean Docusarus content versions
 clean-packs: ## Clean supplemental packs and pack images
 	rm -rf static/img/packs
 	rm -rf .docusaurus/packs-integrations/api_pack_response.json
+	rm -rf .docusaurus/packs-integrations/api_repositories_response.json
+
+clean-security: ## Clean security bulletins
+	rm -rf .docusaurus/security-bulletins/default/*.json
+	rm -rfv docs/docs-content/security-bulletins/reports/*.md 
 
 clean-api: ## Clean API docs
 	@echo "cleaning api docs"
@@ -79,13 +89,55 @@ init: ## Initialize npm dependencies
 
 start: ## Start a local development server
 	make generate-partials
+	npm run cves
 	npm run start
+
+start-cached-packs: ## Start a local development server with cached packs retry.
+	make generate-partials
+	@{ \
+		npm run start; \
+		exit_code=$$?; \
+		if [ "$$exit_code" = "5" ]; then \
+			echo "❌ Start has failed due to missing packs data..."; \
+			echo "ℹ️ Initializing fetch cached packs data..."; \
+			make get-cached-packs; \
+			echo "ℹ️ Retrying start... "; \
+			npm run start;\
+		fi; \
+	}
 
 build: ## Run npm build
 	@echo "building site"
 	npm run clear
 	rm -rf build
 	npm run build
+
+build-cached-packs: ## Run npm build with cached packs retry
+	@echo "building site"
+	npm run clear
+	rm -rf build
+	@{ \
+		npm run build; \
+		exit_code=$$?; \
+		if [ "$$exit_code" = "5" ]; then \
+			echo "❌ Build has failed due to missing packs data..."; \
+			echo "ℹ️ Initializing fetch cached packs data..."; \
+			make get-cached-packs; \
+			echo "ℹ️ Retrying build... "; \
+			npm run build;\
+		fi; \
+	}
+
+build-ci: ## Run npm build in CI environment
+	@echo "building site"
+	npm run clear
+	rm -rf build
+	@{ \
+		npm run build; \
+		exit_code=$$?; \
+		echo "Build exited with code $$exit_code..."; \
+		echo "BUILD_EXIT_CODE=$$exit_code" >> $(GITHUB_ENV); \
+	}
 
 versions: ## Create Docusarus content versions
 	@echo "creating versions"
@@ -103,7 +155,7 @@ api: ## Generate API docs
 	npm run generate-api-docs
 
 test: ## Run Jest tests
-	npm test
+	npm test -- --no-cache
 
 test-visuals: ## Run visual regression tests
 	npx playwright test visuals/
@@ -230,6 +282,11 @@ find-unused-images:
 
 generate-partials: ## Generate
 	./scripts/generate-partials.sh
+
+###@ Fetch cached packs assets.
+
+get-cached-packs:
+	./scripts/get-cached-packs.sh
 	
 ###@ Aloglia Indexing
 

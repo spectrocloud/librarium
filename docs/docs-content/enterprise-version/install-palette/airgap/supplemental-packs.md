@@ -11,31 +11,28 @@ keywords: ["self-hosted", "enterprise"]
 
 Review the following table to determine which pack binaries you need to download and upload to your OCI registry.
 
-| **File Name**                                                  | **Download URL**                                                                                                    |
-| -------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| `airgap-pack-byoi-agent-mode-1.0.0.bin`                        | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-byoi-agent-mode-1.0.0.bin                        |
-| `airgap-pack-csi-rook-ceph-helm-1.14.9.bin`                    | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-rook-ceph-helm-1.14.9.bin                    |
-| `airgap-pack-csi-rook-ceph-helm-addon-1.14.9.bin`              | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-rook-ceph-helm-addon-1.14.9.bin              |
-| `airgap-pack-custom-cni-1.0.0.bin`                             | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-custom-cni-1.0.0.bin                             |
-| `airgap-pack-custom-csi-1.0.0.bin`                             | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-custom-csi-1.0.0.bin                             |
-| `airgap-pack-edge-k3s-1.28.14.bin`                             | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.28.14.bin                             |
-| `airgap-pack-edge-k3s-1.29.9.bin`                              | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.29.9.bin                              |
-| `airgap-pack-edge-k3s-1.30.5.bin`                              | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.30.5.bin                              |
-| `airgap-pack-edge-k8s-1.28.14.bin`                             | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.28.14.bin                             |
-| `airgap-pack-edge-k8s-1.29.9.bin`                              | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.29.9.bin                              |
-| `airgap-pack-edge-k8s-1.30.5.bin`                              | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.30.5.bin                              |
-| `airgap-pack-edge-rke2-1.28.13.bin`                            | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.28.13.bin                            |
-| `airgap-pack-edge-rke2-1.29.8.bin`                             | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.29.8.bin                             |
-| `airgap-pack-edge-rke2-1.30.4.bin`                             | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.30.4.bin                             |
-| `airgap-pack-kubernetes-1.28.14.bin`                           | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.28.14.bin                           |
-| `airgap-pack-kubernetes-1.29.9.bin`                            | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.29.9.bin                            |
-| `airgap-pack-kubernetes-1.30.5.bin`                            | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.30.5.bin                            |
-| `airgap-pack-kubernetes-rke2-1.28.13-rke2r1-build20240815.bin` | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.28.13-rke2r1-build20240815.bin |
-| `airgap-pack-kubernetes-rke2-1.29.8-rke2r1-build20240815.bin`  | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.29.8-rke2r1-build20240815.bin  |
-| `airgap-pack-kubernetes-rke2-1.30.4-rke2r1-build20240815.bin`  | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.30.4-rke2r1-build20240815.bin  |
-| `airgap-pack-nginx-1.11.2.bin`                                 | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-nginx-1.11.2.bin                                 |
-| `airgap-pack-spectro-proxy-1.5.4.bin`                          | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-spectro-proxy-1.5.4.bin                          |
-| `airgap-pack-vault-0.28.1.bin`                                 | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-vault-0.28.1.bin                                 |
+| File Name                                          | URL                                                                                                     |
+| -------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `airgap-pack-byoi-agent-mode-1.0.0.bin`            | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-byoi-agent-mode-1.0.0.bin            |
+| `airgap-pack-cni-calico-3.29.0.bin`                | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-cni-calico-3.29.0.bin                |
+| `airgap-pack-cni-calico-azure-3.29.0.bin`          | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-cni-calico-azure-3.29.0.bin          |
+| `airgap-pack-cni-cilium-oss-1.15.7.bin`            | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-cni-cilium-oss-1.15.7.bin            |
+| `airgap-pack-cni-cilium-oss-1.16.3.bin`            | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-cni-cilium-oss-1.16.3.bin            |
+| `airgap-pack-cni-flannel-0.26.1.bin`               | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-cni-flannel-0.26.1.bin               |
+| `airgap-pack-csi-portworx-generic-3.2.0.bin`       | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-portworx-generic-3.2.0.bin       |
+| `airgap-pack-csi-rook-ceph-1.15.3.bin`             | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-rook-ceph-1.15.3.bin             |
+| `airgap-pack-csi-rook-ceph-addon-1.15.3.bin`       | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-rook-ceph-addon-1.15.3.bin       |
+| `airgap-pack-csi-rook-ceph-helm-1.14.9.bin`        | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-rook-ceph-helm-1.14.9.bin        |
+| `airgap-pack-csi-rook-ceph-helm-addon-1.14.9.bin`  | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-rook-ceph-helm-addon-1.14.9.bin  |
+| `airgap-pack-custom-cni-1.0.0.bin`                 | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-custom-cni-1.0.0.bin                 |
+| `airgap-pack-custom-csi-1.0.0.bin`                 | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-custom-csi-1.0.0.bin                 |
+| `airgap-pack-nginx-1.11.2.bin`                     | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-nginx-1.11.2.bin                     |
+| `airgap-pack-nginx-1.11.3.bin`                     | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-nginx-1.11.3.bin                     |
+| `airgap-pack-prometheus-operator-65.3.1.bin`       | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-prometheus-operator-65.3.1.bin       |
+| `airgap-pack-spectro-proxy-1.5.4.bin`              | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-spectro-proxy-1.5.4.bin              |
+| `airgap-pack-vault-0.28.1.bin`                     | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-vault-0.28.1.bin                     |
+| `airgap-pack-vault-0.29.1.bin`                     | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-vault-0.29.1.bin                     |
+| `airgap-pack-volume-snapshot-controller-8.1.0.bin` | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-volume-snapshot-controller-8.1.0.bin |
 
 ## Download Instructions
 
@@ -138,6 +135,8 @@ use for the workload clusters.
 | RKE2 1.29.8            | u-2204-0-k-rke2-1298-0.ova  | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2204-0-k-rke2-1298-0.ova`  |
 | RKE2 1.30.3            | u-2204-0-k-rke2-1303-0.ova  | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2204-0-k-rke2-1303-0.ova`  |
 | RKE2 1.30.4            | u-2204-0-k-rke2-1304-0.ova  | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2204-0-k-rke2-1304-0.ova`  |
+| RKE2 1.30.5            | u-2204-0-k-rke2-1305-0.ova  | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2204-0-k-rke2-1305-0.ova`  |
+| RKE2 1.30.6            | u-2204-0-k-rke2-1306-0.ova  | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2204-0-k-rke2-1306-0.ova`  |
 
 ### Usage Instructions
 

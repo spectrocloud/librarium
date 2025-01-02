@@ -34,7 +34,7 @@ Refer to the following sections to learn how to update a cluster profile.
 - A cluster profile created in Palette.
 
 - Your Palette account role must have the `clusterProfile.update` permission to update a profile. Refer to the
-  [Cluster Profile permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin)
+  [Cluster Profile permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile)
   reference for more information about roles and permissions.
 
 ### Modify Profile Information
@@ -45,7 +45,7 @@ Refer to the following sections to learn how to update a cluster profile.
    profile details and stack.
 
 3. Click on **Settings** and choose **Edit Info** from the **drop-down Menu**. You can modify the profile name, version,
-   description, and tags.
+   description, and tags. Save your changes.
 
    :::info
 
@@ -53,8 +53,6 @@ Refer to the following sections to learn how to update a cluster profile.
    you create that use the updated profile.
 
    :::
-
-4. Save your changes.
 
 ### Validate
 
@@ -74,7 +72,7 @@ To learn how to apply the changes, review [Apply Profile Updates to Clusters](#a
 - A cluster profile created in Palette.
 
 - Your Palette account role must have the `clusterProfile.update` permission to update a profile. Refer to the
-  [Cluster Profile permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin)
+  [Cluster Profile permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile)
   reference for more information about roles and permissions.
 
 ### Update Layer
@@ -89,7 +87,7 @@ To learn how to apply the changes, review [Apply Profile Updates to Clusters](#a
    - Select **Add New Pack** and choose a pack to add to the profile.
    - Select **Import from cluster** to import a pack from another cluster.
 
-   - Select the pack layer you want to update, and edit pack settings in the YAML file that displays in the YAML editor.
+   - Select the pack layer you want to update, and edit pack values in the YAML file that displays in the editor.
 
    - Click on the **Update** button to view and apply available updates to packs. To learn how to update your customized
      packs, review [Update the Pack Version](#update-the-pack-version).
@@ -146,7 +144,7 @@ Review the following steps to accept incoming pack updates to a cluster profile.
 - There are updates available for at least one pack in the profile.
 
 - Your Palette account role must have the `clusterProfile.update` permission to update a profile. Refer to the
-  [Cluster Profile permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin)
+  [Cluster Profile permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile)
   reference for more information about roles and permissions.
 
 ### Review Update Changes
@@ -157,9 +155,9 @@ Review the following steps to accept incoming pack updates to a cluster profile.
 
 3. Select the profile you want to update to access the profile details page.
 
-4. Palette displays profile details and the profile stack. If there are pending updates, Palette displays a green
-   **Update** button in the top right-hand corner of the page. Click on the **Update** button to view the changes
-   summary modal.
+4. Palette displays profile details and the profile stack. If there are pending updates, Palette displays the
+   **Updates** button in the top right-hand corner of the page. Click on the **Updates** button to view the **Changes
+   Summary** modal.
 
 5. If the changes can be applied without any issues, then Palette will display the **Apply Changes** button.
 
@@ -179,10 +177,10 @@ Review the following steps to accept incoming pack updates to a cluster profile.
 6. Click on the **Apply Changes** button to apply the updates to the profile. If there are changes that require your
    attention, click on the **Review changes in Editor** button to start the review process.
 
-7. The differential editor will display the changes between the current YAML configuration and new incoming YAML
-   changes. The left side of the editor displays the current configuration. The right side displays the new pack
-   version's incoming changes. Review the changes and apply them as needed. Use the three buttons at the bottom to
-   navigate through the changes.
+7. The differential editor will display the changes between the **Current Configuration** and **Pending Configuration**.
+   The left side of the editor displays the current configuration. The right side displays the new pack version's
+   incoming changes. Review the changes and apply them as needed. Use the three buttons at the bottom to navigate
+   through the changes.
 
    - **Prev**: Click to navigate to the previous change.
    - **Next**: Click to navigate to the next change.
@@ -191,15 +189,20 @@ Review the following steps to accept incoming pack updates to a cluster profile.
      button.
 
    The differential editor will display the changes by highlighting the differences between the configurations. The
-   color-coded highlights indicate the following:
+   **Legend** displays the colors and contains tooltips explaining their meanings. The color-coded highlights indicate
+   the following:
 
-   - _Yellow highlight_ indicates text that is not present in the new configuration. These may be lines you have added
-     in the current configuration or lines that have been removed because they are no longer valid in the new
-     configuration. If you need them, use the **Keep** button to transfer the lines to the new pack version. Otherwise,
-     click on **Next** to proceed.
+   - _Yellow highlight_ indicates a line that has been changed when compared to the original pack default values. These
+     may be lines you have added in the current configuration or lines that have been removed because they are no longer
+     valid in the new configuration. If you need them, use the **Keep** button to transfer the lines to the new pack
+     version. Otherwise, click on **Next** to proceed.
 
-   - _Blue highlight_ indicates additions in the new configuration that are not present in the pack version you are
-     using.
+   - _Orange highlight_ indicates a difference between the current configuration and the pending pack defaults. These
+     differences occur when the new pack version changes existing fields to a new default value. The **Pending
+     Configuration** is editable, so you can change the configurations that you want to keep by editing the pack YAML
+     specification.
+
+   - _Blue highlight_ indicates changes or customizations provided by the pack in the pending configuration.
 
      ![Screenshot that shows Palette's pack diff user interface with yellow highlight at left and blue highlight at right](/profiles_cluster-profiles_modify-cluster-incoming-updates.webp)
 
@@ -245,7 +248,7 @@ Ensure you follow these practices when updating to a new pack version.
 - There are updates available for at least one pack in the profile.
 
 - Your Palette account role must have the `clusterProfile.update` permission to update a profile. Refer to the
-  [Cluster Profile permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin)
+  [Cluster Profile permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile)
   reference for more information about roles and permissions.
 
 ### Update Pack Version
@@ -262,13 +265,16 @@ Ensure you follow these practices when updating to a new pack version.
 
    Differences between the displayed configurations are as follows:
 
-   - _Yellow highlight_ indicates text that is not present in the new configuration. These may be lines you have added
-     in the current configuration or lines that have been removed because they are no longer valid in the new
-     configuration. If you need them, you can use the **Keep** button to transfer the lines to the new pack version.
-     Otherwise, click on **Next** to proceed.
+   - _Yellow highlight_ indicates a line that has been changed when compared to the original pack default values. These
+     may be lines you have added in the current configuration or lines that have been removed because they are no longer
+     valid in the new configuration. If you need them, use the **Keep** button to transfer the lines to the new pack
+     version. Otherwise, click on **Next** to proceed.
 
-   - _Blue highlight_ indicates additions in the new configuration that are not present in the pack version you are
-     using.
+   - _Orange highlight_ indicates a difference between the current configuration and the new pack defaults. These
+     differences occur when the new pack version changes existing fields to a new default value. The right-hand panel is
+     editable, so you can change the configurations that you want to keep by editing the pack YAML specification.
+
+   - _Blue highlight_ indicates changes or customizations provided by the pack in the pending configuration.
 
      #### Example of Difference Between Current and New Configurations
 
@@ -278,16 +284,19 @@ Ensure you follow these practices when updating to a new pack version.
    customizations lines you added, use the **Keep** button to transfer the lines to the new version. Otherwise, click on
    **Next** to proceed.
 
-6. Check for changed settings in the new configuration, and copy settings from the current configuration to the new
+6. Review the orange-highlights in the current configuration. Ensure that the corresponding new blue-highlight values
+   will suit your needs.
+
+7. Check for changed settings in the new configuration, and copy settings from the current configuration to the new
    configuration.
 
-7. Review new sections in the new configuration. You should adopt them, as they are typically needed to support the new
+8. Review new sections in the new configuration. You should adopt them, as they are typically needed to support the new
    configuration.
 
-8. Check for changes in the same line that have a different value. If it is not a customization you made, you should
+9. Check for changes in the same line that have a different value. If it is not a customization you made, you should
    adopt the new value, as it is known to be compatible with the new version.
 
-9. Confirm your updates.
+10. Confirm your updates.
 
 To learn how to apply the changes, review [Apply Profile Updates to Clusters](#apply-profile-updates-to-clusters).
 

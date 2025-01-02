@@ -37,6 +37,14 @@ upgrading, you review the information provided in the
   instead. For more information about creating an Edge cluster, refer to
   [Create Cluster Definition](../edge/site-deployment/cluster-deployment.md).
 
+- Avoid skipping minor versions when upgrading the Kubernetes version of a cluster. Refer to the documentation of your
+  Kubernetes distribution for upgrade guidance and follow the recommended upgrade paths.
+
+  - For PXK and PXK-E, refer to
+    [Upgrade Kubeadm Clusters](https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/).
+  - For K3s, refer to [K3s Upgrades](https://docs.k3s.io/upgrades#version-specific-caveats)
+  - For RKE2, refer to [RKE2 Manual Upgrades](https://docs.rke2.io/upgrade/manual_upgrade)
+
 ## Prerequisites
 
 - An active Kubernetes cluster in Palette.
@@ -63,13 +71,13 @@ This is the recommended best practice for updating a cluster in Palette.
 
 7. Click **Review & Save**. Palette prompts you to preview the change summary.
 
-8. Click **Review changes in Editor**. Palette displays the changes, with the current configuration on the left and the
-   incoming configuration on the right. Review the changes and click **Apply Changes**.
+8. Click **Review changes in Editor**. Palette displays the changes, with the **Current Configuration** on the left and
+   the **Pending Configuration** on the right. Review the changes and click **Apply Changes**.
 
    :::info
 
-   Make sure to preserve any existing cluster profile overrides by using the editor on the right. Otherwise, the
-   incoming configuration will be applied as indicated.
+   Make sure to preserve any existing cluster profile overrides by using the editor on the right. Otherwise, the pending
+   configuration will be applied as indicated.
 
    :::
 
