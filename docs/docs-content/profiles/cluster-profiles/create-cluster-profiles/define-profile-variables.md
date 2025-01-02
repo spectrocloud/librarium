@@ -6,8 +6,8 @@ sidebar_position: 40
 tags: ["profiles", "cluster profiles"]
 ---
 
-Cluster profile variables enable you to create placeholders for parameters in profile layer configurations, which you
-can then populate for individual clusters during deployment. Meaning you can use a single cluster profile to deploy
+Use cluster profile variables to create placeholders for parameters in profile-layer configurations, which you
+can populate for individual clusters during deployment. With cluster profile variables, you can use a single cluster profile to deploy
 multiple clusters with unique requirements for security, networking, resource allocation, and so on.
 
 When defining a cluster profile variable, you can set specific constraints on the expected values, such as format,
@@ -15,16 +15,13 @@ optionality, masking, and so on, to ensure scalable, error-free cluster deployme
 
 :::preview
 
-This is a Tech Preview feature currently available in [Local UI](../../../clusters/edge/local-ui/local-ui.md). Do not
-use this feature in production workloads, as it is subject to change.
-
 :::
 
 You can use profile variables with any number of packs, manifests, and Helm charts, but only in the scope of their
 parent cluster profile. If you want to create placeholders to use across different cluster profiles, consider using
 [Palette Macros](../../../clusters/cluster-management/macros.md).
 
-The following table describes the difference between profile variables and macros.
+The following table describes the differences between profile variables and macros.
 
 | **Capability**                                                            | **Profile Variable** | **Macro** |
 | ------------------------------------------------------------------------- | :------------------: | :-------: |
@@ -39,8 +36,6 @@ This guide explains how you can define and manage cluster profile variables.
 
 ## Limitations
 
-- Cluster profile variables are currently available only in [Local UI](../../../clusters/edge/local-ui/local-ui.md).
-
 - Palette does not support nesting profile variables within macros or other profile variables.
 
 - You cannot define profile variables for the `pack.content` and `system.uri` parameters because the
@@ -48,7 +43,7 @@ This guide explains how you can define and manage cluster profile variables.
 
 - Once you deploy a cluster from a profile with variables, you can neither edit nor delete the profile variables. To
   edit or delete them, [version the cluster profile](../modify-cluster-profiles/version-cluster-profile.md) and update
-  the variables in the new version.
+  the variables in the new version. Enhanced Day-2 operations will be released in a future version.
 
   When you version a cluster profile with variables, the variables are propagated to the new version. However, upon
   versioning, the variables in each version are independent.
@@ -61,16 +56,15 @@ This guide explains how you can define and manage cluster profile variables.
   [Roles and Permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile) for
   more information.
 
-- An in-progress or already created cluster profile. The cluster profile must either have the **Edge Native**
-  infrastructure or be an edge-based add-on profile.
+- An in-progress or existing cluster profile.
 
 ### Enablement
 
-You can define profile variables both while creating and for the already created cluster profiles. To define profile
+You can define profile variables when creating cluster profiles and for existing cluster profiles. To define profile
 variables [while creating a cluster profile](../create-cluster-profiles/create-cluster-profiles.md), you need to be at
 the **Profile Layers** stage of cluster profile creation and start following this guide from step three.
 
-1.  Log in to Palette.
+1.  Log in to [Palette](https://console.spectrocloud.com).
 
 2.  Navigate to the cluster profile for which you want to define profile variables.
 
@@ -140,8 +134,8 @@ the **Profile Layers** stage of cluster profile creation and start following thi
 
     :::tip
 
-    To improve navigation, you can change the display order of variables. Select the **Variables three-dot menu**, then
-    select **Reorder variables**, and drag and drop variables to change their display order. Finally, select **Confirm
+    To improve navigation, you can change the display order of variables. Select the **Variables three-dot Menu**,
+    choose **Reorder variables**, and drag and drop variables to change their display order. Finally, select **Confirm
     order**.
 
     :::
@@ -195,7 +189,7 @@ variables in the new version.
 
    :::
 
-3. To edit a profile variable, in the **three-dot menu** of the necessary variable, select **Edit** and make the
+3. To edit a profile variable, in the **three-dot Menu** of the necessary variable, select **Edit** and make the
    necessary changes.
 
 4. To delete a profile variable, navigate to the profile layers that implement this variable and remove it from their
