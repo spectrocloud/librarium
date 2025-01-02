@@ -16,8 +16,8 @@ explains how you can create an Azure AKS cluster managed by Palette.
   [Register and Manage Azure Cloud Account](./azure-cloud.md) for guidance.
 
 - A Secure Shell (SSH) key that you have pre-configured in your Azure environment. Refer to the
-  [SSH Keys](../../cluster-management/ssh-keys/ssh-keys.md) guide for more information about creating and managing SSH keys in
-  Palette.
+  [SSH Keys](../../cluster-management/ssh-keys/ssh-keys.md) guide for more information about creating and managing SSH
+  keys in Palette.
 
 - An infrastructure cluster profile for Azure. Review
   [Create an Infrastructure Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md)

@@ -69,8 +69,8 @@ To complete this tutorial, you will need the following.
 
   <br />
 
-- An SSH Key Pair. Use the [Create and Upload an SSH Key](../../../clusters/cluster-management/ssh-keys/ssh-keys.md) guide to
-  learn how to create an SSH key and upload it to Palette.
+- An SSH Key Pair. Use the [Create and Upload an SSH Key](../../../clusters/cluster-management/ssh-keys/ssh-keys.md)
+  guide to learn how to create an SSH key and upload it to Palette.
 
   - AWS users must create an AWS Key pair before starting the tutorial. If you need additional guidance, check out the
     [Create EC2 SSH Key Pair](https://docs.aws.amazon.com/ground-station/latest/ug/create-ec2-ssh-key-pair.html)

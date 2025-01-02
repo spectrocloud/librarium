@@ -12,8 +12,7 @@ sidebar_position: 11
 This page lists the Secure Shell (SSH) user names created on Kubernetes nodes, which vary by provider and operating
 system.
 
-These user names are relevant when using [SSH key pairs](./ssh-keys.md) with your Palette
-host clusters.
+These user names are relevant when using [SSH key pairs](./ssh-keys.md) with your Palette host clusters.
 
 ## Public Cloud
 
