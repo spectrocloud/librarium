@@ -14,7 +14,7 @@ centrally by pairing the local cluster the Palette instance.
 
 ## Prerequisites
 
-- An active locally managed cluster.
+- An active locally managed cluster. The cluster itself must be in the **Running** state and all nodes must be healthy.
 
 - An Edge host registration token. For more information on how to create registration tokens, refer to
   [Edge Host Registration](../../site-deployment/site-installation/create-registration-token.md).
