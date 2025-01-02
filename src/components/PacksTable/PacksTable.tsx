@@ -1,7 +1,10 @@
-import React, { useEffect, useState, useCallback } from "react";
-import CustomTable from "../CustomTable/CustomTable";
+import React, { useEffect, useState, useMemo } from "react";
+import { Table, ConfigProvider, theme } from "antd";
 import styles from "./PacksTable.module.scss";
 import Search from "../Technologies/Search";
+import { useColorMode } from "@docusaurus/theme-common";
+import type { ColumnsType } from "antd/es/table";
+import Admonition from "@theme/Admonition";
 
 type Pack = {
   name: string;
@@ -19,6 +22,7 @@ type Pack = {
   releaseType: string;
   contributor: string;
   docsURL: string;
+  hash?: string;
 };
 
 const statusClassNames: Record<string, string> = {
@@ -35,21 +39,23 @@ const formatCloudType = (type: string): string => {
     vsphere: "vSphere",
     maas: "MaaS",
     gcp: "GCP",
-    libvirt: "libvirt",
+    edge: "Edge",
     openstack: "OpenStack",
     "edge-native": "Edge",
     tke: "TKE",
     aks: "AKS",
-    coxedge: "Cox Edge",
     gke: "GKE",
     all: "All",
     azure: "Azure",
+    tencent: "Tencent",
     // ... add other special cases as needed
   };
 
   return type
     .split(",")
-    .map((part) => cloudTypeMapping[part.trim()] || capitalizeWord(part))
+    .map((part) => part.trim())
+    .filter((part) => part !== "nested" && part !== "libvirt" && part !== "baremetal" && part !== "coxedge")
+    .map((part) => cloudTypeMapping[part] || capitalizeWord(part))
     .join(", ");
 };
 
@@ -58,71 +64,56 @@ const capitalizeWord = (string: string): string => {
   return string.toUpperCase();
 };
 
-interface PacksColumn {
-  title: string;
-  dataIndex: keyof Pack;
-  key: string;
-  sorter?: (a: Pack, b: Pack) => number;
-  render?: (value: string, row: Pack) => React.ReactNode;
-  width: number;
-}
-
-const columns: PacksColumn[] = [
+const columns: ColumnsType<Pack> = [
   {
     title: "Name",
     dataIndex: "displayName",
     key: "displayName",
-    sorter: (a: Pack, b: Pack) => a.displayName.localeCompare(b.displayName),
-    width: 200,
+    sorter: (a, b) => a.displayName.localeCompare(b.displayName),
   },
   {
     title: "Cloud Types",
     dataIndex: "cloudTypesFormatted",
     key: "cloudTypesFormatted",
-    sorter: (a: Pack, b: Pack) => a.cloudTypesFormatted.localeCompare(b.cloudTypesFormatted),
+    sorter: (a, b) => a.cloudTypesFormatted.localeCompare(b.cloudTypesFormatted),
     render: (value: string) => formatCloudType(value),
-    width: 200,
   },
   {
     title: "Version",
     dataIndex: "version",
     key: "version",
-    sorter: (a: Pack, b: Pack) => a.version.localeCompare(b.version),
-    width: 120,
+    sorter: (a, b) => a.version.localeCompare(b.version),
   },
   {
     title: "Status",
     dataIndex: "prodStatus",
     key: "prodStatus",
-    sorter: (a: Pack, b: Pack) => a.prodStatus.localeCompare(b.prodStatus),
+    sorter: (a, b) => a.prodStatus.localeCompare(b.prodStatus),
     render: (status: string) => {
       const className = statusClassNames[status];
       return <span className={className}>{status}</span>;
     },
-    width: 150,
   },
   {
     title: "Last Updated",
     dataIndex: "packLastModifiedDate",
     key: "packLastModifiedDate",
-    sorter: (a: Pack, b: Pack) =>
-      new Date(a.packLastModifiedDate).getTime() - new Date(b.packLastModifiedDate).getTime(),
-    width: 150,
+    sorter: (a, b) => new Date(a.packLastModifiedDate).getTime() - new Date(b.packLastModifiedDate).getTime(),
+    render: (date: string) => (date === "-" ? date : new Date(date).toLocaleDateString()),
   },
   {
     title: "Last Modified",
     dataIndex: "timeLastUpdated",
     key: "timeLastUpdated",
-    sorter: (a: Pack, b: Pack) =>
-      new Date(a.packLastModifiedDate).getTime() - new Date(b.packLastModifiedDate).getTime(),
+    sorter: (a, b) => new Date(a.packLastModifiedDate).getTime() - new Date(b.packLastModifiedDate).getTime(),
     render: (date: string, pack: Pack) => {
+      if (date === "-") return date;
       const dateObject = new Date(pack.packLastModifiedDate);
       const oneMonthAgo = new Date();
       oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
       const isWithinAMonth = dateObject >= oneMonthAgo;
       return <span className={isWithinAMonth ? styles.green : styles.red}>{date}</span>;
     },
-    width: 150,
   },
 ];
 
@@ -137,22 +128,20 @@ const FilteredTable: React.FC = () => {
   const [deprecatedPacks, setDeprecatedPacks] = useState<Pack[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  const [timer, setTimer] = useState<NodeJS.Timeout | null>(null);
+  const { colorMode } = useColorMode();
+  const { defaultAlgorithm, darkAlgorithm } = theme;
 
   useEffect(() => {
     fetch("/packs-data/packs_report.json")
       .then((response) => response.json())
       .then((packData: PacksData) => {
         const deprecatedPackData = packData.Packs.filter((pack) => {
-          // Handle the case where the pack name is empty.
-          // This is applicable when the API returns a pack with no name.
-          // The API also does not include the last modified date for these packs.
-          if (pack.displayName == "") {
+          if (pack.displayName === "") {
             pack.displayName = toTitleCase(pack.name);
             pack.timeLastUpdated = "-";
             pack.packLastModifiedDate = "-";
           }
-
+          pack.hash = Math.random().toString(36).substring(2, 15);
           return pack.prodStatus !== "active" && pack.prodStatus !== "unknown";
         });
         setDeprecatedPacks(deprecatedPackData);
@@ -164,37 +153,50 @@ const FilteredTable: React.FC = () => {
       });
   }, []);
 
-  const handleSearch = useCallback(
-    (searchString: string) => {
-      if (timer) {
-        clearTimeout(timer);
-      }
+  // Simplified search filtering
+  const filteredPacks = useMemo(() => {
+    const searchTerm = searchValue.trim().toLowerCase();
+    if (!searchTerm) return deprecatedPacks;
 
-      const newTimer = setTimeout(() => {
-        setSearchValue(searchString);
-      }, 300);
+    return deprecatedPacks.filter((pack) => pack.displayName.toLowerCase().includes(searchTerm));
+  }, [deprecatedPacks, searchValue]);
 
-      setTimer(newTimer);
-    },
-    [timer]
-  );
-
-  const filteredPacks = searchValue
-    ? deprecatedPacks.filter((pack) => pack.displayName.toLowerCase().includes(searchValue.toLowerCase()))
-    : deprecatedPacks;
+  // Single handler for both onChange and onSearch
+  const handleSearchChange = (value: string) => {
+    setSearchValue(value);
+  };
 
   return (
-    <div className={styles.tableWrapper}>
-      <Search onSearch={handleSearch} placeholder={"Search Deprecated Packs"}></Search>
-      <CustomTable<Pack>
-        className={styles.packsTable}
-        columns={columns}
-        dataSource={filteredPacks}
-        loading={loading}
-        scrollY={250}
-        pagination={{ pageSize: 250 }}
-      />
-      {error && <div className={styles.error}>Failed to load Deprecated Packs</div>}
+    <div className={styles.tabPane}>
+      <ConfigProvider theme={{ algorithm: colorMode === "dark" ? darkAlgorithm : defaultAlgorithm }}>
+        <div className={styles.unsupportedMessage}>
+          <Admonition type="warning" title="Unsupported Display Size">
+            The current screen size is not supported. Use a larger display to access the Packs table.
+          </Admonition>
+        </div>
+
+        <div className={styles.tableContainer}>
+          <div className={styles.searchContainer}>
+            <Search value={searchValue} onSearch={handleSearchChange} placeholder="Search Deprecated Packs" />
+          </div>
+          <Table
+            columns={columns}
+            dataSource={filteredPacks}
+            loading={loading}
+            rowKey={(record) => `${record.name}-${record.version}-${record.hash}`}
+            pagination={{
+              pageSizeOptions: ["500", "1000", "2500", "5000"],
+              defaultPageSize: 1000,
+              showSizeChanger: true,
+            }}
+            scroll={{ y: 800 }}
+            bordered
+            tableLayout="fixed"
+            sticky
+          />
+          {error && <div className={styles.error}>Failed to load Deprecated Packs</div>}
+        </div>
+      </ConfigProvider>
     </div>
   );
 };
