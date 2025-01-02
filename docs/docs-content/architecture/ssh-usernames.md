@@ -12,10 +12,9 @@ sidebar_position: 60
 This page lists the Secure Shell (SSH) user names created on Kubernetes nodes, which vary by provider and operating
 system.
 
-These user names are relevant when deploying [SSH key pairs](../clusters/cluster-management/ssh-keys.md) to your
-Kubernetes cluster through Palette.
+These user names are relevant when using [SSH key pairs](../clusters/cluster-management/ssh-keys.md) with your Palette host clusters.
 
-## Public Clouds
+## Public Cloud
 
 ### Infrastructure Provider
 
@@ -65,11 +64,11 @@ nodes is critical, consider one of the following options:
 
 This is dependent on the operating system you provide for your edge hosts using either
 [Agent Mode](../deployment-modes/agent-mode/agent-mode.md) or
-[Provider images](../clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images.md).
+[EdgeForge](../clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images.md).
 
 ## Resources
 
-- [SSH key pairs](../clusters/cluster-management/ssh-keys.md)
+- [SSH Keys](../clusters/cluster-management/ssh-keys.md)
 - [Deploy a Cluster (Public Cloud)](../clusters/public-cloud/deploy-k8s-cluster.md)
 - [Data Center Clusters](../clusters/data-center/data-center.md)
 - [Create Cluster Definition (Edge)](../clusters/edge/site-deployment/cluster-deployment.md)
