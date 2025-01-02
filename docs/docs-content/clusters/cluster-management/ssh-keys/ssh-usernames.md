@@ -50,10 +50,6 @@ nodes is critical, consider one of the following options:
 - Enable OS Login and associate your SSH key with your IAM identity. Refer to
   [How OS Login works](https://cloud.google.com/compute/docs/oslogin#how_os_login_works) for guidance.
 
-- Customize startup scripts or metadata to add your SSH key during node creation in a managed instance group. Refer to
-  [Using startup scripts on Linux VMs](https://cloud.google.com/compute/docs/instances/startup-scripts/linux) for
-  guidance.
-
 ## Data Center
 
 | Provider           | Operating System Pack          | SSH Username |
