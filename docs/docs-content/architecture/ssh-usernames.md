@@ -63,12 +63,9 @@ nodes is critical, consider one of the following options:
 
 ## Edge
 
-This is dependent on the operating system you provide for your edge hosts and cannot be predetermined.
-
-Your edge hosts are built by using one of the following methods:
-
-- [Agent Mode](../deployment-modes/agent-mode/agent-mode.md)
-- [Provider images](../clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images.md)
+This is dependent on the operating system you provide for your edge hosts using either
+[Agent Mode](../deployment-modes/agent-mode/agent-mode.md) or
+[Provider images](../clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images.md).
 
 ## Resources
 
