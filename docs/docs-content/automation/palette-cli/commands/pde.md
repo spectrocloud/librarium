@@ -24,6 +24,13 @@ The `pde` command exposes the following subcommands.
 
 - [`virtual-cluster`](#virtual-cluster) - Manage Palette Virtual Clusters.
 
+## Prerequisites
+
+- You must provide an encyrption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters
+  long and contain a capital letter, a lowercase letter, a digit, and a special character. You can provide the
+  passphrase through the `PALETTE_ENCRYPTION_PASSWORD` environment variable or the `-k` or `--encryption-passphrase`
+  flag. Refer to the [Encryption](./../palette-cli.md#encryption) section for more information on encryption.
+
 ## App
 
 Use the `app` subcommand to manage Palette Apps deployments. The `app` subcommand supports the following subcommands.
@@ -45,16 +52,17 @@ subcommands.
 - `cluster-group` - Create a Palette App deployment inside a Cluster Group. A new Virtual Cluster will be created. Use
   the following flags to create a Palette App deployment inside a Cluster Group.
 
-  | **Flag**                 | **Description**                                                                                     | **Type** |
-  | ------------------------ | --------------------------------------------------------------------------------------------------- | -------- |
-  | `---app-profile-name`    | Install using a configuration file (optional). Use `-config-only` to generate a configuration file. | string   |
-  | `--app-profile-version`  | Generate configuration file only. This command will not proceed with installation.                  | boolean  |
-  | `--cluster-group-name`   | Validate prerequisites for environment. Do not proceed with installation.                           | boolean  |
-  | `--cpu`                  | CPUs (optional). Defaults to 4 cores. (default 4)                                                   | int      |
-  | `--memory`               | Memory (GB) (optional). Defaults to 4GB. (default 4)                                                | int      |
-  | `--name`                 | The name of the App deployment.                                                                     | string   |
-  | `--storage`              | Storage (GB) (optional). Defaults to 4GB. (default 4)                                               | int      |
-  | `--virtual-cluster-name` | The name of the new Virtual Cluster.                                                                | string   |
+  | **Short Flag** | **Long Flag**             | **Description**                                                                                                                                                                                                                                                                                                                                                             | **Type** |
+  | -------------- | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+  | -              | `---app-profile-name`     | Install using a configuration file (optional). Use `-config-only` to generate a configuration file.                                                                                                                                                                                                                                                                         | string   |
+  | -              | `--app-profile-version`   | Generate configuration file only. This command will not proceed with installation.                                                                                                                                                                                                                                                                                          | boolean  |
+  | -              | `--cluster-group-name`    | Validate prerequisites for environment. Do not proceed with installation.                                                                                                                                                                                                                                                                                                   | boolean  |
+  | -              | `--cpu`                   | CPUs (optional). Defaults to 4 cores. (default 4)                                                                                                                                                                                                                                                                                                                           | int      |
+  | `-k`           | `--encryption-passphrase` | Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable `PALETTE_ENCRYPTION_PASSWORD`. Refer to the [Encryption](./../palette-cli.md#encryption) section for more information on encryption. | string   |
+  | -              | `--memory`                | Memory (GB) (optional). Defaults to 4GB. (default 4)                                                                                                                                                                                                                                                                                                                        | int      |
+  | -              | `--name`                  | The name of the App deployment.                                                                                                                                                                                                                                                                                                                                             | string   |
+  | -              | `--storage`               | Storage (GB) (optional). Defaults to 4GB. (default 4)                                                                                                                                                                                                                                                                                                                       | int      |
+  | -              | `--virtual-cluster-name`  | The name of the new Virtual Cluster.                                                                                                                                                                                                                                                                                                                                        | string   |
 
 - `interactive` - Create a Palette App deployment in an interactive mode.
 
@@ -127,10 +135,11 @@ subcommands.
 You can create an app profile using a configuration file. The configuration file must be in YAML format. The
 `from-config` subcommand supports the following flags.
 
-| **Flag**        | **Description**                                 | **Type** |
-| --------------- | ----------------------------------------------- | -------- |
-| `--config-file` | The path to the app profile configuration file. | string   |
-| `--help`        | Help for the `from-config` subcommand.          | -        |
+| **Short Flag** | **Long Flag**             | **Description**                                                                                                                                                                                                                                                                                                                                                             | **Type** |
+| -------------- | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| `-k`           | `--encryption-passphrase` | Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable `PALETTE_ENCRYPTION_PASSWORD`. Refer to the [Encryption](./../palette-cli.md#encryption) section for more information on encryption. | string   |
+| `-o`           | `--config-file`           | The path to the app profile configuration file.                                                                                                                                                                                                                                                                                                                             | string   |
+| `-h`           | `--help`                  | Help for the `from-config` subcommand.                                                                                                                                                                                                                                                                                                                                      | -        |
 
 :::tip
 
@@ -149,10 +158,11 @@ The configuration file will be created in the $HOME directory, under the `~/.pal
 Use the interactive subcommand to create an app profile in interactive mode. The `interactive` subcommand supports the
 following flags.
 
-| **Flag**        | **Description**                                                                    | **Type** |
-| --------------- | ---------------------------------------------------------------------------------- | -------- |
-| `--config-only` | Generate configuration file only. This command will not proceed with installation. | boolean  |
-| `--help`        | Help for the `interactive` subcommand.                                             | -        |
+| **Short Flag** | **Long Flag**             | **Description**                                                                                                                                                                                                                                                                                                                                                             | **Type** |
+| -------------- | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| `-k`           | `--encryption-passphrase` | Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable `PALETTE_ENCRYPTION_PASSWORD`. Refer to the [Encryption](./../palette-cli.md#encryption) section for more information on encryption. | string   |
+| `-o`           | `--config-only`           | Generate configuration file only. This command will not proceed with installation.                                                                                                                                                                                                                                                                                          | boolean  |
+| `-h`           | `--help`                  | Help for the `interactive` subcommand.                                                                                                                                                                                                                                                                                                                                      | -        |
 
 ### Delete
 

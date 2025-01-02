@@ -11,30 +11,34 @@ The `login` command authenticates the Palette CLI with Palette. The `login` comm
 which prompts you for required values. Or, you can use flags to provide the command with all the required values such as
 the API key, the organization ID, and the Palette URL.
 
-<br />
+## Prerequisites
 
-| **Flag**                | **Description**                                                                                                            | **Type** |
-| ----------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------- |
-| `--api-key`             | Palette API key (omit for interactive login).                                                                              | string   |
-| `--cluster-group-name`  | Palette Cluster Group name (optional). Specifies the active Cluster Group.                                                 | string   |
-| `--cluster-group-scope` | Palette Cluster Group scope. Required with `--cluster-group-name`. Allowed values are: `project`, `tenant` , and `system`. | string   |
-| `--console-url`         | Palette URL (omit for interactive login).                                                                                  | string   |
-| `--help`                | Help for the `login` subcommand.                                                                                           | -        |
-| `--insecure`            | Skip Transport Layer Security (TLS) (bypass x509 verification).                                                            | -        |
-| `--org`                 | Palette Organization name (omit for interactive login).                                                                    | string   |
-| `--project`             | Palette Project name (optional). Specifies the active Project.                                                             | string   |
+- You must provide an encyrption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters
+  long and contain a capital letter, a lowercase letter, a digit, and a special character. You can provide the
+  passphrase through the `PALETTE_ENCRYPTION_PASSWORD` environment variable or the `-k` or `--encryption-passphrase`
+  flag. Refer to the [Encryption](./../palette-cli.md#encryption) section for more information on encryption.
+
+## Login
+
+| **Short Flag** | **Long Flag**             | **Description**                                                                                                                                                                                                                                                                                                                                                             | **Type** |
+| -------------- | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| -              | `--api-key`               | Palette API key (omit for interactive login).                                                                                                                                                                                                                                                                                                                               | string   |
+|                | - `--cluster-group-name`  | Palette Cluster Group name (optional). Specifies the active Cluster Group.                                                                                                                                                                                                                                                                                                  | string   |
+| -              | `--cluster-group-scope`   | Palette Cluster Group scope. Required with `--cluster-group-name`. Allowed values are: `project`, `tenant` , and `system`.                                                                                                                                                                                                                                                  | string   |
+| -              | `--console-url`           | Palette URL (omit for interactive login).                                                                                                                                                                                                                                                                                                                                   | string   |
+| `-h`           | `--help`                  | Help for the `login` subcommand.                                                                                                                                                                                                                                                                                                                                            | -        |
+| `-k`           | `--encryption-passphrase` | Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable `PALETTE_ENCRYPTION_PASSWORD`. Refer to the [Encryption](./../palette-cli.md#encryption) section for more information on encryption. | string   |
+| -              | `--insecure`              | Skip Transport Layer Security (TLS) (bypass x509 verification).                                                                                                                                                                                                                                                                                                             | -        |
+| -              | `--org`                   | Palette Organization name (omit for interactive login).                                                                                                                                                                                                                                                                                                                     | string   |
+| -              | `--project`               | Palette Project name (optional). Specifies the active Project.                                                                                                                                                                                                                                                                                                              | string   |
 
 ### Examples
-
-<br />
 
 ```shell hideClipboard
 palette login --api-key 123456789 --org demo-org --console-url https://console.spectrocloud.com
 ```
 
 If you want to target a specific project when using the `login` command, use the `--project` flag.
-
-<br />
 
 ```shell hideClipboard
 palette login  \
@@ -48,8 +52,6 @@ Upon successful login, a local configuration file named **palette.yaml** is crea
 CLI operations and is created in your $HOME directory under the folder name **.palette**. The following output is an
 example of a **palette.yaml** configuration file. Sensitive values, such as passwords, tokens, and API keys are
 encrypted at rest.
-
-<br />
 
 ```yaml hideClipboard
 paletteConfig:
