@@ -71,8 +71,15 @@ want to deploy the cluster, such as public cloud or on-prem.
 
 Set the provider as an environment variable.
 
+:::info
+
+Valid options: azure, aks, aws, eks, gcp, gke, tke, maas, vsphere, openstack, edge-native, virtual
+
+:::
+
+
 ```shell
-export PROVIDER="Your Provider"
+export PROVIDER="azure"
 ```
 
 <br />
@@ -93,10 +100,10 @@ export PAYLOAD='{
 <TabItem label="curl" value="cluster-create-curl">
 
 ```shell
-curl --location 'https://api.spectrocloud.com/v1/spectroclusters/$PROVIDER?projectUid=$PROJECT_ID"' \
+curl --location "https://api.spectrocloud.com/v1/spectroclusters/$PROVIDER?projectUid=$PROJECT_ID" \
  --header 'Content-Type: application/json' \
  --header 'Accept: application/json' \
- --header "apiKey: $API_KEY"
+ --header "apiKey: $API_KEY" \
  --data  "$PAYLOAD"
 ```
 
