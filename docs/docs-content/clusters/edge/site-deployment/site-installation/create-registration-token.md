@@ -7,7 +7,14 @@ sidebar_position: 10
 tags: ["edge"]
 ---
 
-To successfully register an Edge host with Palette you must provide the Edge Installer with a tenant registration token.
+Registration tokens are tokens that are associated with a project in Palette. You will need the registration token in
+the following situations:
+
+- When you need to register an Edge host with Palette. For more information, refer to
+  [Edge Host Registration](./edge-host-registration.md).
+- When you need to pair a locally managed cluster with Palette so that it can be managed centrally. For more
+  information, refer to [Pair Local Cluster with Palette](../../local-ui/cluster-management/local-to-central.md).
+
 To create a registration token, use the following steps.
 
 ## Prerequisites
