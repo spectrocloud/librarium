@@ -23,7 +23,7 @@ Machines (VMs) that need to be migrated.
 - The <VersionedLink text="Virtual Machine Migration Assistant" url="/integrations/packs/?pack=vm-migration-assistant-pack"/> pack must be added to your cluster profile. Refer to [Create a VM Migration Assistant Cluster Profile](./create-vm-migration-assistant-profile.md) for guidance.
   - The VM Migration Assistant service console must be accessible from a web browser.
 
-- A healthy VMO cluster. Refer to the [Create a VMO Profile](../create-vmo-profile.md) for further guidance.
+- A healthy Virtual Machine Orchestrator (VMO) cluster. Refer to the [Create a VMO Profile](../create-vmo-profile.md) for further guidance.
 
   - The VMO cluster must have network connectivity to vCenter and ESXi hosts, and the VMs you want to migrate.
 
@@ -224,6 +224,7 @@ Machines (VMs) that need to be migrated.
    | **Password**                    | Your vSphere / ESXi account password.                                                                                                                                                                                                                                                                                                                         |
    | **Skip certificate validation** | Enabling this option bypasses x509 CA verification. In production environments, do not enable if you are using a custom registry with self-signed SSL certificates, as the certificate can be provided in the next setting.                                                                                                                                   |
    | **CA certificate**              | Upload or drag and drop the CA certificate for your vSphere / ESXi. You can also use the **Fetch certificate from URL** option if your CA certificate is not third party or self-managed.                                                                                                                                                                     |
+   | **Convert Disk**                | When enabled, disk conversion is handled using virt-v2v. For example, if you're migrating from VMware vSphere to VMO, virt-v2v can convert Virtual Machine Disk (VMDK) to raw or QEMU copy-on-write version 2 (qcow2) formats that are optimal for the target environment.                                                                                    |
 
 7. Click **Create Provider**. The provider details are then shown.
 
