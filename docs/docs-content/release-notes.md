@@ -179,6 +179,8 @@ improvements in Palette 4.0.0.
   applied to specific namespaces in the cluster. To learn more about configuring labels and annotations, refer to
   [Create an Add-on Profile](profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-addon-profile.md).
 
+- Host clusters can now be placed in maintenance mode, with the ability to choose which Kubernetes node to place in maintenance mode. When a node is placed in maintenance mode, scheduling is turned off for that node (cordoned), and existing workloads are migrated to another healthy node in the cluster without interruption (drained). Refer to the [Maintenance Mode](clusters/cluster-management/maintenance-mode.md) page to learn more.
+
 #### Improvements {#release-4-0-palette-improvements}
 
 - You can now download different kubeconfig files for your host clusters in Palette. You can download an admin
@@ -281,10 +283,6 @@ improvements in Palette 4.0.0.
 ### Virtual Machine Orchestrator (VMO) {#release-4-0-vmo}
 
 #### Features {#release-4-0-vmo-features}
-
-- Host clusters supporting Virtual Machine (VM) workloads can now be placed in host maintenance mode, with the ability
-  to choose which Kubernetes node to place in maintenance mode. When a node is placed in maintenance mode, also known as
-  “cordoned”, the VM workload is automatically migrated without any disruptions to another healthy node in the cluster.
 
 - VMO supports the ability to import a VMware OVA template from VMware vSphere into Palette. This allows you to import a
   VM template from VMware vSphere into Palette and deploy it as a VM workload in a host cluster.
