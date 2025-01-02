@@ -18,22 +18,25 @@ These user names are relevant when using [SSH key pairs](./ssh-keys.md) with you
 
 ### Infrastructure Provider
 
-| Provider       | Operating System Pack | SSH Username |
-| -------------- | --------------------- | ------------ |
-| **AWS IaaS**   | **Ubuntu**            | `ubuntu`     |
-| **AWS IaaS**   | **CentOS**            | `centos`     |
-| **Azure IaaS** | **Ubuntu**            | `ubuntu`     |
-| **Azure IaaS** | **CentOS**            | `centos`     |
-| **GCP IaaS**   | **Ubuntu**            | `ubuntu`     |
-| **GCP IaaS**   | **CentOS**            | `centos`     |
+| Provider       | Operating System Pack          | SSH Username |
+| -------------- | ------------------------------ | ------------ |
+| **AWS IaaS**   | **Ubuntu**                     | `ubuntu`     |
+| **AWS IaaS**   | **CentOS**                     | `centos`     |
+| **AWS IaaS**   | **Bring Your Own OS (BYO-OS)** | `root`       |
+| **Azure IaaS** | **Ubuntu**                     | `ubuntu`     |
+| **Azure IaaS** | **CentOS**                     | `centos`     |
+| **Azure IaaS** | **Bring Your Own OS (BYO-OS)** | `root`       |
+| **GCP IaaS**   | **Ubuntu**                     | `ubuntu`     |
+| **GCP IaaS**   | **CentOS**                     | `centos`     |
+| **GCP IaaS**   | **Bring Your Own OS (BYO-OS)** | `root`       |
 
 ### Managed Kubernetes
 
-| Provider      | Operating System Pack          | SSH Username |
-| ------------- | ------------------------------ | ------------ |
-| **AWS EKS**   | **Amazon EKS optimized Linux** | `ec2-user`   |
-| **Azure AKS** | **Linux**                      | `azureuser`  |
-| **GCP GKE**   | **Container-Optimized OS**     | N/A          |
+| Provider      | Operating System Pack          | SSH Username                                                                        |
+| ------------- | ------------------------------ | ----------------------------------------------------------------------------------- |
+| **AWS EKS**   | **Amazon EKS optimized Linux** | `ec2-user`                                                                          |
+| **Azure AKS** | **Linux**                      | `azureuser`                                                                         |
+| **GCP GKE**   | **Container-Optimized OS**     | Refer to the [SSH Configuration on GCP GKE](#ssh-configuration-on-gcp-gke) section. |
 
 #### SSH Configuration on GCP GKE
 
@@ -53,12 +56,15 @@ nodes is critical, consider one of the following options:
 
 ## Data Center
 
-| Provider           | Operating System Pack | SSH Username |
-| ------------------ | --------------------- | ------------ |
-| **MAAS**           | **Ubuntu**            | `ubuntu`     |
-| **Openstack**      | **Ubuntu**            | `ubuntu`     |
-| **VMware vSphere** | **Ubuntu**            | `ubuntu`     |
-| **VMware vSphere** | **CentOS**            | `centos`     |
+| Provider           | Operating System Pack          | SSH Username |
+| ------------------ | ------------------------------ | ------------ |
+| **MAAS**           | **Ubuntu**                     | `ubuntu`     |
+| **MAAS**           | **Bring Your Own OS (BYO-OS)** | `root`       |
+| **Openstack**      | **Ubuntu**                     | `ubuntu`     |
+| **Openstack**      | **Bring Your Own OS (BYO-OS)** | `root`       |
+| **VMware vSphere** | **Ubuntu**                     | `ubuntu`     |
+| **VMware vSphere** | **CentOS**                     | `centos`     |
+| **VMware vSphere** | **Bring Your Own OS (BYO-OS)** | `root`       |
 
 ## Edge
 
