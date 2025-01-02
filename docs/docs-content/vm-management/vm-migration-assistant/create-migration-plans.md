@@ -20,7 +20,8 @@ Follow this guide to create migration plans using the VM Migration Assistant.
 
 - At least one source provider for the VMs to be migrated. Refer to
   [Create Source Providers](./create-source-providers.md) for guidance.
-- A healthy VMO cluster. Refer to the [Create a VMO Profile](../create-vmo-profile.md) for further guidance.
+- A healthy Virtual Machine Orchestrator (VMO) cluster. Refer to the [Create a VMO Profile](../create-vmo-profile.md)
+  for further guidance.
 
   - The VMO cluster must have network connectivity to vCenter and ESXi hosts, and the VMs you want to migrate.
 
@@ -546,8 +547,8 @@ Follow this guide to create migration plans using the VM Migration Assistant.
    | Setting                 | Description                                                                                                                                                                                                                            | Example                                   |
    | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------- |
    | **Plan name**           | A unique name for your migration plan.                                                                                                                                                                                                 | `myMigrationPlan`                         |
-   | **Target provider**     | Select the target provider from the drop-down Menu. By default, this will be your host cluster.                                                                                                                                        | `host`                                    |
-   | **Target namespace**    | Select the target namespace for the VM migration from the drop-down Menu.                                                                                                                                                              | `myVmMigrationNamespace`                  |
+   | **Target provider**     | Select the target provider from the drop-down Menu. By default, this will be your VMO cluster.                                                                                                                                         | `host`                                    |
+   | **Target namespace**    | Select the target namespace from the drop-down Menu. The target namespace is where the migrated VMs will be running on your VMO cluster.                                                                                               | `myVmMigrationNamespace`                  |
    | **Network map**         | A network map defines the mapping of source networks to target networks, ensuring VM network interfaces are correctly connected in the destination environment. Adjust the mapping, or leave the default mapping in place.             | `VM Network` / `Pod Networking`           |
    | **Storage map**         | A storage map defines the mapping of source storage domains to target storage classes or datastores, ensuring VM disks are correctly placed in the destination environment. Adjust the mapping, or leave the default mapping in place. | `vsanDatastore` / `spectro-storage-class` |
    | **Preserve static IPs** | Choose whether to preserve the static IPs of the VMs migrated from vSphere.                                                                                                                                                            | :white_check_mark:                        |
