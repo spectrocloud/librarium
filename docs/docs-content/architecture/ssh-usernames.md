@@ -54,12 +54,12 @@ nodes is critical, consider one of the following options:
 
 ## Data Center
 
-| Provider       | Operating System Pack | SSH Username |
-| -------------- | --------------------- | ------------ |
-| MAAS           | **Ubuntu**            | `ubuntu`     |
-| Openstack      | **Ubuntu**            | `ubuntu`     |
-| VMware vSphere | **Ubuntu**            | `ubuntu`     |
-| VMware vSphere | **CentOS**            | `centos`     |
+| Provider           | Operating System Pack | SSH Username |
+| ------------------ | --------------------- | ------------ |
+| **MAAS**           | **Ubuntu**            | `ubuntu`     |
+| **Openstack**      | **Ubuntu**            | `ubuntu`     |
+| **VMware vSphere** | **Ubuntu**            | `ubuntu`     |
+| **VMware vSphere** | **CentOS**            | `centos`     |
 
 ## Edge
 
