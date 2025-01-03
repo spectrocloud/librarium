@@ -345,9 +345,9 @@ Use the following steps to manually trigger a repave on a hybrid node pool.
      config: |
        kubelet:
          config:
-          shutdownGracePeriod: 30s
+           shutdownGracePeriod: 30s
          flags:
-         - --node-labels=repave1=true
+           - --node-labels=repave1=true
    ```
 
    :::info
