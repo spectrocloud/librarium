@@ -43,7 +43,8 @@ instance.
 
 If you have the tenant admin role, you may also view the resource usage by each of your project in the **Tenant
 Overview** page. Resource usage by different projects are displayed on the bar chart by different colors. This usage
-also does not include Edge or MAAS clusters.
+also does not include Edge or MAAS clusters. For more information about roles and permissions in Palette, refer to
+[User & Role Management](../user-management/user-management.md).
 
 ![Palette interface of Tenant Overview page with the resource usage chart highlighted.](introduction_resource-usage_tenant-admin.webp)
 
