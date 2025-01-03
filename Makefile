@@ -182,8 +182,8 @@ commit: ## Add a Git commit. Usage: make commit MESSAGE="<your message here>"
 docker-image: ## Build the docker image
 	docker build -t $(IMAGE) .
 
-docker-start: docker-image ## Start a local development container
-	docker run --env-file=.env --rm -it -v librarium/docs:/librarium/docs/ -v librarium/_partials/:/librarium/_partials/ -p 9000:9000 $(IMAGE)
+docker-start:  ## Start a local development container
+	docker run --env-file=.env --rm -it -v $(CURDIR)/docs:/librarium/docs/ -v $(CURDIR)/_partials/:/librarium/_partials/ -p 9000:9000 $(IMAGE)
 
 
 ##@ Writing Checks
