@@ -8,16 +8,16 @@ tags: ["profiles", "cluster profiles"]
 
 Use cluster profile variables to create placeholders for parameters in profile-layer configurations, which you
 can populate for individual clusters during deployment. With cluster profile variables, you can use a single cluster profile to deploy
-multiple clusters with unique requirements for security, networking, resource allocation, and so on.
+multiple clusters with unique requirements for security, networking, resource allocation, and more. You can also set specific constraints on the expected values, such as format, optionality, and masking to ensure scalable, error-free cluster deployments.
 
-When defining a cluster profile variable, you can set specific constraints on the expected values, such as format,
-optionality, masking, and so on, to ensure scalable, error-free cluster deployments.
+Cluster profile variables can be used with
+any Palette-connected cluster, including public cloud, data center, bare metal, and edge environments, and can also be managed via [Terraform](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
 
 :::preview
 
 :::
 
-You can use profile variables with any number of packs, manifests, and Helm charts, but only in the scope of their
+You can use cluster profile variables with any number of packs, manifests, and Helm charts, but only in the scope of their
 parent cluster profile. If you want to create placeholders to use across different cluster profiles, consider using
 [Palette Macros](../../../clusters/cluster-management/macros.md).
 
@@ -43,7 +43,7 @@ This guide explains how you can define and manage cluster profile variables.
 
 - Once you deploy a cluster from a profile with variables, you can neither edit nor delete the profile variables. To
   edit or delete them, [version the cluster profile](../modify-cluster-profiles/version-cluster-profile.md) and update
-  the variables in the new version. Enhanced Day-2 operations will be released in a future version.
+  the variables in the new version.
 
   When you version a cluster profile with variables, the variables are propagated to the new version. However, upon
   versioning, the variables in each version are independent.
@@ -85,9 +85,9 @@ the **Profile Layers** stage of cluster profile creation and start following thi
 5.  Enter a variable display name that Palette will display during cluster deployment. The display name must be unique
     within the parent cluster.
 
-6.  Optionally, enter the variable description.
+6.  Optionally, enter a variable description.
 
-7.  Select a data format that the variable will expect. The following table describes the available data formats.
+7.  Select the data format for the variable. The following table describes available data formats.
 
     | **Format** | **Description**                                                                                        |
     | ---------- | ------------------------------------------------------------------------------------------------------ |
@@ -116,7 +116,7 @@ the **Profile Layers** stage of cluster profile creation and start following thi
 
     :::
 
-9.  Review the variable definition and behavior under **Preview**, and then select **Create**.
+9.  **Preview** the variable definition and behavior, and **Create** the variable.
 
     ![Palette YAML editor with the added profile variables.](/profiles_create-cluster-profiles_define-profile-variables_variable-preview.webp)
 
@@ -145,7 +145,7 @@ the **Profile Layers** stage of cluster profile creation and start following thi
 
 ### Validation
 
-1. Log in to Palette.
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 2. From the left **Main Menu**, select **Profiles** and navigate to the cluster profile for which you have defined
    profile variables.
@@ -177,7 +177,7 @@ variables in the new version.
 
 ### Enablement
 
-1. Log in to Palette.
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 2. Navigate to the cluster profile for which you want to update profile variables and, in the upper-right corner, click
    **Variables**.
@@ -193,11 +193,11 @@ variables in the new version.
    necessary changes.
 
 4. To delete a profile variable, navigate to the profile layers that implement this variable and remove it from their
-   YAML configuration. Then, in the **three-dot menu** of the necessary variable, select **Delete**.
+   YAML configuration. Then, in the **three-dot Menu** of the necessary variable, select **Delete**.
 
 ### Validation
 
-1. Log in to Palette.
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 2. From the left **Main Menu**, select **Profiles** and navigate to the cluster profile for which you have updated the
    profile variables.
