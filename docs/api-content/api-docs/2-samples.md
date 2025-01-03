@@ -77,7 +77,6 @@ Valid options: azure, aks, aws, eks, gcp, gke, tke, maas, vsphere, openstack, ed
 
 :::
 
-
 ```shell
 export PROVIDER="azure"
 ```
