@@ -6,6 +6,7 @@ src/deprecated
 vale/
 **/*.yaml
 **/*.yml
+.dockerignore
 
 
 # Troublesome files
