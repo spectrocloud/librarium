@@ -300,8 +300,6 @@ nodes. Before proceeding, consider the following points:
 
 ## When to Manually Repave Hybrid Node Pools
 
-<!-- This section may be removed as the workaround is not currently working. There may also be repave logic included to resolve this for 4.5.c. -->
-
 Your hybrid node pools require manual repaving in these scenarios:
 
 - After modifying the **Access Management** settings of your Amazon EKS cluster in Palette. Refer to steps 11 through 13
@@ -334,19 +332,32 @@ Use the following steps to manually trigger a repave on a hybrid node pool.
 
    ![Edit Hybrid Profile](/aws_eks-hybrid_create-hybrid-node-pools_in-use-clusters.webp)
 
-5. Click on the **cni-custom 0.1.0** network layer to view the **Edit Pack** page.
+5. Click on the **edge-nodeadm x.y.z** network layer to view the **Edit Pack** page.
 
-6. In the YAML editor on the right, change the value for `manifests.byo-cni.contents.data.custom-cni` to something
-   different.
+6. In the YAML editor on the right, add an arbitrary node label to `cluster.config.kubelet.flags`.
 
    Example.
 
-   ```yaml
-   custom-cni: "dummy-repave-1"
+   ```yaml {9} hideClipboard
+   pack:
+     content: {}
+   cluster:
+     config: |
+       kubelet:
+         config:
+          shutdownGracePeriod: 30s
+         flags:
+         - --node-labels=repave1=true
    ```
 
-   As mentioned in step 14 during the [Create Profile](#create-profile) steps, the specific value you enter does not
-   affect your hybrid node pool's functionality, but any change to this field will trigger the required repave.
+   :::info
+
+   The key value you enter for the node label does not affect your hybrid node pool's functionality, but any addition or
+   change to the kubelet config will trigger the required repave.
+
+   If you need to trigger a repave again, you can simply modify the key value to something else, such as `--node-labels=repave2=true`.
+
+   :::
 
 7. Click **Confirm Updates** when done, then click **Save Changes**.
 
@@ -360,7 +371,7 @@ Use the following steps to manually trigger a repave on a hybrid node pool.
     **Node Pool Updates** in the banner.
 
 12. On the **Pool changes summary** pop-up window, click the checkbox next to **Upcoming changes in hybridPoolName
-    configuration**. Click **Confirm** afterward.
+    configuration**. Click **Confirm** afterwards.
 
 13. On the **Review update changes** window, review your changes and click **Confirm** to start the repave.
 
