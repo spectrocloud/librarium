@@ -15,8 +15,9 @@ To get started with the Palette CLI, check out the [Install](install-palette-cli
 ## Encryption
 
 The Palette CLI uses Advanced Encryption Standard (AES) encryption to secure sensitive data. Several CLI commands
-require an encryption passphrase to be provided as either an environment variable or a flag. The passphrase must be
-between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character.
+require an encryption passphrase to be provided as either an environment variable or a CLI flag. Otherwise, you will be
+prompted to provide the passphrase when required. The passphrase must be between 8 to 32 characters long and contain a
+capital letter, a lowercase letter, a digit, and a special character.
 
 Sensitive data, such as the Palette API key, passwords, and other credentials, are encrypted using the provided
 passphrase and stored in the CLI configuration files. The CLI decrypts the data using the same passphrase when required.
@@ -33,7 +34,8 @@ passphrase.
 :::
 
 We recommend you set the `PALETTE_ENCRYPTION_PASSWORD` environment variable to avoid providing the passphrase every time
-you issue a command.
+you issue a command that requires it. You can set the environment variable using the following command. Replace
+`*************` with your passphrase.
 
 ```bash
 export PALETTE_ENCRYPTION_PASSWORD=*************
@@ -47,6 +49,3 @@ that requires the passphrase.
 - [Install](install-palette-cli.md)
 
 - [Commands](./commands/commands.md)
-
-<br />
-is a symmetric block cipher that encrypts and decrypts data using the same key ```

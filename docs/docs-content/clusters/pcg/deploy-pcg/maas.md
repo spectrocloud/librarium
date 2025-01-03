@@ -28,6 +28,11 @@ carefully review the [Prerequisites](#prerequisites) section.
 - Download and install the Palette CLI from the [Downloads](../../../spectro-downloads.md#palette-cli) page. Refer to
   the [Palette CLI Install](../../../automation/palette-cli/install-palette-cli.md) guide to learn more.
 
+- You will need to provide the Palette CLI an encryption passphrase to secure sensitive data. The passphrase must be
+  between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character.
+  Refer to the [Palette CLI Encryption](../../../automation/palette-cli/palette-cli.md#encryption) section for more
+  information.
+
 The following system requirements must be met to install a PCG in MAAS:
 
 - PCG IP address requirements:
@@ -101,7 +106,14 @@ is not required for the DNS records to be accessible from the internet.
 
 1.  In an x86 Linux host with the Palette CLI installed, open up a terminal session.
 
-2.  Issue the following command to authenticate with Palette. When prompted, enter the required information. Refer to
+2.  Set your Palette CLI encryption passphrase value in an environment variable. Use the following command template to
+    set the passphrase. Replace `*************` with your passphrase.
+
+    ```shell
+    export PALETTE_ENCRYPTION_PASSWORD=*************
+    ```
+
+3.  Issue the following command to authenticate with Palette. When prompted, enter the required information. Refer to
     the table below for information about each parameter.
 
     ```shell
@@ -125,7 +137,7 @@ is not required for the DNS records to be accessible from the internet.
 
     :::
 
-3.  Once you have authenticated successfully, start the PCG installer by issuing the following command. Refer to the
+4.  Once you have authenticated successfully, start the PCG installer by issuing the following command. Refer to the
     table below for information about each parameter.
 
     ```bash
@@ -141,7 +153,7 @@ is not required for the DNS records to be accessible from the internet.
     | **Private Cloud Gateway Name**                       | Enter a custom name for the PCG. Example: `maas-pcg-1`.                                                                                                                                                                                                                         |
     | **Share PCG Cloud Account across platform Projects** | Enter `y` if you want the Cloud Account associated with the PCG to be available from all projects within your organization. Enter `n` if you want the Cloud Account to only be available at the tenant admin scope.                                                             |
 
-4.  Next, provide environment configurations for the cluster. Refer to the following table for information about each
+5.  Next, provide environment configurations for the cluster. Refer to the following table for information about each
     option.
 
     | **Parameter**                     | **Description**                                                                                                                                                                                                                                                                                                |
@@ -153,7 +165,7 @@ is not required for the DNS records to be accessible from the internet.
     | **Pod CIDR**                      | Enter the CIDR pool that will be used to assign IP addresses to pods in the PCG cluster. The pod IP addresses should be unique and not overlap with any machine IPs in the environment.                                                                                                                        |
     | **Service IP Range**              | Enter the IP address range that will be used to assign IP addresses to services in the PCG cluster. The service IP addresses should be unique and not overlap with any machine IPs in the environment.                                                                                                         |
 
-5.  If you selected `Custom` for the image registry type, you will be prompted to provide the following information.
+6.  If you selected `Custom` for the image registry type, you will be prompted to provide the following information.
 
     | **Parameter**                                            | **Description**                                                                                                                                                                                                                                                    |
     | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -166,14 +178,14 @@ is not required for the DNS records to be accessible from the internet.
     | **Registry Username**                                    | The username for the custom registry.                                                                                                                                                                                                                              |
     | **Password**                                             | The password for the custom registry.                                                                                                                                                                                                                              |
 
-6.  Provide the MAAS API key and the MAAS server URL. Refer to the table below for information about each parameter.
+7.  Provide the MAAS API key and the MAAS server URL. Refer to the table below for information about each parameter.
 
     | **Parameter**       | **Description**                                                  |
     | :------------------ | ---------------------------------------------------------------- |
     | **MAAS API Key**    | Enter the MAAS API key.                                          |
     | **MAAS Server URL** | Enter the MAAS server URL. Example: `http://10.1.1.1:5240/MAAS`. |
 
-7.  Configure the PCG Cluster. The values provided will determine which machines should be selected in MAAS for the PCG
+8.  Configure the PCG Cluster. The values provided will determine which machines should be selected in MAAS for the PCG
     deployment. Refer to the table below for information about each parameter.
 
     | **Parameter**                             | **Description**                                                                                       |
@@ -192,7 +204,7 @@ is not required for the DNS records to be accessible from the internet.
 
     :::
 
-8.  A new PCG configuration file is generated, and its location is displayed on the console. You will receive an output
+9.  A new PCG configuration file is generated, and its location is displayed on the console. You will receive an output
     similar to the following.
 
     ```bash hideClipboard
@@ -221,7 +233,7 @@ is not required for the DNS records to be accessible from the internet.
 
     :::
 
-9.  To avoid potential vulnerabilities, once the installation is complete, remove the `kind` images that were installed
+10. To avoid potential vulnerabilities, once the installation is complete, remove the `kind` images that were installed
     in the environment where you initiated the installation.
 
     Issue the following command to list all instances of `kind` that exist in the environment.
