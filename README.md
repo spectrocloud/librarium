@@ -38,10 +38,13 @@ Initialize the repository by issuing the following command:
 make init
 ```
 
-Next, add your Palette API key to the `.env` file. Replace `<your-palette-api-key>` with your Palette API key.
+By default, the [Packs component](#packs-component) will be disabled. If you would like to enable it, then add your
+Palette API key and the variable that enables the component to the `.env` file. Replace `<your-palette-api-key>` with
+your Palette API key.
 
 ```shell
 PALETTE_API_KEY="<your-palette-api-key>"
+DISABLE_PACKS_INTEGRATIONS=false
 ```
 
 > [!IMPORTANT] You need a Palette API key to start the local development server. Refer to the
@@ -565,7 +568,9 @@ component will automatically display the badge in the correct color based on the
 ### Simple Card Grid
 
 This is a custom component that creates a grid of simple text cards with two columns, styled according to our color
-scheme. The rows of cards are dynamically created according to the list of specified cards.
+scheme. The rows of cards are dynamically created according to the list of specified cards. This component uses the
+`VersionedLink` under the covers. URLs should be specified as discussed in the [Internal Links](#internal-links)
+section.
 
 ```js
 <SimpleCardGrid
@@ -574,19 +579,19 @@ scheme. The rows of cards are dynamically created according to the list of speci
       title: "Lorem Ipsum",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       buttonText: "Learn more",
-      relativeURL: "./link",
+      url: "/path/to/link",
     },
     {
       title: "Lorem Ipsum",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       buttonText: "Learn more",
-      relativeURL: "./link",
+      url: "/path/to/link",
     },
     {
       title: "Lorem Ipsum",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
       buttonText: "Learn more",
-      relativeURL: "./link",
+      url: "/path/to/link",
     },
   ]}
 />
