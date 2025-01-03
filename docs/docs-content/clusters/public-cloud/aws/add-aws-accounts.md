@@ -222,5 +222,8 @@ newly added AWS cloud account is listed under the AWS sections.
 ## Next Steps
 
 Now that you have added an AWS account to Palette, you can start deploying Kubernetes clusters to your AWS account. To
-learn how to get started with deploying Kubernetes clusters to AWS, check out the
-[Create and Manage AWS IaaS Cluster](create-cluster.md) guide or the [Create and Manage AWS EKS Cluster](eks.md) guide.
+learn how to get started with deploying Kubernetes clusters to AWS, check out the following guides:
+
+- [Create and Manage AWS IaaS Cluster](create-cluster.md)
+- [Create and Manage AWS EKS Cluster](eks.md)
+- [EKS Hybrid Nodes](./eks-hybrid-nodes/eks-hybrid-nodes.md)
