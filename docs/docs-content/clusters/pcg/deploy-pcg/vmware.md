@@ -43,6 +43,11 @@ environment, then you already have all the required permissions and roles. Proce
 - Download and install the Palette CLI from the [Downloads](../../../spectro-downloads.md#palette-cli) page. Refer to
   the [Palette CLI Install](../../../automation/palette-cli/install-palette-cli.md) guide to learn more.
 
+- You will need to provide the Palette CLI an encryption passphrase to secure sensitive data. The passphrase must be
+  between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character.
+  Refer to the [Palette CLI Encryption](../../../automation/palette-cli/palette-cli.md#encryption) section for more
+  information.
+
 The following system requirements must be met to install a PCG in VMware vSphere:
 
 - PCG IP address requirements:
@@ -181,7 +186,14 @@ The following requirements apply to tags:
 
 1.  In an x86 Linux host with the Palette CLI installed, open up a terminal session.
 
-2.  Issue the following command to authenticate with Palette. When prompted, enter the required information. Refer to
+2.  Set your Palette CLI encryption passphrase value in an environment variable. Use the following command to set the
+    passphrase. Replace `*************` with your passphrase.
+
+    ```shell
+    export PALETTE_ENCRYPTION_PASSWORD=*************
+    ```
+
+3.  Issue the following command to authenticate with Palette. When prompted, enter the required information. Refer to
     the table below for information about each parameter.
 
     ```shell
@@ -205,7 +217,7 @@ The following requirements apply to tags:
 
     :::
 
-3.  Once you have authenticated successfully, start the PCG installer by issuing the following command. Refer to the
+4.  Once you have authenticated successfully, start the PCG installer by issuing the following command. Refer to the
     table below for information about each parameter.
 
     ```bash
@@ -221,7 +233,7 @@ The following requirements apply to tags:
     | **Private Cloud Gateway Name**                       | Enter a custom name for the PCG. Example: `vmware-pcg-1`.                                                                                                                                                                                                                          |
     | **Share PCG Cloud Account across platform Projects** | Enter `y` if you want the Cloud Account associated with the PCG to be available from all projects within your organization. Enter `n` if you want the Cloud Account to only be available at the tenant admin scope.                                                                |
 
-4.  Next, provide environment configurations for the cluster. Refer to the following table for information about each
+5.  Next, provide environment configurations for the cluster. Refer to the following table for information about each
     option.
 
     | **Parameter**                     | **Description**                                                                                                                                                                                                                                                                                                |
@@ -233,7 +245,7 @@ The following requirements apply to tags:
     | **Pod CIDR**                      | Enter the CIDR pool that will be used to assign IP addresses to pods in the PCG cluster. The pod IP addresses should be unique and not overlap with any machine IPs in the environment.                                                                                                                        |
     | **Service IP Range**              | Enter the IP address range that will be used to assign IP addresses to services in the PCG cluster. The service IP addresses should be unique and not overlap with any machine IPs in the environment.                                                                                                         |
 
-5.  If you selected `Custom` for the image registry type, you will be prompted to provide the following information.
+6.  If you selected `Custom` for the image registry type, you will be prompted to provide the following information.
 
     | **Parameter**                                            | **Description**                                                                                                                                                                                                                                                    |
     | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -246,7 +258,7 @@ The following requirements apply to tags:
     | **Registry Username**                                    | The username for the custom registry.                                                                                                                                                                                                                              |
     | **Password**                                             | The password for the custom registry.                                                                                                                                                                                                                              |
 
-6.  The next set of prompts is for configuring connection details for the vSphere environment. The CLI will use this
+7.  The next set of prompts is for configuring connection details for the vSphere environment. The CLI will use this
     information to establish a network connection to the vSphere environment and query the vSphere API to retrieve
     information about the environment. The information retrieved is used in the next step to select target resources.
 
@@ -257,7 +269,7 @@ The following requirements apply to tags:
     | **vSphere Password**                                     | The vSphere account password.                                                                                                                                                                                                                                      |
     | **Allow Insecure Connection (Bypass x509 Verification)** | Enabling this option bypasses x509 CA verification. Enter `n` if using a custom registry with self-signed SSL certificates. Otherwise, enter `y`. If you enter `y`, you will receive a follow-up prompt asking you to provide the file path to the CA certificate. |
 
-7.  Next, fill out the VMware resource configurations. Refer to the following table for information about each option.
+8.  Next, fill out the VMware resource configurations. Refer to the following table for information about each option.
 
     | **Parameter**                                            | **Description**                                                                                                                                                                                                                                                               |
     | -------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -273,7 +285,7 @@ The following requirements apply to tags:
     | **SSH Public Keys**                                      | Provide the public OpenSSH key for the PCG cluster. Use this key when establishing an SSH connection with the PCG cluster. This prompt will result in the default text editor for the Operating System to open. Vi is the more common text editor used in Linux environments. |
     | **Number of Nodes**                                      | The number of nodes that will make up the cluster. Available options are **1** or **3**. We recommend three nodes for a High Availability (HA) cluster in a production environment.                                                                                           |
 
-8.  Specify the IP pool configuration. You have the option to select a static placement or use Dynamic Host
+9.  Specify the IP pool configuration. You have the option to select a static placement or use Dynamic Host
     Configuration Protocol (DHCP). With static placement, an IP pool is created, and the PCG VMs are assigned IP
     addresses from the selected pool. With DHCP, PCG VMs are assigned IP addresses via DNS. Review the following tables
     to learn more about each parameter.
@@ -303,14 +315,14 @@ The following requirements apply to tags:
     | ------------------ | ------------------------------------------- |
     | **Search domains** | Comma-separated list of DNS search domains. |
 
-9.  Specify the cluster boot configuration.
+10. Specify the cluster boot configuration.
 
     | **Parameter**                             | **Description**                                                                                                                                                |
     | ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
     | **Patch OS on boot**                      | This parameter indicates whether or not to patch the OS of the PCG hosts on the first boot.                                                                    |
     | **Reboot nodes once OS patch is applied** | This parameter indicates whether or not to reboot PCG nodes after OS patches are complete. This only applies if the **Patch OS on boot** parameter is enabled. |
 
-10. Enter the vSphere Machine configuration for the Private Cloud Gateway. We recommend `M` or greater for production
+11. Enter the vSphere Machine configuration for the Private Cloud Gateway. We recommend `M` or greater for production
     workloads.
 
     | **Parameter** | **Description**                                                                                                                                                                                                                                                 |
@@ -328,13 +340,13 @@ The following requirements apply to tags:
     | **Memory**    | The number of memory to allocate to the Virtual Machine.  |
     | **Storage**   | The amount of storage to allocate to the Virtual Machine. |
 
-11. Specify the node affinity configuration.
+12. Specify the node affinity configuration.
 
     | **Parameter**     | **Description**                                                   |
     | ----------------- | ----------------------------------------------------------------- |
     | **Node Affinity** | Enter `y` to schedule all Palette pods on the control plane node. |
 
-12. A new PCG configuration file is generated, and its location is displayed on the console. You will receive an output
+13. A new PCG configuration file is generated, and its location is displayed on the console. You will receive an output
     similar to the following.
 
     ```bash hideClipboard
@@ -363,7 +375,7 @@ The following requirements apply to tags:
 
     :::
 
-13. To avoid potential vulnerabilities, once the installation is complete, remove the `kind` images that were installed
+14. To avoid potential vulnerabilities, once the installation is complete, remove the `kind` images that were installed
     in the environment where you initiated the installation.
 
     Issue the following command to list all instances of `kind` that exist in the environment.

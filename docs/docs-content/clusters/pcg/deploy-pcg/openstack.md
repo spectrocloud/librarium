@@ -28,6 +28,11 @@ installation, carefully review the [Prerequisites](#prerequisites) section.
 - Download and install the Palette CLI from the [Downloads](../../../spectro-downloads.md#palette-cli) page. Refer to
   the [Palette CLI Install](../../../automation/palette-cli/install-palette-cli.md) guide to learn more.
 
+- You will need to provide the Palette CLI an encryption passphrase to secure sensitive data. The passphrase must be
+  between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character.
+  Refer to the [Palette CLI Encryption](../../../automation/palette-cli/palette-cli.md#encryption) section for more
+  information.
+
 The following system requirements must be met to install a PCG in OpenStack:
 
 - PCG IP address requirements:
@@ -320,7 +325,14 @@ The following permissions are required to deploy a PCG to OpenStack and for Pale
 
 1.  In an x86 Linux host with the Palette CLI installed, open up a terminal session.
 
-2.  Issue the following command to authenticate with Palette. When prompted, enter the required information. Refer to
+2.  Set your Palette CLI encryption passphrase value in an environment variable. Use the following command to set the
+    passphrase. Replace `*************` with your passphrase.
+
+    ```shell
+    export PALETTE_ENCRYPTION_PASSWORD=*************
+    ```
+
+3.  Issue the following command to authenticate with Palette. When prompted, enter the required information. Refer to
     the table below for information about each parameter.
 
     ```shell
@@ -344,7 +356,7 @@ The following permissions are required to deploy a PCG to OpenStack and for Pale
 
     :::
 
-3.  Once you have authenticated successfully, start the PCG installer by issuing the following command. Refer to the
+4.  Once you have authenticated successfully, start the PCG installer by issuing the following command. Refer to the
     table below for information about each parameter.
 
     ```bash
@@ -361,7 +373,7 @@ The following permissions are required to deploy a PCG to OpenStack and for Pale
     | **Private Cloud Gateway Name**                       | Enter a custom name for the PCG. Example: `openstack-pcg-1`.                                                                                                                                                                                                                       |
     | **Share PCG Cloud Account across platform Projects** | Enter `y` if you want the Cloud account associated with the PCG to be available from all projects within your organization. Enter `n` if you want the Cloud Account to only be available at the tenant admin scope.                                                                |
 
-4.  Next, provide environment configurations for the cluster. Refer to the following table for information about each
+5.  Next, provide environment configurations for the cluster. Refer to the following table for information about each
     option.
 
     | **Parameter**                     | **Description**                                                                                                                                                                                                                                                                                                |
@@ -373,7 +385,7 @@ The following permissions are required to deploy a PCG to OpenStack and for Pale
     | **Pod CIDR**                      | Enter the CIDR pool that will be used to assign IP addresses to pods in the PCG cluster. The pod IP addresses should be unique and not overlap with any machine IPs in the environment.                                                                                                                        |
     | **Service IP Range**              | Enter the IP address range that will be used to assign IP addresses to services in the PCG cluster. The service IP addresses should be unique and not overlap with any machine IPs in the environment.                                                                                                         |
 
-5.  If you selected `Custom` for the image registry type, you will be prompted to provide the following information.
+6.  If you selected `Custom` for the image registry type, you will be prompted to provide the following information.
 
     | **Parameter**                                            | **Description**                                                                                                                                                                                                                                                    |
     | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -386,7 +398,7 @@ The following permissions are required to deploy a PCG to OpenStack and for Pale
     | **Registry Username**                                    | The username for the custom registry.                                                                                                                                                                                                                              |
     | **Password**                                             | The password for the custom registry.                                                                                                                                                                                                                              |
 
-6.  Next, provide the OpenStack environment configurations. Refer to the following table for information about each
+7.  Next, provide the OpenStack environment configurations. Refer to the following table for information about each
     option.
 
     | **Parameter**                   | **Description**                                                                                                                                                                            |
@@ -404,7 +416,7 @@ The following permissions are required to deploy a PCG to OpenStack and for Pale
     environment to validate the credentials. If the credentials are valid, the installation process will continue. If
     the credentials are invalid, you will be prompted to re-enter the credentials.
 
-7.  After the OpenStack environment configurations are validated, you will be prompted for additional OpenStack
+8.  After the OpenStack environment configurations are validated, you will be prompted for additional OpenStack
     configuration values. Use the following table to learn more about each option.
 
     | **Parameter**                             | **Description**                                                                                                                                                                                                                                                               |
@@ -425,7 +437,7 @@ The following permissions are required to deploy a PCG to OpenStack and for Pale
     | **Number of Nodes**                       | Specify the number of nodes for the PCG cluster. We recommend three-node clusters for production workloads.                                                                                                                                                                   |
     | **Node Affinity**                         | Enter `y` to schedule all Palette pods on the control plane node.                                                                                                                                                                                                             |
 
-8.  A new PCG configuration file is generated, and its location is displayed on the console. You will receive an output
+9.  A new PCG configuration file is generated, and its location is displayed on the console. You will receive an output
     similar to the following.
 
     ```bash hideClipboard
@@ -454,7 +466,7 @@ The following permissions are required to deploy a PCG to OpenStack and for Pale
 
     :::
 
-9.  To avoid potential vulnerabilities, once the installation is complete, remove the `kind` images that were installed
+10. To avoid potential vulnerabilities, once the installation is complete, remove the `kind` images that were installed
     in the environment where you initiated the installation.
 
     Issue the following command to list all instances of `kind` that exist in the environment.
