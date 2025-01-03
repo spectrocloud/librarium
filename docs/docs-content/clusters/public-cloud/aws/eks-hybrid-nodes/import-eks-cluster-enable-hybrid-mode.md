@@ -170,7 +170,7 @@ Import your Amazon EKS cluster and enable hybrid mode to be able to create edge 
    job.batch/palette-import-presetup-job created
    ```
 
-8. Wait for your cluster health to transition to **Healthy**. This will take a few minutes after running the agent
+8. Wait for your cluster health to transition to **Healthy**. This will take a few minutes after issuing the agent
    install command in the previous step.
 
 9. Once your cluster displays as **Healthy**, click **Settings** in the top-right corner to reveal the **drop-down
@@ -230,7 +230,7 @@ Import your Amazon EKS cluster and enable hybrid mode to be able to create edge 
     Replace `<roleArn>` with the **Role ARN** entry from step 13.
 
     ```shell
-    kubectl create -f=/dev/stdin <<-EOF
+    kubectl create --filename=/dev/stdin <<-EOF
     apiVersion: v1
     kind: ConfigMap
     metadata:
@@ -304,7 +304,7 @@ Import your Amazon EKS cluster and enable hybrid mode to be able to create edge 
     Example command.
 
     ```shell hideClipboard
-    kubectl create -f=/dev/stdin <<-EOF
+    kubectl create --filename=/dev/stdin <<-EOF
     apiVersion: v1
     kind: ConfigMap
     metadata:
@@ -397,8 +397,9 @@ Cilium handles IP Address Management (IPAM) and Border Gateway Protocol (BGP) fo
 
     :::info
 
-    The Cilium [Daemonset](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) is configured to run on
-    your hybrid nodes only. If no hybrid nodes are present in your cluster, the DaemonSet will remain inactive.
+    The Cilium [Daemonset](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) is configured to
+    operate on your hybrid nodes only. If no hybrid nodes are present in your cluster, the DaemonSet will remain
+    inactive.
 
     :::
 

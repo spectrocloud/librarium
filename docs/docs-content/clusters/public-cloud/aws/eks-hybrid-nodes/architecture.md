@@ -30,11 +30,11 @@ These are some of the architectural highlights when using Palette to manage your
 
 ## Hybrid Network Connectivity
 
-Network connectivity between your on-premises environments, edge locations, and Amazon EKS cluster must be established
+Network connectivity between your on-prem environments, edge locations, and Amazon EKS cluster must be established
 before Palette can manage your Amazon EKS Hybrid Nodes.
 
-In the following example, an Amazon EKS cluster is connected to an on-premises datacenter and edge location through an
-AWS Transit Gateway and AWS Site-to-Site Virtual Private Network (VPN).
+In the following example, an Amazon EKS cluster is connected to an on-prem data center and edge location through an AWS
+Transit Gateway and AWS Site-to-Site Virtual Private Network (VPN).
 
 ![Example Amazon EKS Hybrid Nodes network architecture](/aws_eks-hybrid_architecture_eks-hybrid-architecture.webp)
 
@@ -50,7 +50,7 @@ for guidance on all available options.
 
 ### Configuration Requirements
 
-If using a VPN or AWS Direct Connect between AWS and your on-premises and edge environments, review the following
+If using a VPN or AWS Direct Connect between AWS and your on-prem and edge environments, review the following
 configuration requirements.
 
 #### AWS
@@ -85,17 +85,17 @@ For AWS VPNs, configure two static routes for each of the following CIDRs:
 If you're using a Virtual Private Gateway or Transit Gateway, route propagation can be enabled to automatically populate
 your VPC route tables. Ensure you verify your route tables after propagation.
 
-#### On-Premises and Edge Locations
+#### On-Prem and Edge Locations
 
-For on-premises and edge VPNs, set up IPsec Phase 1 tunnels with Phase 2 security associations for the following:
+For on-prem and edge VPNs, set up IPsec Phase 1 tunnels with Phase 2 security associations for the following:
 
 - Hybrid Node subnet to EKS VPC CIDR.  
-  For example, Hybrid Node Subnet 10.201.0.0/16 → EKS VPC CIDR 10.100.0.0/16.
+  For example, Hybrid Node subnet 10.201.0.0/16 → EKS VPC CIDR 10.100.0.0/16.
 
 - Hybrid Node pod CIDR to EKS VPC CIDR.  
   For example, Hybrid Node Pod CIDR 192.168.0.0/16 → EKS VPC CIDR 10.100.0.0/16.
 
-You should also configure Border Gateway Protocol (BGP) or static routes on your on-premises or edge location router to
+You should also configure Border Gateway Protocol (BGP) or static routes on your on-prem or edge location router to
 ensure network traffic reaches the correct hybrid nodes. For static routing, this is explained in more detail during the
 [Configure Hybrid Node Networking for VPN Solutions](./create-hybrid-node-pools.md#configure-hybrid-node-networking-for-vpn-solutions)
 steps.

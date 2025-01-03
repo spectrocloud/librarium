@@ -130,7 +130,7 @@ Your cluster profile for hybrid nodes is now created and can be used in the
     <summary> Example ping command </summary>
 
     ```shell
-    kubectl exec -it <debugPodName> -- ping <edgeHostIpAddress>
+    kubectl exec --stdin=true --tty=true <debugPodName> -- ping <edgeHostIpAddress>
     ```
 
     </details>
@@ -202,11 +202,11 @@ nodes. Before proceeding, consider the following points:
   uses a different routing mechanism, these steps may not apply.
 
 - If your VPN supports BGP (Border Gateway Protocol), you may be able to skip manual route configuration entirely. BGP
-  can automatically advertise and update routes between your cluster and VPN. Check your VPN's documentation for BGP
+  can automatically advertise and update routes between your cluster and VPN. Check your VPN documentation for BGP
   neighbor configuration and route import procedures.
 
-- These steps outline the general process for configuring a VPN with static routes. Refer to your VPN's documentation
-  for provider-specific configuration details.
+- These steps outline the general process for configuring a VPN with static routes. Refer to your VPN documentation for
+  provider-specific configuration details.
 
 ### Prerequisites
 

@@ -10,18 +10,18 @@ Palette supports management of
 [Amazon EKS Hybrid Nodes](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-overview.html). Using Palette to
 manage Amazon EKS Hybrid Nodes provides the following benefits:
 
-- Easier Setup: Palette automates the process of setting up and connecting on-premises devices (bare metal or virtual
+- Easier Setup: Palette automates the process of setting up and connecting on-prem devices (bare metal or virtual
   machines) to EKS clusters, reducing the need for manual configuration.
 
 - Centralized Management: Palette offers a single interface to manage the lifecycle of EKS Hybrid Nodes, ensuring
-  consistent control over Kubernetes resources across on-premises, edge, and AWS environments.
+  consistent control over Kubernetes resources across on-prem, edge, and AWS environments.
 
 - Improved Recovery Options: Palette supports managing multiple edge sites under a single control plane, making it
   easier to move workloads to other sites in case of hardware or site failures.
 
-Using Amazon EKS Hybrid Nodes also reduces resource usage at edge locations by running the control plane in AWS instead
-of at each edge site. This minimizes CPU, memory, and storage device wear on edge hosts while leaving more capacity for
-workloads.
+Using Amazon EKS Hybrid Nodes also reduces resource usage at edge locations by operating the control plane in AWS
+instead of at each edge site. This minimizes CPU, memory, and storage device wear on edge hosts while leaving more
+capacity for workloads.
 
 ## Resources
 
