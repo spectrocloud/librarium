@@ -86,6 +86,7 @@ init: ## Initialize npm dependencies
 	grep -q "^ALGOLIA_SEARCH_KEY=" .env || echo "\nALGOLIA_SEARCH_KEY=1234567890" >> .env
 	grep -q "^ALGOLIA_INDEX_NAME=" .env || echo "\nALGOLIA_INDEX_NAME=spectrocloud" >> .env
 	grep -q "^DSO_AUTH_TOKEN=" .env || echo "\nDISABLE_SECURITY_INTEGRATIONS=true" >> .env
+	grep -q "^PALETTE_API_KEY=" .env || echo "\nDISABLE_PACKS_INTEGRATIONS=true" >> .env
 	npx husky install
 
 start: ## Start a local development server
@@ -182,7 +183,7 @@ commit: ## Add a Git commit. Usage: make commit MESSAGE="<your message here>"
 docker-image: ## Build the docker image
 	docker build -t $(IMAGE) .
 
-docker-start:  ## Start a local development container
+docker-start: docker-image ## Build the docker image and start a local development container
 	docker run --env-file=.env --rm -it -v $(CURDIR)/docs:/librarium/docs/ -v $(CURDIR)/_partials/:/librarium/_partials/ -p 9000:9000 $(IMAGE)
 
 
