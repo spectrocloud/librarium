@@ -332,7 +332,7 @@ Use the following steps to manually trigger a repave on a hybrid node pool.
 
    ![Edit Hybrid Profile](/aws_eks-hybrid_create-hybrid-node-pools_in-use-clusters.webp)
 
-5. Click on the **edge-nodeadm x.y.z** kubernetes layer to view the **Edit Pack** page.
+5. Click on the **edge-nodeadm x.y.z** Kubernetes layer to view the **Edit Pack** page.
 
 6. In the YAML editor on the right, add an arbitrary node label to `cluster.config.kubelet.flags`.
 
