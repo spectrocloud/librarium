@@ -106,8 +106,8 @@ is not required for the DNS records to be accessible from the internet.
 
 1.  In an x86 Linux host with the Palette CLI installed, open up a terminal session.
 
-2.  Set your Palette CLI encryption passphrase value in an environment variable. Use the following command template to
-    set the passphrase. Replace `*************` with your passphrase.
+2.  Set your Palette CLI encryption passphrase value in an environment variable. Use the following command to set the
+    passphrase. Replace `*************` with your passphrase.
 
     ```shell
     export PALETTE_ENCRYPTION_PASSWORD=*************

@@ -186,8 +186,8 @@ The following requirements apply to tags:
 
 1.  In an x86 Linux host with the Palette CLI installed, open up a terminal session.
 
-2.  Set your Palette CLI encryption passphrase value in an environment variable. Use the following command template to
-    set the passphrase. Replace `*************` with your passphrase.
+2.  Set your Palette CLI encryption passphrase value in an environment variable. Use the following command to set the
+    passphrase. Replace `*************` with your passphrase.
 
     ```shell
     export PALETTE_ENCRYPTION_PASSWORD=*************
