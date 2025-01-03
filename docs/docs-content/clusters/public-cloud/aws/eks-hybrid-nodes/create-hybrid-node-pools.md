@@ -355,7 +355,8 @@ Use the following steps to manually trigger a repave on a hybrid node pool.
    The key value you enter for the node label does not affect your hybrid node pool's functionality, but any addition or
    change to the Kubelet config will trigger the required repave.
 
-   If you need to trigger a repave again, you can modify the key value to something else, such as `--node-labels=repave2=true`.
+   If you need to trigger a repave again, you can modify the key value to something else, such as
+   `--node-labels=repave2=true`.
 
    :::
 
