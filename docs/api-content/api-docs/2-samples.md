@@ -69,19 +69,30 @@ want to deploy the cluster, such as public cloud or on-prem.
 
 **Endpoint**: `https://api.spectrocloud.com/v1/spectroclusters/{provider}`
 
-Set the provider as an environment variable.
+The following table outlines all available provider options.
 
-:::info
+| **Provider**                                   | **Value**     |
+| ---------------------------------------------- | ------------- |
+| **Azure IaaS**                                 | `azure`       |
+| **Azure AKS**                                  | `aks`         |
+| **AWS IaaS**                                   | `aws`         |
+| **AWS EKS**                                    | `eks`         |
+| **GCP IaaS**                                   | `gcp`         |
+| **GCP GKE**                                    | `gke`         |
+| **TKE** (Tencent)                              | `tke`         |
+| **MAAS** (Canonical)                           | `maas`        |
+| **VMware vSphere**                             | `vsphere`     |
+| **Openstack**                                  | `openstack`   |
+| **Edge Native**                                | `edge-native` |
+| [**Virtual**](/devx/palette-virtual-clusters/) | `virtual`     |
 
-Valid options: azure, aks, aws, eks, gcp, gke, tke, maas, vsphere, openstack, edge-native, virtual
-
-:::
+Set the provider as an environment variable. For example, issue the following command to set Azure IaaS as the provider.
 
 ```shell
 export PROVIDER="azure"
 ```
 
-<br />
+Example payload.
 
 ```shell
 export PAYLOAD='{
