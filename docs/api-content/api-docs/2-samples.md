@@ -1653,10 +1653,10 @@ export CLUSTER_ID="Your Cluster ID"
 <TabItem label="cURL" value="cluster-kubeconfig-curl">
 
 ```shell
- curl --location 'https://api.spectrocloud.com/v1/spectroclusters/$CLUSTER_ID/assets/kubeconfig' \
+ curl --location "https://api.spectrocloud.com/v1/spectroclusters/$CLUSTER_ID/assets/kubeconfig" \
  --header 'Accept: application/octet-stream' \
- --header 'projectUid: $PROJECT_ID' \
- --header 'apiKey: $API_KEY'
+ --header "projectUid: $PROJECT_ID" \
+ --header "apiKey: $API_KEY"
 ```
 
 </TabItem>
