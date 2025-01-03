@@ -13,7 +13,7 @@ the API key, the organization ID, and the Palette URL.
 
 ## Prerequisites
 
-- You must provide an encyrption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters
+- You must provide an encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters
   long and contain a capital letter, a lowercase letter, a digit, and a special character. You can provide the
   passphrase through the `PALETTE_ENCRYPTION_PASSWORD` environment variable or the `-k` or `--encryption-passphrase`
   flag. Refer to the [Encryption](./../palette-cli.md#encryption) section for more information on encryption.
