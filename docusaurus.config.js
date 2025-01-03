@@ -262,7 +262,7 @@ const config = {
       defer: true,
     },
     {
-      src: "https://widget.kapa.ai/kapa-widget.bundle.js",
+      src: "/scripts/kapa-widget.bundle.js",
       "data-website-id": "9c212df9-d1fc-4f65-9c93-8bcd9c8ec6ca",
       "data-project-name": "Spectro Cloud Docs AI",
       "data-project-color": "#3679c6",
