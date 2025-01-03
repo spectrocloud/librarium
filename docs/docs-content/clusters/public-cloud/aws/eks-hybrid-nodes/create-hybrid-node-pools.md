@@ -118,6 +118,26 @@ Your cluster profile for hybrid nodes is now created and can be used in the
 - A cluster profile created for your hybrid nodes. Refer to
   [Create Cluster Profile for Hybrid Node Pools](#create-cluster-profile-for-hybrid-node-pools) for steps.
 
+- Verified network connectivity between your Amazon EKS cluster nodes and edge hosts.
+
+  - If using a VPN, confirm that both tunnels of the site-to-site VPN connection are active and operational.
+
+  - Ensure that a debug pod deployed on one of the Amazon EKS cluster's cloud worker nodes can successfully ping your
+    edge hosts.
+
+    <!-- prettier-ignore -->
+    <details>
+    <summary> Example ping command </summary>
+
+    ```shell
+    kubectl exec -it <debugPodName> -- ping <edgeHostIpAddress>
+    ```
+
+    </details>
+
+  - Verify that your edge hosts can successfully ping the private IP address of an EC2 instance within the Amazon EKS
+    cluster's VPC.
+
 ### Create Node Pool
 
 1. Log in to [Palette](https://console.spectrocloud.com/).

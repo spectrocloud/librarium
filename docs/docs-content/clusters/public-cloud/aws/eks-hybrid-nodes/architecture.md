@@ -124,6 +124,22 @@ methods:
 
 :::warning
 
+Your edge host package managers must have up-to-date package indexes. This is to ensure that dependency packages for
+[`nodeadm`](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-nodeadm.html) can be successfully downloaded
+and installed.
+
+For example, on Ubuntu, you would issue the following command.
+
+```shell
+sudo apt-get update
+```
+
+Adjust to your operating system and package manager on your edge hosts.
+
+:::
+
+### Build Provider Images with Specific Arguments
+
 If using provider images, you must include the following in your `.arg` file during the
 [build steps](../../../edge/edgeforge-workflow/palette-canvos/build-provider-images.md#build-provider-images).
 
@@ -133,8 +149,6 @@ K8S_VERSION=<kubernetesVersion>  # supported versions: [ 1.28.0 | 1.29.0 | 1.30.
 ```
 
 Replace `<kubernetesVersion>` with your version of Kubernetes. For example, `1.29.0`.
-
-:::
 
 ## Authentication and Access Management
 
