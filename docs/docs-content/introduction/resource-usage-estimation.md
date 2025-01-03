@@ -46,7 +46,7 @@ Overview** page. Resource usage by different projects are displayed on the bar c
 also does not include Edge or MAAS clusters. For more information about roles and permissions in Palette, refer to
 [User & Role Management](../user-management/user-management.md).
 
-![Palette interface of Tenant Overview page with the resource usage chart highlighted.](introduction_resource-usage_tenant-admin.webp)
+![Palette interface of Tenant Overview page with the resource usage chart highlighted.](/introduction_resource-usage_tenant-admin.webp)
 
 ::warning
 
