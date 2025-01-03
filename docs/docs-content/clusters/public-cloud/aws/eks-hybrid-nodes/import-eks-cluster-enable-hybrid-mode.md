@@ -424,7 +424,7 @@ Cilium handles IP Address Management (IPAM) and Border Gateway Protocol (BGP) fo
     cilium.io/no-schedule: "true"
     ```
 
-    This ensures that Kubernetes does not attempt to run Cilium add-on pods on these nodes, which are reserved for your
+    This ensures that Kubernetes does not attempt to schedule Cilium add-on pods on these nodes, which are reserved for your
     hybrid nodes.
 
     Example command.
