@@ -12,8 +12,8 @@ to deploy multiple clusters with unique requirements for security, networking, r
 also set specific constraints on the expected values, such as format, optionality, and masking to ensure scalable,
 error-free cluster deployments.
 
-Cluster profile variables can be used with any Palette cluster, including public cloud, data center, bare
-metal, and edge clusters, and can also be managed via
+Cluster profile variables can be used with any Palette cluster, including public cloud, data center, bare metal, and
+edge clusters, and can also be managed via
 [Terraform](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
 
 :::preview
