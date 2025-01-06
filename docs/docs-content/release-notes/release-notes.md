@@ -25,6 +25,10 @@ tags: ["release-notes"]
 - Palette will no longer include Edge clusters and bare metal clusters in the kCh calculation. To learn more about kCh
   calculation, refer to the [Resource Usage Calculation](../introduction/resource-usage-estimation.md) page.
 
+<!-- prettier-ignore -->
+- You can now use the rolling upgrade strategy for clusters deployed with MicroK8s. The `RollingUpgrade` strategy allows
+  you to upgrade your MicroK8s cluster by replacing one machine at a time with a new machine. Refer to the <VersionedLink text="Microk8s" url="/integrations/packs/?pack=kubernetes-microk8s" /> pack documentation to learn more about the rolling upgrade strategy.
+
 #### Deprecations and Removals
 
 - Palette no longer requires port 4222 to be open between workload clusters and the Palette management plane. Palette
