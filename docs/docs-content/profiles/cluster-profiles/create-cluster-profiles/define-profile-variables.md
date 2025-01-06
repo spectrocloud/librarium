@@ -6,20 +6,23 @@ sidebar_position: 40
 tags: ["profiles", "cluster profiles"]
 ---
 
-Use cluster profile variables to create placeholders for parameters in profile-layer configurations, which you
-can populate for individual clusters during deployment. With cluster profile variables, you can use a single cluster profile to deploy
-multiple clusters with unique requirements for security, networking, resource allocation, and more. You can also set specific constraints on the expected values, such as format, optionality, and masking to ensure scalable, error-free cluster deployments.
+Use cluster profile variables to create placeholders for parameters in profile-layer configurations, which you can
+populate for individual clusters during deployment. With cluster profile variables, you can use a single cluster profile
+to deploy multiple clusters with unique requirements for security, networking, resource allocation, and more. You can
+also set specific constraints on the expected values, such as format, optionality, and masking to ensure scalable,
+error-free cluster deployments.
 
-Cluster profile variables can be used with
-any Palette-connected cluster, including public cloud, data center, bare metal, and edge environments, and can also be managed via [Terraform](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
+Cluster profile variables can be used with any Palette-connected cluster, including public cloud, data center, bare
+metal, and edge environments, and can also be managed via
+[Terraform](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
 
 :::preview
 
 :::
 
-You can use cluster profile variables with any number of packs, manifests, and Helm charts, but only in the scope of their
-parent cluster profile. If you want to create placeholders to use across different cluster profiles, consider using
-[Palette Macros](../../../clusters/cluster-management/macros.md).
+You can use cluster profile variables with any number of packs, manifests, and Helm charts, but only in the scope of
+their parent cluster profile. If you want to create placeholders to use across different cluster profiles, consider
+using [Palette Macros](../../../clusters/cluster-management/macros.md).
 
 The following table describes the differences between profile variables and macros.
 
