@@ -15,19 +15,36 @@ tags: ["release-notes"]
 
 ### Palette {#palette-enterprise-4-5-16}
 
-#### Breaking Changes {#breaking-changes-4-5-16}
-
 #### Features
 
 #### Improvements
 
+- Palette [Agent Mode](../deployment-modes/agent-mode/agent-mode.md) is now FIPS compliant. The binaries downloaded to
+  enable Agent Mode are now compiled with FIPS-compliant libraries.
+
+- Palette will no longer include Edge clusters and bare metal clusters in the kCh calculation. To learn more about kCh
+  calculation, refer to the [Resource Usage Calculation](../introduction/resource-usage-estimation.md) page.
+
 #### Deprecations and Removals
+
+- Palette no longer requires port 4222 to be open between workload clusters and the Palette management plane. Palette
+  previously used port 4222 for NATS messaging, which gRPC has replaced. If you have a firewall rule that allows egress
+  traffic on port 4222 from workload clusters to the Palette management plane, you can remove it. NATS was deprecated in
+  Palette 4.0. Refer to the Palette [Network Ports](../architecture/networking-ports.md) page for more information about
+  Palette's network ports.
 
 ### Edge
 
 #### Features
 
-#### Improvements
+- You can now transfer the management of Edge clusters deployed in an airgap environments through
+  [Local UI](../clusters/edge/local-ui/local-ui.md) to a Palette management plane. This feature allows you to start the
+  deployment of Edge clusters in an airgap environment using Local UI and then transfer the management of the Edge
+  clusters to a Palette management plane, enabling you to manage the Edge clusters along with other clusters in Palette.
+  Check out the [Pair Local Cluster with Palette](../clusters/edge/local-ui/local-ui.md) guide to learn more about this
+  feature.
+
+- EKS Hybrid
 
 ### Virtual Machine Orchestrator
 
@@ -43,9 +60,15 @@ tags: ["release-notes"]
 
 #### Improvements
 
-### V
-
 ### Automation
+
+#### Breaking Changes
+
+- The Palette CLI now requires an encryption passphrase for various commands. The passphrase can be set as an
+  environment variable or passed as a flag to the CLI command. The passphrase encrypts and decrypts sensitive data, such
+  as secrets, in the CLI configuration files. Refer to the
+  [Palette CLI Encryption](../automation/palette-cli/palette-cli.md#encryption) section to learn more about the
+  encryption passphrase.
 
 #### Deprecations and Removals
 
