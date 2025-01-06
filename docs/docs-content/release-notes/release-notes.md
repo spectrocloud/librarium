@@ -13,6 +13,76 @@ tags: ["release-notes"]
 
 ## January 11, 2024 - Release 4.5.16
 
+### Palette {#palette-enterprise-4-5-16}
+
+#### Breaking Changes {#breaking-changes-4-5-16}
+
+#### Features
+
+#### Improvements
+
+#### Deprecations and Removals
+
+### Edge
+
+#### Features
+
+#### Improvements
+
+### Virtual Machine Orchestrator
+
+#### Breaking Changes
+
+#### Features
+
+#### Improvements
+
+### VerteX
+
+#### Features
+
+#### Improvements
+
+### V
+
+### Automation
+
+#### Deprecations and Removals
+
+### Docs and Education
+
+### Packs
+
+#### Kubernetes
+
+| Pack Name | New Version |
+| --------- | ----------- |
+
+#### CNI
+
+| Pack Name | New Version |
+| --------- | ----------- |
+
+#### CSI
+
+| Pack Name | New Version |
+| --------- | ----------- |
+
+#### Add-on Packs
+
+| Pack Name | New Version |
+| --------- | ----------- |
+
+#### FIPS Packs
+
+| Pack Name | New Version |
+| --------- | ----------- |
+
+#### Community Packs
+
+| Pack Name | New Version |
+| --------- | ----------- |
+
 ## December 15, 2024 - Release 4.5.15
 
 ### Palette {#palette-enterprise-4-5-12}
