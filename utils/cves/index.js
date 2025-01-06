@@ -200,6 +200,8 @@ async function generateCVEs() {
     } catch (error) {
       logger.error(error);
       logger.error("Error:", error.response ? error.response.status : error.message);
+      // Return exit code 7 to indicate that the script failed to fetch the security bulletins for GitHub Actions
+      process.exit(7);
     }
   }
 

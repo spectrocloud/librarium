@@ -1,0 +1,45 @@
+name: "Build with cached CVEs"
+inputs:
+  gh-token:
+    description: "GitHub Token for authentication"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Install jq (JSON processor) if not found
+      run: |
+        if ! command -v jq &> /dev/null; then
+          sudo apt-get update
+          sudo apt-get install -y jq
+        else
+          echo "jq is already installed. Skipping install..."
+        fi
+      shell: bash
+
+    - name: Download CVE Data
+      run: |
+        # Find the latest packs upload workflow.
+        run_id=$(gh run list --workflow="post_release.yaml" --limit 1 --json databaseId | jq -r '.[0].databaseId')
+        # Remove any downloaded artifacts, should they exist.
+        rm -rf ./downloaded_artifacts
+        # Download the latest artifact to a new dir.
+        gh run download ${run_id} --name security-bulletins --dir ./downloaded_artifacts
+      shell: bash
+      env:
+        GH_TOKEN: ${{ inputs.gh-token }}
+
+    - name: Unpack CVE data
+      run: |
+        # Ensure the correct folders exist.
+        mkdir -p .docusaurus/packs-integrations
+        # Move the files to their correct places in the checked out repository
+        mv downloaded_artifacts/.docusaurus/security-bulletins/default/data.json .docusaurus/security-bulletins/default/data.json
+        rm -rf downloaded_artifacts
+      shell: bash
+
+    - name: Build
+      run: |
+        rm -rf build
+        npm run build
+      shell: bash
