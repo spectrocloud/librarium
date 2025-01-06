@@ -7,7 +7,7 @@ const SECURITY_BULLETIN_URL = "https://dso.teams.spectrocloud.com";
 
 // Ensure that the authentication token is available in the environment
 const authToken = process.env.DSO_AUTH_TOKEN;
-const DISABLE_SECURITY_INTEGRATIONS = process.env.DISABLE_SECURITY_INTEGRATIONS.toLocaleLowerCase();
+const DISABLE_SECURITY_INTEGRATIONS = process.env.DISABLE_SECURITY_INTEGRATIONS.toLowerCase();
 
 // If the required environment variable is not set, throw an error
 if (!authToken && DISABLE_SECURITY_INTEGRATIONS !== "true") {
