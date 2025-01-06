@@ -27,57 +27,16 @@ Machines (VMs) that need to be migrated.
 
   - The VMO cluster must have network connectivity to vCenter and ESXi hosts, and the VMs you want to migrate.
 
-  :::warning
-
-  If you need to provision `Block` storage volumes during the VM migration process, add the following custom
-  configuration to your VMO cluster OS pack. Applying this configuration may cause a cluster repave. For more
-  information, refer to
-  [Repave Behaviors and Configurations](../../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration)
-
-  Additionally, we recommend provisioning volumes with the `ReadWriteMany` access mode to ensure that VMs can be
-  [live migrated](https://kubevirt.io/user-guide/compute/live_migration/#limitations).
-
-  ```yaml
-  kubeadmconfig:
-     preKubeadmCommands:
-        # Start containerd with new configuration
-        - systemctl daemon-reload
-        - systemctl restart containerd
-     files:
-        - targetPath: /etc/containerd/config.toml
-        targetOwner: "root:root"
-        targetPermissions: "0644"
-        content: |
-           ## template: jinja
-
-           # Use config version 2 to enable new configuration fields.
-           version = 2
-
-           imports = ["/etc/containerd/conf.d/*.toml"]
-
-           [plugins]
-              [plugins."io.containerd.grpc.v1.cri"]
-              sandbox_image = "registry.k8s.io/pause:3.9"
-              device_ownership_from_security_context = true
-              [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc]
-              runtime_type = "io.containerd.runc.v2"
-              [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc.options]
-              SystemdCgroup = true
-  ```
-
-  :::
-
 - A vCenter user account with the following necessary privileges to perform migrations.
   
   | **Privileges**                                      | **Description**                   |
   |----------------------------------------------------|------------------------------------------------------------------------------------------------------------------------|
-  | **[Virtual machine.Interaction.Power Off](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-3D47149A-947D-4608-88B3-E5811129EFA8.html)**             | Allows shutting down a powered-on virtual machine, powering down its guest operating system.    |
-  | **[Virtual machine.Interaction.Power On](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-3D47149A-947D-4608-88B3-E5811129EFA8.html)**              | Enables starting a powered-off virtual machine or resuming a suspended one.                              |
-  | [**Virtual Machine Interaction Privileges** (all)](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-3D47149A-947D-4608-88B3-E5811129EFA8.html) | Allow creating, cloning, modifying, customizing, and managing templates, virtual machines, their files, and customization specifications, as well as performing disk and deployment-related operations. | 
-  | **[Virtual machine.Snapshot management.Create snapshot](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-222FE721-0968-4E9E-9F98-7CB03E7185E8.html)** | Allows capturing the current state of a virtual machine as a snapshot.  |
-  | **[Virtual machine.Snapshot management.Remove Snapshot](https://docs.vmware.com/en/VMware-vSphere/7.0/com.vmware.vsphere.security.doc/GUID-222FE721-0968-4E9E-9F98-7CB03E7185E8.html)** | Permits deletion of a snapshot from the snapshot history.    |
+  | [**Virtual Machine Interaction Privileges** (all)](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-security-8-0/defined-privileges/virtual-machine-interaction-privileges.html) | Allow creating, cloning, modifying, customizing, and managing templates, virtual machines, their files, and customization specifications, as well as performing disk and deployment-related operations. |
+  | **[Virtual machine.Snapshot management.Create snapshot](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-security-8-0/defined-privileges/virtual-machine-snapshot-management-privileges.html)** | Allows capturing the current state of a virtual machine as a snapshot.  |
+  | **[Virtual machine.Snapshot management.Remove Snapshot](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-security-8-0/defined-privileges/virtual-machine-snapshot-management-privileges.html)** | Permits deletion of a snapshot from the snapshot history.    |
 
   - Migrations can be optionally accelerated by providing credentials for the ESXi hosts where the VMs reside.
+
 - One or more VMs hosted in VMware vSphere. Only VMs whose operating systems are included under
   [`virt-v2v` supported guest systems](https://libguestfs.org/virt-v2v-support.1.html) can be migrated.
 
