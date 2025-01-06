@@ -409,7 +409,7 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
 
     You may encounter an error message during the OVA deployment stating unable to retrieve manifest or certificate.
     This is a known issue that was fixed in the
-    [VMware vCenter Server 7.0 Update 3q](https://docs.vmware.com/en/VMware-vSphere/7.0/rn/vsphere-vcenter-server-70u3q-release-notes/index.html).
+    [VMware vCenter Server 7.0 Update 3q](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/7-0/release-notes/vcenter-server-update-and-patch-releases/vsphere-vcenter-server-70u3q-release-notes.html).
     Reach out to [Broadcom Support](https://support.broadcom.com) if you need further guidance.
 
     :::
