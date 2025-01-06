@@ -32,7 +32,7 @@ runs:
     - name: Unpack CVE data
       run: |
         # Ensure the correct folders exist.
-        mkdir -p .docusaurus/packs-integrations
+        mkdir -p .docusaurus/security-bulletins/default
         # Move the files to their correct places in the checked out repository
         mv downloaded_artifacts/.docusaurus/security-bulletins/default/data.json .docusaurus/security-bulletins/default/data.json
         rm -rf downloaded_artifacts
