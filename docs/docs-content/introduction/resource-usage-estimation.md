@@ -50,12 +50,13 @@ also does not include Edge or MAAS clusters. For more information about roles an
 
 :::warning
 
-The exclusion of Edge and MAAS clusters in kCh calculations is implemented in the Palette release 4.5.c and does not
+The exclusion of Edge and MAAS clusters in kCh calculations was implemented in the Palette release 4.5.c and did not
 revise historical data. Therefore, it is normal to notice a drop in your resource usage after Jan 18th, 2025 for Palette
-SaaS if you have Edge or MAAS workloads in your project.
+SaaS if you have Edge or MAAS workloads in your project. If you are using a self-hosted instance, you may also notice a
+drop in project monthly kCh after you upgrade to release 4.5.c or later.
 
-Even though your resource usage in the past may have included Edge and MAAS clusters, we have never charged you for
-resource usage by Edge and MAAS clusters since you provide the infrastructure for those clusters yourself.
+Even though your resource usage in the past may have included Edge and MAAS clusters, we have never charged and will not
+charge you for kCh usage by Edge and MAAS clusters since you provide the infrastructure for those clusters yourself.
 
 :::
 
