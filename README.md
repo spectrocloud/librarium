@@ -38,9 +38,9 @@ Initialize the repository by issuing the following command:
 make init
 ```
 
-By default, the [Packs component](#packs-component) will be disabled. If you would like to enable it, then add your
-Palette API key and the variable that enables the component to the `.env` file. Replace `<your-palette-api-key>` with
-your Palette API key.
+By default, the [Packs component](#packs-component) is disabled. If you would like to enable it, then add your Palette
+API key and set `DISABLE_PACKS_INTEGRATIONS` to `false` in the `.env` file. Replace `<your-palette-api-key>` with your
+Palette API key.
 
 ```shell
 PALETTE_API_KEY="<your-palette-api-key>"
