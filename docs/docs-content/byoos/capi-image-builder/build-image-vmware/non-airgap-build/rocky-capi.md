@@ -11,7 +11,7 @@ tags: ["operating system", "byoos", "profiles", "pxk", "vmware"]
 
 <!-- prettier-ignore -->
 This guide teaches you how to use the [CAPI Image Builder](../../capi-image-builder.md) tool to create a custom
-[Rocky Linux](https://rockylinux.org/) image with <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> for VMware vSphere and then use this image to create a cluster profile.
+[Rocky Linux](https://rockylinux.org/) image with <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> for VMware vSphere from an International Organization for Standardization (ISO) or Open Virtual Appliance (OVA) file and use this image to create a cluster profile.
 
 :::preview
 
@@ -19,17 +19,45 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 
 ## Prerequisites
 
-- Access to the VMware vSphere environment, including credentials and permission to create virtual machines.
+    <Tabs>
+    <TabItem value = "ISO" label="ISO">
 
-- The machine executing the commands must have the following hardware resources available:
+    - Access to the VMware vSphere environment, including credentials and permission to create virtual machines.
 
-  - 4 CPU
-  - 8 GB of RAM
-  - 50 GB of free disk space
+    - The machine executing the commands must have the following hardware resources available:
 
-- The following software installed:
-  - [Docker](https://docs.docker.com/engine/install/) or [Podman](https://podman.io/docs/installation)
-  - [curl](https://curl.se/docs/install.html)
+      - 4 CPU
+      - 8 GB of RAM
+      - 50 GB of free disk space
+
+    - The following software installed:
+      - [Docker](https://docs.docker.com/engine/install/) or [Podman](https://podman.io/docs/installation)
+      - [curl](https://curl.se/docs/install.html)
+
+    </TabItem>
+
+    <TabItem value ="OVA" label="OVA>
+
+    - Access to the VMware vSphere environment, including credentials and permission to create virtual machines.
+
+    - The machine executing the commands must have the following hardware resources available:
+
+      - 4 CPU
+      - 8 GB of RAM
+      - 50 GB of free disk space
+
+    - The following software installed:
+      - [Docker](https://docs.docker.com/engine/install/) or [Podman](https://podman.io/docs/installation)
+      - [curl](https://curl.se/docs/install.html)
+  
+    - An existing VM in VMware vSphere that you will use as an OVA template. This VM must have the following dependencies:
+      - `conntrack-tools`
+      - `cloud-init` and `cloud-utils-growpart`
+      - `iptables` for kubeadm
+      - `net.ipv4.ip_forward` set in the kernel 
+
+    </TabItem>
+    </Tabs>
 
 ## Build Custom Image
 
@@ -88,36 +116,52 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
     cd /home/ubuntu/output
     ```
 
-4.  Download the Rocky Linux ISO file into the output directory. Ensure you download the **x86_64 DVD ISO** and not the
-    **x86_64 BOOT ISO**.
+4.  Download the Rocky ISO or convert an existing VM to an OVA template, as appropriate.  
 
-    This guide uses Rocky 8 as an example. Refer to the [Configuration Reference](../../config-reference.md) page for
-    details on supported operating systems.
+        <Tabs>
+        <TabItem value="ISO" label="ISO">
 
-    ```shell
-    curl https://download.rockylinux.org/pub/rocky/8/isos/x86_64/Rocky-8-latest-x86_64-dvd.iso --output Rocky-8-latest-x86_64-dvd.iso
-    ```
+        a. Download the Rocky Linux ISO file into the output directory. Ensure you download the **x86_64 DVD ISO** and not the **x86_64 BOOT ISO**.
+        
+            This guide uses Rocky 8 as an example. Refer to the [Configuration Reference](../../config-reference.md) page for
+            details on supported operating systems.
+        
+            ```shell
+            curl https://download.rockylinux.org/pub/rocky/8/isos/x86_64/Rocky-8-latest-x86_64-dvd.iso --output Rocky-8-latest-x86_64-dvd.iso
+            ```
 
-5.  Calculate the **SHA256** checksum for the Rocky ISO you downloaded. The calculation might take a few minutes. Save
-    the output, as you will need it later.
+        b. Calculate the **SHA256** checksum for the Rocky ISO you downloaded. The calculation might take a few minutes. Save the output, as you will need it later.
+         
+            ```shell
+            sha256sum Rocky-8-latest-x86_64-dvd.iso
+            ```
+         
+            The output should be similar to the sample output displayed below.
+        
+            ```text hideClipBoard
+            642ada8a49dbeca8cca6543b31196019ee3d649a0163b5db0e646c7409364eeb  Rocky-8-latest-x86_64-dvd.iso
+            ```
 
-    ```shell
-    sha256sum Rocky-8-latest-x86_64-dvd.iso
-    ```
+        </TabItem>
 
-    The output should be similar to the sample output displayed below.
+        <TabItem value="OVA" label="OVA">
 
-    ```text hideClipBoard
-    642ada8a49dbeca8cca6543b31196019ee3d649a0163b5db0e646c7409364eeb  Rocky-8-latest-x86_64-dvd.iso
-    ```
+        a. Log in to your VMware vSphere environment and locate the VM to use as a base.
 
-6.  Download the **imageconfig** template file.
+        b. Right-click the VM and select **Snapshots > Take Snapshot**. Enter a **Name** and **Description** and **Create** the snapshot.
+
+        c. Right-click the VM and select **Template > Convert to Template**.
+
+        </TabItem>
+        </Tabs>
+
+5.  Download the **imageconfig** template file.
 
     ```shell
     curl https://software.spectrocloud.com/tools/capi-image-builder/imageconfig --output imageconfig
     ```
 
-7.  Open the **imageconfig** template file in an editor of your choice and fill in the required parameters. For a
+6.  Open the **imageconfig** template file in an editor of your choice and fill in the required parameters. For a
     complete list of parameters, refer to the [Configuration Reference](../../config-reference.md) page. Additionally,
     refer to the [Compatibility Matrix](../../comp-matrix-capi-builder.md) for a list of supported Kubernetes versions
     and their corresponding dependencies.
@@ -125,83 +169,168 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
     The **imageconfig** is the file you use to set up the CAPI Image Builder according to your requirements. This
     includes specifying the OS type, Kubernetes version, whether the image should be FIPS compliant, and more.
 
-    Use the example configuration below for building a Rocky 8 CAPI image. Replace `<iso-checksum>` with the Rocky ISO
-    checksum you calculated in step **5** of this guide. Additionally, replace the VMware-related placeholders with the
-    values from your VMware vSphere environment.
+        <Tabs>
+        <TabItem value ="ISO" label="ISO">
 
-    ```text {4-5,9,13,19-22,30-31,38-46,64}
-     # Define the OS type and version here
-     # os_version=rhel-8 | rhel-9 | rockylinux-8 | rockylinux-9
-     # image_type=standard | fips
-     os_version=rockylinux-8
-     image_type=standard
+        Use the example configuration below for building a Rocky 8 CAPI image. Replace `<iso-checksum>` with the Rocky ISO
+        checksum you calculated in step **5** of this guide. Additionally, replace the VMware-related placeholders with the
+        values from your VMware vSphere environment.
 
-     # Define the image name
-     # image_name=<Final Image Name to create>
-     image_name=rocky-8
+        ```text {4-5,9,13,19-22,30-31,38-46,64}
+         # Define the OS type and version here
+         # os_version=rhel-8 | rhel-9 | rockylinux-8 | rockylinux-9
+         # image_type=standard | fips
+         os_version=rockylinux-8
+         image_type=standard
 
-     # Define the Cloud type
-     # cloud_type=vmware
-     cloud_type=vmware
+         # Define the image name
+         # image_name=<Final Image Name to create>
+         image_name=rocky-8
 
-     # Define the Component Versions
-     #
-     # containerd crictl and cni version update should be done
-     #   only if the images are available in the upstream repositories
-     k8s_version=1.28.9
-     cni_version=1.2.0
-     containerd_version=1.7.13
-     crictl_version=1.26.0
+         # Define the Cloud type
+         # cloud_type=vmware
+         cloud_type=vmware
 
-     # Define RHEL subscription credentials(if $image_type=rhel)
-     # used while image creation to use package manager
-     #rhel_subscripocky-8user=
-     #rhel_subscription_pass=
+         # Define the Component Versions
+         #
+         # containerd crictl and cni version update should be done
+         #   only if the images are available in the upstream repositories
+         k8s_version=1.28.9
+         cni_version=1.2.0
+         containerd_version=1.7.13
+         crictl_version=1.26.0
 
-     # Define ISO url(if image is rhel or rockylinux)
-     iso_name=Rocky-8-latest-x86_64-dvd.iso
-     iso_checksum=<iso-checksum>
+         # Define RHEL subscription credentials(if $image_type=rhel)
+         # used while image creation to use package manager
+         #rhel_subscripocky-8user=
+         #rhel_subscription_pass=
 
-     # Define AWS infra details
-     aws_access_key=
-     aws_secret_key=
+         # Define ISO url(if image is rhel or rockylinux)
+         iso_name=Rocky-8-latest-x86_64-dvd.iso
+         iso_checksum=<iso-checksum>
 
-     # Define Vmware infra details
-     vcenter_server=<vcenter-server>
-     vcenter_user=<vcenter-user>
-     vcenter_password=<vcenter-password>
-     vcenter_datacenter=<vcenter-datacenter>
-     vcenter_datastore=<vcenter-datastore>
-     vcenter_network=<vcenter-network>
-     vcenter_folder=<vcenter-folder>
-     vcenter_cluster=<vcenter-cluster>
-     vcenter_resource_pool=<vcenter-resource-pool>
+         # Define AWS infra details
+         aws_access_key=
+         aws_secret_key=
 
-     # Optional: for OVA based builds
-     vcenter_template=
+         # Define Vmware infra details
+         vcenter_server=<vcenter-server>
+         vcenter_user=<vcenter-user>
+         vcenter_password=<vcenter-password>
+         vcenter_datacenter=<vcenter-datacenter>
+         vcenter_datastore=<vcenter-datastore>
+         vcenter_network=<vcenter-network>
+         vcenter_folder=<vcenter-folder>
+         vcenter_cluster=<vcenter-cluster>
+         vcenter_resource_pool=<vcenter-resource-pool>
 
-     # Define Azure infra details
-     azure_client_id=
-     azure_client_secret=
-     azure_subscription_id=
-     azure_location=
-     azure_storage_account=
-     azure_resource_group=
+         # Optional: for OVA based builds
+         vcenter_template=
 
-     # Define GCE infra details
-     google_app_creds=
-     gcp_project_id=
+         # Define Azure infra details
+         azure_client_id=
+         azure_client_secret=
+         azure_subscription_id=
+         azure_location=
+         azure_storage_account=
+         azure_resource_group=
 
-     # Airgap Configuration
-     airgap=false
-     airgap_ip=""
-     k8s_rpm_key=
-     k8s_rpm_server=
-     containerd_url=
-     crictl_url=
-     k8s_container_reg=
-     cert_url=
-    ```
+         # Define GCE infra details
+         google_app_creds=
+         gcp_project_id=
+
+         # Airgap Configuration
+         airgap=false
+         airgap_ip=""
+         k8s_rpm_key=
+         k8s_rpm_server=
+         containerd_url=
+         crictl_url=
+         k8s_container_reg=
+         cert_url=
+        ```
+
+        </TabItem>
+
+        <TabItem value="OVA" label="OVA">
+
+        Use the example configuration below for building a Rocky 8 CAPI image. Replace the VMware-related placeholders with the
+        values from your VMware vSphere environment.
+
+        ```text {4-5,9,13,19-22,30-31,38-46,64}
+         # Define the OS type and version here
+         # os_version=rhel-8 | rhel-9 | rockylinux-8 | rockylinux-9
+         # image_type=standard | fips
+         os_version=rockylinux-8
+         image_type=standard
+
+         # Define the image name
+         # image_name=<Final Image Name to create>
+         image_name=rocky-8
+
+         # Define the Cloud type
+         # cloud_type=vmware
+         cloud_type=vmware
+
+         # Define the Component Versions
+         #
+         # containerd crictl and cni version update should be done
+         #   only if the images are available in the upstream repositories
+         k8s_version=1.28.9
+         cni_version=1.2.0
+         containerd_version=1.7.13
+         crictl_version=1.26.0
+
+         # Define RHEL subscription credentials(if $image_type=rhel)
+         # used while image creation to use package manager
+         #rhel_subscripocky-8user=
+         #rhel_subscription_pass=
+
+         # Define ISO url(if image is rhel or rockylinux)
+         iso_name=
+         iso_checksum=
+
+         # Define AWS infra details
+         aws_access_key=
+         aws_secret_key=
+
+         # Define Vmware infra details
+         vcenter_server=<vcenter-server>
+         vcenter_user=<vcenter-user>
+         vcenter_password=<vcenter-password>
+         vcenter_datacenter=<vcenter-datacenter>
+         vcenter_datastore=<vcenter-datastore>
+         vcenter_network=<vcenter-network>
+         vcenter_folder=<vcenter-folder>
+         vcenter_cluster=<vcenter-cluster>
+         vcenter_resource_pool=<vcenter-resource-pool>
+
+         # Optional: for OVA based builds
+         vcenter_template=<vm-inventory-folder-path>
+
+         # Define Azure infra details
+         azure_client_id=
+         azure_client_secret=
+         azure_subscription_id=
+         azure_location=
+         azure_storage_account=
+         azure_resource_group=
+
+         # Define GCE infra details
+         google_app_creds=
+         gcp_project_id=
+
+         # Airgap Configuration
+         airgap=false
+         airgap_ip=""
+         k8s_rpm_key=
+         k8s_rpm_server=
+         containerd_url=
+         crictl_url=
+         k8s_container_reg=
+         cert_url=
+        ```
+
 
     :::tip
 
@@ -211,7 +340,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 
     Once you are done making the alterations, save and exit the file.
 
-8.  Issue the command below to start the CAPI Image Builder container and assign the container ID to the `BUILD_ID`
+7.  Issue the command below to start the CAPI Image Builder container and assign the container ID to the `BUILD_ID`
     variable. The tool will create and configure a VM named `rocky-8` with Dynamic Host Configuration Protocol (DHCP) in
     your VMware vSphere environment. It will then generate a Rocky 8 CAPI image from the VM and save it to the output
     directory specified in step **2** of this guide.
@@ -285,7 +414,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 
         </details>
 
-9.  Execute the following command to view the CAPI Image Builder container logs and monitor the build progress.
+8.  Execute the following command to view the CAPI Image Builder container logs and monitor the build progress.
     <!-- prettier-ignore -->
     <Tabs>
     <TabItem value="Docker" label="Docker">
@@ -312,7 +441,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 
     :::
 
-10. Once the build is complete, the Rocky 8 CAPI image will be downloaded to a folder named `rocky-8` within the output
+9.  Once the build is complete, the Rocky 8 CAPI image will be downloaded to a folder named `rocky-8` within the output
     directory on your machine, and the VM will be deleted from VMware vSphere. Issue the command below to confirm that
     the build files are present in the output directory.
 
@@ -324,7 +453,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
         packer-manifest.json  rockylinux-8-kube-v1.28.9.mf  rockylinux-8-kube-v1.28.9.ovfrocky-8-disk-0.vmdk  rockylinux-8-kube-v1.28.9.ova  rocky-8.ovf rockylinux-8-kube-v1.28.9.ova.sha256
         ```
 
-11. To make the image available in VMware vSphere, log in to your environment and locate the `vcenter_folder` you
+10. To make the image available in VMware vSphere, log in to your environment and locate the `vcenter_folder` you
     defined in step **7** of this guide.
 
     :::info
@@ -334,20 +463,20 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 
     :::
 
-12. Right-click the folder and select **Deploy OVF Template** to deploy a VM using the Rocky 8 OVA file that was built
+11. Right-click the folder and select **Deploy OVF Template** to deploy a VM using the Rocky 8 OVA file that was built
     in step **8** of this guide.
 
-13. In the **Deploy OVF Template** wizard, click **Local File**, then **Upload Files**, and select the
+12. In the **Deploy OVF Template** wizard, click **Local File**, then **Upload Files**, and select the
     `rockylinux-8-kube-v1.28.9.ova` file from the output folder on your local machine. Click **Next** to continue.
 
-14. Assign a name to the virtual machine, such as `rockylinux-8-kube-v1.28.9`, and select the folder you created
+13. Assign a name to the virtual machine, such as `rockylinux-8-kube-v1.28.9`, and select the folder you created
     previously as the target location. Click **Next** to proceed.
 
-15. Select a compute resource and click **Next**.
+14. Select a compute resource and click **Next**.
 
-16. Review the VM configuration, accept the license agreements, and click **Next**.
+15. Review the VM configuration, accept the license agreements, and click **Next**.
 
-17. Select the storage location and network configuration and click **Next**. Then, click **Finish** to deploy the VM.
+16. Select the storage location and network configuration and click **Next**. Then, click **Finish** to deploy the VM.
 
     :::warning
 
@@ -357,7 +486,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 
     :::
 
-18. Once the VM is created, right-click it and select **Convert to Template**. This will convert the VM into a Rocky 8
+17. Once the VM is created, right-click it and select **Template > Convert to Template**. This will convert the VM into a Rocky 8
     image template that you can reference during the cluster profile creation.
 
 ## Create Cluster Profile
@@ -365,16 +494,16 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 The Rocky 8 image is now built and available in the VMware vSphere environment. You can use it to create a cluster
 profile and deploy a VMware host cluster.
 
-19. Log in to [Palette](https://console.spectrocloud.com/) and select **Profiles** from the left **Main Menu**.
+1. Log in to [Palette](https://console.spectrocloud.com/) and select **Profiles** from the left **Main Menu**.
 
-20. Click **Add Cluster Profile** and follow the wizard to create a new profile.
+2. Click **Add Cluster Profile** and follow the wizard to create a new profile.
 
-21. In the **Basic Information** section, assign the cluster profile a name and a brief description, and select the type
+3. In the **Basic Information** section, assign the cluster profile a name and a brief description, and select the type
     as **Full**. Click **Next**.
 
-22. In the **Cloud Type** section, select **VMware** and click **Next**.
+4. In the **Cloud Type** section, select **VMware** and click **Next**.
 
-23. The **Profile Layers** section is where you specify the packs that compose the profile. For this guide, use the
+5. The **Profile Layers** section is where you specify the packs that compose the profile. For this guide, use the
     following packs:
 
     | Pack Name                   | Version | Layer            |
@@ -404,9 +533,9 @@ profile and deploy a VMware host cluster.
 
     :::
 
-24. Review the profile layers and click **Finish Configuration** to create the cluster profile.
+6. Review the profile layers and click **Finish Configuration** to create the cluster profile.
 
-25. Deploy a VMware host cluster using the created cluster profile. Refer to the
+7. Deploy a VMware host cluster using the created cluster profile. Refer to the
     [Deploy App Workloads with a PCG](../../../../tutorials/cluster-deployment/pcg/deploy-app-pcg.md) tutorial for
     instructions on deploying a VMware host cluster.
 
