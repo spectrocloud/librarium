@@ -29,9 +29,11 @@ Alternatively, if you continuously deploy a three-node cluster that has 16 CPU p
 
 Palette and Palette VerteX display your current resource usage on the **Project Overview** page. Because we do not
 charge infrastructure costs for Edge and MAAS clusters, the resource usage calculated by Palette and Palette VerteX
-excludes resources used by your Edge or MAAS clusters. By default, Palette offers 25 kCh per month, but you can always
-request on-demand compute capacity by clicking **Upgrade now** in the bottom-left corner of Palette. To continue
-deploying clusters, you must stay within the resource usage limit in your Palette or Palette VerteX instance.
+excludes resources used by your Edge or MAAS clusters.
+
+By default, Palette offers 25 kCh per month, but you can always request on-demand compute capacity by clicking **Upgrade
+now** in the bottom-left corner of Palette. To continue deploying clusters, you must stay within the resource usage
+limit in your Palette or Palette VerteX instance.
 
 ![Palette interface with the kCh meter highlighted.](/introduction_resourse-usage-estimation_kCh-in-ui.webp)
 
