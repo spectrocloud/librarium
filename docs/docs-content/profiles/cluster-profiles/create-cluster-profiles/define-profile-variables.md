@@ -33,7 +33,7 @@ The following table describes the difference between profile variables and macro
 | Belongs to the tenant scope                                               |          ❌          |    ✅     |
 | Supports data format restrictions                                         |          ✅          |    ❌     |
 | Supports optionality restrictions                                         |          ✅          |    ❌     |
-| Supports [sprig template functions](https://masterminds.github.io/sprig/) |          ✅          |    ✅     |
+| Supports [sprig template functions](https://masterminds.github.io/sprig/) |          ❌          |    ✅     |
 
 This guide explains how you can define and manage cluster profile variables.
 
