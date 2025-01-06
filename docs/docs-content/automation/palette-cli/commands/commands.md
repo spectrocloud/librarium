@@ -52,7 +52,7 @@ The Palette CLI supports the following environment variables.
 
 | Variable Name                 | Description                                                                                                                                                                                           | Type   |
 | ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
-| `DISABLE_KIND_CLUSTER_CHECK`  | If set to `true,` the Palette will not check for existing kind clusters or whether the deployed kind cluster is up and active.                                                                        | bool   |
+| `DISABLE_KIND_CLUSTER_CHECK`  | If set to `true,` the Palette CLI will not check for existing kind clusters or whether the deployed kind cluster is up and active.                                                                        | bool   |
 | `PALETTE_ENCRYPTION_PASSWORD` | The encryption passphrase Palette CLI will use to encrypt sensitive data. The passphrase must between 8 to 32 characters long with a capital letter, a lower letter, a digit and a special character. | string |
 
 ## Resources
