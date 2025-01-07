@@ -38,6 +38,9 @@ tags: ["release-notes"]
 - You can now use the rolling upgrade strategy for clusters deployed with MicroK8s. The `RollingUpgrade` strategy allows
   you to upgrade your MicroK8s cluster by replacing one machine at a time with a new machine. Refer to the <VersionedLink text="Microk8s" url="/integrations/packs/?pack=kubernetes-microk8s" /> pack documentation to learn more about the rolling upgrade strategy.
 
+
+- The ability to list clusters by tags has been improved. A dedicated **Tags dropdown Menu** in the cluster list page now lists all available tags for clusters. You can select a tag from the **dropdown Menu** to filter clusters by the selected tag. Previously, you had to specify the tag you wanted to filter manually. Refer to the [Map and Filter Clusters](../clusters/cluster-management/cluster-map-filters.md) page to learn more about this feature.
+
 #### Deprecations and Removals
 
 - Palette no longer requires port 4222 to be open between workload clusters and the Palette management plane. Palette
@@ -64,13 +67,11 @@ tags: ["release-notes"]
   Check out the [Pair Local Cluster with Palette](../clusters/edge/local-ui/local-ui.md) guide to learn more about this
   feature.
 
-- EKS Hybrid
-
 ### Virtual Machine Orchestrator
 
-#### Breaking Changes
-
 #### Features
+
+- Migration Assistan ...
 
 #### Improvements
 
@@ -91,6 +92,9 @@ tags: ["release-notes"]
   encryption passphrase.
 
 #### Deprecations and Removals
+
+- The Terraform resource, `spectrocloud_cluster_import` is removed. To import a cluster deployed outside of the context
+  of Palette, refer to the [Import a Cluster](../clusters/imported-clusters/cluster-import.md) guide.
 
 ### Docs and Education
 
