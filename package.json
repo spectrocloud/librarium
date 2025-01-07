@@ -100,7 +100,7 @@
     "jest-fetch-mock": "^3.0.3",
     "linkinator": "^6.1.2",
     "lint-staged": "^15.2.10",
-    "netlify-cli": "^17.37.1",
+    "netlify-cli": "^17.38.1",
     "prettier": "3.3.2",
     "semantic-release": "^24.2.0",
     "test-links": "^0.0.1",
