@@ -121,6 +121,12 @@ function getProviders(packData: PackData) {
     .join(", ");
 }
 
+function generateNewHeadingId(props: { node: { children: { value: string }[] } }) {
+  const heading = (props?.node?.children?.[0] as { value: string })?.value;
+  const headingId = heading?.replace(/\s+/g, "-").toLowerCase();
+  return { id: headingId, title: heading };
+}
+
 function processPackUiMap(
   packUidMap: Record<string, { readme?: string }>
 ): Record<string, { deprecated?: boolean; readme?: ReactElement; registryUid?: string }> {
@@ -135,35 +141,29 @@ function processPackUiMap(
             remarkPlugins={[remarkGfm]}
             components={{
               h1: (props) => {
-                const headingId = !Array.isArray(props.children)
-                  ? props.children?.toString().replace(/\s+/g, "-").toLowerCase()
-                  : "";
+                const {id, title} = generateNewHeadingId(props);
                 return (
-                  <h1 id={headingId}>
-                    {props.children}
-                    <a href={`#${headingId}`} className="hash-link" />
+                  <h1 id={id}>
+                    {title}
+                    <a href={`#${id}`} className="hash-link" />
                   </h1>
                 );
               },
               h2: (props) => {
-                const headingId = !Array.isArray(props.children)
-                  ? props.children?.toString().replace(/\s+/g, "-").toLowerCase()
-                  : "";
+                const {id, title} = generateNewHeadingId(props);
                 return (
-                  <h2 id={headingId}>
-                    {props.children}
-                    <a href={`#${headingId}`} className="hash-link" />
+                  <h2 id={id}>
+                    {title}
+                    <a href={`#${id}`} className="hash-link" />
                   </h2>
                 );
               },
               h3: (props) => {
-                const headingId = !Array.isArray(props.children)
-                  ? props.children?.toString().replace(/\s+/g, "-").toLowerCase()
-                  : "";
+                const {id, title} = generateNewHeadingId(props);
                 return (
-                  <h3 id={headingId}>
-                    {props.children}
-                    <a href={`#${headingId}`} className="hash-link" />
+                  <h3 id={id}>
+                    {title}
+                    <a href={`#${id}`} className="hash-link" />
                   </h3>
                 );
               },
