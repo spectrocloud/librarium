@@ -295,10 +295,10 @@ Creating a content bundle provides several benefits that may address common use 
 
     :::warning
 
-    If you plan to scale up your Edge airgap cluster or create a new airgap cluster, you must ensure that you build the
-    content bundle with either the `--include-palette-content` or the `--include-core-images-only` flag. Content bundles
-    uploaded to the cluster that do not have either of these flags are not able to be used to provision new nodes and
-    will lead to failure during cluster creation and scale-up.
+    If you plan to create an airgap cluster or scale up an airgap cluster, you must ensure that you build the content
+    bundle with either the `--include-palette-content` or the `--include-core-images-only` flag. Content bundles
+    uploaded to the cluster that do not have either of these flags cannot be used to provision new nodes and will lead
+    to failure during cluster creation and scale-up.
 
     :::
 
