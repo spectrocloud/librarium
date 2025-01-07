@@ -50,6 +50,12 @@ jobs:
         with:
           gh-token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Build with cached CVEs
+        if: ${{ env.BUILD_EXIT_CODE == '7' }}
+        uses: ./.github/actions/build-cached-cves
+        with:
+          gh-token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Upload Build Packs
         uses: actions/upload-artifact@v4
         with:
@@ -57,5 +63,13 @@ jobs:
           path: |
             build/packs
             .docusaurus/packs-integrations
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Upload Built Security Bulletins
+        uses: actions/upload-artifact@v4
+        with:
+          name: "security-bulletins"
+          path: .docusaurus/security-bulletins/default/data.json
           if-no-files-found: error
           retention-days: 7

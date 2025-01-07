@@ -72,6 +72,12 @@ jobs:
         with:
           gh-token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Build with cached CVEs
+        if: ${{ env.BUILD_EXIT_CODE == '7' }}
+        uses: ./.github/actions/build-cached-cves
+        with:
+          gh-token: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Deploy Preview
         run: |
           aws s3 sync --cache-control 'public, max-age=604800' --exclude '*.html' --exclude build/scripts/ build/ s3://docs-latest.spectrocloud.com --delete
