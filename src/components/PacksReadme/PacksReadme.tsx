@@ -135,7 +135,7 @@ function processPackUiMap(
             remarkPlugins={[remarkGfm]}
             components={{
               h1: (props) => {
-                const headingId = props.children?.toString().replace(/\s+/g, "-").toLowerCase();
+                const headingId = !Array.isArray(props.children) ? props.children?.toString().replace(/\s+/g, "-").toLowerCase() : "";
                 return (
                   <h1 id={headingId}>
                     {props.children}
@@ -144,7 +144,7 @@ function processPackUiMap(
                 );
               },
               h2: (props) => {
-                const headingId = props.children?.toString().replace(/\s+/g, "-").toLowerCase();
+                const headingId = !Array.isArray(props.children) ? props.children?.toString().replace(/\s+/g, "-").toLowerCase() : "";
                 return (
                   <h2 id={headingId}>
                     {props.children}
@@ -153,7 +153,7 @@ function processPackUiMap(
                 );
               },
               h3: (props) => {
-                const headingId = props.children?.toString().replace(/\s+/g, "-").toLowerCase();
+                const headingId = !Array.isArray(props.children) ? props.children?.toString().replace(/\s+/g, "-").toLowerCase() : "";
                 return (
                   <h3 id={headingId}>
                     {props.children}
