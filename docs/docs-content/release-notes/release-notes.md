@@ -26,6 +26,13 @@ tags: ["release-notes"]
   [Cluster Profile Variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables.md) guide to
   learn more about this feature.
 
+- Starting with release version 4.5.15, the Spectro Cloud Artifact Repository (SCAR) is now hosted inside the same Open
+  Container Initiative (OCI) repository hosting packs and images. This release now includes support for existing
+  self-hosted Palette Enterprise installations to migrate to the new architecture. Migrating to the new architecture
+  removes the need for a dedicated file server to host the SCAR content. Check out the Palette
+  [Migrate SCAR to OCI Registry](../enterprise-version/system-management/scar-migration.md) guide to learn more about
+  migrating to the new SCAR architecture.
+
 #### Improvements
 
 - Palette [Agent Mode](../deployment-modes/agent-mode/agent-mode.md) is now FIPS compliant. The binaries downloaded to
@@ -41,13 +48,19 @@ tags: ["release-notes"]
 
 - The ability to list clusters by tags has been improved. A dedicated **Tags dropdown Menu** in the cluster list page now lists all available tags for clusters. You can select a tag from the **dropdown Menu** to filter clusters by the selected tag. Previously, you had to specify the tag you wanted to filter manually. Refer to the [Map and Filter Clusters](../clusters/cluster-management/cluster-map-filters.md) page to learn more about this feature.
 
-#### Deprecations and Removals
+
+- Improvements have been made to the Palette UI to enhance the user experience. Edge cluster lists are now sorted by the last modified date by default and the cluster list view sorts by cluster name by default. User-configured sorting preferences are now saved and applied across sessions. Additionally, no columns are fixed or pinned by default. 
 
 - Palette no longer requires port 4222 to be open between workload clusters and the Palette management plane. Palette
   previously used port 4222 for NATS messaging, which gRPC has replaced. If you have a firewall rule that allows egress
   traffic on port 4222 from workload clusters to the Palette management plane, you can remove it. NATS was deprecated in
   Palette 4.0. Refer to the Palette [Network Ports](../architecture/networking-ports.md) page for more information about
   Palette's network ports.
+
+- Palette now uses Velero version 1.15 internally. This change allows newly deployed clusters to use [Kopia](https://velero.io/docs/main/file-system-backup/#how-velero-integrates-with-kopia) as the
+  default backup and restore tool. Existing clusters will continue to use Restic as the default backup and restore tool.
+  Refer to the [Backup and Restore](../clusters/cluster-management/backup-restore/backup-restore.md) page to learn more
+  about backup and restore tools in Palette.
 
 ### Edge
 
@@ -75,11 +88,21 @@ tags: ["release-notes"]
 
 #### Improvements
 
+-
+
 ### VerteX
 
 #### Features
 
-#### Improvements
+- Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
+  [Palette section](#palette-enterprise-4-5-16) for more details.
+
+- Starting with release version 4.5.15, the Spectro Cloud Artifact Repository (SCAR) is now hosted inside the same Open
+  Container Initiative (OCI) repository hosting packs and images. This release now includes support for existing
+  self-hosted VerteX installations to migrate to the new architecture. Migrating to the new architecture removes the
+  need for a dedicated file server to host the SCAR content. Check out the VerteX
+  [Migrate SCAR to OCI Registry](../vertex/system-management/scar-migration.md) guide to learn more about migrating to
+  the new SCAR architecture.
 
 ### Automation
 
