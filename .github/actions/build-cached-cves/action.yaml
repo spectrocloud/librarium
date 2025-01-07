@@ -35,7 +35,7 @@ runs:
         # Ensure the correct folders exist.
         mkdir -p .docusaurus/security-bulletins/default
         # Move the files to their correct places in the checked out repository
-        mv downloaded_artifacts/.docusaurus/security-bulletins/default/data.json .docusaurus/security-bulletins/default/data.json
+        mv downloaded_artifacts/data.json .docusaurus/security-bulletins/default/data.json
         rm -rf downloaded_artifacts
       shell: bash
 

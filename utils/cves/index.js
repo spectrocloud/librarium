@@ -16,7 +16,7 @@ async function getSecurityBulletins(payload) {
   let results = [];
 
   try {
-    // throw new Error("This is a test error");
+    throw new Error("This is a test error");
 
     let request = await callRateLimitAPI(() =>
       api.post(`https://dso.teams.spectrocloud.com/v1/advisories?limit=${limit}`, payload)
