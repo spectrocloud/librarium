@@ -141,7 +141,7 @@ function processPackUiMap(
             remarkPlugins={[remarkGfm]}
             components={{
               h1: (props) => {
-                const {id, title} = generateNewHeadingId(props);
+                const { id, title } = generateNewHeadingId(props);
                 return (
                   <h1 id={id}>
                     {title}
@@ -150,7 +150,7 @@ function processPackUiMap(
                 );
               },
               h2: (props) => {
-                const {id, title} = generateNewHeadingId(props);
+                const { id, title } = generateNewHeadingId(props);
                 return (
                   <h2 id={id}>
                     {title}
@@ -159,7 +159,7 @@ function processPackUiMap(
                 );
               },
               h3: (props) => {
-                const {id, title} = generateNewHeadingId(props);
+                const { id, title } = generateNewHeadingId(props);
                 return (
                   <h3 id={id}>
                     {title}
