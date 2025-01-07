@@ -21,7 +21,7 @@ runs:
       run: |
         # Find the latest CVE upload workflow.
         run_id=$(gh run list --workflow="post_release.yaml" --limit 1 --status=success --json databaseId | jq -r '.[0].databaseId')
-        echo $run_id
+        echo 'Fetching artifacts from run $run_id'
         # Remove any downloaded artifacts, should they exist.
         rm -rf ./downloaded_artifacts
         # Download the latest artifact to a new dir.
