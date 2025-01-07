@@ -317,5 +317,5 @@ ${revisionHistory ? revisionHistory : "No revision history available."}
 try {
   generateCVEs();
 } catch (error) {
-  process.exit(5);
+  process.exit(7);
 }
