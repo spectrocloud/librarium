@@ -293,6 +293,15 @@ Creating a content bundle provides several benefits that may address common use 
     | `--project-id`               | The ID of your Palette project.                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
     | `--private-key`              | The path to the private key used to sign the content bundle and cluster definition if it is present. This is necessary if your Edge host has an embedded corresponding public key. For more information, refer to [Embed Public Key in Edge Artifacts](./signed-content.md).                                                                                                                                                                                                                |
 
+    :::warning
+
+    If you plan to scale up your Edge cluster, you must ensure that you build the content bundle with either the
+    `--include-palette-content` or the `--include-core-images-only` flag. Content bundles uploaded to the cluster that
+    do not have either of these flags are not able to be used to provision new nodes and will lead to failure during
+    cluster scale-up.
+
+    :::
+
     The result is a content bundle that you can use to preload into your installer. The content bundle will be a zst
     file in a folder that starts with **content-** followed by a random string. For more information about how to use a
     content bundles, [Build Installer ISO](./build-installer-iso.md) or
