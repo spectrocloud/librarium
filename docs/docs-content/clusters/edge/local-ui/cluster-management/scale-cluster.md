@@ -30,6 +30,10 @@ installed in airgap mode in Local UI.
 - You have access to the leader node of the cluster. For more information about leader host, refer to
   [Link Hosts](./link-hosts.md).
 
+- The content bundle that was last uploaded to the cluster control plane nodes was built with either the
+  `--include-palette-content` or the `--include-core-images-only` flag. For more information about building content
+  bundles, refer to [Build Content Bundle](../../edgeforge-workflow/palette-canvos/build-content-bundle.md).
+
 ### Procedure
 
 1. Log in to [Local UI](../host-management/access-console.md) on the leader node where your cluster is deployed.
