@@ -22,13 +22,10 @@ These user names are relevant when using [SSH key pairs](./ssh-keys.md) with you
 | -------------- | ------------------------------ | ------------ |
 | **AWS IaaS**   | **Ubuntu**                     | `ubuntu`     |
 | **AWS IaaS**   | **CentOS**                     | `centos`     |
-| **AWS IaaS**   | **Bring Your Own OS (BYO-OS)** | `root`       |
 | **Azure IaaS** | **Ubuntu**                     | `ubuntu`     |
 | **Azure IaaS** | **CentOS**                     | `centos`     |
-| **Azure IaaS** | **Bring Your Own OS (BYO-OS)** | `root`       |
 | **GCP IaaS**   | **Ubuntu**                     | `ubuntu`     |
 | **GCP IaaS**   | **CentOS**                     | `centos`     |
-| **GCP IaaS**   | **Bring Your Own OS (BYO-OS)** | `root`       |
 
 ### Managed Kubernetes
 
@@ -55,18 +52,25 @@ nodes is critical, consider one of the following options:
 | Provider           | Operating System Pack          | SSH Username |
 | ------------------ | ------------------------------ | ------------ |
 | **MAAS**           | **Ubuntu**                     | `ubuntu`     |
-| **MAAS**           | **Bring Your Own OS (BYO-OS)** | `root`       |
 | **Openstack**      | **Ubuntu**                     | `ubuntu`     |
-| **Openstack**      | **Bring Your Own OS (BYO-OS)** | `root`       |
-| **VMware vSphere** | **Ubuntu**                     | `ubuntu`     |
-| **VMware vSphere** | **CentOS**                     | `centos`     |
-| **VMware vSphere** | **Bring Your Own OS (BYO-OS)** | `root`       |
+| **VMware vSphere** | **Ubuntu**                     | `spectro`    |
+| **VMware vSphere** | **CentOS**                     | `spectro`    |
 
 ## Edge
 
 This is dependent on the operating system you provide for your edge hosts using either
 [Agent Mode](../../../deployment-modes/agent-mode/agent-mode.md) or
 [EdgeForge](../../../clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images.md).
+
+## Bring Your Own OS (BYO-OS)
+
+You can select **Bring Your Own OS (BYO-OS)** as the operating system (os) pack for your cluster in Palette. The default SSH username will depend on the operating system image that you have built. Refer to [Bring Your Own OS (BYOOS)](../../../byoos/byoos.md) for further guidance on building custom images.
+
+- For images built using the [Kubernetes Image Builder](../../../byoos/image-builder/build-image.md), the SSH username is defined as the value for `ssh_username` in the corresponding operating system JSON file. For example, the [Amazon Linux 2 JSON](https://github.com/kubernetes-sigs/image-builder/blob/main/images/capi/packer/ami/amazon-2.json#L11) sets the `ssh_username` value as `ec2-user`.
+
+  If `ssh_username` is not defined in the operating system JSON, then `root` is set by default.
+
+- For images built for VMware vSphere, the `ssh_username` is set to `spectro`.
 
 ## Resources
 
