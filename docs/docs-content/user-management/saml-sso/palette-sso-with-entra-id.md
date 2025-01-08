@@ -64,7 +64,7 @@ Use the following steps to enable OIDC SSO in Palette with Microsoft Entra ID.
     [App registration blade](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade).
 
 5.  Click on **New registration** and assign a name to the new registration. In this guide, the example app registration
-    is named _palette_oidc_.
+    is named _palette-oidc_.
 
 6.  Next, select **Web**, paste the _Palette Callback URL_ value from your clipboard into the **Redirect URL
     (optional)** field, and click **Register**.
