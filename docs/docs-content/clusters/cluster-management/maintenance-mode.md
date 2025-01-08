@@ -24,7 +24,6 @@ of performance and availability.
 - Static pods and DaemonSets are not evicted from the node when activating maintenance mode.
 
 - Scans cannot be performed on the cluster when any node in the cluster is in maintenance mode.
-  
 - Nodes in maintenance mode are not included in the backup process, which also means they cannot be restored.
 
 - Changes to add-on profiles are not applied to nodes in maintenance mode.
@@ -35,13 +34,9 @@ of performance and availability.
 ## Activate Maintenance Mode
 
 1. Log in to [Palette](https://console.spectrocloud.com).
-   
 2. Navigate to the left **Main Menu** and select **Clusters**.
-   
 3. Select the desired cluster and navigate to the **Nodes** tab of the cluster.
-   
 4. Beside the node that needs maintenance, select the **three-dot Menu** and **Turn on maintenance mode**.
-   
 5. When maintenance mode is activated, the **Health** icon changes to a set of tools, and the tooltip states
    **Maintenance Mode: Initiated**. When Maintenance Mode is finished, the tooltip changes to **Maintenance Mode:
    Complete**.
@@ -88,11 +83,8 @@ Palette reminds you in several locations that you have a node in maintenance mod
 ## Disable Maintenance Mode
 
 1. Log in to [Palette](https://console.spectrocloud.com).
-   
 2. Navigate to the left **Main Menu** and select **Clusters**.
-   
 3. Select the desired cluster and navigate to the **Nodes** tab of the cluster.
-   
 4. Select the **three-dot Menu** beside the maintenance node and **Turn off maintenance mode**.
 
 5. When maintenance mode is disabled, the **Health** icon reverts to a checkmark.
