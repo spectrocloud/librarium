@@ -15,15 +15,17 @@ of performance and availability.
 
 ## Prerequistes
 
-- An active Kubernetes cluster in Palette with more than one control plane node and worker node.
+- An active Palette host cluster with more than one control plane node and worker node.
 
 - Alternate nodes with sufficient resources available where processes from maintenance nodes can be provisioned.
 
 ## Limitations
 
+<!-- prettier-ignore -->
 - Static pods and DaemonSets are not evicted from the node when activating maintenance mode.
 
 - Scans cannot be performed on the cluster when any node in the cluster is in maintenance mode.
+  
 - Nodes in maintenance mode are not included in the backup process, which also means they cannot be restored.
 
 - Changes to add-on profiles are not applied to nodes in maintenance mode.
@@ -33,10 +35,15 @@ of performance and availability.
 
 ## Activate Maintenance Mode
 
+<!-- prettier-ignore -->
 1. Log in to [Palette](https://console.spectrocloud.com).
+   
 2. Navigate to the left **Main Menu** and select **Clusters**.
+   
 3. Select the desired cluster and navigate to the **Nodes** tab of the cluster.
+   
 4. Beside the node that needs maintenance, select the **three-dot Menu** and **Turn on maintenance mode**.
+   
 5. When maintenance mode is activated, the **Health** icon changes to a set of tools, and the tooltip states
    **Maintenance Mode: Initiated**. When Maintenance Mode is finished, the tooltip changes to **Maintenance Mode:
    Complete**.
@@ -57,7 +64,7 @@ Palette reminds you in several locations that you have a node in maintenance mod
 
 2. Navigate to the left **Main Menu** and select **Clusters**.
 
-3. Select the cluster with maintenance mode active and download the [kubeconfig](./kubeconfig.md) file.
+3. Select the cluster with maintenance mode active and download the [kubeconfig](./palette-webctl.md) file.
 
 ![The cluster details page with the two kubeconfig files elements highlighted](/clusters_cluster--management_kubeconfig_cluster-details-kubeconfig-files.webp)
 
@@ -73,7 +80,7 @@ Palette reminds you in several locations that you have a node in maintenance mod
    kubectl get nodes
    ```
 
-   ```bash hideClipboard
+   ```bash hideClipboard {4}
    NAME                            STATUS                      ROLES           AGE     VERSION
    ip-10-0-1-174.ec2.internal      Ready                       control-plane   177m    v1.30.6
    ip-10-0-1-26.ec2.internal       Ready                       <none>          174m    v1.30.6
@@ -82,14 +89,18 @@ Palette reminds you in several locations that you have a node in maintenance mod
 
 ## Disable Maintenance Mode
 
+<!-- prettier-ignore -->
 1. Log in to [Palette](https://console.spectrocloud.com).
+   
 2. Navigate to the left **Main Menu** and select **Clusters**.
+   
 3. Select the desired cluster and navigate to the **Nodes** tab of the cluster.
+   
 4. Select the **three-dot Menu** beside the maintenance node and **Turn off maintenance mode**.
 
 5. When maintenance mode is disabled, the **Health** icon reverts to a checkmark.
 
-:::info
+:::warning
 
 Taking a node out of maintenance mode does not automatically rebalance workloads.
 
@@ -101,7 +112,7 @@ Taking a node out of maintenance mode does not automatically rebalance workloads
 
 2. Navigate to the left **Main Menu** and select **Clusters**.
 
-3. Select the desired cluster and download the [kubeconfig](./kubeconfig.md) file.
+3. Select the desired cluster and download the [kubeconfig](./palette-webctl.md) file.
 
 ![The cluster details page with the two kubeconfig files elements highlighted](/clusters_cluster--management_kubeconfig_cluster-details-kubeconfig-files.webp)
 
