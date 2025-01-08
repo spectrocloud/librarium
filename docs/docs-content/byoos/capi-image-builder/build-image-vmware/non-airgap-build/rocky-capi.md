@@ -11,7 +11,7 @@ tags: ["operating system", "byoos", "profiles", "pxk", "vmware"]
 
 <!-- prettier-ignore -->
 This guide teaches you how to use the [CAPI Image Builder](../../capi-image-builder.md) tool to create a custom
-[Rocky Linux](https://rockylinux.org/) image with <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> for VMware vSphere from an International Organization for Standardization (ISO) or Open Virtual Appliance (OVA) file and use this image to create a cluster profile.
+[Rocky Linux](https://rockylinux.org/) image with <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> for VMware vSphere from an ISO or OVA file and use this image to create a cluster profile.
 
 :::preview
 
@@ -20,7 +20,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 ## Prerequisites
 
     <Tabs>
-    <TabItem value = "ISO" label="ISO">
+    <TabItem value="ISO" label="ISO">
 
     - Access to the VMware vSphere environment, including credentials and permission to create virtual machines.
 
@@ -36,7 +36,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 
     </TabItem>
 
-    <TabItem value ="OVA" label="OVA>
+    <TabItem value="OVA" label="OVA">
 
     - Access to the VMware vSphere environment, including credentials and permission to create virtual machines.
 
@@ -51,10 +51,10 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
       - [curl](https://curl.se/docs/install.html)
   
     - An existing VM in VMware vSphere that you will use as an OVA template. This VM must have the following dependencies:
-      - `conntrack-tools`
-      - `cloud-init` and `cloud-utils-growpart`
-      - `iptables` for kubeadm
-      - `net.ipv4.ip_forward` set in the kernel 
+      - [`conntrack-tools`](https://conntrack-tools.netfilter.org/manual.html) 
+      - [`cloud-init`](https://cloudinit.readthedocs.io/en/latest/) and [`cloud-utils-growpart`](https://man.archlinux.org/man/growpart.1.en?utm_source=chatgpt.com)
+      - [`iptables`](https://man7.org/linux/man-pages/man8/iptables.8.html) for [`kubeadm`](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
+      - [`net.ipv4.ip_forward`](https://kubernetes.io/docs/setup/production-environment/container-runtimes/#prerequisite-ipv4-forwarding-optional) enabled and set in the kernel 
 
     </TabItem>
     </Tabs>
@@ -121,7 +121,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
         <Tabs>
         <TabItem value="ISO" label="ISO">
 
-        a. Download the Rocky Linux ISO file into the output directory. Ensure you download the **x86_64 DVD ISO** and not the **x86_64 BOOT ISO**.
+        1. Download the Rocky Linux ISO file into the output directory. Ensure you download the **x86_64 DVD ISO** and not the **x86_64 BOOT ISO**.
         
             This guide uses Rocky 8 as an example. Refer to the [Configuration Reference](../../config-reference.md) page for
             details on supported operating systems.
@@ -130,7 +130,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
             curl https://download.rockylinux.org/pub/rocky/8/isos/x86_64/Rocky-8-latest-x86_64-dvd.iso --output Rocky-8-latest-x86_64-dvd.iso
             ```
 
-        b. Calculate the **SHA256** checksum for the Rocky ISO you downloaded. The calculation might take a few minutes. Save the output, as you will need it later.
+        2. Calculate the **SHA256** checksum for the Rocky ISO you downloaded. The calculation might take a few minutes. Save the output, as you will need it later.
          
             ```shell
             sha256sum Rocky-8-latest-x86_64-dvd.iso
@@ -146,11 +146,11 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 
         <TabItem value="OVA" label="OVA">
 
-        a. Log in to your VMware vSphere environment and locate the VM to use as a base.
+        1. Log in to your VMware vSphere environment and locate the VM to use as the base for the image.
 
-        b. Right-click the VM and select **Snapshots > Take Snapshot**. Enter a **Name** and **Description** and **Create** the snapshot.
+        2. Right-click the VM and select **Snapshots > Take Snapshot**. Enter a **Name** and **Description**, and **Create** the snapshot.
 
-        c. Right-click the VM and select **Template > Convert to Template**.
+        3. Right-click the VM and select **Template > Convert to Template**.
 
         </TabItem>
         </Tabs>
@@ -257,7 +257,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
         Use the example configuration below for building a Rocky 8 CAPI image. Replace the VMware-related placeholders with the
         values from your VMware vSphere environment.
 
-        ```text {4-5,9,13,19-22,30-31,38-46,64}
+        ```text {4-5,9,13,19-22,38-46,49,64}
          # Define the OS type and version here
          # os_version=rhel-8 | rhel-9 | rockylinux-8 | rockylinux-9
          # image_type=standard | fips
@@ -330,6 +330,9 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
          k8s_container_reg=
          cert_url=
         ```
+
+        </TabItem>
+        </Tabs>
 
 
     :::tip
