@@ -83,11 +83,26 @@ tags: ["release-notes"]
   [Build Provider Images](../clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images.md) for guidance on
   using the **certs** folder to pass multiple proxy certificates to the CanvOS build process.
 
-<!-- prettier-ignore -->
-- The Edge <VersionedLink text="BYOOS" url="/integrations/packs/?pack=edge-native-byoi" />
-  pack has new parameters that allow you to configure node draining behavior during cluster upgrades or repaves.
-  Previously, nodes were always drained during upgrades and repaves, even for single-node clusters. Refer to
-  [Skip Node Draining](../clusters/edge/cluster-management/skip-draining.md) for guidance on configuring draining behavior.
+<!-- prettier-ignore-start -->
+
+- The Edge <VersionedLink text="BYOOS" url="/integrations/packs/?pack=edge-native-byoi" /> pack has new parameters that
+  allow you to configure node draining behavior during cluster upgrades or repaves. Previously, nodes were always
+  drained during upgrades and repaves, even for single-node clusters. Refer to
+  [Skip Node Draining](../clusters/edge/cluster-management/skip-draining.md) for guidance on configuring draining
+  behavior.
+
+  <!-- prettier-ignore-end -->
+
+#### Bug Fixes
+
+- Upgrading the Palette agent from 4.4.x to 4.5.11 and later will now automatically renew the Certificate Authority (CA)
+  certificate for `stylus-webhook` Mutating Webhook Configuration. The corresponding Palette version for Palette agent
+  4.5.11 is 4.5.15.
+
+  This was an issue that affected 4.4.x and prior versions and was partially addressed in 4.5.0. The new version fully
+  addresses the issue by automatically renewing the CA certificate for 10 years during an upgrade. In previous 4.5.x
+  versions, while you would not encounter the certificate expiry issue if your cluster was created using a 4.5.x version
+  of the Palette agent, upgrading from 4.4.x would not have renewed the certificate automatically.
 
 #### Deprecations and Removals
 
@@ -378,6 +393,10 @@ guide to learn how to create a Cluster Group.
 | Pack Name              | New Version |
 | ---------------------- | ----------- |
 | vSphere No-Provisioner | 1.0.0       |
+
+### Bug Fixes
+
+- Fixed an issue where cluster tags were not propagated to AWS volumes when creating new AWS IaaS clusters.
 
 ## October 26, 2024 - Release 4.5.5
 
