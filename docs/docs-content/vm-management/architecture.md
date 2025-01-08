@@ -23,7 +23,7 @@ For more detailed information about the technical architecture of VMO, refer to 
 By default, Palette VMO includes the following components:
 
 - **Descheduler**. Enables VM live migration to different nodes in the node pool when the original node is in
-  maintenance mode.
+  [maintenance mode](../clusters/cluster-management/maintenance-mode.md).
 
 - **Snapshot Controller**. Enables you to create VM snapshots. This component is automatically installed when you
   initiate or schedule cluster backups.
