@@ -515,7 +515,7 @@ pack contains a set of default values. You can change the manifest values if nee
 #### Cluster Configuration
 
 The **Cluster config** section allows you to select the **Project**, **Region**, and **SSH Key** to apply to the host
-cluster. All clusters require you to assign an SSH key. Refer to the [SSH Keys](/clusters/cluster-management/ssh-keys)
+cluster. All clusters require you to assign an SSH key. Refer to the [SSH Keys](../cluster-management/ssh/ssh-keys.md)
 guide for information about uploading an SSH key.
 
 <br />
