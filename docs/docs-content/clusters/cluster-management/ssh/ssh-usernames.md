@@ -2,11 +2,11 @@
 sidebar_label: "SSH Usernames"
 title: "SSH Usernames"
 description:
-  "A list of the Secure Shell (SSH) usernames created on Kubernetes nodes for each provider and operating system (OS) pack
-  available in Palette."
+  "A list of the Secure Shell (SSH) usernames created on Kubernetes nodes for each provider and operating system (OS)
+  pack available in Palette."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 11
+sidebar_position: 20
 ---
 
 This page lists the Secure Shell (SSH) user names created on Kubernetes nodes, which vary by provider and Operating
@@ -20,18 +20,18 @@ Public Cloud includes both Infrastructure as a Service (IaaS) and Managed Kubern
 
 ### Infrastructure Provider
 
-| Provider       | OS Pack | SSH Username |
-| -------------- | --------------------- | ------------ |
-| **AWS IaaS**   | **Ubuntu**            | `ubuntu`     |
-| **AWS IaaS**   | **CentOS**            | `centos`     |
-| **Azure IaaS** | **Ubuntu**            | `ubuntu`     |
-| **Azure IaaS** | **CentOS**            | `centos`     |
-| **GCP IaaS**   | **Ubuntu**            | `ubuntu`     |
-| **GCP IaaS**   | **CentOS**            | `centos`     |
+| Provider       | OS Pack    | SSH Username |
+| -------------- | ---------- | ------------ |
+| **AWS IaaS**   | **Ubuntu** | `ubuntu`     |
+| **AWS IaaS**   | **CentOS** | `centos`     |
+| **Azure IaaS** | **Ubuntu** | `ubuntu`     |
+| **Azure IaaS** | **CentOS** | `centos`     |
+| **GCP IaaS**   | **Ubuntu** | `ubuntu`     |
+| **GCP IaaS**   | **CentOS** | `centos`     |
 
 ### Managed Kubernetes
 
-| Provider      | OS Pack          | SSH Username                                                                        |
+| Provider      | OS Pack                        | SSH Username                                                                        |
 | ------------- | ------------------------------ | ----------------------------------------------------------------------------------- |
 | **AWS EKS**   | **Amazon EKS optimized Linux** | `ec2-user`                                                                          |
 | **Azure AKS** | **Linux**                      | `azureuser`                                                                         |
@@ -51,12 +51,12 @@ nodes is critical, consider one of the following options:
 
 ## Data Center
 
-| Provider           | OS Pack | SSH Username |
-| ------------------ | --------------------- | ------------ |
-| **MAAS**           | **Ubuntu**            | `ubuntu`     |
-| **Openstack**      | **Ubuntu**            | `ubuntu`     |
-| **VMware vSphere** | **Ubuntu**            | `spectro`    |
-| **VMware vSphere** | **CentOS**            | `spectro`    |
+| Provider           | OS Pack    | SSH Username |
+| ------------------ | ---------- | ------------ |
+| **MAAS**           | **Ubuntu** | `ubuntu`     |
+| **Openstack**      | **Ubuntu** | `ubuntu`     |
+| **VMware vSphere** | **Ubuntu** | `spectro`    |
+| **VMware vSphere** | **CentOS** | `spectro`    |
 
 ## Edge
 
@@ -64,7 +64,8 @@ This is dependent on the OS you provide for your edge hosts using either
 [Agent Mode](../../../deployment-modes/agent-mode/agent-mode.md) or
 [EdgeForge](../../../clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images.md).
 
-If using EdgeForge, you can also create custom users and assign SSH keys to them using cloud-init stages. Refer to [Cloud Init Stages](../../edge/edge-configuration/cloud-init.md#assign-an-ssh-key) for an example.
+If using EdgeForge, you can also create custom users and assign SSH keys to them using cloud-init stages. Refer to
+[Cloud Init Stages](../../edge/edge-configuration/cloud-init.md#assign-an-ssh-key) for an example.
 
 ## Bring Your Own OS
 

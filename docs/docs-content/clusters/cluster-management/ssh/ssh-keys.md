@@ -7,8 +7,7 @@ sidebar_position: 10
 tags: ["clusters", "cluster management"]
 ---
 
-Palette supports SSH (Secure Shell) to establish, administer, and communicate with remote clusters. This section
-describes creating and managing SSH Keys in the Palette Management Console.
+This section describes creating and managing SSH Keys in the Palette Management Console.
 
 ## Scope of SSH Key
 
