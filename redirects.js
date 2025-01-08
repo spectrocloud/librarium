@@ -133,10 +133,7 @@ let redirects = [
     to: `/devx/`,
   },
   {
-    from: [
-      `/clusters/cluster-management/.ssh/`,
-      `/clusters/cluster-management/ssh-keys/`,
-    ],
+    from: [`/clusters/cluster-management/.ssh/`, `/clusters/cluster-management/ssh-keys/`],
     to: `/clusters/cluster-management/ssh/ssh-keys`,
   },
   {

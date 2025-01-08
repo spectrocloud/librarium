@@ -23,8 +23,8 @@ Ensure the following requirements are met before you attempt to deploy a cluster
   for guidance.
 
 - An SSH Key that is uploaded to Palette and available for usage. Refer to the
-  [SSH Keys](../../cluster-management/ssh/ssh-keys.md) guide to learn how to create an SSH key and upload the public key to
-  Palette.
+  [SSH Keys](../../cluster-management/ssh/ssh-keys.md) guide to learn how to create an SSH key and upload the public key
+  to Palette.
 
 - Palette creates compute, network, and storage resources while provisioning Kubernetes clusters. Ensure there is
   sufficient capacity in the preferred GCP region to create the following resources:
