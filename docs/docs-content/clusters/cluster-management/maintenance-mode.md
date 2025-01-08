@@ -7,7 +7,7 @@ sidebar_position: 240
 tags: ["clusters", "cluster management"]
 ---
 
-Similar to `kubectl` commands `cordon` and `drain`, maintenance mode allows you to temporarily disable scheduling for a running control plane node or worker node. When a node is placed in maintenance mode, running workloads are migrated automatically to other healthy nodes in the cluster without services being distrupted. Using maintenance mode makes it easier to perform necessary maintenance tasks, address node issues, and optimize workload distribution while maintaining the desired level of performance and availability.
+Similar to `kubectl` commands `cordon` and `drain`, maintenance mode allows you to temporarily disable scheduling for an active control plane or worker node. When a node is placed in maintenance mode, workloads are migrated automatically to other healthy nodes in the cluster without services being disrupted. Using maintenance mode makes it easier to perform necessary maintenance tasks, address node issues, and optimize workload distribution while maintaining the desired level of performance and availability.
 
 ## Prerequistes
 
@@ -57,7 +57,7 @@ Palette reminds you in several locations that you have a node in maintenance mod
 
 3. Select the cluster with maintenance mode active and download the [kubeconfig](./kubeconfig.md) file.
 
-![The cluster details page with the two Kubeconfig files elements highlighted](/clusters_cluster--management_kubeconfig_cluster-details-kubeconfig-files.webp)
+![The cluster details page with the two kubeconfig files elements highlighted](/clusters_cluster--management_kubeconfig_cluster-details-kubeconfig-files.webp)
    
 4. Open a terminal window and set the environment variable `KUBECONFIG` to point to the kubeconfig file you downloaded.
 
@@ -65,7 +65,7 @@ Palette reminds you in several locations that you have a node in maintenance mod
     export KUBECONFIG=~/Downloads/admin.aws-maintenance-test.kubeconfig
     ```
 
-5. Confirm that the node is in a maintenance state, indictated by a `STATUS` of `SchedulingDisabled`.
+5. Confirm that the node is in a maintenance state, indicated by a `STATUS` of `SchedulingDisabled`.
 
     ```bash
     kubectl get nodes
@@ -104,7 +104,7 @@ Taking a node out of maintenance mode does not automatically rebalance workloads
 
 3. Select the desired cluster and download the [kubeconfig](./kubeconfig.md) file.
 
-![The cluster details page with the two Kubeconfig files elements highlighted](/clusters_cluster--management_kubeconfig_cluster-details-kubeconfig-files.webp)
+![The cluster details page with the two kubeconfig files elements highlighted](/clusters_cluster--management_kubeconfig_cluster-details-kubeconfig-files.webp)
    
 4. Open a terminal window and set the environment variable `KUBECONFIG` to point to the kubeconfig file you downloaded.
 
@@ -112,7 +112,7 @@ Taking a node out of maintenance mode does not automatically rebalance workloads
     export KUBECONFIG=~/Downloads/admin.aws-maintenance-test.kubeconfig
     ```
 
-5. Confirm that scheduling is no longer disabled for the node, indictated by a `STATUS` of `Ready`.
+5. Confirm that scheduling is no longer disabled for the node, indicated by a `STATUS` of `Ready`.
 
     ```bash
     kubectl get nodes
