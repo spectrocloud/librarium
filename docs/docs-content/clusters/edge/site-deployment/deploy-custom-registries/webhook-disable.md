@@ -173,10 +173,9 @@ If you are using public registries that do not require authentication, you can s
 If your registries require authentication, you will need to provide credentials to enable image pulls. This example uses
 an open source generic Kubernetes credentials provider to provide the resources. There are other resources that you can
 take advantage of to provide registry credentials, including using a `registry.yaml` file in
-[K3s](https://docs.k3s.io/installation/private-registry) or
-[RKE2](https://docs.rke2.io/install/containerd_registry_configuration). However, the advantage of the approach used in
-this example is that after installation, you will not need to restart your cluster services to update the registry paths
-or the registry credentials.
+[K3s](https://docs.k3s.io/installation/private-registry) or [RKE2](https://docs.rke2.io/install/private_registry).
+However, the advantage of the approach used in this example is that after installation, you will not need to restart
+your cluster services to update the registry paths or the registry credentials.
 
 :::info
 
