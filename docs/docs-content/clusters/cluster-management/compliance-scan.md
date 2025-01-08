@@ -17,10 +17,10 @@ purposes. To learn more about each scan type, refer to the following sections.
 
 :::info
 
-Scans may not work as expected when a node is in maintenance mode. Before scheduling a scan, we recommend you turn off
-maintenance mode if enabled. To verify if a node is in maintenance mode, navigate to **Clusters** > **Nodes** and check
-the **Health** column for a **Maintenance mode** icon. To turn off maintenance mode, click on the **three-dot Menu** in
-the row of the node you want to scan, and select **Turn off maintenance mode**.
+Scans cannot be performed when a node is in [maintenance mode](./maintenance-mode.md). To verify if a node is in
+maintenance mode, navigate to **Clusters** > **Nodes** and check the **Health** column for a **Maintenance mode** icon.
+To turn off maintenance mode, click on the **three-dot Menu** in the row of the node you want to scan, and select **Turn
+off maintenance mode**.
 
 :::
 
