@@ -42,8 +42,6 @@ Overview** page. Resource usage by different projects are displayed on the bar c
 also does not include Edge or MAAS clusters. For more information about roles and permissions in Palette, refer to
 [User & Role Management](../user-management/user-management.md).
 
-![Palette interface of Tenant Overview page with the resource usage chart highlighted.](/introduction_resource-usage_tenant-admin.webp)
-
 :::warning
 
 The exclusion of Edge and MAAS clusters in kCh calculations was implemented in the Palette release 4.5.c and did not
@@ -55,6 +53,8 @@ Even though your resource usage in the past may have included Edge and MAAS clus
 charge you for kCh usage by Edge and MAAS clusters since you provide the infrastructure for those clusters yourself.
 
 :::
+
+![Palette interface of Tenant Overview page with the resource usage chart highlighted.](/introduction_resource-usage_tenant-admin.webp)
 
 If you'd like to discuss other compute capacities, contact us at
 [support@spectrocloud.com](mailto:support@spectrocloud.com).
