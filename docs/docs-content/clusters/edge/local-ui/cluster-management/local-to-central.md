@@ -12,7 +12,12 @@ Clusters provisioned on hosts that are installed in the `airgap` installation mo
 have the option to transfer the management of a local cluster from Local UI to a Palette instance to be managed
 centrally by pairing the local cluster the Palette instance.
 
-## Prerequisites
+## Pair Local Cluster with Palette
+
+Moving a local cluster to central management is a two-step process. You first send a pairing request from your local
+cluster to Palette using Local UI. Then you must accept the pairing request and select matching profile from Palette.
+
+### Prerequisites
 
 - An active locally managed cluster. The cluster itself must be in the **Running** state and all nodes must be healthy.
 
@@ -22,14 +27,12 @@ centrally by pairing the local cluster the Palette instance.
 - All Edge hosts in your cluster must be able to connect to the Palette instance you intend to you use to manage the
   cluster.
 
-- Your Palette environment has cluster profiles that exactly match the cluster profiles used by the local cluster.
+- Your Palette environment has cluster profiles whose latest version exactly match the cluster profiles used by the
+  local cluster.
 
-## Procedure
+### Procedure
 
-Moving a local cluster to central management is a two-step process. You first send a pairing request from your local
-cluster to Palette using Local UI. Then you must accept the pairing request and select matching profile from Palette.
-
-### Move Local Cluster to Central Management
+#### Send Pairing Request from Local Cluster
 
 1. Log in to [Local UI](../host-management/access-console.md).
 
@@ -45,7 +48,7 @@ cluster to Palette using Local UI. Then you must accept the pairing request and 
 6. Click **Pair** to send the pairing request. A pairing ID will be displayed on the Local UI screen once a pairing
    request has been sent. You may use the ID to identify this pairing request in a later step.
 
-### Accept Pairing Request
+#### Accept Pairing Request from Palette
 
 7. Log in to [Palette](https://console.palette.com).
 
@@ -65,7 +68,8 @@ cluster to Palette using Local UI. Then you must accept the pairing request and 
 
 13. Match the profile used by your local cluster by selecting profiles in your Palette environment. To make a successful
     match, ensure that every pack in the profile used by your cluster is matched with the same pack in the exact same
-    version.
+    version. You can only choose the latest version of a profile in Palette and must make sure that the latest version
+    of the profiles you use can match the cluster.
 
     In the following example, the second and third columns are valid matches because every layer in the original cluster
     has a matching layer in the matched profile. **Valid match 2** is valid even though it only has one full profile
@@ -92,10 +96,89 @@ cluster to Palette using Local UI. Then you must accept the pairing request and 
 
 15. Click **Pair cluster** to start pairing your cluster.
 
-## Validate
+### Validate
 
 1. Log in to [Palette](https://console.palette.com).
 
 2. From the left **Main Menu**, click **Clusters**.
 
 3. Confirm that the cluster is now registered with Palette and can be managed centrally.
+
+## Withdraw Pairing Request From Local Cluster
+
+If you send a pairing request in error from your local cluster, you can withdraw the pairing request before it is
+accepted by your Palette instance.
+
+### Prerequisite
+
+- Access to [Local UI](../host-management/access-console.md).
+
+- A pending pairing request. Refer to
+  [Send Pairing Request From Local Cluster](#send-pairing-request-from-local-cluster).
+
+### Procedure
+
+1. Log in to [Local UI](../host-management/access-console.md).
+
+2. On the left **Main Menu**, click **Settings**.
+
+3. Copy the **Pairing ID** and save it in a safe location. This ID may be useful when you need to delete the pairing
+   request in Palette manually.
+
+4. Click **Cancel Pairing Request**.
+
+5. Your host will send an API request to inform Palette that the pairing request has been cancelled. This will remove
+   the pending pairing request from your Palette instance as well.
+
+   However, if your host cannot connect to your Palette instance, this request will not be able to reach Palette. If
+   your host cannot connect to Palette, refer to
+   [Reject Pairing Request form Palette](#reject--pairing-request-in-palette) to reject the pending pairing request
+   manually.
+
+### Validate
+
+1. Log in to [Local UI](../host-management/access-console.md).
+
+2. On the left **Main Menu**, click **Settings**.
+
+3. Confirm that your cluster is locally managed and does not have a pending pairing request anymore.
+
+## Reject Pairing Request in Palette
+
+If you receive a pairing request that you do not recognize, or if you have a pending pairing request that you know has
+been canceled, you can reject the pairing request. You can use tags and the unique pairing ID to identify each pairing
+request.
+
+### Prerequisites
+
+- A pending pairing request. Refer to [Pair Local Cluster with Palette](#pair-local-cluster-with-palette) to learn how
+  to make one.
+
+- You have the tenant admin or project admin role in your Palette environment. For more information, refer to
+  [Role and Permissions](../../../../user-management/palette-rbac/palette-rbac.md).
+
+- The pairing ID of the pairing request.
+
+### Procedure
+
+1. Log in to [Palette](https://console.palette.com).
+
+2. From the left **Main Menu**, click **Clusters**.
+
+3. At the top of the page, a box will be displayed prompting you to review pairing requests that Palette has received.
+   Click **Pair** to start reviewing the requests.
+
+4. Identify the pairing request corresponding to your cluster by its pairing ID. Click **Reject**.
+
+### Validate
+
+1. Log in to [Palette](https://console.palette.com).
+
+2. From the left **Main Menu**, click **Clusters**.
+
+3. If you rejected the only pairing request, confirm that the pairing prompt box is no longer present in the
+   **Clusters** page.
+
+   If you still have pending pairing requests remaining, at the top of the page, a box will be displayed prompting you
+   to review pairing requests that Palette has received. Click **Pair** to start reviewing the requests. Confirm that
+   the request you rejected is no longer present.
