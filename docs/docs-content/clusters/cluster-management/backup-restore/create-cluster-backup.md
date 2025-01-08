@@ -37,6 +37,9 @@ schedule a backup or initiate a backup on demand.
 - [On-demand Backup](#on-demand-backup)
 
 <br />
+## Limitations
+
+- Nodes in [Maintenance Mode](../maintenance-mode.md) are not included in the backup process.
 
 ## Schedule a Backup
 
