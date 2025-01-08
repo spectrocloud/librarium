@@ -2,7 +2,7 @@
 sidebar_label: "SSH Usernames"
 title: "SSH Usernames"
 description:
-  "A list of the Secure Shell (SSH) usernames created on Kubernetes nodes for each provider and operating system pack
+  "A list of the Secure Shell (SSH) usernames created on Kubernetes nodes for each provider and operating system (OS) pack
   available in Palette."
 icon: ""
 hide_table_of_contents: false
@@ -16,9 +16,11 @@ These user names are relevant when using [SSH key pairs](./ssh-keys.md) with you
 
 ## Public Cloud
 
+Public Cloud includes both Infrastructure as a Service (IaaS) and Managed Kubernetes.
+
 ### Infrastructure Provider
 
-| Provider       | Operating System Pack | SSH Username |
+| Provider       | OS Pack | SSH Username |
 | -------------- | --------------------- | ------------ |
 | **AWS IaaS**   | **Ubuntu**            | `ubuntu`     |
 | **AWS IaaS**   | **CentOS**            | `centos`     |
@@ -29,7 +31,7 @@ These user names are relevant when using [SSH key pairs](./ssh-keys.md) with you
 
 ### Managed Kubernetes
 
-| Provider      | Operating System Pack          | SSH Username                                                                        |
+| Provider      | OS Pack          | SSH Username                                                                        |
 | ------------- | ------------------------------ | ----------------------------------------------------------------------------------- |
 | **AWS EKS**   | **Amazon EKS optimized Linux** | `ec2-user`                                                                          |
 | **Azure AKS** | **Linux**                      | `azureuser`                                                                         |
@@ -49,7 +51,7 @@ nodes is critical, consider one of the following options:
 
 ## Data Center
 
-| Provider           | Operating System Pack | SSH Username |
+| Provider           | OS Pack | SSH Username |
 | ------------------ | --------------------- | ------------ |
 | **MAAS**           | **Ubuntu**            | `ubuntu`     |
 | **Openstack**      | **Ubuntu**            | `ubuntu`     |
@@ -58,9 +60,11 @@ nodes is critical, consider one of the following options:
 
 ## Edge
 
-This is dependent on the operating system you provide for your edge hosts using either
+This is dependent on the OS you provide for your edge hosts using either
 [Agent Mode](../../../deployment-modes/agent-mode/agent-mode.md) or
 [EdgeForge](../../../clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images.md).
+
+If using EdgeForge, you can also create custom users and assign SSH keys to them using cloud-init stages. Refer to [Cloud Init Stages](../../edge/edge-configuration/cloud-init.md#assign-an-ssh-key) for an example.
 
 ## Bring Your Own OS
 
@@ -69,12 +73,11 @@ depend on the OS image that you have built. Refer to [Bring Your Own OS (BYOOS)]
 guidance on building custom images.
 
 - For images built using the [Kubernetes Image Builder](../../../byoos/image-builder/build-image.md), the SSH username
-  is defined as the value for `ssh_username` in the corresponding operating system JSON file. For example, the
+  is defined as the value for `ssh_username` in the corresponding OS JSON file. For example, the
   [Amazon Linux 2 JSON](https://github.com/kubernetes-sigs/image-builder/blob/main/images/capi/packer/ami/amazon-2.json#L11)
   sets the `ssh_username` value as `ec2-user`.
 
-  If `ssh_username` is not defined in the operating system JSON, then `root` is set by the **Bring Your Own OS (BYOOS)**
-  pack.
+  If `ssh_username` is not defined in the OS JSON, then `root` is set by the **Bring Your Own OS (BYOOS)** pack.
 
 - For images built for VMware vSphere, the SSH username is set to `spectro` by Palette.
 
