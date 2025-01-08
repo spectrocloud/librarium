@@ -75,7 +75,7 @@ SSH username will depend on the operating system image that you have built. Refe
 
   If `ssh_username` is not defined in the operating system JSON, then `root` is set by default.
 
-- For images built for VMware vSphere, the `ssh_username` is set to `spectro`.
+- For images built for VMware vSphere, the SSH username is set to `spectro` by Palette.
 
 ## Resources
 
