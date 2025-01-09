@@ -53,8 +53,7 @@ following steps.
     ```
 
 3.  Log in to the Palette CLI using the `login` command. This will overwrite the existing Palette credentials in the
-    CLI. If you don't have an Ubuntu Pro token, you can omit the `--ubuntu-pro-token` flag. Otherwise, you can provide
-    the token using the `--ubuntu-pro-token` flag.
+    CLI. If you don't have an Ubuntu Pro token, you can omit the `--ubuntu-pro-token` flag.
 
     <!-- prettier-ignore -->
       <Tabs>
@@ -79,7 +78,7 @@ following steps.
 4.  (Optional) Update any previous Palette EC install configuration file that was created using the previous encryption
     passphrase. You can use the `ec install` command with the `--update-passwords` flag to update the passwords in the
     configuration. Replace `/path/to/ec.yaml` with the path to the desired EC configuration file. If you are using
-    Ubuntu Pro pass in the token using the `--ubuntu-pro-token` flag.
+    Ubuntu Pro, pass in the token using the `--ubuntu-pro-token` flag.
 
     <!-- prettier-ignore -->
       <Tabs>
