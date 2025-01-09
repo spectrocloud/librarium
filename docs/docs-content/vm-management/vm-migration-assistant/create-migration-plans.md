@@ -20,7 +20,8 @@ Follow this guide to create migration plans using the VM Migration Assistant.
 
 - At least one source provider for the VMs to be migrated. Refer to
   [Create Source Providers](./create-source-providers.md) for guidance.
-- A healthy VMO cluster. Refer to the [Create a VMO Profile](../create-vmo-profile.md) for further guidance.
+- A healthy Virtual Machine Orchestrator (VMO) cluster. Refer to the [Create a VMO Profile](../create-vmo-profile.md)
+  for further guidance.
 
   - The VMO cluster must have network connectivity to vCenter and ESXi hosts, and the VMs you want to migrate.
 
@@ -77,7 +78,7 @@ Follow this guide to create migration plans using the VM Migration Assistant.
 - The <VersionedLink text="Virtual Machine Migration Assistant" url="/integrations/packs/?pack=vm-migration-assistant-pack"/> pack must be added to your cluster profile. Refer to [Create a VM Migration Assistant Cluster Profile](./create-vm-migration-assistant-profile.md) for guidance.
   - The VM Migration Assistant service console must be accessible from a web browser.
 
-- We recommend using a [ConfigMap](https://kubernetes.io/docs/concepts/configuration/configmap/) to uninstall [VMware Tools](https://docs.vmware.com/en/VMware-Tools/index.html), and install the [QEMU Guest Agent](https://wiki.qemu.org/Features/GuestAgent) and [VirtiIO drivers](https://github.com/virtio-win/kvm-guest-drivers-windows) on your migrated VMs. Installing the QEMU agent and Virtio drivers enhances compatibility with [KVM](https://linux-kvm.org/page/Main_Page), and enables advanced features like live migration and accurate reporting of guest status.
+- We recommend using a [ConfigMap](https://kubernetes.io/docs/concepts/configuration/configmap/) to uninstall [VMware Tools](https://docs.vmware.com/en/VMware-Tools/index.html), and install the [QEMU Guest Agent](https://wiki.qemu.org/Features/GuestAgent) and [VirtiIO drivers](https://github.com/virtio-win/kvm-guest-drivers-windows) on your migrated VMs. Installing the QEMU agent and Virtio drivers enhances compatibility with VMO, and enables advanced features like live migration and accurate reporting of guest status.
   
   You can provide [virt-customize](https://github.com/kubev2v/forklift/commit/650d73d2308d73fe596666a2f097aefda32845f6) scripts inside a ConfigMap to automatically perform these actions on your VMs during migration. The ConfigMap must exist in your target namespace before migrating your VMs.
 
@@ -179,6 +180,7 @@ Follow this guide to create migration plans using the VM Migration Assistant.
                          qemu-guest-agent) echo "qemu-guest-agent" ;;
                          virtio-tools) echo "virtio-win" ;;
                          open-vm-tools) echo "open-vm-tools" ;;
+                         cloud-init) echo "cloud-init" ;;
                          *) echo "$generic_name" ;;
                      esac
                      ;;
@@ -187,6 +189,7 @@ Follow this guide to create migration plans using the VM Migration Assistant.
                          qemu-guest-agent) echo "qemu-guest-agent" ;;
                          virtio-tools) echo "virtio-win" ;;
                          open-vm-tools) echo "open-vm-tools" ;;
+                         cloud-init) echo "cloud-init" ;;
                          *) echo "$generic_name" ;;
                      esac
                      ;;
@@ -195,6 +198,7 @@ Follow this guide to create migration plans using the VM Migration Assistant.
                          qemu-guest-agent) echo "qemu-guest-agent" ;;
                          virtio-tools) echo "virtio-drivers" ;;
                          open-vm-tools) echo "open-vm-tools" ;;
+                         cloud-init) echo "cloud-init" ;;
                          *) echo "$generic_name" ;;
                      esac
                      ;;
@@ -203,6 +207,7 @@ Follow this guide to create migration plans using the VM Migration Assistant.
                          qemu-guest-agent) echo "qemu-guest-agent" ;;
                          virtio-tools) echo "linux-virtio" ;;
                          open-vm-tools) echo "open-vm-tools" ;;
+                         cloud-init) echo "cloud-init" ;;
                          *) echo "$generic_name" ;;
                      esac
                      ;;
@@ -319,6 +324,34 @@ Follow this guide to create migration plans using the VM Migration Assistant.
              fi
          }
 
+         # Function to handle Cloud-init
+         handle_cloud_init() {
+             local package=$(get_package_name "cloud-init")
+             if is_installed "$package"; then
+                 log "Cloud-init is already installed."
+                 if [ "$DRYRUN" = false ]; then
+                     if systemctl is-active --quiet cloud-init; then
+                         log "Cloud-init service is running."
+                     else
+                         log "Starting Cloud-init service..."
+                         systemctl start cloud-init || log "Failed to start Cloud-init service"
+                     fi
+                 else
+                     log "Dry run: Would check and potentially start Cloud-init service"
+                 fi
+             else
+                 log "Cloud-init is not installed. Installing..."
+                 if install_package "$package"; then
+                     if [ "$DRYRUN" = false ]; then
+                         log "Starting Cloud-init service..."
+                         systemctl start cloud-init || log "Failed to start Cloud-init service"
+                     else
+                         log "Dry run: Would start Cloud-init service"
+                     fi
+                 fi
+             fi
+         }
+
          # Function to check if running in a virtual environment
          check_virtual_env() {
              if [ -d /proc/vz ]; then
@@ -399,6 +432,9 @@ Follow this guide to create migration plans using the VM Migration Assistant.
 
              log "Handling VMware Tools daemon (vmtoolsd)..."
              handle_vmtoolsd
+
+             log "Handling Cloud-init..."
+             handle_cloud_init
 
              log "All tasks completed."
          }
@@ -508,13 +544,14 @@ Follow this guide to create migration plans using the VM Migration Assistant.
 
 8. Fill in the migration plan details.
 
-   | Setting              | Description                                                                                                                                                                                                                            | Example                                   |
-   | -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------- |
-   | **Plan name**        | A unique name for your migration plan.                                                                                                                                                                                                 | `myMigrationPlan`                         |
-   | **Target provider**  | Select the target provider from the drop-down Menu. By default, this will be your host cluster.                                                                                                                                        | `host`                                    |
-   | **Target namespace** | Select the target namespace for the VM migration from the drop-down Menu.                                                                                                                                                              | `myVmMigrationNamespace`                  |
-   | **Network map**      | A storage map defines the mapping of source storage domains to target storage classes or datastores, ensuring VM disks are correctly placed in the destination environment. Adjust the mapping, or leave the default mapping in place. | `VM Network` / `Pod Networking`           |
-   | **Storage map**      | A network map defines the mapping of source networks to target networks, ensuring VM network interfaces are correctly connected in the destination environment. Adjust the mapping, or leave the default mapping in place.             | `vsanDatastore` / `spectro-storage-class` |
+   | Setting                 | Description                                                                                                                                                                                                                            | Example                                   |
+   | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------- |
+   | **Plan name**           | A unique name for your migration plan.                                                                                                                                                                                                 | `myMigrationPlan`                         |
+   | **Target provider**     | Select the target provider from the drop-down Menu. By default, this will be your VMO cluster.                                                                                                                                         | `host`                                    |
+   | **Target namespace**    | Select the target namespace from the drop-down Menu. The target namespace is where the migrated VMs will be located on your VMO cluster.                                                                                               | `myVmMigrationNamespace`                  |
+   | **Network map**         | A network map defines the mapping of source networks to target networks, ensuring VM network interfaces are correctly connected in the destination environment. Adjust the mapping, or leave the default mapping in place.             | `VM Network` / `Pod Networking`           |
+   | **Storage map**         | A storage map defines the mapping of source storage domains to target storage classes or datastores, ensuring VM disks are correctly placed in the destination environment. Adjust the mapping, or leave the default mapping in place. | `vsanDatastore` / `spectro-storage-class` |
+   | **Preserve static IPs** | Choose whether to preserve the static IPs of the VMs migrated from vSphere.                                                                                                                                                            | :white_check_mark:                        |
 
 9. Click **Create migration plan**. The **Details** tab for the plan is then displayed.
 

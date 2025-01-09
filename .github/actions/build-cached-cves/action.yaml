@@ -1,4 +1,4 @@
-name: "Build with cached packs"
+name: "Build with cached CVEs"
 inputs:
   gh-token:
     description: "GitHub Token for authentication"
@@ -17,27 +17,25 @@ runs:
         fi
       shell: bash
 
-    - name: Download Packs Data
+    - name: Download CVE Data
       run: |
-        # Find the latest packs upload workflow.
+        # Find the latest CVE upload workflow.
         run_id=$(gh run list --workflow="post_release.yaml" --limit 1 --status=success --json databaseId | jq -r '.[0].databaseId')
+        echo 'Fetching artifacts from run $run_id'
         # Remove any downloaded artifacts, should they exist.
         rm -rf ./downloaded_artifacts
         # Download the latest artifact to a new dir.
-        gh run download ${run_id} --name build-packs --dir ./downloaded_artifacts
+        gh run download ${run_id} --name security-bulletins --dir ./downloaded_artifacts
       shell: bash
       env:
         GH_TOKEN: ${{ inputs.gh-token }}
 
-    - name: Unpack packs data
+    - name: Unpack CVE data
       run: |
         # Ensure the correct folders exist.
-        mkdir -p .docusaurus/packs-integrations
+        mkdir -p .docusaurus/security-bulletins/default
         # Move the files to their correct places in the checked out repository
-        mv downloaded_artifacts/.docusaurus/packs-integrations/* .docusaurus/packs-integrations
-        mkdir -p static/img/packs
-        mv downloaded_artifacts/build/packs/* static/img/packs
-        # Clean up. 
+        mv downloaded_artifacts/data.json .docusaurus/security-bulletins/default/data.json
         rm -rf downloaded_artifacts
       shell: bash
 

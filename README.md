@@ -38,10 +38,13 @@ Initialize the repository by issuing the following command:
 make init
 ```
 
-Next, add your Palette API key to the `.env` file. Replace `<your-palette-api-key>` with your Palette API key.
+By default, the [Packs component](#packs-component) is disabled. If you would like to enable it, then add your Palette
+API key and set `DISABLE_PACKS_INTEGRATIONS` to `false` in the `.env` file. Replace `<your-palette-api-key>` with your
+Palette API key.
 
 ```shell
 PALETTE_API_KEY="<your-palette-api-key>"
+DISABLE_PACKS_INTEGRATIONS=false
 ```
 
 > [!IMPORTANT] You need a Palette API key to start the local development server. Refer to the
@@ -799,6 +802,31 @@ will stop the pre-build script from fetching the security bulletins.
 export DISABLE_SECURITY_INTEGRATIONS=true
 ```
 
+### Cached Security Bulletins
+
+All CVE related data is saved to a
+[GitHub Workflow Artifact](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/storing-and-sharing-data-from-a-workflow#about-workflow-artifacts)
+after every successful release to production. Check out the [post_release.yaml](.github/workflows/post_release.yaml) for
+further details. The cached data enables us to build and start librarium without performing any CVE-related API queries.
+All of our GitHub workflows will use this cached data as a fallback in the case of an API related build failure. Check
+out the [build-cached-cves action.yaml](.github/actions/build-cached-cves/action.yaml) to learn how the cached data is
+fetched and used.
+
+CVE data is saved locally in the `.docusaurus/security-bulletins/default/data.json` file. You can remove the data using
+`make clean-security`. You can use the cached CVE artifact locally when you want to avoid the CVE download time. This
+flow also helps you when you don't have any local CVE data and we are experiencing an API outage.
+
+librarium provides the following commands which fetch cached CVE data to your local environment.
+
+| **Command**              | **Description**                                                                                                                                |
+| ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| `make get-cached-cves`   | Fetch the CVE data artifact and place files in the correct places. You can then execute `make start` or `make build` as usual.                 |
+| `make start-cached-cves` | Attempt to start the local development server. If a CVE related outage is detected, fetch the CVE data artifact and retry the `start` command. |
+| `make build-cached-cves` | Attempt to build the application. If a CVE related outage is detected, fetch the CVE data artifact and retry the `build` command.              |
+
+These scripts will prompt you to install and authenticate the [GitHub CLI](https://cli.github.com/) before you can
+proceed.
+
 ## Packs Component
 
 The packs component is a custom component that displays all packs available in Palette SaaS by querying the Palette API
@@ -867,7 +895,7 @@ Settting the `DISABLE_PACKS_PLUGIN` environment variable to `true` will also hav
 
 All pack related data is saved to a
 [GitHub Workflow Artifact](https://docs.github.com/en/actions/writing-workflows/choosing-what-your-workflow-does/storing-and-sharing-data-from-a-workflow#about-workflow-artifacts)
-after every succesful release to production. Check out the [post_release.yaml](.github/workflows/post_release.yaml) for
+after every successful release to production. Check out the [post_release.yaml](.github/workflows/post_release.yaml) for
 further details. The cached data enables us to build and start librarium without performing any pack related API
 queries. All of our GitHub workflows will use this cached data as a fallback in the case of an API related build
 failure. Check out the [build-cached-packs action.yaml](.github/actions/build-cached-packs/action.yaml) to learn how the
@@ -1163,8 +1191,9 @@ make clean-versions
 Librarium provides the following exit codes. These exit codes are returned by both the `npm run start` and
 `npm run build` commands.
 
-| **Exit Code**                 | **Description**                                                                                                                                                                                                                                                   |
-| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `0`                           | The command was executed successfully.                                                                                                                                                                                                                            |
-| `5`                           | The command failed due to errors received from the API service. These requests are issued by the [Packs Component](#packs-component) and librarium cannot start without loading packs, either from the API service or the [cached packs data](#cached-packs-data) |
-| Any other non-zero exit code. | The command failed due to another error. Check the command output.                                                                                                                                                                                                |
+| **Exit Code**                 | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `0`                           | The command was executed successfully.                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| `5`                           | The command failed due to errors received from the API service related to packs. These requests are issued by the [Packs Component](#packs-component) and librarium cannot start without loading packs, either from the API service or the [cached packs data](#cached-packs-data)                                                                                                                                                                                                   |
+| `7`                           | The command failed due to errors received from the API service related to security bulletins. These requests are issued by the [CVE script](./utils/cves/index.js) and librarium cannot start without loading the security bulletins. The [Build with Cached CVE](./.github/actions/build-cached-cves/action.yaml) action is built to handle this exit situation and build with cached CVEs. You can issue the command `make get-cached-cves` to fetch cached CVEs to build locally. |
+| Any other non-zero exit code. | The command failed due to another error. Check the command output.                                                                                                                                                                                                                                                                                                                                                                                                                   |

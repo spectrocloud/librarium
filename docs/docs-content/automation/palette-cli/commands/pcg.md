@@ -24,6 +24,11 @@ The `pcg` command exposes the following subcommand.
 
 - Docker is required to install a PCG cluster. Refer to the [Docker](https://docs.docker.com/get-docker/) documentation
   to learn how to install Docker on your system.
+- You must log in to Palette using the `login` command before importing clusters.
+- You must provide an encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters
+  long and contain a capital letter, a lowercase letter, a digit, and a special character. You can provide the
+  passphrase through the `PALETTE_ENCRYPTION_PASSWORD` environment variable or the `-k` or `--encryption-passphrase`
+  flag. Refer to the [Encryption](./../palette-cli.md#encryption) section for more information on encryption.
 
 ## Install
 
@@ -32,12 +37,13 @@ by the `install` subcommand.
 
 <br />
 
-| **Short Flag** | **Long Flag**        | **Description**                                                                                                                     | **Type** |
-| -------------- | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------- | -------- |
-| `-f`           | `--config-file`      | Install using a configuration file (optional). Use `-config-only` to generate a configuration file.                                 | string   |
-| `-o`           | `--config-only`      | Generate configuration file only. This command will not proceed with installation.                                                  | boolean  |
-| `-h`           | `--help`             | Help for the install command.                                                                                                       | boolean  |
-| `-p`           | `--update-passwords` | Use to update the PCG password. This does not proceed with installation. The `--config-file` flag must be provided. Default: false. | boolean  |
+| **Short Flag** | **Long Flag**             | **Description**                                                                                                                                                                                                                                                                                                                                                             | **Type** |
+| -------------- | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| `-f`           | `--config-file`           | Install using a configuration file (optional). Use `-config-only` to generate a configuration file.                                                                                                                                                                                                                                                                         | string   |
+| `-k`           | `--encryption-passphrase` | Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable `PALETTE_ENCRYPTION_PASSWORD`. Refer to the [Encryption](./../palette-cli.md#encryption) section for more information on encryption. | string   |
+| `-o`           | `--config-only`           | Generate configuration file only. This command will not proceed with installation.                                                                                                                                                                                                                                                                                          | boolean  |
+| `-h`           | `--help`                  | Help for the install command.                                                                                                                                                                                                                                                                                                                                               | boolean  |
+| `-p`           | `--update-passwords`      | Use to update the PCG password. This does not proceed with installation. The `--config-file` flag must be provided. Default: false.                                                                                                                                                                                                                                         | boolean  |
 
 :::warning
 

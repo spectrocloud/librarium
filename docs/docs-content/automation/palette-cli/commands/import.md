@@ -23,13 +23,21 @@ imported clusters.
 
 - Ensure you have `admin` or `cluster-admin` permissions on the cluster you are importing.
 
+- You must log in to Palette using the `login` command before importing clusters.
+
+- You must provide an encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters
+  long and contain a capital letter, a lowercase letter, a digit, and a special character. You can provide the
+  passphrase through the `PALETTE_ENCRYPTION_PASSWORD` environment variable or the `-k` or `--encryption-passphrase`
+  flag. Refer to the [Encryption](./../palette-cli.md#encryption) section for more information on encryption.
+
 <br />
 
-| **Long Flag**      | **Description**                                                              | **Type** |
-| ------------------ | ---------------------------------------------------------------------------- | -------- |
-| `--kubeconfig`     | Path to the kubeconfig for the cluster you would like to import (optional)   | string   |
-| `--kubeconfig-dir` | Path to directory containing kubeconfigs for one or more clusters (optional) | string   |
-| `--uuid`           | If true, a partial UUID is appended to each cluster name (optional)          | boolean  |
+| **Short Flag** | **Long Flag**              | **Description**                                                                                                                                                                                                                                                                                                                                                             | **Type** |
+| -------------- | -------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| `-k`           | `---encryption-passphrase` | Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable `PALETTE_ENCRYPTION_PASSWORD`. Refer to the [Encryption](./../palette-cli.md#encryption) section for more information on encryption. | string   |
+| -              | `--kubeconfig`             | Path to the kubeconfig for the cluster you would like to import (optional)                                                                                                                                                                                                                                                                                                  | string   |
+| -              | `--kubeconfig-dir`         | Path to directory containing kubeconfigs for one or more clusters (optional)                                                                                                                                                                                                                                                                                                | string   |
+| -              | `--uuid`                   | If true, a partial UUID is appended to each cluster name (optional)                                                                                                                                                                                                                                                                                                         | boolean  |
 
 :::info
 

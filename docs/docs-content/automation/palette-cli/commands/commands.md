@@ -46,6 +46,15 @@ Palette CLI supports the following global flags.
 | `-l`       | `--log-level` | Log level. Allowed values: `panic` `fatal` `error` `warn` `info` `debug` `trace` (default `info`) | string |
 | `-w`       | `--workspace` | Workspace location for staging runtime configurations and logs (default `$HOME/.palette`)         | string |
 
+## Environment Variables
+
+The Palette CLI supports the following environment variables.
+
+| Variable Name                 | Description                                                                                                                                                                                           | Type   |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
+| `DISABLE_KIND_CLUSTER_CHECK`  | If set to `true,` the Palette CLI will not check for existing kind clusters or whether the deployed kind cluster is up and active.                                                                    | bool   |
+| `PALETTE_ENCRYPTION_PASSWORD` | The encryption passphrase Palette CLI will use to encrypt sensitive data. The passphrase must between 8 to 32 characters long with a capital letter, a lower letter, a digit and a special character. | string |
+
 ## Resources
 
 - [Docs](docs.md)
