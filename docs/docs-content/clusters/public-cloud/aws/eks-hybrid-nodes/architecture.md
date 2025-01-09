@@ -121,7 +121,7 @@ methods:
 - [Agent Mode](../../../../deployment-modes/agent-mode/agent-mode.md)
 - [EdgeForge Workflow](../../../edge/edgeforge-workflow/edgeforge-workflow.md)
   - Part of the EdgeForge Workflow is to create [Kairos-based images](https://kairos.io/) containing the OS and the
-    desired Kubernetes versions. These are also named provider images.
+    desired Kubernetes versions. These are named provider images.
 
 :::warning
 
