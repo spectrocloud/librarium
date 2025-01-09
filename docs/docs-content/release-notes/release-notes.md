@@ -68,12 +68,12 @@ tags: ["release-notes"]
 
 #### Features
 
-- Palette supports managing [Amazon EKS Hybrid Nodes](https://aws.amazon.com/eks/hybrid-nodes/). Once your Amazon
-  EKS cluster is imported into Palette, you can create worker node pools from edge hosts built using the EdgeForge
-  workflow or Agent Mode. To secure these edge hosts within the hybrid ecosystem, you have the flexibility to use either
-  AWS Systems Manager or IAM Roles Anywhere. Additionally, a Cilium network layer can be configured to manage networking
-  for hybrid nodes using affinity rules. Refer to EKS Hybrid Nodes section to learn more about using Palette to manage
-  your Amazon EKS Hybrid Nodes.
+- Palette supports managing [Amazon EKS Hybrid Nodes](https://aws.amazon.com/eks/hybrid-nodes/). Once your Amazon EKS
+  cluster is imported into Palette, you can create worker node pools from edge hosts built using the EdgeForge workflow
+  or Agent Mode. To secure these edge hosts within the hybrid ecosystem, you have the flexibility to use either AWS
+  Systems Manager or IAM Roles Anywhere. Additionally, a Cilium network layer can be configured to manage networking for
+  hybrid nodes using affinity rules. Refer to EKS Hybrid Nodes section to learn more about using Palette to manage your
+  Amazon EKS Hybrid Nodes.
 
 - You can now transfer the management of Edge clusters deployed in an airgap environments through
   [Local UI](../clusters/edge/local-ui/local-ui.md) to a Palette management plane. This feature allows you to start the
@@ -124,8 +124,8 @@ tags: ["release-notes"]
 #### Breaking Changes
 
 - The Palette CLI now requires an encryption passphrase for various commands. The passphrase can be set as an
-  environment variable or using a CLI command flag. The passphrase encrypts and decrypts sensitive data, such
-  as secrets, in the CLI configuration files. Refer to the
+  environment variable or using a CLI command flag. The passphrase encrypts and decrypts sensitive data, such as
+  secrets, in the CLI configuration files. Refer to the
   [Palette CLI Encryption](../automation/palette-cli/palette-cli.md#encryption) section to learn more about the
   encryption passphrase.
 
