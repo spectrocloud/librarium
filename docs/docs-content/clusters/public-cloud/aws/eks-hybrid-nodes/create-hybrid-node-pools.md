@@ -40,7 +40,7 @@ You must then configure your networking to allow traffic to reach the pods on yo
 6. Select your base OS pack depending on how you will register your edge hosts.
 
    - For Agent Mode, select **BYOS - Agent Mode**.
-   - For provider images, select **BYOS - Edge OS**.
+   - For EdgeForge Workflow, select **BYOS - Edge OS**.
 
 7. If selecting **BYOS - Agent Mode**, on the **Configure Pack** page, click **Values** under **Pack Details**. Then,
    click on **Presets** on the right-hand side, and select **Agent Mode**.
@@ -98,13 +98,13 @@ Your cluster profile for hybrid nodes is now created and can be used in the
   [Import EKS Cluster and Enable Hybrid Mode](./import-eks-cluster-enable-hybrid-mode.md) for guidance.
 
 - Edge hosts have been registered with Palette through
-  [Agent Mode](../../../../deployment-modes/agent-mode/agent-mode.md) or by using
-  [provider images](../../../edge/edgeforge-workflow/palette-canvos/build-provider-images.md).
+  [Agent Mode](../../../../deployment-modes/agent-mode/agent-mode.md) or
+  [EdgeForge Workflow](../../../edge/edgeforge-workflow/edgeforge-workflow.md).
 
   :::warning
 
-  If using provider images, you must include the following in your `.arg` file during the
-  [build steps](../../../edge/edgeforge-workflow/palette-canvos/build-provider-images.md#build-provider-images).
+  If using the EdgeForge Workflow, you must include the following in your `.arg` file during the
+  [build steps for provider images](../../../edge/edgeforge-workflow/palette-canvos/build-provider-images.md#build-provider-images).
 
   ```shell
   K8S_DISTRIBUTION=nodeadm
@@ -393,6 +393,8 @@ The hybrid node pool repave will now complete. This can take up to one hour.
 ## Resources
 
 - [Agent Mode](../../../../deployment-modes/agent-mode/agent-mode.md)
+
+- [EdgeForge Workflow](../../../edge/edgeforge-workflow/edgeforge-workflow.md)
 
 - [Build Provider Images](../../../edge/edgeforge-workflow/palette-canvos/build-provider-images.md)
 
