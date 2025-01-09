@@ -80,7 +80,6 @@ The following table outlines all available provider options.
 | **AWS EKS**                                    | `eks`         |
 | **GCP IaaS**                                   | `gcp`         |
 | **GCP GKE**                                    | `gke`         |
-| **TKE** (Tencent)                              | `tke`         |
 | **MAAS** (Canonical)                           | `maas`        |
 | **VMware vSphere**                             | `vsphere`     |
 | **Openstack**                                  | `openstack`   |
