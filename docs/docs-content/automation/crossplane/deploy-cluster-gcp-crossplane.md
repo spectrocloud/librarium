@@ -17,8 +17,8 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in GCP.
   [Create API Key](../../user-management/user-authentication.md) page for instructions on creating an API key.
 - A public [GCP](https://cloud.google.com/iam/docs/creating-managing-service-accounts) service account with the required
   [roles](../../clusters/public-cloud/gcp/add-gcp-accounts.md#prerequisites).
-- An SSH key pair available. Check out the [Create an Upload an SSH Key](../../clusters/cluster-management/ssh-keys.md)
-  page for guidance.
+- An SSH key pair available. Check out the
+  [Create and Upload an SSH Key](../../clusters/cluster-management/ssh/ssh-keys.md) page for guidance.
 - The GCP account must be registered in Palette. Follow the
   [Register and Manage GCP Accounts](../../clusters/public-cloud/gcp/add-gcp-accounts.md) guide to register your account
   in Palette.
