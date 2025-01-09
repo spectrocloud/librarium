@@ -23,8 +23,8 @@ Ensure the following requirements are met before you attempt to deploy a cluster
   for guidance.
 
 - An SSH Key that is uploaded to Palette and available for usage. Refer to the
-  [SSH Keys](/clusters/cluster-management/ssh-keys) guide to learn how to create an SSH key and upload the public key to
-  Palette.
+  [SSH Keys](../../cluster-management/ssh/ssh-keys.md) guide to learn how to create an SSH key and upload the public key
+  to Palette.
 
 - Palette creates compute, network, and storage resources while provisioning Kubernetes clusters. Ensure there is
   sufficient capacity in the preferred GCP region to create the following resources:
@@ -60,19 +60,12 @@ Ensure the following requirements are met before you attempt to deploy a cluster
 
 10. Fill out the following parameters and click on **Next** when you are done.
 
-| **Parameter**        | **Description**                                                                                                                                                                             |
-| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Project**          | The project to which the cluster belongs.                                                                                                                                                   |
-| **Region**           | Choose the desired GCP region to deploy the cluster.                                                                                                                                        |
-| **SSH Key**          | Choose the desired SSH key. Refer to the [SSH Keys](../../cluster-management/ssh-keys.md) guide to learn how to create an SSH key and upload the public key to Palette.                     |
-| **Static Placement** | Check the **Static Placement** box to deploy resources into a pre-existing VPC. Review the [Static Placement](#static-placement) table below to learn more about the required input fields. |
-
-| Parameter            | Description                                                                                                                                                                                                           |
-| -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Project**          | The project to which the cluster belongs.                                                                                                                                                                             |
-| **Region**           | Choose the desired GCP region to deploy the cluster.                                                                                                                                                                  |
-| **SSH Key**          | Choose the desired SSH key. Refer to the [SSH Keys](../../cluster-management/ssh-keys.md) guide to learn how to create an SSH key and upload the public key to Palette.                                               |
-| **Static Placement** | Check the **Static Placement** box to deploy resources into a pre-existing VPC. Review the [Static Placement](create-gcp-iaas-cluster.md#static-placement) table below to learn more about the required input fields. |
+    | **Parameter**        | **Description**                                                                                                                                                                             |
+    | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Project**          | The project to which the cluster belongs.                                                                                                                                                   |
+    | **Region**           | Choose the desired GCP region to deploy the cluster.                                                                                                                                        |
+    | **SSH Key**          | Choose the desired SSH key. Refer to the [SSH Keys](../../cluster-management/ssh/ssh-keys.md) guide to learn how to create an SSH key and upload the public key to Palette.                 |
+    | **Static Placement** | Check the **Static Placement** box to deploy resources into a pre-existing VPC. Review the [Static Placement](#static-placement) table below to learn more about the required input fields. |
 
 #### Static Placement
 
