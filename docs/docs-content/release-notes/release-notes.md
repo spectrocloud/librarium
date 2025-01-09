@@ -46,10 +46,10 @@ tags: ["release-notes"]
   you to upgrade your MicroK8s cluster by replacing one machine at a time with a new machine. Refer to the <VersionedLink text="Microk8s" url="/integrations/packs/?pack=kubernetes-microk8s" /> pack documentation to learn more about the rolling upgrade strategy.
 
 
-- The ability to list clusters by tags has been improved. A dedicated **Tags dropdown Menu** in the cluster list page now lists all available tags for clusters. You can select a tag from the **dropdown Menu** to filter clusters by the selected tag. Previously, you had to specify the tag you wanted to filter manually. Refer to the [Map and Filter Clusters](../clusters/cluster-management/cluster-map-filters.md) page to learn more about this feature.
+- The ability to filter clusters by tags has been improved. A dedicated **Tags drop-down Menu** in the cluster list page now lists all available tags for clusters. You can select a tag from the **drop-down Menu** to filter clusters by the selected tag, instead of manually specifying tags. Refer to the [Map and Filter Clusters](../clusters/cluster-management/cluster-map-filters.md) page to learn more about this feature.
 
 
-- Improvements have been made to the Palette UI to enhance the user experience. Edge cluster lists are now sorted by the last modified date by default and the cluster list view sorts by cluster name by default. User-configured sorting preferences are now saved and applied across sessions. Additionally, no columns are fixed or pinned by default. 
+- Improvements have been made to the Palette UI to enhance the user experience. By default, edge cluster lists are sorted by the last modified date, and the cluster list view is sorted by cluster name. User-configured sorting preferences are now saved and applied across sessions. Additionally, no columns are fixed or pinned by default. 
 
 - Palette no longer requires port 4222 to be open between workload clusters and the Palette management plane. Palette
   previously used port 4222 for NATS messaging, which gRPC has replaced. If you have a firewall rule that allows egress
@@ -68,7 +68,7 @@ tags: ["release-notes"]
 
 #### Features
 
-- Palette now supports managing [Amazon EKS Hybrid Nodes](https://aws.amazon.com/eks/hybrid-nodes/). Once your Amazon
+- Palette supports managing [Amazon EKS Hybrid Nodes](https://aws.amazon.com/eks/hybrid-nodes/). Once your Amazon
   EKS cluster is imported into Palette, you can create worker node pools from edge hosts built using the EdgeForge
   workflow or Agent Mode. To secure these edge hosts within the hybrid ecosystem, you have the flexibility to use either
   AWS Systems Manager or IAM Roles Anywhere. Additionally, a Cilium network layer can be configured to manage networking
@@ -124,7 +124,7 @@ tags: ["release-notes"]
 #### Breaking Changes
 
 - The Palette CLI now requires an encryption passphrase for various commands. The passphrase can be set as an
-  environment variable or passed as a flag to the CLI command. The passphrase encrypts and decrypts sensitive data, such
+  environment variable or using a CLI command flag. The passphrase encrypts and decrypts sensitive data, such
   as secrets, in the CLI configuration files. Refer to the
   [Palette CLI Encryption](../automation/palette-cli/palette-cli.md#encryption) section to learn more about the
   encryption passphrase.
@@ -136,8 +136,8 @@ tags: ["release-notes"]
   available. For more details, refer to the Terraform provider
   [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
 
-- A new command is now available in the Palette CLI. The command `validate-auth` can be used to validate you meet all
-  permission required to deploy a target cluster into an infrastructure provider environment, such as AWS or Azure.
+- A new command has been added to the Palette CLI. The command `validate-auth` can be used to validate you meet all
+  permissions required to deploy a target cluster into an infrastructure provider environment, such as AWS or Azure.
   Refer to the Validate Auth reference page to learn more.
 
 #### Deprecations and Removals
