@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## January 11, 2024 - Release 4.5.16
+## January 18, 2024 - Release 4.5.16
 
 ### Palette {#palette-enterprise-4-5-16}
 
@@ -62,6 +62,8 @@ tags: ["release-notes"]
   Refer to the [Backup and Restore](../clusters/cluster-management/backup-restore/backup-restore.md) page to learn more
   about backup and restore tools in Palette.
 
+- The Self-hosted Palette Helm Chart installation method now supports custom image pull secrets. You can use the `global.imagePullSecrets` parameter in the Helm Chart **values.yaml** file to specify a [Docker configuration JSON object](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#registry-secret-existing-credentials) containing your private registry credentials. Refer to the [Image Pull Secret](../enterprise-version/install-palette/install-on-kubernetes/palette-helm-ref.md) section of the Palette Helm Chart documentation to learn more about using custom image pull secrets.
+
 ### Edge
 
 #### Features
@@ -84,11 +86,17 @@ tags: ["release-notes"]
 
 #### Features
 
-- Migration Assistan ...
+- The VM Migration Assistant UI can now be configured to use OpenID Connect (OIDC) for authentication. You can choose to
+  enable or disable it in the VM Migration Assistant pack settings. The OIDC configuration is inherited from the
+  Kubernetes pack where OIDC is configured for your cluster. Refer to
+  [Create a VM Migration Assistant Profile](../vm-management/vm-migration-assistant/create-vm-migration-assistant-profile.md)
+  for guidance
 
 #### Improvements
 
--
+- The internal [OpenShift](https://github.com/openshift/console) version used by VMO has been updated. The updated
+  version includes UI improvements, security fixes, bug fixes, and the ability to use OpenID Connec (OIDC) for
+  authentication.
 
 ### VerteX
 
@@ -104,6 +112,13 @@ tags: ["release-notes"]
   [Migrate SCAR to OCI Registry](../vertex/system-management/scar-migration.md) guide to learn more about migrating to
   the new SCAR architecture.
 
+- The Self-hosted VerteX Helm Chart installation method now supports custom image pull secrets. You can use the
+  `global.imagePullSecrets` parameter in the Helm Chart **values.yaml** file to specify a
+  [Docker configuration JSON object](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#registry-secret-existing-credentials)
+  containing your private registry credentials. Refer to the
+  [Image Pull Secret](../vertex/install-palette-vertex/install-on-kubernetes/vertex-helm-ref.md) section of the Palette
+  Helm Chart documentation to learn more about using custom image pull secrets.
+
 ### Automation
 
 #### Breaking Changes
@@ -114,6 +129,17 @@ tags: ["release-notes"]
   [Palette CLI Encryption](../automation/palette-cli/palette-cli.md#encryption) section to learn more about the
   encryption passphrase.
 
+#### Features
+
+- Terraform version 0.22.3 of the
+  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
+  available. For more details, refer to the Terraform provider
+  [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
+
+- A new command is now available in the Palette CLI. The command `validate-auth` can be used to validate you meet all
+  permission required to deploy a target cluster into an infrastructure provider environment, such as AWS or Azure.
+  Refer to the Validate Auth reference page to learn more.
+
 #### Deprecations and Removals
 
 - The Terraform resource, `spectrocloud_cluster_import` is removed. To import a cluster deployed outside of the context
@@ -121,37 +147,87 @@ tags: ["release-notes"]
 
 ### Docs and Education
 
+- The [Workspace](../workspace/workspace.md) section of the documentation has been updated to provide a more
+  comprehensive information about Workspaces in Palette. The section now includes guides on how toconduct back and
+  restore, configure RBAC and more. Check out the Workspace section to learn more.
+
 ### Packs
 
 #### Kubernetes
 
-| Pack Name | New Version |
-| --------- | ----------- |
+| Pack Name                                  | New Version |
+| ------------------------------------------ | ----------- |
+| Nodeadm                                    | 1.28.0      |
+| Nodeadm                                    | 1.31.0      |
+| K3s                                        | 1.29.12     |
+| K3s                                        | 1.30.8      |
+| K3s                                        | 1.31.4      |
+| Kubernetes AKS                             | 1.31        |
+| Palette eXtended Kubernetes (PXK)          | 1.29.12     |
+| Palette eXtended Kubernetes (PXK)          | 1.30.8      |
+| Palette eXtended Kubernetes (PXK)          | 1.31.4      |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.29.12     |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.30.8      |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.31.1      |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.31.4      |
+| RKE2                                       | 1.29.12     |
+| RKE2                                       | 1.30.8      |
+| RKE2                                       | 1.31.4      |
+| RKE2 - Edge                                | 1.29.12     |
+| RKE2 - Edge                                | 1.30.8      |
+| RKE2 - Edge                                | 1.31.4      |
 
 #### CNI
 
-| Pack Name | New Version |
-| --------- | ----------- |
+| Pack Name          | New Version |
+| ------------------ | ----------- |
+| AWS VPC CNI (Helm) | 1.19.0      |
+| Calico (Azure)     | 3.29.1      |
 
 #### CSI
 
-| Pack Name | New Version |
-| --------- | ----------- |
+| Pack Name              | New Version |
+| ---------------------- | ----------- |
+| Amazon EFS             | 2.1.1       |
+| Amazon EBS CSI         | 1.37.0      |
+| Azure Disk CSI Driver  | 1.31.0      |
+| Local Path Provisioner | 0.0.30      |
+| Rook-Ceph              | 1.15.6      |
 
 #### Add-on Packs
 
-| Pack Name | New Version |
-| --------- | ----------- |
+| Pack Name                    | New Version |
+| ---------------------------- | ----------- |
+| AWS Application Loadbalancer | 2.11.0      |
+| Kong                         | 2.45.0      |
+| MetalLB                      | 0.14.9      |
+| Reloader                     | 1.2.0       |
+| Spectro Proxy                | 1.5.5       |
 
 #### FIPS Packs
 
-| Pack Name | New Version |
-| --------- | ----------- |
+| Pack Name                                  | New Version |
+| ------------------------------------------ | ----------- |
+| Palette eXtended Kubernetes (PXK)          | 1.29.12     |
+| Palette eXtended Kubernetes (PXK)          | 1.30.8      |
+| Palette eXtended Kubernetes (PXK)          | 1.31.4      |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.29.12     |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.30.8      |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.31.1      |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.31.4      |
+| RKE2                                       | 1.29.12     |
+| RKE2                                       | 1.30.8      |
+| RKE2                                       | 1.31.4      |
+| RKE2 - Edge                                | 1.29.12     |
+| RKE2 - Edge                                | 1.30.8      |
+| RKE2 - Edge                                | 1.31.4      |
 
 #### Community Packs
 
-| Pack Name | New Version |
-| --------- | ----------- |
+| Pack Name     | New Version |
+| ------------- | ----------- |
+| Archivista    | 0.8.0       |
+| WekaFS Plugin | 2.5.1       |
 
 ## December 15, 2024 - Release 4.5.15
 
@@ -264,7 +340,7 @@ tags: ["release-notes"]
 
 ### Automation
 
-- Terraform version 0.23.0 of the
+- Terraform version 0.22.0 of the
   [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
   available. For more details, refer to the Terraform provider
   [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
