@@ -24,7 +24,7 @@ else
 fi
 
  # Find the latest packs upload workflow.
-run_id=$(gh run list --workflow="post_release.yaml" --limit 1 --json databaseId | jq -r '.[0].databaseId')
+run_id=$(gh run list --workflow="post_release.yaml" --status=success --limit 1 --json databaseId | jq -r '.[0].databaseId')
 
 # Remove any downloaded artifacts, should they exist.
 rm -rf ./downloaded_artifacts
