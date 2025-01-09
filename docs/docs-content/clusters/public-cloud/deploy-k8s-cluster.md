@@ -71,7 +71,7 @@ To complete this tutorial, you will need the following.
 
   <br />
 
-- An SSH Key Pair. Use the [Create and Upload an SSH Key](../cluster-management/ssh-keys.md) guide to learn how to
+- An SSH Key Pair. Use the [Create and Upload an SSH Key](../cluster-management/ssh/ssh-keys.md) guide to learn how to
   create an SSH key and upload it to Palette.
 
   - AWS users must create an AWS Key pair before starting the tutorial. If you need additional guidance, check out the
@@ -350,7 +350,7 @@ pack contains a set of default values. You can change the manifest values if nee
 
 The **Cluster config** section allows you to select the **Subscription**, **Region**, **Resource Group**, **Storage
 account**, and **SSH Key** to apply to the host cluster. All clusters require you to assign an SSH key. Refer to the
-[SSH Keys](../cluster-management/ssh-keys.md) guide for information about uploading an SSH key.
+[SSH Keys](../cluster-management/ssh/ssh-keys.md) guide for information about uploading an SSH key.
 
 <br />
 
@@ -515,7 +515,7 @@ pack contains a set of default values. You can change the manifest values if nee
 #### Cluster Configuration
 
 The **Cluster config** section allows you to select the **Project**, **Region**, and **SSH Key** to apply to the host
-cluster. All clusters require you to assign an SSH key. Refer to the [SSH Keys](/clusters/cluster-management/ssh-keys)
+cluster. All clusters require you to assign an SSH key. Refer to the [SSH Keys](../cluster-management/ssh/ssh-keys.md)
 guide for information about uploading an SSH key.
 
 <br />
