@@ -108,7 +108,7 @@ mongo:
 Review the following parameters to configure Palette VerteX for your environment. The `config` section contains the
 following subsections:
 
-#### Install Mode
+### Install Mode
 
 You can install Palette in connected or air-gapped mode. The table lists the parameters to configure the installation
 mode.
@@ -298,7 +298,7 @@ config:
     caCert: ""
 ```
 
-#### OCI Image Registry
+### OCI Image Registry
 
 You can specify an OCI registry for the images used by Palette.
 
