@@ -50,7 +50,8 @@ can also search your clusters by name.
 
 5. Click on **Clear All**. The filters are removed and the cluster list displays all clusters in your selected scope.
 
-6. Enter and select cluster tags in the **Tags** field. The cluster list displays all clusters deployed with the specified cluster tags.
+6. Enter and select cluster tags in the **Tags** field. The cluster list displays all clusters deployed with the
+   specified cluster tags.
 
 7. Click on **Clear All**. The filters are removed and the cluster list displays all clusters in your selected scope.
 
@@ -142,7 +143,8 @@ and search through your deployed clusters. You can also search your clusters by 
 
 6. Click on **Clear All**. The filters are removed and the map displays all clusters.
 
-7. Enter and select cluster tags in the **Tags** field. The map displays all clusters deployed with the specified cluster tags.
+7. Enter and select cluster tags in the **Tags** field. The map displays all clusters deployed with the specified
+   cluster tags.
 
 8. Click on **Clear All**. The filters are removed and the map displays all clusters.
 
