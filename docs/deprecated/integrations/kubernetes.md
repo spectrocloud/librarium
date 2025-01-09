@@ -15,7 +15,7 @@ This pack defines the default properties we use to deploy Kubernetes clusters an
 hardening standards that the Center for Internet Security (CIS) recommends.
 
 We also support managed Kubernetes distributions for Elastic Kubernetes Service (EKS), Azure Kubernetes Service (AKS),
-Google Kubernetes Engine (GKE), and Tencent Kubernetes Engine (TKE).
+and Google Kubernetes Engine (GKE).
 
 We offer PXK as a core pack in Palette.
 
