@@ -62,7 +62,7 @@ tags: ["release-notes"]
   Refer to the [Backup and Restore](../clusters/cluster-management/backup-restore/backup-restore.md) page to learn more
   about backup and restore tools in Palette.
 
-- The Self-hosted Palette Helm Chart installation method now supports custom image pull secrets. You can use the `global.imagePullSecrets` parameter in the Helm Chart **values.yaml** file to specify a [Docker configuration JSON object](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#registry-secret-existing-credentials) containing your private registry credentials. Refer to the [Image Pull Secret](../enterprise-version/install-palette/install-on-kubernetes/palette-helm-ref.md) section of the Palette Helm Chart documentation to learn more about using custom image pull secrets.
+- The Self-hosted Palette Helm Chart installation method now supports custom image pull secrets. You can use the `global.imagePullSecrets` parameter in the Helm Chart **values.yaml** file to specify a [Docker configuration JSON object](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#registry-secret-existing-credentials) containing your private registry credentials. Refer to the [Image Pull Secret](../enterprise-version/install-palette/install-on-kubernetes/palette-helm-ref.md#image-pull-secret) section of the Palette Helm Chart documentation to learn more about using custom image pull secrets.
 
 ### Edge
 
@@ -116,8 +116,8 @@ tags: ["release-notes"]
   `global.imagePullSecrets` parameter in the Helm Chart **values.yaml** file to specify a
   [Docker configuration JSON object](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#registry-secret-existing-credentials)
   containing your private registry credentials. Refer to the
-  [Image Pull Secret](../vertex/install-palette-vertex/install-on-kubernetes/vertex-helm-ref.md) section of the Palette
-  Helm Chart documentation to learn more about using custom image pull secrets.
+  [Image Pull Secret](../vertex/install-palette-vertex/install-on-kubernetes/vertex-helm-ref.md#image-pull-secret)
+  section of the Palette Helm Chart documentation to learn more about using custom image pull secrets.
 
 ### Automation
 
