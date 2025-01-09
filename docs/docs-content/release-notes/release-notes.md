@@ -11,7 +11,223 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## January 11, 2024 - Release 4.5.16
+## January 18, 2024 - Release 4.5.16
+
+### Palette {#palette-enterprise-4-5-16}
+
+#### Features
+
+- Palette now supports
+  [Cluster Profile Variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables.md) in
+  non-Edge clusters. Previously, Cluster Profile Variables were only available in
+  [Local UI](../clusters/edge/local-ui/local-ui.md) for Edge clusters deployed through Local UI. With this release, you
+  can use Cluster Profile Variables when creating a new Cluster Profile to define and manage configurations for non-Edge
+  clusters. Check out the
+  [Cluster Profile Variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables.md) guide to
+  learn more about this feature.
+
+- Starting with release version 4.5.15, the Spectro Cloud Artifact Repository (SCAR) is now hosted inside the same Open
+  Container Initiative (OCI) repository hosting packs and images. This release now includes support for existing
+  self-hosted Palette Enterprise installations to migrate to the new architecture. Migrating to the new architecture
+  removes the need for a dedicated file server to host the SCAR content. Check out the Palette
+  [Migrate SCAR to OCI Registry](../enterprise-version/system-management/scar-migration.md) guide to learn more about
+  migrating to the new SCAR architecture.
+
+#### Improvements
+
+- Palette [Agent Mode](../deployment-modes/agent-mode/agent-mode.md) is now FIPS compliant. The binaries downloaded to
+  enable Agent Mode are now compiled with FIPS-compliant libraries.
+
+- Palette will no longer include Edge clusters and bare metal clusters in the kCh calculation. To learn more about kCh
+  calculation, refer to the [Resource Usage Calculation](../introduction/resource-usage-estimation.md) page.
+
+<!-- prettier-ignore -->
+- You can now use the rolling upgrade strategy for clusters deployed with MicroK8s. The `RollingUpgrade` strategy allows
+  you to upgrade your MicroK8s cluster by replacing one machine at a time with a new machine. Refer to the <VersionedLink text="Microk8s" url="/integrations/packs/?pack=kubernetes-microk8s" /> pack documentation to learn more about the rolling upgrade strategy.
+
+
+- The ability to filter clusters by tags has been improved. A dedicated **Tags drop-down Menu** in the cluster list page now lists all available tags for clusters. You can select a tag from the **drop-down Menu** to filter clusters by the selected tag, instead of manually specifying tags. Refer to the [Map and Filter Clusters](../clusters/cluster-management/cluster-map-filters.md) page to learn more about this feature.
+
+
+- Improvements have been made to the Palette UI to enhance the user experience. By default, edge cluster lists are sorted by the last modified date, and the cluster list view is sorted by cluster name. User-configured sorting preferences are now saved and applied across sessions. Additionally, no columns are fixed or pinned by default. 
+
+- Palette no longer requires port 4222 to be open between workload clusters and the Palette management plane. Palette
+  previously used port 4222 for NATS messaging, which gRPC has replaced. If you have a firewall rule that allows egress
+  traffic on port 4222 from workload clusters to the Palette management plane, you can remove it. NATS was deprecated in
+  Palette 4.0. Refer to the Palette [Network Ports](../architecture/networking-ports.md) page for more information about
+  Palette's network ports.
+
+- Palette now uses Velero version 1.15 internally. This change allows newly deployed clusters to use [Kopia](https://velero.io/docs/main/file-system-backup/#how-velero-integrates-with-kopia) as the
+  default backup and restore tool. Existing clusters will continue to use Restic as the default backup and restore tool.
+  Refer to the [Backup and Restore](../clusters/cluster-management/backup-restore/backup-restore.md) page to learn more
+  about backup and restore tools in Palette.
+
+- The Self-hosted Palette Helm Chart installation method now supports custom image pull secrets. You can use the `global.imagePullSecrets` parameter in the Helm Chart **values.yaml** file to specify a [Docker configuration JSON object](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#registry-secret-existing-credentials) containing your private registry credentials. Refer to the [Image Pull Secret](../enterprise-version/install-palette/install-on-kubernetes/palette-helm-ref.md#image-pull-secret) section of the Palette Helm Chart documentation to learn more about using custom image pull secrets.
+
+### Edge
+
+#### Features
+
+- Palette supports managing [Amazon EKS Hybrid Nodes](https://aws.amazon.com/eks/hybrid-nodes/). Once your Amazon EKS
+  cluster is imported into Palette, you can create worker node pools from edge hosts built using the EdgeForge workflow
+  or Agent Mode. To secure these edge hosts within the hybrid ecosystem, you have the flexibility to use either AWS
+  Systems Manager or IAM Roles Anywhere. Additionally, a Cilium network layer can be configured to manage networking for
+  hybrid nodes using affinity rules. Refer to EKS Hybrid Nodes section to learn more about using Palette to manage your
+  Amazon EKS Hybrid Nodes.
+
+- You can now transfer the management of Edge clusters deployed in an airgap environments through
+  [Local UI](../clusters/edge/local-ui/local-ui.md) to a Palette management plane. This feature allows you to start the
+  deployment of Edge clusters in an airgap environment using Local UI and then transfer the management of the Edge
+  clusters to a Palette management plane, enabling you to manage the Edge clusters along with other clusters in Palette.
+  Check out the [Pair Local Cluster with Palette](../clusters/edge/local-ui/local-ui.md) guide to learn more about this
+  feature.
+
+### Virtual Machine Orchestrator
+
+#### Features
+
+- The VM Migration Assistant UI can now be configured to use OpenID Connect (OIDC) for authentication. You can choose to
+  enable or disable it in the VM Migration Assistant pack settings. The OIDC configuration is inherited from the
+  Kubernetes pack where OIDC is configured for your cluster. Refer to
+  [Create a VM Migration Assistant Profile](../vm-management/vm-migration-assistant/create-vm-migration-assistant-profile.md)
+  for guidance
+
+#### Improvements
+
+- The internal [OpenShift](https://github.com/openshift/console) version used by VMO has been updated. The updated
+  version includes UI improvements, security fixes, bug fixes, and the ability to use OpenID Connect (OIDC) for
+  authentication.
+
+### VerteX
+
+#### Features
+
+- Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
+  [Palette section](#palette-enterprise-4-5-16) for more details.
+
+- Starting with release version 4.5.15, the Spectro Cloud Artifact Repository (SCAR) is now hosted inside the same Open
+  Container Initiative (OCI) repository hosting packs and images. This release now includes support for existing
+  self-hosted VerteX installations to migrate to the new architecture. Migrating to the new architecture removes the
+  need for a dedicated file server to host the SCAR content. Check out the VerteX
+  [Migrate SCAR to OCI Registry](../vertex/system-management/scar-migration.md) guide to learn more about migrating to
+  the new SCAR architecture.
+
+- The Self-hosted VerteX Helm Chart installation method now supports custom image pull secrets. You can use the
+  `global.imagePullSecrets` parameter in the Helm Chart **values.yaml** file to specify a
+  [Docker configuration JSON object](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#registry-secret-existing-credentials)
+  containing your private registry credentials. Refer to the
+  [Image Pull Secret](../vertex/install-palette-vertex/install-on-kubernetes/vertex-helm-ref.md#image-pull-secret)
+  section of the Palette Helm Chart documentation to learn more about using custom image pull secrets.
+
+### Automation
+
+#### Breaking Changes
+
+- The Palette CLI now requires an encryption passphrase for various commands. The passphrase can be set as an
+  environment variable or using a CLI command flag. The passphrase encrypts and decrypts sensitive data, such as
+  secrets, in the CLI configuration files. Refer to the
+  [Palette CLI Encryption](../automation/palette-cli/palette-cli.md#encryption) section to learn more about the
+  encryption passphrase.
+
+#### Features
+
+- Terraform version 0.22.3 of the
+  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
+  available. For more details, refer to the Terraform provider
+  [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
+
+- A new command has been added to the Palette CLI. The command `validate-auth` can be used to validate you meet all
+  permissions required to deploy a target cluster into an infrastructure provider environment, such as AWS or Azure.
+  Refer to the Validate Auth reference page to learn more.
+
+#### Deprecations and Removals
+
+- The Terraform resource, `spectrocloud_cluster_import` is removed. To import a cluster deployed outside of the context
+  of Palette, refer to the [Import a Cluster](../clusters/imported-clusters/cluster-import.md) guide.
+
+### Docs and Education
+
+- The [Workspace](../workspace/workspace.md) section of the documentation has been updated to provide a more
+  comprehensive information about Workspaces in Palette. The section now includes guides on how to conduct backup and
+  restore actions, configure RBAC and more. Check out the [Workspace](../workspace/workspace.md) section to learn more.
+
+### Packs
+
+#### Kubernetes
+
+| Pack Name                                  | New Version |
+| ------------------------------------------ | ----------- |
+| Nodeadm                                    | 1.28.0      |
+| Nodeadm                                    | 1.31.0      |
+| K3s                                        | 1.29.12     |
+| K3s                                        | 1.30.8      |
+| K3s                                        | 1.31.4      |
+| Kubernetes AKS                             | 1.31        |
+| Palette eXtended Kubernetes (PXK)          | 1.29.12     |
+| Palette eXtended Kubernetes (PXK)          | 1.30.8      |
+| Palette eXtended Kubernetes (PXK)          | 1.31.4      |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.29.12     |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.30.8      |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.31.1      |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.31.4      |
+| RKE2                                       | 1.29.12     |
+| RKE2                                       | 1.30.8      |
+| RKE2                                       | 1.31.4      |
+| RKE2 - Edge                                | 1.29.12     |
+| RKE2 - Edge                                | 1.30.8      |
+| RKE2 - Edge                                | 1.31.4      |
+
+#### CNI
+
+| Pack Name          | New Version |
+| ------------------ | ----------- |
+| AWS VPC CNI (Helm) | 1.19.0      |
+| Calico (Azure)     | 3.29.1      |
+
+#### CSI
+
+| Pack Name              | New Version |
+| ---------------------- | ----------- |
+| Amazon EFS             | 2.1.1       |
+| Amazon EBS CSI         | 1.37.0      |
+| Azure Disk CSI Driver  | 1.31.0      |
+| Local Path Provisioner | 0.0.30      |
+| Rook-Ceph              | 1.15.6      |
+
+#### Add-on Packs
+
+| Pack Name                    | New Version |
+| ---------------------------- | ----------- |
+| AWS Application Loadbalancer | 2.11.0      |
+| Kong                         | 2.45.0      |
+| MetalLB                      | 0.14.9      |
+| Reloader                     | 1.2.0       |
+| Spectro Proxy                | 1.5.5       |
+
+#### FIPS Packs
+
+| Pack Name                                  | New Version |
+| ------------------------------------------ | ----------- |
+| Palette eXtended Kubernetes (PXK)          | 1.29.12     |
+| Palette eXtended Kubernetes (PXK)          | 1.30.8      |
+| Palette eXtended Kubernetes (PXK)          | 1.31.4      |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.29.12     |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.30.8      |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.31.1      |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.31.4      |
+| RKE2                                       | 1.29.12     |
+| RKE2                                       | 1.30.8      |
+| RKE2                                       | 1.31.4      |
+| RKE2 - Edge                                | 1.29.12     |
+| RKE2 - Edge                                | 1.30.8      |
+| RKE2 - Edge                                | 1.31.4      |
+
+#### Community Packs
+
+| Pack Name     | New Version |
+| ------------- | ----------- |
+| Archivista    | 0.8.0       |
+| WekaFS Plugin | 2.5.1       |
 
 ## December 15, 2024 - Release 4.5.15
 
@@ -124,7 +340,7 @@ tags: ["release-notes"]
 
 ### Automation
 
-- Terraform version 0.23.0 of the
+- Terraform version 0.22.0 of the
   [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
   available. For more details, refer to the Terraform provider
   [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
