@@ -119,8 +119,9 @@ If you want to use your edge hosts as Amazon EKS Hybrid Nodes, they must have be
 methods:
 
 - [Agent Mode](../../../../deployment-modes/agent-mode/agent-mode.md)
-- [Provider images](../../../edge/edgeforge-workflow/palette-canvos/build-provider-images.md)
-  - Provider images are [Kairos-based images](https://kairos.io/) containing the OS and the desired Kubernetes versions.
+- [EdgeForge Workflow](../../../edge/edgeforge-workflow/edgeforge-workflow.md)
+  - Part of the EdgeForge Workflow is to create [Kairos-based images](https://kairos.io/) containing the OS and the
+    desired Kubernetes versions. These are named provider images.
 
 :::warning
 
@@ -140,8 +141,8 @@ Adjust to your operating system and package manager on your edge hosts.
 
 ### Build Provider Images with Specific Arguments
 
-If using provider images, you must include the following in your `.arg` file during the
-[build steps](../../../edge/edgeforge-workflow/palette-canvos/build-provider-images.md#build-provider-images).
+If using the EdgeForge Workflow, you must include the following in your `.arg` file during the
+[build steps for provider images](../../../edge/edgeforge-workflow/palette-canvos/build-provider-images.md#build-provider-images).
 
 ```shell
 K8S_DISTRIBUTION=nodeadm
