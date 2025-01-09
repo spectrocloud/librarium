@@ -271,7 +271,7 @@ If OS patching fails on an AWS cluster with Microk8s 1.27, use the following deb
 
 ### Scenario - Remove Deprecated Cloud Providers
 
-If you want to remove unsupported Custom Resource Definitions (CRD) for deprecated cloud providers in your Kubernetes
+If you want to remove unsupported Custom Resource Definitions (CRDs) for deprecated cloud providers in your Kubernetes
 workload cluster, you can follow the steps below.
 
 #### Debug Steps
