@@ -33,12 +33,12 @@ can also search your clusters by name.
    the clusters list. The list filters appear at the top of the map. You can filter your clusters by the following
    characteristics.
 
-   | **Filter**      | **Description**                                                                  | **Values**                                                                               |
-   | --------------- | -------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-   | **Name**        | Filter and display the cluster matching the specified name.                      | Custom string                                                                            |
-   | **Environment** | Filter and display clusters based on the cluster type.                           | Configured cluster types                                                                 |
-   | **Status**      | Filter and display clusters based on their current status.                       | **Pending**, **Provisioning**, **Running**, **Deleting**, **Importing**, and **Unknown** |
-   | **Profiles**    | Filter and display clusters based on the name of the configured cluster profile. | Custom string                                                                            |
+   | **Filter**      | **Description**                                                   | **Values**                                                                               |
+   | --------------- | ----------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+   | **Name**        | Filter and display the cluster matching the specified name.       | Custom string                                                                            |
+   | **Environment** | Filter and display clusters based on the cluster type.            | Configured cluster types                                                                 |
+   | **Status**      | Filter and display clusters based on their current status.        | **Pending**, **Provisioning**, **Running**, **Deleting**, **Importing**, and **Unknown** |
+   | **Tags**        | Filter and display clusters based on the configured cluster tags. | Configured cluster tags                                                                  |
 
    ![Cluster list view](/clusters_cluster-management_cluster-map-filters_cluster-list-view.webp)
 
@@ -50,8 +50,8 @@ can also search your clusters by name.
 
 5. Click on **Clear All**. The filters are removed and the cluster list displays all clusters in your selected scope.
 
-6. Enter a cluster profile name in the **Profiles** field. The cluster list displays all clusters deployed with the
-   specified cluster profile.
+6. Enter a cluster tag in the **Tags** field. The cluster list displays all clusters deployed with the specified cluster
+   tags.
 
 7. Click on **Clear All**. The filters are removed and the cluster list displays all clusters in your selected scope.
 
@@ -126,12 +126,12 @@ and search through your deployed clusters. You can also search your clusters by 
    each cluster. The map filters appear at the top of the map. You can filter your clusters by the following
    characteristics.
 
-   | **Filter**      | **Description**                                                                  | **Values**                                                                               |
-   | --------------- | -------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-   | **Name**        | Filter and display the cluster matching the specified name.                      | Custom string                                                                            |
-   | **Environment** | Filter and display clusters based on the cluster type.                           | Configured cluster types                                                                 |
-   | **Status**      | Filter and display clusters based on their current status.                       | **Pending**, **Provisioning**, **Running**, **Deleting**, **Importing**, and **Unknown** |
-   | **Profiles**    | Filter and display clusters based on the name of the configured cluster profile. | Custom string                                                                            |
+   | **Filter**      | **Description**                                                   | **Values**                                                                               |
+   | --------------- | ----------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+   | **Name**        | Filter and display the cluster matching the specified name.       | Custom string                                                                            |
+   | **Environment** | Filter and display clusters based on the cluster type.            | Configured cluster types                                                                 |
+   | **Status**      | Filter and display clusters based on their current status.        | **Pending**, **Provisioning**, **Running**, **Deleting**, **Importing**, and **Unknown** |
+   | **Tags**        | Filter and display clusters based on the configured cluster tags. | Configured cluster tags                                                                  |
 
    ![Cluster map view](/clusters_cluster-management_cluster-map-filters_cluster-map-view.webp)
 
@@ -143,8 +143,7 @@ and search through your deployed clusters. You can also search your clusters by 
 
 6. Click on **Clear All**. The filters are removed and the map displays all clusters.
 
-7. Enter a cluster profile name in the **Profiles** field. The map displays all clusters deployed with the specified
-   cluster profile.
+7. Enter a cluster tag in the **Tags** field. The map displays all clusters deployed with the specified cluster tag.
 
 8. Click on **Clear All**. The filters are removed and the map displays all clusters.
 
