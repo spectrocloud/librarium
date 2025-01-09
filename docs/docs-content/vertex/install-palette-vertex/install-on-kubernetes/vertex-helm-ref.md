@@ -31,7 +31,7 @@ information, refer to the [Image Swap Configuration](#image-swap-configuration) 
 
 :::
 
-### Global
+## Global
 
 The global block allows you to provide configurations that apply globally to the installation process.
 
