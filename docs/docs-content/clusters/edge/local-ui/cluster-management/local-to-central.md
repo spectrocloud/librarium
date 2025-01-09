@@ -132,7 +132,7 @@ accepted by your Palette instance.
 
    However, if your host cannot connect to your Palette instance, this request will not be able to reach Palette. If
    your host cannot connect to Palette, refer to
-   [Reject Pairing Request form Palette](#reject--pairing-request-in-palette) to reject the pending pairing request
+   [Reject Pairing Request form Palette](#reject-pairing-request-in-palette) to reject the pending pairing request
    manually.
 
 ### Validate
