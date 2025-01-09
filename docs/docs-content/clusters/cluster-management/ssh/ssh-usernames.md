@@ -60,8 +60,7 @@ nodes is critical, consider one of the following options:
 
 ## Edge
 
-This is dependent on the OS you provide for your edge hosts using either
-[Agent Mode](../../../deployment-modes/agent-mode/agent-mode.md) or
+This is dependent on the OS you provide for your edge hosts using
 [EdgeForge](../../../clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images.md).
 
 If using EdgeForge, you can also create custom users and assign SSH keys to them using cloud-init stages. Refer to
