@@ -51,7 +51,7 @@ can also search your clusters by name.
 5. Click on **Clear All**. The filters are removed and the cluster list displays all clusters in your selected scope.
 
 6. Enter a cluster tag in the **Tags** field. The cluster list displays all clusters deployed with the specified cluster
-   tags.
+   tag.
 
 7. Click on **Clear All**. The filters are removed and the cluster list displays all clusters in your selected scope.
 
