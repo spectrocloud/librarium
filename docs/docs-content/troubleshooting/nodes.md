@@ -204,3 +204,32 @@ If OS patching fails on an AWS cluster with Microk8s 1.27, use the following deb
     apt-get update
     apt-get upgrade
     ```
+
+### Scenario - Remove Deprecated Cloud Providers
+
+If you want to remove unsupported Custom Resource Definitions (CRDs) for deprecated cloud providers in your Kubernetes
+workload cluster, you can follow the steps below.
+
+#### Debug Steps
+
+1. Open a terminal session that has [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) installed.
+
+2. Set up your terminal session to use the kubeconfig file for your Kubernetes workload cluster. You can find the
+   kubeconfig for your cluster in the Palette UI by visiting the cluster's details page. Check out the
+   [Access Cluster with CLI](../clusters/cluster-management/palette-webctl.md#access-cluster-with-cli) guide for
+   guidance on how to set up your terminal session to use the kubeconfig file.
+
+3. Issue the following command to list the CRDs in your target cluster.
+
+   ```shell
+   kubectl get crd
+   ```
+
+4. Identify the CRDs for the deprecated cloud providers you want to remove. For example, to remove the Tencent Cloud
+   CRD, issue the following command.
+
+   ```shell
+   kubectl delete crd tencentcloudconfigs.cluster.spectrocloud.com
+   ```
+
+Once the CRD is removed, it will not be recreated by Palette.
