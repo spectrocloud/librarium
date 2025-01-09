@@ -15,4 +15,3 @@ using with Palette and Palette VerteX today:
 - [Amazon Web Services](/clusters/public-cloud/aws/)
 - [Azure](/clusters/public-cloud/azure/)
 - [Google Cloud](/clusters/public-cloud/gcp/)
-- [Tencent](/clusters/public-cloud/tke)
