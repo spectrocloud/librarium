@@ -29,7 +29,7 @@ custom image for RHEL and Konvoy.
 
 ## Terraform
 
-You can retrieve details about the Kubernetes Konvoy by using the following Terraform code.
+You can retrieve details about the Kubernetes Konvoy pack by using the following Terraform code.
 
 ```hcl
 data "spectrocloud_registry" "public_registry" {
