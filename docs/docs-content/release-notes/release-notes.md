@@ -21,7 +21,7 @@ tags: ["release-notes"]
   [Cluster Profile Variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables.md) in
   non-Edge clusters. Previously, Cluster Profile Variables were only available in
   [Local UI](../clusters/edge/local-ui/local-ui.md) for Edge clusters deployed through Local UI. With this release, you
-  can use Cluster Profile Variables when creating a new Cluter Profile to define and manage configurations for non-Edge
+  can use Cluster Profile Variables when creating a new Cluster Profile to define and manage configurations for non-Edge
   clusters. Check out the
   [Cluster Profile Variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables.md) guide to
   learn more about this feature.
@@ -95,7 +95,7 @@ tags: ["release-notes"]
 #### Improvements
 
 - The internal [OpenShift](https://github.com/openshift/console) version used by VMO has been updated. The updated
-  version includes UI improvements, security fixes, bug fixes, and the ability to use OpenID Connec (OIDC) for
+  version includes UI improvements, security fixes, bug fixes, and the ability to use OpenID Connect (OIDC) for
   authentication.
 
 ### VerteX
@@ -148,8 +148,8 @@ tags: ["release-notes"]
 ### Docs and Education
 
 - The [Workspace](../workspace/workspace.md) section of the documentation has been updated to provide a more
-  comprehensive information about Workspaces in Palette. The section now includes guides on how toconduct back and
-  restore, configure RBAC and more. Check out the Workspace section to learn more.
+  comprehensive information about Workspaces in Palette. The section now includes guides on how to conduct backup and
+  restore actions, configure RBAC and more. Check out the [Workspace](../workspace/workspace.md) section to learn more.
 
 ### Packs
 
