@@ -61,7 +61,7 @@ nodes is critical, consider one of the following options:
 ## Edge
 
 This is dependent on the OS you provide for your edge hosts using
-[EdgeForge](../../../clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images.md).
+[EdgeForge](../../../clusters/edge/edgeforge-workflow/edgeforge-workflow.md).
 
 If using EdgeForge, you can also create custom users and assign SSH keys to them using cloud-init stages. Refer to
 [Cloud Init Stages](../../edge/edge-configuration/cloud-init.md#assign-an-ssh-key) for an example.
@@ -72,7 +72,7 @@ You can select **Bring Your Own OS (BYOOS)** as the OS pack for your cluster in 
 depend on the OS image that you have built. Refer to [Bring Your Own OS (BYOOS)](../../../byoos/byoos.md) for further
 guidance on building custom images.
 
-- For images built using the [Kubernetes Image Builder](../../../byoos/image-builder/build-image.md), the SSH username
+- For images built using the [Kubernetes Image Builder](../../../byoos/image-builder.md), the SSH username
   is defined as the value for `ssh_username` in the corresponding OS JSON file. For example, the
   [Amazon Linux 2 JSON](https://github.com/kubernetes-sigs/image-builder/blob/main/images/capi/packer/ami/amazon-2.json#L11)
   sets the `ssh_username` value as `ec2-user`.
@@ -86,4 +86,4 @@ guidance on building custom images.
 - [SSH Keys](./ssh-keys.md)
 - [Deploy a Cluster (Public Cloud)](../../public-cloud/deploy-k8s-cluster.md)
 - [Data Center Clusters](../../data-center/data-center.md)
-- [Create Cluster Definition (Edge)](../../edge/site-deployment/cluster-deployment.md)
+- [Create Cluster Definition (Edge)](../../edge/site-deployment/model-profile.md)
