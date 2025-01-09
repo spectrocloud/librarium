@@ -474,9 +474,6 @@ profiles, and more.
 - [OS patch reboot](clusters/cluster-management/os-patching.md#reboot) allows clusters to reboot to apply system updates
   if required.
 
-- Palette Tencent clusters now support using [security groups](clusters/public-cloud/tke.md#deploy-a-tencent-cluster)
-  for network isolation and improved security.
-
 - Reduced launch time when creating Palette Virtual Clusters.
 
 - Palette Virtual Clusters now support ephemeral storage.
@@ -782,8 +779,6 @@ offerings, many enhancements, and bug fixes.
 
 **Features:**
 
-- Palette now supports [Tencent Kubernetes Engine (TKE)](./clusters/public-cloud/tke.md) a fully-managed Kubernetes
-  service from Tencent Cloud. Deploy and manage the end-to-end life cycle of TKS clusters, effortlessly.
 - Palette introduces **Placeholder Variables** as [Macros](./clusters/cluster-management/macros.md) in our Cluster
   Profile layers for advanced regression and easier update of variables, across multiple running clusters.
 - Palette displays a well-organized [Product Onboarding](./getting-started/getting-started.md) process to streamline
