@@ -189,7 +189,9 @@ function getAggregatedVersions(registries, repositories, packUidMap) {
           const previousVersiontagdata = previousVersions.find(
             (prevVersion) => prevVersion.title === commonVersion.title
           );
-          const previousVersionChildrenSet = new Set(previousVersiontagdata.children.map((verssion) => verssion.title));
+          const previousVersionChildrenSet = new Set(
+            (previousVersiontagdata.children || []).map((verssion) => verssion.title)
+          );
           const commonComputedChildren = commonVersion.children.filter((child) =>
             previousVersionChildrenSet.has(child.title)
           );
