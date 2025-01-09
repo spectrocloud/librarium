@@ -29,5 +29,3 @@ The following pages provide detailed instructions for setting up new workload cl
 - [Azure](azure/azure.md)
 
 - [Google Cloud](gcp/gcp.md)
-
-- [Tencent](tke.md)
