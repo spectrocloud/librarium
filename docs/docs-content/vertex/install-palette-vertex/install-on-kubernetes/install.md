@@ -149,7 +149,7 @@ your environment. Reach out to our support team if you need assistance.
 
     :::info
 
-    If you are installing Palette by pulling required images from a private mirror registry, you will need to provide
+    If you are installing VerteX by pulling required images from a private mirror registry, you will need to provide
     the credentials to your registry in the **values.yaml** file. For more information, refer to
     [Helm Configuration Reference](vertex-helm-ref.md#image-pull-secret).
 
