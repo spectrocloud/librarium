@@ -10,12 +10,13 @@ tags: ["edge"]
 
 Clusters provisioned on hosts that are installed in the `airgap` installation mode are managed locally by Local UI. You
 have the option to transfer the management of a local cluster from Local UI to a Palette instance to be managed
-centrally by pairing the local cluster the Palette instance.
+centrally by pairing the local cluster with the Palette instance.
 
 ## Pair Local Cluster with Palette
 
 Moving a local cluster to central management is a two-step process. You first send a pairing request from your local
-cluster to Palette using Local UI. Then you must accept the pairing request and select matching profile from Palette.
+cluster to Palette using Local UI. Then you must accept the pairing request and select matching profiles in Palettes to
+match the cluster stacks.
 
 ### Prerequisites
 
@@ -27,8 +28,8 @@ cluster to Palette using Local UI. Then you must accept the pairing request and 
 - All Edge hosts in your cluster must be able to connect to the Palette instance you intend to you use to manage the
   cluster.
 
-- Your Palette environment has cluster profiles whose latest version exactly match the cluster profiles used by the
-  local cluster.
+- Your Palette environment has cluster profiles whose latest version exactly match the all layers of the local cluster.
+  Refer to [Accept Pairing Request from Palette](#accept-pairing-request-from-palette) for details and examples.
 
 ### Procedure
 
@@ -79,7 +80,7 @@ cluster to Palette using Local UI. Then you must accept the pairing request and 
     wrong version. The fifth column is also invalid because it has an additional pack that is not found in the original
     cluster's profile.
 
-    | Local cluster profile     | Valid match 1             | Valid match 2             | Invalid match 1           | Invalid match 2           |
+    | Local cluster profile     | Valid match 1 ✅          | Valid match 2 ✅          | Invalid match 1 ❌        | Invalid match 2 ❌        |
     | ------------------------- | ------------------------- | ------------------------- | ------------------------- | ------------------------- |
     | **Infra profile**         | **Infra profile**         | **Full profile**          | **Infra profile**         | **Infra profile**         |
     | Amazon EBS CSI 1.20.0     | Amazon EBS CSI 1.20.0     | Amazon EBS CSI 1.20.0     | Amazon EBS CSI 1.20.0     | Amazon EBS CSI 1.20.0     |
@@ -127,8 +128,8 @@ accepted by your Palette instance.
 
 4. Click **Cancel Pairing Request**.
 
-5. Your host will send an API request to inform Palette that the pairing request has been cancelled. This will remove
-   the pending pairing request from your Palette instance as well.
+5. Your host will inform Palette that the pairing request has been cancelled. This will remove the pending pairing
+   request from your Palette instance as well.
 
    However, if your host cannot connect to your Palette instance, this request will not be able to reach Palette. If
    your host cannot connect to Palette, refer to
@@ -168,7 +169,7 @@ request.
 3. At the top of the page, a box will be displayed prompting you to review pairing requests that Palette has received.
    Click **Pair** to start reviewing the requests.
 
-4. Identify the pairing request corresponding to your cluster by its pairing ID. Click **Reject**.
+4. Identify the pairing request corresponding to your cluster by its pairing ID or tags. Click **Reject**.
 
 ### Validate
 
