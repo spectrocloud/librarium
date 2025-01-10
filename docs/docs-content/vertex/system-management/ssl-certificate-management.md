@@ -51,8 +51,10 @@ updating the system address may require manual reconciliation on deployed cluste
   field. This ensures that existing connections are not interrupted.
 
 - If you are changing the DNS endpoint, ensure both the new and old DNS endpoints are accessible for some time, ideally
-  a couple of hours to ensure all Palette agents can connect to the new endpoint and that no existing connections are
-  interrupted.
+  sufficient time to ensure all existing Palette clusters have been updated to use the new endpoint and that no existing
+  connections are interrupted. Refer to the
+  [Reconcile System Address on Deployed Clusters](#reconcile-system-address-on-deployed-clusters) section for more
+  information on updating deployed clusters.
 
 ### Enablement
 
