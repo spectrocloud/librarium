@@ -102,7 +102,8 @@ following steps.
 
 5.  (Optional) Update any previous Palette PCG install configuration file that was created using the previous encryption
     passphrase. You can use the `pcg install` command with the `--update-passwords` flag to update the passwords in the
-    configuration. Replace `/path/to/pcg.yaml` with the path to the desired PCG configuration file.
+    configuration. Replace `/path/to/pcg.yaml` with the path to the desired PCG configuration file. If you are using
+    Ubuntu Pro, pass in the token using the `--ubuntu-pro-token` flag.
 
     <!-- prettier-ignore -->
       <Tabs>
@@ -126,7 +127,8 @@ following steps.
 
 6.  (Optional) Update any previous Palette TC install configuration file that was created using the previous encryption
     passphrase. You can use the `tc install` command with the `--update-passwords` flag to update the passwords in the
-    configuration. Replace `/path/to/tc.yaml` with the path to the desired TC configuration file.
+    configuration. Replace `/path/to/tc.yaml` with the path to the desired TC configuration file. If you are using
+    Ubuntu Pro, pass in the token using the `--ubuntu-pro-token` flag.
 
     <!-- prettier-ignore -->
       <Tabs>
