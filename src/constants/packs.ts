@@ -41,7 +41,6 @@ export const cloudProviderTypes = [
   { name: "aks", displayName: "Azure AKS" },
   { name: "gcp", displayName: "GCP IaaS" },
   { name: "gke", displayName: "GCP GKE" },
-  { name: "tke", displayName: "TKE" },
   { name: "vsphere", displayName: "VMware" },
   { name: "openstack", displayName: "OpenStack" },
   { name: "maas", displayName: "MAAS" },
@@ -76,7 +75,6 @@ export const cloudDisplayNames = {
   vsphere: "VMware",
   openstack: "OpenStack",
   maas: "MAAS",
-  tke: "Tencent",
   "edge-native": "Edge",
   custom: "Custom",
 } as const;
