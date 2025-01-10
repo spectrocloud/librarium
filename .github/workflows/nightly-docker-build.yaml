@@ -15,6 +15,8 @@ env:
   ALGOLIA_INDEX_NAME: "madeup-index"
   PALETTE_API_KEY: ${{ secrets.PALETTE_API_KEY }}
   DISABLE_PACKS_INTEGRATIONS: ${{ secrets.DISABLE_PACKS_INTEGRATIONS }}
+  DISABLE_SECURITY_INTEGRATIONS: ${{ secrets.DISABLE_SECURITY_INTEGRATIONS }}
+  DSO_AUTH_TOKEN: ${{ secrets.DSO_AUTH_TOKEN }}
 
 jobs:
   build:
@@ -40,6 +42,12 @@ jobs:
         uses: ./.github/actions/build-cached-packs
         with:
           gh-token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Build with cached CVEs
+        if: ${{ env.BUILD_EXIT_CODE == '7' }}
+        uses: ./.github/actions/build-cached-cves
+        with:
+          gh-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -50,7 +58,7 @@ jobs:
 
       - name: Extract Docker metadata
         id: meta
-        uses: docker/metadata-action@v5.5.1
+        uses: docker/metadata-action@v5.6.1
         with:
           images: ghcr.io/${{ github.repository }}:nightly
 

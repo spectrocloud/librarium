@@ -22,7 +22,6 @@ The following parameters are required for a successful installation of Palette.
 | ------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
 | `config.env.rootDomain`                                 | Used to configure the domain for the Palette installation. We recommend you create a CNAME DNS record that supports multiple subdomains. You can achieve this using a wild card prefix, `*.palette.abc.com`. Review the [Environment parameters](#environment) to learn more. | String   |
 | `config.env.ociRegistry` or `config.env.ociEcrRegistry` | Specifies the FIPS image registry for Palette. You can use an a self-hosted OCI registry or a public OCI registry we maintain and support. For more information, refer to the [Registry](#registries) section.                                                                | Object   |
-| `scar`                                                  | The Spectro Cloud Artifact Repository (SCAR) credentials for Palette FIPS images. Our support team provides these credentials. For more information, refer to the [Registry](#registries) section.                                                                            | Object   |
 
 :::warning
 
@@ -37,20 +36,23 @@ Palette uses MongoDB Enterprise as its internal database and supports two modes 
 
 - MongoDB Enterprise deployed and active inside the cluster.
 
-- MongoDB Enterprise is hosted on a software-as-a-service (SaaS) platform, such as MongoDB Atlas.
+- MongoDB Enterprise is hosted on a Software-as-a-Service (SaaS) platform, such as MongoDB Atlas. If you choose to use
+  MongoDB Atlas, ensure the MongoDB database has a user named `hubble` with the permission `readWriteAnyDatabase`. Refer
+  to the [Add a Database User](https://www.mongodb.com/docs/guides/atlas/db-user/) guide for guidance on how to create a
+  database user in Atlas.
 
 The table below lists the parameters used to configure a MongoDB deployment.
 
-| **Parameters**     | **Description**                                                                                                                                                                                                                           | **Type** | **Default value**                           |
-| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------------------------------------------- |
-| `internal`         | Specifies the MongoDB deployment either in-cluster or using Mongo Atlas.                                                                                                                                                                  | Boolean  | `true`                                      |
-| `databaseUrl`      | The URL for MongoDB Enterprise. If using a remote MongoDB Enterprise instance, provide the remote URL. This parameter must be updated if `mongo.internal` is set to `false`.                                                              | String   | `mongo-0.mongo,mongo-1.mongo,mongo-2.mongo` |
-| `databasePassword` | The base64-encoded MongoDB Enterprise password. If you don't provide a value, a random password will be auto-generated.                                                                                                                   | String   | `""`                                        |
-| `replicas`         | The number of MongoDB replicas to start.                                                                                                                                                                                                  | Integer  | `3`                                         |
-| `memoryLimit`      | Specifies the memory limit for each MongoDB Enterprise replica.                                                                                                                                                                           | String   | `4Gi`                                       |
-| `cpuLimit`         | Specifies the CPU limit for each MongoDB Enterprise member.                                                                                                                                                                               | String   | `2000m`                                     |
-| `pvcSize`          | The storage settings for the MongoDB Enterprise database. Use increments of `5Gi` when specifying the storage size. The storage size applies to each replica instance. The total storage size for the cluster is `replicas` \* `pvcSize`. | string   | `20Gi`                                      |
-| `storageClass`     | The storage class for the MongoDB Enterprise database.                                                                                                                                                                                    | String   | `""`                                        |
+| **Parameters**     | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                      | **Type** | **Default value**                           |
+| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ------------------------------------------- |
+| `internal`         | Specifies the MongoDB deployment either in-cluster or using Mongo Atlas.                                                                                                                                                                                                                                                                                                                                                                             | Boolean  | `true`                                      |
+| `databaseUrl`      | The URL for MongoDB Enterprise. If using a remote MongoDB Enterprise instance, provide the remote URL. This parameter must be updated if `mongo.internal` is set to `false`. You also need to ensure the MongoDB database has a user named `hubble` with the permission `readWriteAnyDatabase`. Refer to the [Add a Database User](https://www.mongodb.com/docs/guides/atlas/db-user/) guide for guidance on how to create a database user in Atlas. | String   | `mongo-0.mongo,mongo-1.mongo,mongo-2.mongo` |
+| `databasePassword` | The base64-encoded MongoDB Enterprise password. If you don't provide a value, a random password will be auto-generated.                                                                                                                                                                                                                                                                                                                              | String   | `""`                                        |
+| `replicas`         | The number of MongoDB replicas to start.                                                                                                                                                                                                                                                                                                                                                                                                             | Integer  | `3`                                         |
+| `memoryLimit`      | Specifies the memory limit for each MongoDB Enterprise replica.                                                                                                                                                                                                                                                                                                                                                                                      | String   | `4Gi`                                       |
+| `cpuLimit`         | Specifies the CPU limit for each MongoDB Enterprise member.                                                                                                                                                                                                                                                                                                                                                                                          | String   | `2000m`                                     |
+| `pvcSize`          | The storage settings for the MongoDB Enterprise database. Use increments of `5Gi` when specifying the storage size. The storage size applies to each replica instance. The total storage size for the cluster is `replicas` \* `pvcSize`.                                                                                                                                                                                                            | string   | `20Gi`                                      |
+| `storageClass`     | The storage class for the MongoDB Enterprise database.                                                                                                                                                                                                                                                                                                                                                                                               | String   | `""`                                        |
 
 ```yaml
 mongo:
@@ -183,8 +185,7 @@ config:
 
 Palette requires credentials to access the required Palette images. You can configure different types of registries for
 Palette to download the required images. You must configure at least one Open Container Initiative (OCI) registry for
-Palette. You must also provide the credentials for the Spectro Cloud Artifact Repository (SCAR) to download the required
-FIPS images.
+Palette.
 
 ### OCI Registry
 
@@ -270,28 +271,6 @@ config:
     insecureSkipVerify: false
     caCert: ""
     mirrorRegistries: ""
-```
-
-### Spectro Cloud Artifact Repository (SCAR)
-
-SCAR credentials are required to download the necessary FIPS manifests. Our support team provides the SCAR credentials.
-
-| **Parameters**            | **Description**                                                                                | **Type** | **Default value** |
-| ------------------------- | ---------------------------------------------------------------------------------------------- | -------- | ----------------- |
-| `scar.endpoint`           | The endpoint URL of SCAR.                                                                      | String   | `""`              |
-| `scar.username`           | The username for SCAR.                                                                         | String   | `""`              |
-| `scar.password`           | The base64-encoded password for the SCAR.                                                      | String   | `""`              |
-| `scar.insecureSkipVerify` | Specifies whether to skip Transport Layer Security (TLS) verification for the SCAR connection. | Boolean  | `false`           |
-| `scar.caCert`             | The base64-encoded certificate authority (CA) certificate for SCAR.                            | String   | `""`              |
-
-```yaml
-config:
-  scar:
-    endpoint: ""
-    username: ""
-    password: ""
-    insecureSkipVerify: false
-    caCert: ""
 ```
 
 ### Image Swap Configuration

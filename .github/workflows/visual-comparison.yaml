@@ -17,6 +17,8 @@ env:
   ALGOLIA_INDEX_NAME: ${{ secrets.ALGOLIA_INDEX_NAME }}
   HTML_REPORT_URL_PATH: reports/${{ github.head_ref }}/${{ github.run_id }}/${{ github.run_attempt }}
   DISABLE_PACKS_INTEGRATIONS: ${{ secrets.DISABLE_PACKS_INTEGRATIONS }}
+  DISABLE_SECURITY_INTEGRATIONS: ${{ secrets.DISABLE_SECURITY_INTEGRATIONS }} 
+  DSO_AUTH_TOKEN: ${{ secrets.DSO_AUTH_TOKEN }}
 
 
 concurrency:
@@ -80,6 +82,12 @@ jobs:
       - name: Build with cached packs
         if: ${{ env.BUILD_EXIT_CODE == '5' }}
         uses: ./.github/actions/build-cached-packs
+        with:
+          gh-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build with cached CVEs
+        if: ${{ env.BUILD_EXIT_CODE == '7' }}
+        uses: ./.github/actions/build-cached-cves
         with:
           gh-token: ${{ secrets.GITHUB_TOKEN }}
 

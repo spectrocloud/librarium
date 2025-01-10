@@ -34,14 +34,21 @@ Complete the [Environment Setup](./kubernetes-airgap-instructions.md) steps befo
 
 - Ensure `unzip` or a similar extraction utility is installed on your system.
 
-- The Kubernetes cluster must be set up on a supported version of Kubernetes, which includes versions v1.28 to v1.29.
+- The Kubernetes cluster must be set up on a version of Kubernetes that is compatible to your upgraded version. Refer to
+  the [Kubernetes Requirements](../../install-palette-vertex.md#kubernetes-requirements) section to find the version
+  required for your Palette installation.
 
 - Ensure the Kubernetes cluster does not have Cert Manager installed. VerteX requires a unique Cert Manager
   configuration to be installed as part of the installation process. If Cert Manager is already installed, you must
   uninstall it before installing VerteX.
 
-- The Kubernetes cluster must have a Container Storage Interface (CSI) installed and configured. VerteX requires a CSI
-  to store persistent data. You may install any CSI that is compatible with your Kubernetes cluster.
+- Palette requires a Container Storage Interface (CSI) to create Persistest Volume, which is used to store persistent
+  data. You may install any CSI that is compatible with your Kubernetes cluster.
+
+- If you are using a _self-hosted MongoDB_ instance, such as MongoDB Atlas, ensure the MongoDB database has a user named
+  `hubble` with the permission `readWriteAnyDatabase`. Refer to the
+  [Add a Database User](https://www.mongodb.com/docs/guides/atlas/db-user/) guide for guidance on how to create a
+  database user in Atlas.
 
 - We recommended the following resources for VerteX. Refer to the
   [VerteX size guidelines](../../../install-palette-vertex/install-palette-vertex.md#size-guidelines) for additional
@@ -51,8 +58,7 @@ Complete the [Environment Setup](./kubernetes-airgap-instructions.md) steps befo
 
   - 16 GB Memory per node.
 
-  - 100 GB Disk Space per node.
-  - A Container Storage Interface (CSI) for persistent data.
+  - 110 GB Disk Space per node.
 
   - A minimum of three worker nodes or three untainted control plane nodes.
 
@@ -218,7 +224,6 @@ environment. Reach out to our support team if you need assistance.
     | `ociImageRegistry.mirrorRegistries` | Replace the placeholder string with the respective values of your OCI registry repository that is hosting the images. Do not use the same values you provided to the image-swap **values.yaml**. The placeholders require a `/v2/` endpoint if your OCI registry supports the Docker Registry protocol v2, otherwise container pull images will fail. |
     | `imageSwapImages`                   | The image swap configuration for VerteX. If you are using an OCI registry, such as Harbor. Replace the prefix URLs with your OCI registry URL that includes the image namespace or project: `<registry-url>/<namespace>`.                                                                                                                             | object   |
     | `imageSwapConfig.isEKSCluster`      | If you are NOT installing VerteX on an EKS cluster, set this value to `false`.                                                                                                                                                                                                                                                                        | boolean  |
-    | `scar`                              | Specify your HTTP file server values. If your HTTP file server requires credentials ensure the provided values are base64-encoded. Example of the string "admin" encoded in base64 - `YWRtaW4=`.                                                                                                                                                      | object   |
     | `ingress.enabled`                   | Whether to install the Nginx ingress controller. Set this to `false` if you already have an Nginx controller deployed in the cluster.                                                                                                                                                                                                                 | boolean  |
     | `reach-system`                      | Set `reach-system.enabled` to `true` and configure the `reach-system.proxySettings` parameters for VerteX to use a network proxy in your environment.                                                                                                                                                                                                 | object   |
 
@@ -240,7 +245,7 @@ environment. Reach out to our support team if you need assistance.
 
     <TabItem label="OCI Registry" value="oci">
 
-    ```yaml {23,53,87-95,97-102,104-106,109}
+    ```yaml {23,53,68-75,87-95,111-113}
     #########################
     # Spectro Cloud VerteX #
     #########################
@@ -337,12 +342,19 @@ environment. Reach out to our support team if you need assistance.
         caCert: ""
         mirrorRegistries: "docker.io::my-oci-registry.com/v2/spectro-images/docker.io,gcr.io::my-oci-registry.com/v2/spectro-images/gcr.io,ghcr.io::my-oci-registry.com/v2/spectro-images/ghcr.io,k8s.gcr.io::my-oci-registry.com/v2/spectro-images/k8s.gcr.io,registry.k8s.io::my-oci-registry.com/v2/spectro-images/registry.k8s.io,quay.io::my-oci-registry.com/v2/spectro-images/quay.io"
 
-      scar:
-        endpoint: "http://10.15.20.15:2015"
-        username: "YWRtaW4="
-        password: "YWRtaW4="
-        insecureSkipVerify: true
-        caCert: ""
+        #
+        # Instruction for mirrorRegistries.
+        # ----------------------------------
+        # Please provide the registry endpoint for the following registries, separated by double colons (::):
+        # docker.io
+        # gcr.io
+        # ghcr.io
+        # k8s.gcr.io
+        # registry.k8s.io
+        # quay.io
+        # For each registry, follow this example format:
+        # docker.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<DOCKER_IO_ENDPOINT>,gcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<GCR_IO_ENDPOINT>,ghcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<GHCR_IO_ENDPOINT>,k8s.gcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<K8S_IO_ENDPOINT>,registry.k8s.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<REGISTRY_K8S_IO_ENDPOINT>,quay.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<QUAY_IO_ENDPOINT>
+        # Replace <PLACE_HOLDER_FOR_ENDPOINT> with your actual registry endpoint and <DOCKER_IO_ENDPOINT>, <GCR_IO_ENDPOINT>, <GHCR_IO_ENDPOINT>, <K8S_IO_ENDPOINT>, <REGISTRY_K8S_IO_ENDPOINT>, and <QUAY_IO_ENDPOINT> with the specific endpoint details for each registry.
 
       imageSwapImages:
         imageSwapInitImage: "my-oci-registry.com/spectro-images/gcr.io/spectro-images-public/release-fips/thewebroot/imageswap-init:v1.5.2"
@@ -467,7 +479,7 @@ environment. Reach out to our support team if you need assistance.
 
     <TabItem label="AWS ECR Registry" value="ecr">
 
-    ```yaml {23,53,77-85,87-95,110-115}
+    ```yaml {23,53,77-85,87-95,110-112}
     #########################
     # Spectro Cloud VerteX #
     #########################
@@ -576,13 +588,6 @@ environment. Reach out to our support team if you need assistance.
       # For each registry, follow this example format:
       # docker.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<DOCKER_IO_ENDPOINT>,gcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<GCR_IO_ENDPOINT>,ghcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<GHCR_IO_ENDPOINT>,k8s.gcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<K8S_IO_ENDPOINT>,registry.k8s.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<REGISTRY_K8S_IO_ENDPOINT>,quay.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<QUAY_IO_ENDPOINT>
       # Replace <PLACE_HOLDER_FOR_ENDPOINT> with your actual registry endpoint and <DOCKER_IO_ENDPOINT>, <GCR_IO_ENDPOINT>, <GHCR_IO_ENDPOINT>, <K8S_IO_ENDPOINT>, <REGISTRY_K8S_IO_ENDPOINT>, and <QUAY_IO_ENDPOINT> with the specific endpoint details for each registry.
-
-      scar:
-        endpoint: "http://10.15.20.15:2015"
-        username: "YWRtaW4="
-        password: "YWRtaW4="
-        insecureSkipVerify: true
-        caCert: ""
 
       imageSwapImages:
         imageSwapInitImage: "public.ecr.aws/123456789/gcr.io/spectro-images-public/release-fips/thewebroot/imageswap-init:v1.5.2"
@@ -735,6 +740,25 @@ environment. Reach out to our support team if you need assistance.
     REVISION: 1
     TEST SUITE: None
     ```
+
+    <!-- prettier-ignore -->
+    <details>
+    <summary>How to update containerd to use proxy configurations</summary>
+
+    If your Kubernetes cluster is behind a network proxy, ensure the containerd service is configured to use proxy
+    settings. You can do this by updating the containerd configuration file on each node in the cluster. The
+    configuration file is typically located at ` /etc/systemd/system/containerd.service.d/http-proxy.conf`. Below is an
+    example of the configuration file. Replace the values with your proxy settings. Ask your network administrator for
+    guidance.
+
+    ```
+    [Service]
+    Environment="HTTP_PROXY=http://example.com:9090"
+    Environment="HTTPS_PROXY=http://example.com:9090"
+    Environment="NO_PROXY=127.0.0.1,localhost,100.64.0.0/17,192.168.0.0/16,172.16.0.0/12,10.0.0.0/8,,.cluster.local"
+    ```
+
+    </details>
 
 10. Install the VerteX Helm Chart using the following command.
 

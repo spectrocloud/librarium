@@ -11,7 +11,7 @@ tags: ["getting-started", "vmware"]
 Palette supports integration with [VMware](https://www.vmware.com). You can deploy and manage
 [Host Clusters](../../glossary-all.md#host-cluster) on VMware. The concepts you learn about in the Getting Started
 section are centered around a fictional case study company. This approach gives you a solution focused approach, while
-introducing you with Palette workflows and capabilities.
+introducing you to Palette workflows and capabilities.
 
 ## 🧑‍🚀 Welcome to Spacetastic!
 
@@ -22,49 +22,51 @@ introducing you with Palette workflows and capabilities.
 In this section, you learn how to create a cluster profile. Then, you deploy a cluster to VMware vSphere using Palette.
 Once your cluster is deployed, you can update it using cluster profile updates.
 
+<!-- vale off -->
+
 <SimpleCardGrid
   cards={[
     {
       title: "Set up Palette with VMware",
       description: "Set up the prerequisites of using Palette with VMware.",
       buttonText: "Learn more",
-      relativeURL: "./setup",
+      url: "/getting-started/vmware/setup",
     },
     {
       title: "Deploy a PCG",
       description: "Learn to deploy a PCG with Palette CLI.",
       buttonText: "Learn more",
-      relativeURL: "./deploy-pcg",
+      url: "/getting-started/vmware/deploy-pcg",
     },
     {
       title: "Create a Cluster Profile",
       description: "Create a full cluster profile in Palette.",
       buttonText: "Learn more",
-      relativeURL: "./create-cluster-profile",
+      url: "/getting-started/vmware/create-cluster-profile",
     },
     {
       title: "Deploy a Cluster",
       description: "Deploy a Palette host cluster to VMware.",
       buttonText: "Learn more",
-      relativeURL: "./deploy-k8s-cluster",
+      url: "/getting-started/vmware/deploy-k8s-cluster",
     },
     {
       title: "Deploy Cluster Profile Updates",
       description: "Update your deployed clusters using Palette Cluster Profiles.",
       buttonText: "Learn more",
-      relativeURL: "./update-k8s-cluster",
+      url: "/getting-started/vmware/update-k8s-cluster",
     },
     {
       title: "Cluster Management with Terraform",
       description: "Deploy and update a Palette host cluster with Terraform.",
       buttonText: "Learn more",
-      relativeURL: "./deploy-manage-k8s-cluster-tf",
+      url: "/getting-started/vmware/deploy-manage-k8s-cluster-tf",
     },
     {
       title: "Scale, Upgrade, and Secure Clusters",
       description: "Learn how to scale, upgrade, and secure Palette host clusters deployed to VMware.",
       buttonText: "Learn more",
-      relativeURL: "./scale-secure-cluster",
+      url: "/getting-started/vmware/scale-secure-cluster",
     },
   ]}
 />
