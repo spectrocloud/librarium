@@ -849,15 +849,15 @@ Excluded packs are not displayed in the packs component.
 
 #### Disable Plugin
 
-To disable the packs plugin, you can set the `DISABLE_PACKS_PLUGIN` environment variable to `true`. This will prevent
-the plugin from running and fetching the packs data. The packs component will not display any data if the plugin is
-disabled.
+To disable the packs plugin, you can set the `DISABLE_PACKS_INTEGRATIONS` environment variable to `true`. This will
+prevent the plugin from running and fetching the packs data. The packs component will not display any data if the plugin
+is disabled.
 
 ```shell
-export DISABLE_PACKS_PLUGIN=true
+export DISABLE_PACKS_INTEGRATIONS=true
 ```
 
-Settting the `DISABLE_PACKS_PLUGIN` environment variable to `true` will also have the following effects:
+Settting the `DISABLE_PACKS_INTEGRATIONS` environment variable to `true` will also have the following effects:
 
 - The PDE/App Mode Packs are still displayed.
 - All production pack pages are added to the redirects file. This is to prevent broken URLs.
