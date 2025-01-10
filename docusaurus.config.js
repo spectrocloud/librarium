@@ -11,8 +11,8 @@ import path from "path";
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "Spectro Cloud",
-  tagline: "Spectro Cloud",
+  title: "Palette",
+  tagline: "Palette",
   favicon: "img/favicon.png",
   url: "https://docs.spectrocloud.com",
   baseUrl: "/",
