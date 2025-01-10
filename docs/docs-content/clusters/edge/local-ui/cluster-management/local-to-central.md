@@ -12,6 +12,10 @@ Clusters provisioned on hosts that are installed in the `airgap` installation mo
 have the option to transfer the management of a local cluster from Local UI to a Palette instance to be managed
 centrally by pairing the local cluster with the Palette instance.
 
+:::preview
+
+:::
+
 ## Pair Local Cluster with Palette
 
 Moving a local cluster to central management is a two-step process. You first send a pairing request from your local
