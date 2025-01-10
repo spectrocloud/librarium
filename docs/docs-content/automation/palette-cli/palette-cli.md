@@ -24,12 +24,11 @@ passphrase and stored in the CLI configuration files. The CLI decrypts the data 
 
 :::warning
 
-We recommend that you store the encryption passphrase in a secure location. If you lose the passphrase, you cannot
-decrypt the sensitive data stored in the CLI configuration files. This behavior is noticeable in scenarios where you
-want to reuse a Palette EC install or PCG install configuration file. For example, if you generated a Palette
-`ec install` configuration and wanted to reuse it, you would have to provide the same passphrase used during the initial
-generation. Otherwise, the configuration file is unusable, and you will have to regenerate a new one using a new
-passphrase.
+We recommend that you store the encryption passphrase in a secure location. If you lose the passphrase, you will have to
+set a new encryption passphrase and update the main Palette configuration file **~/.palette/palette.yaml** and other
+configuration files with the new passphrase. Refer to the
+[Update CLI Configuration Files Credentials](../../troubleshooting/automation.md#scenario---update-cli-configuration-files-credentials)
+guide for steps on updating the CLI configuration files with a new passphrase.
 
 :::
 
