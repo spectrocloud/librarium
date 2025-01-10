@@ -35,6 +35,9 @@ match the cluster stack.
 - Your Palette environment has cluster profiles whose latest version exactly matches all layers of the local cluster.
   Refer to [Accept Pairing Request from Palette](#accept-pairing-request-from-palette) for details and examples.
 
+- You have the permissions to manage cluster pairing requests. For more information, refer to
+  [Roles and Permissions](../../../../user-management/palette-rbac/permissions.md).
+
 ### Procedure
 
 #### Send Pairing Request from Local Cluster
@@ -80,14 +83,14 @@ match the cluster stack.
     of the profiles you use can match the cluster.
 
     In the following example, the second and third columns are valid matches because every layer in the original cluster
-    has a matching layer in the matched profile. **Valid match 2** is valid even though it only has one full profile
+    has a matching layer in the matched profile. **Combination B** is valid even though it only has one full profile
     instead of an infra and an add-on profile, because all the layers are exactly the same.
 
     The fourth column shows an example of an invalid match because the **Add-on** profile has a pack that is in the
     wrong version. The fifth column is also invalid because it has an additional pack that is not found in the local
     cluster's cluster profile.
 
-    | Local cluster profile     | Valid match 1 ✅          | Valid match 2 ✅          | Invalid match 1 ❌        | Invalid match 2 ❌        |
+    | Local cluster profile     | Combination A             | Combination B             | Combination C             | Combination D             |
     | ------------------------- | ------------------------- | ------------------------- | ------------------------- | ------------------------- |
     | **Infra profile**         | **Infra profile**         | **Full profile**          | **Infra profile**         | **Infra profile**         |
     | Amazon EBS CSI 1.20.0     | Amazon EBS CSI 1.20.0     | Amazon EBS CSI 1.20.0     | Amazon EBS CSI 1.20.0     | Amazon EBS CSI 1.20.0     |
@@ -97,6 +100,7 @@ match the cluster stack.
     | **Add-on profile**        | **Add-on profile**        |                           | **Add-on profile**        | **Add-on profile**        |
     | Prometheus-Grafana 44.3.1 | Prometheus-Grafana 44.3.1 | Prometheus-Grafana 44.3.1 | Prometheus-Grafana 40.3.1 | Prometheus-Grafana 44.3.1 |
     |                           |                           |                           |                           | Hello-Universe 2.0.0      |
+    |                           | Valid match ✅            | Valid match ✅            | Invalid match ❌          | Invalid match ❌          |
 
     Once your have selected a valid match, click **Confirm**. Then click **Next step**.
 
