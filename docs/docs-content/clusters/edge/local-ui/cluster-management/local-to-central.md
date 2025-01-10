@@ -39,14 +39,17 @@ match the cluster stack.
 
 #### Send Pairing Request from Local Cluster
 
-1. Log in to  Local UI. For guidance on how to log into Local UI, check out the [Access Local UI](../host-management/access-console.md) guide.
+1. Log in to Local UI. For guidance on how to log into Local UI, check out the
+   [Access Local UI](../host-management/access-console.md) guide.
 
 2. On the left **Main Menu**, click **Settings**.
 
 3. On the **Settings** tab, click on the radio button labeled **Centrally Managed**. You will be prompted to enter
    information required for pairing your cluster with Palette.
 
-4. Enter the URL for the Palette API endpoint. If you are using Palette SaaS, the endpoint is `api.spectrocloud.com`. For self-hosted Palette or VerteX instances, check in with your system administrator for the proper Palette URL endpoint.
+4. Enter the URL for the Palette API endpoint. If you are using Palette SaaS, the endpoint is `api.spectrocloud.com`.
+   For self-hosted Palette or VerteX instances, check in with your system administrator for the proper Palette URL
+   endpoint.
 
 5. Enter your registration token in the **Registration token** field.
 
@@ -81,7 +84,8 @@ match the cluster stack.
     instead of an infra and an add-on profile, because all the layers are exactly the same.
 
     The fourth column shows an example of an invalid match because the **Add-on** profile has a pack that is in the
-    wrong version. The fifth column is also invalid because it has an additional pack that is not found in the local cluster's cluster profile.
+    wrong version. The fifth column is also invalid because it has an additional pack that is not found in the local
+    cluster's cluster profile.
 
     | Local cluster profile     | Valid match 1 ✅          | Valid match 2 ✅          | Invalid match 1 ❌        | Invalid match 2 ❌        |
     | ------------------------- | ------------------------- | ------------------------- | ------------------------- | ------------------------- |
