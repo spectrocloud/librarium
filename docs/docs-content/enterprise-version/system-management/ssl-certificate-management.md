@@ -21,18 +21,15 @@ The Palette system console allows you to replace the self-signed certificate wit
 these endpoints. Additionally, you can update the system address, which is the Fully Qualified Domain Name (FQDN) that
 you use to access your Palette installation. The system address and certificates may be updated simultaneously.
 
-:::info
-
 Palette validates the combination of system address, certificate, key, and Certificate Authority (CA). Ensure that the
 certificate is not expired, as well as that it is valid for the CA and the system address. Additionally, the system
 address must be accessible from the system console.
 
-:::
-
 :::warning
 
 You can swap out the external endpoint certificate at any time without affecting the system functionality. However,
-updating the system address may require manual reconciliation on deployed clusters.
+updating the system address may require manual reconciliation on deployed clusters. Review the
+[prerequisites](#prerequisites) before you proceed to ensure you have all met all requirements.
 
 :::
 
@@ -49,6 +46,13 @@ updating the system address may require manual reconciliation on deployed cluste
 - Ensure the certificate is created for the custom domain name you specified for your Palette installation. If you did
   not specify a custom domain name, the certificate must be created for the Palette system console's IP address. You can
   also specify a load balancer's IP address if you are using a load balancer to access Palette.
+
+- The new SSL certificate must also include the previous DNS name or IP address in the Subject Alternative Name (SAN)
+  field. This ensures that existing connections are not interrupted.
+
+- If you are changing the DNS endpoint, ensure both the new and old DNS endpoints are accessible for some time, ideally
+  a couple of hours to ensure all Palette agents can connect to the new endpoint and that no existing connections are
+  interrupted.
 
 ### Enablement
 
