@@ -96,19 +96,29 @@ function compareVersions(v1: string, v2: string): number {
   return 0;
 }
 
+function sortChildren(tagVersion: Version) {
+  const children = tagVersion.children || []
+  return children
+        .sort((a, b) => compareVersions(a.title, b.title))
+        .map((child) => ({
+          value: `${child.title}===${child.packUid}`,
+          title: <span>{child.title}</span>,
+        }))
+}
+
 function renderVersionOptions(packData: PackData) {
-  return packData.versions
+  // If there are no versions, we exit immediately
+  const versions = packData.versions
+  if (versions === undefined) {
+    return;
+  }
+  return versions
     .sort((a, b) => compareVersions(a.title, b.title))
     .map((tagVersion) => ({
       value: tagVersion.title,
       title: tagVersion.title,
       selectable: false,
-      children: tagVersion.children
-        .sort((a, b) => compareVersions(a.title, b.title))
-        .map((child) => ({
-          value: `${child.title}===${child.packUid}`,
-          title: <span>{child.title}</span>,
-        })),
+      children: sortChildren(tagVersion),
     }));
 }
 
