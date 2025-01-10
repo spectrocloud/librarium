@@ -191,7 +191,7 @@ function getAggregatedVersions(registries, repositories, packUidMap) {
           );
           const previousVersionChildrenSet = new Set(previousVersiontagdata.children.map((verssion) => verssion.title));
           // Ensure that children are never undefined.
-          const commonVersionChildren = commonVersion.children || []
+          const commonVersionChildren = commonVersion.children || [];
           const commonComputedChildren = commonVersionChildren.filter((child) =>
             previousVersionChildrenSet.has(child.title)
           );
