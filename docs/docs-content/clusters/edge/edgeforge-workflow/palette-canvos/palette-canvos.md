@@ -264,9 +264,10 @@ customization.
 
     :::info
 
-    If you plan to build Edge artifacts using a content bundle, use the `+build-provider-images` option instead of the
-    `+build-all-images` option in the command above. The command, `sudo ./earthly.sh +build-provider-images`, will build
-    the provider images but not the Edge installer ISO.
+    If you plan to build the Edge Installer ISO using a content bundle, use the `+build-provider-images` option instead
+    of the `+build-all-images` option in the command above. The command `sudo ./earthly.sh +build-provider-images` will
+    build the provider images but not the Edge installer ISO. After the provider images are built, follow the steps in
+    the [Build Content Bundle](./build-content-bundle.md) guide to build the Edge installer ISO using a content bundle.
 
     :::
 
@@ -755,9 +756,10 @@ git checkout v4.0.6
 
     :::info
 
-    If you plan to build Edge artifacts using a content bundle, use the `+build-provider-images` option instead of the
-    `+build-all-images` option in the command above. The command, `sudo ./earthly.sh +build-provider-images`, will build
-    the provider images but not the Edge installer ISO.
+    If you plan to build the Edge Installer ISO using a content bundle, use the `+build-provider-images` option instead
+    of the `+build-all-images` option in the command above. The command `sudo ./earthly.sh +build-provider-images` will
+    build the provider images but not the Edge installer ISO. After the provider images are built, follow the steps in
+    the [Build Content Bundle](./build-content-bundle.md) guide to build the Edge installer ISO using a content bundle.
 
     :::info
 
