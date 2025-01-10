@@ -10,7 +10,7 @@ tags: ["edge"]
 
 Clusters provisioned on hosts that are installed in the `airgap` installation mode are managed locally by Local UI. You
 have the option to transfer the management of a local cluster from Local UI to a Palette instance to be managed
-centrally by pairing the local cluster with the Palette instance.
+centrally by pairing the local cluster with a Palette instance.
 
 :::preview
 
@@ -20,19 +20,19 @@ centrally by pairing the local cluster with the Palette instance.
 
 Moving a local cluster to central management is a two-step process. You first send a pairing request from your local
 cluster to Palette using Local UI. Then you must accept the pairing request and select matching profiles in Palettes to
-match the cluster stacks.
+match the cluster stack.
 
 ### Prerequisites
 
-- An active locally managed cluster. The cluster itself must be in the **Running** state and all nodes must be healthy.
+- An active locally managed cluster. The cluster must be in the **Running** state and all nodes must be healthy.
 
 - An Edge host registration token. For more information on how to create registration tokens, refer to
   [Edge Host Registration](../../site-deployment/site-installation/create-registration-token.md).
 
-- All Edge hosts in your cluster must be able to connect to the Palette instance you intend to you use to manage the
+- All Edge hosts in your cluster must be able to connect to the Palette instance you intend to use to manage the
   cluster.
 
-- Your Palette environment has cluster profiles whose latest version exactly match the all layers of the local cluster.
+- Your Palette environment has cluster profiles whose latest version exactly match all layers of the local cluster.
   Refer to [Accept Pairing Request from Palette](#accept-pairing-request-from-palette) for details and examples.
 
 ### Procedure
