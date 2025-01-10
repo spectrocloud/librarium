@@ -11,5 +11,6 @@
   "ubuntu-coxedge",
   "edge-os",
   "spectro-zen-of-k8s",
-  "spectro-mgmt"
+  "spectro-mgmt",
+  "virtual-machine-orchestrator"
 ]
