@@ -97,18 +97,18 @@ function compareVersions(v1: string, v2: string): number {
 }
 
 function sortChildren(tagVersion: Version) {
-  const children = tagVersion.children || []
+  const children = tagVersion.children || [];
   return children
-        .sort((a, b) => compareVersions(a.title, b.title))
-        .map((child) => ({
-          value: `${child.title}===${child.packUid}`,
-          title: <span>{child.title}</span>,
-        }))
+    .sort((a, b) => compareVersions(a.title, b.title))
+    .map((child) => ({
+      value: `${child.title}===${child.packUid}`,
+      title: <span>{child.title}</span>,
+    }));
 }
 
 function renderVersionOptions(packData: PackData) {
   // If there are no versions, we exit immediately
-  const versions = packData.versions
+  const versions = packData.versions;
   if (versions === undefined) {
     return;
   }

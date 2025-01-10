@@ -12,8 +12,8 @@
   "edge-os",
   "spectro-zen-of-k8s",
   "spectro-mgmt",
-  "csi-tke", 
-  "kubernetes-tke", 
-  "tke-managed-os", 
+  "csi-tke",
+  "kubernetes-tke",
+  "tke-managed-os",
   "cni-tke-global-router"
 ]
