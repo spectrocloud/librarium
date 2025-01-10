@@ -190,13 +190,15 @@ function getAggregatedVersions(registries, repositories, packUidMap) {
             (prevVersion) => prevVersion.title === commonVersion.title
           );
           const previousVersionChildrenSet = new Set(previousVersiontagdata.children.map((verssion) => verssion.title));
-          const commonComputedChildren = commonVersion.children.filter((child) =>
+          // Ensure that children are never undefined.
+          const commonVersionChildren = commonVersion.children || []
+          const commonComputedChildren = commonVersionChildren.filter((child) =>
             previousVersionChildrenSet.has(child.title)
           );
           if (commonComputedChildren.length) {
             //merge non overlapping children in each parent version
             const mergedNonOverlappingChildren = [
-              ...commonVersion.children.filter((child) => !previousVersionChildrenSet.has(child.title)),
+              ...commonVersionChildren.filter((child) => !previousVersionChildrenSet.has(child.title)),
               ...previousVersiontagdata.children.filter((child) => !previousVersionChildrenSet.has(child.title)),
             ];
             commonComputedChildren.forEach((childComputedVersion) => {
@@ -214,7 +216,7 @@ function getAggregatedVersions(registries, repositories, packUidMap) {
             //merging non-overlapping children with the previous version children
             previousVersiontagdata.children = [...previousVersiontagdata.children, ...mergedNonOverlappingChildren];
           } else {
-            previousVersiontagdata.children = [...previousVersiontagdata.children, ...commonVersion.children];
+            previousVersiontagdata.children = [...previousVersiontagdata.children, ...commonVersionChildren];
           }
         });
         //merging the non-overlapping tags with the previous Versions
