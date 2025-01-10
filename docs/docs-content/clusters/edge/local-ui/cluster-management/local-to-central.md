@@ -8,7 +8,7 @@ sidebar_position: 55
 tags: ["edge"]
 ---
 
-Clusters provisioned on hosts that are installed in the `airgap` installation mode are managed locally by Local UI. You
+Clusters provisioned on hosts that are installed in the airgap installation mode are managed locally by Local UI. You
 have the option to transfer the management of a local cluster from Local UI to a Palette instance to be managed
 centrally by pairing the local cluster with a Palette instance.
 
@@ -19,7 +19,7 @@ centrally by pairing the local cluster with a Palette instance.
 ## Pair Local Cluster with Palette
 
 Moving a local cluster to central management is a two-step process. You first send a pairing request from your local
-cluster to Palette using Local UI. Then you must accept the pairing request and select matching profiles in Palettes to
+cluster to Palette using Local UI. Next, you accept the pairing request and select matching profiles in Palettes to
 match the cluster stack.
 
 ### Prerequisites
@@ -32,21 +32,21 @@ match the cluster stack.
 - All Edge hosts in your cluster must be able to connect to the Palette instance you intend to use to manage the
   cluster.
 
-- Your Palette environment has cluster profiles whose latest version exactly match all layers of the local cluster.
+- Your Palette environment has cluster profiles whose latest version exactly matches all layers of the local cluster.
   Refer to [Accept Pairing Request from Palette](#accept-pairing-request-from-palette) for details and examples.
 
 ### Procedure
 
 #### Send Pairing Request from Local Cluster
 
-1. Log in to [Local UI](../host-management/access-console.md).
+1. Log in to  Local UI. For guidance on how to log into Local UI, check out the [Access Local UI](../host-management/access-console.md) guide.
 
 2. On the left **Main Menu**, click **Settings**.
 
-3. On the **Settings** tab, click on the radio button that says **Centrally Managed**. You will be prompted to enter
+3. On the **Settings** tab, click on the radio button labeled **Centrally Managed**. You will be prompted to enter
    information required for pairing your cluster with Palette.
 
-4. Enter the URL for the Palette API endpoint. If you are using Palette SaaS, the endpoint is `api.spectrocloud.com`.
+4. Enter the URL for the Palette API endpoint. If you are using Palette SaaS, the endpoint is `api.spectrocloud.com`. For self-hosted Palette or VerteX instances, check in with your system administrator for the proper Palette URL endpoint.
 
 5. Enter your registration token in the **Registration token** field.
 
@@ -81,8 +81,7 @@ match the cluster stack.
     instead of an infra and an add-on profile, because all the layers are exactly the same.
 
     The fourth column shows an example of an invalid match because the **Add-on** profile has a pack that is in the
-    wrong version. The fifth column is also invalid because it has an additional pack that is not found in the original
-    cluster's profile.
+    wrong version. The fifth column is also invalid because it has an additional pack that is not found in the local cluster's cluster profile.
 
     | Local cluster profile     | Valid match 1 ✅          | Valid match 2 ✅          | Invalid match 1 ❌        | Invalid match 2 ❌        |
     | ------------------------- | ------------------------- | ------------------------- | ------------------------- | ------------------------- |
