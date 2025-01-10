@@ -8,10 +8,17 @@ tags: ["edge"]
 ---
 
 The **user-data** file is a YAML file that contains installer configuration for the Palette agent. This file is usually
-prepared before the EdgeForge process and is written into the installer ISO.
+prepared before the EdgeForge process and is written into the installer ISO in appliance mode deployments, or provided
+directly to the agent mode installation script in agent mode deployments. For more information about EdgeForge, refer to
+[EdgeForge Workflow](../../edgeforge-workflow/edgeforge-workflow.md). For more information about deployment modes, refer
+to [Deployment Modes](../../../../deployment-modes/deployment-modes.md).
 
 Local UI allows you to make edits to most fields in the **user-data** file after installation has completed before
-cluster creation. The new settings will apply after the host reboots.
+cluster creation. All fields exposed in the form in Local UI have corresponding parameters in the installer reference.
+For more information about the fields available in the installer user data, refer to
+[Installer Reference](../../edge-configuration/installer-reference.md).
+
+After an edit has been made, the new settings will apply after the host reboots.
 
 :::preview
 
@@ -19,7 +26,8 @@ cluster creation. The new settings will apply after the host reboots.
 
 ## Limitations
 
-- The following fields cannot be edited.
+- The following fields cannot be edited in Local UI. If you need to use these settings, you must set them correctly
+  during EdgeForge.
   - `stylus.site.deviceUIDPaths`
   - `stylus.site.tagsFromFile`
   - `stylus.site.tagsFromScript`
@@ -34,7 +42,7 @@ cluster creation. The new settings will apply after the host reboots.
 ## Prerequisites
 
 - You have set `stylus.featureGate` to `UserDataForm` in your user data during EdgeForge. For example, the following
-  configuration enable editing user data in Local UI.
+  configuration enables editing user data in Local UI.
 
   ```yaml
   #cloud-config
@@ -63,12 +71,14 @@ cluster creation. The new settings will apply after the host reboots.
    data file. You may also configure tags for your host, which corresponds to `stylus.site.tags`.
 
 5. In the **Network** section, you can configure network interfaces that the host will use to communicate with the its
-   network environment.
+   network environment. Refer to
+   [Site Network Parameters](../../edge-configuration/installer-reference.md#site-network-parameters) for more
+   information about the network parameters.
 
    | Field         | Description                                                                                                                                                                                                                         |
    | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
    | Interface     | The name of the network interface that the host will use to communicate with the cluster. You can add multiple network interfaces. This corresponds to the `stylus.site.network.<Interface Name>` field in the installer user data. |
-   | Use Static IP | Toggle on this switch to specify that your network interface will use static IP. If this field is turned off, your network interface will use Dynamic Host Configuration Protocol (DHCP).                                           |
+   | Use Static IP | Toggle on this switch to specify that your network interface will use static IP. If this field is turned off, your network interface will use Dynamic Host Configuration Protocol (DHCP) to obtain dynamic IPs.                     |
    | IP address    | The IP address of your network interface. This field is only available if you use static IP.                                                                                                                                        |
    | DNS Server    | The IP address of your DNS server. This field is only available if you use static IP.                                                                                                                                               |
    | Gateway       | The IP address of the internet gateway for your network. This field is only available if you use static IP.                                                                                                                         |
@@ -91,7 +101,7 @@ cluster creation. The new settings will apply after the host reboots.
 8. In the **Advanced Configurations** section, cloud-init configurations are editable directly in the YAML editor. For
    more information about cloud-init stages, refer to [Cloud-init Stages](../../edge-configuration/cloud-init.md).
 
-9. When you are done, click **Confirm**. The host will need a 10 to 15 mins to reboot and apply your changes.
+9. When you are finished, click **Confirm**. The host will need 10 to 15 minutes to reboot and apply your changes.
 
 ## Validate
 
