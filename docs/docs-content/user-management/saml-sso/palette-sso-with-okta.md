@@ -74,11 +74,10 @@ The following steps will guide you on how to enable Palette SSO with
 8. These two redirect URIs are required for SSO to work with Palette. You can also add additional redirect URIs. The
    URIs in the table below are useful when you want to use Okta for OIDC authentication into your Kubernetes clusters.
 
-   | URL                                                        | Type of Access                                               |
-   | ---------------------------------------------------------- | ------------------------------------------------------------ |
-   | `http://localhost:8000`                                    | Using kubectl with the kube-login plugin from a workstation. |
-   | `https://console.spectrocloud.com/v1/shelly/oidc/callback` | Using the web-based kubectl console.                         |
-   | `https://<fqdn_of_k8s_dashboard>/oauth/callback`           | Using OIDC authentication into Kubernetes Dashboard.         |
+   | URL                                              | Type of Access                                               |
+   | ------------------------------------------------ | ------------------------------------------------------------ |
+   | `http://localhost:8000`                          | Using kubectl with the kube-login plugin from a workstation. |
+   | `https://<fqdn_of_k8s_dashboard>/oauth/callback` | Using OIDC authentication into Kubernetes Dashboard.         |
 
 9. When you have completed entering redirect URIs, scroll down to the **Assignments** section and section and select
    **Allow everyone in your organization to access**. Leave the **Enable immediate access with Federation Broker Mode**
