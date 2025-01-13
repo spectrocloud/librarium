@@ -222,7 +222,7 @@ customization.
    ```bash
    cat user-data
    ```
-  
+
    :::info
 
    You can take advantage of the Tech Preview feature to edit user data in Local UI after installation. Refer to
@@ -234,7 +234,6 @@ customization.
 
 10. Open the **k8s_versions.json** file in the CanvOS directory. Remove the Kubernetes versions that you don't need from
     the JSON object corresponding to your Kubernetes distribution.
-
 
     If you are using a tag that is earlier than v4.4.12, the **k8s_versions.json** file does not exist in those tags.
     Instead, open the **Earthfile** in the CanvOS directory. In the file, find the block that starts with
@@ -270,9 +269,10 @@ customization.
 
     :::info
 
-    If you plan to build Edge artifacts using a content bundle, use the `+build-provider-images` option instead of the
-    `+build-all-images` option in the command above. The command, `sudo ./earthly.sh +build-provider-images`, will build
-    the provider images but not the Edge installer ISO.
+    If you plan to build the Edge Installer ISO using a content bundle, use the `+build-provider-images` option instead
+    of the `+build-all-images` option in the command above. The command `sudo ./earthly.sh +build-provider-images` will
+    build the provider images but not the Edge installer ISO. After the provider images are built, follow the steps in
+    the [Build Content Bundle](./build-content-bundle.md) guide to build the Edge installer ISO using a content bundle.
 
     :::
 
@@ -786,9 +786,10 @@ git checkout v4.4.12
 
     :::info
 
-    If you plan to build Edge artifacts using a content bundle, use the `+build-provider-images` option instead of the
-    `+build-all-images` option in the command above. The command, `sudo ./earthly.sh +build-provider-images`, will build
-    the provider images but not the Edge installer ISO.
+    If you plan to build the Edge Installer ISO using a content bundle, use the `+build-provider-images` option instead
+    of the `+build-all-images` option in the command above. The command `sudo ./earthly.sh +build-provider-images` will
+    build the provider images but not the Edge installer ISO. After the provider images are built, follow the steps in
+    the [Build Content Bundle](./build-content-bundle.md) guide to build the Edge installer ISO using a content bundle.
 
     :::info
 
