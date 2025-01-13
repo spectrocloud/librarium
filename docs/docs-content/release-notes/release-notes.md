@@ -79,8 +79,8 @@ tags: ["release-notes"]
   [Local UI](../clusters/edge/local-ui/local-ui.md) to a Palette management plane. This feature allows you to start the
   deployment of Edge clusters in an airgap environment using Local UI and then transfer the management of the Edge
   clusters to a Palette management plane, enabling you to manage the Edge clusters along with other clusters in Palette.
-  Check out the [Pair Local Cluster with Palette](../clusters/edge/local-ui/local-ui.md) guide to learn more about this
-  feature.
+  Check out the [Pair Local Cluster with Palette](../clusters/edge/local-ui/cluster-management/local-to-central.md)
+  guide to learn more about this feature.
 
 ### Palette Dev Engine (PDE)
 
