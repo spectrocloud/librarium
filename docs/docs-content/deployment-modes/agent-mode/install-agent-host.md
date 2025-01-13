@@ -134,7 +134,7 @@ Palette. You will then create a cluster profile and use the registered host to d
 
    :::info
 
-   The `projectName` parameter is not required if your Palette [registration token](../../clusters/edge/site-deployment/site-installation/create-registration-token.md) has a Default Project set.
+   The `projectName` parameter is not required if the associated Palette [registration token](../../clusters/edge/site-deployment/site-installation/create-registration-token.md) has a Default Project set.
 
    :::
 
