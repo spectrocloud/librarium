@@ -183,6 +183,7 @@ Palette. You will then create a cluster profile and use the registered host to d
      site:
        edgeHostToken: ****************
        paletteEndpoint: api.spectrocloud.com
+       projectName: Default
    stages:
      initramfs:
        - users:
