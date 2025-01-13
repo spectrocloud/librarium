@@ -44,8 +44,7 @@ updating the system address may require manual reconciliation on deployed cluste
 
 - If you are changing the DNS endpoint, ensure both the new and old DNS endpoints are accessible for some time, ideally
   sufficient time to ensure all existing Palette clusters have been updated to use the new endpoint and that no existing
-  connections are interrupted. Refer to the
-  [Reconcile System Address on Deployed Clusters](#reconcile-system-address-on-deployed-clusters) section for more
+  connections are interrupted. Refer to the [Reconcile System Address on Deployed Clusters](#) section for more
   information on updating deployed clusters.
 
 ### Enablement
@@ -84,6 +83,13 @@ You can validate that your certificate is uploaded correctly by using the follow
 
 Palette is now using your uploaded certificate to create a secure HTTPS connection with external clients. Users can now
 securely access the system console, gRPC endpoint, and API endpoint.
+
+## Reconcile System Address on Deployed Clusters
+
+Once you have updated your system address, the clusters that were deployed before the update will not be able to
+automatically reconnect to Palette if the old system address is no longer available. You will need to manually update
+the API endpoint on each cluster if this is the case. This enables the Palette agent to reconnect to the API at the
+newly configured system address.
 
 ### Prerequisites
 
