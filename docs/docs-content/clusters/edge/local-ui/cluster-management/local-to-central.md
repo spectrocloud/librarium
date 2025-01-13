@@ -168,8 +168,8 @@ request.
 - A pending pairing request. Refer to [Pair Local Cluster with Palette](#pair-local-cluster-with-palette) to learn how
   to make one.
 
-- You have the tenant admin or project admin role in your Palette environment. For more information, refer to
-  [Role and Permissions](../../../../user-management/palette-rbac/palette-rbac.md).
+- You have the required permissions to manage cluster pairing requests. For more information, refer to
+  [Roles and Permissions](../../../../user-management/palette-rbac/permissions.md).
 
 - The pairing ID of the pairing request.
 
