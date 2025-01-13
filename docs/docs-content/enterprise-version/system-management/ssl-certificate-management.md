@@ -84,6 +84,13 @@ You can validate that your certificate is uploaded correctly by using the follow
 Palette is now using your uploaded certificate to create a secure HTTPS connection with external clients. Users can now
 securely access the system console, gRPC endpoint, and API endpoint.
 
+## Reconcile System Address on Deployed Clusters
+
+Once you have updated your system address, the clusters that were deployed before the update will not be able to
+automatically reconnect to Palette if the old system address is no longer available. You will need to manually update
+the API endpoint on each cluster if this is the case. This enables the Palette agent to reconnect to the API at the
+newly configured system address.
+
 ### Prerequisites
 
 - Palette access with a configured cloud account.
