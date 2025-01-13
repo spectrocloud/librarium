@@ -27,7 +27,7 @@ After an edit has been made, the new settings will apply after the host reboots.
 ## Limitations
 
 - The following fields cannot be edited in Local UI. If you need to use these settings, you must set them correctly
-  during EdgeForge.
+  during EdgeForge or provide them to the installation script if you are using agent mode.
   - `stylus.site.deviceUIDPaths`
   - `stylus.site.tagsFromFile`
   - `stylus.site.tagsFromScript`
@@ -41,10 +41,11 @@ After an edit has been made, the new settings will apply after the host reboots.
 
 ## Prerequisites
 
-- You have set `stylus.featureGate` to `UserDataForm` in your user data during EdgeForge. For example, the following
-  configuration enables editing user data in Local UI.
+- You have set `stylus.featureGate` to `UserDataForm` in your installer user data during EdgeForge or provide the user
+  data to the installation script if you are using agent mode. For example, the following configuration enables editing
+  user data in Local UI.
 
-  ```yaml
+  ```yaml {6}
   #cloud-config
   install:
     reboot: false
@@ -60,7 +61,7 @@ After an edit has been made, the new settings will apply after the host reboots.
 
 ## Edit User Data
 
-1. Log in to [Local UI](./access-console.md).
+1. Log in to Local UI. Refer to [Access Local UI](./access-console.md) for guidance.
 
 2. In the upper-right corner of the page, click **Actions** to open the **drop-down Menu**.
 
@@ -105,7 +106,7 @@ After an edit has been made, the new settings will apply after the host reboots.
 
 ## Validate
 
-1. Log in to [Local UI](./access-console.md).
+1. Log in to Local UI.
 
 2. Click **Configure**.
 
