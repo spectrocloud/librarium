@@ -74,8 +74,8 @@ has the necessary network connectivity for VerteX to operate successfully.
 - Ensure the OS and Kubernetes cluster you are installing VerteX onto is FIPS-compliant. Otherwise, VerteX and its
   operations will not be FIPS-compliant.
 
-- A configured [StorageClass](https://kubernetes.io/docs/concepts/storage/storage-classes/) to manage persistent storage needs. If you define a default StorageClass, it is automatically used for Persistent Volume Claims (PVCs) unless otherwise specified. To override the default StorageClass for a workload, modify the `storageClass` parameter. 
-
+- A [StorageClass](https://kubernetes.io/docs/concepts/storage/storage-classes/) to manage persistent storage, with the annotation `storageclass.kubernetes.io/is-default-class` set to `true`. To override the default StorageClass for a workload, modify the `storageClass` parameter.
+  
 - An Nginx controller will be installed by default. If you already have an Nginx controller deployed in the cluster, you
   must set the `ingress.enabled` parameter to `false` in the **values.yaml** file.
 
