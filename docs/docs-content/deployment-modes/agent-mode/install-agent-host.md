@@ -125,16 +125,18 @@ Palette. You will then create a cluster profile and use the registered host to d
 
    :::
 
-   The following configuration includes a Palette registration token and the default Palette endpoint, specifies the Palette project, and sets up the `kairos`
-   user. The host will not shut down and will reboot after the agent installation, with
-   [kube-vip](../../clusters/edge/networking/kubevip.md) enabled, as this is required for bare metal and VMware vSphere
-   deployments. If your environment does not require kube-vip, set `skipKubeVip:` to `true`. Refer to the
-   [Prepare User Data](../../clusters/edge/edgeforge-workflow/prepare-user-data.md) guide to learn more about user data
-   configuration.
+   The following configuration includes a Palette registration token and the default Palette endpoint, specifies the
+   Palette project, and sets up the `kairos` user. The host will not shut down and will reboot after the agent
+   installation, with [kube-vip](../../clusters/edge/networking/kubevip.md) enabled, as this is required for bare metal
+   and VMware vSphere deployments. If your environment does not require kube-vip, set `skipKubeVip:` to `true`. Refer to
+   the [Prepare User Data](../../clusters/edge/edgeforge-workflow/prepare-user-data.md) guide to learn more about user
+   data configuration.
 
    :::info
 
-   The `projectName` parameter is not required if the associated Palette [registration token](../../clusters/edge/site-deployment/site-installation/create-registration-token.md) has a Default Project set.
+   The `projectName` parameter is not required if the associated Palette
+   [registration token](../../clusters/edge/site-deployment/site-installation/create-registration-token.md) has a
+   Default Project set.
 
    :::
 
