@@ -77,6 +77,8 @@ Complete the [Environment Setup](./kubernetes-airgap-instructions.md) steps befo
 
   - x509 SSL certificate authority file in the base64 format.
 
+- A configured [StorageClass](https://kubernetes.io/docs/concepts/storage/storage-classes/) to manage persistent storage needs. If you define a default StorageClass, it is automatically used for Persistent Volume Claims (PVCs) unless otherwise specified. To override the default StorageClass for a workload, modify the `storageClass` parameter.
+
 - An Nginx controller will be installed by default. If you already have an Nginx controller deployed in the cluster, you
   must set the `ingress.enabled` parameter to `false` in the **values.yaml** file.
 

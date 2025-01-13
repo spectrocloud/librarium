@@ -57,6 +57,8 @@ and assets.
 
 - Shared Storage between VMware vSphere hosts.
 
+- A configured [StorageClass](https://kubernetes.io/docs/concepts/storage/storage-classes/) to manage persistent storage needs. If you define a default StorageClass, it is automatically used for Persistent Volume Claims (PVCs) unless otherwise specified. To override the default StorageClass for a workload, modify the `storageClass` parameter. 
+
 :::info
 
 Self-hosted Palette installations provide a system Private Cloud Gateway (PCG) out-of-the-box and typically do not
