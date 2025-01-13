@@ -6,25 +6,25 @@ sidebar_position: 40
 tags: ["profiles", "cluster profiles"]
 ---
 
-Cluster profile variables enable you to create placeholders for parameters in profile layer configurations, which you
-can then populate for individual clusters during deployment. Meaning you can use a single cluster profile to deploy
-multiple clusters with unique requirements for security, networking, resource allocation, and so on.
+Use cluster profile variables to create placeholders for parameters in profile-layer configurations, which you can
+populate for individual clusters during deployment. With cluster profile variables, you can use a single cluster profile
+to deploy multiple clusters with unique requirements for security, networking, resource allocation, and more. You can
+also set specific constraints on the expected values, such as format, optionality, and masking to ensure scalable,
+error-free cluster deployments.
 
-When defining a cluster profile variable, you can set specific constraints on the expected values, such as format,
-optionality, masking, and so on, to ensure scalable, error-free cluster deployments.
+Cluster profile variables can be used with any Palette cluster, including public cloud, data center, bare metal, and
+edge clusters, and can also be managed via
+[Terraform](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
 
 :::preview
 
-This is a Tech Preview feature currently available in [Local UI](../../../clusters/edge/local-ui/local-ui.md). Do not
-use this feature in production workloads, as it is subject to change.
-
 :::
 
-You can use profile variables with any number of packs, manifests, and Helm charts, but only in the scope of their
-parent cluster profile. If you want to create placeholders to use across different cluster profiles, consider using
-[Palette Macros](../../../clusters/cluster-management/macros.md).
+You can use cluster profile variables with any number of packs, manifests, and Helm charts, but only in the scope of
+their parent cluster profile. If you want to create placeholders to use across different cluster profiles, consider
+using [Palette Macros](../../../clusters/cluster-management/macros.md).
 
-The following table describes the difference between profile variables and macros.
+The following table describes the differences between profile variables and macros.
 
 | **Capability**                                                            | **Profile Variable** | **Macro** |
 | ------------------------------------------------------------------------- | :------------------: | :-------: |
@@ -33,13 +33,11 @@ The following table describes the difference between profile variables and macro
 | Belongs to the tenant scope                                               |          ❌          |    ✅     |
 | Supports data format restrictions                                         |          ✅          |    ❌     |
 | Supports optionality restrictions                                         |          ✅          |    ❌     |
-| Supports [sprig template functions](https://masterminds.github.io/sprig/) |          ✅          |    ✅     |
+| Supports [sprig template functions](https://masterminds.github.io/sprig/) |          ❌          |    ✅     |
 
 This guide explains how you can define and manage cluster profile variables.
 
 ## Limitations
-
-- Cluster profile variables are currently available only in [Local UI](../../../clusters/edge/local-ui/local-ui.md).
 
 - Palette does not support nesting profile variables within macros or other profile variables.
 
@@ -61,16 +59,15 @@ This guide explains how you can define and manage cluster profile variables.
   [Roles and Permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile) for
   more information.
 
-- An in-progress or already created cluster profile. The cluster profile must either have the **Edge Native**
-  infrastructure or be an edge-based add-on profile.
+- An in-progress or existing cluster profile.
 
 ### Enablement
 
-You can define profile variables both while creating and for the already created cluster profiles. To define profile
+You can define profile variables when creating cluster profiles and for existing cluster profiles. To define profile
 variables [while creating a cluster profile](../create-cluster-profiles/create-cluster-profiles.md), you need to be at
 the **Profile Layers** stage of cluster profile creation and start following this guide from step three.
 
-1.  Log in to Palette.
+1.  Log in to [Palette](https://console.spectrocloud.com).
 
 2.  Navigate to the cluster profile for which you want to define profile variables.
 
@@ -91,9 +88,9 @@ the **Profile Layers** stage of cluster profile creation and start following thi
 5.  Enter a variable display name that Palette will display during cluster deployment. The display name must be unique
     within the parent cluster.
 
-6.  Optionally, enter the variable description.
+6.  Optionally, enter a variable description.
 
-7.  Select a data format that the variable will expect. The following table describes the available data formats.
+7.  Select the data format for the variable. The following table describes available data formats.
 
     | **Format** | **Description**                                                                                        |
     | ---------- | ------------------------------------------------------------------------------------------------------ |
@@ -122,7 +119,7 @@ the **Profile Layers** stage of cluster profile creation and start following thi
 
     :::
 
-9.  Review the variable definition and behavior under **Preview**, and then select **Create**.
+9.  **Preview** the variable definition and behavior, and **Create** the variable.
 
     ![Palette YAML editor with the added profile variables.](/profiles_create-cluster-profiles_define-profile-variables_variable-preview.webp)
 
@@ -140,8 +137,8 @@ the **Profile Layers** stage of cluster profile creation and start following thi
 
     :::tip
 
-    To improve navigation, you can change the display order of variables. Select the **Variables three-dot menu**, then
-    select **Reorder variables**, and drag and drop variables to change their display order. Finally, select **Confirm
+    To improve navigation, you can change the display order of variables. Select the **Variables three-dot Menu**,
+    choose **Reorder variables**, and drag and drop variables to change their display order. Finally, select **Confirm
     order**.
 
     :::
@@ -151,7 +148,7 @@ the **Profile Layers** stage of cluster profile creation and start following thi
 
 ### Validation
 
-1. Log in to Palette.
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 2. From the left **Main Menu**, select **Profiles** and navigate to the cluster profile for which you have defined
    profile variables.
@@ -183,7 +180,7 @@ variables in the new version.
 
 ### Enablement
 
-1. Log in to Palette.
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 2. Navigate to the cluster profile for which you want to update profile variables and, in the upper-right corner, click
    **Variables**.
@@ -195,15 +192,15 @@ variables in the new version.
 
    :::
 
-3. To edit a profile variable, in the **three-dot menu** of the necessary variable, select **Edit** and make the
+3. To edit a profile variable, in the **three-dot Menu** of the necessary variable, select **Edit** and make the
    necessary changes.
 
 4. To delete a profile variable, navigate to the profile layers that implement this variable and remove it from their
-   YAML configuration. Then, in the **three-dot menu** of the necessary variable, select **Delete**.
+   YAML configuration. Then, in the **three-dot Menu** of the necessary variable, select **Delete**.
 
 ### Validation
 
-1. Log in to Palette.
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 2. From the left **Main Menu**, select **Profiles** and navigate to the cluster profile for which you have updated the
    profile variables.
