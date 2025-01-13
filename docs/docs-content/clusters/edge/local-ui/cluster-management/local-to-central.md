@@ -16,6 +16,8 @@ centrally by pairing the local cluster with a Palette instance.
 
 :::
 
+![Diagram of the order of operations for transferring a cluster to central management.](/clusters_edge_local-ui_local-to-central.webp)
+
 ## Pair Local Cluster with Palette
 
 Moving a local cluster to central management is a two-step process. You first send a pairing request from your local
@@ -35,7 +37,7 @@ match the cluster stack.
 - Your Palette environment has cluster profiles whose latest version exactly matches all layers of the local cluster.
   Refer to [Accept Pairing Request from Palette](#accept-pairing-request-from-palette) for details and examples.
 
-- You have the permissions to manage cluster pairing requests. For more information, refer to
+- You have the required permissions to manage cluster pairing requests. For more information, refer to
   [Roles and Permissions](../../../../user-management/palette-rbac/permissions.md).
 
 ### Procedure
