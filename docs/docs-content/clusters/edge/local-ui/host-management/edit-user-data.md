@@ -8,10 +8,10 @@ tags: ["edge"]
 ---
 
 The **user-data** file is a YAML file that contains installer configuration for the Palette agent. This file is usually
-prepared before the EdgeForge process and is written into the installer ISO in appliance mode deployments, or provided
-directly to the agent mode installation script in agent mode deployments. For more information about EdgeForge, refer to
-[EdgeForge Workflow](../../edgeforge-workflow/edgeforge-workflow.md). For more information about deployment modes, refer
-to [Deployment Modes](../../../../deployment-modes/deployment-modes.md).
+prepared before the EdgeForge process and is written into the installer ISO in appliance mode deployments. In agent mode
+deployments, the user data is provided directly to the agent mode installation script. For more information about
+EdgeForge, refer to [EdgeForge Workflow](../../edgeforge-workflow/edgeforge-workflow.md). For more information about
+deployment modes, refer to [Deployment Modes](../../../../deployment-modes/deployment-modes.md).
 
 Local UI allows you to make edits to most fields in the **user-data** file after installation has completed before
 cluster creation. All fields exposed in the form in Local UI have corresponding parameters in the installer reference.
