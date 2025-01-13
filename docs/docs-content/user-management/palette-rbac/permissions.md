@@ -118,15 +118,6 @@ the list of operations.
 
 </AccordionPanel>
 
-<AccordionPanel title="Cluster Pair">
-
-- delete
-- get
-- list
-- update
-
-</AccordionPanel>
-
 <AccordionPanel title="Cluster Group">
 
 - create
@@ -136,6 +127,16 @@ the list of operations.
 - update
 
 </AccordionPanel>
+
+<AccordionPanel title="Cluster Pair">
+
+- delete
+- get
+- list
+- update
+
+</AccordionPanel>
+
 <AccordionPanel title="Cluster Profile">
 
 - create
