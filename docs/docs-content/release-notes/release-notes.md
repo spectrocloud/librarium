@@ -82,6 +82,17 @@ tags: ["release-notes"]
   Check out the [Pair Local Cluster with Palette](../clusters/edge/local-ui/local-ui.md) guide to learn more about this
   feature.
 
+### Palette Dev Engine (PDE)
+
+#### Features
+
+- New Cluster Groups will now default to the newer version of Virtual Cluster, version 0.18.x, which includes the latest
+  features and improvements. Existing Cluster Groups will continue to use the older version, version 0.15.x.Refer to the
+  [Cluster Group](../clusters/cluster-groups/create-cluster-group.md#palette-virtual-cluster-configuration) page to
+  learn more about Virtual Cluster configuration. Reach out to our support team at
+  [support@spectrocloud.com](mailto:support@spectrocloud.com) for guidance on migrating existing Cluster Group's Virtual
+  Cluster configuration to the newer version of Virtual Cluster.
+
 ### Virtual Machine Orchestrator
 
 #### Features
