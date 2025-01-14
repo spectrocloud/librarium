@@ -8,11 +8,15 @@ tags: ["clusters", "cluster management"]
 ---
 
 Palette supports the **Pause Agent Upgrades** feature to exclude a cluster or a group of clusters from having their
-Palette agent automatically upgraded when Palette is upgraded.
+Palette agent automatically upgraded when Palette is upgraded. This feature only pauses upgrades for Palette agents, not
+updates to the clusters themselves.
 
-:::info
+:::warning
 
-This feature only pauses upgrades for Palette agents, not updates to the clusters themselves.
+Avoid pausing upgrades for extended periods of time. Significant difference in versions between Palette and the Palette
+agent can lead to cluster management and deployment issues. Ensure that your Palette agent version is in the same minor
+version as the Palette version. For example, for Palette versions 4.5.x, ensure your Palette agent version is also
+4.5.x.
 
 :::
 
