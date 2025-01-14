@@ -42,7 +42,7 @@ SCAR endpoint.
 
 - Access to the file server that hosts the {props.edition} manifests.
 - Ensure the Kubernetes cluster has a Container Storage Interface (CSI) available and at least 10 GB of free space. The Specman service requires this to create a Persistent Volume Claim (PVC) for storing content.
-- The {props.edition} cluster must have been upgraded to version `4.5.13` or later. This is required for the SCAR migration to
+- The {props.edition} cluster must have been upgraded to version `4.5.15` or later. This is required for the SCAR migration to
   function properly.
 - Access to the {props.edition} system console.
 - Ensure the following software is installed and available in the environment hosting the file server. For example, if
@@ -218,9 +218,9 @@ SCAR endpoint.
 
     ```text hideClipboard
     time="2024-12-06T12:43:14Z" level=info msg="Syncing with OCI repo"
-    time="2024-12-06T12:43:14Z" level=info msg="tags[4.5.11 4.5.13 0.0.0]"
+    time="2024-12-06T12:43:14Z" level=info msg="tags[4.5.13 4.5.15 0.0.0]"
     time="2024-12-06T12:43:14Z" level=info msg="Downloading 0.0.0"
-    time="2024-12-06T12:43:14Z" level=info msg="tags[4.5.11 4.5.13 0.0.0]"
+    time="2024-12-06T12:43:14Z" level=info msg="tags[4.5.13 4.5.15 0.0.0]"
     time="2024-12-06T12:43:14Z" level=info msg="Downloading 0.0.0"
     time="2024-12-06T12:43:14Z" level=info msg="listing dir /tmp/0.0.03808764833"
     time="2024-12-06T12:43:14Z" level=info msg="filename: manifests.tgz, isDir: false"
