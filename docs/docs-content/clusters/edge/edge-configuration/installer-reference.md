@@ -30,6 +30,7 @@ listed in alphabetical order.
 | ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
 | `stylus.debug`                 | Enable this parameter for debug output. Allowed values are `true` or `false`.                                                                                                                              | `False`     |
 | `stylus.disablePasswordUpdate` | Disables the ability to update Operating System (OS) user password from Local UI if set to true. Updating the password through the OS and API is still allowed.                                            | `False`     |
+| `stylus.featureGate`           | This parameter contains a comma-separated list of features you want to enable on your host.                                                                                                                |
 | `stylus.includeTui`            | Enable Palette TUI for initial Edge host configuration. Default value is `false`. For more information, refer to [Initial Edge Host Configuration](../site-deployment/site-installation/initial-setup.md). | `false`     |
 | `stylus.installationMode`      | Allowed values are `connected` and `airgap`. Default value is `connected`. `connected` means that the Edge host has a connection to Palette; `airgap` means it does not have a connection to Palette.      | `connected` |
 | `stylus.localUI.port`          | Specifies the port that Local UI is exposed on.                                                                                                                                                            | 5080        |
@@ -38,6 +39,16 @@ listed in alphabetical order.
 | `stylus.externalRegistries`    | Use this parameter to configure multiple external registries and to apply domain re-mapping rules. Review [External Registry Parameters](#multiple-external-registries) for more information.              | None        |
 | `stylus.registryCredentials`   | Only used when a single external registry in use and no mapping rules are needed. Review [Single External Registry](#single-external-registry) for more information.                                       | None        |
 | `stylus.trace`                 | Enable this parameter to display trace output. Allowed values are `true` or `false`.                                                                                                                       | `False`     |
+
+### Feature Gates
+
+`stylus.featureGate` contains a comma-separated list of features you want to enable on your host. These features are not
+enabled by default unless you include the feature in the parameter. The following table displays the available features
+you can enable using this parameter.
+
+| Value          | Description                                                                                                                                                                            |
+| -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `UserDataForm` | This value enables you to edit the installer user data after installation in Local UI. For more information, refer to [Edit User Data](../local-ui/host-management/edit-user-data.md). |
 
 ### Multiple External Registries
 
