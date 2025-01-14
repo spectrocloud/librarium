@@ -70,13 +70,16 @@ Palette. You will then create a cluster profile and use the registered host to d
   - [iptables](https://linux.die.net/man/8/iptables)
   - (Airgap only) [Crane](https://github.com/google/go-containerregistry/blob/main/cmd/crane/README.md) is installed and
     available.
-  - (Airgap only) [Palette Edge CLI](../../spectro-downloads.md#palette-edge-cli) is installed and available.
+  - (Airgap only) [Palette Edge CLI](../../spectro-downloads.md#palette-edge-cli) is installed and available
+  
+  <br>
+  </br>
 
   :::warning
-
+  
   Avoid installing Docker on the host where you want to install the agent. Docker is a heavyweight tool that could
   interfere with the Palette agent.
-
+  
   :::
 
 ## Install Palette Agent
@@ -125,20 +128,18 @@ Palette. You will then create a cluster profile and use the registered host to d
 
    :::
 
-   The following configuration includes a Palette registration token and the default Palette endpoint, specifies the
-   Palette project, and sets up the `kairos` user. The host will not shut down and will reboot after the agent
-   installation, with [kube-vip](../../clusters/edge/networking/kubevip.md) enabled, as this is required for bare metal
-   and VMware vSphere deployments. If your environment does not require kube-vip, set `skipKubeVip:` to `true`. Refer to
+   The following configuration includes a Palette registration token and the default Palette endpoint, specifies a
+   Palette project, and sets up the `kairos` user. Note the following:
+   - The host will not shut down and will instead reboot after the agent is installed, with [kube-vip](../../clusters/edge/networking/kubevip.md) enabled, as this is required for bare metal
+   and VMware vSphere deployments. If your environment does not require kube-vip, set `skipKubeVip` to `true`. Refer to
    the [Prepare User Data](../../clusters/edge/edgeforge-workflow/prepare-user-data.md) guide to learn more about user
    data configuration.
-
-   :::info
-
-   The `projectName` parameter is not required if the associated Palette
+   - The `projectName` parameter is not required if the associated Palette
    [registration token](../../clusters/edge/site-deployment/site-installation/create-registration-token.md) has a
    Default Project set.
-
-   :::
+ 
+   <br>
+   </br>
 
    ```shell
    cat << EOF > user-data
