@@ -25,23 +25,20 @@ By default, Palette VMO includes the following components:
 - **Descheduler**. Enables VM live migration to different nodes in the node pool when the original node is in
   [maintenance mode](../clusters/cluster-management/maintenance-mode.md).
 
+<!-- prettier-ignore-start -->
+
 - **Snapshot Controller**. Enables you to create VM snapshots. This component is automatically installed when you
   initiate or schedule cluster backups.
 
   :::info
 
   Palette installs a snapshot controller into every cluster where backups are scheduled or have been created on-demand
-  in the past. To prevent resource conflicts, you can disable the VMO snapshot controller in the pack YAML
-  configuration.
-
-  ```yaml
-  charts:
-    virtual-machine-orchestrator:
-      snapshot-controller:
-        enabled: false
-  ```
-
+  in the past. To prevent resource conflicts, ensure that the
+  <VersionedLink text=" Volume Snapshot Controller" url="/integrations/packs/?pack=volume-snapshot-controller" /> pack
+  is not a layer in your cluster profile before configuring VMO.
   :::
+
+<!-- prettier-ignore-end -->
 
 - **Spectro VM Dashboard**. Enables you to create, manage, and monitor VMs from Palette. The dashboard becomes available
   once the VMO pack is successfully deployed as part of your cluster profile.
