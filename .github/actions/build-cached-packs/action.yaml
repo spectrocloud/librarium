@@ -1,3 +1,11 @@
+# This configuration file defines a GitHub Action named "Build with cached packs".
+# It's a composite action that downloads the latest Pack artifact from the "post_release.yaml" workflow.
+# The action is used to retry a failed build that return the exit code 5.
+# If the action is invoked, then the latest Pack artifact is downloaded and unpacked in the correct folders.
+# The build is then re-run with the downloaded pack data. 
+# This is usefull in scenarios the Palette API is experiencing issues or a Pack is breaking the build.
+
+
 name: "Build with cached packs"
 inputs:
   gh-token:
