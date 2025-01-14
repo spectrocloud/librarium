@@ -13,8 +13,7 @@ deployments, the user data is provided directly to the agent mode installation s
 EdgeForge, refer to [EdgeForge Workflow](../../edgeforge-workflow/edgeforge-workflow.md). For more information about
 deployment modes, refer to [Deployment Modes](../../../../deployment-modes/deployment-modes.md).
 
-Local UI allows you to make edits to most fields in the **user-data** file after installation has completed before
-cluster creation. All fields exposed in the form in Local UI have corresponding parameters in the installer reference.
+In Local UI, you can interact with your user-data configuration and make updates to it. This is useful for situations in which you want to modify the user-data before forming a cluster with the Edge hosts. All fields exposed in the form in Local UI have corresponding parameters in the installer reference.
 For more information about the fields available in the installer user data, refer to
 [Installer Reference](../../edge-configuration/installer-reference.md).
 
@@ -26,7 +25,7 @@ After an edit has been made, the new settings will apply after the host reboots.
 
 ## Limitations
 
-- The following fields cannot be edited in Local UI. If you need to use these settings, you must set them correctly
+- The following fields cannot be edited in Local UI. If you need to update these settings, you must set them correctly
   during EdgeForge or provide them to the installation script if you are using agent mode.
   - `stylus.site.deviceUIDPaths`
   - `stylus.site.tagsFromFile`
@@ -57,21 +56,21 @@ After an edit has been made, the new settings will apply after the host reboots.
 
 - Access to [Local UI](./access-console.md).
 
-- You host is not assigned to any cluster.
+- Ensure the Local UI host is not assigned to any cluster.
 
 ## Edit User Data
 
-1. Log in to Local UI. Refer to [Access Local UI](./access-console.md) for guidance.
+1. Log in to Local UI. Refer to [Access Local UI](./access-console.md) for guidance on accessing Local UI.
 
 2. In the upper-right corner of the page, click **Actions** to open the **drop-down Menu**.
 
 3. Click **Configure**.
 
-4. The pop-up box, you can configure most host settings that are configurable in the installer ISO user data, starting
-   with **Basic Information**. You can enter the name of the host, which corresponds to `stylus.site.name` in the user
-   data file. You may also configure tags for your host, which corresponds to `stylus.site.tags`.
+4. In the pop-up box, you can configure most host settings that are configurable in the installer ISO user data, starting
+   with **Basic Information**. You can enter the host's name, which corresponds to `stylus.site.name` in the user
+   data file. You may also configure tags for your host, corresponding to `stylus.site.tags`.
 
-5. In the **Network** section, you can configure network interfaces that the host will use to communicate with the its
+5. In the **Network** section, you can configure network interfaces that the host will use to communicate with the
    network environment. Refer to
    [Site Network Parameters](../../edge-configuration/installer-reference.md#site-network-parameters) for more
    information about the network parameters.
@@ -79,7 +78,7 @@ After an edit has been made, the new settings will apply after the host reboots.
    | Field         | Description                                                                                                                                                                                                                         |
    | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
    | Interface     | The name of the network interface that the host will use to communicate with the cluster. You can add multiple network interfaces. This corresponds to the `stylus.site.network.<Interface Name>` field in the installer user data. |
-   | Use Static IP | Toggle on this switch to specify that your network interface will use static IP. If this field is turned off, your network interface will use Dynamic Host Configuration Protocol (DHCP) to obtain dynamic IPs.                     |
+   | Use Static IP | Toggle this switch to specify that your network interface will use static IP. If this field is turned off, your network interface will use Dynamic Host Configuration Protocol (DHCP) to obtain dynamic IPs.                     |
    | IP address    | The IP address of your network interface. This field is only available if you use static IP.                                                                                                                                        |
    | DNS Server    | The IP address of your DNS server. This field is only available if you use static IP.                                                                                                                                               |
    | Gateway       | The IP address of the internet gateway for your network. This field is only available if you use static IP.                                                                                                                         |
@@ -99,7 +98,7 @@ After an edit has been made, the new settings will apply after the host reboots.
    well as the credentials needed to access the registry. For more information about external registries, refer to
    [Deploy Cluster with a Private External Registry](../../site-deployment/deploy-custom-registries/deploy-external-registry.md).
 
-8. In the **Advanced Configurations** section, cloud-init configurations are editable directly in the YAML editor. For
+8. You can modify cloud-init configurations in **Advanced Configurations** section. Make any required changes directly in the YAML editor. For
    more information about cloud-init stages, refer to [Cloud-init Stages](../../edge-configuration/cloud-init.md).
 
 9. When you are finished, click **Confirm**. The host will need 10 to 15 minutes to reboot and apply your changes.
