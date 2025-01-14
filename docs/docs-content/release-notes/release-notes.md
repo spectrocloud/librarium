@@ -149,9 +149,10 @@ tags: ["release-notes"]
 
 If you want to use PXK-E version 1.31.1, ensure that your Palette agent version is greater than 4.5.11, which
 corresponds to Palette version 4.5.15. If you are using a connected Ede host, the Palette agent version will update
-itself automatically if your Palette environment is 4.5.15 or later unless you paused platform upgrades. For airgap clusters, refer to
-[Update Palette Agent Version](../clusters/edge/cluster-management/agent-upgrade-airgap.md) to update the agent version
-manually.
+itself automatically if your Palette environment is 4.5.15 or later unless you
+[paused platform upgrades](../clusters/cluster-management/platform-settings/pause-platform-upgrades.md). For airgap
+clusters, refer to [Update Palette Agent Version](../clusters/edge/cluster-management/agent-upgrade-airgap.md) to update
+the agent version manually.
 
 | Pack Name                                | New Version |
 | ---------------------------------------- | ----------- |
