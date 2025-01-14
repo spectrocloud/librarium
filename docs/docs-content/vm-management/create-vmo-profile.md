@@ -24,6 +24,10 @@ profile configuration. To learn about pack components, refer to [Palette VMO](./
   kubectl delete pods --selector app=spectro-proxy --all-namespaces
   ```
 
+- Ensure the cluster that you are using with the Virtual Machine Orchestrator pack does not have the
+  <VersionedLink text=" Volume Snapshot Controller" url="/integrations/packs/?pack=volume-snapshot-controller" /> pack
+  already installed. The Virtual Machine Orchestrator will configure snapshots.
+
 ## Prerequisites
 
 <Tabs groupId="environment">
@@ -47,6 +51,9 @@ profile configuration. To learn about pack components, refer to [Palette VMO](./
 - A Palette permission key `create` for the resource `clusterProfile`.
 
 - Ensure the VMO pack is installed in your airgap environment. Refer to the
+  [Install VMO in Airgap Environments](./install-vmo-in-airgap.md) guide for further information.
+
+- Ensure the Spectro Proxy pack is installed in your airgap environment. Refer to the
   [Install VMO in Airgap Environments](./install-vmo-in-airgap.md) guide for further information.
 
 </TabItem>
@@ -209,6 +216,8 @@ profile configuration. To learn about pack components, refer to [Palette VMO](./
     more.
 
     The **Direct** option is intended for a private configuration where a proxy is not implemented or not desired.
+    Ensure that configure the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack
+    separately in your cluster profile if you select this option.
 
     :::warning
 
