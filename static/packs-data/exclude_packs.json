@@ -11,5 +11,10 @@
   "ubuntu-coxedge",
   "edge-os",
   "spectro-zen-of-k8s",
-  "spectro-mgmt"
+  "spectro-mgmt",
+  "csi-tke",
+  "kubernetes-tke",
+  "tke-managed-os",
+  "cni-tke-global-router",
+  "virtual-machine-orchestrator"
 ]

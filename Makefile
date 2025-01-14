@@ -85,7 +85,7 @@ init: ## Initialize npm dependencies
 	grep -q "^ALGOLIA_APP_ID=" .env || echo "\nALGOLIA_APP_ID=1234567890" >> .env
 	grep -q "^ALGOLIA_SEARCH_KEY=" .env || echo "\nALGOLIA_SEARCH_KEY=1234567890" >> .env
 	grep -q "^ALGOLIA_INDEX_NAME=" .env || echo "\nALGOLIA_INDEX_NAME=spectrocloud" >> .env
-	grep -q "^DSO_AUTH_TOKEN=" .env || echo "\nDISABLE_SECURITY_INTEGRATIONS=true" >> .env
+	grep -q "^DSO_AUTH_TOKEN=" .env || echo "\nDISABLE_SECURITY_INTEGRATIONS=true\nDSO_AUTH_TOKEN=" >> .env
 	grep -q "^PALETTE_API_KEY=" .env || echo "\nDISABLE_PACKS_INTEGRATIONS=true" >> .env
 	npx husky install
 
@@ -101,6 +101,20 @@ start-cached-packs: ## Start a local development server with cached packs retry.
 			echo "❌ Start has failed due to missing packs data..."; \
 			echo "ℹ️ Initializing fetch cached packs data..."; \
 			make get-cached-packs; \
+			echo "ℹ️ Retrying start... "; \
+			npm run start;\
+		fi; \
+	}
+
+start-cached-cves: ## Start a local development server with cached CVEs retry.
+	make generate-partials
+	@{ \
+		npm run start; \
+		exit_code=$$?; \
+		if [ "$$exit_code" = "7" ]; then \
+			echo "❌ Start has failed due to missing CVE data..."; \
+			echo "ℹ️ Initializing fetch cached CVE data..."; \
+			make get-cached-cves; \
 			echo "ℹ️ Retrying start... "; \
 			npm run start;\
 		fi; \
@@ -123,6 +137,22 @@ build-cached-packs: ## Run npm build with cached packs retry
 			echo "❌ Build has failed due to missing packs data..."; \
 			echo "ℹ️ Initializing fetch cached packs data..."; \
 			make get-cached-packs; \
+			echo "ℹ️ Retrying build... "; \
+			npm run build;\
+		fi; \
+	}
+
+build-cached-cves: ## Run npm build with cached CVEs retry
+	@echo "building site"
+	npm run clear
+	rm -rf build
+	@{ \
+		npm run build; \
+		exit_code=$$?; \
+		if [ "$$exit_code" = "7" ]; then \
+			echo "❌ Build has failed due to missing CVE data..."; \
+			echo "ℹ️ Initializing fetch cached CVE data..."; \
+			make get-cached-cves; \
 			echo "ℹ️ Retrying build... "; \
 			npm run build;\
 		fi; \
@@ -287,6 +317,10 @@ generate-partials: ## Generate
 
 get-cached-packs:
 	./scripts/get-cached-packs.sh
+
+###@ Fetch security bulletins
+get-cached-cves: 
+	./scripts/get-cached-cves.sh
 	
 ###@ Aloglia Indexing
 
