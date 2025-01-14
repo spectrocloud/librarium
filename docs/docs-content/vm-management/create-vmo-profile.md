@@ -26,7 +26,7 @@ profile configuration. To learn about pack components, refer to [Palette VMO](./
 
 - Ensure the cluster that you are using with the Virtual Machine Orchestrator pack does not have the
   <VersionedLink text=" Volume Snapshot Controller" url="/integrations/packs/?pack=volume-snapshot-controller" /> pack
-  already installed. The Virtual Machine Orchestrator will configure snapshots.
+  already present in its cluster profile. The Virtual Machine Orchestrator will configure snapshots.
 
 ## Prerequisites
 
@@ -83,7 +83,9 @@ profile configuration. To learn about pack components, refer to [Palette VMO](./
    out the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> guide to learn more.
    Changing the default may require some additional configuration.
 
-   The **Direct** option is intended for a private configuration where a proxy is not implemented or not desired.
+   The **Direct** option is intended for a private configuration where a proxy is not implemented or not desired. Ensure
+   that you configure the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack
+   separately in your cluster profile if you select this option.
 
    :::warning
 
@@ -121,7 +123,11 @@ profile configuration. To learn about pack components, refer to [Palette VMO](./
 7.  Review the **Access** configuration panel at right. The default setting is **Proxied**, which automatically adds the
     **Spectro Proxy** pack when you create the cluster, allowing access to the Spectro VM Dashboard from anywhere.
     Changing the default may require some additional configuration. Check out the
-    <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> guide to learn more. The **Direct** option is intended for a private configuration where a proxy is not implemented or not desired.
+    <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> guide to learn more.
+
+    The **Direct** option is intended for a private configuration where a proxy is not implemented or not desired.
+    Ensure that you configure the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack
+    separately in your cluster profile if you select this option.
 
 8.  If you are using PKX-E, no change is required and you can skip this step.
 
@@ -216,8 +222,8 @@ profile configuration. To learn about pack components, refer to [Palette VMO](./
     more.
 
     The **Direct** option is intended for a private configuration where a proxy is not implemented or not desired.
-    Ensure that configure the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack
-    separately in your cluster profile if you select this option.
+    Ensure that you configure the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" />
+    pack separately in your cluster profile if you select this option.
 
     :::warning
 

@@ -35,8 +35,7 @@ By default, Palette VMO includes the following components:
   Palette installs a snapshot controller into every cluster where backups are scheduled or have been created on-demand
   in the past. To prevent resource conflicts, ensure that the
   <VersionedLink text=" Volume Snapshot Controller" url="/integrations/packs/?pack=volume-snapshot-controller" /> pack
-  is uninstalled before configuring VMO.
-
+  is not a layer in your cluster profile before configuring VMO.
   :::
 
 <!-- prettier-ignore-end -->
