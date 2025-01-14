@@ -70,9 +70,9 @@ Palette. You will then create a cluster profile and use the registered host to d
   - [iptables](https://linux.die.net/man/8/iptables)
   - (Airgap only) [Crane](https://github.com/google/go-containerregistry/blob/main/cmd/crane/README.md) is installed and
     available.
-  - (Airgap only) [Palette Edge CLI](../../spectro-downloads.md#palette-edge-cli) is installed and available
+  - (Airgap only) [Palette Edge CLI](../../spectro-downloads.md#palette-edge-cli) is installed and available.
 
-  <br></br>
+  <br />
 
   :::warning
 
@@ -139,7 +139,7 @@ Palette. You will then create a cluster profile and use the registered host to d
      [registration token](../../clusters/edge/site-deployment/site-installation/create-registration-token.md) has a
      Default Project set.
 
-   <br></br>
+   <br />
 
    ```shell
    cat << EOF > user-data
