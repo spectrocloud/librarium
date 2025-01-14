@@ -72,6 +72,8 @@ Palette. You will then create a cluster profile and use the registered host to d
     available.
   - (Airgap only) [Palette Edge CLI](../../spectro-downloads.md#palette-edge-cli) is installed and available.
 
+  <br />
+
   :::warning
 
   Avoid installing Docker on the host where you want to install the agent. Docker is a heavyweight tool that could
@@ -125,12 +127,19 @@ Palette. You will then create a cluster profile and use the registered host to d
 
    :::
 
-   The following configuration includes the default Palette endpoint, a registration token, and sets up the `kairos`
-   user. The host will not shut down and will reboot after the agent installation, with
-   [kube-vip](../../clusters/edge/networking/kubevip.md) enabled, as this is required for bare metal and VMware vSphere
-   deployments. If your environment does not require kube-vip, set `skipKubeVip:` to `true`. Refer to the
-   [Prepare User Data](../../clusters/edge/edgeforge-workflow/prepare-user-data.md) guide to learn more about user data
-   configuration.
+   The following configuration includes a Palette registration token and the default Palette endpoint, specifies a
+   Palette project, and sets up the `kairos` user. Note the following:
+
+   - The host will not shut down and will instead reboot after the agent is installed, with
+     [kube-vip](../../clusters/edge/networking/kubevip.md) enabled, as this is required for bare metal and VMware
+     vSphere deployments. If your environment does not require kube-vip, set `skipKubeVip` to `true`. Refer to the
+     [Prepare User Data](../../clusters/edge/edgeforge-workflow/prepare-user-data.md) guide to learn more about user
+     data configuration.
+   - The `projectName` parameter is not required if the associated Palette
+     [registration token](../../clusters/edge/site-deployment/site-installation/create-registration-token.md) has a
+     Default Project set.
+
+   <br />
 
    ```shell
    cat << EOF > user-data
@@ -144,6 +153,7 @@ Palette. You will then create a cluster profile and use the registered host to d
      site:
        edgeHostToken: $TOKEN
        paletteEndpoint: api.spectrocloud.com
+       projectName: Default
    stages:
      initramfs:
        - users:
@@ -174,6 +184,7 @@ Palette. You will then create a cluster profile and use the registered host to d
      site:
        edgeHostToken: ****************
        paletteEndpoint: api.spectrocloud.com
+       projectName: Default
    stages:
      initramfs:
        - users:

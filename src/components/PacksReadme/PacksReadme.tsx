@@ -96,19 +96,29 @@ function compareVersions(v1: string, v2: string): number {
   return 0;
 }
 
+function sortChildren(tagVersion: Version) {
+  const children = tagVersion.children || [];
+  return children
+    .sort((a, b) => compareVersions(a.title, b.title))
+    .map((child) => ({
+      value: `${child.title}===${child.packUid}`,
+      title: <span>{child.title}</span>,
+    }));
+}
+
 function renderVersionOptions(packData: PackData) {
-  return packData.versions
+  // If there are no versions, we exit immediately
+  const versions = packData.versions;
+  if (versions === undefined) {
+    return;
+  }
+  return versions
     .sort((a, b) => compareVersions(a.title, b.title))
     .map((tagVersion) => ({
       value: tagVersion.title,
       title: tagVersion.title,
       selectable: false,
-      children: tagVersion.children
-        .sort((a, b) => compareVersions(a.title, b.title))
-        .map((child) => ({
-          value: `${child.title}===${child.packUid}`,
-          title: <span>{child.title}</span>,
-        })),
+      children: sortChildren(tagVersion),
     }));
 }
 
@@ -119,6 +129,12 @@ function getProviders(packData: PackData) {
   return packData.provider
     .map((provider) => cloudDisplayNames[provider as keyof typeof cloudDisplayNames] || provider)
     .join(", ");
+}
+
+function generateNewHeadingId(props: { node: { children: { value: string }[] } }) {
+  const heading = (props?.node?.children?.[0] as { value: string })?.value;
+  const headingId = heading?.replace(/\s+/g, "-").toLowerCase();
+  return { id: headingId, title: heading };
 }
 
 function processPackUiMap(
@@ -135,29 +151,29 @@ function processPackUiMap(
             remarkPlugins={[remarkGfm]}
             components={{
               h1: (props) => {
-                const headingId = props.children?.toString().replace(/\s+/g, "-").toLowerCase();
+                const { id, title } = generateNewHeadingId(props);
                 return (
-                  <h1 id={headingId}>
-                    {props.children}
-                    <a href={`#${headingId}`} className="hash-link" />
+                  <h1 id={id}>
+                    {title}
+                    <a href={`#${id}`} className="hash-link" />
                   </h1>
                 );
               },
               h2: (props) => {
-                const headingId = props.children?.toString().replace(/\s+/g, "-").toLowerCase();
+                const { id, title } = generateNewHeadingId(props);
                 return (
-                  <h2 id={headingId}>
-                    {props.children}
-                    <a href={`#${headingId}`} className="hash-link" />
+                  <h2 id={id}>
+                    {title}
+                    <a href={`#${id}`} className="hash-link" />
                   </h2>
                 );
               },
               h3: (props) => {
-                const headingId = props.children?.toString().replace(/\s+/g, "-").toLowerCase();
+                const { id, title } = generateNewHeadingId(props);
                 return (
-                  <h3 id={headingId}>
-                    {props.children}
-                    <a href={`#${headingId}`} className="hash-link" />
+                  <h3 id={id}>
+                    {title}
+                    <a href={`#${id}`} className="hash-link" />
                   </h3>
                 );
               },
