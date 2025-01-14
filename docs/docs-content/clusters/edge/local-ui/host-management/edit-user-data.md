@@ -26,8 +26,8 @@ After an edit has been made, the new settings will apply after the host reboots.
 
 ## Limitations
 
-- The following fields cannot be edited in Local UI. If you need to update these settings, you must set them correctly
-  during EdgeForge or provide them to the installation script if you are using agent mode.
+- The following fields cannot be edited in Local UI. If you want to specify the values for these parameters, you must
+  set them correctly during EdgeForge or provide them to the installation script if you are using agent mode.
   - `stylus.site.deviceUIDPaths`
   - `stylus.site.tagsFromFile`
   - `stylus.site.tagsFromScript`
