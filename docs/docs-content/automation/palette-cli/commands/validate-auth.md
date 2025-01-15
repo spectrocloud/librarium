@@ -156,7 +156,7 @@ The validation process will now execute and output the results to your terminal.
 
 ### Validator File
 
-During the interactive steps, a validator file is generated that contains the permissions that the validator is
+During the interactive steps, a Validator file is generated that contains the permissions that the validator is
 searching for. It also contains the secret used to authorize the validation task. You are prompted to keep or remove
 this file after the validation results are displayed.
 
@@ -271,7 +271,7 @@ Failures
 - v1alpha1.IamUserRule PaletteClusterOperator missing action(s): [secretsmanager:CreateSecret secretsmanager:DeleteSecret] for resource arn:*:secretsmanager:*:*:secret:aws.cluster.x-k8s.io/* from policy PaletteNodesPolicy
 ```
 
-Use the output to help you address the validation failures. In this example, the validator identified two types of IAM
+Use the output to help you address the validation failures. In this example, the Validator identified two types of IAM
 permission issues, which are missing actions and missing conditions.
 
 To resolve the missing actions, add the missing IAM permissions to the **PaletteClusterOperator** IAM user. The
@@ -285,7 +285,7 @@ should contain these permissions.
 | **PaletteNodesPolicy**      | `secretsmanager:CreateSecret` <br /> `secretsmanager:DeleteSecret`               | `arn:*:secretsmanager:*:*:secret:aws.cluster.x-k8s.io/*`          |
 
 To resolve the missing conditions, apply the required conditions to the specified actions. From interpreting the example
-extract below, the validator detected that the **PaletteControllerPolicy** IAM policy requires a condition to be added
+extract below, the Validator detected that the **PaletteControllerPolicy** IAM policy requires a condition to be added
 for the `iam:CreateServiceLinkedRole` action to restrict service-linked role creation specifically to Auto Scaling
 services.
 
