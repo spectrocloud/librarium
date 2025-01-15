@@ -11,15 +11,6 @@ Palette supports the **Pause Agent Upgrades** feature to exclude a cluster or a 
 Palette agent automatically upgraded when Palette is upgraded. This feature only pauses upgrades for Palette agents, not
 updates to the clusters themselves.
 
-:::warning
-
-Avoid pausing upgrades for extended periods of time. Significant difference in versions between Palette and the Palette
-agent can lead to cluster management and deployment issues. Ensure that your Palette agent version is in the same minor
-version as the Palette version. For example, for Palette versions 4.5.x, ensure your Palette agent version is also
-4.5.x.
-
-:::
-
 ## Pause Agent Upgrade Scopes
 
 Agent upgrades can be paused and resumed in the following scopes:
@@ -86,6 +77,20 @@ lower scopes, and changing the setting at the lower scope will override the sett
 | Cluster         | ✅                     | ✅      | ✅     |
 | PCG             | ✅                     | ❌      | ✅     |
 | Idle Edge hosts | ❌                     | ✅      | ✅     |
+
+## Limitations
+
+- Do not pause platform upgrades for clusters if all of the following conditions apply:
+
+  - Your cluster is an Edge cluster.
+  - Your Palette/VerteX instance is in version 4.5.x or later.
+  - Your agent version is older than 4.5.0.
+  - Your Edge cluster has the
+    [local Harbor registry](../../edge//site-deployment/deploy-custom-registries/local-registry.md) enabled.
+
+  Using a agent version older than 4.5.0 with Palette/VerteX versions 4.5.x or later may lead to image download issues,
+  issues with pushing images to the local registry, and cluster deployment issues. Ensure that you enable platform
+  upgrades so your agent versions can be upgraded to be compatible with Palette/VerteX.
 
 ## Prerequisites
 
