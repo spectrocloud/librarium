@@ -120,8 +120,10 @@ methods:
 
 - [Agent Mode](../../../../deployment-modes/agent-mode/agent-mode.md)
 - [EdgeForge Workflow](../../../edge/edgeforge-workflow/edgeforge-workflow.md)
-  - Part of the EdgeForge Workflow is to create [Kairos-based images](https://kairos.io/) containing the OS and the
-    desired Kubernetes versions. These are named provider images.
+  - Part of the EdgeForge Wwrkflow is to create [Kairos-based images](https://kairos.io/) containing the OS and the
+    desired Kubernetes versions. These are named provider images. You also need to ensure the required bind mounts are
+    specified in the user-data configuration. Refer to the [Bind Mount Requirements](#bind-mount-requirements) section
+    for more information.
 
 :::warning
 
@@ -138,6 +140,27 @@ sudo apt-get update
 Adjust to your operating system and package manager on your edge hosts.
 
 :::
+
+### Bind Mount Requirements
+
+If you are using [Appliance Mode](../../../../deployment-modes/appliance-mode.md) to deploy your edge hosts, ensure the
+following bind mounts are specified in the user-data configuration. Add the following snippet to your user-data file.
+
+```yaml
+install:
+  extra-dirs-rootfs:
+    - /eks-hybrid
+  bind_mounts:
+    - /eks-hybrid
+    - /etc/aws
+    - /etc/containerd
+    - /etc/eks
+    - /etc/iam
+    - /etc/modules-load.d
+    - /var/lib/amazon
+```
+
+This snippet ensures that the required directories are mounted and available on your edge hosts.
 
 ### Build Provider Images with Specific Arguments
 

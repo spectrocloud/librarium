@@ -113,6 +113,9 @@ Your cluster profile for hybrid nodes is now created and can be used in the
 
   Replace `<kubernetesVersion>` with your version of Kubernetes. For example, `1.29.0`.
 
+  You must also ensure the required bind mounts are specified in the user-data configuration. Refer to the
+  [Bind Mount Requirements](./architecture.md#bind-mount-requirements) section for more information.
+
   :::
 
 - A cluster profile created for your hybrid nodes. Refer to
