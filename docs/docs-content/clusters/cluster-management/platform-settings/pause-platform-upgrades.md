@@ -80,7 +80,7 @@ lower scopes, and changing the setting at the lower scope will override the sett
 
 ## Limitations
 
-- Do not pause platform upgrades for clusters if all of the following conditions apply:
+- Do not pause platform upgrades for clusters if _all_ of the following conditions apply:
 
   - Your cluster is an Edge cluster.
   - Your Palette/VerteX instance is in version 4.5.x or later.
