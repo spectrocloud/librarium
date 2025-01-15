@@ -97,9 +97,10 @@ tags: ["release-notes"]
 
 #### Features
 
-- The VM Migration Assistant UI can now be configured to use OpenID Connect (OIDC) for authentication. You can choose to
-  enable or disable it in the VM Migration Assistant pack settings. The OIDC configuration is inherited from the
-  Kubernetes pack where OIDC is configured for your cluster. Refer to
+- The VM Migration Assistant UI can now be configured to use OpenID Connect (OIDC) for authentication when Palette is
+  configured as the Identity Provider. You can choose to enable or disable it in the VM Migration Assistant pack
+  settings. The OIDC configuration is inherited from the Kubernetes pack where OIDC is configured for your cluster.
+  Refer to
   [Create a VM Migration Assistant Profile](../vm-management/vm-migration-assistant/create-vm-migration-assistant-profile.md)
   for guidance
 
