@@ -156,7 +156,7 @@ The validation process will now execute and output the results to your terminal.
 
 ### Validator File
 
-During the interactive steps, a Validator file is generated that contains the permissions that the validator is
+During the interactive steps, a Validator file is generated that contains the permissions that the Validator is
 searching for. It also contains the secret used to authorize the validation task. You are prompted to keep or remove
 this file after the validation results are displayed.
 
