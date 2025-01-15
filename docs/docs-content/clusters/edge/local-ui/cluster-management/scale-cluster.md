@@ -66,6 +66,16 @@ installed in airgap mode in Local UI.
 To scale down a cluster is to remove existing nodes from an active cluster. You can scale down a cluster deployed on
 hosts installed in airgap mode in Local UI.
 
+:::warning
+
+Do not remove multiple control plane nodes in one operation, or remove a control plane node when another control plane
+node is in the process of being removed. Doing so may lead to data consistency issues within the cluster.
+
+If you need to remove multiple control plane nodes, wait until after the first node has been removed to remove another
+node.
+
+:::
+
 ### Prerequisites
 
 - You have an active multi-node cluster composed of hosts installed in airgap mode. For more information, refer to
