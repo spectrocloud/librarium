@@ -86,9 +86,9 @@ lower scopes, and changing the setting at the lower scope will override the sett
   - Your Palette/VerteX instance is in version 4.5.x or later.
   - Your agent version is older than 4.5.0.
   - Your Edge cluster has the
-    [local Harbor registry](../../edge//site-deployment/deploy-custom-registries/local-registry.md) enabled.
+    [local Harbor registry](../../edge/site-deployment/deploy-custom-registries/local-registry.md) enabled.
 
-  Using a agent version older than 4.5.0 with Palette/VerteX versions 4.5.x or later may lead to image download issues,
+  Using an agent version older than 4.5.0 with Palette/VerteX versions 4.5.x or later may lead to image download issues,
   issues with pushing images to the local registry, and cluster deployment issues. Ensure that you enable platform
   upgrades so your agent versions can be upgraded to be compatible with Palette/VerteX.
 
