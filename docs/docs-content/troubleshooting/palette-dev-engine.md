@@ -147,3 +147,61 @@ limits for a virtual cluster, and use the host cluster's default resource limits
    ```
 
 4. Repeat step one through three for each host cluster that makes up the Cluster Group.
+
+## Scenario - Adjust Virtual Clusters Limits Before Palette Upgrades
+
+Palette upgrades on K3s virtual clusters upgrades may get stuck if the cluster does not have enough resources to
+accommodate additional pods. Ensure that your cluster has 1 CPU, 1 GiB of memory, and 1 GiB storage of free resources
+before commencing an upgrade.
+
+### Debug Steps
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. Select **Cluster Groups** from the left **Main Menu**. The list of cluster groups appears.
+
+3. Select the **Virtual Clusters** tab. Then, select one of your virtual clusters.
+
+4. Click **Settings**. Then, select **Cluster Settings**. The **Settings** pane appears.
+
+5. Select the **Cluster Size** tab. Additionally, make a note of the CPU, memory and storage allocation indicated in
+   their respective fields. Then, close the **Settings** pane.
+
+6. Click on the host cluster link in the **Host Cluster** field. The **Overview** tab appears.
+
+7. Download the **kubeconfig** file for your cluster and connect to it using
+   [kubectl CLI](https://kubernetes.io/docs/reference/kubectl/). Refer to the
+   [Access Cluster with CLI](../clusters/cluster-management/palette-webctl.md#access-cluster-with-cli) section for
+   further guidance.
+
+8. Execute the following commands to find the CPU and Memory usage of all the pods deployed to your virtual cluster.
+   This gives you an approximation of the resource usage in your virtual cluster.
+
+   ```shell
+   virtual_cluster_namespace=$(kubectl get pods --all-namespaces --no-headers | grep '^.*\svirtual-cluster' | awk '{print $1}')
+   kubectl top pods --namespace $virtual_cluster_namespace
+   ```
+
+9. Compare your CPU and Memory usage to the virtual cluster allocations that you made a note of earlier. Ensure that
+   your cluster has 1 CPU, 1 GiB of memory, and 1 GiB storage of free before commencing an upgrade. If your cluster
+   requires further resources and your virtual cluster allocation is at the limit, you can increase your virtual cluster
+   limits.
+
+10. Select **Cluster Groups** from the left **Main Menu**. The list of cluster groups appears.
+
+11. Select the cluster group corresponding to your virtual cluster. Then, click **Settings**. The **Cluster Group
+    Settings** pane appears.
+
+12. Select the **Settings** tab. You can adjust the CPU, memory and storage limits according to your requirements from
+    the **Virtual Clusters Limits** section. Alternatively, you can disable limits by changing the
+    `isolation.resourceQuota.enabled` YAML value to false. Click **Save Changes**. Then, close the **Settings** pane.
+
+13. Select the **Virtual Clusters** tab. Then, select the virtual cluster you have been analyzing so far from the
+    clusters list.
+
+14. Click **Settings**. Then, select **Cluster Settings**. The **Settings** pane appears.
+
+15. Select the **Cluster Size** tab. You can then resize the cluster size to ensure there are 1 CPU, 1 GiB of memory,
+    and 1 GiB storage of free resources.
+
+16. Repeat one through 15 for each of your virtual clusters.
