@@ -120,7 +120,7 @@ methods:
 
 - [Agent Mode](../../../../deployment-modes/agent-mode/agent-mode.md)
 - [EdgeForge Workflow](../../../edge/edgeforge-workflow/edgeforge-workflow.md)
-  - Part of the EdgeForge Wwrkflow is to create [Kairos-based images](https://kairos.io/) containing the OS and the
+  - Part of the EdgeForge workflow is to create [Kairos-based images](https://kairos.io/) containing the OS and the
     desired Kubernetes versions. These are named provider images. You also need to ensure the required bind mounts are
     specified in the user-data configuration. Refer to the [Bind Mount Requirements](#bind-mount-requirements) section
     for more information.
