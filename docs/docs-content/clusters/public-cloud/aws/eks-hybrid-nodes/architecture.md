@@ -21,7 +21,8 @@ These are some of the architectural highlights when using Palette to manage your
 - Define cluster profiles to collectively manage your hybrid nodes. Each cluster profile for a hybrid node pool includes
   the following configurable layers:
 
-  - Configure the Operating System (OS) layer to reference the provider image built during the
+  - If you are using [Appliance Mode](../../../../deployment-modes/appliance-mode.md), configure the Operating System
+    (OS) layer to reference the provider image built during the
     [EdgeForge](../../../edge/edgeforge-workflow/edgeforge-workflow.md) workflow and optional customizations for your
     hybrid nodes.
 
@@ -119,10 +120,11 @@ If you want to use your edge hosts as Amazon EKS Hybrid Nodes, they must have be
 methods:
 
 - [Agent Mode](../../../../deployment-modes/agent-mode/agent-mode.md)
-- [EdgeForge Workflow](../../../edge/edgeforge-workflow/edgeforge-workflow.md)
+- [Appliance Mode](../../../../deployment-modes/appliance-mode.md) requires completing the
+  [EdgeForge workflow](../../../edge/edgeforge-workflow/edgeforge-workflow.md).
   - Part of the EdgeForge workflow is to create [Kairos-based images](https://kairos.io/) containing the OS and the
     desired Kubernetes versions. These are named provider images. You also need to ensure the required bind mounts are
-    specified in the user-data configuration. Refer to the [Bind Mount Requirements](#bind-mount-requirements) section
+    specified in the user data configuration. Refer to the [Bind Mount Requirements](#bind-mount-requirements) section
     for more information.
 
 :::warning
@@ -144,7 +146,9 @@ Adjust to your operating system and package manager on your edge hosts.
 ### Bind Mount Requirements
 
 If you are using [Appliance Mode](../../../../deployment-modes/appliance-mode.md) to deploy your edge hosts, ensure the
-following bind mounts are specified in the user-data configuration. Add the following snippet to your user-data file.
+following bind mounts are specified in the user data configuration. Add the following
+[`install`](../../../edge/edge-configuration/installer-reference.md#install-parameters) block to your Edge installer
+[user data file](../../../edge/edge-configuration/installer-reference.md).
 
 ```yaml
 install:
@@ -160,11 +164,12 @@ install:
     - /var/lib/amazon
 ```
 
-This snippet ensures that the required directories are mounted and available on your edge hosts.
+This snippet ensures that the required directories are mounted and available on your edge hosts, which are required for
+EKS Hybrid Nodes to function correctly.
 
 ### Build Provider Images with Specific Arguments
 
-If using the EdgeForge Workflow, you must include the following in your `.arg` file during the
+If using the Appliance Mode, you must include the following in your EdgeForge `.arg` file during the
 [build steps for provider images](../../../edge/edgeforge-workflow/palette-canvos/build-provider-images.md#build-provider-images).
 
 ```shell

@@ -40,7 +40,7 @@ You must then configure your networking to allow traffic to reach the pods on yo
 6. Select your base OS pack depending on how you will register your edge hosts.
 
    - For Agent Mode, select **BYOS - Agent Mode**.
-   - For EdgeForge Workflow, select **BYOS - Edge OS**.
+   - For Appliance Mode, select **BYOS - Edge OS**.
 
 7. If selecting **BYOS - Agent Mode**, on the **Configure Pack** page, click **Values** under **Pack Details**. Then,
    click on **Presets** on the right-hand side, and select **Agent Mode**.
@@ -99,11 +99,12 @@ Your cluster profile for hybrid nodes is now created and can be used in the
 
 - Edge hosts have been registered with Palette through
   [Agent Mode](../../../../deployment-modes/agent-mode/agent-mode.md) or
+  [Appliance Mode](../../../../deployment-modes/appliance-mode.md) and the
   [EdgeForge Workflow](../../../edge/edgeforge-workflow/edgeforge-workflow.md).
 
   :::warning
 
-  If using the EdgeForge Workflow, you must include the following in your `.arg` file during the
+  If using the Appliance Mode, you must include the following configuration in your EdgeForge `.arg` file during the
   [build steps for provider images](../../../edge/edgeforge-workflow/palette-canvos/build-provider-images.md#build-provider-images).
 
   ```shell
@@ -396,6 +397,8 @@ The hybrid node pool repave will now complete. This can take up to one hour.
 ## Resources
 
 - [Agent Mode](../../../../deployment-modes/agent-mode/agent-mode.md)
+
+- [Appliance Mode](../../../../deployment-modes/appliance-mode.md)
 
 - [EdgeForge Workflow](../../../edge/edgeforge-workflow/edgeforge-workflow.md)
 
