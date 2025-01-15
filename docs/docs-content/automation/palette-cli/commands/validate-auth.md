@@ -20,14 +20,27 @@ Kubernetes clusters in your targeted environment through Palette.
 - If validating permissions for an AWS environment, ensure you have the minimal AWS-managed permission policies required
   to perform the validation. Refer to
   [Minimal AWS managed IAM permission policies by validation type](https://github.com/validator-labs/validator-plugin-aws?tab=readme-ov-file#minimal-aws-managed-iam-permission-policies-by-validation-type)
-  for details.
+  for guidance.
 
-  - You will need to provide the Access Key ID and Secret Access Key for the IAM user that will perform the validation.
+  - You will need to provide the following details during the validation steps:
+
+    - Access Key ID for the IAM user that will perform the validation.
+    - Secret Access Key for the IAM user that will perform the validation.
+    - The IAM user name or IAM role name that will be deploying clusters in your environment.
 
 - If validating permissions for an Azure environment, ensure you have the minimal Azure Role-Based Access Control (RBAC)
   permissions required to perform the validation. Refer to
   [Minimal Azure RBAC permissions by validation type](https://github.com/validator-labs/validator-plugin-azure?tab=readme-ov-file#minimal-azure-rbac-permissions-by-validation-type)
-  for details.
+  for guidance.
+
+  - You will need to provide the following details during the validation steps:
+
+    - [Microsoft Entra tenant ID](https://learn.microsoft.com/en-us/entra/fundamentals/how-to-find-tenant) for your
+      Azure subscription.
+    - Client ID for the service principal that will perform the validation.
+    - Client secret for the service principal that will perform the validation.
+    - Service Principal ID for the service principal that will be deploying clusters in your environment.
+    - Subscription ID for where the clusters will be deployed to.
 
 ## Usage
 
@@ -84,7 +97,8 @@ The interactive steps change depending on the cloud environment chosen.
 
 5. Select either `IAM User` or `IAM Role` depending on what you want to check, and press Enter.
 
-6. Provide the `IAM User name` or `IAM Role name` depending on what was chosen in step 5, and press Enter.
+6. Provide the `IAM User name` or `IAM Role name` depending on what was chosen in step 5, and press Enter. This is the
+   user or role that will be deploying clusters in your environment.
 
 7. Choose the permission model to validate against. The `Comprehensive` model will check that whether you have
    sufficient permissions for all Palette features. The `Minimal` model will only check for the privileges needed to
@@ -103,6 +117,40 @@ The interactive steps change depending on the cloud environment chosen.
    ```shell hideClipboard
    Default AWS region: eu-west-1
    ```
+
+The validation process will now execute and output the results to your terminal.
+
+#### Azure
+
+1. Issue the `validate-auth` command using the Palette CLI.
+
+   ```shell
+   palette validate-auth
+   ```
+
+2. When prompted, select `Azure` for the cloud environment, and press Enter.
+
+3. Provide the Tenant ID for your Azure subscription, and press Enter.
+
+4. Provide the client ID for the service principal that will perform the validation, and press Enter.
+
+5. Provide the client secret for the service principal that will perform the validation, and press Enter.
+
+6. Select either `AzureCloud` or `AzureUSGovernment` as the environment that you want to perform the validation in, and
+   press Enter.
+
+7. Select either `IaaS` or `AKS` depending on what type of clusters you will be deploying, and press Enter.
+
+8. Select either `Dynamic placement` or `Static placement` depending on the network configuration you require for your
+   clusters, and press Enter.
+
+9. Provide the Service Principal ID for the service principal that will be deploying clusters in your environment, and
+   press Enter.
+
+10. Provide the Subscription ID where the clusters will be deployed to, and press Enter.
+
+11. Provide the resource group where the clusters will be deployed to, and press Enter. The resource group must exist
+    within the Subscription ID provided in the previous step.
 
 The validation process will now execute and output the results to your terminal.
 
@@ -133,7 +181,8 @@ cloud environment.
 
 ##### AWS
 
-When the IAM user or role provided has all sufficient privileges, then the validation results will appear similar to the following example.
+When the IAM user or role provided has all sufficient privileges, then the validation results will appear similar to the
+following example.
 
 ```yaml hideClipboard
 =================
@@ -158,9 +207,10 @@ Message:                All required IAM user policy permissions were found
 
 ##### Azure
 
-When the service principal provided has all sufficient privileges, then the validation results will appear similar to the following example.
+<!-- TBC -->
 
-TBC
+When the service principal provided has all sufficient privileges, then the validation results will appear similar to
+the following example.
 
 ```yaml hideClipboard
 =================
@@ -221,25 +271,64 @@ Failures
 - v1alpha1.IamUserRule PaletteClusterOperator missing action(s): [secretsmanager:CreateSecret secretsmanager:DeleteSecret] for resource arn:*:secretsmanager:*:*:secret:aws.cluster.x-k8s.io/* from policy PaletteNodesPolicy
 ```
 
-Use the output to help you address the validation failures. In this example, the validator identified two types of IAM permission issues, which are missing actions and missing conditions.
+Use the output to help you address the validation failures. In this example, the validator identified two types of IAM
+permission issues, which are missing actions and missing conditions.
 
-To resolve the missing actions, add the missing IAM permissions to the **PaletteClusterOperator** IAM user. The following table summarizes the missing actions and their required resource scopes, identifying which Palette policy should contain these permissions.
+To resolve the missing actions, add the missing IAM permissions to the **PaletteClusterOperator** IAM user. The
+following table summarizes the missing actions and their required resource scopes, identifying which Palette policy
+should contain these permissions.
 
-| **IAM Policy**  | **Missing Actions**    | **Resource Scope**          |
-| ------------ | ------- | ---------------------------------- |
+| **IAM Policy**              | **Missing Actions**                                                              | **Resource Scope**                                                |
+| --------------------------- | -------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
 | **PaletteControllerPolicy** | `autoscaling:CreateAutoScalingGroup` <br /> `autoscaling:DeleteAutoScalingGroup` | `arn:*:autoscaling:*:*:autoScalingGroup:*:autoScalingGroupName/*` |
-| **PaletteControllerPolicy** | `s3:DeleteObject`                                                                | `arn:*:s3:::*` |
-| **PaletteNodesPolicy**      | `secretsmanager:CreateSecret` <br /> `secretsmanager:DeleteSecret`               | `arn:*:secretsmanager:*:*:secret:aws.cluster.x-k8s.io/*` |
+| **PaletteControllerPolicy** | `s3:DeleteObject`                                                                | `arn:*:s3:::*`                                                    |
+| **PaletteNodesPolicy**      | `secretsmanager:CreateSecret` <br /> `secretsmanager:DeleteSecret`               | `arn:*:secretsmanager:*:*:secret:aws.cluster.x-k8s.io/*`          |
 
-To resolve the missing conditions, apply the required conditions to the specified actions. From interpreting the example extract below, the validator detected that the **PaletteControllerPolicy** IAM policy requires a condition to be added for the `iam:CreateServiceLinkedRole` action to restrict service-linked role creation specifically to Auto Scaling services.
+To resolve the missing conditions, apply the required conditions to the specified actions. From interpreting the example
+extract below, the validator detected that the **PaletteControllerPolicy** IAM policy requires a condition to be added
+for the `iam:CreateServiceLinkedRole` action to restrict service-linked role creation specifically to Auto Scaling
+services.
 
 ```yaml hideClipboard
-- Condition StringLike: iam:AWSServiceName=[autoscaling.amazonaws.com];  not applied to action(s) [iam:CreateServiceLinkedRole] for resource arn:*:iam::*:role/aws-service-role/autoscaling.amazonaws.com/AWSServiceRoleForAutoScaling from policy PaletteControllerPolicy
+- Condition StringLike:
+    iam:AWSServiceName=[autoscaling.amazonaws.com];  not applied to action(s) [iam:CreateServiceLinkedRole] for resource
+    arn:*:iam::*:role/aws-service-role/autoscaling.amazonaws.com/AWSServiceRoleForAutoScaling from policy
+    PaletteControllerPolicy
 ```
 
 ##### Azure
 
-TBC
+<!-- TBC -->
+
+In this example, validation failed for the `palette-spc` service principal due to missing permissions.
+
+```yaml hideClipboard
+=================
+Validation Result
+=================
+
+Plugin:           Azure
+Name:             validator-plugin-azure-azure-validator
+Namespace:        N/A
+State:            Failed
+
+------------
+Rule Results
+------------
+
+Validation Rule:        validation-palette-spc
+Validation Type:        azure-rbac
+Status:                 False
+Last Validated:         2025-01-14T20:37:24Z
+Message:                Principal lacks required permissions. See failures for details.
+
+--------
+Failures
+--------
+...
+```
+
+Use the output to help you address the validation failures.
 
 #### Resolve Failures
 
@@ -247,9 +336,16 @@ Each plugin can report different types of validation failures. The resolution st
 plugin and failure type. Use the error output to identify and address each failure. The following table provides
 guidance for common failure scenarios.
 
+| **Plugin** | **Failure Message**                                                            | **Guidance**                                                                                                                                                                                                                                                                              |
+| ---------- | ------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **AWS**    | One or more required IAM permissions was not found, or a condition was not met | The IAM role used by Palette is missing one or more required IAM permissions. Refer to [Required IAM Policies](../../../clusters/public-cloud/aws/required-iam-policies.md) for a comprehensive list of required IAM permissions and attach the missing permissions or policies.          |
+| **Azure**  | Principal lacks required permissions. See failures for details.                | The service principal used by Palette is missing one or more required permissions. Refer to [Required Permissions](../../../clusters/public-cloud/azure/required-permissions.md) for a comprehensive list of required permissions and attach the missing permissions or role assignments. |
+
+<!-- Saving in case we add quota checks in the future
+
 | **Plugin** | **Failure Message**                                                            | **Guidance**                                                                                                                                                                                                                                                                                                                                                                                                       |
 | ---------- | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **AWS**    | One or more required IAM permissions was not found, or a condition was not met | The IAM role used by Palette is missing one or more required IAM permissions. Refer to [Required IAM Policies](../../../clusters/public-cloud/aws/required-iam-policies.md) for a comprehensive list of required IAM permissions and attach the missing permissions or policies.                                                                                                                                   |
 | **AWS**    | Usage for one or more service quotas exceeded the specified buffer             | The usage quota for a service or multiple service quotas are above the specified buffer. Refer to the [AWS Service Quotas](https://docs.aws.amazon.com/general/latest/gr/aws-service-information.html) documentation to review the default limits. Use the [Service Quotas](https://console.aws.amazon.com/servicequotas/) page in the AWS console to request an increase to your account, or remove resources to reduce the usage. |
-| **Azure**  | Principal lacks required permissions. See failures for details.                | The service principal used by Palette is missing one or more required permissions. Refer to [Required Permissions](../../../clusters/public-cloud/azure/required-permissions.md) for a comprehensive list of required permissions and attach the missing permissions or role assignments.                                                                                                                          |
 | **Azure**  | Usage for one or more resources exceeded the quota plus specified buffer       | The usage quotas for a service or multiple service quotas are above the specified buffer. Refer to [Azure Service Quotas](https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/azure-subscription-service-limits) documentation to review the default limits. Use the [Quotas](https://portal.azure.com/#view/Microsoft_Azure_Capacity/QuotaMenuBlade/~/overview) page in the Azure portal to request an increase to your account, or remove resources to reduce the usage.     |
+
+-->
