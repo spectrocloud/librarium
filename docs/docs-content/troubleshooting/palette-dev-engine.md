@@ -164,8 +164,8 @@ before commencing an upgrade.
 
 4. Click **Settings**. Then, select **Cluster Settings**. The **Settings** pane appears.
 
-5. Select the **Cluster Size** tab. Make a note of the CPU, memory and storage allocation indicated in
-   their respective fields. Then, close the **Settings** pane.
+5. Select the **Cluster Size** tab. Make a note of the CPU, memory and storage allocation indicated in their respective
+   fields. Then, close the **Settings** pane.
 
 6. Click on the host cluster link in the **Host Cluster** field. The cluster **Overview** tab appears.
 
@@ -182,9 +182,10 @@ before commencing an upgrade.
    kubectl top pods --namespace $virtual_cluster_namespace
    ```
 
-9. Compare your CPU and memory usage to the virtual cluster allocations that you made a note of earlier in step five. Your cluster should have 1 CPU, 1 GiB of memory, and 1 GiB storage of free before commencing an upgrade. If your cluster
-   requires further resources and your virtual cluster allocation is at the limit, you can increase your virtual cluster
-   limits.
+9. Compare your CPU and memory usage to the virtual cluster allocations that you made a note of earlier in step five.
+   Your cluster should have 1 CPU, 1 GiB of memory, and 1 GiB storage of free before commencing an upgrade. If your
+   cluster requires further resources and your virtual cluster allocation is at the limit, you can increase your virtual
+   cluster limits.
 
 10. Select **Cluster Groups** from the left **Main Menu**. The list of cluster groups appears.
 
