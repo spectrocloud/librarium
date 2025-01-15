@@ -164,17 +164,17 @@ before commencing an upgrade.
 
 4. Click **Settings**. Then, select **Cluster Settings**. The **Settings** pane appears.
 
-5. Select the **Cluster Size** tab. Additionally, make a note of the CPU, memory and storage allocation indicated in
+5. Select the **Cluster Size** tab. Make a note of the CPU, memory and storage allocation indicated in
    their respective fields. Then, close the **Settings** pane.
 
-6. Click on the host cluster link in the **Host Cluster** field. The **Overview** tab appears.
+6. Click on the host cluster link in the **Host Cluster** field. The cluster **Overview** tab appears.
 
 7. Download the **kubeconfig** file for your cluster and connect to it using
    [kubectl CLI](https://kubernetes.io/docs/reference/kubectl/). Refer to the
    [Access Cluster with CLI](../clusters/cluster-management/palette-webctl.md#access-cluster-with-cli) section for
    further guidance.
 
-8. Execute the following commands to find the CPU and Memory usage of all the pods deployed to your virtual cluster.
+8. Execute the following commands to find the CPU and memory usage of all the pods deployed to your virtual cluster.
    This gives you an approximation of the resource usage in your virtual cluster.
 
    ```shell
@@ -182,8 +182,7 @@ before commencing an upgrade.
    kubectl top pods --namespace $virtual_cluster_namespace
    ```
 
-9. Compare your CPU and Memory usage to the virtual cluster allocations that you made a note of earlier. Ensure that
-   your cluster has 1 CPU, 1 GiB of memory, and 1 GiB storage of free before commencing an upgrade. If your cluster
+9. Compare your CPU and memory usage to the virtual cluster allocations that you made a note of earlier in step five. Your cluster should have 1 CPU, 1 GiB of memory, and 1 GiB storage of free before commencing an upgrade. If your cluster
    requires further resources and your virtual cluster allocation is at the limit, you can increase your virtual cluster
    limits.
 
@@ -193,7 +192,7 @@ before commencing an upgrade.
     Settings** pane appears.
 
 12. Select the **Settings** tab. You can adjust the CPU, memory and storage limits according to your requirements from
-    the **Virtual Clusters Limits** section. Alternatively, you can disable limits by changing the
+    the **Virtual Clusters Limits** section. Alternatively, you can disable limits entirely by changing the
     `isolation.resourceQuota.enabled` YAML value to false. Click **Save Changes**. Then, close the **Settings** pane.
 
 13. Select the **Virtual Clusters** tab. Then, select the virtual cluster you have been analyzing so far from the
