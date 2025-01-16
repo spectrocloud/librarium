@@ -1,3 +1,3 @@
 #!/bin/bash
 echo "Mock function executed"
-exit 2
+exit 5
