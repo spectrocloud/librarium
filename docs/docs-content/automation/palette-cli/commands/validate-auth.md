@@ -100,17 +100,18 @@ The interactive steps change depending on the cloud environment chosen.
 6. Provide the `IAM User name` or `IAM Role name` depending on what was chosen in step 5, and press Enter. This is the
    user or role that will be deploying clusters in your environment.
 
-7. Choose the permission model to validate against. The `Comprehensive` model will check whether you have
-   sufficient permissions for all Palette features. The `Minimal` model will only check for the privileges needed to
-   create and delete clusters. Refer to the [Required IAM Policies](../../../clusters/public-cloud/aws/required-iam-policies.md) to learn more about AWS permissions needed by Palette.
+7. Choose the permission model to validate against. The `Comprehensive` model will check whether you have sufficient
+   permissions for all Palette features. The `Minimal` model will only check for the privileges needed to create and
+   delete clusters. Refer to the [Required IAM Policies](../../../clusters/public-cloud/aws/required-iam-policies.md) to
+   learn more about AWS permissions needed by Palette.
 
    Once you have selected the permission model, press Enter.
 
 8. You are prompted to answer `Will the cloud account be deploying EKS host clusters?`. Enter `y` if you want to check
    for sufficient permissions to deploy Amazon EKS clusters, or `n` if you do not.
 
-9. Provide the default AWS region on which the validation will be performed. This should match the region where
-   you intend to deploy clusters. Press Enter after providing the region.
+9. Provide the default AWS region on which the validation will be performed. This should match the region where you
+   intend to deploy clusters. Press Enter after providing the region.
 
    Example.
 
@@ -142,7 +143,9 @@ The validation process will now execute and output the results to your terminal.
 7. Select either `IaaS` or `AKS` depending on what type of clusters you will be deploying, and press Enter.
 
 8. Select either `Dynamic placement` or `Static placement` depending on the network configuration you require for your
-   clusters, and press Enter. Refer to the [Required Permissions](../../../clusters/public-cloud/azure/required-permissions.md) page to learn more about Azure permissions needed by Palette.
+   clusters, and press Enter. Refer to the
+   [Required Permissions](../../../clusters/public-cloud/azure/required-permissions.md) page to learn more about Azure
+   permissions needed by Palette.
 
 9. Provide the Service Principal ID for the service principal that will be deploying clusters in your environment, and
    press Enter.
