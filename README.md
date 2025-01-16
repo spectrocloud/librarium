@@ -1191,7 +1191,9 @@ make clean-versions
 Librarium provides the following exit codes. These exit codes are returned by both the `npm run start` and
 `npm run build` commands.
 
-> [!NOTE] Any exit codes added to the table must also be added to the Makefile's `build-ci` command.
+> [!NOTE]
+>
+> Any exit codes added to the table must also be added to the Makefile's `build-ci` command.
 
 | **Exit Code**                 | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
