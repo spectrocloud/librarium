@@ -11,9 +11,9 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## January 18, 2024 - Release 4.5.16
+## January 18, 2024 - Release 4.5.17
 
-### Palette {#palette-enterprise-4-5-16}
+### Palette {#palette-enterprise-4-5-17}
 
 #### Features
 
@@ -41,15 +41,15 @@ tags: ["release-notes"]
 - Palette will no longer include Edge clusters and bare metal clusters in the kCh calculation. To learn more about kCh
   calculation, refer to the [Resource Usage Calculation](../introduction/resource-usage-estimation.md) page.
 
-<!-- prettier-ignore -->
+<!-- prettier-ignore-start -->
 - You can now use the rolling upgrade strategy for clusters deployed with MicroK8s. The `RollingUpgrade` strategy allows
   you to upgrade your MicroK8s cluster by replacing one machine at a time with a new machine. Refer to the <VersionedLink text="Microk8s" url="/integrations/packs/?pack=kubernetes-microk8s" /> pack documentation to learn more about the rolling upgrade strategy.
-
+<!-- prettier-ignore-end -->
 
 - The ability to filter clusters by tags has been improved. A dedicated **Tags drop-down Menu** in the cluster list page now lists all available tags for clusters. You can select a tag from the **drop-down Menu** to filter clusters by the selected tag, instead of manually specifying tags. Refer to the [Map and Filter Clusters](../clusters/cluster-management/cluster-map-filters.md) page to learn more about this feature.
 
 
-- Improvements have been made to the Palette UI to enhance the user experience. By default, edge cluster lists are sorted by the last modified date, and the cluster list view is sorted by cluster name. User-configured sorting preferences are now saved and applied across sessions. Additionally, no columns are fixed or pinned by default. 
+- Improvements have been made to the Palette UI to enhance the user experience. By default, edge cluster lists are sorted by the last modified date, and the cluster list view is sorted by cluster name. User-configured sorting preferences are now saved and applied across sessions. Additionally, no columns are fixed or pinned by default.
 
 - Palette no longer requires port 4222 to be open between workload clusters and the Palette management plane. Palette
   previously used port 4222 for NATS messaging, which gRPC has replaced. If you have a firewall rule that allows egress
@@ -72,7 +72,7 @@ tags: ["release-notes"]
   cluster is imported into Palette, you can create worker node pools from edge hosts built using the EdgeForge workflow
   or Agent Mode. To secure these edge hosts within the hybrid ecosystem, you have the flexibility to use either AWS
   Systems Manager or IAM Roles Anywhere. Additionally, a Cilium network layer can be configured to manage networking for
-  hybrid nodes using affinity rules. Refer to EKS Hybrid Nodes section to learn more about using Palette to manage your
+  hybrid nodes using affinity rules. Refer to [EKS Hybrid Nodes](../clusters/public-cloud/aws/eks-hybrid-nodes/eks-hybrid-nodes.md) section to learn more about using Palette to manage your
   Amazon EKS Hybrid Nodes.
 
 - <TpBadge /> You can now transfer the management of Edge clusters deployed in an airgap environments through [Local
@@ -115,7 +115,7 @@ tags: ["release-notes"]
 #### Features
 
 - Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
-  [Palette section](#palette-enterprise-4-5-16) for more details.
+  [Palette section](#palette-enterprise-4-5-17) for more details.
 
 - Starting with release version 4.5.15, the Spectro Cloud Artifact Repository (SCAR) is now hosted inside the same Open
   Container Initiative (OCI) repository hosting packs and images. This release now includes support for existing
@@ -150,7 +150,7 @@ tags: ["release-notes"]
 
 - A new command has been added to the Palette CLI. The command `validate-auth` can be used to validate you meet all
   permissions required to deploy a target cluster into an infrastructure provider environment, such as AWS or Azure.
-  Refer to the Validate Auth reference page to learn more.
+  Refer to the [Validate-Auth](../automation/palette-cli/commands/validate-auth.md) reference page to learn more.
 
 #### Deprecations and Removals
 
