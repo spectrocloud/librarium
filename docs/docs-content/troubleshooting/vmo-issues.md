@@ -12,9 +12,12 @@ The following are common scenarios that you may encounter when using Virtual Mac
 
 ## Scenario - Virtual Machine (VM) Migrations Plans in Unknown State
 
-When using the [VM Migration Assistant](../vm-management/vm-migration-assistant/vm-migration-assistant.md) to migrate VMs to your VMO cluster, active migration plans may enter an **Unknown** state or encounter unintended failures.
+When using the [VM Migration Assistant](../vm-management/vm-migration-assistant/vm-migration-assistant.md) to migrate
+VMs to your VMO cluster, active migration plans may enter an **Unknown** state or encounter unintended failures.
 
-To avoid this scenario, we recommend setting an appropriate value for **Max concurrent virtual machine migrations** based on your workload and expected migration patterns. A higher value allows for smoother execution of multiple VM migration tasks and helps prevent migration plans from entering an **Unknown** state due to excessive concurrency.
+To avoid this scenario, we recommend setting an appropriate value for **Max concurrent virtual machine migrations**
+based on your workload and expected migration patterns. A higher value allows for smoother execution of multiple VM
+migration tasks and helps prevent migration plans from entering an **Unknown** state due to excessive concurrency.
 
 Use the following steps to adjust the value of **Max concurrent virtual machine migrations** and resolve the issue.
 
@@ -25,7 +28,7 @@ Use the following steps to adjust the value of **Max concurrent virtual machine 
 2. From the left **Main Menu**, select **Overview**.
 
 3. In the **Overview** tab, locate the configurable settings for the migration controller.
-   
+
    ![Migration Controller Settings](/vm-management_vm-migration-assistant_additional-configuration_overview-settings.webp)
 
 4. Click the pencil icon next to the **Max concurrent virtual machine migrations** setting.
@@ -42,7 +45,8 @@ Use the following steps to adjust the value of **Max concurrent virtual machine 
 
 10. In the menu, click on **Restart**.
 
-If you are unable to restart the migration, you will need to recreate and start it again. Refer to [Create Migrations Plans](../vm-management/vm-migration-assistant/create-migration-plans.md) for guidance.
+If you are unable to restart the migration, you will need to recreate and start it again. Refer to
+[Create Migrations Plans](../vm-management/vm-migration-assistant/create-migration-plans.md) for guidance.
 
 ## Scenario - Virtual Machines (VM) Stuck in a Migration Loop
 
