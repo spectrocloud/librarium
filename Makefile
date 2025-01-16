@@ -164,7 +164,6 @@ build-ci: ## Run npm build in CI environment
 	rm -rf build
 	@{ \
 		# npm run build; \
-		scripts/mock_exit_2.sh; \
 		exit_code=$$?; \
 		echo "Build exited with code $$exit_code..."; \
 		if [ $$exit_code -ne 0 ] && [ $$exit_code -ne 5 ] && [ $$exit_code -ne 7 ]; then \
