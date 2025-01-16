@@ -67,7 +67,7 @@ jobs:
           touch .env
           make versions-ci
           make build-ci
-      
+
       - name: Build with cached packs
         if: ${{ env.BUILD_EXIT_CODE == '5' }}
         uses: ./.github/actions/build-cached-packs
@@ -81,6 +81,7 @@ jobs:
           gh-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload to AWS
+        if: ${{ env.BUILD_EXIT_CODE == '0' }}
         run: |
           echo "CURRENT_STEP=Upload to AWS" >> $GITHUB_ENV
           aws s3 sync --cache-control 'public, max-age=604800' --exclude '*.html' --exclude '*.xml' --exclude build/scripts/ build/ s3://docs.spectrocloud.com --delete
@@ -88,7 +89,7 @@ jobs:
           aws cloudfront create-invalidation --distribution-id ${{ secrets.DISTRIBUTION_ID }} --paths "/*"
 
       - name: Slack Notification on Failure
-        if: ${{ failure() }}
+        if: ${{ failure() || env.BUILD_EXIT_CODE != '0' }}
         uses: rtCamp/action-slack-notify@v2.3.2
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
