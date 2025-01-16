@@ -10,7 +10,7 @@ tags: ["troubleshooting", "vmo"]
 
 The following are common scenarios that you may encounter when using Virtual Machine Orchestrator (VMO).
 
-## Scenario - Virtual Machine (VM) Migrations Plans in Unknown State
+## Scenario - Virtual Machine (VM) Migration Plans in Unknown State
 
 When using the [VM Migration Assistant](../vm-management/vm-migration-assistant/vm-migration-assistant.md) to migrate
 VMs to your VMO cluster, migration plans can enter an **Unknown** state if you have selected to migrate more VMs than
