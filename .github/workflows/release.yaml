@@ -81,6 +81,7 @@ jobs:
           gh-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload to AWS
+        if: ${{ env.BUILD_EXIT_CODE == '0' }}
         run: |
           echo "CURRENT_STEP=Upload to AWS" >> $GITHUB_ENV
           aws s3 sync --cache-control 'public, max-age=604800' --exclude '*.html' --exclude '*.xml' --exclude build/scripts/ build/ s3://docs.spectrocloud.com --delete
