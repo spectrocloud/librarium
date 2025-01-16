@@ -42,13 +42,12 @@ echo "HEAD Branch: $HEAD"
 
 # Fetch all branches from the remote
 git fetch -p origin
-branches=$(git branch -a | grep -E 'version-[0-9]+(-[0-9]+)*$')
+# Remove leading spaces and remote prefix (if any)
+# Sort and remove duplicates.
+branches=$(git branch -a | sed 's/ *//;s/remotes\/origin\///' | grep -E '^version-[0-9]+(-[0-9]+)*$' | sort | uniq)
 
 # Loop through each branch to fetch it locally
 for b in $branches; do
-  # Remove leading spaces and remote prefix (if any)
-  b=$(echo $b | sed 's/ *//;s/remotes\/origin\///')
-
   # Fetch the remote branch to corresponding local branch
   git fetch origin $b:$b
 done
@@ -83,7 +82,7 @@ echo "Entering the loop to generate the versioned documentation"
 # Loop through all local branches
 for item in $(git branch --format '%(refname:short)'); do
 
-  echo "Checking branch: $branch"
+  echo "Checking branch: $item"
   
   # Check if the branch is in the exclude list
   if [[ " ${exclude_branches[@]} " =~ " ${item} " ]]; then
