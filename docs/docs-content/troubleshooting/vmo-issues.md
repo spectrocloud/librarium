@@ -46,7 +46,7 @@ Use the following steps to adjust the value of **Max concurrent virtual machine 
 10. In the menu, click on **Restart**.
 
 If you are unable to restart the migration, you will need to recreate and start it again. Refer to
-[Create Migrations Plans](../vm-management/vm-migration-assistant/create-migration-plans.md) for guidance.
+[Create Migration Plans](../vm-management/vm-migration-assistant/create-migration-plans.md) for guidance.
 
 ## Scenario - Virtual Machines (VM) Stuck in a Migration Loop
 
