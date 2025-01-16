@@ -83,7 +83,7 @@ lower scopes, and changing the setting at the lower scope will override the sett
 - Do not pause platform upgrades for clusters if _all_ of the following conditions apply:
 
   - Your cluster is an Edge cluster.
-  - Your Palette/VerteX instance is in version 4.5.x or later.
+  - Your Palette/VerteX instance is on version 4.5.x or later.
   - Your agent version is older than 4.5.0.
   - Your Edge cluster has the
     [local Harbor registry](../../edge/site-deployment/deploy-custom-registries/local-registry.md) enabled.
