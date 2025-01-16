@@ -158,13 +158,17 @@ build-cached-cves: ## Run npm build with cached CVEs retry
 		fi; \
 	}
 
+
+# This step is designed to always return a positive exit code due to the echo that outputs the exit code.
+# This by design to ensure that the build step does not fail and subsequent GitHub Actions steps can execute that are dependent on the exit code.
+# It may be counter intuitive but it is necessary to ensure that the build CI workflow fails completly without providing an opportunity for the retry steps that check the exit code.
 build-ci: ## Run npm build in CI environment
 	@echo "building site"
 	npm run clear
 	rm -rf build
 	@{ \
 		# npm run build; \
-		script/mock_exit_2.sh; \
+		scripts/mock_exit_2.sh; \
 		exit_code=$$?; \
 		echo "BUILD_EXIT_CODE=$$exit_code" >> $(GITHUB_ENV); \
 		echo "Build exited with code $$exit_code..."; \
