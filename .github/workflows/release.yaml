@@ -89,7 +89,7 @@ jobs:
           aws cloudfront create-invalidation --distribution-id ${{ secrets.DISTRIBUTION_ID }} --paths "/*"
 
       - name: Slack Notification on Failure
-        if: ${{ failure() }}
+        if: ${{ failure() || env.BUILD_EXIT_CODE != '0' }}
         uses: rtCamp/action-slack-notify@v2.3.2
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
