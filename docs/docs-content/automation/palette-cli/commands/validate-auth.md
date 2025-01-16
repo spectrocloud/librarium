@@ -100,9 +100,9 @@ The interactive steps change depending on the cloud environment chosen.
 6. Provide the `IAM User name` or `IAM Role name` depending on what was chosen in step 5, and press Enter. This is the
    user or role that will be deploying clusters in your environment.
 
-7. Choose the permission model to validate against. The `Comprehensive` model will check that whether you have
+7. Choose the permission model to validate against. The `Comprehensive` model will check whether you have
    sufficient permissions for all Palette features. The `Minimal` model will only check for the privileges needed to
-   create and delete clusters.
+   create and delete clusters. Refer to the [Required IAM Policies](../../../clusters/public-cloud/aws/required-iam-policies.md) to learn more about AWS permissions needed by Palette.
 
    Once you have selected the permission model, press Enter.
 
@@ -142,7 +142,7 @@ The validation process will now execute and output the results to your terminal.
 7. Select either `IaaS` or `AKS` depending on what type of clusters you will be deploying, and press Enter.
 
 8. Select either `Dynamic placement` or `Static placement` depending on the network configuration you require for your
-   clusters, and press Enter.
+   clusters, and press Enter. Refer to the [Required Permissions](../../../clusters/public-cloud/azure/required-permissions.md) page to learn more about Azure permissions needed by Palette.
 
 9. Provide the Service Principal ID for the service principal that will be deploying clusters in your environment, and
    press Enter.
@@ -169,17 +169,17 @@ Remove file validator-20250113_183600.yaml from disk? [Y/n]:
 
 Enter `y` if you want to remove the specification file, or `n` if you want to keep it.
 
-### Review Validation Results
+## Review Validation Results
 
 A report is generated and outputted to your terminal after the validation process is complete. The report varies
 depending on the outcome.
 
-#### Succeeded
+### Succeeded
 
 If the validation is successful, the `State` field is set to `Succeeded`. The output varies slightly depending on the
 cloud environment.
 
-##### AWS
+#### AWS
 
 When the IAM user or role provided has all sufficient privileges, then the validation results will appear similar to the
 following example.
@@ -205,9 +205,7 @@ Last Validated:         2025-01-14T19:58:12Z
 Message:                All required IAM user policy permissions were found
 ```
 
-##### Azure
-
-<!-- TBC -->
+#### Azure
 
 When the service principal provided has all sufficient privileges, then the validation results will appear similar to
 the following example.
@@ -233,12 +231,12 @@ Last Validated:         2025-01-14T19:58:12Z
 Message:                Principal has all required permissions.
 ```
 
-#### Failed
+### Failed
 
 If the validation is not successful, the `State` field is set to `Failed`. The `Failures` section contains additional
 information about the failure and will vary depending on the cloud environment.
 
-##### AWS
+#### AWS
 
 In this example, several IAM permissions are missing for the `PaletteClusterOperator` IAM role.
 
@@ -296,10 +294,9 @@ services.
     PaletteControllerPolicy
 ```
 
-##### Azure
+#### Azure
 
 <!-- TBC -->
-
 In this example, validation failed for the `palette-spc` service principal due to missing permissions.
 
 ```yaml hideClipboard
@@ -330,7 +327,7 @@ Failures
 
 Use the output to help you address the validation failures.
 
-#### Resolve Failures
+### Resolve Failures
 
 Each plugin can report different types of validation failures. The resolution steps will vary depending on the specific
 plugin and failure type. Use the error output to identify and address each failure. The following table provides
