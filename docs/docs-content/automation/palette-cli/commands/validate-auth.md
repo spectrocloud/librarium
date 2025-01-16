@@ -109,7 +109,7 @@ The interactive steps change depending on the cloud environment chosen.
 8. You are prompted to answer `Will the cloud account be deploying EKS host clusters?`. Enter `y` if you want to check
    for sufficient permissions to deploy Amazon EKS clusters, or `n` if you do not.
 
-9. Provide the default AWS region that the validation will be performed on. This does not have to match the region where
+9. Provide the default AWS region on which the validation will be performed. This should match the region where
    you intend to deploy clusters. Press Enter after providing the region.
 
    Example.
