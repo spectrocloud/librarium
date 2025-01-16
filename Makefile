@@ -167,8 +167,7 @@ build-ci: ## Run npm build in CI environment
 	npm run clear
 	rm -rf build
 	@{ \
-		# npm run build; \
-		scripts/mock_exit_2.sh; \
+		npm run build; \
 		exit_code=$$?; \
 		echo "BUILD_EXIT_CODE=$$exit_code" >> $(GITHUB_ENV); \
 		echo "Build exited with code $$exit_code..."; \
