@@ -164,7 +164,7 @@ commencing an upgrade. Use the following steps to adjust the resource limits of 
 
 4. Click **Settings**. Then, select **Cluster Settings**. The **Settings** pane appears.
 
-5. Select the **Cluster Size** tab. Make a note of the CPU, memory and storage allocation indicated in their respective
+5. Select the **Cluster Size** tab. Make a note of the CPU, memory, and storage allocation indicated in their respective
    fields. Close the **Settings** pane once you are done reviewing the resources.
 
 6. Click on the host cluster link in the **Host Cluster** field. The cluster **Overview** tab appears.
