@@ -63,6 +63,7 @@ jobs:
 
       - name: Build
         run: |
+          set -e
           echo "CURRENT_STEP=Build" >> $GITHUB_ENV
           touch .env
           make versions-ci
