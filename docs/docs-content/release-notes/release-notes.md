@@ -15,9 +15,10 @@ tags: ["release-notes"]
 
 ### Bug Fixes
 
-- Fixed an issue when enabling the `stylus.debug` parameter in the Edge Installer user data configuration file would
-  include sensistive Edge configuration information in the logs. The behavior has been corrected to prevent the
-  inclusion of sensitive Edge configuration information in the logs.
+- Fixed an issue when enabling the `stylus.debug` parameter in the Edge Installer
+  [user data configuration](../clusters/edge/edge-configuration/installer-reference.md) file would include sensistive
+  Edge configuration information in the logs. The behavior has been corrected to prevent the inclusion of sensitive Edge
+  configuration information in the logs.
 
 ## Sept 25, 2024 - Release 4.4.20
 
