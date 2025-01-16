@@ -17,8 +17,7 @@ VMs to your VMO cluster, migration plans can enter an **Unknown** state if you h
 the **Max concurrent virtual machine migrations** setting allows.
 
 To avoid this scenario, we recommend setting an appropriate value for **Max concurrent virtual machine migrations**
-based on your workload and expected migration patterns. A higher value allows for smoother execution of multiple VM
-migration tasks and helps prevent migration plans from entering an **Unknown** state due to excessive concurrency.
+based on your workload and expected migration patterns. A higher value helps prevent migration plans from entering an **Unknown** state due to excessive concurrency.
 
 Use the following steps to adjust the value of **Max concurrent virtual machine migrations** and resolve the issue.
 
