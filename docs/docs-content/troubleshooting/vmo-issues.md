@@ -13,7 +13,8 @@ The following are common scenarios that you may encounter when using Virtual Mac
 ## Scenario - Virtual Machine (VM) Migrations Plans in Unknown State
 
 When using the [VM Migration Assistant](../vm-management/vm-migration-assistant/vm-migration-assistant.md) to migrate
-VMs to your VMO cluster, active migration plans may enter an **Unknown** state or encounter unintended failures.
+VMs to your VMO cluster, migration plans can enter an **Unknown** state if you have selected to migrate more VMs than
+the **Max concurrent virtual machine migrations** setting allows.
 
 To avoid this scenario, we recommend setting an appropriate value for **Max concurrent virtual machine migrations**
 based on your workload and expected migration patterns. A higher value allows for smoother execution of multiple VM
@@ -33,7 +34,10 @@ Use the following steps to adjust the value of **Max concurrent virtual machine 
 
 4. Click the pencil icon next to the **Max concurrent virtual machine migrations** setting.
 
-5. In the pop-up window, increase the value based on the number of migration plans you expect to execute concurrently.
+5. In the pop-up window, increase the value based on the maximum number of VMs you expect to migrate concurrently in a
+   single plan.
+
+   For example, if you expect to migrate a maximum of 25 VMs in a single plan, set this value to 25 or more.
 
 6. Click **Save** after making the change.
 
