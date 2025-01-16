@@ -207,3 +207,14 @@ variables in the new version.
 
 3. In the upper-right corner, click **Variables** and, on the **Profile variables** pane, check that only the necessary
    variables are present and that each variable has the expected definition.
+
+## Cluster Deployment
+
+When you deploy a cluster using a cluster profile that contains a cluster profile variable, an additional window is displayed during the **Cluster Config** step, where you can enter the desired values to use in your cluster. If you have custom validation active and the entered value does not meet the schema requirements, you receive an error and are unable to deploy your cluster until variable is corrected. To learn more about deploying clusters, visit our [Getting Started](../../../../docs-content/getting-started/getting-started.md) series.
+
+
+
+
+### Validation
+
+Once your cluster is deployed, verify that any parameters containing cluster profile variables were populated with the expected values.
