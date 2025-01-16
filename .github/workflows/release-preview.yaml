@@ -59,7 +59,7 @@ jobs:
         run: |
           set +e  # Disable automatic stop on command failure
           touch .env
-          make build
+          make build-ci
           exit_code=$?
           echo "Build command exit code: $exit_code"
           echo "BUILD_EXIT_CODE=$exit_code">> $GITHUB_ENV
@@ -77,6 +77,7 @@ jobs:
           gh-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Deploy Preview
+        if: ${{ env.BUILD_EXIT_CODE == '0' }}
         run: |
           aws s3 sync --cache-control 'public, max-age=604800' --exclude '*.html' --exclude build/scripts/ build/ s3://docs-latest.spectrocloud.com --delete
           aws s3 sync --cache-control 'public, max-age=0, s-maxage=604800' build/ s3://docs-latest.spectrocloud.com --delete
