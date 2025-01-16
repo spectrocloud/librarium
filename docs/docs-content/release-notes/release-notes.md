@@ -42,14 +42,22 @@ tags: ["release-notes"]
   calculation, refer to the [Resource Usage Calculation](../introduction/resource-usage-estimation.md) page.
 
 <!-- prettier-ignore-start -->
+
 - You can now use the rolling upgrade strategy for clusters deployed with MicroK8s. The `RollingUpgrade` strategy allows
-  you to upgrade your MicroK8s cluster by replacing one machine at a time with a new machine. Refer to the <VersionedLink text="Microk8s" url="/integrations/packs/?pack=kubernetes-microk8s" /> pack documentation to learn more about the rolling upgrade strategy.
+you to upgrade your MicroK8s cluster by replacing one machine at a time with a new machine. Refer to the
+<VersionedLink text="Microk8s" url="/integrations/packs/?pack=kubernetes-microk8s" /> pack documentation to learn more
+about the rolling upgrade strategy.
 <!-- prettier-ignore-end -->
 
-- The ability to filter clusters by tags has been improved. A dedicated **Tags drop-down Menu** in the cluster list page now lists all available tags for clusters. You can select a tag from the **drop-down Menu** to filter clusters by the selected tag, instead of manually specifying tags. Refer to the [Map and Filter Clusters](../clusters/cluster-management/cluster-map-filters.md) page to learn more about this feature.
+- The ability to filter clusters by tags has been improved. A dedicated **Tags drop-down Menu** in the cluster list page
+  now lists all available tags for clusters. You can select a tag from the **drop-down Menu** to filter clusters by the
+  selected tag, instead of manually specifying tags. Refer to the
+  [Map and Filter Clusters](../clusters/cluster-management/cluster-map-filters.md) page to learn more about this
+  feature.
 
-
-- Improvements have been made to the Palette UI to enhance the user experience. By default, edge cluster lists are sorted by the last modified date, and the cluster list view is sorted by cluster name. User-configured sorting preferences are now saved and applied across sessions. Additionally, no columns are fixed or pinned by default.
+- Improvements have been made to the Palette UI to enhance the user experience. By default, edge cluster lists are
+  sorted by the last modified date, and the cluster list view is sorted by cluster name. User-configured sorting
+  preferences are now saved and applied across sessions. Additionally, no columns are fixed or pinned by default.
 
 - Palette no longer requires port 4222 to be open between workload clusters and the Palette management plane. Palette
   previously used port 4222 for NATS messaging, which gRPC has replaced. If you have a firewall rule that allows egress
@@ -57,12 +65,18 @@ tags: ["release-notes"]
   Palette 4.0. Refer to the Palette [Network Ports](../architecture/networking-ports.md) page for more information about
   Palette's network ports.
 
-- Palette now uses Velero version 1.15 internally. This change allows newly deployed clusters to use [Kopia](https://velero.io/docs/main/file-system-backup/#how-velero-integrates-with-kopia) as the
-  default backup and restore tool. Existing clusters will continue to use Restic as the default backup and restore tool.
-  Refer to the [Backup and Restore](../clusters/cluster-management/backup-restore/backup-restore.md) page to learn more
-  about backup and restore tools in Palette.
+- Palette now uses Velero version 1.15 internally. This change allows newly deployed clusters to use
+  [Kopia](https://velero.io/docs/main/file-system-backup/#how-velero-integrates-with-kopia) as the default backup and
+  restore tool. Existing clusters will continue to use Restic as the default backup and restore tool. Refer to
+  the [Backup and Restore](../clusters/cluster-management/backup-restore/backup-restore.md) page to learn more about
+  backup and restore tools in Palette.
 
-- The Self-hosted Palette Helm Chart installation method now supports custom image pull secrets. You can use the `global.imagePullSecrets` parameter in the Helm Chart **values.yaml** file to specify a [Docker configuration JSON object](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#registry-secret-existing-credentials) containing your private registry credentials. Refer to the [Image Pull Secret](../enterprise-version/install-palette/install-on-kubernetes/palette-helm-ref.md#image-pull-secret) section of the Palette Helm Chart documentation to learn more about using custom image pull secrets.
+- The Self-hosted Palette Helm Chart installation method now supports custom image pull secrets. You can use the
+  `global.imagePullSecrets` parameter in the Helm Chart **values.yaml** file to specify a
+  [Docker configuration JSON object](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#registry-secret-existing-credentials)
+  containing your private registry credentials. Refer to the
+  [Image Pull Secret](../enterprise-version/install-palette/install-on-kubernetes/palette-helm-ref.md#image-pull-secret)
+  section of the Palette Helm Chart documentation to learn more about using custom image pull secrets.
 
 ### Edge
 
@@ -72,8 +86,9 @@ tags: ["release-notes"]
   cluster is imported into Palette, you can create worker node pools from edge hosts built using the EdgeForge workflow
   or Agent Mode. To secure these edge hosts within the hybrid ecosystem, you have the flexibility to use either AWS
   Systems Manager or IAM Roles Anywhere. Additionally, a Cilium network layer can be configured to manage networking for
-  hybrid nodes using affinity rules. Refer to [EKS Hybrid Nodes](../clusters/public-cloud/aws/eks-hybrid-nodes/eks-hybrid-nodes.md) section to learn more about using Palette to manage your
-  Amazon EKS Hybrid Nodes.
+  hybrid nodes using affinity rules. Refer to
+  [EKS Hybrid Nodes](../clusters/public-cloud/aws/eks-hybrid-nodes/eks-hybrid-nodes.md) section to learn more about
+  using Palette to manage your Amazon EKS Hybrid Nodes.
 
 - <TpBadge /> You can now transfer the management of Edge clusters deployed in an airgap environments through [Local
   UI](../clusters/edge/local-ui/local-ui.md) to a Palette management plane. This feature allows you to start the
