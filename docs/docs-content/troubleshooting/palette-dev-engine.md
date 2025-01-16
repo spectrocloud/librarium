@@ -150,9 +150,9 @@ limits for a virtual cluster, and use the host cluster's default resource limits
 
 ## Scenario - Adjust Virtual Clusters Limits Before Palette Upgrades
 
-Palette upgrades on K3s virtual clusters upgrades may get stuck if the cluster does not have enough resources to
+Palette upgrades on K3s virtual clusters may get stuck if the cluster does not have enough resources to
 accommodate additional pods. Ensure that your cluster has 1 CPU, 1 GiB of memory, and 1 GiB storage of free resources
-before commencing an upgrade.
+before commencing an upgrade. Use the following steps to adjust the resource limits of a virtual cluster.
 
 ### Debug Steps
 
@@ -160,12 +160,12 @@ before commencing an upgrade.
 
 2. Select **Cluster Groups** from the left **Main Menu**. The list of cluster groups appears.
 
-3. Select the **Virtual Clusters** tab. Then, select one of your virtual clusters.
+3. Select the **Virtual Clusters** tab. Next, select one of your virtual clusters.
 
 4. Click **Settings**. Then, select **Cluster Settings**. The **Settings** pane appears.
 
 5. Select the **Cluster Size** tab. Make a note of the CPU, memory and storage allocation indicated in their respective
-   fields. Then, close the **Settings** pane.
+   fields. Close the **Settings** pane once you are done reviewing the resources.
 
 6. Click on the host cluster link in the **Host Cluster** field. The cluster **Overview** tab appears.
 
@@ -182,26 +182,25 @@ before commencing an upgrade.
    kubectl top pods --namespace $virtual_cluster_namespace
    ```
 
-9. Compare your CPU and memory usage to the virtual cluster allocations that you made a note of earlier in step five.
-   Your cluster should have 1 CPU, 1 GiB of memory, and 1 GiB storage of free before commencing an upgrade. If your
+9. Compare your CPU and memory usage to the virtual cluster allocations that you made note of earlier in step five.
+   Your cluster should have 1 CPU, 1 GiB of memory, and 1 GiB of storage free before commencing an upgrade. If your
    cluster requires further resources and your virtual cluster allocation is at the limit, you can increase your virtual
    cluster limits.
 
-10. Select **Cluster Groups** from the left **Main Menu**. The list of cluster groups appears.
+10. Navigate back to the Palette UI. In the left **Main Menu**, select **Cluster Groups** . The list of cluster groups appears.
 
-11. Select the cluster group corresponding to your virtual cluster. Then, click **Settings**. The **Cluster Group
+11. Select the cluster group corresponding to your virtual cluster. Click on **Settings** in the top right-hand corner. The **Cluster Group
     Settings** pane appears.
 
-12. Select the **Settings** tab. You can adjust the CPU, memory and storage limits according to your requirements from
+12. Select the **Settings** tab. You can adjust the CPU, memory, and storage limits according to your requirements from
     the **Virtual Clusters Limits** section. Alternatively, you can disable limits entirely by changing the
-    `isolation.resourceQuota.enabled` YAML value to false. Click **Save Changes**. Then, close the **Settings** pane.
+    `isolation.resourceQuota.enabled` YAML value to `false`. Click **Save Changes**. Then, close the **Settings** pane.
 
-13. Select the **Virtual Clusters** tab. Then, select the virtual cluster you have been analyzing so far from the
-    clusters list.
+13. Select the **Virtual Clusters** tab. From the clusters list, choose the virtual cluster you have been analyzing.
 
 14. Click **Settings**. Then, select **Cluster Settings**. The **Settings** pane appears.
 
-15. Select the **Cluster Size** tab. You can then resize the cluster size to ensure there are 1 CPU, 1 GiB of memory,
+15. Select the **Cluster Size** tab. You can then resize the cluster size to ensure there is 1 CPU, 1 GiB of memory,
     and 1 GiB storage of free resources.
 
-16. Repeat one through 15 for each of your virtual clusters.
+16. Repeat steps one through 15 for each virtual cluster.
