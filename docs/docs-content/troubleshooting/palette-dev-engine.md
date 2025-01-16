@@ -212,11 +212,11 @@ commencing an upgrade. Use the following steps to adjust the resource limits of 
 
 13. Select the **Settings** tab. You can adjust the CPU, memory, and storage limits according to your requirements from
     the **Virtual Clusters Limits** section. Alternatively, you can disable limits entirely by changing the
-    `isolation.resourceQuota.enabled` YAML value to `false`. Click **Save Changes**. Then, close the **Settings** pane.
+    `isolation.resourceQuota.enabled` YAML value to `false`. Click **Save Changes**. Close the **Settings** pane.
 
 14. Select the **Virtual Clusters** tab. From the clusters list, choose the virtual cluster you have been analyzing.
 
-15. Click **Settings**. Then, select **Cluster Settings**. The **Settings** pane appears.
+15. Click **Settings**. Next, select **Cluster Settings**. The **Settings** pane appears.
 
 16. Select the **Cluster Size** tab. You can then resize the cluster size to ensure there is 1 CPU, 1 GiB of memory, and
     1 GiB storage of free resources.
