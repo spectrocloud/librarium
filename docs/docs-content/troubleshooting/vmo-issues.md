@@ -37,15 +37,7 @@ Use the following steps to adjust the value of **Max concurrent virtual machine 
 
 6. Click **Save** after making the change.
 
-7. You can then try restarting your migration plans. From the left **Main Menu**, select **Plans for virtualization**.
-
-8. In the top-left corner, use the **Namespace** drop-down Menu to select your Kubernetes namespace for your migration.
-
-9. In the table, click the **three-dot Menu** next to the migration plan.
-
-10. In the menu, click on **Restart**.
-
-If you are unable to restart the migration, you will need to recreate and start it again. Refer to
+You will now need to recreate any migration plans that are in an **Unknown** state, and start them again. Refer to
 [Create Migration Plans](../vm-management/vm-migration-assistant/create-migration-plans.md) for guidance.
 
 ## Scenario - Virtual Machines (VM) Stuck in a Migration Loop
