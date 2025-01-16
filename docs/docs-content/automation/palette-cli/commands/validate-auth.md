@@ -296,7 +296,6 @@ services.
 
 #### Azure
 
-<!-- TBC -->
 In this example, validation failed for the `palette-spc` service principal due to missing permissions.
 
 ```yaml hideClipboard
