@@ -68,7 +68,7 @@ hosts installed in airgap mode in Local UI.
 
 :::warning
 
-Do not remove multiple control plane nodes in one operation, or remove a control plane node when another control plane
+Do not remove multiple control plane nodes in one operation or remove a control plane node when another control plane
 node is in the process of being removed. Doing so may lead to data consistency issues within the cluster.
 
 If you need to remove multiple control plane nodes, wait until after the first node has been removed to remove another
