@@ -36,11 +36,12 @@ Kubernetes clusters in your targeted environment through Palette.
   - You will need to provide the following details during the validation steps:
 
     - [Microsoft Entra tenant ID](https://learn.microsoft.com/en-us/entra/fundamentals/how-to-find-tenant) for your
-      Azure subscription.
+      Azure subscription where the service principal performing the validation resides.
     - Client ID for the service principal that will perform the validation.
-    - Client secret for the service principal that will perform the validation.
+    - Client secret associated with the service principal that will perform the validation.
     - Service Principal ID for the service principal that will be deploying clusters in your environment.
     - Subscription ID for where the clusters will be deployed to.
+    - Resource group where the clusters will be deployed to.
 
 ## Usage
 
@@ -123,36 +124,59 @@ The validation process will now execute and output the results to your terminal.
 
 #### Azure
 
-1. Issue the `validate-auth` command using the Palette CLI.
+1. Set the following environment variables before issuing the Palette CLI command.
+
+   ```shell
+   export AZURE_TENANT_ID=<tenantId>
+   export AZURE_CLIENT_ID=<clientId>
+   export AZURE_CLIENT_SECRET=<azureClientSecret>
+   export AZURE_ENVIRONMENT=<azureEnvironment>
+   ```
+
+   - Replace `<tenantId>` with the
+     [Microsoft Entra tenant ID](https://learn.microsoft.com/en-us/entra/fundamentals/how-to-find-tenant) for your Azure
+     subscription where the service principal performing the validation resides.
+   - Replace `<clientId>` with the client ID for the service principal that will perform the validation.
+   - Replace `<azureClientSecret>` with the client secret associated with the service principal that will perform the
+     validation.
+   - Replace `<azureEnvironment>` with the environment where you want to perform the validation. Use `AzureCloud` for
+     the public Azure cloud or `AzureUSGovernment` for the
+     [Azure Government](https://learn.microsoft.com/en-us/azure/azure-government/documentation-government-welcome)
+     environment.
+
+2. Issue the `validate-auth` command using the Palette CLI.
 
    ```shell
    palette validate-auth
    ```
 
-2. When prompted, select `Azure` for the cloud environment, and press Enter.
+3. When prompted, select `Azure` for the cloud environment, and press Enter.
 
-3. Provide the Tenant ID for your Azure subscription, and press Enter.
+4. Provide the Tenant ID for your Azure subscription where the service principal performing the validation resides, and
+   press Enter. This must match the environment variable set in step 1.
 
-4. Provide the client ID for the service principal that will perform the validation, and press Enter.
+5. Provide the client ID for the service principal that will perform the validation, and press Enter. This must match
+   the environment variable set in step 1.
 
-5. Provide the client secret for the service principal that will perform the validation, and press Enter.
+6. Provide the client secret associated with the service principal that will perform the validation, and press Enter.
+   This must match the environment variable set in step 1.
 
-6. Select either `AzureCloud` or `AzureUSGovernment` as the environment that you want to perform the validation in, and
-   press Enter.
+7. Select either `AzureCloud` or `AzureUSGovernment` as the environment where you want to perform the validation, and
+   press Enter. This must match the environment variable set in step 1.
 
-7. Select either `IaaS` or `AKS` depending on what type of clusters you will be deploying, and press Enter.
+8. Select either `IaaS` or `AKS` depending on what type of clusters you will be deploying, and press Enter.
 
-8. Select either `Dynamic placement` or `Static placement` depending on the network configuration you require for your
+9. Select either `Dynamic placement` or `Static placement` depending on the network configuration you require for your
    clusters, and press Enter. Refer to the
    [Required Permissions](../../../clusters/public-cloud/azure/required-permissions.md) page to learn more about Azure
    permissions needed by Palette.
 
-9. Provide the Service Principal ID for the service principal that will be deploying clusters in your environment, and
-   press Enter.
+10. Provide the Service Principal ID for the service principal that will be deploying clusters in your environment, and
+    press Enter.
 
-10. Provide the Subscription ID where the clusters will be deployed to, and press Enter.
+11. Provide the Subscription ID where the clusters will be deployed to, and press Enter.
 
-11. Provide the resource group where the clusters will be deployed to, and press Enter. The resource group must exist
+12. Provide the resource group where the clusters will be deployed to, and press Enter. The resource group must exist
     within the Subscription ID provided in the previous step.
 
 The validation process will now execute and output the results to your terminal.
@@ -227,10 +251,10 @@ State:            Succeeded
 Rule Results
 ------------
 
-Validation Rule:        validation-paletteclusteroperator
+Validation Rule:        validation-rule-1
 Validation Type:        azure-rbac
 Status:                 True
-Last Validated:         2025-01-14T19:58:12Z
+Last Validated:         2025-01-17T10:41:49Z
 Message:                Principal has all required permissions.
 ```
 
@@ -315,19 +339,32 @@ State:            Failed
 Rule Results
 ------------
 
-Validation Rule:        validation-palette-spc
+Validation Rule:        validation-rule-1
 Validation Type:        azure-rbac
 Status:                 False
-Last Validated:         2025-01-14T20:37:24Z
+Last Validated:         2025-01-17T10:41:49Z
 Message:                Principal lacks required permissions. See failures for details.
 
 --------
 Failures
 --------
-...
+- Action Microsoft.Network/routeTables/delete unpermitted because no role assignment permits it.
+- Action Microsoft.Storage/storageAccounts/write unpermitted because no role assignment permits it.
+- Action Microsoft.Compute/disks/write unpermitted because no role assignment permits it.
 ```
 
-Use the output to help you address the validation failures.
+Use the output to help you address the validation failures. In this example, the Validator identified Azure RBAC
+permissions that are missing from your role assignments.
+
+To resolve the missing permissions, you would need to add them to the appropriate role definition, or ensure that the
+service principal has been assigned a role that includes these permissions. The following table summarizes the missing
+actions by their Azure Resource Provider.
+
+| Azure Resource Provider | Missing Actions         | Permission Type |
+| ----------------------- | ----------------------- | --------------- |
+| `Microsoft.Network`     | `routeTables/delete`    | Role Assignment |
+| `Microsoft.Storage`     | `storageAccounts/write` | Role Assignment |
+| `Microsoft.Compute`     | `disks/write`           | Role Assignment |
 
 ### Resolve Failures
 
