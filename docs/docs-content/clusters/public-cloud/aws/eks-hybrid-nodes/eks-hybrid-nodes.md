@@ -6,10 +6,6 @@ tags: ["public cloud", "aws", "eks hybrid nodes"]
 hide_table_of_contents: false
 ---
 
-:::preview
-
-:::
-
 Palette supports management of
 [Amazon EKS Hybrid Nodes](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-overview.html). Using Palette to
 manage Amazon EKS Hybrid Nodes provides the following benefits:
