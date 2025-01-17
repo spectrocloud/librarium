@@ -134,16 +134,16 @@ Palette. You will then create a cluster profile and use the registered host to d
 
   5. Compile and package the SELinux policy module.
 
-      ```shell
-      checkmodule -M -m --output rsync_dac_override.mod rsync_dac_override.te
-      semodule_package --output rsync_dac_override.pp -m rsync_dac_override.mod
-      ```
+     ```shell
+     checkmodule -M -m --output rsync_dac_override.mod rsync_dac_override.te
+     semodule_package --output rsync_dac_override.pp -m rsync_dac_override.mod
+     ```
 
   6. Install the compiled policy module.
 
-      ```shell
-      semodule --install rsync_dac_override.pp
-      ```
+     ```shell
+     semodule --install rsync_dac_override.pp
+     ```
 
   </details>
 
@@ -417,7 +417,11 @@ Palette. You will then create a cluster profile and use the registered host to d
 
 :::warning
 
-If using the FIPS version of Agent Mode on a Rocky Linux edge host, SELinux may incorrectly label the **kubeadm-flags.env** file during cluster deployment or when certain configurations are adjusted, preventing the Kubelet from accessing it and properly managing the cluster. Refer to the [Edge Troubleshooting Guide](../../troubleshooting/edge.md#Scenario---Kubelet-Process-Cannot-Access-kubeadm-flags.env) for guidance.
+If using the FIPS version of Agent Mode on a Rocky Linux edge host, SELinux may incorrectly label the
+**kubeadm-flags.env** file during cluster deployment or when certain configurations are adjusted, preventing the Kubelet
+from accessing it and properly managing the cluster. Refer to the
+[Edge Troubleshooting Guide](../../troubleshooting/edge.md#Scenario---Kubelet-Process-Cannot-Access-kubeadm-flags.env)
+for guidance.
 
 :::
 
@@ -612,7 +616,11 @@ internet.
 
 :::warning
 
-If using the FIPS version of Agent Mode on a Rocky Linux edge host, SELinux may incorrectly label the **kubeadm-flags.env** file during cluster deployment or when certain configurations are adjusted, preventing the Kubelet from accessing it and properly managing the cluster. Refer to the [Edge Troubleshooting Guide](../../troubleshooting/edge.md#Scenario---Kubelet-Process-Cannot-Access-kubeadm-flags.env) for guidance.
+If using the FIPS version of Agent Mode on a Rocky Linux edge host, SELinux may incorrectly label the
+**kubeadm-flags.env** file during cluster deployment or when certain configurations are adjusted, preventing the Kubelet
+from accessing it and properly managing the cluster. Refer to the
+[Edge Troubleshooting Guide](../../troubleshooting/edge.md#Scenario---Kubelet-Process-Cannot-Access-kubeadm-flags.env)
+for guidance.
 
 :::
 
