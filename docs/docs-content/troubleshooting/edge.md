@@ -306,13 +306,13 @@ Palette agent:
 6. Check the **Node Logs** box and click **Download**. You may also download logs from other components at the same
    time.
 
-## Scenario - kubelet Process Cannot Access **kubeadm-flags.env**
+## Scenario - Kubelet Process Cannot Access kubeadm-flags.env
 
-If using the FIPS version of [Agent Mode](../deployment-modes/agent-mode/install-agent-host.md) on a Rocky Linux edge host, SELinux may incorrectly label the **kubeadm-flags.env** file during cluster deployment or when certain configurations are adjusted, preventing the kubelet from accessing it and properly managing the cluster. To resolve this issue, reset the SELinux context of the kubelet environment variable to its default state based on SELinux policy rules.
+If using the FIPS version of [Agent Mode](../deployment-modes/agent-mode/install-agent-host.md) on a Rocky Linux edge host, SELinux may incorrectly label the **kubeadm-flags.env** file during cluster deployment or when certain configurations are adjusted, preventing the Kubelet from accessing it and properly managing the cluster. To resolve this issue, reset the SELinux context of the Kubelet environment variable to its default state based on SELinux policy rules.
 
 ### Debug Steps
 
-1. After deploying the cluster, monitor the kubelet status.
+1. After deploying the cluster, monitor the Kubelet status.
 
    ```shell
    systemctl status kubelet
@@ -321,23 +321,23 @@ If using the FIPS version of [Agent Mode](../deployment-modes/agent-mode/install
 2. Check the logs for messages related to SELinux denials and **kubeadm-flags.env**.
 
    ```shell
-   ausearch -m avc -ts recent | grep kubeadm-flags.env
+   ausearch -message avc --start recent | grep kubeadm-flags.env
    ```
 
-   The following output indicates that SELinux's security policies are denying read operations attempted by the kubelet.
+   The following output indicates that SELinux's security policies are denying read operations attempted by the Kubelet.
 
    ```shell hideClipboard
    time->Wed Jan 17 14:32:01 2025
    type=AVC msg=audit(1673968321.452:456): avc:  denied  { read } for  pid=1234 comm="kubelet" name="kubeadm-flags.env" dev="sda1" ino=56789 scontext=system_u:system_r:kubelet_t:s0 tcontext=unconfined_u:object_r:default_t:s0 tclass=file permissive=0
    ```
 
-3. Reset the SELinux context of the kubelet environment variable to its default state.
+3. Reset the SELinux context of the Kubelet environment variable to its default state.
 
    ```shell
    restorecon -v /var/lib/kubelet/kubeadm-flags.env
    ```
 
-4. Restart the kubelet to apply your changes.
+4. Restart the Kubelet to apply your changes.
 
    ```shell
    systemctl restart kubelet
