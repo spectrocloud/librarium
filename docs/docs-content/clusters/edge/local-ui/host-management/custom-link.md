@@ -107,16 +107,16 @@ or open a new tab in your browser depending on how to configure the links.
      "links": [
        {
          "label": "Google",
-         "url": "https:/www.google.com",
+         "url": "https://www.google.com",
          "type": "iframe"
        },
        {
          "label": "Google 2",
-         "url": "https:/www.google.com"
+         "url": "https://www.google.com"
        },
        {
          "label": "Docs",
-         "url": "https:/docs.googlee.com",
+         "url": "https://docs.google.com",
          "group": "Example"
        },
        {
