@@ -92,63 +92,58 @@ Palette. You will then create a cluster profile and use the registered host to d
   <details>
 
   {" "}
+
   <summary>SELinux Policy Configuration</summary>
 
   1. Enable SELinux to allow full rsync access.
 
-
-      ```shell
-      setsebool -P rsync_full_access 1
-      ```
+     ```shell
+     setsebool -P rsync_full_access 1
+     ```
 
   2. Install the necessary tools to create and apply SELinux policy modules.
 
-
-      ```shell
-      dnf install selinux-policy-devel audit
-      ```
+     ```shell
+     dnf install selinux-policy-devel audit
+     ```
 
   3. Create a file named **rsync_dac_override.te**.
 
-
-      ```shell
-      nano rsync_dac_override.te
-      ```
+     ```shell
+     nano rsync_dac_override.te
+     ```
 
   4. Add the following content to the **rsync_dac_override.te** file.
 
+     ```shell
+     module rsync_dac_override 1.0;
 
-      ```shell
-      module rsync_dac_override 1.0;
+     require {
+       type rsync_t;
+       type default_t;
+       class dir read;
+       class capability dac_override;
+     }
 
-      require {
-        type rsync_t;
-        type default_t;
-        class dir read;
-        class capability dac_override;
-      }
+     # Allow rsync_t to read directories labeled default_t
+     allow rsync_t default_t:dir read;
 
-      # Allow rsync_t to read directories labeled default_t
-      allow rsync_t default_t:dir read;
-
-      # Allow rsync_t to override discretionary access control (DAC)
-      allow rsync_t self:capability dac_override;
-      ```
+     # Allow rsync_t to override discretionary access control (DAC)
+     allow rsync_t self:capability dac_override;
+     ```
 
   5. Compile and package the SELinux policy module.
 
-
-      ```shell
-      checkmodule -M -m -o rsync_dac_override.mod rsync_dac_override.te
-      semodule_package -o rsync_dac_override.pp -m rsync_dac_override.mod
-      ```
+     ```shell
+     checkmodule -M -m -o rsync_dac_override.mod rsync_dac_override.te
+     semodule_package -o rsync_dac_override.pp -m rsync_dac_override.mod
+     ```
 
   6. Install the compiled policy module.
 
-
-      ```shell
-      semodule -i rsync_dac_override.pp
-      ```
+     ```shell
+     semodule -i rsync_dac_override.pp
+     ```
 
   </details>
 
@@ -296,6 +291,7 @@ Palette. You will then create a cluster profile and use the registered host to d
     <details>
 
    {" "}
+
    <summary>Dedicated or On-Premises Palette Instance</summary>
 
    If you have a dedicated or on-premises instance of Palette, you need to identify the correct agent version and then
