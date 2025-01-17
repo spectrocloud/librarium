@@ -37,7 +37,8 @@ Palette. You will then create a cluster profile and use the registered host to d
 - Agent mode is only supported on Linux distributions that have
   [`systemd`](https://www.freedesktop.org/software/systemd/man/latest/systemd.html) installed and available.
 
-- The FIPS-compliant version of Agent Mode is only available for Red Hat Enterprise Linux (RHEL) and Rocky Linux 8 systems.
+- The FIPS-compliant version of Agent Mode is only available for Red Hat Enterprise Linux (RHEL) and Rocky Linux 8
+  systems.
 
 ## Prerequisites
 
@@ -65,7 +66,8 @@ Palette. You will then create a cluster profile and use the registered host to d
   - [Zstandard](https://facebook.github.io/zstd/)
   - [rsync](https://github.com/RsyncProject/rsync)
   - [systemd-timesyncd](https://www.freedesktop.org/software/systemd/man/latest/systemd-timesyncd.service.html)
-  - [systemd-networkd](https://www.freedesktop.org/software/systemd/man/latest/systemd-networkd.html). This requirement is specific for clusters that use static IP addresses. 
+  - [systemd-networkd](https://www.freedesktop.org/software/systemd/man/latest/systemd-networkd.html). This requirement
+    is specific for clusters that use static IP addresses.
   - [conntrack](https://conntrack-tools.netfilter.org/downloads.html). This requirement is specific for clusters that
     use PXKE as the Kubernetes layer.
   - [iptables](https://linux.die.net/man/8/iptables).
@@ -198,41 +200,41 @@ Palette. You will then create a cluster profile and use the registered host to d
    ```shell
    export USERDATA=./user-data
    ```
-     
+
 6. Download the latest version of the Palette agent installation script. There is a FIPS-compliant script, if needed.
 
     <Tabs groupId="FIPS">
 
     <TabItem value="Non-FIPS">
 
-    ```shell
-    curl --location --output ./palette-agent-install.sh https://github.com/spectrocloud/agent-mode/releases/latest/download/palette-agent-install.sh
-    ```
+   ```shell
+   curl --location --output ./palette-agent-install.sh https://github.com/spectrocloud/agent-mode/releases/latest/download/palette-agent-install.sh
+   ```
 
     </TabItem>
 
     <TabItem value="FIPS">
 
-     ```shell
-    curl --location --output ./palette-agent-install-fips.sh https://github.com/spectrocloud/agent-mode/releases/latest/download/palette-agent-install-fips.sh
-    ```
+   ```shell
+   curl --location --output ./palette-agent-install-fips.sh https://github.com/spectrocloud/agent-mode/releases/latest/download/palette-agent-install-fips.sh
+   ```
 
     </TabItem>
 
     </Tabs>
 
-    If you have a dedicated or on-premises instance of Palette, use the command below to get the Palette's stylus
-    version. Replace `<palette-endpoint>` with your Palette endpoint and `<api-key>` with your Palette API key.
+   If you have a dedicated or on-premises instance of Palette, use the command below to get the Palette's stylus
+   version. Replace `<palette-endpoint>` with your Palette endpoint and `<api-key>` with your Palette API key.
 
-    ```shell
-    curl --location --request GET 'https://<palette-endpoint>/v1/services/stylus/version' --header 'Content-Type: application/json' --header 'Apikey: <api-key>'  | jq --raw-output '.spec.latestVersion.content | match("version: ([^\n]+)").captures[0].string'
-    ```
+   ```shell
+   curl --location --request GET 'https://<palette-endpoint>/v1/services/stylus/version' --header 'Content-Type: application/json' --header 'Apikey: <api-key>'  | jq --raw-output '.spec.latestVersion.content | match("version: ([^\n]+)").captures[0].string'
+   ```
 
-    ```text hideClipboard
-    4.5.0
-    ```
+   ```text hideClipboard
+   4.5.0
+   ```
 
-    Next, download the version of the Palette agent installation script that matches the stylus version. Replace
+   Next, download the version of the Palette agent installation script that matches the stylus version. Replace
    `<stylus-version>` with your Palette stylus version. For example, if the output of the previous command was `4.5.0`,
    replace `<stylus-version>` with `v4.5.0`.
 
@@ -240,43 +242,43 @@ Palette. You will then create a cluster profile and use the registered host to d
 
     <TabItem value="Non-FIPS">
 
-    ```shell
-    curl --location --output ./palette-agent-install.sh https://github.com/spectrocloud/agent-mode/releases/download/<stylus-version>/palette-agent-install.sh
-    ```
+   ```shell
+   curl --location --output ./palette-agent-install.sh https://github.com/spectrocloud/agent-mode/releases/download/<stylus-version>/palette-agent-install.sh
+   ```
 
     </TabItem>
 
     <TabItem value="FIPS">
 
-    ```shell
-    curl --location --output ./palette-agent-install-fips.sh https://github.com/spectrocloud/agent-mode/releases/download/<stylus-version>/palette-agent-install-fips.sh
-    ```
-  
-    </TabItem>
-
-    </Tabs> 
-
-7. Grant execution permissions to the installation script.
-
-    <Tabs groupId="FIPS">
-
-    <TabItem value="Non-FIPS">
-
-    ```shell
-    chmod +x ./palette-agent-install.sh
-    ```
-
-    </TabItem>
-
-    <TabItem value="FIPS">
-
-    ```shell
-    chmod +x ./palette-agent-install-fips.sh
-    ```
+   ```shell
+   curl --location --output ./palette-agent-install-fips.sh https://github.com/spectrocloud/agent-mode/releases/download/<stylus-version>/palette-agent-install-fips.sh
+   ```
 
     </TabItem>
 
     </Tabs>
+
+7. Grant execution permissions to the installation script.
+
+   <Tabs groupId="FIPS">
+
+   <TabItem value="Non-FIPS">
+
+   ```shell
+   chmod +x ./palette-agent-install.sh
+   ```
+
+   </TabItem>
+
+   <TabItem value="FIPS">
+
+   ```shell
+   chmod +x ./palette-agent-install-fips.sh
+   ```
+
+   </TabItem>
+
+   </Tabs>
 
 8. Issue the following command to install the agent on your host.
 
@@ -284,17 +286,17 @@ Palette. You will then create a cluster profile and use the registered host to d
 
     <TabItem value="Non-FIPS">
 
-    ```shell
-    sudo --preserve-env ./palette-agent-install.sh
-    ```
+   ```shell
+   sudo --preserve-env ./palette-agent-install.sh
+   ```
 
     </TabItem>
 
     <TabItem value="FIPS">
 
-    ```shell
-    sudo --preserve-env ./palette-agent-install-fips.sh
-    ```
+   ```shell
+   sudo --preserve-env ./palette-agent-install-fips.sh
+   ```
 
     </TabItem>
 
@@ -308,7 +310,7 @@ Palette. You will then create a cluster profile and use the registered host to d
    Connection to 192.168.1.100 closed.
    ```
 
-9.  Upon agent installation, the host will reboot to the registration screen and use the provided `EdgeHostToken` for
+9. Upon agent installation, the host will reboot to the registration screen and use the provided `EdgeHostToken` for
    automatic registration with Palette. The host will be registered in the same project where the registration token was
    created.
 
@@ -413,35 +415,35 @@ internet.
    ```
 
 6. Issue the following command from a host with internet access to download the agent binary.
-   
-    <Tabs groupID="FIPS">
 
-    <TabItem value="Non-FIPS">
+   <Tabs groupID="FIPS">
 
-    Name the binary `palette-agent`. Replace `<architecture>` with the architecture of your CPU. If you have ARM64, use `arm64`. If you
-    have AMD64 or x86_64, use `amd64`. Replace `<version>` with the desired version number. In this example, we use
-    `v4.5.0`.
+   <TabItem value="Non-FIPS">
 
-    ```shell
-    export URL=https://github.com/spectrocloud/agent-mode/releases/download/<version>/palette-agent-linux-<architecture>
-    curl --verbose --location $URL --output palette-agent
-    ```
+   Name the binary `palette-agent`. Replace `<architecture>` with the architecture of your CPU. If you have ARM64, use
+   `arm64`. If you have AMD64 or x86_64, use `amd64`. Replace `<version>` with the desired version number. In this
+   example, we use `v4.5.0`.
 
-    </TabItem>
+   ```shell
+   export URL=https://github.com/spectrocloud/agent-mode/releases/download/<version>/palette-agent-linux-<architecture>
+   curl --verbose --location $URL --output palette-agent
+   ```
 
-    <TabItem value="FIPS">
+   </TabItem>
 
-    Name the binary `palette-agent`. Replace `<version>` with the desired version number. In this example, we use
-    `v4.5.0`. Note that the FIPS version only supports a CPU architecture of AMD64.
+   <TabItem value="FIPS">
 
-    ```shell
-    export URL=https://github.com/spectrocloud/agent-mode/releases/download/<version>/palette-agent-fips-linux-amd64
-    curl --verbose --location $URL --output palette-agent
-    ```
+   Name the binary `palette-agent`. Replace `<version>` with the desired version number. In this example, we use
+   `v4.5.0`. Note that the FIPS version only supports a CPU architecture of AMD64.
 
-    </TabItem>
+   ```shell
+   export URL=https://github.com/spectrocloud/agent-mode/releases/download/<version>/palette-agent-fips-linux-amd64
+   curl --verbose --location $URL --output palette-agent
+   ```
 
-    </Tabs>
+   </TabItem>
+
+   </Tabs>
 
 7. Issue the following command to make the binary executable.
 
