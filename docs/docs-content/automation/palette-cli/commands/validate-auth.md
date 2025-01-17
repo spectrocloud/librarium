@@ -36,11 +36,12 @@ Kubernetes clusters in your targeted environment through Palette.
   - You will need to provide the following details during the validation steps:
 
     - [Microsoft Entra tenant ID](https://learn.microsoft.com/en-us/entra/fundamentals/how-to-find-tenant) for your
-      Azure subscription.
+      Azure subscription where the service principal performing the validation resides.
     - Client ID for the service principal that will perform the validation.
-    - Client secret for the service principal that will perform the validation.
+    - Client secret associated with the service principal that will perform the validation.
     - Service Principal ID for the service principal that will be deploying clusters in your environment.
     - Subscription ID for where the clusters will be deployed to.
+    - Name of the resource group where the clusters will be deployed to.
 
 ## Usage
 
@@ -81,7 +82,9 @@ palette validate-auth --outdir $(pwd)/resources
 
 The interactive steps change depending on the cloud environment chosen.
 
-#### AWS
+<Tabs queryString="steps">
+
+<TabItem label="AWS" value="aws">
 
 1. Issue the `validate-auth` command using the Palette CLI.
 
@@ -89,29 +92,27 @@ The interactive steps change depending on the cloud environment chosen.
    palette validate-auth
    ```
 
-2. When prompted, select `AWS` for the cloud environment, and press Enter.
+2. When prompted, select `AWS` for the cloud environment.
 
-3. Provide the AWS Access Key ID for the IAM user that will perform the validation, and press Enter.
+3. Provide the AWS Access Key ID for the IAM user that will perform the validation.
 
-4. Provide the AWS Secret Access Key for the IAM user that will perform the validation, and press Enter.
+4. Provide the AWS Secret Access Key for the IAM user that will perform the validation.
 
-5. Select either `IAM User` or `IAM Role` depending on what you want to check, and press Enter.
+5. Select either `IAM User` or `IAM Role` depending on what you want to check.
 
-6. Provide the `IAM User name` or `IAM Role name` depending on what was chosen in step 5, and press Enter. This is the
-   user or role that will be deploying clusters in your environment.
+6. Provide the `IAM User name` or `IAM Role name` depending on what was chosen in step 5. This is the user or role that
+   will be deploying clusters in your environment.
 
 7. Choose the permission model to validate against. The `Comprehensive` model will check whether you have sufficient
    permissions for all Palette features. The `Minimal` model will only check for the privileges needed to create and
    delete clusters. Refer to the [Required IAM Policies](../../../clusters/public-cloud/aws/required-iam-policies.md) to
    learn more about AWS permissions needed by Palette.
 
-   Once you have selected the permission model, press Enter.
-
 8. You are prompted to answer `Will the cloud account be deploying EKS host clusters?`. Enter `y` if you want to check
    for sufficient permissions to deploy Amazon EKS clusters, or `n` if you do not.
 
 9. Provide the default AWS region on which the validation will be performed. This should match the region where you
-   intend to deploy clusters. Press Enter after providing the region.
+   intend to deploy clusters.
 
    Example.
 
@@ -121,41 +122,69 @@ The interactive steps change depending on the cloud environment chosen.
 
 The validation process will now execute and output the results to your terminal.
 
-#### Azure
+</TabItem>
 
-1. Issue the `validate-auth` command using the Palette CLI.
+<TabItem label="Azure" value="azure">
+
+1. Set the following environment variables before issuing the Palette CLI command. These are needed in addition to the
+   validation steps due to Azure's authentication and authorization requirements.
+
+   ```shell
+   export AZURE_TENANT_ID=<tenantId>
+   export AZURE_CLIENT_ID=<clientId>
+   export AZURE_CLIENT_SECRET=<azureClientSecret>
+   export AZURE_ENVIRONMENT=<azureEnvironment>
+   ```
+
+   - Replace `<tenantId>` with the
+     [Microsoft Entra tenant ID](https://learn.microsoft.com/en-us/entra/fundamentals/how-to-find-tenant) for your Azure
+     subscription where the service principal performing the validation resides.
+   - Replace `<clientId>` with the client ID for the service principal that will perform the validation.
+   - Replace `<azureClientSecret>` with the client secret associated with the service principal that will perform the
+     validation.
+   - Replace `<azureEnvironment>` with the environment where you want to perform the validation. Use `AzureCloud` for
+     the public Azure cloud or `AzureUSGovernment` for the
+     [Azure Government](https://learn.microsoft.com/en-us/azure/azure-government/documentation-government-welcome)
+     environment.
+
+2. Issue the `validate-auth` command using the Palette CLI.
 
    ```shell
    palette validate-auth
    ```
 
-2. When prompted, select `Azure` for the cloud environment, and press Enter.
+3. When prompted, select `Azure` for the cloud environment.
 
-3. Provide the Tenant ID for your Azure subscription, and press Enter.
+4. Provide the Tenant ID for your Azure subscription where the service principal performing the validation resides, and
+   press Enter. This must match the environment variable set in step 1.
 
-4. Provide the client ID for the service principal that will perform the validation, and press Enter.
+5. Provide the client ID for the service principal that will perform the validation. This must match the environment
+   variable set in step 1.
 
-5. Provide the client secret for the service principal that will perform the validation, and press Enter.
+6. Provide the client secret associated with the service principal that will perform the validation. This must match the
+   environment variable set in step 1.
 
-6. Select either `AzureCloud` or `AzureUSGovernment` as the environment that you want to perform the validation in, and
-   press Enter.
+7. Select either `AzureCloud` or `AzureUSGovernment` as the environment where you want to perform the validation, and
+   press Enter. This must match the environment variable set in step 1.
 
-7. Select either `IaaS` or `AKS` depending on what type of clusters you will be deploying, and press Enter.
+8. Select either `IaaS` or `AKS` depending on what type of clusters you will be deploying.
 
-8. Select either `Dynamic placement` or `Static placement` depending on the network configuration you require for your
-   clusters, and press Enter. Refer to the
-   [Required Permissions](../../../clusters/public-cloud/azure/required-permissions.md) page to learn more about Azure
-   permissions needed by Palette.
+9. Select either `Dynamic placement` or `Static placement` depending on the network configuration you require for your
+   clusters. Refer to the [Required Permissions](../../../clusters/public-cloud/azure/required-permissions.md) page to
+   learn more about Azure permissions needed by Palette.
 
-9. Provide the Service Principal ID for the service principal that will be deploying clusters in your environment, and
-   press Enter.
+10. Provide the Service Principal ID for the service principal that will be deploying clusters in your environment.
 
-10. Provide the Subscription ID where the clusters will be deployed to, and press Enter.
+11. Provide the Subscription ID where the clusters will be deployed to.
 
-11. Provide the resource group where the clusters will be deployed to, and press Enter. The resource group must exist
-    within the Subscription ID provided in the previous step.
+12. Provide the name of the resource group where the clusters will be deployed to. The resource group must exist within
+    the Subscription ID provided in the previous step.
 
 The validation process will now execute and output the results to your terminal.
+
+</TabItem>
+
+</Tabs>
 
 ### Validator File
 
@@ -170,7 +199,7 @@ Example.
 Remove file validator-20250113_183600.yaml from disk? [Y/n]:
 ```
 
-Enter `y` if you want to remove the specification file, or `n` if you want to keep it.
+Enter `y` if you want to remove the Validator file, or `n` if you want to keep it.
 
 ## Review Validation Results
 
@@ -182,7 +211,9 @@ depending on the outcome.
 If the validation is successful, the `State` field is set to `Succeeded`. The output varies slightly depending on the
 cloud environment.
 
-#### AWS
+<Tabs queryString="succeeded">
+
+<TabItem label="AWS" value="aws">
 
 When the IAM user or role provided has all sufficient privileges, then the validation results will appear similar to the
 following example.
@@ -208,7 +239,9 @@ Last Validated:         2025-01-14T19:58:12Z
 Message:                All required IAM user policy permissions were found
 ```
 
-#### Azure
+</TabItem>
+
+<TabItem label="Azure" value="azure">
 
 When the service principal provided has all sufficient privileges, then the validation results will appear similar to
 the following example.
@@ -227,23 +260,29 @@ State:            Succeeded
 Rule Results
 ------------
 
-Validation Rule:        validation-paletteclusteroperator
+Validation Rule:        validation-rule-1
 Validation Type:        azure-rbac
 Status:                 True
-Last Validated:         2025-01-14T19:58:12Z
+Last Validated:         2025-01-17T10:41:49Z
 Message:                Principal has all required permissions.
 ```
+
+</TabItem>
+
+</Tabs>
 
 ### Failed
 
 If the validation is not successful, the `State` field is set to `Failed`. The `Failures` section contains additional
 information about the failure and will vary depending on the cloud environment.
 
-#### AWS
+<Tabs queryString="failed">
+
+<TabItem label="AWS" value="aws">
 
 In this example, several IAM permissions are missing for the `PaletteClusterOperator` IAM role.
 
-```yaml hideClipboard
+```yaml hideClipboard {23-26}
 =================
 Validation Result
 =================
@@ -297,11 +336,13 @@ services.
     PaletteControllerPolicy
 ```
 
-#### Azure
+</TabItem>
+
+<TabItem label="Azure" value="azure">
 
 In this example, validation failed for the `palette-spc` service principal due to missing permissions.
 
-```yaml hideClipboard
+```yaml hideClipboard {23-25}
 =================
 Validation Result
 =================
@@ -315,19 +356,36 @@ State:            Failed
 Rule Results
 ------------
 
-Validation Rule:        validation-palette-spc
+Validation Rule:        validation-rule-1
 Validation Type:        azure-rbac
 Status:                 False
-Last Validated:         2025-01-14T20:37:24Z
+Last Validated:         2025-01-17T10:41:49Z
 Message:                Principal lacks required permissions. See failures for details.
 
 --------
 Failures
 --------
-...
+- Action Microsoft.Network/routeTables/delete unpermitted because no role assignment permits it.
+- Action Microsoft.Storage/storageAccounts/write unpermitted because no role assignment permits it.
+- Action Microsoft.Compute/disks/write unpermitted because no role assignment permits it.
 ```
 
-Use the output to help you address the validation failures.
+Use the output to help you address the validation failures. In this example, the Validator identified Azure RBAC
+permissions that are missing from your role assignments.
+
+To resolve the missing permissions, you would need to add them to the appropriate role definition, or ensure that the
+service principal has been assigned a role that includes these permissions. The following table summarizes the missing
+actions by their Azure Resource Provider.
+
+| Azure Resource Provider | Missing Actions         | Permission Type |
+| ----------------------- | ----------------------- | --------------- |
+| `Microsoft.Network`     | `routeTables/delete`    | Role Assignment |
+| `Microsoft.Storage`     | `storageAccounts/write` | Role Assignment |
+| `Microsoft.Compute`     | `disks/write`           | Role Assignment |
+
+</TabItem>
+
+</Tabs>
 
 ### Resolve Failures
 
@@ -337,7 +395,7 @@ guidance for common failure scenarios.
 
 | **Plugin** | **Failure Message**                                                            | **Guidance**                                                                                                                                                                                                                                                                              |
 | ---------- | ------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **AWS**    | One or more required IAM permissions was not found, or a condition was not met | The IAM role used by Palette is missing one or more required IAM permissions. Refer to [Required IAM Policies](../../../clusters/public-cloud/aws/required-iam-policies.md) for a comprehensive list of required IAM permissions and attach the missing permissions or policies.          |
+| **AWS**    | One or more required IAM permissions was not found, or a condition was not met | The IAM user or role used by Palette is missing one or more required IAM permissions. Refer to [Required IAM Policies](../../../clusters/public-cloud/aws/required-iam-policies.md) for a comprehensive list of required IAM permissions and attach the missing permissions or policies.  |
 | **Azure**  | Principal lacks required permissions. See failures for details.                | The service principal used by Palette is missing one or more required permissions. Refer to [Required Permissions](../../../clusters/public-cloud/azure/required-permissions.md) for a comprehensive list of required permissions and attach the missing permissions or role assignments. |
 
 <!-- Saving in case we add quota checks in the future
