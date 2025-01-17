@@ -90,29 +90,27 @@ The interactive steps change depending on the cloud environment chosen.
    palette validate-auth
    ```
 
-2. When prompted, select `AWS` for the cloud environment, and press Enter.
+2. When prompted, select `AWS` for the cloud environment.
 
-3. Provide the AWS Access Key ID for the IAM user that will perform the validation, and press Enter.
+3. Provide the AWS Access Key ID for the IAM user that will perform the validation.
 
-4. Provide the AWS Secret Access Key for the IAM user that will perform the validation, and press Enter.
+4. Provide the AWS Secret Access Key for the IAM user that will perform the validation.
 
-5. Select either `IAM User` or `IAM Role` depending on what you want to check, and press Enter.
+5. Select either `IAM User` or `IAM Role` depending on what you want to check.
 
-6. Provide the `IAM User name` or `IAM Role name` depending on what was chosen in step 5, and press Enter. This is the
-   user or role that will be deploying clusters in your environment.
+6. Provide the `IAM User name` or `IAM Role name` depending on what was chosen in step 5. This is the user or role that
+   will be deploying clusters in your environment.
 
 7. Choose the permission model to validate against. The `Comprehensive` model will check whether you have sufficient
    permissions for all Palette features. The `Minimal` model will only check for the privileges needed to create and
    delete clusters. Refer to the [Required IAM Policies](../../../clusters/public-cloud/aws/required-iam-policies.md) to
    learn more about AWS permissions needed by Palette.
 
-   Once you have selected the permission model, press Enter.
-
 8. You are prompted to answer `Will the cloud account be deploying EKS host clusters?`. Enter `y` if you want to check
    for sufficient permissions to deploy Amazon EKS clusters, or `n` if you do not.
 
 9. Provide the default AWS region on which the validation will be performed. This should match the region where you
-   intend to deploy clusters. Press Enter after providing the region.
+   intend to deploy clusters.
 
    Example.
 
@@ -124,7 +122,8 @@ The validation process will now execute and output the results to your terminal.
 
 #### Azure
 
-1. Set the following environment variables before issuing the Palette CLI command.
+1. Set the following environment variables before issuing the Palette CLI command. These are needed in addition to the
+   validation steps due to Azure's authentication and authorization requirements.
 
    ```shell
    export AZURE_TENANT_ID=<tenantId>
@@ -150,34 +149,32 @@ The validation process will now execute and output the results to your terminal.
    palette validate-auth
    ```
 
-3. When prompted, select `Azure` for the cloud environment, and press Enter.
+3. When prompted, select `Azure` for the cloud environment.
 
 4. Provide the Tenant ID for your Azure subscription where the service principal performing the validation resides, and
    press Enter. This must match the environment variable set in step 1.
 
-5. Provide the client ID for the service principal that will perform the validation, and press Enter. This must match
-   the environment variable set in step 1.
+5. Provide the client ID for the service principal that will perform the validation. This must match the environment
+   variable set in step 1.
 
-6. Provide the client secret associated with the service principal that will perform the validation, and press Enter.
-   This must match the environment variable set in step 1.
+6. Provide the client secret associated with the service principal that will perform the validation. This must match the
+   environment variable set in step 1.
 
 7. Select either `AzureCloud` or `AzureUSGovernment` as the environment where you want to perform the validation, and
    press Enter. This must match the environment variable set in step 1.
 
-8. Select either `IaaS` or `AKS` depending on what type of clusters you will be deploying, and press Enter.
+8. Select either `IaaS` or `AKS` depending on what type of clusters you will be deploying.
 
 9. Select either `Dynamic placement` or `Static placement` depending on the network configuration you require for your
-   clusters, and press Enter. Refer to the
-   [Required Permissions](../../../clusters/public-cloud/azure/required-permissions.md) page to learn more about Azure
-   permissions needed by Palette.
+   clusters. Refer to the [Required Permissions](../../../clusters/public-cloud/azure/required-permissions.md) page to
+   learn more about Azure permissions needed by Palette.
 
-10. Provide the Service Principal ID for the service principal that will be deploying clusters in your environment, and
-    press Enter.
+10. Provide the Service Principal ID for the service principal that will be deploying clusters in your environment.
 
-11. Provide the Subscription ID where the clusters will be deployed to, and press Enter.
+11. Provide the Subscription ID where the clusters will be deployed to.
 
-12. Provide the name of the resource group where the clusters will be deployed to, and press Enter. The resource group
-    must exist within the Subscription ID provided in the previous step.
+12. Provide the name of the resource group where the clusters will be deployed to. The resource group must exist within
+    the Subscription ID provided in the previous step.
 
 The validation process will now execute and output the results to your terminal.
 
@@ -267,7 +264,7 @@ information about the failure and will vary depending on the cloud environment.
 
 In this example, several IAM permissions are missing for the `PaletteClusterOperator` IAM role.
 
-```yaml hideClipboard
+```yaml hideClipboard {23-26}
 =================
 Validation Result
 =================
@@ -325,7 +322,7 @@ services.
 
 In this example, validation failed for the `palette-spc` service principal due to missing permissions.
 
-```yaml hideClipboard
+```yaml hideClipboard {23-25}
 =================
 Validation Result
 =================
