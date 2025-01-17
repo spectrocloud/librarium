@@ -31,6 +31,7 @@ Palette. You will then create a cluster profile and use the registered host to d
   | ----------------- | ------ | ------------------------------------------ | --------------------------------- | ------------------ |
   | AMD64             | Ubuntu | Palette eXtended Kubernetes - Edge (PXK-E) | Calico                            | :white_check_mark: |
   | AMD64             | Ubuntu | K3s                                        | Flannel                           | :white_check_mark: |
+  | AMD64             | Rocky Linux 8.10 (Green Obsidian) | Palette eXtended Kubernetes - Edge (PXK-E) | Cilium | :white_check_mark: |
 
 - Clusters with Flannel CNI is not verified for airgap deployments.
 
@@ -81,6 +82,66 @@ Palette. You will then create a cluster profile and use the registered host to d
   interfere with the Palette agent.
 
   :::
+
+  - If installing the FIPS version of Agent Mode on a Rocky Linux edge host, you must configure your SELinux policies to grant rsync the required host permissions. Follow the process below to apply the necessary configurations before installing Agent Mode.
+
+  <br />
+
+  <details>
+
+    <summary>SELinux Policy Configuration</summary>
+
+    1. Enable SELinux to allow full rsync access.
+
+      ```shell
+      setsebool -P rsync_full_access 1
+      ```
+
+    2. Install the necessary tools to create and apply SELinux policy modules.
+
+      ```shell
+      dnf install selinux-policy-devel audit
+      ```
+
+    3. Create a file named **rsync_dac_override.te**.
+
+      ```shell
+      nano rsync_dac_override.te
+      ```
+
+    4. Add the following content to the **rsync_dac_override.te** file. 
+
+      ```shell
+      module rsync_dac_override 1.0;
+
+      require {
+        type rsync_t;
+        type default_t;
+        class dir read;
+        class capability dac_override;
+      }
+
+      # Allow rsync_t to read directories labeled default_t
+      allow rsync_t default_t:dir read;
+
+      # Allow rsync_t to override discretionary access control (DAC)
+      allow rsync_t self:capability dac_override;
+      ```
+
+    5. Compile and package the SELinux policy module.
+
+      ```shell
+      checkmodule -M -m -o rsync_dac_override.mod rsync_dac_override.te
+      semodule_package -o rsync_dac_override.pp -m rsync_dac_override.mod
+      ```
+
+    6. Install the compiled policy module.
+
+      ```shell
+      semodule -i rsync_dac_override.pp
+      ```
+
+  </details>
 
 ## Install Palette Agent
 
@@ -223,40 +284,43 @@ Palette. You will then create a cluster profile and use the registered host to d
 
     </Tabs>
 
-   If you have a dedicated or on-premises instance of Palette, use the command below to get the Palette's stylus
-   version. Replace `<palette-endpoint>` with your Palette endpoint and `<api-key>` with your Palette API key.
+    <details>
 
-   ```shell
-   curl --location --request GET 'https://<palette-endpoint>/v1/services/stylus/version' --header 'Content-Type: application/json' --header 'Apikey: <api-key>'  | jq --raw-output '.spec.latestVersion.content | match("version: ([^\n]+)").captures[0].string'
-   ```
+      <summary>Dedicated or On-Premises Palette Instance</summary>
+   
+      If you have a dedicated or on-premises instance of Palette, you need to identify the correct agent version and then download the corresponding version of the agent installation script. Use the command below and replace `<palette-endpoint>` with your Palette endpoint and `<api-key>` with your Palette API key to identify the version.
 
-   ```text hideClipboard
-   4.5.0
-   ```
+      ```shell
+      curl --location --request GET 'https://<palette-endpoint>/v1/services/stylus/version' --header 'Content-Type: application/json' --header 'Apikey: <api-key>'  | jq --raw-output '.spec.latestVersion.content | match("version: ([^\n]+)").captures[0].string'
+      ```
 
-   Next, download the version of the Palette agent installation script that matches the stylus version. Replace
-   `<stylus-version>` with your Palette stylus version. For example, if the output of the previous command was `4.5.0`,
-   replace `<stylus-version>` with `v4.5.0`.
+      ```text hideClipboard
+      4.5.0
+      ```
 
-    <Tabs groupId="FIPS">
+      Issue the following command to download the version of the Palette agent for your dedicated or on-prem instance. Replace `<stylus-version>` with your output from the previous step.
 
-    <TabItem value="Non-FIPS">
+      <Tabs groupId="FIPS">
 
-   ```shell
-   curl --location --output ./palette-agent-install.sh https://github.com/spectrocloud/agent-mode/releases/download/<stylus-version>/palette-agent-install.sh
-   ```
+      <TabItem value="Non-FIPS">
 
-    </TabItem>
+      ```shell
+      curl --location --output ./palette-agent-install.sh https://github.com/spectrocloud/agent-mode/releases/download/v<stylus-version>/palette-agent-install.sh
+      ```
 
-    <TabItem value="FIPS">
+      </TabItem>
 
-   ```shell
-   curl --location --output ./palette-agent-install-fips.sh https://github.com/spectrocloud/agent-mode/releases/download/<stylus-version>/palette-agent-install-fips.sh
-   ```
+      <TabItem value="FIPS">
 
-    </TabItem>
+      ```shell
+      curl --location --output ./palette-agent-install-fips.sh https://github.com/spectrocloud/agent-mode/releases/download/v<stylus-version>/palette-agent-install-fips.sh
+      ```
 
-    </Tabs>
+      </TabItem>
+
+      </Tabs>
+
+    </details>
 
 7. Grant execution permissions to the installation script.
 
@@ -341,6 +405,12 @@ Palette. You will then create a cluster profile and use the registered host to d
 
 20. Follow the steps in the [Create Cluster Definition](../../clusters/edge/site-deployment/model-profile.md) guide to
     deploy a cluster using your registered host as a cluster node.
+
+:::warning
+
+If using the FIPS version of Agent Mode on a Rocky Linux edge host, SELinux may incorrectly label the **kubeadm-flags.env** file during cluster deployment or when certain configurations are adjusted, preventing the kubelet from accessing it and properly managing the cluster. Refer to the [Edge Troubleshooting Guide](../../troubleshooting/edge.md#Scenario---kubelet-Process-Cannot-Access-kubeadm-flags.env) for guidance.
+
+:::
 
 </TabItem>
 
@@ -530,6 +600,12 @@ internet.
 
 25. Follow the steps in [Create Local Cluster](../../clusters/edge/local-ui/cluster-management/create-cluster.md) to use
     the cluster definition you exported previously to create a cluster.
+
+:::warning
+
+If using the FIPS version of Agent Mode on a Rocky Linux edge host, SELinux may incorrectly label the **kubeadm-flags.env** file during cluster deployment or when certain configurations are adjusted, preventing the kubelet from accessing it and properly managing the cluster. Refer to the [Edge Troubleshooting Guide](../../troubleshooting/edge.md#Scenario---kubelet-Process-Cannot-Access-kubeadm-flags.env) for guidance.
+
+:::
 
 </TabItem>
 
