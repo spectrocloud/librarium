@@ -41,7 +41,7 @@ Kubernetes clusters in your targeted environment through Palette.
     - Client secret associated with the service principal that will perform the validation.
     - Service Principal ID for the service principal that will be deploying clusters in your environment.
     - Subscription ID for where the clusters will be deployed to.
-    - Resource group where the clusters will be deployed to.
+    - Name of the resource group where the clusters will be deployed to.
 
 ## Usage
 
@@ -176,8 +176,8 @@ The validation process will now execute and output the results to your terminal.
 
 11. Provide the Subscription ID where the clusters will be deployed to, and press Enter.
 
-12. Provide the resource group where the clusters will be deployed to, and press Enter. The resource group must exist
-    within the Subscription ID provided in the previous step.
+12. Provide the name of the resource group where the clusters will be deployed to, and press Enter. The resource group
+    must exist within the Subscription ID provided in the previous step.
 
 The validation process will now execute and output the results to your terminal.
 
