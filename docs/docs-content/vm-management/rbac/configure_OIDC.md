@@ -62,8 +62,8 @@ The following steps apply exclusively to clusters configured with **Custom** thi
 
 10. Next, log in to the IdP console that is associated with the OIDC configuration used in your cluster.
 
-11. Locate the OIDC application that was used in step five and enable the **Refresh Token** setting. For
-    example, if you are using [Okta](https://www.okta.com) as the IdP, refer to the
+11. Locate the OIDC application that was used in step five and enable the **Refresh Token** setting. For example, if you
+    are using [Okta](https://www.okta.com) as the IdP, refer to the
     [Refresh access tokens and rotate refresh tokens](https://developer.okta.com/docs/guides/refresh-tokens/main/) guide
     for further instructions.
 
