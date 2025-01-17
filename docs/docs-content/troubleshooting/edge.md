@@ -306,7 +306,7 @@ Palette agent:
 6. Check the **Node Logs** box and click **Download**. You may also download logs from other components at the same
    time.
 
-## Scenario - Kubelet Process Cannot Access kubeadm-flags.env
+## Scenario - Kubelet Process Cannot Access kubeadm-flags
 
 If using the FIPS version of [Agent Mode](../deployment-modes/agent-mode/install-agent-host.md) on a Rocky Linux edge
 host, SELinux may incorrectly label the **kubeadm-flags.env** file during cluster deployment or when certain
