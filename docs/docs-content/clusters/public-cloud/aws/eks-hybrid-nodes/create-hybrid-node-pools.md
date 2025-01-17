@@ -340,7 +340,7 @@ Use the following steps to manually trigger a repave on a hybrid node pool.
 
 5. Click on the version drop-down and select **Create new version**. The version creation dialog appears.
 
-6. Fill in **1.1.0** in the **Version** input field and click **Confirm**. The new cluster profile version is created
+6. Fill in a new value in the **Version** input field and click **Confirm**. The new cluster profile version is created
    with the same layers as the current version.
 
 7. You will need to make changes to the cluster profile based on how you registered your edge hosts.
