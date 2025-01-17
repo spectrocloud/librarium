@@ -309,7 +309,7 @@ Your hybrid node pools require manual repaving in these scenarios:
 - After modifying the **Access Management** settings of your Amazon EKS cluster in Palette. Refer to steps 11 through 13
   in [Import Cluster](./import-eks-cluster-enable-hybrid-mode.md#import-cluster).
 - After changing an edge host's **VPN Server IP**. Refer to step 7 in [Create Node Pool](#create-node-pool).
-- Changing any configuration on the Node Pool **Hybrid Profile**.
+- Changing any configuration in the Kubernetes layer of the Node Pool **Hybrid Profile**.
 
 These changes do not take effect until you repave the affected node pools.
 
@@ -338,51 +338,37 @@ Use the following steps to manually trigger a repave on a hybrid node pool.
 
    ![Edit Hybrid Profile](/aws_eks-hybrid_create-hybrid-node-pools_in-use-clusters.webp)
 
-5. Click on the **edge-nodeadm x.y.z** Kubernetes layer to view the **Edit Pack** page.
+5. Click on the version drop-down and select **Create new version**. The version creation dialog appears.
 
-6. In the YAML editor on the right, add an arbitrary node label to `cluster.config.kubelet.flags`.
+6. Fill in **1.1.0** in the **Version** input field and click **Confirm**. The new cluster profile version is created
+   with the same layers as the current version.
 
-   Example.
+7. You will need to make changes to the cluster profile based on how you registered your edge hosts.
 
-   ```yaml {9} hideClipboard
-   pack:
-     content: {}
-   cluster:
-     config: |
-       kubelet:
-         config:
-           shutdownGracePeriod: 30s
-         flags:
-           - --node-labels=repave1=true
-   ```
+   - For Agent Mode, select the **Kubernetes** layer of your cluster profile. Next, select a Kubernetes pack version
+     that is one minor version lower than your current selection. For example, select **1.29.x** if you cluster profile
+     is configured with **1.30.x**.
+   - For Appliance Mode, select the **OS** layer of your cluster profile. Next, click **Values** in the **Pack Details**
+     section. Edit the `options.system.uri` with another provider image value.
 
-   :::info
+8. Click **Confirm Updates** to save your changes.
 
-   The key value you enter for the node label does not affect your hybrid node pool's functionality, but any addition or
-   change to the Kubelet config will trigger the required repave.
+9. From the left **Main Menu**, select **Clusters**.
 
-   If you need to trigger a repave again, you can modify the key value to something else, such as
-   `--node-labels=repave2=true`.
+10. Select your cluster to view its **Overview** tab.
 
-   :::
+11. Select the **Nodes** tab.
 
-7. Click **Confirm Updates** when done, then click **Save Changes**.
+12. Click **Edit** on the node pool that you wish to trigger a repave on. The **Edit node pool** screen appears.
 
-8. From the left **Main Menu**, select **Clusters**.
+13. Click the pencil icon on the **Hybrid Profile** field. The **Configure profile** tab appears.
 
-9. Select your cluster to view its **Overview** tab.
+14. Select the cluster profile version you created. Click **Save**.
 
-10. Select the **Nodes** tab.
+15. Click **Confirm** to start the repave.
 
-11. On the **Nodes** tab, once the profile change has been processed, an **Updates pending** banner appears. Click on
-    **Node Pool Updates** in the banner.
-
-12. On the **Pool changes summary** pop-up window, click the checkbox next to **Upcoming changes in hybridPoolName
-    configuration**. Click **Confirm** afterwards.
-
-13. On the **Review update changes** window, review your changes and click **Confirm** to start the repave.
-
-The hybrid node pool repave will now complete. This can take up to one hour.
+The hybrid node pool repave will now complete. This can take up to one hour. Once the repave completes, you can edit the
+node pool again and select the cluster profile version that you had originally selected. This will allow your changes to take effect, while restoring your nodes to the desired configuration.
 
 ### Validate
 
