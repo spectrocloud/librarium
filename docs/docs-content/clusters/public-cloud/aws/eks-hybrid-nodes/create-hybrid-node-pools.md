@@ -309,7 +309,7 @@ Your hybrid node pools require manual repaving in these scenarios:
 - After modifying the **Access Management** settings of your Amazon EKS cluster in Palette. Refer to steps 11 through 13
   in [Import Cluster](./import-eks-cluster-enable-hybrid-mode.md#import-cluster).
 - After changing an edge host's **VPN Server IP**. Refer to step 7 in [Create Node Pool](#create-node-pool).
-- Changing any configuration in the Kubernetes layer of the Node Pool **Hybrid Profile**.
+- After changing any configuration in the Kubernetes layer of the Node Pool **Hybrid Profile**.
 
 These changes do not take effect until you repave the affected node pools.
 
@@ -346,7 +346,7 @@ Use the following steps to manually trigger a repave on a hybrid node pool.
 7. You will need to make changes to the cluster profile based on how you registered your edge hosts.
 
    - For Agent Mode, select the **Kubernetes** layer of your cluster profile. Next, select a Kubernetes pack version
-     that is one minor version lower than your current selection. For example, select **1.29.x** if you cluster profile
+     that is one minor version lower than your current selection. For example, select **1.29.x** if your cluster profile
      is configured with **1.30.x**.
    - For Appliance Mode, select the **OS** layer of your cluster profile. Next, click **Values** in the **Pack Details**
      section. Edit the `options.system.uri` with another provider image value.
@@ -367,7 +367,7 @@ Use the following steps to manually trigger a repave on a hybrid node pool.
 
 15. Click **Confirm** to start the repave.
 
-The hybrid node pool repave will now complete. This can take up to one hour. Once the repave completes, you can edit the
+The hybrid node pool repave will now start. This can take up to one hour. Once the repave completes, you can edit the
 node pool again and select the cluster profile version that you had originally selected. This will allow your changes to
 take effect, while restoring your nodes to the desired configuration.
 
