@@ -55,7 +55,7 @@ Creating a content bundle provides several benefits that may address common use 
   version `4.5.3` or earlier to create content bundles. To download the latest version of the Edge CLI, visit the
   [Downloads](../../../../spectro-downloads.md#palette-edge-cli) page.
 
-- Content bundles built with the Palette Edge CLI versions earlier than `4.5.17` cannot be used to provision multi-node
+- Content bundles built with the Palette Edge CLI versions earlier than `4.5.20` cannot be used to provision multi-node
   clusters. Download the latest version of the Palette Edge CLI from the
   [Downloads](../../../../spectro-downloads.md#palette-edge-cli) page to build the content bundle instead.
 

@@ -11,9 +11,9 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## January 18, 2024 - Release 4.5.17
+## January 18, 2024 - Release 4.5.20
 
-### Palette {#palette-enterprise-4-5-17}
+### Palette {#palette-enterprise-4-5-20}
 
 #### Features
 
@@ -130,7 +130,7 @@ about the rolling upgrade strategy.
 #### Features
 
 - Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
-  [Palette section](#palette-enterprise-4-5-17) for more details.
+  [Palette section](#palette-enterprise-4-5-20) for more details.
 
 - Starting with release version 4.5.15, the Spectro Cloud Artifact Repository (SCAR) is now hosted inside the same Open
   Container Initiative (OCI) repository hosting packs and images. This release now includes support for existing
