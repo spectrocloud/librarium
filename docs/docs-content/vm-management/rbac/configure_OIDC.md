@@ -62,12 +62,12 @@ The following steps apply exclusively to clusters configured with **Custom** thi
 
 10. Next, log in to the IdP console that is associated with the OIDC configuration used in your cluster.
 
-11. Locate the OIDC application that was used in step **5** of this guide and enable the **Refresh Token** setting. For
+11. Locate the OIDC application that was used in step five and enable the **Refresh Token** setting. For
     example, if you are using [Okta](https://www.okta.com) as the IdP, refer to the
     [Refresh access tokens and rotate refresh tokens](https://developer.okta.com/docs/guides/refresh-tokens/main/) guide
     for further instructions.
 
-12. Update the **Sign-in redirect URIs** field in your IdP. Add the VMO link copied in step **9**, appending
+12. Update the **Sign-in redirect URIs** field in your IdP. Add the VMO link copied in step nine, appending
     `/auth/callback` to its end. For example, if the link is
     `https://spectrocloud.com/v1/tenantApps/123456789101112131415162NWY2OGQ=`, update it to
     `https://spectrocloud.com/v1/tenantApps/123456789101112131415162NWY2OGQ=/auth/callback`. This is the URI to which
