@@ -194,7 +194,7 @@ Example.
 Remove file validator-20250113_183600.yaml from disk? [Y/n]:
 ```
 
-Enter `y` if you want to remove the specification file, or `n` if you want to keep it.
+Enter `y` if you want to remove the Validator file, or `n` if you want to keep it.
 
 ## Review Validation Results
 
