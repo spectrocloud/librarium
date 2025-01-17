@@ -368,7 +368,8 @@ Use the following steps to manually trigger a repave on a hybrid node pool.
 15. Click **Confirm** to start the repave.
 
 The hybrid node pool repave will now complete. This can take up to one hour. Once the repave completes, you can edit the
-node pool again and select the cluster profile version that you had originally selected. This will allow your changes to take effect, while restoring your nodes to the desired configuration.
+node pool again and select the cluster profile version that you had originally selected. This will allow your changes to
+take effect, while restoring your nodes to the desired configuration.
 
 ### Validate
 
