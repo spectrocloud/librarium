@@ -309,7 +309,7 @@ Your hybrid node pools require manual repaving in these scenarios:
 - After modifying the **Access Management** settings of your Amazon EKS cluster in Palette. Refer to steps 11 through 13
   in [Import Cluster](./import-eks-cluster-enable-hybrid-mode.md#import-cluster).
 - After changing an edge host's **VPN Server IP**. Refer to step 7 in [Create Node Pool](#create-node-pool).
-- Changing any configuration on the Node Pool **Hybrid Profile**.   
+- Changing any configuration on the Node Pool **Hybrid Profile**.
 
 These changes do not take effect until you repave the affected node pools.
 
