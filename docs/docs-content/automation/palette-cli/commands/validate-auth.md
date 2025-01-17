@@ -82,7 +82,9 @@ palette validate-auth --outdir $(pwd)/resources
 
 The interactive steps change depending on the cloud environment chosen.
 
-#### AWS
+<Tabs queryString="steps">
+
+<TabItem label="AWS" value="aws">
 
 1. Issue the `validate-auth` command using the Palette CLI.
 
@@ -120,7 +122,9 @@ The interactive steps change depending on the cloud environment chosen.
 
 The validation process will now execute and output the results to your terminal.
 
-#### Azure
+</TabItem>
+
+<TabItem label="Azure" value="azure">
 
 1. Set the following environment variables before issuing the Palette CLI command. These are needed in addition to the
    validation steps due to Azure's authentication and authorization requirements.
@@ -178,6 +182,10 @@ The validation process will now execute and output the results to your terminal.
 
 The validation process will now execute and output the results to your terminal.
 
+</TabItem>
+
+</Tabs>
+
 ### Validator File
 
 During the interactive steps, a Validator file is generated that contains the permissions that the Validator is
@@ -203,7 +211,9 @@ depending on the outcome.
 If the validation is successful, the `State` field is set to `Succeeded`. The output varies slightly depending on the
 cloud environment.
 
-#### AWS
+<Tabs queryString="succeeded">
+
+<TabItem label="AWS" value="aws">
 
 When the IAM user or role provided has all sufficient privileges, then the validation results will appear similar to the
 following example.
@@ -229,7 +239,9 @@ Last Validated:         2025-01-14T19:58:12Z
 Message:                All required IAM user policy permissions were found
 ```
 
-#### Azure
+</TabItem>
+
+<TabItem label="Azure" value="azure">
 
 When the service principal provided has all sufficient privileges, then the validation results will appear similar to
 the following example.
@@ -255,12 +267,18 @@ Last Validated:         2025-01-17T10:41:49Z
 Message:                Principal has all required permissions.
 ```
 
+</TabItem>
+
+</Tabs>
+
 ### Failed
 
 If the validation is not successful, the `State` field is set to `Failed`. The `Failures` section contains additional
 information about the failure and will vary depending on the cloud environment.
 
-#### AWS
+<Tabs queryString="failed">
+
+<TabItem label="AWS" value="aws">
 
 In this example, several IAM permissions are missing for the `PaletteClusterOperator` IAM role.
 
@@ -318,7 +336,9 @@ services.
     PaletteControllerPolicy
 ```
 
-#### Azure
+</TabItem>
+
+<TabItem label="Azure" value="azure">
 
 In this example, validation failed for the `palette-spc` service principal due to missing permissions.
 
@@ -362,6 +382,10 @@ actions by their Azure Resource Provider.
 | `Microsoft.Network`     | `routeTables/delete`    | Role Assignment |
 | `Microsoft.Storage`     | `storageAccounts/write` | Role Assignment |
 | `Microsoft.Compute`     | `disks/write`           | Role Assignment |
+
+</TabItem>
+
+</Tabs>
 
 ### Resolve Failures
 
