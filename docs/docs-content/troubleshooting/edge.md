@@ -308,7 +308,10 @@ Palette agent:
 
 ## Scenario - kubelet Process Cannot Access **kubeadm-flags.env**
 
-If using the FIPS version of [Agent Mode](../deployment-modes/agent-mode/install-agent-host.md) on a Rocky Linux edge host, SELinux may incorrectly label the **kubeadm-flags.env** file during cluster deployment or when certain configurations are adjusted, preventing the kubelet from accessing it and properly managing the cluster. To resolve this issue, reset the SELinux context of the kubelet environment variable to its default state based on SELinux policy rules.
+If using the FIPS version of [Agent Mode](../deployment-modes/agent-mode/install-agent-host.md) on a Rocky Linux edge
+host, SELinux may incorrectly label the **kubeadm-flags.env** file during cluster deployment or when certain
+configurations are adjusted, preventing the kubelet from accessing it and properly managing the cluster. To resolve this
+issue, reset the SELinux context of the kubelet environment variable to its default state based on SELinux policy rules.
 
 ### Debug Steps
 
