@@ -75,8 +75,8 @@ tags: ["release-notes"]
   hybrid nodes using affinity rules. Refer to EKS Hybrid Nodes section to learn more about using Palette to manage your
   Amazon EKS Hybrid Nodes.
 
-- You can now transfer the management of Edge clusters deployed in an airgap environments through
-  [Local UI](../clusters/edge/local-ui/local-ui.md) to a Palette management plane. This feature allows you to start the
+- <TpBadge /> You can now transfer the management of Edge clusters deployed in an airgap environments through [Local
+  UI](../clusters/edge/local-ui/local-ui.md) to a Palette management plane. This feature allows you to start the
   deployment of Edge clusters in an airgap environment using Local UI and then transfer the management of the Edge
   clusters to a Palette management plane, enabling you to manage the Edge clusters along with other clusters in Palette.
   Check out the [Pair Local Cluster with Palette](../clusters/edge/local-ui/cluster-management/local-to-central.md)
