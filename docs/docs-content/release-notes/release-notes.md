@@ -184,6 +184,8 @@ about the rolling upgrade strategy.
 
 | Pack Name                                  | New Version |
 | ------------------------------------------ | ----------- |
+| Microk8s                                   | 1.29.0      |
+| Microk8s                                   | 1.30.0      |
 | Nodeadm                                    | 1.28.0      |
 | Nodeadm                                    | 1.31.0      |
 | K3s                                        | 1.29.12     |
@@ -195,7 +197,6 @@ about the rolling upgrade strategy.
 | Palette eXtended Kubernetes (PXK)          | 1.31.4      |
 | Palette eXtended Kubernetes - Edge (PXK-E) | 1.29.12     |
 | Palette eXtended Kubernetes - Edge (PXK-E) | 1.30.8      |
-| Palette eXtended Kubernetes - Edge (PXK-E) | 1.31.1      |
 | Palette eXtended Kubernetes - Edge (PXK-E) | 1.31.4      |
 | RKE2                                       | 1.29.12     |
 | RKE2                                       | 1.30.8      |
@@ -228,6 +229,7 @@ about the rolling upgrade strategy.
 | AWS Application Loadbalancer | 2.11.0      |
 | Kong                         | 2.45.0      |
 | MetalLB                      | 0.14.9      |
+| Prometheus - Grafana         | 67.5.0      |
 | Reloader                     | 1.2.0       |
 | Spectro Proxy                | 1.5.5       |
 
@@ -235,12 +237,12 @@ about the rolling upgrade strategy.
 
 | Pack Name                                  | New Version |
 | ------------------------------------------ | ----------- |
+| Longhorn                                   | 1.7.2       |
 | Palette eXtended Kubernetes (PXK)          | 1.29.12     |
 | Palette eXtended Kubernetes (PXK)          | 1.30.8      |
 | Palette eXtended Kubernetes (PXK)          | 1.31.4      |
 | Palette eXtended Kubernetes - Edge (PXK-E) | 1.29.12     |
 | Palette eXtended Kubernetes - Edge (PXK-E) | 1.30.8      |
-| Palette eXtended Kubernetes - Edge (PXK-E) | 1.31.1      |
 | Palette eXtended Kubernetes - Edge (PXK-E) | 1.31.4      |
 | RKE2                                       | 1.29.12     |
 | RKE2                                       | 1.30.8      |
