@@ -81,7 +81,7 @@ const config = {
         docs: {
           path: "docs/docs-content",
           showLastUpdateAuthor: false,
-          showLastUpdateTime: true,
+          showLastUpdateTime: false,
           routeBasePath: "/",
           lastVersion: "current",
           includeCurrentVersion: true,
