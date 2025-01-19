@@ -10,6 +10,11 @@ tags: ["edge"]
 You can create and manage single-node as well as multi-node clusters on airgapped hosts locally from Local UI. This page
 teaches you how to create a cluster using Local UI.
 
+Unlike clusters that are managed by Palette, a local cluster is managed locally through Local UI. You can use Local UI
+to create, update, scale, and delete the cluster. If your situation changes and you need central management of the
+cluster, you can choose to [pair your local cluster to a Palette instance](./local-to-central.md) for centralized
+management.
+
 :::preview
 
 :::

@@ -14,6 +14,9 @@ configuration during site deployment as site-specific configuration. This can re
 installer configuration you provide to the installer ISO. For more information, refer to
 [Apply Site User Data](../site-deployment/site-installation/site-user-data.md).
 
+After installation, you can also use Local UI to make edits to the user data file before you create a cluster. Refer to
+[Edit User Data](../local-ui/host-management/edit-user-data.md) for more information.
+
 This article guides you through several important configuration blocks in the **user-data** file. However, you can use
 many additional parameters to further customize your installation. Review the Edge
 [Install Configuration](../edge-configuration/installer-reference.md) resource to learn more about all the supported

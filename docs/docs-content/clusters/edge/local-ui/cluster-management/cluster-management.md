@@ -29,6 +29,8 @@ Refer to the following resources to learn how to upload content and create a clu
 
 - [Create Local Cluster](./create-cluster.md)
 
+- [Pair Local Cluster with Palette](./local-to-central.md)
+
 - [Link Hosts](./link-hosts.md)
 
 - [Scale a Cluster](./scale-cluster.md)
