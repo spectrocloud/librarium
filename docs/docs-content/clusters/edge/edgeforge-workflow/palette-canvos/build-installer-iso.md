@@ -168,6 +168,14 @@ Use the following instructions to build the Edge Installer ISO. The optional ste
    override or supplement configuration you provided to the installer ISO. For more information, refer to
    [Apply Site User Data](../../site-deployment/site-installation/site-user-data.md).
 
+   :::tip
+
+   You can take advantage of the Tech Preview feature to edit user data in Local UI after installation. However, we
+   still recommend you provide user data during EdgeForge for production workloads because this is a Tech Preview
+   feature and not all fields are available for edit in Local UI.
+
+   :::
+
 ### Build Content Bundle
 
 Optionally, you can include a content bundle in your Edge installer ISO. When you include a content bundle in your Edge

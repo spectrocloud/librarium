@@ -55,7 +55,8 @@ instance of Palette and Palette VerteX.
    ```
 
 3. Refer to the [Palette Additional Packs](../enterprise-version/install-palette/airgap/supplemental-packs.md) page to
-   download and install the **airgap-pack-virtual-machine-orchestrator** and **airgap-pack-spectro-proxy** packs.
+   download and install the **airgap-pack-virtual-machine-orchestrator** and **airgap-pack-spectro-proxy** packs. You
+   will need these packs for both Proxied and Direct network configuration.
 
 4. If you are planning to deploy VMs with direct network access, repeat step three to install a load balancer pack of
    your choice. We recommend installing <VersionedLink text="MetalLB" url="/integrations/packs/?pack=lb-metallb" />

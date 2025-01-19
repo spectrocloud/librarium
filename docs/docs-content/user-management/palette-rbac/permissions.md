@@ -29,6 +29,7 @@ scopes you can assign permissions to.
 | Cloud Account        | `cloudaccount`       | ✅                | ✅                 | ✅                  | Cloud account creation and management                                      |
 | Cloud Config         | `cloudconfig`        | ✅                | ✅                 | ✅                  | Cluster level cloud configuration                                          |
 | Cluster              | `cluster`            | ✅                | ✅                 | ✅                  | Creation and management of Palette workload clusters                       |
+| Cluster Pair         | `clusterPair`        | ✅                | ✅                 |                     | Management of cluster pairing requests.                                    |
 | Cluster Group        | `clusterGroup`       | ✅                | ✅                 |                     | Creation and management of cluster groups                                  |
 | Cluster Profile      | `clusterProfile`     | ✅                | ✅                 | ✅                  | Creation and management of Palette cluster profiles                        |
 | DNS Mapping          | `dnsMapping`         |                   | ✅                 | ✅                  | Domain Name Server mapping services creation and management                |
@@ -116,6 +117,7 @@ the list of operations.
 - update
 
 </AccordionPanel>
+
 <AccordionPanel title="Cluster Group">
 
 - create
@@ -125,6 +127,16 @@ the list of operations.
 - update
 
 </AccordionPanel>
+
+<AccordionPanel title="Cluster Pair">
+
+- delete
+- get
+- list
+- update
+
+</AccordionPanel>
+
 <AccordionPanel title="Cluster Profile">
 
 - create
