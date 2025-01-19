@@ -10,6 +10,42 @@ tags: ["troubleshooting", "vmo"]
 
 The following are common scenarios that you may encounter when using Virtual Machine Orchestrator (VMO).
 
+## Scenario - Virtual Machine (VM) Migration Plans in Unknown State
+
+When using the [VM Migration Assistant](../vm-management/vm-migration-assistant/vm-migration-assistant.md) to migrate
+VMs to your VMO cluster, migration plans can enter an **Unknown** state if more VMs are selected for migration than the
+**Max concurrent virtual machine migrations** setting allows. This value determines the maximum number of VMs that can
+be migrated simultaneously across all active migration plans.
+
+To avoid this scenario, we recommend setting an appropriate value for **Max concurrent virtual machine migrations**
+based on your workload and expected migration patterns. A higher value helps prevent migration plans from entering an
+**Unknown** state due to excessive concurrency.
+
+If migration plans do enter an **Unknown** state, use the following steps to resolve the issue.
+
+### Debug Steps
+
+1. [Access the VM Migration Assistant service console](../vm-management/vm-migration-assistant/create-vm-migration-assistant-profile.md#access-the-vm-migration-assistant-service-console).
+
+2. From the left **Main Menu**, select **Overview**.
+
+3. In the **Overview** tab, locate the configurable settings for the migration controller.
+
+   ![Migration Controller Settings](/vm-management_vm-migration-assistant_additional-configuration_overview-settings.webp)
+
+4. Click the pencil icon next to the **Max concurrent virtual machine migrations** setting.
+
+5. In the pop-up window, increase the value based on the maximum number of VMs you expect to migrate concurrently across
+   all active migration plans.
+
+   For example, if you expect to migrate a maximum of 25 VMs across all active migration plans, set this value to 25 or
+   more.
+
+6. Click **Save** after making the change.
+
+You will now need to recreate any migration plans that are in an **Unknown** state, and start them again. Refer to
+[Create Migration Plans](../vm-management/vm-migration-assistant/create-migration-plans.md) for guidance.
+
 ## Scenario - Virtual Machines (VM) Stuck in a Migration Loop
 
 Clusters with the VMO pack may experience VMs getting stuck in a continuous migration loop, as indicated by a
