@@ -63,7 +63,7 @@ jobs:
             🤖 Netlify configured to enable preview build for branch:  ${{env.GITHUB_BRANCH}} . Subsequent commits will automatically trigger a Netlify build preview.
         refresh-message-position: false
 
-    - name: Version & Build
+    - name: Build
       run: |
         touch .env
         make build-ci
