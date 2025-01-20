@@ -54,9 +54,8 @@ pack configuration by following the debug steps below.
    ```
 
    Replace `<customStylusPath>` with the custom `stylus.path` you provided in the **user-data** file during the
-   [Install Palette Agent](../deployment-modes/agent-mode/install-agent-host.md#install-palette-agent) steps.
-
-   Example.
+   [Install Palette Agent](../deployment-modes/agent-mode/install-agent-host.md#install-palette-agent) steps, as demonstrated in the following example.
+   
 
    ```yaml hideClipboard {7-13}
    pack:
