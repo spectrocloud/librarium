@@ -96,11 +96,17 @@ jobs:
 
       - run: npm ci
 
+      - name: Make versions for release branch
+        if: startsWith(github.ref_name, 'update-versioning-script-doc-')
+        run: |
+          touch .env
+          make versions
+
       - name: Build
         run: |
           touch .env
           make build-ci
-      
+
       - name: Build with cached packs
         if: ${{ env.BUILD_EXIT_CODE == '5' }}
         uses: ./.github/actions/build-cached-packs

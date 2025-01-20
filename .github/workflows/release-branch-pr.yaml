@@ -66,8 +66,6 @@ jobs:
     - name: Version & Build
       run: |
         touch .env
-        // Version and build release branches for pre-release checks.
-        make versions
         make build-ci
       
     - name: Build with cached packs
