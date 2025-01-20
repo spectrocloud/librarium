@@ -74,6 +74,10 @@ review the permissions associated with each Tenant role, click on the role name 
 - clusterGroup.get
 - clusterGroup.list
 - clusterGroup.update
+- clusterPair.delete
+- clusterPair.get
+- clusterPair.list
+- clusterPair.update
 - clusterProfile.create
 - clusterProfile.delete
 - clusterProfile.get
@@ -359,6 +363,10 @@ review the permissions associated with each Tenant role, click on the role name 
 - clusterGroup.get
 - clusterGroup.list
 - clusterGroup.update
+- clusterPair.delete
+- clusterPair.get
+- clusterPair.list
+- clusterPair.update
 - clusterProfile.create
 - clusterProfile.delete
 - clusterProfile.get

@@ -37,6 +37,13 @@ These policies are designed to follow the
 You can also use the Static Policy for deploying clusters within an existing VPC without provisioning or deleting
 foundational network resources.
 
+:::tip
+
+You can use Palette CLI to verify you have setup the correct permissions. Check out the Palette CLI
+[`validate-auth`](../../../automation/palette-cli/commands/validate-auth.md) command section for more information.
+
+:::
+
 ## Core IAM Policies
 
 The four core IAM policies are required for Palette to operate.

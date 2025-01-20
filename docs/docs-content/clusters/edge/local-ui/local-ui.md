@@ -60,6 +60,8 @@ Most host management features, with the exception of reset, are available on bot
 
 - [Access Local UI](./host-management/access-console.md)
 
+- [Edit User Data](./host-management/edit-user-data.md)
+
 - [Configure HTTP Proxy in Local UI](./host-management/configure-proxy.md)
 
 - [Reset Edge Host](./host-management/reset-reboot.md)

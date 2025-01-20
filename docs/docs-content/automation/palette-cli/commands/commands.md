@@ -33,6 +33,9 @@ The following list contains all the supported Palette CLI subcommands. Click on 
 
 - [`project`](project.md) - Manage Palette Projects.
 
+- [`validate-auth`](./validate-auth.md) - Validate access requirements to deploy Kubernetes clusters in target
+  environments.
+
 - [`vmo`](vmo.md) - Migrate, import and deploy VMs to Palette VMO.
 
 ## Global Flags
@@ -45,6 +48,15 @@ Palette CLI supports the following global flags.
 | `-h`       | `--help`      | Help with any command.                                                                            | N/A    |
 | `-l`       | `--log-level` | Log level. Allowed values: `panic` `fatal` `error` `warn` `info` `debug` `trace` (default `info`) | string |
 | `-w`       | `--workspace` | Workspace location for staging runtime configurations and logs (default `$HOME/.palette`)         | string |
+
+## Environment Variables
+
+The Palette CLI supports the following environment variables.
+
+| Variable Name                 | Description                                                                                                                                                                                           | Type   |
+| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
+| `DISABLE_KIND_CLUSTER_CHECK`  | If set to `true,` the Palette CLI will not check for existing kind clusters or whether the deployed kind cluster is up and active.                                                                    | bool   |
+| `PALETTE_ENCRYPTION_PASSWORD` | The encryption passphrase Palette CLI will use to encrypt sensitive data. The passphrase must between 8 to 32 characters long with a capital letter, a lower letter, a digit and a special character. | string |
 
 ## Resources
 
@@ -63,5 +75,7 @@ Palette CLI supports the following global flags.
 - [Project](project.md)
 
 - [Import](import.md)
+
+- [Validate-Auth](./validate-auth.md)
 
 - [VMO](vmo.md)
