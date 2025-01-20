@@ -47,8 +47,8 @@ Use the following steps to add Redis to an app profile.
 
    - **Name:** The database name.
    - **Password:** The password for the database service.
-   - **Database Volume Size (GiB):** Select the volume as per the storage volume available in the cluster group and virtual
-     clusters.
+   - **Database Volume Size (GiB):** Select the volume as per the storage volume available in the cluster group and
+     virtual clusters.
 
 6. Save your changes.
 
