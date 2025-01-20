@@ -13,9 +13,10 @@ The following are common scenarios that you may encounter when using Edge.
 ## Scenario - Cluster Creation Failure Due to Nodeadm not Found
 
 When attempting to deploy a cluster with
-<VersionedLink text="Palette eXtended Kubernetes - Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s"/> and
-[agent mode](../deployment-modes/agent-mode/agent-mode.md) on Palette agent version 4.5.14, adding a custom
-`stylus.path` to the **user-data** file causes cluster creation to fail as it cannot find
+
+<VersionedLink text="Palette eXtended Kubernetes - Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> and [agent
+mode](../deployment-modes/agent-mode/agent-mode.md) on Palette agent version 4.5.14, adding a custom `stylus.path` to
+the **user-data** file causes cluster creation to fail as it cannot find
 [kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/). A custom `stylus.path` can be added during the
 [Install Palette Agent](../deployment-modes/agent-mode/install-agent-host.md#install-palette-agent) steps.
 
@@ -28,6 +29,7 @@ for guidance in retrieving your Palette agent version number.
 :::
 
 To resolve this scenario, add a cloud-init stage to your
+
 <VersionedLink text="BYOS Edge OS" url="/integrations/packs/?pack=edge-native-byoi" /> pack configuration by following
 the debug steps below.
 
