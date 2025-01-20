@@ -97,7 +97,7 @@ jobs:
       - run: npm ci
 
       - name: Make versions for release branch
-        if: startsWith(github.ref_name, 'update-versioning-script-doc-')
+        if: ${{ startsWith(github.head_ref, 'update-versioning-script-doc-') }}
         run: |
           touch .env
           make versions
