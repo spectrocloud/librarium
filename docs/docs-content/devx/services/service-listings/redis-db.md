@@ -11,7 +11,7 @@ logoUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjxG5Qb38rX39m1M
 tags: ["devx", "app mode", "pde", "databases"]
 ---
 
-[Redis](https://redis.io/docs/about/) is an open source (BSD licensed), in-memory data structure store used as a data
+[Redis](https://redis.io/docs/latest/) is an open source (BSD licensed), in-memory data structure store used as a data
 cache store or database service. Redis has built-in replication, Lua scripting, least recently used eviction,
 transactions, and different levels of on-disk persistence capabilities. In addition, Redis provides high availability
 via Redis Sentinel and automatic partitioning with Redis Cluster.
@@ -34,21 +34,21 @@ Use the following steps to add Redis to an app profile.
    [app profile](../../../profiles/app-profiles/create-app-profiles/create-app-profiles.md). Provide the following basic
    information and click **Next**.
 
-| Parameter                | Description                                                                                                              |
-| ------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
-| Application Profile Name | A custom name for the app profile.                                                                                       |
-| Version (optional)       | The default value is 1.0.0. You can create multiple versions of an app profile using the format **`major.minor.patch`**. |
-| Description (optional)   | Description of the app profile.                                                                                          |
-| Tag (optional)           | Assign tags to the app profile.                                                                                          |
+   | Parameter                | Description                                                                                                              |
+   | ------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
+   | Application Profile Name | A custom name for the app profile.                                                                                       |
+   | Version (optional)       | The default value is 1.0.0. You can create multiple versions of an app profile using the format **`major.minor.patch`**. |
+   | Description (optional)   | Description of the app profile.                                                                                          |
+   | Tag (optional)           | Assign tags to the app profile.                                                                                          |
 
 4. Select the **Redis DB** service and start the configuration.
 
 5. Provide the following information to the wizard:
 
-- **Name:** The database name.
-- **Password:** The password for the database service.
-- **Database Volume Size (GiB):** Select the volume as per the storage volume available in the cluster group and virtual
-  clusters.
+   - **Name:** The database name.
+   - **Password:** The password for the database service.
+   - **Database Volume Size (GiB):** Select the volume as per the storage volume available in the cluster group and virtual
+     clusters.
 
 6. Save your changes.
 
@@ -63,11 +63,11 @@ Use the following steps to add Redis to an app profile.
 4. Validate your application is displaying the green status. The color code in the app profile box shows the status of
    the service deployment.
 
-| **Color Code** | **Description**       |
-| -------------- | --------------------- |
-| Green          | Successfully Deployed |
-| Blue           | Under Deployment      |
-| Red            | Error State           |
+   | **Color Code** | **Description**       |
+   | -------------- | --------------------- |
+   | Green          | Successfully Deployed |
+   | Blue           | Under Deployment      |
+   | Red            | Error State           |
 
 ## Output Variables
 
