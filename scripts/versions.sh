@@ -102,7 +102,6 @@ for item in $branches; do
   # Append .0 to the version
   version="$version.0"
 
-
   # Store in a variable
   extracted_version=$version
   extracted_versionX=$versionX
@@ -132,7 +131,6 @@ for item in $branches; do
   echo "Running: npm run docusaurus docs:version:api $extracted_versionX"
   npm run docusaurus docs:version:api $extracted_versionX
 
-
   # Copy version docs content
   cp -R versioned_docs/version-$extracted_versionX $tempdir/staging_docs/
   cp -R versioned_sidebars/version-$extracted_versionX $tempdir/staging_sidebars/ || true
@@ -143,7 +141,6 @@ for item in $branches; do
   cp api_versioned_sidebars/version-$extracted_versionX-sidebars.json $tempdir/staging_api_docs_sidebars/version-$extracted_versionX-sidebars.json
   # Copy the partials folder
   cp -R _partials $tempdir/staging_partials/version-$extracted_versionX
-
 
   rm -rf versioned_docs/
   rm -rf versioned_sidebars/
