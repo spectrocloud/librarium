@@ -16,10 +16,6 @@ We support different Kubernetes distributions, such as MicroK8s, K3s, and RKE2, 
 The EOL is set by the respective owner. Once we stop supporting the minor version, we initiate the deprecation process.
 Refer to the [Kubernetes Support Lifecycle](kubernetes-support.md#other-kubernetes-distributions) guide to learn more.
 
-:::preview
-
-:::
-
 ## Versions Supported
 
 <Tabs queryString="parent">
