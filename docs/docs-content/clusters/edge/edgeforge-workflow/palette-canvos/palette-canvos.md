@@ -223,6 +223,14 @@ customization.
    cat user-data
    ```
 
+   :::tip
+
+   You can take advantage of the Tech Preview feature to edit user data in Local UI after installation. However, we
+   still recommend you provide user data during EdgeForge for production workloads because this is a Tech Preview
+   feature and not all fields are available for edit in Local UI.
+
+   :::
+
 10. Open the **k8s_versions.json** file in the CanvOS directory. Remove the Kubernetes versions that you don't need from
     the JSON object corresponding to your Kubernetes distribution.
 
@@ -720,6 +728,11 @@ git checkout v4.4.12
         passwd: kairos
     EOF
     ```
+
+    You can take advantage of the Tech Preview feature to edit user data in Local UI after installation. Refer to
+    [Edit User Data](../../local-ui/host-management/edit-user-data.md) for more information. However, we still recommend
+    you provide user data during EdgeForge for production workloads, because not all user data fields can be updated in
+    Local UI.
 
     :::info
 

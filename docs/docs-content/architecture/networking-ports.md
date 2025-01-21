@@ -35,19 +35,17 @@ The following ports must be reachable from a network perspective for Palette to 
 
 ### Management Platform
 
-| Port            | Direction | Purpose                                                             |
-| :-------------- | :-------- | :------------------------------------------------------------------ |
-| HTTPS (tcp/443) | INBOUND   | Browser/API access to management platform .                         |
-| HTTPS (tcp/443) | INBOUND   | gRPC communication between Palette and the workload cluster.        |
-| NATS (tcp/4222) | INBOUND   | Agent running inside connecting to management platform [Deprecated] |
+| Port            | Direction | Purpose                                                      |
+| :-------------- | :-------- | :----------------------------------------------------------- |
+| HTTPS (tcp/443) | INBOUND   | Browser/API access to management platform .                  |
+| HTTPS (tcp/443) | INBOUND   | gRPC communication between Palette and the workload cluster. |
 
 ### Workload Cluster
 
-| Port            | Direction | Purpose                                                                           |
-| :-------------- | :-------- | :-------------------------------------------------------------------------------- |
-| HTTPS (tcp/443) | OUTBOUND  | API access to management platform and gRPC                                        |
-| HTTPS (tcp/443) | OUTBOUND  | gRPC, Registry (packs, integrations), Pack containers, Application Updates        |
-| NATS (tcp/4222) | OUTBOUND  | Registry (packs, integrations), Pack containers, Application Updates [Deprecated] |
+| Port            | Direction | Purpose                                                                    |
+| :-------------- | :-------- | :------------------------------------------------------------------------- |
+| HTTPS (tcp/443) | OUTBOUND  | API access to management platform and gRPC                                 |
+| HTTPS (tcp/443) | OUTBOUND  | gRPC, Registry (packs, integrations), Pack containers, Application Updates |
 
 :::info
 
@@ -67,7 +65,6 @@ The following ports must be reachable from a network perspective for Palette sel
 | **Port**         | **Direction** | **Purpose**                                                                             |
 | :--------------- | :------------ | :-------------------------------------------------------------------------------------- |
 | HTTPS (tcp/443)  | INBOUND       | Browser/API access to management platform, gRPC                                         |
-| NATS (tcp/4222)  | INBOUND       | Message Bus for workload clusters [Deprecated]                                          |
 | HTTPS (tcp/443)  | OUTBOUND      | vSphere vCenter API, Registry (packs, integrations), Pack containers, app updates, gRPC |
 | HTTPS (tcp/6443) | OUTBOUND      | Workload K8s cluster API Server                                                         |
 
@@ -76,7 +73,6 @@ The following ports must be reachable from a network perspective for Palette sel
 | **Port**        | **Direction** | **Purpose**                                                                                     |
 | :-------------- | :------------ | :---------------------------------------------------------------------------------------------- |
 | HTTPS (tcp/443) | OUTBOUND      | API access to management platform                                                               |
-| NATS (tcp/4222) | OUTBOUND      | Agent communication via message bus [Deprecated]                                                |
 | HTTPS (tcp/443) | OUTBOUND      | vSphere vCenter API, gRPC, Registry (packs, integrations), Pack containers, Application updates |
 
 :::info

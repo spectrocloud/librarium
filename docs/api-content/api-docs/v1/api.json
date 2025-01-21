@@ -2447,6 +2447,12 @@
         "clusterConfig": {
           "$ref": "#/definitions/v1AwsClusterConfig"
         },
+        "hybridMachinePools": {
+          "items": {
+            "$ref": "#/definitions/v1AwsHybridMachinePool"
+          },
+          "type": "array"
+        },
         "machinePoolConfig": {
           "items": {
             "$ref": "#/definitions/v1AwsMachinePoolConfig"
@@ -2579,6 +2585,15 @@
       },
       "type": "object"
     },
+    "v1AwsCloudHybridConfigEntity": {
+      "description": "AWS cloud hybrid config entity",
+      "properties": {
+        "hybridConfig": {
+          "$ref": "#/definitions/v1AwsHybridConfig"
+        }
+      },
+      "type": "object"
+    },
     "v1AwsClusterConfig": {
       "description": "Cluster level configuration for aws cloud and applicable for all the machine pools",
       "properties": {
@@ -2589,6 +2604,10 @@
         "controlPlaneLoadBalancer": {
           "description": "ControlPlaneLoadBalancer specifies how API server elb will be configured, this field is optional, not provided, \"\", default => \"Internet-facing\" \"Internet-facing\" => \"Internet-facing\" \"internal\" => \"internal\" For spectro saas setup we require to talk to the apiserver from our cluster so ControlPlaneLoadBalancer should be \"\", not provided or \"Internet-facing\"",
           "type": "string"
+        },
+        "hybridConfig": {
+          "$ref": "#/definitions/v1AwsHybridConfig",
+          "description": "AWS hybrid cluster config"
         },
         "region": {
           "type": "string"
@@ -2651,6 +2670,55 @@
         },
         "awsAccount": {
           "$ref": "#/definitions/v1AwsCloudAccount"
+        }
+      },
+      "type": "object"
+    },
+    "v1AwsHybridConfig": {
+      "description": "AwsHybridConfig specifies the AWS Hybrid configuration for the cluster",
+      "properties": {
+        "awsVpcCidr": {
+          "description": "AWS VPC CIDR is the CIDR of the AWS/EKS cluster's VPC",
+          "type": "string"
+        },
+        "iamRolesAnywhere": {
+          "$ref": "#/definitions/v1IamRolesAnywhere",
+          "description": "IamRolesAnywhere specifies the IAM Roles Anywhere configuration for the AWS/EKS cluster"
+        },
+        "remoteNodeCidrs": {
+          "description": "RemoteNodeCIDRs specifies the Node CIDRs of all remote nodes",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "remotePodCidrs": {
+          "description": "RemotePodCIDRs specifies the Pod CIDRs of all remote pods",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "systemsManager": {
+          "$ref": "#/definitions/v1SystemsManager",
+          "description": "SystemsManager specifies the Systems Manager configuration for the AWS/EKS cluster"
+        }
+      },
+      "type": "object"
+    },
+    "v1AwsHybridMachinePool": {
+      "description": "Machine pool reference of cloud config of cluster deployed by hybrid cluster",
+      "properties": {
+        "poolCloudType": {
+          "$ref": "#/definitions/v1HybridPoolClusterCloudType"
+        },
+        "poolName": {
+          "description": "Machine pool name",
+          "type": "string"
+        },
+        "poolUid": {
+          "description": "Machine pool uid",
+          "type": "string"
         }
       },
       "type": "object"
@@ -4926,8 +4994,15 @@
         "cloudType": {
           "type": "string"
         },
+        "hybridMachinePools": {
+          "description": "Hybrid Machine pools meta information",
+          "items": {
+            "$ref": "#/definitions/v1MachinePoolMeta"
+          },
+          "type": "array"
+        },
         "machinePools": {
-          "description": "Machine pool meta information",
+          "description": "Machine pools meta information",
           "items": {
             "$ref": "#/definitions/v1MachinePoolMeta"
           },
@@ -5458,6 +5533,10 @@
           "$ref": "#/definitions/v1HostClusterConfig",
           "description": "HostClusterConfiguration defines the configuration of host clusters, where virtual clusters be deployed"
         },
+        "hybridClusterConfig": {
+          "$ref": "#/definitions/v1HybridClusterConfig",
+          "description": "HybridClusterConfiguration defines the configuration of hybrid clusters and clusters deployed through hybrid clusters"
+        },
         "lifecycleConfig": {
           "$ref": "#/definitions/v1LifecycleConfig"
         },
@@ -5959,6 +6038,14 @@
         },
         "uid": {
           "type": "string"
+        }
+      }
+    },
+    "v1ClusterHybridSettingsEntity": {
+      "properties": {
+        "enable": {
+          "description": "Property which is used to enable a cluster to perform hybrid operations",
+          "type": "boolean"
         }
       }
     },
@@ -9903,6 +9990,24 @@
       ],
       "type": "object"
     },
+    "v1EdgeClusterObjectEntity": {
+      "description": "Object identity meta of the cluster",
+      "properties": {
+        "hybridCluster": {
+          "$ref": "#/definitions/v1HybridClusterMeta",
+          "description": "In case of hybrid edge clusters, it provides the object identity meta of hybrid cluster"
+        },
+        "name": {
+          "description": "Name of the cluster",
+          "type": "string"
+        },
+        "uid": {
+          "description": "Uid of the cluster",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "v1EdgeHost": {
       "description": "EdgeHost is the underlying appliance",
       "properties": {
@@ -10086,8 +10191,15 @@
           "$ref": "#/definitions/v1EdgeHostHealth"
         },
         "inUseClusters": {
+          "description": "Deprecated. Use inUseClustersRef",
           "items": {
             "$ref": "#/definitions/v1ObjectEntity"
+          },
+          "type": "array"
+        },
+        "inUseClustersRef": {
+          "items": {
+            "$ref": "#/definitions/v1EdgeClusterObjectEntity"
           },
           "type": "array"
         },
@@ -10393,8 +10505,15 @@
           "$ref": "#/definitions/v1EdgeHostHealth"
         },
         "inUseClusters": {
+          "description": "Deprecated. Use inUseClustersRef",
           "items": {
             "$ref": "#/definitions/v1ObjectEntity"
+          },
+          "type": "array"
+        },
+        "inUseClustersRef": {
+          "items": {
+            "$ref": "#/definitions/v1EdgeClusterObjectEntity"
           },
           "type": "array"
         },
@@ -10670,6 +10789,105 @@
         "hostAddress"
       ],
       "type": "object"
+    },
+    "v1EdgeNativeHybridClusterConfig": {
+      "description": "EdgeNativeHybridClusterConfig defines Edge Native Cluster specific specification",
+      "properties": {
+        "controlPlaneEndpoint": {
+          "$ref": "#/definitions/v1EdgeNativeControlPlaneEndPoint",
+          "description": "ControlPlaneEndpoint is the control plane endpoint, which can be an IP or FQDN"
+        },
+        "ntpServers": {
+          "description": "NTPServers is a list of NTP servers to use instead of the machine image's default NTP server list",
+          "items": {
+            "default": "",
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "sshKeys": {
+          "description": "SSHKeys specifies a list of ssh authorized keys to access the vms as a 'spectro' user",
+          "items": {
+            "default": "",
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1EdgeNativeHybridConfigEntity": {
+      "description": "EdgeNativeHybridMachineConfigEntity defines Edge Native machine configuration",
+      "properties": {
+        "clusterConfig": {
+          "$ref": "#/definitions/v1EdgeNativeHybridClusterConfig",
+          "description": "Edge-Native cluster configurations"
+        },
+        "machineCloudConfig": {
+          "$ref": "#/definitions/v1EdgeNativeHybridMachineConfigEntity",
+          "description": "Edge-Native machine cluster configurations"
+        },
+        "profiles": {
+          "description": "Cluster profile templates for edge-native machine pool",
+          "items": {
+            "$ref": "#/definitions/v1SpectroClusterProfileEntity"
+          },
+          "type": "array"
+        }
+      }
+    },
+    "v1EdgeNativeHybridMachineConfigEntity": {
+      "description": "EdgeNativeHybridMachineConfigEntity defines Edge Native machine configuration",
+      "properties": {
+        "archType": {
+          "$ref": "#/definitions/v1ArchType",
+          "description": "Architecture type of the edge hosts",
+          "x-omitempty": false
+        },
+        "edgeHosts": {
+          "description": "Edge hosts configurations",
+          "items": {
+            "$ref": "#/definitions/v1EdgeNativeHybridMachinePoolHost"
+          },
+          "type": "array"
+        }
+      },
+      "required": [
+        "archType",
+        "edgeHosts"
+      ]
+    },
+    "v1EdgeNativeHybridMachinePoolHost": {
+      "description": "v1EdgeNativeHybridMachinePoolHostEntity defines Edge Native machine pool's host configuration",
+      "properties": {
+        "hostName": {
+          "description": "Edge host name",
+          "type": "string"
+        },
+        "hostUid": {
+          "description": "Edge host id",
+          "type": "string"
+        },
+        "nic": {
+          "$ref": "#/definitions/v1Nic",
+          "description": "Edge native nic"
+        },
+        "twoNodeCandidatePriority": {
+          "description": "Set the Edge Host candidate priority as primary or secondary, if the Edge Host is nominated as two node candidate",
+          "enum": [
+            "primary",
+            "secondary"
+          ],
+          "type": "string"
+        },
+        "vpnServerIp": {
+          "description": "Vpn server IP",
+          "type": "string"
+        }
+      },
+      "required": [
+        "hostUid"
+      ]
     },
     "v1EdgeNativeInstanceType": {
       "description": "EdgeNativeInstanceType defines the instance configuration for a docker container node",
@@ -11662,14 +11880,6 @@
         },
         "spec": {
           "$ref": "#/definitions/v1FeatureSpec"
-        }
-      },
-      "type": "object"
-    },
-    "v1FeatureFlagPing": {
-      "properties": {
-        "msg": {
-          "type": "string"
         }
       },
       "type": "object"
@@ -13504,6 +13714,188 @@
       },
       "type": "object"
     },
+    "v1HybridCluster": {
+      "properties": {
+        "cloudConfigUid": {
+          "description": "Cloud config uid",
+          "type": "string"
+        },
+        "name": {
+          "description": "Cluster name",
+          "type": "string"
+        },
+        "uid": {
+          "description": "Cluster uid",
+          "type": "string"
+        }
+      }
+    },
+    "v1HybridClusterConfig": {
+      "properties": {
+        "clusterUid": {
+          "description": "Parent cluster uid. Provided for hybrid (child) clusters only.",
+          "type": "string"
+        },
+        "enable": {
+          "description": "Flag differentiating if the cluster is an hybrid cluster or not. True for a cluster with hybrid mode enabled, false for the actual hybrid (child) clusters",
+          "type": "boolean"
+        },
+        "hybridMachinePoolClusterRefs": {
+          "description": "References to hybrid (child) clusters deployed within the hybrid cluster",
+          "items": {
+            "$ref": "#/definitions/v1HybridPoolClusterRef"
+          },
+          "type": "array"
+        }
+      }
+    },
+    "v1HybridClusterMeta": {
+      "description": "Object identity meta of hybrid cluster",
+      "properties": {
+        "name": {
+          "description": "Name of the hybrid cluster",
+          "type": "string"
+        },
+        "uid": {
+          "description": "Uid of the hybrid cluster",
+          "type": "string"
+        }
+      }
+    },
+    "v1HybridEdgeNativeMachineCloudConfig": {
+      "description": "HybridEdgeNativeMachineCloudConfig defines hybrid Edge-Native cluster's machine configurations",
+      "properties": {
+        "archType": {
+          "$ref": "#/definitions/v1ArchType",
+          "description": "Architecture type of the edge hosts",
+          "x-omitempty": false
+        },
+        "edgeHosts": {
+          "description": "Edge host's configuration",
+          "items": {
+            "$ref": "#/definitions/v1EdgeNativeHybridMachinePoolHost"
+          },
+          "type": "array"
+        },
+        "hybridCluster": {
+          "$ref": "#/definitions/v1HybridCluster",
+          "description": "Hybrid cluster reference"
+        }
+      },
+      "required": [
+        "archType",
+        "edgeHosts"
+      ]
+    },
+    "v1HybridEdgeNativeMachinePoolConfig": {
+      "description": "HybridEdgeNativeMachinePoolConfig defines hybrid Edge-Native cluster's machine-pool configurations",
+      "properties": {
+        "cloudConfig": {
+          "$ref": "#/definitions/v1HybridEdgeNativeMachineCloudConfig"
+        },
+        "poolConfig": {
+          "$ref": "#/definitions/v1MachinePoolConfigEntity"
+        }
+      }
+    },
+    "v1HybridEdgeNativeMachinePoolConfigEntity": {
+      "description": "Hybrid Edge-Native cluster's machine-pool configuration request payload",
+      "properties": {
+        "cloudConfig": {
+          "$ref": "#/definitions/v1EdgeNativeHybridConfigEntity"
+        },
+        "poolConfig": {
+          "$ref": "#/definitions/v1MachinePoolConfigEntity"
+        }
+      }
+    },
+    "v1HybridEdgeNativeMachinePoolConfigUpdateEntity": {
+      "description": "Hybrid Edge-Native cluster's machine-pool configuration update request payload",
+      "properties": {
+        "cloudConfig": {
+          "$ref": "#/definitions/v1EdgeNativeHybridMachineConfigEntity"
+        },
+        "clusterConfig": {
+          "$ref": "#/definitions/v1EdgeNativeHybridClusterConfig"
+        },
+        "poolConfig": {
+          "$ref": "#/definitions/v1MachinePoolConfigEntity"
+        }
+      }
+    },
+    "v1HybridMachinePool": {
+      "description": "Metadata information related to a hybrid machine pool launched as part of an hybrid cluster",
+      "properties": {
+        "cloudConfigUid": {
+          "description": "Cloud config uid associated with the hybrid machine pool",
+          "type": "string"
+        },
+        "cloudType": {
+          "description": "Cloud type of the hybrid machine pool",
+          "type": "string"
+        },
+        "clusterUid": {
+          "description": "Uid of the hybrid machine pool cluster",
+          "type": "string"
+        },
+        "name": {
+          "description": "Name of the hybrid machine pool",
+          "type": "string"
+        },
+        "status": {
+          "$ref": "#/definitions/v1HybridMachinePoolStatus"
+        },
+        "uid": {
+          "description": "Uid of the hybrid machine pool",
+          "type": "string"
+        }
+      }
+    },
+    "v1HybridMachinePoolClusterHealth": {
+      "description": "Machine pool cluster meta health information",
+      "properties": {
+        "isHeartBeatFailed": {
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "state": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1HybridMachinePoolStatus": {
+      "description": "Get the hybrid machine pool's cluster status",
+      "properties": {
+        "health": {
+          "$ref": "#/definitions/v1HybridMachinePoolClusterHealth",
+          "description": "Health of the hybrid machine pool"
+        },
+        "state": {
+          "description": "State of the hybrid machine pool",
+          "type": "string"
+        }
+      }
+    },
+    "v1HybridPoolClusterCloudType": {
+      "default": "edge-native",
+      "description": "Flag to indicate whether the pool is deployed in any cloud or an edge environment",
+      "enum": [
+        "edge-native"
+      ],
+      "type": "string"
+    },
+    "v1HybridPoolClusterRef": {
+      "properties": {
+        "cloudType": {
+          "$ref": "#/definitions/v1HybridPoolClusterCloudType"
+        },
+        "uid": {
+          "description": "Cluster uid",
+          "type": "string"
+        }
+      }
+    },
     "v1IPPool": {
       "description": "IPPool defines static IPs available. Gateway, Prefix, Nameserver, if defined, will be default values for all Pools",
       "properties": {
@@ -13529,6 +13921,32 @@
         },
         "uid": {
           "description": "UID is the UID of this IPPool, used by Hubble",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1IamRolesAnywhere": {
+      "description": "IamRolesAnywhere specifies the IAM Roles Anywhere configuration for the AWS/EKS cluster",
+      "properties": {
+        "profileArn": {
+          "description": "ProfileARN specifies the IAM profile ARN",
+          "type": "string"
+        },
+        "roleArn": {
+          "description": "RoleARN specifies the IAM role ARN to use",
+          "type": "string"
+        },
+        "rootCaCertificate": {
+          "description": "RootCACertificate specifies the root CA certificate",
+          "type": "string"
+        },
+        "rootCaPrivateKey": {
+          "description": "RootCAPrivateKey specifies the root CA private key",
+          "type": "string"
+        },
+        "trustAnchorArn": {
+          "description": "TrustAnchorARN specifies the trust anchor ARN",
           "type": "string"
         }
       },
@@ -20856,7 +21274,8 @@
           "enum": [
             "spectro",
             "helm",
-            "manifest"
+            "manifest",
+            "oci"
           ],
           "type": "string"
         },
@@ -25796,6 +26215,33 @@
       ],
       "type": "object"
     },
+    "v1SpectroClusterHybridPoolsMetadata": {
+      "description": "Metadata of clusters launched as hybrid machine pools",
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/v1ObjectMeta"
+        },
+        "spec": {
+          "properties": {
+            "cloudType": {
+              "description": "Cluster's cloud type",
+              "type": "string"
+            },
+            "hybridPools": {
+              "items": {
+                "$ref": "#/definitions/v1HybridMachinePool"
+              },
+              "type": "array"
+            }
+          },
+          "type": "object"
+        },
+        "status": {
+          "$ref": "#/definitions/v1SpectroClusterStatus"
+        }
+      },
+      "type": "object"
+    },
     "v1SpectroClusterK8sCertificate": {
       "description": "K8 Certificates for all the cluster's control plane nodes",
       "properties": {
@@ -26167,6 +26613,10 @@
     "v1SpectroClusterPairMeta": {
       "description": "Spectro cluster meta",
       "properties": {
+        "localClusterToken": {
+          "description": "Cluster token in the local UI",
+          "type": "string"
+        },
         "localClusterUid": {
           "description": "Cluster uid in the local UI",
           "type": "string"
@@ -26185,6 +26635,10 @@
     "v1SpectroClusterPairStatus": {
       "description": "Spectro cluster status",
       "properties": {
+        "pairingClusterName": {
+          "description": "Cluster Name associated to the pairing request",
+          "type": "string"
+        },
         "pairingClusterUid": {
           "description": "Cluster UID associated to the pairing request",
           "type": "string"
@@ -27079,6 +27533,48 @@
       ],
       "type": "object"
     },
+    "v1SpectroClusterVariableUpdateEntity": {
+      "description": "List of cluster variables to be updated with profile uid",
+      "properties": {
+        "profileUid": {
+          "description": "Profile uid to which the variable belongs",
+          "type": "string"
+        },
+        "variables": {
+          "description": "List of variables with updated values",
+          "items": {
+            "$ref": "#/definitions/v1SpectroClusterVariable"
+          },
+          "type": "array",
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "profileUid"
+      ],
+      "type": "object"
+    },
+    "v1SpectroClusterVariables": {
+      "description": "List of cluster variables with schema belonging to a cluster",
+      "properties": {
+        "profileUid": {
+          "description": "Profile uid to which the cluster variable belongs",
+          "type": "string"
+        },
+        "variables": {
+          "description": "List of cluster variables with schema",
+          "items": {
+            "$ref": "#/definitions/v1Variable"
+          },
+          "type": "array",
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "profileUid"
+      ],
+      "type": "object"
+    },
     "v1SpectroClusters": {
       "properties": {
         "items": {
@@ -27314,6 +27810,56 @@
             }
           },
           "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "v1SpectroEdgeNativeClusterPair": {
+      "description": "EdgeNative cluster pair response",
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/v1ObjectMeta"
+        },
+        "spec": {
+          "properties": {
+            "cloudConfig": {
+              "$ref": "#/definitions/v1EdgeNativeClusterConfig"
+            },
+            "clusterConfig": {
+              "$ref": "#/definitions/v1EdgeNativeClusterConfigPairEntity",
+              "description": "General cluster configuration like health, patching settings, namespace resource allocation, rbac"
+            },
+            "clusterMeta": {
+              "$ref": "#/definitions/v1SpectroClusterPairMeta"
+            },
+            "machinepoolconfig": {
+              "items": {
+                "$ref": "#/definitions/v1EdgeNativeMachinePoolConfigEntity"
+              },
+              "type": "array"
+            },
+            "profiles": {
+              "description": "ClusterProfileTemplate is a copy of the draft version or latest published version of the clusterprofileSpec.clusterprofileTemplate",
+              "items": {
+                "$ref": "#/definitions/v1ClusterProfileTemplate"
+              },
+              "type": "array"
+            },
+            "stylusAgentVersion": {
+              "description": "Stylus Agent Version",
+              "type": "string"
+            }
+          },
+          "required": [
+            "profiles",
+            "registrationToken",
+            "stylusAgentVersion",
+            "machinepoolconfig"
+          ],
+          "type": "object"
+        },
+        "status": {
+          "$ref": "#/definitions/v1SpectroClusterPairStatus"
         }
       },
       "type": "object"
@@ -28038,66 +28584,6 @@
         "state": {
           "type": "string",
           "x-omitempty": false
-        }
-      },
-      "type": "object"
-    },
-    "v1SpectroTencentClusterEntity": {
-      "description": "Tencent cluster request payload for create and update",
-      "properties": {
-        "metadata": {
-          "$ref": "#/definitions/v1ObjectMeta"
-        },
-        "spec": {
-          "properties": {
-            "cloudAccountUid": {
-              "description": "Cloud account uid to be used for cluster provisioning",
-              "type": "string"
-            },
-            "cloudConfig": {
-              "$ref": "#/definitions/v1TencentClusterConfig"
-            },
-            "clusterConfig": {
-              "$ref": "#/definitions/v1ClusterConfigEntity",
-              "description": "General cluster configuration like health, patching settings, namespace resource allocation, rbac"
-            },
-            "machinepoolconfig": {
-              "items": {
-                "$ref": "#/definitions/v1TencentMachinePoolConfigEntity"
-              },
-              "type": "array"
-            },
-            "policies": {
-              "$ref": "#/definitions/v1SpectroClusterPolicies"
-            },
-            "profiles": {
-              "items": {
-                "$ref": "#/definitions/v1SpectroClusterProfileEntity"
-              },
-              "type": "array"
-            }
-          },
-          "required": [
-            "cloudType",
-            "cloudAccountUid",
-            "cloudConfig"
-          ],
-          "type": "object"
-        }
-      },
-      "type": "object"
-    },
-    "v1SpectroTencentClusterRateEntity": {
-      "description": "Spectro Tencent cluster request payload for estimating rate",
-      "properties": {
-        "cloudConfig": {
-          "$ref": "#/definitions/v1TencentClusterConfig"
-        },
-        "machinepoolconfig": {
-          "items": {
-            "$ref": "#/definitions/v1TencentMachinePoolConfigEntity"
-          },
-          "type": "array"
         }
       },
       "type": "object"
@@ -28937,6 +29423,9 @@
     "v1SystemAwsImageSpec": {
       "description": "system aws account specifications",
       "properties": {
+        "accountId": {
+          "type": "string"
+        },
         "goldenImageRegion": {
           "type": "string"
         }
@@ -30051,26 +30540,6 @@
       },
       "type": "object"
     },
-    "v1SystemTencentAccount": {
-      "description": "SystemAdmin",
-      "properties": {
-        "spec": {
-          "$ref": "#/definitions/v1SystemTencentSpec"
-        }
-      },
-      "type": "object"
-    },
-    "v1SystemTencentSpec": {
-      "description": "system tencent account specifications",
-      "properties": {
-        "secretId": {
-          "type": "string"
-        },
-        "secretKey": {
-          "type": "string"
-        }
-      }
-    },
     "v1SystemTimeseriesMetrics": {
       "description": "system timeseries metrics config",
       "properties": {
@@ -30216,6 +30685,20 @@
           "type": "string"
         }
       }
+    },
+    "v1SystemsManager": {
+      "description": "SystemsManager specifies the Systems Manager configuration for the AWS/EKS cluster",
+      "properties": {
+        "activationCode": {
+          "description": "ActivationCode specifies the Systems Manager activation code",
+          "type": "string"
+        },
+        "activationId": {
+          "description": "ActivationID specifies the Systems Manager activation ID",
+          "type": "string"
+        }
+      },
+      "type": "object"
     },
     "v1TagFilter": {
       "description": "Tag Filter create spec",
@@ -31329,588 +31812,6 @@
       },
       "type": "object"
     },
-    "v1TencentAccount": {
-      "description": "Tencent cloud account information",
-      "properties": {
-        "apiVersion": {
-          "description": "Cloud account api version",
-          "type": "string"
-        },
-        "kind": {
-          "description": "Cloud account kind",
-          "type": "string"
-        },
-        "metadata": {
-          "$ref": "#/definitions/v1ObjectMeta"
-        },
-        "spec": {
-          "$ref": "#/definitions/v1TencentCloudAccount"
-        },
-        "status": {
-          "$ref": "#/definitions/v1CloudAccountStatus"
-        }
-      },
-      "type": "object"
-    },
-    "v1TencentAccounts": {
-      "properties": {
-        "items": {
-          "items": {
-            "$ref": "#/definitions/v1TencentAccount"
-          },
-          "type": "array",
-          "uniqueItems": true
-        },
-        "listmeta": {
-          "$ref": "#/definitions/v1ListMetaData"
-        }
-      },
-      "required": [
-        "items"
-      ],
-      "type": "object"
-    },
-    "v1TencentAvailabilityZone": {
-      "description": "Tencent availability zone",
-      "properties": {
-        "name": {
-          "description": "Tencent availability zone name",
-          "type": "string"
-        },
-        "state": {
-          "description": "Tencent availability zone state",
-          "type": "string"
-        },
-        "zoneId": {
-          "description": "Tencent availability zone id",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1TencentAvailabilityZones": {
-      "description": "List of Tencent Availability zones",
-      "properties": {
-        "zones": {
-          "items": {
-            "$ref": "#/definitions/v1TencentAvailabilityZone"
-          },
-          "type": "array"
-        }
-      },
-      "required": [
-        "zones"
-      ],
-      "type": "object"
-    },
-    "v1TencentCloudAccount": {
-      "properties": {
-        "secretId": {
-          "description": "Tencent api secretID",
-          "type": "string"
-        },
-        "secretKey": {
-          "description": "Tencent api secret key",
-          "type": "string"
-        }
-      },
-      "required": [
-        "secretId",
-        "secretKey"
-      ],
-      "type": "object"
-    },
-    "v1TencentCloudClusterConfigEntity": {
-      "description": "Tencent cloud cluster config entity",
-      "properties": {
-        "clusterConfig": {
-          "$ref": "#/definitions/v1TencentClusterConfig"
-        }
-      },
-      "type": "object"
-    },
-    "v1TencentCloudConfig": {
-      "description": "TencentCloudConfig is the Schema for the tencentcloudconfigs API",
-      "properties": {
-        "metadata": {
-          "$ref": "#/definitions/v1ObjectMeta"
-        },
-        "spec": {
-          "$ref": "#/definitions/v1TencentCloudConfigSpec"
-        }
-      },
-      "type": "object"
-    },
-    "v1TencentCloudConfigSpec": {
-      "description": "TencentCloudConfigSpec defines the cloud configuration input by user This will translate to clusterspec/machinespec for cluster-api",
-      "properties": {
-        "cloudAccountRef": {
-          "$ref": "#/definitions/v1ObjectReference",
-          "description": "cloudAccountRef should point to the secret which contains TencentCloudAccount"
-        },
-        "clusterConfig": {
-          "$ref": "#/definitions/v1TencentClusterConfig"
-        },
-        "machinePoolConfig": {
-          "items": {
-            "$ref": "#/definitions/v1TencentMachinePoolConfig"
-          },
-          "type": "array"
-        }
-      },
-      "type": "object"
-    },
-    "v1TencentClusterConfig": {
-      "description": "Cluster level configuration for tencent cloud and applicable for all the machine pools",
-      "properties": {
-        "endpointAccess": {
-          "$ref": "#/definitions/v1TkeEndpointAccess",
-          "description": "Endpoints specifies access to this cluster's control plane endpoints"
-        },
-        "region": {
-          "type": "string"
-        },
-        "sshKeyIDs": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        },
-        "vpcID": {
-          "description": "VPC Id to deploy cluster into should have one public and one private subnet for the the cluster creation, this field is optional, If VPC Id is not provided a fully managed VPC will be created",
-          "type": "string"
-        }
-      },
-      "required": [
-        "region"
-      ],
-      "type": "object"
-    },
-    "v1TencentInstanceTypes": {
-      "description": "List of Tencent instance types",
-      "properties": {
-        "instanceTypes": {
-          "items": {
-            "$ref": "#/definitions/v1InstanceType"
-          },
-          "type": "array"
-        }
-      },
-      "type": "object"
-    },
-    "v1TencentKeypair": {
-      "description": "Tencent Keypair entity",
-      "properties": {
-        "id": {
-          "description": "Tencent keypair id",
-          "type": "string"
-        },
-        "name": {
-          "description": "Tencent keypair name",
-          "type": "string"
-        },
-        "publickey": {
-          "description": "Tencent public key",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1TencentKeypairs": {
-      "description": "List of Tencent keypairs",
-      "properties": {
-        "keypairs": {
-          "items": {
-            "$ref": "#/definitions/v1TencentKeypair"
-          },
-          "type": "array"
-        }
-      },
-      "type": "object"
-    },
-    "v1TencentMachine": {
-      "description": "Tencent cloud VM definition",
-      "properties": {
-        "apiVersion": {
-          "type": "string"
-        },
-        "kind": {
-          "type": "string"
-        },
-        "metadata": {
-          "$ref": "#/definitions/v1ObjectMeta"
-        },
-        "spec": {
-          "$ref": "#/definitions/v1TencentMachineSpec"
-        },
-        "status": {
-          "$ref": "#/definitions/v1CloudMachineStatus"
-        }
-      },
-      "type": "object"
-    },
-    "v1TencentMachinePoolCloudConfigEntity": {
-      "properties": {
-        "azs": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        },
-        "instanceType": {
-          "description": "instance type",
-          "type": "string"
-        },
-        "rootDeviceSize": {
-          "description": "rootDeviceSize in GBs",
-          "format": "int64",
-          "maximum": 2000,
-          "minimum": 1,
-          "type": "integer"
-        },
-        "subnetIds": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "description": "AZ to subnet mapping filled by ally from hubble SubnetIDs [\"ap-guangzhou-6\"] = \"subnet-079b6061\" This field is optional If we don't provide a subnetId then by default the first subnet from the AZ will be picked up for deployment",
-          "type": "object"
-        }
-      },
-      "type": "object"
-    },
-    "v1TencentMachinePoolConfig": {
-      "properties": {
-        "additionalLabels": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "description": "AdditionalLabels",
-          "type": "object"
-        },
-        "additionalTags": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "description": "AdditionalTags is an optional set of tags to add to resources managed by the provider, in addition to the ones added by default. For eg., tags for EKS nodeGroup or EKS NodegroupIAMRole",
-          "type": "object"
-        },
-        "azs": {
-          "description": "AZs is only used for dynamic placement",
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        },
-        "instanceConfig": {
-          "$ref": "#/definitions/v1InstanceConfig"
-        },
-        "instanceType": {
-          "description": "instance type",
-          "type": "string"
-        },
-        "isControlPlane": {
-          "description": "whether this pool is for control plane",
-          "type": "boolean"
-        },
-        "labels": {
-          "description": "labels for this pool, example: control-plane/worker, gpu, windows",
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        },
-        "machinePoolProperties": {
-          "$ref": "#/definitions/v1MachinePoolProperties"
-        },
-        "maxSize": {
-          "description": "max size of the pool, for scaling",
-          "format": "int32",
-          "type": "integer"
-        },
-        "minSize": {
-          "description": "min size of the pool, for scaling",
-          "format": "int32",
-          "type": "integer"
-        },
-        "name": {
-          "type": "string"
-        },
-        "nodeRepaveInterval": {
-          "description": "Minimum number of seconds a node should be Ready, before the next node is selected for repave. Applicable only for workerpools in infrastructure cluster",
-          "format": "int32",
-          "type": "integer"
-        },
-        "rootDeviceSize": {
-          "description": "rootDeviceSize in GBs",
-          "format": "int64",
-          "type": "integer"
-        },
-        "size": {
-          "description": "size of the pool, number of machines",
-          "format": "int32",
-          "type": "integer"
-        },
-        "subnetIds": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "description": "AZ to subnet mapping filled by ally from hubble SubnetIDs [\"ap-guangzhou-6\"] = \"subnet-079b6061\" This field is optional If we don't provide a subnetId then by default the first subnet from the AZ will be picked up for deployment",
-          "type": "object"
-        },
-        "taints": {
-          "description": "control plane or worker taints",
-          "items": {
-            "$ref": "#/definitions/v1Taint"
-          },
-          "type": "array"
-        },
-        "updateStrategy": {
-          "$ref": "#/definitions/v1UpdateStrategy",
-          "description": "rolling update strategy for this machinepool if not specified, will use ScaleOut"
-        },
-        "useControlPlaneAsWorker": {
-          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove control plane taint this will not be used for worker pools",
-          "type": "boolean"
-        }
-      },
-      "type": "object"
-    },
-    "v1TencentMachinePoolConfigEntity": {
-      "properties": {
-        "cloudConfig": {
-          "$ref": "#/definitions/v1TencentMachinePoolCloudConfigEntity"
-        },
-        "poolConfig": {
-          "$ref": "#/definitions/v1MachinePoolConfigEntity"
-        }
-      },
-      "required": [
-        "cloudConfig"
-      ],
-      "type": "object"
-    },
-    "v1TencentMachineSpec": {
-      "description": "Tencent cloud VM definition spec",
-      "properties": {
-        "dnsName": {
-          "type": "string"
-        },
-        "imageId": {
-          "type": "string"
-        },
-        "instanceType": {
-          "type": "string"
-        },
-        "nics": {
-          "items": {
-            "$ref": "#/definitions/v1TencentNic"
-          },
-          "type": "array"
-        },
-        "securityGroups": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        },
-        "subnetId": {
-          "type": "string"
-        },
-        "type": {
-          "type": "string"
-        },
-        "vpcId": {
-          "type": "string"
-        },
-        "zoneId": {
-          "type": "string"
-        }
-      },
-      "required": [
-        "nics",
-        "instanceType",
-        "imageId"
-      ],
-      "type": "object"
-    },
-    "v1TencentMachines": {
-      "description": "Tencent machine list",
-      "properties": {
-        "items": {
-          "items": {
-            "$ref": "#/definitions/v1TencentMachine"
-          },
-          "type": "array",
-          "uniqueItems": true
-        },
-        "listmeta": {
-          "$ref": "#/definitions/v1ListMetaData"
-        }
-      },
-      "required": [
-        "items"
-      ],
-      "type": "object"
-    },
-    "v1TencentNic": {
-      "description": "Tencent network interface",
-      "properties": {
-        "index": {
-          "format": "int8",
-          "type": "integer"
-        },
-        "privateIPs": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        },
-        "publicIp": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1TencentRegion": {
-      "description": "Tencent region entity",
-      "properties": {
-        "name": {
-          "description": "Name of tencent region",
-          "type": "string"
-        },
-        "state": {
-          "description": "State of tencent region",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1TencentRegions": {
-      "description": "List of tencent regions",
-      "properties": {
-        "regions": {
-          "description": "Tencent regions entity",
-          "items": {
-            "$ref": "#/definitions/v1TencentRegion"
-          },
-          "type": "array"
-        }
-      },
-      "required": [
-        "regions"
-      ],
-      "type": "object"
-    },
-    "v1TencentSecurityGroup": {
-      "description": "Tencent Security Group. A security group is a virtual firewall that features stateful data packet filtering",
-      "properties": {
-        "id": {
-          "description": "Tencent security group id",
-          "type": "string"
-        },
-        "isDefault": {
-          "description": "Whether it is the default security group, the default security group does not support deletion.",
-          "type": "boolean"
-        },
-        "name": {
-          "description": "Tencent security group name",
-          "type": "string"
-        },
-        "projectId": {
-          "description": "Tencent security group associated to a project",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1TencentSecurityGroups": {
-      "description": "List of Tencent security groups",
-      "properties": {
-        "groups": {
-          "items": {
-            "$ref": "#/definitions/v1TencentSecurityGroup"
-          },
-          "type": "array"
-        }
-      },
-      "type": "object"
-    },
-    "v1TencentStorageTypes": {
-      "description": "List of Tencent storage types",
-      "properties": {
-        "storageTypes": {
-          "items": {
-            "$ref": "#/definitions/v1StorageType"
-          },
-          "type": "array"
-        }
-      },
-      "type": "object"
-    },
-    "v1TencentSubnet": {
-      "description": "Tencent Subnet entity",
-      "properties": {
-        "az": {
-          "description": "Availability zone associated with tencent subnet",
-          "type": "string"
-        },
-        "cidrBlock": {
-          "description": "Tencent subnet CIDR. The CIDR notation consists of an IP address, a slash character ('/') and a decimal number from 0 to 32",
-          "type": "string"
-        },
-        "name": {
-          "description": "Tencent subnet name",
-          "type": "string"
-        },
-        "subnetId": {
-          "description": "Tencent subnet id",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1TencentVpc": {
-      "description": "Tencent VPC entity",
-      "properties": {
-        "cidrBlock": {
-          "description": "Tencent VPC CIDR. The CIDR notation consists of an IP address, a slash character ('/') and a decimal number from 0 to 32",
-          "type": "string"
-        },
-        "name": {
-          "description": "Tencent VPC name",
-          "type": "string"
-        },
-        "subnets": {
-          "items": {
-            "$ref": "#/definitions/v1TencentSubnet"
-          },
-          "type": "array"
-        },
-        "vpcId": {
-          "description": "Tencent VPC id",
-          "type": "string"
-        }
-      },
-      "required": [
-        "vpcId"
-      ],
-      "type": "object"
-    },
-    "v1TencentVpcs": {
-      "description": "List of Tencent VPCs",
-      "properties": {
-        "vpcs": {
-          "items": {
-            "$ref": "#/definitions/v1TencentVpc"
-          },
-          "type": "array"
-        }
-      },
-      "required": [
-        "vpcs"
-      ],
-      "type": "object"
-    },
     "v1TierPrice": {
       "description": "tier price",
       "properties": {
@@ -31934,43 +31835,6 @@
       "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
       "format": "date-time",
       "type": "string"
-    },
-    "v1TkeEndpointAccess": {
-      "description": "TKEEndpointAccess specifies how control plane endpoints are accessible",
-      "properties": {
-        "IsExtranet": {
-          "description": "IsExtranet Whether it is external network access (TRUE external network access FALSE internal network access, default value: FALSE)",
-          "type": "boolean"
-        },
-        "private": {
-          "description": "Private points VPC-internal control plane access to the private endpoint",
-          "type": "boolean"
-        },
-        "privateCIDR": {
-          "description": "Deprecated. PrivateCIDRs specifies which blocks can access the public endpoint",
-          "type": "string"
-        },
-        "public": {
-          "description": "Public controls whether control plane endpoints are publicly accessible",
-          "type": "boolean"
-        },
-        "publicCIDRs": {
-          "description": "Deprecated. PublicCIDRs specifies which blocks can access the public endpoint",
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        },
-        "securityGroup": {
-          "description": "Tencent security group",
-          "type": "string"
-        },
-        "subnetId": {
-          "description": "Tencent Subnet",
-          "type": "string"
-        }
-      },
-      "type": "object"
     },
     "v1TlsConfiguration": {
       "description": "TLS configuration",
@@ -44044,6 +43908,219 @@
           }
         ],
         "summary": "Updates the cluster configuration information",
+        "tags": [
+          "cloudconfigs"
+        ]
+      }
+    },
+    "/v1/cloudconfigs/aws/{configUid}/clusterConfig/hybridConfig": {
+      "parameters": [
+        {
+          "description": "AWS Cluster's Hybrid Configuration",
+          "in": "path",
+          "name": "configUid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "put": {
+        "operationId": "v1AwsCloudConfigsUidHybridConfig",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1AwsCloudHybridConfigEntity"
+            }
+          },
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Updates the hybrid configuration information of AWS cluster",
+        "tags": [
+          "cloudconfigs"
+        ]
+      }
+    },
+    "/v1/cloudconfigs/aws/{configUid}/edge-native/machinePools": {
+      "parameters": [
+        {
+          "description": "Hybrid AWS cluster's cloud config uid",
+          "in": "path",
+          "name": "configUid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "post": {
+        "operationId": "V1AwsCloudConfigsEdgeNativeUidMachinePoolCreate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1HybridEdgeNativeMachinePoolConfigEntity"
+            }
+          },
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created successfully",
+            "headers": {
+              "AuditUid": {
+                "description": "Audit uid for the request",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/v1Uid"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Creates an Hybrid AWS cloud config's Edge-Native machine pool",
+        "tags": [
+          "cloudconfigs"
+        ]
+      }
+    },
+    "/v1/cloudconfigs/aws/{configUid}/edge-native/machinePools/{machinePoolName}": {
+      "delete": {
+        "operationId": "v1AwsCloudConfigsEdgeNativeMachinePoolDelete",
+        "parameters": [
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was deleted successfully"
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Deletes the specified Edge-Native machine pool of hybrid AWS cluster",
+        "tags": [
+          "cloudconfigs"
+        ]
+      },
+      "get": {
+        "operationId": "v1AwsCloudConfigsEdgeNativeMachinePoolGet",
+        "parameters": [
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1HybridEdgeNativeMachinePoolConfig"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Returns the specified AWS Cluster's Edge-Native machine pool configuration",
+        "tags": [
+          "cloudconfigs"
+        ]
+      },
+      "parameters": [
+        {
+          "description": "AWS Cluster's cloud config uid",
+          "in": "path",
+          "name": "configUid",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "description": "Edge-native machine pool name",
+          "in": "path",
+          "name": "machinePoolName",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "put": {
+        "operationId": "v1AwsCloudConfigsEdgeNativeMachinePoolUpdate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1HybridEdgeNativeMachinePoolConfigUpdateEntity"
+            }
+          },
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Updates the specified Hybrid AWS cluster cloud config's Edge-Native machine pool",
         "tags": [
           "cloudconfigs"
         ]
@@ -72016,6 +72093,100 @@
         ]
       }
     },
+    "/v1/spectroclusters/{uid}/hybridPools/metadata": {
+      "get": {
+        "operationId": "v1SpectroClustersGetHybridPoolsMetadata",
+        "parameters": [
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroClusterHybridPoolsMetadata"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Returns the metadata of all hybrid pools associated with the specified cluster",
+        "tags": [
+          "spectroclusters"
+        ]
+      },
+      "parameters": [
+        {
+          "description": "Cluster uid",
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
+    "/v1/spectroclusters/{uid}/hybridSettings": {
+      "parameters": [
+        {
+          "description": "Cluster uid",
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "patch": {
+        "operationId": "v1SpectroClustersUidHybridSettings",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1ClusterHybridSettingsEntity"
+            }
+          },
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Ok response without content",
+            "headers": {
+              "AuditUid": {
+                "description": "Audit uid for the request",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Update specific cluster hybrid settings",
+        "tags": [
+          "spectroclusters"
+        ]
+      }
+    },
     "/v1/spectroclusters/{uid}/import/manifest": {
       "get": {
         "operationId": "v1SpectroClustersUidImportManifest",
@@ -73934,7 +74105,10 @@
           "200": {
             "description": "(empty)",
             "schema": {
-              "$ref": "#/definitions/v1Variables"
+              "items": {
+                "$ref": "#/definitions/v1SpectroClusterVariables"
+              },
+              "type": "array"
             }
           }
         },
@@ -73959,7 +74133,45 @@
           "required": true,
           "type": "string"
         }
-      ]
+      ],
+      "patch": {
+        "operationId": "v1SpectroClustersUidVariablesPatch",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "items": {
+                "$ref": "#/definitions/v1SpectroClusterVariableUpdateEntity"
+              },
+              "type": "array"
+            }
+          },
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Update cluster variable values for specified cluster",
+        "tags": [
+          "spectroclusters"
+        ]
+      }
     },
     "/v1/spectroclusters/{uid}/vms": {
       "get": {
@@ -76983,6 +77195,29 @@
       }
     },
     "/v1/tenants/{tenantUid}/password/policy": {
+      "get": {
+        "operationId": "V1TenantUidPasswordPolicyGet",
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1TenantPasswordPolicyEntity"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "retrieves the password policy for tenant",
+        "tags": [
+          "tenants"
+        ]
+      },
       "parameters": [
         {
           "in": "path",

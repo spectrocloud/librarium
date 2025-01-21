@@ -78,6 +78,12 @@ Complete the [Environment Setup](./kubernetes-airgap-instructions.md) steps befo
 
   - x509 SSL certificate authority file in the base64 format.
 
+- A [StorageClass](https://kubernetes.io/docs/concepts/storage/storage-classes/) to manage persistent storage, with the
+  annotation `storageclass.kubernetes.io/is-default-class` set to `true`. To override the default StorageClass for a
+  workload, modify the `storageClass` parameter. Check out the
+  [Change the default StorageClass](https://kubernetes.io/docs/tasks/administer-cluster/change-default-storage-class/)
+  page to learn more about modifying StorageClasses.
+
 - An Nginx controller will be installed by default. If you already have an Nginx controller deployed in the cluster, you
   must set the `ingress.enabled` parameter to `false` in the **values.yaml** file.
 
@@ -226,6 +232,14 @@ environment. Reach out to our support team if you need assistance.
     | `imageSwapConfig.isEKSCluster`      | If you are NOT installing VerteX on an EKS cluster, set this value to `false`.                                                                                                                                                                                                                                                                        | boolean  |
     | `ingress.enabled`                   | Whether to install the Nginx ingress controller. Set this to `false` if you already have an Nginx controller deployed in the cluster.                                                                                                                                                                                                                 | boolean  |
     | `reach-system`                      | Set `reach-system.enabled` to `true` and configure the `reach-system.proxySettings` parameters for VerteX to use a network proxy in your environment.                                                                                                                                                                                                 | object   |
+
+    :::info
+
+    If you are installing VerteX by pulling required images from a private mirror registry, you will need to provide the
+    credentials to your registry in the **values.yaml** file. For more information, refer to
+    [Helm Configuration Reference](../vertex-helm-ref.md#image-pull-secret).
+
+    :::
 
     Save the **values.yaml** file after you have populated the required parameters mentioned in the table.
 

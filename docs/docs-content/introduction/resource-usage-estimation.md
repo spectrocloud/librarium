@@ -27,18 +27,34 @@ Alternatively, if you continuously deploy a three-node cluster that has 16 CPU p
 
 ## Your Current Usage
 
-Palette and Palette Vertex display your current resource usage on the **Project Overview** page. By default, Palette
-offers 25 kCh per month, but you can always request on-demand compute capacity by clicking **Upgrade now** in the
-bottom-left corner of Palette.
+Palette and Palette VerteX display your current resource usage on the **Project Overview** page. Because we do not
+charge infrastructure costs for Edge and MAAS clusters, the resource usage calculated by Palette and Palette VerteX
+excludes resources used by your Edge or MAAS clusters.
+
+By default, Palette offers 25 kCh per month, but you can always request on-demand compute capacity by clicking **Upgrade
+now** in the bottom-left corner of Palette. To continue deploying clusters, you must stay within the resource usage
+limit in your Palette or Palette VerteX instance.
 
 ![Palette interface with the kCh meter highlighted.](/introduction_resourse-usage-estimation_kCh-in-ui.webp)
 
+If you have the tenant admin role, you may also view the resource usage by each of your project in the **Tenant
+Overview** page. Resource usage by different projects are displayed on the bar chart by different colors. This usage
+also does not include Edge or MAAS clusters. For more information about roles and permissions in Palette, refer to
+[User & Role Management](../user-management/user-management.md).
+
 :::warning
 
-To continue deploying clusters, you must stay within the resource usage limit in your Palette or Palette VerteX
-instance.
+The exclusion of Edge and MAAS clusters in kCh calculations was implemented in the Palette release 4.5.20 and did not
+revise historical data. Therefore, it is normal to notice a drop in your resource usage after Jan 18th, 2025 for Palette
+SaaS if you have Edge or MAAS workloads in your project. If you are using a self-hosted instance, you may also notice a
+drop in project monthly kCh after you upgrade to release 4.5.20 or later.
+
+Even though your resource usage in the past may have included Edge and MAAS clusters, we have never charged and will not
+charge you for kCh usage by Edge and MAAS clusters since you provide the infrastructure for those clusters yourself.
 
 :::
+
+![Palette interface of Tenant Overview page with the resource usage chart highlighted.](/introduction_resource-usage_tenant-admin.webp)
 
 If you'd like to discuss other compute capacities, contact us at
 [support@spectrocloud.com](mailto:support@spectrocloud.com).

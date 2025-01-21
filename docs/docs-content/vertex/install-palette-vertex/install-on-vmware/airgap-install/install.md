@@ -19,6 +19,11 @@ assets.
 - You have completed the [Environment Setup](./environment-setup/environment-setup.md) steps and deployed the airgap
   support VM.
 
+- You will need to provide the Palette CLI an encryption passphrase to secure sensitive data. The passphrase must be
+  between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character.
+  Refer to the [Palette CLI Encryption](../../../../automation/palette-cli/palette-cli.md#encryption) section for more
+  information.
+
 - You can choose between two Operating Systems (OS) when installing Vertex. Review the requirements for each OS.
 
   - [Ubuntu Pro](https://ubuntu.com/pro) - you need an Ubuntu Pro subscription token.
@@ -72,6 +77,12 @@ assets.
 
 - Shared Storage between VMware vSphere hosts.
 
+- A [StorageClass](https://kubernetes.io/docs/concepts/storage/storage-classes/) to manage persistent storage, with the
+  annotation `storageclass.kubernetes.io/is-default-class` set to `true`. To override the default StorageClass for a
+  workload, modify the `storageClass` parameter. Check out the
+  [Change the default StorageClass](https://kubernetes.io/docs/tasks/administer-cluster/change-default-storage-class/)
+  page to learn more about modifying StorageClasses.
+
 :::info
 
 Self-hosted Palette VerteX installations provide a system Private Cloud Gateway (PCG) out-of-the-box and typically do
@@ -120,7 +131,14 @@ Use the following steps to install Palette VerteX.
 
     :::
 
-2.  Invoke the Palette CLI by using the `ec` command to install the enterprise cluster. The interactive CLI prompts you
+2.  Set your Palette CLI encryption passphrase value in an environment variable. Use the following command to set the
+    passphrase. Replace `*************` with your passphrase.
+
+    ```shell
+    export PALETTE_ENCRYPTION_PASSWORD=*************
+    ```
+
+3.  Invoke the Palette CLI by using the `ec` command to install the enterprise cluster. The interactive CLI prompts you
     for configuration details and then initiates the installation. For more information about the `ec` subcommand, refer
     to [Palette Commands](../../../../automation/palette-cli/commands/ec.md).
 
@@ -136,9 +154,9 @@ Use the following steps to install Palette VerteX.
 
     :::
 
-3.  At the **Enterprise Cluster Type** prompt, choose **Palette VerteX**.
+4.  At the **Enterprise Cluster Type** prompt, choose **Palette VerteX**.
 
-4.  Select the desired OS you want to use for the installation. Review the table below for more information about each
+5.  Select the desired OS you want to use for the installation. Review the table below for more information about each
     option.
 
     | **Option**                   | **Description**                                                                                                                | **Requirements**                                                                                                                                                                                                 |
@@ -146,7 +164,7 @@ Use the following steps to install Palette VerteX.
     | **Ubuntu Pro**               | [Ubuntu Pro](https://ubuntu.com/pro) is the default option. It provides access to FIPS 140-2 certified cryptographic packages. | Ubuntu Pro token.                                                                                                                                                                                                |
     | **Red Hat Linux Enterprise** | Red Hat Linux Enterprise provides access to Red Hat Enterprise Linux.                                                          | Red Hat subscription and a custom RHEL vSphere template with Kubernetes. Review the [RHEL and PXK](../../../../byoos/image-builder/build-image-vmware/rhel-pxk.md) to learn how to create the required template. |
 
-5.  Depending on your OS selection, you will be prompted to provide the required information. For Ubuntu Pro, you will
+6.  Depending on your OS selection, you will be prompted to provide the required information. For Ubuntu Pro, you will
     need to provide your Ubuntu Pro token. For Red Hat Linux Enterprise, you will need to provide the path to the
     vSphere template and specify the version.
 
@@ -157,9 +175,9 @@ Use the following steps to install Palette VerteX.
 
     :::
 
-6.  Choose `VMware vSphere` as the cloud type. This is the default.
+7.  Choose `VMware vSphere` as the cloud type. This is the default.
 
-7.  When prompted, enter the information listed in each of the following tables.
+8.  When prompted, enter the information listed in each of the following tables.
 
         #### Environment Configuration
 
@@ -172,7 +190,7 @@ Use the following steps to install Palette VerteX.
     | **Pod CIDR**                      | Enter the CIDR pool IP that will be used to assign IP addresses to pods in the EC cluster. The pod IP addresses should be unique and not overlap with any machine IPs in the environment.                                                                                                                                      |
     | **Service IP Range**              | Enter the IP address range that will be used to assign IP addresses to services in the EC cluster. The service IP addresses should be unique and not overlap with any machine IPs in the environment.                                                                                                                          |
 
-8.  Select the OCI registry type and provide the configuration values. Review the following table for more information.
+9.  Select the OCI registry type and provide the configuration values. Review the following table for more information.
     If you are using the Palette CLI from inside an
     [airgap support VM](./environment-setup/vmware-vsphere-airgap-instructions.md), the CLI will automatically detect
     the airgap environment and prompt you to **Use local, air-gapped Pack Registry?** Type `y` to use the local
@@ -207,11 +225,11 @@ Use the following steps to install Palette VerteX.
     | **ECR Registry Private**                         | Type `y` if the registry is private. Otherwise, type `n`.                                                                                        |
     | **Use Public Registry for Images**               | Airgap users, select `n` so that you can specify the values for the OCI registry that contains all the required images.                          |
 
-9.  When prompted to **Pull images from public registry**, type `n`.
+10. When prompted to **Pull images from public registry**, type `n`.
 
-10. For the **Use the same OCI Registry for packs & images?** prompt, type `n`.
+11. For the **Use the same OCI Registry for packs & images?** prompt, type `n`.
 
-11. For the **Use local, air-gapped Image Registry?** prompt, type `y`.
+12. For the **Use local, air-gapped Image Registry?** prompt, type `y`.
 
     :::info
 
@@ -220,7 +238,7 @@ Use the following steps to install Palette VerteX.
 
     :::
 
-12. The next set of prompts asks for the VMware vSphere account information. Enter the information listed in the table
+13. The next set of prompts asks for the VMware vSphere account information. Enter the information listed in the table
     below.
 
     #### VMware vSphere Account Information
@@ -251,7 +269,7 @@ Use the following steps to install Palette VerteX.
         | **NTP Servers**     | You can provide a list of Network Time Protocol (NTP) servers, such as `pool.ntp.org`.                                                                                                                                                                                                                                                            |
         | **SSH Public Keys** | Provide any public SSH keys to access your Palette VMs. This option opens up your system's default text editor. Vi is the default text editor for most Linux distributions. To review basic vi commands, check out the [vi Commands](https://www.cs.colostate.edu/helpdocs/vi.html) reference.                            |
 
-13. Specify the IP pool configuration. The placement type can be Static or Dynamic Host Configuration Protocol (DHCP).
+14. Specify the IP pool configuration. The placement type can be Static or Dynamic Host Configuration Protocol (DHCP).
     Choosing static placement creates an IP pool from which VMs are assigned IP addresses. Choosing DHCP assigns IP
     addresses using DNS.
 
@@ -266,7 +284,7 @@ Use the following steps to install Palette VerteX.
         | **Name servers**                | Comma-separated list of DNS name server IP addresses.                                       |
         | **Name server search suffixes** | An optional comma-separated list of DNS search domains.                                     |
 
-14. The next set of prompts are for the vSphere machine and database configuration. Use the following table for
+15. The next set of prompts are for the vSphere machine and database configuration. Use the following table for
     guidance.
 
         #### vSphere Machine Configuration
@@ -278,7 +296,7 @@ Use the following steps to install Palette VerteX.
         | **Large**     | Deploy VM nodes with 32 CPU, 64 GB memory, 120 GB storage. The database specs are 80 GB database with 8 CPU limit and 16 GB memory limit.                                   |
         | **Custom**    | Deploy VM nodes with custom CPU, memory, storage, database size, CPU limit, and memory limit. If you specify custom, you will be prompted for the CPU, memory, and storage. |
 
-15. The last prompt is for node affinity. Enter `y` to schedule all Palette pods on control plane nodes.
+16. The last prompt is for node affinity. Enter `y` to schedule all Palette pods on control plane nodes.
 
         #### Additional vSphere Machine Configuration
 
@@ -338,7 +356,7 @@ Use the following steps to install Palette VerteX.
     export KUBECONFIG=/ubuntu/.palette/ec/ec-20231012215923/spectro_mgmt.conf
     ```
 
-16. To avoid potential vulnerabilities, once the installation is complete, remove the `kind` images that were installed
+17. To avoid potential vulnerabilities, once the installation is complete, remove the `kind` images that were installed
     in the environment where you initiated the installation.
 
     Issue the following command to list all instances of `kind` that exist in the environment.
@@ -371,7 +389,7 @@ Use the following steps to install Palette VerteX.
     Deleted: sha256:85a1a4dfc468cfeca99e359b74231e47aedb007a206d0e2cae2f8290e7290cfd
     ```
 
-17. Log in to the system console using the credentials provided in the Enterprise Cluster Details output. After login,
+18. Log in to the system console using the credentials provided in the Enterprise Cluster Details output. After login,
     you will be prompted to create a new password. Enter a new password and save your changes. Refer to the
     [password requirements](../../../system-management/account-management/credentials.md#password-requirements-and-security)
     documentation page to learn more about the password requirements.
@@ -391,13 +409,13 @@ Use the following steps to install Palette VerteX.
 
     ![Screenshot of the Palette VerteX system console showing Username and Password fields.](/vertex_installation_install-on-vmware_vertex-system-console.webp)
 
-18. After login, a Summary page is displayed. Palette VerteX is installed with a self-signed SSL certificate. To assign
+19. After login, a Summary page is displayed. Palette VerteX is installed with a self-signed SSL certificate. To assign
     a different SSL certificate you must upload the SSL certificate, SSL certificate key, and SSL certificate authority
     files to Palette VerteX. You can upload the files using the Palette VerteX system console. Refer to the
     [Configure HTTPS Encryption](/vertex/system-management/ssl-certificate-management) page for instructions on how to
     upload the SSL certificate files to Palette VerteX.
 
-19. The last step is to start setting up a tenant. To learn how to create a tenant, check out the
+20. The last step is to start setting up a tenant. To learn how to create a tenant, check out the
     [Tenant Management](../../../system-management/tenant-management.md) guide.
 
     ![Screenshot of the Summary page showing where to click Go to Tenant Management button.](/vertex_installation_install-on-vmware_goto-tenant-management.webp)

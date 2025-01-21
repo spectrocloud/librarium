@@ -268,6 +268,10 @@ review the permissions associated with each Project role, click on the role name
 - clusterGroup.list
 - clusterProfile.get
 - clusterProfile.list
+- clusterPair.delete
+- clusterPair.get
+- clusterPair.list
+- clusterPair.update
 - dnsMapping.create
 - dnsMapping.delete
 - dnsMapping.get
@@ -538,6 +542,10 @@ review the permissions associated with each Project role, click on the role name
 - clusterGroup.get
 - clusterGroup.list
 - clusterGroup.update
+- clusterPair.delete
+- clusterPair.get
+- clusterPair.list
+- clusterPair.update
 - clusterProfile.create
 - clusterProfile.delete
 - clusterProfile.get
