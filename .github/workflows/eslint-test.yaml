@@ -1,3 +1,6 @@
+# This workflow will run Eslint and Test cases on the codebase
+# Jest is the default test runner for the project/
+
 name: Eslint and Test cases
 
 on:
