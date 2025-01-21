@@ -8,6 +8,8 @@ on:
     types: [opened, synchronize, reopened, ready_for_review]
     paths:
       - "src/**"
+      - "plugins/**"
+      - "utils/**"
 
 concurrency:
   group: test-${{ github.ref }}
