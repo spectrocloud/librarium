@@ -1,3 +1,8 @@
+# This workflow removed unused images from the repository and creates a PR to clean them up.
+# The workflow runs on the first day of every month at 2 am UTC.
+# Any image that is not referenced in the repository is considered unused.
+# This workflow supports on-demand execution using the workflow_dispatch event.
+
 name: Clean Up Unused Images
 
 on:
