@@ -1,3 +1,8 @@
+# This workflow prunes container images based on a retention policy.
+# The workflow runs on the completion of the nightly Docker build workflow. 
+# Only images that are older than 1 day are pruned. This helps ensure that only the latest images are retained.
+# This workflow supports on-demand execution using the workflow_dispatch event.
+
 name: Container Image Cleanup
 
 on:

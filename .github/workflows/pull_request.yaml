@@ -1,3 +1,12 @@
+# This file is responsible for running the CI checks on every PR that is opened, synchronized, reopened, or ready for review.
+# The CI checks are run in parallel and include the following steps:
+# 1. Writing checks using Vale
+# 2. Check code formatting using Prettier
+# 3. Build the site
+# In the event a prettier commit is required
+# This is a required workflow that must succeed before a PR can be merged.
+# Version branches are excluded from this workflow.
+
 name: Pre-merge Checks
 
 on:
