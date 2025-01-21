@@ -19,10 +19,10 @@ tags: ["release-notes"]
 
 - Palette now supports
   [Cluster Profile Variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables.md) in
-  non-Edge clusters. Previously, Cluster Profile Variables were only available in
-  [Local UI](../clusters/edge/local-ui/local-ui.md) for Edge clusters deployed through Local UI. With this release, you
-  can use Cluster Profile Variables when creating a new Cluster Profile to define and manage configurations for non-Edge
-  clusters. Check out the
+  non-Edge and connected Edge clusters. Previously, Cluster Profile Variables were only available in
+  [Local UI](../clusters/edge/local-ui/local-ui.md) for airgap Edge clusters deployed through Local UI. With this
+  release, you can use Cluster Profile Variables when creating a new Cluster Profile to define and manage configurations
+  for non-Edge clusters as well as connected Edge clusters. Check out the
   [Cluster Profile Variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables.md) guide to
   learn more about this feature.
 
