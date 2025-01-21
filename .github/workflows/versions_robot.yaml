@@ -1,3 +1,9 @@
+# This workflow is responsible for ensuring all version branches have a robots.txt file and that the docusaurus.config.js file has the noIndex property set to true.
+# This is done to prevent search engines from indexing the version branches.
+# A custom bash script is used to check for the existence of the robots.txt file and create it if missing.
+# The noindex_docusaurus_config.js script also checks the docusaurus.config.js file for the noIndex property and updates it if necessary.
+# If changes are required, the script commits the changes to the branch automatically. A PR comment is posted with the details of the changes.
+
 name: Versions Robot.txt Check
 
 on:
