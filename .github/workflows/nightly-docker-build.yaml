@@ -1,3 +1,9 @@
+# This workflow builds a Docker image and pushes it to the GitHub Container Registry (GHCR) every weekday at 22:15 UTC.
+# This image is used to facilitate an offline Documentation expericence. Customers and stakeholders can use this image to view the documentation without an active internet connection.
+# The image is signed using the sigstore/cosign-installer action to ensure the integrity of the image.
+# Visit https://docs.spectrocloud.com/vertex/install-palette-vertex/airgap/offline-docs/ to learn more about the offline Documentation experience.
+# This workflow supports on-demand execution using the workflow_dispatch event.
+
 name: Nighly Docker Build
 
 on:
