@@ -89,6 +89,7 @@ const config = {
           versions: {
             current: {
               label: "v3.4.x",
+              banner: "unmaintained",
             },
           },
           admonitions: {
