@@ -1,7 +1,12 @@
+# This workflow pushes updates to the production site at docs.spectrocloud.com. 
+# The workflow is triggered by a cron job that runs at 12:00 PM PST (8 PM UTC) Monday through Friday, 9:00 PM PST (5 AM UTC next day) Monday through Friday, 12:00 PM PST (8 PM UTC next day) Saturday, and 12:00 PM PST (8 PM UTC next day) Sunday.
+# The workflow uses the self-hosted runner by default. The GitHub-hosted large runner can be used by setting the useGitHubHostedLargeRunner input to true.
+# The workflow has built-in logic to prevent failed builds from being deployed to production.
+# Semantic versioning is used to determine the version number of the release. The project follows the Angular commit message convention. Depending on the commit message, the version number is incremented accordingly.
+# You can manually trigger the workflow to trigger on-demand push to production.
+
 name: Release to Production
 
-# Run this workflow every time a new commit is pushed to the master branch
-# or a version branch (e.g. version-4-0)
 
 on:
   schedule:
