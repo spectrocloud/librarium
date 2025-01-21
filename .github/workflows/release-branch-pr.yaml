@@ -66,7 +66,7 @@ jobs:
     - name: Build
       run: |
         touch .env
-        make build
+        make build-ci
       
     - name: Build with cached packs
       if: ${{ env.BUILD_EXIT_CODE == '5' }}
