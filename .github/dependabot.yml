@@ -1,0 +1,21 @@
+# This configuration file is for Dependabot, a tool that helps keep your dependencies up to date.
+# It specifies the dependencies to check for updates, the schedule for these checks, 
+# and the branch and commit message format for the updates.
+# For more information, see https://docs.github.com/en/code-security/dependabot/working-with-dependabot/dependabot-options-reference
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    target-branch: "master"
+    commit-message:
+      prefix: "chore:"
+
+  - package-ecosystem: "github-actions"
+    directory: "/" # Root directory of the repository
+    schedule:
+      interval: "monthly"
+    target-branch: "master"
+    commit-message:
+      prefix: "chore:"
