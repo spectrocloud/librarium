@@ -48,4 +48,6 @@ runs:
       run: |
         rm -rf build
         npm run build
+        exit_code=$?
+        echo "BUILD_EXIT_CODE=$$exit_code" >> $GITHUB_ENV
       shell: bash

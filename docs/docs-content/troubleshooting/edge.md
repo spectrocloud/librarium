@@ -10,6 +10,75 @@ tags: ["edge", "troubleshooting"]
 
 The following are common scenarios that you may encounter when using Edge.
 
+## Scenario - Cluster Creation Failure Due to Nodeadm not Found
+
+<!-- prettier-ignore -->
+When attempting to deploy a cluster with <VersionedLink text="Palette eXtended Kubernetes - Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" />
+and [agent mode](../deployment-modes/agent-mode/agent-mode.md) on Palette agent version 4.5.14, adding a custom `stylus.path` to
+the **user-data** file causes cluster creation to fail as it cannot find
+[kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/). A custom `stylus.path` can be added during the
+[Install Palette Agent](../deployment-modes/agent-mode/install-agent-host.md#install-palette-agent) steps.
+
+:::tip
+
+Refer to
+[Identify the Target Agent Version](../clusters/edge/cluster-management/agent-upgrade-airgap.md#identify-the-target-agent-version)
+for guidance in retrieving your Palette agent version number.
+
+:::
+
+<!-- prettier-ignore -->
+To resolve this scenario, add a cloud-init stage to your <VersionedLink text="BYOS Edge OS" url="/integrations/packs/?pack=edge-native-byoi" />
+pack configuration by following the debug steps below.
+
+### Debug Steps
+
+1. Log in to [Palette](https://console.spectrocloud.com/).
+
+2. From the left **Main Menu**, select **Profiles**.
+
+3. On the **Profiles** page, find and click on your cluster profile.
+
+4. Select the **OS** layer of your cluster profile.
+
+5. Click **Values** in the **Pack Details** section. In the YAML editor, add the following entry.
+
+   ```yaml
+   stages:
+     initramfs:
+       - name: "Workaround for kubeadm path issue in Palette agent v4.5.14"
+         if: "[ ! -f /usr/bin/kubeadm ]"
+         commands:
+           - cp <customStylusPath>/usr/bin/kubeadm /usr/bin/
+           - reboot now
+   ```
+
+   Replace `<customStylusPath>` with the custom `stylus.path` you provided in the **user-data** file during the
+   [Install Palette Agent](../deployment-modes/agent-mode/install-agent-host.md#install-palette-agent) steps, as
+   demonstrated in the following example.
+
+   ```yaml hideClipboard {7-13}
+   pack:
+     content:
+       images:
+         - image: "{{.spectro.pack.edge-native-byoi.options.system.uri}}"
+   options:
+   ---
+   stages:
+     initramfs:
+       - name: "Workaround for kubeadm path issue in Palette agent v4.5.14"
+         if: "[ ! -f /usr/bin/kubeadm ]"
+         commands:
+           - cp /persistent/spectro/usr/bin/kubeadm /usr/bin/
+           - reboot now
+   ```
+
+6. Click **Confirm Updates** to save your changes.
+
+7. Click **Save Changes** on the cluster profile page.
+
+8. Deploy your cluster using the updated cluster profile.
+
 ## Scenario - IP Address not Assigned to Edge Host
 
 When you add a new VMware vSphere Edge host to an Edge cluster, the IP address may fail to be assigned to the Edge host
@@ -305,3 +374,43 @@ Palette agent:
 
 6. Check the **Node Logs** box and click **Download**. You may also download logs from other components at the same
    time.
+
+## Scenario - Kubelet Process Cannot Access kubeadm-flags
+
+If using the FIPS version of [Agent Mode](../deployment-modes/agent-mode/install-agent-host.md) on a Rocky Linux edge
+host, SELinux may incorrectly label the **kubeadm-flags.env** file during cluster deployment or when certain
+configurations are adjusted, preventing the Kubelet from accessing it and properly managing the cluster. To resolve this
+issue, reset the SELinux context of the Kubelet environment variable to its default state based on SELinux policy rules.
+
+### Debug Steps
+
+1. After deploying the cluster, monitor the Kubelet status.
+
+   ```shell
+   systemctl status kubelet
+   ```
+
+2. Check the logs for messages related to SELinux denials and **kubeadm-flags.env**.
+
+   ```shell
+   ausearch -message avc --start recent | grep kubeadm-flags.env
+   ```
+
+   The following output indicates that SELinux's security policies are denying read operations attempted by the Kubelet.
+
+   ```shell hideClipboard
+   time->Wed Jan 17 14:32:01 2025
+   type=AVC msg=audit(1673968321.452:456): avc:  denied  { read } for  pid=1234 comm="kubelet" name="kubeadm-flags.env" dev="sda1" ino=56789 scontext=system_u:system_r:kubelet_t:s0 tcontext=unconfined_u:object_r:default_t:s0 tclass=file permissive=0
+   ```
+
+3. Reset the SELinux context of the Kubelet environment variable to its default state.
+
+   ```shell
+   restorecon -v /var/lib/kubelet/kubeadm-flags.env
+   ```
+
+4. Restart the Kubelet to apply your changes.
+
+   ```shell
+   systemctl restart kubelet
+   ```

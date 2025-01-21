@@ -22,6 +22,8 @@ Refer to the following resources to learn how to configure your Edge host using 
 
 - [Access Local UI](./access-console.md)
 
+- [Edit User Data](./edit-user-data.md)
+
 - [Reboot, Shut Down, and Reset Edge Host](./reset-reboot.md)
 
 - [Configure HTTP Proxy](./configure-proxy.md)
