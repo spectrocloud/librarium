@@ -1,3 +1,6 @@
+# This workflow is triggered when a pull request is opened, synchronized, reopened, or ready for review by Dependabot.
+# The workflow runs on the default branch and attempts to build the project.
+
 name: Pre-merge Checks for Dependabot
 
 on:
