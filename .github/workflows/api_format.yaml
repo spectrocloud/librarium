@@ -1,3 +1,9 @@
+# This workflow is triggered on a pull request labeled with 'api-format'. 
+# The workflow invokes the make api command to format the API changes.
+# This is primarly used on pull requests created by engineering when providing the team with the latest API changes.
+# The workflow is also used to ensure the API changes are formatted correctly before merging into the target branch.
+# This workflow is not needed if you invoked the `make api` command locally before pushing the changes to the remote repository.
+
 name: API Format
 
 on:
