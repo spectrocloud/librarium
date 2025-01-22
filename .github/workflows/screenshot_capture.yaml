@@ -1,8 +1,13 @@
-name: Screenshot Capture
 # This workflow is triggered when a workflow run of the "Release to Production" workflow is completed or when manually triggered.
 # The primary purpose of this workflow is to take screenshots of the website using Playwright and upload them as artifacts.
 # The screenshots can be used to compare the visual appearance of the website before and after a release.
 # The workflow Visual Comparison uses these screenshots to generate a visual comparison report.
+# Playwright configuration is stored in the playwright.config.js file in the root of the repository. 
+# The custom Playwright logic can be found in the visuals/ directory of the repository.
+# This workflow supports on-demand execution using the workflow_dispatch event.
+
+name: Screenshot Capture
+
 
 on:
   workflow_run:
