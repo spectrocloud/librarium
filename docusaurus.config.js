@@ -89,6 +89,7 @@ const config = {
           versions: {
             current: {
               label: "4.0.x",
+              banner: process.env.UNRELEASED_VERSION_BANNER == "true" ? "unreleased" : "none",
             },
           },
           admonitions: {
