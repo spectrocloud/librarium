@@ -7,23 +7,22 @@ on:
     branches: 
       - 'doc-1568-cluster-scanner'
 
-env:
-  PALETTE_API_KEY: ${{ secrets.PALETTE_API_KEY }}
-  PALETTE_HOST: ${{ secrets.PALETTE_HOST }}
-  PALETTE_PROJECT_UID: ${{ secrets.PALETTE_PROJECT_UID }}
-
 # MATRIX FOR PROD, DEV, STAGE, AUTOMATION
 
 jobs:
   scan-clusters:
     name: cluster-scan
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        environment: [PROD, DEV]
+
     steps:
       - name: Checkout Palette Samples Repository
         uses: actions/checkout@v4
         with: 
           repository: spectrocloud/palette-samples
-          #token: ${{ secrets.GITHUB_TOKEN }} # Act needs a token, check if GHA needs a token too.
+          #token: ${{ secrets.GITHUB_TOKEN }} # Act needs a token, GHA doesnt need one.
 
       - name: Set Up Go
         uses: actions/setup-go@v5
@@ -36,6 +35,9 @@ jobs:
 
       - name: Build and Run the App
         working-directory: scripts/cluster-scanner
+        env:
+          PALETTE_API_KEY: ${{ secrets['SCAN_PALETTE_API_KEY_' + matrix.environment] }}
+          PALETTE_HOST: ${{ secrets['SCAN_PALETTE_HOST_' + matrix.environment] }}
         run: |
           set -e
           go build -o cluster-scanner
