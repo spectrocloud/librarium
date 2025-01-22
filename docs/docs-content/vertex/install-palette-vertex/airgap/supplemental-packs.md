@@ -11,6 +11,8 @@ keywords: ["self-hosted", "vertex"]
 
 Review the following table to determine which pack binaries you need to download and upload to your OCI registry.
 
+## Cluster Profile Packs
+
 | **File Name**                                                         | **Download URL**                                                                                                                  |
 | --------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | `airgap-vertex-pack-cni-calico-3.29.0.bin`                            | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-cni-calico-3.29.0.bin                            |
@@ -70,6 +72,15 @@ Review the following table to determine which pack binaries you need to download
 | `airgap-vertex-pack-kubernetes-rke2-1.30.6-rke2r1-build20241023.bin`  | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-kubernetes-rke2-1.30.6-rke2r1-build20241023.bin  |
 | `airgap-vertex-pack-kubernetes-rke2-1.30.8-rke2r1-build20241212.bin`  | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-kubernetes-rke2-1.30.8-rke2r1-build20241212.bin  |
 | `airgap-vertex-pack-kubernetes-rke2-1.31.4-rke2r1-build20241212.bin`  | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-kubernetes-rke2-1.31.4-rke2r1-build20241212.bin  |
+
+## Additional Deployment Options
+
+Palette [Virtual Machine Orchestrator](../../../vm-management/vm-management.md) (VMO) and [Virtual Clusters](../../../clusters/palette-virtual-clusters/palette-virtual-clusters.md) can also be installed for airgapped self-hosted instances of Palette and Palette VerteX.
+
+| File Name                                                      | URL                                                                                                                 |
+| -------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| `airgap-pack-virtual-machine-orchestrator-4.5.7.bin`                                 | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-virtual-machine-orchestrator-4.5.7.bin                                 |
+| `airgap-pack-vcluster-4.5.10.bin`             | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-vcluster-4.5.10.bin             |
 
 ### Usage Instructions
 

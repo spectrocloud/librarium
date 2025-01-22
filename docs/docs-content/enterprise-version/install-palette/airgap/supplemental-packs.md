@@ -11,6 +11,8 @@ keywords: ["self-hosted", "enterprise"]
 
 Review the following table to determine which pack binaries you need to download and upload to your OCI registry.
 
+## Cluster Profile Packs
+
 | File Name                                                      | URL                                                                                                                 |
 | -------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
 | `airgap-pack-byoi-agent-mode-1.0.0.bin`                        | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-byoi-agent-mode-1.0.0.bin                        |
@@ -99,7 +101,16 @@ Review the following table to determine which pack binaries you need to download
 | `airgap-pack-vault-0.29.1.bin`                                 | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-vault-0.29.1.bin                                 |
 | `airgap-pack-volume-snapshot-controller-8.1.0.bin`             | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-volume-snapshot-controller-8.1.0.bin             |
 
-## Download Instructions
+## Additional Deployment Options
+
+Palette [Virtual Machine Orchestrator](../../../vm-management/vm-management.md) (VMO) and [Virtual Clusters](../../../clusters/palette-virtual-clusters/palette-virtual-clusters.md) can also be installed for airgapped self-hosted instances of Palette and Palette VerteX.
+
+| File Name                                                      | URL                                                                                                                 |
+| -------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| `airgap-pack-virtual-machine-orchestrator-4.5.7.bin`                                 | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-virtual-machine-orchestrator-4.5.7.bin                                 |
+| `airgap-pack-vcluster-4.5.10.bin`             | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-vcluster-4.5.10.bin             |
+
+### Usage Instructions
 
 To download a binary you must provide the username and password for the support team's private repository. Reach out to
 our support team to [obtain the credentials](../../enterprise-version.md#access-palette). The following example shows
