@@ -1208,3 +1208,13 @@ Librarium provides the following exit codes. These exit codes are returned by bo
 | `5`                           | The command failed due to errors received from the API service related to packs. These requests are issued by the [Packs Component](#packs-component) and librarium cannot start without loading packs, either from the API service or the [cached packs data](#cached-packs-data)                                                                                                                                                                                                   |
 | `7`                           | The command failed due to errors received from the API service related to security bulletins. These requests are issued by the [CVE script](./utils/cves/index.js) and librarium cannot start without loading the security bulletins. The [Build with Cached CVE](./.github/actions/build-cached-cves/action.yaml) action is built to handle this exit situation and build with cached CVEs. You can issue the command `make get-cached-cves` to fetch cached CVEs to build locally. |
 | Any other non-zero exit code. | The command failed due to another error. Check the command output.                                                                                                                                                                                                                                                                                                                                                                                                                   |
+
+## Unreleased Version Banner
+
+The `UNRELEASED_VERSION_BANNER` environment variable is used to determine if the unreleased version banner should be
+displayed. The default value is `false`. If you want to display the unreleased version banner, set the
+`UNRELEASED_VERSION_BANNER` environment variable to `true`.
+
+```shell
+export UNRELEASED_VERSION_BANNER=true
+```
