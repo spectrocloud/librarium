@@ -7,15 +7,13 @@ on:
     branches: 
       - 'doc-1568-cluster-scanner'
 
-# MATRIX FOR PROD, DEV, STAGE, AUTOMATION
-
 jobs:
   scan-clusters:
     name: cluster-scan
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        environment: [PROD, DEV]
+        environment: [PROD, DEV, STAGE]
 
     steps:
       - name: Checkout Palette Samples Repository
@@ -33,44 +31,58 @@ jobs:
         working-directory: scripts/cluster-scanner
         run: go get ./...
 
+      - name: Set Environment Variables Based on Environment
+        run: |
+          if [ "${{ matrix.environment }}" = "DEV" ]; then
+            echo "PALETTE_API_KEY=${{ secrets.SCAN_PALETTE_API_KEY_DEV }}" >> $GITHUB_ENV
+            echo "PALETTE_HOST=${{ secrets.SCAN_PALETTE_HOST_DEV }}" >> $GITHUB_ENV
+          elif [ "${{ matrix.environment }}" = "PROD" ]; then
+            echo "PALETTE_API_KEY=${{ secrets.SCAN_PALETTE_API_KEY_PROD }}" >> $GITHUB_ENV
+            echo "PALETTE_HOST=${{ secrets.SCAN_PALETTE_HOST_PROD }}" >> $GITHUB_ENV
+          else
+            echo "PALETTE_API_KEY=${{ secrets.SCAN_PALETTE_API_KEY_STAGE }}" >> $GITHUB_ENV
+            echo "PALETTE_HOST=${{ secrets.SCAN_PALETTE_HOST_STAGE }}" >> $GITHUB_ENV
+          fi
+
       - name: Build and Run the App
         working-directory: scripts/cluster-scanner
         env:
-          PALETTE_API_KEY: ${{ secrets['SCAN_PALETTE_API_KEY_' + matrix.environment] }}
-          PALETTE_HOST: ${{ secrets['SCAN_PALETTE_HOST_' + matrix.environment] }}
+          PALETTE_API_KEY: ${{ env.PALETTE_API_KEY }}
+          PALETTE_HOST: ${{ env.PALETTE_HOST }}
         run: |
           set -e
           go build -o cluster-scanner
           ./cluster-scanner | tee result.log
 
-      # - name: Get Clusters with More Than 24 Hours and Format Output
-      #   working-directory: scripts/cluster-scanner
-      #   run: |
-      #     if grep -q "The following clusters have been running" result.log; then
-      #       echo "CLUSTERS_FOUND=true" >> $GITHUB_ENV
-      #       {
-      #         echo 'LOG_MESSAGE<<EOF'
-      #         sed 's/^.*msg=//' result.log | sed -n '/The following clusters/,/$/p' | sed 's/"//g'
-      #         echo EOF
-      #       } >> "$GITHUB_ENV"
-      #     fi
+      - name: Get Clusters with More Than 24 Hours and Format Output
+        working-directory: scripts/cluster-scanner
+        run: |
+          if grep -q "The following clusters have been running" result.log; then
+            echo "CLUSTERS_FOUND=true" >> $GITHUB_ENV
+            {
+              echo 'LOG_MESSAGE<<EOF'
+              echo "Palette Environment: ${{ matrix.environment }}"
+              sed 's/^.*msg=//' result.log | sed -n '/The following clusters/,/$/p' | sed 's/"//g'
+              echo EOF
+            } >> "$GITHUB_ENV"
+          fi
 
-      # - name: Send Slack Notification
-      #   if: env.CLUSTERS_FOUND == 'true'
-      #   uses: rtCamp/action-slack-notify@v2.3.2
-      #   env:
-      #     SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
-      #     SLACK_COLOR: "good"
-      #     SLACKIFY_MARKDOWN: true
-      #     ENABLE_ESCAPES: true
-      #     SLACK_MESSAGE: ${{ env.LOG_MESSAGE }}
+      - name: Send Slack Notification
+        if: env.CLUSTERS_FOUND == 'true'
+        uses: rtCamp/action-slack-notify@v2.3.2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
+          SLACK_COLOR: "good"
+          SLACKIFY_MARKDOWN: true
+          ENABLE_ESCAPES: true
+          SLACK_MESSAGE: ${{ env.LOG_MESSAGE }}
 
-      # - name: Slack Notification on Failure
-      #   if: ${{ failure() }}
-      #   uses: rtCamp/action-slack-notify@v2.3.2
-      #   env:
-      #     SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
-      #     SLACK_COLOR: "danger"
-      #     SLACKIFY_MARKDOWN: true
-      #     ENABLE_ESCAPES: true
-      #     SLACK_MESSAGE: "The cluster scan job for `${{ github.workflow }}` in `${{ github.repository }}` failed. [View details](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})."
+      - name: Slack Notification on Failure
+        if: ${{ failure() }}
+        uses: rtCamp/action-slack-notify@v2.3.2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
+          SLACK_COLOR: "danger"
+          SLACKIFY_MARKDOWN: true
+          ENABLE_ESCAPES: true
+          SLACK_MESSAGE: "The cluster scan job for `${{ github.workflow }}` in `${{ github.repository }}` failed. [View details](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})."
