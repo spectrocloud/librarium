@@ -10,6 +10,17 @@ const { pluginPacksAndIntegrationsData } = require("./plugins/packs-integrations
 const { pluginImportFontAwesomeIcons } = require("./plugins/font-awesome");
 import path from "path";
 
+// We will only show the update time if the environment variable is set to true.
+function showLastUpdateTime() {
+  const envValue = process.env.SHOW_LAST_UPDATE_TIME || "";
+  const trimmedValue = envValue.trim().toLowerCase();
+  if (trimmedValue === "true") {
+    return true;
+  }
+
+  return false;
+}
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Palette",
@@ -83,7 +94,7 @@ const config = {
         docs: {
           path: "docs/docs-content",
           showLastUpdateAuthor: false,
-          showLastUpdateTime: true,
+          showLastUpdateTime: showLastUpdateTime(),
           routeBasePath: "/",
           lastVersion: "current",
           includeCurrentVersion: true,
