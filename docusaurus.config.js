@@ -17,7 +17,6 @@ function showLastUpdateTime() {
   if (trimmedValue === "true") {
     return true;
   }
-
   return false;
 }
 
