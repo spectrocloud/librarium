@@ -98,6 +98,12 @@ PALETTE_API_KEY="<your-palette-api-key>"
 > [Create API Key](https://docs.spectrocloud.com/user-management/authentication/api-key/create-api-key/) guide to learn
 > how to create a Palette API key.
 
+By default, last update times are hidden on local development. You can enable them by setting the `SHOW_LAST_UPDATE_TIME` variable in you `.env` file. 
+
+```shell
+SHOW_LAST_UPDATE_TIME=true
+```
+
 ## Documentation Content
 
 Create a branch to keep track of all your changes.
