@@ -72,7 +72,7 @@ Follow these steps to deploy a virtual cluster to a cluster group:
 
 5. Assign the **CPU**, **Memory**, and **Storage** size for the cluster.
 
-6. **Deploy the cluster**.
+6. Click **Deploy Virtual Cluster**.
 
 ## Validate
 

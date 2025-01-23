@@ -56,9 +56,9 @@ instance of Palette and Palette VerteX.
    sudo --login
    ```
 
-3. Refer to the [Palette Additional Packs](../../enterprise-version/install-palette/airgap/supplemental-packs.md#additional-deployment-options) page to download and install the **airgap-pack-vcluster** pack. You will need this packs for both proxied and direct network configurations.
+3. Refer to the [Palette Additional Packs](../../enterprise-version/install-palette/airgap/supplemental-packs.md#additional-deployment-options) page to download and install the **airgap-pack-vcluster** pack.
 
-4. Log in to your Palette tenant.
+4. Log in to the tenant that belongs to your airgapped instance of Palette or Palette VerteX.
 
 5. From the left **Main Menu**, select **Cluster Groups**, and create a **New Cluster Group**. Refer to the [Create and Manage Cluster Groups](../cluster-groups/create-cluster-group.md) guide for a full walkthrough.
 
@@ -70,7 +70,7 @@ instance of Palette and Palette VerteX.
    
 2. Switch to **App Mode**.
    
-3. Select **Virtual Clusters** from the left **Main Menu**. Your cluster is ready for use if the status is **Running**.
+3. Select **Virtual Clusters** from the left **Main Menu**. Your cluster is ready to use if the status is **Running**.
 
 ## Resources
 
