@@ -1,3 +1,6 @@
+# This workflow is triggered when a pull request is opened, synchronized, reopened, or ready for review by Dependabot.
+# The workflow runs on the default branch and attempts to build the project.
+
 name: Pre-merge Checks for Dependabot
 
 on:
@@ -24,6 +27,7 @@ env:
   PALETTE_API_KEY: ${{ secrets.PALETTE_API_KEY }}
   DISABLE_PACKS_INTEGRATIONS: ${{ secrets.DISABLE_PACKS_INTEGRATIONS }}
   DISABLE_SECURITY_INTEGRATIONS: ${{ secrets.DISABLE_SECURITY_INTEGRATIONS }}
+  SHOW_LAST_UPDATE_TIME: ${{ secrets.SHOW_LAST_UPDATE_TIME }}
   DSO_AUTH_TOKEN: ${{ secrets.DSO_AUTH_TOKEN }}
 
 jobs:
