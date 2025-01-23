@@ -9,7 +9,7 @@ tags: ["virtual clusters"]
 ---
 
 The Palette Virtual Cluster pack is available for use in tenants that belong to your airgapped self-hosted
-instance of Palette and Palette VerteX. 
+instance of Palette or Palette VerteX. Follow this guide to learn how to deploy virtual clusters on your airgapped environments.
 
 ## Prerequisites
 
@@ -28,8 +28,6 @@ instance of Palette and Palette VerteX.
 
 - At least one tenant created for your airgap instance of Palette or Palette VerteX. Refer to
   [Tenant Management](../../enterprise-version/system-management/tenant-management.md) for more information.
-
-- An existing [cluster profile](../../profiles/cluster-profiles/cluster-profiles.md) configured for your virtual cluster.
 
 - A healthy running [Palette host cluster](../../clusters/clusters.md).
 
