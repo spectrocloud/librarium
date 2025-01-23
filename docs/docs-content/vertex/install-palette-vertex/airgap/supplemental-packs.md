@@ -75,12 +75,14 @@ Review the following table to determine which pack binaries you need to download
 
 ## Additional Deployment Options
 
-Palette [Virtual Machine Orchestrator](../../../vm-management/vm-management.md) (VMO) and [Virtual Clusters](../../../clusters/palette-virtual-clusters/palette-virtual-clusters.md) can also be installed for airgapped self-hosted instances of Palette and Palette VerteX.
+Palette [Virtual Machine Orchestrator](../../../vm-management/vm-management.md) (VMO) and
+[Virtual Clusters](../../../clusters/palette-virtual-clusters/palette-virtual-clusters.md) can also be installed for
+airgapped self-hosted instances of Palette and Palette VerteX.
 
-| File Name                                                      | URL                                                                                                                 |
-| -------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| `airgap-pack-virtual-machine-orchestrator-4.5.7.bin`                                 | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-virtual-machine-orchestrator-4.5.7.bin                                 |
-| `airgap-pack-vcluster-4.5.10.bin`             | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-vcluster-4.5.10.bin             |
+| File Name                                            | URL                                                                                                       |
+| ---------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `airgap-pack-virtual-machine-orchestrator-4.5.7.bin` | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-virtual-machine-orchestrator-4.5.7.bin |
+| `airgap-pack-vcluster-4.5.10.bin`                    | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-vcluster-4.5.10.bin                    |
 
 ### Usage Instructions
 
