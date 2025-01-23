@@ -83,7 +83,8 @@ about the rolling upgrade strategy.
 - Deployed clusters attempting to upgrade from Kubernetes version 1.31.1 to version 1.31.4 are stuck in the upgrade
   state. The issue is caused by an internal conversion error caused by a change introduced to kubeadm in version 1.31
   that Palette does not yet support. Avoid upgrading Kubernetes clusters from version 1.31.1 to version 1.31.4. You can
-  deploy new clusters using version 1.31.4, as new deployments are unaffected by the issue.
+  deploy new clusters using version 1.31.4, as new deployments are unaffected by the issue. if you upgraded and the
+  cluster remains stuck, revert the change and downgrade to version 1.31.4.
 
 ### Edge
 
