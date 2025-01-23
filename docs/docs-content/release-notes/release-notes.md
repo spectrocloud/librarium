@@ -83,10 +83,10 @@ about the rolling upgrade strategy.
 - Clusters that are currently deployed and attempting to upgrade from Kubernetes version 1.31.1 to newer versions are
   getting stuck in the upgrade state. This issue also affects Day-2 operations related to changes in the Kubernetes
   layer YAML for clusters on Kubernetes version 1.31.1. The root of the problem is an internal conversion error stemming
-  from a change introduced in Kubernetes version 1.31.x.
-  clusters from version 1.31.1 or modifying the Kubernetes YAML as a Day-2 operation on clusters with Kubernetes
-  1.31.1. You can deploy new clusters using version 1.31.4, as new deployments are unaffected by the issue. If you
-  upgraded and the cluster remains stuck, revert the change and downgrade to version 1.31.1.
+  from a change introduced in Kubernetes version 1.31.x. clusters from version 1.31.1 or modifying the Kubernetes YAML
+  as a Day-2 operation on clusters with Kubernetes 1.31.1. You can deploy new clusters using version 1.31.4, as new
+  deployments are unaffected by the issue. If you upgraded and the cluster remains stuck, revert the change and
+  downgrade to version 1.31.1.
 
 ### Edge
 
