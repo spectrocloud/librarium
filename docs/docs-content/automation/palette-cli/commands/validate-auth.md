@@ -3,7 +3,7 @@ sidebar_label: "Validate-Auth"
 title: "Validate-Auth"
 description: "Reference resource for the validate-auth command."
 hide_table_of_contents: false
-sidebar_position: 50
+sidebar_position: 80
 tags: ["palette-cli"]
 ---
 

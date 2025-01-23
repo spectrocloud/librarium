@@ -3,7 +3,7 @@ sidebar_label: "VMO"
 title: "VMO"
 description: "Reference resource for the vmo command."
 hide_table_of_contents: false
-sidebar_position: 60
+sidebar_position: 90
 tags: ["palette-cli"]
 ---
 

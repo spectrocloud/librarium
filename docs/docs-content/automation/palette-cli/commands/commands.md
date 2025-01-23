@@ -33,6 +33,8 @@ The following list contains all the supported Palette CLI subcommands. Click on 
 
 - [`project`](project.md) - Manage Palette Projects.
 
+- [`tc`](./tc.md) - Deploy and validate a target cluster.
+
 - [`validate-auth`](./validate-auth.md) - Validate access requirements to deploy Kubernetes clusters in target
   environments.
 
