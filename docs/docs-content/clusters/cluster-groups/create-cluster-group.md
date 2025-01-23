@@ -12,8 +12,6 @@ or more host clusters that together form a computing platform for you and your u
 Downstream consumers can use the cluster group when using Palette in
 [App Mode](../../introduction/palette-modes.md#what-is-app-mode).
 
-Use the instructions below to create a cluster group.
-
 ## Limitations
 
 - Palette does not support the following types of host clusters within a cluster group:
@@ -120,8 +118,9 @@ Use the instructions below to create a cluster group.
    [instructions below](#enable-virtual-clusters-for-openshift).
 
 8. Click **Next** when you are finished configuring your host clusters and virtual clusters.
-9. (Optional) If you want to include any add-on profiles in your virtual cluster, click **Attach Profile**, use the
-   **Filter by name** field to find and select your profiles, and **Confirm** your changes.
+   
+9. If you want to include any add-on profiles in your virtual cluster, click **Attach Profile**, use the **Filter by name** field to find and select your profiles, and **Confirm** your changes.
+
 10. Click **Next** then **Finish Configuration** to complete the cluster group creation process.
 
 ## Validate
