@@ -34,8 +34,6 @@ Use the following steps to deploy a virtual cluster on connected and airgapped e
   [Palette Additional Packs](../../enterprise-version/install-palette/airgap/supplemental-packs.md#additional-deployment-options)
   page for guidance.
 
-  <br />
-
   :::info
 
   Palette does not support _Usage_ and _Cost_ metrics for Virtual Clusters running on Google Kubernetes Engine (GKE).
