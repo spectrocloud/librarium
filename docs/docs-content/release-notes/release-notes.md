@@ -78,6 +78,13 @@ about the rolling upgrade strategy.
   [Image Pull Secret](../enterprise-version/install-palette/install-on-kubernetes/palette-helm-ref.md#image-pull-secret)
   section of the Palette Helm Chart documentation to learn more about using custom image pull secrets.
 
+#### Known Issues
+
+- Deployed clusters attempting to upgrade from Kubernetes version 1.31.1 to version 1.31.4 are stuck in the upgrade
+  state. The issue is caused by an internal conversion error caused by a change introduced to kubeadm in version 1.31
+  that Palette does not yet support. Avoid upgrading Kubernetes clusters from version 1.31.1 to version 1.31.4. You can
+  deploy new clusters using version 1.31.4, as new deployments are unaffected by the issue.
+
 ### Edge
 
 #### Features
