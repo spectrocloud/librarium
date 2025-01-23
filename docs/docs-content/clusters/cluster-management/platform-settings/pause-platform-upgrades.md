@@ -11,6 +11,10 @@ Palette supports the **Pause Agent Upgrades** feature to exclude a cluster or a 
 Palette agent automatically upgraded when Palette is upgraded. This feature only pauses upgrades for Palette agents, not
 updates to the clusters themselves.
 
+If you specify a Palette agent image to use in the operating system pack of your cluster profile using the
+`stylusPackage` parameter, pausing platform upgrades will have no affect on that cluster. It will always use the Palette
+agent image specified in the pack.
+
 ## Pause Agent Upgrade Scopes
 
 Agent upgrades can be paused and resumed in the following scopes:
