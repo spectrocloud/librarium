@@ -1,3 +1,12 @@
+# This file is responsible for running the CI checks on every PR that is opened, synchronized, reopened, or ready for review.
+# The CI checks are run in parallel and include the following steps:
+# 1. Writing checks using Vale
+# 2. Check code formatting using Prettier
+# 3. Build the site
+# In the event a prettier commit is required
+# This is a required workflow that must succeed before a PR can be merged.
+# Version branches are excluded from this workflow.
+
 name: Pre-merge Checks
 
 on:
@@ -23,6 +32,7 @@ env:
   PALETTE_API_KEY: ${{ secrets.PALETTE_API_KEY }}
   DISABLE_PACKS_INTEGRATIONS: ${{ secrets.DISABLE_PACKS_INTEGRATIONS }}
   DISABLE_SECURITY_INTEGRATIONS: ${{ secrets.DISABLE_SECURITY_INTEGRATIONS }}
+  SHOW_LAST_UPDATE_TIME: ${{ secrets.SHOW_LAST_UPDATE_TIME }}
   DSO_AUTH_TOKEN:  ${{ secrets.DSO_AUTH_TOKEN }}
 
 jobs:
