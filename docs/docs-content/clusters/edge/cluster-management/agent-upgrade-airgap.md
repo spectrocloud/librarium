@@ -102,7 +102,7 @@ If you already know the agent version you want to use for your cluster, you can 
 
 6. Click **Save Changes** to publish the new version.
 
-<Tabs group="deploy">
+<Tabs groupId="deploy">
 
 <TabItem value="Airgap">
 
@@ -129,7 +129,7 @@ If you already know the agent version you want to use for your cluster, you can 
 
 ## Validate
 
-<Tabs group="deploy">
+<Tabs groupId="deploy">
 
 <TabItem value="Airgap">
 
