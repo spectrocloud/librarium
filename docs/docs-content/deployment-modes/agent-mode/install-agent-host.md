@@ -71,7 +71,7 @@ Palette. You will then create a cluster profile and use the registered host to d
     is specific for clusters that use static IP addresses.
   - [conntrack](https://conntrack-tools.netfilter.org/downloads.html). This requirement is specific for clusters that
     use PXKE as the Kubernetes layer.
-  - [iptables](https://linux.die.net/man/8/iptables).
+  - [iptables](https://linux.die.net/man/8/iptables)
   - (Airgap only) [Palette Edge CLI](../../spectro-downloads.md#palette-edge-cli)
 
   <br />
