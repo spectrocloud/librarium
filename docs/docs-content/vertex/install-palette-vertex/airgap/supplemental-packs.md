@@ -11,6 +11,8 @@ keywords: ["self-hosted", "vertex"]
 
 Review the following table to determine which pack binaries you need to download and upload to your OCI registry.
 
+## Cluster Profile Packs
+
 | **File Name**                                                         | **Download URL**                                                                                                                  |
 | --------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------- |
 | `airgap-vertex-pack-cni-calico-3.29.0.bin`                            | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-cni-calico-3.29.0.bin                            |
@@ -71,51 +73,78 @@ Review the following table to determine which pack binaries you need to download
 | `airgap-vertex-pack-kubernetes-rke2-1.30.8-rke2r1-build20241212.bin`  | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-kubernetes-rke2-1.30.8-rke2r1-build20241212.bin  |
 | `airgap-vertex-pack-kubernetes-rke2-1.31.4-rke2r1-build20241212.bin`  | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-kubernetes-rke2-1.31.4-rke2r1-build20241212.bin  |
 
+## Additional Deployment Options
+
+Palette [Virtual Machine Orchestrator](../../../vm-management/vm-management.md) (VMO) and
+[Virtual Clusters](../../../clusters/palette-virtual-clusters/palette-virtual-clusters.md) can also be installed for
+airgapped self-hosted instances of Palette and Palette VerteX.
+
+| File Name                                            | URL                                                                                                       |
+| ---------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `airgap-pack-virtual-machine-orchestrator-4.5.7.bin` | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-virtual-machine-orchestrator-4.5.7.bin |
+| `airgap-pack-vcluster-4.5.10.bin`                    | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-vcluster-4.5.10.bin                    |
+
 ### Usage Instructions
 
-To download a binary you must provide the username and password for the support team's private repository. Reach out to
-our support team to [obtain the credentials](../../vertex.md#access-palette-vertex).
+You must SSH into your Palette VerteX airgap support VM to download and install the binary. You must also provide the
+username and password for the support team's private repository. Reach out to our support team to
+[obtain the credentials](../../vertex.md#access-palette-vertex).
 
 The following example shows how to download the `airgap-vertex-pack-cni-calico-3.25.1.bin` binary. Replace `XXXX` with
 your username and `YYYY` with your password.
 
-<Tabs>
-<TabItem label="curl" value="curl">
+1. In your terminal, use the following command template to SSH into the Palette airgap support VM. Enter the path to
+   your private SSH key, username, and the IP or domain of the airgap support VM. The default username is `ubuntu`.
 
-```bash
-curl --user 'XXXX:YYYY' \
-https://software-private.spectrocloud.com/airgap-fips/packs/airgap-vertex-pack-cni-calico-3.25.1.bin \
---output airgap-vertex-pack-cni-calico-3.25.1.bin
-```
+   ```shell
+   ssh -i </path/to/private/key> <username>@<vm-ip-or-domain>
+   ```
 
-Once the download is complete, issue the following command to start the binary and the upload process. Replace the
-binary name with the one you downloaded.
+   Consider the following command example for reference.
 
-```bash
-chmod +x airgap-vertex-pack-cni-calico-3.25.1.bin && \
-./airgap-vertex-pack-cni-calico-3.25.1.bin
-```
+   ```shell
+   ssh -i /docs/ssh-private-key.pem ubuntu@palette.example.com
+   ```
 
-</TabItem>
+2. Execute the following command to switch to the `root` user account.
 
-<TabItem label="wget" value="wget">
+   ```shell
+   sudo --login
+   ```
 
-```shell
-wget --user='XXXX' --password='YYYY' \
---output-document=airgap-vertex-pack-cni-calico-3.25.1.bin \
-https://software-private.spectrocloud.com/airgap-fips/packs/airgap-vertex-pack-cni-calico-3.25.1.bin
-```
+3. Download the binary using the provided username and password.
 
-Once the download is complete, issue the following command to start the binary and the upload process. Replace the
-binary name with the one you downloaded.
+   <Tabs>
 
-```bash
-chmod +x airgap-vertex-pack-cni-calico-3.25.1.bin && \
-./airgap-vertex-pack-cni-calico-3.25.1.bin
-```
+   <TabItem label="curl" value="curl">
 
-</TabItem> 
-</Tabs>
+   ```bash
+   curl --user 'XXXX:YYYY' \
+   https://software-private.spectrocloud.com/airgap-fips/packs/airgap-vertex-pack-cni-calico-3.25.1.bin \
+   --output airgap-vertex-pack-cni-calico-3.25.1.bin
+   ```
+
+   </TabItem>
+
+   <TabItem label="wget" value="wget">
+
+   ```shell
+   wget --user='XXXX' --password='YYYY' \
+   --output-document=airgap-vertex-pack-cni-calico-3.25.1.bin \
+   https://software-private.spectrocloud.com/airgap-fips/packs/airgap-vertex-pack-cni-calico-3.25.1.bin
+   ```
+
+   </TabItem>
+
+   </Tabs>
+
+4. Once the download is complete, issue the following command to start the binary and the upload process. Replace the
+   binary name with the one you downloaded.
+
+   ```bash
+   chmod +x airgap-vertex-pack-cni-calico-3.25.1.bin && \
+   ./airgap-vertex-pack-cni-calico-3.25.1.bin
+   ```
 
 :::info
 
