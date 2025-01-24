@@ -80,7 +80,7 @@ If you already know the agent version you want to use for your cluster, you can 
    number you obtained in the first step or any other version number you want to use. Replace `amd64` with `arm64` if
    your hardware uses `arm64` architecture.
 
-   ```yaml {5,9}
+   ```yaml {5,10}
    pack:
      content:
        images:
