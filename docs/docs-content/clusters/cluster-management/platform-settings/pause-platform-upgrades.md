@@ -13,7 +13,8 @@ updates to the clusters themselves.
 
 If you specify a Palette agent image to use in the operating system pack of your cluster profile using the
 `stylusPackage` parameter, pausing platform upgrades will have no affect on that cluster. It will always use the Palette
-agent image specified in the pack.
+agent image specified in the pack. For more information, refer to
+[Configure Palette Agent Version](../../edge/cluster-management/agent-upgrade-airgap.md).
 
 ## Pause Agent Upgrade Scopes
 
