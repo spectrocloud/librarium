@@ -1,7 +1,8 @@
 ---
 sidebar_label: "Install a Virtual Cluster in an Airgap Environment"
 title: "Install a Virtual Cluster in an Airgap Environment"
-description: "Learn how to install virtual clusters for use in self-hosted airgapped instances of Palette and Palette VerteX."
+description:
+  "Learn how to install virtual clusters for use in self-hosted airgapped instances of Palette and Palette VerteX."
 icon: " "
 hide_table_of_contents: false
 sidebar_position: 10
@@ -55,7 +56,9 @@ Palette or Palette VerteX. Follow this guide to learn how to deploy virtual clus
    sudo --login
    ```
 
-3. Download and install the **airgap-pack-vcluster** pack on your airgap support VM. Refer to the [Palette Additional Packs](../../enterprise-version/install-palette/airgap/supplemental-packs.md#additional-deployment-options) page for guidance.
+3. Download and install the **airgap-pack-vcluster** pack on your airgap support VM. Refer to the
+   [Palette Additional Packs](../../enterprise-version/install-palette/airgap/supplemental-packs.md#additional-deployment-options)
+   page for guidance.
 
 4. Log in to the tenant that belongs to your airgapped instance of Palette or Palette VerteX.
 
@@ -68,15 +71,12 @@ Palette or Palette VerteX. Follow this guide to learn how to deploy virtual clus
 ## Validate
 
 1. Log in to the tenant that belongs to your airgapped instance of Palette or Palette VerteX.
-   
 2. Switch to **App Mode**.
-   
 3. Select **Virtual Clusters** from the left **Main Menu**. Your cluster is ready to use if the status is **Running**.
 
 ## Resources
 
 - [Self-Hosted Palette Installation](../../enterprise-version/install-palette/install-palette.md)
-  
 - [Palette VerteX Installation](../../vertex/install-palette-vertex/install-palette-vertex.md)
 
 - [Tenant Management](../../enterprise-version/system-management/tenant-management.md)
