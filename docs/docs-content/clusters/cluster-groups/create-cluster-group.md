@@ -118,8 +118,8 @@ Downstream consumers can use the cluster group when using Palette in
    [instructions below](#enable-virtual-clusters-for-openshift).
 
 8. Click **Next** when you are finished configuring your host clusters and virtual clusters.
-   
-9. If you want to include any add-on profiles in your virtual cluster, click **Attach Profile**, use the **Filter by name** field to find and select your profiles, and **Confirm** your changes.
+9. If you want to include any add-on profiles in your virtual cluster, click **Attach Profile**, use the **Filter by
+   name** field to find and select your profiles, and **Confirm** your changes.
 
 10. Click **Next** then **Finish Configuration** to complete the cluster group creation process.
 
