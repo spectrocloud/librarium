@@ -11,7 +11,8 @@ tags: ["clusters", "virtual clusters"]
 Palette Virtual Clusters are nested Kubernetes clusters within a Host Cluster. Virtual clusters share the host cluster
 resources, such as CPU, memory, storage, container network interface (CNI), and container storage interface (CSI). By
 default, virtual clusters use [k3s](https://github.com/k3s-io/k3s), a highly available, certified Kubernetes
-distribution designed for production workloads.
+distribution designed for production workloads. Virtual clusters are supported in both connected and airgapped
+environments.
 
 Palette provisions and orchestrates virtual clusters to make the lightweight Kubernetes technology stack and tools
 ecosystem available to you. Deploy virtual clusters on both new and imported Host Clusters and attach application
@@ -23,7 +24,7 @@ the associated costs.
 
 ## Get Started
 
-To get started, refer to [Add Virtual Clusters to a Cluster Group](deploy-virtual-cluster.md).
+To get started, refer to [Deploy a Virtual Cluster to a Cluster Group](deploy-virtual-cluster.md).
 
 ## Kubernetes Distributions
 
