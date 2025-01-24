@@ -13,8 +13,8 @@ not happen automatically. When you want to upgrade the agent version, you can in
 cluster profile, and upgrade the cluster using the new profile.
 
 This page teaches you how to identify the matching agent version to a Palette instance, as well as how to specify a
-Palette agent package in the Operating System (OS) pack of a cluster profile. This is also useful if you want to launch
-a new connected cluster but use an older version of the Palette agent.
+Palette agent package in the Operating System (OS) pack of a cluster profile. This is useful for upgrading the Palette
+agent on an airgap Edge cluster and for launching new connected clusters but use an older version of the Palette agent.
 
 ## Prerequisites
 
