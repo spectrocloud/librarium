@@ -1,6 +1,6 @@
 ---
 sidebar_label: "Clusters"
-title: "Creating clusters on Palette"
+title: "Creating Clusters on Palette"
 description: "The methods of creating clusters for a speedy deployment on any CSP"
 hide_table_of_contents: false
 sidebar_custom_props:

@@ -1,3 +1,12 @@
+# This workflow is triggered when the "Release to Production" workflow is completed OR manually triggered.
+# It triggers the Algolia DocSearch v3 crawler to reindex the documentation.
+# This workflow could be removed as the Algolia Crawler is also triggered automatically through it's UI admin panel.
+# However, in the event we have to stop using the Algolia DocSearch v3 crawler. We can revert to our own custom crawler and index by uncommenting the code below.
+# We just need to make sure we update the GitHub Secrets with the Algolia App ID and Admin Key.
+# The Algolia App ID and Admin Key can be found in the Algolia dashboard. 
+# Refer to the internal team documenation https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/2203516932/Algolia for more information.
+# This workflow supports on-demand execution using the workflow_dispatch event.
+
 name: Algolia Crawler
 
 on:
