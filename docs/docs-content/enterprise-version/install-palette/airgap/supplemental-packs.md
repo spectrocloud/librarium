@@ -114,10 +114,12 @@ airgapped self-hosted instances of Palette and Palette VerteX.
 
 ### Usage Instructions
 
-You must SSH into your Palette airgap support VM to download and install the binary. You must also provide the username and password for the support team's private repository. Reach out to
-our support team to [obtain the credentials](../../enterprise-version.md#access-palette). 
+You must SSH into your Palette airgap support VM to download and install the binary. You must also provide the username
+and password for the support team's private repository. Reach out to our support team to
+[obtain the credentials](../../enterprise-version.md#access-palette).
 
-The following example shows how to download the `airgap-pack-aws-alb-2.5.1.bin` binary. Replace `XXXX` with your username and `YYYY` with your password.
+The following example shows how to download the `airgap-pack-aws-alb-2.5.1.bin` binary. Replace `XXXX` with your
+username and `YYYY` with your password.
 
 1. In your terminal, use the following command template to SSH into the Palette airgap support VM. Enter the path to
    your private SSH key, username, and the IP or domain of the airgap support VM. The default username is `ubuntu`.
@@ -139,37 +141,38 @@ The following example shows how to download the `airgap-pack-aws-alb-2.5.1.bin` 
    ```
 
 3. Download the binary using the provided username and password.
-   
-    <Tabs>
 
-    <TabItem label="curl" value="curl">
+   <Tabs>
 
-    ```bash
-    curl --user 'XXXX:YYYY' \
-    https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-aws-ebs-1.26.1.bin \
-    --output airgap-pack-csi-aws-ebs-1.26.1.bin
-    ```
+   <TabItem label="curl" value="curl">
 
-    </TabItem>
+   ```bash
+   curl --user 'XXXX:YYYY' \
+   https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-aws-ebs-1.26.1.bin \
+   --output airgap-pack-csi-aws-ebs-1.26.1.bin
+   ```
 
-    <TabItem label="wget" value="wget">
+   </TabItem>
 
-    ```shell
-    wget --user='XXXX' --password='YYYY' \
-    --output-document=airgap-pack-csi-aws-ebs-1.26.1.bin \
-    https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-aws-ebs-1.26.1.bin
-    ```
+   <TabItem label="wget" value="wget">
 
-    </TabItem>
+   ```shell
+   wget --user='XXXX' --password='YYYY' \
+   --output-document=airgap-pack-csi-aws-ebs-1.26.1.bin \
+   https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-aws-ebs-1.26.1.bin
+   ```
 
-    </Tabs>
+   </TabItem>
 
-4. Once the download is complete, issue the following command to start the binary and the upload process. Replace the binary name with the one you downloaded.
+   </Tabs>
 
-    ```bash
-    chmod +x airgap-pack-csi-aws-ebs-1.26.1.bin && \
-    ./airgap-pack-csi-aws-ebs-1.26.1.bin
-    ```
+4. Once the download is complete, issue the following command to start the binary and the upload process. Replace the
+   binary name with the one you downloaded.
+
+   ```bash
+   chmod +x airgap-pack-csi-aws-ebs-1.26.1.bin && \
+   ./airgap-pack-csi-aws-ebs-1.26.1.bin
+   ```
 
 :::info
 
