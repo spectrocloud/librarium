@@ -356,8 +356,8 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
 
     Once the Palette VerteX airgap binary completes its tasks, you will receive a **Setup Completed** success message.
 
-19. Review the [Additional Packs](../../../airgap/supplemental-packs.md) page and identify any additional packs you want
-    to add to your OCI registry. You can also add additional packs after the installation is complete.
+19. Review the [Additional Packs](../../airgap/supplemental-packs.md) page and identify any additional packs you want to
+    add to your OCI registry. You can also add additional packs after the installation is complete.
 
 20. Navigate back to the vSphere console and create a vSphere VM and Template folder named `spectro-templates`. Ensure
     you can access this folder with the user account you plan to use when deploying the VerteX installation. You can
@@ -368,8 +368,8 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
 
 22. In the **Deploy OVF Template** wizard, enter the following URL to import the Operating System (OS) and Kubernetes
     distribution OVA required for the installation. Refer to the
-    [Kubernetes Requirements](../../../install-palette-vertex.md#kubernetes-requirements) section to learn if the
-    version of Palette you are installing requires a new OS and Kubernetes OVA.
+    [Kubernetes Requirements](../../install-palette-vertex.md#kubernetes-requirements) section to learn if the version
+    of Palette you are installing requires a new OS and Kubernetes OVA.
 
         Consider the following example for reference.
 
