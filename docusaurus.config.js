@@ -58,7 +58,7 @@ const config = {
     jsLoader: (isServer) => {
       const defaultOptions = require("@docusaurus/faster").getSwcLoaderOptions({ isServer });
       return {
-        loader: "builtin:swc-loader", // (only works with Rspack)
+        loader: "builtin:swc-loader", // (only works with Rspack )
         options: {
           ...defaultOptions,
           jsc: {
