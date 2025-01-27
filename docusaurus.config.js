@@ -55,10 +55,25 @@ const config = {
     },
   },
   webpack: {
-    jsLoader: (isServer) => ({
-      loader: "builtin:swc-loader", // (only works with Rspack)
-      options: require("@docusaurus/faster").getSwcLoaderOptions({ isServer }),
-    }),
+    jsLoader: (isServer) => {
+      const defaultOptions = require("@docusaurus/faster").getSwcLoaderOptions({ isServer });
+      return {
+        loader: "builtin:swc-loader", // (only works with Rspack)
+        options: {
+          ...defaultOptions,
+          jsc: {
+            parser: {
+              ...defaultOptions.jsc.parser,
+              decorators: true,
+            },
+            transform: {
+              ...defaultOptions.jsc.transform,
+              decoratorVersion: "2022-03",
+            },
+          },
+        },
+      };
+    },
   },
   customFields: {
     // Used to access the environment variable in the build process during the client-side step
