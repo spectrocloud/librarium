@@ -128,7 +128,7 @@ stylus:
 #### Registry Mapping Rules
 
 Use registry mapping rules to map a domain name to an external registry. The `registryMappingRules` parameter accepts a
-list of key-value pairs where the key is the domain name and the value is URL mapping to the external registry.
+list of key-value pairs where the key is the domain name and the value is a URL mapping to the external registry.
 
 Below is an example of registry mapping rules. The registry in the code snippet, `example.registry.com/internal-images`
 is assumed to contain the images that are mapped from the external registries.
@@ -147,6 +147,8 @@ stylus:
       "grc.io/spectro-dev-public": "example.registry.com/internal-images"
       "grc.io/spectro-images-public": "example.registry.com/internal-images"
 ```
+
+Mappings preserve the full path of the domain. For example using the mappings above, if an image called `test:latest` is located at `us-east1-docker.pkg.dev/spectro-images/daily`, the mapping behaviour will rewrite image pulls to `example.registry.com/internal-images/spectro-images/daily/`.
 
 ##### Airgap Environment
 
