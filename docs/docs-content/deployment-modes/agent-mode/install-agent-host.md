@@ -136,7 +136,7 @@ Palette. You will then create a cluster profile and use the registered host to d
 
      ```shell
      checkmodule -M -m --output rsync_dac_override.mod rsync_dac_override.te
-     semodule_package --output rsync_dac_override.pp -m rsync_dac_override.mod
+     semodule_package --outfile rsync_dac_override.pp -m rsync_dac_override.mod
      ```
 
   6. Install the compiled policy module.

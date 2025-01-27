@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Upgrade Palette Agent on Airgap Clusters"
-title: "Upgrade Palette Agent on Airgap Clusters"
+sidebar_label: "Configure Palette Agent Version"
+title: "Configure Palette Agent Version"
 description: "Learn how to upgrade the Palette agent on airgap clusters. "
 hide_table_of_contents: false
 sidebar_position: 30
@@ -12,9 +12,14 @@ In connected clusters, the Palette agent gets upgraded automatically with Palett
 not happen automatically. When you want to upgrade the agent version, you can include the new agent version in a new
 cluster profile, and upgrade the cluster using the new profile.
 
+This page teaches you how to identify the matching agent version of a Palette instance, as well as how to specify a
+Palette agent package in the Operating System (OS) pack of a cluster profile. This is useful for upgrading the Palette
+agent on an airgap Edge cluster and for launching new connected clusters while using an older version of the Palette
+agent.
+
 ## Prerequisites
 
-- An active Edge cluster deployed in airgap mode.
+- An active Edge cluster.
 
 - Linux Machine (Physical or VM) with an AMD64 architecture.
 
@@ -30,6 +35,8 @@ cluster profile, and upgrade the cluster using the new profile.
 ## Procedure
 
 ### Identify the Target Agent Version
+
+If you already know the agent version you want to use for your cluster, you can skip this step.
 
 1. The target agent version depends on the Palette instance you use to build content bundles for your Edge cluster. Use
    the following request to identify the target version. If you are using self-hosted Palette or VerteX, replace
@@ -70,14 +77,16 @@ cluster profile, and upgrade the cluster using the new profile.
 4. Create a new version of the profile. For more information, refer to
    [Update a Cluster](../../cluster-management/cluster-updates.md).
 
-5. In the OS layer of the profile, include the following line. Replace `versionNumber` with your target agent version
-   number you obtained in the first step.
+5. In the OS layer of the profile, include the following lines. Replace `versionNumber` with your target agent version
+   number you obtained in the first step or any other version number you want to use. Replace `amd64` with `arm64` if
+   your hardware uses `arm64` architecture.
 
-   ```yaml {9}
+   ```yaml {5,10}
    pack:
      content:
        images:
          - image: "{{.spectro.pack.edge-native-byoi.options.system.uri}}"
+         - image: "container://us-docker.pkg.dev/palette-images/edge/stylus-linux-amd64:v<versionNumber>"
 
    options:
      system.uri: ttl.sh/ubuntu:k3s-1.29.5-v4.5.8-palette-demo
@@ -94,6 +103,10 @@ cluster profile, and upgrade the cluster using the new profile.
 
 6. Click **Save Changes** to publish the new version.
 
+<Tabs groupId="deploy">
+
+<TabItem value="Airgap">
+
 7. Follow [Build Content Bundles](../edgeforge-workflow/palette-canvos/build-content-bundle.md) and
    [Export Cluster Definition](../local-ui/cluster-management/export-cluster-definition.md) to build a content bundle
    using your new cluster profile and export the cluster definition.
@@ -104,8 +117,39 @@ cluster profile, and upgrade the cluster using the new profile.
 9. Update your cluster using the new cluster definition. For more information, refer to
    [Update Local Cluster](../local-ui/cluster-management/update-cluster.md).
 
+</TabItem>
+
+<TabItem value="Connected">
+
+7. Refer to [Update a Cluster](../../cluster-management/cluster-updates.md) to update your cluster with the new profile
+   version.
+
+</TabItem>
+
+</Tabs>
+
 ## Validate
 
-1. Log in to [Local UI](../local-ui/host-management/access-console.md).
+<Tabs groupId="deploy">
+
+<TabItem value="Airgap">
+
+1. Log in to Local UI. Refer to [Access Local UI Console](../local-ui/host-management/access-console.md) for guidance.
 
 2. In the **Edge Host** page, confirm that the agent version has been updated in the **Overview** table.
+
+</TabItem>
+
+<TabItem value="Connected">
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. From the left **Main Menu**, click **Clusters**.
+
+3. Select your cluster.
+
+4. In the **Cluster Details** page, ensure that the **Agent version** field is the same as you specified.
+
+</TabItem>
+
+</Tabs>
