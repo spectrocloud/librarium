@@ -12,9 +12,7 @@ In this guide, you will learn how to set up Palette for use with your AWS cloud 
 order to authenticate Palette and allow it to deploy host clusters. The concepts you learn about in the Getting Started
 section are centered around a fictional case study company, Spacetastic Ltd.
 
-## 🧑‍🚀 Back at Spacetastic HQ
-
-<PartialsComponent category="getting-started" name="spacetastic-setup-intro" />
+<MyCarousel />
 
 ## Prerequisites
 
