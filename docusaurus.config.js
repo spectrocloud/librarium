@@ -46,33 +46,12 @@ const config = {
   },
   future: {
     experimental_faster: {
-      swcJsLoader: false, // Set to 'false' as Netlify builds fail with this enabled.
+      swcJsLoader: true, // Set to 'false' as Netlify builds fail with this enabled.
       swcJsMinimizer: true,
       swcHtmlMinimizer: true,
       lightningCssMinimizer: true,
       rspackBundler: true,
       mdxCrossCompilerCache: true,
-    },
-  },
-  webpack: {
-    jsLoader: (isServer) => {
-      const defaultOptions = require("@docusaurus/faster").getSwcLoaderOptions({ isServer });
-      return {
-        loader: "builtin:swc-loader", // (only works with Rspack )
-        options: {
-          ...defaultOptions,
-          jsc: {
-            parser: {
-              ...defaultOptions.jsc.parser,
-              decorators: true,
-            },
-            transform: {
-              ...defaultOptions.jsc.transform,
-              decoratorVersion: "2022-03",
-            },
-          },
-        },
-      };
     },
   },
   customFields: {
