@@ -30,10 +30,9 @@ Palette.
 
   - The installation OVA that deploys and initializes the airgap support VM. The installation OVA can be either generic
     or release-specific.
-  - If you are using a generic OVA, ensure you download the airgap Palette installation binary for the version of
-    Palette you plan to install.
+  - If you are using a generic OVA, ensure you download the airgap Palette release binary for the version of Palette you
+    plan to install. This binary contains the core packs and images required for the installation.
   - An OVA with the operating system and Kubernetes distribution required for the Palette nodes.
-  - The third-party binary that contains the core packs and images required for the installation.
 
   For sensitive environments, you can download the OVAs to a system with internet access and then transfer them to your
   airgap environment.
@@ -320,24 +319,22 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
         </TabItem>
         </Tabs>
 
-18. The output of the script contains credentials and values you will need when completing the installation with the
+    The output of the script contains credentials and values you will need when completing the installation with the
     Palette CLI. If you need to review this information in the future, invoke the script again.
 
-19. Next, download the third party binary. Your support representative will provide you with credentials to access the
-    third-party binary. Use the following command to download the third-party binary. Replace the `XXXXX` and `YYYYY`
-    placeholders with the credentials provided to you. Replace the `X.X` placeholder with the version of the third-party
-    binary you are downloading. Ask your support representative for the version of the third-party binary you need.
+18. If you have used a release-specific installation OVA, skip this step. Otherwise, if you have used a generic
+    installation OVA, use the following command to start the airgap Palette release binary. The release binary uploads
+    the release-specific packs and images to the registry configured in step **17** of this guide. This process may take
+    some time to complete.
 
     ```shell
-    curl --user XXXXX:YYYYY https://software-private.spectrocloud.com/airgap/thirdparty/airgap-thirdparty-X.X.X.bin \
-    --output airgap-upload.bin
+    chmod +x airgap-<version>.bin && ./airgap-<version>.bin
     ```
 
-20. Use the following command to start the third-party binary. The third-party binary uploads the release-specific packs
-    and images to the registry configured in step **17** of this guide. This process may take some time to complete.
+    Consider the following example for reference.
 
     ```shell
-    chmod +x airgap-upload.bin && ./airgap-upload.bin
+    chmod +x airgap-v4.4.14.bin && ./airgap-v4.4.14.bin
     ```
 
     ```text hideClipboard
@@ -353,18 +350,17 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
 
     Once the airgap binary completes its tasks, you will receive a **Setup Completed** success message.
 
-21. Review the [Additional Packs](../../../install-palette/airgap/supplemental-packs.md) page and identify any
-    additional packs you want to add to your OCI registry. You can also add additional packs after the installation is
-    complete.
+19. Review the [Additional Packs](../../../airgap/supplemental-packs.md) page and identify any additional packs you want
+    to add to your OCI registry. You can also add additional packs after the installation is complete.
 
-22. Navigate back to the vSphere console and create a vSphere VM and Template folder named `spectro-templates`. Ensure
+20. Navigate back to the vSphere console and create a vSphere VM and Template folder named `spectro-templates`. Ensure
     you can access this folder with the user account you plan to use when deploying the VerteX installation. You can
     choose a different name for the folder if you prefer, but ensure you use the same name when the Palette CLI prompts
     you for the folder name.
 
-23. Right-click on your cluster or resource group and select **Deploy OVF Template**.
+21. Right-click on your cluster or resource group and select **Deploy OVF Template**.
 
-24. In the **Deploy OVF Template** wizard, enter the following URL to import the Operating System (OS) and Kubernetes
+22. In the **Deploy OVF Template** wizard, enter the following URL to import the Operating System (OS) and Kubernetes
     distribution OVA required for the installation. Refer to the
     [Kubernetes Requirements](../../install-palette.md#kubernetes-requirements) section to learn if the version of
     Palette you are installing requires a new OS and Kubernetes OVA.
