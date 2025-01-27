@@ -34,7 +34,7 @@ installation. Review this checklist with your VerteX support team to ensure you 
 - [ ] Review the list of [pack binaries](../../airgap/supplemental-packs.md) to download and upload to your OCI
       registry.
 
-- [ ] Download the required third-party binary that contains the core packs and images required for the installation.
+- [ ] Download the release binary that contains the core packs and images required for the installation.
 
 - [ ] If you have custom SSL certificates you want to include, copy the custom SSL certificates, in base64 PEM format,
       to the support VM. The custom certificates must be placed in the **/opt/spectro/ssl** folder. Include the
