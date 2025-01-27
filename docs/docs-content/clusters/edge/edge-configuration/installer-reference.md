@@ -148,9 +148,9 @@ stylus:
       "grc.io/spectro-images-public": "example.registry.com/internal-images"
 ```
 
-Mappings preserve the full path of the domain. For example using the mappings above, if an image called `test:latest` is
-located at `us-east1-docker.pkg.dev/spectro-images/daily`, the mapping behaviour will rewrite image pulls to
-`example.registry.com/internal-images/spectro-images/daily/`.
+Mappings preserve the entire path from the domain. For example, using the mappings described above, if an image named
+`test:latest` is stored at `us-east1-docker.pkg.dev/spectro-images/daily/test:latest`, the mapping rules will rewrite
+image pulls so that they reference `example.registry.com/internal-images/spectro-images/daily/test:latest`.
 
 ##### Airgap Environment
 
