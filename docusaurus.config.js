@@ -54,6 +54,12 @@ const config = {
       mdxCrossCompilerCache: true,
     },
   },
+  webpack: {
+    jsLoader: (isServer) => ({
+      loader: "builtin:swc-loader", // (only works with Rspack)
+      options: require("@docusaurus/faster").getSwcLoaderOptions({ isServer }),
+    }),
+  },
   customFields: {
     // Used to access the environment variable in the build process during the client-side step
     DISABLE_PACKS_INTEGRATIONS: process.env.DISABLE_PACKS_INTEGRATIONS,
