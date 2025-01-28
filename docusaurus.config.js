@@ -341,6 +341,14 @@ const config = {
             position: "left",
           },
           {
+            to: "/downloads",
+            type: "docSidebar",
+            sidebarId: "downloadsSidebar",
+            label: "Downloads",
+            position: "left",
+            activeBaseRegex: "^(?!/api/).*$",
+          },
+          {
             href: "https://github.com/spectrocloud/librarium",
             position: "right",
             className: "header-github-link",
