@@ -148,8 +148,8 @@ stylus:
       "grc.io/spectro-images-public": "example.registry.com/internal-images"
 ```
 
-All matched portion on the source domain will be replaced with the mapped value and any unmatched path is preserved.
-Using the example in the following diagram, if an image named `alpine:latest` is stored at
+All matched portion on the source URL will be replaced with the mapped value and any unmatched path is preserved. Using
+the example in the following diagram, if an image named `alpine:latest` is stored at
 `somedomain.com/somepath/example-repo/alpine:latest`, the mapping rules will rewrite image pulls so that they reference
 `targetdomain.com/other/path/example-repo/alpine:latest`.
 
