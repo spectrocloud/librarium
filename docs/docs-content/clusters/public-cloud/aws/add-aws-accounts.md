@@ -24,7 +24,7 @@ authentication methods to register your cloud account.
   
   - [Dynamic Access Credentials](#dynamic-access-credentials-1)
   
-- AWS Secret Cloud (C2S) or AWS Top Secret Cloud (SC2S) (US)
+- AWS Secret Cloud (C2S) or Top Secret Cloud (SC2S) (US)
   
   - [Static Access Credentials](#static-access-credentials-2)
   
@@ -230,6 +230,7 @@ Use the steps below to add an AWS cloud account using STS credentials.
 6. In the AWS console, create a new IAM role for Palette. Use the following resources if you need additional help.
 
    - [IAM Role creation guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html)
+  
    - [IAM User creation guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html)
 
 7. In the AWS console, assign the [Palette required IAM policies](required-iam-policies.md) to the role that Palette
@@ -297,7 +298,7 @@ Use the steps below to add an AWS secret cloud account using static access crede
   
      - AWS Secret access key
   
-   - **Certificate Authority:** Paste the root, intermediate, or chain of trust certificate in PEM-encoded format.
+   - **Certificate Authority:** Paste the root, intermediate, or chain of trust certificate in PEM-encoded format. Contact your organization's security team or AWS Secret Cloud administrator to obtain this certificate.
 
 7. **Validate** the credentials.
 
@@ -344,18 +345,18 @@ Use the steps below to add an AWS secret cloud account using CAP or SCAP secure 
 
    | **Parameter**           | **Description**                                                                                                                                                               |
    | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Agency Name** | Enter the CAP or SCAP agency name (e.g., "NGA").                                                                                                                                                          |
-   | **Account Name**          | Enter the account number or mission identifier used for CAP/SCAP authentication. |
+   | **Agency Name** | Enter the CAP or SCAP agency name.                                                                                                                                                          |
+   | **Account Name**          | Enter the account number or mission identifier used for CAP or SCAP authentication. |
    | **CAP/SCAP Role Name** | Enter the role name provided by CAP or SCAP administrator. This role determines the AWS permissions granted to the account.                                                                                                                                                                     |
-   | **Role Prefix (Optional)**         | Choose a prefix to standardize role names. If no prefix is provided, a default prefix of `PROJECT_` is used.                                                              |
-   | **Permission Boundary (Optional)**  | If you want to apply AWS permission boundaries, provide the IAM policy's ARN.                                                                                                                            |
-   | **Certificate Authority**           | Paste the root, intermediate, or chain of trust certificate in PEM-encoded format.  |
+   | **Role Prefix (Optional)**         | Choose a prefix to standardize role names. If no prefix is provided, a default prefix of `PROJECT_` is used. For example, if the initial role name is `DevOpsRole`, the full role name would be `PROJECT_DevOpsRole`.                                                             |
+   | **Permission Boundary (Optional)**  | If you want to apply a permission boundary and limit the maximum permissions a role or user can have, provide the IAM policy ARN (for example, `arn:aws:iam::123456789012:policy/MyPermissionBoundaryPolicy`). Refer to the AWS [Permissions boundaries for IAM entities](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html) page for additional information on permission boundaries.                                                                                                                           |
+   | **Certificate Authority**           | Paste the root, intermediate, or chain of trust certificate in PEM-encoded format. Contact your organization's security team or AWS Secret Cloud administrator to obtain this certificate. |
    | **User Certificate** | Paste your user-issued digital certificate in PEM-encoded format. |
    | **User Key** | Provide the private cryptographic key associated with the user certificate in PEM-encoded format. |
 
 6. **Validate** the credentials.
 
-7. If you have a self-hosted VerteX instance, toggle **Connect Private Cloud Gateway** (PCG) on, and select a **Private Cloud Gateway** from the list. For more information, refer to the [Private Cloud Gateway](../../../clusters/pcg/pcg.md) page.
+7. If your environment requires the use of a Private Cloud Gateway (PCG), such as a self-hosted VerteX instance, toggle **Connect Private Cloud Gateway** on, and select a **Private Cloud Gateway** from the list. This list is populated automatically with the any **Private Cloud Gateways** listed in **Tenant Settings**. For more information, refer to the [Private Cloud Gateway](../../../clusters/pcg/pcg.md) page.
 
 8. **Confirm** your AWS secret cloud account.
 
@@ -365,5 +366,7 @@ Now that you have added an AWS account to Palette, you can start deploying Kuber
 learn how to get started with deploying Kubernetes clusters to AWS, check out the following guides:
 
 - [Create and Manage AWS IaaS Cluster](create-cluster.md)
+  
 - [Create and Manage AWS EKS Cluster](eks.md)
+  
 - [EKS Hybrid Nodes](./eks-hybrid-nodes/eks-hybrid-nodes.md)
