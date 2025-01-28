@@ -57,13 +57,13 @@ Explore more through the following pages.
       title: "Introduction to Palette",
       description: "Learn about what makes Palette different.",
       buttonText: "Learn more",
-      url: "/getting-started/introduction",
+      url: "/tutorials/getting-started/introduction-palette",
     },
     {
       title: "Deploy a Cluster to Amazon Web Services (AWS)",
       description: "Deploy and update a Palette host cluster to AWS.",
       buttonText: "Learn more",
-      url: "/getting-started/aws",
+      url: "/tutorials/getting-started/introduction-palette/aws",
     },
     {
       title: "Deploy a Cluster to Microsoft Azure",

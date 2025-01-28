@@ -28,7 +28,8 @@ Palette has the richest coverage in supported environments that includes:
 - Edge
 
 The Getting Started section covers deployment flows for clusters hosted in [AWS](./aws/aws.md),
-[Azure](./azure/azure.md), [Google Cloud](./gcp/gcp.md) and [VMware vSphere](./vmware/vmware.md).
+[Azure](../../../getting-started/azure/azure.md), [Google Cloud](../../../getting-started/gcp/gcp.md) and
+[VMware vSphere](../../../getting-started/vmware/vmware.md).
 
 ## Cluster Profiles
 
@@ -47,8 +48,8 @@ reconcile the current state of your workloads with the desired state specified b
 Below are cluster profile types you can create:
 
 - _Infrastructure_ profiles provide the essential components for workload cluster deployments within a
-  [tenant](../glossary-all.md#tenant): Operating System (OS), Kubernetes, Network, and Storage. Collectively, these
-  layers form the infrastructure for your cluster.
+  [tenant](../../../glossary-all.md#tenant): Operating System (OS), Kubernetes, Network, and Storage. Collectively,
+  these layers form the infrastructure for your cluster.
 
 - _Add-on_ profiles are exclusively composed of add-on layers. They usually do not contain infrastructure components and
   are instead designed for reusability across multiple clusters and multiple projects within a tenant. Since they
@@ -72,7 +73,7 @@ Palette provides packs that are tailored for specific uses to support the core i
 also use add-on packs, or create your own custom pack to extend Kubernetes functionality.
 
 The diagram below illustrates some of the popular technologies that you can use in your cluster profile layers. Check
-out the [Packs List](../integrations/integrations.mdx) page to learn more about individual packs.
+out the [Packs List](../../../integrations/integrations.mdx) page to learn more about individual packs.
 
 ![Diagram of stack grouped as a unit](/getting-started/getting-started_cluster-profiles_stack-grouped-packs.webp)
 
@@ -89,7 +90,7 @@ Select your infrastructure provider to start exploring Palette.
       title: "Deploy a Cluster to Amazon Web Services (AWS)",
       description: "Deploy and update a Palette host cluster to AWS.",
       buttonText: "Learn more",
-      url: "/getting-started/aws",
+      url: "/tutorials/getting-started/introduction-palette/aws",
     },
     {
       title: "Deploy a Cluster to Microsoft Azure",

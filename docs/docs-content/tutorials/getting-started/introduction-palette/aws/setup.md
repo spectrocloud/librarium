@@ -18,11 +18,11 @@ section are centered around a fictional case study company, Spacetastic Ltd.
 
 ## Prerequisites
 
-- A Palette account with [tenant admin](../../tenant-settings/tenant-settings.md) access.
+- A Palette account with [tenant admin](../../../../tenant-settings/tenant-settings.md) access.
 
 - Sign up to a public cloud account from
   [AWS](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account). The AWS cloud account
-  must have the required [IAM policies](../../clusters/public-cloud/aws/required-iam-policies.md).
+  must have the required [IAM policies](../../../../clusters/public-cloud/aws/required-iam-policies.md).
 
 - An SSH key pair available in the region where you want to deploy the cluster. Check out the
   [Create EC2 SSH Key Pair](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/create-key-pairs.html) for guidance.

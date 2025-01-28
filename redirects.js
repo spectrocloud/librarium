@@ -595,6 +595,38 @@ let redirects = [
     to: "/clusters/cluster-management/cluster-map-filters/",
   },
   {
+    from: "/getting-started/introduction/",
+    to: "/tutorials/getting-started/introduction-palette/",
+  },
+  {
+    from: "/getting-started/aws/",
+    to: "/tutorials/getting-started/introduction-palette/aws/",
+  },
+  {
+    from: "/getting-started/aws/setup/",
+    to: "/tutorials/getting-started/introduction-palette/aws/setup/",
+  },
+  {
+    from: "/getting-started/aws/create-cluster-profile/",
+    to: "/tutorials/getting-started/introduction-palette/aws/create-cluster-profile/",
+  },
+  {
+    from: "/getting-started/aws/deploy-k8s-cluster/",
+    to: "/tutorials/getting-started/introduction-palette/aws/deploy-k8s-cluster/",
+  },
+  {
+    from: "/getting-started/aws/update-k8s-cluster/",
+    to: "/tutorials/getting-started/introduction-palette/aws/update-k8s-cluster/",
+  },
+  {
+    from: "/getting-started/aws/deploy-manage-k8s-cluster-tf/",
+    to: "/tutorials/getting-started/introduction-palette/aws/deploy-manage-k8s-cluster-tf/",
+  },
+  {
+    from: "/getting-started/aws/scale-secure-cluster/",
+    to: "/tutorials/getting-started/introduction-palette/aws/scale-secure-cluster/",
+  },
+  {
     from: [
       "/integrations/antrea-cni",
       "/integrations/aws-autoscaler",

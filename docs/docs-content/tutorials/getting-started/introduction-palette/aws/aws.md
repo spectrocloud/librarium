@@ -9,8 +9,8 @@ tags: ["getting-started", "aws"]
 ---
 
 Palette supports integration with [Amazon Web Services](https://aws.amazon.com). You can deploy and manage
-[Host Clusters](../../glossary-all.md#host-cluster) in AWS. The concepts you learn about in the Getting Started section
-are centered around a fictional case study company. This approach gives you a solution focused approach, while
+[Host Clusters](../../../../glossary-all.md#host-cluster) in AWS. The concepts you learn about in the Getting Started
+section are centered around a fictional case study company. This approach gives you a solution focused approach, while
 introducing you to Palette workflows and capabilities.
 
 ## 🧑‍🚀 Welcome to Spacetastic!
@@ -30,37 +30,37 @@ your cluster is deployed, you can update it using cluster profile updates.
       title: "Set up Palette with AWS",
       description: "Set up the prerequisites of using Palette with AWS.",
       buttonText: "Learn more",
-      url: "/getting-started/aws/setup",
+      url: "/tutorials/getting-started/introduction-palette/aws/setup",
     },
     {
       title: "Create a Cluster Profile",
       description: "Create a full cluster profile in Palette.",
       buttonText: "Learn more",
-      url: "/getting-started/aws/create-cluster-profile",
+      url: "/tutorials/getting-started/introduction-palette/aws/create-cluster-profile",
     },
     {
       title: "Deploy a Cluster",
       description: "Deploy a Palette host cluster to AWS.",
       buttonText: "Learn more",
-      url: "/getting-started/aws/deploy-k8s-cluster",
+      url: "/tutorials/getting-started/introduction-palette/aws/deploy-k8s-cluster",
     },
     {
       title: "Deploy Cluster Profile Updates",
       description: "Update your deployed clusters using Palette Cluster Profiles.",
       buttonText: "Learn more",
-      url: "/getting-started/aws/update-k8s-cluster",
+      url: "/tutorials/getting-started/introduction-palette/aws/update-k8s-cluster",
     },
     {
       title: "Cluster Management with Terraform",
       description: "Deploy and update a Palette host cluster with Terraform.",
       buttonText: "Learn more",
-      url: "/getting-started/aws/deploy-manage-k8s-cluster-tf",
+      url: "/tutorials/getting-started/introduction-palette/aws/deploy-manage-k8s-cluster-tf",
     },
     {
       title: "Scale, Upgrade, and Secure Clusters",
       description: "Learn how to scale, upgrade, and secure Palette host clusters deployed to AWS.",
       buttonText: "Learn more",
-      url: "/getting-started/aws/scale-secure-cluster",
+      url: "/tutorials/getting-started/introduction-palette/aws/scale-secure-cluster",
     },
   ]}
 />
