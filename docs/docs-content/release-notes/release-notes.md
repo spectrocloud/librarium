@@ -18,12 +18,12 @@ tags: ["release-notes"]
 #### Features
 
 - Palette now supports
-  [Cluster Profile Variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables.md) in
+  [Cluster Profile Variables](../profiles/cluster-profiles/create-cluster-profiles/cluster-profile-variables/cluster-profile-variables.md) in
   non-Edge clusters. Previously, Cluster Profile Variables were only available in
   [Local UI](../clusters/edge/local-ui/local-ui.md) for Edge clusters deployed through Local UI. With this release, you
   can use Cluster Profile Variables when creating a new Cluster Profile to define and manage configurations for non-Edge
   clusters. Check out the
-  [Cluster Profile Variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables.md) guide to
+  [Cluster Profile Variables](../profiles/cluster-profiles/create-cluster-profiles/cluster-profile-variables/cluster-profile-variables.md) guide to
   learn more about this feature.
 
 - Starting with release version 4.5.15, the Spectro Cloud Artifact Repository (SCAR) is now hosted inside the same Open
@@ -652,7 +652,7 @@ guide to learn how to create a Cluster Group.
 <!-- prettier-ignore -->
 - <VersionedLink text="BYOOS Edge OS" url="/integrations/packs/?pack=edge-native-byoi" /> pack version 2.0.0 is now available with support for [agent mode deployment](../deployment-modes/agent-mode/agent-mode.md).
 
-- Cluster [Profile variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables.md) marked as hidden now include the ability to be mutable, hidden, and read-only.
+- Cluster [Profile variables](../profiles/cluster-profiles/create-cluster-profiles/cluster-profile-variables/cluster-profile-variables.md) marked as hidden now include the ability to be mutable, hidden, and read-only.
 
 - [Edge content bundles](../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md) will now retain tags and image signatures. In the past, tags and signatures were stripped when the content bundle was created. Use the latest version of the Edge CLI to create content bundles that retain tags and signatures. To download the latest version of the Edge CLI, visit the
   [Downloads](../spectro-downloads.md#palette-edge-cli) page.
