@@ -148,9 +148,12 @@ stylus:
       "grc.io/spectro-images-public": "example.registry.com/internal-images"
 ```
 
-Mappings preserve the entire path from the domain. For example, using the mappings described above, if an image named
-`test:latest` is stored at `us-east1-docker.pkg.dev/spectro-images/daily/test:latest`, the mapping rules will rewrite
-image pulls so that they reference `example.registry.com/internal-images/spectro-images/daily/test:latest`.
+All matched portion on the source domain will be replaced with the mapped value and any unmatched path is preserved.
+Using the example in the following diagram, if an image named `alpine:latest` is stored at
+`somedomain.com/somepath/example-repo/alpine:latest`, the mapping rules will rewrite image pulls so that they reference
+`targetdomain.com/other/path/example-repo/alpine:latest`.
+
+![Example of registry mapping rules](/clusters_edge_edge-configuration_installer-reference_registry-mapping.webp)
 
 ##### Airgap Environment
 
