@@ -299,7 +299,7 @@ entry containing `gcr.io` and `*.gcr.io` may be required. Consult your network a
 | --------------------------- | -------- | ---------------------------------------------------------- |
 | docker.io                   | 443      | Third party container images.                              |
 | docker.com                  | 443      | Third party container images.                              |
-| gcr.io                      | 443      | Spectro Cloud and 3rd party container images               |
+| gcr.io                      | 443      | Spectro Cloud and third party container images               |
 | ghcr.io                     | 443      | Third party container images.                              |
 | github.com                  | 443      | Third party content.                                       |
 | googleapis.com              | 443      | Spectro Cloud images.                                      |
@@ -313,7 +313,7 @@ entry containing `gcr.io` and `*.gcr.io` may be required. Consult your network a
 | quay.io                     | 443      | Third party container images.                              |
 | ecr.us-east-1.amazonaws.com | 443      | OCI Pack images.                                           |
 | ecr.us-west-2.amazonaws.com | 443      | OCI Pack images.                                           |
-| us-docker.pkg.dev           | 443      | Required content repository and common third party content |
+| us-docker.pkg.dev           | 443      | Required content repository and common third party content. |
 
 ## Scope
 
