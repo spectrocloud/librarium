@@ -1,62 +1,17 @@
 ---
-sidebar_label: "Define and Manage Profile Variables"
-title: "Define and Manage Profile Variables"
-description: "Learn what cluster profile variables are and how to use them."
-sidebar_position: 40
-tags: ["profiles", "cluster profiles"]
+sidebar_label: "Create Cluster Profile Variables"
+title: "Create Cluster Profile Variables"
+description: "Learn how to create cluster profile variables and how to use them."
+sidebar_position: 50
+tags: ["profiles", "cluster profiles", "cluster profile variables"]
 ---
-
-Use cluster profile variables to create placeholders for parameters in profile-layer configurations, which you can
-populate for individual clusters during deployment. With cluster profile variables, you can use a single cluster profile
-to deploy multiple clusters with unique requirements for security, networking, resource allocation, and more. You can
-also set specific constraints on the expected values, such as format, optionality, and masking to ensure scalable,
-error-free cluster deployments.
-
-Cluster profile variables can be used with any Palette cluster, including public cloud, data center, bare metal, and
-edge clusters, and can also be managed via
-[Terraform](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
-
-:::preview
-
-:::
-
-You can use cluster profile variables with any number of packs, manifests, and Helm charts, but only in the scope of
-their parent cluster profile. If you want to create placeholders to use across different cluster profiles, consider
-using [Palette Macros](../../../clusters/cluster-management/macros.md).
-
-The following table describes the differences between profile variables and macros.
-
-| **Capability**                                                            | **Profile Variable** | **Macro** |
-| ------------------------------------------------------------------------- | :------------------: | :-------: |
-| Belongs to the cluster profile scope                                      |          ✅          |    ❌     |
-| Belongs to the project scope                                              |          ❌          |    ✅     |
-| Belongs to the tenant scope                                               |          ❌          |    ✅     |
-| Supports data format restrictions                                         |          ✅          |    ❌     |
-| Supports optionality restrictions                                         |          ✅          |    ❌     |
-| Supports [sprig template functions](https://masterminds.github.io/sprig/) |          ❌          |    ✅     |
-
-This guide explains how you can define and manage cluster profile variables.
-
-## Limitations
-
-- Palette does not support nesting profile variables within macros or other profile variables.
-
-- You cannot define profile variables for the `pack.content` and `system.uri` parameters because the
-  [Palette CLI](../../../automation/palette-cli/palette-cli.md) populates them automatically.
-
-- Once you deploy a cluster from a profile with variables, you can neither edit nor delete the profile variables. To
-  edit or delete them, [version the cluster profile](../modify-cluster-profiles/version-cluster-profile.md) and update
-  the variables in the new version.
-
-  When you version a cluster profile with variables, the variables are propagated to the new version. However, upon
-  versioning, the variables in each version are independent.
 
 ## Define Profile Variables
 
 ### Prerequisites
 
 - The `clusterProfile.create` and `clusterProfile.update` permissions to create and update cluster profiles. Refer to
-  [Roles and Permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile) for
+  [Roles and Permissions](../../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile) for
   more information.
 
 - An in-progress or existing cluster profile.
@@ -64,7 +19,7 @@ This guide explains how you can define and manage cluster profile variables.
 ### Enablement
 
 You can define profile variables when creating cluster profiles and for existing cluster profiles. To define profile
-variables [while creating a cluster profile](../create-cluster-profiles/create-cluster-profiles.md), you need to be at
+variables [while creating a cluster profile](../../create-cluster-profiles/create-cluster-profiles.md), you need to be at
 the **Profile Layers** stage of cluster profile creation and start following this guide from step three.
 
 1.  Log in to [Palette](https://console.spectrocloud.com).
@@ -165,7 +120,7 @@ the **Profile Layers** stage of cluster profile creation and start following thi
 :::info
 
 Once you deploy a cluster from a profile with variables, you can neither edit nor delete the profile variables. To edit
-or delete them, [version the cluster profile](../modify-cluster-profiles/version-cluster-profile.md) and update the
+or delete them, [version the cluster profile](../../modify-cluster-profiles/version-cluster-profile.md) and update the
 variables in the new version.
 
 :::
@@ -173,7 +128,7 @@ variables in the new version.
 ### Prerequisites
 
 - The `clusterProfile.update` permission to update cluster profiles. Refer to
-  [Roles and Permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile) for
+  [Roles and Permissions](../../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile) for
   more information.
 
 - A cluster profile with profile variables created in Palette.
@@ -207,3 +162,14 @@ variables in the new version.
 
 3. In the upper-right corner, click **Variables** and, on the **Profile variables** pane, check that only the necessary
    variables are present and that each variable has the expected definition.
+
+## Cluster Deployment
+
+When you deploy a cluster using a cluster profile that contains a cluster profile variable, an additional window is displayed during the **Cluster Config** step, where you can enter the desired values to use in your cluster. If you have custom validation active and the entered value does not meet the schema requirements, you receive an error and are unable to deploy your cluster until variable is corrected. To learn more about deploying clusters, visit our [Getting Started](../../../../../docs-content/getting-started/getting-started.md) series.
+
+
+
+
+### Validation
+
+Once your cluster is deployed, verify that any parameters containing cluster profile variables were populated with the expected values.
