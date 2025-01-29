@@ -87,7 +87,7 @@ Explore more through the following pages.
       title: "Additional Capabilities",
       description: "Learn about Palette's additional capabilities.",
       buttonText: "Learn more",
-      url: "/getting-started/additional-capabilities",
+      url: "/tutorials/getting-started/additional-capabilities",
     },
   ]}
 />

@@ -19,13 +19,13 @@ between the VM and Kubernetes concepts. This solution also has near complete fea
 Palette VMO can be used on edge hosts, giving the ability to deploy VM workloads at the edge without the overhead of a
 hypervisor layer. This is achieved by leveraging [Canonical MAAS](https://maas.io). Additionally, VMO can also be used
 in self-hosted, airgapped, and in our SaaS environments. Learn more on the
-[Virtual Machine Orchestrator](../../vm-management/vm-management.md) page.
+[Virtual Machine Orchestrator](../../../vm-management/vm-management.md) page.
 
 ## Resources
 
-To learn more about Palette VMO, review the [Architecture](../../vm-management/architecture.md) page to learn about the
-components involved in enabling VMO for your infrastructure. Then, review the
-[Create a VMO Profile](../../vm-management/create-vmo-profile.md) guide to prepare everything you need to deploy your
+To learn more about Palette VMO, review the [Architecture](../../../vm-management/architecture.md) page to learn about
+the components involved in enabling VMO for your infrastructure. Then, review the
+[Create a VMO Profile](../../../vm-management/create-vmo-profile.md) guide to prepare everything you need to deploy your
 first cluster with VMO.
 
 Check out the following video for a tour of Palette's Virtual Machine Orchestrator (VMO) capability. It shows how you

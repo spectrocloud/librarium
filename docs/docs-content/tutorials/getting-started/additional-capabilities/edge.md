@@ -26,7 +26,7 @@ centrally through the Palette management plane. Palette Edge is able to meet you
 topology your deployments face.
 
 Palette Edge also allows you to be confident that all software operating on your Edge hosts is authenticated software
-verified through cryptographic signatures. [Trusted Boot](../../clusters/edge/trusted-boot/trusted-boot.md) is the
+verified through cryptographic signatures. [Trusted Boot](../../../clusters/edge/trusted-boot/trusted-boot.md) is the
 security feature that ensures the authenticity of the boot processes. In the event that an Edge device is lost or
 stolen, the
 [Trusted Platform Module (TPM)](https://www.intel.com/content/www/us/en/business/enterprise-computers/resources/trusted-platform-module.html)
@@ -35,8 +35,8 @@ remains encrypted.
 
 ## Resources
 
-To learn more about Palette Edge, review the [Edge](../../clusters/edge/edge.md) section to learn more about Edge and
-its features. Then, follow the [Deploy an Edge Cluster on VMware](../../tutorials/edge/deploy-cluster.md) tutorial to
+To learn more about Palette Edge, review the [Edge](../../../clusters/edge/edge.md) section to learn more about Edge and
+its features. Then, follow the [Deploy an Edge Cluster on VMware](../../../tutorials/edge/deploy-cluster.md) tutorial to
 learn how to build Edge artifacts, prepare VMware VMs as Edge hosts using the Edge installer ISO, create a cluster
 profile referencing a provider image, and deploy a cluster.
 

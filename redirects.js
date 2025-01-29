@@ -615,6 +615,10 @@ let redirects = [
     to: "/tutorials/getting-started/introduction-palette/vmware/",
   },
   {
+    from: "/getting-started/additional-capabilities/",
+    to: "/tutorials/getting-started/additional-capabilities/",
+  },
+  {
     from: [
       "/integrations/antrea-cni",
       "/integrations/aws-autoscaler",
