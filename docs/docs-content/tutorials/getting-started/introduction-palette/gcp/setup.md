@@ -18,10 +18,10 @@ in the Getting Started section are centered around a fictional case study compan
 
 ## Prerequisites
 
-- A Palette account with [tenant admin](../../tenant-settings/tenant-settings.md) access.
+- A Palette account with [tenant admin](../../../../tenant-settings/tenant-settings.md) access.
 
 - Sign up to a service account from [GCP](https://cloud.google.com/docs/get-started). The GCP account must have the
-  required [IAM permissions](../../clusters/public-cloud/gcp/required-permissions.md).
+  required [IAM permissions](../../../../clusters/public-cloud/gcp/required-permissions.md).
 
 ## Enablement
 

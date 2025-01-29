@@ -603,28 +603,8 @@ let redirects = [
     to: "/tutorials/getting-started/introduction-palette/aws/",
   },
   {
-    from: "/getting-started/aws/setup/",
-    to: "/tutorials/getting-started/introduction-palette/aws/setup/",
-  },
-  {
-    from: "/getting-started/aws/create-cluster-profile/",
-    to: "/tutorials/getting-started/introduction-palette/aws/create-cluster-profile/",
-  },
-  {
-    from: "/getting-started/aws/deploy-k8s-cluster/",
-    to: "/tutorials/getting-started/introduction-palette/aws/deploy-k8s-cluster/",
-  },
-  {
-    from: "/getting-started/aws/update-k8s-cluster/",
-    to: "/tutorials/getting-started/introduction-palette/aws/update-k8s-cluster/",
-  },
-  {
-    from: "/getting-started/aws/deploy-manage-k8s-cluster-tf/",
-    to: "/tutorials/getting-started/introduction-palette/aws/deploy-manage-k8s-cluster-tf/",
-  },
-  {
-    from: "/getting-started/aws/scale-secure-cluster/",
-    to: "/tutorials/getting-started/introduction-palette/aws/scale-secure-cluster/",
+    from: "/getting-started/gcp/",
+    to: "/tutorials/getting-started/introduction-palette/gcp/",
   },
   {
     from: [

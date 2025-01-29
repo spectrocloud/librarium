@@ -71,7 +71,8 @@ host cluster.
 
 Before you proceed to the next section, review the following parameters.
 
-Refer to the [Node Pool](../../clusters/cluster-management/node-pool.md) guide for a list and description of parameters.
+Refer to the [Node Pool](../../../../clusters/cluster-management/node-pool.md) guide for a list and description of
+parameters.
 
 Before you proceed to next section, review the following parameters.
 

@@ -12,8 +12,8 @@ Palette provides cluster profiles, which allow you to specify layers for your wo
 packages, or cluster manifests. Packs serve as blueprints to the provisioning and deployment process, as they contain
 the versions of the container images that Palette will install for you. Cluster profiles provide consistency across
 environments during the cluster creation process, as well as when maintaining your clusters. Check out
-[Cluster Profiles](../../tutorials/getting-started/introduction-palette/introduction-palette.md#cluster-profiles) to
-learn more. Once provisioned, there are three main ways to update your Palette deployments.
+[Cluster Profiles](../../introduction-palette/introduction-palette.md#cluster-profiles) to learn more. Once provisioned,
+there are three main ways to update your Palette deployments.
 
 | Method                   | Description                                                                        | Cluster application process                                                                                                                                                                                |
 | ------------------------ | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -127,7 +127,7 @@ Click on **Save** to confirm your profile version selection.
 
 Palette has backup and restore capabilities available for your mission critical workloads. Ensure that you have adequate
 backups before you make any cluster profile version changes in your production environments. You can learn more in the
-[Backup and Restore](../../clusters/cluster-management/backup-restore/backup-restore.md) section.
+[Backup and Restore](../../../../clusters/cluster-management/backup-restore/backup-restore.md) section.
 
 :::
 
@@ -137,8 +137,8 @@ will be successfully deployed.
 
 ![Image that shows completed cluster profile updates](/getting-started/gcp/getting-started_update-k8s-cluster_completed-cluster-updates.webp)
 
-Download the [kubeconfig](../../clusters/cluster-management/kubeconfig.md) file for your cluster from the Palette UI.
-This file enables you and other users to issue kubectl commands against the host cluster.
+Download the [kubeconfig](../../../../clusters/cluster-management/kubeconfig.md) file for your cluster from the Palette
+UI. This file enables you and other users to issue kubectl commands against the host cluster.
 
 ![Image that the kubeconfig file](/getting-started/gcp/getting-started_update-k8s-cluster_download-kubeconfig.webp)
 

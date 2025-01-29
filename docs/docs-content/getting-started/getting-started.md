@@ -75,7 +75,7 @@ Explore more through the following pages.
       title: "Deploy a Cluster to Google Cloud Platform (GCP)",
       description: "Deploy and update a Palette host cluster to Google Cloud.",
       buttonText: "Learn more",
-      url: "/getting-started/gcp",
+      url: "/tutorials/getting-started/introduction-palette/gcp",
     },
     {
       title: "Deploy a Cluster to VMware",

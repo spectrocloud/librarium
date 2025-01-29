@@ -77,7 +77,7 @@ Any users that you add to this team inherit the project roles assigned to it. Ro
 enforcement. They allow a single user to have different types of access control based on the resource being accessed. In
 this scenario, any user added to this team will have access to view any cluster profiles and clusters in the
 **Project-ScaleSecureTutorial** project, but not modify them. Check out the
-[Palette RBAC](../../user-management/palette-rbac/palette-rbac.md) section for more details.
+[Palette RBAC](../../../../user-management/palette-rbac/palette-rbac.md) section for more details.
 
 Navigate to the left **Main Menu** and click on **Projects**.
 
@@ -224,8 +224,8 @@ upgrades as the cluster profile editor previously did. Click on **Update**.
 
 Upgrading the Kubernetes version of your cluster modifies an infrastructure layer. Therefore, Kubernetes needs to
 replace its nodes. This is known as a repave. Check out the
-[Node Pools](../../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration) page to learn more about
-the repave behavior and configuration.
+[Node Pools](../../../../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration) page to learn more
+about the repave behavior and configuration.
 
 Click on the **Nodes** tab. You can follow along with the node upgrades on this screen. Palette replaces the nodes
 configured with the old Kubernetes version with newly upgraded ones. This may affect the performance of your
@@ -272,8 +272,8 @@ appears.
 
 Leave the default selections on this screen and click on **Confirm**. Optionally, you can configure an S3 bucket to save
 your report into. Refer to the
-[Configure an SBOM Scan](../../clusters/cluster-management/compliance-scan.md#configure-an-sbom-scan) guide to learn
-more about the configuration options of this scan.
+[Configure an SBOM Scan](../../../../clusters/cluster-management/compliance-scan.md#configure-an-sbom-scan) guide to
+learn more about the configuration options of this scan.
 
 Once the scan completes, click on the report to view it within the Palette UI. The third-party dependencies that your
 workloads rely on are evaluated for potential security vulnerabilities. Reviewing the SBOM enables organizations to
@@ -316,7 +316,7 @@ Navigate to the left **Main Menu** and select **Clusters**. Select your cluster 
 
 Select the **Nodes** tab. Your cluster has a **control-plane-pool** and a **worker-pool**. Each pool contains one node.
 
-Select the **Overview** tab. Download the [kubeconfig](../../clusters/cluster-management/kubeconfig.md) file.
+Select the **Overview** tab. Download the [kubeconfig](../../../../clusters/cluster-management/kubeconfig.md) file.
 
 ![kubeconfig download](/getting-started/gcp/getting-started_scale-secure-cluster_download-kubeconfig.webp)
 
@@ -465,7 +465,7 @@ ui-5f777c76df-pplcv         1/1     Running   20m   gcp-cluster-worker-pool-us-e
 
 Taints and tolerations are a common way of creating nodes dedicated to certain workloads, once the cluster has scaled
 accordingly through its provisioned node pools. Refer to the
-[Taints and Tolerations](../../clusters/cluster-management/taints.md) guide to learn more.
+[Taints and Tolerations](../../../../clusters/cluster-management/taints.md) guide to learn more.
 
 ### Verify the Application
 
@@ -518,8 +518,9 @@ cluster. Then, you upgraded the Kubernetes version of your cluster and scanned y
 capabilities. Finally, you scaled your cluster's nodes and used taints to select which Hello Universe pods execute on
 them.
 
-We encourage you to check out the [Additional Capabilities](../additional-capabilities/additional-capabilities.md) to
-explore other Palette functionalities.
+We encourage you to check out the
+[Additional Capabilities](../../../../getting-started/additional-capabilities/additional-capabilities.md) to explore
+other Palette functionalities.
 
 ## 🧑‍🚀 Catch up with Spacetastic
 
