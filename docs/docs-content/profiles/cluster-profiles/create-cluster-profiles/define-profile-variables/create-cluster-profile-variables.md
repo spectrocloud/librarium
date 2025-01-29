@@ -14,17 +14,17 @@ tags: ["profiles", "cluster profiles", "cluster profile variables"]
   [Roles and Permissions](../../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile) for
   more information.
 
-- An in-progress or existing cluster profile.
+- An in-progress or existing [cluster profile](../../cluster-profiles.md).
 
 ### Enablement
 
 You can define profile variables when creating cluster profiles and for existing cluster profiles. To define profile
 variables [while creating a cluster profile](../../create-cluster-profiles/create-cluster-profiles.md), you need to be at
-the **Profile Layers** stage of cluster profile creation and start following this guide from step three.
+the **Profile Layers** stage of the cluster profile creation process and start following this guide from step three.
 
 1.  Log in to [Palette](https://console.spectrocloud.com).
 
-2.  Navigate to the cluster profile for which you want to define profile variables.
+2.  On the left **Main Menu**, select **Profiles** and choose the cluster profile for which you want to define profile variables.
 
 3.  In the upper-right corner, click **Variables** and, on the **Profile variables** pane, click **Create variable**.
 
