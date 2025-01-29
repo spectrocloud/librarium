@@ -224,29 +224,31 @@ newly added AWS cloud account is listed under the AWS sections.
 
 ## AWS Secret Cloud Account (US)
 
-You can configure AWS Secret Cloud accounts in Palette VerteX. Depending on your organization's compliance requirements, you can choose between standard authentication (standard access credentials) or secure compliance validation using your SC2S Access Portal (SCAP) credentials.
+You can configure AWS Secret Cloud accounts in Palette VerteX to deploy clusters in the AWS Secret region. Depending on your organization's compliance requirements, you can choose between standard authentication (standard access credentials) or secure compliance validation using your SC2S Access Portal (SCAP) credentials.
 
 :::preview
 
 :::
 
-### Static Access Credentials
+### Limitations
 
-Use the steps below to add an AWS Secret Cloud account using static access credentials.
+User-provided Certificate Authority (CA) certificates are not automatically mounted on worker nodes in EKS clusters that are deployed in the AWS Secret region. As a result, applications or services that rely on custom CAs for Transport Layer Security (TLS) communication may fail to establish secure connections, and integrations with external services that require custom CAs may encounter Secure Socket Layer (SSL) or TLS verification issues.
 
-#### Limitations
+Workloads requiring custom CAs for internal trust validation must use an alternative configuration, such as using a [sidecar container](https://kubernetes.io/docs/concepts/workloads/pods/sidecar-containers/) to provide the CA certificate at runtime or embedding the CA certificate within the application. For guidance on embedding certificates within applications, refer to the official Kubernetes documentation on [using Secrets as files from a Pod](https://kubernetes.io/docs/concepts/configuration/secret/#using-secrets-as-files-from-a-pod) and [creating pods that access Secret data through a Volume](https://kubernetes.io/docs/tasks/inject-data-application/distribute-credentials-secure/#create-a-pod-that-has-access-to-the-secret-data-through-a-volume). 
 
-- 
-
-#### Prerequisites
+### Prerequisites
 
 - [Palette VerteX installed](../../../vertex/install-palette-vertex/install-palette-vertex.md) and [tenant admin](../../../tenant-settings/tenant-settings.md) access
 
-- An AWS account with an [IAM role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html) or [IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) for Palette
+- An AWS account with an [IAM role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html) or [IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) for Palette VerteX
 
-- An AWS account with the [required IAM policies](required-iam-policies.md) assigned to the Palette IAM user or IAM role
+- An AWS account with the [required IAM policies](required-iam-policies.md) assigned to the Palette VerteX IAM user or IAM role
 
 - A secure connection to your AWS Secret Cloud account, such as via a Private Cloud Gateway (PCG) or Wide Area Network (WAN) tunnel
+
+### Static Access Credentials
+
+Use the steps below to add an AWS Secret Cloud account using static access credentials.
 
 #### Add AWS Secret Cloud to Palette VerteX
 
@@ -293,23 +295,13 @@ newly added AWS cloud account is listed under the AWS section.
 
 Use the steps below to add an AWS Secret Cloud account using SCAP secure compliance validation credentials.
 
-#### Prerequisites
-
-- [Palette VerteX installed](../../../vertex/install-palette-vertex/install-palette-vertex.md) and [tenant admin](../../../tenant-settings/tenant-settings.md) access
-
-- An AWS account with an [IAM role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html) or [IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) for Palette
-
-- An AWS account with the [required IAM policies](required-iam-policies.md) assigned to the Palette IAM user or IAM role
-
-- A secure connection to your AWS Secret Cloud account, such as via a PCG or WAN tunnel
-
 #### Add AWS Secret Cloud to Palette VerteX
 
 1. Log in to [Palette](https://console.spectrocloud.com) as Tenant admin.
 
 2. From the left **Main Menu**, click on **Tenant Settings**.
 
-3. Select **Cloud Accounts**, and click **+Add AWS Account**.
+3. Select **Cloud Accounts**, and click **Add AWS Account**.
 
 4. In the cloud account creation wizard, enter the following information:
 
