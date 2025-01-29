@@ -24,7 +24,7 @@ authentication methods to register your cloud account.
   
   - [Dynamic Access Credentials](#dynamic-access-credentials-1)
   
-- AWS Secret Cloud (C2S) or Top Secret Cloud (SC2S) (US)
+- AWS Secret Cloud (SC2S) (US)
   
   - [Static Access Credentials](#static-access-credentials-2)
   
@@ -32,7 +32,7 @@ authentication methods to register your cloud account.
 
 ## AWS Account
 
-This section provides guidance in creating an AWS account that uses static or dynamic access credentials.
+This section provides guidance on creating an AWS account that uses static or dynamic access credentials.
 
 ### Static Access Credentials
 
@@ -40,11 +40,11 @@ Use the steps below to add an AWS cloud account using static access credentials.
 
 #### Prerequisites
 
-- An AWS account.
-  
-- Sufficient access to create an IAM role or IAM user.
-  
-- Palette IAM policies. Review the [Required IAM Policies](required-iam-policies.md) section for guidance.
+- A Palette account with [tenant admin](../../../tenant-settings/tenant-settings.md) access
+
+- An AWS account with an [IAM role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html) or [IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) for Palette
+
+- An AWS account with the [required IAM policies](required-iam-policies.md) assigned to the Palette IAM user or IAM role
 
 #### Add AWS Account to Palette
 
@@ -62,16 +62,16 @@ Use the steps below to add an AWS cloud account using Security Token Service (ST
 
 #### Prerequisites
 
+- A Palette account with [tenant admin](../../../tenant-settings/tenant-settings.md) access
+
 - If you are using a self-hosted instance of Palette or VerteX, you must configure an AWS account at the instance-level
   to allow tenants to add AWS accounts using STS. For more information, refer to
   [Enable Adding AWS Accounts Using STS - Palette](../../../enterprise-version/system-management/configure-aws-sts-account.md)
   or [Enable Adding AWS Accounts Using STS - VerteX](../../../vertex/system-management/configure-aws-sts-account.md)
 
-- An AWS account.
-  
-- Sufficient access to create an IAM role or IAM user.
-  
-- Palette IAM policies. Review the [Required IAM Policies](required-iam-policies.md) section for guidance.
+- An AWS account with an [IAM role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html) or [IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) for Palette
+
+- An AWS account with the [required IAM policies](required-iam-policies.md) assigned to the Palette IAM user or IAM role
 
 #### Add AWS Account to Palette
 
@@ -79,7 +79,7 @@ Use the steps below to add an AWS cloud account using Security Token Service (ST
 
 2. From the left **Main Menu**, click on **Tenant Settings**.
 
-3. Select **Cloud Accounts**, and click **+Add AWS Account**.
+3. Select **Cloud Accounts**, and click **Add AWS Account**.
 
 4. In the cloud account creation wizard, enter the following information:
 
@@ -101,20 +101,11 @@ Use the steps below to add an AWS cloud account using Security Token Service (ST
    | **Permissions Policy**  | Search and select the 4 policies added in step 2.                                                                                                                             |
    | **Role Name**           | SpectroCloudRole.                                                                                                                                                             |
 
-6. In the AWS console, create a new IAM role for Palette. Use the following resources if you need additional help.
+6. In the AWS console, browse to the **Role Details** page and copy the Amazon Resource Name (ARN) for the role.
 
-   - [IAM Role creation guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html)
-  
-   - [IAM User creation guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html)
+7. In Palette, paste the role ARN into the **ARN** field.
 
-7. In the AWS console, assign the [Palette-required IAM policies](required-iam-policies.md) to the role that Palette
-   will use.
-
-8. In the AWS console, browse to the **Role Details** page and copy the Amazon Resource Name (ARN) for the role.
-
-9. In Palette, paste the role ARN into the **ARN** input box.
-
-10. Click the **Validate** button to validate the credentials.
+8.  **Validate** the credentials. 
 
 #### Validate
 
@@ -126,7 +117,7 @@ newly added AWS cloud account is listed under the AWS section.
 
 Palette supports integration with
 [AWS GovCloud (US)](https://aws.amazon.com/govcloud-us/?whats-new-ess.sort-by=item.additionalFields.postDateTime&whats-new-ess.sort-order=desc).
-Using Palette you can deploy Kubernetes clusters to your AWS GovCloud account. This section provides guidance on
+Using Palette, you can deploy Kubernetes clusters to your AWS GovCloud account. This section provides guidance on
 creating an AWS GovCloud account that uses static or dynamic access credentials.
 
 ### Static Access Credentials
@@ -135,29 +126,21 @@ Use the steps below to add an AWS cloud account using static access credentials.
 
 #### Prerequisites
 
-- An AWS account.
+- A Palette account with [tenant admin](../../../tenant-settings/tenant-settings.md) access
 
-- Sufficient access to create an IAM role or IAM user.
+- An AWS account with an [IAM role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html) or [IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) for Palette
 
-- Palette IAM policies. Please review the [Required IAM Policies](required-iam-policies.md) section for guidance.
+- An AWS account with the [required IAM policies](required-iam-policies.md) assigned to the Palette IAM user or IAM role
 
 #### Add AWS GovCloud Account to Palette
 
-1. Create an IAM Role or IAM User for Palette. Use the following resources if you need additional help.
+1. Log in to [Palette](https://console.spectrocloud.com) as tenant admin.
 
-   - [IAM Role creation guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html)
-  
-   - [IAM User creation guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html)
+2. From the left **Main Menu**, click on **Tenant Settings**.
 
-2. In the AWS console, assign the [Palette-required IAM policies](required-iam-policies.md) to the role or the IAM user that Palette will use.
+3. Select **Cloud Accounts**, and click **Add AWS Account**.
 
-3. Log in to [Palette](https://console.spectrocloud.com) as Tenant admin.
-
-4. From the left **Main Menu**, click on **Tenant Settings**.
-
-5. Select **Cloud Accounts**, and click **+Add AWS Account**.
-
-6. In the cloud account creation wizard provide the following information:
+4. In the cloud account creation wizard provide the following information:
 
    - **Account Name:** Custom name for the cloud account.
 
@@ -171,11 +154,11 @@ Use the steps below to add an AWS cloud account using static access credentials.
   
      - AWS Secret access key
 
-7. **Validate** the credentials.
+5. **Validate** the credentials.
 
-8. Once the credentials are validated, the **Add IAM Policies** toggle is displayed. Toggle **Add IAM Policies** on.
+6. Once the credentials are validated, verified by a green check mark, the **Add IAM Policies** toggle is displayed. Toggle **Add IAM Policies** on.
 
-9. Use the **drop-down Menu**, which lists available IAM policies in your AWS account, to select any desired IAM
+7. Use the **drop-down Menu**, which lists available IAM policies in your AWS account, to select any desired IAM
    policies you want to assign to the Palette IAM role or IAM user.
 
 #### Validate
@@ -190,16 +173,16 @@ Use the steps below to add an AWS cloud account using STS credentials.
 
 #### Prerequisites
 
+- A Palette account with [tenant admin](../../../tenant-settings/tenant-settings.md) access
+
 - If you are using a self-hosted instance of Palette or VerteX, you must configure an AWS account at the instance-level
   to allow tenants to add AWS accounts using STS. For more information, refer to
   [Enable Adding AWS Accounts Using STS - Palette](../../../enterprise-version/system-management/configure-aws-sts-account.md)
   or [Enable Adding AWS Accounts Using STS - VerteX](../../../vertex/system-management/configure-aws-sts-account.md)
 
-- An AWS account.
-  
-- Sufficient access to create an IAM role or IAM user.
-  
-- Palette IAM policies. Review the [Required IAM Policies](required-iam-policies.md) section for guidance.
+- An AWS account with an [IAM role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html) or [IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) for Palette
+
+- An AWS account with the [required IAM policies](required-iam-policies.md) assigned to the Palette IAM user or IAM role
 
 #### Add AWS GovCloud Account to Palette
 
@@ -207,7 +190,7 @@ Use the steps below to add an AWS cloud account using STS credentials.
 
 2. From the left **Main Menu**, click on **Tenant Settings**.
 
-3. Select **Cloud Accounts**, and click **+Add AWS Account**.
+3. Select **Cloud Accounts**, and click **Add AWS Account**.
 
 4. In the cloud account creation wizard, enter the following information:
 
@@ -227,20 +210,11 @@ Use the steps below to add an AWS cloud account using STS credentials.
    | **Permissions Policy**  | Search and select the 4 policies added in step #2.                                                                                                                            |
    | **Role Name**           | SpectroCloudRole.                                                                                                                                                             |
 
-6. In the AWS console, create a new IAM role for Palette. Use the following resources if you need additional help.
+6. In the AWS console, browse to the **Role Details** page and copy the ARN for the role.
 
-   - [IAM Role creation guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html)
-  
-   - [IAM User creation guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html)
+7. In Palette, paste the role ARN into the **ARN** input box.
 
-7. In the AWS console, assign the [Palette required IAM policies](required-iam-policies.md) to the role that Palette
-   will use.
-
-8. In the AWS console, browse to the **Role Details** page and copy the ARN for the role.
-
-9. In Palette, paste the role ARN into the **ARN** input box.
-
-10. **Validate** the credentials.
+8.  **Validate** the credentials.
 
 #### Validate
 
@@ -248,9 +222,9 @@ You can verify that the account is available in Palette by reviewing the list of
 cloud accounts, navigate to the left **Main Menu**. Click on **Tenant Settings**. Next, click on **Cloud Accounts**. Your
 newly added AWS cloud account is listed under the AWS sections.
 
-## AWS Secret Cloud or Top Secret Cloud Account (US)
+## AWS Secret Cloud Account (US)
 
-You can configure AWS Secret Cloud accounts in Palette VerteX. Depending on your organization's compliance requirements, you can choose between standard authentication (standard access credentials) or secure compliance validation using either C2S Access Portal (CAP) or SC2S Access Portal (SCAP) credentials.
+You can configure AWS Secret Cloud accounts in Palette VerteX. Depending on your organization's compliance requirements, you can choose between standard authentication (standard access credentials) or secure compliance validation using your SC2S Access Portal (SCAP) credentials.
 
 :::preview
 
@@ -258,33 +232,25 @@ You can configure AWS Secret Cloud accounts in Palette VerteX. Depending on your
 
 ### Static Access Credentials
 
-Use the steps below to add an AWS secret cloud account using static access credentials.
+Use the steps below to add an AWS Secret Cloud account using static access credentials.
 
 #### Prerequisites
 
-- An AWS account.
+- A Palette account with [tenant admin](../../../tenant-settings/tenant-settings.md) access
 
-- Sufficient access to create an IAM role or IAM user.
+- An AWS account with an [IAM role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html) or [IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) for Palette
 
-- Palette IAM policies. Please review the [Required IAM Policies](required-iam-policies.md) section for guidance.
+- An AWS account with the [required IAM policies](required-iam-policies.md) assigned to the Palette IAM user or IAM role
 
 #### Add AWS Secret Cloud to Palette VerteX
 
-1. Create an IAM Role or IAM User for Palette. Use the following resources if you need additional help.
+1. Log in to [Palette](https://console.spectrocloud.com) as tenant admin.
 
-   - [IAM Role creation guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html)
-  
-   - [IAM User creation guide](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html)
+2. From the left **Main Menu**, click on **Tenant Settings**.
 
-2. In the AWS console, assign the [Palette-required IAM policies](required-iam-policies.md) to the role or the IAM user that Palette will use.
+3. Select **Cloud Accounts**, and click **Add AWS Account**.
 
-3. Log in to [Palette](https://console.spectrocloud.com) as Tenant admin.
-
-4. From the left **Main Menu**, click on **Tenant Settings**.
-
-5. Select **Cloud Accounts**, and click **+Add AWS Account**.
-
-6. In the cloud account creation wizard provide the following information:
+4. In the cloud account creation wizard provide the following information:
 
    - **Account Name:** Custom name for the cloud account.
 
@@ -300,12 +266,16 @@ Use the steps below to add an AWS secret cloud account using static access crede
   
    - **Certificate Authority:** Paste the root, intermediate, or chain of trust certificate in PEM-encoded format. Contact your organization's security team or AWS Secret Cloud administrator to obtain this certificate.
 
-7. **Validate** the credentials.
+5. **Validate** the credentials.
 
-8. Once the credentials are validated, the **Add IAM Policies** toggle is displayed. Toggle **Add IAM Policies** on.
+6. Once the credentials are validated, verified by a green check mark, the **Add IAM Policies** toggle is displayed. Toggle **Add IAM Policies** on.
 
-9. Use the **drop-down Menu**, which lists available IAM policies in your AWS account, to select any desired IAM
+7. Use the **drop-down Menu**, which lists available IAM policies in your AWS account, to select any desired IAM
    policies you want to assign to the Palette IAM role or IAM user.
+
+8. If your environment requires the use of a Private Cloud Gateway (PCG), such as a self-hosted VerteX instance, toggle **Connect Private Cloud Gateway** on, and select a **Private Cloud Gateway** from the list. This list is populated automatically with the **Private Cloud Gateways** listed in **Tenant Settings**. For more information, refer to the [Private Cloud Gateway](../../../clusters/pcg/pcg.md) page.
+
+9. **Confirm** your AWS Secret Cloud account.
 
 #### Validate
 
@@ -315,15 +285,15 @@ newly added AWS cloud account is listed under the AWS section.
 
 ### Secure Compliance Validation Credentials
 
-Use the steps below to add an AWS secret cloud account using CAP or SCAP secure compliance validation credentials.
+Use the steps below to add an AWS Secret Cloud account using SCAP secure compliance validation credentials.
 
 #### Prerequisites
 
-- An AWS account.
+- A Palette account with [tenant admin](../../../tenant-settings/tenant-settings.md) access
 
-- Sufficient access to create an IAM role or IAM user.
+- An AWS account with an [IAM role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html) or [IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) for Palette
 
-- Palette IAM policies. Please review the [Required IAM Policies](required-iam-policies.md) section for guidance.
+- An AWS account with the [required IAM policies](required-iam-policies.md) assigned to the Palette IAM user or IAM role
 
 #### Add AWS Secret Cloud to Palette VerteX
 
@@ -341,13 +311,13 @@ Use the steps below to add an AWS secret cloud account using CAP or SCAP secure 
   
    - **Partition:** Choose **AWS US Secret** from the **drop-down Menu**.
 
-5. Toggle on **Secure Compliance Validation** and enter the following information:
+5. Toggle on **Secure Compliance Validation** and enter the following information.
 
    | **Parameter**           | **Description**                                                                                                                                                               |
    | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Agency Name** | Enter the CAP or SCAP agency name.                                                                                                                                                          |
-   | **Account Name**          | Enter the account number or mission identifier used for CAP or SCAP authentication. |
-   | **CAP/SCAP Role Name** | Enter the role name provided by CAP or SCAP administrator. This role determines the AWS permissions granted to the account.                                                                                                                                                                     |
+   | **Agency Name** | Enter the SCAP agency name.                                                                                                                                                          |
+   | **Account Name**          | Enter the account number or mission identifier used for SCAP authentication. |
+   | **CAP/SCAP Role Name** | Enter the role name provided by SCAP administrator. This role determines the AWS permissions granted to the account. Note that AWS Top Secret Cloud Access Portal (CAP) credentials are not supported at this time.                                                                                                                                                                     |
    | **Role Prefix (Optional)**         | Choose a prefix to standardize role names. If no prefix is provided, a default prefix of `PROJECT_` is used. For example, if the initial role name is `DevOpsRole`, the full role name would be `PROJECT_DevOpsRole`.                                                             |
    | **Permission Boundary (Optional)**  | If you want to apply a permission boundary and limit the maximum permissions a role or user can have, provide the IAM policy ARN (for example, `arn:aws:iam::123456789012:policy/MyPermissionBoundaryPolicy`). Refer to the AWS [Permissions boundaries for IAM entities](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html) page for additional information on permission boundaries.                                                                                                                           |
    | **Certificate Authority**           | Paste the root, intermediate, or chain of trust certificate in PEM-encoded format. Contact your organization's security team or AWS Secret Cloud administrator to obtain this certificate. |
@@ -356,9 +326,14 @@ Use the steps below to add an AWS secret cloud account using CAP or SCAP secure 
 
 6. **Validate** the credentials.
 
-7. If your environment requires the use of a Private Cloud Gateway (PCG), such as a self-hosted VerteX instance, toggle **Connect Private Cloud Gateway** on, and select a **Private Cloud Gateway** from the list. This list is populated automatically with the any **Private Cloud Gateways** listed in **Tenant Settings**. For more information, refer to the [Private Cloud Gateway](../../../clusters/pcg/pcg.md) page.
+7. Once the credentials are validated, verified by a green check mark, the **Add IAM Policies** toggle is displayed. Toggle **Add IAM Policies** on.
 
-8. **Confirm** your AWS secret cloud account.
+8. Use the **drop-down Menu**, which lists available IAM policies in your AWS account, to select any desired IAM
+   policies you want to assign to the Palette IAM role or IAM user.
+
+9. If your environment requires the use of a Private Cloud Gateway (PCG), such as a self-hosted VerteX instance, toggle **Connect Private Cloud Gateway** on, and select a **Private Cloud Gateway** from the list. This list is populated automatically with the **Private Cloud Gateways** listed in **Tenant Settings**. For more information, refer to the [Private Cloud Gateway](../../../clusters/pcg/pcg.md) page.
+
+10. **Confirm** your AWS Secret Cloud account.
 
 ## Next Steps
 
