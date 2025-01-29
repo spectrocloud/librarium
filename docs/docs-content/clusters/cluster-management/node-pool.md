@@ -218,7 +218,7 @@ After you have modified a new node pool, you can validate the node pool by follo
 
 ## Delete a Node Pool
 
-You can delete a worker node pool from an active cluster. Follow the steps below to learn how to delete a node pool.
+You can delete a worker node pool from an active cluster using the following steps.
 
 :::warning
 
@@ -237,7 +237,7 @@ your remaining node pools can handle the displaced workloads before proceeding.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. From the left **Main Menu**, click on **Clusters**.
+2. From the left **Main Menu**, click **Clusters**.
 
 3. Select the cluster with the node pool you want to delete.
 
