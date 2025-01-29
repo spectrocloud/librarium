@@ -18,11 +18,11 @@ section are centered around a fictional case study company, Spacetastic Ltd.
 
 ## Prerequisites
 
-- A Palette account with [tenant admin](../../tenant-settings/tenant-settings.md) access.
+- A Palette account with [tenant admin](../../../../tenant-settings/tenant-settings.md) access.
 
 - Sign up to a public cloud account from
   [Azure](https://learn.microsoft.com/en-us/training/modules/create-an-azure-account). The Azure cloud account must have
-  the [required permissions](../../clusters/public-cloud/azure/required-permissions.md).
+  the [required permissions](../../../../clusters/public-cloud/azure/required-permissions.md).
 
 - Access to a terminal window.
 

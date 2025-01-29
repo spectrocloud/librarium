@@ -64,7 +64,7 @@ pack contains a set of default values. You can change the manifest values if nee
 
 The **Cluster Config** section allows you to select the **Subscription**, **Region**, **Resource Group**, **Storage
 account**, and **SSH Key** to apply to the host cluster. All clusters require you to assign an SSH key. Refer to the
-[SSH Keys](../../clusters/cluster-management/ssh/ssh-keys.md) guide for information about uploading an SSH key.
+[SSH Keys](../../../../clusters/cluster-management/ssh/ssh-keys.md) guide for information about uploading an SSH key.
 
 When you are done selecting a **Subscription**, **Region**, **Resource Group**, **Storage account** and **SSH Key**,
 click on **Next**.
@@ -72,7 +72,8 @@ click on **Next**.
 The **Nodes Config** section allows you to configure the nodes that compose the control plane nodes and worker nodes of
 the Kubernetes cluster.
 
-Refer to the [Node Pool](../../clusters/cluster-management/node-pool.md) guide for a list and description of parameters.
+Refer to the [Node Pool](../../../../clusters/cluster-management/node-pool.md) guide for a list and description of
+parameters.
 
 Before you proceed to next section, review the following parameters.
 

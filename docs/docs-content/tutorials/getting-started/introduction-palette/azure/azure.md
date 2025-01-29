@@ -9,9 +9,9 @@ tags: ["getting-started", "azure"]
 ---
 
 Palette supports integration with [Microsoft Azure](https://azure.microsoft.com/en-us). You can deploy and manage
-[Host Clusters](../../glossary-all.md#host-cluster) in Azure or Azure Government. The concepts you learn about in the
-Getting Started section are centered around a fictional case study company. This approach gives you a solution focused
-approach, while introducing you to Palette workflows and capabilities.
+[Host Clusters](../../../../glossary-all.md#host-cluster) in Azure or Azure Government. The concepts you learn about in
+the Getting Started section are centered around a fictional case study company. This approach gives you a solution
+focused approach, while introducing you to Palette workflows and capabilities.
 
 ## 🧑‍🚀 Welcome to Spacetastic!
 
@@ -30,37 +30,37 @@ your cluster is deployed, you can update it using cluster profile updates.
       title: "Set up Palette with Azure",
       description: "Set up the prerequisites of using Palette with Azure.",
       buttonText: "Learn more",
-      url: "/getting-started/azure/setup",
+      url: "/tutorials/getting-started/introduction-palette/azure/setup",
     },
     {
       title: "Create a Cluster Profile",
       description: "Create a full cluster profile in Palette.",
       buttonText: "Learn more",
-      url: "/getting-started/azure/create-cluster-profile",
+      url: "/tutorials/getting-started/introduction-palette/azure/create-cluster-profile",
     },
     {
       title: "Deploy a Cluster",
       description: "Deploy a Palette host cluster to Azure.",
       buttonText: "Learn more",
-      url: "/getting-started/azure/deploy-k8s-cluster",
+      url: "/tutorials/getting-started/introduction-palette/azure/deploy-k8s-cluster",
     },
     {
       title: "Deploy Cluster Profile Updates",
       description: "Update your deployed clusters using Palette Cluster Profiles.",
       buttonText: "Learn more",
-      url: "/getting-started/azure/update-k8s-cluster",
+      url: "/tutorials/getting-started/introduction-palette/azure/update-k8s-cluster",
     },
     {
       title: "Cluster Management with Terraform",
       description: "Deploy and update a Palette host cluster with Terraform.",
       buttonText: "Learn more",
-      url: "/getting-started/azure/deploy-manage-k8s-cluster-tf",
+      url: "/tutorials/getting-started/introduction-palette/azure/deploy-manage-k8s-cluster-tf",
     },
     {
       title: "Scale, Upgrade, and Secure Clusters",
       description: "Learn how to scale, upgrade, and secure Palette host clusters deployed to Azure.",
       buttonText: "Learn more",
-      url: "/getting-started/azure/scale-secure-cluster",
+      url: "/tutorials/getting-started/introduction-palette/azure/scale-secure-cluster",
     },
   ]}
 />

@@ -69,7 +69,7 @@ Explore more through the following pages.
       title: "Deploy a Cluster to Microsoft Azure",
       description: "Deploy and update a Palette host cluster to Azure.",
       buttonText: "Learn more",
-      url: "/getting-started/azure",
+      url: "/tutorials/getting-started/introduction-palette/azure",
     },
     {
       title: "Deploy a Cluster to Google Cloud Platform (GCP)",

@@ -607,6 +607,10 @@ let redirects = [
     to: "/tutorials/getting-started/introduction-palette/gcp/",
   },
   {
+    from: "/getting-started/azure/",
+    to: "/tutorials/getting-started/introduction-palette/azure/",
+  },
+  {
     from: [
       "/integrations/antrea-cni",
       "/integrations/aws-autoscaler",
