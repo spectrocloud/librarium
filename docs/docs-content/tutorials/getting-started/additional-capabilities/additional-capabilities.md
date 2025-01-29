@@ -13,7 +13,6 @@ Kubernetes workloads across a wide variety of environments and deployment option
 
 This section introduces you to some of Palette's additional capabilities, which include:
 
-- Managing thousands of clusters in remote locations with [Edge](./edge.md).
 - Supporting high-security requirements with our FIPS-validated [VerteX](./self-hosted.md#palette-vertex) edition.
 - Self-hosting the Palette management plane in your own environment with
   [Self-Hosted Palette](./self-hosted.md#self-hosted-palette).
@@ -31,24 +30,24 @@ platform. They want to keep pushing the limits of their platform and implement s
 this growth, they will need to expand their team, infrastructure, and systems. They continue exploring the Getting
 Started section to learn how they can grow with Palette and have a long-term relationship with Spectro Cloud.
 
-> "Wouldn’t bringing some astronomy into everyone's home be great?" says Anya, Lead Astrophycist, who has always the
-> dreamer of the team. "I wonder how we could make that possible."
+> As we continue to grow, we need a more flexible infrastructure that can handle both our containerized applications and
+> virtual machine-based services," says Anya, Lead Astrophycist, who has always the dreamer of the team. "I wonder how
+> we could make this integration possible."
 >
 > Kai is in charge of scaling the Spacetastic platform. "That would be a great dream and a challenge for us, Anya." they
 > say.
 >
-> "You know, we might be able to make your dream happen!" says Wren, Founding Engineer. "Palette's edge capabilities
-> could make it possible for us to bring Spacetastic to many devices."
+> "You know, we might be able to make your dream happen!" says Wren, Founding Engineer. "Palette's Virtual Machine
+> Orchestrator allows you to deploy, manage, and scale VM workloads side by side with containerized applications."
 >
 > "I can't believe my ears!" says Kai laughing. "Wren, our resident Palette skeptic, has well and truly embraced our new
 > platform solution."
 >
-> Wren laughs and quickly responds. "Oh and one more thing! Palette doesn't lock us into a single tech stack or cloud
-> provider, so we can deploy our services in many locations."
+> Wren laughs and quickly responds. "Oh and one more thing! Palette VMO doesn't lock us into a single tech stack or
+> cloud provider, so we can deploy our services in many locations."
 >
-> "Palette makes Kubernetes just as secure on edge devices as it is in large data centers." says Meera, Head of
-> Cybersecurity, joining in. "We'll make your dream a reality and bring Spacetastic to everyone soon enough, Anya. The
-> sky's the limit for us!"
+> "With VMO, we'll be able to integrate our VMs and containers smoothly, enabling Spacetastic to scale and innovate even
+> further. says Meera, Head of Cybersecurity, joining in. "The sky's the limit for us!"
 
 ## The Journey Continues
 
@@ -60,12 +59,6 @@ Explore more through the following pages.
 <SimpleCardGrid
   hideNumber="true"
   cards={[
-    {
-      title: "Palette Edge",
-      description: "Explore Palette's Edge Capabilities.",
-      buttonText: "Learn more",
-      url: "/tutorials/getting-started/additional-capabilities/edge",
-    },
     {
       title: "VerteX and Self-Hosted Palette",
       description: "Read about our dedicated Palette offerings, VerteX and Self-Hosted Palette.",

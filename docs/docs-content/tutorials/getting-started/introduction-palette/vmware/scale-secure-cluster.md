@@ -5,6 +5,7 @@ description: "Learn how to scale, upgrade, and secure Palette host clusters depl
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 60
+pagination_next: tutorials/getting-started/additional-capabilities/additional-capabilities
 tags: ["getting-started", "vmware", "tutorial"]
 ---
 
