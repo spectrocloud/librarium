@@ -18,10 +18,10 @@ section are centered around a fictional case study company, Spacetastic Ltd.
 
 ## Prerequisites
 
-- A Palette account with [tenant admin](../../tenant-settings/tenant-settings.md) access.
+- A Palette account with [tenant admin](../../../../tenant-settings/tenant-settings.md) access.
 
 - A [VMware vSphere](https://docs.vmware.com/en/VMware-vSphere/index.html) user account with the
-  [required permissions](../../clusters/data-center/vmware/permissions.md).
+  [required permissions](../../../../clusters/data-center/vmware/permissions.md).
 
 ## Enablement
 

@@ -28,7 +28,7 @@ Palette has the richest coverage in supported environments that includes:
 - Edge
 
 The Getting Started section covers deployment flows for clusters hosted in [AWS](./aws/aws.md),
-[Azure](./azure/azure.md), [Google Cloud](./gcp/gcp.md) and [VMware vSphere](../../../getting-started/vmware/vmware.md).
+[Azure](./azure/azure.md), [Google Cloud](./gcp/gcp.md) and [VMware vSphere](./vmware/vmware.md).
 
 ## Cluster Profiles
 
@@ -107,7 +107,7 @@ Select your infrastructure provider to start exploring Palette.
       title: "Deploy a Cluster to VMware",
       description: "Deploy and update a Palette host cluster to VMware vSphere.",
       buttonText: "Learn more",
-      url: "/getting-started/vmware",
+      url: "/tutorials/getting-started/introduction-palette/vmware",
     },
   ]}
 />

@@ -12,12 +12,12 @@ Palette offers profile-based management for Kubernetes, enabling consistency, re
 across multiple clusters. A cluster profile allows you to customize the cluster infrastructure stack, allowing you to
 choose the desired Operating System (OS), Kubernetes, Container Network Interfaces (CNIs), and Container Storage
 Interfaces (CSIs). You can further customize the stack with add-on application layers. For more information about
-cluster profile types, refer to
-[Cluster Profiles](../../tutorials/getting-started/introduction-palette/introduction-palette.md#cluster-profiles).
+cluster profile types, refer to [Cluster Profiles](../introduction-palette.md#cluster-profiles).
 
 In this tutorial, you create a full profile directly from the Palette dashboard. Then, you add a layer to your cluster
-profile by using a [community pack](../../integrations/community_packs.md) to deploy a web application. The concepts you
-learn about in the Getting Started section are centered around a fictional case study company, Spacetastic Ltd.
+profile by using a [community pack](../../../../integrations/community_packs.md) to deploy a web application. The
+concepts you learn about in the Getting Started section are centered around a fictional case study company, Spacetastic
+Ltd.
 
 ## 🧑‍🚀 Back at Spacetastic HQ
 
@@ -29,10 +29,11 @@ learn about in the Getting Started section are centered around a fictional case 
   your VMware user account.
 - Refer to the [Deploy a PCG with Palette CLI](./deploy-pcg.md) guide to create the required infrastructure that enables
   communication with your cluster.
-- Ensure that the [Palette Community Registry](../../registries-and-packs/registries/registries.md#default-registries)
-  is available in your Palette environment. Refer to the
-  [Add OCI Packs Registry](../../registries-and-packs/registries/oci-registry/add-oci-packs.md) guide for additional
-  guidance.
+- Ensure that the
+  [Palette Community Registry](../../../../registries-and-packs/registries/registries.md#default-registries) is
+  available in your Palette environment. Refer to the
+  [Add OCI Packs Registry](../../../../registries-and-packs/registries/oci-registry/add-oci-packs.md) guide for
+  additional guidance.
 
 ## Create a Full Cluster Profile
 

@@ -233,7 +233,7 @@ the cluster profile.
 | App Services  | `hellouniverse`   | `1.2.0`     | :white_check_mark:         | :white_check_mark:         |
 | App Services  | `cost-analyzer`   | `1.103.3`   | :x:                        | :white_check_mark:         |
 
-The Hello Universe pack has two configured [presets](../../glossary-all.md#presets). The first preset deploys a
+The Hello Universe pack has two configured [presets](../../../../glossary-all.md#presets). The first preset deploys a
 standalone frontend application, while the second one deploys a three-tier application with a frontend, API server, and
 Postgres database. This tutorial deploys the three-tier version of the
 [Hello Universe](https://github.com/spectrocloud/hello-universe) pack. The preset selection in the Terraform code is
@@ -514,7 +514,7 @@ ssh_key_private    = ""
 :::info
 
 If you deployed the PCG using static IP placement, you must create an
-[IPAM pool](../../clusters/pcg/manage-pcg/create-manage-node-pool.md) before deploying clusters. Set the
+[IPAM pool](../../../../clusters/pcg/manage-pcg/create-manage-node-pool.md) before deploying clusters. Set the
 `deploy-vmware-static` variable to true and provide the required values for the variables under the **Static IP Pool
 Variables** section.
 
@@ -676,8 +676,8 @@ Once the changes have been completed, Palette marks the cluster layers with a gr
 
 ![Image that shows the cluster with Kubecost](/getting-started/vmware/getting-started_deploy-manage-k8s-cluster_profile-with-kubecost.webp)
 
-Next, download the [kubeconfig](../../clusters/cluster-management/kubeconfig.md) file for your cluster from the Palette
-UI. This file enables you and other users to issue `kubectl` commands against the host cluster.
+Next, download the [kubeconfig](../../../../clusters/cluster-management/kubeconfig.md) file for your cluster from the
+Palette UI. This file enables you and other users to issue `kubectl` commands against the host cluster.
 
 ![Image that shows the cluster's kubeconfig file location](/getting-started/vmware/getting-started_deploy-manage-k8s-cluster_kubeconfig.webp)
 

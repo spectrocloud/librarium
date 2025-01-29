@@ -81,7 +81,7 @@ Explore more through the following pages.
       title: "Deploy a Cluster to VMware",
       description: "Deploy and update a Palette host cluster to VMware vSphere.",
       buttonText: "Learn more",
-      url: "/getting-started/vmware",
+      url: "/tutorials/getting-started/introduction-palette/vmware",
     },
     {
       title: "Additional Capabilities",

@@ -21,7 +21,7 @@ either deploy or delete Kubernetes clusters within the environment. This connect
 that is encrypted using the Transport Layer Security (TLS) protocol. Once a cluster is deployed, the PCG is no longer
 involved in the communication between Palette and the deployed cluster. The cluster then communicates directly with
 Palette through the Palette agent available within each cluster, which originates all network requests outbound toward
-Palette. Refer to the [PCG Architecture](../../clusters/pcg/architecture.md) section for more information.
+Palette. Refer to the [PCG Architecture](../../../../clusters/pcg/architecture.md) section for more information.
 
 In this tutorial, you will deploy a VMware PCG using Palette CLI.
 
@@ -34,7 +34,7 @@ You will need a Linux x86-64 machine with access to a terminal and Internet, as 
 VMware vSphere.
 
     - The following IP address requirements must be met in your VMware vSphere environment:
-        - One IP address available for the single-node PCG deployment. Refer to the [PCG Sizing](../../clusters/pcg/manage-pcg/scale-pcg-nodes.md) section for more information on sizing.
+        - One IP address available for the single-node PCG deployment. Refer to the [PCG Sizing](../../../../clusters/pcg/manage-pcg/scale-pcg-nodes.md) section for more information on sizing.
         - One IP address reserved for cluster repave operations.
         - One IP address for the Virtual IP (VIP).
         - DNS must be able to resolve the domain `api.spectrocloud.com`.
@@ -53,7 +53,7 @@ VMware vSphere.
         :::
 
     - Ensure the following software is installed and available on your Linux machine.
-        - [Palette CLI](../../automation/palette-cli/install-palette-cli.md).
+        - [Palette CLI](../../../../automation/palette-cli/install-palette-cli.md).
         - [Docker](https://docs.docker.com/desktop).
         - [Kind](https://kind.sigs.k8s.io/docs/user/quick-start/#installation).
         - [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
