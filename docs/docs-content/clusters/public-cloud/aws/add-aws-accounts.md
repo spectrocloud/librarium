@@ -234,13 +234,19 @@ You can configure AWS Secret Cloud accounts in Palette VerteX. Depending on your
 
 Use the steps below to add an AWS Secret Cloud account using static access credentials.
 
+#### Limitations
+
+- 
+
 #### Prerequisites
 
-- A Palette account with [tenant admin](../../../tenant-settings/tenant-settings.md) access
+- [Palette VerteX installed](../../../vertex/install-palette-vertex/install-palette-vertex.md) and [tenant admin](../../../tenant-settings/tenant-settings.md) access
 
 - An AWS account with an [IAM role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html) or [IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) for Palette
 
 - An AWS account with the [required IAM policies](required-iam-policies.md) assigned to the Palette IAM user or IAM role
+
+- A secure connection to your AWS Secret Cloud account, such as via a Private Cloud Gateway (PCG) or Wide Area Network (WAN) tunnel
 
 #### Add AWS Secret Cloud to Palette VerteX
 
@@ -273,7 +279,7 @@ Use the steps below to add an AWS Secret Cloud account using static access crede
 7. Use the **drop-down Menu**, which lists available IAM policies in your AWS account, to select any desired IAM
    policies you want to assign to the Palette IAM role or IAM user.
 
-8. If your environment requires the use of a Private Cloud Gateway (PCG), such as a self-hosted VerteX instance, toggle **Connect Private Cloud Gateway** on, and select a **Private Cloud Gateway** from the list. This list is populated automatically with the **Private Cloud Gateways** listed in **Tenant Settings**. For more information, refer to the [Private Cloud Gateway](../../../clusters/pcg/pcg.md) page.
+8. If you are using a PCG to connect to your AWS Secret Cloud account, toggle **Connect Private Cloud Gateway** on, and select a **Private Cloud Gateway** from the list. This list is populated automatically with the **Private Cloud Gateways** listed in **Tenant Settings**. For more information, refer to the [Private Cloud Gateway](../../../clusters/pcg/pcg.md) page.
 
 9. **Confirm** your AWS Secret Cloud account.
 
@@ -289,11 +295,13 @@ Use the steps below to add an AWS Secret Cloud account using SCAP secure complia
 
 #### Prerequisites
 
-- A Palette account with [tenant admin](../../../tenant-settings/tenant-settings.md) access
+- [Palette VerteX installed](../../../vertex/install-palette-vertex/install-palette-vertex.md) and [tenant admin](../../../tenant-settings/tenant-settings.md) access
 
 - An AWS account with an [IAM role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html) or [IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) for Palette
 
 - An AWS account with the [required IAM policies](required-iam-policies.md) assigned to the Palette IAM user or IAM role
+
+- A secure connection to your AWS Secret Cloud account, such as via a PCG or WAN tunnel
 
 #### Add AWS Secret Cloud to Palette VerteX
 
@@ -331,7 +339,7 @@ Use the steps below to add an AWS Secret Cloud account using SCAP secure complia
 8. Use the **drop-down Menu**, which lists available IAM policies in your AWS account, to select any desired IAM
    policies you want to assign to the Palette IAM role or IAM user.
 
-9. If your environment requires the use of a Private Cloud Gateway (PCG), such as a self-hosted VerteX instance, toggle **Connect Private Cloud Gateway** on, and select a **Private Cloud Gateway** from the list. This list is populated automatically with the **Private Cloud Gateways** listed in **Tenant Settings**. For more information, refer to the [Private Cloud Gateway](../../../clusters/pcg/pcg.md) page.
+9. If you are using a PCG to connect to your AWS Secret Cloud account, toggle **Connect Private Cloud Gateway** on, and select a **Private Cloud Gateway** from the list. This list is populated automatically with the **Private Cloud Gateways** listed in **Tenant Settings**. For more information, refer to the [Private Cloud Gateway](../../../clusters/pcg/pcg.md) page.
 
 10. **Confirm** your AWS Secret Cloud account.
 
