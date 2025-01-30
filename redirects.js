@@ -547,6 +547,50 @@ let redirects = [
     to: "/security-bulletins/reports/",
   },
   {
+    from: "/byoos/usecases/",
+    to: "/byoos/image-builder/build-image-vmware/",
+  },
+  {
+    from: "/byoos/usecases/vmware/",
+    to: "/byoos/image-builder/build-image-vmware/",
+  },
+  {
+    from: "/byoos/usecases/vmware/konvoy/",
+    to: "/byoos/image-builder/build-image-vmware/konvoy/",
+  },
+  {
+    from: "/byoos/usecases/vmware/rhel-pxk/",
+    to: "/byoos/image-builder/build-image-vmware/rhel-pxk/",
+  },
+  {
+    from: "/byoos/capi-image-builder/build-image-vmware/rhel-capi/",
+    to: "/byoos/capi-image-builder/build-image-vmware/non-airgap-build/rhel-capi/",
+  },
+  {
+    from: "/byoos/capi-image-builder/build-image-vmware/rocky-capi/",
+    to: "/byoos/capi-image-builder/build-image-vmware/non-airgap-build/rocky-capi/",
+  },
+  {
+    from: "/automation/palette-cli/commands/validator/",
+    to: "/automation/palette-cli/commands/ec/",
+  },
+  {
+    from: "/enterprise-version/install-palette/install-on-vmware/airgap-install/vmware-vsphere-airgap-instructions/",
+    to: "/enterprise-version/install-palette/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions/",
+  },
+  {
+    from: "/vertex/install-palette-vertex/install-on-vmware/airgap-install/vmware-vsphere-airgap-instructions/",
+    to: "/vertex/install-palette-vertex/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions/",
+  },
+  {
+    from: "/legal-licenses/oss-licenses/",
+    to: "/legal-licenses/oss-licenses-index/",
+  },
+  {
+    from: "/clusters/cluster-management/reconfigure/",
+    to: "/clusters/cluster-management/node-pool/",
+  },
+  {
     from: [
       "/integrations/antrea-cni",
       "/integrations/aws-autoscaler",
