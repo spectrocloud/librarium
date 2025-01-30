@@ -305,7 +305,7 @@ are no longer in use and can be erased internally. To enable TRIM operations, us
 
 ## Scenario - Clusters with Cilium and RKE2 Experiences Kubernetes Upgrade Failure
 
-When you upgrade your cluster from RKE2 1.29 to 1.30 and your cluster uses the Cilium Container Network Interface(CNI),
+When you upgrade your cluster from RKE2 1.29 to 1.30 and your cluster uses the Cilium Container Network Interface (CNI),
 the upgrade could fail with error messages similar to the following. This is due to an
 [upstream issue](https://github.com/rancher/rancher/issues/46726). You can fix this issue by adding a few annotations to
 the Cilium DaemonSet.
@@ -429,7 +429,7 @@ correctly. This prevents the CNI from operating.
 3. Click on the profile used by your agent mode cluster.
 
 4. In the OS pack of your agent mode cluster profile, configure the following cloud-init stages. The same commands are
-   run in multiple stages to ensure that they take effect.
+   executed in multiple stages to ensure that they take effect.
 
    ```yaml
    stages:
