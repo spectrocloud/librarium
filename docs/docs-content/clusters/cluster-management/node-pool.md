@@ -222,8 +222,8 @@ You can delete a worker node pool from an active cluster using the following ste
 
 :::warning
 
-Deleting a node pool removes its worker nodes and evicts its workloads, potentially causing disruptions. Ensure that
-your remaining node pools can handle the displaced workloads before proceeding.
+The deletion of a node pool drains and removes its worker nodes. Before proceeding, ensure that your remaining node
+pools have enough resources to take on the workloads from the pool being deleted, to prevent any disruption.
 
 :::
 
