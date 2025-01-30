@@ -93,8 +93,8 @@ Palette. You will then create a cluster profile and use the registered host to d
   :::
 
   - If installing the FIPS version of Agent Mode on a Rocky Linux edge host, you must configure your SELinux policies to
-    grant rsync the required host permissions. Follow the process below to apply the necessary configurations before
-    installing Agent Mode.
+    grant rsync the required host permissions. If you are using Cilium, you must also configure the appropriate
+    firewalld rules. Follow the process below to apply the necessary configurations before installing Agent Mode.
 
   <br />
 
@@ -152,6 +152,86 @@ Palette. You will then create a cluster profile and use the registered host to d
 
      ```shell
      semodule --install rsync_dac_override.pp
+     ```
+
+  7. (Optional) If you are using Cilium, issue the following commands to configure the appropriate firewalld rules.
+
+     ```shell
+     # Kubernetes API Server
+     firewall-cmd --permanent --zone="$1" --add-port=6443/tcp
+
+     # Etcd
+
+     firewall-cmd --permanent --zone="$1" --add-port=2379-2380/tcp
+
+     # Kubelet API
+
+     firewall-cmd --permanent --zone="$1" --add-port=10250/tcp
+
+     # Scheduler and Controller Manager
+
+     firewall-cmd --permanent --zone="$1" --add-port=10257-10259/tcp
+
+     # kube proxy health check
+
+     firewall-cmd --permanent --zone="$1" --add-port=10255/tcp
+
+     # Nodeport range
+
+     firewall-cmd --permanent --zone="$1" --add-port=30000-32767/tcp
+
+     ############### Start Cilium Rules ##########################
+
+     # Cilium: VXLAN Overlay
+
+     firewall-cmd --permanent --zone="$1" --add-port=8472/udp
+
+     # Cilium: Health Checks
+
+     firewall-cmd --permanent --zone="$1" --add-port=4240/tcp
+
+     # Cilium: Geneve Overlay networking (if enabled)
+
+     firewall-cmd --permanent --zone="$1" --add-port=6081/udp
+
+     # Cilium: WireGuard Encryption (if enabled)
+
+     firewall-cmd --permanent --zone="$1" --add-port=51871/udp
+
+     # Cilium: IPsec Encryption (if enabled)
+
+     firewall-cmd --permanent --zone="$1" --add-protocol=esp
+
+     # Cilium: Prometheus Observability
+
+     firewall-cmd --permanent --zone="$1" --add-port=9962/tcp firewall-cmd --permanent --zone="$1" --add-port=9963/tcp
+
+     # Cilium: Enable ICMP Type 8 (Echo request) and Type 0 (Echo Reply)
+
+     firewall-cmd --permanent --zone="$1" --add-icmp-block-inversion ############### End Cilium Rules
+     ##########################
+
+     # DNS and service communications
+
+     # DNS (CoreDNS)
+
+     firewall-cmd --permanent --zone="$1" --add-port=53/tcp firewall-cmd --permanent --zone="$1" --add-port=53/udp
+
+     # Allow inbound/outbound traffic to port 443 (HTTPS)
+
+     firewall-cmd --permanent --zone="$1" --add-port=443/tcp
+
+     # Allow inbound/outbound traffic to port 4222 (NATS)
+
+     firewall-cmd --permanent --zone="$1" --add-port=4222/tcp
+
+     # Allow NAT traffic
+
+     firewall-cmd --permanent --add-masquerade
+
+     # Reload firewalld cache
+
+     firewall-cmd --reload
      ```
 
   </details>
