@@ -369,13 +369,18 @@ Cilium handles IP Address Management (IPAM) and Border Gateway Protocol (BGP) fo
 
 8. For **IPAM mode**, select **Cluster Pool**.
 
-9. In the YAML editor, search for **clusterPoolIPv4PodCIDRList**. This parameter specifies the CIDR ranges from which pod IPs will be allocated across all your hybrid nodes.
+9. In the YAML editor, search for **clusterPoolIPv4PodCIDRList**. This parameter specifies the CIDR ranges from which
+   pod IPs will be allocated across all your hybrid nodes.
 
-   Adjust the pod CIDR list for hybrid pods in other networks that need to connect to this cluster. This should match the **Remote Pod CIDRs** value defined in step 11 during the [Import Cluster](#import-cluster) steps. For example, `192.168.0.0/16`.
+   Adjust the pod CIDR list for hybrid pods in other networks that need to connect to this cluster. This should match
+   the **Remote Pod CIDRs** value defined in step 11 during the [Import Cluster](#import-cluster) steps. For example,
+   `192.168.0.0/16`.
 
-10. In the YAML editor, search for **clusterPoolIPv4MaskSize**. This parameter defines the size of each per-node CIDR block.
+10. In the YAML editor, search for **clusterPoolIPv4MaskSize**. This parameter defines the size of each per-node CIDR
+    block.
 
-    Adjust the mask size based on your required pods per hybrid node. For example, `/25` would provides 126 usable pod IPs for each node.
+    Adjust the mask size based on your required pods per hybrid node. For example, `/25` would provides 126 usable pod
+    IPs for each node.
 
 11. In the Presets, find the **cilium-agent - Hybrid Nodes Affinity** option, and select **Amazon EKS**.
 
