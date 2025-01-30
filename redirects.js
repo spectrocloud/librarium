@@ -591,10 +591,6 @@ let redirects = [
     to: "/legal-licenses/oss-licenses-index/",
   },
   {
-    from: "/clusters/cluster-management/noc-ui/",
-    to: "/clusters/cluster-management/cluster-map-filters/",
-  },
-  {
     from: "/clusters/cluster-management/reconfigure/",
     to: "/clusters/cluster-management/node-pool/",
   },
