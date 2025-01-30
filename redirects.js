@@ -106,7 +106,7 @@ let redirects = [
   },
   {
     from: `/getting-started/cluster-profiles`,
-    to: `/getting-started/introduction`,
+    to: `/tutorials/getting-started/introduction-palette/`,
   },
   {
     from: `/clusters/public-cloud/eks`,
