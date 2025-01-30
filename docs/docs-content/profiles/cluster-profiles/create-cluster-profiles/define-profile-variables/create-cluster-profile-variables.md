@@ -6,7 +6,9 @@ sidebar_position: 50
 tags: ["profiles", "cluster profiles", "cluster profile variables"]
 ---
 
-## Define Profile Variables
+[intro here]
+
+## Create a Cluster Profile Variable
 
 ### Prerequisites
 
@@ -20,13 +22,13 @@ tags: ["profiles", "cluster profiles", "cluster profile variables"]
 
 You can define profile variables when creating cluster profiles and for existing cluster profiles. To define profile
 variables [while creating a cluster profile](../../create-cluster-profiles/create-cluster-profiles.md), you need to be at
-the **Profile Layers** stage of the cluster profile creation process and start following this guide from step three.
+the **Profile Layers** stage of the cluster profile creation process and start following this guide from [step three](#step-3).
 
 1.  Log in to [Palette](https://console.spectrocloud.com).
 
 2.  On the left **Main Menu**, select **Profiles** and choose the cluster profile for which you want to define profile variables.
 
-3.  In the upper-right corner, click **Variables** and, on the **Profile variables** pane, click **Create variable**.
+3. <a id="step-3"></a> In the upper-right corner, click **Variables** and, on the **Profile variables** pane, click **Create variable**.
 
     ![Palette with the Variables button highlighted.](/profiles_create-cluster-profiles_define-profile-variables_open-profile-variables.webp)
 
@@ -37,7 +39,7 @@ the **Profile Layers** stage of the cluster profile creation process and start f
 
     :::
 
-4.  Enter the variable name in the `{{.spectro.var.<variable_name>}}` format. You will use this name when adding
+4.  Enter the variable name using the format `{{.spectro.var.<variable_name>}}`. You will use this name when adding
     variables to layer configurations. The name must be unique within the parent cluster.
 
 5.  Enter a variable display name that Palette will display during cluster deployment. The display name must be unique
@@ -61,20 +63,14 @@ the **Profile Layers** stage of the cluster profile creation process and start f
 
     | **Parameter**           | **Description**                                                                                                                                                                                                                           |
     | ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | Custom input validation | Whether the input is validated against a regular expression. Based on the [regexp](https://pkg.go.dev/regexp) engine.                                                                                                                     |
-    | Required                | Whether the input is required.                                                                                                                                                                                                            |
-    | Default value           | Whether the variable has a default value.                                                                                                                                                                                                 |
-    | Mask value              | Whether the input is masked with asterisks in the layer YAML configuration. When you export a profile with masked variables, they will be masked in the exported profile. Upon import, you will be required to provide the masked values. |
-    | Hidden                  | Whether the variable is hidden during cluster deployment.                                                                                                                                                                                 |
-    | Read-only               | Whether the variable is editable during cluster deployment.                                                                                                                                                                               |
+    | Custom input validation | Validate the cluster profile variable definition against a regular expression based on the [regexp](https://pkg.go.dev/regexp) engine.                                                                                                                     |
+    | Required                | Require a value for the cluster profile variable.                                                                                                                                                                                                            |
+    | Default value           | Set a default value for the cluster profile variable.                                                                                                                                                                                                 |
+    | Mask value              | Mask the cluster profile variable with asterisks in the layer YAML configuration. When you export a profile with masked variables, they will be masked in the exported profile. Upon import, you will be required to provide the masked values. |
+    | Hidden                  | Hide the cluster profile variable during cluster deployment. If the variable is both hidden and required, it must have a default value set.                                                                                                                                                                                |
+    | Read-only               | Prevent the cluster profile variable from being edited during cluster deployment. Read-only variables must have a default value set.                                                                                                                                                                              |
 
-    :::info
-
-    If a variable is required and hidden, it must contain a default value.
-
-    :::
-
-9.  **Preview** the variable definition and behavior, and **Create** the variable.
+9.  **Preview** the variable definition and behavior in the **Create variable** pane. When you are satisfied, **Create** the variable.
 
     ![Palette YAML editor with the added profile variables.](/profiles_create-cluster-profiles_define-profile-variables_variable-preview.webp)
 
@@ -99,7 +95,9 @@ the **Profile Layers** stage of the cluster profile creation process and start f
     :::
 
 13. Repeat the steps described in this guide to define more variables and add them to the necessary cluster profile
-    layers.
+    layers. Remember to choose **Confirm Updates** when you are finished with each layer, and select **Save Changes** when you are finished modifying your profile.
+
+You can update your cluster profile variables within your cluster profile 
 
 ### Validation
 
@@ -115,61 +113,68 @@ the **Profile Layers** stage of the cluster profile creation process and start f
 
 5. Open the necessary profile layers and check that their YAML configuration contains the expected variables.
 
-## Manage Profile Variables
+## Deploy a Cluster with Cluster Profile Variables
 
-:::info
+The following guide uses Amazon Web Services (AWS) Internet-as-a-Service (IaaS) as a deployment environment. The steps involved in deploying a cluster vary depending on the environment chosen; however, when cluster profile variables are configured, there will always be an additional **Profile Config** window displayed prior to deploying the cluster. To learn more about deploying clusters, visit our [Getting Started](../../../../../docs-content/getting-started/getting-started.md) series.
 
-Once you deploy a cluster from a profile with variables, you can neither edit nor delete the profile variables. To edit
-or delete them, [version the cluster profile](../../modify-cluster-profiles/version-cluster-profile.md) and update the
-variables in the new version.
-
-:::
+![Deploying a cluster and configuring cluster profile variables on the Profile Config window.](/profiles_cluster-profiles_create-cluster-profiles_define-profile-variables_create-cluster-profile-variable-profile-config.webp)
 
 ### Prerequisites
 
-- The `clusterProfile.update` permission to update cluster profiles. Refer to
+- An infrastructure account registered in **Tenant Settings** for the infrastructure on which you will deploy the cluster. For guidance, refer to the appropriate page:
+
+    - [AWS](../../../../clusters/public-cloud/aws/add-aws-accounts.md)
+
+    - [Azure](../../../../clusters/public-cloud/azure/azure-cloud.md) 
+
+    - [Google Cloud Platform (GCP)](../../../../clusters/public-cloud/gcp/add-gcp-accounts.md)
+
+    - [Edge](../../../../clusters/edge/edge.md)
+
+    - [MAAS](../../../../clusters/data-center/maas/register-manage-maas-cloud-accounts.md)
+
+    - [Nutanix](../../.././../clusters/data-center/nutanix/register-nutanix-cloud.md)
+
+    - [OpenStack](../../../../clusters/pcg/deploy-pcg/openstack.md)
+
+    - [VMware](../../../../clusters/pcg/deploy-pcg/vmware.md)
+
+- An existing [cluster profile](../../cluster-profiles.md) with at least one [cluster profile variable](#create-a-cluster-profile-variable).
+  
+- The `clusterProfile.create` and `clusterProfile.update` permissions to create and update cluster profiles. Refer to
   [Roles and Permissions](../../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile) for
   more information.
 
-- A cluster profile with profile variables created in Palette.
-
-### Enablement
+### Deployment
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. Navigate to the cluster profile for which you want to update profile variables and, in the upper-right corner, click
-   **Variables**.
+2. On the left **Main Menu**, select **Clusters** and either **Create Cluster** or **Add New Cluster**.
+   
+3. Select the environment you are deploying the cluster on and choose **Start [Environment] Configuration**. This example uses **AWS IaaS**.
 
-   :::tip
+4. Enter the **Basic Information** for the cluster, including the **Cluster name**, **Description**, and **Tags**. Select a registered [AWS **Cloud Account**](../../../../clusters/public-cloud/aws/add-aws-accounts.md), and choose **Next**.
+   
+5. Click **Add Cluster Profile**. Select the cluster profile that contains the cluster profile variables, and **Confirm** your selection.  
 
-   Alternatively, open a profile layer and, in the upper-right corner of its YAML configuration editor, select
-   **Variables**.
+6. Review the cluster profile layers, making changes if needed, and click **Next**.
 
-   :::
+7. The **Profile Config** window is displayed. Enter the values of your cluster profile variables as needed. Variables with a default value are automatically populated but can be overridden unless a **Read-only** parameter was set. Click **Next** when finished. 
 
-3. To edit a profile variable, in the **three-dot Menu** of the necessary variable, select **Edit** and make the
-   necessary changes.
+8. Select a **Region** and **SSH Key Pair Name** associated with your AWS account. Click **Next**.
+   
+9. Configure your control plane and worker pools, choosing an **Instant Type** and **Availability zones**. Click **Next**.
 
-4. To delete a profile variable, navigate to the profile layers that implement this variable and remove it from their
-   YAML configuration. Then, in the **three-dot Menu** of the necessary variable, select **Delete**.
+10. Configure additional cluster settings as desired. When finished, **Validate** your cluster. 
 
-### Validation
-
-1. Log in to [Palette](https://console.spectrocloud.com).
-
-2. From the left **Main Menu**, select **Profiles** and navigate to the cluster profile for which you have updated the
-   profile variables.
-
-3. In the upper-right corner, click **Variables** and, on the **Profile variables** pane, check that only the necessary
-   variables are present and that each variable has the expected definition.
-
-## Cluster Deployment
-
-When you deploy a cluster using a cluster profile that contains a cluster profile variable, an additional window is displayed during the **Cluster Config** step, where you can enter the desired values to use in your cluster. If you have custom validation active and the entered value does not meet the schema requirements, you receive an error and are unable to deploy your cluster until variable is corrected. To learn more about deploying clusters, visit our [Getting Started](../../../../../docs-content/getting-started/getting-started.md) series.
-
-
-
+11. Select **Finish Configuration** to begin deploying your cluster. 
 
 ### Validation
 
 Once your cluster is deployed, verify that any parameters containing cluster profile variables were populated with the expected values.
+
+[more info to go here]
+
+## Next Steps
+
+Cluster profile variables were created to make modifying cluster configuration values easy. Refer to the [Modify Cluster Profile Variables](./modify-cluster-profile-variables.md) guide to learn more. 
