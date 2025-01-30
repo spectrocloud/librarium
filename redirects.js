@@ -591,6 +591,10 @@ let redirects = [
     to: "/legal-licenses/oss-licenses-index/",
   },
   {
+    from: "/clusters/cluster-management/reconfigure/",
+    to: "/clusters/cluster-management/node-pool/",
+  },
+  {
     from: [
       "/integrations/antrea-cni",
       "/integrations/aws-autoscaler",
