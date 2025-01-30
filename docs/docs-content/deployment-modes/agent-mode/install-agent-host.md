@@ -63,15 +63,24 @@ Palette. You will then create a cluster profile and use the registered host to d
 
 - Ensure the following software is installed and available:
 
+  - [bash](https://www.gnu.org/software/bash/)
   - [jq](https://jqlang.github.io/jq/download/)
   - [Zstandard](https://facebook.github.io/zstd/)
   - [rsync](https://github.com/RsyncProject/rsync)
-  - [systemd-timesyncd](https://www.freedesktop.org/software/systemd/man/latest/systemd-timesyncd.service.html)
+  - [systemd](https://systemd.io/)
+  - [systemd-timesyncd](https://www.freedesktop.org/software/systemd/man/latest/systemd-timesyncd.service.html). This is
+    required if you want Palette to manage Network Time Protocol (NTP). If you don't want Palette to manage NTP, you can
+    skip this requirement.
+  - [systemd-resolved](https://www.freedesktop.org/software/systemd/man/latest/systemd-resolved.service.html). This is
+    required if you want Palette to manage Domain Name System (DNS). If you don't want Palette to manage DNS, you can
+    skip this requirement
   - [systemd-networkd](https://www.freedesktop.org/software/systemd/man/latest/systemd-networkd.html). This requirement
-    is specific for clusters that use static IP addresses.
+    is specific for clusters that use static IP addresses. You also need this if you want Palette to manage the Edge
+    host network
   - [conntrack](https://conntrack-tools.netfilter.org/downloads.html). This requirement is specific for clusters that
-    use PXKE as the Kubernetes layer.
+    use PXKE as the Kubernetes layer
   - [iptables](https://linux.die.net/man/8/iptables)
+  - [rsyslog](https://github.com/rsyslog/rsyslog). This is required for audit logs.
   - (Airgap only) [Palette Edge CLI](../../spectro-downloads.md#palette-edge-cli)
 
   <br />
