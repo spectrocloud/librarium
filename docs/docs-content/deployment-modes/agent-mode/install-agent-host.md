@@ -154,7 +154,7 @@ Palette. You will then create a cluster profile and use the registered host to d
      semodule --install rsync_dac_override.pp
      ```
 
-  7. (Optional) If you are using Cilium, issue the following commands to configure the appropriate firewalld rules.
+  7. (Optional) If you are using Firewalld and Cilium, issue the following commands to configure the appropriate firewalld rules.
 
      ```shell
      # Kubernetes API Server
