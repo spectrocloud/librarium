@@ -55,6 +55,8 @@ The following prerequisites must be met before deploying a cluster to AWS:
   will need to either rename the existing security group before creating the cluster, or use a different cluster name.
   Otherwise, the cluster creation will fail due to duplicate resource name in the VPC.
 
+- If you are deploying your cluster in an [Amazon Secret](./add-aws-accounts.md#aws-secret-cloud-account-us) region, you must configure [Image Swap](../../../clusters/cluster-management/image-swap.md) in the Kubernetes layer of your [cluster profile](../../../profiles/cluster-profiles/cluster-profiles.md) to redirect public image requests to your internal or Elastic Container Registry. 
+
 ## Deploy an AWS Cluster
 
 Use the following steps to provision a new AWS cluster:
@@ -90,10 +92,9 @@ Use the following steps to provision a new AWS cluster:
 
    | **Parameter**             | **Description**                                                                                                                                                                                                                         |
    | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Cloud Account**         | Select the desired cloud account. AWS cloud accounts with AWS credentials need to be pre-configured in project settings.                                                                                                                |
    | **Region**                | Choose the preferred AWS region where you would like to provision clusters.                                                                                                                                                             |
    | **SSH Key Pair Name**     | Choose the desired SSH Key pair. SSH key pairs need to be pre-configured on AWS for the desired regions. The selected key is inserted into the provisioned VMs.                                                                         |
-   | **Static Placement**      | Check the **Static Placement** box if you want to deploy resources into pre-existing VPCs and subnets. Review the [Static Placement](#static-placement) table below to learn more about the required input fields.                      |
+   | **Enable static placement**      | Toggle this option if you want to deploy resources into pre-existing VPCs and subnets. If you are deploying your cluster in an [AWS Secret](./add-aws-accounts.md#aws-secret-cloud-account-us) region, static placement is required. Review the [Static Placement](#static-placement) table below to learn more about the required input fields.                      |
    | **Private API Server LB** | Enable to deploy the cluster load balancer in a private subnet. This feature requires Palette to have direct network connectivity with the private subnet or a [Private Cluster Gateway](../../pcg/pcg.md) deployed in the environment. |
 
    #### Static Placement
