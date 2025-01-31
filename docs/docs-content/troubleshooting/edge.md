@@ -417,8 +417,8 @@ issue, reset the SELinux context of the Kubelet environment variable to its defa
 
 ## Scenario - Agent Mode Deployments CNI Folder Permission Issues
 
-Agent mode clusters that use PKX-E as the Kubernetes layer have the contents of the `/opt/cni/bin` folder set in
-correctly. This prevents the CNI from operating.
+Agent mode clusters that use PKX-E as the Kubernetes layer have the contents of the `/opt/cni/bin` folder set 
+incorrectly. This prevents the CNI from operating.
 
 ### Debug Steps
 

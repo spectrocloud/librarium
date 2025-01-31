@@ -211,90 +211,90 @@ Palette. You will then create a cluster profile and use the registered host to d
 
   12. (Optional) If you are using Cilium and have firewalld enabled, put the the following commands into a shell script.
 
-      ```shell
-      cat << 'EOF' > firewalld-cilium.sh
-      #!/bin/bash
+  ```shell
+  cat << 'EOF' > firewalld-cilium.sh
+  #!/bin/bash
 
-      if [ -z "$1" ]; then
-        echo "Usage: $0 <zone>"
-        exit 1
-      fi
+  if [ -z "$1" ]; then
+    echo "Usage: $0 <zone>"
+    exit 1
+  fi
 
-      ZONE="$1"
+  ZONE="$1"
 
-      # Kubernetes API Server
-      firewall-cmd --permanent --zone="$ZONE" --add-port=6443/tcp
+  # Kubernetes API Server
+  firewall-cmd --permanent --zone="$ZONE" --add-port=6443/tcp
 
-      # Etcd
-      firewall-cmd --permanent --zone="$ZONE" --add-port=2379-2380/tcp
+  # Etcd
+  firewall-cmd --permanent --zone="$ZONE" --add-port=2379-2380/tcp
 
-      # Kubelet API
-      firewall-cmd --permanent --zone="$ZONE" --add-port=10250/tcp
+  # Kubelet API
+  firewall-cmd --permanent --zone="$ZONE" --add-port=10250/tcp
 
-      # Scheduler and Controller Manager
-      firewall-cmd --permanent --zone="$ZONE" --add-port=10257-10259/tcp
+  # Scheduler and Controller Manager
+  firewall-cmd --permanent --zone="$ZONE" --add-port=10257-10259/tcp
 
-      # kube proxy health check
-      firewall-cmd --permanent --zone="$ZONE" --add-port=10255/tcp
+  # kube proxy health check
+  firewall-cmd --permanent --zone="$ZONE" --add-port=10255/tcp
 
-      # Nodeport range
-      firewall-cmd --permanent --zone="$ZONE" --add-port=30000-32767/tcp
+  # Nodeport range
+  firewall-cmd --permanent --zone="$ZONE" --add-port=30000-32767/tcp
 
-      ############### Start Cilium Rules ##########################
+  ############### Start Cilium Rules ##########################
 
-      # Cilium: VXLAN Overlay
-      firewall-cmd --permanent --zone="$ZONE" --add-port=8472/udp
+  # Cilium: VXLAN Overlay
+  firewall-cmd --permanent --zone="$ZONE" --add-port=8472/udp
 
-      # Cilium: Health Checks
-      firewall-cmd --permanent --zone="$ZONE" --add-port=4240/tcp
+  # Cilium: Health Checks
+  firewall-cmd --permanent --zone="$ZONE" --add-port=4240/tcp
 
-      # Cilium: Geneve Overlay networking (if enabled)
-      firewall-cmd --permanent --zone="$ZONE" --add-port=6081/udp
+  # Cilium: Geneve Overlay networking (if enabled)
+  firewall-cmd --permanent --zone="$ZONE" --add-port=6081/udp
 
-      # Cilium: WireGuard Encryption (if enabled)
-      firewall-cmd --permanent --zone="$ZONE" --add-port=51871/udp
+  # Cilium: WireGuard Encryption (if enabled)
+  firewall-cmd --permanent --zone="$ZONE" --add-port=51871/udp
 
-      # Cilium: IPsec Encryption (if enabled)
-      firewall-cmd --permanent --zone="$ZONE" --add-protocol=esp
+  # Cilium: IPsec Encryption (if enabled)
+  firewall-cmd --permanent --zone="$ZONE" --add-protocol=esp
 
-      # Cilium: Prometheus Observability
-      firewall-cmd --permanent --zone="$ZONE" --add-port=9962/tcp
-      firewall-cmd --permanent --zone="$ZONE" --add-port=9963/tcp
+  # Cilium: Prometheus Observability
+  firewall-cmd --permanent --zone="$ZONE" --add-port=9962/tcp
+  firewall-cmd --permanent --zone="$ZONE" --add-port=9963/tcp
 
-      # Cilium: Enable ICMP Type 8 (Echo request) and Type 0 (Echo Reply)
-      firewall-cmd --permanent --zone="$ZONE" --add-icmp-block-inversion
+  # Cilium: Enable ICMP Type 8 (Echo request) and Type 0 (Echo Reply)
+  firewall-cmd --permanent --zone="$ZONE" --add-icmp-block-inversion
 
-      ############### End Cilium Rules ##########################
+  ############### End Cilium Rules ##########################
 
-      # DNS and service communications
+  # DNS and service communications
 
-      # DNS (CoreDNS)
-      firewall-cmd --permanent --zone="$ZONE" --add-port=53/tcp
-      firewall-cmd --permanent --zone="$ZONE" --add-port=53/udp
+  # DNS (CoreDNS)
+  firewall-cmd --permanent --zone="$ZONE" --add-port=53/tcp
+  firewall-cmd --permanent --zone="$ZONE" --add-port=53/udp
 
-      # Allow inbound/outbound traffic to port 443 (HTTPS)
-      firewall-cmd --permanent --zone="$ZONE" --add-port=443/tcp
+  # Allow inbound/outbound traffic to port 443 (HTTPS)
+  firewall-cmd --permanent --zone="$ZONE" --add-port=443/tcp
 
-      # Allow inbound/outbound traffic to port 4222 (NATS)
-      firewall-cmd --permanent --zone="$ZONE" --add-port=4222/tcp
+  # Allow inbound/outbound traffic to port 4222 (NATS)
+  firewall-cmd --permanent --zone="$ZONE" --add-port=4222/tcp
 
-      # Allow NAT traffic
-      firewall-cmd --permanent --add-masquerade
+  # Allow NAT traffic
+  firewall-cmd --permanent --add-masquerade
 
-      # Reload firewalld cache
-      firewall-cmd --reload
-      EOF
+  # Reload firewalld cache
+  firewall-cmd --reload
+  EOF
 
-      # Make the script executable
-      chmod +x firewalld-cilium.sh
-      ```
+  # Make the script executable
+  chmod +x firewalld-cilium.sh
+  ```
 
-  13. Execute the script with the name of the firewalld zone. For example, the following script sets the rules in the
-      firewall zone `public`.
+  8. Execute the script with the name of the firewalld zone. For example, the following script sets the rules in the
+     firewall zone `public`.
 
-      ```shell
-      ./firewalld-cilium.sh public
-      ```
+     ```shell
+     ./firewalld-cilium.sh public
+     ```
 
     </details>
 
