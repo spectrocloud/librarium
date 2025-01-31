@@ -37,13 +37,10 @@ You must then configure your networking to allow traffic to reach the pods on yo
 
 5. Select **Edge Native** from the **Infrastructure provider** list, and click **Next**.
 
-6. Select your base OS pack depending on how you will register your edge hosts.
+6. Select **BYOS - Edge OS** as your base OS pack.
 
-   - For Agent Mode, select **BYOS - Agent Mode**.
-   - For Appliance Mode, select **BYOS - Edge OS**.
-
-7. If selecting **BYOS - Agent Mode**, on the **Configure Pack** page, click **Values** under **Pack Details**. Then,
-   click on **Presets** on the right-hand side, and select **Agent Mode**.
+7. If using [Agent Mode](../../../../deployment-modes/agent-mode/agent-mode.md), on the **Configure Pack** page, click
+   **Values** under **Pack Details**. Then, click on **Presets** on the right-hand side, and select **Agent Mode**.
 
 8. Click **Next layer** to continue.
 
