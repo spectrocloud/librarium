@@ -30,6 +30,10 @@ soluta voluptatibus quibusdam aut autem. Repellendus magni nostrum ex et autem d
 
 #### Improvements
 
+- The [rate limit](https://docs.spectrocloud.com/api/introduction/#rate-limits) for Palette API endpoints with a prefix
+  of `/v1/cloudconfigs` has been increased to 50 requests per second per IP address, and the maximum burst has been
+  increased to 250 requests per second per IP address.
+
 #### Deprecations and Removals
 
 ### Edge
