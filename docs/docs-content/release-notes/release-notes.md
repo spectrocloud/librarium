@@ -15,8 +15,8 @@ tags: ["release-notes"]
 
 ### Bug Fixes
 
-- Fixed an issue that prevented system upgrade logs from being included in the node logs of edge clusters. You
-  can download by selecting **Download Logs** from the **Settings** dropdown of the cluster.
+- Fixed an issue that prevented system upgrade logs from being included in the node logs of edge clusters. You can
+  download by selecting **Download Logs** from the **Settings** dropdown of the cluster.
 
 - Fixed an issue that prevented [App Profiles](../profiles/app-profiles/app-profiles.md) from being created using Helm.
   You can now safely create and deploy Helm Apps.
