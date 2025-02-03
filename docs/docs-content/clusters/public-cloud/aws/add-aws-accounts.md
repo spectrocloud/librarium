@@ -238,7 +238,7 @@ secure compliance validation using your SC2S Access Portal (SCAP) credentials.
 ### Limitations
 
 - Only Amazon Linux 2-based Amazon Machine Images are supported for Kubernetes control plane and worker nodes. Workloads
-  running inside the cluster should use Amazon Linux 2-based container images to ensure compatibility with the node
+  deployed in the cluster should use Linux-based container images to ensure compatibility with the node
   operating system.
 
 - User-provided Certificate Authority (CA) certificates are not automatically mounted on worker nodes in EKS clusters
@@ -269,8 +269,7 @@ secure compliance validation using your SC2S Access Portal (SCAP) credentials.
   IAM role.
 
 - A secure connection to your AWS Secret Cloud account, such as via a
-  [Private Cloud Gateway (PCG)](../../../clusters/pcg/pcg.md), Wide Area Network tunnel, or AWS Private Link. PCGs do
-  not require an existing Kubernetes cluster.
+  [Private Cloud Gateway (PCG)](../../../clusters/pcg/pcg.md), Wide Area Network tunnel, or AWS Private Link.
 
 ### Static Access Credentials
 
