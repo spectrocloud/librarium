@@ -11,6 +11,33 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## February 3, 2025 - Release 4.5.21
+
+### Bug Fixes
+
+- Fixed an issue that prevented system upgrade logs from being included in the node logs of edge native clusters. You
+  can download by selecting **Download Logs** from the **Settings** dropdown.
+
+- Fixed an issue that prevented App Profiles from being created with Helm configuration. You can now safely create and
+  deploy Helm Apps.
+
+<!-- prettier-ignore-start -->
+
+- Fixed an issue that caused the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> from being installed correctly as part of the <VersionedLink text="Spectro Kubernetes Dashboard" url="/integrations/packs/?pack=spectro-k8s-dashboard" /> pack. The installation of the <VersionedLink text="Spectro Kubernetes Dashboard" url="/integrations/packs/?pack=spectro-k8s-dashboard" /> now completes successfully.
+
+<!-- prettier-ignore-end -->
+
+- Fixed an issue that prevented the **Network Settings** page of system private gateways from loading. Refer to the
+  [System Private Gateway](../clusters/pcg/architecture.md#system-private-gateway) architecture section for further
+  information.
+
+- Fixed an issue that prevented cluster deployment with cluster profiles that included profile variables with `.` in
+  their name. Refer to the
+  [Define and Manage Profile Variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables.md)
+  guide for further information.
+
+- Fixed an issue that prevented custom content security policies from being applied in the Local UI user data.
+
 ## January 18, 2024 - Release 4.5.20
 
 ### Palette {#palette-enterprise-4-5-20}
