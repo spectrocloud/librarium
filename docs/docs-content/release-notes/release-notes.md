@@ -15,8 +15,8 @@ tags: ["release-notes"]
 
 ### Bug Fixes
 
-- Fixed an issue that prevented system upgrade logs from being included in the node logs of edge clusters. You can
-  download by selecting **Download Logs** from the **Settings** dropdown of the cluster.
+- Fixed an issue that prevented system upgrade logs from being included in the node logs of edge clusters. You
+  can download by selecting **Download Logs** from the **Settings** dropdown of the cluster.
 
 - Fixed an issue that prevented [App Profiles](../profiles/app-profiles/app-profiles.md) from being created using Helm.
   You can now safely create and deploy Helm Apps.
@@ -33,9 +33,6 @@ tags: ["release-notes"]
 - Fixed an issue that prevented cluster deployment with cluster profiles that included
   [profile variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables.md) with a `.`
   character in their name.
-
-- Users are now allowed to provide custom [Content Security Policies (CSP)](https://content-security-policy.com/) in the
-  Local UI user data.
 
 ## January 18, 2024 - Release 4.5.20
 
