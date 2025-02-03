@@ -6,7 +6,7 @@ icon: ""
 hide_table_of_contents: false
 sidebar_position: 50
 toc_max_heading_level: 2
-tags: ["getting-started", "azure", "terraform"]
+tags: ["getting-started", "azure", "terraform", "tutorial"]
 ---
 
 The [Spectro Cloud Terraform](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) provider

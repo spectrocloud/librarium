@@ -5,7 +5,7 @@ description: "Spectro Cloud Getting Started with Azure"
 hide_table_of_contents: false
 sidebar_custom_props:
   icon: ""
-tags: ["getting-started", "azure"]
+tags: ["getting-started", "azure", "tutorial"]
 ---
 
 Palette supports integration with [Microsoft Azure](https://azure.microsoft.com/en-us). You can deploy and manage

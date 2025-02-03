@@ -5,7 +5,7 @@ description: "Learn how to set up Palette with AWS."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 10
-tags: ["getting-started", "aws"]
+tags: ["getting-started", "aws", "tutorial"]
 ---
 
 In this guide, you will learn how to set up Palette for use with your AWS cloud account. These steps are required in

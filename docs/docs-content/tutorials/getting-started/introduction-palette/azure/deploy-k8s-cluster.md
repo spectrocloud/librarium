@@ -5,7 +5,7 @@ description: "Learn to deploy a Palette host cluster."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 30
-tags: ["getting-started", "azure"]
+tags: ["getting-started", "azure", "tutorial"]
 ---
 
 This tutorial will teach you how to deploy a host cluster with Palette using Microsoft Azure. You will learn about

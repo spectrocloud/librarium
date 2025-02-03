@@ -5,7 +5,7 @@ description: "Learn more about Palette's Additional Capabilities."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 10
-tags: ["getting-started"]
+tags: ["getting-started", "tutorial"]
 ---
 
 Palette offers a range of additional capabilities designed to enable its users to deploy, scale, and effectively manage

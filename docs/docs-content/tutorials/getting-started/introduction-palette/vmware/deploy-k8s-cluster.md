@@ -5,7 +5,7 @@ description: "Learn to deploy a Palette host cluster."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 30
-tags: ["getting-started", "vmware"]
+tags: ["getting-started", "vmware", "tutorial"]
 ---
 
 This tutorial will teach you how to deploy a host cluster with Palette using VMware vSphere and a Private Cloud Gateway

@@ -5,7 +5,7 @@ description: "Learn more about the Palette Virtual Machine Orchestrator (VMO)."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 30
-tags: ["getting-started"]
+tags: ["getting-started", "tutorial"]
 ---
 
 Palette Virtual Machine Orchestrator (VMO) allows you to deploy, manage, and scale traditional VM workloads within a

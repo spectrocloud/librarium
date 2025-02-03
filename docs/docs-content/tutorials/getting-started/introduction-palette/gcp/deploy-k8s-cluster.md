@@ -5,7 +5,7 @@ description: "Learn to deploy a Palette host cluster."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 30
-tags: ["getting-started", "gcp"]
+tags: ["getting-started", "gcp", "tutorial"]
 ---
 
 This tutorial will teach you how to deploy a host cluster with Palette using Google Cloud Platform (GCP). You will learn

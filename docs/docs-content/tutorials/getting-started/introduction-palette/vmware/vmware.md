@@ -5,7 +5,7 @@ description: "Spectro Cloud Getting Started with VMware"
 hide_table_of_contents: false
 sidebar_custom_props:
   icon: ""
-tags: ["getting-started", "vmware"]
+tags: ["getting-started", "vmware", "tutorial"]
 ---
 
 Palette supports integration with [VMware](https://www.vmware.com). You can deploy and manage

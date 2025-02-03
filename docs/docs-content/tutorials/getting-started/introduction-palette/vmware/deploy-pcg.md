@@ -5,7 +5,7 @@ description: "Learn to deploy a PCG with Palette CLI."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 20
-tags: ["getting-started", "vmware"]
+tags: ["getting-started", "vmware", "tutorial"]
 ---
 
 Palette Private Cloud Gateway (PCG) is a crucial infrastructure support component that acts as a bridge between your

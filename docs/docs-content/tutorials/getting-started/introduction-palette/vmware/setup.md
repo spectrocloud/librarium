@@ -5,7 +5,7 @@ description: "Learn how to set up Palette with VMware."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 10
-tags: ["getting-started", "vmware"]
+tags: ["getting-started", "vmware", "tutorial"]
 ---
 
 In this guide, you will learn how to set up Palette for use with your VMware user account. These steps are required in

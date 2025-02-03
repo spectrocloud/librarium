@@ -5,7 +5,7 @@ description: "Learn how to update your deployed clusters using Palette Cluster P
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 40
-tags: ["getting-started", "azure"]
+tags: ["getting-started", "azure", "tutorial"]
 ---
 
 Palette provides cluster profiles, which allow you to specify layers for your workloads using packs, Helm charts, Zarf

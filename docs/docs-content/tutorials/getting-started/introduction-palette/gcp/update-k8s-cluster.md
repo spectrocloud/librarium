@@ -5,7 +5,7 @@ description: "Learn how to update your deployed clusters using Palette Cluster P
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 40
-tags: ["getting-started", "gcp"]
+tags: ["getting-started", "gcp", "tutorial"]
 ---
 
 Palette provides cluster profiles, which allow you to specify layers for your workloads using packs, Helm charts, Zarf

@@ -5,7 +5,7 @@ description: "Learn more about VerteX and Self-Hosted Palette."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 20
-tags: ["getting-started"]
+tags: ["getting-started", "tutorial"]
 ---
 
 ## Self-Hosted Palette

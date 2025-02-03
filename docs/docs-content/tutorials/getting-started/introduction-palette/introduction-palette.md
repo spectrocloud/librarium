@@ -5,7 +5,7 @@ description: "Learn about Spectro Cloud Palette."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 10
-tags: ["getting-started"]
+tags: ["getting-started", "tutorial"]
 ---
 
 Palette is a complete and integrated platform that enables organizations to effectively manage the entire lifecycle of

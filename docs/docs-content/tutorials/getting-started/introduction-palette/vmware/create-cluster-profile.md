@@ -5,7 +5,7 @@ description: "Learn to create a full cluster profile in Palette."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 30
-tags: ["getting-started", "vmware"]
+tags: ["getting-started", "vmware", "tutorial"]
 ---
 
 Palette offers profile-based management for Kubernetes, enabling consistency, repeatability, and operational efficiency

@@ -5,7 +5,7 @@ description: "Spectro Cloud Getting Started with AWS"
 hide_table_of_contents: false
 sidebar_custom_props:
   icon: ""
-tags: ["getting-started", "aws"]
+tags: ["getting-started", "aws", "tutorial"]
 ---
 
 Palette supports integration with [Amazon Web Services](https://aws.amazon.com). You can deploy and manage
