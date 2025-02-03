@@ -12,8 +12,9 @@ The following are common scenarios that you may encounter when using Packs.
 
 ## Scenario - AWS EKS Cluster Deployment Fails when Cilium is Used as CNI
 
+<!-- prettier-ignore -->
 When deploying AWS EKS clusters using the <VersionedLink text="Cilium" url="/integrations/packs/?pack=cni-cilium-oss"/>
-pack, worker node provisioning fails as the AWS VPC and Cilium CNIs clash with each other. This is because installation
+pack, worker node provisioning fails as the AWS VPC CNI and Cilium CNI clash with each other. This is because installation
 of the AWS VPC CNI cannot be disabled by default on EKS cluster nodes.
 
 To resolve this, you will need to make the following additions and changes:
@@ -66,7 +67,7 @@ Use the following debug steps to learn how to make these configuration changes a
    | `charts.cilium.ipv4NativeRoutingCIDR`               | `<POD_SUBNET_CIDR>` | Set this to a CIDR block that covers all AWS VPC subnets where pods will be created. For example, if your AWS VPC subnets are `10.0.64.0/18`, `10.0.128.0/18`, and `10.0.192.0/18`, set this to `10.0.0.0/16` to ensure all ranges are encapsulated. | **True**                               |
    | `charts.cilium.routingMode`                         | `native`            | Uses native routing mode because AWS ENI mode supports direct pod-to-pod routing, making encapsulation unnecessary.                                                                                                                                  | **False**                              |
 
-8. Click the **New manifest** option, and enter the name of the manifest as `job-fix-ds`. Click the tick button
+8. Click the **New manifest** option, and provide a name for the manifest, such as `job-fix-cni`. Click the tick button
    afterwards.
 
 9. Copy the following manifest into the YAML editor. This manifest disables the `kube-proxy` and `aws-node` daemonsets

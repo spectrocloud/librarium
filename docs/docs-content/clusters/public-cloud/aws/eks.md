@@ -21,6 +21,7 @@ an AWS account. This section guides you on how to create an EKS cluster in AWS t
   [Create an Infrastructure Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md)
   for guidance.
 
+<!-- prettier-ignore -->
 - If you want to use <VersionedLink text="Cilium" url="/integrations/packs/?pack=cni-cilium-oss"/> as the network pack
   for your EKS cluster, you will need to perform additional configuration changes to your cluster profile and a manual
   edit during deployment. Refer to
