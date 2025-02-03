@@ -15,28 +15,27 @@ tags: ["release-notes"]
 
 ### Bug Fixes
 
-- Fixed an issue that prevented system upgrade logs from being included in the node logs of edge native clusters. You
-  can download by selecting **Download Logs** from the **Settings** dropdown.
+- Fixed an issue that prevented system upgrade logs from being included in the node logs of edge clusters. You
+  can download by selecting **Download Logs** from the **Settings** dropdown of the cluster.
 
-- Fixed an issue that prevented App Profiles from being created with Helm configuration. You can now safely create and
-  deploy Helm Apps.
+- Fixed an issue that prevented [App Profiles](../profiles/app-profiles/app-profiles.md) from being created using Helm.
+  You can now safely create and deploy Helm Apps.
 
 <!-- prettier-ignore-start -->
 
-- Fixed an issue that caused the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> from being installed correctly as part of the <VersionedLink text="Spectro Kubernetes Dashboard" url="/integrations/packs/?pack=spectro-k8s-dashboard" /> pack. The installation of the <VersionedLink text="Spectro Kubernetes Dashboard" url="/integrations/packs/?pack=spectro-k8s-dashboard" /> now completes successfully.
+- Fixed an issue that caused the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack from being installed correctly as part of the <VersionedLink text="Spectro Kubernetes Dashboard" url="/integrations/packs/?pack=spectro-k8s-dashboard" /> pack. The deployment of the <VersionedLink text="Spectro Kubernetes Dashboard" url="/integrations/packs/?pack=spectro-k8s-dashboard" /> pack now completes successfully.
 
 <!-- prettier-ignore-end -->
 
-- Fixed an issue that prevented the **Network Settings** page of system private gateways from loading. Refer to the
-  [System Private Gateway](../clusters/pcg/architecture.md#system-private-gateway) architecture section for further
-  information.
+- Fixed an issue that prevented the **Network Settings** page of
+  [system private gateways](../clusters/pcg/architecture.md#system-private-gateway) from loading.
 
-- Fixed an issue that prevented cluster deployment with cluster profiles that included profile variables with `.` in
-  their name. Refer to the
-  [Define and Manage Profile Variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables.md)
-  guide for further information.
+- Fixed an issue that prevented cluster deployment with cluster profiles that included
+  [profile variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables.md) with a `.`
+  character in their name.
 
-- Fixed an issue that prevented custom content security policies from being applied in the Local UI user data.
+- Users are now allowed to provide custom [Content Security Policies (CSP)](https://content-security-policy.com/) in the
+  Local UI user data.
 
 ## January 18, 2024 - Release 4.5.20
 
