@@ -204,7 +204,7 @@ Use the following debug steps to learn how to make these configuration changes a
     (Optional)** to provide your AWS VPC details. Click **Next** when complete.
 
 16. Configure the remaining settings as needed, and deploy the cluster. Refer to
-    [Create and Manage AWS EKS Cluster](../clusters/public-cloud/aws/eks.md#deploy-an-aws-eks-cluster) if you need
+    [Create and Manage AWS EKS Cluster](../clusters/public-cloud/aws/eks.md) if you need
     guidance on the available options.
 
 17. As soon as it is available, obtain the **API server endpoint** for the cluster.
