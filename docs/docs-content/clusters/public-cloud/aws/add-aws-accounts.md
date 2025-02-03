@@ -224,7 +224,7 @@ newly added AWS cloud account is listed under the AWS sections.
 
 ## AWS Secret Cloud Account (US)
 
-You can configure AWS Secret Cloud accounts in Palette VerteX to deploy clusters in the AWS Secret region. Depending on your organization's compliance requirements, you can choose between standard authentication (standard access credentials) or secure compliance validation using your SC2S Access Portal (SCAP) credentials.
+You can configure AWS Secret Cloud accounts in Palette VerteX to deploy AWS EKS clusters in the AWS Secret region. Depending on your organization's compliance requirements, you can choose between standard authentication (standard access credentials) or secure compliance validation using your SC2S Access Portal (SCAP) credentials.
 
 :::preview
 
