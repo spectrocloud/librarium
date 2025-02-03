@@ -8,9 +8,7 @@ sidebar_position: 10
 ---
 
 Palette supports integration with Amazon Web Services (AWS) Cloud Accounts, including
-[AWS GovCloud (US)](https://aws.amazon.com/govcloud-us/?whats-new-ess.sort-by=item.additionalFields.postDateTime&whats-new-ess.sort-order=desc)
-and [AWS Secret Cloud (US)](https://aws.amazon.com/federal/secret-cloud/) accounts. This section explains how to create
-an AWS cloud account in Palette. You can use any of the following authentication methods to register your cloud account.
+[AWS GovCloud (US)](https://aws.amazon.com/govcloud-us/?whats-new-ess.sort-by=item.additionalFields.postDateTime&whats-new-ess.sort-order=desc) and [AWS Secret Cloud (US)](https://aws.amazon.com/federal/secret-cloud/) accounts. This section explains how to create an AWS cloud account in Palette. You can use any of the following authentication methods to register your cloud account.
 
 - AWS
 
@@ -226,10 +224,7 @@ Your newly added AWS cloud account is listed under the AWS section.
 
 ## AWS Secret Cloud Account (US)
 
-You can configure [AWS Secret Cloud](<(https://aws.amazon.com/federal/secret-cloud/)>) accounts in
-[Palette VerteX](../../../vertex/vertex.md) to deploy AWS EKS clusters in the AWS Secret region. Depending on your
-organization's compliance requirements, you can choose between standard authentication (standard access credentials) or
-secure compliance validation using your SC2S Access Portal (SCAP) credentials.
+You can configure [AWS Secret Cloud](https://aws.amazon.com/federal/secret-cloud/) accounts in [Palette VerteX](../../../vertex/vertex.md) to deploy AWS EKS clusters in the AWS Secret region. Depending on your organization's compliance requirements, you can choose between standard authentication (standard access credentials) or secure compliance validation using your SC2S Access Portal (SCAP) credentials.
 
 :::preview
 
@@ -268,9 +263,7 @@ secure compliance validation using your SC2S Access Portal (SCAP) credentials.
 - An AWS account with the [required IAM policies](required-iam-policies.md) assigned to the Palette VerteX IAM user or
   IAM role.
 
-- A secure connection to your AWS Secret Cloud account, such as via a
-  [Private Cloud Gateway (PCG)](../../../clusters/pcg/pcg.md), Wide Area Network tunnel, or AWS Private Link. PCGs do
-  not require an existing Kubernetes cluster.
+- A secure connection to your AWS Secret Cloud account, such as via a [Private Cloud Gateway (PCG)](../../../clusters/pcg/pcg.md), Wide Area Network tunnel, or AWS Private Link. PCGs do not require an existing Kubernetes cluster.
 
 ### Static Access Credentials
 

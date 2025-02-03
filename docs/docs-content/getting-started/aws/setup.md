@@ -25,8 +25,7 @@ section are centered around a fictional case study company, Spacetastic Ltd.
 - An AWS account with an [IAM Role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html) or
   [IAM User](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) for Palette.
 
-- An AWS account with the [required IAM policies](../../clusters/public-cloud/aws/required-iam-policies.md) assigned to
-  the Palette IAM user or IAM role.
+- An AWS account with the [required IAM policies](../../clusters/public-cloud/aws/required-iam-policies.md) assigned to the Palette IAM user or IAM role.
 
 ## Enablement
 
