@@ -238,8 +238,8 @@ secure compliance validation using your SC2S Access Portal (SCAP) credentials.
 ### Limitations
 
 - Only Amazon Linux 2-based Amazon Machine Images are supported for Kubernetes control plane and worker nodes. Workloads
-  deployed in the cluster should use Linux-based container images to ensure compatibility with the node
-  operating system.
+  deployed in the cluster should use Linux-based container images to ensure compatibility with the node operating
+  system.
 
 - User-provided Certificate Authority (CA) certificates are not automatically mounted on worker nodes in EKS clusters
   that are deployed in the AWS Secret region. As a result, applications or services that rely on custom CAs for
