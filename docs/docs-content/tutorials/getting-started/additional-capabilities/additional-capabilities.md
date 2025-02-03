@@ -31,11 +31,11 @@ this growth, they will need to expand their team, infrastructure, and systems. T
 Started section to learn how they can grow with Palette and have a long-term relationship with Spectro Cloud.
 
 > As we continue to grow, we need a more flexible infrastructure that can handle both our containerized applications and
-> virtual machine-based services," says Anya, Lead Astrophycist, who has always the dreamer of the team. "I wonder how
-> we could make this integration possible."
+> virtual machine-based services, as we have some legacy scientific tools that cannot be containerized," says Anya, the
+> lead astrophysicist and the team's dreamer. "Supporting these tools while modernizing and scaling our platform is
+> essential to bringing astronomy into everyone's home."
 >
-> Kai is in charge of scaling the Spacetastic platform. "That would be a great dream and a challenge for us, Anya." they
-> say.
+> Kai is in charge of scaling the Spacetastic platform. "That would be a challenge for us, Anya." they say.
 >
 > "You know, we might be able to make your dream happen!" says Wren, Founding Engineer. "Palette's Virtual Machine
 > Orchestrator allows you to deploy, manage, and scale VM workloads side by side with containerized applications."
@@ -46,8 +46,9 @@ Started section to learn how they can grow with Palette and have a long-term rel
 > Wren laughs and quickly responds. "Oh and one more thing! Palette VMO doesn't lock us into a single tech stack or
 > cloud provider, so we can deploy our services in many locations."
 >
-> "With VMO, we'll be able to integrate our VMs and containers smoothly, enabling Spacetastic to scale and innovate even
-> further. says Meera, Head of Cybersecurity, joining in. "The sky's the limit for us!"
+> "With VMO, we'll be able to use VMs for sensitive workloads, ensuring that critical data is securely isolated. says
+> Meera, Head of Cybersecurity, joining in. "We'll make your dream a reality and bring Spacetastic to everyone, Anya.
+> The sky's the limit for us!"
 
 ## The Journey Continues
 
