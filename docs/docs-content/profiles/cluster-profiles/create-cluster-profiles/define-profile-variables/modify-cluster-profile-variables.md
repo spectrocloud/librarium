@@ -10,20 +10,15 @@ tags: ["profiles", "cluster profiles", "cluster profile variables"]
 
 ## Modify Cluster Profile Variables
 
-There are several ways you can modify your cluster profile variables:
+You are two ways to modify your cluster profile variables:
 
-- Edit the current version of the cluster profile (unused profiles only)
+- Within your cluster profile
   
-- Version the cluster profile and edit your cluster profile variables
+- Within an active cluster
 
-- Edit your cluster profile variables within an active cluster
-  
-- Deploy a new profile or new profile version to an active cluster
-- 
+## Modify Profile Variables Using a Cluster Profile
 
-## Modify Cluster Profile Variables within a Cluster Profile
-
-If your cluster profile is not being used in an active cluster, you can modify your cluster profile variables in the current version of your cluster profile. However, if your cluster profile is currently being used in a cluster, you must first [create a new version of your cluster profile](../../../cluster-profiles/modify-cluster-profiles/version-cluster-profile.md) before you can modify the variables.
+If your cluster profile is _not_ being used in an active cluster, you can modify your profile variables in the current version of your cluster profile and later deploy a cluster with the profile or add the profile to an active cluster. However, if your cluster profile is currently being used in a cluster, you must [create a new version of your cluster profile](../../../cluster-profiles/modify-cluster-profiles/version-cluster-profile.md) before you can modify the variables.
 
 ### Prerequisites
 
@@ -56,6 +51,8 @@ If your cluster profile is not being used in an active cluster, you can modify y
 
 ### Validation
 
+Take the following steps to confirm that your cluster profile contains the updated profile variable definitions: 
+
 1. Log in to [Palette](https://console.spectrocloud.com).
 
 2. From the left **Main Menu**, select **Profiles** and navigate to the cluster profile for which you have updated the
@@ -64,9 +61,47 @@ If your cluster profile is not being used in an active cluster, you can modify y
 3. In the upper-right corner, click **Variables** and, on the **Profile variables** pane, check that only the necessary
    variables are present and that each variable has the expected definition.
 
-## Add Cluster Profile Variables to an Active Cluster
+Once your cluster profile has the latest profile variable configurations, you can [deploy a new cluster](./create-cluster-profile-variables.md#deploy-a-cluster-with-cluster-profile-variables) using the cluster profile, [update your cluster profile version](../../../../clusters/cluster-management/cluster-updates.md) on an active cluster to get the latest changes, or add an add-on profile to an active cluster.
 
-### Add a Cluster Profile with Cluster Profile Variables
+## Modify Profile Variables on an Active Cluster
 
-### Add a Cluster Profile Variable without a Cluster Profile
+You can modify your cluster profile variables on an active cluster by either updating the profile version associated with the cluster or by overriding the existing cluster profile configuration. If you need to modify the _schema_ of your profile variable rather than the value, you must first modify the cluster profile the variable is a part of. Overrides that do not follow the defined variable schema are not supported.
 
+:::warning
+
+We do not recommend overriding cluster profile configurations without updating the profile itself. Instead, we recommend [creating a new profile version](../../../cluster-profiles/modify-cluster-profiles/version-cluster-profile.md) and then [upgrading active clusters](../../../../clusters/cluster-management/cluster-updates.md) to the new version.
+
+:::
+
+### Modify Profile Variables Using Cluster Profile Versions
+
+This is the recommended best practice for updating a cluster in Palette.
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+      
+2. From the left **Main Menu**, select **Clusters**. Choose the cluster for which you are updating the cluster profile variable.
+   
+3. Navigate to the **Profile** tab of the cluster.
+   
+   - If you are updating the version of your cluster profile, expand the version **drop-down Menu** and choose the appropriate version.
+  
+   - If you are adding an add-on profile to the cluster, click the **Add add-on profile** icon. Choose the profile to add, and **Confirm** your changes.
+
+4. Click **Review & Save**. The **Changes Summary** dialog appears. Select **Review changes in Editor**.
+   
+5. Use the **Profile variable changes** tab to view the profiles that were changed. Expand each profile to compare the **Running configuration** and **New configuration**, making any necessary changes to your cluster profile variables. Each profile must be **Reviewed**, indicated by a green check mark, before you can apply your changes.  
+   
+6. When you are finished, select **Apply Changes**. 
+   
+7. Your cluster begins the update process. Monitor its progress using the **Event** tab.
+
+
+### Modify Profile Variables Using Cluster Profile Overrides
+
+You can modify the configuration of a deployed cluster without changing the cluster profile to update profile variables associated with a cluster.
+
+Navigate to the left Main Menu and select Clusters. Select the aws-cluster to view its Overview tab.
+
+Select the Profile tab of this cluster. You can select a new version of your cluster profile by using the version dropdown.
+
+### Validate
