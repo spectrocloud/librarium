@@ -42,7 +42,8 @@ Use the steps below to add an AWS cloud account using static access credentials.
 - An AWS account with an [IAM role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html) or
   [IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) for Palette.
 
-- An AWS account with the [required IAM policies](required-iam-policies.md) assigned to the Palette IAM user or IAM role.
+- An AWS account with the [required IAM policies](required-iam-policies.md) assigned to the Palette IAM user or IAM
+  role.
 
 #### Add AWS Account to Palette
 
@@ -70,7 +71,8 @@ Use the steps below to add an AWS cloud account using Security Token Service (ST
 - An AWS account with an [IAM role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html) or
   [IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) for Palette.
 
-- An AWS account with the [required IAM policies](required-iam-policies.md) assigned to the Palette IAM user or IAM role.
+- An AWS account with the [required IAM policies](required-iam-policies.md) assigned to the Palette IAM user or IAM
+  role.
 
 #### Add AWS Account to Palette
 
@@ -128,7 +130,8 @@ Use the steps below to add an AWS cloud account using static access credentials.
 - An AWS account with an [IAM role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html) or
   [IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) for Palette.
 
-- An AWS account with the [required IAM policies](required-iam-policies.md) assigned to the Palette IAM user or IAM role.
+- An AWS account with the [required IAM policies](required-iam-policies.md) assigned to the Palette IAM user or IAM
+  role.
 
 #### Add AWS GovCloud Account to Palette
 
@@ -180,7 +183,8 @@ Use the steps below to add an AWS cloud account using STS credentials.
 - An AWS account with an [IAM role](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_create_for-user.html) or
   [IAM user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) for Palette.
 
-- An AWS account with the [required IAM policies](required-iam-policies.md) assigned to the Palette IAM user or IAM role.
+- An AWS account with the [required IAM policies](required-iam-policies.md) assigned to the Palette IAM user or IAM
+  role.
 
 #### Add AWS GovCloud Account to Palette
 
@@ -222,7 +226,10 @@ Your newly added AWS cloud account is listed under the AWS section.
 
 ## AWS Secret Cloud Account (US)
 
-You can configure [AWS Secret Cloud]((https://aws.amazon.com/federal/secret-cloud/)) accounts in [Palette VerteX](../../../vertex/vertex.md) to deploy AWS EKS clusters in the AWS Secret region. Depending on your organization's compliance requirements, you can choose between standard authentication (standard access credentials) or secure compliance validation using your SC2S Access Portal (SCAP) credentials.
+You can configure [AWS Secret Cloud](<(https://aws.amazon.com/federal/secret-cloud/)>) accounts in
+[Palette VerteX](../../../vertex/vertex.md) to deploy AWS EKS clusters in the AWS Secret region. Depending on your
+organization's compliance requirements, you can choose between standard authentication (standard access credentials) or
+secure compliance validation using your SC2S Access Portal (SCAP) credentials.
 
 :::preview
 
@@ -230,7 +237,9 @@ You can configure [AWS Secret Cloud]((https://aws.amazon.com/federal/secret-clou
 
 ### Limitations
 
-- Only Amazon Linux 2-based Amazon Machine Images are supported for Kubernetes control plane and worker nodes. Workloads running inside the cluster should use Amazon Linux 2-based container images to ensure compatibility with the node operating system.
+- Only Amazon Linux 2-based Amazon Machine Images are supported for Kubernetes control plane and worker nodes. Workloads
+  running inside the cluster should use Amazon Linux 2-based container images to ensure compatibility with the node
+  operating system.
 
 - User-provided Certificate Authority (CA) certificates are not automatically mounted on worker nodes in EKS clusters
   that are deployed in the AWS Secret region. As a result, applications or services that rely on custom CAs for
@@ -259,7 +268,9 @@ You can configure [AWS Secret Cloud]((https://aws.amazon.com/federal/secret-clou
 - An AWS account with the [required IAM policies](required-iam-policies.md) assigned to the Palette VerteX IAM user or
   IAM role.
 
-- A secure connection to your AWS Secret Cloud account, such as via a [Private Cloud Gateway (PCG)](../../../clusters/pcg/pcg.md), Wide Area Network tunnel, or AWS Private Link. PCGs do not require an existing Kubernetes cluster.
+- A secure connection to your AWS Secret Cloud account, such as via a
+  [Private Cloud Gateway (PCG)](../../../clusters/pcg/pcg.md), Wide Area Network tunnel, or AWS Private Link. PCGs do
+  not require an existing Kubernetes cluster.
 
 ### Static Access Credentials
 
@@ -296,9 +307,9 @@ Use the steps below to add an AWS Secret Cloud account using static access crede
 7. Use the **drop-down Menu**, which lists available IAM policies in your AWS account, to select any desired IAM
    policies you want to assign to the Palette IAM role or IAM user.
 
-8. If you are using a PCG to connect to your AWS Secret Cloud account to Palette VerteX, toggle **Connect Private Cloud Gateway** on, and
-   select a **Private Cloud Gateway** from the list. This list is populated automatically with the **Private Cloud
-   Gateways** listed in **Tenant Settings**. For more information, refer to the
+8. If you are using a PCG to connect to your AWS Secret Cloud account to Palette VerteX, toggle **Connect Private Cloud
+   Gateway** on, and select a **Private Cloud Gateway** from the list. This list is populated automatically with the
+   **Private Cloud Gateways** listed in **Tenant Settings**. For more information, refer to the
    [Private Cloud Gateway](../../../clusters/pcg/pcg.md) page.
 
 9. Click **Confirm** to create your AWS Secret Cloud account.
@@ -334,7 +345,7 @@ Use the steps below to add an AWS Secret Cloud account using SCAP secure complia
    | ---------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
    | **Agency Name**                    | Enter the SCAP agency name.                                                                                                                                                                                                                                                                                                                                                                                           |
    | **Account Name**                   | Enter the SCAP account name or number.                                                                                                                                                                                                                                                                                                                                                                                |
-   | **CAP/SCAP Role Name**             | Enter the role name provided by the SCAP administrator. This role determines the AWS permissions granted to the account. Note that AWS Top Secret Cloud Access Portal (CAP) credentials are not supported at this time.                                                                                                                                                                                                   |
+   | **CAP/SCAP Role Name**             | Enter the role name provided by the SCAP administrator. This role determines the AWS permissions granted to the account. Note that AWS Top Secret Cloud Access Portal (CAP) credentials are not supported at this time.                                                                                                                                                                                               |
    | **Role Prefix (Optional)**         | Choose a prefix to standardize role names. If no prefix is provided, a default prefix of `PROJECT_` is used. For example, if the initial role name is `DevOpsRole`, the full role name would be `PROJECT_DevOpsRole`.                                                                                                                                                                                                 |
    | **Permission Boundary (Optional)** | If you want to apply a permission boundary and limit the maximum permissions a role or user can have, provide the IAM policy ARN (for example, `arn:aws:iam::123456789012:policy/MyPermissionBoundaryPolicy`). Refer to the AWS [Permissions boundaries for IAM entities](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_boundaries.html) page for additional information on permission boundaries. |
    | **Certificate Authority**          | Paste the root, intermediate, or chain of trust certificate in PEM-encoded format. Contact your organization's security team or AWS Secret Cloud administrator to obtain this certificate.                                                                                                                                                                                                                            |
@@ -349,9 +360,9 @@ Use the steps below to add an AWS Secret Cloud account using SCAP secure complia
 8. Use the **drop-down Menu**, which lists available IAM policies in your AWS account, to select any desired IAM
    policies you want to assign to the Palette IAM role or IAM user.
 
-9. If you are using a PCG to connect to your AWS Secret Cloud account to Palette VerteX, toggle **Connect Private Cloud Gateway** on, and
-   select a **Private Cloud Gateway** from the list. This list is populated automatically with the **Private Cloud
-   Gateways** listed in **Tenant Settings**. For more information, refer to the
+9. If you are using a PCG to connect to your AWS Secret Cloud account to Palette VerteX, toggle **Connect Private Cloud
+   Gateway** on, and select a **Private Cloud Gateway** from the list. This list is populated automatically with the
+   **Private Cloud Gateways** listed in **Tenant Settings**. For more information, refer to the
    [Private Cloud Gateway](../../../clusters/pcg/pcg.md) page.
 
 10. Click **Confirm** to create your AWS Secret Cloud account.
