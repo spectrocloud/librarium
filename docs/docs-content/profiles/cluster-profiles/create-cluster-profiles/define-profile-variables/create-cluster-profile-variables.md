@@ -97,7 +97,11 @@ the **Profile Layers** stage of the cluster profile creation process and start f
 13. Repeat the steps described in this guide to define more variables and add them to the necessary cluster profile
     layers. Remember to choose **Confirm Updates** when you are finished with each layer, and select **Save Changes** when you are finished modifying your profile.
 
-You can update your cluster profile variables within your cluster profile 
+    :::warning
+
+    Certain packs do not fully support cluster profile variables. If there is an existing schema constraint defined in the pack, the variable must satisfy the schema; otherwise, the variable cannot be used, and the updated cluster profile cannot be saved.   
+     
+    :::
 
 ### Validation
 
@@ -173,7 +177,49 @@ The following guide uses Amazon Web Services (AWS) Internet-as-a-Service (IaaS) 
 
 Once your cluster is deployed, verify that any parameters containing cluster profile variables were populated with the expected values.
 
-[more info to go here]
+The following validation process uses the [kubectl CLI](https://kubernetes.io/docs/reference/kubectl/) and the cluster's [kubeconfig](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) file. For more information on how to use kubectl and kubeconfig with your Palette-hosted clusters, refer to the Spectro Cloud [Kubectl](../../../../clusters/cluster-management/palette-webctl.md) and [Kubeconfig](../../../../clusters/cluster-management/kubeconfig.md) guides.
+
+1. Log in to [Palette](https://spectrocloud.com).
+
+2. Navigate to the left **Main Menu** and select **Clusters**.
+
+3. Select the host cluster you want to access.
+
+4. From the cluster overview page, navigate to the middle column containing cluster details and locate the **Kubernetes
+   Config File** row.
+
+5. Click the kubeconfig link to download the file.
+
+    ![Arrow pointing to the kubeconfig file.](/clusters_cluster-management_palette-webctl_cluster-details-overview.webp)
+
+6. Open a terminal window and set the `KUBECONFIG` environment variable to the file path of the **kubeconfig** file.
+
+    Example:
+
+    ```shell
+    export KUBECONFIG=~/Downloads/dev-cluster.kubeconfig
+    ```
+
+7. Issue the appropriate `kubectl` command to verify that your parameter was populated correctly. The following example verifies that the expected Hello Universe namespace was used.
+
+    ```shell
+    kubectl get namespaces
+    ```
+
+    ```shell hideClipboard {2}
+    NAME                               STATUS   AGE
+    amazing-hello-universe-namespace   Active   5m49s
+    capi-webhook-system                Active   14m
+    cert-manager                       Active   14m
+    cluster-67a235d83902eab79410087b   Active   14m
+    default                            Active   15m
+    kube-node-lease                    Active   15m
+    kube-public                        Active   15m
+    kube-system                        Active   15m
+    kubecost                           Active   5m55s
+    os-patch                           Active   11m
+    palette-system                     Active   12m
+    ```
 
 ## Next Steps
 
