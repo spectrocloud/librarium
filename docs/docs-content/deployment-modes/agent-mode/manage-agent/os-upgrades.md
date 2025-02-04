@@ -7,12 +7,12 @@ sidebar_position: 110
 tags: ["edge"]
 ---
 
-Agent mode hosts install and manage their Operating System (OS) outside Palette. This approach brings great
-flexibility in terms of architecture, but it has the drawback that Palette cannot upgrade, patch or manage the operating
-systems of the hosts. This can lead to inconsistencies, missed updates, or operational risks.
+Agent mode hosts install and manage their Operating System (OS) outside Palette. This approach brings great flexibility
+in terms of architecture, but it has the drawback that Palette cannot upgrade, patch or manage the operating systems of
+the hosts. This can lead to inconsistencies, missed updates, or operational risks.
 
-This guide demonstrates how to configure regularly scheduled OS upgrades by leveraging cluster profiles and the [system
-upgrade controller](https://github.com/rancher/system-upgrade-controller) already installed by Palette.
+This guide demonstrates how to configure regularly scheduled OS upgrades by leveraging cluster profiles and the
+[system upgrade controller](https://github.com/rancher/system-upgrade-controller) already installed by Palette.
 
 ## Prerequisites
 
@@ -94,8 +94,8 @@ upgrade controller](https://github.com/rancher/system-upgrade-controller) alread
 
    :::info
 
-   Nodes are drained, upgraded, and rebooted one by one. Ensure that your cluster has enough resources to perform rolling
-   upgrades in order to avoid outages.
+   Nodes are drained, upgraded, and rebooted one by one. Ensure that your cluster has enough resources to perform
+   rolling upgrades in order to avoid outages.
 
    :::
 
@@ -115,8 +115,8 @@ upgrade controller](https://github.com/rancher/system-upgrade-controller) alread
     EOF
     ```
 
-11. Execute the following commands to create the `upgrades.yaml` file using your namespace, upgrade schedule, labels, and
-    upgrade script variables. The command creates the `upgrades.yaml` file in your current directory.
+11. Execute the following commands to create the `upgrades.yaml` file using your namespace, upgrade schedule, labels,
+    and upgrade script variables. The command creates the `upgrades.yaml` file in your current directory.
 
     The YAML file defines the following Kubernetes resources.
 
