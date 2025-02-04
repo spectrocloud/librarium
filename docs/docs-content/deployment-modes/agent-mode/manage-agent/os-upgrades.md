@@ -208,7 +208,7 @@ upgrade controller already installed by Palette.
                                     kubectl patch plan os-upgrade-plan --namespace $SYSTEM_UPGRADE_NAMESPACE --type=json --patch="[{\"op\": \"replace\", \"path\": \"/spec/version\", \"value\": \"\${VERSION}\"}]"
                                   else
                                     echo "Upgrade plan does not exist. Create it."
-                                    kubectl get secret os-upgrade-plan --namespace $SYSTEM_UPGRADE_NAMESPACE --output go-template='{{ index .data "plan.yaml" | base64decode }}' | kubectl apply -f -
+                                    kubectl get secret os-upgrade-plan --namespace $SYSTEM_UPGRADE_NAMESPACE --output go-template='{{ index .data "plan.yaml" | base64decode }}' | kubectl apply --filename -
                                     fi
                         restartPolicy: OnFailure
     EOF
