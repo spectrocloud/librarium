@@ -1,18 +1,18 @@
 ---
 sidebar_label: "Configure Regularly Scheduled OS Upgrades"
-title: "Configure Regularly Scheduled OS Upgrades - Agent Mode"
+title: "Configure Regularly Scheduled OS Upgrades"
 description: "Instructions configuring regular OS upgrades for agent mode clusters."
 hide_table_of_contents: false
 sidebar_position: 110
 tags: ["edge"]
 ---
 
-Agent mode hosts install and manage their Operating System (OS) outside of Palette. This approach brings great
+Agent mode hosts install and manage their Operating System (OS) outside Palette. This approach brings great
 flexibility in terms of architecture, but it has the drawback that Palette cannot upgrade, patch or manage the operating
 systems of the hosts. This can lead to inconsistencies, missed updates, or operational risks.
 
-This guide demonstrates how to configure regularly scheduled OS upgrades by leveraging cluster profiles and the system
-upgrade controller already installed by Palette.
+This guide demonstrates how to configure regularly scheduled OS upgrades by leveraging cluster profiles and the [system
+upgrade controller](https://github.com/rancher/system-upgrade-controller) already installed by Palette.
 
 ## Prerequisites
 
@@ -86,7 +86,7 @@ upgrade controller already installed by Palette.
    ```
 
 9. Apply the node label to all the nodes that you want updated. Execute the command by replacing the placeholder with
-   the name of the node. Repeat for each node you want to upgrade.
+   the name of the node. Repeat this step for each node you want to upgrade.
 
    ```shell
    kubectl label node REPLACE-ME $SYSTEM_UPGRADE_NODE_LABEL=
@@ -94,7 +94,7 @@ upgrade controller already installed by Palette.
 
    :::info
 
-   Nodes are drained, upgraded and rebooted one by one. Ensure that your cluster has enough resources to perform rolling
+   Nodes are drained, upgraded, and rebooted one by one. Ensure that your cluster has enough resources to perform rolling
    upgrades in order to avoid outages.
 
    :::
@@ -115,7 +115,7 @@ upgrade controller already installed by Palette.
     EOF
     ```
 
-11. Execute the following commands to create the `upgrades.yaml` file using your namespace, upgrade schedule, labels and
+11. Execute the following commands to create the `upgrades.yaml` file using your namespace, upgrade schedule, labels, and
     upgrade script variables. The command creates the `upgrades.yaml` file in your current directory.
 
     The YAML file defines the following Kubernetes resources.
@@ -214,8 +214,8 @@ upgrade controller already installed by Palette.
     EOF
     ```
 
-12. Navigate back to [Palette](https://console.spectrocloud.com) in your browser. Select **Profiles** from the **left
-    Main Menu**.
+12. Navigate back to [Palette](https://console.spectrocloud.com) in your browser. Select **Profiles** from the left
+    **Main Menu**.
 
 13. Select the cluster profile corresponding to your agent mode cluster.
 
@@ -228,7 +228,7 @@ upgrade controller already installed by Palette.
 16. Paste the contents of the `upgrades.yaml` file that you have created in **Step 11**. Click **Confirm Updates** to
     save your manifest. Then, click **Save Changes** to save your manifest to the cluster profile.
 
-17. Navigate to the **left Main Menu** and select **Clusters**.
+17. Navigate to the left **Main Menu** and select **Clusters**.
 
 18. Select your cluster to access the cluster details page.
 
@@ -243,7 +243,7 @@ the `system-upgrade-xxx` namespace.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. Navigate to the **left Main Menu** and select **Clusters**.
+2. Navigate to the left **Main Menu** and select **Clusters**.
 
 3. Select your cluster to access the cluster details page.
 
