@@ -9,18 +9,18 @@ tags: ["edge"]
 
 Agent mode hosts install and manage their Operating System (OS) outside of Palette. This approach brings great
 flexibility in terms of architecture, but it has the drawback that Palette cannot upgrade, patch or manage the operating
-systems of these edge hosts. This can lead to inconsistencies, missed updates or operational risks.
+systems of the hosts. This can lead to inconsistencies, missed updates, or operational risks.
 
 This guide demonstrates how to configure regularly scheduled OS upgrades by leveraging cluster profiles and the system
 upgrade controller already installed by Palette.
 
 ## Prerequisites
 
-- A Palette cluster deployed on one or multiple edge hosts with the Palette Agent installed.Refer to the
+- A Palette cluster deployed on one or multiple hosts with the Palette Agent installed. Refer to the
   [Install Agent Mode](../install-agent-host.md) guide for further details. The cluster should be listed as **Healthy**
   and with a **Running** status.
-  - The edge host must have access to the internet and a connection to Palette.
-  - The edge host root file-system mounted in the `/host` directory.
+  - The host must have access to the internet and a connection to Palette.
+  - The host root file system is mounted in the `/host` directory.
 - Access to a terminal with network access to your cluster.
 - Kubectl installed locally. Refer to the Kubernetes [Install Tools](https://kubernetes.io/docs/tasks/tools/) guide for
   further details.
@@ -78,7 +78,7 @@ upgrade controller already installed by Palette.
    ```
 
 8. Execute the following command in your terminal, replacing the placeholder with a node label of your choice. This
-   variable allows you to customise which nodes should be periodically updated. The command saves your label to the
+   variable allows you to customize which nodes should be periodically updated. The command saves your label to the
    `SYSTEM_UPGRADE_NODE_LABEL` variable.
 
    ```shell
@@ -101,7 +101,7 @@ upgrade controller already installed by Palette.
 
 10. Save your upgrade scripts to a file titled `upgrades.sh`. You can provide any instructions that you want to execute
     on system upgrade and reboot. The following example provides upgrade instructions for Ubuntu, but you can modify
-    them to work according to your edge host operating system. The command creates the `upgrades.sh` file in your local
+    them to work according to your host operating system. The command creates the `upgrades.sh` file in your local
     directory.
 
     ```shell
@@ -217,7 +217,7 @@ upgrade controller already installed by Palette.
 12. Navigate back to [Palette](https://console.spectrocloud.com) in your browser. Select **Profiles** from the **left
     Main Menu**.
 
-13. Select the cluster profile corresponding to your edge cluster.
+13. Select the cluster profile corresponding to your agent mode cluster.
 
 14. Click on the version **drop-down Menu**. Select the **Create new version** option. Fill in the **Version** input and
     click **Confirm** to create a new version of your cluster profile. The new profile version opens.
@@ -252,6 +252,6 @@ the `system-upgrade-xxx` namespace.
 5. Ensure that **Node Logs** is selected and click **Download**. The logs will take a few minutes to generate. A
    download link will appear once the logs are ready.
 
-The download contains a zip archive of files. Details of a all executed upgrades are in a folder with the same name as
+The download contains a zip archive of files. Details of all executed upgrades are in a folder with the same name as
 your system upgrade namespace. You can search for executions of the `os-upgrade-plan` in this file. You can add further
 logging to your upgrade script if you require granular detail of its execution.
