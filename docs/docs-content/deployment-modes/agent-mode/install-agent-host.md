@@ -795,7 +795,10 @@ guidance.
 
 4. Verify that the cluster is listed as **Healthy** and has a **Running** status.
 
-Alongside Palette, [Local UI](../../clusters/edge/local-ui/host-management/access-console.md) allows you to fully manage the lifecycle of your edge hosts. Refer to the [Reboot, Shutdown, and Reset Edge Host](../../clusters/edge/local-ui/host-management/reset-reboot.md) guide for further details on how to use these operations
+Alongside Palette, [Local UI](../../clusters/edge/local-ui/host-management/access-console.md) allows you to fully manage
+the lifecycle of your edge hosts. Refer to the
+[Reboot, Shutdown, and Reset Edge Host](../../clusters/edge/local-ui/host-management/reset-reboot.md) guide for further
+details on how to use these operations
 
 </TabItem>
 
@@ -807,7 +810,9 @@ Alongside Palette, [Local UI](../../clusters/edge/local-ui/host-management/acces
 
 3. Verify that your cluster is in a **Heathy** status.
 
-Local UI allows you to fully manage the lifecycle of your edge hosts. Refer to the [Reboot, Shutdown, and Reset Edge Host](../../clusters/edge/local-ui/host-management/reset-reboot.md) guide for further details on how to use these operations.
+Local UI allows you to fully manage the lifecycle of your edge hosts. Refer to the
+[Reboot, Shutdown, and Reset Edge Host](../../clusters/edge/local-ui/host-management/reset-reboot.md) guide for further
+details on how to use these operations.
 
 </TabItem>
 
