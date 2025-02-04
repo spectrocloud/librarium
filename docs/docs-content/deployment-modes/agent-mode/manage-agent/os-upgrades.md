@@ -7,6 +7,10 @@ sidebar_position: 110
 tags: ["edge"]
 ---
 
+Agent mode hosts install and manage their Operating System (OS) outside of Palette. This approach brings great flexibility in terms of architecture, but it has the drawback that Palette cannot upgrade, patch or manage the operating systems of these edge hosts. This can lead to inconsistencies, missed updates or operational risks.
+
+This guide demonstrates how to configure regularly scheduled OS upgrades by leveraging cluster profiles and the system upgrade controller already installed by Palette.
+
 ## Prerequisites
 
 - A Palette cluster deployed on one or multiple edge hosts with the Palette Agent installed.Refer to the
@@ -41,7 +45,7 @@ tags: ["edge"]
    `SYSTEM_UPGRADE_NAMESPACE` variable. This namespace will be different between clusters.
 
    ```shell
-   export SYSTEM_UPGRADE_NAMESPACE=$(kubectl get namespaces --no-headers -o custom-columns=":metadata.name" | grep '^system-upgrade')
+   export SYSTEM_UPGRADE_NAMESPACE=$(kubectl get namespaces --no-headers --output custom-columns=":metadata.name" | grep '^system-upgrade')
    echo $SYSTEM_UPGRADE_NAMESPACE
    ```
 
@@ -53,7 +57,7 @@ tags: ["edge"]
 
 7. Provide an upgrade frequency using a Cron format. This is used to configure a Kubernetes
    [CronJob](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/) to execute upgrades on a repeating
-   schedule. You can see some common examples of Cron schedules in the following table.
+   schedule. You can find some common examples of Cron schedules in the following table.
 
    | **Expression** | **Description**                                        |
    | -------------- | ------------------------------------------------------ |
@@ -194,14 +198,14 @@ tags: ["edge"]
                                   chmod +x kubectl
                                   mv kubectl /usr/local/bin/
                                   export KUBECONFIG=/run/kubeconfig
-                                  kubectl get plan os-upgrade-plan -n system-upgrade-67991934afb6a8ea13ee0e01
+                                  kubectl get plan os-upgrade-plan --namespace $SYSTEM_UPGRADE_NAMESPACE
                                   if [ \$? -eq 0 ]; then
                                     echo "Upgrade plan exists. Retrigger it."
                                     VERSION="os-upgrade-plan-\$(date +%Y%m%d%H%M%S)"
-                                    kubectl patch plan os-upgrade-plan -n system-upgrade-67991934afb6a8ea13ee0e01 --type=json -p="[{\"op\": \"replace\", \"path\": \"/spec/version\", \"value\": \"\${VERSION}\"}]"
+                                    kubectl patch plan os-upgrade-plan --namespace $SYSTEM_UPGRADE_NAMESPACE --type=json --patch="[{\"op\": \"replace\", \"path\": \"/spec/version\", \"value\": \"\${VERSION}\"}]"
                                   else
                                     echo "Upgrade plan does not exist. Create it."
-                                    kubectl get secret os-upgrade-plan -n system-upgrade-67991934afb6a8ea13ee0e01 -o go-template='{{ index .data "plan.yaml" | base64decode }}' | kubectl apply -f -
+                                    kubectl get secret os-upgrade-plan --namespace $SYSTEM_UPGRADE_NAMESPACE --output go-template='{{ index .data "plan.yaml" | base64decode }}' | kubectl apply -f -
                                     fi
                         restartPolicy: OnFailure
     EOF
