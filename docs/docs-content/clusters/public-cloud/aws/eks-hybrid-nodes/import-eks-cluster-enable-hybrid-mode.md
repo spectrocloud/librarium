@@ -371,7 +371,7 @@ Cilium handles IP Address Management (IPAM) and Border Gateway Protocol (BGP) fo
 
 5. In **Profile Layers**, click **Add New Pack**.
 
-6. Enter **Cilium** in the search box, and select it. It appears in the **System App** category and must be version
+6. Enter **Cilium** in the search box, and select it. It appears in the **Network** category and must be version
    **1.16.0** or above.
 
 7. Click the **Presets drop-down Menu**.
@@ -422,7 +422,7 @@ Cilium handles IP Address Management (IPAM) and Border Gateway Protocol (BGP) fo
 
 15. Select your cluster to view its **Overview** tab.
 
-16. Click **Attach Profile**.
+16. Select the **Profile** tab, and click **Attach Profile**.
 
 17. Select the **Cilium** add-on profile that was created, and click **Confirm**.
 
