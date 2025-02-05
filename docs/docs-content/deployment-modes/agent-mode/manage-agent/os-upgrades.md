@@ -155,19 +155,19 @@ This guide demonstrates how to configure regularly scheduled OS upgrades by leve
             spec:
                 concurrency: 1
                 nodeSelector:
-                matchExpressions:
-                    - { key: $SYSTEM_UPGRADE_NODE_LABEL, operator: Exists }
+                    matchExpressions:
+                        - { key: $SYSTEM_UPGRADE_NODE_LABEL, operator: Exists }
                 serviceAccountName: system-upgrade
                 secrets:
                     - name: os-upgrade-script
-                    path: /host/run/system-upgrade/secrets/bionic
-                    tolerations:
+                      path: /host/run/system-upgrade/secrets/bionic
+                tolerations:
                     - key: node-role.kubernetes.io/master
-                    operator: Exists
-                    effect: NoSchedule
+                      operator: Exists
+                      effect: NoSchedule
                     - key: node-role.kubernetes.io/controlplane
-                    operator: Exists
-                    effect: NoSchedule
+                      operator: Exists
+                      effect: NoSchedule
                 drain:
                     force: true
                 version: bionic
@@ -253,5 +253,14 @@ the `system-upgrade-xxx` namespace.
    download link will appear once the logs are ready.
 
 The download contains a zip archive of files. Details of all executed upgrades are in a folder with the same name as
-your system upgrade namespace. You can search for executions of the `os-upgrade-plan` in this file. You can add further
-logging to your upgrade script if you require granular detail of its execution.
+your system upgrade namespace. You can search for executions of the `os-upgrade-plan` in this file. The following
+snippet provides an example of the logging output you will find.
+
+```shell hideClipboard
+time="2025-02-05T12:41:36Z" level=debug msg="PLAN GENERATING HANDLER: plan=system-upgrade-67a34d38a6c18dc781e61927/os-upgrade-plan@17071, status={Conditions:[{Type:LatestResolved Status:True LastUpdateTime:2025-02-05T12:41:36Z LastTransitionTime: Reason:Version Message:}] LatestVersion:os-upgrade-plan-20250205124022 LatestHash:66a0761c0738aed60e58393b923ea083d13c6783c11dbcc74a64a99a Applying:[edge-4238a4fc050ab635da929b5d0b272380]}" func="github.com/rancher/system-upgrade-controller/pkg/upgrade.(*Controller).handlePlans.func2 " file="/workspace/pkg/upgrade/handle_upgrade.go:68"
+time="2025-02-05T12:41:36Z" level=debug msg="DesiredSet - No change(2) batch/v1, Kind=Job system-upgrade-67a34d38a6c18dc781e61927/apply-os-upgrade-plan-on-edge-4238a4fc050ab635da929b5d0b2-e1890 for system-upgrade-controller system-upgrade-67a34d38a6c18dc781e61927/os-upgrade-plan" func="github.com/rancher/wrangler/pkg/apply.(*desiredSet).compareObjects" file="/go/pkg/mod/github.com/rancher/wrangler@v1.1.1-0.20230425173236-39a4707f0689/pkg/apply/desiredset_compare.go:262"                                                          │
+time="2025-02-05T12:41:36Z" level=debug msg="DesiredSet - Delete batch/v1, Kind=Job system-upgrade-67a34d38a6c18dc781e61927/apply-os-upgrade-plan-on-edge-4238a4fc050ab635da929b5d0b2-eeb65 for system-upgrade-controller system-upgrade-67a34d38a6c18dc781e61927/os-upgrade-plan" func="github.com/rancher/wrangler/pkg/apply.(*desiredSet).process.func3" file=" /go/pkg/mod/github.com/rancher/wrangler@v1.1.1-0.20230425173236-39a4707f0689/pkg/apply/desiredset_process.go:315"                                                                 │
+time="2025-02-05T12:41:36Z" level=debug msg="PLAN STATUS HANDLER: plan=system-upgrade-67a34d38a6c18dc781e61927/os-upgrade-plan@17071, status={Conditions:[{Type:LatestResolvedStatus:True LastUpdateTime:2025-02-05T12:41:36Z LastTransitionTime: Reason:Version Message:}] LatestVersion:os-upgrade-plan-20250205124022 LatestHash:66a0761c0738aed60e58393b923ea083d13c6783c11dbcc74a64a99a Applying:[edge-4238a4fc050ab635da929b5d0b272380]}" func="github.com/rancher/system-upgrade-controller/pkg/upgrade.(*Controller).handlePlans.func1" file="/workspace/pkg/upgrade/handle_upgrade.go:30"
+```
+
+You can add further logging to your upgrade script if you require granular detail of its execution.
