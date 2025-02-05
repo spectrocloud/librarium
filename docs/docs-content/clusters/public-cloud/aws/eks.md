@@ -32,6 +32,10 @@ an AWS account. This section guides you on how to create an EKS cluster in AWS t
   a key pair, refer to the
   [Amazon EC2 key pairs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html) resource.
 
+- Your Amazon EKS cluster must be deployed with at least one worker node to host the Palette agent, which is necessary for Palette to manage the cluster. Because of EKS architecture constraints, the agent cannot be installed on the control plane.
+  - The minimum instance type required is **t3.xlarge**.
+  - Be sure at least one worker node is always available so Palette can continue managing the cluster.
+
 - To access your EKS cluster using kubectl, you will need the
   [aws-iam-authenticator](https://github.com/kubernetes-sigs/aws-iam-authenticator) plugin installed. If you are using a
   custom OIDC provider, you will need the [kubelogin](https://github.com/int128/kubelogin) plugin installed. Refer to

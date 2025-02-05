@@ -27,7 +27,7 @@ The following are some architectural highlights of the Amazon Web Services (AWS)
 - The Kubernetes API Server endpoint is accessible through an Elastic Load Balancing (ELB), which load balances across
   all the control plane nodes.
 
-  ![A diagram of AWS architecture](/clusters_aws_architecture_aws_cluster_architecture.webp)
+![A diagram of AWS architecture](/clusters_aws_architecture_aws_cluster_architecture.webp)
 
 ## AWS EKS Architecture
 
@@ -43,6 +43,14 @@ highlights pertaining to EKS when managed by Palette.
 - Spot instance support
 
 ![eks_cluster_architecture.webp](/clusters_aws_create-and-manage-aws-eks-cluster_architecture.webp)
+
+### Worker Node Requirements
+
+Your Amazon EKS cluster must include at least one worker node to host the Palette agent, which is essential for Palette to manage the cluster. Due to EKS architectural constraints, the Palette agent cannot be installed on the EKS control plane.
+
+- **Minimum Instance Type**: Worker nodes must use an instance type of at least **t3.xlarge** to ensure adequate resources.
+
+- **Ongoing Node Availability**: To maintain continuous management capabilities, at least one worker node should remain available at all times for the Palette agent to operate effectively.
 
 ### Disable OIDC Associate Provider
 
