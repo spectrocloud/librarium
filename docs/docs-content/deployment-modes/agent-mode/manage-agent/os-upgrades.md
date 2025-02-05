@@ -147,34 +147,34 @@ This guide demonstrates how to configure regularly scheduled OS upgrades by leve
     type: Opaque
     stringData:
         plan.yaml: |
-        apiVersion: upgrade.cattle.io/v1
-        kind: Plan
-        metadata:
-            name: os-upgrade-plan
-            namespace: $SYSTEM_UPGRADE_NAMESPACE
-        spec:
-            concurrency: 1
-            nodeSelector:
-            matchExpressions:
-                - { key: $SYSTEM_UPGRADE_NODE_LABEL, operator: Exists }
-            serviceAccountName: system-upgrade
-            secrets:
-                - name: os-upgrade-script
-                  path: /host/run/system-upgrade/secrets/bionic
-                  tolerations:
-                - key: node-role.kubernetes.io/master
-                  operator: Exists
-                  effect: NoSchedule
-                - key: node-role.kubernetes.io/controlplane
-                  operator: Exists
-                  effect: NoSchedule
-            drain:
-                force: true
-            version: bionic
-            upgrade:
-                image: us-docker.pkg.dev/palette-images/third-party/ubuntu:22.04
-                command: ["chroot", "/host"]
-                args: ["sh", "/run/system-upgrade/secrets/bionic/upgrade.sh"]
+            apiVersion: upgrade.cattle.io/v1
+            kind: Plan
+            metadata:
+                name: os-upgrade-plan
+                namespace: $SYSTEM_UPGRADE_NAMESPACE
+            spec:
+                concurrency: 1
+                nodeSelector:
+                matchExpressions:
+                    - { key: $SYSTEM_UPGRADE_NODE_LABEL, operator: Exists }
+                serviceAccountName: system-upgrade
+                secrets:
+                    - name: os-upgrade-script
+                    path: /host/run/system-upgrade/secrets/bionic
+                    tolerations:
+                    - key: node-role.kubernetes.io/master
+                    operator: Exists
+                    effect: NoSchedule
+                    - key: node-role.kubernetes.io/controlplane
+                    operator: Exists
+                    effect: NoSchedule
+                drain:
+                    force: true
+                version: bionic
+                upgrade:
+                    image: us-docker.pkg.dev/palette-images/third-party/ubuntu:22.04
+                    command: ["chroot", "/host"]
+                    args: ["sh", "/run/system-upgrade/secrets/bionic/upgrade.sh"]
     ---
     apiVersion: batch/v1
     kind: CronJob
