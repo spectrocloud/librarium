@@ -192,12 +192,19 @@ guidance on how to set up credentials for your hybrid nodes.
 
 ## Amazon EKS Cluster Requirements
 
-- **Hybrid Node Enablement**: The cluster must be enabled for hybrid nodes, as outlined in [Create an Amazon EKS cluster with hybrid nodes](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-cluster-create.html).
+- **Hybrid Node Enablement**: The cluster must be enabled for hybrid nodes, as outlined in
+  [Create an Amazon EKS cluster with hybrid nodes](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-cluster-create.html).
 
-- **Container Network Interface (CNI)**: The **AWS VPC CNI** must be used as the cluster’s CNI. Although the AWS Console may display a warning indicating that the AWS VPC CNI is not supported for hybrid nodes, this can be safely disregarded.
+- **Container Network Interface (CNI)**: The **AWS VPC CNI** must be used as the cluster’s CNI. Although the AWS Console
+  may display a warning indicating that the AWS VPC CNI is not supported for hybrid nodes, this can be safely
+  disregarded.
 
-- **Worker Node Requirements for the Palette Agent**: At least one worker node is required to host the Palette agent, which is essential for Palette to manage the cluster. Due to EKS architectural constraints, the Palette agent cannot be installed on the EKS control plane.
+- **Worker Node Requirements for the Palette Agent**: At least one worker node is required to host the Palette agent,
+  which is essential for Palette to manage the cluster. Due to EKS architectural constraints, the Palette agent cannot
+  be installed on the EKS control plane.
 
-  - **Minimum Instance Type**: Worker nodes must use an instance type of at least **t3.xlarge** to ensure adequate resources.
+  - **Minimum Instance Type**: Worker nodes must use an instance type of at least **t3.xlarge** to ensure adequate
+    resources.
 
-  - **Ongoing Node Availability**: To maintain continuous management capabilities, at least one worker node should remain available at all times for the Palette agent to operate effectively.
+  - **Ongoing Node Availability**: To maintain continuous management capabilities, at least one worker node should
+    remain available at all times for the Palette agent to operate effectively.
