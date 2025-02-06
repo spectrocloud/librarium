@@ -86,9 +86,9 @@ Import your Amazon EKS cluster and enable hybrid mode to be able to create edge 
   [Create an Amazon EKS cluster with hybrid nodes](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-cluster-create.html)
   for guidance.
 
-  - When selecting add-ons, you must use **AWS VPC CNI** as your container network interface as it is needed for cloud worker nodes to function. If you are deploying
-    through the AWS Console, a warning may state that AWS VPC CNI is not supported for hybrid nodes. You can ignore this
-    message.
+  - When selecting add-ons, you must use **AWS VPC CNI** as your container network interface as it is needed for cloud
+    worker nodes to function. If you are deploying through the AWS Console, a warning may state that AWS VPC CNI is not
+    supported for hybrid nodes. You can ignore this message.
   - Your Amazon EKS cluster must include at least one worker node to host the Palette agent, which is necessary for
     Palette to manage the cluster. Because of EKS architecture constraints, the agent cannot be installed on the control
     plane.

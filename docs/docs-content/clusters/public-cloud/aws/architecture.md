@@ -50,8 +50,8 @@ Your Amazon EKS cluster must include at least one worker node to host the Palett
 to manage the cluster. Due to EKS architectural constraints, the Palette agent cannot be installed on the EKS control
 plane.
 
-- **Minimum Instance Type**: Worker nodes must use an instance type of at least **t3.xlarge**  with 60 GB of storage to ensure adequate
-  resources.
+- **Minimum Instance Type**: Worker nodes must use an instance type of at least **t3.xlarge** with 60 GB of storage to
+  ensure adequate resources.
 
 - **Ongoing Node Availability**: To maintain continuous management capabilities, at least one worker node should remain
   available at all times for the Palette agent to operate effectively.
