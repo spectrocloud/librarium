@@ -195,7 +195,7 @@ guidance on how to set up credentials for your hybrid nodes.
 - **Hybrid Node Enablement**: The cluster must be enabled for hybrid nodes, as outlined in
   [Create an Amazon EKS cluster with hybrid nodes](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-cluster-create.html).
 
-- **Container Network Interface (CNI)**: The **AWS VPC CNI** must be used as the cluster’s CNI. Although the AWS Console
+- **Container Network Interface (CNI)**: The **AWS VPC CNI** must be used as the cluster’s CNI as it is needed for cloud worker nodes to function. Although the AWS Console
   may display a warning indicating that the AWS VPC CNI is not supported for hybrid nodes, this can be safely
   disregarded.
 
@@ -203,7 +203,7 @@ guidance on how to set up credentials for your hybrid nodes.
   which is essential for Palette to manage the cluster. Due to EKS architectural constraints, the Palette agent cannot
   be installed on the EKS control plane.
 
-  - **Minimum Instance Type**: Worker nodes must use an instance type of at least **t3.xlarge** to ensure adequate
+  - **Minimum Instance Type**: Worker nodes must use an instance type of at least **t3.xlarge**  with 60 GB of storage to ensure adequate
     resources.
 
   - **Ongoing Node Availability**: To maintain continuous management capabilities, at least one worker node should
