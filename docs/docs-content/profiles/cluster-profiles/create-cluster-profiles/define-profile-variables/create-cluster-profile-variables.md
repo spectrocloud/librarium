@@ -22,13 +22,13 @@ tags: ["profiles", "cluster profiles", "cluster profile variables"]
 
 You can define profile variables when creating cluster profiles and for existing cluster profiles. To define profile
 variables [while creating a cluster profile](../../create-cluster-profiles/create-cluster-profiles.md), you need to be at
-the **Profile Layers** stage of the cluster profile creation process and start following this guide from [step three](#step-3).
+the **Profile Layers** stage of the cluster profile creation process and start following this guide from step three.
 
 1.  Log in to [Palette](https://console.spectrocloud.com).
 
 2.  On the left **Main Menu**, select **Profiles** and choose the cluster profile for which you want to define profile variables.
 
-3. <a id="step-3"></a> In the upper-right corner, click **Variables** and, on the **Profile variables** pane, click **Create variable**.
+3. In the upper-right corner, click **Variables** and, on the **Profile variables** pane, click **Create variable**.
 
     ![Palette with the Variables button highlighted.](/profiles_create-cluster-profiles_define-profile-variables_open-profile-variables.webp)
 

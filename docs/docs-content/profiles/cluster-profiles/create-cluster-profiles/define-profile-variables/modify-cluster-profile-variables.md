@@ -128,7 +128,7 @@ There are two ways to modify your cluster profile variables in an active cluster
 
    :::tip
 
-   If you are not updating the cluster profile version and are only updating existing cluster profile variables, you can expand the **drop-down Menu** for **Settings**, choose **Cluster Settings**, and use the **Profile Variables Configuration** tab to easily update your profile variables. Proceed to [step six](#step-6) to learn more.
+   If you are not updating the cluster profile version and are only updating existing cluster profile variables, you can expand the **drop-down Menu** for **Settings**, choose **Cluster Settings**, and use the **Profile Variables Configuration** tab to easily update your profile variables. Proceed to step six to learn more.
 
    :::
    
@@ -136,9 +136,9 @@ There are two ways to modify your cluster profile variables in an active cluster
 
 4. If you need to update a cluster profile version, such as in the case of updated profile variable schemas, expand the semantic version **drop-down Menu** and choose the appropriate version.
    
-5.  Select **Configure Values** to view your **Profile Variables Configuration**. 
+5. Select **Configure Values** to view your **Profile Variables Configuration**. 
 
-6. <a id="step-6"></a> Modify the values of your profile variables. The updated value must match the schema defined in the cluster profile variable. If you are overwriting the default value, you can revert to the original value by selecting **Use Default**. In the example below, we are changing the Kubecost frontend `imagePullPolicy` from `Always` to `IfNotPresent`.
+6. Modify the values of your profile variables. The updated value must match the schema defined in the cluster profile variable. If you are overwriting the default value, you can revert to the original value by selecting **Use Default**. In the example below, we are changing the Kubecost frontend `imagePullPolicy` from `Always` to `IfNotPresent`.
 
    ![Overwriting existing cluster profile variables without modifying cluster profile](/profiles_cluster-profiles_create-cluster-profiles_define-profile-variables_modify-cluster-profile-variable-override.webp)
 
