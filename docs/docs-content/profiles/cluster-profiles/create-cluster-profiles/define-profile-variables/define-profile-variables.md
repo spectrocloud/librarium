@@ -38,6 +38,8 @@ The following table describes the differences between profile variables and macr
 - You cannot define profile variables for the `pack.content` and `system.uri` parameters because the
   [Palette CLI](../../../../automation/palette-cli/palette-cli.md) populates them automatically.
 
+- Some packs may not support certain cluster profile variable data formats. If there is an existing schema constraint defined in the pack, the variable must satisfy the schema.
+
 ## Next Steps
 
 Refer to the [Create Cluster Profile Variables](./create-cluster-profile-variables.md) guide to learn how to begin using cluster profile variables to streamline cluster deployment and Day-2 operations.

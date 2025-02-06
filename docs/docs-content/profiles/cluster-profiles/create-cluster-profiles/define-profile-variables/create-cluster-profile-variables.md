@@ -6,7 +6,7 @@ sidebar_position: 50
 tags: ["profiles", "cluster profiles", "cluster profile variables"]
 ---
 
-[intro here]
+[Cluster profile variables](./define-profile-variables.md) allow you to define and manage reusable configuration parameters within a cluster profile, helping standardize deployments, reduce manual configuration errors, and simplify updates by allowing values to be dynamically set during cluster provisioning. This guide takes you through the process of creating cluster profile variables, adding them to profile layers, and deploying clusters with them. 
 
 ## Create a Cluster Profile Variable
 
@@ -74,7 +74,7 @@ the **Profile Layers** stage of the cluster profile creation process and start f
 
     ![Palette YAML editor with the added profile variables.](/profiles_create-cluster-profiles_define-profile-variables_variable-preview.webp)
 
-10. Navigate to the YAML configuration of the profile layer for which you want to add the variable. In the upper-right
+10. Navigate to the YAML configuration of the profile layer to which you want to add the variable. In the upper-right
     corner of its YAML configuration editor, select **Variables**.
 
 11. Next to the variable you want to add, click the **Copy to clipboard** icon to copy its name.
@@ -90,7 +90,7 @@ the **Profile Layers** stage of the cluster profile creation process and start f
 
     To improve navigation, you can change the display order of variables. Select the **Variables three-dot Menu**,
     choose **Reorder variables**, and drag and drop variables to change their display order. Finally, select **Confirm
-    order**.
+    order**. The display order is also used when deploying a cluster and populating its values.
 
     :::
 
@@ -99,7 +99,7 @@ the **Profile Layers** stage of the cluster profile creation process and start f
 
     :::warning
 
-    Certain packs do not fully support cluster profile variables. If there is an existing schema constraint defined in the pack, the variable must satisfy the schema; otherwise, the variable cannot be used, and the updated cluster profile cannot be saved.   
+    Some packs may not support certain cluster profile variable data formats. If there is an existing schema constraint defined in the pack, the variable must satisfy the schema; otherwise, the variable cannot be used, and the updated cluster profile cannot be saved.   
      
     :::
 
@@ -144,10 +144,14 @@ The following guide uses Amazon Web Services (AWS) Internet-as-a-Service (IaaS) 
     - [VMware](../../../../clusters/pcg/deploy-pcg/vmware.md)
 
 - An existing [cluster profile](../../cluster-profiles.md) with at least one [cluster profile variable](#create-a-cluster-profile-variable).
+
+- The following Palette permissions. Refer to [Roles and Permissions](../../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile) for more information. 
   
-- The `clusterProfile.create` and `clusterProfile.update` permissions to create and update cluster profiles. Refer to
-  [Roles and Permissions](../../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile) for
-  more information.
+  - `clusterProfile.create`
+
+  - `clusterProfile.update`
+  
+  - `cluster.create`
 
 ### Deployment
 
@@ -163,11 +167,15 @@ The following guide uses Amazon Web Services (AWS) Internet-as-a-Service (IaaS) 
 
 6. Review the cluster profile layers, making changes if needed, and click **Next**.
 
-7. The **Profile Config** window is displayed. Enter the values of your cluster profile variables as needed. Variables with a default value are automatically populated but can be overridden unless a **Read-only** parameter was set. Click **Next** when finished. 
+7. The **Profile Config** window is displayed. Enter the values of your cluster profile variables as needed. Variables with a default value are automatically populated but can be overwritten unless a **Read-only** parameter was set. Click **Next** when finished. 
+
+    :::tip
+
+    The order of the fields is determined by the order of the variables in the cluster profile. To change the order, return to the cluster profile, select **Variables**, and from the **three-dot Menu**, choose **Reorder variables**. Drag and drop the variables to rearrange them.
 
 8. Select a **Region** and **SSH Key Pair Name** associated with your AWS account. Click **Next**.
    
-9. Configure your control plane and worker pools, choosing an **Instant Type** and **Availability zones**. Click **Next**.
+9.  Configure your control plane and worker pools, choosing an **Instant Type** and **Availability zones**. Click **Next**.
 
 10. Configure additional cluster settings as desired. When finished, **Validate** your cluster. 
 
@@ -177,7 +185,7 @@ The following guide uses Amazon Web Services (AWS) Internet-as-a-Service (IaaS) 
 
 Once your cluster is deployed, verify that any parameters containing cluster profile variables were populated with the expected values.
 
-The following validation process uses the [kubectl CLI](https://kubernetes.io/docs/reference/kubectl/) and the cluster's [kubeconfig](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) file. For more information on how to use kubectl and kubeconfig with your Palette-hosted clusters, refer to the Spectro Cloud [Kubectl](../../../../clusters/cluster-management/palette-webctl.md) and [Kubeconfig](../../../../clusters/cluster-management/kubeconfig.md) guides.
+The following validation process uses the [kubectl CLI](https://kubernetes.io/docs/reference/kubectl/) and the cluster's [kubeconfig](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) file. For more information on how to use `kubectl` and **kubeconfig** with your Palette clusters, refer to the Spectro Cloud [Kubectl](../../../../clusters/cluster-management/palette-webctl.md) and [Kubeconfig](../../../../clusters/cluster-management/kubeconfig.md) guides.
 
 1. Log in to [Palette](https://spectrocloud.com).
 
@@ -188,19 +196,19 @@ The following validation process uses the [kubectl CLI](https://kubernetes.io/do
 4. From the cluster overview page, navigate to the middle column containing cluster details and locate the **Kubernetes
    Config File** row.
 
-5. Click the kubeconfig link to download the file.
+5. Click the **kubeconfig** link to download the file.
 
     ![Arrow pointing to the kubeconfig file.](/clusters_cluster-management_palette-webctl_cluster-details-overview.webp)
 
-6. Open a terminal window and set the `KUBECONFIG` environment variable to the file path of the **kubeconfig** file.
-
-    Example:
+6. Open a terminal window and set the `KUBECONFIG` environment variable to the file path of the **kubeconfig** file. Below is an example.
 
     ```shell
     export KUBECONFIG=~/Downloads/dev-cluster.kubeconfig
     ```
 
-7. Issue the appropriate `kubectl` command to verify that your parameter was populated correctly. The following example verifies that the expected Hello Universe namespace was used.
+7. Issue the appropriate `kubectl` command to verify that your parameter was populated correctly. 
+
+    The following example verifies that the expected Hello Universe namespace was used.
 
     ```shell
     kubectl get namespaces
@@ -223,4 +231,4 @@ The following validation process uses the [kubectl CLI](https://kubernetes.io/do
 
 ## Next Steps
 
-Cluster profile variables were created to make modifying cluster configuration values easy. Refer to the [Modify Cluster Profile Variables](./modify-cluster-profile-variables.md) guide to learn more. 
+Cluster profile variables were created not just to make deploying clusters easier but also updating their configuration values. Refer to the [Modify Cluster Profile Variables](./modify-cluster-profile-variables.md) guide to learn more. 
