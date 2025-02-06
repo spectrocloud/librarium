@@ -275,12 +275,12 @@ Use the following steps to install Palette.
 
     :::tip
 
-    If an error occurs during installation, remove the `kind` cluster that was created and restart the installation. To
-    remove the `kind` cluster, issue the following command. Replace `spectro-mgmt-cluster` with the name of your cluster
-    if you used a different name.
+    If an error occurs during the installation, remove the `kind` cluster that was created and restart the process. To
+    remove the `kind` cluster, install [kind](https://kind.sigs.k8s.io/docs/user/quick-start/#installation) and issue
+    the following command. Replace `spectro-mgmt-cluster` with the name of your cluster if you used a different name.
 
     ```bash
-    kind delete cluster spectro-mgmt-cluster
+    kind delete clusters spectro-mgmt-cluster
     ```
 
     Restart the install process by referencing the `ec.yaml` file that was created during the first installation
