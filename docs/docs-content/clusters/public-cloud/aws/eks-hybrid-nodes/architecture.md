@@ -203,7 +203,7 @@ guidance on how to set up credentials for your hybrid nodes.
   which is essential for Palette to manage the cluster. Due to EKS architectural constraints, the Palette agent cannot
   be installed on the EKS control plane.
 
-  - **Minimum Instance Type**: Worker nodes must use an instance type of at least **t3.xlarge** with 60 GB of storage to
+  - **Minimum Instance Type**: Worker nodes must use an instance type of at least **t3.xlarge** and 40 GB of storage to
     ensure adequate resources.
 
   - **Ongoing Node Availability**: To maintain continuous management capabilities, at least one worker node should
