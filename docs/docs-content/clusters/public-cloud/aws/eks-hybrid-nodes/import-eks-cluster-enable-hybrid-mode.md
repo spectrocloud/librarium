@@ -92,7 +92,7 @@ Import your Amazon EKS cluster and enable hybrid mode to be able to create edge 
   - Your Amazon EKS cluster must include at least one worker node to host the Palette agent, which is necessary for
     Palette to manage the cluster. Because of EKS architecture constraints, the agent cannot be installed on the control
     plane.
-    - The minimum instance type required is **t3.xlarge** with at least 40 GB of storage.
+    - The minimum instance type required is **t3.xlarge** with at least 20 GB of storage.
     - Be sure at least one worker node is always available so Palette can continue managing the cluster.
 
 - A Hybrid Nodes IAM Role with the required Kubernetes permissions to join your Amazon EKS cluster. Refer to
