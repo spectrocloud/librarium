@@ -125,7 +125,6 @@ Use the following instructions to build the Edge Installer ISO. The optional ste
    HTTP_PROXY=
    PROXY_CERT_PATH=
    UPDATE_KERNEL=false
-   EOF
    ```
 
 ### Prepare User Data
