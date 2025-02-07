@@ -53,9 +53,9 @@ tags: ["release-notes"]
 #### Features
 
 - <TpBadge /> Palette now supports a two node architecture, which provides High Availability (HA) mode. Users can access
-  this feature by using a toggle to enable high availability mode during cluster configuration. High
-  availability mode replaces etcd with Postgres and [Kine](https://github.com/k3s-io/kine). Refer to the Two Node
-  Architecture page for further details.
+  this feature by using a toggle to enable high availability mode during cluster configuration. High availability mode
+  replaces etcd with Postgres and [Kine](https://github.com/k3s-io/kine). Refer to the Two Node Architecture page for
+  further details.
 
 ### VerteX
 
@@ -64,12 +64,16 @@ tags: ["release-notes"]
 - Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
   [Palette section](#palette-enterprise-4-6-0) for more details.
 
+- [Palette VerteX](../vertex/vertex.md) now offers complete brand customization. System operators can apply custom logos
+  and color schemes to the instances they manage by using the **Customize interface** tab in the **Administration**
+  panel in the system control. Refer to the Customize Interface guide to learn more.
+
 ### Automation
 
-- All Terraform cluster resources now support operations on
-  [Cluster Profile Variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables.md) in
-  non-Edge and connected Edge clusters. For more information, refer to the Spectro Cloud Terraform provider
-  [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
+- All Terraform cluster resources now support
+  [Cluster Profile Variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables.md)
+  management in non-Edge and connected Edge clusters. For more information, refer to the Spectro Cloud Terraform
+  provider [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
 
 - Palette will now automatically use the most recent Pack version when no version is specified in Terraform resources.
   This improvement streamlines the user process of identifying and pulling the latest pack versions directly. Versions
@@ -110,11 +114,11 @@ included.
 
 - Due to Google's
   [decision to deprecate](https://cloud.google.com/artifact-registry/docs/transition/transition-from-gcr) the `gcr.io`
-  container registry, we have added a new image registry that Palette agents will use to pull images. The
-  new registry is `us-docker.pkg.dev`. This was [announced](./annoucements.md#implemented-changes) as part of the
-  Palette 4.5.3 release. If you have network restrictions in place, ensure that the new registry is allowed. The
-  migration of images to this new registry is now complete. Redirects from the old registry to the new registry are in
-  place, so no user actions are required at this time. Refer to the
+  container registry, we have added a new image registry that Palette agents will use to pull images. The new registry
+  is `us-docker.pkg.dev`. This was [announced](./annoucements.md#implemented-changes) as part of the Palette 4.5.3
+  release. If you have network restrictions in place, ensure that the new registry is allowed. The migration of images
+  to this new registry is now complete. Redirects from the old registry to the new registry are in place, so no user
+  actions are required at this time. Refer to the
   [Proxy Requirements](../enterprise-version/install-palette/#proxy-requirements) for a complete list of domains that
   must be allowed.
 
@@ -122,26 +126,26 @@ included.
 
 | Pack Name                                  | New Version |
 | ------------------------------------------ | ----------- |
-| K3s                                        | 1.29.13     |
-| K3s                                        | 1.30.9      |
-| K3s                                        | 1.31.5      |
 | K3s                                        | 1.32.1      |
+| K3s                                        | 1.31.5      |
+| K3s                                        | 1.30.9      |
+| K3s                                        | 1.29.13     |
 | Kubernetes EKS                             | 1.32        |
-| Palette eXtended Kubernetes (PXK)          | 1.29.13     |
-| Palette eXtended Kubernetes (PXK)          | 1.30.9      |
-| Palette eXtended Kubernetes (PXK)          | 1.31.5      |
 | Palette eXtended Kubernetes (PXK)          | 1.32.1      |
-| Palette eXtended Kubernetes - Edge (PXK-E) | 1.29.13     |
-| Palette eXtended Kubernetes - Edge (PXK-E) | 1.30.9      |
+| Palette eXtended Kubernetes (PXK)          | 1.31.5      |
+| Palette eXtended Kubernetes (PXK)          | 1.30.9      |
+| Palette eXtended Kubernetes (PXK)          | 1.29.13     |
 | Palette eXtended Kubernetes - Edge (PXK-E) | 1.31.5      |
-| RKE2                                       | 1.29.13     |
-| RKE2                                       | 1.30.9      |
-| RKE2                                       | 1.31.5      |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.30.9      |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.29.13     |
 | RKE2                                       | 1.32.1      |
-| RKE2 - Edge                                | 1.29.13     |
-| RKE2 - Edge                                | 1.30.9      |
-| RKE2 - Edge                                | 1.31.5      |
+| RKE2                                       | 1.31.5      |
+| RKE2                                       | 1.30.9      |
+| RKE2                                       | 1.29.13     |
 | RKE2 - Edge                                | 1.32.1      |
+| RKE2 - Edge                                | 1.31.5      |
+| RKE2 - Edge                                | 1.30.9      |
+| RKE2 - Edge                                | 1.29.13     |
 
 #### Add-on Packs
 
@@ -158,18 +162,18 @@ included.
 
 | Pack Name                                  | New Version |
 | ------------------------------------------ | ----------- |
-| Palette eXtended Kubernetes (PXK)          | 1.29.13     |
-| Palette eXtended Kubernetes (PXK)          | 1.30.9      |
-| Palette eXtended Kubernetes (PXK)          | 1.31.5      |
 | Palette eXtended Kubernetes (PXK)          | 1.32.1      |
-| Palette eXtended Kubernetes - Edge (PXK-E) | 1.29.13     |
-| Palette eXtended Kubernetes - Edge (PXK-E) | 1.30.9      |
+| Palette eXtended Kubernetes (PXK)          | 1.31.5      |
+| Palette eXtended Kubernetes (PXK)          | 1.30.9      |
+| Palette eXtended Kubernetes (PXK)          | 1.29.13     |
 | Palette eXtended Kubernetes - Edge (PXK-E) | 1.31.5      |
-| RKE2                                       | 1.29.13     |
-| RKE2                                       | 1.30.9      |
-| RKE2                                       | 1.31.5      |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.30.9      |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.29.13     |
 | RKE2                                       | 1.32.1      |
-| RKE2 - Edge                                | 1.29.13     |
-| RKE2 - Edge                                | 1.30.9      |
-| RKE2 - Edge                                | 1.31.5      |
+| RKE2                                       | 1.31.5      |
+| RKE2                                       | 1.30.9      |
+| RKE2                                       | 1.29.13     |
 | RKE2 - Edge                                | 1.32.1      |
+| RKE2 - Edge                                | 1.31.5      |
+| RKE2 - Edge                                | 1.30.9      |
+| RKE2 - Edge                                | 1.29.13     |
