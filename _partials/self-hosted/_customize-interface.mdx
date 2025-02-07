@@ -1,0 +1,71 @@
+---
+partial_category: self-hosted
+partial_name: customize-interface
+---
+
+You can customize the appearance of the following components for {props.version} installations to fit your brand:
+
+- Login window - Logo and colors
+
+- Sidebar (expanded and minimized) - Logo and colors
+
+- Favicon - Logo
+
+Interface customization applies only to the login screen and tenants; changes do not cascade to the system console. Note that if you make customizations, the bottom of the sidebar will read **Powered by Spectro Cloud**.
+
+## Prerequisites
+
+- Access to the {props.version} 
+    <PaletteVertexUrlMapper
+        edition={props.edition}
+        text="system console"
+        url="/system-management/#access-the-system-console"
+      /> .
+<!-- prettier-ignore-start -->
+- Root Administrator or Operations Administrator permissions. Refer to the 
+  <PaletteVertexUrlMapper
+     edition={props.edition}
+     text="System Administrators"
+     url="/system-management/account-management"
+   /> page to learn more.
+<!-- prettier-ignore-end -->
+
+## Enablement
+
+1. Log in to the system console. For additional guidance, check out the
+    <PaletteVertexUrlMapper
+        edition={props.edition}
+        text="Access to the System Console"
+        url="/system-management/#access-the-system-console"
+    /> guide.
+
+2. From the left **Main Menu**, select **Administration**. 
+
+3. Navigate to the **Customize interface** tab. From here, you can customize the login window, sidebar, and favicon to fit your brand's logos and colors. The **Preview** pane is updated to reflect your changes.
+
+        ![The Customize interface tab of the Administration tab](/enterprise-version_system-management_customize-interface.webp)
+
+    The following table describes the various customization elements on each **Customize interface** tab. At any point, you can choose **Reset to default** to revert to the default Palette theme, resetting _all_ interface customization.
+
+    :::info
+
+    All logo images must be in PNG or SVG format. For best results, we recommend using images that are landscape oriented and do not exceed 1 MB in size. If you do not upload a logo, the default {props.edition} logo is used.
+
+    :::
+
+
+    | Tab | Description  | Logo Size Constraints |
+    | --- | ---------- | ------------------ |
+    | **Login** | Change the logo on the login screen and the color of the **Sign in** button. | Maximum width: 180px. Maximum height: 67px. |
+    | **Sidebar** | Change the logo on the expanded sidebar and the color of both the expanded and minimized sidebar of the {props.version} dashboard. | Maximum width: 180px. Maximum height: 67px. |
+    | **Minimized Sidebar** | Change the logo on the minimized sidebar of the {props.version} dashboard. The color used in **Sidebar** is also used for **Minimized Sidebar**. | Maximum width: 180px. Maximum height: 67px. |
+    | **Favicon** | Change the favicon used for the login screen and within {props.version}. | Maximum width: 32px. Maximum height: 32px. |
+
+4. When you are finished, select **Save changes**. 
+
+## Validation
+
+1. Proceed to the login page of Palette. If you made any login screen or favicon changes, verify the changes have been applied.
+
+2. Log in to {props.edition}. If you made any sidebar changes, verify the changes have been applied.
+
