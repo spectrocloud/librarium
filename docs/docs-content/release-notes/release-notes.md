@@ -48,8 +48,6 @@ tags: ["release-notes"]
   ensure that Palette automatically updates cluster secrets. This improvement ensures that clusters with expired
   credentials are updated immediately to prevent disruptions.
 
-#### Deprecations and Removals
-
 ### Edge
 
 #### Features
@@ -102,7 +100,7 @@ included.
 
 ### Packs
 
-### Pack Notes
+#### Pack Notes
 
 <!-- prettier-ignore-start -->
 
