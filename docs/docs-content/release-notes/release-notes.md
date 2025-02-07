@@ -31,7 +31,7 @@ tags: ["release-notes"]
 - [Self-hosted Palette](../enterprise-version/enterprise-version.md) and Dedicated Palette SaaS installations now offer
   complete brand customization. System operators can apply custom logos and color schemes to the instances they manage
   by using the **Customize interface** tab in the **Administration** panel in the system control. Refer to the Customize
-  Palette Installation guide to learn more.
+  Interface guide to learn more.
 
 - The [Virtual Machine Migration Assistant](../vm-management/vm-migration-assistant/vm-migration-assistant.md) now
   allows TLS configuration for ingress resources, enhancing security through HTTPS access. This capability provides a
@@ -52,8 +52,8 @@ tags: ["release-notes"]
 
 #### Features
 
-- <TpBadge /> Palette now supports a two node architecture which provides High Availability (HA) mode. Users can access
-  this feature by enabling a toggle which enables the high availability mode during cluster configuration. High
+- <TpBadge /> Palette now supports a two node architecture, which provides High Availability (HA) mode. Users can access
+  this feature by using a toggle to enable high availability mode during cluster configuration. High
   availability mode replaces etcd with Postgres and [Kine](https://github.com/k3s-io/kine). Refer to the Two Node
   Architecture page for further details.
 
@@ -77,7 +77,7 @@ tags: ["release-notes"]
   [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
 
 - The `--validate` flag of the Palette [EC](../automation/palette-cli/commands/ec.md) command now supports validation of
-  airgapped environments. Previously, only environments that have internet access were supported. Refer to the
+  airgapped environments. Previously, only environments that had internet access were supported. Refer to the
   [Validate Environment](../automation/palette-cli/commands/ec.md#validate-environment) section for further information.
 
 - The Terraform OCI registry resource, `spectrocloud_registry_oci`, now supports Zarf and Pack
@@ -104,13 +104,13 @@ included.
 
 <!-- prettier-ignore-start -->
 
-- Palette support for <VersionedLink text="MicroK8s" url="/integrations/packs/?pack=kubernetes-microk8s" /> 1.29 and 1.30 has been enhanced to provide airgap support, as well as deployment on [MAAS](../clusters/data-center/maas/maas.md) and [AWS](../clusters/public-cloud/aws/aws.md). Additionally, this update validates multi-node control planes.
+- Palette support for <VersionedLink text="MicroK8s" url="/integrations/packs/?pack=kubernetes-microk8s" /> 1.29 and 1.30 has been enhanced to provide airgap support, as well as deployments on [MAAS](../clusters/data-center/maas/maas.md) and [AWS](../clusters/public-cloud/aws/aws.md). Additionally, this update validates multi-node control planes.
 
 <!-- prettier-ignore-end -->
 
 - Due to Google's
   [decision to deprecate](https://cloud.google.com/artifact-registry/docs/transition/transition-from-gcr) the `gcr.io`
-  container registry, we have added a new image registry that Palette agents will use to pull images as part of . The
+  container registry, we have added a new image registry that Palette agents will use to pull images. The
   new registry is `us-docker.pkg.dev`. This was [announced](./annoucements.md#implemented-changes) as part of the
   Palette 4.5.3 release. If you have network restrictions in place, ensure that the new registry is allowed. The
   migration of images to this new registry is now complete. Redirects from the old registry to the new registry are in
