@@ -7,32 +7,75 @@ tags: ["public cloud", "aws", "eks hybrid nodes"]
 sidebar_position: 3
 ---
 
-This guide explains how to prepare on-premises Edge Hosts for use as Amazon EKS Hybrid Nodes within the Spectro Cloud ecosystem. There are two main ways to register these hosts:
+This guide explains how to prepare on-premises edge hosts for use as Amazon EKS Hybrid Nodes within the Spectro Cloud ecosystem. There are two available methods to register these hosts:
 
-1. [**Agent Mode**](../../../../../deployment-modes/agent-mode/agent-mode.md)
-2. [**Appliance Mode**](../../../../../deployment-modes/appliance-mode.md)
+- [Agent Mode](../../../../../deployment-modes/agent-mode/agent-mode.md) using connected mode installation.
+- [Appliance Mode](../../../../../deployment-modes/appliance-mode.md)
 
-Agent Mode installs a lightweight agent on existing systems, and Appliance Mode deploys a fully managed OS and stack. Choose the approach that aligns best with your operational and security requirements.
-
-## Prerequisites
-
-Before you begin, ensure the following:
-
-1. **Infrastructure**: 
-   - You have physical or virtual servers ready to act as Edge Hosts.
-   - The physical or virtual server resources meet the recommended guidelines.
-2. **OS and Dependencies**:  
-   - Compatible operating system (e.g., Ubuntu, CentOS, or a supported Linux distribution).  
-   - Correct versions of Docker/Containerd, Kubernetes tooling (if needed), etc.  
-3. **Network Connectivity**:  
-   - Verify that the Edge Host has outbound connectivity to Spectro Cloud services and AWS endpoints.  
-   - Ensure any firewalls or proxies are configured to allow necessary ports/protocols.  
-4. **Spectro Cloud Access**:  
-   - You have an account and the necessary permissions in Spectro Cloud to register and manage Edge Hosts.  
+Agent Mode installs a lightweight agent on existing systems, and Appliance Mode deploys a fully managed operating system (OS) and stack. Choose the approach that aligns best with your operational and security requirements.
 
 ## Agent Mode
 
-In Agent Mode, you install a lightweight Spectro Cloud agent on your existing host OS. This agent communicates with the Spectro Cloud control plane to manage configurations, updates, and workloads.
+In Agent Mode, you install the Palette agent on your existing host OS. This agent communicates with the Spectro Cloud control plane to manage configurations, updates, and workloads.
+
+The key benefits of Agent Mode are:
+
+- Minimal overhead on the host OS.
+- Easier to integrate with custom OS configurations.
+- Agent updates can be rolled out seamlessly from the Spectro Cloud console.
+
+### Prerequisites
+
+#### Infrastructure
+
+- You have physical or virtual servers ready to be used as edge hosts.
+- The physical or virtual server resources meet the [Minimum Device Requirements](../../../../../deployment-modes/agent-mode/architecture.md#minimum-device-requirements).
+- The server has at least one IP address assigned.
+
+#### OS and Dependencies
+
+- You must have a supported OS installed on your edge hosts. Palette supports the same operating systems as AWS. Refer to [Prepare operating system for hybrid nodes](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-os.html) for details.
+  - The FIPS-compliant version of Agent Mode is only available for Red Hat Enterprise Linux (RHEL).
+- Ensure the following software is installed and available:
+
+  - [bash](https://www.gnu.org/software/bash/)
+  - [jq](https://jqlang.github.io/jq/download/)
+  - [Zstandard](https://facebook.github.io/zstd/)
+  - [rsync](https://github.com/RsyncProject/rsync)
+  - [systemd](https://systemd.io/)
+  - [systemd-timesyncd](https://www.freedesktop.org/software/systemd/man/latest/systemd-timesyncd.service.html). This is
+    required if you want Palette to manage Network Time Protocol (NTP). If you don't want Palette to manage NTP, you can
+    skip this requirement.
+  - [systemd-resolved](https://www.freedesktop.org/software/systemd/man/latest/systemd-resolved.service.html). This is
+    required if you want Palette to manage Domain Name System (DNS). If you don't want Palette to manage DNS, you can
+    skip this requirement.
+  - [systemd-networkd](https://www.freedesktop.org/software/systemd/man/latest/systemd-networkd.html). This requirement
+    is specific for clusters that use static IP addresses. You also need this if you want Palette to manage the Edge
+    host network.
+  - [iptables](https://linux.die.net/man/8/iptables)
+  - [rsyslog](https://github.com/rsyslog/rsyslog). This is required for audit logs.
+
+  <br />
+
+  :::warning
+
+  Avoid installing [Docker](https://www.docker.com/) on the host where you want to install the agent. Docker is a heavyweight tool that could
+  interfere with the Palette agent.
+
+  :::
+
+- Ensure that the host has `Bash` configured as the default shell.
+
+#### Network Connectivity
+
+- Verify that you can access the edge host through SSH.
+- Verify that the edge host has outbound connectivity to Spectro Cloud [services](../../../../../architecture/palette-public-ips.md) and [ports](../../../../../architecture/networking-ports.md#network-ports).
+- Verify that the edge host has outbound connectivity to the required AWS [domains and ports](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-networking.html#hybrid-nodes-networking-on-prem) (**Access required during hybrid node installation and upgrade** & **Access required for ongoing cluster operations**).
+- Verify that the edge host can has outbound access to the internet.
+
+#### Palette Registration Token
+
+- You will need a Palette tenant registration token. Refer to the [Create a Registration Token](../../../../edge/site-deployment/site-installation/create-registration-token.md) guide for instructions on how to create a token.
 
 ### Steps to Register Edge Host in Agent Mode
 
@@ -46,18 +89,18 @@ In Agent Mode, you install a lightweight Spectro Cloud agent on your existing ho
    - Initiate the registration process, which may generate a one-time token or registration command.  
    - Paste the registration token/command into the host CLI if needed.
 
-3. **Validate Connection**  
-   - Check the Spectro Cloud dashboard to confirm the new Edge Host is listed as “Online” or “Healthy.”  
-   - Run any required health checks to ensure the agent has the necessary permissions and network access.
+### Validate
 
-**Benefits of Agent Mode**  
-- Minimal overhead on the host OS.  
-- Easier to integrate with custom OS configurations.  
-- Agent updates can be rolled out seamlessly from the Spectro Cloud console.
+- Check the Spectro Cloud dashboard to confirm the new edge host is listed as “Online” or “Healthy.”  
+- Run any required health checks to ensure the agent has the necessary permissions and network access.
 
 ## Appliance Mode
 
 In Appliance Mode, you deploy a prepackaged Spectro Cloud appliance image (often an ISO or OVA) onto your bare-metal or virtual infrastructure. The appliance includes an embedded OS and the Spectro Cloud stack, providing a more controlled, consistent runtime environment.
+
+### Prerequisites
+
+
 
 ### Steps to Register Edge Host in Appliance Mode
 
@@ -91,10 +134,10 @@ In Appliance Mode, you deploy a prepackaged Spectro Cloud appliance image (often
 
 ## Summary
 
-Preparing Edge Hosts for Amazon EKS Hybrid Nodes with Spectro Cloud can be done via **Agent Mode**, which installs a lightweight agent on existing systems, or **Appliance Mode**, which deploys a fully managed OS and stack. Each approach offers different benefits in terms of simplicity, control, and consistency.
+Preparing edge hosts for Amazon EKS Hybrid Nodes with Spectro Cloud can be done via **Agent Mode**, which installs a lightweight agent on existing systems, or **Appliance Mode**, which deploys a fully managed OS and stack. Each approach offers different benefits in terms of simplicity, control, and consistency.
 
 ## Next Steps
 
 1. Pick the registration mode (Agent or Appliance) best suited to your infrastructure.
 2. Complete the setup.
-3. Validate connectivity, performance, and security for your Edge Hosts once registered.
+3. Validate connectivity, performance, and security for your edge hosts once registered.

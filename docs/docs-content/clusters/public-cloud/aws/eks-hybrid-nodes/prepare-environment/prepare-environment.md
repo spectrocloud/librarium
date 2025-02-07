@@ -18,7 +18,7 @@ Before Palette can manage your Amazon EKS cluster and Amazon EKS Hybrid Nodes, y
 
 ## Resources
 
-Use the following resources to help prepare your environment:
+Use the following resources to help prepare your environment.
 
 <!-- - [Prepare Network](./prepare-network.md)
 
