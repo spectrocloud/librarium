@@ -2289,6 +2289,27 @@
       },
       "type": "object"
     },
+    "v1AwsAccountCredentials": {
+      "description": "Aws secret account credentials",
+      "properties": {
+        "accessKey": {
+          "description": "Aws account access key",
+          "type": "string"
+        },
+        "expirationTime": {
+          "$ref": "#/definitions/v1Time"
+        },
+        "secretKey": {
+          "description": "Aws account secret key",
+          "type": "string"
+        },
+        "secretToken": {
+          "description": "Aws account secret token",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "v1AwsAccounts": {
       "description": "List of AWS accounts",
       "properties": {
@@ -2374,7 +2395,9 @@
           "description": "AWS accounts are scoped to a single partition. Allowed values [aws, aws-us-gov], Default values",
           "enum": [
             "aws",
-            "aws-us-gov"
+            "aws-us-gov",
+            "aws-iso",
+            "aws-iso-b"
           ],
           "type": "string"
         },
@@ -2387,6 +2410,13 @@
         },
         "secretKey": {
           "description": "AWS account secret key",
+          "type": "string"
+        },
+        "secretSpec": {
+          "$ref": "#/definitions/v1AwsSecretSpec"
+        },
+        "secretToken": {
+          "description": "AWS account secret token; in case of aws-iso and aws-iso-b",
           "type": "string"
         },
         "sts": {
@@ -3352,6 +3382,84 @@
         "bucket",
         "region"
       ],
+      "type": "object"
+    },
+    "v1AwsSecretSpec": {
+      "description": "AWS cloud account which includes access key and secret key in case of 'secret' credentials type. It includes policyARNS, ARN and externalId in case of sts. Partition is a group of AWS Region and Service objects",
+      "properties": {
+        "accountName": {
+          "description": "AWS secret accountName; only for aws-iso-b environment",
+          "type": "string"
+        },
+        "agency": {
+          "description": "AWS secret agency",
+          "type": "string"
+        },
+        "isCapValidationEnabled": {
+          "description": "Flag to rotate the secret region credentials",
+          "type": "boolean"
+        },
+        "mission": {
+          "description": "AWS secret mission; only for aws-iso environment",
+          "type": "string"
+        },
+        "namePrefix": {
+          "description": "Policy Boundary",
+          "type": "string"
+        },
+        "permissionBoundary": {
+          "description": "Role or Policy Prefix",
+          "type": "string"
+        },
+        "policy": {
+          "description": "AWS secret policy; JSON string",
+          "type": "string"
+        },
+        "role": {
+          "description": "AWS secret role",
+          "type": "string"
+        },
+        "tls": {
+          "$ref": "#/definitions/v1AwsSecretTlsConfig",
+          "description": "TLS configuration for the AWS secret"
+        }
+      },
+      "type": "object"
+    },
+    "v1AwsSecretSpecInputEntity": {
+      "description": "AWS Secret spec input entity",
+      "properties": {
+        "partition": {
+          "default": "aws-iso-b",
+          "description": "AWS accounts are scoped to a single partition. Allowed values [aws-iso, aws-iso-b], Default values",
+          "enum": [
+            "aws-iso",
+            "aws-iso-b"
+          ],
+          "type": "string"
+        },
+        "secretSpec": {
+          "$ref": "#/definitions/v1AwsSecretSpec",
+          "description": "AWS secret spec entity"
+        }
+      }
+    },
+    "v1AwsSecretTlsConfig": {
+      "description": "TLS configuration for the AWS secret",
+      "properties": {
+        "ca": {
+          "description": "CA certificate",
+          "type": "string"
+        },
+        "cert": {
+          "description": "Certificate",
+          "type": "string"
+        },
+        "key": {
+          "description": "Key",
+          "type": "string"
+        }
+      },
       "type": "object"
     },
     "v1AwsSecurityGroups": {
@@ -4902,6 +5010,14 @@
         "state": {
           "description": "Cloud account status",
           "type": "string"
+        },
+        "tokenExpiry": {
+          "$ref": "#/definitions/v1Time",
+          "description": "Token expiry time"
+        },
+        "tokenGenerationTime": {
+          "$ref": "#/definitions/v1Time",
+          "description": "Token generation time"
         }
       },
       "type": "object"
@@ -10635,6 +10751,10 @@
         "controlPlaneEndpoint": {
           "$ref": "#/definitions/v1EdgeNativeControlPlaneEndPoint",
           "description": "ControlPlaneEndpoint is the control plane endpoint, which can be an IP or FQDN"
+        },
+        "isTwoNodeCluster": {
+          "description": "IsTwoNodeCluster is to enable two node cluster support in the control-plane",
+          "type": "boolean"
         },
         "ntpServers": {
           "description": "NTPServers is a list of NTP servers to use instead of the machine image's default NTP server list",
@@ -27533,6 +27653,64 @@
       ],
       "type": "object"
     },
+    "v1SpectroClusterVariableResponse": {
+      "description": "Unique variable field with schema definition",
+      "properties": {
+        "defaultValue": {
+          "description": "The default value of the variable",
+          "type": "string",
+          "x-omitempty": false
+        },
+        "description": {
+          "description": "Variable description",
+          "type": "string"
+        },
+        "displayName": {
+          "description": "Unique display name of the variable",
+          "type": "string"
+        },
+        "format": {
+          "$ref": "#/definitions/v1VariableFormat"
+        },
+        "hidden": {
+          "description": "If true, then variable will be hidden for overriding the value. By default the hidden flag will be set to false",
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "immutable": {
+          "description": "If true, then variable value can't be editable. By default the immutable flag will be set to false",
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "isSensitive": {
+          "description": "If true, then default value will be masked. By default the isSensitive flag will be set to false",
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "name": {
+          "description": "Variable name",
+          "type": "string"
+        },
+        "regex": {
+          "description": "Regular expression pattern which the variable value must match",
+          "type": "string"
+        },
+        "required": {
+          "description": "Flag to specify if the variable is optional or mandatory. If it is mandatory then default value must be provided",
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "value": {
+          "description": "The user specified value of the variable",
+          "type": "string",
+          "x-omitempty": false
+        }
+      },
+      "required": [
+        "name"
+      ],
+      "type": "object"
+    },
     "v1SpectroClusterVariableUpdateEntity": {
       "description": "List of cluster variables to be updated with profile uid",
       "properties": {
@@ -27564,7 +27742,7 @@
         "variables": {
           "description": "List of cluster variables with schema",
           "items": {
-            "$ref": "#/definitions/v1Variable"
+            "$ref": "#/definitions/v1SpectroClusterVariableResponse"
           },
           "type": "array",
           "uniqueItems": true
@@ -31812,6 +31990,101 @@
       },
       "type": "object"
     },
+    "v1Theme": {
+      "description": "Theme data entity",
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/v1ObjectMeta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1ThemeSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1ThemeStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1ThemeCreateEntity": {
+      "description": "Theme data create entity",
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/v1ObjectMetaInputEntity"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1ThemeSpec"
+        }
+      },
+      "required": [
+        "metadata",
+        "spec"
+      ],
+      "type": "object"
+    },
+    "v1ThemeMetadata": {
+      "description": "Theme metadata",
+      "properties": {
+        "active": {
+          "description": "Tells if the theme is active or not",
+          "type": "boolean",
+          "x-omitempty": false
+        },
+        "name": {
+          "description": "Name of the theme",
+          "type": "string"
+        },
+        "uid": {
+          "description": "Uid of the theme",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1ThemeSpec": {
+      "properties": {
+        "values": {
+          "description": "Contains the string value of custom properties like logo, name etc.",
+          "type": "string",
+          "x-omitempty": false
+        }
+      },
+      "required": [
+        "values"
+      ]
+    },
+    "v1ThemeStatus": {
+      "properties": {
+        "active": {
+          "description": "Specifies if the theme is active or not",
+          "type": "boolean",
+          "x-omitempty": false
+        }
+      }
+    },
+    "v1ThemeUpdateEntity": {
+      "description": "Theme data update entity",
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/v1ObjectMetaUpdateEntity"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1ThemeSpec"
+        }
+      },
+      "type": "object"
+    },
+    "v1ThemesMetadata": {
+      "description": "Theme metadata",
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/definitions/v1ThemeMetadata"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "v1TierPrice": {
       "description": "tier price",
       "properties": {
@@ -33088,7 +33361,8 @@
       "properties": {
         "defaultValue": {
           "description": "The default value of the variable",
-          "type": "string"
+          "type": "string",
+          "x-omitempty": false
         },
         "description": {
           "description": "Variable description",
@@ -38605,7 +38879,7 @@
     }
   },
   "info": {
-    "title": "Palette APIs - 4.5",
+    "title": "Palette APIs - 4.6",
     "version": "v1"
   },
   "paths": {
@@ -49971,6 +50245,48 @@
           "type": "string"
         }
       ]
+    },
+    "/v1/clouds/aws/account/secret/credentials": {
+      "post": {
+        "operationId": "V1AwsAccountSecretCredentials",
+        "parameters": [
+          {
+            "description": "Retrieves the Aws secret credentials",
+            "in": "body",
+            "name": "account",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1AwsSecretSpecInputEntity"
+            }
+          },
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AwsAccountCredentials"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Retrieves the Aws secret credentials",
+        "tags": [
+          "clouds"
+        ]
+      }
     },
     "/v1/clouds/aws/account/sts": {
       "get": {
@@ -67936,7 +68252,7 @@
       },
       "parameters": [
         {
-          "description": "Cluster uid for which log is requested",
+          "description": "Log fetcher uid for which log is requested",
           "in": "path",
           "name": "uid",
           "required": true,
