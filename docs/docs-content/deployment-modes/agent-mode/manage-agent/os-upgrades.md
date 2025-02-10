@@ -11,8 +11,10 @@ Agent mode hosts install and manage their Operating System (OS) outside Palette.
 in terms of architecture, but it has the drawback that Palette cannot upgrade, patch or manage the operating systems of
 the hosts. This can lead to inconsistencies, missed updates, or operational risks.
 
-This guide demonstrates how to configure regularly scheduled OS upgrades by leveraging cluster profiles and the
-[system upgrade controller](https://github.com/rancher/system-upgrade-controller) already installed by Palette.
+This page demonstrates how to configure regularly scheduled OS upgrades by leveraging cluster profiles and the
+[system upgrade controller](https://github.com/rancher/system-upgrade-controller) already installed by Palette. You will
+learn how to create your own Kubernetes manifest containing your custom OS upgrade script. Your cluster nodes will then
+be selected based on configured node labels and upgraded periodically according to a Cron schedule you choose.
 
 ## Prerequisites
 
@@ -20,7 +22,6 @@ This guide demonstrates how to configure regularly scheduled OS upgrades by leve
   [Install Agent Mode](../install-agent-host.md) guide for further details. The cluster should be listed as **Healthy**
   and with a **Running** status.
   - The host must have access to the internet and a connection to Palette.
-  - The host root file system is mounted in the `/host` directory.
 - Access to a terminal with network access to your cluster.
 - Kubectl installed locally. Refer to the Kubernetes [Install Tools](https://kubernetes.io/docs/tasks/tools/) guide for
   further details.
