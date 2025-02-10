@@ -11,4 +11,4 @@ keywords: ["self-hosted", "vertex", "customize-interface"]
 
 import CustomizeInterface from "../../../../_partials/self-hosted/_customize-interface.mdx";
 
-<CustomizeInterface name="customize-interface" edition="VerteX" version="VerteX"/>
+<CustomizeInterface name="customize-interface" edition="VerteX" version="VerteX" andor="VerteX"/>

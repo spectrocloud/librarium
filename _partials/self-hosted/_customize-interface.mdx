@@ -3,7 +3,7 @@ partial_category: self-hosted
 partial_name: customize-interface
 ---
 
-You can customize the appearance of the following components for {props.version} installations to fit your brand:
+You can customize the following user interface elements for {props.version} installations to fit your brand:
 
 - Login window - Logo and colors
 
@@ -11,11 +11,19 @@ You can customize the appearance of the following components for {props.version}
 
 - Favicon - Logo
 
-Interface customization applies only to the login screen and tenants; changes do not cascade to the system console. Note that if you make customizations, the bottom of the sidebar will read **Powered by Spectro Cloud**.
+:::info
+
+If you customize your interface, the bottom of the sidebar will read **Powered by Spectro Cloud**.
+
+:::
+
+## Limitations
+
+- Interface customization applies only to the login screen and tenants. Changes do not cascade to the system console.
 
 ## Prerequisites
 
-- Access to the {props.version} 
+- Access to the {props.andor} 
     <PaletteVertexUrlMapper
         edition={props.edition}
         text="system console"
@@ -54,12 +62,12 @@ Interface customization applies only to the login screen and tenants; changes do
     :::
 
 
-    | Tab | Description  | Logo Size Constraints |
-    | --- | ---------- | ------------------ |
-    | **Login** | Change the logo on the login screen and the color of the **Sign in** button. | Maximum width: 180px. Maximum height: 67px. |
-    | **Sidebar** | Change the logo on the expanded sidebar and the color of both the expanded and minimized sidebar of the {props.version} dashboard. | Maximum width: 180px. Maximum height: 67px. |
-    | **Minimized Sidebar** | Change the logo on the minimized sidebar of the {props.version} dashboard. The color used in **Sidebar** is also used for **Minimized Sidebar**. | Maximum width: 180px. Maximum height: 67px. |
-    | **Favicon** | Change the favicon used for the login screen and within {props.version}. | Maximum width: 32px. Maximum height: 32px. |
+    | Tab                   | Description                                                                      | Logo Size Constraints                       |
+    | --------------------- | -------------------------------------------------------------------------------- | ------------------------------------------- |
+    | **Login**             | Change the logo on the login screen and the color of the **Sign in** button.     | Maximum width: 180px. Maximum height: 67px. |
+    | **Sidebar**           | Change the logo and color of the sidebar (expanded and minimized).               | Maximum width: 180px. Maximum height: 67px. |
+    | **Minimized Sidebar** | Use a different logo when the sidebar is minimized.                              | Maximum width: 180px. Maximum height: 67px. |
+    | **Favicon**           | Change the favicon used for the login screen and on {props.version} screens.     | Maximum width: 32px. Maximum height: 32px.  |
 
 4. When you are finished, select **Save changes**. 
 
@@ -67,5 +75,5 @@ Interface customization applies only to the login screen and tenants; changes do
 
 1. Proceed to the login page of Palette. If you made any login screen or favicon changes, verify the changes have been applied.
 
-2. Log in to {props.edition}. If you made any sidebar changes, verify the changes have been applied.
+2. Log in to {props.edition}. If you made any favicon or sidebar changes, verify the changes have been applied.
 
