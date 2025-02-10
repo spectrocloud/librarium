@@ -9,4 +9,10 @@ tags: ["self-hosted", "management", "account", "customize-interface"]
 keywords: ["self-hosted", "palette", "customize-interface"]
 ---
 
-<PartialsComponent category="self-hosted" name="customize-interface" edition="Palette" version="dedicated SaaS and self-hosted Palette" andor="dedicated SaaS or self-hosted Palette" />
+<PartialsComponent
+  category="self-hosted"
+  name="customize-interface"
+  edition="Palette"
+  version="dedicated SaaS and self-hosted Palette"
+  andor="dedicated SaaS or self-hosted Palette"
+/>
