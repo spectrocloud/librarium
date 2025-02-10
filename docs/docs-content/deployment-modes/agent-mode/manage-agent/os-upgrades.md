@@ -117,15 +117,7 @@ be selected based on configured node labels and upgraded periodically according 
     ```
 
 11. Execute the following commands to create the `upgrades.yaml` file using your namespace, upgrade schedule, labels,
-    and upgrade script variables. The command creates the `upgrades.yaml` file in your current directory.
-
-    The YAML file defines the following Kubernetes resources.
-
-    | **Resource** | **Name**            | **Description**                                                                                                                                                                                                                                                                                                                                               |
-    | ------------ | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | `Secret`     | `os-upgrade-script` | Saves the upgrade instructions to an opaque secret.                                                                                                                                                                                                                                                                                                           |
-    | `Secret`     | `os-upgrade-plan`   | Saves the upgrade script execution on the cluster nodes using the specified upgrade concurrency and node selector labels. The execution is configured using the `Plan` resource defined by the [`system-upgrade-controller` project](https://github.com/rancher/system-upgrade-controller). Palette has installed all required dependencies for this project. |
-    | `CronJob`    | `os-upgrade-job`    | Schedules the upgrade plan to execute at regular intervals and provides a restart policy should the plan fail.                                                                                                                                                                                                                                                |
+    and upgrade script variables.
 
     ```shell
     cat << EOF > upgrades.yaml
@@ -214,6 +206,15 @@ be selected based on configured node labels and upgraded periodically according 
                         restartPolicy: OnFailure
     EOF
     ```
+
+    The command creates the `upgrades.yaml` file in your current directory. The YAML file defines the following
+    Kubernetes resources.
+
+    | **Resource** | **Name**            | **Description**                                                                                                                                                                                                                                                                                                                                               |
+    | ------------ | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | `Secret`     | `os-upgrade-script` | Saves the upgrade instructions to an opaque secret.                                                                                                                                                                                                                                                                                                           |
+    | `Secret`     | `os-upgrade-plan`   | Saves the upgrade script execution on the cluster nodes using the specified upgrade concurrency and node selector labels. The execution is configured using the `Plan` resource defined by the [`system-upgrade-controller` project](https://github.com/rancher/system-upgrade-controller). Palette has installed all required dependencies for this project. |
+    | `CronJob`    | `os-upgrade-job`    | Schedules the upgrade plan to execute at regular intervals and provides a restart policy should the plan fail.                                                                                                                                                                                                                                                |
 
 12. Navigate back to [Palette](https://console.spectrocloud.com) in your browser. Select **Profiles** from the left
     **Main Menu**.
