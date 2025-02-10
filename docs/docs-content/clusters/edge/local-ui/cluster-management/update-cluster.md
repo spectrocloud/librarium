@@ -38,8 +38,9 @@ version. This guide explains how to update an existing cluster in Local UI.
    [Export Cluster Definition](./export-cluster-definition.md).
 
 5. Local UI displays the **Review Changes** modal, where you can review the update summary and verify all incoming
-   changes to the [Cluster Profile Variables](../../../../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/define-profile-variables.md). Your current configuration is displayed on the left, and the incoming
-   changes are displayed on the right.
+   changes to the
+   [Cluster Profile Variables](../../../../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/define-profile-variables.md).
+   Your current configuration is displayed on the left, and the incoming changes are displayed on the right.
 
 6. Click each profile variable and review the changes. You can specify values for new profile variables, override the
    incoming default values, or leave the incoming changes as is, depending on your local cluster configuration.
