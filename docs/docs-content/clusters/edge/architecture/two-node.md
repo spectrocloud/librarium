@@ -33,6 +33,15 @@ refer to [Create Cluster Definition](../site-deployment/cluster-deployment.md). 
 must use two nodes and two nodes only, and will not be able to change it to a regular etcd-backed cluster with a
 different number of nodes.
 
+## Limitations
+
+- Two-node clusters can only be deployed in connected mode. You cannot deploy hosts i
+- Agent mode is not supported for two-node clusters because two-node high availability relies on Kairos, which is only
+  used in appliance mode. For more information, refer to
+  [Deployment Modes](../../../deployment-modes/deployment-modes.md).
+- Two-node clusters can only have two nodes in the control plane pool. You cannot adjust the number of the nodes in the
+  control plane pool during cluster creation.
+
 ## Use Cases
 
 The two-node architecture prioritizes availability, but does make a slight sacrifice in data consistency in a
