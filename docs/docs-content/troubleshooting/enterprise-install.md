@@ -210,3 +210,81 @@ Repeat the following process for each node in your cluster.
    ```bash hideClipboard
    fs.file-max = 1000000
    ```
+
+## Scenario - MAAS and VMware vSphere clusters fail image resolution in non-airgap environments
+
+In Palette or VerteX non-airgap installations with version 4.2.13 or later, MAAS and VMware vSphere clusters may fail to
+provision due to image resolution errors. These environments have incorrectly configured default image endpoints. To
+resolve this issue, you must manually set these endpoints.
+
+### Debug Steps
+
+1. Open a terminal with connectivity to your self-hosted environment.
+
+2. Execute the following command to save base URL of your Palette instance API to the `BASE_URL` environment value. Add
+   your correct URL in place of `REPLACE_ME`.
+
+   ```shell
+   export BASE_URL="REPLACE ME"
+   ```
+
+3. Use the following command to log in to the Palette System API by using the `/v1/auth/syslogin` endpoint. Ensure you
+   replace the credentials below with your system console credentials.
+
+   ```bash
+   curl --location '$BASE_URL/v1/auth/syslogin' \
+   --header 'Content-Type: application/json' \
+   --data '{
+     "password": "**********",
+     "username": "**********"
+   }'
+   ```
+
+   Output
+
+   ```json hideClipboard
+   {
+     "Authorization": "**********.",
+     "IsPasswordReset": true
+   }
+   ```
+
+4. Using the output you received, copy the authorization value to your clipboard and assign it to an environment
+   variable. Replace the authorization value below with the value from the output.
+
+   ```shell hideClipboard
+   TOKEN=**********
+   ```
+
+5. Execute the following command to set the MAAS image endpoint to `https://maasgoldenimage.s3.amazonaws.com`. Replace
+   the `caCert` value below with the Certificate Authority (CA) certificate for your self-hosted environment.
+
+   ```shell
+   curl --request PUT '$BASE_URL/v1/system/config/maas/image' \
+   --header 'Authorization: $TOKEN' \
+   --header 'Content-Type: application/json' \
+   --data '{
+      "spec": {
+         "imagesHostEndpoint": "https://maasgoldenimage.s3.amazonaws.com",
+         "insecureSkipVerify": false,
+         "caCert": "**********"
+      }
+   }'
+   ```
+
+6. Execute the following command to set the VMware vSphere image endpoint to
+   `https://vmwaregoldenimage.s3.amazonaws.com`. Replace the `caCert` value below with the Certificate Authority (CA)
+   certificate for your self-hosted environment.
+
+   ```shell
+   curl --request PUT '$BASE_URL/v1/system/config/vsphere/image' \
+   --header 'Authorization: $TOKEN' \
+   --header 'Content-Type: application/json' \
+   --data '{
+      "spec": {
+         "imagesHostEndpoint": "https://vmwaregoldenimage.s3.amazonaws.com",
+         "insecureSkipVerify": false,
+         "caCert": "**********"
+      }
+   }'
+   ```
