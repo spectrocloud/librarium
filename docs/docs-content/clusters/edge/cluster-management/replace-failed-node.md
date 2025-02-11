@@ -13,13 +13,13 @@ to maintain high availability. This guide teaches you how to replace a failed no
 
 ## Prerequisite
 
-- You have an active two-node cluster with one of the node experiencing failure.
+- You have an active two-node cluster with one of the nodes experiencing failure.
 
 - You have an Edge host registered with Palette.
 
-- You new registered Edge host must be in the same network as the surviving node of the cluster.
+- Your new registered Edge host must be in the same network as the surviving node of the cluster.
 
-## Replace a Failed Node.
+## Replace a Failed Node
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
