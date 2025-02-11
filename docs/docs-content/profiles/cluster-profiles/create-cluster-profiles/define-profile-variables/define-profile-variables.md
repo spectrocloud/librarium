@@ -22,24 +22,23 @@ using [Palette Macros](../../../../clusters/cluster-management/macros.md).
 
 The following table describes the differences between profile variables and macros.
 
-| **Capability**                                                            | **Profile Variable** | **Macro** |
-| ------------------------------------------------------------------------- | :------------------: | :-------: |
-| Belongs to the cluster profile scope                                      |          ✅          |    ❌     |
-| Belongs to the project scope                                              |          ❌          |    ✅     |
-| Belongs to the tenant scope                                               |          ❌          |    ✅     |
-| Supports data format restrictions                                         |          ✅          |    ❌     |
-| Supports optionality restrictions                                         |          ✅          |    ❌     |
-| Supports [sprig template functions](https://masterminds.github.io/sprig/) |          ❌          |    ✅     |
+| **Capability**                                                             | **Profile Variable** | **Macro** |
+| -------------------------------------------------------------------------- | :------------------: | :-------: |
+| Belongs to the cluster profile scope.                                      |          ✅          |    ❌     |
+| Belongs to the project scope.                                              |          ❌          |    ✅     |
+| Belongs to the tenant scope.                                               |          ❌          |    ✅     |
+| Supports data format restrictions.                                         |          ✅          |    ❌     |
+| Supports optionality restrictions.                                         |          ✅          |    ❌     |
+| Supports [sprig template functions](https://masterminds.github.io/sprig/). |          ❌          |    ✅     |
 
 ## Limitations
 
 - Palette does not support nesting profile variables within macros or other profile variables.
 
-- You cannot define profile variables for the `pack.content` and `system.uri` parameters because the
-  [Palette CLI](../../../../automation/palette-cli/palette-cli.md) populates them automatically.
-
 - Some packs may not support certain cluster profile variable data formats. If there is an existing schema constraint
-  defined in the pack, the variable must satisfy the schema.
+  defined in the pack, the variable must satisfy the schema. Refer to the [Pack Constraints](../../../../registries-and-packs/pack-constraints.md) page for more information.
+
+- If you are using the [Palette CLI](../../../../automation/palette-cli/palette-cli.md) to deploy a cluster, you cannot define profile variables for the `pack.content` and `system.uri` parameters because the Palette CLI populates them automatically.
 
 ## Next Steps
 

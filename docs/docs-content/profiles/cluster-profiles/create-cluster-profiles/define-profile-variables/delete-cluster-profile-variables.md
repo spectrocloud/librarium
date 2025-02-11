@@ -6,8 +6,6 @@ sidebar_position: 70
 tags: ["profiles", "cluster profiles", "cluster profile variables"]
 ---
 
-Deleting a cluster profile variable is similar to [modifying one](./modify-cluster-profile-variables.md).
-
 If your cluster profile is not being used in an active cluster, you can delete your profile variables in the current
 version of your cluster profile. However, if your cluster profile is currently being used in a cluster, you must first
 [create a new version of your cluster profile](../../../cluster-profiles/modify-cluster-profiles/version-cluster-profile.md)
@@ -33,7 +31,7 @@ before you can delete the variables.
    [creating a new version of your cluster profile](../../../cluster-profiles/modify-cluster-profiles/version-cluster-profile.md)
    before proceeding.
 3. In the upper-right corner, click **Variables**.
-4. Any variables present in a profile layer are indicated by a darkened pill and the text **[Count] layers**. Hover over
+4. Any variables present in a profile layer are indicated by a darkened pill and the text **[#] layers**. Hover over
    the pill to review the profile layers that the variable is used in. You must remove the profile variable definition
    from all layers before you can delete it.
 
@@ -47,7 +45,7 @@ before you can delete the variables.
 
    ![Removing a cluster profile variable from YAML configuration](/profiles_cluster-profiles_create-cluster-profiles_define-profile-variables_delete-cluster-profile-variables_remove-from-YAML.webp)
 
-7. Continue removing all references to the profile variable from the layer. When you are finished, select **Confirm
+7. Remove all references to the profile variable from the layer. When you are finished, select **Confirm
    Updates**.
 
 8. Repeat steps five through seven as necessary until the profile variable is removed from all layers and the pill
@@ -58,7 +56,7 @@ before you can delete the variables.
 10. Once your changes have been saved, in the upper-right corner, click **Variables**.
 11. Select the **three-dot Menu** beside the **unused** cluster profile variable. **Delete** the variable.
 
-### Validation
+### Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -116,7 +114,7 @@ This is the recommended process from removing cluster profile variables from act
     **Running configuration** and **New configuration**, making any necessary changes to your cluster profile variables.
     Updated profile variable values must match the schema defined in the cluster profile variable.
 
-    Each profile must be **Reviewed**, indicated by a green check mark, before you can apply your changes. In the
+    Each profile must have a **Reviewed** status, indicated by a green check mark, before you can apply your changes. In the
     example below, we deleted the profile variable for the Kubecost frontend `imagePullPolicy`.
 
     ![Deleting a profile variable from a cluster using cluster profile versioning](/profiles_cluster-profiles_create-cluster-profiles_define-profile-variables_delete-cluster-profile-variables.webp)
@@ -162,7 +160,7 @@ to the new version. For information on versioning profiles, check out
 
 </Tabs>
 
-### Validation
+### Validate
 
 Once your cluster is finished updating, verify that any parameters previously containing cluster profile variables were
 populated with the expected values.
@@ -179,21 +177,9 @@ information on how to use `kubectl` and **kubeconfig** with your Palette cluster
 
 3. Select the host cluster you want to access.
 
-4. From the cluster overview page, navigate to the middle column containing cluster details and locate the **Kubernetes
-   Config File** row.
+4. Follow the [Kubectl](../../../../clusters/cluster-management/palette-webctl.md) guide to download your cluster's kubeconfig file and access your cluster using `kubectl`.
 
-5. Click the **kubeconfig** link to download the file.
-
-   ![Arrow pointing to the kubeconfig file.](/clusters_cluster-management_palette-webctl_cluster-details-overview.webp)
-
-6. Open a terminal window and set the `KUBECONFIG` environment variable to the file path of your **kubeconfig** file.
-   Below is an example.
-
-   ```shell
-   export KUBECONFIG=~/Downloads/dev-cluster.kubeconfig
-   ```
-
-7. Issue the appropriate `kubectl` command to verify that your parameter was populated correctly.
+5. Issue the appropriate `kubectl` command to verify that your parameter was populated correctly.
 
    The following example searches the `cost-analyzer-cost-analyzer` deployment file in the `kubecost` namespace for the
    text `imagePullPolicy`, verifying that the `imagePullPolicy` for the Kubecost frontend was updated from

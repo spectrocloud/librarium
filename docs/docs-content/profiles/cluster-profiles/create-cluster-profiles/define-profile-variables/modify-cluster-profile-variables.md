@@ -8,12 +8,17 @@ tags: ["profiles", "cluster profiles", "cluster profile variables"]
 
 There are two ways to modify your cluster profile variables:
 
+<!-- prettier-ignore-start -->
+
 - Modify the _schema_ of your profile variables from the associated cluster profile, including default values.
+  
 - Modify the _values_ of your profile variables in an active cluster.
+  
+<!-- prettier-ignore-end -->
 
 If you need to modify the schema of an existing profile variable or any of its properties, you must modify the cluster
 profile that contains the profile variable before you can update the profile variable in a cluster. If no schema updates
-are needed and you are simply updating the values of profile variables in an already deployed cluster, proceed to the
+are needed and you are only updating the values of profile variables in an already deployed cluster, proceed to the
 [Modify Profile Variable Values in an Active Cluster](#modify-profile-variable-values-in-an-active-cluster) portion of
 this guide.
 
@@ -62,13 +67,13 @@ For guidance on creating profile variables, refer to the
 
    Some packs may not support certain cluster profile variable data formats. If there is an existing schema constraint
    defined in the pack, the variable must satisfy the schema; otherwise, the variable cannot be used, and the updated
-   cluster profile cannot be saved.
+   cluster profile cannot be saved. Refer to the [Pack Constraints](../../../../registries-and-packs/pack-constraints.md) page for more information.
 
    :::
 
-### Validation
+### Validate
 
-Take the following steps to confirm that your cluster profile schema and properties have been updated.
+Use the following guide to confirm that your cluster profile schema and properties have been updated.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -85,9 +90,9 @@ active cluster to get the latest changes, or add an add-on profile to an active 
 
 ## Modify Profile Variable Values in an Active Cluster
 
-Cluster profile variables make it easy to modify values on active clusters. If you need to add additional profile
+Cluster profile variables make it easier to modify values on active clusters. If you need to add additional profile
 variables or modify the schema of existing variables, you must first
-[modify the cluster profile](#modify-profile-variable-schemas) that the variable is a part of. Values that do not follow
+[modify the cluster profile](#modify-profile-variable-schemas) that the variables are part of. Values that do not follow
 the defined variable schema are not supported.
 
 ### Prerequisites
@@ -103,20 +108,25 @@ the defined variable schema are not supported.
 
 There are two ways to modify your cluster profile variables in an active cluster.
 
-- [**Review changes in Editor**](#review-changes-in-editor) - Use this process if you plan to make any of the following
+- [**Review changes in Editor**](#review-changes-in-editor) - Use this process if you plan to make either of the following
   changes:
+   <!-- prettier-ignore-start -->
+    - Update your cluster profile version to one that changes the YAML configuration of a pack or adds or removes cluster
+      profile variables (regardless of whether the definition is included in the pack configuration).
 
-  - Update your cluster profile version to one that changes the YAML configuration of a pack or adds or removes cluster
-    profile variables (regardless of whether the definition is included in the pack configuration).
-  - Add or remove a profile from your cluster.
+    - Add or remove a profile from your cluster.
+   <!-- prettier-ignore-end --> 
 
 - [**Profile Variables Configuration**](#profile-variables-configuration) - Use this process if you plan to make either
   of the following changes:
 
-  - Update your cluster profile version to one that does _not_ change the YAML configuration of a pack but _does_ modify
+   <!-- prettier-ignore-start -->
+    - Update your cluster profile version to one that does _not_ change the YAML configuration of a pack but _does_ modify
     the schema or properties of existing variables.
-  - Change the values of your cluster profile variables being used in your cluster without updating the cluster profile
+
+    - Change the values of your cluster profile variables being used in your cluster without updating the cluster profile
     version.
+   <!-- prettier-ignore-end -->
 
 #### Review Changes in Editor
 
@@ -124,7 +134,7 @@ There are two ways to modify your cluster profile variables in an active cluster
 2. From the left **Main Menu**, select **Clusters**. Choose the cluster for which you are updating the cluster profile
    variable.
 3. Navigate to the **Profile** tab of the cluster, where you can quickly view how many profile variables are being used
-   in the current version of your cluster profile.
+   in the current version of your cluster profile. An information icon is displayed if any of the variables are hidden.
 4. If you need to update a cluster profile version, such as in the case of newly added or removed profile variables,
    expand the semantic version **drop-down Menu** and choose the appropriate version.
 5. If you need to add a profile, select the **Add add-on profile** icon. Choose the profile to add, and **Confirm** your
@@ -136,15 +146,22 @@ There are two ways to modify your cluster profile variables in an active cluster
    **Running configuration** and **New configuration**, making any necessary changes to your cluster profile variables.
    If you are overwriting the default value, you can revert to the original value by selecting **Use Default**. Updated
    profile variable values must match the schema defined in the cluster profile variable. <br /> <br /> Each profile
-   must be **Reviewed**, indicated by a green check mark, before you can apply your changes. In the example below, we
-   have added a new profile variable for Grafana and have changed the Kubecost frontend `imagePullPolicy` from `Always`
+   must have a **Reviewed** status, indicated by a green check mark, before you can apply your changes. In the example below, we have added a new profile variable for Grafana and have changed the Kubecost frontend `imagePullPolicy` from `Always`
    to `IfNotPresent`.
 
    ![Reviewing profile variable changes using the Change Summary Process](/profiles_cluster-profiles_create-cluster-profiles_define-profile-variables_modify-cluster-profile-variable-review-update-changes.webp)
 
+   :::tip
+
+   The order of the fields is determined by the order of the variables in the cluster profile. To change the order,
+   return to the cluster profile, select **Variables**, and from the **three-dot Menu**, choose **Reorder variables**.
+   Drag and drop the variables to rearrange them.
+
+   :::
+
 9. When you are finished, select **Apply Changes**.
 10. Your cluster begins the update process. Navigate to the cluster **Events** tab to monitor your cluster's progress.
-    When your cluster is finished updating, [validate](#validation-1) your changes.
+    When your cluster is finished updating, [validate](#validate-1) your changes.
 
 #### Profile Variables Configuration
 
@@ -156,12 +173,12 @@ There are two ways to modify your cluster profile variables in an active cluster
 
    If you are not updating the cluster profile version and are only updating existing cluster profile variables, you can
    expand the **drop-down Menu** for **Settings**, choose **Cluster Settings**, and use the **Profile Variables
-   Configuration** tab to easily update your profile variables. Proceed to step six to learn more.
+   Configuration** tab to update your profile variables. Proceed to step six to learn more.
 
    :::
 
 3. Navigate to the **Profile** tab of the cluster, where you can quickly view how many profile variables are being used
-   in the current version of your cluster profile.
+   in the current version of your cluster profile. An information icon is displayed if any of the variables are hidden.
 
 4. If you need to update a cluster profile version, such as in the case of updated profile variable schemas, expand the
    semantic version **drop-down Menu** and choose the appropriate version.
@@ -174,11 +191,19 @@ There are two ways to modify your cluster profile variables in an active cluster
 
    ![Overwriting existing cluster profile variables without modifying cluster profile](/profiles_cluster-profiles_create-cluster-profiles_define-profile-variables_modify-cluster-profile-variable-override.webp)
 
+   :::tip
+
+   The order of the fields is determined by the order of the variables in the cluster profile. To change the order,
+   return to the cluster profile, select **Variables**, and from the **three-dot Menu**, choose **Reorder variables**.
+   Drag and drop the variables to rearrange them.
+
+   :::
+
 7. When you are finished, choose **Save Changes**.
 8. Your cluster begins the update process. Close the **Settings** window and monitor its progress using the **Events**
-   tab. When your cluster is finished updating, [validate](#validation-1) your changes.
+   tab. When your cluster is finished updating, [validate](#validate-1) your changes.
 
-### Validation
+### Validate
 
 Once your cluster is finished updating, verify that any parameters containing cluster profile variables were populated
 with the expected values.
@@ -195,21 +220,9 @@ information on how to use `kubectl` and **kubeconfig** with your Palette cluster
 
 3. Select the host cluster you want to access.
 
-4. From the cluster overview page, navigate to the middle column containing cluster details and locate the **Kubernetes
-   Config File** row.
+4. Follow the [Kubectl](../../../../clusters/cluster-management/palette-webctl.md) guide to download your cluster's kubeconfig file and access your cluster using `kubectl`.
 
-5. Click the **kubeconfig** link to download the file.
-
-   ![Arrow pointing to the kubeconfig file.](/clusters_cluster-management_palette-webctl_cluster-details-overview.webp)
-
-6. Open a terminal window and set the `KUBECONFIG` environment variable to the file path of the **kubeconfig** file.
-   Below is an example.
-
-   ```shell
-   export KUBECONFIG=~/Downloads/dev-cluster.kubeconfig
-   ```
-
-7. Issue the appropriate `kubectl` command to verify that your parameter was populated correctly.
+5. Issue the appropriate `kubectl` command to verify that your parameter was populated correctly.
 
    The following example searches the `cost-analyzer-cost-analyzer` deployment file in the `kubecost` namespace for the
    text `imagePullPolicy`, verifying that the `imagePullPolicy` for the Kubecost frontend was updated from `Always` to
