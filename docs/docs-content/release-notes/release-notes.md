@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## February 15, 2025 - Release 4.6.0
+## February 16, 2025 - Release 4.6.0
 
 ### Security Notices
 
@@ -53,9 +53,9 @@ tags: ["release-notes"]
 
 #### Features
 
-- <TpBadge /> Palette now supports a two node architecture, which provides a High Availability (HA) mode. Users can
+- <TpBadge /> Palette now supports a two-node architecture, which provides a High Availability (HA) mode. Users can
   enable this feature by toggling the high availability mode during cluster configuration. In HA mode, etcd is replaced
-  with Postgres and [Kine](https://github.com/k3s-io/kine). Refer to the Two Node Architecture page for further details.
+  with Postgres and [Kine](https://github.com/k3s-io/kine). Refer to the Two-Node Architecture page for further details.
 
 ### VerteX
 
@@ -70,10 +70,22 @@ tags: ["release-notes"]
 
 ### Automation
 
+#### Features
+
+- Terraform version 0.23.0 of the [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is available. For more details, refer to the Terraform provider [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
+
 - All Terraform cluster resources now support
   [Cluster Profile Variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables.md)
   management in non-Edge and connected Edge clusters. For more information, refer to the Spectro Cloud Terraform
   provider [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
+
+- A new Terraform resource, `spectrocloud_resource_limit`, is now available for managing Palette
+  [resource limits](../tenant-settings/palette-resource-limits.md). By default, a resource limit is configured in
+  Palette with default values. Users can now update the limits with Terraform. For more information, refer to the
+  Spectro Cloud Terraform provider
+  [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
+
+#### Improvements
 
 - Palette will now automatically use the most recent Pack version when no version is specified in Terraform resources.
   This improvement streamlines the user process of identifying and pulling the latest pack versions directly. Versions
@@ -87,12 +99,6 @@ tags: ["release-notes"]
 - The Terraform OCI registry resource, `spectrocloud_registry_oci`, now supports Zarf and Pack
   [OCI Registry](../registries-and-packs/registries/oci-registry/oci-registry.md) types. Previously, only Helm
   registries were supported. For more information, refer to the Spectro Cloud Terraform provider
-  [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
-
-- A new Terraform resource, `spectrocloud_resource_limit`, is now available for managing Palette
-  [resource limits](../tenant-settings/palette-resource-limits.md). By default, a resource limit is configured in
-  Palette with default values. Users can now update the limits with Terraform. For more information, refer to the
-  Spectro Cloud Terraform provider
   [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
 
 ### Virtual Machine Orchestrator (VMO)
