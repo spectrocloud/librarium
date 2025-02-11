@@ -69,9 +69,9 @@ specific challenges with additional software.
 
 ## Resources
 
-- [Edge Native Architecture](architecture.md)
+- [Edge Native Architecture](./architecture/architecture.md)
 
-- [Deployment Lifecycle](edge-native-lifecycle.md)
+- [Deployment Lifecycle](./edge-native-lifecycle.md)
 
 - [Install Configuration](edge-configuration/edge-configuration.md)
 
