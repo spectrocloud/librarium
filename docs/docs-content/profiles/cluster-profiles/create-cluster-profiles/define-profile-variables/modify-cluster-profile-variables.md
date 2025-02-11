@@ -67,7 +67,8 @@ For guidance on creating profile variables, refer to the
 
    Some packs may not support certain cluster profile variable data formats. If there is an existing schema constraint
    defined in the pack, the variable must satisfy the schema; otherwise, the variable cannot be used, and the updated
-   cluster profile cannot be saved. Refer to the [Pack Constraints](../../../../registries-and-packs/pack-constraints.md) page for more information.
+   cluster profile cannot be saved. Refer to the
+   [Pack Constraints](../../../../registries-and-packs/pack-constraints.md) page for more information.
 
    :::
 
@@ -108,25 +109,27 @@ the defined variable schema are not supported.
 
 There are two ways to modify your cluster profile variables in an active cluster.
 
-- [**Review changes in Editor**](#review-changes-in-editor) - Use this process if you plan to make either of the following
-  changes:
+- [**Review changes in Editor**](#review-changes-in-editor) - Use this process if you plan to make either of the
+  following changes:
    <!-- prettier-ignore-start -->
-    - Update your cluster profile version to one that changes the YAML configuration of a pack or adds or removes cluster
-      profile variables (regardless of whether the definition is included in the pack configuration).
 
-    - Add or remove a profile from your cluster.
-   <!-- prettier-ignore-end --> 
+  - Update your cluster profile version to one that changes the YAML configuration of a pack or adds or removes cluster
+    profile variables (regardless of whether the definition is included in the pack configuration).
+
+  - Add or remove a profile from your cluster.
+  <!-- prettier-ignore-end -->
 
 - [**Profile Variables Configuration**](#profile-variables-configuration) - Use this process if you plan to make either
   of the following changes:
 
    <!-- prettier-ignore-start -->
-    - Update your cluster profile version to one that does _not_ change the YAML configuration of a pack but _does_ modify
+
+  - Update your cluster profile version to one that does _not_ change the YAML configuration of a pack but _does_ modify
     the schema or properties of existing variables.
 
-    - Change the values of your cluster profile variables being used in your cluster without updating the cluster profile
-    version.
-   <!-- prettier-ignore-end -->
+  - Change the values of your cluster profile variables being used in your cluster without updating the cluster profile
+  version.
+  <!-- prettier-ignore-end -->
 
 #### Review Changes in Editor
 
@@ -146,8 +149,9 @@ There are two ways to modify your cluster profile variables in an active cluster
    **Running configuration** and **New configuration**, making any necessary changes to your cluster profile variables.
    If you are overwriting the default value, you can revert to the original value by selecting **Use Default**. Updated
    profile variable values must match the schema defined in the cluster profile variable. <br /> <br /> Each profile
-   must have a **Reviewed** status, indicated by a green check mark, before you can apply your changes. In the example below, we have added a new profile variable for Grafana and have changed the Kubecost frontend `imagePullPolicy` from `Always`
-   to `IfNotPresent`.
+   must have a **Reviewed** status, indicated by a green check mark, before you can apply your changes. In the example
+   below, we have added a new profile variable for Grafana and have changed the Kubecost frontend `imagePullPolicy` from
+   `Always` to `IfNotPresent`.
 
    ![Reviewing profile variable changes using the Change Summary Process](/profiles_cluster-profiles_create-cluster-profiles_define-profile-variables_modify-cluster-profile-variable-review-update-changes.webp)
 
@@ -220,7 +224,8 @@ information on how to use `kubectl` and **kubeconfig** with your Palette cluster
 
 3. Select the host cluster you want to access.
 
-4. Follow the [Kubectl](../../../../clusters/cluster-management/palette-webctl.md) guide to download your cluster's kubeconfig file and access your cluster using `kubectl`.
+4. Follow the [Kubectl](../../../../clusters/cluster-management/palette-webctl.md) guide to download your cluster's
+   kubeconfig file and access your cluster using `kubectl`.
 
 5. Issue the appropriate `kubectl` command to verify that your parameter was populated correctly.
 
