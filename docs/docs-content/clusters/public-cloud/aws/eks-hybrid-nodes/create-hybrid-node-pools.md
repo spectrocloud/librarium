@@ -42,7 +42,9 @@ You must then configure your networking to allow traffic to reach the pods on yo
 7. If using [Agent Mode](../../../../deployment-modes/agent-mode/agent-mode.md), on the **Configure Pack** page, click
    **Values** under **Pack Details**. Then, click on **Presets** on the right-hand side, and select **Agent Mode**.
 
-8. If using [Appliance Mode](../../../../deployment-modes/appliance-mode.md), on the **Configure Pack** page, click **Values** under **Pack Details**. Then, replace the contents of the pack manifest with the your built image manifest.
+8. If using [Appliance Mode](../../../../deployment-modes/appliance-mode.md), on the **Configure Pack** page, click
+   **Values** under **Pack Details**. Then, replace the contents of the pack manifest with the your built image
+   manifest.
 
    Example.
 
@@ -50,19 +52,19 @@ You must then configure your networking to allow traffic to reach the pods on yo
    pack:
      content:
        images:
-         - image: '{{.spectro.pack.edge-native-byoi.options.system.uri}}'
+         - image: "{{.spectro.pack.edge-native-byoi.options.system.uri}}"
      # Below config is default value, please uncomment if you want to modify default values
      #drain:
-       #drainPods: auto     # Set to false to skip node drain for cluster upgrades.
-       #podSelector:        # Set pod selector options for draining.
-       #cordon: true
-       #timeout: 60 # The length of time to wait before giving up, zero means infinite
-       #gracePeriod: 60 # Period of time in seconds given to each pod to terminate gracefully. If negative, the default value specified in the pod will be used
-       #ignoreDaemonSets: true
-       #deleteLocalData: true # Continue even if there are pods using emptyDir (local data that will be deleted when the node is drained)
-       #force: true # Continue even if there are pods that do not declare a controller
-       #disableEviction: false # Force drain to use delete, even if eviction is supported. This will bypass checking PodDisruptionBudgets, use with caution
-       #skipWaitForDeleteTimeout: 60 # If pod DeletionTimestamp older than N seconds, skip waiting for the pod. Seconds must be greater than 0 to skip.
+     #drainPods: auto     # Set to false to skip node drain for cluster upgrades.
+     #podSelector:        # Set pod selector options for draining.
+     #cordon: true
+     #timeout: 60 # The length of time to wait before giving up, zero means infinite
+     #gracePeriod: 60 # Period of time in seconds given to each pod to terminate gracefully. If negative, the default value specified in the pod will be used
+     #ignoreDaemonSets: true
+     #deleteLocalData: true # Continue even if there are pods using emptyDir (local data that will be deleted when the node is drained)
+     #force: true # Continue even if there are pods that do not declare a controller
+     #disableEviction: false # Force drain to use delete, even if eviction is supported. This will bypass checking PodDisruptionBudgets, use with caution
+     #skipWaitForDeleteTimeout: 60 # If pod DeletionTimestamp older than N seconds, skip waiting for the pod. Seconds must be greater than 0 to skip.
    options:
      system.uri: "example.io/edge-hosts/ubuntu:nodeadm-1.30.0-v4.5.21-eks-hybrid"
    ```
