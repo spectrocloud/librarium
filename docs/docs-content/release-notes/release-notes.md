@@ -72,7 +72,10 @@ tags: ["release-notes"]
 
 #### Features
 
-- Terraform version 0.23.0 of the [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is available. For more details, refer to the Terraform provider [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
+- Terraform version 0.23.0 of the
+  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
+  available. For more details, refer to the Terraform provider
+  [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
 
 - All Terraform cluster resources now support
   [Cluster Profile Variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables.md)
