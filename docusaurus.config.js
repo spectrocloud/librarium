@@ -46,7 +46,7 @@ const config = {
   },
   future: {
     experimental_faster: {
-      swcJsLoader: false, // Set to 'false' as Netlify builds fail with this enabled.
+      swcJsLoader: true, // Set to 'false' as Netlify builds fail with this enabled.
       swcJsMinimizer: true,
       swcHtmlMinimizer: true,
       lightningCssMinimizer: true,
