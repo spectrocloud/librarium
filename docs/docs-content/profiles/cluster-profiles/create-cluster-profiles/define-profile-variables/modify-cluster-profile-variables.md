@@ -84,7 +84,7 @@ Use the following guide to confirm that your cluster profile schema and properti
    variables are present and that each variable has the expected definition.
 
 Once your cluster profile has the latest profile variable configurations, you can
-[deploy a new cluster](./create-cluster-profile-variables.md#deploy-a-cluster-with-cluster-profile-variables) using the
+[deploy a new cluster](./create-cluster-profile-variables.md#cluster-deployment) using the
 cluster profile, [update your cluster profile version](../../../../clusters/cluster-management/cluster-updates.md) on an
 active cluster to get the latest changes, or add an add-on profile to an active cluster.
 
