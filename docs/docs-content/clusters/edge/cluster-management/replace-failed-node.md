@@ -7,21 +7,13 @@ sidebar_position: 38
 tags: ["edge", "HA", "cluster management"]
 ---
 
-A highly available two-node cluster can withstand the failure of one node and still maintain production capacity.
-However, when a node fails, it is important to either restore the health of the failed node or replace it with a new
-one. This guide teaches you how to replace a failed node with a new one.
+A highly available (HA) two-node cluster can withstand the failure of one node and still maintain production capacity.
+However, when a node fails, it is important to either restore the health of the failed node or replace it with a new one
+to maintain high availability. This guide teaches you how to replace a failed node.
 
 ## Prerequisite
 
-- You have an active two-node cluster wite one of the node experiencing failure.
-
-:::warning
-
-If the failure occurred on the leader node, you must wait for the failover to complete first before attempting to
-replace the failed node. You can confirm whether the failover has completed by checking the **Nodes** tab of the cluster
-and confirm that the healthy node is the leader node.
-
-:::
+- You have an active two-node cluster with one of the node experiencing failure.
 
 - You have an Edge host registered with Palette.
 
@@ -37,15 +29,21 @@ and confirm that the healthy node is the leader node.
 
 4. Click the **Nodes** tab in the cluster view.
 
-5. Click **Edit** on the control plane pool.
+5. Confirm that the healthy node is the leader node. If the leader node is unhealthy, you must wait for the cluster
+   failover to complete first, which promotes the healthy follower node to become the new leader.
 
-6. Click the **delete** button on the unhealthy node.
+   To learn more about the leader-follower architecture of the two-node HA cluster, refer to
+   [Two-Node Architecture](../architecture/two-node.md).
 
-7. Click **Add Edge Hosts**.
+6. Click **Edit** on the control plane pool.
 
-8. Select the new Edge host to add to the cluster.
+7. Click the **delete** button on the unhealthy node.
 
-9. Click **Confirm**.
+8. Click **Add Edge Hosts**.
+
+9. Select the new Edge host to add to the cluster.
+
+10. Click **Confirm**.
 
 It may take 10 - 20 minutes for the new node to reach **Healthy** status.
 
