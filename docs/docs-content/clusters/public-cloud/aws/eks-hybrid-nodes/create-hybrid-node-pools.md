@@ -44,7 +44,7 @@ You must then configure your networking to allow traffic to reach the pods on yo
 
 <!-- prettier-ignore -->
 8. If using [Appliance Mode](../../../../deployment-modes/appliance-mode.md), on the **Configure Pack** page, click
-   **Values** under **Pack Details**. Then, replace the contents of the pack manifest with the your built image
+   **Values** under **Pack Details**. Then, replace the contents of the pack manifest with your built image
    manifest.
 
    Example.
