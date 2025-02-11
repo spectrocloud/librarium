@@ -31,9 +31,9 @@ before you can delete the variables.
    [creating a new version of your cluster profile](../../../cluster-profiles/modify-cluster-profiles/version-cluster-profile.md)
    before proceeding.
 3. In the upper-right corner, click **Variables**.
-4. Any variables present in a profile layer are indicated by a darkened pill and the text **[#] layers**. Hover over
-   the pill to review the profile layers that the variable is used in. You must remove the profile variable definition
-   from all layers before you can delete it.
+4. Any variables present in a profile layer are indicated by a darkened pill and the text **[#] layers**. Hover over the
+   pill to review the profile layers that the variable is used in. You must remove the profile variable definition from
+   all layers before you can delete it.
 
 5. Close the **Profile variables** pane and open the profile layer containing the variable you want to remove.
 
@@ -45,8 +45,7 @@ before you can delete the variables.
 
    ![Removing a cluster profile variable from YAML configuration](/profiles_cluster-profiles_create-cluster-profiles_define-profile-variables_delete-cluster-profile-variables_remove-from-YAML.webp)
 
-7. Remove all references to the profile variable from the layer. When you are finished, select **Confirm
-   Updates**.
+7. Remove all references to the profile variable from the layer. When you are finished, select **Confirm Updates**.
 
 8. Repeat steps five through seven as necessary until the profile variable is removed from all layers and the pill
    beside the variable changes to **unused**.
@@ -114,8 +113,8 @@ This is the recommended process from removing cluster profile variables from act
     **Running configuration** and **New configuration**, making any necessary changes to your cluster profile variables.
     Updated profile variable values must match the schema defined in the cluster profile variable.
 
-    Each profile must have a **Reviewed** status, indicated by a green check mark, before you can apply your changes. In the
-    example below, we deleted the profile variable for the Kubecost frontend `imagePullPolicy`.
+    Each profile must have a **Reviewed** status, indicated by a green check mark, before you can apply your changes. In
+    the example below, we deleted the profile variable for the Kubecost frontend `imagePullPolicy`.
 
     ![Deleting a profile variable from a cluster using cluster profile versioning](/profiles_cluster-profiles_create-cluster-profiles_define-profile-variables_delete-cluster-profile-variables.webp)
 
@@ -177,7 +176,8 @@ information on how to use `kubectl` and **kubeconfig** with your Palette cluster
 
 3. Select the host cluster you want to access.
 
-4. Follow the [Kubectl](../../../../clusters/cluster-management/palette-webctl.md) guide to download your cluster's kubeconfig file and access your cluster using `kubectl`.
+4. Follow the [Kubectl](../../../../clusters/cluster-management/palette-webctl.md) guide to download your cluster's
+   kubeconfig file and access your cluster using `kubectl`.
 
 5. Issue the appropriate `kubectl` command to verify that your parameter was populated correctly.
 

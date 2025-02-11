@@ -36,9 +36,12 @@ The following table describes the differences between profile variables and macr
 - Palette does not support nesting profile variables within macros or other profile variables.
 
 - Some packs may not support certain cluster profile variable data formats. If there is an existing schema constraint
-  defined in the pack, the variable must satisfy the schema. Refer to the [Pack Constraints](../../../../registries-and-packs/pack-constraints.md) page for more information.
+  defined in the pack, the variable must satisfy the schema. Refer to the
+  [Pack Constraints](../../../../registries-and-packs/pack-constraints.md) page for more information.
 
-- If you are using the [Palette CLI](../../../../automation/palette-cli/palette-cli.md) to deploy a cluster, you cannot define profile variables for the `pack.content` and `system.uri` parameters because the Palette CLI populates them automatically.
+- If you are using the [Palette CLI](../../../../automation/palette-cli/palette-cli.md) to deploy a cluster, you cannot
+  define profile variables for the `pack.content` and `system.uri` parameters because the Palette CLI populates them
+  automatically.
 
 ## Next Steps
 

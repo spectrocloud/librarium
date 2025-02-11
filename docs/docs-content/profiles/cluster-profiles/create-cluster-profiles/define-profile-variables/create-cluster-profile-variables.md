@@ -23,9 +23,9 @@ of creating cluster profile variables, adding them to profile layers, and deploy
 
 ### Enablement
 
-You can define profile variables when creating or updating cluster profiles. To define profile
-variables [while creating a cluster profile](../../create-cluster-profiles/create-cluster-profiles.md), you need to be
-at the **Profile Layers** stage of the cluster profile creation process and start following this guide from step three.
+You can define profile variables when creating or updating cluster profiles. To define profile variables
+[while creating a cluster profile](../../create-cluster-profiles/create-cluster-profiles.md), you need to be at the
+**Profile Layers** stage of the cluster profile creation process and start following this guide from step three.
 
 1.  Log in to [Palette](https://console.spectrocloud.com).
 
@@ -74,8 +74,9 @@ at the **Profile Layers** stage of the cluster profile creation process and star
     | Hidden                  | Hide the cluster profile variable during cluster deployment. If the variable is both hidden and required, it must have a default value set.                                                                                                     |
     | Read-only               | Prevent the cluster profile variable from being edited during cluster deployment. Read-only variables must have a default value set.                                                                                                            |
 
-9.  As you make changes in the **Create variable** pane, the **Preview** field is updated, mirroring how the field will look and behave when deploying and updating clusters. When you are satisfied, select **Create** to create
-    the variable.
+9.  As you make changes in the **Create variable** pane, the **Preview** field is updated, mirroring how the field will
+    look and behave when deploying and updating clusters. When you are satisfied, select **Create** to create the
+    variable.
 
     ![Palette YAML editor with the added profile variables.](/profiles_create-cluster-profiles_define-profile-variables_variable-preview.webp)
 
@@ -86,15 +87,17 @@ at the **Profile Layers** stage of the cluster profile creation process and star
 
 12. Paste the variable in the `parameter: "{{.spectro.var.variable_name}}"` format and click **Confirm Updates**.
 
-    Alternatively, you can start typing `{{.spectro.var.}}` in the YAML configuration editor, and Palette will list the profile variables you have created. Continue typing to filter the list, or use the **Up arrow** and **Down arrow** keys to select the appropriate profile variable. Press **Tab** to accept the suggestion and add the variable.
+    Alternatively, you can start typing `{{.spectro.var.}}` in the YAML configuration editor, and Palette will list the
+    profile variables you have created. Continue typing to filter the list, or use the **Up arrow** and **Down arrow**
+    keys to select the appropriate profile variable. Press **Tab** to accept the suggestion and add the variable.
 
     ![Palette YAML editor with the added profile variables.](/profiles_create-cluster-profiles_define-profile-variables_add-vars-to-yaml.webp)
 
     :::tip
 
-    By default, profile variables are listed in the order they are created. This order is also used when deploying or modifying clusters. To change the display order of variables, select the **Variables three-dot Menu**,
-    choose **Reorder variables**, and drag and drop variables to change their display order. Finally, select **Confirm
-    order**.
+    By default, profile variables are listed in the order they are created. This order is also used when deploying or
+    modifying clusters. To change the display order of variables, select the **Variables three-dot Menu**, choose
+    **Reorder variables**, and drag and drop variables to change their display order. Finally, select **Confirm order**.
 
     :::
 
@@ -106,7 +109,8 @@ at the **Profile Layers** stage of the cluster profile creation process and star
 
     Some packs may not support certain cluster profile variable data formats. If there is an existing schema constraint
     defined in the pack, the variable must satisfy the schema; otherwise, the variable cannot be used, and the updated
-    cluster profile cannot be saved. Refer to the [Pack Constraints](../../../../registries-and-packs/pack-constraints.md) page for more information.
+    cluster profile cannot be saved. Refer to the
+    [Pack Constraints](../../../../registries-and-packs/pack-constraints.md) page for more information.
 
     :::
 
@@ -126,12 +130,20 @@ at the **Profile Layers** stage of the cluster profile creation process and star
 
 ## Cluster Deployment
 
-You can now use your cluster profile to deploy or update a cluster. The steps involved in deploying a cluster depend on the infrastructure provider; however, when cluster profile variables are configured in the cluster profile, there will always be an additional **Profile Config** window displayed prior to deploying the cluster. To learn more about deploying clusters, visit our [Getting Started](../../../../../docs-content/getting-started/getting-started.md) series. 
+You can now use your cluster profile to deploy or update a cluster. The steps involved in deploying a cluster depend on
+the infrastructure provider; however, when cluster profile variables are configured in the cluster profile, there will
+always be an additional **Profile Config** window displayed prior to deploying the cluster. To learn more about
+deploying clusters, visit our [Getting Started](../../../../../docs-content/getting-started/getting-started.md) series.
 
 ![Deploying a cluster and configuring cluster profile variables on the Profile Config window.](/profiles_cluster-profiles_create-cluster-profiles_define-profile-variables_create-cluster-profile-variable-profile-config.webp)
 
-Once you deploy a cluster using profile variables, verify that any parameters containing cluster profile variables were populated with the expected values. The following validation process uses the [kubectl CLI](https://kubernetes.io/docs/reference/kubectl/) and the cluster's [kubeconfig](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) file. For more information on how to use `kubectl` and **kubeconfig** with your Palette clusters, refer to the Spectro Cloud
-[Kubectl](../../../../clusters/cluster-management/palette-webctl.md) and [Kubeconfig](../../../../clusters/cluster-management/kubeconfig.md) guides.
+Once you deploy a cluster using profile variables, verify that any parameters containing cluster profile variables were
+populated with the expected values. The following validation process uses the
+[kubectl CLI](https://kubernetes.io/docs/reference/kubectl/) and the cluster's
+[kubeconfig](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) file. For more
+information on how to use `kubectl` and **kubeconfig** with your Palette clusters, refer to the Spectro Cloud
+[Kubectl](../../../../clusters/cluster-management/palette-webctl.md) and
+[Kubeconfig](../../../../clusters/cluster-management/kubeconfig.md) guides.
 
 1. Log in to [Palette](https://spectrocloud.com).
 
@@ -139,29 +151,31 @@ Once you deploy a cluster using profile variables, verify that any parameters co
 
 3. Select the host cluster you want to access.
 
-4. Follow the [Kubectl](../../../../clusters/cluster-management/palette-webctl.md) guide to download your cluster's kubeconfig file and access your cluster using `kubectl`.
+4. Follow the [Kubectl](../../../../clusters/cluster-management/palette-webctl.md) guide to download your cluster's
+   kubeconfig file and access your cluster using `kubectl`.
 
 5. Issue the appropriate `kubectl` command to verify that your parameter was populated correctly.
-   
-   The following example verifies that the Hello Universe namespace entered on the **Profile Config** window during cluster deployment was created.
 
-      ```shell
-      kubectl get namespaces
-      ```
+   The following example verifies that the Hello Universe namespace entered on the **Profile Config** window during
+   cluster deployment was created.
 
-      ```shell hideClipboard {2}
-      NAME                               STATUS   AGE
-      amazing-hello-universe-namespace   Active   5m49s
-      capi-webhook-system                Active   14m
-      cert-manager                       Active   14m
-      cluster-67a235d83902eab79410087b   Active   14m
-      default                            Active   15m
-      kube-node-lease                    Active   15m
-      kube-public                        Active   15m
-      kube-system                        Active   15m
-      kubecost                           Active   5m55s
-      os-patch                           Active   11m
-      palette-system                     Active   12m
+   ```shell
+   kubectl get namespaces
+   ```
+
+   ```shell hideClipboard {2}
+   NAME                               STATUS   AGE
+   amazing-hello-universe-namespace   Active   5m49s
+   capi-webhook-system                Active   14m
+   cert-manager                       Active   14m
+   cluster-67a235d83902eab79410087b   Active   14m
+   default                            Active   15m
+   kube-node-lease                    Active   15m
+   kube-public                        Active   15m
+   kube-system                        Active   15m
+   kubecost                           Active   5m55s
+   os-patch                           Active   11m
+   palette-system                     Active   12m
    ```
 
 ## Next Steps
