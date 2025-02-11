@@ -1,0 +1,51 @@
+---
+partial_category: permissions
+partial_name: aws-deployment-policy
+---
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "cloudformation:CreateStack",
+        "cloudformation:DescribeStacks",
+        "cloudformation:UpdateStack",
+        "ec2:CreateSnapshot",
+        "ec2:DeleteSnapshot",
+        "ec2:DescribeSnapshots",
+        "ec2:DescribeTags",
+        "ec2:DescribeVolumesModifications",
+        "ec2:DescribeKeyPairs",
+        "ec2:DeleteNetworkInterface",
+        "iam:AttachGroupPolicy",
+        "iam:CreatePolicy",
+        "iam:CreatePolicyVersion",
+        "iam:DeletePolicy",
+        "iam:DeletePolicyVersion",
+        "iam:DetachGroupPolicy",
+        "iam:GetGroup",
+        "iam:GetInstanceProfile",
+        "iam:GetPolicy",
+        "iam:GetUser",
+        "iam:ListPolicies",
+        "iam:ListPolicyVersions",
+        "pricing:GetProducts",
+        "sts:AssumeRole",
+        "sts:GetServiceBearerToken",
+        "iam:AddRoleToInstanceProfile",
+        "iam:AddUserToGroup",
+        "iam:CreateGroup",
+        "iam:CreateInstanceProfile",
+        "iam:CreateUser",
+        "iam:DeleteGroup",
+        "iam:DeleteInstanceProfile",
+        "iam:RemoveRoleFromInstanceProfile",
+        "iam:RemoveUserFromGroup"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
+```
