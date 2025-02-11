@@ -36,7 +36,8 @@ tags: ["release-notes"]
 - The [Virtual Machine Migration Assistant](../vm-management/vm-migration-assistant/vm-migration-assistant.md) now
   allows TLS configuration for ingress resources, enhancing security through HTTPS access. This capability provides a
   unified and secure setup experience for users managing virtual machine migrations. Refer to the
-  [Create Migration Plans](../vm-management/vm-migration-assistant/create-vm-migration-assistant-profile.md) guide to learn more.
+  [Create Migration Plans](../vm-management/vm-migration-assistant/create-vm-migration-assistant-profile.md) guide to
+  learn more.
 
 #### Improvements
 
@@ -52,8 +53,9 @@ tags: ["release-notes"]
 
 #### Features
 
-- <TpBadge /> Palette now supports a two node architecture, which provides a High Availability (HA) mode. Users can enable this feature by toggling the high availability mode during cluster configuration. In HA mode, etcd is replaced with Postgres and [Kine](https://github.com/k3s-io/kine). Refer to the Two Node Architecture page for
-  further details.
+- <TpBadge /> Palette now supports a two node architecture, which provides a High Availability (HA) mode. Users can
+  enable this feature by toggling the high availability mode during cluster configuration. In HA mode, etcd is replaced
+  with Postgres and [Kine](https://github.com/k3s-io/kine). Refer to the Two Node Architecture page for further details.
 
 ### VerteX
 
