@@ -71,13 +71,13 @@ is ready for when the cluster comes back online.
 
 ![Architectural diagram of a two-node cluster when the leader node goes down](/clusters_edge_architecture_two-node-failover.webp)
 
-Once all adjustments have been made, all the Kubernetes cluster will come back online and start processing requests.
+Once all adjustments have been made, the Kubernetes cluster will come back online and start processing requests.
 
 ## Restore High Availability
 
 When you re-introduce another node to your now one-node cluster to restore high availability, the cluster behavior is
-different depending on the timestamp of the most recent state changes in the two nodes. The node will the more recently
-timestamped state change will become the leader.
+different depending on the timestamp of the most recent state changes in the two nodes. The node with the more recently
+timestamped state change will become the leader
 
 ### Restore After Failure
 
@@ -88,12 +88,11 @@ with the current leader and become a follower.
 
 ### Restore After Network Split
 
-If you introduce a node that was removed from the cluster due to a network split, and the node had been receiving write
-requests that result in state changes in the database. When the node is re-introduced to the cluster, both nodes will
-think they are the leader and will compare the timestamp of the most recent state change. If node with the most recent
-state change is elected leader, and the losing node will drop its entire database to sync with the leader node as a
-follower. This may incur a small amount of data loss as the data that was written to the losing node during the split
-are not retained after the cluster is restored.
+If a network split occurs, both nodes will assume the other node has experienced failure and start operating as the new
+leader. When you re-introduce both nodes to the same cluster, the nodes will compare the timestamp of their most recent
+state change. The node with the most recent state change is elected leader, and the losing node will drop its entire
+database to sync with the leader node as a follower. This may incur a small amount of data loss as the data that was
+written to the losing node during the split are not retained.
 
 ![Order of operations diagram of how the two-node architecture resolves split brain scenarios](/clusters_edge_architecture_two-node-split.webp)
 
