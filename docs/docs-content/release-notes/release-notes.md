@@ -23,20 +23,20 @@ tags: ["release-notes"]
 
 - Palette now supports edit and delete operations on
   [Cluster Profile Variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables.md) in
-  non-Edge and connected Edge clusters. Additionally, users can now review and edit the values of Cluster Profile
+  non-Edge and connected Edge clusters. Additionally, you can now review and edit the values of Cluster Profile
   Variables when they are applied to existing clusters. Check out the
   [Cluster Profile Variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables.md) guide to
   learn more about this feature.
 
 - [Self-hosted Palette](../enterprise-version/enterprise-version.md) and Dedicated Palette SaaS installations now offer
   complete brand customization. System operators can apply custom logos and color schemes to the instances they manage
-  by using the **Customize interface** tab in the **Administration** panel in the system control. Refer to the Customize
+  by using the **Customize interface** tab in the **Administration** panel of the system console. Refer to the Customize
   Interface guide to learn more.
 
 - The [Virtual Machine Migration Assistant](../vm-management/vm-migration-assistant/vm-migration-assistant.md) now
   allows TLS configuration for ingress resources, enhancing security through HTTPS access. This capability provides a
   unified and secure setup experience for users managing virtual machine migrations. Refer to the
-  [Create Migration Plans](../vm-management/vm-migration-assistant/create-migration-plans.md) guide to learn more.
+  [Create Migration Plans](../vm-management/vm-migration-assistant/create-vm-migration-assistant-profile.md) guide to learn more.
 
 #### Improvements
 
@@ -52,9 +52,7 @@ tags: ["release-notes"]
 
 #### Features
 
-- <TpBadge /> Palette now supports a two node architecture, which provides High Availability (HA) mode. Users can access
-  this feature by using a toggle to enable high availability mode during cluster configuration. High availability mode
-  replaces etcd with Postgres and [Kine](https://github.com/k3s-io/kine). Refer to the Two Node Architecture page for
+- <TpBadge /> Palette now supports a two node architecture, which provides a High Availability (HA) mode. Users can enable this feature by toggling the high availability mode during cluster configuration. In HA mode, etcd is replaced with Postgres and [Kine](https://github.com/k3s-io/kine). Refer to the Two Node Architecture page for
   further details.
 
 ### VerteX
@@ -108,7 +106,7 @@ included.
 
 <!-- prettier-ignore-start -->
 
-- Palette support for <VersionedLink text="MicroK8s" url="/integrations/packs/?pack=kubernetes-microk8s" /> 1.29 and 1.30 has been enhanced to provide airgap support, as well as deployments on [MAAS](../clusters/data-center/maas/maas.md) and [AWS](../clusters/public-cloud/aws/aws.md). Additionally, this update validates multi-node control planes.
+- Palette's support for <VersionedLink text="MicroK8s" url="/integrations/packs/?pack=kubernetes-microk8s" /> 1.29 and 1.30 has been enhanced to provide airgap support, as well as deployments on [MAAS](../clusters/data-center/maas/maas.md) and [AWS](../clusters/public-cloud/aws/aws.md). Additionally, this update validates multi-node control planes.
 
 <!-- prettier-ignore-end -->
 
