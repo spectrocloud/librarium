@@ -65,7 +65,7 @@ probe would make adjustments to the instance of Kine on the node so that its req
 node's own instance of Postgres. The probe also performs a few SQL commands on the Postgres table to make sure that it
 is ready for when the cluster comes back online.
 
-![Architectural diagram of a two-node cluster when the leader node goes down](clusters_edge_architecture_two-node-failover.webp)
+![Architectural diagram of a two-node cluster when the leader node goes down](/clusters_edge_architecture_two-node-failover.webp)
 
 Once all adjustments have been made, all the Kubernetes cluster will come back online and start processing requests.
 
@@ -79,7 +79,7 @@ current leader as a follower, because the node does not have a more recently tim
 current leader node. If you introduce a new node that was never part of the cluster, it will also sync with the current
 leader and become a follower.
 
-![Order of operations diagram of how the two-node architecture resolves split brain scenarios](clusters_edge_architecture_two-node-split.webp)
+![Order of operations diagram of how the two-node architecture resolves split brain scenarios](/clusters_edge_architecture_two-node-split.webp)
 
 If you introduce a node that was removed from the cluster due to a network split, and the node had been receiving write
 requests that result in state changes in the database. When the node is re-introduced to the cluster, both nodes will
@@ -99,4 +99,4 @@ upgrades the other node. Read requests will continue to be processed because one
 requests will be temporarily unavailable as the leader node goes down during the upgrade. Once both nodes are upgraded,
 both nodes resume the liveness probes.
 
-![Order of operations diagram of how the two-node architecture handles upgrades](clusters_edge_architecture_two-node-upgrade.webp)
+![Order of operations diagram of how the two-node architecture handles upgrades](/clusters_edge_architecture_two-node-upgrade.webp)
