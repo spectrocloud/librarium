@@ -42,21 +42,46 @@ You must then configure your networking to allow traffic to reach the pods on yo
 7. If using [Agent Mode](../../../../deployment-modes/agent-mode/agent-mode.md), on the **Configure Pack** page, click
    **Values** under **Pack Details**. Then, click on **Presets** on the right-hand side, and select **Agent Mode**.
 
-8. Click **Next layer** to continue.
+8. If using [Appliance Mode](../../../../deployment-modes/appliance-mode.md), on the **Configure Pack** page, click **Values** under **Pack Details**. Then, replace the contents of the pack manifest with the your built image manifest.
 
-9. Select **Nodeadm** as your base Kubernetes pack, and click **Next**.
+   Example.
 
-10. On the **Configure Pack** page, under **Pack Version**, select your Kubernetes version from the **drop-down Menu**.
+   ```yaml hideClipboard
+   pack:
+     content:
+       images:
+         - image: '{{.spectro.pack.edge-native-byoi.options.system.uri}}'
+     # Below config is default value, please uncomment if you want to modify default values
+     #drain:
+       #drainPods: auto     # Set to false to skip node drain for cluster upgrades.
+       #podSelector:        # Set pod selector options for draining.
+       #cordon: true
+       #timeout: 60 # The length of time to wait before giving up, zero means infinite
+       #gracePeriod: 60 # Period of time in seconds given to each pod to terminate gracefully. If negative, the default value specified in the pod will be used
+       #ignoreDaemonSets: true
+       #deleteLocalData: true # Continue even if there are pods using emptyDir (local data that will be deleted when the node is drained)
+       #force: true # Continue even if there are pods that do not declare a controller
+       #disableEviction: false # Force drain to use delete, even if eviction is supported. This will bypass checking PodDisruptionBudgets, use with caution
+       #skipWaitForDeleteTimeout: 60 # If pod DeletionTimestamp older than N seconds, skip waiting for the pod. Seconds must be greater than 0 to skip.
+   options:
+     system.uri: "example.io/edge-hosts/ubuntu:nodeadm-1.30.0-v4.5.21-eks-hybrid"
+   ```
 
-11. In the YAML editor, make any changes you need for the kubelet or containerd configuration. Refer to
+9. Click **Next layer** to continue.
+
+10. Select **Nodeadm** as your base Kubernetes pack, and click **Next**.
+
+11. On the **Configure Pack** page, under **Pack Version**, select your Kubernetes version from the **drop-down Menu**.
+
+12. In the YAML editor, make any changes you need for the kubelet or containerd configuration. Refer to
     [Amazon EKS Hybrid Nodes Configuration](https://github.com/aws/eks-hybrid?tab=readme-ov-file#configuration) for
     guidance on the available options.
 
-12. Click **Next layer** to continue.
+13. Click **Next layer** to continue.
 
-13. Select **Custom CNI** as your base Network pack, and click **Next**.
+14. Select **Custom CNI** as your base Network pack, and click **Next**.
 
-14. In the YAML editor on the **Configure Pack** page, change the value of `manifests.byo-cni.contents.data.custom-cni`
+15. In the YAML editor on the **Configure Pack** page, change the value of `manifests.byo-cni.contents.data.custom-cni`
     from `calico` to `dummy`.
 
     :::info
@@ -68,11 +93,11 @@ You must then configure your networking to allow traffic to reach the pods on yo
 
     :::
 
-15. Click **Confirm** when complete.
+16. Click **Confirm** when complete.
 
-16. In **Profile Layers**, click **Next** to continue.
+17. In **Profile Layers**, click **Next** to continue.
 
-17. Click **Finish Configuration**.
+18. Click **Finish Configuration**.
 
 Your cluster profile for hybrid nodes is now created and can be used in the
 [Create Hybrid Node Pool](#create-hybrid-node-pool) steps.
