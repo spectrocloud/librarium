@@ -28,32 +28,41 @@ Review the following table to determine which pack binaries you need to download
 | `airgap-vertex-pack-edge-k8s-1.30.5.bin`                              | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-k8s-1.30.5.bin                              |
 | `airgap-vertex-pack-edge-k8s-1.28.15.bin`                             | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-k8s-1.28.15.bin                             |
 | `airgap-vertex-pack-edge-k8s-1.29.10.bin`                             | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-k8s-1.29.10.bin                             |
+| `airgap-vertex-pack-edge-k8s-1.29.13.bin`                             | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-k8s-1.29.13.bin                             |
 | `airgap-vertex-pack-edge-k8s-1.30.6.bin`                              | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-k8s-1.30.6.bin                              |
 | `airgap-vertex-pack-edge-k8s-1.29.12.bin`                             | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-k8s-1.29.12.bin                             |
 | `airgap-vertex-pack-edge-k8s-1.30.8.bin`                              | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-k8s-1.30.8.bin                              |
+| `airgap-vertex-pack-edge-k8s-1.30.9.bin`                              | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-k8s-1.30.9.bin                              |
 | `airgap-vertex-pack-edge-k8s-1.31.1.bin`                              | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-k8s-1.31.1.bin                              |
 | `airgap-vertex-pack-edge-k8s-1.31.4.bin`                              | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-k8s-1.31.4.bin                              |
+| `airgap-vertex-pack-edge-k8s-1.31.5.bin`                              | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-k8s-1.31.5.bin                              |
 | `airgap-vertex-pack-edge-native-byoi-2.1.0.bin`                       | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-native-byoi-2.1.0.bin                       |
 | `airgap-vertex-pack-edge-rke2-1.28.13.bin`                            | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-rke2-1.28.13.bin                            |
 | `airgap-vertex-pack-edge-rke2-1.29.8.bin`                             | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-rke2-1.29.8.bin                             |
 | `airgap-vertex-pack-edge-rke2-1.30.4.bin`                             | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-rke2-1.30.4.bin                             |
 | `airgap-vertex-pack-edge-rke2-1.28.14.bin`                            | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-rke2-1.28.14.bin                            |
 | `airgap-vertex-pack-edge-rke2-1.29.9.bin`                             | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-rke2-1.29.9.bin                             |
+| `airgap-vertex-pack-edge-rke2-1.29.13.bin`                            | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-rke2-1.29.13.bin                            |
 | `airgap-vertex-pack-edge-rke2-1.30.5.bin`                             | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-rke2-1.30.5.bin                             |
 | `airgap-vertex-pack-edge-rke2-1.28.15.bin`                            | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-rke2-1.28.15.bin                            |
 | `airgap-vertex-pack-edge-rke2-1.29.10.bin`                            | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-rke2-1.29.10.bin                            |
 | `airgap-vertex-pack-edge-rke2-1.30.6.bin`                             | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-rke2-1.30.6.bin                             |
+| `airgap-vertex-pack-edge-rke2-1.30.9.bin`                             | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-rke2-1.30.9.bin                             |
 | `airgap-vertex-pack-edge-rke2-1.31.1.bin`                             | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-rke2-1.31.1.bin                             |
 | `airgap-vertex-pack-edge-rke2-1.29.12.bin`                            | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-rke2-1.29.12.bin                            |
 | `airgap-vertex-pack-edge-rke2-1.30.8.bin`                             | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-rke2-1.30.8.bin                             |
 | `airgap-vertex-pack-edge-rke2-1.31.4.bin`                             | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-rke2-1.31.4.bin                             |
+| `airgap-vertex-pack-edge-rke2-1.31.5.bin`                             | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-edge-rke2-1.31.5.bin                             |
 | `airgap-vertex-pack-kubernetes-1.28.14.bin`                           | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-kubernetes-1.28.14.bin                           |
 | `airgap-vertex-pack-kubernetes-1.29.9.bin`                            | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-kubernetes-1.29.9.bin                            |
 | `airgap-vertex-pack-kubernetes-1.30.5.bin`                            | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-kubernetes-1.30.5.bin                            |
 | `airgap-vertex-pack-kubernetes-1.28.15.bin`                           | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-kubernetes-1.28.15.bin                           |
 | `airgap-vertex-pack-kubernetes-1.29.10.bin`                           | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-kubernetes-1.29.10.bin                           |
+| `airgap-vertex-pack-kubernetes-1.29.13.bin`                           | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-kubernetes-1.29.13.bin                           |
 | `airgap-vertex-pack-kubernetes-1.30.6.bin`                            | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-kubernetes-1.30.6.bin                            |
+| `airgap-vertex-pack-kubernetes-1.30.9.bin`                            | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-kubernetes-1.30.9.bin                            |
 | `airgap-vertex-pack-kubernetes-1.31.1.bin`                            | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-kubernetes-1.31.1.bin                            |
+| `airgap-vertex-pack-kubernetes-1.31.5.bin`                            | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-kubernetes-1.31.5.bin                            |
 | `airgap-vertex-pack-kubernetes-1.29.12.bin`                           | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-kubernetes-1.29.12.bin                           |
 | `airgap-vertex-pack-kubernetes-1.30.5.bin`                            | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-kubernetes-1.30.5.bin                            |
 | `airgap-vertex-pack-kubernetes-1.30.6.bin`                            | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-kubernetes-1.30.6.bin                            |
@@ -67,11 +76,13 @@ Review the following table to determine which pack binaries you need to download
 | `airgap-vertex-pack-kubernetes-rke2-1.29.9-rke2r1-build20240912.bin`  | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-kubernetes-rke2-1.29.9-rke2r1-build20240912.bin  |
 | `airgap-vertex-pack-kubernetes-rke2-1.29.10-rke2r1-build20241023.bin` | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-kubernetes-rke2-1.29.10-rke2r1-build20241023.bin |
 | `airgap-vertex-pack-kubernetes-rke2-1.29.12-rke2r1-build20241212.bin` | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-kubernetes-rke2-1.29.12-rke2r1-build20241212.bin |
+| `airgap-vertex-pack-kubernetes-rke2-1.29.13-rke2r1-build20250117.bin` | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-kubernetes-rke2-1.29.13-rke2r1-build20250117.bin |
 | `airgap-vertex-pack-kubernetes-rke2-1.30.4-rke2r1-build20240815.bin`  | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-kubernetes-rke2-1.30.4-rke2r1-build20240815.bin  |
 | `airgap-vertex-pack-kubernetes-rke2-1.30.5-rke2r1-build20240912.bin`  | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-kubernetes-rke2-1.30.5-rke2r1-build20240912.bin  |
 | `airgap-vertex-pack-kubernetes-rke2-1.30.6-rke2r1-build20241023.bin`  | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-kubernetes-rke2-1.30.6-rke2r1-build20241023.bin  |
 | `airgap-vertex-pack-kubernetes-rke2-1.30.8-rke2r1-build20241212.bin`  | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-kubernetes-rke2-1.30.8-rke2r1-build20241212.bin  |
 | `airgap-vertex-pack-kubernetes-rke2-1.31.4-rke2r1-build20241212.bin`  | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-kubernetes-rke2-1.31.4-rke2r1-build20241212.bin  |
+| `airgap-vertex-pack-kubernetes-rke2-1.31.5-rke2r1-build20250115.bin`  | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-kubernetes-rke2-1.31.5-rke2r1-build20250115.bin  |
 
 ## Additional Deployment Options
 
