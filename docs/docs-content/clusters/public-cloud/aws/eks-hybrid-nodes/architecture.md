@@ -174,7 +174,7 @@ If using the Appliance Mode, you must include the following in your EdgeForge `.
 
 ```shell
 K8S_DISTRIBUTION=nodeadm
-K8S_VERSION=<kubernetesVersion>  # supported versions: [ 1.28.0 | 1.29.0 | 1.30.0 | 1.31.0 ]
+K8S_VERSION=<kubernetesVersion>  # supported versions: [ 1.29.0 | 1.30.0 | 1.31.0 ]
 ```
 
 Replace `<kubernetesVersion>` with your version of Kubernetes. For example, `1.29.0`.

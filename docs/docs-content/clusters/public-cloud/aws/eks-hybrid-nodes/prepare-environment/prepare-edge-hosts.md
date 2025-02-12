@@ -30,27 +30,15 @@ The key benefits of Agent Mode are:
 
 - You have physical or virtual servers ready to be used as edge hosts.
 
-- The physical or virtual server resources meet the [Minimum Device Requirements](../../../../../deployment-modes/agent-mode/architecture.md#minimum-device-requirements).
+- The physical or virtual server resources for each edge host meet the [Minimum Device Requirements](../../../../../deployment-modes/agent-mode/architecture.md#minimum-device-requirements).
 
-- The server has at least one static IP address assigned.
+- The edge host has at least one static IP address assigned.
 
 #### OS and Dependencies
 
 - You must have a supported OS installed on your edge hosts. Palette supports the same operating systems as AWS. Refer to [Prepare operating system for hybrid nodes](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-os.html) for details.
 
   - The FIPS-compliant version of Agent Mode is only available for Red Hat Enterprise Linux (RHEL).
-
-- Your edge host package managers have up-to-date package indexes. This is to ensure that dependency packages for
-[`nodeadm`](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-nodeadm.html) can be successfully downloaded
-and installed.
-
-  For example, on Ubuntu, you would issue the following command.
-
-  ```shell
-  sudo apt-get update
-  ```
-
-  Adjust to your operating system and package manager on your edge hosts.
 
 - Ensure the following software is installed and available:
 
@@ -81,17 +69,6 @@ and installed.
   :::
 
 - Ensure that the host has `Bash` configured as the default shell.
-
-#### Network Connectivity
-
-- Verify that you can connect to the edge host through SSH using your private key.
-
-- Verify that the edge host has outbound access to the internet.
-
-- Verify that the edge host has outbound connectivity to Spectro Cloud [services](../../../../../architecture/palette-public-ips.md) and [ports](../../../../../architecture/networking-ports.md#network-ports).
-
-- Verify that the edge host has outbound connectivity to the required [AWS EKS domains and ports](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-networking.html#hybrid-nodes-networking-on-prem)
-  - Refer to the **Access required during hybrid node installation and upgrade** and **Access required for ongoing cluster operations** sections for listed guidance.
 
 #### Palette Registration Token
 
@@ -316,7 +293,11 @@ and installed.
 
 Upon agent installation, the host will reboot to the registration screen and use the provided `EdgeHostToken` for automatic registration with Palette. The host will be registered in the same project where the registration token was created.
 
-### Validate
+### Validate
+
+Use the following sections to help check that your edge host is ready to be used as an Amazon EKS Hybrid Node.
+
+#### Palette Edge Host Registration
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
@@ -324,9 +305,34 @@ Upon agent installation, the host will reboot to the registration screen and use
 
 3. Select the **Edge Hosts** tab and verify your host is displayed and marked as **Healthy** in the table.
 
+#### Network Connectivity
+
+- Verify that you can connect to the edge host through SSH using your private key.
+
+- Verify that the edge host has outbound access to the internet.
+
+- Verify that the edge host has outbound connectivity to Spectro Cloud [services](../../../../../architecture/palette-public-ips.md) and [ports](../../../../../architecture/networking-ports.md#network-ports).
+
+- Verify that the edge host has outbound connectivity to the required [AWS EKS domains and ports](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-networking.html#hybrid-nodes-networking-on-prem).
+  - Refer to the **Access required during hybrid node installation and upgrade** and **Access required for ongoing cluster operations** sections for listed guidance.
+
+#### Package Manager Index
+
+- Verify that your edge host package manager has an up-to-date package index. This is to ensure that dependency packages for
+[`nodeadm`](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-nodeadm.html) can be successfully downloaded
+and installed when [creating hybrid node pools](../create-hybrid-node-pools.md#create-hybrid-node-pool).
+
+  For example, on Ubuntu, you would issue the following command.
+
+  ```shell
+  sudo apt-get update
+  ```
+
+  Adjust to your operating system and package manager on your edge host.
+
 ## Appliance Mode
 
-In Appliance Mode, you deploy a provider image and installer ISO onto your edge host. The provider image is a [Kairos-based image](https://kairos.io/) that provides an immutable OS and Kubernetes runtime components for a specified Kubernetes version. The installer ISO partitions the disk, installs required dependencies and the Palette agent, registers the host with Palette, and sets up user and security configurations.
+In Appliance Mode, you follow the EdgeForge workflow to provision your edge hosts. The EdgeForge workflow requires a provider image and an installer ISO to be built. The provider image is a [Kairos-based image](https://kairos.io/) that provides an immutable OS and Kubernetes runtime components for a specified Kubernetes version. The installer ISO partitions the disk, installs required dependencies including the Palette agent, registers the host with Palette, and sets up user and security configurations. Once these artifacts are built, you can use them to provision your edge hosts on existing hardware.
 
 The key benefits of Appliance Mode are:
 
@@ -336,17 +342,378 @@ The key benefits of Appliance Mode are:
 
 ### Prerequisites
 
-#### Infrastructure
+Appliance mode requires the following components:
 
-- You have physical or virtual servers ready to be used as edge hosts.
+- A host to build the required [Edge artifacts](../../../../edge/edgeforge-workflow/edgeforge-workflow.md#edge-artifacts).
+- Physical or virtual servers ready to be used as edge hosts.
 
-- The physical or virtual server resources meet the [Minimum Requirements](../../../../edge/hardware-requirements.md#minimum-requirements).
+<Tabs>
 
-- The server has at least one static IP address assigned.
+<TabItem label="Prerequisites for Build Host" value="build-host-prereqs">
 
-#### OS and Dependencies
+- A physical or virtual Linux machine with _AMD64_ (also known as _x86_64_) processor architecture to build the Edge
+  artifacts. You can issue the following command in the terminal to check your processor architecture.
+
+  ```bash
+  uname -m
+  ```
+
+- Minimum hardware configuration of the Linux machine:
+
+  - 4 CPU
+  - 8 GB memory
+  - 50 GB storage
+
+- [Git](https://git-scm.com/downloads). You can ensure git installation by issuing the `git --version` command.
+
+- (Optional) [Earthly](https://earthly.dev/) is installed and available. If you do not install Earthly, you can still
+  build the artifacts, but it would require root privileges, and some of the resulting artifacts will be owned by the
+  root user.
+
+- An image management tool such as [Docker](https://docs.docker.com/engine/install/) or
+  [crane](https://github.com/google/go-containerregistry/blob/main/cmd/crane/README.md) is installed and available.
+
+  - If you do not install Earthly, you must install Docker.
+
+- Palette registration token for pairing Edge hosts with Palette. You will need tenant admin access to Palette to
+  generate a new registration token. For detailed instructions, refer to the
+  [Create Registration Token](../../../../edge/site-deployment/site-installation/create-registration-token) guide.
+
+- An account with an image registry that will store the provider image, for example, [Docker Hub](https://hub.docker.com/).
+
+  In the [Register Edge Host in Appliance Mode](#register-edge-host-in-appliance-mode) steps, the example uses the [ttl.sh](https://ttl.sh/) image registry. This image registry is free to use and does not require a sign-up. Images pushed to _ttl.sh_ are ephemeral and will expire after the 24 hrs time limit.
+
+</TabItem>
+
+<TabItem label="Prerequisites for Edge Hosts" value="edge-hosts-prereqs">
+
+- The physical or virtual server resources for each edge host meet the [Minimum Requirements](../../../../edge/hardware-requirements.md#minimum-requirements).
+
+- The edge host has at least one static IP address assigned.
 
 - You must build a supported OS for your edge hosts. Palette supports the same operating systems as AWS. Refer to [Prepare operating system for hybrid nodes](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-os.html) for details.
+
+</TabItem>
+
+</Tabs>
+
+### Register Edge Host in Appliance Mode
+
+Use the following instructions on your build host to customize the arguments and Dockerfile, and then create all the required Edge artifacts.
+
+1. Check out the [CanvOS](https://github.com/spectrocloud/CanvOS.git) GitHub repository containing the starter code.
+
+   ```bash
+   git clone https://github.com/spectrocloud/CanvOS.git
+   ```
+
+2. Change to the **CanvOS/** directory.
+
+   ```bash
+   cd CanvOS
+   ```
+
+3. View the available [git tag](https://github.com/spectrocloud/CanvOS/tags).
+
+   ```bash
+   git tag
+   ```
+
+4. Check out the newest available tag. This guide uses **v4.5.15** tag as an example.
+
+   ```shell
+   git checkout v4.5.15
+   ```
+
+5. Review the files relevant for this guide.
+
+   - **.arg.template** - A sample **.arg** file that defines arguments to use during the build process.
+   - **k8s_version.json** - Lists all supported Kubernetes versions for each Kubernetes distribution.
+   - **Dockerfile** - Embeds the arguments and other configurations in the image.
+   - **Earthfile** - Contains a series of commands to create target artifacts.
+   - **earthly.sh** - Script to invoke the Earthfile, and generate target artifacts.
+   - **user-data.template** - A sample user-data file.
+
+6. Issue the following command to create the **.arg** file with the customizable arguments. Adjust the parameters to your requirements. Refer to the [Edge Artifact Build Configurations](../../../../edge/edgeforge-workflow/palette-canvos/arg.md) table for descriptions of all the parameters you can use.
+
+   :::info
+
+   - You must specify a supported OS for your edge hosts. Palette supports the same operating systems as AWS. Refer to [Prepare operating system for hybrid nodes](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-os.html) for details.
+   - If specifying a Docker Hub registry, your `IMAGE_REGISTRY` value should be entered as `docker.io/<docker-id>`. Replace `<docker-id>` with your Docker ID. This ensures the final artifact name conforms to the Docker Hub image name syntax - `[HOST]/[DOCKER-ID]/[REPOSITORY]:[TAG]`.
+   - The `K8S_DISTRIBUTION` argument must be set to `nodeadm` to ensure compatibility with EKS Hybrid Nodes.
+   - For `K8S_VERSION`, review the `k8s_version.json` file for supported versions for `nodeadm`.
+
+   :::
+
+   ```bash
+   cat << EOF > .arg
+   CUSTOM_TAG=<custom-tag>
+   IMAGE_REGISTRY=<image-registry>
+   OS_DISTRIBUTION=<os-distribution>
+   IMAGE_REPO=<image-repository-name>
+   OS_VERSION=<os-version>
+   K8S_DISTRIBUTION=nodeadm
+   K8S_VERSION=<kubernetes-version>
+   ISO_NAME=<installer-iso-file-name>
+   ARCH=<image-architecture>
+   UPDATE_KERNEL=false
+   EOF
+   ```
+
+   View the newly created file to ensure the customized arguments are set correctly.
+
+   ```bash
+   cat .arg
+   ```
+
+   Example output.
+
+   ```bash hideClipboard
+   CUSTOM_TAG=nodeadm-1.30.0-v4.5.15-eks-hybrid
+   IMAGE_REGISTRY=ttl.sh
+   OS_DISTRIBUTION=ubuntu
+   IMAGE_REPO=ubuntu
+   OS_VERSION=22
+   K8S_DISTRIBUTION=nodeadm
+   K8S_VERSION=1.30.0
+   ISO_NAME=palette-edge-installer
+   ARCH=amd64
+   UPDATE_KERNEL=false
+   ```
+
+   Based on the arguments defined in the **.arg** file, the final provider image name will have the following naming pattern, `[IMAGE_REGISTRY]/[IMAGE_REPO]:[CUSTOM_TAG]`. Using the example output, the image name would be `ttl.sh/ubuntu:nodeadm-1.30.0-v4.5.15-eks-hybrid`.
+
+7. _(Optional)_ This step is only required if your builds occur in a proxied network environment, and your proxy servers require client certificates, or if your base image is in a registry that requires client certificates.
+
+   You can provide the base-64 encoded certificates in PEM format in the **certs** folder at the root directory of the
+   **CanvOS** repository. You can provide as many certificates as you need in the folder.
+
+   If you are using a CanvOS tag that is earlier than `4.5.15`, you need to use the `PROXY_CERT_PATH` build argument to
+   provide a path to the certificate. This approach only allows you to specify one certificate. For more information,
+   refer to [Earthly Build Arguments](../../../../edge/edgeforge-workflow/palette-canvos/arg.md).
+
+   :::warning
+
+   These proxy settings are only configured for the build process itself, when your builder machine needs to pull
+   certain images to build the Edge artifacts. These certificates will not be present on the host after it has been
+   deployed. To configure the proxy network settings for a host, refer to
+   [Configure HTTP Proxy](../../../../edge/local-ui/host-management/configure-proxy.md) or
+   [Configure Proxy in User Data](../../../../edge/edgeforge-workflow/prepare-user-data.md#configure-proxy-settings-optional).
+
+   :::
+
+8. You can install more tools and dependencies and configure the image to meet your needs by using the Dockerfile. Add your
+   customizations below the line tagged with the `Add any other image customizations here` comment in the Dockerfile.
+   Do not edit or add any lines before this tagged comment.
+
+9. Issue the command below to save your Palette tenant registration token to a local variable. Replace `<registration-token>` with
+   your actual registration token.
+
+   ```bash
+   export token=<registration-token>
+   ```
+
+10. Use the following command to create the **user-data** file containing the tenant registration token.
+
+    ```shell
+    cat << EOF > user-data
+    #cloud-config
+    stylus:
+      site:
+        paletteEndpoint: api.spectrocloud.com
+        edgeHostToken: $token
+        projectName: stores
+        tags:
+          key1: value1
+          key2: value2
+          key3: value3
+        name: edge-randomid
+        registrationURL: https://edge-registration-app.vercel.app/
+
+        network:
+          httpProxy: http://proxy.example.com
+          httpsProxy: https://proxy.example.com
+          noProxy: 10.10.128.10,10.0.0.0/8
+
+          nameserver: 1.1.1.1
+          interfaces:
+              enp0s3:
+                  type: static
+                  ipAddress: 10.0.10.25/24
+                  gateway: 10.0.10.1
+                  nameserver: 10.10.128.8
+              enp0s4:
+                  type: dhcp
+        caCerts:
+          - |
+            ------BEGIN CERTIFICATE------
+            *****************************
+            *****************************
+            ------END CERTIFICATE------
+          - |
+            ------BEGIN CERTIFICATE------
+            *****************************
+            *****************************
+            ------END CERTIFICATE------
+      registryCredentials:
+        domain: registry.example.com
+        username: bob
+        password: ####
+        insecure: false
+    install:
+      poweroff: true
+    users:
+      - name: kairos
+        passwd: kairos
+    EOF
+    ```
+
+    You can take advantage of the Tech Preview feature to edit user data in Local UI after installation. Refer to
+    [Edit User Data](../../../../edge/local-ui/host-management/edit-user-data.md) for more information. However, we still recommend
+    you provide user data during EdgeForge for production workloads, because not all user data fields can be updated in
+    Local UI.
+
+    :::info
+
+    If you need to pull images from a private image registry, you can supply the credentials for the registry in the
+    user data file in the `registryCredentials` field or in the cluster profile. Credentials specified in **user-data**
+    overwrites the credentials provided in the cluster profile. To learn how to provide credentials in cluster profiles,
+    refer to
+    [Deploy Cluster with a Private Registry](../../../../edge/site-deployment/deploy-custom-registries/deploy-private-registry.md).
+
+    :::
+
+    View the newly created user data file to ensure the token is set correctly.
+
+    ```bash
+    cat user-data
+    ```
+
+    If you want further customization, check the existing **user-data.template** file, and refer to the
+    [Edge Configuration Stages](../../../../edge/edge-configuration/cloud-init.md) and
+    [User Data Parameters](../../../../edge/edge-configuration/installer-reference.md) documents to learn more.
+
+11. CanvOS utility uses [Earthly](https://earthly.dev/)(https://earthly.dev/) to build the target artifacts. Issue the
+    following command to start the build process.
+
+    <Tabs group="earthly">
+
+    <TabItem value="Earthly Installed">
+
+    ```bash
+    earthly +build-all-images
+    ```
+
+    </TabItem>
+
+    <TabItem value="Earthly Not Installed">
+
+    ```bash
+    sudo ./earthly.sh +build-all-images
+    ```
+
+    </TabItem>
+
+    </Tabs>
+
+    ```hideClipboard bash {2}
+    # Output condensed for readability
+    ===================== Earthly Build SUCCESS =====================
+    Share your logs with an Earthly account (experimental)! Register for one at https://ci.earthly.dev.
+    ```
+
+    :::info
+
+    If you plan to build the Edge Installer ISO using a content bundle, use the `+build-provider-images` option instead
+    of the `+build-all-images` option in the command above. The command `sudo ./earthly.sh +build-provider-images` will
+    build the provider images but not the Edge installer ISO. After the provider images are built, follow the steps in
+    the [Build Content Bundle](../../../../edge/edgeforge-workflow/palette-canvos/build-content-bundle.md) guide to build the Edge installer ISO using a content bundle.
+
+    :::info
+
+    This command may take up to 15-20 minutes to finish depending on the resources of the host machine. Upon completion,
+    the command will display the manifest, as shown in the example below, that you will use in your cluster profile
+    later in this tutorial. Note that the `system.xxxxx` attribute values in the manifest example are the same as what
+    you defined earlier in the **.arg** file.
+
+    Copy and save the output attributes in a notepad or clipboard to use later in your cluster profile.
+
+    ```bash hideClipboard
+    pack:
+      content:
+        images:
+          - image: "{{.spectro.pack.edge-native-byoi.options.system.uri}}"
+      # Below config is default value, please uncomment if you want to modify default values
+      #drain:
+        #cordon: true
+        #timeout: 60 # The length of time to wait before giving up, zero means infinite
+        #gracePeriod: 60 # Period of time in seconds given to each pod to terminate gracefully. If negative, the default value specified in the pod will be used
+        #ignoreDaemonSets: true
+        #deleteLocalData: true # Continue even if there are pods using emptyDir (local data that will be deleted when the node is drained)
+        #force: true # Continue even if there are pods that do not declare a controller
+        #disableEviction: false # Force drain to use delete, even if eviction is supported. This will bypass checking PodDisruptionBudgets, use with caution
+        #skipWaitForDeleteTimeout: 60 # If pod DeletionTimestamp older than N seconds, skip waiting for the pod. Seconds must be greater than 0 to skip.
+    options:
+      system.uri: "{{ .spectro.pack.edge-native-byoi.options.system.registry }}/{{ .spectro.pack.edge-native-byoi.options.system.repo }}:{{ .spectro.pack.edge-native-byoi.options.system.k8sDistribution }}-{{ .spectro.system.kubernetes.version }}-{{ .spectro.pack.edge-native-byoi.options.system.peVersion }}-{{ .spectro.pack.edge-native-byoi.options.system.customTag }}"
+
+      system.registry: docker.io/spectrocloud
+      system.repo: opensuse-leap
+      system.k8sDistribution: k3s
+      system.osName: opensuse-leap
+      system.peVersion: v4.4.12
+      system.customTag: palette-learn
+      system.osVersion:
+    ```
+
+12. List the Docker images to review the provider images created. By default, provider images for all the Palette's
+    Edge-supported Kubernetes versions are created. You can identify the provider images by reviewing the image tag
+    value you used in the **.arg** file's `CUSTOM_TAG` argument.
+
+    ```shell
+    docker images --filter=reference='*/*:*palette-learn'
+    ```
+
+    ```hideClipboard bash
+    REPOSITORY                   TAG                               IMAGE ID       CREATED          SIZE
+    spectrocloud/opensuse-leap   k3s-1.27.2-v4.4.12-palette-learn   2427e3667b2f   24 minutes ago   2.22GB
+    spectrocloud/opensuse-leap   k3s-1.26.6-v4.4.12-palette-learn   0f2efd533a33   24 minutes ago   2.22GB
+    spectrocloud/opensuse-leap   k3s-1.25.2-v4.4.12-palette-learn   2427e3667b2f   24 minutes ago   2.22GB
+    ```
+
+13. To use the provider images in your cluster profile, push them to your image registry mentioned in the **.arg** file.
+    Issue the following command to log in to Docker Hub. Provide your Docker ID and password when prompted.
+
+    ```bash
+    docker login
+    ```
+
+    ```hideClipboard bash
+    Login Succeeded
+    ```
+
+14. Use the following commands to push the provider images to the Docker Hub image registry you specified. Replace the
+    `[DOCKER-ID]` and version numbers in the command below with your Docker ID and respective Kubernetes versions that
+    the utility created.
+
+    ```bash
+    docker push docker.io/[DOCKER-ID]/opensuse-leap:k3s-1.27.2-v4.4.12-palette-learn
+    docker push docker.io/[DOCKER-ID]/opensuse-leap:k3s-1.26.6-v4.4.12-palette-learn
+    docker push docker.io/[DOCKER-ID]/opensuse-leap:k3s-1.25.2-v4.4.12-palette-learn
+    ```
+
+15. 
+
+### Validate
+
+Use the following sections to help check that your edge host is ready to be used as an Amazon EKS Hybrid Node.
+
+#### Palette Edge Host Registration
+
+1. Log in to [Palette](https://console.spectrocloud.com/).
+
+2. Select **Clusters** from the left **Main Menu**.
+
+3. Select the **Edge Hosts** tab and verify your host is displayed and marked as **Healthy** in the table.
 
 #### Network Connectivity
 
@@ -359,34 +726,19 @@ The key benefits of Appliance Mode are:
 - Verify that the edge host has outbound connectivity to the required [AWS EKS domains and ports](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-networking.html#hybrid-nodes-networking-on-prem)
   - Refer to the **Access required during hybrid node installation and upgrade** and **Access required for ongoing cluster operations** sections for listed guidance.
 
-### Register Edge Host in Appliance Mode
+#### Package Manager Index
 
-1. **Obtain the Appliance Image**  
-   - Download the Spectro Cloud appliance image (ISO, OVA, etc.) from your Spectro Cloud portal.  
-   - Verify checksums and follow any recommended guidelines for hardware or hypervisor compatibility.
+- Verify that your edge host package manager has an up-to-date package index. This is to ensure that dependency packages for
+[`nodeadm`](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-nodeadm.html) can be successfully downloaded
+and installed when [creating hybrid node pools](../create-hybrid-node-pools.md#create-hybrid-node-pool).
 
-2. **Deploy or Install the Appliance**  
-   - If using bare metal, write the ISO to a USB or attach it as a virtual CD in your server’s management interface, then boot from it.  
-   - If using a hypervisor (e.g., VMware, VirtualBox), import the OVA or ISO.  
-   - Follow the on-screen prompts for basic configuration (IP address, hostname, etc.).
+  For example, on Ubuntu, you would issue the following command.
 
-3. **Initial Configuration**  
-   - During the first boot, you may be prompted to enter a registration token or connect to the Spectro Cloud control plane.  
-   - Complete the setup wizard to finalize appliance networking and connect it to your Spectro Cloud account.
+  ```shell
+  sudo apt-get update
+  ```
 
-## Troubleshooting
-
-- **Registration Failures**  
-  - Check logs in the Spectro Cloud agent (Agent Mode) or the console of the appliance (Appliance Mode) for connectivity issues.  
-  - Validate any tokens or credentials used during registration.
-
-- **Connectivity/Firewall**  
-  - Confirm that outbound ports to Spectro Cloud and AWS endpoints are open.  
-  - Validate DNS resolution if using domain names for your endpoints.
-
-## Summary
-
-Preparing edge hosts for Amazon EKS Hybrid Nodes with Spectro Cloud can be done via **Agent Mode**, which installs a lightweight agent on existing systems, or **Appliance Mode**, which deploys a fully managed OS and stack. Each approach offers different benefits in terms of simplicity, control, and consistency.
+  Adjust to your operating system and package manager on your edge host.
 
 ## Next Steps
 

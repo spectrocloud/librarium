@@ -67,7 +67,7 @@ You must then configure your networking to allow traffic to reach the pods on yo
        #disableEviction: false # Force drain to use delete, even if eviction is supported. This will bypass checking PodDisruptionBudgets, use with caution
        #skipWaitForDeleteTimeout: 60 # If pod DeletionTimestamp older than N seconds, skip waiting for the pod. Seconds must be greater than 0 to skip.
    options:
-     system.uri: "example.io/edge-hosts/ubuntu:nodeadm-1.30.0-v4.5.21-eks-hybrid"
+     system.uri: "ttl.sh/ubuntu:nodeadm-1.30.0-v4.5.15-eks-hybrid"
    ```
 
 9. Click **Next layer** to continue.
