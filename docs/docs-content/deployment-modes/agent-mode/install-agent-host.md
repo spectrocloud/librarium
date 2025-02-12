@@ -3,6 +3,7 @@ sidebar_label: "Install Palette Agent"
 title: "Install Palette Agent"
 description: "Learn how to install the Palette Agent on your host."
 hide_table_of_contents: false
+toc_max_heading_level: 2
 sidebar_position: 10
 tags: ["edge", "agent mode"]
 ---
@@ -795,6 +796,11 @@ guidance.
 
 4. Verify that the cluster is listed as **Healthy** and has a **Running** status.
 
+Alongside Palette, [Local UI](../../clusters/edge/local-ui/host-management/access-console.md) allows you to fully manage
+the lifecycle of your edge hosts. Refer to the
+[Reboot, Shutdown, and Reset Edge Host](../../clusters/edge/local-ui/host-management/reset-reboot.md) guide for further
+details on how to use these operations
+
 </TabItem>
 
 <TabItem value="Airgap">
@@ -804,6 +810,10 @@ guidance.
 2. Select **Cluster** from the left **Main Menu**.
 
 3. Verify that your cluster is in a **Heathy** status.
+
+Local UI allows you to fully manage the lifecycle of your edge hosts. Refer to the
+[Reboot, Shutdown, and Reset Edge Host](../../clusters/edge/local-ui/host-management/reset-reboot.md) guide for further
+details on how to use these operations.
 
 </TabItem>
 
