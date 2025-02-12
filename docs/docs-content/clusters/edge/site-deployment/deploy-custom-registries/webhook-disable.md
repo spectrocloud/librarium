@@ -160,11 +160,11 @@ provides an example that shows how you might customize the image pull behavior o
            - path: /etc/containerd/certs.d/gcr.io/hosts.toml
              owner: 0
              group: 0
-              permissions: 0644
-              content: |-
-                server = "https://gcr.io"
-                [host."https://gcr-io-mirror.company.local"]
-                    capabilities = ["pull", "resolve"]
+             permissions: 0644
+             content: |-
+               server = "https://gcr.io"
+               [host."https://gcr-io-mirror.company.local"]
+                   capabilities = ["pull", "resolve"]
    ```
 
 ### Provide Registry Credentials
