@@ -35,12 +35,16 @@ list of the core and auxiliary Kubernetes components that are included in PXK.
 | Kubeadm            | Kubeadm is a tool built to provide best-practice “fast paths” for creating Kubernetes clusters.                                    |
 | Kubectl            | Kubectl is a command line interface for issuing commands against Kubernetes clusters.                                              |
 
+<br />
+
 ### Auxiliary Kubernetes Components
 
 | **Component** | **Description**                                                                               |
 | ------------- | --------------------------------------------------------------------------------------------- |
 | CoreDNS       | CoreDNS is a Domain Name System (DNS) server deployed as a cluster DNS service.               |
 | Etcd          | Etcd is a distributed key-value store used as Kubernetes’ backing store for all cluster data. |
+
+<br />
 
 ### Runtime Components
 
@@ -67,11 +71,6 @@ Processing Standards (FIPS) compliant version of PXK.
 | cloud.google.com/go/auth/oauth2adapt                                                                                                       | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | cloud.google.com/go/compute/metadata                                                                                                       | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | crypto/internal/boring                                                                                                                     | [OpenSSL](https://openssl-library.org/source/license/index.html) |
-| crypto/internal/boring                                                                                                                     | [OpenSSL](https://openssl-library.org/source/license/index.html) |
-| crypto/internal/boring                                                                                                                     | [OpenSSL](https://openssl-library.org/source/license/index.html) |
-| crypto/internal/boring                                                                                                                     | [OpenSSL](https://openssl-library.org/source/license/index.html) |
-| crypto/internal/boring                                                                                                                     | [OpenSSL](https://openssl-library.org/source/license/index.html) |
-| crypto/internal/boring                                                                                                                     | [OpenSSL](https://openssl-library.org/source/license/index.html) |
 | go.etcd.io/bbolt                                                                                                                           | [MIT](https://opensource.org/license/mit/)                       |
 | go.etcd.io/etcd/api/v3                                                                                                                     | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | go.etcd.io/etcd/client/pkg/v3                                                                                                              | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
@@ -83,51 +82,37 @@ Processing Standards (FIPS) compliant version of PXK.
 | go.opentelemetry.io/contrib/instrumentation/google.golang.org/grpc/otelgrpc                                                                | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | go.opentelemetry.io/contrib/instrumentation/net/http/otelhttp                                                                              | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | go.opentelemetry.io/otel                                                                                                                   | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
-| go.opentelemetry.io/otel                                                                                                                   | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | go.opentelemetry.io/otel/exporters/otlp/otlptrace                                                                                          | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc                                                                            | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | go.opentelemetry.io/otel/metric                                                                                                            | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
-| go.opentelemetry.io/otel/metric                                                                                                            | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | go.opentelemetry.io/otel/sdk                                                                                                               | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
-| go.opentelemetry.io/otel/trace                                                                                                             | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | go.opentelemetry.io/otel/trace                                                                                                             | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | go.opentelemetry.io/proto/otlp                                                                                                             | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | go.uber.org/atomic                                                                                                                         | [MIT](https://opensource.org/license/mit/)                       |
 | go.uber.org/automaxprocs                                                                                                                   | [MIT](https://opensource.org/license/mit/)                       |
 | go.uber.org/multierr                                                                                                                       | [MIT](https://opensource.org/license/mit/)                       |
-| go.uber.org/multierr                                                                                                                       | [MIT](https://opensource.org/license/mit/)                       |
 | go.uber.org/zap                                                                                                                            | [MIT](https://opensource.org/license/mit/)                       |
-| go.uber.org/zap                                                                                                                            | [MIT](https://opensource.org/license/mit/)                       |
-| golang.org/x/crypto                                                                                                                        | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
 | golang.org/x/crypto                                                                                                                        | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
 | golang.org/x/exp/rand                                                                                                                      | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
 | golang.org/x/mod/semver                                                                                                                    | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
-| golang.org/x/net                                                                                                                           | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
 | golang.org/x/net                                                                                                                           | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
 | golang.org/x/oauth2                                                                                                                        | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
 | golang.org/x/sys                                                                                                                           | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
 | golang.org/x/sys/unix                                                                                                                      | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
 | golang.org/x/term                                                                                                                          | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
 | golang.org/x/text                                                                                                                          | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
-| golang.org/x/text                                                                                                                          | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
-| golang.org/x/time/rate                                                                                                                     | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
 | golang.org/x/time/rate                                                                                                                     | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
 | golang.org/x/xerrors                                                                                                                       | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
 | google.golang.org/api                                                                                                                      | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
 | google.golang.org/api/internal/third_party/uritemplates                                                                                    | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
 | google.golang.org/genproto/googleapis/api                                                                                                  | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
-| google.golang.org/genproto/googleapis/api                                                                                                  | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
-| google.golang.org/genproto/googleapis/rpc                                                                                                  | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | google.golang.org/genproto/googleapis/rpc                                                                                                  | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | google.golang.org/grpc                                                                                                                     | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
-| google.golang.org/grpc                                                                                                                     | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
-| google.golang.org/protobuf                                                                                                                 | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
 | google.golang.org/protobuf                                                                                                                 | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
 | gopkg.in/DataDog/dd-trace-go.v1                                                                                                            | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | gopkg.in/inf.v0                                                                                                                            | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
 | gopkg.in/natefinch/lumberjack.v2                                                                                                           | [MIT](https://opensource.org/license/mit/)                       |
 | gopkg.in/yaml.v2                                                                                                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
-| gopkg.in/yaml.v3                                                                                                                           | [MIT](https://opensource.org/license/mit/)                       |
 | gopkg.in/yaml.v3                                                                                                                           | [MIT](https://opensource.org/license/mit/)                       |
 | github.com/apparentlymart/go-cidr/blob/master/cidr                                                                                         | [MIT](https://opensource.org/license/mit/)                       |
 | github.com/aws/aws-sdk-go-v2/blob/master/config.txt                                                                                        | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
@@ -158,10 +143,8 @@ Processing Standards (FIPS) compliant version of PXK.
 | github.com/Azure/go-autorest/blob/master/logger                                                                                            | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | github.com/Azure/go-autorest/blob/master/tracing                                                                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | github.com/beorn7/perks/blob/master/quantile                                                                                               | [MIT](https://opensource.org/license/mit/)                       |
-| github.com/beorn7/perks/blob/master/quantile                                                                                               | [MIT](https://opensource.org/license/mit/)                       |
 | github.com/bgentry/speakeasy/blob/master                                                                                                   | [MIT](https://opensource.org/license/mit/)                       |
 | github.com/cenkalti/backoff/blob/master/v4                                                                                                 | [MIT](https://opensource.org/license/mit/)                       |
-| github.com/cespare/xxhash/blob/master/v2.txt                                                                                               | [MIT](https://opensource.org/license/mit/)                       |
 | github.com/cespare/xxhash/blob/master/v2.txt                                                                                               | [MIT](https://opensource.org/license/mit/)                       |
 | github.com/cheggaaa/pb/blob/master/v3                                                                                                      | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
 | github.com/containerd/containerd/blob/master                                                                                               | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
@@ -335,8 +318,6 @@ Processing Standards (FIPS) compliant version of PXK.
 | github.com/coredns/caddy/blob/master.txt                                                                                                   | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | github.com/coredns/coredns/blob/master                                                                                                     | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | github.com/coreos/go-semver/blob/master/semver                                                                                             | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
-| github.com/coreos/go-semver/blob/master/semver                                                                                             | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
-| github.com/coreos/go-systemd/blob/master/v22/journal                                                                                       | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | github.com/coreos/go-systemd/blob/master/v22/journal                                                                                       | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | github.com/DataDog/appsec-internal-go/blob/master                                                                                          | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | github.com/DataDog/datadog-agent/blob/master/pkg/obfuscate                                                                                 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
@@ -346,10 +327,8 @@ Processing Standards (FIPS) compliant version of PXK.
 | github.com/DataDog/go-tuf/blob/master                                                                                                      | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
 | github.com/DataDog/sketches-go/blob/master/ddsketch                                                                                        | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | github.com/davecgh/go-spew/blob/master/spew                                                                                                | [ISC](https://opensource.org/license/isc-license-txt)            |
-| github.com/davecgh/go-spew/blob/master/spew                                                                                                | [ISC](https://opensource.org/license/isc-license-txt)            |
 | github.com/dimchansky/utfbom/blob/master                                                                                                   | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | github.com/dnstap/golang-dnstap/blob/master                                                                                                | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
-| github.com/dustin/go-humanize/blob/master                                                                                                  | [MIT](https://opensource.org/license/mit/)                       |
 | github.com/dustin/go-humanize/blob/master                                                                                                  | [MIT](https://opensource.org/license/mit/)                       |
 | github.com/eapache/queue/blob/master/v2                                                                                                    | [MIT](https://opensource.org/license/mit/)                       |
 | github.com/ebitengine/purego/blob/master                                                                                                   | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
@@ -371,15 +350,11 @@ Processing Standards (FIPS) compliant version of PXK.
 | github.com/flynn/go-shlex/blob/master/COPYING                                                                                              | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | github.com/fxamacker/cbor/blob/master/v2                                                                                                   | [MIT](https://opensource.org/license/mit/)                       |
 | github.com/go-logr/logr/blob/master                                                                                                        | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
-| github.com/go-logr/logr/blob/master                                                                                                        | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
-| github.com/go-logr/stdr/blob/master                                                                                                        | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | github.com/go-logr/stdr/blob/master                                                                                                        | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | github.com/go-openapi/jsonpointer/blob/master                                                                                              | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | github.com/go-openapi/jsonreference/blob/master                                                                                            | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | github.com/go-openapi/swag/blob/master                                                                                                     | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | github.com/gogo/protobuf/blob/master                                                                                                       | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
-| github.com/gogo/protobuf/blob/master                                                                                                       | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
-| github.com/golang-jwt/jwt/blob/master/v4                                                                                                   | [MIT](https://opensource.org/license/mit/)                       |
 | github.com/golang-jwt/jwt/blob/master/v4                                                                                                   | [MIT](https://opensource.org/license/mit/)                       |
 | github.com/golang/groupcache/blob/master/lru                                                                                               | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | github.com/golang/protobuf/blob/master                                                                                                     | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
@@ -387,10 +362,8 @@ Processing Standards (FIPS) compliant version of PXK.
 | github.com/google/btree/blob/master                                                                                                        | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | github.com/google/gnostic-models/blob/master                                                                                               | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | github.com/google/go-cmp/blob/master/cmp                                                                                                   | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
-| github.com/google/go-cmp/blob/master/cmp                                                                                                   | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
 | github.com/google/gofuzz/blob/master                                                                                                       | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | github.com/google/s2a-go/blob/master.md                                                                                                    | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
-| github.com/google/uuid/blob/master                                                                                                         | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
 | github.com/google/uuid/blob/master                                                                                                         | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
 | github.com/googleapis/enterprise-certificate-proxy/blob/master/client                                                                      | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | github.com/googleapis/gax-go/blob/master/v2                                                                                                | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
@@ -409,10 +382,7 @@ Processing Standards (FIPS) compliant version of PXK.
 | github.com/josharian/intern/blob/master/license.md                                                                                         | [MIT](https://opensource.org/license/mit/)                       |
 | github.com/json-iterator/go/blob/master                                                                                                    | [MIT](https://opensource.org/license/mit/)                       |
 | github.com/klauspost/compress/blob/master/internal/snapref                                                                                 | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
-| github.com/klauspost/compress/blob/master/internal/snapref                                                                                 | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
 | github.com/klauspost/compress/blob/master                                                                                                  | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
-| github.com/klauspost/compress/blob/master                                                                                                  | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
-| github.com/klauspost/compress/blob/master/zstd/internal/xxhash.txt                                                                         | [MIT](https://opensource.org/license/mit/)                       |
 | github.com/klauspost/compress/blob/master/zstd/internal/xxhash.txt                                                                         | [MIT](https://opensource.org/license/mit/)                       |
 | github.com/kubernetes/kubernetes/blob/master                                                                                               | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/api                                                                        | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
@@ -637,7 +607,6 @@ Processing Standards (FIPS) compliant version of PXK.
 | github.com/modern-go/concurrent/blob/master                                                                                                | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | github.com/modern-go/reflect2/blob/master                                                                                                  | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | github.com/munnerz/goautoneg/blob/master                                                                                                   | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
-| github.com/munnerz/goautoneg/blob/master                                                                                                   | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
 | github.com/olekukonko/tablewriter/blob/master.md                                                                                           | [MIT](https://opensource.org/license/mit/)                       |
 | github.com/opencontainers/runc/blob/master                                                                                                 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | github.com/opencontainers/runc/blob/master/vendor/github.com/checkpoint-restore/go-criu/v6                                                 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
@@ -674,14 +643,9 @@ Processing Standards (FIPS) compliant version of PXK.
 | github.com/pkg/errors/blob/master                                                                                                          | [BSD-2-Clause](https://opensource.org/license/bsd-2-clause)      |
 | github.com/pmezard/go-difflib/blob/master/difflib                                                                                          | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
 | github.com/prometheus/client_golang/blob/master/internal/github.com/golang/gddo/httputil                                                   | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
-| github.com/prometheus/client_golang/blob/master/internal/github.com/golang/gddo/httputil                                                   | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
-| github.com/prometheus/client_golang/blob/master/prometheus                                                                                 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | github.com/prometheus/client_golang/blob/master/prometheus                                                                                 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | github.com/prometheus/client_model/blob/master/go                                                                                          | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
-| github.com/prometheus/client_model/blob/master/go                                                                                          | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | github.com/prometheus/common/blob/master                                                                                                   | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
-| github.com/prometheus/common/blob/master                                                                                                   | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
-| github.com/prometheus/procfs/blob/master                                                                                                   | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | github.com/prometheus/procfs/blob/master                                                                                                   | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | github.com/quic-go/quic-go/blob/master                                                                                                     | [MIT](https://opensource.org/license/mit/)                       |
 | github.com/rivo/uniseg/blob/master.txt                                                                                                     | [MIT](https://opensource.org/license/mit/)                       |
@@ -690,7 +654,6 @@ Processing Standards (FIPS) compliant version of PXK.
 | github.com/sirupsen/logrus/blob/master                                                                                                     | [MIT](https://opensource.org/license/mit/)                       |
 | github.com/soheilhy/cmux/blob/master                                                                                                       | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | github.com/spf13/cobra/blob/master.txt                                                                                                     | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
-| github.com/spf13/pflag/blob/master                                                                                                         | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
 | github.com/spf13/pflag/blob/master                                                                                                         | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
 | github.com/stretchr/testify/blob/master                                                                                                    | [MIT](https://opensource.org/license/mit/)                       |
 | github.com/tinylib/msgp/blob/master/msgp                                                                                                   | [MIT](https://opensource.org/license/mit/)                       |
@@ -709,34 +672,13 @@ Processing Standards (FIPS) compliant version of PXK.
 | k8s.io/utils                                                                                                                               | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | k8s.io/utils/internal/third_party/forked/golang/net                                                                                        | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
 | sigs.k8s.io/json                                                                                                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
-| sigs.k8s.io/json                                                                                                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | sigs.k8s.io/structured-merge-diff/v4                                                                                                       | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | sigs.k8s.io/yaml                                                                                                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
-| sigs.k8s.io/yaml                                                                                                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
-| sigs.k8s.io/yaml/goyaml.v2                                                                                                                 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | sigs.k8s.io/yaml/goyaml.v2                                                                                                                 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | vendor/golang.org/x/crypto                                                                                                                 | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
-| vendor/golang.org/x/crypto                                                                                                                 | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
-| vendor/golang.org/x/crypto                                                                                                                 | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
-| vendor/golang.org/x/crypto                                                                                                                 | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
-| vendor/golang.org/x/crypto                                                                                                                 | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
-| vendor/golang.org/x/crypto                                                                                                                 | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
-| vendor/golang.org/x/net                                                                                                                    | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
-| vendor/golang.org/x/net                                                                                                                    | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
-| vendor/golang.org/x/net                                                                                                                    | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
-| vendor/golang.org/x/net                                                                                                                    | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
 | vendor/golang.org/x/net                                                                                                                    | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
 | vendor/golang.org/x/net/dns/dnsmessage                                                                                                     | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
 | vendor/golang.org/x/sys/cpu                                                                                                                | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
-| vendor/golang.org/x/sys/cpu                                                                                                                | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
-| vendor/golang.org/x/sys/cpu                                                                                                                | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
-| vendor/golang.org/x/sys/cpu                                                                                                                | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
-| vendor/golang.org/x/sys/cpu                                                                                                                | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
-| vendor/golang.org/x/sys/cpu                                                                                                                | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
-| vendor/golang.org/x/text                                                                                                                   | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
-| vendor/golang.org/x/text                                                                                                                   | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
-| vendor/golang.org/x/text                                                                                                                   | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
-| vendor/golang.org/x/text                                                                                                                   | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
 | vendor/golang.org/x/text                                                                                                                   | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
 
 <!-- vale on -->
