@@ -221,8 +221,8 @@ resolve this issue, you must manually set these endpoints.
 
 1. Open a terminal with connectivity to your self-hosted environment.
 
-2. Execute the following command to save the base URL of your Palette instance API to the `BASE_URL` environment value. Add
-   your correct URL in place of `REPLACE_ME`.
+2. Execute the following command to save the base URL of your Palette instance API to the `BASE_URL` environment value.
+   Add your correct URL in place of `REPLACE_ME`.
 
    ```shell
    export BASE_URL="REPLACE ME"
@@ -249,8 +249,8 @@ resolve this issue, you must manually set these endpoints.
    }
    ```
 
-4. Copy the authorization token to your clipboard and assign it to an environment
-   variable. Replace the placeholder below with the value from the output.
+4. Copy the authorization token to your clipboard and assign it to an environment variable. Replace the placeholder
+   below with the value from the output.
 
    ```shell hideClipboard
    export TOKEN=**********
