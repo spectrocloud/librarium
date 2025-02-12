@@ -15,7 +15,9 @@ tags: ["release-notes"]
 
 ### Bug Fixes
 
-- Fixed an issue that prevented custom values of [cluster profile variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables.md) from being applied during cluster creation.
+- Fixed an issue that prevented custom values of
+  [cluster profile variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables.md) from
+  being applied during cluster creation.
 
 ## February 3, 2025 - Release 4.5.21
 
