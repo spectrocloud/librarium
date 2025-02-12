@@ -86,6 +86,15 @@ Import your Amazon EKS cluster and enable hybrid mode to be able to create edge 
   [Create an Amazon EKS cluster with hybrid nodes](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-cluster-create.html)
   for guidance.
 
+  - When selecting add-ons, you must use **AWS VPC CNI** as your container network interface as it is needed for cloud
+    worker nodes to function. If you are deploying through the AWS Console, a warning may state that AWS VPC CNI is not
+    supported for hybrid nodes. You can ignore this message.
+  - Your Amazon EKS cluster must include at least one worker node to host the Palette agent, which is necessary for
+    Palette to manage the cluster. Because of EKS architecture constraints, the agent cannot be installed on the control
+    plane.
+    - The minimum instance type required is **t3.xlarge** with at least 20 GB of storage.
+    - Be sure at least one worker node is always available so Palette can continue managing the cluster.
+
 - A Hybrid Nodes IAM Role with the required Kubernetes permissions to join your Amazon EKS cluster. Refer to
   [Prepare cluster access for hybrid nodes](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-cluster-prep.html)
   for guidance.
@@ -362,23 +371,25 @@ Cilium handles IP Address Management (IPAM) and Border Gateway Protocol (BGP) fo
 
 5. In **Profile Layers**, click **Add New Pack**.
 
-6. Enter **Cilium** in the search box, and select it. It appears in the **System App** category and must be version
+6. Enter **Cilium** in the search box, and select it. It appears in the **Network** category and must be version
    **1.16.0** or above.
 
 7. Click the **Presets drop-down Menu**.
 
 8. For **IPAM mode**, select **Cluster Pool**.
 
-9. In the YAML editor, search for **clusterPoolIPv4PodCIDRList**. This parameter specifies the overall IP ranges
-   available for pod networking across all your hybrid nodes.
+9. In the YAML editor, search for **clusterPoolIPv4PodCIDRList**. This parameter specifies the CIDR ranges from which
+   pod IPs will be allocated across all your hybrid nodes.
 
-   Adjust the pod CIDR list for hybrid pods in other networks that need to connect to this cluster. For example,
-   `192.168.0.0`.
+   Adjust the pod CIDR list for hybrid pods in other networks that need to connect to this cluster. This should match
+   the **Remote Pod CIDRs** value defined in step 11 during the [Import Cluster](#import-cluster) steps. For example,
+   `192.168.0.0/16`.
 
-10. In the YAML editor, search for **clusterPoolIPv4MaskSize**. This parameter determines the subnet mask size used for
-    pod IP allocation within each hybrid node.
+10. In the YAML editor, search for **clusterPoolIPv4MaskSize**. This parameter defines the size of each per-node CIDR
+    block.
 
-    Adjust the mask size based on your required pods per hybrid node. For example, `/25`.
+    Adjust the mask size based on your required pods per hybrid node. For example, `/25` would provides 126 usable pod
+    IPs for each node.
 
 11. In the Presets, find the **cilium-agent - Hybrid Nodes Affinity** option, and select **Amazon EKS**.
 
@@ -397,7 +408,7 @@ Cilium handles IP Address Management (IPAM) and Border Gateway Protocol (BGP) fo
 
     :::info
 
-    The Cilium [Daemonset](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) is configured to
+    The Cilium [DaemonSet](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) is configured to
     operate on your hybrid nodes only. If no hybrid nodes are present in your cluster, the DaemonSet will remain
     inactive.
 
@@ -411,7 +422,7 @@ Cilium handles IP Address Management (IPAM) and Border Gateway Protocol (BGP) fo
 
 15. Select your cluster to view its **Overview** tab.
 
-16. Click **Attach Profile**.
+16. Select the **Profile** tab, and click **Attach Profile**.
 
 17. Select the **Cilium** add-on profile that was created, and click **Confirm**.
 

@@ -11,6 +11,37 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## February 12, 2025 - Release 4.5.22
+
+### Bug Fixes
+
+- Fixed an issue that prevented custom values of
+  [cluster profile variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables.md) from
+  being applied during cluster creation.
+
+## February 3, 2025 - Release 4.5.21
+
+### Bug Fixes
+
+- Fixed an issue that prevented system upgrade logs from being included in the node logs of edge clusters. You can
+  download by selecting **Download Logs** from the **Settings** dropdown of the cluster.
+
+- Fixed an issue that prevented [App Profiles](../profiles/app-profiles/app-profiles.md) from being created using Helm.
+  You can now safely create and deploy Helm Apps.
+
+<!-- prettier-ignore-start -->
+
+- Fixed an issue that caused the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack from being installed correctly as part of the <VersionedLink text="Spectro Kubernetes Dashboard" url="/integrations/packs/?pack=spectro-k8s-dashboard" /> pack. The deployment of the <VersionedLink text="Spectro Kubernetes Dashboard" url="/integrations/packs/?pack=spectro-k8s-dashboard" /> pack now completes successfully.
+
+<!-- prettier-ignore-end -->
+
+- Fixed an issue that prevented the **Network Settings** page of
+  [system private gateways](../clusters/pcg/architecture.md#system-private-gateway) from loading.
+
+- Fixed an issue that prevented cluster deployment with cluster profiles that included
+  [profile variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables.md) with a `.`
+  character in their name.
+
 ## January 18, 2024 - Release 4.5.20
 
 ### Palette {#palette-enterprise-4-5-20}
@@ -82,11 +113,10 @@ about the rolling upgrade strategy.
 
 - Clusters that are currently deployed and attempting to upgrade from Kubernetes version 1.31.1 to newer versions are
   getting stuck in the upgrade state. This issue also affects Day-2 operations related to changes in the Kubernetes
-  layer YAML for clusters on Kubernetes version 1.31.1. The root of the problem is an internal conversion error stemming
-  from a change introduced in Kubernetes version 1.31.x. clusters from version 1.31.1 or modifying the Kubernetes YAML
-  as a Day-2 operation on clusters with Kubernetes 1.31.1. You can deploy new clusters using version 1.31.4, as new
-  deployments are unaffected by the issue. If you upgraded and the cluster remains stuck, revert the change and
-  downgrade to version 1.31.1.
+  layer YAML and the resize of control plane nodes for clusters using Kubernetes version 1.31.1. The root of the problem
+  is an internal conversion error stemming from a change introduced in Kubernetes version 1.31.x. You can deploy new
+  clusters using version 1.31.4, as new deployments are unaffected by the issue. If you upgraded and the cluster remains
+  stuck, revert the change and downgrade to version 1.31.1.
 
 ### Edge
 

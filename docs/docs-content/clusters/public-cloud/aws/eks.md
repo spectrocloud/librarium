@@ -21,9 +21,20 @@ an AWS account. This section guides you on how to create an EKS cluster in AWS t
   [Create an Infrastructure Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md)
   for guidance.
 
+<!-- prettier-ignore -->
+- If you want to use <VersionedLink text="Cilium" url="/integrations/packs/?pack=cni-cilium-oss"/> as the network pack
+  for your EKS cluster, you will need to perform additional configuration changes to your cluster profile and a manual
+  edit during deployment. Refer to
+  [Scenario - AWS EKS Cluster Deployment Fails when Cilium is Used as CNI](../../../troubleshooting/pack-issues.md#scenario---aws-eks-cluster-deployment-fails-when-cilium-is-used-as-cni)
+  for full guidance.
+
 - An EC2 key pair for the target region that provides a secure connection to your EC2 instances. To learn how to create
   a key pair, refer to the
   [Amazon EC2 key pairs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html) resource.
+
+- Your Amazon EKS cluster must be deployed with at least one worker node to host the Palette agent, which is necessary for Palette to manage the cluster. Because of EKS architecture constraints, the agent cannot be installed on the control plane.
+  - The minimum instance type required is **t3.xlarge** with at least 20 GB of storage.
+  - Be sure at least one worker node is always available so Palette can continue managing the cluster.
 
 - To access your EKS cluster using kubectl, you will need the
   [aws-iam-authenticator](https://github.com/kubernetes-sigs/aws-iam-authenticator) plugin installed. If you are using a

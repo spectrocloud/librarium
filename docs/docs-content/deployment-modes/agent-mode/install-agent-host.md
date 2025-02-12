@@ -3,6 +3,7 @@ sidebar_label: "Install Palette Agent"
 title: "Install Palette Agent"
 description: "Learn how to install the Palette Agent on your host."
 hide_table_of_contents: false
+toc_max_heading_level: 2
 sidebar_position: 10
 tags: ["edge", "agent mode"]
 ---
@@ -93,68 +94,212 @@ Palette. You will then create a cluster profile and use the registered host to d
   :::
 
   - If installing the FIPS version of Agent Mode on a Rocky Linux edge host, you must configure your SELinux policies to
-    grant rsync the required host permissions. Follow the process below to apply the necessary configurations before
-    installing Agent Mode.
+    grant rsync the required host permissions and ensure you enable cgroup V2.
 
-  <br />
+    If you are using Cilium and have firewalld enabled, you must also configure the appropriate firewalld rules. Follow
+    the process below to apply the necessary configurations before installing Agent Mode.
 
-  <details>
+      <details>
 
-  {" "}
+    {" "}
 
-  <summary>SELinux Policy Configuration</summary>
+    <summary>Rocky Linux 8 Configurations</summary>
 
-  1. Enable SELinux to allow full rsync access.
+    ### Configure rsync
 
-     ```shell
-     setsebool -P rsync_full_access 1
-     ```
+    1. Enable SELinux to allow full rsync access.
 
-  2. Install the necessary tools to create and apply SELinux policy modules.
+    ```shell
+    setsebool -P rsync_full_access 1
+    ```
 
-     ```shell
-     dnf install selinux-policy-devel audit
-     ```
+    2. Install the necessary tools to create and apply SELinux policy modules.
 
-  3. Create a file named **rsync_dac_override.te**.
+    ```shell
+    dnf install selinux-policy-devel audit
+    ```
 
-     ```shell
-     nano rsync_dac_override.te
-     ```
+    3. Create a file named **rsync_dac_override.te**.
 
-  4. Add the following content to the **rsync_dac_override.te** file.
+    ```shell
+    nano rsync_dac_override.te
+    ```
 
-     ```shell
-     module rsync_dac_override 1.0;
+    4. Add the following content to the **rsync_dac_override.te** file.
 
-     require {
-       type rsync_t;
-       type default_t;
-       class dir read;
-       class capability dac_override;
-     }
+    ```shell
+    module rsync_dac_override 1.0;
 
-     # Allow rsync_t to read directories labeled default_t
-     allow rsync_t default_t:dir read;
+    require {
+      type rsync_t;
+      type default_t;
+      class dir read;
+      class capability dac_override;
+    }
 
-     # Allow rsync_t to override discretionary access control (DAC)
-     allow rsync_t self:capability dac_override;
-     ```
+    # Allow rsync_t to read directories labeled default_t
+    allow rsync_t default_t:dir read;
 
-  5. Compile and package the SELinux policy module.
+    # Allow rsync_t to override discretionary access control (DAC)
+    allow rsync_t self:capability dac_override;
+    ```
 
-     ```shell
-     checkmodule -M -m --output rsync_dac_override.mod rsync_dac_override.te
-     semodule_package --outfile rsync_dac_override.pp -m rsync_dac_override.mod
-     ```
+    5. Compile and package the SELinux policy module.
 
-  6. Install the compiled policy module.
+    ```shell
+    checkmodule -M -m --output rsync_dac_override.mod rsync_dac_override.te
+    semodule_package --outfile rsync_dac_override.pp -m rsync_dac_override.mod
+    ```
 
-     ```shell
-     semodule --install rsync_dac_override.pp
-     ```
+    6. Install the compiled policy module.
 
-  </details>
+    ```shell
+    semodule --install rsync_dac_override.pp
+    ```
+
+    ### Enable cgroup V2
+
+    7.  Issue the following command to check if your kernel supports cgroup v2.
+
+        ```shell
+        grep cgroup2 /proc/filesystems
+        ```
+
+        If the response is `nodev	cgroup2`, your kernel supports cgroup v2 and you may proceed to the next step. If the
+        response does not match `nodev	cgroup2`, then your kernel does not support cgroup v2. You need to upgrade to a
+        kernel that supports cgroup v2 to proceed.
+
+    8.  Issue the following command to check if cgroup v2 is already enabled.
+
+        ```shell
+        stat -fc %T /sys/fs/cgroup
+        ```
+
+        If the output is `tmpfs` then cgroup v2 is not enabled. When cgroup v2 is enabled, the output is `cgroup2fs`. If
+        cgroup v2 is enabled, skip to step 12.
+
+    9.  Issue the following command to edit the GRUB file to enable cgroup v2.
+
+        ```shell
+        sudo vi /etc/default/grub
+        ```
+
+        Find the line starting with `GRUB_CMDLINE_LINUX` and add the `systemd.unified_cgroup_hierarchy=1` parameter.
+
+        ```
+        GRUB_TIMEOUT=5
+        GRUB_DISTRIBUTOR="$(sed 's, release *$,,g' / etc/system-release)"
+        GRUB_DEFAULT=saved
+        GRUB_DISABLE_SUBMENU=true
+        GRUB_TERMINAL_OUTPUT="console"
+        GRUB_CMDLINE_LINUX="crashkernel=auto resume=/dev/mapper/rl-swap rd.lvm.lv=rl/root rd.lvm.lv=rl/swap systemd.unified_cgroup_hierarchy=1
+        systemd.unified_cgroup_hierarchv=1" GRUB_DISABLE_RECOVERY=" true"
+        GRUB_ENABLE_BLSCFG=true
+        ```
+
+    10. Save the file and regenerate the GRUB configuration.
+
+        ```shell
+        sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+        ```
+
+    11. Reboot the system.
+
+        ```shell
+        sudo reboot
+        ```
+
+    ### Configure firewalld (Cilium Only)
+
+    12. (Optional) If you are using Cilium and have firewalld enabled, put the the following commands into a shell
+        script.
+
+        ```shell
+        cat << 'EOF' > firewalld-cilium.sh
+        #!/bin/bash
+
+        if [ -z "$1" ]; then
+          echo "Usage: $0 <zone>"
+          exit 1
+        fi
+
+        ZONE="$1"
+
+        # Kubernetes API Server
+        firewall-cmd --permanent --zone="$ZONE" --add-port=6443/tcp
+
+        # Etcd
+        firewall-cmd --permanent --zone="$ZONE" --add-port=2379-2380/tcp
+
+        # Kubelet API
+        firewall-cmd --permanent --zone="$ZONE" --add-port=10250/tcp
+
+        # Scheduler and Controller Manager
+        firewall-cmd --permanent --zone="$ZONE" --add-port=10257-10259/tcp
+
+        # kube proxy health check
+        firewall-cmd --permanent --zone="$ZONE" --add-port=10255/tcp
+
+        # Nodeport range
+        firewall-cmd --permanent --zone="$ZONE" --add-port=30000-32767/tcp
+
+        ############### Start Cilium Rules ##########################
+
+        # Cilium: VXLAN Overlay
+        firewall-cmd --permanent --zone="$ZONE" --add-port=8472/udp
+
+        # Cilium: Health Checks
+        firewall-cmd --permanent --zone="$ZONE" --add-port=4240/tcp
+
+        # Cilium: Geneve Overlay networking (if enabled)
+        firewall-cmd --permanent --zone="$ZONE" --add-port=6081/udp
+
+        # Cilium: WireGuard Encryption (if enabled)
+        firewall-cmd --permanent --zone="$ZONE" --add-port=51871/udp
+
+        # Cilium: IPsec Encryption (if enabled)
+        firewall-cmd --permanent --zone="$ZONE" --add-protocol=esp
+
+        # Cilium: Prometheus Observability
+        firewall-cmd --permanent --zone="$ZONE" --add-port=9962/tcp
+        firewall-cmd --permanent --zone="$ZONE" --add-port=9963/tcp
+
+        # Cilium: Enable ICMP Type 8 (Echo request) and Type 0 (Echo Reply)
+        firewall-cmd --permanent --zone="$ZONE" --add-icmp-block-inversion
+
+        ############### End Cilium Rules ##########################
+
+        # DNS and service communications
+
+        # DNS (CoreDNS)
+        firewall-cmd --permanent --zone="$ZONE" --add-port=53/tcp
+        firewall-cmd --permanent --zone="$ZONE" --add-port=53/udp
+
+        # Allow inbound/outbound traffic to port 443 (HTTPS)
+        firewall-cmd --permanent --zone="$ZONE" --add-port=443/tcp
+
+        # Allow inbound/outbound traffic to port 4222 (NATS)
+        firewall-cmd --permanent --zone="$ZONE" --add-port=4222/tcp
+
+        # Allow NAT traffic
+        firewall-cmd --permanent --add-masquerade
+
+        # Reload firewalld cache
+        firewall-cmd --reload
+        EOF
+
+        # Make the script executable
+        chmod +x firewalld-cilium.sh
+        ```
+
+    13. Execute the script with the name of the firewalld zone. For example, the following script sets the rules in the
+        firewall zone `public`.
+
+        ```shell
+        ./firewalld-cilium.sh public
+        ```
+
+     </details>
 
 ## Install Palette Agent
 
@@ -651,6 +796,11 @@ guidance.
 
 4. Verify that the cluster is listed as **Healthy** and has a **Running** status.
 
+Alongside Palette, [Local UI](../../clusters/edge/local-ui/host-management/access-console.md) allows you to fully manage
+the lifecycle of your edge hosts. Refer to the
+[Reboot, Shutdown, and Reset Edge Host](../../clusters/edge/local-ui/host-management/reset-reboot.md) guide for further
+details on how to use these operations
+
 </TabItem>
 
 <TabItem value="Airgap">
@@ -660,6 +810,10 @@ guidance.
 2. Select **Cluster** from the left **Main Menu**.
 
 3. Verify that your cluster is in a **Heathy** status.
+
+Local UI allows you to fully manage the lifecycle of your edge hosts. Refer to the
+[Reboot, Shutdown, and Reset Edge Host](../../clusters/edge/local-ui/host-management/reset-reboot.md) guide for further
+details on how to use these operations.
 
 </TabItem>
 
