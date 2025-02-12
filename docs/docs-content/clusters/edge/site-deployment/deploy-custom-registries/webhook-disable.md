@@ -155,7 +155,7 @@ provides an example that shows how you might customize the image pull behavior o
    ```yaml {9-11}
    stages:
      reconcile:
-      - files
+      - files:
          - name: "Redirect registries"
             - path: /etc/containerd/certs.d/gcr.io/hosts.toml
               owner: 0
