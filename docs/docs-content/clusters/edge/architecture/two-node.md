@@ -7,9 +7,9 @@ sidebar_position: 0
 tags: ["edge", "architecture"]
 ---
 
-Palette Edge allows you to provision a highly available (HA) cluster capable of withstanding any single node failure
-with only two nodes instead of three. Palette achieves this by sidestepping a critical limitation of etcd by using Postgres
-as the backend storage with [Kine](https://github.com/k3s-io/kine).
+Palette Edge allows you to provision a Highly Available (HA) cluster capable of withstanding any single node failure
+with only two nodes instead of three. Palette achieves this by sidestepping a critical limitation of etcd by using
+Postgres as the backend storage with [Kine](https://github.com/k3s-io/kine).
 
 :::preview
 
@@ -17,10 +17,11 @@ as the backend storage with [Kine](https://github.com/k3s-io/kine).
 
 ## Architecture Overview
 
-In a typical Kubernetes cluster, a cluster achieves high availability through the backend key-value store [etcd](https://etcd.io/). When a
-single node goes down, etcd is able to maintain data consistency since its two remaining nodes can still maintain quorum.
-However, this setup requires at least three nodes. A two-node etcd cluster will not be able to withstand the failure of
-a node because even the failure of one node will cause the cluster to lose quorum.
+In a typical Kubernetes cluster, a cluster achieves high availability through the backend key-value store
+[etcd](https://etcd.io/). When a single node goes down, etcd is able to maintain data consistency since its two
+remaining nodes can still maintain quorum. However, this setup requires at least three nodes. A two-node etcd cluster
+will not be able to withstand the failure of a node because even the failure of one node will cause the cluster to lose
+quorum.
 
 In our two-node HA architecture, instead of etcd, we use a Postgres database as the backend storage and a etcd shim
 named Kine that allows the Kubernetes API to communicate with it as if it is an etcd server. One node is the leader and
@@ -34,8 +35,8 @@ To create two-node Edge clusters, ensure you set the `TWO_NODE` argument to `tru
 provider images, and toggle on **Two-Node Mode** during Edge cluster creation. For more information, refer to
 [Build Provider Images](../edgeforge-workflow/palette-canvos/build-provider-images.md) and
 [Create Cluster Definition](../site-deployment/cluster-deployment.md). If you create a two-node cluster, you must use
-exactly two nodes in the control plane. You will also not be able to change it to a regular etcd-backed cluster or change the
-number of nodes.
+exactly two nodes in the control plane. You will also not be able to change it to a regular etcd-backed cluster or
+change the number of nodes.
 
 ## Limitations
 
@@ -43,14 +44,14 @@ number of nodes.
 - Agent mode is not supported for two-node clusters because two-node high availability relies on Kairos, which is only
   used in appliance mode. For more information, refer to
   [Deployment Modes](../../../deployment-modes/deployment-modes.md).
-- Two-node clusters can only have two nodes in the control plane pool. You cannot adjust the number of the nodes in the
-  control plane pool after cluster creation.
+- Two-node clusters can only have exactly two nodes in the control plane pool. You cannot adjust the number of the nodes
+  in the control plane pool after cluster creation.
 
 ## Use Cases
 
 The two-node architecture prioritizes availability, but does make a slight sacrifice in data consistency in a
 split-brain scenario. This architecture is most suitable in situations where the priority for availability is high, the
-risk for network split is low, and a slight loss in a split-brain scenario is acceptable when compared with total
+risk for network split is low, and a slight loss during a network split event is acceptable when compared with total
 availability loss. When these conditions are met, adopting the two-node architecture allows you to save 33% of costs on
 hardware alone, with further savings on cable management, operations, space, and transportation.
 
@@ -84,14 +85,23 @@ timestamped state change will become the leader
 If you introduce a node that had previously failed, the previously failed node will drop its database in its entirety
 and sync with the current leader as a follower, because the node does not have a more recently timestamped state change
 compared with the current leader node. If you introduce a new node that was never part of the cluster, it will also sync
-with the current leader and become a follower.
+with the current leader and become a follower. No data loss is incurred in this scenario because the dropped dataset is
+entirely duplicated in the surviving node.
 
-### Restore After Network Split
+### Restore After Network Split and Potential Data Loss
 
 If a network split occurs, both nodes will assume the other node has experienced failure and start operating as the new
 leader. When you re-introduce both nodes to the same cluster, the nodes will compare the timestamp of their most recent
 state change. The node with the most recent state change is elected leader, and the losing node will drop its entire
-database to sync with the leader node as a follower. This may incur a small amount of data loss, as the data  written to the losing node during the split is not retained.
+database to sync with the leader node as a follower. This may incur a small amount of data loss, as the data written to
+the losing node during the split is not retained.
+
+:::warning
+
+Because of the potential for data loss, only use the two-node HA architecture in situations where availability is
+prioritized over data consistency and the possibility of network splits is low.
+
+:::
 
 ![Order of operations diagram of how the two-node architecture resolves split brain scenarios](/clusters_edge_architecture_two-node-split.webp)
 
