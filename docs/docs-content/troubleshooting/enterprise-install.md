@@ -211,7 +211,7 @@ Repeat the following process for each node in your cluster.
    fs.file-max = 1000000
    ```
 
-## Scenario - MAAS and VMware vSphere clusters fail image resolution in non-airgap environments
+## Scenario - MAAS and VMware vSphere Clusters Fail Image Resolution in Non-Airgap Environments
 
 In Palette or VerteX non-airgap installations with version 4.2.13 or later, MAAS and VMware vSphere clusters may fail to
 provision due to image resolution errors. These environments have incorrectly configured default image endpoints. To
@@ -221,7 +221,7 @@ resolve this issue, you must manually set these endpoints.
 
 1. Open a terminal with connectivity to your self-hosted environment.
 
-2. Execute the following command to save base URL of your Palette instance API to the `BASE_URL` environment value. Add
+2. Execute the following command to save the base URL of your Palette instance API to the `BASE_URL` environment value. Add
    your correct URL in place of `REPLACE_ME`.
 
    ```shell
@@ -240,7 +240,7 @@ resolve this issue, you must manually set these endpoints.
    }'
    ```
 
-   Output
+   The output displays the authorization token.
 
    ```json hideClipboard
    {
@@ -249,11 +249,11 @@ resolve this issue, you must manually set these endpoints.
    }
    ```
 
-4. Using the output you received, copy the authorization value to your clipboard and assign it to an environment
-   variable. Replace the authorization value below with the value from the output.
+4. Copy the authorization token to your clipboard and assign it to an environment
+   variable. Replace the placeholder below with the value from the output.
 
    ```shell hideClipboard
-   TOKEN=**********
+   export TOKEN=**********
    ```
 
 5. Execute the following command to set the MAAS image endpoint to `https://maasgoldenimage.s3.amazonaws.com`. Replace
