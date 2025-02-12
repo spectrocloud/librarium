@@ -95,7 +95,7 @@ Use the following steps to create a new host cluster so that you can add Edge ho
    the **control-plane-pool** and the **worker-pool**. When you have completed configuring the node pools, click on
    **Next**.
 
-10. (Optional) If you want to provision a two-node high availability cluster, check the `**Enable Two-Node Capability`
+10. (Optional) If you want to provision a two-node high availability cluster, check the **Enable Two-Node Capability**
     box to enable the two-node high availability architecture. This means you must have exactly two nodes in the control
     plane pool.
 

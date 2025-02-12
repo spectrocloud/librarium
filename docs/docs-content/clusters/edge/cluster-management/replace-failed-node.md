@@ -11,13 +11,13 @@ A highly available (HA) two-node cluster can withstand the failure of one node a
 However, when a node fails, it is important to either restore the health of the failed node or replace it with a new one
 to maintain high availability. This guide teaches you how to replace a failed node.
 
-## Prerequisite
+## Prerequisites
 
-- You have an active two-node cluster with one of the nodes experiencing failure.
+- An active two-node cluster with one of the nodes experiencing failure.
 
-- You have an Edge host registered with Palette.
+- An Edge host registered with Palette.
 
-- Your new registered Edge host must be in the same network as the surviving node of the cluster.
+- A new registered Edge host that must be in the same network as the surviving node of the cluster.
 
 ## Replace a Failed Node
 
@@ -45,7 +45,7 @@ to maintain high availability. This guide teaches you how to replace a failed no
 
 10. Click **Confirm**.
 
-It may take 10 - 20 minutes for the new node to reach **Healthy** status.
+It may take 10 to 20 minutes for the new node to reach a **Healthy** status.
 
 ## Validate
 
