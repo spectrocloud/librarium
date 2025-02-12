@@ -7,7 +7,7 @@ sidebar_position: 0
 tags: ["edge", "architecture"]
 ---
 
-Palette Edge allows you to provision a Highly Available (HA) cluster capable of withstanding any single node failure
+Palette Edge allows you to provision a highly available (HA) cluster capable of withstanding any single node failure
 with only two nodes instead of three. Palette achieves this by sidestepping a critical limitation of etcd by using
 Postgres as the backend storage with [Kine](https://github.com/k3s-io/kine).
 
@@ -95,13 +95,6 @@ leader. When you re-introduce both nodes to the same cluster, the nodes will com
 state change. The node with the most recent state change is elected leader, and the losing node will drop its entire
 database to sync with the leader node as a follower. This may incur a small amount of data loss, as the data written to
 the losing node during the split is not retained.
-
-:::warning
-
-Because of the potential for data loss, only use the two-node HA architecture in situations where availability is
-prioritized over data consistency and the possibility of network splits is low.
-
-:::
 
 ![Order of operations diagram of how the two-node architecture resolves split brain scenarios](/clusters_edge_architecture_two-node-split.webp)
 
