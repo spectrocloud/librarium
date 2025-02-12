@@ -107,31 +107,15 @@ the defined variable schema are not supported.
 
 ### Enablement
 
-There are two ways to modify your cluster profile variables in an active cluster.
+There are two ways to modify your cluster profile variables in an active cluster. You are automatically taken through the appropriate workflow based on the changes you make to your cluster. 
 
-- [**Review changes in Editor**](#review-changes-in-editor) - Use this process if you plan to make either of the
-  following changes:
-   <!-- prettier-ignore-start -->
+- **Review changes in Editor** - Used if you are updating your cluster profile version to one that changes the YAML configuration of a pack or adds or removes cluster profile variables (regardless of whether the definition is included in the pack configuration). This flow is also used if you add or remove a profile from your cluster.
 
-  - Update your cluster profile version to one that changes the YAML configuration of a pack or adds or removes cluster
-    profile variables (regardless of whether the definition is included in the pack configuration).
+- **Profile Variables Configuration** - Used if you are updating your cluster profile version to one that does _not_ change the YAML configuration of a pack but _does_ modify the schema or properties of existing variables. This flow is also used if you change the values of your cluster profile variables without updating the cluster profile version.
 
-  - Add or remove a profile from your cluster.
-  <!-- prettier-ignore-end -->
+<Tabs>
 
-- [**Profile Variables Configuration**](#profile-variables-configuration) - Use this process if you plan to make either
-  of the following changes:
-
-   <!-- prettier-ignore-start -->
-
-  - Update your cluster profile version to one that does _not_ change the YAML configuration of a pack but _does_ modify
-    the schema or properties of existing variables.
-
-  - Change the values of your cluster profile variables being used in your cluster without updating the cluster profile
-  version.
-  <!-- prettier-ignore-end -->
-
-#### Review Changes in Editor
+<TabItem value="editor" label="Review Changes in Editor">
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 2. From the left **Main Menu**, select **Clusters**. Choose the cluster for which you are updating the cluster profile
@@ -167,7 +151,9 @@ There are two ways to modify your cluster profile variables in an active cluster
 10. Your cluster begins the update process. Navigate to the cluster **Events** tab to monitor your cluster's progress.
     When your cluster is finished updating, [validate](#validate-1) your changes.
 
-#### Profile Variables Configuration
+</TabItem>
+
+<TabItem value="configuration" label="Profile Variables Configuration">
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 2. From the left **Main Menu**, select **Clusters**. Choose the cluster for which you are updating the cluster profile
@@ -206,6 +192,10 @@ There are two ways to modify your cluster profile variables in an active cluster
 7. When you are finished, choose **Save Changes**.
 8. Your cluster begins the update process. Close the **Settings** window and monitor its progress using the **Events**
    tab. When your cluster is finished updating, [validate](#validate-1) your changes.
+
+</TabItem>
+
+</Tabs>
 
 ### Validate
 

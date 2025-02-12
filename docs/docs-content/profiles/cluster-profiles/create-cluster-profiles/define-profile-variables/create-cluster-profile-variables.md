@@ -19,13 +19,11 @@ of creating cluster profile variables, adding them to profile layers, and deploy
   [Roles and Permissions](../../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile)
   for more information.
 
-- An in-progress or existing [cluster profile](../../cluster-profiles.md).
+- An existing [cluster profile](../../cluster-profiles.md).
 
 ### Enablement
 
-You can define profile variables when creating or updating cluster profiles. To define profile variables
-[while creating a cluster profile](../../create-cluster-profiles/create-cluster-profiles.md), you need to be at the
-**Profile Layers** stage of the cluster profile creation process and start following this guide from step three.
+You can define profile variables when creating or updating cluster profiles. This guide assumes you have already created a cluster profile. Refer to the [Create Cluster Profiles](../../create-cluster-profiles/create-cluster-profiles.md) guide to learn how to create a cluster profile.
 
 1.  Log in to [Palette](https://console.spectrocloud.com).
 
@@ -43,8 +41,7 @@ You can define profile variables when creating or updating cluster profiles. To 
 
     :::
 
-4.  Enter the variable name using the format `{{.spectro.var.<variable_name>}}`. You will use this name when adding
-    variables to layer configurations. The name must be unique within the parent cluster.
+4.  Enter the **Variable** name. This name is automatically preceded by `.spectro.var.`, which cannot be changed. The full cluster profile variable, `{{.spectro.var.variable_name}}`, is used when adding variables to layer configurations. The name must be unique within the parent cluster.
 
 5.  Enter a variable display name that Palette will display during cluster deployment. The display name must be unique
     within the parent cluster.
@@ -134,6 +131,8 @@ You can now use your cluster profile to deploy or update a cluster. The steps in
 the infrastructure provider; however, when cluster profile variables are configured in the cluster profile, there will
 always be an additional **Profile Config** window displayed prior to deploying the cluster. To learn more about
 deploying clusters, visit our [Getting Started](../../../../../docs-content/getting-started/getting-started.md) series.
+
+Note that in the below example, we entered `amazing-hello-universe-namespace` for the namespace of the Hello Universe application.
 
 ![Deploying a cluster and configuring cluster profile variables on the Profile Config window.](/profiles_cluster-profiles_create-cluster-profiles_define-profile-variables_create-cluster-profile-variable-profile-config.webp)
 
