@@ -181,11 +181,14 @@ want to use for your workload clusters.
 | Kubernetes 1.29.7      | u-2004-0-k-1297-fips.ova       | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-1297-fips.ova`       |
 | Kubernetes 1.29.8      | u-2004-0-k-1298-fips.ova       | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-1298-fips.ova`       |
 | Kubernetes 1.29.9      | u-2004-0-k-1299-fips.ova       | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-1299-fips.ova`       |
-| Kubernetes 1.29.10     | u-2004-0-k-1299-fips.ova       | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-12910-fips.ova`      |
+| Kubernetes 1.29.10     | u-2004-0-k-12910-fips.ova      | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-12910-fips.ova`      |
+| Kubernetes 1.29.12     | u-2004-0-k-12912-fips.ova      | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-12912-fips.ova`      |
 | Kubernetes 1.30.4      | u-2004-0-k-1304-fips.ova       | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-1304-fips.ova`       |
 | Kubernetes 1.30.5      | u-2004-0-k-1305-fips.ova       | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-1305-fips.ova`       |
 | Kubernetes 1.30.6      | u-2004-0-k-1306-fips.ova       | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-1306-fips.ova`       |
+| Kubernetes 1.30.8      | u-2004-0-k-1308-fips.ova       | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-1308-fips.ova`       |
 | Kubernetes 1.31.1      | u-2004-0-k-1311-fips.ova       | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-1311-fips.ova`       |
+| Kubernetes 1.31.4      | u-2004-0-k-1314-fips.ova       | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-1314-fips.ova`       |
 | RKE2 1.27.11           | u-2004-0-k-rke2-12711-fips.ova | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-12711-fips.ova` |
 | RKE2 1.27.13           | u-2004-0-k-rke2-12713-fips.ova | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-12713-fips.ova` |
 | RKE2 1.27.14           | u-2004-0-k-rke2-12714-fips.ova | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-12714-fips.ova` |
@@ -204,10 +207,13 @@ want to use for your workload clusters.
 | RKE2 1.29.8            | u-2004-0-k-rke2-1298-fips.ova  | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-1298-fips.ova`  |
 | RKE2 1.29.9            | u-2004-0-k-rke2-1299-fips.ova  | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-1299-fips.ova`  |
 | RKE2 1.29.10           | u-2004-0-k-rke2-12910-fips.ova | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-12910-fips.ova` |
+| RKE2 1.29.12           | u-2004-0-k-rke2-12912-fips.ova | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-12912-fips.ova` |
 | RKE2 1.30.3            | u-2004-0-k-rke2-1303-fips.ova  | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-1303-fips.ova`  |
 | RKE2 1.30.4            | u-2004-0-k-rke2-1304-fips.ova  | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-1304-fips.ova`  |
 | RKE2 1.30.5            | u-2004-0-k-rke2-1305-fips.ova  | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-1305-fips.ova`  |
 | RKE2 1.30.6            | u-2004-0-k-rke2-1306-fips.ova  | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-1306-fips.ova`  |
+| RKE2 1.30.8            | u-2004-0-k-rke2-1308-fips.ova  | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-1308-fips.ova`  |
+| RKE2 1.31.4            | u-2004-0-k-rke2-1314-fips.ova  | `https://vmwaregoldenimage-console.s3.amazonaws.com/u-2004-0-k-rke2-1314-fips.ova`  |
 
 ### Usage Instructions
 
