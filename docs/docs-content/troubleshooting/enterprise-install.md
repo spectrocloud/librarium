@@ -213,8 +213,8 @@ Repeat the following process for each node in your cluster.
 
 ## Scenario - MAAS and VMware vSphere Clusters Fail Image Resolution in Non-Airgap Environments
 
-In Palette or VerteX non-airgap installations with version 4.2.13 or later, MAAS and VMware vSphere clusters may fail to
-provision due to image resolution errors. These environments have incorrectly configured default image endpoints. To
+In Palette or VerteX non-airgap installations with versions 4.2.13 to 4.5.22, MAAS and VMware vSphere clusters may fail
+to provision due to image resolution errors. These environments have incorrectly configured default image endpoints. To
 resolve this issue, you must manually set these endpoints.
 
 ### Debug Steps
@@ -288,3 +288,5 @@ resolve this issue, you must manually set these endpoints.
       }
    }'
    ```
+
+MAAS and VMware vSphere clusters will now be successfully provisioned on your self-hosted Palette environment.
