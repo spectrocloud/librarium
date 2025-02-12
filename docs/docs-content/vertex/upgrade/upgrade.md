@@ -27,7 +27,9 @@ Palette VerteX upgrade.
 
 ## Supported Upgrade Paths
 
-Refer to the following table for the self-hosted Palette VerteX upgrade paths that we currently support.
+Refer to the following tables for the supported Palette VerteX upgrade paths for
+[VMware](../install-palette-vertex/install-on-vmware/install-on-vmware.md) and
+[Kubernetes](../install-palette-vertex/install-on-kubernetes/install-on-kubernetes.md) installations.
 
 :::danger
 
@@ -36,10 +38,19 @@ latest minor version available.
 
 :::
 
-### 4.5.x
+<Tabs>
+<TabItem label="VMware" value="VMware">
+
+**4.5.x**
 
 | **Source Version** | **Target Version** |    **Support**     |
 | :----------------: | :----------------: | :----------------: |
+|       4.5.20       |       4.5.21       | :white_check_mark: |
+|       4.5.15       |       4.5.21       | :white_check_mark: |
+|       4.5.11       |       4.5.21       | :white_check_mark: |
+|       4.5.8        |       4.5.21       | :white_check_mark: |
+|       4.5.4        |       4.5.21       | :white_check_mark: |
+|       4.4.20       |       4.5.21       | :white_check_mark: |
 |       4.5.15       |       4.5.20       | :white_check_mark: |
 |       4.5.11       |       4.5.20       | :white_check_mark: |
 |       4.5.8        |       4.5.20       | :white_check_mark: |
@@ -57,7 +68,7 @@ latest minor version available.
 |       4.4.20       |       4.5.4        | :white_check_mark: |
 |       4.4.20       |       4.5.3        | :white_check_mark: |
 
-### 4.4.x
+**4.4.x**
 
 | **Source Version** | **Target Version** |    **Support**     |
 | :----------------: | :----------------: | :----------------: |
@@ -77,7 +88,7 @@ latest minor version available.
 |       4.3.6        |       4.4.11       | :white_check_mark: |
 |       4.3.6        |       4.4.6        | :white_check_mark: |
 
-### 4.3.x and Prior
+**4.3.x and Prior**
 
 | **Source Version** | **Target Version** |    **Support**     |
 | :----------------: | :----------------: | :----------------: |
@@ -86,6 +97,63 @@ latest minor version available.
 |       4.1.x        |       4.3.6        |        :x:         |
 |       4.1.12       |       4.2.7        | :white_check_mark: |
 |       4.1.7        |       4.2.7        | :white_check_mark: |
+
+</TabItem>
+
+<TabItem label="Kubernetes" value="Kubernetes">
+
+**4.5.x**
+
+| **Source Version** | **Target Version** |    **Support**     |
+| :----------------: | :----------------: | :----------------: |
+|       4.5.20       |       4.5.21       | :white_check_mark: |
+|       4.5.15       |       4.5.21       | :white_check_mark: |
+|       4.5.11       |       4.5.21       | :white_check_mark: |
+|       4.5.8        |       4.5.21       | :white_check_mark: |
+|       4.5.4        |       4.5.21       | :white_check_mark: |
+|       4.4.20       |       4.5.21       | :white_check_mark: |
+|       4.5.15       |       4.5.20       | :white_check_mark: |
+|       4.5.11       |       4.5.20       | :white_check_mark: |
+|       4.5.8        |       4.5.20       | :white_check_mark: |
+|       4.5.4        |       4.5.20       | :white_check_mark: |
+|       4.4.20       |       4.5.20       | :white_check_mark: |
+|       4.5.11       |       4.5.15       | :white_check_mark: |
+|       4.5.8        |       4.5.15       | :white_check_mark: |
+|       4.5.4        |       4.5.15       | :white_check_mark: |
+|       4.4.20       |       4.5.15       | :white_check_mark: |
+
+**4.4.x**
+
+| **Source Version** | **Target Version** |    **Support**     |
+| :----------------: | :----------------: | :----------------: |
+|       4.4.18       |       4.4.20       | :white_check_mark: |
+|       4.4.14       |       4.4.20       | :white_check_mark: |
+|       4.4.11       |       4.4.20       | :white_check_mark: |
+|       4.4.6        |       4.4.20       | :white_check_mark: |
+|       4.3.6        |       4.4.20       | :white_check_mark: |
+|       4.4.14       |       4.4.18       | :white_check_mark: |
+|       4.4.11       |       4.4.18       | :white_check_mark: |
+|       4.4.6        |       4.4.18       | :white_check_mark: |
+|       4.3.6        |       4.4.18       | :white_check_mark: |
+|       4.4.11       |       4.4.14       | :white_check_mark: |
+|       4.4.6        |       4.4.14       | :white_check_mark: |
+|       4.3.6        |       4.4.14       | :white_check_mark: |
+|       4.4.6        |       4.4.11       | :white_check_mark: |
+|       4.3.6        |       4.4.11       | :white_check_mark: |
+|       4.3.6        |       4.4.6        | :white_check_mark: |
+
+**4.3.x and Prior**
+
+| **Source Version** | **Target Version** |    **Support**     |
+| :----------------: | :----------------: | :----------------: |
+|       4.2.13       |       4.3.6        | :white_check_mark: |
+|       4.2.7        |       4.2.13       | :white_check_mark: |
+|       4.1.x        |       4.3.6        |        :x:         |
+|       4.1.12       |       4.2.7        | :white_check_mark: |
+|       4.1.7        |       4.2.7        | :white_check_mark: |
+
+</TabItem>
+</Tabs>
 
 ## Upgrade Guides
 
