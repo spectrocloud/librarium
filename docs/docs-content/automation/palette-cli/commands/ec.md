@@ -19,8 +19,6 @@ can use the `ec` command to install a
 
 The `ec` command exposes the following subcommand.
 
-<br />
-
 - `install` - Install a Palette Enterprise Cluster through an interactive wizard. A container runtime is required to
   install an EC cluster.
 
@@ -39,8 +37,6 @@ The `ec` command exposes the following subcommand.
 The `install` subcommand installs a Palette Enterprise Cluster in your target environment. You can install Palette or
 Palette VerteX using the `install` subcommand. The `install` subcommand can be used in interactive mode, which prompts
 you for required values. Alternatively, you can use flags to generate a configuration file.
-
-<br />
 
 | Short Flag | Long Flag                 | Description                                                                                                                                                                                                                                                                                                                                                                 | Type    |
 | ---------- | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
@@ -177,15 +173,6 @@ for the following prerequisites:
 - At least five IP addresses are available in the provided IP range.
 - Ensure vSphere tags for Kubernetes regions and zones are available.
 - The provided vSphere Datacenter is accessible and has the required compute resources available.
-
-:::info
-
-The `--validate` is only available in environments that have internet access to download the Helm charts required by the
-Validator. If you are in an environment without internet access, the validation will not be able to execute and will
-return an error. The `--validate` flag will honor proxy settings if they are set in the environment through the
-following environment variables: `HTTP_PROXY`, `HTTPS_PROXY`, `NO_PROXY`.
-
-:::
 
 When you use the `--validate` flag, the standard installation wizard will proceed unless the `--config-file` flag is
 provided. Once all user inputs are provided, the validation will begin. A kind cluster will be created that contains the
