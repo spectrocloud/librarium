@@ -69,8 +69,8 @@ The following table lists the open source licenses tied to the libraries and mod
 | github.com/BurntSushi/toml                                                                    | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | github.com/bxcodec/faker/v3                                                                   | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | github.com/c-robinson/iplib                                                                   | [MIT](https://opensource.org/license/mit/)                       |
-| github.com/canonical/cluster-api-bootstrap-provider-microk8s/apis/v1beta1                     | None                                                             |
-| github.com/canonical/cluster-api-control-plane-provider-microk8s/api/v1beta1                  | None                                                             |
+| github.com/canonical/cluster-api-bootstrap-provider-microk8s/apis/v1beta1                     | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                                                             |
+| github.com/canonical/cluster-api-control-plane-provider-microk8s/api/v1beta1                  | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                                                             |
 | github.com/cavaliergopher/grab                                                                | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | github.com/cert-manager/cert-manager/pkg/apis                                                 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | github.com/cespare/xxhash/v2                                                                  | [MIT](https://opensource.org/license/mit/)                       |
