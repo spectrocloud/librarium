@@ -131,6 +131,9 @@ included.
   [Proxy Requirements](../enterprise-version/install-palette/#proxy-requirements) for a complete list of domains that
   must be allowed.
 
+- The Palette eXtended Kubernetes (PXK) version 1.32.1 pack does not currently support
+  [AWS](../clusters/public-cloud/aws/aws.md) and [GCP](../clusters/public-cloud/gcp/gcp.md) cluster deployments.
+
 #### Kubernetes
 
 | Pack Name                                  | New Version |
