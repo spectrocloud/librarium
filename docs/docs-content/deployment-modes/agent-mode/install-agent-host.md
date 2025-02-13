@@ -42,6 +42,9 @@ Palette. You will then create a cluster profile and use the registered host to d
 - The FIPS-compliant version of Agent Mode is only available for Red Hat Enterprise Linux (RHEL) and Rocky Linux 8
   systems.
 
+- Arm64 support for airgap clusters is not available. This because Harbor, which is required for airgap clusters, does
+  not have an Arm64 image.
+
 ## Prerequisites
 
 - A physical or virtual host with SSH access, access to the internet, and connection to Palette. For airgap deployments,
@@ -83,8 +86,6 @@ Palette. You will then create a cluster profile and use the registered host to d
   - [iptables](https://linux.die.net/man/8/iptables)
   - [rsyslog](https://github.com/rsyslog/rsyslog). This is required for audit logs.
   - (Airgap only) [Palette Edge CLI](../../spectro-downloads.md#palette-edge-cli)
-
-  <br />
 
   :::warning
 
