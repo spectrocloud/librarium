@@ -406,7 +406,7 @@ Appliance mode requires the following components:
 
 - Palette registration token for pairing Edge hosts with Palette. You will need tenant admin access to Palette to
   generate a new registration token. For detailed instructions, refer to the
-  [Create Registration Token](../../../../edge/site-deployment/site-installation/create-registration-token) guide.
+  [Create Registration Token](../../../../edge/site-deployment/site-installation/create-registration-token.md) guide.
 
 - An account with an image registry that will store the provider image, for example,
   [Docker Hub](https://hub.docker.com/).
