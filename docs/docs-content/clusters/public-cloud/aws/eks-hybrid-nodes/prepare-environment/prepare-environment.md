@@ -6,11 +6,13 @@ tags: ["public cloud", "aws", "eks hybrid nodes"]
 hide_table_of_contents: false
 ---
 
-Before Palette can manage your Amazon EKS cluster and Amazon EKS Hybrid Nodes, you must suitably prepare your environment. The high level steps are as follows:
+Before Palette can manage your Amazon EKS cluster and Amazon EKS Hybrid Nodes, you must suitably prepare your
+environment. The high level steps are as follows:
 
-<!-- - Configure your AWS and edge networks to allow communication between your Kubernetes control plane, worker nodes, and pods.
+- Configure your AWS and hybrid network to allow communication between your Kubernetes control plane, worker nodes, and
+  pods.
 
-- Configure IAM credentials for your edge hosts using either AWS Systems Manager (AWS SSM) or AWS IAM Roles Anywhere. -->
+- Configure IAM credentials for your hybrid nodes using either AWS Systems Manager (AWS SSM) or AWS IAM Roles Anywhere.
 
 - Register your edge hosts with Palette using either Agent Mode or Appliance Mode.
 
@@ -20,10 +22,21 @@ Before Palette can manage your Amazon EKS cluster and Amazon EKS Hybrid Nodes, y
 
 Use the following resources to help prepare your environment.
 
-<!-- - [Prepare Network](./prepare-network.md)
+<!-- Hidden until article readiness.
 
-- [Prepare Credentials](./prepare-credentials.md) -->
+- [Prepare Network](./prepare-network.md)
+
+- [Prepare Credentials](./prepare-credentials.md)
+
+- [Prepare EKS Cluster](./prepare-eks-cluster.md)
+
+-->
+
+- [Prepare networking for hybrid nodes](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-networking.html)
+
+- [Prepare credentials for hybrid nodes](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-creds.html)
 
 - [Prepare Edge Hosts](./prepare-edge-hosts.md)
 
-- [Prepare EKS Cluster](./prepare-eks-cluster.md)
+- [Create an Amazon EKS cluster with hybrid nodes enabled](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-cluster-create.html)
+  - [Prepare cluster access for hybrid nodes](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-cluster-prep.html)

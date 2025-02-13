@@ -31,13 +31,13 @@ Import your Amazon EKS cluster and enable hybrid mode to be able to create edge 
 
 - Access to an AWS cloud account.
 
-- Palette integration with AWS account. Review [Add an AWS Account tp Palette](../add-aws-accounts.md) for guidance.
+- Palette integration with AWS account. Review [Add an AWS Account to Palette](../add-aws-accounts.md) for guidance.
 
 - Your Palette account role must have the `clusterProfile.create` permission to import a cluster profile. Refer to the
   [Cluster Profile](../../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile)
   permissions for guidance.
 
-- Kubernetes version 1.19.X or later on the cluster you are importing.
+- Kubernetes version 1.25.x or later on the cluster you are importing.
 
 - Ensure your environment has network access to Palette SaaS. Refer to
   [Palette IP Addresses](../../../../architecture/palette-public-ips.md) for guidance.

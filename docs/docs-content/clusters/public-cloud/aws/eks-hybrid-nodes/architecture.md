@@ -120,64 +120,11 @@ If you want to use your edge hosts as Amazon EKS Hybrid Nodes, they must have be
 methods:
 
 - [Agent Mode](../../../../deployment-modes/agent-mode/agent-mode.md)
-- [Appliance Mode](../../../../deployment-modes/appliance-mode.md) requires completing the
+- [Appliance Mode](../../../../deployment-modes/appliance-mode.md) using the
   [EdgeForge workflow](../../../edge/edgeforge-workflow/edgeforge-workflow.md).
-  - Part of the EdgeForge workflow is to create [Kairos-based images](https://kairos.io/) containing the OS and the
-    desired Kubernetes versions. These are named provider images. You also need to ensure the required bind mounts are
-    specified in the user data configuration. Refer to the [Bind Mount Requirements](#bind-mount-requirements) section
-    for more information.
 
-:::warning
-
-Your edge host package managers must have up-to-date package indexes. This is to ensure that dependency packages for
-[`nodeadm`](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-nodeadm.html) can be successfully downloaded
-and installed.
-
-For example, on Ubuntu, you would issue the following command.
-
-```shell
-sudo apt-get update
-```
-
-Adjust to your operating system and package manager on your edge hosts.
-
-:::
-
-### Bind Mount Requirements
-
-If you are using [Appliance Mode](../../../../deployment-modes/appliance-mode.md) to deploy your edge hosts, ensure the
-following bind mounts are specified in the user data configuration. Add the following
-[`install`](../../../edge/edge-configuration/installer-reference.md#install-parameters) block to your Edge installer
-[user data file](../../../edge/edge-configuration/installer-reference.md).
-
-```yaml
-install:
-  extra-dirs-rootfs:
-    - /eks-hybrid
-  bind_mounts:
-    - /eks-hybrid
-    - /etc/aws
-    - /etc/containerd
-    - /etc/eks
-    - /etc/iam
-    - /etc/modules-load.d
-    - /var/lib/amazon
-```
-
-This snippet ensures that the required directories are mounted and available on your edge hosts, which are required for
-EKS Hybrid Nodes to function correctly.
-
-### Build Provider Images with Specific Arguments
-
-If using the Appliance Mode, you must include the following in your EdgeForge `.arg` file during the
-[build steps for provider images](../../../edge/edgeforge-workflow/palette-canvos/build-provider-images.md#build-provider-images).
-
-```shell
-K8S_DISTRIBUTION=nodeadm
-K8S_VERSION=<kubernetesVersion>  # supported versions: [ 1.29.0 | 1.30.0 | 1.31.0 ]
-```
-
-Replace `<kubernetesVersion>` with your version of Kubernetes. For example, `1.29.0`.
+Follow the steps in [Prepare Edge Hosts](./prepare-environment/prepare-edge-hosts.md) to prepare your edge hosts using
+either of these methods.
 
 ## Authentication and Access Management
 
@@ -185,6 +132,9 @@ Palette supports the following authentication methods for your hybrid nodes:
 
 - [AWS Systems Manager (SSM)](https://docs.aws.amazon.com/systems-manager/latest/userguide/what-is-systems-manager.html)
 - [AWS Identity and Access Management (IAM) Roles Anywhere](https://docs.aws.amazon.com/rolesanywhere/latest/userguide/introduction.html)
+  - IAM Roles Anywhere is not supported on some operating systems. Refer to the
+    [Operating system considerations](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-os.html#_operating_system_considerations)
+    for up-to-date guidance.
 
 Refer to
 [Prepare credentials for hybrid nodes](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-creds.html) for
