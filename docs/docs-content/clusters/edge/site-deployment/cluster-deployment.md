@@ -66,6 +66,9 @@ Use the following steps to create a new host cluster so that you can add Edge ho
   provider image you use to deploy the cluster. For more information, refer to
   [Build Provider Images](../edgeforge-workflow/palette-canvos/build-provider-images.md).
 
+- Network Time Protocol (NTP) servers are correctly configured in a multi-node cluster. All nodes must have their time
+  synchronized.
+
 ### Create Cluster
 
 1. Log in to [Palette](https://console.spectrocloud.com).
@@ -88,8 +91,8 @@ Use the following steps to create a new host cluster so that you can add Edge ho
    a CIDR range that cannot routed through a proxy. In addition, ensure that this VIP does not overlap with any IP
    address already used by other hosts in your network, including your Edge hosts.
 
-   You can also select any SSH keys in case you need to remote into the host cluster. You can also provide a list of
-   Network Time Protocol (NTP) servers. Click on **Next**.
+   You can also select any SSH keys in case you need to remote into the host cluster. You can also provide a list of NTP
+   servers. Click on **Next**.
 
 9. The node configuration page is where you can specify what Edge hosts make up the host cluster. Assign Edge hosts to
    the **control-plane-pool** and the **worker-pool**. When you have completed configuring the node pools, click on
