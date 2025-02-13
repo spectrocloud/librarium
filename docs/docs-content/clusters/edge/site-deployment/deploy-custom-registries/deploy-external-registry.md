@@ -188,7 +188,34 @@ information, refer to [Enable Local Harbor Registry](./local-registry.md).
    enable-admission-plugins: NamespaceLifecycle,ServiceAccount,NodeRestriction
    ```
 
-10. Follow the [Create Cluster Definition](../cluster-deployment.md) guide and deploy your cluster.
+10. (Optional) The provider image contains images of core Kubernetes such as the Kubernetes API server and scheduler.
+    These core images are loaded directly from the provider image to the container runtime. If you also want to load
+    these images from the external registry instead of from the provider image, you need to explicitly specify them in
+    the Kubernetes layer of the cluster profile.
+
+    <Tabs>
+
+    <TabItem id="PXK-E">
+
+    Add the following line in `cluster.config.clusterConfiguration`. Replace `docker.io/external-registry-url` with the
+    URL of your external registry.
+
+    ```yaml
+    cluster:
+      config: |
+        clusterConfiguration:
+          imageRepository: docker.io/external-registry-url
+    ```
+
+    </TabItem>
+
+    <TabItem id="K3s">
+
+    </TabItem>
+
+    </Tabs>
+
+11. Follow the [Create Cluster Definition](../cluster-deployment.md) guide and deploy your cluster.
 
 ## Validate
 
