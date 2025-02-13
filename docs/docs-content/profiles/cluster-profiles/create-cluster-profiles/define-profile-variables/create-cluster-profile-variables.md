@@ -41,10 +41,9 @@ You can define profile variables when creating or updating cluster profiles. Thi
 
     :::
 
-4.  Enter the **Variable** name. This name is automatically preceded by `.spectro.var.`, which cannot be changed. The full cluster profile variable, `{{.spectro.var.variable_name}}`, is used when adding variables to layer configurations. The name must be unique within the parent cluster.
+4.  Enter the **Variable** name. This name is automatically preceded by `.spectro.var.`, which cannot be changed. The full cluster profile variable, `{{.spectro.var.variable_name}}`, is used when adding variables to layer configurations. The **Variable** name must be unique within the scope of the cluster profile.
 
-5.  Enter a variable display name that Palette will display during cluster deployment. The display name must be unique
-    within the parent cluster.
+5.  Enter the variable **Display name** that Palette will display during cluster deployment. The **Display name** must be unique within the scope of the cluster profile.
 
 6.  Optionally, enter a variable description.
 
