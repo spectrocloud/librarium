@@ -13,7 +13,7 @@ This guide explains how to create an EKS cluster with the required configuration
 
 - Access to the AWS Management Console.
 
-- _Optional_ The [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) is installed
+- _(Optional)_ The [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) is installed
   and configured for your account.
 
 - Network connectivity between your on-prem environments and AWS.
@@ -121,8 +121,8 @@ These steps use the AWS Management Console.
     [Create a managed node group for your cluster](https://docs.aws.amazon.com/eks/latest/userguide/create-managed-node-group.html)
     to create a managed node group with the following configuration:
 
-    - **Minimum size** - The node group must contain at least one node to host the Palette agent, which is essential for
-      Palette to manage the cluster. Due to the EKS architecture, the Palette agent cannot be installed on the EKS
+    - **Minimum size** - The node group must contain _at least one node_ to host the Palette agent, which is essential
+      for Palette to manage the cluster. Due to the EKS architecture, the Palette agent cannot be installed on the EKS
       control plane.
 
     - **Instance types** - The node must use an instance type of at least **t3.xlarge** to ensure adequate resources.
@@ -135,11 +135,11 @@ These steps use the AWS Management Console.
     :::warning
 
     To maintain continuous management capabilities, at least one worker node should remain available at all times for
-    the Palette agent to operate effectively.
+    the Palette agent to operate.
 
     :::
 
-25. _Optional_ Obtain the kubeconfig for the cluster by following the steps in
+25. _(Optional)_ Obtain the kubeconfig for the cluster by following the steps in
     [Step 3: Update kubeconfig](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-cluster-create.html#hybrid-nodes-cluster-create-kubeconfig).
 
 ## Validate
@@ -150,7 +150,7 @@ These steps use the AWS Management Console.
 
 3. In the **Node groups** section, ensure that your newly created node group is **Active**.
 
-4. _Optional_ If you obtained the kubeconfig for the cluster, using kubectl, check that nodes are **Ready** by issuing
+4. _(Optional)_ If you obtained the kubeconfig for the cluster, using kubectl, check that nodes are **Ready** by issuing
    the following command.
 
    ```bash
@@ -161,7 +161,7 @@ These steps use the AWS Management Console.
 
    ```shell hideClipboard
    NAME          STATUS   ROLES    AGE    VERSION
-   worker-node   Ready    master   28h    v1.30.0
+   worker-node   Ready    <none>   28h    v1.30.0
    ```
 
 ## Next Steps
