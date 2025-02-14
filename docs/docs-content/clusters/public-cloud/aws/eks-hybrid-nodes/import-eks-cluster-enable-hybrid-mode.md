@@ -70,13 +70,18 @@ Import your Amazon EKS cluster and enable hybrid mode to be able to create edge 
     nodes with your AWS account in Systems Manager.
   - The Activation Code that is generated alongside the Activation ID. It is required to authenticate hybrid nodes with
     AWS Systems Manager.
-  - The Amazon Resource Name (ARN) for the [Hybrid Nodes IAM Role](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-creds.html#_hybrid_nodes_iam_role) created for AWS SSM hybrid activations.
+  - The Amazon Resource Name (ARN) for the
+    [Hybrid Nodes IAM Role](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-creds.html#_hybrid_nodes_iam_role)
+    created for AWS SSM hybrid activations.
 
   If you are using IAM Roles Anywhere, you will need to provide the following details during the import steps:
 
   - The Amazon Resource Name (ARN) of the IAM Roles Anywhere profile that defines which roles can be assumed by hybrid
     nodes.
-  - The ARN for the [Hybrid Nodes IAM Role](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-creds.html#_hybrid_nodes_iam_role) created for AWS IAM Roles Anywhere. This role defines the permissions and policies for roles that can be assumed by hybrid nodes.
+  - The ARN for the
+    [Hybrid Nodes IAM Role](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-creds.html#_hybrid_nodes_iam_role)
+    created for AWS IAM Roles Anywhere. This role defines the permissions and policies for roles that can be assumed by
+    hybrid nodes.
   - The ARN of the IAM Roles Anywhere trust anchor that contains your certificate authority configuration.
   - The PEM-encoded certificate of your Certificate Authority (CA) that serves as the trust anchor. This certificate is
     used by IAM Roles Anywhere to validate the authenticity of the client certificates presented by your hybrid nodes.
@@ -207,13 +212,13 @@ Import your Amazon EKS cluster and enable hybrid mode to be able to create edge 
 
 13. If selecting **IAM Roles Anywhere**, you must provide the following additional details.
 
-    | **Field**           | **Description**                                                                                                                                                                                                | **Example**                                                                                      |
-    | ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-    | Profile ARN         | The ARN of the IAM Roles Anywhere profile that defines which roles can be assumed by hybrid nodes.                                                                                                             | `arn:aws:rolesanywhere:us-east-2:123456789012:profile/abcd1234-5678-90ef-ghij-klmnopqrstuv`      |
-    | Role ARN            | The ARN for the [Hybrid Nodes IAM Role](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-creds.html#_hybrid_nodes_iam_role) created for AWS IAM Roles Anywhere. This role defines the permissions and policies for roles that can be assumed by hybrid nodes.                                                   | `arn:aws:iam::123456789012:role/AmazonEKSHybridNodesRole`                                              |
-    | Trust Anchor ARN    | The ARN of the IAM Roles Anywhere trust anchor that contains your certificate authority configuration.                                                                                                         | `arn:aws:rolesanywhere:us-east-2:123456789012:trust-anchor/abcd1234-5678-90ef-ghij-klmnopqrstuv` |
-    | Root CA Certificate | The PEM-encoded certificate of your CA that serves as the trust anchor. This certificate is used by IAM Roles Anywhere to validate the authenticity of the client certificates presented by your hybrid nodes. |                                                                                                  |
-    | Root CA Private Key | The private key corresponding to your CA certificate, used to sign client certificates.                                                                                                                        |                                                                                                  |
+    | **Field**           | **Description**                                                                                                                                                                                                                                                            | **Example**                                                                                      |
+    | ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+    | Profile ARN         | The ARN of the IAM Roles Anywhere profile that defines which roles can be assumed by hybrid nodes.                                                                                                                                                                         | `arn:aws:rolesanywhere:us-east-2:123456789012:profile/abcd1234-5678-90ef-ghij-klmnopqrstuv`      |
+    | Role ARN            | The ARN for the [Hybrid Nodes IAM Role](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-creds.html#_hybrid_nodes_iam_role) created for AWS IAM Roles Anywhere. This role defines the permissions and policies for roles that can be assumed by hybrid nodes. | `arn:aws:iam::123456789012:role/AmazonEKSHybridNodesRole`                                        |
+    | Trust Anchor ARN    | The ARN of the IAM Roles Anywhere trust anchor that contains your certificate authority configuration.                                                                                                                                                                     | `arn:aws:rolesanywhere:us-east-2:123456789012:trust-anchor/abcd1234-5678-90ef-ghij-klmnopqrstuv` |
+    | Root CA Certificate | The PEM-encoded certificate of your CA that serves as the trust anchor. This certificate is used by IAM Roles Anywhere to validate the authenticity of the client certificates presented by your hybrid nodes.                                                             |                                                                                                  |
+    | Root CA Private Key | The private key corresponding to your CA certificate, used to sign client certificates.                                                                                                                                                                                    |                                                                                                  |
 
 14. Click **Save Changes** when complete.
 
@@ -233,9 +238,11 @@ Import your Amazon EKS cluster and enable hybrid mode to be able to create edge 
     If it does not exist, you will receive an error similar to
     `Error from server (NotFound): configmaps "aws-auth" not found`.
 
-16. If the `aws-auth` ConfigMap does not exist, create a ConfigMap in the `kube-system` namespace using the following command.
+16. If the `aws-auth` ConfigMap does not exist, create a ConfigMap in the `kube-system` namespace using the following
+    command.
 
-    Replace `<roleArn>` with the ARN for the [Hybrid Nodes IAM Role](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-creds.html#_hybrid_nodes_iam_role).
+    Replace `<roleArn>` with the ARN for the
+    [Hybrid Nodes IAM Role](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-creds.html#_hybrid_nodes_iam_role).
 
     ```shell
     kubectl create --filename=/dev/stdin <<-EOF
@@ -262,7 +269,9 @@ Import your Amazon EKS cluster and enable hybrid mode to be able to create edge 
     kubectl edit configmap aws-auth --namespace kube-system
     ```
 
-    The following example shows the `mapRoles` entry appended below an existing entry. Replace `<roleArn>` with the ARN for the [Hybrid Nodes IAM Role](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-creds.html#_hybrid_nodes_iam_role).
+    The following example shows the `mapRoles` entry appended below an existing entry. Replace `<roleArn>` with the ARN
+    for the
+    [Hybrid Nodes IAM Role](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-creds.html#_hybrid_nodes_iam_role).
 
     ```yaml {13-17} hideClipboard
     apiVersion: v1
@@ -284,13 +293,19 @@ Import your Amazon EKS cluster and enable hybrid mode to be able to create edge 
         username: system:node:{{SessionName}}
     ```
 
-18. This step is only required if you use a proxy configuration for edge hosts or you plan to specify a VPN server IP for one or more edge hosts.
+18. This step is only required if you use a proxy configuration for edge hosts or you plan to specify a VPN server IP
+    for one or more edge hosts.
 
-    Create a ConfigMap using the following template. You can omit the `serviceCIDR` or `vpcCIDR` entries if one of them is not required.
+    Create a ConfigMap using the following template. You can omit the `serviceCIDR` or `vpcCIDR` entries if one of them
+    is not required.
 
-    - Replace `<serviceCidrIp>` with your hybrid pod CIDR list. For example, `192.168.0.0/16`. This is only required if using a proxy configuration for edge hosts. The `serviceCIDR` configures `NO_PROXY` to prevent Kubernetes service traffic from routing through the proxy server.
+    - Replace `<serviceCidrIp>` with your hybrid pod CIDR list. For example, `192.168.0.0/16`. This is only required if
+      using a proxy configuration for edge hosts. The `serviceCIDR` configures `NO_PROXY` to prevent Kubernetes service
+      traffic from routing through the proxy server.
 
-    - Replace `<vpcCidrIp>` with your hybrid node CIDR list. For example, `10.200.0.0/16`. This is only required if a VPN server IP is configured for one or more edge hosts. The `vpcCIDR` defines the network range for VPC resources to ensure proper routing through the VPN.
+    - Replace `<vpcCidrIp>` with your hybrid node CIDR list. For example, `10.200.0.0/16`. This is only required if a
+      VPN server IP is configured for one or more edge hosts. The `vpcCIDR` defines the network range for VPC resources
+      to ensure proper routing through the VPN.
 
     ```yaml
     apiVersion: v1

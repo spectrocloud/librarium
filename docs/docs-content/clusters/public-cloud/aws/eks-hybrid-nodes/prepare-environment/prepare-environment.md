@@ -7,7 +7,9 @@ hide_table_of_contents: false
 ---
 
 Before Palette can manage your Amazon EKS cluster and Amazon EKS Hybrid Nodes, you must suitably prepare your
-environment. The [AWS documentation](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-prereqs.html) provides an overview of the prerequisites and the high level steps that are required for Palette management are as follows:
+environment. The [AWS documentation](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-prereqs.html)
+provides an overview of the prerequisites and the high level steps that are required for Palette management are as
+follows:
 
 - Configure your AWS and hybrid network to allow communication between your Kubernetes control plane, worker nodes, and
   pods.
@@ -20,7 +22,9 @@ environment. The [AWS documentation](https://docs.aws.amazon.com/eks/latest/user
 
 :::info
 
-The steps described in [Prepare cluster access for hybrid nodes](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-cluster-prep.html) are performed as part of the [Import Cluster](../import-eks-cluster-enable-hybrid-mode.md#import-cluster) steps.
+The steps described in
+[Prepare cluster access for hybrid nodes](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-cluster-prep.html)
+are performed as part of the [Import Cluster](../import-eks-cluster-enable-hybrid-mode.md#import-cluster) steps.
 
 :::
 

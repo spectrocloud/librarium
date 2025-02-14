@@ -14,13 +14,23 @@ This guide explains how to create an EKS cluster with the required configuration
 
 - Network connectivity between your on-prem environments and AWS.
 
-  - An AWS VPC and subnet setup as guided in [AWS VPC and subnet setup](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-networking.html#hybrid-nodes-networking-vpc). During cluster creation, you will need to specify your configured VPC and subnets, as well as the CIDR block for your AWS node network.
+  - An AWS VPC and subnet setup as guided in
+    [AWS VPC and subnet setup](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-networking.html#hybrid-nodes-networking-vpc).
+    During cluster creation, you will need to specify your configured VPC and subnets, as well as the CIDR block for
+    your AWS node network.
 
-  - A cluster security group is configured for your [Amazon EKS Hybrid Nodes environment](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-networking.html#hybrid-nodes-networking-cluster-sg). During cluster creation, you will need to specify this as an additional security group.
+  - A cluster security group is configured for your
+    [Amazon EKS Hybrid Nodes environment](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-networking.html#hybrid-nodes-networking-cluster-sg).
+    During cluster creation, you will need to specify this as an additional security group.
 
-  - Your on-prem network is configured for hybrid network connectivity as guided in [On-premises networking configuration](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-networking.html#hybrid-nodes-networking-on-prem). During cluster creation, you will need to provide the CIDR blocks for your on-prem node and pod network.
+  - Your on-prem network is configured for hybrid network connectivity as guided in
+    [On-premises networking configuration](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-networking.html#hybrid-nodes-networking-on-prem).
+    During cluster creation, you will need to provide the CIDR blocks for your on-prem node and pod network.
 
-- An Amazon EKS cluster Identity and Access Management (IAM) role created with the necessary policies attached as guided in [Step 1: Create cluster IAM role](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-cluster-create.html#hybrid-nodes-cluster-create-iam). You will need to specify the IAM role during cluster creation.
+- An Amazon EKS cluster Identity and Access Management (IAM) role created with the necessary policies attached as guided
+  in
+  [Step 1: Create cluster IAM role](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-cluster-create.html#hybrid-nodes-cluster-create-iam).
+  You will need to specify the IAM role during cluster creation.
 
 ## Create the EKS Cluster
 
@@ -31,7 +41,6 @@ These steps use the AWS Management Console.
 2. Click **Create cluster**.
 
 3. On the **Configure cluster** page, select **Custom configuration** in **Configuration options**.
-   
 4. In the **Cluster configuration** section, enter a cluster **Name**.
 
 5. Select your Amazon EKS cluster IAM role for the **Cluster IAM role**. For example, `myAmazonEKSClusterRole`.
@@ -40,25 +49,29 @@ These steps use the AWS Management Console.
 
 7. On the **Configure cluster** page, you can configure the remaining options as needed. Click **Next** when complete.
 
-8. On the **Specify networking** page, in the **Networking** section, select your Amazon EKS Hybrid VPC and subnets for **VPC** and **Subnets**.
+8. On the **Specify networking** page, in the **Networking** section, select your Amazon EKS Hybrid VPC and subnets for
+   **VPC** and **Subnets**.
 
 9. For **Additional security groups**, select the security group created for your Amazon EKS Hybrid Nodes environment.
 
 10. For **Choose cluster IP address family**, ensure **IPv4** is selected.
 
-11. Enable the toggle for **Configure Kubernetes service IP address block**, and provide the CIDR block for your AWS node network in the **Service IPv4 range** field.
+11. Enable the toggle for **Configure Kubernetes service IP address block**, and provide the CIDR block for your AWS
+    node network in the **Service IPv4 range** field.
 
     For example, `10.100.0.0/16`.
 
 12. Enable the toggle for **Configure remote networks to enable hybrid nodes**.
 
-13. Click **Add new CIDR block** for **Remote node networks** and provide the CIDR block for your on-prem node network in the **Node CIDR block** field.
+13. Click **Add new CIDR block** for **Remote node networks** and provide the CIDR block for your on-prem node network
+    in the **Node CIDR block** field.
 
     For example, `10.200.0.0/16`.
 
     Add as many entries as needed.
 
-14. Click **Add new CIDR block** for **Remote pod networks** and provide the CIDR block for your on-prem pod network in the **Pod CIDR block** field.
+14. Click **Add new CIDR block** for **Remote pod networks** and provide the CIDR block for your on-prem pod network in
+    the **Pod CIDR block** field.
 
     For example, `192.168.0.0/16`.
 
@@ -67,7 +80,7 @@ These steps use the AWS Management Console.
 15. In the **Cluster endpoint access** section, select the **Public** or **Private** option.
 
     :::warning
-    
+
     The **Public and private** option is not supported for Amazon EKS Hybrid Nodes.
 
     :::
@@ -82,7 +95,9 @@ These steps use the AWS Management Console.
 
     :::info
 
-    The "Not compatible with Hybrid Nodes" warning is ignored in this case as affinity rules will be configured during the [Configure CNI for Hybrid Nodes](../import-eks-cluster-enable-hybrid-mode.md#configure-cni-for-hybrid-nodes) steps to ensure compatibility with your hybrid nodes.
+    The "Not compatible with Hybrid Nodes" warning is ignored in this case as affinity rules will be configured during
+    the [Configure CNI for Hybrid Nodes](../import-eks-cluster-enable-hybrid-mode.md#configure-cni-for-hybrid-nodes)
+    steps to ensure compatibility with your hybrid nodes.
 
     :::
 
@@ -135,7 +150,7 @@ kubectl get nodes
 ```
 
 - **Confirm AWS VPC CNI**:
-  - Check that the `amazon-vpc-cni-k8s` DaemonSet is running:
+  - Check that the `amazon-vpc-cni-k8s` DaemonSet is active:
 
 ```
 kubectl get ds -n kube-system amazon-vpc-cni
