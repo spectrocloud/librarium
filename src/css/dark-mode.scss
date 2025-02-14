@@ -1,45 +1,45 @@
 html[data-theme="dark"] {
-  --ifm-menu-color-background-active: var(--ifm-background-color);
   --ifm-color-primary: #44b2af;
   --ifm-color-primary-dark: #3b9a98;
   --ifm-color-primary-darker: #2d8685;
   --ifm-color-primary-darkest: #1f7a78;
   --ifm-color-primary-light: #7fd2d0;
   --ifm-color-primary-lighter: #bfe3e2;
-  --ifm-color-primary-lightest: #ddf4f3;
-  --ifm-menu-color: #e8ebee;
+  --ifm-color-primary-lightest: var(--ifm-font-color-base);
+  --ifm-font-color-base: #ddf4f3;
+  --ifm-background-color: #011414;
+  --ifm-dropdown-background-color: #012121;
+  --ifm-menu-color: var(--ifm-font-color-base);
   --ifm-menu-color-active: var(--ifm-color-primary);
-  --ifm-font-color-base: #e8ebee;
   --ifm-heading-color: #e0dcd7;
   --ifm-navbar-link-color: #6a7494;
-  --ifm-breadcrumb-item-background-active: #1e3332;
+  --ifm-breadcrumb-item-background-active: var(--ifm-dropdown-background-color);
   --docusaurus-highlighted-code-line-bg: #666666;
-  --ifm-background-color: #011414;
-  --ifm-menu-color-background-active: var(--ifm-background-color);
+  --ifm-menu-color-background-active: var(--ifm-dropdown-background-color);
   --ifm-navbar-link-color: #ffffff;
-  --ifm-navbar-background-color: #011414;
-  --ifm-toc-link-color: #818ba9;
+  --ifm-navbar-background-color: var(--ifm-background-color);
+  --ifm-toc-link-color: var(--ifm-font-color-base);
   --ifm-tabs-color: #818ba9;
   --docsearch-muted-color: #818ba9;
-  --ifm-menu-color-background-hover: #011414;
-  --ifm-color-success-contrast-background: #134f34;
-  --ifm-color-success-contrast-foreground: #b5bdd4;
-  --ifm-color-success-dark: #9eb277;
-  --ifm-color-info-contrast-background: #213e67;
-  --ifm-color-info-contrast-foreground: #b5bdd4;
-  --ifm-color-info-dark: #55a0be;
-  --ifm-color-warning-contrast-background: #5c4b1a;
-  --ifm-color-warning-contrast-foreground: #b5bdd4;
-  --ifm-color-warning-dark: #f0be65;
-  --ifm-color-danger-contrast-background: #63192b;
-  --ifm-color-danger-contrast-foreground: #b5bdd4;
-  --ifm-color-danger-dark: #851a01;
+  --ifm-color-success-contrast-background: #104223;
+  --ifm-menu-color-background-hover: var(--ifm-dropdown-background-color);
+  --ifm-color-success-contrast-foreground: #f3f0ee;
+  --ifm-color-success-dark: #104223;
+  --ifm-color-info-contrast-background: #1a3c5e;
+  --ifm-color-info-contrast-foreground: var(--ifm-color-success-contrast-foreground);
+  --ifm-color-info-dark: #1a3c5e;
+  --ifm-color-warning-contrast-background: #473617;
+  --ifm-color-warning-contrast-foreground: var(--ifm-color-success-contrast-foreground);
+  --ifm-color-warning-dark: #473617;
+  --ifm-color-danger-contrast-background: #6b1927;
+  --ifm-color-danger-contrast-foreground: var(--ifm-color-success-contrast-foreground);
+  --ifm-color-danger-dark: #6b1927;
   --ifm-alert-padding-horizontal: 1.5rem;
   --simpleCardPrimary: var(--ifm-color-primary);
   --simpleCardPrimaryHover: #9cc2f8;
   --simpleCardSecondary: #213e67;
   --simpleCardSecondaryHover: #213e67;
-  --simpleCardSubtle: #b5bdd4;
+  --simpleCardSubtle: var(--ifm-color-success-contrast-foreground);
   --simpleCardButtonIcon: #818ba9;
   --simpleCardBorder: #1f263c;
   --custom-table-header-color: #1c202b;
@@ -50,20 +50,27 @@ html[data-theme="dark"] {
   --custom-release-notes-option-font-color: #faf9f8;
   --custom-release-notes-menu-padding: var(--ifm-breadcrumb-item-background-active);
   --custom-sidebar-icon-color: #aeb1be;
-  --custom-purple-alert-bg-color: #221f4f;
-  --custom-byzantine-alert-bg-color: #792858;
+  --custom-purple-alert-bg-color: #463250;
+  --custom-byzantine-alert-bg-color: #621f47;
 
   .theme-last-updated {
     color: var(--ifm-font-color-base);
   }
 
+  // We must set the info color on details, as it is used for the details expand marker.
+  // There is no nicer way to style details as it automatically uses info alert styles in docusaurus.
+  [class^="details_"] {
+    --ifm-color-info-dark: #4183c7;
+    border-width: 0px;
+  }
+
   .menu__list-item-collapsible:hover {
-    background: #011414;
+    background: var(--ifm-dropdown-background-color);
   }
 
   .theme-doc-sidebar-item-category-level-1 .menu__list-item {
     .menu__link:hover {
-      background: #011414;
+      background: var(--ifm-dropdown-background-color);
     }
     .menu__link.menu__link--active {
       color: var(--ifm-color-primary);
