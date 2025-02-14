@@ -22,10 +22,10 @@ tags: ["release-notes"]
 #### Features
 
 - Palette now supports edit and delete operations on
-  [Cluster Profile Variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables.md) in
+  [Cluster Profile Variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/define-profile-variables.md) in
   non-Edge and connected Edge clusters. Additionally, you can now review and edit the values of Cluster Profile
   Variables when they are applied to existing clusters. Check out the
-  [Cluster Profile Variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables.md) guide to
+  [Cluster Profile Variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/define-profile-variables.md) guide to
   learn more about this feature.
 
 - [Self-hosted Palette](../enterprise-version/enterprise-version.md) and Dedicated Palette SaaS installations now offer
@@ -49,7 +49,7 @@ tags: ["release-notes"]
 
 - <TpBadge /> Palette now supports a two-node architecture, which provides a High Availability (HA) mode. Users can
   enable this feature by toggling the high availability mode during cluster configuration. In HA mode, etcd is replaced
-  with Postgres and [Kine](https://github.com/k3s-io/kine). Refer to the Two-Node Architecture page for further details.
+  with Postgres and [Kine](https://github.com/k3s-io/kine). Refer to the [Two-Node Architecture](../clusters/edge/architecture/two-node.md) page for further details.
 
 ### VerteX
 
@@ -105,11 +105,11 @@ tags: ["release-notes"]
 - The [Virtual Machine Migration Assistant](../vm-management/vm-migration-assistant/vm-migration-assistant.md) now
   allows TLS configuration for ingress resources, enhancing security through HTTPS access. This capability provides a
   unified and secure setup experience for users managing virtual machine migrations. Refer to the
-  [Create a VM Migration Assistant Profile](../vm-management/vm-migration-assistant/create-vm-migration-assistant-profile.md) guide to
-  learn more.
+  [Create a VM Migration Assistant Profile](../vm-management/vm-migration-assistant/create-vm-migration-assistant-profile.md)
+  guide to learn more.
 
 - The KubeVirt version in use is now v1.4.0. Other minor maintenance updates in support of Kubevirt 1.4.0 are also
-included.
+  included.
 
 ### Packs
 
