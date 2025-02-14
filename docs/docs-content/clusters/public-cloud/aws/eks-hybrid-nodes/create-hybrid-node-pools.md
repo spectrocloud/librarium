@@ -25,6 +25,10 @@ You must then configure your networking to allow traffic to reach the pods on yo
   [Cluster Profile](../../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile)
   permissions for guidance.
 
+- The manifest output for your provider image that was created during the
+  [Register Edge Host in Appliance Mode](./prepare-environment/prepare-edge-hosts.md#register-edge-host-in-appliance-mode)
+  steps.
+
 ### Create Profile
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
@@ -45,7 +49,7 @@ You must then configure your networking to allow traffic to reach the pods on yo
 <!-- prettier-ignore -->
 8. If using [Appliance Mode](../../../../deployment-modes/appliance-mode.md), on the **Configure Pack** page, click
    **Values** under **Pack Details**. Then, replace the contents of the pack manifest with your built image
-   manifest. This was created during the [Register Edge Host in Appliance Mode](./prepare-environment/prepare-edge-hosts.md#register-edge-host-in-appliance-mode) steps.
+   manifest.
 
    Example.
 

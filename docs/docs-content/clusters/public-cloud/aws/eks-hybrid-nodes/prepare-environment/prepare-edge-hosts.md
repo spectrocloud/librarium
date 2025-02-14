@@ -7,8 +7,8 @@ tags: ["public cloud", "aws", "eks hybrid nodes"]
 sidebar_position: 3
 ---
 
-This guide explains how to prepare on-premises edge hosts for use as Amazon EKS Hybrid Nodes within the Spectro Cloud
-ecosystem. There are two available methods to register these hosts:
+This guide explains how to prepare edge hosts for use as Amazon EKS Hybrid Nodes within the Spectro Cloud ecosystem.
+There are two available methods to register these hosts:
 
 - [Agent Mode](../../../../../deployment-modes/agent-mode/agent-mode.md)
 - [Appliance Mode](../../../../../deployment-modes/appliance-mode.md) using the
@@ -17,24 +17,25 @@ ecosystem. There are two available methods to register these hosts:
 Agent Mode installs a lightweight agent on existing systems, and Appliance Mode deploys a fully managed operating system
 (OS) and stack. Choose the approach that aligns best with your operational and security requirements.
 
+:::info
+
+Check out [Deployment Modes](../../../../../deployment-modes/deployment-modes.md) for further explanation and comparison
+of both modes.
+
+:::
+
 ## Agent Mode
 
 In Agent Mode, you install the Palette agent on your existing host OS. This agent communicates with Palette in connected
 mode to manage configurations, updates, and workloads.
 
-The key benefits of Agent Mode are:
-
-- Minimal overhead on the host OS.
-- Easier to integrate with custom OS configurations.
-- Agent updates can be rolled out seamlessly from the Spectro Cloud console.
-
 ### Prerequisites
 
 #### Infrastructure
 
-- You have physical or virtual servers ready to be used as edge hosts.
+- You have physical or virtual machines ready to be used as edge hosts.
 
-- The physical or virtual server resources for each edge host meet the
+- The physical or virtual machine resources for each edge host meet the
   [Minimum Device Requirements](../../../../../deployment-modes/agent-mode/architecture.md#minimum-device-requirements).
 
 - The edge host has at least one static IP address assigned.
@@ -215,9 +216,9 @@ The key benefits of Agent Mode are:
 
    <details>
 
-   <summary>Dedicated or On-Premises Palette Instance</summary>
+   <summary>Dedicated or On-Prem Palette Instance</summary>
 
-   If you have a dedicated or on-premises instance of Palette, you need to identify the correct agent version and then
+   If you have a dedicated or on-prem instance of Palette, you need to identify the correct agent version and then
    download the corresponding version of the agent installation script. Use the command below and replace
    `<palette-endpoint>` with your Palette endpoint and `<api-key>` with your Palette API key to identify the version.
 
@@ -356,17 +357,13 @@ Use the following sections to help check that your edge host is ready to be used
 ## Appliance Mode
 
 In Appliance Mode, you follow the EdgeForge workflow to provision your edge hosts. The EdgeForge workflow requires a
-provider image and an installer ISO to be built. The provider image is a [Kairos-based image](https://kairos.io/) that
-provides an immutable OS and Kubernetes runtime components for a specified Kubernetes version. The installer ISO
-partitions the disk, installs required dependencies including the Palette agent, registers the host with Palette, and
-sets up user and security configurations. Once these artifacts are built, you can use them to provision your edge hosts
-on existing hardware.
+provider image and an installer ISO to be built.
 
-The key benefits of Appliance Mode are:
+The provider image is a [Kairos-based image](https://kairos.io/) that provides an immutable OS and Kubernetes runtime
+components for a specified Kubernetes version. The installer ISO partitions the disk, installs required dependencies
+including the Palette agent, registers the host with Palette, and sets up user and security configurations.
 
-- Consistent and controlled runtime environment.
-- Streamlined updates since OS and Palette agent are managed as a single appliance.
-- Potentially less configuration drift across multiple edge sites.
+Once these artifacts are built, you can use them to provision your edge hosts on existing hardware.
 
 ### Prerequisites
 
@@ -374,7 +371,7 @@ Appliance mode requires the following components:
 
 - A Linux machine to build the required
   [Edge artifacts](../../../../edge/edgeforge-workflow/edgeforge-workflow.md#edge-artifacts).
-- Physical or virtual servers ready to be used as edge hosts.
+- Physical or virtual machines ready to be used as edge hosts.
 
 <Tabs>
 
@@ -384,7 +381,7 @@ Appliance mode requires the following components:
   artifacts. You can issue the following command in the terminal to check your processor architecture.
 
   ```bash
-  uname -m
+  uname --machine
   ```
 
 - Minimum hardware configuration of the Linux machine:
@@ -419,7 +416,7 @@ Appliance mode requires the following components:
 
 <TabItem label="Prerequisites for Edge Hosts" value="edge-hosts-prereqs">
 
-- The physical or virtual server resources for each edge host meet the
+- The physical or virtual machine resources for each edge host meet the
   [Minimum Requirements](../../../../edge/hardware-requirements.md#minimum-requirements).
 
 - The edge host has at least one static IP address assigned.

@@ -119,18 +119,11 @@ Your worker nodes need an IAM role that includes these AWS managed policies:
 - **AmazonEKS_CNI_Policy**
 - **AmazonEC2ContainerRegistryReadOnly**
 
-If you use the EKS console or `eksctl` to create the node group, an appropriate role can often be generated
-automatically. Otherwise:
-
-1. **Create** an IAM role for EC2.
-2. **Attach** these policies.
-3. **Associate** the IAM role with your node group’s launch template or directly in the EKS console.
-
 ## Verify Cluster Readiness
 
 After the cluster is created:
 
-- **Check Cluster Status**:
+- **Check Cluster Status**
 
 ```
 aws eks describe-cluster \
