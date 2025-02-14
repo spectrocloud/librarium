@@ -31,6 +31,39 @@ cluster experiences an internet outage, it can still reboot containers or add ne
 Harbor. For more information, refer to
 [Deploy a Cluster with a Local Harbor Registry](../clusters/edge/site-deployment/deploy-custom-registries/local-registry.md).
 
+## Set Namespace Resource Quotas
+
+Resource requirements for Harbor components depend heavily on several factors, including the number of repositories,
+image sizes, concurrent requests, and other workload-specific characteristics. Since distributing resources across
+components can lead to suboptimal allocations and potential performance issues, we suggest applying resource quotas at
+the namespace level.
+
+To apply resource quotas for the Harbor namespace, define the quotas in a manifest and add the manifest as a pack to an
+existing [cluster profile](../profiles/cluster-profiles/cluster-profiles.md) or as a separate add-on profile. For
+additional guidance, refer to the
+[Add a Manifest](../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-manifest-addon.md)
+page.
+
+The following manifest uses the
+[recommended Harbor configurations](https://goharbor.io/docs/1.10/install-config/installation-prereqs/) but can be
+adjusted to fit your environment and workload needs. Note that resource quotas set lower than the recommended values may
+cause resource constraints, leading to cluster deployment delays, whereas quotas may need to be increased for
+environments with large or numerous images.
+
+```shell
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+   name: harbor-quota
+   namespace: harbor
+spec:
+   hard:
+      requests.cpu: "2"
+      requests.memory: "4Gi"
+      limits.cpu: "4"
+      limits.memory: "8Gi"
+```
+
 ## Log in to Harbor Web UI
 
 With Harbor enabled on your Edge cluster, you can log in to Harbor via its web UI. By default, the Harbor service is
