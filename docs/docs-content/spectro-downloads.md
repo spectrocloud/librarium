@@ -35,7 +35,7 @@ the [Palette CLI](./automation/palette-cli/palette-cli.md) document for installa
 
 | Version | Operating System                                                                       | Checksum (SHA256)                                                  |
 | ------- | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
-| 4.6.1   | [Linux-amd64](https://software.spectrocloud.com/stylus/v4.6.0/cli/linux/palette-edge)  | `0c92496773a087e6d5fc5d80a1bc75614a35fcd6f3c739c32e856c2c0ac876e5` |
+| 4.6.1   | [Linux-amd64](https://software.spectrocloud.com/stylus/v4.6.0/cli/linux/palette-edge)  | `87f418015a618627f105ca2ca3bf587c796716dca7ce757c14546e0c7e810e35` |
 | 4.5.15  | [Linux-amd64](https://software.spectrocloud.com/stylus/v4.5.15/cli/linux/palette-edge) | `5265133de8b204b6569b559a895aa03514b42b3285640755ed29e23d812e21cb` |
 | 4.5.14  | [Linux-amd64](https://software.spectrocloud.com/stylus/v4.5.14/cli/linux/palette-edge) | `5265133de8b204b6569b559a895aa03514b42b3285640755ed29e23d812e21cb` |
 | 4.5.11  | [Linux-amd64](https://software.spectrocloud.com/stylus/v4.5.11/cli/linux/palette-edge) | `390b4693a91c938ef230ce329ec28f42c058f98fb77160685e9a885dd2083587` |

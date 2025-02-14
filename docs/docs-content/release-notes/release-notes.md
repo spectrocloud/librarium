@@ -11,13 +11,13 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## February 16, 2025 - Release 4.6.0 - 4.6.2
+## February 16, 2025 - Release 4.6.0 - 4.6.3
 
 ### Security Notices
 
 - Review the [Security Bulletins](../security-bulletins/reports/reports.mdx) page for the latest security advisories.
 
-### Palette Enterprise {#palette-enterprise-4-6-2}
+### Palette Enterprise {#palette-enterprise-4-6-3}
 
 #### Features
 
@@ -57,7 +57,7 @@ tags: ["release-notes"]
 #### Features
 
 - Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
-  [Palette section](#palette-enterprise-4-6-2) for more details.
+  [Palette section](#palette-enterprise-4-6-3) for more details.
 
 - [Palette VerteX](../vertex/vertex.md) now offers complete brand customization. System operators can apply custom logos
   and color schemes to the instances they manage by using the **Customize interface** tab in the **Administration**
@@ -149,6 +149,7 @@ tags: ["release-notes"]
 | Palette eXtended Kubernetes (PXK)          | 1.30.9      |
 | Palette eXtended Kubernetes (PXK)          | 1.29.13     |
 | Palette eXtended Kubernetes - Edge (PXK-E) | 1.31.5      |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.31.4      |
 | Palette eXtended Kubernetes - Edge (PXK-E) | 1.30.9      |
 | Palette eXtended Kubernetes - Edge (PXK-E) | 1.29.13     |
 | RKE2                                       | 1.32.1      |
@@ -159,27 +160,62 @@ tags: ["release-notes"]
 | RKE2 - Edge                                | 1.31.5      |
 | RKE2 - Edge                                | 1.30.9      |
 | RKE2 - Edge                                | 1.29.13     |
+| MicroK8s                                   | 1.30        |
+| MicroK8s                                   | 1.29        |
 
-#### Add-on Packs
+#### CNI
+
+| Pack Name          | New Version |
+| ------------------ | ----------- |
+| AWS VPC CNI (Helm) | 1.19.2      |
+| Calico             | 3.29.2      |
+| Calico (Azure)     | 3.29.2      |
+
+#### CSI
+
+| Pack Name               | New Version |
+| ----------------------- | ----------- |
+| Amazon EBS CSI          | 1.39.0      |
+| Amazon EFS              | 2.1.4       |
+| Azure Disk CSI Driver   | 1.31.2      |
+| GCE Persistent Disk CSI | 1.15.3      |
+| Rook-Ceph               | 1.16.2      |
+
+#### Add-on
 
 | Pack Name                  | New Version |
 | -------------------------- | ----------- |
 | AWS Cluster Autoscaler     | 1.31.0      |
 | Cilium Tetragon            | 1.3.0       |
-| Piraeus Operator           | 2.7.1       |
 | Istio                      | 1.24.0      |
 | Open Policy Agent          | 3.18.1      |
 | Volume Snapshot Controller | 8.2.0       |
+| ExternalDNS                | 0.15.1      |
+| External Secrets Operator  | 0.12.1      |
+| Kong                       | 2.47.0      |
+
+#### Community
+
+| Pack Name        | New Version |
+| ---------------- | ----------- |
+| Piraeus Operator | 2.7.1       |
 
 #### FIPS Packs
 
 | Pack Name                                  | New Version |
 | ------------------------------------------ | ----------- |
+| Azure Disk CSI Driver                      | 1.31.2      |
+| Azure Disk CSI Driver                      | 1.30.5      |
+| Cilium                                     | 1.16.0      |
+| Cilium                                     | 1.16.3      |
+| Flannel                                    | 0.26.1      |
+| Longhorn                                   | 1.7.2       |
 | Palette eXtended Kubernetes (PXK)          | 1.32.1      |
 | Palette eXtended Kubernetes (PXK)          | 1.31.5      |
 | Palette eXtended Kubernetes (PXK)          | 1.30.9      |
 | Palette eXtended Kubernetes (PXK)          | 1.29.13     |
 | Palette eXtended Kubernetes - Edge (PXK-E) | 1.31.5      |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.31.4      |
 | Palette eXtended Kubernetes - Edge (PXK-E) | 1.30.9      |
 | Palette eXtended Kubernetes - Edge (PXK-E) | 1.29.13     |
 | RKE2                                       | 1.32.1      |
