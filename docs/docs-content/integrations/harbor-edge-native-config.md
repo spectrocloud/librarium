@@ -37,7 +37,7 @@ Resource requirements for Harbor components depend heavily on several factors, i
 
 To apply resource quotas for the Harbor namespace, define the quotas in a manifest and add the manifest as a pack to an existing [cluster profile](../profiles/cluster-profiles/cluster-profiles.md) or as a separate add-on profile. For additional guidance, refer to the [Add a Manifest](../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-manifest-addon.md) page.
 
-The following manifest uses the [recommended Harbor configurations](https://goharbor.io/docs/1.10/install-config/installation-prereqs/) but can be adjusted to fit your environment and workload needs. Note that resource quotas set lower than the recommended values may cause resource constraints, leading to cluster deployment delays, whereas the quota may need to be increased for environments with large or numerous images.
+The following manifest uses the [recommended Harbor configurations](https://goharbor.io/docs/1.10/install-config/installation-prereqs/) but can be adjusted to fit your environment and workload needs. Note that resource quotas set lower than the recommended values may cause resource constraints, leading to cluster deployment delays, whereas quotas may need to be increased for environments with large or numerous images.
 
    ```shell
    apiVersion: v1
