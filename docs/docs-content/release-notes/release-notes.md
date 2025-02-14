@@ -33,12 +33,6 @@ tags: ["release-notes"]
   by using the **Customize interface** tab in the **Administration** panel of the system console. Refer to the Customize
   Interface guide to learn more.
 
-- The [Virtual Machine Migration Assistant](../vm-management/vm-migration-assistant/vm-migration-assistant.md) now
-  allows TLS configuration for ingress resources, enhancing security through HTTPS access. This capability provides a
-  unified and secure setup experience for users managing virtual machine migrations. Refer to the
-  [Create Migration Plans](../vm-management/vm-migration-assistant/create-vm-migration-assistant-profile.md) guide to
-  learn more.
-
 #### Improvements
 
 - The [rate limit](https://docs.spectrocloud.com/api/introduction/#rate-limits) for Palette API endpoints with a prefix
@@ -108,7 +102,13 @@ tags: ["release-notes"]
 
 #### Improvements
 
-The KubeVirt version in use is now v1.4.0. Other minor maintenance updates in support of Kubevirt 1.4.0 are also
+- The [Virtual Machine Migration Assistant](../vm-management/vm-migration-assistant/vm-migration-assistant.md) now
+  allows TLS configuration for ingress resources, enhancing security through HTTPS access. This capability provides a
+  unified and secure setup experience for users managing virtual machine migrations. Refer to the
+  [Create a VM Migration Assistant Profile](../vm-management/vm-migration-assistant/create-vm-migration-assistant-profile.md) guide to
+  learn more.
+
+- The KubeVirt version in use is now v1.4.0. Other minor maintenance updates in support of Kubevirt 1.4.0 are also
 included.
 
 ### Packs
