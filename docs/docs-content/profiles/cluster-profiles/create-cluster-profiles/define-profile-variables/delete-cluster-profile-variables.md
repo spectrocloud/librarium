@@ -59,8 +59,7 @@ before you can delete the variables.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. From the left **Main Menu**, select **Profiles** and navigate to the cluster profile for which you had previously
-   defined the profile variable.
+2. From the left **Main Menu**, select **Profiles** and navigate to the cluster profile previously containing the profile variable.
 
 3. In the upper-right corner, click **Variables** and, on the **Profile variables** pane, check that the applicable
    variables are no longer present.

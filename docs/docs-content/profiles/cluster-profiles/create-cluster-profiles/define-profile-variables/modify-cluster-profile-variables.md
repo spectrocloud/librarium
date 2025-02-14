@@ -109,7 +109,7 @@ the defined variable schema are not supported.
 
 There are two ways to modify your cluster profile variables in an active cluster. You are automatically taken through the appropriate workflow based on the changes you make to your cluster. 
 
-- **Review changes in Editor** - Used if you are updating your cluster profile version to one that changes the YAML configuration of a pack or adds or removes cluster profile variables (regardless of whether the definition is included in the pack configuration). This flow is also used if you add or remove a profile from your cluster.
+- **Review changes in Editor** - Used if you are updating your cluster profile version to one that changes the YAML configuration of a pack or adds or removes cluster profile variables (regardless of whether the variable is included in the pack configuration). This flow is also used if you add or remove a profile from your cluster.
 
 - **Profile Variables Configuration** - Used if you are updating your cluster profile version to one that does _not_ change the YAML configuration of a pack but _does_ modify the schema or properties of existing variables. This flow is also used if you change the values of your cluster profile variables without updating the cluster profile version.
 
@@ -132,8 +132,9 @@ There are two ways to modify your cluster profile variables in an active cluster
 8. Use the **Profile variable changes** tab to view the profiles that were changed. Expand each profile to compare the
    **Running configuration** and **New configuration**, making any necessary changes to your cluster profile variables.
    If you are overwriting the default value, you can revert to the original value by selecting **Use Default**. Updated
-   profile variable values must match the schema defined in the cluster profile variable. <br /> <br /> Each profile
-   must have a **Reviewed** status, indicated by a green check mark, before you can apply your changes. In the example
+   profile variable values must match the schema defined in the cluster profile variable.
+   
+   Each profile must have a **Reviewed** status, indicated by a green check mark, before you can apply your changes. In the example
    below, we have added a new profile variable for Grafana and have changed the Kubecost frontend `imagePullPolicy` from
    `Always` to `IfNotPresent`.
 

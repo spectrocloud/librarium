@@ -39,9 +39,9 @@ The following table describes the differences between profile variables and macr
   defined in the pack, the variable must satisfy the schema. Refer to the
   [Pack Constraints](../../../../registries-and-packs/pack-constraints.md) page for more information.
 
-- If you are using the [Palette CLI](../../../../automation/palette-cli/palette-cli.md) to deploy a cluster, you cannot
-  define profile variables for the `pack.content` and `system.uri` parameters because the Palette CLI populates them
-  automatically.
+- You cannot define a profile variable for the `pack.content` parameter because Palette populates it automatically. You can create a profile variable for the `system.uri` parameter so long as a macro is not already being used.
+
+- In [Edge](../../../../clusters/edge/edge.md) deployments, cluster profile variables must be created and defined in Palette SaaS, but their values can be edited in [Local UI](../../../../clusters/edge/local-ui/local-ui.md) prior to deploying a cluster. 
 
 ## Next Steps
 

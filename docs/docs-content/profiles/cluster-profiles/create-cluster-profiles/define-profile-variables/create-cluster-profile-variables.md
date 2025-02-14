@@ -114,11 +114,11 @@ You can define profile variables when creating or updating cluster profiles. Thi
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. From the left **Main Menu**, select **Profiles** and navigate to the cluster profile for which you have defined
+2. From the left **Main Menu**, select **Profiles** and navigate to the cluster profile for which you have created
    profile variables.
 
 3. In the upper-right corner, click **Variables** and, on the **Profile variables** pane, check that the necessary
-   variables are defined.
+   variables are properly defined.
 
 4. Hover over the **[#] layers** pill next to the variables to review the profile layers where they are used.
 
