@@ -3,50 +3,50 @@
   background: #141414;
 }
 [data-theme="dark"] .ant-select-selection-placeholder {
-  color: #6a6d76;
+  color: #F3F0EE;
 }
 [data-theme="dark"] .ant-select-arrow {
-  color: #6a6d76;
+  color: #F3F0EE;
 }
 [data-theme="dark"] .ant-select-item-option {
-  color: whitesmoke;
+  color: var(--ifm-font-color-base);
 }
 [data-theme="dark"] .rc-virtual-list {
-  background-color: #1f1f1f;
+  background-color: var(--ifm-dropdown-background-color);
 }
 [data-theme="dark"] .ant-select-dropdown {
-  background-color: #1f1f1f;
+  background-color: var(--ifm-dropdown-background-color);
 }
 [data-theme="dark"] .ant-select-dropdown .ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
-  background-color: #111a2c;
-  color: whitesmoke;
+  background-color: var(--ifm-dropdown-background-color);
+  color: var(--ifm-font-color-base);
 }
 [data-theme="dark"]
   .ant-select-dropdown
   .ant-select-item-option-selected:not(.ant-select-item-option-disabled)
   .ant-select-item-option-state {
-  color: #1668dc;
+  color: var(--ifm-color-primary);
 }
 [data-theme="dark"] .ant-select:not(.ant-select-customize-input) .ant-select-selector {
-  background-color: #1f1f1f;
+  background-color: var(--ifm-dropdown-background-color);
 }
 [data-theme="dark"] .ant-select-multiple {
   .ant-select-selection-item {
-    color: #d6d0d0;
-    background-color: #313131;
+    color: var(--ifm-font-color-base);
+    background-color: #1E3332;
   }
   .ant-select-selection-overflow .ant-select-selection-item-remove {
-    color: #d6d0d0;
+    color: var(--ifm-font-color-base);
   }
 }
 [dark-theme="dark"] .ant-select-multiple .ant-select-selection-overflow .ant-select-selection-item-remove {
-  color: #d6d0d0;
+  color: var(--ifm-font-color-base);
 }
 [data-theme="dark"] .ant-select-clear {
-  color: #b1adad;
-  background-color: #1f1f1f;
+  color: var(--ifm-font-color-base);
+  background-color: var(--ifm-dropdown-background-color);
 }
 [data-theme="dark"] .ant-select-single .ant-select-selector {
-  color: #d6d0d0;
-  background-color: #1f1f1f;
+  color: var(--ifm-font-color-base);
+  background-color: var(--ifm-dropdown-background-color);
 }

@@ -13,10 +13,10 @@
   color: whitesmoke;
 }
 [data-theme="dark"] .ant-collapse-header {
-  background-color: #161824;
+  background-color: var(--ifm-dropdown-background-color);
 }
 [data-theme="dark"] .ant-collapse .ant-collapse-content {
-  background-color: #141414;
+  background-color: #0B3433;
   border-top: 1px solid #424242;
 }
 [data-theme="dark"] .ant-collapse-item {
