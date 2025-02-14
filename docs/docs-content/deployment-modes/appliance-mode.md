@@ -12,8 +12,8 @@ location. Unlike agent mode, instead of having to manage your own Operating Syst
 immutable images that combine the OS and the Kubernetes distribution for your host cluster.
 
 To create a cluster in appliance mode, you need to have a host that meets the
-[minimal hardware requirement](../clusters/edge/architecture.md#minimum-device-requirements). You then need to create
-two artifacts: an installer ISO file and a provider image. The installer ISO will include an OS of a supported
+[minimal hardware requirement](../clusters/edge/architecture/architecture.md#minimum-device-requirements). You then need
+to create two artifacts: an installer ISO file and a provider image. The installer ISO will include an OS of a supported
 distribution, with the Palette agent natively installed. The provider image is an image that combines the OS and the
 Kubernetes layer for your cluster.
 
@@ -36,7 +36,7 @@ appliance mode deployments.
 
 ## Resources
 
-- [Architecture](../clusters/edge/architecture.md)
+- [Architecture](../clusters/edge/architecture/architecture.md)
 
 - [Edge Deployment Lifecycle](../clusters/edge/edge-native-lifecycle.md)
 
