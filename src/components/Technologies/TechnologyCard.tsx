@@ -24,7 +24,7 @@ export default function TechnologyCard({ name, title, logoUrl, type, slug, versi
     versions?.find((tagVersion) => tagVersion.children.find((child) => child.title === version))?.title || "";
   return (
     <div className={styles.card}>
-      <Link to={slug || `/integrations/packs?pack=${name}&version=${version}&parent=${parentVersion}&tab=main`}>
+      <Link className={styles.cardLink} to={slug || `/integrations/packs?pack=${name}&version=${version}&parent=${parentVersion}&tab=main`}>
         <div className={styles.cardContent}>
           <PackCardIcon appType={slug ? "app" : "integration"} logoUrl={logoUrl} type={type} />
           <div className={styles.title}>{title}</div>

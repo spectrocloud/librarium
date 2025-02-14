@@ -42,7 +42,7 @@ html[data-theme="dark"] {
   --simpleCardSubtle: var(--ifm-color-success-contrast-foreground);
   --simpleCardButtonIcon: #818ba9;
   --simpleCardBorder: #1f263c;
-  --custom-table-header-color: #1c202b;
+  --custom-table-header-color: var(--ifm-dropdown-background-color);
   --custom-release-notes-background-color: var(--ifm-breadcrumb-item-background-active);
   --custom-release-notes-background-font-color: var(--ifm-dropdown-link-color);
   --custom-release-notes-active-option-hover: var(--ifm-dropdown-hover-background-color);
@@ -62,6 +62,10 @@ html[data-theme="dark"] {
   [class^="details_"] {
     --ifm-color-info-dark: #4183c7;
     border-width: 0px;
+  }
+
+  [class^="tag_"] {
+    text-decoration: none;
   }
 
   .menu__list-item-collapsible:hover {
