@@ -1,5 +1,5 @@
 html[data-theme="light"] {
-  --ifm-menu-color-background-active: var(--ifm-background-color);
+  --ifm-menu-color-background-active: #f3f0ee;
   --ifm-color-primary: #1f7a78;
   --ifm-color-primary-dark: #135757;
   --ifm-color-primary-darker: #0c403f;
@@ -10,47 +10,48 @@ html[data-theme="light"] {
   --ifm-menu-color: #111626;
   --ifm-background-color: #faf9f8;
   --ifm-menu-color-active: var(--ifm-color-primary);
-  --ifm-heading-color: #111626;
-  --ifm-font-color-base: #515e71;
+  --ifm-font-color-base: #161514;
+  --ifm-heading-color: var(--ifm-font-color-base);
   --ifm-navbar-link-color: #6a7494;
-  --ifm-breadcrumb-item-background-active: #e0dcd7;
-  --ifm-toc-link-color: #6a7494;
+  --ifm-breadcrumb-item-background-active: var(--ifm-menu-color-background-active);
+  --ifm-toc-link-color: var(--ifm-font-color-base);
   --ifm-tabs-color: #6a7494;
   --docsearch-muted-color: #6a7494;
-  --ifm-menu-color-background-hover: #f7f9ff;
+  --ifm-menu-color-background-hover: var(--ifm-menu-color-background-active);
   --ifm-color-success-contrast-background: #e5f4e8;
   --ifm-color-success-contrast-foreground: #545f7e;
-  --ifm-color-success-dark: #9eb277;
+  --ifm-color-success-dark: #e5f4e8;
   --ifm-color-info-contrast-background: #edf3fd;
-  --ifm-color-info-contrast-foreground: #545f7e;
-  --ifm-color-info-dark: #1f7a78;
+  --ifm-color-info-contrast-foreground: var(--ifm-color-success-contrast-foreground);
+  --ifm-color-info-dark: #edf3fd;
   --ifm-color-warning-contrast-background: #fff3e3;
-  --ifm-color-warning-contrast-foreground: #545f7e;
-  --ifm-color-warning-dark: #f0be65;
+  --ifm-color-warning-contrast-foreground: var(--ifm-color-success-contrast-foreground);
+  --ifm-color-warning-dark: #fff3e3;
   --ifm-color-danger-contrast-background: #feeded;
-  --ifm-color-danger-contrast-foreground: #545f7e;
-  --ifm-color-danger-dark: #851a01;
+  --ifm-color-danger-contrast-foreground: var(--ifm-color-success-contrast-foreground);
+  --ifm-color-danger-dark: #feeded;
   --ifm-alert-padding-horizontal: 1.5rem;
+  --ifm-dropdown-background-color: var(--ifm-menu-color-background-active);
   --custom-table-header-color: #f7f7f7;
   --simpleCardPrimary: var(--ifm-color-primary);
   --simpleCardPrimaryHover: #3f74be;
   --simpleCardSecondary: #dbecff;
   --simpleCardSecondaryHover: #c3e0ff;
-  --simpleCardSubtle: #545f7e;
+  --simpleCardSubtle: var(--ifm-color-success-contrast-foreground);
   --simpleCardButtonIcon: #545f7e;
   --simpleCardBorder: #dee1ea;
   --custom-release-notes-background-color: var(--ifm-background-color);
   --custom-release-notes-background-font-color: var(--ifm-dropdown-link-color);
   --custom-release-notes-active-option-hover: var(--ifm-dropdown-hover-background-color);
-  --custom-release-notes-selected-background: #bec0c4;
-  --custom-release-notes-option-font-color: black;
+  --custom-release-notes-selected-background: var(--ifm-menu-color-background-hover);
+  --custom-release-notes-option-font-color: var(--ifm-font-color-base);
   --custom-release-notes-menu-padding: var(--ifm-background-color);
   --custom-purple-alert-bg-color: #e8e1ea;
-  --custom-byzantine-alert-bg-color: #f9f1f5;
+  --custom-byzantine-alert-bg-color: #f3d8e6;
 
   .theme-doc-sidebar-item-category-level-1 .menu__list-item {
     .menu__link:hover {
-      background: #e9e4e0;
+      background: var(--ifm-menu-color-background-active);
     }
     .menu__link.menu__link--active {
       color: var(--ifm-color-primary);
@@ -58,12 +59,18 @@ html[data-theme="light"] {
     }
   }
 
+  // We must set the info color on details, as it is used for the details expand marker.
+  [class^="details_"] {
+    --ifm-color-info-dark: var(--ifm-color-primary);
+    border-width: 0px;
+  }
+
   .category > .menu__list-item-collapsible:hover {
-    background: none;
+    background: var(--ifm-menu-color-background-active);
   }
 
   .menu__list-item-collapsible:hover {
-    background: #e9e4e0;
+    background: var(--ifm-menu-color-background-active);
   }
 
   .theme-last-updated {
