@@ -149,6 +149,11 @@ guidance on how to set up credentials for your hybrid nodes.
 
 ## Amazon EKS Cluster Requirements
 
+Follow the steps in [Prepare EKS Cluster](./prepare-environment/prepare-eks-cluster.md) to create an Amazon EKS cluster
+that can be imported into Palette.
+
+The following is an overview of the cluster requirements:
+
 - **Hybrid Node Enablement**: The cluster must be enabled for hybrid nodes, as outlined in
   [Create an Amazon EKS cluster with hybrid nodes](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-cluster-create.html).
 

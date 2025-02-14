@@ -37,8 +37,6 @@ Import your Amazon EKS cluster and enable hybrid mode to be able to create edge 
   [Cluster Profile](../../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile)
   permissions for guidance.
 
-- Kubernetes version 1.24.x or later on the cluster you are importing.
-
 - Ensure your environment has network access to Palette SaaS. Refer to
   [Palette IP Addresses](../../../../architecture/palette-public-ips.md) for guidance.
 
@@ -87,22 +85,8 @@ Import your Amazon EKS cluster and enable hybrid mode to be able to create edge 
     used by IAM Roles Anywhere to validate the authenticity of the client certificates presented by your hybrid nodes.
   - The private key corresponding to your CA certificate, used to sign client certificates.
 
-- An existing Amazon EKS cluster that has been enabled for hybrid nodes. Refer to
-  [Create an Amazon EKS cluster with hybrid nodes](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-cluster-create.html)
-  for guidance.
-
-  - When selecting add-ons, you must use **AWS VPC CNI** as your container network interface as it is needed for cloud
-    worker nodes to function. If you are deploying through the AWS Console, a warning may state that AWS VPC CNI is not
-    supported for hybrid nodes. You can ignore this message.
-  - Your Amazon EKS cluster must include at least one worker node to host the Palette agent, which is necessary for
-    Palette to manage the cluster. Because of EKS architecture constraints, the agent cannot be installed on the control
-    plane.
-    - The minimum instance type required is **t3.xlarge** with at least 20 GB of storage.
-    - Be sure at least one worker node is always available so Palette can continue managing the cluster.
-
-- A Hybrid Nodes IAM Role with the required Kubernetes permissions to join your Amazon EKS cluster. Refer to
-  [Prepare cluster access for hybrid nodes](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-cluster-prep.html)
-  for guidance.
+- An existing Amazon EKS cluster that has configured with the appropriate parameters to be imported into Palette. Refer
+  to [Prepare EKS Cluster](./prepare-environment/prepare-eks-cluster.md) for guidance.
 
 ### Import Cluster
 

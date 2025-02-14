@@ -3,7 +3,6 @@ sidebar_label: "Prepare EKS Cluster"
 title: "Prepare EKS Cluster"
 description: "Learn how to prepare your Amazon EKS cluster for Amazon EKS Hybrid Nodes."
 hide_table_of_contents: false
-draft: true
 tags: ["public cloud", "aws", "eks hybrid nodes"]
 sidebar_position: 4
 ---
@@ -11,6 +10,11 @@ sidebar_position: 4
 This guide explains how to create an EKS cluster with the required configuration so it can be imported into Palette.
 
 ## Prerequisites
+
+- Access to the AWS Management Console.
+
+- _Optional_ The [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) is installed
+  and configured for your account.
 
 - Network connectivity between your on-prem environments and AWS.
 
@@ -31,6 +35,10 @@ This guide explains how to create an EKS cluster with the required configuration
   in
   [Step 1: Create cluster IAM role](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-cluster-create.html#hybrid-nodes-cluster-create-iam).
   You will need to specify the IAM role during cluster creation.
+
+- An Amazon EKS node IAM role created with the necessary policies attached as guide in
+  [Amazon EKS node IAM role](https://docs.aws.amazon.com/eks/latest/userguide/create-node-role.html). You will need to
+  specify the IAM role when creating a managed node group for your cluster.
 
 ## Create the EKS Cluster
 
@@ -107,53 +115,56 @@ These steps use the AWS Management Console.
 
 22. On the **Review and create** page, review your settings and click **Create** when ready.
 
-23. Wait until the cluster status shows **Active** in the EKS console.
+23. Wait until the cluster status shows **Active** in the EKS console before moving onto the next step.
 
-24. TBD
+24. Follow the steps in
+    [Create a managed node group for your cluster](https://docs.aws.amazon.com/eks/latest/userguide/create-managed-node-group.html)
+    to create a managed node group with the following configuration:
 
-## Configure IAM Roles for Worker Nodes
+    - **Minimum size** - The node group must contain at least one node to host the Palette agent, which is essential for
+      Palette to manage the cluster. Due to the EKS architecture, the Palette agent cannot be installed on the EKS
+      control plane.
 
-Your worker nodes need an IAM role that includes these AWS managed policies:
+    - **Instance types** - The node must use an instance type of at least **t3.xlarge** to ensure adequate resources.
+    - **Disk size** - AWS sets a default storage of **20 GB** for Linux-based EKS worker nodes (the
+      [diskSize](https://docs.aws.amazon.com/eks/latest/APIReference/API_CreateNodegroup.html#API_CreateNodegroup_RequestSyntax)
+      parameter), and we recommend this as the minimum size.
 
-- **AmazonEKSWorkerNodePolicy**
-- **AmazonEKS_CNI_Policy**
-- **AmazonEC2ContainerRegistryReadOnly**
+    You can configure all other options as needed.
 
-## Verify Cluster Readiness
+    :::warning
 
-After the cluster is created:
+    To maintain continuous management capabilities, at least one worker node should remain available at all times for
+    the Palette agent to operate effectively.
 
-- **Check Cluster Status**
+    :::
 
-```
-aws eks describe-cluster \
-  --name my-hybrid-eks-cluster \
-  --region us-east-1 \
-  --query "cluster.status"
-```
+25. _Optional_ Obtain the kubeconfig for the cluster by following the steps in
+    [Step 3: Update kubeconfig](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-cluster-create.html#hybrid-nodes-cluster-create-kubeconfig).
 
-Should return `"ACTIVE"`.
+## Validate
 
-- **Confirm Node Group**:
-  - In the EKS console, under **Compute** → **Node groups**, ensure at least one node group is **Active**.
-  - If using `kubectl`, ensure nodes are **Ready**:
+1. In the EKS console, click on your cluster.
 
-```
-kubectl get nodes
-```
+2. Click the **Compute** tab.
 
-- **Confirm AWS VPC CNI**:
-  - Check that the `amazon-vpc-cni-k8s` DaemonSet is active:
+3. In the **Node groups** section, ensure that your newly created node group is **Active**.
 
-```
-kubectl get ds -n kube-system amazon-vpc-cni
-```
+4. _Optional_ If you obtained the kubeconfig for the cluster, using kubectl, check that nodes are **Ready** by issuing
+   the following command.
 
-- Pods should be in a `Running` state.
+   ```bash
+   kubectl get nodes
+   ```
 
-When these validations pass, your EKS cluster is prepared with the necessary VPC, subnets, IAM roles, and at least one
-node pool. It is now ready to be **imported into Palette** if desired.
+   Example output
+
+   ```shell hideClipboard
+   NAME          STATUS   ROLES    AGE    VERSION
+   worker-node   Ready    master   28h    v1.30.0
+   ```
 
 ## Next Steps
 
-- **(Optional) Import into Palette**: You can now proceed with the steps to bring this cluster under Palette management.
+If you have completed all sections as highlighted in [Prepare Environment](./prepare-environment.md), you can now
+proceed to [import the cluster into Palette](../import-eks-cluster-enable-hybrid-mode.md).

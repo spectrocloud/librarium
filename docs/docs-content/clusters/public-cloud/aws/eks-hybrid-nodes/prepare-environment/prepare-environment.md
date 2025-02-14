@@ -48,4 +48,4 @@ Use the following resources to help prepare your environment.
 
 - [Prepare Edge Hosts](./prepare-edge-hosts.md)
 
-- [Create an Amazon EKS cluster with hybrid nodes enabled](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-cluster-create.html)
+- [Prepare EKS Cluster](./prepare-eks-cluster.md)
