@@ -22,11 +22,11 @@ tags: ["release-notes"]
 #### Features
 
 - Palette now supports edit and delete operations on
-  [Cluster Profile Variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/define-profile-variables.md) in
-  non-Edge and connected Edge clusters. Additionally, you can now review and edit the values of Cluster Profile
+  [Cluster Profile Variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/define-profile-variables.md)
+  in non-Edge and connected Edge clusters. Additionally, you can now review and edit the values of Cluster Profile
   Variables when they are applied to existing clusters. Check out the
-  [Cluster Profile Variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/define-profile-variables.md) guide to
-  learn more about this feature.
+  [Cluster Profile Variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/define-profile-variables.md)
+  guide to learn more about this feature.
 
 - [Self-hosted Palette](../enterprise-version/enterprise-version.md) and Dedicated Palette SaaS installations now offer
   complete brand customization. System operators can apply custom logos and color schemes to the instances they manage
@@ -49,7 +49,8 @@ tags: ["release-notes"]
 
 - <TpBadge /> Palette now supports a two-node architecture, which provides a High Availability (HA) mode. Users can
   enable this feature by toggling the high availability mode during cluster configuration. In HA mode, etcd is replaced
-  with Postgres and [Kine](https://github.com/k3s-io/kine). Refer to the [Two-Node Architecture](../clusters/edge/architecture/two-node.md) page for further details.
+  with Postgres and [Kine](https://github.com/k3s-io/kine). Refer to the [Two-Node
+  Architecture](../clusters/edge/architecture/two-node.md) page for further details.
 
 ### VerteX
 
