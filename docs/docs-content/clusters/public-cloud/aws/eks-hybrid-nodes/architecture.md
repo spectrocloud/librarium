@@ -131,10 +131,13 @@ either of these methods.
 Palette supports the following authentication methods for your hybrid nodes:
 
 - [AWS Systems Manager (SSM)](https://docs.aws.amazon.com/systems-manager/latest/userguide/what-is-systems-manager.html)
+  - It is recommended to use AWS SSM Hybrid Activations if you lack Public Key Infrastructure (PKI) and certificates for your on-prem environment. AWS SSM hybrid activations allow you to register and manage your hybrid nodes without requiring a CA-signed certificate.
+
 - [AWS Identity and Access Management (IAM) Roles Anywhere](https://docs.aws.amazon.com/rolesanywhere/latest/userguide/introduction.html)
   - IAM Roles Anywhere is not supported on some operating systems. Refer to the
     [Operating system considerations](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-os.html#_operating_system_considerations)
     for up-to-date guidance.
+  - This is the recommended approach if you have existing Public Key Infrastructure (PKI) and certificates for your on-prem environment.
 
 Refer to
 [Prepare credentials for hybrid nodes](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-creds.html) for

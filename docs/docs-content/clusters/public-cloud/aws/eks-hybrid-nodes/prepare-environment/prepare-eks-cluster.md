@@ -8,90 +8,93 @@ tags: ["public cloud", "aws", "eks hybrid nodes"]
 sidebar_position: 4
 ---
 
-This guide explains how to create an EKS cluster with the essential prerequisites so it can be imported later into
-Palette. The cluster must have the following:
-
-1. At least **one worker node pool**.
-2. Use the **AWS VPC CNI** (default networking).
-3. Be connected to the appropriate VPC and subnets.
-4. Assigned the necessary IAM roles and permissions.
+This guide explains how to create an EKS cluster with the required configuration so it can be imported into Palette.
 
 ## Prerequisites
 
-Before you create the cluster, ensure you have:
+- Network connectivity between your on-prem environments and AWS.
 
-- **AWS CLI** (v2 recommended), correctly configured with credentials that have permission to create EKS resources.
-- **IAM Permissions** sufficient to create or manage:
-  - EKS clusters (attach or create an appropriate role for EKS)
-  - VPCs, subnets, security groups (if not already existing)
-  - IAM roles for worker nodes
-- **Existing VPC and Subnets**:
-  - Must span at least two Availability Zones
-  - Tagged for auto-discovery if using certain tools like `eksctl` (e.g., `Key=kubernetes.io/cluster/CLUSTER_NAME`,
-    `Value=shared`)
-- **Kubernetes Version**: Decide on a K8s version supported by both Amazon EKS and Palette (e.g., 1.24+).
+  - An AWS VPC and subnet setup as guided in [AWS VPC and subnet setup](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-networking.html#hybrid-nodes-networking-vpc). During cluster creation, you will need to specify your configured VPC and subnets, as well as the CIDR block for your AWS node network.
 
-## Create or Select a VPC for EKS
+  - A cluster security group is configured for your [Amazon EKS Hybrid Nodes environment](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-networking.html#hybrid-nodes-networking-cluster-sg). During cluster creation, you will need to specify this as an additional security group.
 
-If you already have a VPC:
+  - Your on-prem network is configured for hybrid network connectivity as guided in [On-premises networking configuration](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-networking.html#hybrid-nodes-networking-on-prem). During cluster creation, you will need to provide the CIDR blocks for your on-prem node and pod network.
 
-- Confirm it has private (and optionally public) subnets in at least two Availability Zones.
-- Tag subnets properly if you’ll use them for EKS node groups (e.g., `kubernetes.io/cluster/CLUSTER_NAME=shared`).
-
-If you don’t have a suitable VPC:
-
-- Use the AWS Console or `eksctl` to create one automatically.
-- Example (via `eksctl`):
-
-```
-eksctl create cluster \
-  --name my-hybrid-eks-cluster \
-  --region us-east-1 \
-  --without-nodegroup
-```
-
-This command can auto-provision a VPC for you, but you can also specify subnets/VPC IDs as needed.
+- An Amazon EKS cluster Identity and Access Management (IAM) role created with the necessary policies attached as guided in [Step 1: Create cluster IAM role](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-cluster-create.html#hybrid-nodes-cluster-create-iam). You will need to specify the IAM role during cluster creation.
 
 ## Create the EKS Cluster
 
-### Option A: Using the AWS Console
+These steps use the AWS Management Console.
 
-1. **Open the EKS service** in the AWS Management Console.
-2. Click **Create cluster**, then configure:
-   - **Name**: For example, `my-hybrid-eks-cluster`
-   - **Kubernetes version**: Choose a version compatible with your environment
-   - **Cluster Service Role**: Either select an existing IAM role with EKS permissions or create a new one with the
-     recommended AWS-managed policies (e.g., `AmazonEKSClusterPolicy`, `AmazonEKSServicePolicy`, etc.)
-   - **Networking**:
-     - Choose your VPC
-     - Pick at least two subnets in different Availability Zones
-     - Keep **Amazon VPC CNI** as the networking add-on
-3. **Review and create** the cluster
-4. Wait until the cluster status shows **Active** in the EKS console
+1. Log in to the [Amazon EKS console](https://console.aws.amazon.com/eks/home#/clusters).
 
-### Option B: Using `eksctl`
+2. Click **Create cluster**.
 
-If you prefer the CLI, you can specify your subnets and one node group from the start. For example:
+3. On the **Configure cluster** page, select **Custom configuration** in **Configuration options**.
+   
+4. In the **Cluster configuration** section, enter a cluster **Name**.
 
-```
-eksctl create cluster \
-  --name my-hybrid-eks-cluster \
-  --version 1.24 \
-  --region us-east-1 \
-  --vpc-private-subnets subnet-xxx,subnet-yyy \
-  --nodegroup-name worker-nodes \
-  --node-type t3.medium \
-  --nodes 2 \
-  --managed
-```
+5. Select your Amazon EKS cluster IAM role for the **Cluster IAM role**. For example, `myAmazonEKSClusterRole`.
 
-- Replace `subnet-xxx` and `subnet-yyy` with the IDs of your private subnets.
-- Adjust **instance type**, **node count**, or **region** as needed.
+6. In the **Cluster access** section, select **EKS API and ConfigMap** as the **Cluster authentication mode**.
 
-In both methods, you must ensure:
+7. On the **Configure cluster** page, you can configure the remaining options as needed. Click **Next** when complete.
 
-- The **VPC CNI** remains the default networking add-on (amazon-vpc-cni-k8s).
-- There is at least **one** worker node group (a managed node group in the console or via `eksctl`).
+8. On the **Specify networking** page, in the **Networking** section, select your Amazon EKS Hybrid VPC and subnets for **VPC** and **Subnets**.
+
+9. For **Additional security groups**, select the security group created for your Amazon EKS Hybrid Nodes environment.
+
+10. For **Choose cluster IP address family**, ensure **IPv4** is selected.
+
+11. Enable the toggle for **Configure Kubernetes service IP address block**, and provide the CIDR block for your AWS node network in the **Service IPv4 range** field.
+
+    For example, `10.100.0.0/16`.
+
+12. Enable the toggle for **Configure remote networks to enable hybrid nodes**.
+
+13. Click **Add new CIDR block** for **Remote node networks** and provide the CIDR block for your on-prem node network in the **Node CIDR block** field.
+
+    For example, `10.200.0.0/16`.
+
+    Add as many entries as needed.
+
+14. Click **Add new CIDR block** for **Remote pod networks** and provide the CIDR block for your on-prem pod network in the **Pod CIDR block** field.
+
+    For example, `192.168.0.0/16`.
+
+    Add as many entries as needed.
+
+15. In the **Cluster endpoint access** section, select the **Public** or **Private** option.
+
+    :::warning
+    
+    The **Public and private** option is not supported for Amazon EKS Hybrid Nodes.
+
+    :::
+
+16. On the **Specify networking** page, you can configure the remaining options as needed. Click **Next** when complete.
+
+17. On the **Configure observability** page, configure the options as needed. Click **Next** when complete.
+
+18. On the **Configure observability** page, configure the options as needed. Click **Next** when complete.
+
+19. On the **Select add-ons** page, you must check the box to enable the **Amazon VPC CNI** in **AWS add-ons**.
+
+    :::info
+
+    The "Not compatible with Hybrid Nodes" warning is ignored in this case as affinity rules will be configured during the [Configure CNI for Hybrid Nodes](../import-eks-cluster-enable-hybrid-mode.md#configure-cni-for-hybrid-nodes) steps to ensure compatibility with your hybrid nodes.
+
+    :::
+
+20. On the **Select add-ons** page, configure the remaining options as needed. Click **Next** when complete.
+
+21. On the **Configure selected add-ons settings** page, configure the options as needed. Click **Next** when complete.
+
+22. On the **Review and create** page, review your settings and click **Create** when ready.
+
+23. Wait until the cluster status shows **Active** in the EKS console.
+
+24. TBD
 
 ## Configure IAM Roles for Worker Nodes
 
