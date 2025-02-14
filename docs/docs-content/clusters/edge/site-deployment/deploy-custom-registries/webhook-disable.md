@@ -407,9 +407,9 @@ source code for the credential provider on GitHub.
     :::warning
 
     Avoid entering sensitive information like passwords directly into your cluster profile in plain text. Instead, you
-    can either use a cluster profile variable or a macro. For more information, refer to
-    [Macros](../../../cluster-management/macros.md) and
-    [Define and Manage Profile Variables](../../../../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables.md).
+    can either use a
+    [cluster profile variable](../../../../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/define-profile-variables.md)
+    or a [macro](../../../cluster-management/macros.md).
 
     :::
 
