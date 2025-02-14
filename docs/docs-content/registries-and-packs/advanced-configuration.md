@@ -73,7 +73,7 @@ docker run -d \
     -e REGISTRY_LOG_LEVEL=debug \
     -e REGISTRY_AUTH=htpasswd \
     -e REGISTRY_AUTH_HTPASSWD_REALM="My Enterprise Realm" \
-    us-docker.pkg.dev/palette-images/palette/spectro-registry:4.5.0
+    us-docker.pkg.dev/palette-images/palette/spectro-registry:4.6.1
 ```
 
 Alternatively, you can start the container by mounting a directory with a new configuration file and pointing the server
@@ -85,7 +85,7 @@ docker run -d \
     -p 443:5000 \
     --name spectro-registry \
     --volume $(pwd)/myconfig.yml:/etc/myconfig.yml \
-    us-docker.pkg.dev/palette-images/palette/spectro-registry:4.5.0 \
+    us-docker.pkg.dev/palette-images/palette/spectro-registry:4.6.1 \
     serve /etc/spectropaxconfig/myconfig.yml
 ```
 
