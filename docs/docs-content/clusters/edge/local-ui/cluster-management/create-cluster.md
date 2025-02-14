@@ -98,8 +98,7 @@ management.
 
 6. If your selected cluster profile has
    [Cluster Profile Variables](../../../../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/define-profile-variables.md),
-   you are prompted to enter the values for those profile variables. Variables with default values are
-   auto-populated.
+   you are prompted to enter the values for those profile variables. Variables with default values are auto-populated.
 
    Enter the values for the profile variables and click **Next**.
 
