@@ -41,6 +41,13 @@ minor version available.
 <Tabs>
 <TabItem label="VMware" value="VMware">
 
+**4.6.x**
+
+| **Source Version** | **Target Version** |    **Support**     |
+| :----------------: | :----------------: | :----------------: |
+|       4.5.21       |       4.6.6        | :white_check_mark: |
+|       4.5.20       |       4.6.6        | :white_check_mark: |
+
 **4.5.x**
 
 | **Source Version** | **Target Version** |    **Support**     |
@@ -101,6 +108,13 @@ minor version available.
 </TabItem>
 
 <TabItem label="Kubernetes" value="Kubernetes">
+
+**4.6.x**
+
+| **Source Version** | **Target Version** |    **Support**     |
+| :----------------: | :----------------: | :----------------: |
+|       4.5.21       |       4.6.6        | :white_check_mark: |
+|       4.5.20       |       4.6.6        | :white_check_mark: |
 
 **4.5.x**
 
