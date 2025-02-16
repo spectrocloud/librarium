@@ -11,13 +11,13 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## February 16, 2025 - Release 4.6.0 - 4.6.3
+## February 16, 2025 - Release 4.6.0 - 4.6.6
 
 ### Security Notices
 
 - Review the [Security Bulletins](../security-bulletins/reports/reports.mdx) page for the latest security advisories.
 
-### Palette Enterprise {#palette-enterprise-4-6-3}
+### Palette Enterprise {#palette-enterprise-4-6-6}
 
 #### Features
 
@@ -57,7 +57,7 @@ tags: ["release-notes"]
 #### Features
 
 - Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
-  [Palette section](#palette-enterprise-4-6-3) for more details.
+  [Palette section](#palette-enterprise-4-6-6) for more details.
 
 - [Palette VerteX](../vertex/vertex.md) now offers complete brand customization. System operators can apply custom logos
   and color schemes to the instances they manage by using the **Customize interface** tab in the **Administration**
@@ -193,6 +193,7 @@ tags: ["release-notes"]
 | ExternalDNS                | 0.15.1      |
 | External Secrets Operator  | 0.12.1      |
 | Kong                       | 2.47.0      |
+| Nvidia GPU Operator        | 24.9.2      |
 
 #### Community
 
