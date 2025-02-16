@@ -193,6 +193,7 @@ tags: ["release-notes"]
 | ExternalDNS                | 0.15.1      |
 | External Secrets Operator  | 0.12.1      |
 | Kong                       | 2.47.0      |
+| Nvidia GPU Operator        | 24.9.2      |
 
 #### Community
 
