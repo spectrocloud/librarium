@@ -17,7 +17,6 @@ function showLastUpdateTime() {
   if (trimmedValue === "true") {
     return true;
   }
-
   return false;
 }
 
@@ -37,6 +36,7 @@ const config = {
   onBrokenAnchors: "throw",
   onBrokenMarkdownLinks: "throw",
   trailingSlash: true,
+  noIndex: true,
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
   // to replace "en" with "zh-Hans".
@@ -46,7 +46,8 @@ const config = {
   },
   future: {
     experimental_faster: {
-      swcJsLoader: false, // Set to 'false' as Netlify builds fail with this enabled.
+      swcJsLoader: false,
+      // Set to 'false' as Netlify builds fail with this enabled.
       swcJsMinimizer: true,
       swcHtmlMinimizer: true,
       lightningCssMinimizer: true,
