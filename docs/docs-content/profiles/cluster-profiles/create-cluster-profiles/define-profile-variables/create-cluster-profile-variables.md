@@ -134,7 +134,7 @@ guide to learn how to create a cluster profile.
 You can now use your cluster profile to deploy or update a cluster. The steps involved in deploying a cluster depend on
 the infrastructure provider; however, when cluster profile variables are configured in the cluster profile, there will
 always be an additional **Profile Config** window displayed prior to deploying the cluster. To learn more about
-deploying clusters, visit our [Getting Started](../../../../../docs-content/getting-started/getting-started.md) series.
+deploying clusters, visit our [Getting Started](../../../../getting-started/getting-started.md) series.
 
 Note that in the below example, we entered `amazing-hello-universe-namespace` for the namespace of the Hello Universe
 application.
