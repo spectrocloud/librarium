@@ -55,7 +55,7 @@ These steps use the AWS Management Console.
 
 6. In the **Cluster access** section, select **EKS API and ConfigMap** as the **Cluster authentication mode**.
 
-7. On the **Configure cluster** page, you can configure the remaining options as needed. Click **Next** when complete.
+7. You can configure the remaining options as needed. Click **Next** when complete.
 
 8. On the **Specify networking** page, in the **Networking** section, select your Amazon EKS Hybrid VPC and subnets for
    **VPC** and **Subnets**.
@@ -93,13 +93,11 @@ These steps use the AWS Management Console.
 
     :::
 
-16. On the **Specify networking** page, you can configure the remaining options as needed. Click **Next** when complete.
+16. You can configure the remaining options as needed. Click **Next** when complete.
 
 17. On the **Configure observability** page, configure the options as needed. Click **Next** when complete.
 
-18. On the **Configure observability** page, configure the options as needed. Click **Next** when complete.
-
-19. On the **Select add-ons** page, you must check the box to enable the **Amazon VPC CNI** in **AWS add-ons**.
+18. On the **Select add-ons** page, you must check the box to enable the **Amazon VPC CNI** in **AWS add-ons**.
 
     :::info
 
@@ -109,15 +107,15 @@ These steps use the AWS Management Console.
 
     :::
 
-20. On the **Select add-ons** page, configure the remaining options as needed. Click **Next** when complete.
+19. Select the remaining add-ons as needed. Click **Next** when complete.
 
-21. On the **Configure selected add-ons settings** page, configure the options as needed. Click **Next** when complete.
+20. On the **Configure selected add-ons settings** page, configure the add-ons as needed. Click **Next** when complete.
 
-22. On the **Review and create** page, review your settings and click **Create** when ready.
+21. On the **Review and create** page, review your settings and click **Create** when ready.
 
-23. Wait until the cluster status shows **Active** in the EKS console before moving onto the next step.
+22. Wait until the cluster status shows **Active** in the EKS console before moving onto the next step.
 
-24. Follow the steps in
+23. Follow the steps in
     [Create a managed node group for your cluster](https://docs.aws.amazon.com/eks/latest/userguide/create-managed-node-group.html)
     to create a managed node group with the following configuration:
 
@@ -139,7 +137,7 @@ These steps use the AWS Management Console.
 
     :::
 
-25. _(Optional)_ Obtain the kubeconfig for the cluster by following the steps in
+24. _(Optional)_ Obtain the kubeconfig for the cluster by following the steps in
     [Step 3: Update kubeconfig](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-cluster-create.html#hybrid-nodes-cluster-create-kubeconfig).
 
 ## Validate
