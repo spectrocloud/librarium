@@ -161,7 +161,7 @@ about the rolling upgrade strategy.
 
 #### Improvements
 
-- The internal [OpenShift](https://github.com/openshift/console) version used by VMO has been updated. The updated
+- The internal [OpenShift Console](https://github.com/openshift/console) version used by VMO has been updated. The updated
   version includes UI improvements, security fixes, bug fixes, and the ability to use OpenID Connect (OIDC) for
   authentication.
 
