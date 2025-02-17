@@ -24,14 +24,13 @@ tags: ["release-notes"]
 - Palette now supports edit and delete operations on
   [Cluster Profile Variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/define-profile-variables.md)
   in non-Edge and connected Edge clusters. Additionally, you can now review and edit the values of Cluster Profile
-  Variables when they are applied to existing clusters. Check out the
+  Variables when they are applied to existing clusters. This feature has now exited Tech Preview and is ready to use for production workloads. Check out the
   [Cluster Profile Variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/define-profile-variables.md)
   guide to learn more about this feature.
 
-- [Self-hosted Palette](../enterprise-version/enterprise-version.md) and Dedicated Palette SaaS installations now offer
+- [Self-hosted Palette](../enterprise-version/enterprise-version.md) installations now offer
   complete brand customization. System operators can apply custom logos and color schemes to the instances they manage
-  by using the **Customize interface** tab in the **Administration** panel of the system console. Refer to the Customize
-  Interface guide to learn more.
+  by using the **Customize interface** tab in the **Administration** panel of the system console. Refer to the [Customize Interface](../enterprise-version/system-management/customize-interface.md) guide to learn more.
 
 #### Improvements
 
@@ -61,7 +60,7 @@ tags: ["release-notes"]
 
 - [Palette VerteX](../vertex/vertex.md) now offers complete brand customization. System operators can apply custom logos
   and color schemes to the instances they manage by using the **Customize interface** tab in the **Administration**
-  panel in the system control. Refer to the Customize Interface guide to learn more.
+  panel in the system control. Refer to the [Customize Interface](../vertex/system-management/customize-interface.md) guide to learn more.
 
 ### Automation
 
