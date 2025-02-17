@@ -30,7 +30,8 @@ html {
   --doc-sidebar-width: 360px !important;
   --ifm-menu-link-sublist-icon: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14px" height="14px" viewBox="0 0 24 24"><path fill="rgb(150 152 169)" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path></svg>');
   --ifm-tabs-padding-vertical: 0.5rem;
-  --ifm-navbar-link-color: #252b53;
+  --ifm-navbar-height: 4rem;
+  --ifm-navbar-item-padding-horizontal: 0.75rem;
   --ifm-heading-font-weight: 500;
   --ifm-spacing-horizontal: 3rem;
   --ifm-alert-border-width: 1px;
@@ -42,9 +43,16 @@ html {
   --ifm-link-decoration: underline;
 }
 
+// Remove link underlines from navbar and table of contents.
 nav a,
 .table-of-contents a {
   text-decoration: none;
+}
+
+// Adjust logo to be 40px high
+.navbar__logo,
+.sidebarLogo_isFc img {
+  height: 2.5rem !important;
 }
 
 .markdown h1:first-child {
