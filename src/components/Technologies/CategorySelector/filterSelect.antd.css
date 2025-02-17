@@ -3,10 +3,10 @@
   background: #141414;
 }
 [data-theme="dark"] .ant-select-selection-placeholder {
-  color: #F3F0EE;
+  color: #f3f0ee;
 }
 [data-theme="dark"] .ant-select-arrow {
-  color: #F3F0EE;
+  color: #f3f0ee;
 }
 [data-theme="dark"] .ant-select-item-option {
   color: var(--ifm-font-color-base);
@@ -33,7 +33,7 @@
 [data-theme="dark"] .ant-select-multiple {
   .ant-select-selection-item {
     color: var(--ifm-font-color-base);
-    background-color: #1E3332;
+    background-color: #1e3332;
   }
   .ant-select-selection-overflow .ant-select-selection-item-remove {
     color: var(--ifm-font-color-base);

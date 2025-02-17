@@ -109,12 +109,12 @@ export default function CveReportsTable() {
   const [activeTabKey, setActiveTabKey] = useState("palette");
   const { colorMode } = useColorMode();
   const { defaultAlgorithm, darkAlgorithm } = theme;
-  const isDark = colorMode === "dark"
+  const isDark = colorMode === "dark";
   const customTheme = {
     algorithm: isDark ? darkAlgorithm : defaultAlgorithm, // Start with the default dark theme
     token: {
       colorBgContainer: isDark ? "#012121" : "#F3F0EE",
-      colorPrimary	: isDark ? "#44B2AF" : "#1F7A78",
+      colorPrimary: isDark ? "#44B2AF" : "#1F7A78",
     },
   };
 
@@ -180,11 +180,7 @@ export default function CveReportsTable() {
         key: "cve",
         sorter: (a, b) => a.metadata.cve.localeCompare(b.metadata.cve),
         render: (cve: string, record) => {
-          return (
-            <Link to={`/security-bulletins/reports/${record.metadata.uid.toLowerCase()}`}>
-              {cve}
-            </Link>
-          );
+          return <Link to={`/security-bulletins/reports/${record.metadata.uid.toLowerCase()}`}>{cve}</Link>;
         },
       },
       {
