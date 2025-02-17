@@ -17,7 +17,7 @@ function CardLayout({ href, icon, title, description }) {
   return (
     <CardContainer href={href}>
       {title && title.length > 40 ? (
-        <Tooltip color="#091e3b" title={title}>
+        <Tooltip color="#012121" title={title}>
           <h2 className={clsx("text--truncate", styles.cardTitle)} title={title}>
             {icon} {`${title.substring(0, 40)} ...`}
           </h2>
