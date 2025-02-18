@@ -1,25 +1,17 @@
-build
-node_modules
-src/deprecated
+build node_modules src/deprecated
 
-.docusaurus
-sidebar.js
-docusaurus.config.js
-*.config.js
+.docusaurus sidebar.js docusaurus.config.js \*.config.js
 
 # swizzled components
-src/theme/SchemaItem/index.js
-src/theme/CodeBlock/**
-DocSidebarItem
+
+src/theme/SchemaItem/index.js src/theme/CodeBlock/\*\* DocSidebarItem
 
 #test files
 
-*.test.tsx
-*.test.ts
+_.test.tsx _.test.ts
 
-*.test.js
-*.test.jsx
+_.test.js _.test.jsx \*.bundle.js
 
-__mocks__
+**mocks**
 
 jest.setup.ts
