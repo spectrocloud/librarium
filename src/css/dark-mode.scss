@@ -63,10 +63,6 @@ html[data-theme="dark"] {
     border-width: 0px;
   }
 
-  [class^="tag_"] {
-    text-decoration: none;
-  }
-
   .menu__list-item-collapsible:hover {
     background: var(--ifm-dropdown-background-color);
   }

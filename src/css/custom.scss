@@ -43,9 +43,10 @@ html {
   --ifm-link-decoration: underline;
 }
 
-// Remove link underlines from navbar and table of contents.
+// Remove link underlines from navbar, tags, and table of contents.
 nav a,
-.table-of-contents a {
+.table-of-contents a,
+[class^="tag_"] {
   text-decoration: none;
 }
 
