@@ -42,8 +42,8 @@ Palette. You will then create a cluster profile and use the registered host to d
 - The FIPS-compliant version of Agent Mode is only available for Red Hat Enterprise Linux (RHEL) and Rocky Linux 8
   systems.
 
-- Arm64 support for airgap clusters is not available. This because Harbor, which is required for airgap clusters, does
-  not have an Arm64 image.
+- ARM64 support for airgap clusters is not available. This is because Harbor, which is required for airgap clusters, does
+  not have an ARM64 image.
 
 ## Prerequisites
 
