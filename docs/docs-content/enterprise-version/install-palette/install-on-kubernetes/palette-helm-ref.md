@@ -30,7 +30,41 @@ information, refer to the [Image Swap Configuration](#image-swap-configuration) 
 
 :::
 
-### MongoDB
+## Global
+
+The global block allows you to provide configurations that apply globally to the installation process.
+
+### Image Pull Secret
+
+The `imagePullSecret` block allows you to provide image pull secrets that will be used to authenticate with private
+registries to obtain the images required for Palette installation. This is relevant if you have your own mirror
+registries you use for Palette installation.
+
+| **Parameters**     | **Description**                                                                                                                                                                                                                                                                                             | **Type** | **Default value** |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------------- |
+| `create`           | Specifies whether to create a secret containing credentials to your own private image registry.                                                                                                                                                                                                             | Boolean  | `false`           |
+| `dockerConfigJson` | The **config.json** file value containing the registry URL and credentials for your image registry in base64 encoded format on a single line. For more information about the **config.json** file, refer to [Kubernetes Documentation](https://kubernetes.io/docs/concepts/containers/images/#config-json). | String   | None              |
+
+:::info
+
+To obtain the base-64 encoded version of the credential `config.json` file, you can issue the following command. Replace
+`<path/to/.docker/config.json>` with the path to your `config.json` file. The `tr -d '\n'` removes new line characters
+and produce the output on a single line.
+
+```shell
+cat <path/to/.docker/config.json> | base64 | tr -d '\n'
+```
+
+:::
+
+```yaml
+global:
+  imagePullSecret:
+    create: true
+    dockerConfigJson: ewoJImF1dGhzHsKCQkiaG9va3......MiOiAidHJ1ZSIKCX0KfQ # Base64 encoded config.json
+```
+
+## MongoDB
 
 Palette uses MongoDB Enterprise as its internal database and supports two modes of deployment:
 
@@ -66,12 +100,12 @@ mongo:
   storageClass: ""
 ```
 
-### Config
+## Config
 
 Review the following parameters to configure Palette for your environment. The `config` section contains the following
 subsections:
 
-#### Install Mode
+### Install Mode
 
 You can install Palette in connected or air-gapped mode. The table lists the parameters to configure the installation
 mode.
@@ -85,7 +119,7 @@ config:
   installationMode: "connected"
 ```
 
-#### SSO
+### SSO
 
 You can configure Palette to use Single Sign-On (SSO) for user authentication. Configure the SSO parameters to enable
 SSO for Palette. You can also configure different SSO providers for each tenant post-install, check out the
@@ -114,7 +148,7 @@ config:
       apiVersion: "v1"
 ```
 
-#### Email
+### Email
 
 Palette uses email to send notifications to users. The email notification is used when inviting new users to the
 platform, password resets, and when [webhook alerts](../../../clusters/cluster-management/health-alerts.md) are
@@ -142,7 +176,7 @@ config:
     password: ""
 ```
 
-#### Environment
+### Environment
 
 The following parameters are used to configure the environment.
 
@@ -167,7 +201,7 @@ URLs to the Palette load balancer. For example, `*.palette.example.com`.
 
 :::
 
-#### Cluster
+### Cluster
 
 Use the following parameters to configure the Kubernetes cluster.
 
@@ -296,7 +330,7 @@ config:
     isEKSCluster: true
 ```
 
-### NATS
+## NATS
 
 Palette uses [NATS](https://nats.io) and gRPC for communication between Palette components. Dual support for NATS and
 gRPC is available. You can enable the deployment of an additional load balancer for NATS. Host clusters deployed by
@@ -320,7 +354,7 @@ nats:
   natsStaticIP:
 ```
 
-### gRPC
+## gRPC
 
 gRPC is used for communication between Palette components. You can enable the deployment of an additional load balancer
 for gRPC. Host clusters deployed by Palette use the load balancer to communicate with the Palette control plane. This is
@@ -356,7 +390,7 @@ grpc:
   insecureSkipVerify: false
 ```
 
-### Ingress
+## Ingress
 
 Palette deploys an Nginx Ingress Controller. This controller is used to route traffic to the Palette control plane. You
 can change the default behavior and omit the deployment of an Nginx Ingress Controller.
@@ -383,7 +417,7 @@ ingress:
     terminateHTTPSAtLoadBalancer: false
 ```
 
-### Spectro Proxy
+## Spectro Proxy
 
 <!-- prettier-ignore -->
 You can specify a reverse proxy server that clusters deployed through Palette can use to facilitate network connectivity
@@ -411,7 +445,7 @@ frps:
       crt: ""
 ```
 
-### UI System
+## UI System
 
 The table lists parameters to configure the Palette User Interface (UI) behavior. You can disable the UI or the Network
 Operations Center (NOC) UI. You can also specify the MapBox access token and style layer ID for the NOC UI. MapBox is a
@@ -435,7 +469,7 @@ ui-system:
       mapBoxStyledLayerID: ""
 ```
 
-### Reach System
+## Reach System
 
 You can configure Palette to use a proxy server to access the internet. Set the parameter `reach-system.enabled` to
 `true` to enable the proxy server. Proxy settings are configured in the `reach-system.proxySettings` section.

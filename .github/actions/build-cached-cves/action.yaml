@@ -1,3 +1,8 @@
+# This configuration file defines a GitHub Action named "Build with cached CVEs".
+# This action is used when a build fails with the exit code 7. The action downloads the latest CVEs artifact from the "post_release.yaml" workflow.
+# The action then unpacks the downloaded CVEs data in the correct folders and re-runs the build with the downloaded CVEs data.
+# This is useful in scenarios where the Security API is experiencing issues or a CVE is breaking the build.
+
 name: "Build with cached CVEs"
 inputs:
   gh-token:
@@ -43,4 +48,6 @@ runs:
       run: |
         rm -rf build
         npm run build
+        exit_code=$?
+        echo "BUILD_EXIT_CODE=$$exit_code" >> $GITHUB_ENV
       shell: bash

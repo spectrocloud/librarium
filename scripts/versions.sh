@@ -25,7 +25,7 @@ fi
 echo "Temp directory: $tempdir"
 echo "Base directory: $baseDir"
 # List of version branches to exclude
-exclude_branches=(version-3-4 version-4-0 version-4-1 version-4-2 version-4-3) # DO NOT ADD A COMMA BETWEEN THE BRANCHES. ADD A SPACE INSTEAD AND THE NEW VERSION STRING.
+exclude_branches=(version-3-4 version-4-0 version-4-1 version-4-2 version-4-3 version-4-4) # DO NOT ADD A COMMA BETWEEN THE BRANCHES. ADD A SPACE INSTEAD AND THE NEW VERSION STRING.
 # exclude_branches=("version-3-4")
 
 # Save the current branch name
@@ -42,13 +42,12 @@ echo "HEAD Branch: $HEAD"
 
 # Fetch all branches from the remote
 git fetch -p origin
-branches=$(git branch -a | grep -E 'version-[0-9]+(-[0-9]+)*$')
+# Remove leading spaces and remote prefix (if any)
+# Sort and remove duplicates.
+branches=$(git branch -a | sed 's/ *//;s/remotes\/origin\///' | grep -E '^version-[0-9]+(-[0-9]+)*$' | sort | uniq)
 
 # Loop through each branch to fetch it locally
 for b in $branches; do
-  # Remove leading spaces and remote prefix (if any)
-  b=$(echo $b | sed 's/ *//;s/remotes\/origin\///')
-
   # Fetch the remote branch to corresponding local branch
   git fetch origin $b:$b
 done
@@ -81,9 +80,9 @@ echo '[]' > $tempdir/temp_api_versions.json  # Initialize as an empty array if i
 echo "Entering the loop to generate the versioned documentation"
 
 # Loop through all local branches
-for item in $(git branch --format '%(refname:short)'); do
+for item in $branches; do
 
-  echo "Checking branch: $branch"
+  echo "Checking branch: $item"
   
   # Check if the branch is in the exclude list
   if [[ " ${exclude_branches[@]} " =~ " ${item} " ]]; then
@@ -91,80 +90,72 @@ for item in $(git branch --format '%(refname:short)'); do
     continue
   fi
   
-  # Check if the branch name starts with 'version-' followed by numbers
-  if [[ $item =~ ^version-[0-9]+(-[0-9]+)*$ ]]; then
-    echo "Found branch: $item"
+  echo "Found branch: $item"
 
-    # Extract the version and replace '-' with '.'
-    version=${item#version-}
-    version=${version//-/.}
+  # Extract the version and replace '-' with '.'
+  version=${item#version-}
+  version=${version//-/.}
 
-       # Append .x to the version
-    versionX="$version.x"
+  # Append .x to the version
+  versionX="$version.x"
 
-    # Append .0 to the version
-    version="$version.0"
- 
+  # Append .0 to the version
+  version="$version.0"
 
-    # Store in a variable
-    extracted_version=$version
-    extracted_versionX=$versionX
-    echo "Extracted version: $extracted_version"
+  # Store in a variable
+  extracted_version=$version
+  extracted_versionX=$versionX
+  echo "Extracted version: $extracted_version"
 
-    # Add version to temp_versions.json and sort it
-    jq --arg ver "$extracted_version" '. |= [$ver] + . | sort_by(. | split(".") | map(tonumber)) | reverse' $tempdir/temp_versions.json > $tempdir/temp.json && mv $tempdir/temp.json $tempdir/temp_versions.json
-    jq --arg ver "$extracted_version" '. |= [$ver] + . | sort_by(. | split(".") | map(tonumber)) | reverse' $tempdir/temp_api_versions.json > $tempdir/temp_api.json && mv $tempdir/temp_api.json $tempdir/temp_api_versions.json
+  # Add version to temp_versions.json and sort it
+  jq --arg ver "$extracted_version" '. |= [$ver] + . | sort_by(. | split(".") | map(tonumber)) | reverse' $tempdir/temp_versions.json > $tempdir/temp.json && mv $tempdir/temp.json $tempdir/temp_versions.json
+  jq --arg ver "$extracted_version" '. |= [$ver] + . | sort_by(. | split(".") | map(tonumber)) | reverse' $tempdir/temp_api_versions.json > $tempdir/temp_api.json && mv $tempdir/temp_api.json $tempdir/temp_api_versions.json
 
+  # Switch to the version branch
+  git checkout $item
 
+  # Pull the latest changes 
+  git pull origin $item
 
-    # Switch to the version branch
-    git checkout $item
+  # Generate the partials once we are on the version branch
+  make generate-partials
 
-    # Pull the latest changes 
-    git pull origin $item
+  # Run the npm command
+  echo "Running: npm run docusaurus docs:version $extracted_versionX"
+  npm run docusaurus docs:version $extracted_versionX
 
-    # Generate the partials once we are on the version branch
-    make generate-partials
+  # Generate the API docs
+  echo "Running: npm run generate-api-docs"
+  npm run generate-api-docs
 
-    # Run the npm command
-    echo "Running: npm run docusaurus docs:version $extracted_versionX"
-    npm run docusaurus docs:version $extracted_versionX
+  echo "Running: npm run docusaurus docs:version:api $extracted_versionX"
+  npm run docusaurus docs:version:api $extracted_versionX
 
-    # Generate the API docs
-    echo "Running: npm run generate-api-docs"
-    npm run generate-api-docs
+  # Copy version docs content
+  cp -R versioned_docs/version-$extracted_versionX $tempdir/staging_docs/
+  cp -R versioned_sidebars/version-$extracted_versionX $tempdir/staging_sidebars/ || true
+  cp versioned_sidebars/version-$extracted_versionX-sidebars.json $tempdir/staging_sidebars/version-$extracted_versionX-sidebars.json
+  # Copy version API docs content
+  cp -R api_versioned_docs/version-$extracted_versionX $tempdir/staging_api_docs/
+  cp -R api_versioned_sidebars/version-$extracted_versionX $tempdir/staging_api_docs_sidebars/ || true
+  cp api_versioned_sidebars/version-$extracted_versionX-sidebars.json $tempdir/staging_api_docs_sidebars/version-$extracted_versionX-sidebars.json
+  # Copy the partials folder
+  cp -R _partials $tempdir/staging_partials/version-$extracted_versionX
 
-    echo "Running: npm run docusaurus docs:version:api $extracted_versionX"
-    npm run docusaurus docs:version:api $extracted_versionX
+  rm -rf versioned_docs/
+  rm -rf versioned_sidebars/
+  rm -rf api_versioned_docs/
+  rm -rf api_versioned_sidebars/
 
-  
-    # Copy version docs content
-    cp -R versioned_docs/version-$extracted_versionX $tempdir/staging_docs/
-    cp -R versioned_sidebars/version-$extracted_versionX $tempdir/staging_sidebars/ || true
-    cp versioned_sidebars/version-$extracted_versionX-sidebars.json $tempdir/staging_sidebars/version-$extracted_versionX-sidebars.json
-    # Copy version API docs content
-    cp -R api_versioned_docs/version-$extracted_versionX $tempdir/staging_api_docs/
-    cp -R api_versioned_sidebars/version-$extracted_versionX $tempdir/staging_api_docs_sidebars/ || true
-    cp api_versioned_sidebars/version-$extracted_versionX-sidebars.json $tempdir/staging_api_docs_sidebars/version-$extracted_versionX-sidebars.json
-    # Copy the partials folder
-    cp -R _partials $tempdir/staging_partials/version-$extracted_versionX
+  rm versions.json
+  rm api_versions.json
 
+  # Remove API auto-generated files
+  make clean-api
 
-    rm -rf versioned_docs/
-    rm -rf versioned_sidebars/
-    rm -rf api_versioned_docs/
-    rm -rf api_versioned_sidebars/
-
-    rm versions.json
-    rm api_versions.json
-
-    # Remove API auto-generated files
-    make clean-api
-
-    # Switch back to the original branch
-    git checkout $current_branch
-    echo "Switched back to branch: $current_branch"
-  fi
+  # Switch back to the original branch
+  git checkout $current_branch
+  echo "Switched back to branch: $current_branch"
 done
 
 # Rename the staging directory to the expected Docusarus versioned directory names

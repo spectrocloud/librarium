@@ -128,7 +128,6 @@ Use the following instructions to build the Edge Installer ISO. The optional ste
    HTTP_PROXY=
    PROXY_CERT_PATH=
    UPDATE_KERNEL=false
-   EOF
    ```
 
 7. (Optional) You can embed a public key in your Edge installer ISO. If you choose to add a public key to your ISO or
@@ -167,6 +166,14 @@ Use the following instructions to build the Edge Installer ISO. The optional ste
    during this step, you must provide site user data before installation takes place. You can also use site user data to
    override or supplement configuration you provided to the installer ISO. For more information, refer to
    [Apply Site User Data](../../site-deployment/site-installation/site-user-data.md).
+
+   :::tip
+
+   You can take advantage of the Tech Preview feature to edit user data in Local UI after installation. However, we
+   still recommend you provide user data during EdgeForge for production workloads because this is a Tech Preview
+   feature and not all fields are available for edit in Local UI.
+
+   :::
 
 ### Build Content Bundle
 

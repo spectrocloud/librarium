@@ -10,6 +10,11 @@ tags: ["edge"]
 You can create and manage single-node as well as multi-node clusters on airgapped hosts locally from Local UI. This page
 teaches you how to create a cluster using Local UI.
 
+Unlike clusters that are managed by Palette, a local cluster is managed locally through Local UI. You can use Local UI
+to create, update, scale, and delete the cluster. If your situation changes and you need central management of the
+cluster, you can choose to [pair your local cluster to a Palette instance](./local-to-central.md) for centralized
+management.
+
 :::preview
 
 :::
@@ -91,10 +96,9 @@ teaches you how to create a cluster using Local UI.
 
    After you finish configuring the cluster profile, click **Next**.
 
-6. If your selected cluster profile has profile variables, you will now be prompted to enter the values for those
-   profile variables. The variables with default values will be auto-populated unless the variable value is masked when
-   you defined the variable. For more information on cluster profile variables, refer to
-   [Define and Manage Profile Variables](../../../../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables.md).
+6. If your selected cluster profile has
+   [Cluster Profile Variables](../../../../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/define-profile-variables.md),
+   you are prompted to enter the values for those profile variables. Variables with default values are auto-populated.
 
    Enter the values for the profile variables and click **Next**.
 

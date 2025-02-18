@@ -1,3 +1,11 @@
+# This workflow is used to backport changes introduced by a pull request to previous version branches.
+# The workflow is triggered when a PR is merged and has the `auto-backport` label.
+# Added the `auto-backport` label to the PR along with the `backport-<version>` label to trigger the workflow. 
+# Select all the version labels that you want to backport the changes to.
+# Once the PR is merged, the workflow will backport the changes to the specified branches.
+# You can also trigger the backport workflow on merged PRs by adding the `auto-backport` label to the PR.
+# Refer to the internal team documenation https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/1962639377/Versioning for more information.
+
 name: Backport
 
 on:
@@ -25,7 +33,7 @@ jobs:
 
       - name: Retrieve Credentials
         id: import-secrets
-        uses: hashicorp/vault-action@v3.0.0
+        uses: hashicorp/vault-action@v3.1.0
         with:
           url: https://vault.prism.spectrocloud.com
           method: approle

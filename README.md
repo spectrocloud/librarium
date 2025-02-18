@@ -98,6 +98,13 @@ PALETTE_API_KEY="<your-palette-api-key>"
 > [Create API Key](https://docs.spectrocloud.com/user-management/authentication/api-key/create-api-key/) guide to learn
 > how to create a Palette API key.
 
+By default, last update times are hidden on local development. You can enable them by setting the
+`SHOW_LAST_UPDATE_TIME` variable in you `.env` file.
+
+```shell
+SHOW_LAST_UPDATE_TIME=true
+```
+
 ## Documentation Content
 
 Create a branch to keep track of all your changes.
@@ -1191,9 +1198,23 @@ make clean-versions
 Librarium provides the following exit codes. These exit codes are returned by both the `npm run start` and
 `npm run build` commands.
 
+> [!NOTE]
+>
+> Any exit codes added to the table must also be added to the Makefile's `build-ci` command.
+
 | **Exit Code**                 | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | `0`                           | The command was executed successfully.                                                                                                                                                                                                                                                                                                                                                                                                                                               |
 | `5`                           | The command failed due to errors received from the API service related to packs. These requests are issued by the [Packs Component](#packs-component) and librarium cannot start without loading packs, either from the API service or the [cached packs data](#cached-packs-data)                                                                                                                                                                                                   |
 | `7`                           | The command failed due to errors received from the API service related to security bulletins. These requests are issued by the [CVE script](./utils/cves/index.js) and librarium cannot start without loading the security bulletins. The [Build with Cached CVE](./.github/actions/build-cached-cves/action.yaml) action is built to handle this exit situation and build with cached CVEs. You can issue the command `make get-cached-cves` to fetch cached CVEs to build locally. |
 | Any other non-zero exit code. | The command failed due to another error. Check the command output.                                                                                                                                                                                                                                                                                                                                                                                                                   |
+
+## Unreleased Version Banner
+
+The `UNRELEASED_VERSION_BANNER` environment variable is used to determine if the unreleased version banner should be
+displayed. The default value is `false`. If you want to display the unreleased version banner, set the
+`UNRELEASED_VERSION_BANNER` environment variable to `true`.
+
+```shell
+export UNRELEASED_VERSION_BANNER=true
+```

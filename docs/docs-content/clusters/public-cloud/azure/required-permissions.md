@@ -39,16 +39,8 @@ We support the following use cases:
 
 :::tip
 
-You can use [Validator](https://github.com/validator-labs/validator) with its
-[Azure plugin](https://github.com/validator-labs/validator-plugin-azure) to verify you have setup the correct
-permissions. The Validator Azure plugin requires the following permissions:
-
-- Microsoft.Authorization/denyAssignments/read
-- Microsoft.Authorization/roleAssignments/read
-- Microsoft.Authorization/roleDefinitions/read
-
-You can use Validator with the Palette CLI. Check out the Palette CLI
-[Validator](../../../automation/palette-cli/commands/ec.md#validate-environment) reference section for more information.
+You can use Palette CLI to verify you have setup the correct permissions. Check out the Palette CLI
+[`validate-auth`](../../../automation/palette-cli/commands/validate-auth.md) command section for more information.
 
 :::
 

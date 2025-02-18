@@ -21,6 +21,13 @@ HashiCorp Terraform registry and offers detailed
 [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) on supported data sources
 and resources.
 
+### Limitations
+
+The provider does not support resource management across different contexts within a single provider configuration. For
+example, it is not possible to create a cluster profile within the Tenant scope and a cluster that uses this profile
+within the Project scope using the same provider initialization. Separate providers must be used to manage resources
+across different scopes.
+
 ### Release Notes
 
 Information about the latest changes in the Spectro Cloud provider can be found in the

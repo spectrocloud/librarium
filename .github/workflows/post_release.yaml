@@ -1,7 +1,11 @@
-name: Post Release Processing
 # This workflow is triggered when a workflow run of the "Release to Production" workflow is completed or when manually triggered.
 # The primary purpose of this workflow is to build the site, copy the packs data and upload it as artifacts.
 # The packs data can be used as a fallback when the Palette API cannot return a packs list.
+# The CVE data is also uploaded as an artifact. That way it can be used in the event the internal Security API is down.
+# Additional post release processing can be added to this workflow as needed.
+
+name: Post Release Processing
+
 
 on:
   workflow_run:
@@ -19,6 +23,7 @@ env:
   PALETTE_API_KEY: ${{ secrets.PALETTE_API_KEY }}
   DISABLE_PACKS_INTEGRATIONS: ${{ secrets.DISABLE_PACKS_INTEGRATIONS }}
   DISABLE_SECURITY_INTEGRATIONS: ${{ secrets.DISABLE_SECURITY_INTEGRATIONS }}
+  SHOW_LAST_UPDATE_TIME: ${{ secrets.SHOW_LAST_UPDATE_TIME }}
   DSO_AUTH_TOKEN: ${{ secrets.DSO_AUTH_TOKEN }}
 
 jobs:

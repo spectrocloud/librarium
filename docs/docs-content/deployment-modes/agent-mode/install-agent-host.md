@@ -3,6 +3,7 @@ sidebar_label: "Install Palette Agent"
 title: "Install Palette Agent"
 description: "Learn how to install the Palette Agent on your host."
 hide_table_of_contents: false
+toc_max_heading_level: 2
 sidebar_position: 10
 tags: ["edge", "agent mode"]
 ---
@@ -25,19 +26,24 @@ Palette. You will then create a cluster profile and use the registered host to d
 
 ## Limitations
 
-- Currently, agent mode only supports non-FIPS workflows.
-
 - The following table presents the verified combinations of host architecture and cluster profile layers.
 
-  | Host Architecture | OS     | Kubernetes                                 | Container Network Interface (CNI) | Verified           |
-  | ----------------- | ------ | ------------------------------------------ | --------------------------------- | ------------------ |
-  | AMD64             | Ubuntu | Palette eXtended Kubernetes - Edge (PXK-E) | Calico                            | :white_check_mark: |
-  | AMD64             | Ubuntu | K3s                                        | Flannel                           | :white_check_mark: |
+  | Host Architecture | OS                                | Kubernetes                                 | Container Network Interface (CNI) | Verified           |
+  | ----------------- | --------------------------------- | ------------------------------------------ | --------------------------------- | ------------------ |
+  | AMD64             | Ubuntu                            | Palette eXtended Kubernetes - Edge (PXK-E) | Calico                            | :white_check_mark: |
+  | AMD64             | Ubuntu                            | K3s                                        | Flannel                           | :white_check_mark: |
+  | AMD64             | Rocky Linux 8.10 (Green Obsidian) | Palette eXtended Kubernetes - Edge (PXK-E) | Cilium                            | :white_check_mark: |
 
 - Clusters with Flannel CNI is not verified for airgap deployments.
 
 - Agent mode is only supported on Linux distributions that have
   [`systemd`](https://www.freedesktop.org/software/systemd/man/latest/systemd.html) installed and available.
+
+- The FIPS-compliant version of Agent Mode is only available for Red Hat Enterprise Linux (RHEL) and Rocky Linux 8
+  systems.
+
+- ARM64 support for airgap clusters is not available. This is because Harbor, which is required for airgap clusters,
+  does not have an ARM64 image.
 
 ## Prerequisites
 
@@ -61,18 +67,25 @@ Palette. You will then create a cluster profile and use the registered host to d
 
 - Ensure the following software is installed and available:
 
+  - [bash](https://www.gnu.org/software/bash/)
   - [jq](https://jqlang.github.io/jq/download/)
   - [Zstandard](https://facebook.github.io/zstd/)
   - [rsync](https://github.com/RsyncProject/rsync)
-  - [systemd-timesyncd](https://www.freedesktop.org/software/systemd/man/latest/systemd-timesyncd.service.html)
+  - [systemd](https://systemd.io/)
+  - [systemd-timesyncd](https://www.freedesktop.org/software/systemd/man/latest/systemd-timesyncd.service.html). This is
+    required if you want Palette to manage Network Time Protocol (NTP). If you don't want Palette to manage NTP, you can
+    skip this requirement.
+  - [systemd-resolved](https://www.freedesktop.org/software/systemd/man/latest/systemd-resolved.service.html). This is
+    required if you want Palette to manage Domain Name System (DNS). If you don't want Palette to manage DNS, you can
+    skip this requirement
+  - [systemd-networkd](https://www.freedesktop.org/software/systemd/man/latest/systemd-networkd.html). This requirement
+    is specific for clusters that use static IP addresses. You also need this if you want Palette to manage the Edge
+    host network
   - [conntrack](https://conntrack-tools.netfilter.org/downloads.html). This requirement is specific for clusters that
-    use PXKE as the Kubernetes layer.
+    use PXKE as the Kubernetes layer
   - [iptables](https://linux.die.net/man/8/iptables)
-  - (Airgap only) [Crane](https://github.com/google/go-containerregistry/blob/main/cmd/crane/README.md) is installed and
-    available.
-  - (Airgap only) [Palette Edge CLI](../../spectro-downloads.md#palette-edge-cli) is installed and available.
-
-  <br />
+  - [rsyslog](https://github.com/rsyslog/rsyslog). This is required for audit logs.
+  - (Airgap only) [Palette Edge CLI](../../spectro-downloads.md#palette-edge-cli)
 
   :::warning
 
@@ -80,6 +93,214 @@ Palette. You will then create a cluster profile and use the registered host to d
   interfere with the Palette agent.
 
   :::
+
+  - If installing the FIPS version of Agent Mode on a Rocky Linux edge host, you must configure your SELinux policies to
+    grant rsync the required host permissions and ensure you enable cgroup V2.
+
+    If you are using Cilium and have firewalld enabled, you must also configure the appropriate firewalld rules. Follow
+    the process below to apply the necessary configurations before installing Agent Mode.
+
+      <details>
+
+    {" "}
+
+    <summary>Rocky Linux 8 Configurations</summary>
+
+    ### Configure rsync
+
+    1. Enable SELinux to allow full rsync access.
+
+    ```shell
+    setsebool -P rsync_full_access 1
+    ```
+
+    2. Install the necessary tools to create and apply SELinux policy modules.
+
+    ```shell
+    dnf install selinux-policy-devel audit
+    ```
+
+    3. Create a file named **rsync_dac_override.te**.
+
+    ```shell
+    nano rsync_dac_override.te
+    ```
+
+    4. Add the following content to the **rsync_dac_override.te** file.
+
+    ```shell
+    module rsync_dac_override 1.0;
+
+    require {
+      type rsync_t;
+      type default_t;
+      class dir read;
+      class capability dac_override;
+    }
+
+    # Allow rsync_t to read directories labeled default_t
+    allow rsync_t default_t:dir read;
+
+    # Allow rsync_t to override discretionary access control (DAC)
+    allow rsync_t self:capability dac_override;
+    ```
+
+    5. Compile and package the SELinux policy module.
+
+    ```shell
+    checkmodule -M -m --output rsync_dac_override.mod rsync_dac_override.te
+    semodule_package --outfile rsync_dac_override.pp -m rsync_dac_override.mod
+    ```
+
+    6. Install the compiled policy module.
+
+    ```shell
+    semodule --install rsync_dac_override.pp
+    ```
+
+    ### Enable cgroup V2
+
+    7.  Issue the following command to check if your kernel supports cgroup v2.
+
+        ```shell
+        grep cgroup2 /proc/filesystems
+        ```
+
+        If the response is `nodev	cgroup2`, your kernel supports cgroup v2 and you may proceed to the next step. If the
+        response does not match `nodev	cgroup2`, then your kernel does not support cgroup v2. You need to upgrade to a
+        kernel that supports cgroup v2 to proceed.
+
+    8.  Issue the following command to check if cgroup v2 is already enabled.
+
+        ```shell
+        stat -fc %T /sys/fs/cgroup
+        ```
+
+        If the output is `tmpfs` then cgroup v2 is not enabled. When cgroup v2 is enabled, the output is `cgroup2fs`. If
+        cgroup v2 is enabled, skip to step 12.
+
+    9.  Issue the following command to edit the GRUB file to enable cgroup v2.
+
+        ```shell
+        sudo vi /etc/default/grub
+        ```
+
+        Find the line starting with `GRUB_CMDLINE_LINUX` and add the `systemd.unified_cgroup_hierarchy=1` parameter.
+
+        ```
+        GRUB_TIMEOUT=5
+        GRUB_DISTRIBUTOR="$(sed 's, release *$,,g' / etc/system-release)"
+        GRUB_DEFAULT=saved
+        GRUB_DISABLE_SUBMENU=true
+        GRUB_TERMINAL_OUTPUT="console"
+        GRUB_CMDLINE_LINUX="crashkernel=auto resume=/dev/mapper/rl-swap rd.lvm.lv=rl/root rd.lvm.lv=rl/swap systemd.unified_cgroup_hierarchy=1
+        systemd.unified_cgroup_hierarchv=1" GRUB_DISABLE_RECOVERY=" true"
+        GRUB_ENABLE_BLSCFG=true
+        ```
+
+    10. Save the file and regenerate the GRUB configuration.
+
+        ```shell
+        sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+        ```
+
+    11. Reboot the system.
+
+        ```shell
+        sudo reboot
+        ```
+
+    ### Configure firewalld (Cilium Only)
+
+    12. (Optional) If you are using Cilium and have firewalld enabled, put the the following commands into a shell
+        script.
+
+        ```shell
+        cat << 'EOF' > firewalld-cilium.sh
+        #!/bin/bash
+
+        if [ -z "$1" ]; then
+          echo "Usage: $0 <zone>"
+          exit 1
+        fi
+
+        ZONE="$1"
+
+        # Kubernetes API Server
+        firewall-cmd --permanent --zone="$ZONE" --add-port=6443/tcp
+
+        # Etcd
+        firewall-cmd --permanent --zone="$ZONE" --add-port=2379-2380/tcp
+
+        # Kubelet API
+        firewall-cmd --permanent --zone="$ZONE" --add-port=10250/tcp
+
+        # Scheduler and Controller Manager
+        firewall-cmd --permanent --zone="$ZONE" --add-port=10257-10259/tcp
+
+        # kube proxy health check
+        firewall-cmd --permanent --zone="$ZONE" --add-port=10255/tcp
+
+        # Nodeport range
+        firewall-cmd --permanent --zone="$ZONE" --add-port=30000-32767/tcp
+
+        ############### Start Cilium Rules ##########################
+
+        # Cilium: VXLAN Overlay
+        firewall-cmd --permanent --zone="$ZONE" --add-port=8472/udp
+
+        # Cilium: Health Checks
+        firewall-cmd --permanent --zone="$ZONE" --add-port=4240/tcp
+
+        # Cilium: Geneve Overlay networking (if enabled)
+        firewall-cmd --permanent --zone="$ZONE" --add-port=6081/udp
+
+        # Cilium: WireGuard Encryption (if enabled)
+        firewall-cmd --permanent --zone="$ZONE" --add-port=51871/udp
+
+        # Cilium: IPsec Encryption (if enabled)
+        firewall-cmd --permanent --zone="$ZONE" --add-protocol=esp
+
+        # Cilium: Prometheus Observability
+        firewall-cmd --permanent --zone="$ZONE" --add-port=9962/tcp
+        firewall-cmd --permanent --zone="$ZONE" --add-port=9963/tcp
+
+        # Cilium: Enable ICMP Type 8 (Echo request) and Type 0 (Echo Reply)
+        firewall-cmd --permanent --zone="$ZONE" --add-icmp-block-inversion
+
+        ############### End Cilium Rules ##########################
+
+        # DNS and service communications
+
+        # DNS (CoreDNS)
+        firewall-cmd --permanent --zone="$ZONE" --add-port=53/tcp
+        firewall-cmd --permanent --zone="$ZONE" --add-port=53/udp
+
+        # Allow inbound/outbound traffic to port 443 (HTTPS)
+        firewall-cmd --permanent --zone="$ZONE" --add-port=443/tcp
+
+        # Allow inbound/outbound traffic to port 4222 (NATS)
+        firewall-cmd --permanent --zone="$ZONE" --add-port=4222/tcp
+
+        # Allow NAT traffic
+        firewall-cmd --permanent --add-masquerade
+
+        # Reload firewalld cache
+        firewall-cmd --reload
+        EOF
+
+        # Make the script executable
+        chmod +x firewalld-cilium.sh
+        ```
+
+    13. Execute the script with the name of the firewalld zone. For example, the following script sets the rules in the
+        firewall zone `public`.
+
+        ```shell
+        ./firewalld-cilium.sh public
+        ```
+
+     </details>
 
 ## Install Palette Agent
 
@@ -200,14 +421,37 @@ Palette. You will then create a cluster profile and use the registered host to d
    export USERDATA=./user-data
    ```
 
-6. Download the latest version of the Palette agent installation script.
+6. Download the latest version of the Palette agent installation script. There is a FIPS-compliant script, if needed.
+
+    <Tabs groupId="FIPS">
+
+    <TabItem value="Non-FIPS">
 
    ```shell
    curl --location --output ./palette-agent-install.sh https://github.com/spectrocloud/agent-mode/releases/latest/download/palette-agent-install.sh
    ```
 
-   If you have a dedicated or on-premises instance of Palette, use the command below to get the Palette's stylus
-   version. Replace `<palette-endpoint>` with your Palette endpoint and `<api-key>` with your Palette API key.
+    </TabItem>
+
+    <TabItem value="FIPS">
+
+   ```shell
+   curl --location --output ./palette-agent-install-fips.sh https://github.com/spectrocloud/agent-mode/releases/latest/download/palette-agent-install-fips.sh
+   ```
+
+    </TabItem>
+
+    </Tabs>
+
+    <details>
+
+   {" "}
+
+   <summary>Dedicated or On-Premises Palette Instance</summary>
+
+   If you have a dedicated or on-premises instance of Palette, you need to identify the correct agent version and then
+   download the corresponding version of the agent installation script. Use the command below and replace
+   `<palette-endpoint>` with your Palette endpoint and `<api-key>` with your Palette API key to identify the version.
 
    ```shell
    curl --location --request GET 'https://<palette-endpoint>/v1/services/stylus/version' --header 'Content-Type: application/json' --header 'Apikey: <api-key>'  | jq --raw-output '.spec.latestVersion.content | match("version: ([^\n]+)").captures[0].string'
@@ -217,25 +461,74 @@ Palette. You will then create a cluster profile and use the registered host to d
    4.5.0
    ```
 
-   Next, download the version of the Palette agent installation script that matches the stylus version. Replace
-   `<stylus-version>` with your Palette stylus version. For example, if the output of the previous command was `4.5.0`,
-   replace `<stylus-version>` with `v4.5.0`.
+   Issue the following command to download the version of the Palette agent for your dedicated or on-prem instance.
+   Replace `<stylus-version>` with your output from the previous step.
+
+      <Tabs groupId="FIPS">
+
+      <TabItem value="Non-FIPS">
 
    ```shell
-   curl --location --output ./palette-agent-install.sh https://github.com/spectrocloud/agent-mode/releases/download/<stylus-version>/palette-agent-install.sh
+   curl --location --output ./palette-agent-install.sh https://github.com/spectrocloud/agent-mode/releases/download/v<stylus-version>/palette-agent-install.sh
    ```
 
-7. Grant execution permissions to the `install.sh` script.
+      </TabItem>
+
+      <TabItem value="FIPS">
+
+   ```shell
+   curl --location --output ./palette-agent-install-fips.sh https://github.com/spectrocloud/agent-mode/releases/download/v<stylus-version>/palette-agent-install-fips.sh
+   ```
+
+      </TabItem>
+
+      </Tabs>
+
+    </details>
+
+7. Grant execution permissions to the installation script.
+
+   <Tabs groupId="FIPS">
+
+   <TabItem value="Non-FIPS">
 
    ```shell
    chmod +x ./palette-agent-install.sh
    ```
 
+   </TabItem>
+
+   <TabItem value="FIPS">
+
+   ```shell
+   chmod +x ./palette-agent-install-fips.sh
+   ```
+
+   </TabItem>
+
+   </Tabs>
+
 8. Issue the following command to install the agent on your host.
+
+    <Tabs groupId="FIPS">
+
+    <TabItem value="Non-FIPS">
 
    ```shell
    sudo --preserve-env ./palette-agent-install.sh
    ```
+
+    </TabItem>
+
+    <TabItem value="FIPS">
+
+   ```shell
+   sudo --preserve-env ./palette-agent-install-fips.sh
+   ```
+
+    </TabItem>
+
+    </Tabs>
 
    The termination of the SSH connection, as shown in the example below, confirms that the script has completed its
    tasks.
@@ -276,6 +569,16 @@ Palette. You will then create a cluster profile and use the registered host to d
 
 20. Follow the steps in the [Create Cluster Definition](../../clusters/edge/site-deployment/model-profile.md) guide to
     deploy a cluster using your registered host as a cluster node.
+
+:::warning
+
+If using the FIPS version of Agent Mode on a Rocky Linux edge host, SELinux may incorrectly label the
+**kubeadm-flags.env** file during cluster deployment or when certain configurations are adjusted, preventing the Kubelet
+from accessing it and properly managing the cluster. Refer to the
+[Edge Troubleshooting Guide](../../troubleshooting/edge.md#scenario---kubelet-process-cannot-access-kubeadm-flags) for
+guidance.
+
+:::
 
 </TabItem>
 
@@ -349,15 +652,36 @@ internet.
    crane pull us-docker.pkg.dev/palette-images/edge/stylus-agent-mode-linux-<architecture>:<version> agent-image.tar
    ```
 
-6. Issue the following command from a host with internet access to download the agent binary and name the binary
-   `palette-agent`. Replace `<architecture>` with the architecture of your CPU. If you have ARM64, use `arm64`. If you
-   have AMD64 or x86_64, use `amd64`. Replace `<version>` with the desired version number. In this example, we use
-   `v4.5.0`.
+6. Issue the following command from a host with internet access to download the agent binary.
+
+   <Tabs groupID="FIPS">
+
+   <TabItem value="Non-FIPS">
+
+   Name the binary `palette-agent`. Replace `<architecture>` with the architecture of your CPU. If you have ARM64, use
+   `arm64`. If you have AMD64 or x86_64, use `amd64`. Replace `<version>` with the desired version number. In this
+   example, we use `v4.5.0`.
 
    ```shell
    export URL=https://github.com/spectrocloud/agent-mode/releases/download/<version>/palette-agent-linux-<architecture>
    curl --verbose --location $URL --output palette-agent
    ```
+
+   </TabItem>
+
+   <TabItem value="FIPS">
+
+   Name the binary `palette-agent`. Replace `<version>` with the desired version number. In this example, we use
+   `v4.5.0`. Note that the FIPS version only supports a CPU architecture of AMD64.
+
+   ```shell
+   export URL=https://github.com/spectrocloud/agent-mode/releases/download/<version>/palette-agent-fips-linux-amd64
+   curl --verbose --location $URL --output palette-agent
+   ```
+
+   </TabItem>
+
+   </Tabs>
 
 7. Issue the following command to make the binary executable.
 
@@ -445,6 +769,16 @@ internet.
 25. Follow the steps in [Create Local Cluster](../../clusters/edge/local-ui/cluster-management/create-cluster.md) to use
     the cluster definition you exported previously to create a cluster.
 
+:::warning
+
+If using the FIPS version of Agent Mode on a Rocky Linux edge host, SELinux may incorrectly label the
+**kubeadm-flags.env** file during cluster deployment or when certain configurations are adjusted, preventing the Kubelet
+from accessing it and properly managing the cluster. Refer to the
+[Edge Troubleshooting Guide](../../troubleshooting/edge.md#scenario---kubelet-process-cannot-access-kubeadm-flags) for
+guidance.
+
+:::
+
 </TabItem>
 
 </Tabs>
@@ -463,6 +797,11 @@ internet.
 
 4. Verify that the cluster is listed as **Healthy** and has a **Running** status.
 
+Alongside Palette, [Local UI](../../clusters/edge/local-ui/host-management/access-console.md) allows you to fully manage
+the lifecycle of your edge hosts. Refer to the
+[Reboot, Shutdown, and Reset Edge Host](../../clusters/edge/local-ui/host-management/reset-reboot.md) guide for further
+details on how to use these operations
+
 </TabItem>
 
 <TabItem value="Airgap">
@@ -472,6 +811,10 @@ internet.
 2. Select **Cluster** from the left **Main Menu**.
 
 3. Verify that your cluster is in a **Heathy** status.
+
+Local UI allows you to fully manage the lifecycle of your edge hosts. Refer to the
+[Reboot, Shutdown, and Reset Edge Host](../../clusters/edge/local-ui/host-management/reset-reboot.md) guide for further
+details on how to use these operations.
 
 </TabItem>
 

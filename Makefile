@@ -87,6 +87,7 @@ init: ## Initialize npm dependencies
 	grep -q "^ALGOLIA_INDEX_NAME=" .env || echo "\nALGOLIA_INDEX_NAME=spectrocloud" >> .env
 	grep -q "^DSO_AUTH_TOKEN=" .env || echo "\nDISABLE_SECURITY_INTEGRATIONS=true\nDSO_AUTH_TOKEN=" >> .env
 	grep -q "^PALETTE_API_KEY=" .env || echo "\nDISABLE_PACKS_INTEGRATIONS=true" >> .env
+	grep -q "^SHOW_LAST_UPDATE_TIME=" .env || echo "\nSHOW_LAST_UPDATE_TIME=false" >> .env
 	npx husky install
 
 start: ## Start a local development server
@@ -158,6 +159,10 @@ build-cached-cves: ## Run npm build with cached CVEs retry
 		fi; \
 	}
 
+
+# This step is designed to always return a positive exit code due to the echo that outputs the exit code.
+# This is by design to ensure that the build step does not fail and subsequent GitHub Actions steps can execute that are dependent on the exit code.
+# It may be counterintuitive, but it is necessary to ensure that the build CI workflow does not fails completely without providing an opportunity for the retry steps that check the exit code.
 build-ci: ## Run npm build in CI environment
 	@echo "building site"
 	npm run clear
@@ -165,9 +170,14 @@ build-ci: ## Run npm build in CI environment
 	@{ \
 		npm run build; \
 		exit_code=$$?; \
-		echo "Build exited with code $$exit_code..."; \
 		echo "BUILD_EXIT_CODE=$$exit_code" >> $(GITHUB_ENV); \
+		echo "Build exited with code $$exit_code..."; \
+		if [ $$exit_code -ne 0 ] && [ $$exit_code -ne 5 ] && [ $$exit_code -ne 7 ]; then \
+			echo "Unacceptable exit code: $$exit_code"; \
+			exit 1; \
+		fi; \
 	}
+	
 
 versions: ## Create Docusarus content versions
 	@echo "creating versions"

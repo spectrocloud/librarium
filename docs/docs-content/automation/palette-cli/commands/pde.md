@@ -24,6 +24,13 @@ The `pde` command exposes the following subcommands.
 
 - [`virtual-cluster`](#virtual-cluster) - Manage Palette Virtual Clusters.
 
+## Prerequisites
+
+- You must provide an encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters
+  long and contain a capital letter, a lowercase letter, a digit, and a special character. You can provide the
+  passphrase through the `PALETTE_ENCRYPTION_PASSWORD` environment variable or the `-k` or `--encryption-passphrase`
+  flag. Refer to the [Encryption](./../palette-cli.md#encryption) section for more information on encryption.
+
 ## App
 
 Use the `app` subcommand to manage Palette Apps deployments. The `app` subcommand supports the following subcommands.
@@ -45,16 +52,17 @@ subcommands.
 - `cluster-group` - Create a Palette App deployment inside a Cluster Group. A new Virtual Cluster will be created. Use
   the following flags to create a Palette App deployment inside a Cluster Group.
 
-  | **Flag**                 | **Description**                                                                                     | **Type** |
-  | ------------------------ | --------------------------------------------------------------------------------------------------- | -------- |
-  | `---app-profile-name`    | Install using a configuration file (optional). Use `-config-only` to generate a configuration file. | string   |
-  | `--app-profile-version`  | Generate configuration file only. This command will not proceed with installation.                  | boolean  |
-  | `--cluster-group-name`   | Validate prerequisites for environment. Do not proceed with installation.                           | boolean  |
-  | `--cpu`                  | CPUs (optional). Defaults to 4 cores. (default 4)                                                   | int      |
-  | `--memory`               | Memory (GB) (optional). Defaults to 4GB. (default 4)                                                | int      |
-  | `--name`                 | The name of the App deployment.                                                                     | string   |
-  | `--storage`              | Storage (GB) (optional). Defaults to 4GB. (default 4)                                               | int      |
-  | `--virtual-cluster-name` | The name of the new Virtual Cluster.                                                                | string   |
+  | **Short Flag** | **Long Flag**             | **Description**                                                                                                                                                                                                                                                                                                                                                             | **Type** |
+  | -------------- | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+  | -              | `---app-profile-name`     | Install using a configuration file (optional). Use `-config-only` to generate a configuration file.                                                                                                                                                                                                                                                                         | string   |
+  | -              | `--app-profile-version`   | Generate configuration file only. This command will not proceed with installation.                                                                                                                                                                                                                                                                                          | boolean  |
+  | -              | `--cluster-group-name`    | Validate prerequisites for environment. Do not proceed with installation.                                                                                                                                                                                                                                                                                                   | boolean  |
+  | -              | `--cpu`                   | CPUs (optional). Defaults to 4 cores. (default 4)                                                                                                                                                                                                                                                                                                                           | int      |
+  | `-k`           | `--encryption-passphrase` | Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable `PALETTE_ENCRYPTION_PASSWORD`. Refer to the [Encryption](./../palette-cli.md#encryption) section for more information on encryption. | string   |
+  | -              | `--memory`                | Memory allocated to the App deployment (optional) in GB. Defaults to 4GB.                                                                                                                                                                                                                                                                                                   | int      |
+  | -              | `--name`                  | The name of the App deployment.                                                                                                                                                                                                                                                                                                                                             | string   |
+  | -              | `--storage`               | Storage (GB) (optional). Defaults to 4GB. (default 4)                                                                                                                                                                                                                                                                                                                       | int      |
+  | -              | `--virtual-cluster-name`  | The name of the new Virtual Cluster.                                                                                                                                                                                                                                                                                                                                        | string   |
 
 - `interactive` - Create a Palette App deployment in an interactive mode.
 
@@ -73,10 +81,11 @@ subcommands.
 Use the `delete` subcommand to delete a Palette App deployment. The `delete` requires the name of the App deployment to
 delete. Use the `--name` flag to specify the name of the App deployment to delete.
 
-| **Flag** | **Description**                   | **Type** |
-| -------- | --------------------------------- | -------- |
-| `--name` | The name of the App deployment.   | string   |
-| `--help` | Help for the `delete` subcommand. | -        |
+| **Short Flag** | **Long Flag**             | **Description**                                                                                                                                                                                                                                                                                                                                                             | **Type** |
+| -------------- | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| -              | `--name`                  | The name of the App deployment.                                                                                                                                                                                                                                                                                                                                             | string   |
+| `-k`           | `--encryption-passphrase` | Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable `PALETTE_ENCRYPTION_PASSWORD`. Refer to the [Encryption](./../palette-cli.md#encryption) section for more information on encryption. | string   |
+| -              | `--help`                  | Help for the `delete` subcommand.                                                                                                                                                                                                                                                                                                                                           | -        |
 
 <br />
 
@@ -84,19 +93,21 @@ delete. Use the `--name` flag to specify the name of the App deployment to delet
 
 Use the `list` subcommand to list all Palette App deployments. The `list` subcommand supports the following flags.
 
-| **Flag** | **Description**                 | **Type** |
-| -------- | ------------------------------- | -------- |
-| `--name` | The name of the App deployment. | string   |
-| `--help` | Help for the `list` subcommand. | -        |
+| **Short Flag** | **Long Flag**             | **Description**                                                                                                                                                                                                                                                                                                                                                             | **Type** |
+| -------------- | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| -              | `--name`                  | The name of the App deployment.                                                                                                                                                                                                                                                                                                                                             | string   |
+| `-k`           | `--encryption-passphrase` | Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable `PALETTE_ENCRYPTION_PASSWORD`. Refer to the [Encryption](./../palette-cli.md#encryption) section for more information on encryption. | string   |
+| `-h`           | `--help`                  | Help for the `list` subcommand.                                                                                                                                                                                                                                                                                                                                             | -        |
 
 ### Update
 
 Use the `update` subcommand to update an App deployment. The `update` subcommand supports the following flags.
 
-| **Flag** | **Description**                                                                                     | **Type** |
-| -------- | --------------------------------------------------------------------------------------------------- | -------- |
-| `--name` | The name of the App deployment. Only Apps pending an App Profile update are eligible for an update. | string   |
-| `--help` | Help for the `update` subcommand.                                                                   | -        |
+| **Short Flag** | **Long Flag**             | **Description**                                                                                                                                                                                                                                                                                                                                                             | **Type** |
+| -------------- | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| -              | `--name`                  | The name of the App deployment. Only Apps pending an App Profile update are eligible for an update.                                                                                                                                                                                                                                                                         | string   |
+| `-k`           | `--encryption-passphrase` | Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable `PALETTE_ENCRYPTION_PASSWORD`. Refer to the [Encryption](./../palette-cli.md#encryption) section for more information on encryption. | string   |
+| `-h`           | `--help`                  | Help for the `update` subcommand.                                                                                                                                                                                                                                                                                                                                           | -        |
 
 ## App Profile
 
@@ -127,10 +138,11 @@ subcommands.
 You can create an app profile using a configuration file. The configuration file must be in YAML format. The
 `from-config` subcommand supports the following flags.
 
-| **Flag**        | **Description**                                 | **Type** |
-| --------------- | ----------------------------------------------- | -------- |
-| `--config-file` | The path to the app profile configuration file. | string   |
-| `--help`        | Help for the `from-config` subcommand.          | -        |
+| **Short Flag** | **Long Flag**             | **Description**                                                                                                                                                                                                                                                                                                                                                             | **Type** |
+| -------------- | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| `-k`           | `--encryption-passphrase` | Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable `PALETTE_ENCRYPTION_PASSWORD`. Refer to the [Encryption](./../palette-cli.md#encryption) section for more information on encryption. | string   |
+| `-o`           | `--config-file`           | The path to the app profile configuration file.                                                                                                                                                                                                                                                                                                                             | string   |
+| `-h`           | `--help`                  | Help for the `from-config` subcommand.                                                                                                                                                                                                                                                                                                                                      | -        |
 
 :::tip
 
@@ -149,51 +161,56 @@ The configuration file will be created in the $HOME directory, under the `~/.pal
 Use the interactive subcommand to create an app profile in interactive mode. The `interactive` subcommand supports the
 following flags.
 
-| **Flag**        | **Description**                                                                    | **Type** |
-| --------------- | ---------------------------------------------------------------------------------- | -------- |
-| `--config-only` | Generate configuration file only. This command will not proceed with installation. | boolean  |
-| `--help`        | Help for the `interactive` subcommand.                                             | -        |
+| **Short Flag** | **Long Flag**             | **Description**                                                                                                                                                                                                                                                                                                                                                             | **Type** |
+| -------------- | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| `-k`           | `--encryption-passphrase` | Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable `PALETTE_ENCRYPTION_PASSWORD`. Refer to the [Encryption](./../palette-cli.md#encryption) section for more information on encryption. | string   |
+| `-o`           | `--config-only`           | Generate configuration file only. This command will not proceed with installation.                                                                                                                                                                                                                                                                                          | boolean  |
+| `-h`           | `--help`                  | Help for the `interactive` subcommand.                                                                                                                                                                                                                                                                                                                                      | -        |
 
 ### Delete
 
 Use the `delete` subcommand to delete an app profile. To delete an app profile, you must provide the name and version of
 the app profile. The `delete` subcommand supports the following flags.
 
-| **Flag**    | **Description**                   | **Type** |
-| ----------- | --------------------------------- | -------- |
-| `--name`    | The name of the app profile.      | string   |
-| `--version` | The version of the app profile.   | string   |
-| `--help`    | Help for the `delete` subcommand. | -        |
+| **Short Flag** | **Long Flag**             | **Description**                                                                                                                                                                                                                                                                                                                                                             | **Type** |
+| -------------- | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| -              | `--name`                  | The name of the app profile.                                                                                                                                                                                                                                                                                                                                                | string   |
+| `-k`           | `--encryption-passphrase` | Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable `PALETTE_ENCRYPTION_PASSWORD`. Refer to the [Encryption](./../palette-cli.md#encryption) section for more information on encryption. | string   |
+| -              | `--version`               | The version of the app profile.                                                                                                                                                                                                                                                                                                                                             | string   |
+| `-h`           | `--help`                  | Help for the `delete` subcommand.                                                                                                                                                                                                                                                                                                                                           | -        |
 
 ### Describe
 
 Use the `describe` subcommand to describe an app profile. To describe an app profile, you must provide the name and
 version of the app profile. The `describe` subcommand supports the following flags.
 
-| **Flag**    | **Description**                     | **Type** |
-| ----------- | ----------------------------------- | -------- |
-| `--name`    | The name of the app profile.        | string   |
-| `--version` | The version of the app profile.     | string   |
-| `--help`    | Help for the `describe` subcommand. | -        |
+| **Short Flag** | **Long Flag**             | **Description**                                                                                                                                                                                                                                                                                                                                                             | **Type** |
+| -------------- | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| -              | `--name`                  | The name of the app profile.                                                                                                                                                                                                                                                                                                                                                | string   |
+| `-k`           | `--encryption-passphrase` | Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable `PALETTE_ENCRYPTION_PASSWORD`. Refer to the [Encryption](./../palette-cli.md#encryption) section for more information on encryption. | string   |
+| -              | `--version`               | The version of the app profile.                                                                                                                                                                                                                                                                                                                                             | string   |
+| `-h`           | `--help`                  | Help for the `describe` subcommand.                                                                                                                                                                                                                                                                                                                                         | -        |
 
 ### List
 
 Use the `list` subcommand to list all app profiles. The `list` subcommand supports the following flags.
 
-| **Flag**        | **Description**                                      | **Type** |
-| --------------- | ---------------------------------------------------- | -------- |
-| `--name-filter` | Filter the list of app profiles by providing a name. | string   |
-| `--help`        | Help for the `list` subcommand.                      | -        |
+| **Short Flag** | **Long Flag**             | **Description**                                                                                                                                                                                                                                                                                                                                                             | **Type** |
+| -------------- | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| -              | `--name-filter`           | Filter the list of app profiles by providing a name.                                                                                                                                                                                                                                                                                                                        | string   |
+| `-k`           | `--encryption-passphrase` | Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable `PALETTE_ENCRYPTION_PASSWORD`. Refer to the [Encryption](./../palette-cli.md#encryption) section for more information on encryption. | string   |
+| `-h`           | `--help`                  | Help for the `list` subcommand.                                                                                                                                                                                                                                                                                                                                             | -        |
 
 ### Versions
 
 Use the `versions` subcommand to list all versions of an app profile. To list all versions of an app profile, you must
 provide the name of the app profile. The `versions` subcommand supports the following flags.
 
-| **Flag** | **Description**                     | **Type** |
-| -------- | ----------------------------------- | -------- |
-| `--name` | The name of the app profile.        | string   |
-| `--help` | Help for the `versions` subcommand. | -        |
+| **Short Flag** | **Long Flag**             | **Description**                                                                                                                                                                                                                                                                                                                                                             | **Type** |
+| -------------- | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| -              | `--name`                  | The name of the app profile.                                                                                                                                                                                                                                                                                                                                                | string   |
+| `-k`           | `--encryption-passphrase` | Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable `PALETTE_ENCRYPTION_PASSWORD`. Refer to the [Encryption](./../palette-cli.md#encryption) section for more information on encryption. | string   |
+| `-h`           | `--help`                  | Help for the `versions` subcommand.                                                                                                                                                                                                                                                                                                                                         | -        |
 
 ## Cluster Group
 
@@ -206,17 +223,22 @@ clusters. The `cluster-group` supports the following subcommands.
 
 ### List
 
-Use the `list` subcommand to list all Palette Cluster Groups. No additional flags are required.
+Use the `list` subcommand to list all Palette Cluster Groups. The `list` subcommand supports the following flags.
+
+| **Short Flag** | **Long Flag**             | **Description**                                                                                                                                                                                                                                                                                                                                                             | **Type** |
+| -------------- | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| `-k`           | `--encryption-passphrase` | Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable `PALETTE_ENCRYPTION_PASSWORD`. Refer to the [Encryption](./../palette-cli.md#encryption) section for more information on encryption. | string   |
+| `-h`           | `--help`                  | Help for the `list` subcommand.                                                                                                                                                                                                                                                                                                                                             |
 
 ### Switch
 
 Use the `switch` subcommand to switch your active cluster group. The `switch` subcommand supports the following flags.
 
-| **Flag**  | **Description**                                                                       | **Type** |
-| --------- | ------------------------------------------------------------------------------------- | -------- |
-| `--name`  | The name of the cluster group.                                                        | string   |
-| `--scope` | The scope of the cluster group. Allowed values are `project`, `tenant`, and `system`. | string   |
-| `--help`  | Help for the `switch` subcommand.                                                     | -        |
+| **Short Flag** | **Long Flag**             | **Description**                                                                                                                                                                                                                                                                                                                                                             | **Type** |
+| -------------- | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| -              | `--name`                  | The name of the cluster group.                                                                                                                                                                                                                                                                                                                                              | string   |
+| `-k`           | `--encryption-passphrase` | Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable `PALETTE_ENCRYPTION_PASSWORD`. Refer to the [Encryption](./../palette-cli.md#encryption) section for more information on encryption. | string   |
+| `-h`           | `--help`                  | Help for the `switch` subcommand.                                                                                                                                                                                                                                                                                                                                           | -        |
 
 ## Registry
 
@@ -241,12 +263,13 @@ subcommand supports the following subcommands.
 
 The following flags are supported by the `oci` and `helm` subcommands.
 
-| **Flag**     | **Description**                              | **Type** |
-| ------------ | -------------------------------------------- | -------- |
-| `--endpoint` | The endpoint of the registry.                | string   |
-| `--help`     | Help for the `oci` or the `helm` subcommand. | -        |
-| `--username` | The username of the OCI registry.            | string   |
-| `--password` | The password of the OCI registry.            | string   |
+| **Short Flag** | **Long Flag**             | **Description**                                                                                                                                                                                                                                                                                                                                                             | **Type** |
+| -------------- | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| -              | `--endpoint`              | The endpoint of the registry.                                                                                                                                                                                                                                                                                                                                               | string   |
+| `-k`           | `--encryption-passphrase` | Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable `PALETTE_ENCRYPTION_PASSWORD`. Refer to the [Encryption](./../palette-cli.md#encryption) section for more information on encryption. | string   |
+| `-h`           | `--help`                  | Help for the `oci` or the `helm` subcommand.                                                                                                                                                                                                                                                                                                                                | -        |
+| -              | `--username`              | The username of the OCI registry.                                                                                                                                                                                                                                                                                                                                           | string   |
+| -              | `--password`              | The password of the OCI registry.                                                                                                                                                                                                                                                                                                                                           | string   |
 
 The following example shows how to create an OCI registry.
 
@@ -260,10 +283,11 @@ palette pde registry create oci --endpoint https://harbor.internal.abc.org  \
 The `list` subcommand lists all Palette Registries available in App Mode. The `list` subcommand supports the following
 flags.
 
-| **Flag** | **Description**                                            | **Type** |
-| -------- | ---------------------------------------------------------- | -------- |
-| `--type` | The type of registry. Allowed values are `oci` and `helm`. | string   |
-| `--help` | Help for the `list` subcommand.                            | -        |
+| **Short Flag** | **Long Flag**             | **Description**                                                                                                                                                                                                                                                                                                                                                             | **Type** |
+| -------------- | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| -              | `--type`                  | The type of registry. Allowed values are `oci` and `helm`.                                                                                                                                                                                                                                                                                                                  | string   |
+| `-k`           | `--encryption-passphrase` | Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable `PALETTE_ENCRYPTION_PASSWORD`. Refer to the [Encryption](./../palette-cli.md#encryption) section for more information on encryption. | string   |
+| `-h`           | `--help`                  | Help for the `list` subcommand.                                                                                                                                                                                                                                                                                                                                             | -        |
 
 ### Delete
 
@@ -271,11 +295,12 @@ The `delete` subcommand deletes a Palette Registry from App Mode. You can specif
 registry or a Helm registry. Use the type flag `--type` to specify the type of registry you want to delete. The `delete`
 subcommand supports the following flags.
 
-| **Flag** | **Description**                                            | **Type** |
-| -------- | ---------------------------------------------------------- | -------- |
-| `--name` | The name of the registry.                                  | string   |
-| `--type` | The type of registry. Allowed values are `oci` and `helm`. | string   |
-| `--help` | Help for the `delete` subcommand.                          | -        |
+| **Short Flag** | **Long Flag**             | **Description**                                                                                                                                                                                                                                                                                                                                                             | **Type** |
+| -------------- | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| -              | `--name`                  | The name of the registry.                                                                                                                                                                                                                                                                                                                                                   | string   |
+| `-k`           | `--encryption-passphrase` | Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable `PALETTE_ENCRYPTION_PASSWORD`. Refer to the [Encryption](./../palette-cli.md#encryption) section for more information on encryption. | string   |
+| -              | `--type`                  | The type of registry. Allowed values are `oci` and `helm`.                                                                                                                                                                                                                                                                                                                  | string   |
+| `-h`           | `--help`                  | Help for the `delete` subcommand.                                                                                                                                                                                                                                                                                                                                           | -        |
 
 ## Virtual Cluster
 
@@ -300,15 +325,16 @@ subcommands you can use. Use the `--help` flag to learn more about each subcomma
 
 Use the `create` subcommand to create a virtual cluster. The `create` subcommand supports the following flags.
 
-| **Flag**               | **Description**                                                      | **Type** |
-| ---------------------- | -------------------------------------------------------------------- | -------- |
-| `--cluster-group-name` | The name of the Cluster Group. Defaults to the active cluster group. | string   |
-| `--cpu`                | CPUs (optional). Defaults to 4 cores. (default 4)                    | int      |
-| `--memory`             | Memory (GB) (optional). Defaults to 4GB. (default 4)                 | int      |
-| `--name`               | The name of the Virtual Cluster.                                     | string   |
-| `--storage`            | Storage (GB) (optional). Defaults to 4GB. (default 4)                | int      |
-| `--tags`               | A list of tags separated by commas (optional)                        | strings  |
-| `--help`               | Help for the `create` subcommand.                                    | -        |
+| **Short Flag** | **Long Flag**             | **Description**                                                                                                                                                                                                                                                                                                                                                             | **Type** |
+| -------------- | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| -              | `--cluster-group-name`    | The name of the Cluster Group. Defaults to the active cluster group.                                                                                                                                                                                                                                                                                                        | string   |
+| `-k`           | `--encryption-passphrase` | Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable `PALETTE_ENCRYPTION_PASSWORD`. Refer to the [Encryption](./../palette-cli.md#encryption) section for more information on encryption. | string   |
+| -              | `--cpu`                   | CPUs (optional). Defaults to 4 cores. (default 4)                                                                                                                                                                                                                                                                                                                           | int      |
+| -              | `--memory`                | Memory (GB) (optional). Defaults to 4GB. (default 4)                                                                                                                                                                                                                                                                                                                        | int      |
+| -              | `--name`                  | The name of the Virtual Cluster.                                                                                                                                                                                                                                                                                                                                            | string   |
+| -              | `--storage`               | Storage (GB) (optional). Defaults to 4GB. (default 4)                                                                                                                                                                                                                                                                                                                       | int      |
+| -              | `--tags`                  | A list of tags separated by commas (optional)                                                                                                                                                                                                                                                                                                                               | strings  |
+| `-h`           | `--help`                  | Help for the `create` subcommand.                                                                                                                                                                                                                                                                                                                                           | -        |
 
 Example
 
@@ -321,21 +347,23 @@ palette pde virtual-cluster create --cpu 4 --memory 4 --storage 4 --name dev-clu
 Use the `delete` subcommand to delete a Palette Virtual Cluster. The `delete` subcommand requires the name of the
 Virtual Cluster to delete. Use the `--name` flag to specify the name of the Virtual Cluster to delete.
 
-| **Flag** | **Description**                   | **Type** |
-| -------- | --------------------------------- | -------- |
-| `--name` | The name of the Virtual Cluster.  | string   |
-| `--help` | Help for the `delete` subcommand. | -        |
+| **Short Flag** | **Long Flag**             | **Description**                                                                                                                                                                                                                                                                                                                                                             | **Type** |
+| -------------- | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| -              | `--name`                  | The name of the Virtual Cluster.                                                                                                                                                                                                                                                                                                                                            | string   |
+| `-k`           | `--encryption-passphrase` | Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable `PALETTE_ENCRYPTION_PASSWORD`. Refer to the [Encryption](./../palette-cli.md#encryption) section for more information on encryption. | string   |
+| `-h`           | `--help`                  | Help for the `delete` subcommand.                                                                                                                                                                                                                                                                                                                                           | -        |
 
 ### Download Kubeconfig
 
 Use the `download-kubeconfig` subcommand to download the kubeconfig for virtual cluster. The `download-kubeconfig`
 subcommand requires the name of the Virtual Cluster. Use the `--name` flag to specify the name of the virtual cluster.
 
-| **Flag** | **Description**                                                                                    | **Type** |
-| -------- | -------------------------------------------------------------------------------------------------- | -------- |
-| `--name` | The name of the Virtual Cluster.                                                                   | string   |
-| `--path` | Download path for Kubeconfig file (optional). Default is `$HOME/.kube/<virtual-cluster-name>.conf` | string   |
-| `--help` | Help for the `download-kubeconfig` subcommand.                                                     | -        |
+| **Short Flag** | **Long Flag**             | **Description**                                                                                                                                                                                                                                                                                                                                                             | **Type** |
+| -------------- | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| -              | `--name`                  | The name of the Virtual Cluster.                                                                                                                                                                                                                                                                                                                                            | string   |
+| -              | `--path`                  | Download path for Kubeconfig file (optional). Default is `$HOME/.kube/<virtual-cluster-name>.conf`                                                                                                                                                                                                                                                                          | string   |
+| `-k`           | `--encryption-passphrase` | Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable `PALETTE_ENCRYPTION_PASSWORD`. Refer to the [Encryption](./../palette-cli.md#encryption) section for more information on encryption. | string   |
+| `-h`           | `--help`                  | Help for the `download-kubeconfig` subcommand.                                                                                                                                                                                                                                                                                                                              | -        |
 
 Example
 
@@ -353,13 +381,14 @@ Kubeconfig location: /Users/demo/projects/spectro-cloud/kubeconfig/cli-cluster.c
 Use the `events` subcommand to view event logs for a virtual cluster. The `events` subcommand requires the name of the
 Virtual Cluster. Use the `--name` flag to specify the name of the virtual cluster.
 
-| **Flag**     | **Description**                                                                | **Type** |
-| ------------ | ------------------------------------------------------------------------------ | -------- |
-| `--name`     | The name of the Virtual Cluster.                                               | string   |
-| `--limit`    | Event limit (optional). Maximum number of events to return. (default 5)        | int      |
-| `--max-age`  | Maximum event age in minutes (optional) (default -1)                           | int      |
-| `--severity` | Event severity (optional). One or more of: [ Normal, Error ], comma-separated. | string   |
-| `--help`     | Help for the `events` subcommand.                                              | -        |
+| **Short Flag** | **Long Flag**             | **Description**                                                                                                                                                                                                                                                                                                                                                             | **Type** |
+| -------------- | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| -              | `--name`                  | The name of the Virtual Cluster.                                                                                                                                                                                                                                                                                                                                            | string   |
+| `-k`           | `--encryption-passphrase` | Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable `PALETTE_ENCRYPTION_PASSWORD`. Refer to the [Encryption](./../palette-cli.md#encryption) section for more information on encryption. | string   |
+| -              | `--limit`                 | Event limit (optional). Maximum number of events to return. (default 5)                                                                                                                                                                                                                                                                                                     | int      |
+| -              | `--max-age`               | Maximum event age in minutes (optional) (default -1)                                                                                                                                                                                                                                                                                                                        | int      |
+| -              | `--severity`              | Event severity (optional). One or more of: [ Normal, Error ], comma-separated.                                                                                                                                                                                                                                                                                              | string   |
+| `-h`           | `--help`                  | Help for the `events` subcommand.                                                                                                                                                                                                                                                                                                                                           | -        |
 
 ### Lifecycle
 
@@ -367,11 +396,12 @@ Use the `lifecycle` subcommand to pause or resume a virtual cluster. The `lifecy
 virtual cluster and the action type. Use the `--name` flag to specify the name of the virtual cluster, and the
 `--action` flag to specify the action type. The action type can be `pause` or `resume`.
 
-| **Flag**   | **Description**                                           | **Type** |
-| ---------- | --------------------------------------------------------- | -------- |
-| `--name`   | The name of the Virtual Cluster.                          | string   |
-| `--action` | The action type. Allowed values are `pause` and `resume`. | string   |
-| `--help`   | Help for the `lifecycle` subcommand.                      | -        |
+| **Short Flag** | **Long Flag**             | **Description**                                                                                                                                                                                                                                                                                                                                                             | **Type** |
+| -------------- | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| -              | `--name`                  | The name of the Virtual Cluster.                                                                                                                                                                                                                                                                                                                                            | string   |
+| `-k`           | `--encryption-passphrase` | Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable `PALETTE_ENCRYPTION_PASSWORD`. Refer to the [Encryption](./../palette-cli.md#encryption) section for more information on encryption. | string   |
+| -              | `--action`                | The action type. Allowed values are `pause` and `resume`.                                                                                                                                                                                                                                                                                                                   | string   |
+| `-h`           | `--help`                  | Help for the `lifecycle` subcommand.                                                                                                                                                                                                                                                                                                                                        | -        |
 
 Example
 
@@ -387,7 +417,12 @@ palette pde virtual-cluster lifecycle --name cli-cluster --action resume
 
 ### List
 
-Use the `list` subcommand to list all available virtual clusters. No additional flags are required.
+Use the `list` subcommand to list all available virtual clusters. The `list` subcommand supports the following flags.
+
+| **Short Flag** | **Long Flag**             | **Description**                                                                                                                                                                                                                                                                                                                                                             | **Type** |
+| -------------- | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| `-k`           | `--encryption-passphrase` | Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable `PALETTE_ENCRYPTION_PASSWORD`. Refer to the [Encryption](./../palette-cli.md#encryption) section for more information on encryption. | string   |
+| `-h`           | `--help`                  | Help for the `list` subcommand.                                                                                                                                                                                                                                                                                                                                             |
 
 ### Resize
 
@@ -395,13 +430,14 @@ Use the `resize` subcommand to resize a virtual cluster. The `resize` subcommand
 cluster and the new size. Use the `--name` flag to specify the name of the virtual cluster, and the `--size` flag to
 specify the new size.
 
-| **Flag**    | **Description**                                       | **Type** |
-| ----------- | ----------------------------------------------------- | -------- |
-| `--name`    | The name of the virtual cluster.                      | string   |
-| `--cpu`     | CPUs (optional). Defaults to 4 cores. (default 4)     | int      |
-| `--memory`  | Memory (GB) (optional). Defaults to 4GB. (default 4)  | int      |
-| `--storage` | Storage (GB) (optional). Defaults to 4GB. (default 4) | int      |
-| `--help`    | Help for the `resize` subcommand.                     | -        |
+| **Short Flag** | **Long Flag**             | **Description**                                                                                                                                                                                                                                                                                                                                                             | **Type** |
+| -------------- | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| -              | `--name`                  | The name of the virtual cluster.                                                                                                                                                                                                                                                                                                                                            | string   |
+| `-k`           | `--encryption-passphrase` | Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable `PALETTE_ENCRYPTION_PASSWORD`. Refer to the [Encryption](./../palette-cli.md#encryption) section for more information on encryption. | string   |
+| -              | `--cpu`                   | CPUs (optional). Defaults to 4 cores. (default 4)                                                                                                                                                                                                                                                                                                                           | int      |
+| -              | `--memory`                | Memory (GB) (optional). Defaults to 4GB. (default 4)                                                                                                                                                                                                                                                                                                                        | int      |
+| -              | `--storage`               | Storage (GB) (optional). Defaults to 4GB. (default 4)                                                                                                                                                                                                                                                                                                                       | int      |
+| `-h`           | `--help`                  | Help for the `resize` subcommand.                                                                                                                                                                                                                                                                                                                                           | -        |
 
 Example
 

@@ -19,8 +19,6 @@ can use the `ec` command to install a
 
 The `ec` command exposes the following subcommand.
 
-<br />
-
 - `install` - Install a Palette Enterprise Cluster through an interactive wizard. A container runtime is required to
   install an EC cluster.
 
@@ -29,23 +27,27 @@ The `ec` command exposes the following subcommand.
 - Docker is required to install a PCG cluster. Refer to the [Docker](https://docs.docker.com/get-docker/) documentation
   to learn how to install Docker on your system.
 
+- You must provide an encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters
+  long and contain a capital letter, a lowercase letter, a digit, and a special character. You can provide the
+  passphrase through the `PALETTE_ENCRYPTION_PASSWORD` environment variable or the `-k` or `--encryption-passphrase`
+  flag. Refer to the [Encryption](./../palette-cli.md#encryption) section for more information on encryption.
+
 ## Install
 
 The `install` subcommand installs a Palette Enterprise Cluster in your target environment. You can install Palette or
 Palette VerteX using the `install` subcommand. The `install` subcommand can be used in interactive mode, which prompts
 you for required values. Alternatively, you can use flags to generate a configuration file.
 
-<br />
-
-| Short Flag | Long Flag              | Description                                                                                                                                                                                                                  | Type    |
-| ---------- | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
-| `-f`       | `--config-file`        | Install using a configuration file (optional). Use `-config-only` to generate a configuration file.                                                                                                                          | string  |
-| `-d`       | `--skip-teardown`      | Skip tear down of the kind cluster in case of errors.                                                                                                                                                                        | boolean |
-| `-o`       | `--config-only`        | Generate configuration file only. This command will not proceed with installation.                                                                                                                                           | boolean |
-| `-v`       | `--custom-values-file` | Enterprise Cluster custom values.yaml configuration file (optional). Use this to customize the cluster profile of the Enterprise Cluster. Refer to the [custom value file](#custom-value-file) section for more information. | string  |
-| `-p`       | `--update-passwords`   | Update passwords only. Do not proceed with installation. The `--config-file` flag must also be provided.                                                                                                                     | string  |
-| `-t`       | `--update-tokens`      | Update authentication tokens only. Do not proceed with installation. The `--config-file` flag must be provided.                                                                                                              | boolean |
-| -          | `--validate`           | Scan the environment and conduct validation before the enterprise cluster is installed.                                                                                                                                      | boolean |
+| Short Flag | Long Flag                 | Description                                                                                                                                                                                                                                                                                                                                                                 | Type    |
+| ---------- | ------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| `-f`       | `--config-file`           | Install using a configuration file (optional). Use `-config-only` to generate a configuration file.                                                                                                                                                                                                                                                                         | string  |
+| `-d`       | `--skip-teardown`         | Skip teardown of the kind cluster in case of errors.                                                                                                                                                                                                                                                                                                                        | boolean |
+| `-k`       | `--encryption-passphrase` | Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable `PALETTE_ENCRYPTION_PASSWORD`. Refer to the [Encryption](./../palette-cli.md#encryption) section for more information on encryption. | string  |
+| `-o`       | `--config-only`           | Generate configuration file only. This command will not proceed with installation.                                                                                                                                                                                                                                                                                          | boolean |
+| `-v`       | `--custom-values-file`    | Enterprise cluster custom values.yaml configuration file (optional). Use this to customize the cluster profile of the enterprise cluster. Refer to the [custom value file](#custom-value-file) section for more information.                                                                                                                                                | string  |
+| `-p`       | `--update-passwords`      | Update passwords only. Do not proceed with installation. The `--config-file` flag must also be provided.                                                                                                                                                                                                                                                                    | string  |
+| `-t`       | `--update-tokens`         | Update authentication tokens only. Do not proceed with installation. The `--config-file` flag must be provided.                                                                                                                                                                                                                                                             | boolean |
+| -          | `--validate`              | Scan the environment and conduct validation before the enterprise cluster is installed.                                                                                                                                                                                                                                                                                     | boolean |
 
 ### Examples
 
@@ -171,15 +173,6 @@ for the following prerequisites:
 - At least five IP addresses are available in the provided IP range.
 - Ensure vSphere tags for Kubernetes regions and zones are available.
 - The provided vSphere Datacenter is accessible and has the required compute resources available.
-
-:::info
-
-The `--validate` is only available in environments that have internet access to download the Helm charts required by the
-Validator. If you are in an environment without internet access, the validation will not be able to execute and will
-return an error. The `--validate` flag will honor proxy settings if they are set in the environment through the
-following environment variables: `HTTP_PROXY`, `HTTPS_PROXY`, `NO_PROXY`.
-
-:::
 
 When you use the `--validate` flag, the standard installation wizard will proceed unless the `--config-file` flag is
 provided. Once all user inputs are provided, the validation will begin. A kind cluster will be created that contains the
