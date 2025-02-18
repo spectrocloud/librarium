@@ -39,11 +39,12 @@ Use the following steps to create a new host cluster so that you can add Edge ho
   is because whenever a node is drained during an upgrade or for any other reason, the volumes will not dynamically move
   with the local path provisioner.
 
+- Two-node clusters only support K3s and no other Kubernetes distributions.
+
 ### Prerequisites
 
 - One or more registered Edge host. For more information about Edge host registration, refer to
   [Edge Host Registration](./site-installation/edge-host-registration.md).
-
 - If you are using more than one Edge host to form a cluster, the hosts in the same cluster must be on the same network.
 - One IP address is required for the cluster's Virtual IP (VIP) address .
 - At least one IP address is required for each Edge host.
@@ -62,6 +63,13 @@ Use the following steps to create a new host cluster so that you can add Edge ho
     or use network overlay. DHCP is not supported.
 
     :::
+
+- If you are provisioning a two-node cluster, ensure that you set the `TWO_NODE` argument to `true` when building the
+  provider image you use to deploy the cluster. For more information, refer to
+  [Build Provider Images](../edgeforge-workflow/palette-canvos/build-provider-images.md).
+
+- Network Time Protocol (NTP) servers are correctly configured in a multi-node cluster. All nodes must have their time
+  synchronized.
 
 ### Create Cluster
 
@@ -85,14 +93,18 @@ Use the following steps to create a new host cluster so that you can add Edge ho
    a CIDR range that cannot routed through a proxy. In addition, ensure that this VIP does not overlap with any IP
    address already used by other hosts in your network, including your Edge hosts.
 
-   You can also select any SSH keys in case you need to remote into the host cluster. You can also provide a list of
-   Network Time Protocol (NTP) servers. Click on **Next**.
+   You can also select any SSH keys in case you need to remote into the host cluster. You can also provide a list of NTP
+   servers. Click on **Next**.
 
 9. The node configuration page is where you can specify what Edge hosts make up the host cluster. Assign Edge hosts to
    the **control-plane-pool** and the **worker-pool**. When you have completed configuring the node pools, click on
    **Next**.
 
-10. (Optional) When you assign Edge hosts to node pools, you can optionally specify a static IP address for each Edge
+10. (Optional) If you want to provision a two-node high availability cluster, check the **Enable Two-Node Capability**
+    box to enable the two-node high availability architecture. This means you must have exactly two nodes in the control
+    plane pool.
+
+11. (Optional) When you assign Edge hosts to node pools, you can optionally specify a static IP address for each Edge
     host. If you want to specify a static IP, toggle on **Static IP** and provide the following information:
 
     | **Field**       | **Description**                                                                                                                     |
@@ -104,7 +116,7 @@ Use the following steps to create a new host cluster so that you can add Edge ho
 
     If certain network information is already available, the corresponding fields will be pre-populated.
 
-11. (Optional) When you assign an Edge host to a node pool, if your Edge host has more than one NIC, you can optionally
+12. (Optional) When you assign an Edge host to a node pool, if your Edge host has more than one NIC, you can optionally
     specify which Network Interface Controller (NIC) the Edge host will use to communicate with the cluster. When you
     select an Edge host, Palette displays a dropdown of all NICs present on the Edge host.
 
