@@ -24,19 +24,6 @@ add-on pack that can be added to your cluster profile and works alongside the
 
 <!-- prettier-ignore-end -->
 
-## Access Pack
-
-To get access to the Virtual Machine Migration Assistant Pack, contact our support team by sending an email to
-support@spectrocloud.com. Include the following information in your email:
-
-- Your full name
-- Organization name (if applicable)
-- Email address
-- Phone number (optional)
-
-Our dedicated Support team will promptly get in touch with you to provide the necessary credentials and assistance
-required to get access.
-
 ## Resources
 
 - [Create a VM Migration Assistant Cluster Profile](./create-vm-migration-assistant-profile.md)
