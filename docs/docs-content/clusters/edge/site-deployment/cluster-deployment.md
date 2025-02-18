@@ -39,6 +39,8 @@ Use the following steps to create a new host cluster so that you can add Edge ho
   is because whenever a node is drained during an upgrade or for any other reason, the volumes will not dynamically move
   with the local path provisioner.
 
+- Two-node clusters only support K3s and no other Kubernetes distributions.
+
 ### Prerequisites
 
 - One or more registered Edge host. For more information about Edge host registration, refer to
