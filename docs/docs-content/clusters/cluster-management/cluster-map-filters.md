@@ -37,7 +37,7 @@ can also search your clusters by name.
    | --------------- | ----------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
    | **Name**        | Filter and display the cluster matching the specified name.       | Custom string                                                                            |
    | **Environment** | Filter and display clusters based on the cluster type.            | Configured cluster types                                                                 |
-   | **Status**      | Filter and display clusters based on their current status.        | **Pending**, **Provisioning**, **Running**, **Deleting**, **Importing**, and **Unknown** |
+   | **Status**      | Filter and display clusters based on their current status.        | **Pending**, **Provisioning**, **Running**, **Deleting**, **Deleted**, **Importing**, and **Unknown** |
    | **Tags**        | Filter and display clusters based on the configured cluster tags. | Configured cluster tags                                                                  |
 
    ![Cluster list view](/clusters_cluster-management_cluster-map-filters_cluster-list-view.webp)
@@ -68,11 +68,10 @@ can also search your clusters by name.
 
    | **Filter**          | **Description**                                                                                                                                                                                         | **Values**                                                                               |
    | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-   | **Deleted**         | Filter and display clusters with the **Deleted** status.                                                                                                                                                |                                                                                          |
    | **Updates Pending** | Filter and display clusters that have pending updates. Refer to the [Update a Cluster Profile](../../profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile.md) for further guidance. |                                                                                          |
    | **Imported**        | Filter and display clusters that have been imported to Palette. Refer to the [Imported Clusters](../imported-clusters/imported-clusters.md) section for further guidance.                               |                                                                                          |
    | **Environment**     | Filter and display deployed clusters based on the cluster type.                                                                                                                                         | Configured cluster types                                                                 |
-   | **Status**          | Filter and display clusters based on their current status.                                                                                                                                              | **Pending**, **Provisioning**, **Running**, **Deleting**, **Importing**, and **Unknown** |
+   | **Status**          | Filter and display clusters based on their current status.                                                                                                                                              | **Pending**, **Provisioning**, **Running**, **Deleting**, **Deleted**, **Importing**, and **Unknown** |
    | **Profiles**        | Filter and display clusters based on the name of the configured cluster profile.                                                                                                                        | Custom string                                                                            |
    | **Tags**            | Filter and display clusters with the specified tag. Tags can be specified during cluster deployment or from the **Cluster Settings** tab.                                                               | Custom string                                                                            |
    | **Health Status**   | Filter and display clusters based on their current health status.                                                                                                                                       | **Healthy** and **UnHealthy**                                                            |
@@ -130,7 +129,7 @@ and search through your deployed clusters. You can also search your clusters by 
    | --------------- | ----------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
    | **Name**        | Filter and display the cluster matching the specified name.       | Custom string                                                                            |
    | **Environment** | Filter and display clusters based on the cluster type.            | Configured cluster types                                                                 |
-   | **Status**      | Filter and display clusters based on their current status.        | **Pending**, **Provisioning**, **Running**, **Deleting**, **Importing**, and **Unknown** |
+   | **Status**      | Filter and display clusters based on their current status.        | **Pending**, **Provisioning**, **Running**, **Deleting**, **Deleted**, **Importing**, and **Unknown** |
    | **Tags**        | Filter and display clusters based on the configured cluster tags. | Configured cluster tags                                                                  |
 
    ![Cluster map view](/clusters_cluster-management_cluster-map-filters_cluster-map-view.webp)
