@@ -33,18 +33,30 @@ existing Kubernetes cluster. Refer to the table below to learn more about the su
 
 ## Kubernetes Requirements
 
-The following table presents the Kubernetes version corresponding to each Palette version. It provides the download URLs
-for the Operating System and Kubernetes distribution OVA required for the PCG install. Ensure that you use FIPS OVA URL
-if you require a <VersionedLink text="FIPS" url="/vertex/fips/" /> compliant installation.
+The following table presents the Kubernetes version corresponding to each Palette version. This applies when you deploy
+a PCG to an existing Kubernetes cluster. Refer to the
+[Deploy a PCG to an Existing Kubernetes Cluster](./deploy-pcg-k8s.md) guide for more information.
 
-:::warning
-
-The versions included in the following table apply for PCG installs on VMware vSphere and MAAS. The Kubernetes version
-for OpenStack is 1.24.10 on all the Palette versions included below.
-
-:::
-
-<PartialsComponent category="self-hosted" name="kubernetes-palette-versions" />
+| **Palette Version** | **Kubernetes Version** |
+| ------------------- | ---------------------- |
+| 4.5.21              | 1.29.12                |
+| 4.5.20              | 1.29.12                |
+| 4.5.15              | 1.29.9                 |
+| 4.5.11              | 1.29.9                 |
+| 4.5.10              | 1.29.9                 |
+| 4.5.8               | 1.29.9                 |
+| 4.5.5               | 1.29.9                 |
+| 4.5.4               | 1.29.9                 |
+| 4.5.3               | 1.29.9                 |
+| 4.4.20              | 1.28.13                |
+| 4.4.18              | 1.28.13                |
+| 4.4.14              | 1.28.12                |
+| 4.4.11              | 1.28.11                |
+| 4.4.6               | 1.28.9                 |
+| 4.3.6               | 1.27.11                |
+| 4.2.13              | 1.26.10                |
+| 4.2.7               | 1.26.10                |
+| 4.1.12              | 1.26.8                 |
 
 ## Resources
 
