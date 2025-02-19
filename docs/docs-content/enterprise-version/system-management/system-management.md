@@ -62,6 +62,8 @@ Platform administrators can use the system console to perform the following oper
 
 - Manage the Enterprise cluster and the profile layers and pack integrations that makeup the Enterprise cluster.
 
+- [Customize the login screen and dashboard interface](./customize-interface.md).
+
 Check out the following resources to learn more about these operations.
 
 ## Resources
