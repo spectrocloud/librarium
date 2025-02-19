@@ -11,6 +11,14 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## February 19, 2025 - Release 4.6.7
+
+### Bug Fixes
+
+- Fixed an issue that caused incorrect validation errors when users select the **AWS US Gov** partition. Refer to the
+  [AWS GovCloud Account (US)](../clusters/public-cloud/aws/add-aws-accounts.md#aws-govcloud-account-us) section for
+  further details.
+
 ## February 16, 2025 - Release 4.6.0 - 4.6.6
 
 ### Security Notices
