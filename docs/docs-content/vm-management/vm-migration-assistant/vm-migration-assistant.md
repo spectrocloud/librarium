@@ -18,7 +18,7 @@ automated with open source tools such as [Forklift](https://github.com/kubev2v/f
 <!-- prettier-ignore-start -->
 
 Palette provides the ability to migrate VMs from VMware vSphere to Virtual Machine Orchestrator (VMO) using the Virtual Machine Migration Assistant (VM Migration Assistant).
-The <VersionedLink text="VM Migration Assistant" url="/integrations/packs/?pack=vm-migration-assistant-pack"/> is an
+The <VersionedLink text="VM Migration Assistant" url="/integrations/packs/?pack=vm-migration-assistant"/> is an
 add-on pack that can be added to your cluster profile and works alongside the
 <VersionedLink text="VMO" url="/integrations/packs/?pack=virtual-machine-orchestrator" /> pack.
 
