@@ -77,6 +77,7 @@ This document guides you through the process of producing Edge Installer ISOs th
    OS_DISTRIBUTION=ubuntu
    OS_VERSION=23.10
    IS_UKI=true
+   OSBUILDER_VERSION=0.300.4
    AUTO_ENROLL_SECUREBOOT_KEYS=true
    ```
 
