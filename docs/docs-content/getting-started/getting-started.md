@@ -27,8 +27,8 @@ a quick overview of Palette's key functionalities.
 ## Deploy Kubernetes Clusters with Palette
 
 The first step towards adopting Palette in your organization is to
-[create a login](https://www.spectrocloud.com/get-started). The
-[Palette Free Tier](https://www.spectrocloud.com/free-tier) allows you to experience the benefits of Palette first-hand.
+[book a demo](https://www.spectrocloud.com/get-started) with one of our experts. This will allow you to experience the
+benefits of Palette first-hand.
 
 We have curated the pages in the Getting Started section to give you a gradual introduction to the fundamental concepts
 and workflows you need to deploy and manage Kubernetes clusters through Palette.
@@ -49,43 +49,45 @@ orchestration.
 
 Explore more through the following pages.
 
+<!-- vale off -->
+
 <SimpleCardGrid
   cards={[
     {
       title: "Introduction to Palette",
       description: "Learn about what makes Palette different.",
       buttonText: "Learn more",
-      relativeURL: "./introduction",
+      url: "/getting-started/introduction",
     },
     {
       title: "Deploy a Cluster to Amazon Web Services (AWS)",
       description: "Deploy and update a Palette host cluster to AWS.",
       buttonText: "Learn more",
-      relativeURL: "./aws",
+      url: "/getting-started/aws",
     },
     {
       title: "Deploy a Cluster to Microsoft Azure",
       description: "Deploy and update a Palette host cluster to Azure.",
       buttonText: "Learn more",
-      relativeURL: "./azure",
+      url: "/getting-started/azure",
     },
     {
       title: "Deploy a Cluster to Google Cloud Platform (GCP)",
       description: "Deploy and update a Palette host cluster to Google Cloud.",
       buttonText: "Learn more",
-      relativeURL: "./gcp",
+      url: "/getting-started/gcp",
     },
     {
       title: "Deploy a Cluster to VMware",
       description: "Deploy and update a Palette host cluster to VMware vSphere.",
       buttonText: "Learn more",
-      relativeURL: "./vmware",
+      url: "/getting-started/vmware",
     },
     {
       title: "Additional Capabilities",
       description: "Learn about Palette's additional capabilities.",
       buttonText: "Learn more",
-      relativeURL: "./additional-capabilities",
+      url: "/getting-started/additional-capabilities",
     },
   ]}
 />

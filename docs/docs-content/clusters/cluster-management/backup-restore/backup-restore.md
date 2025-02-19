@@ -42,8 +42,9 @@ To get started with creating a backup, check out the
 
 :::info
 
-If you are using a workspace, refer to the [Manage Palette Workspace](../../../workspace/workload-features.md) guide to
-learn more about backup and restore actions for a workspace.
+If you are using a workspace, refer to the
+[Manage Palette Workspace](../../../workspace/workspace-mgmt/workspace-mgmt.md) guide to learn more about workspace
+backup and restore actions.
 
 :::
 
@@ -64,7 +65,7 @@ object storage solutions as backup locations.
 
 :::info
 
-Palette uses open-source Velero to provide backup and restore capabilities. You can learn more about Velero by checking
+Palette uses open source Velero to provide backup and restore capabilities. You can learn more about Velero by checking
 out the Velero [Restore Reference](https://velero.io/docs/main/restore-reference/) and
 [Backup Reference](https://velero.io/docs/main/backup-reference/).
 

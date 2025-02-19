@@ -16,7 +16,7 @@ and assets.
 
 ## Prerequisites
 
-- You have completed the [Environment Setup](./vmware-vsphere-airgap-instructions.md) steps and deployed the airgap
+- You have completed the [Environment Setup](./environment-setup/environment-setup.md) steps and deployed the airgap
   support VM.
 
 - Review the required VMware vSphere [permissions](../vmware-system-requirements.md). Ensure you have created the proper
@@ -56,6 +56,12 @@ and assets.
 - Assigned IP addresses for application workload services, such as Load Balancer services.
 
 - Shared Storage between VMware vSphere hosts.
+
+- A [StorageClass](https://kubernetes.io/docs/concepts/storage/storage-classes/) to manage persistent storage, with the
+  annotation `storageclass.kubernetes.io/is-default-class` set to `true`. To override the default StorageClass for a
+  workload, modify the `storageClass` parameter. Check out the
+  [Change the default StorageClass](https://kubernetes.io/docs/tasks/administer-cluster/change-default-storage-class/)
+  page to learn more about modifying StorageClasses.
 
 :::info
 
@@ -109,8 +115,8 @@ Use the following steps to install Palette.
     :::warning
 
     If you deployed the airgap support VM using a generic OVA, the Palette CLI may not be in the `usr/bin` path. Ensure
-    that you complete step **22** of the [Environment Setup](./vmware-vsphere-airgap-instructions.md) guide, which
-    installs the Palette airgap binary and moves the Palette CLI to the correct path.
+    that you complete step **22** of the [Environment Setup](./environment-setup/vmware-vsphere-airgap-instructions.md)
+    guide, which installs the Palette airgap binary and moves the Palette CLI to the correct path.
 
     :::
 
@@ -182,7 +188,7 @@ Use the following steps to install Palette.
     | **Use Public Registry for Images**               | Type `y` to use a public registry for images. Type `n` to a different registry for images. If you are using another registry for images, you will be prompted to enter the registry URL, base path, username, and password. Airgap users, select `n` so that you can specify the values for the OCI registry that contains all the required images. |
 
         	When prompted to **Pull images from public registry**, type `n` and specify the OCI registry configuration values for
-        	your image registry. If you are an airgap support VM, the CLI will automatically detect the airgap environment and prompt you to **Use local, air-gapped Image Registry?** Type `y` to use the local resources and skip filling in the OCI registry URL and credentials.
+        	your image registry. If you are on an airgap support VM, the CLI will automatically detect the airgap environment and prompt you to **Use local, air-gapped Image Registry?** Type `y` to use the local resources and skip filling in the OCI registry URL and credentials.
         Refer to the table above for more information.
 
     :::info
@@ -210,17 +216,18 @@ Use the following steps to install Palette.
     use the provided VMware credentials to retrieve information from your VMware vSphere environment and present options
     for you to select from.
 
-    | **Parameter**       | **Description**                                                                                                                                                                                                                                                                                                           |
-    | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Datacenter**      | The installer retrieves the Datacenter automatically.                                                                                                                                                                                                                                                                     |
-    | **Folder**          | Select the folder that contains the VM instance.                                                                                                                                                                                                                                                                          |
-    | **Cluster**         | Select the cluster where you want to deploy Palette.                                                                                                                                                                                                                                                                      |
-    | **Network**         | Select the network where you want to deploy Palette.                                                                                                                                                                                                                                                                      |
-    | **Resource Pool**   | Select the resource pool where you want to deploy Palette.                                                                                                                                                                                                                                                                |
-    | **Datastore**       | Select the datastore where you want to deploy Palette.                                                                                                                                                                                                                                                                    |
-    | **Fault Domains**   | Configure one or more fault domains by selecting values for these properties: Cluster, Network (with network connectivity), Resource Pool, and Storage Type (Datastore or VM Storage Policy). Note that when configuring the Network, if you are using a distributed switch, choose the network that contains the switch. |
-    | **NTP Servers**     | You can provide a list of Network Time Protocol (NTP) servers.                                                                                                                                                                                                                                                            |
-    | **SSH Public Keys** | Provide any public SSH keys to access your Palette VMs. This option opens up your system's default text editor. Vi is the default text editor for most Linux distributions. To review basic vi commands, check out the [vi Commands](https://www.cs.colostate.edu/helpdocs/vi.html) reference.                            |
+    | **Parameter**             | **Description**                                                                                                                                                                                                                                                                                                           |
+    | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Datacenter**            | The installer retrieves the Datacenter automatically.                                                                                                                                                                                                                                                                     |
+    | **Folder**                | Select the folder that contains the VM instance.                                                                                                                                                                                                                                                                          |
+    | **Image Template Folder** | Select the folder that contains the CAPI image templates.                                                                                                                                                                                                                                                                 |
+    | **Cluster**               | Select the cluster where you want to deploy Palette.                                                                                                                                                                                                                                                                      |
+    | **Network**               | Select the network where you want to deploy Palette.                                                                                                                                                                                                                                                                      |
+    | **Resource Pool**         | Select the resource pool where you want to deploy Palette.                                                                                                                                                                                                                                                                |
+    | **Datastore**             | Select the datastore where you want to deploy Palette.                                                                                                                                                                                                                                                                    |
+    | **Fault Domains**         | Configure one or more fault domains by selecting values for these properties: Cluster, Network (with network connectivity), Resource Pool, and Storage Type (Datastore or VM Storage Policy). Note that when configuring the Network, if you are using a distributed switch, choose the network that contains the switch. |
+    | **NTP Servers**           | You can provide a list of Network Time Protocol (NTP) servers.                                                                                                                                                                                                                                                            |
+    | **SSH Public Keys**       | Provide any public SSH keys to access your Palette VMs. This option opens up your system's default text editor. Vi is the default text editor for most Linux distributions. To review basic vi commands, check out the [vi Commands](https://www.cs.colostate.edu/helpdocs/vi.html) reference.                            |
 
 12. Specify the IP pool configuration. The placement type can be Static or Dynamic Host Configuration Protocol (DHCP).
     Choosing static placement creates an IP pool from which VMs are assigned IP addresses. Choosing DHCP assigns IP
@@ -268,19 +275,19 @@ Use the following steps to install Palette.
 
     :::tip
 
-    If an error occurs during installation, remove the `kind` cluster that was created and restart the installation. To
-    remove the `kind` cluster, issue the following command. Replace `spectro-mgmt-cluster` with the name of your cluster
-    if you used a different name.
+    If an error occurs during the installation, remove the `kind` cluster that was created and restart the process. To
+    remove the `kind` cluster, install [kind](https://kind.sigs.k8s.io/docs/user/quick-start/#installation) and issue
+    the following command. Replace `spectro-mgmt-cluster` with the name of your cluster if you used a different name.
 
     ```bash
-    kind delete cluster spectro-mgmt-cluster
+    kind delete clusters spectro-mgmt-cluster
     ```
 
     Restart the install process by referencing the `ec.yaml` file that was created during the first installation
     attempt. For example:
 
     ```bash
-    palette ec install --config /home/spectro/.palette/ec/ec-20230706150945/ec.yaml
+    palette ec install --config-file /home/spectro/.palette/ec/ec-20230706150945/ec.yaml
     ```
 
     :::

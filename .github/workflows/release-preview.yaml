@@ -1,9 +1,16 @@
+# This workflow is triggered on push to any branch that starts with "release-". The primary purpose of this workflow is to create a preview of the upcoming release content and simulate the look and feel of the production site. 
+# The domain used for the preview is docs-latest.spectrocloud.com. The workflow builds the site and uploads the content to an S3 bucket. The S3 bucket is configured to serve the content as a static website.
+# No update will occur in the event the build is unable to complete successfully. This is due to a scenario where an immediate failover from docs.specrocloud.com to docs-latest.spectrocloud.com is needed.
+# The workflow also posts a comment to the PR with the Netlify preview URL.
+
+
 name: Release Branch Preview
 
 on:
   push:
     branches:
-      - "release-*"
+      - "release-[0-9]-[0-9]"
+      - "release-[0-9]-[0-9]-[a-z]"
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -17,6 +24,11 @@ env:
   ALGOLIA_SEARCH_KEY: ${{ secrets.ALGOLIA_SEARCH_KEY }}
   ALGOLIA_INDEX_NAME: ${{ secrets.ALGOLIA_INDEX_NAME }}
   PALETTE_API_KEY: ${{ secrets.PALETTE_API_KEY }}
+  DISABLE_PACKS_INTEGRATIONS: ${{ secrets.DISABLE_PACKS_INTEGRATIONS }}
+  DISABLE_SECURITY_INTEGRATIONS: ${{ secrets.DISABLE_SECURITY_INTEGRATIONS }}
+  SHOW_LAST_UPDATE_TIME: ${{ secrets.SHOW_LAST_UPDATE_TIME }}
+  DSO_AUTH_TOKEN: ${{ secrets.DSO_AUTH_TOKEN }}
+  UNRELEASED_VERSION_BANNER: true
 
 
 concurrency:
@@ -40,14 +52,43 @@ jobs:
 
       - run: npm ci
 
+
+      - name: Make Robots.txt
+        run: |
+          touch static/robots.txt
+          echo "User-agent: *" >> static/robots.txt
+          echo "Disallow: /" >> static/robots.txt
+          echo "Sitemap: https://docs-latest.spectrocloud.com/sitemap.xml" >> static/robots.txt
+
+      - name: Ensure noIndex is set
+        id: check_noindex
+        run: node scripts/noindex_docusaurus_config.js $PWD
+      
       - name: Build
         run: |
+          set +e  # Disable automatic stop on command failure
           touch .env
-          make build
+          make build-ci
+          exit_code=$?
+          echo "Build command exit code: $exit_code"
+          echo "BUILD_EXIT_CODE=$exit_code">> $GITHUB_ENV
+      
+      - name: Build with cached packs
+        if: ${{ env.BUILD_EXIT_CODE == '5' }}
+        uses: ./.github/actions/build-cached-packs
+        with:
+          gh-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build with cached CVEs
+        if: ${{ env.BUILD_EXIT_CODE == '7' }}
+        uses: ./.github/actions/build-cached-cves
+        with:
+          gh-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Deploy Preview
+        if: ${{ env.BUILD_EXIT_CODE == '0' }}
         run: |
-          aws s3 sync --cache-control 'public, max-age=604800' --exclude '*.html' --exclude '*.xml' --exclude build/scripts/ build/ s3://docs-latest.spectrocloud.com --delete
+          aws s3 sync --cache-control 'public, max-age=604800' --exclude '*.html' --exclude build/scripts/ build/ s3://docs-latest.spectrocloud.com --delete
           aws s3 sync --cache-control 'public, max-age=0, s-maxage=604800' build/ s3://docs-latest.spectrocloud.com --delete
           aws cloudfront create-invalidation --distribution-id ${{ secrets.LATEST_DOCS_DISTRIBUTION_ID }} --paths "/*"
 
@@ -60,4 +101,4 @@ jobs:
           message-failure: |
               👎 Uh oh! The Netlify Preview failed to deploy for commit ${{ github.sha }}. Please check the Netlify logs for more information.
           refresh-message-position: true
-          update-only: true
+          update-only: false

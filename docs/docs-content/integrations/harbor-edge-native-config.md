@@ -31,6 +31,39 @@ cluster experiences an internet outage, it can still reboot containers or add ne
 Harbor. For more information, refer to
 [Deploy a Cluster with a Local Harbor Registry](../clusters/edge/site-deployment/deploy-custom-registries/local-registry.md).
 
+## Set Namespace Resource Quotas
+
+Resource requirements for Harbor components depend heavily on several factors, including the number of repositories,
+image sizes, concurrent requests, and other workload-specific characteristics. Since distributing resources across
+components can lead to suboptimal allocations and potential performance issues, we suggest applying resource quotas at
+the namespace level.
+
+To apply resource quotas for the Harbor namespace, define the quotas in a manifest and add the manifest as a pack to an
+existing [cluster profile](../profiles/cluster-profiles/cluster-profiles.md) or as a separate add-on profile. For
+additional guidance, refer to the
+[Add a Manifest](../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-manifest-addon.md)
+page.
+
+The following manifest uses the
+[recommended Harbor configurations](https://goharbor.io/docs/1.10/install-config/installation-prereqs/) but can be
+adjusted to fit your environment and workload needs. Note that resource quotas set lower than the recommended values may
+cause resource constraints, leading to cluster deployment delays, whereas quotas may need to be increased for
+environments with large or numerous images.
+
+```shell
+apiVersion: v1
+kind: ResourceQuota
+metadata:
+   name: harbor-quota
+   namespace: harbor
+spec:
+   hard:
+      requests.cpu: "2"
+      requests.memory: "4Gi"
+      limits.cpu: "4"
+      limits.memory: "8Gi"
+```
+
 ## Log in to Harbor Web UI
 
 With Harbor enabled on your Edge cluster, you can log in to Harbor via its web UI. By default, the Harbor service is
@@ -237,29 +270,6 @@ through the command-line.
 5. Deploy the resources into the namespace. Since the namespace has the label `stylus.io/imageswap=disable`, the Palette
    agent will pull the image from registiries you specify instead of from the Harbor registry.
 
-## Troubleshooting
-
-### Scenario - Harbor DB Pod Fails to Start
-
-When you start a cluster with the Harbor pack, the **harbor-database** pod might fail to start and get stuck on the
-**CrashLoopBackoff** state. It's possible that this is due to known issue with the Harbor pack related to file
-permissions. The workaround is to delete the pod and a new pod will be automatically created.
-
-#### Debug Steps
-
-1. Issue the following command to identify the pods with names that start with `harbor-database`.
-
-```shell
-kubectl get pods --namespace harbor --output wide
-```
-
-2. Delete the pod you identified in the previous step. Replace `POD_NAME` with the name of the pods. If there are
-   multiple pods, use the command for each pod.
-
-```shell
-kubectl delete pod POD_NAME --namespace harbor
-```
-
 </TabItem>
 </Tabs>
 
@@ -285,11 +295,6 @@ kubectl get pods --namespace harbor --output wide
 ```shell
 kubectl delete pod POD_NAME --namespace harbor
 ```
-
-### Scenario - Cluster Stuck in the Provisioning State
-
-A cluster may get stuck in the provisioning state if it uses Longhorn as its storage layer. If this happens, remove the
-cluster and try again.
 
 </TabItem>
 </Tabs>

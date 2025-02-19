@@ -8,14 +8,22 @@ const redirects = require("./redirects");
 const ArchivedVersions = require("./archiveVersions.json");
 const { pluginPacksAndIntegrationsData } = require("./plugins/packs-integrations");
 const { pluginImportFontAwesomeIcons } = require("./plugins/font-awesome");
-
 import path from "path";
-import { Logger } from "sass";
+
+// We will only show the update time if the environment variable is set to true.
+function showLastUpdateTime() {
+  const envValue = process.env.SHOW_LAST_UPDATE_TIME || "";
+  const trimmedValue = envValue.trim().toLowerCase();
+  if (trimmedValue === "true") {
+    return true;
+  }
+  return false;
+}
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "Spectro Cloud",
-  tagline: "Spectro Cloud",
+  title: "Palette",
+  tagline: "Palette",
   favicon: "img/favicon.png",
   url: "https://docs.spectrocloud.com",
   baseUrl: "/",
@@ -28,6 +36,7 @@ const config = {
   onBrokenAnchors: "throw",
   onBrokenMarkdownLinks: "throw",
   trailingSlash: true,
+  noIndex: true,
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
   // to replace "en" with "zh-Hans".
@@ -35,16 +44,23 @@ const config = {
     defaultLocale: "en",
     locales: ["en"],
   },
+  future: {
+    experimental_faster: {
+      swcJsLoader: false,
+      // Set to 'false' as Netlify builds fail with this enabled.
+      swcJsMinimizer: true,
+      swcHtmlMinimizer: true,
+      lightningCssMinimizer: true,
+      rspackBundler: true,
+      mdxCrossCompilerCache: true,
+    },
+  },
+  customFields: {
+    // Used to access the environment variable in the build process during the client-side step
+    DISABLE_PACKS_INTEGRATIONS: process.env.DISABLE_PACKS_INTEGRATIONS,
+  },
   staticDirectories: ["static", "static/assets/docs/images", "static/assets", "static/img/"],
   headTags: [
-    {
-      tagName: "script",
-      attributes: {
-        type: "text/plain",
-        "data-usercentrics": "FullStory",
-        src: "/scripts/fullstory.js",
-      },
-    },
     {
       tagName: "link",
       attributes: {
@@ -55,33 +71,16 @@ const config = {
     {
       tagName: "link",
       attributes: {
-        rel: "preload",
-        href: "https://app.usercentrics.eu/browser-ui/latest/loader.js",
-        as: "script",
-      },
-    },
-    {
-      tagName: "script",
-      attributes: {
-        src: "https://app.usercentrics.eu/browser-ui/latest/loader.js",
-        "data-settings-id": "0IhiFXOBwy0Z2U",
-        id: "usercentrics-cmp",
-        async: "true",
+        rel: "preconnect",
+        href: "https://app.usercentrics.eu",
       },
     },
     {
       tagName: "link",
       attributes: {
-        rel: "preconnect",
-        href: "https://www.googletagmanager.com",
-      },
-    },
-    {
-      tagName: "script",
-      attributes: {
-        type: "text/javascript",
-        "data-usercentrics": "Google Tag Manager",
-        src: "/scripts/googleTagManager.js",
+        rel: "preload",
+        href: "app.usercentrics.eu/browser-ui/latest/loader.js",
+        as: "script",
       },
     },
   ],
@@ -94,13 +93,14 @@ const config = {
         docs: {
           path: "docs/docs-content",
           showLastUpdateAuthor: false,
-          showLastUpdateTime: true,
+          showLastUpdateTime: showLastUpdateTime(),
           routeBasePath: "/",
           lastVersion: "current",
           includeCurrentVersion: true,
           versions: {
             current: {
               label: "latest",
+              banner: process.env.UNRELEASED_VERSION_BANNER == "true" ? "unreleased" : "none",
             },
           },
           admonitions: {
@@ -209,7 +209,9 @@ const config = {
     ],
     [
       pluginPacksAndIntegrationsData,
-      { repositories: ["Palette Registry", "Public Repo", "Spectro Addon Repo", "Palette Community Registry"] },
+      {
+        repositories: ["Palette Registry", "Public Repo", "Spectro Addon Repo", "Palette Community Registry"],
+      },
     ],
     pluginImportFontAwesomeIcons,
     function () {
@@ -242,10 +244,37 @@ const config = {
       },
     ],
   ].filter(Boolean),
+  /* IMPORTANT
+  Any script added below must have the "data-usercentrics" attribute with the name of the script as the value. 
+  We also need to notify marketing about the script being added so that they can update the Usercentrics CMP.
+  Marketing needs to know what to label the script as, for example Analytics, Marketing, etc. And, if it's essential or not.
+  Essential scripts are always loaded, non-essential scripts are loaded based on user consent.
+  This is used to identify the script for Usercentrics CMP.
+  Scripts also need to have the type attribute set to "text/plain" to prevent them from being executed by the browser in the event that the user has not given consent to the script.
+  The exception to the text/plain rule is the Usercentrics CMP script which must be loaded as a script tag.
+  To learn more about attributes and values, visit https://docs.usercentrics.com/#/direct-implementation-guide?id=change-script-type-textjavascript-becomes-textplain
+  */
   scripts: [
     {
       src: `https://w.appzi.io/w.js?token=${process.env.APPZI_TOKEN}`,
       defer: true,
+    },
+    {
+      src: "/scripts/fullstory.js",
+      type: "text/plain",
+      "data-usercentrics": "FullStory",
+    },
+    {
+      type: "text/plain",
+      src: "/scripts/googleTagManager.js",
+      "data-usercentrics": "Google Tag Manager",
+    },
+    {
+      src: "https://app.usercentrics.eu/browser-ui/latest/loader.js",
+      id: "usercentrics-cmp",
+      async: "true",
+      "data-settings-id": "0IhiFXOBwy0Z2U",
+      type: "text/javascript",
     },
   ],
   themes: ["docusaurus-theme-openapi-docs"],
@@ -347,7 +376,7 @@ const config = {
         {
           highlight: "bash",
           language: "curl",
-          logoClass: "bash",
+          logoClass: "curl",
         },
         {
           highlight: "python",
@@ -429,7 +458,6 @@ const config = {
     },
 };
 module.exports = config;
-
 export default function (context, options) {
   return {
     name: "@docusaurus/plugin-content-docs",

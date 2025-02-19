@@ -1,0 +1,80 @@
+# This workflow is triggered when a workflow run of the "Release to Production" workflow is completed or when manually triggered.
+# The primary purpose of this workflow is to build the site, copy the packs data and upload it as artifacts.
+# The packs data can be used as a fallback when the Palette API cannot return a packs list.
+# The CVE data is also uploaded as an artifact. That way it can be used in the event the internal Security API is down.
+# Additional post release processing can be added to this workflow as needed.
+
+name: Post Release Processing
+
+
+on:
+  workflow_run:
+    workflows: ["Release to Production"]
+    types: [completed]
+  workflow_dispatch:
+
+env:
+  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  FULLSTORY_ORGID: ${{ secrets.FULLSTORY_ORGID }}
+  ALGOLIA_ADMIN_KEY: ${{ secrets.ALGOLIA_ADMIN_KEY }}
+  ALGOLIA_APP_ID: ${{ secrets.ALGOLIA_APP_ID }}
+  ALGOLIA_SEARCH_KEY: ${{ secrets.ALGOLIA_SEARCH_KEY }}
+  ALGOLIA_INDEX_NAME: ${{ secrets.ALGOLIA_INDEX_NAME }}
+  PALETTE_API_KEY: ${{ secrets.PALETTE_API_KEY }}
+  DISABLE_PACKS_INTEGRATIONS: ${{ secrets.DISABLE_PACKS_INTEGRATIONS }}
+  DISABLE_SECURITY_INTEGRATIONS: ${{ secrets.DISABLE_SECURITY_INTEGRATIONS }}
+  SHOW_LAST_UPDATE_TIME: ${{ secrets.SHOW_LAST_UPDATE_TIME }}
+  DSO_AUTH_TOKEN: ${{ secrets.DSO_AUTH_TOKEN }}
+
+jobs:
+
+  create-assets:
+    name: asset-builds
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js Environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install Dependencies
+        run: npm ci
+      
+      - name: Build
+        run: |
+          touch .env
+          make build-ci
+      
+      - name: Build with cached packs
+        if: ${{ env.BUILD_EXIT_CODE == '5' }}
+        uses: ./.github/actions/build-cached-packs
+        with:
+          gh-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build with cached CVEs
+        if: ${{ env.BUILD_EXIT_CODE == '7' }}
+        uses: ./.github/actions/build-cached-cves
+        with:
+          gh-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload Build Packs
+        uses: actions/upload-artifact@v4
+        with:
+          name: "build-packs"
+          path: |
+            build/packs
+            .docusaurus/packs-integrations
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Upload Built Security Bulletins
+        uses: actions/upload-artifact@v4
+        with:
+          name: "security-bulletins"
+          path: .docusaurus/security-bulletins/default/data.json
+          if-no-files-found: error
+          retention-days: 7

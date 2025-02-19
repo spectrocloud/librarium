@@ -70,7 +70,7 @@ const updateVersionsObject = (versionsObject) => {
     const override = versionsOverride.find((item) => item.version === version) || {};
 
     // Get the "banner" and "label" values from the override object, or use default values if not found
-    const bannerValue = override.banner || "none";
+    const bannerValue = override.banner || process.env.UNRELEASED_VERSION_BANNER == "true" ? "unreleased" : "none";
     const labelValue = override.label || `v${version}`;
 
     // Create a new object property with the version as the key and an object expression as the value

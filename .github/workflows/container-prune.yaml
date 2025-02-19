@@ -1,3 +1,8 @@
+# This workflow prunes container images based on a retention policy.
+# The workflow runs on the completion of the nightly Docker build workflow. 
+# Only images that are older than 1 day are pruned. This helps ensure that only the latest images are retained.
+# This workflow supports on-demand execution using the workflow_dispatch event.
+
 name: Container Image Cleanup
 
 on:
@@ -29,9 +34,9 @@ jobs:
 
     - name: Slack Notification
       if: ${{ failure() }}
-      uses: rtCamp/action-slack-notify@v2
+      uses: rtCamp/action-slack-notify@v2.3.2
       env:
-        SLACK_WEBHOOK: ${{ secrets.SLACK_WEBHOOK }}
+        SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
         SLACK_USERNAME: "spectromate"
         SLACK_ICON_EMOJI: ":robot_panic:"
         SLACK_COLOR: ${{ job.status }}

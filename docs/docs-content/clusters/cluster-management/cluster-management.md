@@ -15,9 +15,9 @@ visibility into the workloads running inside your cluster and cluster costs.
 
 The following sections describe these capabilities in detail:
 
-- [Reconfigure](reconfigure.md) - Scale your clusters up/down by adding/reducing the number of nodes in a node pool and
+- [Node Pools](node-pool.md) - Scale your clusters up/down by adding/reducing the number of nodes in a node pool and
   adding additional worker pools. Resize nodes in a node pool by modifying the node specs (CPU, Memory, or Instance Type
-  for public clouds). Add additional fault domains such as availability zones to a node pool.
+  for public clouds).
 
 - [Updates](cluster-updates.md) - Upgrade core packs (OS, Kubernetes, CSI, CNI) and add-on layers, such as Monitoring
   and Security.
@@ -79,10 +79,13 @@ The following sections describe these capabilities in detail:
   displays the location on the UI Map. For private cloud clusters the user can set the location through the Palette UI.
   The user can monitor the location details of all the clusters running under a specific scope.
 
-- [Palette Access Control](cluster-tag-filter/cluster-tag-filter.md) - Palette provides the ability to manage user and
-  role access privileges through tags. This feature helps you reduce the overhead in managing user and role access to
-  clusters by assigning tags. Tags can be used to group clusters, allowing you to apply access controls to the tag
-  rather than to each cluster, user, or role. This reduces the overhead of managing access controls for individual users
-  and clusters.
+- [Palette Access Control](../../user-management/palette-rbac/implement-abac.md) - Palette provides the ability to
+  manage user and role access privileges through tags. This feature helps you reduce the overhead in managing user and
+  role access to clusters by assigning tags. Tags can be used to group clusters, allowing you to apply access controls
+  to the tag rather than to each cluster, user, or role. This reduces the overhead of managing access controls for
+  individual users and clusters.
 
 - [Image Swap](image-swap.md) - Learn how to use image swap capabilities with Palette.
+
+- [Maintenance Mode](./maintenance-mode.md) - Turn off scheduling (cordon) and drain nodes, migrating workloads to other
+  healthy nodes in the cluster without service disruptions.

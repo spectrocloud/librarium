@@ -20,8 +20,6 @@ To support dynamic credentials with AWS, Palette uses the AWS Security Token Ser
 can use AWS STS when adding an S3 bucket as the backup location. The following sections outline the prerequisites and
 provide detailed steps to add an S3 bucket as the backup location using the STS authentication method.
 
-<br />
-
 :::warning
 
 Palette supports AWS STS only when your Palette’s hosting environment and the backup location service provider are the
@@ -45,6 +43,11 @@ Use the following steps to add an S3 bucket as the backup location using the STS
 cloud account.
 
 ### Prerequisites
+
+- If you are using a self-hosted Palette or Vertex instance, you must configure an AWS account at the instance-level to
+  allow tenants to add AWS accounts using STS. For more information, refer to
+  [Enable Adding AWS Accounts Using STS - Palette](../../../enterprise-version/system-management/configure-aws-sts-account.md)
+  or [Enable Adding AWS Accounts Using STS - VerteX](../../../vertex/system-management/configure-aws-sts-account.md)
 
 - Both your Palette environment instance and the S3 bucket are hosted on AWS. This prerequisite is more applicable to
   self-hosted Palette and Palette VerteX customers. Palette SaaS in hosted in an AWS environment.
@@ -113,8 +116,6 @@ cloud account.
   guide to learn more.
 
   :::
-
-<br />
 
 ### Instructions
 
@@ -194,8 +195,6 @@ AWS STS to authenticate Palette with the S3 bucket in the same AWS account you d
 4. Search for the newly added backup location in the list. The presence of the backup location validates that you
    successfully added a new backup location.
 
-<br />
-
 ## Multiple Cloud Accounts with AWS STS
 
 Suppose your Kubernetes cluster is deployed in _AWS Account A_, and you want to create the backup in _AWS Account B_,
@@ -220,9 +219,12 @@ A multi-cloud account scenario requires you to perform the following authenticat
 Use the following steps to add an S3 bucket as the backup location using the STS authentication method when you have
 multiple cloud accounts.
 
-<br />
-
 ### Prerequisites
+
+- If you are using a self-hosted Palette or Vertex instance, you must configure an AWS account at the instance-level to
+  allow tenants to add AWS accounts using STS. For more information, refer to
+  [Enable Adding AWS Accounts Using STS - Palette](../../../enterprise-version/system-management/configure-aws-sts-account.md)
+  or [Enable Adding AWS Accounts Using STS - VerteX](../../../vertex/system-management/configure-aws-sts-account.md)
 
 - Both your Palette environment instance and the S3 bucket are hosted on AWS. This prerequisite is more applicable to
   self-hosted Palette and Palette VerteX customers. Palette SaaS is hosted in an AWS environment.

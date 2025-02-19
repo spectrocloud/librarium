@@ -69,7 +69,7 @@ To complete this tutorial, you will need the following.
 
   <br />
 
-- An SSH Key Pair. Use the [Create and Upload an SSH Key](../../../clusters/cluster-management/ssh-keys.md) guide to
+- An SSH Key Pair. Use the [Create and Upload an SSH Key](../../../clusters/cluster-management/ssh/ssh-keys.md) guide to
   learn how to create an SSH key and upload it to Palette.
 
   - AWS users must create an AWS Key pair before starting the tutorial. If you need additional guidance, check out the
@@ -348,7 +348,7 @@ pack contains a set of default values. You can change the manifest values if nee
 
 The **Cluster config** section allows you to select the **Subscription**, **Region**, **Resource Group**, **Storage
 account**, and **SSH Key** to apply to the host cluster. All clusters require you to assign an SSH key. Refer to the
-[SSH Keys](../../../clusters/cluster-management/ssh-keys.md) guide for information about uploading an SSH key.
+[SSH Keys](../../../clusters/cluster-management/ssh/ssh-keys.md) guide for information about uploading an SSH key.
 
 <br />
 
@@ -515,7 +515,7 @@ pack contains a set of default values. You can change the manifest values if nee
 
 The **Cluster config** section allows you to select the **Project**, **Region**, and **SSH Key** to apply to the host
 cluster. All clusters require you to assign an SSH key. Refer to the
-[SSH Keys](../../../clusters/cluster-management/ssh-keys.md) guide for information about uploading an SSH key.
+[SSH Keys](../../../clusters/cluster-management/ssh/ssh-keys.md) guide for information about uploading an SSH key.
 
 <br />
 
@@ -634,9 +634,15 @@ In the manifest editor, insert the following content.
 
 ```yaml
 apiVersion: v1
+kind: Namespace
+metadata:
+  name: hello-universe
+---
+apiVersion: v1
 kind: Service
 metadata:
   name: hello-universe-service
+  namespace: hello-universe
 spec:
   type: LoadBalancer
   ports:
@@ -650,6 +656,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: hello-universe-deployment
+  namespace: hello-universe
 spec:
   replicas: 2
   selector:

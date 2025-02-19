@@ -1,5 +1,10 @@
-name: image_optimizer
+# This workflow compresses images in a pull request using the Calibre image optimizer.
+# The workflow is triggered when a pull request is opened or updated and the PR contains images in the formats .jpg, .jpeg, .png, or .webp.
+# Due to the workflow requiring commmit permissions, the workflow auhtenticates using the GitHub application created for the docs and education team.
+# The credentials are stored in the Vault and retrieved using the hashicorp/vault-action action.
 # Image Optimizer docs: https://github.com/calibreapp/image-actions
+name: image_optimizer
+
 on:
   pull_request:
     paths:
@@ -38,7 +43,7 @@ jobs:
 
       - name: Retrieve Credentials
         id: import-secrets
-        uses: hashicorp/vault-action@v3.0.0
+        uses: hashicorp/vault-action@v3.1.0
         with:
           url: https://vault.prism.spectrocloud.com
           method: approle

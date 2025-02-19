@@ -69,13 +69,29 @@ want to deploy the cluster, such as public cloud or on-prem.
 
 **Endpoint**: `https://api.spectrocloud.com/v1/spectroclusters/{provider}`
 
-Set the provider as an environment variable.
+The following table outlines all available provider options.
+
+| **Provider**                                   | **Value**     |
+| ---------------------------------------------- | ------------- |
+| **Azure IaaS**                                 | `azure`       |
+| **Azure AKS**                                  | `aks`         |
+| **AWS IaaS**                                   | `aws`         |
+| **AWS EKS**                                    | `eks`         |
+| **GCP IaaS**                                   | `gcp`         |
+| **GCP GKE**                                    | `gke`         |
+| **MAAS** (Canonical)                           | `maas`        |
+| **VMware vSphere**                             | `vsphere`     |
+| **Openstack**                                  | `openstack`   |
+| **Edge Native**                                | `edge-native` |
+| [**Virtual**](/devx/palette-virtual-clusters/) | `virtual`     |
+
+Set the provider as an environment variable. For example, issue the following command to set Azure IaaS as the provider.
 
 ```shell
-export PROVIDER="Your Provider"
+export PROVIDER="azure"
 ```
 
-<br />
+Example payload.
 
 ```shell
 export PAYLOAD='{
@@ -93,10 +109,10 @@ export PAYLOAD='{
 <TabItem label="curl" value="cluster-create-curl">
 
 ```shell
-curl --location 'https://api.spectrocloud.com/v1/spectroclusters/$PROVIDER?projectUid=$PROJECT_ID"' \
+curl --location "https://api.spectrocloud.com/v1/spectroclusters/$PROVIDER?projectUid=$PROJECT_ID" \
  --header 'Content-Type: application/json' \
  --header 'Accept: application/json' \
- --header "apiKey: $API_KEY"
+ --header "apiKey: $API_KEY" \
  --data  "$PAYLOAD"
 ```
 
@@ -1647,10 +1663,10 @@ export CLUSTER_ID="Your Cluster ID"
 <TabItem label="cURL" value="cluster-kubeconfig-curl">
 
 ```shell
- curl --location 'https://api.spectrocloud.com/v1/spectroclusters/$CLUSTER_ID/assets/kubeconfig' \
+ curl --location "https://api.spectrocloud.com/v1/spectroclusters/$CLUSTER_ID/assets/kubeconfig" \
  --header 'Accept: application/octet-stream' \
- --header 'projectUid: $PROJECT_ID' \
- --header 'apiKey: $API_KEY'
+ --header "projectUid: $PROJECT_ID" \
+ --header "apiKey: $API_KEY"
 ```
 
 </TabItem>

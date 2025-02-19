@@ -20,12 +20,38 @@ describe("Versioned link", () => {
     expect(link).toBe(url);
   });
 
+  it("latest version with component", () => {
+    prevVersionPath = "";
+    const componentText = "Component text";
+    const component = <p>{componentText}</p>;
+    const url = "/path/url";
+    render(<VersionedLink component={component} url={url} />);
+    const componentRender = screen.getByText(componentText);
+    expect(componentRender).not.toBeNull();
+    const link = screen.getByRole("link").getAttribute("href");
+    expect(link).not.toBeNull();
+    expect(link).toBe(url);
+  });
+
   it("previous version", () => {
     prevVersionPath = "/v4.3.1";
     const text = "Test link";
     const url = "/path/url";
     render(<VersionedLink text={text} url={url} />);
     const link = screen.getByText(text).getAttribute("href");
+    expect(link).not.toBeNull();
+    expect(link).toBe(prevVersionPath.concat(url));
+  });
+
+  it("previous version with component", () => {
+    prevVersionPath = "/v4.3.1";
+    const componentText = "Component text";
+    const component = <p>{componentText}</p>;
+    const url = "/path/url";
+    render(<VersionedLink component={component} url={url} />);
+    const componentRender = screen.getByText(componentText);
+    expect(componentRender).not.toBeNull();
+    const link = screen.getByRole("link").getAttribute("href");
     expect(link).not.toBeNull();
     expect(link).toBe(prevVersionPath.concat(url));
   });
