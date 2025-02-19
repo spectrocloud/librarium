@@ -912,7 +912,7 @@
     "description": "Velero is an open source tool to safely backup and restore, perform disaster recovery, and migrate Kubernetes cluster resources and persistent volumes."
   },
   {
-    "name": "vm-migration-assistant-pack",
+    "name": "vm-migration-assistant",
     "description": "The Virtual Machine Migration Assistant pack lets you migrate your VMs from VMware vSphere to your Virtual Machine Orchestrator (VMO) cluster. You can deploy VM Migration Assistant as an add-on cluster profile on top of an existing cluster with the Virtual Machine Orchestrator (VMO) pack installed."
   },
   {
