@@ -273,7 +273,7 @@ information, refer to [Enable Local Harbor Registry](./local-registry.md).
 
     </TabItem>
 
-</Tabs>
+    </Tabs>
 
 11. Follow the [Create Cluster Definition](../cluster-deployment.md) guide and deploy your cluster.
 
