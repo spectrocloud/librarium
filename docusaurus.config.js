@@ -267,7 +267,7 @@ const config = {
       "data-project-logo": "/img/spectrocloud-mark-light-bkgd-RGB.svg",
       "data-modal-title": "Spectro Cloud - Ask Docs",
       "data-modal-disclaimer":
-        "This is a custom LLM with access to all [Spectro Cloud public documentation](https://docs.spectrocloud.com). This instance is for internal testing and feedback purposes only. If you have any feedback, please share them in the Spectro Cloud #docs internal Slack channel.",
+        "This AI bot provides responses based solely on your input and the latest available version of Spectro Cloud’s public documentation. Its output is for informational purposes only and should not be considered official guidance. Please do not share any personally identifiable information (PII) or sensitive data. By using this service, you agree to our [Privacy Policy](https://www.spectrocloud.com/privacy-policy). \n\n Note that the bot does not have access to past versions of the documentation and cannot answer version-specific questions.",
       "data-modal-x-offset": "0",
       "data-modal-y-offset": "0",
       "data-modal-with-overlay": "false",
