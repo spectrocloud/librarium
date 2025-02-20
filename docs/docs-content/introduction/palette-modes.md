@@ -10,7 +10,7 @@ tags: ["app mode", "cluster mode"]
 
 ## Palette Modes
 
-Tis is a VL test. I love running and walking. Do you see that?
+Tis is a VL test. I love running and walking. Do you see that? Tis is a tyyypo.
 
 Palette supports two consumption modes - each aimed at different use cases and, potentially, different personas. The two
 modes are _App Mode_ and _Cluster Mode_. These modes can be used separately but often work together by sharing resources
