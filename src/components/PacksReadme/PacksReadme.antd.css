@@ -7,6 +7,6 @@ p {
   font-size: 16px;
 }
 [data-theme="dark"] .ant-select-tree-list-holder-inner {
-  background-color: #1f1f1f;
-  color: whitesmoke;
+  background-color: #012121;
+  color: var(--ifm-font-color-base);
 }

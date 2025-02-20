@@ -15,14 +15,14 @@
 
 html {
   // mendable widget inline style affects fonts
-  font-family: "Poppins", sans-serif !important;
+  font-family: "Plus Jakarta Sans", sans-serif !important;
 }
 
 :root {
   --ifm-code-font-size: 87.5%;
   --ifm-breadcrumb-size-multiplier: 0.875;
   --docusaurus-highlighted-code-line-bg: #666666;
-  --ifm-font-family-base: "Poppins", sans-serif;
+  --ifm-font-family-base: "Plus Jakarta Sans", sans-serif;
   --ifm-menu-link-padding-vertical: 0.675rem;
   --ifm-spacing-horizontal: 2rem;
   --ifm-menu-color-background-hover: var(--ifm-menu-color-background-active);
@@ -30,7 +30,8 @@ html {
   --doc-sidebar-width: 360px !important;
   --ifm-menu-link-sublist-icon: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14px" height="14px" viewBox="0 0 24 24"><path fill="rgb(150 152 169)" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path></svg>');
   --ifm-tabs-padding-vertical: 0.5rem;
-  --ifm-navbar-link-color: #252b53;
+  --ifm-navbar-height: 4rem;
+  --ifm-navbar-item-padding-horizontal: 0.75rem;
   --ifm-heading-font-weight: 500;
   --ifm-spacing-horizontal: 3rem;
   --ifm-alert-border-width: 1px;
@@ -39,8 +40,20 @@ html {
   --openapi-demo-font-size-code: 10px;
   --openapi-demo-font-size-input: 10px;
   --custom-sidebar-item-color: #aeb1be;
-  --custom-purple-border-color: #7d77ca;
-  --custom-byzantine-border-color: #b54aa1;
+  --ifm-link-decoration: underline;
+}
+
+// Remove link underlines from navbar, tags, and table of contents.
+nav a,
+.table-of-contents a,
+[class^="tag_"] {
+  text-decoration: none;
+}
+
+// Adjust logo to be 40px high
+.navbar__logo,
+.sidebarLogo_isFc img {
+  height: 2.5rem !important;
 }
 
 .markdown h1:first-child {
@@ -104,6 +117,10 @@ img {
   display: none;
 }
 
+[class^="admonitionContent_"] a {
+  text-decoration: underline;
+}
+
 /* Override --ifm text-decoration */
 a:any-link:hover {
   text-decoration: none;
@@ -142,7 +159,7 @@ div[class^="announcementBar_"] {
     display: none;
   }
   .ant-tooltip {
-    font-family: "Poppins";
+    font-family: "Plus Jakarta Sans";
   }
   .menu__caret:before {
     background: var(--ifm-menu-link-sublist-icon) 50% / 1.5rem 1.5rem;
@@ -168,7 +185,7 @@ div[class^="announcementBar_"] {
 }
 
 .menu__link--active + button::before {
-  --ifm-menu-link-sublist-icon: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14px" height="14px" viewBox="0 0 24 24"><path fill="rgba(74, 143, 241, 1)" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path></svg>');
+  --ifm-menu-link-sublist-icon: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14px" height="14px" viewBox="0 0 24 24"><path fill="rgba(31, 122, 120, 1)" d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6z"></path></svg>');
 }
 
 pre code {
@@ -214,12 +231,10 @@ p img.markdown-image {
 }
 
 .admonition-tech-preview {
-  border: 1px solid var(--custom-purple-border-color);
   background-color: var(--custom-purple-alert-bg-color);
 }
 
 .admonition-further-guidance {
-  border: 1px solid var(--custom-byzantine-border-color);
   background-color: var(--custom-byzantine-alert-bg-color);
 }
 
