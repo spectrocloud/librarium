@@ -122,7 +122,7 @@ difficult because there is no higher authority.
    :::
 
    ```shell
-   ./earthly.sh +uki-genkey --MY_ORG="org-name" --EXPIRATION_IN_DAYS=5475 --UKI_SELF_SIGNED_KEYS=false
+   ./earthly.sh +uki-genkey --MY_ORG="org-name" --EXPIRATION_IN_DAYS=5475
    ```
 
    All keys are generated to the **secure-boot** folder. Private keys are kept in a subdirectory called
