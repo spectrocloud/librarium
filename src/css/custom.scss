@@ -46,8 +46,7 @@ html {
 // Remove link underlines from navbar, tags, and table of contents.
 nav a,
 .table-of-contents a,
-[class^="tag_"] a,
-[class^="cardContainer_"] {
+[class^="tag_"] a {
   text-decoration: none;
 }
 
