@@ -117,6 +117,10 @@ img {
   display: none;
 }
 
+[class^="admonitionContent_"] a {
+  text-decoration: underline;
+}
+
 /* Override --ifm text-decoration */
 a:any-link:hover {
   text-decoration: none;
