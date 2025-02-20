@@ -159,36 +159,123 @@ information, refer to [Enable Local Harbor Registry](./local-registry.md).
   </TabItem>
   </Tabs>
 
-4. Follow the rest of the [Build Edge Artifact](../../edgeforge-workflow/palette-canvos/palette-canvos.md) guide and
-   build the Installer ISO with the user data containing the registry credentials.
+4.  Follow the rest of the [Build Edge Artifact](../../edgeforge-workflow/palette-canvos/palette-canvos.md) guide and
+    build the Installer ISO with the user data containing the registry credentials.
 
-5. Follow the [Perform Site Install](../site-installation/site-installation.md) guide to perform the installation.
+5.  Follow the [Perform Site Install](../site-installation/site-installation.md) guide to perform the installation.
 
-6. Log in to [Palette](https://console.spectrocloud.com).
+6.  Log in to [Palette](https://console.spectrocloud.com).
 
-7. From the left **Main Menu**, click on **Profiles**. Then select the profile you are using to deploy the cluster.
+7.  From the left **Main Menu**, click on **Profiles**. Then select the profile you are using to deploy the cluster.
 
-8. Go through each layer of the profile and ensure that all images referenced in the profile are present in the external
-   registry. If you do not want to do this manually image by image, refer to
-   [Upload Cluster Images to External Registry with Palette Edge CLI](./upload-images-to-registry.md) to learn how to
-   use the Palette Edge CLI to upload all images in a cluster profile to an external registry.
+8.  Go through each layer of the profile and ensure that all images referenced in the profile are present in the
+    external registry. If you do not want to do this manually image by image, refer to
+    [Upload Cluster Images to External Registry with Palette Edge CLI](./upload-images-to-registry.md) to learn how to
+    use the Palette Edge CLI to upload all images in a cluster profile to an external registry.
 
-9. In the Kubernetes layer of your cluster profile, remove `AlwaysPullImages` from
-   `cluster.config.clusterConfiguration.apiServer.extraArgs.enable-admission-plugins`.
+9.  In the Kubernetes layer of your cluster profile, remove `AlwaysPullImages` from
+    `cluster.config.clusterConfiguration.apiServer.extraArgs.enable-admission-plugins`.
 
-   For example, if the original `enable-admission-plugins` parameter is the following.
+    For example, if the original `enable-admission-plugins` parameter is the following.
 
-   ```yaml
-   enable-admission-plugins: AlwaysPullImages,NamespaceLifecycle,ServiceAccount,NodeRestriction
-   ```
+    ```yaml
+    enable-admission-plugins: AlwaysPullImages,NamespaceLifecycle,ServiceAccount,NodeRestriction
+    ```
 
-   The resulting layer configuration should look like the following.
+    The resulting layer configuration should look like the following.
 
-   ```yaml
-   enable-admission-plugins: NamespaceLifecycle,ServiceAccount,NodeRestriction
-   ```
+    ```yaml
+    enable-admission-plugins: NamespaceLifecycle,ServiceAccount,NodeRestriction
+    ```
 
-10. Follow the [Create Cluster Definition](../cluster-deployment.md) guide and deploy your cluster.
+10. (Optional) The provider image includes core Kubernetes images, such as the Kubernetes API server and scheduler. By
+    default, these core images are loaded directly from the provider image to the container runtime. If you prefer to
+    retrieve these core images from an external registry instead, you must explicitly specify their registry sources
+    depending on your Kubernetes distribution.
+
+    <Tabs>
+
+    <TabItem value="PXK-E">
+
+    Add the following line in `cluster.config.clusterConfiguration`. Replace `docker.io/external-registry-url` with the
+    URL of your external registry.
+
+    ```yaml
+    cluster:
+      config: |
+        clusterConfiguration:
+          imageRepository: docker.io/external-registry-url
+    ```
+
+    </TabItem>
+
+    <TabItem value="K3s">
+
+    Registry configurations for K3s is written in a file called **registries.yaml**. You can use the cloud-init stages
+    to create such a file and point it to the registry you want to load the images from. This can be done either in the
+    **user-data** file or the OS layer of the cluster profile. Refer to
+    [Cloud-init Stages](../../edge-configuration/cloud-init.md) for more information.
+
+    Replace `example.artifactory.net` with the address of your registry and the auth argument under it with your
+    credentials. For more information about the syntax of the **registries.yaml** file, refer to
+    [K3s documentation](https://docs.k3s.io/installation/private-registry).
+
+    ```yaml
+    stages:
+      initramfs:
+        name: Setup files
+        files:
+          - path: /etc/rancher/k3s/registries.yaml
+            owner: 0
+            group: 0
+            ownerstring: ""
+            permissions: "0644"
+            encoding: ""
+            content: |
+              configs:
+                "example.artifactory.net":
+                  auth:
+                    username: "xxxxxxxxxx"
+                    password: "xxxxxxxxxxxx"
+    ```
+
+    </TabItem>
+
+    <TabItem value="RKE2">
+
+    Registry configurations for RKE2 is written in a file called **registries.yaml**. You can use the cloud-init stages
+    to create such a file and point it to the registry you want to load the images from. This can be done either in the
+    **user-data** file or the OS layer of the cluster profile. Refer to
+    [Cloud-init Stages](../../edge-configuration/cloud-init.md) for more information.
+
+    Replace `example.artifactory.net` with the address of your registry and the auth argument under it with your
+    credentials. For more information about the syntax of the **registries.yaml** file, refer to
+    [RKE2 documentation](https://docs.rke2.io/install/private_registry).
+
+    ```yaml
+    stages:
+      initramfs:
+        name: Setup files
+        files:
+          - path: /etc/rancher/k3s/registries.yaml
+            owner: 0
+            group: 0
+            ownerstring: ""
+            permissions: "0644"
+            encoding: ""
+            content: |
+              configs:
+                "example.artifactory.net":
+                  auth:
+                    username: "xxxxxxxxxx"
+                    password: "xxxxxxxxxxxx"
+    ```
+
+    </TabItem>
+
+    </Tabs>
+
+11. Follow the [Create Cluster Definition](../cluster-deployment.md) guide and deploy your cluster.
 
 ## Validate
 
