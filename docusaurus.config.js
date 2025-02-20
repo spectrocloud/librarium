@@ -292,8 +292,8 @@ const config = {
           width: 105,
           height: 48,
           alt: "Spectro cloud logo",
-          src: "img/spectrocloud-logo-light.svg",
-          srcDark: "img/spectrocloud-logo-dark.svg",
+          src: "img/spectrocloud-logo-light.svg?new=true",
+          srcDark: "img/spectrocloud-logo-dark.svg?new=true",
         },
         items: [
           {
