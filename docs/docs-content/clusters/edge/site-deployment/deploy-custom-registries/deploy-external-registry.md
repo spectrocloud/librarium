@@ -188,10 +188,9 @@ information, refer to [Enable Local Harbor Registry](./local-registry.md).
     enable-admission-plugins: NamespaceLifecycle,ServiceAccount,NodeRestriction
     ```
 
-10. (Optional) The provider image contains images of core Kubernetes such as the Kubernetes API server and scheduler.
-    These core images are loaded directly from the provider image to the container runtime. If you also want to load
-    these images from the external registry instead of from the provider image, you need to explicitly specify them
-    depending on which Kubernetes distribution you are using.
+10. (Optional) The provider image includes core Kubernetes images, such as the Kubernetes API server and scheduler.
+    By default, these core images are loaded directly from the provider image to the container runtime. If you prefer to retrieve these core images from an external registry instead, you must explicitly specify their registry sources
+    depending on your Kubernetes distribution.
 
     <Tabs>
 
