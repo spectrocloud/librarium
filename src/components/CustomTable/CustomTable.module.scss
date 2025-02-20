@@ -19,7 +19,7 @@
   border-radius: 50%;
   border: 8px solid;
   border-color: #e8ebee;
-  border-right-color: #528cdd;
+  border-right-color: var(--ifm-color-primary);
   animation: spin 1s infinite linear;
 }
 
