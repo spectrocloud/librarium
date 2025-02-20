@@ -133,17 +133,17 @@
   }
 }
 [data-theme="dark"] .description {
-  background-color: #1c202b;
+  background-color: #012121;
 }
 [data-theme="light"] .description {
-  background-color: #edeef4;
+  background-color: #bfe3e2;
 }
 [data-theme="dark"] .packDescSecondCol {
-  background-color: black;
-  border: 1px solid #1f263c;
+  background-color: #161514;
+  border: 1px solid var(--ifm-primary-color);
 }
 [data-theme="light"] .packDescSecondCol {
-  background-color: white;
+  background-color: #f3f0ee;
   border: 1px solid #dee1ea;
 }
 [data-theme="light"] .emptyContentDescription {
@@ -151,11 +151,11 @@
 }
 [data-theme="dark"] .emptyContentDescription {
   color: #b5bdd4;
-  background-color: #111726;
+  background-color: var(--ifm-background-color);
 }
 [data-theme="dark"] .emptyContentTitle {
   color: #b5bdd4;
-  background-color: #111726;
+  background-color: var(--ifm-background-color);
 }
 [data-theme="light"] .emptyContentTitle {
   color: #545f7e;
