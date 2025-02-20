@@ -294,14 +294,14 @@ const config = {
         maxHeadingLevel: 3,
       },
       // Replace with your project's social card
-      image: "img/spectro-cloud-social-card.png",
+      image: "img/spectrocloud-social-card.png",
       navbar: {
         title: "",
         logo: {
           href: "/",
           target: "self",
-          width: 144,
-          height: 36,
+          width: 105,
+          height: 48,
           alt: "Spectro cloud logo",
           src: "img/spectrocloud-logo-light.svg",
           srcDark: "img/spectrocloud-logo-dark.svg",
