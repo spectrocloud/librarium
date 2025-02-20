@@ -71,7 +71,9 @@ This document guides you through the process of producing Edge Installer ISOs th
    [Edge Artifact Build Configurations](../../edgeforge-workflow/palette-canvos/arg.md) for available configuration
    parameters.
 
-   To build an ISO image that supports Trusted Boot, include the following parameters in the **.arg** file.
+   To build an ISO image that supports Trusted Boot, include the following parameters in the **.arg** file. the
+   `OSBUILDER_VERSION=0.300.4` line specifies the custom OS builder version to use. You must use `0.300.4` or the
+   installer may not be bootable from the USB.
 
    ```
    OS_DISTRIBUTION=ubuntu
