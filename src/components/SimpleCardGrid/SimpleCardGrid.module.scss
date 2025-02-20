@@ -3,6 +3,10 @@
   grid-gap: 32px;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 2fr;
+
+  a {
+    text-decoration: none;
+  }
 }
 
 .simpleCard {
