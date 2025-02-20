@@ -21,7 +21,7 @@ function Point({ description, tooltipPlacement = "right", x, y, label, wrapRef }
       getPopupContainer={(triggerNode) => wrapRef.current || triggerNode}
       trigger={["click"]}
       title={description}
-      color="#091e3b"
+      color="#012121"
       placement={tooltipPlacement as TooltipPlacement}
     >
       <div

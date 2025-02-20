@@ -5,13 +5,6 @@
   padding-top: 5px;
   padding-left: 5px;
   padding-right: 5px;
-}
-[data-theme="dark"] .customLabel {
-  color: white;
-  background-color: #1c202b;
-}
-
-[data-theme="light"] .customLabel {
-  color: black;
-  background-color: #dee1ea;
+  color: var(--ifm-font-color-base);
+  background-color: var(--ifm-dropdown-background-color);
 }
