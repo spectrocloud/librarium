@@ -85,3 +85,5 @@ Please contact our Security team at security@spectrocloud.com to report any secu
 - [Self-Hosted Operation](product-architecture/self-hosted-operation.md)
 
 - [Tenant Cluster Security](product-architecture/tenant-cluster.md)
+
+- [Vulnerability Management](./vulnerability-management/vulnerability-management.md)

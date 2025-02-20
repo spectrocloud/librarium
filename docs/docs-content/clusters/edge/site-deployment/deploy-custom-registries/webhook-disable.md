@@ -154,16 +154,17 @@ provides an example that shows how you might customize the image pull behavior o
 
    ```yaml {9-11}
    stages:
-    reconcile:
-        - name: "Redirect registries"
-            - path: /etc/containerd/certs.d/gcr.io/hosts.toml
-              owner: 0
-              group: 0
-              permissions: 0644
-              content: |-
-                server = "https://gcr.io"
-                [host."https://gcr-io-mirror.company.local"]
-                    capabilities = ["pull", "resolve"]
+     reconcile:
+       - name: "Redirect registries"
+         files:
+           - path: /etc/containerd/certs.d/gcr.io/hosts.toml
+             owner: 0
+             group: 0
+             permissions: 0644
+             content: |-
+               server = "https://gcr.io"
+               [host."https://gcr-io-mirror.company.local"]
+                   capabilities = ["pull", "resolve"]
    ```
 
 ### Provide Registry Credentials
@@ -406,9 +407,9 @@ source code for the credential provider on GitHub.
     :::warning
 
     Avoid entering sensitive information like passwords directly into your cluster profile in plain text. Instead, you
-    can either use a cluster profile variable or a macro. For more information, refer to
-    [Macros](../../../cluster-management/macros.md) and
-    [Define and Manage Profile Variables](../../../../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables.md).
+    can either use a
+    [cluster profile variable](../../../../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/define-profile-variables.md)
+    or a [macro](../../../cluster-management/macros.md).
 
     :::
 

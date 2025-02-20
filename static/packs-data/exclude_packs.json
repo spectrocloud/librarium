@@ -15,6 +15,5 @@
   "csi-tke",
   "kubernetes-tke",
   "tke-managed-os",
-  "cni-tke-global-router",
-  "virtual-machine-orchestrator"
+  "cni-tke-global-router"
 ]

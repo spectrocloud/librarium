@@ -25,6 +25,10 @@ You must then configure your networking to allow traffic to reach the pods on yo
   [Cluster Profile](../../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile)
   permissions for guidance.
 
+- The manifest output for your provider image that was created during the
+  [Register Edge Host in Appliance Mode](./prepare-environment/prepare-edge-hosts.md#register-edge-host-in-appliance-mode)
+  steps.
+
 ### Create Profile
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
@@ -37,29 +41,60 @@ You must then configure your networking to allow traffic to reach the pods on yo
 
 5. Select **Edge Native** from the **Infrastructure provider** list, and click **Next**.
 
-6. Select your base OS pack depending on how you will register your edge hosts.
+6. Select **BYOS - Edge OS** as your base OS pack.
 
-   - For Agent Mode, select **BYOS - Agent Mode**.
-   - For Appliance Mode, select **BYOS - Edge OS**.
+7. If using [Agent Mode](../../../../deployment-modes/agent-mode/agent-mode.md), on the **Configure Pack** page, click
+   **Values** under **Pack Details**. Then, click on **Presets** on the right-hand side, and select **Agent Mode**.
 
-7. If selecting **BYOS - Agent Mode**, on the **Configure Pack** page, click **Values** under **Pack Details**. Then,
-   click on **Presets** on the right-hand side, and select **Agent Mode**.
+<!-- prettier-ignore -->
+8. If using [Appliance Mode](../../../../deployment-modes/appliance-mode.md), on the **Configure Pack** page, click
+   **Values** under **Pack Details**. Then, replace the contents of the pack manifest with your built image
+   manifest.
 
-8. Click **Next layer** to continue.
+   Example.
 
-9. Select **Nodeadm** as your base Kubernetes pack, and click **Next**.
+   ```yaml hideClipboard
+   pack:
+     content:
+       images:
+         - image: '{{.spectro.pack.edge-native-byoi.options.system.uri}}'
+     # Below config is default value, please uncomment if you want to modify default values
+     #drain:
+       #cordon: true
+       #timeout: 60 # The length of time to wait before giving up, zero means infinite
+       #gracePeriod: 60 # Period of time in seconds given to each pod to terminate gracefully. If negative, the default value specified in the pod will be used
+       #ignoreDaemonSets: true
+       #deleteLocalData: true # Continue even if there are pods using emptyDir (local data that will be deleted when the node is drained)
+       #force: true # Continue even if there are pods that do not declare a controller
+       #disableEviction: false # Force drain to use delete, even if eviction is supported. This will bypass checking PodDisruptionBudgets, use with caution
+       #skipWaitForDeleteTimeout: 60 # If pod DeletionTimestamp older than N seconds, skip waiting for the pod. Seconds must be greater than 0 to skip.
+    options:
+      system.uri: "{{ .spectro.pack.edge-native-byoi.options.system.registry }}/{{ .spectro.pack.edge-native-byoi.options.system.repo }}:{{ .spectro.pack.edge-native-byoi.options.system.k8sDistribution }}-{{ .spectro.system.kubernetes.version }}-{{ .spectro.pack.edge-native-byoi.options.system.peVersion }}-{{ .spectro.pack.edge-native-byoi.options.system.customTag }}"
 
-10. On the **Configure Pack** page, under **Pack Version**, select your Kubernetes version from the **drop-down Menu**.
+      system.registry: ttl.sh
+      system.repo: ubuntu
+      system.k8sDistribution: nodeadm
+      system.osName: ubuntu
+      system.peVersion: v4.5.15
+      system.customTag: eks-hybrid
+      system.osVersion: 22
+   ```
 
-11. In the YAML editor, make any changes you need for the kubelet or containerd configuration. Refer to
+9. Click **Next layer** to continue.
+
+10. Select **Nodeadm** as your base Kubernetes pack, and click **Next**.
+
+11. On the **Configure Pack** page, under **Pack Version**, select your Kubernetes version from the **drop-down Menu**.
+
+12. In the YAML editor, make any changes you need for the kubelet or containerd configuration. Refer to
     [Amazon EKS Hybrid Nodes Configuration](https://github.com/aws/eks-hybrid?tab=readme-ov-file#configuration) for
     guidance on the available options.
 
-12. Click **Next layer** to continue.
+13. Click **Next layer** to continue.
 
-13. Select **Custom CNI** as your base Network pack, and click **Next**.
+14. Select **Custom CNI** as your base Network pack, and click **Next**.
 
-14. In the YAML editor on the **Configure Pack** page, change the value of `manifests.byo-cni.contents.data.custom-cni`
+15. In the YAML editor on the **Configure Pack** page, change the value of `manifests.byo-cni.contents.data.custom-cni`
     from `calico` to `dummy`.
 
     :::info
@@ -71,11 +106,11 @@ You must then configure your networking to allow traffic to reach the pods on yo
 
     :::
 
-15. Click **Confirm** when complete.
+16. Click **Confirm** when complete.
 
-16. In **Profile Layers**, click **Next** to continue.
+17. In **Profile Layers**, click **Next** to continue.
 
-17. Click **Finish Configuration**.
+18. Click **Finish Configuration**.
 
 Your cluster profile for hybrid nodes is now created and can be used in the
 [Create Hybrid Node Pool](#create-hybrid-node-pool) steps.
@@ -97,27 +132,8 @@ Your cluster profile for hybrid nodes is now created and can be used in the
 - An Amazon EKS cluster imported with hybrid mode enabled. Refer to
   [Import EKS Cluster and Enable Hybrid Mode](./import-eks-cluster-enable-hybrid-mode.md) for guidance.
 
-- Edge hosts have been registered with Palette through
-  [Agent Mode](../../../../deployment-modes/agent-mode/agent-mode.md) or
-  [Appliance Mode](../../../../deployment-modes/appliance-mode.md) and the
-  [EdgeForge Workflow](../../../edge/edgeforge-workflow/edgeforge-workflow.md).
-
-  :::warning
-
-  If using the Appliance Mode, you must include the following configuration in your EdgeForge `.arg` file during the
-  [build steps for provider images](../../../edge/edgeforge-workflow/palette-canvos/build-provider-images.md#build-provider-images).
-
-  ```shell
-  K8S_DISTRIBUTION=nodeadm
-  K8S_VERSION=<kubernetesVersion>  # supported versions: [ 1.28.0 | 1.29.0 | 1.30.0 | 1.31.0 ]
-  ```
-
-  Replace `<kubernetesVersion>` with your version of Kubernetes. For example, `1.29.0`.
-
-  You must also ensure the required bind mounts are specified in the user-data configuration. Refer to the
-  [Bind Mount Requirements](./architecture.md#bind-mount-requirements) section for more information.
-
-  :::
+- Edge hosts have been registered with Palette using the steps in
+  [Prepare Edge Hosts](./prepare-environment/prepare-edge-hosts.md).
 
 - A cluster profile created for your hybrid nodes. Refer to
   [Create Cluster Profile for Hybrid Node Pools](#create-cluster-profile-for-hybrid-node-pools) for steps.

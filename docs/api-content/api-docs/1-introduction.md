@@ -176,9 +176,9 @@ curl --location 'https://api.spectrocloud.com/v1/packs?continue=eyJvZmZzZXQiOjUw
 
 The API rate limits are as follows:
 
-- There is a limit of ten API requests per second for each source IP address. The API supports additional bursts through
-  the usage of a burst queue. The default burst queue size is set to five. You could make 50 (10 \* 5) requests in
-  seconds before the API returns a `429 - TooManyRequests` error. Refer to the
+- Most Palette APIs have a limit of ten API requests per second for each source IP address. The API supports additional
+  bursts through the usage of a burst queue. The default burst queue size is set to five. You could make 50 (10 \* 5)
+  requests in seconds before the API returns a `429 - TooManyRequests` error. Refer to the
   [Endpoint Prefix Rate](#endpoint-prefix-rate) for additional information.
 
 - API request limits are categorized by the parent resources, such as `/v1/cloudconfig/:uid` and `/v1/roles`. You can
@@ -225,8 +225,8 @@ The API rate limits are as follows:
 | /v1/services                                                                            | 10                     | 5              | 50                 |
 | /v1/overlords                                                                           | 10                     | 5              | 50                 |
 | /v1/cluster                                                                             | 10                     | 5              | 50                 |
-| /v1/cloudconfigs                                                                        | 10                     | 5              | 50                 |
-| /v1/cloudconfigs/\{cloudType}/\{uid}/machinePools                                       | 10                     | 5              | 50                 |
+| /v1/cloudconfigs                                                                        | 50                     | 5              | 250                |
+| /v1/cloudconfigs/\{cloudType}/\{uid}/machinePools                                       | 50                     | 5              | 250                |
 | /v1/edgehosts                                                                           | 10                     | 5              | 50                 |
 | /v1/metrics                                                                             | 10                     | 5              | 50                 |
 | /v1/system                                                                              | 10                     | 5              | 50                 |
@@ -235,8 +235,8 @@ The API rate limits are as follows:
 | /v1/clouds                                                                              | 10                     | 5              | 50                 |
 | /v1/events/components                                                                   | 10                     | 5              | 50                 |
 | /v1/dashboard                                                                           | 10                     | 5              | 50                 |
-| /v1/cloudconfigs/\{cloudType}/:uid/machinePools/\{machinePoolName}/machines             | 10                     | 5              | 50                 |
-| /v1/cloudconfigs/\{cloudType}/:uid/machinePools/\{machinePoolName}/machines/:machineUid | 10                     | 5              | 50                 |
+| /v1/cloudconfigs/\{cloudType}/:uid/machinePools/\{machinePoolName}/machines             | 50                     | 5              | 250                |
+| /v1/cloudconfigs/\{cloudType}/:uid/machinePools/\{machinePoolName}/machines/:machineUid | 50                     | 5              | 250                |
 | /v1/auth/authenticate                                                                   | 10                     | 5              | 50                 |
 | /v1/auth/services/login                                                                 | 10                     | 5              | 50                 |
 | /v1/auth/services/edge/login                                                            | 10                     | 5              | 50                 |

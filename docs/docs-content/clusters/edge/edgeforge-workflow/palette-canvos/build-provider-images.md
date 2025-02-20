@@ -56,68 +56,68 @@ artifacts at the same time.
 
 ## Build Provider Images
 
-1. Check out the [CanvOS](https://github.com/spectrocloud/CanvOS) GitHub repository containing the starter code.
+1.  Check out the [CanvOS](https://github.com/spectrocloud/CanvOS) GitHub repository containing the starter code.
 
-   ```bash
-   git clone https://github.com/spectrocloud/CanvOS.git
-   ```
+    ```bash
+    git clone https://github.com/spectrocloud/CanvOS.git
+    ```
 
-2. Change to the **CanvOS/** directory.
+2.  Change to the **CanvOS/** directory.
 
-   ```bash
-   cd CanvOS
-   ```
+    ```bash
+    cd CanvOS
+    ```
 
-3. View the available [git tag](https://github.com/spectrocloud/CanvOS/tags).
+3.  View the available [git tag](https://github.com/spectrocloud/CanvOS/tags).
 
-   ```bash
-   git tag
-   ```
+    ```bash
+    git tag
+    ```
 
-4. Check out the newest available tag. This guide uses the tag **v4.4.12** as an example.
+4.  Check out the newest available tag. This guide uses the tag **v4.4.12** as an example.
 
-   ```shell
-   git checkout v4.4.12
-   ```
+    ```shell
+    git checkout v4.4.12
+    ```
 
-5. Review the files relevant for this guide.
+5.  Review the files relevant for this guide.
 
-   - **.arg.template** - A sample **.arg** file that defines arguments to use during the build process.
+    - **.arg.template** - A sample **.arg** file that defines arguments to use during the build process.
 
-   - **Earthfile** - Contains a series of commands to create target artifacts.
+    - **Earthfile** - Contains a series of commands to create target artifacts.
 
-   - **earthly.sh** - Script to invoke the Earthfile, and generate target artifacts.
+    - **earthly.sh** - Script to invoke the Earthfile, and generate target artifacts.
 
-6. Issue the command below to assign an image tag value that will be used when creating the provider images. This guide
-   uses the value `palette-learn` as an example. However, you can assign any lowercase and alphanumeric string to the
-   `CUSTOM_TAG` argument.
+6.  Issue the command below to assign an image tag value that will be used when creating the provider images. This guide
+    uses the value `palette-learn` as an example. However, you can assign any lowercase and alphanumeric string to the
+    `CUSTOM_TAG` argument.
 
-   ```bash
-   export CUSTOM_TAG=palette-learn
-   ```
+    ```bash
+    export CUSTOM_TAG=palette-learn
+    ```
 
-7. Use the command below to save the image registry hostname in the `IMAGE_REGISTRY` argument. Before you execute the
-   command, replace `[REGISTRY-HOSTNAME]` in the declaration below with your Docker ID. Your image registry hostname
-   must comply with standard DNS rules and may not contain underscores.
+7.  Use the command below to save the image registry hostname in the `IMAGE_REGISTRY` argument. Before you execute the
+    command, replace `[REGISTRY-HOSTNAME]` in the declaration below with your Docker ID. Your image registry hostname
+    must comply with standard DNS rules and may not contain underscores.
 
-   ```bash
-   export IMAGE_REGISTRY=[REGISTRY-HOSTNAME]
-   ```
+    ```bash
+    export IMAGE_REGISTRY=[REGISTRY-HOSTNAME]
+    ```
 
-8. Issue the following command to use the Ubuntu OS distribution and use the 22.04 version.
+8.  Issue the following command to use the Ubuntu OS distribution and use the 22.04 version.
 
-   ```bash
-   export OS_DISTRIBUTION=ubuntu
-   export OS_VERSION=22.04
-   ```
+    ```bash
+    export OS_DISTRIBUTION=ubuntu
+    export OS_VERSION=22.04
+    ```
 
-9. Open the **k8s_versions.json** file in the CanvOS directory. Remove the Kubernetes versions that you don't need from
-   the JSON object corresponding to your Kubernetes distribution.
+9.  Open the **k8s_versions.json** file in the CanvOS directory. Remove the Kubernetes versions that you don't need from
+    the JSON object corresponding to your Kubernetes distribution.
 
-   If you are using a tag that is earlier than v4.4.12, the **k8s_versions.json** file does not exist in those tags.
-   Instead, open the **Earthfile** in the CanvOS directory. In the file, find the block that starts with
-   `build-provider-images-fips:` and delete the Kubernetes versions that you do not want. This will speed up the build
-   process and save storage space.
+    If you are using a tag that is earlier than v4.4.12, the **k8s_versions.json** file does not exist in those tags.
+    Instead, open the **Earthfile** in the CanvOS directory. In the file, find the block that starts with
+    `build-provider-images-fips:` and delete the Kubernetes versions that you do not want. This will speed up the build
+    process and save storage space.
 
 10. Issue the command below to create an **.arg** file. The **.arg** file uses the default values for the remaining
     arguments.
@@ -137,6 +137,11 @@ artifacts at the same time.
     UPDATE_KERNEL=false
     EOF
     ```
+
+    If you want your host eligible to become part of a two-node high availability cluster, you must set `TWO_NODE` to
+    `true`. This setting cannot be changed later. A two-node provider image cannot be used to provision regular etcd
+    clusters. We recommend you clearly mark two-node provider images in the custom tag argument. For more information
+    about two-node high availability architecture, refer to [Two-Node Architecture](../../architecture/two-node.md).
 
     Refer to [Edge Artifact Build Configurations](./arg.md) for all available arguments.
 

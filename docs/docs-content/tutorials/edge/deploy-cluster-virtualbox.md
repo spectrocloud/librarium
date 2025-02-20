@@ -685,5 +685,5 @@ configurations before deploying them in production.
 We encourage you to check the reference resources below to learn more about Palette Edge.
 
 - [Palette Edge](../../clusters/edge/edge.md)
-- [Edge Architecture](../../clusters/edge/architecture.md)
+- [Edge Architecture](../../clusters/edge/architecture/architecture.md)
 - [EdgeForge Workflow](../../clusters/edge/edgeforge-workflow/edgeforge-workflow.md)

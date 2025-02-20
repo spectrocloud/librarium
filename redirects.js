@@ -731,6 +731,10 @@ let redirects = [
     to: "/tutorials/getting-started/additional-capabilities/vmo/",
   },
   {
+    from: "/clusters/cluster-management/reconfigure/",
+    to: "/clusters/cluster-management/node-pool/",
+  },
+  {
     from: [
       "/integrations/antrea-cni",
       "/integrations/aws-autoscaler",
