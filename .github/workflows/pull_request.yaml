@@ -52,7 +52,7 @@ jobs:
   vale:
     name: Writing Checks
     needs: [run-ci]
-    uses: spectrocloud/spectro-vale-pkg/.github/workflows/vale.yml@main
+    uses: spectrocloud/spectro-vale-pkg/.github/workflows/vale.yml@upgrade-vale
 
   prettier:
     name: Check Code Formatting
