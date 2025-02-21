@@ -130,6 +130,14 @@ const FilteredTable: React.FC = () => {
   const [error, setError] = useState(false);
   const { colorMode } = useColorMode();
   const { defaultAlgorithm, darkAlgorithm } = theme;
+  const isDark = colorMode === "dark";
+  const customTheme = {
+    algorithm: isDark ? darkAlgorithm : defaultAlgorithm, // Start with the default dark theme
+    token: {
+      colorBgContainer: isDark ? "#012121" : "#F3F0EE",
+      colorPrimary: isDark ? "#44B2AF" : "#1F7A78",
+    },
+  };
 
   useEffect(() => {
     fetch("/packs-data/packs_report.json")
@@ -168,7 +176,7 @@ const FilteredTable: React.FC = () => {
 
   return (
     <div className={styles.tabPane}>
-      <ConfigProvider theme={{ algorithm: colorMode === "dark" ? darkAlgorithm : defaultAlgorithm }}>
+      <ConfigProvider theme={customTheme}>
         <div className={styles.unsupportedMessage}>
           <Admonition type="warning" title="Unsupported Display Size">
             The current screen size is not supported. Use a larger display to access the Packs table.
