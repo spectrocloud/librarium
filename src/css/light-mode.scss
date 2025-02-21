@@ -61,10 +61,6 @@ html[data-theme="light"] {
     }
   }
 
-  [class^="cardContainer_"] {
-    text-decoration: none;
-  }
-
   // We must set the info color on details, as it is used for the details expand marker.
   [class^="details_"] {
     --ifm-color-info-dark: var(--ifm-color-primary);

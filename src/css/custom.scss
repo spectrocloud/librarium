@@ -43,11 +43,12 @@ html {
   --ifm-link-decoration: underline;
 }
 
-// Remove link underlines from navbar, tags, and table of contents.
+// Remove link underlines from navbar, tags, cards and table of contents.
 nav a,
 .table-of-contents a,
-[class^="tag_"] a {
-  text-decoration: none;
+[class^="tag_"] a,
+[class*="cardContainer_"] {
+  text-decoration: none !important;
 }
 
 // Adjust logo to be 40px high
