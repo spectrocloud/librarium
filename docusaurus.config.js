@@ -259,7 +259,7 @@ const config = {
       defer: true,
     },
     {
-      src: "/js/kapa-shortcut.js",
+      src: "/scripts/kapa-shortcut.js",
       async: true,
     },
     {
