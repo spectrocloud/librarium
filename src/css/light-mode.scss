@@ -33,6 +33,7 @@ html[data-theme="light"] {
   --ifm-color-danger-dark: #feeded;
   --ifm-alert-padding-horizontal: 1.5rem;
   --ifm-dropdown-background-color: var(--ifm-menu-color-background-active);
+  --ifm-card-background-color: var(--ifm-dropdown-background-color);
   --custom-table-header-color: #f7f7f7;
   --simpleCardPrimary: var(--ifm-color-primary);
   --simpleCardPrimaryHover: #135757;
