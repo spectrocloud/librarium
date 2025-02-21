@@ -16,6 +16,7 @@ DocSidebarItem
 
 *.test.tsx
 *.test.ts
+*.bundle.js
 
 *.test.js
 *.test.jsx
