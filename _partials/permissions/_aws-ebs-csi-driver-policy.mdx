@@ -1,0 +1,9 @@
+---
+partial_category: permissions
+partial_name: aws-ebs-csi-driver-policy
+---
+```yaml
+roleName: "custom-ng-role"
+  roleAdditionalPolicies:
+  - "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
+```

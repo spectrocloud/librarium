@@ -1,0 +1,3 @@
+[submodule "submodules/required-permissions-data"]
+	path = submodules/required-permissions-data
+	url = https://github.com/spectrocloud/required-permissions-data.git
