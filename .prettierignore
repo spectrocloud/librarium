@@ -15,6 +15,7 @@ tsconfig.json
 src/components/IconMapper/dynamicFontAwesomeImports.*
 docs/docs-content/security-bulletins/cve-reports.md
 docs/docs-content/security-bulletins/reports/*.md
+.eslintignore
 
 # Ignore partials
 _partials/

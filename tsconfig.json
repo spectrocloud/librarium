@@ -1,7 +1,7 @@
 {
   // This file is not used in compilation. It is here just for a nice editor experience.
   "extends": "@tsconfig/docusaurus/tsconfig.json",
-  "include": ["src", "declarations.d.ts", "utils", "**/*.mdx",],
+  "include": ["src", "declarations.d.ts", "utils", "**/*.mdx", "static/scripts/kapa-shortcut.js",],
   "exclude": ["src/deprecated"],
   "compilerOptions": {
     "types": ["node", "jest", "@testing-library/jest-dom", "mdx"],
