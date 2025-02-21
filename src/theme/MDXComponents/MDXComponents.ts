@@ -18,10 +18,12 @@ import VersionedLink from "@site/src/components/VersionedLink";
 import PaletteVertexUrlMapper from "@site/src/components/PaletteVertexUrlMapper/PaletteVertexUrlMapper";
 import Accordion from "@site/src/components/Accordion";
 import AccordionPanel from "@site/src/components/AccordionPanel";
+import MyCarousel from "@site/src/components/Carousel";
 
 export default {
   ...MDXComponents,
   ...customMdxComponents,
+  MyCarousel,
   Accordion,
   AccordionPanel,
   Tabs,
