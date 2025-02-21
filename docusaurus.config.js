@@ -282,6 +282,7 @@ const config = {
       "data-conversation-button-icons-only": "true",
       "data-modal-size": "80%",
       "data-modal-lock-scroll": "false",
+      "data-modal-open-on-command-k": "true",
       async: true,
     },
     {
