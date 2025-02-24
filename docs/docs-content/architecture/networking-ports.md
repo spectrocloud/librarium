@@ -9,9 +9,7 @@ toc_max_heading_level: 2
 sidebar_position: 20
 ---
 
-Depending on what version of Palette you are using, the internal architecture and network communication will be
-different. Before Palette 4.0.0 the management platform communicated with the workload cluster via NATS. Starting with
-Palette 4.0.0, the management platform communicates with the workload cluster via gRPC.
+Palette communicates with workload clusters using [gRPC](https://grpc.io), a modern, high-performance remote procedure protocol framework built on HTTP/2 for sending and receiving data securely and quickly. With gRPC, communication between Palette's central management platform and your workload clusters remains efficient, secure, and reliable, even as your environment scales.
 
 ## SaaS Network Communications and Ports
 

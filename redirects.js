@@ -599,6 +599,10 @@ let redirects = [
     to: "/clusters/cluster-management/node-pool/",
   },
   {
+    from: "/architecture/palette-namespaces-podes/",
+    to: "/architecture/palette-namespaces-pods/",
+  },
+  {
     from: [
       "/integrations/antrea-cni",
       "/integrations/aws-autoscaler",

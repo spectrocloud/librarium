@@ -13,8 +13,6 @@ encryption, and secure communication, standard authentication and authorization,
 actions taken on the platform. Review the [Audit Logs](../../audit-logs/audit-logs.md) guide to learn how to access and
 use them.
 
-<br />
-
 ## Data At Rest Encryption
 
 Tenant data is encrypted using a 64-bit cryptographically secure tenant key. A unique tenant key is generated for each
@@ -22,8 +20,6 @@ tenant. The tenant key is encrypted using the system root key and is stored in t
 stored in the cluster’s etcd key-value store. All message communication uses tenant-specific channels.
 
 The following secure keys are unique and generated for each installation:
-
-<br />
 
 - **Root Key**: Encrypts the tenant-specific encryption key.
 
@@ -36,8 +32,6 @@ The following secure keys are unique and generated for each installation:
 
 In self-managed deployments, secure keys are generated during installation and stored as secrets in the management
 cluster’s etcd key-value store.
-
-<br />
 
 ## Data In Transit Encryption
 
