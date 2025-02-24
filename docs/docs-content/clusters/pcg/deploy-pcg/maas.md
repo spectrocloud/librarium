@@ -74,7 +74,7 @@ The following system requirements must be met to install a PCG in MAAS:
   GiB storage with prolonged use. If you initially set up the gateway with one node, you can resize it later.
 
 - An active MAAS API key. Refer to the
-  [Authenticating to the MAAS API](https://maas.io/docs/api-authentication-reference) guide to learn more about how to
+  [Authenticating to the MAAS API](https://maas.io/docs/api) guide to learn more about how to
   create an API key.
 
 - The DNS server that the PCG installer will use must be able to resolve the DNS names of machines that MAAS deploys so
