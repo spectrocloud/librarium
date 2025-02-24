@@ -1,18 +1,25 @@
+# This workflow pushes updates to the production site at docs.spectrocloud.com. 
+# The workflow is triggered by a cron job that runs at 12:00 PM PST (8 PM UTC) Monday through Friday, 9:00 PM PST (5 AM UTC next day) Monday through Friday, 12:00 PM PST (8 PM UTC next day) Saturday, and 12:00 PM PST (8 PM UTC next day) Sunday.
+# The workflow uses the self-hosted runner by default. The GitHub-hosted large runner can be used by setting the useGitHubHostedLargeRunner input to true.
+# The workflow has built-in logic to prevent failed builds from being deployed to production.
+# Semantic versioning is used to determine the version number of the release. The project follows the Angular commit message convention. Depending on the commit message, the version number is incremented accordingly.
+# You can manually trigger the workflow to trigger on-demand push to production.
+
 name: Release to Production
 
-# Run this workflow every time a new commit is pushed to the master branch
-# or a version branch (e.g. version-4-0)
 
 on:
   schedule:
     - cron: '0 20 * * 1-5'  # At 12:00 PM PST (8 PM UTC), Monday through Friday
     - cron: '0 5 * * 2-6'  # At 9:00 PM PST (5 AM UTC next day), Monday through Friday
+    - cron: '0 20 * * 6' # At 12:00 PM PST (8 PM UTC next day), Saturday - Due to Security Buletin Publication
+    - cron: '0 20 * * 0' # At 12:00 PM PST (8 PM UTC next day),  Sunday - Due to Security Buletin Publication
   workflow_dispatch:
     inputs:
       useGitHubHostedLargeRunner:
         description: 'Use the GitHub-hosted large runner. Allowed values are true or false. Caution - this results in additional charges to the organization.'
         required: false
-        default: false
+        default: 'false'
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -26,6 +33,10 @@ env:
   ALGOLIA_SEARCH_KEY: ${{ secrets.ALGOLIA_SEARCH_KEY }}
   ALGOLIA_INDEX_NAME: ${{ secrets.ALGOLIA_INDEX_NAME }}
   PALETTE_API_KEY: ${{ secrets.PALETTE_API_KEY }}
+  DISABLE_PACKS_INTEGRATIONS: ${{ secrets.DISABLE_PACKS_INTEGRATIONS }}
+  DISABLE_SECURITY_INTEGRATIONS: ${{ secrets.DISABLE_SECURITY_INTEGRATIONS }}
+  SHOW_LAST_UPDATE_TIME: ${{ secrets.SHOW_LAST_UPDATE_TIME }}
+  DSO_AUTH_TOKEN: ${{ secrets.DSO_AUTH_TOKEN }}
 
 
 concurrency:
@@ -52,19 +63,49 @@ jobs:
           node-version: "20"
           cache: "npm"
 
-      - run: npm ci
+      - run: |
+          echo "CURRENT_STEP=npm ci" >> $GITHUB_ENV
+          npm ci
 
-      - name: Compile
+      - name: Build
         run: |
+          echo "CURRENT_STEP=Build" >> $GITHUB_ENV
           touch .env
           make versions-ci
-          make build
+          make build-ci
+
+      - name: Build with cached packs
+        if: ${{ env.BUILD_EXIT_CODE == '5' }}
+        uses: ./.github/actions/build-cached-packs
+        with:
+          gh-token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build with cached CVEs
+        if: ${{ env.BUILD_EXIT_CODE == '7' }}
+        uses: ./.github/actions/build-cached-cves
+        with:
+          gh-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload to AWS
+        if: ${{ env.BUILD_EXIT_CODE == '0' }}
         run: |
+          echo "CURRENT_STEP=Upload to AWS" >> $GITHUB_ENV
           aws s3 sync --cache-control 'public, max-age=604800' --exclude '*.html' --exclude '*.xml' --exclude build/scripts/ build/ s3://docs.spectrocloud.com --delete
           aws s3 sync --cache-control 'public, max-age=0, s-maxage=604800' build/ s3://docs.spectrocloud.com --delete
           aws cloudfront create-invalidation --distribution-id ${{ secrets.DISTRIBUTION_ID }} --paths "/*"
+
+      - name: Slack Notification on Failure
+        if: ${{ failure() || env.BUILD_EXIT_CODE != '0' }}
+        uses: rtCamp/action-slack-notify@v2.3.2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
+          SLACK_USERNAME: "spectromate"
+          SLACK_ICON_EMOJI: ":robot_panic:"
+          SLACK_COLOR: "danger"
+          SLACKIFY_MARKDOWN: true
+          ENABLE_ESCAPES: true
+          SLACK_MESSAGE: "The self-hosted runner release job for `${{ github.workflow }}` in `${{ github.repository }}` failed at step: `${{ env.CURRENT_STEP }}`. [View details](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})."
+
 
 #  Use this workflow if you want to use the GitHub-hosted large runner. Useful for scenarios when you need a change to deploy faster than the self-hosted runner can build it.
   build-large-runner:
@@ -87,19 +128,42 @@ jobs:
           node-version: "20"
           cache: "npm"
 
-      - run: npm ci
+      - run: |
+          echo "CURRENT_STEP=npm ci" >> $GITHUB_ENV
+          npm ci
 
-      - name: Compile
+      
+      - name: Build
         run: |
+          echo "CURRENT_STEP=Build" >> $GITHUB_ENV
+          touch .env
           make versions-ci
-          make build
+          make build-ci
+      
+      - name: Build with cached packs
+        if: ${{ env.BUILD_EXIT_CODE == '5' }}
+        uses: ./.github/actions/build-cached-packs
+        with:
+          gh-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Upload to AWS
         run: |
+          echo "CURRENT_STEP=Upload to AWS" >> $GITHUB_ENV
           aws s3 sync --cache-control 'public, max-age=604800' --exclude '*.html' --exclude '*.xml' --exclude build/scripts/ build/ s3://docs.spectrocloud.com --delete
           aws s3 sync --cache-control 'public, max-age=0, s-maxage=604800' build/ s3://docs.spectrocloud.com --delete
           aws cloudfront create-invalidation --distribution-id ${{ secrets.DISTRIBUTION_ID }} --paths "/*"
 
+      - name: Slack Notification on Failure
+        if: ${{ failure() }}
+        uses: rtCamp/action-slack-notify@v2.3.2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
+          SLACK_USERNAME: "spectromate"
+          SLACK_ICON_EMOJI: ":robot_panic:"
+          SLACK_COLOR: "danger"
+          SLACKIFY_MARKDOWN: true
+          ENABLE_ESCAPES: true
+          SLACK_MESSAGE: "The large runner release job for `${{ github.workflow }}` in `${{ github.repository }}` failed at step: `${{ env.CURRENT_STEP }}`. [View details](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})."
 
   release:
     name: "Release"
@@ -116,7 +180,7 @@ jobs:
 
       - name: Retrieve Credentials
         id: import-secrets
-        uses: hashicorp/vault-action@v3.0.0
+        uses: hashicorp/vault-action@v3.1.0
         with:
           url: https://vault.prism.spectrocloud.com
           method: approle
@@ -131,9 +195,25 @@ jobs:
           cache: "npm"
 
       - name: Install dependencies
-        run: npm ci
+        run: |
+          echo "CURRENT_STEP=Install dependencies" >> $GITHUB_ENV
+          npm ci
 
       - name: "release"
         env:
           GITHUB_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
-        run: npx semantic-release
+        run: |
+          echo "CURRENT_STEP=release" >> $GITHUB_ENV
+          npx semantic-release
+
+      - name: Slack Notification on Failure
+        if: ${{ failure() }}
+        uses: rtCamp/action-slack-notify@v2.3.2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
+          SLACK_USERNAME: "spectromate"
+          SLACK_ICON_EMOJI: ":robot_panic:"
+          SLACK_COLOR: "danger"
+          SLACKIFY_MARKDOWN: true
+          ENABLE_ESCAPES: true
+          SLACK_MESSAGE: "The release job for `${{ github.workflow }}` in `${{ github.repository }}` failed at step: `${{ env.CURRENT_STEP }}`. [View details](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})."

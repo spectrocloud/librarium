@@ -10,7 +10,7 @@ logoUrl: "https://registry.spectrocloud.com/v1/k8s-dashboard/blobs/sha256:2de5d8
 tags: ["packs", "konvoy", "kubernetes"]
 ---
 
-[Konvoy](https://d2iq.com/products/konvoy) is a Kubernetes distribution by D2iQ. It is built on pure open-source
+[Konvoy](https://d2iq.com/products/konvoy) is a Kubernetes distribution by D2iQ. It is built on pure open source
 Kubernetes and includes a full suite of integrated and supported best-of-breed Day-2 platform applications for an
 out-of-the-box, production-ready experience.
 

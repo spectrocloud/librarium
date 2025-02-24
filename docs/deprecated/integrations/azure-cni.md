@@ -44,7 +44,7 @@ wider manifest that also creates a deployment or service. Palette leverages two 
 
 - **azure**: Azure's own implementation, called Azure Network Policy.
 
-- **calico**: An open-source network and network security solution founded by [Tigera](https://www.tigera.io/).
+- **calico**: An open source network and network security solution founded by [Tigera](https://www.tigera.io/).
 
 Palette users can choose any one of the above Network Policies and provide it to the pack YAML file as `networkPolicy`
 as given below:

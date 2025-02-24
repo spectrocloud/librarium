@@ -7,7 +7,7 @@ sidebar_position: 0
 tags: ["crossplane", "iac", "automation", "infrastructure as code"]
 ---
 
-Palette supports the open-source Cloud Native Computing Foundation (CNCF) project
+Palette supports the open source Cloud Native Computing Foundation (CNCF) project
 [Crossplane](https://www.crossplane.io/). Crossplane transforms Kubernetes clusters into universal control planes,
 extending the Kubernetes API and enabling infrastructure resource provisioning and management across major
 infrastructure providers.

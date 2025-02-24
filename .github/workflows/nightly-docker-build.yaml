@@ -1,3 +1,9 @@
+# This workflow builds a Docker image and pushes it to the GitHub Container Registry (GHCR) every weekday at 22:15 UTC.
+# This image is used to facilitate an offline Documentation expericence. Customers and stakeholders can use this image to view the documentation without an active internet connection.
+# The image is signed using the sigstore/cosign-installer action to ensure the integrity of the image.
+# Visit https://docs.spectrocloud.com/vertex/install-palette-vertex/airgap/offline-docs/ to learn more about the offline Documentation experience.
+# This workflow supports on-demand execution using the workflow_dispatch event.
+
 name: Nighly Docker Build
 
 on:
@@ -14,6 +20,10 @@ env:
   ALGOLIA_SEARCH_KEY: "123456789"
   ALGOLIA_INDEX_NAME: "madeup-index"
   PALETTE_API_KEY: ${{ secrets.PALETTE_API_KEY }}
+  DISABLE_PACKS_INTEGRATIONS: ${{ secrets.DISABLE_PACKS_INTEGRATIONS }}
+  DISABLE_SECURITY_INTEGRATIONS: ${{ secrets.DISABLE_SECURITY_INTEGRATIONS }}
+  SHOW_LAST_UPDATE_TIME: ${{ secrets.SHOW_LAST_UPDATE_TIME }}
+  DSO_AUTH_TOKEN: ${{ secrets.DSO_AUTH_TOKEN }}
 
 jobs:
   build:
@@ -29,11 +39,22 @@ jobs:
 
       - run: npm ci
 
-      - name: Compile
+      - name: Build
         run: |
           touch .env
-          make build
-
+          make build-ci
+      
+      - name: Build with cached packs
+        if: ${{ env.BUILD_EXIT_CODE == '5' }}
+        uses: ./.github/actions/build-cached-packs
+        with:
+          gh-token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Build with cached CVEs
+        if: ${{ env.BUILD_EXIT_CODE == '7' }}
+        uses: ./.github/actions/build-cached-cves
+        with:
+          gh-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v3
@@ -44,7 +65,7 @@ jobs:
 
       - name: Extract Docker metadata
         id: meta
-        uses: docker/metadata-action@v5.5.1
+        uses: docker/metadata-action@v5.6.1
         with:
           images: ghcr.io/${{ github.repository }}:nightly
 
@@ -67,7 +88,7 @@ jobs:
           tags: ghcr.io/${{ github.repository }}:nightly
           labels: ${{ steps.meta.outputs.labels }}
 
-      - uses: sigstore/cosign-installer@v3.6.0
+      - uses: sigstore/cosign-installer@v3.7.0
 
       - name: Image Signing
         run: |

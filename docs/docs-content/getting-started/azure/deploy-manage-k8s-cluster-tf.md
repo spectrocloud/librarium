@@ -379,7 +379,19 @@ resource "spectrocloud_cluster_azure" "azure-cluster" {
 ## Terraform Tests
 
 Before starting the cluster deployment, test the Terraform code to ensure the resources will be provisioned correctly.
-Issue the following command in your terminal.
+
+Issue the following command in your terminal to initialize Terraform. The `init` command initializes the working
+directory that contains the Terraform files.
+
+```shell
+terraform init
+```
+
+```text hideClipboard
+Terraform has been successfully initialized!
+```
+
+Next, issue the `terraform test` command to start the tests.
 
 ```bash
 terraform test
@@ -432,6 +444,12 @@ occurrences of `REPLACE_ME` with their corresponding values, such as those for t
 `azure-region`, `azure_subscription_id`, and `azure_resource_group` variables. You can also update the values for the
 nodes in the control plane or worker node pools as needed.
 
+:::warning
+
+Ensure that `azure-cloud-account-name` is replaced with the name of the Azure cloud account registered in Palette.
+
+:::
+
 ```hcl {4,8-11}
 ###########################
 # Azure Deployment Settings
@@ -474,17 +492,6 @@ environment variable. This step allows the Terraform code to authenticate with t
 
 ```bash
 export SPECTROCLOUD_APIKEY=<Your-Spectro-Cloud-API-key>
-```
-
-Next, issue the following command to initialize Terraform. The `init` command initializes the working directory that
-contains the Terraform files.
-
-```shell
-terraform init
-```
-
-```text hideClipboard
-Terraform has been successfully initialized!
 ```
 
 :::warning

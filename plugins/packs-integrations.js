@@ -14,7 +14,8 @@ import logger from "@docusaurus/logger";
 const filterLimit = 100; //Limit for fetching the packs from the Palette API
 const dirname = ".docusaurus/packs-integrations/";
 const logoDirname = "static/img/packs/";
-const filename = "api_pack_response.json";
+const packs_filename = "api_pack_response.json";
+const repos_filename = "api_repositories_response.json";
 const options = {
   headers: {
     "Content-Disposition": "attachment",
@@ -189,13 +190,15 @@ function getAggregatedVersions(registries, repositories, packUidMap) {
             (prevVersion) => prevVersion.title === commonVersion.title
           );
           const previousVersionChildrenSet = new Set(previousVersiontagdata.children.map((verssion) => verssion.title));
-          const commonComputedChildren = commonVersion.children.filter((child) =>
+          // Ensure that children are never undefined.
+          const commonVersionChildren = commonVersion.children || [];
+          const commonComputedChildren = commonVersionChildren.filter((child) =>
             previousVersionChildrenSet.has(child.title)
           );
           if (commonComputedChildren.length) {
             //merge non overlapping children in each parent version
             const mergedNonOverlappingChildren = [
-              ...commonVersion.children.filter((child) => !previousVersionChildrenSet.has(child.title)),
+              ...commonVersionChildren.filter((child) => !previousVersionChildrenSet.has(child.title)),
               ...previousVersiontagdata.children.filter((child) => !previousVersionChildrenSet.has(child.title)),
             ];
             commonComputedChildren.forEach((childComputedVersion) => {
@@ -213,7 +216,7 @@ function getAggregatedVersions(registries, repositories, packUidMap) {
             //merging non-overlapping children with the previous version children
             previousVersiontagdata.children = [...previousVersiontagdata.children, ...mergedNonOverlappingChildren];
           } else {
-            previousVersiontagdata.children = [...previousVersiontagdata.children, ...commonVersion.children];
+            previousVersiontagdata.children = [...previousVersiontagdata.children, ...commonVersionChildren];
           }
         });
         //merging the non-overlapping tags with the previous Versions
@@ -284,20 +287,34 @@ function generateRoutes(packsAllData) {
       metadata: {
         sourceFilePath: "../docs/docs-content/integrations/packs.mdx",
       },
-      data: { name: pack.name, version: pack.latestVersion, parent: parentVersion?.title },
+      data: { name: pack.name, version: pack.latestVersion, parent: parentVersion?.title, tab: "main" },
     };
   });
 }
 
-async function fetchPackListItems(queryParams, packDataArr, counter) {
-  const payload = { filter: { type: ["spectro", "oci"] } };
-  const response = await callRateLimitAPI(() => api.post(`/v1/packs/search${queryParams}`, payload));
+async function fetchPackListItems(queryParams, packDataArr, counter, mappedRepos) {
+  // Loop through the mappedRepos object and extract all the registries provided in the Docusarus config file
+  const registryUids = [];
+  for (let i = 0; i < mappedRepos.length; i++) {
+    registryUids.push(mappedRepos[i].uid);
+  }
+  // Provide the registryUids in the payload to fetch the packs ONLY from registries provided in the Docusarus config file
+  const payload = { filter: { type: ["spectro", "oci"], registryUid: registryUids } };
+  let response = [];
+  try {
+    response = await callRateLimitAPI(() => api.post(`/v1/packs/search${queryParams}`, payload));
+  } catch (error) {
+    logger.error("An error occurred while fetching packs:", error);
+    process.exit(5);
+  }
   const tempPackArr = packDataArr.concat(response?.data?.items);
+
   if (response?.data?.listmeta?.continue) {
     return fetchPackListItems(
       `?limit=${filterLimit}&continue=` + response.data.listmeta.continue,
       tempPackArr,
-      counter
+      counter,
+      mappedRepos
     );
   } else {
     return tempPackArr;
@@ -305,8 +322,15 @@ async function fetchPackListItems(queryParams, packDataArr, counter) {
 }
 
 async function mapRepositories(repositories) {
-  const ociRegistries = await api.get("v1/registries/oci/summary");
-  const packRegistries = await api.get("v1/registries/pack");
+  let ociRegistries = [];
+  let packRegistries = [];
+  try {
+    ociRegistries = await api.get("v1/registries/oci/summary");
+    packRegistries = await api.get("v1/registries/pack");
+  } catch (error) {
+    logger.error("An error occurred while fetching registries:", error);
+    process.exit(5);
+  }
   const mergedRegistries = [ociRegistries.data?.items || [], packRegistries.data?.items || []];
   const results = mergedRegistries.flat();
   const repoMap = repositories.reduce((acc, repository) => {
@@ -318,6 +342,9 @@ async function mapRepositories(repositories) {
     }
     return acc;
   }, []);
+
+  await writeResponseFile(`${dirname}${repos_filename}`, repoMap);
+
   return repoMap;
 }
 
@@ -379,24 +406,78 @@ async function getLogoUrl(packsAllData, logoUrlMap) {
   }
 }
 
+async function writeResponseFile(path, apiResponse) {
+  if (!existsSync(dirname)) {
+    mkdirSync(dirname, { recursive: true });
+  }
+  open(path, "w+", (err, fd) => {
+    if (err) {
+      logger.error("An error occurred while opening the JSON file:", err);
+      return;
+    }
+    try {
+      writeFile(path, JSON.stringify(apiResponse), (err1) => {
+        if (err1) {
+          logger.error("An error occurred while writing the JSON file:", err1);
+        }
+        logger.info(`API Response saved to ${path}`);
+      });
+    } finally {
+      close(fd, (err2) => {
+        if (err2) logger.error("An error occurred while closing the file:", err2);
+      });
+    }
+  });
+}
+
+// If the plugin is disabled, then the packs and integrations data will not be fetched.
+// However, the PDE service packs still need to be loaded.
+// Otherwise, errors will be thrown when the PDE service packs are accessed.
+// The redirect.js file has logic to redirect pack pages in production to the /integrations/ page.
 async function pluginPacksAndIntegrationsData(context, options) {
+  if (process.env.DISABLE_PACKS_INTEGRATIONS === "true") {
+    logger.warn(
+      "The Packs Integrations plugin is disabled. To enable it, set the environment variable DISABLE_PACKS_INTEGRATIONS to false."
+    );
+    return {
+      name: "plugin-packs-integrations",
+      async allContentLoaded({ allContent, actions }) {
+        const { setGlobalData } = actions;
+        const integrationsData = generateIntegrationData(allContent);
+        setGlobalData({ integrations: integrationsData });
+      },
+    };
+  }
+
   return {
     name: "plugin-packs-integrations",
     async loadContent() {
       const repositories = options.repositories || [];
-      const mappedRepos = await mapRepositories(repositories);
-      let apiPackResponse = {};
-      let isFileExists = false;
-      if (existsSync(dirname) && existsSync(`${dirname}${filename}`)) {
-        isFileExists = true;
+      let isPackFileExists = false;
+      let isReposFileExists = false;
+      let mappedRepos = [];
+      if (existsSync(dirname) && existsSync(`${dirname}${repos_filename}`)) {
+        isReposFileExists = true;
       }
-      let logoUrlMap = {};
-      if (!isFileExists) {
-        if (!existsSync(dirname)) {
-          mkdirSync(dirname, { recursive: true });
+      if (existsSync(dirname) && existsSync(`${dirname}${packs_filename}`)) {
+        isPackFileExists = true;
+      }
+      if (!isReposFileExists) {
+        mappedRepos = await mapRepositories(repositories);
+      } else {
+        try {
+          const data = await promises.readFile(`${dirname}${repos_filename}`);
+          mappedRepos = JSON.parse(data);
+        } catch (e) {
+          logger.error("An error occurred while reading the JSON file:", e);
         }
+      }
+
+      let apiPackResponse = {};
+      let logoUrlMap = {};
+      if (!isPackFileExists) {
         logger.info("Fetching the list of packs from the Palette API");
-        let packDataArr = await fetchPackListItems(`?limit=${filterLimit}`, [], 0);
+        let packDataArr = await fetchPackListItems(`?limit=${filterLimit}`, [], 0, mappedRepos);
 
         // Filter out the packs from the exclude list.
         packDataArr = packDataArr.filter((pack) => {
@@ -421,14 +502,20 @@ async function pluginPacksAndIntegrationsData(context, options) {
           packMDMap[packData.spec.name] = packData;
           const cloudType = packData.spec.cloudTypes.includes("all") ? "aws" : packData.spec.cloudTypes[0];
           const registryPackData = [];
-          for (const registry of packData.spec.registries) {
-            const url = `${packUrl}${packData.spec.name}/registries/${registry.uid}?cloudType=${cloudType}&layer=${packData.spec.layer}`;
-            registryPackData.push(
-              callRateLimitAPI(() => {
-                return api.get(url);
-              })
-            );
+          try {
+            for (const registry of packData.spec.registries) {
+              const url = `${packUrl}${packData.spec.name}/registries/${registry.uid}?cloudType=${cloudType}&layer=${packData.spec.layer}`;
+              registryPackData.push(
+                callRateLimitAPI(() => {
+                  return api.get(url);
+                })
+              );
+            }
+          } catch (error) {
+            logger.error("An error occurred while fetching packs:", error);
+            process.exit(5);
           }
+
           return registryPackData;
         });
         const flatted = promisesPackDetails.flat();
@@ -452,22 +539,10 @@ async function pluginPacksAndIntegrationsData(context, options) {
         apiPackResponse.apiPacksData = apiPacksData;
         apiPackResponse.packMDMap = packMDMap;
         apiPackResponse.logoUrlMap = logoUrlMap;
-        open(`${dirname}${filename}`, "w+", (err, fd) => {
-          try {
-            writeFile(`${dirname}${filename}`, JSON.stringify(apiPackResponse), (err) => {
-              if (err) {
-                logger.error("An error occurred while writing the JSON file:", err);
-              }
-            });
-          } finally {
-            close(fd, (err1) => {
-              if (err1) logger.error("An error occurred while closing the file:", err1);
-            });
-          }
-        });
+        await writeResponseFile(`${dirname}${packs_filename}`, apiPackResponse);
       } else {
         try {
-          const data = await promises.readFile(`${dirname}${filename}`);
+          const data = await promises.readFile(`${dirname}${packs_filename}`);
           apiPackResponse = JSON.parse(data);
         } catch (e) {
           logger.error("An error occurred while reading the JSON file:", e);

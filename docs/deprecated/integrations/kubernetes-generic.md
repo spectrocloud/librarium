@@ -15,7 +15,7 @@ providers. This pack defines the default properties we use to deploy Kubernetes 
 Kubernetes hardening standards that the Center for Internet Security (CIS) recommends.
 
 We also support managed Kubernetes distributions for Elastic Kubernetes Service (EKS), Azure Kubernetes Service (AKS),
-Google Kubernetes Engine (GKE), and Tencent Kubernetes Engine (TKE).
+and Google Kubernetes Engine (GKE).
 
 :::warning
 

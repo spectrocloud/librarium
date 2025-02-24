@@ -15,7 +15,12 @@ ALOGLIA_CONFIG=$(shell cat docsearch.dev.config.json | jq -r tostring)
 # Find all *.md files in docs, cut the prefix ./ 
 # Remove all security-bulletins and cve-reports.md because they are rate limited by nvd.nist.gov
 # Remove oss-licenses.md because they are rate limited by npmjs.com
-VERIFY_URL_PATHS=$(shell find ./docs -name "*.md" | cut -c 3- | sed '/security-bulletins/d' | sed '/cve-reports/d' | sed '/oss-licenses/d')
+# Remove all /deprecated paths because we don't want to maintain their links
+VERIFY_URL_PATHS=$(shell find ./docs -name "*.md" | cut -c 3- | \
+	sed '/security-bulletins/d' | \
+	sed '/cve-reports/d' | \
+	sed '/oss-licenses/d' | \
+	sed '/deprecated/d' )
 
 RATE_LIMITED_FILES_LIST:="docs/docs-content/security-bulletins/**/*.md" \
 	"docs/docs-content/security-bulletins/*.md" \
@@ -32,7 +37,7 @@ initialize: ## Initialize the repository dependencies
 	npx husky-init
 	vale sync
 
-clean: ## Clean common artifacts
+clean: clean-security ## Clean common artifacts
 	npm run clear && npm run clean-api-docs
 	rm -rfv build
 
@@ -54,6 +59,11 @@ clean-versions: ## Clean Docusarus content versions
 clean-packs: ## Clean supplemental packs and pack images
 	rm -rf static/img/packs
 	rm -rf .docusaurus/packs-integrations/api_pack_response.json
+	rm -rf .docusaurus/packs-integrations/api_repositories_response.json
+
+clean-security: ## Clean security bulletins
+	rm -rf .docusaurus/security-bulletins/default/*.json
+	rm -rfv docs/docs-content/security-bulletins/reports/*.md 
 
 clean-api: ## Clean API docs
 	@echo "cleaning api docs"
@@ -65,7 +75,6 @@ clean-visuals:
 	@echo "Cleaning visual regression tests"
 
 	rm -rf test-results/  playwright-report/  screenshots/
-	
 
 ##@ npm Targets
 
@@ -76,17 +85,99 @@ init: ## Initialize npm dependencies
 	grep -q "^ALGOLIA_APP_ID=" .env || echo "\nALGOLIA_APP_ID=1234567890" >> .env
 	grep -q "^ALGOLIA_SEARCH_KEY=" .env || echo "\nALGOLIA_SEARCH_KEY=1234567890" >> .env
 	grep -q "^ALGOLIA_INDEX_NAME=" .env || echo "\nALGOLIA_INDEX_NAME=spectrocloud" >> .env
+	grep -q "^DSO_AUTH_TOKEN=" .env || echo "\nDISABLE_SECURITY_INTEGRATIONS=true\nDSO_AUTH_TOKEN=" >> .env
+	grep -q "^PALETTE_API_KEY=" .env || echo "\nDISABLE_PACKS_INTEGRATIONS=true" >> .env
+	grep -q "^SHOW_LAST_UPDATE_TIME=" .env || echo "\nSHOW_LAST_UPDATE_TIME=false" >> .env
 	npx husky install
 
 start: ## Start a local development server
-	make generate-partials
 	npm run start
+
+start-cached-packs: ## Start a local development server with cached packs retry.
+	make generate-partials
+	@{ \
+		npm run start; \
+		exit_code=$$?; \
+		if [ "$$exit_code" = "5" ]; then \
+			echo "❌ Start has failed due to missing packs data..."; \
+			echo "ℹ️ Initializing fetch cached packs data..."; \
+			make get-cached-packs; \
+			echo "ℹ️ Retrying start... "; \
+			npm run start;\
+		fi; \
+	}
+
+start-cached-cves: ## Start a local development server with cached CVEs retry.
+	make generate-partials
+	@{ \
+		npm run start; \
+		exit_code=$$?; \
+		if [ "$$exit_code" = "7" ]; then \
+			echo "❌ Start has failed due to missing CVE data..."; \
+			echo "ℹ️ Initializing fetch cached CVE data..."; \
+			make get-cached-cves; \
+			echo "ℹ️ Retrying start... "; \
+			npm run start;\
+		fi; \
+	}
 
 build: ## Run npm build
 	@echo "building site"
 	npm run clear
 	rm -rf build
 	npm run build
+
+build-cached-packs: ## Run npm build with cached packs retry
+	@echo "building site"
+	npm run clear
+	rm -rf build
+	@{ \
+		npm run build; \
+		exit_code=$$?; \
+		if [ "$$exit_code" = "5" ]; then \
+			echo "❌ Build has failed due to missing packs data..."; \
+			echo "ℹ️ Initializing fetch cached packs data..."; \
+			make get-cached-packs; \
+			echo "ℹ️ Retrying build... "; \
+			npm run build;\
+		fi; \
+	}
+
+build-cached-cves: ## Run npm build with cached CVEs retry
+	@echo "building site"
+	npm run clear
+	rm -rf build
+	@{ \
+		npm run build; \
+		exit_code=$$?; \
+		if [ "$$exit_code" = "7" ]; then \
+			echo "❌ Build has failed due to missing CVE data..."; \
+			echo "ℹ️ Initializing fetch cached CVE data..."; \
+			make get-cached-cves; \
+			echo "ℹ️ Retrying build... "; \
+			npm run build;\
+		fi; \
+	}
+
+
+# This step is designed to always return a positive exit code due to the echo that outputs the exit code.
+# This is by design to ensure that the build step does not fail and subsequent GitHub Actions steps can execute that are dependent on the exit code.
+# It may be counterintuitive, but it is necessary to ensure that the build CI workflow does not fails completely without providing an opportunity for the retry steps that check the exit code.
+build-ci: ## Run npm build in CI environment
+	@echo "building site"
+	npm run clear
+	rm -rf build
+	@{ \
+		npm run build; \
+		exit_code=$$?; \
+		echo "BUILD_EXIT_CODE=$$exit_code" >> $(GITHUB_ENV); \
+		echo "Build exited with code $$exit_code..."; \
+		if [ $$exit_code -ne 0 ] && [ $$exit_code -ne 5 ] && [ $$exit_code -ne 7 ]; then \
+			echo "Unacceptable exit code: $$exit_code"; \
+			exit 1; \
+		fi; \
+	}
+	
 
 versions: ## Create Docusarus content versions
 	@echo "creating versions"
@@ -104,7 +195,7 @@ api: ## Generate API docs
 	npm run generate-api-docs
 
 test: ## Run Jest tests
-	npm test
+	npm test -- --no-cache
 
 test-visuals: ## Run visual regression tests
 	npx playwright test visuals/
@@ -132,8 +223,8 @@ commit: ## Add a Git commit. Usage: make commit MESSAGE="<your message here>"
 docker-image: ## Build the docker image
 	docker build -t $(IMAGE) .
 
-docker-start: docker-image ## Start a local development container
-	docker run --env-file=.env --rm -it -v $(CURDIR)/docs:/librarium/docs/ -p 9000:9000 $(IMAGE)
+docker-start: docker-image ## Build the docker image and start a local development container
+	docker run --env-file=.env --rm -it -v $(CURDIR)/docs:/librarium/docs/ -v $(CURDIR)/_partials/:/librarium/_partials/ -p 9000:9000 $(IMAGE)
 
 
 ##@ Writing Checks
@@ -221,10 +312,25 @@ format-images: ## Format images
 	@echo "formatting images in /static/assets/docs/images/ folder"
 	./scripts/compress-convert-images.sh
 
+###@ Find unused images assets
+
+find-unused-images:
+	@echo "Find unused image assets"
+	./scripts/find-unused-images.sh	
+
 ###@ Generate _partials/index.ts required to automatic partials usage.
 
 generate-partials: ## Generate
 	./scripts/generate-partials.sh
+
+###@ Fetch cached packs assets.
+
+get-cached-packs:
+	./scripts/get-cached-packs.sh
+
+###@ Fetch security bulletins
+get-cached-cves: 
+	./scripts/get-cached-cves.sh
 	
 ###@ Aloglia Indexing
 

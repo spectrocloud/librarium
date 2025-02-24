@@ -55,6 +55,8 @@ Started section to learn how they can grow with Palette and have a long-term rel
 In this section, you get an overview of other parts of Palette not yet covered by your Getting Started journey so far.
 Explore more through the following pages.
 
+<!-- vale off -->
+
 <SimpleCardGrid
   hideNumber="true"
   cards={[
@@ -62,19 +64,19 @@ Explore more through the following pages.
       title: "Palette Edge",
       description: "Explore Palette's Edge Capabilities.",
       buttonText: "Learn more",
-      relativeURL: "./edge",
+      url: "/getting-started/additional-capabilities/edge",
     },
     {
       title: "VerteX and Self-Hosted Palette",
       description: "Read about our dedicated Palette offerings, VerteX and Self-Hosted Palette.",
       buttonText: "Learn more",
-      relativeURL: "./self-hosted",
+      url: "/getting-started/additional-capabilities/self-hosted",
     },
     {
       title: "Virtual Machine Orchestrator",
       description: "Learn about Palette's Virtual Machine Orchestrator (VMO) and its management capabilities.",
       buttonText: "Learn more",
-      relativeURL: "./vmo",
+      url: "/getting-started/additional-capabilities/vmo",
     },
   ]}
 />

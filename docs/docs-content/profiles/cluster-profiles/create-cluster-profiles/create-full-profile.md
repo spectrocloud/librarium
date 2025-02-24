@@ -13,7 +13,7 @@ and Storage. Next, add layers using add-on profiles to expand the functionality 
 ## Prerequisites
 
 - Your Palette account role must have the `clusterProfile.create` permission to create a cluster profile. Refer to the
-  [Roles and Permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin)
+  [Roles and Permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile)
   documentation for more information.
 
 ## Create Full Profile
@@ -44,7 +44,7 @@ and Storage. Next, add layers using add-on profiles to expand the functionality 
    :::info
 
    Cluster profiles created from a Tech Preview cloud type are intended for clusters that a cloud provider deploys using
-   Palette's generic framework built upon the open-source Cluster API (CAPI) initiative.
+   Palette's generic framework built upon the open source Cluster API (CAPI) initiative.
 
    When creating a profile using a Tech Preview cloud type, you do not have to specify anything for the OS or Kubernetes
    layers. Out-of-the-box packs are provided for the network and storage profile layers.

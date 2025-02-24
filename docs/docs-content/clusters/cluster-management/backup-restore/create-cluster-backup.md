@@ -15,7 +15,7 @@ the source cluster.
 
 :::info
 
-Palette uses open-source Velero to provide backup and restore capabilities. You can learn more about Velero by checking
+Palette uses open source Velero to provide backup and restore capabilities. You can learn more about Velero by checking
 out their [Restore Reference](https://velero.io/docs/main/restore-reference) and
 [Backup Reference](https://velero.io/docs/main/backup-reference).
 
@@ -37,6 +37,9 @@ schedule a backup or initiate a backup on demand.
 - [On-demand Backup](#on-demand-backup)
 
 <br />
+## Limitations
+
+- Nodes in [Maintenance Mode](../maintenance-mode.md) are not included in the backup process.
 
 ## Schedule a Backup
 

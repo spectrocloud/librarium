@@ -415,7 +415,19 @@ resource "spectrocloud_cluster_vsphere" "vmware-cluster" {
 ## Terraform Tests
 
 Before starting the cluster deployment, test the Terraform code to ensure the resources will be provisioned correctly.
-Issue the following command in your terminal.
+
+Issue the following command in your terminal to initialize Terraform. The `init` command initializes the working
+directory that contains the Terraform files.
+
+```shell
+terraform init
+```
+
+```text hideClipboard
+Terraform has been successfully initialized!
+```
+
+Next, issue the `terraform test` command to start the tests.
 
 ```bash
 terraform test
@@ -517,17 +529,6 @@ environment variable. This step allows the Terraform code to authenticate with t
 
 ```bash
 export SPECTROCLOUD_APIKEY=<Your-Spectro-Cloud-API-key>
-```
-
-Next, issue the following command to initialize Terraform. The `init` command initializes the working directory that
-contains the Terraform files.
-
-```shell
-terraform init
-```
-
-```text hideClipboard
-Terraform has been successfully initialized!
 ```
 
 :::warning

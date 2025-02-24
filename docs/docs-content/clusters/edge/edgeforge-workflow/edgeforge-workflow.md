@@ -54,7 +54,7 @@ EdgeForge contains the following critical components:
 You can apply Center for Information System (CIS) hardening to the Edge artifacts with the `CIS_HARDENING` argument in
 your `.arg` file, which implements the guidelines and solutions provided by CIS to secure your systems automatically.
 For more information about available arguments in `.arg`, refer to
-[Edge Artifacts Build Configuration](./palette-canvos/arg.md). The code for how we achieve CIS hardening is open-source,
+[Edge Artifacts Build Configuration](./palette-canvos/arg.md). The code for how we achieve CIS hardening is open source,
 available in the [CanvOS repository](https://github.com/spectrocloud/CanvOS/tree/main/cis-harden).
 
 ### Edge Installer ISO

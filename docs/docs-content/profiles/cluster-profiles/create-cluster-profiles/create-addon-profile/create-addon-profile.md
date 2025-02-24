@@ -26,6 +26,14 @@ negative and positive numbers and 0. The default install order value is 0. The i
 which manifests in the profile are applied. The lowest-numbered packs will be installed first. Palette will wait a few
 moments when installing layers to ensure the readiness checks pass.
 
+To set the install order for an add-on pack layer, add the `spectrocloud.com/install-priority` annotation to the pack
+layer YAML. Replace the number with the desired install order value.
+
+```yaml
+pack:
+  spectrocloud.com/install-priority: "30"
+```
+
 If a readiness check for an add-on pack layer fails, Palette will keep checking the status every two minutes until the
 check passes. Once the readiness check passes for a pack with a lower priority, add-on layer packs with higher install
 priority will be installed.

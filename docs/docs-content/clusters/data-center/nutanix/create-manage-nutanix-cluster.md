@@ -162,8 +162,8 @@ update your cluster.
 
 - An active Nutanix cluster in Palette.
 - The `cluster.update` permission to update clusters. Refer to
-  [Roles and Permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-admin) for
-  more information.
+  [Roles and Permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster) for more
+  information.
 
 ### Enablement
 

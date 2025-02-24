@@ -73,7 +73,7 @@ const CustomTable = <T,>({
             >
               &lt;
             </button>
-            {[...Array(totalPages).keys()].map((page, index) => (
+            {[...Array(totalPages).keys()].map((index) => (
               <button
                 className={`${styles.paginationButton} ${currentPage === index + 1 ? styles.activePage : ""} `}
                 key={index}

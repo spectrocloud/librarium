@@ -34,6 +34,8 @@ Use the following resources to become familiar with the available tenant setting
 
 - [Add Tenant-Level Registry](add-registry.md)
 
+- [Add a Filter](./filters.md)
+
 - [API Key Management](api-key-management.md)
 
 - [Default Resource Limits](./palette-resource-limits.md)

@@ -47,7 +47,7 @@ computing is installed in the device along with the operating system and Kuberne
 
 :::info
 
-Edge is built on top of the open-source project [Kairos](https://kairos.io), which provides a tamper-proof immutable
+Edge is built on top of the open source project [Kairos](https://kairos.io), which provides a tamper-proof immutable
 operating system with zero downtime rolling upgrade.
 
 :::

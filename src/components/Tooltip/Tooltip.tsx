@@ -8,7 +8,7 @@ interface TooltipProps {
 
 export default function Tooltip(props: TooltipProps) {
   return (
-    <AntdTooltip color="#091e3b" title={props.children}>
+    <AntdTooltip color="#012121" title={props.children}>
       {props.trigger}
     </AntdTooltip>
   );

@@ -14,7 +14,7 @@ Palette Network Pack(s) helps provision resources for setting up Cluster network
 Kubernetes network model can be found
 [here](https://kubernetes.io/docs/concepts/cluster-administration/networking/#the-kubernetes-network-model).
 
-[Project Calico](http://docs.projectcalico.org/) is an open-source container networking provider and network policy
+[Project Calico](http://docs.projectcalico.org/) is an open source container networking provider and network policy
 engine.
 
 Calico provides highly scalable networking and network policy solution for connecting Kubernetes pods based on the same

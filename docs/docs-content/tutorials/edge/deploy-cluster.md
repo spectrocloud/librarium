@@ -75,9 +75,18 @@ To complete this tutorial, you will need the following:
 
 - [Git](https://git-scm.com/downloads). Ensure git installation by issuing the `git --version` command.
 
-- [Docker Engine](https://docs.docker.com/engine/install/) version 18.09.x or later. You can use the `docker --version`
-  command to view the existing Docker version. You should have root-level or `sudo` privileges on your Linux machine to
-  create privileged containers.
+- (Optional) [Earthly](https://earthly.dev/) is installed and available. If you do not install Earthly, you can still
+  build the artifacts, but it would require root privileges, and some of the resulting artifacts will be owned by the
+  root user.
+
+- An image management tool such as [Docker](https://docs.docker.com/engine/install/) or
+  [crane](https://github.com/google/go-containerregistry/blob/main/cmd/crane/README.md) is installed and available.
+
+  :::info
+
+  If you do not install Earthly, you must install Docker.
+
+  :::
 
 - A [Spectro Cloud](https://console.spectrocloud.com) account. If you have not signed up, you can sign up for an account
   [here](https://www.spectrocloud.com/get-started).
@@ -247,8 +256,8 @@ users:
 
 ## Build Artifacts
 
-The CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. Issue the following command to
-start the build process.
+The CanvOS utility uses [Earthly](https://earthly.dev/)(https://earthly.dev/) to build the target artifacts. Issue the
+following command to start the build process.
 
 :::warning
 
@@ -257,16 +266,38 @@ images are created for all the Palette-supported Kubernetes versions by default.
 used in this tutorial, the script builds 14 images. If your machine does not have enough disk space, the build process
 will fail silently.
 
-You can exclude image versions you do not need from the build process by commenting out the lines in the
-`build-provider-images` parameter in the file **Earthfile** in the **CanvOS** repository. This speeds up build process
-and reduces the amount of space required for the build process. For an example of excluding a version from build, refer
-to [Build Edge Artifacts guide](../../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md).
+If you are using a Git tag earlier than v4.4.12, you can exclude image versions you do not need from the build process
+by commenting out the lines in the `build-provider-images` parameter in the file **Earthfile** in the **CanvOS**
+repository.
+
+If you are using a Git tag later than v4.4.12, open the **k8s_versions.json** file in the CanvOS directory. Remove the
+Kubernetes versions that you don't need from the JSON object corresponding to your Kubernetes distribution.
+
+This speeds up build process and reduces the amount of space required for the build process. For an example of excluding
+a version from build, refer to
+[Build Edge Artifacts guide](../../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md).
 
 :::
+
+<Tabs group="earthly">
+
+<TabItem value="Earthly Installed">
+
+```bash
+earthly +build-all-images
+```
+
+</TabItem>
+
+<TabItem value="Earthly Not Installed">
 
 ```bash
 sudo ./earthly.sh +build-all-images
 ```
+
+</TabItem>
+
+</Tabs>
 
 ```hideClipboard bash {2}
 # Output condensed for readability

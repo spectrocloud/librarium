@@ -32,6 +32,8 @@ concepts.
 
 Explore more through the following tutorials.
 
+<!-- vale off -->
+
 <SimpleCardGrid
   hideNumber="true"
   cards={[
@@ -39,38 +41,38 @@ Explore more through the following tutorials.
       title: "Deploy a Custom Pack",
       description: "Learn how to deploy applications to a Kubernetes cluster using Palette's custom packs.",
       buttonText: "Learn more",
-      relativeURL: "./profiles/deploy-pack/",
+      url: "/tutorials/profiles/deploy-pack/",
     },
     {
       title: "Deploy a Cluster",
       description: "Learn how to deploy a Kubernetes cluster to a public cloud provider with Palette.",
       buttonText: "Learn more",
-      relativeURL: "./cluster-deployment/public-cloud/deploy-k8s-cluster/",
+      url: "/tutorials/cluster-deployment/public-cloud/deploy-k8s-cluster/",
     },
     {
       title: "Deploy App Workloads with a PCG",
       description:
         "Learn how to deploy a Private Cloud Gateway (PCG) to connect your data center or private cloud environment to Palette.",
       buttonText: "Learn more",
-      relativeURL: "./cluster-deployment/pcg/deploy-app-pcg/",
+      url: "/tutorials/cluster-deployment/pcg/deploy-app-pcg/",
     },
     {
       title: "Deploy an Application using Palette Dev Engine",
       description: "Learn how to deploy applications to a Kubernetes cluster using Palette’s App Mode.",
       buttonText: "Learn more",
-      relativeURL: "./cluster-deployment/pde/deploy-app/",
+      url: "/tutorials/cluster-deployment/pde/deploy-app/",
     },
     {
       title: "Deploy Cluster Profile Updates",
       description: "Learn how to update your deployed clusters using Palette Cluster Profiles.",
       buttonText: "Learn more",
-      relativeURL: "./cluster-management/update-maintain/update-k8s-cluster/",
+      url: "/tutorials/cluster-management/update-maintain/update-k8s-cluster/",
     },
     {
       title: "Deploy an Edge Cluster on VMware",
       description: "Learn how to deploy an Edge host using VMware as the deployment platform.",
       buttonText: "Learn more",
-      relativeURL: "./edge/deploy-cluster/",
+      url: "/tutorials/edge/deploy-cluster/",
     },
   ]}
 />

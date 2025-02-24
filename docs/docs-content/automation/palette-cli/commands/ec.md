@@ -164,7 +164,7 @@ configuration for the operating system that will be used to install the Enterpri
 ## Validate Environment
 
 You can use the `--validate` flag to scan the environment and conduct validation before the Enterprise Cluster is
-installed. The validation uses the open-source project [Validator](https://github.com/validator-labs/validator) to check
+installed. The validation uses the open source project [Validator](https://github.com/validator-labs/validator) to check
 for the following prerequisites:
 
 - The required vSphere permissions and privileges are available for the provided user.

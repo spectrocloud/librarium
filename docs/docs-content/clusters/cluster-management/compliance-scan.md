@@ -17,10 +17,10 @@ purposes. To learn more about each scan type, refer to the following sections.
 
 :::info
 
-Scans may not work as expected when a node is in maintenance mode. Before scheduling a scan, we recommend you turn off
-maintenance mode if enabled. To verify if a node is in maintenance mode, navigate to **Clusters** > **Nodes** and check
-the **Health** column for a **Maintenance mode** icon. To turn off maintenance mode, click on the **three-dot Menu** in
-the row of the node you want to scan, and select **Turn off maintenance mode**.
+Scans cannot be performed when a node is in [maintenance mode](./maintenance-mode.md). To verify if a node is in
+maintenance mode, navigate to **Clusters** > **Nodes** and check the **Health** column for a **Maintenance mode** icon.
+To turn off maintenance mode, click on the **three-dot Menu** in the row of the node you want to scan, and select **Turn
+off maintenance mode**.
 
 :::
 
@@ -38,7 +38,7 @@ page for guidance on how to upload the conformance packs to the self-hosted OCI 
 This scan examines the compliance of deployed Kubernetes security features against the CIS Kubernetes Benchmarks. CIS
 Kubernetes Benchmarks are consensus-driven security guidelines for the Kubernetes. Different releases of the CIS
 benchmark cover different releases of Kubernetes. By default, Kubernetes configuration security will determine the test
-set based on the Kubernetes version running on the cluster being scanned. Internally, Palette leverages an open-source
+set based on the Kubernetes version running on the cluster being scanned. Internally, Palette leverages an open source
 tool called KubeBench from Aqua Security to perform this scan. Scans are run against control plane and worker nodes of
 the Kubernetes cluster, and a combined report is made available on the UI. Users can filter the report to view only the
 control plane or worker results if required.
@@ -53,7 +53,7 @@ and it is suggested to be tested manually.
 Kubernetes penetration testing scans Kubernetes-related open-ports for any configuration issues that can leave the
 tenant clusters exposed to attackers. It hunts for security issues in your Kubernetes clusters and increases awareness
 and visibility of the security controls in Kubernetes environments. The scan gives a full report on the cluster security
-concerns. Internally Palette leverages an open-source tool called KubeHunter from Aqua Security to perform this scan.
+concerns. Internally Palette leverages an open source tool called KubeHunter from Aqua Security to perform this scan.
 Scans are run in 2 modes, Internal and External. In the internal mode, tests are run against the internal endpoint of
 the API server, whereas, in external mode, the external public-facing endpoint is used for testing. A combined report of
 vulnerabilities found in both modes is shown on the Palette UI. Users can filter the report to view just the internal or
@@ -64,7 +64,7 @@ external report if required.
 ## Conformance Testing
 
 Kubernetes conformance testing is about validating your Kubernetes configuration to ensure that they are conformant to
-the CNCF specifications. Palette leverages an open-source tool called Sonobuoy to perform this scan. Automatically
+the CNCF specifications. Palette leverages an open source tool called Sonobuoy to perform this scan. Automatically
 select a subset of relevant tests for execution based on the type of cloud (public, private) and the type of deployment
 infrastructure (IaaS, managed cloud service). Each test can take up to 2 hours to complete. If a cluster has a single
 worker node, a few tests may fail due to resources. For accurate assessment of conformance for distribution of
@@ -100,7 +100,7 @@ and choose the desired SBOM format, scan scope, and an optional backup location.
 
 Palette will identify every unique container image within your chosen scope and generate an SBOM for that image. Palette
 also runs the SBOM through a vulnerability scanner to flag any Common Vulnerabilities and Exposures (CVEs). Palette
-leverages two open-source tools from Anchore: [Syft](https://github.com/anchore/syft) for SBOM generation and
+leverages two open source tools from Anchore: [Syft](https://github.com/anchore/syft) for SBOM generation and
 [Grype](https://github.com/anchore/grype) for vulnerability detection.
 
 Suppose you specify a [backup location](backup-restore/backup-restore.md). In that case, the SBOM for each image will be
@@ -118,7 +118,7 @@ location setting.
 - [SPDX](https://github.com/spdx/spdx-spec/blob/v2.2/schemas/spdx-schema.json): A standard SBOM format widely used by
   organizations and governments. The SPDX format has been around longer than any other SBOM format.
 
-- [CycloneDX](https://cyclonedx.org/specification/overview/): An open-source XML-based SBOM format that provides a
+- [CycloneDX](https://cyclonedx.org/specification/overview/): An open source XML-based SBOM format that provides a
   standard representation of software components and their metadata.
 
 - Syft JSON: Syft's custom SBOM format. The Syft SBOM format contains the most metadata compared to the other SBOM

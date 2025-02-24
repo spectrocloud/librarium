@@ -241,7 +241,7 @@
   },
   {
     "name": "csi-portworx-generic",
-    "description": "The Portworx CSI Driver provides a standardized way to manage storage resources in containerized environments. This driver supports the full range of Portworx features and most of the CSI specifications, facilitating seamless integration and management of storage across different platforms."
+    "description": "Portworx Enterprise provides a standardized way to manage storage resources in containerized environments. This driver supports the full range of Portworx features and most of the CSI specifications, facilitating seamless integration and management of storage across different platforms."
   },
   {
     "name": "csi-portworx-vsphere",
@@ -261,7 +261,7 @@
   },
   {
     "name": "portworx-add-on",
-    "description": "The Portworx CSI Driver provides a standardized way to manage storage resources in containerized environments. This driver supports the full range of Portworx features and most of the CSI specifications, facilitating seamless integration and management of storage across different platforms."
+    "description": "Portworx Enterprise provides a standardized way to manage storage resources in containerized environments. This driver supports the full range of Portworx features and most of the CSI specifications, facilitating seamless integration and management of storage across different platforms."
   },
   {
     "name": "csi-rook-ceph",

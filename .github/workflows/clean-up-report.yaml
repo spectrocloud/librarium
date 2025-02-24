@@ -1,3 +1,8 @@
+# This workflow is triggered when a branch is deleted, except for master, main, and gh-pages.
+# The visual tests reports for the deleted branch are removed from the gh-pages branch. This is to ensure that the reports are not visible on the website after the branch is deleted and to reduce the size of the repository.
+# The workflow also removes branches that may have been automatically added to Netlify's branch deploy list. 
+# It's common for release related branches to be added to the Netlify branch deploy list. Otherwise, if not part of the deploy list, the branch will not receive a Netlify deploy preview URL.
+
 name: Delete Visual Tests Reports
 
 on:

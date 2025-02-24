@@ -18,8 +18,8 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in Azure.
   API key.
 - A public [Azure](https://learn.microsoft.com/en-us/training/modules/create-an-azure-account) cloud account with the
   required [permissions](../../clusters/public-cloud/azure/required-permissions.md).
-- An SSH key pair available. Check out the [Create an Upload an SSH Key](../../clusters/cluster-management/ssh-keys.md)
-  page for guidance.
+- An SSH key pair available. Check out the
+  [Create and Upload an SSH Key](../../clusters/cluster-management/ssh/ssh-keys.md) page for guidance.
 - The Azure account must be registered in Palette. Follow the
   [Register and Manage Azure Cloud Account](../../clusters/public-cloud/azure/azure-cloud.md) guide to register your
   account in Palette.

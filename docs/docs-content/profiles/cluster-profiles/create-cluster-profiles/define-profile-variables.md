@@ -33,7 +33,7 @@ The following table describes the difference between profile variables and macro
 | Belongs to the tenant scope                                               |          ❌          |    ✅     |
 | Supports data format restrictions                                         |          ✅          |    ❌     |
 | Supports optionality restrictions                                         |          ✅          |    ❌     |
-| Supports [sprig template functions](https://masterminds.github.io/sprig/) |          ✅          |    ✅     |
+| Supports [sprig template functions](https://masterminds.github.io/sprig/) |          ❌          |    ✅     |
 
 This guide explains how you can define and manage cluster profile variables.
 
@@ -58,8 +58,8 @@ This guide explains how you can define and manage cluster profile variables.
 ### Prerequisites
 
 - The `clusterProfile.create` and `clusterProfile.update` permissions to create and update cluster profiles. Refer to
-  [Roles and Permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin)
-  for more information.
+  [Roles and Permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile) for
+  more information.
 
 - An in-progress or already created cluster profile. The cluster profile must either have the **Edge Native**
   infrastructure or be an edge-based add-on profile.
@@ -176,8 +176,8 @@ variables in the new version.
 ### Prerequisites
 
 - The `clusterProfile.update` permission to update cluster profiles. Refer to
-  [Roles and Permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin)
-  for more information.
+  [Roles and Permissions](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile) for
+  more information.
 
 - A cluster profile with profile variables created in Palette.
 

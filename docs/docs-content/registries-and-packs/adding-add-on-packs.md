@@ -42,7 +42,6 @@ the Spectro Cloud CLI:
    {
      "addonType": "monitoring",
      "annotations": {},
-     "ansibleRoles": [],
      "cloudTypes": ["all"],
      "displayName": "Prometheus-Grafana",
      "eol": " ",

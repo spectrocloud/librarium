@@ -1,0 +1,123 @@
+# This workflow removed unused images from the repository and creates a PR to clean them up.
+# The workflow runs on the first day of every month at 2 am UTC.
+# Any image that is not referenced in the repository is considered unused.
+# This workflow supports on-demand execution using the workflow_dispatch event.
+
+name: Clean Up Unused Images
+
+on:
+  schedule:
+    # On the first of every month at 2 am
+    - cron: '0 2 1 * *'
+  workflow_dispatch:
+
+concurrency:
+  group: clean-up-images-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  find_unused_images:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Retrieve Credentials
+        id: import-secrets
+        uses: hashicorp/vault-action@v3.1.0
+        with:
+          url: https://vault.prism.spectrocloud.com
+          method: approle
+          roleId: ${{ secrets.VAULT_ROLE_ID }}
+          secretId: ${{ secrets.VAULT_SECRET_ID }}
+          secrets: /providers/github/organizations/spectrocloud/token?org_name=spectrocloud token | VAULT_GITHUB_TOKEN
+
+      - id: checkout
+        name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
+
+      - name: Setup Nodejs
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      
+      - run: npm ci
+
+      - name: Find unused images
+        run: make find-unused-images
+
+      - name: Set Git User
+        # see: https://github.com/actions/checkout/issues/13#issuecomment-724415212
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Create PR with unused images
+        run: |
+          file="unused_images.json"
+          if [[ -f "$file" ]]; then
+            unused_image_count=$(wc -l < "$file")
+            if [ "$unused_image_count" -eq 0 ]; then
+              echo "No images found to remove."
+              exit 0
+            fi
+          else
+            echo "File $file not found."
+            exit 1
+          fi
+
+          # Ensure that we are on master.
+          git checkout master
+
+          # Create a new branch.
+          branch_name="clean-up-unused-images-$(date +%Y%m%d%H%M%S)"
+          git checkout -b "$branch_name"
+
+          # Remove all the images identified as unused.
+          for img in $(cat unused_images.json); do
+            rm static/assets/docs/images/$img
+          done
+
+          # Construct backport labels.
+          backport_labels="auto-backport"
+          for branch in $(cat evaluated_branches.json); do
+            if [[ $branch =~ version-[0-9]+(-[0-9]+)*$ ]]; then
+              backport_labels+=",backport-$branch"
+            fi 
+          done
+
+          # Clean up results file.
+          rm unused_images.json
+          rm evaluated_branches.json
+
+          # Commit and push branch
+          git add .
+          git commit -m "docs: clean up unused images"
+          git push origin $branch_name
+
+          # Create the pull request
+          pr_body='
+          ## Describe the Change
+          This PR removes images identified as unused across all our branches. 
+          The images are identified using `scripts/find-unused-images.sh` script.
+          Please review this PR carefully before merging it.'
+
+          output=$(gh pr create --base master --title "docs: clean up librarium unused images " --body "$pr_body" --label "$backport_labels")
+          pr_url=$(echo "$output" | grep -o "https://[^ ]*")
+          echo "PR successfully created $pr_url."
+
+          echo "GITHUB_CREATED_CLEANUP_PR=$pr_url" >> $GITHUB_ENV
+        env:
+          GH_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
+
+      - name: Slack Notification
+        if: ${{ env.GITHUB_CREATED_CLEANUP_PR  != ''}}
+        uses: rtCamp/action-slack-notify@v2.3.2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
+          SLACK_USERNAME: "spectromate"
+          SLACK_ICON_EMOJI: ":ok_hand:"
+          SLACK_COLOR: ${{ job.status }}
+          SLACKIFY_MARKDOWN: true
+          ENABLE_ESCAPES: true
+          SLACK_MESSAGE: 'A new PR with unused images to clean up was created. Please review ${{env.GITHUB_CREATED_CLEANUP_PR}} for more details.'

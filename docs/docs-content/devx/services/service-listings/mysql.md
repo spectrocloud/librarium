@@ -10,7 +10,7 @@ logoUrl: "https://registry.dev.spectrocloud.com/v1/mysql-operator/blobs/sha256:2
 tags: ["devx", "app mode", "pde", "databases"]
 ---
 
-[MySQL](https://mysql.com/) is an open-source relational database management system commonly used in web applications
+[MySQL](https://mysql.com/) is an open source relational database management system commonly used in web applications
 and other software that requires a database. It is known for its reliability, ease of use, and flexibility. MySQL is
 covered under the GNU license and uses structured query language (SQL) to manage data with the following properties:
 

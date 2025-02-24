@@ -12,9 +12,10 @@ keywords: ["self-hosted", "enterprise"]
 ---
 
 Use the following checklist to ensure you have completed all the required steps before deploying the airgap Palette
-installation.
+installation. Review this checklist with your Palette support team to ensure you have all the required assets.
 
-- [ ] Create a vSphere VM and Template folder named `spectro-templates`.
+- [ ] Create a vSphere VM and Template folder named `spectro-templates`. You may choose a different name for the folder
+      if you prefer.
 
 - [ ] Import the Operating System and Kubernetes distribution OVA required for the installation and place the OVA in the
       `spectro-templates` folder.
@@ -25,6 +26,9 @@ installation.
 
 - [ ] Review the list of [pack binaries](../../airgap/supplemental-packs.md) to download and upload to your OCI
       registry.
+
+- [ ] Download the release binary that contains the core packs and images required for the installation.
+
 - [ ] If you have custom SSL certificates you want to include, copy the custom SSL certificates, in base64 PEM format,
       to the support VM. The custom certificates must be placed in the **/opt/spectro/ssl** folder. Include the
       following files:

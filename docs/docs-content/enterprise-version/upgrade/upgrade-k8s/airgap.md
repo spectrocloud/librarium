@@ -45,6 +45,10 @@ Palette upgrade.
 - Access to the latest Palette Helm Chart. Refer to [Access Palette](/enterprise-version/#access-palette) for more
   details.
 
+- The Kubernetes cluster must be set up on a version of Kubernetes that is compatible to your upgraded version. Refer to
+  the [Kubernetes Requirements](../../install-palette/install-palette.md#kubernetes-requirements) section to find the
+  version required for your Palette installation.
+
 ## Upgrade
 
 1.  Log in to the Linux environment from which you can access your self-hosted airgap Palette instance.
@@ -281,30 +285,27 @@ Palette upgrade.
     ```
 
 11. In a code editor of your choice, open the **extras/cert-manager/values.yaml** file and replace the
-    `controllerImage`, `webhookImage`, and `amceResolverImage` image URLs with your OCI image registry URLs.
+    `cainjectorImage`,`controllerImage`, `webhookImage`, and `amceResolverImage` image URLs and with your OCI image
+    registry URL and the `/spectro-images/` namespace.
 
-    ```yaml
+    ```yaml {2-5}
     image:
-    cainjectorImage: "gcr.io/spectro-images-public/release-fips/jetstack/cert-manager-cainjector:spectro-v1.11.0-20230427"
-    // highlight-start
-    controllerImage: "<your-oci-registry-url>/spectro-images-public/release-fips/jetstack/cert-manager-controller:spectro-v1.11.0-20230427"
-    webhookImage: "<your-oci-registry-url>/spectro-images-public/release-fips/jetstack/cert-manager-webhook:spectro-v1.11.0-20230808"
-    amceResolverImage: "<your-oci-registry-url>/spectro-images-public/release-fips/jetstack/cert-manager-acmesolver:spectro-v1.11.0-20230427"
-    // highlight-end
+    cainjectorImage: "<your-oci-registry-url>/spectro-images/gcr.io/spectro-images-public/release-fips/jetstack/cert-manager-cainjector:spectro-v1.11.0-20230427"
+    controllerImage: "<your-oci-registry-url>/spectro-images/gcr.io/spectro-images-public/release-fips/jetstack/cert-manager-controller:spectro-v1.11.0-20230427"
+    webhookImage: "<your-oci-registry-url>/spectro-images/gcr.io/spectro-images-public/release-fips/jetstack/cert-manager-webhook:spectro-v1.11.0-20230808"
+    amceResolverImage: "<your-oci-registry-url>/spectro-images/gcr.io/spectro-images-public/release-fips/jetstack/cert-manager-acmesolver:spectro-v1.11.0-20230427"
 
     featureGates: "AdditionalCertificateOutputFormats=true"
     ```
 
     Consider the following example for reference.
 
-    ```yaml
+    ```yaml {2-5}
     image:
-    cainjectorImage: "gcr.io/spectro-images-public/release-fips/jetstack/cert-manager-cainjector:spectro-v1.11.0-20230427"
-    // highlight-start
-    controllerImage: "harbor.docs.spectro.dev/spectro-images-public/release-fips/jetstack/cert-manager-controller:spectro-v1.11.0-20230427"
-    webhookImage: "harbor.docs.spectro.dev/spectro-images-public/release-fips/jetstack/cert-manager-webhook:spectro-v1.11.0-20230808"
-    amceResolverImage: "harbor.docs.spectro.dev/spectro-images-public/release-fips/jetstack/cert-manager-acmesolver:spectro-v1.11.0-20230427"
-    // highlight-end
+    cainjectorImage: "harbor.docs.spectro.dev/spectro-images/gcr.io/spectro-images-public/release-fips/jetstack/cert-manager-cainjector:spectro-v1.11.0-20230427"
+    controllerImage: "harbor.docs.spectro.dev/spectro-images/gcr.io/spectro-images-public/release-fips/jetstack/cert-manager-controller:spectro-v1.11.0-20230427"
+    webhookImage: "harbor.docs.spectro.dev/spectro-images/gcr.io/spectro-images-public/release-fips/jetstack/cert-manager-webhook:spectro-v1.11.0-20230808"
+    amceResolverImage: "harbor.docs.spectro.dev/spectro-images/gcr.io/spectro-images-public/release-fips/jetstack/cert-manager-acmesolver:spectro-v1.11.0-20230427"
 
     featureGates: "AdditionalCertificateOutputFormats=true"
     ```

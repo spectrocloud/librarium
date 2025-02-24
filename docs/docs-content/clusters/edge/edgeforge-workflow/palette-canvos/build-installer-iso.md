@@ -63,6 +63,19 @@ process.
 
 - [Git](https://git-scm.com/downloads). You can ensure git installation by issuing the `git --version` command.
 
+- (Optional) [Earthly](https://earthly.dev/) is installed and available. If you do not install Earthly, you can still
+  build the artifacts, but it would require root privileges, and some of the resulting artifacts will be owned by the
+  root user.
+
+- An image management tool such as [Docker](https://docs.docker.com/engine/install/) or
+  [crane](https://github.com/google/go-containerregistry/blob/main/cmd/crane/README.md) is installed and available.
+
+  :::info
+
+  If you do not install Earthly, you must install Docker.
+
+  :::
+
 ## Instructions
 
 Use the following instructions to build the Edge Installer ISO. The optional steps can be completed any order.
@@ -115,7 +128,6 @@ Use the following instructions to build the Edge Installer ISO. The optional ste
    HTTP_PROXY=
    PROXY_CERT_PATH=
    UPDATE_KERNEL=false
-   EOF
    ```
 
 7. (Optional) You can embed a public key in your Edge installer ISO. If you choose to add a public key to your ISO or
@@ -196,9 +208,25 @@ Local UI once you finish installing Palette on the Edge host.
 
 16. Issue the following command to build the ISO image.
 
-    ```shell
-    ./earthly.sh +iso
+    <Tabs group="earthly">
+
+    <TabItem value="Earthly Installed">
+
+    ```bash
+    earthly +iso
     ```
+
+    </TabItem>
+
+    <TabItem value="Earthly Not Installed">
+
+    ```bash
+    sudo ./earthly.sh +iso
+    ```
+
+    </TabItem>
+
+    </Tabs>
 
     ```
     # Output condensed for readability

@@ -44,7 +44,7 @@ Registry. If your environment does not include the registry, contact our
 ## Prerequisites
 
 - Your Palette account role must have the `clusterProfile.create` permission to create a profile. Refer to the
-  [Roles and Permissions](../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile-admin)
+  [Roles and Permissions](../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile)
   documentation for more information.
 - Ensure that the community registry is available in your Palette [environment](#supported-environments).
 

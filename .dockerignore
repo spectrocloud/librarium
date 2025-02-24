@@ -9,3 +9,6 @@ screenshots/
 tests/screenshot.spec.ts-snapshots/
 tests-results/
 playwright-report/
+.docusaurus/
+.git
+.github

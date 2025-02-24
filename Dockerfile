@@ -2,15 +2,21 @@ FROM node:20-alpine
 
 WORKDIR /librarium
 
-COPY ./scripts/entry.sh /entry.sh
+ENV DISABLE_PACKS_INTEGRATIONS=true
+ENV DISABLE_SECURITY_INTEGRATIONS=true
+
 COPY --chown=node . .
-RUN apk add util-linux && \
-chmod +x /entry.sh && \
-mkdir .cache && \
-npm ci && \
-chown -R node:node /librarium
+
+RUN apk add --no-cache util-linux bash && \
+    npm install @docusaurus/faster &&\
+    npm ci && \
+    chmod -R +x scripts 
+
+
+RUN chown -R node:node /librarium
+
 
 EXPOSE 9000
 USER node
-ENTRYPOINT ["/entry.sh"]
-CMD ["npm", "run", "start"]
+
+CMD ["npm","run","start"]

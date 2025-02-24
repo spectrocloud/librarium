@@ -17,7 +17,13 @@ Palette 4.0.0, the management platform communicates with the workload cluster vi
 
 The following ports must be reachable from a network perspective for Palette SaaS to function correctly.
 
-![SaaS Network Diagram with ports](/architecture_networking-ports_saas-network-diagram-grpc.webp "title=SaaS Network Diagram with ports")
+### SaaS Managed Without a PCG
+
+![SaaS Network Diagram with ports without a PCG](/architecture_networking-ports_saas-network-diagram-grpc-no-pcg.webp)
+
+### SaaS Managed With a PCG
+
+![SaaS Network Diagram with ports using a PCG](/architecture_networking-ports_saas-network-diagram-grpc.webp "title=SaaS Network Diagram with ports w/PCG")
 
 ### SaaS Managed With Edge
 

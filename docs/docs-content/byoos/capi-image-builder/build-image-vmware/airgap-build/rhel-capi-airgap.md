@@ -32,7 +32,7 @@ Enterprise Linux (RHEL) image with <VersionedLink text="Palette eXtended Kuberne
   vSphere.
 
 - SSH access to the VMware vSphere
-  [airgap support VM](../../../../enterprise-version/install-palette/install-on-vmware/airgap-install/vmware-vsphere-airgap-instructions.md)
+  [airgap support VM](../../../../enterprise-version/install-palette/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions.md)
   utilized to deploy the airgapped instance of Palette or Vertex.
 
 - The following artifacts must be available in the root home directory of the airgap support VM. You can download the
@@ -395,14 +395,14 @@ Enterprise Linux (RHEL) image with <VersionedLink text="Palette eXtended Kuberne
             <TabItem value="Docker" label="Docker">
 
              ```bash
-             BUILD_ID_CAPI=$(docker run --net=host --volume /home/ubuntu/output:/home/imagebuilder/output  --detach  gcr.io/spectro-images-public/imagebuilder/capi-builder:v1.5.0)
+             BUILD_ID_CAPI=$(docker run --net=host --volume /root/output:/home/imagebuilder/output --detach gcr.io/spectro-images-public/imagebuilder/capi-builder:v4.4.4)
              ```
             </TabItem>
 
             <TabItem value="Podman" label="Podman">
 
              ```bash
-             BUILD_ID_CAPI=$(podman run --net=host --volume /home/ubuntu/output:/home/imagebuilder/output  --detach  gcr.io/spectro-images-public/imagebuilder/capi-builder:v1.5.0)
+             BUILD_ID_CAPI=$(podman run --net=host --volume /root/output:/home/imagebuilder/output --detach gcr.io/spectro-images-public/imagebuilder/capi-builder:v4.4.4)
              ```
 
             </TabItem>

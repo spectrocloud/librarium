@@ -6,6 +6,7 @@ src/deprecated
 vale/
 **/*.yaml
 **/*.yml
+.dockerignore
 
 docs/api-content/**/*.json
 
@@ -13,11 +14,9 @@ docs/api-content/**/*.json
 tsconfig.json
 src/components/IconMapper/dynamicFontAwesomeImports.*
 docs/docs-content/security-bulletins/cve-reports.md
-<<<<<<< HEAD
-=======
 docs/docs-content/security-bulletins/reports/*.md
 .eslintignore
->>>>>>> d68ceddc2 (chore: add kapa branch (#4858))
+docs/docs-content/security-bulletins/reports/*.md
 
 # Ignore partials
 _partials/

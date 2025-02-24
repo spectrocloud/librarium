@@ -23,7 +23,7 @@ For more detailed information about the technical architecture of VMO, refer to 
 By default, Palette VMO includes the following components:
 
 - **Descheduler**. Enables VM live migration to different nodes in the node pool when the original node is in
-  maintenance mode.
+  [maintenance mode](../clusters/cluster-management/maintenance-mode.md).
 
 - **Snapshot Controller**. Enables you to create VM snapshots. This component is automatically installed when you
   initiate or schedule cluster backups.
@@ -46,7 +46,7 @@ By default, Palette VMO includes the following components:
 - **Spectro VM Dashboard**. Enables you to create, manage, and monitor VMs from Palette. The dashboard becomes available
   once the VMO pack is successfully deployed as part of your cluster profile.
 
-- **KubeVirt**. This open-source solution enables you to create and manage VMs within Kubernetes clusters. KubeVirt
+- **KubeVirt**. This open source solution enables you to create and manage VMs within Kubernetes clusters. KubeVirt
   extends Kubernetes with additional virtualization resource types using Kubernetes Custom Resource Definitions (CRD)
   API.
 

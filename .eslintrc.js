@@ -23,6 +23,18 @@ module.exports = {
       rules: {
         "@typescript-eslint/no-explicit-any": "off",
         "@typescript-eslint/no-unsafe-assignment": "off",
+        "@typescript-eslint/no-unused-vars": [
+          "error",
+          {
+            args: "all",
+            argsIgnorePattern: "^_",
+            caughtErrors: "all",
+            caughtErrorsIgnorePattern: "^_",
+            destructuredArrayIgnorePattern: "^_",
+            varsIgnorePattern: "^_",
+            ignoreRestSiblings: true,
+          },
+        ],
       },
       overrides: [{ files: ["*.js", "*.jsx"], extends: ["plugin:@typescript-eslint/disable-type-checked"] }],
     },

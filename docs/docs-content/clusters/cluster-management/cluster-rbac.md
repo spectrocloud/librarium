@@ -99,11 +99,9 @@ Use the steps below to create a RoleBinding or ClusterRoleBinding for your host 
 
 ## Palette Roles and Kubernetes Roles
 
-Palette offers a set of
-[default roles](../../user-management/palette-rbac/palette-rbac.md#assign-palette-specific-roles-to-users) you can
-assign to your users. The Palette roles are only in scope at the platform level. This means you can manage the
-permissions for users' actions in Palette, such as creating or deleting clusters, creating projects, creating users, and
-more.
+Palette offers a set of [default roles](../../user-management/palette-rbac/palette-rbac.md) you can assign to your
+users. The Palette roles are only in scope at the platform level. This means you can manage the permissions for users'
+actions in Palette, such as creating or deleting clusters, creating projects, creating users, and more.
 
 The Kubernetes roles are used to control the actions users are allowed to do inside the cluster. For example, a user in
 Palette could have the _Cluster Profile Viewer_ role, which grants them the ability to view cluster profiles for a

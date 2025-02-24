@@ -25,6 +25,10 @@ configured through Local UI will be retained even after a
 
 - An active HTTP proxy server.
 
+- If your Certificate Authority (CA) certificates are not base64-encoded, you need a utility or tool to convert the
+  certificate and key files to base64-encoded strings. You can use the `base64` command in Unix-based systems.
+  Alternatively, you can use an online tool to convert the files to base64-encoded strings.
+
 ## Configure HTTP Proxy
 
 1. Log in to Local UI. You should be directed to the **Edge Host** page after signing in. If not, click on **Edge Host**
@@ -39,7 +43,7 @@ configured through Local UI will be retained even after a
    | HTTP Endpoint   | The address where the HTTP proxy server is located. It's used to route HTTP traffic through the proxy.                                                                    |
    | HTTPS Endpoint  | The address where the HTTPS proxy server is located. It's used to route HTTPS traffic through the proxy.                                                                  |
    | No Proxy        | Specifies exceptions to the proxy rules. It lists addresses or domains that should bypass the proxy and connect directly, useful for local or internal network resources. |
-   | CA Certificates | CA certificates that are used to authenticate the proxy server.                                                                                                           |
+   | CA Certificates | CA certificates that are used to authenticate the proxy server. The certificates must be base64-encoded.                                                                  |
 
 4. Click **Confirm**. Updating the HTTP proxy settings causes HTTP/HTTPS services on the Edge host to restart, so you
    will not be able to access the console for a short duration .

@@ -10,7 +10,7 @@ tags: ["vmo", "palette-cli"]
 
 During large scale Kubernetes adoptions, workloads are often rehosted or migrated instead of being redeployed from
 scratch. This process allows system administrators to copy the application, together with its data, to a Kubernetes
-cluster. However, the migration of VMs can be time consuming if done manually, so it is often automated with open-source
+cluster. However, the migration of VMs can be time consuming if done manually, so it is often automated with open source
 tools such as [Forklift](https://github.com/kubev2v/forklift).
 
 The [Palette CLI](../../../automation/palette-cli/palette-cli.md) provides the ability to migrate Virtual Machines (VMs)

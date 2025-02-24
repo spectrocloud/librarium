@@ -61,11 +61,11 @@ Follow the instructions below to migrate VMs to a different node.
 
 ## Evacuate a Host
 
-Compute nodes can be placed into maintenance mode using Palette or manually using the `cordon` and `drain` commands. The
-`cordon` command marks the node as un-schedulable and the `drain`command evacuates all the VMs and pods from it. This
-process is useful in case you need to perform hardware maintenance on the node - for example to replace a disk or
-network interface card (NIC) card, perform memory maintenance, or if there are any issues with a particular node that
-need to be resolved. To learn more, check out the
+Compute nodes can be placed into [maintenance mode](../../clusters/cluster-management/maintenance-mode.md) using Palette
+or manually using the `cordon` and `drain` commands. The `cordon` command marks the node as un-schedulable and the
+`drain` command evacuates all the VMs and pods from it. This process is useful in case you need to perform hardware
+maintenance on the node - for example to replace a disk or network interface card (NIC) card, perform memory
+maintenance, or if there are any issues with a particular node that need to be resolved. To learn more, check out the
 [Safely Drain a Node](https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/#use-kubectl-drain-to-remove-a-node-from-service)
 Kubernetes resource.
 
@@ -173,3 +173,5 @@ You can validate evacuation completed by following the steps below.
 - [Persistent Volume Access Modes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes)
 
 - [Safely Drain a Node](https://kubernetes.io/docs/tasks/administer-cluster/safely-drain-node/#use-kubectl-drain-to-remove-a-node-from-service)
+
+- [Maintenance Mode](../../clusters/cluster-management/maintenance-mode.md)

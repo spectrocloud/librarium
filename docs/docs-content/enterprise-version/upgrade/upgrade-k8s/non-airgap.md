@@ -36,6 +36,10 @@ Palette upgrade.
 - Access to the latest Palette Helm Chart. Refer to [Access Palette](/enterprise-version/#access-palette) for more
   details.
 
+- The Kubernetes cluster must be set up on a version of Kubernetes that is compatible to your upgraded version. Refer to
+  the [Kubernetes Requirements](../../install-palette/install-palette.md#kubernetes-requirements) section to find the
+  version required for your Palette installation.
+
 ## Upgrade
 
 :::info

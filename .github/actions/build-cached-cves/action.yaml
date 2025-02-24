@@ -1,0 +1,53 @@
+# This configuration file defines a GitHub Action named "Build with cached CVEs".
+# This action is used when a build fails with the exit code 7. The action downloads the latest CVEs artifact from the "post_release.yaml" workflow.
+# The action then unpacks the downloaded CVEs data in the correct folders and re-runs the build with the downloaded CVEs data.
+# This is useful in scenarios where the Security API is experiencing issues or a CVE is breaking the build.
+
+name: "Build with cached CVEs"
+inputs:
+  gh-token:
+    description: "GitHub Token for authentication"
+    required: true
+
+runs:
+  using: "composite"
+  steps:
+    - name: Install jq (JSON processor) if not found
+      run: |
+        if ! command -v jq &> /dev/null; then
+          sudo apt-get update
+          sudo apt-get install -y jq
+        else
+          echo "jq is already installed. Skipping install..."
+        fi
+      shell: bash
+
+    - name: Download CVE Data
+      run: |
+        # Find the latest CVE upload workflow.
+        run_id=$(gh run list --workflow="post_release.yaml" --limit 1 --status=success --json databaseId | jq -r '.[0].databaseId')
+        echo 'Fetching artifacts from run $run_id'
+        # Remove any downloaded artifacts, should they exist.
+        rm -rf ./downloaded_artifacts
+        # Download the latest artifact to a new dir.
+        gh run download ${run_id} --name security-bulletins --dir ./downloaded_artifacts
+      shell: bash
+      env:
+        GH_TOKEN: ${{ inputs.gh-token }}
+
+    - name: Unpack CVE data
+      run: |
+        # Ensure the correct folders exist.
+        mkdir -p .docusaurus/security-bulletins/default
+        # Move the files to their correct places in the checked out repository
+        mv downloaded_artifacts/data.json .docusaurus/security-bulletins/default/data.json
+        rm -rf downloaded_artifacts
+      shell: bash
+
+    - name: Build
+      run: |
+        rm -rf build
+        npm run build
+        exit_code=$?
+        echo "BUILD_EXIT_CODE=$$exit_code" >> $GITHUB_ENV
+      shell: bash

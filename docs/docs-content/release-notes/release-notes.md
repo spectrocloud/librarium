@@ -11,7 +11,26 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+
 ## February 21, 2025 - Documentation & Education Updates
+
+- The Documentation & Education team is enabling a new Q&A bot functionality on the Spectro Cloud official documentation
+  site. Click the **Ask AI** widget in the bottom right corner to bring up the chat interface.
+
+  The Q&A bot is only trained on the latest version of the Spectro Cloud documentation. It is unable to answer
+  version-specific questions. As with all generative AI-powered services, its responses may not be accurate. Always
+  verify answers using the documentation for important updates.
+
+## Jan 10, 2025 - Release 4.4.21
+
+### Bug Fixes
+
+- Fixed an issue when enabling the `stylus.debug` parameter in the Edge Installer
+  [user data configuration](../clusters/edge/edge-configuration/installer-reference.md) file would include sensitive
+  Edge configuration information in the logs. The behavior has been corrected to prevent the inclusion of sensitive Edge
+  configuration information in the logs.
+
+## Sept 25, 2024 - Release 4.4.20
 
 - The Documentation & Education team is enabling a new Q&A bot functionality on the Spectro Cloud official documentation
   site. Click the **Ask AI** widget in the bottom right corner to bring up the chat interface.

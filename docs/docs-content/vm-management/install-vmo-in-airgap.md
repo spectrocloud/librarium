@@ -39,13 +39,13 @@ instance of Palette and Palette VerteX.
    your private SSH key, username, and the IP or domain of the airgap support VM. The default username is `ubuntu`.
 
    ```shell
-   ssh -identity_file </path/to/private/key> <username>@<vm-ip-or-domain>
+   ssh -i </path/to/private/key> <username>@<vm-ip-or-domain>
    ```
 
    Consider the following command example for reference.
 
    ```shell
-   ssh -identity_file /docs/ssh-private-key.pem ubuntu@palette.example.com
+   ssh -i /docs/ssh-private-key.pem ubuntu@palette.example.com
    ```
 
 2. Execute the following command to switch to the `root` user account.

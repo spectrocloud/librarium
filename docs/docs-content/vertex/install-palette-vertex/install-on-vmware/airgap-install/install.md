@@ -3,7 +3,7 @@ sidebar_label: "Install VerteX"
 title: "Install VerteX"
 description: "Learn how to install VerteX in an airgap VMware environment."
 icon: ""
-sidebar_position: 30
+sidebar_position: 40
 hide_table_of_contents: false
 tags: ["vertex", "enterprise", "airgap", "vmware", "vsphere"]
 keywords: ["self-hosted", "vertex"]
@@ -16,7 +16,7 @@ assets.
 
 ## Prerequisites
 
-- You have completed the [Environment Setup](./vmware-vsphere-airgap-instructions.md) steps and deployed the airgap
+- You have completed the [Environment Setup](./environment-setup/environment-setup.md) steps and deployed the airgap
   support VM.
 
 - You can choose between two Operating Systems (OS) when installing Vertex. Review the requirements for each OS.
@@ -71,6 +71,12 @@ assets.
 - Assigned IP addresses for application workload services, such as Load Balancer services.
 
 - Shared Storage between VMware vSphere hosts.
+
+- A [StorageClass](https://kubernetes.io/docs/concepts/storage/storage-classes/) to manage persistent storage, with the
+  annotation `storageclass.kubernetes.io/is-default-class` set to `true`. To override the default StorageClass for a
+  workload, modify the `storageClass` parameter. Check out the
+  [Change the default StorageClass](https://kubernetes.io/docs/tasks/administer-cluster/change-default-storage-class/)
+  page to learn more about modifying StorageClasses.
 
 :::info
 
@@ -131,8 +137,8 @@ Use the following steps to install Palette VerteX.
     :::warning
 
     If you deployed the airgap support VM using a generic OVA, the Palette CLI may not be in the `usr/bin` path. Ensure
-    that you complete step **22** of the [Environment Setup](./vmware-vsphere-airgap-instructions.md) guide, which
-    installs the VerteX airgap binary and moves the Palette CLI to the correct path.
+    that you complete step **22** of the [Environment Setup](./environment-setup/vmware-vsphere-airgap-instructions.md)
+    guide, which installs the VerteX airgap binary and moves the Palette CLI to the correct path.
 
     :::
 
@@ -162,10 +168,10 @@ Use the following steps to install Palette VerteX.
 
     :::info
 
-    If you are using the Palette CLI from inside an [airgap support VM](./vmware-vsphere-airgap-instructions.md), the
-    CLI will automatically detect the airgap environment and prompt you to **Use local, air-gapped Spectro Cloud
-    Artifact Repository (SCAR) configuration**. Type `y` to use the local resources and skip filling in the repository
-    URL and credentials.
+    If you are using the Palette CLI from inside an
+    [airgap support VM](./environment-setup/vmware-vsphere-airgap-instructions.md), the CLI will automatically detect
+    the airgap environment and prompt you to **Use local, air-gapped Spectro Cloud Artifact Repository (SCAR)
+    configuration**. Type `y` to use the local resources and skip filling in the repository URL and credentials.
 
     :::
 
@@ -191,9 +197,10 @@ Use the following steps to install Palette VerteX.
     | **Service IP Range**              | Enter the IP address range that will be used to assign IP addresses to services in the EC cluster. The service IP addresses should be unique and not overlap with any machine IPs in the environment.                                                                                                                          |
 
 11. Select the OCI registry type and provide the configuration values. Review the following table for more information.
-    If you are using the Palette CLI from inside an [airgap support VM](./vmware-vsphere-airgap-instructions.md), the
-    CLI will automatically detect the airgap environment and prompt you to **Use local, air-gapped Pack Registry?** Type
-    `y` to use the local resources and skip filling in the OCI registry URL and credentials.
+    If you are using the Palette CLI from inside an
+    [airgap support VM](./environment-setup/vmware-vsphere-airgap-instructions.md), the CLI will automatically detect
+    the airgap environment and prompt you to **Use local, air-gapped Pack Registry?** Type `y` to use the local
+    resources and skip filling in the OCI registry URL and credentials.
 
     :::warning
 
@@ -222,10 +229,10 @@ Use the following steps to install Palette VerteX.
     | **Use Public Registry for Images**               | Type `y` to use a public registry for images. Type `n` to a different registry for images. If you are using another registry for images, you will be prompted to enter the registry URL, base path, username, and password. Airgap users, select `n` so that you can specify the values for the OCI registry that contains all the required images. |
 
     When prompted to **Pull images from public registry**, type `n` and specify the OCI registry configuration values
-    for your image registry. If you are an [airgap support VM](./vmware-vsphere-airgap-instructions.md), the CLI will
-    automatically detect the airgap environment and prompt you to **Use local, air-gapped Image Registry?**. Type `y` to
-    use the local resources and skip filling in the OCI registry URL and credentials. Refer to the table above for more
-    information.
+    for your image registry. If you are on an
+    [airgap support VM](./environment-setup/vmware-vsphere-airgap-instructions.md), the CLI will automatically detect
+    the airgap environment and prompt you to **Use local, air-gapped Image Registry?**. Type `y` to use the local
+    resources and skip filling in the OCI registry URL and credentials. Refer to the table above for more information.
 
     :::info
 
@@ -256,6 +263,7 @@ Use the following steps to install Palette VerteX.
         | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
         | **Datacenter**      | The installer retrieves the Datacenter automatically.                                                                                                                                                                                                                                                                     |
         | **Folder**          | Select the folder that contains the VM instance.                                                                                                                                                                                                                                                                          |
+        | **Image Template Folder** | Select the folder that contains the CAPI image templates.                                                                                                                                                                                                                                                                 |
         | **Cluster**         | Select the cluster where you want to deploy Palette.                                                                                                                                                                                                                                                                      |
         | **Network**         | Select the network where you want to deploy Palette.                                                                                                                                                                                                                                                                      |
         | **Resource Pool**   | Select the resource pool where you want to deploy Palette.                                                                                                                                                                                                                                                                |
@@ -310,12 +318,12 @@ Use the following steps to install Palette VerteX.
 
     :::tip
 
-    If an error occurs during installation, remove the `kind` cluster that was created and restart the installation. To
-    remove the `kind` cluster, issue the following command. Replace `spectro-mgmt-cluster` with the name of your cluster
-    if you used a different name.
+    If an error occurs during the installation, remove the `kind` cluster that was created and restart the process. To
+    remove the `kind` cluster, install [kind](https://kind.sigs.k8s.io/docs/user/quick-start/#installation) and issue
+    the following command. Replace `spectro-mgmt-cluster` with the name of your cluster if you used a different name.
 
     ```bash
-    kind delete cluster spectro-mgmt-cluster
+    kind delete clusters spectro-mgmt-cluster
     ```
 
     Restart the install process by referencing the `ec.yaml` file that was created during the first installation
@@ -445,7 +453,7 @@ teams.
 
 ## Resources
 
-- [Environment Setup](./vmware-vsphere-airgap-instructions.md)
+- [Environment Setup](./environment-setup/vmware-vsphere-airgap-instructions.md)
 
 - [Create a Tenant](../../../system-management/tenant-management.md)
 

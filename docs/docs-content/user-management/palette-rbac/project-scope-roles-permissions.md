@@ -1,32 +1,31 @@
 ---
-sidebar_label: "Project Scope Roles and Permissions"
+sidebar_label: "Project Roles"
 title: "Project Roles"
-description: "The list of Global Project Roles under Project Scope"
+description: "Learn about the predefined roles available in Palette for managing resources within a project scope."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 10
-tags: ["user-management", "rbac"]
+sidebar_position: 40
+tags: ["user-management", "project", "rbac"]
 ---
 
-# Global Project Scope
+Palette provides the following Project roles out-of-the-box. These roles are predefined and cannot be modified. You can
+assign these roles to users and teams to manage the resources within the project scope. The roles are categorized based
+on the resources they can manage. If you need to manage resources across multiple projects, consider using a
+[Tenant](./tenant-scope-roles-permissions.md) role instead.
 
-The Global Project Scope holds a group of resources, in a logical grouping, to a specific project. Users and Teams with
-specific Roles can be associated with the Project, Cluster, or Cluster Profile you create.
+:::tip
 
-Palette has adopted the security principle of least privilege. Each user is assigned Roles and Permissions to the
-Scopes, Resources, and Components. The Permissions format is `resourceKey.operation`, where **resourceKey** refers to a
-resource or the API functionality, and _operation_ refers to the action or activity allowed.
+Create your own custom project role if none of the predefined roles meet your requirements. Refer to the
+[Create a Custom Role](./create-custom-role.md#project-roles) guide for more information.
 
-To view a list of the predefined roles and permissions, go to **Tenant Settings** > **Roles**, and you will find the
-list of **Global Roles**. If you need to extend your permissions, use the **Create Role** option.
+:::
 
-Below is the predefined list of Roles and Permissions for the Global Project Scope:
+## Default Project Roles
 
-<br />
+Palette comes with a set of immutable predefined Project roles out-of-the-box that you can assign to users or teams. To
+review the permissions associated with each Project role, click on the role name to expand the list of permissions.
 
-## App Deployment
-
----
+### App Deployment
 
 | Role Name             | Description                                                                              |
 | --------------------- | ---------------------------------------------------------------------------------------- |
@@ -34,901 +33,960 @@ Below is the predefined list of Roles and Permissions for the Global Project Sco
 | App Deployment Editor | Allows the user to perform edit operations on an App but not to create or delete an App. |
 | App Deployment Viewer | Allows the user to view all the App resources but not to make modifications.             |
 
-<br />
-<br />
+<Accordion>
+<AccordionPanel title="App Deployment Admin">
 
-<Tabs>
-<TabItem label="App Deployment Admin" value="App Deployment Admin">
-<br />
+- appDeployment.create
+- appDeployment.delete
+- appDeployment.get
+- appDeployment.list
+- appDeployment.update
+- appProfile.get
+- appProfile.list
+- cloudaccount.get
+- cloudaccount.list
+- clusterGroup.get
+- clusterGroup.list
+- location.create
+- location.delete
+- location.get
+- location.list
+- location.update
+- machine.get
+- machine.list
+- macro.create
+- macro.delete
+- macro.get
+- macro.list
+- macro.update
+- packRegistry.get
+- packRegistry.list
+- project.get
+- project.list
+- sshKey.create
+- sshKey.delete
+- sshKey.get
+- sshKey.list
+- sshKey.update
+- tag.update
+- virtualCloudconfig.create
+- virtualCloudconfig.delete
+- virtualCloudconfig.get
+- virtualCloudconfig.list
+- virtualCloudconfig.update
+- virtualCluster.create
+- virtualCluster.delete
+- virtualCluster.get
+- virtualCluster.list
+- virtualCluster.update
 
-## App Deployment Admin
+</AccordionPanel>
+<AccordionPanel title="App Deployment Editor">
 
-<br />
+- appDeployment.get
+- appDeployment.list
+- appDeployment.update
+- appProfile.get
+- appProfile.list
+- cloudaccount.get
+- cloudaccount.list
+- clusterGroup.get
+- clusterGroup.list
+- location.get
+- location.list
+- location.update
+- machine.get
+- machine.list
+- macro.get
+- macro.list
+- macro.update
+- packRegistry.get
+- packRegistry.list
+- project.get
+- project.list
+- sshKey.get
+- sshKey.list
+- sshKey.update
+- tag.update
+- virtualCloudconfig.get
+- virtualCloudconfig.list
+- virtualCloudconfig.update
+- virtualCluster.get
+- virtualCluster.list
+- virtualCluster.update
 
-<table>
-  <tr>
-    <td width="400">
-      <b>resourceKeys</b>
-    </td>
-    <td>
-      <b>Operations</b>
-    </td>
-  </tr>
-</table>
-<hr />
+</AccordionPanel>
+<AccordionPanel title="App Deployment Viewer">
 
-|                        | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ---------------------- | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **appDeployment**      | √          | √          | √       | √        | √          |            |             |            |             |
-| **appProfile**         |            |            | √       | √        |            |            |             |            |             |
-| **cloudaccount**       |            |            | √       | √        |            |            |             |            |             |
-| **clusterGroup**       |            |            | √       | √        |            |            |             |            |             |
-| **location**           | √          | √          | √       | √        | √          |            |             |            |             |
-| **machine**            |            |            | √       | √        |            |            |             |            |             |
-| **macro**              | √          | √          | √       | √        | √          |            |             |            |             |
-| **packRegistry**       |            |            | √       | √        |            |            |             |            |             |
-| **project**            |            |            | √       | √        |            |            |             |            |             |
-| **sshKey**             | √          | √          | √       | √        | √          |            |             |            |             |
-| **tag**                |            |            |         |          | √          |            |             |            |             |
-| **virtualCloudconfig** | √          | √          | √       | √        | √          |            |             |            |             |
-| **virtualCluster**     | √          | √          | √       | √        | √          |            |             |            |             |
+- appDeployment.get
+- appDeployment.list
+- appProfile.get
+- appProfile.list
+- cloudaccount.get
+- cloudaccount.list
+- clusterGroup.get
+- clusterGroup.list
+- location.get
+- location.list
+- machine.get
+- machine.list
+- macro.get
+- macro.list
+- packRegistry.get
+- packRegistry.list
+- project.get
+- project.list
+- sshKey.get
+- sshKey.list
+- virtualCloudconfig.get
+- virtualCloudconfig.list
+- virtualCluster.get
+- virtualCluster.list
 
-</TabItem>
-<TabItem label="App Deployment Editor" value="App Deployment Editor">
+</AccordionPanel>
+</Accordion>
 
-<br />
+### App Profile
 
-## App Deployment Editor
-
-<br />
-
-<table>
-  <tr>
-    <td width="400">
-      <b>resourceKeys</b>
-    </td>
-    <td>
-      <b>Operations</b>
-    </td>
-  </tr>
-</table>
-<hr />
-
-|                        | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ---------------------- | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **appDeployment**      |            |            | √       | √        | √          |            |             |            |             |
-| **appProfile**         |            |            | √       | √        |            |            |             |            |             |
-| **cloudaccount**       |            |            | √       | √        |            |            |             |            |             |
-| **clusterGroup**       |            |            | √       | √        |            |            |             |            |             |
-| **location**           |            |            | √       | √        | √          |            |             |            |             |
-| **machine**            |            |            | √       | √        |            |            |             |            |             |
-| **macro**              |            |            | √       | √        |            |            |             |            |             |
-| **packRegistry**       |            |            | √       | √        |            |            |             |            |             |
-| **project**            |            |            | √       | √        |            |            |             |            |             |
-| **sshKey**             |            |            | √       | √        | √          |            |             |            |             |
-| **tag**                |            |            |         |          | √          |            |             |            |             |
-| **virtualCloudconfig** |            |            | √       | √        | √          |            |             |            |             |
-| **virtualCluster**     |            |            | √       | √        | √          |            |             |            |             |
-
-<br />
-
-</TabItem>
-<TabItem label="App Deployment Viewer" value="App Deployment Viewer">
-
-<br />
-
-## App Deployment Viewer
-
-<br />
-
-<table>
-  <tr>
-    <td width="400">
-      <b>resourceKeys</b>
-    </td>
-    <td>
-      <b>Operations</b>
-    </td>
-  </tr>
-</table>
-<hr />
-
-|                        | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ---------------------- | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **appDeployment**      |            |            | √       | √        |            |            |             |            |             |
-| **appProfile**         |            |            | √       | √        |            |            |             |            |             |
-| **cloudaccount**       |            |            | √       | √        |            |            |             |            |             |
-| **clusterGroup**       |            |            | √       | √        |            |            |             |            |             |
-| **location**           |            |            | √       | √        |            |            |             |            |             |
-| **machine**            |            |            | √       | √        |            |            |             |            |             |
-| **macro**              |            |            | √       | √        |            |            |             |            |             |
-| **packRegistry**       |            |            | √       | √        |            |            |             |            |             |
-| **project**            |            |            | √       | √        |            |            |             |            |             |
-| **sshKey**             |            |            | √       | √        |            |            |             |            |             |
-| **virtualCloudconfig** |            |            | √       | √        |            |            |             |            |             |
-| **virtualCluster**     |            |            | √       | √        |            |            |             |            |             |
-
-</TabItem>
-</Tabs>
-
-<br />
-
-## App Profile
-
----
-
-| Role Names         | Description                                                                                            |
+| Role Name          | Description                                                                                            |
 | ------------------ | ------------------------------------------------------------------------------------------------------ |
 | App Profile Admin  | Provides administrative privilege to perform all the App operations on App profile resources.          |
 | App Profile Editor | Allows the user to perform edit operations on App profiles but not to create or delete an App profile. |
 | App Profile Viewer | Allows the user to view all the App profile resources but not to modify them.                          |
 
-<br />
-<br />
-
-<Tabs>
-<TabItem label="App Profile Admin" value="App Profile Admin">
-<br />
-
-## App Profile Admin
-
-<br />
-
-<table>
-  <tr>
-    <td width="400">
-      <b>resourceKeys</b>
-    </td>
-    <td>
-      <b>Operations</b>
-    </td>
-  </tr>
-</table>
-<hr />
-
-|                  | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ---------------- | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **appProfile**   | √          | √          | √       | √        | √          |            |             |            |             |
-| **macro**        | √          | √          | √       | √        | √          |            |             |            |             |
-| **packRegistry** |            |            | √       | √        |            |            |             |            |             |
-| **project**      |            |            | √       | √        |            |            |             |            |             |
-
-</TabItem>
-<TabItem label="App Profile Editor" value="App Profile Editor">
-
-<br />
-
-## App Profile Editor
-
-<br />
-
-<table>
-  <tr>
-    <td width="400">
-      <b>resourceKeys</b>
-    </td>
-    <td>
-      <b>Operations</b>
-    </td>
-  </tr>
-</table>
-<hr />
-
-|                  | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ---------------- | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **appProfile**   |            |            | √       | √        | √          |            |             |            |             |
-| **macro**        |            |            | √       | √        | √          |            |             |            |             |
-| **packRegistry** |            |            | √       | √        |            |            |             |            |             |
-| **project**      |            |            | √       | √        |            |            |             |            |             |
-
-<br />
-
-</TabItem>
-<TabItem label="App Profile Viewer" value="App Profile Viewer">
-
-<br />
-
-## App Profile Viewer
-
-<br />
-
-<table>
-  <tr>
-    <td width="400">
-      <b>resourceKeys</b>
-    </td>
-    <td>
-      <b>Operations</b>
-    </td>
-  </tr>
-</table>
-<hr />
-
-|                  | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ---------------- | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **appProfile**   |            |            | √       | √        |            |            |             |            |             |
-| **macro**        |            |            | √       | √        |            |            |             |            |             |
-| **packRegistry** |            |            | √       | √        |            |            |             |            |             |
-| **project**      |            |            | √       | √        |            |            |             |            |             |
-
-</TabItem>
-</Tabs>
-
-<br />
-
-## Project
-
----
-
-| Role Names     | Description                                                                                                                   |
-| -------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| Project Admin  | The Project Admin role is a closure of all the project operations. It is a administrative privilege for the project resources |
-| Project Editor | The Project Editor role can perform edit operations within a project, but the user is not able to create or delete a project  |
-| Project Viewer | The Project Viewer will be able to view all the resources within a project, but not privileged to make modifications          |
-
-<br />
-<br />
-
-<Tabs>
-<TabItem label="Project Admin" value="Project Admin">
-<br />
-
-## Project Admin
-
-<br />
-
-<table>
-  <tr>
-    <td width="400">
-      <b>resourceKeys</b>
-    </td>
-    <td>
-      <b>Operations</b>
-    </td>
-  </tr>
-</table>
-<hr />
-
-|                    | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ------------------ | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **audit**          |            |            | √       | √        |            |            |             |            |             |
-| **cloudaccount**   | √          | √          | √       | √        | √          |            |             |            |             |
-| **cloudconfig**    | √          | √          | √       | √        | √          |            |             |            |             |
-| **cluster**        | √          | √          | √       | √        | √          | √          |             |            |             |
-| **clusterProfile** | √          | √          | √       | √        | √          |            | √           |            |             |
-| **clusterRbac**    | √          | √          | √       | √        | √          |            |             |            |             |
-| **dnsMapping**     | √          | √          | √       | √        | √          |            |             |            |             |
-| **edgehost**       | √          | √          | √       | √        | √          |            |             |            |             |
-| **location**       | √          | √          | √       | √        | √          |            |             |            |             |
-| **machine**        | √          | √          | √       | √        | √          |            |             |            |             |
-| **macro**          | √          | √          | √       | √        | √          |            |             |            |             |
-| **packRegistry**   |            |            | √       | √        |            |            |             |            |             |
-| **privateGateway** | √          | √          | √       | √        | √          |            |             |            |             |
-| **project**        |            |            | √       | √        | √          |            |             |            |             |
-| **sshKey**         | √          | √          | √       | √        | √          |            |             |            |             |
-| **tag**            |            |            |         |          | √          |            |             |            |             |
-| **workspace**      | √          | √          | √       | √        | √          |            |             | √          | √           |
-
-</TabItem>
-<TabItem label="Project Editor" value="Project Editor">
-
-<br />
-
-## Project Editor
-
-<br />
-
-<table>
-  <tr>
-    <td width="400">
-      <b>resourceKeys</b>
-    </td>
-    <td>
-      <b>Operations</b>
-    </td>
-  </tr>
-</table>
-<hr />
-
-|                    | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ------------------ | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **audit**          |            |            | √       | √        |            |            |             |            |             |
-| **cloudaccount**   |            |            | √       | √        | √          |            |             |            |             |
-| **cloudconfig**    | √          |            | √       | √        | √          |            |             |            |             |
-| **cluster**        |            |            | √       | √        | √          |            |             |            |             |
-| **clusterProfile** |            |            | √       | √        | √          |            | √           |            |             |
-| **clusterRbac**    |            |            | √       | √        | √          |            |             |            |             |
-| **dnsMapping**     |            |            | √       | √        | √          |            |             |            |             |
-| **edgehost**       |            |            | √       | √        | √          |            |             |            |             |
-| **location**       |            |            | √       | √        | √          |            |             |            |             |
-| **machine**        |            | √          | √       | √        | √          |            |             |            |             |
-| **macro**          |            |            | √       | √        | √          |            |             |            |             |
-| **packRegistry**   |            |            | √       | √        |            |            |             |            |             |
-| **privateGateway** |            |            | √       | √        | √          |            |             |            |             |
-| **project**        |            |            | √       | √        | √          |            |             |            |             |
-| **sshKey**         |            |            | √       | √        | √          |            |             |            |             |
-| **tag**            |            |            |         |          | √          |            |             |            |             |
-| **workspace**      |            |            | √       | √        | √          |            |             | √          | √           |
-
-<br />
-
-</TabItem>
-<TabItem label="Project Viewer" value="Project Viewer">
-
-<br />
-
-## Project Viewer
-
-<br />
-
-<table>
-  <tr>
-    <td width="400">
-      <b>resourceKeys</b>
-    </td>
-    <td>
-      <b>Operations</b>
-    </td>
-  </tr>
-</table>
-<hr />
-
-|                    | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ------------------ | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **audit**          | √          |            |         |          | √          |            |             |            |             |
-| **cloudaccount**   | √          |            |         |          | √          |            |             |            |             |
-| **cloudconfig**    | √          |            |         |          | √          |            |             |            |             |
-| **cluster**        | √          |            |         |          | √          |            |             |            |             |
-| **clusterProfile** | √          |            |         |          | √          |            |             |            |             |
-| **dnsMapping**     | √          |            |         |          | √          |            |             |            |             |
-| **edgehost**       | √          |            |         |          | √          |            |             |            |             |
-| **location**       | √          |            |         |          | √          |            |             |            |             |
-| **machine**        | √          |            |         |          | √          |            |             |            |             |
-| **macro**          | √          |            |         |          | √          |            |             |            |             |
-| **packRegistry**   | √          |            |         |          | √          |            |             |            |             |
-| **privateGateway** | √          |            |         |          | √          |            |             |            |             |
-| **project**        | √          |            |         |          | √          |            |             |            |             |
-| **sshKey**         | √          |            |         |          | √          |            |             |            |             |
-| **workspace**      | √          |            |         |          | √          |            |             |            |             |
-
-</TabItem>
-</Tabs>
-
-<br />
-
-## Cluster Profile
-
----
-
-The user with these permissions can manage the Cluster Profiles within a project.
-
-<br />
-
-| Role Names             | Description                                                                                   |
-| ---------------------- | --------------------------------------------------------------------------------------------- |
-| Cluster Profile Admin  | Cluster Profile Admin role has admin privileges to all the cluster profile operations         |
-| Cluster Profile Editor | Cluster Profile Editor role has privileges to edit and list operations on the cluster profile |
-| Cluster Profile Viewer | Cluster Profile Viewer role has read-only privileges to cluster profiles                      |
-
-<br />
-
-<Tabs>
-<TabItem label="Cluster Profile Admin" value="Cluster Profile Admin">
-<br />
-
-## Cluster Profile Admin
-
-<br />
-
-<table>
-  <tr>
-    <td width="400">
-      <b>resourceKeys</b>
-    </td>
-    <td>
-      <b>Operations</b>
-    </td>
-  </tr>
-</table>
-<hr />
-
-|                    | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ------------------ | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **clusterProfile** | √          | √          | √       | √        | √          |            | √           |            |             |
-| **macro**          | √          | √          | √       | √        | √          |            |             |            |             |
-| **packRegistry**   | √          | √          |         |          |            |            |             |            |             |
-| **tag**            |            |            |         |          | √          |            |             |            |             |
-
-<br />
-
-</TabItem>
-<TabItem label="Cluster Profile Editor" value="Cluster Profile Editor">
-
-<br />
-
-## Cluster Profile Editor
-
-<br />
-
-<table>
-  <tr>
-    <td width="400">
-      <b>resourceKeys</b>
-    </td>
-    <td>
-      <b>Operations</b>
-    </td>
-  </tr>
-</table>
-<hr />
-
-|                    | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ------------------ | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **clusterProfile** |            |            | √       | √        | √          |            | √           |            |             |
-| **macro**          |            |            | √       | √        | √          |            |             |            |             |
-| **packRegistry**   |            |            | √       | √        |            |            |             |            |             |
-| **tag**            |            |            |         |          | √          |            |             |            |             |
-
-<br />
-
-</TabItem>
-<TabItem label="Cluster Profile Viewer" value="Cluster Profile Viewer">
-
-<br />
-
-## Cluster Profile Viewer
-
-<br />
-
-<table>
-  <tr>
-    <td width="400">
-      <b>resourceKeys</b>
-    </td>
-    <td>
-      <b>Operations</b>
-    </td>
-  </tr>
-</table>
-<hr />
-
-|                    | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ------------------ | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **clusterProfile** |            |            | √       | √        |            |            |             |            |             |
-| **macro**          |            |            | √       | √        |            |            |             |            |             |
-| **packRegistry**   |            |            | √       | √        |            |            |             |            |             |
-
-<br />
-
-</TabItem>
-</Tabs>
-
-<br />
-
-## Cluster
-
----
-
-<br />
-
-<br />
-
-| Role Names     | Description                                                                                                                                             |
-| -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Cluster Admin  | A cluster admin in Project scope has all the privileges related to cluster operation                                                                    |
-| Cluster Editor | A cluster editor in Project scope has the privileges to update, delete,get and list cluster resources. This role is not privileged for cluster creation |
-| Cluster Viewer | A cluster viewer in Project scope is a read-only privilege to cluster operations                                                                        |
-
-<br />
-
-<Tabs>
-
-<TabItem label="Cluster Admin" value="Cluster Admin">
-
-<br />
-
-## Cluster Admin
-
-<br />
-
-<table>
-  <tr>
-    <td width="400">
-      <b>resourceKeys</b>
-    </td>
-    <td>
-      <b>Operations</b>
-    </td>
-  </tr>
-</table>
-<hr />
-
-|                    | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ------------------ | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **cloudaccount**   |            |            | √       | √        |            |            |             |            |             |
-| **cloudconfig**    | √          | √          | √       | √        | √          |            |             |            |             |
-| **cluster**        | √          | √          | √       | √        | √          | √          |             |            |             |
-| **clusterProfile** | √          | √          |         |          |            |            |             |            |             |
-| **clusterRbac**    | √          | √          | √       | √        | √          |            |             |            |             |
-| **dnsMapping**     | √          | √          | √       | √        | √          |            |             |            |             |
-| **edgehost**       | √          | √          | √       | √        | √          |            |             |            |             |
-| **location**       | √          | √          | √       | √        | √          |            |             |            |             |
-| **machine**        | √          | √          | √       | √        | √          |            |             |            |             |
-| **macro**          | √          | √          | √       | √        | √          |            |             |            |             |
-| **packRegistry**   | √          | √          |         |          |            |            |             |            |             |
-| **privateGateway** | √          | √          |         |          |            |            |             |            |             |
-| **tag**            |            |            |         |          | √          |            |             |            |             |
-| **sshKey**         | √          | √          | √       | √        | √          |            |             |            |             |
-
-<br />
-
-</TabItem>
-<TabItem label="Cluster Editor" value="Cluster Editor">
-
-<br />
-
-## Cluster Editor
-
-<br />
-
-<table>
-  <tr>
-    <td width="400">
-      <b>resourceKeys</b>
-    </td>
-    <td>
-      <b>Operations</b>
-    </td>
-  </tr>
-</table>
-<hr />
-
-|                    | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ------------------ | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **cloudaccount**   |            |            | √       | √        |            |            |             |            |             |
-| **cloudconfig**    |            |            | √       | √        | √          |            |             |            |             |
-| **cluster**        |            |            | √       | √        | √          |            |             |            |             |
-| **clusterProfile** |            |            | √       | √        |            |            |             |            |             |
-| **clusterRbac**    |            |            | √       | √        | √          |            |             |            |             |
-| **dnsMapping**     |            |            | √       | √        | √          |            |             |            |             |
-| **edgehost**       |            |            | √       | √        | √          |            |             |            |             |
-| **location**       |            |            | √       | √        | √          |            |             |            |             |
-| **machine**        |            | √          | √       | √        | √          |            |             |            |             |
-| **macro**          |            |            | √       | √        | √          |            |             |            |             |
-| **packRegistry**   |            |            | √       | √        |            |            |             |            |             |
-| **privateGateway** |            |            | √       | √        |            |            |             |            |             |
-| **tag**            |            |            |         |          | √          |            |             |            |             |
-| **sshKey**         |            |            | √       | √        | √          |            |             |            |             |
-
-<br />
-
-</TabItem>
-<TabItem label="Cluster Viewer" value="Cluster Viewer">
-
-<br />
-
-## Cluster Viewer
-
-<br />
-
-<table>
-  <tr>
-    <td width="400">
-      <b>resourceKeys</b>
-    </td>
-    <td>
-      <b>Operations</b>
-    </td>
-  </tr>
-</table>
-<hr />
-
-|                    | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ------------------ | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **cloudaccount**   |            |            | √       | √        |            |            |             |            |             |
-| **cloudconfig**    |            |            | √       | √        |            |            |             |            |             |
-| **cluster**        |            |            | √       | √        |            |            |             |            |             |
-| **clusterProfile** |            |            | √       | √        |            |            |             |            |             |
-| **clusterRbac**    |            |            | √       | √        |            |            |             |            |             |
-| **dnsMapping**     |            |            | √       | √        |            |            |             |            |             |
-| **edgehost**       |            |            | √       | √        |            |            |             |            |             |
-| **location**       |            |            | √       | √        |            |            |             |            |             |
-| **machine**        |            |            | √       | √        |            |            |             |            |             |
-| **macro**          |            |            | √       | √        |            |            |             |            |             |
-| **packRegistry**   |            |            | √       | √        |            |            |             |            |             |
-| **privateGateway** |            |            | √       | √        |            |            |             |            |             |
-| **sshKey**         |            |            | √       | √        |            |            |             |            |             |
-
-<br />
-
-</TabItem>
-</Tabs>
-
-<br />
-
-## Cloud Account
-
----
-
-<br />
-
-| Role Names             | Description                                          |
-| ---------------------- | ---------------------------------------------------- |
-| Cluster Account Admin  | An administrative access to cloud account operations |
-| Cluster Account Editor | An editor access to cloud cloud account operations   |
-| Cluster Account Viewer | A read-only role for cloud account operations        |
-
-<br />
-
-<Tabs>
-<TabItem label="Cluster Account Admin" value="Cloud Account Admin">
-
-<br />
-
-## Cluster Account Admin
-
-<br />
-
-<table>
-  <tr>
-    <td width="400">
-      <b>resourceKeys</b>
-    </td>
-    <td>
-      <b>Operations</b>
-    </td>
-  </tr>
-</table>
-<hr />
-
-|                  | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ---------------- | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **cloudaccount** | √          | √          | √       | √        | √          |            |             |            |             |
-
-<br />
-
-</TabItem>
-<TabItem label="Cluster Account Editor" value="Cluster Account Editor">
-
-<br />
-
-## Cluster Account Editor
-
-<br />
-
-<table>
-  <tr>
-    <td width="400">
-      <b>resourceKeys</b>
-    </td>
-    <td>
-      <b>Operations</b>
-    </td>
-  </tr>
-</table>
-<hr />
-
-|                  | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ---------------- | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **cloudaccount** |            |            | √       | √        | √          |            |             |            |             |
-
-<br />
-
-</TabItem>
-<TabItem label="Cluster Account Viewer" value="Cluster Account Viewer">
-
-<br />
-
-## Cluster Account Viewer
-
-<br />
-
-<table>
-  <tr>
-    <td width="400">
-      <b>resourceKeys</b>
-    </td>
-    <td>
-      <b>Operations</b>
-    </td>
-  </tr>
-</table>
-<hr />
-
-|                  | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ---------------- | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **cloudaccount** |            |            | √       | √        |            |            |             |            |             |
-
-<br />
-
-</TabItem>
-</Tabs>
-
-## Workspace
-
----
-
-<br />
-
-| Role Names       | Description                                |
-| ---------------- | ------------------------------------------ |
-| Workspace Admin  | Administrator role to workspace operations |
-| Workspace Editor | Editor role to workspace operations        |
-
-<br />
-
-<Tabs>
-<TabItem label="Workspace Admin" value="Workspace Admin">
-
-<br />
-
-## Workspace Admin
-
-<br />
-
-<table>
-  <tr>
-    <td width="400">
-      <b>resourceKeys</b>
-    </td>
-    <td>
-      <b>Operations</b>
-    </td>
-  </tr>
-</table>
-<hr />
-
-|               | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ------------- | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **workspace** | √          | √          | √       | √        | √          |            |             | √          | √           |
-
-<br />
-
-</TabItem>
-<TabItem label="Workspace Operator" value="Workspace Operator">
-
-<br />
-
-## Workspace Operator
-
-<br />
-
-<table>
-  <tr>
-    <td width="400">
-      <b>resourceKeys</b>
-    </td>
-    <td>
-      <b>Operations</b>
-    </td>
-  </tr>
-</table>
-<hr />
-
-|               | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ------------- | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **workspace** |            |            | √       | √        |            |            |             | √          | √           |
-
-<br />
-<br />
-<br />
-
-</TabItem>
-</Tabs>
-
-## Virtual Cluster
-
----
-
-| Role Names             | Description                                                                                                    |
+<Accordion>
+<AccordionPanel title=" App Profile Admin">
+
+- appProfile.create
+- appProfile.delete
+- appProfile.get
+- appProfile.list
+- appProfile.update
+- macro.create
+- macro.delete
+- macro.get
+- macro.list
+- macro.update
+- packRegistry.get
+- packRegistry.list
+- project.get
+- project.list
+
+</AccordionPanel>
+<AccordionPanel title=" App Profile Editor">
+
+- appProfile.get
+- appProfile.list
+- appProfile.update
+- macro.get
+- macro.list
+- macro.update
+- packRegistry.get
+- packRegistry.list
+- project.get
+- project.list
+
+</AccordionPanel>
+<AccordionPanel title=" App Profile Viewer">
+
+- appProfile.get
+- appProfile.list
+- macro.get
+- macro.list
+- packRegistry.get
+- packRegistry.list
+- project.get
+- project.list
+
+</AccordionPanel>
+</Accordion>
+
+### Cloud Account
+
+| Role Name            | Description                                           |
+| -------------------- | ----------------------------------------------------- |
+| Cloud Account Admin  | An administrative access to cloud account operations. |
+| Cloud Account Editor | An editor access to cloud account operations.         |
+| Cloud Account Viewer | A read-only role for cloud account operations.        |
+
+<Accordion>
+<AccordionPanel title="Cluster Account Admin">
+
+- cloudaccount.create
+- cloudaccount.delete
+- cloudaccount.get
+- cloudaccount.list
+- cloudaccount.update
+- project.get
+- project.list
+
+</AccordionPanel>
+<AccordionPanel title="Cluster Account Editor">
+
+- cloudaccount.get
+- cloudaccount.list
+- cloudaccount.update
+- project.get
+- project.list
+
+</AccordionPanel>
+<AccordionPanel title="Cluster Account Viewer">
+
+- cloudaccount.get
+- cloudaccount.list
+- project.get
+- project.list
+
+</AccordionPanel>
+</Accordion>
+
+### Cluster
+
+| Role Name      | Description                                                                                                                                                    |
+| -------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Cluster Admin  | A cluster admin in the Project scope has all the privileges related to the cluster operation.                                                                  |
+| Cluster Editor | A cluster editor in the Project scope has the privileges to update, delete, get, and list cluster resources. This role is not privileged for cluster creation. |
+| Cluster Viewer | A cluster viewer in Project scope is a read-only privilege to cluster operations.                                                                              |
+
+<Accordion>
+<AccordionPanel title="Cluster Admin">
+
+- cloudaccount.get
+- cloudaccount.list
+- cloudconfig.create
+- cloudconfig.delete
+- cloudconfig.get
+- cloudconfig.list
+- cloudconfig.update
+- cluster.create
+- cluster.delete
+- cluster.get
+- cluster.import
+- cluster.list
+- cluster.update
+- clusterGroup.get
+- clusterGroup.list
+- clusterProfile.get
+- clusterProfile.list
+- dnsMapping.create
+- dnsMapping.delete
+- dnsMapping.get
+- dnsMapping.list
+- dnsMapping.update
+- edgehost.create
+- edgehost.delete
+- edgehost.get
+- edgehost.list
+- edgehost.update
+- location.create
+- location.delete
+- location.get
+- location.list
+- location.update
+- machine.create
+- machine.delete
+- machine.get
+- machine.list
+- machine.update
+- macro.create
+- macro.delete
+- macro.get
+- macro.list
+- macro.update
+- packRegistry.get
+- packRegistry.list
+- privateGateway.get
+- privateGateway.list
+- project.get
+- project.list
+- sshKey.create
+- sshKey.delete
+- sshKey.get
+- sshKey.list
+- sshKey.update
+- tag.update
+- virtualCloudconfig.create
+- virtualCloudconfig.delete
+- virtualCloudconfig.get
+- virtualCloudconfig.list
+- virtualCloudconfig.update
+- virtualCluster.create
+- virtualCluster.delete
+- virtualCluster.get
+- virtualCluster.list
+- virtualCluster.update
+- virtualMachine.clone
+- virtualMachine.create
+- virtualMachine.delete
+- virtualMachine.get
+- virtualMachine.list
+- virtualMachine.migrate
+- virtualMachine.pause
+- virtualMachine.restart
+- virtualMachine.resume
+- virtualMachine.snapshotCreate
+- virtualMachine.snapshotDelete
+- virtualMachine.snapshotGet
+- virtualMachine.snapshotList
+- virtualMachine.snapshotUpdate
+- virtualMachine.start
+- virtualMachine.stop
+- virtualMachine.update
+
+</AccordionPanel>
+<AccordionPanel title="Cluster Editor">
+
+- cloudaccount.get
+- cloudaccount.list
+- cloudconfig.get
+- cloudconfig.list
+- cloudconfig.update
+- cluster.get
+- cluster.list
+- cluster.update
+- clusterGroup.get
+- clusterGroup.list
+- clusterProfile.get
+- clusterProfile.list
+- dnsMapping.get
+- dnsMapping.list
+- dnsMapping.update
+- edgehost.get
+- edgehost.list
+- edgehost.update
+- location.get
+- location.list
+- location.update
+- machine.delete
+- machine.get
+- machine.list
+- machine.update
+- macro.get
+- macro.list
+- macro.update
+- packRegistry.get
+- packRegistry.list
+- privateGateway.get
+- privateGateway.list
+- project.get
+- project.list
+- sshKey.get
+- sshKey.list
+- sshKey.update
+- tag.update
+- virtualCloudconfig.get
+- virtualCloudconfig.list
+- virtualCloudconfig.update
+- virtualCluster.get
+- virtualCluster.list
+- virtualCluster.update
+- virtualMachine.get
+- virtualMachine.list
+- virtualMachine.pause
+- virtualMachine.restart
+- virtualMachine.resume
+- virtualMachine.snapshotCreate
+- virtualMachine.snapshotDelete
+- virtualMachine.snapshotGet
+- virtualMachine.snapshotList
+- virtualMachine.snapshotUpdate
+- virtualMachine.start
+- virtualMachine.stop
+- virtualMachine.update
+
+</AccordionPanel>
+<AccordionPanel title="Cluster Viewer">
+
+- cloudaccount.get
+- cloudaccount.list
+- cloudconfig.get
+- cloudconfig.list
+- cluster.get
+- cluster.list
+- clusterGroup.get
+- clusterGroup.list
+- clusterProfile.get
+- clusterProfile.list
+- dnsMapping.get
+- dnsMapping.list
+- edgehost.get
+- edgehost.list
+- location.get
+- location.list
+- machine.get
+- machine.list
+- macro.get
+- macro.list
+- packRegistry.get
+- packRegistry.list
+- privateGateway.get
+- privateGateway.list
+- project.get
+- project.list
+- sshKey.get
+- sshKey.list
+- virtualCloudconfig.get
+- virtualCloudconfig.list
+- virtualCluster.get
+- virtualCluster.list
+- virtualMachine.get
+- virtualMachine.list
+
+</AccordionPanel>
+</Accordion>
+
+### Cluster Profile
+
+| Role Name              | Description                                                                                    |
+| ---------------------- | ---------------------------------------------------------------------------------------------- |
+| Cluster Profile Admin  | Cluster Profile Admin role has admin privileges to all the cluster profile operations.         |
+| Cluster Profile Editor | Cluster Profile Editor role has privileges to edit and list operations on the cluster profile. |
+| Cluster Profile Viewer | Cluster Profile Viewer role has read-only privileges to cluster profiles.                      |
+
+<Accordion>
+<AccordionPanel title="Cluster Profile Admin">
+
+- clusterProfile.create
+- clusterProfile.delete
+- clusterProfile.get
+- clusterProfile.list
+- clusterProfile.publish
+- clusterProfile.update
+- macro.create
+- macro.delete
+- macro.get
+- macro.list
+- macro.update
+- packRegistry.get
+- packRegistry.list
+- project.get
+- project.list
+- tag.update
+
+</AccordionPanel>
+<AccordionPanel title="Cluster Profile Editor">
+
+- clusterProfile.get
+- clusterProfile.list
+- clusterProfile.publish
+- clusterProfile.update
+- macro.get
+- macro.list
+- macro.update
+- packRegistry.get
+- packRegistry.list
+- project.get
+- project.list
+- tag.update
+
+</AccordionPanel>
+<AccordionPanel title="Cluster Profile Viewer">
+
+- clusterProfile.get
+- clusterProfile.list
+- macro.get
+- macro.list
+- packRegistry.get
+- packRegistry.list
+- project.get
+- project.list
+
+</AccordionPanel>
+</Accordion>
+
+### Project
+
+| Role Name      | Description                                                                                                                     |
+| -------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| Project Admin  | The Project Admin role is a closure of all the project operations. It is an administrative privilege for the project resources. |
+| Project Editor | The Project Editor role can perform edit operations within a project, but the user is not able to create or delete a project.   |
+| Project Viewer | The Project Viewer will be able to view all the resources within a project, but is not privileged to make modifications.        |
+
+<Accordion>
+<AccordionPanel title="Project Admin">
+
+- appDeployment.create
+- appDeployment.delete
+- appDeployment.get
+- appDeployment.list
+- appDeployment.update
+- appProfile.create
+- appProfile.delete
+- appProfile.get
+- appProfile.list
+- appProfile.update
+- audit.get
+- audit.list
+- cloudaccount.create
+- cloudaccount.delete
+- cloudaccount.get
+- cloudaccount.list
+- cloudaccount.update
+- cloudconfig.create
+- cloudconfig.delete
+- cloudconfig.get
+- cloudconfig.list
+- cloudconfig.update
+- cluster.create
+- cluster.delete
+- cluster.get
+- cluster.import
+- cluster.list
+- cluster.update
+- clusterGroup.create
+- clusterGroup.delete
+- clusterGroup.get
+- clusterGroup.list
+- clusterGroup.update
+- clusterProfile.create
+- clusterProfile.delete
+- clusterProfile.get
+- clusterProfile.list
+- clusterProfile.publish
+- clusterProfile.update
+- dnsMapping.create
+- dnsMapping.delete
+- dnsMapping.get
+- dnsMapping.list
+- dnsMapping.update
+- edgehost.create
+- edgehost.delete
+- edgehost.get
+- edgehost.list
+- edgehost.update
+- location.create
+- location.delete
+- location.get
+- location.list
+- location.update
+- machine.create
+- machine.delete
+- machine.get
+- machine.list
+- machine.update
+- macro.create
+- macro.delete
+- macro.get
+- macro.list
+- macro.update
+- packRegistry.get
+- packRegistry.list
+- privateGateway.create
+- privateGateway.delete
+- privateGateway.get
+- privateGateway.list
+- privateGateway.update
+- project.get
+- project.list
+- project.update
+- sshKey.create
+- sshKey.delete
+- sshKey.get
+- sshKey.list
+- sshKey.update
+- tag.update
+- virtualCloudconfig.create
+- virtualCloudconfig.delete
+- virtualCloudconfig.get
+- virtualCloudconfig.list
+- virtualCloudconfig.update
+- virtualCluster.create
+- virtualCluster.delete
+- virtualCluster.get
+- virtualCluster.list
+- virtualCluster.update
+- virtualMachine.clone
+- virtualMachine.create
+- virtualMachine.delete
+- virtualMachine.get
+- virtualMachine.list
+- virtualMachine.migrate
+- virtualMachine.pause
+- virtualMachine.restart
+- virtualMachine.resume
+- virtualMachine.snapshotCreate
+- virtualMachine.snapshotDelete
+- virtualMachine.snapshotGet
+- virtualMachine.snapshotList
+- virtualMachine.snapshotUpdate
+- virtualMachine.start
+- virtualMachine.stop
+- virtualMachine.update
+- workspace.backup
+- workspace.create
+- workspace.delete
+- workspace.get
+- workspace.list
+- workspace.restore
+- workspace.update
+
+</AccordionPanel>
+<AccordionPanel title="Project Editior">
+
+- appDeployment.get
+- appDeployment.list
+- appDeployment.update
+- appProfile.get
+- appProfile.list
+- appProfile.update
+- audit.get
+- audit.list
+- cloudaccount.get
+- cloudaccount.list
+- cloudaccount.update
+- cloudconfig.create
+- cloudconfig.get
+- cloudconfig.list
+- cloudconfig.update
+- cluster.get
+- cluster.list
+- cluster.update
+- clusterGroup.get
+- clusterGroup.list
+- clusterGroup.update
+- clusterProfile.get
+- clusterProfile.list
+- clusterProfile.publish
+- clusterProfile.update
+- dnsMapping.get
+- dnsMapping.list
+- dnsMapping.update
+- edgehost.get
+- edgehost.list
+- edgehost.update
+- location.get
+- location.list
+- location.update
+- machine.delete
+- machine.get
+- machine.list
+- machine.update
+- macro.get
+- macro.list
+- macro.update
+- packRegistry.get
+- packRegistry.list
+- privateGateway.get
+- privateGateway.list
+- privateGateway.update
+- project.get
+- project.list
+- project.update
+- sshKey.get
+- sshKey.list
+- sshKey.update
+- tag.update
+- virtualCloudconfig.get
+- virtualCloudconfig.list
+- virtualCloudconfig.update
+- virtualCluster.get
+- virtualCluster.list
+- virtualCluster.update
+- virtualMachine.get
+- virtualMachine.list
+- virtualMachine.pause
+- virtualMachine.restart
+- virtualMachine.resume
+- virtualMachine.snapshotCreate
+- virtualMachine.snapshotDelete
+- virtualMachine.snapshotGet
+- virtualMachine.snapshotList
+- virtualMachine.snapshotUpdate
+- virtualMachine.start
+- virtualMachine.stop
+- virtualMachine.update
+- workspace.backup
+- workspace.get
+- workspace.list
+- workspace.restore
+- workspace.update
+
+</AccordionPanel>
+<AccordionPanel title="Project Viewer">
+
+- appDeployment.get
+- appDeployment.list
+- appProfile.get
+- appProfile.list
+- audit.get
+- audit.list
+- cloudaccount.get
+- cloudaccount.list
+- cloudconfig.get
+- cloudconfig.list
+- cluster.get
+- cluster.list
+- clusterGroup.get
+- clusterGroup.list
+- clusterProfile.get
+- clusterProfile.list
+- dnsMapping.get
+- dnsMapping.list
+- edgehost.get
+- edgehost.list
+- location.get
+- location.list
+- machine.get
+- machine.list
+- macro.get
+- macro.list
+- packRegistry.get
+- packRegistry.list
+- privateGateway.get
+- privateGateway.list
+- project.get
+- project.list
+- sshKey.get
+- sshKey.list
+- virtualCloudconfig.get
+- virtualCloudconfig.list
+- virtualCluster.get
+- virtualCluster.list
+- workspace.get
+- workspace.list
+
+</AccordionPanel>
+</Accordion>
+
+### Project Cluster Group
+
+| Role Name                    | Description                                                                                                |
+| ---------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| Project Cluster Group Admin  | Provides administrative privilege to perform all the operations on the cluster group resources.            |
+| Project Cluster Group Editor | Allows the user to perform edit operations on a cluster group but not to create or delete a cluster group. |
+| Project Cluster Group Viewer | Allows the user to view all the cluster group resources but not to modify them.                            |
+
+<Accordion>
+<AccordionPanel title="Project Cluster Group Admin">
+
+- cluster.get
+- cluster.list
+- clusterGroup.create
+- clusterGroup.delete
+- clusterGroup.get
+- clusterGroup.list
+- clusterGroup.update
+- project.get
+- project.list
+- tag.update
+
+</AccordionPanel>
+<AccordionPanel title="Project Cluster Group Editor">
+
+- cluster.get
+- cluster.list
+- clusterGroup.get
+- clusterGroup.list
+- clusterGroup.update
+- project.get
+- project.list
+- tag.update
+
+</AccordionPanel>
+<AccordionPanel title="Project Cluster Group Viewer">
+
+- cluster.get
+- cluster.list
+- clusterGroup.get
+- clusterGroup.list
+- project.get
+- project.list
+
+</AccordionPanel>
+</Accordion>
+
+### Virtual Cluster
+
+| Role Name              | Description                                                                                                    |
 | ---------------------- | -------------------------------------------------------------------------------------------------------------- |
 | Virtual Cluster Admin  | Provides administrative privilege to perform all virtual cluster operations on App resources.                  |
 | Virtual Cluster Editor | Allows the user to perform edit operations on a virtual cluster but not to create or delete a virtual cluster. |
 | Virtual Cluster Viewer | Allows the user to view all the virtual cluster resources but not to modify them.                              |
 
-<br />
-<br />
+<Accordion>
+<AccordionPanel title="Virtual Cluster Admin">
 
-<Tabs>
-<TabItem label="Virtual Cluster Admin" value="Virtual Cluster Admin">
-<br />
+- clusterGroup.get
+- clusterGroup.list
+- location.get
+- location.list
+- macro.create
+- macro.delete
+- macro.get
+- macro.list
+- macro.update
+- project.get
+- project.list
+- tag.update
+- virtualCloudconfig.create
+- virtualCloudconfig.delete
+- virtualCloudconfig.get
+- virtualCloudconfig.list
+- virtualCloudconfig.update
+- virtualCluster.create
+- virtualCluster.delete
+- virtualCluster.get
+- virtualCluster.list
+- virtualCluster.update
 
-## Virtual Cluster Admin
+</AccordionPanel>
+<AccordionPanel title="Virtual Cluster Editor">
 
-<br />
+- clusterGroup.get
+- clusterGroup.list
+- location.get
+- location.list
+- macro.get
+- macro.list
+- macro.update
+- project.get
+- project.list
+- tag.update
+- virtualCloudconfig.get
+- virtualCloudconfig.list
+- virtualCloudconfig.update
+- virtualCluster.get
+- virtualCluster.list
+- virtualCluster.update
 
-<table>
-  <tr>
-    <td width="400">
-      <b>resourceKeys</b>
-    </td>
-    <td>
-      <b>Operations</b>
-    </td>
-  </tr>
-</table>
-<hr />
+</AccordionPanel>
+<AccordionPanel title="Virtual Cluster Viewer">
 
-|                        | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ---------------------- | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **clusterGroup**       |            |            | √       | √        |            |            |             |            |             |
-| **location**           |            |            | √       | √        |            |            |             |            |             |
-| **macro**              | √          | √          | √       | √        | √          |            |             |            |             |
-| **project**            |            |            | √       | √        |            |            |             |            |             |
-| **tag**                |            |            |         |          | √          |            |             |            |             |
-| **virtualCloudconfig** | √          | √          | √       | √        | √          |            |             |            |             |
-| **virtualCluster**     | √          | √          | √       | √        | √          |            |             |            |             |
+- clusterGroup.get
+- clusterGroup.list
+- location.get
+- location.list
+- macro.get
+- macro.list
+- project.get
+- project.list
+- virtualCloudconfig.get
+- virtualCloudconfig.list
+- virtualCluster.get
+- virtualCluster.list
 
-</TabItem>
-<TabItem label="Virtual Cluster Editor" value="Virtual Cluster Editor">
+</AccordionPanel>
+</Accordion>
 
-<br />
+### Virtual Machine
 
-## Virtual Cluster Editor
+| Role Name                  | Description                                                                                   |
+| -------------------------- | --------------------------------------------------------------------------------------------- |
+| Virtual Machine Admin      | Provides administrative privilege to perform all the virtual machine operations.              |
+| Virtual Machine Power User | Provides the user with the ability to most of the virtual machine operations.                 |
+| Virtual Machine User       | Provides the user with the ability to perform non-destructive operations on virtual machines. |
+| Virtual Machine Viewer     | Provides the user with the ability to view virtual machines.                                  |
 
-<br />
+<Accordion>
+<AccordionPanel title="Virtual Machine Admin">
 
-<table>
-  <tr>
-    <td width="400">
-      <b>resourceKeys</b>
-    </td>
-    <td>
-      <b>Operations</b>
-    </td>
-  </tr>
-</table>
-<hr />
+- project.get
+- virtualMachine.clone
+- virtualMachine.create
+- virtualMachine.delete
+- virtualMachine.get
+- virtualMachine.list
+- virtualMachine.migrate
+- virtualMachine.pause
+- virtualMachine.restart
+- virtualMachine.resume
+- virtualMachine.snapshotCreate
+- virtualMachine.snapshotDelete
+- virtualMachine.snapshotGet
+- virtualMachine.snapshotList
+- virtualMachine.snapshotUpdate
+- virtualMachine.start
+- virtualMachine.stop
+- virtualMachine.update
 
-|                        | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ---------------------- | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **clusterGroup**       |            |            | √       | √        |            |            |             |            |             |
-| **location**           |            |            | √       | √        |            |            |             |            |             |
-| **macro**              |            |            | √       | √        | √          |            |             |            |             |
-| **project**            |            |            | √       | √        |            |            |             |            |             |
-| **tag**                |            |            |         |          | √          |            |             |            |             |
-| **virtualCloudconfig** |            |            | √       | √        | √          |            |             |            |             |
-| **virtualCluster**     |            |            | √       | √        | √          |            |             |            |             |
+</AccordionPanel>
+<AccordionPanel title="Virtual Machine Operator">
 
-<br />
+- project.get
+- virtualMachine.clone
+- virtualMachine.create
+- virtualMachine.delete
+- virtualMachine.get
+- virtualMachine.list
+- virtualMachine.migrate
+- virtualMachine.pause
+- virtualMachine.restart
+- virtualMachine.resume
+- virtualMachine.snapshotCreate
+- virtualMachine.snapshotDelete
+- virtualMachine.snapshotGet
+- virtualMachine.snapshotList
+- virtualMachine.snapshotUpdate
+- virtualMachine.start
+- virtualMachine.stop
+- virtualMachine.update
 
-</TabItem>
-<TabItem label="App Deployment Viewer" value="App Deployment Viewer">
+</AccordionPanel>
+<AccordionPanel title="Virtual Machine User">
 
-<br />
+- project.get
+- virtualMachine.get
+- virtualMachine.list
+- virtualMachine.pause
+- virtualMachine.restart
+- virtualMachine.resume
+- virtualMachine.snapshotCreate
+- virtualMachine.snapshotDelete
+- virtualMachine.snapshotGet
+- virtualMachine.snapshotList
+- virtualMachine.snapshotUpdate
+- virtualMachine.start
+- virtualMachine.stop
+- virtualMachine.update
 
-## Virtual Cluster Viewer
+</AccordionPanel>
+<AccordionPanel title="Virtual Machine Viewer">
 
-<br />
+- project.get
+- virtualMachine.get
+- virtualMachine.list
 
-<table>
-  <tr>
-    <td width="400">
-      <b>resourceKeys</b>
-    </td>
-    <td>
-      <b>Operations</b>
-    </td>
-  </tr>
-</table>
-<hr />
+</AccordionPanel>
+</Accordion>
 
-|                        | **Create** | **Delete** | **Get** | **List** | **Update** | **Import** | **Publish** | **Backup** | **Restore** |
-| ---------------------- | ---------- | ---------- | ------- | -------- | ---------- | ---------- | ----------- | ---------- | ----------- |
-| **clusterGroup**       |            |            | √       | √        |            |            |             |            |             |
-| **location**           |            |            | √       | √        |            |            |             |            |             |
-| **macro**              |            |            | √       | √        |            |            |             |            |             |
-| **project**            |            |            | √       | √        |            |            |             |            |             |
-| **virtualCloudconfig** |            |            | √       | √        |            |            |             |            |             |
-| **virtualCluster**     |            |            | √       | √        |            |            |             |            |             |
+### Workspace
 
-<br />
+| Role Name        | Description                                 |
+| ---------------- | ------------------------------------------- |
+| Workspace Admin  | Administrator role to workspace operations. |
+| Workspace Editor | Editor role to workspace operations.        |
 
-</TabItem>
-</Tabs>
+<Accordion>
+<AccordionPanel title="Workspace Admin">
 
-<br />
+- cluster.list
+- location.list
+- project.get
+- project.list
+- tag.update
+- workspace.backup
+- workspace.create
+- workspace.delete
+- workspace.get
+- workspace.list
+- workspace.restore
+- workspace.update
 
-<br />
-<br />
-<br />
+</AccordionPanel>
+<AccordionPanel title="Workspace Operator">
+
+- cluster.list
+- location.list
+- project.get
+- project.list
+- workspace.backup
+- workspace.get
+- workspace.list
+- workspace.restore
+
+</AccordionPanel>
+</Accordion>
+
+## Resources
+
+- [Permissions](./permissions.md)

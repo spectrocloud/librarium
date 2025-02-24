@@ -75,10 +75,9 @@ described in the list below.
 5. [Cluster groups](../clusters/cluster-groups/cluster-groups.md) are a collection of one or more host clusters that
    together form a computing platform for deploying virtual clusters.
 
-6. Tenant admins can assign [Roles and Permissions](../user-management/user-management.md#rbac).
+6. Tenant admins can assign [Roles and Permissions](../user-management/palette-rbac/palette-rbac.md).
 
-7. Tenant admins can create
-   [Users and Teams](../user-management/user-management.md#multi-organization-support-for-users).
+7. Tenant admins can create [Users and Teams](../user-management/users-and-teams/users-and-teams.md).
 
 8. [Audit logs](../audit-logs/audit-logs.md) in the **Tenant Admin** dashboard allow tracking user interaction with
    application resources for all projects and users. For admin users, the **Audit Log** button is visible for each

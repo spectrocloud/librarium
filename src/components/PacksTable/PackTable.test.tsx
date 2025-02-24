@@ -3,8 +3,35 @@ import { render, waitFor, screen, fireEvent } from "@testing-library/react";
 import fetchMock from "jest-fetch-mock";
 import FilteredTable from "./PacksTable";
 import { toTitleCase } from "./PacksTable";
+
+// Mock the Docusaurus dependencies
+jest.mock("@docusaurus/theme-common", () => ({
+  useColorMode: () => ({
+    colorMode: "light",
+    setColorMode: jest.fn(),
+  }),
+}));
+
+jest.mock("@theme/Admonition");
+
 // Enable fetch mocking
 fetchMock.enableMocks();
+
+beforeAll(() => {
+  Object.defineProperty(window, "matchMedia", {
+    writable: true,
+    value: jest.fn().mockImplementation((query) => ({
+      matches: false,
+      media: query,
+      onchange: null,
+      addListener: jest.fn(), // deprecated
+      removeListener: jest.fn(), // deprecated
+      addEventListener: jest.fn(),
+      removeEventListener: jest.fn(),
+      dispatchEvent: jest.fn(),
+    })),
+  });
+});
 
 describe("FilteredTable Tests", () => {
   const mockPacks = [
@@ -23,6 +50,7 @@ describe("FilteredTable Tests", () => {
       releaseType: "Experimental",
       contributor: "",
       docsURL: "",
+      hash: "mock-hash-1",
     },
     {
       name: "amazon-linux-eks",
@@ -39,6 +67,7 @@ describe("FilteredTable Tests", () => {
       releaseType: "Stable",
       contributor: "",
       docsURL: "",
+      hash: "mock-hash-2",
     },
   ];
 
@@ -49,14 +78,14 @@ describe("FilteredTable Tests", () => {
 
   it("should show loader initially", () => {
     const { container } = render(<FilteredTable />);
-    expect(container.querySelector(".loader")).toBeInTheDocument();
+    expect(container.querySelector(".ant-spin")).toBeInTheDocument();
   });
 
   it("should hide loader and display packs after API call", async () => {
     fetchMock.mockResponseOnce(JSON.stringify({ dateCreated: "2022-08-25", Packs: mockPacks }));
     const { container } = render(<FilteredTable />);
 
-    await waitFor(() => expect(container.querySelector(".loader")).not.toBeInTheDocument());
+    await waitFor(() => expect(container.querySelector(".ant-spin")).not.toBeInTheDocument());
     expect(screen.getByText("Alpine")).toBeInTheDocument();
     expect(screen.getByText("Amazon EKS optimized Linux")).toBeInTheDocument();
   });
@@ -101,6 +130,18 @@ describe("FilteredTable Tests", () => {
     await waitFor(() => screen.getByText("Alpine"));
 
     expect(screen.getByText("EKS, vSphere")).toBeInTheDocument();
+  });
+
+  it("should have unique row keys", async () => {
+    fetchMock.mockResponseOnce(JSON.stringify({ dateCreated: "2022-08-25", Packs: mockPacks }));
+    const { container } = render(<FilteredTable />);
+
+    await waitFor(() => {
+      const rows = container.querySelectorAll(".ant-table-row");
+      const keys = Array.from(rows).map((row) => row.getAttribute("data-row-key"));
+      const uniqueKeys = new Set(keys);
+      expect(keys.length).toBe(uniqueKeys.size);
+    });
   });
 });
 

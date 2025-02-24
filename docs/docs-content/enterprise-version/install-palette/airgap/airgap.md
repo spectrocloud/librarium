@@ -57,7 +57,7 @@ To get started with an airgap Palette installation, check out the respective pla
 
 - [Kubernetes Airgap Instructions](../install-on-kubernetes/airgap-install/kubernetes-airgap-instructions.md)
 
-- [VMware vSphere Airgap Instructions](../install-on-vmware/airgap-install/vmware-vsphere-airgap-instructions.md)
+- [VMware vSphere Airgap Instructions](../install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions.md)
 
 Each platform guide provides detailed instructions on how to complete the pre-install steps.
 

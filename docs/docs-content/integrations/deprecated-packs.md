@@ -3,7 +3,7 @@ sidebar_label: "Deprecated Packs"
 title: "Deprecated Packs"
 description: "Deprecated Packs"
 icon: ""
-hide_table_of_contents: false
+hide_table_of_contents: true
 sidebar_position: 40
 tags: ["packs", "deprecation"]
 ---

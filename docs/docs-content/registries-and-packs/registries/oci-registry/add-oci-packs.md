@@ -75,7 +75,7 @@ For guidance on how to add a custom pack to an OCI pack registry, check out the
   }
   ```
 
-  ## Add OCI Packs Registry
+## Add OCI Packs Registry
 
 Use the following steps to add an OCI Packs registry to Palette. Select the tab that corresponds to the type of OCI
 registry you are adding.

@@ -1,3 +1,7 @@
+# This workflow is required on all repositories in the organization. It is used to scan the repository for secrets using GitLeaks.
+# In the event of an error, the workflow will fail and the secrets will be displayed in the logs. Review the logs to determine the source of the secrets and remove them from the repository.
+# If the secret finding is a false positive, add the secret to the .gitleaksignore file in the repository.
+
 name: GitLeaks
 on: [pull_request]
 

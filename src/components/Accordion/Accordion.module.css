@@ -1,0 +1,30 @@
+.content {
+  padding: 10px;
+  color: var(--ifm-font-color-base) !important;
+}
+
+.ant-collapse {
+  background-color: transparent !important; /* Transparent accordion background */
+  border: none;
+}
+
+.ant-collapse-item {
+  background-color: transparent !important;
+}
+
+.ant-collapse-header {
+  background-color: transparent !important;
+  color: var(--ifm-font-color-base) !important;
+  font-weight: 500;
+  padding: 12px 16px;
+}
+
+.ant-collapse-content > .ant-collapse-content-box {
+  background-color: transparent !important;
+  color: var(--ifm-font-color-base) !important;
+  padding: 12px 16px;
+}
+
+.ant-collapse-header:hover {
+  color: var(--ifm-color-primary) !important;
+}

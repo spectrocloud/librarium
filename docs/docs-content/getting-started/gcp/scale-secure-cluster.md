@@ -10,8 +10,8 @@ tags: ["getting-started", "gcp", "tutorial"]
 
 Palette has in-built features to help with the automation of Day-2 operations. Upgrading and maintaining a deployed
 cluster is typically complex because you need to consider any possible impact on service availability. Palette provides
-out-of-the-box functionality for upgrades, observability, granular Role Based Access Control (RBAC), backup and security
-scans.
+out-of-the-box functionality for upgrades, observability, granular Role Based Access Control (RBAC), backup, and
+security scans.
 
 This tutorial will teach you how to use the Palette UI to perform scale and maintenance tasks on your clusters. You will
 learn how to create Palette projects and teams, import a cluster profile, safely upgrade the Kubernetes version of a
@@ -33,9 +33,9 @@ Additionally, you should install kubectl locally. Use the Kubernetes
 ## Create Palette Projects
 
 Palette projects help you organize and manage cluster resources, providing logical groupings. They also allow you to
-manage user access control through Role Based Access Control (RBAC). You can assign users and teams with specific roles
-to specific projects. All resources created within a project are scoped to that project and only available to that
-project, but a tenant can have multiple projects.
+manage user access control through RBAC. You can assign users and teams with specific roles to specific projects. All
+resources created within a project are scoped to that project and only available to that project, but a tenant can have
+multiple projects.
 
 Log in to [Palette](https://console.spectrocloud.com).
 
@@ -106,12 +106,11 @@ are only visible in the **Default** project. Therefore, you will need to create 
 Navigate to the left **Main Menu** and click on **Profiles**. Click on **Import Cluster Profile**. The **Import Cluster
 Profile** pane opens.
 
-Paste the following in the text editor. Click on **Validate**. The **Select repositories** dialog appears.
+Paste the following in the text editor. Click on **Validate**.
 
 <PartialsComponent category="getting-started" name="import-hello-uni-gcp" />
 
-Click on **Confirm**. Then, click on **Confirm** on the **Import Cluster Profile** pane. Palette creates a new cluster
-profile named **gcp-profile**.
+Click on **Confirm**. Palette creates a new cluster profile named **gcp-profile**.
 
 On the **Profiles** list, select **Project** from the **Contexts** drop-down. Your newly created cluster profile
 displays. The Palette UI confirms that the cluster profile was created in the scope of the
@@ -252,7 +251,7 @@ vulnerabilities. You can perform four types of scans on your cluster.
 | --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Kubernetes Configuration Security | This scan examines the compliance of deployed security features against the CIS Kubernetes Benchmarks, which are consensus-driven security guidelines for Kubernetes. By default, the test set will execute based on the cluster Kubernetes version.                     |
 | Kubernetes Penetration Testing    | This scan evaluates Kubernetes-related open-ports for any configuration issues that can leave the tenant clusters exposed to attackers. It hunts for security issues in your clusters and increases visibility of the security controls in your Kubernetes environments. |
-| Kubernetes Conformance Testing    | This scan validates your Kubernetes configuration to ensure that it conforms to CNCF specifications. Palette leverages an open-source tool called [Sonobuoy](https://sonobuoy.io) to perform this scan.                                                                  |
+| Kubernetes Conformance Testing    | This scan validates your Kubernetes configuration to ensure that it conforms to CNCF specifications. Palette leverages an open source tool called [Sonobuoy](https://sonobuoy.io) to perform this scan.                                                                  |
 | Software Bill of Materials (SBOM) | This scan details the various third-party components and dependencies used by your workloads and helps to manage security and compliance risks associated with those components.                                                                                         |
 
 Navigate to the left **Main Menu** and select **Clusters**. Select your cluster to view its **Overview** tab.
@@ -409,18 +408,18 @@ Switch back to Palette in your web browser. Navigate to the left **Main Menu** a
 cluster profile deployed to your cluster, named `gcp-profile`. Ensure that the **1.1.0** version is selected.
 
 Click on the **hellouniverse 1.2.0** layer. The manifest editor appears. Set the
-`manifests.hello-universe.ui.useTolerations` field on line 20 to `true`. Then, set the
-`manifests.hello-universe.ui.effect` field on line 22 to `NoExecute`. This toleration describes that the UI pods of
-Hello Universe will tolerate the taint with the key `app`, value `ui` and effect `NoExecute`. The tolerations of the UI
+`manifests.hello-universe.ui.useTolerations` field on line 19 to `true`. Then, set the
+`manifests.hello-universe.ui.effect` field on line 21 to `NoExecute`. This toleration describes that the UI pods of
+Hello Universe will tolerate the taint with the effect `NoExecute`, key `app`, and value `ui`. The tolerations of the UI
 pods should be as below.
 
 ```yaml
 ui:
   useTolerations: true
   tolerations:
-  effect: NoExecute
-  key: app
-  value: ui
+    effect: NoExecute
+    key: app
+    value: ui
 ```
 
 Click on **Confirm Updates**. The manifest editor closes. Then, click on **Save Changes** to persist your changes.

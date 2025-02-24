@@ -55,15 +55,15 @@ day 2 management.
 
 Palette has the richest coverage in supported environments that includes:
 
-- Public Clouds: AWS, Azure, Google Cloud and Tencent TKE. Palette supports both IaaS and managed Kubernetes services
-  AWS EKS, Azure AKS and Google GKE.
+- Public Clouds: AWS, Azure, and Google Cloud. Palette supports both IaaS and managed Kubernetes services AWS EKS, Azure
+  AKS, and Google GKE.
 - Data Centers: VMware, Nutanix, and OpenStack
 - Bare Metal: Canonical MAAS
 - Edge
 
 ## What is Under the Hood?
 
-Palette uniquely extends and integrates the Cloud Native Computing Foundation (CNCF) open-source Cluster API project.
+Palette uniquely extends and integrates the Cloud Native Computing Foundation (CNCF) open source Cluster API project.
 Palette does this by providing comprehensive full-stack modeling and orchestration, governance, security, and day 0 -
 day 2 management capabilities.
 

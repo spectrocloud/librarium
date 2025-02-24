@@ -15,7 +15,7 @@ These locations include hospitals, retail stores, Telco environments, restaurant
 areas, and many more.
 
 Palette Edge supports both VM and container-based workloads, multiple Kubernetes distributions, and Intel and ARM
-hardware architectures. It is built on top of the open-source project [Kairos](https://kairos.io/), which enables the
+hardware architectures. It is built on top of the open source project [Kairos](https://kairos.io/), which enables the
 creation and customization of immutable versions of operating systems. Additionally, Palette Edge is designed to scale
 to tens of thousands of locations while enforcing policies locally within each cluster.
 

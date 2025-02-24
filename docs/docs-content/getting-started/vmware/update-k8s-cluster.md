@@ -64,17 +64,12 @@ panel.
 
 ![Image that shows how to add a cluster tag](/getting-started/vmware/getting-started_update-k8s-cluster_add-service-tag.webp)
 
-Navigate to the left **Main Menu** and select **Clusters** to view your deployed clusters. Click on **Add Filter**, then
-select the **Add custom filter** option.
-
-Use the drop-down boxes to fill in the values of the filter. Select **Tags** in the left-hand **drop-down Menu**. Select
-**is** in the middle **drop-down Menu**. Fill in **service:hello-universe-frontend** in the right-hand input box.
-
-Click on **Apply Filter**.
+Navigate to the left **Main Menu** and select **Clusters** to view your deployed clusters. Click the **filter** icon to
+expand the **All Filters** pane, and below **Tags**, enter **service:hello-universe-frontend**.
 
 ![Image that shows how to add a frontend service filter](/getting-started/vmware/getting-started_update-k8s-cluster_apply-frontend-filter.webp)
 
-Once you apply the filter, only the `vmware-cluster` with this tag is displayed.
+Only the `vmware-cluster` with this tag is displayed.
 
 ## Version Cluster Profiles
 
@@ -117,8 +112,7 @@ Click on **Confirm & Create**. The manifest editor closes.
 
 Click on **Save Changes** to finish the configuration of this cluster profile version.
 
-Navigate to the left **Main Menu** and select **Clusters**. Filter for the cluster with the
-**service:hello-universe-frontend** tag. Select it to view its **Overview** tab.
+Navigate to the left **Main Menu** and select **Clusters**. Select the `vmware-cluster` to view its **Overview** tab.
 
 Select the **Profile** tab of this cluster. You can select a new version of your cluster profile by using the version
 dropdown.
@@ -138,7 +132,7 @@ backups before you make any cluster profile version changes in your production e
 :::
 
 Palette now makes the required changes to your cluster according to the specifications of the configured cluster profile
-version. Once your changes have completed, Palette marks your layers with the green status indicator. The Kubecost pack
+version. Once your changes are applied, Palette marks your layers with the green status indicator. The Kubecost pack
 will be successfully deployed.
 
 ![Image that shows completed cluster profile updates](/getting-started/vmware/getting-started_update-k8s-cluster_completed-cluster-updates.webp)
@@ -149,6 +143,9 @@ This file enables you and other users to issue kubectl commands against the host
 ![Image that the kubeconfig file](/getting-started/vmware/getting-started_update-k8s-cluster_download-kubeconfig.webp)
 
 Open a terminal window and set the environment variable `KUBECONFIG` to point to the kubeconfig file you downloaded.
+
+Issue the following command, replacing `~/Downloads/admin.vmware-cluster.kubeconfig` with the path to your kubeconfig
+file.
 
 ```shell
 export KUBECONFIG=~/Downloads/admin.vmware-cluster.kubeconfig
@@ -180,11 +177,10 @@ the time to recovery in the event of an incident.
 
 The process to roll back to a previous version is identical to the process for applying a new version.
 
-Navigate to the left **Main Menu** and select **Clusters**. Filter for the cluster with the
-**service:hello-universe-frontend** tag. Select it to view its **Overview** tab.
+Navigate to the left **Main Menu** and select **Clusters**. Select the `vmware-cluster` to view its **Overview** tab.
 
 Select the **Profile** tab. This cluster is currently deployed using cluster profile version **1.1.0**. Select the
-option **1.0.0** in the version dropdown. This process is the reverse of what you have done in the previous section,
+option **1.0.0** in the version dropdown. This process is the reverse of what you did in the previous section,
 [Version Cluster Profiles](#version-cluster-profiles).
 
 Click on **Review & Save** to confirm your changes. The **Changes Summary** dialog appears again.
@@ -195,7 +191,7 @@ application configuration.
 Click on **Apply Changes**. Select the **Overview** tab.
 
 Palette now makes the changes required for the cluster to return to the state specified in version **1.0.0** of your
-cluster profile. Once your changes have completed, Palette marks your layers with the green status indicator.
+cluster profile. Once your changes are applied, Palette marks your layers with the green status indicator.
 
 ![Cluster details page](/getting-started/vmware/getting-started_update-k8s-cluster_cluster-details.webp)
 
@@ -207,11 +203,10 @@ choose to apply your changes at a convenient time.
 
 The previous state of the cluster profile will not be saved once it is overwritten.
 
-Navigate to the left **Main Menu** and select **Clusters**. Filter for the cluster with the tag
-**service:hello-universe-frontend**. Select it to view its **Overview** tab.
+Navigate to the left **Main Menu** and select **Clusters**. Select the `vmware-cluster` to view its **Overview** tab.
 
-Select the **Profiles** tab. Then, select the **hello-universe** pack. Change the `replicas` field to `2` on line `15`.
-Click on **Save**. The editor closes.
+Select the **Profile** tab. Then, select the **hello-universe** pack. Change the `replicas` field on line `15` to `2`
+and **Save** your changes. The editor is closed.
 
 This cluster now contains an override over its cluster profile. Palette uses the configuration you have just provided
 for the single cluster over its cluster profile and begins making the appropriate changes.
@@ -219,15 +214,15 @@ for the single cluster over its cluster profile and begins making the appropriat
 Once these changes are complete, select the **Workloads** tab. Then, select the **hello-universe** namespace.
 
 Two **ui** pods are available, instead of the one specified by your cluster profile. Your override has been successfully
-applied.
+applied. If your changes are not displayed, use the **refresh** icon.
 
 Navigate to the left **Main Menu** and select **Profiles** to view the cluster profile page. Find the cluster profile
 corresponding to your _hello-universe-frontend_ cluster, named `vmware-profile`.
 
 Click on it to view its details. Select **1.0.0** in the version dropdown.
 
-Select the **hello-universe** pack. The editor appears. Change the `replicas` field to `3` on line `15`. Click on
-**Confirm Updates**. The editor closes.
+Select the **hello-universe** pack. Change the `replicas` field on line `15` to `3`. Click on **Confirm Updates**. The
+editor is closed.
 
 Click on **Save Changes** to confirm the changes you have made to your profile.
 
@@ -241,9 +236,10 @@ Select this cluster to open its **Overview** tab. Click on **Updates** to begin 
 
 ![Image that shows the Updates button](/getting-started/vmware/getting-started_update-k8s-cluster_updates-available-button-cluster-overview.webp)
 
-A dialog appears which shows the changes made in this update. Review the changes and ensure the only change is the
-`replicas` field value. The pending update removes your cluster override and sets the `replicas` field to `3`. At this
-point, you can choose to apply the pending changes or keep it by modifying the right-hand side of the dialog.
+A dialog appears, showing a summary of packs changed. Select **Review changes in Editor** to review your changes. Ensure
+the only change is the `replicas` field value. The pending update removes your cluster override and sets the `replicas`
+field to `3`. At this point, you can choose to apply the pending changes or make additional changes by modifying the
+**Pending Configuration** pane on the right side of the editor.
 
 ![Image that shows the available updates dialog ](/getting-started/vmware/getting-started_update-k8s-cluster_available-updates-dialog.webp)
 
@@ -252,7 +248,8 @@ Click on **Confirm updates** once you have finished reviewing your changes.
 Palette updates your cluster according to cluster profile specifications. Once these changes are complete, select the
 **Workloads** tab. Then, select the **hello-universe** namespace.
 
-Three **ui** pods are available. The cluster profile update is now reflected by your cluster.
+Three **ui** pods are available. The cluster profile update is now reflected by your cluster. If your changes are not
+displayed, use the **refresh** icon.
 
 ## Cluster Observability
 
@@ -289,9 +286,9 @@ selection to remove the cluster profile.
 ## Wrap-Up
 
 In this tutorial, you created deployed cluster profile updates. After the cluster was deployed to VMware, you updated
-the cluster profile through three different methods: create a new cluster profile version, update a cluster profile in
-place, and cluster profile overrides. After you made your changes, the Hello Universe application functioned as a
-three-tier application with a REST API backend server.
+the cluster profile through three different methods: creating a new cluster profile version, updating a cluster profile
+in place, and using cluster profile overrides. After you made your changes, the Hello Universe application functioned as
+a three-tier application with a REST API backend server.
 
 Cluster profiles provide consistency during the cluster creation process, as well as when maintaining your clusters.
 They can be versioned to keep a record of previously working cluster states, giving you visibility when updating or

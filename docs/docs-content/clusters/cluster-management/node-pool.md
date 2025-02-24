@@ -3,6 +3,7 @@ sidebar_label: "Node Pools"
 title: "Node Pools"
 description: "Learn about the node pools and applying changes to a node pool."
 hide_table_of_contents: false
+toc_max_heading_level: 2
 sidebar_position: 190
 tags: ["clusters", "cluster management"]
 ---
@@ -214,6 +215,52 @@ After you have modified a new node pool, you can validate the node pool by follo
 
 5. Ensure the new node pool is listed in the **Node Pools** section and that all compute instances are in the healthy
    status.
+
+## Delete a Node Pool
+
+You can delete a worker node pool from an active cluster using the following steps.
+
+:::warning
+
+The deletion of a node pool drains and removes its worker nodes. Before proceeding, ensure that your remaining node
+pools have enough resources to take on the workloads from the pool being deleted, to prevent any disruption.
+
+:::
+
+### Prerequisites
+
+- An active cluster in Palette with at least one worker node pool.
+
+- The `cluster.update` permission, which is required to edit clusters.
+
+### Delete Node Pool
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. From the left **Main Menu**, click **Clusters**.
+
+3. Select the cluster with the node pool you want to delete.
+
+4. Click the **Nodes** tab.
+
+5. Locate the node pool you want to delete and click the **Delete** button.
+
+6. Click **Delete** again to confirm the deletion. This action will drain and delete all nodes in the node pool.
+
+### Validate
+
+Use the following steps to confirm that the node pool was deleted successfully.
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. From the left **Main Menu**, click on **Clusters**.
+
+3. Select the cluster that had the deleted node pool.
+
+4. Click the **Nodes** tab.
+
+5. Verify that the deleted node pool is no longer listed in the **Node Pools** section and that all the remaining
+   compute instances are in a healthy state.
 
 ## Approve Cluster Repave
 
