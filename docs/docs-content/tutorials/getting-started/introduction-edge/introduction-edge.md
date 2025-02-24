@@ -44,18 +44,18 @@ VM-based deployments. With its low-touch deployment capabilities, you can ship a
 and have it deployed without requiring a field engineer on-site. Review the example use cases below to help you
 visualize how you can leverage Palette Edge.
 
-- **Retail**: Ensure continuous operation of point-of-sale (POS) terminals and transactions across hundreds of
-  restaurants, even in areas with unreliable internet connectivity.
+- **Retail**: Ensure continuous operation of point of sale terminals and transactions across hundreds of restaurants,
+  even in areas with unreliable internet connectivity.
 
 - **Manufacturing**: Deploy and manage Edge clusters in airgapped environments to support real-time automation and
   AI-driven applications, such as drone-based warehouse scanning or robotic process optimization.
 
-- **Healthcare**: Securely manage thousands of Edge devices running life-critical workloads in hospitals and clinics.
+- **Healthcare**: Securely manage thousands of Edge devices operating life-critical workloads in hospitals and clinics.
 
 - **Tactical Edge**: Deploy AI-powered compute-intensive vision applications in hostile environments to support
   autonomous systems and operational intelligence.
 
-![Palette tactital Edge examples](/getting-started/getting-started_introduction-edge_tactical-edge.png)
+![Palette tactical Edge examples](/getting-started/getting-started_introduction-edge_tactical-edge.png)
 
 ## Next Steps
 
