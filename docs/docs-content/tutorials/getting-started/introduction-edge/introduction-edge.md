@@ -34,7 +34,7 @@ build. After registration, you can use the host as a node during the Edge cluste
 environments, you can use [Local UI](../../../clusters/edge/local-ui/local-ui.md) to create and manage the cluster,
 which does not require a connection to Palette.
 
-![Palette Edge architecture diagram](/getting-started/getting-started_introduction-edge_edge-diagram.png)
+![Palette Edge architecture diagram](/getting-started/getting-started_introduction-edge_edge-diagram.webp)
 
 ## Use Cases
 
@@ -55,7 +55,7 @@ visualize how you can leverage Palette Edge.
 - **Tactical Edge**: Deploy AI-powered compute-intensive vision applications in hostile environments to support
   autonomous systems and operational intelligence.
 
-![Palette tactical Edge examples](/getting-started/getting-started_introduction-edge_tactical-edge.png)
+![Palette tactical Edge examples](/getting-started/getting-started_introduction-edge_tactical-edge.webp)
 
 ## Next Steps
 
