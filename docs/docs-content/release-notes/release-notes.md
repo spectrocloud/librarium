@@ -11,13 +11,14 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## February 12, 2025 - Release 4.5.22
+## February 21, 2025 - Documentation & Education Updates
 
-### Bug Fixes
+- The Documentation & Education team is enabling a new Q&A bot functionality on the Spectro Cloud official documentation
+  site. Click the **Ask AI** widget in the bottom right corner to bring up the chat interface.
 
-- Fixed an issue that prevented custom values of
-  [cluster profile variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables.md) from
-  being applied during cluster creation.
+  The Q&A bot is only trained on the latest version of the Spectro Cloud documentation. It is unable to answer
+  version-specific questions. As with all generative AI-powered services, its responses may not be accurate. Always
+  verify answers using the documentation for important updates.
 
 ## February 3, 2025 - Release 4.5.21
 
@@ -161,8 +162,8 @@ about the rolling upgrade strategy.
 
 #### Improvements
 
-- The internal [OpenShift Console](https://github.com/openshift/console) version used by VMO has been updated. The updated
-  version includes UI improvements, security fixes, bug fixes, and the ability to use OpenID Connect (OIDC) for
+- The internal [OpenShift Console](https://github.com/openshift/console) version used by VMO has been updated. The
+  updated version includes UI improvements, security fixes, bug fixes, and the ability to use OpenID Connect (OIDC) for
   authentication.
 
 ### VerteX
