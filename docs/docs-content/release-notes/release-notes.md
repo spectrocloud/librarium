@@ -11,14 +11,14 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## February 21, 2025 - Docs and Education Updates
+## February 21, 2025 - Documentation & Education Updates
 
-- Docs and Education is re-enabling the Q&A bot functionality on the Spectro Cloud official documentation site. Click
+- The Documentation & Education team is enabling a new Q&A bot functionality on the Spectro Cloud official documentation site. Click
   the **Ask AI** widget in the bottom right corner to bring up the chat interface.
 
   The Q&A bot is only trained on the latest version of the Spectro Cloud documentation. It is unable to answer
-  version-specific questions such as "Is X feature in 4.5?" As with all generative AI-powered services, its responses
-  may not be accurate. Always verify its answers using the documentation for important updates.
+  version-specific questions. As with all generative AI-powered services, its responses
+  may not be accurate. Always verify answers using the documentation for important updates.
 
 ## February 19, 2025 - Release 4.6.7
 
