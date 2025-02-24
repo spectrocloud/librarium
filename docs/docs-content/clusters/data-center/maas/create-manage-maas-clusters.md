@@ -143,10 +143,10 @@ infrastructure changes. Review instructions provided in the
 
 :::warning
 
-Ensure that the Operating System (OS) image selected for your cluster are downloaded and available for your MAAS
+Ensure that the Operating System (OS) images selected for your cluster are downloaded and available for your MAAS
 configuration to eliminate errors in Palette. You can refer to the
-[How to use standard images](https://maas.io/docs/how-to-customise-images) guide for instructions on downloading OS
-images compatible with their respective MAAS environment.
+[How to use standard images](https://maas.io/docs/about-custom-images) guide for instructions on downloading OS images
+compatible with their respective MAAS environment.
 
 :::
 
