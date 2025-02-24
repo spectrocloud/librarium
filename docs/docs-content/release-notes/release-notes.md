@@ -30,7 +30,7 @@ tags: ["release-notes"]
 
 ## February 16, 2025 - Release 4.6.0 - 4.6.6
 
-### Security Notices
+### Security Notices ()
 
 - Review the [Security Bulletins](../security-bulletins/reports/reports.mdx) page for the latest security advisories.
 

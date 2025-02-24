@@ -83,4 +83,5 @@ vale/styles/spectrocloud/
 vale/styles/spectrocloud-docs-internal/
 vale/styles/config/vocabularies/spectrocloud-vocab
 
+release_env_vars.json
 unused_images.json
