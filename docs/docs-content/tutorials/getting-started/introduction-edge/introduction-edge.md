@@ -1,5 +1,5 @@
 ---
-sidebar_label: "Introduction to Palette Edge"
+sidebar_label: "Introduction to Edge"
 title: "Introduction to Palette Edge"
 description: "Learn about Spectro Cloud Palette Edge."
 icon: ""
@@ -8,54 +8,93 @@ sidebar_position: 10
 tags: ["getting-started", "tutorial", "edge"]
 ---
 
-<!-- 
-- ENVIRONMENTS
-- COVER CLUSTER PROFILE AND PACKS -->
+Edge clusters are Kubernetes clusters configured on bare metal or virtual machines and deployed in remote locations.
+Each cluster is built using Palette's reusable Kubernetes stacks, [Cluster Profiles](../../../profiles/profiles.md). You
+can choose a combination of an Operating System (OS) and a Kubernetes distribution, including options like
+[RKE2](https://docs.rke2.io/) and [K3s](https://k3s.io/), for the core infrastructure layer of your stack and add any
+necessary add-ons on top to support your workloads.
 
-Edge clusters are Kubernetes clusters deployed on hardware installed in remote locations or on Virtual Machines (VMs).
-Each cluster consists of one or more nodes, with each node representing an individual Edge host. The Edge configuration
-begins with the EdgeForge process, which builds two key artifacts:
+Palette Edge provides end-to-end cluster management, including scaling, upgrades, and reconfiguration, while supporting
+both single-node and multi-node clusters on x86 and ARM architectures. Additionally, it ensures that clusters continue
+enforcing policies locally, maintaining uninterrupted operations even when connectivity is disrupted.
+
+Each Edge cluster consists of one or more nodes, with each node representing an individual Edge host. The Edge
+configuration begins with the [EdgeForge](../../../clusters/edge/edgeforge-workflow/edgeforge-workflow.md) process,
+which builds two key artifacts:
 
 1. **Installer ISO**: A bootable ISO image that contains the required dependencies, including the Palette Agent,
    _Stylus_.
-2. **Provider Images**: [Kairos](https://kairos.io/)-based images that combine the Operating System (OS) and Kubernetes
-   layers required for the cluster. These images install a secure, immutable OS during the cluster deployment and are
+2. **Provider Images**: [Kairos](https://kairos.io/)-based customizable images that combine the OS and Kubernetes layers
+   required for the cluster. These images install a secure, immutable OS during the cluster deployment and are
    referenced during the cluster profile creation.
 
 After completing the build, you use the Installer ISO to install the Palette agent onto the Edge host. In connected
 environments, the host then registers itself with Palette using the registration token provided during the installer
 build. After registration, you can use the host as a node during the Edge cluster deployment. In disconnected
-environments, you can use Local UI to create the cluster, which does not require a connection to Palette.
+environments, you can use [Local UI](../../../clusters/edge/local-ui/local-ui.md) to create and manage the cluster,
+which does not require a connection to Palette.
 
-The following diagram illustrates the components described above.
-
-<!-- new diagram. -->
+![Palette Edge architecture diagram](/getting-started/getting-started_introduction-edge_edge-diagram.png)
 
 ## Use Cases
 
 Palette Edge allows you to manage Kubernetes clusters at scale across distributed and remote locations. You can model
 your entire infrastructure to support a variety of workloads, including AI/ML applications and both containerized and
 VM-based deployments. With its low-touch deployment capabilities, you can ship a pre-configured device to a remote site
-and have it deployed without requiring a field engineer on-site. Explore some of the example use cases below to help you
+and have it deployed without requiring a field engineer on-site. Review the example use cases below to help you
 visualize how you can leverage Palette Edge.
 
-- Retail: Ensure continuous operation of point-of-sale (POS) terminals and transactions across hundreds of restaurants,
-  even in areas with unreliable internet connectivity.
+- **Retail**: Ensure continuous operation of point-of-sale (POS) terminals and transactions across hundreds of
+  restaurants, even in areas with unreliable internet connectivity.
 
-- Manufacturing: Deploy and manage edge clusters in airgapped environments to support real-time automation and AI-driven
-  applications, such as drone-based warehouse scanning or robotic process optimization.
+- **Manufacturing**: Deploy and manage Edge clusters in airgapped environments to support real-time automation and
+  AI-driven applications, such as drone-based warehouse scanning or robotic process optimization.
 
-- Healthcare: Securely manage thousands of edge devices running life-critical workloads in hospitals and clinics.
+- **Healthcare**: Securely manage thousands of Edge devices running life-critical workloads in hospitals and clinics.
 
-- Defense & Public Sector: Deploy AI-powered compute-intensive vision applications and real-time analytics in hostile or
-  high-risk environments to support autonomous systems and operational intelligence.
+- **Tactical Edge**: Deploy AI-powered compute-intensive vision applications in hostile environments to support
+  autonomous systems and operational intelligence.
 
-<!-- add image of the airplanes https://www.spectrocloud.com/solutions/tactical-edge-->
+![Palette tactital Edge examples](/getting-started/getting-started_introduction-edge_tactical-edge.png)
 
 ## Next Steps
 
 Explore the sequence of tutorials below to learn how to deploy your first Edge cluster with Palette. Each tutorial is
-designed to guide you step-by-step, building on the concepts introduced in the previous one to ensure a complete
-learning experience.
+designed to guide you step-by-step, building on the concepts introduced in the previous one.
 
-<!-- Cards will go here -->
+<!-- vale off -->
+
+<SimpleCardGrid
+  cards={[
+    {
+      title: "Prepare User Data",
+      description: "Create an user data file for your Edge deployment.",
+      buttonText: "Learn more",
+      url: "/tutorials/getting-started/introduction-edge/prepare-user-data",
+    },
+    {
+      title: "Prepare User Data",
+      description: "Create an user data file for your Edge deployment.",
+      buttonText: "Learn more",
+      url: "/tutorials/getting-started/introduction-edge/prepare-user-data",
+    },
+    {
+      title: "Prepare User Data",
+      description: "Create an user data file for your Edge deployment.",
+      buttonText: "Learn more",
+      url: "/tutorials/getting-started/introduction-edge/prepare-user-data",
+    },
+    {
+      title: "Prepare User Data",
+      description: "Create an user data file for your Edge deployment.",
+      buttonText: "Learn more",
+      url: "/tutorials/getting-started/introduction-edge/prepare-user-data",
+    },
+    {
+      title: "Prepare User Data",
+      description: "Create an user data file for your Edge deployment.",
+      buttonText: "Learn more",
+      url: "/tutorials/getting-started/introduction-edge/prepare-user-data",
+    },
+  ]}
+/>
