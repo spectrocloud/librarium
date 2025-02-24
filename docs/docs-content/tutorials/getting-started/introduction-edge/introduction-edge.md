@@ -14,9 +14,10 @@ can choose a combination of an Operating System (OS) and a Kubernetes distributi
 [RKE2](https://docs.rke2.io/) and [K3s](https://k3s.io/), for the core infrastructure layer of your stack and add any
 necessary add-ons on top to support your workloads.
 
-Palette Edge provides end-to-end cluster management, including scaling, upgrades, and reconfiguration, while supporting
-both single-node and multi-node clusters on x86 and ARM architectures. Additionally, it ensures that clusters continue
-enforcing policies locally, maintaining uninterrupted operations even when connectivity is disrupted.
+[Palette Edge](../../../clusters/edge/edge.md) provides end-to-end cluster management, including scaling, upgrades, and
+reconfiguration, while supporting both single-node and multi-node clusters on x86 and ARM architectures. Additionally,
+it ensures that clusters continue enforcing policies locally, maintaining uninterrupted operations even when
+connectivity is disrupted.
 
 Each Edge cluster consists of one or more nodes, with each node representing an individual Edge host. The Edge
 configuration begins with the [EdgeForge](../../../clusters/edge/edgeforge-workflow/edgeforge-workflow.md) process,
