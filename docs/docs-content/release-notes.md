@@ -11,6 +11,15 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## February 21, 2025 - Documentation & Education Updates
+
+- The Documentation & Education team is enabling a new Q&A bot functionality on the Spectro Cloud official documentation
+  site. Click the **Ask AI** widget in the bottom right corner to bring up the chat interface.
+
+  The Q&A bot is only trained on the latest version of the Spectro Cloud documentation. It is unable to answer
+  version-specific questions. As with all generative AI-powered services, its responses may not be accurate. Always
+  verify answers using the documentation for important updates.
+
 ## October 11, 2023 - Release 4.0.19
 
 This release contains the following enhancements and minor bug fixes.
@@ -74,23 +83,6 @@ This release contains enhancements and minor bug fixes.
 - The issue where system pods in the `hubble-system` namespace restarted frequently is now resolved.
 
 - The issue with Palette displaying incorrect interface of an edge host during cluster deployment is now resolved.
-
-## September 20, 2023 - Release 4.0.13
-
-This release contains minor bug fixes.
-
-### Bug Fixes
-
-- An issue where `etcd` sometimes retained an incorrect state entry of cluster nodes during scaling operations is now
-  resolved.
-
-- The issue where Palette does not display Helm Charts in third-party registries that contain charts without a logo URL
-  is now resolved.
-
-- Longhorn and Cilium Helm Chart-based packs are fixed to deploy with correct values.
-
-- An issue where Palette was updating clusters when _Pause Platform Updates_ was enabled at the project level is fixed.
-  This issue did not cause nodes to repave or for clusters to become unhealthy.
 
 ## September 1, 2023 - Release 4.0.8
 
@@ -179,7 +171,10 @@ improvements in Palette 4.0.0.
   applied to specific namespaces in the cluster. To learn more about configuring labels and annotations, refer to
   [Create an Add-on Profile](profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-addon-profile.md).
 
-- Host clusters can now be placed in maintenance mode, with the ability to choose which Kubernetes node to place in maintenance mode. When a node is placed in maintenance mode, scheduling is turned off for that node (cordoned), and existing workloads are migrated to another healthy node in the cluster without interruption (drained). Refer to the [Maintenance Mode](clusters/cluster-management/maintenance-mode.md) page to learn more.
+- Host clusters can now be placed in maintenance mode, with the ability to choose which Kubernetes node to place in
+  maintenance mode. When a node is placed in maintenance mode, scheduling is turned off for that node (cordoned), and
+  existing workloads are migrated to another healthy node in the cluster without interruption (drained). Refer to the
+  [Maintenance Mode](clusters/cluster-management/maintenance-mode.md) page to learn more.
 
 #### Improvements {#release-4-0-palette-improvements}
 
