@@ -14,6 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     env: 
       PATH_PERMISSIONS: required-permissions-data
+      BRANCH_NAME: sync-permissions-$(date +%Y%m%d%H%M%S)
 
     steps:
       - name: Retrieve Credentials
@@ -51,19 +52,18 @@ jobs:
           # Ensure we are in master. Replace this with master before merging the PR.
           git checkout doc-1613-permissions
 
-          # Create a new branch.
-          branch_name="sync-permissions-$(date +%Y%m%d%H%M%S)"
-          git checkout -b "$branch_name"
-
           # Issue the permissions-sync script.
           chmod +x scripts/permissions-sync-ci.sh
           bash scripts/permissions-sync-ci.sh
 
-      - name: Create backport labels
+      - name: Create a PR with the updated permissions
         run: |
+          # Create a new branch.
+          git checkout -b "${{ env.BRANCH_NAME }}"
+
           # List all the version branches
           branches="master"
-          version_branches=$(git branch -a | grep -E 'version-[0-9]+(-[0-9]+)*$')
+          version_branches=$(git branch -a | grep -E '(^|/)(version-[0-9]+(-[0-9]+)*)$')
           for version_branch in $version_branches; do
               # Remove leading spaces and remote prefix (if any)
               version_branch=$(echo $version_branch | sed 's/ *//;s/remotes\/origin\///')
@@ -79,13 +79,29 @@ jobs:
             fi 
           done
 
-          # Debug: check git status
+          # REVIEW Debug: check git status
           git status
           cat version_branches.json
           rm version_branches.json
 
-          # Commit and push
-          # Create PR with labels
+          # Commit and push the changes
+          git add _partials/permissions/
+          git commit -m "docs: update IAM permissions"
+          git push origin "${{ env.BRANCH_NAME }}"
+
+          # Create the pull request
+          pr_body='
+          ## Describe the Change
+          This PR updates the docs IAM permission files according to the files available in the `required-permissions-data` repository. 
+          The files are compared using the `scripts/permissions-sync-ci.sh` script.
+          Please review this PR carefully before merging it.'
+
+          output=$(gh pr create --base master --title "docs: update IAM permissions" --body "$pr_body" --label "$backport_labels")
+          pr_url=$(echo "$output" | grep -o "https://[^ ]*")
+          echo "PR successfully created $pr_url."
+
+          echo "GITHUB_CREATED_PERMISSIONS_PR=$pr_url" >> $GITHUB_ENV
+
           # Slack Notification success (modified files) and failure
         
 
