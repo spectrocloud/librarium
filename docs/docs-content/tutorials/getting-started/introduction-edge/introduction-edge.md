@@ -15,16 +15,14 @@ can choose a combination of an Operating System (OS) and a Kubernetes distributi
 necessary add-ons on top to support your workloads.
 
 [Palette Edge](../../../clusters/edge/edge.md) provides end-to-end cluster management, including scaling, upgrades, and
-reconfiguration, while supporting both single-node and multi-node clusters on x86 and ARM architectures. Additionally,
-it ensures that clusters continue enforcing policies locally, maintaining uninterrupted operations even when
-connectivity is disrupted.
+reconfiguration, while supporting both single-node and multi-node clusters. Additionally, it ensures that clusters
+continue enforcing policies locally, maintaining uninterrupted operations even when connectivity is disrupted.
 
 Each Edge cluster consists of one or more nodes, with each node representing an individual Edge host. The Edge
 configuration begins with the [EdgeForge](../../../clusters/edge/edgeforge-workflow/edgeforge-workflow.md) process,
 which builds two key artifacts:
 
-1. **Installer ISO**: A bootable ISO image that contains the required dependencies, including the Palette Agent,
-   _Stylus_.
+1. **Installer ISO**: A bootable ISO image that contains the required dependencies, including the Palette Agent.
 2. **Provider Images**: [Kairos](https://kairos.io/)-based customizable images that combine the OS and Kubernetes layers
    required for the cluster. These images install a secure, immutable OS during the cluster deployment and are
    referenced during the cluster profile creation.
@@ -53,8 +51,8 @@ visualize how you can leverage Palette Edge.
 
 - **Healthcare**: Securely manage thousands of Edge devices operating life-critical workloads in hospitals and clinics.
 
-- **Tactical Edge**: Deploy AI-powered compute-intensive vision applications in hostile environments to support
-  autonomous systems and operational intelligence.
+- **Mission-Critical Edge**: Deploy AI-powered compute-intensive vision applications in remote environments to support
+  real-time supply chain and logistics.
 
 ![Palette tactical Edge examples](/getting-started/getting-started_introduction-edge_tactical-edge.webp)
 
