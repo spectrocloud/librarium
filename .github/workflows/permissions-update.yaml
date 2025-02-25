@@ -14,7 +14,6 @@ jobs:
     runs-on: ubuntu-latest
     env: 
       PATH_PERMISSIONS: required-permissions-data
-      BRANCH_NAME: sync-permissions-$(date +%Y%m%d%H%M%S)
 
     steps:
       - name: Retrieve Credentials
@@ -61,7 +60,8 @@ jobs:
           GH_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
         run: |
           # Create a new branch.
-          git checkout -b "${{ env.BRANCH_NAME }}"
+          branch_name="clean-up-unused-images-$(date +%Y%m%d%H%M%S)"
+          git checkout -b "$branch_name"
 
           # List all the version branches
           branches="master"
@@ -87,7 +87,7 @@ jobs:
           # Commit and push the changes
           git add _partials/permissions/
           git commit -m "docs: update IAM permissions"
-          git push origin "${{ env.BRANCH_NAME }}"
+          git push origin $branch_name
 
           # Create the pull request
           pr_body='
