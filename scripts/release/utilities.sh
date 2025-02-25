@@ -10,7 +10,8 @@ generate_parameterised_file() {
 
     # Loop through all environment variables
     for var in $(compgen -e); do
-        local value=$(printf '%s' "${!var}")
+        # Strip quotes from all environment variables
+        local value="${!var#\"}"; value="${value%\"}"       
         # Use placeholder format {{variable}}
         local placeholder="{{${var}}}"  
 
