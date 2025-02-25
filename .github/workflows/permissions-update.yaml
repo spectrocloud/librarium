@@ -47,7 +47,8 @@ jobs:
 
       - name: Compare and update the permissions
         run: |
-          # Ensure that we are on master.
+          # Navigate to Librarium and ensure that we are on master.
+          cd ${{ env.PATH_LIBRARIUM }}
           git checkout master
 
           # Create a new branch.
@@ -62,7 +63,7 @@ jobs:
           git status
 
           # Commit and push
-          # Create PR
+          # Create PR with labels
           # Slack Notification success (modified files) and failure
         
 
