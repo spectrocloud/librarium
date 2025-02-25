@@ -32,7 +32,7 @@ The Spectro CLI tool is currently available for OSX and Linux.
 
    <TabItem label="OSX" value="osx_cli">
 
-   <!-- registry-osx-install -->
+   <!-- cli-osx-install -->
 
    ```bash
    wget https://spectro-cli.s3.amazonaws.com/v4.6.0/osx/spectro
@@ -42,7 +42,7 @@ The Spectro CLI tool is currently available for OSX and Linux.
 
    <TabItem label="Linux" value="linux_cli">
 
-   <!-- registry-linux-install -->
+   <!-- cli-linux-install -->
 
    ```bash
    wget https://spectro-cli.s3.amazonaws.com/v4.6.0/linux/spectro
@@ -310,7 +310,7 @@ Check the version of the Spectro CLI that is currently installed.
 spectro version
 ```
 
-<!-- registry-version-output -->
+<!-- cli-version-output -->
 
 ```bash hideClipboard
 Spectro CLI Version 4.6.0 linux/amd64

@@ -341,9 +341,9 @@ get-cached-cves:
 
 generate-release: ## Generate
 	./scripts/release/generate-release-notes.sh
-	./scripts/release/generate-cli.sh
+	./scripts/release/generate-cli-reference.sh
 	./scripts/release/generate-compatibility-matrix.sh
-	./scripts/release/generate-registry.sh
+	./scripts/release/generate-downloads.sh
 	make format
 	
 ###@ Aloglia Indexing
