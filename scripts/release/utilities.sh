@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Utility function to generate parameterised files using placeholders and RELEASE_ variables
+# Utility function to generate parameterised files using placeholders and environment variables
 # Params: 
 # $1 - template file, input file
 # $2 - parameterised, output file
@@ -8,11 +8,11 @@ generate_parameterised_file() {
     # Make a copy of the template file to parameterise
     cp "$1" "$2"
 
-    # Loop through all RELEASE_ environment variables
-    for var in $(compgen -e | grep ^RELEASE_); do
-        value=$(printf '%s' "${!var}")
+    # Loop through all environment variables
+    for var in $(compgen -e); do
+        local value=$(printf '%s' "${!var}")
         # Use placeholder format {{variable}}
-        placeholder="{{${var}}}"  
+        local placeholder="{{${var}}}"  
 
         # Replace placeholder in file
         sed -i '' "s|$placeholder|$value|g" "$2"
@@ -25,9 +25,10 @@ generate_parameterised_file() {
 # $2 - source file to insert, example: parameterised file
 # $3 - target file to insert into, example: downloads file
 insert_file_before() {
-    TEMP_FILE="scripts/release/temp_file.md"
-    # Process the file line by line until we find the search term/
-    inserted=false
+    local TEMP_FILE="scripts/release/temp_file.md"
+
+    # Process the file line by line until we find the search term
+    local inserted=false
     while IFS= read -r line; do
         # If we find the first occurrence of "linux/cli/palette"
         if [[ "$line" == *"$1"* && "$inserted" == false ]]; then
@@ -46,6 +47,77 @@ insert_file_before() {
 
     # Replace the original file with the updated one
     mv "$TEMP_FILE" "$3"
+}
+
+# Utility function to place a source file into a target file after the first line that contains the search param
+# Params: 
+# $1 - search term, example: linux/cli/palette
+# $2 - source file to insert, example: parameterised file
+# $3 - target file to insert into, example: release notes file
+insert_file_after() {
+    local TEMP_FILE="scripts/release/temp_file.md"
+
+    # Process the target file line by line
+    local inserted=false
+    while IFS= read -r line; do
+        echo "$line" >> "$TEMP_FILE"
+
+        if [[ "$line" == *"$1"* && "$inserted" == false ]]; then
+            echo "" >> "$TEMP_FILE"  # Insert a blank line
+            cat "$2" >> "$TEMP_FILE"
+            # Mark as inserted so things are only inserted once
+            inserted=true
+        fi
+    done < "$3"
+
+    # File traversed and search term not found
+    if [[ "$inserted" == false ]]; then
+        echo "❌ Search term $1 not found in file $3. Nothing will be inserted."
+        exit 1
+    fi
+
+    # Replace original file with the updated one
+    mv "$TEMP_FILE" "$3"
+}
+
+# Utility function to place a source file into a target file before the first line that contains the search param
+# Params: 
+# $1 - offset, example: 2
+# $2 - search term, example: linux/cli/palette
+# $3 - source file to insert, example: parameterised file
+# $4 - target file to insert into, example: downloads file
+insert_file_offset() {
+    local TEMP_FILE="scripts/release/temp_file.md"
+    # Process the file line by line until we find the search term
+    local inserted=false
+    local line_counter=0
+    local target_line=0
+
+    while IFS= read -r line; do
+        ((line_counter++))
+
+        # Detect the first occurrence of the search term
+        if [[ "$line" == *"$2"* && "$inserted" == false ]]; then
+            target_line=$((line_counter + $1))  # Calculate target line for insertion
+            inserted=true
+        fi
+
+        # Insert content at the target line count
+        if [[ "$inserted" == true && "$line_counter" -eq "$target_line" ]]; then
+            cat "$3" >> "$TEMP_FILE"
+        fi
+
+        echo "$line" >> "$TEMP_FILE"
+    done < "$4"
+    
+    # File traversed and search term not found
+    if [[ "$inserted" == false ]]; then
+        echo "❌ Search term $2 not found in file $4. Nothing was inserted."
+        exit 1
+    fi
+
+    # Replace the original file with the updated one
+    mv "$TEMP_FILE" "$4"
 }
 
 # Utility function to place a source file into a target file after the first line that contains the search param

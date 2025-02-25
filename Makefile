@@ -88,7 +88,7 @@ init: ## Initialize npm dependencies
 	grep -q "^DSO_AUTH_TOKEN=" .env || echo "\nDISABLE_SECURITY_INTEGRATIONS=true\nDSO_AUTH_TOKEN=" >> .env
 	grep -q "^PALETTE_API_KEY=" .env || echo "\nDISABLE_PACKS_INTEGRATIONS=true" >> .env
 	grep -q "^SHOW_LAST_UPDATE_TIME=" .env || echo "\nSHOW_LAST_UPDATE_TIME=false" >> .env
-	grep -q "^export RELEASE_PALETTE_NAME=" .env || echo "\nexportRELEASE_PALETTE_NAME=" >> .env
+	grep -q "^export RELEASE_NAME=" .env || echo "\nexportRELEASE_NAME=" >> .env
 	grep -q "^export RELEASE_VERSION=" .env || echo "\nexport RELEASE_VERSION=" >> .env
 	grep -q "^export RELEASE_DATE=" .env || echo "\nexport RELEASE_DATE=" >> .env
 	grep -q "^export RELEASE_CLI_VERSION=" .env || echo "\nexport RELEASE_CLI_VERSION=" >> .env
@@ -341,6 +341,7 @@ get-cached-cves:
 generate-release: ## Generate
 	./scripts/release/generate-release-notes.sh
 	./scripts/release/generate-cli-changes.sh
+	./scripts/release/generate-compatibility-matrix.sh
 	make format
 	
 ###@ Aloglia Indexing

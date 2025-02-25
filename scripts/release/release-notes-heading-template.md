@@ -1,1 +1,1 @@
-## {{RELEASE_DATE}} - Release {{RELEASE_VERSION}} {#release-notes-{{RELEASE_PALETTE_NAME}}}
+## {{RELEASE_DATE}} - Release {{RELEASE_VERSION}} {#release-notes-{{RELEASE_NAME}}}

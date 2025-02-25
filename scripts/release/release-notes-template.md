@@ -1,12 +1,12 @@
-## {{RELEASE_DATE}} - Release {{RELEASE_VERSION}} {#release-notes-{{RELEASE_PALETTE_NAME}}}
+## {{RELEASE_DATE}} - Release {{RELEASE_VERSION}} {#release-notes-{{RELEASE_NAME}}}
 
 ### Security Notices
 
 - Review the [Security Bulletins](../security-bulletins/reports/reports.mdx) page for the latest security advisories.
 
-### Palette Enterprise {#palette-enterprise-{{RELEASE_PALETTE_NAME}}}
+### Palette Enterprise {#palette-enterprise-{{RELEASE_NAME}}}
 
-#### Breaking Changes {#breaking-changes-{{RELEASE_PALETTE_NAME}}}
+#### Breaking Changes {#breaking-changes-{{RELEASE_NAME}}}
 
 #### Features
 
@@ -26,7 +26,7 @@
 
 #### Features
 
-- Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the [Palette section](#palette-enterprise-{{RELEASE_PALETTE_NAME}}) for more details.
+- Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the [Palette section](#palette-enterprise-{{RELEASE_NAME}}) for more details.
 
 ### Automation
 
