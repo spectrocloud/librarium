@@ -13,7 +13,6 @@ jobs:
   permissions-update:
     runs-on: ubuntu-latest
     env: 
-      #PATH_LIBRARIUM: librarium
       PATH_PERMISSIONS: required-permissions-data
 
     steps:
@@ -31,7 +30,6 @@ jobs:
         uses: actions/checkout@v4
         with: 
           repository: spectrocloud/librarium
-          #path: ${{ env.PATH_LIBRARIUM }}
           fetch-depth: 0
 
       - name: Checkout required-permissions-data Repository
@@ -50,25 +48,41 @@ jobs:
 
       - name: Compare and update the permissions
         run: |
-          # Navigate to Librarium and ensure that we are on master.
-          #cd ${{ env.PATH_LIBRARIUM }}
-          ls
-          git branch -r
-
-          # Replace this with master before merging the PR
+          # Ensure we are in master. Replace this with master before merging the PR.
           git checkout doc-1613-permissions
 
           # Create a new branch.
           branch_name="sync-permissions-$(date +%Y%m%d%H%M%S)"
           git checkout -b "$branch_name"
-          pwd
 
           # Issue the permissions-sync script.
           chmod +x scripts/permissions-sync-ci.sh
           bash scripts/permissions-sync-ci.sh
 
+      - name: Create backport labels
+        run: |
+          # List all the version branches
+          branches="master"
+          version_branches=$(git branch -a | grep -E 'version-[0-9]+(-[0-9]+)*$')
+          for version_branch in $version_branches; do
+              # Remove leading spaces and remote prefix (if any)
+              version_branch=$(echo $version_branch | sed 's/ *//;s/remotes\/origin\///')
+              branches+=" $version_branch"
+          done
+          echo "$branches" > version_branches.json
+
+          # Generate backport labels
+          backport_labels="auto-backport"
+          for branch in $(cat version_branches.json); do
+            if [[ $branch =~ version-[0-9]+(-[0-9]+)*$ ]]; then
+              backport_labels+=",backport-$branch"
+            fi 
+          done
+
           # Debug: check git status
           git status
+          cat version_branches.json
+          rm version_branches.json
 
           # Commit and push
           # Create PR with labels

@@ -9,7 +9,6 @@ set -e
 echo "Starting permissions sync..."
 
 # Set the repository paths and ensure they exist
-# repo_librarium="${PATH_LIBRARIUM:?Env variable PATH_LIBRARIUM in permissions-update.yaml is not set}"
 repo_librarium="${GITHUB_WORKSPACE}"
 repo_permissions="${PATH_PERMISSIONS:?Env variable PATH_PERMISSIONS in permissions-update.yaml is not set}"
 
