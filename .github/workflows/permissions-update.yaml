@@ -56,7 +56,7 @@ jobs:
           bash scripts/permissions-sync-ci.sh
 
       - name: Create a PR with the Updated Permissions
-        if: ${{ env.CHANGES_DETECTED  == true}}
+        if: ${{ env.CHANGES_DETECTED  == 'true'}}
         env:
           GH_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
         run: |
