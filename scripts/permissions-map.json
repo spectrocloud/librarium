@@ -1,0 +1,3 @@
+{
+  "aws/ControllerPolicy.json": "_partials/permissions/_aws-controller-policy.mdx"
+}

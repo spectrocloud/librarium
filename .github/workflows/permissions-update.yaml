@@ -1,0 +1,69 @@
+name: Permissions Update
+
+on:
+  # Every Tuesday at 17 UTC
+  schedule:
+    - cron: "0 17 * * 2"
+  workflow_dispatch:
+  push:
+    branches:
+      - doc-1613-permissions
+
+jobs:
+  permissions-update:
+    runs-on: ubuntu-latest
+    env: 
+      PATH_LIBRARIUM: librarium
+      PATH_PERMISSIONS: required-permissions-data
+
+    steps:
+      - name: Retrieve Credentials
+        id: import-secrets
+        uses: hashicorp/vault-action@v3.1.0
+        with:
+          url: https://vault.prism.spectrocloud.com
+          method: approle
+          roleId: ${{ secrets.VAULT_ROLE_ID }}
+          secretId: ${{ secrets.VAULT_SECRET_ID }}
+          secrets: /providers/github/organizations/spectrocloud/token?org_name=spectrocloud token | VAULT_GITHUB_TOKEN
+
+      - name: Checkout Librarium Repository
+        uses: actions/checkout@v4
+        with: 
+          repository: spectrocloud/librarium
+          path: ${{ env.PATH_LIBRARIUM }}
+
+      - name: Checkout required-permissions-data Repository
+        uses: actions/checkout@v4
+        with: 
+          repository: spectrocloud/required-permissions-data
+          path: ${{ env.PATH_PERMISSIONS }}
+          token: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
+
+      - name: Set Git User
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Compare and update the permissions
+        run: |
+          # Ensure that we are on master.
+          git checkout master
+
+          # Create a new branch.
+          branch_name="sync-permissions-$(date +%Y%m%d%H%M%S)"
+          git checkout -b "$branch_name"
+
+          # Issue the permissions-sync script.
+          chmod +x ${{ env.PATH_LIBRARIUM }}/scripts/permissions-sync-ci.sh
+          bash ${{ env.PATH_LIBRARIUM }}/scripts/permissions-sync-ci.sh
+
+          # Debug: check git status
+          git status
+
+          # Commit and push
+          # Create PR
+          # Slack Notification success (modified files) and failure
+        
+
+      
