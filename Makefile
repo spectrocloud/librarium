@@ -349,6 +349,7 @@ generate-release: ## Generate
 	./scripts/release/generate-compatibility-matrix.sh
 	./scripts/release/generate-downloads.sh
 	./scripts/release/generate-advanced-configuration.sh
+	./scripts/release/generate-install-palette-cli.sh
 	make format
 	
 ###@ Aloglia Indexing
