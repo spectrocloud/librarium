@@ -92,6 +92,7 @@ init: ## Initialize npm dependencies
 	grep -q "^export RELEASE_VERSION=" .env || echo "\nexport RELEASE_VERSION=" >> .env
 	grep -q "^export RELEASE_DATE=" .env || echo "\nexport RELEASE_DATE=" >> .env
 	grep -q "^export RELEASE_CLI_VERSION=" .env || echo "\nexport RELEASE_CLI_VERSION=" >> .env
+	grep -q "^export RELEASE_REGISTRY_VERSION=" .env || echo "\nexport RELEASE_REGISTRY_VERSION=" >> .env
 	npx husky install
 
 start: ## Start a local development server
@@ -340,8 +341,9 @@ get-cached-cves:
 
 generate-release: ## Generate
 	./scripts/release/generate-release-notes.sh
-	./scripts/release/generate-cli-changes.sh
+	./scripts/release/generate-cli.sh
 	./scripts/release/generate-compatibility-matrix.sh
+	./scripts/release/generate-registry.sh
 	make format
 	
 ###@ Aloglia Indexing
