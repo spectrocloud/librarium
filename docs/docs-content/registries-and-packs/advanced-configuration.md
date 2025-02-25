@@ -64,7 +64,7 @@ For example, you can start the docker container image with the following environ
 the basic auth realm and logging level. In the following example, the `-e` flag is used to provide environment variables
 to the container.
 
-<!-- registry-reference-1 -->
+<!-- registry-reference-end -->
 
 ```bash
 docker run -d \
@@ -81,7 +81,7 @@ docker run -d \
 Alternatively, you can start the container by mounting a directory with a new configuration file and pointing the server
 command to the configuration file.
 
-<!-- registry-reference-2 -->
+<!-- registry-reference-mid -->
 
 ```shell
 docker run -d \

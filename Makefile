@@ -344,6 +344,7 @@ generate-release: ## Generate
 	./scripts/release/generate-cli-reference.sh
 	./scripts/release/generate-compatibility-matrix.sh
 	./scripts/release/generate-downloads.sh
+	./scripts/release/generate-advanced-configuration.sh
 	make format
 	
 ###@ Aloglia Indexing
