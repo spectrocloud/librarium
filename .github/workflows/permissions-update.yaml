@@ -49,6 +49,8 @@ jobs:
         run: |
           # Navigate to Librarium and ensure that we are on master.
           cd ${{ env.PATH_LIBRARIUM }}
+          ls
+          git branch -r
           git checkout master
 
           # Create a new branch.
