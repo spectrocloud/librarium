@@ -97,6 +97,10 @@ init: ## Initialize npm dependencies
 	grep -q "^export RELEASE_EDGE_CLI_SHA=" .env || echo "\nexport RELEASE_EDGE_CLI_SHA=" >> .env
 	grep -q "^export RELEASE_REGISTRY_VERSION=" .env || echo "\nexport RELEASE_REGISTRY_VERSION=" >> .env
 	grep -q "^export RELEASE_SPECTRO_CLI_VERSION=" .env || echo "\nexport RELEASE_SPECTRO_CLI_VERSION=" >> .env
+	grep -q "^export RELEASE_VMWARE_KUBERNETES_VERSION=" .env || echo "\nexport RELEASE_VMWARE_KUBERNETES_VERSION=" >> .env
+	grep -q "^export RELEASE_VMWARE_OVA_URL=" .env || echo "\nexport RELEASE_VMWARE_OVA_URL=" >> .env
+	grep -q "^export RELEASE_VMWARE_FIPS_OVA_URL=" .env || echo "\nexport RELEASE_VMWARE_FIPS_OVA_URL=" >> .env
+	grep -q "^RELEASE_HIGHEST_KUBERNETES_VERSION=" .env || echo "\nexport RELEASE_HIGHEST_KUBERNETES_VERSION=" >> .env
 	npx husky install
 
 start: ## Start a local development server
