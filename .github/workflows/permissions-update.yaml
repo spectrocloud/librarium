@@ -32,15 +32,17 @@ jobs:
         with: 
           repository: spectrocloud/librarium
           path: ${{ env.PATH_LIBRARIUM }}
-          ref: master
+          #ref: master
+          fetch-depth: 0
 
       - name: Checkout required-permissions-data Repository
         uses: actions/checkout@v4
         with: 
           repository: spectrocloud/required-permissions-data
           path: ${{ env.PATH_PERMISSIONS }}
-          ref: main
+          #ref: main
           token: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
+          fetch-depth: 0
 
       - name: Set Git User
         run: |
