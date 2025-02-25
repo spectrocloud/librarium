@@ -57,6 +57,8 @@ jobs:
           bash scripts/permissions-sync-ci.sh
 
       - name: Create a PR with the updated permissions
+        env:
+          GH_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
         run: |
           # Create a new branch.
           git checkout -b "${{ env.BRANCH_NAME }}"
@@ -79,9 +81,7 @@ jobs:
             fi 
           done
 
-          # REVIEW Debug: check git status
-          git status
-          cat version_branches.json
+          # Remove temp version_branches file
           rm version_branches.json
 
           # Commit and push the changes
