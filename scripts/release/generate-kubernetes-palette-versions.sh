@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# Import utility functions
+source scripts/release/utilities.sh
+
+# Define cli related files
+VERSIONS_FILE="_partials/self-hosted/_kubernetes_palette_versions.mdx"
+VMWARE_TEMPLATE_FILE="scripts/release/templates/vmware-kubernetes-version.md"
+KUBERNETES_TEMPLATE_FILE="scripts/release/templates/kubernetes-max-version.md"
+VMWARE_PARAMETERISED_FILE="scripts/release/templates/vmware-kubernetes-version-output.md"
+KUBERNETES_PARAMETERISED_FILE="scripts/release/templates/kubernetes-max-version-output.md"
+TABLE_OFFSET=2
+
+generate_parameterised_file $VMWARE_TEMPLATE_FILE $VMWARE_PARAMETERISED_FILE
+generate_parameterised_file $KUBERNETES_TEMPLATE_FILE $KUBERNETES_PARAMETERISED_FILE
+
+existing_vmware=$(search_line "vmware-k8s-$RELEASE_NAME" $VERSIONS_FILE)
+if [[ -n "$existing_vmware" && "$existing_vmware" -ne 0 ]]; then
+    echo "ℹ️ VMware Kubernetes version for $RELEASE_NAME has already been generated in $VERSIONS_FILE"
+    replace_line $existing_vmware $VMWARE_PARAMETERISED_FILE $VERSIONS_FILE
+    echo "✅ Replaced VMware Kubernetes version entry in $VERSIONS_FILE"
+else
+    insert_file_offset $TABLE_OFFSET "vmware-kubernetes-version-table" $VMWARE_PARAMETERISED_FILE $VERSIONS_FILE
+    echo "✅ Parameterised VMware Kubernetes version inserted into $VERSIONS_FILE"
+fi
+
+existing_kubernetes=$(search_line "k8s-max-$RELEASE_NAME" $VERSIONS_FILE)
+if [[ -n "$existing_kubernetes" && "$existing_kubernetes" -ne 0 ]]; then
+    echo "ℹ️ Kubernetes highest version entry for $RELEASE_NAME has already been generated in $VERSIONS_FILE"
+    replace_line $existing_kubernetes $KUBERNETES_PARAMETERISED_FILE $VERSIONS_FILE
+    echo "✅ Replaced Kubernetes highest version entry in $VERSIONS_FILE"
+else
+    insert_file_offset $TABLE_OFFSET "kubernetes-max-version-table" $KUBERNETES_PARAMETERISED_FILE $VERSIONS_FILE
+    echo "✅ Parameterised Kubernetes highest version inserted into $VERSIONS_FILE"
+fi
+
+cleanup $VMWARE_PARAMETERISED_FILE
+cleanup $KUBERNETES_PARAMETERISED_FILE

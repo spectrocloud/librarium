@@ -354,6 +354,7 @@ generate-release: ## Generate
 	./scripts/release/generate-downloads.sh
 	./scripts/release/generate-advanced-configuration.sh
 	./scripts/release/generate-install-palette-cli.sh
+	./scripts/release/generate-kubernetes-palette-versions.sh
 	make format
 	
 ###@ Aloglia Indexing
