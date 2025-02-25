@@ -13,7 +13,7 @@ jobs:
   permissions-update:
     runs-on: ubuntu-latest
     env: 
-      PATH_LIBRARIUM: librarium
+      #PATH_LIBRARIUM: librarium
       PATH_PERMISSIONS: required-permissions-data
 
     steps:
@@ -31,7 +31,7 @@ jobs:
         uses: actions/checkout@v4
         with: 
           repository: spectrocloud/librarium
-          path: ${{ env.PATH_LIBRARIUM }}
+          #path: ${{ env.PATH_LIBRARIUM }}
           fetch-depth: 0
 
       - name: Checkout required-permissions-data Repository
@@ -51,7 +51,7 @@ jobs:
       - name: Compare and update the permissions
         run: |
           # Navigate to Librarium and ensure that we are on master.
-          cd ${{ env.PATH_LIBRARIUM }}
+          #cd ${{ env.PATH_LIBRARIUM }}
           ls
           git branch -r
 
