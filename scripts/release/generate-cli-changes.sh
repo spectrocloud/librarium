@@ -5,8 +5,8 @@ source scripts/release/utilities.sh
 
 # Define cli related files
 DOWNLOADS_FILE="docs/docs-content/spectro-downloads.md"
-CLI_TEMPLATE_FILE="scripts/release/cli-template.md"
-EDGE_CLI_TEMPLATE_FILE="scripts/release/edge-cli-template.md"
+CLI_TEMPLATE_FILE="scripts/release/templates/cli-template.md"
+EDGE_CLI_TEMPLATE_FILE="scripts/release/templates/edge-cli-template.md"
 CLI_PARAMETERISED_FILE="scripts/release/cli-output.md"
 EDGE_CLI_PARAMETERISED_FILE="scripts/release/edge-cli-output.md"
 

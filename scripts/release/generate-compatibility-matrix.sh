@@ -5,8 +5,8 @@ source scripts/release/utilities.sh
 
 # Define compatibility maxtrix related files
 COMPONENT_FILE="docs/docs-content/component.md"
-CLI_TEMPLATE_FILE="scripts/release/compatibility-cli-template.md"
-EDGE_CLI_TEMPLATE_FILE="scripts/release/compatibility-edge-cli-template.md"
+CLI_TEMPLATE_FILE="scripts/release/templates/compatibility-cli-template.md"
+EDGE_CLI_TEMPLATE_FILE="scripts/release/templates/compatibility-edge-cli-template.md"
 CLI_PARAMETERISED_FILE="scripts/release/compatibility-cli-output.md"
 EDGE_CLI_PARAMETERISED_FILE="scripts/release/compatibility-edge-cli-output.md"
 TABLE_OFFSET=2

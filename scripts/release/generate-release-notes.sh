@@ -4,8 +4,8 @@ source scripts/release/utilities.sh
 
 # Define release note related files
 RELEASE_NOTES_FILE="docs/docs-content/release-notes/release-notes.md"
-RELEASE_NOTES_TEMPLATE_FILE="scripts/release/release-notes-template.md"
-RELEASE_NOTES_HEADING_TEMPLATE_FILE="scripts/release/release-notes-heading-template.md"
+RELEASE_NOTES_TEMPLATE_FILE="scripts/release/templates/release-notes-template.md"
+RELEASE_NOTES_HEADING_TEMPLATE_FILE="scripts/release/templates/release-notes-heading-template.md"
 RELEASE_NOTES_PARAMETERISED_FILE="scripts/release/release-notes-output.md"
 RELEASE_NOTES_HEADING_PARAMETERISED_FILE="scripts/release/release-notes-heading-output.md"
 
