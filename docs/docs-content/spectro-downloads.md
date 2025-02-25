@@ -23,13 +23,13 @@ on how to install Palette. Palette VerteX installation guide can be found in the
 The Palette Command Line Interface (CLI) is a tool that you can use to interact with Palette programmatically. Check out
 the [Palette CLI](./automation/palette-cli/palette-cli.md) document for installation guidance.
 
-| Version <!-- cli-version-table --> | Operating System                                                                      | Checksum (SHA256)                                                  |
-| ---------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
-| 4.6.0                              | [Linux-amd64](https://software.spectrocloud.com/palette-cli/v4.6.0/linux/cli/palette) | `07d63693a8c90483f6f000d4580cfd86f81178e4b96cfbd32e0f50955d57eec7` |
-| 4.5.7                              | [Linux-amd64](https://software.spectrocloud.com/palette-cli/v4.5.7/linux/cli/palette) | `e37032f6aac7c15a54e6d2085021ae795669a292cf7a5993a945592b8b8c0d9e` |
-| 4.5.4                              | [Linux-amd64](https://software.spectrocloud.com/palette-cli/v4.5.4/linux/cli/palette) | `74723cae5e87353e9c6b0191036229c0a9b645f10101e309586ecb18b6691bbd` |
-| 4.5.1                              | [Linux-amd64](https://software.spectrocloud.com/palette-cli/v4.5.1/linux/cli/palette) | `050e853483065b63ef3096813611b13b9dcfe4556a6fd370ec6ebdf5c6be8738` |
-| 4.5.0                              | [Linux-amd64](https://software.spectrocloud.com/palette-cli/v4.5.0/linux/cli/palette) | `1af96e486f621754695de899752dcd67bdc3d4a8c16f03272035dbadad6a54f0` |
+| Version <!-- palette-cli-version-table --> | Operating System                                                                      | Checksum (SHA256)                                                  |
+| ------------------------------------------ | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| 4.6.0                                      | [Linux-amd64](https://software.spectrocloud.com/palette-cli/v4.6.0/linux/cli/palette) | `07d63693a8c90483f6f000d4580cfd86f81178e4b96cfbd32e0f50955d57eec7` |
+| 4.5.7                                      | [Linux-amd64](https://software.spectrocloud.com/palette-cli/v4.5.7/linux/cli/palette) | `e37032f6aac7c15a54e6d2085021ae795669a292cf7a5993a945592b8b8c0d9e` |
+| 4.5.4                                      | [Linux-amd64](https://software.spectrocloud.com/palette-cli/v4.5.4/linux/cli/palette) | `74723cae5e87353e9c6b0191036229c0a9b645f10101e309586ecb18b6691bbd` |
+| 4.5.1                                      | [Linux-amd64](https://software.spectrocloud.com/palette-cli/v4.5.1/linux/cli/palette) | `050e853483065b63ef3096813611b13b9dcfe4556a6fd370ec6ebdf5c6be8738` |
+| 4.5.0                                      | [Linux-amd64](https://software.spectrocloud.com/palette-cli/v4.5.0/linux/cli/palette) | `1af96e486f621754695de899752dcd67bdc3d4a8c16f03272035dbadad6a54f0` |
 
 ## Palette Edge CLI
 

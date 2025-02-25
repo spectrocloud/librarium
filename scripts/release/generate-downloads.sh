@@ -5,7 +5,7 @@ source scripts/release/utilities.sh
 
 # Define cli related files
 DOWNLOADS_FILE="docs/docs-content/spectro-downloads.md"
-CLI_TEMPLATE_FILE="scripts/release/templates/cli.md"
+CLI_TEMPLATE_FILE="scripts/release/templates/palette-cli.md"
 EDGE_CLI_TEMPLATE_FILE="scripts/release/templates/edge-cli.md"
 CLI_PARAMETERISED_FILE="scripts/release/cli-output.md"
 EDGE_CLI_PARAMETERISED_FILE="scripts/release/edge-cli-output.md"
@@ -15,13 +15,13 @@ generate_parameterised_file $CLI_TEMPLATE_FILE $CLI_PARAMETERISED_FILE
 generate_parameterised_file $EDGE_CLI_TEMPLATE_FILE $EDGE_CLI_PARAMETERISED_FILE
 
 # Check if the cli for this Palette release has already been added
-existing_cli=$(search_line "cli-$RELEASE_NAME" $DOWNLOADS_FILE)
+existing_cli=$(search_line "palette-cli-$RELEASE_NAME" $DOWNLOADS_FILE)
 if [[ -n "$existing_cli" && "$existing_cli" -ne 0 ]]; then
     echo "ℹ️ CLI entry for $RELEASE_NAME has already been generated in $DOWNLOADS_FILE"
     replace_line $existing_cli $CLI_PARAMETERISED_FILE $DOWNLOADS_FILE
     echo "✅ Replaced CLI line entry in $DOWNLOADS_FILE"
 else
-    insert_file_offset $TABLE_OFFSET "cli-version-table" $CLI_PARAMETERISED_FILE $DOWNLOADS_FILE
+    insert_file_offset $TABLE_OFFSET "palette-cli-version-table" $CLI_PARAMETERISED_FILE $DOWNLOADS_FILE
     echo "✅ Parameterised CLI changes inserted into $DOWNLOADS_FILE"
 fi
 

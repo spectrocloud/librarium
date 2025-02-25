@@ -91,8 +91,12 @@ init: ## Initialize npm dependencies
 	grep -q "^export RELEASE_NAME=" .env || echo "\nexportRELEASE_NAME=" >> .env
 	grep -q "^export RELEASE_VERSION=" .env || echo "\nexport RELEASE_VERSION=" >> .env
 	grep -q "^export RELEASE_DATE=" .env || echo "\nexport RELEASE_DATE=" >> .env
-	grep -q "^export RELEASE_CLI_VERSION=" .env || echo "\nexport RELEASE_CLI_VERSION=" >> .env
+	grep -q "^export RELEASE_PALETTE_CLI_VERSION=" .env || echo "\nexport RELEASE_PALETTE_CLI_VERSION=" >> .env
+	grep -q "^export RELEASE_PALETTE_CLI_SHA=" .env || echo "\nexport RELEASE_PALETTE_CLI_SHA=" >> .env
+	grep -q "^export RELEASE_EDGE_CLI_VERSION=" .env || echo "\nexport RELEASE_EDGE_CLI_VERSION=" >> .env
+	grep -q "^export RELEASE_EDGE_CLI_SHA=" .env || echo "\nexport RELEASE_EDGE_CLI_SHA=" >> .env
 	grep -q "^export RELEASE_REGISTRY_VERSION=" .env || echo "\nexport RELEASE_REGISTRY_VERSION=" >> .env
+	grep -q "^export RELEASE_SPECTRO_CLI_VERSION=" .env || echo "\nexport RELEASE_SPECTRO_CLI_VERSION=" >> .env
 	npx husky install
 
 start: ## Start a local development server
@@ -341,7 +345,7 @@ get-cached-cves:
 
 generate-release: ## Generate
 	./scripts/release/generate-release-notes.sh
-	./scripts/release/generate-cli-reference.sh
+	./scripts/release/generate-spectro-cli-reference.sh
 	./scripts/release/generate-compatibility-matrix.sh
 	./scripts/release/generate-downloads.sh
 	./scripts/release/generate-advanced-configuration.sh
