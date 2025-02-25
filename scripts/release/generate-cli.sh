@@ -9,6 +9,7 @@ CLI_TEMPLATE_FILE="scripts/release/templates/cli.md"
 EDGE_CLI_TEMPLATE_FILE="scripts/release/templates/edge-cli.md"
 CLI_PARAMETERISED_FILE="scripts/release/cli-output.md"
 EDGE_CLI_PARAMETERISED_FILE="scripts/release/edge-cli-output.md"
+TABLE_OFFSET=2
 
 generate_parameterised_file $CLI_TEMPLATE_FILE $CLI_PARAMETERISED_FILE
 generate_parameterised_file $EDGE_CLI_TEMPLATE_FILE $EDGE_CLI_PARAMETERISED_FILE
@@ -20,7 +21,7 @@ if [[ -n "$existing_cli" && "$existing_cli" -ne 0 ]]; then
     replace_line $existing_cli $CLI_PARAMETERISED_FILE $DOWNLOADS_FILE
     echo "✅ Replaced CLI line entry in $DOWNLOADS_FILE"
 else
-    insert_file_before "linux/cli/palette" $CLI_PARAMETERISED_FILE $DOWNLOADS_FILE
+    insert_file_offset $TABLE_OFFSET "cli-version-table" $CLI_PARAMETERISED_FILE $DOWNLOADS_FILE
     echo "✅ Parameterised CLI changes inserted into $DOWNLOADS_FILE"
 fi
 
@@ -31,7 +32,7 @@ if [[ -n "$existing_edge_cli" && "$existing_edge_cli" -ne 0 ]]; then
     replace_line $existing_edge_cli $EDGE_CLI_PARAMETERISED_FILE $DOWNLOADS_FILE
     echo "✅ Replaced edge CLI line entry in $DOWNLOADS_FILE"
 else
-    insert_file_before "cli/linux/palette-edge" $EDGE_CLI_PARAMETERISED_FILE $DOWNLOADS_FILE
+    insert_file_offset $TABLE_OFFSET "edge-version-table" $EDGE_CLI_PARAMETERISED_FILE $DOWNLOADS_FILE
     echo "✅ Parameterised edge CLI changes inserted into $DOWNLOADS_FILE"
 fi
 

@@ -20,36 +20,6 @@ generate_parameterised_file() {
     done
 }
 
-# Utility function to place a source file into a target file before the first line that contains the search param
-# Params: 
-# $1 - search term, example: linux/cli/palette
-# $2 - source file to insert, example: parameterised file
-# $3 - target file to insert into, example: downloads file
-insert_file_before() {
-    local TEMP_FILE="scripts/release/temp_file.md"
-
-    # Process the file line by line until we find the search term
-    local inserted=false
-    while IFS= read -r line; do
-        # If we find the first occurrence of "linux/cli/palette"
-        if [[ "$line" == *"$1"* && "$inserted" == false ]]; then
-            cat "$2" >> "$TEMP_FILE"  # Insert file content
-            # Mark as inserted so things are only inserted once
-            inserted=true  
-        fi
-        echo "$line" >> "$TEMP_FILE" 
-    done < "$3"
-    
-    # File traversed and search term not found
-    if [[ "$inserted" == false ]]; then
-        echo "❌ Search term $1 not found in file $3. Nothing was inserted."
-        exit 1
-    fi
-
-    # Replace the original file with the updated one
-    mv "$TEMP_FILE" "$3"
-}
-
 # Utility function to place a source file into a target file after the first line that contains the search param
 # Params: 
 # $1 - search term, example: linux/cli/palette
