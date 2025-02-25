@@ -46,7 +46,7 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-      - name: Compare and update the permissions
+      - name: Compare and Update the Permissions
         run: |
           # Ensure we are in master. Replace this with master before merging the PR.
           git checkout doc-1613-permissions
@@ -55,7 +55,7 @@ jobs:
           chmod +x scripts/permissions-sync-ci.sh
           bash scripts/permissions-sync-ci.sh
 
-      - name: Create a PR with the updated permissions
+      - name: Create a PR with the Updated Permissions
         env:
           GH_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
         run: |
@@ -63,18 +63,18 @@ jobs:
           branch_name="permissions-sync-$(date +%Y%m%d%H%M%S)"
           git checkout -b "$branch_name"
 
-          # Get backport labels
-          backport_labels=$(gh label list --json name --jq '.[].name' | grep -E '^(backport-version|auto-backport)')
+          # Get the backport labels.
+          backport_labels=$(gh label list --json name --jq '.[].name' | grep -E '^(backport-version|auto-backport)' | paste -sd "," -)
 
           # Commit and push the changes
           git add _partials/permissions/
           git commit -m "docs: update IAM permissions"
           git push origin $branch_name
 
-          # Create the pull request
+          # Create the pull request.
           pr_body='
           ## Describe the Change
-          This PR updates the docs IAM permission files according to the files available in the `required-permissions-data` repository. 
+          This PR updates the docs IAM permission files according to the files available in the [`required-permissions-data`](https://github.com/spectrocloud/required-permissions-data) repository. 
           The files are compared using the `scripts/permissions-sync-ci.sh` script.
           Please review this PR carefully before merging it.'
 
@@ -84,7 +84,25 @@ jobs:
 
           echo "GITHUB_CREATED_PERMISSIONS_PR=$pr_url" >> $GITHUB_ENV
 
-          # Slack Notification success (modified files) and failure
+      - name: Success Slack Notification
+        if: ${{ env.GITHUB_CREATED_PERMISSIONS_PR  != ''}}
+        uses: rtCamp/action-slack-notify@v2.3.2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
+          SLACK_COLOR: ${{ job.status }}
+          SLACKIFY_MARKDOWN: true
+          ENABLE_ESCAPES: true
+          SLACK_MESSAGE: 'A new PR with updated IAM permissions was created. Please review ${{env.GITHUB_CREATED_PERMISSIONS_PR}} for more details.'
+
+      - name: Failure Slack Notification
+        if: ${{ failure() }}
+        uses: rtCamp/action-slack-notify@v2.3.2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
+          SLACK_COLOR: ${{ job.status }}
+          SLACKIFY_MARKDOWN: true
+          ENABLE_ESCAPES: true
+          SLACK_MESSAGE: 'The permissions update job in `${{ github.repository }}` failed. [View details](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}).'
         
 
       
