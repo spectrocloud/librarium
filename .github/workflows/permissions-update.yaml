@@ -61,10 +61,11 @@ jobs:
           # Create a new branch.
           branch_name="sync-permissions-$(date +%Y%m%d%H%M%S)"
           git checkout -b "$branch_name"
+          pwd
 
           # Issue the permissions-sync script.
-          chmod +x ${{ env.PATH_LIBRARIUM }}/scripts/permissions-sync-ci.sh
-          bash ${{ env.PATH_LIBRARIUM }}/scripts/permissions-sync-ci.sh
+          chmod +x scripts/permissions-sync-ci.sh
+          bash scripts/permissions-sync-ci.sh
 
           # Debug: check git status
           git status
