@@ -32,7 +32,6 @@ jobs:
         with: 
           repository: spectrocloud/librarium
           path: ${{ env.PATH_LIBRARIUM }}
-          #ref: master
           fetch-depth: 0
 
       - name: Checkout required-permissions-data Repository
@@ -40,8 +39,8 @@ jobs:
         with: 
           repository: spectrocloud/required-permissions-data
           path: ${{ env.PATH_PERMISSIONS }}
-          #ref: main
           token: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
+          ref: main
           fetch-depth: 0
 
       - name: Set Git User
@@ -55,7 +54,9 @@ jobs:
           cd ${{ env.PATH_LIBRARIUM }}
           ls
           git branch -r
-          git checkout master
+
+          # Replace this with master before merging the PR
+          git checkout doc-1613-permissions
 
           # Create a new branch.
           branch_name="sync-permissions-$(date +%Y%m%d%H%M%S)"
