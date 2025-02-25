@@ -67,6 +67,5 @@ if [ "$found_changes" = true ]; then
     echo "CHANGES_DETECTED=true" >> $GITHUB_ENV
     echo "✅ Permission files updated."
 else
-    echo "CHANGES_DETECTED=false" >> $GITHUB_ENV
     echo "✅ No changes detected."
 fi
