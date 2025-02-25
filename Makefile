@@ -88,19 +88,6 @@ init: ## Initialize npm dependencies
 	grep -q "^DSO_AUTH_TOKEN=" .env || echo "\nDISABLE_SECURITY_INTEGRATIONS=true\nDSO_AUTH_TOKEN=" >> .env
 	grep -q "^PALETTE_API_KEY=" .env || echo "\nDISABLE_PACKS_INTEGRATIONS=true" >> .env
 	grep -q "^SHOW_LAST_UPDATE_TIME=" .env || echo "\nSHOW_LAST_UPDATE_TIME=false" >> .env
-	grep -q "^export RELEASE_NAME=" .env || echo "\nexportRELEASE_NAME=" >> .env
-	grep -q "^export RELEASE_VERSION=" .env || echo "\nexport RELEASE_VERSION=" >> .env
-	grep -q "^export RELEASE_DATE=" .env || echo "\nexport RELEASE_DATE=" >> .env
-	grep -q "^export RELEASE_PALETTE_CLI_VERSION=" .env || echo "\nexport RELEASE_PALETTE_CLI_VERSION=" >> .env
-	grep -q "^export RELEASE_PALETTE_CLI_SHA=" .env || echo "\nexport RELEASE_PALETTE_CLI_SHA=" >> .env
-	grep -q "^export RELEASE_EDGE_CLI_VERSION=" .env || echo "\nexport RELEASE_EDGE_CLI_VERSION=" >> .env
-	grep -q "^export RELEASE_EDGE_CLI_SHA=" .env || echo "\nexport RELEASE_EDGE_CLI_SHA=" >> .env
-	grep -q "^export RELEASE_REGISTRY_VERSION=" .env || echo "\nexport RELEASE_REGISTRY_VERSION=" >> .env
-	grep -q "^export RELEASE_SPECTRO_CLI_VERSION=" .env || echo "\nexport RELEASE_SPECTRO_CLI_VERSION=" >> .env
-	grep -q "^export RELEASE_VMWARE_KUBERNETES_VERSION=" .env || echo "\nexport RELEASE_VMWARE_KUBERNETES_VERSION=" >> .env
-	grep -q "^export RELEASE_VMWARE_OVA_URL=" .env || echo "\nexport RELEASE_VMWARE_OVA_URL=" >> .env
-	grep -q "^export RELEASE_VMWARE_FIPS_OVA_URL=" .env || echo "\nexport RELEASE_VMWARE_FIPS_OVA_URL=" >> .env
-	grep -q "^RELEASE_HIGHEST_KUBERNETES_VERSION=" .env || echo "\nexport RELEASE_HIGHEST_KUBERNETES_VERSION=" >> .env
 	npx husky install
 
 start: ## Start a local development server
@@ -355,8 +342,25 @@ generate-release: ## Generate
 	./scripts/release/generate-advanced-configuration.sh
 	./scripts/release/generate-install-palette-cli.sh
 	./scripts/release/generate-kubernetes-palette-versions.sh
+	./scripts/release/generate-pcg-kubernetes-versions.sh
 	make format
-	
+
+init-release:
+	grep -q "^export RELEASE_NAME=" .env || echo "\nexportRELEASE_NAME=" >> .env
+	grep -q "^export RELEASE_VERSION=" .env || echo "\nexport RELEASE_VERSION=" >> .env
+	grep -q "^export RELEASE_DATE=" .env || echo "\nexport RELEASE_DATE=" >> .env
+	grep -q "^export RELEASE_PALETTE_CLI_VERSION=" .env || echo "\nexport RELEASE_PALETTE_CLI_VERSION=" >> .env
+	grep -q "^export RELEASE_PALETTE_CLI_SHA=" .env || echo "\nexport RELEASE_PALETTE_CLI_SHA=" >> .env
+	grep -q "^export RELEASE_EDGE_CLI_VERSION=" .env || echo "\nexport RELEASE_EDGE_CLI_VERSION=" >> .env
+	grep -q "^export RELEASE_EDGE_CLI_SHA=" .env || echo "\nexport RELEASE_EDGE_CLI_SHA=" >> .env
+	grep -q "^export RELEASE_REGISTRY_VERSION=" .env || echo "\nexport RELEASE_REGISTRY_VERSION=" >> .env
+	grep -q "^export RELEASE_SPECTRO_CLI_VERSION=" .env || echo "\nexport RELEASE_SPECTRO_CLI_VERSION=" >> .env
+	grep -q "^export RELEASE_VMWARE_KUBERNETES_VERSION=" .env || echo "\nexport RELEASE_VMWARE_KUBERNETES_VERSION=" >> .env
+	grep -q "^export RELEASE_VMWARE_OVA_URL=" .env || echo "\nexport RELEASE_VMWARE_OVA_URL=" >> .env
+	grep -q "^export RELEASE_VMWARE_FIPS_OVA_URL=" .env || echo "\nexport RELEASE_VMWARE_FIPS_OVA_URL=" >> .env
+	grep -q "^export RELEASE_HIGHEST_KUBERNETES_VERSION=" .env || echo "\nexport RELEASE_HIGHEST_KUBERNETES_VERSION=" >> .env
+	grep -q "^export RELEASE_PCG_KUBERNETES_VERSION=" .env || echo "\nexport RELEASE_PCG_KUBERNETES_VERSION=" >> .env	
+
 ###@ Aloglia Indexing
 
 update-dev-index: ## Update the Algolia index for the dev environment
