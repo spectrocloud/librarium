@@ -14,9 +14,7 @@ TABLE_OFFSET=2
 generate_parameterised_file $CLI_TEMPLATE_FILE $CLI_PARAMETERISED_FILE
 generate_parameterised_file $EDGE_CLI_TEMPLATE_FILE $EDGE_CLI_PARAMETERISED_FILE
 
-# Check if the cli for this Palette release has already been added
-search_line "cli-$RELEASE_NAME" $COMPONENT_FILE
-existing_cli=$?
+existing_cli=$(search_line "cli-$RELEASE_NAME" $COMPONENT_FILE)
 if [[ -n "$existing_cli" && "$existing_cli" -ne 0 ]]; then
     echo "ℹ️ CLI entry for $RELEASE_NAME has already been generated in $COMPONENT_FILE"
     replace_line $existing_cli $CLI_PARAMETERISED_FILE $COMPONENT_FILE
@@ -26,8 +24,7 @@ else
     echo "✅ Parameterised CLI changes inserted into $COMPONENT_FILE"
 fi
 
-search_line "edge-$RELEASE_NAME" $COMPONENT_FILE
-existing_edge_cli=$?
+existing_edge_cli=$(search_line "edge-$RELEASE_NAME" $COMPONENT_FILE)
 if [[ -n "$existing_edge_cli" && "$existing_edge_cli" -ne 0 ]]; then
     echo "ℹ️ Edge CLI entry for $RELEASE_NAME has already been generated in $COMPONENT_FILE"
     replace_line $existing_edge_cli $EDGE_CLI_PARAMETERISED_FILE $COMPONENT_FILE

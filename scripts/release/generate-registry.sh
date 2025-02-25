@@ -17,28 +17,31 @@ generate_parameterised_file $OSX_TEMPLATE_FILE $OSX_PARAMETERISED_FILE
 generate_parameterised_file $LINUX_TEMPLATE_FILE $LINUX_PARAMETERISED_FILE
 generate_parameterised_file $VERSION_TEMPLATE_FILE $VERSION_PARAMETERISED_FILE
 
-search_line "registry-osx-install" $REGISTRY_FILE
-existing_registry_osx=$?
+existing_registry_osx=$(search_line "registry-osx-install" $REGISTRY_FILE)
 if [[ -n "$existing_registry_osx" && "$existing_registry_osx" -ne 0 ]]; then
     replace_index=$((existing_registry_osx + $SHELL_OFFSET))
     replace_line $replace_index $OSX_PARAMETERISED_FILE $REGISTRY_FILE
     echo "✅ Updated OSX registry install in $REGISTRY_FILE"
+else 
+    echo "❌ No registry-osx-install tag found in  $REGISTRY_FILE. Nothing was inserted."
 fi
 
-search_line "registry-linux-install" $REGISTRY_FILE
-existing_registry_linux=$?
+existing_registry_linux=$(search_line "registry-linux-install" $REGISTRY_FILE)
 if [[ -n "$existing_registry_linux" && "$existing_registry_linux" -ne 0 ]]; then
     replace_index=$((existing_registry_linux + $SHELL_OFFSET))
     replace_line $replace_index $LINUX_PARAMETERISED_FILE $REGISTRY_FILE
     echo "✅ Updated Linux registry install in $REGISTRY_FILE"
+else 
+    echo "❌ No registry-linux-install tag found in  $REGISTRY_FILE. Nothing was inserted."
 fi
 
-search_line "registry-version-output" $REGISTRY_FILE
-existing_version_output=$?
+existing_version_output=$(search_line "registry-version-output" $REGISTRY_FILE)
 if [[ -n "$existing_version_output" && "$existing_version_output" -ne 0 ]]; then
     replace_index=$((existing_version_output + $SHELL_OFFSET))
     replace_line $replace_index $VERSION_PARAMETERISED_FILE $REGISTRY_FILE
     echo "✅ Updated version output in $REGISTRY_FILE"
+else 
+    echo "❌ No registry-version-output tag found in  $REGISTRY_FILE. Nothing was inserted."
 fi
 
 cleanup $OSX_PARAMETERISED_FILE

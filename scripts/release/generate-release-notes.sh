@@ -13,8 +13,8 @@ generate_parameterised_file $RELEASE_NOTES_TEMPLATE_FILE $RELEASE_NOTES_PARAMETE
 generate_parameterised_file $RELEASE_NOTES_HEADING_TEMPLATE_FILE $RELEASE_NOTES_HEADING_PARAMETERISED_FILE
 
 # First, let's see if the release notes have already been generated
-search_line "#release-notes-$RELEASE_NAME" $RELEASE_NOTES_FILE
-existing_notes=$?
+
+existing_notes=$(search_line "#release-notes-$RELEASE_NAME" $RELEASE_NOTES_FILE)
 if [[ -n "$existing_notes" && "$existing_notes" -ne 0 ]]; then
     echo "ℹ️ Release notes for $RELEASE_NAME have already been generated in $RELEASE_NOTES_FILE"
     replace_line $existing_notes $RELEASE_NOTES_HEADING_PARAMETERISED_FILE $RELEASE_NOTES_FILE

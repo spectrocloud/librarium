@@ -157,8 +157,8 @@ insert_file_after() {
 # $1 - search term, example: linux/cli/palette
 # $2 - target file to insert into, example: downloads file
 search_line() {
-    line_number=$(grep -m1 -n $1 "$2" | cut -d: -f1)
-    return $line_number
+    local line_number=$(grep -m1 -n "${1}" "$2" | cut -d: -f1)
+    echo "$line_number"
 }
 
 # Utility function to replace a line with a source file
