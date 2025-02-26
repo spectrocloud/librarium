@@ -68,9 +68,7 @@ Please contact our Security team at security@spectrocloud.com to report any secu
 
 - [Core Principles](core-principles.md)
 
-- [Lifecycle](lifecycle/lifecycle.md)
-
-- [Secure Development](lifecycle/secure-development.md)
+- [Secure Software Development Lifecycle](secure-software-development-lifecycle/secure-software-development-lifecycle.md)
 
 - [Release Process](lifecycle/release-process.md)
 
