@@ -35,9 +35,9 @@ partitions system, the Edge host retains two bootable partitions: an active part
 normal startup sequence, the bootloader will load the active image. In the event that the active image is not bootable,
 the bootloader will load the passive image.
 
-During upgrades, the image that the cluster is upgrading becomes a transitional image. When the upgrade is successful,
-the transitional image will become the new active image, while the old active image becomes the new passive image. The
-old passive image is then discarded.
+During upgrades, the image that the cluster is upgrading to becomes a transitional image. When the upgrade is
+successful, the transitional image will become the new active image, while the old active image becomes the new passive
+image. The old passive image is then discarded.
 
 ![Diagram of the A/B Partition upgrade process](/clusters_edge_cluster-management_upgrade-diagram.webp)
 
