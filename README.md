@@ -1218,3 +1218,34 @@ displayed. The default value is `false`. If you want to display the unreleased v
 ```shell
 export UNRELEASED_VERSION_BANNER=true
 ```
+
+## Palette Release Documentation
+
+We have a series of scripts that automatically make updates to the documentation with a new Palette release. These
+scripts rely on environment variables for their information.
+
+The following table provides an overview of all the environment variables and which pages they are used on. For ease of
+recognition, all environment variables used by these scripts are named using the `RELEASE_` prefix.
+
+| **Environment Variable**             | **Description**                                                                                                                                                           | **Example Value**                                                     |
+| ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `RELEASE_NAME`                       | The internal release name.                                                                                                                                                | `4-5-c`                                                               |
+| `RELEASE_VERSION`                    | The external release version.                                                                                                                                             | `4.6.6`                                                               |
+| `RELEASE_DATE`                       | The date that the release takes place.                                                                                                                                    | `"March 18, 2025"`                                                    |
+| `RELEASE_PALETTE_CLI_VERSION`        | The Palette CLI version.                                                                                                                                                  | `4.6.0`                                                               |
+| `RELEASE_PALETTE_CLI_SHA`            | The SHA of the Palette CLI corresponding to the provided version.                                                                                                         | `07d63693a8c90483f6f000d4580cfd86f81178e4b96cfbd32e0f50955d57eec7`    |
+| `RELEASE_EDGE_CLI_VERSION`           | The Palette Edge CLI version                                                                                                                                              | `4.6.3`                                                               |
+| `RELEASE_EDGE_CLI_SHA`               | The SHA of the Palette Edge CLI corresponding to the provided version.                                                                                                    | `07d63693a8c90483f6f000d4580cfd86f81178e4b96cfbd32e0f50955d57e89456`  |
+| `RELEASE_REGISTRY_VERSION`           | The Spectro registry version.                                                                                                                                             | `4.6.1`                                                               |
+| `RELEASE_SPECTRO_CLI_VERSION`        | The Spectro CLI version.                                                                                                                                                  | `4.6.0`                                                               |
+| `RELEASE_VMWARE_KUBERNETES_VERSION`  | The Kubernetes version of the Palette [VMware installation](https://docs.spectrocloud.com/enterprise-version/install-palette/#kubernetes-requirements).                   | `1.30.9`                                                              |
+| `RELEASE_VMWARE_OVA_URL`             | The OVA Download URL of the Palette release [VMware installation](https://docs.spectrocloud.com/enterprise-version/install-palette/#kubernetes-requirements).             | `https://vmwaregoldenimage.s3.amazonaws.com/u-2204-0-k-1309-0.ova`    |
+| `RELEASE_VMWARE_FIPS_OVA_URL`        | The FIPS OVA Download URL of the Palette [VMware installation](https://docs.spectrocloud.com/enterprise-version/install-palette/#kubernetes-requirements).                | `https://vmwaregoldenimage.s3.amazonaws.com/u-2004-0-k-1309-fips.ova` |
+| `RELEASE_HIGHEST_KUBERNETES_VERSION` | The highest supported Kubernetes version for Palette [Kubernetes installation](https://docs.spectrocloud.com/enterprise-version/install-palette/#kubernetes-requirements) | `1.30.9`                                                              |
+| `RELEASE_PCG_KUBERNETES_VERSION`     | The Kubernetes version for PCG [Kubernetes installation](https://docs.spectrocloud.com/clusters/pcg/#kubernetes-requirements)                                             | `1.30.9`                                                              |
+
+### Commands
+
+- `make init-release` creates placeholders for all the release related environment variables.
+- `make generate-release-notes` creates only the release notes changes for the Palette release.
+- `make generate-release` creates all Palette release related updates, including release notes.
