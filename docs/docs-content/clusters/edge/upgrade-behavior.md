@@ -28,6 +28,19 @@ information about how to update a cluster profile, refer to
   cluster profile will trigger a repave instead of a reboot. The only exception is changes to the `stages.reconcile.*`
   section, which will behave as expected and trigger a configuration reload.
 
+## A/B Partitioning in Upgrades
+
+Edge clusters created with Kairos-based provider images use A/B system partitions to handle upgrades. In an A/B
+partitions system, the Edge host retains two bootable partitions: an active partition and a passive partition. In a
+normal startup sequence, the bootloader will load the active image. In the event that the active image is not bootable,
+the bootloader will load the passive image.
+
+During upgrades, the image that the cluster is upgrading to becomes a transitional image. When the upgrade is
+successful, the transitional image becomes the new active image, while the old active image becomes the new passive
+image. The old passive image is then discarded.
+
+![Diagram of the A/B Partition upgrade process](/clusters_edge_cluster-management_upgrade-diagram.webp)
+
 ## Upgrade Behaviors
 
 A cluster could respond to an upgrade in several ways. The table below lists the potential upgrade behaviors you could
@@ -87,7 +100,7 @@ changes to `.spectro.pack.edge-native-byoi.options.system.registry` will trigger
 
 </Tabs>
 
-## Network Layer
+### Network Layer
 
 Changes made to the Container Network Interface (CNI) pack typically do not result in cluster repave or reboot, and can
 be applied by restarting the related networking services.
@@ -99,7 +112,7 @@ if you want to use a different CNI pack altogether, we recommend you create anot
 
 :::
 
-## Storage Layer
+### Storage Layer
 
 Changes made to the storage layer typically do not result in cluster repave or reboot and can be applied by restarting
 the related storage services.
