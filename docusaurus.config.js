@@ -263,7 +263,7 @@ const config = {
       async: false,
     },
     {
-      src: "https://widget.kapa.ai/kapa-widget.bundle.js",
+      src: "/scripts/kapa-widget.bundle.js",
       "data-website-id": "9c212df9-d1fc-4f65-9c93-8bcd9c8ec6ca",
       "data-project-name": "Spectro Cloud Docs AI",
       "data-project-color": "#3A9D99",
@@ -286,6 +286,7 @@ const config = {
       "data-conversation-button-icons-only": "true",
       "data-modal-size": "80%",
       "data-modal-lock-scroll": "false",
+      "data-modal-inner-position-left": "auto",
       async: true,
     },
     {
