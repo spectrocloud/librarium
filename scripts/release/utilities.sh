@@ -91,37 +91,6 @@ insert_file_offset() {
     mv "$TEMP_FILE" "$4"
 }
 
-# Utility function to place a source file into a target file after the first line that contains the search param
-# Params: 
-# $1 - search term, example: linux/cli/palette
-# $2 - source file to insert, example: parameterised file
-# $3 - target file to insert into, example: release notes file
-insert_file_after() {
-    TEMP_FILE="scripts/release/temp_file.md"
-
-    # Process the target file line by line
-    inserted=false
-    while IFS= read -r line; do
-        echo "$line" >> "$TEMP_FILE"
-
-        if [[ "$line" == *"$1"* && "$inserted" == false ]]; then
-            echo "" >> "$TEMP_FILE"  # Insert a blank line
-            cat "$2" >> "$TEMP_FILE"
-            # Mark as inserted so things are only inserted once
-            inserted=true
-        fi
-    done < "$3"
-
-    # File traversed and search term not found
-    if [[ "$inserted" == false ]]; then
-        echo "❌ Search term $1 not found in file $3. Nothing will be inserted."
-        exit 1
-    fi
-
-    # Replace original file with the updated one
-    mv "$TEMP_FILE" "$3"
-}
-
 # Utility function to search for a line in a target file and return the line number
 # Params: 
 # $1 - search term, example: linux/cli/palette
@@ -145,4 +114,18 @@ replace_line() {
 # $1 - file name
 cleanup() {
     rm $1
+}
+
+# Utility function to verify the presence of an environment variable
+# Params: 
+# $1 - environment variable name
+check_env() {
+    local var_name="$1"
+
+    if [[ -z "${!var_name}" ]]; then
+        echo "🟠 '$var_name' is empty or not set."
+        return 1
+    fi
+
+    return 0    
 }

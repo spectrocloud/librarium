@@ -334,8 +334,11 @@ get-cached-cves:
 
 ###@ Generate release related activities.
 
-generate-release: ## Generate
+generate-release-notes: ## Generate release notes only
 	./scripts/release/generate-release-notes.sh
+	make -s format > /dev/null 2>&1
+
+generate-release: ## Generate all release files except release notes
 	./scripts/release/generate-spectro-cli-reference.sh
 	./scripts/release/generate-compatibility-matrix.sh
 	./scripts/release/generate-downloads.sh
@@ -343,7 +346,7 @@ generate-release: ## Generate
 	./scripts/release/generate-install-palette-cli.sh
 	./scripts/release/generate-kubernetes-palette-versions.sh
 	./scripts/release/generate-pcg-kubernetes-versions.sh
-	make format
+	make -s format > /dev/null 2>&1
 
 init-release:
 	grep -q "^export RELEASE_NAME=" .env || echo "\nexportRELEASE_NAME=" >> .env

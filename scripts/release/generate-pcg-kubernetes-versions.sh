@@ -9,6 +9,13 @@ PCG_TEMPLATE_FILE="scripts/release/templates/pcg-kubernetes-version.md"
 PCG_PARAMETERISED_FILE="scripts/release/templates/pcg-kubernetes-version-output.md"
 TABLE_OFFSET=2
 
+if ! check_env "RELEASE_NAME" || 
+   ! check_env "RELEASE_VERSION" ||  
+   ! check_env "RELEASE_PCG_KUBERNETES_VERSION" ; then
+    echo "‼️  Skipping generate $PCG_FILE due to missing environment variables. ‼️"
+    exit 0
+fi
+
 generate_parameterised_file $PCG_TEMPLATE_FILE $PCG_PARAMETERISED_FILE
 
 existing_pcg=$(search_line "pcg-k8s-$RELEASE_NAME" $PCG_FILE)

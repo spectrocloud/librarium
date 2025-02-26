@@ -11,6 +11,16 @@ VMWARE_PARAMETERISED_FILE="scripts/release/templates/vmware-kubernetes-version-o
 KUBERNETES_PARAMETERISED_FILE="scripts/release/templates/kubernetes-max-version-output.md"
 TABLE_OFFSET=2
 
+if ! check_env "RELEASE_NAME" || 
+   ! check_env "RELEASE_VERSION" || 
+   ! check_env "RELEASE_VMWARE_KUBERNETES_VERSION" ||  
+   ! check_env "RELEASE_VMWARE_OVA_URL" ||  
+   ! check_env "RELEASE_VMWARE_FIPS_OVA_URL" ||
+   ! check_env "RELEASE_HIGHEST_KUBERNETES_VERSION"; then
+    echo "‼️  Skipping generate $VERSIONS_FILE due to missing environment variables. ‼️"
+    exit 0
+fi
+
 generate_parameterised_file $VMWARE_TEMPLATE_FILE $VMWARE_PARAMETERISED_FILE
 generate_parameterised_file $KUBERNETES_TEMPLATE_FILE $KUBERNETES_PARAMETERISED_FILE
 

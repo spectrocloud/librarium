@@ -9,10 +9,15 @@ RELEASE_NOTES_HEADING_TEMPLATE_FILE="scripts/release/templates/release-notes-hea
 RELEASE_NOTES_PARAMETERISED_FILE="scripts/release/release-notes-output.md"
 RELEASE_NOTES_HEADING_PARAMETERISED_FILE="scripts/release/release-notes-heading-output.md"
 
+if ! check_env "RELEASE_DATE" || 
+   ! check_env "RELEASE_NAME" ||  
+   ! check_env "RELEASE_VERSION" ; then
+    echo "‼️  Skipping generate $RELEASE_NOTES_FILE due to missing environment variables. ‼️"
+    exit 0
+fi
+
 generate_parameterised_file $RELEASE_NOTES_TEMPLATE_FILE $RELEASE_NOTES_PARAMETERISED_FILE
 generate_parameterised_file $RELEASE_NOTES_HEADING_TEMPLATE_FILE $RELEASE_NOTES_HEADING_PARAMETERISED_FILE
-
-# First, let's see if the release notes have already been generated
 
 existing_notes=$(search_line "#release-notes-$RELEASE_NAME" $RELEASE_NOTES_FILE)
 if [[ -n "$existing_notes" && "$existing_notes" -ne 0 ]]; then
@@ -24,7 +29,5 @@ else
     echo "✅ Parameterised release notes inserted into $RELEASE_NOTES_FILE"
 fi
 
-
-# Cleanup
 cleanup $RELEASE_NOTES_PARAMETERISED_FILE
 cleanup $RELEASE_NOTES_HEADING_PARAMETERISED_FILE

@@ -1246,6 +1246,7 @@ recognition, all environment variables used by these scripts are named using the
 
 ### Commands
 
-- `make init-release` creates placeholders for all the release related environment variables.
+- `make init-release` creates placeholders for all the release related environment variables in your `.env` file. Use
+  the placeholders to fill in the values relevant to the Palette release.
 - `make generate-release-notes` creates only the release notes changes for the Palette release.
-- `make generate-release` creates all Palette release related updates, including release notes.
+- `make generate-release` creates all Palette release related updates, excluding release notes.

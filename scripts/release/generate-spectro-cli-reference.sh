@@ -13,6 +13,11 @@ LINUX_PARAMETERISED_FILE="scripts/release/templates/spectro-cli-linux-output.md"
 VERSION_PARAMETERISED_FILE="scripts/release/templates/spectro-cli-version-output.md"
 SHELL_OFFSET=3
 
+if ! check_env "RELEASE_SPECTRO_CLI_VERSION" ; then
+    echo "‼️  Skipping generate $REFERENCE_FILE due to missing environment variables. ‼️"
+    exit 0
+fi
+
 generate_parameterised_file $OSX_TEMPLATE_FILE $OSX_PARAMETERISED_FILE
 generate_parameterised_file $LINUX_TEMPLATE_FILE $LINUX_PARAMETERISED_FILE
 generate_parameterised_file $VERSION_TEMPLATE_FILE $VERSION_PARAMETERISED_FILE

@@ -10,6 +10,11 @@ MID_TEMPLATE_FILE="scripts/release/templates/registry-reference-mid.md"
 END_PARAMETERISED_FILE="scripts/release/templates/registry-reference-end-output.md"
 MID_PARAMETERISED_FILE="scripts/release/templates/registry-reference-mid-output.md"
 
+if ! check_env "RELEASE_REGISTRY_VERSION"; then
+    echo "‼️  Skipping generate $CONFIGURATION_FILE due to missing environment variables. ‼️"
+    exit 0
+fi
+
 generate_parameterised_file $END_TEMPLATE_FILE $END_PARAMETERISED_FILE
 generate_parameterised_file $MID_TEMPLATE_FILE $MID_PARAMETERISED_FILE
 

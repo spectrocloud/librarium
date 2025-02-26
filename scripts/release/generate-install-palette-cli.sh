@@ -9,6 +9,11 @@ INSTALL_TEMPLATE_FILE="scripts/release/templates/palette-cli-install-version.md"
 INSTALL_PARAMETERISED_FILE="scripts/release/templates/palette-cli-install-version-output.md"
 SHELL_OFFSET=3
 
+if ! check_env "RELEASE_PALETTE_CLI_VERSION" ; then
+    echo "‼️  Skipping generate $INSTALL_FILE due to missing environment variables. ‼️"
+    exit 0
+fi
+
 generate_parameterised_file $INSTALL_TEMPLATE_FILE $INSTALL_PARAMETERISED_FILE
 
 existing_cli_version=$(search_line "palette-cli-version-output" $INSTALL_FILE)

@@ -11,6 +11,14 @@ CLI_PARAMETERISED_FILE="scripts/release/compatibility-cli-output.md"
 EDGE_CLI_PARAMETERISED_FILE="scripts/release/compatibility-edge-cli-output.md"
 TABLE_OFFSET=2
 
+if ! check_env "RELEASE_NAME" || 
+   ! check_env "RELEASE_VERSION" ||  
+   ! check_env "RELEASE_PALETTE_CLI_VERSION" || 
+   ! check_env "RELEASE_EDGE_CLI_VERSION" ; then
+    echo "‼️  Skipping generate $COMPONENT_FILE due to missing environment variables. ‼️"
+    exit 0
+fi
+
 generate_parameterised_file $CLI_TEMPLATE_FILE $CLI_PARAMETERISED_FILE
 generate_parameterised_file $EDGE_CLI_TEMPLATE_FILE $EDGE_CLI_PARAMETERISED_FILE
 
