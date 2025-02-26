@@ -3,7 +3,7 @@
 # Import utility functions
 source scripts/release/utilities.sh
 
-# Define compatibility maxtrix related files
+# Define files to modify
 INSTALL_FILE="docs/docs-content/automation/palette-cli/install-palette-cli.md"
 INSTALL_TEMPLATE_FILE="scripts/release/templates/palette-cli-install-version.md"
 INSTALL_PARAMETERISED_FILE="scripts/release/templates/palette-cli-install-version-output.md"

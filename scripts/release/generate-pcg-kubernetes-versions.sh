@@ -3,7 +3,7 @@
 # Import utility functions
 source scripts/release/utilities.sh
 
-# Define cli related files
+# Define files to modify
 PCG_FILE="docs/docs-content/clusters/pcg/pcg.md"
 PCG_TEMPLATE_FILE="scripts/release/templates/pcg-kubernetes-version.md"
 PCG_PARAMETERISED_FILE="scripts/release/templates/pcg-kubernetes-version-output.md"

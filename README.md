@@ -1224,6 +1224,19 @@ export UNRELEASED_VERSION_BANNER=true
 We have a series of scripts that automatically make updates to the documentation with a new Palette release. These
 scripts rely on environment variables for their information.
 
+The scripts update the following files.
+
+- [Advanced CLI Configuration](docs/docs-content/registries-and-packs/advanced-configuration.md)
+- [Compatibility Matrix](docs/docs-content/component.md)
+- [Downloads](docs/docs-content/spectro-downloads.md)
+- [Install Palette CLI](docs/docs-content/automation/palette-cli/install-palette-cli.md)
+- [`_kubernetes_palette_versions.mdx`](_partials/self-hosted/_kubernetes_palette_versions.mdx)
+- [Private Cloud Gateway](docs/docs-content/clusters/pcg/pcg.md)
+- [Release Notes](docs/docs-content/release-notes/release-notes.md)
+- [Spectro Cloud CLI Tool](docs/docs-content/registries-and-packs/spectro-cli-reference.md)
+
+### Environment Variables
+
 The following table provides an overview of all the environment variables and which pages they are used on. For ease of
 recognition, all environment variables used by these scripts are named using the `RELEASE_` prefix.
 

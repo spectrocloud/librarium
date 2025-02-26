@@ -3,7 +3,7 @@
 # Import utility functions
 source scripts/release/utilities.sh
 
-# Define cli related files
+# Define files to modify
 DOWNLOADS_FILE="docs/docs-content/spectro-downloads.md"
 CLI_TEMPLATE_FILE="scripts/release/templates/palette-cli.md"
 EDGE_CLI_TEMPLATE_FILE="scripts/release/templates/edge-cli.md"

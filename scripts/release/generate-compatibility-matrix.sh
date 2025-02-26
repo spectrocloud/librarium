@@ -3,7 +3,7 @@
 # Import utility functions
 source scripts/release/utilities.sh
 
-# Define compatibility maxtrix related files
+# Define files to modify
 COMPONENT_FILE="docs/docs-content/component.md"
 CLI_TEMPLATE_FILE="scripts/release/templates/compatibility-cli.md"
 EDGE_CLI_TEMPLATE_FILE="scripts/release/templates/compatibility-edge-cli.md"

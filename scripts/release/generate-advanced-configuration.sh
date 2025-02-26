@@ -3,7 +3,7 @@
 # Import utility functions
 source scripts/release/utilities.sh
 
-# Define compatibility maxtrix related files
+# Define files to modify
 CONFIGURATION_FILE="docs/docs-content/registries-and-packs/advanced-configuration.md"
 END_TEMPLATE_FILE="scripts/release/templates/registry-reference-end.md"
 MID_TEMPLATE_FILE="scripts/release/templates/registry-reference-mid.md"

@@ -3,7 +3,7 @@
 # Import utility functions
 source scripts/release/utilities.sh
 
-# Define cli related files
+# Define files to modify
 VERSIONS_FILE="_partials/self-hosted/_kubernetes_palette_versions.mdx"
 VMWARE_TEMPLATE_FILE="scripts/release/templates/vmware-kubernetes-version.md"
 KUBERNETES_TEMPLATE_FILE="scripts/release/templates/kubernetes-max-version.md"
