@@ -70,4 +70,7 @@ The module is tested against these configurations:
 
 ## Joint Certification Program
 
-We maintain certification under the Joint Certification Program, a program between Canada’s Department of National Defense and the U.S. Department of Defense, that helps to protect controlled Unclassified Military Critical Technical Data (MCTD) and technology from common adversaries. Our Joint Certification Program certification establishes the eligibility of Spectro Cloud, Inc., to receive technical data governed by the Technical Data Control Regulations (TCDR).
+We maintain certification under the Joint Certification Program, a program between Canada’s Department of National
+Defense and the U.S. Department of Defense, that helps to protect controlled Unclassified Military Critical Technical
+Data (MCTD) and technology from common adversaries. Our Joint Certification Program certification establishes the
+eligibility of Spectro Cloud, Inc., to receive technical data governed by the Technical Data Control Regulations (TCDR).
