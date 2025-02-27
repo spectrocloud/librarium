@@ -3,6 +3,10 @@ partial_category: permissions
 partial_name: aws-ebs-csi-driver-policy
 ---
 ```yaml
+# This YAML file is an example for what customers must do if they need certain
+# node-level policies because of what they're doing. For example, if their
+# deployment includes the AWS EBS CSI storage layer, they must include the
+# AmazonEBSCSIDriverPolicy managed policy.
 roleName: "custom-ng-role"
   roleAdditionalPolicies:
   - "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
