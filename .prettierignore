@@ -21,3 +21,4 @@ docs/docs-content/security-bulletins/reports/*.md
 
 # Ignore partials
 _partials/
+scripts/release/
