@@ -70,6 +70,8 @@ The module is tested against these configurations:
 
 ## Joint Certification Program
 
+![JPC-Compliance](/docs_compliance_compliance_jpc-logo.webp "#width=687px")
+
 We maintain certification under the Joint Certification Program, a program between Canada’s Department of National
 Defense and the U.S. Department of Defense, that helps to protect controlled Unclassified Military Critical Technical
 Data (MCTD) and technology from common adversaries. Our Joint Certification Program certification establishes the

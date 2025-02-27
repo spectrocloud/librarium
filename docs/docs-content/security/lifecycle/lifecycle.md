@@ -1,6 +1,6 @@
 ---
 sidebar_label: "Lifecycle"
-title: "Secure Software Development Lifecycle"
+title: "Development Lifecycle"
 description: "Learn how Spectro Cloud applies security throughout its software development lifecycle."
 icon: ""
 hide_table_of_contents: false
@@ -23,4 +23,4 @@ Common Vulnerabilities and Exposure (CVE) issues on our
 
 - [Release Process](release-process.md)
 
-- [Vulnerability Management](../vulnerability-management/vulnerability-management.md)]
+- [Vulnerability Management](../vulnerability-management/vulnerability-management.md)
