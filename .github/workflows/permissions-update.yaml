@@ -5,9 +5,6 @@ on:
   schedule:
     - cron: "0 17 * * 2"
   workflow_dispatch:
-  push:
-    branches:
-      - doc-1613-permissions
 
 jobs:
   permissions-update:
@@ -48,8 +45,8 @@ jobs:
 
       - name: Compare and Update the Permissions
         run: |
-          # Ensure we are in master. Replace this with master before merging the PR
-          git checkout doc-1613-permissions
+          # Ensure we are in master
+          git checkout master
 
           # Issue the permissions-sync script
           chmod +x scripts/permissions-sync.sh
