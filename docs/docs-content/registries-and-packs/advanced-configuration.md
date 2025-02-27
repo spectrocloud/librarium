@@ -74,6 +74,8 @@ to the container.
 
 <br />
 
+<!-- registry-reference-end -->
+
 ```bash
 docker run -d \
     --rm \
@@ -90,6 +92,8 @@ Alternatively, you can start the container by mounting a directory with a new co
 command to the configuration file.
 
 <br />
+
+<!-- registry-reference-mid -->
 
 ```shell
 docker run -d \
