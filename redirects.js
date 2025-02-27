@@ -591,6 +591,10 @@ let redirects = [
     to: "/legal-licenses/oss-licenses-index/",
   },
   {
+    from: "/security/lifecycle/secure-development/",
+    to: "/security/lifecycle/",
+  },
+  {
     from: "/clusters/cluster-management/reconfigure/",
     to: "/clusters/cluster-management/node-pool/",
   },
