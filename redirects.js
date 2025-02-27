@@ -595,8 +595,8 @@ let redirects = [
     to: "/clusters/cluster-management/cluster-map-filters/",
   },
   {
-    from: "/clusters/cluster-management/reconfigure/",
-    to: "/clusters/cluster-management/node-pool/",
+    from: "/security/lifecycle/secure-development/",
+    to: "/security/lifecycle/",
   },
   {
     from: [
