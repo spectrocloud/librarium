@@ -64,6 +64,8 @@ For example, you can start the docker container image with the following environ
 the basic auth realm and logging level. In the following example, the `-e` flag is used to provide environment variables
 to the container.
 
+<!-- registry-reference-end -->
+
 ```bash
 docker run -d \
     --rm \
@@ -73,11 +75,13 @@ docker run -d \
     -e REGISTRY_LOG_LEVEL=debug \
     -e REGISTRY_AUTH=htpasswd \
     -e REGISTRY_AUTH_HTPASSWD_REALM="My Enterprise Realm" \
-    us-docker.pkg.dev/palette-images/palette/spectro-registry:4.5.0
+    us-docker.pkg.dev/palette-images/palette/spectro-registry:4.6.1
 ```
 
 Alternatively, you can start the container by mounting a directory with a new configuration file and pointing the server
 command to the configuration file.
+
+<!-- registry-reference-mid -->
 
 ```shell
 docker run -d \
@@ -85,7 +89,7 @@ docker run -d \
     -p 443:5000 \
     --name spectro-registry \
     --volume $(pwd)/myconfig.yml:/etc/myconfig.yml \
-    us-docker.pkg.dev/palette-images/palette/spectro-registry:4.5.0 \
+    us-docker.pkg.dev/palette-images/palette/spectro-registry:4.6.1 \
     serve /etc/spectropaxconfig/myconfig.yml
 ```
 
