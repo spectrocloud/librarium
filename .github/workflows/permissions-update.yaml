@@ -1,7 +1,7 @@
 name: Permissions Update
 
 on:
-  # Every Tuesday at 17 UTC
+  # Every Tuesday at 17:00 UTC
   schedule:
     - cron: "0 17 * * 2"
   workflow_dispatch:
@@ -48,23 +48,23 @@ jobs:
 
       - name: Compare and Update the Permissions
         run: |
-          # Ensure we are in master. Replace this with master before merging the PR.
+          # Ensure we are in master. Replace this with master before merging the PR
           git checkout doc-1613-permissions
 
-          # Issue the permissions-sync script.
-          chmod +x scripts/permissions-sync-ci.sh
-          bash scripts/permissions-sync-ci.sh
+          # Issue the permissions-sync script
+          chmod +x scripts/permissions-sync.sh
+          bash scripts/permissions-sync.sh
 
       - name: Create a PR with the Updated Permissions
         if: ${{ env.CHANGES_DETECTED  == 'true'}}
         env:
           GH_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
         run: |
-          # Create a new branch.
+          # Create a new branch
           branch_name="permissions-sync-$(date +%Y%m%d%H%M%S)"
           git checkout -b "$branch_name"
 
-          # Get the backport labels.
+          # Retrieve backport labels
           backport_labels=$(gh label list --json name --jq '.[].name' | grep -E '^(backport-version|auto-backport)' | paste -sd "," -)
 
           # Commit and push the changes
@@ -72,17 +72,17 @@ jobs:
           git commit -m "docs: update IAM permissions"
           git push origin $branch_name
 
-          # Create the pull request.
+          # Create the pull request
           pr_body='
           ## Describe the Change
           This PR updates the docs IAM permission files according to the files available in the [`required-permissions-data`](https://github.com/spectrocloud/required-permissions-data) repository. 
-          The files are compared using the `scripts/permissions-sync-ci.sh` script.
+          The files are compared using the `scripts/permissions-sync.sh` script.
           Please review this PR carefully before merging it.'
-
           output=$(gh pr create --base master --title "docs: update IAM permissions" --body "$pr_body" --label "$backport_labels")
           pr_url=$(echo "$output" | grep -o "https://[^ ]*")
           echo "PR successfully created $pr_url."
 
+          # Save the PR URL as an environment variable
           echo "GITHUB_CREATED_PERMISSIONS_PR=$pr_url" >> $GITHUB_ENV
 
       - name: Success Slack Notification

@@ -1,3 +1,18 @@
 {
-  "aws/ControllerPolicy.json": "_partials/permissions/_aws-controller-policy.mdx"
+  "aws/ControlPlanePolicy.json": "_partials/permissions/_aws-control-plane-policy.mdx",
+  "aws/NodesPolicy.json": "_partials/permissions/_aws-nodes-policy.mdx",
+  "aws/ControllerPolicy.json": "_partials/permissions/_aws-controller-policy.mdx",
+  "aws/MinimumStaticPermissions.json": "_partials/permissions/_aws-static-permissions.mdx",
+  "aws/DeploymentPolicy.json": "_partials/permissions/_aws-deployment-policy.mdx",
+  "aws/MinimumDynamicPermissions.json": "_partials/permissions/_aws-dynamic-permissions.mdx",
+  "aws/AmazonEBSCSIDriverPolicy.yaml": "_partials/permissions/_aws-ebs-csi-driver-policy.mdx",
+  "aws/ControllersEKSPolicy.json": "_partials/permissions/_aws-eks-controller-policy.mdx",
+  "azure/iaas/dynamic-placement/rg_sub_role.json": "_partials/permissions/_azure-iaas-dynamic-rg-sub-role.mdx",
+  "azure/iaas/static-placement/rg_sub_role.json": "_partials/permissions/_azure-iaas-static-rg-sub-role.mdx",
+  "azure/iaas/static-placement/vnet_role.json": "_partials/permissions/_azure-iaas-static-vnet-role.mdx",
+  "azure/aks/dynamic-placement/rg_sub_role.json": "_partials/permissions/_azure-aks-dynamic-rg-sub-role.mdx",
+  "azure/aks/dynamic-placement/sub_role.json": "_partials/permissions/_azure-aks-dynamic-sub-role.mdx",
+  "azure/aks/static-placement/rg_sub_role.json": "_partials/permissions/_azure-aks-static-rg-sub-role.mdx",
+  "azure/aks/static-placement/sub_role.json": "_partials/permissions/_azure-aks-static-sub-role.mdx",
+  "azure/aks/static-placement/vnet_role.json": "_partials/permissions/_azure-aks-static-vnet-role.mdx"
 }
