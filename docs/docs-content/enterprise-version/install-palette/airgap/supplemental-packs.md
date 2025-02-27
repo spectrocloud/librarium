@@ -46,6 +46,7 @@ Review the following table to determine which pack binaries you need to download
 | `airgap-pack-edge-k3s-1.30.8.bin`                              | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.30.8.bin                              |
 | `airgap-pack-edge-k3s-1.31.4.bin`                              | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.31.4.bin                              |
 | `airgap-pack-edge-k3s-1.31.5.bin`                              | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.31.5.bin                              |
+| `airgap-pack-edge-k3s-1.32.1.bin`                              | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.32.1.bin                              |
 | `airgap-pack-edge-k8s-1.28.14.bin`                             | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.28.14.bin                             |
 | `airgap-pack-edge-k8s-1.29.9.bin`                              | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.29.9.bin                              |
 | `airgap-pack-edge-k8s-1.30.5.bin`                              | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.30.5.bin                              |
@@ -76,6 +77,7 @@ Review the following table to determine which pack binaries you need to download
 | `airgap-pack-edge-rke2-1.30.9.bin`                             | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.30.9.bin                             |
 | `airgap-pack-edge-rke2-1.31.4.bin`                             | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.31.4.bin                             |
 | `airgap-pack-edge-rke2-1.31.5.bin`                             | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.31.5.bin                             |
+| `airgap-pack-kubernetes-eks-1.32.bin`                          | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-eks-1.32.bin                          |
 | `airgap-pack-kong-2.45.0.bin`                                  | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kong-2.45.0.bin                                  |
 | `airgap-pack-kong-2.47.0.bin`                                  | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kong-2.47.0.bin                                  |
 | `airgap-pack-kubernetes-1.28.14.bin`                           | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.28.14.bin                           |
@@ -92,6 +94,7 @@ Review the following table to determine which pack binaries you need to download
 | `airgap-pack-kubernetes-1.29.12.bin`                           | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.29.12.bin                           |
 | `airgap-pack-kubernetes-1.30.8.bin`                            | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.30.8.bin                            |
 | `airgap-pack-kubernetes-1.31.4.bin`                            | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.31.4.bin                            |
+| `airgap-pack-kubernetes-1.32.1.bin`                            | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.32.1.bin                            |
 | `airgap-pack-kubernetes-rke2-1.28.13-rke2r1-build20240815.bin` | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.28.13-rke2r1-build20240815.bin |
 | `airgap-pack-kubernetes-rke2-1.29.8-rke2r1-build20240815.bin`  | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.29.8-rke2r1-build20240815.bin  |
 | `airgap-pack-kubernetes-rke2-1.30.4-rke2r1-build20240815.bin`  | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.30.4-rke2r1-build20240815.bin  |
@@ -106,6 +109,7 @@ Review the following table to determine which pack binaries you need to download
 | `airgap-pack-kubernetes-rke2-1.29.12-rke2r1-build20241212.bin` | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.29.12-rke2r1-build20241212.bin |
 | `airgap-pack-kubernetes-rke2-1.31.4-rke2r1-build20241212.bin`  | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.31.4-rke2r1-build20241212.bin  |
 | `airgap-pack-kubernetes-rke2-1.31.5-rke2r1-build20250115.bin`  | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.31.5-rke2r1-build20250115.bin  |
+| `airgap-pack-kubernetes-rke2-1.32.1-rke2r1-build20250115.bin`  | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.32.1-rke2r1-build20250115.bin  |
 | `airgap-pack-lb-metallb-helm-0.14.9.bin`                       | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-lb-metallb-helm-0.14.9.bin                       |
 | `airgap-pack-nginx-1.11.2.bin`                                 | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-nginx-1.11.2.bin                                 |
 | `airgap-pack-nginx-1.11.3.bin`                                 | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-nginx-1.11.3.bin                                 |
