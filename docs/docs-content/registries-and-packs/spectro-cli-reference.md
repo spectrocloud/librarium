@@ -28,9 +28,13 @@ The Spectro CLI tool is currently available for OSX and Linux.
 
 1. Download the CLI file for your operating system.
 
+<!-- prettier-ignore-start -->
+
    <Tabs>
 
    <TabItem label="OSX" value="osx_cli">
+
+   <!-- spectro-cli-osx-install -->
 
    ```bash
    wget https://software.spectrocloud.com/spectro-registry/cli/v4.0.1/osx/spectro
@@ -40,6 +44,8 @@ The Spectro CLI tool is currently available for OSX and Linux.
 
    <TabItem label="Linux" value="linux_cli">
 
+   <!-- spectro-cli-linux-install -->
+
    ```bash
    wget https://software.spectrocloud.com/spectro-registry/cli/v4.0.1/linux/spectro
    ```
@@ -47,6 +53,8 @@ The Spectro CLI tool is currently available for OSX and Linux.
    </TabItem>
 
    </Tabs>
+
+<!-- prettier-ignore-end -->
 
 2. Provide the executable permission to the CLI spectro.
 
@@ -317,6 +325,8 @@ Check the version of the Spectro CLI that is currently installed.
 ```shell
 spectro version
 ```
+
+<!-- spectro-cli-version-output -->
 
 ```bash hideClipboard
 Spectro ClI Version 4.0.0 linux/amd64
