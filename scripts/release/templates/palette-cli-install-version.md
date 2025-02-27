@@ -1,0 +1,1 @@
+Palette CLI version: {{RELEASE_PALETTE_CLI_VERSION}}
