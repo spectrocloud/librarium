@@ -349,7 +349,7 @@ generate-release: ## Generate all release files except release notes
 	make -s format > /dev/null 2>&1
 
 init-release:
-	grep -q "^export RELEASE_NAME=" .env || echo "\nexportRELEASE_NAME=" >> .env
+	grep -q "^export RELEASE_NAME=" .env || echo "\nexport RELEASE_NAME=" >> .env
 	grep -q "^export RELEASE_VERSION=" .env || echo "\nexport RELEASE_VERSION=" >> .env
 	grep -q "^export RELEASE_DATE=" .env || echo "\nexport RELEASE_DATE=" >> .env
 	grep -q "^export RELEASE_PALETTE_CLI_VERSION=" .env || echo "\nexport RELEASE_PALETTE_CLI_VERSION=" >> .env
