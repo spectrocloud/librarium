@@ -17,7 +17,7 @@ Our Security team is involved early in the design process and identifies real an
 a ticketing system. Throughout development and before release we conduct subsequent reviews and automated scans for
 common vulnerabilities. Scans go beyond our own code to include third-party libraries and container images. We list any
 Common Vulnerabilities and Exposure (CVE) issues on our
-[Security Bulletins](../security-bulletins/security-bulletins.md) along with the fix applied and any workarounds.
+[Security Bulletins](../../security-bulletins/security-bulletins.md) along with the fix applied and any workarounds.
 
 ## Resources
 
