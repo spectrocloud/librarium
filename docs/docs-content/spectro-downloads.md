@@ -23,12 +23,12 @@ on how to install Palette. Palette VerteX installation guide can be found in the
 The Palette Command Line Interface (CLI) is a tool that you can use to interact with Palette programmatically. Check out
 the [Palette CLI](./automation/palette-cli/palette-cli.md) document for installation guidance.
 
-| Version | Operating System                                                                      | Checksum (SHA256)                                                  |
-| ------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
-| 4.1.0   | [Linux-amd64](https://software.spectrocloud.com/palette-cli/v4.1.0/linux/cli/palette) | `73d2bed544a39a18d27ade53bd1f078ffe286ecbfabe9f4e42a8e620cc6fd061` |
+| Version <!-- palette-cli-version-table --> | Operating System                                                                      | Checksum (SHA256)                                                  |
+| ------------------------------------------ | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| 4.1.0                                      | [Linux-amd64](https://software.spectrocloud.com/palette-cli/v4.1.0/linux/cli/palette) | `73d2bed544a39a18d27ade53bd1f078ffe286ecbfabe9f4e42a8e620cc6fd061` |
 
 ## Palette Edge CLI
 
-| Version | Operating System                                                                      | Checksum (SHA256)                                                  |
-| ------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
-| 4.1.2   | [Linux-amd64](https://software.spectrocloud.com/stylus/v4.1.2/cli/linux/palette-edge) | `f72493d523489448686d1b1819e3d677ae950d99fccf387b96fa8c863a26468d` |
+| Version <!-- edge-version-table --> | Operating System                                                                      | Checksum (SHA256)                                                  |
+| ----------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| 4.1.2                               | [Linux-amd64](https://software.spectrocloud.com/stylus/v4.1.2/cli/linux/palette-edge) | `f72493d523489448686d1b1819e3d677ae950d99fccf387b96fa8c863a26468d` |

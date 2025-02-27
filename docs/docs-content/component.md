@@ -14,19 +14,19 @@ This page lists the version details of various Palette components and their resp
 
 ## Palette CLI Versions
 
-| Palette Release | Recommended CLI Version |
-| --------------- | ----------------------- |
-| Release 4.1.0   | 4.1.0                   |
-| Release 4.0.0   | 4.0.0                   |
-| Release 3.4.0   | 3.4.0                   |
-| Release 3.3.0   | 3.3.0                   |
+| Palette Release <!-- cli-compatibility-table --> | Recommended CLI Version |
+| ------------------------------------------------ | ----------------------- |
+| Release 4.1.0                                    | 4.1.0                   |
+| Release 4.0.0                                    | 4.0.0                   |
+| Release 3.4.0                                    | 3.4.0                   |
+| Release 3.3.0                                    | 3.3.0                   |
 
 ## Palette Edge CLI Versions
 
-| Palette Release | CLI Version |
-| --------------- | ----------- |
-| Release 4.1.0   | v4.1.2      |
-| Release 4.0.0   | v4.0.0      |
-| Release 3.4.0   | v3.4.2      |
-| Release 3.3.0   | v3.3.0      |
-| Release 3.2.0   | v3.2.0      |
+| Palette Release <!-- edge-cli-compatibility-table --> | CLI Version |
+| ----------------------------------------------------- | ----------- |
+| Release 4.1.0                                         | v4.1.2      |
+| Release 4.0.0                                         | v4.0.0      |
+| Release 3.4.0                                         | v3.4.2      |
+| Release 3.3.0                                         | v3.3.0      |
+| Release 3.2.0                                         | v3.2.0      |
