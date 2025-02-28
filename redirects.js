@@ -483,6 +483,10 @@ let redirects = [
     to: "/security-bulletins/reports/",
   },
   {
+    from: "/security/lifecycle/secure-development/",
+    to: "/security/lifecycle/",
+  },
+  {
     from: "/clusters/cluster-management/reconfigure/",
     to: "/clusters/cluster-management/node-pool/",
   },
