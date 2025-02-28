@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## February 27, 2025 - Release 4.6.8
+## February 28, 2025 - Release 4.6.8
 
 ### Bug Fixes
 
