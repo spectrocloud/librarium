@@ -14,7 +14,8 @@ tags: ["release-notes"]
 ## February 21, 2025 - Documentation & Education Updates
 
 - The Documentation & Education team is enabling a new Q&A bot functionality on the Spectro Cloud official documentation
-  site. Click the **Ask AI** widget in the bottom right corner to bring up the chat interface.
+  site. Click the **Ask AI** widget in the bottom right corner or use the **Ctrl + I** (**Cmd + I** on macOS) keyboard
+  shortcut to bring up the chat interface.
 
   The Q&A bot is only trained on the latest version of the Spectro Cloud documentation. It is unable to answer
   version-specific questions. As with all generative AI-powered services, its responses may not be accurate. Always
