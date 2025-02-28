@@ -757,8 +757,8 @@ required Edge artifacts.
 
     :::tip
 
-    If using Docker Hub, you may need to log in first using `docker login`. Provide your Docker ID and password
-    when prompted.
+    If using Docker Hub, you may need to log in first using `docker login`. Provide your Docker ID and password when
+    prompted.
 
     :::
 
