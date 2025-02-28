@@ -30,6 +30,8 @@ if [[ -n "$non_webp_files" ]]; then
         fi
     done
 
+    git add static/assets/docs/images/
+
     echo "Done."
     exit 0
 
