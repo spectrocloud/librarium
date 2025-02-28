@@ -247,7 +247,7 @@ const config = {
     },
     {
       src: "/scripts/kapa-shortcut.js",
-      async: true,
+      async: false,
     },
     {
       src: "/scripts/kapa-widget.bundle.js",
@@ -273,6 +273,7 @@ const config = {
       "data-conversation-button-icons-only": "true",
       "data-modal-size": "80%",
       "data-modal-lock-scroll": "false",
+      "data-modal-inner-position-left": "auto",
       async: true,
     },
     {
