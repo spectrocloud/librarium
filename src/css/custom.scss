@@ -256,3 +256,36 @@ p img.markdown-image {
 .theme-code-block code {
   line-height: 1.6em;
 }
+
+/* Prevent non-clickable category items from being highlighted */
+
+html[data-theme="light"] .menu__list-item-collapsible:hover {
+  background: var(--ifm-menu-color-background-active);
+}
+
+/* Prevent hover effect when the direct child is a category title (span) */
+html[data-theme="light"] .menu__list-item-collapsible:hover > .sidebar-category-title {
+  background: transparent !important;
+  cursor: default;
+}
+
+/* Remove hover background from the parent when it contains a <span> */
+html[data-theme="light"] .menu__list-item-collapsible:has(> .sidebar-category-title):hover {
+  background: transparent !important;
+}
+
+/* Apply hover effect ONLY for clickable links */
+html[data-theme="dark"] .menu__list-item-collapsible:hover > a.menu__link {
+  background: var(--ifm-dropdown-background-color);
+}
+
+/* Prevent category titles (spans) from getting a hover effect */
+html[data-theme="dark"] .menu__list-item-collapsible:hover > .sidebar-category-title {
+  background: transparent !important;
+  cursor: default;
+}
+
+/* Remove hover background from the parent when it contains a <span> */
+html[data-theme="dark"] .menu__list-item-collapsible:has(> .sidebar-category-title):hover {
+  background: transparent !important;
+}
