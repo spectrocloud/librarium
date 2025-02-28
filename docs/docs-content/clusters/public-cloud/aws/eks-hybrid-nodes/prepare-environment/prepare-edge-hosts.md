@@ -801,8 +801,12 @@ required Edge artifacts.
 14. Use the following commands to push the provider images to the image registry you specified. Replace `<repository>`
     and `<tag>` using the output from the previous step.
 
-    :::tip If using Docker Hub, you may need to log in first using `docker login`. Provide your Docker ID and password
-    when prompted. :::
+    :::tip
+
+    If using Docker Hub, you may need to log in first using `docker login`. Provide your Docker ID and password when
+    prompted.
+
+    :::
 
     ```bash
     docker push <repository>:<tag>
