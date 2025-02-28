@@ -40,8 +40,8 @@ which does not require a connection to Palette.
 Palette Edge allows you to manage Kubernetes clusters at scale across distributed and remote locations. You can model
 your entire infrastructure to support a variety of workloads, including AI/ML applications and both containerized and
 VM-based deployments. With its low-touch deployment capabilities, you can ship a pre-configured device to a remote site
-and have it deployed without requiring a field engineer on-site. Review the example use cases below to help you
-evaluate how you can leverage Palette Edge.
+and have it deployed without requiring a field engineer on-site. Review the example use cases below to help you evaluate
+how you can leverage Palette Edge.
 
 - **Retail**: Ensure continuous operation of point of sale terminals and transactions across hundreds of restaurants,
   even in areas with unreliable internet connectivity.
