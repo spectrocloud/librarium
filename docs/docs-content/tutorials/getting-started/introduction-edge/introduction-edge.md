@@ -12,7 +12,7 @@ Edge clusters are Kubernetes clusters configured on bare metal or virtual machin
 Each cluster is built using Palette's reusable Kubernetes stacks, [Cluster Profiles](../../../profiles/profiles.md). You
 can choose a combination of an Operating System (OS) and a Kubernetes distribution, including options like
 [RKE2](https://docs.rke2.io/) and [K3s](https://k3s.io/), for the core infrastructure layer of your stack and add any
-necessary add-ons on top to support your workloads.
+necessary add-ons to support your workloads.
 
 [Palette Edge](../../../clusters/edge/edge.md) provides end-to-end cluster management, including scaling, upgrades, and
 reconfiguration, while supporting both single-node and multi-node clusters. Additionally, it ensures that clusters
@@ -41,7 +41,7 @@ Palette Edge allows you to manage Kubernetes clusters at scale across distribute
 your entire infrastructure to support a variety of workloads, including AI/ML applications and both containerized and
 VM-based deployments. With its low-touch deployment capabilities, you can ship a pre-configured device to a remote site
 and have it deployed without requiring a field engineer on-site. Review the example use cases below to help you
-visualize how you can leverage Palette Edge.
+evaluate how you can leverage Palette Edge.
 
 - **Retail**: Ensure continuous operation of point of sale terminals and transactions across hundreds of restaurants,
   even in areas with unreliable internet connectivity.
