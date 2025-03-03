@@ -137,7 +137,8 @@ an AWS account. This section guides you on how to create an EKS cluster in AWS t
 
     :::info
 
-    To automatically scale the number of worker nodes for EKS clusters, you must add the [AWS Cluster Autoscaler](../../../integrations/aws-cluster-autoscaler.md) pack to your cluster profile.
+    To automatically scale the number of worker nodes for EKS clusters, you must add the
+    [AWS Cluster Autoscaler](../../../integrations/aws-cluster-autoscaler.md) pack to your cluster profile.
 
     :::
 
