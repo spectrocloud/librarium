@@ -166,7 +166,7 @@ After you create a new node pool, you can validate the node pool by following th
 
 ## Change a Node Pool
 
-You can modify node pools for existing clusters. This includes changing the the node pool's taints, adjusting the node
+You can modify node pools for existing clusters. This includes changing the node pool's taints, adjusting the node
 repavement interval, modifying the number of compute instances in the node pool, activating or disabling autoscaler, and
 more. To make changes to an active cluster's node pools, follow the steps below.
 
