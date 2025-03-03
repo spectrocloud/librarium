@@ -87,15 +87,12 @@ refer to the [Taints and Tolerations](./taints.md) guide.
 The following tables contain the configuration settings for node pools. Depending on the type of node pool, some of the
 settings may not be available.
 
-<br />
-
 ### Control Plane Node Pool
 
 | **Property**                    | **Description**                                                                                                                                                                                                  |
 | ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Node pool name**              | A descriptive name for the node pool.                                                                                                                                                                            |
-| **Enable Autoscaler** | Scale the pool horizontally based on its per-node workload counts. The **Minimum size** specifies the lower bound of nodes in the pool, and the **Maximum size** specifies the upper bound. Setting both parameters to the same value results in a static node count. Refer to the Cluster API [autoscaler documentation](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/cloudprovider/clusterapi/README.md) for more information on autoscaling. |
-| **Number of nodes in the pool** | Number of nodes to be provisioned for the node pool. For the control plane pool, this number can be 1, 3, or 5. This field is hidden if **Enable Autoscaler** is toggled on.                                                                                                 |
+| **Number of nodes in the pool** | Number of nodes to be provisioned for the node pool. This number can be 1, 3, or 5.                                                                                     |
 | **Allow worker capability**     | Select this option to allow workloads to be provisioned on control plane nodes.                                                                                                                                  |
 | **Additional Labels**           | Optional labels apply placement constraints on a pod. For example, you can add a label to make a node eligible to receive the workload. To learn more, refer to the [Node Labels](./node-labels.md).             |
 | **Taints**                      | Sets toleration to pods and allows (but does not require) the pods to schedule onto nodes with matching taints. To learn more, refer to the [Taints and Tolerations](./taints.md) guide.                         |
@@ -107,7 +104,8 @@ settings may not be available.
 | **Property**                    | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 | ------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Node pool name**              | A descriptive name for the worker pool.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
-| **Number of nodes in the pool** | Number of nodes to be provisioned for the node pool.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
+| **Enable Autoscaler** | Scale the worker pool horizontally based on its per-node workload counts. The **Minimum size** specifies the lower bound of nodes in the pool, and the **Maximum size** specifies the upper bound. Setting both parameters to the same value results in a static node count. Public clouds (AWS, Azure, and GCP) and private data centers (vSphere, OpenStack, and MAAS) use the Cluster API [autoscaler](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/cloudprovider/clusterapi/README.md) tool; AKS uses the [Azure autoscaler](https://learn.microsoft.com/en-us/azure/aks/cluster-autoscaler?tabs=azure-cli) tool, which is based on the Cluster API autoscaler. |
+| **Number of nodes in the pool** | Number of nodes to be provisioned for the node pool. This field is hidden if **Enable Autoscaler** is toggled on.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | **Node repave interval**        | The time interval in seconds between repaves. The default value is 0 seconds.                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | **Additional Labels**           | Optional labels apply placement constraints on a pod. For example, you can add a label to make a node eligible to receive the workload. To learn more, refer to the [Node Labels](./node-labels.md) guide.                                                                                                                                                                                                                                                                                                                                                |
 | **Taints**                      | Sets toleration to pods and allows (but does not require) the pods to schedule onto nodes with matching taints. To learn more, refer to the [Taints and Tolerations](./taints.md) guide.                                                                                                                                                                                                                                                                                                                                                                  |
@@ -168,13 +166,12 @@ After you create a new node pool, you can validate the node pool by following th
 
 ## Change a Node Pool
 
-You can apply changes to a node pool after a cluster is created and deployed. You can change the node pool's taints
-label, node repavement interval, number of compute instances in the node pool and more. To make changes to an active
+You can modify node pools for existing clusters. This includes changing the the node pool's taints, adjusting the node repavement interval, modifying the number of compute instances in the node pool, activating or disabling autoscaler, and more. To make changes to an active
 cluster's node pools, follow the steps below.
 
 :::warning
 
-If you have enabled Autoscaler for a node pool, you cannot adjust the number of nodes in the pool manually.
+If autoscaler is enabled, you cannot adjust the number of nodes in the pool manually. 
 
 :::
 
@@ -197,7 +194,7 @@ If you have enabled Autoscaler for a node pool, you cannot adjust the number of 
 5. The nodes details page is where you can review the existing node pools and their configuration. You can also add a
    new node pool from this page. Click on the **Edit** button to make changes to the node pool.
 
-6. Make the changes as needed. Refer to the [Node Pool Configuration Settings](#node-pool-configuration-settings) tables
+6. Make changes as needed. Refer to the [Node Pool Configuration Settings](#node-pool-configuration-settings) tables
    for more information on each field.
 
 7. Click on **Confirm** to update the node pool.

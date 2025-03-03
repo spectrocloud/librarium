@@ -76,12 +76,12 @@ Ensure the following requirements are met before you attempt to deploy a cluster
 
    | **Parameter**                                                                           | **Description** |
    | --------------------------------------------------------------------------------------- | --------------- |
-   | **Virtual Network**: Select the virtual network from the **drop-down Menu**.            |
-   | **Control plane subnet**: Select the control plane network from the **drop-down Menu**. |
-   | **Worker Network**: Select the worker network from the **drop-down Menu**.              |
+   | **Virtual Network**             | Select the virtual network from the **drop-down Menu**. |
+   | **Control plane subnet** | Select the control plane network from the **drop-down Menu**. |
+   | **Worker Network** | Select the worker network from the **drop-down Menu**.              |
 
 10. Configure the control plane and worker node pool. Specify availability zones, instance types,
-    [instance cost type](architecture.md#spot-instances), disk size, the number of nodes, and [autoscaler support](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/cloudprovider/clusterapi/README.md), as necessary. 
+    instance cost type, disk size, the number of nodes, and [autoscaler support](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/cloudprovider/clusterapi/README.md), as necessary. 
     Refer to the [Node Pool](../../cluster-management/node-pool.md) documentation to learn more about the node pool
     configuration.
     

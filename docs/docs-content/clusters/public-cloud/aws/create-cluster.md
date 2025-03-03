@@ -121,11 +121,11 @@ Use the following steps to provision a new AWS cluster:
 
     :::
 
-11.  An optional taint label can be applied to a node pool during the cluster creation. For an existing cluster, the
+11. An optional taint label can be applied to a node pool during the cluster creation. For an existing cluster, the
     taint label can be edited, review the [Node Pool](../../cluster-management/node-pool.md) management page to learn
     more. Toggle the **Taint** button to create a label.
 
-12.  Enable or disable node pool taints. If tainting is enabled, then you need to provide values for the following
+12. Enable or disable node pool taints. If tainting is enabled, then you need to provide values for the following
     parameters:
 
     | **Parameter** | **Description**                                                                                     |
@@ -142,18 +142,18 @@ Use the following steps to provision a new AWS cluster:
     | **PreferNoSchedule** | The system will avoid placing a non-tolerant pod to the tainted node but is not guaranteed.                                                  |
     | **NoExecute**        | New pods will not be scheduled on the node, and existing pods on the node if any on the node will be evicted they do not tolerate the taint. |
 
-13.  If you checked the **Static Placement** box in the **Cluster config** page, you can specify additional AWS
+13. If you checked the **Static Placement** box in the **Cluster config** page, you can specify additional AWS
     [security groups](https://docs.aws.amazon.com/vpc/latest/userguide/security-groups.html) to apply to the worker
     group nodes. Use the **Additional Security Groups (Optional) drop-down Menu** to select additional security groups.
 
-14.  Click **Next**.
+14. Click **Next**.
 
-15.  Configure the patching schedule, security scans, backup settings, and set up Role Based Access Control (RBAC).
+15. Configure the patching schedule, security scans, backup settings, and set up Role Based Access Control (RBAC).
     Review the cluster settings and make changes if needed.
 
-16.  Click **Validate** to continue.
+16. Click **Validate** to continue.
 
-17.  Review the summary and click **Finish Configuration** to deploy the cluster. Provisioning IaaS clusters can take
+17. Review the summary and click **Finish Configuration** to deploy the cluster. Provisioning IaaS clusters can take
     15 - 30 minutes depending on the cluster profile and the node pool configuration.
 
 The cluster details page of the cluster contains the status and details of the deployment. Use this page to track the
