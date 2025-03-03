@@ -147,7 +147,7 @@ export default function DocSidebarItemCategory({ item, onItemClick, activePath, 
             {label}
           </Link>
         ) : (
-          <span className="menu__link sidebar-category-title">
+          <span className={`menu__link sidebar-category-title ${isActive ? styles.active : ""}`}>
             {item?.customProps?.icon && (
               <div className={`${styles.categoryItem} ${isActive ? styles.active : ""}`}>
                 <IconMapper type={item?.customProps?.icon}></IconMapper>
