@@ -11,6 +11,72 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## February 28, 2025 - Release 4.6.8
+
+### Bug Fixes
+
+- Fixed an issue that caused TLS 1.0 and 1.1 to be incorrectly enabled by internal
+  [Local UI](../clusters/edge/local-ui/local-ui.md) services. All services are now using TLS 1.2.
+- Fixed an issue that caused the [metrics server](https://github.com/kubernetes-sigs/metrics-server) deployment to be
+  created without any resource limits. Resource quotas are now correctly applied, preventing the server from interfering
+  with critical cluster functions.
+- Fixed an issue that caused edge nodes to pull images from external registries instead of the local image cache.
+  Cluster deployment now progresses with local images.
+- Fixed an issue that K3s certificate renewals to be incorrectly applied to
+  [Two-node Edge clusters](../clusters/edge/architecture/two-node.md).
+- Fixed an issue that caused signed images to fail to be loaded by K3s [edge clusters](../clusters/edge/edge.md).
+- Fixed an issue that allowed [Local UI](../clusters/edge/local-ui/local-ui.md) to start updates on inaccessible
+  clusters, resulting in inconsistent configurations. Updates are now allowed only on accessible clusters.
+- Fixed an issue that allowed concurrent NTP updates to be triggered from the
+  [Local UI](../clusters/edge/local-ui/local-ui.md) and API. Only one update can be in progress now.
+- Fixed an issue where installing a Palette [pack](../integrations/integrations.mdx) through a Helm chart incorrectly
+  sets the Helm install version.
+
+### Features
+
+#### Edge
+
+- Certificate renewal periods can now be configured for [edge clusters](../clusters/edge/edge.md) using a ConfigMap. You
+  can configure the renewal period using the `cert-renewal-day` field in the `palette-edge-config` ConfigMap.
+
+### Documentation & Education Updates
+
+- The Documentation & Education team is enabling a new Q&A bot functionality on the Spectro Cloud official documentation
+  site. Click the **Ask AI** widget in the bottom right corner or use the **Ctrl + I** (**Cmd + I** on macOS) keyboard
+  shortcut to bring up the chat interface.
+
+  The Q&A bot is only trained on the latest version of the Spectro Cloud documentation. It is unable to answer
+  version-specific questions. As with all generative AI-powered services, its responses may not be accurate. Always
+  verify answers using the documentation for important updates.
+
+### Packs
+
+#### Kubernetes
+
+| Pack Name | New Version |
+| --------- | ----------- |
+| RKE2      | 1.32.1      |
+| RKE2      | 1.31.5      |
+| RKE2      | 1.30.9      |
+| RKE2      | 1.29.13     |
+
+#### FIPS
+
+| Pack Name | New Version |
+| --------- | ----------- |
+| RKE2      | 1.32.1      |
+| RKE2      | 1.31.5      |
+| RKE2      | 1.30.9      |
+| RKE2      | 1.29.13     |
+
+## February 19, 2025 - Release 4.6.7
+
+### Bug Fixes
+
+- Fixed an issue that caused incorrect validation errors when users select the **AWS US Gov** partition. Refer to the
+  [AWS GovCloud Account (US)](../clusters/public-cloud/aws/add-aws-accounts.md#aws-govcloud-account-us) section for
+  further details.
+
 ## February 16, 2025 - Release 4.6.0 - 4.6.6
 
 ### Security Notices
@@ -154,10 +220,6 @@ tags: ["release-notes"]
 | Palette eXtended Kubernetes - Edge (PXK-E) | 1.31.4      |
 | Palette eXtended Kubernetes - Edge (PXK-E) | 1.30.9      |
 | Palette eXtended Kubernetes - Edge (PXK-E) | 1.29.13     |
-| RKE2                                       | 1.32.1      |
-| RKE2                                       | 1.31.5      |
-| RKE2                                       | 1.30.9      |
-| RKE2                                       | 1.29.13     |
 | RKE2 - Edge                                | 1.32.1      |
 | RKE2 - Edge                                | 1.31.5      |
 | RKE2 - Edge                                | 1.30.9      |

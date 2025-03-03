@@ -67,3 +67,12 @@ The module is tested against these configurations:
 - SUSE Linux Enterprise Server 15 on Dell PowerEdge R450 with Intel Xeon Silver 4309Y _with and without_ PAA
 - Ubuntu 18.04 on Dell PowerEdge R450 with Intel Xeon Silver 4309Y _with and without_ PAA
 - Ubuntu 20.04 on Dell PowerEdge R450 with Intel Xeon Silver 4309Y _with and without_ PAA
+
+## Joint Certification Program
+
+![JPC-Compliance](/docs_compliance_compliance_jpc-logo.webp "#width=687px")
+
+We maintain certification under the Joint Certification Program, a program between Canada’s Department of National
+Defense and the U.S. Department of Defense, that helps to protect controlled Unclassified Military Critical Technical
+Data (MCTD) and technology from common adversaries. Our Joint Certification Program certification establishes the
+eligibility of Spectro Cloud, Inc., to receive technical data governed by the Technical Data Control Regulations (TCDR).
