@@ -4,10 +4,10 @@ partial_name: azure-iaas-static-vnet-role
 ---
 ```json
 {
-    "Name": "Palette Static Placement IaaS Cluster Deployer (vnet)",
-    "IsCustom": true,
-    "Description": "Can use Palette to deploy IaaS clusters using static placement. This role contains the permissions that must be applied at the virtual network scope level.",
-    "Actions": [
+  "Name": "Palette Static Placement IaaS Cluster Deployer (vnet)",
+  "IsCustom": true,
+  "Description": "Can use Palette to deploy IaaS clusters using static placement. This role contains the permissions that must be applied at the virtual network scope level.",
+  "Actions": [
     "Microsoft.Network/networkSecurityGroups/read",
     "Microsoft.Network/networkSecurityGroups/securityRules/read",
     "Microsoft.Network/privateDnsZones/A/delete",
@@ -33,10 +33,10 @@ partial_name: azure-iaas-static-vnet-role
     "Microsoft.Network/virtualNetworks/subnets/virtualMachines/read",
     "Microsoft.Network/virtualNetworks/virtualMachines/read",
     "Microsoft.Network/virtualNetworks/virtualNetworkPeerings/read"
-    ],
-    "NotActions": [],
-    "AssignableScopes": [
+  ],
+  "NotActions": [],
+  "AssignableScopes": [
     "/subscriptions/$SUBSCRIPTION_ID"
-    ]
+  ]
 }
 ```

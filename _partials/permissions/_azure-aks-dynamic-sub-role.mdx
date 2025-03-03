@@ -4,10 +4,10 @@ partial_name: azure-aks-dynamic-sub-role
 ---
 ```json
 {
-    "Name": "Palette Dynamic Placement AKS Cluster Deployer (sub)",
-    "IsCustom": true,
-    "Description": "Can use Palette to deploy AKS clusters using dynamic placement. This role has the permissions required at the subscription scope level.",
-    "Actions": [
+  "Name": "Palette Dynamic Placement AKS Cluster Deployer (sub)",
+  "IsCustom": true,
+  "Description": "Can use Palette to deploy AKS clusters using dynamic placement. This role has the permissions required at the subscription scope level.",
+  "Actions": [
     "Microsoft.Compute/virtualMachineScaleSets/extensions/read",
     "Microsoft.Compute/virtualMachineScaleSets/extensions/roles/read",
     "Microsoft.Compute/virtualMachineScaleSets/instanceView/read",
@@ -29,10 +29,10 @@ partial_name: azure-aks-dynamic-sub-role
     "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/read",
     "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/runCommands/read",
     "Microsoft.Compute/virtualMachineScaleSets/vmSizes/read"
-    ],
-    "NotActions": [],
-    "AssignableScopes": [
+  ],
+  "NotActions": [],
+  "AssignableScopes": [
     "/subscriptions/$SUBSCRIPTION_ID"
-    ]
+  ]
 }
 ```
