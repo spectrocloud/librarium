@@ -363,11 +363,11 @@ Navigate back to the Palette UI in your browser. Select the **Nodes** tab.
 Click on **New Node Pool**. The **Add node pool** dialog appears. This workflow allows you to create a new worker pool
 for your cluster. Fill in the following configuration.
 
-| Field                 | Value                              | Description                                                                                                                                                                                        |
-| --------------------- | ---------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Node pool name**    | `worker-pool-2`                    | The name of your worker pool.                                                                                                                                                                      |
-| **Instance Type**     | `Standard_A8_v2`                   | Set the compute size equal to the already provisioned nodes.                                                                                                                                       |
-| **Availability Zone** | _Availability zone of your choice_ | Set the availability zone the same as the already provisioned nodes.                                                                                                                               |
+| Field                 | Value                              | Description                                                          |
+| --------------------- | ---------------------------------- | -------------------------------------------------------------------- |
+| **Node pool name**    | `worker-pool-2`                    | The name of your worker pool.                                        |
+| **Instance Type**     | `Standard_A8_v2`                   | Set the compute size equal to the already provisioned nodes.         |
+| **Availability Zone** | _Availability zone of your choice_ | Set the availability zone the same as the already provisioned nodes. |
 
 Click on **Confirm**. The dialog closes. Palette begins provisioning your node pool. Once the process completes, your
 three node pools appear in a healthy state.
