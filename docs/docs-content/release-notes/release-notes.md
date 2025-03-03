@@ -11,6 +11,13 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## March 3, 2025 - Release 4.6.9
+
+### Bug Fixes
+
+- Fixed an issue that caused [Local UI](../clusters/edge/local-ui/local-ui.md) to incorrectly show the configuration
+  status of healthy edge hosts as "Not Configured." This issue did not affect any other edge cluster operations.
+
 ## February 28, 2025 - Release 4.6.8
 
 ### Bug Fixes
