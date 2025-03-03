@@ -105,13 +105,13 @@ Use the following steps to provision a new AWS cluster:
    | **Worker Network**       | Select the worker network from the **drop-down Menu**.                         |
 
 10. Configure the control plane and worker node pool. Specify availability zones, instance types,
-    [instance cost type](architecture.md#spot-instances), disk size, the number of nodes, and [autoscaler support](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/cloudprovider/clusterapi/README.md), as necessary. 
-    Refer to the [Node Pool](../../cluster-management/node-pool.md) documentation to learn more about the node pool
-    configuration.
-    
-    The minimum number of CPUs and amount of memory depend on your cluster
-    profile, but in general you need at least 4 CPUs and 4 GB of memory both in the control plane pool and across all
-    worker pools.
+    [instance cost type](architecture.md#spot-instances), disk size, the number of nodes, and
+    [autoscaler support](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/cloudprovider/clusterapi/README.md),
+    as necessary. Refer to the [Node Pool](../../cluster-management/node-pool.md) documentation to learn more about the
+    node pool configuration.
+
+    The minimum number of CPUs and amount of memory depend on your cluster profile, but in general you need at least 4
+    CPUs and 4 GB of memory both in the control plane pool and across all worker pools.
 
     :::info
 
