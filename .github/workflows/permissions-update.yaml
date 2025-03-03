@@ -5,6 +5,9 @@ on:
   schedule:
     - cron: "0 17 * * 2"
   workflow_dispatch:
+  push:
+    branches:
+      - doc-1613-permissions
 
 jobs:
   permissions-update:
@@ -13,15 +16,15 @@ jobs:
       PATH_PERMISSIONS: required-permissions-data
 
     steps:
-      - name: Retrieve Credentials
-        id: import-secrets
-        uses: hashicorp/vault-action@v3.1.0
-        with:
-          url: https://vault.prism.spectrocloud.com
-          method: approle
-          roleId: ${{ secrets.VAULT_ROLE_ID }}
-          secretId: ${{ secrets.VAULT_SECRET_ID }}
-          secrets: /providers/github/organizations/spectrocloud/token?org_name=spectrocloud token | VAULT_GITHUB_TOKEN
+      # - name: Retrieve Credentials
+      #   id: import-secrets
+      #   uses: hashicorp/vault-action@v3.1.0
+      #   with:
+      #     url: https://vault.prism.spectrocloud.com
+      #     method: approle
+      #     roleId: ${{ secrets.VAULT_ROLE_ID }}
+      #     secretId: ${{ secrets.VAULT_SECRET_ID }}
+      #     secrets: /providers/github/organizations/spectrocloud/token?org_name=spectrocloud token | VAULT_GITHUB_TOKEN
 
       - name: Checkout Librarium Repository
         uses: actions/checkout@v4
@@ -34,7 +37,8 @@ jobs:
         with: 
           repository: spectrocloud/required-permissions-data
           path: ${{ env.PATH_PERMISSIONS }}
-          token: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
+          # token: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
+          token: ${{ secrets.GITUB_TOKEN }}
           ref: main
           fetch-depth: 0
 
@@ -46,16 +50,17 @@ jobs:
       - name: Compare and Update the Permissions
         run: |
           # Ensure we are in master
-          git checkout master
+          git checkout doc-1613-permissions
 
           # Issue the permissions-sync script
-          chmod +x scripts/permissions-sync.sh
+          # chmod +x scripts/permissions-sync.sh
           bash scripts/permissions-sync.sh
 
       - name: Create a PR with the Updated Permissions
         if: ${{ env.CHANGES_DETECTED  == 'true'}}
         env:
-          GH_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
+          # GH_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITUB_TOKEN }}
         run: |
           # Create a new branch
           branch_name="permissions-sync-$(date +%Y%m%d%H%M%S)"
@@ -82,25 +87,25 @@ jobs:
           # Save the PR URL as an environment variable
           echo "GITHUB_CREATED_PERMISSIONS_PR=$pr_url" >> $GITHUB_ENV
 
-      - name: Success Slack Notification
-        if: ${{ env.GITHUB_CREATED_PERMISSIONS_PR  != ''}}
-        uses: rtCamp/action-slack-notify@v2.3.2
-        env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
-          SLACK_COLOR: ${{ job.status }}
-          SLACKIFY_MARKDOWN: true
-          ENABLE_ESCAPES: true
-          SLACK_MESSAGE: 'A new PR with updated IAM permissions was created. Please review ${{env.GITHUB_CREATED_PERMISSIONS_PR}} for more details.'
+      # - name: Success Slack Notification
+      #   if: ${{ env.GITHUB_CREATED_PERMISSIONS_PR  != ''}}
+      #   uses: rtCamp/action-slack-notify@v2.3.2
+      #   env:
+      #     SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
+      #     SLACK_COLOR: ${{ job.status }}
+      #     SLACKIFY_MARKDOWN: true
+      #     ENABLE_ESCAPES: true
+      #     SLACK_MESSAGE: 'A new PR with updated IAM permissions was created. Please review ${{env.GITHUB_CREATED_PERMISSIONS_PR}} for more details.'
 
-      - name: Failure Slack Notification
-        if: ${{ failure() }}
-        uses: rtCamp/action-slack-notify@v2.3.2
-        env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
-          SLACK_COLOR: ${{ job.status }}
-          SLACKIFY_MARKDOWN: true
-          ENABLE_ESCAPES: true
-          SLACK_MESSAGE: 'The permissions update job in `${{ github.repository }}` failed. [View details](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}).'
+      # - name: Failure Slack Notification
+      #   if: ${{ failure() }}
+      #   uses: rtCamp/action-slack-notify@v2.3.2
+      #   env:
+      #     SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
+      #     SLACK_COLOR: ${{ job.status }}
+      #     SLACKIFY_MARKDOWN: true
+      #     ENABLE_ESCAPES: true
+      #     SLACK_MESSAGE: 'The permissions update job in `${{ github.repository }}` failed. [View details](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}).'
         
 
       
