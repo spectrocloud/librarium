@@ -69,16 +69,20 @@ Ensure the following requirements are met before you attempt to deploy a cluster
 
 #### Static Placement
 
-| Parameter                                                                               | Description |
-| --------------------------------------------------------------------------------------- | ----------- |
-| **Virtual Network**: Select the virtual network from the **drop-down Menu**.            |
-| **Control plane subnet**: Select the control plane network from the **drop-down Menu**. |
-| **Worker Network**: Select the worker network from the **drop-down Menu**.              |
+   | **Parameter**            | **Description**                                               |
+   | ------------------------ | ------------------------------------------------------------- |
+   | **Virtual Network**      | Select the virtual network from the **drop-down Menu**.       |
+   | **Control plane subnet** | Select the control plane network from the **drop-down Menu**. |
+   | **Worker Network**       | Select the worker network from the **drop-down Menu**.        |
 
-11. The Node configuration page is where you can specify the availability zones (AZ), instance types, disk size, and the
-    number of nodes. Configure the control plane and worker node pools. A control plane and a worker node pool are
-    configured by default. The minimum number of CPUs and amount of memory depend on your cluster profile, but in
-    general you need at least 4 CPUs and 4 GB of memory both in the control plane pool and across all worker pools.
+11. Configure the control plane and worker node pool. Specify availability zones, instance types, disk size, the number
+    of nodes, and
+    [autoscaler support](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/cloudprovider/clusterapi/README.md),
+    as necessary. Refer to the [Node Pool](../../cluster-management/node-pool.md) documentation to learn more about the
+    node pool configuration.
+
+    The minimum number of CPUs and amount of memory depend on your cluster profile, but in general you need at least 4
+    CPUs and 4 GB of memory both in the control plane pool and across all worker pools.
 
 <br />
 

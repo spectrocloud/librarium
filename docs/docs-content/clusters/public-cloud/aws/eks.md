@@ -128,6 +128,13 @@ Use the following steps to deploy an EKS cluster on AWS.
 12. Provide the following node pool and cloud configuration information. If you will be using Fargate profiles, you can
     add them here.
 
+    :::info
+
+    To automatically scale the number of worker nodes for EKS clusters, you must add the
+    [AWS Cluster Autoscaler](../../../integrations/aws-cluster-autoscaler.md) pack to your cluster profile.
+
+    :::
+
     #### Node Configuration Settings
 
     | **Parameter**                   | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
