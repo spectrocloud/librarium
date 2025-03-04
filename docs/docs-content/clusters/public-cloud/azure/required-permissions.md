@@ -83,10 +83,14 @@ remainder of the permissions required by IaaS can be assigned at the resource gr
 2. Create a JSON file named `iaas_static_vnet_role.json` containing all the permissions that must be applied at the
    virtual network scope level.
 
+   **Last Update**: October 29, 2024
+
    <PartialsComponent category="permissions" name="azure-iaas-static-vnet-role" />
 
 3. Next, create a JSON file named `iaas_static_rg_sub_role.json` for the permissions that must be applied at the
    resource group or subscription scope level.
+
+   **Last Update**: October 29, 2024
 
    <PartialsComponent category="permissions" name="azure-iaas-static-rg-sub-role" />
 
@@ -164,6 +168,8 @@ subscription as scope instead of the resource group as scope.
 
 2. Create a JSON file named `iaas_dynamic_rg_sub_role.json` containing all the required permissions to create resources.
 
+   **Last Update**: October 29, 2024
+
    <PartialsComponent category="permissions" name="azure-iaas-dynamic-rg-sub-role" />
 
 3. Create a role using the JSON file you created in the previous step. Issue the following command to create the role.
@@ -238,14 +244,20 @@ remainder of the permissions required by AKS can be assigned at the subscription
 2. Create a JSON file named `aks_static_vnet_role.json` containing all the permissions that must be applied at the
    virtual network scope level.
 
+   **Last Update**: October 29, 2024
+
    <PartialsComponent category="permissions" name="azure-aks-static-vnet-role" />
 
 3. Create a JSON file named `aks_static_sub_role.json` for the permissions that must be applied at the subscription
    scope level.
 
+   **Last Update**: October 29, 2024
+
    <PartialsComponent category="permissions" name="azure-aks-static-sub-role" />
 
 4. Create another JSON file named `aks_static_rg_sub_role.json` for the remaining permissions required by AKS.
+
+   **Last Update**: October 29, 2024
 
    <PartialsComponent category="permissions" name="azure-aks-static-rg-sub-role" />
 
@@ -331,9 +343,13 @@ resource groups within a subscription.
 
 2. Create a JSON file named `aks_dynamic_sub_role.json` containing all the required subscription level permissions.
 
+   **Last Update**: October 29, 2024
+
    <PartialsComponent category="permissions" name="azure-aks-dynamic-sub-role" />
 
 3. Create another JSON file named `aks_dynamic_rg_sub_role.json` containing the remaining permissions required for AKS.
+
+   **Last Update**: October 29, 2024
 
    <PartialsComponent category="permissions" name="azure-aks-dynamic-rg-sub-role" />
 

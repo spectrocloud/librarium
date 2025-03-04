@@ -117,6 +117,8 @@ managing existing infrastructure without provisioning or deleting foundational n
 The following policy allows Palette to operate and create VPC resources as needed while retaining minimal permissions
 for deploying clusters through Palette.
 
+**Last Update**: October 29, 2024
+
 <PartialsComponent category="permissions" name="aws-dynamic-permissions" />
 
 </TabItem>
@@ -125,6 +127,8 @@ for deploying clusters through Palette.
 
 The following policy allows Palette to operate within an existing VPC while retaining minimal permissions for deploying
 clusters through Palette.
+
+**Last Update**: October 29, 2024
 
 <PartialsComponent category="permissions" name="aws-static-permissions" />
 
@@ -162,6 +166,8 @@ credentials, ensure `Add IAM policies` are enabled. You can specify additional a
 attached. The attached policies will be included to all the clusters launched with this specific AWS cloud Account.
 
 **AmazonEBSCSIDriverPolicy:**
+
+**Last Update**: November 8, 2023
 
 <PartialsComponent category="permissions" name="aws-ebs-csi-driver-policy" />
 
