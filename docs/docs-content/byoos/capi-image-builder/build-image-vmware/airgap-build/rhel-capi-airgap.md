@@ -125,10 +125,10 @@ Enterprise Linux (RHEL) image with <VersionedLink text="Palette eXtended Kuberne
     includes specifying the OS type, Kubernetes version, whether the image should be FIPS compliant, and more.
 
     Use the example configuration below for building a RHEL 8 CAPI image in an airgapped environment. Replace
-    `<rhel-subscription-email>` and `<rhel-subscription-password>` with your RHEL subscription credentials if the version of your CAPI Image Builder is pre-`4.6.0`. Replace
-    `<iso-checksum>` with the RHEL ISO checksum. Update the VMware-related placeholders with the values from your VMware
-    vSphere environment. Additionally, replace `<airgap-vm-hostname>` with the hostname or IP address of your airgap
-    support VM.
+    `<rhel-subscription-email>` and `<rhel-subscription-password>` with your RHEL subscription credentials if the
+    version of your CAPI Image Builder is pre-`4.6.0`. Replace `<iso-checksum>` with the RHEL ISO checksum. Update the
+    VMware-related placeholders with the values from your VMware vSphere environment. Additionally, replace
+    `<airgap-vm-hostname>` with the hostname or IP address of your airgap support VM.
 
     :::warning
 
