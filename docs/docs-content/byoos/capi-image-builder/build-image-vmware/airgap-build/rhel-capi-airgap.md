@@ -23,8 +23,7 @@ Enterprise Linux (RHEL) image with <VersionedLink text="Palette eXtended Kuberne
 - Access to the VMware vSphere environment, including credentials and permission to create virtual machines.
 
 - A valid [RHEL subscription](https://www.redhat.com/en/store/linux-platforms) and access to the
-  [Red Hat Developer Portal](https://developers.redhat.com/products/rhel/download?source=sso). You will need to provide
-  the username and password for the subscription during the build process.
+  [Red Hat Developer Portal](https://developers.redhat.com/products/rhel/download?source=sso).
 
 - An airgapped instance of
   [Palette](../../../../enterprise-version/install-palette/install-on-vmware/airgap-install/install.md) or
@@ -37,12 +36,15 @@ Enterprise Linux (RHEL) image with <VersionedLink text="Palette eXtended Kuberne
 
 - The following artifacts must be available in the root home directory of the airgap support VM. You can download the
   files in a system with internet access and then transfer them to your airgap environment.
+
   - CAPI Image Builder compressed archive file. Contact your Palette support representative to obtain the latest version
-    of the tool. This guide uses version `4.4.4` of the tool as an example.
+    of the tool. This guide uses version `4.6.0` as an example.
+
   - [RHEL ISO](https://developers.redhat.com/products/rhel/download?source=sso) version `8.8`. Ensure you download the
     **x86_64 DVD ISO** and not the **x86_64 BOOT ISO**, and make sure you have its **SHA256** checksum available. This
     guide uses RHEL 8.8 as an example. Refer to the [Configuration Reference](../../config-reference.md) page for
     details on supported operating systems.
+
   - Airgap Kubernetes pack binary of the version for which the image will be generated. This guide uses version `1.28.9`
     as an example. Refer to the
     [Additional Packs](../../../../enterprise-version/install-palette/airgap/supplemental-packs.md) page for
@@ -73,7 +75,7 @@ Enterprise Linux (RHEL) image with <VersionedLink text="Palette eXtended Kuberne
     ```
 
     ```text hideClipboard
-    airgap-pack-kubernetes-1.28.9.bin  bin  capi-image-builder-v4.4.4.tgz  prep  rhel-8.8-x86_64-dvd.iso  snap
+    airgap-pack-kubernetes-1.28.9.bin  bin  capi-image-builder-v4.6.0.tgz  prep  rhel-8.8-x86_64-dvd.iso  snap
     ```
 
     :::warning
@@ -86,7 +88,7 @@ Enterprise Linux (RHEL) image with <VersionedLink text="Palette eXtended Kuberne
 4.  Extract the CAPI Image Builder file.
 
     ```shell
-    tar --extract --gzip --file=capi-image-builder-v4.4.4.tgz
+    tar --extract --gzip --file=capi-image-builder-v4.6.0.tgz
     ```
 
 5.  Update the permissions of the `output` folder to allow the CAPI Builder tool to create directories and files within
@@ -123,7 +125,7 @@ Enterprise Linux (RHEL) image with <VersionedLink text="Palette eXtended Kuberne
     includes specifying the OS type, Kubernetes version, whether the image should be FIPS compliant, and more.
 
     Use the example configuration below for building a RHEL 8 CAPI image in an airgapped environment. Replace
-    `<rhel-subscription-email>` and `<rhel-subscription-password>` with your RHEL subscription credentials. Replace
+    `<rhel-subscription-email>` and `<rhel-subscription-password>` with your RHEL subscription credentials if the version of your CAPI Image Builder is pre-`4.6.0`. Replace
     `<iso-checksum>` with the RHEL ISO checksum. Update the VMware-related placeholders with the values from your VMware
     vSphere environment. Additionally, replace `<airgap-vm-hostname>` with the hostname or IP address of your airgap
     support VM.
@@ -161,8 +163,8 @@ Enterprise Linux (RHEL) image with <VersionedLink text="Palette eXtended Kuberne
 
      # Define RHEL subscription credentials(if $image_type=rhel)
      # used while image creation to use package manager
-     rhel_subscripocky-8user='<rhel-subscription-email>'
-     rhel_subscription_pass='<rhel-subscription-password>'
+     rhel_subscription-user=<rhel-subscription-email-if-CAPI-image-builder-is-pre-4.6.0>
+     rhel_subscription_pass=<rhel-subscription-password-if-CAPI-image-builder-is-pre-4.6.0>
 
      # Define ISO url(if image is rhel or rockylinux)
      iso_name=rhel-8.8-x86_64-dvd.iso
@@ -217,14 +219,14 @@ Enterprise Linux (RHEL) image with <VersionedLink text="Palette eXtended Kuberne
         <TabItem value="Docker" label="Docker">
 
         ```shell
-        docker load < capi-builder-v4.4.4.tar
+        docker load < capi-builder-v4.6.0.tar
         ```
 
         </TabItem>
         <TabItem value="Podman" label="Podman">
 
         ```shell
-        podman load < capi-builder-v4.4.4.tar
+        podman load < capi-builder-v4.6.0.tar
         ```
 
         </TabItem>
@@ -259,9 +261,9 @@ Enterprise Linux (RHEL) image with <VersionedLink text="Palette eXtended Kuberne
         docker images
         ```
         ```text hideClipboard
-        REPOSITORY                                              TAG         IMAGE ID      CREATED       SIZE
-        gcr.io/spectro-images-public/imagebuilder/capi-builder  v4.4.4      34ae97fee5e3  10 days ago   2.59 GB
-        gcr.io/spectro-images-public/imagebuilder/yum-repo      v1.0.0      b03879039936  6 weeks ago   603 MB
+        REPOSITORY                                                          TAG         IMAGE ID      CREATED       SIZE
+        us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder  v4.6.0      d27849b14d5d  10 days ago   2.66 GB
+        gcr.io/spectro-images-public/imagebuilder/yum-repo                  v1.0.0      b03879039936  6 weeks ago   603 MB
         ```
 
         </TabItem>
@@ -271,9 +273,9 @@ Enterprise Linux (RHEL) image with <VersionedLink text="Palette eXtended Kuberne
         podman images
         ```
         ```text hideClipboard
-        REPOSITORY                                              TAG         IMAGE ID      CREATED       SIZE
-        gcr.io/spectro-images-public/imagebuilder/capi-builder  v4.4.4      34ae97fee5e3  10 days ago   2.59 GB
-        gcr.io/spectro-images-public/imagebuilder/yum-repo      v1.0.0      b03879039936  6 weeks ago   603 MB
+        REPOSITORY                                                          TAG         IMAGE ID      CREATED       SIZE
+        us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder  v4.6.0      d27849b14d5d  10 days ago   2.66 GB
+        gcr.io/spectro-images-public/imagebuilder/yum-repo                  v1.0.0      b03879039936  6 weeks ago   603 MB
         ```
 
         </TabItem>
@@ -355,14 +357,14 @@ Enterprise Linux (RHEL) image with <VersionedLink text="Palette eXtended Kuberne
         <TabItem value="Docker" label="Docker">
 
         ```bash
-        BUILD_ID_CAPI=$(docker run --net=host --volume /root/output:/home/imagebuilder/output --detach gcr.io/spectro-images-public/imagebuilder/capi-builder:v4.4.4)
+        BUILD_ID_CAPI=$(docker run --net=host --volume /root/output:/home/imagebuilder/output --detach us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:v4.6.0)
         ```
 
         </TabItem>
         <TabItem value="Podman" label="Podman">
 
         ```bash
-        BUILD_ID_CAPI=$(podman run --net=host --volume /root/output:/home/imagebuilder/output --detach gcr.io/spectro-images-public/imagebuilder/capi-builder:v4.4.4)
+        BUILD_ID_CAPI=$(podman run --net=host --volume /root/output:/home/imagebuilder/output --detach us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:v4.6.0)
         ```
 
         </TabItem>
@@ -395,14 +397,14 @@ Enterprise Linux (RHEL) image with <VersionedLink text="Palette eXtended Kuberne
             <TabItem value="Docker" label="Docker">
 
              ```bash
-             BUILD_ID_CAPI=$(docker run --net=host --volume /root/output:/home/imagebuilder/output --detach gcr.io/spectro-images-public/imagebuilder/capi-builder:v4.4.4)
+             BUILD_ID_CAPI=$(docker run --net=host --volume /root/output:/home/imagebuilder/output --detach us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:v4.6.0)
              ```
             </TabItem>
 
             <TabItem value="Podman" label="Podman">
 
              ```bash
-             BUILD_ID_CAPI=$(podman run --net=host --volume /root/output:/home/imagebuilder/output --detach gcr.io/spectro-images-public/imagebuilder/capi-builder:v4.4.4)
+             BUILD_ID_CAPI=$(podman run --net=host --volume /root/output:/home/imagebuilder/output --detach us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:v4.6.0)
              ```
 
             </TabItem>
