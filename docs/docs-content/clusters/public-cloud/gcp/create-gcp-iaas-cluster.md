@@ -80,8 +80,8 @@ Ensure the following requirements are met before you attempt to deploy a cluster
    | **Control plane subnet** | Select the control plane network from the **drop-down Menu**. |
    | **Worker Network**       | Select the worker network from the **drop-down Menu**.        |
 
-10. Configure the control plane and worker node pool. Specify availability zones, instance types,
-    disk size, the number of nodes, and
+10. Configure the control plane and worker node pool. Specify availability zones, instance types, disk size, the number
+    of nodes, and
     [autoscaler support](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/cloudprovider/clusterapi/README.md),
     as necessary. Refer to the [Node Pool](../../cluster-management/node-pool.md) documentation to learn more about the
     node pool configuration.
