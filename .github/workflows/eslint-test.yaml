@@ -10,6 +10,8 @@ on:
       - "src/**"
       - "plugins/**"
       - "utils/**"
+      - "package.json"
+      - "package-lock.json"
 
 concurrency:
   group: test-${{ github.ref }}
