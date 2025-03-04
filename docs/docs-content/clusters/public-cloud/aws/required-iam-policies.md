@@ -52,15 +52,11 @@ The four core IAM policies are required for Palette to operate.
 
 <TabItem label="Controller Policy" value="Controller Policy">
 
-**Last Update**: April 20, 2023
-
 <PartialsComponent category="permissions" name="aws-controller-policy" />
 
 </TabItem>
 
 <TabItem label="Control Plane Policy" value="Control Plane Policy">
-
-**Last Update**: April 20, 2023
 
 <PartialsComponent category="permissions" name="aws-control-plane-policy" />
 
@@ -68,15 +64,11 @@ The four core IAM policies are required for Palette to operate.
 
 <TabItem label="Nodes Policy" value="Nodes Policy">
 
-**Last Update**: May 2, 2021
-
 <PartialsComponent category="permissions" name="aws-nodes-policy" />
 
 </TabItem>
 
 <TabItem label="Deployment Policy" value="Deployment Policy">
-
-**Last Update**: April 20, 2023
 
 <PartialsComponent category="permissions" name="aws-deployment-policy" />
 
@@ -87,8 +79,6 @@ The four core IAM policies are required for Palette to operate.
 ### Controllers EKS Policy
 
 If you plan to deploy host clusters to AWS EKS, make sure to attach the **PaletteControllersEKSPolicy**.
-
-**Last Update**: April 20, 2023
 
 <PartialsComponent category="permissions" name="aws-eks-controller-policy" />
 
@@ -117,8 +107,6 @@ managing existing infrastructure without provisioning or deleting foundational n
 The following policy allows Palette to operate and create VPC resources as needed while retaining minimal permissions
 for deploying clusters through Palette.
 
-**Last Update**: October 29, 2024
-
 <PartialsComponent category="permissions" name="aws-dynamic-permissions" />
 
 </TabItem>
@@ -127,8 +115,6 @@ for deploying clusters through Palette.
 
 The following policy allows Palette to operate within an existing VPC while retaining minimal permissions for deploying
 clusters through Palette.
-
-**Last Update**: October 29, 2024
 
 <PartialsComponent category="permissions" name="aws-static-permissions" />
 
@@ -166,8 +152,6 @@ credentials, ensure `Add IAM policies` are enabled. You can specify additional a
 attached. The attached policies will be included to all the clusters launched with this specific AWS cloud Account.
 
 **AmazonEBSCSIDriverPolicy:**
-
-**Last Update**: November 8, 2023
 
 <PartialsComponent category="permissions" name="aws-ebs-csi-driver-policy" />
 
