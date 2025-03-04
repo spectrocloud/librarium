@@ -19,12 +19,12 @@ At this time, VMware vSphere is the only supported infrastructure provider for t
 
 ## Operating System Configuration
 
-| Parameter                | Description                                                                                                             | Required |
-| ------------------------ | ----------------------------------------------------------------------------------------------------------------------- | -------- |
-| `os_versions`            | A list of operating system versions to build. Available options are `rhel-8`, `rhel-9`, `rockylinux-8`, `rockylinux-9`. | Yes      |
-| `image_type`             | The type of image to build. Available options are `standard` or `fips`.                                                 | Yes      |
-| `rhel_subscription_user` | The RHEL subscription username to use when building the image.                                                          | No       |
-| `rhel_subscription_pass` | The RHEL subscription password to use when building the image.                                                          | No       |
+| Parameter                | Description                                                                                                                                                                                              | Required |
+| ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| `os_versions`            | A list of operating system versions to build. Available options are `rhel-8`, `rhel-9`, `rockylinux-8`, `rockylinux-9`.                                                                                  | Yes      |
+| `image_type`             | The type of image to build. Available options are `standard` or `fips`.                                                                                                                                  | Yes      |
+| `rhel_subscription_user` | The RHEL subscription username to use when building the image. No value is required if creating a RHEL image in an airgapped environment (`airgap=true`) with CAPI Image Builder version 4.6.0 or later. | No       |
+| `rhel_subscription_pass` | The RHEL subscription password to use when building the image. No value is required if creating a RHEL image in an airgapped environment (`airgap=true`) with CAPI Image Builder version 4.6.0 or later. | No       |
 
 ## Image Configuration
 
