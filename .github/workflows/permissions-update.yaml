@@ -1,0 +1,104 @@
+name: Permissions Update
+
+on:
+  # Every Tuesday at 17:00 UTC
+  schedule:
+    - cron: "0 17 * * 2"
+  workflow_dispatch:
+
+jobs:
+  permissions-update:
+    runs-on: ubuntu-latest
+    env: 
+      PATH_PERMISSIONS: required-permissions-data
+
+    steps:
+      - name: Retrieve Credentials
+        id: import-secrets
+        uses: hashicorp/vault-action@v3.1.0
+        with:
+          url: https://vault.prism.spectrocloud.com
+          method: approle
+          roleId: ${{ secrets.VAULT_ROLE_ID }}
+          secretId: ${{ secrets.VAULT_SECRET_ID }}
+          secrets: /providers/github/organizations/spectrocloud/token?org_name=spectrocloud token | VAULT_GITHUB_TOKEN
+
+      - name: Checkout Librarium Repository
+        uses: actions/checkout@v4
+        with: 
+          repository: spectrocloud/librarium
+          fetch-depth: 0
+
+      - name: Checkout required-permissions-data Repository
+        uses: actions/checkout@v4
+        with: 
+          repository: spectrocloud/required-permissions-data
+          path: ${{ env.PATH_PERMISSIONS }}
+          token: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
+          ref: main
+          fetch-depth: 0
+
+      - name: Set Git User
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Compare and Update the Permissions
+        run: |
+          # Ensure we are in master
+          git checkout master
+
+          # Issue the permissions-sync script
+          bash scripts/permissions-sync.sh
+
+      - name: Create a PR with the Updated Permissions
+        if: ${{ env.CHANGES_DETECTED  == 'true'}}
+        env:
+          GH_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
+        run: |
+          # Create a new branch
+          branch_name="permissions-sync-$(date +%Y%m%d%H%M%S)"
+          git checkout -b "$branch_name"
+
+          # Retrieve backport labels
+          backport_labels=$(gh label list --json name --jq '.[].name' | grep -E '^(backport-version|auto-backport)' | paste -sd "," -)
+
+          # Commit and push the changes
+          git add _partials/permissions/
+          git commit -m "docs: update IAM permissions"
+          git push origin $branch_name
+
+          # Create the pull request
+          pr_body='
+          ## Describe the Change
+          This PR updates the docs IAM permission files according to the files available in the [`required-permissions-data`](https://github.com/spectrocloud/required-permissions-data) repository. 
+          The files are compared using the `scripts/permissions-sync.sh` script.
+          Please review this PR carefully before merging it and update the **Last Update** line for the permission that has been updated.'
+          output=$(gh pr create --base master --title "docs: update IAM permissions" --body "$pr_body" --label "$backport_labels")
+          pr_url=$(echo "$output" | grep -o "https://[^ ]*")
+          echo "PR successfully created $pr_url."
+
+          # Save the PR URL as an environment variable
+          echo "GITHUB_CREATED_PERMISSIONS_PR=$pr_url" >> $GITHUB_ENV
+
+      - name: Success Slack Notification
+        if: ${{ env.GITHUB_CREATED_PERMISSIONS_PR  != ''}}
+        uses: rtCamp/action-slack-notify@v2.3.2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
+          SLACK_COLOR: ${{ job.status }}
+          SLACKIFY_MARKDOWN: true
+          ENABLE_ESCAPES: true
+          SLACK_MESSAGE: 'A new PR with updated IAM permissions was created. Please review ${{env.GITHUB_CREATED_PERMISSIONS_PR}} for more details.'
+
+      - name: Failure Slack Notification
+        if: ${{ failure() }}
+        uses: rtCamp/action-slack-notify@v2.3.2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
+          SLACK_COLOR: ${{ job.status }}
+          SLACKIFY_MARKDOWN: true
+          ENABLE_ESCAPES: true
+          SLACK_MESSAGE: 'The permissions update job in `${{ github.repository }}` failed. [View details](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}).'
+
+      
