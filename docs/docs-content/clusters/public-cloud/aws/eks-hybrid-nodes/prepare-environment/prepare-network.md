@@ -25,12 +25,25 @@ This section provides common steps and example configurations for each of these 
 
 This section provides the steps and example configuration for your AWS network as described in the following AWS documentation:
 
-- [AWS VPC and subnet setup](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-networking.html#hybrid-nodes-networking-vpc)
+- [AWS Virtual Private Cloud (VPC) and subnet setup](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-networking.html#hybrid-nodes-networking-vpc)
 - [Cluster security group configuration](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-networking.html#hybrid-nodes-networking-cluster-sg)
 
 ### Prerequisites
 
-- An AWS account with permissions to create and modify VPCs, subnets, route tables, internet gateways, NAT gateways with Elastic IPs, transit gateways or virtual private gateways, and security groups. Refer to [Amazon VPC policy examples](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-policy-examples.html) for guidance.
+- An AWS account with permissions to view, create, and modify the following resources:
+
+  - VPC
+  - Classless Inter-Domain Routing (CIDR) blocks
+  - Subnets
+  - Route tables
+  - Internet gateways
+  - Network Address Translation (NAT) gateways
+    - Elastic IPs
+  - Transit gateways
+  - Virtual private gateways
+  - Security groups
+  
+  Refer to [Amazon VPC policy examples](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-policy-examples.html) for guidance on Identity and Access Management (IAM) permissions.
 
 ### Configure AWS Network
 
@@ -143,7 +156,7 @@ This section provides the steps and example configuration for your AWS network a
 
    </Tabs>
 
-8. [Create a security group](https://docs.aws.amazon.com/vpc/latest/userguide/creating-security-groups.html) for your VPC that contains the [necessary rules](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-networking.html#hybrid-nodes-networking-cluster-sg) to allow communication with your remote environment. This security group is added as an additional security group when creating your EKS cluster
+8. [Create a security group](https://docs.aws.amazon.com/vpc/latest/userguide/creating-security-groups.html) for your VPC that contains the [necessary rules](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-networking.html#hybrid-nodes-networking-cluster-sg) to allow communication with your remote environment. This security group is added as an additional security group when creating your EKS cluster as guided during the [Prepare EKS Cluster](./prepare-eks-cluster.md#create-the-eks-cluster) steps.
 
    The following tables are an example configuration for the security group.
 
@@ -156,7 +169,7 @@ This section provides the steps and example configuration for your AWS network a
    | **Security group name**        | `eks-hybrid-remote-rules-sg`       |
    | **Description (optional)** | "EKS Hybrid remote environment communication" |
    | **VPC**       | `vpc-0518d3603257bf85d (eks-hybrid-vpc)`        |
-   | **Tags (optional)** | `Name = eks-hybrid-remote-rules-sg`     |
+   | **Tags (optional)** | `Name` = `eks-hybrid-remote-rules-sg`     |
 
    </TabItem>
 
@@ -182,11 +195,125 @@ This section provides the steps and example configuration for your AWS network a
 
 ### Validate
 
-TBD
+1. Log in to [AWS](https://console.aws.amazon.com/).
+
+2. Check that your created network resources have a **State** of **Available** or **Attached** in your chosen region. A list of the expected resources is as follows:
+
+   - AWS VPC for your Amazon EKS cluster.
+   - Two subnets within the AWS VPC.
+   - Internet gateways for your public subnets.
+   - NAT gateways for your private subnets.
+
+3. Check that you have created the following additional resources:
+
+   - Route tables for your subnets.
+   - Default security group for your VPC and custom security group for your remote environment rules.
+   - Elastic IPs for your NAT gateways, if any.
 
 ## Remote Network Environment
 
 This section provides a high-level overview and example configuration for your remote network environment as described in the AWS documentation under [On-premises networking configuration](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-networking.html#hybrid-nodes-networking-on-prem).
+
+### Prerequisites
+
+- Access to your on-prem/remote core network devices with sufficient privileges to create and modify network configurations. This includes the following:
+
+  - Permissions to define or adjust IP address allocations in the on-premises environment to avoid CIDR overlap with AWS VPCs.
+
+  - Permissions to configure or update firewall rules, NAT settings, and VPN/security policies.
+
+  - Permissions to adjust or introduce Border Gateway Protocol (BGP) or manage static routes that control traffic to and from AWS.
+
+  - If using an IPsec VPN or similar encrypted connection, permissions to generate, install, and rotate certificates or keys on the local network equipment.
+
+  - If you plan to use custom domain names or private hosted zones in AWS, permissions to edit DNS records or conditional forwarders in the local DNS infrastructure.
+
+### Configure Remote Network
+
+1. Configure your VLAN or subnet definitions to a suitable IP range for your hybrid nodes. See [On-premises node and pod CIDRs](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-networking.html#hybrid-nodes-networking-on-prem) for AWS requirements on CIDR blocks in remote networks.
+
+   - Example hybrid node CIDR block = `10.200.0.0/16`
+     - Example hybrid node subnets = `10.200.0.0/24`, `10.200.1.0/24`
+   - Example pod CIDR block = `192.168.0.0/16`
+
+2. Configure your NAT settings to allow outbound internet access from your hybrid nodes or, at a minimum, access to the necessary AWS services for [hybrid node installation and upgrade](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-networking.html#hybrid-nodes-networking-on-prem).
+
+   The following tables are an example list of enabled URLs in the `us-east-1` region. All endpoints are accessed with the `HTTPS` protocol on port `443`.
+
+   <Tabs queryString="on-prem-nat-example">
+
+   <TabItem label="AWS Service Manager (SSM)" value="ssm">
+
+   | Service                    | Endpoint URL                                   |
+   |----------------------------|------------------------------------------------|
+   | Amazon EKS                 | https://hybrid-assets.eks.amazonaws.com            |
+   | Amazon EKS                 | https://eks.us-east-1.amazonaws.com      |
+   | Amazon ECR                 | https://api.ecr.us-east-1.amazonaws.com            |
+   | Amazon EKS ECR             | https://602401143452.dkr.ecr.us-east-1.amazonaws.com            |
+   | AWS Systems Manager (SSM)  | https://amazon-ssm-us-east-1.s3.us-east-1.amazonaws.com           |
+   | AWS Systems Manager (SSM)  | https://ssm.us-east-1.amazonaws.com            |
+   | (Optional) AWS Systems Manager (SSM)  | https://ec2messages.us-east-1.amazonaws.com |
+   | (Optional) Amazon CloudWatch Logs | https://logs.us-east-1.amazonaws.com |
+   | (Optional) Amazon S3 | https://s3.us-east-1.amazonaws.com |
+
+   </TabItem>
+
+   <TabItem label="AWS IAM Roles Anywhere" value="iam-ra">
+
+   | Service                    | Endpoint URL                                   |
+   |----------------------------|------------------------------------------------|
+   | Amazon EKS                 | https://hybrid-assets.eks.amazonaws.com            |
+   | Amazon EKS                 | https://eks.us-east-1.amazonaws.com      |
+   | Amazon ECR                 | https://api.ecr.us-east-1.amazonaws.com            |
+   | Amazon EKS ECR             | https://602401143452.dkr.ecr.us-east-1.amazonaws.com            |
+   | AWS IAM Roles Anywhere     | https://rolesanywhere.amazonaws.com     |
+   | AWS IAM Roles Anywhere        | https://rolesanywhere.us-east-1.amazonaws.com                       |
+   | (Optional) AWS IAM         | https://iam.amazonaws.com                         |
+   | (Optional) AWS Security Token Service (STS) | https://sts.us-east-1.amazonaws.com |
+   | (Optional) Amazon CloudWatch Logs | https://logs.us-east-1.amazonaws.com |
+   | (Optional) Amazon S3 | https://s3.us-east-1.amazonaws.com |
+
+   </TabItem>
+
+   </Tabs>
+
+3. Configure your firewall rules to allow node and pod communication with necessary AWS services as described in [Access required for ongoing cluster operations](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-networking.html#hybrid-nodes-networking-on-prem). Cilium is used as the hybrid node CNI and this requires [additional rules](https://docs.cilium.io/en/stable/operations/system_requirements/#firewall-rules) to allow health checks, Virtual Extensible LAN (VXLAN) overlay, and etcd access.
+
+   The following tables are an example configuration for the firewall rules.
+
+   <Tabs queryString="on-prem-firewall-example">
+
+   <TabItem label="Inbound Rules" value="inbound-rules">
+
+   | Protocols                  | Port Range | Source | Destination |
+   | ----------------------- | ------ | ---------- | --- |
+   | TCP | 10250 | `10.100.0.0/16` | `10.200.0.0/16`        |
+   | TCP     | 443 | `10.100.0.0/16`         | `192.168.0.0/16` |
+   | TCP, UDP     | 53 | `192.168.0.0/16`         | `192.168.0.0/16` |
+   | TCP, UDP     | 443 | `192.168.0.0/16`         | `192.168.0.0/16` |
+
+   </TabItem>
+
+   <TabItem label="Outbound Rules" value="outbound-rules">
+
+   | Protocols                  | Port Range | Source | Destination |
+   | ----------------------- | ------ | ---------- | --- |
+   | TCP | 443 | `10.200.0.0/16` | `10.100.0.0/16`        |
+   | TCP     | 443 | `192.168.0.0/16`         | `10.100.0.0/16` |
+   | TCP | 443 | `10.200.0.0/16` | `https://ssm.us-east-1.amazonaws.com`        |
+   | TCP     | 443 | `10.200.0.0/16`         | `https://rolesanywhere.us-east-1.amazonaws.com` |
+   | TCP | 443 | `192.168.0.0/16` | `https://sts.us-east-1.amazonaws.com`        |
+   | TCP     | 443 | `10.200.0.0/16`         | `https://eks.us-east-1.amazonaws.com` |
+   | TCP, UDP     | 53 | `192.168.0.0/16`         | `192.168.0.0/16` |
+   | TCP, UDP     | 443 | `192.168.0.0/16`         | `192.168.0.0/16` |
+
+   </TabItem>
+
+   </Tabs>
+
+### Validate
+
+1. Check that your created on-premises network resources
 
 <!-- Describe the local environment, IP ranges, firewall settings, and DNS considerations. -->
 
@@ -194,10 +321,10 @@ This section provides a high-level overview and example configuration for your r
 
 <!-- Provide details on typical VPN or AWS Direct Connect setups, including routing, BGP settings, and required IP address blocks. -->
 
-Depending on your AWS networking requirements, create either a [virtual private gateway](https://docs.aws.amazon.com/directconnect/latest/UserGuide/create-virtual-private-gateway.html) or [transit gateway](https://docs.aws.amazon.com/vpc/latest/tgw/create-tgw.html), and attach it to your VPC.
+Depending on your AWS networking requirements, create either a [virtual private gateway](https://docs.aws.amazon.com/directconnect/latest/UserGuide/create-virtual-private-gateway.html) or [transit gateway](https://docs.aws.amazon.com/vpc/latest/tgw/create-tgw.html), and attach it to your VPC. Virtual private gateways are attached to a single VPC, whereas transit gateways can facilitate multiple VPCs.
 
 :::important
 
-If you are planning to use AWS Direct Connect, ensure that you create the resource in the [AWS Direct Connect console](https://console.aws.amazon.com/directconnect/v2/home). If using AWS Site-to-Site VPN, create the resource in the [AWS VPC console](https://console.aws.amazon.com/vpc/).
+If you are planning to use AWS Direct Connect, ensure that you create the gateway in the [AWS Direct Connect console](https://console.aws.amazon.com/directconnect/v2/home). If using AWS Site-to-Site VPN, create the gateway in the [AWS VPC console](https://console.aws.amazon.com/vpc/).
 
 :::
