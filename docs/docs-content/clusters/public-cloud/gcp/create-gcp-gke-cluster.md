@@ -10,6 +10,10 @@ tags: ["public cloud", "gcp"]
 Palette supports creating and managing Kubernetes clusters using Google Kubernetes Engine (GKE). This section guides you
 to create a Kubernetes cluster that is deployed to GKE and that Palette manages.
 
+## Limitations
+
+- Autoscaling is not supported for GKE clusters.
+
 ## Prerequisites
 
 Ensure the following requirements are met before you attempt to deploy a cluster to GCP.
