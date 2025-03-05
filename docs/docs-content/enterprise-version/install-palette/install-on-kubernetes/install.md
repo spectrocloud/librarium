@@ -589,7 +589,7 @@ your environment. Reach out to our support team if you need assistance.
 
     :::
 
-1.  This step is only required if you are installing Palette in an environment where a network proxy must be configured
+5.  This step is only required if you are installing Palette in an environment where a network proxy must be configured
     for Palette to access the internet. If you are not using a network proxy, skip to the next step.
 
     Install the reach-system chart using the following command. Point to the **values.yaml** file you configured in step
@@ -629,7 +629,7 @@ your environment. Reach out to our support team if you need assistance.
 
     </details>
 
-2.  Install the Palette Helm Chart using the following command.
+6.  Install the Palette Helm Chart using the following command.
 
     ```shell
      helm upgrade --values palette/values.yaml \
@@ -646,7 +646,7 @@ your environment. Reach out to our support team if you need assistance.
     TEST SUITE: None
     ```
 
-3.  Track the installation process using the command below. Palette is ready when the deployments in the namespaces
+7.  Track the installation process using the command below. Palette is ready when the deployments in the namespaces
     `cp-system`, `hubble-system`, `ingress-nginx`, `jet-system` , and `ui-system` reach the _Ready_ state. The
     installation takes between two to three minutes to complete.
 
@@ -661,7 +661,7 @@ your environment. Reach out to our support team if you need assistance.
 
     :::
 
-4.  Create a DNS CNAME record that is mapped to the Palette `ingress-nginx-controller` load balancer. You can use the
+8.  Create a DNS CNAME record that is mapped to the Palette `ingress-nginx-controller` load balancer. You can use the
     following command to retrieve the load balancer IP address. You may require the assistance of your network
     administrator to create the DNS record.
 
@@ -679,7 +679,7 @@ your environment. Reach out to our support team if you need assistance.
 
     :::
 
-5.  Use the custom domain name or the IP address of the load balancer to visit the Palette system console. To access the
+9.  Use the custom domain name or the IP address of the load balancer to visit the Palette system console. To access the
     system console, open a web browser and paste the custom domain URL in the address bar and append the value
     `/system`. Replace the domain name in the URL with your custom domain name or the IP address of the load balancer.
     Alternatively, you can use the load balancer IP address with the appended value `/system` to access the system
@@ -691,7 +691,7 @@ your environment. Reach out to our support team if you need assistance.
 
     ![Screenshot of the Palette system console showing Username and Password fields.](/palette_installation_install-on-vmware_palette-system-console.webp)
 
-6.  Log in to the system console using the following default credentials. Refer to the
+10. Log in to the system console using the following default credentials. Refer to the
     [password requirements](../../system-management/account-management/credentials.md#password-requirements-and-security)
     documentation page to learn more about password requirements
 
@@ -706,7 +706,7 @@ your environment. Reach out to our support team if you need assistance.
     Refer to the [Account Management](../../system-management/account-management/account-management.md) documentation
     page for more information.
 
-7.  After login, a summary page is displayed. Palette is installed with a self-signed SSL certificate. To assign a
+11. After login, a summary page is displayed. Palette is installed with a self-signed SSL certificate. To assign a
     different SSL certificate you must upload the SSL certificate, SSL certificate key, and SSL certificate authority
     files to Palette. You can upload the files using the Palette system console. Refer to the
     [Configure HTTPS Encryption](../../system-management/ssl-certificate-management.md) page for instructions on how to

@@ -36,7 +36,7 @@ cluster’s etcd key-value store.
 ## Data In Transit Encryption
 
 Palette secures data in motion using an encrypted Transport Layer Security (TLS) communication channel for all internal
-and external interactions.<br /><br />
+and external interactions.
 
 - **End User Communication**: Public certificates are created using a cert-manager for external API/UI communication. In
   self-hosted deployments, you can import an optional certificate and private key to match the Fully Qualified Domain
