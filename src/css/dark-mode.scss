@@ -64,6 +64,15 @@ html[data-theme="dark"] {
     border-width: 0px;
   }
 
+  .menu__list-item-collapsible:has(.sidebar-category-title):hover {
+    background: var(--ifm-background-color) !important;
+    cursor: default;
+  }
+
+  .sidebar-category-title[class*="active_"] {
+    color: var(--ifm-color-primary);
+  }
+
   .menu__list-item-collapsible:hover {
     background: var(--ifm-dropdown-background-color);
   }
