@@ -328,8 +328,8 @@ in the AWS documentation under
 
    </Tabs>
 
-4. Cilium is used as the Container Network Interface (CNI) for hybrid nodes and requires
-   [additional firewall rules](https://docs.cilium.io/en/stable/operations/system_requirements/#firewall-rules) to allow
+4. Configure additional firewall rules for Cilium operation. Cilium is used as the Container Network Interface (CNI) for hybrid nodes and requires
+   [firewall rules](https://docs.cilium.io/en/stable/operations/system_requirements/#firewall-rules) to allow
    health checks, Virtual Extensible LAN (VXLAN) overlay, and etcd access.
 
    The following tables are example on-prem firewall rules for Cilium and assumes that hybrid nodes will act as worker
@@ -362,6 +362,9 @@ in the AWS documentation under
 
    </Tabs>
 
+5. Configure additional firewall rules for Palette SaaS operation, which requires inbound and outbound connectivity to Palette SaaS [services](../../../../../architecture/palette-public-ips.md)
+   and [ports](../../../../../architecture/networking-ports.md#network-ports).
+
 ### Validate
 
 1. Log in to your on-prem network management tool.
@@ -389,6 +392,8 @@ in the AWS documentation under
    ```
 
 ## Inter-Site Connectivity
+
+TBD
 
 ### Prerequisites
 
@@ -422,10 +427,19 @@ in the AWS documentation under
 
 2. TBD
 
+3. You should also configure Border Gateway Protocol (BGP) or static routes on your on-prem or edge location router to
+   ensure network traffic reaches the correct hybrid nodes. For static routing, this is explained in more detail during the
+   [Configure Hybrid Node Networking for VPN Solutions](../create-hybrid-node-pools.md#configure-hybrid-node-networking-for-vpn-solutions)
+   steps.
+
+4. A route must exist to send all traffic destined for the Amazon EKS VPC through a centralized VPN gateway, or
+   alternatively, a unique VPN server IP can be defined for each hybrid node during the
+   [Create Hybrid Node Pool](../create-hybrid-node-pools.md#create-hybrid-node-pool) steps.
+
 ### Validate
 
-1. If you have an available host deployed within the VLAN or subnet, SSH into the host, and attempt to reach
-   your AWS VPC gateway.
+1. If you have an available host deployed within the VLAN or subnet, SSH into the host, and attempt to reach your AWS
+   VPC gateway.
 
    Replace `<awsVpcGateway>` with the IP address of your AWS VPC gateway, for example, `10.100.0.1`.
 
@@ -448,8 +462,8 @@ in the AWS documentation under
    rtt min/avg/max/mdev = 27.5/28.2/29.1/0.6 ms
    ```
 
-2. If you have an EC2 instance available that has been deployed in your AWS VPC, attempt to reach an
-   available host deployed within the on-prem VLAN or subnet.
+2. If you have an EC2 instance available that has been deployed in your AWS VPC, attempt to reach an available host
+   deployed within the on-prem VLAN or subnet.
 
    Replace `<hostIpAddress>` with the IP address of your on-prem host, for example, `10.200.1.23`.
 

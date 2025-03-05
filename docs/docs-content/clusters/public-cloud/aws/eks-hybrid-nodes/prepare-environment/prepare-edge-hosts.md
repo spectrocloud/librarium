@@ -53,7 +53,7 @@ mode to manage configurations, updates, and workloads.
 
 - The edge host has outbound access to the internet.
 
-- The edge host has outbound connectivity to Spectro Cloud [services](../../../../../architecture/palette-public-ips.md)
+- The edge host has inbound and outbound connectivity to Palette SaaS [services](../../../../../architecture/palette-public-ips.md)
   and [ports](../../../../../architecture/networking-ports.md#network-ports).
 
   For example, if you have [netcat](https://linux.die.net/man/1/nc) installed, issue the following command on the edge
@@ -107,9 +107,9 @@ mode to manage configurations, updates, and workloads.
 
 #### Package Manager Index
 
-- Your edge host package manager must have an up-to-date package index. This is to ensure that dependency packages
-  for [`nodeadm`](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-nodeadm.html) can be successfully
-  downloaded and installed when [creating hybrid node pools](../create-hybrid-node-pools.md#create-hybrid-node-pool).
+- Your edge host package manager must have an up-to-date package index. This is to ensure that dependency packages for
+  [`nodeadm`](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-nodeadm.html) can be successfully downloaded
+  and installed when [creating hybrid node pools](../create-hybrid-node-pools.md#create-hybrid-node-pool).
 
   For example, on Ubuntu, you would issue the following command.
 
