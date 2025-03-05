@@ -9,7 +9,10 @@ toc_max_heading_level: 2
 sidebar_position: 20
 ---
 
-Palette communicates with workload clusters using [gRPC](https://grpc.io), a modern, high-performance remote procedure protocol framework built on HTTP/2 for sending and receiving data securely and quickly. With gRPC, communication between Palette's central management platform and your workload clusters remains efficient, secure, and reliable, even as your environment scales.
+Palette communicates with workload clusters using [gRPC](https://grpc.io), a modern, high-performance remote procedure
+protocol framework built on HTTP/2 for sending and receiving data securely and quickly. With gRPC, communication between
+Palette's central management platform and your workload clusters remains efficient, secure, and reliable, even as your
+environment scales.
 
 ## SaaS Network Communications and Ports
 

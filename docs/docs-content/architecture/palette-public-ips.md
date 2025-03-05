@@ -17,14 +17,14 @@ platform.
 
 | **IP Address** | **Region**      |
 | -------------- | --------------- |
-| 13.52.68.206 | South West U.S. |
+| 13.52.68.206   | South West U.S. |
 | 18.144.153.171 | South West U.S. |
 | 44.232.106.120 | North West U.S. |
-| 44.233.247.65 | North West U.S. |
-| 52.35.163.177 | North West U.S. |
-| 52.6.49.233 | North East U.S. |
-| 54.158.209.13 | North East U.S. |
-| 54.80.29.137 | North East U.S. |
+| 44.233.247.65  | North West U.S. |
+| 52.35.163.177  | North West U.S. |
+| 52.6.49.233    | North East U.S. |
+| 54.158.209.13  | North East U.S. |
+| 54.80.29.137   | North East U.S. |
 
 ## Palette Domains
 

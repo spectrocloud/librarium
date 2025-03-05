@@ -48,4 +48,7 @@ and external interactions.
 - **Database Communication**: The database connection between Palette internal services that are active in the
   management cluster and MongoDB is protected by TLS with Authentication enabled.
 
-- **Cluster Communication (gRPC)**: gRPC facilitates secure and efficient communication between the management platform and tenant clusters. gRPC connections are encrypted using TLS, ensuring data integrity and confidentiality. Each tenant cluster is assigned dedicated credentials to authenticate with the management platform, and strict authorization policies enforce message and data isolation across tenants.
+- **Cluster Communication (gRPC)**: gRPC facilitates secure and efficient communication between the management platform
+  and tenant clusters. gRPC connections are encrypted using TLS, ensuring data integrity and confidentiality. Each
+  tenant cluster is assigned dedicated credentials to authenticate with the management platform, and strict
+  authorization policies enforce message and data isolation across tenants.

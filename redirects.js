@@ -49,10 +49,7 @@ let redirects = [
     to: `/clusters/edge/`,
   },
   {
-    from: [
-      `/troubleshooting/palette-namespaces-podes/`,
-      `/architecture/palette-namespaces-podes/`,
-    ],
+    from: [`/troubleshooting/palette-namespaces-podes/`, `/architecture/palette-namespaces-podes/`],
     to: `/architecture/palette-namespaces-pods/`,
   },
   {

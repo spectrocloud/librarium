@@ -266,10 +266,10 @@ environment. Reach out to our support team if you need assistance.
 
     global:
       imagePullSecret:
-        create: false 
+        create: false
         # Provide your own base64 encoded dockerconfigjson value below if using ImagePullSecret for Private registry Authentication
-        dockerConfigJson: ""  
-    
+        dockerConfigJson: ""
+
     # MongoDB Configuration
     mongo:
       # Whether to deploy MongoDB in-cluster (internal == true) or use Mongo Atlas
@@ -289,7 +289,7 @@ environment. Reach out to our support team if you need assistance.
       storageClass: ""  # leave empty to use the default storage class
 
     config:
-      installationMode: "airgap" #values can be connected or airgap. 
+      installationMode: "airgap" #values can be connected or airgap.
 
       # SSO SAML Configuration (Optional for self-hosted type)
       sso:
@@ -320,8 +320,8 @@ environment. Reach out to our support team if you need assistance.
         # IMPORTANT: a DNS record must be created separately and it must be a wildcard to account for Organization prefixes
         # E.g., *.myfirstpalette.spectrocloud.com
         rootDomain: "vertex.example.com"
-    
-      # stableEndpointAccess is used when deploying EKS clusters in Private network type. 
+
+      # stableEndpointAccess is used when deploying EKS clusters in Private network type.
       # When your Saas installed instance have connectivity to the private VPC where you want to launch the cluster set the stableEndpointAccess to true
       cluster:
         stableEndpointAccess: false
@@ -364,7 +364,7 @@ environment. Reach out to our support team if you need assistance.
          mirrorRegistries: "docker.io::my-oci-registry.com/v2/spectro-images/docker.io,gcr.io::my-oci-registry.com/v2/spectro-images/gcr.io,ghcr.io::my-oci-registry.com/v2/spectro-images/ghcr.io,k8s.gcr.io::my-oci-registry.com/v2/spectro-images/k8s.gcr.io,registry.k8s.io::my-oci-registry.com/v2/spectro-images/registry.k8s.io,quay.io::my-oci-registry.com/v2/spectro-images/quay.io"  # See instructions below.
 
     # Instruction for mirrorRegistries.
-    # ---------------------------------- 
+    # ----------------------------------
     # Please provide the registry endpoint for the following registries, separated by double colons (::):
     # docker.io
     # gcr.io
@@ -408,7 +408,7 @@ environment. Reach out to our support team if you need assistance.
       enabled: true
 
       ingress:
-        # Whether to front NGINX Ingress Controller with a cloud 
+        # Whether to front NGINX Ingress Controller with a cloud
         # load balancer (internal == false) or use host network
         internal: false
 
@@ -477,10 +477,10 @@ environment. Reach out to our support team if you need assistance.
 
     global:
       imagePullSecret:
-        create: false 
+        create: false
         # Provide your own base64 encoded dockerconfigjson value below if using ImagePullSecret for Private registry Authentication
-        dockerConfigJson: ""  
-    
+        dockerConfigJson: ""
+
     # MongoDB Configuration
     mongo:
       # Whether to deploy MongoDB in-cluster (internal == true) or use Mongo Atlas
@@ -500,7 +500,7 @@ environment. Reach out to our support team if you need assistance.
       storageClass: ""  # leave empty to use the default storage class
 
     config:
-      installationMode: "airgap" #values can be connected or airgap. 
+      installationMode: "airgap" #values can be connected or airgap.
 
       # SSO SAML Configuration (Optional for self-hosted type)
       sso:
@@ -531,8 +531,8 @@ environment. Reach out to our support team if you need assistance.
         # IMPORTANT: a DNS record must be created separately and it must be a wildcard to account for Organization prefixes
         # E.g., *.myfirstpalette.spectrocloud.com
         rootDomain: "vertex.example.com"
-    
-      # stableEndpointAccess is used when deploying EKS clusters in Private network type. 
+
+      # stableEndpointAccess is used when deploying EKS clusters in Private network type.
       # When your Saas installed instance have connectivity to the private VPC where you want to launch the cluster set the stableEndpointAccess to true
       cluster:
         stableEndpointAccess: false
@@ -575,7 +575,7 @@ environment. Reach out to our support team if you need assistance.
          mirrorRegistries: "docker.io::public.ecr.aws/123456789/v2/spectro-images/docker.io,gcr.io::public.ecr.aws/123456789/v2/spectro-images/gcr.io,ghcr.io::public.ecr.aws/123456789/v2/spectro-images/ghcr.io,k8s.gcr.io::public.ecr.aws/123456789/v2/spectro-images/k8s.gcr.io,registry.k8s.io::public.ecr.aws/123456789/v2/spectro-images/registry.k8s.io,quay.io::public.ecr.aws/123456789/v2/spectro-images/quay.io"  # See instructions below.
 
     # Instruction for mirrorRegistries.
-    # ---------------------------------- 
+    # ----------------------------------
     # Please provide the registry endpoint for the following registries, separated by double colons (::):
     # docker.io
     # gcr.io
@@ -619,7 +619,7 @@ environment. Reach out to our support team if you need assistance.
       enabled: true
 
       ingress:
-        # Whether to front NGINX Ingress Controller with a cloud 
+        # Whether to front NGINX Ingress Controller with a cloud
         # load balancer (internal == false) or use host network
         internal: false
 

@@ -166,9 +166,9 @@ your environment. Reach out to our support team if you need assistance.
 
     global:
       imagePullSecret:
-        create: false 
+        create: false
         # Provide your own base64 encoded dockerconfigjson value below if using ImagePullSecret for Private registry Authentication
-      dockerConfigJson: ""  
+      dockerConfigJson: ""
 
     # MongoDB Configuration
     mongo:
@@ -378,9 +378,9 @@ your environment. Reach out to our support team if you need assistance.
 
     global:
       imagePullSecret:
-        create: false 
+        create: false
         # Provide your own base64 encoded dockerconfigjson value below if using ImagePullSecret for Private registry Authentication
-      dockerConfigJson: ""  
+      dockerConfigJson: ""
 
     # MongoDB Configuration
     mongo:
