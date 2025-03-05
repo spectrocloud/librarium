@@ -16,7 +16,9 @@ This guide explains how to create an EKS cluster with the required configuration
 - (Optional) The [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) is installed
   and configured for your account.
 
-- Network connectivity between your on-prem environments and AWS. Use the steps in [Prepare Network](./prepare-network.md) to help prepare your network environment prior to creating your EKS cluster. During cluster creation, you will need to provide the following information:
+- Network connectivity between your on-prem environments and AWS. Use the steps in
+  [Prepare Network](./prepare-network.md) to help prepare your network environment prior to creating your EKS cluster.
+  During cluster creation, you will need to provide the following information:
 
   - The configured AWS VPC and subnets, as well as the CIDR block for your AWS node network.
 
@@ -54,7 +56,7 @@ These steps use the AWS Management Console.
 8. On the **Specify networking** page, in the **Networking** section, select your Amazon EKS Hybrid VPC and subnets for
    **VPC** and **Subnets**.
 
-9.  For **Additional security groups**, select the security group created for your Amazon EKS Hybrid Nodes environment.
+9. For **Additional security groups**, select the security group created for your Amazon EKS Hybrid Nodes environment.
 
 10. For **Choose cluster IP address family**, ensure **IPv4** is selected.
 

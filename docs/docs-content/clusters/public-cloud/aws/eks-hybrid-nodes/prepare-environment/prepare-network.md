@@ -17,13 +17,15 @@ The three main areas you need to configure are:
 2. Remote Network Environment
 3. Inter-Site Connectivity
 
-This section provides common steps and example configurations for each of these areas. The following diagram provides a high-level example of a networking setup for Amazon EKS Hybrid Nodes.
+This section provides common steps and example configurations for each of these areas. The following diagram provides a
+high-level example of a networking setup for Amazon EKS Hybrid Nodes.
 
 ![Example Amazon EKS Hybrid Nodes network architecture](/eks-hybrid_prepare-environment_prepare-network_network-example.webp)
 
 ## AWS Region
 
-This section provides the steps and example configuration for your AWS network as described in the following AWS documentation:
+This section provides the steps and example configuration for your AWS network as described in the following AWS
+documentation:
 
 - [AWS Virtual Private Cloud (VPC) and subnet setup](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-networking.html#hybrid-nodes-networking-vpc)
 - [Cluster security group configuration](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-networking.html#hybrid-nodes-networking-cluster-sg)
@@ -42,8 +44,9 @@ This section provides the steps and example configuration for your AWS network a
   - Transit gateways
   - Virtual private gateways
   - Security groups
-  
-  Refer to [Amazon VPC policy examples](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-policy-examples.html) for guidance on Identity and Access Management (IAM) permissions.
+
+  Refer to [Amazon VPC policy examples](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-policy-examples.html) for
+  guidance on Identity and Access Management (IAM) permissions.
 
 ### Configure AWS Network
 
@@ -102,7 +105,10 @@ This section provides the steps and example configuration for your AWS network a
 7. Edit the main route table depending on whether your subnets will be private or public. The main route table is
    created automatically for the subnets within the VPC.
 
-   If you are wanting one private subnet _and_ one public subnet, follow the steps to edit the main route table for your private subnet first. Then, [create a custom route table](https://docs.aws.amazon.com/vpc/latest/userguide/WorkWithRouteTables.html#CustomRouteTable) for your VPC and configure it for your public subnet.
+   If you are wanting one private subnet _and_ one public subnet, follow the steps to edit the main route table for your
+   private subnet first. Then,
+   [create a custom route table](https://docs.aws.amazon.com/vpc/latest/userguide/WorkWithRouteTables.html#CustomRouteTable)
+   for your VPC and configure it for your public subnet.
 
    <Tabs queryString="subnet-type">
 
@@ -156,7 +162,12 @@ This section provides the steps and example configuration for your AWS network a
 
    </Tabs>
 
-8. [Create a security group](https://docs.aws.amazon.com/vpc/latest/userguide/creating-security-groups.html) for your VPC that contains the [necessary rules](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-networking.html#hybrid-nodes-networking-cluster-sg) to allow communication with your remote environment. This security group is added as an additional security group when creating your EKS cluster as guided during the [Prepare EKS Cluster](./prepare-eks-cluster.md#create-the-eks-cluster) steps.
+8. [Create a security group](https://docs.aws.amazon.com/vpc/latest/userguide/creating-security-groups.html) for your
+   VPC that contains the
+   [necessary rules](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-networking.html#hybrid-nodes-networking-cluster-sg)
+   to allow communication with your remote environment. This security group is added as an additional security group
+   when creating your EKS cluster as guided during the
+   [Prepare EKS Cluster](./prepare-eks-cluster.md#create-the-eks-cluster) steps.
 
    The following tables are an example configuration for the security group.
 
@@ -164,30 +175,30 @@ This section provides the steps and example configuration for your AWS network a
 
    <TabItem label="Basic Details" value="basic-details">
 
-   | Setting             | Example Value          |
-   | ------------------- | ---------------------- |
-   | **Security group name**        | `eks-hybrid-remote-rules-sg`       |
+   | Setting                    | Example Value                                 |
+   | -------------------------- | --------------------------------------------- |
+   | **Security group name**    | `eks-hybrid-remote-rules-sg`                  |
    | **Description (optional)** | "EKS Hybrid remote environment communication" |
-   | **VPC**       | `vpc-0518d3603257bf85d (eks-hybrid-vpc)`        |
-   | **Tags (optional)** | `Name` = `eks-hybrid-remote-rules-sg`     |
+   | **VPC**                    | `vpc-0518d3603257bf85d (eks-hybrid-vpc)`      |
+   | **Tags (optional)**        | `Name` = `eks-hybrid-remote-rules-sg`         |
 
    </TabItem>
 
    <TabItem label="Inbound Rules" value="inbound-rules">
 
-   | Type     | Protocol                  | Port Range | Source | Description (optional) |
-   | --------------- | ----------------------- | ------ | ---------- | --- |
-   | **HTTPS**     | TCP | 443 | `10.200.0.0/16` | "Remote Node CIDR Inbound"         |
-   | **HTTPS** | TCP     | 443 | `192.168.0.0/16`         | "Remote Pod CIDR Inbound" |
+   | Type      | Protocol | Port Range | Source           | Description (optional)     |
+   | --------- | -------- | ---------- | ---------------- | -------------------------- |
+   | **HTTPS** | TCP      | 443        | `10.200.0.0/16`  | "Remote Node CIDR Inbound" |
+   | **HTTPS** | TCP      | 443        | `192.168.0.0/16` | "Remote Pod CIDR Inbound"  |
 
    </TabItem>
 
    <TabItem label="Outbound Rules" value="outbound-rules">
 
-   | Type     | Protocol                  | Port Range | Destination | Description (optional) |
-   | --------------- | ----------------------- | ------ | ---------- | --- |
-   | **Custom TCP**     | TCP | `10250` | `10.200.0.0/16` | "Remote Node CIDR Outbound"         |
-   | **HTTPS** | TCP     | 443 | `192.168.0.0/16`         | "Remote Pod CIDR Webhook Outbound" |
+   | Type           | Protocol | Port Range | Destination      | Description (optional)             |
+   | -------------- | -------- | ---------- | ---------------- | ---------------------------------- |
+   | **Custom TCP** | TCP      | `10250`    | `10.200.0.0/16`  | "Remote Node CIDR Outbound"        |
+   | **HTTPS**      | TCP      | 443        | `192.168.0.0/16` | "Remote Pod CIDR Webhook Outbound" |
 
    </TabItem>
 
@@ -197,7 +208,8 @@ This section provides the steps and example configuration for your AWS network a
 
 1. Log in to [AWS](https://console.aws.amazon.com/).
 
-2. Check that your created network resources have a **State** of **Available** or **Attached** in your chosen region. A list of the expected resources is as follows:
+2. Check that your created network resources have a **State** of **Available** or **Attached** in your chosen region. A
+   list of the expected resources is as follows:
 
    - AWS VPC for your Amazon EKS cluster.
    - Two subnets within the AWS VPC.
@@ -212,100 +224,139 @@ This section provides the steps and example configuration for your AWS network a
 
 ## Remote Network Environment
 
-This section provides a high-level overview and example configuration for your remote network environment as described in the AWS documentation under [On-premises networking configuration](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-networking.html#hybrid-nodes-networking-on-prem).
+This section provides a high-level overview and example configuration for your remote network environment as described
+in the AWS documentation under
+[On-premises networking configuration](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-networking.html#hybrid-nodes-networking-on-prem).
 
 ### Prerequisites
 
-- Access to your on-prem/remote core network devices with sufficient privileges to create and modify network configurations. This includes the following:
+- Access to your on-prem/remote core network devices with sufficient privileges to create and modify network
+  configurations. This includes the following:
 
-  - Permissions to define or adjust IP address allocations in the on-premises environment to avoid CIDR overlap with AWS VPCs.
+  - Permissions to define or adjust IP address allocations in the on-premises environment to avoid CIDR overlap with AWS
+    VPCs.
 
-  - Permissions to configure or update firewall rules, NAT settings, and VPN/security policies.
-
-  - Permissions to adjust or introduce Border Gateway Protocol (BGP) or manage static routes that control traffic to and from AWS.
-
-  - If using an IPsec VPN or similar encrypted connection, permissions to generate, install, and rotate certificates or keys on the local network equipment.
-
-  - If you plan to use custom domain names or private hosted zones in AWS, permissions to edit DNS records or conditional forwarders in the local DNS infrastructure.
+  - Permissions to configure or update firewall rules and NAT settings.
 
 ### Configure Remote Network
 
-1. Configure your VLAN or subnet definitions to a suitable IP range for your hybrid nodes. See [On-premises node and pod CIDRs](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-networking.html#hybrid-nodes-networking-on-prem) for AWS requirements on CIDR blocks in remote networks.
+1. Configure your Virtual Local Area Network (VLAN) or subnet definitions to a suitable IP range for your hybrid nodes.
+   See
+   [On-premises node and pod CIDRs](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-networking.html#hybrid-nodes-networking-on-prem)
+   for AWS requirements on CIDR blocks in remote networks.
 
    - Example hybrid node CIDR block = `10.200.0.0/16`
      - Example hybrid node subnets = `10.200.0.0/24`, `10.200.1.0/24`
    - Example pod CIDR block = `192.168.0.0/16`
 
-2. Configure your NAT settings to allow outbound internet access from your hybrid nodes or, at a minimum, access to the necessary AWS services for [hybrid node installation and upgrade](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-networking.html#hybrid-nodes-networking-on-prem).
+2. Configure your NAT settings to allow outbound internet access from your hybrid nodes or, at a minimum, access to the
+   necessary AWS services for
+   [hybrid node installation and upgrade](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-networking.html#hybrid-nodes-networking-on-prem).
 
-   The following tables are an example list of enabled URLs in the `us-east-1` region. All endpoints are accessed with the `HTTPS` protocol on port `443`.
+   The following tables are an example list of enabled URLs in the `us-east-1` region. All endpoints are accessed with
+   the `HTTPS` protocol on port `443`.
 
    <Tabs queryString="on-prem-nat-example">
 
    <TabItem label="AWS Service Manager (SSM)" value="ssm">
 
-   | Service                    | Endpoint URL                                   |
-   |----------------------------|------------------------------------------------|
-   | Amazon EKS                 | https://hybrid-assets.eks.amazonaws.com            |
-   | Amazon EKS                 | https://eks.us-east-1.amazonaws.com      |
-   | Amazon ECR                 | https://api.ecr.us-east-1.amazonaws.com            |
-   | Amazon EKS ECR             | https://602401143452.dkr.ecr.us-east-1.amazonaws.com            |
-   | AWS Systems Manager (SSM)  | https://amazon-ssm-us-east-1.s3.us-east-1.amazonaws.com           |
-   | AWS Systems Manager (SSM)  | https://ssm.us-east-1.amazonaws.com            |
-   | (Optional) AWS Systems Manager (SSM)  | https://ec2messages.us-east-1.amazonaws.com |
-   | (Optional) Amazon CloudWatch Logs | https://logs.us-east-1.amazonaws.com |
-   | (Optional) Amazon S3 | https://s3.us-east-1.amazonaws.com |
+   | Service                              | Endpoint URL                                            |
+   | ------------------------------------ | ------------------------------------------------------- |
+   | Amazon EKS                           | https://hybrid-assets.eks.amazonaws.com                 |
+   | Amazon EKS                           | https://eks.us-east-1.amazonaws.com                     |
+   | Amazon ECR                           | https://api.ecr.us-east-1.amazonaws.com                 |
+   | Amazon EKS ECR                       | https://602401143452.dkr.ecr.us-east-1.amazonaws.com    |
+   | AWS Systems Manager (SSM)            | https://amazon-ssm-us-east-1.s3.us-east-1.amazonaws.com |
+   | AWS Systems Manager (SSM)            | https://ssm.us-east-1.amazonaws.com                     |
+   | (Optional) AWS Systems Manager (SSM) | https://ec2messages.us-east-1.amazonaws.com             |
+   | (Optional) Amazon CloudWatch Logs    | https://logs.us-east-1.amazonaws.com                    |
+   | (Optional) Amazon S3                 | https://s3.us-east-1.amazonaws.com                      |
 
    </TabItem>
 
    <TabItem label="AWS IAM Roles Anywhere" value="iam-ra">
 
-   | Service                    | Endpoint URL                                   |
-   |----------------------------|------------------------------------------------|
-   | Amazon EKS                 | https://hybrid-assets.eks.amazonaws.com            |
-   | Amazon EKS                 | https://eks.us-east-1.amazonaws.com      |
-   | Amazon ECR                 | https://api.ecr.us-east-1.amazonaws.com            |
-   | Amazon EKS ECR             | https://602401143452.dkr.ecr.us-east-1.amazonaws.com            |
-   | AWS IAM Roles Anywhere     | https://rolesanywhere.amazonaws.com     |
-   | AWS IAM Roles Anywhere        | https://rolesanywhere.us-east-1.amazonaws.com                       |
-   | (Optional) AWS IAM         | https://iam.amazonaws.com                         |
-   | (Optional) AWS Security Token Service (STS) | https://sts.us-east-1.amazonaws.com |
-   | (Optional) Amazon CloudWatch Logs | https://logs.us-east-1.amazonaws.com |
-   | (Optional) Amazon S3 | https://s3.us-east-1.amazonaws.com |
+   | Service                                     | Endpoint URL                                         |
+   | ------------------------------------------- | ---------------------------------------------------- |
+   | Amazon EKS                                  | https://hybrid-assets.eks.amazonaws.com              |
+   | Amazon EKS                                  | https://eks.us-east-1.amazonaws.com                  |
+   | Amazon ECR                                  | https://api.ecr.us-east-1.amazonaws.com              |
+   | Amazon EKS ECR                              | https://602401143452.dkr.ecr.us-east-1.amazonaws.com |
+   | AWS IAM Roles Anywhere                      | https://rolesanywhere.amazonaws.com                  |
+   | AWS IAM Roles Anywhere                      | https://rolesanywhere.us-east-1.amazonaws.com        |
+   | (Optional) AWS IAM                          | https://iam.amazonaws.com                            |
+   | (Optional) AWS Security Token Service (STS) | https://sts.us-east-1.amazonaws.com                  |
+   | (Optional) Amazon CloudWatch Logs           | https://logs.us-east-1.amazonaws.com                 |
+   | (Optional) Amazon S3                        | https://s3.us-east-1.amazonaws.com                   |
 
    </TabItem>
 
    </Tabs>
 
-3. Configure your firewall rules to allow node and pod communication with necessary AWS services as described in [Access required for ongoing cluster operations](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-networking.html#hybrid-nodes-networking-on-prem). Cilium is used as the hybrid node CNI and this requires [additional rules](https://docs.cilium.io/en/stable/operations/system_requirements/#firewall-rules) to allow health checks, Virtual Extensible LAN (VXLAN) overlay, and etcd access.
+3. Configure your firewall rules to allow node and pod communication with necessary AWS services as described in
+   [Access required for ongoing cluster operations](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-networking.html#hybrid-nodes-networking-on-prem).
 
-   The following tables are an example configuration for the firewall rules.
+   The following tables are example on-prem firewall rules for AWS services.
 
-   <Tabs queryString="on-prem-firewall-example">
+   <Tabs queryString="on-prem-firewall-aws">
 
    <TabItem label="Inbound Rules" value="inbound-rules">
 
-   | Protocols                  | Port Range | Source | Destination |
-   | ----------------------- | ------ | ---------- | --- |
-   | TCP | 10250 | `10.100.0.0/16` | `10.200.0.0/16`        |
-   | TCP     | 443 | `10.100.0.0/16`         | `192.168.0.0/16` |
-   | TCP, UDP     | 53 | `192.168.0.0/16`         | `192.168.0.0/16` |
-   | TCP, UDP     | 443 | `192.168.0.0/16`         | `192.168.0.0/16` |
+   | Protocols | Port Range | Source           | Destination      |
+   | --------- | ---------- | ---------------- | ---------------- |
+   | TCP       | 10250      | `10.100.0.0/16`  | `10.200.0.0/16`  |
+   | TCP       | 443        | `10.100.0.0/16`  | `192.168.0.0/16` |
+   | TCP, UDP  | 53         | `192.168.0.0/16` | `192.168.0.0/16` |
+   | TCP, UDP  | 443        | `192.168.0.0/16` | `192.168.0.0/16` |
 
    </TabItem>
 
    <TabItem label="Outbound Rules" value="outbound-rules">
 
-   | Protocols                  | Port Range | Source | Destination |
-   | ----------------------- | ------ | ---------- | --- |
-   | TCP | 443 | `10.200.0.0/16` | `10.100.0.0/16`        |
-   | TCP     | 443 | `192.168.0.0/16`         | `10.100.0.0/16` |
-   | TCP | 443 | `10.200.0.0/16` | `https://ssm.us-east-1.amazonaws.com`        |
-   | TCP     | 443 | `10.200.0.0/16`         | `https://rolesanywhere.us-east-1.amazonaws.com` |
-   | TCP | 443 | `192.168.0.0/16` | `https://sts.us-east-1.amazonaws.com`        |
-   | TCP     | 443 | `10.200.0.0/16`         | `https://eks.us-east-1.amazonaws.com` |
-   | TCP, UDP     | 53 | `192.168.0.0/16`         | `192.168.0.0/16` |
-   | TCP, UDP     | 443 | `192.168.0.0/16`         | `192.168.0.0/16` |
+   | Protocols | Port Range | Source           | Destination                                     |
+   | --------- | ---------- | ---------------- | ----------------------------------------------- |
+   | TCP       | 443        | `10.200.0.0/16`  | `10.100.0.0/16`                                 |
+   | TCP       | 443        | `192.168.0.0/16` | `10.100.0.0/16`                                 |
+   | TCP       | 443        | `10.200.0.0/16`  | `https://ssm.us-east-1.amazonaws.com`           |
+   | TCP       | 443        | `10.200.0.0/16`  | `https://rolesanywhere.us-east-1.amazonaws.com` |
+   | TCP       | 443        | `192.168.0.0/16` | `https://sts.us-east-1.amazonaws.com`           |
+   | TCP       | 443        | `10.200.0.0/16`  | `https://eks.us-east-1.amazonaws.com`           |
+   | TCP, UDP  | 53         | `192.168.0.0/16` | `192.168.0.0/16`                                |
+   | TCP, UDP  | 443        | `192.168.0.0/16` | `192.168.0.0/16`                                |
+
+   </TabItem>
+
+   </Tabs>
+
+4. Cilium is used as the Container Network Interface (CNI) for hybrid nodes and requires
+   [additional firewall rules](https://docs.cilium.io/en/stable/operations/system_requirements/#firewall-rules) to allow
+   health checks, Virtual Extensible LAN (VXLAN) overlay, and etcd access.
+
+   The following tables are example on-prem firewall rules for Cilium and assumes that hybrid nodes will act as worker
+   nodes with no VXLAN overlay.
+
+   <Tabs queryString="on-prem-firewall-cilium">
+
+   <TabItem label="Ingress Rules" value="ingress-rules">
+
+   | Protocols | Port Range       | Source          | Destination     | Description                                      |
+   | --------- | ---------------- | --------------- | --------------- | ------------------------------------------------ |
+   | TCP       | 4240             | `10.100.0.0/16` | `10.200.0.0/16` | AWS to hybrid `cilium-health` monitoring.        |
+   | TCP       | 4240             | `10.200.0.0/16` | `10.200.0.0/16` | Hybrid to hybrid `cilium-health` monitoring.     |
+   | ICMP      | Type 0/8, Code 0 | `10.100.0.0/16` | `10.200.0.0/16` | AWS to hybrid node pings for `cilium-health`.    |
+   | ICMP      | Type 0/8, Code 0 | `10.200.0.0/16` | `10.200.0.0/16` | Hybrid to hybrid node pings for `cilium-health`. |
+
+   </TabItem>
+
+   <TabItem label="Egress Rules" value="egress-rules">
+
+   | Protocols | Port Range       | Source          | Destination     | Description                                      |
+   | --------- | ---------------- | --------------- | --------------- | ------------------------------------------------ |
+   | TCP       | 4240             | `10.200.0.0/16` | `10.100.0.0/16` | Hybrid to AWS `cilium-health` monitoring.        |
+   | TCP       | 4240             | `10.200.0.0/16` | `10.200.0.0/16` | Hybrid to hybrid `cilium-health` monitoring.     |
+   | ICMP      | Type 0/8, Code 0 | `10.200.0.0/16` | `10.100.0.0/16` | Hybrid to AWS node pings for `cilium-health`.    |
+   | ICMP      | Type 0/8, Code 0 | `10.200.0.0/16` | `10.200.0.0/16` | Hybrid to hybrid node pings for `cilium-health`. |
+   | TCP       | 2379-2380        | `10.200.0.0/16` | `10.100.0.0/16` | Hybrid to AWS etcd access.                       |
 
    </TabItem>
 
@@ -313,18 +364,114 @@ This section provides a high-level overview and example configuration for your r
 
 ### Validate
 
-1. Check that your created on-premises network resources
+1. Log in to your on-prem network management tool.
 
-<!-- Describe the local environment, IP ranges, firewall settings, and DNS considerations. -->
+2. Check that the following network resources have been configured for hybrid nodes.
+
+   - VLAN or subnets defined for appropriate IP ranges for hybrid nodes.
+   - NAT settings for outbound access to AWS services.
+   - Firewall rules for AWS services and Cilium operations.
+
+3. (Optional) If you have an available host deployed within the VLAN or subnet, SSH into the host, and verify the host
+   can connect to the required AWS and Spectro Cloud services.
+
+   For example, if you have [netcat](https://linux.die.net/man/1/nc) installed, issue the following command on the edge
+   host to check whether the `eks.us-east-1.amazonaws.com` domain is accessible on port `443`.
+
+   ```bash
+   nc -z --verbose eks.us-east-1.amazonaws.com 443
+   ```
+
+   Example output, if successful.
+
+   ```shell
+   Connection to eks.us-east-1.amazonaws.com port 443 [tcp/https] succeeded!
+   ```
 
 ## Inter-Site Connectivity
 
+### Prerequisites
+
+- Access to your on-prem/remote core network devices with sufficient privileges to create and modify network
+  configurations. This includes the following:
+
+  - Permissions to configure or update VPN/security policies.
+
+  - Permissions to adjust or introduce Border Gateway Protocol (BGP) or manage static routes that control traffic to and
+    from AWS.
+
+  - If using an IPsec VPN or similar encrypted connection, permissions to generate, install, and rotate certificates or
+    keys on the local network equipment.
+
+### Configure Inter-Site Connectivity
+
 <!-- Provide details on typical VPN or AWS Direct Connect setups, including routing, BGP settings, and required IP address blocks. -->
 
-Depending on your AWS networking requirements, create either a [virtual private gateway](https://docs.aws.amazon.com/directconnect/latest/UserGuide/create-virtual-private-gateway.html) or [transit gateway](https://docs.aws.amazon.com/vpc/latest/tgw/create-tgw.html), and attach it to your VPC. Virtual private gateways are attached to a single VPC, whereas transit gateways can facilitate multiple VPCs.
+1. Depending on your AWS networking requirements, create either a
+   [virtual private gateway](https://docs.aws.amazon.com/directconnect/latest/UserGuide/create-virtual-private-gateway.html)
+   or [transit gateway](https://docs.aws.amazon.com/vpc/latest/tgw/create-tgw.html), and attach it to your VPC. Virtual
+   private gateways are attached to a single VPC, whereas transit gateways can facilitate multiple VPCs.
 
-:::important
+   :::important
 
-If you are planning to use AWS Direct Connect, ensure that you create the gateway in the [AWS Direct Connect console](https://console.aws.amazon.com/directconnect/v2/home). If using AWS Site-to-Site VPN, create the gateway in the [AWS VPC console](https://console.aws.amazon.com/vpc/).
+   If you are planning to use AWS Direct Connect, ensure that you create the gateway in the
+   [AWS Direct Connect console](https://console.aws.amazon.com/directconnect/v2/home). If using AWS Site-to-Site VPN,
+   create the gateway in the [AWS VPC console](https://console.aws.amazon.com/vpc/).
 
-:::
+   :::
+
+2. TBD
+
+### Validate
+
+1. If you have an available host deployed within the VLAN or subnet, SSH into the host, and attempt to reach
+   your AWS VPC gateway.
+
+   Replace `<awsVpcGateway>` with the IP address of your AWS VPC gateway, for example, `10.100.0.1`.
+
+   ```shell
+   ping <awsVpcGateway>
+   ```
+
+   Check that the ping statistics from the output show a healthy connection.
+
+   Example healthy output.
+
+   ```shell hideClipboard
+   PING 10.100.0.1 (10.100.0.1) 56(84) bytes of data.
+   64 bytes from 10.100.0.1: icmp_seq=1 ttl=64 time=27.5 ms
+   64 bytes from 10.100.0.1: icmp_seq=2 ttl=64 time=28.2 ms
+   64 bytes from 10.100.0.1: icmp_seq=3 ttl=64 time=29.1 ms
+   64 bytes from 10.100.0.1: icmp_seq=4 ttl=64 time=27.9 ms
+   --- 10.100.0.1 ping statistics ---
+   4 packets transmitted, 4 received, 0% packet loss, time 3999ms
+   rtt min/avg/max/mdev = 27.5/28.2/29.1/0.6 ms
+   ```
+
+2. If you have an EC2 instance available that has been deployed in your AWS VPC, attempt to reach an
+   available host deployed within the on-prem VLAN or subnet.
+
+   Replace `<hostIpAddress>` with the IP address of your on-prem host, for example, `10.200.1.23`.
+
+   ```shell
+   ping <hostIpAddress>
+   ```
+
+   Check that the ping statistics from the output show a healthy connection.
+
+   Example healthy output.
+
+   ```shell hideClipboard
+   PING 10.200.1.23 (10.200.1.23) 56(84) bytes of data.
+   64 bytes from 10.200.1.23: icmp_seq=1 ttl=64 time=27.5 ms
+   64 bytes from 10.200.1.23: icmp_seq=2 ttl=64 time=28.2 ms
+   64 bytes from 10.200.1.23: icmp_seq=3 ttl=64 time=29.1 ms
+   64 bytes from 10.200.1.23: icmp_seq=4 ttl=64 time=27.9 ms
+   --- 10.200.1.23 ping statistics ---
+   4 packets transmitted, 4 received, 0% packet loss, time 3999ms
+   rtt min/avg/max/mdev = 27.5/28.2/29.1/0.6 ms
+   ```
+
+## Next Steps
+
+Complete the remaining sections as highlighted in [Prepare Environment](./prepare-environment.md).
