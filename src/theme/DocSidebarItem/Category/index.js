@@ -112,39 +112,51 @@ export default function DocSidebarItemCategory({ item, onItemClick, activePath, 
           "menu__list-item-collapsible--active": isCurrentPage,
         })}
       >
-        <Link
-          className={clsx("menu__link", {
-            "menu__link--sublist": collapsible,
-            "menu__link--sublist-caret": !href && collapsible,
-            "menu__link--active": isActive,
-          })}
-          onClick={
-            collapsible
-              ? (e) => {
-                  onItemClick?.(item);
-                  if (href) {
-                    updateCollapsed(false);
-                  } else {
-                    e.preventDefault();
-                    updateCollapsed();
+        {href || collapsible ? (
+          <Link
+            className={clsx("menu__link", {
+              "menu__link--sublist": collapsible,
+              "menu__link--sublist-caret": !href && collapsible,
+              "menu__link--active": isActive,
+            })}
+            onClick={
+              collapsible
+                ? (e) => {
+                    onItemClick?.(item);
+                    if (href) {
+                      updateCollapsed(false);
+                    } else {
+                      e.preventDefault();
+                      updateCollapsed();
+                    }
                   }
-                }
-              : () => {
-                  onItemClick?.(item);
-                }
-          }
-          aria-current={isCurrentPage ? "page" : undefined}
-          aria-expanded={collapsible ? !collapsed : undefined}
-          href={collapsible ? hrefWithSSRFallback ?? "#" : hrefWithSSRFallback}
-          {...props}
-        >
-          {item?.customProps?.icon && (
-            <div className={`${styles.categoryItem} ${isActive ? styles.active : ""}`}>
-              <IconMapper type={item?.customProps?.icon}></IconMapper>
-            </div>
-          )}
-          {label}
-        </Link>
+                : () => {
+                    onItemClick?.(item);
+                  }
+            }
+            aria-current={isCurrentPage ? "page" : undefined}
+            aria-expanded={collapsible ? !collapsed : undefined}
+            href={href ? hrefWithSSRFallback : "#"}
+            {...props}
+          >
+            {item?.customProps?.icon && (
+              <div className={`${styles.categoryItem} ${isActive ? styles.active : ""}`}>
+                <IconMapper type={item?.customProps?.icon}></IconMapper>
+              </div>
+            )}
+            {label}
+          </Link>
+        ) : (
+          <span className={`menu__link sidebar-category-title ${isActive ? styles.active : ""}`}>
+            {item?.customProps?.icon && (
+              <div className={`${styles.categoryItem} ${isActive ? styles.active : ""}`}>
+                <IconMapper type={item?.customProps?.icon}></IconMapper>
+              </div>
+            )}
+            {label}
+          </span>
+        )}
+
         {href && collapsible && (
           <CollapseButton
             categoryLabel={label}
