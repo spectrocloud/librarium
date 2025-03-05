@@ -334,16 +334,16 @@ chart to use this option, otherwise, Palette VerteX will ignore the configuratio
 
 | **Parameters**                 | **Description**                                                                                                         | **Type** | **Default value**                                               |
 | ------------------------------ | ----------------------------------------------------------------------------------------------------------------------- | -------- | --------------------------------------------------------------- |
-| `imageSwapInitImage`           | The image swap init image.                                                                                              | String   | `gcr.io/spectro-images-public/thewebroot/imageswap-init:v1.5.2` |
-| `imageSwapImage`               | The image swap image.                                                                                                   | String   | `gcr.io/spectro-images-public/thewebroot/imageswap:v1.5.2`      |
+| `imageSwapInitImage`           | The image swap init image.                                                                                              | String   | `gcr.io/spectro-images-public/release/thewebroot/imageswap-init:v1.5.3-spectro-4.5.1` |
+| `imageSwapImage`               | The image swap image.                                                                                                   | String   | `gcr.io/spectro-images-public/release/thewebroot/imageswap:v1.5.3-spectro-4.5.1`      |
 | `imageSwapConfig`              | The image swap configuration for specific environments.                                                                 | String   | `""`                                                            |
 | `imageSwapConfig.isEKSCluster` | Specifies whether the cluster is an Amazon EKS cluster. Set to `false` if the Kubernetes cluster is not an EKS cluster. | Boolean  | `true`                                                          |
 
 ```yaml
 config:
   imageSwapImages:
-  imageSwapInitImage: "gcr.io/spectro-images-public/thewebroot/imageswap-init:v1.5.2"
-  imageSwapImage: "gcr.io/spectro-images-public/thewebroot/imageswap:v1.5.2"
+    imageSwapInitImage: "gcr.io/spectro-images-public/release/thewebroot/imageswap-init:v1.5.3-spectro-4.5.1"
+    imageSwapImage: "gcr.io/spectro-images-public/release/thewebroot/imageswap:v1.5.3-spectro-4.5.1"
 
   imageSwapConfig:
     isEKSCluster: true

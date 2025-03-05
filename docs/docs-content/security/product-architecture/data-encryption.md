@@ -48,7 +48,4 @@ and external interactions.<br /><br />
 - **Database Communication**: The database connection between Palette internal services that are active in the
   management cluster and MongoDB is protected by TLS with Authentication enabled.
 
-- **Message Bus**: A Secure Network Address Translation (NATS) message bus is used for asynchronous communication
-  between Palette management clusters and tenant clusters. NATS messages are exchanged using TLS protocol, and each
-  tenant cluster uses dedicated credentials to connect to the message bus. Authentication and authorization policies are
-  enforced in the NATS deployment to ensure message and data isolation across tenants.
+- **Cluster Communication (gRPC)**: gRPC facilitates secure and efficient communication between the management platform and tenant clusters. gRPC connections are encrypted using TLS, ensuring data integrity and confidentiality. Each tenant cluster is assigned dedicated credentials to authenticate with the management platform, and strict authorization policies enforce message and data isolation across tenants.

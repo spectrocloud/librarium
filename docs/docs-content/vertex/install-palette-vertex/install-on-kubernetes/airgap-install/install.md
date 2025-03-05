@@ -159,8 +159,8 @@ environment. Reach out to our support team if you need assistance.
     ```yaml hideClipboard
     config:
       imageSwapImages:
-        imageSwapInitImage: "my-oci-registry.com/spectro-images/gcr.io/spectro-images-public/release/thewebroot/imageswap-init:v1.5.2-spectro-4.1.1"
-        imageSwapImage: "my-oci-registry.com/spectro-images/gcr.io/spectro-images-public/release/thewebroot/imageswap:v1.5.2-spectro-4.1.1"
+        imageSwapInitImage: "my-oci-registry.com/spectro-images/gcr.io/spectro-images-public/release/thewebroot/imageswap-init:v1.5.3-spectro-4.5.1"
+        imageSwapImage: "my-oci-registry.com/spectro-images/gcr.io/spectro-images-public/release/thewebroot/imageswap:v1.5.3-spectro-4.5.1"
     ```
 
 6.  Update the `ociImageRegistry` section with the proper configuration values to your OCI registry. The
@@ -182,7 +182,7 @@ environment. Reach out to our support team if you need assistance.
       name: "Airgap Images OCI"
       password: ""
       username: ""
-      baseContentPath: "spectro-images" #
+      baseContentPath: "spectro-images"
       insecureSkipVerify: true
       caCert: ""
       mirrorRegistries: "docker.io::my-oci-registry.com/spectro-images/docker.io,gcr.io::my-oci-registry.com/spectro-images,ghcr.io::my-oci-registry.com/spectro-images/ghcr.io,k8s.gcr.io::my-oci-registry.com/spectro-images/k8s.gcr.io,registry.k8s.io::my-oci-registry.com/spectro-images/registry.k8s.io,quay.io::my-oci-registry.com/spectro-images/quay.io"
