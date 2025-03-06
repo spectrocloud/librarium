@@ -19,6 +19,18 @@ Palette agent divides the images into two categories in terms of when and from w
 The Palette agent decides on where to download the images from depending on whether you have specified an external
 registry and whether you have enabled a local Harbor registry on your cluster.
 
+## Primary Registry
+
+A primary registry is a local registry that runs on your cluster. After the initial download of images from other
+registries, all images except for infrastructure layer images will be uploaded to the primary registry. Subsequently,
+all requests for application images from the cluster will be made to the primary registry.
+
+A primary registry is required for disconnected Edge clusters. You can use any OCI-compliant registry as the primary
+registry. Palette provides you with an out-of-the-box configuration with Zot. For connected Edge clusters, a primary
+registry can still help you reduce network bandwidth usage and protect against outages.
+
+For more information, refer to [Enable Local Harbor Image Registry](./local-registry.md).
+
 ## Provider Image Registry
 
 Provider images are always downloaded first by the Palette agent. You are required to provide the location of the
@@ -52,13 +64,6 @@ If you want to use a private image registry for applications on your Edge cluste
 download images from an _authenticated external registry_. You can specify an external registry in the user-data used to
 build your Edge Installer ISO. For more information on how to deploy a cluster with an authenticated external registry,
 refer to [Deploy Cluster with a Private External Registry](./deploy-external-registry.md).
-
-## Local Harbor Registry
-
-A local Harbor registry is a local registry that runs on your cluster. After the initial download of images from other
-registries, all images except for infrastructure layer images will be uploaded to the Harbor registry. Subsequently, all
-requests for application images from the cluster will be made to the Harbor registry. For more information, refer to
-[Enable Local Harbor Image Registry](./local-registry.md).
 
 ## Limitations
 
