@@ -96,15 +96,6 @@ For on-prem and edge VPNs, set up IPsec Phase 1 tunnels with Phase 2 security as
 - Hybrid Node pod CIDR to EKS VPC CIDR.  
   For example, Hybrid Node Pod CIDR 192.168.0.0/16 → EKS VPC CIDR 10.100.0.0/16.
 
-You should also configure Border Gateway Protocol (BGP) or static routes on your on-prem or edge location router to
-ensure network traffic reaches the correct hybrid nodes. For static routing, this is explained in more detail during the
-[Configure Hybrid Node Networking for VPN Solutions](./create-hybrid-node-pools.md#configure-hybrid-node-networking-for-vpn-solutions)
-steps.
-
-A route must exist to send all traffic destined for the Amazon EKS VPC through a centralized VPN gateway, or
-alternatively, a unique VPN server IP can be defined for each hybrid node during the
-[Create Hybrid Node Pool](./create-hybrid-node-pools.md#create-hybrid-node-pool) steps.
-
 ## Operating System Compatibility
 
 Palette supports the same operating systems as AWS. Refer to
@@ -137,6 +128,7 @@ Palette supports the following authentication methods for your hybrid nodes:
     requiring a CA-signed certificate.
 
 - [AWS Identity and Access Management (IAM) Roles Anywhere](https://docs.aws.amazon.com/rolesanywhere/latest/userguide/introduction.html)
+
   - IAM Roles Anywhere is not supported on some operating systems. Refer to the
     [Operating system considerations](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-os.html#_operating_system_considerations)
     for up-to-date guidance.

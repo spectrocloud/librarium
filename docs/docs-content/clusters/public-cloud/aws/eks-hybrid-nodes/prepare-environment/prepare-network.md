@@ -17,10 +17,16 @@ The three main areas you need to configure are:
 2. Remote Network Environment
 3. Inter-Site Connectivity
 
-This section provides common steps and example configurations for each of these areas. The following diagram provides a
+This article provides common steps and example configurations for each of these areas. The following diagram provides a
 high-level example of a networking setup for Amazon EKS Hybrid Nodes.
 
 ![Example Amazon EKS Hybrid Nodes network architecture](/eks-hybrid_prepare-environment_prepare-network_network-example.webp)
+
+:::warning
+
+The information in this article is provided as general guidance and example configuration only. It may not suit the specific requirements of your environment nor does it cover every possible scenario. Please ensure you tailor and test the settings to meet your specific environment requirements.
+
+:::
 
 ## AWS Region
 
@@ -41,8 +47,6 @@ documentation:
   - Internet gateways
   - Network Address Translation (NAT) gateways
     - Elastic IPs
-  - Transit gateways
-  - Virtual private gateways
   - Security groups
 
   Refer to [Amazon VPC policy examples](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-policy-examples.html) for
@@ -224,7 +228,7 @@ documentation:
 
 ## Remote Network Environment
 
-This section provides a high-level overview and example configuration for your remote network environment as described
+This section provides high-level steps and example configuration for your remote network environment as described
 in the AWS documentation under
 [On-premises networking configuration](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-networking.html#hybrid-nodes-networking-on-prem).
 
@@ -302,27 +306,47 @@ in the AWS documentation under
 
    <TabItem label="Inbound Rules" value="inbound-rules">
 
-   | Protocols | Port Range | Source           | Destination      |
-   | --------- | ---------- | ---------------- | ---------------- |
-   | TCP       | 10250      | `10.100.0.0/16`  | `10.200.0.0/16`  |
-   | TCP       | 443        | `10.100.0.0/16`  | `192.168.0.0/16` |
-   | TCP, UDP  | 53         | `192.168.0.0/16` | `192.168.0.0/16` |
-   | TCP, UDP  | 443        | `192.168.0.0/16` | `192.168.0.0/16` |
+   | Protocols | Port Range | Source           | Destination      | Description                                      |
+   | --------- | ---------- | ---------------- | ---------------- | --- |
+   | TCP       | 10250      | `10.100.0.0/16`  | `10.200.0.0/16`  | Amazon EKS cluster to hybrid nodes. |
+   | TCP       | 443        | `10.100.0.0/16`  | `192.168.0.0/16` | Amazon EKS cluster to hybrid pods. |
+   | TCP, UDP  | 53         | `192.168.0.0/16` | `192.168.0.0/16` | Hybrid pods to [CoreDNS](https://docs.aws.amazon.com/eks/latest/userguide/managing-coredns.html). |
+   | TCP, UDP  | 443        | `192.168.0.0/16` | `192.168.0.0/16` | Hybrid pod to hybrid pod application port. |
 
    </TabItem>
 
    <TabItem label="Outbound Rules" value="outbound-rules">
 
-   | Protocols | Port Range | Source           | Destination                                     |
-   | --------- | ---------- | ---------------- | ----------------------------------------------- |
-   | TCP       | 443        | `10.200.0.0/16`  | `10.100.0.0/16`                                 |
-   | TCP       | 443        | `192.168.0.0/16` | `10.100.0.0/16`                                 |
-   | TCP       | 443        | `10.200.0.0/16`  | `https://ssm.us-east-1.amazonaws.com`           |
-   | TCP       | 443        | `10.200.0.0/16`  | `https://rolesanywhere.us-east-1.amazonaws.com` |
-   | TCP       | 443        | `192.168.0.0/16` | `https://sts.us-east-1.amazonaws.com`           |
-   | TCP       | 443        | `10.200.0.0/16`  | `https://eks.us-east-1.amazonaws.com`           |
-   | TCP, UDP  | 53         | `192.168.0.0/16` | `192.168.0.0/16`                                |
-   | TCP, UDP  | 443        | `192.168.0.0/16` | `192.168.0.0/16`                                |
+   <Tabs>
+
+   <TabItem label="AWS Service Manager (SSM)" value="ssm">
+
+   | Protocols | Port Range | Source           | Destination                                     | Description                                      |
+   | --------- | ---------- | ---------------- | ----------------------------------------------- | --- |
+   | TCP       | 443        | `10.200.0.0/16`  | `10.100.0.0/16`                                 | Hybrid nodes to Amazon EKS cluster. |
+   | TCP       | 443        | `192.168.0.0/16` | `10.100.0.0/16`                                 | Hybrid pods to Amazon EKS cluster. |
+   | TCP       | 443        | `10.200.0.0/16`  | `https://ssm.us-east-1.amazonaws.com`           | Hybrid nodes to AWS SSM. |
+   | TCP       | 443        | `10.200.0.0/16`  | `https://eks.us-east-1.amazonaws.com`           | Hybrid nodes to [Amazon EKS Pod Identity](https://docs.aws.amazon.com/eks/latest/userguide/pod-identities.html) |
+   | TCP, UDP  | 53         | `192.168.0.0/16` | `192.168.0.0/16`                                | [CoreDNS](https://docs.aws.amazon.com/eks/latest/userguide/managing-coredns.html) to hybrid pods. |
+   | TCP, UDP  | 443        | `192.168.0.0/16` | `192.168.0.0/16`                                | Hybrid pod to hybrid pod application port. |
+
+   </TabItem>
+
+   <TabItem label="AWS IAM Roles Anywhere" value="iam-ra">
+
+   | Protocols | Port Range | Source           | Destination                                     | Description                                      |
+   | --------- | ---------- | ---------------- | ----------------------------------------------- | --- |
+   | TCP       | 443        | `10.200.0.0/16`  | `10.100.0.0/16`                                 | Hybrid nodes to Amazon EKS cluster. |
+   | TCP       | 443        | `192.168.0.0/16` | `10.100.0.0/16`                                 | Hybrid pods to Amazon EKS cluster. |
+   | TCP       | 443        | `10.200.0.0/16`  | `https://rolesanywhere.us-east-1.amazonaws.com` | Hybrid nodes to AWS IAM Roles Anywhere. |
+   | TCP       | 443        | `192.168.0.0/16` | `https://sts.us-east-1.amazonaws.com`           | Hybrid pods to AWS STS. |
+   | TCP       | 443        | `10.200.0.0/16`  | `https://eks.us-east-1.amazonaws.com`           | Hybrid nodes to [Amazon EKS Pod Identity](https://docs.aws.amazon.com/eks/latest/userguide/pod-identities.html) |
+   | TCP, UDP  | 53         | `192.168.0.0/16` | `192.168.0.0/16`                                | [CoreDNS](https://docs.aws.amazon.com/eks/latest/userguide/managing-coredns.html) to hybrid pods. |
+   | TCP, UDP  | 443        | `192.168.0.0/16` | `192.168.0.0/16`                                | Hybrid pod to hybrid pod application port. |
+
+   </TabItem>
+
+   </Tabs>
 
    </TabItem>
 
@@ -333,30 +357,30 @@ in the AWS documentation under
    health checks, Virtual Extensible LAN (VXLAN) overlay, and etcd access.
 
    The following tables are example on-prem firewall rules for Cilium and assumes that hybrid nodes will act as worker
-   nodes with no VXLAN overlay.
+   nodes without VXLAN overlay networking.
 
    <Tabs queryString="on-prem-firewall-cilium">
 
    <TabItem label="Ingress Rules" value="ingress-rules">
 
-   | Protocols | Port Range       | Source          | Destination     | Description                                      |
+   | Protocol | Port Range       | Source          | Destination     | Description                                      |
    | --------- | ---------------- | --------------- | --------------- | ------------------------------------------------ |
-   | TCP       | 4240             | `10.100.0.0/16` | `10.200.0.0/16` | AWS to hybrid `cilium-health` monitoring.        |
-   | TCP       | 4240             | `10.200.0.0/16` | `10.200.0.0/16` | Hybrid to hybrid `cilium-health` monitoring.     |
+   | TCP       | 4240             | `10.100.0.0/16` | `10.200.0.0/16` | AWS to hybrid node for `cilium-health` monitoring.        |
+   | TCP       | 4240             | `10.200.0.0/16` | `10.200.0.0/16` | Hybrid node to hybrid node for `cilium-health` monitoring.     |
    | ICMP      | Type 0/8, Code 0 | `10.100.0.0/16` | `10.200.0.0/16` | AWS to hybrid node pings for `cilium-health`.    |
-   | ICMP      | Type 0/8, Code 0 | `10.200.0.0/16` | `10.200.0.0/16` | Hybrid to hybrid node pings for `cilium-health`. |
+   | ICMP      | Type 0/8, Code 0 | `10.200.0.0/16` | `10.200.0.0/16` | Hybrid node to hybrid node pings for `cilium-health`. |
 
    </TabItem>
 
    <TabItem label="Egress Rules" value="egress-rules">
 
-   | Protocols | Port Range       | Source          | Destination     | Description                                      |
+   | Protocol | Port Range       | Source          | Destination     | Description                                      |
    | --------- | ---------------- | --------------- | --------------- | ------------------------------------------------ |
-   | TCP       | 4240             | `10.200.0.0/16` | `10.100.0.0/16` | Hybrid to AWS `cilium-health` monitoring.        |
-   | TCP       | 4240             | `10.200.0.0/16` | `10.200.0.0/16` | Hybrid to hybrid `cilium-health` monitoring.     |
-   | ICMP      | Type 0/8, Code 0 | `10.200.0.0/16` | `10.100.0.0/16` | Hybrid to AWS node pings for `cilium-health`.    |
-   | ICMP      | Type 0/8, Code 0 | `10.200.0.0/16` | `10.200.0.0/16` | Hybrid to hybrid node pings for `cilium-health`. |
-   | TCP       | 2379-2380        | `10.200.0.0/16` | `10.100.0.0/16` | Hybrid to AWS etcd access.                       |
+   | TCP       | 4240             | `10.200.0.0/16` | `10.100.0.0/16` | Hybrid node to AWS for `cilium-health` monitoring.        |
+   | TCP       | 4240             | `10.200.0.0/16` | `10.200.0.0/16` | Hybrid node to hybrid node for `cilium-health` monitoring.     |
+   | ICMP      | Type 0/8, Code 0 | `10.200.0.0/16` | `10.100.0.0/16` | Hybrid node to AWS pings for `cilium-health`.    |
+   | ICMP      | Type 0/8, Code 0 | `10.200.0.0/16` | `10.200.0.0/16` | Hybrid node to hybrid node pings for `cilium-health`. |
+   | TCP       | 2379-2380        | `10.200.0.0/16` | `10.100.0.0/16` | Hybrid node to Amazon EKS for etcd access.                       |
 
    </TabItem>
 
@@ -367,7 +391,7 @@ in the AWS documentation under
 
 ### Validate
 
-1. Log in to your on-prem network management tool.
+1. Log in to your on-prem network device or management tool.
 
 2. Check that the following network resources have been configured for hybrid nodes.
 
@@ -393,20 +417,35 @@ in the AWS documentation under
 
 ## Inter-Site Connectivity
 
-TBD
+This section provides high-level steps and example configuration for your inter-site connectivity between AWS and an on-prem/remote environment.
 
 ### Prerequisites
+
+- An AWS account with permissions to view, create, and modify the following resources:
+
+  - Route tables
+  - Transit gateways or Virtual private gateways, or both
+  - Security groups
+  - Customer gateway
+  - Site-to-Site VPN or Direct Connect
+
+  Refer to [Amazon VPC policy examples](https://docs.aws.amazon.com/vpc/latest/userguide/vpc-policy-examples.html) for
+  guidance on Identity and Access Management (IAM) permissions.
 
 - Access to your on-prem/remote core network devices with sufficient privileges to create and modify network
   configurations. This includes the following:
 
-  - Permissions to configure or update VPN/security policies.
+  - If using a VPN, permissions to configure or update IPsec tunnels/security policies.
+
+  - If using an IPsec VPN or similar encrypted connection, permissions to generate, install, and rotate certificates or
+    keys on the local network equipment.
+
+  - If using a VPN, permissions to update firewall rules for VPN ports.
 
   - Permissions to adjust or introduce Border Gateway Protocol (BGP) or manage static routes that control traffic to and
     from AWS.
 
-  - If using an IPsec VPN or similar encrypted connection, permissions to generate, install, and rotate certificates or
-    keys on the local network equipment.
+- The network connectivity between AWS and on-prem/remote environment meets the recommended [minimum network requirements](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-networking.html#hybrid-nodes-networking-on-prem).
 
 ### Configure Inter-Site Connectivity
 
@@ -425,16 +464,67 @@ TBD
 
    :::
 
-2. TBD
+2. If using a VPN, on your on-prem/remote VPN gateway, configure your IPsec tunnels to establish a connection to your AWS Site-to-Site VPN.
 
-3. You should also configure Border Gateway Protocol (BGP) or static routes on your on-prem or edge location router to
-   ensure network traffic reaches the correct hybrid nodes. For static routing, this is explained in more detail during the
-   [Configure Hybrid Node Networking for VPN Solutions](../create-hybrid-node-pools.md#configure-hybrid-node-networking-for-vpn-solutions)
-   steps.
+   Examples go here.
 
-4. A route must exist to send all traffic destined for the Amazon EKS VPC through a centralized VPN gateway, or
-   alternatively, a unique VPN server IP can be defined for each hybrid node during the
-   [Create Hybrid Node Pool](../create-hybrid-node-pools.md#create-hybrid-node-pool) steps.
+3. If using a VPN, configure your on-prem/remote firewall rules to allow VPN traffic. You will need to configure rules for each IPsec tunnel.
+
+   The following tables describe example firewall rules where `52.44.108.101` and `3.225.148.144` are example **Outside IP Address** entries for AWS Site-to-Site VPN Tunnels.
+
+   <Tabs queryString="on-prem-vpn-firewall-rules">
+
+   <TabItem label="Inbound Rules" value="inbound-rules">
+
+   | Protocol  | Port  | Source        | Description |
+   |--------------|---------|--------------------|------------|
+   | UDP         | 1194    | `52.44.108.101`, `3.225.148.144` | OpenVPN traffic. |
+   | UDP         | 500     | `52.44.108.101`, `3.225.148.144`  | IKE Phase 1 for IPsec VPN. |
+   | UDP         | 4500    | `52.44.108.101`, `3.225.148.144`  | NAT-Traversal (NAT-T) for IPsec VPN. |
+   | ESP (IP 50) | N/A | `52.44.108.101`, `3.225.148.144` | Encapsulating Security Payload (ESP) for IPsec data encryption. |
+   | AH (IP 51) | N/A | `52.44.108.101`, `3.225.148.144` | Authentication Header (AH) for IPsec. |
+
+   </TabItem>
+
+   <TabItem label="Outbound Rules" value="outbound-rules">
+
+   | Protocol  | Port  | Destination     | Description |
+   |--------------|---------|----------------|------------|
+   | UDP         | 1194    | `52.44.108.101`, `3.225.148.144` | OpenVPN traffic. |
+   | UDP         | 500     | `52.44.108.101`, `3.225.148.144` | IKE Phase 1 for IPsec VPN. |
+   | UDP         | 4500    | `52.44.108.101`, `3.225.148.144` | NAT-Traversal (NAT-T) for IPsec VPN. |
+   | ESP (IP 50) | N/A | `52.44.108.101`, `3.225.148.144` | Encapsulating Security Payload (ESP) for IPsec data encryption. |
+   | AH (IP 51) | N/A | `52.44.108.101`, `3.225.148.144` | Authentication Header (AH) for IPsec. |
+
+   </TabItem>
+
+   </Tabs>
+
+   If your on-premises firewall is also doing NAT, confirm that the appropriate NAT exemptions or policies, such as IPsec passthrough, are configured so that IPsec traffic is not inadvertently translated.
+
+4. Configure your on-prem/remote router to ensure network traffic reaches the correct hybrid nodes.
+
+   <Tabs queryString="on-prem-inter-site-routing">
+
+   <TabItem label="Border Gateway Protocol (BGP)" value="bgp">
+
+   - Configure BGP on your on-premises router to establish dynamic routing with AWS.
+   - AWS Site-to-Site VPN supports BGP over IPsec to automatically exchange routes between the on-prem network and AWS.
+   - Ensure that the on-prem router is advertising its internal network(s) to AWS and accepting AWS VPC CIDR routes via BGP to direct traffic correctly.
+
+   </TabItem>
+
+   <TabItem label="Static Routing" value="static">
+
+   - Static routes are configured during the [Configure Hybrid Node Networking for VPN Solutions](../create-hybrid-node-pools.md#configure-hybrid-node-networking-for-vpn-solutions) steps.
+   - Define static routes that point the Amazon EKS VPC CIDR to the VPN tunnel endpoint(s).
+   - Optionally, you can define a unique VPN server IP for each hybrid node during the [Create Hybrid Node Pool](../create-hybrid-node-pools.md#create-hybrid-node-pool) steps to maintain granular routing control.
+
+   </TabItem>
+
+   </Tabs>
+
+   In both BGP and static routing scenarios, a route must exist to send all Amazon EKS VPC-bound traffic through a centralized VPN gateway.
 
 ### Validate
 
