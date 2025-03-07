@@ -14,7 +14,7 @@
     width: 24px;
     height: 24px;
     border-radius: 50%;
-    background: #2682fa;
+    background: var(--ifm-color-primary);
     box-shadow:
       0 0 10px rgba(0, 0, 0, 0.3),
       inset 0 1px 0 rgba(255, 255, 255, 0.3);
@@ -35,7 +35,7 @@
       animation: pulse 1s infinite;
     }
     &.isVisited {
-      background: #475f74;
+      background: var(--ifm-color-primary-darker);
       &::after {
         animation: none;
       }
@@ -49,15 +49,15 @@
 @keyframes pulse {
   0% {
     transform: scale(1);
-    box-shadow: inset 0 0 1px 1px rgba(38, 130, 250, 0.8);
+    box-shadow: inset 0 0 1px 1px var(--ifm-color-primary-dark);
   }
 
   50% {
-    box-shadow: inset 0 0 1px 1px rgba(38, 130, 250, 0.8);
+    box-shadow: inset 0 0 1px 1px var(--ifm-color-primary-dark);
   }
 
   100% {
     transform: scale(1.6);
-    box-shadow: inset 0 0 1px 1px rgba(38, 130, 250, 0);
+    box-shadow: inset 0 0 1px 1px var(--ifm-color-primary-dark);
   }
 }
