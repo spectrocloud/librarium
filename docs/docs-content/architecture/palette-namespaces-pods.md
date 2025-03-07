@@ -31,7 +31,7 @@ The following table gives the namespace to pod mapping for Palette Tenant Cluste
 |                     | capi-kubeadm-control-plane-controller-manager-< UUID > |
 |                     | capv-controller-manager-< UUID >                       |
 |                     | cluster-management-agent-< UUID >                      |
-| cluster-< UUID >    | metrics-server-< UUID >                                |
+|                     | metrics-server-< UUID >                                |
 |                     | palette-controller-manager-< UUID >                    |
 | kube-system         | calico-kube-controllers-< UUID >                       |
 |                     | calico-node-< UUID >                                   |
@@ -137,5 +137,4 @@ The following table gives the namespace to pod mapping for Palette On-Prem Enter
 |                       | vsphere-csi-controller-df< UUID >                        |
 |                       | vsphere-csi-node-< UUID >                                |
 |                       | vsphere-csi-node-rhm< UUID >                             |
-| nats-system           | nas-< UUID >                                             |
 | ui-system             | spectro-ui-< UUID >                                      |

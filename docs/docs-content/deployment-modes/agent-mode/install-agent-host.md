@@ -279,9 +279,6 @@ Palette. You will then create a cluster profile and use the registered host to d
         # Allow inbound/outbound traffic to port 443 (HTTPS)
         firewall-cmd --permanent --zone="$ZONE" --add-port=443/tcp
 
-        # Allow inbound/outbound traffic to port 4222 (NATS)
-        firewall-cmd --permanent --zone="$ZONE" --add-port=4222/tcp
-
         # Allow NAT traffic
         firewall-cmd --permanent --add-masquerade
 

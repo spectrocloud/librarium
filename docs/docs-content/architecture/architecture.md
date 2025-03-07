@@ -22,7 +22,7 @@ about Palette's architecture and the various components that make up the model, 
 
 - [Provisioning Order of Operations](orchestration-spectrocloud.md)
 
-- [Namespaces and Pods](palette-namespaces-podes.md)
+- [Namespaces and Pods](palette-namespaces-pods.md)
 
 - [Network Ports](networking-ports.md)
 

@@ -313,45 +313,21 @@ You can configure Palette to use image swap to download the required images. Thi
 and it is only required for air-gapped deployments. You must also install the Palette Image Swap Helm chart to use this
 option, otherwise, Palette will ignore the configuration.
 
-| **Parameters**                 | **Description**                                                                                                         | **Type** | **Default value**                                               |
-| ------------------------------ | ----------------------------------------------------------------------------------------------------------------------- | -------- | --------------------------------------------------------------- |
-| `imageSwapInitImage`           | The image swap init image.                                                                                              | String   | `gcr.io/spectro-images-public/thewebroot/imageswap-init:v1.5.2` |
-| `imageSwapImage`               | The image swap image.                                                                                                   | String   | `gcr.io/spectro-images-public/thewebroot/imageswap:v1.5.2`      |
-| `imageSwapConfig`              | The image swap configuration for specific environments.                                                                 | String   | `""`                                                            |
-| `imageSwapConfig.isEKSCluster` | Specifies whether the cluster is an Amazon EKS cluster. Set to `false` if the Kubernetes cluster is not an EKS cluster. | Boolean  | `true`                                                          |
+| **Parameters**                 | **Description**                                                                                                         | **Type** | **Default value**                                                                     |
+| ------------------------------ | ----------------------------------------------------------------------------------------------------------------------- | -------- | ------------------------------------------------------------------------------------- |
+| `imageSwapInitImage`           | The image swap init image.                                                                                              | String   | `gcr.io/spectro-images-public/release/thewebroot/imageswap-init:v1.5.3-spectro-4.5.1` |
+| `imageSwapImage`               | The image swap image.                                                                                                   | String   | `gcr.io/spectro-images-public/release/thewebroot/imageswap:v1.5.3-spectro-4.5.1`      |
+| `imageSwapConfig`              | The image swap configuration for specific environments.                                                                 | String   | `""`                                                                                  |
+| `imageSwapConfig.isEKSCluster` | Specifies whether the cluster is an Amazon EKS cluster. Set to `false` if the Kubernetes cluster is not an EKS cluster. | Boolean  | `true`                                                                                |
 
 ```yaml
 config:
   imageSwapImages:
-  imageSwapInitImage: "gcr.io/spectro-images-public/thewebroot/imageswap-init:v1.5.2"
-  imageSwapImage: "gcr.io/spectro-images-public/thewebroot/imageswap:v1.5.2"
+    imageSwapInitImage: "gcr.io/spectro-images-public/release/thewebroot/imageswap-init:v1.5.3-spectro-4.5.1"
+    imageSwapImage: "gcr.io/spectro-images-public/release/thewebroot/imageswap:v1.5.3-spectro-4.5.1"
 
   imageSwapConfig:
     isEKSCluster: true
-```
-
-## NATS
-
-Palette uses [NATS](https://nats.io) and gRPC for communication between Palette components. Dual support for NATS and
-gRPC is available. You can enable the deployment of an additional load balancer for NATS. Host clusters deployed by
-Palette use the load balancer to communicate with the Palette control plane. This is an advanced configuration option
-and is not required for most deployments. Speak with your support representative before enabling this option.
-
-| **Parameters**      | **Description**                                                                                                                                                                                                                                                                                                                                    | **Type** | **Default value** |
-| ------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- | ----------------- |
-| `nats.enabled`      | Specifies whether to enable the deployment of a NATS load balancer.                                                                                                                                                                                                                                                                                | Boolean  | `true`            |
-| `nats.internal`     | Specifies whether to deploy a load balancer or use the host network. If this value is set to `true`, then the remaining NATS parameters are ignored.                                                                                                                                                                                               | Boolean  | `true`            |
-| `nats.natsUrl`      | The NATS URL. This can be a comma separated list of \<dns_name:port> mappings for the NATS load balancer service. For example, "message1.dev.spectrocloud.com:4222,message2.dev.spectrocloud.com:4222". This parameter is mandatory if `nats.internal` is set to `false`. If `nats.internal` is set to `true`, you can leave this parameter empty. | String   | `""`              |
-| `nats.annotations`  | A map of key-value pairs that specifies load balancer annotations for NATS. You can use annotations to change the behavior of the load balancer and the Nginx configuration. This is an advanced setting. We recommend you consult with your assigned support team representative prior to modification.                                           | Object   | `{}`              |
-| `nats.natsStaticIP` | Specify a static IP address for the NATS load balancer service. If empty, a dynamic IP address will be assigned to the load balancer.                                                                                                                                                                                                              | String   | `""`              |
-
-```yaml
-nats:
-  enabled: true
-  internal: true
-  natsUrl: ""
-  annotations: {}
-  natsStaticIP:
 ```
 
 ## gRPC
@@ -359,7 +335,7 @@ nats:
 gRPC is used for communication between Palette components. You can enable the deployment of an additional load balancer
 for gRPC. Host clusters deployed by Palette use the load balancer to communicate with the Palette control plane. This is
 an advanced configuration option, and it is not required for most deployments. Speak with your support representative
-before enabling this option. Dual support for NATS and gRPC is available.
+before enabling this option.
 
 If you want to use an external gRPC endpoint, you must provide a domain name for the gRPC endpoint and a valid x509
 certificate. Additionally, you must provide a custom domain name for the endpoint. A CNAME DNS record must point to the

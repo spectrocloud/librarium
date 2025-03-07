@@ -13,8 +13,6 @@ encryption, and secure communication, standard authentication and authorization,
 actions taken on the platform. Review the [Audit Logs](../../audit-logs/audit-logs.md) guide to learn how to access and
 use them.
 
-<br />
-
 ## Data At Rest Encryption
 
 Tenant data is encrypted using a 64-bit cryptographically secure tenant key. A unique tenant key is generated for each
@@ -22,8 +20,6 @@ tenant. The tenant key is encrypted using the system root key and is stored in t
 stored in the cluster’s etcd key-value store. All message communication uses tenant-specific channels.
 
 The following secure keys are unique and generated for each installation:
-
-<br />
 
 - **Root Key**: Encrypts the tenant-specific encryption key.
 
@@ -37,12 +33,10 @@ The following secure keys are unique and generated for each installation:
 In self-managed deployments, secure keys are generated during installation and stored as secrets in the management
 cluster’s etcd key-value store.
 
-<br />
-
 ## Data In Transit Encryption
 
 Palette secures data in motion using an encrypted Transport Layer Security (TLS) communication channel for all internal
-and external interactions.<br /><br />
+and external interactions.
 
 - **End User Communication**: Public certificates are created using a cert-manager for external API/UI communication. In
   self-hosted deployments, you can import an optional certificate and private key to match the Fully Qualified Domain
@@ -54,7 +48,7 @@ and external interactions.<br /><br />
 - **Database Communication**: The database connection between Palette internal services that are active in the
   management cluster and MongoDB is protected by TLS with Authentication enabled.
 
-- **Message Bus**: A Secure Network Address Translation (NATS) message bus is used for asynchronous communication
-  between Palette management clusters and tenant clusters. NATS messages are exchanged using TLS protocol, and each
-  tenant cluster uses dedicated credentials to connect to the message bus. Authentication and authorization policies are
-  enforced in the NATS deployment to ensure message and data isolation across tenants.
+- **Cluster Communication (gRPC)**: gRPC facilitates secure and efficient communication between the management platform
+  and tenant clusters. gRPC connections are encrypted using TLS, ensuring data integrity and confidentiality. Each
+  tenant cluster is assigned dedicated credentials to authenticate with the management platform, and strict
+  authorization policies enforce message and data isolation across tenants.
