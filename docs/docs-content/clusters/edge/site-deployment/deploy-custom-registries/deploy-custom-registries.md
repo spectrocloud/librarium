@@ -29,7 +29,7 @@ A primary registry is required for disconnected Edge clusters. You can use any O
 registry. Palette provides you with an out-of-the-box configuration with Zot. For connected Edge clusters, a primary
 registry can still help you reduce network bandwidth usage and protect against outages.
 
-For more information, refer to [Deploy cluster with Primary Registry](./deploy-primary-registry.md).
+For more information, refer to [Deploy Cluster with Primary Registry](./deploy-primary-registry.md).
 
 ## Provider Image Registry
 

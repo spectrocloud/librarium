@@ -56,9 +56,9 @@ You can configure multiple external registries by using the `stylus.externalRegi
 apply domain mapping rules to map domain names to external registries.
 
 If you are using an external registry and want to use content bundles when deploying your Edge cluster, you must also
-enable the local Harbor registry. For more information, refer to
+use an in-cluster primary registry. For more information, refer to
 [Build Content Bundles](../edgeforge-workflow/palette-canvos/build-content-bundle.md) and
-[Enable Local Harbor Registry](../site-deployment/deploy-custom-registries/local-registry.md).
+[Deploy Cluster with Primary Registry](../site-deployment/deploy-custom-registries/deploy-primary-registry.md)..
 
 Review the following parameters to configure external registries.
 
@@ -197,7 +197,7 @@ use the `stylus.externalRegistries` parameter object instead. Refer to the
 If you are using an external registry and want to use content bundles when deploying your Edge cluster, you must also
 enable the local Harbor registry. For more information, refer to
 [Build Content Bundles](../edgeforge-workflow/palette-canvos/build-content-bundle.md) and
-[Enable Local Harbor Registry](../site-deployment/deploy-custom-registries/local-registry.md).
+[Deploy Cluster with Primary Registry](../site-deployment/deploy-custom-registries/deploy-primary-registry.md).
 
 | Parameter                                    | Description                                                                                                                                                                                                                                                                                                   | Default |
 | -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
