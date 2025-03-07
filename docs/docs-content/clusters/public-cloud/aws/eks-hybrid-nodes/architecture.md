@@ -86,16 +86,6 @@ For AWS VPNs, configure two static routes for each of the following CIDRs:
 If you're using a Virtual Private Gateway or Transit Gateway, route propagation can be enabled to automatically populate
 your VPC route tables. Ensure you verify your route tables after propagation.
 
-#### On-Prem and Edge Locations
-
-For on-prem and edge VPNs, set up IPsec Phase 1 tunnels with Phase 2 security associations for the following:
-
-- Hybrid Node subnet to EKS VPC CIDR.  
-  For example, Hybrid Node subnet 10.201.0.0/16 → EKS VPC CIDR 10.100.0.0/16.
-
-- Hybrid Node pod CIDR to EKS VPC CIDR.  
-  For example, Hybrid Node Pod CIDR 192.168.0.0/16 → EKS VPC CIDR 10.100.0.0/16.
-
 ## Operating System Compatibility
 
 Palette supports the same operating systems as AWS. Refer to

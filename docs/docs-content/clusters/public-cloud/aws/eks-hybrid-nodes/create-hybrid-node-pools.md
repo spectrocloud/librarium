@@ -389,7 +389,8 @@ nodes. Before proceeding, consider the following points:
    round-trip min/avg/max/stddev = 27.359/28.875/30.345/1.091 ms
    ```
 
-4. From an edge host in your on-prem environment, attempt to reach your AWS VPC gateway or an AWS worker node within the Amazon EKS cluster's VPC.
+4. From an edge host in your on-prem environment, attempt to reach your AWS VPC gateway or an AWS worker node within the
+   Amazon EKS cluster's VPC.
 
    Replace `<awsGatewayOrNode>` with the IP address of your AWS VPC gateway or AWS worker node, for example,
    `10.100.0.1` or `10.100.0.27`.

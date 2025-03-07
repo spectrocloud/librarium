@@ -48,7 +48,8 @@ Import your Amazon EKS cluster and enable hybrid mode to be able to create edge 
     information.
 
 - All networking prerequisites completed for hybrid nodes. Refer to
-  [Prepare Network](./prepare-environment/prepare-network.md) for guidance. You will need to provide the following details during the import steps:
+  [Prepare Network](./prepare-environment/prepare-network.md) for guidance. You will need to provide the following
+  details during the import steps:
 
   - The Virtual Private Cloud (VPC) Classless Inter-Domain Routing (CIDR) range where your EKS cluster resides.
   - The CIDR ranges for hybrid nodes in other networks that need to connect to this cluster.

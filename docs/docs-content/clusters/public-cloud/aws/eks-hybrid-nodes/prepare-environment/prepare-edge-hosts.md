@@ -53,8 +53,9 @@ mode to manage configurations, updates, and workloads.
 
 - The edge host has outbound access to the internet.
 
-- The edge host has inbound and outbound connectivity to Palette SaaS [services](../../../../../architecture/palette-public-ips.md)
-  and [ports](../../../../../architecture/networking-ports.md#network-ports).
+- The edge host has inbound and outbound connectivity to Palette SaaS
+  [services](../../../../../architecture/palette-public-ips.md) and
+  [ports](../../../../../architecture/networking-ports.md#network-ports).
 
   For example, if you have [netcat](https://linux.die.net/man/1/nc) installed, issue the following command on the edge
   host to check whether the `api.spectrocloud.com` domain is accessible on port `443`.
