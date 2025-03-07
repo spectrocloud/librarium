@@ -24,25 +24,22 @@ follows:
 
 The steps described in
 [Prepare cluster access for hybrid nodes](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-cluster-prep.html)
-are performed as part of the [Import Cluster](../import-eks-cluster-enable-hybrid-mode.md#import-cluster) steps.
+are performed as part of the
+[Import EKS Cluster and Enable Hybrid Mode](../import-eks-cluster-enable-hybrid-mode.md#import-cluster) steps.
 
 :::
 
 ## Resources
 
-Use the following resources to help prepare your environment.
+Use the following resources to help you prepare your environment.
 
 <!-- Hidden until article readiness.
 
-- [Prepare Network](./prepare-network.md)
-
 - [Prepare Credentials](./prepare-credentials.md)
-
-- [Prepare EKS Cluster](./prepare-eks-cluster.md)
 
 -->
 
-- [Prepare networking for hybrid nodes](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-networking.html)
+- [Prepare Network](./prepare-network.md)
 
 - [Prepare credentials for hybrid nodes](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-creds.html)
 
