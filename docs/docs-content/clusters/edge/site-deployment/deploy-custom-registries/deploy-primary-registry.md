@@ -91,15 +91,30 @@ If you already have a cluster with the deprecated **Harbor Edge-Native Config** 
 
 3. Select the profile you use to deploy the cluster.
 
-4. In the **Add-on** layers, add the **Registry Connect** pack.
+4. Add a pack for your custom registry. If you have made a custom pack, you can add the custom pack. Alternatively, you
+   can also add a manifest or helm charts for your registry.
 
-5. In the **value.yaml** file of the **Registry Connect** pack, do not select any preset and make your edits on the
+   You need to take note of the following configurations about your registry and provide it to the **Registry Connect**
+   pack later.
+
+   - The Persistent Volume Claim (PVC) used for storage for your registry.
+   - The login credentials pull from and push to your registry.
+   - The certificates used to secure connections to your registry.
+
+5. In the **Add-on** layers, add the **Registry Connect** pack.
+
+6. In the **value.yaml** file of the **Registry Connect** pack, do not select any preset and make your edits on the
    default values of the file.
 
-6. Modify the `charts.registry-connect.config.registry.inClusterRegistry.credentials` parameter to specify the
+7. Modify the `charts.registry-connect.config.registry.inClusterRegistry.credentials` parameter to specify the
    credentials for your registry.
 
-7. Click **Confirm & Create** to finish customizing the **Registry Connect** pack.
+8. Modify the `charts.registry-connect.config.registry.inClusterRegistry.storageCheck` parameter to specify the
+   namespace and the persistent volume claim used by the registry for storage.
+
+9. Modify the `charts.registry-connect.config.certificates` parameter to specify the location of the TLS certificates.
+
+10. Click **Confirm & Create** to finish customizing the **Registry Connect** pack.
 
 </TabItem>
 
