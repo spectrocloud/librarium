@@ -81,7 +81,7 @@ If you already have a cluster with the deprecated **Harbor Edge-Native Config** 
 12. Follow [Create Local Cluster](../../local-ui/cluster-management/create-cluster.md) to create a cluster using the new
     profile.
 
-<TabItem>
+</TabItem>
 
 <TabItem value="Custom Registry">
 

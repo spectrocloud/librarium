@@ -100,7 +100,8 @@ The following are the phases of the deployment lifecycle of airgapped Edge hosts
 
 6. **Cluster management**. In this phase, the IT/Ops teams perform maintenance and update activities on your active
    clusters. Using a in-cluster primary registry, you can provide images that can be used to upgrade your cluster. For
-   more information, refer to [Deploy Cluster with Primary Registry](./deploy-primary-registry.md)..
+   more information, refer to
+   [Deploy Cluster with Primary Registry](./site-deployment/deploy-custom-registries/deploy-primary-registry.md).
 
 ## Next Steps
 
