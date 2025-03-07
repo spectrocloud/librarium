@@ -48,8 +48,8 @@ If you already have a cluster with the deprecated **Harbor Edge-Native Config** 
 
 3. Select the profile you use to deploy the cluster.
 
+<!-- prettier-ignore -->
 4. Click **Add New Pack** and choose from either the
-
    <VersionedLink text="Harbor" url="/integrations/packs/?pack=harbor" /> pack or the
    <VersionedLink text="Zot" url="/integrations/packs/?pack=zot" /> pack.
 
@@ -103,7 +103,7 @@ If you already have a cluster with the deprecated **Harbor Edge-Native Config** 
 
 </TabItem>
 
-<Tabs>
+</Tabs>
 
 ## Validate
 
