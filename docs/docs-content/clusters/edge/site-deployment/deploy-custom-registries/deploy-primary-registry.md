@@ -1,6 +1,6 @@
 ---
-sidebar_label: Deploy with a Primary Registry"
-title: Deploy with a Primary Registry"
+sidebar_label: "Deploy with a Primary Registry"
+title: "Deploy with a Primary Registry"
 description: "This page teaches you how to deploy a cluster with a primary registry."
 hide_table_of_contents: false
 sidebar_position: 10
@@ -8,17 +8,19 @@ tags: ["edge"]
 ---
 
 A primary registry is an in-cluster registry that stores images required for cluster deployment. Every disconnected Edge
-cluster requires a primary registry.
+cluster must have a primary registry.
 
-When your Edge cluster is created for the first time, all images from add-on packs downloaded from external registries
-are stored locally in the primary registry. Subsequent image pulls from the cluster are made to the primary registry.
-This allows your Edge cluster to reboot containers or add new nodes without being connected to the external network and
-reduce bandwidth usage.
+When your Edge cluster is created for the first time, all images from add-on packs loaded from the content bundle or
+external registries are stored locally in the primary registry. Subsequent image pulls from the cluster are made to the
+primary registry. This allows your Edge cluster to reboot containers or add new nodes without being connected to the
+external network and reduce bandwidth usage.
+
+![Diagram of how the primary registry works in a cluster](/clusters_edge_registries_primary-registry.webp)
 
 Any Open Container Initiative (OCI) compliant registry service and be used as a primary registry. We validate both Zot
 and Harbor as two out-of-the-box primary registries that can be deployed with minimal custom configuration.
 
-If you already have a cluster with the **Harbor Edge-Native Config** pack, and want to migrate
+If you already have a cluster with the deprecated **Harbor Edge-Native Config** pack, and want t
 
 ## Prerequisite
 
@@ -46,35 +48,37 @@ If you already have a cluster with the **Harbor Edge-Native Config** pack, and w
 
 3. Select the profile you use to deploy the cluster.
 
-4. In the **Add-on** layers, add the **Registry Connect** pack.
+4. Click **Add New Pack** and choose from either the
 
-5. In the **value.yaml** file of the **Registry Connect** pack, select a preset from the following options.
+   <VersionedLink text="Harbor" url="/integrations/packs/?pack=harbor" /> pack or the
+   <VersionedLink text="Zot" url="/integrations/packs/?pack=zot" /> pack.
+
+5. Configure the credentials used to log in to the registry.
+
+   - For Harbor, modify the `charts.harbor.harborAdminPassword` parameter.
+
+   - For Zot, modify the `charts.zot.registryPassword` parameter.
+
+6. Click **Confirm & Create**.
+
+7. In the **Add-on** layers, add the **Registry Connect** pack.
+
+8. In the **value.yaml** file of the **Registry Connect** pack, select a preset from the following options.
 
    - **Zot**. Select this if you want to use the built **Zot Internal Registry** pack and use Zot as your in-cluster
      primary registry.
 
    - **Harbor**. Select this if you want to use the built **Harbor Internal Registry** pack and use Harbor as your
-     in-cluster primary registry
+     in-cluster primary registry.
 
-6. Modify the `charts.registry-connect.config.registry.inClusterRegistry.credentials` parameter to specify the
-   credentials for your registry. You may change the `passwordRef` parameter to refer to a secret or config map value
-   that you define.
-
-   You may also change the parameter name to `password` and provide a string password instead of an object reference. If
-   you choose to do so, we recommend you use a [macro](../../../cluster-management/macros.md) or
-   [profile variable](../../../../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/create-cluster-profile-variables.md)
-   to avoid exposing sensitive information in your cluster profile.
-
-7. Under `inClusterRegistry.projects`, the default project name under which the images are stored is `spectro-images`,
+9. Under `inClusterRegistry.projects`, the default project name under which the images are stored is `spectro-images`,
    and packs are stored under `spectro-packs`. You may change these values as you see fit.
 
-8. Click **Confirm & Create** to finish customizing the **Registry Connect** pack.
+10. Click **Confirm & Create** to finish customizing the **Registry Connect** pack.
 
-9. Depending on which preset you chose, select the corresponding registry pack to add to your cluster profile.
+11. Save and publish the new version of your profile.
 
-10. Save and publish the new version of your profile.
-
-11. Follow [Create Local Cluster](../../local-ui/cluster-management/create-cluster.md) to create a cluster using the new
+12. Follow [Create Local Cluster](../../local-ui/cluster-management/create-cluster.md) to create a cluster using the new
     profile.
 
 <TabItem>
