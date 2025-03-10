@@ -32,6 +32,8 @@ The `content` command includes the following subcommands.
   [Create Edge Native Cluster Profile](../../../clusters/edge/site-deployment/model-profile.md) guide to learn how to
   create an Edge Native cluster profile.
 
+- You must authenticate the Palette CLI with Palette using the [`login`](./login.md) command.
+
 - You must provide an encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters
   long and contain a capital letter, a lowercase letter, a digit, and a special character. You can provide the
   passphrase through the `PALETTE_ENCRYPTION_PASSWORD` environment variable or the `-k` or `--encryption-passphrase`
