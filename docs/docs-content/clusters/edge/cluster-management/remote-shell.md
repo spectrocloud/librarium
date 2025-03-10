@@ -12,10 +12,17 @@ Kubernetes remains available, you can troubleshooting using `kubectl` or other c
 down, however, your troubleshooting options become quite limited, especially the network that the host is deployed in is
 outside of your control.
 
+![Diagram of the relationship between user, Palette, and Edge host in Remote Shell](/clusters_edge_cluster-mgmt_remote-shell.webp)
+
 Palette allows you to use a remote shell session to access your connected Edge host. You can either generate temporary
 user credentials with root privileges or use an existing user on your Edge host.
 
 ## Prerequisites
+
+- An Edge host registered with your Palette account. The Edge host may or may not be part of an Edge cluster.
+
+- You are logged in as a Palette user who has the `edgeHost.shell` permission in the project to which the Edge host is
+  associated.
 
 ## Procedure
 
