@@ -79,7 +79,6 @@ tags: ["release-notes"]
 
 #### Deprecations and Removals
 
-
 ## March 3, 2025 - Release 4.6.9
 
 ### Bug Fixes
