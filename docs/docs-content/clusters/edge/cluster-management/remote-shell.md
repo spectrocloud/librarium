@@ -7,22 +7,30 @@ sidebar_position: 60
 tags: ["edge"]
 ---
 
-Edge hosts deployed in remote locations are often difficult to access. If a cluster starts to experience problems, but
-Kubernetes remains available, you can troubleshooting using `kubectl` or other command-line tools. If Kubernetes is
-down, however, your troubleshooting options become quite limited, especially the network that the host is deployed in is
-outside of your control.
+Edge hosts deployed in remote locations are often difficult to access. Traditional troubleshooting tools such as
+`kubectl` rely on the Kubernetes API being available, which is not always the case in an outage. Palette allows you to
+use a remote shell session to access your connected Edge host. This connection operates on the Operating System (OS)
+level and does not require Kubernetes to be available.
 
 ![Diagram of the relationship between user, Palette, and Edge host in Remote Shell](/clusters_edge_cluster-mgmt_remote-shell.webp)
 
-Palette allows you to use a remote shell session to access your connected Edge host. You can either generate temporary
-user credentials with root privileges or use an existing user on your Edge host.
+:::preview
+
+:::
+
+You can either generate temporary user credentials with root privileges or use an existing user on your Edge host.
+Temporary users have root privilege on the Edge host, allowing you the permissions often required to troubleshoot, but
+they must be enabled per Edge host by someone with sufficient permissions.
 
 ## Prerequisites
 
 - An Edge host registered with your Palette account. The Edge host may or may not be part of an Edge cluster.
 
-- You are logged in as a Palette user who has the `edgeHost.shell` permission in the project to which the Edge host is
-  associated.
+- You are logged in as a Palette user who has the `edgehost.sshUpdate` permission in the project to which the Edge host
+  is associated.
+
+- If you wish to enable temporary user generation, you also need the `edgehost.sshUserUpdate` permission. For more
+  information, refer to [Permissions](../../../user-management/palette-rbac/permissions.md).
 
 ## Procedure
 
@@ -43,7 +51,15 @@ user credentials with root privileges or use an existing user on your Edge host.
    used to log in to the host.
 
 7. (Optional) You may also turn on **Create temporary username and password**. Turning this one will allow you to
-   connect to the Edge host with root privileges without needing credentials for the Edge host itself.
+   connect to the Edge host with root privileges without needing credentials for the Edge host itself. This action
+   requires the `edgehost.sshUserUpdate` permission.
+
+   :::warning
+
+   If you open a shell session with temporary credentials and then disable temporary user generation, the current
+   session will remain open for up tp one minute before the shell times out and the temporary user is deleted.
+
+   :::
 
 8. Click **OK** to apply changes.
 
