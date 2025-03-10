@@ -3,7 +3,7 @@ sidebar_label: "Connect to Edge Host Using Remote Shell"
 title: "Connect to Edge Host Using Remote Shell"
 description: "Learn about how to connect to an Edge host using remote shell."
 hide_table_of_contents: false
-sidebar_position: 60
+sidebar_position: 10
 tags: ["edge"]
 ---
 
