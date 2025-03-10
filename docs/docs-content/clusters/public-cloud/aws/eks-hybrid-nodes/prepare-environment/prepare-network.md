@@ -197,6 +197,15 @@ documentation:
    | **HTTPS** | TCP      | 443        | `10.200.0.0/16`  | "Remote Node CIDR Inbound" |
    | **HTTPS** | TCP      | 443        | `192.168.0.0/16` | "Remote Pod CIDR Inbound"  |
 
+   Optionally, you can enable SSH and ICMP access from your on-prem/remote network as described in the
+   [AWS Site-to-Site VPN - Update your security group](https://docs.aws.amazon.com/vpn/latest/s2svpn/SetUpVPNConnections.html#vpn-configure-security-groups)
+   step.
+
+   | Type                | Protocol | Port Range | Source          | Description (optional)          |
+   | ------------------- | -------- | ---------- | --------------- | ------------------------------- |
+   | **SSH**             | TCP      | 22         | `10.200.0.0/16` | "Remote Node CIDR SSH Inbound"  |
+   | **All ICMP - IPv4** | ICMP     | All        | `10.200.0.0/16` | "Remote Node CIDR ICMP Inbound" |
+
    </TabItem>
 
    <TabItem label="Outbound Rules" value="outbound-rules">
@@ -310,12 +319,14 @@ AWS documentation under
 
    <TabItem label="Inbound Rules" value="inbound-rules">
 
-   | Protocols | Port Range | Source           | Destination      | Description                                                                                       |
-   | --------- | ---------- | ---------------- | ---------------- | ------------------------------------------------------------------------------------------------- |
-   | TCP       | 10250      | `10.100.0.0/16`  | `10.200.0.0/16`  | Amazon EKS cluster to hybrid nodes.                                                               |
-   | TCP       | 443        | `10.100.0.0/16`  | `192.168.0.0/16` | Amazon EKS cluster to hybrid pods.                                                                |
-   | TCP, UDP  | 53         | `192.168.0.0/16` | `192.168.0.0/16` | Hybrid pods to [CoreDNS](https://docs.aws.amazon.com/eks/latest/userguide/managing-coredns.html). |
-   | TCP, UDP  | 443        | `192.168.0.0/16` | `192.168.0.0/16` | Hybrid pod to hybrid pod application port.                                                        |
+   | Protocols   | Port Range | Source           | Destination      | Description                                                                                       |
+   | ----------- | ---------- | ---------------- | ---------------- | ------------------------------------------------------------------------------------------------- |
+   | TCP         | 10250      | `10.100.0.0/16`  | `10.200.0.0/16`  | Amazon EKS cluster to hybrid nodes.                                                               |
+   | TCP         | 443        | `10.100.0.0/16`  | `192.168.0.0/16` | Amazon EKS cluster to hybrid pods.                                                                |
+   | TCP, UDP    | 53         | `192.168.0.0/16` | `192.168.0.0/16` | Hybrid pods to [CoreDNS](https://docs.aws.amazon.com/eks/latest/userguide/managing-coredns.html). |
+   | TCP, UDP    | 443        | `192.168.0.0/16` | `192.168.0.0/16` | Hybrid pod to hybrid pod application port.                                                        |
+   | SSH         | 22         | `10.100.0.0/16`  | `10.200.0.0/16`  | (Optional) Amazon EKS VPC CIDR to hybrid nodes for SSH access.                                    |
+   | ICMP - IPv4 | All        | `10.100.0.0/16`  | `10.200.0.0/16`  | (Optional) Amazon EKS VPC CIDR to hybrid nodes for ICMP access.                                   |
 
    </TabItem>
 
@@ -360,10 +371,9 @@ AWS documentation under
 
    </Tabs>
 
-4. Configure additional firewall rules for Cilium operation. Cilium is used as the Container Network Interface (CNI) for
-   hybrid nodes and requires
-   [firewall rules](https://docs.cilium.io/en/stable/operations/system_requirements/#firewall-rules) to allow health
-   checks, Virtual Extensible LAN (VXLAN) overlay, and etcd access.
+4. Configure firewall rules for Cilium operation. Cilium is used as the Container Network Interface (CNI) for hybrid
+   nodes and requires [firewall rules](https://docs.cilium.io/en/stable/operations/system_requirements/#firewall-rules)
+   to allow health checks, Virtual Extensible LAN (VXLAN) overlay, and etcd access.
 
    The following tables are example on-prem firewall rules for Cilium and assumes that hybrid nodes will act as worker
    nodes without VXLAN overlay networking.
@@ -395,8 +405,8 @@ AWS documentation under
 
    </Tabs>
 
-5. Configure additional firewall rules for Palette SaaS operation, which requires inbound and outbound connectivity to
-   Palette SaaS [services](../../../../../architecture/palette-public-ips.md) and
+5. Configure firewall rules for Palette SaaS operation, which requires inbound and outbound connectivity to Palette SaaS
+   [services](../../../../../architecture/palette-public-ips.md) and
    [ports](../../../../../architecture/networking-ports.md#network-ports).
 
 ### Validate
@@ -473,12 +483,20 @@ on-prem/remote environment.
    | **Name tag (optional)** | `eks-hybrid-remote-gateway-1` | The optional AWS **Name** tag value for the customer gateway.                                                                                                                   |
    | **BGP ASN**             | `65000`                       | The BGP Autonomous System Number (ASN) used to identify your on-premises gateway in BGP route exchanges. It must be distinct from the ASN configured on the AWS target gateway. |
    | **IP address**          | `3.21.140.175`                | The public IP address of the on-prem/remote gateway used to establish the VPN connection.                                                                                       |
-   | **Device (optional)**   | `eks-hybrid-remote-gateway-1` | An optional identifier for the device, used for reference within the AWS console..                                                                                              |
+   | **Device (optional)**   | `eks-hybrid-remote-gateway-1` | An optional identifier for the device, used for reference within the AWS console.                                                                                               |
 
 2. In AWS,
    [create a target gateway](https://docs.aws.amazon.com/vpn/latest/s2svpn/SetUpVPNConnections.html#vpn-create-target-gateway)
    and attach it to your VPC. Virtual private gateways are attached to a single VPC, whereas transit gateways can
    facilitate multiple VPCs.
+
+   :::important
+
+   If you are planning to use AWS Direct Connect, ensure that you create the gateway in the
+   [AWS Direct Connect console](https://console.aws.amazon.com/directconnect/v2/home). If using AWS Site-to-Site VPN,
+   create the gateway in the [AWS VPC console](https://console.aws.amazon.com/vpc/).
+
+   :::
 
    The following tables are example configurations for the target gateway.
 
@@ -501,7 +519,7 @@ on-prem/remote environment.
 
    <Tabs>
 
-   <TabItem label="Transit Gateway" value="transit-gateway">
+   <TabItem label="Transit Gateway" value="tgw">
 
    | Setting                                        | Example Value                    | Description                                                                                                                            |
    | ---------------------------------------------- | -------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
@@ -515,7 +533,7 @@ on-prem/remote environment.
 
    </TabItem>
 
-   <TabItem label="Transit Gateway Attachment" value="transit-gateway-attachment">
+   <TabItem label="Transit Gateway Attachment" value="tgw-attachment">
 
    | Setting                                | Example Value                                                                                                                                                                  | Description                                                                                                 |
    | -------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------- |
@@ -524,8 +542,8 @@ on-prem/remote environment.
    | **Attachment type**                    | VPC                                                                                                                                                                            | The attachment type for the transit gateway attachment.                                                     |
    | **DNS support**                        | :white_check_mark:                                                                                                                                                             | Enables DNS resolution through the transit gateway for this attachment.                                     |
    | **Security Group Referencing support** | :white_check_mark:                                                                                                                                                             | Allows referencing of security groups across the VPC attachment, supporting cross-VPC security group rules. |
-   | **VPC ID**                             | `vpc-0518d3603257bf85d / eks-hybrid-vpc`                                                                                                                                       | Specifies that new attachments are automatically associated with the default transit gateway route table.   |
-   | **Subnet IDs**                         | :white_check_mark: us-east-1a - `subnet-0cdebdb570d3ca783 / eks-hybrid-subnet-1` <br /><br /> :white_check_mark: us-east-1b - `subnet-01fb42f5764dcf18e / eks-hybrid-subnet-2` | The specific subnets in the VPC used by the attachment.                                                     |
+   | **VPC ID**                             | `vpc-0518d3603257bf85d (eks-hybrid-vpc)`                                                                                                                                       | Specifies that new attachments are automatically associated with the default transit gateway route table.   |
+   | **Subnet IDs**                         | :white_check_mark: us-east-1a - `subnet-0cdebdb570d3ca783 (eks-hybrid-subnet-1)` <br /><br /> :white_check_mark: us-east-1b - `subnet-01fb42f5764dcf18e (eks-hybrid-subnet-2)` | The specific subnets in the VPC used by the attachment.                                                     |
 
    </TabItem>
 
@@ -535,23 +553,80 @@ on-prem/remote environment.
 
    </Tabs>
 
-   :::important
+3. [Configure routing](https://docs.aws.amazon.com/vpn/latest/s2svpn/SetUpVPNConnections.html#vpn-configure-route-tables)
+   on your AWS VPC subnet route tables.
 
-   If you are planning to use AWS Direct Connect, ensure that you create the gateway in the
-   [AWS Direct Connect console](https://console.aws.amazon.com/directconnect/v2/home). If using AWS Site-to-Site VPN,
-   create the gateway in the [AWS VPC console](https://console.aws.amazon.com/vpc/).
+   - If using a virtual private gateway, enable route propagation on your subnet route tables.
 
-   :::
+   - If using a transit gateway, add two routes to your subnet route tables. These routes should target the transit
+     gateway for traffic destined for the remote node and remote pod.
 
-3. AWS route table update placeholder.
+     <details>
 
-4. AWS security group update placeholder.
+     <summary> Example </summary>
 
-5. AWS Site-to-Site VPN configuration placeholder.
+     | Destination      | Target                  | Status | Propagated |
+     | ---------------- | ----------------------- | ------ | ---------- |
+     | `10.200.0.0/16`  | `tgw-06e39deb85a158d2e` | Active | No         |
+     | `192.168.0.0/16` | `tgw-06e39deb85a158d2e` | Active | No         |
 
-6. Download customer gateway device configuration placeholder.
+     </details>
 
-7. On your on-prem/remote VPN gateway, configure IPsec Phase 1 tunnels with Phase 2 security associations to establish a
+4. [Create a VPN connection](https://docs.aws.amazon.com/vpn/latest/s2svpn/SetUpVPNConnections.html#vpn-create-vpn-connection)
+   in AWS.
+
+   The following tables are example configurations for an AWS Site-to-Site VPN depending on the target gateway type.
+
+   <Tabs>
+
+   <TabItem label="Virtual Private Gateway" value="vgw">
+
+   | Setting                     | Example Value                                         | Description                                                                           |
+   | --------------------------- | ----------------------------------------------------- | ------------------------------------------------------------------------------------- |
+   | **Name tag (optional)**     | `eks-hybrid-sts-vpn`                                  | The optional AWS **Name** tag value for the Site-to-Site VPN.                         |
+   | **Target gateway type**     | Virtual private gateway                               | The target gateway type. This should match what you created in step 2.                |
+   | **Virtual private gateway** | `vgw-08b7d849217105d6f (eks-hybrid-vgw)`              | The virtual private gateway for the Amazon EKS VPC.                                   |
+   | **Customer gateway**        | Existing                                              | Choose **Existing** to be able to select the customer gateway created in step 1.      |
+   | **Customer gateway ID**     | `cgw-0b4ec7c65c5189d1e (eks-hybrid-remote-gateway-1)` | The customer gateway for your on-prem/remote gateway connection.                      |
+   | **Routing options**         | Static                                                | Whether to use dynamic or static routing.                                             |
+   | **Static IP prefixes**      | `10.200.0.0/16`, `192.168.0.0/16`                     | If using static routing, the remote node CIDR and remote pod CIDR must be added here. |
+
+   </TabItem>
+
+   <TabItem label="Transit Gateway" value="tgw">
+
+   | Setting                      | Example Value                                         | Description                                                                                                                                                                |
+   | ---------------------------- | ----------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Name tag (optional)**      | `eks-hybrid-sts-vpn`                                  | The optional AWS **Name** tag value for the Site-to-Site VPN.                                                                                                              |
+   | **Target gateway type**      | Transit gateway                                       | The target gateway type. This should match what you created in step 2.                                                                                                     |
+   | **Transit gateway**          | `tgw-06e39deb85a158d2e (eks-hybrid-tgw)`              | The transit gateway for the Site-to-Site VPN connection.                                                                                                                   |
+   | **Customer gateway**         | Existing                                              | Choose **Existing** to be able to select the customer gateway created in step 1.                                                                                           |
+   | **Customer gateway ID**      | `cgw-0b4ec7c65c5189d1e (eks-hybrid-remote-gateway-1)` | The customer gateway for your on-prem/remote gateway connection.                                                                                                           |
+   | **Routing options**          | Dynamic (requires BGP)                                | Whether to use dynamic or static routing.                                                                                                                                  |
+   | **Tunnel inside IP version** | IPv4                                                  | The type of traffic that the VPN tunnels will support.                                                                                                                     |
+   | **Outside IP address type**  | PublicIpv4                                            | The type of IP address used for the VPN tunnel's outside interface. This should be set to **PublicIpv4** unless you are creating a VPN connection over AWS Direct Connect. |
+
+   </TabItem>
+
+   </Tabs>
+
+5. [Download the configuration file](https://docs.aws.amazon.com/vpn/latest/s2svpn/SetUpVPNConnections.html#vpn-download-config)
+   to help you configure your on-prem/remote gateway device.
+
+   <details>
+
+   <summary> Example download configuration </summary>
+
+   | Setting         | Example Value       |
+   | --------------- | ------------------- |
+   | **Vendor**      | pfSense             |
+   | **Platform**    | pfSense             |
+   | **Software**    | pfsense 2.2.5+(GUI) |
+   | **IKE version** | ikev1               |
+
+   </details>
+
+6. On your on-prem/remote VPN gateway, configure IPsec Phase 1 tunnels with Phase 2 security associations to establish a
    connection to your AWS VPN. The Phase 2 security associations need to include the following routes:
 
    - Hybrid node network CIDR to AWS VPC CIDR.
@@ -561,17 +636,17 @@ on-prem/remote environment.
    - Hybrid pod network CIDR to AWS VPC CIDR.
 
    The following screenshot shows an example IPsec tunnel configuration on a
-   [pfsense](https://docs.netgate.com/pfsense/en/latest/preface/index.html) device.
+   [pfSense](https://docs.netgate.com/pfsense/en/latest/preface/index.html) device.
 
-   ![Example IPsec tunnel configuration in pfsense](/eks-hybrid_prepare-environment_prepare-network_ipsec-tunnels-example.webp)
+   ![Example IPsec tunnel configuration in pfSense](/eks-hybrid_prepare-environment_prepare-network_ipsec-tunnels-example.webp)
 
-8. Ensure that your IPsec tunnels have a connection established on your on-prem/remote VPN gateway for both phase 1 and
-   phase 2 connections. The following screenshot shows an example of a connected and disconnected tunnel on a pfsense
+7. Ensure that your IPsec tunnels have a connection established on your on-prem/remote VPN gateway for both phase 1 and
+   phase 2 connections. The following screenshot shows an example of a connected and disconnected tunnel on a pfSense
    device.
 
-   ![Example IPsec tunnel status in pfsense](/eks-hybrid_prepare-environment_prepare-network_ipsec-status-example.webp)
+   ![Example IPsec tunnel status in pfSense](/eks-hybrid_prepare-environment_prepare-network_ipsec-status-example.webp)
 
-9. Configure your on-prem/remote firewall rules to allow VPN traffic. You will need to configure rules for each IPsec
+8. Configure your on-prem/remote firewall rules to allow VPN traffic. You will need to configure rules for each IPsec
    tunnel.
 
    The following tables describe example firewall rules where `52.44.108.101` and `3.225.148.144` are example **Outside
@@ -603,17 +678,21 @@ on-prem/remote environment.
 
    </Tabs>
 
-10. Ensure that the appropriate NAT exemptions or policies, such as IPsec passthrough, are configured so that IPsec
-    traffic is not inadvertently translated.
+9. Ensure that the appropriate NAT exemptions or policies, such as IPsec passthrough, are configured so that IPsec
+   traffic is not inadvertently translated.
 
-11. Configure your on-prem/remote router to ensure network traffic reaches the correct hybrid nodes.
+10. Configure your on-prem/remote router to ensure network traffic to and from AWS reaches the correct hybrid nodes.
+
+    In both BGP and static routing scenarios, a route must exist to send all Amazon EKS VPC-bound traffic through a
+    centralized VPN gateway.
 
     <Tabs>
 
     <TabItem label="Border Gateway Protocol (BGP)" value="bgp">
 
     - Configure BGP on your on-premises router to establish dynamic routing with AWS.
-    - AWS Site-to-Site VPN supports BGP over IPsec to automatically exchange routes between the on-prem network and AWS.
+      - AWS Site-to-Site VPN supports BGP over IPsec to automatically exchange routes between the on-prem network and
+        AWS.
     - Ensure that the on-prem router is advertising its internal network to AWS and accepting AWS VPC CIDR routes via
       BGP to direct traffic correctly.
 
@@ -624,7 +703,6 @@ on-prem/remote environment.
     - Static routes are configured during the
       [Configure Hybrid Node Networking for VPN Solutions](../create-hybrid-node-pools.md#configure-hybrid-node-networking-for-vpn-solutions)
       steps.
-    - Define static routes that point the Amazon EKS VPC CIDR to the VPN tunnel endpoint(s).
     - Optionally, you can define a unique VPN server IP for each hybrid node during the
       [Create Hybrid Node Pool](../create-hybrid-node-pools.md#create-hybrid-node-pool) steps to maintain granular
       routing control.
@@ -632,9 +710,6 @@ on-prem/remote environment.
     </TabItem>
 
     </Tabs>
-
-    In both BGP and static routing scenarios, a route must exist to send all Amazon EKS VPC-bound traffic through a
-    centralized VPN gateway.
 
 ### Validate
 

@@ -37,16 +37,6 @@ Import your Amazon EKS cluster and enable hybrid mode to be able to create edge 
   [Cluster Profile](../../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile)
   permissions for guidance.
 
-- Ensure [kubectl](https://kubernetes.io/docs/tasks/tools/) is installed and available in your local workstation.
-
-- Access to your Amazon EKS cluster through kubectl.
-
-  - To access your cluster with kubectl, you can use the AWS CLI's built-in authentication capabilities. If you are
-    using a custom OpenID Connect (OIDC) provider, you will need to configure your kubeconfig to use your OIDC provider.
-
-    Refer to the [Access Imported Cluster with Kubectl](#access-imported-cluster-with-kubectl) section for more
-    information.
-
 - All networking prerequisites completed for hybrid nodes. Refer to
   [Prepare Network](./prepare-environment/prepare-network.md) for guidance. You will need to provide the following
   details during the import steps:
@@ -84,6 +74,16 @@ Import your Amazon EKS cluster and enable hybrid mode to be able to create edge 
 
 - An existing Amazon EKS cluster that has configured with the appropriate parameters to be imported into Palette. Refer
   to [Prepare EKS Cluster](./prepare-environment/prepare-eks-cluster.md) for guidance.
+
+- Ensure [kubectl](https://kubernetes.io/docs/tasks/tools/) is installed and available in your local workstation.
+
+- Access to your Amazon EKS cluster through kubectl.
+
+  - To access your cluster with kubectl, you can use the AWS CLI's built-in authentication capabilities. If you are
+    using a custom OpenID Connect (OIDC) provider, you will need to configure your kubeconfig to use your OIDC provider.
+
+    Refer to the [Access Imported Cluster with Kubectl](#access-imported-cluster-with-kubectl) section for more
+    information.
 
 ### Import Cluster
 

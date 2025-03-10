@@ -33,12 +33,6 @@ are performed as part of the
 
 Use the following resources to help you prepare your environment.
 
-<!-- Hidden until article readiness.
-
-- [Prepare Credentials](./prepare-credentials.md)
-
--->
-
 - [Prepare Network](./prepare-network.md)
 
 - [Prepare credentials for hybrid nodes](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-creds.html)

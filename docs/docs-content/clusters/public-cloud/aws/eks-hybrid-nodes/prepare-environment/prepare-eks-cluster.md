@@ -120,6 +120,7 @@ These steps use the AWS Management Console.
       control plane.
 
     - **Instance types** - The node must use an instance type of at least **t3.xlarge** to ensure adequate resources.
+
     - **Disk size** - AWS sets a default storage of **20 GB** for Linux-based EKS worker nodes (the
       [diskSize](https://docs.aws.amazon.com/eks/latest/APIReference/API_CreateNodegroup.html#API_CreateNodegroup_RequestSyntax)
       parameter), and we recommend this as the minimum size.

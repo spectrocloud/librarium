@@ -283,7 +283,7 @@ nodes. Before proceeding, consider the following points:
 - This guide is specifically for VPN solutions that support and require manual static route configuration. If your VPN
   uses a different routing mechanism, these steps may not apply.
 
-- If your VPN supports BGP (Border Gateway Protocol), you may be able to skip manual route configuration entirely. BGP
+- If your VPN supports Border Gateway Protocol (BGP), you may be able to skip manual route configuration entirely. BGP
   can automatically advertise and update routes between your cluster and VPN. Check your VPN documentation for BGP
   neighbor configuration and route import procedures.
 
