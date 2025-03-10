@@ -50,14 +50,14 @@ they must be enabled per Edge host by someone with sufficient permissions.
    need the credentials from the host to log in. The privilege you have on the host depends on the user credentials you
    used to log in to the host.
 
-7. (Optional) You may also turn on **Create temporary username and password**. Turning this one will allow you to
-   connect to the Edge host with root privileges without needing credentials for the Edge host itself. This action
-   requires the `edgehost.sshUserUpdate` permission.
+7. (Optional) You may also turn on **Create temporary username and password**. Turning this on will allow you to connect
+   to the Edge host with root privileges without needing credentials for the Edge host itself. This action requires the
+   `edgehost.sshUserUpdate` permission.
 
    :::warning
 
    If you open a shell session with temporary credentials and then disable temporary user generation, the current
-   session will remain open for up tp one minute before the shell times out and the temporary user is deleted.
+   session will remain open for up to one minute before the shell times out and the temporary user is deleted.
 
    :::
 
