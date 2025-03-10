@@ -3,6 +3,9 @@
 # Enable error handling
 set -e
 
+# Enable debugging
+set -x
+
 # Create a list of all the images we have and save it to a json.
 # Trim the path static/assets/docs/images.
 find static/assets/docs/images README.md -type f \( -name "*.gif" -o -name "*.webp" \) ! -name ".DS_STORE" ! -name ".DS_Store" | sed 's|static/assets/docs/images||g'  > all_images.json
@@ -11,13 +14,15 @@ echo "Detected $image_count .webp and .gif assets in static/assets/docs/images..
 
 # Fetch all branches
 git fetch --all
+echo "Fetch worked"
 
 # List all the version branches
 branches="master"
 version_branches=$(git branch -a | grep -E 'version-[0-9]+(-[0-9]+)*$')
 for version_branch in $version_branches; do
     # Remove leading spaces and remote prefix (if any)
-    version_branch=$(echo $version_branch | sed 's/ *//;s/remotes\/origin\///' | grep -E '^version-[0-9]+(-[0-9]+)*$')
+    version_branch=$(echo $version_branch | sed 's/ *//;s/remotes\/origin\///' | grep -E '^version-[0-9]+(-[0-9]+)*$' || true)
+    echo "Found $version_branch"
 
     branches+=" $version_branch"
 done
