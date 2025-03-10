@@ -14,7 +14,6 @@ echo "Detected $image_count .webp and .gif assets in static/assets/docs/images..
 
 # Fetch all branches
 git fetch --all
-echo "Fetch worked"
 
 # List all the version branches
 branches="master"
@@ -30,10 +29,14 @@ done
 echo "Evaluating the following branches for image usage: { $branches }"
 echo "$branches" > evaluated_branches.json
 
-for current_branch in $branches; do    
-    git checkout $current_branch
+for current_branch in $branches; do
+    git checkout $current_branch 2>&1 | tee checkout.log || { 
+    echo "View checkout log:"; 
+    cat checkout.log; 
+    exit 1; 
+    }    
+    #git checkout $current_branch
     git status
-    git log --oneline
 
     grep -Hn -E "\.webp|\.gif" README.md > readme_used_images.json
     find docs -type f -name "*.md" -exec grep -Hn -E "\.webp|\.gif" {} \; > docs_used_images.json
