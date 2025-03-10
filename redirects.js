@@ -49,8 +49,8 @@ let redirects = [
     to: `/clusters/edge/`,
   },
   {
-    from: `/troubleshooting/palette-namespaces-podes/`,
-    to: `/architecture/palette-namespaces-podes/`,
+    from: [`/troubleshooting/palette-namespaces-podes/`, `/architecture/palette-namespaces-podes/`],
+    to: `/architecture/palette-namespaces-pods/`,
   },
   {
     from: `/troubleshooting/Network-Communications-and-Ports/`,
@@ -595,8 +595,8 @@ let redirects = [
     to: "/clusters/cluster-management/cluster-map-filters/",
   },
   {
-    from: "/clusters/cluster-management/reconfigure/",
-    to: "/clusters/cluster-management/node-pool/",
+    from: "/security/lifecycle/secure-development/",
+    to: "/security/lifecycle/",
   },
   {
     from: [
