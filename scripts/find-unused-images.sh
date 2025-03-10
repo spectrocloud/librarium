@@ -27,6 +27,7 @@ echo "$branches" > evaluated_branches.json
 
 for current_branch in $branches; do    
     git checkout $current_branch
+    git pull origin $current_branch
 
     grep -Hn -E "\.webp|\.gif" README.md > readme_used_images.json
     find docs -type f -name "*.md" -exec grep -Hn -E "\.webp|\.gif" {} \; > docs_used_images.json
