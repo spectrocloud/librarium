@@ -737,7 +737,8 @@ Below is an example of how to use the component:
     edition={props.edition}
     text="System Administrators"
     url="/system-management/account-management"
-  /> page to learn more about system administrator roles.
+  />
+  page to learn more about system administrator roles.
 ```
 
 In cases where Palette and Vertex pages have different URLs beyond the base path, the component will accept the
@@ -758,7 +759,8 @@ Below is an example of how to use the component when the URLs are different:
     text="System Administrators"
     palettePath="/system-management/account-management"
     vertexPath="/system-management-vertex/account-management"
-  /> page to learn more about system administrator roles.
+  />
+  page to learn more about system administrator roles.
 ```
 
 ## Security Bulletins
