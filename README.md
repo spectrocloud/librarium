@@ -763,7 +763,8 @@ Below is an example of how to use the component:
     edition={props.edition}
     text="System Administrators"
     url="/system-management/account-management"
-  /> page to learn more about system administrator roles.
+  />
+  page to learn more about system administrator roles.
 ```
 
 In cases where Palette and Vertex pages have different URLs beyond the base path, the component will accept the
@@ -784,7 +785,8 @@ Below is an example of how to use the component when the URLs are different:
     text="System Administrators"
     palettePath="/system-management/account-management"
     vertexPath="/system-management-vertex/account-management"
-  /> page to learn more about system administrator roles.
+  />
+  page to learn more about system administrator roles.
 ```
 
 ## Security Bulletins
@@ -1218,3 +1220,48 @@ displayed. The default value is `false`. If you want to display the unreleased v
 ```shell
 export UNRELEASED_VERSION_BANNER=true
 ```
+
+## Palette Release Documentation
+
+We have a series of scripts that automatically make updates to the documentation with a new Palette release. These
+scripts rely on environment variables for their information.
+
+The scripts update the following files.
+
+- [Advanced CLI Configuration](docs/docs-content/registries-and-packs/advanced-configuration.md)
+- [Compatibility Matrix](docs/docs-content/component.md)
+- [Downloads](docs/docs-content/spectro-downloads.md)
+- [Install Palette CLI](docs/docs-content/automation/palette-cli/install-palette-cli.md)
+- [`_kubernetes_palette_versions.mdx`](_partials/self-hosted/_kubernetes_palette_versions.mdx)
+- [Private Cloud Gateway](docs/docs-content/clusters/pcg/pcg.md)
+- [Release Notes](docs/docs-content/release-notes/release-notes.md)
+- [Spectro Cloud CLI Tool](docs/docs-content/registries-and-packs/spectro-cli-reference.md)
+
+### Environment Variables
+
+The following table provides an overview of all the environment variables and which pages they are used on. For ease of
+recognition, all environment variables used by these scripts are named using the `RELEASE_` prefix.
+
+| **Environment Variable**             | **Description**                                                                                                                                                                                    | **Example Value**                                                     |
+| ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `RELEASE_NAME`                       | The internal release name.                                                                                                                                                                         | `4-5-c`                                                               |
+| `RELEASE_VERSION`                    | The external release version.                                                                                                                                                                      | `4.6.6`                                                               |
+| `RELEASE_DATE`                       | The date that the release takes place.                                                                                                                                                             | `"March 18, 2025"`                                                    |
+| `RELEASE_PALETTE_CLI_VERSION`        | The Palette CLI version.                                                                                                                                                                           | `4.6.0`                                                               |
+| `RELEASE_PALETTE_CLI_SHA`            | The SHA of the Palette CLI corresponding to the provided version.                                                                                                                                  | `07d63693a8c90483f6f000d4580cfd86f81178e4b96cfbd32e0f50955d57eec7`    |
+| `RELEASE_EDGE_CLI_VERSION`           | The Palette Edge CLI version.                                                                                                                                                                      | `4.6.3`                                                               |
+| `RELEASE_EDGE_CLI_SHA`               | The SHA of the Palette Edge CLI corresponding to the provided version.                                                                                                                             | `07d63693a8c90483f6f000d4580cfd86f81178e4b96cfbd32e0f50955d57e89456`  |
+| `RELEASE_REGISTRY_VERSION`           | The Spectro registry version.                                                                                                                                                                      | `4.6.1`                                                               |
+| `RELEASE_SPECTRO_CLI_VERSION`        | The Spectro CLI version.                                                                                                                                                                           | `4.6.0`                                                               |
+| `RELEASE_VMWARE_KUBERNETES_VERSION`  | The Kubernetes version of the Palette [VMware installation](https://docs.spectrocloud.com/enterprise-version/install-palette/#kubernetes-requirements).                                            | `1.30.9`                                                              |
+| `RELEASE_VMWARE_OVA_URL`             | The OS and Kubernetes OVA Download URL corresponding to the Palette release for [VMware installations](https://docs.spectrocloud.com/enterprise-version/install-palette/#kubernetes-requirements). | `https://vmwaregoldenimage.s3.amazonaws.com/u-2204-0-k-1309-0.ova`    |
+| `RELEASE_VMWARE_FIPS_OVA_URL`        | The OS and Kubernetes FIPS OVA Download URL corresponding to the Palette for [VMware installations](https://docs.spectrocloud.com/enterprise-version/install-palette/#kubernetes-requirements).    | `https://vmwaregoldenimage.s3.amazonaws.com/u-2004-0-k-1309-fips.ova` |
+| `RELEASE_HIGHEST_KUBERNETES_VERSION` | The highest supported Kubernetes version for Palette [Kubernetes installation](https://docs.spectrocloud.com/enterprise-version/install-palette/#kubernetes-requirements).                         | `1.30.9`                                                              |
+| `RELEASE_PCG_KUBERNETES_VERSION`     | The Kubernetes cluster version required for PCG [installations](https://docs.spectrocloud.com/clusters/pcg/#kubernetes-requirements).                                                              | `1.30.9`                                                              |
+
+### Commands
+
+- `make init-release` creates placeholders for all the release related environment variables in your `.env` file. Use
+  the placeholders to fill in the values relevant to the Palette release.
+- `make generate-release-notes` creates only the release notes changes for the Palette release.
+- `make generate-release` creates all Palette release related updates, excluding release notes.
