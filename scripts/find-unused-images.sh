@@ -3,9 +3,6 @@
 # Enable error handling
 set -e
 
-# Enable debugging
-set -x
-
 # Create a list of all the images we have and save it to a json.
 # Trim the path static/assets/docs/images.
 find static/assets/docs/images README.md -type f \( -name "*.gif" -o -name "*.webp" \) ! -name ".DS_STORE" ! -name ".DS_Store" | sed 's|static/assets/docs/images||g'  > all_images.json

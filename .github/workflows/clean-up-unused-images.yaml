@@ -10,9 +10,6 @@ on:
     # On the first of every month at 2 am
     - cron: '0 2 1 * *'
   workflow_dispatch:
-  push:
-    branches:
-      - doc-1725-fix-unused-images
 
 concurrency:
   group: clean-up-images-${{ github.ref }}
@@ -119,3 +116,13 @@ jobs:
           SLACKIFY_MARKDOWN: true
           ENABLE_ESCAPES: true
           SLACK_MESSAGE: 'A new PR with unused images to clean up was created. Please review ${{env.GITHUB_CREATED_CLEANUP_PR}} for more details.'
+
+      - name: Failure Slack Notification
+        if: ${{ failure() }}
+        uses: rtCamp/action-slack-notify@v2.3.2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
+          SLACK_COLOR: ${{ job.status }}
+          SLACKIFY_MARKDOWN: true
+          ENABLE_ESCAPES: true
+          SLACK_MESSAGE: 'The clean-up-unused-images job in `${{ github.repository }}` failed. [View details](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}).'
