@@ -274,7 +274,7 @@ clientConfig:
 ## Required IAM Permissions for Configuration
 
 You must ensure the AWS IAM user or role performing these actions has sufficient privileges. The following table is an
-overview of the the permissions required for each configuration section.
+overview of the permissions required for each configuration section.
 
 | Configuration Section                                                                                               | IAM Permissions Required                                                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -292,7 +292,7 @@ overview of the the permissions required for each configuration section.
 
 If using the [Core IAM Policies](../clusters/public-cloud/aws/required-iam-policies.md#core-iam-policies) including the
 [Controllers EKS Policy](../clusters/public-cloud/aws/required-iam-policies.md#controllers-eks-policy), you may need the
-following additional IAM permissions:
+following additional IAM permissions.
 
 | Configuration Section                    | Missing Permissions                                                |
 | ---------------------------------------- | ------------------------------------------------------------------ |
@@ -303,7 +303,7 @@ following additional IAM permissions:
 ### Minimum Permissions Coverage
 
 If using [Minimum Permissions](../clusters/public-cloud/aws/required-iam-policies.md#minimum-permissions), either
-dynamic or static, you may need the following additional IAM permissions:
+dynamic or static, you may need the following additional IAM permissions.
 
 | Configuration Section                                   | Missing Permissions                                                                                                                                                                                                         |
 | ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
