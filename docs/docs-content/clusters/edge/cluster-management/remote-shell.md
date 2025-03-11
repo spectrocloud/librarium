@@ -18,9 +18,9 @@ level and does not require Kubernetes to be available.
 
 :::
 
-You can generate temporary user credentials with root privileges or use an existing user on your Edge host.
-Temporary users have root privilege on the Edge host, allowing you the permissions often required to troubleshoot, but
-they must be enabled per Edge host by someone with sufficient permissions.
+You can generate temporary user credentials with root privileges or use an existing user on your Edge host. Temporary
+users have root privilege on the Edge host, allowing you the permissions often required to troubleshoot, but they must
+be enabled per Edge host by someone with sufficient permissions.
 
 ## Prerequisites
 
