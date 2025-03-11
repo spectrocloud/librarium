@@ -18,9 +18,9 @@ level and does not require Kubernetes to be available.
 
 :::
 
-You can either generate temporary user credentials with root privileges or use an existing user on your Edge host.
-Temporary users have root privilege on the Edge host, allowing you the permissions often required to troubleshoot, but
-they must be enabled per Edge host by someone with sufficient permissions.
+You can generate temporary user credentials with root privileges or use an existing user on your Edge host. Temporary
+users have root privilege on the Edge host, allowing you the permissions often required to troubleshoot, but they must
+be enabled per Edge host by someone with sufficient permissions.
 
 ## Prerequisites
 
@@ -47,7 +47,7 @@ they must be enabled per Edge host by someone with sufficient permissions.
 5. In the upper-right corner, click on **Settings**. Then click **Edit**.
 
 6. Turn on **Remote shell**. This will allow you to open a remote shell session to the Edge host from Palette. You will
-   need the credentials from the host to log in. The privilege you have on the host depends on the user credentials you
+   need the credentials from the host to log in. The privileges you have on the host depends on the user credentials you
    used to log in to the host.
 
 7. (Optional) You may also turn on **Create temporary username and password**. Turning this on will allow you to connect
