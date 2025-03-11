@@ -21,8 +21,8 @@ tags: ["release-notes"]
 
 #### Features
 
-- The Palette UI has been updated with a new color scheme and logo. These new elements are displayed on the login
-  page, left **Main Menu** , and product tour. Check out the new [Palette](https://console.spectrocloud.com) UI.
+- The Palette UI has been updated with a new color scheme and logo. These new elements are displayed on the login page,
+  left **Main Menu** , and product tour. Check out the new [Palette](https://console.spectrocloud.com) UI.
 - Palette and VerteX emails have been updated with a new color scheme and logo. The visual elements match the changes
   made to the Palette UI.
 - [Azure IaaS clusters](../clusters/public-cloud/azure/azure.md) now support autoscaling functionality. This
@@ -43,6 +43,17 @@ tags: ["release-notes"]
 - Palette's internal database, MongoDB, has been upgraded to version 7.0.
 
 #### Deprecations and Removals
+
+- The `PROXY_CERT_PATH` variable is no longer available in the CanvOS build process. Use the **certs** folder in the
+  root of the project directory to store proxy certificates. The **certs** folder is automatically included in the
+  CanvOS build process. Refer to the
+  [Build Provider Images](../clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images.md) for guidance on
+  using the **certs** folder to pass proxy certificates to the CanvOS build process.
+- Palette's internal message communication between components transitioned from NATS to gRPC. The previous usage of NATS
+  has been removed. This change primarily affects customers using Palette agents on versions older than 4.0. To learn
+  more about Palette's internal network architecture, refer to the [Network Ports](../architecture/networking-ports.md)
+  page. If you are using network proxies, we recommend you review the [gRPC and Proxies](../architecture/grps-proxy.md)
+  documentation for potential issues.
 
 ### Edge
 
@@ -103,21 +114,29 @@ tags: ["release-notes"]
 
 | Pack Name | New Version |
 | --------- | ----------- |
+| Cillium   | 1.16.6      |
 
 #### CSI
 
-| Pack Name | New Version |
-| --------- | ----------- |
+| Pack Name        | New Version |
+| ---------------- | ----------- |
+| Longhorn         | 1.8.0       |
+| Rook-Ceph (Helm) | 1.16.3      |
 
 #### Add-on Packs
 
-| Pack Name | New Version |
-| --------- | ----------- |
+| Pack Name                 | New Version |
+| ------------------------- | ----------- |
+| External Secrets Operator | 0.13.0      |
+| KubeArmor                 | 1.4.6       |
+| Longhorn                  | 1.8.0       |
+| Rook-Ceph (Helm)          | 1.16.3      |
 
 #### FIPS Packs
 
 | Pack Name | New Version |
 | --------- | ----------- |
+| Cillium   | 1.16.6      |
 
 #### Deprecations and Removals
 
