@@ -268,9 +268,9 @@ empty file still needs to be added to the OS pack.
 
 :::
 
-Parameters for all charts, manifests, and Ansible roles defined in the pack are defined in the `values.yaml` file.
-_Helm_ charts natively support values override. Any values defined are merged with those defined within a chart.
-_Manifests_ and _Ansible_ roles need to be explicitly templatized if parameter configuration is desired.
+Parameters for all charts and manifests defined in the pack are defined in the `values.yaml` file. _Helm_ charts
+natively support values override. Any values defined are merged with those defined within a chart. _Manifests_ need to
+be explicitly templatized if parameter configuration is desired.
 
 ```yaml
     pack:
@@ -285,11 +285,6 @@ _Manifests_ and _Ansible_ roles need to be explicitly templatized if parameter c
             <templatized manifest1 parameters>
         manifest2:
             <templatized manifest2 parameters>
-    ansibleRoles:
-        role1:
-        <templatized role1 parameters>
-        role2:
-            <templatized role2 parameters>
 ```
 
 4. A pack must have the logo file named `logo.png` and must be copied into the pack directory.
@@ -323,9 +318,8 @@ There are typically the following two scenarios for the OS image:
 
 2. **Vanilla OS Image** - Kubernetes components are not installed.
 
-Additionally, for both scenarios additional components or packages may need to be installed at runtime to prepare the
-final OS image. This can be done by specifying one or more Ansible roles in the pack. The following are a few examples
-of building custom OS pack to cover the some of these scenarios.
+Additionally, for both scenarios, additional components or packages may need to be installed at runtime to prepare the
+final OS image. The following are a few examples of building custom OS packs to cover some of these scenarios.
 
 A few sample pack manifests for building a custom OS pack are shown in the following examples. These are examples for
 images that do not have Kubernetes components pre-installed. Palette installs these components at the time of
