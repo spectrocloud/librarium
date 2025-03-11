@@ -21,12 +21,12 @@ tags: ["release-notes"]
 
 #### Features
 
-- The Palette UI has been rebranded with a new color scheme and logo. These new elements are displayed on the login
+- The Palette UI has been updated with a new color scheme and logo. These new elements are displayed on the login
   page, left **Main Menu** , and product tour. Check out the new [Palette](https://console.spectrocloud.com) UI.
-- Palette and VerteX emails have been rebranded with a new color scheme and logo. The visual elements match the changes
+- Palette and VerteX emails have been updated with a new color scheme and logo. The visual elements match the changes
   made to the Palette UI.
 - [Azure IaaS clusters](../clusters/public-cloud/azure/azure.md) now support autoscaling functionality. This
-  functionality allows Palette to ccale the worker pool horizontally based on its per-node workload counts. Autoscaling
+  functionality allows Palette to scale the worker pool horizontally based on its per-node workload counts. Autoscaling
   can be enabled during cluster creation or by changing the
   [worker node pool configuration](../clusters/cluster-management/node-pool.md#worker-node-pool) Refer to the
   [Create and Manage Azure IaaS Cluster](../clusters/public-cloud/azure/create-azure-cluster.md) guide for further
