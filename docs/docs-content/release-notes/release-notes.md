@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## March 15, 2025 - Release 4.6.X
+## March 15, 2025 - Release 4.6.10
 
 ### Security Notices
 
@@ -19,11 +19,28 @@ tags: ["release-notes"]
 
 ### Palette Enterprise {#palette-enterprise-4-6-a}
 
-#### Breaking Changes {#breaking-changes-4-6-a}
-
 #### Features
 
+- The Palette UI has been rebranded with a new color scheme and logo. These new elements are displayed on the login
+  page, left **Main Menu** , and product tour. Check out the new [Palette](https://console.spectrocloud.com) UI.
+- Palette and VerteX emails have been rebranded with a new color scheme and logo. The visual elements match the changes
+  made to the Palette UI.
+- [Azure IaaS clusters](../clusters/public-cloud/azure/azure.md) now support autoscaling functionality. This
+  functionality allows Palette to ccale the worker pool horizontally based on its per-node workload counts. Autoscaling
+  can be enabled during cluster creation or by changing the
+  [worker node pool configuration](../clusters/cluster-management/node-pool.md#worker-node-pool) Refer to the
+  [Create and Manage Azure IaaS Cluster](../clusters/public-cloud/azure/create-azure-cluster.md) guide for further
+  information.
+- [Agent mode](../deployment-modes/agent-mode/agent-mode.md) feature has now exited Tech Preview and is ready to use for
+  production workloads. Check out the [Install Palette Agent](../deployment-modes/agent-mode/install-agent-host.md)
+  guide for further details.
+
 #### Improvements
+
+- The [cluster filtering](../clusters/cluster-management/cluster-map-filters.md) functionality of the Palette UI has
+  been modified to add the "Deleted" option under the "Status" filter. This improvement provides a simplified process of
+  managing and filtering cluster views.
+- Palette's internal database, MongoDB, has been upgraded to version 7.0.
 
 #### Deprecations and Removals
 
@@ -31,15 +48,40 @@ tags: ["release-notes"]
 
 #### Features
 
+- <TpBadge /> Palette introduces a remote shell capability for troubleshooting remote edge hosts. This new feature
+  allows direct shell access via Palette without depending on user credentials or an active Kubernetes cluster. Refer to
+  the Remote Shell guide for further information.
+
 #### Improvements
 
-#### Bug Fixes
+- Edge clusters now support
+  [automatic certificate renewal](../clusters/cluster-management/certificate-management.md#automatic-certificate-renewal)
+  for clusters that are not connected to Palette. Auto-renewal ensures that certificates are updated with minimal
+  downtime.
 
 ### VerteX
 
 #### Features
 
+- Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
+  [Palette](#palette-enterprise-4-6-a) section for more details.
+
 ### Automation
+
+#### Features
+
+- A new Terraform resource, `spectrocloud_platform_setting`, is now available for
+  [platform settings](../clusters/cluster-management/platform-settings/platform-settings.md) such as session timeout,
+  agent upgrade, and cluster remediation. For more information, refer to the Spectro Cloud Terraform provider
+  [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
+- A new Terraform resource, `spectrocloud_registration_token`, is now available for the creation of
+  [registration tokens](../clusters/edge/site-deployment/site-installation/create-registration-token.md). For more
+  information, refer to the Spectro Cloud Terraform provider
+  [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
+- A new Terraform resource, `spectrocloud_developer_setting`, is now available for setting
+  [tenant developer user quotas](../devx/manage-dev-engine/resource-quota.md#tenant-developer-user-quotas). For more
+  information, refer to the Spectro Cloud Terraform provider
+  [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
 
 ### Docs and Education
 
