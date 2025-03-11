@@ -558,8 +558,22 @@ on-prem/remote environment.
 
    - If using a virtual private gateway, enable route propagation on your subnet route tables.
 
+     - If using static routing, once your IPsec tunnels have been established in step 7, the remote node and remote pod
+       CIDR routes should automatically propagate to your subnet route tables.
+
+       <details>
+
+       <summary> Example </summary>
+
+       | Destination      | Target                  | Status | Propagated |
+       | ---------------- | ----------------------- | ------ | ---------- |
+       | `10.200.0.0/16`  | `vgw-08b7d849217105d6f` | Active | Yes        |
+       | `192.168.0.0/16` | `vgw-08b7d849217105d6f` | Active | Yes        |
+
+       </details>
+
    - If using a transit gateway, add two routes to your subnet route tables. These routes should target the transit
-     gateway for traffic destined for the remote node and remote pod.
+     gateway for traffic destined for the remote nodes and remote pods.
 
      <details>
 
@@ -630,9 +644,11 @@ on-prem/remote environment.
    connection to your AWS VPN. The Phase 2 security associations need to include the following routes:
 
    - Hybrid node network CIDR to AWS VPC CIDR.
+
      - This can be split into multiple routes for each hybrid node subnet. If doing so, ensure that the AWS VPN has
        paired traffic selectors configured. If using an AWS Site-to-Site VPN, this would be configured through the
        **Local IPv4 Network CIDR** and **Remote IPv4 Network CIDR** settings.
+
    - Hybrid pod network CIDR to AWS VPC CIDR.
 
    The following screenshot shows an example IPsec tunnel configuration on a
