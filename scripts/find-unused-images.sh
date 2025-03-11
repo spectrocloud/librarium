@@ -20,7 +20,7 @@ branches="master"
 version_branches=$(git branch -a | grep -E 'version-[0-9]+(-[0-9]+)*$')
 for version_branch in $version_branches; do
     # Remove leading spaces and remote prefix (if any)
-    version_branch=$(echo $version_branch | sed 's/ *//;s/remotes\/origin\///' | grep -E '^version-[0-9]+(-[0-9]+)*$' || true)
+    version_branch=$(echo $version_branch | sed 's/ *//;s/remotes\/origin\///' | grep -E '^version-[0-9]+(-[0-9]+)*$')
 
     branches+=" $version_branch"
 done
