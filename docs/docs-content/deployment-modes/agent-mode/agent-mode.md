@@ -11,10 +11,6 @@ In agent mode, you bring your own host, which can be any host that meets the min
 of the environment. This includes options like an AWS EC2 instance or a Raspberry Pi in your own home. All you need to
 do to have Palette manage your host is to [download and install the Palette agent](./install-agent-host.md).
 
-:::preview
-
-:::
-
 The diagram below illustrates the agent mode cluster provisioning workflow.
 
 ![Architecture Diagram for Agent Mode](/deployment-modes_agent-mode.webp)
