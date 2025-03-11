@@ -36,20 +36,6 @@ The out-of-the-box images are hosted in the public cloud (AWS - AMI, Azure - VHD
 (vSphere - OVA). During provisioning, the image is copied (if missing) to the desired cloud region or downloaded onto a
 private data center.
 
-### Customization
-
-Palette provides various forms of customization options for VM images. All these customization options require a private
-pack registry to be set up with customized OS packs.
-
-#### Customize Out-of-the Box Images
-
-The Palette out-of-the-box images are security-hardened and have Kubernetes components preinstalled. Additional
-components can be installed on the images at runtime by defining one or more Ansible roles in the customized OS pack.
-Palette's orchestration engine creates a new image by instantiating a VM instance from the out-of-the-box image and
-executing the specified Ansible roles on the instance. This custom image is used for cluster provisioning. The
-customized image is tagged with a unique signature generated from the pack definition so that it can be reused for
-future cluster provisioning requests.
-
 ## Security
 
 Palette secures the Kubernetes clusters provisioned by following security best practices at the Operating System,
