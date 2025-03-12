@@ -74,7 +74,7 @@ managedControlPlane:
 Use the following parameters to assign IAM roles to Kubernetes service accounts using IAM Roles for Service Accounts
 (IRSA).
 
-| Parameter                      | Description                                                                                                                                                                                              |
+| Parameter                  | Description                                                                                                                                                                                              |
 | -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `irsaRoles.name`           | The name of the IAM role to be created for IRSA. This typically includes the cluster name for uniqueness.                                                                                                |
 | `irsaRoles.policies`       | A list of [AWS Managed Policy](https://docs.aws.amazon.com/aws-managed-policy/latest/reference/policy-list.html) Amazon Resource Names (ARNs) or custom policy ARNs that should be attached to the role. |
@@ -132,8 +132,8 @@ securityGroupOverrides:
 ### Configure OIDC Identity Provider
 
 Use these parameters to configure an external
-[OIDC identity provider](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#using-flags)
-for Amazon EKS, such as Okta or Auth0.
+[OIDC identity provider](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#using-flags) for Amazon
+EKS, such as Okta or Auth0.
 
 | Parameter                                         | Description                                                                                                                     |
 | ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
