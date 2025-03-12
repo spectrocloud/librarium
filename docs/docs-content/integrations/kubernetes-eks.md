@@ -16,7 +16,7 @@ sections.
 
 The following sections relate to the customizable options within the `managedControlPlane.*` section.
 
-### Disable IAM OIDC identity provider
+### Disable IAM OIDC Identity Provider
 
 Use this parameter to disable creation of the Identity and Access Management (IAM) OpenID Connect (OIDC) identity
 provider.
@@ -74,7 +74,7 @@ managedControlPlane:
 Use the following parameters to assign IAM roles to Kubernetes service accounts using IAM Roles for Service Accounts
 (IRSA).
 
-| Field                      | Description                                                                                                                                                                                              |
+| Parameter                      | Description                                                                                                                                                                                              |
 | -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `irsaRoles.name`           | The name of the IAM role to be created for IRSA. This typically includes the cluster name for uniqueness.                                                                                                |
 | `irsaRoles.policies`       | A list of [AWS Managed Policy](https://docs.aws.amazon.com/aws-managed-policy/latest/reference/policy-list.html) Amazon Resource Names (ARNs) or custom policy ARNs that should be attached to the role. |
@@ -132,7 +132,7 @@ securityGroupOverrides:
 ### Configure OIDC Identity Provider
 
 Use these parameters to configure an external
-[OpenID Connect (OIDC) identity provider](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#using-flags)
+[OIDC identity provider](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#using-flags)
 for Amazon EKS, such as Okta or Auth0.
 
 | Parameter                                         | Description                                                                                                                     |
@@ -265,7 +265,7 @@ other client tools.
 clientConfig:
   oidc-issuer-url: "https://tenant.okta.com"
   oidc-client-id: "my-oidc-client-id"
-  oidc-client-secret: "<your oidc client secret>"
+  oidc-client-secret: "my-oidc-client-secret"
   oidc-extra-scope: "profile,email"
 ```
 
@@ -278,19 +278,19 @@ overview of the permissions required for each configuration section.
 
 | Configuration Section                                                                                               | IAM Permissions Required                                                                                                                                                                                                    |
 | ------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [Disable IAM OIDC identity provider](#disable-iam-oidc-identity-provider)                                           | `iam:CreateOpenIDConnectProvider`, `iam:DeleteOpenIDConnectProvider`, `iam:GetOpenIDConnectProvider`, `iam:TagOpenIDConnectProvider`                                                                                        |
+| [Disable IAM OIDC Identity Provider](#disable-iam-oidc-identity-provider)                                           | `iam:CreateOpenIDConnectProvider`, `iam:DeleteOpenIDConnectProvider`, `iam:GetOpenIDConnectProvider`, `iam:TagOpenIDConnectProvider`                                                                                        |
 | [Configure Logging](#configure-logging)                                                                             | `logs:CreateLogGroup`, `logs:CreateLogStream`, `logs:PutLogEvents`, `eks:UpdateClusterConfig`                                                                                                                               |
 | [Configure IAM Roles for Service Accounts](#configure-iam-roles-for-service-accounts)                               | `iam:CreateRole`, `iam:AttachRolePolicy`, `iam:PassRole`, `iam:GetRole`, `iam:ListRoles`                                                                                                                                    |
 | [Configure Security Group Overrides](#configure-security-group-overrides)                                           | `ec2:DescribeSecurityGroups`, `ec2:CreateSecurityGroup`, `ec2:AuthorizeSecurityGroupIngress`, `ec2:AuthorizeSecurityGroupEgress`, `ec2:DeleteSecurityGroup`                                                                 |
 | [Configure OIDC Identity Provider](#configure-oidc-identity-provider)                                               | `eks:AssociateIdentityProviderConfig`, `eks:DisassociateIdentityProviderConfig`, `eks:DescribeIdentityProviderConfig`, `iam:CreateOpenIDConnectProvider`, `iam:DeleteOpenIDConnectProvider`, `iam:TagOpenIDConnectProvider` |
 | [Configure Additional Control Plane Policies](#configure-additional-control-plane-policies)                         | `iam:AttachRolePolicy`, `iam:DetachRolePolicy`, `iam:PassRole`                                                                                                                                                              |
-| [Map IAM Identities to Kubernetes RBAC Groups](#map-iam-identities-to-kubernetes-rbac-groups)                       | Dependent on the [cluster authentication mode](https://docs.aws.amazon.com/eks/latest/userguide/grant-k8s-access.html#set-cam), EKS API mode may require `eks:DescribeCluster` and `eks:UpdateClusterConfig`.               |
+| [Map IAM Identities to Kubernetes RBAC Groups](#map-iam-identities-to-kubernetes-rbac-groups)                       | Depending on the [cluster authentication mode](https://docs.aws.amazon.com/eks/latest/userguide/grant-k8s-access.html#set-cam), EKS API mode may require `eks:DescribeCluster` and `eks:UpdateClusterConfig`.               |
 | [Configure Custom IAM Role and Policies for Worker Nodes](#configure-custom-iam-role-and-policies-for-worker-nodes) | `iam:CreateRole`, `iam:AttachRolePolicy`, `iam:PassRole`, `iam:GetRole`, `iam:ListRoles`                                                                                                                                    |
 | [Configure OIDC-Based Authentication in Kubeconfig](#configure-oidc-based-authentication-in-kubeconfig)             | `eks:DescribeCluster`                                                                                                                                                                                                       |
 
 ### Core IAM Policies Coverage
 
-If using the [Core IAM Policies](../clusters/public-cloud/aws/required-iam-policies.md#core-iam-policies) including the
+If using the [Core IAM Policies](../clusters/public-cloud/aws/required-iam-policies.md#core-iam-policies), including the
 [Controllers EKS Policy](../clusters/public-cloud/aws/required-iam-policies.md#controllers-eks-policy), you may need the
 following additional IAM permissions.
 
@@ -307,7 +307,7 @@ dynamic or static, you may need the following additional IAM permissions.
 
 | Configuration Section                                   | Missing Permissions                                                                                                                                                                                                         |
 | ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Disable IAM OIDC identity provider                      | `iam:CreateOpenIDConnectProvider`, `iam:DeleteOpenIDConnectProvider`, `iam:GetOpenIDConnectProvider`, `iam:TagOpenIDConnectProvider`                                                                                        |
+| Disable IAM OIDC Identity Provider                      | `iam:CreateOpenIDConnectProvider`, `iam:DeleteOpenIDConnectProvider`, `iam:GetOpenIDConnectProvider`, `iam:TagOpenIDConnectProvider`                                                                                        |
 | Configure Logging                                       | `logs:CreateLogGroup`, `logs:CreateLogStream`, `logs:PutLogEvents`, `eks:UpdateClusterConfig`                                                                                                                               |
 | Configure IAM Roles for Service Accounts                | `iam:CreateRole`, `iam:AttachRolePolicy`, `iam:GetRole`, `iam:ListRoles`                                                                                                                                                    |
 | Configure Security Group Overrides                      | `ec2:AuthorizeSecurityGroupEgress`                                                                                                                                                                                          |
