@@ -38,8 +38,8 @@ tags: ["release-notes"]
 #### Improvements
 
 - The [cluster filtering](../clusters/cluster-management/cluster-map-filters.md) functionality of the Palette UI has
-  been modified to add the **Deleted** option under the **Status** filter. This improvement provides a simplified process of
-  managing and filtering cluster views.
+  been modified to add the **Deleted** option under the **Status** filter. This improvement provides a simplified
+  process of managing and filtering cluster views.
 - Palette's internal database, MongoDB, has been upgraded to version 7.0.
 
 #### Deprecations and Removals
@@ -114,7 +114,7 @@ tags: ["release-notes"]
 
 | Pack Name | New Version |
 | --------- | ----------- |
-| Cilium   | 1.16.6      |
+| Cilium    | 1.16.6      |
 
 #### CSI
 
@@ -136,7 +136,7 @@ tags: ["release-notes"]
 
 | Pack Name | New Version |
 | --------- | ----------- |
-| Cilium   | 1.16.6      |
+| Cilium    | 1.16.6      |
 
 #### Deprecations and Removals
 
