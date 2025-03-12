@@ -147,7 +147,7 @@ tags: ["release-notes"]
 | ------------------------------------------ | ----------- |
 | Calico                                     | 3.29.2      |
 | Calico (Azure)                             | 3.29.2      |
-| Cilium                                    | 1.16.6      |
+| Cilium                                     | 1.16.6      |
 | Palette eXtended Kubernetes (PXK)          | 1.32.2      |
 | Palette eXtended Kubernetes (PXK)          | 1.31.6      |
 | Palette eXtended Kubernetes (PXK)          | 1.30.10     |
