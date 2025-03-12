@@ -87,12 +87,12 @@ Palette. You will then create a cluster profile and use the registered host to d
   - [rsyslog](https://github.com/rsyslog/rsyslog). This is required for audit logs.
   - (Airgap only) [Palette Edge CLI](../../spectro-downloads.md#palette-edge-cli)
 
-    :::warning
+  :::warning
 
-    Avoid installing Docker on the host where you want to install the agent. Docker is a heavyweight tool that could
-    interfere with the Palette agent.
+  Avoid installing Docker on the host where you want to install the agent. Docker is a heavyweight tool that could
+  interfere with the Palette agent.
 
-    :::
+  :::
 
   - If installing the FIPS version of Agent Mode on a Rocky Linux edge host, you must configure your SELinux policies to
     grant rsync the required host permissions and ensure you enable cgroup V2.
