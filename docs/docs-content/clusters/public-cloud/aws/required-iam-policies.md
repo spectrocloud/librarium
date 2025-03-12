@@ -31,8 +31,8 @@ into a custom-managed policy. You can learn more about AWS IAM limits in the
 
 :::
 
-If you want to narrow down the IAM permissions, you can use the [Minimum Permissions](#minimum-permissions) policies.
-These policies are designed to follow the
+If you want to narrow down the IAM permissions, you can use the [Minimum Permissions](#minimum-permissions-policies)
+policies. These policies are designed to follow the
 [principle of least privilege](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#grant-least-privilege).
 You can also use the Static Policy for deploying clusters within an existing VPC without provisioning or deleting
 foundational network resources.
@@ -69,13 +69,7 @@ The four core IAM policies are required for Palette to operate.
 
 </Tabs>
 
-### Controllers EKS Policy
-
-If you plan to deploy host clusters to AWS EKS, make sure to attach the **PaletteControllersEKSPolicy**.
-
-<PartialsComponent category="permissions" name="aws-eks-controller-policy" />
-
-## Minimum Permissions
+## Minimum Permissions Policies
 
 The following policies are designed from the
 [principle of least privilege](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#grant-least-privilege).
@@ -134,6 +128,13 @@ The following are important points to be aware of.
 > policies must have an action that has an applicable resource or condition_.
 
 :::
+
+## Controllers EKS Policy
+
+If you plan to deploy AWS EKS host clusters, make sure to attach the **PaletteControllersEKSPolicy** on top of the
+[Core IAM](#core-iam-policies) or [Minimum Permissions](#minimum-permissions-policies) policies.
+
+<PartialsComponent category="permissions" name="aws-eks-controller-policy" />
 
 ## Global Role Additional Policies
 
