@@ -22,13 +22,13 @@ tags: ["release-notes"]
 #### Features
 
 - The Palette UI has been updated with a new color scheme and logo. These new elements are displayed on the login page,
-  left **Main Menu** , and product tour. Check out the new [Palette](https://console.spectrocloud.com) UI.
+  left **Main Menu**, and product tour. Check out the new [Palette](https://console.spectrocloud.com) UI.
 - Palette and VerteX emails have been updated with a new color scheme and logo. The visual elements match the changes
   made to the Palette UI.
 - [Azure IaaS clusters](../clusters/public-cloud/azure/azure.md) now support autoscaling functionality. This
   functionality allows Palette to scale the worker pool horizontally based on its per-node workload counts. Autoscaling
   can be enabled during cluster creation or by changing the
-  [worker node pool configuration](../clusters/cluster-management/node-pool.md#worker-node-pool) Refer to the
+  [worker node pool configuration](../clusters/cluster-management/node-pool.md#worker-node-pool). Refer to the
   [Create and Manage Azure IaaS Cluster](../clusters/public-cloud/azure/create-azure-cluster.md) guide for further
   information.
 - [Agent mode](../deployment-modes/agent-mode/agent-mode.md) feature has now exited Tech Preview and is ready to use for
@@ -38,7 +38,7 @@ tags: ["release-notes"]
 #### Improvements
 
 - The [cluster filtering](../clusters/cluster-management/cluster-map-filters.md) functionality of the Palette UI has
-  been modified to add the "Deleted" option under the "Status" filter. This improvement provides a simplified process of
+  been modified to add the **Deleted** option under the **Status** filter. This improvement provides a simplified process of
   managing and filtering cluster views.
 - Palette's internal database, MongoDB, has been upgraded to version 7.0.
 
@@ -114,7 +114,7 @@ tags: ["release-notes"]
 
 | Pack Name | New Version |
 | --------- | ----------- |
-| Cillium   | 1.16.6      |
+| Cilium   | 1.16.6      |
 
 #### CSI
 
@@ -136,7 +136,7 @@ tags: ["release-notes"]
 
 | Pack Name | New Version |
 | --------- | ----------- |
-| Cillium   | 1.16.6      |
+| Cilium   | 1.16.6      |
 
 #### Deprecations and Removals
 
