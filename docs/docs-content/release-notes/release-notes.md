@@ -115,9 +115,11 @@ tags: ["release-notes"]
 
 #### CNI
 
-| Pack Name | New Version |
-| --------- | ----------- |
-| Cilium    | 1.16.6      |
+| Pack Name      | New Version |
+| -------------- | ----------- |
+| Calico         | 3.29.2      |
+| Calico (Azure) | 3.29.2      |
+| Cilium         | 1.16.6      |
 
 #### CSI
 
@@ -131,15 +133,21 @@ tags: ["release-notes"]
 | Pack Name                 | New Version |
 | ------------------------- | ----------- |
 | External Secrets Operator | 0.13.0      |
+| Harbor                    | 1.16.2      |
 | KubeArmor                 | 1.4.6       |
 | Longhorn                  | 1.8.0       |
+| Prometheus - Grafana      | 68.4.4      |
+| Registry Connect          | 0.1.0       |
 | Rook-Ceph (Helm)          | 1.16.3      |
+| Zot                       | 0.1.66      |
 
 #### FIPS Packs
 
 | Pack Name                                  | New Version |
 | ------------------------------------------ | ----------- |
-| Cillium                                    | 1.16.6      |
+| Calico                                     | 3.29.2      |
+| Calico (Azure)                             | 3.29.2      |
+| Cilium                                    | 1.16.6      |
 | Palette eXtended Kubernetes (PXK)          | 1.32.2      |
 | Palette eXtended Kubernetes (PXK)          | 1.31.6      |
 | Palette eXtended Kubernetes (PXK)          | 1.30.10     |

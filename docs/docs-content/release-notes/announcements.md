@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Annoucements"
-title: "Annoucements"
+sidebar_label: "Announcements"
+title: "Announcements"
 description: ""
 hide_table_of_contents: false
 sidebar_position: 10
@@ -25,21 +25,21 @@ for the changes in your environment.
 
 <!-- vale off -->
 
-## Upcoming Deprecations and Removals
+## Deprecations
 
 <!-- vale on -->
 
-The table below lists the upcoming deprecations and removals in Palette and Palette VerteX. Review the information to
-below and take necessary actions to avoid any disruptions in your environment.
+The table below lists the upcoming deprecations in Palette and Palette VerteX. Review the information to below and take
+necessary actions to avoid any disruptions in your environment.
 
-| Change                                | Target Date | Published Date |
-| ------------------------------------- | ----------- | -------------- |
-| No upcoming deprecations and removals | -           | -              |
+| Change                                                                                                                                                                                                                                                                                                                                                                     | Target Removal Date | Published Date |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- | -------------- |
+| The **tc** subcommand of the [Palette CLI](../automation/palette-cli/palette-cli.md) is deprecated. This command provided functionality for deploying target clusters using the Palette CLI. We recommend to use the [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) for cluster deployment automation. | June 7, 2025        | March 15, 2025 |
 
-## Implemented Changes
+## Removals
 
-You can review previously implemented changes in Palette and VerteX in the following table. Refer to respective release
-version's [Release Notes](./release-notes.md) for more information.
+You can review the deprecations that have been removed in Palette and VerteX in the following table. Refer to respective
+release version's [Release Notes](./release-notes.md) for more information.
 
 | Change                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | Release | Date             |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- | ---------------- |
