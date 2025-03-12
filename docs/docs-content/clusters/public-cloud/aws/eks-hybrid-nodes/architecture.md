@@ -39,52 +39,8 @@ Transit Gateway and AWS Site-to-Site Virtual Private Network (VPN).
 
 ![Example Amazon EKS Hybrid Nodes network architecture](/aws_eks-hybrid_architecture_eks-hybrid-architecture.webp)
 
-Hybrid network connectivity can be configured using a variety of methods, such as:
-
-- [AWS Site-to-Site VPN](https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html)
-- [AWS Direct Connect](https://docs.aws.amazon.com/whitepapers/latest/aws-vpc-connectivity-options/aws-direct-connect.html)
-- [Software VPN](https://docs.aws.amazon.com/whitepapers/latest/aws-vpc-connectivity-options/software-vpn.html)
-
-Refer to
-[Network-to-Amazon VPC connectivity options](https://docs.aws.amazon.com/whitepapers/latest/aws-vpc-connectivity-options/network-to-amazon-vpc-connectivity-options.html)
-for guidance on all available options.
-
-### Configuration Requirements
-
-If using a VPN or AWS Direct Connect between AWS and your on-prem and edge environments, review the following
-configuration requirements.
-
-#### AWS
-
-<!-- Commented out until greenfield provisioning is available -->
-<!-- Configure your EKS cluster with static placement so that your nodes are assigned to specific Availability Zones (AZs)
-and fixed networking configurations. This is required because of the following reasons:
-
-- The VPN configuration must be set up with predefined routes and IP ranges.
-- Node placement cannot change dynamically across AZs.
-- Network paths need to remain consistent for VPN tunnels to function properly. -->
-
-Traffic routing in the Amazon EKS VPC requires the following mapping for hybrid nodes:
-
-- Route table entries mapping hybrid node CIDR ranges to VPN endpoint.  
-  For example, Hybrid Node CIDR 10.200.0.0/16 → VPN endpoint 172.16.0.1.
-
-- Route table entries mapping hybrid pod CIDR ranges to VPN endpoint.  
-  For example, Hybrid Pod CIDR 192.168.0.0/16 → VPN endpoint 172.16.0.1.
-
-- For AWS Direct Connect, map traffic to appropriate private subnet CIDR.  
-  For example, both CIDRs 10.200.0.0/16 & 192.168.0.0/16 → Private subnet 172.16.1.0/24.
-
-For AWS VPNs, configure two static routes for each of the following CIDRs:
-
-- Hybrid Node CIDR block.  
-  For example, Hybrid Node CIDR 10.200.0.0/16 → VPN endpoint 172.16.0.1.
-
-- Hybrid Pod CIDR block.  
-  For example, Hybrid Pod CIDR 192.168.0.0/16 → VPN endpoint 172.16.0.1.
-
-If you're using a Virtual Private Gateway or Transit Gateway, route propagation can be enabled to automatically populate
-your VPC route tables. Ensure you verify your route tables after propagation.
+Refer to [Prepare Network](./prepare-environment/prepare-network.md) for help configuring the network in your AWS
+region, on-prem/remote environment, and inter-site connectivity.
 
 ## Operating System Compatibility
 

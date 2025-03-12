@@ -437,8 +437,24 @@ AWS documentation under
 
 ## Inter-Site Connectivity
 
-This section provides high-level steps and example configuration for your inter-site connectivity between AWS and an
-on-prem/remote environment.
+This section outlines high-level steps and example configurations for establishing inter-site connectivity between AWS
+and your on-prem/remote environment.
+
+Inter-site connectivity can be configured using a variety of methods, such as:
+
+- [AWS Site-to-Site VPN](https://docs.aws.amazon.com/vpn/latest/s2svpn/VPC_VPN.html)
+- [AWS Direct Connect](https://docs.aws.amazon.com/whitepapers/latest/aws-vpc-connectivity-options/aws-direct-connect.html)
+- [Software VPN](https://docs.aws.amazon.com/whitepapers/latest/aws-vpc-connectivity-options/software-vpn.html)
+
+Refer to
+[Network-to-Amazon VPC connectivity options](https://docs.aws.amazon.com/whitepapers/latest/aws-vpc-connectivity-options/network-to-amazon-vpc-connectivity-options.html)
+for guidance on all available options.
+
+:::important
+
+This sections's primary focus is AWS Site-to-Site VPN, although some steps can be adapted for AWS Direct Connect.
+
+:::
 
 ### Prerequisites
 
@@ -482,7 +498,7 @@ on-prem/remote environment.
    | ----------------------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
    | **Name tag (optional)** | `eks-hybrid-remote-gateway-1` | The optional AWS **Name** tag value for the customer gateway.                                                                                                                   |
    | **BGP ASN**             | `65000`                       | The BGP Autonomous System Number (ASN) used to identify your on-premises gateway in BGP route exchanges. It must be distinct from the ASN configured on the AWS target gateway. |
-   | **IP address**          | `3.21.140.175`                | The public IP address of the on-prem/remote gateway used to establish the VPN connection.                                                                                       |
+   | **IP address**          | `3.232.157.211`               | The public IP address of the on-prem/remote gateway used to establish the VPN connection.                                                                                       |
    | **Device (optional)**   | `eks-hybrid-remote-gateway-1` | An optional identifier for the device, used for reference within the AWS console.                                                                                               |
 
 2. In AWS,
@@ -554,7 +570,16 @@ on-prem/remote environment.
    </Tabs>
 
 3. [Configure routing](https://docs.aws.amazon.com/vpn/latest/s2svpn/SetUpVPNConnections.html#vpn-configure-route-tables)
-   on your AWS VPC subnet route tables.
+   in AWS to enable traffic from your on-prem/remote network.
+
+   :::info
+
+   If using AWS Direct Connect, you would need to map traffic from your on-prem/remote network to your AWS VPC private
+   subnet CIDRs.  
+   For example, both remote node and pod CIDRs `10.200.0.0/16` & `192.168.0.0/16` → Private subnet CIDRs `10.100.0.0/24`
+   & `10.100.1.0/24`.
+
+   :::
 
    - If using a virtual private gateway, enable route propagation on your subnet route tables.
 
@@ -572,19 +597,39 @@ on-prem/remote environment.
 
        </details>
 
-   - If using a transit gateway, add two routes to your subnet route tables. These routes should target the transit
-     gateway for traffic destined for the remote nodes and remote pods.
+       If they are not automatically propagated, you will need to define them manually.
 
-     <details>
+   - If using a transit gateway, add two routes to your subnet route tables and your transit gateway route table.
 
-     <summary> Example </summary>
+     - For the subnet route tables,
+       [add routes](https://docs.aws.amazon.com/vpc/latest/userguide/WorkWithRouteTables.html#AddRemoveRoutes) that
+       target the transit gateway for traffic destined for the remote node CIDRs and remote pod CIDRs.
 
-     | Destination      | Target                  | Status | Propagated |
-     | ---------------- | ----------------------- | ------ | ---------- |
-     | `10.200.0.0/16`  | `tgw-06e39deb85a158d2e` | Active | No         |
-     | `192.168.0.0/16` | `tgw-06e39deb85a158d2e` | Active | No         |
+       <details>
 
-     </details>
+       <summary> Example </summary>
+
+       | Destination      | Target                  | Status | Propagated |
+       | ---------------- | ----------------------- | ------ | ---------- |
+       | `10.200.0.0/16`  | `tgw-06e39deb85a158d2e` | Active | No         |
+       | `192.168.0.0/16` | `tgw-06e39deb85a158d2e` | Active | No         |
+
+       </details>
+
+     - For the transit gateway route table,
+       [create active static routes](https://docs.aws.amazon.com/vpc/latest/tgw/tgw-create-static-route.html) for the
+       remote node CIDRs and remote pod CIDRs. These should be attached to the VPN.
+
+       <details>
+
+       <summary> Example </summary>
+
+       | CIDR             | Attachment ID                  | Resource ID                            | Resource type | Route type | Route state |
+       | ---------------- | ------------------------------ | -------------------------------------- | ------------- | ---------- | ----------- |
+       | `10.200.0.0/16`  | `tgw-attach-0b80c5b8aff518ead` | `vpn-0c3568c2303ac18df(3.232.157.211)` | VPN           | Static     | Active      |
+       | `192.168.0.0/16` | `tgw-attach-0b80c5b8aff518ead` | `vpn-0c3568c2303ac18df(3.232.157.211)` | VPN           | Static     | Active      |
+
+       </details>
 
 4. [Create a VPN connection](https://docs.aws.amazon.com/vpn/latest/s2svpn/SetUpVPNConnections.html#vpn-create-vpn-connection)
    in AWS.
@@ -729,8 +774,16 @@ on-prem/remote environment.
 
 ### Validate
 
-1. If you have an available host deployed within the VLAN or subnet, SSH into the host, and attempt to reach your AWS
-   VPC gateway.
+<Tabs queryString="aws-connection-type">
+
+<TabItem label="AWS Site-to-Site VPN" value="aws-site-to-site-vpn">
+
+1. Log in to the [Amazon VPC console](https://console.aws.amazon.com/vpcconsole/home).
+
+2. Check that your AWS Site-to-Site VPN connection has two tunnels with a **Status** of **Up**.
+
+3. If you have an available host deployed within the on-prem/remote VLAN or subnet, SSH into the host, and attempt to
+   reach your AWS VPC gateway.
 
    Replace `<awsVpcGateway>` with the IP address of your AWS VPC gateway, for example, `10.100.0.1`.
 
@@ -753,7 +806,7 @@ on-prem/remote environment.
    rtt min/avg/max/mdev = 27.5/28.2/29.1/0.6 ms
    ```
 
-2. If you have an EC2 instance available that has been deployed in your AWS VPC, attempt to reach an available host
+4. If you have an EC2 instance available that has been deployed in your AWS VPC, attempt to reach an available host
    deployed within the on-prem VLAN or subnet.
 
    Replace `<hostIpAddress>` with the IP address of your on-prem host, for example, `10.200.1.23`.
@@ -776,6 +829,67 @@ on-prem/remote environment.
    4 packets transmitted, 4 received, 0% packet loss, time 3999ms
    rtt min/avg/max/mdev = 27.5/28.2/29.1/0.6 ms
    ```
+
+</TabItem>
+
+<TabItem label="AWS Direct Connect" value="aws-direct-connect">
+
+1. Log in to the [AWS Direct Connect console](https://console.aws.amazon.com/directconnect/v2/home).
+
+2. Check that that the AWS Direct Connect connection and its associated Virtual Interface (Private VIF) are in an
+   **Available** state. Check that the BGP session is established and the BGP status is **Up**.
+
+3. If you have an available host deployed within the on-prem/remote VLAN or subnet, SSH into the host, and attempt to
+   reach your AWS VPC gateway.
+
+   Replace `<awsVpcGateway>` with the IP address of your AWS VPC gateway, for example, `10.100.0.1`.
+
+   ```shell
+   ping <awsVpcGateway>
+   ```
+
+   Check that the ping statistics from the output show a healthy connection.
+
+   Example healthy output.
+
+   ```shell hideClipboard
+   PING 10.100.0.1 (10.100.0.1) 56(84) bytes of data.
+   64 bytes from 10.100.0.1: icmp_seq=1 ttl=64 time=27.5 ms
+   64 bytes from 10.100.0.1: icmp_seq=2 ttl=64 time=28.2 ms
+   64 bytes from 10.100.0.1: icmp_seq=3 ttl=64 time=29.1 ms
+   64 bytes from 10.100.0.1: icmp_seq=4 ttl=64 time=27.9 ms
+   --- 10.100.0.1 ping statistics ---
+   4 packets transmitted, 4 received, 0% packet loss, time 3999ms
+   rtt min/avg/max/mdev = 27.5/28.2/29.1/0.6 ms
+   ```
+
+4. If you have an EC2 instance available that has been deployed in your AWS VPC, attempt to reach an available host
+   deployed within the on-prem VLAN or subnet.
+
+   Replace `<hostIpAddress>` with the IP address of your on-prem host, for example, `10.200.1.23`.
+
+   ```shell
+   ping <hostIpAddress>
+   ```
+
+   Check that the ping statistics from the output show a healthy connection.
+
+   Example healthy output.
+
+   ```shell hideClipboard
+   PING 10.200.1.23 (10.200.1.23) 56(84) bytes of data.
+   64 bytes from 10.200.1.23: icmp_seq=1 ttl=64 time=27.5 ms
+   64 bytes from 10.200.1.23: icmp_seq=2 ttl=64 time=28.2 ms
+   64 bytes from 10.200.1.23: icmp_seq=3 ttl=64 time=29.1 ms
+   64 bytes from 10.200.1.23: icmp_seq=4 ttl=64 time=27.9 ms
+   --- 10.200.1.23 ping statistics ---
+   4 packets transmitted, 4 received, 0% packet loss, time 3999ms
+   rtt min/avg/max/mdev = 27.5/28.2/29.1/0.6 ms
+   ```
+
+</TabItem>
+
+</Tabs>
 
 ## Next Steps
 

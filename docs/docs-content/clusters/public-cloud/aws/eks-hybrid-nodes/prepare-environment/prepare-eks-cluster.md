@@ -56,7 +56,13 @@ These steps use the AWS Management Console.
 8. On the **Specify networking** page, in the **Networking** section, select your Amazon EKS Hybrid VPC and subnets for
    **VPC** and **Subnets**.
 
-9. For **Additional security groups**, select the security group created for your Amazon EKS Hybrid Nodes environment.
+9. For **Additional security groups**, select the security group created for your on-prem/remote environment.
+
+   :::info
+
+   This is highlighted in step 8 of the [Configure AWS Network](./prepare-network.md#configure-aws-network) guide.
+
+   :::
 
 10. For **Choose cluster IP address family**, ensure **IPv4** is selected.
 
