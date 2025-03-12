@@ -79,6 +79,13 @@ tags: ["release-notes"]
 
 ### Automation
 
+:::info
+
+Check out the [Downloads](../spectro-downloads.md) and [Compatibility Matrix](../component.md) pages to find the
+compatible version of the Palette CLI.
+
+:::
+
 #### Features
 
 - A new Terraform resource, `spectrocloud_platform_setting`, is now available for

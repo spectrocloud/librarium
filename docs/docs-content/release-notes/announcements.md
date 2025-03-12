@@ -7,8 +7,7 @@ sidebar_position: 10
 tags: ["breaking-changes", "deprecations"]
 ---
 
-This page lists the upcoming breaking changes, deprecations, and removals in Palette and Palette VerteX. You can also
-find previously implemented changes in the [Implemented Changes](#implemented-changes) section.
+This page lists the upcoming breaking changes, deprecations, and removals in Palette and Palette VerteX.
 
 <!-- vale off -->
 
