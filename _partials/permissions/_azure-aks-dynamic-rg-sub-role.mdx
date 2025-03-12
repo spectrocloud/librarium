@@ -6,10 +6,10 @@ partial_name: azure-aks-dynamic-rg-sub-role
 
 ```json
 {
-    "Name": "Palette Dynamic Placement AKS Cluster Deployer (rg/sub)",
-    "IsCustom": true,
-    "Description": "Can use Palette to deploy AKS clusters using dynamic placement. This role has the permissions required at the resource group scope level. If deploying multiple clusters in a variety of resource groups within a subscription, apply the role with the subscription as scope instead of the resource group as scope.",
-    "Actions": [
+  "Name": "Palette Dynamic Placement AKS Cluster Deployer (rg/sub)",
+  "IsCustom": true,
+  "Description": "Can use Palette to deploy AKS clusters using dynamic placement. This role has the permissions required at the resource group scope level. If deploying multiple clusters in a variety of resource groups within a subscription, apply the role with the subscription as scope instead of the resource group as scope.",
+  "Actions": [
     "Microsoft.Authorization/classicAdministrators/operationstatuses/read",
     "Microsoft.Authorization/classicAdministrators/read",
     "Microsoft.Authorization/denyAssignments/read",
@@ -465,10 +465,10 @@ partial_name: azure-aks-dynamic-rg-sub-role
     "Microsoft.Network/virtualNetworks/write",
     "Microsoft.ResourceHealth/availabilityStatuses/read",
     "Microsoft.Resources/subscriptions/resourceGroups/read"
-    ],
-    "NotActions": [],
-    "AssignableScopes": [
+  ],
+  "NotActions": [],
+  "AssignableScopes": [
     "/subscriptions/$SUBSCRIPTION_ID"
-    ]
+  ]
 }
 ```
