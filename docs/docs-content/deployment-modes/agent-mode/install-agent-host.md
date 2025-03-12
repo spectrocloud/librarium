@@ -20,10 +20,6 @@ This page guides you through the process of installing the Palette agent on your
 user data file to configure your host, install the agent, and verify that your host was successfully registered with
 Palette. You will then create a cluster profile and use the registered host to deploy a cluster.
 
-:::preview
-
-:::
-
 ## Limitations
 
 - The following table presents the verified combinations of host architecture and cluster profile layers.

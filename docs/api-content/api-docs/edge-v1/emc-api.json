@@ -3124,9 +3124,9 @@
       "description": "Configuration status of the edge host.",
       "type": "string",
       "enum": [
-        "Pending",
-        "Inprogress",
-        "Configured"
+        "pending",
+        "inprogress",
+        "configured"
       ]
     },
     "v1ConnectionMode": {
