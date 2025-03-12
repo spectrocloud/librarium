@@ -96,19 +96,22 @@ tags: ["release-notes"]
 
 ### Docs and Education
 
+- The Spectro Cloud Documentation site UI has been updated with a new color scheme and logo. The visual elements match
+  the changes made to the [Palette](https://console.spectrocloud.com) UI.
+
 ### Packs
-
-#### Pack Notes
-
-#### OS
-
-| Pack Name | New Version |
-| --------- | ----------- |
 
 #### Kubernetes
 
-| Pack Name | New Version |
-| --------- | ----------- |
+| Pack Name                                  | New Version |
+| ------------------------------------------ | ----------- |
+| Palette eXtended Kubernetes (PXK)          | 1.32.2      |
+| Palette eXtended Kubernetes (PXK)          | 1.31.6      |
+| Palette eXtended Kubernetes (PXK)          | 1.30.10     |
+| Palette eXtended Kubernetes (PXK)          | 1.29.14     |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.31.6      |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.30.10     |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.29.14     |
 
 #### CNI
 
@@ -134,79 +137,16 @@ tags: ["release-notes"]
 
 #### FIPS Packs
 
-| Pack Name | New Version |
-| --------- | ----------- |
-| Cilium    | 1.16.6      |
-
-#### Deprecations and Removals
-
-## March 15, 2025 - Release 4.6.X
-
-### Security Notices
-
-- Review the [Security Bulletins](../security-bulletins/reports/reports.mdx) page for the latest security advisories.
-
-### Palette Enterprise {#palette-enterprise-4-6-a}
-
-#### Breaking Changes {#breaking-changes-4-6-a}
-
-#### Features
-
-#### Improvements
-
-#### Deprecations and Removals
-
-### Edge
-
-#### Features
-
-#### Improvements
-
-#### Bug Fixes
-
-### VerteX
-
-#### Features
-
-### Automation
-
-### Docs and Education
-
-### Packs
-
-#### Pack Notes
-
-#### OS
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### Kubernetes
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### CNI
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### CSI
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### Add-on Packs
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### FIPS Packs
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
-#### Deprecations and Removals
+| Pack Name                                  | New Version |
+| ------------------------------------------ | ----------- |
+| Cillium                                    | 1.16.6      |
+| Palette eXtended Kubernetes (PXK)          | 1.32.2      |
+| Palette eXtended Kubernetes (PXK)          | 1.31.6      |
+| Palette eXtended Kubernetes (PXK)          | 1.30.10     |
+| Palette eXtended Kubernetes (PXK)          | 1.29.14     |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.31.6      |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.30.10     |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.29.14     |
 
 ## March 3, 2025 - Release 4.6.9
 
