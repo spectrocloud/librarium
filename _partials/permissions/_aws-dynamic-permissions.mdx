@@ -2,7 +2,7 @@
 partial_category: permissions
 partial_name: aws-dynamic-permissions
 ---
-**Last Update**: October 29, 2024
+**Last Update**: March 12, 2025
 
 ```json
 {
@@ -12,12 +12,15 @@ partial_name: aws-dynamic-permissions
       "Sid": "PalettedynamicPermissions",
       "Effect": "Allow",
       "Action": [
+        "autoscaling:CreateOrUpdateTags",
+        "autoscaling:DescribeAutoScalingGroups",
         "autoscaling:StartInstanceRefresh",
         "cloudformation:CreateStack",
         "cloudformation:DescribeStacks",
         "cloudformation:UpdateStack",
         "ec2:AllocateAddress",
         "ec2:AssociateAddress",
+        "ec2:AssociateRouteTable",
         "ec2:AttachInternetGateway",
         "ec2:AuthorizeSecurityGroupIngress",
         "ec2:CreateInternetGateway",
@@ -45,6 +48,7 @@ partial_name: aws-dynamic-permissions
         "ec2:DescribeImages",
         "ec2:DescribeInstances",
         "ec2:DescribeInternetGateways",
+        "ec2:DescribeIpamPools",
         "ec2:DescribeIpv6Pools",
         "ec2:DescribeKeyPairs",
         "ec2:DescribeNatGateways",
@@ -61,6 +65,7 @@ partial_name: aws-dynamic-permissions
         "ec2:DescribeVolumesModifications",
         "ec2:DescribeVpcAttribute",
         "ec2:DescribeVpcs",
+        "ec2:DetachInternetGateway",
         "ec2:DisassociateAddress",
         "ec2:DisassociateRouteTable",
         "ec2:ModifyInstanceAttribute",
@@ -81,6 +86,7 @@ partial_name: aws-dynamic-permissions
         "ecr:ListImages",
         "eks:DescribeCluster",
         "eks:ListClusters",
+        "elasticloadbalancing:AddTags",
         "elasticloadbalancing:ConfigureHealthCheck",
         "elasticloadbalancing:CreateLoadBalancer",
         "elasticloadbalancing:DeleteLoadBalancer",
@@ -113,6 +119,7 @@ partial_name: aws-dynamic-permissions
         "iam:PassRole",
         "iam:RemoveRoleFromInstanceProfile",
         "iam:RemoveUserFromGroup",
+        "iam:TagOpenIDConnectProvider",
         "pricing:GetProducts",
         "secretsmanager:CreateSecret",
         "secretsmanager:DeleteSecret",
@@ -131,8 +138,12 @@ partial_name: aws-dynamic-permissions
     },
     {
       "Effect": "Allow",
-      "Action": ["iam:PassRole"],
-      "Resource": ["arn:*:iam::*:role/*.cluster-api-provider-aws.sigs.k8s.io"]
+      "Action": [
+        "iam:PassRole"
+      ],
+      "Resource": [
+        "arn:*:iam::*:role/*.cluster-api-provider-aws.sigs.k8s.io"
+      ]
     }
   ]
 }
