@@ -12,6 +12,8 @@ partial_name: aws-static-permissions
       "Sid": "PaletteStaticPermissions",
       "Effect": "Allow",
       "Action": [
+        "autoscaling:CreateOrUpdateTags",
+        "autoscaling:DescribeAutoScalingGroups",
         "autoscaling:StartInstanceRefresh",
         "cloudformation:CreateStack",
         "cloudformation:DescribeStacks",
@@ -90,6 +92,7 @@ partial_name: aws-static-permissions
         "iam:ListPolicyVersions",
         "iam:RemoveRoleFromInstanceProfile",
         "iam:RemoveUserFromGroup",
+        "iam:TagOpenIDConnectProvider",
         "pricing:GetProducts",
         "s3:GetEncryptionConfiguration",
         "secretsmanager:CreateSecret",
@@ -109,8 +112,12 @@ partial_name: aws-static-permissions
     },
     {
       "Effect": "Allow",
-      "Action": ["iam:PassRole"],
-      "Resource": ["arn:*:iam::*:role/*.cluster-api-provider-aws.sigs.k8s.io"]
+      "Action": [
+        "iam:PassRole"
+      ],
+      "Resource": [
+        "arn:*:iam::*:role/*.cluster-api-provider-aws.sigs.k8s.io"
+      ]
     }
   ]
 }
