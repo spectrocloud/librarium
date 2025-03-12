@@ -345,12 +345,11 @@ tags: ["release-notes"]
 - Due to Google's
   [decision to deprecate](https://cloud.google.com/artifact-registry/docs/transition/transition-from-gcr) the `gcr.io`
   container registry, we have added a new image registry that Palette agents will use to pull images. The new registry
-  is `us-docker.pkg.dev`. This was [announced](./annoucements.md#implemented-changes) as part of the Palette 4.5.3
-  release. If you have network restrictions in place, ensure that the new registry is allowed. The migration of images
-  to this new registry is now complete. Redirects from the old registry to the new registry are in place, so no user
-  actions are required at this time. Refer to the
-  [Proxy Requirements](../enterprise-version/install-palette/#proxy-requirements) for a complete list of domains that
-  must be allowed.
+  is `us-docker.pkg.dev`. This was [announced](./announcements.md#removals) as part of the Palette 4.5.3 release. If you
+  have network restrictions in place, ensure that the new registry is allowed. The migration of images to this new
+  registry is now complete. Redirects from the old registry to the new registry are in place, so no user actions are
+  required at this time. Refer to the [Proxy Requirements](../enterprise-version/install-palette/#proxy-requirements)
+  for a complete list of domains that must be allowed.
 
 - The Palette eXtended Kubernetes (PXK) version 1.32.1 pack does not currently support
   [AWS](../clusters/public-cloud/aws/aws.md) and [GCP](../clusters/public-cloud/gcp/gcp.md) cluster deployments.
