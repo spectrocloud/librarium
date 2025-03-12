@@ -6,10 +6,10 @@ partial_name: azure-iaas-dynamic-rg-sub-role
 
 ```json
 {
-    "Name": "Palette Dynamic Placement IaaS Cluster Deployer (rg/sub)",
-    "IsCustom": true,
-    "Description": "Can use Palette to deploy IaaS clusters using dynamic placement. This role contains the permissions that must be applied at the resource group scope level. If deploying multiple clusters in a variety of resource groups within a subscription, apply the role with the subscription as scope instead of the resource group as scope.",
-    "Actions": [
+  "Name": "Palette Dynamic Placement IaaS Cluster Deployer (rg/sub)",
+  "IsCustom": true,
+  "Description": "Can use Palette to deploy IaaS clusters using dynamic placement. This role contains the permissions that must be applied at the resource group scope level. If deploying multiple clusters in a variety of resource groups within a subscription, apply the role with the subscription as scope instead of the resource group as scope.",
+  "Actions": [
     "Microsoft.Compute/disks/delete",
     "Microsoft.Compute/disks/read",
     "Microsoft.Compute/disks/write",
@@ -81,8 +81,10 @@ partial_name: azure-iaas-dynamic-rg-sub-role
     "Microsoft.Storage/storageAccounts/blobServices/containers/write",
     "Microsoft.Storage/storageAccounts/read",
     "Microsoft.Storage/storageAccounts/write"
-    ],
-    "NotActions": [],
-    "AssignableScopes": ["/subscriptions/$SUBSCRIPTION_ID"]
+  ],
+  "NotActions": [],
+  "AssignableScopes": [
+    "/subscriptions/$SUBSCRIPTION_ID"
+  ]
 }
 ```
