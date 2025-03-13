@@ -153,7 +153,7 @@ Your cluster profile for hybrid nodes is now created and can be used in the
 
     1. Deploy a lightweight debug pod in your Amazon EKS cluster if one does not exist.
 
-       The following example command creates pod named `debug-pod` using the busybox image, which includes basic
+       The following example command creates a pod named `debug-pod` using the Busybox image, which includes basic
        networking utilities. The pod will stay alive for 1 hour (3600 seconds).
 
        ```shell
@@ -357,7 +357,7 @@ nodes. Before proceeding, consider the following points:
 
 1. Deploy a lightweight debug pod in your Amazon EKS cluster if one does not exist.
 
-   The following example command creates pod named `debug-pod` using the busybox image, which includes basic networking
+   The following example command creates a pod named `debug-pod` using the Busybox image, which includes basic networking
    utilities. The pod will stay alive for 1 hour (3600 seconds).
 
    ```shell
