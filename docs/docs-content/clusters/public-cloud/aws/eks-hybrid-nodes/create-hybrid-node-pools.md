@@ -157,16 +157,16 @@ Your cluster profile for hybrid nodes is now created and can be used in the
        networking utilities. The pod will stay alive for 1 hour (3600 seconds).
 
        ```shell
-       kubectl run debug-pod --image=busybox --restart=Never -- sleep 3600
+       export POD=debug-pod
+       kubectl run "$POD" --image=busybox --restart=Never -- sleep 3600
        ```
 
     2. From the debug pod in your Amazon EKS cluster, attempt to reach an active hybrid node.
 
-       Replace `<debugPodName>` with the debug pod name in your Amazon EKS cluster and `<hybridNodeIp>` with an IP
-       address from an active hybrid node.
+       Replace `<hybridNodeIp>` with an IP address from an active hybrid node.
 
        ```shell
-       kubectl exec --stdin --tty <debugPodName> -- ping <hybridNodeIp>
+       kubectl exec --stdin --tty "$POD" -- ping <hybridNodeIp>
        ```
 
     3. Check that the ping statistics from the output show a healthy connection.
@@ -361,16 +361,16 @@ nodes. Before proceeding, consider the following points:
    networking utilities. The pod will stay alive for 1 hour (3600 seconds).
 
    ```shell
-   kubectl run debug-pod --image=busybox --restart=Never -- sleep 3600
+   export POD=debug-pod
+   kubectl run "$POD" --image=busybox --restart=Never -- sleep 3600
    ```
 
 2. From the debug pod in your Amazon EKS cluster, attempt to reach an active hybrid node.
 
-   Replace `<debugPodName>` with the debug pod name in your Amazon EKS cluster and `<hybridNodeIp>` with an IP address
-   from an active hybrid node.
+   Replace `<hybridNodeIp>` with an IP address from an active hybrid node.
 
    ```shell
-   kubectl exec --stdin --tty <debugPodName> -- ping <hybridNodeIp>
+   kubectl exec --stdin --tty "$POD" -- ping <hybridNodeIp>
    ```
 
 3. Check that the ping statistics from the output show a healthy connection.

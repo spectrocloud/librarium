@@ -48,7 +48,7 @@ mode to manage configurations, updates, and workloads.
   SSH private key, SSH username on the host, and the host IP address respectively.
 
   ```bash
-  ssh -i .ssh/<privateKey> <sshUsername>@<hostIpAddress>
+  ssh -i <pathToPrivateKey> <sshUsername>@<hostIpAddress> exit
   ```
 
 - The Edge host has outbound access to the internet.
@@ -171,7 +171,7 @@ mode to manage configurations, updates, and workloads.
    hostname.
 
    ```shell
-   ssh -i </path/to/private/key> <ssh-user>@<host-ip-or-domain>
+   ssh -i <pathToPrivateKey> <sshUsername>@<hostIpAddress> exit
    ```
 
 2. Export your Palette registration token. Replace `<your-palette-registration-token>` with your token.
@@ -854,7 +854,7 @@ Use the following sections to help check that your edge host is ready to be used
   SSH private key, SSH username on the host, and the host IP address respectively.
 
   ```bash
-  ssh -i .ssh/<privateKey> <sshUsername>@<hostIpAddress>
+  ssh -i <pathToPrivateKey> <sshUsername>@<hostIpAddress> exit
   ```
 
 - Verify that the edge host has outbound access to the internet.
