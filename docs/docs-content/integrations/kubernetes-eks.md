@@ -294,27 +294,27 @@ If using the [Core IAM Policies](../clusters/public-cloud/aws/required-iam-polic
 [Controllers EKS Policy](../clusters/public-cloud/aws/required-iam-policies.md#controllers-eks-policy), you may need the
 following additional IAM permissions.
 
-| Configuration Section                    | Missing Permissions                                                            |
-| ---------------------------------------- | ------------------------------------------------------------------------------ |
-| Configure Logging                        | `logs:CreateLogGroup` <br /> `logs:CreateLogStream` <br /> `logs:PutLogEvents` |
-| Configure IAM Roles for Service Accounts | `iam:ListRoles`                                                                |
-| Configure Security Group Overrides       | `ec2:AuthorizeSecurityGroupEgress`                                             |
+| Configuration Section                                   | Missing Permissions                                                            |
+| ------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| Configure Logging                                       | `logs:CreateLogGroup` <br /> `logs:CreateLogStream` <br /> `logs:PutLogEvents` |
+| Configure IAM Roles for Service Accounts                | `iam:ListRoles`                                                                |
+| Configure Security Group Overrides                      | `ec2:AuthorizeSecurityGroupEgress`                                             |
+| Configure Custom IAM Role and Policies for Worker Nodes | `iam:ListRoles`                                                                |
 
 ### Minimum Permissions Coverage
 
-If using [Minimum Permissions](../clusters/public-cloud/aws/required-iam-policies.md#minimum-permissions-policies),
-either dynamic or static, you may need the following additional IAM permissions.
+If using
+[Minimum Permissions (dynamic or static)](../clusters/public-cloud/aws/required-iam-policies.md#minimum-permissions-policies),
+including the [Controllers EKS Policy](../clusters/public-cloud/aws/required-iam-policies.md#controllers-eks-policy),
+you may need the following additional IAM permissions.
 
-| Configuration Section                                   | Missing Permissions                                                                                                                                                                                                                                       |
-| ------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Disable IAM OIDC Identity Provider                      | `iam:CreateOpenIDConnectProvider` <br /> `iam:DeleteOpenIDConnectProvider` <br /> `iam:GetOpenIDConnectProvider` <br /> `iam:TagOpenIDConnectProvider`                                                                                                    |
-| Configure Logging                                       | `logs:CreateLogGroup` <br /> `logs:CreateLogStream` <br /> `logs:PutLogEvents` <br /> `eks:UpdateClusterConfig`                                                                                                                                           |
-| Configure IAM Roles for Service Accounts                | `iam:CreateRole` <br /> `iam:AttachRolePolicy` <br /> `iam:GetRole` <br /> `iam:ListRoles`                                                                                                                                                                |
-| Configure Security Group Overrides                      | `ec2:AuthorizeSecurityGroupEgress`                                                                                                                                                                                                                        |
-| Configure OIDC Identity Provider                        | `eks:AssociateIdentityProviderConfig` <br /> `eks:DisassociateIdentityProviderConfig` <br /> `eks:DescribeIdentityProviderConfig` <br /> `iam:CreateOpenIDConnectProvider` <br /> `iam:DeleteOpenIDConnectProvider` <br /> `iam:TagOpenIDConnectProvider` |
-| Configure Additional Control Plane Policies             | `iam:AttachRolePolicy` <br /> `iam:DetachRolePolicy`                                                                                                                                                                                                      |
-| Map IAM Identities to Kubernetes RBAC Groups            | `eks:UpdateClusterConfig`                                                                                                                                                                                                                                 |
-| Configure Custom IAM Role and Policies for Worker Nodes | `iam:CreateRole` <br /> `iam:AttachRolePolicy` <br /> `iam:GetRole` <br /> `iam:ListRoles`                                                                                                                                                                |
+| Configuration Section                                   | Remaining Missing Permissions                                                  |
+| ------------------------------------------------------- | ------------------------------------------------------------------------------ |
+| Disable IAM OIDC Identity Provider                      | `iam:GetOpenIDConnectProvider`                                                 |
+| Configure Logging                                       | `logs:CreateLogGroup` <br /> `logs:CreateLogStream` <br /> `logs:PutLogEvents` |
+| Configure IAM Roles for Service Accounts                | `iam:ListRoles`                                                                |
+| Configure Security Group Overrides                      | `ec2:AuthorizeSecurityGroupEgress`                                             |
+| Configure Custom IAM Role and Policies for Worker Nodes | `iam:ListRoles`                                                                |
 
 ## Terraform
 
