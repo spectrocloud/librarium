@@ -111,8 +111,8 @@ documentation:
 7. Edit the main route table depending on whether your subnets will be private or public. The main route table is
    created automatically for the subnets within the VPC.
 
-   If you want one private subnet and one public subnet, follow the steps to edit the main route table for your
-   private subnet first. Then,
+   If you want one private subnet and one public subnet, follow the steps to edit the main route table for your private
+   subnet first. Then,
    [create a custom route table](https://docs.aws.amazon.com/vpc/latest/userguide/WorkWithRouteTables.html#CustomRouteTable)
    for your VPC and configure it for your public subnet.
 
@@ -212,7 +212,7 @@ documentation:
 
    | Type           | Protocol | Port Range | Destination      | Description (optional)             |
    | -------------- | -------- | ---------- | ---------------- | ---------------------------------- |
-   | **Custom TCP** | TCP      | 10250    | `10.200.0.0/16`  | "Remote Node CIDR Outbound"        |
+   | **Custom TCP** | TCP      | 10250      | `10.200.0.0/16`  | "Remote Node CIDR Outbound"        |
    | **HTTPS**      | TCP      | 443        | `192.168.0.0/16` | "Remote Pod CIDR Webhook Outbound" |
 
    </TabItem>
@@ -340,28 +340,28 @@ AWS documentation under
 
    <TabItem label="AWS Service Manager (SSM)" value="ssm">
 
-   | Protocols | Port Range | Source           | Destination                           | Description                                                                                                     |
-   | --------- | ---------- | ---------------- | ------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-   | TCP       | 443        | `10.200.0.0/16`  | `10.100.0.0/16`                       | Hybrid nodes to Amazon EKS cluster.                                                                             |
-   | TCP       | 443        | `192.168.0.0/16` | `10.100.0.0/16`                       | Hybrid pods to Amazon EKS cluster.                                                                              |
-   | TCP       | 443        | `10.200.0.0/16`  | `https://ssm.us-east-1.amazonaws.com` | Hybrid nodes to AWS SSM.                                                                                        |
+   | Protocols | Port Range | Source           | Destination                           | Description                                                                                                      |
+   | --------- | ---------- | ---------------- | ------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+   | TCP       | 443        | `10.200.0.0/16`  | `10.100.0.0/16`                       | Hybrid nodes to Amazon EKS cluster.                                                                              |
+   | TCP       | 443        | `192.168.0.0/16` | `10.100.0.0/16`                       | Hybrid pods to Amazon EKS cluster.                                                                               |
+   | TCP       | 443        | `10.200.0.0/16`  | `https://ssm.us-east-1.amazonaws.com` | Hybrid nodes to AWS SSM.                                                                                         |
    | TCP       | 443        | `10.200.0.0/16`  | `https://eks.us-east-1.amazonaws.com` | Hybrid nodes to [Amazon EKS Pod Identity](https://docs.aws.amazon.com/eks/latest/userguide/pod-identities.html). |
-   | TCP, UDP  | 53         | `192.168.0.0/16` | `192.168.0.0/16`                      | [CoreDNS](https://docs.aws.amazon.com/eks/latest/userguide/managing-coredns.html) to hybrid pods.               |
-   | TCP, UDP  | 443        | `192.168.0.0/16` | `192.168.0.0/16`                      | Hybrid pod to hybrid pod application port.                                                                      |
+   | TCP, UDP  | 53         | `192.168.0.0/16` | `192.168.0.0/16`                      | [CoreDNS](https://docs.aws.amazon.com/eks/latest/userguide/managing-coredns.html) to hybrid pods.                |
+   | TCP, UDP  | 443        | `192.168.0.0/16` | `192.168.0.0/16`                      | Hybrid pod to hybrid pod application port.                                                                       |
 
    </TabItem>
 
    <TabItem label="AWS IAM Roles Anywhere" value="iam-ra">
 
-   | Protocols | Port Range | Source           | Destination                                     | Description                                                                                                     |
-   | --------- | ---------- | ---------------- | ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
-   | TCP       | 443        | `10.200.0.0/16`  | `10.100.0.0/16`                                 | Hybrid nodes to Amazon EKS cluster.                                                                             |
-   | TCP       | 443        | `192.168.0.0/16` | `10.100.0.0/16`                                 | Hybrid pods to Amazon EKS cluster.                                                                              |
-   | TCP       | 443        | `10.200.0.0/16`  | `https://rolesanywhere.us-east-1.amazonaws.com` | Hybrid nodes to AWS IAM Roles Anywhere.                                                                         |
-   | TCP       | 443        | `192.168.0.0/16` | `https://sts.us-east-1.amazonaws.com`           | Hybrid pods to AWS STS.                                                                                         |
+   | Protocols | Port Range | Source           | Destination                                     | Description                                                                                                      |
+   | --------- | ---------- | ---------------- | ----------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+   | TCP       | 443        | `10.200.0.0/16`  | `10.100.0.0/16`                                 | Hybrid nodes to Amazon EKS cluster.                                                                              |
+   | TCP       | 443        | `192.168.0.0/16` | `10.100.0.0/16`                                 | Hybrid pods to Amazon EKS cluster.                                                                               |
+   | TCP       | 443        | `10.200.0.0/16`  | `https://rolesanywhere.us-east-1.amazonaws.com` | Hybrid nodes to AWS IAM Roles Anywhere.                                                                          |
+   | TCP       | 443        | `192.168.0.0/16` | `https://sts.us-east-1.amazonaws.com`           | Hybrid pods to AWS STS.                                                                                          |
    | TCP       | 443        | `10.200.0.0/16`  | `https://eks.us-east-1.amazonaws.com`           | Hybrid nodes to [Amazon EKS Pod Identity](https://docs.aws.amazon.com/eks/latest/userguide/pod-identities.html). |
-   | TCP, UDP  | 53         | `192.168.0.0/16` | `192.168.0.0/16`                                | [CoreDNS](https://docs.aws.amazon.com/eks/latest/userguide/managing-coredns.html) to hybrid pods.               |
-   | TCP, UDP  | 443        | `192.168.0.0/16` | `192.168.0.0/16`                                | Hybrid pod to hybrid pod application port.                                                                      |
+   | TCP, UDP  | 53         | `192.168.0.0/16` | `192.168.0.0/16`                                | [CoreDNS](https://docs.aws.amazon.com/eks/latest/userguide/managing-coredns.html) to hybrid pods.                |
+   | TCP, UDP  | 443        | `192.168.0.0/16` | `192.168.0.0/16`                                | Hybrid pod to hybrid pod application port.                                                                       |
 
    </TabItem>
 
@@ -576,8 +576,8 @@ This section's primary focus is AWS Site-to-Site VPN, although some steps can be
 
    If using AWS Direct Connect, you would need to map traffic from your on-prem/remote network to your AWS VPC private
    subnet CIDRs.  
-   For example, both remote node and pod CIDRs `10.200.0.0/16` and `192.168.0.0/16` → Private subnet CIDRs `10.100.0.0/24`
-   and `10.100.1.0/24`.
+   For example, both remote node and pod CIDRs `10.200.0.0/16` and `192.168.0.0/16` → Private subnet CIDRs
+   `10.100.0.0/24` and `10.100.1.0/24`.
 
    :::
 
@@ -806,8 +806,8 @@ This section's primary focus is AWS Site-to-Site VPN, although some steps can be
    rtt min/avg/max/mdev = 27.5/28.2/29.1/0.6 ms
    ```
 
-4. If you have an EC2 instance available that has been deployed in your AWS VPC, SSH into the instance, and attempt to reach an available host
-   deployed within the on-prem/remote VLAN or subnet.
+4. If you have an EC2 instance available that has been deployed in your AWS VPC, SSH into the instance, and attempt to
+   reach an available host deployed within the on-prem/remote VLAN or subnet.
 
    Replace `<hostIpAddress>` with the IP address of your on-prem/remote host, for example, `10.200.1.23`.
 

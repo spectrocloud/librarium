@@ -79,8 +79,8 @@ Import your Amazon EKS cluster and enable hybrid mode to be able to create edge 
 
 - Access to your Amazon EKS cluster through kubectl.
 
-  - To access your cluster with kubectl, you can use the AWS CLI built-in authentication capabilities. If you are
-    using a custom OpenID Connect (OIDC) provider, you will need to configure your kubeconfig to use your OIDC provider.
+  - To access your cluster with kubectl, you can use the AWS CLI built-in authentication capabilities. If you are using
+    a custom OpenID Connect (OIDC) provider, you will need to configure your kubeconfig to use your OIDC provider.
 
     Refer to the [Access Imported Cluster with Kubectl](#access-imported-cluster-with-kubectl) section for more
     information.
