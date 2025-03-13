@@ -51,7 +51,7 @@ mode to manage configurations, updates, and workloads.
   ssh -i .ssh/<privateKey> <sshUsername>@<hostIpAddress>
   ```
 
-- The edge host has outbound access to the internet.
+- The Edge host has outbound access to the internet.
 
 - The edge host has inbound and outbound connectivity to Palette SaaS
   [services](../../../../../architecture/palette-public-ips.md) and
@@ -118,7 +118,7 @@ mode to manage configurations, updates, and workloads.
   sudo apt-get update
   ```
 
-  Adjust to your operating system and package manager on your edge host.
+  Adjust it to your operating system and package manager on your edge host.
 
 #### OS and Dependencies
 

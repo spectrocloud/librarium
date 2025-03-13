@@ -9,7 +9,7 @@ sidebar_position: 1
 
 :::warning
 
-The information in this article is provided as general guidance and example configuration only. It may not meet the
+The information in this guide is provided as general guidance and example configuration only. It may not meet the
 specific requirements of your environment or cover every possible scenario. Ensure that you tailor these examples and
 validation steps to the needs of your networking infrastructure.
 
@@ -21,11 +21,11 @@ cluster.
 
 The three main areas you need to configure are:
 
-1. AWS Region
+1. AWS Network
 2. Remote Network Environment
 3. Inter-Site Connectivity
 
-This article provides common steps and example configurations for each of these areas. The following diagram provides a
+This guide provides common steps and example configurations for each of these areas. The following diagram provides a
 high-level example of a networking setup for Amazon EKS Hybrid Nodes.
 
 ![Example Amazon EKS Hybrid Nodes network architecture](/eks-hybrid_prepare-environment_prepare-network_network-example.webp)
@@ -111,7 +111,7 @@ documentation:
 7. Edit the main route table depending on whether your subnets will be private or public. The main route table is
    created automatically for the subnets within the VPC.
 
-   If you are wanting one private subnet _and_ one public subnet, follow the steps to edit the main route table for your
+   If you want one private subnet and one public subnet, follow the steps to edit the main route table for your
    private subnet first. Then,
    [create a custom route table](https://docs.aws.amazon.com/vpc/latest/userguide/WorkWithRouteTables.html#CustomRouteTable)
    for your VPC and configure it for your public subnet.
@@ -172,7 +172,7 @@ documentation:
    VPC that contains the
    [necessary rules](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-networking.html#hybrid-nodes-networking-cluster-sg)
    to allow communication with your remote environment. This security group is added as an additional security group
-   when creating your EKS cluster as guided during the
+   when creating your EKS cluster as described in the
    [Prepare EKS Cluster](./prepare-eks-cluster.md#create-the-eks-cluster) steps.
 
    The following tables are an example configuration for the security group.
@@ -212,7 +212,7 @@ documentation:
 
    | Type           | Protocol | Port Range | Destination      | Description (optional)             |
    | -------------- | -------- | ---------- | ---------------- | ---------------------------------- |
-   | **Custom TCP** | TCP      | `10250`    | `10.200.0.0/16`  | "Remote Node CIDR Outbound"        |
+   | **Custom TCP** | TCP      | 10250    | `10.200.0.0/16`  | "Remote Node CIDR Outbound"        |
    | **HTTPS**      | TCP      | 443        | `192.168.0.0/16` | "Remote Pod CIDR Webhook Outbound" |
 
    </TabItem>
@@ -223,7 +223,7 @@ documentation:
 
 1. Log in to [AWS](https://console.aws.amazon.com/).
 
-2. Check that your created network resources have a **State** of **Available** or **Attached** in your chosen region. A
+2. Check that your created network resources have a **State** of **Available** or **Attached** in the chosen region. A
    list of the expected resources is as follows:
 
    - AWS VPC for your Amazon EKS cluster.
@@ -234,7 +234,7 @@ documentation:
 3. Check that you have created the following additional resources:
 
    - Route tables for your subnets.
-   - Default security group for your VPC and custom security group for your remote environment rules.
+   - Default security group for your VPC and custom security group for your remote environment.
    - Elastic IPs for your NAT gateways, if any.
 
 ## Remote Network Environment
@@ -345,7 +345,7 @@ AWS documentation under
    | TCP       | 443        | `10.200.0.0/16`  | `10.100.0.0/16`                       | Hybrid nodes to Amazon EKS cluster.                                                                             |
    | TCP       | 443        | `192.168.0.0/16` | `10.100.0.0/16`                       | Hybrid pods to Amazon EKS cluster.                                                                              |
    | TCP       | 443        | `10.200.0.0/16`  | `https://ssm.us-east-1.amazonaws.com` | Hybrid nodes to AWS SSM.                                                                                        |
-   | TCP       | 443        | `10.200.0.0/16`  | `https://eks.us-east-1.amazonaws.com` | Hybrid nodes to [Amazon EKS Pod Identity](https://docs.aws.amazon.com/eks/latest/userguide/pod-identities.html) |
+   | TCP       | 443        | `10.200.0.0/16`  | `https://eks.us-east-1.amazonaws.com` | Hybrid nodes to [Amazon EKS Pod Identity](https://docs.aws.amazon.com/eks/latest/userguide/pod-identities.html). |
    | TCP, UDP  | 53         | `192.168.0.0/16` | `192.168.0.0/16`                      | [CoreDNS](https://docs.aws.amazon.com/eks/latest/userguide/managing-coredns.html) to hybrid pods.               |
    | TCP, UDP  | 443        | `192.168.0.0/16` | `192.168.0.0/16`                      | Hybrid pod to hybrid pod application port.                                                                      |
 
@@ -359,7 +359,7 @@ AWS documentation under
    | TCP       | 443        | `192.168.0.0/16` | `10.100.0.0/16`                                 | Hybrid pods to Amazon EKS cluster.                                                                              |
    | TCP       | 443        | `10.200.0.0/16`  | `https://rolesanywhere.us-east-1.amazonaws.com` | Hybrid nodes to AWS IAM Roles Anywhere.                                                                         |
    | TCP       | 443        | `192.168.0.0/16` | `https://sts.us-east-1.amazonaws.com`           | Hybrid pods to AWS STS.                                                                                         |
-   | TCP       | 443        | `10.200.0.0/16`  | `https://eks.us-east-1.amazonaws.com`           | Hybrid nodes to [Amazon EKS Pod Identity](https://docs.aws.amazon.com/eks/latest/userguide/pod-identities.html) |
+   | TCP       | 443        | `10.200.0.0/16`  | `https://eks.us-east-1.amazonaws.com`           | Hybrid nodes to [Amazon EKS Pod Identity](https://docs.aws.amazon.com/eks/latest/userguide/pod-identities.html). |
    | TCP, UDP  | 53         | `192.168.0.0/16` | `192.168.0.0/16`                                | [CoreDNS](https://docs.aws.amazon.com/eks/latest/userguide/managing-coredns.html) to hybrid pods.               |
    | TCP, UDP  | 443        | `192.168.0.0/16` | `192.168.0.0/16`                                | Hybrid pod to hybrid pod application port.                                                                      |
 
@@ -422,7 +422,7 @@ AWS documentation under
 3. (Optional) If you have an available host deployed within the VLAN or subnet, SSH into the host, and verify the host
    can connect to the required AWS and Spectro Cloud services.
 
-   For example, if you have [netcat](https://linux.die.net/man/1/nc) installed, issue the following command on the edge
+   For example, if you have [netcat](https://linux.die.net/man/1/nc) installed, issue the following command on the Edge
    host to check whether the `eks.us-east-1.amazonaws.com` domain is accessible on port `443`.
 
    ```bash
@@ -576,8 +576,8 @@ This section's primary focus is AWS Site-to-Site VPN, although some steps can be
 
    If using AWS Direct Connect, you would need to map traffic from your on-prem/remote network to your AWS VPC private
    subnet CIDRs.  
-   For example, both remote node and pod CIDRs `10.200.0.0/16` & `192.168.0.0/16` → Private subnet CIDRs `10.100.0.0/24`
-   & `10.100.1.0/24`.
+   For example, both remote node and pod CIDRs `10.200.0.0/16` and `192.168.0.0/16` → Private subnet CIDRs `10.100.0.0/24`
+   and `10.100.1.0/24`.
 
    :::
 
@@ -806,7 +806,7 @@ This section's primary focus is AWS Site-to-Site VPN, although some steps can be
    rtt min/avg/max/mdev = 27.5/28.2/29.1/0.6 ms
    ```
 
-4. If you have an EC2 instance available that has been deployed in your AWS VPC, attempt to reach an available host
+4. If you have an EC2 instance available that has been deployed in your AWS VPC, SSH into the instance, and attempt to reach an available host
    deployed within the on-prem/remote VLAN or subnet.
 
    Replace `<hostIpAddress>` with the IP address of your on-prem/remote host, for example, `10.200.1.23`.
