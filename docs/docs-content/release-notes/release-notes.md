@@ -90,6 +90,10 @@ compatible version of the Palette CLI.
 
 #### Features
 
+- Terraform version 0.23.1 of the
+  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
+  available. For more details, refer to the Terraform provider
+  [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
 - A new Terraform resource, `spectrocloud_platform_setting`, is now available for
   [platform settings](../clusters/cluster-management/platform-settings/platform-settings.md) such as session timeout,
   agent upgrade, and cluster remediation. For more information, refer to the Spectro Cloud Terraform provider
