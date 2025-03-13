@@ -16,10 +16,18 @@ an AWS account. This section guides you on how to create an EKS cluster in AWS t
 
 - Palette integration with AWS account. Review [Add AWS Account](add-aws-accounts.md) for guidance.
 
+<!-- prettier-ignore -->
 - An infrastructure cluster profile for AWS EKS. When you create the profile, ensure you choose **EKS** as the **Managed
   Kubernetes** cloud type. Review
   [Create an Infrastructure Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md)
   for guidance.
+
+  :::info
+
+  For guidance on all available configuration options for the EKS Kubernetes pack, review the
+  <VersionedLink text="Additional Details" url="/integrations/packs/?pack=kubernetes-eks&tab=custom"/> for the pack.
+
+  :::
 
 <!-- prettier-ignore -->
 - If you want to use <VersionedLink text="Cilium" url="/integrations/packs/?pack=cni-cilium-oss"/> as the network pack
