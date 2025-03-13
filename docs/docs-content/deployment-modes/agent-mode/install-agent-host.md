@@ -100,9 +100,7 @@ Palette. You will then create a cluster profile and use the registered host to d
     If you are using Cilium and have firewalld enabled, you must also configure the appropriate firewalld rules. Follow
     the process below to apply the necessary configurations before installing Agent Mode.
 
-      <details>
-
-    {" "}
+    <details>
 
     <summary>Rocky Linux 8 Configurations</summary>
 
@@ -360,30 +358,28 @@ Palette. You will then create a cluster profile and use the registered host to d
      [registration token](../../clusters/edge/site-deployment/site-installation/create-registration-token.md) has a
      Default Project set.
 
-   <br />
+     ```shell
+     cat << EOF > user-data
+     #cloud-config
+     install:
+       reboot: true
+       poweroff: false
 
-   ```shell
-   cat << EOF > user-data
-   #cloud-config
-   install:
-     reboot: true
-     poweroff: false
-
-   stylus:
-     skipKubeVip: false
-     site:
-       edgeHostToken: $TOKEN
-       paletteEndpoint: api.spectrocloud.com
-       projectName: Default
-   stages:
-     initramfs:
-       - users:
-           kairos:
-             groups:
-               - sudo
-             passwd: kairos
-   EOF
-   ```
+     stylus:
+       skipKubeVip: false
+       site:
+         edgeHostToken: $TOKEN
+         paletteEndpoint: api.spectrocloud.com
+         projectName: Default
+     stages:
+       initramfs:
+         - users:
+             kairos:
+               groups:
+                 - sudo
+               passwd: kairos
+     EOF
+     ```
 
    Confirm that the file was created correctly.
 
@@ -711,28 +707,25 @@ internet.
 
 10. Log in to [Palette](https://console.spectrocloud.com/) and select **Clusters** from the left **Main Menu**.
 
-11. Select the **Edge Hosts** tab and verify your host is displayed and marked as **Healthy** in the Edge hosts list.
+11. Select **Profiles** from the left **Main Menu**.
 
-12. Once the host has been registered with Palette, proceed with the cluster profile creation. Select **Profiles** from
-    the left **Main Menu**.
+12. Click on **Add Cluster Profile**.
 
-13. Click on **Add Cluster Profile**.
-
-14. In the **Basic Information** section, assign the a profile name, a description, and tags. Select the type as
+13. In the **Basic Information** section, assign the a profile name, a description, and tags. Select the type as
     **Full** and click **Next**.
 
-15. Select **Edge Native** as the **Cloud Type** and click **Next**.
+14. Select **Edge Native** as the **Cloud Type** and click **Next**.
 
-16. The **Profile Layers** section specifies the packs that compose the profile. Add the **BYOS Edge OS** pack version
+15. The **Profile Layers** section specifies the packs that compose the profile. Add the **BYOS Edge OS** pack version
     **2.0.0** to the OS layer.
 
-17. Click **Values** under **Pack Details**, then click on **Presets** on the right-hand side. Select **Agent Mode**.
+16. Click **Values** under **Pack Details**, then click on **Presets** on the right-hand side. Select **Agent Mode**.
 
     ![View of the cluster profile creation page with the BYOS pack.](/deployment-modes_agent-mode_byos-pack.webp)
 
-18. Click **Next Layer** to continue.
+17. Click **Next Layer** to continue.
 
-19. In the **Kubernetes** layer, under `cluster.config.kube-apiserver-arg`, remove `AlwaysPullImages` from the list item
+18. In the **Kubernetes** layer, under `cluster.config.kube-apiserver-arg`, remove `AlwaysPullImages` from the list item
     `enable-admission-plugins`:
 
     ```yaml {7}
@@ -745,28 +738,28 @@ internet.
       - enable-admission-plugins=NamespaceLifecycle,ServiceAccount,NodeRestriction
     ```
 
-20. Complete the cluster profile creation process by filling out the remaining layers. In the application layer, make
+19. Complete the cluster profile creation process by filling out the remaining layers. In the application layer, make
     sure you include the **Harbor Edge-Native Config** pack. This pack is required for airgapped clusters.
 
-21. Follow the steps in
+20. Follow the steps in
     [Export Cluster Definition](../../clusters/edge/local-ui/cluster-management/export-cluster-definition.md) to export
     a cluster definition of your profile. You will use this cluster definition later when you create the cluster in
     Local UI.
 
-22. (Optional) If your host has access to all the images referenced by your cluster profile, you may skip this step.
+21. (Optional) If your host has access to all the images referenced by your cluster profile, you may skip this step.
 
     Follow the steps in
     [Build Content Bundles](../../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md) to build a
     content bundle for your cluster profile. The content bundle will contain all the artifacts required to create your
     cluster and it will allow you to create a cluster even if your host has no access to an external image registry.
 
-23. Log in to [Local UI](../../clusters/edge/local-ui/host-management/access-console.md).
+22. Log in to [Local UI](../../clusters/edge/local-ui/host-management/access-console.md).
 
-24. Follow the steps in
+23. Follow the steps in
     [Upload Content Bundles](../../clusters/edge/local-ui/cluster-management/upload-content-bundle.md) to upload the
     content bundle to your host.
 
-25. Follow the steps in [Create Local Cluster](../../clusters/edge/local-ui/cluster-management/create-cluster.md) to use
+24. Follow the steps in [Create Local Cluster](../../clusters/edge/local-ui/cluster-management/create-cluster.md) to use
     the cluster definition you exported previously to create a cluster.
 
 :::warning

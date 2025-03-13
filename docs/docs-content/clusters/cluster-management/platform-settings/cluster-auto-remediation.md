@@ -17,7 +17,7 @@ feature will disable auto remediation. This feature can work under two scopes:
 
 :::warning
 
-This feature does not apply to EKS, AKS or TKE clusters.
+This feature does not apply to EKS or AKS clusters.
 
 :::
 
