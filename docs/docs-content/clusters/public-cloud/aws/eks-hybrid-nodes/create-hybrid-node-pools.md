@@ -166,7 +166,7 @@ Your cluster profile for hybrid nodes is now created and can be used in the
        address from an active hybrid node.
 
        ```shell
-       kubectl exec -it <debugPodName> -- ping -- ping <hybridNodeIp>
+       kubectl exec --stdin --tty <debugPodName> -- ping <hybridNodeIp>
        ```
 
     3. Check that the ping statistics from the output show a healthy connection.
@@ -370,7 +370,7 @@ nodes. Before proceeding, consider the following points:
    from an active hybrid node.
 
    ```shell
-   kubectl exec -it <debugPodName> -- ping -- ping <hybridNodeIp>
+   kubectl exec --stdin --tty <debugPodName> -- ping <hybridNodeIp>
    ```
 
 3. Check that the ping statistics from the output show a healthy connection.

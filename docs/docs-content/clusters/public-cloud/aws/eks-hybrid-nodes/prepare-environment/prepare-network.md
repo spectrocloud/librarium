@@ -248,15 +248,15 @@ AWS documentation under
 - Access to your on-prem/remote core network devices with sufficient privileges to create and modify network
   configurations. This includes the following:
 
-  - Permissions to define or adjust IP address allocations in the on-premises environment to avoid CIDR overlap with AWS
-    VPCs.
+  - Permissions to define or adjust IP address allocations in the on-prem/remote environment to avoid CIDR overlap with
+    AWS VPCs.
 
   - Permissions to configure or update firewall rules and NAT settings.
 
 ### Configure Remote Network
 
 1. Configure your Virtual Local Area Network (VLAN) or subnet definitions to a suitable IP range for your hybrid nodes.
-   See
+   Refer to
    [On-premises node and pod CIDRs](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-networking.html#hybrid-nodes-networking-on-prem)
    for AWS requirements on CIDR blocks in remote networks.
 
@@ -373,7 +373,7 @@ AWS documentation under
 
 4. Configure firewall rules for Cilium operation. Cilium is used as the Container Network Interface (CNI) for hybrid
    nodes and requires [firewall rules](https://docs.cilium.io/en/stable/operations/system_requirements/#firewall-rules)
-   to allow health checks, Virtual Extensible LAN (VXLAN) overlay, and etcd access.
+   to allow health checks, Virtual Extensible Local Area Network (VXLAN) overlay, and etcd access.
 
    The following tables are example on-prem firewall rules for Cilium and assumes that hybrid nodes will act as worker
    nodes without VXLAN overlay networking.
@@ -426,7 +426,7 @@ AWS documentation under
    host to check whether the `eks.us-east-1.amazonaws.com` domain is accessible on port `443`.
 
    ```bash
-   nc -z --verbose eks.us-east-1.amazonaws.com 443
+   nc -z -v eks.us-east-1.amazonaws.com 443
    ```
 
    Example output, if successful.
@@ -452,7 +452,7 @@ for guidance on all available options.
 
 :::important
 
-This sections's primary focus is AWS Site-to-Site VPN, although some steps can be adapted for AWS Direct Connect.
+This section's primary focus is AWS Site-to-Site VPN, although some steps can be adapted for AWS Direct Connect.
 
 :::
 
@@ -494,12 +494,12 @@ This sections's primary focus is AWS Site-to-Site VPN, although some steps can b
    [Customer gateway options for your AWS Site-to-Site VPN connection](https://docs.aws.amazon.com/vpn/latest/s2svpn/cgw-options.html)
    for further guidance on all available options.
 
-   | Setting                 | Example Value                 | Description                                                                                                                                                                     |
-   | ----------------------- | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Name tag (optional)** | `eks-hybrid-remote-gateway-1` | The optional AWS **Name** tag value for the customer gateway.                                                                                                                   |
-   | **BGP ASN**             | `65000`                       | The BGP Autonomous System Number (ASN) used to identify your on-premises gateway in BGP route exchanges. It must be distinct from the ASN configured on the AWS target gateway. |
-   | **IP address**          | `3.232.157.211`               | The public IP address of the on-prem/remote gateway used to establish the VPN connection.                                                                                       |
-   | **Device (optional)**   | `eks-hybrid-remote-gateway-1` | An optional identifier for the device, used for reference within the AWS console.                                                                                               |
+   | Setting                 | Example Value                 | Description                                                                                                                                                                        |
+   | ----------------------- | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Name tag (optional)** | `eks-hybrid-remote-gateway-1` | The optional AWS **Name** tag value for the customer gateway.                                                                                                                      |
+   | **BGP ASN**             | `65000`                       | The BGP Autonomous System Number (ASN) used to identify your on-prem/remote gateway in BGP route exchanges. It must be distinct from the ASN configured on the AWS target gateway. |
+   | **IP address**          | `3.232.157.211`               | The public IP address of the on-prem/remote gateway used to establish the VPN connection.                                                                                          |
+   | **Device (optional)**   | `eks-hybrid-remote-gateway-1` | An optional identifier for the device, used for reference within the AWS console.                                                                                                  |
 
 2. In AWS,
    [create a target gateway](https://docs.aws.amazon.com/vpn/latest/s2svpn/SetUpVPNConnections.html#vpn-create-target-gateway)

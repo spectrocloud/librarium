@@ -79,7 +79,7 @@ mode to manage configurations, updates, and workloads.
   whether the `eks.us-east-1.amazonaws.com` domain is accessible on port `443`.
 
   ```bash
-  nc -z --verbose eks.us-east-1.amazonaws.com 443
+  nc -z -v eks.us-east-1.amazonaws.com 443
   ```
 
   Example output, if successful.
@@ -885,7 +885,7 @@ Use the following sections to help check that your edge host is ready to be used
   host to check whether the `eks.us-east-1.amazonaws.com` domain is accessible on port `443`.
 
   ```bash
-  nc -z --verbose eks.us-east-1.amazonaws.com 443
+  nc -z -v eks.us-east-1.amazonaws.com 443
   ```
 
   Example output, if successful.
