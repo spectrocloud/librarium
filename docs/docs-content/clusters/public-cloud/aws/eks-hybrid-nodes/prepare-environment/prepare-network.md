@@ -30,7 +30,7 @@ high-level example of a networking setup for Amazon EKS Hybrid Nodes.
 
 ![Example Amazon EKS Hybrid Nodes network architecture](/eks-hybrid_prepare-environment_prepare-network_network-example.webp)
 
-## AWS Region
+## AWS Network
 
 This section provides the steps and example configuration for your AWS network as described in the following AWS
 documentation:
