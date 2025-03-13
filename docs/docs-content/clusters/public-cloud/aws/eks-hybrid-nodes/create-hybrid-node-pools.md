@@ -138,7 +138,9 @@ Your cluster profile for hybrid nodes is now created and can be used in the
 - A cluster profile created for your hybrid nodes. Refer to
   [Create Cluster Profile for Hybrid Node Pools](#create-cluster-profile-for-hybrid-node-pools) for steps.
 
-- Verified network connectivity between your Amazon EKS cluster nodes and edge hosts.
+- Verified network connectivity between your Amazon EKS cluster nodes and edge hosts. Refer to
+  [Prepare Network - Inter-Site Connectivity](./prepare-environment/prepare-network.md#inter-site-connectivity) for
+  guidance.
 
   - If using a VPN, confirm that both tunnels of the site-to-site VPN connection are active and operational.
 
@@ -147,16 +149,76 @@ Your cluster profile for hybrid nodes is now created and can be used in the
 
     <!-- prettier-ignore -->
     <details>
-    <summary> Example ping command </summary>
+    <summary> Example </summary>
 
-    ```shell
-    kubectl exec --stdin=true --tty=true <debugPodName> -- ping <edgeHostIpAddress>
-    ```
+    1. Deploy a lightweight debug pod in your Amazon EKS cluster if one does not exist.
+
+       The following example command creates a pod named `debug-pod` using the Busybox image, which includes basic
+       networking utilities. The pod will stay alive for 1 hour (3600 seconds).
+
+       ```shell
+       export POD=debug-pod
+       kubectl run "$POD" --image=busybox --restart=Never -- sleep 3600
+       ```
+
+    2. From the debug pod in your Amazon EKS cluster, attempt to reach an active hybrid node.
+
+       Replace `<hybridNodeIp>` with an IP address from an active hybrid node.
+
+       ```shell
+       kubectl exec --stdin --tty "$POD" -- ping <hybridNodeIp>
+       ```
+
+    3. Check that the ping statistics from the output show a healthy connection.
+
+       Example healthy output.
+
+       ```shell hideClipboard
+       PING 10.200.1.23 (10.200.1.23): 56 data bytes
+       64 bytes from 10.200.1.23: icmp_seq=1 ttl=63 time=28.382 ms
+       64 bytes from 10.200.1.23: icmp_seq=2 ttl=63 time=27.359 ms
+       64 bytes from 10.200.1.23: icmp_seq=3 ttl=63 time=29.412 ms
+       64 bytes from 10.200.1.23: icmp_seq=4 ttl=63 time=30.345 ms
+
+       --- 10.200.1.23 ping statistics ---
+       4 packets transmitted, 4 packets received, 0% packet loss
+       round-trip min/avg/max/stddev = 27.359/28.875/30.345/1.091 ms
+       ```
 
     </details>
 
-  - Verify that your edge hosts can successfully ping the private IP address of an EC2 instance within the Amazon EKS
-    cluster's VPC.
+  - Verify that your edge hosts can successfully ping the private IP address of your AWS VPC gateway or an AWS worker
+    node within the Amazon EKS cluster's VPC.
+
+    <!-- prettier-ignore -->
+    <details>
+    <summary> Example </summary>
+
+    1. From an edge host in your on-prem environment, attempt to reach your AWS VPC gateway or an AWS worker node.
+
+       Replace `<awsGatewayOrNode>` with the IP address of your AWS VPC gateway or AWS worker node, for example,
+       `10.100.0.1` or `10.100.0.27`.
+
+       ```shell
+       ping <awsGatewayOrNode>
+       ```
+
+    2. Check that the ping statistics from the output show a healthy connection.
+
+       Example healthy output.
+
+       ```shell hideClipboard
+       PING 10.100.0.1 (10.100.0.1) 56(84) bytes of data.
+       64 bytes from 10.100.0.1: icmp_seq=1 ttl=64 time=27.5 ms
+       64 bytes from 10.100.0.1: icmp_seq=2 ttl=64 time=28.2 ms
+       64 bytes from 10.100.0.1: icmp_seq=3 ttl=64 time=29.1 ms
+       64 bytes from 10.100.0.1: icmp_seq=4 ttl=64 time=27.9 ms
+       --- 10.100.0.1 ping statistics ---
+       4 packets transmitted, 4 received, 0% packet loss, time 3999ms
+       rtt min/avg/max/mdev = 27.5/28.2/29.1/0.6 ms
+       ```
+
+    </details>
 
 ### Create Node Pool
 
@@ -221,7 +283,7 @@ nodes. Before proceeding, consider the following points:
 - This guide is specifically for VPN solutions that support and require manual static route configuration. If your VPN
   uses a different routing mechanism, these steps may not apply.
 
-- If your VPN supports BGP (Border Gateway Protocol), you may be able to skip manual route configuration entirely. BGP
+- If your VPN supports Border Gateway Protocol (BGP), you may be able to skip manual route configuration entirely. BGP
   can automatically advertise and update routes between your cluster and VPN. Check your VPN documentation for BGP
   neighbor configuration and route import procedures.
 
@@ -246,7 +308,7 @@ nodes. Before proceeding, consider the following points:
 
 - Access to your VPN configuration interface.
 
-### Configure Networking
+### Configure VPN Networking
 
 1. Issue the following kubectl command to list all CiliumNode resources in your cluster.
 
@@ -259,7 +321,7 @@ nodes. Before proceeding, consider the following points:
    ```shell hideClipboard
    NAME                                    CILIUMINTERNALIP   INTERNALIP    AGE
    edge-abc123def4567890example1           192.168.5.101      10.200.1.23   2h
-   edge-xyz987uvw6543210example2           192.168.6.102      10.200.2.34   3h
+   edge-xyz987uvw6543210example2           192.168.6.102      10.200.0.34   3h
    ```
 
 2. For each hybrid node, retrieve the `spec.ipam.podCIDRs` field to find the CIDR block allocated for pods active on
@@ -284,38 +346,72 @@ nodes. Before proceeding, consider the following points:
 
 4. For each hybrid node, add the following entries.
 
-   | **Field**              | **Description**                                                                                                         | **Example**        |
-   | ---------------------- | ----------------------------------------------------------------------------------------------------------------------- | ------------------ |
-   | **Destination**        | Use the `podCIDRs` value for the hybrid node discovered in step 2.                                                      | `192.168.4.128/25` |
-   | **Next Hop / Gateway** | Specify the IP address of the hybrid node as listed in the CiliumNode resource under `internalIP` discovered in step 1. | `192.168.5.101`    |
+   | **Field**              | **Description**                                                                                                         | **Example**      |
+   | ---------------------- | ----------------------------------------------------------------------------------------------------------------------- | ---------------- |
+   | **Destination**        | Use the `podCIDRs` value for the hybrid node discovered in step 2.                                                      | `192.168.5.0/25` |
+   | **Next Hop / Gateway** | Specify the IP address of the hybrid node as listed in the CiliumNode resource under `internalIP` discovered in step 1. | `10.200.1.23`    |
 
 5. Ensure the routes are saved and applied. The process varies depending on the VPN solution.
 
 ### Validate
 
-1. From a pod in your Amazon EKS cluster, attempt to reach an active pod on a hybrid node.
+1. Deploy a lightweight debug pod in your Amazon EKS cluster if one does not exist.
 
-   Replace `<podName>` with a pod in your Amazon EKS cluster and `<hybridPodIp>` with an IP address from an active pod
-   on a hybrid node.
+   The following example command creates a pod named `debug-pod` using the Busybox image, which includes basic
+   networking utilities. The pod will stay alive for 1 hour (3600 seconds).
 
    ```shell
-   kubectl exec --interactive --tty <podName> -- ping <hybridPodIp>
+   export POD=debug-pod
+   kubectl run "$POD" --image=busybox --restart=Never -- sleep 3600
    ```
 
-2. Check that the ping statistics from the output show a healthy connection.
+2. From the debug pod in your Amazon EKS cluster, attempt to reach an active hybrid node.
+
+   Replace `<hybridNodeIp>` with an IP address from an active hybrid node.
+
+   ```shell
+   kubectl exec --stdin --tty "$POD" -- ping <hybridNodeIp>
+   ```
+
+3. Check that the ping statistics from the output show a healthy connection.
 
    Example healthy output.
 
    ```shell hideClipboard
-   PING 192.168.5.10 (192.168.5.10): 56 data bytes
-   64 bytes from 192.168.5.10: icmp_seq=1 ttl=63 time=28.382 ms
-   64 bytes from 192.168.5.10: icmp_seq=2 ttl=63 time=27.359 ms
-   64 bytes from 192.168.5.10: icmp_seq=3 ttl=63 time=29.412 ms
-   64 bytes from 192.168.5.10: icmp_seq=4 ttl=63 time=30.345 ms
+   PING 10.200.1.23 (10.200.1.23): 56 data bytes
+   64 bytes from 10.200.1.23: icmp_seq=1 ttl=63 time=28.382 ms
+   64 bytes from 10.200.1.23: icmp_seq=2 ttl=63 time=27.359 ms
+   64 bytes from 10.200.1.23: icmp_seq=3 ttl=63 time=29.412 ms
+   64 bytes from 10.200.1.23: icmp_seq=4 ttl=63 time=30.345 ms
 
-   --- 192.168.5.10 ping statistics ---
+   --- 10.200.1.23 ping statistics ---
    4 packets transmitted, 4 packets received, 0% packet loss
    round-trip min/avg/max/stddev = 27.359/28.875/30.345/1.091 ms
+   ```
+
+4. From an edge host in your on-prem environment, attempt to reach your AWS VPC gateway or an AWS worker node within the
+   Amazon EKS cluster's VPC.
+
+   Replace `<awsGatewayOrNode>` with the IP address of your AWS VPC gateway or AWS worker node, for example,
+   `10.100.0.1` or `10.100.0.27`.
+
+   ```shell
+   ping <awsGatewayOrNode>
+   ```
+
+5. Check that the ping statistics from the output show a healthy connection.
+
+   Example healthy output.
+
+   ```shell hideClipboard
+   PING 10.100.0.1 (10.100.0.1) 56(84) bytes of data.
+   64 bytes from 10.100.0.1: icmp_seq=1 ttl=64 time=27.5 ms
+   64 bytes from 10.100.0.1: icmp_seq=2 ttl=64 time=28.2 ms
+   64 bytes from 10.100.0.1: icmp_seq=3 ttl=64 time=29.1 ms
+   64 bytes from 10.100.0.1: icmp_seq=4 ttl=64 time=27.9 ms
+   --- 10.100.0.1 ping statistics ---
+   4 packets transmitted, 4 received, 0% packet loss, time 3999ms
+   rtt min/avg/max/mdev = 27.5/28.2/29.1/0.6 ms
    ```
 
 ## When to Manually Repave Hybrid Node Pools
@@ -401,13 +497,9 @@ take effect, while restoring your nodes to the desired configuration.
 
 ## Resources
 
-- [Agent Mode](../../../../deployment-modes/agent-mode/agent-mode.md)
+- [Prepare Edge Hosts](./prepare-environment/prepare-edge-hosts.md)
 
-- [Appliance Mode](../../../../deployment-modes/appliance-mode.md)
-
-- [EdgeForge Workflow](../../../edge/edgeforge-workflow/edgeforge-workflow.md)
-
-- [Build Provider Images](../../../edge/edgeforge-workflow/palette-canvos/build-provider-images.md)
+- [Prepare Network](./prepare-environment/prepare-network.md)
 
 - [Worker Node Pool](../../../cluster-management/node-pool.md#worker-node-pool)
 

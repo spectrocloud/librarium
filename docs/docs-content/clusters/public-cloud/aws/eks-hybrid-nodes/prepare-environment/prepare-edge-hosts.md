@@ -40,6 +40,86 @@ mode to manage configurations, updates, and workloads.
 
 - The edge host has at least one static IP address assigned.
 
+#### Network Connectivity
+
+- You can connect to the edge host through SSH using your private key.
+
+  For example, issue the following command and replace `<privateKey>`, `<sshUsername>`, and `<hostIpAddress>` with your
+  SSH private key, SSH username on the host, and the host IP address respectively.
+
+  ```bash
+  ssh -i <pathToPrivateKey> <sshUsername>@<hostIpAddress> exit
+  ```
+
+- The Edge host has outbound access to the internet.
+
+- The edge host has inbound and outbound connectivity to Palette SaaS
+  [services](../../../../../architecture/palette-public-ips.md) and
+  [ports](../../../../../architecture/networking-ports.md#network-ports).
+
+  For example, if you have [netcat](https://linux.die.net/man/1/nc) installed, issue the following command on the edge
+  host to check whether the `api.spectrocloud.com` domain is accessible on port `443`.
+
+  ```bash
+  nc -z -v api.spectrocloud.com 443
+  ```
+
+  Example output, if successful.
+
+  ```shell
+  Connection to api.spectrocloud.com port 443 [tcp/https] succeeded!
+  ```
+
+- The edge host has outbound connectivity to the required
+  [AWS EKS domains and ports](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-networking.html#hybrid-nodes-networking-on-prem).
+  Refer to the **Access required during hybrid node installation and upgrade** and **Access required for ongoing cluster
+  operations** sections for listed guidance.
+
+  For example, if you have [netcat](https://linux.die.net/man/1/nc) installed, issue the following command to check
+  whether the `eks.us-east-1.amazonaws.com` domain is accessible on port `443`.
+
+  ```bash
+  nc -z -v eks.us-east-1.amazonaws.com 443
+  ```
+
+  Example output, if successful.
+
+  ```shell
+  Connection to eks.us-east-1.amazonaws.com port 443 [tcp/https] succeeded!
+  ```
+
+  :::info
+
+  A table showing the required domains and ports for an example region can be found in the
+  [Configure Remote Network](./prepare-network.md#configure-remote-network) section during step 2.
+
+  :::
+
+- The edge host has the necessary ports available exclusively for
+  [Cilium operations](https://docs.cilium.io/en/stable/operations/system_requirements/#firewall-rules).
+
+  For example, issue the following command to check whether port `4240` is being used on the edge host.
+
+  ```bash
+  sudo lsof -i :4240
+  ```
+
+  If the command returns no output, this typically indicates that the port is free.
+
+#### Package Manager Index
+
+- Your edge host package manager must have an up-to-date package index. This is to ensure that dependency packages for
+  [`nodeadm`](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-nodeadm.html) can be successfully downloaded
+  and installed when [creating hybrid node pools](../create-hybrid-node-pools.md#create-hybrid-node-pool).
+
+  For example, on Ubuntu, you would issue the following command.
+
+  ```shell
+  sudo apt-get update
+  ```
+
+  Adjust it to your operating system and package manager on your edge host.
+
 #### OS and Dependencies
 
 - You must have a supported OS installed on your edge hosts. Palette supports the same operating systems as AWS. Refer
@@ -91,7 +171,7 @@ mode to manage configurations, updates, and workloads.
    hostname.
 
    ```shell
-   ssh -i </path/to/private/key> <ssh-user>@<host-ip-or-domain>
+   ssh -i <pathToPrivateKey> <sshUsername>@<hostIpAddress> exit
    ```
 
 2. Export your Palette registration token. Replace `<your-palette-registration-token>` with your token.
@@ -315,44 +395,11 @@ created.
 
 ### Validate
 
-Use the following sections to help check that your edge host is ready to be used as an Amazon EKS Hybrid Node.
-
-#### Palette Edge Host Registration
-
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
 2. Select **Clusters** from the left **Main Menu**.
 
 3. Select the **Edge Hosts** tab and verify your host is displayed and marked as **Healthy** in the table.
-
-#### Network Connectivity
-
-- Verify that you can connect to the edge host through SSH using your private key.
-
-- Verify that the edge host has outbound access to the internet.
-
-- Verify that the edge host has outbound connectivity to Spectro Cloud
-  [services](../../../../../architecture/palette-public-ips.md) and
-  [ports](../../../../../architecture/networking-ports.md#network-ports).
-
-- Verify that the edge host has outbound connectivity to the required
-  [AWS EKS domains and ports](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-networking.html#hybrid-nodes-networking-on-prem).
-  - Refer to the **Access required during hybrid node installation and upgrade** and **Access required for ongoing
-    cluster operations** sections for listed guidance.
-
-#### Package Manager Index
-
-- Verify that your edge host package manager has an up-to-date package index. This is to ensure that dependency packages
-  for [`nodeadm`](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-nodeadm.html) can be successfully
-  downloaded and installed when [creating hybrid node pools](../create-hybrid-node-pools.md#create-hybrid-node-pool).
-
-  For example, on Ubuntu, you would issue the following command.
-
-  ```shell
-  sudo apt-get update
-  ```
-
-  Adjust to your operating system and package manager on your edge host.
 
 ## Appliance Mode
 
@@ -803,16 +850,67 @@ Use the following sections to help check that your edge host is ready to be used
 
 - Verify that you can connect to the edge host through SSH using your private key.
 
+  For example, issue the following command and replace `<privateKey>`, `<sshUsername>`, and `<hostIpAddress>` with your
+  SSH private key, SSH username on the host, and the host IP address respectively.
+
+  ```bash
+  ssh -i <pathToPrivateKey> <sshUsername>@<hostIpAddress> exit
+  ```
+
 - Verify that the edge host has outbound access to the internet.
 
 - Verify that the edge host has outbound connectivity to Spectro Cloud
   [services](../../../../../architecture/palette-public-ips.md) and
   [ports](../../../../../architecture/networking-ports.md#network-ports).
 
+  For example, if you have [netcat](https://linux.die.net/man/1/nc) installed, issue the following command on the edge
+  host to check whether the `api.spectrocloud.com` domain is accessible on port `443`.
+
+  ```bash
+  nc -z -v api.spectrocloud.com 443
+  ```
+
+  Example output, if successful.
+
+  ```shell
+  Connection to api.spectrocloud.com port 443 [tcp/https] succeeded!
+  ```
+
 - Verify that the edge host has outbound connectivity to the required
-  [AWS EKS domains and ports](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-networking.html#hybrid-nodes-networking-on-prem)
-  - Refer to the **Access required during hybrid node installation and upgrade** and **Access required for ongoing
-    cluster operations** sections for listed guidance.
+  [AWS EKS domains and ports](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-networking.html#hybrid-nodes-networking-on-prem).
+  Refer to the **Access required during hybrid node installation and upgrade** and **Access required for ongoing cluster
+  operations** sections for listed guidance.
+
+  For example, if you have [netcat](https://linux.die.net/man/1/nc) installed, issue the following command on the edge
+  host to check whether the `eks.us-east-1.amazonaws.com` domain is accessible on port `443`.
+
+  ```bash
+  nc -z -v eks.us-east-1.amazonaws.com 443
+  ```
+
+  Example output, if successful.
+
+  ```shell
+  Connection to eks.us-east-1.amazonaws.com port 443 [tcp/https] succeeded!
+  ```
+
+  :::info
+
+  A table showing the required domains and ports for an example region can be found in the
+  [Configure Remote Network](./prepare-network.md#configure-remote-network) section during step 2.
+
+  :::
+
+- Verify that the edge host has the necessary ports available exclusively for
+  [Cilium operations](https://docs.cilium.io/en/stable/operations/system_requirements/#firewall-rules).
+
+  For example, issue the following command on the edge host to check whether port `4240` is being used on the edge host.
+
+  ```bash
+  sudo lsof -i :4240
+  ```
+
+  If the command returns no output, this typically indicates that the port is free.
 
 #### Package Manager Index
 
