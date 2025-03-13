@@ -16,11 +16,12 @@ Machines (VMs) that need to be migrated.
 - You can only migrate VMs hosted in VMware vSphere 7.0 and 8.0.
 - Only VMs whose operating systems are included under
   [`virt-v2v` supported guest systems](https://libguestfs.org/virt-v2v-support.1.html) can be migrated.
+- Open Virtual Appliance (OVA) files are not supported as a provider type for migrations.
 
 ## Prerequisites
 
 <!--prettier-ignore-->
-- The <VersionedLink text="Virtual Machine Migration Assistant" url="/integrations/packs/?pack=vm-migration-assistant-pack"/> pack must be added to your cluster profile. Refer to [Create a VM Migration Assistant Cluster Profile](./create-vm-migration-assistant-profile.md) for guidance.
+- The <VersionedLink text="Virtual Machine Migration Assistant" url="/integrations/packs/?pack=vm-migration-assistant"/> pack must be added to your cluster profile. Refer to [Create a VM Migration Assistant Cluster Profile](./create-vm-migration-assistant-profile.md) for guidance.
   - The VM Migration Assistant service console must be accessible from a web browser.
 
 - A healthy Virtual Machine Orchestrator (VMO) cluster. Refer to the [Create a VMO Profile](../create-vmo-profile.md) for further guidance.

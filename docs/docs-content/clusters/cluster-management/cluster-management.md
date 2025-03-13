@@ -15,9 +15,9 @@ visibility into the workloads running inside your cluster and cluster costs.
 
 The following sections describe these capabilities in detail:
 
-- [Reconfigure](reconfigure.md) - Scale your clusters up/down by adding/reducing the number of nodes in a node pool and
+- [Node Pools](node-pool.md) - Scale your clusters up/down by adding/reducing the number of nodes in a node pool and
   adding additional worker pools. Resize nodes in a node pool by modifying the node specs (CPU, Memory, or Instance Type
-  for public clouds). Add additional fault domains such as availability zones to a node pool.
+  for public clouds).
 
 - [Updates](cluster-updates.md) - Upgrade core packs (OS, Kubernetes, CSI, CNI) and add-on layers, such as Monitoring
   and Security.

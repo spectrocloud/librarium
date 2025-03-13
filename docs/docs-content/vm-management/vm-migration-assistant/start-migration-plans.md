@@ -23,7 +23,7 @@ Follow this guide to start migration plans in the VM Migration Assistant.
   - Ensure that VMs operating Windows are shut down at the virtualized OS level.
 
 <!--prettier-ignore-->
-- The <VersionedLink text="Virtual Machine Migration Assistant" url="/integrations/packs/?pack=vm-migration-assistant-pack"/> pack must be added to your cluster profile. Refer to [Create a VM Migration Assistant Cluster Profile](./create-vm-migration-assistant-profile.md) for guidance.
+- The <VersionedLink text="Virtual Machine Migration Assistant" url="/integrations/packs/?pack=vm-migration-assistant"/> pack must be added to your cluster profile. Refer to [Create a VM Migration Assistant Cluster Profile](./create-vm-migration-assistant-profile.md) for guidance.
   - The VM Migration Assistant service console must be accessible from a web browser.
 
 ### Start Cold Migration
@@ -91,7 +91,7 @@ Follow this guide to start migration plans in the VM Migration Assistant.
 - Terminal access to execute [kubectl](https://kubernetes.io/docs/reference/kubectl/) commands on your VMO cluster.
 
 <!--prettier-ignore-->
-- The <VersionedLink text="Virtual Machine Migration Assistant" url="/integrations/packs/?pack=vm-migration-assistant-pack"/> pack must be added to your cluster profile. Refer to [Create a VM Migration Assistant Cluster Profile](./create-vm-migration-assistant-profile.md) for guidance.
+- The <VersionedLink text="Virtual Machine Migration Assistant" url="/integrations/packs/?pack=vm-migration-assistant"/> pack must be added to your cluster profile. Refer to [Create a VM Migration Assistant Cluster Profile](./create-vm-migration-assistant-profile.md) for guidance.
   - The VM Migration Assistant service console must be accessible from a web browser.
 
 ### Start Warm Migration

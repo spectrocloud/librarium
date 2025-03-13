@@ -75,7 +75,7 @@ Follow this guide to create migration plans using the VM Migration Assistant.
     must be enabled on your VMs.
 
 <!--prettier-ignore-->
-- The <VersionedLink text="Virtual Machine Migration Assistant" url="/integrations/packs/?pack=vm-migration-assistant-pack"/> pack must be added to your cluster profile. Refer to [Create a VM Migration Assistant Cluster Profile](./create-vm-migration-assistant-profile.md) for guidance.
+- The <VersionedLink text="Virtual Machine Migration Assistant" url="/integrations/packs/?pack=vm-migration-assistant"/> pack must be added to your cluster profile. Refer to [Create a VM Migration Assistant Cluster Profile](./create-vm-migration-assistant-profile.md) for guidance.
   - The VM Migration Assistant service console must be accessible from a web browser.
 
 - We recommend using a [ConfigMap](https://kubernetes.io/docs/concepts/configuration/configmap/) to uninstall [VMware Tools](https://docs.vmware.com/en/VMware-Tools/index.html), and install the [QEMU Guest Agent](https://wiki.qemu.org/Features/GuestAgent) and [VirtiIO drivers](https://github.com/virtio-win/kvm-guest-drivers-windows) on your migrated VMs. Installing the QEMU agent and Virtio drivers enhances compatibility with VMO, and enables advanced features like live migration and accurate reporting of guest status.

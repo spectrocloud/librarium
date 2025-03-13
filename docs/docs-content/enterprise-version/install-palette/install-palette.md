@@ -35,9 +35,11 @@ The next sections provide sizing guidelines we recommend you review before insta
 
 ## Kubernetes Requirements
 
-The following table presents the Kubernetes version corresponding to each Palette version. It provides the download URLs
-for the Operating System and Kubernetes distribution OVA required for the install. Ensure that you use FIPS OVA URL if
-you require a <VersionedLink text="FIPS" url="/vertex/fips/" /> compliant installation.
+The following table presents the Kubernetes version corresponding to each Palette version for
+[VMware](../install-palette/install-on-vmware/install-on-vmware.md) and
+[Kubernetes](../install-palette/install-on-kubernetes/install-on-kubernetes.md) installations. Additionally, for VMware
+installations, it provides the download URLs for the required Operating System and Kubernetes distribution OVA. Ensure
+that you use the FIPS OVA URL if you require a <VersionedLink text="FIPS" url="/vertex/fips/" /> compliant installation.
 
 <PartialsComponent category="self-hosted" name="kubernetes-palette-versions" />
 

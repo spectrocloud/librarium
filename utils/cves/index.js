@@ -86,9 +86,9 @@ async function generateCVEs() {
       const palette = await getSecurityBulletins({
         filters: [
           {
-            field: "metadata.nistSeverity",
-            operator: "in",
-            options: ["CRITICAL", "HIGH"],
+            field: "metadata.shouldPublish",
+            operator: "bool",
+            value: "true",
           },
           {
             field: "spec.impact.impactedProducts.palette",
@@ -108,9 +108,9 @@ async function generateCVEs() {
       const paletteAirgap = await getSecurityBulletins({
         filters: [
           {
-            field: "metadata.nistSeverity",
-            operator: "in",
-            options: ["CRITICAL", "HIGH"],
+            field: "metadata.shouldPublish",
+            operator: "bool",
+            value: "true",
           },
           {
             field: "spec.impact.impactedProducts.palette",
@@ -130,9 +130,9 @@ async function generateCVEs() {
       const vertex = await getSecurityBulletins({
         filters: [
           {
-            field: "metadata.nistSeverity",
-            operator: "in",
-            options: ["CRITICAL", "HIGH"],
+            field: "metadata.shouldPublish",
+            operator: "bool",
+            value: "true",
           },
           {
             field: "spec.impact.impactedProducts.vertex",
@@ -152,9 +152,9 @@ async function generateCVEs() {
       const vertexAirgap = await getSecurityBulletins({
         filters: [
           {
-            field: "metadata.nistSeverity",
-            operator: "in",
-            options: ["CRITICAL", "HIGH"],
+            field: "metadata.shouldPublish",
+            operator: "bool",
+            value: "true",
           },
           {
             field: "spec.impact.impactedProducts.vertex",

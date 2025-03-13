@@ -36,20 +36,6 @@ The out-of-the-box images are hosted in the public cloud (AWS - AMI, Azure - VHD
 (vSphere - OVA). During provisioning, the image is copied (if missing) to the desired cloud region or downloaded onto a
 private data center.
 
-### Customization
-
-Palette provides various forms of customization options for VM images. All these customization options require a private
-pack registry to be set up with customized OS packs.
-
-#### Customize Out-of-the Box Images
-
-The Palette out-of-the-box images are security-hardened and have Kubernetes components preinstalled. Additional
-components can be installed on the images at runtime by defining one or more Ansible roles in the customized OS pack.
-Palette's orchestration engine creates a new image by instantiating a VM instance from the out-of-the-box image and
-executing the specified Ansible roles on the instance. This custom image is used for cluster provisioning. The
-customized image is tagged with a unique signature generated from the pack definition so that it can be reused for
-future cluster provisioning requests.
-
 ## Security
 
 Palette secures the Kubernetes clusters provisioned by following security best practices at the Operating System,
@@ -295,24 +281,25 @@ The following table lists the proxy requirements required by Palette. Depending 
 configuration, you may have to specify all subdomains of the top-level domains listed in the table. For example, an
 entry containing `gcr.io` and `*.gcr.io` may be required. Consult your network administrator for the exact requirements.
 
-| **Top-level Domain**        | **Port** | **Description**                               |
-| --------------------------- | -------- | --------------------------------------------- |
-| docker.io                   | 443      | Third party container images.                 |
-| docker.com                  | 443      | Third party container images.                 |
-| gcr.io                      | 443      | Spectro Cloud and 3rd party container images. |
-| ghcr.io                     | 443      | Third party container images.                 |
-| github.com                  | 443      | Third party content.                          |
-| googleapis.com              | 443      | Spectro Cloud images.                         |
-| grafana.com                 | 443      | Grafana container images and manifests.       |
-| k8s.gcr.io                  | 443      | Third party container images.                 |
-| projectcalico.org           | 443      | Calico container images.                      |
-| registry.k8s.io             | 443      | Third party container images.                 |
-| raw.githubusercontent.com   | 443      | Third party content.                          |
-| spectrocloud.com            | 443      | Spectro Cloud Palette SaaS.                   |
-| s3.amazonaws.com            | 443      | Spectro Cloud VMware OVA files.               |
-| quay.io                     | 443      | Third party container images.                 |
-| ecr.us-east-1.amazonaws.com | 443      | OCI Pack images.                              |
-| ecr.us-west-2.amazonaws.com | 443      | OCI Pack images.                              |
+| **Top-level Domain**        | **Port** | **Description**                                             |
+| --------------------------- | -------- | ----------------------------------------------------------- |
+| docker.io                   | 443      | Third party container images.                               |
+| docker.com                  | 443      | Third party container images.                               |
+| gcr.io                      | 443      | Spectro Cloud and third party container images              |
+| ghcr.io                     | 443      | Third party container images.                               |
+| github.com                  | 443      | Third party content.                                        |
+| googleapis.com              | 443      | Spectro Cloud images.                                       |
+| grafana.com                 | 443      | Grafana container images and manifests.                     |
+| k8s.gcr.io                  | 443      | Third party container images.                               |
+| projectcalico.org           | 443      | Calico container images.                                    |
+| registry.k8s.io             | 443      | Third party container images.                               |
+| raw.githubusercontent.com   | 443      | Third party content.                                        |
+| spectrocloud.com            | 443      | Spectro Cloud Palette SaaS.                                 |
+| s3.amazonaws.com            | 443      | Spectro Cloud VMware OVA files.                             |
+| quay.io                     | 443      | Third party container images.                               |
+| ecr.us-east-1.amazonaws.com | 443      | OCI Pack images.                                            |
+| ecr.us-west-2.amazonaws.com | 443      | OCI Pack images.                                            |
+| us-docker.pkg.dev           | 443      | Required content repository and common third party content. |
 
 ## Scope
 

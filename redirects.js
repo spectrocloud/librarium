@@ -595,6 +595,10 @@ let redirects = [
     to: "/clusters/cluster-management/cluster-map-filters/",
   },
   {
+    from: "/security/lifecycle/secure-development/",
+    to: "/security/lifecycle/",
+  },
+  {
     from: [
       "/integrations/antrea-cni",
       "/integrations/aws-autoscaler",

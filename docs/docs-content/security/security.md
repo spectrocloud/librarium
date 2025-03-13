@@ -68,9 +68,7 @@ Please contact our Security team at security@spectrocloud.com to report any secu
 
 - [Core Principles](core-principles.md)
 
-- [Lifecycle](lifecycle/lifecycle.md)
-
-- [Secure Development](lifecycle/secure-development.md)
+- [Secure Software Development Lifecycle](./lifecycle/lifecycle.md)
 
 - [Release Process](lifecycle/release-process.md)
 
@@ -85,3 +83,5 @@ Please contact our Security team at security@spectrocloud.com to report any secu
 - [Self-Hosted Operation](product-architecture/self-hosted-operation.md)
 
 - [Tenant Cluster Security](product-architecture/tenant-cluster.md)
+
+- [Vulnerability Management](./vulnerability-management/vulnerability-management.md)

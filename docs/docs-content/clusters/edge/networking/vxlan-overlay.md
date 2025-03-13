@@ -29,8 +29,8 @@ the cluster from an outage.
 
 ## When Should You Consider Enabling Overlay Network?
 
-If your Edge clusters are deployed in network environments that fit the following descriptions, you should consider
-enabling an overlay network for your cluster:
+If your Edge clusters are deployed in network environments that fit any of the following descriptions, you should
+consider enabling an overlay network for your cluster:
 
 - Network environments with dynamic IP address management, such as a DHCP network.
 - Instable network environments or environments that are out of your control. For example, you are deploying an Edge

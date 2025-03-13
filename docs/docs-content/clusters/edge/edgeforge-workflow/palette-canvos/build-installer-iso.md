@@ -128,7 +128,6 @@ Use the following instructions to build the Edge Installer ISO. The optional ste
    HTTP_PROXY=
    PROXY_CERT_PATH=
    UPDATE_KERNEL=false
-   EOF
    ```
 
 7. (Optional) You can embed a public key in your Edge installer ISO. If you choose to add a public key to your ISO or
