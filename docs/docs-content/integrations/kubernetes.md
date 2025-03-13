@@ -14,8 +14,8 @@ The Palette eXtended Kubernetes (PXK) pack supports several [cloud and data cent
 This pack defines the default properties we use to deploy Kubernetes clusters and enables most of the Kubernetes
 hardening standards that the Center for Internet Security (CIS) recommends.
 
-We also support managed Kubernetes distributions for Elastic Kubernetes Service (EKS), Azure Kubernetes Service (AKS),
-Google Kubernetes Engine (GKE), and Tencent Kubernetes Engine (TKE).
+We also support managed Kubernetes distributions for Elastic Kubernetes Service (EKS), Azure Kubernetes Service (AKS), and
+Google Kubernetes Engine (GKE).
 
 We offer PXK as a core pack in Palette.
 
