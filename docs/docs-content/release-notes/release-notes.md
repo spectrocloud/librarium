@@ -24,7 +24,7 @@ tags: ["release-notes"]
 - The Palette UI has been updated with a new color scheme and logo. These new elements are displayed on the login page,
   left **Main Menu**, and product tour. Check out the
   [Welcome to the fold: meet the new Spectro Cloud brand](https://www.spectrocloud.com/blog/meet-the-new-spectro-cloud-brand)
-  blogpost to learn more.
+  blog post to learn more.
 - Palette and VerteX emails have been updated with a new color scheme and logo. The visual elements match the changes
   made to the Palette UI.
 - [Azure IaaS clusters](../clusters/public-cloud/azure/azure.md) now support autoscaling functionality. This
