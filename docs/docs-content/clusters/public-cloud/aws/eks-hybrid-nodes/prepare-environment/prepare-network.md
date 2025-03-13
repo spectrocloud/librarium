@@ -583,8 +583,8 @@ This section's primary focus is AWS Site-to-Site VPN, although some steps can be
 
    - If using a virtual private gateway, enable route propagation on your subnet route tables.
 
-     - If using static routing, once your IPsec tunnels have been established in step 7, the remote node and remote pod
-       CIDR routes should automatically propagate to your subnet route tables.
+     - If using static routing, once your IPsec tunnels have been established later on in step 7, the remote node and
+       remote pod CIDR routes should automatically propagate to your subnet route tables.
 
        <details>
 
