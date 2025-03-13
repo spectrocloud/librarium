@@ -63,7 +63,7 @@ tags: ["release-notes"]
 
 - <TpBadge /> Palette introduces a remote shell capability for troubleshooting remote edge hosts. This new feature
   allows direct shell access via Palette without depending on user credentials or an active Kubernetes cluster. Refer to
-  the Remote Shell guide for further information.
+  the [Remote Shell](../clusters/edge/cluster-management/remote-shell.md) guide for further information.
 
 #### Improvements
 
