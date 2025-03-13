@@ -313,7 +313,7 @@ AWS documentation under
 3. Configure your firewall rules to allow node and pod communication with necessary AWS services as described in
    [Access required for ongoing cluster operations](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-networking.html#hybrid-nodes-networking-on-prem).
 
-   The following tables are example on-prem firewall rules for AWS services.
+   The following tables are example on-prem/remote firewall rules for AWS services.
 
    <Tabs>
 
@@ -375,8 +375,8 @@ AWS documentation under
    nodes and requires [firewall rules](https://docs.cilium.io/en/stable/operations/system_requirements/#firewall-rules)
    to allow health checks, Virtual Extensible Local Area Network (VXLAN) overlay, and etcd access.
 
-   The following tables are example on-prem firewall rules for Cilium and assumes that hybrid nodes will act as worker
-   nodes without VXLAN overlay networking.
+   The following tables are example on-prem/remote firewall rules for Cilium and assumes that hybrid nodes will act as
+   worker nodes without VXLAN overlay networking.
 
    <Tabs>
 
@@ -411,7 +411,7 @@ AWS documentation under
 
 ### Validate
 
-1. Log in to your on-prem network device or network management tool.
+1. Log in to your on-prem/remote network device or network management tool.
 
 2. Check that the following network resources have been configured for hybrid nodes.
 
@@ -751,11 +751,11 @@ This section's primary focus is AWS Site-to-Site VPN, although some steps can be
 
     <TabItem label="Border Gateway Protocol (BGP)" value="bgp">
 
-    - Configure BGP on your on-premises router to establish dynamic routing with AWS.
-      - AWS Site-to-Site VPN supports BGP over IPsec to automatically exchange routes between the on-prem network and
-        AWS.
-    - Ensure that the on-prem router is advertising its internal network to AWS and accepting AWS VPC CIDR routes via
-      BGP to direct traffic correctly.
+    - Configure BGP on your on-prem/remote router to establish dynamic routing with AWS.
+      - AWS Site-to-Site VPN supports BGP over IPsec to automatically exchange routes between the on-prem/remote network
+        and AWS.
+    - Ensure that the on-prem/remote router is advertising its internal network to AWS and accepting AWS VPC CIDR routes
+      via BGP to direct traffic correctly.
 
     </TabItem>
 
@@ -807,9 +807,9 @@ This section's primary focus is AWS Site-to-Site VPN, although some steps can be
    ```
 
 4. If you have an EC2 instance available that has been deployed in your AWS VPC, attempt to reach an available host
-   deployed within the on-prem VLAN or subnet.
+   deployed within the on-prem/remote VLAN or subnet.
 
-   Replace `<hostIpAddress>` with the IP address of your on-prem host, for example, `10.200.1.23`.
+   Replace `<hostIpAddress>` with the IP address of your on-prem/remote host, for example, `10.200.1.23`.
 
    ```shell
    ping <hostIpAddress>
@@ -836,7 +836,7 @@ This section's primary focus is AWS Site-to-Site VPN, although some steps can be
 
 1. Log in to the [AWS Direct Connect console](https://console.aws.amazon.com/directconnect/v2/home).
 
-2. Check that that the AWS Direct Connect connection and its associated Virtual Interface (Private VIF) are in an
+2. Check that the AWS Direct Connect connection and its associated Virtual Interface (Private VIF) are in an
    **Available** state. Check that the BGP session is established and the BGP status is **Up**.
 
 3. If you have an available host deployed within the on-prem/remote VLAN or subnet, SSH into the host, and attempt to
@@ -864,9 +864,9 @@ This section's primary focus is AWS Site-to-Site VPN, although some steps can be
    ```
 
 4. If you have an EC2 instance available that has been deployed in your AWS VPC, attempt to reach an available host
-   deployed within the on-prem VLAN or subnet.
+   deployed within the on-prem/remote VLAN or subnet.
 
-   Replace `<hostIpAddress>` with the IP address of your on-prem host, for example, `10.200.1.23`.
+   Replace `<hostIpAddress>` with the IP address of your on-prem/remote host, for example, `10.200.1.23`.
 
    ```shell
    ping <hostIpAddress>
