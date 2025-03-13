@@ -70,7 +70,7 @@ Palette VerteX upgrade.
     examples.
 
     ```shell
-    oras login X.X.X.X --user 'yourUserNameHere' --password 'yourPasswordHere'
+    oras login X.X.X.X --username 'yourUserNameHere' --password 'yourPasswordHere'
     ```
 
     :::tip
