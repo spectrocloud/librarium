@@ -302,7 +302,7 @@ following additional IAM permissions.
 
 ### Minimum Permissions Coverage
 
-If using [Minimum Permissions](../clusters/public-cloud/aws/required-iam-policies.md#minimum-permissions), either
+If using [Minimum Permissions](../clusters/public-cloud/aws/required-iam-policies.md#minimum-permissions-policies), either
 dynamic or static, you may need the following additional IAM permissions.
 
 | Configuration Section                                   | Missing Permissions                                                                                                                                                                                                                                       |
