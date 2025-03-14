@@ -300,7 +300,9 @@ Once the CRD is removed, it will not be recreated by Palette.
 
 ### Scenario - Remove Deprecated NATS Namespace
 
-Palette's internal message communication between components transitioned from using Neural Autonomous Transport System (NATS) to gRPC with version 4.0. As a result, clusters with Palette agents older than version 4.0 may have leftover NATS resources. Manually delete the `nats-system` namespace to remove any remaining NATS-related resources.
+Palette's internal message communication between components transitioned from using Neural Autonomous Transport System
+(NATS) to gRPC with version 4.0. As a result, clusters with Palette agents older than version 4.0 may have leftover NATS
+resources. Manually delete the `nats-system` namespace to remove any remaining NATS-related resources.
 
 #### Debug Steps
 
