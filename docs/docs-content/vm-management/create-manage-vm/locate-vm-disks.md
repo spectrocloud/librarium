@@ -35,8 +35,8 @@ Finally, use `Get-Partition -DriveLetter <drive> | Get-Disk` to get the correct 
 
 ![ps-get-physicaldisk](/locate-vm-disks-images/ps-get-physicaldisk.webp)
 
-Here you can see drive F: is disk number 3, which is the SCSI drive in LUN 0. We can find this as `/dev/disk-scsi-4` in
+Here drive F: is disk number 3, which is the SCSI drive in LUN 0. We can find this as `/dev/disk-scsi-4` in
 the dumpxml output table. This matches to the disk named `disk-scsi-4` in the VMO GUI.
 
-For driveletter E:, we get disk number 2, which is the Virtio drive on Bus 9, which is `/dev/disk-blk-3` in the dumpxml
+For drive E:, we get disk number 2, which is the Virtio drive on Bus 9, which is `/dev/disk-blk-3` in the dumpxml
 output table and `disk-scsi-3` in the VMO GUI.
