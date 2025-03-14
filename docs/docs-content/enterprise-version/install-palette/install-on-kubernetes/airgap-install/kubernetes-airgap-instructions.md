@@ -132,14 +132,14 @@ Complete the following steps before deploying the airgap Palette installation.
     additional CLI flags and examples.
 
     ```shell
-    oras login X.X.X.X --user 'yourUserNameHere' --password 'yourPasswordHere'
+    oras login X.X.X.X --username 'yourUserNameHere' --password 'yourPasswordHere'
     ```
 
     If you are using a Harbor registry with a self-signed certificate, you will need to add the `--insecure` flag to the
     `oras` command.
 
     ```shell
-    oras login X.X.X.X --insecure --user 'yourUserNameHere' --password 'yourPasswordHere'
+    oras login X.X.X.X --insecure --username 'yourUserNameHere' --password 'yourPasswordHere'
     ```
 
     </TabItem>
