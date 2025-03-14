@@ -19,19 +19,19 @@ The best way to start is to shell into the `virt-launcher` pod of the VM in ques
 This will give you the target names inside the guest and the disk names as defined in the Disks section of the VM in the GUI. For Linux, this is all you need.
 
 ## Windows
-On Windows, you need to go 1 step deeper. Start the same way be launching a shell into the `virt-launcher` pod of the VM in question. The run `virsh dumpxml 1` to get the full PCI info:
+On Windows, you need to go 1 step deeper. Start the same way be launching a shell into the `virt-launcher` pod of the VM in question. The run `virsh dumpxml 1` to get the full PCI info
 
 ![virsh-dumpxml](/locate-vm-disks-images/virsh-dumpxml.webp)
 
 - For virtio devices, every disk is attached to its own PCIe controller. This makes the bus parameter the identifying factor.
 - For scsi devices, every disk is attached to the same SCSI controller. This makes the bus parameter the identifying factor.
 
-Next you need to log into Windows itself and run the following powershell command:
+Next you need to log into Windows itself and run the following powershell command
 `Get-PhysicalDisk | ft DeviceId,FriendlyName,{$_.Size /1GB},PhysicalLocation`
 
 ![ps-get-partition](/locate-vm-disks-images/ps-get-partition.webp)
 
-Finally, use `Get-Partition -DriveLetter <drive> | Get-Disk` to get the correct device ID for a specific driveletter:
+Finally, use `Get-Partition -DriveLetter <drive> | Get-Disk` to get the correct device ID for a specific driveletter
 
 ![ps-get-physicaldisk](/locate-vm-disks-images/ps-get-physicaldisk.webp)
 
