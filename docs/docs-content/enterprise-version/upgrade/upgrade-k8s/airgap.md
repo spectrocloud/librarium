@@ -69,7 +69,7 @@ Palette upgrade.
     examples.
 
     ```shell
-    oras login X.X.X.X --user 'yourUserNameHere' --password 'yourPasswordHere'
+    oras login X.X.X.X --username 'yourUserNameHere' --password 'yourPasswordHere'
     ```
 
     :::tip
@@ -77,7 +77,7 @@ Palette upgrade.
     If your Harbor registry has a self-signed certificate, use the `--insecure` flag.
 
     ```shell
-    oras login X.X.X.X --insecure --user 'yourUserNameHere' --password 'yourPasswordHere'
+    oras login X.X.X.X --insecure --username 'yourUserNameHere' --password 'yourPasswordHere'
     ```
 
     :::
