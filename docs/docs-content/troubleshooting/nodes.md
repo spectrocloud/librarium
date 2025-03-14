@@ -298,10 +298,9 @@ workload cluster, you can follow the steps below.
 
 Once the CRD is removed, it will not be recreated by Palette.
 
-### Scenario - Remove Unused Namespaces
+### Scenario - Remove Deprecated NATS Namespace
 
-To remove a namespace from a cluster whose resources are not being referenced or used elsewhere in the cluster, follow
-the steps below.
+Palette's internal message communication between components transitioned from using Neural Autonomous Transport System (NATS) to gRPC with version 4.0. As a result, clusters with Palette agents older than version 4.0 may have leftover NATS resources. Manually delete the `nats-system` namespace to remove any remaining NATS-related resources.
 
 #### Debug Steps
 
@@ -312,14 +311,13 @@ the steps below.
    [Access Cluster with CLI](../clusters/cluster-management/palette-webctl.md#access-cluster-with-cli) guide for
    guidance on how to set up your terminal session to use the kubeconfig file.
 
-3. Issue the following command to list the namespaces in your target cluster.
+3. Issue the following command to list the namespaces in your cluster.
 
    ```shell
    kubectl get namespaces
    ```
 
-4. Identify the namespaces you want to delete. For example, to remove the `nats-system` namespace, used for Neural
-   Autonomous Transport System (NATS) resources prior to Palette's transition to gRPC, issue the following command.
+4. Remove the `nats-system` namespace.
 
    ```shell
    kubectl delete namespaces nats-system
