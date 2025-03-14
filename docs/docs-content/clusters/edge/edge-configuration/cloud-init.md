@@ -53,8 +53,10 @@ cloud-init stages. Use the following statements to help you decide.
 
 :::warning
 
-Give each cloud-init stage a unique name. During cluster deployment, the cloud-init stages between the OS pack and user
-data are merged. Without unique names to identify the different stages, some cloud-init data may get lost.
+Give each action in a cloud-init stage a unique name. During cluster deployment, the cloud-init stages between the OS
+pack and user data are merged. Without unique names to identify the different actions in a stage, some cloud-init data
+may get lost. You can name an action with the `name` parameter placed at the same level of indentation as the action.
+Refer to [Example Use Cases](#example-use-cases) for examples.
 
 :::
 
@@ -72,7 +74,7 @@ resource to learn more about other key terms, options, and advanced examples.
 
 :::
 
-Use the Edge Installer user data to apply specific site configurations to the edge host.
+Use the Edge Installer user data to apply specific site configurations to the Edge host.
 
 #### Set the User Password
 
