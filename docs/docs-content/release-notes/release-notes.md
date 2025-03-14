@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## March 15, 2025 - Release 4.6.10
+## March 15, 2025 - Release 4.6.11
 
 ### Security Notices
 
