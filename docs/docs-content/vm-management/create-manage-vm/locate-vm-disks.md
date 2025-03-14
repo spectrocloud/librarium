@@ -31,7 +31,7 @@ Next you need to log into Windows itself and run the following powershell comman
 
 ![ps-get-partition](/locate-vm-disks-images/ps-get-partition.webp)
 
-Finally, use `Get-Partition -DriveLetter <drive> | Get-Disk` to get the correct device ID for a specific driveletter
+Finally, use `Get-Partition -DriveLetter <drive> | Get-Disk` to get the correct device ID for a specific drive letter
 
 ![ps-get-physicaldisk](/locate-vm-disks-images/ps-get-physicaldisk.webp)
 
