@@ -6,10 +6,10 @@ partial_name: azure-iaas-static-rg-sub-role
 
 ```json
 {
-    "Name": "Palette Static Placement IaaS Cluster Deployer (rg/sub)",
-    "IsCustom": true,
-    "Description": "Can use Palette to deploy IaaS clusters using static placement. This role contains the permissions that must be applied at the resource group scope level. If deploying multiple clusters in a variety of resource groups within a subscription, apply the role with the subscription as scope instead of the resource group as scope.",
-    "Actions": [
+  "Name": "Palette Static Placement IaaS Cluster Deployer (rg/sub)",
+  "IsCustom": true,
+  "Description": "Can use Palette to deploy IaaS clusters using static placement. This role contains the permissions that must be applied at the resource group scope level. If deploying multiple clusters in a variety of resource groups within a subscription, apply the role with the subscription as scope instead of the resource group as scope.",
+  "Actions": [
     "Microsoft.Compute/availabilitySets/delete",
     "Microsoft.Compute/availabilitySets/read",
     "Microsoft.Compute/availabilitySets/write",
@@ -53,10 +53,10 @@ partial_name: azure-iaas-static-rg-sub-role
     "Microsoft.Storage/storageAccounts/listKeys/action",
     "Microsoft.Storage/storageAccounts/read",
     "Microsoft.Storage/storageAccounts/write"
-    ],
-    "NotActions": [],
-    "AssignableScopes": [
+  ],
+  "NotActions": [],
+  "AssignableScopes": [
     "/subscriptions/$SUBSCRIPTION_ID"
-    ]
+  ]
 }
 ```

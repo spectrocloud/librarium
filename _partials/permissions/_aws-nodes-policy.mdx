@@ -20,12 +20,19 @@ partial_name: aws-nodes-policy
         "ecr:ListImages",
         "ecr:BatchGetImage"
       ],
-      "Resource": ["*"],
+      "Resource": [
+        "*"
+      ],
       "Effect": "Allow"
     },
     {
-      "Action": ["secretsmanager:DeleteSecret", "secretsmanager:GetSecretValue"],
-      "Resource": ["arn:*:secretsmanager:*:*:secret:aws.cluster.x-k8s.io/*"],
+      "Action": [
+        "secretsmanager:DeleteSecret",
+        "secretsmanager:GetSecretValue"
+      ],
+      "Resource": [
+        "arn:*:secretsmanager:*:*:secret:aws.cluster.x-k8s.io/*"
+      ],
       "Effect": "Allow"
     },
     {
@@ -37,7 +44,9 @@ partial_name: aws-nodes-policy
         "ssmmessages:OpenDataChannel",
         "s3:GetEncryptionConfiguration"
       ],
-      "Resource": ["*"],
+      "Resource": [
+        "*"
+      ],
       "Effect": "Allow"
     }
   ]

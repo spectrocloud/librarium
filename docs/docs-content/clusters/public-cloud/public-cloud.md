@@ -9,7 +9,7 @@ sidebar_custom_props:
 
 Palette supports provisioning new workload clusters on public clouds using cloud providers' infrastructure. It achieves
 this by provisioning new virtual machines (VMs) for the control plane and worker pools and uses their managed Kubernetes
-services such as EKS, AKS, GKE, TKE, and more.
+services such as EKS, AKS, GKE, and more.
 
 Workload clusters are instantiated from cloud-specific Cluster Profiles templates that are created with pre-configured
 layers and components required for cluster deployments. You can use one of the cluster profiles provided or create a new
