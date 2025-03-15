@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Open source Licenses"
-title: "Open source Licenses"
+sidebar_label: "Open Source Licenses"
+title: "Open Source Licenses"
 description: "Review the open source licenses tied to the libraries and modules currently in use by Palette and PXK."
 sidebar_position: 0
 tags: ["legal", "licenses"]
@@ -13,4 +13,5 @@ This section documents the open source licenses associated with the libraries an
 ## Resources
 
 - [Palette](./oss-licenses.md)
+
 - [Palette eXtended Kubernetes](./pxk-oss-licenses.md)
