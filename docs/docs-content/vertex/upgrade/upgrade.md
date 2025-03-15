@@ -45,7 +45,25 @@ latest minor version available.
 
 | **Source Version** | **Target Version** |    **Support**     |
 | :----------------: | :----------------: | :----------------: |
+|       4.6.9        |       4.6.12       | :white_check_mark: |
+|       4.6.8        |       4.6.12       | :white_check_mark: |
+|       4.6.8        |       4.6.9        | :white_check_mark: |
+|       4.6.7        |       4.6.12       | :white_check_mark: |
+|       4.6.7        |       4.6.9        | :white_check_mark: |
+|       4.6.7        |       4.6.8        | :white_check_mark: |
+|       4.6.6        |       4.6.12       | :white_check_mark: |
+|       4.6.6        |       4.6.9        | :white_check_mark: |
+|       4.6.6        |       4.6.8        | :white_check_mark: |
+|       4.6.6        |       4.6.7        | :white_check_mark: |
+|       4.5.21       |       4.6.12       | :white_check_mark: |
+|       4.5.21       |       4.6.9        | :white_check_mark: |
+|       4.5.21       |       4.6.8        | :white_check_mark: |
+|       4.5.21       |       4.6.7        | :white_check_mark: |
 |       4.5.21       |       4.6.6        | :white_check_mark: |
+|       4.5.20       |       4.6.12       | :white_check_mark: |
+|       4.5.20       |       4.6.9        | :white_check_mark: |
+|       4.5.20       |       4.6.8        | :white_check_mark: |
+|       4.5.20       |       4.6.7        | :white_check_mark: |
 |       4.5.20       |       4.6.6        | :white_check_mark: |
 
 **4.5.x**
@@ -113,7 +131,19 @@ latest minor version available.
 
 | **Source Version** | **Target Version** |    **Support**     |
 | :----------------: | :----------------: | :----------------: |
+|       4.6.8        |       4.6.9        | :white_check_mark: |
+|       4.6.7        |       4.6.9        | :white_check_mark: |
+|       4.6.7        |       4.6.8        | :white_check_mark: |
+|       4.6.6        |       4.6.9        | :white_check_mark: |
+|       4.6.6        |       4.6.8        | :white_check_mark: |
+|       4.6.6        |       4.6.7        | :white_check_mark: |
+|       4.5.21       |       4.6.9        | :white_check_mark: |
+|       4.5.21       |       4.6.8        | :white_check_mark: |
+|       4.5.21       |       4.6.7        | :white_check_mark: |
 |       4.5.21       |       4.6.6        | :white_check_mark: |
+|       4.5.20       |       4.6.9        | :white_check_mark: |
+|       4.5.20       |       4.6.8        | :white_check_mark: |
+|       4.5.20       |       4.6.7        | :white_check_mark: |
 |       4.5.20       |       4.6.6        | :white_check_mark: |
 
 **4.5.x**
