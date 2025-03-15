@@ -99,6 +99,8 @@ review the permissions associated with each Tenant role, click on the role name 
 - edgehost.get
 - edgehost.list
 - edgehost.update
+- edgehost.sshUpdate
+- edgehost.sshUserUpdate
 - filter.create
 - filter.delete
 - filter.get
@@ -388,6 +390,8 @@ review the permissions associated with each Tenant role, click on the role name 
 - edgehost.get
 - edgehost.list
 - edgehost.update
+- edgehost.sshUpdate
+- edgehost.sshUserUpdate
 - filter.create
 - filter.delete
 - filter.get

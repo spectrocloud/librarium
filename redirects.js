@@ -49,8 +49,8 @@ let redirects = [
     to: `/clusters/edge/`,
   },
   {
-    from: `/troubleshooting/palette-namespaces-podes/`,
-    to: `/architecture/palette-namespaces-podes/`,
+    from: [`/troubleshooting/palette-namespaces-podes/`, `/architecture/palette-namespaces-podes/`],
+    to: `/architecture/palette-namespaces-pods/`,
   },
   {
     from: `/troubleshooting/Network-Communications-and-Ports/`,
@@ -589,6 +589,10 @@ let redirects = [
   {
     from: "/legal-licenses/oss-licenses/",
     to: "/legal-licenses/oss-licenses-index/",
+  },
+  {
+    from: "/release-notes/annoucements/",
+    to: "release-notes/announcements/",
   },
   {
     from: "/clusters/cluster-management/noc-ui/",
