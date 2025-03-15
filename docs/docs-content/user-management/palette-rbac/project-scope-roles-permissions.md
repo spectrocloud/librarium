@@ -282,6 +282,8 @@ review the permissions associated with each Project role, click on the role name
 - edgehost.get
 - edgehost.list
 - edgehost.update
+- edgehost.sshUpdate
+- edgehost.sshUserUpdate
 - location.create
 - location.delete
 - location.get
@@ -562,6 +564,8 @@ review the permissions associated with each Project role, click on the role name
 - edgehost.get
 - edgehost.list
 - edgehost.update
+- edgehost.sshUpdate
+- edgehost.sshUserUpdate
 - location.create
 - location.delete
 - location.get
@@ -662,6 +666,8 @@ review the permissions associated with each Project role, click on the role name
 - edgehost.get
 - edgehost.list
 - edgehost.update
+- edgehost.sshUpdate
+- edgehost.sshUserUpdate
 - location.get
 - location.list
 - location.update
