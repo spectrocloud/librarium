@@ -30,6 +30,16 @@
 
 ### Automation
 
+:::info
+
+Check out the [Downloads](../spectro-downloads.md) and [Compatibility Matrix](../component.md) pages to find the compatible version of the Palette CLI.
+
+:::
+
+#### Features
+
+#### Improvements
+
 ### Docs and Education
 
 ### Packs

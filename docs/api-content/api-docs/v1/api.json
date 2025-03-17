@@ -2251,6 +2251,20 @@
         }
       }
     },
+    "v1AuthTunnel": {
+      "description": "Tunnel authorize request",
+      "properties": {
+        "kind": {
+          "description": "kind of the resource",
+          "type": "string"
+        },
+        "uid": {
+          "description": "uid of the resource",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "v1AwsAMI": {
       "properties": {
         "id": {
@@ -10194,6 +10208,20 @@
       },
       "type": "object"
     },
+    "v1EdgeHostConfig": {
+      "properties": {
+        "clusterUids": {
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        },
+        "tunnelConfig": {
+          "$ref": "#/definitions/v1SpectroTunnelConfig"
+        }
+      },
+      "type": "object"
+    },
     "v1EdgeHostDevice": {
       "properties": {
         "aclmeta": {
@@ -10272,6 +10300,9 @@
         "service": {
           "$ref": "#/definitions/v1ServiceSpec"
         },
+        "tunnelConfig": {
+          "$ref": "#/definitions/v1SpectroTunnelConfig"
+        },
         "type": {
           "description": "Deprecated. Cloudtype of the provisioned edge host",
           "enum": [
@@ -10296,6 +10327,9 @@
         "hostPairingKey": {
           "format": "password",
           "type": "string"
+        },
+        "tunnelConfig": {
+          "$ref": "#/definitions/v1SpectroTunnelConfig"
         }
       },
       "type": "object"
@@ -10338,6 +10372,9 @@
             "in-use"
           ],
           "type": "string"
+        },
+        "tunnelStatus": {
+          "$ref": "#/definitions/v1SpectroTunnelStatus"
         }
       },
       "type": "object"
@@ -13820,9 +13857,6 @@
           "type": "string"
         },
         "apiPort": {
-          "type": "string"
-        },
-        "natsEndpoint": {
           "type": "string"
         },
         "uiEndpoint": {
@@ -18136,37 +18170,6 @@
       },
       "type": "object"
     },
-    "v1MgmtMsgBrokerReinitStatus": {
-      "properties": {
-        "failures": {
-          "items": {
-            "$ref": "#/definitions/v1MgmtMsgBrokerReinitStatusEntity"
-          },
-          "type": "array"
-        },
-        "success": {
-          "items": {
-            "$ref": "#/definitions/v1MgmtMsgBrokerReinitStatusEntity"
-          },
-          "type": "array"
-        }
-      },
-      "type": "object"
-    },
-    "v1MgmtMsgBrokerReinitStatusEntity": {
-      "properties": {
-        "account": {
-          "type": "string"
-        },
-        "isSuccess": {
-          "type": "boolean"
-        },
-        "message": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
     "v1MgmtPodHealth": {
       "description": "SystemAdmin",
       "properties": {
@@ -18259,419 +18262,6 @@
         }
       }
     },
-    "v1MsgBrokerConnection": {
-      "properties": {
-        "account": {
-          "type": "string"
-        },
-        "accountUid": {
-          "type": "string"
-        },
-        "cid": {
-          "type": "integer"
-        },
-        "cluster": {
-          "properties": {
-            "addr": {
-              "type": "string"
-            },
-            "authTimeout": {
-              "type": "integer"
-            },
-            "clusterPort": {
-              "type": "integer"
-            },
-            "urls": {
-              "items": {
-                "type": "string"
-              },
-              "type": "array"
-            }
-          },
-          "type": "object"
-        },
-        "cpu": {
-          "type": "number"
-        },
-        "duplicationCount": {
-          "type": "integer"
-        },
-        "iP": {
-          "type": "string"
-        },
-        "idle": {
-          "type": "string"
-        },
-        "inBytes": {
-          "type": "integer"
-        },
-        "inMsgs": {
-          "type": "integer"
-        },
-        "lang": {
-          "type": "string"
-        },
-        "lastActivity": {
-          "$ref": "#/definitions/v1Time"
-        },
-        "name": {
-          "type": "string"
-        },
-        "outBytes": {
-          "type": "integer"
-        },
-        "outMsgs": {
-          "type": "integer"
-        },
-        "pendingBytes": {
-          "type": "integer"
-        },
-        "port": {
-          "type": "integer"
-        },
-        "rtt": {
-          "type": "string"
-        },
-        "start": {
-          "$ref": "#/definitions/v1Time"
-        },
-        "subscriptionList": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        },
-        "subscriptions": {
-          "type": "integer"
-        },
-        "tLSCipherSuite": {
-          "type": "string"
-        },
-        "tLSVersion": {
-          "type": "string"
-        },
-        "uptime": {
-          "type": "string"
-        },
-        "version": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1MsgBrokerConnectionList": {
-      "items": {
-        "$ref": "#/definitions/v1MsgBrokerConnection"
-      },
-      "type": "array"
-    },
-    "v1MsgBrokerConnections": {
-      "properties": {
-        "connections": {
-          "items": {
-            "$ref": "#/definitions/v1MsgBrokerConnection"
-          },
-          "type": "array",
-          "uniqueItems": true
-        },
-        "limit": {
-          "type": "integer"
-        },
-        "now": {
-          "$ref": "#/definitions/v1Time"
-        },
-        "numOfConnections": {
-          "type": "integer"
-        },
-        "offset": {
-          "type": "integer"
-        },
-        "serverId": {
-          "type": "string"
-        },
-        "totalConnections": {
-          "type": "integer"
-        }
-      },
-      "type": "object"
-    },
-    "v1MsgBrokerHealth": {
-      "properties": {
-        "metadata": {
-          "$ref": "#/definitions/v1ObjectMeta",
-          "type": "object"
-        },
-        "spec": {
-          "$ref": "#/definitions/v1MsgBrokerNodesHealthSpec",
-          "type": "object"
-        },
-        "status": {
-          "$ref": "#/definitions/v1MsgBrokerNodesHealthStatus",
-          "type": "object"
-        }
-      },
-      "type": "object"
-    },
-    "v1MsgBrokerNodeHealth": {
-      "properties": {
-        "allyPublishersByTenant": {
-          "additionalProperties": {
-            "$ref": "#/definitions/v1MsgBrokerConnectionList"
-          },
-          "type": "object"
-        },
-        "duplicateSubscribersCount": {
-          "additionalProperties": {
-            "type": "integer"
-          },
-          "type": "object"
-        },
-        "hubbleSubscribersByService": {
-          "additionalProperties": {
-            "$ref": "#/definitions/v1MsgBrokerConnectionList"
-          },
-          "type": "object"
-        },
-        "hubbleSubscribersByTenant": {
-          "additionalProperties": {
-            "$ref": "#/definitions/v1MsgBrokerConnectionList"
-          },
-          "type": "object"
-        },
-        "hubbleSubscribersByType": {
-          "additionalProperties": {
-            "$ref": "#/definitions/v1MsgBrokerConnectionList"
-          },
-          "type": "object"
-        },
-        "nodeId": {
-          "type": "string"
-        },
-        "subscriberWithAbnormalRTT": {
-          "$ref": "#/definitions/v1MsgBrokerConnectionList"
-        },
-        "subscribersWithAbnormalSubscriptions": {
-          "$ref": "#/definitions/v1MsgBrokerConnectionList"
-        },
-        "uniqueSubscribers": {
-          "type": "integer"
-        },
-        "unrecognizedClients": {
-          "$ref": "#/definitions/v1MsgBrokerConnectionList"
-        }
-      },
-      "type": "object"
-    },
-    "v1MsgBrokerNodeHealthSpec": {
-      "properties": {
-        "connections": {
-          "$ref": "#/definitions/v1MsgBrokerConnections",
-          "type": "object"
-        },
-        "nodeId": {
-          "type": "string"
-        },
-        "routes": {
-          "$ref": "#/definitions/v1MsgBrokerRoutes",
-          "type": "object"
-        },
-        "variables": {
-          "$ref": "#/definitions/v1MsgBrokerVariables",
-          "type": "object"
-        }
-      },
-      "type": "object"
-    },
-    "v1MsgBrokerNodesHealthSpec": {
-      "properties": {
-        "nodes": {
-          "items": {
-            "$ref": "#/definitions/v1MsgBrokerNodeHealthSpec"
-          },
-          "type": "array"
-        }
-      },
-      "type": "object"
-    },
-    "v1MsgBrokerNodesHealthStatus": {
-      "properties": {
-        "nodes": {
-          "items": {
-            "$ref": "#/definitions/v1MsgBrokerNodeHealth"
-          },
-          "type": "array"
-        }
-      },
-      "type": "object"
-    },
-    "v1MsgBrokerRoutes": {
-      "properties": {
-        "numRoutes": {
-          "type": "integer"
-        },
-        "routes": {
-          "items": {
-            "$ref": "#/definitions/v1NatsRoute"
-          },
-          "type": "array"
-        },
-        "serverId": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1MsgBrokerVariables": {
-      "properties": {
-        "authRequired": {
-          "type": "boolean"
-        },
-        "authTimeout": {
-          "type": "integer"
-        },
-        "cluster": {
-          "properties": {
-            "addr": {
-              "type": "string"
-            },
-            "authTimeout": {
-              "type": "integer"
-            },
-            "clusterPort": {
-              "type": "integer"
-            },
-            "urls": {
-              "items": {
-                "type": "string"
-              },
-              "type": "array"
-            }
-          },
-          "type": "object"
-        },
-        "configLoadTime": {
-          "$ref": "#/definitions/v1Time"
-        },
-        "connectUrls": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        },
-        "connections": {
-          "type": "integer"
-        },
-        "cores": {
-          "type": "integer"
-        },
-        "cpu": {
-          "type": "number"
-        },
-        "gitCommit": {
-          "type": "string"
-        },
-        "go": {
-          "type": "string"
-        },
-        "gomaxprocs": {
-          "type": "integer"
-        },
-        "host": {
-          "type": "string"
-        },
-        "httpHost": {
-          "type": "string"
-        },
-        "httpPort": {
-          "type": "integer"
-        },
-        "inBytes": {
-          "type": "integer"
-        },
-        "inMsgs": {
-          "type": "integer"
-        },
-        "leafNodes": {
-          "type": "integer"
-        },
-        "maxConnections": {
-          "type": "integer"
-        },
-        "maxControlLine": {
-          "type": "integer"
-        },
-        "maxPayload": {
-          "type": "integer"
-        },
-        "maxPending": {
-          "type": "integer"
-        },
-        "mem": {
-          "type": "integer"
-        },
-        "now": {
-          "$ref": "#/definitions/v1Time"
-        },
-        "outBytes": {
-          "type": "integer"
-        },
-        "outMsgs": {
-          "type": "integer"
-        },
-        "pingInterval": {
-          "type": "integer"
-        },
-        "pingMax": {
-          "type": "integer"
-        },
-        "port": {
-          "type": "integer"
-        },
-        "proto": {
-          "type": "integer"
-        },
-        "remotes": {
-          "type": "integer"
-        },
-        "routes": {
-          "type": "integer"
-        },
-        "serverId": {
-          "type": "string"
-        },
-        "serverName": {
-          "type": "string"
-        },
-        "slowConsumers": {
-          "type": "integer"
-        },
-        "start": {
-          "$ref": "#/definitions/v1Time"
-        },
-        "subscriptions": {
-          "type": "integer"
-        },
-        "tlsRequired": {
-          "type": "boolean"
-        },
-        "tlsTimeout": {
-          "type": "integer"
-        },
-        "totalConnections": {
-          "type": "integer"
-        },
-        "uptime": {
-          "type": "string"
-        },
-        "version": {
-          "type": "string"
-        },
-        "writeDeadline": {
-          "type": "integer"
-        }
-      },
-      "type": "object"
-    },
     "v1MsgSubscriber": {
       "description": "Message subscriber request",
       "properties": {
@@ -18704,141 +18294,6 @@
             "type": "string"
           },
           "type": "array"
-        }
-      },
-      "type": "object"
-    },
-    "v1NatsConfiguration": {
-      "description": "Describes the response that contains the nats configuration to establish credentials",
-      "properties": {
-        "connectionString": {
-          "description": "Describes the preCalculated connection string, can be used directly to make connection",
-          "type": "string"
-        },
-        "enableTls": {
-          "description": "Describes the NATs application option to use a TLS based custom dialer. Its enabled when external Certificate is used over the existing one.",
-          "type": "boolean"
-        },
-        "insecureTls": {
-          "description": "Describes the NATs tls option to skip verifying the client certificate",
-          "type": "boolean"
-        },
-        "password": {
-          "description": "Describes the NATs user's password",
-          "type": "string"
-        },
-        "scheme": {
-          "description": "Describes the NATs protocol for the connection. Eg- 'tls', 'nats'",
-          "type": "string"
-        },
-        "tlsCertificate": {
-          "description": "Describes the NATs tls certificate used for making a secure connection",
-          "type": "string"
-        },
-        "tlsKey": {
-          "description": "Describes the NATs tls certificate key used for making a secure connection",
-          "type": "string"
-        },
-        "urls": {
-          "description": "Describes the URLs of the nats nodes used in nats HA setup where the client will connect",
-          "type": "string"
-        },
-        "userName": {
-          "description": "Describes the NATs user name",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1NatsCredentialRequest": {
-      "description": "Describes the request for resource's nats credential",
-      "properties": {
-        "clusterUid": {
-          "description": "Deprecated. please use resourceUid",
-          "type": "string"
-        },
-        "isSystem": {
-          "description": "Describes if its a system request",
-          "type": "boolean"
-        },
-        "resourceUid": {
-          "description": "Describes the resource for which credentials has to be fetched",
-          "type": "string"
-        },
-        "serviceName": {
-          "description": "Describes the service for which credentials has to be fetched. Possible values [ally, jet]",
-          "enum": [
-            "ally",
-            "jet"
-          ],
-          "type": "string"
-        },
-        "tenantUid": {
-          "description": "Describes the tenant of the resource",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1NatsCredentials": {
-      "description": "Describes the response that contains the nats credentials",
-      "properties": {
-        "allowedPublisher": {
-          "description": "Describes the subject on which client is allowed to publish",
-          "type": "string"
-        },
-        "allowedSubcriber": {
-          "description": "Describes the subject on which client is allowed to subscribe",
-          "type": "string"
-        },
-        "jwt": {
-          "description": "Describes the jwt token which will be used as an credential for the nats",
-          "type": "string"
-        },
-        "seed": {
-          "description": "Describes the seed for the jwt",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1NatsRoute": {
-      "properties": {
-        "didSolicit": {
-          "type": "boolean"
-        },
-        "inBytes": {
-          "type": "integer"
-        },
-        "inMsgs": {
-          "type": "integer"
-        },
-        "isConfigured": {
-          "type": "boolean"
-        },
-        "outBytes": {
-          "type": "integer"
-        },
-        "outMsgs": {
-          "type": "integer"
-        },
-        "pendingSize": {
-          "type": "integer"
-        },
-        "port": {
-          "type": "integer"
-        },
-        "remoteId": {
-          "type": "string"
-        },
-        "rid": {
-          "type": "integer"
-        },
-        "rtt": {
-          "type": "string"
-        },
-        "subscriptions": {
-          "type": "integer"
         }
       },
       "type": "object"
@@ -25225,6 +24680,11 @@
           "type": "boolean",
           "x-order": 1
         },
+        "isDeprecated": {
+          "type": "boolean",
+          "x-omitempty": false,
+          "x-order": 11
+        },
         "maxFloatVal": {
           "format": "float64",
           "type": "number",
@@ -28766,6 +28226,40 @@
       },
       "type": "object"
     },
+    "v1SpectroTunnelConfig": {
+      "description": "Spectro tunnel configuration",
+      "properties": {
+        "remoteSsh": {
+          "default": "disabled",
+          "enum": [
+            "enabled",
+            "disabled"
+          ],
+          "type": "string",
+          "x-omitempty": false
+        },
+        "remoteSshTempUser": {
+          "default": "disabled",
+          "enum": [
+            "enabled",
+            "disabled"
+          ],
+          "type": "string",
+          "x-omitempty": false
+        }
+      },
+      "type": "object"
+    },
+    "v1SpectroTunnelStatus": {
+      "description": "SpectroTunnelStatus is the status of the tunnel",
+      "properties": {
+        "ssh": {
+          "$ref": "#/definitions/v1SshTunnelStatus",
+          "description": "SshStatus is the status of the ssh tunnel"
+        }
+      },
+      "type": "object"
+    },
     "v1SpectroVirtualClusterEntity": {
       "description": "Spectro virtual cluster request payload for create and update",
       "properties": {
@@ -28900,6 +28394,77 @@
       "properties": {
         "maxPrice": {
           "description": "MaxPrice defines the maximum price the user is willing to pay for Spot VM instances",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1SshTunnelStatus": {
+      "properties": {
+        "lastModifiedTime": {
+          "$ref": "#/definitions/v1Time",
+          "description": "LastModifiedTime is the last modified time of the SSH tunnel"
+        },
+        "message": {
+          "description": "Message is the status message of the SSH tunnel",
+          "type": "string"
+        },
+        "state": {
+          "description": "State is the state of the SSH tunnel",
+          "enum": [
+            "Initiating",
+            "Created",
+            "Deleting",
+            "Deleted",
+            "Failed"
+          ],
+          "type": "string"
+        },
+        "user": {
+          "$ref": "#/definitions/v1SshUserStatus",
+          "description": "User is the temporary user of the SSH tunnel"
+        }
+      },
+      "type": "object"
+    },
+    "v1SshUserCredentials": {
+      "properties": {
+        "password": {
+          "description": "Password is the temporary password of the SSH tunnel",
+          "type": "string"
+        },
+        "sshKey": {
+          "description": "SshKey is the ssh key of the SSH tunnel",
+          "type": "string"
+        },
+        "username": {
+          "description": "UserName is the temporary username of the SSH tunnel",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "v1SshUserStatus": {
+      "properties": {
+        "credentials": {
+          "$ref": "#/definitions/v1SshUserCredentials",
+          "description": "Credentials is the temporary user credentials of the SSH tunnel"
+        },
+        "lastModifiedTime": {
+          "$ref": "#/definitions/v1Time",
+          "description": "LastModifiedTime is the last modified time of the SSH tunnel"
+        },
+        "message": {
+          "description": "Message is the status message of the SSH tunnel",
+          "type": "string"
+        },
+        "state": {
+          "description": "State is the state of the SSH tunnel",
+          "enum": [
+            "Created",
+            "Deleted",
+            "Failed"
+          ],
           "type": "string"
         }
       },
@@ -32205,6 +31770,46 @@
             "type": "string"
           },
           "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1TunnelConfiguration": {
+      "description": "Describes the response that contains the tunnel configuration to establish connection",
+      "properties": {
+        "preferredServer": {
+          "$ref": "#/definitions/v1TunnelEndpoint"
+        },
+        "servers": {
+          "items": {
+            "$ref": "#/definitions/v1TunnelEndpoint"
+          },
+          "type": "array",
+          "uniqueItems": true
+        }
+      },
+      "type": "object"
+    },
+    "v1TunnelEndpoint": {
+      "properties": {
+        "endpoint": {
+          "description": "Describes the URL where the client has to connect to the tunnel server",
+          "type": "string"
+        },
+        "tls": {
+          "description": "Describes the Tunnel tls config which client will use to make a request to the tunnel server",
+          "properties": {
+            "caCert": {
+              "type": "string"
+            },
+            "enabled": {
+              "type": "boolean"
+            },
+            "insecureSkipVerify": {
+              "type": "boolean"
+            }
+          },
+          "type": "object"
         }
       },
       "type": "object"
@@ -60502,6 +60107,47 @@
         ]
       }
     },
+    "/v1/edgehosts/{uid}/config": {
+      "get": {
+        "operationId": "v1EdgeHostDevicesUidConfigGet",
+        "parameters": [
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1EdgeHostConfig"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Get the specified edge host device configuration",
+        "tags": [
+          "edgehosts"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ]
+    },
     "/v1/edgehosts/{uid}/health": {
       "parameters": [
         {
@@ -60957,6 +60603,96 @@
           "type": "string"
         }
       ]
+    },
+    "/v1/edgehosts/{uid}/tunnelConfig": {
+      "parameters": [
+        {
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "patch": {
+        "operationId": "v1EdgeHostDevicesUidTunnelConfigUpdate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroTunnelConfig"
+            }
+          },
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Updates the specified edge host device tunnel configuration",
+        "tags": [
+          "edgehosts"
+        ]
+      }
+    },
+    "/v1/edgehosts/{uid}/tunnelStatus": {
+      "parameters": [
+        {
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "patch": {
+        "operationId": "v1EdgeHostDevicesUidTunnelStatusUpdate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroTunnelStatus"
+            }
+          },
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Updates the edge host tunnel status",
+        "tags": [
+          "edgehosts"
+        ]
+      }
     },
     "/v1/edgehosts/{uid}/vsphere/properties": {
       "parameters": [

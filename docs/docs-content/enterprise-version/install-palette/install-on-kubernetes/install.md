@@ -159,10 +159,17 @@ your environment. Reach out to our support team if you need assistance.
 
     <TabItem label="AWS ECR Registry" value="ecr">
 
-    ```yaml {53,77-85}
+    ```yaml {60,84-92}
     #########################
     # Spectro Cloud Palette #
     #########################
+
+    global:
+      imagePullSecret:
+        create: false
+        # Provide your own base64 encoded dockerconfigjson value below if using ImagePullSecret for Private registry Authentication
+      dockerConfigJson: ""
+
     # MongoDB Configuration
     mongo:
       # Whether to deploy MongoDB in-cluster (internal == true) or use Mongo Atlas
@@ -179,7 +186,7 @@ your environment. Reach out to our support team if you need assistance.
       cpuLimit: "2000m"
       memoryLimit: "4Gi"
       pvcSize: "20Gi"
-      storageClass: "" # leave empty to use the default storage class
+      storageClass: ""  # leave empty to use the default storage class
 
     config:
       installationMode: "connected" #values can be connected or airgap.
@@ -219,92 +226,79 @@ your environment. Reach out to our support team if you need assistance.
       cluster:
         stableEndpointAccess: false
 
-      #  registry:
-      #    endpoint: "" #<Contact Spectro Cloud Sales for More info>
-      #    name: "" #<Contact Spectro Cloud Sales for More info>
-      #    password: "" #<Contact Spectro Cloud Sales for More info>
-      #    username: "" #<Contact Spectro Cloud Sales for More info>
-      #    insecureSkipVerify: false
-      #    caCert: ""
+    #  registry:
+    #    endpoint: "" #<Contact Spectro Cloud Sales for More info>
+    #    name: "" #<Contact Spectro Cloud Sales for More info>
+    #    password: "" #<Contact Spectro Cloud Sales for More info>
+    #    username: "" #<Contact Spectro Cloud Sales for More info>
+    #    insecureSkipVerify: false
+    #    caCert: ""
 
-      #  ociPackRegistry:
-      #    endpoint: "" #<Contact Spectro Cloud Sales for More info>
-      #    name: "" #<Contact Spectro Cloud Sales for More info>
-      #    password: "" #<Contact Spectro Cloud Sales for More info>
-      #    username: "" #<Contact Spectro Cloud Sales for More info>
-      #    baseContentPath: "" #<Contact Spectro Cloud Sales for More info>
-      #    insecureSkipVerify: false
-      #    caCert: ""
+    #  ociPackRegistry:
+    #    endpoint: "" #<Contact Spectro Cloud Sales for More info>
+    #    name: "" #<Contact Spectro Cloud Sales for More info>
+    #    password: "" #<Contact Spectro Cloud Sales for More info>
+    #    username: "" #<Contact Spectro Cloud Sales for More info>
+    #    baseContentPath: "" #<Contact Spectro Cloud Sales for More info>
+    #    insecureSkipVerify: false
+    #    caCert: ""
 
-      ociPackEcrRegistry:
-        endpoint: "15789037893.dkr.ecr.us-east-1.amazonaws.com" #<Contact Spectro Cloud Sales for More info>
-        name: "Palette Packs OCI" #<Contact Spectro Cloud Sales for More info>
-        accessKey: "*************" #<Contact Spectro Cloud Sales for More info>
-        secretKey: "*************" #<Contact Spectro Cloud Sales for More info>
-        baseContentPath: "production" #<Contact Spectro Cloud Sales for More info>
-        isPrivate: true
-        insecureSkipVerify: false
-        caCert: ""
+       ociPackEcrRegistry:
+         endpoint: "15789037893.dkr.ecr.us-east-1.amazonaws.com" #<Contact Spectro Cloud Sales for More info>
+         name: "Palette Packs OCI" #<Contact Spectro Cloud Sales for More info>
+         accessKey: "**************" #<Contact Spectro Cloud Sales for More info>
+         secretKey: "**************" #<Contact Spectro Cloud Sales for More info>
+         baseContentPath: "production" #<Contact Spectro Cloud Sales for More info>
+         isPrivate: true
+         insecureSkipVerify: false
+         caCert: ""
 
-      # ociImageRegistry:
-      #   endpoint: "" #<Contact Spectro Cloud Sales for More info>
-      #   name: "" #<Contact Spectro Cloud Sales for More info>
-      #   password: "" #<Contact Spectro Cloud Sales for More info>
-      #   username: "" #<Contact Spectro Cloud Sales for More info>
-      #   baseContentPath: "" #<Contact Spectro Cloud Sales for More info>
-      #   insecureSkipVerify: false
-      #   caCert: ""
-      #   mirrorRegistries: ""
+    #  ociImageRegistry:
+    #    endpoint: "" #<Contact Spectro Cloud Sales for More info>
+    #    name: "" #<Contact Spectro Cloud Sales for More info>
+    #    password: "" #<Contact Spectro Cloud Sales for More info>
+    #    username: "" #<Contact Spectro Cloud Sales for More info>
+    #    baseContentPath: "" #<Contact Spectro Cloud Sales for More info>
+    #    insecureSkipVerify: false
+    #    caCert: ""
+    #    mirrorRegistries: ""  # See instructions below.
+
+    # Instruction for mirrorRegistries.
+    # ----------------------------------
+    # Please provide the registry endpoint for the following registries, separated by double colons (::):
+    # docker.io
+    # gcr.io
+    # ghcr.io
+    # k8s.gcr.io
+    # registry.k8s.io
+    # quay.io
+    # For each registry, follow this example format:
+    # docker.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<DOCKER_IO_ENDPOINT>,gcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<GCR_IO_ENDPOINT>,ghcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<GHCR_IO_ENDPOINT>,k8s.gcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<K8S_IO_ENDPOINT>,registry.k8s.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<REGISTRY_K8S_IO_ENDPOINT>,quay.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<QUAY_IO_ENDPOINT>,us-docker.pkg.dev::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<US_DOCKER_ENDPOINT>
+    # Replace <PLACE_HOLDER_FOR_ENDPOINT> with your actual registry endpoint and <DOCKER_IO_ENDPOINT>, <GCR_IO_ENDPOINT>, <GHCR_IO_ENDPOINT>, <K8S_IO_ENDPOINT>, <REGISTRY_K8S_IO_ENDPOINT>, and <QUAY_IO_ENDPOINT> with the specific endpoint details for each registry.
+
 
       imageSwapImages:
-        imageSwapInitImage: "gcr.io/spectro-images-public/release-fips/thewebroot/imageswap-init:v1.5.2"
-        imageSwapImage: "gcr.io/spectro-images-public/release-fips/thewebroot/imageswap:v1.5.2"
+        imageSwapInitImage: "us-docker.pkg.dev/palette-images/palette/thewebroot/imageswap-init:v1.5.3-spectro-4.5.1"
+        imageSwapImage: "us-docker.pkg.dev/palette-images/palette/thewebroot/imageswap:v1.5.3-spectro-4.5.1"
 
       imageSwapConfig:
         isEKSCluster: true #If the Cluster you are trying to install is EKS cluster set value to true else set to false
 
-    nats:
-      # Should we install nats as part of the nats chart bundled with hubble charts
-      # If not enabled NATS service should be installed as a separate service.
-
-      enabled: true
-
-      # Whether to front NATS with a cloud load balancer (internal == false) or
-      # either share the ingress load balancer or use hostNetwork (internal == true).
-      # See nats.natsUrl comments for further detail.
-      internal: true
-
-      # NATS URL
-      # Comma separated list of <dns_name:port> mappings for nats load balancer service
-      # E.g., "message1.dev.spectrocloud.com:4222,message2.dev.spectrocloud.com:4222"
-      #
-      # Mandatory if nats.internal == false
-      # Otherwise, if nats.internal == true:
-      # - If ingress.ingress.internal == true: leave empty (use hostNetwork)
-      # - If ingress.ingress.internal == false: use "<config.env.rootDomain>:4222" (share ingress lb)
-      natsUrl: ""
-
-      # *********************** IMPORTANT NOTE ******************************
-      # * if nats.internal == true, ignore all of the following NATS config *
-      # *********************************************************************
-
-      # NATS load balancer annotations
+    grpc:
+      external: false
+      endpoint: "" #Please provide DNS endpoint with the port eg: msg.spectrocloud.com:443
       annotations: {}
-
       # AWS example
-      # service.beta.kubernetes.io/aws-load-balancer-ssl-cert: <ACM_ARN>
-      # service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "server-port"
+      # service.beta.kubernetes.io/aws-load-balancer-internal: "true"
       # service.beta.kubernetes.io/aws-load-balancer-backend-protocol: tcp
+      # service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "https"
 
       # Azure example
       # service.beta.kubernetes.io/azure-load-balancer-internal: "true"
       # service.beta.kubernetes.io/azure-dns-label-name: myserviceuniquelabel
 
-      # Static IP for the nats loadbalancer service. If empty, a dynamic IP will be generated.
-      natsStaticIP: ""
-    grpc:
-      external: false
-      endpoint: "" #Please provide DNS endpoint with the port eg: msg.spectrocloud.com:443
+      # Static IP for the GRPC load balancer service. If empty, a dynamic IP will be generated.
+      grpcStaticIP: ""
       caCertificateBase64: "" #Please provide caCertificate for the grpc server Cert
       serverCrtBase64: ""
       serverKeyBase64: ""
@@ -342,8 +336,6 @@ your environment. Reach out to our support team if you need assistance.
 
         # For Service like AWS Load Balancer using https we would want to terminate the HTTPS at Load Balancer.
         terminateHTTPSAtLoadBalancer: false
-      nats:
-        enabled: true
 
     frps:
       frps:
@@ -353,7 +345,7 @@ your environment. Reach out to our support team if you need assistance.
           crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURqekNDQW5lZ0F3SUJBZ0lVZTVMdXBBZGljd0Z1SFJpWWMyWEgzNTFEUzJJd0RRWUpLb1pJaHZjTkFRRUwKQlFBd0tERW1NQ1FHQTFVRUF3d2RjSEp2ZUhrdWMyRnRjR3hsTG5Od1pXTjBjbTlqYkc5MVpDNWpiMjB3SGhjTgpNakl4TURFME1UTXlOREV5V2hjTk1qY3hNREV6TVRNeU5ERXlXakI3TVFzd0NRWURWUVFHRXdKVlV6RUxNQWtHCkExVUVDQk1DUTBFeEV6QVJCZ05WQkFjVENsTmhiblJoUTJ4aGNtRXhGVEFUQmdOVkJBb1RERk53WldOMGNtOUQKYkc5MVpERUxNQWtHQTFVRUN4TUNTVlF4SmpBa0JnTlZCQU1USFhCeWIzaDVMbk5oYlhCc1pTNXpjR1ZqZEhKdgpZMnh2ZFdRdVkyOXRNSUlCSWpBTkJna3Foa2lHOXcwQkFRRUZBQU9DQVE4QU1JSUJDZ0tDQVFFQXd5bEt3MmlxClBXM2JrQU0wV3RhaEFLbEppcWFHd05LUDVRRTZ6ZW5NM2FURko3TjIwN0dWcUNGYzJHTDNodmNhTDFranZjeEkKK2lybHpkbm9hcVhUSmV3ZkJiTGs2SGVhZmdXUVp3NHNNeE5QRUVYYlNXYm54Mm03Y2FlbVJiUWZSQWhPWXRvWgpIWG1IMzQ1Q25mNjF0RnhMeEEzb0JRNm1yb0JMVXNOOUh2WWFzeGE5QUFmZUNNZm5sYWVBWE9CVmROalJTN1VzCkN5NmlSRXpEWFgvem1nOG5WWFUwemlrcXdoS3pqSlBJd2FQa2ViaXVSdUJYdEZ0VlQwQmFzS3VqbURzd0lsRFQKVmR4SHRRQUVyUmM4Q2Nhb20yUkpZbTd1aHNEYlo2WVFzS3JiMmhIbU5rNENVWUd5eUJPZnBwbzR2bFd1S2FEcgpsVFNYUXlPN0M0ejM1d0lEQVFBQm8xNHdYREJhQmdOVkhSRUVVekJSZ2dsc2IyTmhiR2h2YzNTSEJIOEFBQUdDCkhYQnliM2g1TG5OaGJYQnNaUzV6Y0dWamRISnZZMnh2ZFdRdVkyOXRnaDhxTG5CeWIzaDVMbk5oYlhCc1pTNXoKY0dWamRISnZZMnh2ZFdRdVkyOXRNQTBHQ1NxR1NJYjNEUUVCQ3dVQUE0SUJBUUEvRFJFVm54SWJRdi9uMDEvSQpJd1d0ekhKNGNHOUp6UlB6dmszNUcvRGJOVzZYZ0M3djBoWlFIVHg5bzMrckxoSUFiWTNmbjc1VEtlN3hMRWpiCkI3M3pGWURJSStkYzM5NkQzZU51M2NxRGIvY01kYmlFalhod2ttZk9NRm9qMnpOdHJIdzFsSjA0QlNFMWw1YWgKMDk0Vy9aaEQ2YTVLU3B0cDh1YUpKVmNrejRYMEdRWjVPYjZadGdxZVVxNytqWVZOZ0tLQzJCMW1SNjMyMDNsZwozVFZmZEkrdmI3b292dVdOOFRBVG9qdXNuS25WMmRMeTFBOWViWXYwMEM3WWZ6Q0NhODgrN2dzTGhJaUJjRHBPClJkWjU3QStKanJmSU5IYy9vNm5YWFhDZ2h2YkFwUVk1QnFnMWIzYUpUZERNWThUY0hoQVVaQzB5eU04bXcwMnQKWHRRQwotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
           key: LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlFb3dJQkFBS0NBUUVBd3lsS3cyaXFQVzNia0FNMFd0YWhBS2xKaXFhR3dOS1A1UUU2emVuTTNhVEZKN04yCjA3R1ZxQ0ZjMkdMM2h2Y2FMMWtqdmN4SStpcmx6ZG5vYXFYVEpld2ZCYkxrNkhlYWZnV1FadzRzTXhOUEVFWGIKU1dibngybTdjYWVtUmJRZlJBaE9ZdG9aSFhtSDM0NUNuZjYxdEZ4THhBM29CUTZtcm9CTFVzTjlIdllhc3hhOQpBQWZlQ01mbmxhZUFYT0JWZE5qUlM3VXNDeTZpUkV6RFhYL3ptZzhuVlhVMHppa3F3aEt6akpQSXdhUGtlYml1ClJ1Qlh0RnRWVDBCYXNLdWptRHN3SWxEVFZkeEh0UUFFclJjOENjYW9tMlJKWW03dWhzRGJaNllRc0tyYjJoSG0KTms0Q1VZR3l5Qk9mcHBvNHZsV3VLYURybFRTWFF5TzdDNHozNXdJREFRQUJBb0lCQUFPVVZFeTFOTG9mczdFMgpmZFZVcm10R3I1U2RiVWRJRlYrTDREbzZtWWxQSmxhT0VoWGI0ZlROZDloNEtEWVBmaWwwSnhXcUU0U1RHTmZuCnNUMlRnUVhuQ01LZi8xYk1Lc2M0N3VjVStYYU9XaHJnVFI5UmhkckFjN0duODRLL3hQc0ljL2VZTEhHLzh1QUUKeWUvLzVmRkM2QmpXY0hUM1NkTlZnd3duamJudG5XTXIzTFJBVnJBamZBckxveWUwS0F2YytYdXJLTEVCcmMyVQpjaHlDbitZemJKN0VlSG44UXdQNGdBNXVSK0NCMFJPeFErYXIzS3M5YUhkZTQ1OEVNNEtLMnpUOXA4RWZRc1lFCkFtNUpxWjliR0JEVHV1dEkyNm9GK0pLQ1IzZzhXNERRcHVYRUZoVjlya0pMSm13RDhQb0JaclF6UzZvdmJhdkkKRk42QVM4RUNnWUVBOEcxQzFxZVh4dTQ4aEYxak5MTCswRmxkeWdFem9SMmFoRGJCai8weUZkQVVjU2pYTzk0NAozN1dORTBUUG10WG1Vc3NZTlBTR21XaWI2OUhicEFoMTY3SWVwNE9LaVlZdkozYm1oUC9WNzFvK3M0SWJlSHh1CkVJbWVVckFOZWRoQURVQnZ4c1lXRWxlVlVJSFFRcjY1VHM2ZjIrWkpTKzg4TU05bUorL3BmcmNDZ1lFQXo4MXgKR3JiSE5oak56RjhZMjhiK0hMNW5rdDR0SUdkU3hnbW9PMFFJeGkrQVNZTzB0WW42VFk0ZHI5ZXErMzE3b21ZawpMbDNtNENORDhudG1vYzRvWnM4SUpDQ0IrZjNqcTY4OHdoQU9vVHZ4dDhjZVJqOFRhRHl1SHZwS043OVNsVVd2CjBJd2ZRNDNIemd3SWJiSWhjcTRJVGswanI0VHdWbThia283VElGRUNnWUJoNnUzVXhHN0JHeGZVaE1BNW4waSsKREJkeGhPbkZEV3gzdW1FOHhrN1dxV2NaNnhzMWk3eTRCNVhNS2pNdkNUeURyYWxQTCtOOXFTZ1BjK216TmFybwo4aU1mOENmRStMeE5vMVFoQ0p6Vm5YaDUzVnhZeHJ5QXlidU1TNTFCYVh3MHFYQ2NrT0krV0NNOHBaSHZEUVFsCmYydUZ3SlZMY3NTZDBHbjNpL01ab3dLQmdBY1BzUjg2Uk15MnpROTd6OGx3R3FSNVorV2F2U2ZUdXdGVnhLeTIKNUNGdjdja1J1NnRMbEFEY3FtK1dRWTRvTm5KUFREMXpIV3hTWm5XdjhjM2Z4b212MFZRQThzbSs4ZVNjb05EcgpZTVBqMkpQcEpVTTMwMzRBU2Q1dG5PWUdEMVZaTjk4N1U3aWs4Ynd6dG5tYnl2MHRvc1NlWkc4TGNtdE5mVDllCnNSZnhBb0dCQUpTV1lDellyTlRMNnRUSnh5M2FqWm5jZkxrMEV0eWNCd05FRXZHVzVSVE9LOUFYTE96RzN0eHUKajZqWlRpaUFRU09aaVd0clJHU0U0bEkyQ1MvcjNjd3VuSGlnZlovd1dKZldkZ0JpRnZqOTVFbUVQWUZaRDRobQpkT3l5UHhRRXFTRmprQ21BS2plOFBpTDdpU01GbGhBZTZQWFljQlExdCtzd01UeXBnY3RrCi0tLS0tRU5EIFJTQSBQUklWQVRFIEtFWS0tLS0tCg==
         ca:
-          crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURNVENDQWhtZ0F3SUJBZ0lVSHhWK0ljVGZHUElzdW8yY3dqQ0Q0Z2RSTFFRd0RRWUpLb1pJaHZjTkFRRUwKQlFBd0tERW1NQ1FHQTFVRUF3d2RjSEp2ZUhrdWMyRnRjR3hsTG5Od1pXTjBjbTlqYkc5MVpDNWpiMjB3SGhjTgpNakl4TURFME1UTXlOREV5V2hjTk16WXdOakl5TVRNeU5ERXlXakFvTVNZd0pBWURWUVFEREIxd2NtOTRlUzV6CllXMXdiR1V1YzNCbFkzUnliMk5zYjNWa0xtTnZiVENDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFEZ2dFUEFEQ0MKQVFvQ2dnRUJBSy90WXBHVi9HRURUWnZzL25QQ2lOK0U3K1dOQ21GeU1NQjdkazVOT3JzQWZIaVVvZ1JRVUo0WQptSjhwVmYrSzhTRFBsdGNYcW40WVVTbmxiUERsVlBkWU5zOTEwT3RaS1EwNW96aUtGV2pNbS85NHlLSjVyVzNsCndDNEN0ayttUm9Ib0ZQQS81dmFVbVZHdlVadjlGY0JuL0pKN2F4WnRIQk1PRiticXQ0Zmd0ci9YMWdOeWhPVzUKZTVScGpESkozRjJTVnc5NUpBQSt4a3V3UitFSmVseEtnQVpxdDc0ejB4U2ROODZ0QzNtK0wxRGs2WVVlQWEzZApvM3Rsa3ZkeDV6dUJvSmI2QmpZWEV4UE1PbThRcHFNVWRLK3lDZUdrem9XQStDOUtFdGtVaERCWktENStNWXRZCktVMUh1RXJCbmw2Z3BuWTRlbzJjVTRxdkNwZzZ4S3NDQXdFQUFhTlRNRkV3SFFZRFZSME9CQllFRklKMkRkTjgKc2ZtVjRCT1ZFL0FjZ0VEejArNmlNQjhHQTFVZEl3UVlNQmFBRklKMkRkTjhzZm1WNEJPVkUvQWNnRUR6MCs2aQpNQThHQTFVZEV3RUIvd1FGTUFNQkFmOHdEUVlKS29aSWh2Y05BUUVMQlFBRGdnRUJBQWhQVi9RMVl1YWVTOTZVCmhjVGQ4RWdJaHhpbHFiTWlTQm5WaVdrdlJzWk94UUIwNTFScWtwT3g0UTRsckdaOGVJWWc3T0trTTdzejhuTVQKL2pxS21sZDY0MzJCcURCMlNkNVp5ZFdReHAwU1laRTlnVWszYk9KRGtZVXQ4b1cvZDBWeG9uU05LQVN3QmZKaApWV1VZUUlpNm55K0ZZZmtuRFNvRnFlY2Z3SDBQQVUraXpnMkI3KzFkbko5YisyQ21IOUVCallOZ2hoNlFzVlFQCkh2SkdQQURtandPNkJOam5HK0Z3K0Z6cmFXUTNCTjAwb08zUjF6UmgxZERmTTQzR3oxRmZGRW5GSXI5aGFuUnQKWHJFZm8vZWU5bjBLWUFESEJnV1g4dlhuNHZrRmdWRjgwYW9MUUJSQTBxWXErcW1pVlp6YnREeE9ldFEyRWFyTQpyNmVWL0lZPQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+          crt : LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURNVENDQWhtZ0F3SUJBZ0lVSHhWK0ljVGZHUElzdW8yY3dqQ0Q0Z2RSTFFRd0RRWUpLb1pJaHZjTkFRRUwKQlFBd0tERW1NQ1FHQTFVRUF3d2RjSEp2ZUhrdWMyRnRjR3hsTG5Od1pXTjBjbTlqYkc5MVpDNWpiMjB3SGhjTgpNakl4TURFME1UTXlOREV5V2hjTk16WXdOakl5TVRNeU5ERXlXakFvTVNZd0pBWURWUVFEREIxd2NtOTRlUzV6CllXMXdiR1V1YzNCbFkzUnliMk5zYjNWa0xtTnZiVENDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFEZ2dFUEFEQ0MKQVFvQ2dnRUJBSy90WXBHVi9HRURUWnZzL25QQ2lOK0U3K1dOQ21GeU1NQjdkazVOT3JzQWZIaVVvZ1JRVUo0WQptSjhwVmYrSzhTRFBsdGNYcW40WVVTbmxiUERsVlBkWU5zOTEwT3RaS1EwNW96aUtGV2pNbS85NHlLSjVyVzNsCndDNEN0ayttUm9Ib0ZQQS81dmFVbVZHdlVadjlGY0JuL0pKN2F4WnRIQk1PRiticXQ0Zmd0ci9YMWdOeWhPVzUKZTVScGpESkozRjJTVnc5NUpBQSt4a3V3UitFSmVseEtnQVpxdDc0ejB4U2ROODZ0QzNtK0wxRGs2WVVlQWEzZApvM3Rsa3ZkeDV6dUJvSmI2QmpZWEV4UE1PbThRcHFNVWRLK3lDZUdrem9XQStDOUtFdGtVaERCWktENStNWXRZCktVMUh1RXJCbmw2Z3BuWTRlbzJjVTRxdkNwZzZ4S3NDQXdFQUFhTlRNRkV3SFFZRFZSME9CQllFRklKMkRkTjgKc2ZtVjRCT1ZFL0FjZ0VEejArNmlNQjhHQTFVZEl3UVlNQmFBRklKMkRkTjhzZm1WNEJPVkUvQWNnRUR6MCs2aQpNQThHQTFVZEV3RUIvd1FGTUFNQkFmOHdEUVlKS29aSWh2Y05BUUVMQlFBRGdnRUJBQWhQVi9RMVl1YWVTOTZVCmhjVGQ4RWdJaHhpbHFiTWlTQm5WaVdrdlJzWk94UUIwNTFScWtwT3g0UTRsckdaOGVJWWc3T0trTTdzejhuTVQKL2pxS21sZDY0MzJCcURCMlNkNVp5ZFdReHAwU1laRTlnVWszYk9KRGtZVXQ4b1cvZDBWeG9uU05LQVN3QmZKaApWV1VZUUlpNm55K0ZZZmtuRFNvRnFlY2Z3SDBQQVUraXpnMkI3KzFkbko5YisyQ21IOUVCallOZ2hoNlFzVlFQCkh2SkdQQURtandPNkJOam5HK0Z3K0Z6cmFXUTNCTjAwb08zUjF6UmgxZERmTTQzR3oxRmZGRW5GSXI5aGFuUnQKWHJFZm8vZWU5bjBLWUFESEJnV1g4dlhuNHZrRmdWRjgwYW9MUUJSQTBxWXErcW1pVlp6YnREeE9ldFEyRWFyTQpyNmVWL0lZPQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
         service:
           annotations: {}
 
@@ -379,10 +371,17 @@ your environment. Reach out to our support team if you need assistance.
 
     <TabItem label="OCI Registry" value="oci">
 
-    ```yaml {53,68-75,87-95}
+    ```yaml {60,75-82,94-102}
     #########################
     # Spectro Cloud Palette #
     #########################
+
+    global:
+      imagePullSecret:
+        create: false
+        # Provide your own base64 encoded dockerconfigjson value below if using ImagePullSecret for Private registry Authentication
+      dockerConfigJson: ""
+
     # MongoDB Configuration
     mongo:
       # Whether to deploy MongoDB in-cluster (internal == true) or use Mongo Atlas
@@ -399,7 +398,7 @@ your environment. Reach out to our support team if you need assistance.
       cpuLimit: "2000m"
       memoryLimit: "4Gi"
       pvcSize: "20Gi"
-      storageClass: "" # leave empty to use the default storage class
+      storageClass: ""  # leave empty to use the default storage class
 
     config:
       installationMode: "connected" #values can be connected or airgap.
@@ -439,105 +438,78 @@ your environment. Reach out to our support team if you need assistance.
       cluster:
         stableEndpointAccess: false
 
-        #  registry:
-        #    endpoint: "" #<Contact Spectro Cloud Sales for More info>
-        #    name: "" #<Contact Spectro Cloud Sales for More info>
-        #    password: "" #<Contact Spectro Cloud Sales for More info>
-        #    username: "" #<Contact Spectro Cloud Sales for More info>
-        #    insecureSkipVerify: false
-        #    caCert: ""
+    #  registry:
+    #    endpoint: "" #<Contact Spectro Cloud Sales for More info>
+    #    name: "" #<Contact Spectro Cloud Sales for More info>
+    #    password: "" #<Contact Spectro Cloud Sales for More info>
+    #    username: "" #<Contact Spectro Cloud Sales for More info>
+    #    insecureSkipVerify: false
+    #    caCert: ""
 
-        ociPackRegistry:
-          endpoint: "example.harbor.org" #<Contact Spectro Cloud Sales for More info>
-          name: "Palette Packs OCI" #<Contact Spectro Cloud Sales for More info>
-          password: "**************" #<Contact Spectro Cloud Sales for More info>
-          username: "**************" #<Contact Spectro Cloud Sales for More info>
-          baseContentPath: "spectro-packs" #<Contact Spectro Cloud Sales for More info>
-          insecureSkipVerify: false
-          caCert: ""
+       ociPackRegistry:
+         endpoint: "example.harbor.org" #<Contact Spectro Cloud Sales for More info>
+         name: "Palette Packs OCI" #<Contact Spectro Cloud Sales for More info>
+         password: "**************" #<Contact Spectro Cloud Sales for More info>
+         username: "**************" #<Contact Spectro Cloud Sales for More info>
+         baseContentPath: "spectro-packs" #<Contact Spectro Cloud Sales for More info>
+         insecureSkipVerify: false
+         caCert: ""
 
-      # ociPackEcrRegistry:
-      #  endpoint: "" #<Contact Spectro Cloud Sales for More info>
-      #  name: "" #<Contact Spectro Cloud Sales for More info>
-      #  accessKey: "" #<Contact Spectro Cloud Sales for More info>
-      #  secretKey: "" #<Contact Spectro Cloud Sales for More info>
-      #  baseContentPath: "" #<Contact Spectro Cloud Sales for More info>
-      #  isPrivate: true
-      #  insecureSkipVerify: false
-      #  caCert: ""
+    #  ociPackEcrRegistry:
+    #    endpoint: "" #<Contact Spectro Cloud Sales for More info>
+    #    name: "" #<Contact Spectro Cloud Sales for More info>
+    #    accessKey: "" #<Contact Spectro Cloud Sales for More info>
+    #    secretKey: "" #<Contact Spectro Cloud Sales for More info>
+    #    baseContentPath: "" #<Contact Spectro Cloud Sales for More info>
+    #    isPrivate: true
+    #    insecureSkipVerify: false
+    #    caCert: ""
 
        ociImageRegistry:
          endpoint: "example.harbor.org" #<Contact Spectro Cloud Sales for More info>
-         name: "Palette Packs OCI" #<Contact Spectro Cloud Sales for More info>
+         name: "Palette Images OCI" #<Contact Spectro Cloud Sales for More info>
          password: "**************" #<Contact Spectro Cloud Sales for More info>
          username: "**************" #<Contact Spectro Cloud Sales for More info>
          baseContentPath: "spectro-images" #<Contact Spectro Cloud Sales for More info>
          insecureSkipVerify: false
          caCert: ""
-         mirrorRegistries: ""
+         mirrorRegistries: ""  # See instructions below.
 
-      # Instruction for mirrorRegistries.
-      # ----------------------------------
-      # Please provide the registry endpoint for the following registries, separated by double colons (::):
-      # docker.io
-      # gcr.io
-      # ghcr.io
-      # k8s.gcr.io
-      # registry.k8s.io
-      # quay.io
-      # For each registry, follow this example format:
-      # docker.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<DOCKER_IO_ENDPOINT>,gcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<GCR_IO_ENDPOINT>,ghcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<GHCR_IO_ENDPOINT>,k8s.gcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<K8S_IO_ENDPOINT>,registry.k8s.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<REGISTRY_K8S_IO_ENDPOINT>,quay.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<QUAY_IO_ENDPOINT>
-      # Replace <PLACE_HOLDER_FOR_ENDPOINT> with your actual registry endpoint and <DOCKER_IO_ENDPOINT>, <GCR_IO_ENDPOINT>, <GHCR_IO_ENDPOINT>, <K8S_IO_ENDPOINT>, <REGISTRY_K8S_IO_ENDPOINT>, and <QUAY_IO_ENDPOINT> with the specific endpoint details for each registry.
+    # Instruction for mirrorRegistries.
+    # ----------------------------------
+    # Please provide the registry endpoint for the following registries, separated by double colons (::):
+    # docker.io
+    # gcr.io
+    # ghcr.io
+    # k8s.gcr.io
+    # registry.k8s.io
+    # quay.io
+    # For each registry, follow this example format:
+    # docker.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<DOCKER_IO_ENDPOINT>,gcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<GCR_IO_ENDPOINT>,ghcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<GHCR_IO_ENDPOINT>,k8s.gcr.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<K8S_IO_ENDPOINT>,registry.k8s.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<REGISTRY_K8S_IO_ENDPOINT>,quay.io::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<QUAY_IO_ENDPOINT>,us-docker.pkg.dev::<PLACE_HOLDER_FOR_ENDPOINT>/v2/<US_DOCKER_ENDPOINT>
+    # Replace <PLACE_HOLDER_FOR_ENDPOINT> with your actual registry endpoint and <DOCKER_IO_ENDPOINT>, <GCR_IO_ENDPOINT>, <GHCR_IO_ENDPOINT>, <K8S_IO_ENDPOINT>, <REGISTRY_K8S_IO_ENDPOINT>, and <QUAY_IO_ENDPOINT> with the specific endpoint details for each registry.
 
       imageSwapImages:
-        imageSwapInitImage: "gcr.io/spectro-images-public/release-fips/thewebroot/imageswap-init:v1.5.2"
-        imageSwapImage: "gcr.io/spectro-images-public/release-fips/thewebroot/imageswap:v1.5.2"
+        imageSwapInitImage: "us-docker.pkg.dev/palette-images/palette/thewebroot/imageswap-init:v1.5.3-spectro-4.5.1"
+        imageSwapImage: "us-docker.pkg.dev/palette-images/palette/thewebroot/imageswap:v1.5.3-spectro-4.5.1"
 
       imageSwapConfig:
         isEKSCluster: true #If the Cluster you are trying to install is EKS cluster set value to true else set to false
 
-    nats:
-      # Should we install nats as part of the nats chart bundled with hubble charts
-      # If not enabled NATS service should be installed as a separate service.
-
-      enabled: true
-
-      # Whether to front NATS with a cloud load balancer (internal == false) or
-      # either share the ingress load balancer or use hostNetwork (internal == true).
-      # See nats.natsUrl comments for further detail.
-      internal: true
-
-      # NATS URL
-      # Comma separated list of <dns_name:port> mappings for nats load balancer service
-      # E.g., "message1.dev.spectrocloud.com:4222,message2.dev.spectrocloud.com:4222"
-      #
-      # Mandatory if nats.internal == false
-      # Otherwise, if nats.internal == true:
-      # - If ingress.ingress.internal == true: leave empty (use hostNetwork)
-      # - If ingress.ingress.internal == false: use "<config.env.rootDomain>:4222" (share ingress lb)
-      natsUrl: ""
-
-      # *********************** IMPORTANT NOTE ******************************
-      # * if nats.internal == true, ignore all of the following NATS config *
-      # *********************************************************************
-
-      # NATS load balancer annotations
+    grpc:
+      external: false
+      endpoint: "" #Please provide DNS endpoint with the port eg: msg.spectrocloud.com:443
       annotations: {}
-
       # AWS example
-      # service.beta.kubernetes.io/aws-load-balancer-ssl-cert: <ACM_ARN>
-      # service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "server-port"
+      # service.beta.kubernetes.io/aws-load-balancer-internal: "true"
       # service.beta.kubernetes.io/aws-load-balancer-backend-protocol: tcp
+      # service.beta.kubernetes.io/aws-load-balancer-ssl-ports: "https"
 
       # Azure example
       # service.beta.kubernetes.io/azure-load-balancer-internal: "true"
       # service.beta.kubernetes.io/azure-dns-label-name: myserviceuniquelabel
 
-      # Static IP for the nats loadbalancer service. If empty, a dynamic IP will be generated.
-      natsStaticIP: ""
-    grpc:
-      external: false
-      endpoint: "" #Please provide DNS endpoint with the port eg: msg.spectrocloud.com:443
+      # Static IP for the GRPC load balancer service. If empty, a dynamic IP will be generated.
+      grpcStaticIP: ""
       caCertificateBase64: "" #Please provide caCertificate for the grpc server Cert
       serverCrtBase64: ""
       serverKeyBase64: ""
@@ -575,8 +547,6 @@ your environment. Reach out to our support team if you need assistance.
 
         # For Service like AWS Load Balancer using https we would want to terminate the HTTPS at Load Balancer.
         terminateHTTPSAtLoadBalancer: false
-      nats:
-        enabled: true
 
     frps:
       frps:
@@ -586,7 +556,7 @@ your environment. Reach out to our support team if you need assistance.
           crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURqekNDQW5lZ0F3SUJBZ0lVZTVMdXBBZGljd0Z1SFJpWWMyWEgzNTFEUzJJd0RRWUpLb1pJaHZjTkFRRUwKQlFBd0tERW1NQ1FHQTFVRUF3d2RjSEp2ZUhrdWMyRnRjR3hsTG5Od1pXTjBjbTlqYkc5MVpDNWpiMjB3SGhjTgpNakl4TURFME1UTXlOREV5V2hjTk1qY3hNREV6TVRNeU5ERXlXakI3TVFzd0NRWURWUVFHRXdKVlV6RUxNQWtHCkExVUVDQk1DUTBFeEV6QVJCZ05WQkFjVENsTmhiblJoUTJ4aGNtRXhGVEFUQmdOVkJBb1RERk53WldOMGNtOUQKYkc5MVpERUxNQWtHQTFVRUN4TUNTVlF4SmpBa0JnTlZCQU1USFhCeWIzaDVMbk5oYlhCc1pTNXpjR1ZqZEhKdgpZMnh2ZFdRdVkyOXRNSUlCSWpBTkJna3Foa2lHOXcwQkFRRUZBQU9DQVE4QU1JSUJDZ0tDQVFFQXd5bEt3MmlxClBXM2JrQU0wV3RhaEFLbEppcWFHd05LUDVRRTZ6ZW5NM2FURko3TjIwN0dWcUNGYzJHTDNodmNhTDFranZjeEkKK2lybHpkbm9hcVhUSmV3ZkJiTGs2SGVhZmdXUVp3NHNNeE5QRUVYYlNXYm54Mm03Y2FlbVJiUWZSQWhPWXRvWgpIWG1IMzQ1Q25mNjF0RnhMeEEzb0JRNm1yb0JMVXNOOUh2WWFzeGE5QUFmZUNNZm5sYWVBWE9CVmROalJTN1VzCkN5NmlSRXpEWFgvem1nOG5WWFUwemlrcXdoS3pqSlBJd2FQa2ViaXVSdUJYdEZ0VlQwQmFzS3VqbURzd0lsRFQKVmR4SHRRQUVyUmM4Q2Nhb20yUkpZbTd1aHNEYlo2WVFzS3JiMmhIbU5rNENVWUd5eUJPZnBwbzR2bFd1S2FEcgpsVFNYUXlPN0M0ejM1d0lEQVFBQm8xNHdYREJhQmdOVkhSRUVVekJSZ2dsc2IyTmhiR2h2YzNTSEJIOEFBQUdDCkhYQnliM2g1TG5OaGJYQnNaUzV6Y0dWamRISnZZMnh2ZFdRdVkyOXRnaDhxTG5CeWIzaDVMbk5oYlhCc1pTNXoKY0dWamRISnZZMnh2ZFdRdVkyOXRNQTBHQ1NxR1NJYjNEUUVCQ3dVQUE0SUJBUUEvRFJFVm54SWJRdi9uMDEvSQpJd1d0ekhKNGNHOUp6UlB6dmszNUcvRGJOVzZYZ0M3djBoWlFIVHg5bzMrckxoSUFiWTNmbjc1VEtlN3hMRWpiCkI3M3pGWURJSStkYzM5NkQzZU51M2NxRGIvY01kYmlFalhod2ttZk9NRm9qMnpOdHJIdzFsSjA0QlNFMWw1YWgKMDk0Vy9aaEQ2YTVLU3B0cDh1YUpKVmNrejRYMEdRWjVPYjZadGdxZVVxNytqWVZOZ0tLQzJCMW1SNjMyMDNsZwozVFZmZEkrdmI3b292dVdOOFRBVG9qdXNuS25WMmRMeTFBOWViWXYwMEM3WWZ6Q0NhODgrN2dzTGhJaUJjRHBPClJkWjU3QStKanJmSU5IYy9vNm5YWFhDZ2h2YkFwUVk1QnFnMWIzYUpUZERNWThUY0hoQVVaQzB5eU04bXcwMnQKWHRRQwotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
           key: LS0tLS1CRUdJTiBSU0EgUFJJVkFURSBLRVktLS0tLQpNSUlFb3dJQkFBS0NBUUVBd3lsS3cyaXFQVzNia0FNMFd0YWhBS2xKaXFhR3dOS1A1UUU2emVuTTNhVEZKN04yCjA3R1ZxQ0ZjMkdMM2h2Y2FMMWtqdmN4SStpcmx6ZG5vYXFYVEpld2ZCYkxrNkhlYWZnV1FadzRzTXhOUEVFWGIKU1dibngybTdjYWVtUmJRZlJBaE9ZdG9aSFhtSDM0NUNuZjYxdEZ4THhBM29CUTZtcm9CTFVzTjlIdllhc3hhOQpBQWZlQ01mbmxhZUFYT0JWZE5qUlM3VXNDeTZpUkV6RFhYL3ptZzhuVlhVMHppa3F3aEt6akpQSXdhUGtlYml1ClJ1Qlh0RnRWVDBCYXNLdWptRHN3SWxEVFZkeEh0UUFFclJjOENjYW9tMlJKWW03dWhzRGJaNllRc0tyYjJoSG0KTms0Q1VZR3l5Qk9mcHBvNHZsV3VLYURybFRTWFF5TzdDNHozNXdJREFRQUJBb0lCQUFPVVZFeTFOTG9mczdFMgpmZFZVcm10R3I1U2RiVWRJRlYrTDREbzZtWWxQSmxhT0VoWGI0ZlROZDloNEtEWVBmaWwwSnhXcUU0U1RHTmZuCnNUMlRnUVhuQ01LZi8xYk1Lc2M0N3VjVStYYU9XaHJnVFI5UmhkckFjN0duODRLL3hQc0ljL2VZTEhHLzh1QUUKeWUvLzVmRkM2QmpXY0hUM1NkTlZnd3duamJudG5XTXIzTFJBVnJBamZBckxveWUwS0F2YytYdXJLTEVCcmMyVQpjaHlDbitZemJKN0VlSG44UXdQNGdBNXVSK0NCMFJPeFErYXIzS3M5YUhkZTQ1OEVNNEtLMnpUOXA4RWZRc1lFCkFtNUpxWjliR0JEVHV1dEkyNm9GK0pLQ1IzZzhXNERRcHVYRUZoVjlya0pMSm13RDhQb0JaclF6UzZvdmJhdkkKRk42QVM4RUNnWUVBOEcxQzFxZVh4dTQ4aEYxak5MTCswRmxkeWdFem9SMmFoRGJCai8weUZkQVVjU2pYTzk0NAozN1dORTBUUG10WG1Vc3NZTlBTR21XaWI2OUhicEFoMTY3SWVwNE9LaVlZdkozYm1oUC9WNzFvK3M0SWJlSHh1CkVJbWVVckFOZWRoQURVQnZ4c1lXRWxlVlVJSFFRcjY1VHM2ZjIrWkpTKzg4TU05bUorL3BmcmNDZ1lFQXo4MXgKR3JiSE5oak56RjhZMjhiK0hMNW5rdDR0SUdkU3hnbW9PMFFJeGkrQVNZTzB0WW42VFk0ZHI5ZXErMzE3b21ZawpMbDNtNENORDhudG1vYzRvWnM4SUpDQ0IrZjNqcTY4OHdoQU9vVHZ4dDhjZVJqOFRhRHl1SHZwS043OVNsVVd2CjBJd2ZRNDNIemd3SWJiSWhjcTRJVGswanI0VHdWbThia283VElGRUNnWUJoNnUzVXhHN0JHeGZVaE1BNW4waSsKREJkeGhPbkZEV3gzdW1FOHhrN1dxV2NaNnhzMWk3eTRCNVhNS2pNdkNUeURyYWxQTCtOOXFTZ1BjK216TmFybwo4aU1mOENmRStMeE5vMVFoQ0p6Vm5YaDUzVnhZeHJ5QXlidU1TNTFCYVh3MHFYQ2NrT0krV0NNOHBaSHZEUVFsCmYydUZ3SlZMY3NTZDBHbjNpL01ab3dLQmdBY1BzUjg2Uk15MnpROTd6OGx3R3FSNVorV2F2U2ZUdXdGVnhLeTIKNUNGdjdja1J1NnRMbEFEY3FtK1dRWTRvTm5KUFREMXpIV3hTWm5XdjhjM2Z4b212MFZRQThzbSs4ZVNjb05EcgpZTVBqMkpQcEpVTTMwMzRBU2Q1dG5PWUdEMVZaTjk4N1U3aWs4Ynd6dG5tYnl2MHRvc1NlWkc4TGNtdE5mVDllCnNSZnhBb0dCQUpTV1lDellyTlRMNnRUSnh5M2FqWm5jZkxrMEV0eWNCd05FRXZHVzVSVE9LOUFYTE96RzN0eHUKajZqWlRpaUFRU09aaVd0clJHU0U0bEkyQ1MvcjNjd3VuSGlnZlovd1dKZldkZ0JpRnZqOTVFbUVQWUZaRDRobQpkT3l5UHhRRXFTRmprQ21BS2plOFBpTDdpU01GbGhBZTZQWFljQlExdCtzd01UeXBnY3RrCi0tLS0tRU5EIFJTQSBQUklWQVRFIEtFWS0tLS0tCg==
         ca:
-          crt: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURNVENDQWhtZ0F3SUJBZ0lVSHhWK0ljVGZHUElzdW8yY3dqQ0Q0Z2RSTFFRd0RRWUpLb1pJaHZjTkFRRUwKQlFBd0tERW1NQ1FHQTFVRUF3d2RjSEp2ZUhrdWMyRnRjR3hsTG5Od1pXTjBjbTlqYkc5MVpDNWpiMjB3SGhjTgpNakl4TURFME1UTXlOREV5V2hjTk16WXdOakl5TVRNeU5ERXlXakFvTVNZd0pBWURWUVFEREIxd2NtOTRlUzV6CllXMXdiR1V1YzNCbFkzUnliMk5zYjNWa0xtTnZiVENDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFEZ2dFUEFEQ0MKQVFvQ2dnRUJBSy90WXBHVi9HRURUWnZzL25QQ2lOK0U3K1dOQ21GeU1NQjdkazVOT3JzQWZIaVVvZ1JRVUo0WQptSjhwVmYrSzhTRFBsdGNYcW40WVVTbmxiUERsVlBkWU5zOTEwT3RaS1EwNW96aUtGV2pNbS85NHlLSjVyVzNsCndDNEN0ayttUm9Ib0ZQQS81dmFVbVZHdlVadjlGY0JuL0pKN2F4WnRIQk1PRiticXQ0Zmd0ci9YMWdOeWhPVzUKZTVScGpESkozRjJTVnc5NUpBQSt4a3V3UitFSmVseEtnQVpxdDc0ejB4U2ROODZ0QzNtK0wxRGs2WVVlQWEzZApvM3Rsa3ZkeDV6dUJvSmI2QmpZWEV4UE1PbThRcHFNVWRLK3lDZUdrem9XQStDOUtFdGtVaERCWktENStNWXRZCktVMUh1RXJCbmw2Z3BuWTRlbzJjVTRxdkNwZzZ4S3NDQXdFQUFhTlRNRkV3SFFZRFZSME9CQllFRklKMkRkTjgKc2ZtVjRCT1ZFL0FjZ0VEejArNmlNQjhHQTFVZEl3UVlNQmFBRklKMkRkTjhzZm1WNEJPVkUvQWNnRUR6MCs2aQpNQThHQTFVZEV3RUIvd1FGTUFNQkFmOHdEUVlKS29aSWh2Y05BUUVMQlFBRGdnRUJBQWhQVi9RMVl1YWVTOTZVCmhjVGQ4RWdJaHhpbHFiTWlTQm5WaVdrdlJzWk94UUIwNTFScWtwT3g0UTRsckdaOGVJWWc3T0trTTdzejhuTVQKL2pxS21sZDY0MzJCcURCMlNkNVp5ZFdReHAwU1laRTlnVWszYk9KRGtZVXQ4b1cvZDBWeG9uU05LQVN3QmZKaApWV1VZUUlpNm55K0ZZZmtuRFNvRnFlY2Z3SDBQQVUraXpnMkI3KzFkbko5YisyQ21IOUVCallOZ2hoNlFzVlFQCkh2SkdQQURtandPNkJOam5HK0Z3K0Z6cmFXUTNCTjAwb08zUjF6UmgxZERmTTQzR3oxRmZGRW5GSXI5aGFuUnQKWHJFZm8vZWU5bjBLWUFESEJnV1g4dlhuNHZrRmdWRjgwYW9MUUJSQTBxWXErcW1pVlp6YnREeE9ldFEyRWFyTQpyNmVWL0lZPQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
+          crt : LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSURNVENDQWhtZ0F3SUJBZ0lVSHhWK0ljVGZHUElzdW8yY3dqQ0Q0Z2RSTFFRd0RRWUpLb1pJaHZjTkFRRUwKQlFBd0tERW1NQ1FHQTFVRUF3d2RjSEp2ZUhrdWMyRnRjR3hsTG5Od1pXTjBjbTlqYkc5MVpDNWpiMjB3SGhjTgpNakl4TURFME1UTXlOREV5V2hjTk16WXdOakl5TVRNeU5ERXlXakFvTVNZd0pBWURWUVFEREIxd2NtOTRlUzV6CllXMXdiR1V1YzNCbFkzUnliMk5zYjNWa0xtTnZiVENDQVNJd0RRWUpLb1pJaHZjTkFRRUJCUUFEZ2dFUEFEQ0MKQVFvQ2dnRUJBSy90WXBHVi9HRURUWnZzL25QQ2lOK0U3K1dOQ21GeU1NQjdkazVOT3JzQWZIaVVvZ1JRVUo0WQptSjhwVmYrSzhTRFBsdGNYcW40WVVTbmxiUERsVlBkWU5zOTEwT3RaS1EwNW96aUtGV2pNbS85NHlLSjVyVzNsCndDNEN0ayttUm9Ib0ZQQS81dmFVbVZHdlVadjlGY0JuL0pKN2F4WnRIQk1PRiticXQ0Zmd0ci9YMWdOeWhPVzUKZTVScGpESkozRjJTVnc5NUpBQSt4a3V3UitFSmVseEtnQVpxdDc0ejB4U2ROODZ0QzNtK0wxRGs2WVVlQWEzZApvM3Rsa3ZkeDV6dUJvSmI2QmpZWEV4UE1PbThRcHFNVWRLK3lDZUdrem9XQStDOUtFdGtVaERCWktENStNWXRZCktVMUh1RXJCbmw2Z3BuWTRlbzJjVTRxdkNwZzZ4S3NDQXdFQUFhTlRNRkV3SFFZRFZSME9CQllFRklKMkRkTjgKc2ZtVjRCT1ZFL0FjZ0VEejArNmlNQjhHQTFVZEl3UVlNQmFBRklKMkRkTjhzZm1WNEJPVkUvQWNnRUR6MCs2aQpNQThHQTFVZEV3RUIvd1FGTUFNQkFmOHdEUVlKS29aSWh2Y05BUUVMQlFBRGdnRUJBQWhQVi9RMVl1YWVTOTZVCmhjVGQ4RWdJaHhpbHFiTWlTQm5WaVdrdlJzWk94UUIwNTFScWtwT3g0UTRsckdaOGVJWWc3T0trTTdzejhuTVQKL2pxS21sZDY0MzJCcURCMlNkNVp5ZFdReHAwU1laRTlnVWszYk9KRGtZVXQ4b1cvZDBWeG9uU05LQVN3QmZKaApWV1VZUUlpNm55K0ZZZmtuRFNvRnFlY2Z3SDBQQVUraXpnMkI3KzFkbko5YisyQ21IOUVCallOZ2hoNlFzVlFQCkh2SkdQQURtandPNkJOam5HK0Z3K0Z6cmFXUTNCTjAwb08zUjF6UmgxZERmTTQzR3oxRmZGRW5GSXI5aGFuUnQKWHJFZm8vZWU5bjBLWUFESEJnV1g4dlhuNHZrRmdWRjgwYW9MUUJSQTBxWXErcW1pVlp6YnREeE9ldFEyRWFyTQpyNmVWL0lZPQotLS0tLUVORCBDRVJUSUZJQ0FURS0tLS0tCg==
         service:
           annotations: {}
 
