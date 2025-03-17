@@ -1,0 +1,54 @@
+---
+partial_category: self-hosted
+partial_name: smtp
+---
+
+You can configure a Simple Mail Transport Protocol (SMTP) server to send emails on behalf of your {props.version}
+instance. An SMTP server is required to change the email address of the admin user and to send the initial tenant
+invitation email.
+
+## Limitations
+
+- Anonymous SMTP configuration (configuration without a username and password) is not supported at this time. 
+
+## Prerequisites
+
+- Access to the system console.
+
+- SMTP server details such as the host name, port number, and credentials.
+
+- The outgoing port number of the SMTP must be open to allow {props.version} to send emails.
+
+## Configure SMTP
+
+1. Log in to the 
+  <PaletteVertexUrlMapper
+     edition={props.edition}
+     text="system console"
+     url="/system-management/#access-the-system-console"
+   />.
+
+2. From the **left Main Menu** select **Administration**.
+
+3. Click on the **SMTP** tab.
+
+4. Fill out the following fields.
+
+| **Field**                    | **Description**                                                                                                                                                                           |
+| ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Outgoing Server**          | The host name of the SMTP server. For example `smtp.gmail.com`.                                                                                                                           |
+| **Outgoing Port**            | The port number of the SMTP server.                                                                                                                                                       |
+| **From Email**               | The email address from which emails will be sent. Emails sent from {props.version} will be sent from this email address.                                                                      |
+| **Username**                 | The username of the SMTP server.                                                                                                                                                          |
+| **Password**                 | The password of the SMTP server. Certain SMTP servers, such as `smtp.gmail.com`, require app passwords instead of user passwords.                                                                                                                                                         |
+| **Insecure Skip TLS Verify** | This option disables Transport Layer Security (TLS) certificate verification. Enable this option if your SMTP server is using a self-signed certificate or has a certificate that is not trusted by the system.  |
+
+5. Click **Validate configuration** to validate the SMTP configuration. If the configuration is valid, a success message
+   is displayed; otherwise, an error message is displayed. Additional error details can be found in the {props.version} `system-<ID>-<ID>` container logs, located in the `hubble-system` namespace.
+
+6. **Save** your changes.
+
+## Validate
+
+The SMTP configuration is validated when you click **Validate configuration**. If the configuration is valid, a success
+message is displayed; otherwise, an error message is displayed. Additional error details can be found in the {props.version} `system-<ID>-<ID>` container logs, located in the `hubble-system` namespace.
