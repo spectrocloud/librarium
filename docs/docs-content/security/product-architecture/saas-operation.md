@@ -13,8 +13,6 @@ infrastructure is hosted in the public cloud within a logically isolated virtual
 subnet. The [control plane and worker nodes](saas-operation.md#control-plane-and-worker-nodes) for the Kubernetes
 cluster are launched in the private network.
 
-<br />
-
 ## Cloud Infrastructure Security
 
 In public cloud environments such as AWS, Azure, and GCP, Palette interacts directly with a cloud provider’s API
@@ -22,8 +20,6 @@ endpoint for access using cloud credentials specified in the tenant. The tenant 
 private cloud (VPC), as described in [Tenant Cluster Security](tenant-cluster.md).
 
 This allows the SaaS controller to do the following:
-
-<br />
 
 - Dynamically query cloud resources.
 
@@ -35,10 +31,8 @@ clusters, a Private Cloud Gateway (PCG) component is deployed in the self-hosted
 
 The PCG pairs automatically with a tenant based on a randomly generated pairing code similar to the Bluetooth pairing
 process and acts as a proxy between Palette SaaS and private cloud endpoints, such as vCenter. The PCG uses an outgoing
-internet connection to the SaaS platform using Static Network Address Translation (NATS) with Transport Layer Security
+internet connection to the SaaS platform using Static Network Address Translation (NAT) with Transport Layer Security
 (TLS). Refer to the [System Private Gateway](../../clusters/pcg/architecture.md) reference page to learn more.
-
-<br />
 
 ## Control Plane and Worker Nodes
 
@@ -47,8 +41,6 @@ ports on the nodes are protected from external access.
 
 In self-hosted Palette installations, customers manage their own SSH public keys unless an agreement is in place for
 Spectro Cloud to maintain their environment.
-
-<br />
 
 ## Resources
 
