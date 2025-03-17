@@ -11,6 +11,94 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## April 12, 2025 - Release 4.6.X {#release-notes-4.6.b}
+
+### Security Notices
+
+- Review the [Security Bulletins](../security-bulletins/reports/reports.mdx) page for the latest security advisories.
+
+### Palette Enterprise {#palette-enterprise-4.6.b}
+
+#### Breaking Changes {#breaking-changes-4.6.b}
+
+#### Features
+
+#### Improvements
+
+#### Deprecations and Removals
+
+### Edge
+
+#### Features
+
+#### Improvements
+
+#### Bug Fixes
+
+### VerteX
+
+#### Features
+
+- Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
+  [Palette section](#palette-enterprise-4.6.b) for more details.
+
+### Automation
+
+:::info
+
+Check out the [Downloads](../spectro-downloads.md) and [Compatibility Matrix](../component.md) pages to find the
+compatible version of the Palette CLI.
+
+:::
+
+#### Features
+
+#### Improvements
+
+### Docs and Education
+
+### Packs
+
+#### Pack Notes
+
+#### OS
+
+| Pack Name | New Version |
+| --------- | ----------- |
+
+#### Kubernetes
+
+| Pack Name | New Version |
+| --------- | ----------- |
+
+#### CNI
+
+| Pack Name | New Version |
+| --------- | ----------- |
+
+#### CSI
+
+| Pack Name | New Version |
+| --------- | ----------- |
+
+#### Add-on Packs
+
+| Pack Name | New Version |
+| --------- | ----------- |
+
+#### FIPS Packs
+
+| Pack Name | New Version |
+| --------- | ----------- |
+
+#### Deprecations and Removals
+
+## March 15, 2025 - Release 4.6.12
+
+### Security Notices
+
+- Review the [Security Bulletins](../security-bulletins/reports/reports.mdx) page for the latest security advisories.
+
 ## April 3, 2025 - Automation Updates
 
 Terraform version 0.23.4 of the
@@ -75,12 +163,6 @@ available. For more details, refer to the Terraform provider
   [Palette Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette/) is
   available. For more details, refer to the Crossplane provider
   [release page](https://github.com/crossplane-contrib/provider-palette/releases).
-
-## March 15, 2025 - Release 4.6.12
-
-### Security Notices
-
-- Review the [Security Bulletins](../security-bulletins/reports/reports.mdx) page for the latest security advisories.
 
 ### Palette Enterprise {#palette-enterprise-4-6-a}
 
