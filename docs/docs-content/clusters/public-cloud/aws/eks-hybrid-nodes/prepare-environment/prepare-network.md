@@ -774,8 +774,8 @@ This section's primary focus is AWS Site-to-Site VPN, although some steps can be
       [Create Hybrid Node Pool](../create-hybrid-node-pools.md#create-hybrid-node-pool) steps.
 
       - If your on-prem/remote gateway or default gateway does not automatically route traffic bound for the AWS VPC
-        CIDR to the VPN server, even when BGP is used, this feature ensures each node can still be reached. This is not
-        necessary if the network already has the proper route to the AWS VPC CIDR.
+        CIDR to the VPN server, even when BGP is used, this feature ensures each node can still reach out to AWS. This
+        is not necessary if the network already has the proper route to the AWS VPC CIDR.
 
     </TabItem>
 
@@ -790,7 +790,7 @@ This section's primary focus is AWS Site-to-Site VPN, although some steps can be
       routing control.
 
       - If your on-prem/remote gateway or default gateway does not automatically route traffic bound for the AWS VPC
-        CIDR to the VPN server, this feature ensures each node can be reached.
+        CIDR to the VPN server, this feature ensures each node can reach out to AWS.
 
     </TabItem>
 
