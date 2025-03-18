@@ -11,6 +11,12 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## March XX, 2025 - Release 4.6.X
+
+### Bug Fixes
+
+- Fixed an issue where [AWS EKS](../clusters/public-cloud/aws/eks.md) clusters using the AWS VPC CNI (Helm) [pack](../integrations/integrations.mdx) could assign incorrect IP addresses to pods.
+
 ## March 15, 2025 - Release 4.6.12
 
 ### Security Notices
