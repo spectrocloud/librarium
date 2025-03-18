@@ -751,11 +751,31 @@ This section's primary focus is AWS Site-to-Site VPN, although some steps can be
 
     <TabItem label="Border Gateway Protocol (BGP)" value="bgp">
 
-    - Configure BGP on your on-prem/remote router to establish dynamic routing with AWS.
-      - AWS Site-to-Site VPN supports BGP over IPsec to automatically exchange routes between the on-prem/remote network
-        and AWS.
-    - Ensure that the on-prem/remote router is advertising its internal network to AWS and accepting AWS VPC CIDR routes
-      via BGP to direct traffic correctly.
+    - Use BGP to share your remote node and pod CIDRs with AWS.
+
+      - If using AWS Direct Connect, this may be all that is required as AWS can route directly to individual
+        on-prem/remote nodes.
+
+    - Automate local route advertisement so your on-prem/remote routers dynamically learn each node’s CIDR, removing the
+      need for manual route management.
+
+      - Refer to the
+        [Cilium BGP documentation](https://docs.cilium.io/en/stable/network/bgp-control-plane/bgp-control-plane-v2/) for
+        comprehensive setup details and best practices.
+
+    - In VPN setups where AWS routes all traffic to a single on-prem VPN server, rely on BGP to direct traffic to the
+      correct on-prem/remote nodes or set up static routes as needed.
+
+      - Static routes are configured during the
+        [Configure Hybrid Node Networking for VPN Solutions](../create-hybrid-node-pools.md#configure-hybrid-node-networking-for-vpn-solutions)
+        steps.
+
+    - Optionally, you can define a unique VPN server IP for each hybrid node as a fallback during the
+      [Create Hybrid Node Pool](../create-hybrid-node-pools.md#create-hybrid-node-pool) steps.
+
+      - If your on-prem/remote gateway or default gateway does not automatically route traffic bound for the AWS VPC
+        CIDR to the VPN server, even when BGP is used, this feature ensures each node can still be reached. This is not
+        necessary if the network already has the proper route to the AWS VPC CIDR.
 
     </TabItem>
 
@@ -764,9 +784,13 @@ This section's primary focus is AWS Site-to-Site VPN, although some steps can be
     - Static routes are configured during the
       [Configure Hybrid Node Networking for VPN Solutions](../create-hybrid-node-pools.md#configure-hybrid-node-networking-for-vpn-solutions)
       steps.
+
     - Optionally, you can define a unique VPN server IP for each hybrid node during the
       [Create Hybrid Node Pool](../create-hybrid-node-pools.md#create-hybrid-node-pool) steps to maintain granular
       routing control.
+
+      - If your on-prem/remote gateway or default gateway does not automatically route traffic bound for the AWS VPC
+        CIDR to the VPN server, this feature ensures each node can be reached.
 
     </TabItem>
 
