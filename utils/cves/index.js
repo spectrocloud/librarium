@@ -8,7 +8,7 @@ const { escapeMDXSpecialChars } = require("../helpers/string");
 const { generateMarkdownTable } = require("../helpers/affected-table");
 const { generateRevisionHistory } = require("../helpers/revision-history");
 const { generateCVEOfficialDetailsUrl } = require("../helpers/urls");
-const { generateCVEMap } = require("../helpers/cveHelpers");
+const { generateCVEMap, generateOSK8sMarkdownTable } = require("../helpers/cveHelpers");
 
 async function getSecurityBulletins(payload) {
   const limit = 300;
@@ -172,6 +172,19 @@ async function generateCVEs() {
         ],
       });
 
+      // Fetching CVEs for OS-K8s images (kind: "os")
+      const osK8sImages = await getSecurityBulletins({
+        filters: [
+          {
+            field: "kind",
+            operator: "eq",
+            value: "os",
+          }, // Filtering for OS-K8s images
+        ],
+      });
+
+      console.log("osK8sImages", osK8sImages);
+
       // There is no way to filter by product in the API, so we need to filter the results manually to get a list of CVEs for each product
       const filterdPalette = filterByUID(palette.data, "PC-");
       const filterdPaletteAirgap = filterByUID(paletteAirgap.data, "PA-");
@@ -188,6 +201,7 @@ async function generateCVEs() {
       securityBulletins.set("paletteAirgap", filterdPaletteAirgap);
       securityBulletins.set("vertex", filterdVertex);
       securityBulletins.set("vertexAirgap", filterdVertexAirgap);
+      securityBulletins.set("provider", osK8sImages.data);
 
       const plainObject = Object.fromEntries(
         Array.from(securityBulletins.entries()).map(([key, value]) => [key, value])
@@ -212,14 +226,19 @@ async function generateCVEs() {
 
 async function generateMarkdownForCVEs(GlobalCVEData) {
   const allCVEs = Object.values(GlobalCVEData).reduce((acc, curr) => acc.concat(curr), []);
-
   // To generate the Impact Product & Versions table we need to track all the instances of the same CVE
   // The following hashmap will store the data for each CVE and aggregate the impact data for each product
   const cveImpactMap = generateCVEMap(allCVEs);
 
-  const markdownPromises = allCVEs.map((item) =>
-    createCveMarkdown(item, cveImpactMap[item.metadata.cve], "docs/docs-content/security-bulletins/reports/")
-  );
+  const markdownPromises = allCVEs.map((item) => {
+    if (item.kind === "os") {
+      // If the CVE is related to OS-K8s, use the OS-K8s specific markdown function
+      return generateOSK8sMarkdown(item, "docs/docs-content/security-bulletins/os-k8s/");
+    } else {
+      // Otherwise, use the standard CVE markdown function
+      return createCveMarkdown(item, cveImpactMap[item.metadata.cve], "docs/docs-content/security-bulletins/reports/");
+    }
+  });
 
   const results = await Promise.all(markdownPromises);
 
@@ -235,6 +254,85 @@ async function generateMarkdownForCVEs(GlobalCVEData) {
   logger.success("All security bulletin markdown files generated.");
 }
 
+// Create the markdown file for CVEs grouped by OS-K8s images
+async function generateOSK8sMarkdown(item, location) {
+  const imageName = item.metadata.uid; // OS-K8s Image Name
+  const summary = item.metadata.summary || "No summary available.";
+  const lastModified = formatDateCveDetails(item.metadata.advLastModifiedTimestamp);
+  const createdTimestamp = formatDateCveDetails(item.metadata.advCreatedTimestamp);
+  const severity = item.spec.assessment.severity || "Unknown";
+  const impact = item.spec.assessment.impact || "Unknown";
+  const justification = item.spec.assessment.justification || "No justification provided.";
+  const isImpacting = item.spec.impact.isImpacting ? "Yes" : "No";
+  const impactedProducts =
+    Object.keys(item.spec.impact.impactedProducts)
+      .filter((key) => item.spec.impact.impactedProducts[key])
+      .join(", ") || "None";
+  const impactedDeployments =
+    Object.keys(item.spec.impact.impactedDeployments)
+      .filter((key) => item.spec.impact.impactedDeployments[key])
+      .join(", ") || "None";
+  const remediationAvailable = item.spec.remediation.isRemediationAvailable ? "Yes" : "No";
+  const remediationSteps = item.spec.remediation.remediationSteps || "No remediation steps available.";
+
+  // Generate a table of linked vulnerabilities
+  const vulnerabilitiesTable = generateOSK8sMarkdownTable(item.spec.linkedVulnerabilities);
+
+  const content = `---
+sidebar_label: "${imageName}"
+title: "Security Advisory for ${imageName}"
+description: "${summary}"
+sidebar_class_name: "hide-from-sidebar"
+hide_table_of_contents: false
+toc_max_heading_level: 2
+tags: ["security", "os-k8s", "cve"]
+---
+
+# ${imageName}
+
+This page provides an overall assessment of the security posture of **${imageName}**.
+
+## Overview
+
+- **Summary**: ${summary}
+- **Initial Advisory Published**: ${createdTimestamp}
+- **Last Updated**: ${lastModified}
+- **Severity**: ${severity}
+- **Impact**: ${impact}
+- **Justification**: ${justification}
+- **Is Impacting?**: ${isImpacting}
+- **Impacted Products**: ${impactedProducts}
+- **Impacted Deployments**: ${impactedDeployments}
+- **Remediation Available?**: ${remediationAvailable}
+- **Remediation Steps**: ${remediationSteps}
+
+## Linked Vulnerabilities
+
+${vulnerabilitiesTable}
+
+## Revision History
+
+${generateRevisionHistory(item.spec.revision)}
+`;
+
+  const filePath = path.join(location, `${imageName}.md`);
+
+  return fs
+    .writeFile(filePath, content)
+    .then(() => ({
+      success: true,
+      file: filePath,
+    }))
+    .catch((err) => {
+      console.error(`Error writing file for ${imageName} at ${filePath}:`, err);
+      return {
+        success: false,
+        file: filePath,
+        error: err,
+      };
+    });
+}
+// Create the markdown file for individual CVEs
 function createCveMarkdown(item, cveImpactData, location) {
   const upperCaseCve = item.metadata.cve.toUpperCase();
   const revisions = item.spec.revision;

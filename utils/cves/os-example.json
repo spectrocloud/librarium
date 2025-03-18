@@ -1,0 +1,1652 @@
+{
+  "kind": "os",
+  "metadata": {
+    "uid": "u-2004-0-k-12815-fips",
+    "summary": "Security Advisory for Ubuntu 20.04 with Kubernetes 1.28.15",
+    "shouldPublish": false,
+    "cvePublishedTimestamp": "0001-01-01T00:00:00Z",
+    "cveLastModifiedTimestamp": "0001-01-01T00:00:00Z",
+    "cveLastSeenTimestamp": "0001-01-01T00:00:00Z",
+    "advCreatedTimestamp": "2025-02-05T10:06:21.041Z",
+    "advLastModifiedTimestamp": "2025-02-25T11:45:51.212Z"
+  },
+  "spec": {
+    "assessment": {
+      "impact": "LOW",
+      "severity": "LOW",
+      "justification": "This vulnerability is reported on some of the 3rd party csi images and coredns image from k8s. This CVE is of low risk for our products a network-based attack vector is \nsimply impossible when it comes to golang code, apart from that as per CVE flaw analysis reported by golang, this only affects integrity and confidentiality and has no \neffect on availability. \n\nWe will upgrade the images when the fixes are available from the upstream vendors.",
+      "thirdParty": {
+        "dependentPackage": "",
+        "isDependentOnThirdParty": true,
+        "isUpstreamFixAvailable": false,
+        "dependencyNote": ""
+      }
+    },
+    "impact": {
+      "isImpacting": false,
+      "impactedImageTypes": {
+        "pxk": true
+      },
+      "impactedDeployments": {
+        "airgap": false,
+        "connected": true
+      },
+      "impactedProducts": {
+        "palette": false,
+        "vertex": true
+      },
+      "impactedImageList": ["u-2004-0-k-12815-fips"],
+      "impactedVersions": ["4.5.21", "4.5.22"]
+    },
+    "remediation": {
+      "isRemediationAvailable": false,
+      "remediationSteps": ""
+    },
+    "linkedVulnerabilities": [
+      {
+        "application": "/opt/cni/bin/dhcp",
+        "package": "go",
+        "installedVersion": "go1.19.10",
+        "isImpacting": true,
+        "sources": ["govulncheck", "grype"],
+        "vulnerability": {
+          "cve": "CVE-2024-24790",
+          "summary": "The various Is methods (IsPrivate, IsLoopback, etc) did not work as expected for IPv4-mapped IPv6 addresses, returning false for addresses which would return true in their traditional IPv4 forms.",
+          "cvss": {
+            "134c704f-9b21-4f2e-91b3-4a467353bcc0": 9.8,
+            "nist": 9.8
+          },
+          "status": "Modified",
+          "severity": {
+            "134c704f-9b21-4f2e-91b3-4a467353bcc0": "CRITICAL",
+            "govulncheck": " ",
+            "grype": "CRITICAL",
+            "nist": "CRITICAL",
+            "trivy": "CRITICAL"
+          },
+          "baseScore": 9.8,
+          "baseSeverity": "CRITICAL",
+          "impactedVersions": null,
+          "fixedVersions": [" 1.21.11 1.22.4", "1.21.11", "1.22.4"],
+          "publishedTimestamp": "2024-06-05T16:15:10.56Z",
+          "lastModifiedTimestamp": "2024-09-03T18:35:07.483Z"
+        }
+      },
+      {
+        "application": "certifi",
+        "package": "certifi",
+        "installedVersion": "2019.11.28",
+        "isImpacting": true,
+        "sources": ["grype"],
+        "vulnerability": {
+          "cve": "CVE-2023-37920",
+          "summary": "Certifi is a curated collection of Root Certificates for validating the trustworthiness of SSL certificates while verifying the identity of TLS hosts. Certifi prior to version 2023.07.22 recognizes \"e-Tugra\" root certificates. e-Tugra's root certificates were subject to an investigation prompted by reporting of security issues in their systems. Certifi 2023.07.22 removes root certificates from \"e-Tugra\" from the root store.",
+          "cvss": {
+            "nist": 9.8,
+            "security-advisories@github.com": 7.5
+          },
+          "status": "Analyzed",
+          "severity": {
+            "grype": "HIGH",
+            "nist": "CRITICAL",
+            "security-advisories@github.com": "HIGH"
+          },
+          "baseScore": 9.8,
+          "baseSeverity": "CRITICAL",
+          "impactedVersions": null,
+          "fixedVersions": ["2023.7.22", "2023.7.22"],
+          "publishedTimestamp": "2023-07-25T21:15:10.827Z",
+          "lastModifiedTimestamp": "2025-02-13T13:50:15.813Z"
+        }
+      },
+      {
+        "application": "krb5-locales",
+        "package": "krb5-locales",
+        "installedVersion": "1.17-6ubuntu4.7",
+        "isImpacting": true,
+        "sources": ["trivy", "grype"],
+        "vulnerability": {
+          "cve": "CVE-2024-3596",
+          "summary": "RADIUS Protocol under RFC 2865 is susceptible to forgery attacks by a local attacker who can modify any valid Response (Access-Accept, Access-Reject, or Access-Challenge) to any other response using a chosen-prefix collision attack against MD5 Response Authenticator signature.",
+          "cvss": {
+            "nist": 9
+          },
+          "status": "Analyzed",
+          "severity": {
+            "grype": "MEDIUM",
+            "nist": "CRITICAL",
+            "trivy": "MEDIUM"
+          },
+          "baseScore": 9,
+          "baseSeverity": "CRITICAL",
+          "impactedVersions": null,
+          "fixedVersions": ["1.17-6ubuntu4.8", "3.0.27"],
+          "publishedTimestamp": "2024-07-09T12:15:20.7Z",
+          "lastModifiedTimestamp": "2024-12-30T19:23:20.437Z"
+        }
+      },
+      {
+        "application": "libipa-hbac0",
+        "package": "libipa-hbac0",
+        "installedVersion": "2.2.3-3ubuntu0.13",
+        "isImpacting": true,
+        "sources": ["trivy", "grype"],
+        "vulnerability": {
+          "cve": "CVE-2023-3326",
+          "summary": "pam_krb5 authenticates a user by essentially running kinit with the password, getting a ticket-granting ticket (tgt) from the Kerberos KDC (Key Distribution Center) over the network, as a way to verify the password. However, if a keytab is not provisioned on the system, pam_krb5 has no way to validate the response from the KDC, and essentially trusts the tgt provided over the network as being valid. In a non-default FreeBSD installation that leverages pam_krb5 for authentication and does not have a keytab provisioned, an attacker that is able to control both the password and the KDC responses can return a valid tgt, allowing authentication to occur for any user on the system.\n",
+          "cvss": {
+            "nist": 9.8
+          },
+          "status": "Modified",
+          "severity": {
+            "grype": "LOW",
+            "nist": "CRITICAL",
+            "trivy": "LOW"
+          },
+          "baseScore": 9.8,
+          "baseSeverity": "CRITICAL",
+          "impactedVersions": null,
+          "fixedVersions": ["open"],
+          "publishedTimestamp": "2023-06-22T17:15:44.833Z",
+          "lastModifiedTimestamp": "2023-08-01T23:15:30.827Z"
+        }
+      },
+      {
+        "application": "libtasn1-6",
+        "package": "libtasn1-6",
+        "installedVersion": "4.16.0-2",
+        "isImpacting": true,
+        "sources": ["grype"],
+        "vulnerability": {
+          "cve": "CVE-2021-46848",
+          "summary": "GNU Libtasn1 before 4.19.0 has an ETYPE_OK off-by-one array size check that affects asn1_encode_simple_der.",
+          "cvss": {
+            "nist": 9.1
+          },
+          "status": "Modified",
+          "severity": {
+            "grype": "LOW",
+            "nist": "CRITICAL"
+          },
+          "baseScore": 9.1,
+          "baseSeverity": "CRITICAL",
+          "impactedVersions": null,
+          "fixedVersions": ["Not Available", "4.19.0"],
+          "publishedTimestamp": "2022-10-24T14:15:49.973Z",
+          "lastModifiedTimestamp": "2023-11-07T03:40:05.247Z"
+        }
+      },
+      {
+        "application": "linux-cloud-tools-5.4.0-200",
+        "package": "linux-cloud-tools-5.4.0-200",
+        "installedVersion": "5.4.0-200.220",
+        "isImpacting": true,
+        "sources": ["grype"],
+        "vulnerability": {
+          "cve": "CVE-2024-47685",
+          "summary": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nf_reject_ipv6: fix nf_reject_ip6_tcphdr_put()\n\nsyzbot reported that nf_reject_ip6_tcphdr_put() was possibly sending\ngarbage on the four reserved tcp bits (th->res1)\n\nUse skb_put_zero() to clear the whole TCP header,\nas done in nf_reject_ip_tcphdr_put()\n\nBUG: KMSAN: uninit-value in nf_reject_ip6_tcphdr_put+0x688/0x6c0 net/ipv6/netfilter/nf_reject_ipv6.c:255\n  nf_reject_ip6_tcphdr_put+0x688/0x6c0 net/ipv6/netfilter/nf_reject_ipv6.c:255\n  nf_send_reset6+0xd84/0x15b0 net/ipv6/netfilter/nf_reject_ipv6.c:344\n  nft_reject_inet_eval+0x3c1/0x880 net/netfilter/nft_reject_inet.c:48\n  expr_call_ops_eval net/netfilter/nf_tables_core.c:240 [inline]\n  nft_do_chain+0x438/0x22a0 net/netfilter/nf_tables_core.c:288\n  nft_do_chain_inet+0x41a/0x4f0 net/netfilter/nft_chain_filter.c:161\n  nf_hook_entry_hookfn include/linux/netfilter.h:154 [inline]\n  nf_hook_slow+0xf4/0x400 net/netfilter/core.c:626\n  nf_hook include/linux/netfilter.h:269 [inline]\n  NF_HOOK include/linux/netfilter.h:312 [inline]\n  ipv6_rcv+0x29b/0x390 net/ipv6/ip6_input.c:310\n  __netif_receive_skb_one_core net/core/dev.c:5661 [inline]\n  __netif_receive_skb+0x1da/0xa00 net/core/dev.c:5775\n  process_backlog+0x4ad/0xa50 net/core/dev.c:6108\n  __napi_poll+0xe7/0x980 net/core/dev.c:6772\n  napi_poll net/core/dev.c:6841 [inline]\n  net_rx_action+0xa5a/0x19b0 net/core/dev.c:6963\n  handle_softirqs+0x1ce/0x800 kernel/softirq.c:554\n  __do_softirq+0x14/0x1a kernel/softirq.c:588\n  do_softirq+0x9a/0x100 kernel/softirq.c:455\n  __local_bh_enable_ip+0x9f/0xb0 kernel/softirq.c:382\n  local_bh_enable include/linux/bottom_half.h:33 [inline]\n  rcu_read_unlock_bh include/linux/rcupdate.h:908 [inline]\n  __dev_queue_xmit+0x2692/0x5610 net/core/dev.c:4450\n  dev_queue_xmit include/linux/netdevice.h:3105 [inline]\n  neigh_resolve_output+0x9ca/0xae0 net/core/neighbour.c:1565\n  neigh_output include/net/neighbour.h:542 [inline]\n  ip6_finish_output2+0x2347/0x2ba0 net/ipv6/ip6_output.c:141\n  __ip6_finish_output net/ipv6/ip6_output.c:215 [inline]\n  ip6_finish_output+0xbb8/0x14b0 net/ipv6/ip6_output.c:226\n  NF_HOOK_COND include/linux/netfilter.h:303 [inline]\n  ip6_output+0x356/0x620 net/ipv6/ip6_output.c:247\n  dst_output include/net/dst.h:450 [inline]\n  NF_HOOK include/linux/netfilter.h:314 [inline]\n  ip6_xmit+0x1ba6/0x25d0 net/ipv6/ip6_output.c:366\n  inet6_csk_xmit+0x442/0x530 net/ipv6/inet6_connection_sock.c:135\n  __tcp_transmit_skb+0x3b07/0x4880 net/ipv4/tcp_output.c:1466\n  tcp_transmit_skb net/ipv4/tcp_output.c:1484 [inline]\n  tcp_connect+0x35b6/0x7130 net/ipv4/tcp_output.c:4143\n  tcp_v6_connect+0x1bcc/0x1e40 net/ipv6/tcp_ipv6.c:333\n  __inet_stream_connect+0x2ef/0x1730 net/ipv4/af_inet.c:679\n  inet_stream_connect+0x6a/0xd0 net/ipv4/af_inet.c:750\n  __sys_connect_file net/socket.c:2061 [inline]\n  __sys_connect+0x606/0x690 net/socket.c:2078\n  __do_sys_connect net/socket.c:2088 [inline]\n  __se_sys_connect net/socket.c:2085 [inline]\n  __x64_sys_connect+0x91/0xe0 net/socket.c:2085\n  x64_sys_call+0x27a5/0x3ba0 arch/x86/include/generated/asm/syscalls_64.h:43\n  do_syscall_x64 arch/x86/entry/common.c:52 [inline]\n  do_syscall_64+0xcd/0x1e0 arch/x86/entry/common.c:83\n entry_SYSCALL_64_after_hwframe+0x77/0x7f\n\nUninit was stored to memory at:\n  nf_reject_ip6_tcphdr_put+0x60c/0x6c0 net/ipv6/netfilter/nf_reject_ipv6.c:249\n  nf_send_reset6+0xd84/0x15b0 net/ipv6/netfilter/nf_reject_ipv6.c:344\n  nft_reject_inet_eval+0x3c1/0x880 net/netfilter/nft_reject_inet.c:48\n  expr_call_ops_eval net/netfilter/nf_tables_core.c:240 [inline]\n  nft_do_chain+0x438/0x22a0 net/netfilter/nf_tables_core.c:288\n  nft_do_chain_inet+0x41a/0x4f0 net/netfilter/nft_chain_filter.c:161\n  nf_hook_entry_hookfn include/linux/netfilter.h:154 [inline]\n  nf_hook_slow+0xf4/0x400 net/netfilter/core.c:626\n  nf_hook include/linux/netfilter.h:269 [inline]\n  NF_HOOK include/linux/netfilter.h:312 [inline]\n  ipv6_rcv+0x29b/0x390 net/ipv6/ip6_input.c:310\n  __netif_receive_skb_one_core\n---truncated---",
+          "cvss": {
+            "nist": 9.1
+          },
+          "status": "Modified",
+          "severity": {
+            "grype": "MEDIUM",
+            "nist": "CRITICAL"
+          },
+          "baseScore": 9.1,
+          "baseSeverity": "CRITICAL",
+          "impactedVersions": null,
+          "fixedVersions": ["Not Available", "5.10.227", "5.15.168", "6.1.113", "6.6.54", "6.10.13", "6.11.2"],
+          "publishedTimestamp": "2024-10-21T12:15:05.397Z",
+          "lastModifiedTimestamp": "2024-11-08T16:15:25.083Z"
+        }
+      },
+      {
+        "application": "linux-cloud-tools-5.4.0-200",
+        "package": "linux-cloud-tools-5.4.0-200",
+        "installedVersion": "5.4.0-200.220",
+        "isImpacting": true,
+        "sources": ["grype"],
+        "vulnerability": {
+          "cve": "CVE-2021-3773",
+          "summary": "A flaw in netfilter could allow a network-connected attacker to infer openvpn connection endpoint information for further use in traditional network attacks.",
+          "cvss": {
+            "nist": 9.8
+          },
+          "status": "Modified",
+          "severity": {
+            "grype": "MEDIUM",
+            "nist": "CRITICAL"
+          },
+          "baseScore": 9.8,
+          "baseSeverity": "CRITICAL",
+          "impactedVersions": null,
+          "fixedVersions": ["Not Available", "5.14", "5.15.15"],
+          "publishedTimestamp": "2022-02-16T19:15:08.763Z",
+          "lastModifiedTimestamp": "2024-07-16T18:15:06.09Z"
+        }
+      },
+      {
+        "application": "pyyaml",
+        "package": "pyyaml",
+        "installedVersion": "5.3.1",
+        "isImpacting": true,
+        "sources": ["grype"],
+        "vulnerability": {
+          "cve": "CVE-2020-14343",
+          "summary": "A vulnerability was discovered in the PyYAML library in versions before 5.4, where it is susceptible to arbitrary code execution when it processes untrusted YAML files through the full_load method or with the FullLoader loader. Applications that use the library to process untrusted input may be vulnerable to this flaw. This flaw allows an attacker to execute arbitrary code on the system by abusing the python/object/new constructor. This flaw is due to an incomplete fix for CVE-2020-1747.",
+          "cvss": {
+            "nist": 9.8
+          },
+          "status": "Modified",
+          "severity": {
+            "grype": "CRITICAL",
+            "nist": "CRITICAL"
+          },
+          "baseScore": 9.8,
+          "baseSeverity": "CRITICAL",
+          "impactedVersions": null,
+          "fixedVersions": ["5.4", "5.4"],
+          "publishedTimestamp": "2021-02-09T21:15:12.707Z",
+          "lastModifiedTimestamp": "2023-07-06T18:15:10.193Z"
+        }
+      },
+      {
+        "application": "/opt/cni/bin/dhcp",
+        "package": "go",
+        "installedVersion": "go1.19.10",
+        "isImpacting": true,
+        "sources": ["govulncheck", "grype"],
+        "vulnerability": {
+          "cve": "CVE-2024-24790",
+          "summary": "The various Is methods (IsPrivate, IsLoopback, etc) did not work as expected for IPv4-mapped IPv6 addresses, returning false for addresses which would return true in their traditional IPv4 forms.",
+          "cvss": {
+            "134c704f-9b21-4f2e-91b3-4a467353bcc0": 9.8,
+            "nist": 9.8
+          },
+          "status": "Modified",
+          "severity": {
+            "134c704f-9b21-4f2e-91b3-4a467353bcc0": "CRITICAL",
+            "govulncheck": " ",
+            "grype": "CRITICAL",
+            "nist": "CRITICAL",
+            "trivy": "CRITICAL"
+          },
+          "baseScore": 9.8,
+          "baseSeverity": "CRITICAL",
+          "impactedVersions": null,
+          "fixedVersions": [" 1.21.11 1.22.4", "1.21.11", "1.22.4"],
+          "publishedTimestamp": "2024-06-05T16:15:10.56Z",
+          "lastModifiedTimestamp": "2024-09-03T18:35:07.483Z"
+        }
+      },
+      {
+        "application": "certifi",
+        "package": "certifi",
+        "installedVersion": "2019.11.28",
+        "isImpacting": true,
+        "sources": ["grype"],
+        "vulnerability": {
+          "cve": "CVE-2023-37920",
+          "summary": "Certifi is a curated collection of Root Certificates for validating the trustworthiness of SSL certificates while verifying the identity of TLS hosts. Certifi prior to version 2023.07.22 recognizes \"e-Tugra\" root certificates. e-Tugra's root certificates were subject to an investigation prompted by reporting of security issues in their systems. Certifi 2023.07.22 removes root certificates from \"e-Tugra\" from the root store.",
+          "cvss": {
+            "nist": 9.8,
+            "security-advisories@github.com": 7.5
+          },
+          "status": "Modified",
+          "severity": {
+            "grype": "HIGH",
+            "nist": "CRITICAL",
+            "security-advisories@github.com": "HIGH"
+          },
+          "baseScore": 9.8,
+          "baseSeverity": "CRITICAL",
+          "impactedVersions": null,
+          "fixedVersions": ["2023.7.22", "2023.07.22"],
+          "publishedTimestamp": "2023-07-25T21:15:10.827Z",
+          "lastModifiedTimestamp": "2023-08-12T06:16:31.077Z"
+        }
+      },
+      {
+        "application": "krb5-locales",
+        "package": "krb5-locales",
+        "installedVersion": "1.17-6ubuntu4.7",
+        "isImpacting": true,
+        "sources": ["grype"],
+        "vulnerability": {
+          "cve": "CVE-2024-3596",
+          "summary": "RADIUS Protocol under RFC 2865 is susceptible to forgery attacks by a local attacker who can modify any valid Response (Access-Accept, Access-Reject, or Access-Challenge) to any other response using a chosen-prefix collision attack against MD5 Response Authenticator signature.",
+          "cvss": {
+            "nist": 9
+          },
+          "status": "Analyzed",
+          "severity": {
+            "grype": "MEDIUM",
+            "nist": "CRITICAL"
+          },
+          "baseScore": 9,
+          "baseSeverity": "CRITICAL",
+          "impactedVersions": null,
+          "fixedVersions": ["Not Available", "3.0.27"],
+          "publishedTimestamp": "2024-07-09T12:15:20.7Z",
+          "lastModifiedTimestamp": "2024-12-30T19:23:20.437Z"
+        }
+      },
+      {
+        "application": "libipa-hbac0",
+        "package": "libipa-hbac0",
+        "installedVersion": "2.2.3-3ubuntu0.13",
+        "isImpacting": true,
+        "sources": ["trivy", "grype"],
+        "vulnerability": {
+          "cve": "CVE-2023-3326",
+          "summary": "pam_krb5 authenticates a user by essentially running kinit with the password, getting a ticket-granting ticket (tgt) from the Kerberos KDC (Key Distribution Center) over the network, as a way to verify the password. However, if a keytab is not provisioned on the system, pam_krb5 has no way to validate the response from the KDC, and essentially trusts the tgt provided over the network as being valid. In a non-default FreeBSD installation that leverages pam_krb5 for authentication and does not have a keytab provisioned, an attacker that is able to control both the password and the KDC responses can return a valid tgt, allowing authentication to occur for any user on the system.\n",
+          "cvss": {
+            "nist": 9.8
+          },
+          "status": "Modified",
+          "severity": {
+            "grype": "LOW",
+            "nist": "CRITICAL",
+            "trivy": "LOW"
+          },
+          "baseScore": 9.8,
+          "baseSeverity": "CRITICAL",
+          "impactedVersions": null,
+          "fixedVersions": ["open"],
+          "publishedTimestamp": "2023-06-22T17:15:44.833Z",
+          "lastModifiedTimestamp": "2023-08-01T23:15:30.827Z"
+        }
+      },
+      {
+        "application": "libtasn1-6",
+        "package": "libtasn1-6",
+        "installedVersion": "4.16.0-2",
+        "isImpacting": true,
+        "sources": ["grype"],
+        "vulnerability": {
+          "cve": "CVE-2021-46848",
+          "summary": "GNU Libtasn1 before 4.19.0 has an ETYPE_OK off-by-one array size check that affects asn1_encode_simple_der.",
+          "cvss": {
+            "nist": 9.1
+          },
+          "status": "Modified",
+          "severity": {
+            "grype": "LOW",
+            "nist": "CRITICAL"
+          },
+          "baseScore": 9.1,
+          "baseSeverity": "CRITICAL",
+          "impactedVersions": null,
+          "fixedVersions": ["Not Available", "4.19.0"],
+          "publishedTimestamp": "2022-10-24T14:15:49.973Z",
+          "lastModifiedTimestamp": "2023-11-07T03:40:05.247Z"
+        }
+      },
+      {
+        "application": "linux-cloud-tools-5.4.0-200",
+        "package": "linux-cloud-tools-5.4.0-200",
+        "installedVersion": "5.4.0-200.220",
+        "isImpacting": true,
+        "sources": ["grype"],
+        "vulnerability": {
+          "cve": "CVE-2024-47685",
+          "summary": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nf_reject_ipv6: fix nf_reject_ip6_tcphdr_put()\n\nsyzbot reported that nf_reject_ip6_tcphdr_put() was possibly sending\ngarbage on the four reserved tcp bits (th->res1)\n\nUse skb_put_zero() to clear the whole TCP header,\nas done in nf_reject_ip_tcphdr_put()\n\nBUG: KMSAN: uninit-value in nf_reject_ip6_tcphdr_put+0x688/0x6c0 net/ipv6/netfilter/nf_reject_ipv6.c:255\n  nf_reject_ip6_tcphdr_put+0x688/0x6c0 net/ipv6/netfilter/nf_reject_ipv6.c:255\n  nf_send_reset6+0xd84/0x15b0 net/ipv6/netfilter/nf_reject_ipv6.c:344\n  nft_reject_inet_eval+0x3c1/0x880 net/netfilter/nft_reject_inet.c:48\n  expr_call_ops_eval net/netfilter/nf_tables_core.c:240 [inline]\n  nft_do_chain+0x438/0x22a0 net/netfilter/nf_tables_core.c:288\n  nft_do_chain_inet+0x41a/0x4f0 net/netfilter/nft_chain_filter.c:161\n  nf_hook_entry_hookfn include/linux/netfilter.h:154 [inline]\n  nf_hook_slow+0xf4/0x400 net/netfilter/core.c:626\n  nf_hook include/linux/netfilter.h:269 [inline]\n  NF_HOOK include/linux/netfilter.h:312 [inline]\n  ipv6_rcv+0x29b/0x390 net/ipv6/ip6_input.c:310\n  __netif_receive_skb_one_core net/core/dev.c:5661 [inline]\n  __netif_receive_skb+0x1da/0xa00 net/core/dev.c:5775\n  process_backlog+0x4ad/0xa50 net/core/dev.c:6108\n  __napi_poll+0xe7/0x980 net/core/dev.c:6772\n  napi_poll net/core/dev.c:6841 [inline]\n  net_rx_action+0xa5a/0x19b0 net/core/dev.c:6963\n  handle_softirqs+0x1ce/0x800 kernel/softirq.c:554\n  __do_softirq+0x14/0x1a kernel/softirq.c:588\n  do_softirq+0x9a/0x100 kernel/softirq.c:455\n  __local_bh_enable_ip+0x9f/0xb0 kernel/softirq.c:382\n  local_bh_enable include/linux/bottom_half.h:33 [inline]\n  rcu_read_unlock_bh include/linux/rcupdate.h:908 [inline]\n  __dev_queue_xmit+0x2692/0x5610 net/core/dev.c:4450\n  dev_queue_xmit include/linux/netdevice.h:3105 [inline]\n  neigh_resolve_output+0x9ca/0xae0 net/core/neighbour.c:1565\n  neigh_output include/net/neighbour.h:542 [inline]\n  ip6_finish_output2+0x2347/0x2ba0 net/ipv6/ip6_output.c:141\n  __ip6_finish_output net/ipv6/ip6_output.c:215 [inline]\n  ip6_finish_output+0xbb8/0x14b0 net/ipv6/ip6_output.c:226\n  NF_HOOK_COND include/linux/netfilter.h:303 [inline]\n  ip6_output+0x356/0x620 net/ipv6/ip6_output.c:247\n  dst_output include/net/dst.h:450 [inline]\n  NF_HOOK include/linux/netfilter.h:314 [inline]\n  ip6_xmit+0x1ba6/0x25d0 net/ipv6/ip6_output.c:366\n  inet6_csk_xmit+0x442/0x530 net/ipv6/inet6_connection_sock.c:135\n  __tcp_transmit_skb+0x3b07/0x4880 net/ipv4/tcp_output.c:1466\n  tcp_transmit_skb net/ipv4/tcp_output.c:1484 [inline]\n  tcp_connect+0x35b6/0x7130 net/ipv4/tcp_output.c:4143\n  tcp_v6_connect+0x1bcc/0x1e40 net/ipv6/tcp_ipv6.c:333\n  __inet_stream_connect+0x2ef/0x1730 net/ipv4/af_inet.c:679\n  inet_stream_connect+0x6a/0xd0 net/ipv4/af_inet.c:750\n  __sys_connect_file net/socket.c:2061 [inline]\n  __sys_connect+0x606/0x690 net/socket.c:2078\n  __do_sys_connect net/socket.c:2088 [inline]\n  __se_sys_connect net/socket.c:2085 [inline]\n  __x64_sys_connect+0x91/0xe0 net/socket.c:2085\n  x64_sys_call+0x27a5/0x3ba0 arch/x86/include/generated/asm/syscalls_64.h:43\n  do_syscall_x64 arch/x86/entry/common.c:52 [inline]\n  do_syscall_64+0xcd/0x1e0 arch/x86/entry/common.c:83\n entry_SYSCALL_64_after_hwframe+0x77/0x7f\n\nUninit was stored to memory at:\n  nf_reject_ip6_tcphdr_put+0x60c/0x6c0 net/ipv6/netfilter/nf_reject_ipv6.c:249\n  nf_send_reset6+0xd84/0x15b0 net/ipv6/netfilter/nf_reject_ipv6.c:344\n  nft_reject_inet_eval+0x3c1/0x880 net/netfilter/nft_reject_inet.c:48\n  expr_call_ops_eval net/netfilter/nf_tables_core.c:240 [inline]\n  nft_do_chain+0x438/0x22a0 net/netfilter/nf_tables_core.c:288\n  nft_do_chain_inet+0x41a/0x4f0 net/netfilter/nft_chain_filter.c:161\n  nf_hook_entry_hookfn include/linux/netfilter.h:154 [inline]\n  nf_hook_slow+0xf4/0x400 net/netfilter/core.c:626\n  nf_hook include/linux/netfilter.h:269 [inline]\n  NF_HOOK include/linux/netfilter.h:312 [inline]\n  ipv6_rcv+0x29b/0x390 net/ipv6/ip6_input.c:310\n  __netif_receive_skb_one_core\n---truncated---",
+          "cvss": {
+            "nist": 9.1
+          },
+          "status": "Modified",
+          "severity": {
+            "grype": "MEDIUM",
+            "nist": "CRITICAL"
+          },
+          "baseScore": 9.1,
+          "baseSeverity": "CRITICAL",
+          "impactedVersions": null,
+          "fixedVersions": ["Not Available", "5.10.227", "5.15.168", "6.1.113", "6.6.54", "6.10.13", "6.11.2"],
+          "publishedTimestamp": "2024-10-21T12:15:05.397Z",
+          "lastModifiedTimestamp": "2024-11-08T16:15:25.083Z"
+        }
+      },
+      {
+        "application": "linux-cloud-tools-5.4.0-200",
+        "package": "linux-cloud-tools-5.4.0-200",
+        "installedVersion": "5.4.0-200.220",
+        "isImpacting": true,
+        "sources": ["grype"],
+        "vulnerability": {
+          "cve": "CVE-2021-3773",
+          "summary": "A flaw in netfilter could allow a network-connected attacker to infer openvpn connection endpoint information for further use in traditional network attacks.",
+          "cvss": {
+            "nist": 9.8
+          },
+          "status": "Modified",
+          "severity": {
+            "grype": "MEDIUM",
+            "nist": "CRITICAL"
+          },
+          "baseScore": 9.8,
+          "baseSeverity": "CRITICAL",
+          "impactedVersions": null,
+          "fixedVersions": ["Not Available", "5.14", "5.15.15"],
+          "publishedTimestamp": "2022-02-16T19:15:08.763Z",
+          "lastModifiedTimestamp": "2024-07-16T18:15:06.09Z"
+        }
+      },
+      {
+        "application": "pyyaml",
+        "package": "pyyaml",
+        "installedVersion": "5.3.1",
+        "isImpacting": true,
+        "sources": ["grype"],
+        "vulnerability": {
+          "cve": "CVE-2020-14343",
+          "summary": "A vulnerability was discovered in the PyYAML library in versions before 5.4, where it is susceptible to arbitrary code execution when it processes untrusted YAML files through the full_load method or with the FullLoader loader. Applications that use the library to process untrusted input may be vulnerable to this flaw. This flaw allows an attacker to execute arbitrary code on the system by abusing the python/object/new constructor. This flaw is due to an incomplete fix for CVE-2020-1747.",
+          "cvss": {
+            "nist": 9.8
+          },
+          "status": "Modified",
+          "severity": {
+            "grype": "CRITICAL",
+            "nist": "CRITICAL"
+          },
+          "baseScore": 9.8,
+          "baseSeverity": "CRITICAL",
+          "impactedVersions": null,
+          "fixedVersions": ["5.4", "5.4"],
+          "publishedTimestamp": "2021-02-09T21:15:12.707Z",
+          "lastModifiedTimestamp": "2023-07-06T18:15:10.193Z"
+        }
+      },
+      {
+        "application": "/opt/cni/bin/dhcp",
+        "package": "go",
+        "installedVersion": "go1.19.10",
+        "isImpacting": true,
+        "sources": ["govulncheck", "grype"],
+        "vulnerability": {
+          "cve": "CVE-2024-24790",
+          "summary": "The various Is methods (IsPrivate, IsLoopback, etc) did not work as expected for IPv4-mapped IPv6 addresses, returning false for addresses which would return true in their traditional IPv4 forms.",
+          "cvss": {
+            "134c704f-9b21-4f2e-91b3-4a467353bcc0": 9.8,
+            "nist": 9.8
+          },
+          "status": "Modified",
+          "severity": {
+            "134c704f-9b21-4f2e-91b3-4a467353bcc0": "CRITICAL",
+            "govulncheck": " ",
+            "grype": "CRITICAL",
+            "nist": "CRITICAL",
+            "trivy": "CRITICAL"
+          },
+          "baseScore": 9.8,
+          "baseSeverity": "CRITICAL",
+          "impactedVersions": null,
+          "fixedVersions": [" 1.21.11 1.22.4", "1.21.11", "1.22.4"],
+          "publishedTimestamp": "2024-06-05T16:15:10.56Z",
+          "lastModifiedTimestamp": "2024-09-03T18:35:07.483Z"
+        }
+      },
+      {
+        "application": "certifi",
+        "package": "certifi",
+        "installedVersion": "2019.11.28",
+        "isImpacting": true,
+        "sources": ["grype"],
+        "vulnerability": {
+          "cve": "CVE-2023-37920",
+          "summary": "Certifi is a curated collection of Root Certificates for validating the trustworthiness of SSL certificates while verifying the identity of TLS hosts. Certifi prior to version 2023.07.22 recognizes \"e-Tugra\" root certificates. e-Tugra's root certificates were subject to an investigation prompted by reporting of security issues in their systems. Certifi 2023.07.22 removes root certificates from \"e-Tugra\" from the root store.",
+          "cvss": {
+            "nist": 9.8,
+            "security-advisories@github.com": 7.5
+          },
+          "status": "Modified",
+          "severity": {
+            "grype": "HIGH",
+            "nist": "CRITICAL",
+            "security-advisories@github.com": "HIGH"
+          },
+          "baseScore": 9.8,
+          "baseSeverity": "CRITICAL",
+          "impactedVersions": null,
+          "fixedVersions": ["2023.7.22", "2023.07.22"],
+          "publishedTimestamp": "2023-07-25T21:15:10.827Z",
+          "lastModifiedTimestamp": "2023-08-12T06:16:31.077Z"
+        }
+      },
+      {
+        "application": "krb5-locales",
+        "package": "krb5-locales",
+        "installedVersion": "1.17-6ubuntu4.7",
+        "isImpacting": true,
+        "sources": ["grype"],
+        "vulnerability": {
+          "cve": "CVE-2024-3596",
+          "summary": "RADIUS Protocol under RFC 2865 is susceptible to forgery attacks by a local attacker who can modify any valid Response (Access-Accept, Access-Reject, or Access-Challenge) to any other response using a chosen-prefix collision attack against MD5 Response Authenticator signature.",
+          "cvss": {
+            "nist": 9
+          },
+          "status": "Analyzed",
+          "severity": {
+            "grype": "MEDIUM",
+            "nist": "CRITICAL"
+          },
+          "baseScore": 9,
+          "baseSeverity": "CRITICAL",
+          "impactedVersions": null,
+          "fixedVersions": ["Not Available", "3.0.27"],
+          "publishedTimestamp": "2024-07-09T12:15:20.7Z",
+          "lastModifiedTimestamp": "2024-12-30T19:23:20.437Z"
+        }
+      },
+      {
+        "application": "libipa-hbac0",
+        "package": "libipa-hbac0",
+        "installedVersion": "2.2.3-3ubuntu0.13",
+        "isImpacting": true,
+        "sources": ["trivy", "grype"],
+        "vulnerability": {
+          "cve": "CVE-2023-3326",
+          "summary": "pam_krb5 authenticates a user by essentially running kinit with the password, getting a ticket-granting ticket (tgt) from the Kerberos KDC (Key Distribution Center) over the network, as a way to verify the password. However, if a keytab is not provisioned on the system, pam_krb5 has no way to validate the response from the KDC, and essentially trusts the tgt provided over the network as being valid. In a non-default FreeBSD installation that leverages pam_krb5 for authentication and does not have a keytab provisioned, an attacker that is able to control both the password and the KDC responses can return a valid tgt, allowing authentication to occur for any user on the system.\n",
+          "cvss": {
+            "nist": 9.8
+          },
+          "status": "Modified",
+          "severity": {
+            "grype": "LOW",
+            "nist": "CRITICAL",
+            "trivy": "LOW"
+          },
+          "baseScore": 9.8,
+          "baseSeverity": "CRITICAL",
+          "impactedVersions": null,
+          "fixedVersions": ["open"],
+          "publishedTimestamp": "2023-06-22T17:15:44.833Z",
+          "lastModifiedTimestamp": "2023-08-01T23:15:30.827Z"
+        }
+      },
+      {
+        "application": "libtasn1-6",
+        "package": "libtasn1-6",
+        "installedVersion": "4.16.0-2",
+        "isImpacting": true,
+        "sources": ["grype"],
+        "vulnerability": {
+          "cve": "CVE-2021-46848",
+          "summary": "GNU Libtasn1 before 4.19.0 has an ETYPE_OK off-by-one array size check that affects asn1_encode_simple_der.",
+          "cvss": {
+            "nist": 9.1
+          },
+          "status": "Modified",
+          "severity": {
+            "grype": "LOW",
+            "nist": "CRITICAL"
+          },
+          "baseScore": 9.1,
+          "baseSeverity": "CRITICAL",
+          "impactedVersions": null,
+          "fixedVersions": ["Not Available", "4.19.0"],
+          "publishedTimestamp": "2022-10-24T14:15:49.973Z",
+          "lastModifiedTimestamp": "2023-11-07T03:40:05.247Z"
+        }
+      },
+      {
+        "application": "linux-cloud-tools-5.4.0-200",
+        "package": "linux-cloud-tools-5.4.0-200",
+        "installedVersion": "5.4.0-200.220",
+        "isImpacting": true,
+        "sources": ["grype"],
+        "vulnerability": {
+          "cve": "CVE-2024-47685",
+          "summary": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nf_reject_ipv6: fix nf_reject_ip6_tcphdr_put()\n\nsyzbot reported that nf_reject_ip6_tcphdr_put() was possibly sending\ngarbage on the four reserved tcp bits (th->res1)\n\nUse skb_put_zero() to clear the whole TCP header,\nas done in nf_reject_ip_tcphdr_put()\n\nBUG: KMSAN: uninit-value in nf_reject_ip6_tcphdr_put+0x688/0x6c0 net/ipv6/netfilter/nf_reject_ipv6.c:255\n  nf_reject_ip6_tcphdr_put+0x688/0x6c0 net/ipv6/netfilter/nf_reject_ipv6.c:255\n  nf_send_reset6+0xd84/0x15b0 net/ipv6/netfilter/nf_reject_ipv6.c:344\n  nft_reject_inet_eval+0x3c1/0x880 net/netfilter/nft_reject_inet.c:48\n  expr_call_ops_eval net/netfilter/nf_tables_core.c:240 [inline]\n  nft_do_chain+0x438/0x22a0 net/netfilter/nf_tables_core.c:288\n  nft_do_chain_inet+0x41a/0x4f0 net/netfilter/nft_chain_filter.c:161\n  nf_hook_entry_hookfn include/linux/netfilter.h:154 [inline]\n  nf_hook_slow+0xf4/0x400 net/netfilter/core.c:626\n  nf_hook include/linux/netfilter.h:269 [inline]\n  NF_HOOK include/linux/netfilter.h:312 [inline]\n  ipv6_rcv+0x29b/0x390 net/ipv6/ip6_input.c:310\n  __netif_receive_skb_one_core net/core/dev.c:5661 [inline]\n  __netif_receive_skb+0x1da/0xa00 net/core/dev.c:5775\n  process_backlog+0x4ad/0xa50 net/core/dev.c:6108\n  __napi_poll+0xe7/0x980 net/core/dev.c:6772\n  napi_poll net/core/dev.c:6841 [inline]\n  net_rx_action+0xa5a/0x19b0 net/core/dev.c:6963\n  handle_softirqs+0x1ce/0x800 kernel/softirq.c:554\n  __do_softirq+0x14/0x1a kernel/softirq.c:588\n  do_softirq+0x9a/0x100 kernel/softirq.c:455\n  __local_bh_enable_ip+0x9f/0xb0 kernel/softirq.c:382\n  local_bh_enable include/linux/bottom_half.h:33 [inline]\n  rcu_read_unlock_bh include/linux/rcupdate.h:908 [inline]\n  __dev_queue_xmit+0x2692/0x5610 net/core/dev.c:4450\n  dev_queue_xmit include/linux/netdevice.h:3105 [inline]\n  neigh_resolve_output+0x9ca/0xae0 net/core/neighbour.c:1565\n  neigh_output include/net/neighbour.h:542 [inline]\n  ip6_finish_output2+0x2347/0x2ba0 net/ipv6/ip6_output.c:141\n  __ip6_finish_output net/ipv6/ip6_output.c:215 [inline]\n  ip6_finish_output+0xbb8/0x14b0 net/ipv6/ip6_output.c:226\n  NF_HOOK_COND include/linux/netfilter.h:303 [inline]\n  ip6_output+0x356/0x620 net/ipv6/ip6_output.c:247\n  dst_output include/net/dst.h:450 [inline]\n  NF_HOOK include/linux/netfilter.h:314 [inline]\n  ip6_xmit+0x1ba6/0x25d0 net/ipv6/ip6_output.c:366\n  inet6_csk_xmit+0x442/0x530 net/ipv6/inet6_connection_sock.c:135\n  __tcp_transmit_skb+0x3b07/0x4880 net/ipv4/tcp_output.c:1466\n  tcp_transmit_skb net/ipv4/tcp_output.c:1484 [inline]\n  tcp_connect+0x35b6/0x7130 net/ipv4/tcp_output.c:4143\n  tcp_v6_connect+0x1bcc/0x1e40 net/ipv6/tcp_ipv6.c:333\n  __inet_stream_connect+0x2ef/0x1730 net/ipv4/af_inet.c:679\n  inet_stream_connect+0x6a/0xd0 net/ipv4/af_inet.c:750\n  __sys_connect_file net/socket.c:2061 [inline]\n  __sys_connect+0x606/0x690 net/socket.c:2078\n  __do_sys_connect net/socket.c:2088 [inline]\n  __se_sys_connect net/socket.c:2085 [inline]\n  __x64_sys_connect+0x91/0xe0 net/socket.c:2085\n  x64_sys_call+0x27a5/0x3ba0 arch/x86/include/generated/asm/syscalls_64.h:43\n  do_syscall_x64 arch/x86/entry/common.c:52 [inline]\n  do_syscall_64+0xcd/0x1e0 arch/x86/entry/common.c:83\n entry_SYSCALL_64_after_hwframe+0x77/0x7f\n\nUninit was stored to memory at:\n  nf_reject_ip6_tcphdr_put+0x60c/0x6c0 net/ipv6/netfilter/nf_reject_ipv6.c:249\n  nf_send_reset6+0xd84/0x15b0 net/ipv6/netfilter/nf_reject_ipv6.c:344\n  nft_reject_inet_eval+0x3c1/0x880 net/netfilter/nft_reject_inet.c:48\n  expr_call_ops_eval net/netfilter/nf_tables_core.c:240 [inline]\n  nft_do_chain+0x438/0x22a0 net/netfilter/nf_tables_core.c:288\n  nft_do_chain_inet+0x41a/0x4f0 net/netfilter/nft_chain_filter.c:161\n  nf_hook_entry_hookfn include/linux/netfilter.h:154 [inline]\n  nf_hook_slow+0xf4/0x400 net/netfilter/core.c:626\n  nf_hook include/linux/netfilter.h:269 [inline]\n  NF_HOOK include/linux/netfilter.h:312 [inline]\n  ipv6_rcv+0x29b/0x390 net/ipv6/ip6_input.c:310\n  __netif_receive_skb_one_core\n---truncated---",
+          "cvss": {
+            "nist": 9.1
+          },
+          "status": "Modified",
+          "severity": {
+            "grype": "MEDIUM",
+            "nist": "CRITICAL"
+          },
+          "baseScore": 9.1,
+          "baseSeverity": "CRITICAL",
+          "impactedVersions": null,
+          "fixedVersions": ["Not Available", "5.10.227", "5.15.168", "6.1.113", "6.6.54", "6.10.13", "6.11.2"],
+          "publishedTimestamp": "2024-10-21T12:15:05.397Z",
+          "lastModifiedTimestamp": "2024-11-08T16:15:25.083Z"
+        }
+      },
+      {
+        "application": "linux-cloud-tools-5.4.0-200",
+        "package": "linux-cloud-tools-5.4.0-200",
+        "installedVersion": "5.4.0-200.220",
+        "isImpacting": true,
+        "sources": ["grype"],
+        "vulnerability": {
+          "cve": "CVE-2021-3773",
+          "summary": "A flaw in netfilter could allow a network-connected attacker to infer openvpn connection endpoint information for further use in traditional network attacks.",
+          "cvss": {
+            "nist": 9.8
+          },
+          "status": "Modified",
+          "severity": {
+            "grype": "MEDIUM",
+            "nist": "CRITICAL"
+          },
+          "baseScore": 9.8,
+          "baseSeverity": "CRITICAL",
+          "impactedVersions": null,
+          "fixedVersions": ["Not Available", "5.14", "5.15.15"],
+          "publishedTimestamp": "2022-02-16T19:15:08.763Z",
+          "lastModifiedTimestamp": "2024-07-16T18:15:06.09Z"
+        }
+      },
+      {
+        "application": "pyyaml",
+        "package": "pyyaml",
+        "installedVersion": "5.3.1",
+        "isImpacting": true,
+        "sources": ["grype"],
+        "vulnerability": {
+          "cve": "CVE-2020-14343",
+          "summary": "A vulnerability was discovered in the PyYAML library in versions before 5.4, where it is susceptible to arbitrary code execution when it processes untrusted YAML files through the full_load method or with the FullLoader loader. Applications that use the library to process untrusted input may be vulnerable to this flaw. This flaw allows an attacker to execute arbitrary code on the system by abusing the python/object/new constructor. This flaw is due to an incomplete fix for CVE-2020-1747.",
+          "cvss": {
+            "nist": 9.8
+          },
+          "status": "Modified",
+          "severity": {
+            "grype": "CRITICAL",
+            "nist": "CRITICAL"
+          },
+          "baseScore": 9.8,
+          "baseSeverity": "CRITICAL",
+          "impactedVersions": null,
+          "fixedVersions": ["5.4", "5.4"],
+          "publishedTimestamp": "2021-02-09T21:15:12.707Z",
+          "lastModifiedTimestamp": "2023-07-06T18:15:10.193Z"
+        }
+      },
+      {
+        "application": "/opt/cni/bin/dhcp",
+        "package": "go",
+        "installedVersion": "go1.19.10",
+        "isImpacting": true,
+        "sources": ["govulncheck", "grype"],
+        "vulnerability": {
+          "cve": "CVE-2024-24790",
+          "summary": "The various Is methods (IsPrivate, IsLoopback, etc) did not work as expected for IPv4-mapped IPv6 addresses, returning false for addresses which would return true in their traditional IPv4 forms.",
+          "cvss": {
+            "134c704f-9b21-4f2e-91b3-4a467353bcc0": 9.8,
+            "nist": 9.8
+          },
+          "status": "Modified",
+          "severity": {
+            "134c704f-9b21-4f2e-91b3-4a467353bcc0": "CRITICAL",
+            "govulncheck": " ",
+            "grype": "CRITICAL",
+            "nist": "CRITICAL",
+            "trivy": "CRITICAL"
+          },
+          "baseScore": 9.8,
+          "baseSeverity": "CRITICAL",
+          "impactedVersions": null,
+          "fixedVersions": [" 1.21.11 1.22.4", "1.21.11", "1.22.4"],
+          "publishedTimestamp": "2024-06-05T16:15:10.56Z",
+          "lastModifiedTimestamp": "2024-09-03T18:35:07.483Z"
+        }
+      },
+      {
+        "application": "certifi",
+        "package": "certifi",
+        "installedVersion": "2019.11.28",
+        "isImpacting": true,
+        "sources": ["grype"],
+        "vulnerability": {
+          "cve": "CVE-2023-37920",
+          "summary": "Certifi is a curated collection of Root Certificates for validating the trustworthiness of SSL certificates while verifying the identity of TLS hosts. Certifi prior to version 2023.07.22 recognizes \"e-Tugra\" root certificates. e-Tugra's root certificates were subject to an investigation prompted by reporting of security issues in their systems. Certifi 2023.07.22 removes root certificates from \"e-Tugra\" from the root store.",
+          "cvss": {
+            "nist": 9.8,
+            "security-advisories@github.com": 7.5
+          },
+          "status": "Modified",
+          "severity": {
+            "grype": "HIGH",
+            "nist": "CRITICAL",
+            "security-advisories@github.com": "HIGH"
+          },
+          "baseScore": 9.8,
+          "baseSeverity": "CRITICAL",
+          "impactedVersions": null,
+          "fixedVersions": ["2023.7.22", "2023.07.22"],
+          "publishedTimestamp": "2023-07-25T21:15:10.827Z",
+          "lastModifiedTimestamp": "2023-08-12T06:16:31.077Z"
+        }
+      },
+      {
+        "application": "krb5-locales",
+        "package": "krb5-locales",
+        "installedVersion": "1.17-6ubuntu4.7",
+        "isImpacting": true,
+        "sources": ["grype"],
+        "vulnerability": {
+          "cve": "CVE-2024-3596",
+          "summary": "RADIUS Protocol under RFC 2865 is susceptible to forgery attacks by a local attacker who can modify any valid Response (Access-Accept, Access-Reject, or Access-Challenge) to any other response using a chosen-prefix collision attack against MD5 Response Authenticator signature.",
+          "cvss": {
+            "nist": 9
+          },
+          "status": "Analyzed",
+          "severity": {
+            "grype": "MEDIUM",
+            "nist": "CRITICAL"
+          },
+          "baseScore": 9,
+          "baseSeverity": "CRITICAL",
+          "impactedVersions": null,
+          "fixedVersions": ["Not Available", "3.0.27"],
+          "publishedTimestamp": "2024-07-09T12:15:20.7Z",
+          "lastModifiedTimestamp": "2024-12-30T19:23:20.437Z"
+        }
+      },
+      {
+        "application": "libipa-hbac0",
+        "package": "libipa-hbac0",
+        "installedVersion": "2.2.3-3ubuntu0.13",
+        "isImpacting": true,
+        "sources": ["trivy", "grype"],
+        "vulnerability": {
+          "cve": "CVE-2023-3326",
+          "summary": "pam_krb5 authenticates a user by essentially running kinit with the password, getting a ticket-granting ticket (tgt) from the Kerberos KDC (Key Distribution Center) over the network, as a way to verify the password. However, if a keytab is not provisioned on the system, pam_krb5 has no way to validate the response from the KDC, and essentially trusts the tgt provided over the network as being valid. In a non-default FreeBSD installation that leverages pam_krb5 for authentication and does not have a keytab provisioned, an attacker that is able to control both the password and the KDC responses can return a valid tgt, allowing authentication to occur for any user on the system.\n",
+          "cvss": {
+            "nist": 9.8
+          },
+          "status": "Modified",
+          "severity": {
+            "grype": "LOW",
+            "nist": "CRITICAL",
+            "trivy": "LOW"
+          },
+          "baseScore": 9.8,
+          "baseSeverity": "CRITICAL",
+          "impactedVersions": null,
+          "fixedVersions": ["open"],
+          "publishedTimestamp": "2023-06-22T17:15:44.833Z",
+          "lastModifiedTimestamp": "2023-08-01T23:15:30.827Z"
+        }
+      },
+      {
+        "application": "libtasn1-6",
+        "package": "libtasn1-6",
+        "installedVersion": "4.16.0-2",
+        "isImpacting": true,
+        "sources": ["grype"],
+        "vulnerability": {
+          "cve": "CVE-2021-46848",
+          "summary": "GNU Libtasn1 before 4.19.0 has an ETYPE_OK off-by-one array size check that affects asn1_encode_simple_der.",
+          "cvss": {
+            "nist": 9.1
+          },
+          "status": "Modified",
+          "severity": {
+            "grype": "LOW",
+            "nist": "CRITICAL"
+          },
+          "baseScore": 9.1,
+          "baseSeverity": "CRITICAL",
+          "impactedVersions": null,
+          "fixedVersions": ["Not Available", "4.19.0"],
+          "publishedTimestamp": "2022-10-24T14:15:49.973Z",
+          "lastModifiedTimestamp": "2023-11-07T03:40:05.247Z"
+        }
+      },
+      {
+        "application": "linux-cloud-tools-5.4.0-200",
+        "package": "linux-cloud-tools-5.4.0-200",
+        "installedVersion": "5.4.0-200.220",
+        "isImpacting": true,
+        "sources": ["grype"],
+        "vulnerability": {
+          "cve": "CVE-2024-47685",
+          "summary": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nf_reject_ipv6: fix nf_reject_ip6_tcphdr_put()\n\nsyzbot reported that nf_reject_ip6_tcphdr_put() was possibly sending\ngarbage on the four reserved tcp bits (th->res1)\n\nUse skb_put_zero() to clear the whole TCP header,\nas done in nf_reject_ip_tcphdr_put()\n\nBUG: KMSAN: uninit-value in nf_reject_ip6_tcphdr_put+0x688/0x6c0 net/ipv6/netfilter/nf_reject_ipv6.c:255\n  nf_reject_ip6_tcphdr_put+0x688/0x6c0 net/ipv6/netfilter/nf_reject_ipv6.c:255\n  nf_send_reset6+0xd84/0x15b0 net/ipv6/netfilter/nf_reject_ipv6.c:344\n  nft_reject_inet_eval+0x3c1/0x880 net/netfilter/nft_reject_inet.c:48\n  expr_call_ops_eval net/netfilter/nf_tables_core.c:240 [inline]\n  nft_do_chain+0x438/0x22a0 net/netfilter/nf_tables_core.c:288\n  nft_do_chain_inet+0x41a/0x4f0 net/netfilter/nft_chain_filter.c:161\n  nf_hook_entry_hookfn include/linux/netfilter.h:154 [inline]\n  nf_hook_slow+0xf4/0x400 net/netfilter/core.c:626\n  nf_hook include/linux/netfilter.h:269 [inline]\n  NF_HOOK include/linux/netfilter.h:312 [inline]\n  ipv6_rcv+0x29b/0x390 net/ipv6/ip6_input.c:310\n  __netif_receive_skb_one_core net/core/dev.c:5661 [inline]\n  __netif_receive_skb+0x1da/0xa00 net/core/dev.c:5775\n  process_backlog+0x4ad/0xa50 net/core/dev.c:6108\n  __napi_poll+0xe7/0x980 net/core/dev.c:6772\n  napi_poll net/core/dev.c:6841 [inline]\n  net_rx_action+0xa5a/0x19b0 net/core/dev.c:6963\n  handle_softirqs+0x1ce/0x800 kernel/softirq.c:554\n  __do_softirq+0x14/0x1a kernel/softirq.c:588\n  do_softirq+0x9a/0x100 kernel/softirq.c:455\n  __local_bh_enable_ip+0x9f/0xb0 kernel/softirq.c:382\n  local_bh_enable include/linux/bottom_half.h:33 [inline]\n  rcu_read_unlock_bh include/linux/rcupdate.h:908 [inline]\n  __dev_queue_xmit+0x2692/0x5610 net/core/dev.c:4450\n  dev_queue_xmit include/linux/netdevice.h:3105 [inline]\n  neigh_resolve_output+0x9ca/0xae0 net/core/neighbour.c:1565\n  neigh_output include/net/neighbour.h:542 [inline]\n  ip6_finish_output2+0x2347/0x2ba0 net/ipv6/ip6_output.c:141\n  __ip6_finish_output net/ipv6/ip6_output.c:215 [inline]\n  ip6_finish_output+0xbb8/0x14b0 net/ipv6/ip6_output.c:226\n  NF_HOOK_COND include/linux/netfilter.h:303 [inline]\n  ip6_output+0x356/0x620 net/ipv6/ip6_output.c:247\n  dst_output include/net/dst.h:450 [inline]\n  NF_HOOK include/linux/netfilter.h:314 [inline]\n  ip6_xmit+0x1ba6/0x25d0 net/ipv6/ip6_output.c:366\n  inet6_csk_xmit+0x442/0x530 net/ipv6/inet6_connection_sock.c:135\n  __tcp_transmit_skb+0x3b07/0x4880 net/ipv4/tcp_output.c:1466\n  tcp_transmit_skb net/ipv4/tcp_output.c:1484 [inline]\n  tcp_connect+0x35b6/0x7130 net/ipv4/tcp_output.c:4143\n  tcp_v6_connect+0x1bcc/0x1e40 net/ipv6/tcp_ipv6.c:333\n  __inet_stream_connect+0x2ef/0x1730 net/ipv4/af_inet.c:679\n  inet_stream_connect+0x6a/0xd0 net/ipv4/af_inet.c:750\n  __sys_connect_file net/socket.c:2061 [inline]\n  __sys_connect+0x606/0x690 net/socket.c:2078\n  __do_sys_connect net/socket.c:2088 [inline]\n  __se_sys_connect net/socket.c:2085 [inline]\n  __x64_sys_connect+0x91/0xe0 net/socket.c:2085\n  x64_sys_call+0x27a5/0x3ba0 arch/x86/include/generated/asm/syscalls_64.h:43\n  do_syscall_x64 arch/x86/entry/common.c:52 [inline]\n  do_syscall_64+0xcd/0x1e0 arch/x86/entry/common.c:83\n entry_SYSCALL_64_after_hwframe+0x77/0x7f\n\nUninit was stored to memory at:\n  nf_reject_ip6_tcphdr_put+0x60c/0x6c0 net/ipv6/netfilter/nf_reject_ipv6.c:249\n  nf_send_reset6+0xd84/0x15b0 net/ipv6/netfilter/nf_reject_ipv6.c:344\n  nft_reject_inet_eval+0x3c1/0x880 net/netfilter/nft_reject_inet.c:48\n  expr_call_ops_eval net/netfilter/nf_tables_core.c:240 [inline]\n  nft_do_chain+0x438/0x22a0 net/netfilter/nf_tables_core.c:288\n  nft_do_chain_inet+0x41a/0x4f0 net/netfilter/nft_chain_filter.c:161\n  nf_hook_entry_hookfn include/linux/netfilter.h:154 [inline]\n  nf_hook_slow+0xf4/0x400 net/netfilter/core.c:626\n  nf_hook include/linux/netfilter.h:269 [inline]\n  NF_HOOK include/linux/netfilter.h:312 [inline]\n  ipv6_rcv+0x29b/0x390 net/ipv6/ip6_input.c:310\n  __netif_receive_skb_one_core\n---truncated---",
+          "cvss": {
+            "nist": 9.1
+          },
+          "status": "Modified",
+          "severity": {
+            "grype": "MEDIUM",
+            "nist": "CRITICAL"
+          },
+          "baseScore": 9.1,
+          "baseSeverity": "CRITICAL",
+          "impactedVersions": null,
+          "fixedVersions": ["Not Available", "5.10.227", "5.15.168", "6.1.113", "6.6.54", "6.10.13", "6.11.2"],
+          "publishedTimestamp": "2024-10-21T12:15:05.397Z",
+          "lastModifiedTimestamp": "2024-11-08T16:15:25.083Z"
+        }
+      },
+      {
+        "application": "linux-cloud-tools-5.4.0-200",
+        "package": "linux-cloud-tools-5.4.0-200",
+        "installedVersion": "5.4.0-200.220",
+        "isImpacting": true,
+        "sources": ["grype"],
+        "vulnerability": {
+          "cve": "CVE-2021-3773",
+          "summary": "A flaw in netfilter could allow a network-connected attacker to infer openvpn connection endpoint information for further use in traditional network attacks.",
+          "cvss": {
+            "nist": 9.8
+          },
+          "status": "Modified",
+          "severity": {
+            "grype": "MEDIUM",
+            "nist": "CRITICAL"
+          },
+          "baseScore": 9.8,
+          "baseSeverity": "CRITICAL",
+          "impactedVersions": null,
+          "fixedVersions": ["Not Available", "5.14", "5.15.15"],
+          "publishedTimestamp": "2022-02-16T19:15:08.763Z",
+          "lastModifiedTimestamp": "2024-07-16T18:15:06.09Z"
+        }
+      },
+      {
+        "application": "pyyaml",
+        "package": "pyyaml",
+        "installedVersion": "5.3.1",
+        "isImpacting": true,
+        "sources": ["grype"],
+        "vulnerability": {
+          "cve": "CVE-2020-14343",
+          "summary": "A vulnerability was discovered in the PyYAML library in versions before 5.4, where it is susceptible to arbitrary code execution when it processes untrusted YAML files through the full_load method or with the FullLoader loader. Applications that use the library to process untrusted input may be vulnerable to this flaw. This flaw allows an attacker to execute arbitrary code on the system by abusing the python/object/new constructor. This flaw is due to an incomplete fix for CVE-2020-1747.",
+          "cvss": {
+            "nist": 9.8
+          },
+          "status": "Modified",
+          "severity": {
+            "grype": "CRITICAL",
+            "nist": "CRITICAL"
+          },
+          "baseScore": 9.8,
+          "baseSeverity": "CRITICAL",
+          "impactedVersions": null,
+          "fixedVersions": ["5.4", "5.4"],
+          "publishedTimestamp": "2021-02-09T21:15:12.707Z",
+          "lastModifiedTimestamp": "2023-07-06T18:15:10.193Z"
+        }
+      },
+      {
+        "application": "/opt/cni/bin/dhcp",
+        "package": "go",
+        "installedVersion": "go1.19.10",
+        "isImpacting": true,
+        "sources": ["govulncheck", "grype"],
+        "vulnerability": {
+          "cve": "CVE-2024-24790",
+          "summary": "The various Is methods (IsPrivate, IsLoopback, etc) did not work as expected for IPv4-mapped IPv6 addresses, returning false for addresses which would return true in their traditional IPv4 forms.",
+          "cvss": {
+            "134c704f-9b21-4f2e-91b3-4a467353bcc0": 9.8,
+            "nist": 9.8
+          },
+          "status": "Modified",
+          "severity": {
+            "134c704f-9b21-4f2e-91b3-4a467353bcc0": "CRITICAL",
+            "govulncheck": " ",
+            "grype": "CRITICAL",
+            "nist": "CRITICAL",
+            "trivy": "CRITICAL"
+          },
+          "baseScore": 9.8,
+          "baseSeverity": "CRITICAL",
+          "impactedVersions": null,
+          "fixedVersions": [" 1.21.11 1.22.4", "1.21.11", "1.22.4"],
+          "publishedTimestamp": "2024-06-05T16:15:10.56Z",
+          "lastModifiedTimestamp": "2024-09-03T18:35:07.483Z"
+        }
+      },
+      {
+        "application": "certifi",
+        "package": "certifi",
+        "installedVersion": "2019.11.28",
+        "isImpacting": true,
+        "sources": ["grype"],
+        "vulnerability": {
+          "cve": "CVE-2023-37920",
+          "summary": "Certifi is a curated collection of Root Certificates for validating the trustworthiness of SSL certificates while verifying the identity of TLS hosts. Certifi prior to version 2023.07.22 recognizes \"e-Tugra\" root certificates. e-Tugra's root certificates were subject to an investigation prompted by reporting of security issues in their systems. Certifi 2023.07.22 removes root certificates from \"e-Tugra\" from the root store.",
+          "cvss": {
+            "nist": 9.8,
+            "security-advisories@github.com": 7.5
+          },
+          "status": "Modified",
+          "severity": {
+            "grype": "HIGH",
+            "nist": "CRITICAL",
+            "security-advisories@github.com": "HIGH"
+          },
+          "baseScore": 9.8,
+          "baseSeverity": "CRITICAL",
+          "impactedVersions": null,
+          "fixedVersions": ["2023.7.22", "2023.07.22"],
+          "publishedTimestamp": "2023-07-25T21:15:10.827Z",
+          "lastModifiedTimestamp": "2023-08-12T06:16:31.077Z"
+        }
+      },
+      {
+        "application": "krb5-locales",
+        "package": "krb5-locales",
+        "installedVersion": "1.17-6ubuntu4.7",
+        "isImpacting": true,
+        "sources": ["grype"],
+        "vulnerability": {
+          "cve": "CVE-2024-3596",
+          "summary": "RADIUS Protocol under RFC 2865 is susceptible to forgery attacks by a local attacker who can modify any valid Response (Access-Accept, Access-Reject, or Access-Challenge) to any other response using a chosen-prefix collision attack against MD5 Response Authenticator signature.",
+          "cvss": {
+            "nist": 9
+          },
+          "status": "Analyzed",
+          "severity": {
+            "grype": "MEDIUM",
+            "nist": "CRITICAL"
+          },
+          "baseScore": 9,
+          "baseSeverity": "CRITICAL",
+          "impactedVersions": null,
+          "fixedVersions": ["Not Available", "3.0.27"],
+          "publishedTimestamp": "2024-07-09T12:15:20.7Z",
+          "lastModifiedTimestamp": "2024-12-30T19:23:20.437Z"
+        }
+      },
+      {
+        "application": "libipa-hbac0",
+        "package": "libipa-hbac0",
+        "installedVersion": "2.2.3-3ubuntu0.13",
+        "isImpacting": true,
+        "sources": ["trivy", "grype"],
+        "vulnerability": {
+          "cve": "CVE-2023-3326",
+          "summary": "pam_krb5 authenticates a user by essentially running kinit with the password, getting a ticket-granting ticket (tgt) from the Kerberos KDC (Key Distribution Center) over the network, as a way to verify the password. However, if a keytab is not provisioned on the system, pam_krb5 has no way to validate the response from the KDC, and essentially trusts the tgt provided over the network as being valid. In a non-default FreeBSD installation that leverages pam_krb5 for authentication and does not have a keytab provisioned, an attacker that is able to control both the password and the KDC responses can return a valid tgt, allowing authentication to occur for any user on the system.\n",
+          "cvss": {
+            "nist": 9.8
+          },
+          "status": "Modified",
+          "severity": {
+            "grype": "LOW",
+            "nist": "CRITICAL",
+            "trivy": "LOW"
+          },
+          "baseScore": 9.8,
+          "baseSeverity": "CRITICAL",
+          "impactedVersions": null,
+          "fixedVersions": ["open"],
+          "publishedTimestamp": "2023-06-22T17:15:44.833Z",
+          "lastModifiedTimestamp": "2023-08-01T23:15:30.827Z"
+        }
+      },
+      {
+        "application": "libtasn1-6",
+        "package": "libtasn1-6",
+        "installedVersion": "4.16.0-2",
+        "isImpacting": true,
+        "sources": ["grype"],
+        "vulnerability": {
+          "cve": "CVE-2021-46848",
+          "summary": "GNU Libtasn1 before 4.19.0 has an ETYPE_OK off-by-one array size check that affects asn1_encode_simple_der.",
+          "cvss": {
+            "nist": 9.1
+          },
+          "status": "Modified",
+          "severity": {
+            "grype": "LOW",
+            "nist": "CRITICAL"
+          },
+          "baseScore": 9.1,
+          "baseSeverity": "CRITICAL",
+          "impactedVersions": null,
+          "fixedVersions": ["Not Available", "4.19.0"],
+          "publishedTimestamp": "2022-10-24T14:15:49.973Z",
+          "lastModifiedTimestamp": "2023-11-07T03:40:05.247Z"
+        }
+      },
+      {
+        "application": "linux-cloud-tools-5.4.0-200",
+        "package": "linux-cloud-tools-5.4.0-200",
+        "installedVersion": "5.4.0-200.220",
+        "isImpacting": true,
+        "sources": ["trivy", "grype"],
+        "vulnerability": {
+          "cve": "CVE-2024-47685",
+          "summary": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nf_reject_ipv6: fix nf_reject_ip6_tcphdr_put()\n\nsyzbot reported that nf_reject_ip6_tcphdr_put() was possibly sending\ngarbage on the four reserved tcp bits (th->res1)\n\nUse skb_put_zero() to clear the whole TCP header,\nas done in nf_reject_ip_tcphdr_put()\n\nBUG: KMSAN: uninit-value in nf_reject_ip6_tcphdr_put+0x688/0x6c0 net/ipv6/netfilter/nf_reject_ipv6.c:255\n  nf_reject_ip6_tcphdr_put+0x688/0x6c0 net/ipv6/netfilter/nf_reject_ipv6.c:255\n  nf_send_reset6+0xd84/0x15b0 net/ipv6/netfilter/nf_reject_ipv6.c:344\n  nft_reject_inet_eval+0x3c1/0x880 net/netfilter/nft_reject_inet.c:48\n  expr_call_ops_eval net/netfilter/nf_tables_core.c:240 [inline]\n  nft_do_chain+0x438/0x22a0 net/netfilter/nf_tables_core.c:288\n  nft_do_chain_inet+0x41a/0x4f0 net/netfilter/nft_chain_filter.c:161\n  nf_hook_entry_hookfn include/linux/netfilter.h:154 [inline]\n  nf_hook_slow+0xf4/0x400 net/netfilter/core.c:626\n  nf_hook include/linux/netfilter.h:269 [inline]\n  NF_HOOK include/linux/netfilter.h:312 [inline]\n  ipv6_rcv+0x29b/0x390 net/ipv6/ip6_input.c:310\n  __netif_receive_skb_one_core net/core/dev.c:5661 [inline]\n  __netif_receive_skb+0x1da/0xa00 net/core/dev.c:5775\n  process_backlog+0x4ad/0xa50 net/core/dev.c:6108\n  __napi_poll+0xe7/0x980 net/core/dev.c:6772\n  napi_poll net/core/dev.c:6841 [inline]\n  net_rx_action+0xa5a/0x19b0 net/core/dev.c:6963\n  handle_softirqs+0x1ce/0x800 kernel/softirq.c:554\n  __do_softirq+0x14/0x1a kernel/softirq.c:588\n  do_softirq+0x9a/0x100 kernel/softirq.c:455\n  __local_bh_enable_ip+0x9f/0xb0 kernel/softirq.c:382\n  local_bh_enable include/linux/bottom_half.h:33 [inline]\n  rcu_read_unlock_bh include/linux/rcupdate.h:908 [inline]\n  __dev_queue_xmit+0x2692/0x5610 net/core/dev.c:4450\n  dev_queue_xmit include/linux/netdevice.h:3105 [inline]\n  neigh_resolve_output+0x9ca/0xae0 net/core/neighbour.c:1565\n  neigh_output include/net/neighbour.h:542 [inline]\n  ip6_finish_output2+0x2347/0x2ba0 net/ipv6/ip6_output.c:141\n  __ip6_finish_output net/ipv6/ip6_output.c:215 [inline]\n  ip6_finish_output+0xbb8/0x14b0 net/ipv6/ip6_output.c:226\n  NF_HOOK_COND include/linux/netfilter.h:303 [inline]\n  ip6_output+0x356/0x620 net/ipv6/ip6_output.c:247\n  dst_output include/net/dst.h:450 [inline]\n  NF_HOOK include/linux/netfilter.h:314 [inline]\n  ip6_xmit+0x1ba6/0x25d0 net/ipv6/ip6_output.c:366\n  inet6_csk_xmit+0x442/0x530 net/ipv6/inet6_connection_sock.c:135\n  __tcp_transmit_skb+0x3b07/0x4880 net/ipv4/tcp_output.c:1466\n  tcp_transmit_skb net/ipv4/tcp_output.c:1484 [inline]\n  tcp_connect+0x35b6/0x7130 net/ipv4/tcp_output.c:4143\n  tcp_v6_connect+0x1bcc/0x1e40 net/ipv6/tcp_ipv6.c:333\n  __inet_stream_connect+0x2ef/0x1730 net/ipv4/af_inet.c:679\n  inet_stream_connect+0x6a/0xd0 net/ipv4/af_inet.c:750\n  __sys_connect_file net/socket.c:2061 [inline]\n  __sys_connect+0x606/0x690 net/socket.c:2078\n  __do_sys_connect net/socket.c:2088 [inline]\n  __se_sys_connect net/socket.c:2085 [inline]\n  __x64_sys_connect+0x91/0xe0 net/socket.c:2085\n  x64_sys_call+0x27a5/0x3ba0 arch/x86/include/generated/asm/syscalls_64.h:43\n  do_syscall_x64 arch/x86/entry/common.c:52 [inline]\n  do_syscall_64+0xcd/0x1e0 arch/x86/entry/common.c:83\n entry_SYSCALL_64_after_hwframe+0x77/0x7f\n\nUninit was stored to memory at:\n  nf_reject_ip6_tcphdr_put+0x60c/0x6c0 net/ipv6/netfilter/nf_reject_ipv6.c:249\n  nf_send_reset6+0xd84/0x15b0 net/ipv6/netfilter/nf_reject_ipv6.c:344\n  nft_reject_inet_eval+0x3c1/0x880 net/netfilter/nft_reject_inet.c:48\n  expr_call_ops_eval net/netfilter/nf_tables_core.c:240 [inline]\n  nft_do_chain+0x438/0x22a0 net/netfilter/nf_tables_core.c:288\n  nft_do_chain_inet+0x41a/0x4f0 net/netfilter/nft_chain_filter.c:161\n  nf_hook_entry_hookfn include/linux/netfilter.h:154 [inline]\n  nf_hook_slow+0xf4/0x400 net/netfilter/core.c:626\n  nf_hook include/linux/netfilter.h:269 [inline]\n  NF_HOOK include/linux/netfilter.h:312 [inline]\n  ipv6_rcv+0x29b/0x390 net/ipv6/ip6_input.c:310\n  __netif_receive_skb_one_core\n---truncated---",
+          "cvss": {
+            "nist": 9.1
+          },
+          "status": "Modified",
+          "severity": {
+            "grype": "MEDIUM",
+            "nist": "CRITICAL",
+            "trivy": "MEDIUM"
+          },
+          "baseScore": 9.1,
+          "baseSeverity": "CRITICAL",
+          "impactedVersions": null,
+          "fixedVersions": ["open"],
+          "publishedTimestamp": "2024-10-21T12:15:05.397Z",
+          "lastModifiedTimestamp": "2024-11-08T16:15:25.083Z"
+        }
+      },
+      {
+        "application": "linux-cloud-tools-5.4.0-200",
+        "package": "linux-cloud-tools-5.4.0-200",
+        "installedVersion": "5.4.0-200.220",
+        "isImpacting": true,
+        "sources": ["grype"],
+        "vulnerability": {
+          "cve": "CVE-2021-3773",
+          "summary": "A flaw in netfilter could allow a network-connected attacker to infer openvpn connection endpoint information for further use in traditional network attacks.",
+          "cvss": {
+            "nist": 9.8
+          },
+          "status": "Modified",
+          "severity": {
+            "grype": "MEDIUM",
+            "nist": "CRITICAL"
+          },
+          "baseScore": 9.8,
+          "baseSeverity": "CRITICAL",
+          "impactedVersions": null,
+          "fixedVersions": ["Not Available", "5.14", "5.15.15"],
+          "publishedTimestamp": "2022-02-16T19:15:08.763Z",
+          "lastModifiedTimestamp": "2024-07-16T18:15:06.09Z"
+        }
+      },
+      {
+        "application": "pyyaml",
+        "package": "pyyaml",
+        "installedVersion": "5.3.1",
+        "isImpacting": true,
+        "sources": ["grype"],
+        "vulnerability": {
+          "cve": "CVE-2020-14343",
+          "summary": "A vulnerability was discovered in the PyYAML library in versions before 5.4, where it is susceptible to arbitrary code execution when it processes untrusted YAML files through the full_load method or with the FullLoader loader. Applications that use the library to process untrusted input may be vulnerable to this flaw. This flaw allows an attacker to execute arbitrary code on the system by abusing the python/object/new constructor. This flaw is due to an incomplete fix for CVE-2020-1747.",
+          "cvss": {
+            "nist": 9.8
+          },
+          "status": "Modified",
+          "severity": {
+            "grype": "CRITICAL",
+            "nist": "CRITICAL"
+          },
+          "baseScore": 9.8,
+          "baseSeverity": "CRITICAL",
+          "impactedVersions": null,
+          "fixedVersions": ["5.4", "5.4"],
+          "publishedTimestamp": "2021-02-09T21:15:12.707Z",
+          "lastModifiedTimestamp": "2023-07-06T18:15:10.193Z"
+        }
+      },
+      {
+        "application": "/opt/cni/bin/dhcp",
+        "package": "go",
+        "installedVersion": "go1.19.10",
+        "isImpacting": true,
+        "sources": ["govulncheck", "grype"],
+        "vulnerability": {
+          "cve": "CVE-2024-24790",
+          "summary": "The various Is methods (IsPrivate, IsLoopback, etc) did not work as expected for IPv4-mapped IPv6 addresses, returning false for addresses which would return true in their traditional IPv4 forms.",
+          "cvss": {
+            "134c704f-9b21-4f2e-91b3-4a467353bcc0": 9.8,
+            "nist": 9.8
+          },
+          "status": "Modified",
+          "severity": {
+            "134c704f-9b21-4f2e-91b3-4a467353bcc0": "CRITICAL",
+            "govulncheck": " ",
+            "grype": "CRITICAL",
+            "nist": "CRITICAL",
+            "trivy": "CRITICAL"
+          },
+          "baseScore": 9.8,
+          "baseSeverity": "CRITICAL",
+          "impactedVersions": null,
+          "fixedVersions": [" 1.21.11 1.22.4", "1.21.11", "1.22.4"],
+          "publishedTimestamp": "2024-06-05T16:15:10.56Z",
+          "lastModifiedTimestamp": "2024-09-03T18:35:07.483Z"
+        }
+      },
+      {
+        "application": "certifi",
+        "package": "certifi",
+        "installedVersion": "2019.11.28",
+        "isImpacting": true,
+        "sources": ["grype"],
+        "vulnerability": {
+          "cve": "CVE-2023-37920",
+          "summary": "Certifi is a curated collection of Root Certificates for validating the trustworthiness of SSL certificates while verifying the identity of TLS hosts. Certifi prior to version 2023.07.22 recognizes \"e-Tugra\" root certificates. e-Tugra's root certificates were subject to an investigation prompted by reporting of security issues in their systems. Certifi 2023.07.22 removes root certificates from \"e-Tugra\" from the root store.",
+          "cvss": {
+            "nist": 9.8,
+            "security-advisories@github.com": 7.5
+          },
+          "status": "Modified",
+          "severity": {
+            "grype": "HIGH",
+            "nist": "CRITICAL",
+            "security-advisories@github.com": "HIGH"
+          },
+          "baseScore": 9.8,
+          "baseSeverity": "CRITICAL",
+          "impactedVersions": null,
+          "fixedVersions": ["2023.7.22", "2023.07.22"],
+          "publishedTimestamp": "2023-07-25T21:15:10.827Z",
+          "lastModifiedTimestamp": "2023-08-12T06:16:31.077Z"
+        }
+      },
+      {
+        "application": "krb5-locales",
+        "package": "krb5-locales",
+        "installedVersion": "1.17-6ubuntu4.7",
+        "isImpacting": true,
+        "sources": ["grype"],
+        "vulnerability": {
+          "cve": "CVE-2024-3596",
+          "summary": "RADIUS Protocol under RFC 2865 is susceptible to forgery attacks by a local attacker who can modify any valid Response (Access-Accept, Access-Reject, or Access-Challenge) to any other response using a chosen-prefix collision attack against MD5 Response Authenticator signature.",
+          "cvss": {
+            "nist": 9
+          },
+          "status": "Analyzed",
+          "severity": {
+            "grype": "MEDIUM",
+            "nist": "CRITICAL"
+          },
+          "baseScore": 9,
+          "baseSeverity": "CRITICAL",
+          "impactedVersions": null,
+          "fixedVersions": ["Not Available", "3.0.27"],
+          "publishedTimestamp": "2024-07-09T12:15:20.7Z",
+          "lastModifiedTimestamp": "2024-12-30T19:23:20.437Z"
+        }
+      },
+      {
+        "application": "libipa-hbac0",
+        "package": "libipa-hbac0",
+        "installedVersion": "2.2.3-3ubuntu0.13",
+        "isImpacting": true,
+        "sources": ["trivy", "grype"],
+        "vulnerability": {
+          "cve": "CVE-2023-3326",
+          "summary": "pam_krb5 authenticates a user by essentially running kinit with the password, getting a ticket-granting ticket (tgt) from the Kerberos KDC (Key Distribution Center) over the network, as a way to verify the password. However, if a keytab is not provisioned on the system, pam_krb5 has no way to validate the response from the KDC, and essentially trusts the tgt provided over the network as being valid. In a non-default FreeBSD installation that leverages pam_krb5 for authentication and does not have a keytab provisioned, an attacker that is able to control both the password and the KDC responses can return a valid tgt, allowing authentication to occur for any user on the system.\n",
+          "cvss": {
+            "nist": 9.8
+          },
+          "status": "Modified",
+          "severity": {
+            "grype": "LOW",
+            "nist": "CRITICAL",
+            "trivy": "LOW"
+          },
+          "baseScore": 9.8,
+          "baseSeverity": "CRITICAL",
+          "impactedVersions": null,
+          "fixedVersions": ["open"],
+          "publishedTimestamp": "2023-06-22T17:15:44.833Z",
+          "lastModifiedTimestamp": "2023-08-01T23:15:30.827Z"
+        }
+      },
+      {
+        "application": "libtasn1-6",
+        "package": "libtasn1-6",
+        "installedVersion": "4.16.0-2",
+        "isImpacting": true,
+        "sources": ["grype"],
+        "vulnerability": {
+          "cve": "CVE-2021-46848",
+          "summary": "GNU Libtasn1 before 4.19.0 has an ETYPE_OK off-by-one array size check that affects asn1_encode_simple_der.",
+          "cvss": {
+            "nist": 9.1
+          },
+          "status": "Modified",
+          "severity": {
+            "grype": "LOW",
+            "nist": "CRITICAL"
+          },
+          "baseScore": 9.1,
+          "baseSeverity": "CRITICAL",
+          "impactedVersions": null,
+          "fixedVersions": ["Not Available", "4.19.0"],
+          "publishedTimestamp": "2022-10-24T14:15:49.973Z",
+          "lastModifiedTimestamp": "2023-11-07T03:40:05.247Z"
+        }
+      },
+      {
+        "application": "linux-cloud-tools-5.4.0-200",
+        "package": "linux-cloud-tools-5.4.0-200",
+        "installedVersion": "5.4.0-200.220",
+        "isImpacting": true,
+        "sources": ["trivy", "grype"],
+        "vulnerability": {
+          "cve": "CVE-2024-47685",
+          "summary": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nf_reject_ipv6: fix nf_reject_ip6_tcphdr_put()\n\nsyzbot reported that nf_reject_ip6_tcphdr_put() was possibly sending\ngarbage on the four reserved tcp bits (th->res1)\n\nUse skb_put_zero() to clear the whole TCP header,\nas done in nf_reject_ip_tcphdr_put()\n\nBUG: KMSAN: uninit-value in nf_reject_ip6_tcphdr_put+0x688/0x6c0 net/ipv6/netfilter/nf_reject_ipv6.c:255\n  nf_reject_ip6_tcphdr_put+0x688/0x6c0 net/ipv6/netfilter/nf_reject_ipv6.c:255\n  nf_send_reset6+0xd84/0x15b0 net/ipv6/netfilter/nf_reject_ipv6.c:344\n  nft_reject_inet_eval+0x3c1/0x880 net/netfilter/nft_reject_inet.c:48\n  expr_call_ops_eval net/netfilter/nf_tables_core.c:240 [inline]\n  nft_do_chain+0x438/0x22a0 net/netfilter/nf_tables_core.c:288\n  nft_do_chain_inet+0x41a/0x4f0 net/netfilter/nft_chain_filter.c:161\n  nf_hook_entry_hookfn include/linux/netfilter.h:154 [inline]\n  nf_hook_slow+0xf4/0x400 net/netfilter/core.c:626\n  nf_hook include/linux/netfilter.h:269 [inline]\n  NF_HOOK include/linux/netfilter.h:312 [inline]\n  ipv6_rcv+0x29b/0x390 net/ipv6/ip6_input.c:310\n  __netif_receive_skb_one_core net/core/dev.c:5661 [inline]\n  __netif_receive_skb+0x1da/0xa00 net/core/dev.c:5775\n  process_backlog+0x4ad/0xa50 net/core/dev.c:6108\n  __napi_poll+0xe7/0x980 net/core/dev.c:6772\n  napi_poll net/core/dev.c:6841 [inline]\n  net_rx_action+0xa5a/0x19b0 net/core/dev.c:6963\n  handle_softirqs+0x1ce/0x800 kernel/softirq.c:554\n  __do_softirq+0x14/0x1a kernel/softirq.c:588\n  do_softirq+0x9a/0x100 kernel/softirq.c:455\n  __local_bh_enable_ip+0x9f/0xb0 kernel/softirq.c:382\n  local_bh_enable include/linux/bottom_half.h:33 [inline]\n  rcu_read_unlock_bh include/linux/rcupdate.h:908 [inline]\n  __dev_queue_xmit+0x2692/0x5610 net/core/dev.c:4450\n  dev_queue_xmit include/linux/netdevice.h:3105 [inline]\n  neigh_resolve_output+0x9ca/0xae0 net/core/neighbour.c:1565\n  neigh_output include/net/neighbour.h:542 [inline]\n  ip6_finish_output2+0x2347/0x2ba0 net/ipv6/ip6_output.c:141\n  __ip6_finish_output net/ipv6/ip6_output.c:215 [inline]\n  ip6_finish_output+0xbb8/0x14b0 net/ipv6/ip6_output.c:226\n  NF_HOOK_COND include/linux/netfilter.h:303 [inline]\n  ip6_output+0x356/0x620 net/ipv6/ip6_output.c:247\n  dst_output include/net/dst.h:450 [inline]\n  NF_HOOK include/linux/netfilter.h:314 [inline]\n  ip6_xmit+0x1ba6/0x25d0 net/ipv6/ip6_output.c:366\n  inet6_csk_xmit+0x442/0x530 net/ipv6/inet6_connection_sock.c:135\n  __tcp_transmit_skb+0x3b07/0x4880 net/ipv4/tcp_output.c:1466\n  tcp_transmit_skb net/ipv4/tcp_output.c:1484 [inline]\n  tcp_connect+0x35b6/0x7130 net/ipv4/tcp_output.c:4143\n  tcp_v6_connect+0x1bcc/0x1e40 net/ipv6/tcp_ipv6.c:333\n  __inet_stream_connect+0x2ef/0x1730 net/ipv4/af_inet.c:679\n  inet_stream_connect+0x6a/0xd0 net/ipv4/af_inet.c:750\n  __sys_connect_file net/socket.c:2061 [inline]\n  __sys_connect+0x606/0x690 net/socket.c:2078\n  __do_sys_connect net/socket.c:2088 [inline]\n  __se_sys_connect net/socket.c:2085 [inline]\n  __x64_sys_connect+0x91/0xe0 net/socket.c:2085\n  x64_sys_call+0x27a5/0x3ba0 arch/x86/include/generated/asm/syscalls_64.h:43\n  do_syscall_x64 arch/x86/entry/common.c:52 [inline]\n  do_syscall_64+0xcd/0x1e0 arch/x86/entry/common.c:83\n entry_SYSCALL_64_after_hwframe+0x77/0x7f\n\nUninit was stored to memory at:\n  nf_reject_ip6_tcphdr_put+0x60c/0x6c0 net/ipv6/netfilter/nf_reject_ipv6.c:249\n  nf_send_reset6+0xd84/0x15b0 net/ipv6/netfilter/nf_reject_ipv6.c:344\n  nft_reject_inet_eval+0x3c1/0x880 net/netfilter/nft_reject_inet.c:48\n  expr_call_ops_eval net/netfilter/nf_tables_core.c:240 [inline]\n  nft_do_chain+0x438/0x22a0 net/netfilter/nf_tables_core.c:288\n  nft_do_chain_inet+0x41a/0x4f0 net/netfilter/nft_chain_filter.c:161\n  nf_hook_entry_hookfn include/linux/netfilter.h:154 [inline]\n  nf_hook_slow+0xf4/0x400 net/netfilter/core.c:626\n  nf_hook include/linux/netfilter.h:269 [inline]\n  NF_HOOK include/linux/netfilter.h:312 [inline]\n  ipv6_rcv+0x29b/0x390 net/ipv6/ip6_input.c:310\n  __netif_receive_skb_one_core\n---truncated---",
+          "cvss": {
+            "nist": 9.1
+          },
+          "status": "Modified",
+          "severity": {
+            "grype": "MEDIUM",
+            "nist": "CRITICAL",
+            "trivy": "MEDIUM"
+          },
+          "baseScore": 9.1,
+          "baseSeverity": "CRITICAL",
+          "impactedVersions": null,
+          "fixedVersions": ["open"],
+          "publishedTimestamp": "2024-10-21T12:15:05.397Z",
+          "lastModifiedTimestamp": "2024-11-08T16:15:25.083Z"
+        }
+      },
+      {
+        "application": "linux-cloud-tools-5.4.0-200",
+        "package": "linux-cloud-tools-5.4.0-200",
+        "installedVersion": "5.4.0-200.220",
+        "isImpacting": true,
+        "sources": ["grype"],
+        "vulnerability": {
+          "cve": "CVE-2021-3773",
+          "summary": "A flaw in netfilter could allow a network-connected attacker to infer openvpn connection endpoint information for further use in traditional network attacks.",
+          "cvss": {
+            "nist": 9.8
+          },
+          "status": "Modified",
+          "severity": {
+            "grype": "MEDIUM",
+            "nist": "CRITICAL"
+          },
+          "baseScore": 9.8,
+          "baseSeverity": "CRITICAL",
+          "impactedVersions": null,
+          "fixedVersions": ["Not Available", "5.14", "5.15.15"],
+          "publishedTimestamp": "2022-02-16T19:15:08.763Z",
+          "lastModifiedTimestamp": "2024-07-16T18:15:06.09Z"
+        }
+      },
+      {
+        "application": "pyyaml",
+        "package": "pyyaml",
+        "installedVersion": "5.3.1",
+        "isImpacting": true,
+        "sources": ["grype"],
+        "vulnerability": {
+          "cve": "CVE-2020-14343",
+          "summary": "A vulnerability was discovered in the PyYAML library in versions before 5.4, where it is susceptible to arbitrary code execution when it processes untrusted YAML files through the full_load method or with the FullLoader loader. Applications that use the library to process untrusted input may be vulnerable to this flaw. This flaw allows an attacker to execute arbitrary code on the system by abusing the python/object/new constructor. This flaw is due to an incomplete fix for CVE-2020-1747.",
+          "cvss": {
+            "nist": 9.8
+          },
+          "status": "Modified",
+          "severity": {
+            "grype": "CRITICAL",
+            "nist": "CRITICAL"
+          },
+          "baseScore": 9.8,
+          "baseSeverity": "CRITICAL",
+          "impactedVersions": null,
+          "fixedVersions": ["5.4", "5.4"],
+          "publishedTimestamp": "2021-02-09T21:15:12.707Z",
+          "lastModifiedTimestamp": "2023-07-06T18:15:10.193Z"
+        }
+      },
+      {
+        "application": "/scanu-2004-0-k-12815-fips (ubuntu 20.04)",
+        "package": "linux-cloud-tools-5.4.0-200",
+        "installedVersion": "5.4.0-200.220",
+        "isImpacting": false,
+        "sources": ["trivy", "grype"],
+        "vulnerability": {
+          "cve": "CVE-2024-47685",
+          "summary": "In the Linux kernel, the following vulnerability has been resolved:\n\nnetfilter: nf_reject_ipv6: fix nf_reject_ip6_tcphdr_put()\n\nsyzbot reported that nf_reject_ip6_tcphdr_put() was possibly sending\ngarbage on the four reserved tcp bits (th->res1)\n\nUse skb_put_zero() to clear the whole TCP header,\nas done in nf_reject_ip_tcphdr_put()\n\nBUG: KMSAN: uninit-value in nf_reject_ip6_tcphdr_put+0x688/0x6c0 net/ipv6/netfilter/nf_reject_ipv6.c:255\n  nf_reject_ip6_tcphdr_put+0x688/0x6c0 net/ipv6/netfilter/nf_reject_ipv6.c:255\n  nf_send_reset6+0xd84/0x15b0 net/ipv6/netfilter/nf_reject_ipv6.c:344\n  nft_reject_inet_eval+0x3c1/0x880 net/netfilter/nft_reject_inet.c:48\n  expr_call_ops_eval net/netfilter/nf_tables_core.c:240 [inline]\n  nft_do_chain+0x438/0x22a0 net/netfilter/nf_tables_core.c:288\n  nft_do_chain_inet+0x41a/0x4f0 net/netfilter/nft_chain_filter.c:161\n  nf_hook_entry_hookfn include/linux/netfilter.h:154 [inline]\n  nf_hook_slow+0xf4/0x400 net/netfilter/core.c:626\n  nf_hook include/linux/netfilter.h:269 [inline]\n  NF_HOOK include/linux/netfilter.h:312 [inline]\n  ipv6_rcv+0x29b/0x390 net/ipv6/ip6_input.c:310\n  __netif_receive_skb_one_core net/core/dev.c:5661 [inline]\n  __netif_receive_skb+0x1da/0xa00 net/core/dev.c:5775\n  process_backlog+0x4ad/0xa50 net/core/dev.c:6108\n  __napi_poll+0xe7/0x980 net/core/dev.c:6772\n  napi_poll net/core/dev.c:6841 [inline]\n  net_rx_action+0xa5a/0x19b0 net/core/dev.c:6963\n  handle_softirqs+0x1ce/0x800 kernel/softirq.c:554\n  __do_softirq+0x14/0x1a kernel/softirq.c:588\n  do_softirq+0x9a/0x100 kernel/softirq.c:455\n  __local_bh_enable_ip+0x9f/0xb0 kernel/softirq.c:382\n  local_bh_enable include/linux/bottom_half.h:33 [inline]\n  rcu_read_unlock_bh include/linux/rcupdate.h:908 [inline]\n  __dev_queue_xmit+0x2692/0x5610 net/core/dev.c:4450\n  dev_queue_xmit include/linux/netdevice.h:3105 [inline]\n  neigh_resolve_output+0x9ca/0xae0 net/core/neighbour.c:1565\n  neigh_output include/net/neighbour.h:542 [inline]\n  ip6_finish_output2+0x2347/0x2ba0 net/ipv6/ip6_output.c:141\n  __ip6_finish_output net/ipv6/ip6_output.c:215 [inline]\n  ip6_finish_output+0xbb8/0x14b0 net/ipv6/ip6_output.c:226\n  NF_HOOK_COND include/linux/netfilter.h:303 [inline]\n  ip6_output+0x356/0x620 net/ipv6/ip6_output.c:247\n  dst_output include/net/dst.h:450 [inline]\n  NF_HOOK include/linux/netfilter.h:314 [inline]\n  ip6_xmit+0x1ba6/0x25d0 net/ipv6/ip6_output.c:366\n  inet6_csk_xmit+0x442/0x530 net/ipv6/inet6_connection_sock.c:135\n  __tcp_transmit_skb+0x3b07/0x4880 net/ipv4/tcp_output.c:1466\n  tcp_transmit_skb net/ipv4/tcp_output.c:1484 [inline]\n  tcp_connect+0x35b6/0x7130 net/ipv4/tcp_output.c:4143\n  tcp_v6_connect+0x1bcc/0x1e40 net/ipv6/tcp_ipv6.c:333\n  __inet_stream_connect+0x2ef/0x1730 net/ipv4/af_inet.c:679\n  inet_stream_connect+0x6a/0xd0 net/ipv4/af_inet.c:750\n  __sys_connect_file net/socket.c:2061 [inline]\n  __sys_connect+0x606/0x690 net/socket.c:2078\n  __do_sys_connect net/socket.c:2088 [inline]\n  __se_sys_connect net/socket.c:2085 [inline]\n  __x64_sys_connect+0x91/0xe0 net/socket.c:2085\n  x64_sys_call+0x27a5/0x3ba0 arch/x86/include/generated/asm/syscalls_64.h:43\n  do_syscall_x64 arch/x86/entry/common.c:52 [inline]\n  do_syscall_64+0xcd/0x1e0 arch/x86/entry/common.c:83\n entry_SYSCALL_64_after_hwframe+0x77/0x7f\n\nUninit was stored to memory at:\n  nf_reject_ip6_tcphdr_put+0x60c/0x6c0 net/ipv6/netfilter/nf_reject_ipv6.c:249\n  nf_send_reset6+0xd84/0x15b0 net/ipv6/netfilter/nf_reject_ipv6.c:344\n  nft_reject_inet_eval+0x3c1/0x880 net/netfilter/nft_reject_inet.c:48\n  expr_call_ops_eval net/netfilter/nf_tables_core.c:240 [inline]\n  nft_do_chain+0x438/0x22a0 net/netfilter/nf_tables_core.c:288\n  nft_do_chain_inet+0x41a/0x4f0 net/netfilter/nft_chain_filter.c:161\n  nf_hook_entry_hookfn include/linux/netfilter.h:154 [inline]\n  nf_hook_slow+0xf4/0x400 net/netfilter/core.c:626\n  nf_hook include/linux/netfilter.h:269 [inline]\n  NF_HOOK include/linux/netfilter.h:312 [inline]\n  ipv6_rcv+0x29b/0x390 net/ipv6/ip6_input.c:310\n  __netif_receive_skb_one_core\n---truncated---",
+          "cvss": {
+            "nist": 9.1
+          },
+          "status": "Modified",
+          "severity": {
+            "grype": "MEDIUM",
+            "nist": "CRITICAL",
+            "trivy": "MEDIUM"
+          },
+          "baseScore": 9.1,
+          "baseSeverity": "CRITICAL",
+          "impactedVersions": null,
+          "fixedVersions": ["open", "5.10.227", "5.15.168", "6.1.113", "6.6.54", "6.10.13", "6.11.2"],
+          "publishedTimestamp": "2024-10-21T12:15:05.397Z",
+          "lastModifiedTimestamp": "2024-11-08T16:15:25.083Z"
+        }
+      },
+      {
+        "application": "PyYAML",
+        "package": "PyYAML",
+        "installedVersion": "5.3.1",
+        "isImpacting": true,
+        "sources": ["grype"],
+        "vulnerability": {
+          "cve": "CVE-2020-14343",
+          "summary": "A vulnerability was discovered in the PyYAML library in versions before 5.4, where it is susceptible to arbitrary code execution when it processes untrusted YAML files through the full_load method or with the FullLoader loader. Applications that use the library to process untrusted input may be vulnerable to this flaw. This flaw allows an attacker to execute arbitrary code on the system by abusing the python/object/new constructor. This flaw is due to an incomplete fix for CVE-2020-1747.",
+          "cvss": {
+            "nist": 9.8
+          },
+          "status": "Modified",
+          "severity": {
+            "grype": "CRITICAL",
+            "nist": "CRITICAL"
+          },
+          "baseScore": 9.8,
+          "baseSeverity": "CRITICAL",
+          "impactedVersions": null,
+          "fixedVersions": ["5.4", "5.4"],
+          "publishedTimestamp": "2021-02-09T21:15:12.707Z",
+          "lastModifiedTimestamp": "2023-07-06T18:15:10.193Z"
+        }
+      },
+      {
+        "application": "certifi",
+        "package": "certifi",
+        "installedVersion": "2019.11.28",
+        "isImpacting": true,
+        "sources": ["grype"],
+        "vulnerability": {
+          "cve": "CVE-2023-37920",
+          "summary": "Certifi is a curated collection of Root Certificates for validating the trustworthiness of SSL certificates while verifying the identity of TLS hosts. Certifi prior to version 2023.07.22 recognizes \"e-Tugra\" root certificates. e-Tugra's root certificates were subject to an investigation prompted by reporting of security issues in their systems. Certifi 2023.07.22 removes root certificates from \"e-Tugra\" from the root store.",
+          "cvss": {
+            "nist": 9.8,
+            "security-advisories@github.com": 7.5
+          },
+          "status": "Modified",
+          "severity": {
+            "grype": "HIGH",
+            "nist": "CRITICAL",
+            "security-advisories@github.com": "HIGH"
+          },
+          "baseScore": 9.8,
+          "baseSeverity": "CRITICAL",
+          "impactedVersions": null,
+          "fixedVersions": ["2023.7.22", "2023.07.22"],
+          "publishedTimestamp": "2023-07-25T21:15:10.827Z",
+          "lastModifiedTimestamp": "2023-08-12T06:16:31.077Z"
+        }
+      },
+      {
+        "application": "libtasn1-6",
+        "package": "libtasn1-6",
+        "installedVersion": "4.16.0-2",
+        "isImpacting": true,
+        "sources": ["grype"],
+        "vulnerability": {
+          "cve": "CVE-2021-46848",
+          "summary": "GNU Libtasn1 before 4.19.0 has an ETYPE_OK off-by-one array size check that affects asn1_encode_simple_der.",
+          "cvss": {
+            "nist": 9.1
+          },
+          "status": "Modified",
+          "severity": {
+            "grype": "LOW",
+            "nist": "CRITICAL"
+          },
+          "baseScore": 9.1,
+          "baseSeverity": "CRITICAL",
+          "impactedVersions": null,
+          "fixedVersions": ["Not Available", "4.19.0"],
+          "publishedTimestamp": "2022-10-24T14:15:49.973Z",
+          "lastModifiedTimestamp": "2023-11-07T03:40:05.247Z"
+        }
+      },
+      {
+        "application": "linux-cloud-tools-5.4.0-200",
+        "package": "linux-cloud-tools-5.4.0-200",
+        "installedVersion": "5.4.0-200.220",
+        "isImpacting": true,
+        "sources": ["grype"],
+        "vulnerability": {
+          "cve": "CVE-2021-3773",
+          "summary": "A flaw in netfilter could allow a network-connected attacker to infer openvpn connection endpoint information for further use in traditional network attacks.",
+          "cvss": {
+            "nist": 9.8
+          },
+          "status": "Modified",
+          "severity": {
+            "grype": "MEDIUM",
+            "nist": "CRITICAL"
+          },
+          "baseScore": 9.8,
+          "baseSeverity": "CRITICAL",
+          "impactedVersions": null,
+          "fixedVersions": ["Not Available", "5.14", "5.15.15"],
+          "publishedTimestamp": "2022-02-16T19:15:08.763Z",
+          "lastModifiedTimestamp": "2024-07-16T18:15:06.09Z"
+        }
+      },
+      {
+        "application": "openvswitch",
+        "package": "openvswitch",
+        "installedVersion": "",
+        "isImpacting": true,
+        "sources": ["grype"],
+        "vulnerability": {
+          "cve": "CVE-2022-4338",
+          "summary": "An integer underflow in Organization Specific TLV was found in various versions of OpenvSwitch.",
+          "cvss": {
+            "nist": 9.8
+          },
+          "status": "Modified",
+          "severity": {
+            "grype": "CRITICAL",
+            "nist": "CRITICAL"
+          },
+          "baseScore": 9.8,
+          "baseSeverity": "CRITICAL",
+          "impactedVersions": null,
+          "fixedVersions": [
+            "2.13.10,2.14.8,2.15.7,2.16.6,2.17.5,3.0.3",
+            "2.13.10",
+            "2.14.8",
+            "2.15.7",
+            "2.16.6",
+            "2.17.5",
+            "3.0.3"
+          ],
+          "publishedTimestamp": "2023-01-10T22:15:14.007Z",
+          "lastModifiedTimestamp": "2023-11-26T11:15:08.393Z"
+        }
+      },
+      {
+        "application": "openvswitch",
+        "package": "openvswitch",
+        "installedVersion": "",
+        "isImpacting": true,
+        "sources": ["grype"],
+        "vulnerability": {
+          "cve": "CVE-2022-4337",
+          "summary": "An out-of-bounds read in Organization Specific TLV was found in various versions of OpenvSwitch.",
+          "cvss": {
+            "nist": 9.8
+          },
+          "status": "Modified",
+          "severity": {
+            "grype": "CRITICAL",
+            "nist": "CRITICAL"
+          },
+          "baseScore": 9.8,
+          "baseSeverity": "CRITICAL",
+          "impactedVersions": null,
+          "fixedVersions": [
+            "2.13.10,2.14.8,2.15.7,2.16.6,2.17.5,3.0.3",
+            "2.13.10",
+            "2.14.8",
+            "2.15.7",
+            "2.16.6",
+            "2.17.5",
+            "3.0.3"
+          ],
+          "publishedTimestamp": "2023-01-10T22:15:13.933Z",
+          "lastModifiedTimestamp": "2023-11-26T11:15:08.287Z"
+        }
+      },
+      {
+        "application": "opt/cni/bin/macvlan",
+        "package": "stdlib",
+        "installedVersion": "go1.19.10",
+        "isImpacting": false,
+        "sources": ["grype"],
+        "vulnerability": {
+          "cve": "CVE-2024-24790",
+          "summary": "The various Is methods (IsPrivate, IsLoopback, etc) did not work as expected for IPv4-mapped IPv6 addresses, returning false for addresses which would return true in their traditional IPv4 forms.",
+          "cvss": {
+            "134c704f-9b21-4f2e-91b3-4a467353bcc0": 9.8,
+            "nist": 9.8
+          },
+          "status": "Modified",
+          "severity": {
+            "134c704f-9b21-4f2e-91b3-4a467353bcc0": "CRITICAL",
+            "grype": "CRITICAL",
+            "nist": "CRITICAL"
+          },
+          "baseScore": 9.8,
+          "baseSeverity": "CRITICAL",
+          "impactedVersions": null,
+          "fixedVersions": ["1.21.11,1.22.4", "1.21.11", "1.22.4"],
+          "publishedTimestamp": "2024-06-05T16:15:10.56Z",
+          "lastModifiedTimestamp": "2024-09-03T18:35:07.483Z"
+        }
+      }
+    ],
+    "revision": [
+      {
+        "revisionTimestamp": "2025-02-25T10:56:05.202Z",
+        "revisedField": "status.state",
+        "revisedFrom": "Awaiting Analysis",
+        "revisedTo": "Modified"
+      },
+      {
+        "revisionTimestamp": "2025-02-25T10:56:05.202Z",
+        "revisedField": "status.status",
+        "revisedFrom": "Open",
+        "revisedTo": "Ongoing"
+      },
+      {
+        "revisionTimestamp": "2025-02-25T10:56:05.202Z",
+        "revisedField": "spec.assessment.thirdParty.isDependentOnThirdParty",
+        "revisedFrom": "false",
+        "revisedTo": "true"
+      },
+      {
+        "revisionTimestamp": "2025-02-25T10:56:05.202Z",
+        "revisedField": "spec.assessment.impact",
+        "revisedFrom": "UNKNOWN",
+        "revisedTo": "LOW"
+      },
+      {
+        "revisionTimestamp": "2025-02-25T10:56:05.202Z",
+        "revisedField": "spec.assessment.severity",
+        "revisedFrom": "UNKNOWN",
+        "revisedTo": "LOW"
+      },
+      {
+        "revisionTimestamp": "2025-02-25T10:56:05.202Z",
+        "revisedField": "spec.assessment.justification",
+        "revisedFrom": "",
+        "revisedTo": "This vulnerability is reported on some of the 3rd party csi images and coredns image from k8s. This CVE is of low risk for our products a network-based attack vector is \nsimply impossible when it comes to golang code, apart from that as per CVE flaw analysis reported by golang, this only affects integrity and confidentiality and has no \neffect on availability. \n\nWe will upgrade the images when the fixes are available from the upstream vendors."
+      },
+      {
+        "revisionTimestamp": "2025-02-25T10:56:54.241Z",
+        "revisedField": "status.state",
+        "revisedFrom": "Modified",
+        "revisedTo": "Analyzed"
+      },
+      {
+        "revisionTimestamp": "2025-02-25T10:56:54.241Z",
+        "revisedField": "spec.assessment.thirdParty.isUpstreamFixAvailable",
+        "revisedFrom": "false",
+        "revisedTo": "true"
+      },
+      {
+        "revisionTimestamp": "2025-02-25T10:56:54.241Z",
+        "revisedField": "spec.assessment.impact",
+        "revisedFrom": "LOW",
+        "revisedTo": "UNKNOWN"
+      },
+      {
+        "revisionTimestamp": "2025-02-25T10:56:54.241Z",
+        "revisedField": "spec.assessment.severity",
+        "revisedFrom": "LOW",
+        "revisedTo": "UNKNOWN"
+      },
+      {
+        "revisionTimestamp": "2025-02-25T10:57:36.346Z",
+        "revisedField": "status.state",
+        "revisedFrom": "Analyzed",
+        "revisedTo": "Modified"
+      },
+      {
+        "revisionTimestamp": "2025-02-25T10:57:36.346Z",
+        "revisedField": "spec.assessment.thirdParty.isUpstreamFixAvailable",
+        "revisedFrom": "true",
+        "revisedTo": "false"
+      },
+      {
+        "revisionTimestamp": "2025-02-25T10:57:36.346Z",
+        "revisedField": "spec.assessment.impact",
+        "revisedFrom": "UNKNOWN",
+        "revisedTo": "LOW"
+      },
+      {
+        "revisionTimestamp": "2025-02-25T10:57:36.346Z",
+        "revisedField": "spec.assessment.severity",
+        "revisedFrom": "UNKNOWN",
+        "revisedTo": "LOW"
+      },
+      {
+        "revisionTimestamp": "2025-02-25T10:57:42.782Z",
+        "revisedField": "status.state",
+        "revisedFrom": "Modified",
+        "revisedTo": "Analyzed"
+      },
+      {
+        "revisionTimestamp": "2025-02-25T10:57:42.782Z",
+        "revisedField": "spec.assessment.thirdParty.isUpstreamFixAvailable",
+        "revisedFrom": "false",
+        "revisedTo": "true"
+      },
+      {
+        "revisionTimestamp": "2025-02-25T10:57:42.782Z",
+        "revisedField": "spec.assessment.impact",
+        "revisedFrom": "LOW",
+        "revisedTo": "UNKNOWN"
+      },
+      {
+        "revisionTimestamp": "2025-02-25T10:57:42.782Z",
+        "revisedField": "spec.assessment.severity",
+        "revisedFrom": "LOW",
+        "revisedTo": "UNKNOWN"
+      },
+      {
+        "revisionTimestamp": "2025-02-25T11:45:51.212Z",
+        "revisedField": "status.state",
+        "revisedFrom": "Analyzed",
+        "revisedTo": "Modified"
+      },
+      {
+        "revisionTimestamp": "2025-02-25T11:45:51.212Z",
+        "revisedField": "spec.assessment.thirdParty.isUpstreamFixAvailable",
+        "revisedFrom": "true",
+        "revisedTo": "false"
+      },
+      {
+        "revisionTimestamp": "2025-02-25T11:45:51.212Z",
+        "revisedField": "spec.assessment.impact",
+        "revisedFrom": "UNKNOWN",
+        "revisedTo": "LOW"
+      },
+      {
+        "revisionTimestamp": "2025-02-25T11:45:51.212Z",
+        "revisedField": "spec.assessment.severity",
+        "revisedFrom": "UNKNOWN",
+        "revisedTo": "LOW"
+      }
+    ]
+  },
+  "status": {
+    "state": "Modified",
+    "status": "Ongoing"
+  }
+}
