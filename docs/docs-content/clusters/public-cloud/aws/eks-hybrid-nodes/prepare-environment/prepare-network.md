@@ -279,15 +279,15 @@ AWS documentation under
 
    | Service                              | Endpoint URL                                            |
    | ------------------------------------ | ------------------------------------------------------- |
-   | Amazon EKS                           | https://hybrid-assets.eks.amazonaws.com                 |
-   | Amazon EKS                           | https://eks.us-east-1.amazonaws.com                     |
-   | Amazon ECR                           | https://api.ecr.us-east-1.amazonaws.com                 |
-   | Amazon EKS ECR                       | https://602401143452.dkr.ecr.us-east-1.amazonaws.com    |
-   | AWS Systems Manager (SSM)            | https://amazon-ssm-us-east-1.s3.us-east-1.amazonaws.com |
-   | AWS Systems Manager (SSM)            | https://ssm.us-east-1.amazonaws.com                     |
-   | (Optional) AWS Systems Manager (SSM) | https://ec2messages.us-east-1.amazonaws.com             |
-   | (Optional) Amazon CloudWatch Logs    | https://logs.us-east-1.amazonaws.com                    |
-   | (Optional) Amazon S3                 | https://s3.us-east-1.amazonaws.com                      |
+   | Amazon EKS                           | `https://hybrid-assets.eks.amazonaws.com`                 |
+   | Amazon EKS                           | `https://eks.us-east-1.amazonaws.com`                     |
+   | Amazon ECR                           | `https://api.ecr.us-east-1.amazonaws.com`                 |
+   | Amazon EKS ECR                       | `https://602401143452.dkr.ecr.us-east-1.amazonaws.com`    |
+   | AWS Systems Manager (SSM)            | `https://amazon-ssm-us-east-1.s3.us-east-1.amazonaws.com` |
+   | AWS Systems Manager (SSM)            | `https://ssm.us-east-1.amazonaws.com`                     |
+   | (Optional) AWS Systems Manager (SSM) | `https://ec2messages.us-east-1.amazonaws.com`             |
+   | (Optional) Amazon CloudWatch Logs    | `https://logs.us-east-1.amazonaws.com`                    |
+   | (Optional) Amazon S3                 | `https://s3.us-east-1.amazonaws.com`                      |
 
    </TabItem>
 
@@ -295,16 +295,16 @@ AWS documentation under
 
    | Service                                     | Endpoint URL                                         |
    | ------------------------------------------- | ---------------------------------------------------- |
-   | Amazon EKS                                  | https://hybrid-assets.eks.amazonaws.com              |
-   | Amazon EKS                                  | https://eks.us-east-1.amazonaws.com                  |
-   | Amazon ECR                                  | https://api.ecr.us-east-1.amazonaws.com              |
-   | Amazon EKS ECR                              | https://602401143452.dkr.ecr.us-east-1.amazonaws.com |
-   | AWS IAM Roles Anywhere                      | https://rolesanywhere.amazonaws.com                  |
-   | AWS IAM Roles Anywhere                      | https://rolesanywhere.us-east-1.amazonaws.com        |
-   | (Optional) AWS IAM                          | https://iam.amazonaws.com                            |
-   | (Optional) AWS Security Token Service (STS) | https://sts.us-east-1.amazonaws.com                  |
-   | (Optional) Amazon CloudWatch Logs           | https://logs.us-east-1.amazonaws.com                 |
-   | (Optional) Amazon S3                        | https://s3.us-east-1.amazonaws.com                   |
+   | Amazon EKS                                  | `https://hybrid-assets.eks.amazonaws.com`              |
+   | Amazon EKS                                  | `https://eks.us-east-1.amazonaws.com`                  |
+   | Amazon ECR                                  | `https://api.ecr.us-east-1.amazonaws.com`              |
+   | Amazon EKS ECR                              | `https://602401143452.dkr.ecr.us-east-1.amazonaws.com` |
+   | AWS IAM Roles Anywhere                      | `https://rolesanywhere.amazonaws.com`                  |
+   | AWS IAM Roles Anywhere                      | `https://rolesanywhere.us-east-1.amazonaws.com`        |
+   | (Optional) AWS IAM                          | `https://iam.amazonaws.com`                            |
+   | (Optional) AWS Security Token Service (STS) | `https://sts.us-east-1.amazonaws.com`                  |
+   | (Optional) Amazon CloudWatch Logs           | `https://logs.us-east-1.amazonaws.com`                 |
+   | (Optional) Amazon S3                        | `https://s3.us-east-1.amazonaws.com`                   |
 
    </TabItem>
 
