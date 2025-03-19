@@ -27,7 +27,10 @@ tags: ["release-notes"]
   [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
   available. For more details, refer to the Terraform provider
   [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
-- Crossplane version 0.23.2 of the [Palette Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette/) is available. For more details, refer to the Crossplane provider [release page](https://github.com/crossplane-contrib/provider-palette/releases).
+- Crossplane version 0.23.2 of the
+  [Palette Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette/) is
+  available. For more details, refer to the Crossplane provider
+  [release page](https://github.com/crossplane-contrib/provider-palette/releases).
 
 ## March 15, 2025 - Release 4.6.12
 
