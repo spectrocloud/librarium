@@ -277,8 +277,8 @@ AWS documentation under
 
    <TabItem label="AWS Service Manager (SSM)" value="ssm">
 
-   | Service                              | Endpoint URL                                            |
-   | ------------------------------------ | ------------------------------------------------------- |
+   | Service                              | Endpoint URL                                              |
+   | ------------------------------------ | --------------------------------------------------------- |
    | Amazon EKS                           | `https://hybrid-assets.eks.amazonaws.com`                 |
    | Amazon EKS                           | `https://eks.us-east-1.amazonaws.com`                     |
    | Amazon ECR                           | `https://api.ecr.us-east-1.amazonaws.com`                 |
@@ -293,8 +293,8 @@ AWS documentation under
 
    <TabItem label="AWS IAM Roles Anywhere" value="iam-ra">
 
-   | Service                                     | Endpoint URL                                         |
-   | ------------------------------------------- | ---------------------------------------------------- |
+   | Service                                     | Endpoint URL                                           |
+   | ------------------------------------------- | ------------------------------------------------------ |
    | Amazon EKS                                  | `https://hybrid-assets.eks.amazonaws.com`              |
    | Amazon EKS                                  | `https://eks.us-east-1.amazonaws.com`                  |
    | Amazon ECR                                  | `https://api.ecr.us-east-1.amazonaws.com`              |
