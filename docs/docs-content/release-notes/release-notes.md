@@ -17,6 +17,12 @@ tags: ["release-notes"]
 
 - Fixed an issue where [AWS EKS](../clusters/public-cloud/aws/eks.md) clusters using the AWS VPC CNI (Helm) [pack](../integrations/integrations.mdx) assigned incorrect IP addresses to pods due to an unintended installation of the standard AWS VPC CNI.
 
+### Automation
+
+#### Features
+
+- Terraform version 0.23.2 of the [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is available. For more details, refer to the Terraform provider [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
+
 ## March 15, 2025 - Release 4.6.12
 
 ### Security Notices
