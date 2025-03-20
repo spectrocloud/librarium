@@ -1,0 +1,1 @@
+✔ [31m0 errors[0m, [33m0 warnings[0m and [34m0 suggestions[0m in 1152 files.
