@@ -138,9 +138,9 @@ Follow this guide to start migration plans in the VM Migration Assistant.
     vm-migration-warm-vm-140852-p446x  Importing     75%        20m
     ```
 
-    The datavolume names are uniquely generated using the `<planName>-<vmIdentifier>-<randomSuffix>` template.
+    The data volume names are uniquely generated using the `<planName>-<vmIdentifier>-<randomSuffix>` template.
 
-11. Issue the following command to output the datavolume details to your terminal.
+11. Issue the following command to output the data volume details to your terminal.
 
     ```shell
     kubectl describe datavolume <datavolumeName> --namespace <myVmMigrationNamespace>
