@@ -11,6 +11,28 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## March 20, 2025 - Release 4.6.13
+
+### Bug Fixes
+
+- Fixed an issue where [AWS EKS](../clusters/public-cloud/aws/eks.md) clusters using the AWS VPC CNI (Helm)
+  [pack](../integrations/integrations.mdx) assigned incorrect IP addresses to pods.
+- Fixed an issue where OIDC configuration failed when using
+  [Microsoft Entra ID](../user-management/saml-sso/palette-sso-with-entra-id.md).
+
+### Automation
+
+#### Features
+
+- Terraform version 0.23.2 of the
+  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
+  available. For more details, refer to the Terraform provider
+  [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
+- Crossplane version 0.23.2 of the
+  [Palette Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette/) is
+  available. For more details, refer to the Crossplane provider
+  [release page](https://github.com/crossplane-contrib/provider-palette/releases).
+
 ## March 15, 2025 - Release 4.6.12
 
 ### Security Notices
