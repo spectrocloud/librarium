@@ -193,7 +193,6 @@ The following table lists the open source licenses tied to the libraries and mod
 | github.com/kelseyhightower/envconfig                                                          | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/kevinburke/ssh_config                                                              | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/klauspost/compress                                                                 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
-| github.com/klauspost/compress                                                                 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/klauspost/compress/internal/snapref                                                | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)               |
 | github.com/klauspost/compress/zstd/internal/xxhash                                            | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/klauspost/pgzip                                                                    | [MIT](https://opensource.org/license/mit/)                                |
@@ -869,7 +868,6 @@ The following table lists the open source licenses tied to the libraries and mod
 | sigs.k8s.io/kustomize/kyaml/internal/forked/github.com/go-yaml/yaml                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | sigs.k8s.io/kustomize/kyaml/internal/forked/github.com/qri-io/starlib/util                    | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | sigs.k8s.io/structured-merge-diff/v4                                                          | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
-| sigs.k8s.io/yaml                                                                              | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | sigs.k8s.io/yaml                                                                              | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | sigs.k8s.io/yaml/goyaml.v2                                                                    | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 
