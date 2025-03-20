@@ -70,7 +70,7 @@ Follow these steps to deploy a virtual cluster to a cluster group depending on t
 
 <TabItem label="Cluster Mode" value="cluster-mode">
 
-1. Log in to [Palette](https://console.spectrocloud.com) and switch to **Cluster Mode**.
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 2. From the left **Main Menu**, select **Clusters**.
 
@@ -111,7 +111,7 @@ Follow these steps to deploy a virtual cluster to a cluster group depending on t
 
 <TabItem label="Cluster Mode" value="cluster-mode">
 
-1. Log in to [Palette](https://console.spectrocloud.com) and switch to **Cluster Mode**.
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 2. From the left **Main Menu**, select **Clusters**.
 
