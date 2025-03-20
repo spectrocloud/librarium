@@ -11,16 +11,14 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## March 20, 2025 - Release 4.6.X
+## March 20, 2025 - Release 4.6.13
 
 ### Bug Fixes
 
 - Fixed an issue where [AWS EKS](../clusters/public-cloud/aws/eks.md) clusters using the AWS VPC CNI (Helm)
-  [pack](../integrations/integrations.mdx) assigned incorrect IP addresses to pods due to an unintended installation of
-  the standard AWS VPC CNI.
+  [pack](../integrations/integrations.mdx) assigned incorrect IP addresses to pods.
 - Fixed an issue where OIDC configuration failed when using
-  [Microsoft Entra ID](../user-management/saml-sso/palette-sso-with-entra-id.md) due to incorrect validation of the
-  `issuerUrl` field.
+  [Microsoft Entra ID](../user-management/saml-sso/palette-sso-with-entra-id.md).
 
 ### Automation
 
