@@ -20,8 +20,8 @@ Use the following steps to deploy a virtual cluster.
 
 - A Spectro Cloud account.
 
-- A cluster group. Refer to the [Create and Manage Cluster Groups](/clusters/cluster-groups/create-cluster-group) guide
-  to learn how to create a cluster group.
+- A cluster group. Refer to the [Create and Manage Cluster Groups](../cluster-groups/create-cluster-group.md) guide to
+  learn how to create a cluster group.
 
 - Attach any required policies in your cloud account that must be added to your virtual cluster deployment.
 
@@ -60,25 +60,75 @@ To add node-level policies:
 
 ## Deploy a Virtual Cluster
 
-Follow these steps to deploy a virtual cluster to a cluster group:
+Follow these steps to deploy a virtual cluster to a cluster group depending on the
+[Palette Mode](../../introduction/palette-modes.md).
+
+<Tabs queryString="palette-mode">
+
+<TabItem label="Cluster Mode" value="cluster-mode">
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. From the left **Main Menu**, select **Clusters**.
+
+3. Select the **Virtual Clusters** tab.
+
+4. Click **Add New Virtual Cluster**.
+
+5. Select your cluster group from the **Select cluster group drop-down Menu**, and enter a **Cluster name** for the
+   virtual cluster.
+
+6. Assign the **CPU**, **Memory**, and **Storage** size for the cluster.
+
+7. Click **Deploy Virtual Cluster**.
+
+</TabItem>
+
+<TabItem label="App Mode" value="app-mode">
 
 1. Log in to [Palette](https://console.spectrocloud.com) and switch to **App Mode**.
 
 2. Select **Virtual Clusters** from the left **Main Menu**.
 
-3. Click the **+New Virtual Cluster**.
+3. Click **New Virtual Cluster**.
 
-4. Select your cluster group from the **Select cluster group drop-down Menu**, and type a name for the virtual cluster.
+4. Select your cluster group from the **Select cluster group drop-down Menu**, and enter a **Virtual cluster name**.
 
 5. Assign the CPU, Memory, and Storage size for the cluster.
 
 6. Deploy the cluster.
 
+</TabItem>
+
+</Tabs>
+
 ## Validate
 
-To validate that your virtual cluster is available and ready for use, log in to
-[Palette](https://console.spectrocloud.com) and switch to **App Mode**. Select **Virtual Clusters** from the left **Main
-Menu**. Your cluster is ready for use if the status is **Running**.
+<Tabs queryString="palette-mode">
+
+<TabItem label="Cluster Mode" value="cluster-mode">
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. From the left **Main Menu**, select **Clusters**.
+
+3. Select the **Virtual Clusters** tab.
+
+4. Your cluster is ready to use if the status is **Running**.
+
+</TabItem>
+
+<TabItem label="App Mode" value="app-mode">
+
+1. Log in to [Palette](https://console.spectrocloud.com) and switch to **App Mode**.
+
+2. Select **Virtual Clusters** from the left **Main Menu**.
+
+3. Your cluster is ready to use if the status is **Running**.
+
+</TabItem>
+
+</Tabs>
 
 ## Resources
 
