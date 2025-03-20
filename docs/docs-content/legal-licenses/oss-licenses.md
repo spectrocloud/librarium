@@ -279,7 +279,6 @@ have any questions or concerns, contact us at support@spectrocloud.com
 | go-vfs                                                                   | [MIT](https://opensource.org/license/mit/)                                |
 | go-wildcard                                                              | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | go-windows-terminal-sequences                                            | [MIT](https://opensource.org/license/mit/)                                |
-| go-yaml                                                                  | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | go.mongodb.org/mongo-driver                                              | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | go.opentelemetry.io/otel/exporters/jaeger                                | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | go.opentelemetry.io/otel/internal/metric                                 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
@@ -486,8 +485,8 @@ have any questions or concerns, contact us at support@spectrocloud.com
 | xerrors                                                                  | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)               |
 | xstrings                                                                 | [MIT](https://opensource.org/license/mit/)                                |
 | xxhash                                                                   | [MIT](https://opensource.org/license/mit/)                                |
-| yaml                                                                     | [LGPL-3.0](https://www.gnu.org/licenses/lgpl-3.0.en.html)                 |
-| yaml.v1                                                                  | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
+| yaml                                                                     | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
+| yaml.v1                                                                  | [LGPL-3.0](https://www.gnu.org/licenses/lgpl-3.0.en.html)                 |
 | yaml.v2                                                                  | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | yaml.v3                                                                  | [MIT](https://opensource.org/license/mit/)                                |
 | zap                                                                      | [MIT](https://opensource.org/license/mit/)                                |
