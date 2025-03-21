@@ -340,7 +340,8 @@ Palette. You will then create a cluster profile and use the registered host to d
    :::
 
    The following configuration includes a Palette registration token and the default Palette endpoint, specifies a
-   Palette project, and sets up the `kairos` user. Note the following:
+   Palette project, and sets up the `kairos` user. It also specifies credentials for private external registries as well
+   as registry mapping rules. Note the following:
 
    - The host will not shut down and will instead reboot after the agent is installed, with
      [kube-vip](../../clusters/edge/networking/kubevip.md) enabled, as this is required for bare metal and VMware
@@ -364,6 +365,20 @@ Palette. You will then create a cluster profile and use the registered host to d
          edgeHostToken: $TOKEN
          paletteEndpoint: api.spectrocloud.com
          projectName: Default
+     externalRegistries:
+       registries:
+         - domain: "example.registry.com/internal-images"
+           username: "admin"
+           password: "***************"
+           repositoryName: example-repository-private
+           certificates:
+             - |
+                -----BEGIN CERTIFICATE-----
+                **********************
+                -----END CERTIFICATE-----
+     registryMappingRules:
+      "us-east1-docker.pkg.dev/spectro-images/daily": "example.registry.com/internal-images"
+
      stages:
        initramfs:
          - users:
@@ -395,6 +410,19 @@ Palette. You will then create a cluster profile and use the registered host to d
        edgeHostToken: ****************
        paletteEndpoint: api.spectrocloud.com
        projectName: Default
+     externalRegistries:
+       registries:
+         - domain: "example.registry.com/internal-images"
+           username: "admin"
+           password: "***************"
+           repositoryName: example-repository-private
+           certificates:
+             - |
+                -----BEGIN CERTIFICATE-----
+                **********************
+                -----END CERTIFICATE-----
+     registryMappingRules:
+      "us-east1-docker.pkg.dev/spectro-images/daily": "example.registry.com/internal-images"
    stages:
      initramfs:
        - users:
