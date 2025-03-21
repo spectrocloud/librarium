@@ -122,6 +122,7 @@ stages:
           groups:
             - sudo
           passwd: palette
+      name: Create Palette user
 
 install:
   poweroff: true

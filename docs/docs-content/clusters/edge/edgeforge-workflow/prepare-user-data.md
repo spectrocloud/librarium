@@ -119,6 +119,7 @@ Installer configuration file and the OS pack support the usage of cloud-init sta
             - sudo
             ssh_authorized_keys:
             - ssh-rsa AAAAB3N…
+        name: Create user and assign SSH key
    ```
 
 ### Configure Proxy Settings (Optional)
@@ -245,6 +246,7 @@ stages:
           groups:
             - sudo
           passwd: kairos
+      name: Create user and assign to sudo group
 ```
 
 ### Connected Sites - Multiple User Data Configuration
@@ -276,6 +278,7 @@ stages:
           groups:
             - sudo
           passwd: kairos
+      name: Create user and assign to sudo group
 ```
 
 **Site** - supplied at the edge location through a bootable USB drive. If specified, the `projectName` value overrides
@@ -321,6 +324,7 @@ stages:
           groups:
             - sudo
           passwd: kairos
+      name: Create user and assign to sudo group
 ```
 
 ### Apply Proxy & Certificate Settings
@@ -378,6 +382,7 @@ stages:
           groups:
             - sudo
           passwd: kairos
+      name: Create user and assign to sudo group
 ```
 
 ### Load Content From External Registry
@@ -413,6 +418,7 @@ stages:
           groups:
             - sudo
           passwd: kairos
+      name: Create user and assign to sudo group
 ```
 
 ### Create Bind Mounts
