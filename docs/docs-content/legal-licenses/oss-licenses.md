@@ -129,11 +129,6 @@ have any questions or concerns, contact us at support@spectrocloud.com
 | gax-go                                                                   | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)               |
 | ghw                                                                      | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | ginkgo                                                                   | [MIT](https://opensource.org/license/mit/)                                |
-| github.com/mitchellh/colorstring                                         | [MIT](https://opensource.org/license/mit/)                                |
-| github.com/mitchellh/copystructure                                       | [MIT](https://opensource.org/license/mit/)                                |
-| github.com/mitchellh/go-wordwrap                                         | [MIT](https://opensource.org/license/mit/)                                |
-| github.com/mitchellh/hashstructure                                       | [MIT](https://opensource.org/license/mit/)                                |
-| github.com/mitchellh/reflectwalk                                         | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/andybalholm/brotli                                            | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/apparentlymart/go-cidr                                        | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/avast/retry-go                                                | [MIT](https://opensource.org/license/mit/)                                |
@@ -215,6 +210,11 @@ have any questions or concerns, contact us at support@spectrocloud.com
 | github.com/mattn/go-sqlite3                                              | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/mholt/archiver/v3                                             | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/minio/highwayhash                                             | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
+| github.com/mitchellh/colorstring                                         | [MIT](https://opensource.org/license/mit/)                                |
+| github.com/mitchellh/copystructure                                       | [MIT](https://opensource.org/license/mit/)                                |
+| github.com/mitchellh/go-wordwrap                                         | [MIT](https://opensource.org/license/mit/)                                |
+| github.com/mitchellh/hashstructure                                       | [MIT](https://opensource.org/license/mit/)                                |
+| github.com/mitchellh/reflectwalk                                         | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/monochromegane/go-gitignore                                   | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/montanaflynn/stats                                            | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/nats-io/jwt/v2                                                | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
