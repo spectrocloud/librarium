@@ -16,32 +16,31 @@ type OsCve = {
   k8sDistribution: string;
   k8sVersion: string;
   timeLastUpdated: string;
-  severity: string;
   hash?: string;
 };
 
-// interface ProvideCveItem {
-//   kind: string;
-//   metadata: {
-//     uid: string;
-//     summary: string;
-//     advCreatedTimestamp: string;
-//     advLastModifiedTimestamp: string;
-//   };
-//   spec: {
-//     assessment: {
-//       impact: string;
-//       severity: string;
-//       thirdParty: {
-//         isDependentOnThirdParty: boolean;
-//       };
-//     };
-//     impact: {
-//       isImpacting: boolean;
-//       impactedVersions: string[];
-//     };
-//   };
-// }
+interface ProviderCveItem {
+  kind: string;
+  metadata: {
+    uid: string;
+    summary: string;
+    advCreatedTimestamp: string;
+    advLastModifiedTimestamp: string;
+  };
+  spec: {
+    assessment: {
+      impact: string;
+      severity: string;
+      thirdParty: {
+        isDependentOnThirdParty: boolean;
+      };
+    };
+    impact: {
+      isImpacting: boolean;
+      impactedVersions: string[];
+    };
+  };
+}
 
 interface AllCVEList {
   provider: ProviderCveItem[];
@@ -54,6 +53,13 @@ const columns: ColumnsType<OsCve> = [
     key: "displayName",
     sorter: (a, b) => a.displayName.localeCompare(b.displayName),
     render: (text: string, record: OsCve) => <Link to={`./${record.uid}`}>{text}</Link>,
+  },
+  {
+    title: "FIPS Compliant",
+    dataIndex: "uid",
+    key: "fipsCompliant",
+    sorter: (a, b) => Number(isFipsCompliant(b.uid)) - Number(isFipsCompliant(a.uid)),
+    render: (uid: string) => (isFipsCompliant(uid) ? "Yes" : "No"),
   },
   {
     title: "OS Distribution",
@@ -78,12 +84,6 @@ const columns: ColumnsType<OsCve> = [
     dataIndex: "k8sVersion",
     key: "k8sVersion",
     sorter: (a, b) => a.k8sVersion.localeCompare(b.k8sVersion),
-  },
-  {
-    title: "Severity",
-    dataIndex: "severity",
-    key: "severity",
-    sorter: (a, b) => a.severity.localeCompare(b.severity),
   },
   {
     title: "Last Modified",
@@ -119,7 +119,7 @@ const OsCveTable: React.FC = () => {
 
         // Extract the OS CVE data from the provider array
         const osCveData = data.provider.map((item: any) => {
-          const { metadata, spec } = item;
+          const { metadata } = item;
 
           return {
             uid: metadata.uid,
@@ -129,7 +129,6 @@ const OsCveTable: React.FC = () => {
             k8sDistribution: getKubernetesDistro(metadata.summary),
             k8sVersion: getKubernetesVersion(metadata.uid),
             timeLastUpdated: metadata.advLastModifiedTimestamp || metadata.advCreatedTimestamp,
-            severity: spec.assessment.severity,
             hash: Math.random().toString(36).substring(2, 15),
           };
         });
@@ -294,6 +293,11 @@ const getKubernetesVersion = (uid: string): string => {
 
 const generateLink = (uid: string): string => {
   return `(./${uid})`;
+};
+
+const isFipsCompliant = (uid: string): boolean => {
+  // Case-insensitive check for 'fips' in the UID
+  return uid.toLowerCase().includes("fips");
 };
 // Export statements
 

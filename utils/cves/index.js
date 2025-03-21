@@ -280,7 +280,7 @@ async function generateOSK8sMarkdown(item, location) {
 
   const content = `---
 sidebar_label: "${imageName}"
-title: "Security Advisory for ${imageName}"
+title: "Security Notice for ${imageName}"
 description: "${summary}"
 sidebar_class_name: "hide-from-sidebar"
 hide_table_of_contents: false
@@ -288,23 +288,20 @@ toc_max_heading_level: 2
 tags: ["security", "os-k8s", "cve"]
 ---
 
-# ${imageName}
-
-This page provides an overall assessment of the security posture of **${imageName}**.
+This page provides a listing of vulnerabilities found in the image **${imageName}**.
 
 ## Overview
 
 - **Summary**: ${summary}
-- **Initial Advisory Published**: ${createdTimestamp}
+- **Initial Notice Published**: ${createdTimestamp}
 - **Last Updated**: ${lastModified}
 - **Severity**: ${severity}
 - **Impact**: ${impact}
 - **Justification**: ${justification}
-- **Is Impacting?**: ${isImpacting}
-- **Impacted Products**: ${impactedProducts}
-- **Impacted Deployments**: ${impactedDeployments}
-- **Remediation Available?**: ${remediationAvailable}
-- **Remediation Steps**: ${remediationSteps}
+
+## Remediation Steps
+
+${remediationSteps}
 
 ## Linked Vulnerabilities
 

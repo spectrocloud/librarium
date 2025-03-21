@@ -60,8 +60,8 @@ function generateOSK8sMarkdownTable(linkedVulnerabilities) {
     return "No linked vulnerabilities found.";
   }
 
-  let table = `| CVE ID | Package | Installed Version | Severity | Status | NIST Link |
-|--------|---------|-------------------|----------|--------|----------|
+  let table = `| CVE ID | Package | Installed Version | Severity | NIST Link |
+|--------|---------|-------------------|----------|----------|
 `;
 
   linkedVulnerabilities.forEach((vuln) => {
@@ -69,10 +69,9 @@ function generateOSK8sMarkdownTable(linkedVulnerabilities) {
     const package = vuln.package;
     const installedVersion = vuln.installedVersion || "Unknown";
     const severity = vuln.vulnerability.baseSeverity || "Unknown";
-    const status = vuln.vulnerability.status || "Unknown";
     const nistUrl = generateCVEOfficialDetailsUrl(cve); // Generates a link to the CVE details page
 
-    table += `| ${cve} | ${package} | ${installedVersion} | ${severity} | ${status} | [Details](${nistUrl}) |\n`;
+    table += `| ${cve} | ${package} | ${installedVersion} | ${severity} | [Details](${nistUrl}) |\n`;
   });
 
   return table;
