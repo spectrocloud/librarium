@@ -399,7 +399,7 @@ Processing Standards (FIPS) compliant version of PXK.
 | gopkg.in/inf.v0                                                                        | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
 | gopkg.in/natefinch/lumberjack.v2                                                       | [MIT](https://opensource.org/license/mit/)                       |
 | gopkg.in/square/go-jose.v2                                                             | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
-| gopkg.in/square/go-jose.v2/json                                                        | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
+| gopkg.in/square/go-jose.v2/json                                                        | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | gopkg.in/yaml.v2                                                                       | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | gopkg.in/yaml.v3                                                                       | [MIT](https://opensource.org/license/mit/)                       |
 | k8s.io/api                                                                             | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
@@ -458,8 +458,8 @@ Processing Standards (FIPS) compliant version of PXK.
 | k8s.io/system-validators/validators                                                    | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | k8s.io/utils                                                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | k8s.io/utils/inotify                                                                   | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
-| k8s.io/utils/internal/third_party/forked/golang                                        | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
-| k8s.io/utils/internal/third_party/forked/golang/net                                    | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)      |
+| k8s.io/utils/internal/third_party/forked/golang                                        | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
+| k8s.io/utils/internal/third_party/forked/golang/net                                    | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | sigs.k8s.io/apiserver-network-proxy/konnectivity-client                                | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | sigs.k8s.io/cri-tools                                                                  | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
 | sigs.k8s.io/json                                                                       | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)        |
