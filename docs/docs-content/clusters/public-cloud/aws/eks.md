@@ -143,12 +143,16 @@ an AWS account. This section guides you on how to create an EKS cluster in AWS t
 11. Provide the following node pool and cloud configuration information. If you will be using Fargate profiles, you can
     add them here.
 
+<!-- prettier-ignore-start -->
+
     :::info
 
     To automatically scale the number of worker nodes for EKS clusters, you must add the
-    [AWS Cluster Autoscaler](../../../integrations/aws-cluster-autoscaler.md) pack to your cluster profile.
+    <VersionedLink text="AWS Cluster Autoscaler" url="/integrations/packs/?pack=aws-cluster-autoscaler"/> pack to your cluster profile.
 
     :::
+
+<!-- prettier-ignore-end -->
 
     #### Node Configuration Settings
 
