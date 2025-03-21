@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Open source Licenses"
-title: "Open source Licenses"
+sidebar_label: "Open Source Licenses"
+title: "Open Source Licenses"
 description: "Review the open source licenses tied to the libraries and modules currently in use by Palette."
 sidebar_position: 30
 tags: ["legal", "licenses"]
