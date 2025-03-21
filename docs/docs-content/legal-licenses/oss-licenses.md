@@ -422,10 +422,10 @@ have any questions or concerns, contact us at support@spectrocloud.com
 | gopkg.in/ini.v1                                                                               | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | gopkg.in/natefinch/lumberjack.v2                                                              | [MIT](https://opensource.org/license/mit/)                  |
 | gopkg.in/square/go-jose.v2                                                                    | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
-| gopkg.in/square/go-jose.v2/json                                                               | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| gopkg.in/square/go-jose.v2/json                                                               | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | gopkg.in/validator.v2                                                                         | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | gopkg.in/warnings.v0                                                                          | [BSD-2-Clause](https://opensource.org/license/bsd-2-clause) |
-| gopkg.in/yaml.v1                                                                              | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| gopkg.in/yaml.v1                                                                              | [LGPL-3.0](https://www.gnu.org/licenses/lgpl-3.0.en.html)   |
 | gopkg.in/yaml.v2                                                                              | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | gopkg.in/yaml.v3                                                                              | [MIT](https://opensource.org/license/mit/)                  |
 | helm.sh/helm/v3                                                                               | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
@@ -461,7 +461,7 @@ have any questions or concerns, contact us at support@spectrocloud.com
 | k8s.io/metrics/pkg                                                                            | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | k8s.io/metrics/pkg/apis/metrics                                                               | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | k8s.io/utils                                                                                  | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
-| k8s.io/utils/internal/third_party/forked/golang/net                                           | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
+| k8s.io/utils/internal/third_party/forked/golang/net                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | kubevirt.io/api                                                                               | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | kubevirt.io/containerized-data-importer-api/pkg/apis/core                                     | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | kubevirt.io/controller-lifecycle-operator-sdk/api                                             | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
@@ -486,6 +486,8 @@ have any questions or concerns, contact us at support@spectrocloud.com
 | sigs.k8s.io/kustomize/kyaml/internal/forked/github.com/go-yaml/yaml                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | sigs.k8s.io/kustomize/kyaml/internal/forked/github.com/qri-io/starlib/util                    | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | sigs.k8s.io/structured-merge-diff/v4                                                          | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| sigs.k8s.io/yaml                                                                              | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
+| sigs.k8s.io/yaml/goyaml.v2                                                                    | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 
 <br />
 
