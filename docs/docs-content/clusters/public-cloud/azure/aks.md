@@ -78,6 +78,7 @@ explains how you can create an Azure AKS cluster managed by Palette.
     YAML editor that displays when you click on **Values** after selecting a layer.
 
     You can configure custom OpenID Connect (OIDC) for Azure clusters at the Kubernetes layer. Check out the
+
     <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" />
     pack additional details) for more information.
 
@@ -277,6 +278,7 @@ explains how you can create an Azure AKS cluster managed by Palette.
 20. If you're using custom OIDC, configure the Role-Based Access Control (RBAC). You must map a set of users or groups
     to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to
     [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings). Refer to the
+
     <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" />
     pack additional details for an example.
 

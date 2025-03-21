@@ -1003,7 +1003,8 @@ If you do not use the `<VersionedLink />` component, the link will not be versio
 
 ### Redirect to a pack
 
-If you have a page that needs to redirect to a pack page you can use the `RedirectPackPage` component. The syntax for its usage is as follows.
+If you have a page that needs to redirect to a pack page you can use the `RedirectPackPage` component. The syntax for
+its usage is as follows.
 
 ```
 
