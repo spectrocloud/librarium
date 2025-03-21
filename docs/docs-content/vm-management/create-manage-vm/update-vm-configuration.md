@@ -73,10 +73,13 @@ interoperability possible. The VM can integrate with different cases like sideca
 When using pod masquerading, you choose a CIDR for which VMs are not assigned a private IP, and instead use Network
 Address Translation (NAT) behind the pod IP.
 
+<!-- prettier-ignore-start -->
+
 Multus is a secondary network that uses Multus-CNI. Multus allows you to attach multiple network interfaces to pods in
 Kubernetes. If you use Multus as your network, ensure that Multus is installed across your cluster and that you have
-created a default `NetworkAttachmentDefinition` CRD. For more information, refer to the
-[Multus CNI](../../integrations/multus-cni.md) guide.
+created a default `NetworkAttachmentDefinition` CRD. For more information, refer to the <VersionedLink text="Multus CNI" url="/integrations/packs/?pack=cni-multus" />  pack.
+
+<!-- prettier-ignore-end -->
 
 ### Prerequisites
 
@@ -109,4 +112,8 @@ The **Network Interfaces** tab lists the newly added interface.
 
 ## Resources
 
-- [Multus CNI](../../integrations/multus-cni.md)
+<!-- prettier-ignore-start -->
+
+- <VersionedLink text="Multus CNI" url="/integrations/packs/?pack=cni-multus" />
+
+<!-- prettier-ignore-end -->

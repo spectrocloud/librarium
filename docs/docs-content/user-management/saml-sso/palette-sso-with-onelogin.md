@@ -241,11 +241,12 @@ OneLogin.
 You have now configured Palette to use OneLogin as a third-party IDP. Use the above steps to create additional groups in
 OneLogin and Palette.
 
-As you start deploying clusters, keep in mind that if you use the
-[Palette eXtended Kubernetes (PKE)](../../integrations/kubernetes.md) distribution, you can configure the cluster to
-inherit OIDC configurations from the tenant. Refer to the
-[Palette eXtended Kubernetes](../../integrations/kubernetes.md#configure-custom-oidc) reference page to learn more about
-out-of-the-box support for OIDC.
+<!-- prettier-ignore-start -->
+
+As you start deploying clusters, keep in mind that if you use the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> distribution, you can configure the cluster to
+inherit OIDC configurations from the tenant. Refer to the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" /> pack additional guidance for more information.
+
+<!-- prettier-ignore-end -->
 
 ### Validate
 

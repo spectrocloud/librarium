@@ -235,7 +235,7 @@ export default function PacksReadme() {
       }
       const importComponent = async () => {
         try {
-          const module: MarkdownFile = await import(`../../../docs/docs-content/integrations/${pckName}.md`);
+          const module: MarkdownFile = await import(`../../../docs/docs-content/integrations/${pckName}.mdx`);
           const PackReadMeComponent = module.default;
           setCustomReadme(
             <div className={styles.customReadme}>

@@ -479,10 +479,13 @@ need to do the following:
   [Grant users access to Kubernetes with an external OIDC provider](https://docs.aws.amazon.com/eks/latest/userguide/authenticate-oidc-identity-provider.html)
   to learn how to associate an OIDC identity provider with your cluster.
 
+<!-- prettier-ignore-start -->
+
 - Ensure your OIDC user or group is mapped to an `admin` or `clusteradmin` Kubernetes RBAC Role or ClusterRole. To learn
   how to map a Kubernetes role to users and groups, refer to
-  [Create Role Bindings](../../../cluster-management/cluster-rbac.md#create-role-bindings). For an example, refer to
-  [Use RBAC with OIDC](../../../../integrations/kubernetes.md#use-rbac-with-oidc).
+  [Create Role Bindings](../../../cluster-management/cluster-rbac.md#create-role-bindings). For an example, refer to the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" /> pack additional details.
+
+<!-- prettier-ignore-end -->
 
 - Configure your AWS CLI credentials. Refer to
   [Configuration and Credential File Settings](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html)
@@ -517,4 +520,8 @@ Learn how to create a hybrid node pool on your cluster and add your edge hosts t
 
 - [Create Role Bindings](../../../cluster-management/cluster-rbac.md#create-role-bindings)
 
-- [Use RBAC with OIDC](../../../../integrations/kubernetes.md#use-rbac-with-oidc)
+<!-- prettier-ignore-start -->
+
+- <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> pack
+
+<!-- prettier-ignore-end -->
