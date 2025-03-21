@@ -74,13 +74,13 @@ explains how you can create an Azure AKS cluster managed by Palette.
 
 6.  Under **Managed Kubernetes**, select **Azure AKS** and select your Azure AKS cluster profile.
 
+<!-- prettier-ignore-start -->
+
 7.  Palette displays the cluster profile layers. Review the profile layers and customize parameters as desired in the
     YAML editor that displays when you click on **Values** after selecting a layer.
 
-    You can configure custom OpenID Connect (OIDC) for Azure clusters at the Kubernetes layer. Check out the
-
-    <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" />
-    pack additional details) for more information.
+    You can configure custom OpenID Connect (OIDC) for Azure clusters at the Kubernetes layer. Check out the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" />
+    pack additional details for more information.
 
     :::warning
 
@@ -90,6 +90,8 @@ explains how you can create an Azure AKS cluster managed by Palette.
 
     :::
 
+<!-- prettier-ignore-end -->
+  
 8.  If you want to configure Pod and Service CIDR, populate the following configuration template and add the
     configuration to your Kubernetes cluster profile layer.
 
@@ -275,12 +277,14 @@ explains how you can create an Azure AKS cluster managed by Palette.
 19. Schedule any backups you want Palette to perform. Review
     [Backup and Restore](../../cluster-management/backup-restore/backup-restore.md) for more information.
 
+<!-- prettier-ignore-start -->
+
 20. If you're using custom OIDC, configure the Role-Based Access Control (RBAC). You must map a set of users or groups
     to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to
-    [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings). Refer to the
-
-    <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" />
+    [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings). Refer to the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" />
     pack additional details for an example.
+
+<!-- prettier-ignore-end -->
 
 21. Click **Validate** and review the cluster configuration and settings summary.
 
