@@ -421,6 +421,26 @@ frps:
       crt: ""
 ```
 
+## Tunnel
+
+The tunnel parameter is only required if you are operating a self-hosted instance in a multi-node cluster. The tunnel
+parameter specifies the preferred server and endpoint used for Edge host registration upon startup.
+
+If your self-hosted instance operates on a single node, there is no need to specify this parameter.
+
+| **Parameters**                    | **Description**                                                                                                  | **Type** | **Default value** |
+| --------------------------------- | ---------------------------------------------------------------------------------------------------------------- | -------- | ----------------- |
+| `tunnel.preferredServer.endpoint` | The preferred endpoint that Edge hosts register with upon startup.                                               | String   | `""`              |
+| `tunnel.servers.endpoint`         | The secondary endpoints that Edge hosts register with upon startup if the preferred endpoints are not available. | String   | `""`              |
+
+```yaml
+tunnel:
+  preferredServer:
+    endpoint: ""
+  servers:
+    - endpoint: ""
+```
+
 ## UI System
 
 The table lists parameters to configure the Palette User Interface (UI) behavior. You can disable the UI or the Network
