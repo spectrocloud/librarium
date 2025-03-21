@@ -138,6 +138,10 @@ Kubernetes role to users and groups, refer to
 
 - [Create Role Bindings](../cluster-management/cluster-rbac.md#create-role-bindings)
 
-- [Use RBAC with OIDC](../../integrations/kubernetes.md#use-rbac-with-oidc)
+<!-- prettier-ignore-start -->
+
+- <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> pack
+
+<!-- prettier-ignore-end -->
 
 - [Kubectl](../cluster-management/palette-webctl.md)

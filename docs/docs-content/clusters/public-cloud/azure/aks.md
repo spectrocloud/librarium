@@ -91,7 +91,7 @@ explains how you can create an Azure AKS cluster managed by Palette.
     :::
 
 <!-- prettier-ignore-end -->
-  
+
 8.  If you want to configure Pod and Service CIDR, populate the following configuration template and add the
     configuration to your Kubernetes cluster profile layer.
 
@@ -323,5 +323,3 @@ refer to [Cluster Removal](../../cluster-management/remove-clusters.md).
 <!-- prettier-ignore-end -->
 
 - [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings)
-
-- [Use RBAC with OIDC](../../../integrations/kubernetes.md#use-rbac-with-oidc)

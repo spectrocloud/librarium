@@ -520,4 +520,8 @@ Learn how to create a hybrid node pool on your cluster and add your edge hosts t
 
 - [Create Role Bindings](../../../cluster-management/cluster-rbac.md#create-role-bindings)
 
-- [Use RBAC with OIDC](../../../../integrations/kubernetes.md#use-rbac-with-oidc)
+<!-- prettier-ignore-start -->
+
+- <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> pack
+
+<!-- prettier-ignore-end -->

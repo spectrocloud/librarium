@@ -10,7 +10,7 @@ directory="docs/docs-content/integrations"
 exclude_files=(
     "maintenance-policy.md"
     "kubernetes-support.md"
-    "verified-packs.md"
+    "verified_packs.md"
     "community_packs.md"
     "deprecated-packs.md"
 ) 

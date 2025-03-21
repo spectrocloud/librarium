@@ -8,8 +8,6 @@ sidebar_position: 20
 tags: ["packs", "verified"]
 ---
 
-<RedirectPackPage packName="verified_packs" />
-
 Palette Verified Packs are packs we build and actively maintain with continuous updates and monitoring for security
 vulnerabilities. We use our extensive knowledge to ensure verified packs are configured according to best practices. We
 offer verified packs across the spectrum of a typical cluster profile stack - from the Operating System (OS) layer up to

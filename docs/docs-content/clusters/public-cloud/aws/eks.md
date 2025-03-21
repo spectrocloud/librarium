@@ -311,8 +311,10 @@ For guidance in setting up kubectl, review the [Kubectl](../../cluster-managemen
 
 - [Enable Secrets Encryption for EKS Cluster](enable-secrets-encryption-kms-key.md)
 
-- [Configure Custom OIDC](../../../integrations/kubernetes.md#configure-custom-oidc)
+<!-- prettier-ignore-start -->
+
+- <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> pack
+
+<!-- prettier-ignore-end -->
 
 - [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings).
-
-- [Use RBAC with OIDC](../../../integrations/kubernetes.md#use-rbac-with-oidc)

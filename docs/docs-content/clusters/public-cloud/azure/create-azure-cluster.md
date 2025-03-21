@@ -124,9 +124,9 @@ Use the following steps to deploy an Azure cluster.
    Select the desired **IP Allocation Method**. You can choose between **Static** and **Dynamic** IP allocation methods.
    If you select **Static**, you must provide a valid IP address.
 
-10. To configure custom OpenID Connect (OIDC) for Azure clusters, refer to our
-    [Configure OIDC Identity Provider](../../../integrations/kubernetes.md#configure-oidc-identity-provider) guide for
-    information on how to update the Kubernetes layer.
+<!-- prettier-ignore-start -->
+
+10. To configure custom OpenID Connect (OIDC) for Azure clusters, refer to the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" /> pack additional details for further guidance.
 
     :::warning
 
@@ -135,6 +135,8 @@ Use the following steps to deploy an Azure cluster.
     [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings).
 
     :::
+
+<!-- prettier-ignore-end -->
 
 11. Click **Next** to continue.
 
@@ -327,7 +329,7 @@ The link to access the Add Rules page is displayed within a caution message in t
 
 <!-- prettier-ignore-start -->
 
-- <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" /> pack
+- <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> pack
 
 <!-- prettier-ignore-end -->
 
