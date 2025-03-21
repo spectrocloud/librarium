@@ -25,15 +25,19 @@ done
 
 # Insert the file name after the second line that contains ---
 find "$directory" -type f -name "*.mdx" | while read -r file; do
-    awk -v redirect="\n<RedirectPackPage packName=\"$(basename "${file%.mdx}")\" />" '
-    /---/ { count++; if (count == 2) { last = NR; lastline = $0 } }
-    { lines[NR] = $0 }
-    END {
-        for (i = 1; i <= NR; i++) {
+    filename=$(basename "$file")
+    if [[ "$filename" != "integrations.mdx" && "$filename" != "packs.mdx" ]]; then
+        awk -v redirect="\n<RedirectPackPage packName=\"$(basename "${file%.mdx}")\" />" '
+        /---/ { count++; if (count == 2) { last = NR; lastline = $0 } }
+        { lines[NR] = $0 }
+        END {
+            for (i = 1; i <= NR; i++) {
             print lines[i]
             if (i == last) {
                 print redirect
             }
-        }
-    }' "$file" > temp && mv temp "$file"
+            }
+        }' "$file" > temp && mv temp "$file"
+    fi
+done
 done
