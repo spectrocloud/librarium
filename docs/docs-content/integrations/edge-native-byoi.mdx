@@ -1,0 +1,72 @@
+---
+
+import {Redirect} from "@docusaurus/router";
+
+<Redirect to="/integrations/packs/?pack=docs/docs-content/integrations/edge-native-byoi" />
+sidebar_label: "Edge Bring Your Own OS (BYOOS)"
+title: "Edge Bring your own OS (BYOOS)"
+description: "Bring Your Own OS (BYOOS) pack in Palette Edge."
+hide_table_of_contents: true
+type: "integration"
+category: ["operating system", "amd64"]
+sidebar_class_name: "hide-from-sidebar"
+logoUrl: "https://registry.dev.spectrocloud.com/v1/spectro-proxy/blobs/sha256:b6081bca439eeb01a8d43b3cb6895df4c088f80af978856ddc0da568e5c09365?type=image.webp"
+tags: ["packs", "byoos", "operating system", "edge"]
+---
+
+import {Redirect} from "@docusaurus/router";
+
+<Redirect to="/integrations/packs/?pack=docs/docs-content/integrations/edge-native-byoi" />
+
+## Versions Supported
+
+<Tabs queryString="parent">
+
+<TabItem label="2.0.x" value="2.0.x">
+
+BYOOS enables you to use a custom OS for your Edge host. The custom OS must include all the Edge artifacts and provider
+images required by the Edge Installer. Refer to the
+[Build Edge Artifacts](../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md) guide for steps on how to
+create a custom OS that includes all the required components for the Edge Installer.
+
+Next, select the BYOOS pack and fill out the required parameters during the cluster profile creation process. The
+`system.uri` parameter specifies the location of the BYOOS image.
+
+### Agent Mode
+
+To enable agent mode with the BYOOS Edge OS pack, expand the **Presets** section from the YAML editor view. Toggle the
+**Agent Mode** switch to enable agent mode. Check out the
+[Install Palette Agent](../deployment-modes/agent-mode/install-agent-host.md) guide for additional guidance on
+installing the Palette Agent.
+
+</TabItem>
+
+<TabItem label="1.0.x" value="1.0.x">
+
+BYOOS enables you to use a custom OS for your Edge host. The custom OS must include all the Edge artifacts and provider
+images required by the Edge Installer. Refer to the
+[Build Edge Artifacts](../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md) guide for steps on how to
+create a custom OS that includes all the required components for the Edge Installer.
+
+Next, select the BYOOS pack and fill out the required parameters during the cluster profile creation process. The
+`system.uri` parameter specifies the location of the BYOOS image.
+
+</TabItem>
+</Tabs>
+
+## Terraform
+
+You can retrieve details about the BYOOS Edge OS agent pack using the following Terraform code.
+
+```hcl
+data "spectrocloud_registry" "public_registry" {
+  name = "Public Repo"
+}
+
+data "spectrocloud_pack_simple" "byoos" {
+  name         = "edge-native-byoi"
+  version      = "2.0.0"
+  type         = "helm"
+  registry_uid = data.spectrocloud_registry.public_registry.id
+}
+```
