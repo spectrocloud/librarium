@@ -40,11 +40,18 @@ To learn about the requirements for Edge hosts deployed in agent mode, refer to
 | CPU       | - Intel: i3, i5, i7, i9, Xeon series <br /> - AMD: Ryzen 3, 5, 7, 9, and Epyc series                                                                      |
 | CPU Core  | Minimum two cores.                                                                                                                                        |
 | Memory    | Minimum 8 GB.                                                                                                                                             |
-| Storage   | Main drive requires a minimum of 100 GB storage to accommodate the Operating System (OS), Kubernetes, and workloads. The main drive must be an SSD drive. |
+| Storage   | Main drive requires a minimum of 150 GB storage to accommodate the Operating System (OS), Kubernetes, and workloads. The main drive must be an SSD drive. |
 
 ### ARM64 Architecture Devices
 
 ARM64 support is only verified for the Nvidia Jetson Orin device family.
+
+:::warning
+
+ARM64 support is currently unavailable for appliance mode deployments due to an upstream change. If you need to
+provision workloads on ARM64 machines, you can use [Agent Mode](../../deployment-modes/agent-mode/agent-mode.md).
+
+:::
 
 ## Trusted Boot
 

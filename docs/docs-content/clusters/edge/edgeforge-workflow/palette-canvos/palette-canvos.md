@@ -76,7 +76,7 @@ To complete this basic guide, you will need the following items:
 
   - 4 CPU
   - 8 GB memory
-  - 50 GB storage
+  - 150 GB storage
 
 - [Git](https://git-scm.com/downloads). You can ensure git installation by issuing the `git --version` command.
 
