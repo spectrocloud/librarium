@@ -1,0 +1,1140 @@
+---
+sidebar_label: "Palette eXtended Kubernetes"
+title: "Palette eXtended Kubernetes"
+description: "Learn about the Palette eXtended Kubernetes pack and how you can use it with your host clusters."
+hide_table_of_contents: true
+type: "integration"
+category: ["kubernetes", "amd64", "fips"]
+sidebar_class_name: "hide-from-sidebar"
+logoUrl: "https://registry.spectrocloud.com/v1/k8s-dashboard/blobs/sha256:2de5d88b2573af42d4cc269dff75744c4174ce47cbbeed5445e51a2edd8b7429?type=image.webp"
+tags: ["packs", "kubernetes", "pxk"]
+---
+
+import {Redirect} from "@docusaurus/router";
+<Redirect to="/integrations/packs/?pack=docs/docs-content/integrations/kubernetes" />
+
+The Palette eXtended Kubernetes (PXK) pack supports several [cloud and data center infrastructure providers](/clusters).
+This pack defines the default properties we use to deploy Kubernetes clusters and enables most of the Kubernetes
+hardening standards that the Center for Internet Security (CIS) recommends.
+
+We also support managed Kubernetes distributions for Elastic Kubernetes Service (EKS), Azure Kubernetes Service (AKS),
+and Google Kubernetes Engine (GKE).
+
+We offer PXK as a core pack in Palette.
+
+:::warning
+
+Once you upgrade your cluster to a new Kubernetes version, you will not be able to downgrade. We recommend that, before
+upgrading, you review the information provided in the [Kubernetes Upgrades](kubernetes-support.md#kubernetes-upgrades)
+section.
+
+Review our [Maintenance Policy](maintenance-policy.md) to learn about pack update and deprecation schedules.
+
+:::
+
+## What is PXK?
+
+Palette eXtended Kubernetes (PXK) is a recompiled version of the open source Cloud Native Computing Foundation (CNCF)
+distribution of Kubernetes. This Kubernetes version can be deployed through Palette to all major infrastructure
+providers, public cloud providers, and private data center providers. This is the default distribution when deploying a
+Kubernetes cluster through Palette. You have the option to choose other Kubernetes distributions, such as MicroK8s,
+Konvoy, and more, should you want to consume a different Kubernetes distribution.
+
+PXK is different from the upstream open source Kubernetes version primarily because of the carefully reviewed and
+applied hardening of the operating system (OS) and Kubernetes. The hardening ranges from removing unused kernel modules
+to using an OS configuration that follows industry best practices. Our recompiled Kubernetes configuration addresses
+common Kubernetes deployment security pitfalls and implements industry best practices.
+
+A benefit of Palette when used with PXK is the ability to apply different flavors of container storage interface (CSI)
+plugins and container network interface (CNI) plugins. Other open source Kubernetes distributions, such as MicroK8s,
+RKE2, and K3s, come with a default CSI and CNI. Additional complexity and overhead are required from you to enable
+different interfaces. PXK supports the ability to select other interface plugins out of the box without any additional
+overhead or complexity needed from your side.
+
+There are no changes to the Kubernetes source code and we also follow the same versioning schema as the upstream open
+source Kubernetes distribution.
+
+:::info
+
+We also offer Palette eXtended Kubernetes Edge (PXK-E) for Edge deployments. Refer to the
+[PXK-E glossary definition](../glossary-all.md#palette-extended-kubernetes-edge-pxk-e) to learn more about PXK-E.
+
+:::
+
+### CNCF Conformance
+
+PXK is a CNCF-certified Kubernetes distribution. The CNCF certification ensures that the Kubernetes distribution
+supports the required Kubernetes APIs. You can view the official list of CNCF-certified products by visiting the
+[Certified Kubernetes Software Conformance](https://www.cncf.io/certification/software-conformance/) page. To review
+what versions of PXK are certified, refer to the official
+[Kubernetes Distributions & Platforms](https://docs.google.com/spreadsheets/d/1uF9BoDzzisHSQemXHIKegMhuythuq_GL3N1mlUUK2h0/edit?usp=sharing)
+spreadsheet maintained by the CNCF.
+
+### PXK and Palette VerteX
+
+<!-- prettier-ignore-start -->
+The PXK used in [Palette VerteX](../vertex/vertex.md) is compiled and linked with our
+[NIST-certified FIPS crypto module](../legal-licenses/compliance.md#fips-140-2) PXK is by default enabled with
+[Ubuntu Pro](https://ubuntu.com/pro) with FIPS mode enabled. Additionally, the Operating System (OS) is hardened based
+on the NIST-800 standard. However, if you use a different OS through the <VersionedLink text="BYOOS" url="/integrations/packs/?pack=generic-byoi" /> pack, then you are responsible for ensuring FIPS compliance and hardening of the OS.
+<!-- prettier-ignore-end -->
+
+The combined usage of PXK and Palette VerteX provides a secure and FIPS-compliant experience as the Kubernetes
+distribution, OS, and management platform VerteX is FIPS-compliant.
+
+:::info
+
+Palette eXtended Kubernetes is optimized for the Palette or VerteX management plane. In the event that the Palette or
+VerteX management plane is removed, you can continue to manage the Kubernetes cluster through tools
+like `kubeadm` and `clusterctl` without relying on Palette or VerteX.
+
+:::
+
+### Support Lifecycle
+
+We support PXK for N-3 Kubernetes minor versions for a duration of 14 months. The duration exceeds the official EOL by
+four months. Once we stop supporting the minor version, we initiate the deprecation process. Refer to the
+[Kubernetes Support Lifecycle](kubernetes-support.md#palette-extended-kubernetes-support) guide to learn more.
+
+## Versions Supported
+
+<Tabs queryString="parent">
+
+<TabItem label="1.29.x" value="k8s_v1.29">
+
+The Kubeadm configuration file is where you can do the following:
+
+- Change the default `podCIDR` and `serviceClusterIpRange` values. CIDR IPs specified in the configuration file take
+  precedence over other defined CIDR IPs in your environment.
+
+  As you build your cluster, check that the `podCIDR` value does not overlap with any hosts or with the service network
+  and the `serviceClusterIpRange` value does not overlap with any IP ranges assigned to nodes or pods. For more
+  information, refer to the [Clusters](../clusters/clusters.md) guide and
+  [Cluster Deployment Errors](../troubleshooting/cluster-deployment.md).
+
+- Change the default cluster DNS service domain from `cluster.local` to a DNS domain that you specify. You can only
+  change the DNS domain during cluster creation. For more information, refer to
+  [Change Cluster DNS Service Domain](kubernetes.md?versions=k8s_v1.27#change-cluster-dns-service-domain).
+
+- Manually configure a third-party OpenID Connect (OIDC) Identity Provider (IDP). For more information, check out
+  [Configure Custom OIDC](#configure-custom-oidc).
+
+- Add a certificate for the Spectro Proxy pack if you want to use a reverse proxy with a Kubernetes cluster. For more
+  information, refer to the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> guide.
+
+### Change Cluster DNS Service Domain
+
+The `pack.serviceDomain` parameter with default value `cluster.local` is not visible in the Kubernetes YAML file, and
+its value can only be changed at cluster creation. To change the value, you must add `serviceDomain: "cluster.local"` to
+the Kubernetes YAML file when you create a cluster, and specify the service domain you want to use.
+
+```yaml hideClipboard
+pack:
+  k8sHardening: True
+  podCIDR: "172.16.0.0/16"
+  serviceClusterIPRange: "10.96.0.0/12"
+  serviceDomain: "<your_cluster_DNS_service_domain>"
+```
+
+:::warning
+
+You can only specify the service domain at cluster creation. After cluster creation completes, you cannot update the
+value. Attempting to update it results in the error `serviceDomain update is forbidden for existing cluster`.
+
+:::
+
+For more information about networking configuration with DNS domains, refer to the Kubernetes
+[Networking](https://kubernetes.io/docs/reference/config-api/kubeadm-config.v1beta3/#kubeadm-k8s-io-v1beta3-Networking)
+API documentation.
+
+### Configuration Changes
+
+The PXK Kubeadm configuration is updated to dynamically enable OIDC based on your IDP selection by adding the
+`identityProvider` parameter.
+
+```yaml
+palette:
+  config:
+    dashboard:
+      identityProvider: <your_idp_selection>
+```
+
+### Example Kubeadm Configuration File
+
+```yaml hideClipboard
+pack:
+  k8sHardening: True
+  podCIDR: "192.168.0.0/16"
+  serviceClusterIpRange: "10.96.0.0/12"
+  palette:
+    config:
+      dashboard:
+        identityProvider: palette
+kubeadmconfig:
+  apiServer:
+    extraArgs:
+      secure-port: "6443"
+      anonymous-auth: "true"
+      profiling: "false"
+      disable-admission-plugins: "AlwaysAdmit"
+      default-not-ready-toleration-seconds: "60"
+      default-unreachable-toleration-seconds: "60"
+      enable-admission-plugins: "AlwaysPullImages,NamespaceLifecycle,ServiceAccount,NodeRestriction,PodSecurity"
+      admission-control-config-file: "/etc/kubernetes/pod-security-standard.yaml"
+      audit-log-path: /var/log/apiserver/audit.log
+      audit-policy-file: /etc/kubernetes/audit-policy.yaml
+      audit-log-maxage: "30"
+      audit-log-maxbackup: "10"
+      audit-log-maxsize: "100"
+      authorization-mode: RBAC,Node
+      tls-cipher-suites: "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256"
+    extraVolumes:
+      - name: audit-log
+        hostPath: /var/log/apiserver
+        mountPath: /var/log/apiserver
+        pathType: DirectoryOrCreate
+      - name: audit-policy
+        hostPath: /etc/kubernetes/audit-policy.yaml
+        mountPath: /etc/kubernetes/audit-policy.yaml
+        readOnly: true
+        pathType: File
+      - name: pod-security-standard
+        hostPath: /etc/kubernetes/pod-security-standard.yaml
+        mountPath: /etc/kubernetes/pod-security-standard.yaml
+        readOnly: true
+        pathType: File
+  controllerManager:
+    extraArgs:
+      profiling: "false"
+      terminated-pod-gc-threshold: "25"
+      pod-eviction-timeout: "1m0s"
+      use-service-account-credentials: "true"
+      feature-gates: "RotateKubeletServerCertificate=true"
+  scheduler:
+    extraArgs:
+      profiling: "false"
+  kubeletExtraArgs:
+    read-only-port: "0"
+    event-qps: "0"
+    feature-gates: "RotateKubeletServerCertificate=true"
+    protect-kernel-defaults: "true"
+    tls-cipher-suites: "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256"
+  files:
+    - path: hardening/audit-policy.yaml
+      targetPath: /etc/kubernetes/audit-policy.yaml
+      targetOwner: "root:root"
+      targetPermissions: "0600"
+    - path: hardening/90-kubelet.conf
+      targetPath: /etc/sysctl.d/90-kubelet.conf
+      targetOwner: "root:root"
+      targetPermissions: "0600"
+    - targetPath: /etc/kubernetes/pod-security-standard.yaml
+      targetOwner: "root:root"
+      targetPermissions: "0600"
+      content: |
+        apiVersion: apiserver.config.k8s.io/v1
+        kind: AdmissionConfiguration
+        plugins:
+        - name: PodSecurity
+          configuration:
+            apiVersion: pod-security.admission.config.k8s.io/v1
+            kind: PodSecurityConfiguration
+            defaults:
+              enforce: "baseline"
+              enforce-version: "v1.26"
+              audit: "baseline"
+              audit-version: "v1.26"
+              warn: "restricted"
+              warn-version: "v1.26"
+              audit: "restricted"
+              audit-version: "v1.26"
+            exemptions:
+              # Array of authenticated usernames to exempt.
+              usernames: []
+              # Array of runtime class names to exempt.
+              runtimeClasses: []
+              # Array of namespaces to exempt.
+              namespaces: [kube-system]
+
+    preKubeadmCommands:
+    - 'echo "====> Applying kernel parameters for Kubelet"'
+    - 'sysctl -p /etc/sysctl.d/90-kubelet.conf'
+    postKubeadmCommands:
+    - 'echo "List of post kubeadm commands to be executed"'
+
+    # Client configuration to add OIDC based authentication flags in kubeconfig
+    #clientConfig:
+    #oidc-issuer-url: "{{ .spectro.pack.kubernetes.kubeadmconfig.apiServer.extraArgs.oidc-issuer-url }}"
+    #oidc-client-id: "{{ .spectro.pack.kubernetes.kubeadmconfig.apiServer.extraArgs.oidc-client-id }}"
+    #oidc-client-secret: yourSecretClientSecretGoesHere
+    #oidc-extra-scope: profile,email
+```
+
+### Configure OIDC Identity Provider
+
+Platforms that use PXK can use the OIDC IDP feature, which offers the convenience of managing OIDC at the Kubernetes
+layer. The OIDC IDP feature is particularly useful for environments that do not have their own IDP configured. In this
+scenario, you can leverage Palette as an IDP without having to configure a third-party IDP. We also support the ability
+to take advantage of other OIDC providers by making it possible for you to configure OIDC at the tenant level. For
+additional flexibility, if you wish to use a different IDP than the one configured at the tenant level, you can select a
+different IDP by adding the OIDC configuration to your cluster profile.
+
+When you add the PXK pack to a cluster profile, Palette displays the OIDC IDP options listed below.
+
+All the options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes
+role to users and groups, refer to
+[Create Role Bindings](/clusters/cluster-management/cluster-rbac#create-role-bindings). You can also configure OIDC for
+virtual clusters. For guidance, refer to
+[Configure OIDC for a Virtual Cluster](../clusters/palette-virtual-clusters/configure-oidc-virtual-cluster.md).
+
+- **None**: This setting does not require OIDC configuration for the cluster. It displays in the YAML file as `noauth`.
+
+  :::warning
+
+  We do not recommend choosing **None** in a production environment, as it may disable authentication for add-ons that
+  rely on OIDC.
+
+  :::
+
+- **Custom**: This is the default setting and does not require OIDC configuration. However, if desired, it allows you to
+  specify a third-party OIDC provider by configuring OIDC statements in the YAML file as described in
+  [Configure Custom OIDC](#configure-custom-oidc). This setting displays in the YAML file as `none`.
+
+- **Palette**: This setting makes Palette the IDP. Any user with a Palette account in the tenant and the proper
+  permissions to view and access the project's resources is able to log into the Kubernetes dashboard. This setting
+  displays in the YAML file as `palette`.
+
+- **Inherit from Tenant**: This setting allows you to apply RBAC to multiple clusters and requires you to configure
+  OpenID Connect (OIDC) in **Tenant Settings**. In Tenant Admin scope, navigate to **Tenant Settings** > **SSO**, choose
+  **OIDC**, and provide your third-party IDP details. This setting displays in the YAML file as `tenant`. For more
+  information, check out the [SSO Setup](../user-management/saml-sso/saml-sso.md) guide.
+
+  :::info
+
+  If your IDP uses Security Assertion Markup Language (SAML) authentication, then the **Inherit from Tenant** option
+  will not work, and you will need to use the **Custom** option instead. This is because Kubernetes supports only OIDC
+  authentication and not SAML authentication.
+
+  :::
+
+### Configure Custom OIDC
+
+The custom method to configure OIDC and apply RBAC for an OIDC provider can be used for all cloud services except Amazon
+Elastic Kubernetes Service (EKS) and [Azure-AKS](../clusters/public-cloud/azure/aks.md).
+
+<Tabs>
+
+<TabItem label="Custom OIDC Setup" value="Custom OIDC Setup">
+
+Follow these steps to configure a third-party OIDC IDP. You can apply these steps to all the public cloud providers
+except Azure AKS and Amazon EKS clusters. Azure AKS and Amazon EKS require different configurations. AKS requires you to
+use Azure Active Directory (AAD) to enable OIDC integration. Refer to
+[Enable OIDC in Kubernetes Clusters With Entra ID](../user-management/saml-sso/palette-sso-with-entra-id.md#enable-oidc-in-kubernetes-clusters-with-entra-id)
+to learn more. Click the **Amazon EKS** tab for steps to configure OIDC for EKS clusters.
+
+1. Add the following parameters to your Kubernetes YAML file when creating a cluster profile.
+
+   ```yaml
+   kubeadmconfig:
+     apiServer:
+       extraArgs:
+       oidc-issuer-url: "provider URL"
+       oidc-client-id: "client-id"
+       oidc-groups-claim: "groups"
+       oidc-username-claim: "email"
+   ```
+
+2. Under the `clientConfig` parameter section of Kubernetes YAML file, uncomment the `oidc-` configuration lines.
+
+   ```yaml
+   kubeadmconfig:
+     clientConfig:
+       oidc-issuer-url: "<OIDC-ISSUER-URL>"
+       oidc-client-id: "<OIDC-CLIENT-ID>"
+       oidc-client-secret: "<OIDC-CLIENT-SECRET>"
+       oidc-extra-scope: profile,email,openid
+   ```
+
+</TabItem>
+
+<TabItem label="Amazon EKS" value="Amazon EKS Setup">
+
+Follow these steps to configure OIDC for managed EKS clusters.
+
+1. In the Kubernetes pack, uncomment the lines in the `oidcIdentityProvider` parameter section of the Kubernetes pack,
+   and enter your third-party provider details.
+
+   ```yaml
+   oidcIdentityProvider:
+     identityProviderConfigName: "Spectro-docs"
+     issuerUrl: "issuer-url"
+     clientId: "user-client-id-from-Palette"
+     usernameClaim: "email"
+     usernamePrefix: "-"
+     groupsClaim: "groups"
+     groupsPrefix: ""
+     requiredClaims:
+   ```
+
+2. Under the `clientConfig` parameter section of Kubernetes pack, uncomment the `oidc-` configuration lines.
+
+   ```yaml
+   clientConfig:
+     oidc-issuer-url: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.issuerUrl }}"
+     oidc-client-id: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.clientId }}"
+     oidc-client-secret: **************************************************
+     oidc-extra-scope: profile,email
+   ```
+
+3. Provide third-party OIDC IDP details.
+
+</TabItem>
+
+</Tabs>
+
+### Use RBAC with OIDC
+
+You can create a role binding that uses individual users as the subject or specify a group name as the subject to map
+many users to a role. The group name is the group assigned in the OIDC provider's configuration. Below is an example. To
+learn more, review [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings).
+
+Assume you created a group named `dev-east-2` within an OIDC provider. If you configure the host cluster's Kubernetes
+pack with all the correct OIDC settings, you could then create a role binding for the `dev-east-2` group.
+
+In this example, Palette is used as the IDP, and all users in the `dev-east-2` would inherit the `cluster-admin` role.
+
+![A subject of the type group is assigned as the subject in a RoleBinding](/clusters_cluster-management_cluster-rbac_cluster-subject-group.webp)
+
+### Custom API Server Endpoint for MAAS Clusters
+
+By default, Palette registers a DNS record in MAAS for the deployed cluster and links it to the IP addresses of the
+control plane nodes of the cluster. However, you may choose not to depend on MAAS for your cluster DNS record. The
+Kubernetes pack allows you to configure a custom API server endpoint for your cluster instead. This feature is only
+supported in Palette eXtended Kubernetes (PXK).
+
+:::warning
+
+The custom API server endpoint must exist before the cluster gets deployed. Otherwise, your cluster deployment will fail
+as components will not be able to connect to the cluster API endpoint.
+
+When you configure a custom endpoint, a DNS record will not be created in MAAS and the configured endpoint will be used
+instead. If you use this option, you are responsible for ensuring the Full Qualified Domain Name (FQDN) of the endpoint
+can be resolved by your DNS infrastructure and that it can connect to the API server port on your control plane nodes.
+
+:::
+
+The following snippet demonstrates how to specify a custom API server endpoint in the Kubernetes pack. Note that the
+`cloud.maas` section is at the same level as the `pack` section.
+
+```yaml hideClipboard {10-14}
+pack:
+  k8sHardening: True
+  podCIDR: "192.168.0.0/16"
+  serviceClusterIpRange: "10.96.0.0/12"
+
+cloud:
+  maas:
+    customEndpoint: "cluster-123.baremetal.company.com"
+    customEndpointPort: 6443
+```
+
+In order to prevent the need for per-cluster profile adjustments which can become difficult to maintain at scale, we
+recommend to use a system macro to automatically populate the cluster name. This approach allows the cluster profile to
+dynamically populate the endpoint name without requiring the user to do it manually. The following snippet demonstrates
+how to use macros for endpoint specification.
+
+```yaml hideClipboard {10-14}
+pack:
+  k8sHardening: True
+  podCIDR: "192.168.0.0/16"
+  serviceClusterIpRange: "10.96.0.0/12"
+
+cloud:
+  maas:
+    customEndpoint: "{{ .spectro.system.cluster.name }}.baremetal.company.com"
+    customEndpointPort: 6443
+```
+
+</TabItem>
+
+<TabItem label="1.28.x" value="k8s_v1.28">
+
+The Kubeadm configuration file is where you can do the following:
+
+- Change the default `podCIDR` and `serviceClusterIpRange` values. CIDR IPs specified in the configuration file take
+  precedence over other defined CIDR IPs in your environment.
+
+  As you build your cluster, check that the `podCIDR` value does not overlap with any hosts or with the service network
+  and the `serviceClusterIpRange` value does not overlap with any IP ranges assigned to nodes or pods. For more
+  information, refer to the [Clusters](../clusters/clusters.md) guide and
+  [Cluster Deployment Errors](../troubleshooting/cluster-deployment.md).
+
+- Change the default cluster DNS service domain from `cluster.local` to a DNS domain that you specify. You can only
+  change the DNS domain during cluster creation. For more information, refer to
+  [Change Cluster DNS Service Domain](kubernetes.md?versions=k8s_v1.27#change-cluster-dns-service-domain).
+
+- Manually configure a third-party OpenID Connect (OIDC) Identity Provider (IDP). For more information, check out
+  [Configure Custom OIDC](#configure-custom-oidc).
+
+- Add a certificate for the Spectro Proxy pack if you want to use a reverse proxy with a Kubernetes cluster. For more
+  information, refer to the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> guide.
+
+### Change Cluster DNS Service Domain
+
+The `pack.serviceDomain` parameter with default value `cluster.local` is not visible in the Kubernetes YAML file, and
+its value can only be changed at cluster creation. To change the value, you must add `serviceDomain: "cluster.local"` to
+the Kubernetes YAML file when you create a cluster, and specify the service domain you want to use.
+
+```yaml hideClipboard
+pack:
+  k8sHardening: True
+  podCIDR: "172.16.0.0/16"
+  serviceClusterIPRange: "10.96.0.0/12"
+  serviceDomain: "<your_cluster_DNS_service_domain>"
+```
+
+:::warning
+
+You can only specify the service domain at cluster creation. After cluster creation completes, you cannot update the
+value. Attempting to update it results in the error `serviceDomain update is forbidden for existing cluster`.
+
+:::
+
+For more information about networking configuration with DNS domains, refer to the Kubernetes
+[Networking](https://kubernetes.io/docs/reference/config-api/kubeadm-config.v1beta3/#kubeadm-k8s-io-v1beta3-Networking)
+API documentation.
+
+### Configuration Changes
+
+The PXK Kubeadm configuration is updated to dynamically enable OIDC based on your IDP selection by adding the
+`identityProvider` parameter.
+
+```yaml
+palette:
+  config:
+    dashboard:
+      identityProvider: <your_idp_selection>
+```
+
+### Example Kubeadm Configuration File
+
+```yaml hideClipboard
+pack:
+  k8sHardening: True
+  podCIDR: "192.168.0.0/16"
+  serviceClusterIpRange: "10.96.0.0/12"
+  palette:
+    config:
+      dashboard:
+        identityProvider: palette
+kubeadmconfig:
+  apiServer:
+    extraArgs:
+      secure-port: "6443"
+      anonymous-auth: "true"
+      profiling: "false"
+      disable-admission-plugins: "AlwaysAdmit"
+      default-not-ready-toleration-seconds: "60"
+      default-unreachable-toleration-seconds: "60"
+      enable-admission-plugins: "AlwaysPullImages,NamespaceLifecycle,ServiceAccount,NodeRestriction,PodSecurity"
+      admission-control-config-file: "/etc/kubernetes/pod-security-standard.yaml"
+      audit-log-path: /var/log/apiserver/audit.log
+      audit-policy-file: /etc/kubernetes/audit-policy.yaml
+      audit-log-maxage: "30"
+      audit-log-maxbackup: "10"
+      audit-log-maxsize: "100"
+      authorization-mode: RBAC,Node
+      tls-cipher-suites: "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256"
+    extraVolumes:
+      - name: audit-log
+        hostPath: /var/log/apiserver
+        mountPath: /var/log/apiserver
+        pathType: DirectoryOrCreate
+      - name: audit-policy
+        hostPath: /etc/kubernetes/audit-policy.yaml
+        mountPath: /etc/kubernetes/audit-policy.yaml
+        readOnly: true
+        pathType: File
+      - name: pod-security-standard
+        hostPath: /etc/kubernetes/pod-security-standard.yaml
+        mountPath: /etc/kubernetes/pod-security-standard.yaml
+        readOnly: true
+        pathType: File
+  controllerManager:
+    extraArgs:
+      profiling: "false"
+      terminated-pod-gc-threshold: "25"
+      pod-eviction-timeout: "1m0s"
+      use-service-account-credentials: "true"
+      feature-gates: "RotateKubeletServerCertificate=true"
+  scheduler:
+    extraArgs:
+      profiling: "false"
+  kubeletExtraArgs:
+    read-only-port: "0"
+    event-qps: "0"
+    feature-gates: "RotateKubeletServerCertificate=true"
+    protect-kernel-defaults: "true"
+    tls-cipher-suites: "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256"
+  files:
+    - path: hardening/audit-policy.yaml
+      targetPath: /etc/kubernetes/audit-policy.yaml
+      targetOwner: "root:root"
+      targetPermissions: "0600"
+    - path: hardening/90-kubelet.conf
+      targetPath: /etc/sysctl.d/90-kubelet.conf
+      targetOwner: "root:root"
+      targetPermissions: "0600"
+    - targetPath: /etc/kubernetes/pod-security-standard.yaml
+      targetOwner: "root:root"
+      targetPermissions: "0600"
+      content: |
+        apiVersion: apiserver.config.k8s.io/v1
+        kind: AdmissionConfiguration
+        plugins:
+        - name: PodSecurity
+          configuration:
+            apiVersion: pod-security.admission.config.k8s.io/v1
+            kind: PodSecurityConfiguration
+            defaults:
+              enforce: "baseline"
+              enforce-version: "v1.26"
+              audit: "baseline"
+              audit-version: "v1.26"
+              warn: "restricted"
+              warn-version: "v1.26"
+              audit: "restricted"
+              audit-version: "v1.26"
+            exemptions:
+              # Array of authenticated usernames to exempt.
+              usernames: []
+              # Array of runtime class names to exempt.
+              runtimeClasses: []
+              # Array of namespaces to exempt.
+              namespaces: [kube-system]
+
+    preKubeadmCommands:
+    - 'echo "====> Applying kernel parameters for Kubelet"'
+    - 'sysctl -p /etc/sysctl.d/90-kubelet.conf'
+    postKubeadmCommands:
+    - 'echo "List of post kubeadm commands to be executed"'
+
+    # Client configuration to add OIDC based authentication flags in kubeconfig
+    #clientConfig:
+    #oidc-issuer-url: "{{ .spectro.pack.kubernetes.kubeadmconfig.apiServer.extraArgs.oidc-issuer-url }}"
+    #oidc-client-id: "{{ .spectro.pack.kubernetes.kubeadmconfig.apiServer.extraArgs.oidc-client-id }}"
+    #oidc-client-secret: yourSecretClientSecretGoesHere
+    #oidc-extra-scope: profile,email
+```
+
+### Configure OIDC Identity Provider
+
+Platforms that use PXK can use the OIDC IDP feature, which offers the convenience of managing OIDC at the Kubernetes
+layer. The OIDC IDP feature is particularly useful for environments that do not have their own IDP configured. In this
+scenario, you can leverage Palette as an IDP without having to configure a third-party IDP. We also support the ability
+to take advantage of other OIDC providers by making it possible for you to configure OIDC at the tenant level. For
+additional flexibility, if you wish to use a different IDP than the one configured at the tenant level, you can select a
+different IDP by adding the OIDC configuration to your cluster profile.
+
+When you add the PXK pack to a cluster profile, Palette displays the OIDC IDP options listed below.
+
+All the options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes
+role to users and groups, refer to
+[Create Role Bindings](/clusters/cluster-management/cluster-rbac#create-role-bindings). You can also configure OIDC for
+virtual clusters. For guidance, refer to
+[Configure OIDC for a Virtual Cluster](../clusters/palette-virtual-clusters/configure-oidc-virtual-cluster.md).
+
+- **None**: This setting does not require OIDC configuration for the cluster. It displays in the YAML file as `noauth`.
+
+  :::warning
+
+  We do not recommend choosing **None** in a production environment, as it may disable authentication for add-ons that
+  rely on OIDC.
+
+  :::
+
+- **Custom**: This is the default setting and does not require OIDC configuration. However, if desired, it allows you to
+  specify a third-party OIDC provider by configuring OIDC statements in the YAML file as described in
+  [Configure Custom OIDC](#configure-custom-oidc). This setting displays in the YAML file as `none`.
+
+- **Palette**: This setting makes Palette the IDP. Any user with a Palette account in the tenant and the proper
+  permissions to view and access the project's resources is able to log into the Kubernetes dashboard. This setting
+  displays in the YAML file as `palette`.
+
+- **Inherit from Tenant**: This setting allows you to apply RBAC to multiple clusters and requires you to configure
+  OpenID Connect (OIDC) in **Tenant Settings**. In Tenant Admin scope, navigate to **Tenant Settings** > **SSO**, choose
+  **OIDC**, and provide your third-party IDP details. This setting displays in the YAML file as `tenant`. For more
+  information, check out the [SSO Setup](../user-management/saml-sso/saml-sso.md) guide.
+
+  :::info
+
+  If your IDP uses Security Assertion Markup Language (SAML) authentication, then the **Inherit from Tenant** option
+  will not work, and you will need to use the **Custom** option instead. This is because Kubernetes supports only OIDC
+  authentication and not SAML authentication.
+
+  :::
+
+### Configure Custom OIDC
+
+The custom method to configure OIDC and apply RBAC for an OIDC provider can be used for all cloud services except Amazon
+Elastic Kubernetes Service (EKS) and [Azure-AKS](../clusters/public-cloud/azure/aks.md).
+
+<Tabs>
+
+<TabItem label="Custom OIDC Setup" value="Custom OIDC Setup">
+
+Follow these steps to configure a third-party OIDC IDP. You can apply these steps to all the public cloud providers
+except Azure AKS and Amazon EKS clusters. Azure AKS and Amazon EKS require different configurations. AKS requires you to
+use Azure Active Directory (AAD) to enable OIDC integration. Refer to
+[Enable OIDC in Kubernetes Clusters With Entra ID](../user-management/saml-sso/palette-sso-with-entra-id.md#enable-oidc-in-kubernetes-clusters-with-entra-id)
+to learn more. Click the **Amazon EKS** tab for steps to configure OIDC for EKS clusters.
+
+1. Add the following parameters to your Kubernetes YAML file when creating a cluster profile.
+
+   ```yaml
+   kubeadmconfig:
+     apiServer:
+       extraArgs:
+       oidc-issuer-url: "provider URL"
+       oidc-client-id: "client-id"
+       oidc-groups-claim: "groups"
+       oidc-username-claim: "email"
+   ```
+
+2. Under the `clientConfig` parameter section of Kubernetes YAML file, uncomment the `oidc-` configuration lines.
+
+   ```yaml
+   kubeadmconfig:
+     clientConfig:
+       oidc-issuer-url: "<OIDC-ISSUER-URL>"
+       oidc-client-id: "<OIDC-CLIENT-ID>"
+       oidc-client-secret: "<OIDC-CLIENT-SECRET>"
+       oidc-extra-scope: profile,email,openid
+   ```
+
+</TabItem>
+
+<TabItem label="Amazon EKS" value="Amazon EKS Setup">
+
+Follow these steps to configure OIDC for managed EKS clusters.
+
+1. In the Kubernetes pack, uncomment the lines in the `oidcIdentityProvider` parameter section of the Kubernetes pack,
+   and enter your third-party provider details.
+
+   ```yaml
+   oidcIdentityProvider:
+     identityProviderConfigName: "Spectro-docs"
+     issuerUrl: "issuer-url"
+     clientId: "user-client-id-from-Palette"
+     usernameClaim: "email"
+     usernamePrefix: "-"
+     groupsClaim: "groups"
+     groupsPrefix: ""
+     requiredClaims:
+   ```
+
+2. Under the `clientConfig` parameter section of Kubernetes pack, uncomment the `oidc-` configuration lines.
+
+   ```yaml
+   clientConfig:
+     oidc-issuer-url: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.issuerUrl }}"
+     oidc-client-id: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.clientId }}"
+     oidc-client-secret: **************************************************
+     oidc-extra-scope: profile,email
+   ```
+
+3. Provide third-party OIDC IDP details.
+
+</TabItem>
+
+</Tabs>
+
+### Use RBAC with OIDC
+
+You can create a role binding that uses individual users as the subject or specify a group name as the subject to map
+many users to a role. The group name is the group assigned in the OIDC provider's configuration. Below is an example. To
+learn more, review [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings).
+
+Assume you created a group named `dev-east-2` within an OIDC provider. If you configure the host cluster's Kubernetes
+pack with all the correct OIDC settings, you could then create a role binding for the `dev-east-2` group.
+
+In this example, Palette is used as the IDP, and all users in the `dev-east-2` would inherit the `cluster-admin` role.
+
+![A subject of the type group is assigned as the subject in a RoleBinding](/clusters_cluster-management_cluster-rbac_cluster-subject-group.webp)
+
+### Custom API Server Endpoint for MAAS Clusters
+
+By default, Palette registers a DNS record in MAAS for the deployed cluster and links it to the IP addresses of the
+control plane nodes of the cluster. However, you may choose not to depend on MAAS for your cluster DNS record. The
+Kubernetes pack allows you configure a custom API server endpoint for your cluster instead. This feature is only
+supported in Palette eXtended Kubernetes (PXK).
+
+:::warning
+
+The custom API server endpoint must exist before the cluster gets deployed. Otherwise, your cluster deployment will fail
+as components will not be able to connect to the cluster API endpoint.
+
+When you configure a custom endpoint, a DNS record will not be created in MAAS and the configured endpoint will be used
+instead. If you use this option, you are responsible for ensuring the Full Qualified Domain Name (FQDN) of the endpoint
+can be resolved by your DNS infrastructure and that it can connect to the API server port on your control plane nodes.
+
+:::
+
+The following snippet demonstrates how to specify a custom API server endpoint in the Kubernetes pack. Note that the
+`cloud.maas` section is at the same level as the `pack` section.
+
+```yaml hideClipboard {10-14}
+pack:
+  k8sHardening: True
+  podCIDR: "192.168.0.0/16"
+  serviceClusterIpRange: "10.96.0.0/12"
+
+cloud:
+  maas:
+    customEndpoint: "cluster-123.baremetal.company.com"
+    customEndpointPort: 6443
+```
+
+In order to prevent the need for per-cluster profile adjustments which can become difficult to maintain at scale, we
+recommend to use a system macro to automatically populate the cluster name. This approach allows the cluster profile to
+dynamically populate the endpoint name without requiring the user to do it manually. The following snippet demonstrates
+how to use macros for endpoint specification.
+
+```yaml hideClipboard {10-14}
+pack:
+  k8sHardening: True
+  podCIDR: "192.168.0.0/16"
+  serviceClusterIpRange: "10.96.0.0/12"
+
+cloud:
+  maas:
+    customEndpoint: "{{ .spectro.system.cluster.name }}.baremetal.company.com"
+    customEndpointPort: 6443
+```
+
+</TabItem>
+
+<TabItem label="1.27.x" value="k8s_v1.27">
+
+The Kubeadm configuration file is where you can do the following:
+
+- Change the default `podCIDR` and `serviceClusterIpRange` values. CIDR IPs specified in the configuration file take
+  precedence over other defined CIDR IPs in your environment.
+
+  As you build your cluster, check that the `podCIDR` value does not overlap with any hosts or with the service network
+  and the `serviceClusterIpRange` value does not overlap with any IP ranges assigned to nodes or pods. For more
+  information, refer to the [Clusters](../clusters/clusters.md) guide and
+  [Cluster Deployment Errors](../troubleshooting/cluster-deployment.md).
+
+- Change the default cluster DNS service domain from `cluster.local` to a DNS domain that you specify. You can only
+  change the DNS domain during cluster creation. For more information, refer to
+  [Change Cluster DNS Service Domain](kubernetes.md?versions=k8s_v1.27#change-cluster-dns-service-domain).
+
+- Manually configure a third-party OpenID Connect (OIDC) Identity Provider (IDP). For more information, check out
+  [Configure Custom OIDC](#configure-custom-oidc).
+
+- Add a certificate for the Spectro Proxy pack if you want to use a reverse proxy with a Kubernetes cluster. For more
+  information, refer to the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> guide.
+
+### Change Cluster DNS Service Domain
+
+The `pack.serviceDomain` parameter with default value `cluster.local` is not visible in the Kubernetes YAML file, and
+its value can only be changed at cluster creation. To change the value, you must add `serviceDomain: "cluster.local"` to
+the Kubernetes YAML file when you create a cluster, and specify the service domain you want to use.
+
+```yaml hideClipboard
+pack:
+  k8sHardening: True
+  podCIDR: "172.16.0.0/16"
+  serviceClusterIPRange: "10.96.0.0/12"
+  serviceDomain: "<your_cluster_DNS_service_domain>"
+```
+
+:::warning
+
+You can only specify the service domain at cluster creation. After cluster creation completes, you cannot update the
+value. Attempting to update it results in the error `serviceDomain update is forbidden for existing cluster`.
+
+:::
+
+For more information about networking configuration with DNS domains, refer to the Kubernetes
+[Networking](https://kubernetes.io/docs/reference/config-api/kubeadm-config.v1beta3/#kubeadm-k8s-io-v1beta3-Networking)
+API documentation.
+
+### Configuration Changes
+
+The PXK Kubeadm configuration is updated to dynamically enable OIDC based on your IDP selection by adding the
+`identityProvider` parameter.
+
+```yaml
+palette:
+  config:
+    dashboard:
+      identityProvider: <your_idp_selection>
+```
+
+### Example Kubeadm Configuration File
+
+```yaml hideClipboard
+pack:
+  k8sHardening: True
+  podCIDR: "192.168.0.0/16"
+  serviceClusterIpRange: "10.96.0.0/12"
+  palette:
+    config:
+      dashboard:
+        identityProvider: palette
+kubeadmconfig:
+  apiServer:
+    extraArgs:
+      secure-port: "6443"
+      anonymous-auth: "true"
+      profiling: "false"
+      disable-admission-plugins: "AlwaysAdmit"
+      default-not-ready-toleration-seconds: "60"
+      default-unreachable-toleration-seconds: "60"
+      enable-admission-plugins: "AlwaysPullImages,NamespaceLifecycle,ServiceAccount,NodeRestriction,PodSecurity"
+      admission-control-config-file: "/etc/kubernetes/pod-security-standard.yaml"
+      audit-log-path: /var/log/apiserver/audit.log
+      audit-policy-file: /etc/kubernetes/audit-policy.yaml
+      audit-log-maxage: "30"
+      audit-log-maxbackup: "10"
+      audit-log-maxsize: "100"
+      authorization-mode: RBAC,Node
+      tls-cipher-suites: "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256"
+    extraVolumes:
+      - name: audit-log
+        hostPath: /var/log/apiserver
+        mountPath: /var/log/apiserver
+        pathType: DirectoryOrCreate
+      - name: audit-policy
+        hostPath: /etc/kubernetes/audit-policy.yaml
+        mountPath: /etc/kubernetes/audit-policy.yaml
+        readOnly: true
+        pathType: File
+      - name: pod-security-standard
+        hostPath: /etc/kubernetes/pod-security-standard.yaml
+        mountPath: /etc/kubernetes/pod-security-standard.yaml
+        readOnly: true
+        pathType: File
+  controllerManager:
+    extraArgs:
+      profiling: "false"
+      terminated-pod-gc-threshold: "25"
+      pod-eviction-timeout: "1m0s"
+      use-service-account-credentials: "true"
+      feature-gates: "RotateKubeletServerCertificate=true"
+  scheduler:
+    extraArgs:
+      profiling: "false"
+  kubeletExtraArgs:
+    read-only-port: "0"
+    event-qps: "0"
+    feature-gates: "RotateKubeletServerCertificate=true"
+    protect-kernel-defaults: "true"
+    tls-cipher-suites: "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256"
+  files:
+    - path: hardening/audit-policy.yaml
+      targetPath: /etc/kubernetes/audit-policy.yaml
+      targetOwner: "root:root"
+      targetPermissions: "0600"
+    - path: hardening/90-kubelet.conf
+      targetPath: /etc/sysctl.d/90-kubelet.conf
+      targetOwner: "root:root"
+      targetPermissions: "0600"
+    - targetPath: /etc/kubernetes/pod-security-standard.yaml
+      targetOwner: "root:root"
+      targetPermissions: "0600"
+      content: |
+        apiVersion: apiserver.config.k8s.io/v1
+        kind: AdmissionConfiguration
+        plugins:
+        - name: PodSecurity
+          configuration:
+            apiVersion: pod-security.admission.config.k8s.io/v1
+            kind: PodSecurityConfiguration
+            defaults:
+              enforce: "baseline"
+              enforce-version: "v1.26"
+              audit: "baseline"
+              audit-version: "v1.26"
+              warn: "restricted"
+              warn-version: "v1.26"
+              audit: "restricted"
+              audit-version: "v1.26"
+            exemptions:
+              # Array of authenticated usernames to exempt.
+              usernames: []
+              # Array of runtime class names to exempt.
+              runtimeClasses: []
+              # Array of namespaces to exempt.
+              namespaces: [kube-system]
+
+    preKubeadmCommands:
+    - 'echo "====> Applying kernel parameters for Kubelet"'
+    - 'sysctl -p /etc/sysctl.d/90-kubelet.conf'
+    postKubeadmCommands:
+    - 'echo "List of post kubeadm commands to be executed"'
+
+    # Client configuration to add OIDC based authentication flags in kubeconfig
+    #clientConfig:
+    #oidc-issuer-url: "{{ .spectro.pack.kubernetes.kubeadmconfig.apiServer.extraArgs.oidc-issuer-url }}"
+    #oidc-client-id: "{{ .spectro.pack.kubernetes.kubeadmconfig.apiServer.extraArgs.oidc-client-id }}"
+    #oidc-client-secret: yourSecretClientSecretGoesHere
+    #oidc-extra-scope: profile,email
+```
+
+### Configure OIDC Identity Provider
+
+Platforms that use PXK can use the OIDC IDP feature, which offers the convenience of managing OIDC at the Kubernetes
+layer. The OIDC IDP feature is particularly useful for environments that do not have their own IDP configured. In this
+scenario, you can leverage Palette as an IDP without having to configure a third-party IDP. We also support the ability
+to take advantage of other OIDC providers by making it possible for you to configure OIDC at the tenant level. For
+additional flexibility, if you wish to use a different IDP than the one configured at the tenant level, you can select a
+different IDP by adding the OIDC configuration to your cluster profile.
+
+When you add the PXK pack to a cluster profile, Palette displays the OIDC IDP options listed below.
+
+All the options require you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes
+role to users and groups, refer to
+[Create Role Bindings](/clusters/cluster-management/cluster-rbac#create-role-bindings). You can also configure OIDC for
+virtual clusters. For guidance, refer to
+[Configure OIDC for a Virtual Cluster](../clusters/palette-virtual-clusters/configure-oidc-virtual-cluster.md).
+
+- **None**: This setting does not require OIDC configuration for the cluster. It displays in the YAML file as `noauth`.
+
+  :::warning
+
+  We do not recommend choosing **None** in a production environment, as it may disable authentication for add-ons that
+  rely on OIDC.
+
+  :::
+
+- **Custom**: This is the default setting and does not require OIDC configuration. However, if desired, it allows you to
+  specify a third-party OIDC provider by configuring OIDC statements in the YAML file as described in
+  [Configure Custom OIDC](#configure-custom-oidc). This setting displays in the YAML file as `none`.
+
+- **Palette**: This setting makes Palette the IDP. Any user with a Palette account in the tenant and the proper
+  permissions to view and access the project's resources is able to log into the Kubernetes dashboard. This setting
+  displays in the YAML file as `palette`.
+
+- **Inherit from Tenant**: This setting allows you to apply RBAC to multiple clusters and requires you to configure
+  OpenID Connect (OIDC) in **Tenant Settings**. In Tenant Admin scope, navigate to **Tenant Settings** > **SSO**, choose
+  **OIDC**, and provide your third-party IDP details. This setting displays in the YAML file as `tenant`. For more
+  information, check out the [SSO Setup](../user-management/saml-sso/saml-sso.md) guide.
+
+  :::info
+
+  If your IDP uses Security Assertion Markup Language (SAML) authentication, then the **Inherit from Tenant** option
+  will not work, and you will need to use the **Custom** option instead. This is because Kubernetes supports only OIDC
+  authentication and not SAML authentication.
+
+  :::
+
+### Configure Custom OIDC
+
+The custom method to configure OIDC and apply RBAC for an OIDC provider can be used for all cloud services except Amazon
+Elastic Kubernetes Service (EKS) and [Azure-AKS](../clusters/public-cloud/azure/aks.md).
+
+<Tabs>
+
+<TabItem label="Custom OIDC Setup" value="Custom OIDC Setup">
+
+Follow these steps to configure a third-party OIDC IDP. You can apply these steps to all the public cloud providers
+except Azure AKS and Amazon EKS clusters. Azure AKS and Amazon EKS require different configurations. AKS requires you to
+use Azure Active Directory (AAD) to enable OIDC integration. Refer to
+[Enable OIDC in Kubernetes Clusters With Entra ID](../user-management/saml-sso/palette-sso-with-entra-id.md#enable-oidc-in-kubernetes-clusters-with-entra-id)
+to learn more. Click the **Amazon EKS** tab for steps to configure OIDC for EKS clusters.
+
+1. Add the following parameters to your Kubernetes YAML file when creating a cluster profile.
+
+   ```yaml
+   kubeadmconfig:
+     apiServer:
+       extraArgs:
+       oidc-issuer-url: "provider URL"
+       oidc-client-id: "client-id"
+       oidc-groups-claim: "groups"
+       oidc-username-claim: "email"
+   ```
+
+2. Under the `clientConfig` parameter section of Kubernetes YAML file, uncomment the `oidc-` configuration lines.
+
+   ```yaml
+   kubeadmconfig:
+     clientConfig:
+       oidc-issuer-url: "<OIDC-ISSUER-URL>"
+       oidc-client-id: "<OIDC-CLIENT-ID>"
+       oidc-client-secret: "<OIDC-CLIENT-SECRET>"
+       oidc-extra-scope: profile,email,openid
+   ```
+
+</TabItem>
+
+<TabItem label="Amazon EKS" value="Amazon EKS Setup">
+
+Follow these steps to configure OIDC for managed EKS clusters.
+
+1. In the Kubernetes pack, uncomment the lines in the `oidcIdentityProvider` parameter section of the Kubernetes pack,
+   and enter your third-party provider details.
+
+   ```yaml
+   oidcIdentityProvider:
+     identityProviderConfigName: "Spectro-docs"
+     issuerUrl: "issuer-url"
+     clientId: "user-client-id-from-Palette"
+     usernameClaim: "email"
+     usernamePrefix: "-"
+     groupsClaim: "groups"
+     groupsPrefix: ""
+     requiredClaims:
+   ```
+
+2. Under the `clientConfig` parameter section of Kubernetes pack, uncomment the `oidc-` configuration lines.
+
+   ```yaml
+   clientConfig:
+     oidc-issuer-url: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.issuerUrl }}"
+     oidc-client-id: "{{ .spectro.pack.kubernetes-eks.managedControlPlane.oidcIdentityProvider.clientId }}"
+     oidc-client-secret: **************************************************
+     oidc-extra-scope: profile,email
+   ```
+
+3. Provide third-party OIDC IDP details.
+
+</TabItem>
+
+</Tabs>
+
+### Use RBAC with OIDC
+
+You can create a role binding that uses individual users as the subject or specify a group name as the subject to map
+many users to a role. The group name is the group assigned in the OIDC provider's configuration. Below is an example. To
+learn more, review [Create Role Bindings](../clusters/cluster-management/cluster-rbac.md#create-role-bindings).
+
+Assume you created a group named `dev-east-2` within an OIDC provider. If you configure the host cluster's Kubernetes
+pack with all the correct OIDC settings, you could then create a role binding for the `dev-east-2` group.
+
+In this example, Palette is used as the IDP, and all users in the `dev-east-2` would inherit the `cluster-admin` role.
+
+![A subject of the type group is assigned as the subject in a RoleBinding](/clusters_cluster-management_cluster-rbac_cluster-subject-group.webp)
+
+</TabItem>
+</Tabs>
+
+## Terraform
+
+You can reference Kubernetes in Terraform with the following code snippet.
+
+```hcl
+data "spectrocloud_registry" "public_registry" {
+  name = "Public Repo"
+}
+
+data "spectrocloud_pack_simple" "k8s" {
+  name    = "kubernetes"
+  version = "1.29.4"
+  type = "helm"
+  registry_uid = data.spectrocloud_registry.public_registry.id
+}
+```
