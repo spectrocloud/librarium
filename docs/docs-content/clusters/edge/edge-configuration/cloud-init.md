@@ -302,6 +302,7 @@ stages:
           groups:
             - sudo
           passwd: kairos
+      name: Create user and assign to sudo group
 ```
 
 #### Custom Commands
