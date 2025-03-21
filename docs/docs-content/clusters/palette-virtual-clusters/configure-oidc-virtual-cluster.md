@@ -104,14 +104,18 @@ virtual cluster.
 12. Create the proper Kubernetes _roles_ and _roleBindings_ required to map the OIDC users with a Kubernetes role. Refer
     to the [Create Role Bindings](../cluster-management/cluster-rbac.md#create-role-bindings) for additional guidance.
 
+<!-- prettier-ignore-start -->
+
 :::warning
 
 Configuring OIDC requires you to map a set of users or groups to a Kubernetes RBAC role. To learn how to map a
 Kubernetes role to users and groups, refer to
-[Create Role Bindings](../cluster-management/cluster-rbac.md#create-role-bindings). Refer to
-[Use RBAC with OIDC](../../integrations/kubernetes.md#use-rbac-with-oidc) for an example.
+[Create Role Bindings](../cluster-management/cluster-rbac.md#create-role-bindings). Refer to the
+<VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" /> pack additional details for an example.
 
 :::
+
+<!-- prettier-ignore-end -->
 
 ## Validate
 

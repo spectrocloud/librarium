@@ -77,9 +77,9 @@ explains how you can create an Azure AKS cluster managed by Palette.
 7.  Palette displays the cluster profile layers. Review the profile layers and customize parameters as desired in the
     YAML editor that displays when you click on **Values** after selecting a layer.
 
-    You can configure custom OpenID Connect (OIDC) for Azure clusters at the Kubernetes layer. Check out
-    [Configure OIDC Identity Provider](../../../integrations/kubernetes.md#configure-oidc-identity-provider) for more
-    information.
+    You can configure custom OpenID Connect (OIDC) for Azure clusters at the Kubernetes layer. Check out the
+    <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" />
+    pack additional details) for more information.
 
     :::warning
 
@@ -276,8 +276,9 @@ explains how you can create an Azure AKS cluster managed by Palette.
 
 20. If you're using custom OIDC, configure the Role-Based Access Control (RBAC). You must map a set of users or groups
     to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to
-    [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings). Refer to
-    [Use RBAC with OIDC](../../../integrations/kubernetes.md#use-rbac-with-oidc) for an example.
+    [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings). Refer to the
+    <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" />
+    pack additional details for an example.
 
 21. Click **Validate** and review the cluster configuration and settings summary.
 
@@ -309,7 +310,11 @@ refer to [Cluster Removal](../../cluster-management/remove-clusters.md).
 
 - [Azure Storage](../azure/architecture.md#azure-storage)
 
-- [Configure OIDC Identity Provider](../../../integrations/kubernetes.md#configure-oidc-identity-provider)
+<!-- prettier-ignore-start -->
+
+- <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" /> pack
+
+<!-- prettier-ignore-end -->
 
 - [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings)
 

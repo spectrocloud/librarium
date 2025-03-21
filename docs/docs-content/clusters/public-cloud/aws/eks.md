@@ -202,10 +202,13 @@ an AWS account. This section guides you on how to create an EKS cluster in AWS t
 15. Schedule any backups you want Palette to perform. Review
     [Backup and Restore](../../cluster-management/backup-restore/backup-restore.md) for more information.
 
+<!-- prettier-ignore-start -->
+
 16. RBAC configuration is required when you configure custom OIDC. You must map a set of users or groups to a Kubernetes
     RBAC role. To learn how to map a Kubernetes role to users and groups, refer to
-    [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings). Refer to
-    [Use RBAC with OIDC](../../../integrations/kubernetes.md#use-rbac-with-oidc) for an example.
+    [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings). Refer to the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" /> pack additional details for an example.
+
+<!-- prettier-ignore-end -->
 
 17. Click **Validate** and review the cluster configuration and settings summary.
 

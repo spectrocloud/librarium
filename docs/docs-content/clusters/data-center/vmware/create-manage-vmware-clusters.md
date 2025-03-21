@@ -189,10 +189,14 @@ Before you begin, ensure that you have the following prerequisites:
 
     #### RBAC Configuration
 
+<!-- prettier-ignore-start -->
+
     RBAC configuration is required when you configure custom OIDC. You must map a set of users or groups to a Kubernetes
     RBAC role. To learn how to map a Kubernetes role to users and groups, refer to
-    [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings). Refer to
-    [Use RBAC with OIDC](../../../integrations/kubernetes.md#use-rbac-with-oidc) for an example.
+    [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings). Refer to the
+    <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" /> pack additional details for an example.
+
+<!-- prettier-ignore-end -->
 
     #### Location
 

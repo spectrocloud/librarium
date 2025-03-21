@@ -6,14 +6,27 @@
 directory="docs/docs-content/integrations"
 
 # Find all .md files and rename them to .mdx
+# List of file names to exclude
+exclude_files=(
+    "maintenance-policy.md"
+    "kubernetes-support.md"
+    "verified-packs.md"
+    "community_packs.md"
+    "deprecated-packs.md"
+) 
+
+# Find all .md files and rename them to .mdx, excluding specified files
 find "$directory" -type f -name "*.md" | while read -r file; do
-    mv "$file" "${file%.md}.mdx"
+    filename=$(basename "$file")
+    if [[ ! " ${exclude_files[@]} " =~ " ${filename} " ]]; then
+        mv "$file" "${file%.md}.mdx"
+    fi
 done
 
-# Insert the file name after the last line that contains ---
+# Insert the file name after the second line that contains ---
 find "$directory" -type f -name "*.mdx" | while read -r file; do
-    awk -v redirect="\nimport {Redirect} from \"@docusaurus/router\";\n<Redirect to=\"/integrations/packs/?pack=${file%.mdx}\" />" '
-    /---/ { last = NR; lastline = $0 }
+    awk -v redirect="\n<RedirectPackPage packName=\"$(basename "${file%.mdx}")\" />" '
+    /---/ { count++; if (count == 2) { last = NR; lastline = $0 } }
     { lines[NR] = $0 }
     END {
         for (i = 1; i <= NR; i++) {
