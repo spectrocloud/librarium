@@ -164,7 +164,6 @@ have any questions or concerns, contact us at support@spectrocloud.com
 | go-runewidth                                     | [MIT](https://opensource.org/license/mit/)                                |
 | go-spew                                          | [ISC](https://opensource.org/license/isc-license-txt)                     |
 | go-wildcard                                      | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
-| go-yaml                                          | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | go.mongodb.org/mongo-driver                      | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | go.uuid                                          | [MIT](https://opensource.org/license/mit/)                                |
 | goautoneg                                        | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)               |
@@ -311,7 +310,8 @@ have any questions or concerns, contact us at support@spectrocloud.com
 | viper                                            | [MIT](https://opensource.org/license/mit/)                                |
 | websocket                                        | [BSD-2-Clause](https://opensource.org/license/bsd-2-clause)               |
 | xerrors                                          | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)               |
-| yaml                                             | [LGPL-3.0](https://www.gnu.org/licenses/lgpl-3.0.en.html)                 |
+| yaml                                             | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
+| yaml.v1                                          | [LGPL-3.0](https://www.gnu.org/licenses/lgpl-3.0.en.html)                 |
 | yaml.v2                                          | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | yaml.v3                                          | [MIT](https://opensource.org/license/mit/)                                |
 | yip                                              | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
