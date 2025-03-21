@@ -11,6 +11,187 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## March 20, 2025 - Release 4.6.13
+
+### Bug Fixes
+
+- Fixed an issue where [AWS EKS](../clusters/public-cloud/aws/eks.md) clusters using the AWS VPC CNI (Helm)
+  [pack](../integrations/integrations.mdx) assigned incorrect IP addresses to pods.
+- Fixed an issue where OIDC configuration failed when using
+  [Microsoft Entra ID](../user-management/saml-sso/palette-sso-with-entra-id.md).
+
+### Automation
+
+#### Features
+
+- Terraform version 0.23.2 of the
+  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
+  available. For more details, refer to the Terraform provider
+  [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
+- Crossplane version 0.23.2 of the
+  [Palette Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette/) is
+  available. For more details, refer to the Crossplane provider
+  [release page](https://github.com/crossplane-contrib/provider-palette/releases).
+
+## March 15, 2025 - Release 4.6.12
+
+### Security Notices
+
+- Review the [Security Bulletins](../security-bulletins/reports/reports.mdx) page for the latest security advisories.
+
+### Palette Enterprise {#palette-enterprise-4-6-a}
+
+#### Features
+
+- The Palette UI has been updated with a new color scheme and logo. These new elements are displayed on the login page,
+  left **Main Menu**, and product tour. Check out the
+  [Welcome to the fold: meet the new Spectro Cloud brand](https://www.spectrocloud.com/blog/meet-the-new-spectro-cloud-brand)
+  blog post to learn more.
+- Palette and VerteX emails have been updated with a new color scheme and logo. The visual elements match the changes
+  made to the Palette UI.
+- [Azure IaaS clusters](../clusters/public-cloud/azure/azure.md) now support autoscaling functionality. This
+  functionality allows Palette to scale the worker pool horizontally based on its per-node workload counts. Autoscaling
+  can be enabled during cluster creation or by changing the
+  [worker node pool configuration](../clusters/cluster-management/node-pool.md#worker-node-pool). Refer to the
+  [Create and Manage Azure IaaS Cluster](../clusters/public-cloud/azure/create-azure-cluster.md) guide for further
+  information.
+- [Agent mode](../deployment-modes/agent-mode/agent-mode.md) feature has now exited Tech Preview and is ready to use for
+  production workloads. Check out the [Install Palette Agent](../deployment-modes/agent-mode/install-agent-host.md)
+  guide for further details.
+
+#### Improvements
+
+- The [cluster filtering](../clusters/cluster-management/cluster-map-filters.md) functionality of the Palette UI has
+  been modified to add the **Deleted** option under the **Status** filter. This improvement provides a simplified
+  process of managing and filtering cluster views.
+- Palette's internal database, MongoDB, has been upgraded to version 7.0.
+
+#### Deprecations and Removals
+
+- The `PROXY_CERT_PATH` variable is no longer available in the CanvOS build process. Use the **certs** folder in the
+  root of the project directory to store proxy certificates. The **certs** folder is automatically included in the
+  CanvOS build process. Refer to the
+  [Build Provider Images](../clusters/edge/edgeforge-workflow/palette-canvos/build-provider-images.md) for guidance on
+  using the **certs** folder to pass proxy certificates to the CanvOS build process.
+- Palette's internal message communication between components transitioned from NATS to gRPC. The previous usage of NATS
+  has been removed. This change primarily affects customers using Palette agents on versions older than 4.0, and the
+  NATS namespace must be [manually removed](../troubleshooting/nodes.md#scenario---remove-deprecated-nats-namespace)
+  from affected clusters. To learn more about Palette's internal network architecture, refer to the
+  [Network Ports](../architecture/networking-ports.md) page. If you are using network proxies, we recommend you review
+  the [gRPC and Proxies](../architecture/grps-proxy.md) documentation for potential issues.
+
+### Edge
+
+#### Features
+
+- <TpBadge /> Palette introduces a remote shell capability for troubleshooting remote edge hosts. This new feature
+  allows direct shell access via Palette without depending on user credentials or an active Kubernetes cluster. Refer to
+  the [Remote Shell](../clusters/edge/cluster-management/remote-shell.md) guide for further information.
+
+#### Improvements
+
+- Edge clusters now support
+  [automatic certificate renewal](../clusters/cluster-management/certificate-management.md#automatic-certificate-renewal)
+  for clusters that are not connected to Palette. Auto-renewal ensures that certificates are updated with minimal
+  downtime.
+
+### VerteX
+
+#### Features
+
+- Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
+  [Palette](#palette-enterprise-4-6-a) section for more details.
+
+### Automation
+
+:::info
+
+Check out the [Downloads](../spectro-downloads.md) and [Compatibility Matrix](../component.md) pages to find the
+compatible version of the Palette CLI.
+
+:::
+
+#### Features
+
+- Terraform version 0.23.1 of the
+  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
+  available. For more details, refer to the Terraform provider
+  [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
+- A new Terraform resource, `spectrocloud_platform_setting`, is now available for
+  [platform settings](../clusters/cluster-management/platform-settings/platform-settings.md) such as session timeout,
+  agent upgrade, and cluster remediation. For more information, refer to the Spectro Cloud Terraform provider
+  [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
+- A new Terraform resource, `spectrocloud_registration_token`, is now available for the creation of
+  [registration tokens](../clusters/edge/site-deployment/site-installation/create-registration-token.md). For more
+  information, refer to the Spectro Cloud Terraform provider
+  [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
+- A new Terraform resource, `spectrocloud_developer_setting`, is now available for setting
+  [tenant developer user quotas](../devx/manage-dev-engine/resource-quota.md#tenant-developer-user-quotas). For more
+  information, refer to the Spectro Cloud Terraform provider
+  [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
+
+### Docs and Education
+
+- The Spectro Cloud Documentation site UI has been updated with a new color scheme and logo. The visual elements match
+  the changes made to the [Palette](https://console.spectrocloud.com) UI.
+
+### Packs
+
+#### Kubernetes
+
+| Pack Name                                  | New Version |
+| ------------------------------------------ | ----------- |
+| Palette eXtended Kubernetes (PXK)          | 1.32.2      |
+| Palette eXtended Kubernetes (PXK)          | 1.31.6      |
+| Palette eXtended Kubernetes (PXK)          | 1.30.10     |
+| Palette eXtended Kubernetes (PXK)          | 1.29.14     |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.31.6      |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.30.10     |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.29.14     |
+
+#### CNI
+
+| Pack Name      | New Version |
+| -------------- | ----------- |
+| Calico         | 3.29.2      |
+| Calico (Azure) | 3.29.2      |
+| Cilium         | 1.16.6      |
+
+#### CSI
+
+| Pack Name        | New Version |
+| ---------------- | ----------- |
+| Longhorn         | 1.8.0       |
+| Rook-Ceph (Helm) | 1.16.3      |
+
+#### Add-on Packs
+
+| Pack Name                 | New Version |
+| ------------------------- | ----------- |
+| External Secrets Operator | 0.13.0      |
+| Harbor                    | 1.16.2      |
+| KubeArmor                 | 1.4.6       |
+| Longhorn                  | 1.8.0       |
+| Prometheus - Grafana      | 68.4.4      |
+| Registry Connect          | 0.1.0       |
+| Rook-Ceph (Helm)          | 1.16.3      |
+| Zot                       | 0.1.66      |
+
+#### FIPS Packs
+
+| Pack Name                                  | New Version |
+| ------------------------------------------ | ----------- |
+| Calico                                     | 3.29.2      |
+| Calico (Azure)                             | 3.29.2      |
+| Cilium                                     | 1.16.6      |
+| Palette eXtended Kubernetes (PXK)          | 1.32.2      |
+| Palette eXtended Kubernetes (PXK)          | 1.31.6      |
+| Palette eXtended Kubernetes (PXK)          | 1.30.10     |
+| Palette eXtended Kubernetes (PXK)          | 1.29.14     |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.31.6      |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.30.10     |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.29.14     |
+
 ## March 3, 2025 - Release 4.6.9
 
 ### Bug Fixes
@@ -200,12 +381,11 @@ tags: ["release-notes"]
 - Due to Google's
   [decision to deprecate](https://cloud.google.com/artifact-registry/docs/transition/transition-from-gcr) the `gcr.io`
   container registry, we have added a new image registry that Palette agents will use to pull images. The new registry
-  is `us-docker.pkg.dev`. This was [announced](./annoucements.md#implemented-changes) as part of the Palette 4.5.3
-  release. If you have network restrictions in place, ensure that the new registry is allowed. The migration of images
-  to this new registry is now complete. Redirects from the old registry to the new registry are in place, so no user
-  actions are required at this time. Refer to the
-  [Proxy Requirements](../enterprise-version/install-palette/#proxy-requirements) for a complete list of domains that
-  must be allowed.
+  is `us-docker.pkg.dev`. This was [announced](./announcements.md#removals) as part of the Palette 4.5.3 release. If you
+  have network restrictions in place, ensure that the new registry is allowed. The migration of images to this new
+  registry is now complete. Redirects from the old registry to the new registry are in place, so no user actions are
+  required at this time. Refer to the [Proxy Requirements](../enterprise-version/install-palette/#proxy-requirements)
+  for a complete list of domains that must be allowed.
 
 - The Palette eXtended Kubernetes (PXK) version 1.32.1 pack does not currently support
   [AWS](../clusters/public-cloud/aws/aws.md) and [GCP](../clusters/public-cloud/gcp/gcp.md) cluster deployments.
