@@ -286,7 +286,7 @@ To use custom OIDC, you need to do the following:
 
 - Map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups,
   refer to [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings). Refer to
-  [Use RBAC with OIDC](../../../integrations/kubernetes.md#use-rbac-with-oidc) for an example.
+   <VersionedLink text="Configure Custom OIDC" url="/integrations/packs/?pack=kubernetes-eks" /> for an example.
 
 - Download the kubeconfig file from the cluster details page. Refer to the
   [Kubectl](../../cluster-management/palette-webctl.md) guide for more information.
