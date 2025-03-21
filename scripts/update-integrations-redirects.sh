@@ -10,12 +10,17 @@ find "$directory" -type f -name "*.md" | while read -r file; do
     mv "$file" "${file%.md}.mdx"
 done
 
-# Insert the file name after the line that contains ---
+# Insert the file name after the last line that contains ---
 find "$directory" -type f -name "*.mdx" | while read -r file; do
-    sed -i '' -e '/---/a\
-\
-import {Redirect} from "@docusaurus/router";\
-\
-<Redirect to="/integrations/packs/?pack='"${file%.mdx}"'" />
-    ' "$file"
+    awk -v redirect="\nimport {Redirect} from \"@docusaurus/router\";\n<Redirect to=\"/integrations/packs/?pack=${file%.mdx}\" />" '
+    /---/ { last = NR; lastline = $0 }
+    { lines[NR] = $0 }
+    END {
+        for (i = 1; i <= NR; i++) {
+            print lines[i]
+            if (i == last) {
+                print redirect
+            }
+        }
+    }' "$file" > temp && mv temp "$file"
 done
