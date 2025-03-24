@@ -21,7 +21,6 @@ beforeAll(() => {
   Object.defineProperty(window, "matchMedia", {
     writable: true,
     value: jest.fn().mockImplementation((query) => {
-      console.log("query", query);
       return {
         matches: false,
         media: query,
@@ -100,7 +99,7 @@ describe("OsCveTable Component", () => {
     fetchMock.mockResponseOnce(JSON.stringify(mockData));
     const { container } = render(
       <MemoryRouter>
-        <OsCveTable />
+        <OsCveTable dataOverride={mockData} />
       </MemoryRouter>
     );
 
@@ -110,8 +109,49 @@ describe("OsCveTable Component", () => {
     expect(screen.getAllByText("Yes").length).toBeGreaterThan(0);
     expect(
       screen.getByRole("link", {
-        name: /security advisory for ubuntu 22\.04 with kubernetes 1\.29\.14/i,
+        name: /security advisory for ubuntu 20\.04 with kubernetes 1\.28\.15/i,
       })
     ).toBeInTheDocument();
+  });
+
+  it("should filter packs based on search", async () => {
+    fetchMock.mockResponseOnce(JSON.stringify(mockData));
+    const { container } = render(
+      <MemoryRouter>
+        <OsCveTable dataOverride={mockData} />
+      </MemoryRouter>
+    );
+
+    // await waitFor(() => screen.getByText("RHEL"));
+    await waitFor(() => expect(container.querySelector(".ant-spin")).not.toBeInTheDocument());
+
+    // Fire the event to change the search textbox
+    fireEvent.change(screen.getByRole("textbox"), { target: { value: "ubuntu" } });
+
+    await new Promise((resolve) => setTimeout(resolve, 800));
+
+    // Now run the expectations
+    expect(
+      screen.getByRole("link", {
+        name: /security advisory for ubuntu 20\.04 with kubernetes 1\.28\.15/i,
+      })
+    ).toBeInTheDocument();
+    expect(screen.queryByText("RHEL")).not.toBeInTheDocument();
+  });
+
+  it("should have unique row keys", async () => {
+    fetchMock.mockResponseOnce(JSON.stringify(mockData));
+    const { container } = render(
+      <MemoryRouter>
+        <OsCveTable dataOverride={mockData} />
+      </MemoryRouter>
+    );
+
+    await waitFor(() => {
+      const rows = container.querySelectorAll(".ant-table-row");
+      const keys = Array.from(rows).map((row) => row.getAttribute("data-row-key"));
+      const uniqueKeys = new Set(keys);
+      expect(keys.length).toBe(uniqueKeys.size);
+    });
   });
 });

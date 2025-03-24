@@ -93,7 +93,7 @@ const columns: ColumnsType<OsCve> = [
   },
 ];
 
-const OsCveTable: React.FC = () => {
+const OsCveTable: React.FC<{ dataOverride?: AllCVEList }> = ({ dataOverride }) => {
   const [searchValue, setSearchValue] = useState<string>("");
   const [osCves, setOsCves] = useState<OsCve[]>([]);
   const [loading, setLoading] = useState(true);
@@ -115,7 +115,9 @@ const OsCveTable: React.FC = () => {
     const fetchOsCveData = async () => {
       try {
         // Use dynamic import instead of fetch
-        const data = (await import("../../../.docusaurus/security-bulletins/default/data.json")).default as AllCVEList;
+        const data =
+          dataOverride ??
+          ((await import("../../../.docusaurus/security-bulletins/default/data.json")).default as AllCVEList);
 
         // Extract the OS CVE data from the provider array
         const osCveData = data.provider.map((item: any) => {
