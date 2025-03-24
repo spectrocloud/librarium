@@ -121,9 +121,9 @@ Use the following steps to deploy an Azure cluster.
    Select the desired **IP Allocation Method**. You can choose between **Static** and **Dynamic** IP allocation methods.
    If you select **Static**, you must provide a valid IP address.
 
-10. To configure custom OpenID Connect (OIDC) for Azure clusters, refer to our
-    [Configure OIDC Identity Provider](../../../integrations/kubernetes.md#configure-oidc-identity-provider) guide for
-    information on how to update the Kubernetes layer.
+<!-- prettier-ignore-start -->
+
+10. To configure custom OpenID Connect (OIDC) for Azure clusters, refer to the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" /> pack additional details for further guidance.
 
     :::warning
 
@@ -132,6 +132,8 @@ Use the following steps to deploy an Azure cluster.
     [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings).
 
     :::
+
+<!-- prettier-ignore-end -->
 
 11. Click **Next** to continue.
 
@@ -239,10 +241,13 @@ Use the following steps to deploy an Azure cluster.
 18. Schedule any backups you want Palette to perform. Review
     [Backup and Restore](../../cluster-management/backup-restore/backup-restore.md) for more information.
 
+<!-- prettier-ignore-start -->
+
 19. Role-Based Access Control (RBAC) configuration is required when you configure custom OIDC. You must map a set of
     users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to
-    [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings). Refer to
-    [Use RBAC with OIDC](../../../integrations/kubernetes.md#use-rbac-with-oidc) for an example.
+    [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings). Refer to the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" /> pack additional details for an example.
+
+<!-- prettier-ignore-end -->
 
 20. Click **Validate** and review the cluster configuration and settings summary.
 
@@ -316,11 +321,13 @@ The link to access the Add Rules page is displayed within a caution message in t
 
 - [Azure Storage](../azure/architecture.md#azure-storage)
 
-- [Configure OIDC Identity Provider](../../../integrations/kubernetes.md#configure-oidc-identity-provider)
-
 - [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings)
 
-- [Use RBAC with OIDC](../../../integrations/kubernetes.md#use-rbac-with-oidc)
+<!-- prettier-ignore-start -->
+
+- <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> pack
+
+<!-- prettier-ignore-end -->
 
 <!-- - [Get started with Autoscale in Azure](https://learn.microsoft.com/en-us/azure/azure-monitor/autoscale/autoscale-get-started)
 
