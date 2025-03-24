@@ -24,22 +24,22 @@ select in the Kubernetes layer of the infrastructure profile.
 
 3. Select the cluster profile to update. Palette displays profile details and the profile stack.
 
-4. Select the Kubernetes layer in the profile stack, and choose an OIDC Identity Provider option. Refer to
-   [Configure OIDC Identify Provider](../../integrations/kubernetes.md#configure-oidc-identity-provider) to learn more
-   about OIDC options.
+<!-- prettier-ignore-start -->
 
-   - Selecting **None** or **Palette** will display the Virtual Machine dashboard in a tab.
+4. Select the Kubernetes layer in the profile stack, and choose an **OIDC Identity Provider** option. Refer to the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" /> pack additional guidance for more information.
 
-   - Selecting **Inherit from Tenant** or **Custom** will display a link to the dashboard on the cluster overview page.
+    - Selecting **None** or **Palette** will display the Virtual Machine dashboard in a tab.
 
-     :::warning
+      :::warning
 
-     We do not recommend choosing **None** in a production environment, as it may disable authentication for add-ons
-     that rely on OIDC.
+      We do not recommend choosing **None** in a production environment, as it may disable authentication for add-ons that
+      rely on OIDC.
 
-     :::
+      :::
 
-5. Click **Confirm Updates**.
+    - Selecting **Inherit from Tenant** or **Custom** will display a link to the dashboard on the cluster overview page.
+
+<!-- prettier-ignore-end -->
 
 6. Save your changes.
 

@@ -77,10 +77,12 @@ Use the following steps to deploy an Azure cluster.
 
 7. Select the Azure cluster profile you created, and click on **Next**. Palette displays the cluster profile layers.
 
+<!-- prettier-ignore-start -->
+
 8. Review the profile layers and customize parameters as desired in the YAML files that display when you select a layer.
-   You can configure custom OpenID Connect (OIDC) for Azure clusters at the Kubernetes layer. Check out
-   [Configure OIDC Identity Provider](../../../integrations/kubernetes.md#configure-oidc-identity-provider) for more
-   information.
+   You can configure custom OpenID Connect (OIDC) for Azure clusters at the Kubernetes layer. Refer to the
+   <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" /> pack
+   additional details for further guidance.
 
    :::warning
 
@@ -89,6 +91,8 @@ Use the following steps to deploy an Azure cluster.
    [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings).
 
    :::
+
+<!-- prettier-ignore-end -->
 
 9. Click **Next** to continue.
 
@@ -106,14 +110,14 @@ Use the following steps to deploy an Azure cluster.
 
     :::
 
-    | **Parameter**         | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
-    | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Subscription**      | Use the **drop-down Menu** to select the subscription that will be used to access Azure services.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-    | **Region**            | Use the **drop-down Menu** to choose the Azure region where you would like to provision the cluster.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-    | **Resource Group**    | Select the name of the resource group that contains the Azure resources you will be accessing.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-    | **Storage Account**   | Optionally, if you have a custom storage account available, you can use the **drop-down Menu** to select the storage account name. For information about use cases for custom storage, review [Azure Storage](../azure/architecture.md#azure-storage).                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-    | **Storage Container** | Optionally, if you will be using a custom storage container, use the **drop-down Menu** to select it. For information about use cases for custom storage, review [Azure Storage](../azure/architecture.md#azure-storage).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-    | **SSH Key**           | The public SSH key for connecting to the nodes. SSH key pairs must be pre-configured in your Azure environment. The key you select is inserted into the provisioned VMs. For more information, review Microsoft's [Supported SSH key formats](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys#supported-ssh-key-formats).                                                                                                                                                                                                                                                                                                                                                            |
+    | **Parameter**         | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+    | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Subscription**      | Use the **drop-down Menu** to select the subscription that will be used to access Azure services.                                                                                                                                                                                                                                                                                                                                                                                     |
+    | **Region**            | Use the **drop-down Menu** to choose the Azure region where you would like to provision the cluster.                                                                                                                                                                                                                                                                                                                                                                                  |
+    | **Resource Group**    | Select the name of the resource group that contains the Azure resources you will be accessing.                                                                                                                                                                                                                                                                                                                                                                                        |
+    | **Storage Account**   | Optionally, if you have a custom storage account available, you can use the **drop-down Menu** to select the storage account name. For information about use cases for custom storage, review [Azure Storage](../azure/architecture.md#azure-storage).                                                                                                                                                                                                                                |
+    | **Storage Container** | Optionally, if you will be using a custom storage container, use the **drop-down Menu** to select it. For information about use cases for custom storage, review [Azure Storage](../azure/architecture.md#azure-storage).                                                                                                                                                                                                                                                             |
+    | **SSH Key**           | The public SSH key for connecting to the nodes. SSH key pairs must be pre-configured in your Azure environment. The key you select is inserted into the provisioned VMs. For more information, review Microsoft's [Supported SSH key formats](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys#supported-ssh-key-formats).                                                                                                                          |
     | **Static Placement**  | By default, Palette uses dynamic placement. This creates a new VNet for clusters with two subnets in different availability zones. Palette places resources in these clusters, manages the resources, and deletes them when the corresponding cluster is deleted.<br /><br />If you want to place resources into a pre-existing VNet, enable the **Static Placement** option, and fill out the input values listed in the [Static Placement](#static-placement-settings) table below. |
 
 #### Static Placement Settings
@@ -195,10 +199,14 @@ You can select **Remove** at right to remove the worker node if all you want is 
 16. Schedule any backups you want Palette to perform. Review
     [Backup and Restore](../../cluster-management/backup-restore/backup-restore.md) for more information.
 
+<!-- prettier-ignore-start -->
+
 17. Role-Based Access Control (RBAC) configuration is required when you configure custom OIDC. You must map a set of
-    users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to
-    [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings). Refer to
-    [Use RBAC with OIDC](../../../integrations/kubernetes.md#use-rbac-with-oidc) for an example.
+users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to
+[Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings). Refer to the
+<VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" /> pack
+additional details for an example.
+<!-- prettier-ignore-end -->
 
 18. Click on the **Validate** button and review the cluster configuration and settings summary.
 
@@ -232,8 +240,9 @@ You can validate your cluster is up and in **Running** state.
 
 - [Azure Storage](../azure/architecture.md#azure-storage)
 
-- [Configure OIDC Identity Provider](../../../integrations/kubernetes.md#configure-oidc-identity-provider)
-
 - [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings)
 
-- [Use RBAC with OIDC](../../../integrations/kubernetes.md#use-rbac-with-oidc)
+<!-- prettier-ignore-start -->
+
+- <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> pack
+  <!-- prettier-ignore-end -->
