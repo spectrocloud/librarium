@@ -295,8 +295,6 @@ This page provides a listing of vulnerabilities found in the image **${imageName
 - **Summary**: ${summary}
 - **Initial Notice Published**: ${createdTimestamp}
 - **Last Updated**: ${lastModified}
-- **Severity**: ${severity}
-- **Impact**: ${impact}
 - **Justification**: ${justification}
 
 ## Remediation Steps
