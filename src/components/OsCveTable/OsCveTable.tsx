@@ -163,7 +163,7 @@ const OsCveTable: React.FC = () => {
       <ConfigProvider theme={customTheme}>
         <div className={styles.unsupportedMessage}>
           <Admonition type="warning" title="Unsupported Display Size">
-            The current screen size is not supported. Use a larger display to access the Packs table.
+            The current screen size is not supported. Use a larger display to access the OS Security Notice table.
           </Admonition>
         </div>
 
