@@ -195,10 +195,12 @@ learn more about customizing arguments.
 
 ## Create User Data
 
-Next, you will create a [**user-data**](../../clusters/edge/edgeforge-workflow/prepare-user-data.md) file that embeds your [tenant registration token](../../clusters/edge/site-deployment/site-installation/create-registration-token.md) and Edge host's login credentials
-in the Edge Installer ISO image.
+Next, you will create a [**user-data**](../../clusters/edge/edgeforge-workflow/prepare-user-data.md) file that embeds
+your [tenant registration token](../../clusters/edge/site-deployment/site-installation/create-registration-token.md) and
+Edge host's login credentials in the Edge Installer ISO image.
 
-Issue the command below to save your tenant registration token to a local variable. Replace `<your-palette-registration-token>` with your actual registration token.
+Issue the command below to save your tenant registration token to a local variable. Replace
+`<your-palette-registration-token>` with your actual registration token.
 
 ```bash
 export TOKEN=<your-palette-registration-token>
@@ -255,8 +257,8 @@ users:
 
 ## Build Artifacts
 
-The CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. Issue the
-following command to start the build process.
+The CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. Issue the following command to
+start the build process.
 
 :::warning
 
@@ -791,7 +793,9 @@ Click on the **Next layer** button to add the following Kubernetes layer to your
 | ------------- | ------------ | --------------------- | ---------------- |
 | Kubernetes    | Public Repo  | Palette Optimized K3s | `1.27.5`         |
 
-The pack version must match the version pushed to the to the _ttl.sh_ image registry. The `system.uri` attribute of the BYOOS pack will reference the Kubernetes version you select using the `{{ .spectro.system.kubernetes.version }}` [macro](../../clusters/cluster-management/macros.md).
+The pack version must match the version pushed to the to the _ttl.sh_ image registry. The `system.uri` attribute of the
+BYOOS pack will reference the Kubernetes version you select using the `{{ .spectro.system.kubernetes.version }}`
+[macro](../../clusters/cluster-management/macros.md).
 
 Click on the **Next layer** button, and add the following network layer. This example uses the Calico Container Network
 Interface (CNI). However, you can choose a different CNI pack that fits your needs, such as Flannel, Cilium, or Custom
@@ -916,12 +920,12 @@ and the set of worker nodes is the worker pool.
 
 Provide the following details for the control plane pool.
 
-| **Field**                                             | **Value for the control-plane-pool**                                                                                 |
-| ----------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| Node pool name                                        | control-plane-pool                                                                                                   |
-| Allow worker capability                               | On                                                                                                              |
-| Additional Labels (Optional)                          | None                                                                                                                 |
-| [Taints](../../clusters/cluster-management/taints.md) | Off                                                                                                                  |
+| **Field**                                             | **Value for the control-plane-pool**     |
+| ----------------------------------------------------- | ---------------------------------------- |
+| Node pool name                                        | control-plane-pool                       |
+| Allow worker capability                               | On                                       |
+| Additional Labels (Optional)                          | None                                     |
+| [Taints](../../clusters/cluster-management/taints.md) | Off                                      |
 | Pool Configuration > Edge Hosts                       | Choose one of the registered Edge hosts. |
 
 The screenshot below shows an Edge host added to the control plane pool.

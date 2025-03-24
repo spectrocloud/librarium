@@ -170,8 +170,8 @@ artifacts at the same time.
     key can be uploaded to the Edge host through Local UI. This includes both the content bundle and cluster definition.
     For more information, refer to [Embed Public Key in Edge Artifacts](./signed-content.md).
 
-13. CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. Issue the
-    following command to start the build process.
+13. CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. Issue the following command to
+    start the build process.
 
         <Tabs group="earthly">
 
