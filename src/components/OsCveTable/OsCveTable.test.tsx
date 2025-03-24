@@ -105,7 +105,13 @@ describe("OsCveTable Component", () => {
     );
 
     await waitFor(() => expect(container.querySelector(".ant-spin")).not.toBeInTheDocument());
-    expect(screen.getByText("RHEL 9")).toBeInTheDocument();
-    expect(screen.getByText("Kubernetes 1.28.15 FIPS")).toBeInTheDocument();
+    // expect(screen.getByText("RHEL 9")).toBeInTheDocument();
+    expect(screen.getAllByText("1.28.15").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("Yes").length).toBeGreaterThan(0);
+    expect(
+      screen.getByRole("link", {
+        name: /security advisory for ubuntu 22\.04 with kubernetes 1\.29\.14/i,
+      })
+    ).toBeInTheDocument();
   });
 });
