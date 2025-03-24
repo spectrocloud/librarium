@@ -239,14 +239,14 @@ cat user-data
 
 The expected output should show that the `edgeHostToken` and login credentials for Edge hosts are set correctly. The
 `edgeHostToken` value must match your Palette registration token. Otherwise, your Edge hosts will not register
-themselves with Palette automatically. Below is a sample output with a dummy token value. <br />
+themselves with Palette automatically. Below is a sample output with the token masked. <br />
 
 ```hideClipboard bash
 #cloud-config
 stylus:
   site:
     paletteEndpoint: api.spectrocloud.com
-    edgeHostToken: 62ElvdMeX5MdOESgTleBjjKQg8YkaIN3
+    edgeHostToken: ********************************
 
 users:
   - name: kairos
