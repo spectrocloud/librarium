@@ -46,9 +46,12 @@ learn more about role-based Access Control (RBAC) in Palette, review the
    to [VM User Roles and Permissions](./vm-roles-permissions.md) for a list of Cluster Roles and equivalent Palette
    Roles.
 
+<!-- prettier-ignore-start -->
+
    If you have OpenID Connect (OIDC) configured at the Kubernetes layer of your cluster profile, you can create a role
-   binding that maps individual users or groups assigned within the OIDC provider's configuration to a role. To learn
-   more, review [Use RBAC with OIDC](../../integrations/kubernetes.md#use-rbac-with-oidc).
+   binding that maps individual users or groups assigned within the OIDC provider's configuration to a role. Refer to the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" /> pack additional guidance for more information.
+
+<!-- prettier-ignore-end -->
 
 4. Click **Confirm** to update the cluster.
 
