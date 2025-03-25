@@ -80,7 +80,7 @@ Harbor registry using **Registry Connect**, refer to
 
 11. Save and publish the new version of your profile.
 
-12. Follow [Create Local Cluster](../../local-ui/cluster-management/create-cluster.md) to create a cluster using the new
+12. Follow [Create Cluster Definition](../cluster-deployment.md) to create a cluster using the new
     profile.
 
 </TabItem>
@@ -94,7 +94,8 @@ Harbor registry using **Registry Connect**, refer to
 3. Select the profile you use to deploy the cluster.
 
 4. Add a pack for your custom registry. If you have made a custom pack, you can add the custom pack. Alternatively, you
-   can also add a manifest or helm charts for your registry.
+   can also add a manifest or helm charts for your registry. To learn how to make a custom pack, refer to
+   [Add a Custom Pack](../../../../registries-and-packs/add-custom-packs.md).
 
    You need to take note of the following configurations about your registry and provide it to the **Registry Connect**
    pack later.
