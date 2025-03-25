@@ -195,14 +195,15 @@ learn more about customizing arguments.
 
 ## Create User Data
 
-Next, you will create a **user-data** file that embeds the tenant registration token and Edge host's login credentials
-in the Edge Installer ISO image.
+Next, you will create a [**user-data**](../../clusters/edge/edgeforge-workflow/prepare-user-data.md) file that embeds
+your [tenant registration token](../../clusters/edge/site-deployment/site-installation/create-registration-token.md) and
+Edge host's login credentials in the Edge Installer ISO image.
 
-Issue the command below to save your tenant registration token to a local variable. Replace `[your_token_here]`
-placeholder with your actual registration token.
+Issue the command below to save your tenant registration token to a local variable. Replace
+`<your-palette-registration-token>` with your actual registration token.
 
 ```bash
-export token=[your_token_here]
+export TOKEN=<your-palette-registration-token>
 ```
 
 Use the following command to create the **user-data** file containing the tenant registration token.
@@ -212,7 +213,7 @@ cat << EOF > user-data
 #cloud-config
 stylus:
   site:
-    edgeHostToken: $token
+    edgeHostToken: $TOKEN
     paletteEndpoint: api.spectrocloud.com
 
 users:
@@ -240,14 +241,14 @@ cat user-data
 
 The expected output should show that the `edgeHostToken` and login credentials for Edge hosts are set correctly. The
 `edgeHostToken` value must match your Palette registration token. Otherwise, your Edge hosts will not register
-themselves with Palette automatically. Below is a sample output with a dummy token value. <br />
+themselves with Palette automatically. Below is a sample output with the token masked. <br />
 
 ```hideClipboard bash
 #cloud-config
 stylus:
   site:
     paletteEndpoint: api.spectrocloud.com
-    edgeHostToken: 62ElvdMeX5MdOESgTleBjjKQg8YkaIN3
+    edgeHostToken: ********************************
 
 users:
   - name: kairos
@@ -256,8 +257,8 @@ users:
 
 ## Build Artifacts
 
-The CanvOS utility uses [Earthly](https://earthly.dev/)(https://earthly.dev/) to build the target artifacts. Issue the
-following command to start the build process.
+The CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. Issue the following command to
+start the build process.
 
 :::warning
 
@@ -501,7 +502,7 @@ reset it.
 :::
 
 The next step is to use the following `docker run` command to trigger Packer build process to create a VM template. Here
-is an explanation of the options and sub-command used below:
+is an explanation of the options and sub-commands used below:
 
 - The `--env-file` option reads the **.packerenv** file.
 
@@ -575,7 +576,7 @@ Depending on your machine and network, the build process can take 7-10 minutes t
 ```hideClipboard bash {10,11}
 # Sample output
 ==> vsphere-iso.edge-template: Power on VM...
-    vsphere-iso.edge-template: Please shutdown virtual machine within 10m0s.
+    vsphere-iso.edge-template: Please shutdown virtual machine within 20m0s.
 ==> vsphere-iso.edge-template: Deleting Floppy drives...
 ==> vsphere-iso.edge-template: Eject CD-ROM drives...
 ==> vsphere-iso.edge-template: Deleting CD-ROM drives...
@@ -595,7 +596,7 @@ Packer created. Remember that the VM instances you are deploying simulate bare m
 GOVC requires the same VMware vCenter details as the environment variables you defined earlier in the **.goenv** file.
 
 The next step is to use the following `docker run` command to clone the VM template and provision three VMs. Here is an
-explanation of the options and sub-command used below:
+explanation of the options and sub-commands used below:
 
 - The `--env-file` option reads the **.goenv** file in our official `ghcr.io/spectrocloud/tutorials:1.1.5` tutorials
   container.
@@ -784,11 +785,10 @@ Click on the **Next layer** button to add the following Kubernetes layer to your
 
 | **Pack Type** | **Registry** | **Pack Name**         | **Pack Version** |
 | ------------- | ------------ | --------------------- | ---------------- |
-| Kubernetes    | Public Repo  | Palette Optimized K3s | `1.27.x`         |
+| Kubernetes    | Public Repo  | Palette Optimized K3s | `1.27.5`         |
 
-Select the K3s version 1.27.x. 1.27.X because earlier in this tutorial, you pushed a provider image compatible with K3s
-v1.27.5 to the _ttl.sh_ image registry. The `system.uri` attribute of the BYOOS pack will reference the Kubernetes
-version you select using the `{{ .spectro.system.kubernetes.version }}`
+The pack version must match the version pushed to the to the _ttl.sh_ image registry. The `system.uri` attribute of the
+BYOOS pack will reference the Kubernetes version you select using the `{{ .spectro.system.kubernetes.version }}`
 [macro](../../clusters/cluster-management/macros.md).
 
 Click on the **Next layer** button, and add the following network layer. This example uses the Calico Container Network
@@ -914,13 +914,13 @@ and the set of worker nodes is the worker pool.
 
 Provide the following details for the control plane pool.
 
-| **Field**                                             | **Value for the control-plane-pool**                                                                                 |
-| ----------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| Node pool name                                        | control-plane-pool                                                                                                   |
-| Allow worker capability                               | Checked                                                                                                              |
-| Additional Labels (Optional)                          | None                                                                                                                 |
-| [Taints](../../clusters/cluster-management/taints.md) | Off                                                                                                                  |
-| Pool Configuration > Edge Hosts                       | Choose one of the registered Edge hosts.<br />Palette will automatically display the Nic Name for the selected host. |
+| **Field**                                             | **Value for the control-plane-pool**     |
+| ----------------------------------------------------- | ---------------------------------------- |
+| Node pool name                                        | control-plane-pool                       |
+| Allow worker capability                               | On                                       |
+| Additional Labels (Optional)                          | None                                     |
+| [Taints](../../clusters/cluster-management/taints.md) | Off                                      |
+| Pool Configuration > Edge Hosts                       | Choose one of the registered Edge hosts. |
 
 The screenshot below shows an Edge host added to the control plane pool.
 
