@@ -36,20 +36,6 @@ The out-of-the-box images are hosted in the public cloud (AWS - AMI, Azure - VHD
 (vSphere - OVA). During provisioning, the image is copied (if missing) to the desired cloud region or downloaded onto a
 private data center.
 
-### Customization
-
-Palette provides various forms of customization options for VM images. All these customization options require a private
-pack registry to be set up with customized OS packs.
-
-#### Customize Out-of-the Box Images
-
-The Palette out-of-the-box images are security-hardened and have Kubernetes components preinstalled. Additional
-components can be installed on the images at runtime by defining one or more Ansible roles in the customized OS pack.
-Palette's orchestration engine creates a new image by instantiating a VM instance from the out-of-the-box image and
-executing the specified Ansible roles on the instance. This custom image is used for cluster provisioning. The
-customized image is tagged with a unique signature generated from the pack definition so that it can be reused for
-future cluster provisioning requests.
-
 ## Security
 
 Palette secures the Kubernetes clusters provisioned by following security best practices at the Operating System,
@@ -350,7 +336,7 @@ The following are the attributes of a cluster that are displayed in the cluster 
 | Type          | The cluster type. Possible values are "Palette-managed" or "Imported." When there is a small green arrow on the icon, it means there are pending updates to the cluster that requires acknowledgement. | No               |
 | Env           | The infrastructure provider of the cluster, such as AWS, Azure, GCP and Edge.                                                                                                                          | Yes              |
 | Name          | The name of the cluster.                                                                                                                                                                               | Yes              |
-| Status        | The status of the cluster. Possible values include "Pending," "Running," "Deleting" and "Provisioning."                                                                                                | Yes              |
+| Status        | The status of the cluster. Possible values include "Pending," "Provisioning," "Running," "Deleting," "Importing," "Unknown," and "Deleted."                                                            | Yes              |
 | Last Modified | The date and time when the cluster was last modified.                                                                                                                                                  | Yes              |
 | Health        | The health status of the cluster. Refer to [Cluster Health](#cluster-health) for details.                                                                                                              | Yes              |
 | Heathy Nodes  | The number of healthy nodes in the cluster.                                                                                                                                                            | No               |

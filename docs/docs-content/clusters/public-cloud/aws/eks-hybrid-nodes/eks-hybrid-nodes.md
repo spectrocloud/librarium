@@ -29,6 +29,8 @@ To learn more about Palette and Amazon EKS Hybrid Nodes, check out the following
 
 - [Architecture](./architecture.md)
 
+- [Prepare Environment](./prepare-environment/prepare-environment.md)
+
 - [Import EKS Cluster and Enable Hybrid Mode](./import-eks-cluster-enable-hybrid-mode.md)
 
 - [Create Hybrid Node Pools](./create-hybrid-node-pools.md)

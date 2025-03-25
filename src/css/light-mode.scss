@@ -33,6 +33,7 @@ html[data-theme="light"] {
   --ifm-color-danger-dark: #feeded;
   --ifm-alert-padding-horizontal: 1.5rem;
   --ifm-dropdown-background-color: var(--ifm-menu-color-background-active);
+  --ifm-card-background-color: var(--ifm-dropdown-background-color);
   --custom-table-header-color: #f7f7f7;
   --simpleCardPrimary: var(--ifm-color-primary);
   --simpleCardPrimaryHover: #135757;
@@ -68,6 +69,15 @@ html[data-theme="light"] {
 
   .category > .menu__list-item-collapsible:hover {
     background: var(--ifm-menu-color-background-active);
+  }
+
+  .menu__list-item-collapsible:has(.sidebar-category-title):hover {
+    background: var(--ifm-background-color) !important;
+    cursor: default;
+  }
+
+  .sidebar-category-title[class*="active_"] {
+    color: var(--ifm-color-primary);
   }
 
   .menu__list-item-collapsible:hover {

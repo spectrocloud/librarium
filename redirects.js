@@ -49,8 +49,8 @@ let redirects = [
     to: `/clusters/edge/`,
   },
   {
-    from: `/troubleshooting/palette-namespaces-podes/`,
-    to: `/architecture/palette-namespaces-podes/`,
+    from: [`/troubleshooting/palette-namespaces-podes/`, `/architecture/palette-namespaces-podes/`],
+    to: `/architecture/palette-namespaces-pods/`,
   },
   {
     from: `/troubleshooting/Network-Communications-and-Ports/`,
@@ -591,6 +591,10 @@ let redirects = [
     to: "/legal-licenses/oss-licenses-index/",
   },
   {
+    from: "/release-notes/annoucements/",
+    to: "release-notes/announcements/",
+  },
+  {
     from: "/clusters/cluster-management/noc-ui/",
     to: "/clusters/cluster-management/cluster-map-filters/",
   },
@@ -733,6 +737,10 @@ let redirects = [
   {
     from: "/clusters/cluster-management/reconfigure/",
     to: "/clusters/cluster-management/node-pool/",
+  },
+  {
+    from: "/security/lifecycle/secure-development/",
+    to: "/security/lifecycle/",
   },
   {
     from: [

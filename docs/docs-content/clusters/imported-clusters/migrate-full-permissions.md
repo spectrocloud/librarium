@@ -69,7 +69,6 @@ tags: ["clusters", "imported clusters"]
    customresourcedefinition.apiextensions.k8s.io/openstackcloudconfigs.cluster.spectrocloud.com created
    customresourcedefinition.apiextensions.k8s.io/packs.cluster.spectrocloud.com created
    customresourcedefinition.apiextensions.k8s.io/spectroclusters.cluster.spectrocloud.com created
-   customresourcedefinition.apiextensions.k8s.io/tencentcloudconfigs.cluster.spectrocloud.com created
    customresourcedefinition.apiextensions.k8s.io/vspherecloudconfigs.cluster.spectrocloud.com created
    serviceaccount/palette-manager created
    clusterrolebinding.rbac.authorization.k8s.io/palette-lite-cluster-admin-binding created

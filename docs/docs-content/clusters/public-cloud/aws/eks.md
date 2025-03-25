@@ -16,10 +16,18 @@ an AWS account. This section guides you on how to create an EKS cluster in AWS t
 
 - Palette integration with AWS account. Review [Add AWS Account](add-aws-accounts.md) for guidance.
 
+<!-- prettier-ignore -->
 - An infrastructure cluster profile for AWS EKS. When you create the profile, ensure you choose **EKS** as the **Managed
   Kubernetes** cloud type. Review
   [Create an Infrastructure Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md)
   for guidance.
+
+  :::info
+
+  For guidance on all available configuration options for the EKS Kubernetes pack, review the
+  <VersionedLink text="Additional Details" url="/integrations/packs/?pack=kubernetes-eks&tab=custom"/> for the pack.
+
+  :::
 
 <!-- prettier-ignore -->
 - If you want to use <VersionedLink text="Cilium" url="/integrations/packs/?pack=cni-cilium-oss"/> as the network pack
@@ -135,6 +143,17 @@ an AWS account. This section guides you on how to create an EKS cluster in AWS t
 11. Provide the following node pool and cloud configuration information. If you will be using Fargate profiles, you can
     add them here.
 
+<!-- prettier-ignore-start -->
+
+    :::info
+
+    To automatically scale the number of worker nodes for EKS clusters, you must add the
+    <VersionedLink text="AWS Cluster Autoscaler" url="/integrations/packs/?pack=aws-cluster-autoscaler"/> pack to your cluster profile.
+
+    :::
+
+<!-- prettier-ignore-end -->
+
     #### Node Configuration Settings
 
     | **Parameter**                   | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
@@ -183,10 +202,13 @@ an AWS account. This section guides you on how to create an EKS cluster in AWS t
 15. Schedule any backups you want Palette to perform. Review
     [Backup and Restore](../../cluster-management/backup-restore/backup-restore.md) for more information.
 
+<!-- prettier-ignore-start -->
+
 16. RBAC configuration is required when you configure custom OIDC. You must map a set of users or groups to a Kubernetes
     RBAC role. To learn how to map a Kubernetes role to users and groups, refer to
-    [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings). Refer to
-    [Use RBAC with OIDC](../../../integrations/kubernetes.md#use-rbac-with-oidc) for an example.
+    [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings). Refer to the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" /> pack additional details for an example.
+
+<!-- prettier-ignore-end -->
 
 17. Click **Validate** and review the cluster configuration and settings summary.
 
@@ -264,7 +286,7 @@ To use custom OIDC, you need to do the following:
 
 - Map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups,
   refer to [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings). Refer to
-  [Use RBAC with OIDC](../../../integrations/kubernetes.md#use-rbac-with-oidc) for an example.
+   <VersionedLink text="Configure Custom OIDC" url="/integrations/packs/?pack=kubernetes-eks" /> for an example.
 
 - Download the kubeconfig file from the cluster details page. Refer to the
   [Kubectl](../../cluster-management/palette-webctl.md) guide for more information.
@@ -289,8 +311,10 @@ For guidance in setting up kubectl, review the [Kubectl](../../cluster-managemen
 
 - [Enable Secrets Encryption for EKS Cluster](enable-secrets-encryption-kms-key.md)
 
-- [Configure Custom OIDC](../../../integrations/kubernetes.md#configure-custom-oidc)
+<!-- prettier-ignore-start -->
+
+- <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> pack
+
+<!-- prettier-ignore-end -->
 
 - [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings).
-
-- [Use RBAC with OIDC](../../../integrations/kubernetes.md#use-rbac-with-oidc)
