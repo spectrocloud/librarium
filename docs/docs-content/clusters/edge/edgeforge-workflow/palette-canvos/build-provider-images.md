@@ -140,34 +140,34 @@ artifacts at the same time.
     key can be uploaded to the Edge host through Local UI. This includes both the content bundle and cluster definition.
     For more information, refer to [Embed Public Key in Edge Artifacts](./signed-content.md).
 
-12. CanvOS utility uses [Earthly](https://earthly.dev/)(https://earthly.dev/) to build the target artifacts. Issue the
-    following command to start the build process.
+12. CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. Issue the following command to
+    start the build process.
 
-   <Tabs group="earthly">
+        <Tabs group="earthly">
 
-   <TabItem value="Earthly Installed">
+        <TabItem value="Earthly Installed">
 
-    ```bash
-    earthly +build-provider-images
-    ```
+            ```bash
+            earthly +build-provider-images
+            ```
 
-   </TabItem>
+        </TabItem>
 
-   <TabItem value="Earthly Not Installed">
+        <TabItem value="Earthly Not Installed">
 
-    ```bash
-    sudo ./earthly.sh +build-provider-images
-    ```
+            ```bash
+         sudo ./earthly.sh +build-provider-images
+            ```
 
-   </TabItem>
+        </TabItem>
 
-   </Tabs>
+        </Tabs>
 
-    ```hideClipboard bash {2}
-    # Output condensed for readability
-    ===================== Earthly Build SUCCESS =====================
-    Share your logs with an Earthly account (experimental)! Register for one at https://ci.earthly.dev.
-    ```
+        ```hideClipboard bash {2}
+        # Output condensed for readability
+        ===================== Earthly Build SUCCESS =====================
+        Share your logs with an Earthly account (experimental)! Register for one at https://ci.earthly.dev.
+        ```
 
 13. To use the provider images in your cluster profile, push them to your image registry mentioned in the **.arg** file.
     Issue the following command to log in to Docker Hub. Provide your Docker ID and password when prompted.
