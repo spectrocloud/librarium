@@ -112,7 +112,7 @@ git checkout v4.4.12
 
 ### Define Arguments
 
-EdgeForge leverages [Earthly](https://earthly.dev/)(https://earthly.dev) to build the Installer ISO and provider images
+EdgeForge leverages [Earthly](https://earthly.dev/) to build the Installer ISO and provider images
 artifacts. The **.arg** file is used to pass the values of a few arguments, such as the image tag and registry name, to
 Earthly for the build process.
 
