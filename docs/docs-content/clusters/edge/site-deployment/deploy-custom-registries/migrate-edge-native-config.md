@@ -38,26 +38,35 @@ primary registry and keep it up-to-date with the latest upstream updates.
 
 5. Click **Add New Pack** and select the <VersionedLink text="Harbor" url="/integrations/packs/?pack=harbor" /> pack.
 
-6. In the **values.yaml**, update `charts.harbor.harborAdminPassword` to the same password as your existing Harbor
-   registry. Click **Confirm & Create**.
+6. In the **values.yaml**, update `charts.harbor.harborAdminPassword` to the _same password_ as your existing Harbor
+   registry.
 
-7. Click **Add New Pack** and select the
+7. If you have previously changed the serving port, PVC, or TLS certificates used by Harbor, you must modify new Harbor
+   pack parameters to match your previous configurations. You update node port, TLS certificates, and PVC configuration
+   using the following parameters.
 
-   <VersionedLink text="Registry Connect" url="/integrations/packs/?pack=registry-connect" /> pack and select the
-   **Harbor Internal Registry** preset.
+   - `charts.harbor.expose.nodePort`
+   - `charts.harbor.expose.tls`
+   - `charts.harbor.persistence.persistentVolumeClaim`
 
 8. Click **Confirm & Create**.
 
-9. Save a new version of your cluster profile.
+<!-- prettier-ignore -->
+9. Click **Add New Pack**. Select the <VersionedLink text="Registry Connect" url="/integrations/packs/?pack=registry-connect" /> pack and select the
+   **Harbor Internal Registry** preset.
 
-10. Update your cluster to use the new profile. Refer to
+10. Click **Confirm & Create**.
+
+11. Save a new version of your cluster profile.
+
+12. Update your cluster to use the new profile. Refer to
     [Update a Cluster](../../../cluster-management/cluster-updates.md) for updating connected clusters and
     [Update Local Cluster](../../local-ui/cluster-management/update-cluster.md) for updating disconnected clusters.
 
 ## Validate
 
 1. Access the registry from your browser at `https://NODE_IP:30003`. Replace `NODE_IP` with any IP address in your
-   cluster.
+   cluster. If you changed the port that the registry is served on, replace the port number as well.
 
 2. Use the username `admin` and the password you configured to log in to Harbor.
 

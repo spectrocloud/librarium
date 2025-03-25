@@ -20,7 +20,9 @@ external network and reduce bandwidth usage.
 Any Open Container Initiative (OCI) compliant registry service and be used as a primary registry. We validate both Zot
 and Harbor as two out-of-the-box primary registries that can be deployed with minimal custom configuration.
 
-If you already have a cluster with the deprecated **Harbor Edge-Native Config** pack, and want t
+If you already have a cluster with the deprecated **Harbor Edge-Native Config** pack, and want to migrate to the new
+Harbor registry using **Registry Connect**, refer to
+[Migrate from Harbor Edge-Native Config Pack](./migrate-edge-native-config.md).
 
 ## Prerequisite
 
@@ -123,7 +125,7 @@ If you already have a cluster with the deprecated **Harbor Edge-Native Config** 
 ## Validate
 
 1. Access the registry on the web at `SERVICE-IP:30003`. Replace `SERVICE-IP` with the IP address of the registry
-   service.
+   service. If you changed the port that the registry is served on, replace the port number as well.
 
 2. Use the credentials you provided in the cluster profile to log in to the registry.
 
