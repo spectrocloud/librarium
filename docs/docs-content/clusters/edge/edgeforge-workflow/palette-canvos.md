@@ -684,6 +684,18 @@ git checkout v4.0.6
 14. CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. Issue the following command to
     start the build process.
 
+    <Tabs group="earthly">
+
+    <TabItem value="Earthly Installed">
+
+    ```bash
+    earthly +build-all-images
+    ```
+
+    </TabItem>
+
+    <TabItem value="Earthly Not Installed">
+
     ```bash
     sudo ./earthly.sh +build-all-images
     ```
