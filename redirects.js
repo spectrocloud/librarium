@@ -591,6 +591,10 @@ let redirects = [
     to: "/legal-licenses/oss-licenses-index/",
   },
   {
+    from: "/release-notes/annoucements/",
+    to: "release-notes/announcements/",
+  },
+  {
     from: "/clusters/cluster-management/noc-ui/",
     to: "/clusters/cluster-management/cluster-map-filters/",
   },

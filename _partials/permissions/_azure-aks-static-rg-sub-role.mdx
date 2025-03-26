@@ -6,10 +6,10 @@ partial_name: azure-aks-static-rg-sub-role
 
 ```json
 {
-    "Name": "Palette Static Placement AKS Cluster Deployer (rg/sub)",
-    "IsCustom": true,
-    "Description": "Can use Palette to deploy AKS clusters using static placement. This role contains the permissions that must be applied at the resource group scope level. If deploying multiple clusters in a variety of resource groups within a subscription, apply the role with the subscription as scope instead of the resource group as scope.",
-    "Actions": [
+  "Name": "Palette Static Placement AKS Cluster Deployer (rg/sub)",
+  "IsCustom": true,
+  "Description": "Can use Palette to deploy AKS clusters using static placement. This role contains the permissions that must be applied at the resource group scope level. If deploying multiple clusters in a variety of resource groups within a subscription, apply the role with the subscription as scope instead of the resource group as scope.",
+  "Actions": [
     "Microsoft.Authorization/classicAdministrators/operationstatuses/read",
     "Microsoft.Authorization/classicAdministrators/read",
     "Microsoft.Authorization/denyAssignments/read",
@@ -459,10 +459,10 @@ partial_name: azure-aks-static-rg-sub-role
     "Microsoft.ManagedIdentity/userAssignedIdentities/federatedIdentityCredentials/read",
     "Microsoft.ResourceHealth/availabilityStatuses/read",
     "Microsoft.Resources/subscriptions/resourceGroups/read"
-    ],
-    "NotActions": [],
-    "AssignableScopes": [
+  ],
+  "NotActions": [],
+  "AssignableScopes": [
     "/subscriptions/$SUBSCRIPTION_ID"
-    ]
+  ]
 }
 ```

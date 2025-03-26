@@ -163,6 +163,8 @@ the list of operations.
 - get
 - list
 - update
+- sshUpdate
+- sshUserUpdate
 
 </AccordionPanel>
 <AccordionPanel title="Edge Host Token">
