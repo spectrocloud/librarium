@@ -8,7 +8,8 @@ tags: ["edge"]
 ---
 
 A primary registry is an in-cluster registry that stores images required for cluster deployment. Every disconnected Edge
-cluster must have a primary registry.
+cluster must have a primary registry. Connected clusters can also benefit from using a primary registry for increased
+reliability and reduced bandwidth usage.
 
 When your Edge cluster is created for the first time, all images from add-on packs loaded from the content bundle or
 external registries are stored locally in the primary registry. Subsequent image pulls from the cluster are made to the
@@ -39,6 +40,8 @@ Harbor registry using **Registry Connect**, refer to
   [Model Edge Cluster Profile](../../site-deployment/model-profile.md).
 
 ## Deploy with a Primary Registry
+
+You may use one of our built-in registry packs or your own custom OCI registry.
 
 <Tabs group="Registry type">
 
