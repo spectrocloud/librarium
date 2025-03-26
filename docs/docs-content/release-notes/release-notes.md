@@ -11,6 +11,13 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## March XX, 2025 - Release 4.6.XX
+
+### Bug Fixes
+
+- Fixed an issue where users could not connect to Edge hosts using [remote shell](../clusters/edge/cluster-management/remote-shell.md) in VerteX SaaS environments. 
+- Fixed an issue that prevented host machines from automatically rebooting after installing the [Palette agent](../deployment-modes/agent-mode/install-agent-host.md). 
+
 ## March 20, 2025 - Release 4.6.13
 
 ### Bug Fixes
