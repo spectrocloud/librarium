@@ -44,7 +44,8 @@ Each Edge cluster consists of one or more nodes, with each node representing an 
 configuration begins with the [EdgeForge](../../../clusters/edge/edgeforge-workflow/edgeforge-workflow.md) process,
 which builds two key artifacts:
 
-1. **Installer ISO**: A bootable ISO image that contains the required dependencies, including the Palette Agent.
+1. **Installer ISO**: A bootable ISO image that includes the required dependencies, such as the Palette Agent, and
+   bootstraps the Edge installation process on the host.
 2. **Provider Images**: [Kairos](https://kairos.io/)-based customizable images that combine the OS and Kubernetes layers
    required for the cluster. These images install a secure, immutable OS during the cluster deployment and are
    referenced during the cluster profile creation.
@@ -59,8 +60,8 @@ which does not require a connection to Palette.
 
 ## Next Steps
 
-Explore the sequence of tutorials below to learn how to deploy your first Edge cluster with Palette. Each tutorial is
-designed to guide you step-by-step, building on the concepts introduced in the previous one.
+Explore the sequence of tutorials below to learn how to deploy your first connected Edge cluster with Palette. Each
+tutorial is designed to guide you step-by-step, building on the concepts introduced in the previous one.
 
 <!-- vale off -->
 
