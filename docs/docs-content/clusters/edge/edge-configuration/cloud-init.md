@@ -12,7 +12,9 @@ both during installation and during cluster deployment. Kairos is an open source
 immutable images, Kairos is a container layer that enables you to specify dependencies and create resources before
 locking down the image.
 
-The following diagram displays the available cloud-init stages you can use to customize the device installation.
+The following diagram displays the available cloud-init stages you can use to customize the device installation. Each
+stage has a before and after hook you can use to achieve more granular customization. For example, you can use
+`network.after` to verify network connectivity.
 
 ![A diagram that displays all the cloud-init stages supported. The stages are listed in the markdown table below.](/clusters_edge_cloud-init_cloud-init-stages-supported.webp)
 
@@ -38,13 +40,6 @@ cloud-init stages are listed below.
 | `before-upgrade`       | This stage executes before the upgrade.                                                                                                                                                                                                                                         |
 | `before-reset`         | This stage executes before reset.                                                                                                                                                                                                                                               |
 
-:::info
-
-Each stage has a before and after hook you can use to achieve more granular customization. For example, you can use
-`network.after` to verify network connectivity.
-
-:::
-
 ## Where to Apply Cloud-Init Stages?
 
 You may ask yourself where to use cloud-init stages, as both the Edge Installer and the OS pack support the usage of
@@ -55,6 +50,15 @@ cloud-init stages. Use the following statements to help you decide.
 
 - If you have common configurations across a fleet of Edge host devices, customize the OS pack and use the cloud-init
   stages to apply those configurations.
+
+:::warning
+
+Give each action in a cloud-init stage a unique name. During cluster deployment, the cloud-init stages between the OS
+pack and user data are merged. Without unique names to identify the different actions in a stage, some cloud-init data
+may get lost. You can name an action with the `name` parameter placed at the same level of indentation as the action.
+Refer to [Example Use Cases](#example-use-cases) for examples.
+
+:::
 
 ## Example Use Cases
 
@@ -70,7 +74,7 @@ resource to learn more about other key terms, options, and advanced examples.
 
 :::
 
-Use the Edge Installer user data to apply specific site configurations to the edge host.
+Use the Edge Installer user data to apply specific site configurations to the Edge host.
 
 #### Set the User Password
 
@@ -82,6 +86,7 @@ stages:
     - users:
         kairos:
           passwd: kairos
+      name: "Create user for host"
 ```
 
 #### Assign a User to a Group
@@ -95,6 +100,7 @@ stages:
         kairos:
           groups:
             - sudo
+      name: "Create user and assign to sudo group"
 ```
 
 #### Assign an SSH Key
@@ -108,6 +114,7 @@ stages:
         kairos:
           ssh_authorized_keys:
             - ssh-rsa AAAAB3N…
+      name: "Create user and assign SSH key"
 ```
 
 #### Configure a Registry Mirror
@@ -137,6 +144,7 @@ stages:
                 password: "mysupermagicalpassword"
               tls:
                 insecure_skip_verify: true
+    name: "Configure registry mirror"
 ```
 
 #### Configure Network With Netplan
@@ -294,6 +302,7 @@ stages:
           groups:
             - sudo
           passwd: kairos
+      name: Create user and assign to sudo group
 ```
 
 #### Custom Commands
