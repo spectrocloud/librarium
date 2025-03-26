@@ -23,8 +23,8 @@ to use a private registry for images other the provider images, refer to
 - If you have already specified an external registry. the provider registry will be ignored and the provider images will
   be pulled from the external registry instead.
 
-- You cannot use private provider registries for clusters with a local Harbor registry. For more information, refer to
-  [Enable Local Harbor Registry](./local-registry.md).
+- You cannot use private provider registries for clusters with a in-cluster primary registry. For more information,
+  refer to [Deploy with Primary Registry](./deploy-primary-registry.md).
 
 - If your private registry has TLS enabled, you can only configure a _new_ cluster to use a TLS certificate with a
   private registry. You cannot configure an existing cluster with a TLS certificate to communicate with your private
