@@ -347,12 +347,15 @@ used to create tenant clusters. Additional cloud accounts may be created if desi
 - A PCG is installed and available in the OpenStack. Refer to the [Deploy to OpenStack](../pcg/deploy-pcg/openstack.md)
   guide to learn how to deploy a PCG.
 
+<!-- prettier-ignore-start -->
+
 :::caution
 
-OpenStack support is limited to the Kubernetes distribution
-[Palette eXtended Kubernetes (PXK)](../../integrations/kubernetes.md) for version 1.24.x.
+OpenStack support is limited to the Kubernetes distribution <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> for version 1.24.x.
 
 :::
+
+<!-- prettier-ignore-end -->
 
 ### Deploy Cluster
 
