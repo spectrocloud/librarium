@@ -24,7 +24,7 @@ and the recommended remediation actions.
 
 ### Related CVEs
 
-Refer to the [Security Bulletins](../security-bulletins.md) page for additional information. 
+Refer to the <VersionedLink text="Security Bulletins" url="/security-bulletins/reports/" /> page for additional information. 
 
 - CVE-2025-1097
 - CVE-2025-1098
@@ -139,8 +139,8 @@ updated version of the component and update your instance.
 
 #### Palette Enterprise or VerteX Installed with the Palette CLI
 
-If you have any instances of Palette enterprise or VerteX installed via the Palette CLI with the affected version of
-the `ingress-nginx-controller` DaemonSet, you must update it to version `1.11.5`. Follow the steps below to download the
+If you have any instances of Palette enterprise or VerteX installed via the Palette CLI with the affected version of the
+`ingress-nginx-controller` DaemonSet, you must update it to version `1.11.5`. Follow the steps below to download the
 updated version of the component and update your instance.
 
 1. Use the `kubeconfig` file and `kubectl` tool to access your Palette enterprise or VerteX cluster. Refer to the
