@@ -25,11 +25,9 @@ updates for affected software when available.
 
 ## Security Advisories
 
-Security Advisories are a supplement to the Security Bulletins. They address security changes that may not require a
-security bulletin but may still affect our customers' overall security. Security Advisories are a way for us to
-communicate security information to you about issues that may not be classified as vulnerabilities and may not require a
-security bulletin.
+Security Advisories are a supplement to the Security Bulletins. They provide deeper context on CVEs, including a clear description of the incident, an explanation of impact and risks, and specific instructions to mitigate or remediate vulnerabilities. 
 
 ## Resources
 
 - <VersionedLink text="Security Bulletins" url="/security-bulletins/reports/" />
+- <VersionedLink text="Security Advisories" url="/security-bulletins/security-advisories/" />
