@@ -1,9 +1,9 @@
 ---
-sidebar_label: "Security Advisories"
-title: "Security Advisories"
+sidebar_label: "Security Advisory"
+title: "Security Advisory"
 description: "Palette Security Advisories for Common Vulnerabilities and Exposures (CVEs)."
 icon: ""
-toc_max_heading_level: 3
+toc_max_heading_level: 4
 hide_table_of_contents: false
 tags: ["security", "cve", "advisories"]
 ---
@@ -13,6 +13,8 @@ additional details regarding vulnerabilities and offering remediation steps.
 
 ## Security Advisory 001 - Nginx Vulnerability
 
+This advisory outlines security vulnerabilities related to [ingress-nginx](https://github.com/kubernetes/ingress-nginx) and the recommended remediation actions.
+
 - **Release Date**: March 27, 2025
 - **Last Updated**: March 27, 2025
 - **Severity**: 9.8
@@ -21,11 +23,11 @@ additional details regarding vulnerabilities and offering remediation steps.
 
 ### Related CVEs
 
-- [CVE-2025-1097](https://github.com/kubernetes/kubernetes/issues/131007)
-- [CVE-2025-1098](https://github.com/kubernetes/kubernetes/issues/131008)
-- [CVE-2025-1974](https://github.com/kubernetes/kubernetes/issues/131009)
-- [CVE-2025-24513](https://github.com/kubernetes/kubernetes/issues/131005)
-- [CVE-2025-24514](https://github.com/kubernetes/kubernetes/issues/131006)
+- [CVE-2025-1097](https://docs.spectrocloud.com/security-bulletins/reports/pc-cve-2025-1097/)
+- [CVE-2025-1098](https://docs.spectrocloud.com/security-bulletins/reports/pc-cve-2025-1098/)
+- [CVE-2025-1974](https://docs.spectrocloud.com/security-bulletins/reports/pc-cve-2025-1974/)
+- [CVE-2025-24513](https://docs.spectrocloud.com/security-bulletins/reports/pc-cve-2025-24513/)
+- [CVE-2025-24514](https://docs.spectrocloud.com/security-bulletins/reports/pc-cve-2025-24514/)
 
 ### Timeline
 
@@ -46,9 +48,6 @@ affected Nginx packs:
 - **April 2, 2025, 10:00 PM PST**: Airgapped Palette and VerteX patch.
 
 ### Summary
-
-This advisory outlines security vulnerabilities related to [ingress-nginx](https://github.com/kubernetes/ingress-nginx)
-and the recommended remediation actions.
 
 The identified CVEs affect all ingress-nginx controller deployments using the vulnerable image versions mentioned in
 this advisory. When chained together, the vulnerabilities can enable unauthenticated users to execute arbitrary code and
@@ -202,10 +201,7 @@ updated version of the component and update your instance.
 
 <TabItem value="Self-Hosted Palette" label="Self-Hosted Palette">
 
-1. Download the `airgap-palette-nginx` binary
-   (`https://software-private.spectrocloud.com/airgap/packs/airgap-palette-nginx-1.11.5.bin`) and upload it to the
-   registry. Follow the [Usage Instructions](../../enterprise-version/install-palette/airgap/supplemental-packs.md)
-   guide for detailed steps on downloading and installing the binary.
+1. Contact your Palette support representative to obtain the `airgap-palette-nginx` binary version `1.11.5`. Ensure the SHA of the binary is `8148734578378da043b918f893f3bbfcae9d421b9ac4426e10762d832734e1dd`. Once obtained, upload the `airgap-palette-nginx` binary to the registry. Follow the [Usage Instructions](../../enterprise-version/install-palette/airgap/supplemental-packs.md) guide for detailed steps on downloading and installing the binary.
 
 2. Log in to the Palette system console.
 
@@ -267,10 +263,7 @@ updated version of the component and update your instance.
 
 <TabItem value="Palette VerteX" label="Palette VerteX">
 
-1. Download the `airgap-palette-nginx` binary
-   (`https://software-private.spectrocloud.com/airgap/packs/airgap-palette-nginx-1.11.5.bin`) and upload it to the
-   registry. Follow the [Usage Instructions](../../vertex/install-palette-vertex/airgap/supplemental-packs.md) guide for
-   detailed steps on downloading and installing the binary.
+1. Contact your Palette support representative to obtain the `airgap-vertex-nginx` binary version `1.11.5`. Ensure the SHA of the binary is `846c1e92f32ddd9a8da7eebd5b6d05517c5626a11e64c34acdf093dacdcb7310`. Once obtained, upload the `airgap-vertex-nginx` binary to the registry. Follow the [Usage Instructions](../../vertex/install-palette-vertex/airgap/supplemental-packs.md) guide for detailed steps on downloading and installing the binary. 
 
 2. Log in to the Palette VerteX system console.
 
@@ -342,11 +335,7 @@ cluster profile.
 
 <TabItem value="Self-Hosted Palette" label="Self-Hosted Palette">
 
-1. Download the Ngnix airgap pack binary
-   (`https://software-private.spectrocloud.com/airgap/packs/airgap-palette-nginx-1.11.5.bin`) and upload it to the
-   registry. Follow the [Usage Instructions](../../enterprise-version/install-palette/airgap/supplemental-packs.md)
-   guide for detailed steps on downloading and installing the binary. Contact your Palette support representative to
-   obtain the credentials to download the binary.
+1. Contact your Palette support representative to obtain the `airgap-pack-nginx` binary version `1.11.5`. Ensure the SHA of the binary is `f526bdf9fba8031d50846e503ea8011d67ffdc23b9331a62ebe644ae49c06fb1`. Once obtained, upload the `airgap-pack-nginx` binary to the registry. Follow the [Usage Instructions](../../enterprise-version/install-palette/airgap/supplemental-packs.md) guide for detailed steps on downloading and installing the binary.
 
 2. Log in to the Palette system console.
 
@@ -367,11 +356,7 @@ cluster profile.
 
 <TabItem value="Palette VerteX" label="Palette VerteX">
 
-1. Download the Ngnix airgap pack binary
-   (`https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-pack-nginx-1.11.5.bin`) and upload it to the
-   registry. Follow the [Usage Instructions](../../vertex/install-palette-vertex/airgap/supplemental-packs.md) guide for
-   detailed steps on downloading and installing the binary. Contact your Palette support representative to obtain the
-   credentials to download the binary.
+1. Contact your Palette support representative to obtain the `airgap-pack-nginx` binary version `1.11.5`. Ensure the SHA of the binary is `f526bdf9fba8031d50846e503ea8011d67ffdc23b9331a62ebe644ae49c06fb1`. Once obtained, upload the `airgap-pack-nginx` binary to the registry. Follow the [Usage Instructions](../../vertex/install-palette-vertex/airgap/supplemental-packs.md) guide for detailed steps on downloading and installing the binary. 
 
 2. Log in to the Palette VerteX system console.
 
