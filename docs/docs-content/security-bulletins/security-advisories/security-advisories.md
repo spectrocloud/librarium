@@ -8,7 +8,8 @@ hide_table_of_contents: false
 tags: ["security", "cve", "advisories"]
 ---
 
-Security advisories supplement <VersionedLink text="security bulletins" url="/security-bulletins/reports/" />, providing additional details regarding vulnerabilities and offering remediation steps. 
+Security advisories supplement <VersionedLink text="security bulletins" url="/security-bulletins/reports/" />, providing
+additional details regarding vulnerabilities and offering remediation steps.
 
 ## Security Advisory 001 - Nginx Vulnerability
 
@@ -38,23 +39,27 @@ Security advisories supplement <VersionedLink text="security bulletins" url="/se
 
 #### Future Updates
 
-Estimated release dates for patches with the fix for Palette and VerteX versions 4.4 - 4.6, including the deprecation of affected Nginx packs:
+Estimated release dates for patches with the fix for Palette and VerteX versions 4.4 - 4.6, including the deprecation of
+affected Nginx packs:
 
 - **March 28, 2025, 10:00 PM PST**: Connected Palette and VerteX patch.
 - **April 2, 2025, 10:00 PM PST**: Airgapped Palette and VerteX patch.
 
 ### Summary
 
-This advisory outlines security vulnerabilities related to [ingress-nginx](https://github.com/kubernetes/ingress-nginx) and the recommended remediation actions.
+This advisory outlines security vulnerabilities related to [ingress-nginx](https://github.com/kubernetes/ingress-nginx)
+and the recommended remediation actions.
 
-The identified CVEs affect all ingress-nginx controller deployments using the vulnerable image versions mentioned in this advisory.
-When chained together, the vulnerabilities can enable unauthenticated users to execute arbitrary code and download
-confidential information such as secrets available in the cluster. These vulnerable images are used in the Palette and VerteX
-management planes. Additionally, Spectro Cloud also provides the Nginx pack to customers for their workload clusters, which contains several vulnerable image versions.
+The identified CVEs affect all ingress-nginx controller deployments using the vulnerable image versions mentioned in
+this advisory. When chained together, the vulnerabilities can enable unauthenticated users to execute arbitrary code and
+download confidential information such as secrets available in the cluster. These vulnerable images are used in the
+Palette and VerteX management planes. Additionally, Spectro Cloud also provides the Nginx pack to customers for their
+workload clusters, which contains several vulnerable image versions.
 
 As of March 26, 2025, all managed Palette instances have been patched. Customers should follow the below procedures to
-manually upgrade the affected component in self-hosted Palette and VerteX deployments and use the newly published Nginx pack (`1.11.5`) to upgrade affected
-workload clusters. All prior versions of Nginx will be marked deprecated within Palette.
+manually upgrade the affected component in self-hosted Palette and VerteX deployments and use the newly published Nginx
+pack (`1.11.5`) to upgrade affected workload clusters. All prior versions of Nginx will be marked deprecated within
+Palette.
 
 ### Recommended Actions
 
@@ -66,22 +71,23 @@ This vulnerability affects both workload clusters and Palette deployments.
   for instructions on how to update a cluster profile and apply the updates to workload clusters.
 
 - If you have any self-hosted instances of Palette or VerteX with the affected version of the `ingress-nginx-controller`
-  DaemonSet, you must update it to version `1.11.5`. Follow the steps described in the upcoming sections to manually upgrade the
-  controller.
+  DaemonSet, you must update it to version `1.11.5`. Follow the steps described in the upcoming sections to manually
+  upgrade the controller.
 
 #### Multi-Tenant and Dedicated SaaS Palette
 
 As of March 26, 2025, the `ingress-nginx-controller` DaemonSet used for multi-tenant and dedicated SaaS Palette has been
 upgraded to version `1.11.5`.
 
-Workload clusters must be identified and updated manually to use version `1.11.5` of the Nginx pack. Follow the below instructions to upgrade Nginx.
+Workload clusters must be identified and updated manually to use version `1.11.5` of the Nginx pack. Follow the below
+instructions to upgrade Nginx.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
 2. Navigate to the left main menu and select **Clusters**.
 
-3. Select a workload cluster to review. Navigate to the cluster's **Profile** tab and note if the cluster profile being used
-   contains Nginx.
+3. Select a workload cluster to review. Navigate to the cluster's **Profile** tab and note if the cluster profile being
+   used contains Nginx.
 
 4. Repeat step 3 for each cluster to ensure all cluster profiles using Nginx are identified.
 
@@ -336,9 +342,11 @@ cluster profile.
 
 <TabItem value="Self-Hosted Palette" label="Self-Hosted Palette">
 
-1. Download the Ngnix airgap pack binary (`https://software-private.spectrocloud.com/airgap/packs/airgap-palette-nginx-1.11.5.bin`) and upload it to the
+1. Download the Ngnix airgap pack binary
+   (`https://software-private.spectrocloud.com/airgap/packs/airgap-palette-nginx-1.11.5.bin`) and upload it to the
    registry. Follow the [Usage Instructions](../../enterprise-version/install-palette/airgap/supplemental-packs.md)
-   guide for detailed steps on downloading and installing the binary. Contact your Palette support representative to obtain the credentials to download the binary.
+   guide for detailed steps on downloading and installing the binary. Contact your Palette support representative to
+   obtain the credentials to download the binary.
 
 2. Log in to the Palette system console.
 
@@ -359,9 +367,11 @@ cluster profile.
 
 <TabItem value="Palette VerteX" label="Palette VerteX">
 
-1. Download the Ngnix airgap pack binary (`https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-pack-nginx-1.11.5.bin`) and upload it to the
+1. Download the Ngnix airgap pack binary
+   (`https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-pack-nginx-1.11.5.bin`) and upload it to the
    registry. Follow the [Usage Instructions](../../vertex/install-palette-vertex/airgap/supplemental-packs.md) guide for
-   detailed steps on downloading and installing the binary. Contact your Palette support representative to obtain the credentials to download the binary.
+   detailed steps on downloading and installing the binary. Contact your Palette support representative to obtain the
+   credentials to download the binary.
 
 2. Log in to the Palette VerteX system console.
 

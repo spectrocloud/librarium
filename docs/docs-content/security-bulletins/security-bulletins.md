@@ -25,7 +25,9 @@ updates for affected software when available.
 
 ## Security Advisories
 
-Security Advisories are a supplement to the Security Bulletins. They provide deeper context on CVEs, including a clear description of the incident, an explanation of impact and risks, and specific instructions to mitigate or remediate vulnerabilities. 
+Security Advisories are a supplement to the Security Bulletins. They provide deeper context on CVEs, including a clear
+description of the incident, an explanation of impact and risks, and specific instructions to mitigate or remediate
+vulnerabilities.
 
 ## Resources
 
