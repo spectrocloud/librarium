@@ -24,7 +24,8 @@ and the recommended remediation actions.
 
 ### Related CVEs
 
-Refer to the <VersionedLink text="Security Bulletins" url="/security-bulletins/reports/" /> page for additional information. 
+Refer to the <VersionedLink text="Security Bulletins" url="/security-bulletins/reports/" /> page for additional
+information.
 
 - CVE-2025-1097
 - CVE-2025-1098
