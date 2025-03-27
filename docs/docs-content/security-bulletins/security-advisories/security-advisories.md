@@ -24,11 +24,13 @@ and the recommended remediation actions.
 
 ### Related CVEs
 
-- [CVE-2025-1097](../reports/pc-cve-2025-1097/)
-- [CVE-2025-1098](../reports/pc-cve-2025-1098/)
-- [CVE-2025-1974](../reports/pc-cve-2025-1974/)
-- [CVE-2025-24513](../reports/pc-cve-2025-24513/)
-- [CVE-2025-24514](../reports/pc-cve-2025-24514/)
+Refer to the [Security Bulletins](../security-bulletins.md) page for additional information. 
+
+- CVE-2025-1097
+- CVE-2025-1098
+- CVE-2025-1974
+- CVE-2025-24513
+- CVE-2025-24514
 
 ### Timeline
 
