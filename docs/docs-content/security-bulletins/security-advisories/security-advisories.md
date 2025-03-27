@@ -25,21 +25,27 @@ tags: ["security", "cve", "advisories"]
 
 ### Timeline
 
-- 03/24/2025: First notified  
+- 03/24/2025: First notified
 - 03/24/2025: CVE bulletin published
 - 03/26/2025: New Nginx pack published
 - 03/26/2025: All managed Palette instances patched
-- 03/27/2025: Manual patch procedure provided for self-hosted Palette for connected and airgapped installations 
+- 03/27/2025: Manual patch procedure provided for self-hosted Palette for connected and airgapped installations
 
 ETA for patch release with the fix for Palette/VerteX 4.6/4.5/4.4:
+
 - 03/28/2025, 10:00 PM PST: Palette/Vertex Connected
 - 04/02/2025, 10:00 PM PST: Palette/Vertex Airgapped
 
 ### Summary
 
-The identified CVEs affect all ingress-nginx controller deployments using the vulnerable image versions mentioned above. When chained together, the vulnerabilities can enable unauthenticated users to execute arbitrary code and download confidential information such as secrets available in the cluster. Palette and VerteX use the vulnerable images in the management plane. Spectro Cloud also provides the Nginx pack to customers for their workload clusters.
+The identified CVEs affect all ingress-nginx controller deployments using the vulnerable image versions mentioned above.
+When chained together, the vulnerabilities can enable unauthenticated users to execute arbitrary code and download
+confidential information such as secrets available in the cluster. Palette and VerteX use the vulnerable images in the
+management plane. Spectro Cloud also provides the Nginx pack to customers for their workload clusters.
 
-As of March 26, 2025, all managed Palette instances have been patched. Customers should follow the below procedure to patch self-hosted Palette and VerteX deployments and use the newly published Nginx pack (`1.11.5`) to update affected workload clusters.
+As of March 26, 2025, all managed Palette instances have been patched. Customers should follow the below procedure to
+patch self-hosted Palette and VerteX deployments and use the newly published Nginx pack (`1.11.5`) to update affected
+workload clusters.
 
 ### Recommended Actions
 
@@ -56,19 +62,26 @@ This vulnerability affects both workload clusters and Palette deployments.
 
 #### Multi-Tenant and Dedicated SaaS Palette
 
-As of March 26, 2025, the `ingress-nginx-controller` DaemonSet used for multi-tenant and dedicated SaaS Palette has been upgraded to version `1.11.5`. However, affected host clusters must be identified and updated manually to use version `1.11.5` of the Nginx pack.
+As of March 26, 2025, the `ingress-nginx-controller` DaemonSet used for multi-tenant and dedicated SaaS Palette has been
+upgraded to version `1.11.5`. However, affected host clusters must be identified and updated manually to use version
+`1.11.5` of the Nginx pack.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
 2. Navigate to the left main menu and select **Clusters**.
 
-3. Select a host cluster to review. Navigate to the cluster's **Profile** tab and note if the cluster profile being used contains Nginx. 
+3. Select a host cluster to review. Navigate to the cluster's **Profile** tab and note if the cluster profile being used
+   contains Nginx.
 
-4. Repeat step 3 for each cluster to ensure all cluster profiles using Nginx are identified. 
+4. Repeat step 3 for each cluster to ensure all cluster profiles using Nginx are identified.
 
-5. Update all cluster profiles currently using the affected version of the Nginx pack to `1.11.5`. Refer to the [Update a Cluster Profile](../../profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile.md) guide for instructions on how to update a cluster profile.
+5. Update all cluster profiles currently using the affected version of the Nginx pack to `1.11.5`. Refer to the
+   [Update a Cluster Profile](../../profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile.md) guide
+   for instructions on how to update a cluster profile.
 
-6. Apply the profile updates to all affected clusters. Refer to the [Apply Profile Updates to Clusters](../../profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile.md#apply-profile-updates-to-clusters) guide to learn how to apply profile updates to clusters. 
+6. Apply the profile updates to all affected clusters. Refer to the
+   [Apply Profile Updates to Clusters](../../profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile.md#apply-profile-updates-to-clusters)
+   guide to learn how to apply profile updates to clusters.
 
 #### Self-Hosted Instances of Palette or VerteX Installed with Helm Charts
 
@@ -175,13 +188,13 @@ updated version of the component and update your instance.
 
 1. Download the `airgap-palette-nginx` binary
    (`https://software-private.spectrocloud.com/airgap/packs/airgap-palette-nginx-1.11.5.bin`) and upload it to the
-   registry. Follow the [Usage Instructions](../../enterprise-version/install-palette/airgap/supplemental-packs.md) guide for
-   detailed steps on downloading and installing the binary.
+   registry. Follow the [Usage Instructions](../../enterprise-version/install-palette/airgap/supplemental-packs.md)
+   guide for detailed steps on downloading and installing the binary.
 
 2. Log in to the Palette system console.
 
-3. From the left **Main Menu**, select **Administration > Pack Registries**. Then, next to the packs registry, click
-   the three-dot button > **Sync**. Wait for the registry synchronization to complete.
+3. From the left **Main Menu**, select **Administration > Pack Registries**. Then, next to the packs registry, click the
+   three-dot button > **Sync**. Wait for the registry synchronization to complete.
 
 4. Use the `kubeconfig` file and `kubectl` tool to access your self-hosted Palette cluster. Refer to the
    [Access Cluster with CLI](../../clusters/cluster-management/palette-webctl.md) guide for more information.
@@ -245,8 +258,8 @@ updated version of the component and update your instance.
 
 2. Log in to the Palette VerteX system console.
 
-3. From the left **Main Menu**, select **Administration > Pack Registries**. Then, next to the packs registry, click
-   the three-dot button > **Sync**. Wait for the registry synchronization to complete.
+3. From the left **Main Menu**, select **Administration > Pack Registries**. Then, next to the packs registry, click the
+   three-dot button > **Sync**. Wait for the registry synchronization to complete.
 
 4. Use the `kubeconfig` file and `kubectl` tool to access your self-hosted Palette cluster. Refer to the
    [Access Cluster with CLI](../../clusters/cluster-management/palette-webctl.md) guide for more information.
@@ -315,13 +328,13 @@ cluster profile.
 
 1. Download the Ngnix airgap pack binary
    (`https://software-private.spectrocloud.com/airgap/packs/airgap-pack-nginx-1.11.5.bin`) and upload it to the
-   registry. Follow the [Usage Instructions](../../enterprise-version/install-palette/airgap/supplemental-packs.md) guide for
-   detailed steps on downloading and installing the binary.
+   registry. Follow the [Usage Instructions](../../enterprise-version/install-palette/airgap/supplemental-packs.md)
+   guide for detailed steps on downloading and installing the binary.
 
 2. Log in to the Palette system console.
 
-3. From the left main menu, select **Administration > Pack Registries**. Then, next to the packs registry, click
-   the three-dot button > **Sync**. Wait for the registry synchronization to complete.
+3. From the left main menu, select **Administration > Pack Registries**. Then, next to the packs registry, click the
+   three-dot button > **Sync**. Wait for the registry synchronization to complete.
 
 4. Log in to the Palette console.
 
@@ -344,8 +357,8 @@ cluster profile.
 
 2. Log in to the Palette VerteX system console.
 
-3. From the left main menu, select **Administration > Pack Registries**. Then, next to the packs registry, click
-   the three-dot button > **Sync**. Wait for the registry synchronization to complete.
+3. From the left main menu, select **Administration > Pack Registries**. Then, next to the packs registry, click the
+   three-dot button > **Sync**. Wait for the registry synchronization to complete.
 
 4. Log in to the Palette VerteX console.
 
@@ -360,7 +373,3 @@ cluster profile.
 </TabItem>
 
 </Tabs>
-
-
-
-
