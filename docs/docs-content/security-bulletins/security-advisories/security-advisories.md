@@ -24,11 +24,11 @@ and the recommended remediation actions.
 
 ### Related CVEs
 
-- [CVE-2025-1097](https://docs.spectrocloud.com/security-bulletins/reports/pc-cve-2025-1097/)
-- [CVE-2025-1098](https://docs.spectrocloud.com/security-bulletins/reports/pc-cve-2025-1098/)
-- [CVE-2025-1974](https://docs.spectrocloud.com/security-bulletins/reports/pc-cve-2025-1974/)
-- [CVE-2025-24513](https://docs.spectrocloud.com/security-bulletins/reports/pc-cve-2025-24513/)
-- [CVE-2025-24514](https://docs.spectrocloud.com/security-bulletins/reports/pc-cve-2025-24514/)
+- [CVE-2025-1097](../reports/pc-cve-2025-1097/)
+- [CVE-2025-1098](../reports/pc-cve-2025-1098/)
+- [CVE-2025-1974](../reports/pc-cve-2025-1974/)
+- [CVE-2025-24513](../reports/pc-cve-2025-24513/)
+- [CVE-2025-24514](../reports/pc-cve-2025-24514/)
 
 ### Timeline
 
@@ -38,7 +38,7 @@ and the recommended remediation actions.
 - **March 24, 2025**: CVE bulletin published.
 - **March 26, 2025**: New Nginx pack published.
 - **March 26, 2025, 11:30 PM PST - March 27, 2025, 12:43 AM PST**: All managed Palette instances patched.
-- **March 27, 2025**: Manual patch procedure provided for connected and airgapped self-hosted Palette installations.
+- **March 27, 2025**: Manual patch procedure provided for connected and airgapped Palette enterprise installations.
 
 #### Future Updates
 
@@ -57,7 +57,7 @@ Palette and VerteX management planes. Additionally, Spectro Cloud also provides 
 workload clusters, which contains several vulnerable image versions.
 
 As of March 26, 2025, all managed Palette instances have been patched. Customers should follow the below procedures to
-manually upgrade the affected component in self-hosted Palette and VerteX deployments and use the newly published Nginx
+manually upgrade the affected component in Palette enterprise and VerteX deployments and use the newly published Nginx
 pack (`1.11.5`) to upgrade affected workload clusters. All prior versions of Nginx will be marked deprecated within
 Palette.
 
@@ -70,7 +70,7 @@ This vulnerability affects both workload clusters and Palette deployments.
   [Update a Cluster Profile](../../profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile.md) guide
   for instructions on how to update a cluster profile and apply the updates to workload clusters.
 
-- If you have any self-hosted instances of Palette or VerteX with the affected version of the `ingress-nginx-controller`
+- If you have any instances of Palette enterprise or VerteX with the affected version of the `ingress-nginx-controller`
   DaemonSet, you must update it to version `1.11.5`. Follow the steps described in the upcoming sections to manually
   upgrade the controller.
 
@@ -99,13 +99,13 @@ instructions to upgrade Nginx.
    [Apply Profile Updates to Clusters](../../profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile.md#apply-profile-updates-to-clusters)
    guide to learn how to apply profile updates to clusters.
 
-#### Self-Hosted Instances of Palette or VerteX Installed with Helm Charts
+#### Palette Enterprise or VerteX Installed with Helm Charts
 
-If you have any self-hosted instances of Palette or VerteX installed via Helm Charts with the affected version of the
+If you have any instances of Palette enterprise or VerteX installed via Helm Charts with the affected version of the
 `ingress-nginx-controller` DaemonSet, you must update it to version `1.11.5`. Follow the steps below to download the
 updated version of the component and update your instance.
 
-1. Use the `kubeconfig` file and `kubectl` tool to access your self-hosted Palette or VerteX cluster. Refer to the
+1. Use the `kubeconfig` file and `kubectl` tool to access your Palette enterprise or VerteX cluster. Refer to the
    [Access Cluster with CLI](../../clusters/cluster-management/palette-webctl.md) guide for more information.
 
 2. Check the image used by the `ingress-nginx-controller` DaemonSet in the `ingress-nginx` namespace.
@@ -135,13 +135,13 @@ updated version of the component and update your instance.
   kubectl set image daemonset/ingress-nginx-controller <container-name>=us-docker.pkg.dev/palette-images/third-party/ingress-nginx/controller:v1.11.5 --namespace ingress-nginx
   ```
 
-#### Self-Hosted Instances of Palette or VerteX Installed with the Palette CLI
+#### Palette Enterprise or VerteX Installed with the Palette CLI
 
-If you have any self-hosted instances of Palette or VerteX installed via the Palette CLI with the affected version of
+If you have any instances of Palette enterprise or VerteX installed via the Palette CLI with the affected version of
 the `ingress-nginx-controller` DaemonSet, you must update it to version `1.11.5`. Follow the steps below to download the
 updated version of the component and update your instance.
 
-1. Use the `kubeconfig` file and `kubectl` tool to access your self-hosted Palette or VerteX cluster. Refer to the
+1. Use the `kubeconfig` file and `kubectl` tool to access your Palette enterprise or VerteX cluster. Refer to the
    [Access Cluster with CLI](../../clusters/cluster-management/palette-webctl.md) guide for more information.
 
 2. Scale down the `palette-controller-manager` deployment to zero replicas in the `cluster-mgmt-*` namespace, replacing
@@ -192,15 +192,15 @@ updated version of the component and update your instance.
   kubectl set image daemonset/ingress-nginx-controller <container-name>=us-docker.pkg.dev/palette-images/third-party/ingress-nginx/controller:v1.11.5 --namespace ingress-nginx
   ```
 
-#### Airgap Self-Hosted Instances of Palette or VerteX
+#### Airgap Palette Enterprise or VerteX
 
-If you have any airgap self-hosted instances of Palette or VerteX using the affected version of the
+If you have any airgapped instances of Palette enterprise or VerteX using the affected version of the
 `ingress-nginx-controller` DaemonSet, you must update it to version `1.11.5`. Follow the steps below to download the
 updated version of the component and update your instance.
 
 <Tabs>
 
-<TabItem value="Self-Hosted Palette" label="Self-Hosted Palette">
+<TabItem value="Palette Enterprise" label="Palette Enterprise">
 
 1. Contact your Palette support representative to obtain the `airgap-palette-nginx` binary version `1.11.5`. Ensure the
    SHA of the binary is `8148734578378da043b918f893f3bbfcae9d421b9ac4426e10762d832734e1dd`. Once obtained, upload the
@@ -213,7 +213,7 @@ updated version of the component and update your instance.
 3. From the left **Main Menu**, select **Administration > Pack Registries**. Then, next to the packs registry, click the
    three-dot button > **Sync**. Wait for the registry synchronization to complete.
 
-4. Use the `kubeconfig` file and `kubectl` tool to access your self-hosted Palette cluster. Refer to the
+4. Use the `kubeconfig` file and `kubectl` tool to access your Palette enterprise cluster. Refer to the
    [Access Cluster with CLI](../../clusters/cluster-management/palette-webctl.md) guide for more information.
 
 5. Scale down the `palette-controller-manager` deployment to zero replicas in the `cluster-mgmt-*` namespace, replacing
@@ -279,7 +279,7 @@ updated version of the component and update your instance.
 3. From the left **Main Menu**, select **Administration > Pack Registries**. Then, next to the packs registry, click the
    three-dot button > **Sync**. Wait for the registry synchronization to complete.
 
-4. Use the `kubeconfig` file and `kubectl` tool to access your self-hosted Palette cluster. Refer to the
+4. Use the `kubeconfig` file and `kubectl` tool to access your Palette enterprise cluster. Refer to the
    [Access Cluster with CLI](../../clusters/cluster-management/palette-webctl.md) guide for more information.
 
 5. Scale down the `palette-controller-manager` deployment to zero replicas in the `cluster-mgmt-*` namespace, replacing
@@ -342,7 +342,7 @@ cluster profile.
 
 <Tabs>
 
-<TabItem value="Self-Hosted Palette" label="Self-Hosted Palette">
+<TabItem value="Palette Enterprise" label="Palette Enterprise">
 
 1. Contact your Palette support representative to obtain the `airgap-pack-nginx` binary version `1.11.5`. Ensure the SHA
    of the binary is `f526bdf9fba8031d50846e503ea8011d67ffdc23b9331a62ebe644ae49c06fb1`. Once obtained, upload the
