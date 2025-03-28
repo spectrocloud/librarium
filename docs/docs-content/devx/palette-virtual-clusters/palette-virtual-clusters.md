@@ -9,7 +9,7 @@ tags: ["devx", "app mode", "pde"]
 Palette Virtual Clusters are Kubernetes clusters that run as nested clusters within an existing cluster (also known as a
 Host Cluster) or Host Cluster groups and share the host cluster resources, such as CPU, memory, and storage. By default,
 virtual clusters use k3s as virtual Kubernetes cluster, which is a highly available, certified Kubernetes distribution
-designed for production workloads. Palette Virtual Clusters are powered by [vCluster](https://www.vcluster.com/)
+designed for production workloads. Palette Virtual Clusters are powered by [vCluster](https://www.vcluster.com/).
 
 The Palette platform provisions and orchestrates all Palette Virtual CLusters, making it simple to use the lightweight,
 Kubernetes technology stack and tools ecosystem. Deploy virtual clusters on Host Cluster Group by following the wizard
@@ -91,3 +91,16 @@ operating costs and resource management for the Palette Virtual Clusters.
 - Virtual clusters in a paused state will continue to appear as an entry in the Palette Dev Engine Console.
 
 [Click here to know How to Pause and Release your Palette Virtual Cluster](pause-restore-virtual-clusters.md).
+
+## Breaking Changes
+
+The [vCluster version](https://www.vcluster.com/releases/en/changelog) may be updated in a Palette release, which can
+introduce breaking changes that affect newly created virtual clusters.
+
+To avoid disruptions, Palette locks the vCluster version for each cluster group, ensuring virtual clusters can still be
+provisioned successfully within existing groups, even across Palette updates.
+
+If you want to use the latest version of vCluster on your virtual clusters, you must create a new cluster group and
+migrate your workloads from your legacy clusters. This process must be performed in
+[cluster mode](../../deployment-modes/deployment-modes.md). Refer to
+[Migrate Virtual Cluster Workloads](../../clusters/palette-virtual-clusters/migrate-virtual-clusters.md) for guidance.
