@@ -41,13 +41,13 @@ Refer to the [Security Bulletins](../reports/reports.mdx) page for detailed info
 - **March 26, 2025**: New Nginx pack published.
 - **March 26, 2025, 11:30 PM PST - March 27, 2025, 12:43 AM PST**: All managed Palette instances patched.
 - **March 27, 2025**: Manual patch procedure provided for connected and airgapped Palette enterprise installations.
+- **March 28, 2025**: Connected Palette Enterprise and VerteX patch for versions 4.4 - 4.6.
 
 #### Future Updates
 
-Estimated release dates for patches with the fix for Palette and VerteX versions 4.4 - 4.6, including the deprecation of
+Estimated release date for patch with the fix for Palette and VerteX versions 4.4 - 4.6, including the deprecation of
 affected Nginx packs:
 
-- **March 28, 2025, 10:00 PM PST**: Connected Palette and VerteX patch.
 - **April 2, 2025, 10:00 PM PST**: Airgapped Palette and VerteX patch.
 
 ### Summary
