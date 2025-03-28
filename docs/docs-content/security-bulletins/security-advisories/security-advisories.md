@@ -42,14 +42,12 @@ Refer to the [Security Bulletins](../reports/reports.mdx) page for detailed info
 - **March 26, 2025, 11:30 PM PST - March 27, 2025, 12:43 AM PST**: All managed Palette instances patched.
 - **March 27, 2025**: Manual patch procedure provided for connected and airgapped Palette Enterprise and VerteX
   installations.
-- **March 28, 2025**: Connected Palette Enterprise and VerteX patch for versions 4.4 - 4.6.
+- **March 28, 2025**: Affected Nginx packs deprecated.
+- **March 28, 2025**: Connected Palette Enterprise and VerteX patched for versions 4.4 - 4.6.
 
 #### Future Updates
 
-Estimated release date for patch with the fix for Palette and VerteX versions 4.4 - 4.6, including the deprecation of
-affected Nginx packs:
-
-- **April 2, 2025, 10:00 PM PST**: Airgapped Palette and VerteX patch.
+- **April 2, 2025, 10:00 PM PST**: Airgapped Palette Enterprise and VerteX patch for versions 4.4 - 4.6.
 
 ### Summary
 
@@ -59,10 +57,12 @@ download confidential information such as secrets available in the cluster. Thes
 Palette and VerteX management planes. Additionally, Spectro Cloud also provides the Nginx pack to customers for their
 workload clusters, which contains several vulnerable image versions.
 
-As of March 26, 2025, all managed Palette instances have been patched. Customers should follow the below procedures to
-manually upgrade the affected component in Palette enterprise and VerteX deployments and use the newly published Nginx
-pack (`1.11.5`) to upgrade affected workload clusters. All prior versions of Nginx will be marked deprecated within
-Palette.
+As of March 28, 2025, all managed Palette instances have been patched, as well as connected Palette Enterprise and VerteX installations, and vulnerable Nginx packs have been deprecated. Currently, airgapped Palette Enterprise and VerteX
+installations must manually upgrade their `ingress-nginx` controllers to version `1.11.5`.
+
+All workload clusters across all Palette and VerteX installations must be updated manually. All users should review their [cluster profiles](../profiles/cluster-profiles/cluster-profiles.md) and workload clusters and upgrade the Nginx pack to version `1.11.5`.
+
+Follow the below procedures to manually upgrade the affected components and upgrade affected workload clusters. 
 
 ### Recommended Actions
 
