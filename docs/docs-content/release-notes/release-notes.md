@@ -22,7 +22,7 @@ tags: ["release-notes"]
 
 ### Security Notices
 
-- On March 24, 2025, a security vulnerability regarding certain versions of [ingress-nginx](https://github.com/kubernetes/ingress-nginx) was reported. The vulnerable versions were used in Palette's and VerteX's management planes and were also available as packs for workload clusters. All managed Palette and VerteX management planes were patched and upgraded to a secure version, `1.11.5`, on March 26, 2025. All users should review their running clusters and upgrade the Nginx pack to version `1.11.5`. Self-hosted Palette and VerteX installations must also manually update their `ingress-nginx` controllers to version `1.11.5`. For more information and remediation steps, refer to our [Security Advisory](../security-bulletins/security-advisories). 
+- On March 24, 2025, a security vulnerability regarding certain versions of [ingress-nginx](https://github.com/kubernetes/ingress-nginx) was reported. The vulnerable versions were used in Palette's and VerteX's management planes and were also available as packs for workload clusters. On March 26, 2025, all managed Palette and VerteX management planes were patched and upgraded to a secure version, `1.11.5`. All users should review their [cluster profiles](../profiles/cluster-profiles/cluster-profiles.md) and workload clusters and upgrade the Nginx pack to version `1.11.5`. [Self-hosted](../enterprise-version/enterprise-version.md) Palette and [VerteX](../vertex/vertex.md) installations must also manually update their `ingress-nginx` controllers to version `1.11.5`. For more information and remediation steps, refer to our [Security Advisory](../security-bulletins/security-advisories/security-advisories.md). 
 
 ## March 20, 2025 - Release 4.6.13
 
