@@ -8,9 +8,11 @@ sidebar_position: 20
 tags: ["clusters", "cluster groups", "virtual clusters"]
 ---
 
-It is sometimes necessary to migrate workloads from one virtual cluster to another. For instance, if a virtual cluster cannot be upgraded due to breaking changes, migrating its workloads becomes the only option.
+It is sometimes necessary to migrate workloads from one virtual cluster to another. For instance, if a virtual cluster
+cannot be upgraded due to breaking changes, migrating its workloads becomes the only option.
 
-This guide provides high-level steps to help you migrate workloads between virtual clusters and delete legacy virtual clusters. The steps in Palette need to be performed in [cluster mode](../../introduction/palette-modes.md).
+This guide provides high-level steps to help you migrate workloads between virtual clusters and delete legacy virtual
+clusters. The steps in Palette need to be performed in [cluster mode](../../introduction/palette-modes.md).
 
 ## Migrate Workloads to New Virtual Cluster
 
@@ -18,13 +20,18 @@ This guide provides high-level steps to help you migrate workloads between virtu
 
 - Access to your virtual cluster through [kubectl](https://kubernetes.io/docs/reference/kubectl/).
 
-- At a minimum, the [**Virtual Cluster Admin**](../../user-management/palette-rbac/project-scope-roles-permissions.md#virtual-cluster) role in Palette.
+- At a minimum, the
+  [**Virtual Cluster Admin**](../../user-management/palette-rbac/project-scope-roles-permissions.md#virtual-cluster)
+  role in Palette.
 
-- The necessary prerequisites to create a new cluster group to host the virtual clusters. Refer to [Create and Manage Cluster Groups - Prerequisites](../cluster-groups/create-cluster-group.md#prerequisites) for guidance.
+- The necessary prerequisites to create a new cluster group to host the virtual clusters. Refer to
+  [Create and Manage Cluster Groups - Prerequisites](../cluster-groups/create-cluster-group.md#prerequisites) for
+  guidance.
 
 ### Migrate Workloads
 
-There are multiple methods to migrate workloads between clusters. This guide covers one of them being a manual export and import of YAML manifests. 
+There are multiple methods to migrate workloads between clusters. This guide covers one of them being a manual export
+and import of YAML manifests.
 
 :::warning
 
@@ -51,23 +58,31 @@ These steps may not cover all use-cases so ensure that you adjust them to your e
      --output yaml > my-app-service.yaml
    ```
 
-3. Remove any cluster-specific fields from the exported YAMLs, such as `resourceVersion`, `uid`, `creationTimestamp`, or `managedFields`. Also ensure to remove any `status` fields or [finalizers](https://kubernetes.io/docs/concepts/overview/working-with-objects/finalizers/) in the exported YAMLs, if they appear. This will prevent conflicts in the new cluster.
+3. Remove any cluster-specific fields from the exported YAMLs, such as `resourceVersion`, `uid`, `creationTimestamp`, or
+   `managedFields`. Also ensure to remove any `status` fields or
+   [finalizers](https://kubernetes.io/docs/concepts/overview/working-with-objects/finalizers/) in the exported YAMLs, if
+   they appear. This will prevent conflicts in the new cluster.
 
-4. In the exported YAMLs, update references to external resources, such as a specific PersistentVolume name or private registry secrets. For example, if your YAML references a PersistentVolume named `pv-old-cluster` in the old namespace, rename it to `pv-new-cluster` in the new namespace before deployment.
+4. In the exported YAMLs, update references to external resources, such as a specific PersistentVolume name or private
+   registry secrets. For example, if your YAML references a PersistentVolume named `pv-old-cluster` in the old
+   namespace, rename it to `pv-new-cluster` in the new namespace before deployment.
 
-   Also ensure that `metadata.namespace` points to the expected target namespace in the new virtual cluster. 
+   Also ensure that `metadata.namespace` points to the expected target namespace in the new virtual cluster.
 
 5. Log in to [Palette](https://console.spectrocloud.com).
 
-6. [Create a new cluster group](../cluster-groups/create-cluster-group.md) for the new virtual clusters. You can use the same host clusters that are used for your legacy virtual clusters or select different ones.
+6. [Create a new cluster group](../cluster-groups/create-cluster-group.md) for the new virtual clusters. You can use the
+   same host clusters that are used for your legacy virtual clusters or select different ones.
 
    :::warning
 
-   If using the same host clusters for your new cluster group, ensure there are enough resources for both the legacy and new virtual clusters to claim.
+   If using the same host clusters for your new cluster group, ensure there are enough resources for both the legacy and
+   new virtual clusters to claim.
 
    :::
 
-7. [Deploy new virtual clusters](./deploy-virtual-cluster.md) to your new cluster group. These will replace your legacy clusters so it is advisable to set the same amount of maximum resources to each new virtual cluster.
+7. [Deploy new virtual clusters](./deploy-virtual-cluster.md) to your new cluster group. These will replace your legacy
+   clusters so it is advisable to set the same amount of maximum resources to each new virtual cluster.
 
 8. Apply your YAML manifests to each new virtual cluster using `kubectl`.
 
@@ -91,13 +106,11 @@ These steps may not cover all use-cases so ensure that you adjust them to your e
    service/my-app-service created
    ```
 
-9.  You may need to perform the following additional actions after importing your resources:
+9. If needed, adjust your DNS records to point at the new ingress or loadbalancer IPs of the new virtual clusters.
 
-   - Adjust your DNS records to point at the new ingress or loadbalancer IPs of the new virtual clusters.
+10. Migrate any persistent data to the storage accessible to the new virtual clusters, if required.
 
-   - Migrate any persistent data to the storage accessible to the new virtual clusters.
-
-   - Modify any application and CI/CD pipelines to point at the new virtual clusters.
+11. Modify any application and CI/CD pipelines to point at the new virtual clusters.
 
 ### Validate
 
@@ -115,9 +128,12 @@ These steps may not cover all use-cases so ensure that you adjust them to your e
 
    - Pods should display a `Running` or `Ready` state.
 
-   - Services should display a `ClusterIP`, `ExternalIP`, `LoadBalancer`, or `Ingress`, depending on the type of Service.
+   - Services should display a `ClusterIP`, `ExternalIP`, `LoadBalancer`, or `Ingress`, depending on the type of
+     Service.
 
-3. If you’re using an Ingress, verify that the Ingress Controller is correctly routing traffic. For example, use the following command to check that the Ingress controller has assigned an external IP or hostname and is processing the rules you configured.
+3. If you’re using an Ingress, verify that the Ingress Controller is correctly routing traffic. For example, use the
+   following command to check that the Ingress controller has assigned an external IP or hostname and is processing the
+   rules you configured.
 
    Replace `<appIngress>` with your Ingress name and `<namespace>` with the namespace for your Ingress on the cluster.
 
@@ -135,7 +151,7 @@ These steps may not cover all use-cases so ensure that you adjust them to your e
      ----                 ----  --------
      example.com
                           /     my-app-service:80 (10.44.0.2:8080,10.44.0.3:8080)
-   Annotations:           
+   Annotations:
      kubernetes.io/ingress.class: nginx
      nginx.ingress.kubernetes.io/rewrite-target: /
    Events:
@@ -148,11 +164,14 @@ These steps may not cover all use-cases so ensure that you adjust them to your e
 
 ## Delete Legacy Virtual Clusters
 
-If all workloads have been fully migrated to a new virtual cluster, or your virtual cluster is no longer required, use the steps in this section to delete your legacy clusters.
+If all workloads have been fully migrated to a new virtual cluster, or your virtual cluster is no longer required, use
+the steps in this section to delete your legacy clusters.
 
 ### Prerequisites
 
-- At a minimum, the [**Virtual Cluster Admin**](../../user-management/palette-rbac/project-scope-roles-permissions.md#virtual-cluster) role in Palette.
+- At a minimum, the
+  [**Virtual Cluster Admin**](../../user-management/palette-rbac/project-scope-roles-permissions.md#virtual-cluster)
+  role in Palette.
 
 ### Delete Clusters
 
@@ -168,7 +187,8 @@ If all workloads have been fully migrated to a new virtual cluster, or your virt
 
    The virtual cluster will then be deprovisioned and deleted. This may take up to 10 minutes.
 
-6. If you have deleted all virtual clusters in a cluster group, you can then [delete your cluster group](../cluster-groups/create-cluster-group.md#delete-your-cluster-group).
+6. If you have deleted all virtual clusters in a cluster group, you can then
+   [delete your cluster group](../cluster-groups/create-cluster-group.md#delete-your-cluster-group).
 
 ### Validate
 
@@ -176,7 +196,8 @@ If all workloads have been fully migrated to a new virtual cluster, or your virt
 
 2. In the left main menu, select **Clusters** and click on the **Virtual Clusters** tab.
 
-3. Check that your virtual clusters are no longer displayed. You can also click the **Show Deleted** checkbox to show deleted virtual clusters.
+3. Check that your virtual clusters are no longer displayed. You can also click the **Show Deleted** checkbox to show
+   deleted virtual clusters.
 
 4. If you have deleted your cluster group, navigate to the left main menu and select **Cluster Groups**.
 

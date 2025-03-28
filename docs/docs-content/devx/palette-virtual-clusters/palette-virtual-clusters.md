@@ -94,8 +94,13 @@ operating costs and resource management for the Palette Virtual Clusters.
 
 ## Breaking Changes
 
-The [vCluster version](https://www.vcluster.com/releases/en/changelog) may be updated in a Palette release, which can introduce breaking changes that affect newly created virtual clusters.
+The [vCluster version](https://www.vcluster.com/releases/en/changelog) may be updated in a Palette release, which can
+introduce breaking changes that affect newly created virtual clusters.
 
-To avoid disruptions, Palette locks the vCluster version for each cluster group, ensuring virtual clusters can still be provisioned successfully within existing groups, even across Palette updates.
+To avoid disruptions, Palette locks the vCluster version for each cluster group, ensuring virtual clusters can still be
+provisioned successfully within existing groups, even across Palette updates.
 
-If you want to use the latest version of vCluster on your virtual clusters, you must create a new cluster group and migrate your workloads from your legacy clusters. This process must be performed in [cluster mode](../../deployment-modes/deployment-modes.md). Refer to [Migrate Virtual Cluster Workloads](../../clusters/palette-virtual-clusters/migrate-virtual-clusters.md) for guidance.
+If you want to use the latest version of vCluster on your virtual clusters, you must create a new cluster group and
+migrate your workloads from your legacy clusters. This process must be performed in
+[cluster mode](../../deployment-modes/deployment-modes.md). Refer to
+[Migrate Virtual Cluster Workloads](../../clusters/palette-virtual-clusters/migrate-virtual-clusters.md) for guidance.
