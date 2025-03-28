@@ -71,3 +71,5 @@ virtual clusters are exposed to external traffic. You specify the network endpoi
 - [Add Virtual Clusters to a Cluster Group](deploy-virtual-cluster.md)
 
 - [Configure OIDC for Virtual Clusters](configure-oidc-virtual-cluster.md)
+
+- [Migrate Virtual Cluster Workloads](./migrate-virtual-clusters.md)
