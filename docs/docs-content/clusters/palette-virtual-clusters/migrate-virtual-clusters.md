@@ -30,7 +30,7 @@ clusters. The steps in Palette need to be performed in [cluster mode](../../intr
 
 ### Migrate Workloads
 
-There are multiple methods to migrate workloads between clusters. This guide covers one of them being a manual export
+You can use multiple methods to migrate workloads between clusters. This guide covers one of them being a manual export
 and import of YAML manifests.
 
 :::warning
@@ -106,7 +106,7 @@ These steps may not cover all use-cases so ensure that you adjust them to your e
    service/my-app-service created
    ```
 
-9. If needed, adjust your DNS records to point at the new ingress or loadbalancer IPs of the new virtual clusters.
+9. If needed, adjust your DNS records to point at the new ingress or load balancer IPs of the new virtual clusters.
 
 10. Migrate any persistent data to the storage accessible to the new virtual clusters, if required.
 
