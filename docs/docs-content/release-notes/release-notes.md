@@ -11,12 +11,18 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## March XX, 2025 - Release 4.6.XX
+## March 28, 2025 - Release 4.6.18
 
 ### Bug Fixes
 
 - Fixed an issue where users could not connect to Edge hosts using [remote shell](../clusters/edge/cluster-management/remote-shell.md) in VerteX SaaS environments. 
-- Fixed an issue that prevented host machines from automatically rebooting after installing the [Palette agent](../deployment-modes/agent-mode/install-agent-host.md). 
+- Fixed an issue that prevented host machines from automatically rebooting after installing the [Palette agent](../deployment-modes/agent-mode/install-agent-host.md).
+- Fixed an issue that prevented [AWS](../clusters/public-cloud/aws/aws.md) clusters with tags containing certain special characters from being provisioned or deleted.
+- Fixed an issue where [Edge](../clusters/edge/edge.md) native clusters remained stuck in the bootstrapping phase during deployment.   
+
+### Security Notices
+
+- On March 24, 2025, a security vulnerability regarding certain versions of [ingress-nginx](https://github.com/kubernetes/ingress-nginx) was reported. The vulnerable versions were used in Palette's and VerteX's management planes and were also available as packs for workload clusters. All managed Palette and VerteX management planes were patched and upgraded to a secure version, `1.11.5`, on March 26, 2025. All users should review their running clusters and upgrade the Nginx pack to version `1.11.5`. Self-hosted Palette and VerteX installations must also manually update their `ingress-nginx` controllers to version `1.11.5`. For more information and remediation steps, refer to our [Security Advisory](../security-bulletins/security-advisories). 
 
 ## March 20, 2025 - Release 4.6.13
 
