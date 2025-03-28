@@ -62,8 +62,7 @@ VerteX installations, and vulnerable Nginx packs have been deprecated. Currently
 VerteX installations must manually upgrade their `ingress-nginx` controllers to version `1.11.5`.
 
 All workload clusters across all Palette and VerteX installations must be updated manually. All users should review
-their [cluster profiles](../profiles/cluster-profiles/cluster-profiles.md) and workload clusters and upgrade the Nginx
-pack to version `1.11.5`.
+their cluster profiles and workload clusters and upgrade the Nginx pack to version `1.11.5`.
 
 Follow the below procedures to manually upgrade the affected components and upgrade affected workload clusters.
 
