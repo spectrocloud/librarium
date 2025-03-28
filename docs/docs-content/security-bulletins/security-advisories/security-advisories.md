@@ -26,11 +26,11 @@ and the recommended remediation actions.
 
 Refer to the [Security Bulletins](../reports/reports.mdx) page for detailed information about each CVE.
 
-- CVE-2025-1097
-- CVE-2025-1098
-- CVE-2025-1974
-- CVE-2025-24513
-- CVE-2025-24514
+- [CVE-2025-1097](https://docs.spectrocloud.com/security-bulletins/reports/pc-cve-2025-1097/)
+- [CVE-2025-1098](https://docs.spectrocloud.com/security-bulletins/reports/pc-cve-2025-1098/)
+- [CVE-2025-1974](https://docs.spectrocloud.com/security-bulletins/reports/pc-cve-2025-1974/)
+- [CVE-2025-24513](https://docs.spectrocloud.com/security-bulletins/reports/pc-cve-2025-24513/)
+- [CVE-2025-24514](https://docs.spectrocloud.com/security-bulletins/reports/pc-cve-2025-24514/)
 
 ### Timeline
 
