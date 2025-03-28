@@ -57,12 +57,15 @@ download confidential information such as secrets available in the cluster. Thes
 Palette and VerteX management planes. Additionally, Spectro Cloud also provides the Nginx pack to customers for their
 workload clusters, which contains several vulnerable image versions.
 
-As of March 28, 2025, all managed Palette instances have been patched, as well as connected Palette Enterprise and VerteX installations, and vulnerable Nginx packs have been deprecated. Currently, airgapped Palette Enterprise and VerteX
-installations must manually upgrade their `ingress-nginx` controllers to version `1.11.5`.
+As of March 28, 2025, all managed Palette instances have been patched, as well as connected Palette Enterprise and
+VerteX installations, and vulnerable Nginx packs have been deprecated. Currently, airgapped Palette Enterprise and
+VerteX installations must manually upgrade their `ingress-nginx` controllers to version `1.11.5`.
 
-All workload clusters across all Palette and VerteX installations must be updated manually. All users should review their [cluster profiles](../profiles/cluster-profiles/cluster-profiles.md) and workload clusters and upgrade the Nginx pack to version `1.11.5`.
+All workload clusters across all Palette and VerteX installations must be updated manually. All users should review
+their [cluster profiles](../profiles/cluster-profiles/cluster-profiles.md) and workload clusters and upgrade the Nginx
+pack to version `1.11.5`.
 
-Follow the below procedures to manually upgrade the affected components and upgrade affected workload clusters. 
+Follow the below procedures to manually upgrade the affected components and upgrade affected workload clusters.
 
 ### Recommended Actions
 
