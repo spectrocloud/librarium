@@ -86,7 +86,7 @@ The following flags are supported by the `build` subcommand.
 The following example creates a content bundle named `example-bundle`.
 
 ```shell
-palette content build --arch amd64 --profiles 12345678910 --project-id 1617181929  --output ./output --name example-bundle --include-core-palette-images-only
+palette content build --arch amd64 --profiles 12345678910 --project-id 1617181929  --output ./output --name example-bundle
 ```
 
 The output confirm that the bundle was built successfully.
@@ -98,11 +98,17 @@ Build Summary
 bundle example-bundle saved to output/example-bundle.tar.zst
 ```
 
-The following example creates a content bundle named `example-bundle` and a cluster definition named
-`example-definition`.
+The following example creates a cluster definition named `example-definition`.
 
 ```shell
-palette content build --arch amd64 --profiles 12345678910,11121314151 --project-id 1617181929  --output ./output --name example-bundle --cluster-definition-name example-definition --cluster-definition-profile-ids 12345678910,11121314151 --include-core-palette-images-only
+palette content build --arch amd64 --project-id 1617181929 --cluster-definition-name example-definition --cluster-definition-profile-ids 12345678910 --output ./output
+```
+
+```text hideClipBoard
+-----------------------------
+Build Summary
+-----------------------------
+bundle docs-definition saved to output/example-definition.tar.zst
 ```
 
 ## Copy
@@ -167,7 +173,7 @@ palette content definition output/bundle-definition.yaml
 
 ## List
 
-Use the `list` subcommand to get a list of available content bundles.
+Use the `list` subcommand to get a list of available content bundles in the specified remote repository.
 
 ```shell
 palette content list [flags]
@@ -182,21 +188,21 @@ The following flags are supported by the `list` subcommand.
 | `-h`       | `--help`     | Help for the `list` subcommand.                                                 | -       |
 | `-i`       | `--insecure` | Skips Transport Layer Security (TLS) verification (bypasses x509 verification). | boolean |
 |            | `--progress` | Displays the build progress output.                                             | boolean |
-| `-r`       | `--repo`     | The repository from which to list bundles.                                      | string  |
+| `-r`       | `--repo`     | The remote repository from which to list bundles.                               | string  |
 |            | `--tls-cert` | The path to the TLS certificate file.                                           | string  |
 |            | `--tls-key`  | The path to the TLS key file.                                                   | string  |
 
 ### Example
 
-The following example displays a list of content bundles in the `example` directory.
+The following example command lists the content bundles in the `bundle` repository.
 
 ```shell
-palette content list --repo /path/to/repo/example
+palette content list --repo example.com/docs/bundle
 ```
 
 ## Push
 
-Use the `push` subcommand to push the content bundle to a specified registry.
+Use the `push` subcommand to push the content bundle to a registry.
 
 ```shell
 palette content push [flags]
@@ -219,10 +225,17 @@ The following flags are supported by the `push` subcommand.
 
 ### Example
 
-The following example pushes the bundle named `bundle.yaml` to the `example.com/bundle` registry.
+The following example pushes the bundle named `example-bundle.tar.zst` to the `example.com/bundle` registry.
 
 ```shell
-palette content push --file bundle.yaml --registry example.com/bundle
+palette content push --file example-bundle.tar.zst --registry example.com/bundle
+```
+
+```text hideClipboard
+-----------------------------
+Push Summary
+-----------------------------
+local bundle example-bundle pushed to example.com/bundle
 ```
 
 ## Registry-login
@@ -250,10 +263,10 @@ The following flags are supported by the `registry-login` subcommand.
 
 ### Example
 
-The following example logs into the `example.com/bundle` registry with the `docs` username and password.
+The following example logs into the `example.com` registry with the `docs` username and password.
 
 ```shell
-palette content registry-login --registry example.com/bundle --username docs --password ********
+palette content registry-login --registry example.com --username docs --password ********
 ```
 
 ## Save
