@@ -43,7 +43,7 @@ Refer to the [Security Bulletins](../reports/reports.mdx) page for detailed info
 - **March 27, 2025**: Manual patch procedure provided for connected and airgapped Palette Enterprise and VerteX installations.
 - **March 28, 2025**: Affected Nginx packs deprecated.
 - **March 28, 2025**: Connected Palette Enterprise and VerteX patched for versions 4.5 - 4.6.
-- **March 29, 2025**: Connected Palette Enterprise and VerteX patched for versions 4.4.
+- **March 29, 2025**: Connected Palette Enterprise and VerteX patched for version 4.4.
 
 #### Future Updates
 
