@@ -17,18 +17,21 @@ branches="master"
 version_branches=$(git branch -a | grep -E 'version-[0-9]+(-[0-9]+)*$')
 for version_branch in $version_branches; do
     # Remove leading spaces and remote prefix (if any)
-    version_branch=$(echo $version_branch | sed 's/ *//;s/remotes\/origin\///')
+    version_branch=$(echo $version_branch | sed 's/ *//;s/remotes\/origin\///') 
 
-    branches+=" $version_branch"
+    # Check if the branch starts with "version-" and it is not duplicated
+    if [[ "$version_branch" =~ ^version-[0-9]+(-[0-9]+)*$ ]] && [[ ! " $branches " =~ " $version_branch " ]]; then
+        branches+=" $version_branch"
+    fi
 done
 
 echo "Evaluating the following branches for image usage: { $branches }"
 echo "$branches" > evaluated_branches.json
 
-for current_branch in $branches; do    
+for current_branch in $branches; do  
     git checkout $current_branch
 
-    grep -Hn -E "\.webp|\.gif" README.md > readme_used_images.json
+    grep -Hn -E "\.webp|\.gif" README.md > readme_used_images.json || true 
     find docs -type f -name "*.md" -exec grep -Hn -E "\.webp|\.gif" {} \; > docs_used_images.json
     find _partials -type f -name "*.mdx" -exec grep -Hn -E "\.webp|\.gif" {} \; > partials_used_images.json
     cat readme_used_images.json docs_used_images.json partials_used_images.json > used_images.json

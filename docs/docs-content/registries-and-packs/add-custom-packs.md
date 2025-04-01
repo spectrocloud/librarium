@@ -41,7 +41,7 @@ attributes.
 | layer         | String    | True     | Relevant layer that this pack should be part of; such as os, k8s, cni, csi, addon                                                                                                                                                                                                                                                         |
 | addonType     | String    | False    | Addon-type must be set for packs that have the layer set to Addon. The value must be one of the following: logging, monitoring, load balancer, authentication, ingress, security. Setting a relevant correct addon type ensures packs are organized correctly on the management console making it easy for profile authors to find packs. |
 | version       | String    | True     | A Semantic version for the pack. It is recommended that the pack version be the same as the underlying integration it is being created for. For example, the version for the pack that will install Prometheus 2.3.4, should set to 2.3.4.                                                                                                |
-| cloudTypes    | Array     | True     | You can provide one or more types for a pack. Supported values are as follows: **all**, **aws**, **azure**, **gcp**, **vsphere**, **openstack**, **baremetal**, **maas**, **aks**, **eks**, **tke**, **edge**, **edge-native**, **coxedge**, and **libvirt** (virtualized edge).                                                          |
+| cloudTypes    | Array     | True     | You can provide one or more types for a pack. Supported values are as follows: **all**, **aws**, **azure**, **gcp**, **vsphere**, **openstack**, **baremetal**, **maas**, **aks**, **eks**, **edge**, **edge-native**, **coxedge**, and **libvirt** (virtualized edge).                                                                   |
 | group         | String    | False    | Optional categorization of packs. For example, LTS can be set for Ubuntu OS packs.                                                                                                                                                                                                                                                        |
 | annotations   | Array     | False    | Optional key-value pairs required during pack installation. Typically, custom packs do not need to set annotations. Some packs like the ones for OS require annotations that need to be set with an image id.                                                                                                                             |
 | eol           | String    | False    | End of life date for integration.                                                                                                                                                                                                                                                                                                         |
@@ -85,7 +85,6 @@ The following is the JSON schema for packs. Review the schema to ensure your JSO
           "maas",
           "aks",
           "eks",
-          "tke",
           "edge",
           "libvirt",
           "edge-native",
@@ -106,7 +105,6 @@ The following is the JSON schema for packs. Review the schema to ensure your JSO
         "maas",
         "aks",
         "eks",
-        "tke",
         "edge",
         "libvirt",
         "edge-native",
@@ -268,9 +266,9 @@ empty file still needs to be added to the OS pack.
 
 :::
 
-Parameters for all charts, manifests, and Ansible roles defined in the pack are defined in the `values.yaml` file.
-_Helm_ charts natively support values override. Any values defined are merged with those defined within a chart.
-_Manifests_ and _Ansible_ roles need to be explicitly templatized if parameter configuration is desired.
+Parameters for all charts and manifests defined in the pack are defined in the `values.yaml` file. _Helm_ charts
+natively support values override. Any values defined are merged with those defined within a chart. _Manifests_ need to
+be explicitly templatized if parameter configuration is desired.
 
 ```yaml
     pack:
@@ -285,11 +283,6 @@ _Manifests_ and _Ansible_ roles need to be explicitly templatized if parameter c
             <templatized manifest1 parameters>
         manifest2:
             <templatized manifest2 parameters>
-    ansibleRoles:
-        role1:
-        <templatized role1 parameters>
-        role2:
-            <templatized role2 parameters>
 ```
 
 4. A pack must have the logo file named `logo.png` and must be copied into the pack directory.
@@ -323,9 +316,8 @@ There are typically the following two scenarios for the OS image:
 
 2. **Vanilla OS Image** - Kubernetes components are not installed.
 
-Additionally, for both scenarios additional components or packages may need to be installed at runtime to prepare the
-final OS image. This can be done by specifying one or more Ansible roles in the pack. The following are a few examples
-of building custom OS pack to cover the some of these scenarios.
+Additionally, for both scenarios, additional components or packages may need to be installed at runtime to prepare the
+final OS image. The following are a few examples of building custom OS packs to cover some of these scenarios.
 
 A few sample pack manifests for building a custom OS pack are shown in the following examples. These are examples for
 images that do not have Kubernetes components pre-installed. Palette installs these components at the time of

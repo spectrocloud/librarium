@@ -79,12 +79,7 @@ jobs:
           done
 
           # Construct backport labels.
-          backport_labels="auto-backport"
-          for branch in $(cat evaluated_branches.json); do
-            if [[ $branch =~ version-[0-9]+(-[0-9]+)*$ ]]; then
-              backport_labels+=",backport-$branch"
-            fi 
-          done
+          backport_labels=$(gh label list --json name --jq '.[].name' | grep -E '^(backport-version|auto-backport)' | paste -sd "," -)
 
           # Clean up results file.
           rm unused_images.json
@@ -121,3 +116,13 @@ jobs:
           SLACKIFY_MARKDOWN: true
           ENABLE_ESCAPES: true
           SLACK_MESSAGE: 'A new PR with unused images to clean up was created. Please review ${{env.GITHUB_CREATED_CLEANUP_PR}} for more details.'
+
+      - name: Failure Slack Notification
+        if: ${{ failure() }}
+        uses: rtCamp/action-slack-notify@v2.3.2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
+          SLACK_COLOR: ${{ job.status }}
+          SLACKIFY_MARKDOWN: true
+          ENABLE_ESCAPES: true
+          SLACK_MESSAGE: 'The clean-up-unused-images job in `${{ github.repository }}` failed. [View details](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}).'
