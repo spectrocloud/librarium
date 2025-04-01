@@ -92,7 +92,7 @@ operating costs and resource management for the Palette Virtual Clusters.
 
 [Click here to know How to Pause and Release your Palette Virtual Cluster](pause-restore-virtual-clusters.md).
 
-## Breaking Changes
+## Upgrade Virtual Clusters
 
 The [vCluster version](https://www.vcluster.com/releases/en/changelog) may be updated in a Palette release, which can
 introduce breaking changes that affect newly created virtual clusters.
