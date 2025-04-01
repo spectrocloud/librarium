@@ -19,7 +19,7 @@ in [cluster mode](../../introduction/palette-modes.md).
 
 - Access to your legacy and new virtual clusters through [kubectl](https://kubernetes.io/docs/reference/kubectl/).
 
-- At a minimum, the
+- The
   [**Virtual Cluster Admin**](../../user-management/palette-rbac/project-scope-roles-permissions.md#virtual-cluster)
   role in Palette.
 
@@ -29,12 +29,12 @@ in [cluster mode](../../introduction/palette-modes.md).
 
 ### Migrate Workloads
 
-You can use multiple methods to migrate workloads between clusters. This guide covers one of them being a manual export
+This guide covers a common method of migrating workloads between clusters, which is a manual export
 and import of YAML manifests.
 
 :::warning
 
-These steps may not cover all use-cases so ensure that you adjust them to your environment and needs.
+The following steps may not cover all use-cases. Ensure you adjust them to your environment and needs.
 
 :::
 
@@ -136,7 +136,7 @@ These steps may not cover all use-cases so ensure that you adjust them to your e
 
    Replace `<appIngress>` with your Ingress name and `<namespace>` with the namespace for your Ingress on the cluster.
 
-   ```bash hideClipboard
+   ```bash
    kubectl describe ingress <appIngress> --namespace <namespace>
    ```
 
@@ -168,7 +168,7 @@ the steps in this section to delete your legacy clusters.
 
 ### Prerequisites
 
-- At a minimum, the
+- The
   [**Virtual Cluster Admin**](../../user-management/palette-rbac/project-scope-roles-permissions.md#virtual-cluster)
   role in Palette.
 
@@ -176,15 +176,15 @@ the steps in this section to delete your legacy clusters.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. In the left main menu, select **Clusters** and click on the **Virtual Clusters** tab.
+2. On the left main menu, select **Clusters** and click on the **Virtual Clusters** tab.
 
 3. Locate and click on the virtual cluster that you want to delete.
 
 4. Click on the **Settings** drop-down menu and select **Delete Cluster**.
 
-5. Enter the cluster name and click **OK**. The cluster status will then change to **Deleting**.
+5. Enter the cluster name and click **OK**. The cluster status will change to **Deleting**.
 
-   The virtual cluster will then be deprovisioned and deleted. This may take up to 10 minutes.
+   Wait for the virtual cluster to be deprovisioned and deleted. This may take up to 10 minutes.
 
 6. If you have deleted all virtual clusters in a cluster group, you can then
    [delete your cluster group](../cluster-groups/create-cluster-group.md#delete-your-cluster-group).
@@ -193,11 +193,11 @@ the steps in this section to delete your legacy clusters.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. In the left main menu, select **Clusters** and click on the **Virtual Clusters** tab.
+2. On the left main menu, select **Clusters** and click on the **Virtual Clusters** tab.
 
 3. Check that your virtual clusters are no longer displayed. You can also click the **Show Deleted** checkbox to show
    deleted virtual clusters.
 
-4. If you have deleted your cluster group, navigate to the left main menu and select **Cluster Groups**.
+4. If you deleted your cluster group, navigate to the left main menu and select **Cluster Groups**.
 
    Your legacy cluster group is no longer displayed.
