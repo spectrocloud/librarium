@@ -66,7 +66,7 @@ virtual clusters are exposed to external traffic. You specify the network endpoi
 
   `*.myapp.mydomain.com`
 
-## Breaking Changes
+## Upgrade Virtual Clusters
 
 The [vCluster version](https://www.vcluster.com/releases/en/changelog) may be updated in a Palette release, which can
 introduce breaking changes that affect newly created virtual clusters.
