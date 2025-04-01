@@ -19,8 +19,7 @@ in [cluster mode](../../introduction/palette-modes.md).
 
 - Access to your legacy and new virtual clusters through [kubectl](https://kubernetes.io/docs/reference/kubectl/).
 
-- The
-  [**Virtual Cluster Admin**](../../user-management/palette-rbac/project-scope-roles-permissions.md#virtual-cluster)
+- The [**Virtual Cluster Admin**](../../user-management/palette-rbac/project-scope-roles-permissions.md#virtual-cluster)
   role in Palette.
 
 - The necessary prerequisites to create a new cluster group to host the virtual clusters. Refer to
@@ -29,8 +28,8 @@ in [cluster mode](../../introduction/palette-modes.md).
 
 ### Migrate Workloads
 
-This guide covers a common method of migrating workloads between clusters, which is a manual export
-and import of YAML manifests.
+This guide covers a common method of migrating workloads between clusters, which is a manual export and import of YAML
+manifests.
 
 :::warning
 
@@ -168,8 +167,7 @@ the steps in this section to delete your legacy clusters.
 
 ### Prerequisites
 
-- The
-  [**Virtual Cluster Admin**](../../user-management/palette-rbac/project-scope-roles-permissions.md#virtual-cluster)
+- The [**Virtual Cluster Admin**](../../user-management/palette-rbac/project-scope-roles-permissions.md#virtual-cluster)
   role in Palette.
 
 ### Delete Clusters
