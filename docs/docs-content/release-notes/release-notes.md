@@ -35,6 +35,18 @@ tags: ["release-notes"]
 
 #### Bug Fixes
 
+### Palette Dev Engine (PDE)
+
+#### Features
+
+New Cluster Groups will now default to a newer version of vCluster,
+[version 0.22.x](https://loft.featurebase.app/changelog/vcluster-v022-native-sleep-mode-and-cert-manager-integration),
+which includes new features and improvements. Existing Cluster Groups will continue to use older versions.
+
+If you want to use a later version of vCluster, refer to the
+[Palette Virtual Clusters](../clusters/palette-virtual-clusters/palette-virtual-clusters.md#upgrade-virtual-clusters)
+page to learn how to migrate your virtual cluster workloads.
+
 ### VerteX
 
 #### Features
