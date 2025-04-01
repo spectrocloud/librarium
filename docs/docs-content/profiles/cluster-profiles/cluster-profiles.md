@@ -10,6 +10,8 @@ Cluster profiles are composed of layers using packs, Helm charts, and custom man
 workloads on your Palette cluster deployments. You can create as many profiles as needed for your workload cluster
 deployments.
 
+Cluster profiles are useful for cluster updates.
+
 Below are cluster profile types you can create:
 
 - _Infrastructure_ profiles provide the essential components for workload cluster deployments within a
