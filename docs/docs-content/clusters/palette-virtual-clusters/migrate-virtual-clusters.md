@@ -8,9 +8,10 @@ sidebar_position: 20
 tags: ["clusters", "cluster groups", "virtual clusters"]
 ---
 
-It is sometimes necessary to migrate workloads from one virtual cluster to another. For instance, if a virtual cluster cannot be upgraded, migrating its workloads becomes the only option.
-This guide provides high-level steps to help you migrate workloads between virtual clusters and delete legacy virtual
-clusters. The steps in Palette need to be performed in [cluster mode](../../introduction/palette-modes.md).
+It is sometimes necessary to migrate workloads from one virtual cluster to another. For instance, if a virtual cluster
+cannot be upgraded, migrating its workloads becomes the only option. This guide provides high-level steps to help you
+migrate workloads between virtual clusters and delete legacy virtual clusters. The steps in Palette need to be performed
+in [cluster mode](../../introduction/palette-modes.md).
 
 ## Migrate Workloads to New Virtual Cluster
 
