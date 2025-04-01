@@ -104,9 +104,26 @@ The following steps may not cover all use-cases. Ensure you adjust them to your 
    service/my-app-service created
    ```
 
-9. If needed, adjust your DNS records to point at the new ingress or load balancer IPs of the new virtual clusters.
+9. Migrate any persistent data to the storage accessible to the new virtual clusters, if required.
 
-10. Migrate any persistent data to the storage accessible to the new virtual clusters, if required.
+   For example, you can use a tool like `rsync` to copy data from your old storage path to your new storage path.
+
+   ```shell hideClipboard title="Rsync copy example"
+   rsync \
+     --archive \                  # Ensures that symbolic links, file permissions, user & group ownerships, and timestamps are preserved
+     --verbose \                  # Prints detailed information about the transfer
+     --compress \                 # Compress file data during the transfer to reduce network usage
+     --human-readable \           # Outputs file sizes in a more readable format (e.g., 1K, 24M, 2G)
+     --progress \                 # Shows progress during file transfer (percentages, estimated time, etc.)
+     --rsh="ssh -i /path/to/key"  # Optional: Use a custom SSH key for authentication; remove if not required
+     /path/on/oldserver/ \
+     user@newserver.example.com:/path/on/newserver/
+   ```
+
+10. If needed, adjust your DNS records to point at the new ingress or load balancer IPs of the new virtual clusters.
+
+    For example, if using a `CNAME` record for a load balancer, log in to your DNS management console and update the
+    target for the `CNAME` record.
 
 11. Modify any application and CI/CD pipelines to point at the new virtual clusters.
 
