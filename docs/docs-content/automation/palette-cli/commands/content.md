@@ -4,27 +4,15 @@ title: "Content"
 description: "Command to create and manage content bundles."
 hide_table_of_contents: false
 sidebar_position: 5
+toc_max_heading_level: 3
 tags: ["palette-cli"]
 ---
 
 The `content` command supports the creation and management of
 [content bundles](../../../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md), which are archives
 with all the images and artifacts required for deploying an Edge cluster. You can also use the command to export
-[cluster definitions](../../../clusters/edge/local-ui/cluster-management/export-cluster-definition.md) from a cluster in
-Palette and use the definition to provision an Edge cluster.
-
-## Subcommands
-
-The `content` command includes the following subcommands.
-
-- [`build`](#build) - Build a content bundle.
-- [`copy`](#copy) - Copy a specific bundle from one repository to another.
-- [`definition`](#definition) - Display the definition of a content bundle.
-- [`list`](#list) - List available content bundles.
-- [`push`](#push) - Push the images in the bundle to a specified registry.
-- [`registry-login`](#registry-login) - Login to a private registry.
-- [`save`](#save) - Save the content bundle locally.
-- [`serve`](#serve) - Serve the content bundle as a registry.
+[cluster definitions](../../../clusters/edge/local-ui/cluster-management/export-cluster-definition.md) and
+[upload content bundles](../../../clusters/edge/local-ui/cluster-management/upload-content-bundle.md) to an Edge host.
 
 ## Prerequisites
 
@@ -39,7 +27,21 @@ The `content` command includes the following subcommands.
   passphrase through the `PALETTE_ENCRYPTION_PASSWORD` environment variable or the `-k` or `--encryption-passphrase`
   flag. Refer to the [Encryption](./../palette-cli.md#encryption) section for more information on encryption.
 
-## Build
+## Subcommands
+
+The `content` command includes the following subcommands.
+
+- [`build`](#build) - Build a content bundle.
+- [`copy`](#copy) - Copy a specific bundle from one repository to another.
+- [`definition`](#definition) - Display the definition of a content bundle.
+- [`list`](#list) - List available content bundles.
+- [`push`](#push) - Push the bundle to a specified OCI registry.
+- [`registry-login`](#registry-login) - Login to a private OCI registry.
+- [`save`](#save) - Save the content bundle locally.
+- [`serve`](#serve) - Serve the content bundle as a registry.
+- [`upload`](#upload) - Upload the content bundle to an Edge host.
+
+### Build
 
 Use the `build` subcommand to create a content bundle or export a cluster definition.
 
@@ -76,12 +78,12 @@ The following flags are supported by the `build` subcommand.
 |            | `--profiles`                         | Comma-separated list of cluster profile IDs to download content for. Ensure that between all the profiles you include in the content bundle, only one infrastructure layer exists. For example, you can have one infrastructure profile and many add-on files, or one full profile and many add-on files, but you cannot have multiple infrastructure and full-on profiles.           | string  |
 |            | `--progress`                         | Displays the build progress output.                                                                                                                                                                                                                                                                                                                                                   | boolean |
 |            | `--project-id`                       | The ID of the Palette project.                                                                                                                                                                                                                                                                                                                                                        | string  |
-| `-p`       | `--push`                             | Pushes the content bundle package to the registry after creation. This applies only if the build type is set to `local`. The default value is `false`.                                                                                                                                                                                                                                | boolean |
-| `-r`       | `--registry`                         | The address of the registry to push the images to. It applies if `--push` is set to `true`.                                                                                                                                                                                                                                                                                           | string  |
+| `-p`       | `--push`                             | Pushes the content bundle package to the OCI registry after creation. This applies only if the build type is set to `local`. The default value is `false`.                                                                                                                                                                                                                            | boolean |
+| `-r`       | `--registry`                         | The address of the OCI registry to push the images to. It applies if `--push` is set to `true`.                                                                                                                                                                                                                                                                                       | string  |
 |            | `--tls-cert`                         | The path to the TLS certificate file.                                                                                                                                                                                                                                                                                                                                                 | string  |
 |            | `--tls-key`                          | The path to the TLS key file.                                                                                                                                                                                                                                                                                                                                                         | string  |
 
-### Examples
+#### Examples
 
 The following example creates a content bundle named `example-bundle`.
 
@@ -111,9 +113,9 @@ Build Summary
 bundle docs-definition saved to output/example-definition.tar.zst
 ```
 
-## Copy
+### Copy
 
-Use the `copy` subcommand to copy a content bundle from one repository to another.
+Use the `copy` subcommand to copy a content bundle from one repository to another (local or remote).
 
 ```shell
 palette content copy [flags]
@@ -121,29 +123,36 @@ palette content copy [flags]
 
 The following flags are supported by the `copy` subcommand.
 
-| Short Flag | Long Flag               | Description                                                                     | Type    |
-| ---------- | ----------------------- | ------------------------------------------------------------------------------- | ------- |
-|            | `--annotation-selector` | Filters artifacts based on key-value pairs. The default value is `[]`.          | string  |
-| `-a`       | `--arch`                | The architecture of the bundle to be copied.                                    | string  |
-|            | `--ca-cert`             | The path to the CA certificate file.                                            | string  |
-| `-d`       | `--destination`         | The destination registry address.                                               | string  |
-| `-h`       | `--help`                | Help for the `copy` subcommand.                                                 | -       |
-| `-i`       | `--insecure`            | Skips Transport Layer Security (TLS) verification (bypasses x509 verification). | boolean |
-|            | `--progress`            | Displays the build progress output.                                             | boolean |
-| `-s`       | `--source`              | The source registry address.                                                    | string  |
-|            | `--tls-cert`            | The path to the TLS certificate file.                                           | string  |
-|            | `--tls-key`             | The path to the TLS key file.                                                   | string  |
+| Short Flag | Long Flag               | Description                                                                                                                                                                                                                                                                       | Type    |
+| ---------- | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+|            | `--annotation-selector` | Filters artifacts based on key-value pairs. The default value is `[]`.                                                                                                                                                                                                            | string  |
+| `-a`       | `--arch`                | The architecture of the bundle to be copied.                                                                                                                                                                                                                                      | string  |
+|            | `--ca-cert`             | The path to the CA certificate file.                                                                                                                                                                                                                                              | string  |
+| `-d`       | `--destination`         | The destination repository address. If the repository is remote, specify it using a standard address format (e.g., `example.com/bundle/example-bundle.tar.zst`), whereas if the repository is local, use the URI (Uniform Resource Identifier) format (`file:///path/to/bundle`). | string  |
+| `-h`       | `--help`                | Help for the `copy` subcommand.                                                                                                                                                                                                                                                   | -       |
+| `-i`       | `--insecure`            | Skips Transport Layer Security (TLS) verification (bypasses x509 verification).                                                                                                                                                                                                   | boolean |
+|            | `--progress`            | Displays the build progress output.                                                                                                                                                                                                                                               | boolean |
+| `-s`       | `--source`              | The source repository address. If the repository is remote, specify it using a standard address format (e.g., `example.com/bundle/example-bundle.tar.zst`), whereas if the repository is local, use the URI format (`file:///path/to/bundle`).                                    | string  |
+|            | `--tls-cert`            | The path to the TLS certificate file.                                                                                                                                                                                                                                             | string  |
+|            | `--tls-key`             | The path to the TLS key file.                                                                                                                                                                                                                                                     | string  |
 
-### Example
+#### Example
 
-The following command copies the `app-example-version-1.0.0` bundle to `file:///path/to/destination` using the
-`app=example` and `version=1.0.0` annotations as artifact filters.
+The following command copies the `example-bundle` bundle from the `home/ubuntu/copy/` local repository to the
+`home/ubuntu/paste/` repository.
 
 ```shell
-palette content copy --source example.com/bundle/bundle-definition:app-example-version-1.0.0 --destination file:///path/to/destination --annotation-selector=app=example,version=1.0.0
+palette content copy --source file:///home/ubuntu/copy/example-bundle.tar.zst --destination file:///home/ubuntu/paste
 ```
 
-## Definition
+```text hideClipboard
+-----------------------------
+Copy Summary
+-----------------------------
+bundle /home/ubuntu/copy/tmp/bundle-extract/example-bundle.tar copied to /home/ubuntu/paste
+```
+
+### Definition
 
 Use the `definition` subcommand to get the definition of a content bundle.
 
@@ -163,7 +172,7 @@ The following flags are supported by the `definition` subcommand.
 |            | `--tls-cert` | The path to the TLS certificate file.                                           | string  |
 |            | `--tls-key`  | The path to the TLS key file.                                                   | string  |
 
-### Example
+#### Example
 
 The following example gets the bundle definition of the content bundle located in `output/bundle-definition.yaml`.
 
@@ -171,7 +180,7 @@ The following example gets the bundle definition of the content bundle located i
 palette content definition output/bundle-definition.yaml
 ```
 
-## List
+### List
 
 Use the `list` subcommand to get a list of available content bundles in the specified remote repository.
 
@@ -192,7 +201,7 @@ The following flags are supported by the `list` subcommand.
 |            | `--tls-cert` | The path to the TLS certificate file.                                           | string  |
 |            | `--tls-key`  | The path to the TLS key file.                                                   | string  |
 
-### Example
+#### Example
 
 The following example command lists the content bundles in the `bundle` repository.
 
@@ -200,9 +209,9 @@ The following example command lists the content bundles in the `bundle` reposito
 palette content list --repo example.com/docs/bundle
 ```
 
-## Push
+### Push
 
-Use the `push` subcommand to push the content bundle to a registry.
+Use the `push` subcommand to push the content bundle to an OCI registry.
 
 ```shell
 palette content push [flags]
@@ -223,7 +232,7 @@ The following flags are supported by the `push` subcommand.
 |            | `--tls-cert`            | The path to the TLS certificate file.                                           | string  |
 |            | `--tls-key`             | The path to the TLS key file.                                                   | string  |
 
-### Example
+#### Example
 
 The following example pushes the bundle named `example-bundle.tar.zst` to the `example.com/bundle` registry.
 
@@ -238,9 +247,9 @@ Push Summary
 local bundle example-bundle pushed to example.com/bundle
 ```
 
-## Registry-login
+### Registry-login
 
-Use the `registry-login` subcommand to login to a private registry using the provided credentials.
+Use the `registry-login` subcommand to login to a private OCI registry using the provided credentials.
 
 ```shell
 palette content registry-login [flags]
@@ -261,7 +270,7 @@ The following flags are supported by the `registry-login` subcommand.
 |            | `--tls-key`  | The path to the TLS key file.                                                   | string  |
 | `-u`       | `--username` | The username for the registry                                                   | string  |
 
-### Example
+#### Example
 
 The following example logs into the `example.com` registry with the `docs` username and password.
 
@@ -269,9 +278,9 @@ The following example logs into the `example.com` registry with the `docs` usern
 palette content registry-login --registry example.com --username docs --password ********
 ```
 
-## Save
+### Save
 
-Use the `save` subcommand to save a content bundle from a registry locally.
+Use the `save` subcommand to save a content bundle from an OCI registry locally.
 
 ```shell
 palette content save [flags]
@@ -293,15 +302,24 @@ The following flags are supported by the `save` subcommand.
 |            | `--tls-cert`          | The path to the TLS certificate file.                                           | string  |
 |            | `--tls-key`           | The path to the TLS key file.                                                   | string  |
 
-### Example
+#### Example
 
-The following example saves the content bundle located in `example.com/bundle` locally in the `bundle` directory.
+The following example saves the content bundle `example-bundle` located in the `example.com/bundle` repository locally
+in the `output-example` directory.
 
 ```shell
-palette content save --source example.com/bundle --output bundle
+palette content save --source example.com/bundle/bundle-definition:example-bundle --output output-example
 ```
 
-## Serve
+```text hideClipboard
+-----------------------------
+Save Summary
+-----------------------------
+bundle example.com/bundle/bundle-definition:example-bundle copied to /home/ubuntu/output-example
+bundle example.com/bundle/bundle-definition:example-bundle saved to /home/ubuntu/output-example/example-bundle.tar
+```
+
+### Serve
 
 Use the `serve` subcommand to serve the content bundle as a registry.
 
@@ -325,10 +343,52 @@ The following flags are supported by the `serve` subcommand.
 |            | `--tls-cert` | The path to the TLS certificate file.                                           | string  |
 |            | `--tls-key`  | The path to the TLS key file.                                                   | string  |
 
-### Example
+#### Example
 
-The following example serves the content bundle located in `/path/to/bundle` locally on port `5000`.
+The following example serves the `output/example-bundle` content bundle as a registry locally on port `5000`.
 
 ```shell
-palette content serve --port 5000 --bundle /path/to/bundle --disk /path/to/disk
+palette content serve --port 5000 --bundle output/example-bundle.tar.zst --disk disk-example
+```
+
+```text hideClipboard
+-----------------------------
+Push Summary
+-----------------------------
+local bundle example-bundle pushed to :5000/bundle
+```
+
+:::tip
+
+You can use the [ORAS CLI](https://oras.land) tool to confirm that the content bundle is being served correctly. For
+example, the command `oras repo list --plain-http localhost:5000/bundle` should list all repositories available in the
+bundle. Replace `localhost` with the hosts's address if you are hosting the registry externally.
+
+:::
+
+### Upload
+
+Use the `upload` subcommand to upload the content bundle to an Edge host.
+
+```shell
+palette content upload [flags]
+```
+
+The following flags are supported by the `upload` subcommand.
+
+| Short Flag | Long Flag          | Description                                                                                                                 | Type   |
+| ---------- | ------------------ | --------------------------------------------------------------------------------------------------------------------------- | ------ |
+|            | `--app`            | The application package to be uploaded.                                                                                     | string |
+|            | `--cluster-export` | The `cluster-export` package to be uploaded.                                                                                | string |
+| `-f`       | `--file`           | The file path of the content bundle to be uploaded.                                                                         | string |
+| `-h`       | `--help`           | Help for the `upload` subcommand.                                                                                           | -      |
+| `-p`       | `--port`           | The target port on the host machine. The default port is `8181`.                                                            | string |
+|            | `--token`          | The authentication token to be used to validate the client. The token is located at `/opt/spectrocloud/.upload-auth-token`. | string |
+
+#### Example
+
+The following example uploads the `output/example-bundle` content bundle to the Edge host.
+
+```shell
+palette content upload --file output/example-bundle.tar.zst --token 123456 10.10.X.X
 ```
