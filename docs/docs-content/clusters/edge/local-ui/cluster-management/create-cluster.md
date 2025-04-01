@@ -49,9 +49,9 @@ management.
 
   :::warning
 
-  Content bundles must be built with a Palette Edge CLI version that is later than `4.5.7`. Visit the
-  [Downloads](../../../../spectro-downloads.md#palette-edge-cli) page to download the appropriate version of the Palette
-  Edge CLI to build the content bundle.
+  Content bundles must be built with a Palette Edge CLI version later than `4.5.7`, or a Palette CLI version later than
+  `4.6.2`. Visit the [Downloads](../../../../spectro-downloads.md#palette-edge-cli) page to download the appropriate
+  version of the CLI to build the content bundle.
 
   :::
 
