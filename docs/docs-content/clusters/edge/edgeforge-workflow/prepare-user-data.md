@@ -130,6 +130,14 @@ Installer configuration file and the OS pack support the usage of cloud-init sta
    | `siteNetwork.httpsProxy` | The URL of the HTTPS proxy endpoint.                                                  |
    | `siteNetwork.noProxy`    | The list of IP addresses or CIDR ranges to exclude routing through the network proxy. |
 
+:::warning
+
+The proxy settings in user data configure Palette services to use the proxy network. However, these settings do not
+automatically apply to application workloads. To configure applications to use the proxy configurations, refer to
+[Configure Applications to Use Proxy Server](../../cluster-management/cluster-proxy.md).
+
+:::
+
 ### Configure Post-Installation Behavior (Optional)
 
 7. You can use some parameters of the `install` block to configure what you'd like the Edge host to do after
