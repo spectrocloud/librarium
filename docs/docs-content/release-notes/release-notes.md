@@ -507,7 +507,7 @@ compatible version of the Palette CLI.
 ### Documentation & Education Updates
 
 - The Documentation & Education team is enabling a new Q&A bot functionality on the Spectro Cloud official documentation
-  site. Click the **Ask AI** widget in the bottom right corner or use the **Ctrl + I** (**Cmd + I** on macOS) keyboard
+  site. Click the **Ask AI** widget in the bottom right corner or use the `Ctrl + I` (`Cmd + I` on macOS) keyboard
   shortcut to bring up the chat interface.
 
   The Q&A bot is only trained on the latest version of the Spectro Cloud documentation. It is unable to answer
@@ -642,7 +642,7 @@ compatible version of the Palette CLI.
   [Create a VM Migration Assistant Profile](../vm-management/vm-migration-assistant/create-vm-migration-assistant-profile.md)
   guide to learn more.
 
-- The KubeVirt version in use is now v1.4.0. Other minor maintenance updates in support of Kubevirt 1.4.0 are also
+- The KubeVirt version in use is now v1.4.0. Other minor maintenance updates in support of KubeVirt 1.4.0 are also
   included.
 
 ### Packs

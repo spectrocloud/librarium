@@ -425,11 +425,11 @@ official tutorials container that already contains the required tools. <br />
 
 ### Create a VM Template
 
-You will use the **heredoc** script to create a VM template. The script prompts you to enter your VMWare vCenter
+You will use the `heredoc` script to create a VM template. The script prompts you to enter your VMWare vCenter
 environment details and saves them as environment variables in a file named **.packerenv**. Packer reads the environment
 variables during the build process.
 
-Before you invoke the **heredoc** script, have values handy in a notepad for the VMWare vCenter environment variables
+Before you invoke the `heredoc` script, have values handy in a notepad for the VMWare vCenter environment variables
 listed in the table.
 
 | **Variable**                    | **Description**         | **How to find its value?**                                                                                                                               |
@@ -444,7 +444,7 @@ listed in the table.
 | `PKR_VAR_vcenter_datastore`     | Datastore name          | Switch to the **Storage** view in your vSphere client. The datastore name is displayed in the left navigation tree.                                      |
 | `PKR_VAR_vcenter_network`       | Network name            | Switch to the **Networking** view in your vSphere client. The network name is displayed in the left navigation tree.                                     |
 
-Use the **heredoc** script to create the **.packerenv** file shown below that contains the VMware vCenter details as
+Use the `heredoc` script to create the **.packerenv** file shown below that contains the VMware vCenter details as
 environment variables.
 
 ```bash
@@ -574,8 +574,8 @@ is an explanation of the options and sub-commands used below:
   :::
 
 Issue the following command to trigger the Packer build process to create a VM template in the VMware vCenter. It will
-also delete any existing **packer_cache** before uploading and keeping a copy of the **palette-edge-installer.iso** to
-the **packer_cache/** directory in the specified datastore.
+also delete any existing `packer_cache` before uploading and keeping a copy of the `palette-edge-installer.iso` to
+the `packer_cache/` directory in the specified datastore.
 
 ```bash
 docker run --interactive --tty --rm \
