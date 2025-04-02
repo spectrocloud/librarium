@@ -324,11 +324,11 @@ You can specify tags from a file by using the `tagsFromFile` parameter object or
 
 | Parameter                              | Description                                            | Default Value |
 | -------------------------------------- | ------------------------------------------------------ | ------------- |
-| `stylus.site.tagFromFile.fileName`     | The path to the file containing the tags.              | `''`          |
-| `stylus.site.tagFromFile.delimiter`    | The delimiter used to separate the key-value pairs.    | `\n`          |
-| `stylus.site.tagFromFile.separator`    | The separator used to separate the key from the value. | `:`           |
-| `stylus.site.tagFromScript.scriptName` | The path to the script that returns a JSON object.     | `''`          |
-| `stylus.site.tagFromScript.timeout`    | The timeout value in seconds.                          | `60`          |
+| `stylus.site.tagsFromFile.fileName`     | The path to the file containing the tags.              | `''`          |
+| `stylus.site.tagsFromFile.delimiter`    | The delimiter used to separate the key-value pairs.    | `\n`          |
+| `stylus.site.tagsFromFile.separator`    | The separator used to separate the key from the value. | `:`           |
+| `stylus.site.tagsFromScript.scriptName` | The path to the script that returns a JSON object.     | `''`          |
+| `stylus.site.tagsFromScript.timeout`    | The timeout value in seconds.                          | `60`          |
 
 With tags from a file, you can specify different delimiters and separators to parse the content of a file depending on
 how the content is formatted. For example, assume the file **/etc/palette/tags.txt** contains the following content.
