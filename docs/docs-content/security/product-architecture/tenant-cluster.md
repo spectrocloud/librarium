@@ -69,7 +69,7 @@ Palette's OS hardening utility performs the following tasks:
 
 - Applies the latest available security updates.
 
-- Hardens SSH server parameters, network parameters (sysctl), and system files by ensuring proper file permissions are
+- Hardens SSH server parameters, network parameters (`sysctl`), and system files by ensuring proper file permissions are
   set.
 
 - Removes legacy services and Graphical User Interface (GUI) packages.
@@ -106,7 +106,7 @@ These tests ensure tenant clusters are secure, compliant, and up to date.
 
 ## Kubernetes Authentication & Authorization
 
-Kubernetes cluster authentication can be optionally integrated with Kubelogin with OpenID Connect (OIDC)-based
+Kubernetes cluster authentication can be optionally integrated with kubelogin with OpenID Connect (OIDC)-based
 authentication/authorization against an external Identify Provider (IDP). This enables group membership-based access
 control on different namespaces within the tenant Kubernetes cluster. Our Terraform provider also supports automatically
 setting role binding on namespaces by user or group.

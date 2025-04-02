@@ -439,9 +439,9 @@ The minimum limit of the resource will be considered during the machine pool val
 required to have the below unit depending on the resource type. Any change of unit will cause inaccurate computation of
 the total minimum requirement.
 
-- cpu - Millicore (m)
-- memory - Mibibyte (Mi)
-- diskSize - Gigabyte (GB)
+- CPU - Millicore (m)
+- Memory - Mibibyte (Mi)
+- Disk size - Gigabyte (GB)
 
 </TabItem>
 
@@ -673,16 +673,12 @@ k8s:
 
 Referencing Kubernetes pack variable version in CentOS pack values:
 
-centos values.yaml
-
-```bash
+```bash  title="CentOS values.yaml"
 k8s:
  version: "{{ .spectro.pack.kubernetes.version }}"
 ```
 
-kubernetes values.yaml
-
-```bash
+```bash title="Kubernetes values.yaml"
 version: 1.18.0
 ```
 
