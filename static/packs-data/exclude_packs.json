@@ -9,11 +9,15 @@
   "calico-networking",
   "ubuntu-k3s",
   "ubuntu-coxedge",
+  "ubuntu-libvirt",
   "edge-os",
   "spectro-zen-of-k8s",
   "spectro-mgmt",
   "csi-tke",
   "kubernetes-tke",
   "tke-managed-os",
-  "cni-tke-global-router"
+  "cni-tke-global-router",
+  "generic-vm-libvirt",
+  "centos-libvirt",
+  "pfsense-vm-libvirt"
 ]
