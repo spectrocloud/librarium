@@ -100,17 +100,18 @@ Build Summary
 bundle example-bundle saved to output/example-bundle.tar.zst
 ```
 
-The following example creates a cluster definition named `example-definition`.
+The following example creates a content bundle named `example-bundle` and a cluster definition named
+`example-definition`.
 
 ```shell
-palette content build --arch amd64 --project-id 1617181929 --cluster-definition-name example-definition --cluster-definition-profile-ids 12345678910 --output ./output
+palette content build --arch amd64 --profiles 12345678910 --project-id 1617181929 --cluster-definition-name example-definition --cluster-definition-profile-ids 12345678910 --output ./output --name example-bundle
 ```
 
 ```text hideClipBoard
 -----------------------------
 Build Summary
 -----------------------------
-bundle docs-definition saved to output/example-definition.tar.zst
+bundle example-bundle saved to output/example-bundle.tar.zst
 ```
 
 ### Copy
