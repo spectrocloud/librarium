@@ -11,7 +11,8 @@ You can add an OCI Zarf registry to Palette and use the Zarf packages in cluster
 
 ## Prerequisites
 
-- You must have an OCI registry that contains Zarf packages. Refer to the [Zarf documentation](https://docs.zarf.dev/tutorials/6-publish-and-deploy/) for guidance on creating a Zarf package.
+- You must have an OCI registry that contains Zarf packages. Refer to the
+  [Zarf documentation](https://docs.zarf.dev/tutorials/6-publish-and-deploy/) for guidance on creating a Zarf package.
 
 - Credentials to access the OCI registry. Public OCI registries are not supported.
 
@@ -34,10 +35,12 @@ Take the following steps to add an OCI Zarf registry to Palette.
 
 5. Enter the registry URL in the **Endpoint** field.
 
-6. Choose whether to **Enable Authentication** for your registry. If enabled, you must enter your registry credentials in the **Username** and **Password** fields.
+6. Choose whether to **Enable Authentication** for your registry. If enabled, you must enter your registry credentials
+   in the **Username** and **Password** fields.
 
-7. If your OCI registry server is using a self-signed certificate, or if the server certificate is not signed by a trusted CA, select **Insecure Skip TLS Verify** to skip verifying the x509 certificate, and select **Upload file** to upload the certificate.
-    
+7. If your OCI registry server is using a self-signed certificate, or if the server certificate is not signed by a
+   trusted CA, select **Insecure Skip TLS Verify** to skip verifying the x509 certificate, and select **Upload file** to
+   upload the certificate.
 8. **Confirm** your registry.
 
 ## Validate
