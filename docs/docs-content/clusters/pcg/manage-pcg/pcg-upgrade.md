@@ -9,7 +9,7 @@ tags: ["pcg"]
 
 A PCG upgrade event can be broken down into two categories: Palette agent updates and cluster profile updates. Depending
 on the upgrade event, different steps are required to complete the upgrade. The cluster profile for a PCG is locked down
-and cannot be changed by a user. However, when a PCG's cluster profile update is available, you must manually approve
+and cannot be changed by a user. However, when a PCG cluster profile update is available, you must manually approve
 the update to apply changes.
 
 :::info
@@ -88,12 +88,12 @@ Before upgrading a self-hosted Palette instance to a new minor or major version,
 automatically upgrade to the latest version and manually approve any pending cluster profile updates. This will help you
 avoid compatibility issues between the PCG and the upgraded Palette.
 
-The general guideline is to upgrade self-hosted Palette instances to the lastest patch release of the current minor
+The general guideline is to upgrade self-hosted Palette instances to the latest patch release of the current minor
 version, then upgrade to the next minor version. For a major version upgrade, ensure the latest minor version is applied
 before upgrading to the next major version.
 
 In between each version upgrade, ensure the Palette agent in the PCG and its cluster profile updates are applied. We
-recommed you allow approximately 30 min for the Palette agent to automatically update, followed by applying cluster
+recommend you allow approximately 30 min for the Palette agent to automatically update, followed by applying cluster
 profile updates, if applicable.
 
 For instance, if you are upgrading from Palette v3.4.x to v4.2.x, ensure both Palette agent and cluster profiles updates

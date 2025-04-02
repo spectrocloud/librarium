@@ -44,10 +44,10 @@ to <VersionedLink text="Harbor Edge-Native Config pack" url="/integrations/packs
 
 - At least one Edge host registered with your Palette account with an AMD64 or x86_64 processor architecture.
 
-- Each of your Edge hosts must have at least 4 CPUs and 8 GB of RAM.
+- Each of your Edge hosts must have at least 4 CPU and 8 GB of RAM.
 
   - For single-node clusters, where there is only one Edge host handling both control plane and worker capabilities,
-    your Edge host must have at least 6 CPUs and 12 GB of RAM.
+    your Edge host must have at least 6 CPU and 12 GB of RAM.
 
 - At least 300 GB of persistent storage. The actual amount of storage required depends on the size of your images.
 

@@ -121,11 +121,11 @@ receive the following default tags.
 
 | Key                                                          | Value                  | Description                                                                                                             |
 | ------------------------------------------------------------ | ---------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| `Name`                                                       | [clusterName-resource] | The name of the AWS resource. Use the format [cluster name] - [resource type name]. Example: `mycluste2r-vpc`           |
+| `Name`                                                       | [`clusterName-resource`] | The name of the AWS resource. Use the format [cluster name] - [resource type name]. Example: `mycluste2r-vpc`           |
 | `kubernetes.io/cluster/[clusterName]`.                       | owned                  | This tag only applies to cluster nodes. Used for Palette internal purposes to help manage the lifecycle of the cluster. |
 | `sigs.k8s.io/cluster-api-provider-aws/cluster/[clusterName]` | owned                  | Used for Palette internal purposes to help manage the lifecycle of the cluster.                                         |
 | `sigs.k8s.io/cluster-api-provider-aws/role`                  | common                 | Used for Palette internal purposes to help manage the lifecycle of the cluster.                                         |
-| `spectro__ownerUid`                                          | [uniqueId]             | The Palette tenant's id. Example: `1356fc37ab1aac03a5d66b4c`.                                                           |
+| `spectro__ownerUid`                                          | [`uniqueId`]             | The Palette tenant's id. Example: `1356fc37ab1aac03a5d66b4c`.                                                           |
 
 ## Automatic Network Discovery
 

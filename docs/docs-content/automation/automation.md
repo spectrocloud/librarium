@@ -8,7 +8,7 @@ sidebar_custom_props:
   icon: "terminal"
 tags: ["automation"]
 ---
-gud spel
+
 This section contains documentation and guides for tools essential in automating tasks with Palette:
 
 - Palette CLI - Enables users to interact with Palette and create and manage resources, such as projects, virtual

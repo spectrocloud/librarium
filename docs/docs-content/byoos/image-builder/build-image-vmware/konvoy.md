@@ -137,7 +137,7 @@ instructions on how to build the custom RHEL with Konvoy image.
     | Parameter                    | Description                                                                                                                        |
     | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
     | `packer.cluster`             | The name of the vSphere cluster to deploy the Packer VM.                                                                           |
-    | `packer.datacenter`          | The name of the vSphere Datacenter to deploy the Packer VM.                                                                        |
+    | `packer.datacenter`          | The name of the vSphere data center to deploy the Packer VM.                                                                        |
     | `packer.datastore`           | The name of the vSphere datastore to deploy the Packer VM.                                                                         |
     | `packer.folder`              | The name of the vSphere folder to deploy the Packer VM.                                                                            |
     | `packer.network`             | The name of the vSphere network to deploy the Packer VM.                                                                           |
@@ -281,7 +281,7 @@ instructions on how to build the custom RHEL with Konvoy image.
     | Parameter                    | Description                                                                                                                        |
     | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
     | `packer.cluster`             | The name of the vSphere cluster to deploy the Packer VM.                                                                           |
-    | `packer.datacenter`          | The name of the vSphere Datacenter to deploy the Packer VM.                                                                        |
+    | `packer.datacenter`          | The name of the vSphere data center to deploy the Packer VM.                                                                        |
     | `packer.datastore`           | The name of the vSphere datastore to deploy the Packer VM.                                                                         |
     | `packer.folder`              | The name of the vSphere folder to deploy the Packer VM.                                                                            |
     | `packer.network`             | The name of the vSphere network to deploy the Packer VM.                                                                           |
@@ -467,4 +467,4 @@ Make sure you select the same version of Konvoy as specified in the Packer confi
 
 :::
 
-![A view of the cluster profile kubernetes selection screen](/byoos_vmware_konvoy_cluster-profile-view.webp)
+![A view of the cluster profile Kubernetes selection screen](/byoos_vmware_konvoy_cluster-profile-view.webp)

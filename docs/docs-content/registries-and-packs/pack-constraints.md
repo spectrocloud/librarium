@@ -49,9 +49,9 @@ registry.hostname:
  schema: '{{ required }}'
 ```
 
-**Readonly**
+**Read only**
 
-The pack value is not editable if marked as readonly.
+The pack value is not editable if marked as read only.
 
 ```bash
 registry.hostname:
@@ -427,19 +427,19 @@ Pack resource constraints must be defined in the `pack.json` file. The sample pa
 
 The type of resource
 
-- cpu
-- memory
-- diskSize
+- CPU
+- Memory
+- Disk size
 
 </TabItem>
 
-<TabItem label="minLimit" value="pack_resources_minLimit">
+<TabItem label="minimum limit" value="pack_resources_minLimit">
 
 The minimum limit of the resource will be considered during the machine pool validation. The resource limit value is
 required to have the below unit depending on the resource type. Any change of unit will cause inaccurate computation of
 the total minimum requirement.
 
-- cpu - millicore (m)
+- cpu - Millicore (m)
 - memory - Mibibyte (Mi)
 - diskSize - Gigabyte (GB)
 
@@ -447,7 +447,7 @@ the total minimum requirement.
 
 <TabItem label="components" value="pack_resources_components">
 
-The minLimit is the minimum resource requirement for each worker pool in the cluster. This value is sufficient for the
+The minimum limit is the minimum resource requirement for each worker pool in the cluster. This value is sufficient for the
 basic resource validation, but in some cases where the pack contains one or more associated components, then each
 component can define its CPU or memory resource requests in the config file `values.yaml`. In this case, a single
 `minLimit` value is not sufficient as the minimum requirements can be different for each component.
