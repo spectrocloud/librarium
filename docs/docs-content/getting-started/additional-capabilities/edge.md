@@ -11,7 +11,7 @@ tags: ["getting-started"]
 Palette Edge enables you to deploy Kubernetes workloads in remote locations characterized by limited or intermittent
 connectivity and limited compute infrastructure. This means you can deploy Kubernetes clusters at scale and ensure
 application performance, availability, security, and lifecycle management across a diverse range of edge locations.
-These locations include hospitals, retail stores, Telco environments, restaurants, manufacturing facilities, rural
+These locations include hospitals, retail stores, telecommunications environments, restaurants, manufacturing facilities, rural
 areas, and many more.
 
 Palette Edge supports both VM and container-based workloads, multiple Kubernetes distributions, and Intel and ARM

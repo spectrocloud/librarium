@@ -143,7 +143,7 @@ Follow the steps below to generate keys from certificates issued by your CA.
 
 :::danger
 
-If you are using an existing CA to generate keys, ensure that CA's root certificate has a distant expiration date. If
+If you are using an existing CA to generate keys, ensure that CA root certificate has a distant expiration date. If
 the root certificate itself expires, all certificates signed by the CA will no longer be valid. This can possibly
 soft-brick your Edge host.
 
@@ -232,7 +232,7 @@ soft-brick your Edge host.
    ```
 
    Replace `path-to-ca-root-cert` with the path to the root certificate of the CA and replace `path-to-ca-private-key`
-   with the path to the CA's private key. You may also choose to change the validity period of the certificates. The
+   with the path to the CA private key. You may also choose to change the validity period of the certificates. The
    default is 15 years (5475 days).
 
    :::danger

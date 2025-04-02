@@ -93,7 +93,7 @@ Use the following steps to prepare to register your cloud with Palette.
 
    :::tip
 
-   When editing the YAMLs, it is helpful to collapse the `spec` section to help you identify the sections to remove.
+   When editing the YAML files, it is helpful to collapse the `spec` section to help you identify the sections to remove.
 
    :::
 

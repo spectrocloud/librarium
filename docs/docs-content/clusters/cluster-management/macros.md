@@ -31,7 +31,7 @@ In such cases, the precedence followed is in decreasing order (the highest prece
 
 Palette users can use Macros in three different Scopes. Following the user preferences and privileges, log in as a
 Tenant Admin or Project Admin, to create macros under Tenant Admin scope and Project Scope, respectively. System Scope
-Macros can be created via API's. The steps to create a macro are as below:
+Macros can be created using the API. The steps to create a macro are as below:
 
 <Tabs>
 <TabItem label="Tenant Scope Macro" value="Tenant Scope Macro">

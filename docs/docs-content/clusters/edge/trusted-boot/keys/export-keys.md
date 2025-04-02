@@ -61,7 +61,7 @@ This page guides you through how to export your factory keys using command-line 
    </Tabs>
 
    The commands will export the keys in the current directory where the commands are executed. Your Edge host often has
-   more than one public KEK key, and the exported KEK variable contains all of them. The **db** and **dbx** files also
+   more than one public KEK key, and the exported KEK variable contains all of them. The `db` and `dbx` files also
    contain all the allowed and forbidden public keys that can be used to verify different boot components.
 
 3. Copy the keys to a secure location, such as a USB storage device. You will need them during the key generation step

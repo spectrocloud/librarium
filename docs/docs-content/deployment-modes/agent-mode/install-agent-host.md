@@ -93,7 +93,7 @@ Palette. You will then create a cluster profile and use the registered host to d
   - If installing the FIPS version of Agent Mode on a Rocky Linux edge host, you must configure your SELinux policies to
     grant rsync the required host permissions and ensure you enable cgroup V2.
 
-    If you are using Cilium and have firewalld enabled, you must also configure the appropriate firewalld rules. Follow
+    If you are using Cilium and have `firewalld` enabled, you must also configure the appropriate `firewalld` rules. Follow
     the process below to apply the necessary configurations before installing Agent Mode.
 
     <details>
@@ -204,9 +204,9 @@ Palette. You will then create a cluster profile and use the registered host to d
         sudo reboot
         ```
 
-    ### Configure firewalld (Cilium Only)
+    ### Configure `firewalld` (Cilium Only)
 
-    12. (Optional) If you are using Cilium and have firewalld enabled, put the the following commands into a shell
+    12. (Optional) If you are using Cilium and have `firewalld` enabled, put the the following commands into a shell
         script.
 
         ```shell
@@ -284,7 +284,7 @@ Palette. You will then create a cluster profile and use the registered host to d
         chmod +x firewalld-cilium.sh
         ```
 
-    13. Execute the script with the name of the firewalld zone. For example, the following script sets the rules in the
+    13. Execute the script with the name of the `firewalld` zone. For example, the following script sets the rules in the
         firewall zone `public`.
 
         ```shell

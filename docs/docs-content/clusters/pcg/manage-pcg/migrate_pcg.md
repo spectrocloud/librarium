@@ -37,7 +37,7 @@ cluster's PCG reference point by using the Palette API endpoint `GET /v1/spectro
 ```
 
 <details>
-<summary>How do I get my PCG's `overlordUid`?</summary>
+<summary>How do I get my PCG `overlordUid`?</summary>
 
 The `overlordUid` is a unique identifier of the PCG that deployed the cluster. However, this value is different from the
 actual cluster ID of the PCG. To retrieve a PCG cluster's `overlordUid`, use the following kubectl command on the PCG
@@ -134,7 +134,7 @@ references the old PCG. Use the Palette API endpoint `GET /v1/spectroclusters/:u
    --header 'apiKey: XXXXXXXXXXX'
    ```
 
-5. Verify that the `metadata.annotations.overlordUid` field in the response payload matches the new PCG's `overlordUid`.
+5. Verify that the `metadata.annotations.overlordUid` field in the response payload matches the new PCG `overlordUid`.
    Refer to the intro section of this guide for guidance on how to get the `overlordUid` of a PCG cluster.
 
    ```json hideClipboard {5}

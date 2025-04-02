@@ -94,7 +94,7 @@ Now, under **Pack Details**, click on **Values** and replace the predefined `192
 **addresses** line with a valid IP address or IP range from your VMware environment to be assigned to your load
 balancer. Next, click **Confirm & Create** to add the MetalLB pack.
 
-![Metallb Helm-based pack.](/getting-started/vmware/getting-started_create-cluster-profile_metallb-pack.webp)
+![MetalLb Helm-based pack.](/getting-started/vmware/getting-started_create-cluster-profile_metallb-pack.webp)
 
 Click on **Confirm & Create** to save the pack.
 
@@ -127,7 +127,7 @@ Select the **Enable Hello Universe API** preset. The pack manifest changes accor
 The pack requires two values to be replaced for the authorization token and for the database password when using this
 preset. Replace these values with your own base64 encoded values. The
 [_hello-universe_](https://github.com/spectrocloud/hello-universe?tab=readme-ov-file#single-load-balancer) repository
-provides an unencoded token that you can use.
+provides a token that you can use.
 
 Click on **Confirm & Create** to save the manifest. Then, click on **Save Changes** to save this new layer to the
 cluster profile.

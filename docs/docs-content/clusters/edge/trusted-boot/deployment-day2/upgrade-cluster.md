@@ -33,7 +33,7 @@ the cluster.
 
 - The machine used to build the provider image must meet the minimum hardware requirements:
 
-  - 4 CPUs
+  - 4 CPU
   - 32 GB RAM
   - 150 GB storage
 

@@ -71,7 +71,7 @@ Each layer has a pack manifest file with the deploy configurations. The pack man
 pack contains a set of default values. You can change the manifest values if needed. Click on **Next** to proceed.
 
 The **Cluster Config** section allows you to provide specific information about your VMware vSphere environment. First,
-select the **Datacenter** and **Deployment Folder** where the cluster nodes will be launched. Next, select the **Image
+select the **Data center** and **Deployment Folder** where the cluster nodes will be launched. Next, select the **Image
 Template Folder** to which the Spectro templates are imported, and choose **DHCP** as the **Network Type**. Finally,
 provide the **SSH key** for accessing the cluster nodes. Proceed by clicking **Next** to advance to the **Nodes
 Configuration** section.
@@ -136,7 +136,7 @@ moments before clicking on the service URL to prevent the browser from caching a
 
 ![Image that shows the cluster overview of the Hello Universe Frontend Cluster](/getting-started/getting-started_deploy-k8s-cluster_hello-universe-with-api.webp)
 
-Welcome to Spacetastic's astronomy education platform. Feel free to explore the pages and learn more about space. The
+Welcome to the Spacetastic astronomy education platform. Feel free to explore the pages and learn more about space. The
 statistics page offers information on visitor counts on your deployed service.
 
 You have deployed your first application to a cluster managed by Palette. Your first application is a three-tier

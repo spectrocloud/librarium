@@ -182,23 +182,23 @@ The following is a list of checks is performed by the `services` subcommand:
 
 | Check                      | Description                                                                                                                                                                                  |
 | -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| cipher-tls1*2*             | Verifies TLS 1.2 cipher suites.                                                                                                                                                              |
-| cipher-tls1*3*             | Verifies TLS 1.3 cipher suites.                                                                                                                                                              |
-| SSLv2, SSLv3, TLS1, TLS1_1 | Checks for the presence of deprecated SSL/TLS versions.                                                                                                                                      |
-| cipherlist_NULL            | Checks for the presence of NULL encryption cipher suites.                                                                                                                                    |
-| cipherlist_aNULL           | Checks for the presence of aNULL encryption cipher suites.                                                                                                                                   |
-| cipherlist_EXPORT          | Checks for the presence of EXPORT encryption cipher suites.                                                                                                                                  |
-| cipherlist_3DES_IDEA       | Checks for the presence of 3DES and IDEA encryption cipher suites.                                                                                                                           |
-| cipherlist_OBSOLETED       | Checks for the presence of obsoleted encryption cipher suites.                                                                                                                               |
-| cipherlist_LOW             | Checks for the presence of LOW encryption cipher suites.                                                                                                                                     |
-| cert_notBefore             | Validates the start date of the certificate.                                                                                                                                                 |
-| cert_notAfter              | Validates the expiration date of the certificate.                                                                                                                                            |
-| FS_TLS12_sig_algs          | Verifies the supported signature algorithms for TLS 1.2.                                                                                                                                     |
-| HSTS                       | Validates the presence of HTTP Strict Transport Security (HSTS) headers.                                                                                                                     |
-| DNS_CAArecord              | Confirms the presence of DNS Certification Authority Authorization (CAA) records.                                                                                                            |
-| security_headers           | Checks for the presence of recommended security headers. Refer to [testssl.sh](https://testssl.sh/doc/testssl.1.html) documentation for more context. Search for the `--header` description. |
-| overall_grade              | Assesses the overall security grade of the configuration.                                                                                                                                    |
-| cert\_                     | Ensures certificate-related configurations meet requirements, excluding specific cases.                                                                                                      |
+| `cipher-tls1*2*`             | Verifies TLS 1.2 cipher suites.                                                                                                                                                              |
+| `cipher-tls1*3*`             | Verifies TLS 1.3 cipher suites.                                                                                                                                                              |
+| `SSLv2, SSLv3, TLS1, TLS1_1` | Checks for the presence of deprecated SSL/TLS versions.                                                                                                                                      |
+| `cipherlist_NULL`            | Checks for the presence of NULL encryption cipher suites.                                                                                                                                    |
+| `cipherlist_aNULL`           | Checks for the presence of aNULL encryption cipher suites.                                                                                                                                   |
+| `cipherlist_EXPORT`          | Checks for the presence of EXPORT encryption cipher suites.                                                                                                                                  |
+| `cipherlist_3DES_IDEA`       | Checks for the presence of 3DES and IDEA encryption cipher suites.                                                                                                                           |
+| `cipherlist_OBSOLETED`       | Checks for the presence of obsoleted encryption cipher suites.                                                                                                                               |
+| `cipherlist_LOW`             | Checks for the presence of LOW encryption cipher suites.                                                                                                                                     |
+| `cert_notBefore`             | Validates the start date of the certificate.                                                                                                                                                 |
+| `cert_notAfter`              | Validates the expiration date of the certificate.                                                                                                                                            |
+| `FS_TLS12_sig_algs`          | Verifies the supported signature algorithms for TLS 1.2.                                                                                                                                     |
+| `HSTS`                       | Validates the presence of HTTP Strict Transport Security (HSTS) headers.                                                                                                                     |
+| `DNS_CAArecord`              | Confirms the presence of DNS Certification Authority Authorization (CAA) records.                                                                                                            |
+| `security_headers`           | Checks for the presence of recommended security headers. Refer to [testssl.sh](https://testssl.sh/doc/testssl.1.html) documentation for more context. Search for the `--header` description. |
+| `overall_grade`              | Assesses the overall security grade of the configuration.                                                                                                                                    |
+| `cert\_`                     | Ensures certificate-related configurations meet requirements, excluding specific cases.                                                                                                      |
 
 ### Examples
 
