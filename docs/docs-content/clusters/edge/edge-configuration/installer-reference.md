@@ -322,8 +322,8 @@ automatically apply to application workloads. To configure applications to use t
 You can specify tags from a file by using the `tagsFromFile` parameter object or from a script by using the
 `tagsFromScript` parameter.
 
-| Parameter                              | Description                                            | Default Value |
-| -------------------------------------- | ------------------------------------------------------ | ------------- |
+| Parameter                               | Description                                            | Default Value |
+| --------------------------------------- | ------------------------------------------------------ | ------------- |
 | `stylus.site.tagsFromFile.fileName`     | The path to the file containing the tags.              | `''`          |
 | `stylus.site.tagsFromFile.delimiter`    | The delimiter used to separate the key-value pairs.    | `\n`          |
 | `stylus.site.tagsFromFile.separator`    | The separator used to separate the key from the value. | `:`           |
