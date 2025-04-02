@@ -157,6 +157,14 @@ Use the site network parameters to configure network settings so the edge host c
 | `stylus.site.network.interfaces.[NIC-NAME].nameserver` | The IP address of the DNS nameserver this interface should route requests to.                                                   |
 | `stylus.site.network.nameserver`                       | The IP address of the global DNS nameserver that requests should be routed to.                                                  |
 
+:::warning
+
+The proxy settings in user data configure Palette services to use the proxy network. However, these settings do not
+automatically apply to application workloads. To configure applications to use the proxy configurations, refer to
+[Configure Applications to Use Proxy Server](../../cluster-management/cluster-proxy.md).
+
+:::
+
 #### Tags
 
 You can specify tags from a file by using the `tagsFromFile` parameter object or from a script by using the
