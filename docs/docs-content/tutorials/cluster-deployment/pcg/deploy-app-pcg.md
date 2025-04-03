@@ -179,7 +179,7 @@ Ensure the following values are set for the **Basic Information** section.
 | Cluster name    | `pcg-tutorial-cluster`                                                                                                                                                                                      |
 | Description     | Cluster as part of the Deploy App Workloads with a PCG tutorial.                                                                                                                                            |
 | Tags            | `spectro-cloud-education`, `app:hello-universe`, `terraform_managed:false`, `repository:spectrocloud:tutorials`, `tutorial:DEPLOY_APP_WORKLOADS_WITH_A_PCG`                                                 |
-| Type of cluster | Data center                                                                                                                                                                                                  |
+| Type of cluster | Data center                                                                                                                                                                                                 |
 | Cloud Account   | Select the VMware cloud account that was registered with Palette during the PCG creation. The cloud account has the same name as the PCG. In this tutorial, the cloud account is called `gateway-tutorial`. |
 
 **Parameters**

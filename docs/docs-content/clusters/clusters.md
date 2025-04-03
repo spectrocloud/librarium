@@ -230,9 +230,9 @@ stream is a good source for identifying issues in the event an operation does no
 
 At times, you may be required to work with the Palette Support Team to troubleshoot an issue. Palette provides the
 ability to gather logs from the clusters it manages. Problems that occur during the orchestration lifecycle, may require
-access to the various containers, nodes, and system logs. Palette automates this log-collection process and
-provides an easy download option from the Palette UI console. Hence, it reduces the burden on the operator to log in to
-various cluster nodes individually and fetch these logs. <br />
+access to the various containers, nodes, and system logs. Palette automates this log-collection process and provides an
+easy download option from the Palette UI console. Hence, it reduces the burden on the operator to log in to various
+cluster nodes individually and fetch these logs. <br />
 
 ### Collect the Logs
 
@@ -334,7 +334,7 @@ The following are the attributes of a cluster that are displayed in the cluster 
 | Attribute     | Description                                                                                                                                                                                            | Support Order-by |
 | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------- |
 | Type          | The cluster type. Possible values are "Palette-managed" or "Imported." When there is a small green arrow on the icon, it means there are pending updates to the cluster that requires acknowledgement. | No               |
-| Environment           | The infrastructure provider of the cluster, such as AWS, Azure, GCP and Edge.                                                                                                                          | Yes              |
+| Environment   | The infrastructure provider of the cluster, such as AWS, Azure, GCP and Edge.                                                                                                                          | Yes              |
 | Name          | The name of the cluster.                                                                                                                                                                               | Yes              |
 | Status        | The status of the cluster. Possible values include "Pending," "Provisioning," "Running," "Deleting," "Importing," "Unknown," and "Deleted."                                                            | Yes              |
 | Last Modified | The date and time when the cluster was last modified.                                                                                                                                                  | Yes              |

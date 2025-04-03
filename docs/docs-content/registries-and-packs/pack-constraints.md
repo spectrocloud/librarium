@@ -447,8 +447,8 @@ the total minimum requirement.
 
 <TabItem label="components" value="pack_resources_components">
 
-The minimum limit is the minimum resource requirement for each worker pool in the cluster. This value is sufficient for the
-basic resource validation, but in some cases where the pack contains one or more associated components, then each
+The minimum limit is the minimum resource requirement for each worker pool in the cluster. This value is sufficient for
+the basic resource validation, but in some cases where the pack contains one or more associated components, then each
 component can define its CPU or memory resource requests in the config file `values.yaml`. In this case, a single
 `minLimit` value is not sufficient as the minimum requirements can be different for each component.
 
@@ -673,7 +673,7 @@ k8s:
 
 Referencing Kubernetes pack variable version in CentOS pack values:
 
-```bash  title="CentOS values.yaml"
+```bash title="CentOS values.yaml"
 k8s:
  version: "{{ .spectro.pack.kubernetes.version }}"
 ```

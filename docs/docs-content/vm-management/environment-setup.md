@@ -99,13 +99,13 @@ We recommend using a dedicated VLAN for end-user access and not sharing it with 
 Refer to the following table for an example of a host network configuration, which uses a total of 4 NICs in 2 bonds and
 fits with our recommended VMO network configuration.
 
-| Interface              | Type   | Contents             | VLAN   | CIDR           | Gateway    |
-| ---------------------- | ------ | -------------------- | ------ | -------------- | ---------- |
+| Interface            | Type   | Contents             | VLAN   | CIDR           | Gateway    |
+| -------------------- | ------ | -------------------- | ------ | -------------- | ---------- |
 | `bond_management`    | Bond   | enp1s0 <br /> enp2s0 | Native | 192.168.0.0/22 |            |
-| `bond_management.10` | VLAN   | `bond_management`      | 10     | 172.16.0.0/22  |            |
+| `bond_management.10` | VLAN   | `bond_management`    | 10     | 172.16.0.0/22  |            |
 | `bond_data`          | Bond   | enp1s1 <br /> enp2s1 | Native |                |            |
-| `bond_data.20`       | VLAN   | `bond_data`            | 20     | 10.20.30.0/16  | 10.20.30.1 |
-| **br0**                | Bridge | `bond_data`            | Native |                |            |
+| `bond_data.20`       | VLAN   | `bond_data`          | 20     | 10.20.30.0/16  | 10.20.30.1 |
+| **br0**              | Bridge | `bond_data`          | Native |                |            |
 
 The **br0** bridge interface is used as a primary interface by Multus to automatically create VLAN interfaces for VMs.
 In this scenario, the primary interface must be a bridge, as no other type will work.

@@ -9,8 +9,8 @@ tags: ["pcg"]
 
 A PCG upgrade event can be broken down into two categories: Palette agent updates and cluster profile updates. Depending
 on the upgrade event, different steps are required to complete the upgrade. The cluster profile for a PCG is locked down
-and cannot be changed by a user. However, when a PCG cluster profile update is available, you must manually approve
-the update to apply changes.
+and cannot be changed by a user. However, when a PCG cluster profile update is available, you must manually approve the
+update to apply changes.
 
 :::info
 

@@ -273,7 +273,7 @@ The following requirements apply to tags:
 
     | **Parameter**                                            | **Description**                                                                                                                                                                                                                                                               |
     | -------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Datacenter**                                           | The vSphere data center to target when deploying the PCG cluster.                                                                                                                                                                                                              |
+    | **Datacenter**                                           | The vSphere data center to target when deploying the PCG cluster.                                                                                                                                                                                                             |
     | **Folder**                                               | The folder to target when deploying the PCG cluster.                                                                                                                                                                                                                          |
     | **Network**                                              | The port group to which the PCG cluster will be connected.                                                                                                                                                                                                                    |
     | **Resource Pool**                                        | The resource pool to target when deploying the PCG cluster.                                                                                                                                                                                                                   |
@@ -325,18 +325,18 @@ The following requirements apply to tags:
 11. Enter the vSphere Machine configuration for the Private Cloud Gateway. We recommend `M` or greater for production
     workloads.
 
-    | **Parameter** | **Description**                                                                                                                                                                                                                                                 |
-    | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **S**         | 4 CPU, 4 GB of Memory, and 60 GB of Storage                                                                                                                                                                                                                     |
-    | **M**         | 8 CPU, 8 GB of Memory, and 100 GB of Storage                                                                                                                                                                                                                    |
-    | **L**         | 16 CPU, 16 GB of Memory, and 120 GB of Storage                                                                                                                                                                                                                  |
+    | **Parameter** | **Description**                                                                                                                                                                                                                                                |
+    | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **S**         | 4 CPU, 4 GB of Memory, and 60 GB of Storage                                                                                                                                                                                                                    |
+    | **M**         | 8 CPU, 8 GB of Memory, and 100 GB of Storage                                                                                                                                                                                                                   |
+    | **L**         | 16 CPU, 16 GB of Memory, and 120 GB of Storage                                                                                                                                                                                                                 |
     | **Custom**    | Specify a custom configuration. If you select `Custom`, you will be prompted to enter the number of CPU, memory, and storage to allocate to the PCG VM. Refer to the [Custom Machine Configuration](#custom-machine-configuration) table for more information. |
 
     #### Custom Machine Configuration
 
     | **Parameter** | **Description**                                           |
     | ------------- | --------------------------------------------------------- |
-    | **CPU**       | The number of CPU in the Virtual Machine.                |
+    | **CPU**       | The number of CPU in the Virtual Machine.                 |
     | **Memory**    | The number of memory to allocate to the Virtual Machine.  |
     | **Storage**   | The amount of storage to allocate to the Virtual Machine. |
 

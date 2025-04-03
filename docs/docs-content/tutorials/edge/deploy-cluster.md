@@ -574,8 +574,8 @@ is an explanation of the options and sub-commands used below:
   :::
 
 Issue the following command to trigger the Packer build process to create a VM template in the VMware vCenter. It will
-also delete any existing `packer_cache` before uploading and keeping a copy of the `palette-edge-installer.iso` to
-the `packer_cache/` directory in the specified datastore.
+also delete any existing `packer_cache` before uploading and keeping a copy of the `palette-edge-installer.iso` to the
+`packer_cache/` directory in the specified datastore.
 
 ```bash
 docker run --interactive --tty --rm \

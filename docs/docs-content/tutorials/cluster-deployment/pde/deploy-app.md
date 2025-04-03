@@ -738,7 +738,6 @@ points to the app profile `spectrocloud_application_profile.hello-universe-ui` a
 
 <!-- vale on -->
 
-
 ```hcl
 resource "spectrocloud_application" "scenario-1" {
   name                    = "single-scenario"

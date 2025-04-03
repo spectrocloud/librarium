@@ -44,9 +44,9 @@ help us identify and resolve those issues.
 
 At times it might be required to work with the Spectro Cloud support team to troubleshoot an issue. Spectro Cloud
 provides the ability to aggregate logs from the clusters it manages. Problems that occur during the orchestration life
-cycle may require access to the various containers, nodes, and system logs. Spectro Cloud automates this log
-collection process and provides an easy download option from the Spectro Cloud UI console. Hence reduces the burden on
-the operator to login into various cluster nodes individually and fetch these logs.
+cycle may require access to the various containers, nodes, and system logs. Spectro Cloud automates this log collection
+process and provides an easy download option from the Spectro Cloud UI console. Hence reduces the burden on the operator
+to login into various cluster nodes individually and fetch these logs.
 
 Follow the link for more details: [Download Cluster Logs](../clusters/clusters.md#download-cluster-logs)
 
