@@ -20,7 +20,7 @@ allocated to VMs than there are physical resources on the system.
 
 ## Over-commit CPUs
 
-Kubevirt offers the `cpuAllocationRatio` in its Custom Resource Definitions (CRD). This ratio is used to normalize the
+KubeVirt offers the `cpuAllocationRatio` in its Custom Resource Definitions (CRD). This ratio is used to normalize the
 amount of CPU time the pod will request based on the number of virtual CPUs (vCPUs).
 
 ### Prerequisites

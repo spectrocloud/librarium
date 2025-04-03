@@ -721,7 +721,7 @@ app profile through the UI. During the app profile creation process, click on th
 Review the payload's `values` attribute to find all of the properties of the service. You can copy the entire string and
 pass it to the resource `spectrocloud_application_profile` as an input for the `values` attribute.
 
-![UI's ability to display the API object](/tutorials/deploy-app/devx_apps_deploy-apps_ui-api-display.webp)
+![UI ability to display the API object](/tutorials/deploy-app/devx_apps_deploy-apps_ui-api-display.webp)
 
 The last Terraform resource to review before deploying the application is located in the **application.tf** file. The
 resource `spectrocloud_application.hello-universe-ui` is what creates the _app_. In Palette, an app combines a virtual

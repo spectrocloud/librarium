@@ -71,7 +71,7 @@ Each layer has a pack manifest file with the deploy configurations. The pack man
 pack contains a set of default values. You can change the manifest values if needed. Click on **Next** to proceed.
 
 The **Cluster Config** section allows you to provide specific information about your VMware vSphere environment. First,
-select the **Data center** and **Deployment Folder** where the cluster nodes will be launched. Next, select the **Image
+select the **Datacenter** and **Deployment Folder** where the cluster nodes will be launched. Next, select the **Image
 Template Folder** to which the Spectro templates are imported, and choose **DHCP** as the **Network Type**. Finally,
 provide the **SSH key** for accessing the cluster nodes. Proceed by clicking **Next** to advance to the **Nodes
 Configuration** section.

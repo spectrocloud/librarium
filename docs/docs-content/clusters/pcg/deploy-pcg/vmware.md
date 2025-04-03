@@ -164,7 +164,7 @@ The following table lists the tag values for the data center and compute cluster
 
 | **vSphere Object** | **Assigned Name** | **Tag Category** | **Tag Value** |
 | ------------------ | ----------------- | ---------------- | ------------- |
-| **Data center**     | dc-1              | k8s-region       | region1       |
+| **Datacenter**     | dc-1              | k8s-region       | region1       |
 | **Cluster**        | cluster-1         | k8s-zone         | az1           |
 | **Cluster**        | cluster-2         | k8s-zone         | az2           |
 | **Cluster**        | cluster-3         | k8s-zone         | az3           |
@@ -273,7 +273,7 @@ The following requirements apply to tags:
 
     | **Parameter**                                            | **Description**                                                                                                                                                                                                                                                               |
     | -------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Data center**                                           | The vSphere data center to target when deploying the PCG cluster.                                                                                                                                                                                                              |
+    | **Datacenter**                                           | The vSphere data center to target when deploying the PCG cluster.                                                                                                                                                                                                              |
     | **Folder**                                               | The folder to target when deploying the PCG cluster.                                                                                                                                                                                                                          |
     | **Network**                                              | The port group to which the PCG cluster will be connected.                                                                                                                                                                                                                    |
     | **Resource Pool**                                        | The resource pool to target when deploying the PCG cluster.                                                                                                                                                                                                                   |

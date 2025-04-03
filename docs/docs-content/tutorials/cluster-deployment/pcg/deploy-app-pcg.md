@@ -190,7 +190,7 @@ configurations if needed. Proceed by clicking **Next**.
 **Cluster Configuration**
 
 In the **Cluster Config** section, provide specific information about your VMware vSphere environment. First, select the
-**Data center** and **Deployment Folder** where the cluster nodes will be launched. Next, select the **Image Template
+**Datacenter** and **Deployment Folder** where the cluster nodes will be launched. Next, select the **Image Template
 Folder** to which the Spectro templates are imported, and choose **DHCP** as the **Network Type**. Finally, provide the
 **SSH key** for accessing the cluster nodes. Proceed by clicking **Next** to advance to the **Nodes Configuration**
 section.

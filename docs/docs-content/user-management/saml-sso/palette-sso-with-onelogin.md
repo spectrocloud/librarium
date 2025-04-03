@@ -79,7 +79,7 @@ Use the following steps to configure OneLogin as a third-party IdP in Palette.
 
    ![Copy Callback URL](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_callbackurl.webp)
 
-8. Paste the Palette **Callback URL** value in the **Login URL** and **Redirect URI's** sections.
+8. Paste the Palette **Callback URL** value in the **Login URL** and **Redirect URIs** sections.
 
    ![Add Login URL and Redirect URL](/oidc-onelogin-images/user-management_saml-sso_palette_sso_with_onelogin_login-redirect-uris.webp)
 
