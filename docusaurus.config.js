@@ -288,6 +288,16 @@ const config = {
       "data-modal-lock-scroll": "false",
       "data-modal-inner-position-left": "auto",
       async: true,
+      /*
+      Adjusts the color for dark mode
+      */
+      "data-modal-disclaimer-bg-color": "#0B3433",
+      "data-modal-disclaimer-text-color": "white",
+      "data-answer-box-background-color": "black",
+      "data-modal-body-bg-color": "black",
+      "data-modal-header-bg-color": "grey",
+      "data-modal-header-border-bottom": "1px solid #3A9D99",
+      "data-modal-title-color": "white",
     },
     {
       src: "/scripts/fullstory.js",
