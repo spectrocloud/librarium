@@ -32,7 +32,7 @@ tags: ["release-notes"]
   all managed Palette and VerteX deployments were patched and the affected component was upgraded to a secure version,
   `1.11.5`. On March 28, 2025, patches for connected Palette [Enterprise](../enterprise-version/enterprise-version.md) and
   [VerteX](../vertex/vertex.md) versions 4.5 - 4.6 were released, and on April 1, 2025, the patch for version 4.4 was released. On April
-  2, 2025, the patch for airgapped Palette Enterprise and VerteX versions 4.4 and 4.6 was released. All Palette Enterprise and VerteX installations must upgrade to the latest patch version. Airgapped
+  2, 2025, patches for airgapped Palette Enterprise and VerteX versions 4.4 and 4.6 were released. All Palette Enterprise and VerteX installations must upgrade to the latest patch version. Airgapped
   Palette Enterprise and VerteX version 4.5 must manually upgrade `ingress-nginx` controllers to version `1.11.5`.
 
   All workload clusters across all Palette and VerteX installations must be updated manually. All users should review
