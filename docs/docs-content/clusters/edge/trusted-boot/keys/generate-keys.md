@@ -143,9 +143,9 @@ Follow the steps below to generate keys from certificates issued by your CA.
 
 :::danger
 
-If you are using an existing CA to generate keys, ensure that CA root certificate has a distant expiration date. If
-the root certificate itself expires, all certificates signed by the CA will no longer be valid. This can possibly
-soft-brick your Edge host.
+If you are using an existing CA to generate keys, ensure that CA root certificate has a distant expiration date. If the
+root certificate itself expires, all certificates signed by the CA will no longer be valid. This can possibly soft-brick
+your Edge host.
 
 :::
 

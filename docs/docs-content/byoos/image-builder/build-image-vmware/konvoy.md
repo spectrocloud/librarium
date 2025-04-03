@@ -137,7 +137,7 @@ instructions on how to build the custom RHEL with Konvoy image.
     | Parameter                    | Description                                                                                                                        |
     | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
     | `packer.cluster`             | The name of the vSphere cluster to deploy the Packer VM.                                                                           |
-    | `packer.datacenter`          | The name of the vSphere data center to deploy the Packer VM.                                                                        |
+    | `packer.datacenter`          | The name of the vSphere data center to deploy the Packer VM.                                                                       |
     | `packer.datastore`           | The name of the vSphere datastore to deploy the Packer VM.                                                                         |
     | `packer.folder`              | The name of the vSphere folder to deploy the Packer VM.                                                                            |
     | `packer.network`             | The name of the vSphere network to deploy the Packer VM.                                                                           |
@@ -281,7 +281,7 @@ instructions on how to build the custom RHEL with Konvoy image.
     | Parameter                    | Description                                                                                                                        |
     | ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
     | `packer.cluster`             | The name of the vSphere cluster to deploy the Packer VM.                                                                           |
-    | `packer.datacenter`          | The name of the vSphere data center to deploy the Packer VM.                                                                        |
+    | `packer.datacenter`          | The name of the vSphere data center to deploy the Packer VM.                                                                       |
     | `packer.datastore`           | The name of the vSphere datastore to deploy the Packer VM.                                                                         |
     | `packer.folder`              | The name of the vSphere folder to deploy the Packer VM.                                                                            |
     | `packer.network`             | The name of the vSphere network to deploy the Packer VM.                                                                           |

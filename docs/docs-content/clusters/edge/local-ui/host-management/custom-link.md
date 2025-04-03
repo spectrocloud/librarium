@@ -64,8 +64,8 @@ or open a new tab in your browser depending on how to configure the links.
    git checkout v4.4.0
    ```
 
-4. Create a directory called `local-ui` at the path `CanvOS/local-ui`. Then, under the `local-ui` directory,
-   create a directory named `ui`. You can issue the following command to create both directories.
+4. Create a directory called `local-ui` at the path `CanvOS/local-ui`. Then, under the `local-ui` directory, create a
+   directory named `ui`. You can issue the following command to create both directories.
 
    ```shell
    mkdir -p local-ui/ui
@@ -96,9 +96,9 @@ or open a new tab in your browser depending on how to configure the links.
           |--index.css
    ```
 
-   When using a URL to locate the local webpage, you can treat the `local-ui` folder as the root folder and you must
-   use absolute paths to locate your assets. For example, from `customizations.json`, you can locate the HTML file in
-   the example with `/app/index.html`.
+   When using a URL to locate the local webpage, you can treat the `local-ui` folder as the root folder and you must use
+   absolute paths to locate your assets. For example, from `customizations.json`, you can locate the HTML file in the
+   example with `/app/index.html`.
 
 7. Populate the file with the following schema. Each link requires one object with the `label` and `url` properties.
 
@@ -145,8 +145,8 @@ or open a new tab in your browser depending on how to configure the links.
 9. Ensure you include all the links you want to add to the sidebar before proceeding. You cannot add new links to the
    sidebar without rebuilding the installer ISO.
 
-10. Archive the `local-ui` directory to a TAR file. The file must be named `local-ui.tar` and must be placed at the
-    root directory of `CanvOS`.
+10. Archive the `local-ui` directory to a TAR file. The file must be named `local-ui.tar` and must be placed at the root
+    directory of `CanvOS`.
 
     ```shell
     tar cvf local-ui.tar local-ui

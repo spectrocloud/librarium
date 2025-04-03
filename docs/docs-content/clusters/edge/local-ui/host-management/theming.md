@@ -61,20 +61,20 @@ console for all Edge hosts of your organization.
     cd CanvOS
     ```
 
-3.  Create a directory called `local-ui` at the path `CanvOS/local-ui`. Then under the `local-ui` directory,
-    create a directory named `ui`. You can issue the following command to create both directories.
+3.  Create a directory called `local-ui` at the path `CanvOS/local-ui`. Then under the `local-ui` directory, create a
+    directory named `ui`. You can issue the following command to create both directories.
 
     ```shell
     mkdir -p local-ui/ui
     ```
 
-4.  In the `ui` directory, create a file named `customizations.json`. This is the same file you can use to add
-    custom links to your sidebar. If the file is already present, there is no need to create a new one. For more
-    information, refer to [Add Custom Links to Local UI](./custom-link.md).
+4.  In the `ui` directory, create a file named `customizations.json`. This is the same file you can use to add custom
+    links to your sidebar. If the file is already present, there is no need to create a new one. For more information,
+    refer to [Add Custom Links to Local UI](./custom-link.md).
 
 5.  Upload a logo you'd like to use for Local UI to the `ui` directory. All file types are allowed. We recommend you
-    limit the height of the logo image to between 64 pixels and 120 pixels. If you don't upload a logo, Local UI will use the
-    Spectro Cloud logo.
+    limit the height of the logo image to between 64 pixels and 120 pixels. If you don't upload a logo, Local UI will
+    use the Spectro Cloud logo.
 
 6.  Populate the file with the following schema:
 

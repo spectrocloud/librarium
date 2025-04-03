@@ -478,8 +478,8 @@ auth_token      = "REPLACE ME"     # The auth token for the API connection.
 Locate the VMware vSphere provider section and change `deploy-vmware = false` to `deploy-vmware = true`. Additionally,
 replace all occurrences of `REPLACE_ME` with the required variable values.
 
-- `metallb_ip` - Range of IP addresses for your MetalLB load balancer. If using static IP placement, this range must
-  be included in the PCG static IP pool range.
+- `metallb_ip` - Range of IP addresses for your MetalLB load balancer. If using static IP placement, this range must be
+  included in the PCG static IP pool range.
 - `pcg_name` - Name of the PCG that will be used to deploy the Palette cluster.
 - `datacenter_name` - Name of the data center in vSphere.
 - `folder_name` - Name of the folder in vSphere.

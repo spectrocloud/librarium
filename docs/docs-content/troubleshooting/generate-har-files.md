@@ -156,6 +156,7 @@ Consider the following examples of how to approach redacting passwords, tokens, 
         "text": "{\"emailId\":\"REDACTED\",\"password\":\"REDACTED\",\"org\":\"spectro-cloud\"}"
       }
     ```
+
   </TabItem>
   <TabItem value="tokens" label="Tokens">
 
@@ -168,6 +169,7 @@ Consider the following examples of how to approach redacting passwords, tokens, 
         }
       ],
     ```
+
   </TabItem>
   <TabItem value="cookies" label="Cookies">
 
@@ -186,6 +188,7 @@ Consider the following examples of how to approach redacting passwords, tokens, 
         },
       ]
     ```
+
   </TabItem>
 </Tabs>
 

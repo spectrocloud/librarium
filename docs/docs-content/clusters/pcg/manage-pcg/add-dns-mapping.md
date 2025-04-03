@@ -42,7 +42,7 @@ environment.
    | Field               | Description                                                 |
    | ------------------- | ----------------------------------------------------------- |
    | **Search Domain**   | The domain name to allocate nodes to and resolve hostnames. |
-   | **Datacenter**      | The vSphere data center to which the DNS mapping applies.    |
+   | **Datacenter**      | The vSphere data center to which the DNS mapping applies.   |
    | **Compute Cluster** | The vSphere cluster to which the DNS mapping applies.       |
    | **Network**         | The vSphere network to which the DNS mapping applies.       |
 

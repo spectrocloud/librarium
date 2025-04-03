@@ -180,8 +180,8 @@ The following flags are available for the `services` subcommand:
 
 The following is a list of checks is performed by the `services` subcommand:
 
-| Check                      | Description                                                                                                                                                                                  |
-| -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Check                        | Description                                                                                                                                                                                  |
+| ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `cipher-tls1*2*`             | Verifies TLS 1.2 cipher suites.                                                                                                                                                              |
 | `cipher-tls1*3*`             | Verifies TLS 1.3 cipher suites.                                                                                                                                                              |
 | `SSLv2, SSLv3, TLS1, TLS1_1` | Checks for the presence of deprecated SSL/TLS versions.                                                                                                                                      |

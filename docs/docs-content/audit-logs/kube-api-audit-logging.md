@@ -86,7 +86,7 @@ cp /etc/kubernetes/manifests/kube-apiserver.yaml  /etc/kubernetes/manifests/kube
 ```
 
 6. Now that you have a backup copy of the manifest file go ahead and open up the file
-   **/etc/kubernetes/manifests/kube-apiserver.yaml** in a text editor such as Vi.
+   **/etc/kubernetes/manifests/kube-apiserver.yaml** in a text editor such as Vi or Nano.
 
 <br />
 
