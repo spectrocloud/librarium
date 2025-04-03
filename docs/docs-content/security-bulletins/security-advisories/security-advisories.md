@@ -17,7 +17,7 @@ This advisory outlines security vulnerabilities related to [ingress-nginx](https
 and the recommended remediation actions.
 
 - **Release Date**: March 27, 2025
-- **Last Updated**: April 1, 2025
+- **Last Updated**: April 3, 2025
 - **Severity**: 9.8
 - **Affected Versions**: All versions prior to v1.11.0, v1.11.0 - v1.11.4, and v1.12.0
 - **Fixed Versions**: v1.11.5 and v1.12.1
