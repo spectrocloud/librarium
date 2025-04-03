@@ -45,10 +45,11 @@ Refer to the [Security Bulletins](../reports/reports.mdx) page for detailed info
 - **March 28, 2025**: Affected Nginx packs deprecated.
 - **March 28, 2025**: Connected Palette Enterprise and VerteX patched for versions 4.5 - 4.6.
 - **April 1, 2025**: Connected Palette Enterprise and VerteX patched for version 4.4.
+- **April 2, 2025**: Airgapped Palette Enterprise and VerteX patched for versions 4.4 and 4.6.
 
 #### Future Updates
 
-- **April 2, 2025, 10:00 PM PST**: Airgapped Palette Enterprise and VerteX patch for versions 4.4 - 4.6.
+- **April 4, 2025**: Airgapped Palette Enterprise and VerteX patch for version 4.5.
 
 ### Summary
 
@@ -58,9 +59,7 @@ download confidential information such as secrets available in the cluster. Thes
 Palette and VerteX management planes. Additionally, Spectro Cloud also provides the Nginx pack to customers for their
 workload clusters, which contains several vulnerable image versions.
 
-As of April 1, 2025, all managed Palette instances have been patched, as well as connected Palette Enterprise and VerteX
-installations, and vulnerable Nginx packs have been deprecated. Currently, airgapped Palette Enterprise and VerteX
-installations must manually upgrade their `ingress-nginx` controllers to version `1.11.5`.
+As of April 2, 2025, all vulnerable Nginx packs have been deprecated, and all managed Palette instances have been patched, as well as connected Palette Enterprise and VerteX versions 4.4 - 4.6 and airgapped Palette Enterprise and VerteX versions 4.4 and 4.6. Currently, airgapped Palette Enterprise and VerteX version 4.5 must manually upgrade `ingress-nginx` controllers to version `1.11.5`.
 
 All workload clusters across all Palette and VerteX installations must be updated manually. All users should review
 their cluster profiles and workload clusters and upgrade the Nginx pack to version `1.11.5`.
