@@ -103,7 +103,7 @@ The following table lists the tag values for the data center and compute cluster
 
 | **vSphere Object** | **Assigned Name** | **Tag Category** | **Tag Value** |
 | ------------------ | ----------------- | ---------------- | ------------- |
-| **Data center**     | dc-1              | k8s-region       | region1       |
+| **Datacenter**     | dc-1              | k8s-region       | region1       |
 | **Cluster**        | cluster-1         | k8s-zone         | az1           |
 | **Cluster**        | cluster-2         | k8s-zone         | az2           |
 | **Cluster**        | cluster-3         | k8s-zone         | az3           |

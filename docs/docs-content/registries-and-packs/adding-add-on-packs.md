@@ -269,7 +269,7 @@ Spectro Cloud CLI.
 3. Create a sub-directory called **manifests**.
 
 4. Copy the desired manifest files to the **manifests** directory and reference them in `pack.json` as shown in step 2.
-   If the configurability of the manifest is desired, then the manifest files must be templated to introduce
+   If the configurability of the manifest is desired, then the manifest files must be refactored to introduce
    parameters. For example, _\{\{.Values.namespace}}_. These parameters are defined with default values in the
    `values.yaml` file and can be overridden in the cluster profile.
 

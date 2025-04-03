@@ -266,7 +266,7 @@ empty file still needs to be added to the OS pack.
 
 Parameters for all charts and manifests defined in the pack are defined in the `values.yaml` file. _Helm_ charts
 natively support values override. Any values defined are merged with those defined within a chart. _Manifests_ need to
-be explicitly templated if parameter configuration is desired.
+be explicitly configured to use parameters if desired.
 
 ```yaml
     pack:
@@ -278,9 +278,9 @@ be explicitly templated if parameter configuration is desired.
         <configurable chart2 parameters>
     manifests:
         manifest1:
-            <templatized manifest1 parameters>
+            <manifest1 parameters>
         manifest2:
-            <templatized manifest2 parameters>
+            <manifest2 parameters>
 ```
 
 4. A pack must have the logo file named `logo.png` and must be copied into the pack directory.
