@@ -26,11 +26,13 @@ before you can delete the variables.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. On the left **Main Menu**, select **Profiles** and choose the cluster profile for which you want to delete the
+2. On the left main menu, select **Profiles** and choose the cluster profile for which you want to delete the
    profile variables. We recommend
    [creating a new version of your cluster profile](../../../cluster-profiles/modify-cluster-profiles/version-cluster-profile.md)
    before proceeding.
-3. In the upper-right corner, click **Variables**.
+
+3. In the upper-right corner, select **Variables**.
+   
 4. Any variables present in a profile layer are indicated by a darkened pill and the text **[#] layers**. Hover over the
    pill to review the profile layers that the variable is used in. You must remove the profile variable definition from
    all layers before you can delete it.
@@ -38,31 +40,32 @@ before you can delete the variables.
 5. Close the **Profile variables** pane and open the profile layer containing the variable you want to remove.
 
 6. Navigate to the pack's YAML configuration. Locate the profile variable, and remove
-   `"{{.spectro.var.variable_name}}"`. Enter the appropriate value in its place.
+   `'{{.spectro.var.variable_name}}'`. Enter the appropriate value in its place.
 
-   In the below example, we removed `"{{.spectro.var.kubecost-frontend-image-pull-policy}}"` and set
+   In the below example, we removed `'{{.spectro.var.kubecost-frontend-image-pull-policy}}'` and set
    `kubecostFrontend.imagePullPolicy` to `Always`.
 
    ![Removing a cluster profile variable from YAML configuration](/profiles_cluster-profiles_create-cluster-profiles_define-profile-variables_delete-cluster-profile-variables_remove-from-YAML.webp)
 
 7. Remove all references to the profile variable from the layer. When you are finished, select **Confirm Updates**.
 
-8. Repeat steps five through seven as necessary until the profile variable is removed from all layers and the pill
+8. Repeat steps 5 through 7 as necessary until the profile variable is removed from all layers and the pill
    beside the variable changes to **unused**.
 
-9. Close the **Profile variables** pane, and on the main cluster profile window, select **Save Changes**.
+9.  Close the **Profile variables** pane, and on the main cluster profile window, select **Save Changes**.
 
-10. Once your changes have been saved, in the upper-right corner, click **Variables**.
-11. Select the **three-dot Menu** beside the **unused** cluster profile variable. **Delete** the variable.
+10. Once your changes have been saved, in the upper-right corner, select **Variables**.
+    
+11. Select the three-dot menu beside the **unused** cluster profile variable. **Delete** the variable.
 
 ### Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. From the left **Main Menu**, select **Profiles** and navigate to the cluster profile previously containing the
+2. From the left main menu, select **Profiles** and navigate to the cluster profile previously containing the
    profile variable.
 
-3. In the upper-right corner, click **Variables** and, on the **Profile variables** pane, check that the applicable
+3. In the upper-right corner, select **Variables** and, on the **Profile variables** pane, check that the applicable
    variables are no longer present.
 
 Once you have deleted your profile variables from your cluster profile, you can remove them from an active cluster.
@@ -92,28 +95,26 @@ There are several ways to remove cluster profile variables from an active cluste
    
 <TabItem value="cluster-profile" label="Remove Variables Using Cluster Profiles">
 
-This is the recommended process from removing cluster profile variables from active clusters.
+This is the recommended process for removing cluster profile variables from active clusters.
 
 1.  Log in to [Palette](https://console.spectrocloud.com).
-2.  From the left **Main Menu**, select **Clusters**. Choose the cluster from which you are removing the cluster profile
+   
+2.  From the left main menu, select **Clusters**. Choose the cluster from which you are removing the cluster profile
     variable.
 
 3.  Navigate to the **Profile** tab of the cluster, where you can quickly view how many profile variables are being used
     in the current version of your cluster profile.
 
 4.  If you need to update a cluster profile version to one without the profile variable, expand the semantic version
-    **drop-down Menu** and choose the appropriate version.
+    drop-down menu and choose the appropriate version.
 
-5.  If you need to replace or remove a profile, select the **three-dot Menu** beside the profile, and choose the
+5.  If you need to replace or remove a profile, select the three-dot menu beside the profile, and choose the
     applicable action.
 
-6.  Select **Review & Save**. The **Changes Summary** dialog appears. Select **Review changes in Editor**.
+6.  **Review & Save** your changes. The **Changes Summary** dialog appears. Select **Review changes in Editor**.
 
 7.  Use the **Profile variable changes** tab to view the profiles that were changed. Expand each profile to compare the
-    **Running configuration** and **New configuration**, making any necessary changes to your cluster profile variables.
-    Updated profile variable values must match the schema defined in the cluster profile variable.
-
-    Each profile must have a **Reviewed** status, indicated by a green check mark, before you can apply your changes. In
+    **Running configuration** and **New configuration**. Each profile must have a **Reviewed** status, indicated by a green check mark, before you can apply your changes. In
     the example below, we deleted the profile variable for the Kubecost frontend `imagePullPolicy`.
 
     ![Deleting a profile variable from a cluster using cluster profile versioning](/profiles_cluster-profiles_create-cluster-profiles_define-profile-variables_delete-cluster-profile-variables.webp)
@@ -141,13 +142,14 @@ to the new version. For information on versioning profiles, check out
 :::
 
 1. Log in to [Palette](https://console.spectrocloud.com).
-2. From the left **Main Menu**, select **Clusters**. Choose the cluster from which you are removing the cluster profile
+   
+2. From the left main menu, select **Clusters**. Choose the cluster from which you are removing the cluster profile
    variable.
 
 3. Navigate to the **Profile** tab of the cluster.
 
 4. Navigate to the pack's YAML configuration. Locate the profile variable, and remove
-   `"{{.spectro.var.variable_name}}"`. Enter the appropriate value in its place.
+   `'{{.spectro.var.variable_name}}'`. Enter the appropriate value in its place.
 
 5. Repeat the previous step until you have removed all applicable profile variables.
 
@@ -166,18 +168,18 @@ populated with the expected values.
 
 The following validation process uses the [kubectl CLI](https://kubernetes.io/docs/reference/kubectl/) and the cluster's
 [kubeconfig](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) file. For more
-information on how to use `kubectl` and **kubeconfig** with your Palette clusters, refer to the Spectro Cloud
+information on how to use `kubectl` and `kubeconfig` with your Palette clusters, refer to the Spectro Cloud
 [Kubectl](../../../../clusters/cluster-management/palette-webctl.md) and
 [Kubeconfig](../../../../clusters/cluster-management/kubeconfig.md) guides.
 
 1. Log in to [Palette](https://spectrocloud.com).
 
-2. Navigate to the left **Main Menu** and select **Clusters**.
+2. Navigate to the left main menu and select **Clusters**.
 
 3. Select the host cluster you want to access.
 
 4. Follow the [Kubectl](../../../../clusters/cluster-management/palette-webctl.md) guide to download your cluster's
-   kubeconfig file and access your cluster using `kubectl`.
+   `kubeconfig` file and access your cluster using `kubectl`.
 
 5. Issue the appropriate `kubectl` command to verify that your parameter was populated correctly.
 
@@ -189,7 +191,7 @@ information on how to use `kubectl` and **kubeconfig** with your Palette cluster
    kubectl get deployment cost-analyzer-cost-analyzer --namespace kubecost --output yaml | grep -C 2 "imagePullPolicy"
    ```
 
-   ```shell hideClipboard {9}
+   ```shell hideClipboard {9} title="Example Output"
              name: cost-analyzer-cost-analyzer
        image: gcr.io/kubecost1/cost-model:prod-1.103.3
        imagePullPolicy: Always
