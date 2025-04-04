@@ -22,12 +22,6 @@ on certain nodes.
 
 Palette allows you to apply node labels during cluster provisioning.
 
-:::warning
-
-Updating labels on existing nodes of deployed clusters is not currently supported.
-
-:::
-
 This guide covers the Palette UI flow.
 
 :::info
@@ -36,6 +30,10 @@ Node labels can also be applied to node pools using our
 [Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
 
 :::
+
+## Limitations
+
+- Updates to labels on existing nodes of deployed clusters is not supported.
 
 ## Prerequisites
 
