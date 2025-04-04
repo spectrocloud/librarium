@@ -45,8 +45,8 @@ For guidance on creating profile variables, refer to the
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. On the left main menu, select **Profiles** and choose the cluster profile for which you want to update the
-   profile variables. We recommend
+2. On the left main menu, select **Profiles** and choose the cluster profile for which you want to update the profile
+   variables. We recommend
    [creating a new version of your cluster profile](../../../cluster-profiles/modify-cluster-profiles/version-cluster-profile.md)
    before proceeding.
 
@@ -59,11 +59,11 @@ For guidance on creating profile variables, refer to the
 
    :::
 
-4. To edit a profile variable, select the three-dot menu of the applicable variable and **Edit** the cluster
-   profile variable as necessary.
+4. To edit a profile variable, select the three-dot menu of the applicable variable and **Edit** the cluster profile
+   variable as necessary.
 
-5. Repeat the previous step until all applicable variables have been updated. Remember to select **Save Changes** when you
-   are finished modifying your profile.
+5. Repeat the previous step until all applicable variables have been updated. Remember to select **Save Changes** when
+   you are finished modifying your profile.
 
    :::warning
 
@@ -125,7 +125,6 @@ the appropriate workflow based on the changes you make to your cluster.
 <TabItem value="editor" label="Review Changes in Editor">
 
 1. Log in to [Palette](https://console.spectrocloud.com).
-   
 2. From the left main menu, select **Clusters**. Choose the cluster for which you are updating the cluster profile
    variable.
 
@@ -138,31 +137,30 @@ the appropriate workflow based on the changes you make to your cluster.
 5. If you need to add a profile, select the **Add add-on profile** icon. Choose the profile to add, and **Confirm** your
    changes.
 
-6. If you need to replace or remove a profile, select the three-dot menu beside the profile, and choose the
-   applicable action.
+6. If you need to replace or remove a profile, select the three-dot menu beside the profile, and choose the applicable
+   action.
 
 7. **Review & Save** your changes. The **Changes Summary** dialog appears. Select **Review changes in Editor**.
-   
 8. Use the **Profile variable changes** tab to view the profiles that were changed. Expand each profile to compare the
    **Running configuration** and **New configuration**, making any necessary changes to your cluster profile variables.
    If you are overwriting the default value, you can revert to the original value by selecting **Use Default**. Updated
    profile variable values must match the schema defined in the cluster profile variable.
 
    Each profile must have a **Reviewed** status, indicated by a green check mark, before you can apply your changes. In
-   the example below, we added a new profile variable for Grafana and changed the Kubecost frontend
-   `imagePullPolicy` from `Always` to `IfNotPresent`.
+   the example below, we added a new profile variable for Grafana and changed the Kubecost frontend `imagePullPolicy`
+   from `Always` to `IfNotPresent`.
 
    ![Reviewing profile variable changes using the Change Summary Process](/profiles_cluster-profiles_create-cluster-profiles_define-profile-variables_modify-cluster-profile-variable-review-update-changes.webp)
 
    :::tip
 
    The order of the fields is determined by the order of the variables in the cluster profile. To change the order,
-   return to the cluster profile, select **Variables**, and from the three-dot menu, choose **Reorder variables**.
-   Drag and drop the variables to rearrange them.
+   return to the cluster profile, select **Variables**, and from the three-dot menu, choose **Reorder variables**. Drag
+   and drop the variables to rearrange them.
 
    :::
 
-9.  When you are finished, select **Apply Changes**.
+9. When you are finished, select **Apply Changes**.
 
 10. Your cluster begins the update process. Navigate to the cluster **Events** tab to monitor your cluster's progress.
     When your cluster is finished updating, [validate](#validate-1) your changes.
@@ -172,7 +170,6 @@ the appropriate workflow based on the changes you make to your cluster.
 <TabItem value="configuration" label="Profile Variables Configuration">
 
 1. Log in to [Palette](https://console.spectrocloud.com).
-   
 2. From the left main menu, select **Clusters**. Choose the cluster for which you are updating the cluster profile
    variable.
 
@@ -180,7 +177,7 @@ the appropriate workflow based on the changes you make to your cluster.
 
    If you are not updating the cluster profile version and are only updating existing cluster profile variables, you can
    expand the **Settings** drop-down menu**, choose **Cluster Settings**, and use the **Profile Variables
-   Configuration** tab to update your profile variables. Proceed to step 6 to learn more.
+   Configuration\*\* tab to update your profile variables. Proceed to step 6 to learn more.
 
    :::
 
@@ -194,21 +191,19 @@ the appropriate workflow based on the changes you make to your cluster.
 
 6. Modify the values of your profile variables. The updated value must match the schema defined in the cluster profile
    variable. If you are overwriting the default value, you can revert to the original value by selecting **Use
-   Default**. In the example below, we changed the Kubecost frontend `imagePullPolicy` from `Always` to
-   `IfNotPresent`.
+   Default**. In the example below, we changed the Kubecost frontend `imagePullPolicy` from `Always` to `IfNotPresent`.
 
    ![Overwriting existing cluster profile variables without modifying cluster profile](/profiles_cluster-profiles_create-cluster-profiles_define-profile-variables_modify-cluster-profile-variable-override.webp)
 
    :::tip
 
    The order of the fields is determined by the order of the variables in the cluster profile. To change the order,
-   return to the cluster profile, select **Variables**, and from the three-dot menu, choose **Reorder variables**.
-   Drag and drop the variables to rearrange them.
+   return to the cluster profile, select **Variables**, and from the three-dot menu, choose **Reorder variables**. Drag
+   and drop the variables to rearrange them.
 
    :::
 
 7. When you are finished, choose **Save Changes**.
-   
 8. Your cluster begins the update process. Close the **Settings** window and monitor its progress using the **Events**
    tab. When your cluster is finished updating, [validate](#validate-1) your changes.
 

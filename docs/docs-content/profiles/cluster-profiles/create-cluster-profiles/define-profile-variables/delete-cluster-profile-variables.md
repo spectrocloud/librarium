@@ -26,13 +26,12 @@ before you can delete the variables.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. On the left main menu, select **Profiles** and choose the cluster profile for which you want to delete the
-   profile variables. We recommend
+2. On the left main menu, select **Profiles** and choose the cluster profile for which you want to delete the profile
+   variables. We recommend
    [creating a new version of your cluster profile](../../../cluster-profiles/modify-cluster-profiles/version-cluster-profile.md)
    before proceeding.
 
 3. In the upper-right corner, select **Variables**.
-   
 4. Any variables present in a profile layer are indicated by a darkened pill and the text **[#] layers**. Hover over the
    pill to review the profile layers that the variable is used in. You must remove the profile variable definition from
    all layers before you can delete it.
@@ -49,21 +48,20 @@ before you can delete the variables.
 
 7. Remove all references to the profile variable from the layer. When you are finished, select **Confirm Updates**.
 
-8. Repeat steps 5 through 7 as necessary until the profile variable is removed from all layers and the pill
-   beside the variable changes to **unused**.
+8. Repeat steps 5 through 7 as necessary until the profile variable is removed from all layers and the pill beside the
+   variable changes to **unused**.
 
-9.  Close the **Profile variables** pane, and on the main cluster profile window, select **Save Changes**.
+9. Close the **Profile variables** pane, and on the main cluster profile window, select **Save Changes**.
 
 10. Once your changes have been saved, in the upper-right corner, select **Variables**.
-    
 11. Select the three-dot menu beside the **unused** cluster profile variable. **Delete** the variable.
 
 ### Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. From the left main menu, select **Profiles** and navigate to the cluster profile previously containing the
-   profile variable.
+2. From the left main menu, select **Profiles** and navigate to the cluster profile previously containing the profile
+   variable.
 
 3. In the upper-right corner, select **Variables** and, on the **Profile variables** pane, check that the applicable
    variables are no longer present.
@@ -98,7 +96,7 @@ There are several ways to remove cluster profile variables from an active cluste
 This is the recommended process for removing cluster profile variables from active clusters.
 
 1.  Log in to [Palette](https://console.spectrocloud.com).
-   
+
 2.  From the left main menu, select **Clusters**. Choose the cluster from which you are removing the cluster profile
     variable.
 
@@ -108,14 +106,15 @@ This is the recommended process for removing cluster profile variables from acti
 4.  If you need to update a cluster profile version to one without the profile variable, expand the semantic version
     drop-down menu and choose the appropriate version.
 
-5.  If you need to replace or remove a profile, select the three-dot menu beside the profile, and choose the
-    applicable action.
+5.  If you need to replace or remove a profile, select the three-dot menu beside the profile, and choose the applicable
+    action.
 
 6.  **Review & Save** your changes. The **Changes Summary** dialog appears. Select **Review changes in Editor**.
 
 7.  Use the **Profile variable changes** tab to view the profiles that were changed. Expand each profile to compare the
-    **Running configuration** and **New configuration**. Each profile must have a **Reviewed** status, indicated by a green check mark, before you can apply your changes. In
-    the example below, we deleted the profile variable for the Kubecost frontend `imagePullPolicy`.
+    **Running configuration** and **New configuration**. Each profile must have a **Reviewed** status, indicated by a
+    green check mark, before you can apply your changes. In the example below, we deleted the profile variable for the
+    Kubecost frontend `imagePullPolicy`.
 
     ![Deleting a profile variable from a cluster using cluster profile versioning](/profiles_cluster-profiles_create-cluster-profiles_define-profile-variables_delete-cluster-profile-variables.webp)
 
@@ -142,7 +141,6 @@ to the new version. For information on versioning profiles, check out
 :::
 
 1. Log in to [Palette](https://console.spectrocloud.com).
-   
 2. From the left main menu, select **Clusters**. Choose the cluster from which you are removing the cluster profile
    variable.
 

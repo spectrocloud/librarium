@@ -76,8 +76,7 @@ guide to learn how to create a cluster profile.
     | Read-only               | Prevent the cluster profile variable from being edited during cluster deployment. Read-only variables must have a default value set.                                                                                                            |
 
 9.  As you make changes in the **Create variable** pane, the **Preview** field is updated, mirroring how the field will
-    look and behave when deploying and updating clusters. When you are satisfied, **Create** the
-    variable.
+    look and behave when deploying and updating clusters. When you are satisfied, **Create** the variable.
 
     ![Palette YAML editor with the added profile variables.](/profiles_create-cluster-profiles_define-profile-variables_variable-preview.webp)
 
@@ -86,11 +85,13 @@ guide to learn how to create a cluster profile.
 
 11. Next to the variable you want to add, select the **Copy to clipboard** icon to copy its name.
 
-12. Paste the variable in the `parameter: '{{.spectro.var.variable_name}}'` format. You _must_ wrap each profile variable in single quotes (`'`) to properly validate the schema. Select **Confirm Updates** when finished.
+12. Paste the variable in the `parameter: '{{.spectro.var.variable_name}}'` format. You _must_ wrap each profile
+    variable in single quotes (`'`) to properly validate the schema. Select **Confirm Updates** when finished.
 
     Alternatively, you can start typing `{{.spectro.var.}}` in the YAML configuration editor, and Palette will list the
     profile variables you have created. Continue typing to filter the list, or use the **UP ARROW** and **DOWN ARROW**
-    keys to select the appropriate profile variable. Press **TAB** to accept the suggestion and add the variable. You must still wrap the profile variable in single quotes (`'`).
+    keys to select the appropriate profile variable. Press **TAB** to accept the suggestion and add the variable. You
+    must still wrap the profile variable in single quotes (`'`).
 
     ![Palette YAML editor with the added profile variables.](/profiles_create-cluster-profiles_define-profile-variables_add-vars-to-yaml.webp)
 
@@ -119,8 +120,8 @@ guide to learn how to create a cluster profile.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. From the left main menu, select **Profiles** and navigate to the cluster profile for which you have created
-   profile variables.
+2. From the left main menu, select **Profiles** and navigate to the cluster profile for which you have created profile
+   variables.
 
 3. In the upper-right corner, select **Variables** and, on the **Profile variables** pane, check that the necessary
    variables are properly defined.
