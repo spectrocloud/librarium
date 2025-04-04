@@ -10,7 +10,7 @@ tags: ["clusters", "cluster management"]
 Node labels provide pods the ability to specify which nodes they should be scheduled on. This ability can be useful in
 scenarios where pods should be co-located or executed on dedicated nodes. A common use case of node labels is to ensure
 that certain workloads only execute on certain hardware configurations. Labels are optional configurations, as the
-scheduler will automatically place pods across nodes.
+scheduler automatically places pods across nodes.
 
 :::tip
 
@@ -20,8 +20,7 @@ on certain nodes.
 
 :::
 
-Palette allows you to apply node labels during cluster provisioning. Once the cluster is in a healthy state, labels can
-be modified on the **Nodes** tab of the cluster details page.
+Palette allows you to apply node labels during cluster provisioning.
 
 This guide covers the Palette UI flow.
 
@@ -31,6 +30,10 @@ Node labels can also be applied to node pools using our
 [Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
 
 :::
+
+## Limitations
+
+- Updates to labels on existing nodes of deployed clusters is not supported.
 
 ## Prerequisites
 
@@ -43,7 +46,7 @@ Node labels can also be applied to node pools using our
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. Navigate to the left **Main Menu** and select **Profiles**.
+2. Navigate to the left main menu and select **Profiles**.
 
 3. Create a cluster profile to deploy to your environment. Refer to the
    [Create a Full Profile](../../profiles/cluster-profiles/create-cluster-profiles/create-full-profile.md) guide for
@@ -74,7 +77,7 @@ Node labels can also be applied to node pools using our
 
 6. Save the changes made to your cluster profile.
 
-7. Navigate to the left **Main Menu** and select **Clusters**.
+7. Navigate to the left main menu and select **Clusters**.
 
 8. Click on **Add New Cluster**.
 
@@ -92,13 +95,6 @@ Node labels can also be applied to node pools using our
     selector. Click on **Next**.
 
     ![Screenshot of adding node labels during cluster creation](/clusters_cluster-management_node-labels_cluster-creation-labels.webp)
-
-    :::info
-
-    Node labels can also be updated on a deployed cluster by editing a worker node pool from the **Nodes** tab of the
-    cluster details page.
-
-    :::
 
 14. Accept the default settings on the **Cluster Settings** tab and click on **Validate**.
 
@@ -118,7 +114,7 @@ You can follow these steps to validate that your node labels are applied success
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. Navigate to the left **Main Menu** and select **Clusters**.
+2. Navigate to the left main menu and select **Clusters**.
 
 3. Select the cluster you deployed, and download the [kubeconfig](./kubeconfig.md) file.
 
@@ -130,8 +126,8 @@ You can follow these steps to validate that your node labels are applied success
    export KUBECONFIG=~/Downloads/admin.azure-cluster.kubeconfig
    ```
 
-5. Confirm the cluster deployment process has scheduled your pods as expected. Remember that only pods will be scheduled
-   on nodes with labels matching their node selectors.
+5. Confirm the cluster deployment process has scheduled your pods as expected. Remember that pods are only scheduled on
+   nodes with labels matching their node selectors.
 
    ```
    kubectl get pods --all-namespaces --output wide --watch
