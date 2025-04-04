@@ -207,7 +207,7 @@ for the single cluster over its cluster profile and begins making the appropriat
 
 Once these changes are complete, select the **Workloads** tab. Then, select the **hello-universe** namespace.
 
-Two **ui** pods are available, instead of the one specified by your cluster profile. Your override has been successfully
+Two `ui` pods are available, instead of the one specified by your cluster profile. Your override has been successfully
 applied. If your changes are not displayed, use the **refresh** icon.
 
 Navigate to the left **Main Menu** and select **Profiles** to view the cluster profile page. Find the cluster profile
@@ -241,7 +241,7 @@ Click on **Apply Changes** once you have finished reviewing your changes. This r
 Palette updates your cluster according to cluster profile specifications. Once these changes are complete, select the
 **Workloads** tab. Then, select the **hello-universe** namespace.
 
-Three **ui** pods are available. The cluster profile update is now reflected by your cluster. If your changes are not
+Three `ui` pods are available. The cluster profile update is now reflected by your cluster. If your changes are not
 displayed, use the **refresh** icon.
 
 ## Cluster Observability

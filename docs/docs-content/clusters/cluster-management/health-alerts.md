@@ -20,7 +20,7 @@ The Palette Management Server relies on the following to trigger Cluster-health 
 
 - Machines' info and heartbeat from the agent.
 
-  Management server has a timeout of 10 mins for heartbeat detection. An alert is triggered if agent heartbeat is not
+  Management server has a timeout of 10 minutes for heartbeat detection. An alert is triggered if agent heartbeat is not
   received within the fixed timeout. Cluster will be marked as "unhealthy" when the agent is down/paused for
   troubleshooting. This behavior is applicable for:
 

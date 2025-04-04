@@ -90,7 +90,7 @@ why a service may fail are:
        curl -k https://<KUBE_API_SERVER_IP>:6443
        ```
 
-     - For Public Clouds that do not use Gateway, verify the connection between the public Internet and the Kube
+     - For Public Clouds that do not use Gateway, verify the connection between the public Internet and the Kubernetes
        endpoint:
 
        ```shell
@@ -103,7 +103,7 @@ why a service may fail are:
 
        :::
 
-6. Check stdout for errors. You can also open a support ticket. Visit our
+6. Check `stdout` for errors. You can also open a support ticket. Visit our
    [support page](http://support.spectrocloud.io/).
 
 ## Scenario - Deployment Violates Pod Security

@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Connect Edge Host to Wifi"
-title: "Connect Edge Host to Wifi"
+sidebar_label: "Connect Edge Host to Wi-Fi"
+title: "Connect Edge Host to Wi-Fi"
 description: "Learn how to connect an Edge host to Wi-Fi using wpa_supplicant."
 hide_table_of_contents: false
 sidebar_position: 80
@@ -101,7 +101,7 @@ instead.
 ### Procedure
 
 1. Create a file named `user-data`, and include the following content. Replace `network-name` and `network-password`
-   with the name and password of your Wifi network.
+   with the name and password of your Wi-Fi network.
 
    ```yaml
     #cloud-config

@@ -44,7 +44,7 @@ key that is in the Signature Database (DB). This is important both during instal
   command.
 
 - [Docker Engine](https://docs.docker.com/engine/install/) version 18.09.x or later. You can use the docker --version
-  command to view the existing Docker version. You should have root-level or sudo privileges on your Linux machine to
+  command to view the existing Docker version. You should have root-level or `sudo` privileges on your Linux machine to
   create privileged containers.
 
 - Familiarity with the [EdgeForge Workflow](../../edgeforge-workflow/edgeforge-workflow.md).

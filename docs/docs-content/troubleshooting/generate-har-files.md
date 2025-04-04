@@ -28,7 +28,7 @@ contain.
 - A text editor of choice. For example, you could use [Visual Studio Code](https://code.visualstudio.com/) or
   [Sublime](https://www.sublimetext.com/).
 
-## Generate and Sanitize HARs
+## Generate and Sanitize HAR Files
 
 ### Generate HAR Files
 
@@ -112,35 +112,35 @@ organization.
 
 :::
 
-- **state**
-- **shdf**
-- **usg**
-- **password**
-- **code**
-- **code_verifier**
-- **client_secret**
-- **token**
-- **Access_token**
-- **refresh_token**
-- **authenticity_token**
-- **Id_token**
-- **SAMLResponse**
-- **SAML Request**
-- **appID**
-- **challenge**
-- **facetID**
-- **assertion**
-- **fcParams**
-- **serverData**
-- **Authorization**
-- **auth**
-- **key**
-- **pem**
-- **rsa**
-- **dsa**
-- **ecdsa**
-- **signature**
-- **passkey**
+- `state`
+- `shdf`
+- `usg`
+- `password`
+- `code`
+- `code_verifier`
+- `client_secret`
+- `token`
+- `Access_token`
+- `refresh_token`
+- `authenticity_token`
+- `Id_token`
+- `SAMLResponse`
+- `SAML Request`
+- `appID`
+- `challenge`
+- `facetID`
+- `assertion`
+- `fcParams`
+- `serverData`
+- `Authorization`
+- `auth`
+- `key`
+- `pem`
+- `rsa`
+- `dsa`
+- `ecdsa`
+- `signature`
+- `passkey`
 
 </details>
 
@@ -148,6 +148,7 @@ Consider the following examples of how to approach redacting passwords, tokens, 
 
 <Tabs>
   <TabItem value="passwords" label="Passwords" default>
+
     ```json
       "postData": {
         "mimeType": "application/json",
@@ -155,8 +156,10 @@ Consider the following examples of how to approach redacting passwords, tokens, 
         "text": "{\"emailId\":\"REDACTED\",\"password\":\"REDACTED\",\"org\":\"spectro-cloud\"}"
       }
     ```
+
   </TabItem>
   <TabItem value="tokens" label="Tokens">
+
     ```json
       "queryString": [
         {
@@ -166,8 +169,10 @@ Consider the following examples of how to approach redacting passwords, tokens, 
         }
       ],
     ```
+
   </TabItem>
   <TabItem value="cookies" label="Cookies">
+
     ```json
       "cookies": [
         {
@@ -183,6 +188,7 @@ Consider the following examples of how to approach redacting passwords, tokens, 
         },
       ]
     ```
+
   </TabItem>
 </Tabs>
 

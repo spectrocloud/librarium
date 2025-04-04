@@ -133,7 +133,7 @@ Enterprise Linux (RHEL) image with <VersionedLink text="Palette eXtended Kuberne
     :::warning
 
     If you used the airgap support VM hostname during the execution of the `airgap-setup.sh` script, ensure to enter the
-    VM's hostname in the `airgap_ip` parameter. The same applies if you used the VM’s IP address.
+    VM hostname in the `airgap_ip` parameter. The same applies if you used the VM IP address.
 
     :::
 
