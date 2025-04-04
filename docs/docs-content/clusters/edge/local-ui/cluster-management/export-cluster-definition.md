@@ -41,10 +41,10 @@ same time in a single command.
 
 1. Download Palette Edge CLI and assign the executable bit to the CLI. Refer to
    [Palette Components Compatibility Matrix](../../../../component.md#palette-edge-cli-versions) to use the right
-   Palette Edge CLI version. This guide uses 4.6.9 as an example.
+   Palette Edge CLI version. This guide uses 4.5.5 as an example.
 
    ```shell
-   VERSION=4.6.9
+   VERSION=4.5.5
    wget https://software.spectrocloud.com/stylus/v$VERSION/cli/linux/palette-edge
    chmod +x palette-edge
    ```
@@ -75,7 +75,6 @@ same time in a single command.
    help             Help about any command
    show             Display all the preset default values and supported OS and K8S flavors
    upload
-   validate         Validate a user-data YAML file
 
    Flags:
          --config string    config file (default is $HOME/.palette-edge-cli.yaml)
