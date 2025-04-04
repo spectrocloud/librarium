@@ -126,7 +126,7 @@ You can follow these steps to validate that your node labels are applied success
    export KUBECONFIG=~/Downloads/admin.azure-cluster.kubeconfig
    ```
 
-5. Confirm the cluster deployment process has scheduled your pods as expected. Remember that only pods are scheduled on
+5. Confirm the cluster deployment process has scheduled your pods as expected. Remember that pods are only scheduled on
    nodes with labels matching their node selectors.
 
    ```
