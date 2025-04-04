@@ -42,12 +42,10 @@ const formatCloudType = (type: string): string => {
     edge: "Edge",
     openstack: "OpenStack",
     "edge-native": "Edge",
-    tke: "TKE",
     aks: "AKS",
     gke: "GKE",
     all: "All",
     azure: "Azure",
-    tencent: "Tencent",
     // ... add other special cases as needed
   };
 

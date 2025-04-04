@@ -300,10 +300,10 @@ const config = {
       "data-usercentrics": "Google Tag Manager",
     },
     {
-      src: "https://app.usercentrics.eu/browser-ui/latest/loader.js",
+      src: "https://web.cmp.usercentrics.eu/ui/loader.js",
       id: "usercentrics-cmp",
       async: "true",
-      "data-settings-id": "0IhiFXOBwy0Z2U",
+      "data-ruleset-id": "hVYLQFO7M6I5k4",
       type: "text/javascript",
     },
   ],

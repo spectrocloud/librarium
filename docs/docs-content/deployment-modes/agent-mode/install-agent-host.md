@@ -20,10 +20,6 @@ This page guides you through the process of installing the Palette agent on your
 user data file to configure your host, install the agent, and verify that your host was successfully registered with
 Palette. You will then create a cluster profile and use the registered host to deploy a cluster.
 
-:::preview
-
-:::
-
 ## Limitations
 
 - The following table presents the verified combinations of host architecture and cluster profile layers.
@@ -277,9 +273,6 @@ Palette. You will then create a cluster profile and use the registered host to d
         # Allow inbound/outbound traffic to port 443 (HTTPS)
         firewall-cmd --permanent --zone="$ZONE" --add-port=443/tcp
 
-        # Allow inbound/outbound traffic to port 4222 (NATS)
-        firewall-cmd --permanent --zone="$ZONE" --add-port=4222/tcp
-
         # Allow NAT traffic
         firewall-cmd --permanent --add-masquerade
 
@@ -347,7 +340,8 @@ Palette. You will then create a cluster profile and use the registered host to d
    :::
 
    The following configuration includes a Palette registration token and the default Palette endpoint, specifies a
-   Palette project, and sets up the `kairos` user. Note the following:
+   Palette project, and sets up the `kairos` user. It also specifies credentials for private external registries as well
+   as registry mapping rules. Note the following:
 
    - The host will not shut down and will instead reboot after the agent is installed, with
      [kube-vip](../../clusters/edge/networking/kubevip.md) enabled, as this is required for bare metal and VMware
@@ -371,6 +365,20 @@ Palette. You will then create a cluster profile and use the registered host to d
          edgeHostToken: $TOKEN
          paletteEndpoint: api.spectrocloud.com
          projectName: Default
+     externalRegistries:
+       registries:
+         - domain: "example.registry.com/internal-images"
+           username: "admin"
+           password: "***************"
+           repositoryName: example-repository-private
+           certificates:
+             - |
+                -----BEGIN CERTIFICATE-----
+                **********************
+                -----END CERTIFICATE-----
+     registryMappingRules:
+      "us-east1-docker.pkg.dev/spectro-images/daily": "example.registry.com/internal-images"
+
      stages:
        initramfs:
          - users:
@@ -402,6 +410,19 @@ Palette. You will then create a cluster profile and use the registered host to d
        edgeHostToken: ****************
        paletteEndpoint: api.spectrocloud.com
        projectName: Default
+     externalRegistries:
+       registries:
+         - domain: "example.registry.com/internal-images"
+           username: "admin"
+           password: "***************"
+           repositoryName: example-repository-private
+           certificates:
+             - |
+                -----BEGIN CERTIFICATE-----
+                **********************
+                -----END CERTIFICATE-----
+     registryMappingRules:
+      "us-east1-docker.pkg.dev/spectro-images/daily": "example.registry.com/internal-images"
    stages:
      initramfs:
        - users:

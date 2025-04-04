@@ -12,8 +12,6 @@ to create an IaaS Kubernetes cluster in Azure that Palette manages.
 
 ## Limitations
 
-- Autoscaling is not supported for Azure IaaS clusters.
-
 - If the `fullyPrivateAddressing` parameter is set to `true`, the control plane and worker nodes in your cluster must
   still have outbound access to the internet, including the [Microsoft Container Registry](https://mcr.microsoft.com/),
   to download updates, patches, and the necessary container images.
@@ -126,9 +124,9 @@ Use the following steps to deploy an Azure cluster.
    Select the desired **IP Allocation Method**. You can choose between **Static** and **Dynamic** IP allocation methods.
    If you select **Static**, you must provide a valid IP address.
 
-10. To configure custom OpenID Connect (OIDC) for Azure clusters, refer to our
-    [Configure OIDC Identity Provider](../../../integrations/kubernetes.md#configure-oidc-identity-provider) guide for
-    information on how to update the Kubernetes layer.
+<!-- prettier-ignore-start -->
+
+10. To configure custom OpenID Connect (OIDC) for Azure clusters, refer to the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" /> pack additional details for further guidance.
 
     :::warning
 
@@ -137,6 +135,8 @@ Use the following steps to deploy an Azure cluster.
     [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings).
 
     :::
+
+<!-- prettier-ignore-end -->
 
 11. Click **Next** to continue.
 
@@ -216,7 +216,8 @@ Use the following steps to deploy an Azure cluster.
     | **Parameter**                   | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
     | ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
     | **Node pool name**              | A descriptive name for the node pool.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
-    | **Number of nodes in the pool** | Specify the number of nodes in the worker pool.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+    | **Enable Autoscaler**           | Scale the worker pool horizontally based on its per-node workload counts. The **Minimum size** specifies the lower bound of nodes in the pool, and the **Maximum size** specifies the upper bound. Setting both parameters to the same value results in a static node count. Refer to the Cluster API [autoscaler documentation](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/cloudprovider/clusterapi/README.md) for more information on autoscaling.                                                                                                                                                                                                                                                                                                              |
+    | **Number of nodes in the pool** | Specify the number of nodes in the worker pool. This field is hidden if **Enable Autoscaler** is toggled on.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
     | **Node repave interval**        | Optionally, you can specify the preferred time interval for Palette to perform a rolling upgrade on nodes when it detects a change in the Kubeadm configuration file.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
     | **Rolling update**              | These options allow you to control the sequence of operations during a node pool update. Choose the **Expand first** option to add new nodes with updated configurations to the node pool before the existing nodes are removed. Choose **Contract first** to remove existing nodes from the node pool before the new nodes with updated configurations are added.                                                                                                                                                                                                                                                                                                                                                                                                                             |
     | **Additional Labels**           | You can add optional labels to nodes in key-value format. For more information about applying labels, review [Node Labels](../../cluster-management/node-labels.md). Example: `environment:production`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
@@ -244,10 +245,13 @@ Use the following steps to deploy an Azure cluster.
 18. Schedule any backups you want Palette to perform. Review
     [Backup and Restore](../../cluster-management/backup-restore/backup-restore.md) for more information.
 
+<!-- prettier-ignore-start -->
+
 19. Role-Based Access Control (RBAC) configuration is required when you configure custom OIDC. You must map a set of
     users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups, refer to
-    [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings). Refer to
-    [Use RBAC with OIDC](../../../integrations/kubernetes.md#use-rbac-with-oidc) for an example.
+    [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings). Refer to the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" /> pack additional details for an example.
+
+<!-- prettier-ignore-end -->
 
 20. Click **Validate** and review the cluster configuration and settings summary.
 
@@ -321,11 +325,13 @@ The link to access the Add Rules page is displayed within a caution message in t
 
 - [Azure Storage](../azure/architecture.md#azure-storage)
 
-- [Configure OIDC Identity Provider](../../../integrations/kubernetes.md#configure-oidc-identity-provider)
-
 - [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings)
 
-- [Use RBAC with OIDC](../../../integrations/kubernetes.md#use-rbac-with-oidc)
+<!-- prettier-ignore-start -->
+
+- <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> pack
+
+<!-- prettier-ignore-end -->
 
 <!-- - [Get started with Autoscale in Azure](https://learn.microsoft.com/en-us/azure/azure-monitor/autoscale/autoscale-get-started)
 
