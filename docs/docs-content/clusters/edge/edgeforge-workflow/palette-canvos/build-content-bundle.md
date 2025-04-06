@@ -149,7 +149,7 @@ Creating a content bundle provides several benefits that may address common use 
      --project-id <project-id> \
      --profiles <cluster-profile-id1,cluster-profile-id2...> \
      --name <bundle-name> \
-     --output <output-directory>\
+     --output <output-directory>
     ```
 
     :::warning
