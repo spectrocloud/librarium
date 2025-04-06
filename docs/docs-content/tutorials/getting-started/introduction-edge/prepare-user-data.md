@@ -1,6 +1,6 @@
 ---
 sidebar_label: "Prepare User Data"
-title: "Prepare User Data"
+title: "Prepare User Data for Edge Installation"
 description: "Learn how to create an user data file for your Edge deployment"
 icon: ""
 hide_table_of_contents: false
@@ -14,20 +14,6 @@ allows you to customize the Edge installation process on the host. The user data
 Installer ISO during the [EdgeForge](../../../clusters/edge/edgeforge-workflow/edgeforge-workflow.md) process. When the
 Edge host boots from the Installer ISO, it applies the user data configuration to the host.
 
-The user data file consists of three main parameters:
-
-- `stylus`: Palette agent parameters that control aspects of the Edge host's configuration, such as networking, logging,
-  services, users, and permissions. For a complete list of parameters, refer to the
-  [Edge Installer Configuration Reference](../../../clusters/edge/edge-configuration/installer-reference.md) page.
-- `install`: The `install` block allows you to configure bind mounts, disk partitions, and post-installation actions
-  like powering off the Edge host once the installation completes. Check out the
-  [Install Parameters](../../../clusters/edge/edge-configuration/installer-reference.md#install-parameters) section for
-  more information.
-- `stages`: The `stages` block uses cloud-init stages to personalize the initialization of your Edge hosts during
-  various stages of the system boot process. Refer to the
-  [Cloud Init Stages](../../../clusters/edge/edge-configuration/cloud-init.md) page for a complete list of supported
-  stages.
-
 After creating the user data file, you will proceed to the next tutorial in this series, where you will learn how to
 build the required Edge artifacts. You will then install the Palette agent on your host and use it as a node to deploy
 your first Edge cluster. The roadmap below outlines the sequence of tutorials to be followed.
@@ -40,13 +26,78 @@ To complete this tutorial, you will need the following prerequisites in place.
 
 - A [Palette account](https://www.spectrocloud.com/get-started) with
   [tenant admin](../../../tenant-settings/tenant-settings.md) access.
-- A Palette registration token. Refer to the
-  [Create a Registration Token](../../../clusters/edge/site-deployment/site-installation/create-registration-token.md)
-  guide for instructions on how to create a token.
 - The following software installed:
   - [Docker Engine](https://docs.docker.com/engine/install/) with `sudo` privileges. Alternatively, you can install
     [Earthly](https://earthly.dev/), in which case you will not need `sudo` privileges.
   - [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+
+## User Data Configuration Blocks
+
+The user data file supports multiple parameters that allow you to customize the Edge installation and consists of three
+main configuration blocks:
+
+- `stylus`: Palette agent parameters that control aspects of the Edge host's configuration, such as networking, logging,
+  services, users, and permissions. The following configuration snippet specifies the Palette endpoint, a registration
+  token, and the Palette project name that the host will use to register with Palette. It also provides tags that will
+  be assigned to the device as labels.
+
+  ```shell
+  #cloud-config
+  stylus:
+    site:
+      paletteEndpoint: api.spectrocloud.com
+      edgeHostToken: aUAxxxxxxxxx0ChYCrO
+      projectUid: Default
+      tags:
+        city: london
+        building: building-1
+  ```
+
+- `install`: The `install` block allows you to configure bind mounts, disk partitions, and post-installation actions
+  such as powering off the Edge host once the installation completes, as displayed in the snippet below.
+
+  ```shell
+  install:
+    poweroff: true
+  ```
+
+- `stages`: The `stages` block uses cloud-init stages to personalize the initialization of your Edge hosts during
+  various stages of the system boot process. The following example configures a `docs` user with a password and SSH key
+  during the `initramfs` stage.
+
+  ```shell
+  stages:
+  initramfs:
+    - users:
+        docs:
+          passwd: ******
+          groups:
+          - sudo
+          ssh_authorized_keys:
+          - ssh-rsa AAAAB3N…
+  ```
+
+  :::tip
+
+  Visit the [Edge Installer Configuration Reference](../../../clusters/edge/edge-configuration/installer-reference.md)
+  page for a complete list of configuration parameters, the
+  [Prepare User Data](../../../clusters/edge/edgeforge-workflow/prepare-user-data.md) guide for more examples of user
+  data configurations, and the [Cloud Init Stages](../../../clusters/edge/edge-configuration/cloud-init.md) page for the
+  supported cloud init stages.
+
+  :::
+
+## Create Palette Registration Token
+
+Registration tokens allow Edge hosts to register with Palette and are provided through the user data file.
+
+To create a registration token, log in to [Palette](https://console.spectrocloud.com/) as a tenant admin and switch to
+the **Tenant Admin** scope.
+
+Next, navigate to the left main menu and select **Tenant Settings** > **Registration Tokens**.
+
+Click **Add New Registration Token**, then provide a token name, default project, and expiration date. Confirm your
+changes and copy the generated registration token.
 
 ## Check Out Starter Code
 
@@ -90,13 +141,15 @@ data files.
 
 :::
 
-Start by exporting your Palette registration token.
+Export your Palette registration token and Edge host login credentials.
 
 ```bash
 export TOKEN=<palette-registration-token>
+export USER=<host-user-name>
+export PASSWORD=<user-name-password>
 ```
 
-Next, issue the command below to create the `user-data` file using the exported token.
+Next, issue the command below to create the `user-data` file using the exported token and user information.
 
 ```bash
 cat << EOF > user-data
@@ -109,8 +162,8 @@ stylus:
 stages:
   initramfs:
     - users:
-        kairos:
-          passwd: kairos
+        $USER:
+          passwd: $PASSWORD
 
 install:
   poweroff: true
@@ -129,8 +182,9 @@ Confirm that the file was created correctly.
 cat user-data
 ```
 
-The output should show your user data file with the value of your Palette registration token assigned to the
-`edgeHostToken` parameter.
+The output should show your user data file, with the value of your Palette registration token assigned to the
+`edgeHostToken` parameter, as well as the user and password to be created. This tutorial uses `kairos` as an example for
+both the username and password.
 
 ```text hideClipboard
 #cloud-config
