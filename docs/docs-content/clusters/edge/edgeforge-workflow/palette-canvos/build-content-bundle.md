@@ -11,7 +11,7 @@ Content bundles are archives of all the required container images required for o
 bundle includes Helm charts, Packs, and manifest files needed to deploy your Edge host cluster. In addition to core
 container images, the content bundle can include artifacts from your applications that you wish to deploy to the Edge
 cluster. [Cluster Profiles](../../../../profiles/cluster-profiles/cluster-profiles.md) are the primary source for
-creating these content bundles, which can be built using the Palette CLI or the Palette Edge CLI.
+creating these content bundles, which can be built using either the Palette CLI or the Palette Edge CLI.
 
 :::warning
 
@@ -81,10 +81,10 @@ Creating a content bundle provides several benefits that may address common use 
 
 1. Download the Palette CLI. Refer to the
    [Palette Components Compatibility Matrix](../../../../component.md#palette-cli-versions) to find a compatible CLI
-   version. This guide uses version `4.6.2` as an example.
+   version and replace `<palette-cli-version>` with the selected version.
 
    ```shell
-   VERSION=4.6.2
+   VERSION=<palette-cli-version>
    wget https://software.spectrocloud.com/palette-cli/v$VERSION/linux/cli/palette
    chmod +x palette
    ```
@@ -104,10 +104,10 @@ Creating a content bundle provides several benefits that may address common use 
    ```
 
    ```hideClipboard text
-   Palette CLI version: 4.6.2
+   Palette CLI version: [version number]
    ```
 
-4. Authenticate with Palette by using the `login` command. Replace `<your-api-key>` with your Palette API key.
+4. Authenticate with Palette using the `login` command. Replace `<your-api-key>` with your Palette API key.
 
    ```shell
    palette login --api-key <your-api-key> --console-url https://console.spectrocloud.com/
@@ -115,8 +115,8 @@ Creating a content bundle provides several benefits that may address common use 
 
 5. Log in to the [Palette](https://console.spectrocloud.com) console.
 
-6. Select the project you want to deploy the Edge host to and copy the **Project ID**. You can find the project id at
-   the top right side corner of the landing page below the user drop-down menu.
+6. Select the project you want to deploy the Edge host to and copy the project ID. You can find the project ID at the
+   top right side corner of the landing page below the user drop-down menu.
 
 7. Navigate to the left main menu and select **Profiles**.
 
@@ -191,19 +191,19 @@ Creating a content bundle provides several benefits that may address common use 
     | `--cluster-definition-name`        | Filename of the cluster definition tgz file.                          |
     | `--cluster-definition-profile-ids` | List of cluster profile IDs to be included in the cluster definition. |
 
-    This command will create another document named **cluster-definition-name.tgz**, which is the cluster definition
+    This command will generate an additional file named **cluster-definition-name.tgz**, which is the cluster definition
     file.
 
 </TabItem>
 
 <TabItem value="Palette Edge CLI" label="Palette Edge CLI">
 
-1. Download Palette Edge CLI and assign the executable bit to the CLI. Refer to
-   [Palette Components Compatibility Matrix](../../../../component.md#palette-edge-cli-versions) to use the right
-   Palette Edge CLI version. This guide uses 4.5.5 as an example.
+1. Download the Palette Edge CLI. Refer to the
+   [Palette Components Compatibility Matrix](../../../../component.md#palette-edge-cli-versions) to find a compatible
+   CLI version and replace `<palette-edge-cli-version>` with the selected version.
 
    ```shell
-   VERSION=4.5.5
+   VERSION=<palette-edge-cli-version>
    wget https://software.spectrocloud.com/stylus/v$VERSION/cli/linux/palette-edge
    chmod +x palette-edge
    ```
@@ -247,8 +247,8 @@ Creating a content bundle provides several benefits that may address common use 
 
 4. Log in to [Palette](https://console.spectrocloud.com).
 
-5. Select the project you want to deploy the Edge host to and copy down the **Project ID**. You can find the project id
-   at the top right side corner of the landing page below the **User drop-down Menu**.
+5. Select the project you want to deploy the Edge host to and copy down the project ID. You can find the project ID at
+   the top right side corner of the landing page below the **User drop-down Menu**.
 
 6. Navigate to the left main menu and select **Profiles**.
 
@@ -426,7 +426,7 @@ Creating a content bundle provides several benefits that may address common use 
     :::
 
     The result is a content bundle that you can use to preload into your installer. The content bundle will be a zst
-    file in a folder that starts with **content-** followed by a random string. For more information about how to use a
+    file in a folder that starts with **content-** followed by a random string. For more information about how to use
     content bundles, [Build Installer ISO](./build-installer-iso.md) or
     [Upload Content Bundle through Local UI](../../local-ui/cluster-management/upload-content-bundle.md).
 

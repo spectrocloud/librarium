@@ -10,9 +10,9 @@ tags: ["edge"]
 You can export cluster definitions from a cluster in Palette and use the definition to provision a cluster in an Edge
 host. A cluster definition contains one or more cluster profiles, including the profile variables used in the profiles.
 
-You can either use the Palette CLI, the Palette Edge CLI, or the Palette API to export the cluster definition. The CLI
-offers a more user-friendly interface, but requires a machine with X86_64 architecture. If you are on an ARM64 machine
-such as Apple Silicon, use the API approach instead.
+You can export the cluster definition using the Palette CLI, Palette Edge CLI, or Palette API. The CLI offers a more
+user-friendly interface but requires a machine with X86_64 architecture. If you are using an ARM64 machine, such as
+Apple Silicon, use the API approach instead.
 
 :::preview
 
@@ -21,7 +21,7 @@ such as Apple Silicon, use the API approach instead.
 ## Export Cluster Definition Using the CLI
 
 You can export cluster definitions using either the Palette and Palette Edge CLI. This approach also allows you to
-create a content bundle at the same time in a single command.
+create a content bundle at the same time with a single command.
 
 ### Prerequisites
 
@@ -45,10 +45,10 @@ create a content bundle at the same time in a single command.
 
 1. Download the Palette CLI. Refer to the
    [Palette Components Compatibility Matrix](../../../../component.md#palette-cli-versions) to find a compatible CLI
-   version. This guide uses version `4.6.2` as an example.
+   version and replace `<palette-cli-version>` with the selected version.
 
    ```shell
-   VERSION=4.6.2
+   VERSION=<palette-cli-version>
    wget https://software.spectrocloud.com/palette-cli/v$VERSION/linux/cli/palette
    chmod +x palette
    ```
@@ -68,10 +68,10 @@ create a content bundle at the same time in a single command.
    ```
 
    ```hideClipboard text
-   Palette CLI version: 4.6.2
+   Palette CLI version: [version number]
    ```
 
-4. Authenticate with Palette by using the `login` command. Replace `<your-api-key>` with your Palette API key.
+4. Authenticate with Palette using the `login` command. Replace `<your-api-key>` with your Palette API key.
 
    ```shell
    palette login --api-key <your-api-key> --console-url https://console.spectrocloud.com/
@@ -79,8 +79,8 @@ create a content bundle at the same time in a single command.
 
 5. Log in to the [Palette](https://console.spectrocloud.com) console.
 
-6. Select the project you want to deploy the Edge host to and copy down the **Project ID**. You can find the project id
-   at the top right side corner of the landing page below the user drop-down menu.
+6. Select the project you want to deploy the Edge host to and copy down the project ID. You can find the project ID at
+   the top right side corner of the landing page below the user drop-down menu.
 
 7. Navigate to the left main menu and select **Profiles**.
 
@@ -133,12 +133,12 @@ create a content bundle at the same time in a single command.
 
 <TabItem value="Palette Edge CLI" label="Palette Edge CLI">
 
-1. Download Palette Edge CLI and assign the executable bit to the CLI. Refer to
-   [Palette Components Compatibility Matrix](../../../../component.md#palette-edge-cli-versions) to use the right
-   Palette Edge CLI version. This guide uses 4.4.12 as an example.
+1. Download the Palette Edge CLI. Refer to the
+   [Palette Components Compatibility Matrix](../../../../component.md#palette-edge-cli-versions) to find a compatible
+   CLI version and replace `<palette-edge-cli-version>` with the selected version.
 
    ```shell
-   VERSION=4.4.12
+   VERSION=<palette-edge-cli-version>
    wget https://software.spectrocloud.com/stylus/v$VERSION/cli/linux/palette-edge
    chmod +x palette-edge
    ```
@@ -182,8 +182,8 @@ create a content bundle at the same time in a single command.
 
 4. Log in to [Palette](https://console.spectrocloud.com).
 
-5. Select the project you want to deploy the Edge host to and copy down the **Project ID**. You can find the project id
-   at the top right side corner of the landing page below the user drop-down menu.
+5. Select the project you want to deploy the Edge host to and copy down the project ID. You can find the project ID at
+   the top right side corner of the landing page below the user drop-down menu.
 
 6. Navigate to the left main menu and select **Profiles**.
 

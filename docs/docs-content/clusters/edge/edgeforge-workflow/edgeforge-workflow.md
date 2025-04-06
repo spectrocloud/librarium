@@ -105,7 +105,7 @@ more details.
 ## Content Bundles
 
 Content bundles are archives of all the required container images required for one or more cluster profiles. You can
-build content bundles using the Palette Edge or Palette Command-line Interfaces (CLI), and include the preloaded content
+build content bundles using the Palette Edge or Palette Command-line Interface (CLI) and include the preloaded content
 into the Edge Installer ISO during EdgeForge. This allows the Edge host to provision clusters without a connection to an
 external image registry. Refer to the following guides on how to build a content bundle and how to use them during the
 EdgeForge process:

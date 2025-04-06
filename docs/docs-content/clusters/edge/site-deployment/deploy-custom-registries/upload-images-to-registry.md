@@ -40,10 +40,10 @@ Palette Edge CLI to download the images and upload them to the external registry
 
 1. Download the Palette CLI. Refer to the
    [Palette Components Compatibility Matrix](../../../../component.md#palette-cli-versions) to find a compatible CLI
-   version. This guide uses version `4.6.2` as an example.
+   version and replace `<palette-cli-version>` with the selected version.
 
    ```shell
-   VERSION=4.6.2
+   VERSION=<palette-cli-version>
    wget https://software.spectrocloud.com/palette-cli/v$VERSION/linux/cli/palette
    chmod +x palette
    ```
@@ -63,10 +63,10 @@ Palette Edge CLI to download the images and upload them to the external registry
    ```
 
    ```hideClipboard text
-   Palette CLI version: 4.6.2
+   Palette CLI version: [version number]
    ```
 
-4. Authenticate with Palette by using the `login` command. Replace `<your-api-key>` with your Palette API key.
+4. Authenticate with Palette using the `login` command. Replace `<your-api-key>` with your Palette API key.
 
    ```shell
    palette login --api-key <your-api-key> --console-url https://console.spectrocloud.com/
@@ -74,8 +74,8 @@ Palette Edge CLI to download the images and upload them to the external registry
 
 5. Log in to the [Palette](https://console.spectrocloud.com) console.
 
-6. Select the project you want to deploy the Edge host to and copy down the **Project ID**. You can find the project id
-   at the top right side corner of the landing page below the user drop-down menu.
+6. Select the project you want to deploy the Edge host to and copy down the project ID. You can find the project ID at
+   the top right side corner of the landing page below the user drop-down menu.
 
 7. Navigate to the left main menu and select **Profiles**.
 
@@ -110,7 +110,7 @@ Palette Edge CLI to download the images and upload them to the external registry
     ```
 
 12. Issue the following command to upload the images to the external registry. Replace `<path-to-content-bundle>` with
-    the path to the content bundle you downloaded in the previous step and `<registry-address` with the URL of your
+    the path to the content bundle you downloaded in the previous step, and `<registry-address` with the URL of your
     external registry. Refer to the [content push](../../../../automation/palette-cli/commands/content.md#push) CLI
     command page for a complete list of available flags.
 
@@ -122,18 +122,20 @@ Palette Edge CLI to download the images and upload them to the external registry
 
 <TabItem value="Palette Edge CLI" label="Palette Edge CLI">
 
-1. Download Palette Edge Content CLI and assign the executable bit to the CLI.
+1. Download the Palette Edge CLI. Refer to the
+   [Palette Components Compatibility Matrix](../../../../component.md#palette-edge-cli-versions) to find a compatible
+   CLI version and replace `<palette-edge-cli-version>` with the selected version.
 
    ```shell
-   VERSION=4.5.5
+   VERSION=<palette-edge-cli-version>
    wget https://software.spectrocloud.com/stylus/v$VERSION/cli/linux/palette-edge
    chmod +x palette-edge
    ```
 
 2. Log in to [Palette](https://console.spectrocloud.com).
 
-3. Select the project you want to deploy the Edge host to and copy down the **Project ID**. You can find the project id
-   at the top right side corner of the landing page below the user drop-down menu.
+3. Select the project you want to deploy the Edge host to and copy down the project ID. You can find the project ID at
+   the top right side corner of the landing page below the user drop-down menu.
 
 4. Navigate to the left main menu and select **Profiles**.
 
