@@ -28,17 +28,17 @@ listed in alphabetical order.
 
 | Parameter                      | Description                                                                                                                                                                              | Type    | Default     |
 | ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- | ----------- |
-| `stylus.debug`                 | Enable this parameter for debug output. Allowed values are `true` or `false`.                                                                                                            | Boolean | `false`     |
-| `stylus.disablePasswordUpdate` | Disables the ability to update Operating System (OS) user passwords from the Local UI if set to true. Updating the password through the OS and API is still allowed.                     | Boolean | `false`     |
+| `stylus.debug`                 | Enable this parameter for debug output. Allowed values are `true` or `false`.                                                                                                            | boolean | `false`     |
+| `stylus.disablePasswordUpdate` | Disables the ability to update Operating System (OS) user passwords from the Local UI if set to true. Updating the password through the OS and API is still allowed.                     | boolean | `false`     |
 | `stylus.featureGate`           | This parameter contains a comma-separated list of features you want to enable on your host.                                                                                              | String  | None        |
-| `stylus.includeTui`            | Enable Palette TUI for initial Edge host configuration. For more information, refer to [Initial Edge Host Configuration](../site-deployment/site-installation/initial-setup.md).         | Boolean | `false`     |
+| `stylus.includeTui`            | Enable Palette TUI for initial Edge host configuration. For more information, refer to [Initial Edge Host Configuration](../site-deployment/site-installation/initial-setup.md).         | boolean | `false`     |
 | `stylus.installationMode`      | Allowed values are `connected` and `airgap`. `connected` means the Edge host is connected to Palette; `airgap` means the Edge host has no connection.                                    | String  | `connected` |
 | `stylus.localUI.port`          | Specifies the port that the Local UI is exposed on.                                                                                                                                      | Integer | `5080`      |
 | `stylus.site`                  | Review [Site Parameters](#site-parameters) for more information.                                                                                                                         | Object  | None        |
-| `stylus.enableMultiNode`       | When set to `true`, the host can link with other nodes to form a multi-node cluster. For more information, refer to [Link Hosts](../local-ui/cluster-management/link-hosts.md).          | Boolean | `false`     |
+| `stylus.enableMultiNode`       | When set to `true`, the host can link with other nodes to form a multi-node cluster. For more information, refer to [Link Hosts](../local-ui/cluster-management/link-hosts.md).          | boolean | `false`     |
 | `stylus.externalRegistries`    | Use this parameter to configure multiple external registries and apply domain re-mapping rules. Refer to [Multiple External Registries](#multiple-external-registries) for more details. | Object  | None        |
 | `stylus.registryCredentials`   | Only used when a single external registry is in use and no mapping rules are needed. Refer to [Single External Registry](#single-external-registry) for more details.                    | Object  | None        |
-| `stylus.trace`                 | Enable trace output. Allowed values are `true` or `false`.                                                                                                                               | Boolean | `false`     |
+| `stylus.trace`                 | Enable trace output. Allowed values are `true` or `false`.                                                                                                                               | boolean | `false`     |
 
 ### Feature Gates
 
@@ -78,8 +78,8 @@ The `stylus.externalRegistries.registries` block accepts the following parameter
 | `password`        | The password to authenticate with the registry.                          | String           | None    |
 | `repositoryName`  | The name of the repository within the registry.                          | String           | None    |
 | `certificates`    | A list of certificates in PEM format to use when accessing the registry. | Array of strings | None    |
-| `insecure`        | Whether to allow insecure connections to the registry.                   | Boolean          | `false` |
-| `encodedPassword` | Whether the password is base64 encoded.                                  | Boolean          | `false` |
+| `insecure`        | Whether to allow insecure connections to the registry.                   | boolean          | `false` |
+| `encodedPassword` | Whether the password is base64 encoded.                                  | boolean          | `false` |
 
 Below is an example of how to configure an external registry.
 
@@ -203,8 +203,8 @@ enable the local Harbor registry. For more information, refer to
 | -------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ------- | ------- |
 | `stylus.registryCredentials.domain`          | The domain of the registry. You can use an IP address plus a port or a domain name.                         | String  | None    |
 | `stylus.registryCredentials.password`        | The password to authenticate with the registry.                                                             | String  | None    |
-| `stylus.registryCredentials.insecure`        | Whether to allow insecure connections to the registry.                                                      | Boolean | `false` |
-| `stylus.registryCredentials.encodedPassword` | Set to `true` if the password given is base64 encoded. Set to `false` if the password given is not encoded. | Boolean | `false` |
+| `stylus.registryCredentials.insecure`        | Whether to allow insecure connections to the registry.                                                      | boolean | `false` |
+| `stylus.registryCredentials.encodedPassword` | Set to `true` if the password given is base64 encoded. Set to `false` if the password given is not encoded. | boolean | `false` |
 
 ```yaml
 #cloud-config
@@ -227,7 +227,7 @@ The `stylus.site` blocks accept the following parameters.
 | `stylus.site.clusterName`        | The name of the cluster the Edge host belongs to.                                                                                                                                                                                                           | String                  | None    |
 | `stylus.site.deviceUIDPaths`     | A list of file paths for reading in a product or board serial that can be used to set the device ID. The default file path is `/sys/class/dmi/id/product_uuid`. Refer to the [Device ID (UID) Parameters](#device-id-uid-parameters) section to learn more. | Array of `FileList`     | None    |
 | `stylus.site.edgeHostToken`      | A token created at the tenant scope that is required for auto registration.                                                                                                                                                                                 | String                  | None    |
-| `stylus.site.insecureSkipVerify` | This controls whether or not a client verifies the server’s certificate chain and hostname.                                                                                                                                                                 | Boolean                 | `false` |
+| `stylus.site.insecureSkipVerify` | This controls whether or not a client verifies the server’s certificate chain and hostname.                                                                                                                                                                 | boolean                 | `false` |
 | `stylus.site.name`               | The fully qualified domain name of the Edge host.                                                                                                                                                                                                           | String                  | None    |
 | `stylus.site.network`            | The network configuration settings. Refer to [Site Network Parameters](#site-network-parameters) for more details.                                                                                                                                          | Object                  | None    |
 | `stylus.site.paletteEndpoint`    | The URL endpoint that points to Palette. Example: `api.spectrocloud.com`                                                                                                                                                                                    | String                  | None    |
@@ -381,7 +381,7 @@ registry. If you find this redirect behavior to be limiting, you can disable the
 
 | Parameter                            | Description                                            | Type    | Default |
 | ------------------------------------ | ------------------------------------------------------ | ------- | ------- |
-| `stylus.imageRedirectWebhook.enable` | Whether to enable the webhook to redirect image pulls. | Boolean | `true`  |
+| `stylus.imageRedirectWebhook.enable` | Whether to enable the webhook to redirect image pulls. | boolean | `true`  |
 | `stylus.imageRedirectWebhook.port`   | The port on which the webhook listens.                 | Integer | None    |
 
 ## Install Parameters
@@ -403,8 +403,8 @@ installation is complete.
 | `install.partitions.extra-partitions[*].size`  | The size of the extra partition.                                                                                                                              | Integer          | None    |
 | `install.partitions.extra-partitions[*].fs`    | The file system of the extra partition.                                                                                                                       | String           | None    |
 | `install.partitions.extra-partitions[*].label` | The label of the extra partition.                                                                                                                             | String           | None    |
-| `install.poweroff`                             | Whether to power off the Edge host after installation completes.                                                                                              | Boolean          | `false` |
-| `install.reboot`                               | Whether to reboot the Edge host after installation completes.                                                                                                 | Boolean          | `false` |
+| `install.poweroff`                             | Whether to power off the Edge host after installation completes.                                                                                              | boolean          | `false` |
+| `install.reboot`                               | Whether to reboot the Edge host after installation completes.                                                                                                 | boolean          | `false` |
 
 ## Cloud Init Stages
 
