@@ -64,7 +64,7 @@ Review the following parameters to configure external registries.
 
 | Parameter                                        | Description                                                                                                                                       | Type                            | Default |
 | ------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------- | ------- |
-| `stylus.externalRegistries.registries`           | A list of external registries. Refer to [Registry Parameters](#registry-parameters) for more details.                                             | Array of `Credentials`          | `nil`    |
+| `stylus.externalRegistries.registries`           | A list of external registries. Refer to [Registry Parameters](#registry-parameters) for more details.                                             | Array of `Credentials`          | `nil`   |
 | `stylus.externalRegistries.registryMappingRules` | A list of key-pair rules to map domain names to external registries. Refer to [Registry Mapping Rules](#registry-mapping-rules) for more details. | Map of `string` keys and values | None    |
 
 #### Registry Parameters
@@ -77,7 +77,7 @@ The `stylus.externalRegistries.registries` block accepts the following parameter
 | `username`        | The username to authenticate with the registry.                          | String           | `''`    |
 | `password`        | The password to authenticate with the registry.                          | String           | `''`    |
 | `repositoryName`  | The name of the repository within the registry.                          | String           | `''`    |
-| `certificates`    | A list of certificates in PEM format to use when accessing the registry. | Array of strings | `nil`    |
+| `certificates`    | A list of certificates in PEM format to use when accessing the registry. | Array of strings | `nil`   |
 | `insecure`        | Whether to allow insecure connections to the registry.                   | boolean          | `false` |
 | `encodedPassword` | Whether the password is base64 encoded.                                  | boolean          | `false` |
 
@@ -222,10 +222,10 @@ The `stylus.site` blocks accept the following parameters.
 
 | Parameter                        | Description                                                                                                                                                                                                                                                 | Type                             | Default |
 | -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- | ------- |
-| `stylus.site.caCerts`            | The Secure Sockets Layer (SSL) Certificate Authority (CA) certificates. The certificates must be base64-encoded.                                                                                                                                            | Array of strings                 | `nil`    |
+| `stylus.site.caCerts`            | The Secure Sockets Layer (SSL) Certificate Authority (CA) certificates. The certificates must be base64-encoded.                                                                                                                                            | Array of strings                 | `nil`   |
 | `stylus.site.clusterId`          | The ID of the cluster the Edge host belongs to.                                                                                                                                                                                                             | String                           | `''`    |
 | `stylus.site.clusterName`        | The name of the cluster the Edge host belongs to.                                                                                                                                                                                                           | String                           | `''`    |
-| `stylus.site.deviceUIDPaths`     | A list of file paths for reading in a product or board serial that can be used to set the device ID. The default file path is `/sys/class/dmi/id/product_uuid`. Refer to the [Device ID (UID) Parameters](#device-id-uid-parameters) section to learn more. | Array of `FileList`              | `nil`    |
+| `stylus.site.deviceUIDPaths`     | A list of file paths for reading in a product or board serial that can be used to set the device ID. The default file path is `/sys/class/dmi/id/product_uuid`. Refer to the [Device ID (UID) Parameters](#device-id-uid-parameters) section to learn more. | Array of `FileList`              | `nil`   |
 | `stylus.site.edgeHostToken`      | A token created at the tenant scope that is required for auto registration.                                                                                                                                                                                 | String                           | `''`    |
 | `stylus.site.insecureSkipVerify` | This controls whether or not a client verifies the server’s certificate chain and hostname.                                                                                                                                                                 | boolean                          | `false` |
 | `stylus.site.name`               | The fully qualified domain name of the Edge host.                                                                                                                                                                                                           | String                           | `''`    |
@@ -392,8 +392,8 @@ installation is complete.
 
 | Parameter                                      | Description                                                                                                                                                   | Type             | Default |
 | ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------- | ------- |
-| `install.bind_mounts`                          | The list of folders to bind mount from the installer environment into the Edge host.                                                                          | Array of strings | `nil`    |
-| `install.bind_mounts.extra-dirs-rootfs`        | The list of folders to bind mount from the installer to the Edge host's root file system. These folders are created in the `rootfs` path during installation. | Array of strings | `nil`    |
+| `install.bind_mounts`                          | The list of folders to bind mount from the installer environment into the Edge host.                                                                          | Array of strings | `nil`   |
+| `install.bind_mounts.extra-dirs-rootfs`        | The list of folders to bind mount from the installer to the Edge host's root file system. These folders are created in the `rootfs` path during installation. | Array of strings | `nil`   |
 | `install.grub_options.extra_cmdline`           | Kernel command-line parameters to add to the installer.                                                                                                       | Map of strings   | `nil`   |
 | `install.partitions.persistent`                | A persistent partition object that you can configure for extra storage.                                                                                       | Object           | None    |
 | `install.partitions.persistent.size`           | The size of the persistent partition.                                                                                                                         | Integer          | `0`     |
