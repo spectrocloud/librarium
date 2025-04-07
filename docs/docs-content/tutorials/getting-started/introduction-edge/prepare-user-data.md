@@ -38,8 +38,8 @@ main configuration blocks:
 
 - `stylus`: Palette agent parameters that control aspects of the Edge host's configuration, such as networking, logging,
   services, users, and permissions. The following configuration snippet specifies the Palette endpoint, a registration
-  token, and the Palette project name that the host will use to register with Palette. It also provides tags that will
-  be assigned to the device as labels.
+  token, and the Palette project name that the host uses to register with Palette. It also provides tags that are
+  assigned to the device as labels.
 
   ```shell
   #cloud-config
@@ -67,14 +67,14 @@ main configuration blocks:
 
   ```shell
   stages:
-  initramfs:
-    - users:
-        docs:
-          passwd: ******
-          groups:
-          - sudo
-          ssh_authorized_keys:
-          - ssh-rsa AAAAB3N…
+    initramfs:
+      - users:
+          docs:
+            passwd: ******
+            groups:
+            - sudo
+            ssh_authorized_keys:
+            - ssh-rsa AAAAB3N…
   ```
 
   :::tip
