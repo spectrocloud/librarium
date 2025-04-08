@@ -17,7 +17,7 @@ This advisory outlines security vulnerabilities related to [ingress-nginx](https
 and the recommended remediation actions.
 
 - **Release Date**: March 27, 2025
-- **Last Updated**: April 3, 2025
+- **Last Updated**: April 8, 2025
 - **Severity**: 9.8
 - **Affected Versions**: All versions prior to v1.11.0, v1.11.0 - v1.11.4, and v1.12.0
 - **Fixed Versions**: v1.11.5 and v1.12.1
@@ -34,8 +34,6 @@ Refer to the [Security Bulletins](../reports/reports.mdx) page for detailed info
 
 ### Timeline
 
-#### Past Updates
-
 - **March 24, 2025**: First notified of vulnerabilities.
 - **March 24, 2025**: CVE bulletin published.
 - **March 26, 2025**: New Nginx pack published.
@@ -43,13 +41,10 @@ Refer to the [Security Bulletins](../reports/reports.mdx) page for detailed info
 - **March 27, 2025**: Manual patch procedure provided for connected and airgapped Palette Enterprise and VerteX
   installations.
 - **March 28, 2025**: Affected Nginx packs deprecated.
-- **March 28, 2025**: Connected Palette Enterprise and VerteX patch available for versions 4.5 - 4.6.
-- **April 1, 2025**: Connected Palette Enterprise and VerteX patch available for version 4.4.
-- **April 2, 2025**: Airgapped Palette Enterprise and VerteX patch available for versions 4.4 and 4.6.
-
-#### Future Updates
-
-- **April 4, 2025**: Airgapped Palette Enterprise and VerteX patch for version 4.5.
+- **March 28, 2025**: Connected Palette Enterprise and VerteX patches available for versions 4.5 and 4.6.
+- **April 1, 2025**: Connected Palette Enterprise and VerteX patches available for version 4.4.
+- **April 2, 2025**: Airgapped Palette Enterprise and VerteX patches available for versions 4.4 and 4.6.
+- **April 4, 2025**: Airgrapped Palette Enterprise and VerteX patches available for version 4.5.
 
 ### Summary
 
@@ -59,15 +54,11 @@ download confidential information such as secrets available in the cluster. Thes
 Palette and VerteX management planes. Additionally, Spectro Cloud also provides the Nginx pack to customers for their
 workload clusters, which contains several vulnerable image versions.
 
-As of April 2, 2025, all vulnerable Nginx packs have been deprecated, and all managed Palette instances have been
-patched. Patches are also available for connected Palette Enterprise and VerteX versions 4.4 - 4.6 and airgapped
-versions 4.4 and 4.6. Airgapped Palette Enterprise and VerteX version 4.5 must manually upgrade `ingress-nginx`
-controllers to version `1.11.5`.
+As of April 4, 2025, all vulnerable Nginx packs have been deprecated, all managed Palette instances have been
+patched, and patches are available for connected and airgapped Palette Enterprise and VerteX versions 4.4 - 4.6.
 
 All workload clusters across all Palette and VerteX installations must be updated manually. All users should review
 their cluster profiles and workload clusters and upgrade the Nginx pack to version `1.11.5`.
-
-Follow the below procedures to manually upgrade the affected components and upgrade affected workload clusters.
 
 ### Recommended Actions
 
@@ -78,9 +69,14 @@ This vulnerability affects both workload clusters and Palette deployments.
   [Update a Cluster Profile](../../profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile.md) guide
   for instructions on how to update a cluster profile and apply the updates to workload clusters.
 
-- If you have any instances of Palette enterprise or VerteX with the affected version of the `ingress-nginx-controller`
-  DaemonSet, you must update it to version `1.11.5`. Follow the steps described in the upcoming sections to manually
-  upgrade the controller.
+- Connected and airgapped Palette Enterprise and VerteX versions 4.4 - 4.6 must apply the latest patch to automatically upgrade the `ingress-nginx-controller`
+  DaemonSet to version `1.11.5`. For guidance on upgrading your Palette version, refer to the [Palette Enterprise](../../enterprise-version/upgrade/upgrade.md) or [VerteX](../../vertex/upgrade/upgrade.md) upgrade guide. 
+  
+   :::warning
+
+   If you do not apply the patch, follow the steps described in the upcoming sections to manually upgrade the controller version.
+
+   :::
 
 #### Multi-Tenant and Dedicated SaaS Palette
 
