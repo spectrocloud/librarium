@@ -11,6 +11,19 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## April 3, 2025 - Automation Updates
+
+Terraform version 0.23.4 of the
+[Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
+available. For more details, refer to the Terraform provider
+[release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
+
+### Bug Fixes
+
+- Fixed an issue that resulted in Admin Kubeconfig files to be fetched instead of the Kubeconfig file when using the
+  `kubeconfig` field on cluster resources. Refer to the
+  [Kubeconfig Files](../clusters/cluster-management/kubeconfig.md#kubeconfig-files) for more details.
+
 ## March 28, 2025 - Release 4.6.18
 
 ### Bug Fixes
@@ -30,10 +43,11 @@ tags: ["release-notes"]
   [ingress-nginx](https://github.com/kubernetes/ingress-nginx) was reported. The vulnerable versions were used in
   Palette's and VerteX's management planes and were also available as packs for workload clusters. On March 26, 2025,
   all managed Palette and VerteX deployments were patched and the affected component was upgraded to a secure version,
-  `1.11.5`. On March 28, 2025, connected Palette [Enterprise](../enterprise-version/enterprise-version.md) and
-  [VerteX](../vertex/vertex.md) versions 4.5 - 4.6 were patched, and on April 1, 2025, version 4.4 was patched.
-  Currently, airgapped Palette Enterprise and VerteX installations must manually upgrade their `ingress-nginx`
-  controllers to version `1.11.5`.
+  `1.11.5`. On March 28, 2025, patches for connected Palette [Enterprise](../enterprise-version/enterprise-version.md)
+  and [VerteX](../vertex/vertex.md) versions 4.5 - 4.6 were released, and on April 1, 2025, the patch for version 4.4
+  was released. On April 2, 2025, patches for airgapped Palette Enterprise and VerteX versions 4.4 and 4.6 were
+  released. All Palette Enterprise and VerteX installations must upgrade to the latest patch version. Airgapped Palette
+  Enterprise and VerteX version 4.5 must manually upgrade `ingress-nginx` controllers to version `1.11.5`.
 
   All workload clusters across all Palette and VerteX installations must be updated manually. All users should review
   their [cluster profiles](../profiles/cluster-profiles/cluster-profiles.md) and workload clusters and upgrade the Nginx
