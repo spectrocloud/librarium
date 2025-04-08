@@ -93,12 +93,6 @@ compatible version of the Palette CLI.
 
 #### Deprecations and Removals
 
-## March 15, 2025 - Release 4.6.12
-
-### Security Notices
-
-- Review the [Security Bulletins](../security-bulletins/reports/reports.mdx) page for the latest security advisories.
-
 ## April 3, 2025 - Automation Updates
 
 Terraform version 0.23.4 of the
@@ -163,6 +157,12 @@ available. For more details, refer to the Terraform provider
   [Palette Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette/) is
   available. For more details, refer to the Crossplane provider
   [release page](https://github.com/crossplane-contrib/provider-palette/releases).
+
+## March 15, 2025 - Release 4.6.12
+
+### Security Notices
+
+- Review the [Security Bulletins](../security-bulletins/reports/reports.mdx) page for the latest security advisories.
 
 ### Palette Enterprise {#palette-enterprise-4-6-a}
 
