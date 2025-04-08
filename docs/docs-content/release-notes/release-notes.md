@@ -105,6 +105,71 @@ compatible version of the Palette CLI.
 
 #### Deprecations and Removals
 
+## April 3, 2025 - Automation Updates
+
+Terraform version 0.23.4 of the
+[Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
+available. For more details, refer to the Terraform provider
+[release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
+
+### Bug Fixes
+
+- Fixed an issue that resulted in Admin Kubeconfig files to be fetched instead of the Kubeconfig file when using the
+  `kubeconfig` field on cluster resources. Refer to the
+  [Kubeconfig Files](../clusters/cluster-management/kubeconfig.md#kubeconfig-files) for more details.
+
+## March 28, 2025 - Release 4.6.18
+
+### Bug Fixes
+
+- Fixed an issue where users could not connect to Edge hosts using
+  [remote shell](../clusters/edge/cluster-management/remote-shell.md) in VerteX SaaS environments.
+- Fixed an issue that prevented host machines from automatically rebooting after installing the
+  [Palette agent](../deployment-modes/agent-mode/install-agent-host.md).
+- Fixed an issue that prevented [AWS](../clusters/public-cloud/aws/aws.md) clusters with tags containing certain special
+  characters from being provisioned or deleted.
+- Fixed an issue where [Edge](../clusters/edge/edge.md) native clusters remained stuck in the bootstrapping phase during
+  deployment.
+
+### Security Notices
+
+- On March 24, 2025, a security vulnerability regarding certain versions of
+  [ingress-nginx](https://github.com/kubernetes/ingress-nginx) was reported. The vulnerable versions were used in
+  Palette's and VerteX's management planes and were also available as packs for workload clusters. On March 26, 2025,
+  all managed Palette and VerteX deployments were patched and the affected component was upgraded to a secure version,
+  `1.11.5`. On March 28, 2025, patches for connected Palette [Enterprise](../enterprise-version/enterprise-version.md)
+  and [VerteX](../vertex/vertex.md) versions 4.5 - 4.6 were released, and on April 1, 2025, the patch for version 4.4
+  was released. On April 2, 2025, patches for airgapped Palette Enterprise and VerteX versions 4.4 and 4.6 were
+  released. All Palette Enterprise and VerteX installations must upgrade to the latest patch version. Airgapped Palette
+  Enterprise and VerteX version 4.5 must manually upgrade `ingress-nginx` controllers to version `1.11.5`.
+
+  All workload clusters across all Palette and VerteX installations must be updated manually. All users should review
+  their [cluster profiles](../profiles/cluster-profiles/cluster-profiles.md) and workload clusters and upgrade the Nginx
+  pack to version `1.11.5`. For more information, refer to our
+  [Security Advisory](../security-bulletins/security-advisories/security-advisories.md).
+
+## March 20, 2025 - Release 4.6.13
+
+### Bug Fixes
+
+- Fixed an issue where [AWS EKS](../clusters/public-cloud/aws/eks.md) clusters using the AWS VPC CNI (Helm)
+  [pack](../integrations/integrations.mdx) assigned incorrect IP addresses to pods.
+- Fixed an issue where OIDC configuration failed when using
+  [Microsoft Entra ID](../user-management/saml-sso/palette-sso-with-entra-id.md).
+
+### Automation
+
+#### Features
+
+- Terraform version 0.23.2 of the
+  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
+  available. For more details, refer to the Terraform provider
+  [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
+- Crossplane version 0.23.2 of the
+  [Palette Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette/) is
+  available. For more details, refer to the Crossplane provider
+  [release page](https://github.com/crossplane-contrib/provider-palette/releases).
+
 ## March 15, 2025 - Release 4.6.12
 
 ### Security Notices
