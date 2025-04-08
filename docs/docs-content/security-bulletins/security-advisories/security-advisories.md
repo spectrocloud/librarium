@@ -44,7 +44,7 @@ Refer to the [Security Bulletins](../reports/reports.mdx) page for detailed info
 - **March 28, 2025**: Connected Palette Enterprise and VerteX patches available for versions 4.5 and 4.6.
 - **April 1, 2025**: Connected Palette Enterprise and VerteX patches available for version 4.4.
 - **April 2, 2025**: Airgapped Palette Enterprise and VerteX patches available for versions 4.4 and 4.6.
-- **April 4, 2025**: Airgrapped Palette Enterprise and VerteX patches available for version 4.5.
+- **April 4, 2025**: Airgapped Palette Enterprise and VerteX patches available for version 4.5.
 
 ### Summary
 
