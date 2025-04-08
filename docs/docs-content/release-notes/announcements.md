@@ -20,7 +20,7 @@ for the changes in your environment.
 
 | Change                                                                                                                                                                                                                                                                                                               | Target Date   | Published Date |
 | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- | -------------- |
-| The `spec.jsonCredentialsFileUid` field in API requests is deprecated. Users who create GCP cloud accounts using the API should now use the `spec.jsonCredentials` field to supply their credentials in JSON format. Refer to [API documentation](../../api-content/api-docs/1-introduction.md) for further details. | July 12, 2025 | April 19, 2025 |
+| The `spec.jsonCredentialsFileUid` field in API requests is deprecated. Users who create GCP cloud accounts using the API should now use the `spec.jsonCredentials` field to supply their credentials in JSON format. Refer to [API documentation](/api-content/api-docs/1-introduction.md) for further details. | July 12, 2025 | April 19, 2025 |
 
 <!-- vale off -->
 
