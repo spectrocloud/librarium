@@ -41,7 +41,9 @@ available. For more details, refer to the Terraform provider
 
 - On March 24, 2025, a security vulnerability regarding certain versions of
   [ingress-nginx](https://github.com/kubernetes/ingress-nginx) was reported. The vulnerable versions were used in
-  Palette's and VerteX's management planes and were also available as packs for workload clusters. As of April 4, 2025, all vulnerable Nginx packs have been deprecated, all managed Palette instances have been patched, and patches are available for connected and airgapped Palette Enterprise and VerteX versions 4.4 - 4.6.
+  Palette's and VerteX's management planes and were also available as packs for workload clusters. As of April 4, 2025,
+  all vulnerable Nginx packs have been deprecated, all managed Palette instances have been patched, and patches are
+  available for connected and airgapped Palette Enterprise and VerteX versions 4.4 - 4.6.
 
   All workload clusters across all Palette and VerteX installations must be updated manually. All users should review
   their [cluster profiles](../profiles/cluster-profiles/cluster-profiles.md) and workload clusters and upgrade the Nginx

@@ -54,8 +54,8 @@ download confidential information such as secrets available in the cluster. Thes
 Palette and VerteX management planes. Additionally, Spectro Cloud also provides the Nginx pack to customers for their
 workload clusters, which contains several vulnerable image versions.
 
-As of April 4, 2025, all vulnerable Nginx packs have been deprecated, all managed Palette instances have been
-patched, and patches are available for connected and airgapped Palette Enterprise and VerteX versions 4.4 - 4.6.
+As of April 4, 2025, all vulnerable Nginx packs have been deprecated, all managed Palette instances have been patched,
+and patches are available for connected and airgapped Palette Enterprise and VerteX versions 4.4 - 4.6.
 
 All workload clusters across all Palette and VerteX installations must be updated manually. All users should review
 their cluster profiles and workload clusters and upgrade the Nginx pack to version `1.11.5`.
@@ -69,14 +69,17 @@ This vulnerability affects both workload clusters and Palette deployments.
   [Update a Cluster Profile](../../profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile.md) guide
   for instructions on how to update a cluster profile and apply the updates to workload clusters.
 
-- Connected and airgapped Palette Enterprise and VerteX versions 4.4 - 4.6 must apply the latest patch to automatically upgrade the `ingress-nginx-controller`
-  DaemonSet to version `1.11.5`. For guidance on upgrading your Palette version, refer to the [Palette Enterprise](../../enterprise-version/upgrade/upgrade.md) or [VerteX](../../vertex/upgrade/upgrade.md) upgrade guide. 
-  
-   :::warning
+- Connected and airgapped Palette Enterprise and VerteX versions 4.4 - 4.6 must apply the latest patch to automatically
+  upgrade the `ingress-nginx-controller` DaemonSet to version `1.11.5`. For guidance on upgrading your Palette version,
+  refer to the [Palette Enterprise](../../enterprise-version/upgrade/upgrade.md) or
+  [VerteX](../../vertex/upgrade/upgrade.md) upgrade guide.
 
-   If you do not apply the patch, follow the steps described in the upcoming sections to manually upgrade the controller version.
+  :::warning
 
-   :::
+  If you do not apply the patch, follow the steps described in the upcoming sections to manually upgrade the controller
+  version.
+
+  :::
 
 #### Multi-Tenant and Dedicated SaaS Palette
 
