@@ -176,8 +176,8 @@ the appropriate workflow based on the changes you make to your cluster.
    :::tip
 
    If you are not updating the cluster profile version and are only updating existing cluster profile variables, you can
-   expand the **Settings** drop-down menu**, choose **Cluster Settings**, and use the **Profile Variables
-   Configuration\*\* tab to update your profile variables. Proceed to step 6 to learn more.
+   expand the **Settings** drop-down menu, choose **Cluster Settings**, and use the **Profile Variables
+   Configuration** tab to update your profile variables. Proceed to step 6 to learn more.
 
    :::
 
