@@ -15,9 +15,10 @@ This page provides a listing of vulnerabilities found in the image **u-2004-0-k-
 - **Summary**: Security Advisory for Ubuntu 20.04 with Kubernetes 1.31.5
 - **Initial Notice Published**: 02/17/2025
 - **Last Updated**: 03/01/2025
-- **Justification**: This vulnerability is reported on some of the 3rd party csi images and coredns image from k8s. This CVE is of low risk for our products a network-based attack vector is 
-simply impossible when it comes to golang code, apart from that as per CVE flaw analysis reported by golang, this only affects integrity and confidentiality and has no 
-effect on availability. 
+- **Justification**: This vulnerability is reported on some of the 3rd party csi images and coredns image from k8s. This
+  CVE is of low risk for our products a network-based attack vector is simply impossible when it comes to golang code,
+  apart from that as per CVE flaw analysis reported by golang, this only affects integrity and confidentiality and has
+  no effect on availability.
 
 We will upgrade the images when the fixes are available from the upstream vendors.
 
@@ -29,23 +30,22 @@ No remediation steps available.
 
 <div class="auto-generated-table">
 
-| CVE ID | Package | Installed Version | Severity | NIST Link |
-|--------|---------|-------------------|----------|----------|
-| CVE-2024-24790 | go | go1.19.10 | CRITICAL | [Details](https://nvd.nist.gov/vuln/detail/CVE-2024-24790) |
-| CVE-2023-37920 | certifi | 2019.11.28 | CRITICAL | [Details](https://nvd.nist.gov/vuln/detail/CVE-2023-37920) |
-| CVE-2024-3596 | krb5-locales | 1.17-6ubuntu4.7 | CRITICAL | [Details](https://nvd.nist.gov/vuln/detail/CVE-2024-3596) |
-| CVE-2023-3326 | libipa-hbac0 | 2.2.3-3ubuntu0.13 | CRITICAL | [Details](https://nvd.nist.gov/vuln/detail/CVE-2023-3326) |
-| CVE-2021-46848 | libtasn1-6 | 4.16.0-2 | CRITICAL | [Details](https://nvd.nist.gov/vuln/detail/CVE-2021-46848) |
-| CVE-2024-47685 | linux-cloud-tools-5.4.0-205 | 5.4.0-205.225 | CRITICAL | [Details](https://nvd.nist.gov/vuln/detail/CVE-2024-47685) |
-| CVE-2021-3773 | linux-cloud-tools-5.4.0-205 | 5.4.0-205.225 | CRITICAL | [Details](https://nvd.nist.gov/vuln/detail/CVE-2021-3773) |
-| CVE-2020-14343 | pyyaml | 5.3.1 | CRITICAL | [Details](https://nvd.nist.gov/vuln/detail/CVE-2020-14343) |
-
+| CVE ID         | Package                     | Installed Version | Severity | NIST Link                                                  |
+| -------------- | --------------------------- | ----------------- | -------- | ---------------------------------------------------------- |
+| CVE-2024-24790 | go                          | go1.19.10         | CRITICAL | [Details](https://nvd.nist.gov/vuln/detail/CVE-2024-24790) |
+| CVE-2023-37920 | certifi                     | 2019.11.28        | CRITICAL | [Details](https://nvd.nist.gov/vuln/detail/CVE-2023-37920) |
+| CVE-2024-3596  | krb5-locales                | 1.17-6ubuntu4.7   | CRITICAL | [Details](https://nvd.nist.gov/vuln/detail/CVE-2024-3596)  |
+| CVE-2023-3326  | libipa-hbac0                | 2.2.3-3ubuntu0.13 | CRITICAL | [Details](https://nvd.nist.gov/vuln/detail/CVE-2023-3326)  |
+| CVE-2021-46848 | libtasn1-6                  | 4.16.0-2          | CRITICAL | [Details](https://nvd.nist.gov/vuln/detail/CVE-2021-46848) |
+| CVE-2024-47685 | linux-cloud-tools-5.4.0-205 | 5.4.0-205.225     | CRITICAL | [Details](https://nvd.nist.gov/vuln/detail/CVE-2024-47685) |
+| CVE-2021-3773  | linux-cloud-tools-5.4.0-205 | 5.4.0-205.225     | CRITICAL | [Details](https://nvd.nist.gov/vuln/detail/CVE-2021-3773)  |
+| CVE-2020-14343 | pyyaml                      | 5.3.1             | CRITICAL | [Details](https://nvd.nist.gov/vuln/detail/CVE-2020-14343) |
 
 </div>
 
 ## Revision History
 
-| Date | Revision |
-| --- | --- |
+| Date       | Revision                            |
+| ---------- | ----------------------------------- |
 | 02/25/2025 | Status changed from Open to Ongoing |
-| 02/25/2025 | Official summary added |
+| 02/25/2025 | Official summary added              |
