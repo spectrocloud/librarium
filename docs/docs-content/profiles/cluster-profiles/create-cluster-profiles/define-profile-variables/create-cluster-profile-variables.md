@@ -29,17 +29,17 @@ guide to learn how to create a cluster profile.
 
 1.  Log in to [Palette](https://console.spectrocloud.com).
 
-2.  On the left **Main Menu**, select **Profiles** and choose the cluster profile for which you want to define profile
+2.  On the left main menu, select **Profiles** and choose the cluster profile for which you want to define profile
     variables.
 
-3.  In the upper-right corner, click **Variables**. Then, on the **Profile variables** pane, click **Create variable**.
+3.  In the upper-right corner, select **Variables > Create variable**.
 
     ![Palette with the Variables button highlighted.](/profiles_create-cluster-profiles_define-profile-variables_open-profile-variables.webp)
 
     :::tip
 
     Alternatively, open a profile layer and, in the upper-right corner of its YAML configuration editor, select
-    **Variables**, then **Create variable**.
+    **Variables > Create variable**.
 
     :::
 
@@ -50,7 +50,7 @@ guide to learn how to create a cluster profile.
 5.  Enter the variable **Display name** that Palette will display during cluster deployment. The **Display name** must
     be unique within the scope of the cluster profile.
 
-6.  Optionally, enter a variable description.
+6.  Optionally, enter a variable **Description**.
 
 7.  Select the data format for the variable. The following table describes available data formats.
 
@@ -76,28 +76,29 @@ guide to learn how to create a cluster profile.
     | Read-only               | Prevent the cluster profile variable from being edited during cluster deployment. Read-only variables must have a default value set.                                                                                                            |
 
 9.  As you make changes in the **Create variable** pane, the **Preview** field is updated, mirroring how the field will
-    look and behave when deploying and updating clusters. When you are satisfied, select **Create** to create the
-    variable.
+    look and behave when deploying and updating clusters. When you are satisfied, **Create** the variable.
 
     ![Palette YAML editor with the added profile variables.](/profiles_create-cluster-profiles_define-profile-variables_variable-preview.webp)
 
 10. Navigate to the YAML configuration of the profile layer to which you want to add the variable. In the upper-right
     corner of its YAML configuration editor, select **Variables**.
 
-11. Next to the variable you want to add, click the **Copy to clipboard** icon to copy its name.
+11. Next to the variable you want to add, select the **Copy to clipboard** icon to copy its name.
 
-12. Paste the variable in the `parameter: "{{.spectro.var.variable_name}}"` format and click **Confirm Updates**.
+12. Paste the variable in the `parameter: '{{.spectro.var.variable_name}}'` format. You _must_ wrap each profile
+    variable in single quotes (`'`) to properly validate the schema. Select **Confirm Updates** when finished.
 
     Alternatively, you can start typing `{{.spectro.var.}}` in the YAML configuration editor, and Palette will list the
-    profile variables you have created. Continue typing to filter the list, or use the **Up arrow** and **Down arrow**
-    keys to select the appropriate profile variable. Press **Tab** to accept the suggestion and add the variable.
+    profile variables you have created. Continue typing to filter the list, or use the **UP ARROW** and **DOWN ARROW**
+    keys to select the appropriate profile variable. Press **TAB** to accept the suggestion and add the variable. You
+    must still wrap the profile variable in single quotes (`'`).
 
     ![Palette YAML editor with the added profile variables.](/profiles_create-cluster-profiles_define-profile-variables_add-vars-to-yaml.webp)
 
     :::tip
 
     By default, profile variables are listed in the order they are created. This order is also used when deploying or
-    modifying clusters. To change the display order of variables, select the **Variables three-dot Menu**, choose
+    modifying clusters. To change the display order of variables, select the **Variables** three-dot menu, choose
     **Reorder variables**, and drag and drop variables to change their display order. Finally, select **Confirm order**.
 
     :::
@@ -119,10 +120,10 @@ guide to learn how to create a cluster profile.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. From the left **Main Menu**, select **Profiles** and navigate to the cluster profile for which you have created
-   profile variables.
+2. From the left main menu, select **Profiles** and navigate to the cluster profile for which you have created profile
+   variables.
 
-3. In the upper-right corner, click **Variables** and, on the **Profile variables** pane, check that the necessary
+3. In the upper-right corner, select **Variables** and, on the **Profile variables** pane, check that the necessary
    variables are properly defined.
 
 4. Hover over the **[#] layers** pill next to the variables to review the profile layers where they are used.
@@ -145,18 +146,18 @@ Once you deploy a cluster using profile variables, verify that any parameters co
 populated with the expected values. The following validation process uses the
 [kubectl CLI](https://kubernetes.io/docs/reference/kubectl/) and the cluster's
 [kubeconfig](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) file. For more
-information on how to use `kubectl` and **kubeconfig** with your Palette clusters, refer to the Spectro Cloud
+information on how to use `kubectl` and `kubeconfig` with your Palette clusters, refer to the Spectro Cloud
 [Kubectl](../../../../clusters/cluster-management/palette-webctl.md) and
 [Kubeconfig](../../../../clusters/cluster-management/kubeconfig.md) guides.
 
 1. Log in to [Palette](https://spectrocloud.com).
 
-2. Navigate to the left **Main Menu** and select **Clusters**.
+2. Navigate to the left main menu and select **Clusters**.
 
 3. Select the host cluster you want to access.
 
 4. Follow the [Kubectl](../../../../clusters/cluster-management/palette-webctl.md) guide to download your cluster's
-   kubeconfig file and access your cluster using `kubectl`.
+   `kubeconfig` file and access your cluster using `kubectl`.
 
 5. Issue the appropriate `kubectl` command to verify that your parameter was populated correctly.
 
@@ -167,7 +168,7 @@ information on how to use `kubectl` and **kubeconfig** with your Palette cluster
    kubectl get namespaces
    ```
 
-   ```shell hideClipboard {2}
+   ```shell hideClipboard {2} title="Example Output"
    NAME                               STATUS   AGE
    amazing-hello-universe-namespace   Active   5m49s
    capi-webhook-system                Active   14m
