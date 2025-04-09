@@ -719,7 +719,6 @@ internet.
               - sudo
             passwd: kairos
        name: "Configure user"
-   EOF
    ```
 
 7. Reboot the host. The host will automatically start the installation process once it reboots.
