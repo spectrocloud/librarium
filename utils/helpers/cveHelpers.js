@@ -66,12 +66,12 @@ function generateOSK8sMarkdownTable(linkedVulnerabilities) {
 
   linkedVulnerabilities.forEach((vuln) => {
     const cve = vuln.vulnerability.cve;
-    const package = vuln.package;
+    const packageVar = vuln.package;
     const installedVersion = vuln.installedVersion || "Unknown";
     const severity = vuln.vulnerability.baseSeverity || "Unknown";
     const nistUrl = generateCVEOfficialDetailsUrl(cve); // Generates a link to the CVE details page
 
-    table += `| ${cve} | ${package} | ${installedVersion} | ${severity} | [Details](${nistUrl}) |\n`;
+    table += `| ${cve} | ${packageVar} | ${installedVersion} | ${severity} | [Details](${nistUrl}) |\n`;
   });
 
   return table;
