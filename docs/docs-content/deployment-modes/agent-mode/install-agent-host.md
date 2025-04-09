@@ -575,8 +575,8 @@ Palette. You will then create a cluster profile and use the registered host to d
 
 13. Click on **Add Cluster Profile**.
 
-14. In the **Basic Information** section, assign the a profile name, a description, and tags. Select the type as
-    **Full** and click **Next**.
+14. In the **Basic Information** section, assign a profile name, a description, and tags. Select the type as **Full**
+    and click **Next**.
 
 15. Select **Edge Native** as the **Cloud Type** and click **Next**.
 
@@ -694,10 +694,32 @@ internet.
    EOF
    ```
 
-6. Issue the following command confirm that your user data file was created at the successfully at the correct location.
+6. Issue the following command confirm that your user data file was created successfully at the correct location.
 
    ```shell
    sudo cat /var/lib/spectro/userdata
+   ```
+
+   The response is the content of the user data file.
+
+   ```yaml
+   #cloud-config
+   install:
+     reboot: true
+     poweroff: false
+
+   stylus:
+     skipKubeVip: false
+     installationMode: airgap
+   stages:
+     initramfs:
+       - users:
+          kairos:
+            groups:
+              - sudo
+            passwd: kairos
+       name: "Configure user"
+   EOF
    ```
 
 7. Reboot the host. The host will automatically start the installation process once it reboots.
