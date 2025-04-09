@@ -8,18 +8,18 @@ sidebar_position: 30
 tags: ["edge"]
 ---
 
-Edge clusters are often deployed in locations where network environments are not managed by teams that maintain the edge
-deployments. However, a Kubernetes cluster, specifically several control plane components, require stable IP addresses.
-In the case of an extended network outage, it's possible that your cluster components would lose their original IP
+Edge clusters are often deployed in locations where network environments are not managed by teams that maintain the Edge
+deployments. However, a Kubernetes cluster, specifically several control plane components, requires stable IP addresses.
+In the case of an extended network outage, it is possible that your cluster components would lose their original IP
 addresses when the cluster expects them to remain stable, causing the cluster to experience degraded performance or
 become non-operational.
 
-Palette allows you to create a virtual overlay network on top of the physical network, and the virtual IP addresses of
+Palette allows you to create a virtual overlay network on top of the physical network, where the virtual IP addresses of
 all cluster components are managed by Palette. Inside the cluster, the different components use the virtual IP addresses
 to communicate with each other instead of the underlying IP addresses that could change due to external factors. If the
 cluster experiences an outage with the overlay network enabled, components inside the cluster retain their virtual IP
-addresses in the overlay network, even if their IP addresses in the underlying physical network has changed, protecting
-the cluster from an outage.
+addresses in the overlay network, even if their IP addresses in the underlying physical network change, protecting the
+cluster from an outage.
 
 ![VxLAN Overlay Architecture](/clusters_edge_site-installation_vxlan-overlay_architecture.webp)
 
@@ -32,11 +32,13 @@ the cluster from an outage.
 If your Edge clusters are deployed in network environments that fit any of the following descriptions, you should
 consider enabling an overlay network for your cluster:
 
-- Network environments with dynamic IP address management, such as a DHCP network.
-- Instable network environments or environments that are out of your control. For example, you are deploying an Edge
+- Network environments with dynamic IP address management, such as a Dynamic Host Configuration Protocol (DHCP) network.
+
+- Unstable network environments or environments that are out of your control. For example, you are deploying an Edge
   host in a restaurant located in a commercial building, where the network is managed by the building and cannot be
   easily altered by your staff.
-- Environments where you expect your edge hosts to move from one physical location to another.
+
+- Environments where you expect your Edge hosts to move from one physical location to another.
 
 ### Example Scenario
 
@@ -44,9 +46,9 @@ The Analytics team of a manufacturing company is deploying an Edge host to their
 the manufacturing process. The building in which the Edge host is deployed has a network that is managed by a DHCP
 server. The region experiences a bad weather event that causes a sustained outage.
 
-| Without Overlay Network                                                                                                                                                                                                                                                                                                                                                                         | With Overlay Network                                                                                                                                                                                                                                                                                                                  |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Upon recovery, each Kubernetes component inside in the Edge host requests an IP address from the DHCP server, and receives a different IP address than their original IP address before the outage happened. Since Kubernetes expects several components in the control plane to have stable IP addresses, the cluster becomes non-operational and assembly line is unable to resume operations | Each Kubernetes component inside in the Edge host has a virtual IP address in the overlay network. Upon recovery, their IP addresses in the overlay network remain the same despite their IP addresses changing in the underlying DHCP network. The Edge host is able to assume its workload and the assembly line resumes operations |
+| Without Overlay Network                                                                                                                                                                                                                                                                                                                                                                              | With Overlay Network                                                                                                                                                                                                                                                                                                                |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Upon recovery, each Kubernetes component inside in the Edge host requests an IP address from the DHCP server and receives a different IP address than their original IP address before the outage happened. Since Kubernetes expects several components in the control plane to have stable IP addresses, the cluster becomes non-operational, and the assembly line is unable to resume operations. | Each Kubernetes component inside in the Edge host has a virtual IP address in the overlay network. Upon recovery, the IP addresses in the overlay network remain the same despite the IP addresses changing in the underlying DHCP network. The Edge host is able to resume its workload, and the assembly line resumes operations. |
 
 ## Limitations
 
@@ -56,23 +58,28 @@ server. The region experiences a bad weather event that causes a sustained outag
 ## Prerequisites
 
 - At least one Edge host registered with your Palette account.
-- Your cluster profile must have K3s or RKE2 as its Kubernetes distribution.
+- Your cluster profile must have K3s, RKE2, or PXK-E as its Kubernetes distribution.
 - All Edge hosts must be on the same Layer-2 network.
 - Broadcast messages must be allowed between all Edge hosts participating in the cluster.
+
   - For Virtual Machine (VM) Edge hosts in VMware, this means features such as promiscuous mode must be enabled to allow
     broadcasts between hosts.
-  - Switches cannot implement features that block broadcast between ports where Edge hosts are connected.
+
+  - Switches cannot implement features that block broadcasts between ports where Edge hosts are connected.
+
 - If you are launching your Edge hosts in virtual machine environments and you are using either Cilium or Flannel as
-  your container network interface (CNI), ensure that you add the following commands in the **user-data** file at the
-  boot stage. Replace `INTERFACE_NAME` with the name of the network interface on your Edge host.
+  your Container Network Interface (CNI), ensure that you add the following commands in the `user-data` file at the boot
+  stage. Replace `<interface-name>` with the name of the network interface on your Edge host.
+
   ```yaml {2-6}
   stages:
     initramfs:
       - name: "Disable UDP segmentation"
         commands:
-          - ethtool -K INTERFACE_NAME tx-udp_tnl-segmentation off
-          - ethtool -K INTERFACE_NAME tx-udp_tnl-csum-segmentation off
+          - ethtool --offload <interface-name> tx-udp_tnl-segmentation off
+          - ethtool --offload <interface-name> tx-udp_tnl-csum-segmentation off
   ```
+
   This is related to a
   [known issue with VMware's VMXNET3 adapter](https://github.com/cilium/cilium/issues/13096#issuecomment-723901955),
   which is widely used in different virtual machine management services, including VMware vSphere and Hyper-V.
@@ -83,26 +90,26 @@ You can enable an overlay network for your cluster during cluster creation.
 
 :::warning
 
-You will not be able to change the network overlay configurations after the cluster has already been created.
+You cannot change network overlay configurations after the cluster is created.
 
 :::
 
 1.  Log in to [Palette](https://console.spectrocloud.com).
 
-2.  Navigate to the left **Main Menu** and select **Clusters**.
+2.  Navigate to the left main menu and select **Clusters**.
 
-3.  Click on **Add New Cluster**.
+3.  Choose **Add New Cluster**.
 
-4.  Choose **Edge Native** for the cluster type and click **Start Edge Native Configuration**.
+4.  Select **Edge Native** for the cluster type and choose **Start Edge Native Configuration**.
 
-5.  Give the cluster a name, description, and tags. Click on **Next**.
+5.  Enter a **Cluster name**, **Description**, and **Tags**. Select **Next**.
 
-6.  Select a cluster profile. If you don't have a cluster profile for Edge Native, refer to the
-    [Create Edge Native Cluster Profile](../site-deployment/model-profile.md) guide. Click on **Next** after you have
-    selected a cluster profile.
+6.  Select **Add cluster profile**, choose the appropriate profile, and **Confirm** your selection. If you don't have a
+    cluster profile for Edge Native, refer to the
+    [Create Edge Native Cluster Profile](../site-deployment/model-profile.md) guide.
 
-7.  In the Kubernetes layer of the cluster profile, add the parameter `cluster.kubevipArgs.vip_interface` and set its
-    value to `scbr-100`:
+7.  In the Kubernetes layer of the cluster profile, on the **Values** tab, uncomment the parameter
+    `cluster.kubevipArgs.vip_interface` and set its value to `scbr-100`.
 
     ```yaml
     cluster:
@@ -120,28 +127,29 @@ You will not be able to change the network overlay configurations after the clus
 
     <TabItem value="calico" label="Calico">
 
-    In the Calico pack YAML file default template, uncomment `FELIX_MTUIFACEPATTERN` and set its value to `scbr-100` and
-    uncomment `manifests.calico.env.calicoNode.IP_AUTODETECTION_METHOD` and set its value to `interface=scbr-100`.
+    In the Calico pack YAML file, add `manifests.calico.env.calicoNode.FELIX_MTUIFACEPATTERN` and set its value to
+    `scbr-100`. Uncomment `manifests.calico.env.calicoNode.IP_AUTODETECTION_METHOD` and set its value to
+    `interface=scbr-100`.
 
     ```yaml {8,11}
     manifests:
-        calico:
-            ...
-            env:
-            # Additional env variables for calico-node
-            calicoNode:
-                #IPV6: "autodetect"
-                FELIX_MTUIFACEPATTERN: "scbr-100"
-                #CALICO_IPV6POOL_NAT_OUTGOING: "true"
-                #CALICO_IPV4POOL_CIDR: "192.168.0.0/16"
-                IP_AUTODETECTION_METHOD: "interface=scbr-100"
+      calico:
+        ...
+        env:
+          # Additional env variables for calico-node
+          calicoNode:
+            #IPV6: "autodetect"
+            FELIX_MTUIFACEPATTERN: "scbr-100"
+            #CALICO_IPV6POOL_NAT_OUTGOING: "true"
+            #CALICO_IPV4POOL_CIDR: "192.168.0.0/16"
+            IP_AUTODETECTION_METHOD: "interface=scbr-100"
     ```
 
           </TabItem>
 
     <TabItem value="flannel" label="Flannel">
 
-    In the Flannel pack YAML file, add a line `- "--iface=scbr-100"` in the default template under
+    In the Flannel pack YAML file, add the line `- "--iface=scbr-100"` in the default template under
     `charts.flannel.args`.
 
     ```yaml {8}
@@ -172,57 +180,58 @@ You will not be able to change the network overlay configurations after the clus
 
     </Tabs>
 
-9.  Review the rest of your cluster profile values and make changes as needed. Click on **Next**.
+9.  Review the rest of your cluster profile values and make changes as needed. Select **Next**.
 
-10. In the **Cluster Config** stage, toggle on **Enable Overlay Network**. This will prompt you to provide additional
-    configuration for your virtual overlay network.
+10. On the **Cluster Config** stage, toggle on **Enable overlay**. The **VIP** field disappears and is replaced by
+    **Overlay CIDR range**.
 
-11. In the **Overlay CIDR Range** field, provide a private IP range for your cluster to use. Ensure this range is not
-    used by others in the same network environment. When you toggle on **Enable Overlay Network**, Palette provides a
-    default range that is typically unused. We suggest you keep the default range unless you have a specific IP range
-    you want to use.
+11. In the **Overlay CIDR range** field, provide a private IP range for your cluster to use. Ensure this range is not
+    used by others in the same network environment. When you toggle on **Enable overlay**, Palette provides a default
+    range that is typically unused. We suggest you keep the default range unless you have a specific IP range you want
+    to use.
 
-:::warning
+    The first IP address in the overlay CIDR range will be used as the overlay VIP. This VIP is the internal overlay VIP
+    used by the cluster.
 
-The overlay CIDR range cannot be changed after the cluster creation.
+    :::warning
 
-:::
+    The overlay CIDR range cannot be changed after the cluster is created.
 
-After you have provided the overlay CIDR, the **VIP** field at the top of the page will be grayed out, and the first IP
-address in the overlay CIDR range will be used as the Overlay VIP. This VIP is the internal overlay VIP used by the
-cluster.
+    :::
 
-12. Finish the rest of the cluster configurations and click **Finish Configuration** to deploy the cluster. For more
-    information, refer to [Create Cluster Definition](../site-deployment/cluster-deployment.md).
+12. Finish configuring your cluster and select **Finish Configuration** to deploy the cluster. For more information,
+    refer to [Create Cluster Definition](../site-deployment/cluster-deployment.md).
 
 ## Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. Navigate to the left **Main Menu** and select **Clusters**.
+2. Navigate to the left main menu and select **Clusters**.
 
 3. Select the host cluster you created to view its details page.
 
 4. Select the **Nodes** tab. For each host, the **Private Ips** column lists an overlay IP address within the CIDR range
    you provided during cluster configuration.
 
-:::tip
+   :::tip
 
-To view the external IP addresses of the edge hosts, from the **Main Menu**, go to **Clusters**, and click the **Edge
-Hosts** tab. The IP address displayed in the table is the external IP address.
+   To view the external IP addresses of the Edge hosts, from the left main menu, select **Clusters > Edge Hosts**. The
+   IP address displayed in the table is the external IP address.
 
-:::
+   :::
 
 ## Access Cluster with Overlay Network Enabled
 
 You can access a cluster with overlay network enabled in the following ways:
 
-- Access the cluster with kubectl CLI. For more information, refer to
+- Access the cluster with `kubectl`. For more information, refer to
   [Access Cluster with CLI](../../cluster-management/palette-webctl.md).
+
 - Access LoadBalancer services. You can provision LoadBalancer services in your Kubernetes cluster and expose them to
-  external traffic. For example, refer to [Publish Cluster Services with Kube-vip](kubevip.md).
-- Access a node by IP address. You can use the node's external IP address to access the node directly. The overlay IP
-  addresses are internal to the cluster itself and cannot be accessed from outside the cluster.
+  external traffic. For more information, refer to [Publish Cluster Services with Kube-vip](kubevip.md).
+
+- Access a node via its IP address. You can use the node's external IP address to access the node directly. The overlay
+  IP addresses are internal to the cluster itself and cannot be accessed from outside the cluster.
 
 ## Resources
 
