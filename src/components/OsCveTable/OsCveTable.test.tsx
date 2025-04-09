@@ -14,6 +14,60 @@ jest.mock("@docusaurus/theme-common", () => ({
 
 jest.mock("@theme/Admonition");
 
+jest.mock("../../../.docusaurus/security-bulletins/default/data.json", () => ({
+  __esModule: true,
+  default: mockDataFile,
+}));
+
+const mockDataFile = {
+  provider: [
+    {
+      kind: "os",
+      metadata: {
+        uid: "u-2004-0-k-12815-fips",
+        summary: "Security Advisory for Ubuntu 20.04 with Kubernetes 1.28.15 FIPS",
+        advCreatedTimestamp: "2025-02-05T10:06:21.041Z",
+        advLastModifiedTimestamp: "2025-02-25T11:45:51.212Z",
+      },
+      spec: {
+        assessment: {
+          impact: "LOW",
+          severity: "LOW",
+          thirdParty: {
+            isDependentOnThirdParty: true,
+          },
+        },
+        impact: {
+          isImpacting: true,
+          impactedVersions: ["4.5.21", "4.5.22"],
+        },
+      },
+    },
+    {
+      kind: "os",
+      metadata: {
+        uid: "r-9-0-k-1260",
+        summary: "Security Advisory for RHEL 9 with Kubernetes 1.26.0",
+        advCreatedTimestamp: "2025-01-15T12:30:00.000Z",
+        advLastModifiedTimestamp: "2025-01-16T09:45:00.000Z",
+      },
+      spec: {
+        assessment: {
+          impact: "MEDIUM",
+          severity: "MEDIUM",
+          thirdParty: {
+            isDependentOnThirdParty: false,
+          },
+        },
+        impact: {
+          isImpacting: true,
+          impactedVersions: ["4.6.0", "4.6.1"],
+        },
+      },
+    },
+  ],
+};
+
 // Enable fetch mocking
 fetchMock.enableMocks();
 
@@ -36,54 +90,7 @@ beforeAll(() => {
 });
 
 describe("OsCveTable Component", () => {
-  const mockData = {
-    provider: [
-      {
-        kind: "os",
-        metadata: {
-          uid: "u-2004-0-k-12815-fips",
-          summary: "Security Advisory for Ubuntu 20.04 with Kubernetes 1.28.15 FIPS",
-          advCreatedTimestamp: "2025-02-05T10:06:21.041Z",
-          advLastModifiedTimestamp: "2025-02-25T11:45:51.212Z",
-        },
-        spec: {
-          assessment: {
-            impact: "LOW",
-            severity: "LOW",
-            thirdParty: {
-              isDependentOnThirdParty: true,
-            },
-          },
-          impact: {
-            isImpacting: true,
-            impactedVersions: ["4.5.21", "4.5.22"],
-          },
-        },
-      },
-      {
-        kind: "os",
-        metadata: {
-          uid: "r-9-0-k-1260",
-          summary: "Security Advisory for RHEL 9 with Kubernetes 1.26.0",
-          advCreatedTimestamp: "2025-01-15T12:30:00.000Z",
-          advLastModifiedTimestamp: "2025-01-16T09:45:00.000Z",
-        },
-        spec: {
-          assessment: {
-            impact: "MEDIUM",
-            severity: "MEDIUM",
-            thirdParty: {
-              isDependentOnThirdParty: false,
-            },
-          },
-          impact: {
-            isImpacting: true,
-            impactedVersions: ["4.6.0", "4.6.1"],
-          },
-        },
-      },
-    ],
-  };
+  const mockData = mockDataFile;
 
   // Reset the mock before each test
   beforeEach(() => {
