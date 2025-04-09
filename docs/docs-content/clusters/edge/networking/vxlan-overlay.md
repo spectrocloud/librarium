@@ -68,7 +68,7 @@ server. The region experiences a bad weather event that causes a sustained outag
   - Switches cannot implement features that block broadcasts between ports where Edge hosts are connected.
 
 - If you are launching your Edge hosts in virtual machine environments and you are using either Cilium or Flannel as
-  your container network interface (CNI), ensure that you add the following commands in the `user-data` file at the boot
+  your Container Network Interface (CNI), ensure that you add the following commands in the `user-data` file at the boot
   stage. Replace `<interface-name>` with the name of the network interface on your Edge host.
 
   ```yaml {2-6}
@@ -76,8 +76,8 @@ server. The region experiences a bad weather event that causes a sustained outag
     initramfs:
       - name: "Disable UDP segmentation"
         commands:
-          - ethtool -K <interface-name> tx-udp_tnl-segmentation off
-          - ethtool -K <interface-name> tx-udp_tnl-csum-segmentation off
+          - ethtool --offload <interface-name> tx-udp_tnl-segmentation off
+          - ethtool --offload <interface-name> tx-udp_tnl-csum-segmentation off
   ```
 
   This is related to a
@@ -109,7 +109,7 @@ You cannot change network overlay configurations after the cluster is created.
     [Create Edge Native Cluster Profile](../site-deployment/model-profile.md) guide.
 
 7.  In the Kubernetes layer of the cluster profile, on the **Values** tab, uncomment the parameter
-    `cluster.kubevipArgs.vip_interface` and set its value to `scbr-100`:
+    `cluster.kubevipArgs.vip_interface` and set its value to `scbr-100`.
 
     ```yaml
     cluster:
