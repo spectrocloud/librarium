@@ -83,8 +83,8 @@ Palette. You will then create a cluster profile and use the registered host to d
   - [rsyslog](https://github.com/rsyslog/rsyslog). This is required for audit logs.
   - (Airgap only) [Palette Edge CLI](../../spectro-downloads.md#palette-edge-cli)
 
-  You can issue the following command to install all dependencies for installation (not including the Palette Edge CLI)
-  with the following command:
+  If you are using Ubuntu or any OS that uses apt or apt-get for package management, you can issue the following command
+  to install all dependencies for installation (not including the Palette Edge CLI) with the following command:
 
   ```shell
   sudo apt-get update && sudo apt-get install -y bash jq zstd rsync systemd-timesyncd conntrack iptables rsyslog --no-install-recommends
