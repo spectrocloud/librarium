@@ -48,3 +48,8 @@
     }
   }
 }
+
+.auto-generated-os-linked-table table td:first-child,
+.auto-generated-os-linked-table table th:first-child {
+  white-space: nowrap;
+}

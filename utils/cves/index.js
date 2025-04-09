@@ -308,14 +308,18 @@ ${remediationSteps}
 
 ## Linked Vulnerabilities
 
+<div class="auto-generated-os-linked-table">
+
 ${vulnerabilitiesTable}
+
+</div>
 
 ## Revision History
 
 ${generateRevisionHistory(item.spec.revision)}
 `;
 
-  const filePath = path.join(location, `${imageName}.md`);
+  const filePath = path.join(location, `${imageName}.mdx`);
 
   return fs
     .writeFile(filePath, content)
