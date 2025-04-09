@@ -52,7 +52,7 @@ const formatCloudType = (type: string): string => {
   return type
     .split(",")
     .map((part) => part.trim())
-    .filter((part) => part !== "nested" && part !== "libvirt" && part !== "baremetal" && part !== "coxedge")
+    .filter((part) => part !== "nested" && part !== "baremetal" && part !== "coxedge")
     .map((part) => cloudTypeMapping[part] || capitalizeWord(part))
     .join(", ");
 };

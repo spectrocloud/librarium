@@ -119,6 +119,7 @@ Installer configuration file and the OS pack support the usage of cloud-init sta
             - sudo
             ssh_authorized_keys:
             - ssh-rsa AAAAB3N…
+        name: Create user and assign SSH key
    ```
 
 ### Configure Proxy Settings (Optional)
@@ -132,6 +133,14 @@ Installer configuration file and the OS pack support the usage of cloud-init sta
    | `siteNetwork.httpProxy`  | The URL of the HTTP proxy endpoint.                                                   |
    | `siteNetwork.httpsProxy` | The URL of the HTTPS proxy endpoint.                                                  |
    | `siteNetwork.noProxy`    | The list of IP addresses or CIDR ranges to exclude routing through the network proxy. |
+
+:::warning
+
+The proxy settings in user data configure Palette services to use the proxy network. However, these settings do not
+automatically apply to application workloads. To configure applications to use the proxy configurations, refer to
+[Configure Applications to Use Proxy Server](../../cluster-management/cluster-proxy.md).
+
+:::
 
 ### Configure Post-Installation Behavior (Optional)
 
@@ -245,6 +254,7 @@ stages:
           groups:
             - sudo
           passwd: kairos
+      name: Create user and assign to sudo group
 ```
 
 ### Connected Sites - Multiple User Data Configuration
@@ -276,6 +286,7 @@ stages:
           groups:
             - sudo
           passwd: kairos
+      name: Create user and assign to sudo group
 ```
 
 **Site** - supplied at the edge location through a bootable USB drive. If specified, the `projectName` value overrides
@@ -321,6 +332,7 @@ stages:
           groups:
             - sudo
           passwd: kairos
+      name: Create user and assign to sudo group
 ```
 
 ### Apply Proxy & Certificate Settings
@@ -378,6 +390,7 @@ stages:
           groups:
             - sudo
           passwd: kairos
+      name: Create user and assign to sudo group
 ```
 
 ### Load Content From External Registry
@@ -413,6 +426,7 @@ stages:
           groups:
             - sudo
           passwd: kairos
+      name: Create user and assign to sudo group
 ```
 
 ### Create Bind Mounts
@@ -423,7 +437,7 @@ Kubernetes cluster. This setup is useful for scenarios where your applications a
 access to files or directories on the Edge host.
 
 <!-- prettier-ignore -->
-Several packs require you set up bind mounts in order to function. For example, the <VersionedLink text="Portwox pack" url="/integrations/packs/?pack=csi-portworx-generic" /> requires several folders to be mounted on Edge deployments. You can use the `install.bind_mounts` parameter to specify folders to be mounted. For
+Several packs require you set up bind mounts in order to function. For example, the <VersionedLink text="Portworx pack" url="/integrations/packs/?pack=csi-portworx-generic" /> requires several folders to be mounted on Edge deployments. You can use the `install.bind_mounts` parameter to specify folders to be mounted. For
 example, the following user data mounts three folders required by Portworx from the Edge host to the cluster.
 
 ```yaml

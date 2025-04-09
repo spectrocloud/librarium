@@ -21,6 +21,75 @@ function showLastUpdateTime() {
   return false;
 }
 
+/* IMPORTANT
+Any script added below must have the "data-usercentrics" attribute with the name of the script as the value. 
+We also need to notify marketing about the script being added so that they can update the Usercentrics CMP.
+Marketing needs to know what to label the script as, for example Analytics, Marketing, etc. And, if it's essential or not.
+Essential scripts are always loaded, non-essential scripts are loaded based on user consent.
+This is used to identify the script for Usercentrics CMP.
+Scripts also need to have the type attribute set to "text/plain" to prevent them from being executed by the browser in the event that the user has not given consent to the script.
+The exception to the text/plain rule is the Usercentrics CMP script which must be loaded as a script tag.
+To learn more about attributes and values, visit https://docs.usercentrics.com/#/direct-implementation-guide?id=change-script-type-textjavascript-becomes-textplain
+*/
+// The list of all scripts to be loaded on the site.
+const allScripts = [
+  {
+    src: `https://w.appzi.io/w.js?token=${process.env.APPZI_TOKEN}`,
+    defer: true,
+  },
+  {
+    src: "/scripts/kapa-shortcut.js",
+    async: false,
+  },
+  {
+    src: "https://widget.kapa.ai/kapa-widget.bundle.js",
+    "data-website-id": "9c212df9-d1fc-4f65-9c93-8bcd9c8ec6ca",
+    "data-project-name": "Spectro Cloud Docs AI",
+    "data-project-color": "#3A9D99",
+    "data-consent-required": true,
+    "data-project-logo": "/img/spectrocloud-mark-light-bkgd-RGB.svg",
+    "data-modal-title": "Spectro Cloud - Ask Docs",
+    "data-modal-disclaimer":
+      "This AI bot provides responses based solely on your input and the latest available version of Spectro Cloud’s public documentation. Its output is for informational purposes only and should not be considered official guidance. Please do not share any personally identifiable information (PII) or sensitive data. By using this service, you agree to our [Privacy Policy](https://www.spectrocloud.com/privacy-policy). \n\n Note that the bot does not have access to past versions of the documentation and cannot answer version-specific questions.",
+    "data-modal-x-offset": "0",
+    "data-modal-y-offset": "0",
+    "data-modal-with-overlay": "false",
+    "data-modal-inner-flex-direction": "column",
+    "data-modal-inner-justify-content": "end",
+    "data-modal-inner-max-width": "400px",
+    "data-modal-inner-position-right": "20px",
+    "data-modal-inner-position-bottom": "calc(2.5rem + 25px)",
+    "data-button-height": "5rem",
+    "data-button-width": "5rem",
+    "data-button-text": "Ask AI",
+    "data-conversation-button-icons-only": "true",
+    "data-modal-size": "80%",
+    "data-modal-lock-scroll": "false",
+    "data-modal-inner-position-left": "auto",
+    async: true,
+  },
+  {
+    src: "/scripts/fullstory.js",
+    type: "text/plain",
+    "data-usercentrics": "FullStory",
+  },
+  {
+    type: "text/plain",
+    src: "/scripts/googleTagManager.js",
+    "data-usercentrics": "Google Tag Manager",
+  },
+  {
+    src: "https://web.cmp.usercentrics.eu/ui/loader.js",
+    id: "usercentrics-cmp",
+    async: "true",
+    "data-ruleset-id": "hVYLQFO7M6I5k4",
+    type: "text/javascript",
+  },
+];
+
+// Load only Kapa and Usercentrics for local development.
+const localScripts = [allScripts[1], allScripts[2], allScripts[5]];
+
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: "Palette",
@@ -243,70 +312,7 @@ const config = {
       },
     ],
   ].filter(Boolean),
-  /* IMPORTANT
-  Any script added below must have the "data-usercentrics" attribute with the name of the script as the value. 
-  We also need to notify marketing about the script being added so that they can update the Usercentrics CMP.
-  Marketing needs to know what to label the script as, for example Analytics, Marketing, etc. And, if it's essential or not.
-  Essential scripts are always loaded, non-essential scripts are loaded based on user consent.
-  This is used to identify the script for Usercentrics CMP.
-  Scripts also need to have the type attribute set to "text/plain" to prevent them from being executed by the browser in the event that the user has not given consent to the script.
-  The exception to the text/plain rule is the Usercentrics CMP script which must be loaded as a script tag.
-  To learn more about attributes and values, visit https://docs.usercentrics.com/#/direct-implementation-guide?id=change-script-type-textjavascript-becomes-textplain
-  */
-  scripts: [
-    {
-      src: `https://w.appzi.io/w.js?token=${process.env.APPZI_TOKEN}`,
-      defer: true,
-    },
-    {
-      src: "/scripts/kapa-shortcut.js",
-      async: false,
-    },
-    {
-      src: "https://widget.kapa.ai/kapa-widget.bundle.js",
-      "data-website-id": "9c212df9-d1fc-4f65-9c93-8bcd9c8ec6ca",
-      "data-project-name": "Spectro Cloud Docs AI",
-      "data-project-color": "#3A9D99",
-      "data-consent-required": true,
-      "data-project-logo": "/img/spectrocloud-mark-light-bkgd-RGB.svg",
-      "data-modal-title": "Spectro Cloud - Ask Docs",
-      "data-modal-disclaimer":
-        "This AI bot provides responses based solely on your input and the latest available version of Spectro Cloud’s public documentation. Its output is for informational purposes only and should not be considered official guidance. Please do not share any personally identifiable information (PII) or sensitive data. By using this service, you agree to our [Privacy Policy](https://www.spectrocloud.com/privacy-policy). \n\n Note that the bot does not have access to past versions of the documentation and cannot answer version-specific questions.",
-      "data-modal-x-offset": "0",
-      "data-modal-y-offset": "0",
-      "data-modal-with-overlay": "false",
-      "data-modal-inner-flex-direction": "column",
-      "data-modal-inner-justify-content": "end",
-      "data-modal-inner-max-width": "400px",
-      "data-modal-inner-position-right": "20px",
-      "data-modal-inner-position-bottom": "calc(2.5rem + 25px)",
-      "data-button-height": "5rem",
-      "data-button-width": "5rem",
-      "data-button-text": "Ask AI",
-      "data-conversation-button-icons-only": "true",
-      "data-modal-size": "80%",
-      "data-modal-lock-scroll": "false",
-      "data-modal-inner-position-left": "auto",
-      async: true,
-    },
-    {
-      src: "/scripts/fullstory.js",
-      type: "text/plain",
-      "data-usercentrics": "FullStory",
-    },
-    {
-      type: "text/plain",
-      src: "/scripts/googleTagManager.js",
-      "data-usercentrics": "Google Tag Manager",
-    },
-    {
-      src: "https://app.usercentrics.eu/browser-ui/latest/loader.js",
-      id: "usercentrics-cmp",
-      async: "true",
-      "data-settings-id": "0IhiFXOBwy0Z2U",
-      type: "text/javascript",
-    },
-  ],
+  scripts: process.env.NODE_ENV === "production" ? allScripts : localScripts,
   themes: ["docusaurus-theme-openapi-docs"],
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
