@@ -654,7 +654,7 @@ internet.
 4. Extract the package to the root folder.
 
    ```shell
-   sudo agent-mode-linux-amd64.tar -xvf agent-mode.tar -C /
+   sudo tar -xvf agent-mode-linux-<architecture>.tar -C /
    ```
 
 5. Issue the command below to create the **userdata** file and configure your host declaratively.
@@ -684,7 +684,7 @@ internet.
               - sudo
             passwd: kairos
        name: "Configure user"
-    EOF
+   EOF
    ```
 
 6. Issue the following command confirm that your user data file was created at the successfully at the correct location.
