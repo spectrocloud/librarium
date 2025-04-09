@@ -73,9 +73,8 @@ compatible version of the Palette CLI.
 
 - The `spec.jsonCredentialsFileUid` field in API requests is deprecated and will be removed in an upcoming release.
   Users who create GCP cloud accounts using the API should now use the `spec.jsonCredentials` field to supply their
-  credentials in JSON format. Any `GET` operations on GCP cloud accounts using the API will continue to be available
-  until the `spec.jsonCredentialsFileUid` is removed. Refer to the [API documentation](/api/introduction) for further
-  details.
+  credentials in JSON format. Any API `GET` operations on GCP cloud accounts will continue to be available until the
+  `spec.jsonCredentialsFileUid` is removed. Refer to the [API documentation](/api/introduction) for further details.
 
 #### Features
 
