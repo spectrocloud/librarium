@@ -83,6 +83,13 @@ Palette. You will then create a cluster profile and use the registered host to d
   - [rsyslog](https://github.com/rsyslog/rsyslog). This is required for audit logs.
   - (Airgap only) [Palette Edge CLI](../../spectro-downloads.md#palette-edge-cli)
 
+  You can issue the following command to install all dependencies for installation (not including the Palette Edge CLI)
+  with the following command:
+
+  ```shell
+  sudo apt-get update && sudo apt-get install -y bash jq zstd rsync systemd-timesyncd conntrack iptables rsyslog --no-install-recommends
+  ```
+
   :::warning
 
   Avoid installing Docker on the host where you want to install the agent. Docker is a heavyweight tool that could
