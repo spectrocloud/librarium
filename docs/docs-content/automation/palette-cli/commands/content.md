@@ -134,7 +134,7 @@ The following flags are supported by the `copy` subcommand.
 | `-h`       | `--help`                | Help for the `copy` subcommand.                                                                                                                                                                                                                                 | -       |
 | `-i`       | `--insecure`            | Skips Transport Layer Security (TLS) verification (bypasses x509 verification).                                                                                                                                                                                 | boolean |
 |            | `--progress`            | Displays the progress of the copy operation.                                                                                                                                                                                                                    | boolean |
-| `-s`       | `--source`              | The source repository address. Specify a remote repository using the standard address format (e.g., `example.com/bundle/example-bundle.tar.zst`), or use the URI format (`file:///path/to/bundle`) for local repositories.                                      | string  |
+| `-s`       | `--source`              | The source repository address. Specify a remote repository using the standard address format (for example, `example.com/bundle/example-bundle.tar.zst`), or use the URI format (`file:///path/to/bundle`) for local repositories.                               | string  |
 |            | `--tls-cert`            | The path to the TLS certificate file.                                                                                                                                                                                                                           | string  |
 |            | `--tls-key`             | The path to the TLS key file.                                                                                                                                                                                                                                   | string  |
 
@@ -369,7 +369,7 @@ local bundle example-bundle pushed to :5000/bundle
 
 You can use the [ORAS CLI](https://oras.land) tool to confirm that the content bundle is being served correctly. For
 example, the command `oras repo list --plain-http localhost:5000/bundle` should list all repositories available in the
-bundle. Replace `localhost` with the hosts's address if you are hosting the registry externally.
+bundle. Replace `localhost` with the host's address if you are hosting the registry externally.
 
 :::
 
