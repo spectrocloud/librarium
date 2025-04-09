@@ -21,13 +21,12 @@ tags: ["release-notes"]
 
 #### Breaking Changes {#breaking-changes-4.6.b}
 
-New Cluster Groups will now default to a newer version of vCluster,
-[version 0.22.x](https://loft.featurebase.app/changelog/vcluster-v022-native-sleep-mode-and-cert-manager-integration),
-which includes new features and improvements. Existing Cluster Groups will continue to use older versions.
-
-If you want to use a later version of vCluster, refer to the
-[Palette Virtual Clusters](../clusters/palette-virtual-clusters/palette-virtual-clusters.md#upgrade-virtual-clusters)
-page to learn how to migrate your virtual cluster workloads.
+- New Cluster Groups will now default to a newer version of vCluster,
+  [version 0.22.x](https://loft.featurebase.app/changelog/vcluster-v022-native-sleep-mode-and-cert-manager-integration),
+  which includes new features and improvements. Existing Cluster Groups will continue to use older versions. If you want
+  to use a later version of vCluster, refer to the
+  [Palette Virtual Clusters](../clusters/palette-virtual-clusters/palette-virtual-clusters.md#upgrade-virtual-clusters)
+  page to learn how to migrate your virtual cluster workloads.
 
 #### Features
 
@@ -47,13 +46,12 @@ page to learn how to migrate your virtual cluster workloads.
 
 #### Features
 
-New Cluster Groups will now default to a newer version of vCluster,
-[version 0.22.x](https://loft.featurebase.app/changelog/vcluster-v022-native-sleep-mode-and-cert-manager-integration),
-which includes new features and improvements. Existing Cluster Groups will continue to use older versions.
-
-If you want to use a later version of vCluster, refer to the
-[Palette Virtual Clusters](../clusters/palette-virtual-clusters/palette-virtual-clusters.md#upgrade-virtual-clusters)
-page to learn how to migrate your virtual cluster workloads.
+- New Cluster Groups will now default to a newer version of vCluster,
+  [version 0.22.x](https://loft.featurebase.app/changelog/vcluster-v022-native-sleep-mode-and-cert-manager-integration),
+  which includes new features and improvements. Existing Cluster Groups will continue to use older versions. If you want
+  to use a later version of vCluster, refer to the
+  [Palette Virtual Clusters](../clusters/palette-virtual-clusters/palette-virtual-clusters.md#upgrade-virtual-clusters)
+  page to learn how to migrate your virtual cluster workloads.
 
 ### VerteX
 
@@ -71,11 +69,23 @@ compatible version of the Palette CLI.
 
 :::
 
+#### Breaking Changes {#breaking-changes-automation-4.6.b}
+
+- The `spec.jsonCredentialsFileUid` field in API requests is deprecated and will be removed in an upcoming release.
+  Users who create GCP cloud accounts using the API should now use the `spec.jsonCredentials` field to supply their
+  credentials in JSON format. Any API `GET` operations on GCP cloud accounts will continue to be available until the
+  `spec.jsonCredentialsFileUid` is removed. Refer to the [API documentation](/api/introduction) for further details.
+
 #### Features
 
 #### Improvements
 
 ### Docs and Education
+
+#### Bug Fixes
+
+- Fixed a bug that resulted in some dependencies to have the incorrect
+  [open-source license](../legal-licenses/oss-licenses-index/oss-licenses-index.md) listed.
 
 ### Packs
 
