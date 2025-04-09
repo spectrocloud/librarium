@@ -98,8 +98,7 @@ create a new profile version, and then upgrade active clusters to the new versio
 [Version a Cluster Profile](../../profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile.md) for
 guidance on creating a new cluster profile version.
 
-This is a test item. DELETE ME!
-:::
+This is a test item. DELETE ME! :::
 
 </TabItem>
 
