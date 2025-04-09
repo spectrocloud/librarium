@@ -286,14 +286,14 @@ version defaults to **1.0.0**. Click on **Next**.
 from four required infrastructure packs and several optional add-on packs. Every pack requires you to select the **Pack
 Type**, **Registry**, and **Pack Name**.
 
-For this tutorial, use the following packs:
+For this tutorial, use the following packs: my packs
 
 | Pack Name        | Version | Layer            |
 | ---------------- | ------- | ---------------- |
 | ubuntu-azure LTS | 22.4.x  | Operating System |
-| Kubernetes       | 1.27.x  | Kubernetes       |
-| cni-calico-azure | 3.26.x  | Network          |
-| Azure Disk       | 1.28.x  | Storage          |
+| Kubernetes       | 1.32.x  | Kubernetes       |
+| cni-calico-azure | 3.29.x  | Network          |
+| Azure Disk       | 1.31.x  | Storage          |
 
 As you fill out the information for each layer, click on **Next** to proceed to the next layer.
 
