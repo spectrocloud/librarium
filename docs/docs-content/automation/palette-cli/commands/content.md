@@ -53,11 +53,11 @@ The following flags are supported by the `build` subcommand.
 
 | Short Flag | Long Flag                            | Description                                                                                                                                                                                                                                                                                                                                                                                                     | Type    |
 | ---------- | ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
-|            | `--application-release-name`         | The name of the application release.                                                                                                                                                                                                                                                                                                                                                                            | string  |
-|            | `--application-release-notes`        | The release notes for the application.                                                                                                                                                                                                                                                                                                                                                                          | string  |
-|            | `--application-release-version`      | The version of the application release.                                                                                                                                                                                                                                                                                                                                                                         | string  |
+|            | `--application-release-name`         | The name of the application release to be added as metadata to the bundle definition.                                                                                                                                                                                                                                                                                                                           | string  |
+|            | `--application-release-notes`        | The release notes for the application to be added as metadata to the bundle definition.                                                                                                                                                                                                                                                                                                                         | string  |
+|            | `--application-release-version`      | The version of the application release to be added as metadata to the bundle definition.                                                                                                                                                                                                                                                                                                                        | string  |
 | `-a`       | `--arch`                             | The architecture of the bundle to be built. The available options are `amd64` and `arm64`.                                                                                                                                                                                                                                                                                                                      | string  |
-|            | `--build-type`                       | The type of build (`local` or `remote`). The default value is `local`.                                                                                                                                                                                                                                                                                                                                          | string  |
+|            | `--build-type`                       | The type of build. The available options are `local` or `remote`. The default value is `local`.                                                                                                                                                                                                                                                                                                                 | string  |
 |            | `--ca-cert`                          | The path to the CA certificate file.                                                                                                                                                                                                                                                                                                                                                                            | string  |
 |            | `--cluster-definition-name`          | The filename of the cluster definition `.tgz` file.                                                                                                                                                                                                                                                                                                                                                             | string  |
 |            | `--cluster-definition-profile-ids`   | A comma-separated list of cluster profile IDs to be included in the cluster definition.                                                                                                                                                                                                                                                                                                                         | string  |
@@ -74,6 +74,7 @@ The following flags are supported by the `build` subcommand.
 |            | `--metadata-only`                    | If enabled, only the bundle definition metadata is generated.                                                                                                                                                                                                                                                                                                                                                   | boolean |
 | `-n`       | `--name`                             | The name of the content bundle.                                                                                                                                                                                                                                                                                                                                                                                 | string  |
 | `-o`       | `--output`                           | The output directory where the bundle will be saved.                                                                                                                                                                                                                                                                                                                                                            | string  |
+|            | `--packs`                            | The path to the pack `tar.gz` archive or directory.                                                                                                                                                                                                                                                                                                                                                             | string  |
 |            | `--private-key`                      | The path to the private key used to sign the content bundle and cluster definition if it is present. This is required if your Edge host has an embedded corresponding public key. For more information, refer to [Embed Public Key in Edge Artifacts](../../../clusters/edge/edgeforge-workflow/palette-canvos/signed-content.md).                                                                              | string  |
 |            | `--profiles`                         | Comma-separated list of cluster profile IDs to download content for. Ensure that between all the profiles you include in the content bundle, only one infrastructure layer exists. For example, you can have one infrastructure profile and many add-on files, or one full profile and many add-on files, but you cannot have multiple infrastructure and full profiles.                                        | string  |
 |            | `--progress`                         | Displays the build progress output.                                                                                                                                                                                                                                                                                                                                                                             | boolean |
@@ -124,18 +125,18 @@ palette content copy [flags]
 
 The following flags are supported by the `copy` subcommand.
 
-| Short Flag | Long Flag               | Description                                                                                                                                                                                                                                              | Type    |
-| ---------- | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
-|            | `--annotation-selector` | Filters artifacts based on key-value pairs. The default value is `[]`.                                                                                                                                                                                   | string  |
-| `-a`       | `--arch`                | The architecture of the bundle to be copied.                                                                                                                                                                                                             | string  |
-|            | `--ca-cert`             | The path to the CA certificate file.                                                                                                                                                                                                                     | string  |
-| `-d`       | `--destination`         | The destination repository address. If the repository is remote, use a standard address format (e.g., `example.com/bundle/example-bundle.tar.zst`). For local repositories, use the URI (Uniform Resource Identifier) format (`file:///path/to/bundle`). | string  |
-| `-h`       | `--help`                | Help for the `copy` subcommand.                                                                                                                                                                                                                          | -       |
-| `-i`       | `--insecure`            | Skips Transport Layer Security (TLS) verification (bypasses x509 verification).                                                                                                                                                                          | boolean |
-|            | `--progress`            | Displays the progress of the copy operation.                                                                                                                                                                                                             | boolean |
-| `-s`       | `--source`              | The source repository address. Specify a remote repository using the standard address format (e.g., `example.com/bundle/example-bundle.tar.zst`), or use the URI format (`file:///path/to/bundle`). for local repositories.                              | string  |
-|            | `--tls-cert`            | The path to the TLS certificate file.                                                                                                                                                                                                                    | string  |
-|            | `--tls-key`             | The path to the TLS key file.                                                                                                                                                                                                                            | string  |
+| Short Flag | Long Flag               | Description                                                                                                                                                                                                                                                     | Type    |
+| ---------- | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+|            | `--annotation-selector` | Filters artifacts based on key-value pairs. The default value is `[]`.                                                                                                                                                                                          | string  |
+| `-a`       | `--arch`                | The architecture of the bundle to be copied.                                                                                                                                                                                                                    | string  |
+|            | `--ca-cert`             | The path to the CA certificate file.                                                                                                                                                                                                                            | string  |
+| `-d`       | `--destination`         | The destination repository address. If the repository is remote, use a standard address format (for example, `example.com/bundle/example-bundle.tar.zst`). For local repositories, use the URI (Uniform Resource Identifier) format (`file:///path/to/bundle`). | string  |
+| `-h`       | `--help`                | Help for the `copy` subcommand.                                                                                                                                                                                                                                 | -       |
+| `-i`       | `--insecure`            | Skips Transport Layer Security (TLS) verification (bypasses x509 verification).                                                                                                                                                                                 | boolean |
+|            | `--progress`            | Displays the progress of the copy operation.                                                                                                                                                                                                                    | boolean |
+| `-s`       | `--source`              | The source repository address. Specify a remote repository using the standard address format (e.g., `example.com/bundle/example-bundle.tar.zst`), or use the URI format (`file:///path/to/bundle`) for local repositories.                                      | string  |
+|            | `--tls-cert`            | The path to the TLS certificate file.                                                                                                                                                                                                                           | string  |
+|            | `--tls-key`             | The path to the TLS key file.                                                                                                                                                                                                                                   | string  |
 
 #### Example
 
@@ -175,7 +176,7 @@ The following flags are supported by the `definition` subcommand.
 
 #### Example
 
-The following example retrieves the bundle definition of the content bundle located in `output/bundle-definition.yaml`.
+The following example prints the bundle definition of the content bundle located in `output/bundle-definition.yaml`.
 
 ```shell
 palette content definition output/bundle-definition.yaml
@@ -207,7 +208,12 @@ The following flags are supported by the `list` subcommand.
 The following example command lists the content bundles in the `bundle` repository.
 
 ```shell
-palette content list --repo example.com/docs/bundle
+palette content list --repo example.com/docs/bundle-definition
+```
+
+```text hideClipboard
+Listing bundles
+example.com/docs/bundle-definition:bundle-123456acbdecaec2e
 ```
 
 ### Push
@@ -372,24 +378,30 @@ bundle. Replace `localhost` with the hosts's address if you are hosting the regi
 Use the `upload` subcommand to upload the content bundle to an Edge host.
 
 ```shell
-palette content upload [flags]
+palette content upload [flags] [host]
 ```
 
 The following flags are supported by the `upload` subcommand.
 
 | Short Flag | Long Flag          | Description                                                                                                                            | Type   |
 | ---------- | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------- | ------ |
-|            | `--app`            | The application package to be uploaded.                                                                                                | string |
-|            | `--cluster-export` | The `cluster-export` package to be uploaded.                                                                                           | string |
+|            | `--cluster-export` | The cluster definition `.tgz` file to be uploaded.                                                                                     | string |
 | `-f`       | `--file`           | The file path of the content bundle to be uploaded.                                                                                    | string |
 | `-h`       | `--help`           | Help for the `upload` subcommand.                                                                                                      | -      |
-| `-p`       | `--port`           | The Edge host target port. The default port is `8181`.                                                                                 | string |
+| `-p`       | `--port`           | The Edge host target port. The default port is `5082`.                                                                                 | string |
 |            | `--token`          | The authentication token used to validate the client. The token is located on the Edge host at `/opt/spectrocloud/.upload-auth-token`. | string |
 
 #### Example
 
-The following example uploads the `output/example-bundle` content bundle to the Edge host.
+The following example uploads the `example-bundle` content bundle to the Edge host with the IP address 10.45.67.89.
 
 ```shell
-palette content upload --file output/example-bundle.tar.zst --token 123456 10.10.X.X
+palette content upload --file output/example-bundle.tar.zst --token ABC1234566b31221do 10.45.67.89
+```
+
+```text hideClipboard
+uploading file example-bundle.tar.zst to appliance
+4.97 GiB / 4.97 GiB [=============================================================] 100.00%
+response: package type core received.
+File /usr/local/spectrocloud/temp-5216/example-bundle.tar.zst uploaded successfully.
 ```

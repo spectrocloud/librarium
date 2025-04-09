@@ -154,10 +154,12 @@ Creating a content bundle provides several benefits that may address common use 
 
     :::warning
 
-    If you plan to create an airgap cluster or scale up an airgap cluster, you must ensure that you build the content
-    bundle with either the `--include-all-palette-images` or the `--include-core-palette-images-only` flag. Content
-    bundles uploaded to the cluster that do not have either of these flags cannot be used to provision new nodes and
-    will lead to failure during cluster creation and scale-up.
+    If you plan to create an airgap cluster or scale up an airgap cluster, ensure that you build the content bundle with
+    either the `--include-all-palette-images` or the `--include-core-palette-images-only` flag. The flag
+    `--include-all-palette-images` is enabled by default in the Palette CLI
+    [build](../../../../automation/palette-cli/commands/content.md#build) command. Content bundles uploaded to the
+    cluster that do not have either of these flags cannot be used to provision new nodes and will lead to failure during
+    cluster creation and scale-up.
 
     :::
 
