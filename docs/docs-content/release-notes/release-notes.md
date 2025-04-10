@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## April 12, 2025 - Release 4.6.X {#release-notes-4.6.b}
+## April 19, 2025 - Release 4.6.X {#release-notes-4.6.b}
 
 ### Security Notices
 
@@ -28,11 +28,13 @@ tags: ["release-notes"]
   [Palette Virtual Clusters](../clusters/palette-virtual-clusters/palette-virtual-clusters.md#upgrade-virtual-clusters)
   page to learn how to migrate your virtual cluster workloads.
 
-#### Features
-
 #### Improvements
 
+- Palette and VerteX emails have improved content and updated design to ensure consistency and improve accessibility. The updates have been applied to sign-up, login, password resets, and billing updates emails.
+
 #### Deprecations and Removals
+
+- Palette no longer supports for the edge virtual clusters. Several components no longer integrate with the [libvirt](https://libvirt.org/) virtualization API, including the Palette UI, Terraform providers, the user interface, and packs.
 
 ### Edge
 
@@ -80,6 +82,14 @@ compatible version of the Palette CLI.
 
 #### Improvements
 
+- The performance of Palette APIs was improved, resulting in increased [API rate limits](/api/introduction/#rate-limits) for component events and optimized platform updates.
+
+### Virtual Machine Orchestrator (VMO)
+
+#### Improvements
+
+- The user interface and messaging for virtual machine topology has been improved to indicate the sockets, cores and threads of the machine vCPU. Refer to the [Manage CPU and Memory](../vm-management/create-manage-vm/enable-cpu-hotplug.md) guide for further details.
+
 ### Docs and Education
 
 #### Bug Fixes
@@ -90,6 +100,8 @@ compatible version of the Palette CLI.
 ### Packs
 
 #### Pack Notes
+
+- The packs `ubuntu-libvirt`,`generic-vm-libvirt`, `centos-libvirt`, and`pfsense-vm-libvirt` have been removed. Palette no longer supports edge virtual clusters.  
 
 #### OS
 
