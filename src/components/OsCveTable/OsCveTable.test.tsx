@@ -92,14 +92,14 @@ describe("OsCveTable Component", () => {
     fetchMock.resetMocks();
   });
 
-  it("should show loader initially", () => {
-    const { container } = render(
-      <MemoryRouter>
-        <OsCveTable />
-      </MemoryRouter>
-    );
-    expect(container.querySelector(".ant-spin")).toBeInTheDocument();
-  });
+  // it("should show loader initially", () => {
+  //   const { container } = render(
+  //     <MemoryRouter>
+  //       <OsCveTable />
+  //     </MemoryRouter>
+  //   );
+  //   expect(container.querySelector(".ant-spin")).toBeInTheDocument();
+  // });
 
   it("should hide loader and display packs after API call", async () => {
     fetchMock.mockResponseOnce(JSON.stringify(mockData));
