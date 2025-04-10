@@ -19,9 +19,8 @@ is especially important when operating with many clusters or multiple cloud depl
 
 ## Prerequisites
 
-This tutorial builds upon the resources and steps outlined in the
-[Deploy a Cluster](../../../clusters/public-cloud/deploy-k8s-cluster.md) tutorial for creating initial clusters. To
-complete it, you will need the following items.
+This tutorial builds upon the resources and steps outlined in the [Getting Started](/getting-started/) tutorial for
+creating initial clusters. To complete it, you will need the following items.
 
 <Tabs groupId="tutorial">
 <TabItem label="UI workflow" value="UI">

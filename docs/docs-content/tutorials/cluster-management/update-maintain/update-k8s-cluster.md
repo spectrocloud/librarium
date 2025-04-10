@@ -12,16 +12,13 @@ category: ["tutorial"]
 
 Multi cluster environments create administration and maintenance challenges as they grow.
 
-Some of these challenges are:
+Operational Efficiency: Increased manual work hours to maintain and update the environment as more clusters are built
 
-- Operational Efficiency
-  - Increased manual work hours to maintain and update the environment as more clusters are built
-- Environment Consistency
-  - New clusters may be built with a different profile than its counter parts. This could impact performance of hosted
-    services or cause them to fail.
-- Configuration Drift
-  - Clusters needing matching configurations may not receive them at the same time. This could impact performance of
-    hosted services or cause them to fail.
+Build Consistency: New clusters may be built with a different profile than its counter parts. This could impact
+performance of hosted services or cause them to fail.
+
+Configuration Drift: Clusters needing matching configurations may not receive them at the same time. This could impact
+performance of hosted services or cause them to fail.
 
 Palette provides cluster profiles, which allow you to specify layers for your workloads using packs, Helm charts, Zarf
 packages, or cluster manifests. Packs serve as blueprints to the provisioning and deployment process, as they contain
@@ -50,9 +47,8 @@ backups before you make any cluster profile version changes in your production e
 
 ## Prerequisites
 
-This tutorial builds upon the resources and steps outlined in the
-[Deploy a Cluster](../../../clusters/public-cloud/deploy-k8s-cluster.md) tutorial for creating initial clusters. To
-complete it, you will need the following items.
+This tutorial builds upon steps in [Getting Started](../../../getting-started/getting-started.md). Complete the steps
+for your preferred cloud provider. To complete it, you will need the following items.
 
 <Tabs groupId="tutorial">
 <TabItem label="UI workflow" value="UI">
@@ -130,17 +126,13 @@ cd terraform/iaas-cluster-update-tf/
 
 ## Set Up Clusters
 
-Follow the instructions of the [Deploy a Cluster](../../../clusters/public-cloud/deploy-k8s-cluster.md#ui-workflow)
-tutorial to create a cluster profile and cluster with the
-[_hello-universe_](https://github.com/spectrocloud/hello-universe) application. This tutorial uses Azure and follows the
-[Deploy a Cluster](../../../clusters/public-cloud/deploy-k8s-cluster.md#ui-workflow) steps for Azure. Your cluster
-should be successfully provisioned and in a healthy state before continuing this tutorial.
+After completing the pre-requisites your cluster should be successfully provisioned, in a healthy state, and the
+[_hello-universe_](https://github.com/spectrocloud/hello-universe) application be installed and running.
 
-Navigate to the left **Main Menu** and select **Clusters**. Select the cluster you created in the **Deploy a Cluster**
-tutorial.
+In Palette, navigate to the left main menu and select **Clusters**. Select the cluster you created in the **Getting
+Started** tutorial.
 
-Click on the URL for port **:8080** to access the Hello Universe application. The landing page is displayed and the
-application is functioning correctly.
+Select the URL link for port **:8080** to access the Hello Universe application.
 
 ![Image that shows the cluster overview of the Hello Universe Frontend Cluster](/tutorials/deploy-cluster-profile-updates/clusters_cluster-management_deploy-cluster-profile-updates_deployed-FE-cluster.webp)
 
@@ -148,7 +140,7 @@ Your result should be similar to the below screenshot.
 
 ![Image that shows the cluster overview of the Hello Universe Frontend Cluster](/tutorials/deploy-cluster-profile-updates/clusters_cluster-management_deploy-cluster-profile-updates_hello-universe-without-api.webp)
 
-## Creating Cluster Profile Versions
+## Create Cluster Profile Versions
 
 Palette supports the creation of multiple cluster profile versions using the same profile name. This provides you with
 better change visibility and control over the layers in your host clusters. Profile versions are commonly used for
@@ -157,7 +149,7 @@ adding or removing layers and pack configuration updates.
 The version number of a given profile must be unique and use the semantic versioning format `major.minor.patch`. If you
 do not specify a version for your cluster profile, it defaults to **1.0.0**.
 
-In Palette, navigate to the left **Main Menu** and select **Profiles** to view the cluster profile page.
+In Palette, navigate to the left main menu and select **Profiles** to view the cluster profile page.
 
 Select the cluster profile created during set up from the list of profiles displayed in the **left main menu**.
 
@@ -165,11 +157,11 @@ The current profile version is displayed in the **drop-down Menu** next to the p
 default value of **1.0.0**, as you did not specify another value when you created it. The cluster profile also shows the
 host clusters that are currently deployed with this cluster profile version.
 
+Select the version **drop-down Menu** and choose the **Create new version** option.
+
 ![Image that shows the profile management screen](/tutorials/deploy-cluster-profile-updates/clusters_cluster-management_deploy-cluster-profile-updates_create-new-profile-version-ui.webp)
 
-Click on the version **drop-down Menu**. Select the **Create new version** option.
-
-A dialog box appears. Fill in the **Version** input with **1.1.0**. Click on **Confirm**.
+A dialog box appears. Fill in the **Version** input with **1.1.0**. Select **Confirm**.
 
 Palette creates a new cluster profile version and opens it. The version dropdown menu now displays the newly created
 **1.1.0** profile. This version has the same packs as version 1.0.0 which it was created from.
@@ -185,25 +177,27 @@ required for this tutorial. Select **Confirm & Create** to continue.
 
 ![Image that shows the pack search screen with inputs to find kubecost pack](/tutorials/deploy-cluster-profile-updates/clusters_cluster-management_deploy-cluster-profile-updates_kubcost-pack-details-ui.webp)
 
-You are now able to confirm the changes you made. Ensure the configuration stack diagram matches what you are expecting.
-Click on **Save Changes** to confirm your updates.
+You are now able to confirm the changes you made. The configuration stack diagram should now show the cost-analyzer pack
+(kubecost) at the top of the stack.
+
+Select **Save Changes** to confirm your updates.
 
 ![Image that shows the new version of the cluster profile](/tutorials/deploy-cluster-profile-updates/clusters_cluster-management_deploy-cluster-profile-updates_confirm-new-pack-version-ui.webp)
 
-## Deploying Cluster Profile Version Updates
+## Deploy Cluster Profile Version Updates
 
-Navigate to the left **Main Menu** and select **Clusters**. Select the cluster you created in the **Deploy a Cluster**
+Navigate to the left main menu and select **Clusters**. Select the cluster you created in the **Getting Started**
 tutorial.
 
 Select the **Profile** tab. This cluster is currently deployed using cluster profile version **1.0.0**. Select the
-option **1.1.0** in the version dropdown. The kubecost pack will now display in the profile pack list. Click on **Save**
+option **1.1.0** in the version dropdown. The kubecost pack will now display in the profile pack list. Select **Save**
 to confirm your changes.
 
 ![Image that shows how to select a new profile version for the cluster](/tutorials/deploy-cluster-profile-updates/clusters_cluster-management_deploy-cluster-profile-updates_profile-version-selection.webp)
 
 Palette now makes the changes required for the cluster to update the cluster to the configuration specifieid in version
 **1.1.0** of your cluster profile. Once your changes have completed, Palette marks your layers with the green status
-indicator. Click the **Overview** tab to verify that the kubecost pack was installed successfully.
+indicator. Select the **Overview** tab to verify that the kubecost pack was installed successfully.
 
 ![Image that shows the new cluster profile with kubecost running](/tutorials/deploy-cluster-profile-updates/clusters_cluster-management_deploy-cluster-profile-updates_deployed-profile-version.webp)
 
@@ -240,23 +234,19 @@ the time to recovery in the event of an incident.
 
 The process to roll back to a previous version is identical to the process for applying a new version.
 
-In Palette, navigate to the left **Main Menu** and select **Clusters**. Select the cluster you created in the **Deploy a
-Cluster** tutorial.
+In Palette, navigate to the left main menu and select **Clusters**. Select the cluster you created in the **Getting
+Started** tutorial.
 
-Select the **Profile** tab. This cluster is currently deployed using cluster profile version **1.1.0**. Select the
-option **1.0.0** in the version dropdown. The kubecost pack will no longer be displayed in the profile pack list. Click
-on **Save** to confirm your changes.
-
-Select the **Profile** tab. This cluster is currently deployed using cluster profile version **1.1.0**. Select the
-option **1.0.0** in the version dropdown. This process is the reverse of what you have done in the previous section,
-[Version Cluster Profiles](#Deploying Cluster Profile Version Updates). Click on **Save** to confirm your changes.
+Select the **Profile** tab. The cluster is currently deployed using cluster profile version **1.1.0**. Select version
+**1.0.0** in the version dropdown. The kubecost pack will no longer be displayed in the profile pack list. Select
+**Save** to confirm your changes.
 
 Palette now makes the changes required for the cluster to update the cluster to the configuration specifieid in version
-**1.0.0** of your cluster profile. Once your changes have completed, Palette marks your layers with the green status
-indicator. Click the **Overview** tab to verify that the kubecost pack was successfully removed.
+**1.0.0** of your cluster profile. Once your changes have completed successfully, Palette marks your layers with the
+green status indicator. Select the **Overview** tab to verify that the kubecost pack was successfully removed.
 
-To further verify the pack and all configurations were completely removed, execute the command below. This command will
-query your cluster for pods in the `kubecost` namespace.
+To further verify the kubecost pack and all configurations were completely removed, execute the command below. This
+command will query your cluster for pods in the `kubecost` namespace.
 
 ```shell
 kubectl get pods --namespace kubecost
@@ -280,74 +270,84 @@ Your result should be the same as below.
 Error from server (NotFound): namespaces "kubecost" not found
 ```
 
-## Cluster Profile Overrides
+## Single Cluster Profile Overrides
 
-Cluster profiles can be updated in place and applied to one specific cluster. This method is referred to as a Profile
-Override. When using this methed the previous state of the cluster profile will not be saved once it is overwritten.
-This method will only push changes to the cluster you specify. All other clusters using the specific profile and version
-will not be impacted.
+Cluster profiles can be updated in place and applied to one specific cluster. This method is referred to as a profile
+override. When using this method, the previous state of the cluster profile will not be saved. This method will only
+push changes to the cluster you specify. All other clusters using the specific profile and version will not be impacted.
 
-Navigate to the left **Main Menu** and select **Clusters**. Select the cluster you created in the **Deploy a Cluster**
+Navigate to the left main menu and select **Clusters**. Select the cluster you created in the **Getting Started**
 tutorial.
 
 Select the **Profile** tab. Then, select the **hello-universe** manifest. Change the value of the `replicas` field to
-`2`. Click on **Save**. The editor closes.
+`2`. Select **Save**. The editor closes.
 
-This cluster now contains an override over its cluster profile. Palette uses the configuration you have just provided
-for the single cluster over its cluster profile and begins making the appropriate changes. Select the **Overview** tab
-and wait for the **hello-universe** deployment status to turn green.
+This cluster now contains an override for its assigned cluster profile. Palette uses the profile override configuration
+you have just provided and begins making the appropriate changes immediately. Select the **Overview** tab and wait for
+the **hello-universe** deployment status to turn green.
 
-Once these changes are complete, select the **Workloads** tab. Then, select **namespces** and select the
+Once these changes are complete, select the **Workloads** tab. Then, select **namespaces** and select the
 **hello-universe** namespace.
 
-Two replicas of the **ui** deployment are available, instead of the one specified by your cluster profile. The Palette
-UI (User Interface) may take some time to update the change. To force a refresh, select the **refresh** icon next to the
-**time duration drop down menu**. Your override has been successfully applied.
+Two replicas of the **ui** deployment are available instead of the one originally specified by your cluster profile. The
+Palette UI (User Interface) may take some time to update the change. To force a refresh, select the **refresh** icon
+next to the **time duration drop down menu**. Your override has been successfully applied.
 
 ![Image that shows the new cluster profile with kubecost running](/tutorials/deploy-cluster-profile-updates/clusters_cluster-management_deploy-cluster-profile-updates_profile-override.webp)
 
 ## Cluster Profile In Place Updates
 
-Cluster profiles can be updated in place and applied to all clusters using the modified profile and version. When a
-profile version is updated, all clusters using it will display a notification that updates are avialble. You have the
-choice of when to apply these updates for each impacted cluster, giving you flexibility to schedule the work around
-maintenance windows for each cluster.
+Cluster profiles can be updated in place. When a profile version is updated, all clusters using it will display a
+notification that updates are available. Profile changes made using this method do not immediately apply you to decide
+when to apply these updates for each impacted cluster. This gives you flexibility to schedule the work around
+maintenance windows for each impacted cluster.
 
-Navigate to the left **Main Menu** and select **Profiles**. Select the profile you created in the **Deploy a Cluster**
+Navigate to the left main menu and select **Profiles**. Select the profile you created in the **Getting Started**
 tutorial.
 
 Select **1.0.0** in the version dropdown.
 
-Select the **hello-universe** manifest. The editor appears. Change the value of the `replicas` field to `3`. Click on
+Select the **hello-universe** manifest. The editor appears. Change the value of the `replicas` field to `3`. Select
 **Confirm Updates**. The editor closes.
 
-Click on **Save Changes** to confirm the changes you have made to your profile.
+Select **Save Changes** to confirm the changes you have made to your profile.
 
-Navigate to the left **Main Menu** and select **Clusters**. Select the cluster you created in the **Deploy a Cluster**
-tutorial. Palette indicates that the cluster associated with the cluster profile you updated has updates available.
+Navigate to the left main menu and select **Clusters**. Palette indicates clusters have updates pending by placing a
+green icon in the **Type** column.
 
 ![Image that shows the pending updates ](/tutorials/deploy-cluster-profile-updates/clusters_cluster-management_deploy-cluster-profile-updates_pending-update-clusters-view.webp)
 
-Select this cluster to open its **Overview** tab. Click on **Updates** to begin the cluster update.
+Select the cluster you created in the **Getting Started** tutorial, then select the **Overview** tab. Select **Updates**
+to begin the cluster update.
 
 ![Image that shows the Updates button](/tutorials/deploy-cluster-profile-updates/clusters_cluster-management_deploy-cluster-profile-updates_updates-available-button-cluster-overview.webp)
 
-A dialog appears which shows the changes made in this update. Click on **Review changes in Editor**. As previously,
-Palette displays the changes, with the current configuration on the left and the incoming configuration on the right.
+A dialog box appears which shows the packs the have changes pending. Select **Review changes in Editor**.
 
-Review the changes and ensure the only change is the `replicas` field value. You can choose to maintain your cluster
-override or apply the incoming cluster profile update.
+Palette displays the details of the pending changes, with the current configuration on the left and the incoming
+configuration on the right.
+
+Review the changes and ensure the only change is the `replicas` field value. You can choose to apply the modifed profile
+be selecting **ApplyChanges** or decline it by selecting **Cancel**.
+
+Select **Apply Changes** once you have finished reviewing your changes.
 
 ![Image that shows the available updates dialog ](/tutorials/deploy-cluster-profile-updates/clusters_cluster-management_deploy-cluster-profile-updates_reivew-updates-dialog.webp)
 
-Click on **Apply Changes** once you have finished reviewing your changes. This removes your cluster override.
+:::info
 
-Palette updates your cluster according to cluster profile specifications. Once these changes are complete, select the
-**Workloads** tab. Then, select the **hello-universe** namespace.
+We have just applied an updated profile to a cluster that had a profile override in place. When doing this, any
+configuration in the profile override will be completely replaced with the configurations in the updated profile.
 
-Two replicas of the **ui** deployment are available, instead of the one specified by your cluster profile. The Palette
-UI (User Interface) may take some time to update the change. To force a refresh, select the **refresh** icon next to the
-**time duration drop down menu**.
+:::
+
+Palette updates your cluster according to cluster profile specifications. Monitor the progress of the update deployment
+on the **Cluster Overview** screen, Once these changes are complete, select the **Workloads** tab. Then, select the
+**hello-universe** namespace.
+
+Three replicas of the **ui** deployment are available, instead of the one specified by your cluster profile. The Palette
+UI (User Interface) may take some time to display the changes. To force a refresh, select the **refresh** icon next to
+the **time interval** drop down menu.
 
 ## Cleanup
 
@@ -356,20 +356,22 @@ Use the following steps to clean up the resources you created for the tutorial.
 <Tabs groupId="tutorial">
 <TabItem label="UI workflow" value="UI">
 
-Navigate to the **left Main Menu** and select **Clusters** to view the list of clusters. Find and select the cluster you
-created
+Navigate to the left main menu and select **Clusters**. Select the cluster you created in the **Getting Started**
+tutorial.
 
-Click on **Settings** to expand the menu, and select **Delete Cluster**.
+Select **Settings** to expand the menu, and select **Delete Cluster**.
 
 A dialog appears. Input the cluster name to confirm the delete action.
 
 The deletion process takes several minutes to complete. Repeat the same steps for any other cluster you created.
 
-Once the clusters are deleted, navigate to the left **Main Menu** and click on **Profiles**.
+Once the clusters are deleted, navigate to the left main menu and select **Profiles**.
 
-Select the cluster profile created during set up from the list of profiles displayed in the **left main menu**. Click on
-the **three-dot Menu** to display the **Delete** button. Select **Delete** and confirm the selection to remove the
-cluster profile. Make sure you delete both versions of this profile.
+Select the cluster profile you created in the **Getting Started** tutorial. Select the **three-dot Menu** to display the
+**Delete** button.
+
+Select **Delete** and confirm the selection to remove the cluster profile. Make sure you delete both versions of this
+profile.
 
 </TabItem>
 
@@ -390,12 +392,51 @@ Destroy complete! Resources: 7 destroyed.
 </TabItem>
 </Tabs>
 
-## Wrap-Up
+:::note
 
-In this tutorial, you updated one cluster profile using two different methods: create a new cluster profile version,
-update a cluster profile in place. After you made your changes, the kubecost application was deployed and confirmed
-operational. After deployment, you rolled back the cluster profile to a previous version and confirmed all
-configurations were removed from the cluster.
+Recommendation changing the format of the wrapping up tutorial section to option 1. Writing it using option 2 is
+extremely wordy and loses the message of how cluster profiles can be beneficial is lost. The closing comments should be
+blunt, easy to read, and highlight the benefits. That is our last chance to convey the simplicity of what was done. Busy
+paragraphs leave the audience with the feeling that the task was more complex than it is. #Psychology lol
+
+:::
+
+## Wrap-Up - Option 1
+
+In this tutorial you completed the following:
+
+1. Created version 1.1.0 of a test profile and applied it to a cluster.
+2. Rolled back the profile changes by applying version 1.0.0 to the cluster.
+3. Changed the number of pods running in the **hello-universe** deployment using the profile override method.
+4. Changed the number of pods running in the **hello-universe** deployment using the in place profile update method.
+
+Cluster profiles provide consistency during the cluster creation process, as well as when maintaining your clusters.
+They can be versioned to keep a record of previously working cluster states, giving you visibility when updating or
+rolling back workloads across your environments.
+
+To learn more about Palette, we encourage you to check out the reference resources below.
+
+- [Cluster Profiles](../../../profiles/cluster-profiles/cluster-profiles.md)
+
+- [Palette Clusters](../../../clusters/clusters.md)
+
+- [Backup and Restore](../../../clusters/cluster-management/backup-restore/backup-restore.md)
+
+- [Deploy a Custom Pack](../../../tutorials/profiles/deploy-pack.md)
+
+- [Hello Universe GitHub repository](https://github.com/spectrocloud/hello-universe)
+
+- [Hello Universe API GitHub repository](https://github.com/spectrocloud/hello-universe-api)
+
+## Wrap-Up - Option 2
+
+In this tutorial, you updated a cluster profile using three different methods: create a new cluster profile version,
+profile override, and update a cluster profile in place. After you made the changes, the kubecost application was
+deployed and confirmed operational. After deployment, you rolled back the cluster profile to a previous version and
+confirmed kubecost and all its configurations were removed from the cluster.
+
+You then modified the number of pods running in the **hello-universe** deployment using the profile override method.
+Then you changed the number of pods running in the **hello-universe** deployment using the in place update process.
 
 Cluster profiles provide consistency during the cluster creation process, as well as when maintaining your clusters.
 They can be versioned to keep a record of previously working cluster states, giving you visibility when updating or

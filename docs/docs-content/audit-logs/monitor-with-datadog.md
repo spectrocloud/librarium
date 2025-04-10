@@ -21,9 +21,8 @@ Datadog.
 
 - A Datadog account. Visit the [Datadog official website](https://app.datadoghq.eu/signup) to create a Datadog account.
 
-- An active [host cluster](../glossary-all.md#host-cluster). Refer to the
-  [Deploy a Cluster](../clusters/public-cloud/deploy-k8s-cluster.md) tutorial for instructions on how to deploy a
-  cluster.
+- An active [host cluster](../glossary-all.md#host-cluster). Refer to the [Getting Started](/getting-started/) tutorial
+  for instructions on how to deploy a cluster.
 
 - [Kubectl](https://kubernetes.io/docs/tasks/tools/#kubectl) installed and configured to access your host cluster. Refer
   to the [Access Cluster with CLI](../clusters/cluster-management/palette-webctl.md) page for guidance on how to access

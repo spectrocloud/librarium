@@ -472,9 +472,8 @@ plugin from a workstation that has kubelogin installed.
 
 2. Navigate to the left **Main Menu** and select **Clusters**.
 
-3. Deploy a cluster using the cluster profile you created in the previous steps. Check out the tutorial
-   [Deploy a Cluster](../../clusters/public-cloud/deploy-k8s-cluster.md) for detailed guidance on how to deploy a
-   cluster.
+3. Deploy a cluster using the cluster profile you created in the previous steps. Check out the
+   [Getting Started](/getting-started/) tutorials for detailed guidance on how to deploy a cluster.
 
 4. Once the cluster is deployed, select the cluster from the cluster list view to access the cluster details page.
 

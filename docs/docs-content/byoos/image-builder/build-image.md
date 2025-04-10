@@ -288,5 +288,5 @@ Use the following steps to validate your custom image is working correctly.
 
 2. Next, deploy a host cluster using the cluster profile you created that contains the custom image. Verify the cluster
    is deployed correctly and without any issues. If you encounter any problems, review the cluster's event log to gain
-   more details about the issue. Check out the [Deploy a Cluster](/clusters/public-cloud/deploy-k8s-cluster/) tutorial
-   for additional guidance on deploying a host cluster.
+   more details about the issue. Check out the [Getting Started](/getting-started/) tutorial for additional guidance on
+   deploying a host cluster.
