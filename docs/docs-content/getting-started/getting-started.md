@@ -57,37 +57,37 @@ Explore more through the following pages.
       title: "Introduction to Palette",
       description: "Learn about what makes Palette different.",
       buttonText: "Learn more",
-      url: "/getting-started/introduction",
+      url: "/tutorials/getting-started/introduction-palette",
     },
     {
       title: "Deploy a Cluster to Amazon Web Services (AWS)",
       description: "Deploy and update a Palette host cluster to AWS.",
       buttonText: "Learn more",
-      url: "/getting-started/aws",
+      url: "/tutorials/getting-started/introduction-palette/aws",
     },
     {
       title: "Deploy a Cluster to Microsoft Azure",
       description: "Deploy and update a Palette host cluster to Azure.",
       buttonText: "Learn more",
-      url: "/getting-started/azure",
+      url: "/tutorials/getting-started/introduction-palette/azure",
     },
     {
       title: "Deploy a Cluster to Google Cloud Platform (GCP)",
       description: "Deploy and update a Palette host cluster to Google Cloud.",
       buttonText: "Learn more",
-      url: "/getting-started/gcp",
+      url: "/tutorials/getting-started/introduction-palette/gcp",
     },
     {
       title: "Deploy a Cluster to VMware",
       description: "Deploy and update a Palette host cluster to VMware vSphere.",
       buttonText: "Learn more",
-      url: "/getting-started/vmware",
+      url: "/tutorials/getting-started/introduction-palette/vmware",
     },
     {
       title: "Additional Capabilities",
       description: "Learn about Palette's additional capabilities.",
       buttonText: "Learn more",
-      url: "/getting-started/additional-capabilities",
+      url: "/tutorials/getting-started/additional-capabilities",
     },
   ]}
 />
