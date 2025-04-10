@@ -122,11 +122,6 @@ const OsCveTable: React.FC<{ dataOverride?: AllCVEList }> = ({ dataOverride }) =
         } else if (process.env.NODE_ENV !== "test") {
           const res = await fetch("/security-bulletins/data.json");
           data = await res.json();
-        } else {
-          console.warn("No dataOverride in test; skipping fetch.");
-          setOsCves([]);
-          setLoading(false);
-          return;
         }
 
         // Extract the OS CVE data from the provider array
