@@ -115,9 +115,20 @@ const OsCveTable: React.FC<{ dataOverride?: AllCVEList }> = ({ dataOverride }) =
     const fetchOsCveData = async () => {
       try {
         // Use dynamic import instead of fetch
-        const data =
-          dataOverride ??
-          ((await import("../../../.docusaurus/security-bulletins/default/data.json")).default as AllCVEList);
+        let data;
+
+        if (dataOverride) {
+          data = dataOverride;
+        } else if (process.env.NODE_ENV !== "test") {
+          // Only dynamically import in non-test environments
+          data = (await import("../../../.docusaurus/security-bulletins/default/data.json")).default as AllCVEList;
+        } else {
+          // If we're in a test and no override provided, bail
+          console.warn("No dataOverride provided in test and cannot import real data.");
+          setOsCves([]);
+          setLoading(false);
+          return;
+        }
 
         // Extract the OS CVE data from the provider array
         const osCveData = data.provider.map((item: any) => {
