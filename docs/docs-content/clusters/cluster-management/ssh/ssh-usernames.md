@@ -85,6 +85,6 @@ guidance on building custom images.
 ## Resources
 
 - [SSH Keys](./ssh-keys.md)
-- [Deploy a Cluster (Public Cloud)](../../public-cloud/deploy-k8s-cluster.md)
+- [Getting Started](/getting-started/) tutorials
 - [Data Center Clusters](../../data-center/data-center.md)
 - [Create Cluster Definition (Edge)](../../edge/site-deployment/cluster-deployment.md)

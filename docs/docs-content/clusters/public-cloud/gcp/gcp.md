@@ -12,8 +12,7 @@ started with GCP, start by adding your GCP account in Palette. Check out the
 
 ## Get Started
 
-Learn how to deploy a cluster to a GCP by using Palette. Check out the
-[Deploy a Cluster with Palette](../deploy-k8s-cluster.md) tutorial to get started.
+Check out the [Getting Started](/getting-started/gcp/) tutorials to learn how to deploy a cluster to GCP by using Palette.
 
 ## Resources
 
