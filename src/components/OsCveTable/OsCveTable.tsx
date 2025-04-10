@@ -120,12 +120,12 @@ const OsCveTable: React.FC<{ dataOverride?: AllCVEList }> = ({ dataOverride }) =
         if (dataOverride) {
           data = dataOverride;
         } else if (process.env.NODE_ENV !== "test") {
-          // Only dynamically import in non-test environments
-          const filePath = "../../../.docusaurus/security-bulletins/default/data.json";
-          data = (await import(filePath)).default as AllCVEList;
+          const res = await fetch("/security-bulletins/data.json");
+          data = await res.json();
         } else {
-          // If we're in a test and no override provided, bail
-          console.warn("No dataOverride provided in test and cannot import real data.");
+          console.warn("No dataOverride in test; skipping fetch.");
+          setOsCves([]);
+          setLoading(false);
           return;
         }
 
@@ -198,7 +198,7 @@ const OsCveTable: React.FC<{ dataOverride?: AllCVEList }> = ({ dataOverride }) =
             tableLayout="fixed"
             sticky
           />
-          {error && <div className={styles.error}>Failed to load Deprecated Packs</div>}
+          {error && <div className={styles.error}>Failed to load OS security advisories.</div>}
         </div>
       </ConfigProvider>
     </div>

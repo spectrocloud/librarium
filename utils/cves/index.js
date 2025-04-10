@@ -188,8 +188,6 @@ async function generateCVEs() {
         ],
       });
 
-      console.log("osK8sImages", osK8sImages);
-
       // There is no way to filter by product in the API, so we need to filter the results manually to get a list of CVEs for each product
       const filterdPalette = filterByUID(palette.data, "PC-");
       const filterdPaletteAirgap = filterByUID(paletteAirgap.data, "PA-");

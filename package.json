@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
-    "start": "npm run cves && npm run generate-partials && docusaurus start --host 0.0.0.0 --port 9000",
+    "start": "npm run cves && npm run generate-partials && npm run copy-cve-data && docusaurus start --host 0.0.0.0 --port 9000",
     "build": "npm run generate-api-docs && npm run cves && npm run generate-partials && docusaurus build",
     "swizzle": "docusaurus swizzle",
     "cves": "node utils/cves/index.js",
@@ -23,7 +23,8 @@
     "lint": "eslint . -c .eslintrc.js --ext .js,.ts,.jsx,.tsx",
     "lint:fix": "npm run lint -- --fix",
     "format": "prettier --write \"**/*.{js,jsx,json,ts,tsx,md,mdx,css}\"",
-    "format-check": "prettier . --check"
+    "format-check": "prettier . --check",
+    "copy-cve-data": "mkdir -p static/security-bulletins/default && cp -r .docusaurus/security-bulletins/default/data.json static/security-bulletins/data.json"
   },
   "lint-staged": {
     "**/*.{js,jsx,json,ts,tsx,md,mdx,css}": "npm run format"
