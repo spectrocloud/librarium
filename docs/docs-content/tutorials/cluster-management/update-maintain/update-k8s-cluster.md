@@ -201,7 +201,7 @@ indicator. Select the **Overview** tab to verify that the kubecost pack was inst
 
 ![Image that shows the new cluster profile with kubecost running](/tutorials/deploy-cluster-profile-updates/clusters_cluster-management_deploy-cluster-profile-updates_deployed-profile-version.webp)
 
-The kubecost pack is not automatically available using public internet. To access the kube cost ui we will create a port
+The kubecost pack is not automatically available using public internet.  To access the kube cost ui we will create a port
 forward in the Kubernetes cluster.
 
 Download the kubeconfig file for your cluster from the Palette UI. This file enables you and other users to issue
@@ -282,9 +282,7 @@ tutorial.
 Select the **Profile** tab. Then, select the **hello-universe** manifest. Change the value of the `replicas` field to
 `2`. Select **Save**. The editor closes.
 
-This cluster now contains an override for its assigned cluster profile. Palette uses the profile override configuration
-you have just provided and begins making the appropriate changes immediately. Select the **Overview** tab and wait for
-the **hello-universe** deployment status to turn green.
+Palette uses the profile override configuration you have just provided and begins making changes immediately. Select the **Overview** tab and wait for the **hello-universe** deployment status to turn green.
 
 Once these changes are complete, select the **Workloads** tab. Then, select **namespaces** and select the
 **hello-universe** namespace.
