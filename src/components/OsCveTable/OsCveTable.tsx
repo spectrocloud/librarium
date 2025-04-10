@@ -119,8 +119,10 @@ const OsCveTable: React.FC<{ dataOverride?: AllCVEList }> = ({ dataOverride }) =
 
         if (dataOverride) {
           data = dataOverride;
+          console.log("NODE_ENV:", process.env.NODE_ENV);
         } else if (process.env.NODE_ENV !== "test") {
           // Only dynamically import in non-test environments
+          console.log("NODE_ENV:", process.env.NODE_ENV);
           data = (await import("../../../.docusaurus/security-bulletins/default/data.json")).default as AllCVEList;
         } else {
           // If we're in a test and no override provided, bail

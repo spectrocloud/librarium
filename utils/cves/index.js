@@ -300,11 +300,6 @@ This page provides a listing of vulnerabilities found in the image **${imageName
 - **Summary**: ${summary}
 - **Initial Notice Published**: ${createdTimestamp}
 - **Last Updated**: ${lastModified}
-- **Justification**: ${justification}
-
-## Remediation Steps
-
-${remediationSteps}
 
 ## Linked Vulnerabilities
 
