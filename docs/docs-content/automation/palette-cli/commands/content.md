@@ -11,8 +11,8 @@ tags: ["palette-cli"]
 The `content` command supports the creation and management of
 [content bundles](../../../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md), which are archives
 containing all the images and artifacts required for deploying an Edge cluster. You can also use this command to export
-[cluster definitions](../../../clusters/edge/local-ui/cluster-management/export-cluster-definition.md) and
-[upload content bundles](../../../clusters/edge/local-ui/cluster-management/upload-content-bundle.md) to an Edge host.
+[cluster definitions](../../../clusters/edge/local-ui/cluster-management/export-cluster-definition.md) from a cluster in
+Palette and use the definition to provision an Edge cluster.
 
 ## Prerequisites
 
@@ -39,7 +39,6 @@ The `content` command includes the following subcommands:
 - [`registry-login`](#registry-login) - Login to a private OCI registry.
 - [`save`](#save) - Save the content bundle locally.
 - [`serve`](#serve) - Serve the content bundle as a registry.
-- [`upload`](#upload) - Upload the content bundle to an Edge host.
 
 ### Build
 
@@ -372,36 +371,3 @@ example, the command `oras repo list --plain-http localhost:5000/bundle` should 
 bundle. Replace `localhost` with the host's address if you are hosting the registry externally.
 
 :::
-
-### Upload
-
-Use the `upload` subcommand to upload the content bundle to an Edge host.
-
-```shell
-palette content upload [flags] [host]
-```
-
-The following flags are supported by the `upload` subcommand.
-
-| Short Flag | Long Flag          | Description                                                                                                                                                          | Type   |
-| ---------- | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
-|            | `--cluster-export` | The cluster definition `.tgz` file to be uploaded. You can only upload a cluster definition if a content bundle is not being uploaded in the same command execution. | string |
-| `-f`       | `--file`           | The file path of the content bundle to be uploaded.                                                                                                                  | string |
-| `-h`       | `--help`           | Help for the `upload` subcommand.                                                                                                                                    | -      |
-| `-p`       | `--port`           | The Edge host target port. The default port is `5082`.                                                                                                               | string |
-|            | `--token`          | The authentication token used to validate the client. The token is located on the Edge host at `/opt/spectrocloud/.upload-auth-token`.                               | string |
-
-#### Example
-
-The following example uploads the `example-bundle` content bundle to the Edge host with the IP address 10.45.67.89.
-
-```shell
-palette content upload --file output/example-bundle.tar.zst --token ABC1234566b31221do 10.45.67.89
-```
-
-```text hideClipboard
-uploading file example-bundle.tar.zst to appliance
-4.97 GiB / 4.97 GiB [=============================================================] 100.00%
-response: package type core received.
-File /usr/local/spectrocloud/temp-5216/example-bundle.tar.zst uploaded successfully.
-```
