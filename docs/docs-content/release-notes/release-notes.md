@@ -30,11 +30,14 @@ tags: ["release-notes"]
 
 #### Improvements
 
-- Palette and VerteX emails have improved content and updated design to ensure consistency and improve accessibility. The updates have been applied to sign-up, login, password resets, and billing updates emails.
+- Palette and VerteX emails have improved content and updated design to ensure consistency and improve accessibility.
+  The updates have been applied to sign-up, login, password resets, and billing updates emails.
 
 #### Deprecations and Removals
 
-- Palette no longer supports for the edge virtual clusters. Several components no longer integrate with the [libvirt](https://libvirt.org/) virtualization API, including the Palette UI, Terraform providers, the user interface, and packs.
+- Palette no longer supports for the edge virtual clusters. Several components no longer integrate with the
+  [libvirt](https://libvirt.org/) virtualization API, including the Palette UI, Terraform providers, the user interface,
+  and packs.
 
 ### Edge
 
@@ -82,13 +85,16 @@ compatible version of the Palette CLI.
 
 #### Improvements
 
-- The performance of Palette APIs was improved, resulting in increased [API rate limits](/api/introduction/#rate-limits) for component events and optimized platform updates.
+- The performance of Palette APIs was improved, resulting in increased [API rate limits](/api/introduction/#rate-limits)
+  for component events and optimized platform updates.
 
 ### Virtual Machine Orchestrator (VMO)
 
 #### Improvements
 
-- The user interface and messaging for virtual machine topology has been improved to indicate the sockets, cores and threads of the machine vCPU. Refer to the [Manage CPU and Memory](../vm-management/create-manage-vm/enable-cpu-hotplug.md) guide for further details.
+- The user interface and messaging for virtual machine topology has been improved to indicate the sockets, cores and
+  threads of the machine vCPU. Refer to the
+  [Manage CPU and Memory](../vm-management/create-manage-vm/enable-cpu-hotplug.md) guide for further details.
 
 ### Docs and Education
 
@@ -101,7 +107,8 @@ compatible version of the Palette CLI.
 
 #### Pack Notes
 
-- The packs `ubuntu-libvirt`,`generic-vm-libvirt`, `centos-libvirt`, and`pfsense-vm-libvirt` have been removed. Palette no longer supports edge virtual clusters.  
+- The packs `ubuntu-libvirt`,`generic-vm-libvirt`, `centos-libvirt`, and`pfsense-vm-libvirt` have been removed. Palette
+  no longer supports edge virtual clusters.
 
 #### OS
 
