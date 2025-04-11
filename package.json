@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
-    "start": "npm run cves && npm run generate-partials && npm run copy-cve-data && docusaurus start --host 0.0.0.0 --port 9000",
-    "build": "npm run generate-api-docs && npm run cves && npm run generate-partials && npm run copy-cve-data && docusaurus build",
+    "start": "npm run cves && npm run generate-partials && docusaurus start --host 0.0.0.0 --port 9000",
+    "build": "npm run generate-api-docs && npm run cves && npm run generate-partials && docusaurus build",
     "swizzle": "docusaurus swizzle",
-    "cves": "node utils/cves/index.js",
+    "cves": "node utils/cves/index.js && npm run copy-cve-data ",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
