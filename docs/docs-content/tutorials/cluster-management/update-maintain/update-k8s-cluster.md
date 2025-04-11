@@ -53,9 +53,9 @@ backups before making any cluster profile version changes in your production env
 This tutorial builds upon steps in [Getting Started](../../../getting-started/getting-started.md). Complete the steps
 for your preferred cloud provider.
 
-- [Cluster Management with Terraform - Azure](/getting-started/azure/deploy-k8s-cluster.md) 
-- [Cluster Management with Terraform - AWS](/getting-started/aws/deploy-k8s-cluster.md) 
-- [Cluster Management with Terraform - GCP](/getting-started/gcp/deploy-k8s-cluster.md) 
+- [Cluster Management with Terraform - Azure](/getting-started/azure/deploy-k8s-cluster.md)
+- [Cluster Management with Terraform - AWS](/getting-started/aws/deploy-k8s-cluster.md)
+- [Cluster Management with Terraform - GCP](/getting-started/gcp/deploy-k8s-cluster.md)
 - [Cluster Management with Terraform - VMware](/getting-started/vmware/deploy-k8s-cluster.md)
 
 ## Set Up Clusters
@@ -393,11 +393,13 @@ We encourage you to check out the reference resources below to learn more about 
 
 <TabItem label="Terraform workflow" value="Terraform">
 
-We recommend following the **Cluster Mangement with Terraform** guide for your cloud provider of choice. These guides provide an end to end tutorial for Azure, GCP, AWS, and VMware hosted platforms and ensure your test environment is provisioned and compatible with the tutoriails terrform scripts.
+We recommend following the **Cluster Mangement with Terraform** guide for your cloud provider of choice. These guides
+provide an end to end tutorial for Azure, GCP, AWS, and VMware hosted platforms and ensure your test environment is
+provisioned and compatible with the tutoriails terrform scripts.
 
-- [Cluster Management with Terraform - Azure](/getting-started/azure/deploy-manage-k8s-cluster-tf.md) 
-- [Cluster Management with Terraform - AWS](/getting-started/aws/deploy-manage-k8s-cluster-tf.md) 
-- [Cluster Management with Terraform - GCP](/getting-started/gcp/deploy-manage-k8s-cluster-tf.md) 
+- [Cluster Management with Terraform - Azure](/getting-started/azure/deploy-manage-k8s-cluster-tf.md)
+- [Cluster Management with Terraform - AWS](/getting-started/aws/deploy-manage-k8s-cluster-tf.md)
+- [Cluster Management with Terraform - GCP](/getting-started/gcp/deploy-manage-k8s-cluster-tf.md)
 - [Cluster Management with Terraform - VMware](/getting-started/vmware/deploy-manage-k8s-cluster-tf.md)
 
 ---
