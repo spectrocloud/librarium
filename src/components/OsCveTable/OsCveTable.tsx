@@ -120,7 +120,7 @@ const OsCveTable: React.FC<{ dataOverride?: AllCVEList }> = ({ dataOverride }) =
         if (dataOverride) {
           data = dataOverride;
         } else if (process.env.NODE_ENV !== "test") {
-          const res = await fetch("/security-bulletins/data.json");
+          const res = await fetch("/security-data/data.json");
           data = await res.json();
         }
 
