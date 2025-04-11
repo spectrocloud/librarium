@@ -11,8 +11,8 @@ tags: ["palette-cli"]
 The `content` command supports the creation and management of
 [content bundles](../../../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md), which are archives
 containing all the images and artifacts required for deploying an Edge cluster. You can also use this command to export
-[cluster definitions](../../../clusters/edge/local-ui/cluster-management/export-cluster-definition.md) from a cluster in
-Palette and use the definition to provision an Edge cluster.
+[cluster definitions](../../../clusters/edge/local-ui/cluster-management/export-cluster-definition.md) from one or more
+cluster profiles in Palette and use the definition to provision an Edge cluster.
 
 ## Prerequisites
 
