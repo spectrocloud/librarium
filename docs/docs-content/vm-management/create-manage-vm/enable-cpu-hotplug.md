@@ -32,7 +32,7 @@ Select the tab that corresponds to the method you want to use to enable CPU or m
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
-2. From the left **Main Menu**, select **Clusters**, and then select the cluster with the VM you want to update.
+2. From the left main menu, select **Clusters**, and then select the cluster with the VM you want to update.
 
 3. Select the **Virtual Machines** tab, then select the necessary VM and open its **Configuration** tab. Click on the
    pencil icon for **CPU|Memory**.
@@ -46,7 +46,7 @@ Select the tab that corresponds to the method you want to use to enable CPU or m
 
    :::warning
 
-   You will need to restart the VM to apply any changes made to **Cores** or **Threads**.
+   You must restart the VM to apply any changes made to **Cores** or **Threads**.
 
    :::
 
@@ -61,7 +61,7 @@ Select the tab that corresponds to the method you want to use to enable CPU or m
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
-2. From the left **Main Menu**, select **Clusters**, and then select the cluster with the VM you want to update.
+2. From the left main menu, select **Clusters**, and then select the cluster with the VM you want to update.
 
 3. Select the **Virtual Machines** tab, then select the necessary VM and open its **YAML** tab.
 
@@ -119,7 +119,7 @@ Select the tab that corresponds to the method you want to use to enable CPU or m
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
-2. From the left **Main Menu**, select **Clusters**, and then select the cluster with the VM you want to update.
+2. From the left main menu, select **Clusters**, and then select the cluster with the VM you want to update.
 
 3. Select the **Virtual Machines** tab, then select the necessary VM and open its **Console** tab.
 
@@ -163,8 +163,8 @@ Select the tab that corresponds to the method you want to use to enable CPU or m
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
-2. From the left **Main Menu**, select **Clusters**, and then select the cluster with the VM where you enabled the CPU
-   or memory hotplug.
+2. From the left main menu, select **Clusters**, and then select the cluster with the VM where you enabled the CPU or
+   memory hotplug.
 
 3. Select the **Virtual Machines** tab, then select the necessary VM and open its **YAML** tab.
 
