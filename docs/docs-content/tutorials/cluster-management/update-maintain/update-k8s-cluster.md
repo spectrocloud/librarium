@@ -214,7 +214,7 @@ Open a new terminal window and set the `KUBECONFIG` environment variable to use 
 export KUBECONFIG=~/Downloads/admin.aws-cluster.kubeconfig
 ```
 
-Execute the command below to forward the Kubecost ui port to your local network. If port 9090 is already in use, choose
+Execute the command below to forward the Kubecost UI port to your local network. If port 9090 is already in use, choose
 a different port number.
 
 ```shell
@@ -288,7 +288,7 @@ Palette uses the profile override configuration you provided and begins making c
 Once these changes are complete, select the **Workloads** tab. Then, select **namespaces** and select the
 **hello-universe** namespace.
 
-Two replicas of the **ui** deployment are available instead of the one initially specified by your cluster profile. The
+Two replicas of the **UI** deployment are available instead of the one initially specified by your cluster profile. The
 Palette UI (User Interface) may take some time to update the change. Select the **refresh** icon next to the time
 duration drop-down menu to force a refresh. Your override has been successfully applied.
 
@@ -343,7 +343,7 @@ Palette updates your cluster according to cluster profile specifications. Monito
 on the **Cluster Overview** screen. When these changes are complete, select the **Workloads** tab. Then, select the
 **hello-universe** namespace.
 
-Three replicas of the **ui** deployment are available instead of the one specified by your cluster profile. The Palette
+Three replicas of the **UI** deployment are available instead of the one specified by your cluster profile. The Palette
 The UI (User Interface) may take some time to display the changes. If needed, select the **refresh** icon next to the
 **time interval** drop-down menu to force a refresh.
 
