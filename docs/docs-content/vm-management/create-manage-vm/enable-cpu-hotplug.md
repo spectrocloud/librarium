@@ -32,58 +32,61 @@ Select the tab that corresponds to the method you want to use to enable CPU or m
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
-2. From the left **Main Menu**, select **Clusters**, and then select the cluster with the VM you want to update.
+2. From the left main menu, select **Clusters**, and then select the cluster with the VM you want to update.
 
-3. Select the **Virtual Machines** tab, then select the necessary VM and open its **Details** tab.
+3. Select the **Virtual Machines** tab, then select the necessary VM and open its **Configuration** tab. Click on the
+   pencil icon for **CPU|Memory**.
 
-   ![Palette with the Details tab displayed.](/vm-management_create-manage-vm_enable-cpu-hotplug_details.webp)
+   ![Palette with a Virtual Machine Configuration tab displayed.](/vm-management_create-manage-vm_enable-cpu-hotplug_configuration.webp)
 
-4. Change the desired CPU sockets, CPU cores, or memory size. Toggle the **Run Live Migration** switch to enable the
-   changes through live migration. If you don't toggle the switch, the changes are applied next time the VM is
-   restarted.
+4. Change the desired CPU sockets under **vCPU** and memory for the VM. You can also select **Set CPU topology
+   manually** to configure specific cores, sockets, and threads for the VM.
 
-   ![View of the Memory and CPU Change Box](/vm-management_create-manage-vm_enable-cpu-hotplug_flavor_box.webp)
+   ![View of the Memory and CPU Change Box](/vm-management_create-manage-vm_enable-cpu-hotplug_config-box.webp)
 
-   :::info
+   :::warning
 
-   Memory changes expose an additional **Save & Restart** button. This button allows you to save the changes and
-   immediately restart the VM to apply the changes. Otherwise, the changes are applied through live migration.
+   You must restart the VM to apply any changes made to **Cores** or **Threads**.
 
    :::
 
 5. Select **Save**.
+
+6. A [live migration](https://kubevirt.io/user-guide/compute/live_migration/) of the VM occurs automatically if changes
+   have been made to the CPU sockets or memory. If you adjusted the cores or threads, you must restart the VM to apply
+   those changes.
 
 </TabItem>
 <TabItem label="YAML" value="yaml">
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
-2. From the left **Main Menu**, select **Clusters**, and then select the cluster with the VM you want to update.
+2. From the left main menu, select **Clusters**, and then select the cluster with the VM you want to update.
 
 3. Select the **Virtual Machines** tab, then select the necessary VM and open its **YAML** tab.
 
    ![Palette with the VM YAML editor displayed.](/vm-management_create-manage-vm_enable-cpu-hotplug_vm-yaml-editor.webp)
 
-4. In the VM YAML configuration editor, navigate to the VM object configuration and update the number of CPU sockets or
-   memory. Consider the following examples for reference.
+4. In the VM YAML configuration editor, navigate to the VM object configuration and update the number of CPU cores,
+   sockets, threads, or memory. Consider the following examples for reference.
 
-   ```yaml
+   ```yaml hideClipboard {6-8}
    spec:
      template:
        spec:
          domain:
            cpu:
-             // highlight-next-line
-             sockets: 5
+             cores: 3
+             sockets: 4
+             threads: 1
    ```
 
-   ```yaml
+   ```yaml hideClipboard {6}
    spec:
      template:
        spec:
          domain:
            memory:
-            // highlight-next-line
              guest: 2Gi
    ```
 
@@ -92,7 +95,7 @@ Select the tab that corresponds to the method you want to use to enable CPU or m
 6. To track the update process, in the YAML configuration editor, select **Reload** and monitor for a status update
    similar to the following example.
 
-   ```yaml
+   ```yaml hideClipboard {10}
    status:
      conditions:
        - lastProbeTime: null
@@ -102,7 +105,6 @@ Select the tab that corresponds to the method you want to use to enable CPU or m
        - lastProbeTime: null
          lastTransitionTime: null
          status: "True"
-         // highlight-next-line
          type: HotVCPUChange
    ```
 
@@ -117,7 +119,7 @@ Select the tab that corresponds to the method you want to use to enable CPU or m
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
-2. From the left **Main Menu**, select **Clusters**, and then select the cluster with the VM you want to update.
+2. From the left main menu, select **Clusters**, and then select the cluster with the VM you want to update.
 
 3. Select the **Virtual Machines** tab, then select the necessary VM and open its **Console** tab.
 
@@ -130,7 +132,17 @@ Select the tab that corresponds to the method you want to use to enable CPU or m
    To verify the number of CPUs and cores, issue the following command.
 
    ```bash
-    lscpu
+   lscpu
+   ```
+
+   ```shell hideClipboard title="Example lscpu output"
+   ...
+   CPU(s):              12
+   ...
+   Thread(s) per core:  1
+   Core(s) per socket:  3
+   Socket(s):           4
+   ...
    ```
 
    To verify the memory size, issue the following command.
@@ -139,36 +151,40 @@ Select the tab that corresponds to the method you want to use to enable CPU or m
    free --human
    ```
 
+   ```shell hideClipboard title="Example free output"
+                 total        used        free      shared  buff/cache   available
+   Mem:          2.0Gi       168Mi       1.5Gi       8.0Mi       320Mi       1.7Gi
+   Swap:         2.0Gi          0B       2.0Gi
+   ```
+
 </TabItem>
 
 <TabItem label="YAML" value="yaml">
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
-2. From the left **Main Menu**, select **Clusters**, and then select the cluster with the VM where you enabled the CPU
-   or memory hotplug.
+2. From the left main menu, select **Clusters**, and then select the cluster with the VM where you enabled the CPU or
+   memory hotplug.
 
 3. Select the **Virtual Machines** tab, then select the necessary VM and open its **YAML** tab.
 
 4. In the VM YAML configuration editor, navigate to the VM object and status configurations and verify that they specify
    the expected number of CPUs or memory size. Consider the following example for reference.
 
-   ```yaml
+   ```yaml hideClipboard {6-8,12-14}
    spec:
      template:
        spec:
          domain:
            cpu:
-             cores: 1
-             // highlight-next-line
-             sockets: 5
+             cores: 3
+             sockets: 4
              threads: 1
     ...
     status:
       currentCPUTopology:
-        cores: 1
-        // highlight-next-line
-        sockets: 5
+        cores: 3
+        sockets: 4
         threads: 1
    ```
 
