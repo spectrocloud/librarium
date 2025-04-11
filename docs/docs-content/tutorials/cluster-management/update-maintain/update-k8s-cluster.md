@@ -394,8 +394,8 @@ We encourage you to check out the reference resources below to learn more about 
 <TabItem label="Terraform workflow" value="Terraform">
 
 We recommend following the **Cluster Mangement with Terraform** guide for your cloud provider of choice. These guides
-provide an end to end tutorial for Azure, GCP, AWS, and VMware hosted platforms and ensure your test environment is
-provisioned and compatible with the tutoriails terrform scripts.
+provide an end-to-end tutorial for Azure, GCP, AWS, and VMware-hosted platforms and ensure your test environment is
+provisioned and compatible with the tutorial Terraform scripts.
 
 - [Cluster Management with Terraform - Azure](/getting-started/azure/deploy-manage-k8s-cluster-tf.md)
 - [Cluster Management with Terraform - AWS](/getting-started/aws/deploy-manage-k8s-cluster-tf.md)
