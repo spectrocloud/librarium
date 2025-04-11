@@ -62,7 +62,7 @@ You may use one of our built-in registry packs or your own custom OCI registry.
 
    - For Harbor, modify the `charts.harbor.harborAdminPassword` parameter.
 
-   - For Zot, modify the `charts.zot.registryPassword` parameter.
+   - For Zot, modify the `charts.zot.registry.password` parameter.
 
 6. Click **Confirm & Create**.
 
@@ -76,8 +76,7 @@ You may use one of our built-in registry packs or your own custom OCI registry.
    - **Harbor**. Select this if you want to use the built **Harbor Internal Registry** pack and use Harbor as your
      in-cluster primary registry.
 
-9. Under `inClusterRegistry.projects`, the default project name under which the images are stored is `spectro-images`,
-   and packs are stored under `spectro-packs`. You may change these values as you see fit.
+9. Under `inClusterRegistry.projects`, the default project name under which the images are stored is `spectro-images`. You may change this value as you see fit.
 
 10. Click **Confirm & Create** to finish customizing the **Registry Connect** pack.
 
