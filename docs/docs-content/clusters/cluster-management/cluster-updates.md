@@ -21,7 +21,9 @@ repave schedule and methodology. Refer to
 
 :::
 
-## Limitations
+## Update a Cluster
+
+### Limitations
 
 :::warning
 
@@ -45,11 +47,11 @@ upgrading, you review the information provided in the
   - For K3s, refer to [K3s Upgrades](https://docs.k3s.io/upgrades#version-specific-caveats)
   - For RKE2, refer to [RKE2 Manual Upgrades](https://docs.rke2.io/upgrades/manual_upgrade)
 
-## Prerequisites
+### Prerequisites
 
 - An active Kubernetes cluster in Palette.
 
-## Update a Cluster
+### Update a Cluster
 
 <Tabs groupId="update-method">
 <TabItem value="profile-version" label="Use a new cluster profile version">
@@ -129,7 +131,7 @@ guidance on creating a new cluster profile version.
 </TabItem>
 </Tabs>
 
-## Validation
+### Validation
 
 You can follow these steps to validate all cluster update approaches.
 
@@ -141,20 +143,105 @@ You can follow these steps to validate all cluster update approaches.
 
 4. Confirm that the cluster is now using an updated profile.
 
-## Advanced Cluster Update Consideration
+## Palette Reconciliation Behavior
 
-When cluster profile updates are applied, Palette will apply the changes to the cluster but not delete any extraneous
-containers. In some instances, this may be appropriate, but in others, deleting the extraneous containers will be
-necessary (the most common use case will be to reduce resource usage costs). This can be achieved by utilizing one of
-two methods.
+When cluster profile updates are applied, Palette will apply the changes to the cluster but will not delete any resources that are no longer in use. This may be appropriate in some instances, but removing those resources will be necessary in others. This can be achieved by utilizing one of the two following methods.
 
-The first would be to utilize a clean deployment with a new cluster profile. The previous version could be deleted once
-the new cluster and cluster profile are deployed. The challenge, however, is when particular containers are in use.
+The first would be to utilize a clean deployment with a new cluster profile. The previous version could be deleted once the new cluster and cluster profile are deployed. The challenge, however, is when particular resources are in use.
 
-The second option is to use kubectl to scale the artifact container count to 0. While deleting the container using
-something like K9s is possible, Palette will recreate it immediately.
+The second option is to use `kubectl` to scale the resource count to 0. While deleting the resource using something like K9s is possible, Palette will recreate it immediately.
 
-`kubectl scale deployment <deployment name> --replicas=0 <container name> --kubeconfig=<Admin Kubeconfig file> --namespace <deployment namespace>`
+### Limitations
 
-You can retrieve the deployment name and deployment namespace from **Clusters** > **Workloads** > **Deployments**. The
-container name can be retrieved from **Clusters** > **Workloads** > **Pods** by filtering for the deployment namespace.
+:::warning
+
+Once you upgrade your cluster to a new Kubernetes version, you will not be able to downgrade. We recommend that, before
+upgrading, you review the information provided in the
+[Kubernetes Upgrades](../../integrations/kubernetes-support.md#kubernetes-upgrades) section.
+
+:::
+
+- You cannot update a cluster while its status is still **Provisioning**.
+
+- You cannot change the Container Network Interface (CNI) of an Edge cluster. You must delete and re-create the cluster
+  instead. For more information about creating an Edge cluster, refer to
+  [Create Cluster Definition](../edge/site-deployment/cluster-deployment.md).
+
+- Avoid skipping minor versions when upgrading the Kubernetes version of a cluster. Refer to the documentation of your
+  Kubernetes distribution for upgrade guidance and follow the recommended upgrade paths.
+
+  - For PXK and PXK-E, refer to
+    [Upgrade Kubeadm Clusters](https://kubernetes.io/docs/tasks/administer-cluster/kubeadm/kubeadm-upgrade/).
+  - For K3s, refer to [K3s Upgrades](https://docs.k3s.io/upgrades#version-specific-caveats)
+  - For RKE2, refer to [RKE2 Manual Upgrades](https://docs.rke2.io/upgrades/manual_upgrade)
+
+
+### Prerequisites
+
+- An active Kubernetes cluster in Palette.
+- A terminal client
+
+### Enablement
+
+The steps below show how we can use the second option while deploying the Hello Universe application pack and updating the cluster profile. In this example, we create an AWS cluster called cluster-update-deletion. We will use Palette and a terminal application.
+
+1. Log into Palette and create a cluster profile with two versions. The base layers should be ubuntu-aws, Kubernetes, cni-calico, and csi-aws-ebs. The App Services layer will use the Hello Universe from the Palette Community Registry (OCI).
+   
+   The first profile version (1.0.0) should be the Hello Universe 1.2.0 pack with the API disabled. 
+   
+   The second version (1.1.0) should be the Hello Universe 1.2.0 pack with the API enabled. 
+   
+2. Build a cluster using the profile version 1.0.0 (takes about 15-20 min)
+   
+3. Download the Admin kubeconfig file from the cluster Overview.
+   
+   Sample output:
+
+  ![How to download Admin kubeconfig file from Palette](/clusters_management_updates_kubeconfig-download.webp)   
+
+4. Go your terminal application and run the following command
+
+ ```kubectl get pods --kubeconfig=admin.cluster-update-deletion.kubeconfig --namespace=hello-universe -o=custom-columns="POD_NAME:.metadata.name,CONTAINER_NAME:.status.containerStatuses[].name,CONTAINER_ID:.status.containerStatuses[].containerID"```
+   
+5. This command will show the containers in the cluster that are in the hello universe namespace. It will include the pod name, container name, and container ID. You can use these identifiers with various `kubectl` options.
+   
+ Sample output: 
+
+![Using kubectl to see what containers are running](/clusters_management_updates_kubectl-noapi-hellouniverse.webp) 
+
+6. Return to Palette and update the cluster using the profile version 1.1.0 (takes about 1-2 min).
+   
+7. Return to the terminal and run the following command
+   
+ ```kubectl get pods --kubeconfig=admin.cluster-update-deletion.kubeconfig --namespace=hello-universe -o=custom-columns="POD_NAME:.metadata.name,CONTAINER_NAME:.status.containerStatuses[].name,CONTAINER_ID:.status.containerStatuses[].containerID"```
+
+Sample output:
+
+![Using kubectl to see what containers are running in the updated cluster](/clusters_management_updates_kubectl-api-hellouniverse.webp) 
+
+With the cluster updated, we can see that the previous version of the Hello Universe app remains. This container, however, is not used with the API version and is no longer needed. 
+
+8. Locate the pod name of the container you want to remove and run the following command.
+   
+   
+ ``` kubectl scale deployment hello-universe-deployment --replicas=0 hello-universe-deployment-6854947c67-jtlp7 --kubeconfig=cluster-update-deletion.kubeconfig --namespace hello-universe ```
+
+   Sample output:
+
+![Using kubectl to remove resources no longer in use](/clusters_management_updates_kubectl-api-hellouniverse-removed.webp)    
+
+This command will reduce the container count to 0, effectively stopping the container. If you have multiple clusters with previous version containers, you could put the command into a script to help clear out the older containers.
+
+### Validation
+
+You can follow these steps to validate all cluster update approaches.
+
+1. Log in to [Palette](https://console.spectrocloud.com/).
+    
+2. Navigate to the left **Main Menu** and select **Clusters**.
+    
+3. Select the cluster you modified, and navigate to the **Workloads** tab of the cluster.
+   
+4. Select **Pods** and filter for the deployment namespace.
+    
+5. Confirm that the unnecessary resources have been removed.
