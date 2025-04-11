@@ -24,7 +24,7 @@
     "lint:fix": "npm run lint -- --fix",
     "format": "prettier --write \"**/*.{js,jsx,json,ts,tsx,md,mdx,css}\"",
     "format-check": "prettier . --check",
-    "copy-cve-data": "mkdir -p static/security-data/default && cp .docusaurus/security-bulletins/default/data.json static/security-data/data.json"
+    "copy-cve-data": "mkdir -p static/security-data && cp .docusaurus/security-bulletins/default/data.json static/security-data/data.json"
   },
   "lint-staged": {
     "**/*.{js,jsx,json,ts,tsx,md,mdx,css}": "npm run format"
