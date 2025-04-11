@@ -25,7 +25,7 @@ packages, or cluster manifests. Packs serve as blueprints to the provisioning an
 the versions of the container images that Palette will install for you. Cluster profiles provide consistency across
 environments during the cluster creation process and when maintaining your clusters. Check out the
 [cluster profiles](../../../profiles/cluster-profiles/cluster-profiles.md) section to learn more about creating and
-using them. Once provisioned, there are three main ways to update your Palette deployments.
+using them.
 
 | Method                   | Description                                                                        | Cluster application process                                                                                                                                                                                |
 | ------------------------ | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -47,81 +47,16 @@ backups before making any cluster profile version changes in your production env
 
 ## Prerequisites
 
-This tutorial builds upon steps in [Getting Started](../../../getting-started/getting-started.md). Complete the steps
-for your preferred cloud provider. To complete it, you will need the following items.
-
 <Tabs groupId="tutorial">
 <TabItem label="UI workflow" value="UI">
 
-- A public cloud account from one of these providers:
+This tutorial builds upon steps in [Getting Started](../../../getting-started/getting-started.md). Complete the steps
+for your preferred cloud provider.
 
-- [AWS](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account)
-- [Azure](https://learn.microsoft.com/en-us/training/modules/create-an-azure-account)
-- [GCP](https://cloud.google.com/docs/get-started)
-
-- Register the [cloud account with Palette](https://console.spectrocloud.com/auth/signup). Use the following resources
-  for additional guidance.
-
-- [Register and Manage AWS Accounts](../../../clusters/public-cloud/aws/add-aws-accounts.md)
-- [Register and Manage Azure Cloud Accounts](../../../clusters/public-cloud/azure/azure-cloud.md)
-- [Register and Manage GCP Accounts](../../../clusters/public-cloud/gcp/add-gcp-accounts.md)
-
-- An SSH Key Pair. Use the [Create and Upload an SSH Key](../../../clusters/cluster-management/ssh/ssh-keys.md) guide to
-  learn how to create an SSH key and upload it to Palette.
-
-- AWS users must create an AWS Key pair before starting the tutorial. If you need additional guidance, check out the
-  [Create EC2 SSH Key Pair](https://docs.aws.amazon.com/ground-station/latest/ug/create-ec2-ssh-key-pair.html) tutorial.
-
-</TabItem>
-
-<TabItem label="Terraform workflow" value="Terraform">
-
-- Basic knowledge of containers.
-- [Docker Desktop](https://www.docker.com/products/docker-desktop/), [Podman](https://podman.io/docs/installation) or
-  another container management tool.
-- A public cloud account from one of these providers:
-- [AWS](https://aws.amazon.com/premiumsupport/knowledge-center/create-and-activate-aws-account)
-- [Azure](https://learn.microsoft.com/en-us/training/modules/create-an-azure-account)
-- [GCP](https://cloud.google.com/docs/get-started)
-- Register the [cloud account with Palette](https://console.spectrocloud.com/auth/signup). Use the following resource
-  for additional guidance.
-- [Register and Manage AWS Accounts](../../../clusters/public-cloud/aws/add-aws-accounts.md)
-- [Register and Manage Azure Cloud Accounts](../../../clusters/public-cloud/azure/azure-cloud.md)
-- [Register and Manage GCP Accounts](../../../clusters/public-cloud/gcp/add-gcp-accounts.md)
-- Install the [Terraform CLI](https://developer.hashicorp.com/terraform/install) v1.4.0 or greater according to the
-  setup steps for your operating system.
-- A Spectro Cloud API key is required to interact with the Palette API. Use the
-  [Create API Key](../../../user-management/authentication/api-key/create-api-key.md) guide to learn how to create one.
-
-In your terminal session, issue the following command to export the API key as an environment variable. Replace the
-placeholder `YourAPIKeyHere` with your previously copied API key.
-
-```shell
-export SPECTROCLOUD_APIKEY=YourAPIKeyHere
-```
-
-Open a terminal window and download the tutorial code from GitHub.
-
-```shell
-git clone git@github.com:spectrocloud/tutorials.git
-```
-
-Change the directory to the tutorial folder.
-
-```shell
-cd tutorials/
-```
-
-<PartialsComponent category="tutorials" name="checkout-tutorials-tag" />
-
-Change the directory to the tutorial code.
-
-```shell
-cd terraform/iaas-cluster-update-tf/
-```
-
-</TabItem>
-</Tabs>
+- [Cluster Management with Terraform - Azure](/getting-started/azure/deploy-k8s-cluster.md) 
+- [Cluster Management with Terraform - AWS](/getting-started/aws/deploy-k8s-cluster.md) 
+- [Cluster Management with Terraform - GCP](/getting-started/gcp/deploy-k8s-cluster.md) 
+- [Cluster Management with Terraform - VMware](/getting-started/vmware/deploy-k8s-cluster.md)
 
 ## Set Up Clusters
 
@@ -453,3 +388,19 @@ We encourage you to check out the reference resources below to learn more about 
 - [Hello Universe GitHub repository](https://github.com/spectrocloud/hello-universe)
 
 - [Hello Universe API GitHub repository](https://github.com/spectrocloud/hello-universe-api)
+
+</TabItem>
+
+<TabItem label="Terraform workflow" value="Terraform">
+
+We recommend following the **Cluster Mangement with Terraform** guide for your cloud provider of choice. These guides provide an end to end tutorial for Azure, GCP, AWS, and VMware hosted platforms and ensure your test environment is provisioned and compatible with the tutoriails terrform scripts.
+
+- [Cluster Management with Terraform - Azure](/getting-started/azure/deploy-manage-k8s-cluster-tf.md) 
+- [Cluster Management with Terraform - AWS](/getting-started/aws/deploy-manage-k8s-cluster-tf.md) 
+- [Cluster Management with Terraform - GCP](/getting-started/gcp/deploy-manage-k8s-cluster-tf.md) 
+- [Cluster Management with Terraform - VMware](/getting-started/vmware/deploy-manage-k8s-cluster-tf.md)
+
+---
+
+</TabItem>
+</Tabs>
