@@ -17,7 +17,8 @@ one.
 
 ## Get Started
 
- Check out the [Getting Started](/getting-started/) tutorials learn how to deploy a cluster to a public cloud provider by using Palette.
+Check out the [Getting Started](/getting-started/) tutorials learn how to deploy a cluster to a public cloud provider by
+using Palette.
 
 ## Supported Environments
 
