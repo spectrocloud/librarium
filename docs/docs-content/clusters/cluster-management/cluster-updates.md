@@ -141,17 +141,20 @@ You can follow these steps to validate all cluster update approaches.
 
 4. Confirm that the cluster is now using an updated profile.
 
-
 ## Advanced Cluster Update Consideration
 
-When cluster profile updates are applied, Palette will apply the changes to the cluster but not delete any extraneous containers. In some instances, this may be appropriate, but in others, deleting the extraneous containers will be necessary (the most common use case will be to reduce resource usage costs). This can be achieved by utilizing one of two methods. 
+When cluster profile updates are applied, Palette will apply the changes to the cluster but not delete any extraneous
+containers. In some instances, this may be appropriate, but in others, deleting the extraneous containers will be
+necessary (the most common use case will be to reduce resource usage costs). This can be achieved by utilizing one of
+two methods.
 
-The first would be to utilize a clean deployment with a new cluster profile. The previous version could be deleted once the new cluster and cluster profile are deployed. The challenge, however, is when particular containers are in use. 
+The first would be to utilize a clean deployment with a new cluster profile. The previous version could be deleted once
+the new cluster and cluster profile are deployed. The challenge, however, is when particular containers are in use.
 
-The second option is to use kubectl to scale the artifact container count to 0. While deleting the container using something like K9s is possible, Palette will recreate it immediately.  
+The second option is to use kubectl to scale the artifact container count to 0. While deleting the container using
+something like K9s is possible, Palette will recreate it immediately.
 
- ``` kubectl scale deployment <deployment name> --replicas=0 <container name> --kubeconfig=<Admin Kubeconfig file> --namespace <deployment namespace> ```
+`kubectl scale deployment <deployment name> --replicas=0 <container name> --kubeconfig=<Admin Kubeconfig file> --namespace <deployment namespace>`
 
-You can retrieve the deployment name and deployment namespace from **Clusters** > **Workloads** > **Deployments**. The container name can be retrieved from **Clusters** > **Workloads** > **Pods** by filtering for the deployment namespace.
-
-
+You can retrieve the deployment name and deployment namespace from **Clusters** > **Workloads** > **Deployments**. The
+container name can be retrieved from **Clusters** > **Workloads** > **Pods** by filtering for the deployment namespace.
