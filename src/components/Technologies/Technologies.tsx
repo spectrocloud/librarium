@@ -10,7 +10,7 @@ import { Collapse } from "antd";
 import "./technologies.antd.css";
 import IconMapper from "../IconMapper/IconMapper";
 
-const searchOptions: Fuse.IFuseOptions<FrontMatterData> = {
+const searchOptions = {
   threshold: 0.5,
   keys: ["title"],
 };
@@ -95,7 +95,7 @@ export default function Technologies({ data, repositories }: TechnologiesProps) 
     });
 
     if (searchValue) {
-      const fuse = new Fuse(filteredCards, searchOptions);
+      const fuse = new Fuse<FrontMatterData>(filteredCards, searchOptions);
       filteredCards = fuse.search(searchValue).map(({ item }) => item);
     }
 
