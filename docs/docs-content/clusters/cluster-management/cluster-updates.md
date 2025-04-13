@@ -201,7 +201,7 @@ terminal application.
 2. Build a cluster using the profile version 1.0.0 (takes about 15-20 min)
 3. Download the Admin kubeconfig file from the cluster Overview.
 
-   Sample output:
+   Sample output
 
 ![How to download Admin kubeconfig file from Palette](/clusters_management_updates_kubeconfig-download.webp)
 
@@ -209,10 +209,10 @@ terminal application.
 
 `kubectl get pods --kubeconfig=admin.cluster-update-deletion.kubeconfig --namespace=hello-universe -o=custom-columns="POD_NAME:.metadata.name,CONTAINER_NAME:.status.containerStatuses[].name,CONTAINER_ID:.status.containerStatuses[].containerID"`
 
-5. This command will show the containers in the cluster that are in the hello universe namespace. It will include the
+5. This command will display the containers in the cluster that are in the hello universe namespace. It will include the
    pod name, container name, and container ID. You can use these identifiers with various `kubectl` options.
 
-Sample output:
+Sample output
 
 ![Using kubectl to see what containers are running](/clusters_management_updates_kubectl-noapi-hellouniverse.webp)
 
@@ -221,7 +221,7 @@ Sample output:
 
 `kubectl get pods --kubeconfig=admin.cluster-update-deletion.kubeconfig --namespace=hello-universe -o=custom-columns="POD_NAME:.metadata.name,CONTAINER_NAME:.status.containerStatuses[].name,CONTAINER_ID:.status.containerStatuses[].containerID"`
 
-Sample output:
+Sample output
 
 ![Using kubectl to see what containers are running in the updated cluster](/clusters_management_updates_kubectl-api-hellouniverse.webp)
 
@@ -232,12 +232,12 @@ however, is not used with the API version and is no longer needed.
 
 `kubectl scale deployment hello-universe-deployment --replicas=0 hello-universe-deployment-6854947c67-jtlp7 --kubeconfig=cluster-update-deletion.kubeconfig --namespace hello-universe`
 
-Sample output:
+Sample output
 
 ![Using kubectl to remove resources no longer in use](/clusters_management_updates_kubectl-api-hellouniverse-removed.webp)
 
 This command will reduce the container count to 0, effectively stopping the container. If you have multiple clusters
-with previous version containers, you could put the command into a script to help clear out the older containers.
+with resources no longer in use, you could put the command into a script to help remove those additional resources.
 
 ### Validation
 
