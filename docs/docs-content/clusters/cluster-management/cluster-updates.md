@@ -148,8 +148,7 @@ You can follow these steps to validate all cluster update approaches.
 When cluster profile updates are applied, Palette will apply the changes to the cluster but will not delete any
 resources that are no longer in use. Depending on the situation, you can choose to keep or remove these resources. To remove the resources, utilize one of the following two methods.
 
-The first would be to utilize a clean deployment with a new cluster profile. The previous version could be deleted once
-the new cluster and cluster profile are deployed. The challenge, however, is when particular resources are in use.
+The first method would be a clean deployment with a new cluster profile. Once the new cluster and cluster profile are deployed, the previous version could be deleted. The challenge, however, is when particular resources are in use.
 
 The second option is to use `kubectl` to scale the resource count to 0. While deleting the resource using something like
 K9s is possible, Palette will recreate it immediately.
