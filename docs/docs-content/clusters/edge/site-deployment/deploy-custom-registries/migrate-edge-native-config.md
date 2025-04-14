@@ -8,13 +8,13 @@ sidebar_position: 80
 tags: ["edge"]
 ---
 
-Disconnected Edge clusters are required to use a in-cluster primary registry to store images needed for cluster
+Disconnected Edge clusters are required to use an in-cluster primary registry to store images needed for cluster
 deployment. Previously, this was implemented using the **Harbor Edge-Native Config** pack, which installs the Harbor
 registry as well as handles image pull redirects.
 
-The **Harbor Edge-Native Config** has been deprecated and will no longer be supported in a future release. If you want
-to keep your cluster's registry infrastructure up-to-date, you need migrate off of the legacy pack and use the new
-**Registry Connect** pack to implement the Harbor registry. This allows you to keep using the Harbor registry as the
+The **Harbor Edge-Native Config** pack has been deprecated and will no longer be supported in a future release. If you
+want to keep your cluster's registry infrastructure up-to-date, you need to migrate off of the legacy pack and use the
+new **Registry Connect** pack to implement the Harbor registry. This allows you to keep using the Harbor registry as the
 primary registry and keep it up-to-date with the latest upstream updates.
 
 ## Limitations
@@ -30,9 +30,9 @@ primary registry and keep it up-to-date with the latest upstream updates.
 
 1. Log in to [Palette](https:/console.spectrocloud.com).
 
-2. From the left **Main Menu**, click **Profiles**.
+2. From the left main menu, click **Profiles**.
 
-3. Select the profile you use to deploy your cluster.
+3. Select the profile you want to use to deploy your cluster.
 
 4. Remove the **Harbor Edge-Native Config** pack from the profile.
 
@@ -41,9 +41,9 @@ primary registry and keep it up-to-date with the latest upstream updates.
 6. In the **values.yaml**, update `charts.harbor.harborAdminPassword` to the _same password_ as your existing Harbor
    registry.
 
-7. If you have previously changed the serving port, PVC, or TLS certificates used by Harbor, you must modify new Harbor
-   pack parameters to match your previous configurations. You update node port, TLS certificates, and PVC configuration
-   using the following parameters.
+7. If you have previously changed the serving port, PVC, or TLS certificates used by Harbor, you must modify the new
+   Harbor pack parameters to match your previous configurations. Update node port, TLS certificates, and PVC
+   configuration using the following parameters.
 
    - `charts.harbor.expose.nodePort`
    - `charts.harbor.expose.tls`

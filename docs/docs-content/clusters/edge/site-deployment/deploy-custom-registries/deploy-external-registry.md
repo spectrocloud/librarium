@@ -43,7 +43,7 @@ use and protect against outages. For more information, refer to
   from the external registry even if you provide a content bundle, and deployment will fail if the necessary images
   cannot be located in the external registry. For more information, refer to
   [Build Content Bundles](../../edgeforge-workflow/palette-canvos/build-content-bundle.md) and
-  [Deploy with Primary Registry](../../site-deployment/deploy-custom-registries/deploy-primary-registry.md).
+  [Deploy Cluster with Primary Registry](../../site-deployment/deploy-custom-registries/deploy-primary-registry.md).
 
 ## Prerequisites
 
