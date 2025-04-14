@@ -214,15 +214,9 @@ has the API preset option disabled.
 
 7. Return to the terminal and run the following command
 
-<<<<<<< HEAD
   ```shell 
   kubectl get pods --kubeconfig=admin.cluster-update-deletion.kubeconfig --namespace=hello-universe -o=custom-columns="POD_NAME:.metadata.name,CONTAINER_NAME:.status.containerStatuses[].name,CONTAINER_ID:.status.containerStatuses[].containerID"
   ```
-=======
-```shell
-kubectl get pods --kubeconfig=admin.cluster-update-deletion.kubeconfig --namespace=hello-universe -o=custom-columns="POD_NAME:.metadata.name,CONTAINER_NAME:.status.containerStatuses[].name,CONTAINER_ID:.status.containerStatuses[].containerID"
-```
->>>>>>> 59c6efa3ee2c4fc336a8e436a1671d8cc5ef9baf
 
   Sample output
 
@@ -234,13 +228,8 @@ kubectl get pods --kubeconfig=admin.cluster-update-deletion.kubeconfig --namespa
   ui-f7ff4ddc5-hcv72                           ui               containerd://40f78fb4aef00445dc9cf051ca57d61f935594cbe1e426d1f193624769ac132d
   ```
 
-<<<<<<< HEAD
   With the cluster updated, we notice that the previous version of the Hello Universe app remains. This container,
   however, is not used with the API version and is no longer needed.
-=======
-With the cluster updated, we can see that the previous version of the Hello Universe app remains. This container,
-however, is not used with the API version and is no longer needed.
->>>>>>> 59c6efa3ee2c4fc336a8e436a1671d8cc5ef9baf
 
 8. Locate the pod name of the container you want to remove and run the following command.
 
