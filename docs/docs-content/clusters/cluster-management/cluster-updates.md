@@ -188,15 +188,24 @@ upgrading, you review the information provided in the
 
 The following steps provide an example of how to clean up unneeded resources using `kubectl`. In this example, an AWS cluster called **cluster-update-deletion** is created using a cluster profile with the <VersionedLink text="Hello Universe" url="/integrations/packs/?pack=hello-universe" /> included. The Hello Universe pack has the API preset option disabled.
 
-1. Log into Palette and create a cluster profile with two versions. The base layers should be ubuntu-aws, Kubernetes,
-   cni-calico, and csi-aws-ebs. The App Services layer will use the Hello Universe from the Palette Community Registry
-   (OCI).
+1. Log in to Palette and create a cluster profile with two versions for an AWS IaaS cluster that includes the Hello Universe pack. For example:
 
-   The first profile version (1.0.0) should be the Hello Universe 1.2.0 pack with the API disabled.
+   **Version 1.0.0**.  
+   * OS = **ubuntu-aws**
+   * Kubernetes = **kubernetes**
+   * Network = **cni-calico**
+   * Storage = **csi-aws-ebs**
+   * App services = **hellouniverse** with the API preset option disabled.
 
-   The second version (1.1.0) should be the Hello Universe 1.2.0 pack with the API enabled.
+   **Version 1.1.0**.  
+   * OS = **ubuntu-aws**
+   * Kubernetes = **kubernetes**
+   * Network = **cni-calico**
+   * Storage = **csi-aws-ebs**
+   * App services = **hellouniverse** with the API preset option enabled.
 
-2. Build a cluster using the profile version 1.0.0 (takes about 15-20 min)
+2. Build a cluster using cluster profile version 1.0.0. This will take 15-20 minutes.
+
 3. Download the Admin kubeconfig file from the cluster Overview.
 
    Sample output
