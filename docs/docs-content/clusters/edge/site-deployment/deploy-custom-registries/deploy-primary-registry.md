@@ -39,6 +39,9 @@ Harbor registry using **Registry Connect**, refer to
 - An Edge cluster profile. For information about how to create a cluster profile for Edge, refer to
   [Model Edge Cluster Profile](../../site-deployment/model-profile.md).
 
+- Your Palette agent version is 4.6.13 or later. For connected clusters, your Palette/VerteX instance version is 4.6.19
+  or later.
+
 ## Deploy with a Primary Registry
 
 You may use one of our built-in registry packs or your own custom OCI registry.

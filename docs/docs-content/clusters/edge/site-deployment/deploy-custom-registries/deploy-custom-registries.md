@@ -7,8 +7,8 @@ sidebar_position: 100
 tags: ["edge"]
 ---
 
-During Edge cluster deployment, the Palette agent must download the necessary images required by the cluster. The
-Palette agent divides the images into two categories in terms of when and from where to download them:
+During Edge cluster deployment, the Palette agent downloads the necessary images required by the cluster. The Palette
+agent divides the images into two categories in terms of when and from where to download them:
 
 - Provider images. These images are Kairos-based container images for each supported Operating System (OS) and
   Kubernetes combination built during EdgeForge and pushed to an image registry. Provider images are always downloaded
