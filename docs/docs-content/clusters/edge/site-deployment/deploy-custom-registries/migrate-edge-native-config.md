@@ -12,9 +12,9 @@ Disconnected Edge clusters are required to use an in-cluster primary registry to
 deployment. Previously, this was implemented using the **Harbor Edge-Native Config** pack, which installs the Harbor
 registry as well as handles image pull redirects.
 
-The **Harbor Edge-Native Config** pack has been deprecated and will no longer be supported in a future release. If you want
-to keep your cluster's registry infrastructure up-to-date, you need to migrate off of the legacy pack and use the new
-**Registry Connect** pack to implement the Harbor registry. This allows you to keep using the Harbor registry as the
+The **Harbor Edge-Native Config** pack has been deprecated and will no longer be supported in a future release. If you
+want to keep your cluster's registry infrastructure up-to-date, you need to migrate off of the legacy pack and use the
+new **Registry Connect** pack to implement the Harbor registry. This allows you to keep using the Harbor registry as the
 primary registry and keep it up-to-date with the latest upstream updates.
 
 ## Limitations
@@ -41,9 +41,9 @@ primary registry and keep it up-to-date with the latest upstream updates.
 6. In the **values.yaml**, update `charts.harbor.harborAdminPassword` to the _same password_ as your existing Harbor
    registry.
 
-7. If you have previously changed the serving port, PVC, or TLS certificates used by Harbor, you must modify the new Harbor
-   pack parameters to match your previous configurations. Update node port, TLS certificates, and PVC configuration
-   using the following parameters.
+7. If you have previously changed the serving port, PVC, or TLS certificates used by Harbor, you must modify the new
+   Harbor pack parameters to match your previous configurations. Update node port, TLS certificates, and PVC
+   configuration using the following parameters.
 
    - `charts.harbor.expose.nodePort`
    - `charts.harbor.expose.tls`
