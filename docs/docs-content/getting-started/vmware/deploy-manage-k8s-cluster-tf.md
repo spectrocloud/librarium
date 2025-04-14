@@ -62,7 +62,7 @@ docker run --name tutorialContainer --interactive --tty ghcr.io/spectrocloud/tut
 Navigate to the folder that contains the tutorial code.
 
 ```shell
-cd /terraform/getting-started-deployment-tf
+cd terraform/getting-started-deployment-tf
 ```
 
 :::warning
@@ -98,7 +98,7 @@ podman run --name tutorialContainer --interactive --tty ghcr.io/spectrocloud/tut
 Navigate to the folder that contains the tutorial code.
 
 ```shell
-cd /terraform/getting-started-deployment-tf
+cd terraform/getting-started-deployment-tf
 ```
 
 :::warning
@@ -132,7 +132,7 @@ git checkout v1.1.10
 Navigate to the folder that contains the tutorial code.
 
 ```shell
-cd /terraform/getting-started-deployment-tf
+cd terraform/getting-started-deployment-tf
 ```
 
 </TabItem>
