@@ -146,8 +146,7 @@ You can follow these steps to validate all cluster update approaches.
 ## Palette Reconciliation Behavior
 
 When cluster profile updates are applied, Palette will apply the changes to the cluster but will not delete any
-resources that are no longer in use. This may be appropriate in some instances, but removing those resources will be
-necessary in others. This can be achieved by utilizing one of the two following methods.
+resources that are no longer in use. Depending on the situation, you can choose to keep or remove these resources. To remove the resources, utilize one of the following two methods.
 
 The first would be to utilize a clean deployment with a new cluster profile. The previous version could be deleted once
 the new cluster and cluster profile are deployed. The challenge, however, is when particular resources are in use.
