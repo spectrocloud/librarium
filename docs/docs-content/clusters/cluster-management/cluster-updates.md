@@ -145,15 +145,6 @@ You can follow these steps to validate all cluster update approaches.
 
 ## Palette Reconciliation Behavior
 
-<<<<<<< HEAD
-When cluster profile updates are applied, Palette will apply the changes to the cluster, but will not delete any
-resources that are no longer in use. Depending on the situation, you can choose to keep or remove these resources. To remove the resources, utilize one of the two following methods.
-
-The first method would be a clean deployment with a new cluster profile. Once the new cluster and cluster profile are deployed, the previous version could be deleted. The challenge, however, is when particular resources are in use.
-
-The second method is to delete the resource. While deleting the resource using something like
-K9s is possible, Palette will recreate it immediately. Scaling replicas to zero via `kubectl` ensures the resource is effectively removed.
-=======
 When cluster profile updates are applied, Palette will apply the changes to the cluster but will not delete any
 resources that are no longer in use. Depending on the situation, you can choose to keep or remove these resources. To
 remove the resources, utilize one of the following two methods.
@@ -166,7 +157,6 @@ K9s is possible, Palette will recreate it immediately. Scaling replicas to zero 
 effectively removed.
 
 This section provides guidance on removing resources using the second method.
->>>>>>> ffbe691aecdec580e7763fe301ca397ace165f05
 
 This section provides guidance on removing the resources using the second method.
 
@@ -177,25 +167,6 @@ This section provides guidance on removing the resources using the second method
 
 ### Enablement
 
-<<<<<<< HEAD
-The following steps provide an example of how to clean up unneeded resources using `kubectl`. In this example, an AWS cluster called **cluster-update-deletion** is created using a cluster profile with the <VersionedLink text="Hello Universe" url="/integrations/packs/?pack=hello-universe" /> included. The Hello Universe pack has the API preset option disabled.
-
-1. Log into [Palette](https://console.spectrocloud.com/) and create a cluster profile with two versions for an AWS IaaS cluster that includes the Hello Universe pack. For example:
-
-**Version 1.0.0**.  
-   * OS = **ubuntu-aws**
-   * Kubernetes = **kubernetes**
-   * Network = **cni-calico**
-   * Storage = **csi-aws-ebs**
-   * App services = **hellouniverse** with the API preset option disabled.
-
-   **Version 1.1.0**.  
-   * OS = **ubuntu-aws**
-   * Kubernetes = **kubernetes**
-   * Network = **cni-calico**
-   * Storage = **csi-aws-ebs**
-   * App services = **hellouniverse** with the API preset option enabled.
-=======
 The following steps provide an example of how to clean up unneeded resources using `kubectl`. In this example, an AWS
 cluster called **cluster-update-deletion** is created using a cluster profile with the
 
@@ -220,7 +191,6 @@ has the API preset option disabled.
    - Network = **cni-calico**
    - Storage = **csi-aws-ebs**
    - App services = **hellouniverse** with the API preset option enabled.
->>>>>>> ffbe691aecdec580e7763fe301ca397ace165f05
 
 2. Build a cluster using cluster profile version 1.0.0. This will take 15-20 minutes.
 
