@@ -47,9 +47,6 @@ backups before making any cluster profile version changes in your production env
 
 ## Prerequisites
 
-<Tabs groupId="tutorial">
-<TabItem label="UI workflow" value="UI">
-
 This tutorial builds upon steps in [Getting Started](../../../getting-started/getting-started.md). Complete the steps
 for your preferred cloud provider.
 
@@ -64,7 +61,7 @@ After completing the pre-requisites, your cluster should be successfully provisi
 [_hello-universe_](https://github.com/spectrocloud/hello-universe) application be installed and functional.
 
 In Palette, navigate to the left main menu and select **Clusters**. Select the cluster you created in the **Getting
-Started** tutorial.
+Started** tutorials.
 
 Select the URL link for port **:8080** to access the Hello Universe application.
 
@@ -121,7 +118,7 @@ Select **Save Changes** to confirm your updates.
 ## Deploy Cluster Profile Version Updates
 
 Navigate to the left main menu and select **Clusters**. Select the cluster you created in the **Getting Started**
-tutorial.
+tutorials.
 
 Select the **Profile** tab. This cluster is currently deployed using cluster profile version **1.0.0**. Select the
 option **1.1.0** in the version drop-down Menu. The Kubecost pack will now be displayed in the profile pack list. Select
@@ -135,7 +132,7 @@ Kubecost pack was installed successfully.
 
 ![Image that shows the new cluster profile with Kubecost functional.](/tutorials/deploy-cluster-profile-updates/clusters_cluster-management_deploy-cluster-profile-updates_deployed-profile-version.webp)
 
-The Kubecost pack is not automatically accessible. To access the Kubecost UI, we will create a port forward in the
+The Kubecost pack is not automatically accessible. To access the Kubecost UI, youwill create a port forward in the
 Kubernetes cluster.
 
 Download the kubeconfig file for your cluster from the Palette UI. This file enables you and other users to issue
@@ -212,7 +209,7 @@ When using this method, the previous state of the cluster profile will not be sa
 to the cluster you specify. All other clusters using the specific profile and version will not be impacted.
 
 Navigate to the left main menu and select **Clusters**. Select the cluster you created in the **Getting Started**
-tutorial.
+tutorials.
 
 Select the **Profile** tab. Then, select the **hello-universe** manifest. Change the value of the `replicas` field to
 `2`. Select **Save**. The editor closes.
@@ -236,7 +233,7 @@ notification that updates are available. Profile changes made using this method 
 you to schedule the work around maintenance windows for each impacted cluster.
 
 Navigate to the left main menu and select **Profiles**. Select the profile you created in the **Getting Started**
-tutorial.
+tutorials.
 
 Select **1.0.0** in the version drop-down Menu.
 
@@ -269,12 +266,12 @@ Select **Apply Changes** once you have finished reviewing your changes.
 
 :::info
 
-We have just applied an updated profile to a cluster that had a profile override in place. When doing this, **any
+Youhave just applied an updated profile to a cluster that had a profile override in place. When doing this, **any
 configurations** in the profile override **will be replaced** with those in the updated profile.
 
 :::
 
-Palette updates your cluster according to cluster profile specifications. Monitor the progress of the update deployment
+Palette updates your cluster according to cluster profile specifications. Monitor the progress of the update
 on the **Cluster Overview** screen. When these changes are complete, select the **Workloads** tab. Then, select the
 **hello-universe** namespace.
 
@@ -284,13 +281,10 @@ The UI (User Interface) may take some time to display the changes. If needed, se
 
 ## Cleanup
 
-Use the following steps to clean up the resources you created for the tutorial.
-
-<Tabs groupId="tutorial">
-<TabItem label="UI workflow" value="UI">
+Use the following steps to clean up the resources you created for the tutorials.
 
 Navigate to the left main menu and select **Clusters**. Select the cluster you created in the **Getting Started**
-tutorial.
+tutorials.
 
 Select **Settings** to expand the menu, and select **Delete Cluster**.
 
@@ -300,76 +294,16 @@ The deletion process takes several minutes to complete. Repeat the same steps fo
 
 Once the clusters are deleted, navigate to the left main menu and select **Profiles**.
 
-Select the cluster profile you created in the **Getting Started** tutorial. Select the **three-dot Menu** to display the
+Select the cluster profile you created in the **Getting Started** tutorials. Select the three-dot menu to display the
 **Delete** button.
 
 Select **Delete** and confirm the selection to remove the cluster profile. Make sure you delete both versions of this
 profile.
 
-</TabItem>
-
-<TabItem label="Terraform workflow" value="Terraform">
-
-Use the `destroy` command to remove all the resources you created through Terraform.
-
-```shell
-terraform destroy --auto-approve
-```
-
-Output:
-
-```shell
-Destroy complete! Resources: 7 destroyed.
-```
-
-</TabItem>
-</Tabs>
-
-:::note
-
-I recommend changing the format of the wrapping-up tutorial section to option 1. Writing it using option 2 is extremely
-wordy, and the message of how cluster profiles can simplify operations is lost. The closing comments should be blunt,
-easy to read, and highlight the benefits. That is our last chance to convey the simplicity of what was done. Busy
-paragraphs leave the audience feeling that the task is more complex than it is. #Psychology lol
-
-:::
-
-## Wrap-Up - Option 1
-
-In this tutorial, you completed the following:
-
-1. Created version 1.1.0 of a test profile and applied it to a cluster.
-2. Rolled back the profile changes by applying version 1.0.0 to the cluster.
-3. Changed the number of pods functioning in the **hello-universe** deployment using the profile override method.
-4. Changed the number of pods functioning in the **hello-universe** deployment using the in-place profile update method.
-
-Cluster profiles provide consistency during the cluster creation process and when maintaining your clusters. They can be
-versioned to store previously working cluster states, giving you visibility when updating or rolling back workloads
-across your environments.
-
-We encourage you to check out the reference resources below to learn more about Palette.
-
-- [Cluster Profiles](../../../profiles/cluster-profiles/cluster-profiles.md)
-
-- [Palette Clusters](../../../clusters/clusters.md)
-
-- [Backup and Restore](../../../clusters/cluster-management/backup-restore/backup-restore.md)
-
-- [Deploy a Custom Pack](../../../tutorials/profiles/deploy-pack.md)
-
-- [Hello Universe GitHub repository](https://github.com/spectrocloud/hello-universe)
-
-- [Hello Universe API GitHub repository](https://github.com/spectrocloud/hello-universe-api)
-
-## Wrap-Up - Option 2
+## Wrap-Up
 
 In this tutorial, you updated a cluster profile using three different methods: create a new cluster profile version,
-profile override, and update a cluster profile in place. After you made the changes, the Kubecost application was
-deployed and confirmed operational. After deployment, you rolled back the cluster profile to a previous version and
-confirmed that Kubecost and all its configurations were removed from the cluster.
-
-You then modified the number of pods functioning in the **hello-universe** deployment using the profile override method.
-Then, you used the in-place update process to change the number of pods functioning in the hello-universe deployment.
+cluster profile override, and update a cluster profile in place. You deployed and rolled back the Kubecost application and modified configuration of the ***hello-universe*** deployment using cluster profile updates.
 
 Cluster profiles provide consistency during the cluster creation process and when maintaining your clusters. They can be
 versioned to store previously working cluster states, giving you visibility when updating or rolling back workloads
@@ -387,22 +321,16 @@ We encourage you to check out the reference resources below to learn more about 
 
 - [Hello Universe GitHub repository](https://github.com/spectrocloud/hello-universe)
 
-- [Hello Universe API GitHub repository](https://github.com/spectrocloud/hello-universe-api)
+:::info
 
-</TabItem>
+This tutorial can be completed using Terraform by following the steps linked below.
 
-<TabItem label="Terraform workflow" value="Terraform">
+- [Deploy and Manage K8s Cluster with Terraform - Azure](/getting-started/azure/deploy-manage-k8s-cluster-tf.md)
 
-We recommend following the **Cluster Mangement with Terraform** guide for your cloud provider of choice. These guides
-provide an end-to-end tutorial for Azure, GCP, AWS, and VMware-hosted platforms and ensure your test environment is
-provisioned and compatible with the tutorial Terraform scripts.
+- [Deploy and Manage K8s Cluster with Terraform - GCP](/getting-started/gcp/deploy-manage-k8s-cluster-tf.md)
 
-- [Cluster Management with Terraform - Azure](/getting-started/azure/deploy-manage-k8s-cluster-tf.md)
-- [Cluster Management with Terraform - AWS](/getting-started/aws/deploy-manage-k8s-cluster-tf.md)
-- [Cluster Management with Terraform - GCP](/getting-started/gcp/deploy-manage-k8s-cluster-tf.md)
-- [Cluster Management with Terraform - VMware](/getting-started/vmware/deploy-manage-k8s-cluster-tf.md)
+- [Deploy and Manage K8s with Terraform - AWS](/getting-started/aws/deploy-manage-k8s-cluster-tf.md)
 
----
+- [Deploy and Manage K8s with Terraform - VMWare](/getting-started/vmware/deploy-manage-k8s-cluster-tf.md)
 
-</TabItem>
-</Tabs>
+:::
