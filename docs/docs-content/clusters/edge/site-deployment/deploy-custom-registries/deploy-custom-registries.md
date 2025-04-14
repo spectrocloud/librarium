@@ -26,7 +26,7 @@ registries, all images except for infrastructure layer images will be uploaded t
 all requests for application images from the cluster will be made to the primary registry.
 
 A primary registry is required for disconnected Edge clusters. You can use any OCI-compliant registry as the primary
-registry. Palette provides you with an out-of-the-box configuration with Zot and Harbor. For connected Edge clusters, a
+registry. Palette provides you with an out-of-the-box configuration with [Zot](https://zotregistry.dev) and [Harbor](https://goharbor.io/). For connected Edge clusters, a
 primary registry can still help you reduce network bandwidth usage and protect against outages.
 
 For more information, refer to [Deploy Cluster with Primary Registry](./deploy-primary-registry.md).

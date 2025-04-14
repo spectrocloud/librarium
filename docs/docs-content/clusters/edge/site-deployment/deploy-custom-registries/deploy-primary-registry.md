@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Deploy with a Primary Registry"
-title: "Deploy with a Primary Registry"
+sidebar_label: "Deploy Cluster with a Primary Registry"
+title: "Deploy Cluster with a Primary Registry"
 description: "This page teaches you how to deploy a cluster with a primary registry."
 hide_table_of_contents: false
 sidebar_position: 10
@@ -18,16 +18,16 @@ external network and reduce bandwidth usage.
 
 ![Diagram of how the primary registry works in a cluster](/clusters_edge_registries_primary-registry.webp)
 
-Any Open Container Initiative (OCI) compliant registry service and be used as a primary registry. We validate both Zot
+Any Open Container Initiative (OCI) compliant registry service can be used as a primary registry. We validate both Zot
 and Harbor as two out-of-the-box primary registries that can be deployed with minimal custom configuration.
 
-If you already have a cluster with the deprecated **Harbor Edge-Native Config** pack, and want to migrate to the new
+If you already have a cluster with the deprecated **Harbor Edge-Native Config** pack and want to migrate to the new
 Harbor registry using **Registry Connect**, refer to
 [Migrate from Harbor Edge-Native Config Pack](./migrate-edge-native-config.md).
 
-## Prerequisite
+## Prerequisites
 
-- At least one Edge host registered with your Palette account with an AMD64 or x86_64 processor architecture.
+- At least one Edge host registered with your Palette account with an AMD64 (x86_64) processor architecture.
 
 - Each of your Edge hosts must have at least 4 CPUs and 8 GB of RAM.
 
@@ -51,7 +51,7 @@ You may use one of our built-in registry packs or your own custom OCI registry.
 
 2. From the left **Main Menu**, click on **Profiles**.
 
-3. Select the profile you use to deploy the cluster.
+3. Select the profile you want to use to deploy the cluster.
 
 <!-- prettier-ignore -->
 4. Click **Add New Pack** and choose from either the
@@ -93,17 +93,17 @@ You may use one of our built-in registry packs or your own custom OCI registry.
 
 2. From the left **Main Menu**, click on **Profiles**.
 
-3. Select the profile you use to deploy the cluster.
+3. Select the profile you want to use to deploy the cluster.
 
 4. Add a pack for your custom registry. If you have made a custom pack, you can add the custom pack. Alternatively, you
-   can also add a manifest or helm charts for your registry. To learn how to make a custom pack, refer to
+   can also add a manifest or Helm charts for your registry. To learn how to make a custom pack, refer to
    [Add a Custom Pack](../../../../registries-and-packs/add-custom-packs.md).
 
    You need to take note of the following configurations about your registry and provide it to the **Registry Connect**
    pack later.
 
    - The Persistent Volume Claim (PVC) used for storage for your registry.
-   - The login credentials pull from and push to your registry.
+   - The login credentials to pull from and push to your registry.
    - The certificates used to secure connections to your registry.
 
 5. In the **Add-on** layers, add the **Registry Connect** pack.
