@@ -130,8 +130,8 @@ You may use one of our built-in registry packs or your own custom OCI registry.
 
 ## Validate
 
-1. Access the registry on the web at `SERVICE-IP:30003`. Replace `SERVICE-IP` with the IP address of the registry
-   service. If you changed the port that the registry is served on, replace the port number as well.
+1. Access the registry on the web at `<node-ip>:30003`. Replace `<node-ip>` with the IP address of any of the nodes in
+   your cluster. If you changed the port that the registry is served on, replace the port number as well.
 
 2. Use the credentials you provided in the cluster profile to log in to the registry.
 
