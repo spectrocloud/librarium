@@ -132,7 +132,7 @@ Kubecost pack was installed successfully.
 
 ![Image that shows the new cluster profile with Kubecost functional.](/tutorials/deploy-cluster-profile-updates/clusters_cluster-management_deploy-cluster-profile-updates_deployed-profile-version.webp)
 
-The Kubecost pack is not automatically accessible. To access the Kubecost UI, youwill create a port forward in the
+The Kubecost pack is not automatically accessible. To access the Kubecost UI, you will create a port forward in the
 Kubernetes cluster.
 
 Download the kubeconfig file for your cluster from the Palette UI. This file enables you and other users to issue
@@ -266,13 +266,13 @@ Select **Apply Changes** once you have finished reviewing your changes.
 
 :::info
 
-Youhave just applied an updated profile to a cluster that had a profile override in place. When doing this, **any
+You have just applied an updated profile to a cluster that had a profile override in place. When doing this, **any
 configurations** in the profile override **will be replaced** with those in the updated profile.
 
 :::
 
-Palette updates your cluster according to cluster profile specifications. Monitor the progress of the update on the
-**Cluster Overview** screen. When these changes are complete, select the **Workloads** tab. Then, select the
+Palette updates your cluster according to cluster profile specifications. Monitor the progress of the update
+on the **Cluster Overview** screen. When these changes are complete, select the **Workloads** tab. Then, select the
 **hello-universe** namespace.
 
 Three replicas of the **UI** deployment are available instead of the one specified by your cluster profile. The Palette
@@ -303,8 +303,7 @@ profile.
 ## Wrap-Up
 
 In this tutorial, you updated a cluster profile using three different methods: create a new cluster profile version,
-cluster profile override, and update a cluster profile in place. You deployed and rolled back the Kubecost application
-and modified configuration of the **_hello-universe_** deployment using cluster profile updates.
+cluster profile override, and update a cluster profile in place. You deployed and rolled back the Kubecost application and modified configuration of the ***hello-universe*** deployment using cluster profile updates.
 
 Cluster profiles provide consistency during the cluster creation process and when maintaining your clusters. They can be
 versioned to store previously working cluster states, giving you visibility when updating or rolling back workloads
