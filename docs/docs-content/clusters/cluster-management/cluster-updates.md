@@ -216,9 +216,9 @@ hello-universe-deployment-6854947c67-ltdmq   hello-universe   containerd://584f0
 
 7. Return to the terminal and run the following command
 
-  ```shell 
-  kubectl get pods --kubeconfig=admin.cluster-update-deletion.kubeconfig --namespace=hello-universe -o=custom-columns="POD_NAME:.metadata.name,CONTAINER_NAME:.status.containerStatuses[].name,CONTAINER_ID:.status.containerStatuses[].containerID"
-  ```
+```shell
+kubectl get pods --kubeconfig=admin.cluster-update-deletion.kubeconfig --namespace=hello-universe -o=custom-columns="POD_NAME:.metadata.name,CONTAINER_NAME:.status.containerStatuses[].name,CONTAINER_ID:.status.containerStatuses[].containerID"
+```
 
 Sample output
 
@@ -230,8 +230,8 @@ postgres-567dc9cb4c-cd7fn                    postgres         containerd://b704c
 ui-f7ff4ddc5-hcv72                           ui               containerd://40f78fb4aef00445dc9cf051ca57d61f935594cbe1e426d1f193624769ac132d
 ```
 
-  With the cluster updated, we notice that the previous version of the Hello Universe app remains. This container,
-  however, is not used with the API version and is no longer needed.
+With the cluster updated, we notice that the previous version of the Hello Universe app remains. This container,
+however, is not used with the API version and is no longer needed.
 
 8. Locate the pod name of the container you want to remove and run the following command.
 
