@@ -250,7 +250,7 @@ Creating a content bundle provides several benefits that may address common use 
 4. Log in to [Palette](https://console.spectrocloud.com).
 
 5. Select the project you want to deploy the Edge host to and copy down the project ID. You can find the project ID at
-   the top right side corner of the landing page below the **User drop-down Menu**.
+   the top right side corner of the landing page below the user drop-down menu.
 
 6. Navigate to the left main menu and select **Profiles**.
 

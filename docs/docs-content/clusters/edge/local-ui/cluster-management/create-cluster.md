@@ -75,7 +75,7 @@ management.
 1. Log in to Local UI by visiting the 5080 port of your Edge device's IP address or domain name. For more information,
    refer to [Access Local UI](../host-management/access-console.md).
 
-2. From the left **Main Menu**, click **Cluster**.
+2. From the left main menu, click **Cluster**.
 
 3. Click **Create cluster**.
 
