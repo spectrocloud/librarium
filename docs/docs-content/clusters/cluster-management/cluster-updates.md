@@ -153,6 +153,8 @@ The first method would be a clean deployment with a new cluster profile. Once th
 The second method is to use `kubectl` to scale the resource count to 0. While deleting the resource using something like
 K9s is possible, Palette will recreate it immediately. Scaling replicas to zero via `kubectl` ensures the resource is effectively removed.
 
+This section provides guidance on removing resources using the second method. 
+
 ### Limitations
 
 :::warning
