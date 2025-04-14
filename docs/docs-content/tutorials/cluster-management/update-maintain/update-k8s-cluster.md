@@ -271,8 +271,8 @@ configurations** in the profile override **will be replaced** with those in the 
 
 :::
 
-Palette updates your cluster according to cluster profile specifications. Monitor the progress of the update
-on the **Cluster Overview** screen. When these changes are complete, select the **Workloads** tab. Then, select the
+Palette updates your cluster according to cluster profile specifications. Monitor the progress of the update on the
+**Cluster Overview** screen. When these changes are complete, select the **Workloads** tab. Then, select the
 **hello-universe** namespace.
 
 Three replicas of the **UI** deployment are available instead of the one specified by your cluster profile. The Palette
@@ -303,7 +303,8 @@ profile.
 ## Wrap-Up
 
 In this tutorial, you updated a cluster profile using three different methods: create a new cluster profile version,
-cluster profile override, and update a cluster profile in place. You deployed and rolled back the Kubecost application and modified configuration of the ***hello-universe*** deployment using cluster profile updates.
+cluster profile override, and update a cluster profile in place. You deployed and rolled back the Kubecost application
+and modified configuration of the **_hello-universe_** deployment using cluster profile updates.
 
 Cluster profiles provide consistency during the cluster creation process and when maintaining your clusters. They can be
 versioned to store previously working cluster states, giving you visibility when updating or rolling back workloads
