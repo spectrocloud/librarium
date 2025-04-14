@@ -181,7 +181,7 @@ upgrading, you review the information provided in the
 ### Prerequisites
 
 - An active Kubernetes cluster in Palette.
-- A terminal client
+- A terminal client.
 
 ### Enablement
 
