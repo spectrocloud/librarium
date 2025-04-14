@@ -85,6 +85,6 @@ guidance on building custom images.
 ## Resources
 
 - [SSH Keys](./ssh-keys.md)
-- [Getting Started](/getting-started/) tutorials
+- [Getting Started](/getting-started/)
 - [Data Center Clusters](../../data-center/data-center.md)
 - [Create Cluster Definition (Edge)](../../edge/site-deployment/cluster-deployment.md)

@@ -37,7 +37,7 @@ application is bootstrapped with [Create React App](https://create-react-app.dev
 
 - A Docker account and a [Docker installation](https://docs.docker.com/engine/install/ubuntu/) on your machine.
 
-- An active Kubernetes cluster. Check out the [Getting Started](/getting-started/) tutorial for steps on building a new
+- An active Kubernetes cluster. Check out the [Getting Started](/getting-started/) tutorials for steps on building a new
   cluster.
 
 - An installation of the [kubectl command-line tool](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/) on

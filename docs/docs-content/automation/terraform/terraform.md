@@ -59,7 +59,7 @@ README file to learn more about supported provider versions and other essential 
 
 ## Get Started
 
-For an end-to-end cluster provisioning example, refer to the [Getting Started](/getting-started/) tutorial for deploying
+For an end-to-end cluster provisioning example, refer to the [Getting Started](/getting-started/) tutorials for deploying
 clusters and the
 [end-to-end examples](https://github.com/spectrocloud/terraform-provider-spectrocloud/tree/main/examples/e2e) available
 in the Spectro Cloud Terraform Provider GitHub repository.
