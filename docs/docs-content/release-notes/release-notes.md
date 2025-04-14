@@ -83,6 +83,8 @@ compatible version of the Palette CLI.
 
 #### Features
 
+- The [Palette CLI](../automation/palette-cli/palette-cli.md) has a new `content` command that supports the creation of [content bundles](../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md). This command provides the ability to create bundles directly from the command-line and supports operations in airgap environments. Refer to the Content command reference page for further information.
+
 #### Improvements
 
 - The performance of Palette APIs was improved, resulting in increased [API rate limits](/api/introduction/#rate-limits)
@@ -109,10 +111,10 @@ compatible version of the Palette CLI.
 
 | Pack Name                                  | New Version |
 | ------------------------------------------ | ----------- |
-| Palette Optimized K3S                      | 1.32.2      |
-| Palette Optimized K3S                      | 1.31.6      |
-| Palette Optimized K3S                      | 1.30.10     |
-| Palette Optimized K3S                      | 1.29.14     |
+| Palette Optimized K3s                      | 1.32.2      |
+| Palette Optimized K3s                      | 1.31.6      |
+| Palette Optimized K3s                      | 1.30.10     |
+| Palette Optimized K3s                      | 1.29.14     |
 | Palette eXtended Kubernetes - Edge (PXK-E) | 1.32.2      |
 | Palette Optimized RKE2                     | 1.32.2      |
 | Palette Optimized RKE2                     | 1.31.6      |
