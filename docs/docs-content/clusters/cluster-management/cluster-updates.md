@@ -168,9 +168,7 @@ This section provides guidance on removing the resources using the second method
 ### Enablement
 
 The following steps provide an example of how to clean up unneeded resources using `kubectl`. In this example, an AWS
-cluster called **cluster-update-deletion** is created using a cluster profile with the
-
-<VersionedLink text="Hello Universe" url="/integrations/packs/?pack=hello-universe" /> included. The Hello Universe pack
+cluster called **cluster-update-deletion** is created using a cluster profile with the [Hello Universe](/integrations/packs/?pack=hello-universe) included. The Hello Universe pack
 has the API preset option disabled.
 
 1. Log in to Palette and create a cluster profile with two versions for an AWS IaaS cluster that includes the Hello
@@ -194,49 +192,60 @@ has the API preset option disabled.
 
 2. Build a cluster using cluster profile version 1.0.0. This will take 15-20 minutes.
 
-3. Download the Admin kubeconfig file from the cluster Overview.
-
-   Sample output
-
-![How to download Admin kubeconfig file from Palette](/clusters_management_updates_kubeconfig-download.webp)
+3. Download the [Admin kubeconfig](https://docs.spectrocloud.com/clusters/cluster-management/kubeconfig/) file from the cluster **Overview** tab.
 
 4. Go your terminal application and run the following command
 
-```shell
-kubectl get pods --kubeconfig=admin.cluster-update-deletion.kubeconfig --namespace=hello-universe -o=custom-columns="POD_NAME:.metadata.name,CONTAINER_NAME:.status.containerStatuses[].name,CONTAINER_ID:.status.containerStatuses[].containerID"
-```
+  ```shell
+  kubectl get pods --kubeconfig=admin.cluster-update-deletion.kubeconfig --namespace=hello-universe -o=custom-columns="POD_NAME:.metadata.name,CONTAINER_NAME:.status.containerStatuses[].name,CONTAINER_ID:.status.containerStatuses[].containerID"
+  ```
 
 5. This command will display the containers in the cluster that are in the hello universe namespace. It will include the
    pod name, container name, and container ID. You can use these identifiers with various `kubectl` options.
 
-Sample output
+  Sample output
 
-![Using kubectl to see what containers are running](/clusters_management_updates_kubectl-noapi-hellouniverse.webp)
+  ```shell
+  POD_NAME                                     CONTAINER_NAME   CONTAINER_ID
+  hello-universe-deployment-6854947c67-ltdmq   hello-universe   containerd://584f07c2cf2dbb24f62e63be4322d16314d86e496eeb185c5a5944e884744239
+  ```
 
-6. Return to Palette and update the cluster using the profile version 1.1.0 (takes about 1-2 min).
+6. Return to Palette and update the cluster using the profile version 1.1.0. This takes around 1-2 minutes.
+
 7. Return to the terminal and run the following command
 
-```shell 
-kubectl get pods --kubeconfig=admin.cluster-update-deletion.kubeconfig --namespace=hello-universe -o=custom-columns="POD_NAME:.metadata.name,CONTAINER_NAME:.status.containerStatuses[].name,CONTAINER_ID:.status.containerStatuses[].containerID"
-```
+  ```shell 
+  kubectl get pods --kubeconfig=admin.cluster-update-deletion.kubeconfig --namespace=hello-universe -o=custom-columns="POD_NAME:.metadata.name,CONTAINER_NAME:.status.containerStatuses[].name,CONTAINER_ID:.status.containerStatuses[].containerID"
+  ```
 
-Sample output
+  Sample output
 
-![Using kubectl to see what containers are running in the updated cluster](/clusters_management_updates_kubectl-api-hellouniverse.webp)
+  ```shell
+  POD_NAME                                     CONTAINER_NAME   CONTAINER_ID
+  api-86f745b67c-gk4lx                         api              containerd://21c7c18e42350efc25ea300e43c3471c64fba6953ae14bb2b46387c8e5d9c06d
+  hello-universe-deployment-6854947c67-ltdmq   hello-universe   containerd://584f07c2cf2dbb24f62e63be4322d16314d86e496eeb185c5a5944e884744239
+  postgres-567dc9cb4c-cd7fn                    postgres         containerd://b704c87e77ea468156d7f8033b7ad8d9a8ce6048e640b84c529572ac1fb41cd5
+  ui-f7ff4ddc5-hcv72                           ui               containerd://40f78fb4aef00445dc9cf051ca57d61f935594cbe1e426d1f193624769ac132d
+  ```
 
-  With the cluster updated, we can see that the previous version of the Hello Universe app remains. This container,
+  With the cluster updated, we notice that the previous version of the Hello Universe app remains. This container,
   however, is not used with the API version and is no longer needed.
 
 8. Locate the pod name of the container you want to remove and run the following command.
 
-`kubectl scale deployment hello-universe-deployment --replicas=0 hello-universe-deployment-6854947c67-jtlp7 --kubeconfig=cluster-update-deletion.kubeconfig --namespace hello-universe`
+  ```shell
+  kubectl scale deployment hello-universe-deployment --replicas=0 hello-universe-deployment-6854947c67-ltdmq --kubeconfig=admin.cluster-update-deletion.kubeconfig --namespace hello-universe
+  ```
 
-Sample output
+  Sample output
 
-![Using kubectl to remove resources no longer in use](/clusters_management_updates_kubectl-api-hellouniverse-removed.webp)
+  ```
+  deployment.apps/hello-universe-deployment scaled
+  Error from server (NotFound): deployments.apps "hello-universe-deployment-6854947c67-ltdmq" not found
+  ```
 
-This command will reduce the container count to 0, effectively stopping the container. If you have multiple clusters
-with resources no longer in use, you could put the command into a script to help remove those additional resources.
+  This command will reduce the container count to 0, effectively stopping the container. If you have multiple clusters
+  with resources no longer in use, you could put the command into a script to help remove those additional resources.
 
 ### Validation
 
