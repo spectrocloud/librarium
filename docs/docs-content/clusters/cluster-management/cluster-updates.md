@@ -191,6 +191,7 @@ upgrading, you review the information provided in the
 
 The following steps provide an example of how to clean up unneeded resources using `kubectl`. In this example, an AWS
 cluster called **cluster-update-deletion** is created using a cluster profile with the
+
 <VersionedLink text="Hello Universe" url="/integrations/packs/?pack=hello-universe" /> included. The Hello Universe pack
 has the API preset option disabled.
 
