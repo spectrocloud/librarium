@@ -150,7 +150,7 @@ resources that are no longer in use. Depending on the situation, you can choose 
 
 The first method would be a clean deployment with a new cluster profile. Once the new cluster and cluster profile are deployed, the previous version could be deleted. The challenge, however, is when particular resources are in use.
 
-The second option is to use `kubectl` to scale the resource count to 0. While deleting the resource using something like
+The second method is to use `kubectl` to scale the resource count to 0. While deleting the resource using something like
 K9s is possible, Palette will recreate it immediately. Scaling replicas to zero via `kubectl` ensures the resource is effectively removed.
 
 ### Limitations
