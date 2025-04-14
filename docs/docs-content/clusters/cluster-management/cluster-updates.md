@@ -242,7 +242,11 @@ with resources no longer in use, you could put the command into a script to help
 You can follow these steps to validate all cluster update approaches.
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
-2. Navigate to the left **Main Menu** and select **Clusters**.
+
+2. Navigate to the left main menu and select **Clusters**.
+
 3. Select the cluster you modified, and navigate to the **Workloads** tab of the cluster.
+
 4. Select **Pods** and filter for the deployment namespace.
+
 5. Confirm that the unnecessary resources have been removed.
