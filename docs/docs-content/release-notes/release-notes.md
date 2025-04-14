@@ -105,42 +105,69 @@ compatible version of the Palette CLI.
 
 ### Packs
 
-#### Pack Notes
-
-- The packs `ubuntu-libvirt`,`generic-vm-libvirt`, `centos-libvirt`, and`pfsense-vm-libvirt` have been removed. Palette
-  no longer supports edge virtual clusters.
-
-#### OS
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
 #### Kubernetes
 
-| Pack Name | New Version |
-| --------- | ----------- |
+| Pack Name                                  | New Version |
+| ------------------------------------------ | ----------- |
+| Palette Optimized K3S                      | 1.32.2      |
+| Palette Optimized K3S                      | 1.31.6      |
+| Palette Optimized K3S                      | 1.30.10     |
+| Palette Optimized K3S                      | 1.29.14     |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.32.2      |
+| Palette Optimized RKE2                     | 1.32.2      |
+| Palette Optimized RKE2                     | 1.31.6      |
+| Palette Optimized RKE2                     | 1.30.10     |
+| Palette Optimized RKE2                     | 1.29.14     |
+| RKE2                                       | 1.32.2      |
+| RKE2                                       | 1.31.6      |
+| RKE2                                       | 1.30.10     |
+| RKE2                                       | 1.29.14     |
 
 #### CNI
 
 | Pack Name | New Version |
 | --------- | ----------- |
+| Cilium    | 1.17.1      |
 
 #### CSI
 
-| Pack Name | New Version |
-| --------- | ----------- |
+| Pack Name               | New Version |
+| ----------------------- | ----------- |
+| Amazon EBS CSI          | 1.41.0      |
+| Amazon EFS              | 2.1.6       |
+| GCE Persistent Disk CSI | 1.15.4      |
+| Portworx /w Operator    | 3.2.2       |
 
 #### Add-on Packs
 
-| Pack Name | New Version |
-| --------- | ----------- |
+| Pack Name              | New Version |
+| ---------------------- | ----------- |
+| Argo CD                | 7.8.8       |
+| AWS Cluster Autoscaler | 1.32.0      |
+| Amazon EFS             | 2.1.6       |
+| Nginx                  | 1.12.1      |
+| Portworx /w Operator   | 3.2.2       |
+| Spectro Proxy          | 1.5.6       |
 
 #### FIPS Packs
 
-| Pack Name | New Version |
-| --------- | ----------- |
+| Pack Name                                  | New Version |
+| ------------------------------------------ | ----------- |
+| Amazon EBS CSI                             | 1.41.0      |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.32.2      |
+| Palette Optimized RKE2                     | 1.32.2      |
+| Palette Optimized RKE2                     | 1.31.6      |
+| Palette Optimized RKE2                     | 1.30.10     |
+| Palette Optimized RKE2                     | 1.29.14     |
+| RKE2                                       | 1.32.2      |
+| RKE2                                       | 1.31.6      |
+| RKE2                                       | 1.30.10     |
+| RKE2                                       | 1.29.14     |
 
 #### Deprecations and Removals
+
+- The packs `ubuntu-libvirt`,`generic-vm-libvirt`, `centos-libvirt`, and`pfsense-vm-libvirt` have been removed. Palette
+  no longer supports edge virtual clusters.
 
 ## April 3, 2025 - Automation Updates
 
