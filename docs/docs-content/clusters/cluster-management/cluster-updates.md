@@ -186,9 +186,7 @@ upgrading, you review the information provided in the
 
 ### Enablement
 
-The steps below show how we can use the second option while deploying the Hello Universe application pack and updating
-the cluster profile. In this example, we create an AWS cluster called cluster-update-deletion. We will use Palette and a
-terminal application.
+The following steps provide an example of how to clean up unneeded resources using `kubectl`. In this example, an AWS cluster called **cluster-update-deletion** is created using a cluster profile with the <VersionedLink text="Hello Universe" url="/integrations/packs/?pack=hello-universe" /> included. The Hello Universe pack has the API preset option disabled.
 
 1. Log into Palette and create a cluster profile with two versions. The base layers should be ubuntu-aws, Kubernetes,
    cni-calico, and csi-aws-ebs. The App Services layer will use the Hello Universe from the Palette Community Registry
