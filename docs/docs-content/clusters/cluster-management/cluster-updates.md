@@ -216,7 +216,7 @@ Sample output
 6. Return to Palette and update the cluster using the profile version 1.1.0 (takes about 1-2 min).
 7. Return to the terminal and run the following command
 
-```shell 
+```shell
 kubectl get pods --kubeconfig=admin.cluster-update-deletion.kubeconfig --namespace=hello-universe -o=custom-columns="POD_NAME:.metadata.name,CONTAINER_NAME:.status.containerStatuses[].name,CONTAINER_ID:.status.containerStatuses[].containerID"
 ```
 
@@ -224,8 +224,8 @@ Sample output
 
 ![Using kubectl to see what containers are running in the updated cluster](/clusters_management_updates_kubectl-api-hellouniverse.webp)
 
-  With the cluster updated, we can see that the previous version of the Hello Universe app remains. This container,
-  however, is not used with the API version and is no longer needed.
+With the cluster updated, we can see that the previous version of the Hello Universe app remains. This container,
+however, is not used with the API version and is no longer needed.
 
 8. Locate the pod name of the container you want to remove and run the following command.
 
