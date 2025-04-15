@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## April 19, 2025 - Release 4.6.X {#release-notes-4.6.b}
+## April 19, 2025 - Release 4.6.19 {#release-notes-4.6.b}
 
 ### Security Notices
 
@@ -184,6 +184,7 @@ compatible version of the Palette CLI.
 | Nginx                  | 1.12.1      |
 | Portworx /w Operator   | 3.2.2       |
 | Spectro Proxy          | 1.5.6       |
+| Registry Connect       | 0.1.0       |
 
 #### FIPS Packs
 
