@@ -169,7 +169,7 @@ This section provides guidance on removing the resources using the second method
 
 The following steps provide an example of how to clean up unneeded resources using `kubectl`. In this example, an AWS
 cluster called **cluster-update-deletion** is created using a cluster profile with the
-[Hello Universe](/integrations/packs/?pack=hello-universe) included. The Hello Universe pack has the API preset option
+<VersionedLink text="Hello Universe" url="/integrations/packs/?pack=hello-universe"/> included. The Hello Universe pack has the API preset option
 disabled.
 
 1. Log in to Palette and create a cluster profile with two versions for an AWS IaaS cluster that includes the Hello
