@@ -95,14 +95,16 @@ To complete this tutorial, you will need the following:
   generate a new registration token. For detailed instructions, refer to the
   [Create Registration Token](../../clusters/edge/site-deployment/site-installation/create-registration-token.md) guide.
   Copy the newly created token to a clipboard or notepad file to use later in this tutorial.
-  
+
   :::warning
 
-  Ensure that you set **Default Project** for the token. Otherwise, your Edge hosts will not register themselves with Palette automatically.
+  Ensure that you set **Default Project** for the token. Otherwise, your Edge hosts will not register themselves with
+  Palette automatically.
 
   :::
-  
-  The screenshot below shows a sample registration token in the **Tenant Settings** > **Registration Tokens** section in Palette.
+
+  The screenshot below shows a sample registration token in the **Tenant Settings** > **Registration Tokens** section in
+  Palette.
 
   ![A screenshot of a registration token in Palette](/tutorials/edge/clusters_edge_deploy-cluster_registration-token.webp)
 
@@ -430,7 +432,7 @@ listed in the table.
 
 | **Variable**                    | **Description**         | **How to find its value?**                                                                                                                               |
 | ------------------------------- | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `PKR_VAR_vcenter_server`        | vCenter server URL      | Check with your VMware data center administrator. Omit `http://` or `https://` in the URL. Example: `vcenter.spectrocloud.dev`.                      |
+| `PKR_VAR_vcenter_server`        | vCenter server URL      | Check with your VMware data center administrator. Omit `http://` or `https://` in the URL. Example: `vcenter.spectrocloud.dev`.                          |
 | `PKR_VAR_vcenter_username`      | vSphere client username | Request credentials from your VMware data center administrator. Example: `myusername@vsphere.local`                                                      |
 | `PKR_VAR_vcenter_password`      | vSphere client password | --                                                                                                                                                       |
 | `PKR_VAR_vcenter_datacenter`    | Data center name        | Expand your vSphere client's main menu and select **Inventory** > **Hosts and Clusters**. The data center name is displayed in the left navigation tree. |
@@ -564,8 +566,8 @@ is an explanation of the options and sub-commands used below:
   Packer script, you must open a bash session into the container using the
   `docker run -it --env-file .packerenv --volume "${ISOFILEPATH}:/edge/vmware/packer/build" ghcr.io/spectrocloud/tutorials:1.1.13 bash`
   command, and change to the **edge/vmware/packer/** directory to make the modifications. After you finish the
-  modifications, issue the `packer build -force --var-file=vsphere.hcl build.pkr.hcl` command inside the container to trigger the Packer
-  build process. This command will create a VM template, so that you can skip the next step.
+  modifications, issue the `packer build -force --var-file=vsphere.hcl build.pkr.hcl` command inside the container to
+  trigger the Packer build process. This command will create a VM template, so that you can skip the next step.
 
   :::
 
@@ -749,16 +751,17 @@ In the **Profile Layers** section, add the following
 
 <!-- prettier-ignore-end -->
 
-| **Pack Type** | **Registry** | **Pack Name** | **Pack Version**  |
-| ------------- | ------------ | ------------- | ----------------- |
-| OS            | Public Repo  | BYOS Edge OS  | Any non-deprecated|
+| **Pack Type** | **Registry** | **Pack Name** | **Pack Version**   |
+| ------------- | ------------ | ------------- | ------------------ |
+| OS            | Public Repo  | BYOS Edge OS  | Any non-deprecated |
 
 Replace the OS layer manifest with the following custom manifest so that the cluster profile can pull the provider image
 from the _ttl.sh_ image registry. You may recall that the CanvOS script returned an output containing a custom manifest
 after building the Edge artifacts. You will copy the CanvOS output into the cluster profile's BYOOS pack YAML file.
 
 The `system.xxxxx` attribute values in the manifest below are as same as those you defined in the **.arg** file while
-building the Edge artifacts. Paste the manifest generated from the artifact build process into the YAML editor for the BYOOS pack. The code snippet below serves as an example.
+building the Edge artifacts. Paste the manifest generated from the artifact build process into the YAML editor for the
+BYOOS pack. The code snippet below serves as an example.
 
 ```yaml
 pack:
@@ -794,9 +797,9 @@ registry for hosting provider images.
 
 Click on the **Next layer** button to add the following Kubernetes layer to your cluster profile.
 
-| **Pack Type** | **Registry** | **Pack Name**         | **Pack Version**  |
-| ------------- | ------------ | --------------------- | ----------------- |
-| Kubernetes    | Public Repo  | Palette Optimized K3s | Any non-deprecated|
+| **Pack Type** | **Registry** | **Pack Name**         | **Pack Version**   |
+| ------------- | ------------ | --------------------- | ------------------ |
+| Kubernetes    | Public Repo  | Palette Optimized K3s | Any non-deprecated |
 
 The pack version must match the version pushed to the to the _ttl.sh_ image registry. The `system.uri` attribute of the
 BYOOS pack will reference the Kubernetes version you select using the `{{ .spectro.system.kubernetes.version }}`
@@ -806,9 +809,9 @@ Click on the **Next layer** button, and add the following network layer. This ex
 Interface (CNI). However, you can choose a different CNI pack that fits your needs, such as Flannel, Cilium, or Custom
 CNI.
 
-| **Pack Type** | **Registry** | **Pack Name** | **Pack Version**  |
-| ------------- | ------------ | ------------- | ----------------- |
-| Network       | Public Repo  | Calico        | Any non-deprecated|
+| **Pack Type** | **Registry** | **Pack Name** | **Pack Version**   |
+| ------------- | ------------ | ------------- | ------------------ |
+| Network       | Public Repo  | Calico        | Any non-deprecated |
 
 Click on the **Confirm** button to complete the core infrastructure stack. Palette displays the newly created
 infrastructure profile as a layered diagram.
