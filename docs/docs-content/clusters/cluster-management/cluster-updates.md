@@ -205,12 +205,12 @@ kubectl get pods --kubeconfig=admin.cluster-update-deletion.kubeconfig --namespa
 5. This command will display the containers in the cluster that are in the `hello-universe` namespace. It will include the
    pod name, container name, and container ID. You can use these identifiers with various `kubectl` options.
 
-Sample output
+   Sample output
 
-```shell
-POD_NAME                                     CONTAINER_NAME   CONTAINER_ID
-hello-universe-deployment-6854947c67-ltdmq   hello-universe   containerd://584f07c2cf2dbb24f62e63be4322d16314d86e496eeb185c5a5944e884744239
-```
+   ```shell
+   POD_NAME                                     CONTAINER_NAME   CONTAINER_ID
+   hello-universe-deployment-6854947c67-ltdmq   hello-universe   containerd://584f07c2cf2dbb24f62e63be4322d16314d86e496eeb185c5a5944e884744239
+   ```
 
 6. Return to Palette and update the cluster using the profile version 1.1.0. This takes around 1-2 minutes.
 
