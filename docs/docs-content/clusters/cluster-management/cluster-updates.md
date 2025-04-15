@@ -189,7 +189,7 @@ has the API preset option disabled.
 
 2. Build a cluster using cluster profile version 1.0.0. This will take 15-20 minutes.
 
-3. Download the [Admin kubeconfig](./kubeconfig.md) file from the cluster **Overview** tab.
+3. Download the [Admin kubeconfig](./kubeconfig.md) file from the cluster **Overview** tab and export the `KUBECONFIG` environment variable to the file path of the kubeconfig file.
 
 4. Open a terminal window and run the following command.
 
