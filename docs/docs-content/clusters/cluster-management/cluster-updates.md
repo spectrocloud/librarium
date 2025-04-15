@@ -51,6 +51,8 @@ upgrading, you review the information provided in the
 
 - An active Kubernetes cluster in Palette.
 
+### Enablement
+
 <Tabs groupId="update-method">
 <TabItem value="profile-version" label="Use a new cluster profile version">
 
@@ -157,11 +159,12 @@ effectively removed.
 
 ### Enablement
 
-The following steps provide an example of how to clean up unneeded resources using `kubectl`. In this example, an AWS
-cluster is created using a cluster profile with the
+<!-- prettier-ignore-start -->
 
-<VersionedLink text="Hello Universe" url="/integrations/packs/?pack=hello-universe" /> included. The Hello Universe pack
+The following steps provide an example of how to clean up unneeded resources using `kubectl`. In this example, an AWS cluster is created using a cluster profile with the <VersionedLink text="Hello Universe" url="/integrations/packs/?pack=hello-universe" /> included. The Hello Universe pack
 has the API preset option disabled.
+
+<!-- prettier-ignore-end -->
 
 1. Log in to [Palette](https://console.spectrocloud.com/). Create a cluster profile with two versions for an AWS IaaS
    cluster that includes the Hello Universe pack. For example:
@@ -243,3 +246,15 @@ has the API preset option disabled.
 
    If you have multiple clusters with resources no longer in use, you could put the command into a script to help remove
    those additional resources.
+
+### Validation
+
+1. Log in to [Palette](https://console.spectrocloud.com/).
+
+2. Navigate to the left main menu and select **Clusters**.
+
+3. Select the cluster you modified, and navigate to the **Workloads** tab of the cluster.
+
+4. Select **Pods** and filter for the deployment namespace.
+
+5. Confirm that the unnecessary resources have been removed.
