@@ -11,7 +11,7 @@ Content bundles are archives of all the required container images required for o
 bundle includes Helm charts, Packs, and manifest files needed to deploy your Edge host cluster. In addition to core
 container images, the content bundle can include artifacts from your applications that you wish to deploy to the Edge
 cluster. [Cluster Profiles](../../../../profiles/cluster-profiles/cluster-profiles.md) are the primary source for
-building these content bundles.
+creating these content bundles, which can be built using either the Palette CLI or the Palette Edge CLI.
 
 :::warning
 
@@ -75,12 +75,137 @@ Creating a content bundle provides several benefits that may address common use 
 
 ## Create Content Bundle
 
-1. Download Palette Edge CLI and assign the executable bit to the CLI. Refer to
-   [Palette Components Compatibility Matrix](../../../../component.md#palette-edge-cli-versions) to use the right
-   Palette Edge CLI version. This guide uses 4.5.5 as an example.
+<Tabs>
+
+<TabItem value="Palette CLI" label="Palette CLI">
+
+1. Download the Palette CLI. Refer to the
+   [Palette Components Compatibility Matrix](../../../../component.md#palette-cli-versions) to find a compatible CLI
+   version and replace `<palette-cli-version>` with the selected version.
 
    ```shell
-   VERSION=4.5.5
+   VERSION=<palette-cli-version>
+   wget https://software.spectrocloud.com/palette-cli/v$VERSION/linux/cli/palette
+   chmod +x palette
+   ```
+
+2. Use the following command to move the `palette` binary to the **/usr/local/bin** directory to make the binary
+   available in your system $PATH. This will allow you to issue the `palette` command from any directory in your
+   development environment.
+
+   ```bash
+   mv palette /usr/local/bin
+   ```
+
+3. Verify that the Palette CLI is part of your system path by issuing the Palette CLI `version` command.
+
+   ```bash
+   palette version
+   ```
+
+   ```hideClipboard text
+   Palette CLI version: [version number]
+   ```
+
+4. Authenticate with Palette using the `login` command. Replace `<your-api-key>` with your Palette API key.
+
+   ```shell
+   palette login --api-key <your-api-key> --console-url https://console.spectrocloud.com/
+   ```
+
+5. Log in to the [Palette](https://console.spectrocloud.com) console.
+
+6. Select the project you want to deploy the Edge host to and copy the project ID. You can find the project ID at the
+   top right side corner of the landing page below the user drop-down menu.
+
+7. Navigate to the left main menu and select **Profiles**.
+
+8. Use the **Cloud Types** drop-down menu and select **Edge Native**.
+
+9. Click on the cluster profile you want to include in the content bundle.
+
+10. You can find the cluster profile ID by reviewing the URL of the current page. The cluster profile ID is the last
+    value in the URL. Repeat this step for all the cluster profiles whose images you want to include in the content
+    bundle.
+
+11. (Optional) If your cluster profile uses images or Helm charts that are hosted on private registries that require
+    authentication, you must use the `content registry-login` command to authenticate with the registry. Replace
+    `<registry-address>`, `<registry-username>`, and `<registry-password>` with your registry credentials. Refer to the
+    [content registry-login](../../../../automation/palette-cli/commands/content.md#registry-login) CLI command page for
+    more information.
+
+    ```shell
+    palette content registry-login --registry <registry-address> \
+    --username <registry-username> \
+    --password <registry-password>
+    ```
+
+12. Issue the following command to create the content bundle. Replace the placeholder values with your actual values.
+    Refer to the [content build](../../../../automation/palette-cli/commands/content.md#build) CLI command page for a
+    complete list of available flags.
+
+    ```shell
+    palette content build --arch <bundle-architecture> \
+     --project-id <project-id> \
+     --profiles <cluster-profile-id1,cluster-profile-id2...> \
+     --name <bundle-name> \
+     --output <output-directory>
+    ```
+
+    :::warning
+
+    If you plan to create an airgap cluster or scale up an airgap cluster, ensure that you build the content bundle with
+    either the `--include-all-palette-images` or the `--include-core-palette-images-only` flag. The flag
+    `--include-all-palette-images` is enabled by default in the Palette CLI
+    [build](../../../../automation/palette-cli/commands/content.md#build) command. Content bundles uploaded to the
+    cluster that do not have either of these flags cannot be used to provision new nodes and will lead to failure during
+    cluster creation and scale-up.
+
+    :::
+
+    The result is a content bundle that you can use to preload into your installer. The content bundle will be a `.zst`
+    file. For more information about how to use a content bundles, refer to
+    [Build Installer ISO](./build-installer-iso.md) or
+    [Upload Content Bundle through Local UI](../../local-ui/cluster-management/upload-content-bundle.md).
+
+13. (Optional) You can download the cluster definition and the content bundle in a single step. A cluster definition
+    contains one or more cluster profiles, including the profile variables used in the profiles. In airgapped Edge
+    deployments, cluster definitions are required to provision a cluster from Local UI. For more information, refer to
+    [Create a Cluster with Local UI](../../local-ui/cluster-management/create-cluster.md).
+
+    To download the cluster definition together with the content bundle, provide the following flags to the build
+    command.
+
+    ```shell
+    palette content build --arch <bundle-architecture> \
+     --project-id <project-id> \
+     --profiles <cluster-profile-id1,cluster-profile-id2...> \
+     --cluster-definition-name <cluster-definition-name> \
+     --cluster-definition-profile-ids <cluster-definition-profile-ids> \
+     --name <bundle-name> \
+     --output <output-directory>
+    ```
+
+    Compared with the previous command, this command has two additional flags.
+
+    | Flag                               | Description                                                           |
+    | ---------------------------------- | --------------------------------------------------------------------- |
+    | `--cluster-definition-name`        | Filename of the cluster definition tgz file.                          |
+    | `--cluster-definition-profile-ids` | List of cluster profile IDs to be included in the cluster definition. |
+
+    This command will generate an additional file named **cluster-definition-name.tgz**, which is the cluster definition
+    file.
+
+</TabItem>
+
+<TabItem value="Palette Edge CLI" label="Palette Edge CLI">
+
+1. Download the Palette Edge CLI. Refer to the
+   [Palette Components Compatibility Matrix](../../../../component.md#palette-edge-cli-versions) to find a compatible
+   CLI version and replace `<palette-edge-cli-version>` with the selected version.
+
+   ```shell
+   VERSION=<palette-edge-cli-version>
    wget https://software.spectrocloud.com/stylus/v$VERSION/cli/linux/palette-edge
    chmod +x palette-edge
    ```
@@ -124,12 +249,12 @@ Creating a content bundle provides several benefits that may address common use 
 
 4. Log in to [Palette](https://console.spectrocloud.com).
 
-5. Select the project you want to deploy the Edge host to and copy down the **Project ID**. You can find the project id
-   at the top right side corner of the landing page below the **User drop-down Menu**.
+5. Select the project you want to deploy the Edge host to and copy down the project ID. You can find the project ID at
+   the top right side corner of the landing page below the user drop-down menu.
 
-6. Navigate to the left **Main Menu** and select **Profiles**.
+6. Navigate to the left main menu and select **Profiles**.
 
-7. Use the **Cloud Types drop-down Menu** and select **Edge Native**.
+7. Use the **Cloud Types** drop-down menu and select **Edge Native**.
 
 8. Click on the cluster profile you want to include in the content bundle.
 
@@ -303,7 +428,7 @@ Creating a content bundle provides several benefits that may address common use 
     :::
 
     The result is a content bundle that you can use to preload into your installer. The content bundle will be a zst
-    file in a folder that starts with **content-** followed by a random string. For more information about how to use a
+    file in a folder that starts with **content-** followed by a random string. For more information about how to use
     content bundles, [Build Installer ISO](./build-installer-iso.md) or
     [Upload Content Bundle through Local UI](../../local-ui/cluster-management/upload-content-bundle.md).
 
@@ -340,6 +465,9 @@ Creating a content bundle provides several benefits that may address common use 
     This command will produce another document named **CLUSTER_DEFINITION_FILENAME.tgz** at the root directory of
     CanvOS. This is the cluster definition file. Your content bundle will not be affected by the additional flags and
     will still be at the same location.
+
+</TabItem>
+</Tabs>
 
 ## Validate
 
