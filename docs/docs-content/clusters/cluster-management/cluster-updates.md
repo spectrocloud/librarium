@@ -148,9 +148,9 @@ You can follow these steps to validate all cluster update approaches.
 When cluster profile updates are applied, Palette will apply the changes to the cluster but will not delete any
 resources that are no longer in use. You can choose to keep or remove these resources.
 
-You can use `kubectl` to scale the resource count to 0. While deleting the resource using something like K9s is
-possible, Palette will recreate it immediately. Scaling replicas to zero via `kubectl` ensures the resource is
-effectively removed.
+To remove unused resources created by a pack from a cluster, you need to manually delete the pack from the cluster profile and apply the changes to the cluster. This will effectively remove all resources associated with the pack. However, this approach may not always be desirable, and there are alternative solutions.
+
+For example, you can use `kubectl` to scale the resource replicas to zero. While manually deleting the resource is an option, Palette will automatically recreate it if the pack remains in the cluster profile. Scaling the replicas to zero using `kubectl` ensures that no active instances of the resource are running, without triggering Palette to restore them.
 
 ### Prerequisites
 
