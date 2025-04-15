@@ -45,7 +45,6 @@ upgrading, you review the information provided in the
   - For K3s, refer to [K3s Upgrades](https://docs.k3s.io/upgrades#version-specific-caveats)
   - For RKE2, refer to [RKE2 Manual Upgrades](https://docs.rke2.io/upgrades/manual_upgrade)
 
-
 ## Update a Cluster
 
 ### Prerequisites
@@ -145,10 +144,10 @@ You can follow these steps to validate all cluster update approaches.
 ## Palette Reconciliation After Updating
 
 When cluster profile updates are applied, Palette will apply the changes to the cluster but will not delete any
-resources that are no longer in use. You can choose to keep or remove these resources. 
+resources that are no longer in use. You can choose to keep or remove these resources.
 
-You can use `kubectl` to scale the resource count to 0. While deleting the resource using something like
-K9s is possible, Palette will recreate it immediately. Scaling replicas to zero via `kubectl` ensures the resource is
+You can use `kubectl` to scale the resource count to 0. While deleting the resource using something like K9s is
+possible, Palette will recreate it immediately. Scaling replicas to zero via `kubectl` ensures the resource is
 effectively removed.
 
 ### Prerequisites
@@ -173,7 +172,8 @@ has the API preset option disabled.
    - Kubernetes = <VersionedLink text="Kubernetes" url="/integrations/packs/?pack=kubernetes" />
    - Network = <VersionedLink text="Calico CNI" url="/integrations/packs/?pack=cni-calico" />
    - Storage = <VersionedLink text="cAWS EBS CSI Driver" url="/integrations/packs/?pack=csi-aws-ebs" />
-   - App services = <VersionedLink text="Hello Universe" url="/integrations/packs/?pack=hello-universe" /> with the API preset option disabled.
+   - App services = <VersionedLink text="Hello Universe" url="/integrations/packs/?pack=hello-universe" /> with the API
+     preset option disabled.
 
    **Version 1.1.0**.
 
@@ -181,7 +181,8 @@ has the API preset option disabled.
    - Kubernetes = <VersionedLink text="Kubernetes" url="/integrations/packs/?pack=kubernetes" />
    - Network = <VersionedLink text="Calico CNI" url="/integrations/packs/?pack=cni-calico" />
    - Storage = <VersionedLink text="cAWS EBS CSI Driver" url="/integrations/packs/?pack=csi-aws-ebs" />
-   - App services = <VersionedLink text="Hello Universe" url="/integrations/packs/?pack=hello-universe" /> with the API preset option enabled.
+   - App services = <VersionedLink text="Hello Universe" url="/integrations/packs/?pack=hello-universe" /> with the API
+     preset option enabled.
 
 2. Build a cluster using cluster profile version 1.0.0. This will take 15-20 minutes.
 
@@ -237,4 +238,6 @@ however, is not used with the API version and is no longer needed.
    Error from server (NotFound): deployments.apps "hello-universe-deployment-6854947c67-ltdmq" not found
    ```
 
-This command will reduce the container count to 0, effectively stopping the container without destroying the container. If you have multiple clusters with resources no longer in use, you could put the command into a script to help remove those additional resources.
+This command will reduce the container count to 0, effectively stopping the container without destroying the container.
+If you have multiple clusters with resources no longer in use, you could put the command into a script to help remove
+those additional resources.
