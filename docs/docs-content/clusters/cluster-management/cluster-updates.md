@@ -198,9 +198,9 @@ disabled.
 
 4. Go your terminal application and run the following command
 
-```shell
-kubectl get pods --kubeconfig=admin.cluster-update-deletion.kubeconfig --namespace=hello-universe -o=custom-columns="POD_NAME:.metadata.name,CONTAINER_NAME:.status.containerStatuses[].name,CONTAINER_ID:.status.containerStatuses[].containerID"
-```
+   ```shell
+   kubectl get pods --kubeconfig=admin.cluster-update-deletion.kubeconfig --namespace=hello-universe -o=custom-columns="POD_NAME:.metadata.name,CONTAINER_NAME:.status.containerStatuses[].name,CONTAINER_ID:.status.containerStatuses[].containerID"
+   ```
 
 5. This command will display the containers in the cluster that are in the `hello-universe` namespace. It will include the
    pod name, container name, and container ID. You can use these identifiers with various `kubectl` options.
