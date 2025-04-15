@@ -66,7 +66,8 @@ Use the following steps to enable OIDC SSO in Palette with Microsoft Entra ID.
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a **Tenant Admin**.
 
-2. Navigate to the left main menu and select **Tenant Settings**. From the **Tenant Menu**, select **SSO**, and on the **Configure** tab, choose **OIDC**.
+2. Navigate to the left main menu and select **Tenant Settings**. From the **Tenant Menu**, select **SSO**, and on the
+   **Configure** tab, choose **OIDC**.
 
 3. Copy the **Callback URL** to your clipboard. This URL will be used in step 14 to configure the Microsoft Entra ID app
    registration.
@@ -137,7 +138,7 @@ Use the following steps to enable OIDC SSO in Palette with Microsoft Entra ID.
 
     | URL                                              | Type of Access                                                  |
     | ------------------------------------------------ | --------------------------------------------------------------- |
-    | `http://localhost:8000`                          | Use `kubectl` with the `kube-login` plugin from a workstation |
+    | `http://localhost:8000`                          | Use `kubectl` with the `kube-login` plugin from a workstation   |
     | `https://<fqdn_of_k8s_dashboard>/oauth/callback` | Use OIDC to authenticate and log in to the Kubernetes Dashboard |
 
     </details>
@@ -145,12 +146,12 @@ Use the following steps to enable OIDC SSO in Palette with Microsoft Entra ID.
 15. From the application overview page, navigate to the left main menu and select the **Overview** tab. From the
     **Overview** selection, save the following fields for the next steps you will complete in Palette.
 
-    | Field                       | Description                                                                                                |
-    | --------------------------- | ---------------------------------------------------------------------------------------------------------- |
-    | **Application (client) ID** | The unique identifier for your Azure application. |
-    | **Object ID**               | The unique identifier for the application in Azure AD.                                    |
-    | **Directory (tenant) ID**   | The unique identifier for your Azure AD tenant.                                        |
-    | **Secret Value**            | The value of the client secret you created in the previous steps.                      |
+    | Field                       | Description                                                       |
+    | --------------------------- | ----------------------------------------------------------------- |
+    | **Application (client) ID** | The unique identifier for your Azure application.                 |
+    | **Object ID**               | The unique identifier for the application in Azure AD.            |
+    | **Directory (tenant) ID**   | The unique identifier for your Azure AD tenant.                   |
+    | **Secret Value**            | The value of the client secret you created in the previous steps. |
 
 16. From the application overview page, navigate to the left main menu and select **API permissions**.
 
@@ -176,8 +177,8 @@ Use the following steps to enable OIDC SSO in Palette with Microsoft Entra ID.
 20. Navigate to the
     [Microsoft Entra ID Groups page](https://entra.microsoft.com/#view/Microsoft_AAD_IAM/GroupsManagementMenuBlade/~/AllGroups/menuId/AllGroups).
 
-21. Find the groups that you want to add to Palette and record each group's **Name** and **Object ID**. You will use this
-    information in future steps to configure Palette.
+21. Find the groups that you want to add to Palette and record each group's **Name** and **Object ID**. You will use
+    this information in future steps to configure Palette.
 
 22. Log in to [Palette](https://console.spectrocloud.com).
 
@@ -207,14 +208,14 @@ Use the following steps to enable OIDC SSO in Palette with Microsoft Entra ID.
 27. Configure the OIDC settings in Palette. Use the table below as a reference and populate the fields with the
     information you saved from the previous steps.
 
-    | Field             | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
-    | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+    | Field             | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+    | ----------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
     | **Issuer URL**    | Refer to the [Find your app's OpenID configuration document URI](https://learn.microsoft.com/en-us/entra/identity-platform/v2-protocols-oidc#find-your-apps-openid-configuration-document-uri) guide to learn how to determine your issuer URL. This will often be the same as the **Authority URL** and not contain the **Well-known configuration document path** appended. If you use Entra v2 tokens with the endpoint `https://login.microsoftonline.com/{tenant-ID}/v2.0`, ensure you added the claims `family_name` and `given_name` to the token configuration. |
-    | **Client ID**     | The application ID from Entra ID.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-    | **Client Secret** | The application secret you created.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-    | **Default Teams** | Leave blank if you do not want users without group claims to be assigned to a default group; otherwise, enter the desired default group name. If you use this option, be careful with how much access you assign to the group.                                                                                                                                                                                                                                                                                                                                                |
-    | **Scopes**        | Add `openid`, `profile` and `email`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-    | **Email**         | Use `email` as the default value.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+    | **Client ID**     | The application ID from Entra ID.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+    | **Client Secret** | The application secret you created.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+    | **Default Teams** | Leave blank if you do not want users without group claims to be assigned to a default group; otherwise, enter the desired default group name. If you use this option, be careful with how much access you assign to the group.                                                                                                                                                                                                                                                                                                                                          |
+    | **Scopes**        | Add `openid`, `profile` and `email`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+    | **Email**         | Use `email` as the default value.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 
 28. Leave other fields with the default values and click **Enable**. If all required values are provided, you will
     receive a message stating that OIDC is configured successfully.
