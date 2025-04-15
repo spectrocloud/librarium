@@ -83,12 +83,29 @@ compatible version of the Palette CLI.
 
 #### Features
 
-- The [Palette CLI](../automation/palette-cli/palette-cli.md) has a new `content` command that supports the creation of [content bundles](../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md). This command provides the ability to create bundles directly from the command-line and supports operations in airgap environments. Refer to the Content command reference page for further information.
+- The [Palette CLI](../automation/palette-cli/palette-cli.md) has a new `content` command that supports the creation of
+  [content bundles](../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md). This command provides
+  the ability to create bundles directly from the command-line and supports operations in airgap environments. Refer to
+  the Content command reference page for further information.
+- Terraform version 0.23.5 of the
+  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
+  available. For more details, refer to the Terraform provider
+  [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
+- A new Terraform resource, `spectrocloud_sso resource`, is now available for enforcing
+  [Single Sign-On (SSO)](../user-management/saml-sso/saml-sso.md) in Palette. For more information, refer to the Spectro
+  Cloud Terraform provider
+  [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
 
 #### Improvements
 
 - The performance of Palette APIs was improved, resulting in increased [API rate limits](/api/introduction/#rate-limits)
   for component events and optimized platform updates.
+- The `spectrocloud_pack` Terraform data source now supports filtering based on pack type, add-on type, pack layer, and
+  environment. For more information, refer to the Spectro Cloud Terraform provider
+  [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
+- The `spectrocloud_cluster_eks` Terraform resource now supports the specification of availability zones and subnets.
+  For more information, refer to the Spectro Cloud Terraform provider
+  [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
 
 ### Virtual Machine Orchestrator (VMO)
 
