@@ -564,7 +564,7 @@ is an explanation of the options and sub-commands used below:
 
   Should you need to change the VM template name or VM settings defined in the **vsphere.hcl** file, or review the
   Packer script, you must open a bash session into the container using the
-  `docker run -it --env-file .packerenv --volume "${ISOFILEPATH}:/edge/vmware/packer/build" ghcr.io/spectrocloud/tutorials:1.1.13 bash`
+  `docker run --interactive --tty --env-file .packerenv --volume "${ISOFILEPATH}:/edge/vmware/packer/build" ghcr.io/spectrocloud/tutorials:1.1.13 bash`
   command, and change to the **edge/vmware/packer/** directory to make the modifications. After you finish the
   modifications, issue the `packer build -force --var-file=vsphere.hcl build.pkr.hcl` command inside the container to
   trigger the Packer build process. This command will create a VM template, so that you can skip the next step.
@@ -653,7 +653,7 @@ export GOVC_FOLDER="${vcenter_folder}"
 Suppose you have changed the VM template name in the previous step or need to change the number of VMs to provision. In
 that case, you must modify the **setenv.sh** script. To do so, you can reuse the container bash session from the
 previous step if it is still active, or you can open another bash session into the container using the
-`docker run -it --env-file .goenv ghcr.io/spectrocloud/tutorials:1.1.13 bash` command. If you use an existing container
+`docker run --interactive --tty --env-file .goenv ghcr.io/spectrocloud/tutorials:1.1.13 bash` command. If you use an existing container
 bash session, create the **.goenv** file described above and source it in your container environment. Next, change to
 the **edge/vmware/clone_vm_template/** directory to modify the **setenv.sh** script, and issue the
 `./deploy-edge-host.sh` command to deploy the VMs.
@@ -663,7 +663,7 @@ the **edge/vmware/clone_vm_template/** directory to modify the **setenv.sh** scr
 Issue the following command to clone the VM template and provision three VMs.
 
 ```bash
-docker run -it --rm \
+docker run --interactive --tty --rm \
   --env-file .goenv \
   ghcr.io/spectrocloud/tutorials:1.1.13 \
   sh -c "cd edge/vmware/clone_vm_template/ && ./deploy-edge-host.sh"
