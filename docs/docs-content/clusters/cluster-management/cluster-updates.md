@@ -231,8 +231,7 @@ has the API preset option disabled.
 8. Locate the pod name of the container you want to remove and run the following command.
 
    ```shell
-   kubectl scale deployment hello-universe-deployment --replicas=0 hello-universe-deployment-6854947c67-ltdmq --kubeconfig=admin.cluster-update-deletion.kubeconfig --namespace hello-universe
-   ```
+   kubectl scale deployment hello-universe-deployment --replicas=0 hello-universe-deployment-6854947c67-ltdmq --namespace hello-universe
 
    Sample output
 
