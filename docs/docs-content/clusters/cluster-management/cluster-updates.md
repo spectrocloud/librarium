@@ -208,24 +208,24 @@ has the API preset option disabled.
 
 7. Return to the terminal and run the following command
 
-```shell
-kubectl get pods --kubeconfig=admin.cluster-update-deletion.kubeconfig --namespace=hello-universe -o=custom-columns="POD_NAME:.metadata.name,CONTAINER_NAME:.status.containerStatuses[].name,CONTAINER_ID:.status.containerStatuses[].containerID"
-```
+   ```shell
+   kubectl get pods --kubeconfig=admin.cluster-update-deletion.kubeconfig --namespace=hello-universe -o=custom-columns="POD_NAME:.metadata.name,CONTAINER_NAME:.status.containerStatuses[].name,CONTAINER_ID:.status.containerStatuses[].containerID"
+   ```
 
-Sample output
+   Sample output
 
-```shell
-POD_NAME                                     CONTAINER_NAME   CONTAINER_ID
-api-86f745b67c-gk4lx                         api              containerd://21c7c18e42350efc25ea300e43c3471c64fba6953ae14bb2b46387c8e5d9c06d
-hello-universe-deployment-6854947c67-ltdmq   hello-universe   containerd://584f07c2cf2dbb24f62e63be4322d16314d86e496eeb185c5a5944e884744239
-postgres-567dc9cb4c-cd7fn                    postgres         containerd://b704c87e77ea468156d7f8033b7ad8d9a8ce6048e640b84c529572ac1fb41cd5
-ui-f7ff4ddc5-hcv72                           ui               containerd://40f78fb4aef00445dc9cf051ca57d61f935594cbe1e426d1f193624769ac132d
-```
+   ```shell
+   POD_NAME                                     CONTAINER_NAME   CONTAINER_ID
+   api-86f745b67c-gk4lx                         api              containerd://21c7c18e42350efc25ea300e43c3471c64fba6953ae14bb2b46387c8e5d9c06d
+   hello-universe-deployment-6854947c67-ltdmq   hello-universe   containerd://584f07c2cf2dbb24f62e63be4322d16314d86e496eeb185c5a5944e884744239
+   postgres-567dc9cb4c-cd7fn                    postgres         containerd://b704c87e77ea468156d7f8033b7ad8d9a8ce6048e640b84c529572ac1fb41cd5
+   ui-f7ff4ddc5-hcv72                           ui               containerd://40f78fb4aef00445dc9cf051ca57d61f935594cbe1e426d1f193624769ac132d
+   ```
 
-With the cluster updated, we notice that the previous version of the Hello Universe app remains. This container,
-however, is not used with the API version and is no longer needed.
+   With the cluster updated, we notice that the previous version of the Hello Universe app remains. This container,
+   however, is not used with the API version and is no longer needed.
 
-7. Locate the pod name of the container you want to remove and run the following command.
+8. Locate the pod name of the container you want to remove and run the following command.
 
    ```shell
    kubectl scale deployment hello-universe-deployment --replicas=0 hello-universe-deployment-6854947c67-ltdmq --kubeconfig=admin.cluster-update-deletion.kubeconfig --namespace hello-universe
@@ -238,6 +238,7 @@ however, is not used with the API version and is no longer needed.
    Error from server (NotFound): deployments.apps "hello-universe-deployment-6854947c67-ltdmq" not found
    ```
 
-This command will reduce the container count to 0, effectively stopping the container without destroying the container.
-If you have multiple clusters with resources no longer in use, you could put the command into a script to help remove
-those additional resources.
+   This command will reduce the container count to 0, effectively stopping the container without destroying the container.
+
+   If you have multiple clusters with resources no longer in use, you could put the command into a script to help remove
+      those additional resources.
