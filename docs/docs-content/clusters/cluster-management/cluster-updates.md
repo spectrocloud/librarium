@@ -146,7 +146,7 @@ You can follow these steps to validate all cluster update approaches.
 ## Palette Reconciliation After Updating
 
 When cluster profile updates are applied, Palette will apply the changes to the cluster but will not delete any
-resources that are no longer in use. You can choose to keep or remove these resources.
+resources that are no longer in use. You can choose to keep or manually remove these resources.
 
 To remove unused resources created by a pack from a cluster, you need to manually delete the pack from the cluster profile and apply the changes to the cluster. This will effectively remove all resources associated with the pack. However, this approach may not always be desirable, and there are alternative solutions.
 
