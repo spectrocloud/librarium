@@ -83,6 +83,13 @@ Palette. You will then create a cluster profile and use the registered host to d
   - [rsyslog](https://github.com/rsyslog/rsyslog). This is required for audit logs.
   - (Airgap only) [Palette Edge CLI](../../spectro-downloads.md#palette-edge-cli)
 
+  If you are using Ubuntu or any OS that uses apt or apt-get for package management, you can issue the following command
+  to install all dependencies for installation (not including the Palette Edge CLI) with the following command:
+
+  ```shell
+  sudo apt-get update && sudo apt-get install -y bash jq zstd rsync systemd-timesyncd conntrack iptables rsyslog --no-install-recommends
+  ```
+
   :::warning
 
   Avoid installing Docker on the host where you want to install the agent. Docker is a heavyweight tool that could
@@ -340,7 +347,8 @@ Palette. You will then create a cluster profile and use the registered host to d
    :::
 
    The following configuration includes a Palette registration token and the default Palette endpoint, specifies a
-   Palette project, and sets up the `kairos` user. Note the following:
+   Palette project, and sets up the `kairos` user. It also specifies credentials for private external registries as well
+   as registry mapping rules. Note the following:
 
    - The host will not shut down and will instead reboot after the agent is installed, with
      [kube-vip](../../clusters/edge/networking/kubevip.md) enabled, as this is required for bare metal and VMware
@@ -364,6 +372,20 @@ Palette. You will then create a cluster profile and use the registered host to d
          edgeHostToken: $TOKEN
          paletteEndpoint: api.spectrocloud.com
          projectName: Default
+     externalRegistries:
+       registries:
+         - domain: "example.registry.com/internal-images"
+           username: "admin"
+           password: "***************"
+           repositoryName: example-repository-private
+           certificates:
+             - |
+                -----BEGIN CERTIFICATE-----
+                **********************
+                -----END CERTIFICATE-----
+     registryMappingRules:
+      "us-east1-docker.pkg.dev/spectro-images/daily": "example.registry.com/internal-images"
+
      stages:
        initramfs:
          - users:
@@ -395,6 +417,19 @@ Palette. You will then create a cluster profile and use the registered host to d
        edgeHostToken: ****************
        paletteEndpoint: api.spectrocloud.com
        projectName: Default
+     externalRegistries:
+       registries:
+         - domain: "example.registry.com/internal-images"
+           username: "admin"
+           password: "***************"
+           repositoryName: example-repository-private
+           certificates:
+             - |
+                -----BEGIN CERTIFICATE-----
+                **********************
+                -----END CERTIFICATE-----
+     registryMappingRules:
+      "us-east1-docker.pkg.dev/spectro-images/daily": "example.registry.com/internal-images"
    stages:
      initramfs:
        - users:
@@ -540,8 +575,8 @@ Palette. You will then create a cluster profile and use the registered host to d
 
 13. Click on **Add Cluster Profile**.
 
-14. In the **Basic Information** section, assign the a profile name, a description, and tags. Select the type as
-    **Full** and click **Next**.
+14. In the **Basic Information** section, assign a profile name, a description, and tags. Select the type as **Full**
+    and click **Next**.
 
 15. Select **Edge Native** as the **Cloud Type** and click **Next**.
 
@@ -583,42 +618,7 @@ internet.
    ssh -i </path/to/private/key> ubuntu@<host-ip-or-domain>
    ```
 
-2. Issue the command below to create the **user-data** file and configure your host declaratively.
-
-   The following configuration indicates the installation mode to be airgap and sets up the `kairos` user. The host will
-   not shut down and will reboot after the agent installation, with
-   [kube-vip](../../clusters/edge/networking/kubevip.md) enabled, as this is required for bare metal and VMware vSphere
-   deployments. If your environment does not require kube-vip, set `skipKubeVip:` to `true`. Refer to the
-   [Prepare User Data](../../clusters/edge/edgeforge-workflow/prepare-user-data.md) guide to learn more about user data
-   configuration.
-
-   ```shell
-   cat << EOF > user-data
-   #cloud-config
-   install:
-     reboot: true
-     poweroff: false
-
-   stylus:
-     skipKubeVip: false
-     installationMode: airgap
-   stages:
-     initramfs:
-       - users:
-           kairos:
-             groups:
-               - sudo
-             passwd: kairos
-   EOF
-   ```
-
-3. Export the path to your user data file.
-
-   ```shell
-   export USERDATA=./user-data
-   ```
-
-4. (Optional) If you are not accessing the internet via a proxy, skip this step.
+2. (Optional) If you are not accessing the internet via a proxy, skip this step.
 
    If you are downloading the agent on a host that accesses the internet via a proxy network, export the proxy
    configurations in your current terminal session so that the script downloading the agent binary can execute
@@ -633,92 +633,117 @@ internet.
    export HTTPS_PROXY=<httpsProxyAddress>
    ```
 
-5. Download the agent installation image from a host with internet access and export it to a TAR file. Replace
-   `<architecture>` with the architecture of your CPU. If you have ARM64, use `arm64`. If you have AMD64 or x86_64, use
-   `amd64`. Replace `<version>` with the desired version number. In this example, we use `v4.5.0`.
-
-   ```shell
-   crane pull us-docker.pkg.dev/palette-images/edge/stylus-agent-mode-linux-<architecture>:<version> agent-image.tar
-   ```
-
-6. Issue the following command from a host with internet access to download the agent binary.
+3. Download the airgap agent installation package and save it as a TAR file. Replace `<architecture>` with the
+   architecture of your CPU. If you have ARM64, use `arm64`. If you have AMD64 or x86_64, use `amd64`. Replace
+   `<version>` with the desired version number. In this example, we use `v4.5.0`. Refer to
+   [Agent Mode Releases](https://github.com/spectrocloud/agent-mode/releases) for all the available releases.
 
    <Tabs groupID="FIPS">
 
    <TabItem value="Non-FIPS">
 
-   Name the binary `palette-agent`. Replace `<architecture>` with the architecture of your CPU. If you have ARM64, use
-   `arm64`. If you have AMD64 or x86_64, use `amd64`. Replace `<version>` with the desired version number. In this
-   example, we use `v4.5.0`.
-
    ```shell
-   export URL=https://github.com/spectrocloud/agent-mode/releases/download/<version>/palette-agent-linux-<architecture>
-   curl --verbose --location $URL --output palette-agent
+   curl -L https://github.com/spectrocloud/agent-mode/releases/download/<version>/agent-mode-linux-<architecture>.tar --output agent-mode-linux-<architecture>.tar
    ```
 
    </TabItem>
 
    <TabItem value="FIPS">
 
-   Name the binary `palette-agent`. Replace `<version>` with the desired version number. In this example, we use
-   `v4.5.0`. Note that the FIPS version only supports a CPU architecture of AMD64.
-
    ```shell
-   export URL=https://github.com/spectrocloud/agent-mode/releases/download/<version>/palette-agent-fips-linux-amd64
-   curl --verbose --location $URL --output palette-agent
+   curl -L https://github.com/spectrocloud/agent-mode/releases/download/<version>/agent-mode-fips-linux-<architecture>.tar --output agent-mode-linux-<architecture>.tar
    ```
 
    </TabItem>
 
    </Tabs>
 
-7. Issue the following command to make the binary executable.
+4. Extract the package to the root folder.
 
    ```shell
-   chmod +x palette-agent
+   sudo tar -xvf agent-mode-linux-<architecture>.tar -C /
    ```
 
-8. Copy the agent binary as well as the agent image TAR file from your host with internet access to the host where you
-   want to install the Palette agent.
+5. Issue the command below to create the **userdata** file and configure your host declaratively.
 
-9. Issue the following command to install the agent on your host. Replace `<image-tag>` with the tag of the installation
-   image. If your user data is not in the current directory, replace `./user-data` with the path to your user data file.
-   If your agent image TAR file is not in the current directory, replace `./agent-image.tar` with the path to your image
-   TAR file.
+   The following configuration indicates the installation mode to be airgap and sets up the `kairos` user. The host will
+   not shut down and will reboot after the agent installation, with
+   [kube-vip](../../clusters/edge/networking/kubevip.md) enabled, as this is required for bare metal and VMware vSphere
+   deployments. If your environment does not require kube-vip, set `skipKubeVip:` to `true`. Refer to the
+   [Prepare User Data](../../clusters/edge/edgeforge-workflow/prepare-user-data.md) guide to learn more about user data
+   configuration.
 
    ```shell
-   sudo ./palette-agent install --source ./agent-image.tar --config "./user-data" --local
+   sudo tee /var/lib/spectro/userdata > /dev/null << EOF
+   #cloud-config
+   install:
+     reboot: true
+     poweroff: false
+
+   stylus:
+     skipKubeVip: false
+     installationMode: airgap
+   stages:
+     initramfs:
+       - users:
+          kairos:
+            groups:
+              - sudo
+            passwd: kairos
+       name: "Configure user"
+   EOF
    ```
 
-   The termination of the SSH connection, as shown in the example below, confirms that the script has completed its
-   tasks.
+6. Issue the following command confirm that your user data file was created successfully at the correct location.
 
-   ```text hideClipboard
-   Connection to 192.168.1.100 closed by remote host.
-   Connection to 192.168.1.100 closed.
+   ```shell
+   sudo cat /var/lib/spectro/userdata
    ```
 
-10. Log in to [Palette](https://console.spectrocloud.com/) and select **Clusters** from the left **Main Menu**.
+   The response is the content of the user data file.
 
-11. Select **Profiles** from the left **Main Menu**.
+   ```yaml
+   #cloud-config
+   install:
+     reboot: true
+     poweroff: false
 
-12. Click on **Add Cluster Profile**.
+   stylus:
+     skipKubeVip: false
+     installationMode: airgap
+   stages:
+     initramfs:
+       - users:
+          kairos:
+            groups:
+              - sudo
+            passwd: kairos
+       name: "Configure user"
+   ```
 
-13. In the **Basic Information** section, assign the a profile name, a description, and tags. Select the type as
+7. Reboot the host. The host will automatically start the installation process once it reboots.
+
+8. Log in to [Palette](https://console.spectrocloud.com/) and select **Clusters** from the left **Main Menu**.
+
+9. Select **Profiles** from the left **Main Menu**.
+
+10. Click on **Add Cluster Profile**.
+
+11. In the **Basic Information** section, assign the a profile name, a description, and tags. Select the type as
     **Full** and click **Next**.
 
-14. Select **Edge Native** as the **Cloud Type** and click **Next**.
+12. Select **Edge Native** as the **Cloud Type** and click **Next**.
 
-15. The **Profile Layers** section specifies the packs that compose the profile. Add the **BYOS Edge OS** pack version
+13. The **Profile Layers** section specifies the packs that compose the profile. Add the **BYOS Edge OS** pack version
     **2.0.0** to the OS layer.
 
-16. Click **Values** under **Pack Details**, then click on **Presets** on the right-hand side. Select **Agent Mode**.
+14. Click **Values** under **Pack Details**, then click on **Presets** on the right-hand side. Select **Agent Mode**.
 
     ![View of the cluster profile creation page with the BYOS pack.](/deployment-modes_agent-mode_byos-pack.webp)
 
-17. Click **Next Layer** to continue.
+15. Click **Next Layer** to continue.
 
-18. In the **Kubernetes** layer, under `cluster.config.kube-apiserver-arg`, remove `AlwaysPullImages` from the list item
+16. In the **Kubernetes** layer, under `cluster.config.kube-apiserver-arg`, remove `AlwaysPullImages` from the list item
     `enable-admission-plugins`:
 
     ```yaml {7}
@@ -731,28 +756,28 @@ internet.
       - enable-admission-plugins=NamespaceLifecycle,ServiceAccount,NodeRestriction
     ```
 
-19. Complete the cluster profile creation process by filling out the remaining layers. In the application layer, make
+17. Complete the cluster profile creation process by filling out the remaining layers. In the application layer, make
     sure you include the **Harbor Edge-Native Config** pack. This pack is required for airgapped clusters.
 
-20. Follow the steps in
+18. Follow the steps in
     [Export Cluster Definition](../../clusters/edge/local-ui/cluster-management/export-cluster-definition.md) to export
     a cluster definition of your profile. You will use this cluster definition later when you create the cluster in
     Local UI.
 
-21. (Optional) If your host has access to all the images referenced by your cluster profile, you may skip this step.
+19. (Optional) If your host has access to all the images referenced by your cluster profile, you may skip this step.
 
     Follow the steps in
     [Build Content Bundles](../../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md) to build a
     content bundle for your cluster profile. The content bundle will contain all the artifacts required to create your
     cluster and it will allow you to create a cluster even if your host has no access to an external image registry.
 
-22. Log in to [Local UI](../../clusters/edge/local-ui/host-management/access-console.md).
+20. Log in to [Local UI](../../clusters/edge/local-ui/host-management/access-console.md).
 
-23. Follow the steps in
+21. Follow the steps in
     [Upload Content Bundles](../../clusters/edge/local-ui/cluster-management/upload-content-bundle.md) to upload the
     content bundle to your host.
 
-24. Follow the steps in [Create Local Cluster](../../clusters/edge/local-ui/cluster-management/create-cluster.md) to use
+22. Follow the steps in [Create Local Cluster](../../clusters/edge/local-ui/cluster-management/create-cluster.md) to use
     the cluster definition you exported previously to create a cluster.
 
 :::warning

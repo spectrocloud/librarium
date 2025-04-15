@@ -11,6 +11,179 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## April 12, 2025 - Release 4.6.X {#release-notes-4.6.b}
+
+### Security Notices
+
+- Review the [Security Bulletins](../security-bulletins/reports/reports.mdx) page for the latest security advisories.
+
+### Palette Enterprise {#palette-enterprise-4.6.b}
+
+#### Breaking Changes {#breaking-changes-4.6.b}
+
+- New Cluster Groups will now default to a newer version of vCluster,
+  [version 0.22.x](https://loft.featurebase.app/changelog/vcluster-v022-native-sleep-mode-and-cert-manager-integration),
+  which includes new features and improvements. Existing Cluster Groups will continue to use older versions. If you want
+  to use a later version of vCluster, refer to the
+  [Palette Virtual Clusters](../clusters/palette-virtual-clusters/palette-virtual-clusters.md#upgrade-virtual-clusters)
+  page to learn how to migrate your virtual cluster workloads.
+
+#### Features
+
+#### Improvements
+
+#### Deprecations and Removals
+
+### Edge
+
+#### Features
+
+#### Improvements
+
+#### Bug Fixes
+
+### Palette Dev Engine (PDE)
+
+#### Features
+
+- New Cluster Groups will now default to a newer version of vCluster,
+  [version 0.22.x](https://loft.featurebase.app/changelog/vcluster-v022-native-sleep-mode-and-cert-manager-integration),
+  which includes new features and improvements. Existing Cluster Groups will continue to use older versions. If you want
+  to use a later version of vCluster, refer to the
+  [Palette Virtual Clusters](../clusters/palette-virtual-clusters/palette-virtual-clusters.md#upgrade-virtual-clusters)
+  page to learn how to migrate your virtual cluster workloads.
+
+### VerteX
+
+#### Features
+
+- Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
+  [Palette section](#palette-enterprise-4.6.b) for more details.
+
+### Automation
+
+:::info
+
+Check out the [Downloads](../spectro-downloads.md) and [Compatibility Matrix](../component.md) pages to find the
+compatible version of the Palette CLI.
+
+:::
+
+#### Breaking Changes {#breaking-changes-automation-4.6.b}
+
+- The `spec.jsonCredentialsFileUid` field in API requests is deprecated and will be removed in an upcoming release.
+  Users who create GCP cloud accounts using the API should now use the `spec.jsonCredentials` field to supply their
+  credentials in JSON format. Any API `GET` operations on GCP cloud accounts will continue to be available until the
+  `spec.jsonCredentialsFileUid` is removed. Refer to the [API documentation](/api/introduction) for further details.
+
+#### Features
+
+#### Improvements
+
+### Docs and Education
+
+#### Bug Fixes
+
+- Fixed a bug that resulted in some dependencies to have the incorrect
+  [open-source license](../legal-licenses/oss-licenses-index/oss-licenses-index.md) listed.
+
+### Packs
+
+#### Pack Notes
+
+#### OS
+
+| Pack Name | New Version |
+| --------- | ----------- |
+
+#### Kubernetes
+
+| Pack Name | New Version |
+| --------- | ----------- |
+
+#### CNI
+
+| Pack Name | New Version |
+| --------- | ----------- |
+
+#### CSI
+
+| Pack Name | New Version |
+| --------- | ----------- |
+
+#### Add-on Packs
+
+| Pack Name | New Version |
+| --------- | ----------- |
+
+#### FIPS Packs
+
+| Pack Name | New Version |
+| --------- | ----------- |
+
+#### Deprecations and Removals
+
+## April 3, 2025 - Automation Updates
+
+Terraform version 0.23.4 of the
+[Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
+available. For more details, refer to the Terraform provider
+[release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
+
+### Bug Fixes
+
+- Fixed an issue that resulted in Admin Kubeconfig files to be fetched instead of the Kubeconfig file when using the
+  `kubeconfig` field on cluster resources. Refer to the
+  [Kubeconfig Files](../clusters/cluster-management/kubeconfig.md#kubeconfig-files) for more details.
+
+## March 28, 2025 - Release 4.6.18
+
+### Bug Fixes
+
+- Fixed an issue where users could not connect to Edge hosts using
+  [remote shell](../clusters/edge/cluster-management/remote-shell.md) in VerteX SaaS environments.
+- Fixed an issue that prevented host machines from automatically rebooting after installing the
+  [Palette agent](../deployment-modes/agent-mode/install-agent-host.md).
+- Fixed an issue that prevented [AWS](../clusters/public-cloud/aws/aws.md) clusters with tags containing certain special
+  characters from being provisioned or deleted.
+- Fixed an issue where [Edge](../clusters/edge/edge.md) native clusters remained stuck in the bootstrapping phase during
+  deployment.
+
+### Security Notices
+
+- On March 24, 2025, a security vulnerability regarding certain versions of
+  [ingress-nginx](https://github.com/kubernetes/ingress-nginx) was reported. The vulnerable versions were used in
+  Palette's and VerteX's management planes and were also available as packs for workload clusters. As of April 4, 2025,
+  all vulnerable Nginx packs have been deprecated, all managed Palette instances have been patched, and patches are
+  available for connected and airgapped Palette Enterprise and VerteX versions 4.4 - 4.6.
+
+  All workload clusters across all Palette and VerteX installations must be updated manually. All users should review
+  their [cluster profiles](../profiles/cluster-profiles/cluster-profiles.md) and workload clusters and upgrade the Nginx
+  pack to version `1.11.5`. For more information, refer to our
+  [Security Advisory](../security-bulletins/security-advisories/security-advisories.md).
+
+## March 20, 2025 - Release 4.6.13
+
+### Bug Fixes
+
+- Fixed an issue where [AWS EKS](../clusters/public-cloud/aws/eks.md) clusters using the AWS VPC CNI (Helm)
+  [pack](../integrations/integrations.mdx) assigned incorrect IP addresses to pods.
+- Fixed an issue where OIDC configuration failed when using
+  [Microsoft Entra ID](../user-management/saml-sso/palette-sso-with-entra-id.md).
+
+### Automation
+
+#### Features
+
+- Terraform version 0.23.2 of the
+  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
+  available. For more details, refer to the Terraform provider
+  [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
+- Crossplane version 0.23.2 of the
+  [Palette Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette/) is
+  available. For more details, refer to the Crossplane provider
+  [release page](https://github.com/crossplane-contrib/provider-palette/releases).
+
 ## March 15, 2025 - Release 4.6.12
 
 ### Security Notices
