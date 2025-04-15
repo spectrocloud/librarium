@@ -150,11 +150,12 @@ resources that are no longer in use. Depending on the situation, you can choose 
 remove the resources, utilize one of the following two methods.
 
 The first method would be a clean deployment with a new cluster profile. Once the new cluster and cluster profile are
-deployed, the previous version could be deleted. However, this may have unintended downstream effects because it does not preserve any resource that is currently in use.
+deployed, the previous version could be deleted. However, this may have unintended downstream effects because it does
+not preserve any resource that is currently in use.
 
-The second method is to use `kubectl` to scale the resource count to 0. While deleting the resource manually
- is possible, Palette will recreate it immediately through its reconciliation flow. Scaling replicas to zero ensures the resource is
-effectively removed.
+The second method is to use `kubectl` to scale the resource count to 0. While deleting the resource manually is
+possible, Palette will recreate it immediately through its reconciliation flow. Scaling replicas to zero ensures the
+resource is effectively removed.
 
 This section provides guidance on removing resources using the second method.
 
@@ -169,11 +170,12 @@ This section provides guidance on removing the resources using the second method
 
 The following steps provide an example of how to clean up unneeded resources using `kubectl`. In this example, an AWS
 cluster is created using a cluster profile with the
-<VersionedLink text="Hello Universe" url="/integrations/packs/?pack=hello-universe"/> included. The Hello Universe pack has the API preset option
-disabled.
 
-1. Log in to [Palette](https://console.spectrocloud.com/). Create a cluster profile with two versions for an AWS IaaS cluster that includes the Hello
-   Universe pack. For example:
+<VersionedLink text="Hello Universe" url="/integrations/packs/?pack=hello-universe" /> included. The Hello Universe pack
+has the API preset option disabled.
+
+1. Log in to [Palette](https://console.spectrocloud.com/). Create a cluster profile with two versions for an AWS IaaS
+   cluster that includes the Hello Universe pack. For example:
 
    **Version 1.0.0**.
 
@@ -193,8 +195,7 @@ disabled.
 
 2. Build a cluster using cluster profile version 1.0.0. This will take 15-20 minutes.
 
-3. Download the [Admin kubeconfig](./kubeconfig.md) file from the
-   cluster **Overview** tab.
+3. Download the [Admin kubeconfig](./kubeconfig.md) file from the cluster **Overview** tab.
 
 4. Go your terminal application and run the following command
 
@@ -202,8 +203,8 @@ disabled.
    kubectl get pods --kubeconfig=admin.cluster-update-deletion.kubeconfig --namespace=hello-universe -o=custom-columns="POD_NAME:.metadata.name,CONTAINER_NAME:.status.containerStatuses[].name,CONTAINER_ID:.status.containerStatuses[].containerID"
    ```
 
-5. This command will display the containers in the cluster that are in the `hello-universe` namespace. It will include the
-   pod name, container name, and container ID. You can use these identifiers with various `kubectl` options.
+5. This command will display the containers in the cluster that are in the `hello-universe` namespace. It will include
+   the pod name, container name, and container ID. You can use these identifiers with various `kubectl` options.
 
    Sample output
 
