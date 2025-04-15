@@ -191,7 +191,7 @@ has the API preset option disabled.
 
 3. Download the [Admin kubeconfig](./kubeconfig.md) file from the cluster **Overview** tab.
 
-4. Go your terminal application and run the following command
+4. Open a terminal window and run the following command.
 
    ```shell
    kubectl get pods --kubeconfig=admin.cluster-update-deletion.kubeconfig --namespace=hello-universe -o=custom-columns="POD_NAME:.metadata.name,CONTAINER_NAME:.status.containerStatuses[].name,CONTAINER_ID:.status.containerStatuses[].containerID"
