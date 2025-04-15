@@ -209,7 +209,7 @@ has the API preset option disabled.
 
 6. Return to Palette and update the cluster using the profile version 1.1.0. Refer to the [Update a Cluster](#update-a-cluster) section for instructions on updating your cluster.
 
-7. Return to the terminal and run the following command
+7. Return to the terminal and run the following command.
 
    ```shell
    kubectl get pods --kubeconfig=admin.cluster-update-deletion.kubeconfig --namespace=hello-universe -o=custom-columns="POD_NAME:.metadata.name,CONTAINER_NAME:.status.containerStatuses[].name,CONTAINER_ID:.status.containerStatuses[].containerID"
