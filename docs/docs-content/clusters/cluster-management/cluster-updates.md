@@ -193,7 +193,7 @@ disabled.
 
 2. Build a cluster using cluster profile version 1.0.0. This will take 15-20 minutes.
 
-3. Download the [Admin kubeconfig](https://docs.spectrocloud.com/clusters/cluster-management/kubeconfig/) file from the
+3. Download the [Admin kubeconfig](./kubeconfig.md) file from the
    cluster **Overview** tab.
 
 4. Go your terminal application and run the following command
