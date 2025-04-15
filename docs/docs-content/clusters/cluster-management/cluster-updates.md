@@ -240,8 +240,7 @@ has the API preset option disabled.
    Error from server (NotFound): deployments.apps "hello-universe-deployment-6854947c67-ltdmq" not found
    ```
 
-   This command will reduce the container count to 0, effectively stopping the container without destroying the
-   container.
+   This command will reduce the container count to 0, effectively stopping the container without destroying it.
 
    If you have multiple clusters with resources no longer in use, you could put the command into a script to help scale down
    those additional resources.
