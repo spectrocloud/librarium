@@ -172,7 +172,7 @@ cluster called **cluster-update-deletion** is created using a cluster profile wi
 <VersionedLink text="Hello Universe" url="/integrations/packs/?pack=hello-universe"/> included. The Hello Universe pack has the API preset option
 disabled.
 
-1. Log in to Palette and create a cluster profile with two versions for an AWS IaaS cluster that includes the Hello
+1. Log in to [Palette](https://console.spectrocloud.com/). Create a cluster profile with two versions for an AWS IaaS cluster that includes the Hello
    Universe pack. For example:
 
    **Version 1.0.0**.
