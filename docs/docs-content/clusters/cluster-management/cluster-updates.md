@@ -166,7 +166,9 @@ has the API preset option disabled.
 
 <!-- prettier-ignore-end -->
 
-1. Log in to [Palette](https://console.spectrocloud.com/). Create a cluster profile with two versions for an AWS IaaS
+1. Log in to [Palette](https://console.spectrocloud.com/). 
+
+2. Create a cluster profile with two versions for an AWS IaaS
    cluster that includes the Hello Universe pack. For example:
 
    **Version 1.0.0**.
