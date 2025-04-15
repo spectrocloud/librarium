@@ -243,7 +243,7 @@ has the API preset option disabled.
    This command will reduce the container count to 0, effectively stopping the container without destroying the
    container.
 
-   If you have multiple clusters with resources no longer in use, you could put the command into a script to help remove
+   If you have multiple clusters with resources no longer in use, you could put the command into a script to help scale down
    those additional resources.
 
 ### Validation
