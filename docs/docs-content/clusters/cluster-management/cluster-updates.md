@@ -235,19 +235,19 @@ however, is not used with the API version and is no longer needed.
 
 8. Locate the pod name of the container you want to remove and run the following command.
 
-```shell
-kubectl scale deployment hello-universe-deployment --replicas=0 hello-universe-deployment-6854947c67-ltdmq --kubeconfig=admin.cluster-update-deletion.kubeconfig --namespace hello-universe
-```
+   ```shell
+   kubectl scale deployment hello-universe-deployment --replicas=0 hello-universe-deployment-6854947c67-ltdmq --kubeconfig=admin.cluster-update-deletion.kubeconfig --namespace hello-universe
+   ```
 
-Sample output
+   Sample output
 
-```
-deployment.apps/hello-universe-deployment scaled
-Error from server (NotFound): deployments.apps "hello-universe-deployment-6854947c67-ltdmq" not found
-```
+   ```
+   deployment.apps/hello-universe-deployment scaled
+   Error from server (NotFound): deployments.apps "hello-universe-deployment-6854947c67-ltdmq" not found
+   ```
 
-This command will reduce the container count to 0, effectively stopping the container. If you have multiple clusters
-with resources no longer in use, you could put the command into a script to help remove those additional resources.
+   This command will reduce the container count to 0, effectively stopping the container. If you have multiple clusters
+   with resources no longer in use, you could put the command into a script to help remove those additional resources.
 
 ### Validation
 
