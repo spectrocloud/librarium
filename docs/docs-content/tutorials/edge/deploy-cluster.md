@@ -801,8 +801,8 @@ Click on the **Next layer** button to add the following Kubernetes layer to your
 | ------------- | ------------ | --------------------- | ------------------ |
 | Kubernetes    | Public Repo  | Palette Optimized K3s | Any non-deprecated |
 
-The pack version must match the version pushed to the _ttl.sh_ image registry. The `system.uri` attribute of the
-BYOOS pack will reference the Kubernetes version you select using the `{{ .spectro.system.kubernetes.version }}`
+The pack version must match the version pushed to the _ttl.sh_ image registry. The `system.uri` attribute of the BYOOS
+pack will reference the Kubernetes version you select using the `{{ .spectro.system.kubernetes.version }}`
 [macro](../../clusters/cluster-management/macros.md).
 
 Click on the **Next layer** button, and add the following network layer. This example uses the Calico Container Network
