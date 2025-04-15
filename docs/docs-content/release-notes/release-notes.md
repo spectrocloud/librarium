@@ -43,9 +43,26 @@ tags: ["release-notes"]
 
 #### Features
 
+- <TpBadge /> Palette now allows the configuration of a primary, in-cluster registry that stores the images required for
+  cluster deployment. Any OCI-compliant registry can be configured as the primary registry. Refer to Deploy Cluster with
+  Primary Registry for further information.
+- The [Palette CLI](../automation/palette-cli/palette-cli.md) has a new `content` command that supports the creation of
+  [content bundles](../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md). This command provides
+  the ability to create bundles directly from the command-line and supports operations in airgap environments. Refer to
+  the [Content](../automation/palette-cli/commands/content.md) command reference page for further information.
+
 #### Improvements
 
-#### Bug Fixes
+- [Local UI](../clusters/edge/local-ui/local-ui.md) has been updated with a new color scheme and logo. These new
+  elements are displayed across the entire product interface. Check out the
+  [Welcome to the fold: meet the new Spectro Cloud brand](https://www.spectrocloud.com/blog/meet-the-new-spectro-cloud-brand)
+  blog post to learn more.
+
+#### Deprecations and Removals
+
+- The `harbor-edge-native-config` pack has been deprecated. You need to use the new `registry-connect` pack to implement
+  the Harbor registry. This allows you to keep your up-to-date with the latest upstream updates. Refer to Migrate from
+  Harbor Edge-Native Config Pack for further details.
 
 ### Palette Dev Engine (PDE)
 
@@ -86,7 +103,7 @@ compatible version of the Palette CLI.
 - The [Palette CLI](../automation/palette-cli/palette-cli.md) has a new `content` command that supports the creation of
   [content bundles](../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md). This command provides
   the ability to create bundles directly from the command-line and supports operations in airgap environments. Refer to
-  the Content command reference page for further information.
+  the [Content](../automation/palette-cli/commands/content.md) command reference page for further information.
 - Terraform version 0.23.5 of the
   [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
   available. For more details, refer to the Terraform provider
@@ -187,6 +204,9 @@ compatible version of the Palette CLI.
 
 - The packs `ubuntu-libvirt`,`generic-vm-libvirt`, `centos-libvirt`, and`pfsense-vm-libvirt` have been removed. Palette
   no longer supports edge virtual clusters.
+- The `harbor-edge-native-config` pack has been deprecated. You need to use the new `registry-connect` pack to implement
+  the Harbor registry. This allows you to keep your up-to-date with the latest upstream updates. Refer to Migrate from
+  Harbor Edge-Native Config Pack for further details.
 
 ## April 3, 2025 - Automation Updates
 
