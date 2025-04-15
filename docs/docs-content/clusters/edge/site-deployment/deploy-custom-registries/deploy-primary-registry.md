@@ -11,6 +11,10 @@ A primary registry is an in-cluster registry that stores images required for clu
 cluster must have a primary registry. Connected clusters can also benefit from using a primary registry for increased
 reliability and reduced bandwidth usage.
 
+:::preview
+
+:::
+
 When your Edge cluster is created for the first time, all images from add-on packs loaded from the content bundle or
 external registries are stored locally in the primary registry. Subsequent image pulls from the cluster are made to the
 primary registry. This allows your Edge cluster to reboot containers or add new nodes without being connected to the

@@ -27,8 +27,8 @@ another registry.
 :::tip
 
 You can use a private external registry together with a in-cluster primary registry. All images for add-on layers of the
-cluster will be stored in the local Harbor registry after the initial download, which allows you to reduce the bandwidth
-use and protect against outages. For more information, refer to
+cluster will be stored in the in-cluster primary registry after the initial download, which allows you to reduce the
+bandwidth use and protect against outages. For more information, refer to
 [Deploy Cluster with Primary Registry](./deploy-primary-registry.md)..
 
 :::
