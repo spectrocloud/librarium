@@ -202,26 +202,27 @@ has the API preset option disabled.
 5. Open a terminal window and run the following command.
 
    ```shell
-   kubectl get pods --namespace=hello-universe -o=custom-columns="POD_NAME:.metadata.name,CONTAINER_NAME:.status.containerStatuses[].name,CONTAINER_ID:.status.containerStatuses[].containerID"
+   kubectl get pods --namespace=hello-universe --output=custom-columns="POD_NAME:.metadata.name,CONTAINER_NAME:.status.containerStatuses[].name,CONTAINER_ID:.status.containerStatuses[].containerID"
    ```
 
-This command will display the containers in the cluster that are in the `hello-universe` namespace. It will include the
-pod name, container name, and container ID. You can use these identifiers with various `kubectl` options.
+   This command will display the containers in the cluster that are in the `hello-universe` namespace. It will include
+   the pod name, container name, and container ID. You can use these identifiers with various `kubectl` options.
 
-Sample output
+   Sample output
 
-```shell
-POD_NAME                                     CONTAINER_NAME   CONTAINER_ID
-hello-universe-deployment-6854947c67-ltdmq   hello-universe   containerd://584f07c2cf2dbb24f62e63be4322d16314d86e496eeb185c5a5944e884744239
-```
+   ```shell
+   POD_NAME                                     CONTAINER_NAME   CONTAINER_ID
+   hello-universe-deployment-6854947c67-ltdmq   hello-universe   containerd://584f07c2cf2dbb24f62e63be4322d16314d86e496eeb185c5a5944e884744239
+   ```
 
 6. Return to Palette and update the cluster using the profile version 1.1.0. Refer to the
    [Update a Cluster](#update-a-cluster) section for instructions on updating your cluster.
 
 7. Return to the terminal and run the following command.
 
-   ````shell
+   ```shell
    kubectl get pods --namespace=hello-universe -o=custom-columns="POD_NAME:.metadata.name,CONTAINER_NAME:.status.containerStatuses[].name,CONTAINER_ID:.status.containerStatuses[].containerID"
+   ```
 
    Sample output
 
@@ -231,7 +232,7 @@ hello-universe-deployment-6854947c67-ltdmq   hello-universe   containerd://584f0
    hello-universe-deployment-6854947c67-ltdmq   hello-universe   containerd://584f07c2cf2dbb24f62e63be4322d16314d86e496eeb185c5a5944e884744239
    postgres-567dc9cb4c-cd7fn                    postgres         containerd://b704c87e77ea468156d7f8033b7ad8d9a8ce6048e640b84c529572ac1fb41cd5
    ui-f7ff4ddc5-hcv72                           ui               containerd://40f78fb4aef00445dc9cf051ca57d61f935594cbe1e426d1f193624769ac132d
-   ````
+   ```
 
    With the cluster updated, note that the previous version of the Hello Universe app remains. This container, however,
    is not used with the API version and is no longer needed.
@@ -240,21 +241,19 @@ hello-universe-deployment-6854947c67-ltdmq   hello-universe   containerd://584f0
 
    ```shell
    kubectl scale deployment hello-universe-deployment --replicas=0 hello-universe-deployment-6854947c67-ltdmq --namespace hello-universe
+   ```
 
    Sample output
 
-   ```
-
+   ```shell
    deployment.apps/hello-universe-deployment scaled Error from server (NotFound): deployments.apps
    "hello-universe-deployment-6854947c67-ltdmq" not found
-
    ```
 
    This command will reduce the container count to 0, effectively stopping the container without destroying it.
 
-   If you have multiple clusters with resources no longer in use, you could put the command into a script to help scale down
-   those additional resources.
-   ```
+   If you have multiple clusters with resources no longer in use, you could put the command into a script to help scale
+   down those additional resources.
 
 ### Validation
 
