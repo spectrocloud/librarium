@@ -29,6 +29,14 @@ If you already have a cluster with the deprecated **Harbor Edge-Native Config** 
 Harbor registry using **Registry Connect**, refer to
 [Migrate from Harbor Edge-Native Config Pack](./migrate-edge-native-config.md).
 
+## Limitations
+
+- This feature is not supported on VerteX. If you are deploying a connected cluster, you can only connect to a Palette
+  instance.
+
+- You cannot use the Palette Edge CLI to upload images to the primary registry. You must use the Palette CLI instead.
+  Refer to ["Upload Cluster Images to Registry with the CLI](./upload-images-to-registry.md) for more information.
+
 ## Prerequisites
 
 - At least one Edge host registered with your Palette account with an AMD64 (x86_64) processor architecture.
@@ -43,8 +51,8 @@ Harbor registry using **Registry Connect**, refer to
 - An Edge cluster profile. For information about how to create a cluster profile for Edge, refer to
   [Model Edge Cluster Profile](../../site-deployment/model-profile.md).
 
-- Your Palette agent version is 4.6.13 or later. For connected clusters, your Palette/VerteX instance version is 4.6.19
-  or later.
+- Your Palette agent version is 4.6.13 or later. For connected clusters, your Palette instance version is 4.6.19 or
+  later.
 
 ## Deploy with a Primary Registry
 
