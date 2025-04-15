@@ -653,9 +653,9 @@ export GOVC_FOLDER="${vcenter_folder}"
 Suppose you have changed the VM template name in the previous step or need to change the number of VMs to provision. In
 that case, you must modify the **setenv.sh** script. To do so, you can reuse the container bash session from the
 previous step if it is still active, or you can open another bash session into the container using the
-`docker run --interactive --tty --env-file .goenv ghcr.io/spectrocloud/tutorials:1.1.13 bash` command. If you use an existing container
-bash session, create the **.goenv** file described above and source it in your container environment. Next, change to
-the **edge/vmware/clone_vm_template/** directory to modify the **setenv.sh** script, and issue the
+`docker run --interactive --tty --env-file .goenv ghcr.io/spectrocloud/tutorials:1.1.13 bash` command. If you use an
+existing container bash session, create the **.goenv** file described above and source it in your container environment.
+Next, change to the **edge/vmware/clone_vm_template/** directory to modify the **setenv.sh** script, and issue the
 `./deploy-edge-host.sh` command to deploy the VMs.
 
 :::
