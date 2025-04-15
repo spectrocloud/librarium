@@ -225,7 +225,7 @@ has the API preset option disabled.
    ui-f7ff4ddc5-hcv72                           ui               containerd://40f78fb4aef00445dc9cf051ca57d61f935594cbe1e426d1f193624769ac132d
    ```
 
-   With the cluster updated, we notice that the previous version of the Hello Universe app remains. This container,
+   With the cluster updated, note that the previous version of the Hello Universe app remains. This container,
    however, is not used with the API version and is no longer needed.
 
 8. Locate the pod name of the container you want to remove and run the following command.
