@@ -212,7 +212,7 @@ disabled.
    hello-universe-deployment-6854947c67-ltdmq   hello-universe   containerd://584f07c2cf2dbb24f62e63be4322d16314d86e496eeb185c5a5944e884744239
    ```
 
-6. Return to Palette and update the cluster using the profile version 1.1.0. This takes around 1-2 minutes.
+6. Return to Palette and update the cluster using the profile version 1.1.0.
 
 7. Return to the terminal and run the following command
 
