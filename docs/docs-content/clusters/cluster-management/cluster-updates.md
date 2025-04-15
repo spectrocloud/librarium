@@ -171,7 +171,7 @@ has the API preset option disabled.
    - OS = <VersionedLink text="Ubuntu" url="/integrations/packs/?pack=ubuntu-aws" />
    - Kubernetes = <VersionedLink text="Kubernetes" url="/integrations/packs/?pack=kubernetes" />
    - Network = <VersionedLink text="Calico CNI" url="/integrations/packs/?pack=cni-calico" />
-   - Storage = <VersionedLink text="cAWS EBS CSI Driver" url="/integrations/packs/?pack=csi-aws-ebs" />
+   - Storage = <VersionedLink text="AWS EBS CSI Driver" url="/integrations/packs/?pack=csi-aws-ebs" />
    - App services = <VersionedLink text="Hello Universe" url="/integrations/packs/?pack=hello-universe" /> with the API
      preset option disabled.
 
@@ -180,7 +180,7 @@ has the API preset option disabled.
    - OS = <VersionedLink text="Ubuntu" url="/integrations/packs/?pack=ubuntu-aws" />
    - Kubernetes = <VersionedLink text="Kubernetes" url="/integrations/packs/?pack=kubernetes" />
    - Network = <VersionedLink text="Calico CNI" url="/integrations/packs/?pack=cni-calico" />
-   - Storage = <VersionedLink text="cAWS EBS CSI Driver" url="/integrations/packs/?pack=csi-aws-ebs" />
+   - Storage = <VersionedLink text="AWS EBS CSI Driver" url="/integrations/packs/?pack=csi-aws-ebs" />
    - App services = <VersionedLink text="Hello Universe" url="/integrations/packs/?pack=hello-universe" /> with the API
      preset option enabled.
 
