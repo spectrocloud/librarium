@@ -30,12 +30,12 @@ tags: ["release-notes"]
 
 #### Improvements
 
-- Palette and VerteX emails have improved content and updated design to ensure consistency and improve accessibility.
-  The updates have been applied to sign-up, login, password resets, and billing updates emails.
+- Palette and VerteX emails have been redesigned to ensure consistency and improve accessibility.
+  The updates have been applied to sign-up, login, password reset, and billing update emails.
 
 #### Deprecations and Removals
 
-- Palette no longer supports for the edge virtual clusters. Several components no longer integrate with the
+- Palette no longer supports Edge virtual clusters. Several components no longer integrate with the
   [libvirt](https://libvirt.org/) virtualization API, including the Palette UI, Terraform providers, the user interface,
   and packs.
 
@@ -43,8 +43,8 @@ tags: ["release-notes"]
 
 #### Features
 
-- <TpBadge /> Palette now allows the configuration of a primary, in-cluster registry that stores the images required for
-  cluster deployment. Any OCI-compliant registry can be configured as the primary registry. Refer to Deploy Cluster with
+- <TpBadge /> Palette now allows the configuration of an in-cluster primary registry that stores the images required for
+  cluster deployment. Any OCI-compliant registry can be configured as the primary registry. Palette offers out-of-the-box support for Zot and Harbor registries with minimum configuration required. Refer to Deploy Cluster with
   Primary Registry for further information.
 - The [Palette CLI](../automation/palette-cli/palette-cli.md) has a new `content` command that supports the creation of
   [content bundles](../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md). This command provides
@@ -60,8 +60,8 @@ tags: ["release-notes"]
 
 #### Deprecations and Removals
 
-- The `harbor-edge-native-config` pack has been deprecated. You need to use the new `registry-connect` pack to implement
-  the Harbor registry. This allows you to keep your up-to-date with the latest upstream updates. Refer to Migrate from
+- The `harbor-edge-native-config` pack has been deprecated. You need to use the new `registry-connect` and `harbor` pack to implement
+  the Harbor registry. This allows you to keep your up to date with the latest upstream updates. Refer to Migrate from
   Harbor Edge-Native Config Pack for further details.
 
 ### Palette Dev Engine (PDE)
@@ -115,7 +115,7 @@ compatible version of the Palette CLI.
 
 #### Improvements
 
-- The performance of Palette APIs was improved, resulting in increased [API rate limits](/api/introduction/#rate-limits)
+- The performance of Palette APIs has been improved, resulting in increased [API rate limits](/api/introduction/#rate-limits)
   for component events and optimized platform updates.
 - The `spectrocloud_pack` Terraform data source now supports filtering based on pack type, add-on type, pack layer, and
   environment. For more information, refer to the Spectro Cloud Terraform provider
@@ -128,7 +128,7 @@ compatible version of the Palette CLI.
 
 #### Improvements
 
-- The user interface and messaging for virtual machine topology has been improved to indicate the sockets, cores and
+- The user interface and messaging for virtual machine topology has been improved to indicate the sockets, cores, and
   threads of the machine vCPU. Refer to the
   [Manage CPU and Memory](../vm-management/create-manage-vm/enable-cpu-hotplug.md) guide for further details.
 
@@ -203,10 +203,10 @@ compatible version of the Palette CLI.
 
 #### Deprecations and Removals
 
-- The packs `ubuntu-libvirt`,`generic-vm-libvirt`, `centos-libvirt`, and`pfsense-vm-libvirt` have been removed. Palette
-  no longer supports edge virtual clusters.
+- The packs `ubuntu-libvirt`, `generic-vm-libvirt`, `centos-libvirt`, and`pfsense-vm-libvirt` have been removed. Palette
+  no longer supports Edge virtual clusters.
 - The `harbor-edge-native-config` pack has been deprecated. You need to use the new `registry-connect` pack to implement
-  the Harbor registry. This allows you to keep your up-to-date with the latest upstream updates. Refer to Migrate from
+  the Harbor registry. This allows you to keep your up to date with the latest upstream updates. Refer to Migrate from
   Harbor Edge-Native Config Pack for further details.
 
 ## April 3, 2025 - Automation Updates
