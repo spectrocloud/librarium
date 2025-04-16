@@ -49,7 +49,7 @@ tags: ["release-notes"]
   Primary Registry for further information.
 - The [Palette CLI](../automation/palette-cli/palette-cli.md) has a new `content` command that supports the creation of
   [content bundles](../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md). This command provides
-  the ability to create bundles directly from the command-line and supports operations in airgap environments. Refer to
+  the ability to create bundles directly from the command-line. Refer to
   the [Content](../automation/palette-cli/commands/content.md) command reference page for further information.
 
 #### Improvements
@@ -103,7 +103,7 @@ compatible version of the Palette CLI.
 
 - The [Palette CLI](../automation/palette-cli/palette-cli.md) has a new `content` command that supports the creation of
   [content bundles](../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md). This command provides
-  the ability to create bundles directly from the command-line and supports operations in airgap environments. Refer to
+  the ability to create bundles directly from the command-line. Refer to
   the [Content](../automation/palette-cli/commands/content.md) command reference page for further information.
 - Terraform version 0.23.5 of the
   [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
