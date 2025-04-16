@@ -345,7 +345,7 @@ Palette. You will then create a cluster profile and use the registered host to d
 
    - The host will not shut down and will instead reboot after the agent is installed, with
      [kube-vip](../../clusters/edge/networking/kubevip.md) enabled, as this is required for bare metal and VMware
-     vSphere deployments. If your environment does not require kube-vip, set `skipKubeVip` to `true`. Refer to the
+     vSphere deployments. If your environment does not require kube-vip, set `stylus.vip.skip` to `true`. Refer to the
      [Prepare User Data](../../clusters/edge/edgeforge-workflow/prepare-user-data.md) guide to learn more about user
      data configuration.
    - The `projectName` parameter is not required if the associated Palette
@@ -360,7 +360,8 @@ Palette. You will then create a cluster profile and use the registered host to d
        poweroff: false
 
      stylus:
-       skipKubeVip: false
+       vip:
+         skip: false
        site:
          edgeHostToken: $TOKEN
          paletteEndpoint: api.spectrocloud.com
@@ -405,7 +406,8 @@ Palette. You will then create a cluster profile and use the registered host to d
      poweroff: false
 
    stylus:
-     skipKubeVip: false
+     vip:
+       skip: false
      site:
        edgeHostToken: ****************
        paletteEndpoint: api.spectrocloud.com
@@ -616,7 +618,7 @@ internet.
    The following configuration indicates the installation mode to be airgap and sets up the `kairos` user. The host will
    not shut down and will reboot after the agent installation, with
    [kube-vip](../../clusters/edge/networking/kubevip.md) enabled, as this is required for bare metal and VMware vSphere
-   deployments. If your environment does not require kube-vip, set `skipKubeVip:` to `true`. Refer to the
+   deployments. If your environment does not require kube-vip, set `vip.skip` to `true`. Refer to the
    [Prepare User Data](../../clusters/edge/edgeforge-workflow/prepare-user-data.md) guide to learn more about user data
    configuration.
 
@@ -628,8 +630,9 @@ internet.
      poweroff: false
 
    stylus:
-     skipKubeVip: false
      installationMode: airgap
+     vip:
+       skip: false
    stages:
      initramfs:
        - users:
