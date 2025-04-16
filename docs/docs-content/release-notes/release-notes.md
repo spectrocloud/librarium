@@ -43,10 +43,12 @@ tags: ["release-notes"]
 
 #### Features
 
+<!-- prettier-ignore -->
 - <TpBadge /> Palette now allows the configuration of an in-cluster primary registry that stores the images required for
   cluster deployment. Any OCI-compliant registry can be configured as the primary registry. Palette offers
-  out-of-the-box support for Zot and Harbor registries with minimum configuration required. Refer to Deploy Cluster with
-  Primary Registry for further information.
+  out-of-the-box support for Zot and Harbor registries with minimum configuration required. 
+  Refer to [Deploy Cluster with Primary Registry](../clusters/edge/site-deployment/deploy-custom-registries/deploy-primary-registry.md) for
+  further information.
 - The [Palette CLI](../automation/palette-cli/palette-cli.md) has a new `content` command that supports the creation of
   [content bundles](../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md). This command provides
   the ability to create bundles directly from the command-line. Refer to the
@@ -63,7 +65,9 @@ tags: ["release-notes"]
 
 - The `harbor-edge-native-config` pack has been deprecated. You need to use the new `registry-connect` and `harbor`
   packs to implement the Harbor registry. This allows you to keep your system up to date with the latest upstream
-  updates. Refer to Migrate from Harbor Edge-Native Config Pack for further details.
+  updates. Refer to
+  [Migrate from Harbor Edge-Native Config Pack](../clusters/edge/site-deployment/deploy-custom-registries/migrate-edge-native-config.md)
+  for further details.
 
 ### Palette Dev Engine (PDE)
 
