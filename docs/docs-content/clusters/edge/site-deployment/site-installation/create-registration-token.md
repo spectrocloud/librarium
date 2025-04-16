@@ -36,6 +36,12 @@ To create a registration token, use the following steps.
 
    - **Default Project** - Set a default project for Edge host registration.
 
+   :::warning
+
+   Ensure that you set a default project for the token. Otherwise, your Edge hosts will not register with Palette.
+
+   :::
+
    - **Expiration Date** - Set an expiration date for the token.
 
 7. Save the **Token** value.
