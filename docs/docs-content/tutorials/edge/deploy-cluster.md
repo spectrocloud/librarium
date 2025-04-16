@@ -96,6 +96,12 @@ To complete this tutorial, you will need the following:
   [Create Registration Token](../../clusters/edge/site-deployment/site-installation/create-registration-token.md) guide.
   Copy the newly created token to a clipboard or notepad file to use later in this tutorial.
 
+  :::warning
+
+  Ensure that you set a default project for the token. Otherwise, your Edge hosts will not register with Palette.
+
+  :::
+
   The screenshot below shows a sample registration token in the **Tenant Settings** > **Registration Tokens** section in
   Palette.
 
@@ -109,7 +115,7 @@ multiple provider images, so you can use any image that matches the desired Kube
 cluster profile. You must perform this part of the tutorial on a Linux machine with an AMD64(x86_64) processor
 architecture that has network connectivity to your VMware vCenter environment.
 
-This tutorial builds and uses the provider image compatible with K3s v1.27.5.
+This tutorial builds and uses the provider image compatible with K3s v1.27.2.
 
 ### Check Out Starter Code
 
@@ -160,7 +166,7 @@ to ttl.sh are ephemeral and will expire after the 24 hrs time limit.
 
 Using the arguments defined in the **.arg** file, the final provider images you generate will have the following naming
 convention, `[IMAGE_REGISTRY]/[IMAGE_REPO]:[CUSTOM_TAG]`. In this example, the provider images will be
-`ttl.sh/ubuntu:k3s-1.27.5-v4.1.2-demo`. Refer to the **.arg.template** sample file in the current directory or the
+`ttl.sh/ubuntu:k3s-1.27.2-v4.1.2-demo`. Refer to the **.arg.template** sample file in the current directory or the
 [README](https://github.com/spectrocloud/CanvOS#readme) to learn more about the default values.
 
 ```bash
@@ -240,8 +246,8 @@ cat user-data
 ```
 
 The expected output should show that the `edgeHostToken` and login credentials for Edge hosts are set correctly. The
-`edgeHostToken` value must match your Palette registration token. Otherwise, your Edge hosts will not register
-themselves with Palette automatically. Below is a sample output with the token masked. <br />
+`edgeHostToken` value must match your Palette registration token. Otherwise, your Edge hosts will not register with
+Palette. Below is a sample output with the token masked. <br />
 
 ```hideClipboard bash
 #cloud-config
@@ -271,7 +277,7 @@ If you are using a Git tag earlier than v4.4.12, you can exclude image versions 
 by commenting out the lines in the `build-provider-images` parameter in the file **Earthfile** in the **CanvOS**
 repository.
 
-If you are using a Git tag later than v4.4.12, open the **k8s_versions.json** file in the CanvOS directory. Remove the
+If you are using a Git tag later than v4.4.12, open the **k8s_version.json** file in the CanvOS directory. Remove the
 Kubernetes versions that you don't need from the JSON object corresponding to your Kubernetes distribution.
 
 This speeds up build process and reduces the amount of space required for the build process. For an example of excluding
@@ -359,7 +365,7 @@ Palette-supported Kubernetes versions. You can identify the provider images by t
 docker images --filter=reference='*/*:*demo*'
 ```
 
-```hideClipboard bash {3,4}
+```hideClipboard bash {6,7}
 REPOSITORY      TAG                      IMAGE ID       CREATED          SIZE
 ttl.sh/ubuntu   k3s-1.25.13-v4.1.2-demo               b25cfbaadd79   2 hours ago   4.13GB
 ttl.sh/ubuntu   k3s-1.25.13-v4.1.2-demo_linux_amd64   b25cfbaadd79   2 hours ago   4.13GB
@@ -389,7 +395,7 @@ registry. This image registry is free and does not require you to sign up to use
 ephemeral and will expire after 24 hours.
 
 ```bash
-docker push ttl.sh/ubuntu:k3s-1.27.5-v4.1.2-demo
+docker push ttl.sh/ubuntu:k3s-1.27.2-v4.1.2-demo
 ```
 
 :::warning
@@ -425,7 +431,7 @@ listed in the table.
 
 | **Variable**                    | **Description**         | **How to find its value?**                                                                                                                               |
 | ------------------------------- | ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `PKR_VAR_vcenter_server`        | vCenter server URL      | Check with your VMware data center administrator. Omit `http://` or `https://` in the URL. Example, use `vcenter.spectrocloud.dev`.                      |
+| `PKR_VAR_vcenter_server`        | vCenter server URL      | Check with your VMware data center administrator. Omit `http://` or `https://` in the URL. Example: `vcenter.spectrocloud.dev`.                          |
 | `PKR_VAR_vcenter_username`      | vSphere client username | Request credentials from your VMware data center administrator. Example: `myusername@vsphere.local`                                                      |
 | `PKR_VAR_vcenter_password`      | vSphere client password | --                                                                                                                                                       |
 | `PKR_VAR_vcenter_datacenter`    | Data center name        | Expand your vSphere client's main menu and select **Inventory** > **Hosts and Clusters**. The data center name is displayed in the left navigation tree. |
@@ -513,7 +519,7 @@ is an explanation of the options and sub-commands used below:
 - The `--env-file` option reads the **.packerenv** file.
 
 - The `--volume ` option mounts a local directory to our official tutorials container,
-  `ghcr.io/spectrocloud/tutorials:1.1.5`.
+  `ghcr.io/spectrocloud/tutorials:1.1.13`.
 
 - The `sh -c "source /edge/vmware/clone_vm_template/setenv.sh "` shell sub-command defines the GOVC environment
   variables, the number of VMs, a prefix string for the VM name, and the VM template name. Most of the GOVC environment
@@ -557,10 +563,10 @@ is an explanation of the options and sub-commands used below:
 
   Should you need to change the VM template name or VM settings defined in the **vsphere.hcl** file, or review the
   Packer script, you must open a bash session into the container using the
-  `docker run -it --env-file .packerenv --volume "${ISOFILEPATH}:/edge/vmware/packer/build" ghcr.io/spectrocloud/tutorials:1.1.5 bash`
+  `docker run --interactive --tty --env-file .packerenv --volume "${ISOFILEPATH}:/edge/vmware/packer/build" ghcr.io/spectrocloud/tutorials:1.1.13 bash`
   command, and change to the **edge/vmware/packer/** directory to make the modifications. After you finish the
-  modifications, issue the `packer build -force --var-file=vsphere.hcl build.pkr.hcl` command to trigger the Packer
-  build process.
+  modifications, issue the `packer build -force --var-file=vsphere.hcl build.pkr.hcl` command inside the container to
+  trigger the Packer build process. This command creates a VM template, so that you can skip the next step.
 
   :::
 
@@ -573,7 +579,7 @@ docker run --interactive --tty --rm \
   --env-file .packerenv \
   --env-file .goenv \
   --volume "${ISOFILEPATH}:/edge/vmware/packer/build" \
-  ghcr.io/spectrocloud/tutorials:1.1.5 \
+  ghcr.io/spectrocloud/tutorials:1.1.13 \
   sh -c "source /edge/vmware/clone_vm_template/setenv.sh && cd /edge/vmware/packer/ && packer init build.pkr.hcl && packer build -force --var-file=vsphere.hcl build.pkr.hcl"
 ```
 
@@ -604,7 +610,7 @@ GOVC requires the same VMware vCenter details as the environment variables you d
 The next step is to use the following `docker run` command to clone the VM template and provision three VMs. Here is an
 explanation of the options and sub-commands used below:
 
-- The `--env-file` option reads the **.goenv** file in our official `ghcr.io/spectrocloud/tutorials:1.1.5` tutorials
+- The `--env-file` option reads the **.goenv** file in our official `ghcr.io/spectrocloud/tutorials:1.1.13` tutorials
   container.
 
 - The `sh -c "cd edge/vmware/clone_vm_template/ && ./deploy-edge-host.sh"` shell sub-command changes to the container's
@@ -646,9 +652,9 @@ export GOVC_FOLDER="${vcenter_folder}"
 Suppose you have changed the VM template name in the previous step or need to change the number of VMs to provision. In
 that case, you must modify the **setenv.sh** script. To do so, you can reuse the container bash session from the
 previous step if it is still active, or you can open another bash session into the container using the
-`docker run -it --env-file .goenv ghcr.io/spectrocloud/tutorials:1.1.5 bash` command. If you use an existing container
-bash session, create the **.goenv** file described above and source it in your container environment. Next, change to
-the **edge/vmware/clone_vm_template/** directory to modify the **setenv.sh** script, and issue the
+`docker run --interactive --tty --env-file .goenv ghcr.io/spectrocloud/tutorials:1.1.13 bash` command. If you use an
+existing container bash session, create the **.goenv** file described above and source it in your container environment.
+Next, change to the **edge/vmware/clone_vm_template/** directory to modify the **setenv.sh** script, and issue the
 `./deploy-edge-host.sh` command to deploy the VMs.
 
 :::
@@ -656,15 +662,15 @@ the **edge/vmware/clone_vm_template/** directory to modify the **setenv.sh** scr
 Issue the following command to clone the VM template and provision three VMs.
 
 ```bash
-docker run -it --rm \
+docker run --interactive --tty --rm \
   --env-file .goenv \
-  ghcr.io/spectrocloud/tutorials:1.1.5 \
+  ghcr.io/spectrocloud/tutorials:1.1.13 \
   sh -c "cd edge/vmware/clone_vm_template/ && ./deploy-edge-host.sh"
 ```
 
 The cloning process can take 3-4 minutes to finish and displays output similar to that shown below. The output displays
-the Edge host ID for each VM, as highlighted in the sample output below. VMs use this host ID to auto-register
-themselves with Palette.
+the Edge host ID for each VM, as highlighted in the sample output below. VMs use this host ID to auto-register with
+Palette.
 
 ```bash hideClipboard {7}
 # Sample output for one VM
@@ -746,14 +752,14 @@ In the **Profile Layers** section, add the following
 
 | **Pack Type** | **Registry** | **Pack Name** | **Pack Version** |
 | ------------- | ------------ | ------------- | ---------------- |
-| OS            | Public Repo  | BYOS Edge OS  | `1.0.0`          |
+| OS            | Public Repo  | BYOS Edge OS  | Not applicable   |
 
-Replace the OS layer manifest with the following custom manifest so that the cluster profile can pull the provider image
-from the _ttl.sh_ image registry. You may recall that the CanvOS script returned an output containing a custom manifest
-after building the Edge artifacts. You will copy the CanvOS output into the cluster profile's BYOOS pack YAML file.
+Replace the OS layer manifest with the custom manifest so that the cluster profile can pull the provider image from the
+_ttl.sh_ image registry. You may recall that the CanvOS script returned an output containing a custom manifest after
+building the Edge artifacts. Copy the CanvOS output into the cluster profile's BYOOS pack YAML file.
 
-The `system.xxxxx` attribute values in the manifest below are as same as those you defined in the **.arg** file while
-building the Edge artifacts. Copy the code snippet below into the YAML editor for the BYOOS pack.
+The `system.xxxxx` attribute values in the manifest are as same as those you defined in the **.arg** file while building
+the Edge artifacts. The code snippet below serves as an example.
 
 ```yaml
 pack:
@@ -791,10 +797,10 @@ Click on the **Next layer** button to add the following Kubernetes layer to your
 
 | **Pack Type** | **Registry** | **Pack Name**         | **Pack Version** |
 | ------------- | ------------ | --------------------- | ---------------- |
-| Kubernetes    | Public Repo  | Palette Optimized K3s | `1.27.5`         |
+| Kubernetes    | Public Repo  | Palette Optimized K3s | `1.27.2`         |
 
-The pack version must match the version pushed to the to the _ttl.sh_ image registry. The `system.uri` attribute of the
-BYOOS pack will reference the Kubernetes version you select using the `{{ .spectro.system.kubernetes.version }}`
+The pack version must match the version pushed to the _ttl.sh_ image registry. The `system.uri` attribute of the BYOOS
+pack will reference the Kubernetes version you select using the `{{ .spectro.system.kubernetes.version }}`
 [macro](../../clusters/cluster-management/macros.md).
 
 Click on the **Next layer** button, and add the following network layer. This example uses the Calico Container Network
@@ -1017,7 +1023,7 @@ following command to delete the Edge hosts.
 
 ```bash
 docker run --interactive --tty --rm --env-file .goenv \
-  ghcr.io/spectrocloud/tutorials:1.1.5 \
+  ghcr.io/spectrocloud/tutorials:1.1.13 \
   sh -c "cd edge/vmware/clone_vm_template/ && ./delete-edge-host.sh"
 ```
 
