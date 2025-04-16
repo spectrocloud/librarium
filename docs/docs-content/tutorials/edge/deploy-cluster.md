@@ -757,11 +757,10 @@ In the **Profile Layers** section, add the following
 
 Replace the OS layer manifest with the following custom manifest so that the cluster profile can pull the provider image
 from the _ttl.sh_ image registry. You may recall that the CanvOS script returned an output containing a custom manifest
-after building the Edge artifacts. You will copy the CanvOS output into the cluster profile's BYOOS pack YAML file.
+after building the Edge artifacts. Copy the CanvOS output into the cluster profile's BYOOS pack YAML file.
 
-The `system.xxxxx` attribute values in the manifest below are as same as those you defined in the **.arg** file while
-building the Edge artifacts. Paste the manifest generated from the artifact build process into the YAML editor for the
-BYOOS pack. The code snippet below serves as an example.
+The `system.xxxxx` attribute values in the manifest are as same as those you defined in the **.arg** file while
+building the Edge artifacts. The code snippet below serves as an example.
 
 ```yaml
 pack:
