@@ -567,7 +567,7 @@ is an explanation of the options and sub-commands used below:
   `docker run --interactive --tty --env-file .packerenv --volume "${ISOFILEPATH}:/edge/vmware/packer/build" ghcr.io/spectrocloud/tutorials:1.1.13 bash`
   command, and change to the **edge/vmware/packer/** directory to make the modifications. After you finish the
   modifications, issue the `packer build -force --var-file=vsphere.hcl build.pkr.hcl` command inside the container to
-  trigger the Packer build process. This command will create a VM template, so that you can skip the next step.
+  trigger the Packer build process. This command creates a VM template, so that you can skip the next step.
 
   :::
 
