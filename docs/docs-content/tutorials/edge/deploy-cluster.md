@@ -273,7 +273,7 @@ Kubernetes versions that you don't need from the JSON object corresponding to yo
 
 This speeds up build process and reduces the amount of space required for the build process. For an example of excluding
 a version from build, refer to
-[Build Edge Artifacts guide](../../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md).
+[Build Edge Artifacts guide](../../clusters/edge/edgeforge-workflow/palette-canvos.md).
 
 :::
 
