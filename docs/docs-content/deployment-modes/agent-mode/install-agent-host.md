@@ -213,8 +213,7 @@ Palette. You will then create a cluster profile and use the registered host to d
 
   ### Configure firewalld (Cilium Only)
 
-  12. (Optional) If you are using Cilium and have firewalld enabled, put the following commands into a shell
-      script.
+  12. (Optional) If you are using Cilium and have firewalld enabled, put the following commands into a shell script.
 
       ```shell
       cat << 'EOF' > firewalld-cilium.sh
