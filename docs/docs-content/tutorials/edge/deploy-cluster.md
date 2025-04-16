@@ -115,7 +115,7 @@ multiple provider images, so you can use any image that matches the desired Kube
 cluster profile. You must perform this part of the tutorial on a Linux machine with an AMD64(x86_64) processor
 architecture that has network connectivity to your VMware vCenter environment.
 
-This tutorial builds and uses the provider image compatible with K3s v1.27.5.
+This tutorial builds and uses the provider image compatible with K3s v1.27.2.
 
 ### Check Out Starter Code
 
@@ -166,7 +166,7 @@ to ttl.sh are ephemeral and will expire after the 24 hrs time limit.
 
 Using the arguments defined in the **.arg** file, the final provider images you generate will have the following naming
 convention, `[IMAGE_REGISTRY]/[IMAGE_REPO]:[CUSTOM_TAG]`. In this example, the provider images will be
-`ttl.sh/ubuntu:k3s-1.27.5-v4.1.2-demo`. Refer to the **.arg.template** sample file in the current directory or the
+`ttl.sh/ubuntu:k3s-1.27.2-v4.1.2-demo`. Refer to the **.arg.template** sample file in the current directory or the
 [README](https://github.com/spectrocloud/CanvOS#readme) to learn more about the default values.
 
 ```bash
@@ -365,7 +365,7 @@ Palette-supported Kubernetes versions. You can identify the provider images by t
 docker images --filter=reference='*/*:*demo*'
 ```
 
-```hideClipboard bash {3,4}
+```hideClipboard bash {6,7}
 REPOSITORY      TAG                      IMAGE ID       CREATED          SIZE
 ttl.sh/ubuntu   k3s-1.25.13-v4.1.2-demo               b25cfbaadd79   2 hours ago   4.13GB
 ttl.sh/ubuntu   k3s-1.25.13-v4.1.2-demo_linux_amd64   b25cfbaadd79   2 hours ago   4.13GB
@@ -395,7 +395,7 @@ registry. This image registry is free and does not require you to sign up to use
 ephemeral and will expire after 24 hours.
 
 ```bash
-docker push ttl.sh/ubuntu:k3s-1.27.5-v4.1.2-demo
+docker push ttl.sh/ubuntu:k3s-1.27.2-v4.1.2-demo
 ```
 
 :::warning
@@ -752,9 +752,9 @@ In the **Profile Layers** section, add the following
 
 | **Pack Type** | **Registry** | **Pack Name** | **Pack Version**   |
 | ------------- | ------------ | ------------- | ------------------ |
-| OS            | Public Repo  | BYOS Edge OS  | Any non-deprecated |
+| OS            | Public Repo  | BYOS Edge OS  |Not applicable |
 
-Replace the OS layer manifest with the following custom manifest so that the cluster profile can pull the provider image
+Replace the OS layer manifest with the custom manifest so that the cluster profile can pull the provider image
 from the _ttl.sh_ image registry. You may recall that the CanvOS script returned an output containing a custom manifest
 after building the Edge artifacts. Copy the CanvOS output into the cluster profile's BYOOS pack YAML file.
 
@@ -797,7 +797,7 @@ Click on the **Next layer** button to add the following Kubernetes layer to your
 
 | **Pack Type** | **Registry** | **Pack Name**         | **Pack Version**   |
 | ------------- | ------------ | --------------------- | ------------------ |
-| Kubernetes    | Public Repo  | Palette Optimized K3s | Any non-deprecated |
+| Kubernetes    | Public Repo  | Palette Optimized K3s | `1.27.2` |
 
 The pack version must match the version pushed to the _ttl.sh_ image registry. The `system.uri` attribute of the BYOOS
 pack will reference the Kubernetes version you select using the `{{ .spectro.system.kubernetes.version }}`
