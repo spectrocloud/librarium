@@ -95,7 +95,9 @@ guide to learn how to create a cluster profile.
 
     :::warning
 
-    If you plan to populate your variables with values that contain single quotes (`'`), wrap `{{.spectro.var.variable_name}}` in double quotes (`"`); otherwise, the YAML file will be invalid when the variable is resolved. 
+    If you plan to populate your variables with values that contain single quotes (`'`), wrap
+    `{{.spectro.var.variable_name}}` in double quotes (`"`); otherwise, the YAML file will be invalid when the variable
+    is resolved.
 
     :::
 
