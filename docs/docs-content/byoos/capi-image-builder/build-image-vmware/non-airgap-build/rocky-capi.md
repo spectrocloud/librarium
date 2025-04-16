@@ -31,13 +31,14 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
   - 50 GB of free disk space
 
 - The following software installed:
-  
+
   - [Docker](https://docs.docker.com/engine/install/) or [Podman](https://podman.io/docs/installation)
   - [curl](https://curl.se/docs/install.html)
 
 ## Build Custom Image
 
-1.  Open a terminal session on your Linux machine and download the CAPI Image Builder image. This guide uses version `4.6.b` as an example. Replace `4.6.b` with your desired version.
+1.  Open a terminal session on your Linux machine and download the CAPI Image Builder image. This guide uses version
+    `4.6.b` as an example. Replace `4.6.b` with your desired version.
 
         <Tabs>
         <TabItem value="Docker" label="Docker">
@@ -79,7 +80,8 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
         </TabItem>
         </Tabs>
 
-2.  Create an `output` directory to store the image files and set the required permissions. This guide uses `ubuntu` as an example username. Replace `ubuntu` with your Linux username. 
+2.  Create an `output` directory to store the image files and set the required permissions. This guide uses `ubuntu` as
+    an example username. Replace `ubuntu` with your Linux username.
 
     ```shell
     mkdir /home/ubuntu/output
@@ -92,8 +94,8 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
     cd /home/ubuntu/output
     ```
 
-4.  Download the [Rocky Linux ISO file](https://download.rockylinux.org/pub/rocky/) into the `output` directory. Ensure you download a `x86_64-dvd.iso` file and not a
-    `x86_64-boot.iso` file.
+4.  Download the [Rocky Linux ISO file](https://download.rockylinux.org/pub/rocky/) into the `output` directory. Ensure
+    you download a `x86_64-dvd.iso` file and not a `x86_64-boot.iso` file.
 
     This guide uses Rocky 8 as an example. Refer to the [Configuration Reference](../../config-reference.md) page for
     details on supported operating systems.
@@ -102,8 +104,8 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
     curl https://download.rockylinux.org/pub/rocky/8/isos/x86_64/Rocky-8-latest-x86_64-dvd.iso --output Rocky-8-latest-x86_64-dvd.iso
     ```
 
-5.  Calculate the SHA256 checksum for the Rocky ISO you downloaded. The calculation might take a few minutes. Save
-    the output, as you will need it later.
+5.  Calculate the SHA256 checksum for the Rocky ISO you downloaded. The calculation might take a few minutes. Save the
+    output, as you will need it later.
 
     ```shell
     sha256sum Rocky-8-latest-x86_64-dvd.iso
@@ -121,13 +123,14 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
     curl https://software.spectrocloud.com/tools/capi-image-builder/imageconfig --output imageconfig
     ```
 
-7.  Open the `imageconfig` template file in an editor of your choice and fill in the required parameters. For a
-    complete list of parameters, refer to the [Configuration Reference](../../config-reference.md) page. Additionally,
-    refer to the [Compatibility Matrix](../../comp-matrix-capi-builder.md) for a list of supported Kubernetes versions
-    and their corresponding dependencies.
+7.  Open the `imageconfig` template file in an editor of your choice and fill in the required parameters. For a complete
+    list of parameters, refer to the [Configuration Reference](../../config-reference.md) page. Additionally, refer to
+    the [Compatibility Matrix](../../comp-matrix-capi-builder.md) for a list of supported Kubernetes versions and their
+    corresponding dependencies.
 
-    The `imageconfig` file is the file used to build the base CAPI image for your cluster, which you can alter to fit your needs. This
-    includes specifying the OS type, Kubernetes version, whether the image should be FIPS compliant, and more.
+    The `imageconfig` file is the file used to build the base CAPI image for your cluster, which you can alter to fit
+    your needs. This includes specifying the OS type, Kubernetes version, whether the image should be FIPS compliant,
+    and more.
 
     Use the example configuration below to build a Rocky 8 CAPI image. Use the SHA256 checksum of the Rocky ISO from
     step 5 of this guide for `<iso-checksum>`. Additionally, replace the VMware-related placeholders with the values
@@ -215,27 +218,34 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 
     Once you are finished making changes, save and exit the file.
 
-8. (Optional) You can add custom Bash scripts (`.sh` or `.bash` files) to be included before or after the build process. This feature is available beginning with CAPI Image Builder version `4.6.b`. If any scripts are found in the relevant directories, they are copied to the Ansible workflow.
+8.  (Optional) You can add custom Bash scripts (`.sh` or `.bash` files) to be included before or after the build
+    process. This feature is available beginning with CAPI Image Builder version `4.6.b`. If any scripts are found in
+    the relevant directories, they are copied to the Ansible workflow.
 
-    1. In the `output` directory, create the directories `custom_scripts/pre` and `custom_scripts/post`. 
-   
-        ```bash
-        mkdir -p custom_scripts/pre custom_scripts/post
-        ```
+    1. In the `output` directory, create the directories `custom_scripts/pre` and `custom_scripts/post`.
 
-    2. Move any scripts that you want to be executed _before_ the build process to the `pre` directory. Move any scripts that you want to be executed _after_ the build process to the `post` directory. Ensure the scripts are executable.
+       ```bash
+       mkdir -p custom_scripts/pre custom_scripts/post
+       ```
 
-        Below is an example of moving a pre-install script to the appropriate `pre` directory and making it executable.
+    2. Move any scripts that you want to be executed _before_ the build process to the `pre` directory. Move any scripts
+       that you want to be executed _after_ the build process to the `post` directory. Ensure the scripts are
+       executable.
 
-        ```bash hideClipboard title="Example of moving a script and modifying permissions"
-        mv sample-script.sh custom_scripts/pre/sample-script.sh
-        chmod +x custom_scripts/pre/sample-script.sh
-        ```
+       Below is an example of moving a pre-install script to the appropriate `pre` directory and making it executable.
+
+       ```bash hideClipboard title="Example of moving a script and modifying permissions"
+       mv sample-script.sh custom_scripts/pre/sample-script.sh
+       chmod +x custom_scripts/pre/sample-script.sh
+       ```
 
 9.  Issue the command below to start the CAPI Image Builder container and assign the container ID to the `BUILD_ID`
-    variable. The tool will create and configure a VM with Dynamic Host Configuration Protocol (DHCP) in your VMware vSphere environment using the `image_name` defined in `imageconfig`. For this guide, the VM is named `rocky-8`. The tool will then generate a RHEL 8 CAPI image from the VM and save it to the `output` directory. 
-    
-    Before issuing the following command, replace `ubuntu` with your Linux username and `4.6.b` with your CAPI Image Builder version.
+    variable. The tool will create and configure a VM with Dynamic Host Configuration Protocol (DHCP) in your VMware
+    vSphere environment using the `image_name` defined in `imageconfig`. For this guide, the VM is named `rocky-8`. The
+    tool will then generate a RHEL 8 CAPI image from the VM and save it to the `output` directory.
+
+    Before issuing the following command, replace `ubuntu` with your Linux username and `4.6.b` with your CAPI Image
+    Builder version.
 
     <!-- prettier-ignore -->
     <Tabs>
@@ -306,7 +316,8 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 
         </details>
 
-10. Execute the following command to view the CAPI Image Builder container logs and monitor the build progress. If you added any custom scripts in step 8, the output will be displayed in the build log.
+10. Execute the following command to view the CAPI Image Builder container logs and monitor the build progress. If you
+    added any custom scripts in step 8, the output will be displayed in the build log.
     <!-- prettier-ignore -->
     <Tabs>
     <TabItem value="Docker" label="Docker">
@@ -333,9 +344,12 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 
     :::
 
-11. Once the build is complete, the RHEL 8 CAPI image will be downloaded to the `output` directory as the `image_name` specified in the `imageconfig` file. For this example, the image is `rocky-8`. Once the image is created, the VM is deleted from VMware vSphere. 
-    
-    Issue the command below to confirm that the build files are present in the `output` directory, replacing `rocky-8` with your specified `image_name`, if different.
+11. Once the build is complete, the RHEL 8 CAPI image will be downloaded to the `output` directory as the `image_name`
+    specified in the `imageconfig` file. For this example, the image is `rocky-8`. Once the image is created, the VM is
+    deleted from VMware vSphere.
+
+    Issue the command below to confirm that the build files are present in the `output` directory, replacing `rocky-8`
+    with your specified `image_name`, if different.
 
         ```shell
         ls rocky-8
@@ -345,8 +359,8 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
         packer-manifest.json  rockylinux-8-kube-v1.30.4.mf  rockylinux-8-kube-v1.30.4.ovf rocky-8-disk-0.vmdk  rockylinux-8-kube-v1.30.4.ova  rocky-8.ovf rockylinux-8-kube-v1.30.4.ova.sha256
         ```
 
-12. To make the image available in VMware vSphere, log in to your environment and locate the `vcenter_folder`
-    defined in the `imageconfig` in step 7 of this guide.
+12. To make the image available in VMware vSphere, log in to your environment and locate the `vcenter_folder` defined in
+    the `imageconfig` in step 7 of this guide.
 
     :::tip
 
@@ -355,13 +369,15 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 
     :::
 
-13. Right-click the folder and select **Deploy OVF Template** to deploy a VM using the Rocky 8 OVA file that was built in
-    step 9 of this guide.
+13. Right-click the folder and select **Deploy OVF Template** to deploy a VM using the Rocky 8 OVA file that was built
+    in step 9 of this guide.
 
 14. In the **Deploy OVF Template** wizard, select **Local File > Upload Files**, and choose the OVA file located in the
-    `output` folder on your local machine. This guide uses `rockylinux-8-kube-v1.30.4.ova` as an example. Select **Next** to continue.
+    `output` folder on your local machine. This guide uses `rockylinux-8-kube-v1.30.4.ova` as an example. Select
+    **Next** to continue.
 
-15. Assign a name to the virtual machine, such as `rockylinux-8-kube-v1.30.4`, and choose the folder you created previously as the target location. Select **Next** to proceed.
+15. Assign a name to the virtual machine, such as `rockylinux-8-kube-v1.30.4`, and choose the folder you created
+    previously as the target location. Select **Next** to proceed.
 
 16. Choose a compute resource and select **Next**.
 
@@ -392,41 +408,41 @@ The Rocky 8 image is now built and available in the VMware vSphere environment. 
 profile and deploy a VMware host cluster.
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
-   
 2. From the left main menu, select **Profiles > Add Cluster Profile**.
 
-3. In the **Basic Information** section, assign the cluster profile a **Name**, brief **Description**, and **Tags**. Choose **Full** for the profile **Type** and select **Next**.
+3. In the **Basic Information** section, assign the cluster profile a **Name**, brief **Description**, and **Tags**.
+   Choose **Full** for the profile **Type** and select **Next**.
 
 4. In the **Cloud Type** section, choose **VMware vSphere** and select **Next**.
 
-5. The **Profile Layers** section is where you specify the packs that compose the profile. For this guide, use the following packs.
+5. The **Profile Layers** section is where you specify the packs that compose the profile. For this guide, use the
+   following packs.
 
-    | Pack Name                   | Version | Layer            |
-    | --------------------------- | ------- | ---------------- |
-    | BYOOS                       | 1.0.0   | Operating System |
-    | Palette eXtended Kubernetes | 1.30.4  | Kubernetes       |
-    | Cilium                      | 1.15.3  | Network          |
-    | vSphere CSI                 | 3.2.0   | Storage          |
+   | Pack Name                   | Version | Layer            |
+   | --------------------------- | ------- | ---------------- |
+   | BYOOS                       | 1.0.0   | Operating System |
+   | Palette eXtended Kubernetes | 1.30.4  | Kubernetes       |
+   | Cilium                      | 1.15.3  | Network          |
+   | vSphere CSI                 | 3.2.0   | Storage          |
 
-    <!-- prettier-ignore -->
-    Reference the custom RHEL 8 image template path in your VMware vSphere environment when populating the pack details
+   <!-- prettier-ignore -->
+   Reference the custom RHEL 8 image template path in your VMware vSphere environment when populating the pack details
     for the <VersionedLink text="BYOOS" url="/integrations/packs/?pack=generic-byoi" /> layer.
 
-    ```yaml
-    pack:
-      osImageOverride: "/Datacenter/vm/sp-docs/rockylinux-8-kube-v1.30.4"
-      osName: "rockylinux"
-      osVersion: "8"
-    ```
+   ```yaml
+   pack:
+     osImageOverride: "/Datacenter/vm/sp-docs/rockylinux-8-kube-v1.30.4"
+     osName: "rockylinux"
+     osVersion: "8"
+   ```
 
-    As you fill out the information for each layer, select **Next** to proceed.
+   As you fill out the information for each layer, select **Next** to proceed.
 
-    :::warning
+   :::warning
 
-    The Palette eXtended Kubernetes pack version must match the `k8s_version` specified in the `imageconfig`
-    file.
+   The Palette eXtended Kubernetes pack version must match the `k8s_version` specified in the `imageconfig` file.
 
-    :::
+   :::
 
 6. Review the profile layers and select **Finish Configuration** to create the cluster profile.
 
@@ -438,4 +454,7 @@ profile and deploy a VMware host cluster.
 
 ## Next Steps
 
-After you have created an OS image with CAPI Image Builder and have it referenced in a cluster profile, you can deploy a VMware host cluster using the created cluster profile. Refer to the [Deploy App Workloads with a PCG](../../../../tutorials/cluster-deployment/pcg/deploy-app-pcg.md) tutorial for instructions on deploying a VMware host cluster.
+After you have created an OS image with CAPI Image Builder and have it referenced in a cluster profile, you can deploy a
+VMware host cluster using the created cluster profile. Refer to the
+[Deploy App Workloads with a PCG](../../../../tutorials/cluster-deployment/pcg/deploy-app-pcg.md) tutorial for
+instructions on deploying a VMware host cluster.
