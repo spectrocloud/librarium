@@ -14,7 +14,7 @@ Review the following table to determine which pack binaries you need to download
 ## Cluster Profile Packs
 
 | File Name                                                      | URL                                                                                                                 |
-| -------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | --- |
+| -------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
 | `airgap-pack-argo-cd-7.8.8.bin`                                | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-argo-cd-7.8.8.bin                                |
 | `airgap-pack-cni-cilium-oss-1.17.1.bin`                        | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-cni-cilium-oss-1.17.1.bin                        |
 | `airgap-pack-csi-portworx-generic-3.2.2.bin`                   | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-portworx-generic-3.2.2.bin                   |
@@ -36,7 +36,7 @@ Review the following table to determine which pack binaries you need to download
 | `airgap-pack-edge-k8s-1.32.2.bin`                              | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.31.2.bin                              |
 | `airgap-pack-edge-rke2-1.29.14.bin`                            | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.29.13.bin                            |
 | `airgap-pack-edge-rke2-1.30.10.bin`                            | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.30.10.bin                            |
-| `airgap-pack-edge-rke2-1.31.1.bin`                             | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.31.1.bin                             |     |
+| `airgap-pack-edge-rke2-1.31.1.bin`                             | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.31.1.bin                             |
 | `airgap-pack-edge-rke2-1.31.6.bin`                             | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.31.6.bin                             |
 | `airgap-pack-harbor-1.16.2.bin`                                | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-harbor-1.16.2.bin                                |
 | `airgap-pack-kubernetes-eks-1.32.bin`                          | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-eks-1.32.bin                          |
