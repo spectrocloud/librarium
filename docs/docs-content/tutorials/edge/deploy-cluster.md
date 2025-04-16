@@ -99,7 +99,7 @@ To complete this tutorial, you will need the following:
   :::warning
 
   Ensure that you set a default project for the token. Otherwise, your Edge hosts will not register with
-  Palette automatically.
+  Palette.
 
   :::
 
