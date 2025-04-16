@@ -7,6 +7,19 @@ sidebar_position: 60
 tags: ["edge"]
 ---
 
+:::warning
+
+The implementation of the in-cluster local registry in this guide, together with the **Harbor Edge-Native Config** pack,
+are deprecated and will be removed in a future release. Palette Edge now implements a primary registry mechanism where
+you can use any OCI-compliant registry to achieve the same goal as the local Harbor registry. For more information,
+refer to [Deploy with In-Cluster Primary Registry](./deploy-primary-registry.md).
+
+If you have clusters using the **Harbor Edge-Native Config** pack, refer to
+[Migrate from Harbor Edge-Native Config](./migrate-edge-native-config.md) to learn how to migrate off of the deprecated
+solution with no impact to your production workload.
+
+:::
+
 Palette Edge allows you to provision a local Harbor image registry as part of your Edge deployment. When your Edge
 cluster is created for the first time, all images from add-on packs downloaded from external registries are stored
 locally in the Harbor registry. Subsequent image pulls from the cluster are made to the local Harbor registry. This
@@ -24,10 +37,6 @@ instruct the Palette agent to not pull that image from the Harbor registry by di
 namespaces. You can do this by giving a namespace the label `stylus.io/imageswap=disable`. For more information, refer
 to <VersionedLink text="Harbor Edge-Native Config pack" url="/integrations/packs/?pack=harbor-edge-native-config#enable-image-download-from-outside-of-harbor"/> documentation.
 <!-- prettier-ignore-end -->
-
-:::preview
-
-:::
 
 ![Local Harbor Registry Architecture](/clusters_edge_networking_local_harbor_architecture.webp)
 

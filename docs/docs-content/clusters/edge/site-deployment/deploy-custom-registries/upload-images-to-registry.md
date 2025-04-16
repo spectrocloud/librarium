@@ -13,6 +13,11 @@ external registry, all images required by the cluster are expected to be in the 
 It can be error-prone to upload the images manually one by one. Therefore, we recommend you use the Palette CLI or the
 Palette Edge CLI to download the images and upload them to the external registry.
 
+## Limitations
+
+- You cannot use the Palette Edge CLI to upload images to the [primary registry](./deploy-primary-registry.md). You must
+  use the Palette CLI instead.
+
 ## Prerequisites
 
 - Linux Machine (Physical or VM) with an AMD64 architecture.
