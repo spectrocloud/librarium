@@ -809,9 +809,9 @@ Click on the **Next layer** button, and add the following network layer. This ex
 Interface (CNI). However, you can choose a different CNI pack that fits your needs, such as Flannel, Cilium, or Custom
 CNI.
 
-| **Pack Type** | **Registry** | **Pack Name** | **Pack Version**   |
-| ------------- | ------------ | ------------- | ------------------ |
-| Network       | Public Repo  | Calico        | Any non-deprecated |
+| **Pack Type** | **Registry** | **Pack Name** | **Pack Version** |
+| ------------- | ------------ | ------------- | ---------------- |
+| Network       | Public Repo  | Calico        | `3.25.x`         |
 
 Click on the **Confirm** button to complete the core infrastructure stack. Palette displays the newly created
 infrastructure profile as a layered diagram.
