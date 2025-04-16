@@ -26,10 +26,10 @@ another registry.
 
 :::tip
 
-You can use a private external registry together with a local Harbor image registry by adding the Harbor Edge-Native
-Config pack to your cluster profile. All images for add-on layers of the cluster will be stored in the local Harbor
-registry after the initial download, which allows you to reduce the bandwidth use and protect against outages. For more
-information, refer to [Enable Local Harbor Registry](./local-registry.md).
+You can use a private external registry together with a in-cluster primary registry. All images for add-on layers of the
+cluster will be stored in the in-cluster primary registry after the initial download, which allows you to reduce the
+bandwidth use and protect against outages. For more information, refer to
+[Deploy Cluster with Primary Registry](./deploy-primary-registry.md)..
 
 :::
 
@@ -43,7 +43,7 @@ information, refer to [Enable Local Harbor Registry](./local-registry.md).
   from the external registry even if you provide a content bundle, and deployment will fail if the necessary images
   cannot be located in the external registry. For more information, refer to
   [Build Content Bundles](../../edgeforge-workflow/palette-canvos/build-content-bundle.md) and
-  [Enable Local Harbor Registry](../../site-deployment/deploy-custom-registries/local-registry.md).
+  [Deploy Cluster with Primary Registry](../../site-deployment/deploy-custom-registries/deploy-primary-registry.md).
 
 ## Prerequisites
 
