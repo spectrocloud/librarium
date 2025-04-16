@@ -750,13 +750,13 @@ In the **Profile Layers** section, add the following
 
 <!-- prettier-ignore-end -->
 
-| **Pack Type** | **Registry** | **Pack Name** | **Pack Version**   |
-| ------------- | ------------ | ------------- | ------------------ |
-| OS            | Public Repo  | BYOS Edge OS  |Not applicable |
+| **Pack Type** | **Registry** | **Pack Name** | **Pack Version** |
+| ------------- | ------------ | ------------- | ---------------- |
+| OS            | Public Repo  | BYOS Edge OS  | Not applicable   |
 
-Replace the OS layer manifest with the custom manifest so that the cluster profile can pull the provider image
-from the _ttl.sh_ image registry. You may recall that the CanvOS script returned an output containing a custom manifest
-after building the Edge artifacts. Copy the CanvOS output into the cluster profile's BYOOS pack YAML file.
+Replace the OS layer manifest with the custom manifest so that the cluster profile can pull the provider image from the
+_ttl.sh_ image registry. You may recall that the CanvOS script returned an output containing a custom manifest after
+building the Edge artifacts. Copy the CanvOS output into the cluster profile's BYOOS pack YAML file.
 
 The `system.xxxxx` attribute values in the manifest are as same as those you defined in the **.arg** file while building
 the Edge artifacts. The code snippet below serves as an example.
@@ -795,9 +795,9 @@ registry for hosting provider images.
 
 Click on the **Next layer** button to add the following Kubernetes layer to your cluster profile.
 
-| **Pack Type** | **Registry** | **Pack Name**         | **Pack Version**   |
-| ------------- | ------------ | --------------------- | ------------------ |
-| Kubernetes    | Public Repo  | Palette Optimized K3s | `1.27.2` |
+| **Pack Type** | **Registry** | **Pack Name**         | **Pack Version** |
+| ------------- | ------------ | --------------------- | ---------------- |
+| Kubernetes    | Public Repo  | Palette Optimized K3s | `1.27.2`         |
 
 The pack version must match the version pushed to the _ttl.sh_ image registry. The `system.uri` attribute of the BYOOS
 pack will reference the Kubernetes version you select using the `{{ .spectro.system.kubernetes.version }}`
