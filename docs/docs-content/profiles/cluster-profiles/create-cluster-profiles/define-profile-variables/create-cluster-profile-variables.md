@@ -93,6 +93,14 @@ guide to learn how to create a cluster profile.
     keys to select the appropriate profile variable. Press **TAB** to accept the suggestion and add the variable. You
     must still wrap the profile variable in single quotes (`'`).
 
+    :::warning
+
+    If you plan to populate your variables with values that contain single quotes (`'`), wrap
+    `{{.spectro.var.variable_name}}` in double quotes (`"`); otherwise, the YAML file will be invalid when the variable
+    is resolved.
+
+    :::
+
     ![Palette YAML editor with the added profile variables.](/profiles_create-cluster-profiles_define-profile-variables_add-vars-to-yaml.webp)
 
     :::tip
