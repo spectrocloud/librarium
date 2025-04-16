@@ -1,0 +1,417 @@
+---
+sidebar_label: "Build Edge Artifacts"
+title: "Build Edge Artifacts"
+description:
+  "Get started with Kubernetes at the edge. Learn how to build the artifacts required for your Edge deployment."
+icon: ""
+hide_table_of_contents: false
+sidebar_position: 30
+tags: ["getting-started", "tutorial", "edge"]
+---
+
+One of the first steps in deploying an Edge cluster is preparing your Edge host with all the required artifacts. The
+process of building these artifacts is called
+[EdgeForge](../../../clusters/edge/edgeforge-workflow/edgeforge-workflow.md), and it is responsible for generating the
+Installer ISO and Provider Image artifacts.
+
+- Installer ISO: An ISO image that installs the Palette Edge agent onto the Edge host.
+- Provider Images: [Kairos-based](https://kairos.io/) images that include the operating system and the desired
+  Kubernetes versions. These images are used in the Operating System (OS) layer when creating an Edge cluster profile.
+  They install an immutable OS and the software dependencies compatible with the selected Kubernetes version during
+  cluster deployment.
+
+This tutorial teaches you how to build the Edge artifacts required for your Edge deployment. After building the
+artifacts, you will move on to the next tutorial in this series, where you will learn how to use the Provider Images to
+create an Edge cluster profile. You will then use the Installer ISO to bootstrap the Edge installation on your host and
+use it as a node for deploying your first Edge cluster.
+
+The roadmap below outlines the sequence of tutorials to be followed.
+
+![Edge Getting Started Roadmap with EdgeForge](/getting-started/getting-started_introduction-edge_build-edge-artifacts_edgeforge.webp)
+
+## Prerequisites
+
+To complete this tutorial, ensure the following prerequisites are in place.
+
+- You have completed the steps in the [Prepare User Data for Edge Installation](./prepare-user-data.md) tutorial,
+  including cloning the CanvOS repository and creating and validating a `user-data` file.
+- A physical or virtual Linux machine with an AMD64 (also known as x86_64) processor architecture and the following
+  minimum hardware configuration:
+  - 4 CPU
+  - 8 GB memory
+  - 150 GB storage
+- The following software installed:
+  - [Docker Engine](https://docs.docker.com/engine/install/) with `sudo` privileges. Alternatively, you can install
+    [Earthly](https://earthly.dev/), in which case you do not need `sudo` privileges.
+  - [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+
+## Define Arguments
+
+Open a terminal window on your Linux machine and navigate to the **CanvOS** repository that you cloned in the
+[Prepare User Data for Edge Installation](./prepare-user-data.md) tutorial. This repository contains the utilities
+required to build the artifacts.
+
+```shell
+cd CanvOS
+```
+
+Check the available Git tags.
+
+```shell
+git tag
+```
+
+Check out the latest available tag. This tutorial uses the tag **v4.6.12** as an example.
+
+```
+git checkout v4.6.12
+```
+
+EdgeForge leverages [Earthly](https://earthly.dev/) to build the Installer ISO and provider images artifacts. The
+**.arg** file is used to pass the values of a few arguments, such as the image tag and registry name, to Earthly for the
+build process.
+
+Set a custom tag for the provider images. The tag must be an alphanumeric lowercase string. This tutorial uses
+`gs-tutorial` as an example.
+
+```bash
+export CUSTOM_TAG=gs-tutorial
+```
+
+Next, issue the following command to create the **.arg** file using the custom tag. The remaining arguments will use
+predefined values. For example, this tutorial uses [K3s](https://k3s.io/) as the Kubernetes distribution, Ubuntu as the
+OS distribution, and [ttl.sh](https://ttl.sh/) as the image registry.
+
+```bash
+cat << EOF > .arg
+CUSTOM_TAG=$CUSTOM_TAG
+IMAGE_REGISTRY=ttl.sh
+OS_DISTRIBUTION=ubuntu
+IMAGE_REPO=ubuntu
+OS_VERSION=22.04
+K8S_DISTRIBUTION=k3s
+ISO_NAME=palette-edge-installer
+ARCH=amd64
+UPDATE_KERNEL=false
+EOF
+```
+
+Verify that the file was created correctly using the `cat` command.
+
+```
+cat .arg
+```
+
+:::info
+
+Different versions of CanvOS may require different arguments. Refer to the
+[CanvOS](https://github.com/spectrocloud/CanvOS#readme) repository to learn more about the required arguments for each
+version tag.
+
+:::
+
+## Build Artifacts
+
+By default, Earthly builds multiple images with different Kubernetes versions. You can exclude the image versions you do
+not need from the build process by deleting the corresponding lines under the `k3s` section in the **k8s_version.json**
+file. This speeds up the build process and reduces the amount of space that is required from your host machine.
+
+Open the **k8s_version.json** file using an editor of your choice.
+
+```bash
+vi k8s_version.json
+```
+
+Next, delete the K3s versions you do not need. This tutorial uses K3s version `1.32.1` as an example. Below is an
+example of the file with all other versions removed.
+
+```text {18} hideClipboard
+{
+  "k3s": [
+    "1.32.1"
+  ],
+
+  ...
+
+}
+```
+
+Once you have made the alterations, save and exit the file.
+
+:::warning
+
+If you are using a CanvOS tag that is earlier than v4.4.12, the **k8s_version.json** file does not exist in those tags.
+In that case, open the **Earthfile** in the CanvOS directory. Under `build-provider-images` section, remove the lines
+containing the Kubernetes versions that you do not need.
+
+:::
+
+Issue the command below to build the Edge artifacts.
+
+```bash
+sudo ./earthly.sh +build-all-images
+```
+
+The build may take 15 to 20 minutes to complete, depending on the hardware resources available on the host machine. Once
+complete, you will see a success message similar to the one displayed below.
+
+```text hideClipboard
+========================== 🌍 Earthly Build  ✅ SUCCESS ==========================
+```
+
+The output also includes a manifest with predefined parameters required for creating the Edge cluster profile. Copy and
+save the manifest, as you will need it in the next tutorial.
+
+<!-- prettier-ignore -->
+```yaml
+pack:
+  content:
+    images:
+      - image: "{{.spectro.pack.edge-native-byoi.options.system.uri}}"
+  # Below config is default value, please uncomment if you want to modify default values
+  #drain:
+    #cordon: true
+    #timeout: 60 # The length of time to wait before giving up, zero means infinite
+    #gracePeriod: 60 # Period of time in seconds given to each pod to terminate gracefully. If negative, the default value specified in the pod will be used
+    #ignoreDaemonSets: true
+    #deleteLocalData: true # Continue even if there are pods using emptyDir (local data that will be deleted when the node is drained)
+    #force: true # Continue even if there are pods that do not declare a controller
+    #disableEviction: false # Force drain to use delete, even if eviction is supported. This will bypass checking PodDisruptionBudgets, use with caution
+    #skipWaitForDeleteTimeout: 60 # If pod DeletionTimestamp older than N seconds, skip waiting for the pod. Seconds must be greater than 0 to skip.
+options:
+  system.uri: "{{ .spectro.pack.edge-native-byoi.options.system.registry }}/{{ .spectro.pack.edge-native-byoi.options.system.repo }}:{{ .spectro.pack.edge-native-byoi.options.system.k8sDistribution }}-{{ .spectro.system.kubernetes.version }}-{{ .spectro.pack.edge-native-byoi.options.system.peVersion }}-{{ .spectro.pack.edge-native-byoi.options.system.customTag }}"
+
+
+  system.registry: ttl.sh
+  system.repo: ubuntu
+  system.k8sDistribution: k3s
+  system.osName: ubuntu
+  system.peVersion: v4.6.12
+  system.customTag: gs-tutorial
+  system.osVersion: 22.04
+```
+
+Confirm that the Edge Installer ISO and its checksum have been created correctly.
+
+```bash
+ls build
+```
+
+```text hideClipboard
+palette-edge-installer.iso
+palette-edge-installer.iso.sha256
+```
+
+List the container images to confirm that the provider images were built successfully.
+
+```bash
+docker images --filter=reference="*/*:*$CUSTOM_TAG"
+```
+
+```text hideClipboard
+REPOSITORY      TAG                                IMAGE ID       CREATED          SIZE
+ttl.sh/ubuntu   k3s-1.32.1-v4.6.12-gs-tutorial     75811e3dfb42   13 minutes ago   4.93GB
+```
+
+## Push Provider Images
+
+Push the provider image to the [ttl.sh](https://ttl.sh/) registry so that you can reference it when creating the cluster
+profile.
+
+```bash
+docker push ttl.sh/ubuntu:k3s-1.32.1-v4.6.12-$CUSTOM_TAG
+```
+
+The output confirms that the image was pushed to the registry with the correct tag and is ready to be used in a cluster
+profile.
+
+```text hideClipboard
+...
+k3s-1.32.1-v4.6.12-gs-tutorial: digest: sha256:c0045ff16f01c3fac47fdff83a051ab0c2fee1ff600b8b8e35caa6aa86736478 size: 16783
+```
+
+:::warning
+
+[ttl.sh](https://ttl.sh/) is a free registry and does not require you to sign in. However, this is a short-lived image
+registry, which means that the pushed images will expire after 24 hours. Refer to the
+[Build Edge Artifacts](../../../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md) guide to learn how to
+push images to a different registry.
+
+:::
+
+## Automate EdgeForge
+
+The example script below automates the EdgeForge process. It provides an alternative way to build the artifacts if you
+have already learned the steps and want to replicate them quickly. You can skip this step if you have followed the
+tutorial and built the artifacts manually.
+
+The script clones the CanvOS repository, creates a simple `user-data` file, builds the Edge artifacts, and pushes the
+provider images to the registry. It also prompts the user for a few options, including the CanvOS Git tag, Kubernetes
+distribution and version, and more.
+
+Follow the steps below to build the artifacts using the script.
+
+<details>
+<summary>EdgeForge Automation Example Script</summary>
+
+1. Open a terminal window on your Linux machine, and issue the following command to create the script file.
+
+   ```shell
+   cat << EOF > edgeforge.sh
+   ​#!/bin/bash
+
+   # Exit if a command fails
+
+   set -e
+
+   # Clone the CanvOS repository
+
+   echo "Cloning CanvOS repository..." git clone https://github.com/spectrocloud/CanvOS.git
+   cd CanvOS || { echo "Failed to enter CanvOS directory"; exit 1; }
+
+   # Get Palette registration token
+
+   read -p "Enter your Palette registration token: " TOKEN
+   export TOKEN
+
+   # Create user-data file
+
+   echo "Creating user-data file..."
+   cat << EOF > user-data
+   #cloud-config
+   stylus:
+   site:
+   edgeHostToken: $TOKEN
+   paletteEndpoint: api.spectrocloud.com
+
+   stages:
+   initramfs:
+   - users:
+   kairos:
+   passwd: kairos
+
+   install:
+   poweroff: true
+   EOF
+   echo "user-data file created."
+
+   # Validate user-data file
+
+   echo "Validating user-data file..." VALIDATION_OUTPUT=$(sudo ./earthly.sh +validate-user-data 2>&1)
+
+   if echo "$VALIDATION_OUTPUT" | grep -iq "Validation successful"; then echo "✅ User data validation passed.
+   Proceeding..." else echo "❌ User data validation failed. Please check 'user-data' and try again." exit 1 fi
+
+   # Fetch latest git tags
+
+   echo "Fetching git tags..." git fetch --tags echo "Available tags:" git --no-pager tag --list
+
+   # Prompt for tag selection
+
+   read -p "Enter the tag to checkout (e.g., v4.6.5): " TAG git checkout "$TAG"
+
+   # Create .arg file with user input
+
+   echo "Creating .arg file..." read -p "Enter custom tag for the artifacts (default value: getting-started): " CUSTOM_TAG
+   CUSTOM_TAG=${CUSTOM_TAG:-getting-started}
+
+   read -p "Enter OS distribution (default value: ubuntu): " OS_DISTRIBUTION OS_DISTRIBUTION=${OS_DISTRIBUTION:-ubuntu}
+
+   read -p "Enter OS version (default value: 22.04): " OS_VERSION OS_VERSION=${OS_VERSION:-22.04}
+
+   read -p "Enter Kubernetes distribution (default value: k3s): " K8S_DISTRIBUTION
+   K8S_DISTRIBUTION=${K8S_DISTRIBUTION:-k3s}
+
+   read -p "Enter Image Registry (default value: ttl.sh): " IMAGE_REGISTRY IMAGE_REGISTRY=${IMAGE_REGISTRY:-ttl.sh}
+
+   cat << EOF > .arg CUSTOM_TAG=$CUSTOM_TAG
+   IMAGE_REGISTRY=$IMAGE_REGISTRY
+   OS_DISTRIBUTION=$OS_DISTRIBUTION
+   IMAGE_REPO=$OS_DISTRIBUTION
+   OS_VERSION=$OS_VERSION
+   K8S_DISTRIBUTION=$K8S_DISTRIBUTION
+   ISO_NAME=palette-edge-installer
+   ARCH=amd64
+   UPDATE_KERNEL=false
+   EOF
+
+   echo "✅ .arg file created."
+
+   # Select the K8s version to build artifacts for
+
+   if [ -f "k8s_version.json" ]; then
+
+       # Select K8s version
+       if grep $K8S_DISTRIBUTION k8s_version.json; then
+           echo "Available versions for $K8S_DISTRIBUTION:"
+           AVAILABLE_VERSIONS=$(cat k8s_version.json | jq -r ".$K8S_DISTRIBUTION[]")
+           echo "$AVAILABLE_VERSIONS"
+
+           # Prompt for K8s version
+           while true; do
+               read -p "Enter a valid Kubernetes version to build artifacts for (must be listed above): " K8S_VERSION
+
+               # Check if the entered version exists in the list
+               if echo "$AVAILABLE_VERSIONS" | grep -q "^$K8S_VERSION$"; then
+                   break
+               else
+                   echo "❌ Invalid version. Please enter a valid version from the list above."
+               fi
+           done
+
+           # Update the JSON file to keep only the selected version
+           jq --null-input --arg versions "$K8S_VERSION" --arg dist "$K8S_DISTRIBUTION" '{($dist): [$versions]}' > k8s_version.json
+
+           echo "✅ k8s_version.json updated with the selected version $K8S_VERSION."
+       else
+           echo "❌ Distribution '$K8S_DISTRIBUTION' not found in k8s_version.json. Exiting..."
+           exit 1
+       fi
+
+   else echo "❌ k8s_version.json not found. Exiting..." exit 1 fi
+
+   # Build artifacts
+
+   echo "Building artifacts... This will take approximately 15 minutes." sudo ./earthly.sh +build-all-images
+
+   # Push image
+
+   echo "Pushing provider image to registry..." docker push
+   "$IMAGE_REGISTRY/$OS_DISTRIBUTION:$K8S_DISTRIBUTION-$K8S_VERSION-$TAG-$CUSTOM_TAG"
+
+   echo "✅ Build completed successfully. The artifacts are located in the 'CanvOS/build' folder."
+   EOF
+   ```
+
+2. Grant execution permissions to the script.
+
+   ```shell
+   chmod +x edgeforge.sh
+   ```
+
+3. Invoke the script to build the artifacts, answering the prompts.
+
+   ```shell
+   ./edgeforge.sh
+   ```
+
+4. Once the build is complete, the script prints a manifest with predefined parameters that are required to create the
+   cluster profile. Copy and save the manifest, as you will need it later.
+
+5. Confirm that the Edge Installer ISO and its checksum have been created correctly.
+
+   ```bash
+   ls build
+   ```
+
+   ```text hideClipboard
+   palette-edge-installer.iso
+   palette-edge-installer.iso.sha256
+   ```
+
+</details>
+
+## Next Steps
+
+In this tutorial, you built the artifacts required for your Edge deployment. We recommend continuing with the [Create an
+Edge Cluster Profile] tutorial to learn how to use the provider images to create an Edge cluster profile.

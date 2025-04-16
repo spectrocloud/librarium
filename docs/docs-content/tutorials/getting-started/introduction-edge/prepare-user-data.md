@@ -1,7 +1,9 @@
 ---
 sidebar_label: "Prepare User Data"
 title: "Prepare User Data for Edge Installation"
-description: "Learn how to create an user data file for your Edge deployment"
+description:
+  "Get started with Kubernetes at the edge. Learn how to create and validate a user data file to customize your Edge
+  installation."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 20
@@ -26,6 +28,11 @@ To complete this tutorial, you will need the following prerequisites in place.
 
 - A [Palette account](https://www.spectrocloud.com/get-started) with
   [tenant admin](../../../tenant-settings/tenant-settings.md) access.
+- A physical or virtual Linux machine with an AMD64 (also known as x86_64) processor architecture and the following
+  minimum hardware configuration:
+  - 4 CPU
+  - 8 GB memory
+  - 150 GB storage
 - The following software installed:
   - [Docker Engine](https://docs.docker.com/engine/install/) with `sudo` privileges. Alternatively, you can install
     [Earthly](https://earthly.dev/), in which case you will not need `sudo` privileges.
@@ -231,5 +238,5 @@ itself. For example, an expired registration token will not be flagged by the va
 ## Next Steps
 
 In this tutorial, you created a user data file that allows you to provide custom configuration to the Edge Installer
-ISO. We recommend that you continue to the [Build Edge Artifacts] tutorial to learn how to use this file during the Edge
-Installer ISO build process.
+ISO. We recommend that you continue to the [Build Edge Artifacts](./build-edge-artifacts.md) tutorial to learn how to
+use this file during the Edge Installer ISO build process.
