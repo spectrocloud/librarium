@@ -248,7 +248,7 @@ cat user-data
 
 The expected output should show that the `edgeHostToken` and login credentials for Edge hosts are set correctly. The
 `edgeHostToken` value must match your Palette registration token. Otherwise, your Edge hosts will not register
-themselves with Palette automatically. Below is a sample output with the token masked. <br />
+with Palette. Below is a sample output with the token masked. <br />
 
 ```hideClipboard bash
 #cloud-config
@@ -670,8 +670,7 @@ docker run --interactive --tty --rm \
 ```
 
 The cloning process can take 3-4 minutes to finish and displays output similar to that shown below. The output displays
-the Edge host ID for each VM, as highlighted in the sample output below. VMs use this host ID to auto-register
-themselves with Palette.
+the Edge host ID for each VM, as highlighted in the sample output below. VMs use this host ID to auto-register with Palette.
 
 ```bash hideClipboard {7}
 # Sample output for one VM
