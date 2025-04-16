@@ -48,13 +48,12 @@ backups before making any cluster profile version changes in your production env
 
 ## Prerequisites
 
-This tutorial builds upon steps in [Getting Started](../../../getting-started/getting-started.md). Complete the steps
-for your preferred cloud provider.
-
-- [Deploy a Cluster with Azure](/getting-started/azure/deploy-k8s-cluster.md)
-- [Deploy a Cluster with AWS](/getting-started/aws/deploy-k8s-cluster.md)
-- [Deploy a Cluster with GCP](/getting-started/gcp/deploy-k8s-cluster.md)
-- [Deploy a Cluster with VMware](/getting-started/vmware/deploy-k8s-cluster.md)
+- An active Palette cluster. This tutorial builds upon steps in [Getting Started](../../../getting-started/getting-started.md). Complete the steps
+for your preferred cloud provider. 
+  - [Deploy a Cluster with Azure](/getting-started/azure/deploy-k8s-cluster.md)
+  - [Deploy a Cluster with AWS](/getting-started/aws/deploy-k8s-cluster.md)
+  - [Deploy a Cluster with GCP](/getting-started/gcp/deploy-k8s-cluster.md)
+  - [Deploy a Cluster with VMware](/getting-started/vmware/deploy-k8s-cluster.md)
 
 ## Set Up Cluster
 
