@@ -34,8 +34,9 @@ using them.
 | Cluster profile updates  | Change the cluster profile in place.                                               | Palette detects the difference between the provisioned resources and this profile. A pending update is available to clusters using this profile. Apply pending updates to the clusters you want to update. |
 | Cluster overrides        | Change the configuration of a single deployed cluster outside its cluster profile. | Save and apply the changes you've made to your cluster.                                                                                                                                                    |
 
-This tutorial will teach you how to update a cluster deployed with Palette to Amazon Web Services (AWS), Microsoft Azure, Google Cloud Platform (GCP), or VMware infrastructure providers. You will explore each cluster update method and learn how to
-apply these changes using Palette or Terraform.
+This tutorial will teach you how to update a cluster deployed with Palette to Amazon Web Services (AWS), Microsoft
+Azure, Google Cloud Platform (GCP), or VMware infrastructure providers. You will explore each cluster update method and
+learn how to apply these changes using Palette or Terraform.
 
 :::warning
 
@@ -107,8 +108,7 @@ for this tutorial. Select **Confirm & Create** to continue.
 
 ![Image that shows the pack search screen with inputs to find Kubecost pack](/tutorials/deploy-cluster-profile-updates/clusters_cluster-management_deploy-cluster-profile-updates_kubcost-pack-details-ui.webp)
 
-Confirm the changes you made. The configuration stack diagram shows the cost-analyzer pack (Kubecost) at the
-top.
+Confirm the changes you made. The configuration stack diagram shows the cost-analyzer pack (Kubecost) at the top.
 
 Select **Save Changes** to confirm your updates.
 
@@ -130,8 +130,8 @@ Kubecost pack was installed successfully.
 
 ![Image that shows the new cluster profile with Kubecost functional.](/tutorials/deploy-cluster-profile-updates/clusters_cluster-management_deploy-cluster-profile-updates_deployed-profile-version.webp)
 
-The Kubecost pack is not automatically accessible. To access the Kubecost UI, you must create a port forward to access the
-application deployed in the Kubernetes cluster.
+The Kubecost pack is not automatically accessible. To access the Kubecost UI, you must create a port forward to access
+the application deployed in the Kubernetes cluster.
 
 Download the kubeconfig file for your cluster from the Palette UI. This file enables you to issue kubectl commands
 against the host cluster.
@@ -144,8 +144,8 @@ Open a new terminal window and set the `KUBECONFIG` environment variable to use 
 export KUBECONFIG=~/Downloads/admin.aws-cluster.kubeconfig
 ```
 
-Execute the following command to forward the Kubecost UI port to your local network. If port 9090 is already in use, choose
-a different port number.
+Execute the following command to forward the Kubecost UI port to your local network. If port 9090 is already in use,
+choose a different port number.
 
 ```shell
 kubectl port-forward --namespace kubecost deployment/cost-analyzer-cost-analyzer 9090
@@ -203,8 +203,8 @@ Error from server (NotFound): namespaces "kubecost" not found
 ## Cluster Profile Overrides
 
 Cluster profiles can be updated and applied to one specific cluster. This method is referred to as a profile override.
-When using this method, the previous state of the cluster profile will not be saved and changes are only applied
-to the cluster you specify. All other clusters using the same cluster profile and version will not be impacted.
+When using this method, the previous state of the cluster profile will not be saved and changes are only applied to the
+cluster you specify. All other clusters using the same cluster profile and version will not be impacted.
 
 Navigate to the left main menu and select **Clusters**. Select the cluster you created in the Getting Started tutorials.
 
@@ -214,20 +214,20 @@ Select **Save**. The editor closes.
 Palette uses the profile override configuration you provided and begins making changes immediately. Select the
 **Overview** tab and wait for the **hello-universe** deployment status to turn green.
 
-Once these changes are complete, select the **Workloads** tab. Then, select **Namespaces** and the
-**hello-universe** namespace.
+Once these changes are complete, select the **Workloads** tab. Then, select **Namespaces** and the **hello-universe**
+namespace.
 
 Two replicas of the **UI** deployment are available instead of the one initially specified by your cluster profile.
-Palette may take some time to reconcile and detect the change. Select the **refresh** icon next to the time duration drop-down menu
-to force a refresh. Your override has been successfully applied.
+Palette may take some time to reconcile and detect the change. Select the **refresh** icon next to the time duration
+drop-down menu to force a refresh. Your override has been successfully applied.
 
 ![Image that shows the new cluster profile with Kubecost functional.](/tutorials/deploy-cluster-profile-updates/clusters_cluster-management_deploy-cluster-profile-updates_profile-override.webp)
 
 ## In Place Cluster Profile Updates
 
-Cluster profiles can be updated in place. When a profile version is updated, all clusters configured with the same version will display a
-notification that updates are available. Profile changes made using this method require user confirmation. This allows
-you to schedule the work around maintenance windows for each impacted cluster.
+Cluster profiles can be updated in place. When a profile version is updated, all clusters configured with the same
+version will display a notification that updates are available. Profile changes made using this method require user
+confirmation. This allows you to schedule the work around maintenance windows for each impacted cluster.
 
 Navigate to the left main menu and select **Profiles**. Select the profile you created in the Getting Started tutorials.
 
@@ -243,8 +243,7 @@ green icon in the **Type** column.
 
 ![Image that shows the pending updates ](/tutorials/deploy-cluster-profile-updates/clusters_cluster-management_deploy-cluster-profile-updates_pending-update-clusters-view.webp)
 
-Select the cluster you created in the Getting Started tutorials. Select **Updates** to
-begin the cluster update.
+Select the cluster you created in the Getting Started tutorials. Select **Updates** to begin the cluster update.
 
 ![Image that shows the Updates button](/tutorials/deploy-cluster-profile-updates/clusters_cluster-management_deploy-cluster-profile-updates_updates-available-button-cluster-overview.webp)
 
@@ -268,12 +267,12 @@ configurations** in the profile override **will be replaced** with those in the 
 :::
 
 Palette updates your cluster according to cluster profile specifications. Monitor the progress of the update on the
-**Overview** tab. When these changes are complete, select the **Workloads** tab. Then, select the
-**hello-universe** namespace.
+**Overview** tab. When these changes are complete, select the **Workloads** tab. Then, select the **hello-universe**
+namespace.
 
 Three replicas of the **UI** deployment are available instead of the one specified by your cluster profile. The Palette
- UI may take some time to reconcile and detect the changes. If needed, select the **refresh** icon next to the **time interval**
-drop-down menu to force a refresh.
+UI may take some time to reconcile and detect the changes. If needed, select the **refresh** icon next to the **time
+interval** drop-down menu to force a refresh.
 
 ## Cleanup
 
