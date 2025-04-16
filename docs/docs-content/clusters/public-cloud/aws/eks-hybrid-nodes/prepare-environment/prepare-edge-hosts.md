@@ -204,7 +204,7 @@ mode to manage configurations, updates, and workloads.
      [Site Network Parameters](../../../../../clusters/edge/edge-configuration/installer-reference.md#site-network-parameters).
    - The host will not shut down and will instead reboot after the agent is installed, with
      [kube-vip](../../../../../clusters/edge/networking/kubevip.md) enabled, as this is required for bare metal and
-     VMware vSphere deployments. If your environment does not require kube-vip, set `skipKubeVip` to `true`. Refer to
+     VMware vSphere deployments. If your environment does not require kube-vip, set `stylus.vip.skip` to `true`. Refer to
      the [Prepare User Data](../../../../../clusters/edge/edgeforge-workflow/prepare-user-data.md) guide to learn more
      about user data configuration.
    - The `projectName` parameter is not required if the associated Palette
@@ -221,7 +221,8 @@ mode to manage configurations, updates, and workloads.
      poweroff: false
 
    stylus:
-     skipKubeVip: false
+     vip:
+       skip: false
      site:
        edgeHostToken: $TOKEN
        paletteEndpoint: api.spectrocloud.com
@@ -252,7 +253,8 @@ mode to manage configurations, updates, and workloads.
      poweroff: false
 
    stylus:
-     skipKubeVip: false
+     vip:
+       skip: false
      site:
        edgeHostToken: ****************
        paletteEndpoint: api.spectrocloud.com
