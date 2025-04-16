@@ -22,9 +22,8 @@ tags: ["release-notes"]
 #### Breaking Changes {#breaking-changes-4.6.b}
 
 - New Cluster Groups will now default to a newer version of vCluster,
-  [version 0.22.x](https://loft.featurebase.app/changelog/vcluster-v022-native-sleep-mode-and-cert-manager-integration),
-  which includes new features and improvements. Existing Cluster Groups will continue to use older versions. If you want
-  to use a later version of vCluster, refer to the
+  [version 0.22.x](https://github.com/loft-sh/vcluster/releases), which includes new features and improvements. Existing
+  Cluster Groups will continue to use older versions. If you want to use a later version of vCluster, refer to the
   [Palette Virtual Clusters](../clusters/palette-virtual-clusters/palette-virtual-clusters.md#upgrade-virtual-clusters)
   page to learn how to migrate your virtual cluster workloads.
 
@@ -74,9 +73,8 @@ tags: ["release-notes"]
 #### Features
 
 - New Cluster Groups will now default to a newer version of vCluster,
-  [version 0.22.x](https://loft.featurebase.app/changelog/vcluster-v022-native-sleep-mode-and-cert-manager-integration),
-  which includes new features and improvements. Existing Cluster Groups will continue to use older versions. If you want
-  to use a later version of vCluster, refer to the
+  [version 0.22.x](https://github.com/loft-sh/vcluster/releases), which includes new features and improvements. Existing
+  Cluster Groups will continue to use older versions. If you want to use a later version of vCluster, refer to the
   [Palette Virtual Clusters](../clusters/palette-virtual-clusters/palette-virtual-clusters.md#upgrade-virtual-clusters)
   page to learn how to migrate your virtual cluster workloads.
 
@@ -212,7 +210,9 @@ compatible version of the Palette CLI.
   no longer supports Edge virtual clusters.
 - The `harbor-edge-native-config` pack has been deprecated. You need to use the `registry-connect and `harbor` packs to
   implement the Harbor registry. This allows you to keep your system up to date with the latest upstream updates. Refer
-  to Migrate from Harbor Edge-Native Config Pack for further details.
+  to
+  [Migrate from Harbor Edge-Native Config Pack](../clusters/edge/site-deployment/deploy-custom-registries/migrate-edge-native-config.md)
+  for further details.
 
 ## April 3, 2025 - Automation Updates
 
