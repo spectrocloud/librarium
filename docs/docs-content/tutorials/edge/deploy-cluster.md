@@ -927,19 +927,21 @@ In this section, you will use the Edge hosts to create the cluster nodes. Use on
 node and the remaining two as worker nodes. In this example, the control plane node is called the control plane pool,
 and the set of worker nodes is the worker pool.
 
-Navigate to **CONTROL-PLANE POOL CONFIGURATION** > **Pool Configuration**, select **Add Edge Hosts**, and choose one of the registered Edge hosts. 
-The screenshot below shows an Edge host added to the control plane pool.
+Navigate to **CONTROL-PLANE POOL CONFIGURATION** > **Pool Configuration**, select **Add Edge Hosts**, and choose one of
+the registered Edge hosts. The screenshot below shows an Edge host added to the control plane pool.
 
 ![Screenshot of an Edge host added to the control plane pool.](/tutorials/edge/tutorials_edge_deploy-cluster_add-control-node.webp)
 
-This tutorial does not require you to modify the default values of the **CONTROL-PLANE POOL CONFIGURATION** fields or configure the hosts.
+This tutorial does not require you to modify the default values of the **CONTROL-PLANE POOL CONFIGURATION** fields or
+configure the hosts.
 
-Navigate to **WORKER POOL CONFIGURATION** > **Pool Configuration**, select **Add Edge Hosts**, and choose the remaining two Edge hosts.
-The screenshot below shows two Edge hosts added to the worker pool.
+Navigate to **WORKER POOL CONFIGURATION** > **Pool Configuration**, select **Add Edge Hosts**, and choose the remaining
+two Edge hosts. The screenshot below shows two Edge hosts added to the worker pool.
 
 ![Screenshot of Edge hosts added to the worker pool.](/tutorials/edge/tutorials_edge_deploy-cluster_add-worker-nodes.webp)
 
-This tutorial does not require you to modify the default values of the **WORKER POOL CONFIGURATION** fields or configure the hosts.
+This tutorial does not require you to modify the default values of the **WORKER POOL CONFIGURATION** fields or configure
+the hosts.
 
 Click **Next** to continue.
 
