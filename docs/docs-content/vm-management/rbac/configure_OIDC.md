@@ -43,40 +43,7 @@ select in the Kubernetes layer of the infrastructure profile.
 
 5. Click **Confirm Updates**.
 
-<<<<<<< HEAD
 6. Save your changes.
-=======
-5. If you selected **Custom** as the OIDC IdP, follow the steps in <VersionedLink
-     text="Configure Custom OIDC"
-     url="/integrations/packs/?pack=kubernetes#configure-custom-oidc"
-   /> to set up the OIDC IdP for your cluster.
-
-6. Once you have made the necessary changes, click **Confirm Updates** and **Save Changes** to conclude the update.
-
-7. Deploy a cluster using the updated infrastructure profile. Refer to the [Getting Started](/getting-started/)
-   tutorials for instructions on how to deploy a cluster.
-
-8. Once the cluster is listed as **Healthy**, attach the VMO add-on profile to your cluster. Refer to the
-   [Attach an Add-on Profile](../../clusters/imported-clusters/attach-add-on-profile.md) guide for instructions.
-
-The following steps apply exclusively to clusters configured with **Custom** third-party OIDC IdPs.
-
-9. After the VMO profile deployment is completed, right-click the **Connect** button next to **Virtual Machine
-   Dashboard** and copy the link. Save this link for later use.
-
-10. Next, log in to the IdP console that is associated with the OIDC configuration used in your cluster.
-
-11. Locate the OIDC application that was used in step five and enable the **Refresh Token** setting. For example, if you
-    are using [Okta](https://www.okta.com) as the IdP, refer to the
-    [Refresh access tokens and rotate refresh tokens](https://developer.okta.com/docs/guides/refresh-tokens/main/) guide
-    for further instructions.
-
-12. Update the **Sign-in redirect URIs** field in your IdP. Add the VMO link copied in step nine, appending
-    `/auth/callback` to its end. For example, if the link is
-    `https://spectrocloud.com/v1/tenantApps/123456789101112131415162NWY2OGQ=`, update it to
-    `https://spectrocloud.com/v1/tenantApps/123456789101112131415162NWY2OGQ=/auth/callback`. This is the URI to which
-    the IdP will redirect users after successful authentication.
->>>>>>> dfb8e0c5d (Doc 1242 cp update (#6377))
 
 ## Validate
 
