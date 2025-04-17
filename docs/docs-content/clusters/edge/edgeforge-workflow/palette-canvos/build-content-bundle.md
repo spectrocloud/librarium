@@ -59,6 +59,13 @@ Creating a content bundle provides several benefits that may address common use 
   clusters. Download the latest version of the Palette Edge CLI from the
   [Downloads](../../../../spectro-downloads.md#palette-edge-cli) page to build the content bundle instead.
 
+- If your cluster uses the legacy **Harbor Edge-Native Config** pack, you cannot use the Palette CLI to build content
+  bundles or export cluster definitions. You must use the Palette Edge CLI.
+
+  Refer to
+  [Migrate From Harbor Edge-Native Config Pack](../../site-deployment/deploy-custom-registries/migrate-edge-native-config.md)
+  to learn how to migrate off the legacy pack to **Registry Connect** pack.
+
 ## Prerequisites
 
 - Linux Machine (Physical or VM) with an AMD64 architecture.

@@ -23,6 +23,15 @@ Apple Silicon, use the API approach instead.
 You can export cluster definitions using either the Palette and Palette Edge CLI. This approach also allows you to
 create a content bundle at the same time with a single command.
 
+### Limitations
+
+- If your cluster uses the legacy **Harbor Edge-Native Config** pack, you cannot use the Palette CLI to build content
+  bundles or export cluster definitions. You must use the Palette Edge CLI.
+
+  Refer to
+  [Migrate From Harbor Edge-Native Config Pack](../../site-deployment/deploy-custom-registries/migrate-edge-native-config.md)
+  to learn how to migrate off the legacy pack to **Registry Connect** pack.
+
 ### Prerequisites
 
 - At least one [cluster profile](/docs/docs-content/profiles/cluster-profiles/cluster-profiles.md) in Palette.
