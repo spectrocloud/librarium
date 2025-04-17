@@ -45,7 +45,7 @@ Explore more through the following tutorials.
       title: "Deploy a Cluster",
       description: "Learn how to deploy a Kubernetes cluster to a public cloud provider with Palette.",
       buttonText: "Learn more",
-      relativeURL: "./cluster-deployment/public-cloud/deploy-k8s-cluster/",
+      relativeURL: "/getting-started/",
     },
     {
       title: "Deploy App Workloads with a PCG",
