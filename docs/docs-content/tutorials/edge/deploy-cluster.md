@@ -935,7 +935,7 @@ the registered Edge hosts. The screenshot below shows an Edge host added to the 
 This tutorial does not require you to modify the default values of the **CONTROL-PLANE POOL CONFIGURATION** fields or
 configure the hosts.
 
-Navigate to **WORKER POOL CONFIGURATION** > **Pool Configuration**, select **Add Edge Hosts**, and choose the remaining
+In the **WORKER POOL CONFIGURATION** section, under **Pool Configuration**, select **Add Edge Hosts**, and choose the remaining
 two Edge hosts. The screenshot below shows two Edge hosts added to the worker pool.
 
 ![Screenshot of Edge hosts added to the worker pool.](/tutorials/edge/tutorials_edge_deploy-cluster_add-worker-nodes.webp)
