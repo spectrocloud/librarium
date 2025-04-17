@@ -126,11 +126,10 @@ Use the following steps to create the IAM policy and deploy the Cluster Autoscal
 4. Once you included all the [infrastructure pack layers](../profiles/profiles.md) to your cluster profile, add the AWS
    Cluster Autoscaler pack.
 
-5. Next, use the created cluster profile to [deploy a cluster](../clusters/public-cloud/deploy-k8s-cluster.md). In the
-   **Nodes Config** section, specify the minimum and maximum number of worker pool nodes and the instance type that
-   suits your workload. Your worker pool will have at least the minimum number of nodes you set up, and when scaling up,
-   it will not exceed the maximum number of nodes configured. Note that each configured node pool will represent one
-   ASG.
+5. Next, use the created cluster profile to [deploy a cluster](/getting-started/). In the **Nodes Config** section,
+   specify the minimum and maximum number of worker pool nodes and the instance type that suits your workload. Your
+   worker pool will have at least the minimum number of nodes you set up, and when scaling up, it will not exceed the
+   maximum number of nodes configured. Note that each configured node pool will represent one ASG.
 
    The snapshot below displays an example of the cluster's **Nodes Config** section.
 
@@ -270,11 +269,10 @@ Use the following steps to create the IAM policy and deploy the Cluster Autoscal
 4. Once you included all the [infrastructure pack layers](../profiles/profiles.md) to your cluster profile, add the AWS
    Cluster Autoscaler pack.
 
-5. Next, use the created cluster profile to [deploy a cluster](../clusters/public-cloud/deploy-k8s-cluster.md). In the
-   **Nodes Config** section, specify the minimum and maximum number of worker pool nodes and the instance type that
-   suits your workload. Your worker pool will have at least the minimum number of nodes you set up, and when scaling up,
-   it will not exceed the maximum number of nodes configured. Note that each configured node pool will represent one
-   ASG.
+5. Next, use the created cluster profile to [deploy a cluster](/getting-started/). In the **Nodes Config** section,
+   specify the minimum and maximum number of worker pool nodes and the instance type that suits your workload. Your
+   worker pool will have at least the minimum number of nodes you set up, and when scaling up, it will not exceed the
+   maximum number of nodes configured. Note that each configured node pool will represent one ASG.
 
    The snapshot below displays an example of the cluster's **Nodes Config** section.
 
@@ -414,11 +412,10 @@ Use the following steps to create the IAM policy and deploy the Cluster Autoscal
 4. Once you included all the [infrastructure pack layers](../profiles/profiles.md) to your cluster profile, add the AWS
    Cluster Autoscaler pack.
 
-5. Next, use the created cluster profile to [deploy a cluster](../clusters/public-cloud/deploy-k8s-cluster.md). In the
-   **Nodes Config** section, specify the minimum and maximum number of worker pool nodes and the instance type that
-   suits your workload. Your worker pool will have at least the minimum number of nodes you set up, and when scaling up,
-   it will not exceed the maximum number of nodes configured. Note that each configured node pool will represent one
-   ASG.
+5. Next, use the created cluster profile to [deploy a cluster](/getting-started/). In the **Nodes Config** section,
+   specify the minimum and maximum number of worker pool nodes and the instance type that suits your workload. Your
+   worker pool will have at least the minimum number of nodes you set up, and when scaling up, it will not exceed the
+   maximum number of nodes configured. Note that each configured node pool will represent one ASG.
 
    The snapshot below displays an example of the cluster's **Nodes Config** section.
 
@@ -558,11 +555,10 @@ Use the following steps to create the IAM policy and deploy the Cluster Autoscal
 4. Once you included all the [infrastructure pack layers](../profiles/profiles.md) to your cluster profile, add the AWS
    Cluster Autoscaler pack.
 
-5. Next, use the created cluster profile to [deploy a cluster](../clusters/public-cloud/deploy-k8s-cluster.md). In the
-   **Nodes Config** section, specify the minimum and maximum number of worker pool nodes and the instance type that
-   suits your workload. Your worker pool will have at least the minimum number of nodes you set up, and when scaling up,
-   it will not exceed the maximum number of nodes configured. Note that each configured node pool will represent one
-   ASG.
+5. Next, use the created cluster profile to [deploy a cluster](/getting-started/). In the **Nodes Config** section,
+   specify the minimum and maximum number of worker pool nodes and the instance type that suits your workload. Your
+   worker pool will have at least the minimum number of nodes you set up, and when scaling up, it will not exceed the
+   maximum number of nodes configured. Note that each configured node pool will represent one ASG.
 
    The snapshot below displays an example of the cluster's **Nodes Config** section.
 
