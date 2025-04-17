@@ -173,6 +173,7 @@ compatible version of the Palette CLI.
 | ----------------------- | ----------- |
 | Amazon EBS CSI          | 1.41.0      |
 | Amazon EFS              | 2.1.6       |
+| Azure Disk CSI          | 1.32.0      |
 | GCE Persistent Disk CSI | 1.15.4      |
 | Portworx /w Operator    | 3.2.2       |
 
@@ -183,7 +184,11 @@ compatible version of the Palette CLI.
 | Argo CD                | 7.8.8       |
 | AWS Cluster Autoscaler | 1.32.0      |
 | Amazon EFS             | 2.1.6       |
+| Calico Network Policy  | 1.15.3      |
+| Istio                  | 1.24.3      |
+| Nginx                  | 1.15.3      |
 | Nginx                  | 1.12.1      |
+| Open Policy Agent      | 3.18.2      |
 | Portworx /w Operator   | 3.2.2       |
 | Spectro Proxy          | 1.5.6       |
 | Registry Connect       | 0.1.0       |
@@ -193,6 +198,7 @@ compatible version of the Palette CLI.
 | Pack Name                                  | New Version |
 | ------------------------------------------ | ----------- |
 | Amazon EBS CSI                             | 1.41.0      |
+| Azure Disk CSI                             | 1.32.0      |
 | Palette eXtended Kubernetes - Edge (PXK-E) | 1.32.2      |
 | Palette Optimized RKE2                     | 1.32.2      |
 | Palette Optimized RKE2                     | 1.31.6      |
