@@ -207,9 +207,9 @@ a disconnected Edge host instance via [Local UI](../../local-ui/local-ui.md). Fo
     :::warning
 
     If you used the Palette CLI to build the content bundle, only the ZST file will be created, and it will not be
-    inside a **content-XXXXXX** folder. You must create the folder yourself. Ensure that the folder name starts with
-    `content-` and you can append any string to the folder name. The Earthly build script will only be looking for a
-    folder that starts with `content-` with a ZST file inside to include in the built ISO.
+    inside a **content-XXXXXX** folder. You must create the folder yourself and put the ZST file in it. Ensure that the
+    folder name starts with `content-`. The string that follows is not relevant. The Earthly build script will only be
+    looking for a folder that starts with `content-` with a ZST file inside to include in the built ISO.
 
     :::
 
