@@ -34,9 +34,8 @@ tags: ["release-notes"]
 
 #### Deprecations and Removals
 
-- Palette no longer integrates with the
-  [libvirt](https://libvirt.org/) virtualization API. Support has been removed across various components including the Palette UI, Terraform providers, the user interface,
-  and packs.
+- Palette no longer integrates with the [libvirt](https://libvirt.org/) virtualization API. Support has been removed
+  across various components including the Palette UI, Terraform providers, the user interface, and packs.
 
 ### Edge
 
