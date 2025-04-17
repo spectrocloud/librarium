@@ -67,8 +67,8 @@ profile configuration. To learn about pack components, refer to [Palette VMO](./
 
 10. Review the profile and click **Finish Configuration**.
 
-11. Apply the profile to your cluster. For more information, refer to
-    [Create a Cluster](../clusters/public-cloud/deploy-k8s-cluster.md).
+11. Apply the profile to your cluster. For more information, refer to the [Getting Started](/getting-started/)
+    tutorials.
 
 </TabItem>
 
