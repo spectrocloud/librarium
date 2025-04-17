@@ -376,19 +376,19 @@ Palette. You will then create a cluster profile and use the registered host to d
          edgeHostToken: $TOKEN
          paletteEndpoint: api.spectrocloud.com
          projectName: Default
-     externalRegistries:
-       registries:
-         - domain: "example.registry.com/internal-images"
-           username: "admin"
-           password: "***************"
-           repositoryName: example-repository-private
-           certificates:
-             - |
-                -----BEGIN CERTIFICATE-----
-                **********************
-                -----END CERTIFICATE-----
-     registryMappingRules:
-      "us-east1-docker.pkg.dev/spectro-images/daily": "example.registry.com/internal-images"
+       externalRegistries:
+         registries:
+           - domain: "example.registry.com/internal-images"
+             username: "admin"
+             password: "***************"
+             repositoryName: example-repository-private
+             certificates:
+               - |
+                  -----BEGIN CERTIFICATE-----
+                  **********************
+                  -----END CERTIFICATE-----
+         registryMappingRules:
+           "us-east1-docker.pkg.dev/spectro-images/daily": "example.registry.com/internal-images"
 
      stages:
        initramfs:
@@ -433,8 +433,8 @@ Palette. You will then create a cluster profile and use the registered host to d
                 -----BEGIN CERTIFICATE-----
                 **********************
                 -----END CERTIFICATE-----
-     registryMappingRules:
-      "us-east1-docker.pkg.dev/spectro-images/daily": "example.registry.com/internal-images"
+       registryMappingRules:
+         "us-east1-docker.pkg.dev/spectro-images/daily": "example.registry.com/internal-images"
    stages:
      initramfs:
        - users:
