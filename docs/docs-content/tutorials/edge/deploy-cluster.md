@@ -115,7 +115,7 @@ multiple provider images, so you can use any image that matches the desired Kube
 cluster profile. You must perform this part of the tutorial on a Linux machine with an AMD64(x86_64) processor
 architecture that has network connectivity to your VMware vCenter environment.
 
-This tutorial builds and uses the provider image compatible with K3s v1.27.2.
+This tutorial builds and uses the provider image compatible with K3s v1.32.1.
 
 ### Check Out Starter Code
 
@@ -141,10 +141,10 @@ View the available [git tags](https://github.com/spectrocloud/CanvOS/tags).
 git tag
 ```
 
-Check out the newest available tag. This guide uses **v4.1.2** tag as an example.
+Check out the newest available tag. This guide uses **v4.6.12** tag as an example.
 
 ```bash
-git checkout v4.1.2
+git checkout v4.6.12
 ```
 
 ## Define Arguments
@@ -166,7 +166,7 @@ to ttl.sh are ephemeral and will expire after the 24 hrs time limit.
 
 Using the arguments defined in the **.arg** file, the final provider images you generate will have the following naming
 convention, `[IMAGE_REGISTRY]/[IMAGE_REPO]:[CUSTOM_TAG]`. In this example, the provider images will be
-`ttl.sh/ubuntu:k3s-1.27.2-v4.1.2-demo`. Refer to the **.arg.template** sample file in the current directory or the
+`ttl.sh/ubuntu:k3s-1.32.1-v4.6.12-demo`. Refer to the **.arg.template** sample file in the current directory or the
 [README](https://github.com/spectrocloud/CanvOS#readme) to learn more about the default values.
 
 ```bash
@@ -269,8 +269,8 @@ start the build process.
 :::warning
 
 Make sure your machine has sufficient disk space for the provider images. Each image is about 4 - 5 GB in size, and
-images are created for all the Palette-supported Kubernetes versions by default. In the **4.1.2** branch of **CanvOS**
-used in this tutorial, the script builds 14 images. If your machine does not have enough disk space, the build process
+images are created for all the Palette-supported Kubernetes versions by default. In the **4.6.12** branch of **CanvOS**
+used in this tutorial, the script builds 60 images. If your machine does not have enough disk space, the build process
 will fail silently.
 
 If you are using a Git tag earlier than v4.4.12, you can exclude image versions you do not need from the build process
@@ -330,7 +330,7 @@ options:
   system.repo: ubuntu
   system.k8sDistribution: k3s
   system.osName: ubuntu
-  system.peVersion: v4.1.2
+  system.peVersion: v4.6.12
   system.customTag: demo
   system.osVersion: 22
 ```
@@ -365,22 +365,25 @@ Palette-supported Kubernetes versions. You can identify the provider images by t
 docker images --filter=reference='*/*:*demo*'
 ```
 
-```hideClipboard bash {6,7}
-REPOSITORY      TAG                      IMAGE ID       CREATED          SIZE
-ttl.sh/ubuntu   k3s-1.25.13-v4.1.2-demo               b25cfbaadd79   2 hours ago   4.13GB
-ttl.sh/ubuntu   k3s-1.25.13-v4.1.2-demo_linux_amd64   b25cfbaadd79   2 hours ago   4.13GB
-ttl.sh/ubuntu   k3s-1.26.8-v4.1.2-demo                f2d870f3b8bd   2 hours ago   4.12GB
-ttl.sh/ubuntu   k3s-1.26.8-v4.1.2-demo_linux_amd64    f2d870f3b8bd   2 hours ago   4.12GB
-ttl.sh/ubuntu   k3s-1.27.2-v4.1.2-demo                6df130ae97e2   2 hours ago   4.12GB
-ttl.sh/ubuntu   k3s-1.27.2-v4.1.2-demo_linux_amd64    6df130ae97e2   2 hours ago   4.12GB
-ttl.sh/ubuntu   k3s-1.26.4-v4.1.2-demo                a14409825650   2 hours ago   4.13GB
-ttl.sh/ubuntu   k3s-1.26.4-v4.1.2-demo_linux_amd64    a14409825650   2 hours ago   4.13GB
-ttl.sh/ubuntu   k3s-1.27.5-v4.1.2-demo                bee555567baf   2 hours ago   4.12GB
-ttl.sh/ubuntu   k3s-1.27.5-v4.1.2-demo_linux_amd64    bee555567baf   2 hours ago   4.12GB
-ttl.sh/ubuntu   k3s-1.25.2-v4.1.2-demo                9c465e51a671   2 hours ago   4.1GB
-ttl.sh/ubuntu   k3s-1.25.2-v4.1.2-demo_linux_amd64    9c465e51a671   2 hours ago   4.1GB
-ttl.sh/ubuntu   k3s-1.24.6-v4.1.2-demo                6a56cdd58c0b   2 hours ago   4.1GB
-ttl.sh/ubuntu   k3s-1.24.6-v4.1.2-demo_linux_amd64    6a56cdd58c0b   2 hours ago   4.1GB
+```hideClipboard bash {2,3}
+REPOSITORY      TAG                                    IMAGE ID       CREATED       SIZE
+ttl.sh/ubuntu   k3s-1.32.1-v4.6.12-demo                145bc25ff5b4   2 hours ago   4.97GB
+ttl.sh/ubuntu   k3s-1.32.1-v4.6.12-demo_linux_amd64    145bc25ff5b4   2 hours ago   4.97GB
+ttl.sh/ubuntu   k3s-1.31.5-v4.6.12-demo                52ba5288cccd   2 hours ago   4.96GB
+ttl.sh/ubuntu   k3s-1.31.5-v4.6.12-demo_linux_amd64    52ba5288cccd   2 hours ago   4.96GB
+ttl.sh/ubuntu   k3s-1.31.4-v4.6.12-demo                8e089cc7292f   2 hours ago   4.96GB
+ttl.sh/ubuntu   k3s-1.31.4-v4.6.12-demo_linux_amd64    8e089cc7292f   2 hours ago   4.96GB
+ttl.sh/ubuntu   k3s-1.31.1-v4.6.12-demo                6ecfc962d208   2 hours ago   4.96GB
+ttl.sh/ubuntu   k3s-1.31.1-v4.6.12-demo_linux_amd64    6ecfc962d208   2 hours ago   4.96GB
+ttl.sh/ubuntu   k3s-1.30.9-v4.6.12-demo                34cdeab9d894   2 hours ago   4.96GB
+ttl.sh/ubuntu   k3s-1.30.9-v4.6.12-demo_linux_amd64    34cdeab9d894   2 hours ago   4.96GB
+ttl.sh/ubuntu   k3s-1.30.8-v4.6.12-demo                6491f9c28be5   2 hours ago   4.96GB
+ttl.sh/ubuntu   k3s-1.30.8-v4.6.12-demo_linux_amd64    6491f9c28be5   2 hours ago   4.96GB
+ttl.sh/ubuntu   k3s-1.30.6-v4.6.12-demo                dee339f3ceaa   2 hours ago   4.95GB
+ttl.sh/ubuntu   k3s-1.30.6-v4.6.12-demo_linux_amd64    dee339f3ceaa   2 hours ago   4.95GB
+ttl.sh/ubuntu   k3s-1.30.5-v4.6.12-demo                80f451092b91   2 hours ago   4.96GB
+ttl.sh/ubuntu   k3s-1.30.5-v4.6.12-demo_linux_amd64    80f451092b91   2 hours ago   4.96GB
+...
 ```
 
 ## Push Provider Images
@@ -388,14 +391,14 @@ ttl.sh/ubuntu   k3s-1.24.6-v4.1.2-demo_linux_amd64    6a56cdd58c0b   2 hours ago
 Push the provider images to the image registry indicated in the **.arg** file so that you can reference the provider
 image later in your cluster profile.
 
-Since we used the provider image compatible with K3s v1.27 in the cluster profile, you would use the following command
-to push the provider image compatible with K3s v1.27 to the image registry. If you want to use the other provider image,
+Since we used the provider image compatible with K3s v1.32 in the cluster profile, you would use the following command
+to push the provider image compatible with K3s v1.32 to the image registry. If you want to use the other provider image,
 push that version to the image registry. The example below and default behavior uses the [ttl.sh](https://ttl.sh/) image
 registry. This image registry is free and does not require you to sign up to use it. Images pushed to ttl.sh are
 ephemeral and will expire after 24 hours.
 
 ```bash
-docker push ttl.sh/ubuntu:k3s-1.27.2-v4.1.2-demo
+docker push ttl.sh/ubuntu:k3s-1.32.1-v4.6.12-demo
 ```
 
 :::warning
@@ -776,7 +779,7 @@ options:
   system.repo: ubuntu
   system.k8sDistribution: k3s
   system.osName: ubuntu
-  system.peVersion: v4.1.2
+  system.peVersion: v4.6.12
   system.customTag: demo
   system.osVersion: 22
 ```
@@ -797,7 +800,7 @@ Click on the **Next layer** button to add the following Kubernetes layer to your
 
 | **Pack Type** | **Registry** | **Pack Name**         | **Pack Version** |
 | ------------- | ------------ | --------------------- | ---------------- |
-| Kubernetes    | Public Repo  | Palette Optimized K3s | `1.27.2`         |
+| Kubernetes    | Public Repo  | Palette Optimized K3s | `1.32.1`         |
 
 The pack version must match the version pushed to the _ttl.sh_ image registry. The `system.uri` attribute of the BYOOS
 pack will reference the Kubernetes version you select using the `{{ .spectro.system.kubernetes.version }}`
@@ -924,32 +927,21 @@ In this section, you will use the Edge hosts to create the cluster nodes. Use on
 node and the remaining two as worker nodes. In this example, the control plane node is called the control plane pool,
 and the set of worker nodes is the worker pool.
 
-Provide the following details for the control plane pool.
+In the **CONTROL-PLANE POOL CONFIGURATION** section, under **Pool Configuration**, select **Add Edge Hosts**, and choose
+one of the registered Edge hosts. The screenshot below shows an Edge host added to the control plane pool.
 
-| **Field**                                             | **Value for the control-plane-pool**     |
-| ----------------------------------------------------- | ---------------------------------------- |
-| Node pool name                                        | control-plane-pool                       |
-| Allow worker capability                               | On                                       |
-| Additional Labels (Optional)                          | None                                     |
-| [Taints](../../clusters/cluster-management/taints.md) | Off                                      |
-| Pool Configuration > Edge Hosts                       | Choose one of the registered Edge hosts. |
+![Screenshot of an Edge host added to the control plane pool.](/tutorials/edge/tutorials_edge_deploy-cluster_add-control-node.webp)
 
-The screenshot below shows an Edge host added to the control plane pool.
+This tutorial does not require you to modify the default values of the **CONTROL-PLANE POOL CONFIGURATION** fields or
+configure the hosts.
 
-![Screenshot of an Edge host added to the control plane pool.](/tutorials/edge/clusters_edge_deploy-cluster_add-master-node.webp)
+In the **WORKER POOL CONFIGURATION** section, under **Pool Configuration**, select **Add Edge Hosts**, and choose the
+remaining two Edge hosts. The screenshot below shows two Edge hosts added to the worker pool.
 
-Similarly, provide details for the worker pool, and add the remaining two Edge hosts to the worker pool.
+![Screenshot of Edge hosts added to the worker pool.](/tutorials/edge/tutorials_edge_deploy-cluster_add-worker-nodes.webp)
 
-| **Field**                       | **Value for the worker-pool**             |
-| ------------------------------- | ----------------------------------------- |
-| Node pool name                  | worker-pool                               |
-| Additional Labels (Optional)    | None                                      |
-| Taints                          | Off                                       |
-| Pool Configuration > Edge Hosts | Choose one or more registered Edge hosts. |
-
-The screenshot below shows two Edge hosts added to the worker pool.
-
-![Screenshot of Edge hosts added to the worker pool.](/tutorials/edge/clusters_edge_deploy-cluster_add-worker-node.webp)
+This tutorial does not require you to modify the default values of the **WORKER POOL CONFIGURATION** fields or configure
+the hosts.
 
 Click **Next** to continue.
 
@@ -1046,20 +1038,23 @@ docker images
 Note the provider image name and tags, and use the following command syntax to remove all provider images.
 
 ```bash
-docker rmi ttl.sh/ubuntu:k3s-1.25.13-v4.1.2-demo
-docker rmi ttl.sh/ubuntu:k3s-1.25.13-v4.1.2-demo_linux_amd64
-docker rmi ttl.sh/ubuntu:k3s-1.26.8-v4.1.2-demo
-docker rmi ttl.sh/ubuntu:k3s-1.26.8-v4.1.2-demo_linux_amd64
-docker rmi ttl.sh/ubuntu:k3s-1.27.2-v4.1.2-demo
-docker rmi ttl.sh/ubuntu:k3s-1.27.2-v4.1.2-demo_linux_amd64
-docker rmi ttl.sh/ubuntu:k3s-1.26.4-v4.1.2-demo
-docker rmi ttl.sh/ubuntu:k3s-1.26.4-v4.1.2-demo_linux_amd64
-docker rmi ttl.sh/ubuntu:k3s-1.27.5-v4.1.2-demo
-docker rmi ttl.sh/ubuntu:k3s-1.27.5-v4.1.2-demo_linux_amd64
-docker rmi ttl.sh/ubuntu:k3s-1.25.2-v4.1.2-demo
-docker rmi ttl.sh/ubuntu:k3s-1.25.2-v4.1.2-demo_linux_amd64
-docker rmi ttl.sh/ubuntu:k3s-1.24.6-v4.1.2-demo
-docker rmi ttl.sh/ubuntu:k3s-1.24.6-v4.1.2-demo_linux_amd64
+docker rmi ttl.sh/ubuntu:k3s-1.32.1-v4.6.12-demo
+docker rmi ttl.sh/ubuntu:k3s-1.32.1-v4.6.12-demo_linux_amd64
+docker rmi ttl.sh/ubuntu:k3s-1.31.5-v4.6.12-demo
+docker rmi ttl.sh/ubuntu:k3s-1.31.5-v4.6.12-demo_linux_amd64
+docker rmi ttl.sh/ubuntu:k3s-1.31.4-v4.6.12-demo
+docker rmi ttl.sh/ubuntu:k3s-1.31.4-v4.6.12-demo_linux_amd64
+docker rmi ttl.sh/ubuntu:k3s-1.31.1-v4.6.12-demo
+docker rmi ttl.sh/ubuntu:k3s-1.31.1-v4.6.12-demo_linux_amd64
+docker rmi ttl.sh/ubuntu:k3s-1.30.9-v4.6.12-demo
+docker rmi ttl.sh/ubuntu:k3s-1.30.9-v4.6.12-demo_linux_amd64
+docker rmi ttl.sh/ubuntu:k3s-1.30.8-v4.6.12-demo
+docker rmi ttl.sh/ubuntu:k3s-1.30.8-v4.6.12-demo_linux_amd64
+docker rmi ttl.sh/ubuntu:k3s-1.30.6-v4.6.12-demo
+docker rmi ttl.sh/ubuntu:k3s-1.30.6-v4.6.12-demo_linux_amd64
+docker rmi ttl.sh/ubuntu:k3s-1.30.5-v4.6.12-demo
+docker rmi ttl.sh/ubuntu:k3s-1.30.5-v4.6.12-demo_linux_amd64
+...
 ```
 
 ### Delete VMware vSphere Resources
