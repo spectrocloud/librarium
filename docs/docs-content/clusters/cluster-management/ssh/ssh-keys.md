@@ -30,4 +30,4 @@ you need a public SSH key registered in Palette.
 
 You can validate that the SSH public key is available in Palette by attempting to deploy a host cluster. During the host
 cluster creation wizard, you will be able to assign the SSH key to the cluster. Refer to the
-[Deploy a Cluster](../../public-cloud/deploy-k8s-cluster.md) tutorial for additional guidance.
+[Getting Started](/getting-started/) tutorials for additional guidance.

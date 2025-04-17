@@ -21,7 +21,7 @@ Central and allows Palette to monitor Nutanix clusters.
 ## Get Started
 
 Learn how to deploy a cluster to Nutanix by using Palette. Check out the
-[Deploy a Cluster with Palette](../../public-cloud/deploy-k8s-cluster.md) tutorial to get started.
+[Deploy a Cluster with Palette](/getting-started/) tutorials to get started.
 
 The section below describes the workflow to register Nutanix with Palette and deploy a cluster.
 
