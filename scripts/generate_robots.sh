@@ -8,6 +8,7 @@
 
 set -euo pipefail
 
+baseDir="$PWD"
 versionFile=$1
 destinationFolder=$2
 
@@ -19,6 +20,10 @@ echo "Disallowed versions: ${disallowed_versions[@]}"
 
 # Create or truncate the robots.txt file
 : > robots.txt
+
+# Add content to block AI bots
+cat $baseDir/scripts/ai_robots.txt >> robots.txt
+echo "" >> robots.txt
 
 # Append User-agent statement to the robots.txt file
 echo "User-agent: *" >> robots.txt
