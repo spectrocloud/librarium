@@ -50,9 +50,8 @@ selected in the Kubernetes layer of the infrastructure profile.
 
 6. Once you have made the necessary changes, click **Confirm Updates** and **Save Changes** to conclude the update.
 
-7. Deploy a cluster using the updated infrastructure profile. Refer to the
-   [Deploy a Cluster](../../tutorials/cluster-deployment/public-cloud/deploy-k8s-cluster.md) tutorial for instructions
-   on how to deploy a cluster.
+7. Deploy a cluster using the updated infrastructure profile. Refer to the [Getting Started](/getting-started/)
+   tutorials for instructions on how to deploy a cluster.
 
 8. Once the cluster is listed as **Healthy**, attach the VMO add-on profile to your cluster. Refer to the
    [Attach an Add-on Profile](../../clusters/imported-clusters/attach-add-on-profile.md) guide for instructions.
