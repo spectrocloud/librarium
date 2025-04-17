@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## April 12, 2025 - Release 4.6.X {#release-notes-4.6.b}
+## April 19, 2025 - Release 4.6.20 {#release-notes-4.6.b}
 
 ### Security Notices
 
@@ -22,34 +22,58 @@ tags: ["release-notes"]
 #### Breaking Changes {#breaking-changes-4.6.b}
 
 - New Cluster Groups will now default to a newer version of vCluster,
-  [version 0.22.x](https://loft.featurebase.app/changelog/vcluster-v022-native-sleep-mode-and-cert-manager-integration),
-  which includes new features and improvements. Existing Cluster Groups will continue to use older versions. If you want
-  to use a later version of vCluster, refer to the
+  [version 0.22.x](https://github.com/loft-sh/vcluster/releases), which includes new features and improvements. Existing
+  Cluster Groups will continue to use older versions. If you want to use a later version of vCluster, refer to the
   [Palette Virtual Clusters](../clusters/palette-virtual-clusters/palette-virtual-clusters.md#upgrade-virtual-clusters)
   page to learn how to migrate your virtual cluster workloads.
 
-#### Features
-
 #### Improvements
 
+- Palette and VerteX emails have been redesigned to ensure consistency and improve accessibility. The updates have been
+  applied to sign-up, login, password reset, and billing update emails.
+
 #### Deprecations and Removals
+
+- Palette no longer integrates with the [libvirt](https://libvirt.org/) virtualization API. Support has been removed
+  across various components including the Palette UI, Terraform providers, the user interface, and packs.
 
 ### Edge
 
 #### Features
 
+<!-- prettier-ignore -->
+- <TpBadge /> Palette now allows the configuration of an in-cluster primary registry that stores the images required for
+  cluster deployment. Any OCI-compliant registry can be configured as the primary registry. Palette offers
+  out-of-the-box support for Zot and Harbor registries with minimum configuration required. 
+  Refer to [Deploy Cluster with Primary Registry](../clusters/edge/site-deployment/deploy-custom-registries/deploy-primary-registry.md) for
+  further information.
+- The [Palette CLI](../automation/palette-cli/palette-cli.md) has a new `content` command that supports the creation of
+  [content bundles](../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md). This command provides
+  the ability to create bundles directly from the command-line. Refer to the
+  [Content](../automation/palette-cli/commands/content.md) command reference page for further information.
+
 #### Improvements
 
-#### Bug Fixes
+- [Local UI](../clusters/edge/local-ui/local-ui.md) has been updated with a new color scheme and logo. These new
+  elements are displayed across the entire product interface. Check out the
+  [Welcome to the fold: meet the new Spectro Cloud brand](https://www.spectrocloud.com/blog/meet-the-new-spectro-cloud-brand)
+  blog post to learn more.
+
+#### Deprecations and Removals
+
+- The `harbor-edge-native-config` pack has been deprecated. You need to use the new `registry-connect` and `harbor`
+  packs to implement the Harbor registry. This allows you to keep your system up to date with the latest upstream
+  updates. Refer to
+  [Migrate from Harbor Edge-Native Config Pack](../clusters/edge/site-deployment/deploy-custom-registries/migrate-edge-native-config.md)
+  for further details.
 
 ### Palette Dev Engine (PDE)
 
 #### Features
 
 - New Cluster Groups will now default to a newer version of vCluster,
-  [version 0.22.x](https://loft.featurebase.app/changelog/vcluster-v022-native-sleep-mode-and-cert-manager-integration),
-  which includes new features and improvements. Existing Cluster Groups will continue to use older versions. If you want
-  to use a later version of vCluster, refer to the
+  [version 0.22.x](https://github.com/loft-sh/vcluster/releases), which includes new features and improvements. Existing
+  Cluster Groups will continue to use older versions. If you want to use a later version of vCluster, refer to the
   [Palette Virtual Clusters](../clusters/palette-virtual-clusters/palette-virtual-clusters.md#upgrade-virtual-clusters)
   page to learn how to migrate your virtual cluster workloads.
 
@@ -78,7 +102,37 @@ compatible version of the Palette CLI.
 
 #### Features
 
+- The [Palette CLI](../automation/palette-cli/palette-cli.md) has a new `content` command that supports the creation of
+  [content bundles](../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md). This command provides
+  the ability to create bundles directly from the command-line. Refer to the
+  [Content](../automation/palette-cli/commands/content.md) command reference page for further information.
+- Terraform version 0.23.5 of the
+  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
+  available. For more details, refer to the Terraform provider
+  [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
+- A new Terraform resource, `spectrocloud_sso resource`, is now available for enforcing
+  [Single Sign-On (SSO)](../user-management/saml-sso/saml-sso.md) in Palette. For more information, refer to the Spectro
+  Cloud Terraform provider
+  [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
+
 #### Improvements
+
+- The performance of Palette APIs has been improved, resulting in increased
+  [API rate limits](/api/introduction/#rate-limits) for component events and optimized platform updates.
+- The `spectrocloud_pack` Terraform data source now supports filtering based on pack type, add-on type, pack layer, and
+  environment. For more information, refer to the Spectro Cloud Terraform provider
+  [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
+- The `spectrocloud_cluster_eks` Terraform resource now supports the specification of availability zones and subnets.
+  For more information, refer to the Spectro Cloud Terraform provider
+  [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
+
+### Virtual Machine Orchestrator (VMO)
+
+#### Improvements
+
+- The user interface and messaging for virtual machine topology has been improved to indicate the sockets, cores, and
+  threads of the machine vCPU. Refer to the
+  [Manage CPU and Memory](../vm-management/create-manage-vm/enable-cpu-hotplug.md) guide for further details.
 
 ### Docs and Education
 
@@ -89,39 +143,80 @@ compatible version of the Palette CLI.
 
 ### Packs
 
-#### Pack Notes
-
-#### OS
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
 #### Kubernetes
 
-| Pack Name | New Version |
-| --------- | ----------- |
+| Pack Name                                  | New Version |
+| ------------------------------------------ | ----------- |
+| Palette Optimized K3s                      | 1.32.2      |
+| Palette Optimized K3s                      | 1.31.6      |
+| Palette Optimized K3s                      | 1.30.10     |
+| Palette Optimized K3s                      | 1.29.14     |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.32.2      |
+| Palette Optimized RKE2                     | 1.32.2      |
+| Palette Optimized RKE2                     | 1.31.6      |
+| Palette Optimized RKE2                     | 1.30.10     |
+| Palette Optimized RKE2                     | 1.29.14     |
+| RKE2                                       | 1.32.2      |
+| RKE2                                       | 1.31.6      |
+| RKE2                                       | 1.30.10     |
+| RKE2                                       | 1.29.14     |
 
 #### CNI
 
 | Pack Name | New Version |
 | --------- | ----------- |
+| Cilium    | 1.17.1      |
 
 #### CSI
 
-| Pack Name | New Version |
-| --------- | ----------- |
+| Pack Name               | New Version |
+| ----------------------- | ----------- |
+| Amazon EBS CSI          | 1.41.0      |
+| Amazon EFS              | 2.1.6       |
+| Azure Disk CSI          | 1.32.0      |
+| GCE Persistent Disk CSI | 1.15.4      |
+| Portworx /w Operator    | 3.2.2       |
 
 #### Add-on Packs
 
-| Pack Name | New Version |
-| --------- | ----------- |
+| Pack Name              | New Version |
+| ---------------------- | ----------- |
+| Argo CD                | 7.8.8       |
+| AWS Cluster Autoscaler | 1.32.0      |
+| Amazon EFS             | 2.1.6       |
+| Calico Network Policy  | 1.15.3      |
+| Istio                  | 1.24.3      |
+| Nginx                  | 1.15.3      |
+| Nginx                  | 1.12.1      |
+| Open Policy Agent      | 3.18.2      |
+| Portworx /w Operator   | 3.2.2       |
+| Spectro Proxy          | 1.5.6       |
+| Registry Connect       | 0.1.0       |
 
 #### FIPS Packs
 
-| Pack Name | New Version |
-| --------- | ----------- |
+| Pack Name                                  | New Version |
+| ------------------------------------------ | ----------- |
+| Amazon EBS CSI                             | 1.41.0      |
+| Azure Disk CSI                             | 1.32.0      |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.32.2      |
+| Palette Optimized RKE2                     | 1.32.2      |
+| Palette Optimized RKE2                     | 1.31.6      |
+| Palette Optimized RKE2                     | 1.30.10     |
+| Palette Optimized RKE2                     | 1.29.14     |
+| RKE2                                       | 1.32.2      |
+| RKE2                                       | 1.31.6      |
+| RKE2                                       | 1.30.10     |
+| RKE2                                       | 1.29.14     |
 
 #### Deprecations and Removals
+
+- The packs `ubuntu-libvirt`, `generic-vm-libvirt`, `centos-libvirt`, and `pfsense-vm-libvirt` have been removed.
+- The `harbor-edge-native-config` pack has been deprecated. You need to use the `registry-connect` and `harbor` packs to
+  implement the Harbor registry. This allows you to keep your system up to date with the latest upstream updates. Refer
+  to
+  [Migrate from Harbor Edge-Native Config Pack](../clusters/edge/site-deployment/deploy-custom-registries/migrate-edge-native-config.md)
+  for further details.
 
 ## April 3, 2025 - Automation Updates
 
