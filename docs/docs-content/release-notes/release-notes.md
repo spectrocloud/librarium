@@ -34,8 +34,8 @@ tags: ["release-notes"]
 
 #### Deprecations and Removals
 
-- Palette no longer supports Edge virtual clusters. Several components no longer integrate with the
-  [libvirt](https://libvirt.org/) virtualization API, including the Palette UI, Terraform providers, the user interface,
+- Palette no longer integrates with the
+  [libvirt](https://libvirt.org/) virtualization API. Support has been removed across various components including the Palette UI, Terraform providers, the user interface,
   and packs.
 
 ### Edge
@@ -206,9 +206,8 @@ compatible version of the Palette CLI.
 
 #### Deprecations and Removals
 
-- The packs `ubuntu-libvirt`, `generic-vm-libvirt`, `centos-libvirt`, and`pfsense-vm-libvirt` have been removed. Palette
-  no longer supports Edge virtual clusters.
-- The `harbor-edge-native-config` pack has been deprecated. You need to use the `registry-connect and `harbor` packs to
+- The packs `ubuntu-libvirt`, `generic-vm-libvirt`, `centos-libvirt`, and `pfsense-vm-libvirt` have been removed.
+- The `harbor-edge-native-config` pack has been deprecated. You need to use the `registry-connect` and `harbor` packs to
   implement the Harbor registry. This allows you to keep your system up to date with the latest upstream updates. Refer
   to
   [Migrate from Harbor Edge-Native Config Pack](../clusters/edge/site-deployment/deploy-custom-registries/migrate-edge-native-config.md)
