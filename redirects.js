@@ -759,6 +759,14 @@ let redirects = [
     ],
     to: "/security-bulletins/reports/",
   },
+  {
+    from: "/tutorials/cluster-management/public-cloud/deploy-k8s-cluster/",
+    to: "/getting-started/",
+  },
+  {
+    from: "/clusters/public-cloud/deploy-k8s-cluster/",
+    to: "/getting-started/",
+  },
 ];
 
 if (packRedirects.length > 0) {
