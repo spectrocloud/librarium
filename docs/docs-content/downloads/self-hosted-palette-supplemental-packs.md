@@ -2,9 +2,10 @@
 sidebar_label: "Self-Hosted Palette Additional Packs"
 title: "Self-Hosted Palette Additional Packs"
 description: "Learn how to install additional packs for an airgap Self-Hosted Palette install."
-icon: ""
 sidebar_position: 30
 hide_table_of_contents: false
+sidebar_custom_props:
+  icon: "nodes"
 tags: ["palette", "self-hosted", "airgap"]
 keywords: ["self-hosted", "enterprise"]
 ---
@@ -131,8 +132,8 @@ Review the following table to determine which pack binaries you need to download
 
 ## Additional Deployment Options
 
-Palette [Virtual Machine Orchestrator](../../../vm-management/vm-management.md) (VMO) and
-[Virtual Clusters](../../../clusters/palette-virtual-clusters/palette-virtual-clusters.md) can also be installed for
+Palette [Virtual Machine Orchestrator](../vm-management/vm-management.md) (VMO) and
+[Virtual Clusters](../clusters/palette-virtual-clusters/palette-virtual-clusters.md) can also be installed for
 airgapped self-hosted instances of Palette and Palette VerteX.
 
 | File Name                                            | URL                                                                                                       |
@@ -144,7 +145,7 @@ airgapped self-hosted instances of Palette and Palette VerteX.
 
 You must SSH into your Palette airgap support VM to download and install the binary. You must also provide the username
 and password for the support team's private repository. Reach out to our support team to
-[obtain the credentials](../../enterprise-version.md#access-palette).
+[obtain the credentials](../enterprise-version/enterprise-version.md#access-palette).
 
 The following example shows how to download the `airgap-pack-aws-alb-2.5.1.bin` binary. Replace `XXXX` with your
 username and `YYYY` with your password.
@@ -211,7 +212,7 @@ All binaries require the OCI environment variables to be set and for the registr
 ## Conformance Capabilities
 
 In an airgap installation, you need to upload the conformance packs to the self-hosted OCI registry. The conformance
-binary contains the packs required to use the [Compliance Scan](../../../clusters/cluster-management/compliance-scan.md)
+binary contains the packs required to use the [Compliance Scan](../clusters/cluster-management/compliance-scan.md)
 capabilities. The conformance binary can be found in the pack table above. The binary has the prefix
 `airgap-thirdparty-`. Follow the [Usage Instructions](#usage-instructions) to upload the conformance packs to the OCI
 registry.

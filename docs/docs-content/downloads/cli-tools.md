@@ -1,20 +1,15 @@
 ---
-sidebar_label: "Palette CLI"
-title: "Palette CLI"
-description: "Overview of Palette CLI downloads and their respective URL and checksums."
+sidebar_label: "CLI Tools"
+title: "CLI Tools"
+description: "Overview of the CLI tool downloads and their respective URL and checksums."
 hide_table_of_contents: false
 sidebar_position: 10
+sidebar_custom_props:
+  icon: "terminal"
 tags: ["downloads"]
 ---
 
-The following Palette downloads are available:
-
-## Self-Hosted
-
-You can deploy a self-hosted Palette to your environment. Refer to the
-[Self-Hosted Installation](../enterprise-version/install-palette/) documentation for additional guidance
-on how to install Palette. Palette VerteX installation guide can be found in the
-[Palette VerteX install](../vertex/install-palette-vertex/) document.
+The following sections provide links to download the available CLI tools related to Palette and Spectro Cloud.
 
 ## Palette CLI
 
@@ -42,3 +37,31 @@ the [Palette CLI](../automation/palette-cli/) document for installation guidance
 | 4.5.7                               | [Linux-amd64](https://software.spectrocloud.com/stylus/v4.5.7/cli/linux/palette-edge)  | `abbceb9844991fc70af1e7967095873583c7f8aba549583cfc27d22f1e0819b1` |
 | 4.5.5                               | [Linux-amd64](https://software.spectrocloud.com/stylus/v4.5.5/cli/linux/palette-edge)  | `f93382a7ab92e9621f47d857252c2673b33de79735cf729fcb4b2fb24719d537` |
 | 4.5.3                               | [Linux-amd64](https://software.spectrocloud.com/stylus/v4.5.3/cli/linux/palette-edge)  | `9008f77d11b0129c35d2c9da6bb29a09ca6bc63ffa27d828996d30ac4c853c28` |
+
+## Spectro Cloud CLI Tool
+
+The Spectro CLI tool is currently available for OSX and Linux. Download the CLI file for your operating system.
+
+<Tabs>
+
+<TabItem label="OSX" value="osx_cli">
+
+<!-- spectro-cli-osx-install -->
+
+```bash
+wget https://spectro-cli.s3.amazonaws.com/v4.6.0/osx/spectro
+```
+
+</TabItem>
+
+<TabItem label="Linux" value="linux_cli">
+
+<!-- spectro-cli-linux-install -->
+
+```bash
+wget https://spectro-cli.s3.amazonaws.com/v4.6.0/linux/spectro
+```
+
+</TabItem>
+
+</Tabs>

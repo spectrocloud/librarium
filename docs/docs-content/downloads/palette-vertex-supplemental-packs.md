@@ -2,9 +2,10 @@
 sidebar_label: "Palette VerteX Additional Packs"
 title: "Palette VerteX Additional Packs"
 description: "Learn how to install additional packs for an airgap Palette VerteX install."
-icon: ""
 sidebar_position: 40
 hide_table_of_contents: false
+sidebar_custom_props:
+  icon: "nodes"
 tags: ["vertex", "self-hosted", "airgap"]
 keywords: ["self-hosted", "vertex"]
 ---
@@ -86,19 +87,8 @@ Review the following table to determine which pack binaries you need to download
 
 ## Additional Deployment Options
 
-Palette [Virtual Machine Orchestrator](../../../vm-management/vm-management.md) (VMO) and
-[Virtual Clusters](../../../clusters/palette-virtual-clusters/palette-virtual-clusters.md) can also be installed for
-airgapped self-hosted instances of Palette and Palette VerteX.
-
-| File Name                                            | URL                                                                                                       |
-| ---------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| `airgap-pack-virtual-machine-orchestrator-4.5.7.bin` | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-virtual-machine-orchestrator-4.5.7.bin |
-| `airgap-pack-vcluster-4.5.10.bin`                    | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-vcluster-4.5.10.bin                    |
-
-## Additional Deployment Options
-
-Palette [Virtual Machine Orchestrator](../../../vm-management/vm-management.md) (VMO) and
-[Virtual Clusters](../../../clusters/palette-virtual-clusters/palette-virtual-clusters.md) can also be installed for
+Palette [Virtual Machine Orchestrator](../vm-management/vm-management.md) (VMO) and
+[Virtual Clusters](../clusters/palette-virtual-clusters/palette-virtual-clusters.md) can also be installed for
 airgapped self-hosted instances of Palette and Palette VerteX.
 
 | File Name                                            | URL                                                                                                       |
@@ -110,7 +100,7 @@ airgapped self-hosted instances of Palette and Palette VerteX.
 
 You must SSH into your Palette VerteX airgap support VM to download and install the binary. You must also provide the
 username and password for the support team's private repository. Reach out to our support team to
-[obtain the credentials](../../vertex.md#access-palette-vertex).
+[obtain the credentials](../vertex/vertex.md#access-palette-vertex).
 
 The following example shows how to download the `airgap-vertex-pack-cni-calico-3.25.1.bin` binary. Replace `XXXX` with
 your username and `YYYY` with your password.
@@ -177,7 +167,7 @@ All binaries require the OCI environment variables to be set and for the registr
 ## Conformance Capabilities
 
 In an airgap installation, you need to upload the conformance packs to the self-hosted OCI registry. The conformance
-binary contains the packs required to use the [Compliance Scan](../../../clusters/cluster-management/compliance-scan.md)
+binary contains the packs required to use the [Compliance Scan](../clusters/cluster-management/compliance-scan.md)
 capabilities. The conformance binary can be found in the pack table above. The binary has the prefix
 `airgap-thirdparty-`. Follow the [Usage Instructions](#usage-instructions) to upload the conformance packs to the OCI
 registry.

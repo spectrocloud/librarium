@@ -5,7 +5,7 @@ description: "Learn what Palette components are compatible with what versions."
 hide_table_of_contents: false
 sidebar_position: 11
 sidebar_custom_props:
-  icon: "audits"
+  icon: "terminal"
 tags: ["components"]
 ---
 
