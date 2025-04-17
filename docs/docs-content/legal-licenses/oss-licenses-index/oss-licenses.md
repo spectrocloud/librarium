@@ -211,7 +211,6 @@ The following table lists the open source licenses tied to the libraries and mod
 | github.com/pkg/errors                                                                      | [BSD-2-Clause](https://opensource.org/license/bsd-2-clause) |
 | github.com/pmezard/go-difflib                                                              | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause) |
 | github.com/prometheus/client_golang                                                        | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
-| github.com/prometheus/client_golang                                                        | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/prometheus/client_model                                                         | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/prometheus/common                                                               | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | github.com/prometheus/procfs                                                               | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
@@ -296,10 +295,8 @@ The following table lists the open source licenses tied to the libraries and mod
 | k8s.io/api                                                                                 | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | k8s.io/apiextensions-apiserver                                                             | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | k8s.io/apimachinery                                                                        | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
-| k8s.io/apimachinery                                                                        | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | k8s.io/apiserver                                                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | k8s.io/cli-runtime                                                                         | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
-| k8s.io/client-go                                                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | k8s.io/client-go                                                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | k8s.io/cloud-provider                                                                      | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | k8s.io/component-base                                                                      | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
@@ -329,7 +326,6 @@ The following table lists the open source licenses tied to the libraries and mod
 | sigs.k8s.io/controller-runtime                                                             | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | sigs.k8s.io/json                                                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | sigs.k8s.io/structured-merge-diff/v4                                                       | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
-| sigs.k8s.io/yaml                                                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 | sigs.k8s.io/yaml                                                                           | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)   |
 
 <!-- vale on -->
