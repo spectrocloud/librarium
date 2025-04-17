@@ -36,7 +36,7 @@ up Keycloak as an OIDC provider for Palette.
 
   You can deploy a Kubernetes cluster in a public cloud with load balancer resources using Palette. You can also deploy
   to an on-prem or edge environment and use the MetalLB pack to expose a load balancer service. Check out the
-  [Deploy a Cluster](../../clusters/public-cloud/deploy-k8s-cluster.md) guide for more information.
+  [Getting Started](/getting-started/) tutorials for more information.
 
   :::
 
