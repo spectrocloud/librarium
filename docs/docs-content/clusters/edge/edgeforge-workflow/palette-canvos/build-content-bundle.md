@@ -50,14 +50,14 @@ bundles or export cluster definitions. You must use the Palette Edge CLI.
 
 Refer to
 [Migrate From Harbor Edge-Native Config Pack](../../site-deployment/deploy-custom-registries/migrate-edge-native-config.md)
-to learn how to migrate off the legacy pack to **Registry Connect** pack. This pack does not require a local Harbor
+to learn how to migrate from the legacy pack to the **Registry Connect** pack. The **Registry Connect** pack does not require a local Harbor
 registry.
 
 :::
 
 <!-- prettier-ignore-start -->
 - You can configure built-in registry packs or your own custom OCI registry. Both configurations require the **Registry
-  Connect** pack. Built-in registries must be configured using either <VersionedLink text="Harbor" url="/integrations/packs/?pack=harbor" /> pack or the <VersionedLink text="Zot" url="/integrations/packs/?pack=zot" /> pack. Custom registries allow you to configure [custom packs](../../../../registries-and-packs/add-custom-packs.md). For more information, refer to [Deploy Cluster with External Registry](../../site-deployment/deploy-custom-registries/deploy-external-registry.md)
+  Connect** pack. Built-in registries must be configured using either the <VersionedLink text="Harbor" url="/integrations/packs/?pack=harbor" /> pack or the <VersionedLink text="Zot" url="/integrations/packs/?pack=zot" /> pack. Custom registries allow you to configure [custom packs](../../../../registries-and-packs/add-custom-packs.md). For more information, refer to [Deploy Cluster with External Registry](../../site-deployment/deploy-custom-registries/deploy-external-registry.md)
   and [Deploy with Primary Registry](../../site-deployment/deploy-custom-registries/deploy-primary-registry.md).
 
 <!-- prettier-ignore-end -->
