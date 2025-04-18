@@ -425,7 +425,7 @@ official tutorials container that already contains the required tools. <br />
 
 ### Create a VM Template
 
-You will use the `heredoc` script to create a VM template. The script prompts you to enter your VMWare vCenter
+You will use the `heredoc` script to create a VM template. The script prompts you to enter your VMware vCenter
 environment details and saves them as environment variables in a file named **.packerenv**. Packer reads the environment
 variables during the build process.
 

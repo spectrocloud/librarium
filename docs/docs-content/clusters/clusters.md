@@ -230,9 +230,9 @@ stream is a good source for identifying issues in the event an operation does no
 
 At times, you may be required to work with the Palette Support Team to troubleshoot an issue. Palette provides the
 ability to gather logs from the clusters it manages. Problems that occur during the orchestration lifecycle, may require
-access to the various containers, nodes, and system logs. Palette automates this log-collection process and provides an
-easy download option from the Palette UI console. Hence, it reduces the burden on the operator to log in to various
-cluster nodes individually and fetch these logs. <br />
+access to the various containers, nodes, and system logs. Palette automates this log-collection process and provides a
+download option from the Palette UI console. Hence, it reduces the burden on the operator to log in to various cluster
+nodes individually and fetch these logs. <br />
 
 ### Collect the Logs
 
