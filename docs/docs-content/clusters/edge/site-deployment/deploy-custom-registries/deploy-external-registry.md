@@ -127,31 +127,31 @@ bandwidth use and protect against outages. For more information, refer to
     ```yaml
     #cloud-config
     stylus:
-    externalRegistries:
-      registries:
-      - domain: "10.10.254.254:8000/spectro-images"
-        username: "admin"
-        password: ***************
-        repositoryName: "example-repository-private"
-        certificates: |
-          -----BEGIN CERTIFICATE-----
-          MIIDBzCCAe+gAwIBAgIJAJzQ
-          ...
-          -----END CERTIFICATE-----
-      - domain: "10.10.11.60:3899/security-images"
-        username: "projectAdmin2"
-        password: "***************"
-        repositoryName: security-images
-        certificates: |
-          -----BEGIN CERTIFICATE-----
-          MIIDBzCCAe+gAwIBAgIJAJzQ
-          ...
-          -----END CERTIFICATE-----
-    registryMappingRules:
-      "us-east1-docker.pkg.dev/spectro-images/daily": "example.registry.com/internal-images"
-      "us-docker.pkg.dev/palette-images": "example.registry.com/internal-images"
-      "grc.io/spectro-dev-public": "example.registry.com/internal-images"
-      "grc.io/spectro-images-public": "example.registry.com/internal-images"
+      externalRegistries:
+        registries:
+        - domain: "10.10.254.254:8000/spectro-images"
+          username: "admin"
+          password: ***************
+          repositoryName: "example-repository-private"
+          certificates: |
+            -----BEGIN CERTIFICATE-----
+            MIIDBzCCAe+gAwIBAgIJAJzQ
+            ...
+            -----END CERTIFICATE-----
+        - domain: "10.10.11.60:3899/security-images"
+          username: "projectAdmin2"
+          password: "***************"
+          repositoryName: security-images
+          certificates: |
+            -----BEGIN CERTIFICATE-----
+            MIIDBzCCAe+gAwIBAgIJAJzQ
+            ...
+            -----END CERTIFICATE-----
+        registryMappingRules:
+          "us-east1-docker.pkg.dev/spectro-images/daily": "example.registry.com/internal-images"
+          "us-docker.pkg.dev/palette-images": "example.registry.com/internal-images"
+          "grc.io/spectro-dev-public": "example.registry.com/internal-images"
+          "grc.io/spectro-images-public": "example.registry.com/internal-images"
     ```
     Refer to [Installer Configuration](../../edge-configuration/installer-reference.md#multiple-external-registries) for a
     description of each field.
