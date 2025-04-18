@@ -43,12 +43,24 @@ Creating a content bundle provides several benefits that may address common use 
 
 ## Limitation
 
-- You cannot use content bundles with an external registry if you do not enable the local Harbor registry on your Edge
-  host. If you specify a external registry without enabling the local Harbor registry, the images will be downloaded
-  from the external registry even if you provide a content bundle, and deployment will fail if the necessary images
-  cannot be located in the external registry. For more information, refer to
-  [Deploy Cluster with External Registry](../../site-deployment/deploy-custom-registries/deploy-external-registry.md)
+:::warning
+
+If your cluster uses the legacy **Harbor Edge-Native Config** pack, you cannot use the Palette CLI to build content
+bundles or export cluster definitions. You must use the Palette Edge CLI.
+
+Refer to
+[Migrate From Harbor Edge-Native Config Pack](../../site-deployment/deploy-custom-registries/migrate-edge-native-config.md)
+to learn how to migrate from the legacy pack to the **Registry Connect** pack.
+
+:::
+
+<!-- prettier-ignore-start -->
+- You can configure built-in registry packs or your own custom OCI registry. Both configurations require the **Registry
+  Connect** pack. The **Registry Connect** pack does not
+require a local Harbor registry. Built-in registries must be configured using either the <VersionedLink text="Harbor" url="/integrations/packs/?pack=harbor" /> pack or the <VersionedLink text="Zot" url="/integrations/packs/?pack=zot" /> pack. Custom registries allow you to configure [custom packs](../../../../registries-and-packs/add-custom-packs.md). For more information, refer to [Deploy Cluster with External Registry](../../site-deployment/deploy-custom-registries/deploy-external-registry.md)
   and [Deploy with Primary Registry](../../site-deployment/deploy-custom-registries/deploy-primary-registry.md).
+
+<!-- prettier-ignore-end -->
 
 - Edge content bundles created with Edge CLI version greater than `4.5.5`, are incompatible with Palette agent versions
   before `4.5.4` due to a new format schema. If you are using an older version of the Palette agent, use the Edge CLI
@@ -58,13 +70,6 @@ Creating a content bundle provides several benefits that may address common use 
 - Content bundles built with the Palette Edge CLI versions earlier than `4.5.20` cannot be used to provision multi-node
   clusters. Download the latest version of the Palette Edge CLI from the
   [Downloads](../../../../spectro-downloads.md#palette-edge-cli) page to build the content bundle instead.
-
-- If your cluster uses the legacy **Harbor Edge-Native Config** pack, you cannot use the Palette CLI to build content
-  bundles or export cluster definitions. You must use the Palette Edge CLI.
-
-  Refer to
-  [Migrate From Harbor Edge-Native Config Pack](../../site-deployment/deploy-custom-registries/migrate-edge-native-config.md)
-  to learn how to migrate off the legacy pack to **Registry Connect** pack.
 
 ## Prerequisites
 
