@@ -50,8 +50,8 @@ bundles or export cluster definitions. You must use the Palette Edge CLI.
 
 Refer to
 [Migrate From Harbor Edge-Native Config Pack](../../site-deployment/deploy-custom-registries/migrate-edge-native-config.md)
-to learn how to migrate from the legacy pack to the **Registry Connect** pack. The **Registry Connect** pack does not require a local Harbor
-registry.
+to learn how to migrate from the legacy pack to the **Registry Connect** pack. The **Registry Connect** pack does not
+require a local Harbor registry.
 
 :::
 
