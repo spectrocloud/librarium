@@ -469,3 +469,11 @@ reach-system:
     ca_crt_path: ""
   scheduleOnControlPlane: true
 ```
+
+:::info
+
+Due to node affinity configurations, you must set `scheduleOnControlPlane: false` for managed clusters deployed to
+[Azure AKS](../../../clusters/public-cloud/azure/aks.md), [AWS EKS](../../../clusters/public-cloud/aws/eks.md), and
+[GCP GKE](../../../clusters/public-cloud/gcp/create-gcp-gke-cluster.md).
+
+:::

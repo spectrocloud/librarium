@@ -49,9 +49,9 @@ management.
 
   :::warning
 
-  Content bundles must be built with a Palette Edge CLI version that is later than `4.5.7`. Visit the
-  [Downloads](../../../../spectro-downloads.md#palette-edge-cli) page to download the appropriate version of the Palette
-  Edge CLI to build the content bundle.
+  Content bundles must be built with a Palette Edge CLI version later than `4.5.7`, or a Palette CLI version `4.6.3` or
+  later. Visit the [Downloads](../../../../spectro-downloads.md#palette-edge-cli) page to download the appropriate
+  version of the CLI to build the content bundle.
 
   :::
 
@@ -75,7 +75,7 @@ management.
 1. Log in to Local UI by visiting the 5080 port of your Edge device's IP address or domain name. For more information,
    refer to [Access Local UI](../host-management/access-console.md).
 
-2. From the left **Main Menu**, click **Cluster**.
+2. From the left main menu, click **Cluster**.
 
 3. Click **Create cluster**.
 
