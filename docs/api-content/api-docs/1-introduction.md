@@ -225,7 +225,7 @@ The API rate limits are as follows:
 | /v1/edgehosts/registers                                                                 | 10                     | 5              | 50                 |
 | /v1/errlogs                                                                             | 10                     | 5              | 50                 |
 | /v1/events                                                                              | 10                     | 5              | 50                 |
-| /v1/events/components                                                                   | 10                     | 5              | 50                 |
+| /v1/events/components                                                                   | 50                     | 5              | 250                |
 | /v1/files                                                                               | 10                     | 5              | 50                 |
 | /v1/git/webhook                                                                         | 10                     | 5              | 50                 |
 | /v1/health                                                                              | 10                     | 5              | 50                 |

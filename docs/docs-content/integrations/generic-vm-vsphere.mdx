@@ -305,20 +305,3 @@ files:
 
 </TabItem>
 </Tabs>
-
-## Terraform
-
-You can retrieve details about the Generic-VM-Libvirt pack by using the following Terraform code.
-
-```hcl
-data "spectrocloud_registry" "public_registry" {
-  name = "Public Repo"
-}
-
-data "spectrocloud_pack_simple" "gatekeeper" {
-  name    = "generic-vm-vsphere"
-  version = "1.0.10"
-  type = "helm"
-  registry_uid = data.spectrocloud_registry.public_registry.id
-}
-```

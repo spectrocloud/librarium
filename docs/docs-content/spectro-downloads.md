@@ -25,6 +25,7 @@ the [Palette CLI](./automation/palette-cli/palette-cli.md) document for installa
 
 | Version <!-- palette-cli-version-table --> | Operating System                                                                      | Checksum (SHA256)                                                  |
 | ------------------------------------------ | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| <!-- palette-cli-4.6.b --> 4.6.5           | [Linux-amd64](https://software.spectrocloud.com/palette-cli/v4.6.5/linux/cli/palette) | `b56af3f083130ca0665e8c0a4f3e2d903572209f714a50f19c0110452122e28d` |
 | <!-- palette-cli-4.6.a --> 4.6.1           | [Linux-amd64](https://software.spectrocloud.com/palette-cli/v4.6.1/linux/cli/palette) | `db6da8dc1648b27ca8057fbbe3d95e7d371136f52395cef3dc3bd8ac62c287ae` |
 | 4.6.0                                      | [Linux-amd64](https://software.spectrocloud.com/palette-cli/v4.6.0/linux/cli/palette) | `07d63693a8c90483f6f000d4580cfd86f81178e4b96cfbd32e0f50955d57eec7` |
 | 4.5.7                                      | [Linux-amd64](https://software.spectrocloud.com/palette-cli/v4.5.7/linux/cli/palette) | `e37032f6aac7c15a54e6d2085021ae795669a292cf7a5993a945592b8b8c0d9e` |
@@ -36,6 +37,7 @@ the [Palette CLI](./automation/palette-cli/palette-cli.md) document for installa
 
 | Version <!-- edge-version-table --> | Operating System                                                                       | Checksum (SHA256)                                                  |
 | ----------------------------------- | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| <!-- edge-4.6.b --> 4.6.16          | [Linux-amd64](https://software.spectrocloud.com/stylus/v4.6.16/cli/linux/palette-edge) | `628c3668633943e9fd4b7859093948843d508494ec88b906f75aea9e80ec0f5f` |
 | <!-- edge-4.6.a --> 4.6.9           | [Linux-amd64](https://software.spectrocloud.com/stylus/v4.6.9/cli/linux/palette-edge)  | `e50a5533316e96c8b145d8e0c1e2b3e9958350d4aed61e8292cd31b4e7fb4196` |
 | 4.6.3                               | [Linux-amd64](https://software.spectrocloud.com/stylus/v4.6.3/cli/linux/palette-edge)  | `639d325659b369b8e71e00d36763b6088ac1932dbdbd105bdf3c63051cfd500b` |
 | 4.5.15                              | [Linux-amd64](https://software.spectrocloud.com/stylus/v4.5.15/cli/linux/palette-edge) | `5265133de8b204b6569b559a895aa03514b42b3285640755ed29e23d812e21cb` |
