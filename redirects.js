@@ -642,6 +642,8 @@ let redirects = [
       "/integrations/ubuntu",
       "/integrations/vsphere-csi",
       "/integrations/ngrok",
+      "/integrations/generic-vm-libvirt",
+      "/integrations/ubuntu-libvirt",
     ],
     to: "/integrations/",
   },
