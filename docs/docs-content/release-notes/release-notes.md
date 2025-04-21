@@ -27,6 +27,12 @@ tags: ["release-notes"]
   [Palette Virtual Clusters](../clusters/palette-virtual-clusters/palette-virtual-clusters.md#upgrade-virtual-clusters)
   page to learn how to migrate your virtual cluster workloads.
 
+#### Bug Fixes
+
+- Fixed a bug where simultaneous updates to EKS logging and VPC config caused reconciliation failures due to API
+  limitations.
+- Fixed an issue in MAAS clusters where only the first node pool gets repaved when a full cluster repave is expected.
+
 #### Improvements
 
 - Palette and VerteX emails have been redesigned to ensure consistency and improve accessibility. The updates have been
