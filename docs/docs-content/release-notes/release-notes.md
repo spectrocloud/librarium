@@ -31,7 +31,7 @@ tags: ["release-notes"]
 
 - Fixed a bug where simultaneous updates to EKS logging and VPC config caused reconciliation failures due to API
   limitations.
-- Fixed an issue in MaaS clusters where only the first node pool gets repaved when a full cluster repave is expected.
+- Fixed an issue in MAAS clusters where only the first node pool gets repaved when a full cluster repave is expected.
 
 #### Improvements
 
