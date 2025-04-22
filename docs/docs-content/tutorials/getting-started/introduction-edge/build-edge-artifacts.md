@@ -15,15 +15,14 @@ process of building these artifacts is called
 Installer ISO and Provider Image artifacts.
 
 - Installer ISO: An ISO image that installs the Palette Edge agent onto the Edge host.
-- Provider Images: [Kairos-based](https://kairos.io/) images that include the operating system and the desired
-  Kubernetes versions. These images are used in the Operating System (OS) layer when creating an Edge cluster profile.
-  They install an immutable OS and the software dependencies compatible with the selected Kubernetes version during
-  cluster deployment.
+- Provider Images: [Kairos-based](https://kairos.io/) images that include the Operating System (OS) and the desired
+  Kubernetes versions. These images install an immutable OS and the software dependencies compatible with the selected
+  Kubernetes version during cluster deployment.
 
 This tutorial teaches you how to build the Edge artifacts required for your Edge deployment. After building the
 artifacts, you will move on to the next tutorial in this series, where you will learn how to use the Provider Images to
-create an Edge cluster profile. You will then use the Installer ISO to bootstrap the Edge installation on your host and
-use it as a node for deploying your first Edge cluster.
+create an Edge [cluster profile](../../../profiles/profiles.md). You will then use the Installer ISO to bootstrap the
+Edge installation on your host and use it as a node for deploying your first Edge cluster.
 
 The roadmap below outlines the sequence of tutorials to be followed.
 
@@ -41,8 +40,10 @@ To complete this tutorial, ensure the following prerequisites are in place.
   - 8 GB memory
   - 150 GB storage
 - The following software installed:
-  - [Docker Engine](https://docs.docker.com/engine/install/) with `sudo` privileges. Alternatively, you can install
+  - [Docker Engine](https://docs.docker.com/engine/install/) with
+    [`sudo`](https://docs.docker.com/engine/install/linux-postinstall/) privileges. Alternatively, you can install
     [Earthly](https://earthly.dev/), in which case you do not need `sudo` privileges.
+  - [jq](https://jqlang.org/download/), if you build the artifacts using the [script](#automate-edgeforge).
   - [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
 ## Define Arguments
@@ -61,10 +62,10 @@ Check the available Git tags.
 git tag
 ```
 
-Check out the latest available tag. This tutorial uses the tag **v4.6.12** as an example.
+Check out the latest available tag. This tutorial uses the tag **v4.6.9** as an example.
 
 ```
-git checkout v4.6.12
+git checkout v4.6.9
 ```
 
 EdgeForge leverages [Earthly](https://earthly.dev/) to build the Installer ISO and provider images artifacts. The
@@ -186,7 +187,7 @@ options:
   system.repo: ubuntu
   system.k8sDistribution: k3s
   system.osName: ubuntu
-  system.peVersion: v4.6.12
+  system.peVersion: v4.6.9
   system.customTag: gs-tutorial
   system.osVersion: 22.04
 ```
@@ -210,7 +211,7 @@ docker images --filter=reference="*/*:*$CUSTOM_TAG"
 
 ```text hideClipboard
 REPOSITORY      TAG                                IMAGE ID       CREATED          SIZE
-ttl.sh/ubuntu   k3s-1.32.1-v4.6.12-gs-tutorial     75811e3dfb42   13 minutes ago   4.93GB
+ttl.sh/ubuntu   k3s-1.32.1-v4.6.9-gs-tutorial     75811e3dfb42   13 minutes ago   4.93GB
 ```
 
 ## Push Provider Images
@@ -219,7 +220,7 @@ Push the provider image to the [ttl.sh](https://ttl.sh/) registry so that you ca
 profile.
 
 ```bash
-docker push ttl.sh/ubuntu:k3s-1.32.1-v4.6.12-$CUSTOM_TAG
+docker push ttl.sh/ubuntu:k3s-1.32.1-v4.6.9-$CUSTOM_TAG
 ```
 
 The output confirms that the image was pushed to the registry with the correct tag and is ready to be used in a cluster
@@ -227,7 +228,7 @@ profile.
 
 ```text hideClipboard
 ...
-k3s-1.32.1-v4.6.12-gs-tutorial: digest: sha256:c0045ff16f01c3fac47fdff83a051ab0c2fee1ff600b8b8e35caa6aa86736478 size: 16783
+k3s-1.32.1-v4.6.9-gs-tutorial: digest: sha256:c0045ff16f01c3fac47fdff83a051ab0c2fee1ff600b8b8e35caa6aa86736478 size: 16783
 ```
 
 :::warning
@@ -242,12 +243,12 @@ push images to a different registry.
 ## Automate EdgeForge
 
 The example script below automates the EdgeForge process. It provides an alternative way to build the artifacts if you
-have already learned the steps and want to replicate them quickly. You can skip this step if you have followed the
+have already learned the steps and want to replicate them quickly. You can skip this section if you have followed the
 tutorial and built the artifacts manually.
 
-The script clones the CanvOS repository, creates a simple `user-data` file, builds the Edge artifacts, and pushes the
-provider images to the registry. It also prompts the user for a few options, including the CanvOS Git tag, Kubernetes
-distribution and version, and more.
+The script clones the CanvOS repository, creates a sample `user-data` file, or uses the one provided by the user. It
+then builds the Edge artifacts and pushes the provider images to the registry. Additionally, it prompts the user for a
+few options, including the CanvOS Git tag, Kubernetes distribution and version, and more.
 
 Follow the steps below to build the artifacts using the script.
 
@@ -258,73 +259,168 @@ Follow the steps below to build the artifacts using the script.
 
    ```shell
    cat << EOF > edgeforge.sh
-   ​#!/bin/bash
+   #!/bin/bash
 
-   # Exit if a command fails
+   # Prompt user for working directory (defaults to current if empty)
+   read -p "📂 Enter the absolute path where operations should take place [default: current directory]: " WORKING_DIR
 
-   set -e
+   # Use current directory if none provided
+   if [ -z "$WORKING_DIR" ]; then
+       WORKING_DIR=$(pwd)
+       echo "ℹ️  No directory provided. Using current directory: $WORKING_DIR"
+   fi
+
+   # Verify and enter the directory
+   if [ -d "$WORKING_DIR" ]; then
+       cd "$WORKING_DIR" || { echo "❌ Failed to enter the directory: $WORKING_DIR"; exit 1; }
+       echo "✅ Working directory set to: $WORKING_DIR"
+   else
+       echo "❌ Invalid path provided. Please ensure the directory exists."
+       exit 1
+   fi
 
    # Clone the CanvOS repository
-
-   echo "Cloning CanvOS repository..." git clone https://github.com/spectrocloud/CanvOS.git
+   echo "Cloning CanvOS repository..."
+   git clone https://github.com/spectrocloud/CanvOS.git
    cd CanvOS || { echo "Failed to enter CanvOS directory"; exit 1; }
 
-   # Get Palette registration token
-
-   read -p "Enter your Palette registration token: " TOKEN
-   export TOKEN
-
-   # Create user-data file
-
-   echo "Creating user-data file..."
-   cat << EOF > user-data
-   #cloud-config
-   stylus:
-   site:
-   edgeHostToken: $TOKEN
-   paletteEndpoint: api.spectrocloud.com
-
-   stages:
-   initramfs:
-   - users:
-   kairos:
-   passwd: kairos
-
-   install:
-   poweroff: true
-   EOF
-   echo "user-data file created."
-
-   # Validate user-data file
-
-   echo "Validating user-data file..." VALIDATION_OUTPUT=$(sudo ./earthly.sh +validate-user-data 2>&1)
-
-   if echo "$VALIDATION_OUTPUT" | grep -iq "Validation successful"; then echo "✅ User data validation passed.
-   Proceeding..." else echo "❌ User data validation failed. Please check 'user-data' and try again." exit 1 fi
-
    # Fetch latest git tags
-
-   echo "Fetching git tags..." git fetch --tags echo "Available tags:" git --no-pager tag --list
+   echo "Fetching git tags..."
+   git fetch --tags
+   echo "Available tags:"
+   git --no-pager tag --list
 
    # Prompt for tag selection
+   while true; do
+       read -p "Enter the CanvOS tag to checkout (for example, v4.6.5): " TAG
 
-   read -p "Enter the tag to checkout (e.g., v4.6.5): " TAG git checkout "$TAG"
+       # Validate the tag exists
+       if git --no-pager tag --list | grep -qx "$TAG"; then
+           git checkout "$TAG"
+           break
+       else
+           echo "❌ Tag '$TAG' not found in the list of available tags. Please try again."
+       fi
+   done
+
+   # Prompt for user-data file content
+   echo "Enter the absolute path to your user-data file (must already contain the Palette registration token)."
+   echo "If you leave this empty, a default user-data file will be created."
+   read -p "Absolute path to user-data file (or press Enter to use default): " USER_DATA_PATH
+
+   # If user-data file is empty, use the sample user-data
+   if [ -z "$USER_DATA_PATH" ]; then
+       # Prompt for Palette registration token in a loop
+       while true; do
+           read -p "Enter your Palette registration token: " TOKEN
+           if [ -n "$TOKEN" ]; then
+               export TOKEN
+               break
+           else
+               echo "❌ Token cannot be empty. Please enter a valid token."
+           fi
+       done
+
+       # Create sample user-data file
+       echo "Creating default user-data file..."
+       cat << EOF > user-data
+   #cloud-config
+   stylus:
+     site:
+       edgeHostToken: $TOKEN
+       paletteEndpoint: api.spectrocloud.com
+
+   stages:
+     initramfs:
+       - users:
+           kairos:
+             passwd: kairos
+
+   install:
+     poweroff: true
+   EOF
+
+   else
+       # Check if the provided path is a file and copy it to CanvOS directory
+       if [ -f "$USER_DATA_PATH" ]; then
+           cp "$USER_DATA_PATH" ./user-data
+           echo "✅ user-data file copied from: $USER_DATA_PATH"
+       else
+           echo "❌ File not found at: $USER_DATA_PATH"
+           exit 1
+       fi
+   fi
+
+   # Validate user-data file
+   echo "Validating user-data file..."
+   VALIDATION_OUTPUT=$(sudo ./earthly.sh +validate-user-data 2>&1)
+
+   if echo "$VALIDATION_OUTPUT" | grep -iq "Validation successful"; then
+       echo "✅ User data validation passed. Proceeding..."
+   else
+       echo "❌ User data validation failed. Please check 'user-data' and try again."
+       exit 1
+   fi
+
+   # Ensure k8s_version.json exists
+   if [ ! -f "k8s_version.json" ]; then
+       echo "❌ k8s_version.json not found. Check out a Git tag v4.4.12 or later. Exiting..."
+       exit 1
+   fi
+
+   # Prompt for Kubernetes distribution
+   echo "⚙️ Available Kubernetes distributions:"
+   cat k8s_version.json | jq -r 'keys[]'
+
+   while true; do
+       read -p "Enter a valid Kubernetes distribution to build artifacts for (must be listed above) [default: k3s]: " K8S_DISTRIBUTION
+       K8S_DISTRIBUTION=${K8S_DISTRIBUTION:-k3s}
+
+       # Check if the selected distribution exists
+       if cat k8s_version.json | jq -e --arg dist "$K8S_DISTRIBUTION" 'has($dist)' > /dev/null; then
+           break
+       else
+           echo "❌ Distribution '$K8S_DISTRIBUTION' not found in k8s_version.json. Please try again."
+       fi
+   done
+
+   # Show available versions
+   echo "📦 Available versions for $K8S_DISTRIBUTION:"
+   AVAILABLE_VERSIONS=$(cat k8s_version.json | jq -r --arg dist "$K8S_DISTRIBUTION" '.[$dist][]')
+   echo "$AVAILABLE_VERSIONS"
+
+   # Prompt for a valid version
+   while true; do
+       read -p "Enter a valid Kubernetes version to build artifacts for (must be listed above): " K8S_VERSION
+
+       if echo "$AVAILABLE_VERSIONS" | grep -qx "$K8S_VERSION"; then
+           break
+       else
+           echo "❌ Version '$K8S_VERSION' is invalid. Please enter a valid version from the list above."
+       fi
+   done
+
+   # Update the JSON file with only the selected version
+   jq --null-input --arg versions "$K8S_VERSION" --arg dist "$K8S_DISTRIBUTION" '{($dist): [$versions]}' > k8s_version.json
+
+   echo "✅ k8s_version.json updated with: $K8S_DISTRIBUTION → [$K8S_VERSION]"
 
    # Create .arg file with user input
-
-   echo "Creating .arg file..." read -p "Enter custom tag for the artifacts (default value: getting-started): " CUSTOM_TAG
+   echo "Creating .arg file..."
+   read -p "Enter custom tag for the artifacts [default: getting-started]: " CUSTOM_TAG
    CUSTOM_TAG=${CUSTOM_TAG:-getting-started}
 
-   read -p "Enter OS distribution (default value: ubuntu): " OS_DISTRIBUTION OS_DISTRIBUTION=${OS_DISTRIBUTION:-ubuntu}
+   read -p "Enter OS distribution [default: ubuntu]: " OS_DISTRIBUTION
+   OS_DISTRIBUTION=${OS_DISTRIBUTION:-ubuntu}
 
-   read -p "Enter OS version (default value: 22.04): " OS_VERSION OS_VERSION=${OS_VERSION:-22.04}
+   read -p "Enter OS version [default: 22.04]: " OS_VERSION
+   OS_VERSION=${OS_VERSION:-22.04}
 
-   read -p "Enter Kubernetes distribution (default value: k3s): " K8S_DISTRIBUTION
-   K8S_DISTRIBUTION=${K8S_DISTRIBUTION:-k3s}
+   read -p "Enter Image Registry [default: ttl.sh]: " IMAGE_REGISTRY
+   IMAGE_REGISTRY=${IMAGE_REGISTRY:-ttl.sh}
 
-   read -p "Enter Image Registry (default value: ttl.sh): " IMAGE_REGISTRY IMAGE_REGISTRY=${IMAGE_REGISTRY:-ttl.sh}
-
-   cat << EOF > .arg CUSTOM_TAG=$CUSTOM_TAG
+   cat << EOF > .arg
+   CUSTOM_TAG=$CUSTOM_TAG
    IMAGE_REGISTRY=$IMAGE_REGISTRY
    OS_DISTRIBUTION=$OS_DISTRIBUTION
    IMAGE_REPO=$OS_DISTRIBUTION
@@ -337,49 +433,26 @@ Follow the steps below to build the artifacts using the script.
 
    echo "✅ .arg file created."
 
-   # Select the K8s version to build artifacts for
-
-   if [ -f "k8s_version.json" ]; then
-
-       # Select K8s version
-       if grep $K8S_DISTRIBUTION k8s_version.json; then
-           echo "Available versions for $K8S_DISTRIBUTION:"
-           AVAILABLE_VERSIONS=$(cat k8s_version.json | jq -r ".$K8S_DISTRIBUTION[]")
-           echo "$AVAILABLE_VERSIONS"
-
-           # Prompt for K8s version
-           while true; do
-               read -p "Enter a valid Kubernetes version to build artifacts for (must be listed above): " K8S_VERSION
-
-               # Check if the entered version exists in the list
-               if echo "$AVAILABLE_VERSIONS" | grep -q "^$K8S_VERSION$"; then
-                   break
-               else
-                   echo "❌ Invalid version. Please enter a valid version from the list above."
-               fi
-           done
-
-           # Update the JSON file to keep only the selected version
-           jq --null-input --arg versions "$K8S_VERSION" --arg dist "$K8S_DISTRIBUTION" '{($dist): [$versions]}' > k8s_version.json
-
-           echo "✅ k8s_version.json updated with the selected version $K8S_VERSION."
-       else
-           echo "❌ Distribution '$K8S_DISTRIBUTION' not found in k8s_version.json. Exiting..."
-           exit 1
-       fi
-
-   else echo "❌ k8s_version.json not found. Exiting..." exit 1 fi
-
    # Build artifacts
+   echo "Building Edge artifacts... This will take approximately 15 minutes."
+   if sudo ./earthly.sh +build-all-images; then
+       echo "✅ Artifacts built successfully."
+   else
+       echo "❌ Failed to build artifacts. Please check the logs and try again."
+       exit 1
+   fi
 
-   echo "Building artifacts... This will take approximately 15 minutes." sudo ./earthly.sh +build-all-images
+   # Push images to registry
+   echo "Pushing provider image to registry..."
+   if docker push "$IMAGE_REGISTRY/$OS_DISTRIBUTION:$K8S_DISTRIBUTION-$K8S_VERSION-$TAG-$CUSTOM_TAG"; then
+       echo "✅ Image pushed successfully to registry: $IMAGE_REGISTRY/$OS_DISTRIBUTION:$K8S_DISTRIBUTION-$K8S_VERSION-$TAG-$CUSTOM_TAG"
+   else
+       echo "❌ Failed to push the image to the registry."
+       exit 1
+   fi
 
-   # Push image
-
-   echo "Pushing provider image to registry..." docker push
-   "$IMAGE_REGISTRY/$OS_DISTRIBUTION:$K8S_DISTRIBUTION-$K8S_VERSION-$TAG-$CUSTOM_TAG"
-
-   echo "✅ Build completed successfully. The artifacts are located in the 'CanvOS/build' folder."
+   echo "✅ Build completed successfully."
+   echo "Artifacts are located in the 'CanvOS/build' folder."
    EOF
    ```
 
@@ -413,5 +486,5 @@ Follow the steps below to build the artifacts using the script.
 
 ## Next Steps
 
-In this tutorial, you built the artifacts required for your Edge deployment. We recommend continuing with the [Create an
-Edge Cluster Profile] tutorial to learn how to use the provider images to create an Edge cluster profile.
+In this tutorial, you built the artifacts required for your Edge deployment. We recommend continuing with the Create an
+Edge Cluster Profile tutorial to learn how to use the provider images to create an Edge cluster profile.
