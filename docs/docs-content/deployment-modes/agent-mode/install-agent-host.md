@@ -351,8 +351,9 @@ Palette. You will then create a cluster profile and use the registered host to d
 
    - The host will not shut down and will instead reboot after the agent is installed, with
      [kube-vip](../../clusters/edge/networking/kubevip.md) enabled, as this is required for bare metal and VMware
-     vSphere deployments. If your environment does not require kube-vip, set `stylus.vip.skip` to `true`. Refer to [Edge Installer Configuration Reference](../../clusters/edge/edge-configuration/installer-reference.md) to learn more about user
-     data configuration.
+     vSphere deployments. If your environment does not require kube-vip, set `stylus.vip.skip` to `true`. Refer to
+     [Edge Installer Configuration Reference](../../clusters/edge/edge-configuration/installer-reference.md) to learn
+     more about user data configuration.
    - The `projectName` parameter is not required if the associated Palette
      [registration token](../../clusters/edge/site-deployment/site-installation/create-registration-token.md) has a
      Default Project set.
@@ -669,7 +670,9 @@ internet.
    The following configuration indicates the installation mode to be airgap and sets up the `kairos` user. The host will
    not shut down and will reboot after the agent installation, with
    [kube-vip](../../clusters/edge/networking/kubevip.md) enabled, as this is required for bare metal and VMware vSphere
-   deployments. If your environment does not require kube-vip, set `stylus.vip.skip` to `true`. Refer to [Edge Installer Configuration Reference](../../clusters/edge/edge-configuration/installer-reference.md) to learn more about user data configuration.
+   deployments. If your environment does not require kube-vip, set `stylus.vip.skip` to `true`. Refer to
+   [Edge Installer Configuration Reference](../../clusters/edge/edge-configuration/installer-reference.md) to learn more
+   about user data configuration.
 
    ```shell
    sudo tee /var/lib/spectro/userdata > /dev/null << EOF
