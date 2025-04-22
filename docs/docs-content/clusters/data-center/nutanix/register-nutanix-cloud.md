@@ -10,11 +10,13 @@ tags: ["data center", "nutanix"]
 A [system administrator](../../../glossary-all.md#system-administrator) registers the Nutanix cloud in Palette by
 invoking system-level APIs. These APIs provide specific cloud information, the cloud logo, and the key-value pairs
 required to add the cloud to Palette. They also allow you to upload YAML templates used to create the cluster, control
-plane, and worker nodes. This section provides instructions on how to download and modify YAML templates, upgrade the default Cluster API (CAPI) version, and use APIs to register a Nutanix cloud to Palette.
+plane, and worker nodes. This section provides instructions on how to download and modify YAML templates, upgrade the
+default Cluster API (CAPI) version, and use APIs to register a Nutanix cloud to Palette.
 
 ## Prerequisites
 
-- A Nutanix Cluster API (CAPX) version compatible with the desired CAPI version. The default CAPI version for Palette is (`1.5.3`). Refer to the Nutanix
+- A Nutanix Cluster API (CAPX) version compatible with the desired CAPI version. The default CAPI version for Palette is
+  (`1.5.3`). Refer to the Nutanix
   [CAPI Validated Integrations](https://opendocs.nutanix.com/capx/latest/validated_integrations/#cluster-api)
   compatibility matrix for more information.
 
@@ -29,105 +31,117 @@ plane, and worker nodes. This section provides instructions on how to download a
 
 - A Nutanix logo downloaded. Review logo requirements in [Register the Cloud](#register-the-cloud).
 
-- [curl](https://curl.se/docs/install.html) command installed or the method of your choice to make API calls for Palette and VerteX.
+- [curl](https://curl.se/docs/install.html) command installed or the method of your choice to make API calls for Palette
+  and VerteX.
 
 <!-- - A valid Palette authentication token. To learn how to acquire an authentication token, review the [Authorization Token](https://docs.spectrocloud.com/user-management/authentication/authorization-token) guide. -->
 
 ## Customize YAML Configuration Files
 
-Before you can register your Nutanix cloud with Palette, you must download the appropriate CAPX manifests and edit them accordingly so that the APIs can communicate with Palette.
+Before you can register your Nutanix cloud with Palette, you must download the appropriate CAPX manifests and edit them
+accordingly so that the APIs can communicate with Palette.
 
-Certain components are required, while others are optional. By default, Palette uses CAPI version `1.5.3`. If you want to upgrade CAPI to a different version, you must use all three optional components, and all three should be for the same CAPI version.
+Certain components are required, while others are optional. By default, Palette uses CAPI version `1.5.3`. If you want
+to upgrade CAPI to a different version, you must use all three optional components, and all three should be for the same
+CAPI version.
 
-| **Component** | **Requirement** |
-| --- | --- |
-| `cluster-template` | Required |
-| `controlplane-template` | Required | 
-| `infrastructure-components` | Required |
-| `worker-template` | Required |
-| `bootstrap-components` | Optional |
-| `controlplane-components` | Optional | 
-| `core-component` | Optional |
+| **Component**               | **Requirement** |
+| --------------------------- | --------------- |
+| `cluster-template`          | Required        |
+| `controlplane-template`     | Required        |
+| `infrastructure-components` | Required        |
+| `worker-template`           | Required        |
+| `bootstrap-components`      | Optional        |
+| `controlplane-components`   | Optional        |
+| `core-component`            | Optional        |
 
 ### Required Components
 
-The following components are required to register your Nutanix cloud with Palette. Use the following procedure to download and format the manifests appropriately.
+The following components are required to register your Nutanix cloud with Palette. Use the following procedure to
+download and format the manifests appropriately.
 
-1. Review the [Nutanix compatibility matrix](https://opendocs.nutanix.com/capx/latest/validated_integrations/#validated-versions)
-   to ensure your desired CAPX version is compatible with your CAPI version. Once you have verified they are compatible, export your CAPX version as an environment variable. For example, if you want to download version `v1.6.0`, issue
-   the following command.
+1.  Review the
+    [Nutanix compatibility matrix](https://opendocs.nutanix.com/capx/latest/validated_integrations/#validated-versions)
+    to ensure your desired CAPX version is compatible with your CAPI version. Once you have verified they are
+    compatible, export your CAPX version as an environment variable. For example, if you want to download version
+    `v1.6.0`, issue the following command.
 
-      ```bash
-   export CAPX_VERSION="v1.6.0"
-   ```
+    ```bash
+    export CAPX_VERSION="v1.6.0"
+    ```
 
-2. Issue the commands below to download the appropriate versions of `infrastructure-components.yaml` and `cluster-template.yaml`.
+2.  Issue the commands below to download the appropriate versions of `infrastructure-components.yaml` and
+    `cluster-template.yaml`.
 
-   ```bash
-   curl -LO https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix/releases/download/$CAPX_VERSION/cluster-template.yaml
-   curl -LO https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix/releases/download/$CAPX_VERSION/infrastructure-components.yaml
-   ```
+    ```bash
+    curl -LO https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix/releases/download/$CAPX_VERSION/cluster-template.yaml
+    curl -LO https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix/releases/download/$CAPX_VERSION/infrastructure-components.yaml
+    ```
 
-3. Create two copies of `cluster-template.yaml` and rename them.
+3.  Create two copies of `cluster-template.yaml` and rename them.
 
-   ```bash
-   cp cluster-template.yaml cloudClusterTemplate.yaml
-   cp cluster-template.yaml controlPlanePoolTemplate.yaml
-   mv cluster-template.yaml workerPoolTemplate.yaml
-   ```
+    ```bash
+    cp cluster-template.yaml cloudClusterTemplate.yaml
+    cp cluster-template.yaml controlPlanePoolTemplate.yaml
+    mv cluster-template.yaml workerPoolTemplate.yaml
+    ```
 
-4. Verify that you have the following files downloaded using a command such as `ls -l`.
+4.  Verify that you have the following files downloaded using a command such as `ls -l`.
 
-   - `infrastructure-components.yaml`
-   - `cloudClusterTemplate.yaml`
-   - `controlPlanePoolTemplate.yaml`
-   - `workerPoolTemplate.yaml`
+    - `infrastructure-components.yaml`
+    - `cloudClusterTemplate.yaml`
+    - `controlPlanePoolTemplate.yaml`
+    - `workerPoolTemplate.yaml`
 
-5. Open the `cloudClusterTemplate.yaml`, `controlPlanePoolTemplate.yaml`, and `workerPoolTemplate.yaml` files in your
-   editor of choice. 
+5.  Open the `cloudClusterTemplate.yaml`, `controlPlanePoolTemplate.yaml`, and `workerPoolTemplate.yaml` files in your
+    editor of choice.
 
-6. Modify the YAML files so that only the top-level objects listed in the table below remain in each file.
+6.  Modify the YAML files so that only the top-level objects listed in the table below remain in each file.
 
-   | **Template**                     | **Objects to Keep**                                                                    |
-   | --------------------------------- | ------------------------------------------------------------------------------ |
-   | `cloudClusterTemplate.yaml`     | `ConfigMap`<br />`Secret`<br />`Cluster`<br />`MachineHealthCheck`<br />`NutanixCluster` |
-   | `controlPlanePoolTemplate.yaml` | `KubeadmControlPlane`<br />`NutanixMachineTemplate`                                |
-   | `workerPoolTemplate.yaml`       | `KubeadmConfigTemplate`<br />`MachineDeployment`<br />`NutanixMachineTemplate`       |
+    | **Template**                    | **Objects to Keep**                                                                      |
+    | ------------------------------- | ---------------------------------------------------------------------------------------- |
+    | `cloudClusterTemplate.yaml`     | `ConfigMap`<br />`Secret`<br />`Cluster`<br />`MachineHealthCheck`<br />`NutanixCluster` |
+    | `controlPlanePoolTemplate.yaml` | `KubeadmControlPlane`<br />`NutanixMachineTemplate`                                      |
+    | `workerPoolTemplate.yaml`       | `KubeadmConfigTemplate`<br />`MachineDeployment`<br />`NutanixMachineTemplate`           |
 
-7. In all three templates, remove all occurrences of `${NAMESPACE}`, as Palette provides its own namespace.
+7.  In all three templates, remove all occurrences of `${NAMESPACE}`, as Palette provides its own namespace.
 
-8. In `controlPlanePoolTemplate.yaml`, make the following changes:
-   
-   1.  In the `KubeadmControlPlane` object, rename `spec.machineTemplate.infrastructureRef.name:` to `${CLUSTER_NAME}-cp-0`.
-   
-   2.  In the `KubeadmControlPlane` object, below the `spec.kubeadmConfigSpec.preKubeadmCommands:` line, add the line `- systemctl enable --now iscsid` to enable the `nutanix-csi` pack, keeping proper indentation as illustrated below. 
+8.  In `controlPlanePoolTemplate.yaml`, make the following changes:
 
-         ```bash
-         preKubeadmCommands:
-          - systemctl enable --now iscsid
-         ```
+    1. In the `KubeadmControlPlane` object, rename `spec.machineTemplate.infrastructureRef.name:` to
+       `${CLUSTER_NAME}-cp-0`.
+    2. In the `KubeadmControlPlane` object, below the `spec.kubeadmConfigSpec.preKubeadmCommands:` line, add the line
+       `- systemctl enable --now iscsid` to enable the `nutanix-csi` pack, keeping proper indentation as illustrated
+       below.
 
-   3. In the `NutanixMachineTemplate` object, rename `metadata.name:` to `${CLUSTER_NAME}-cp-0`.
-   
-   4. In the `NutanixMachineTemplate` object, rename `spec.template.spec.providerID:` to `nutanix://${CLUSTER_NAME}-m1-cp-0`.
+       ```bash
+       preKubeadmCommands:
+        - systemctl enable --now iscsid
+       ```
 
-9.  In `workerPoolTemplate.yaml`, make the following changes: 
+    3. In the `NutanixMachineTemplate` object, rename `metadata.name:` to `${CLUSTER_NAME}-cp-0`.
+    4. In the `NutanixMachineTemplate` object, rename `spec.template.spec.providerID:` to
+       `nutanix://${CLUSTER_NAME}-m1-cp-0`.
 
-    1. In the `NutanixMachineTemplate` object, rename `spec.template.spec.providerID:` to `nutanix://${CLUSTER_NAME}-m1-mt-0`.
-    
-    2. In the `KubeadmConfigTemplate` object, below the `spec.template.spec.preKubeadmCommands:` line, add the line `- systemctl enable --now iscsid` to enable the `nutanix-csi` pack, keeping proper indentation as illustrated below.
+9.  In `workerPoolTemplate.yaml`, make the following changes:
 
-         ```bash
-         preKubeadmCommands:
-         - systemctl enable --now iscsid
-         ```
+    1. In the `NutanixMachineTemplate` object, rename `spec.template.spec.providerID:` to
+       `nutanix://${CLUSTER_NAME}-m1-mt-0`.
+    2. In the `KubeadmConfigTemplate` object, below the `spec.template.spec.preKubeadmCommands:` line, add the line
+       `- systemctl enable --now iscsid` to enable the `nutanix-csi` pack, keeping proper indentation as illustrated
+       below.
 
-10. (VerteX only) Make the following modifications for VerteX environments. 
+       ```bash
+       preKubeadmCommands:
+       - systemctl enable --now iscsid
+       ```
+
+10. (VerteX only) Make the following modifications for VerteX environments.
 
       <details>
 
-      <summary>Additional VerteX Modifications</summary>
-   
+    <summary>Additional VerteX Modifications</summary>
+
         1. In `controlPlanePoolTemplate.yaml`, edit the `KubeadmControlPlane` object. Below both `kubeletExtraArgs:` lines, add the line `rotate-server-certificates: "true"`, keeping proper indentation as illustrated below.
 
             ```bash
@@ -136,7 +150,7 @@ The following components are required to register your Nutanix cloud with Palett
             ```
 
         2.  In `workerPoolTemplate.yaml`, edit the `KubeadmConfigTemplate` object. Below `kubeletExtraArgs:`, add the line `rotate-server-certificates: "true"`, keeping proper indentation as illustrated below.
-    
+
             ```bash
             kubeletExtraArgs:
               rotate-server-certificates: "true"
@@ -144,14 +158,16 @@ The following components are required to register your Nutanix cloud with Palett
 
       </details>
 
-If you are not upgrading the default CAPI version, proceed to the [Register the Cloud](#register-the-cloud) section of this guide.
+If you are not upgrading the default CAPI version, proceed to the [Register the Cloud](#register-the-cloud) section of
+this guide.
 
 ### Optional Components
 
-To use a non-default CAPI version, you must download additional CAPI manifests. Take the following steps to modify your CAPI version.
+To use a non-default CAPI version, you must download additional CAPI manifests. Take the following steps to modify your
+CAPI version.
 
-1. Export your CAPI version as an environment variable. For example, if you want to download version `v1.9.4`, issue
-   the following command.
+1. Export your CAPI version as an environment variable. For example, if you want to download version `v1.9.4`, issue the
+   following command.
 
    ```bash
    export CAPI_VERSION="v1.9.4"
@@ -173,8 +189,8 @@ To use a non-default CAPI version, you must download additional CAPI manifests. 
 
 ## Register the Cloud
 
-Follow the steps below to set the necessary environment variables and invoke the APIs required to register a
-Nutanix cloud to Palette. Alternatively, you can use an API platform such as [Postman](https://www.postman.com/).
+Follow the steps below to set the necessary environment variables and invoke the APIs required to register a Nutanix
+cloud to Palette. Alternatively, you can use an API platform such as [Postman](https://www.postman.com/).
 
 ### Prerequisites
 
@@ -184,8 +200,8 @@ Nutanix cloud to Palette. Alternatively, you can use an API platform such as [Po
   [Operations Administrator](../../../enterprise-version/system-management/account-management/account-management.md#operations-administrator)
   is allowed to register a Nutanix cloud.
 
-- The logo file must not exceed 100 KB in size. To ensure image quality, ensure at least one dimension in either width or
-  height is 40 pixels. It is preferable that the image be transparent.
+- The logo file must not exceed 100 KB in size. To ensure image quality, ensure at least one dimension in either width
+  or height is 40 pixels. It is preferable that the image be transparent.
 
 ### Enablement
 
@@ -229,8 +245,8 @@ Nutanix cloud to Palette. Alternatively, you can use an API platform such as [Po
    }
    ```
 
-3. Copy the authorization token, assign it to the `TOKEN` variable, and export it. Replace the authorization value
-   below with the value from the output.
+3. Copy the authorization token, assign it to the `TOKEN` variable, and export it. Replace the authorization value below
+   with the value from the output.
 
    ```bash
    export TOKEN="**********"
@@ -240,7 +256,8 @@ Nutanix cloud to Palette. Alternatively, you can use an API platform such as [Po
 
    :::info
 
-   We recommend setting the cloud `name` as `nutanix` to automatically make the out-of-the-box `nutanix-csi` pack available to users when they create a cluster profile in Palette.
+   We recommend setting the cloud `name` as `nutanix` to automatically make the out-of-the-box `nutanix-csi` pack
+   available to users when they create a cluster profile in Palette.
 
    :::
 
@@ -278,21 +295,22 @@ Nutanix cloud to Palette. Alternatively, you can use an API platform such as [Po
         --form "fileName=@${infraComponents}"
    ```
 
-7. (Optional) If you configured the [optional components](#optional-components) to use a specific CAPI version, register them  using the following API calls.
+7. (Optional) If you configured the [optional components](#optional-components) to use a specific CAPI version, register
+   them using the following API calls.
 
    <details>
-   
+
    <summary>Modify CAPI Version</summary>
 
    1. Export the paths to the optional component YAML files.
-   
+
       ```bash
       export coreComponentsTemplate="/path/to/the/file/core-components.yaml"
       export controlPlaneComponentsTemplate="/path/to/the/file/control-plane-components.yaml"
       export bootstrapComponentsTemplate="/path/to/the/file/bootstrap-components.yaml"
       ```
 
-   2. Register the core component. 
+   2. Register the core component.
 
       ```bash
       curl --location --request PUT "${ENDPOINT}/v1/clouds/cloudTypes/${CLOUD_TYPE}/content/core" \
