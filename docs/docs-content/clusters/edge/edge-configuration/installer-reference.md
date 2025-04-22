@@ -259,21 +259,23 @@ able to access your Edge host because there are no users.
 
 :::
 
-| Parameter                     | Description                                                                                                                                           | Default |
-| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
-| `stages.*.users`              | The list of users to create at any cloud-init stage. Replace `*` with the specific stage. Each list item accepts parameters as follows in this table. | None    |
-| `stages.*.users[*].groups`    | The list of groups that the user belongs to. Replace `*` with your username.                                                                          | None    |
-| `stages.*.users[*].passwd`    | The password of the user. Replace `*` with your username.                                                                                             | None    |
-| `stages.initramfs`            | The `initramfs` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md).                             | None    |
-| `stages.rootfs`               | The `rootfs` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                                 | None    |
-| `stages.boot`                 | The `boot` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                                   | None    |
-| `stages.fs`                   | The `fs` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                                     | None    |
-| `stages.network`              | The `network` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                                | None    |
-| `stages.reconcile`            | The `reconcile` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                              | None    |
-| `stages.after-install`        | The `after-install` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                          | None    |
-| `stages.after-install-chroot` | The `after-install-chroot` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                   | None    |
-| `stages.after-reset`          | The `after-reset` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                            | None    |
-| `stages.after-reset-chroot`   | The `after-reset-chroot` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                     | None    |
-| `stages.before-install`       | The `before-install` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                         | None    |
-| `stages.before-upgrade`       | The `before-upgrade` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                         | None    |
-| `stages.before-reset`         | The `before-reset` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                           | None    |
+| Parameter                               | Description                                                                                                                                           | Default |
+| --------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| `stages.*.users`                        | The list of users to create at any cloud-init stage. Replace `*` with the specific stage. Each list item accepts parameters as follows in this table. | None    |
+| `stages.*.users[*].groups`              | The list of groups that the user belongs to. Replace `*` with your username.                                                                          | None    |
+| `stages.*.users[*].passwd`              | The password of the user. Replace `*` with your username.                                                                                             | None    |
+| `stages.*.users[*].lock_passwd`         | When set to `true`, disables password configuration by the user. Replace `*` with your username.                                                      | `false` |
+| `stages.*.users[*].ssh_authorized_keys` | The list of public SSH keys authorized for the user. Replace `*` with your username.                                                                  | None    |
+| `stages.initramfs`                      | The `initramfs` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md).                             | None    |
+| `stages.rootfs`                         | The `rootfs` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                                 | None    |
+| `stages.boot`                           | The `boot` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                                   | None    |
+| `stages.fs`                             | The `fs` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                                     | None    |
+| `stages.network`                        | The `network` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                                | None    |
+| `stages.reconcile`                      | The `reconcile` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                              | None    |
+| `stages.after-install`                  | The `after-install` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                          | None    |
+| `stages.after-install-chroot`           | The `after-install-chroot` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                   | None    |
+| `stages.after-reset`                    | The `after-reset` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                            | None    |
+| `stages.after-reset-chroot`             | The `after-reset-chroot` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                     | None    |
+| `stages.before-install`                 | The `before-install` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                         | None    |
+| `stages.before-upgrade`                 | The `before-upgrade` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                         | None    |
+| `stages.before-reset`                   | The `before-reset` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                           | None    |
