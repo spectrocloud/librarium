@@ -16,7 +16,7 @@ default Cluster API (CAPI) version, and use APIs to register a Nutanix cloud to 
 ## Prerequisites
 
 - A Nutanix Cluster API (CAPX) version compatible with the desired CAPI version. The default CAPI version for Palette is
-  (`1.5.3`). Refer to the Nutanix
+  `1.5.3`. Refer to the Nutanix
   [CAPI Validated Integrations](https://opendocs.nutanix.com/capx/latest/validated_integrations/#cluster-api)
   compatibility matrix for more information.
 
@@ -74,8 +74,8 @@ download and format the manifests appropriately.
     `cluster-template.yaml`.
 
     ```bash
-    curl -LO https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix/releases/download/$CAPX_VERSION/cluster-template.yaml
-    curl -LO https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix/releases/download/$CAPX_VERSION/infrastructure-components.yaml
+    curl --remote-name --location https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix/releases/download/$CAPX_VERSION/cluster-template.yaml
+    curl --remote-name --location https://github.com/nutanix-cloud-native/cluster-api-provider-nutanix/releases/download/$CAPX_VERSION/infrastructure-components.yaml
     ```
 
 3.  Create two copies of `cluster-template.yaml` and rename them.
@@ -106,7 +106,7 @@ download and format the manifests appropriately.
 
 7.  In all three templates, remove all occurrences of `${NAMESPACE}`, as Palette provides its own namespace.
 
-8.  In `controlPlanePoolTemplate.yaml`, make the following changes:
+8.  In `controlPlanePoolTemplate.yaml`, make the following changes.
 
     1. In the `KubeadmControlPlane` object, rename `spec.machineTemplate.infrastructureRef.name:` to
        `${CLUSTER_NAME}-cp-0`.
@@ -123,7 +123,7 @@ download and format the manifests appropriately.
     4. In the `NutanixMachineTemplate` object, rename `spec.template.spec.providerID:` to
        `nutanix://${CLUSTER_NAME}-m1-cp-0`.
 
-9.  In `workerPoolTemplate.yaml`, make the following changes:
+9.  In `workerPoolTemplate.yaml`, make the following changes.
 
     1. In the `NutanixMachineTemplate` object, rename `spec.template.spec.providerID:` to
        `nutanix://${CLUSTER_NAME}-m1-mt-0`.
@@ -176,9 +176,9 @@ CAPI version.
 2. Issue the commands below to download the required components.
 
    ```bash
-   curl -LO https://github.com/kubernetes-sigs/cluster-api/releases/download/$CAPI_VERSION/bootstrap-components.yaml
-   curl -LO https://github.com/kubernetes-sigs/cluster-api/releases/download/$CAPI_VERSION/control-plane-components.yaml
-   curl -LO https://github.com/kubernetes-sigs/cluster-api/releases/download/$CAPI_VERSION/core-components.yaml
+   curl --remote-name --location https://github.com/kubernetes-sigs/cluster-api/releases/download/$CAPI_VERSION/bootstrap-components.yaml
+   curl --remote-name --location https://github.com/kubernetes-sigs/cluster-api/releases/download/$CAPI_VERSION/control-plane-components.yaml
+   curl --remote-name --location https://github.com/kubernetes-sigs/cluster-api/releases/download/$CAPI_VERSION/core-components.yaml
    ```
 
 3. Verify that you have the following files downloaded using a command such as `ls -l`.
