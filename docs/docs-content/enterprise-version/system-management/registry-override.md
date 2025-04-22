@@ -64,10 +64,10 @@ Select the appropriate tab below based on the environment in which your VertX cl
 
    ```yaml hideClipboard
    image:
-     cainjectorImage: "my-oci-registry.com/spectro-images/gcr.io/spectro-images-public/release-fips/jetstack/cert-manager-cainjector:spectro-v1.11.0-20230427"
-     controllerImage: "my-oci-registry.com/spectro-images/gcr.io/spectro-images-public/release-fips/jetstack/cert-manager-controller:spectro-v1.11.0-20230427"
-     webhookImage: "my-oci-registry.com/spectro-images/gcr.io/spectro-images-public/release-fips/jetstack/cert-manager-webhook:spectro-v1.11.0-20230808"
-     amceResolverImage: "my-oci-registry.com/spectro-images/gcr.io/spectro-images-public/release-fips/jetstack/cert-manager-acmesolver:spectro-v1.11.0-20230427"
+     cainjectorImage: "my-oci-registry.com/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-cainjector:v1.17.0-spectro-4.6.1"
+     controllerImage: "my-oci-registry.com/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-controller:v1.17.0-spectro-4.6.1"
+     webhookImage: "my-oci-registry.com/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-webhook:v1.17.0-spectro-4.6.1"
+     amceResolverImage: "my-oci-registry.com/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-acmesolver:v1.17.0-spectro-4.6.1"
    ```
 
 5. Next, update the`ociImageRegistry` section with your OCI registry values. Refer to the table below for a description

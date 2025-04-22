@@ -129,10 +129,10 @@ environment. Reach out to our support team if you need assistance.
 
     ```yaml hideClipboard
     image:
-      cainjectorImage: "my-oci-registry.com/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-cainjector:v1.15.0-spectro-4.5.0"
-      controllerImage: "my-oci-registry.com/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-controller:v1.15.0-spectro-4.5.0"
-      webhookImage: "my-oci-registry.com/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-webhook:v1.15.0-spectro-4.5.0"
-      amceResolverImage: "my-oci-registry.com/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-acmesolver:v1.15.0-spectro-4.4.2"
+      cainjectorImage: "my-oci-registry.com/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-cainjector:v1.17.0-spectro-4.6.1"
+      controllerImage: "my-oci-registry.com/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-controller:v1.17.0-spectro-4.6.1"
+      webhookImage: "my-oci-registry.com/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-webhook:v1.17.0-spectro-4.6.1"
+      amceResolverImage: "my-oci-registry.com/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-acmesolver:v1.17.0-spectro-4.6.1"
     ```
 
 4.  Install Cert Manager using the following command. Replace the actual file name of the Cert Manager Helm Chart with

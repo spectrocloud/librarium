@@ -16,6 +16,7 @@ This page lists the version details of various Palette components and their resp
 
 | Palette Release <!-- cli-compatibility-table --> | Recommended CLI Version |
 | ------------------------------------------------ | ----------------------- |
+| <!-- cli-4.6.b --> 4.6.23                        | v4.6.5                  |
 | <!-- cli-4.6.a --> 4.6.12                        | v4.6.1                  |
 | 4.6.6                                            | v4.6.0                  |
 | 4.5.21                                           | v4.5.7                  |
@@ -32,6 +33,7 @@ This page lists the version details of various Palette components and their resp
 
 | Palette Release <!-- edge-cli-compatibility-table --> | CLI Version |
 | ----------------------------------------------------- | ----------- |
+| <!-- edge-4.6.b --> 4.6.23                            | v4.6.16     |
 | <!-- edge-4.6.a --> 4.6.12                            | v4.6.9      |
 | 4.6.6                                                 | v4.6.3      |
 | 4.5.21                                                | v4.5.15     |
