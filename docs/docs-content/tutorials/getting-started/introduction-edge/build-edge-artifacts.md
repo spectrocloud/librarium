@@ -154,7 +154,7 @@ sudo ./earthly.sh +build-all-images
 ```
 
 The build may take 15 to 20 minutes to complete, depending on the hardware resources available on the host machine. Once
-complete, you will see a success message similar to the one displayed below.
+complete, a success message similar to the one displayed below appears.
 
 ```text hideClipboard
 ========================== 🌍 Earthly Build  ✅ SUCCESS ==========================
@@ -295,7 +295,7 @@ Follow the steps below to build the artifacts using the script.
        read -p "Enter the CanvOS tag to checkout (for example, v4.6.5): " TAG
 
        # Validate the tag exists
-       if git --no-pager tag --list | grep -qx "$TAG"; then
+       if git --no-pager tag --list | grep --quiet --line-regexp "$TAG"; then
            git checkout "$TAG"
            break
        else
@@ -355,7 +355,7 @@ Follow the steps below to build the artifacts using the script.
    echo "Validating user-data file..."
    VALIDATION_OUTPUT=$(sudo ./earthly.sh +validate-user-data 2>&1)
 
-   if echo "$VALIDATION_OUTPUT" | grep -iq "Validation successful"; then
+   if echo "$VALIDATION_OUTPUT" | grep --ignore-case --quiet "Validation successful"; then
        echo "✅ User data validation passed. Proceeding..."
    else
        echo "❌ User data validation failed. Please check 'user-data' and try again."
@@ -393,7 +393,7 @@ Follow the steps below to build the artifacts using the script.
    while true; do
        read -p "Enter a valid Kubernetes version to build artifacts for (must be listed above): " K8S_VERSION
 
-       if echo "$AVAILABLE_VERSIONS" | grep -qx "$K8S_VERSION"; then
+       if echo "$AVAILABLE_VERSIONS" | grep --quiet --line-regexp "$K8S_VERSION"; then
            break
        else
            echo "❌ Version '$K8S_VERSION' is invalid. Please enter a valid version from the list above."
