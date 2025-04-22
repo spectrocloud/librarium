@@ -39,7 +39,6 @@ listed in alphabetical order.
 | `stylus.site`                  | Review [Site Parameters](#site-parameters) for more information.                                                                                                                         | Object  | None        |
 | `stylus.registryCredentials`   | Only used when a single external registry is in use and no mapping rules are needed. Refer to [Single External Registry](#single-external-registry) for more details.                    | Object  | None        |
 | `stylus.trace`                 | Enable trace output. Allowed values are `true` or `false`.                                                                                                                               | boolean | `false`     |
-| `stylus.vip.skip`                 | When set to `true`, skips the configuration of kube-vip and enables the use of an external load balancer instead. Applicable only in agent deployment mode.                                                                                                                               | boolean | `false`     |
 
 ### Feature Gates
 
