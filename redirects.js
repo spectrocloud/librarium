@@ -642,6 +642,8 @@ let redirects = [
       "/integrations/ubuntu",
       "/integrations/vsphere-csi",
       "/integrations/ngrok",
+      "/integrations/generic-vm-libvirt",
+      "/integrations/ubuntu-libvirt",
     ],
     to: "/integrations/",
   },
@@ -758,6 +760,14 @@ let redirects = [
       "/security-bulletins/reports/cve-2024-7592",
     ],
     to: "/security-bulletins/reports/",
+  },
+  {
+    from: "/tutorials/cluster-management/public-cloud/deploy-k8s-cluster/",
+    to: "/getting-started/",
+  },
+  {
+    from: "/clusters/public-cloud/deploy-k8s-cluster/",
+    to: "/getting-started/",
   },
 ];
 
