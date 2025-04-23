@@ -15,8 +15,11 @@ tags: ["release-notes"]
 
 ### Bug Fixes
 
-- Fixed an issue where Kubernetes version upgrades initiated through [Local UI](../clusters/edge/local-ui/local-ui.md) failed for [Edge](../clusters/edge/edge.md) clusters containing the `harbor-edge-native-config` pack.
-- Fixed an issue where [Software Bill of Materials (SBOM)](../clusters/cluster-management/compliance-scan.md#sbom-dependencies--vulnerabilities) scans failed to execute successfully for all clusters.
+- Fixed an issue where Kubernetes version upgrades initiated through [Local UI](../clusters/edge/local-ui/local-ui.md)
+  failed for [Edge](../clusters/edge/edge.md) clusters containing the `harbor-edge-native-config` pack.
+- Fixed an issue where
+  [Software Bill of Materials (SBOM)](../clusters/cluster-management/compliance-scan.md#sbom-dependencies--vulnerabilities)
+  scans failed to execute successfully for all clusters.
 
 ## April 19, 2025 - Release 4.6.23 {#release-notes-4.6.b}
 
