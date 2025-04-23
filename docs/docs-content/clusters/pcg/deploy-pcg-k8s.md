@@ -64,7 +64,7 @@ development and testing environments.
 
 - The Kubernetes cluster must have at least the following resources:
 
-  - 4 vCPU
+  - 4 vCPUs
   - 4 GB of memory
   - 60 GB of disk space
   - 1 control plane node and 1 worker node. We recommend using a minimum of 3 nodes for production environments. Refer

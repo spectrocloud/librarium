@@ -103,7 +103,7 @@ Use the following steps to validate that Trusted Boot has been enabled on your E
 configured a user on your Edge host. Refer to [Installer Reference](../../edge-configuration/installer-reference.md) for
 more information.
 
-1. Press `Alt + right arrow`, or `Ctrl + Alt + F1`. Replace `Alt` with `Option` on a Mac keyboard. This will bring up a
+1. Press **ALT + RIGHT ARROW**, or **CTRL + ALT + F1**. Replace **ALT** with **OPTION** on a Mac keyboard. This will bring up a
    terminal and allow you to log in with the credentials you configured with the `user-data` file.
 
    Alternatively, you can establish an SSH connection to your Edge device if you have network access to it.

@@ -79,7 +79,7 @@ or open a new tab in your browser depending on how to configure the links.
    another folder for your website under the `local-ui` folder and put all assets for your web pages in that folder.
 
    Choose a name that describes the web pages. For example, if your website has content related to an application, you
-   can name the folder **app** and create the folder at `local-ui/app`.
+   can name the folder `app` and create the folder at `local-ui/app`.
 
    The HTML files may link to JavaScript and CSS files. Ensure that your HTML file can reference its assets. The hosted
    static sites are exposed through HTTPS with a self-signed certificate.

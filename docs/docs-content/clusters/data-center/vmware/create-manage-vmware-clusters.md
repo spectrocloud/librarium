@@ -128,7 +128,7 @@ Before you begin, ensure that you have the following prerequisites:
 
    | Field Name | Description                                                      |
    | ---------- | ---------------------------------------------------------------- |
-   | **CPU**    | The number of CPU to allocate to the control plane nodes.        |
+   | **CPU**    | The number of CPUs to allocate to the control plane nodes.        |
    | **Memory** | The amount of memory to allocate to the control plane nodes.     |
    | **Disk**   | The amount of disk space to allocate to the control plane nodes. |
 
