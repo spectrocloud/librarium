@@ -256,9 +256,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
             network --bootproto=static --ip=<vcenter-static-ip-address> --netmask=<vcenter-netmask> --gateway=<vcenter-gateway> --nameserver=<vcenter-nameserver>
             ```
 
-            Then, replace `<vcenter-static-ip-address>` with a valid IP address from your VMware vSphere environment, and
-            `<vcenter-netmask>`, `<vcenter-gateway>`, and `<vcenter-nameserver>` with the correct values from your VMware vSphere
-            environment.
+            Then, replace `<vcenter-static-ip-address>` with a valid IP address from your VMware vSphere environment. Similarly, replace `<vcenter-netmask>`, `<vcenter-gateway>`, and `<vcenter-nameserver>` with the correct values from your environment. The `<vcenter-netmask>` parameter must be specified in dotted decimal notation, for example, `--netmask=255.255.255.0`.
 
             Once you are finished doing the alterations, save and exit the file.
 
