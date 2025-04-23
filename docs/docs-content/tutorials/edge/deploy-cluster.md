@@ -444,7 +444,7 @@ listed in the table.
 | `PKR_VAR_vcenter_datastore`     | Datastore name          | Switch to the **Storage** view in your vSphere client. The datastore name is displayed in the left navigation tree.                                      |
 | `PKR_VAR_vcenter_network`       | Network name            | Switch to the **Networking** view in your vSphere client. The network name is displayed in the left navigation tree.                                     |
 
-Use the `heredoc` script to create the **.packerenv** file shown below that contains the VMware vCenter details as
+Use the `heredoc` script to create the `.packerenv` file shown below that contains the VMware vCenter details as
 environment variables.
 
 ```bash
