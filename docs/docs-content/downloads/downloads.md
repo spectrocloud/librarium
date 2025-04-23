@@ -44,6 +44,22 @@ Find the download links to supplemental packs for Palette VerteX on the [Palette
 
 Refer to the [Palette VerteX documentation](../vertex/install-palette-vertex/install-palette-vertex.md) for guidance on how to deploy Palette VerteX to your environment.
 
+## Agent Mode
+
+Agent mode is a deployment mode that enables Palette to manage your own host and operating system. Unlike other deployment modes, agent mode gives you more flexibility in managing your infrastructure and OS.
+
+Find the download links to the agent mode installation scripts on the [agent mode downloads](./agent-mode.md) page.
+
+Refer to the [agent mode documentation](../deployment-modes/agent-mode/agent-mode.md) for guidance on how to set up agent mode on your hosts.
+
+<!-- ## CAPI Image Builder
+
+The Cluster Application Programming Interface (CAPI) Image Builder is a tool that is used to simplify the process of creating custom operating system images for Kubernetes clusters. It helps you to create custom OS images for VMware vSphere environments in both airgapped and non-airgapped setups.
+
+Find the download links to the CAPI Image Builder repository and files on the [CAPI Image Builder downloads](./capi-image-builder.md) page.
+
+Refer to the [CAPI Image Builder documentation](../byoos/capi-image-builder/capi-image-builder.md) for guidance on how to use the CAPI Image Builder tool. -->
+
 ## Offline Documentation
 
 The offline documentation is designed for situation where there is limited or no internet access, such as airgapped environments with strict security requirements.
