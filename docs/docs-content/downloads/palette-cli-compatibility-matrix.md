@@ -6,7 +6,7 @@ hide_table_of_contents: false
 sidebar_position: 11
 sidebar_custom_props:
   icon: "terminal"
-tags: ["components"]
+tags: ["components", "downloads"]
 ---
 
 This page lists the version details of various Palette components and their respective Palette releases. Visit the

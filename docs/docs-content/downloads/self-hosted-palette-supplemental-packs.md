@@ -6,7 +6,7 @@ sidebar_position: 30
 hide_table_of_contents: false
 sidebar_custom_props:
   icon: "nodes"
-tags: ["palette", "self-hosted", "airgap"]
+tags: ["palette", "self-hosted", "airgap", "downloads"]
 keywords: ["self-hosted", "enterprise"]
 ---
 

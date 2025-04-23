@@ -1,9 +1,11 @@
 ---
 sidebar_label: "CAPI Image Builder"
 title: "CAPI Image Builder"
-description: "CAPI Image Builder downloads."
+description: "Download links relating to the CAPI Image Builder."
 hide_table_of_contents: false
-sidebar_position: 50
+sidebar_position: 60
+sidebar_custom_props:
+  icon: "cubes"
 tags: ["downloads"]
 ---
 

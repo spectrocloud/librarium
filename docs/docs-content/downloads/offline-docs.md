@@ -6,11 +6,11 @@ hide_table_of_contents: false
 sidebar_position: 60
 sidebar_custom_props:
   icon: "book"
-tags: ["vertex", "enterprise", "airgap", "kubernetes", "offline"]
+tags: ["vertex", "enterprise", "airgap", "kubernetes", "offline", "downloads"]
 keywords: ["self-hosted", "vertex"]
 ---
 
-If you are in an environment that requires the Palette Vertex documentation to be available offline, you can use our
+If you are in an environment that requires the Spectro Cloud documentation to be available offline, you can use our
 offline Docker image to serve the documentation locally. The image is updated nightly to ensure that the latest
 documentation is available. When you start the container, the documentation is available at `http://localhost:8080` and
 you can access it using your browser.

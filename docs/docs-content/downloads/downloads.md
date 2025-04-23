@@ -7,6 +7,7 @@ sidebar_position: 0
 sidebar_custom_props:
   icon: "cloud-arrow-down"
 pagination_next: null
+tags: ["downloads"]
 ---
 
 Explore our downloads section to discover the latest and specific versions of accompanying software for Palette.
@@ -31,7 +32,7 @@ Refer to the [Spectro Cloud CLI Tool documentation](../registries-and-packs/spec
 
 Self-hosted Palette is a version of our Kubernetes management platform that you can install and operate in your own environment, giving you full control over the management plane.
 
-You can find the download links to supplemental packs for self-hosted Palette on the [Self-Hosted Palette Additional Packs](./self-hosted-palette-supplemental-packs.md) page.
+Find the download links to supplemental packs for self-hosted Palette on the [Self-Hosted Palette Additional Packs](./self-hosted-palette-supplemental-packs.md) page.
 
 Refer to the [Self-Hosted Palette documentation](../enterprise-version/install-palette/install-palette.md) for guidance on how to deploy self-hosted Palette to your environment.
 
@@ -39,9 +40,15 @@ Refer to the [Self-Hosted Palette documentation](../enterprise-version/install-p
 
 Palette VerteX is a FIPS-compliant Kubernetes management platform designed specifically for regulated industries such as government and public sector organizations that handle sensitive and classified information. It's available as a self-hosted platform that you can install in your data centers or public cloud providers.
 
-You can find the download links to supplemental packs for Palette VerteX on the [Palette VerteX Additional Packs](./palette-vertex-supplemental-packs.md) page.
+Find the download links to supplemental packs for Palette VerteX on the [Palette VerteX Additional Packs](./palette-vertex-supplemental-packs.md) page.
 
 Refer to the [Palette VerteX documentation](../vertex/install-palette-vertex/install-palette-vertex.md) for guidance on how to deploy Palette VerteX to your environment.
+
+## Offline Documentation
+
+The offline documentation is designed for situation where there is limited or no internet access, such as airgapped environments with strict security requirements.
+
+Refer to the [Offline Documentation](./offline-docs.md) page for guidance on downloading and hosting the Spectro Cloud documentation locally.
 
 ## Resources
 

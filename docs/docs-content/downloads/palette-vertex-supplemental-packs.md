@@ -6,7 +6,7 @@ sidebar_position: 40
 hide_table_of_contents: false
 sidebar_custom_props:
   icon: "nodes"
-tags: ["vertex", "self-hosted", "airgap"]
+tags: ["vertex", "self-hosted", "airgap", "downloads"]
 keywords: ["self-hosted", "vertex"]
 ---
 
