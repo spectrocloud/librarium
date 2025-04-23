@@ -41,22 +41,24 @@ default Cluster API (CAPI) version, and use APIs to register a Nutanix cloud to 
 Before you can register your Nutanix cloud with Palette, you must download the appropriate CAPX manifests and edit them
 accordingly so that the APIs can communicate with Palette.
 
-You need to configure certain components explicitly, while others are optional and will fall back to default settings if not configured. By default, Palette uses CAPI version `v1.5.3`.
+You need to configure certain components explicitly, while others are optional and will fall back to default settings if
+not configured. By default, Palette uses CAPI version `v1.5.3`.
 
 :::warning
 
-If you upgrade any optional component, we strongly recommend upgrading the other optional components to the same version to ensure compatibility.
+If you upgrade any optional component, we strongly recommend upgrading the other optional components to the same version
+to ensure compatibility.
 
 :::
 
 | **Component**               | **Requirement** |
 | --------------------------- | --------------- |
 | `cluster-template`          | Required        |
-| `control-plane-template`     | Required        |
+| `control-plane-template`    | Required        |
 | `infrastructure-components` | Required        |
 | `worker-template`           | Required        |
 | `bootstrap-components`      | Optional        |
-| `control-plane-components`   | Optional        |
+| `control-plane-components`  | Optional        |
 | `core-component`            | Optional        |
 
 ### Required Components
@@ -162,13 +164,16 @@ download and format the manifests appropriately.
 
       </details>
 
-If you are not upgrading the core CAPI version or another optional component, proceed to the [Register the Cloud](#register-the-cloud) section of this guide.
+If you are not upgrading the core CAPI version or another optional component, proceed to the
+[Register the Cloud](#register-the-cloud) section of this guide.
 
 ### Optional Components
 
-To use a core, bootstrap, or control plane component other than `v1.5.3`, you must specify the desired version and download additional CAPI manifests. If you upgrade one of these components, we _strongly_ recommend upgrading the others to the same version to ensure compatibility.
+To use a core, bootstrap, or control plane component other than `v1.5.3`, you must specify the desired version and
+download additional CAPI manifests. If you upgrade one of these components, we _strongly_ recommend upgrading the others
+to the same version to ensure compatibility.
 
-The following example upgrades all three optional components. 
+The following example upgrades all three optional components.
 
 1. Export your CAPI version as an environment variable. For example, if you want to download version `v1.8.6`, issue the
    following command.
@@ -177,7 +182,8 @@ The following example upgrades all three optional components.
    export CAPI_VERSION="v1.8.6"
    ```
 
-2. Issue the commands below to download the optional components. If you do not wish to upgrade all three components, download only the ones you need.
+2. Issue the commands below to download the optional components. If you do not wish to upgrade all three components,
+   download only the ones you need.
 
    ```bash
    curl --remote-name --location https://github.com/kubernetes-sigs/cluster-api/releases/download/$CAPI_VERSION/bootstrap-components.yaml
@@ -191,7 +197,8 @@ The following example upgrades all three optional components.
    - `control-plane-components.yaml`
    - `core-components.yaml`
 
-Generally, these manifests do not require additional modifications and are designed to work as-is. If you need to customize these files, do so now. 
+Generally, these manifests do not require additional modifications and are designed to work as-is. If you need to
+customize these files, do so now.
 
 ## Register the Cloud
 
@@ -262,8 +269,8 @@ cloud to Palette. Alternatively, you can use an API platform such as [Postman](h
 
    :::info
 
-   You must set the cloud `name` as `nutanix` to automatically make the out-of-the-box `nutanix-csi` pack
-   available to users when they create a cluster profile in Palette.
+   You must set the cloud `name` as `nutanix` to automatically make the out-of-the-box `nutanix-csi` pack available to
+   users when they create a cluster profile in Palette.
 
    :::
 
