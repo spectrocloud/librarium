@@ -16,7 +16,7 @@ default Cluster API (CAPI) version, and use APIs to register a Nutanix cloud to 
 ## Prerequisites
 
 - A Nutanix Cluster API (CAPX) version compatible with the desired CAPI version. The default CAPI version for Palette is
-  `1.5.3`. Refer to the Nutanix
+  `v1.5.3`. Refer to the Nutanix
   [CAPI Validated Integrations](https://opendocs.nutanix.com/capx/latest/validated_integrations/#cluster-api)
   compatibility matrix for more information.
 
@@ -41,18 +41,22 @@ default Cluster API (CAPI) version, and use APIs to register a Nutanix cloud to 
 Before you can register your Nutanix cloud with Palette, you must download the appropriate CAPX manifests and edit them
 accordingly so that the APIs can communicate with Palette.
 
-Certain components are required, while others are optional. By default, Palette uses CAPI version `1.5.3`. If you want
-to upgrade CAPI to a different version, you must use all three optional components, and all three should be for the same
-CAPI version.
+You need to configure certain components explicitly, while others are optional and will fall back to default settings if not configured. By default, Palette uses CAPI version `v1.5.3`.
+
+:::warning
+
+If you upgrade any optional component, we strongly recommend upgrading the other optional components to the same version to ensure compatibility.
+
+:::
 
 | **Component**               | **Requirement** |
 | --------------------------- | --------------- |
 | `cluster-template`          | Required        |
-| `controlplane-template`     | Required        |
+| `control-plane-template`     | Required        |
 | `infrastructure-components` | Required        |
 | `worker-template`           | Required        |
 | `bootstrap-components`      | Optional        |
-| `controlplane-components`   | Optional        |
+| `control-plane-components`   | Optional        |
 | `core-component`            | Optional        |
 
 ### Required Components
@@ -64,10 +68,10 @@ download and format the manifests appropriately.
     [Nutanix compatibility matrix](https://opendocs.nutanix.com/capx/latest/validated_integrations/#validated-versions)
     to ensure your desired CAPX version is compatible with your CAPI version. Once you have verified they are
     compatible, export your CAPX version as an environment variable. For example, if you want to download version
-    `v1.6.0`, issue the following command.
+    `v1.5.0`, issue the following command.
 
     ```bash
-    export CAPX_VERSION="v1.6.0"
+    export CAPX_VERSION="v1.5.0"
     ```
 
 2.  Issue the commands below to download the appropriate versions of `infrastructure-components.yaml` and
@@ -158,22 +162,22 @@ download and format the manifests appropriately.
 
       </details>
 
-If you are not upgrading the default CAPI version, proceed to the [Register the Cloud](#register-the-cloud) section of
-this guide.
+If you are not upgrading the core CAPI version or another optional component, proceed to the [Register the Cloud](#register-the-cloud) section of this guide.
 
 ### Optional Components
 
-To use a non-default CAPI version, you must download additional CAPI manifests. Take the following steps to modify your
-CAPI version.
+To use a core, bootstrap, or control plane component other than `v1.5.3`, you must specify the desired version and download additional CAPI manifests. If you upgrade one of these components, we _strongly_ recommend upgrading the others to the same version to ensure compatibility.
 
-1. Export your CAPI version as an environment variable. For example, if you want to download version `v1.9.4`, issue the
+The following example upgrades all three optional components. 
+
+1. Export your CAPI version as an environment variable. For example, if you want to download version `v1.8.6`, issue the
    following command.
 
    ```bash
-   export CAPI_VERSION="v1.9.4"
+   export CAPI_VERSION="v1.8.6"
    ```
 
-2. Issue the commands below to download the required components.
+2. Issue the commands below to download the optional components. If you do not wish to upgrade all three components, download only the ones you need.
 
    ```bash
    curl --remote-name --location https://github.com/kubernetes-sigs/cluster-api/releases/download/$CAPI_VERSION/bootstrap-components.yaml
@@ -181,11 +185,13 @@ CAPI version.
    curl --remote-name --location https://github.com/kubernetes-sigs/cluster-api/releases/download/$CAPI_VERSION/core-components.yaml
    ```
 
-3. Verify that you have the following files downloaded using a command such as `ls -l`.
+3. Verify that you have the applicable files downloaded using a command such as `ls -l`.
 
    - `bootstrap-components.yaml`
    - `control-plane-components.yaml`
    - `core-components.yaml`
+
+Generally, these manifests do not require additional modifications and are designed to work as-is. If you need to customize these files, do so now. 
 
 ## Register the Cloud
 
@@ -256,7 +262,7 @@ cloud to Palette. Alternatively, you can use an API platform such as [Postman](h
 
    :::info
 
-   We recommend setting the cloud `name` as `nutanix` to automatically make the out-of-the-box `nutanix-csi` pack
+   You must set the cloud `name` as `nutanix` to automatically make the out-of-the-box `nutanix-csi` pack
    available to users when they create a cluster profile in Palette.
 
    :::
@@ -286,16 +292,7 @@ cloud to Palette. Alternatively, you can use an API platform such as [Postman](h
         --form "fileName=@${cloudLogo}"
    ```
 
-6. Register the cloud provider.
-
-   ```bash
-   curl --location --request PUT "${ENDPOINT}/v1/clouds/cloudTypes/${CLOUD_TYPE}/content/cloudProvider" \
-        --header "Content-Type: multipart/form-data" \
-        --header "Authorization: ${TOKEN}" \
-        --form "fileName=@${infraComponents}"
-   ```
-
-7. (Optional) If you configured the [optional components](#optional-components) to use a specific CAPI version, register
+6. (Optional) If you configured any [optional components](#optional-components) to use a specific CAPI version, register
    them using the following API calls.
 
    <details>
@@ -338,6 +335,15 @@ cloud to Palette. Alternatively, you can use an API platform such as [Postman](h
       ```
 
    </details>
+
+7. Register the cloud provider.
+
+   ```bash
+   curl --location --request PUT "${ENDPOINT}/v1/clouds/cloudTypes/${CLOUD_TYPE}/content/cloudProvider" \
+        --header "Content-Type: multipart/form-data" \
+        --header "Authorization: ${TOKEN}" \
+        --form "fileName=@${infraComponents}"
+   ```
 
 8. Register the cluster template.
 
