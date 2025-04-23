@@ -152,8 +152,8 @@ zones in your environment. You can use vSphere
 [Tag Categories and Tags](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vcenter-esxi-management/GUID-16422FF7-235B-4A44-92E2-532F6AED0923.html)
 to create zones in your vSphere environment and assign them to vSphere objects.
 
-The zone tags you assign to your vSphere objects, such as a data center and clusters, are applied to the Kubernetes nodes
-you deploy through Palette into your vSphere environment. Kubernetes clusters deployed to other infrastructure
+The zone tags you assign to your vSphere objects, such as a data center and clusters, are applied to the Kubernetes
+nodes you deploy through Palette into your vSphere environment. Kubernetes clusters deployed to other infrastructure
 providers, such as public cloud, may have other native mechanisms for auto discovery of zones.
 
 For example, assume a vCenter environment contains three compute clusters, cluster-1, cluster-2, and cluster-3. To
@@ -325,18 +325,18 @@ The following requirements apply to tags:
 11. Enter the vSphere Machine configuration for the Private Cloud Gateway. We recommend `M` or greater for production
     workloads.
 
-    | **Parameter** | **Description**                                                                                                                                                                                                                                                |
-    | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **S**         | 4 CPU, 4 GB of Memory, and 60 GB of Storage                                                                                                                                                                                                                    |
-    | **M**         | 8 CPU, 8 GB of Memory, and 100 GB of Storage                                                                                                                                                                                                                   |
-    | **L**         | 16 CPU, 16 GB of Memory, and 120 GB of Storage                                                                                                                                                                                                                 |
+    | **Parameter** | **Description**                                                                                                                                                                                                                                                 |
+    | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **S**         | 4 CPU, 4 GB of Memory, and 60 GB of Storage                                                                                                                                                                                                                     |
+    | **M**         | 8 CPU, 8 GB of Memory, and 100 GB of Storage                                                                                                                                                                                                                    |
+    | **L**         | 16 CPU, 16 GB of Memory, and 120 GB of Storage                                                                                                                                                                                                                  |
     | **Custom**    | Specify a custom configuration. If you select `Custom`, you will be prompted to enter the number of CPUs, memory, and storage to allocate to the PCG VM. Refer to the [Custom Machine Configuration](#custom-machine-configuration) table for more information. |
 
     #### Custom Machine Configuration
 
     | **Parameter** | **Description**                                           |
     | ------------- | --------------------------------------------------------- |
-    | **CPU**       | The number of CPUs in the Virtual Machine.                 |
+    | **CPU**       | The number of CPUs in the Virtual Machine.                |
     | **Memory**    | The number of memory to allocate to the Virtual Machine.  |
     | **Storage**   | The amount of storage to allocate to the Virtual Machine. |
 

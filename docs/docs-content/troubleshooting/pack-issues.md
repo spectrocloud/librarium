@@ -70,8 +70,8 @@ Use the following debug steps to learn how to make these configuration changes a
 8. Click the **New manifest** option, and provide a name for the manifest, such as `job-fix-cni`. Click the tick button
    afterwards.
 
-9. Copy the following manifest into the YAML editor. This manifest disables the `kube-proxy` and `aws-node` DaemonSets by
-   applying a node selector that does not match any nodes. It also removes existing Cilium, `kube-dns`, and
+9. Copy the following manifest into the YAML editor. This manifest disables the `kube-proxy` and `aws-node` DaemonSets
+   by applying a node selector that does not match any nodes. It also removes existing Cilium, `kube-dns`, and
    `cert-manager` pods to ensure a clean state for Cilium deployment.
 
    ```yaml
