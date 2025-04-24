@@ -33,7 +33,7 @@ Node labels can also be applied to node pools using our
 
 ## Limitations
 
-- Updates to labels on existing nodes of deployed clusters is not supported.
+- Palette automatically creates certain node labels that are not displayed in the interface. You can still list these labels using `kubectl` or `K9s`, but updates to them are not supported.
 
 ## Prerequisites
 
