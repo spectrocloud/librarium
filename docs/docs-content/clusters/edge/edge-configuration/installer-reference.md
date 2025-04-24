@@ -30,15 +30,16 @@ listed in alphabetical order.
 | ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- | ----------- |
 | `stylus.debug`                 | Enable this parameter for debug output. Allowed values are `true` or `false`.                                                                                                            | boolean | `false`     |
 | `stylus.disablePasswordUpdate` | Disables the ability to update Operating System (OS) user passwords from the Local UI if set to true. Updating the password through the OS and API is still allowed.                     | boolean | `false`     |
+| `stylus.enableMultiNode`       | When set to `true`, the host can link with other nodes to form a multi-node cluster. For more information, refer to [Link Hosts](../local-ui/cluster-management/link-hosts.md).          | boolean | `false`     |
+| `stylus.externalRegistries`    | Use this parameter to configure multiple external registries and apply domain re-mapping rules. Refer to [Multiple External Registries](#multiple-external-registries) for more details. | Object  | None        |
 | `stylus.featureGate`           | This parameter contains a comma-separated list of features you want to enable on your host.                                                                                              | String  | `''`        |
 | `stylus.includeTui`            | Enable Palette TUI for initial Edge host configuration. For more information, refer to [Initial Edge Host Configuration](../site-deployment/site-installation/initial-setup.md).         | boolean | `false`     |
 | `stylus.installationMode`      | Allowed values are `connected` and `airgap`. `connected` means the Edge host is connected to Palette; `airgap` means the Edge host has no connection.                                    | String  | `connected` |
 | `stylus.localUI.port`          | Specifies the port that the Local UI is exposed on.                                                                                                                                      | Integer | `5080`      |
-| `stylus.site`                  | Review [Site Parameters](#site-parameters) for more information.                                                                                                                         | Object  | None        |
-| `stylus.enableMultiNode`       | When set to `true`, the host can link with other nodes to form a multi-node cluster. For more information, refer to [Link Hosts](../local-ui/cluster-management/link-hosts.md).          | boolean | `false`     |
-| `stylus.externalRegistries`    | Use this parameter to configure multiple external registries and apply domain re-mapping rules. Refer to [Multiple External Registries](#multiple-external-registries) for more details. | Object  | None        |
 | `stylus.registryCredentials`   | Only used when a single external registry is in use and no mapping rules are needed. Refer to [Single External Registry](#single-external-registry) for more details.                    | Object  | None        |
+| `stylus.site`                  | Review [Site Parameters](#site-parameters) for more information.                                                                                                                         | Object  | None        |
 | `stylus.trace`                 | Enable trace output. Allowed values are `true` or `false`.                                                                                                                               | boolean | `false`     |
+| `stylus.vip.skip`              | When set to `true`, the installer skips the configuration of kube-vip and enables the use of an external load balancer instead. Applicable only in agent deployment mode.                | boolean | `false`     |
 
 ### Feature Gates
 
@@ -423,21 +424,23 @@ able to access your Edge host because there are no users.
 
 :::
 
-| Parameter                     | Description                                                                                                                                           | Default |
-| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
-| `stages.*.users`              | The list of users to create at any cloud-init stage. Replace `*` with the specific stage. Each list item accepts parameters as follows in this table. | None    |
-| `stages.*.users[*].groups`    | The list of groups that the user belongs to. Replace `*` with your username.                                                                          | None    |
-| `stages.*.users[*].passwd`    | The password of the user. Replace `*` with your username.                                                                                             | None    |
-| `stages.initramfs`            | The `initramfs` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md).                             | None    |
-| `stages.rootfs`               | The `rootfs` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                                 | None    |
-| `stages.boot`                 | The `boot` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                                   | None    |
-| `stages.fs`                   | The `fs` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                                     | None    |
-| `stages.network`              | The `network` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                                | None    |
-| `stages.reconcile`            | The `reconcile` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                              | None    |
-| `stages.after-install`        | The `after-install` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                          | None    |
-| `stages.after-install-chroot` | The `after-install-chroot` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                   | None    |
-| `stages.after-reset`          | The `after-reset` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                            | None    |
-| `stages.after-reset-chroot`   | The `after-reset-chroot` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                     | None    |
-| `stages.before-install`       | The `before-install` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                         | None    |
-| `stages.before-upgrade`       | The `before-upgrade` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                         | None    |
-| `stages.before-reset`         | The `before-reset` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                           | None    |
+| Parameter                               | Description                                                                                                                                           | Default |
+| --------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| `stages.*.users`                        | The list of users to create at any cloud-init stage. Replace `*` with the specific stage. Each list item accepts parameters as follows in this table. | None    |
+| `stages.*.users[*].groups`              | The list of groups that the user belongs to. Replace `*` with your username.                                                                          | None    |
+| `stages.*.users[*].passwd`              | The password of the user. Replace `*` with your username.                                                                                             | None    |
+| `stages.*.users[*].lock_passwd`         | When set to `true`, disables password configuration by the user. Replace `*` with your username.                                                      | `false` |
+| `stages.*.users[*].ssh_authorized_keys` | The list of public SSH keys authorized for the user. Replace `*` with your username.                                                                  | None    |
+| `stages.initramfs`                      | The `initramfs` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md).                             | None    |
+| `stages.rootfs`                         | The `rootfs` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                                 | None    |
+| `stages.boot`                           | The `boot` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                                   | None    |
+| `stages.fs`                             | The `fs` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                                     | None    |
+| `stages.network`                        | The `network` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                                | None    |
+| `stages.reconcile`                      | The `reconcile` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                              | None    |
+| `stages.after-install`                  | The `after-install` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                          | None    |
+| `stages.after-install-chroot`           | The `after-install-chroot` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                   | None    |
+| `stages.after-reset`                    | The `after-reset` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                            | None    |
+| `stages.after-reset-chroot`             | The `after-reset-chroot` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                     | None    |
+| `stages.before-install`                 | The `before-install` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                         | None    |
+| `stages.before-upgrade`                 | The `before-upgrade` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                         | None    |
+| `stages.before-reset`                   | The `before-reset` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                           | None    |
