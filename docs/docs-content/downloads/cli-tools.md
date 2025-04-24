@@ -13,14 +13,15 @@ The following sections provide links to download the available CLI tools related
 
 ## Palette CLI
 
-The Palette CLI is supported on Linux operating systems running on AMD64/x86_64 architecture.
+The Palette CLI is supported on Linux operating systems running on AMD64 (x86_64) architecture.
 
 <Tabs>
 
 <TabItem label="Palette CLI" value="palette-cli">
 
-| Version <!-- palette-cli-version-table --> | Download URL                                                                      | Checksum (SHA256)                                                  |
-| ------------------------------------------ | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| Version <!-- palette-cli-version-table --> | Download URL                                                           | Checksum (SHA256)                                                  |
+| ------------------------------------------ | ---------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| <!-- palette-cli-4.6.b --> 4.6.5           | https://software.spectrocloud.com/palette-cli/v4.6.5/linux/cli/palette | `b56af3f083130ca0665e8c0a4f3e2d903572209f714a50f19c0110452122e28d` |
 | <!-- palette-cli-4.6.a --> 4.6.1           | https://software.spectrocloud.com/palette-cli/v4.6.1/linux/cli/palette | `db6da8dc1648b27ca8057fbbe3d95e7d371136f52395cef3dc3bd8ac62c287ae` |
 | 4.6.0                                      | https://software.spectrocloud.com/palette-cli/v4.6.0/linux/cli/palette | `07d63693a8c90483f6f000d4580cfd86f81178e4b96cfbd32e0f50955d57eec7` |
 | 4.5.7                                      | https://software.spectrocloud.com/palette-cli/v4.5.7/linux/cli/palette | `e37032f6aac7c15a54e6d2085021ae795669a292cf7a5993a945592b8b8c0d9e` |
@@ -34,6 +35,7 @@ The Palette CLI is supported on Linux operating systems running on AMD64/x86_64 
 
 | Palette Release <!-- cli-compatibility-table --> | Recommended CLI Version |
 | ------------------------------------------------ | ----------------------- |
+| <!-- cli-4.6.b --> 4.6.23                        | v4.6.5                  |
 | <!-- cli-4.6.a --> 4.6.12                        | v4.6.1                  |
 | 4.6.6                                            | v4.6.0                  |
 | 4.5.21                                           | v4.5.7                  |
@@ -52,14 +54,15 @@ The Palette CLI is supported on Linux operating systems running on AMD64/x86_64 
 
 ## Palette Edge CLI
 
-The Palette Edge CLI is supported on Linux operating systems running on AMD64/x86_64 architecture.
+The Palette Edge CLI is supported on Linux operating systems running on AMD64 (x86_64) architecture.
 
 <Tabs>
 
 <TabItem label="Palette Edge CLI" value="palette-edge-cli">
 
-| Version <!-- edge-version-table --> | Download URL                                                                       | Checksum (SHA256)                                                  |
-| ----------------------------------- | -------------------------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| Version <!-- edge-version-table --> | Download URL                                                            | Checksum (SHA256)                                                  |
+| ----------------------------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| <!-- edge-4.6.b --> 4.6.16          | https://software.spectrocloud.com/stylus/v4.6.16/cli/linux/palette-edge | `628c3668633943e9fd4b7859093948843d508494ec88b906f75aea9e80ec0f5f` |
 | <!-- edge-4.6.a --> 4.6.9           | https://software.spectrocloud.com/stylus/v4.6.9/cli/linux/palette-edge  | `e50a5533316e96c8b145d8e0c1e2b3e9958350d4aed61e8292cd31b4e7fb4196` |
 | 4.6.3                               | https://software.spectrocloud.com/stylus/v4.6.3/cli/linux/palette-edge  | `639d325659b369b8e71e00d36763b6088ac1932dbdbd105bdf3c63051cfd500b` |
 | 4.5.15                              | https://software.spectrocloud.com/stylus/v4.5.15/cli/linux/palette-edge | `5265133de8b204b6569b559a895aa03514b42b3285640755ed29e23d812e21cb` |
@@ -75,6 +78,7 @@ The Palette Edge CLI is supported on Linux operating systems running on AMD64/x8
 
 | Palette Release <!-- edge-cli-compatibility-table --> | CLI Version |
 | ----------------------------------------------------- | ----------- |
+| <!-- edge-4.6.b --> 4.6.23                            | v4.6.16     |
 | <!-- edge-4.6.a --> 4.6.12                            | v4.6.9      |
 | 4.6.6                                                 | v4.6.3      |
 | 4.5.21                                                | v4.5.15     |
