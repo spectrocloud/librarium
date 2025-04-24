@@ -243,11 +243,11 @@ The `stylus.site` blocks accept the following parameters.
 
 :::info
 
-If you do not specify a host name for the Edge host with `stylus.site.name` , the system will generate one from the
-serial number of the device. If the Edge Installer cannot identify the serial number, it will generate a random ID
-instead. In cases where the hardware does not have a serial number, we suggest that you specify a value so there is
-minimal chance of duplication. Use the value `"$random"` to generate a random ID. You can also use the `DeviceUIDPaths`
-to read in a value from a system file.
+If you do not specify an Edge host ID for the Edge host with `stylus.site.name` , the system will generate one from the
+serial number of the device in the format of `edge-<serial-number>`. If the Edge Installer cannot identify the serial
+number, it will generate a random ID instead. In cases where the hardware does not have a serial number, we suggest that
+you specify a value so there is minimal chance of duplication. Use the value `"$random"` to generate a random ID. You
+can also use the `DeviceUIDPaths` to read in a value from a system file.
 
 :::
 
