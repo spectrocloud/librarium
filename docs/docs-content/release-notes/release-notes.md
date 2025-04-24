@@ -32,16 +32,15 @@ tags: ["release-notes"]
 - Fixed an issue where tags that contained spaces prevented [AWS](../clusters/public-cloud/aws/aws.md) clusters from being deployed via API. 
 - Fixed an issue where simultaneous updates to [EKS](../clusters/public-cloud/aws/eks.md) logging and VPC config caused reconciliation failures due to API limitations.
 - Fixed an issue in [MAAS](../clusters/data-center/maas/maas.md) clusters where only the first node pool got repaved when a full cluster repave was expected.
-- Fixed a UI discrepancy where the worker node count on the cluster **Review** page always displayed `1` for clusters with autoscaler enabled. This did not affect cluster functionality.
+- Fixed a UI discrepancy where the worker node count on the cluster **Review** page displayed the **Number of nodes in pool** instead of the **Minimum size** and **Maximum size** for clusters with autoscaler enabled. This did not affect cluster functionality.
 - Fixed an issue that caused repeated reconciliation errors when deploying an [EKS](../clusters/public-cloud/aws/eks.md) cluster with private cluster endpoint access. This did not affect cluster functionality.
-- Fixed an issue where nil pointer dereferences caused a panic and prevented [EKS](../clusters/public-cloud/aws/eks.md) clusters from being deployed.
+- Fixed an issue during cluster setup where selecting **Copy from Control Plane Pool** would reset certain worker pool configurations, such as autoscaler. Copied changes are now restricted to cloud configurations.
 
 #### Improvements
 
 - Palette and VerteX emails have been redesigned to ensure consistency and improve accessibility. The updates have been
   applied to sign-up, login, password reset, and billing update emails.
-- The existing **Enable Autoscaler** setting is now honored when copying configurations from a control plane or worker pool.
-- Default resource quotas are now set for the Palette `system-upgrade` namespace.
+- ResourceQuota and LimitRange resources are now set in the `system-upgrade` namespace.
 
 #### Deprecations and Removals
 
@@ -322,10 +321,6 @@ available. For more details, refer to the Terraform provider
 - [Agent mode](../deployment-modes/agent-mode/agent-mode.md) feature has now exited Tech Preview and is ready to use for
   production workloads. Check out the [Install Palette Agent](../deployment-modes/agent-mode/install-agent-host.md)
   guide for further details.
-
-#### Bug Fixes
-
-- Fixed an issue that occasionally prevented tenant clusters from publishing cluster health events.
 
 #### Improvements
 
