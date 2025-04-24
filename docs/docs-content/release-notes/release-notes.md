@@ -31,8 +31,8 @@ tags: ["release-notes"]
 
 - Fixed an issue where tags that contained spaces prevented [AWS](../clusters/public-cloud/aws/aws.md) clusters from
   being deployed via API.
-- Fixed an issue where simultaneous updates to [EKS](../clusters/public-cloud/aws/eks.md) logging and VPC configuration caused
-  reconciliation failures due to API limitations.
+- Fixed an issue where simultaneous updates to [EKS](../clusters/public-cloud/aws/eks.md) logging and VPC configuration
+  caused reconciliation failures due to API limitations.
 - Fixed an issue in [MAAS](../clusters/data-center/maas/maas.md) clusters where only the first node pool got repaved
   when a full cluster repave was expected.
 - Fixed a UI discrepancy where the worker node count on the cluster **Review** page displayed the **Number of nodes in
