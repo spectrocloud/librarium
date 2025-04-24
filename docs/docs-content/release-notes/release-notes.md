@@ -29,14 +29,25 @@ tags: ["release-notes"]
 
 #### Bug Fixes
 
-- Fixed a bug where simultaneous updates to EKS logging and VPC config caused reconciliation failures due to API
-  limitations.
-- Fixed an issue in MAAS clusters where only the first node pool gets repaved when a full cluster repave is expected.
+- Fixed an issue where tags that contained spaces prevented [AWS](../clusters/public-cloud/aws/aws.md) clusters from
+  being deployed via API.
+- Fixed an issue where simultaneous updates to [EKS](../clusters/public-cloud/aws/eks.md) logging and VPC configuration
+  caused reconciliation failures due to API limitations.
+- Fixed an issue in [MAAS](../clusters/data-center/maas/maas.md) clusters where only the first node pool got repaved
+  when a full cluster repave was expected.
+- Fixed a UI discrepancy where the worker node count on the cluster **Review** page displayed the **Number of nodes in
+  pool** instead of the **Minimum size** and **Maximum size** for clusters with autoscaler enabled. This did not affect
+  cluster functionality.
+- Fixed an issue that caused repeated reconciliation errors when deploying an [EKS](../clusters/public-cloud/aws/eks.md)
+  cluster with private cluster endpoint access. This did not affect cluster functionality.
+- Fixed an issue during cluster setup where selecting **Copy from Control Plane Pool** would reset certain worker pool
+  configurations, such as autoscaler. Copied changes are now restricted to cloud configurations.
 
 #### Improvements
 
 - Palette and VerteX emails have been redesigned to ensure consistency and improve accessibility. The updates have been
   applied to sign-up, login, password reset, and billing update emails.
+- ResourceQuota and LimitRange resources are now set in the `system-upgrade` namespace.
 
 #### Deprecations and Removals
 
@@ -64,6 +75,12 @@ tags: ["release-notes"]
   elements are displayed across the entire product interface. Check out the
   [Welcome to the fold: meet the new Spectro Cloud brand](https://www.spectrocloud.com/blog/meet-the-new-spectro-cloud-brand)
   blog post to learn more.
+
+#### Bug Fixes
+
+- Fixed an issue that prevented DNS configuration changes made using the Terminal User Interface (TUI) from being
+  applied without restarting the `CoreDNS` deployment.
+- Fixed an issue where password updates were delayed on appliance mode [Edge](../clusters/edge/edge.md) hosts.
 
 #### Deprecations and Removals
 
@@ -130,6 +147,13 @@ compatible version of the Palette CLI.
   [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
 - The `spectrocloud_cluster_eks` Terraform resource now supports the specification of availability zones and subnets.
   For more information, refer to the Spectro Cloud Terraform provider
+  [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
+- The `spectrocloud_cluster_profile` Terraform resource now supports defining cluster profile variables and referencing
+  them in the applicable `spectrocloud_cluster_<type>` resource during the same `terraform apply`. For more information,
+  refer to the Spectro Cloud Terraform provider
+  [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
+- The `spectrocloud_cluster_aws` and `spectrocloud_cluster_eks` Terraform resources now support `tag_maps`. For more
+  information, refer to the Spectro Cloud Terraform provider
   [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
 
 ### Virtual Machine Orchestrator (VMO)
@@ -471,6 +495,7 @@ compatible version of the Palette CLI.
   [Local UI](../clusters/edge/local-ui/local-ui.md) and API. Only one update can be in progress now.
 - Fixed an issue where installing a Palette [pack](../integrations/integrations.mdx) through a Helm chart incorrectly
   sets the Helm install version.
+- Fixed an issue where NTP settings modified via [Local UI](../clusters/edge/local-ui/local-ui.md) did not persist.
 
 ### Features
 
