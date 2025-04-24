@@ -68,8 +68,8 @@ Download the CAPI Image Builder compressed archive file using the following link
 
 ## Compatibility Matrix for Kubernetes Versions
 
-This page lists the supported Kubernetes versions for the CAPI Image Builder, along with the compatible versions of its
-dependencies.
+The following table lists the supported Kubernetes versions for the CAPI Image Builder, along with the compatible versions of its
+dependencies. You can also refer to this when choosing the airgap Kubernetes pack binary of the version for which the image will be generated. You can find the airgapped Kubernetes packs on the [Self-Hosted Palette Additional Packs](./self-hosted-palette-supplemental-packs.md) and [Palette VerteX Additional Packs](./palette-vertex-supplemental-packs.md) pages.
 
 | Kubernetes Version | Dependencies Version                                                                        |
 | ------------------ | ------------------------------------------------------------------------------------------- |
