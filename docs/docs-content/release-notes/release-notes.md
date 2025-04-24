@@ -31,7 +31,7 @@ tags: ["release-notes"]
 
 - Fixed an issue where tags that contained spaces prevented [AWS](../clusters/public-cloud/aws/aws.md) clusters from
   being deployed via API.
-- Fixed an issue where simultaneous updates to [EKS](../clusters/public-cloud/aws/eks.md) logging and VPC config caused
+- Fixed an issue where simultaneous updates to [EKS](../clusters/public-cloud/aws/eks.md) logging and VPC configuration caused
   reconciliation failures due to API limitations.
 - Fixed an issue in [MAAS](../clusters/data-center/maas/maas.md) clusters where only the first node pool got repaved
   when a full cluster repave was expected.
@@ -80,7 +80,7 @@ tags: ["release-notes"]
 
 - Fixed an issue that prevented DNS configuration changes made using the Terminal User Interface (TUI) from being
   applied without restarting the `CoreDNS` deployment.
-- Fixed an issue where password updates were delayed on appliance mode [Edge](../clusters/edge/edge.md) hosts
+- Fixed an issue where password updates were delayed on appliance mode [Edge](../clusters/edge/edge.md) hosts.
 
 #### Deprecations and Removals
 
