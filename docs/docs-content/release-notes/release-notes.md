@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## April 24, 2025 - Release 4.6.x
+## April 25, 2025 - Release 4.6.x
 
 ### Bug Fixes
 
@@ -20,6 +20,11 @@ tags: ["release-notes"]
 - Fixed an issue where
   [Software Bill of Materials (SBOM)](../clusters/cluster-management/compliance-scan.md#sbom-dependencies--vulnerabilities)
   scans failed to execute successfully for all clusters.
+- Fixed an issue where POST API calls to `/v1/spectroclusters/edge-native` failed for U.S. multi-tenant SaaS environments.
+
+### Improvements
+
+- The default timeout for [remote shell](../clusters/edge/cluster-management/remote-shell.md) has been increased to 12 hours of inactivity. 
 
 ## April 19, 2025 - Release 4.6.23 {#release-notes-4.6.b}
 
