@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## April 25, 2025 - Release 4.6.x
+## April 29, 2025 - Release 4.6.x
 
 ### Bug Fixes
 
@@ -22,6 +22,7 @@ tags: ["release-notes"]
   scans failed to execute successfully for all clusters.
 - Fixed an issue where POST API calls to `/v1/spectroclusters/edge-native` failed for U.S. multi-tenant SaaS
   environments.
+- Fixed an issue that caused pack downloads with a double hyphen (`--`) in the prefix to fail.
 
 ### Improvements
 
