@@ -38,6 +38,13 @@ are:
 - Container Storage Interface (CSI)
   - vSphere CSI
 
+:::info
+
+Please note that Ubuntu Pro subscription keys must be obtained independently or purchased through Spectro Cloud. Get in
+touch with your support representative to find out more.
+
+:::
+
 ## Management Plane
 
 All services in the management plane are FIPS compiled with Go using
