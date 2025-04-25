@@ -8,7 +8,7 @@ download the corresponding version of the agent installation script.
 
 1. Use the following command to identify the agent version for your Palette instance. Replace `<palette-endpoint>` with
    your Palette endpoint and `<api-key>` with your
-   [Palette API key](../user-management/authentication/api-key/api-key.md).
+   [Palette API key](/user-management/authentication/api-key/).
 
    ```shell
    curl --location --request GET 'https://<palette-endpoint>/v1/services/stylus/version' --header 'Content-Type: application/json' --header 'Apikey: <api-key>'  | jq --raw-output '.spec.latestVersion.content | match("version: ([^\n]+)").captures[0].string'
