@@ -21,9 +21,8 @@ This guide demonstrates how to implement your own disk and VM templates using Ku
 
 - A VMO profile. Check out the [Create a VMO Profile](../../create-vmo-profile.md) guide to learn how you can create
   this profile.
-- A cluster deployed with this VMO profile. Check out the
-  [Deploy a Cluster](../../../clusters/public-cloud/deploy-k8s-cluster.md) tutorial for detailed steps on how you can
-  deploy clusters to a public cloud.
+- A cluster deployed with this VMO profile. Check out the [Getting Started](/getting-started/) tutorials for detailed
+  steps on how you can deploy clusters to a public cloud.
 
 ## Create a Template
 
