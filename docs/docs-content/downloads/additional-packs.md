@@ -29,7 +29,7 @@ self-hosted instances of Palette and Palette VerteX.
 
 ### Usage Instructions
 
-<Tabs>
+<Tabs groupId="Palette">
 <TabItem label="Self-hosted Palette" value="self-hosted-palette">
 
 You must SSH into your Palette airgap support VM to download and install the binary. You must also provide the username
@@ -183,7 +183,7 @@ use for the workload clusters.
 
 ### Usage Instructions
 
-<Tabs>
+<Tabs groupId="Palette">
 <TabItem label="Self-hosted Palette" value="self-hosted-palette">
 
 Use the provided download URL to download the OVA and upload it to your vSphere environment. The OVA must be uploaded to
@@ -255,12 +255,15 @@ https://vmwaregoldenimage-console.s3.us-east-2.amazonaws.com/u-2004-0-k-1259-fip
 
 ## Kubernetes Requirements for Palette VMware Installations
 
+<!-- prettier-ignore-start -->
+
 The following table presents the Kubernetes version corresponding to each Palette version for
 [VMware](../enterprise-version/install-palette/install-on-vmware/install-on-vmware.md) and
 [Kubernetes](../enterprise-version/install-palette/install-on-kubernetes/install-on-kubernetes.md) installations.
 Additionally, for VMware installations, it provides the download URLs for the required Operating System and Kubernetes
 distribution OVA. Ensure that you use the FIPS OVA URL if you require a
-
 <VersionedLink text="FIPS" url="/vertex/fips/" /> compliant installation.
+
+<!-- prettier-ignore-end -->
 
 <PartialsComponent category="self-hosted" name="kubernetes-palette-versions" />
