@@ -22,6 +22,13 @@ are:
 
 - Operating System (OS)
 
+  :::info
+
+  Ubuntu Pro subscription keys must be obtained independently or purchased through Spectro Cloud. Contact your support
+  representative to learn more.
+
+  :::
+
   - Ubuntu Pro
 
 - Kubernetes
@@ -35,13 +42,6 @@ are:
 
 - Container Storage Interface (CSI)
   - vSphere CSI
-
-:::info
-
-Ubuntu Pro subscription keys must be obtained independently or purchased through Spectro Cloud. Contact your support
-representative to learn more.
-
-:::
 
 ## Management Plane
 
