@@ -38,8 +38,7 @@ are:
 
 :::info
 
-Please note that Ubuntu Pro subscription keys must be obtained independently or purchased through Spectro Cloud. Get in
-touch with your support representative to find out more.
+Ubuntu Pro subscription keys must be obtained independently or purchased through Spectro Cloud. Contact your support representative to learn more.
 
 :::
 
