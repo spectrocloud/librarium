@@ -33,9 +33,9 @@ to deploy clusters in AWS using STS. Without this configuration, the STS option 
    TOKEN=$(curl --insecure --location 'https://example.com/v1/auth/syslogin' \
     --header 'Content-Type: application/json' \
     --data '{
-    "password": "**********",
-    "username": "**********"
-    }')
+    "username": "**********",
+    "password": "**********"
+    }' | jq ."Authorization")
    ```
 
 3. Next, prepare a payload for the AWS account you want to configure. 
@@ -44,9 +44,9 @@ to deploy clusters in AWS using STS. Without this configuration, the STS option 
     ```json
     CONFIG_JSON=$(cat <<EOF
     {
-    "accessKey": "**********",
-    "secretKey": "**********",
-    "accountId": "123456789"
+        "accessKey": "**********",
+        "secretKey": "**********",
+        "accountId": "123456789"
     }
     EOF
     )
@@ -62,7 +62,7 @@ to deploy clusters in AWS using STS. Without this configuration, the STS option 
 
     ```bash
     curl --request POST \
-        --url https://<palette-api-url>/v1/system/config/aws/account \
+        --url https://<palette-api-url>/v1/system/config/aws/sts/account \
         --header 'Authorization: $TOKEN' \
         --data '$CONFIG_JSON'
     ```
