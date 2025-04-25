@@ -1,13 +1,13 @@
 ---
-sidebar_label: "CAPI Image Builder"
-title: "CAPI Image Builder"
+sidebar_label: "CAPI Image Builder Downloads"
+title: "CAPI Image Builder Downloads"
 description: "Download links relating to the CAPI Image Builder."
 hide_table_of_contents: false
 draft: true
 sidebar_position: 60
 sidebar_custom_props:
   icon: "cubes"
-tags: ["downloads"]
+tags: ["downloads", "byoos", "vmware", "airgap"]
 ---
 
 ## Download CAPI Image Builder
@@ -68,8 +68,10 @@ Download the CAPI Image Builder compressed archive file using the following link
 
 ## Compatibility Matrix for Kubernetes Versions
 
-The following table lists the supported Kubernetes versions for the CAPI Image Builder, along with the compatible versions of its
-dependencies. You can also refer to this when choosing the airgap Kubernetes pack binary of the version for which the image will be generated. You can find the airgapped Kubernetes packs on the [Self-Hosted Palette Additional Packs](./self-hosted-palette-supplemental-packs.md) and [Palette VerteX Additional Packs](./palette-vertex-supplemental-packs.md) pages.
+The following table lists the supported Kubernetes versions for the CAPI Image Builder, along with the compatible
+versions of its dependencies. You can also refer to this when choosing the airgap Kubernetes pack binary of the version
+for which the image will be generated. You can find the airgapped Kubernetes packs on the
+[Additional Packs for Airgap Environments](./additional-packs.md) page.
 
 | Kubernetes Version | Dependencies Version                                                                        |
 | ------------------ | ------------------------------------------------------------------------------------------- |

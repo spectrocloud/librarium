@@ -33,35 +33,35 @@ Find the download links for the Spectro Cloud CLI tool on the [CLI Tools](./cli-
 Refer to the [Spectro Cloud CLI Tool documentation](../registries-and-packs/spectro-cli-reference.md) for guidance on
 installing and using the Spectro Cloud CLI tool.
 
-## Self-Hosted Palette
+## Self-Hosted Palette Airgap Packs
 
 Self-hosted Palette is a version of our Kubernetes management platform that you can install and operate in your own
 environment, giving you full control over the management plane.
 
 Find the download links to supplemental packs for self-hosted Palette on the
-[Self-Hosted Palette Additional Packs](./self-hosted-palette-supplemental-packs.md) page.
+[Additional Packs for Airgap Environments](./additional-packs.md) page.
 
 Refer to the [Self-Hosted Palette documentation](../enterprise-version/install-palette/install-palette.md) for guidance
 on how to deploy self-hosted Palette to your environment.
 
-## Palette VerteX
+## Palette VerteX Airgap Packs
 
 Palette VerteX is a FIPS-compliant Kubernetes management platform designed specifically for regulated industries such as
 government and public sector organizations that handle sensitive and classified information. It's available as a
 self-hosted platform that you can install in your data centers or public cloud providers.
 
 Find the download links to supplemental packs for Palette VerteX on the
-[Palette VerteX Additional Packs](./palette-vertex-supplemental-packs.md) page.
+[Additional Packs for Airgap Environments](./additional-packs.md) page.
 
 Refer to the [Palette VerteX documentation](../vertex/install-palette-vertex/install-palette-vertex.md) for guidance on
 how to deploy Palette VerteX to your environment.
 
-## Agent Mode
+## Agent Mode Installation Scripts
 
 Agent mode is a deployment mode that enables Palette to manage your own host and operating system. Unlike other
 deployment modes, agent mode gives you more flexibility in managing your infrastructure and OS.
 
-Find the download links to the agent mode installation scripts on the [agent mode downloads](./agent-mode.md) page.
+Find the download links to the agent mode installation scripts on the [Agent Mode Downloads](./agent-mode.md) page.
 
 Refer to the [agent mode documentation](../deployment-modes/agent-mode/agent-mode.md) for guidance on how to set up
 agent mode on your hosts.
@@ -70,7 +70,7 @@ agent mode on your hosts.
 
 The Cluster Application Programming Interface (CAPI) Image Builder is a tool that is used to simplify the process of creating custom operating system images for Kubernetes clusters. It helps you to create custom OS images for VMware vSphere environments in both airgapped and non-airgapped setups.
 
-Find the download links to the CAPI Image Builder repository and files on the [CAPI Image Builder downloads](./capi-image-builder.md) page.
+Find the download links to the CAPI Image Builder repository and files on the [CAPI Image Builder Downloads](./capi-image-builder.md) page.
 
 Refer to the [CAPI Image Builder documentation](../byoos/capi-image-builder/capi-image-builder.md) for guidance on how to use the CAPI Image Builder tool. -->
 
@@ -84,9 +84,8 @@ documentation locally.
 
 ## Resources
 
-- TBD
-- TBD
-- TBD
-- TBD
-- TBD
-- TBD
+- [CLI Tools](./cli-tools.md)
+- [Additional Packs for Airgap Environments](./additional-packs.md)
+- [Agent Mode Downloads](./agent-mode.md)
+<!-- - [CAPI Image Builder Downloads](./capi-image-builder.md) -->
+- [Offline Documentation](./offline-docs.md)

@@ -6,7 +6,7 @@ hide_table_of_contents: false
 sidebar_position: 10
 sidebar_custom_props:
   icon: "terminal"
-tags: ["downloads"]
+tags: ["downloads", "palette-cli"]
 ---
 
 The following sections provide links to download the available CLI tools related to Palette and Spectro Cloud.

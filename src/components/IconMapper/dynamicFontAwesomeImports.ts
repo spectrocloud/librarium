@@ -10,10 +10,10 @@ import { faNetworkWired } from '@fortawesome/free-solid-svg-icons';
 import { faServer } from '@fortawesome/free-solid-svg-icons';
 import { faRoad } from '@fortawesome/free-solid-svg-icons';
 import { faUsers } from '@fortawesome/free-solid-svg-icons';
+import { faBook } from '@fortawesome/free-solid-svg-icons';
 import { faWarehouse } from '@fortawesome/free-solid-svg-icons';
 import { faFlagCheckered } from '@fortawesome/free-solid-svg-icons';
 import { faPalette } from '@fortawesome/free-solid-svg-icons';
-import { faBook } from '@fortawesome/free-solid-svg-icons';
 import { faBookmark } from '@fortawesome/free-solid-svg-icons';
 import { faGavel } from '@fortawesome/free-solid-svg-icons';
 import { faTowerObservation } from '@fortawesome/free-solid-svg-icons';
@@ -37,10 +37,10 @@ export const fontAwesomeIcons = {
   "server": faServer,
   "road": faRoad,
   "users": faUsers,
+  "book": faBook,
   "warehouse": faWarehouse,
   "flag-checkered": faFlagCheckered,
   "palette": faPalette,
-  "book": faBook,
   "bookmark": faBookmark,
   "gavel": faGavel,
   "tower-observation": faTowerObservation,

@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Agent Mode"
-title: "Agent Mode"
+sidebar_label: "Agent Mode Downloads"
+title: "Agent Mode Downloads"
 description: "Download links relating to agent mode."
 hide_table_of_contents: false
 sidebar_position: 50
