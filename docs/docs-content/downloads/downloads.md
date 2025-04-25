@@ -33,7 +33,10 @@ Find the download links for the Spectro Cloud CLI tool on the [CLI Tools](./cli-
 Refer to the [Spectro Cloud CLI Tool documentation](../registries-and-packs/spectro-cli-reference.md) for guidance on
 installing and using the Spectro Cloud CLI tool.
 
-## Self-Hosted Palette Airgap Packs
+## Additional Packs for Airgap Environments
+
+<Tabs>
+<TabItem label="Self-hosted Palette" value="self-hosted-palette">
 
 Self-hosted Palette is a version of our Kubernetes management platform that you can install and operate in your own
 environment, giving you full control over the management plane.
@@ -44,7 +47,9 @@ Find the download links to supplemental packs for self-hosted Palette on the
 Refer to the [Self-Hosted Palette documentation](../enterprise-version/install-palette/install-palette.md) for guidance
 on how to deploy self-hosted Palette to your environment.
 
-## Palette VerteX Airgap Packs
+</TabItem>
+
+<TabItem label="Palette VerteX" value="palette-vertex">
 
 Palette VerteX is a FIPS-compliant Kubernetes management platform designed specifically for regulated industries such as
 government and public sector organizations that handle sensitive and classified information. It's available as a
@@ -55,6 +60,10 @@ Find the download links to supplemental packs for Palette VerteX on the
 
 Refer to the [Palette VerteX documentation](../vertex/install-palette-vertex/install-palette-vertex.md) for guidance on
 how to deploy Palette VerteX to your environment.
+
+</TabItem>
+
+</Tabs>
 
 ## Agent Mode Installation Scripts
 
@@ -87,5 +96,5 @@ documentation locally.
 - [CLI Tools](./cli-tools.md)
 - [Additional Packs for Airgap Environments](./additional-packs.md)
 - [Agent Mode Downloads](./agent-mode.md)
-<!-- - [CAPI Image Builder Downloads](./capi-image-builder.md) -->
 - [Offline Documentation](./offline-docs.md)
+<!-- - [CAPI Image Builder Downloads](./capi-image-builder.md) -->
