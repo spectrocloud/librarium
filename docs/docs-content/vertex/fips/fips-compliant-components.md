@@ -20,9 +20,14 @@ modules must meet to ensure their security and integrity.
 Palette VerteX provides FIPS-compliant infrastructure components in Kubernetes clusters it deploys. These components
 are:
 
-<br />
-
 - Operating System (OS)
+
+  :::info
+
+  Ubuntu Pro subscription keys must be obtained independently or purchased through Spectro Cloud. Contact your support
+  representative to learn more.
+
+  :::
 
   - Ubuntu Pro
 
