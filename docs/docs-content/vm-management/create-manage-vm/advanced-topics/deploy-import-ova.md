@@ -209,7 +209,7 @@ name, for example `cdi-uploadproxy.mycompany.io`, to the Nginx load balancer’s
    virtctl scp <path-to-downloaded-kubeconfig-file> --identity-file <path-to-private-key> root@vmo-jh.default:/root
    ```
 
-7. Download the newest [Palette CLI](../../../spectro-downloads.md#palette-cli) binary. Copy the binary to the VM, in
+7. Download the newest [Palette CLI](../../../downloads/cli-tools.md#palette-cli) binary. Copy the binary to the VM, in
    the same way you copied the kubeconfig file. Replace the placeholders with local path to the downloaded binary and
    the path to your private key.
 

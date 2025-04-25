@@ -20,7 +20,7 @@ VerteX is available in the following modes:
 ## Airgap Installation
 
 You can also install Palette VerteX in an airgap environment. For more information, refer to the
-[Airgap Installation](airgap/airgap.md) section.
+[Airgap Installation](./airgap.md) section.
 
 | **Supported Airgap Platform** | **Description**                                                                                                               | **Install Guide**                                                          |
 | ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
@@ -54,4 +54,4 @@ installation.
 
 - [Install Using Helm Chart](install-on-kubernetes/install-on-kubernetes.md)
 
-- [Airgap Installation](airgap/airgap.md)
+- [Airgap Installation](./airgap.md)

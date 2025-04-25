@@ -40,7 +40,7 @@ environment, then you already have all the required permissions and roles. Proce
 
   :::
 
-- Download and install the Palette CLI from the [Downloads](../../../spectro-downloads.md#palette-cli) page. Refer to
+- Download and install the Palette CLI from the [Downloads](../../../downloads/cli-tools.md#palette-cli) page. Refer to
   the [Palette CLI Install](../../../automation/palette-cli/install-palette-cli.md) guide to learn more.
 
 - You will need to provide the Palette CLI an encryption passphrase to secure sensitive data. The passphrase must be

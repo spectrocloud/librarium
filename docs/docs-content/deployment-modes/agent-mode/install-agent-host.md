@@ -81,7 +81,7 @@ Palette. You will then create a cluster profile and use the registered host to d
     use PXKE as the Kubernetes layer
   - [iptables](https://linux.die.net/man/8/iptables)
   - [rsyslog](https://github.com/rsyslog/rsyslog). This is required for audit logs.
-  - (Airgap only) [Palette Edge CLI](../../spectro-downloads.md#palette-edge-cli)
+  - (Airgap only) [Palette Edge CLI](../../downloads/cli-tools.md#palette-edge-cli)
 
   If you are using Ubuntu or any OS that uses apt or apt-get for package management, you can issue the following command
   to install all dependencies for installation (not including the Palette Edge CLI) with the following command:

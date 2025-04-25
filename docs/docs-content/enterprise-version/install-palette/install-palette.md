@@ -20,7 +20,7 @@ the following modes:
 ## Airgap Installation
 
 You can also install Palette in an airgap environment. For more information, refer to the
-[Airgap Installation](airgap/airgap.md) section.
+[Airgap Installation](./airgap.md) section.
 
 | **Supported Airgap Platform** | **Description**                                                                                                        | **Install Guide**                                                                     |
 | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
@@ -53,7 +53,7 @@ that you use the FIPS OVA URL if you require a <VersionedLink text="FIPS" url="/
 
 - [Install on Kubernetes](install-on-kubernetes/install.md)
 
-- [Airgap Installation](airgap/airgap.md)
+- [Airgap Installation](./airgap.md)
 
 - [Architecture Diagram and Network Ports](../../architecture/networking-ports.md#self-hosted-network-communications-and-ports)
 

@@ -245,8 +245,8 @@ Palette VerteX upgrade.
     Setup Completed
     ```
 
-7.  Refer to the [Additional Packs](../../install-palette-vertex/airgap/supplemental-packs.md) page and update the
-    packages you are currently using. You must update each package separately.
+7.  Refer to the [Additional Packs](../../../downloads/additional-packs.md) page and update the packages you are
+    currently using. You must update each package separately.
 
     :::info
 

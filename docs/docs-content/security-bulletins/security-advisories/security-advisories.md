@@ -211,9 +211,8 @@ updated version of the component and update your instance.
 
 1. Contact your Palette support representative to obtain the `airgap-palette-nginx` binary version `1.11.5`. Ensure the
    SHA of the binary is `8148734578378da043b918f893f3bbfcae9d421b9ac4426e10762d832734e1dd`. Once obtained, upload the
-   `airgap-palette-nginx` binary to the registry. Follow the
-   [Usage Instructions](../../enterprise-version/install-palette/airgap/supplemental-packs.md) guide for detailed steps
-   on downloading and installing the binary.
+   `airgap-palette-nginx` binary to the registry. Follow the [Usage Instructions](../../downloads/additional-packs.md)
+   guide for detailed steps on downloading and installing the binary.
 
 2. Log in to the Palette system console.
 
@@ -277,9 +276,8 @@ updated version of the component and update your instance.
 
 1. Contact your Palette support representative to obtain the `airgap-vertex-nginx` binary version `1.11.5`. Ensure the
    SHA of the binary is `846c1e92f32ddd9a8da7eebd5b6d05517c5626a11e64c34acdf093dacdcb7310`. Once obtained, upload the
-   `airgap-vertex-nginx` binary to the registry. Follow the
-   [Usage Instructions](../../vertex/install-palette-vertex/airgap/supplemental-packs.md) guide for detailed steps on
-   downloading and installing the binary.
+   `airgap-vertex-nginx` binary to the registry. Follow the [Usage Instructions](../../downloads/additional-packs.md)
+   guide for detailed steps on downloading and installing the binary.
 
 2. Log in to the Palette VerteX system console.
 
@@ -353,9 +351,8 @@ cluster profile.
 
 1. Contact your Palette support representative to obtain the `airgap-pack-nginx` binary version `1.11.5`. Ensure the SHA
    of the binary is `f526bdf9fba8031d50846e503ea8011d67ffdc23b9331a62ebe644ae49c06fb1`. Once obtained, upload the
-   `airgap-pack-nginx` binary to the registry. Follow the
-   [Usage Instructions](../../enterprise-version/install-palette/airgap/supplemental-packs.md) guide for detailed steps
-   on downloading and installing the binary.
+   `airgap-pack-nginx` binary to the registry. Follow the [Usage Instructions](../../downloads/additional-packs.md)
+   guide for detailed steps on downloading and installing the binary.
 
 2. Log in to the Palette system console.
 
@@ -378,9 +375,8 @@ cluster profile.
 
 1. Contact your Palette support representative to obtain the `airgap-pack-nginx` binary version `1.11.5`. Ensure the SHA
    of the binary is `f526bdf9fba8031d50846e503ea8011d67ffdc23b9331a62ebe644ae49c06fb1`. Once obtained, upload the
-   `airgap-pack-nginx` binary to the registry. Follow the
-   [Usage Instructions](../../vertex/install-palette-vertex/airgap/supplemental-packs.md) guide for detailed steps on
-   downloading and installing the binary.
+   `airgap-pack-nginx` binary to the registry. Follow the [Usage Instructions](../../downloads/additional-packs.md)
+   guide for detailed steps on downloading and installing the binary.
 
 2. Log in to the Palette VerteX system console.
 

@@ -31,7 +31,7 @@ The Palette CLI is available for the following operating systems and architectur
 
 ## Download and Setup
 
-1. Visit the [Downloads](../../spectro-downloads.md#palette-cli) page and download the Palette CLI by using the URL
+1. Visit the [Downloads](../../downloads/cli-tools.md#palette-cli) page and download the Palette CLI by using the URL
    provided for your operating system.
 
 2. Open up a terminal session on your local system.

@@ -60,4 +60,4 @@ To get started with an airgap Palette installation, begin by reviewing the
 
 - [Airgap Install](./airgap-install.md)
 
-- [Additional Packs](../../airgap/supplemental-packs.md)
+- [Additional Packs](../../../../downloads/additional-packs.md)

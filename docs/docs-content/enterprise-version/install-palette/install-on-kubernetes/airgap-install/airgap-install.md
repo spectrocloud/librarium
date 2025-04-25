@@ -58,4 +58,4 @@ have completed the environment setup, you can proceed with the [Install Palette]
 
 - [Checklist](checklist.md)
 
-- [Additional Packs](../../airgap/supplemental-packs.md)
+- [Additional Packs](../../../../downloads/additional-packs.md)
