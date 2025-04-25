@@ -280,7 +280,7 @@ Kubernetes cluster. This setup is useful for scenarios where your applications a
 access to files or directories on the Edge host.
 
 <!-- prettier-ignore -->
-Several packs require you set up bind mounts in order to function. For example, the <VersionedLink text="Portwox pack" url="/integrations/packs/?pack=csi-portworx-generic" /> requires several folders to be mounted on Edge deployments. You can use the `install.bind_mounts` parameter to specify folders to be mounted. For
+Several packs require you set up bind mounts in order to function. For example, the <VersionedLink text="Portworx pack" url="/integrations/packs/?pack=csi-portworx-generic" /> requires several folders to be mounted on Edge deployments. You can use the `install.bind_mounts` parameter to specify folders to be mounted. For
 example, the following user data mounts three folders required by Portworx from the Edge host to the cluster.
 
 ```yaml

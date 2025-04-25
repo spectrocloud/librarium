@@ -184,13 +184,13 @@ Use the site network parameters to configure network settings so the edge host c
 You can specify tags from a file by using the `tagsFromFile` parameter object or from a script by using the
 `tagsFromScript` parameter.
 
-| Parameter                              | Description                                            | Default Value |
-| -------------------------------------- | ------------------------------------------------------ | ------------- |
-| `stylus.site.tagFromFile.fileName`     | The path to the file containing the tags.              | `''`          |
-| `stylus.site.tagFromFile.delimiter`    | The delimiter used to separate the key-value pairs.    | `\n`          |
-| `stylus.site.tagFromFile.separator`    | The separator used to separate the key from the value. | `:`           |
-| `stylus.site.tagFromScript.scriptName` | The path to the script that returns a JSON object.     | `''`          |
-| `stylus.site.tagFromScript.timeout`    | The timeout value in seconds.                          | `60`          |
+| Parameter                               | Description                                            | Default Value |
+| --------------------------------------- | ------------------------------------------------------ | ------------- |
+| `stylus.site.tagsFromFile.fileName`     | The path to the file containing the tags.              | `''`          |
+| `stylus.site.tagsFromFile.delimiter`    | The delimiter used to separate the key-value pairs.    | `\n`          |
+| `stylus.site.tagsFromFile.separator`    | The separator used to separate the key from the value. | `:`           |
+| `stylus.site.tagsFromScript.scriptName` | The path to the script that returns a JSON object.     | `''`          |
+| `stylus.site.tagsFromScript.timeout`    | The timeout value in seconds.                          | `60`          |
 
 With tags from a file, you can specify different delimiters and separators to parse the content of a file depending on
 how the content is formatted. For example, assume the file **/etc/palette/tags.txt** contains the following content.
@@ -273,21 +273,23 @@ able to access your Edge host because there are no users.
 
 :::
 
-| Parameter                     | Description                                                                                                                                           | Default |
-| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
-| `stages.*.users`              | The list of users to create at any cloud-init stage. Replace `*` with the specific stage. Each list item accepts parameters as follows in this table. | None    |
-| `stages.*.users[*].groups`    | The list of groups that the user belongs to. Replace `*` with your username.                                                                          | None    |
-| `stages.*.users[*].passwd`    | The password of the user. Replace `*` with your username.                                                                                             | None    |
-| `stages.initramfs`            | The `initramfs` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md).                             | None    |
-| `stages.rootfs`               | The `rootfs` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                                 | None    |
-| `stages.boot`                 | The `boot` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                                   | None    |
-| `stages.fs`                   | The `fs` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                                     | None    |
-| `stages.network`              | The `network` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                                | None    |
-| `stages.reconcile`            | The `reconcile` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                              | None    |
-| `stages.after-install`        | The `after-install` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                          | None    |
-| `stages.after-install-chroot` | The `after-install-chroot` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                   | None    |
-| `stages.after-reset`          | The `after-reset` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                            | None    |
-| `stages.after-reset-chroot`   | The `after-reset-chroot` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                     | None    |
-| `stages.before-install`       | The `before-install` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                         | None    |
-| `stages.before-upgrade`       | The `before-upgrade` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                         | None    |
-| `stages.before-reset`         | The `before-reset` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                           | None    |
+| Parameter                               | Description                                                                                                                                           | Default |
+| --------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| `stages.*.users`                        | The list of users to create at any cloud-init stage. Replace `*` with the specific stage. Each list item accepts parameters as follows in this table. | None    |
+| `stages.*.users[*].groups`              | The list of groups that the user belongs to. Replace `*` with your username.                                                                          | None    |
+| `stages.*.users[*].passwd`              | The password of the user. Replace `*` with your username.                                                                                             | None    |
+| `stages.*.users[*].lock_passwd`         | When set to `true`, disables password configuration by the user. Replace `*` with your username.                                                      | `false` |
+| `stages.*.users[*].ssh_authorized_keys` | The list of public SSH keys authorized for the user. Replace `*` with your username.                                                                  | None    |
+| `stages.initramfs`                      | The `initramfs` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md).                             | None    |
+| `stages.rootfs`                         | The `rootfs` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                                 | None    |
+| `stages.boot`                           | The `boot` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                                   | None    |
+| `stages.fs`                             | The `fs` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                                     | None    |
+| `stages.network`                        | The `network` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                                | None    |
+| `stages.reconcile`                      | The `reconcile` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                              | None    |
+| `stages.after-install`                  | The `after-install` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                          | None    |
+| `stages.after-install-chroot`           | The `after-install-chroot` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                   | None    |
+| `stages.after-reset`                    | The `after-reset` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                            | None    |
+| `stages.after-reset-chroot`             | The `after-reset-chroot` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                     | None    |
+| `stages.before-install`                 | The `before-install` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                         | None    |
+| `stages.before-upgrade`                 | The `before-upgrade` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                         | None    |
+| `stages.before-reset`                   | The `before-reset` stage during Edge host installation. For more information, refer to [Cloud Init Stages](./cloud-init.md)                           | None    |
