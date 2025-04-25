@@ -68,6 +68,7 @@ stylus:
 
 The `stylus.site` blocks accept the following parameters.
 
+<<<<<<< HEAD
 | Parameter                        | Description                                                                                                                                                                                                                                                  | Default |
 | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------- |
 | `stylus.site.caCerts`            | The Secure Sockets Layer (SSL) Certificate Authority (CA) certificates. The certificates must be base64-encoded.                                                                                                                                             |         |
@@ -86,14 +87,35 @@ The `stylus.site` blocks accept the following parameters.
 | `stylus.site.tags`               | A parameter object you use to provide optional key-value pairs. Refer to the [Tags](#tags) section to learn more.                                                                                                                                            |         |
 | `stylus.site.tagsFromFile`       | Specify tags from a file. Refer to the [Tags](#tags) section to learn more.                                                                                                                                                                                  |         |
 | `stylus.site.tagsFromScript`     | Use a script to generate the tags. Refer to the [Tags](#tags) section to learn more.                                                                                                                                                                         |         |
+=======
+| Parameter                        | Description                                                                                                                                                                                                                                                 | Type                             | Default |
+| -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- | ------- |
+| `stylus.site.caCerts`            | The Secure Sockets Layer (SSL) Certificate Authority (CA) certificates. The certificates must be base64-encoded.                                                                                                                                            | Array of strings                 | None    |
+| `stylus.site.clusterId`          | The ID of the cluster the Edge host belongs to.                                                                                                                                                                                                             | String                           | `''`    |
+| `stylus.site.clusterName`        | The name of the cluster the Edge host belongs to.                                                                                                                                                                                                           | String                           | `''`    |
+| `stylus.site.deviceUIDPaths`     | A list of file paths for reading in a product or board serial that can be used to set the device ID. The default file path is `/sys/class/dmi/id/product_uuid`. Refer to the [Device ID (UID) Parameters](#device-id-uid-parameters) section to learn more. | Array of `FileList`              | None    |
+| `stylus.site.edgeHostToken`      | A token created at the tenant scope that is required for auto registration.                                                                                                                                                                                 | String                           | `''`    |
+| `stylus.site.hostName`           | The host name for the Edge host. This will also be the node's name when the host is added to a cluster. If you do not specify a host name, the `stylus.site.name` value becomes the host name.                                                              | string                           | `''`    |
+| `stylus.site.insecureSkipVerify` | This controls whether or not a client verifies the server’s certificate chain and hostname.                                                                                                                                                                 | boolean                          | `false` |
+| `stylus.site.name`               | The Edge host ID with which the host registers with Palette.                                                                                                                                                                                                | String                           | `''`    |
+| `stylus.site.network`            | The network configuration settings. Refer to [Site Network Parameters](#site-network-parameters) for more details.                                                                                                                                          | Object                           | None    |
+| `stylus.site.paletteEndpoint`    | The URL endpoint that points to Palette. Example: `api.spectrocloud.com`                                                                                                                                                                                    | String                           | `''`    |
+| `stylus.site.prefix`             | A prefix prepended to the Edge device hostname to form the Edge device ID. Only alphanumeric characters and `-` are allowed.                                                                                                                                | String                           | `edge`  |
+| `stylus.site.projectName`        | The name of the project to which the Edge host belongs.                                                                                                                                                                                                     | String                           | `''`    |
+| `stylus.site.projectUid`         | The ID of the project to which the Edge host belongs.                                                                                                                                                                                                       | String                           | `''`    |
+| `stylus.site.registrationURL`    | The URL that operators use to register the Edge host with Palette.                                                                                                                                                                                          | String                           | `''`    |
+| `stylus.site.tags`               | A parameter object you can use to provide optional key-value pairs. Refer to the [Tags](#tags) section to learn more.                                                                                                                                       | Map of `string` and object value | None    |
+| `stylus.site.tagsFromFile`       | Specify tags from a file. Refer to [Tags](#tags) for more information.                                                                                                                                                                                      | `TagsFromFile` object            | None    |
+| `stylus.site.tagsFromScript`     | Use a script to generate tags. Refer to [Tags](#tags) for more information.                                                                                                                                                                                 | `TagsFromScript` object          | None    |
+>>>>>>> cce93ab48 (docs: modify name parameter descriptions (#6539))
 
 :::info
 
-If you do not specify a hostname for the Edge host with `stylus.site.name` , the system will generate one from the
-serial number of the device. If the Edge Installer cannot identify the serial number, it will generate a random ID
-instead. In cases where the hardware does not have a serial number, we suggest that you specify a value so there is
-minimal chance of duplication. Use the value `"$random"` to generate a random ID. You can also use the `DeviceUIDPaths`
-to read in a value from a system file.
+If you do not specify an Edge host ID for the Edge host with `stylus.site.name` , the system will generate one from the
+serial number of the device in the format of `edge-<serial-number>`. If the Edge Installer cannot identify the serial
+number, it will generate a random ID instead. In cases where the hardware does not have a serial number, we suggest that
+you specify a value so there is minimal chance of duplication. Use the value `"$random"` to generate a random ID. You
+can also use the `DeviceUIDPaths` to read in a value from a system file.
 
 :::
 
