@@ -74,7 +74,7 @@ Follow the instructions below to determine if your Edge host is capable of booti
 5. Issue the following command to build the ISO image that is used to check your hardware EFI boot limit.
 
    ```
-   ./earthly +iso-efi-size-check
+   ./earthly.sh +iso-efi-size-check
    ```
 
    This will generate an ISO image located at **./build/efi-size-check.iso**.
