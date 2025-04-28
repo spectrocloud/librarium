@@ -124,8 +124,8 @@ API to update the password.
 
 1. Power up the Edge host.
 
-2. Press **Alt + right arrow key**, or **Ctrl + Alt + F1** on a keyboard connected to the Edge host. Replace **Alt**
-   with **Options** on a Mac keyboard. This will bring up the login screen for you to log in to the terminal.
+2. Press the **ALT + RIGHT ARROW** keys, or **CTRL + ALT + F1** on a keyboard connected to the Edge host. Replace
+   **ALT** with **OPTION** on a Mac keyboard. This will bring up the login screen for you to log in to the terminal.
 
    Alternatively, establish an SSH connection to the Edge host.
 

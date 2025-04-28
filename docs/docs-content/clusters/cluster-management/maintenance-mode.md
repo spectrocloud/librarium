@@ -13,7 +13,7 @@ other healthy nodes in the cluster without services being disrupted. Using maint
 necessary maintenance tasks, address node issues, and optimize workload distribution while maintaining the desired level
 of performance and availability.
 
-## Prerequistes
+## Prerequisites
 
 - An active Palette host cluster with more than one control plane node and worker node.
 

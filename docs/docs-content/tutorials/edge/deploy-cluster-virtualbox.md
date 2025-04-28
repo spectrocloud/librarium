@@ -112,9 +112,9 @@ git checkout v4.4.12
 
 ### Define Arguments
 
-EdgeForge leverages [Earthly](https://earthly.dev/) to build the Installer ISO and provider images
-artifacts. The **.arg** file is used to pass the values of a few arguments, such as the image tag and registry name, to
-Earthly for the build process.
+EdgeForge leverages [Earthly](https://earthly.dev/) to build the Installer ISO and provider images artifacts. The
+**.arg** file is used to pass the values of a few arguments, such as the image tag and registry name, to Earthly for the
+build process.
 
 Execute the command below to create a custom tag for the provider images. The tag must be an alphanumeric lowercase
 string. This tutorial uses `vbox-tutorial` as an example.
@@ -525,7 +525,7 @@ Navigate back to [Palette](https://console.spectrocloud.com/). Then, select **Cl
 Click on the **Edge Hosts** tab to view the registered hosts.
 
 Confirm your Edge host is listed as **Healthy** and with a **Ready** status. The **Machine ID** should match the ID
-displayed on your VM's screen.
+displayed on your VM screen.
 
 ![A screenshot of the Edge host in Palette.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_edge-host-palette.webp)
 

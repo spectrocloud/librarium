@@ -97,7 +97,7 @@ Overall health is computed based on the following factors:
   monitoring activities. In case a cluster goes to an unhealthy state, the last received healthy heartbeat can help you
   in troubleshooting.
 
-![Cluster_Health_Heart_Beat](/doc_cluster_clusters-cluster-heart-beat.webp)
+![Cluster Health Heart Beat](/doc_cluster_clusters-cluster-heart-beat.webp)
 
 - **Node Conditions** - Kubernetes maintains the status for each cluster node in the form of conditions such as
   DiskPressure, MemoryPressure, or NetworkUnavailable. Palette monitors these conditions and reports back to the
@@ -202,11 +202,11 @@ Palette keeps track of the nodes machine's health and will relaunch the node whe
 
 The following are some sample scenarios where the node health is considered as degraded:
 
-- Kubelet not up for 10 mins.
+- Kubelet not up for 10 minutes.
 
-- Network unavailability for 10 mins.
+- Network unavailability for 10 minutes.
 
-- New node doesn't get ready in 30 mins.
+- New node doesn't get ready in 30 minutes.
 
 ## Event Stream
 
@@ -230,9 +230,9 @@ stream is a good source for identifying issues in the event an operation does no
 
 At times, you may be required to work with the Palette Support Team to troubleshoot an issue. Palette provides the
 ability to gather logs from the clusters it manages. Problems that occur during the orchestration lifecycle, may require
-access to the various containers, nodes, and Kube system logs. Palette automates this log-collection process and
-provides an easy download option from the Palette UI console. Hence, it reduces the burden on the operator to log in to
-various cluster nodes individually and fetch these logs. <br />
+access to the various containers, nodes, and system logs. Palette automates this log-collection process and provides a
+download option from the Palette UI console. Hence, it reduces the burden on the operator to log in to various cluster
+nodes individually and fetch these logs. <br />
 
 ### Collect the Logs
 
@@ -333,7 +333,7 @@ The following are the attributes of a cluster that are displayed in the cluster 
 | Attribute     | Description                                                                                                                                                                                            | Support Order-by |
 | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------- |
 | Type          | The cluster type. Possible values are "Palette-managed" or "Imported." When there is a small green arrow on the icon, it means there are pending updates to the cluster that requires acknowledgement. | No               |
-| Env           | The infrastructure provider of the cluster, such as AWS, Azure, GCP and Edge.                                                                                                                          | Yes              |
+| Environment   | The infrastructure provider of the cluster, such as AWS, Azure, GCP and Edge.                                                                                                                          | Yes              |
 | Name          | The name of the cluster.                                                                                                                                                                               | Yes              |
 | Status        | The status of the cluster. Possible values include "Pending," "Running," "Deleting" and "Provisioning."                                                                                                | Yes              |
 | Last Modified | The date and time when the cluster was last modified.                                                                                                                                                  | Yes              |

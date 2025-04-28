@@ -35,14 +35,12 @@ The `install` subcommand installs a Palette Enterprise Cluster in your target en
 Palette VerteX using the `install` subcommand. The `install` subcommand can be used in interactive mode, which prompts
 you for required values. Alternatively, you can use flags to generate a configuration file.
 
-<br />
-
 | Short Flag | Long Flag              | Description                                                                                                                                                                                                                  | Type    |
 | ---------- | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
 | `-f`       | `--config-file`        | Install using a configuration file (optional). Use `-config-only` to generate a configuration file.                                                                                                                          | string  |
-| `-d`       | `--skip-teardown`      | Skip tear down of the kind cluster in case of errors.                                                                                                                                                                        | boolean |
+| `-d`       | `--skip-teardown`      | Skip the teardown of the kind cluster in case of errors.                                                                                                                                                                     | boolean |
 | `-o`       | `--config-only`        | Generate configuration file only. This command will not proceed with installation.                                                                                                                                           | boolean |
-| `-v`       | `--custom-values-file` | Enterprise Cluster custom values.yaml configuration file (optional). Use this to customize the cluster profile of the Enterprise Cluster. Refer to the [custom value file](#custom-value-file) section for more information. | string  |
+| `-v`       | `--custom-values-file` | Enterprise cluster custom values.yaml configuration file (optional). Use this to customize the cluster profile of the enterprise cluster. Refer to the [custom value file](#custom-value-file) section for more information. | string  |
 | `-p`       | `--update-passwords`   | Update passwords only. Do not proceed with installation. The `--config-file` flag must also be provided.                                                                                                                     | string  |
 | `-t`       | `--update-tokens`      | Update authentication tokens only. Do not proceed with installation. The `--config-file` flag must be provided.                                                                                                              | boolean |
 | -          | `--validate`           | Scan the environment and conduct validation before the enterprise cluster is installed.                                                                                                                                      | boolean |
@@ -170,7 +168,7 @@ for the following prerequisites:
 - The required vSphere permissions and privileges are available for the provided user.
 - At least five IP addresses are available in the provided IP range.
 - Ensure vSphere tags for Kubernetes regions and zones are available.
-- The provided vSphere Datacenter is accessible and has the required compute resources available.
+- The provided vSphere data center is accessible and has the required compute resources available.
 
 :::info
 

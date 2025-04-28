@@ -8,7 +8,7 @@ tags: ["edge"]
 ---
 
 Local UI allows you to manage your Edge host. You can configure Local UI to shut down, reboot, and reset your Edge host
-to a factory default. You can also update credentials, update Local UI's branding and configure HTTP proxy for your Edge
+to a factory default. You can also update credentials, update Local UI branding and configure HTTP proxy for your Edge
 host from Local UI.
 
 Host management features, with exception of resetting the Edge host to factory setting, are available to both connected

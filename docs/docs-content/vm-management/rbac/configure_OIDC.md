@@ -27,6 +27,7 @@ select in the Kubernetes layer of the infrastructure profile.
 <!-- prettier-ignore-start -->
 
 4. Select the Kubernetes layer in the profile stack, and choose an **OIDC Identity Provider** option. Refer to the
+
    <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" /> pack
    additional guidance for more information.
 

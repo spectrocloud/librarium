@@ -436,7 +436,7 @@ network administrator team if you need additional guidance.
 :::
 
 41. Create a Canonical Name (CNAME) record for each of the following services and add the load balancer hostname to the
-    CNAME's record value. Use the table below to identify which mapping to use between the domain and each load balancer
+    CNAME record value. Use the table below to identify which mapping to use between the domain and each load balancer
     hostname.
 
 | Service                                             | Domain                   | CNAME Value Example                                                       |
