@@ -25,7 +25,7 @@ curl --location --request GET 'https://api.spectrocloud.com/v1/projects/alerts' 
 
 To refresh the authorization token, use the `v1/auth/refresh` endpoint with a GET request.
 
-## Aquire Authorization Token
+## Acquire Authorization Token
 
 To acquire an authorization token, use the `v1/auth` endpoint with a POST request to generate the token. Provide the
 email ID, organization name, and password in the request body. For example:
@@ -63,7 +63,7 @@ The response contains the authorization token. Use the new authorization token i
 requests.
 
 The following example shows how to refresh the authorization token using the refresh token. The refresh token is
-abriviated for brevity.
+abbreviated for brevity.
 
 ```bash hideClipboard
 curl --location 'https://api.spectrocloud.com/v1/auth/refresh/eyJhbGc..........' \

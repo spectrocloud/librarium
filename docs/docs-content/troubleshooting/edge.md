@@ -111,7 +111,7 @@ If you need to override or reconfigure the read-only file system, you can do so 
 
    ![The grub menu displays with the command rd.cos.debugrw typed in the terminal.](/troubleshooting_edge_grub-menu.webp)
 
-4. Press the keys **Ctrl** + **X** to boot the system.
+4. Press the keys **CTRL + X** to boot the system.
 
 5. Make the required changes to the image.
 
@@ -234,8 +234,8 @@ prevents the nameserver from being configured, which will result in cluster depl
 
 1. Establish an SSH connection to the Edge host.
 
-   Alternatively, press the keys **Fn + Ctrl +Cmd + F1** on a keyboard that is connected to the Edge host to log in to
-   the terminal. If you are on Windows, press **Fn + Ctrl + Alt + F1**.
+   Alternatively, press the keys **FN + CTRL + CMD + F1** on a keyboard that is connected to the Edge host to log in to
+   the terminal. If you are on Windows, press **FN + CTRL + ALT + F1**.
 
 2. Issue the following command.
 
@@ -246,7 +246,7 @@ prevents the nameserver from being configured, which will result in cluster depl
 
    This will start the `systemd-resolved.service` process and move the cluster creation process forward.
 
-## Scenario - Degreated Performance on Disk Drives
+## Scenario - Degraded Performance on Disk Drives
 
 If you are experiencing degraded performance on disk drives, such as Solid-State Drive or Nonvolatile Memory Express
 drives, and you have [Trusted Boot](../clusters/edge/trusted-boot/trusted-boot.md) enabled. The degraded performance may
@@ -396,7 +396,7 @@ issue, reset the SELinux context of the Kubelet environment variable to its defa
    ausearch -message avc --start recent | grep kubeadm-flags.env
    ```
 
-   The following output indicates that SELinux's security policies are denying read operations attempted by the Kubelet.
+   The following output indicates that SELinux security policies are denying read operations attempted by the Kubelet.
 
    ```shell hideClipboard
    time->Wed Jan 17 14:32:01 2025
