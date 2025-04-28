@@ -14,10 +14,6 @@ external networks such as the internet.
 You can configure your Edge hosts to use an HTTP/HTTPS proxy for secure internet access from Local UI. The proxy server
 configured through Local UI will be retained even after a [reset](./reset-reboot.md#reset-edge-host).
 
-:::preview
-
-:::
-
 ## Prerequisites
 
 - An Edge host deployed with Edge Installer 4.3 or later.

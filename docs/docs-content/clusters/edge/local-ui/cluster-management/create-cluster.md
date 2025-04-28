@@ -15,10 +15,6 @@ to create, update, scale, and delete the cluster. If your situation changes and 
 cluster, you can choose to [pair your local cluster to a Palette instance](./local-to-central.md) for centralized
 management.
 
-:::preview
-
-:::
-
 ## Limitations
 
 - For multi-node clusters, all hosts must be deployed in the same deployment mode. For more information, refer to
@@ -35,9 +31,6 @@ management.
 ## Prerequisites
 
 - Network access to the Edge device’s IP and port where Local UI is exposed. The default port is 5080.
-
-- The `stylus.enableMultiNode` parameter is set to `true` in your user data configuration. For more information, refer
-  to [Prepare User Data](../../edgeforge-workflow/prepare-user-data.md).
 
 - The `stylus.installationMode` parameter is set to `airgap` in your user data configuration for all your hosts.
 

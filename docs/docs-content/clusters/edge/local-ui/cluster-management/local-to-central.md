@@ -12,10 +12,6 @@ Clusters provisioned on hosts that are installed in the airgap installation mode
 have the option to transfer the management of a local cluster from Local UI to a Palette instance to be managed
 centrally by pairing the local cluster with a Palette instance.
 
-:::preview
-
-:::
-
 ![Diagram of the order of operations for transferring a cluster to central management.](/clusters_edge_local-ui_local-to-central.webp)
 
 ## Pair Local Cluster with Palette

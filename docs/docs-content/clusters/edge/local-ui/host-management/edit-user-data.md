@@ -20,10 +20,6 @@ the installer user data, refer to [Installer Reference](../../edge-configuration
 
 After an edit has been made, the new settings will apply after the host reboots.
 
-:::preview
-
-:::
-
 ## Limitations
 
 - The following fields cannot be edited in Local UI. If you want to specify the values for these parameters, you must

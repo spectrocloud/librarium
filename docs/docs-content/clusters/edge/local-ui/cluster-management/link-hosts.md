@@ -59,10 +59,6 @@ with each other.
   [Appliance Mode Installation](../../site-deployment/stage.md) or
   [Agent Mode Installation](../../../../deployment-modes/agent-mode/install-agent-host.md).
 
-- The `stylus.enableMultiNode` parameter is set to `true` in your user data configuration for all your hosts. For more
-  information, refer to [Prepare User Data](../../edgeforge-workflow/prepare-user-data.md) and
-  [Installer Reference](../../edge-configuration/installer-reference.md).
-
 - The `stylus.installationMode` parameter is set to `airgap` in your user data configuration for all your hosts.
 
 - No follower host has any current cluster workloads. Refer to [Delete a Cluster](./delete-cluster.md) and
