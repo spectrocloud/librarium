@@ -111,34 +111,34 @@ information, refer to [Enable Local Harbor Registry](./local-registry.md).
    Refer to [Installer Configuration](../../edge-configuration/installer-reference.md#external-registry-parameters) for
    a description of each field.
 
-4.  Follow the rest of the [Build Edge Artifact](../../edgeforge-workflow/palette-canvos/palette-canvos.md) guide and
-    build the Installer ISO with the user data containing the registry credentials.
+4. Follow the rest of the [Build Edge Artifact](../../edgeforge-workflow/palette-canvos/palette-canvos.md) guide and
+   build the Installer ISO with the user data containing the registry credentials.
 
-5.  Follow the [Perform Site Install](../site-installation/site-installation.md) guide to perform the installation.
+5. Follow the [Perform Site Install](../site-installation/site-installation.md) guide to perform the installation.
 
-6.  Log in to [Palette](https://console.spectrocloud.com).
+6. Log in to [Palette](https://console.spectrocloud.com).
 
-7.  From the left **Main Menu**, click on **Profiles**. Then select the profile you are using to deploy the cluster.
+7. From the left **Main Menu**, click on **Profiles**. Then select the profile you are using to deploy the cluster.
 
-8.  Go through each layer of the profile and ensure that all images referenced in the profile are present in the
-    external registry. If you do not want to do this manually image by image, refer to
-    [Upload Cluster Images to External Registry with Palette Edge CLI](./upload-images-to-registry.md) to learn how to
-    use the Palette Edge CLI to upload all images in a cluster profile to an external registry.
+8. Go through each layer of the profile and ensure that all images referenced in the profile are present in the external
+   registry. If you do not want to do this manually image by image, refer to
+   [Upload Cluster Images to External Registry with Palette Edge CLI](./upload-images-to-registry.md) to learn how to
+   use the Palette Edge CLI to upload all images in a cluster profile to an external registry.
 
-9.  In the Kubernetes layer of your cluster profile, remove `AlwaysPullImages` from
-    `cluster.config.clusterConfiguration.apiServer.extraArgs.enable-admission-plugins`.
+9. In the Kubernetes layer of your cluster profile, remove `AlwaysPullImages` from
+   `cluster.config.clusterConfiguration.apiServer.extraArgs.enable-admission-plugins`.
 
-    For example, if the original `enable-admission-plugins` parameter is the following.
+   For example, if the original `enable-admission-plugins` parameter is the following.
 
-    ```yaml
-    enable-admission-plugins: AlwaysPullImages,NamespaceLifecycle,ServiceAccount,NodeRestriction
-    ```
+   ```yaml
+   enable-admission-plugins: AlwaysPullImages,NamespaceLifecycle,ServiceAccount,NodeRestriction
+   ```
 
-    The resulting layer configuration should look like the following.
+   The resulting layer configuration should look like the following.
 
-    ```yaml
-    enable-admission-plugins: NamespaceLifecycle,ServiceAccount,NodeRestriction
-    ```
+   ```yaml
+   enable-admission-plugins: NamespaceLifecycle,ServiceAccount,NodeRestriction
+   ```
 
 10. (Optional) The provider image includes core Kubernetes images, such as the Kubernetes API server and scheduler. By
     default, these core images are loaded directly from the provider image to the container runtime. If you prefer to
