@@ -23,6 +23,7 @@ tags: ["release-notes"]
 - Fixed an issue where POST API calls to `/v1/spectroclusters/edge-native` failed for U.S. multi-tenant SaaS
   environments.
 - Fixed an issue that caused pack downloads with a double hyphen (`--`) in the label prefix to fail.
+- Fixed an issue that caused pack downloads to fail if the pack registry endpoint contained a port.
 
 ### Improvements
 
