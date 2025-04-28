@@ -76,7 +76,7 @@ To complete this basic guide, you will need the following items:
 
   - 4 CPU
   - 8 GB memory
-  - 50 GB storage
+  - 150 GB storage
 
 - [Git](https://git-scm.com/downloads). You can ensure git installation by issuing the `git --version` command.
 
@@ -754,8 +754,8 @@ git checkout v4.4.12
     [Edge Configuration Stages](../../edge-configuration/cloud-init.md) and
     [User Data Parameters](../../edge-configuration/installer-reference.md) documents to learn more.
 
-15. CanvOS utility uses [Earthly](https://earthly.dev/)(https://earthly.dev/) to build the target artifacts. Issue the
-    following command to start the build process.
+15. CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. Issue the following command to
+    start the build process.
 
     <Tabs group="earthly">
 

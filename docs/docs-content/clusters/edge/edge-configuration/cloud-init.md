@@ -12,7 +12,9 @@ both during installation and during cluster deployment. Kairos is an open source
 immutable images, Kairos is a container layer that enables you to specify dependencies and create resources before
 locking down the image.
 
-The following diagram displays the available cloud-init stages you can use to customize the device installation.
+The following diagram displays the available cloud-init stages you can use to customize the device installation. Each
+stage has a before and after hook you can use to achieve more granular customization. For example, you can use
+`network.after` to verify network connectivity.
 
 ![A diagram that displays all the cloud-init stages supported. The stages are listed in the markdown table below.](/clusters_edge_cloud-init_cloud-init-stages-supported.webp)
 
@@ -20,30 +22,23 @@ You can read more about Kairos and cloud-init by reviewing
 [Kairo's cloud-init](https://kairos.io/docs/architecture/cloud-init/) resource. For your convenience, all the supported
 cloud-init stages are listed below.
 
-| Stage                  | Description                                                                                                                                                                                                                                                                     |
-| ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `rootfs`               | This is the earliest stage, running before switching to root. It happens right after the root is mounted in /sysroot and before applying the immutable rootfs configuration. This stage is executed over initrd root, no chroot is applied.                                     |
-| `initramfs`            | This is still an early stage, running before switching to root. Here you can apply changes to the booting setup of Elemental. Despite executing this before switching to root, this invocation is chrooted into the target root after the immutable rootfs is set up and ready. |
-| `boot`                 | This stage executes after initramfs has switched to root and during the systemd boot-up process.                                                                                                                                                                                |
-| `fs`                   | This stage is executed when fs is mounted and is guaranteed to have access to the state and persistent partitions ( COS_STATE and COS_PERSISTENT respectively).                                                                                                                 |
-| `network`              | This stage executes when the network is available.                                                                                                                                                                                                                              |
-| `reconcile`            | This stage executes 5m after boot up and every 60m.                                                                                                                                                                                                                             |
-| `after-install`        | This stage executes after the installation of the OS.                                                                                                                                                                                                                           |
-| `after-install-chroot` | This stage executes after the installation of the OS ends.                                                                                                                                                                                                                      |
-| `after-upgrade`        | This stage executes after the OS upgrade ends.                                                                                                                                                                                                                                  |
-| `after-upgrade-chroot` | This stage executes after the OS upgrade ends (chroot call).                                                                                                                                                                                                                    |
-| `after-reset`          | This stage executes after the OS resets.                                                                                                                                                                                                                                        |
-| `after-reset-chroot`   | This stage executes after the OS resets (chroot call).                                                                                                                                                                                                                          |
-| `before-install`       | This stage executes before installation.                                                                                                                                                                                                                                        |
-| `before-upgrade`       | This stage executes before the upgrade.                                                                                                                                                                                                                                         |
-| `before-reset`         | This stage executes before reset.                                                                                                                                                                                                                                               |
-
-:::info
-
-Each stage has a before and after hook you can use to achieve more granular customization. For example, you can use
-`network.after` to verify network connectivity.
-
-:::
+| Stage                  | Description                                                                                                                                                                                                                                                                            |
+| ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `rootfs`               | This is the earliest stage, executing before switching to root. It happens right after the root is mounted in /sysroot and before applying the immutable `rootfs` configuration. This stage is executed over `initrd` root, no `chroot` is applied.                                    |
+| `initramfs`            | This is still an early stage, running before switching to root. Here you can apply changes to the booting setup of Elemental. Despite executing this before switching to root, this invocation is change rooted into the target root after the immutable `rootfs` is set up and ready. |
+| `boot`                 | This stage executes after `initramfs` has switched to root and during the systemd boot-up process.                                                                                                                                                                                     |
+| `fs`                   | This stage is executed when `fs` is mounted and is guaranteed to have access to the state and persistent partitions ( COS_STATE and COS_PERSISTENT respectively).                                                                                                                      |
+| `network`              | This stage executes when the network is available.                                                                                                                                                                                                                                     |
+| `reconcile`            | This stage executes 5m after boot up and every 60m.                                                                                                                                                                                                                                    |
+| `after-install`        | This stage executes after the installation of the OS.                                                                                                                                                                                                                                  |
+| `after-install-chroot` | This stage executes after the installation of the OS ends.                                                                                                                                                                                                                             |
+| `after-upgrade`        | This stage executes after the OS upgrade ends.                                                                                                                                                                                                                                         |
+| `after-upgrade-chroot` | This stage executes after the OS upgrade ends (`chroot` call).                                                                                                                                                                                                                         |
+| `after-reset`          | This stage executes after the OS resets.                                                                                                                                                                                                                                               |
+| `after-reset-chroot`   | This stage executes after the OS resets (`chroot` call).                                                                                                                                                                                                                               |
+| `before-install`       | This stage executes before installation.                                                                                                                                                                                                                                               |
+| `before-upgrade`       | This stage executes before the upgrade.                                                                                                                                                                                                                                                |
+| `before-reset`         | This stage executes before reset.                                                                                                                                                                                                                                                      |
 
 ## Where to Apply Cloud-Init Stages?
 
@@ -55,6 +50,15 @@ cloud-init stages. Use the following statements to help you decide.
 
 - If you have common configurations across a fleet of Edge host devices, customize the OS pack and use the cloud-init
   stages to apply those configurations.
+
+:::warning
+
+Give each action in a cloud-init stage a unique name. During cluster deployment, the cloud-init stages between the OS
+pack and user data are merged. Without unique names to identify the different actions in a stage, some cloud-init data
+may get lost. You can name an action with the `name` parameter placed at the same level of indentation as the action.
+Refer to [Example Use Cases](#example-use-cases) for examples.
+
+:::
 
 ## Example Use Cases
 
@@ -70,7 +74,7 @@ resource to learn more about other key terms, options, and advanced examples.
 
 :::
 
-Use the Edge Installer user data to apply specific site configurations to the edge host.
+Use the Edge Installer user data to apply specific site configurations to the Edge host.
 
 #### Set the User Password
 
@@ -82,6 +86,7 @@ stages:
     - users:
         kairos:
           passwd: kairos
+      name: "Create user for host"
 ```
 
 #### Assign a User to a Group
@@ -95,6 +100,7 @@ stages:
         kairos:
           groups:
             - sudo
+      name: "Create user and assign to sudo group"
 ```
 
 #### Assign an SSH Key
@@ -108,6 +114,7 @@ stages:
         kairos:
           ssh_authorized_keys:
             - ssh-rsa AAAAB3N…
+      name: "Create user and assign SSH key"
 ```
 
 #### Configure a Registry Mirror
@@ -137,6 +144,7 @@ stages:
                 password: "mysupermagicalpassword"
               tls:
                 insecure_skip_verify: true
+    name: "Configure registry mirror"
 ```
 
 #### Configure Network With Netplan
@@ -294,6 +302,7 @@ stages:
           groups:
             - sudo
           passwd: kairos
+      name: Create user and assign to sudo group
 ```
 
 #### Custom Commands

@@ -34,11 +34,11 @@ disks.
    The interface type determines out-of-the-box operating system (OS) support and disk performance. Choose from the
    following.
 
-   | Interface type | Description                                                                                                                                                                                                                                                                                                      |
-   | -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | virtio         | Optimized for best performance, but the operating system may require additional Virtio drivers.                                                                                                                                                                                                                  |
-   | sata           | Most operating systems support Serial ATA (SATA). However it offers lower performance.                                                                                                                                                                                                                           |
-   | scsi           | A paravirtualized Internet Small Computer System Interface (iSCSI) HDD driver that offers similar functionality to the virtio-block device but with some additional enhancements. In particular, this driver supports adding hundreds of devices and names devices using the standard SCSI device naming scheme. |
+   | Interface type | Description                                                                                                                                                                                                                                                                                                        |
+   | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+   | `virtio`       | Optimized for best performance, but the operating system may require additional Virtio drivers.                                                                                                                                                                                                                    |
+   | `sata`         | Most operating systems support Serial ATA (SATA). However it offers lower performance.                                                                                                                                                                                                                             |
+   | `scsi`         | A paravirtualized Internet Small Computer System Interface (iSCSI) HDD driver that offers similar functionality to the `virtio-block` device but with some additional enhancements. In particular, this driver supports adding hundreds of devices and names devices using the standard SCSI device naming scheme. |
 
 5. Next, specify the access mode for your disk.
 
@@ -73,10 +73,13 @@ interoperability possible. The VM can integrate with different cases like sideca
 When using pod masquerading, you choose a CIDR for which VMs are not assigned a private IP, and instead use Network
 Address Translation (NAT) behind the pod IP.
 
+<!-- prettier-ignore-start -->
+
 Multus is a secondary network that uses Multus-CNI. Multus allows you to attach multiple network interfaces to pods in
 Kubernetes. If you use Multus as your network, ensure that Multus is installed across your cluster and that you have
-created a default `NetworkAttachmentDefinition` CRD. For more information, refer to the
-[Multus CNI](../../integrations/multus-cni.md) guide.
+created a default `NetworkAttachmentDefinition` CRD. For more information, refer to the <VersionedLink text="Multus CNI" url="/integrations/packs/?pack=cni-multus" />  pack.
+
+<!-- prettier-ignore-end -->
 
 ### Prerequisites
 
@@ -98,7 +101,7 @@ created a default `NetworkAttachmentDefinition` CRD. For more information, refer
 
 :::info
 
-Multus allows hot plugging network interfaces only when interfaces use the **virtio** model connected through bridge
+Multus allows hot plugging network interfaces only when interfaces use the **Virtio** model connected through bridge
 binding.
 
 :::
@@ -109,4 +112,8 @@ The **Network Interfaces** tab lists the newly added interface.
 
 ## Resources
 
-- [Multus CNI](../../integrations/multus-cni.md)
+<!-- prettier-ignore-start -->
+
+- <VersionedLink text="Multus CNI" url="/integrations/packs/?pack=cni-multus" />
+
+<!-- prettier-ignore-end -->

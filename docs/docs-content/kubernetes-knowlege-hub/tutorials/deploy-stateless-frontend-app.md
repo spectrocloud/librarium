@@ -30,15 +30,15 @@ application is bootstrapped with [Create React App](https://create-react-app.dev
 ## Prerequisites
 
 - An installation of [Node.js and NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) on your
-  machine. Node is a Javascript runtime environment and will enable React to run on your machine.
+  machine. Node is a JavaScript runtime environment and will enable React to run on your machine.
 
 - A clone of the application from the [date suggestions app](https://github.com/Princesso/date-buddy.git) on GitHub.
   Cloning the application will enable you to follow this tutorial step by step.
 
 - A Docker account and a [Docker installation](https://docs.docker.com/engine/install/ubuntu/) on your machine.
 
-- An active Kubernetes cluster. Check out the
-  [Deploy a Cluster with Palette](../../clusters/public-cloud/deploy-k8s-cluster.md) tutorial to get started.
+- An active Kubernetes cluster. Check out the [Getting Started](/getting-started/) tutorials for steps on building a new
+  cluster.
 
 - An installation of the [kubectl command-line tool](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/) on
   your machine and connected to your cluster.

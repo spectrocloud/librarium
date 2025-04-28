@@ -26,20 +26,22 @@ selected in the Kubernetes layer of the infrastructure profile.
 
 3. Select your infrastructure cluster profile. Palette displays the profile details and its profile stack.
 
-4. Select the Kubernetes layer in the profile stack, and choose an **OIDC Identity Provider** option. Refer to
-   [Configure OIDC Identify Provider](../../integrations/kubernetes.md#configure-oidc-identity-provider) to learn more
-   about OIDC options.
+<!-- prettier-ignore-start -->
 
-   - Selecting **None** or **Palette** will display the Virtual Machine dashboard in a tab.
+4. Select the Kubernetes layer in the profile stack, and choose an **OIDC Identity Provider** option. Refer to the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" /> pack additional guidance for more information.
 
-     :::warning
+<!-- prettier-ignore-end -->
 
-     We do not recommend choosing **None** in a production environment, as it may disable authentication for add-ons
-     that rely on OIDC.
+- Selecting **None** or **Palette** will display the Virtual Machine dashboard in a tab.
 
-     :::
+  :::warning
 
-   - Selecting **Inherit from Tenant** or **Custom** will display a link to the dashboard on the cluster overview page.
+  We do not recommend choosing **None** in a production environment, as it may disable authentication for add-ons that
+  rely on OIDC.
+
+  :::
+
+- Selecting **Inherit from Tenant** or **Custom** will display a link to the dashboard on the cluster overview page.
 
 5. If you selected **Custom** as the OIDC IdP, follow the steps in <VersionedLink
      text="Configure Custom OIDC"
@@ -48,9 +50,8 @@ selected in the Kubernetes layer of the infrastructure profile.
 
 6. Once you have made the necessary changes, click **Confirm Updates** and **Save Changes** to conclude the update.
 
-7. Deploy a cluster using the updated infrastructure profile. Refer to the
-   [Deploy a Cluster](../../tutorials/cluster-deployment/public-cloud/deploy-k8s-cluster.md) tutorial for instructions
-   on how to deploy a cluster.
+7. Deploy a cluster using the updated infrastructure profile. Refer to the [Getting Started](/getting-started/)
+   tutorials for instructions on how to deploy a cluster.
 
 8. Once the cluster is listed as **Healthy**, attach the VMO add-on profile to your cluster. Refer to the
    [Attach an Add-on Profile](../../clusters/imported-clusters/attach-add-on-profile.md) guide for instructions.

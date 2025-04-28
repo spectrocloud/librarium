@@ -49,9 +49,9 @@ registry.hostname:
  schema: '{{ required }}'
 ```
 
-**Readonly**
+**Read only**
 
-The pack value is not editable if marked as readonly.
+The pack value is not editable if marked as read only.
 
 ```bash
 registry.hostname:
@@ -336,13 +336,17 @@ In the example code snippet from earlier, the three dependent packs are identifi
 The `layer` attribute defines the layer where the dependent pack can be found in the Cluster Profile. The following
 table lists the different layer types.
 
+<!-- prettier-ignore-start -->
+
 | Layer   | Description                                                                                                                                                                                                      |
 | ------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `os`    | The dependent pack can only be found in the operating system layer of the Cluster Profile. The `os` layer contains packs such as Ubuntu, CentOS or Bring Your Own OS (BYOOS).                                    |
-| `k8s`   | The dependent pack can only be found in the Kubernetes layer of the Cluster Profile. The `k8s` layer contains packs such as [Palette eXtended Kubernetes](../integrations/kubernetes.md), RKE2, k3s or MicroK8s. |
+| `k8s`   | The dependent pack can only be found in the Kubernetes layer of the Cluster Profile. The `k8s` layer contains packs such as <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" />, RKE2, k3s or MicroK8s. |
 | `cni`   | The dependent pack can only be found in the network layer of the Cluster Profile. The `cni` layer contains packs such as Calico, Cilium, Flannel and Antrea.                                                     |
 | `csi`   | The dependent pack can only be found in the storage layer of the Cluster Profile. The `csi` layer contains packs such as vSphere CSI, Amazon EBS CSI, Amazon EFS, Azure Disk and Portworx.                       |
 | `addon` | The dependent pack can only be found in the add-on layers of the Cluster Profile. The `addon` layer contains packs such as ArgoCD, Vault, Nginx, and many more.                                                  |
+
+<!-- prettier-ignore-end -->
 
 #### Dependency Types
 
@@ -423,28 +427,28 @@ Pack resource constraints must be defined in the `pack.json` file. The sample pa
 
 The type of resource
 
-- cpu
-- memory
-- diskSize
+- CPU
+- Memory
+- Disk size
 
 </TabItem>
 
-<TabItem label="minLimit" value="pack_resources_minLimit">
+<TabItem label="minimum limit" value="pack_resources_minLimit">
 
 The minimum limit of the resource will be considered during the machine pool validation. The resource limit value is
 required to have the below unit depending on the resource type. Any change of unit will cause inaccurate computation of
 the total minimum requirement.
 
-- cpu - millicore (m)
-- memory - Mibibyte (Mi)
-- diskSize - Gigabyte (GB)
+- CPU - Millicore (m)
+- Memory - Mibibyte (Mi)
+- Disk size - Gigabyte (GB)
 
 </TabItem>
 
 <TabItem label="components" value="pack_resources_components">
 
-The minLimit is the minimum resource requirement for each worker pool in the cluster. This value is sufficient for the
-basic resource validation, but in some cases where the pack contains one or more associated components, then each
+The minimum limit is the minimum resource requirement for each worker pool in the cluster. This value is sufficient for
+the basic resource validation, but in some cases where the pack contains one or more associated components, then each
 component can define its CPU or memory resource requests in the config file `values.yaml`. In this case, a single
 `minLimit` value is not sufficient as the minimum requirements can be different for each component.
 
@@ -669,16 +673,12 @@ k8s:
 
 Referencing Kubernetes pack variable version in CentOS pack values:
 
-centos values.yaml
-
-```bash
+```bash title="CentOS values.yaml"
 k8s:
  version: "{{ .spectro.pack.kubernetes.version }}"
 ```
 
-kubernetes values.yaml
-
-```bash
+```bash title="Kubernetes values.yaml"
 version: 1.18.0
 ```
 

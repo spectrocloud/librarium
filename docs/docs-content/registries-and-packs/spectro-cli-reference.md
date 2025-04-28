@@ -223,7 +223,7 @@ Download the packs from the pack registry to a pack target location:
 
 #### Arguments
 
-PACK_NAME: TAG|@DIGEST - Name of the pack for a particular tag or a sha digest.
+PACK_NAME: TAG|@DIGEST - Name of the pack for a particular tag or a SHA digest.
 
 PACK_TARGET_DIR - Directory location where pack content will be pulled.
 
@@ -317,5 +317,5 @@ spectro version
 <!-- spectro-cli-version-output -->
 
 ```bash hideClipboard
-Spectro CLI Version 4.6.4 linux/amd64
+Spectro CLI Version 4.6.0 linux/amd64
 ```

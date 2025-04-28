@@ -59,7 +59,7 @@ Before you begin, ensure that you have the following prerequisites:
     [Create and Manage IPAM Node Pools](../../pcg/manage-pcg/create-manage-node-pool.md) guide.
 
   - A search domain, also called DNS mapping, can be used to assign cluster nodes to a specific network, cluster, and
-    datacenter. Check out the [Add DNS Mapping](../../pcg/manage-pcg/add-dns-mapping.md) guide to learn how to add
+    data center. Check out the [Add DNS Mapping](../../pcg/manage-pcg/add-dns-mapping.md) guide to learn how to add
     multiple DNS mappings to a PCG.
 
 ## Create a VMware Cluster
@@ -91,9 +91,9 @@ Before you begin, ensure that you have the following prerequisites:
 
    | Field Name                | Description                                                                                                                                                                                                 | Required |
    | ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
-   | **Datacenter**            | The VMware vSphere datacenter where the cluster and its nodes will be deployed.                                                                                                                             | Yes      |
-   | **Deployment Folder**     | The folder in the datacenter where the cluster and its nodes will be deployed. Check the box **Append cluster name** if you want the cluster name appended to the folder name.                              | Yes      |
-   | **Image Template Folder** | The folder in the datacenter where the image templates are stored. This is typically in the **spectro-templates** folder.                                                                                   | Yes      |
+   | **Datacenter**            | The VMware vSphere data center where the cluster and its nodes will be deployed.                                                                                                                            | Yes      |
+   | **Deployment Folder**     | The folder in the data center where the cluster and its nodes will be deployed. Check the box **Append cluster name** if you want the cluster name appended to the folder name.                             | Yes      |
+   | **Image Template Folder** | The folder in the data center where the image templates are stored. This is typically in the **spectro-templates** folder.                                                                                  | Yes      |
    | **Network Type**          | The network type to use for the cluster. Select **Static IP** if you want to use static IP addresses. Select **DHCP** if you want to use Dynamic Host Configuration Protocol (DHCP).                        | Yes      |
    | **SSH Key**               | The SSH key to use for the cluster. Check out the [Create and Upload an SSH Key](../../cluster-management/ssh/ssh-keys.md#create-and-upload-an-ssh-key) guide to learn how to upload an SSH key to Palette. | No       |
    | **NTP Servers**           | The Network Time Protocol (NTP) servers to use for the cluster.                                                                                                                                             | No       |
@@ -189,10 +189,13 @@ Before you begin, ensure that you have the following prerequisites:
 
     #### RBAC Configuration
 
+<!-- prettier-ignore-start -->
+
     RBAC configuration is required when you configure custom OIDC. You must map a set of users or groups to a Kubernetes
     RBAC role. To learn how to map a Kubernetes role to users and groups, refer to
-    [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings). Refer to
-    [Use RBAC with OIDC](../../../integrations/kubernetes.md#use-rbac-with-oidc) for an example.
+    [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings). Refer to the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" /> pack additional details for an example.
+
+<!-- prettier-ignore-end -->
 
     #### Location
 

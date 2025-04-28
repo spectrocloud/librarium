@@ -54,7 +54,7 @@ nodes is critical, consider one of the following options:
 | Provider           | OS Pack    | SSH Username |
 | ------------------ | ---------- | ------------ |
 | **MAAS**           | **Ubuntu** | `ubuntu`     |
-| **Openstack**      | **Ubuntu** | `ubuntu`     |
+| **OpenStack**      | **Ubuntu** | `ubuntu`     |
 | **VMware vSphere** | **Ubuntu** | `spectro`    |
 | **VMware vSphere** | **CentOS** | `spectro`    |
 
@@ -85,6 +85,6 @@ guidance on building custom images.
 ## Resources
 
 - [SSH Keys](./ssh-keys.md)
-- [Deploy a Cluster (Public Cloud)](../../public-cloud/deploy-k8s-cluster.md)
+- [Getting Started](/getting-started/)
 - [Data Center Clusters](../../data-center/data-center.md)
 - [Create Cluster Definition (Edge)](../../edge/site-deployment/cluster-deployment.md)

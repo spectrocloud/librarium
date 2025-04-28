@@ -14,7 +14,7 @@ the hosts. This can lead to inconsistencies, missed updates, or operational risk
 This page demonstrates how to configure regularly scheduled OS upgrades by leveraging cluster profiles and the
 [system upgrade controller](https://github.com/rancher/system-upgrade-controller) already installed by Palette. You will
 learn how to create your own Kubernetes manifest containing your custom OS upgrade script. Your cluster nodes will then
-be selected based on configured node labels and upgraded periodically according to a Cron schedule you choose.
+be selected based on configured node labels and upgraded periodically according to a cron schedule you choose.
 
 ## Prerequisites
 
@@ -59,9 +59,9 @@ be selected based on configured node labels and upgraded periodically according 
    system-upgrade-67991934afb6a8ea13ee0e01
    ```
 
-7. Provide an upgrade frequency using a Cron format. This is used to configure a Kubernetes
+7. Provide an upgrade frequency using a cron format. This is used to configure a Kubernetes
    [CronJob](https://kubernetes.io/docs/concepts/workloads/controllers/cron-jobs/) to execute upgrades on a repeating
-   schedule. You can find some common examples of Cron schedules in the following table.
+   schedule. You can find some common examples of cron schedules in the following table.
 
    | **Expression** | **Description**                                        |
    | -------------- | ------------------------------------------------------ |
@@ -71,7 +71,7 @@ be selected based on configured node labels and upgraded periodically according 
    | `0 0 * * *`    | Once a day at midnight                                 |
    | `0 * * * *`    | Once an hour at the beginning of the hour              |
 
-   Execute the following command in your terminal, replacing the placeholder with your preferred Cron schedule. The
+   Execute the following command in your terminal, replacing the placeholder with your preferred cron schedule. The
    command saves your chosen schedule to the `SYSTEM_UPGRADE_SCHEDULE` variable.
 
    ```shell

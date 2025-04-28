@@ -17,6 +17,8 @@ The following list contains all the supported Palette CLI subcommands. Click on 
 
 - `help` - Help with any command.
 
+- [`content`](content.md) - Create and manage content bundles.
+
 - [`docs`](docs.md) - Start the Palette documentation site in your local environment for an offline experience.
 
 - [`ec`](ec.md) - Palette Enterprise Cluster installation & pre-validation.
@@ -59,6 +61,8 @@ The Palette CLI supports the following environment variables.
 | `PALETTE_ENCRYPTION_PASSWORD` | The encryption passphrase Palette CLI will use to encrypt sensitive data. The passphrase must between 8 to 32 characters long with a capital letter, a lower letter, a digit and a special character. | string |
 
 ## Resources
+
+- [Content](content.md)
 
 - [Docs](docs.md)
 

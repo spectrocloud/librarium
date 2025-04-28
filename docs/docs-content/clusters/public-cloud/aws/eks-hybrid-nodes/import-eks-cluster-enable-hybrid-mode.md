@@ -37,22 +37,9 @@ Import your Amazon EKS cluster and enable hybrid mode to be able to create edge 
   [Cluster Profile](../../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile)
   permissions for guidance.
 
-- Ensure your environment has network access to Palette SaaS. Refer to
-  [Palette IP Addresses](../../../../architecture/palette-public-ips.md) for guidance.
-
-- Ensure [kubectl](https://kubernetes.io/docs/tasks/tools/) is installed and available in your local workstation.
-
-- Access to your Amazon EKS cluster through kubectl.
-
-  - To access your cluster with kubectl, you can use the AWS CLI's built-in authentication capabilities. If you are
-    using a custom OpenID Connect (OIDC) provider, you will need to configure your kubeconfig to use your OIDC provider.
-
-    Refer to the [Access Imported Cluster with Kubectl](#access-imported-cluster-with-kubectl) section for more
-    information.
-
 - All networking prerequisites completed for hybrid nodes. Refer to
-  [Prepare networking for hybrid nodes](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-networking.html)
-  for guidance. You will need to provide the following details during the import steps:
+  [Prepare Network](./prepare-environment/prepare-network.md) for guidance. You will need to provide the following
+  details during the import steps:
 
   - The Virtual Private Cloud (VPC) Classless Inter-Domain Routing (CIDR) range where your EKS cluster resides.
   - The CIDR ranges for hybrid nodes in other networks that need to connect to this cluster.
@@ -62,7 +49,7 @@ Import your Amazon EKS cluster and enable hybrid mode to be able to create edge 
   [Prepare credentials for hybrid nodes](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-creds.html) for
   guidance.
 
-  If you are using Systems Manager, you will need to provide the following details during the import steps:
+  If you are using AWS Systems Manager, you will need to provide the following details during the import steps:
 
   - The Activation ID assigned by AWS Systems Manager when creating an activation. This ID is used to associate hybrid
     nodes with your AWS account in Systems Manager.
@@ -72,7 +59,7 @@ Import your Amazon EKS cluster and enable hybrid mode to be able to create edge 
     [Hybrid Nodes IAM Role](https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-creds.html#_hybrid_nodes_iam_role)
     created for AWS SSM hybrid activations.
 
-  If you are using IAM Roles Anywhere, you will need to provide the following details during the import steps:
+  If you are using AWS IAM Roles Anywhere, you will need to provide the following details during the import steps:
 
   - The Amazon Resource Name (ARN) of the IAM Roles Anywhere profile that defines which roles can be assumed by hybrid
     nodes.
@@ -87,6 +74,16 @@ Import your Amazon EKS cluster and enable hybrid mode to be able to create edge 
 
 - An existing Amazon EKS cluster that has configured with the appropriate parameters to be imported into Palette. Refer
   to [Prepare EKS Cluster](./prepare-environment/prepare-eks-cluster.md) for guidance.
+
+- Ensure [kubectl](https://kubernetes.io/docs/tasks/tools/) is installed and available in your local workstation.
+
+- Access to your Amazon EKS cluster through kubectl.
+
+  - To access your cluster with kubectl, you can use the AWS CLI built-in authentication capabilities. If you are using
+    a custom OpenID Connect (OIDC) provider, you will need to configure your kubeconfig to use your OIDC provider.
+
+    Refer to the [Access Imported Cluster with Kubectl](#access-imported-cluster-with-kubectl) section for more
+    information.
 
 ### Import Cluster
 
@@ -152,7 +149,6 @@ Import your Amazon EKS cluster and enable hybrid mode to be able to create edge 
    customresourcedefinition.apiextensions.k8s.io/edgecloudconfigs.cluster.spectrocloud.com configured
    customresourcedefinition.apiextensions.k8s.io/edgenativecloudconfigs.cluster.spectrocloud.com configured
    customresourcedefinition.apiextensions.k8s.io/gcpcloudconfigs.cluster.spectrocloud.com configured
-   customresourcedefinition.apiextensions.k8s.io/libvirtcloudconfigs.cluster.spectrocloud.com configured
    customresourcedefinition.apiextensions.k8s.io/maascloudconfigs.cluster.spectrocloud.com configured
    customresourcedefinition.apiextensions.k8s.io/nestedcloudconfigs.cluster.spectrocloud.com configured
    customresourcedefinition.apiextensions.k8s.io/openstackcloudconfigs.cluster.spectrocloud.com configured
@@ -482,10 +478,13 @@ need to do the following:
   [Grant users access to Kubernetes with an external OIDC provider](https://docs.aws.amazon.com/eks/latest/userguide/authenticate-oidc-identity-provider.html)
   to learn how to associate an OIDC identity provider with your cluster.
 
+<!-- prettier-ignore-start -->
+
 - Ensure your OIDC user or group is mapped to an `admin` or `clusteradmin` Kubernetes RBAC Role or ClusterRole. To learn
   how to map a Kubernetes role to users and groups, refer to
-  [Create Role Bindings](../../../cluster-management/cluster-rbac.md#create-role-bindings). For an example, refer to
-  [Use RBAC with OIDC](../../../../integrations/kubernetes.md#use-rbac-with-oidc).
+  [Create Role Bindings](../../../cluster-management/cluster-rbac.md#create-role-bindings). For an example, refer to the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" /> pack additional details.
+
+<!-- prettier-ignore-end -->
 
 - Configure your AWS CLI credentials. Refer to
   [Configuration and Credential File Settings](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-files.html)
@@ -516,8 +515,12 @@ Learn how to create a hybrid node pool on your cluster and add your edge hosts t
 
 - [Add AWS Account](../add-aws-accounts.md)
 
-- [Palette IP Addresses](../../../../architecture/palette-public-ips.md)
+- [Prepare Environment](./prepare-environment/prepare-environment.md)
 
 - [Create Role Bindings](../../../cluster-management/cluster-rbac.md#create-role-bindings)
 
-- [Use RBAC with OIDC](../../../../integrations/kubernetes.md#use-rbac-with-oidc)
+<!-- prettier-ignore-start -->
+
+- <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> pack
+
+<!-- prettier-ignore-end -->

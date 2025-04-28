@@ -121,7 +121,7 @@ displays. The Palette UI confirms that the cluster profile was created in the sc
 Select the cluster profile to view its details. The cluster profile summary appears.
 
 This cluster profile deploys the [Hello Universe](https://github.com/spectrocloud/hello-universe) application using a
-pack. Click on the **hellouniverse 1.2.0** layer. The pack manifest editor appears.
+pack. Click on the `hellouniverse 1.2.0` layer. The pack manifest editor appears.
 
 Click on **Presets** on the right-hand side. You can learn more about the pack presets on the pack README, which is
 available in the Palette UI. Select the **Enable Hello Universe API** preset. The pack manifest changes accordingly.
@@ -190,7 +190,7 @@ Click on the version drop-down and select **Create new version**. The version cr
 Fill in **1.1.0** in the **Version** input field. Then, click on **Confirm**. The new cluster profile version is created
 with the same layers as version **1.0.0**.
 
-Select the **kubernetes 1.27.x** layer of the profile. The pack manifest editor appears.
+Select the `kubernetes 1.27.x` layer of the profile. The pack manifest editor appears.
 
 Click on the **Pack Version** dropdown. All of the available versions of the **Palette eXtended Kubernetes** pack
 appear. The cluster profile is configured to use the latest patch version of **Kubernetes 1.27**.
@@ -363,11 +363,12 @@ Navigate back to the Palette UI in your browser. Select the **Nodes** tab.
 Click on **New Node Pool**. The **Add node pool** dialog appears. This workflow allows you to create a new worker pool
 for your cluster. Fill in the following configuration.
 
-| Field                 | Value                              | Description                                                          |
-| --------------------- | ---------------------------------- | -------------------------------------------------------------------- |
-| **Node pool name**    | `worker-pool-2`                    | The name of your worker pool.                                        |
-| **Instance Type**     | `Standard_A8_v2`                   | Set the compute size equal to the already provisioned nodes.         |
-| **Availability Zone** | _Availability zone of your choice_ | Set the availability zone the same as the already provisioned nodes. |
+| Field                 | Value                              | Description                                                                                                                                                                                        |
+| --------------------- | ---------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Node pool name**    | `worker-pool-2`                    | The name of your worker pool.                                                                                                                                                                      |
+| **Enable Autoscaler** | Enabled                            | Scale the worker pool horizontally based on its per-node workload counts. The **Minimum size** specifies the lower bound of nodes in the pool, and the **Maximum size** specifies the upper bound. |
+| **Instance Type**     | `Standard_A8_v2`                   | Set the compute size equal to the already provisioned nodes.                                                                                                                                       |
+| **Availability Zone** | _Availability zone of your choice_ | Set the availability zone the same as the already provisioned nodes.                                                                                                                               |
 
 Click on **Confirm**. The dialog closes. Palette begins provisioning your node pool. Once the process completes, your
 three node pools appear in a healthy state.
@@ -406,7 +407,7 @@ workloads execute on which nodes.
 Switch back to Palette in your web browser. Navigate to the left **Main Menu** and select **Profiles**. Select the
 cluster profile deployed to your cluster, named `azure-profile`. Ensure that the **1.1.0** version is selected.
 
-Click on the **hellouniverse 1.2.0** layer. The manifest editor appears. Set the
+Click on the `hellouniverse 1.2.0` layer. The manifest editor appears. Set the
 `manifests.hello-universe.ui.useTolerations` field on line 19 to `true`. Then, set the
 `manifests.hello-universe.ui.effect` field on line 21 to `NoExecute`. This toleration describes that the UI pods of
 Hello Universe will tolerate the taint with the effect `NoExecute`, key `app`, and value `ui`. The tolerations of the UI

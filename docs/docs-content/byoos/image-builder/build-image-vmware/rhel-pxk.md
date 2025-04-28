@@ -8,12 +8,15 @@ sidebar_position: 20
 tags: ["operating system", "byoos", "profiles", "pxk", "vmware"]
 ---
 
-You can create a custom VMware vSphere RHEL image with
-[Palette eXtended Kubernetes](../../../integrations/kubernetes.md) (PXK) and use it to deploy a Kubernetes cluster. You
+<!-- prettier-ignore-start -->
+
+You can create a custom VMware vSphere RHEL image with <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> and use it to deploy a Kubernetes cluster. You
 can choose to build the custom RHEL image with PXK using FIPS or opt for a non-FIPS-compliant image. This workflow is
 built on-top of the [Image Builder](https://github.com/kubernetes-sigs/image-builder) project. Check out the
 [Image Builder vSphere](https://image-builder.sigs.k8s.io/capi/providers/vsphere) section of the documentation to learn
 more about this workflow.
+
+<!-- prettier-ignore-end -->
 
 Use the following steps to build a custom RHEL image with PXK for VMware vSphere and deploy a Kubernetes cluster.
 
@@ -150,7 +153,7 @@ want to create a FIPS-compliant image or a non-FIPS-compliant image.
     | Field Name            | Description                                                                |
     | --------------------- | -------------------------------------------------------------------------- |
     | `cluster`             | The name of the vSphere cluster where the Packer VM will be created.       |
-    | `datacenter`          | The name of the vSphere datacenter where the Packer VM will be created.    |
+    | `datacenter`          | The name of the vSphere data center where the Packer VM will be created.   |
     | `datastore`           | The name of the vSphere datastore the Packer VM will use.                  |
     | `folder`              | The name of the vSphere folder where the vSphere template will be created. |
     | `insecure_connection` | Set to `true` if you are using a self-signed certificate for vCenter.      |
@@ -397,7 +400,7 @@ want to create a FIPS-compliant image or a non-FIPS-compliant image.
     | Field Name            | Description                                                                |
     | --------------------- | -------------------------------------------------------------------------- |
     | `cluster`             | The name of the vSphere cluster where the Packer VM will be created.       |
-    | `datacenter`          | The name of the vSphere datacenter where the Packer VM will be created.    |
+    | `datacenter`          | The name of the vSphere data center where the Packer VM will be created.   |
     | `datastore`           | The name of the vSphere datastore the Packer VM will use.                  |
     | `folder`              | The name of the vSphere folder where the vSphere template will be created. |
     | `insecure_connection` | Set to `true` if you are using a self-signed certificate for vCenter.      |

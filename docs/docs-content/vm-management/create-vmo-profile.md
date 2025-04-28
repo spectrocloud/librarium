@@ -100,8 +100,8 @@ profile configuration. To learn about pack components, refer to [Palette VMO](./
 
 10. Review the profile and click **Finish Configuration**.
 
-11. Apply the profile to your cluster. For more information, refer to
-    [Create a Cluster](../clusters/public-cloud/deploy-k8s-cluster.md).
+11. Apply the profile to your cluster. For more information, refer to the [Getting Started](/getting-started/)
+    tutorials.
 
 </TabItem>
 
@@ -258,8 +258,8 @@ profile configuration. To learn about pack components, refer to [Palette VMO](./
 
 11. Review the profile and click **Finish Configuration**.
 
-12. Apply the profile to your cluster. For more information, refer to
-    [Create a Cluster](../clusters/public-cloud/deploy-k8s-cluster.md).
+12. Apply the profile to your cluster. For more information, refer to the [Getting Started](/getting-started/)
+    tutorials.
 
 :::info
 
@@ -371,9 +371,12 @@ permissions or standard Kubernetes roles. For configuration guidance, refer to
 [VM User Roles and Permissions](./rbac/vm-roles-permissions.md) reference lists Cluster Roles and equivalent Palette
 Roles.
 
+<!-- prettier-ignore-start -->
+
 If you have OpenID Connect (OIDC) configured at the Kubernetes layer of your cluster profile, you can create a role
-binding that maps individual users or groups assigned within the OIDC provider's configuration to a role. To learn more,
-review [Use RBAC with OIDC](../integrations/kubernetes.md#use-rbac-with-oidc).
+binding that maps individual users or groups assigned within the OIDC provider's configuration to a role. Refer to the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" /> pack additional guidance for more information.
+
+<!-- prettier-ignore-end -->
 
 ## Resources
 

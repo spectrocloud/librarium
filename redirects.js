@@ -49,8 +49,8 @@ let redirects = [
     to: `/clusters/edge/`,
   },
   {
-    from: `/troubleshooting/palette-namespaces-podes/`,
-    to: `/architecture/palette-namespaces-podes/`,
+    from: [`/troubleshooting/palette-namespaces-podes/`, `/architecture/palette-namespaces-podes/`],
+    to: `/architecture/palette-namespaces-pods/`,
   },
   {
     from: `/troubleshooting/Network-Communications-and-Ports/`,
@@ -591,6 +591,10 @@ let redirects = [
     to: "/legal-licenses/oss-licenses-index/",
   },
   {
+    from: "/release-notes/annoucements/",
+    to: "release-notes/announcements/",
+  },
+  {
     from: "/clusters/cluster-management/noc-ui/",
     to: "/clusters/cluster-management/cluster-map-filters/",
   },
@@ -638,6 +642,8 @@ let redirects = [
       "/integrations/ubuntu",
       "/integrations/vsphere-csi",
       "/integrations/ngrok",
+      "/integrations/generic-vm-libvirt",
+      "/integrations/ubuntu-libvirt",
     ],
     to: "/integrations/",
   },
@@ -754,6 +760,14 @@ let redirects = [
       "/security-bulletins/reports/cve-2024-7592",
     ],
     to: "/security-bulletins/reports/",
+  },
+  {
+    from: "/tutorials/cluster-management/public-cloud/deploy-k8s-cluster/",
+    to: "/getting-started/",
+  },
+  {
+    from: "/clusters/public-cloud/deploy-k8s-cluster/",
+    to: "/getting-started/",
   },
 ];
 
