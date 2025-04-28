@@ -34,7 +34,7 @@ you for required values. Alternatively, you can use flags to generate a configur
 | ---------- | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
 | `-f`       | `--config-file`        | Install using a configuration file (optional). Use `-config-only` to generate a configuration file.                                                                                                                          | string  |
 | `-o`       | `--config-only`        | Generate configuration file only. This command will not proceed with installation.                                                                                                                                           | boolean |
-| `-v`       | `--custom-values-file` | Enterprise Cluster custom values.yaml configuration file (optional). Use this to customize the cluster profile of the Enterprise Cluster. Refer to the [custom value file](#custom-value-file) section for more information. | string  |
+| `-v`       | `--custom-values-file` | Enterprise Cluster custom `values.yaml` configuration file (optional). Use this to customize the cluster profile of the Enterprise Cluster. Refer to the [custom value file](#custom-value-file) section for more information. | string  |
 | `-p`       | `--update-passwords`   | Update passwords only. Do not proceed with installation. The `--config-file` flag must also be provided.                                                                                                                     | string  |
 
 ### Examples

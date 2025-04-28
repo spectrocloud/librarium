@@ -112,7 +112,7 @@ location setting.
 - [CycloneDX](https://cyclonedx.org/specification/overview/): An open source XML-based SBOM format that provides a
   standard representation of software components and their metadata.
 
-- Syft JSON: Syft's custom SBOM format. The Syft SBOM format contains the most metadata compared to the other SBOM
+- Syft JSON: Syft custom SBOM format. The Syft SBOM format contains the most metadata compared to the other SBOM
   formats.
 
 #### SBOM Scan Scopes

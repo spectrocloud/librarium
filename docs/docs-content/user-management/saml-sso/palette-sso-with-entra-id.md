@@ -81,8 +81,8 @@ Use the following steps to enable OIDC SSO in Palette with Microsoft Entra ID.
 
 9. From the application overview page, navigate to the left main menu and select **Token configuration**.
 
-10. Select the **Add optional claim** button. Choose **Token type** as the **ID**, and add the claims **email** and
-    **preferred_username**. When finished, click the **Add** button.
+10. Select the **Add optional claim** button. Choose **Token type** as the **ID**, and add the claims `email` and
+    `preferred_username`. When finished, click the **Add** button.
 
     :::info
 
@@ -237,8 +237,8 @@ an Entra ID user account.
 ## Enable OIDC in Kubernetes Clusters With Entra ID
 
 Kubelogin is a kubectl plugin for Kubernetes OIDC authentication. When you use kubectl, kubelogin opens up your browser,
-starts a session, and redirects you to your IDP's login site. Upon a succesfull login, you receive an authentication
-token that is used to grant you access to the cluster.
+starts a session, and redirects you to your IDP login site. Upon a successful login, you receive an authentication token
+that is used to grant you access to the cluster.
 
 Use the following steps to enable OIDC in Kubernetes clusters with Microsoft Entra ID.
 
