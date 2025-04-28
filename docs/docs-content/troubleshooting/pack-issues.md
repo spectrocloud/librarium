@@ -70,7 +70,7 @@ Use the following debug steps to learn how to make these configuration changes a
 8. Click the **New manifest** option, and provide a name for the manifest, such as `job-fix-cni`. Click the tick button
    afterwards.
 
-9. Copy the following manifest into the YAML editor. This manifest disables the `kube-proxy` and `aws-node` daemonsets
+9. Copy the following manifest into the YAML editor. This manifest disables the `kube-proxy` and `aws-node` DaemonSets
    by applying a node selector that does not match any nodes. It also removes existing Cilium, `kube-dns`, and
    `cert-manager` pods to ensure a clean state for Cilium deployment.
 
@@ -209,7 +209,7 @@ Use the following debug steps to learn how to make these configuration changes a
 
 17. As soon as it is available, obtain the **API server endpoint** for the cluster.
 
-    If using the AWS Console, go to **AWS > Clusters > clusterName** and view the **Overview** tab for the cluster.
+    If using the AWS Console, go to **AWS > Clusters > `<clusterName>`** and view the **Overview** tab for the cluster.
     Click the clipboard icon next to the **API server endpoint** field.
 
     If using the AWS CLI, issue the following command to obtain the API endpoint for the cluster. Replace

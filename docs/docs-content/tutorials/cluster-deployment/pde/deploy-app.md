@@ -600,7 +600,7 @@ five key points:
 
 3. A pack requires a registry id. To create the app profile, Terraform needs to know what registry is hosting the pack.
    For containers, you can use the `Public Repo` hosting most of the Palette packs. This time the data resource
-   `data.spectrocloud_registry.public_registry` is specified to avoid hardcoding values.
+   `data.spectrocloud_registry.public_registry` is specified to avoid hardcoded values.
 
 4. The attribute `source_app_tier` is used to specify the unique id of the pack. All packs are assigned a unique id,
    including different versions of a pack. To ensure the correct pack is selected, the data resource
@@ -610,7 +610,9 @@ five key points:
    container such as the image name, ports, and service type, are specified. These properties can be provided as an
    extended string using the
    [Terraform Heredoc strings](https://developer.hashicorp.com/terraform/language/expressions/strings#heredoc-strings),
-   or you can specify these values as a stringified JSON object.
+   or you can specify these values as a JSON object.
+
+<!-- vale off -->
 
 <PointsOfInterest
   points={[
@@ -650,6 +652,8 @@ five key points:
     },
   ]}
 >
+
+<!-- vale on -->
 
 ```hcl
 resource "spectrocloud_application_profile" "hello-universe-ui" {
@@ -740,7 +744,7 @@ app profile through the UI. During the app profile creation process, click on th
 Review the payload's `values` attribute to find all of the properties of the service. You can copy the entire string and
 pass it to the resource `spectrocloud_application_profile` as an input for the `values` attribute.
 
-![UI's ability to display the API object](/tutorials/deploy-app/devx_apps_deploy-apps_ui-api-display.webp)
+![UI ability to display the API object](/tutorials/deploy-app/devx_apps_deploy-apps_ui-api-display.webp)
 
 The last Terraform resource to review before deploying the application is located in the **application.tf** file. The
 resource `spectrocloud_application.hello-universe-ui` is what creates the _app_. In Palette, an app combines a virtual
@@ -748,7 +752,7 @@ cluster and an app profile. When you deploy an app profile into a virtual cluste
 points to the app profile `spectrocloud_application_profile.hello-universe-ui` and the cluster resource
 `spectrocloud_virtual_cluster.cluster-1`. The two resources are required to create an app.
 
-<br />
+<!-- vale off -->
 
 <PointsOfInterest
   points={[
@@ -767,6 +771,8 @@ points to the app profile `spectrocloud_application_profile.hello-universe-ui` a
     },
   ]}
 >
+
+<!-- vale on -->
 
 ```hcl
 resource "spectrocloud_application" "scenario-1" {

@@ -148,7 +148,7 @@ To deploy a virtual cluster on OpenShift:
 
 2. Select **Settings** in the **Cluster Group Settings** pane.
 
-3. In the **Advanced Config** file, locate the securityContext section.
+3. In the **Advanced Config** file, locate the `securityContext` section.
 
 4. Comment out these lines:
 

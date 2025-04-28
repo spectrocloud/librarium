@@ -30,7 +30,7 @@ application is bootstrapped with [Create React App](https://create-react-app.dev
 ## Prerequisites
 
 - An installation of [Node.js and NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) on your
-  machine. Node is a Javascript runtime environment and will enable React to run on your machine.
+  machine. Node is a JavaScript runtime environment and will enable React to run on your machine.
 
 - A clone of the application from the [date suggestions app](https://github.com/Princesso/date-buddy.git) on GitHub.
   Cloning the application will enable you to follow this tutorial step by step.

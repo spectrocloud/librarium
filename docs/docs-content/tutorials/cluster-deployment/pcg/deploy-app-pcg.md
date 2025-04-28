@@ -118,12 +118,12 @@ In the **Cloud Type** section, select VMware as the infrastructure provider, the
 
 Add the following core infrastructure layers displayed to your profile.
 
-| Pack Name          | Version | Layer            |
-| ------------------ | ------- | ---------------- |
-| ubuntu-vsphere LTS | 22.4.x  | Operating System |
-| kubernetes         | 1.28.x  | Kubernetes       |
-| cni-calico         | 3.26.x  | Network          |
-| csi-vsphere-csi    | 3.0.x   | Storage          |
+| Pack Name            | Version | Layer            |
+| -------------------- | ------- | ---------------- |
+| `ubuntu-vsphere LTS` | 22.4.x  | Operating System |
+| `kubernetes`         | 1.28.x  | Kubernetes       |
+| `cni-calico`         | 3.26.x  | Network          |
+| `csi-vsphere-csi`    | 3.0.x   | Storage          |
 
 After adding each layer, click on the **Next Layer** button. Once the storage layer is added, click **Confirm** to
 complete the core infrastructure stack.
@@ -145,7 +145,7 @@ Now, under **Pack Details**, click on **Values** and replace the predefined `192
 **addresses** line with a valid IP address or IP range from your VMware environment to be assigned to your load
 balancer. Next, click **Confirm & Create** to add the MetalLB pack.
 
-![Metallb Helm-based pack.](/clusters_pcg_deploy-app-pcg_metallb-pack.webp)
+![MetalLb Helm-based pack.](/clusters_pcg_deploy-app-pcg_metallb-pack.webp)
 
 Finally, click again on the **Add New Pack** button to add the Hello Universe pack.
 
@@ -179,7 +179,7 @@ Ensure the following values are set for the **Basic Information** section.
 | Cluster name    | `pcg-tutorial-cluster`                                                                                                                                                                                      |
 | Description     | Cluster as part of the Deploy App Workloads with a PCG tutorial.                                                                                                                                            |
 | Tags            | `spectro-cloud-education`, `app:hello-universe`, `terraform_managed:false`, `repository:spectrocloud:tutorials`, `tutorial:DEPLOY_APP_WORKLOADS_WITH_A_PCG`                                                 |
-| Type of cluster | Datacenter                                                                                                                                                                                                  |
+| Type of cluster | Data center                                                                                                                                                                                                 |
 | Cloud Account   | Select the VMware cloud account that was registered with Palette during the PCG creation. The cloud account has the same name as the PCG. In this tutorial, the cloud account is called `gateway-tutorial`. |
 
 **Parameters**
@@ -264,14 +264,14 @@ overview of each file.
 - **profile.tf** - Configuration for the `spectrocloud_cluster_profile` resource. The following layers will be added to
   the profile.
 
-  | Pack Name          | Version | Layer            |
-  | ------------------ | ------- | ---------------- |
-  | ubuntu-vsphere LTS | 22.4.x  | Operating System |
-  | kubernetes         | 1.28.x  | Kubernetes       |
-  | cni-calico         | 3.26.x  | Network          |
-  | csi-vsphere-csi    | 3.0.x   | Storage          |
-  | lb-metallb-helm    | 0.13.x  | Load Balancer    |
-  | hello-universe     | 1.1.x   | App Service      |
+  | Pack Name            | Version | Layer            |
+  | -------------------- | ------- | ---------------- |
+  | `ubuntu-vsphere LTS` | 22.4.x  | Operating System |
+  | `kubernetes`         | 1.28.x  | Kubernetes       |
+  | `cni-calico`         | 3.26.x  | Network          |
+  | `csi-vsphere-csi`    | 3.0.x   | Storage          |
+  | `lb-metallb-helm`    | 0.13.x  | Load Balancer    |
+  | `hello-universe`     | 1.1.x   | App Service      |
 
   The <VersionedLink text="MetalLB" url="/integrations/packs/?pack=lb-metallb-helm"/> pack provides a load-balancer
   implementation for your Kubernetes cluster, as VMware does not offer a load balancer solution natively. The load

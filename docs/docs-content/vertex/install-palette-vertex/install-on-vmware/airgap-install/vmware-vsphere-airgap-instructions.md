@@ -107,7 +107,7 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
     | **Default User's password**                | Enter the password for the user account you will use to access the airgap support VM. You will be asked to change this password the first time you log in through SSH. | Yes      |
     | **A Unique Instance ID for this instance** | Enter a unique instance ID for the airgap support VM. The default value is `id-ovf`.                                                                                   | Yes      |
     | **Hostname**                               | Enter a fully qualified hostname for the airgap support VM. For example, `vertex.example.com`. The default value is `ubuntuguest`.                                     | Yes      |
-    | **Url to seed instance data from**         | You can specify a URL to seed instance data from. You can leave this value empty.                                                                                      | No       |
+    | **URL to seed instance data from**         | You can specify a URL to seed instance data from. You can leave this value empty.                                                                                      | No       |
 
 9.  Review the details and click on **Finish** to deploy the airgap support VM.
 

@@ -97,7 +97,7 @@ Overall health is computed based on the following factors:
   monitoring activities. In case a cluster goes to an unhealthy state, the last received healthy heartbeat can help you
   in troubleshooting.
 
-![Cluster_Health_Heart_Beat](/doc_cluster_clusters-cluster-heart-beat.webp)
+![Cluster Health Heart Beat](/doc_cluster_clusters-cluster-heart-beat.webp)
 
 - **Node Conditions** - Kubernetes maintains the status for each cluster node in the form of conditions such as
   DiskPressure, MemoryPressure, or NetworkUnavailable. Palette monitors these conditions and reports back to the
@@ -202,11 +202,11 @@ Palette keeps track of the nodes machine's health and will relaunch the node whe
 
 The following are some sample scenarios where the node health is considered as degraded:
 
-- Kubelet not up for 10 mins.
+- Kubelet not up for 10 minutes.
 
-- Network unavailability for 10 mins.
+- Network unavailability for 10 minutes.
 
-- New node doesn't get ready in 30 mins.
+- New node doesn't get ready in 30 minutes.
 
 ## Event Stream
 
