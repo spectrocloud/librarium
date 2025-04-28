@@ -65,6 +65,6 @@ before resetting the node.
 
 ## Validate
 
-1. Visit `https://<edge-host-ip>:5080` to access local UI on the Edge host.
+1. Visit `https://<edge-host-ip>:5080` to access Local UI on the Edge host.
 
-2. Confirm that the Edge host is no longer part of a cluster and has returned to the
+2. Confirm that the Edge host is no longer part of a cluster and has returned to the state after installation.
