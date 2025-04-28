@@ -216,7 +216,7 @@ stylus:
     insecure: true
 ```
 
-### Site
+### Site Parameters
 
 The `stylus.site` blocks accept the following parameters.
 
