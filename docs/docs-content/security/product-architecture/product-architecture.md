@@ -106,6 +106,6 @@ Palette has a common API gateway validation service that ensures there are no in
 vulnerabilities, such as Structured Query Language (SQL) injection or cross-site scripting.
 
 You can use the gateway validation service log to trace APIs with a unique ID, Tenant UID, or Session UID. To avoid
-revealing unnecessary information, all UIDs are 48-bit random hex strings.
+revealing unnecessary information, all UID values are 48-bit random hex strings.
 
 Refer to the [API Key Authentication](../../user-management/authentication/api-key/api-key.md) guide for details.

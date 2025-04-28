@@ -98,15 +98,15 @@ FIPS-compliant components in PXK and PXK-E:
 
 ### Runtime Components
 
-| **Component**           | **Description**                                                                                                   |
-| ----------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| containerd              | Containerd is an industry-standard container runtime with an emphasis on simplicity, robustness, and portability. |
-| containerd-shim         | Containerd-shim is a shim used by containerd to launch containers.                                                |
-| containerd-shim-runc-v1 | Containerd-shim-runc-v1 is a shim used by containerd to launch containers.                                        |
-| containerd-shim-runc-v2 | Containerd-shim-runc-v2 is a shim used by containerd to launch containers.                                        |
-| ctr                     | Ctr is a command line interface for containerd.                                                                   |
-| crictl                  | Crictl is a command line interface for CRI-compatible container runtimes.                                         |
-| runc                    | Runc is a CLI tool for spawning and running containers according to the OCI specification.                        |
+| **Component**             | **Description**                                                                                                   |
+| ------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `containerd`              | containerd is an industry-standard container runtime with an emphasis on simplicity, robustness, and portability. |
+| `containerd-shim`         | `containerd-shim` is a shim used by containerd to launch containers.                                              |
+| `containerd-shim-runc-v1` | `containerd-shim-runc-v1` is a shim used by containerd to launch containers.                                      |
+| `containerd-shim-runc-v2` | `containerd-shim-runc-v2` is a shim used by containerd to launch containers.                                      |
+| `ctr`                     | Ctr is a command line interface for containerd.                                                                   |
+| `crictl`                  | Crictl is a command line interface for CRI-compatible container runtimes.                                         |
+| `runc`                    | Runc is a CLI tool for spawning and running containers according to the OCI specification.                        |
 
 ### Container Network Interface Components
 
