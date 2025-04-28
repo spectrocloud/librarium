@@ -510,7 +510,7 @@ Navigate back to [Palette](https://console.spectrocloud.com/). Then, select **Cl
 Click on the **Edge Hosts** tab to view the registered hosts.
 
 Confirm your Edge host is listed as **Healthy** and with a **Ready** status. The **Machine ID** should match the ID
-displayed on your VM's screen.
+displayed on your VM screen.
 
 ![A screenshot of the Edge host in Palette.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_edge-host-palette.webp)
 

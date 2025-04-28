@@ -36,7 +36,7 @@ tags: ["clusters", "imported clusters"]
 5. A side view drawer will slide out from the right side of the cluster details page. Copy the displayed command to your
    clipboard.
 
-6. Open a terminal on your local workstation and validate you are in the correct Kubernete context. You can use the
+6. Open a terminal on your local workstation and validate you are in the correct Kubernetes context. You can use the
    following command to verify the Kubernetes context. If you find yourself in an incorrect Kubernetes context, switch
    to the proper context so you are interacting with the imported cluster when using kubectl.
 
