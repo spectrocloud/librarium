@@ -87,9 +87,9 @@ workload.
     guide to create an add-on cluster profile with a custom manifest.
 
 14. Use the manifest provided below for a sample ASP.NET application. Alternatively, use your own Windows application
-    manifest. It is essential to include in the **spec** block of the manifest the **nodeSelector: "kubernetes.io/os":
-    windows** specification. This specification is required for Kubernetes to know that the application needs to be
-    deployed on a Windows node.
+    manifest. It is essential to include in the `spec` block of the manifest the
+    `nodeSelector: "kubernetes.io/os": windows` specification. This specification is required for Kubernetes to know
+    that the application needs to be deployed on a Windows node.
 
     ```yaml {20-22}
     apiVersion: v1
