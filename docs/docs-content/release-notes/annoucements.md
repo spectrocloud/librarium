@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Annoucements"
-title: "Annoucements"
+sidebar_label: "Announcements"
+title: "Announcements"
 description: ""
 hide_table_of_contents: false
 sidebar_position: 10

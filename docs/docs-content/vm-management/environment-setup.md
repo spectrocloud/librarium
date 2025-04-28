@@ -99,13 +99,13 @@ We recommend using a dedicated VLAN for end-user access and not sharing it with 
 Refer to the following table for an example of a host network configuration, which uses a total of 4 NICs in 2 bonds and
 fits with our recommended VMO network configuration.
 
-| Interface              | Type   | Contents             | VLAN   | CIDR           | Gateway    |
-| ---------------------- | ------ | -------------------- | ------ | -------------- | ---------- |
-| **bond_management**    | Bond   | enp1s0 <br /> enp2s0 | Native | 192.168.0.0/22 |            |
-| **bond_management.10** | VLAN   | bond_management      | 10     | 172.16.0.0/22  |            |
-| **bond_data**          | Bond   | enp1s1 <br /> enp2s1 | Native |                |            |
-| **bond_data.20**       | VLAN   | bond_data            | 20     | 10.20.30.0/16  | 10.20.30.1 |
-| **br0**                | Bridge | bond_data            | Native |                |            |
+| Interface            | Type   | Contents             | VLAN   | CIDR           | Gateway    |
+| -------------------- | ------ | -------------------- | ------ | -------------- | ---------- |
+| `bond_management`    | Bond   | enp1s0 <br /> enp2s0 | Native | 192.168.0.0/22 |            |
+| `bond_management.10` | VLAN   | `bond_management`    | 10     | 172.16.0.0/22  |            |
+| `bond_data`          | Bond   | enp1s1 <br /> enp2s1 | Native |                |            |
+| `bond_data.20`       | VLAN   | `bond_data`          | 20     | 10.20.30.0/16  | 10.20.30.1 |
+| **br0**              | Bridge | `bond_data`          | Native |                |            |
 
 The **br0** bridge interface is used as a primary interface by Multus to automatically create VLAN interfaces for VMs.
 In this scenario, the primary interface must be a bridge, as no other type will work.
@@ -125,13 +125,13 @@ ensure a successful PXE boot on a tagged network, we recommend setting the nativ
 the switch port (in our example, this would be 5), so that the PXE boot can work with untagged traffic.
 
 Alternatively, if the server supports UEFI PXE boot and allows you to set the VLAN ID for PXE boot directly, you can
-also use this option. In this case, you need to adjust the configuration for **bond_management** to operate the
-`192.168.0.0/22` CIDR on a **bond_management.5** subinterface. However, because it is difficult to achieve PXE boot on a
+also use this option. In this case, you need to adjust the configuration for `bond_management` to operate the
+`192.168.0.0/22` CIDR on a `bond_management.5` subinterface. However, because it is difficult to achieve PXE boot on a
 tagged VLAN, we recommend using a native or untagged VLAN for PXE.
 
-The **bond_data.20** subinterface provides outbound connectivity, as it has the default gateway. This is the primary way
+The `bond_data.20` subinterface provides outbound connectivity, as it has the default gateway. This is the primary way
 to publish services from container workloads to the end users. If there are any specific data center networks that you
-want to reach over the **bond_management.10** subinterface instead, you can configure them through static routes on the
+want to reach over the `bond_management.10` subinterface instead, you can configure them through static routes on the
 `172.16.0.0/22` subnet in Canonical MAAS. Those routes will be automatically applied by MAAS upon server installation.
 
 For publishing workloads from VMs, you have the following ways:
