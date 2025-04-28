@@ -233,7 +233,7 @@ Download the packs from the pack registry to a pack target location:
 
 #### Arguments
 
-PACK_NAME: TAG|@DIGEST - Name of the pack for a particular tag or a sha digest.
+PACK_NAME: TAG|@DIGEST - Name of the pack for a particular tag or a SHA digest.
 
 PACK_TARGET_DIR - Directory location where pack content will be pulled.
 

@@ -51,7 +51,7 @@ The following sections describe these capabilities in detail:
   These resources are displayed on the cluster details page.
 
 - [Node Labels and Taints](taints.md) - You can constrain a pod to run only on a particular set of nodes. There are
-  several ways to do this. Common approaches, such as nodeSelector and node affinity, use labels to facilitate the
+  several ways to do this. Common approaches, such as `nodeSelector` and node affinity, use labels to facilitate the
   selection. Taints allow a node to repel a set of pods for appropriate pod allocation to node pools.
 
 - [RBAC and NS Support](cluster-rbac.md) - RoleBindings and ClusterRoleBindings are Role-Based Access Control (RBAC)

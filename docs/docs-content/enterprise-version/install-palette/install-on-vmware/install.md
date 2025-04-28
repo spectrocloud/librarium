@@ -243,7 +243,7 @@ Use the following steps to install Palette.
 
     | **Parameter**             | **Description**                                                                                                                                                                                                                                                                                                           |
     | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Datacenter**            | The installer retrieves the Datacenter automatically.                                                                                                                                                                                                                                                                     |
+    | **Datacenter**            | The installer retrieves the data center automatically.                                                                                                                                                                                                                                                                    |
     | **Folder**                | Select the folder that contains the VM instance.                                                                                                                                                                                                                                                                          |
     | **Image Template Folder** | Select the folder that contains the CAPI image templates.                                                                                                                                                                                                                                                                 |
     | **Cluster**               | Select the cluster where you want to deploy Palette.                                                                                                                                                                                                                                                                      |
@@ -423,7 +423,7 @@ You can also validate that a three-node Kubernetes cluster is launched and Palet
 
 1. Log in to the vCenter Server by using vSphere Client.
 
-2. Navigate to your vSphere Datacenter and locate your Palette VM instances. The VMs are prefixed with the name you
+2. Navigate to your vSphere data center and locate your Palette VM instances. The VMs are prefixed with the name you
    provided during the installation. For example, if you provided `spectro-mgmt-cluster` as the name, the VMs are named
    `spectro-mgmt-cluster-`, followed by a unique set of alphanumeric values. Verify three nodes are available.
 
