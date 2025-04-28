@@ -30,6 +30,10 @@ Installer configuration file and the OS pack support the usage of cloud-init sta
 
 :::
 
+<Tabs>
+
+<TabItem value="Manual File Creation">
+
 ## Prerequisites
 
 - [Git](https://git-scm.com/downloads). You can ensure git installation by issuing the `git --version` command.
@@ -162,6 +166,20 @@ automatically apply to application workloads. To configure applications to use t
    process again.
 
    :::
+
+</TabItem>
+
+<TabItem value="EdgeForge Configurator">
+
+1. Visit the EdgeForge Configurator in your browser.
+
+2. Click **Design**. Then under **User data files**, click **New user-data configuration**.
+
+3.
+
+</TabItem>
+
+</Tabs>
 
 ## Validate
 
@@ -307,8 +325,6 @@ stylus:
 
 This example configuration is for a _connected site_. In this scenario, only a single Edge Installer configuration user
 data is used for the entire deployment process.
-
-<br />
 
 ```yaml
 #cloud-config
