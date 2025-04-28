@@ -45,7 +45,7 @@ updating the system address may require manual reconciliation on deployed cluste
 
 - Ensure the certificate is created for the custom domain name you specified for your Palette installation. If you did
   not specify a custom domain name, the certificate must be created for the Palette system console's IP address. You can
-  also specify a load balancer's IP address if you are using a load balancer to access Palette.
+  also specify a load balancer IP address if you are using a load balancer to access Palette.
 
 - The new SSL certificate must also include the previous DNS name or IP address in the Subject Alternative Name (SAN)
   field. This ensures that existing connections are not interrupted.

@@ -34,11 +34,11 @@ disks.
    The interface type determines out-of-the-box operating system (OS) support and disk performance. Choose from the
    following.
 
-   | Interface type | Description                                                                                                                                                                                                                                                                                                      |
-   | -------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | virtio         | Optimized for best performance, but the operating system may require additional Virtio drivers.                                                                                                                                                                                                                  |
-   | sata           | Most operating systems support Serial ATA (SATA). However it offers lower performance.                                                                                                                                                                                                                           |
-   | scsi           | A paravirtualized Internet Small Computer System Interface (iSCSI) HDD driver that offers similar functionality to the virtio-block device but with some additional enhancements. In particular, this driver supports adding hundreds of devices and names devices using the standard SCSI device naming scheme. |
+   | Interface type | Description                                                                                                                                                                                                                                                                                                        |
+   | -------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+   | `virtio`       | Optimized for best performance, but the operating system may require additional Virtio drivers.                                                                                                                                                                                                                    |
+   | `sata`         | Most operating systems support Serial ATA (SATA). However it offers lower performance.                                                                                                                                                                                                                             |
+   | `scsi`         | A paravirtualized Internet Small Computer System Interface (iSCSI) HDD driver that offers similar functionality to the `virtio-block` device but with some additional enhancements. In particular, this driver supports adding hundreds of devices and names devices using the standard SCSI device naming scheme. |
 
 5. Next, specify the access mode for your disk.
 
@@ -101,7 +101,7 @@ created a default `NetworkAttachmentDefinition` CRD. For more information, refer
 
 :::info
 
-Multus allows hot plugging network interfaces only when interfaces use the **virtio** model connected through bridge
+Multus allows hot plugging network interfaces only when interfaces use the **Virtio** model connected through bridge
 binding.
 
 :::
