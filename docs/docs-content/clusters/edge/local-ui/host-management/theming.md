@@ -49,24 +49,24 @@ console for all Edge hosts of your organization.
 
 ## Customize theme during EdgeForge
 
-1. Clone the **CanvOS** repository.
+1.  Clone the `CanvOS` repository.
 
    ```shell
    git clone https://github.com/spectrocloud/CanvOS.git
    ```
 
-2. Change into the **CanvOS** directory.
+2.  Change into the `CanvOS` directory.
 
    ```shell
    cd CanvOS
    ```
 
-3. Create a directory called **ui** at the path `CanvOS/ui`.
+3. Create a directory called `ui` at the path `CanvOS/ui`.
 
 4. In the directory, create a file named **customizations.json**.
 
-5. Upload a logo you'd like to use for the local UI to the **ui** directory. All file types are allowed. We recommend
-   you limit the height of the logo image to between 64 px and 120 px. If you don't upload a logo, the local UI will use
+5. Upload a logo you'd like to use for the local UI to the `ui` directory. All file types are allowed. We recommend
+   you limit the height of the logo image to between 64 pixels and 120 pixels. If you don't upload a logo, the local UI will use
    the Spectro Cloud logo.
 
 6. Populate the file with the following schema:

@@ -9,9 +9,9 @@ tags: ["pcg"]
 
 If your VMware vSphere environment is configured with Dynamic Host Configuration Protocol (DHCP), you can add a Dynamic
 Name Server (DNS) mapping to the Private Cloud Gateway (PCG) to resolve the hostnames of the nodes in the PCG. You can
-also use the DNS mapping ensure nodes are alocated to the correct datacenter, cluster and network.
+also use the DNS mapping ensure nodes are allocated to the correct data center, cluster and network.
 
-You can add multiple DNS mappings to a PCG to support different datacenters and networks in your VMware vSphere
+You can add multiple DNS mappings to a PCG to support different data centers and networks in your VMware vSphere
 environment.
 
 ## Prerequisites
@@ -42,7 +42,7 @@ environment.
    | Field               | Description                                                 |
    | ------------------- | ----------------------------------------------------------- |
    | **Search Domain**   | The domain name to allocate nodes to and resolve hostnames. |
-   | **Datacenter**      | The vSphere datacenter to which the DNS mapping applies.    |
+   | **Datacenter**      | The vSphere data center to which the DNS mapping applies.   |
    | **Compute Cluster** | The vSphere cluster to which the DNS mapping applies.       |
    | **Network**         | The vSphere network to which the DNS mapping applies.       |
 

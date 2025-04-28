@@ -302,8 +302,8 @@ FIPS-complaint provider images are built on top of the base OS image you have bu
 
 1. Follow the [Site Installation](../../site-deployment/stage.md) guide to install the Palette Edge on your Edge host.
 
-2. Press Fn + Ctrl + Cmd + F1 or Ctrl + Cmd + F1 keys on a mac keyboard and provide user credentials to log in to the
-   OS.
+2. Press the **FN + CTRL + CMD + F1** or **CTRL + CMD + F1** keys on a Mac keyboard and provide user credentials to log
+   in to the OS.
 
 3. Issue the following command and ensure that the output is `1`. This means the OS is FIPS enabled.
 

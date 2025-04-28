@@ -16,7 +16,7 @@ to a custom registry.
 
 :::
 
-## Prerequsites
+## Prerequisites
 
 The following items are required to create a custom pack.
 
@@ -36,17 +36,17 @@ attributes.
 
 | Property Name | Data type | Required | Description                                                                                                                                                                                                                                                                                                                               |
 | ------------- | --------- | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| name          | String    | True     | Name of the pack                                                                                                                                                                                                                                                                                                                          |
-| displayName   | String    | True     | Name of the pack as it is to be displayed on the Palette management console.                                                                                                                                                                                                                                                              |
-| layer         | String    | True     | Relevant layer that this pack should be part of; such as os, k8s, cni, csi, addon                                                                                                                                                                                                                                                         |
-| addonType     | String    | False    | Addon-type must be set for packs that have the layer set to Addon. The value must be one of the following: logging, monitoring, load balancer, authentication, ingress, security. Setting a relevant correct addon type ensures packs are organized correctly on the management console making it easy for profile authors to find packs. |
-| version       | String    | True     | A Semantic version for the pack. It is recommended that the pack version be the same as the underlying integration it is being created for. For example, the version for the pack that will install Prometheus 2.3.4, should set to 2.3.4.                                                                                                |
-| cloudTypes    | Array     | True     | You can provide one or more types for a pack. Supported values are as follows: **all**, **aws**, **azure**, **gcp**, **vsphere**, **openstack**, **baremetal**, **maas**, **aks**, **eks**, **tke**, **edge**, **edge-native**, **coxedge**, and **libvirt** (virtualized edge).                                                          |
-| group         | String    | False    | Optional categorization of packs. For example, LTS can be set for Ubuntu OS packs.                                                                                                                                                                                                                                                        |
-| annotations   | Array     | False    | Optional key-value pairs required during pack installation. Typically, custom packs do not need to set annotations. Some packs like the ones for OS require annotations that need to be set with an image id.                                                                                                                             |
-| eol           | String    | False    | End of life date for integration.                                                                                                                                                                                                                                                                                                         |
-| KubeManifests | Array     | False    | Relative path to Kubernetes manifest yaml files.                                                                                                                                                                                                                                                                                          |
-| charts        | Array     | False    | Relative path to the helm chart archives.                                                                                                                                                                                                                                                                                                 |
+| `name`          | String    | True     | Name of the pack                                                                                                                                                                                                                                                                                                                          |
+| `displayName`   | String    | True     | Name of the pack as it is to be displayed in the Palette UI.                                                                                                                                                                                                                                                              |
+| `layer`         | String    | True     | Relevant layer that this pack should be part of; such as `os`, `k8s`, `cni`, `csi`, `addon`.                                                                                                                                                                                                                                                         |
+| `addonType`     | String    | False    | The addon type must be set for packs that have the layer set to addon. The value must be one of the following: logging, monitoring, load balancer, authentication, ingress, security. Setting a relevant correct addon type ensures packs are organized correctly in the Palette UI. |
+| `version`       | String    | True     | A Semantic version for the pack. It is recommended that the pack version be the same as the underlying integration it is being created for. For example, the version for the pack that will install Prometheus 2.3.4, should set to 2.3.4.                                                                                                |
+| `cloudTypes`    | Array     | True     | You can provide one or more types for a pack. Supported values are as follows: `all`, `aws`, `azure`, `gcp`, `vsphere`, `openstack`, `baremetal`, `maas`, `aks`, `eks`, `tke`, `edge`, `edge-native`, `coxedge`, and `libvirt` (virtualized edge).                                                          |
+| `group`         | String    | False    | Optional categorization of packs. For example, LTS can be set for Ubuntu OS packs.                                                                                                                                                                                                                                                        |
+| `annotations`   | Array     | False    | Optional key-value pairs required during pack installation. Typically, custom packs do not need to set annotations. Some packs like the ones for OS require annotations that need to be set with an image id.                                                                                                                             |
+| `eol`           | String    | False    | End of life date for integration.                                                                                                                                                                                                                                                                                                         |
+| `KubeManifests` | Array     | False    | Relative path to Kubernetes manifest YAML files.                                                                                                                                                                                                                                                                                          |
+| `charts`        | Array     | False    | Relative path to the helm chart archives.                                                                                                                                                                                                                                                                                                 |
 
 The following is the JSON schema for packs. Review the schema to ensure your JSON configuration is defined correctly.
 
@@ -270,7 +270,7 @@ empty file still needs to be added to the OS pack.
 
 Parameters for all charts and manifests defined in the pack are defined in the `values.yaml` file. _Helm_ charts
 natively support values override. Any values defined are merged with those defined within a chart. _Manifests_ need to
-be explicitly templatized if parameter configuration is desired.
+be explicitly configured to use parameters if desired.
 
 ```yaml
     pack:
@@ -282,9 +282,9 @@ be explicitly templatized if parameter configuration is desired.
         <configurable chart2 parameters>
     manifests:
         manifest1:
-            <templatized manifest1 parameters>
+            <manifest1 parameters>
         manifest2:
-            <templatized manifest2 parameters>
+            <manifest2 parameters>
 ```
 
 4. A pack must have the logo file named `logo.png` and must be copied into the pack directory.
