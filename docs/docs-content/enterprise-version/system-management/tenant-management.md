@@ -95,7 +95,7 @@ After the cleanup process completes, the tenant will be removed from the tenant 
 
 ### Validate
 
-1. Log in to the Palette system console. Refert to the [Access Palette](../enterprise-version.md#access-palette) section
+1. Log in to the Palette system console. Refer to the [Access Palette](../enterprise-version.md#access-palette) section
    for instructions on how to access the Palette system console.
 
 2. Navigate to the left **Main Menu** and select **Tenant Management**.

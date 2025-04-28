@@ -418,7 +418,7 @@ ngrok http 5000 --log-level debug
 This command reserves the current bash session and displays the status of each HTTP request made to the Ngrok server.
 The image below shows the registry server successfully exposed via Ngrok.
 
-![Screenshot of registry server exposed via ngrok](/tutorials/deploy-pack/registries-and-packs_deploy-pack_ngrok-start.webp)
+![Screenshot of registry server exposed via Ngrok](/tutorials/deploy-pack/registries-and-packs_deploy-pack_ngrok-start.webp)
 
 Check if the registry server is accessible from outside the tutorial container by visiting the `/health` endpoint. Open
 your browser and go to `https://Your-URL-Here/health`, replacing the base URL with the Ngrok URL output. You should get
