@@ -61,14 +61,14 @@ more information about EdgeForge, refer to [EdgeForge with Trusted Boot](../edge
 
 During installation, encrypted partitions are setup using a Disk Encryption Key (DEK), which is itself encrypted by the
 TPM and stored in a secure blob. The PCR public key embedded in the ISO is used to form a binding policy. The binding
-policy states that in order to decrypt the secure blob containing the DEK, the PCR measurements must match precalculated
-set of measurements signed by the corresponding PCR private key.
+policy states that in order to decrypt the secure blob containing the DEK, the PCR measurements must match a
+pre-calculated set of measurements signed by the corresponding PCR private key.
 
 During the boot process, before the encrypted disk partition is mounted, the TPM will perform the following:
 
 - Verify the public key in the image is valid
 - Verify the signature on the pre-calculated measurements using the public key
-- Compare the precalculated measurements vs the actual PCR measurements
+- Compare the pre-calculated measurements vs the actual PCR measurements
 
 If all three verifications are successful, TPM will decrypt the secure blob, release DEK, and the OS can use it to
 decrypt the encrypted partitions of the disk.
