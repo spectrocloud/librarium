@@ -215,35 +215,7 @@ Issue the command below to save your tenant registration token to a local variab
 export TOKEN=<your-palette-registration-token>
 ```
 
-Use the following command to create the **user-data** file containing the tenant registration token. You can click on
-the _Points of Interest_ numbers below to learn more about the main attributes relevant to this example.
-
-<br />
-
-<PointsOfInterest
-  points={[
-    {
-      x: 250,
-      y: 160,
-      label: 1,
-      description: "Stores the registration token and lets the agent use the auto-registration functionality and authenticate with the provided token.",
-      tooltipPlacement: "rightTop",
-    },
-    {
-      x: 170,
-      y: 224,
-      label: 2,
-      description: "Instructs the installer to turn the host machine off once the installation is complete.",
-    },
-    {
-      x: 190,
-      y: 300,
-      label: 3,
-      description: "Sets the login credentials for Edge hosts. The login credentials allow you to SSH log in to the edge host for debugging purposes.",
-      tooltipPlacement: "rightTop",
-    }
-  ]}
->
+Use the following command to create the **user-data** file containing the tenant registration token.
 
 ```shell
 cat << EOF > user-data
@@ -256,10 +228,19 @@ stylus:
 users:
   - name: kairos
     passwd: kairos
+
+install:
+  poweroff: true
 EOF
 ```
 
-</PointsOfInterest>
+:::warning
+
+Ensure that you include the `install.poweroff.true` parameter. This ensures that the Edge host will power off after
+installation. If you do not include this parameter, this could lead to a VM you will use in a subsequent step to refuse
+to power off automatically and cause a timeout error unless you manually shut down the VM.
+
+:::
 
 Review the newly created user data file. <br />
 
