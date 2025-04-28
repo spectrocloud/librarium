@@ -288,7 +288,7 @@ FIPS-complaint provider images are built on top of the base OS image you have bu
     provider images.
 
     ```shell
-      ./earthly +build-provider-images-fips
+      ./earthly.sh +build-provider-images-fips
     ```
 
     :::warning
