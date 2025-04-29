@@ -45,6 +45,8 @@ tags: ["release-notes"]
 
 #### Improvements
 
+- Improved the upgrade process for the Palette agent and increased its reliability.
+
 #### Bug Fixes
 
 ### VerteX
