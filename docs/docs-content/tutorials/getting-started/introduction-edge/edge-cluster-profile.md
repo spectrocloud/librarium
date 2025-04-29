@@ -16,7 +16,7 @@ files and configurations deployed to a cluster to provide core infrastructure fu
 behavior through add-on integrations.
 
 This tutorial teaches you how to create an Edge native cluster profile that includes the core infrastructure layers and
-a demo application that you can access on your browser. You will learn about the cluster profile layers and how to to
+a demo application that you can access on your browser. You will learn about the cluster profile layers and how to
 reference the provider images that you built in the [Build Edge Artifacts](./prepare-user-data.md) tutorial. After
 creating the cluster profile, you will proceed to the next tutorial, where you will use the installer ISO to bootstrap
 the Edge installation on your host and use it as a node for deploying your first Edge cluster.
@@ -62,7 +62,7 @@ version matches the version used in the provider images.
 
 | **Pack Name**         | **Version** | **Registry**     | **Layer**  |
 | --------------------- | ----------- | ---------------- | ---------- |
-| Palette Optimized K3S | 1.32.1      | Palette Registry | Kubernetes |
+| Palette Optimized K3s | 1.32.1      | Palette Registry | Kubernetes |
 
 Click **Values** under **Pack Details**, and replace the predefined **cluster-cidr** and **service-cidr** IP CIDRs if
 they overlap with the host network. For example, you can set **cluster-cidr** to `"100.64.0.0/18"` and **service-cidr**
