@@ -526,7 +526,7 @@ is an explanation of the options and sub-commands used below:
   variables refer to the variables you have defined in the `.goenv` file.
 
 - The `cd /edge/vmware/packer/ && packer build -force --var-file=vsphere.hcl build.pkr.hcl` shell sub-command changes to
-  the container's `/edge/vmware/packer/` directory and invokes `packer build` to create the VM template. The
+  the container's `/edge/vmware/packer` directory and invokes `packer build` to create the VM template. The
   `packer build` command has the following options:
 
   - The `-force` flag destroys any existing template.
@@ -564,7 +564,7 @@ is an explanation of the options and sub-commands used below:
   Should you need to change the VM template name or VM settings defined in the `vsphere.hcl` file, or review the Packer
   script, you must open a bash session into the container using the
   `docker run --interactive --tty --env-file .packerenv --volume "${ISOFILEPATH}:/edge/vmware/packer/build" ghcr.io/spectrocloud/tutorials:1.1.13 bash`
-  command, and change to the `edge/vmware/packer/` directory to make the modifications. After you finish the
+  command, and change to the `edge/vmware/packer` directory to make the modifications. After you finish the
   modifications, issue the `packer build -force --var-file=vsphere.hcl build.pkr.hcl` command inside the container to
   trigger the Packer build process. This command creates a VM template, so that you can skip the next step.
 
@@ -572,7 +572,7 @@ is an explanation of the options and sub-commands used below:
 
 Issue the following command to trigger the Packer build process to create a VM template in the VMware vCenter. It will
 also delete any existing `packer_cache` before uploading and keeping a copy of the `palette-edge-installer.iso` to the
-`packer_cache/` directory in the specified datastore.
+`packer_cache` directory in the specified datastore.
 
 ```bash
 docker run --interactive --tty --rm \
@@ -614,9 +614,9 @@ explanation of the options and sub-commands used below:
   container.
 
 - The `sh -c "cd edge/vmware/clone_vm_template/ && ./deploy-edge-host.sh"` shell sub-command changes to the container's
-  `edge/vmware/clone_vm_template/` directory and invokes the `deploy-edge-host.sh` shell script.
+  `edge/vmware/clone_vm_template` directory and invokes the `deploy-edge-host.sh` shell script.
 
-The `edge/vmware/clone_vm_template/` directory in the container has the following files:
+The `edge/vmware/clone_vm_template` directory in the container has the following files:
 
 - `deploy-edge-host.sh` - Provisions the VMs.
 - `delete-edge-host.sh` - Deletes the VMs.
@@ -654,7 +654,7 @@ that case, you must modify the `setenv.sh` script. To do so, you can reuse the c
 step if it is still active, or you can open another bash session into the container using the
 `docker run --interactive --tty --env-file .goenv ghcr.io/spectrocloud/tutorials:1.1.13 bash` command. If you use an
 existing container bash session, create the `.goenv` file described above and source it in your container environment.
-Next, change to the `edge/vmware/clone_vm_template/` directory to modify the `setenv.sh` script, and issue the
+Next, change to the `edge/vmware/clone_vm_template` directory to modify the `setenv.sh` script, and issue the
 `./deploy-edge-host.sh` command to deploy the VMs.
 
 :::
@@ -1060,7 +1060,7 @@ Navigate to **Inventory** > **VMs and Templates** in your vSphere client. To del
 template, right-click on it and choose **Delete** option from the **drop-down Menu**.
 
 Switch to the **Storage** view in your vSphere client. To delete the `palette-edge-installer.iso` file from the
-`packer_cache/` directory in the VMware vCenter datastore, right-click on it and choose **Delete** option from the
+`packer_cache` directory in the VMware vCenter datastore, right-click on it and choose **Delete** option from the
 **drop-down Menu**. <br />
 
 ## Wrap-Up
