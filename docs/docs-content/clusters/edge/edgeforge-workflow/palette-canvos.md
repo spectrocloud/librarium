@@ -99,7 +99,7 @@ customization.
    git clone https://github.com/spectrocloud/CanvOS.git
    ```
 
-2. Change to the **CanvOS/** directory.
+2. Change to the `CanvOS` directory.
 
    ```bash
    cd CanvOS
@@ -119,11 +119,11 @@ customization.
 
 5. Review the files relevant for this guide.
 
-   - **.arg.template** - A sample **.arg** file that defines arguments to use during the build process.
-   - **Dockerfile** - Embeds the arguments and other configurations in the image.
-   - **Earthfile** - Contains a series of commands to create target artifacts.
-   - **earthly.sh** - Script to invoke the Earthfile, and generate target artifacts.
-   - **user-data.template** - A sample user-data file.
+   - `.arg.template` - A sample `.arg` file that defines arguments to use during the build process.
+   - `Dockerfile` - Embeds the arguments and other configurations in the image.
+   - `Earthfile` - Contains a series of commands to create target artifacts.
+   - `earthly.sh` - Script to invoke the `Earthfile`, and generate target artifacts.
+   - `user-data.template` - A sample user-data file.
 
 6. Issue the command below to assign an image tag value that will be used when creating the provider images. This guide
    uses the value `palette-learn` as an example. However, you can assign any lowercase and alphanumeric string to the
@@ -133,11 +133,11 @@ customization.
    export CUSTOM_TAG=palette-learn
    ```
 
-7. Issue the command below to create the **.arg** file containing the custom tag. The remaining arguments in the
-   **.arg** file will use the default values. For example, `ubuntu` is the default operating system, `demo` is the
-   default tag, and [ttl.sh](https://ttl.sh/) is the default image registry. Refer to the existing **.arg.template**
-   file in the current directory or the [README](https://github.com/spectrocloud/CanvOS#readme) to learn more about the
-   available customizable arguments.
+7. Issue the command below to create the `.arg` file containing the custom tag. The remaining arguments in the `.arg`
+   file will use the default values. For example, `ubuntu` is the default operating system, `demo` is the default tag,
+   and [ttl.sh](https://ttl.sh/) is the default image registry. Refer to the existing `.arg.template` file in the
+   current directory or the [README](https://github.com/spectrocloud/CanvOS#readme) to learn more about the available
+   customizable arguments.
 
    :::info
 
@@ -147,7 +147,7 @@ customization.
 
    :::
 
-   Using the arguments defined in the **.arg** file, the final provider images you generate will have the following
+   Using the arguments defined in the `.arg` file, the final provider images you generate will have the following
    naming convention, `[IMAGE_REGISTRY]/[IMAGE_REPO]:[CUSTOM_TAG]`. For example, one of the provider images will be
    `ttl.sh/ubuntu:k3s-1.27.2-v4.0.6-palette-learn`.
 
@@ -181,7 +181,7 @@ customization.
    export token=[your_token_here]
    ```
 
-9. Use the following command to create the **user-data** file containing the tenant registration token.
+9. Use the following command to create the `user-data` file containing the tenant registration token.
 
    ```shell
    cat <<EOF > user-data
@@ -205,7 +205,14 @@ customization.
    EOF
    ```
 
-   View the newly created user data file to ensure the token is set correctly.
+   :::warning
+
+   If you haven't set a default project for the registration token, ensure that you provide the
+   `stylus.site.projectName` parameter with the value `Default` in `user-data`.
+
+   :::
+
+   View the newly created `user-data` file to ensure the token is set correctly.
 
    ```bash
    cat user-data
@@ -213,7 +220,7 @@ customization.
 
 10. The CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. By default, images are
     created for all the Palette-supported Kubernetes versions. Comment out the versions you do not need in the file
-    **Earthfile** to speed up the build process and save disk space.
+    `Earthfile` to speed up the build process and save disk space.
 
     ```
     build-provider-images:
@@ -245,7 +252,7 @@ customization.
     This command may take up to 15-20 minutes to finish depending on the resources of the host machine. Upon completion,
     the command will display the manifest, as shown in the example below, that you will use in your cluster profile
     later in this tutorial. Note that the `system.xxxxx` attribute values in the manifest example are the same as what
-    you defined earlier in the **.arg** file.
+    you defined earlier in the `.arg` file.
 
     Copy and save the output attributes in a notepad or clipboard to use later in your cluster profile.
 
@@ -283,7 +290,7 @@ customization.
 
 12. List the Docker images to review the provider images created. By default, provider images for all the Palette's
     Edge-supported Kubernetes versions are created. You can identify the provider images by reviewing the image tag
-    value you used in the **.arg** file's `CUSTOM_TAG` argument.
+    value you used in the `.arg` file's `CUSTOM_TAG` argument.
 
     ```shell
     docker images --filter=reference='*/*:*palette-learn'
@@ -296,7 +303,7 @@ customization.
     ttl.sh/ubuntu          k3s-1.26.4-v4.0.6-palette-learn       4e373ddfb53f   10 minutes ago   4.11GB
     ```
 
-13. To use the provider images in your cluster profile, push them to the image registry mentioned in the **.arg** file.
+13. To use the provider images in your cluster profile, push them to the image registry mentioned in the `.arg` file.
     The current example uses the [ttl.sh](https://ttl.sh/) image registry. This image registry is free to use and does
     not require a sign-up. Images pushed to _ttl.sh_ are ephemeral and will expire after the 24 hrs time limit. Use the
     following commands to push the provider images to the _ttl.sh_ image registry.
@@ -333,8 +340,8 @@ customization.
 17. Replace the cluster profile's BYOOS pack manifest with the following custom manifest so that the cluster profile can
     pull the provider image from the ttl.sh image registry.
 
-    The `system.xxxxx` attribute values below refer to the arguments defined in the **.arg** file. If you modified the
-    arguments in the **.arg** file, you must modify the attribute values below accordingly.
+    The `system.xxxxx` attribute values below refer to the arguments defined in the `.arg` file. If you modified the
+    arguments in the `.arg` file, you must modify the attribute values below accordingly.
 
     ```yaml
     pack:
@@ -377,7 +384,7 @@ customization.
     The BYOOS pack's `system.uri` attribute references the Kubernetes version selected in the cluster profile by using
     the `{{ .spectro.system.kubernetes.version }}` [macro](../../../clusters/cluster-management/macros.md). This is how
     the provider images you created and pushed to a registry are tied to the OS and Kubernetes version you selected in
-    the **.arg** file.
+    the `.arg` file.
 
     :::
 
@@ -404,7 +411,7 @@ customization.
 
 ### Validate
 
-List the Edge installer ISO image and checksum by issuing the following command from the **CanvOS/** directory.
+List the Edge installer ISO image and checksum by issuing the following command from the `CanvOS` directory.
 
 ```shell
 ls build/
@@ -472,7 +479,7 @@ This guide uses Docker Hub as an example. You can use any other image registry t
 
 ### Instructions
 
-Use the following instructions on your Linux machine to customize the arguments and Dockerfile and then create all the
+Use the following instructions on your Linux machine to customize the arguments and `Dockerfile` and then create all the
 required Edge artifacts.
 
 1. Check out the [CanvOS](https://github.com/spectrocloud/CanvOS.git) GitHub repository containing the starter code.
@@ -481,7 +488,7 @@ required Edge artifacts.
 git clone https://github.com/spectrocloud/CanvOS.git
 ```
 
-2. Change to the **CanvOS/** directory.
+2. Change to the `CanvOS` directory.
 
 ```bash
 cd CanvOS
@@ -501,13 +508,13 @@ git checkout v4.0.6
 
 5. Review the files relevant for this guide.
 
-   - **.arg.template** - A sample **.arg** file that defines arguments to use during the build process.
-   - **Dockerfile** - Embeds the arguments and other configurations in the image.
-   - **Earthfile** - Contains a series of commands to create target artifacts.
-   - **earthly.sh** - Script to invoke the Earthfile, and generate target artifacts.
-   - **user-data.template** - A sample user-data file.
+   - `.arg.template` - A sample `.arg` file that defines arguments to use during the build process.
+   - `Dockerfile` - Embeds the arguments and other configurations in the image.
+   - `Earthfile` - Contains a series of commands to create target artifacts.
+   - `earthly.sh` - Script to invoke the `Earthfile`, and generate target artifacts.
+   - `user-data.template` - A sample user-data file.
 
-6. Review the **.arg** file containing the customizable arguments, such as image tag, image registry, image repository,
+6. Review the `.arg` file containing the customizable arguments, such as image tag, image registry, image repository,
    and OS distribution. The table below shows all arguments, their default value, and allowed values.
 
    | **Argument**       | **Description**                                                                              | **Default Value**      | **Allowed Values**                                                                             |
@@ -551,9 +558,9 @@ git checkout v4.0.6
    export OS_DISTRIBUTION=opensuse-leap
    ```
 
-10. Issue the command below to create the **.arg** file containing the custom tag, Docker Hub image registry hostname,
-    and openSUSE Leap OS distribution. The **.arg** file uses the default values for the remaining arguments. You can
-    refer to the existing **.arg.template** file to learn more about the available customizable arguments.
+10. Issue the command below to create the `.arg` file containing the custom tag, Docker Hub image registry hostname, and
+    openSUSE Leap OS distribution. The `.arg` file uses the default values for the remaining arguments. You can refer to
+    the existing `.arg.template` file to learn more about the available customizable arguments.
 
     ```bash
     cat << EOF > .arg
@@ -579,7 +586,7 @@ git checkout v4.0.6
 
     :::warning
 
-    Using the arguments defined in the **.arg** file, the final provider image name will have the following naming
+    Using the arguments defined in the `.arg` file, the final provider image name will have the following naming
     pattern, `[IMAGE_REGISTRY]/[IMAGE_REPO]:[CUSTOM_TAG]`. Ensure the final artifact name conforms to the Docker Hub
     image name syntax - `[HOST]/[DOCKER-ID]/[REPOSITORY]:[TAG]`.
 
@@ -605,7 +612,7 @@ git checkout v4.0.6
     Using the `-y` option with the `sudo zypper install` command is critical to successfully build the images. The
     default behavior for package installations is to prompt the user for permission to install the package. A user
     prompt will cause the image creation process to fail. This guidance applies to all dependencies you add through the
-    **Dockerfile**.
+    `Dockerfile`.
 
     :::
 
@@ -616,7 +623,7 @@ git checkout v4.0.6
     export token=[your_token_here]
     ```
 
-13. Use the following command to create the **user-data** file containing the tenant registration token.
+13. Use the following command to create the `user-data` file containing the tenant registration token.
 
     ```shell
     cat << EOF > user-data
@@ -625,7 +632,6 @@ git checkout v4.0.6
       site:
         paletteEndpoint: api.spectrocloud.com
         edgeHostToken: $token
-        projectName: stores
         tags:
           key1: value1
           key2: value2
@@ -671,13 +677,20 @@ git checkout v4.0.6
     EOF
     ```
 
-    View the newly created user data file to ensure the token is set correctly.
+    :::warning
+
+    If you haven't set a default project for the registration token, ensure that you provide the
+    `stylus.site.projectName` parameter with the value `Default` in `user-data`.
+
+    :::
+
+    View the newly created `user-data` file to ensure the token is set correctly.
 
     ```bash
     cat user-data
     ```
 
-    If you want further customization, check the existing **user-data.template** file, and refer to the
+    If you want further customization, check the existing `user-data.template` file, and refer to the
     [Edge Configuration Stages](../edge-configuration/cloud-init.md) and
     [User Data Parameters](../edge-configuration/installer-reference.md) documents to learn more.
 
@@ -705,7 +718,7 @@ git checkout v4.0.6
     This command may take up to 15-20 minutes to finish depending on the resources of the host machine. Upon completion,
     the command will display the manifest, as shown in the example below, that you will use in your cluster profile
     later in this tutorial. Note that the `system.xxxxx` attribute values in the manifest example are the same as what
-    you defined earlier in the **.arg** file.
+    you defined earlier in the `.arg` file.
 
     Copy and save the output attributes in a notepad or clipboard to use later in your cluster profile.
 
@@ -738,7 +751,7 @@ git checkout v4.0.6
 
 15. List the Docker images to review the provider images created. By default, provider images for all the Palette's
     Edge-supported Kubernetes versions are created. You can identify the provider images by reviewing the image tag
-    value you used in the **.arg** file's `CUSTOM_TAG` argument.
+    value you used in the `.arg` file's `CUSTOM_TAG` argument.
 
     ```shell
     docker images --filter=reference='*/*:*palette-learn'
@@ -751,7 +764,7 @@ git checkout v4.0.6
     spectrocloud/opensuse-leap   k3s-1.25.2-v4.0.6-palette-learn   2427e3667b2f   24 minutes ago   2.22GB
     ```
 
-16. To use the provider images in your cluster profile, push them to your image registry mentioned in the **.arg** file.
+16. To use the provider images in your cluster profile, push them to your image registry mentioned in the `.arg`file.
     Issue the following command to log in to Docker Hub. Provide your Docker ID and password when prompted.
 
     ```bash
@@ -789,8 +802,8 @@ git checkout v4.0.6
 21. Replace the cluster profile's BYOOS pack manifest with the output that was provided to you earlier and that you
     copied.
 
-    The `system.xxxxx` attribute values below refer to the arguments defined in the **.arg** file. If you modified the
-    arguments in the **.arg** file, you must modify the attribute values below accordingly.
+    The `system.xxxxx` attribute values below refer to the arguments defined in the `.arg` file. If you modified the
+    arguments in the `.arg` file, you must modify the attribute values below accordingly.
 
     ```yaml hideClipboard
     pack:
@@ -833,7 +846,7 @@ git checkout v4.0.6
     The BYOOS pack's `system.uri` attribute references the Kubernetes version selected in the cluster profile by using
     the `{{ .spectro.system.kubernetes.version }}` [macro](../../../clusters/cluster-management/macros.md). This is how
     the provider images you created and pushed to a registry are tied to the OS and Kubernetes version you selected in
-    the **.arg** file.
+    the `.arg` file.
 
     :::
 
@@ -860,7 +873,7 @@ git checkout v4.0.6
 
 ### Validate
 
-List the Edge installer ISO image and checksum by issuing the following command from the **CanvOS/** directory.
+List the Edge installer ISO image and checksum by issuing the following command from the `CanvOS` directory.
 
 ```shell
 ls build/
