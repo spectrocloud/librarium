@@ -334,8 +334,8 @@ options:
 
 ## View Artifacts
 
-After completing the build process, list the edge installer ISO image and checksum by issuing the following command
-from the `CanvOS` directory.
+After completing the build process, list the edge installer ISO image and checksum by issuing the following command from
+the `CanvOS` directory.
 
 ```bash
 ls build/
@@ -346,8 +346,8 @@ palette-edge-installer.iso
 palette-edge-installer.iso.sha256
 ```
 
-Export the path to the ISO file, the `build` directory, in the `ISOFILEPATH` local variable. Later in the tutorial,
-you will use this local variable to mount the `build` directory to a Docker container.
+Export the path to the ISO file, the `build` directory, in the `ISOFILEPATH` local variable. Later in the tutorial, you
+will use this local variable to mount the `build` directory to a Docker container.
 
 ```bash
 export ISOFILEPATH=$PWD/build
@@ -498,8 +498,8 @@ View the file to ensure variable values are set correctly.
 cat .goenv
 ```
 
-Next, verify the `ISOFILEPATH` local variable has the path to the ISO file. The `docker run` command uses this
-variable to bind mount the host's `build` directory to the container.
+Next, verify the `ISOFILEPATH` local variable has the path to the ISO file. The `docker run` command uses this variable
+to bind mount the host's `build` directory to the container.
 
 ```bash
 echo $ISOFILEPATH
