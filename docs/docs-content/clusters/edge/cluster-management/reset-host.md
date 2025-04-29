@@ -31,9 +31,9 @@ with other hosts, resetting the host will also unlink them. However, the content
 the reset. This includes the content of your `user-data` file that you used to configure the installer.
 
 Unlike using reset from Local UI, resetting the host through the terminal works even if your host is centrally managed.
-If your Edge host is part of a cluster, resetting the Edge host will bring down the node in your cluster.
-Depending on your cluster architecture, this may disrupt your cluster workloads or even bring down your entire cluster
-with limited options for recovery. If possible, always
+If your Edge host is part of a cluster, resetting the Edge host will bring down the node in your cluster. Depending on
+your cluster architecture, this may disrupt your cluster workloads or even bring down your entire cluster with limited
+options for recovery. If possible, always
 [remove the node from the cluster first through scaling down](../../cluster-management/node-pool.md#change-a-node-pool)
 before resetting the node.
 
@@ -43,8 +43,7 @@ before resetting the node.
 
 - You can edit the `/oem/grubenv` file. By default, only root users and users in the `admin` group can edit this file.
 
-- You have the credentials to perform reboots on your Edge host or physical access to the Edge host to perform a
-  reboot.
+- You have the credentials to perform reboots on your Edge host or physical access to the Edge host to perform a reboot.
 
 ## Reset Edge Host
 
