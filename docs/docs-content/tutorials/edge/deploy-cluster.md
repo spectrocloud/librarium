@@ -32,7 +32,7 @@ The following points summarize the primary stages of Edge cluster deployment to 
   software dependencies for each Kubernetes cluster.
 
 Following the primary stages outlined above, this tutorial will guide you to build the Edge artifacts (Edge installer
-ISO image and provider images) and use the Edge installer ISO image to prepare Edge hosts. Next, you will use the
+`ISO` image and provider images) and use the Edge installer `ISO` image to prepare Edge hosts. Next, you will use the
 provider image to create a cluster profile and then deploy a cluster on those Edge hosts. You will use VMware to deploy
 the Edge hosts to simulate a bare metal environment.
 
@@ -104,7 +104,7 @@ To complete this tutorial, you will need the following:
 ## Build Edge Artifacts
 
 In this section, you will use the [CanvOS](https://github.com/spectrocloud/CanvOS/blob/main/README.md) utility to build
-an Edge installer ISO image and provider images for all the Palette-supported Kubernetes versions. The utility builds
+an Edge installer `ISO` image and provider images for all the Palette-supported Kubernetes versions. The utility builds
 multiple provider images, so you can use any image that matches the desired Kubernetes version you want to use with your
 cluster profile. You must perform this part of the tutorial on a Linux machine with an AMD64(x86_64) processor
 architecture that has network connectivity to your VMware vCenter environment.
@@ -197,7 +197,7 @@ learn more about customizing arguments.
 
 Next, you will create a [`user-data`](../../clusters/edge/edgeforge-workflow/prepare-user-data.md) file that embeds your
 [tenant registration token](../../clusters/edge/site-deployment/site-installation/create-registration-token.md) and Edge
-host's login credentials in the Edge Installer ISO image.
+host's login credentials in the Edge Installer `ISO` image.
 
 Issue the command below to save your tenant registration token to a local variable. Replace
 `<your-palette-registration-token>` with your actual registration token.
@@ -334,7 +334,7 @@ options:
 
 ## View Artifacts
 
-After completing the build process, list the edge installer ISO image and checksum by issuing the following command from
+After completing the build process, list the edge installer `ISO` image and checksum by issuing the following command from
 the `CanvOS` directory.
 
 ```bash
@@ -346,7 +346,7 @@ palette-edge-installer.iso
 palette-edge-installer.iso.sha256
 ```
 
-Export the path to the ISO file, the `build` directory, in the `ISOFILEPATH` local variable. Later in the tutorial, you
+Export the path to the `ISO` file, the `build` directory, in the `ISOFILEPATH` local variable. Later in the tutorial, you
 will use this local variable to mount the `build` directory to a Docker container.
 
 ```bash
@@ -410,7 +410,7 @@ use another registry.
 
 ## Provision Virtual Machines
 
-In this section, you will create a VM template in VMware vCenter from the Edge installer ISO image and clone that VM
+In this section, you will create a VM template in VMware vCenter from the Edge installer `ISO` image and clone that VM
 template to provision three VMs. Think of a VM template as a snapshot that can be used to provision new VMs. You cannot
 modify templates after you create them, so cloning the VM template will ensure all VMs have _consistent_ guest OS,
 dependencies, and user data configurations installed.
@@ -498,7 +498,7 @@ View the file to ensure variable values are set correctly.
 cat .goenv
 ```
 
-Next, verify the `ISOFILEPATH` local variable has the path to the ISO file. The `docker run` command uses this variable
+Next, verify the `ISOFILEPATH` local variable has the path to the `ISO` file. The `docker run` command uses this variable
 to bind mount the host's `build` directory to the container.
 
 ```bash
@@ -531,7 +531,7 @@ is an explanation of the options and sub-commands used below:
 
   - The `-force` flag destroys any existing template.
   - The `--var-file` option reads the `vsphere.hcl` file from the container. This file contains the VM template name, VM
-    configuration, and ISO file name to use. The VM configuration conforms to the
+    configuration, and `ISO` file name to use. The VM configuration conforms to the
     [minimum device requirements](../../clusters/edge/hardware-requirements.md).
 
   The `vsphere.hcl` file content is shown below for your reference. This tutorial does not require you to modify these
@@ -1018,7 +1018,7 @@ docker run --interactive --tty --rm --env-file .goenv \
 
 ### Delete Edge Artifacts
 
-If you want to delete Edge artifacts from your Linux development environment, delete the Edge installer ISO image and
+If you want to delete Edge artifacts from your Linux development environment, delete the Edge installer `ISO` image and
 its checksum by issuing the following commands from the `CanvOS` directory.
 
 ```bash
