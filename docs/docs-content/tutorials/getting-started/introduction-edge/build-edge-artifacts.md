@@ -20,7 +20,7 @@ installer ISO and provider image artifacts.
   Kubernetes version during cluster deployment.
 
 This tutorial teaches you how to build the Edge artifacts required for your Edge deployment. After building the
-artifacts, you will move on to the next tutorial in this series, where you will learn how to create an Edge
+artifacts, you will be ready to learn how to create an Edge
 [cluster profile](../../../profiles/profiles.md). You will then use the installer ISO to bootstrap the Edge installation
 on your host and use it as a node for deploying your first Edge cluster.
 
@@ -34,9 +34,9 @@ To complete this tutorial, ensure the following prerequisites are in place.
 
 - You have completed the steps in the [Prepare User Data for Edge Installation](./prepare-user-data.md) tutorial,
   including cloning the CanvOS repository and creating and validating a `user-data` file.
-- A physical or virtual Linux machine with an AMD64 (also known as x86_64) processor architecture and the following
+- A physical or virtual Linux machine with an AMD64 (also known as `x86_64`) processor architecture and the following
   minimum hardware configuration:
-  - 4 CPU
+  - 4 CPUs
   - 8 GB memory
   - 150 GB storage
 - The following software installed:
@@ -48,7 +48,7 @@ To complete this tutorial, ensure the following prerequisites are in place.
 
 ## Define Arguments
 
-Open a terminal window on your Linux machine and navigate to the **CanvOS** repository that you cloned in the
+Open a terminal window on your Linux machine and navigate to the `CanvOS` repository that you cloned in the
 [Prepare User Data for Edge Installation](./prepare-user-data.md) tutorial. This repository contains the utilities
 required to build the artifacts.
 
@@ -126,16 +126,16 @@ cat .arg
 
 ## Build Artifacts
 
-Issue the command below to build the Edge artifacts.
+Issue the following command to build the Edge artifacts.
 
 ```bash
 sudo ./earthly.sh +build-all-images
 ```
 
 The build may take 15 to 20 minutes to complete, depending on the hardware resources available on the host machine. Once
-complete, a success message similar to the one displayed below appears.
+complete, a success message appears.
 
-```text hideClipboard
+```text hideClipboard title="Example Success Message"
 ========================== 🌍 Earthly Build  ✅ SUCCESS ==========================
 ```
 
@@ -221,7 +221,7 @@ push images to a different registry.
 
 ## Automate EdgeForge
 
-The example script below automates the EdgeForge process. It provides an alternative way to build the artifacts if you
+The following example script automates the EdgeForge process. It provides an alternative way to build the artifacts if you
 have already learned the steps and want to replicate them quickly. You can skip this section if you have followed the
 tutorial and built the artifacts manually.
 
@@ -251,7 +251,7 @@ Follow the steps below to build the artifacts using the script.
 
    # Verify and enter the directory
    if [ -d "$WORKING_DIR" ]; then
-       cd "$WORKING_DIR" || { echo "❌ Failed to enter the directory: $WORKING_DIR"; exit 1; }
+       cd "$WORKING_DIR" || { echo "❌ Failed to change directory: $WORKING_DIR"; exit 1; }
        echo "✅ Working directory set to: $WORKING_DIR"
    else
        echo "❌ Invalid path provided. Please ensure the directory exists."

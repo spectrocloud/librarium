@@ -30,7 +30,7 @@ To complete this tutorial, you will need the following prerequisites in place.
   [tenant admin](../../../tenant-settings/tenant-settings.md) access.
 - A physical or virtual Linux machine with an AMD64 (also known as x86_64) processor architecture and the following
   minimum hardware configuration:
-  - 4 CPU
+  - 4 CPUs
   - 8 GB memory
   - 150 GB storage
 - The following software installed:
