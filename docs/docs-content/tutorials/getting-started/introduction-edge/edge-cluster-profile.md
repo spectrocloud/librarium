@@ -55,7 +55,7 @@ manifest generated in the [Build Edge Artifacts] tutorial. This makes the cluste
 [ttl.sh](https://ttl.sh/) registry during the deployment. The following image displays the OS layer with the custom
 manifest.
 
-![A screenshot of the cluster profile creation step with the OS layer.](/getting-started/getting-started_introduction-edge_edge-cluster-profile_byos-cluster-profile.png)
+![A screenshot of the cluster profile creation step with the OS layer.](/getting-started/getting-started_introduction-edge_edge-cluster-profile_byos-cluster-profile.webp)
 
 Click **Next Layer** to continue. Add the following Kubernetes layer to your cluster profile. Ensure the Kubernetes
 version matches the version used in the provider images.
@@ -68,7 +68,7 @@ Click **Values** under **Pack Details**, and replace the predefined **cluster-ci
 they overlap with the host network. For example, you can set **cluster-cidr** to `"100.64.0.0/18"` and **service-cidr**
 to `"100.64.64.0/18"`. This prevents any routing conflicts in the internal pod networking.
 
-![A screenshot of the cluster profile creation step with the Kubernetes layer.](/getting-started/getting-started_introduction-edge_edge-cluster-profile_cluster-profile-k8s.png)
+![A screenshot of the cluster profile creation step with the Kubernetes layer.](/getting-started/getting-started_introduction-edge_edge-cluster-profile_cluster-profile-k8s.webp)
 
 Click **Next Layer** to add the network layer. This tutorial uses Cilium as the example network layer.
 
@@ -93,7 +93,7 @@ Click **Values** under **Pack Details** and replace the default `192.168.10.0/24
 field with a valid IP address or IP range from the host network. Click **Confirm & Create** to add the MetalLB pack to
 your cluster profile.
 
-![A screenshot of the cluster profile creation step with the MetalLB layer.](/getting-started/getting-started_introduction-edge_edge-cluster-profile_profile-metallb.png)
+![A screenshot of the cluster profile creation step with the MetalLB layer.](/getting-started/getting-started_introduction-edge_edge-cluster-profile_profile-metallb.webp)
 
 Finally, click **Add New Pack** again and search for the Hello Universe pack.
 
@@ -113,7 +113,7 @@ Click **Values** under **Pack Details**, then select **Presets**. This pack has 
 
 Select the **Enable Hello Universe API** preset. The pack manifest changes according to this selection.
 
-![A screenshot of the cluster profile creation step with the Hello Universe layer.](/getting-started/getting-started_introduction-edge_edge-cluster-profile_cluster-profile-hellouni.png)
+![A screenshot of the cluster profile creation step with the Hello Universe layer.](/getting-started/getting-started_introduction-edge_edge-cluster-profile_cluster-profile-hellouni.webp)
 
 When using this preset, you must provide two base64-encoded values: one for the authorization token and one for the
 database password. Replace the database password value with your own encoded value.
