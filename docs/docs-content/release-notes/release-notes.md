@@ -21,6 +21,18 @@ tags: ["release-notes"]
 
 #### Breaking Changes {#breaking-changes-4.6.c}
 
+- Due to an upgrade of Cluster API Provider GCP (CAPG) to
+  [v1.8.1](https://github.com/kubernetes-sigs/cluster-api-provider-gcp/releases/tag/v1.8.1), the following additional
+  IAM permissions are now required for GCP cluster deployments:
+
+  - `compute.disks.setLabels`
+  - `compute.globalForwardingRules.setLabels`
+
+  This is due to a fix in [v1.8.0](https://github.com/kubernetes-sigs/cluster-api-provider-gcp/releases/tag/v1.8.0) that
+  means labels may be populated for persistent disks and global forwarding rules. Refer to the
+  [Required IAM Permissions](../clusters/public-cloud/gcp/required-permissions.md#required-permissions) guide for all
+  required GCP IAM permissions.
+
 #### Features
 
 #### Improvements
