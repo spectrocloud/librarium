@@ -25,25 +25,25 @@ agent on a disconnected Edge host.
 
 :::
 
-A reset removes all workloads, content, and cluster definition from the Edge host. This includes content bundles that
+A reset removes all workloads, content, and cluster definitions from the Edge host. This includes content bundles that
 were built into the ISO image during EdgeForge. If your host was [linked](../local-ui/cluster-management/link-hosts.md)
 with other hosts, resetting the host will also unlink them. However, the content of the `/oem` folder is retained after
 the reset. This includes the content of your `user-data` file that you used to configure the installer.
 
 Unlike using reset from Local UI, resetting the host through the terminal works even if your host is centrally managed.
-If your Edge host is part of a cluster, resetting the Edge host will cause the node to be down in your cluster.
+If your Edge host is part of a cluster, resetting the Edge host will bring down the node in your cluster.
 Depending on your cluster architecture, this may disrupt your cluster workloads or even bring down your entire cluster
 with limited options for recovery. If possible, always
 [remove the node from the cluster first through scaling down](../../cluster-management/node-pool.md#change-a-node-pool)
 before resetting the node.
 
-## Prerequisite
+## Prerequisites
 
 - You have the credentials and network access to establish an SSH connection to your Edge host.
 
 - You can edit the `/oem/grubenv` file. By default, only root users and users in the `admin` group can edit this file.
 
-- You have the credentials to perform reboots on your Edge host, or physical access to the Edge host to perform a
+- You have the credentials to perform reboots on your Edge host or physical access to the Edge host to perform a
   reboot.
 
 ## Reset Edge Host
