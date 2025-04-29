@@ -43,14 +43,14 @@ To create a registration token, use the following steps.
 
    :::warning
 
-   To ensure your hosts register with Palette, you must either set a default project for the token or provide
-   the `stylus.site.projectName` parameter in the `user-data` file before building edge artifacts.
+   To ensure your hosts register with Palette, you must either set a default project for the token or provide the
+   `stylus.site.projectName` parameter in the `user-data` file before building edge artifacts.
 
    :::
 
    - **Expiration Date** - Set an expiration date for the token.
 
-8. Save the **Token** value.
+7. Save the **Token** value.
 
 ## Validate
 
