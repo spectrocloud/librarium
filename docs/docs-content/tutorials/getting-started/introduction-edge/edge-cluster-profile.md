@@ -10,16 +10,17 @@ sidebar_position: 40
 tags: ["getting-started", "tutorial", "edge"]
 ---
 
-Cluster profiles are declarative, full-stack models that Palette uses to provision, scale, and maintain Kubernetes
-clusters. They are composed of layers, which can be Kubernetes manifests, Helm charts, or packs. Packs are collection of
-files and configurations deployed to a cluster to provide core infrastructure functionality or customize the cluster's
-behavior through add-on integrations.
+[Cluster profiles](../../../profiles/profiles.md) are declarative, full-stack models that Palette uses to provision,
+scale, and maintain Kubernetes clusters. They are composed of layers, which can be Kubernetes manifests, Helm charts, or
+packs. [Packs](../../../registries-and-packs/registries-and-packs.md) are collection of files and configurations
+deployed to a cluster to provide core infrastructure functionality or customize the cluster's behavior through add-on
+integrations.
 
 This tutorial teaches you how to create an Edge native cluster profile that includes the core infrastructure layers and
 a demo application that you can access on your browser. You will learn about the cluster profile layers and how to
-reference the provider images that you built in the [Build Edge Artifacts](./prepare-user-data.md) tutorial. After
-creating the cluster profile, you will proceed to the next tutorial, where you will use the installer ISO to bootstrap
-the Edge installation on your host and use it as a node for deploying your first Edge cluster.
+reference the provider images that you built in the [Build Edge Artifacts] tutorial. After creating the cluster profile,
+you will proceed to the next tutorial, where you will use the installer ISO to bootstrap the Edge installation on your
+host and use it as a node for deploying your first Edge cluster.
 
 ## Prerequisites
 
@@ -89,7 +90,7 @@ The MetalLB pack provides a load a balancer implementation for your Edge Kuberne
 `LoadBalancer` service specified in the Hello Universe pack obtain an IP address so that you can access the demo
 application from your browser.
 
-Click **Values** under **Pack Details** and replace the default `192.168.10.0/24` IP CIDR listed under the **addresses**
+Click **Values** under **Pack Details** and replace the default `192.168.10.0/24` IP CIDR listed under the `addresses`
 field with a valid IP address or IP range from the host network. Click **Confirm & Create** to add the MetalLB pack to
 your cluster profile.
 
@@ -150,4 +151,5 @@ that the layers you added are correct, and click **Finish Configuration** to cre
 ## Next Steps
 
 In this tutorial, you learned how to create a cluster profile for your Edge deployment. We recommend proceeding to the
-[Prepare Edge Host] tutorial to learn how to prepare your Edge host to become a node of an Edge cluster.
+[Prepare Edge Host] tutorial to learn how to prepare your virtual or physical device to become a node of an Edge
+cluster.
