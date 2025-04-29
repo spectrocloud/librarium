@@ -26,7 +26,7 @@ The Palette CLI is available for the following operating systems and architectur
 - A Palette API key. Refer to the [Create API Key](../../user-management/authentication/api-key/create-api-key.md)
   reference page to learn how to create an API key.
 
-- Different Palette CLI commands may require additional prerequisites. Refer to the invividual command reference pages
+- Different Palette CLI commands may require additional prerequisites. Refer to the individual command reference pages
   to learn more about the prerequisites for each command.
 
 ## Download and Setup
@@ -64,7 +64,7 @@ palette version
 <!-- palette-cli-version-output -->
 
 ```shell hideClipboard
-Palette CLI version: 4.6.1
+Palette CLI version: 4.6.5
 ```
 
 ## Next Steps

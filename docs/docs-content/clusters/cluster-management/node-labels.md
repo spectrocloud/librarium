@@ -33,7 +33,8 @@ Node labels can also be applied to node pools using our
 
 ## Limitations
 
-- Updates to labels on existing nodes of deployed clusters is not supported.
+- Palette automatically creates certain node labels that are not displayed in the interface. You can still list these
+  labels using `kubectl` or `K9s`, but updates to them are not supported.
 
 ## Prerequisites
 
@@ -102,9 +103,8 @@ Node labels can also be applied to node pools using our
 
     :::further
 
-    Refer to our [Deploy a Cluster](../../tutorials/cluster-deployment/public-cloud/deploy-k8s-cluster.md) tutorial for
-    detailed guidance on how to deploy a cluster with Palette using Amazon Web Services (AWS), Microsoft Azure, or
-    Google Cloud Platform (GCP) cloud providers.
+    Refer to our [Getting Started](/getting-started/) tutorials for detailed guidance on how to deploy a cluster with
+    Palette using Amazon Web Services (AWS), Microsoft Azure, or Google Cloud Platform (GCP) cloud providers.
 
     :::
 

@@ -63,11 +63,11 @@ Creating a content bundle provides several benefits that may address common use 
 2. Log in to [Palette](https://console.spectrocloud.com).
 
 3. Select the project you want to deploy the Edge host to and copy down the **Project ID**. You can find the project id
-   at the top right side corner of the landing page below the **User drop-down Menu**.
+   in the top right side corner of the landing page below the user drop-down menu.
 
-4. Navigate to the left **Main Menu** and select **Profiles**.
+4. Navigate to the left main menu and select **Profiles**.
 
-5. Use the **Cloud Types drop-down Menu** and select **Edge Native**.
+5. Use the **Cloud Types** drop-down menu and select **Edge Native**.
 
 6. Click on the cluster profile you want to include in the content bundle.
 

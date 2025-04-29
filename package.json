@@ -56,7 +56,7 @@
     "docusaurus-plugin-image-zoom": "^2.0.0",
     "docusaurus-plugin-sass": "^0.2.5",
     "docusaurus-theme-openapi-docs": "^4.3.1",
-    "fuse.js": "^6.6.2",
+    "fuse.js": "^7.1.0",
     "node-fetch": "^3.1.0",
     "p-ratelimit": "^1.0.1",
     "prism-react-renderer": "^2.4.1",

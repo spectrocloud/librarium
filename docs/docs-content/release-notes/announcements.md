@@ -18,9 +18,9 @@ This page lists the upcoming breaking changes, deprecations, and removals in Pal
 Stay informed about the upcoming breaking changes in Palette and Palette VerteX. Use the information below to prepare
 for the changes in your environment.
 
-| Change                        | Target Date | Published Date |
-| ----------------------------- | ----------- | -------------- |
-| No upcoming breaking changes. | -           | -              |
+| Change                                                                                                                                                                                                                                                                                                                                                                                                                                                                    | Target Date   | Published Date |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- | -------------- |
+| The `spec.jsonCredentialsFileUid` field in API requests is deprecated and will be removed in an upcoming release. Users who create GCP cloud accounts using the API should now use the `spec.jsonCredentials` field to supply their credentials in JSON format. Any API `GET` operations on GCP cloud accounts will continue to be available until the `spec.jsonCredentialsFileUid` is removed. Refer to the [API documentation](/api/introduction) for further details. | July 19, 2025 | April 19, 2025 |
 
 <!-- vale off -->
 
@@ -31,9 +31,9 @@ for the changes in your environment.
 The table below lists the upcoming deprecations in Palette and Palette VerteX. Review the information to below and take
 necessary actions to avoid any disruptions in your environment.
 
-| Change                                                                                                                                                                                                                                                                                                                                                                    | Target Removal Date | Published Date |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- | -------------- |
-| The **tc** subcommand of the [Palette CLI](../automation/palette-cli/palette-cli.md) is deprecated. This command provided functionality for deploying target clusters using the Palette CLI. We recommend to use the [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) for cluster deployment automation. | June 7, 2025        | March 15, 2025 |
+| Change                                                                                                                                                                                                                                                                                                                                                                  | Target Removal Date | Published Date |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------- | -------------- |
+| The `tc` subcommand of the [Palette CLI](../automation/palette-cli/palette-cli.md) is deprecated. This command provided functionality for deploying target clusters using the Palette CLI. We recommend to use the [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) for cluster deployment automation. | June 7, 2025        | March 15, 2025 |
 
 ## Removals
 

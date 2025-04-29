@@ -11,6 +11,243 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## April 19, 2025 - Release 4.6.23 {#release-notes-4.6.b}
+
+### Security Notices
+
+- Review the [Security Bulletins](../security-bulletins/reports/reports.mdx) page for the latest security advisories.
+
+### Palette Enterprise {#palette-enterprise-4.6.b}
+
+#### Breaking Changes {#breaking-changes-4.6.b}
+
+- New Cluster Groups will now default to a newer version of vCluster,
+  [version 0.22.x](https://github.com/loft-sh/vcluster/releases), which includes new features and improvements. Existing
+  Cluster Groups will continue to use older versions. If you want to use a later version of vCluster, refer to the
+  [Palette Virtual Clusters](../clusters/palette-virtual-clusters/palette-virtual-clusters.md#upgrade-virtual-clusters)
+  page to learn how to migrate your virtual cluster workloads.
+
+#### Bug Fixes
+
+- Fixed an issue where tags that contained spaces prevented [AWS](../clusters/public-cloud/aws/aws.md) clusters from
+  being deployed via API.
+- Fixed an issue where simultaneous updates to [EKS](../clusters/public-cloud/aws/eks.md) logging and VPC configuration
+  caused reconciliation failures due to API limitations.
+- Fixed an issue in [MAAS](../clusters/data-center/maas/maas.md) clusters where only the first node pool got repaved
+  when a full cluster repave was expected.
+- Fixed a UI discrepancy where the worker node count on the cluster **Review** page displayed the **Number of nodes in
+  pool** instead of the **Minimum size** and **Maximum size** for clusters with autoscaler enabled. This did not affect
+  cluster functionality.
+- Fixed an issue that caused repeated reconciliation errors when deploying an [EKS](../clusters/public-cloud/aws/eks.md)
+  cluster with private cluster endpoint access. This did not affect cluster functionality.
+- Fixed an issue during cluster setup where selecting **Copy from Control Plane Pool** would reset certain worker pool
+  configurations, such as autoscaler. Copied changes are now restricted to cloud configurations.
+
+#### Improvements
+
+- Palette and VerteX emails have been redesigned to ensure consistency and improve accessibility. The updates have been
+  applied to sign-up, login, password reset, and billing update emails.
+- ResourceQuota and LimitRange resources are now set in the `system-upgrade` namespace.
+
+#### Deprecations and Removals
+
+- Palette no longer integrates with the [libvirt](https://libvirt.org/) virtualization API. Support has been removed
+  across various components including the Palette UI, Terraform providers, the user interface, and packs.
+
+### Edge
+
+#### Features
+
+<!-- prettier-ignore -->
+- <TpBadge /> Palette now allows the configuration of an in-cluster primary registry that stores the images required for
+  cluster deployment. Any OCI-compliant registry can be configured as the primary registry. Palette offers
+  out-of-the-box support for Zot and Harbor registries with minimum configuration required. 
+  Refer to [Deploy Cluster with Primary Registry](../clusters/edge/site-deployment/deploy-custom-registries/deploy-primary-registry.md) for
+  further information.
+- The [Palette CLI](../automation/palette-cli/palette-cli.md) has a new `content` command that supports the creation of
+  [content bundles](../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md). This command provides
+  the ability to create bundles directly from the command-line. Refer to the
+  [Content](../automation/palette-cli/commands/content.md) command reference page for further information.
+
+#### Improvements
+
+- [Local UI](../clusters/edge/local-ui/local-ui.md) has been updated with a new color scheme and logo. These new
+  elements are displayed across the entire product interface. Check out the
+  [Welcome to the fold: meet the new Spectro Cloud brand](https://www.spectrocloud.com/blog/meet-the-new-spectro-cloud-brand)
+  blog post to learn more.
+
+#### Bug Fixes
+
+- Fixed an issue that prevented DNS configuration changes made using the Terminal User Interface (TUI) from being
+  applied without restarting the `CoreDNS` deployment.
+- Fixed an issue where password updates were delayed on appliance mode [Edge](../clusters/edge/edge.md) hosts.
+
+#### Deprecations and Removals
+
+- The `harbor-edge-native-config` pack has been deprecated. You need to use the new `registry-connect` and `harbor`
+  packs to implement the Harbor registry. This allows you to keep your system up to date with the latest upstream
+  updates. Refer to
+  [Migrate from Harbor Edge-Native Config Pack](../clusters/edge/site-deployment/deploy-custom-registries/migrate-edge-native-config.md)
+  for further details.
+
+### Palette Dev Engine (PDE)
+
+#### Features
+
+- New Cluster Groups will now default to a newer version of vCluster,
+  [version 0.22.x](https://github.com/loft-sh/vcluster/releases), which includes new features and improvements. Existing
+  Cluster Groups will continue to use older versions. If you want to use a later version of vCluster, refer to the
+  [Palette Virtual Clusters](../clusters/palette-virtual-clusters/palette-virtual-clusters.md#upgrade-virtual-clusters)
+  page to learn how to migrate your virtual cluster workloads.
+
+### VerteX
+
+#### Features
+
+- Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
+  [Palette section](#palette-enterprise-4.6.b) for more details.
+
+### Automation
+
+:::info
+
+Check out the [Downloads](../spectro-downloads.md) and [Compatibility Matrix](../component.md) pages to find the
+compatible version of the Palette CLI.
+
+:::
+
+#### Breaking Changes {#breaking-changes-automation-4.6.b}
+
+- The `spec.jsonCredentialsFileUid` field in API requests is deprecated and will be removed in an upcoming release.
+  Users who create GCP cloud accounts using the API should now use the `spec.jsonCredentials` field to supply their
+  credentials in JSON format. Any API `GET` operations on GCP cloud accounts will continue to be available until the
+  `spec.jsonCredentialsFileUid` is removed. Refer to the [API documentation](/api/introduction) for further details.
+
+#### Features
+
+- The [Palette CLI](../automation/palette-cli/palette-cli.md) has a new `content` command that supports the creation of
+  [content bundles](../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md). This command provides
+  the ability to create bundles directly from the command-line. Refer to the
+  [Content](../automation/palette-cli/commands/content.md) command reference page for further information.
+- Terraform version 0.23.5 of the
+  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
+  available. For more details, refer to the Terraform provider
+  [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
+- A new Terraform resource, `spectrocloud_sso resource`, is now available for enforcing
+  [Single Sign-On (SSO)](../user-management/saml-sso/saml-sso.md) in Palette. For more information, refer to the Spectro
+  Cloud Terraform provider
+  [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
+
+#### Improvements
+
+- The performance of Palette APIs has been improved, resulting in increased
+  [API rate limits](/api/introduction/#rate-limits) for component events and optimized platform updates.
+- The `spectrocloud_pack` Terraform data source now supports filtering based on pack type, add-on type, pack layer, and
+  environment. For more information, refer to the Spectro Cloud Terraform provider
+  [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
+- The `spectrocloud_cluster_eks` Terraform resource now supports the specification of availability zones and subnets.
+  For more information, refer to the Spectro Cloud Terraform provider
+  [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
+- The `spectrocloud_cluster_profile` Terraform resource now supports defining cluster profile variables and referencing
+  them in the applicable `spectrocloud_cluster_<type>` resource during the same `terraform apply`. For more information,
+  refer to the Spectro Cloud Terraform provider
+  [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
+- The `spectrocloud_cluster_aws` and `spectrocloud_cluster_eks` Terraform resources now support `tag_maps`. For more
+  information, refer to the Spectro Cloud Terraform provider
+  [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
+
+### Virtual Machine Orchestrator (VMO)
+
+#### Improvements
+
+- The user interface and messaging for virtual machine topology has been improved to indicate the sockets, cores, and
+  threads of the machine vCPU. Refer to the
+  [Manage CPU and Memory](../vm-management/create-manage-vm/enable-cpu-hotplug.md) guide for further details.
+
+### Docs and Education
+
+#### Bug Fixes
+
+- Fixed a bug that resulted in some dependencies to have the incorrect
+  [open-source license](../legal-licenses/oss-licenses-index/oss-licenses-index.md) listed.
+
+### Packs
+
+#### Kubernetes
+
+| Pack Name                                  | New Version |
+| ------------------------------------------ | ----------- |
+| Palette Optimized K3s                      | 1.32.2      |
+| Palette Optimized K3s                      | 1.31.6      |
+| Palette Optimized K3s                      | 1.30.10     |
+| Palette Optimized K3s                      | 1.29.14     |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.32.2      |
+| Palette Optimized RKE2                     | 1.32.2      |
+| Palette Optimized RKE2                     | 1.31.6      |
+| Palette Optimized RKE2                     | 1.30.10     |
+| Palette Optimized RKE2                     | 1.29.14     |
+| RKE2                                       | 1.32.2      |
+| RKE2                                       | 1.31.6      |
+| RKE2                                       | 1.30.10     |
+| RKE2                                       | 1.29.14     |
+
+#### CNI
+
+| Pack Name | New Version |
+| --------- | ----------- |
+| Cilium    | 1.17.1      |
+
+#### CSI
+
+| Pack Name               | New Version |
+| ----------------------- | ----------- |
+| Amazon EBS CSI          | 1.41.0      |
+| Amazon EFS              | 2.1.6       |
+| Azure Disk CSI          | 1.32.0      |
+| GCE Persistent Disk CSI | 1.15.4      |
+| Portworx /w Operator    | 3.2.2       |
+
+#### Add-on Packs
+
+| Pack Name              | New Version |
+| ---------------------- | ----------- |
+| Argo CD                | 7.8.8       |
+| AWS Cluster Autoscaler | 1.32.0      |
+| Amazon EFS             | 2.1.6       |
+| Calico Network Policy  | 1.15.3      |
+| Istio                  | 1.24.3      |
+| Nginx                  | 1.15.3      |
+| Nginx                  | 1.12.1      |
+| Open Policy Agent      | 3.18.2      |
+| Portworx /w Operator   | 3.2.2       |
+| Spectro Proxy          | 1.5.6       |
+| Registry Connect       | 0.1.0       |
+
+#### FIPS Packs
+
+| Pack Name                                  | New Version |
+| ------------------------------------------ | ----------- |
+| Amazon EBS CSI                             | 1.41.0      |
+| Azure Disk CSI                             | 1.32.0      |
+| Palette eXtended Kubernetes - Edge (PXK-E) | 1.32.2      |
+| Palette Optimized RKE2                     | 1.32.2      |
+| Palette Optimized RKE2                     | 1.31.6      |
+| Palette Optimized RKE2                     | 1.30.10     |
+| Palette Optimized RKE2                     | 1.29.14     |
+| RKE2                                       | 1.32.2      |
+| RKE2                                       | 1.31.6      |
+| RKE2                                       | 1.30.10     |
+| RKE2                                       | 1.29.14     |
+
+#### Deprecations and Removals
+
+- The packs `ubuntu-libvirt`, `generic-vm-libvirt`, `centos-libvirt`, and `pfsense-vm-libvirt` have been removed.
+- The `harbor-edge-native-config` pack has been deprecated. You need to use the `registry-connect` and `harbor` packs to
+  implement the Harbor registry. This allows you to keep your system up to date with the latest upstream updates. Refer
+  to
+  [Migrate from Harbor Edge-Native Config Pack](../clusters/edge/site-deployment/deploy-custom-registries/migrate-edge-native-config.md)
+  for further details.
+
 ## April 3, 2025 - Automation Updates
 
 Terraform version 0.23.4 of the
@@ -258,6 +495,7 @@ compatible version of the Palette CLI.
   [Local UI](../clusters/edge/local-ui/local-ui.md) and API. Only one update can be in progress now.
 - Fixed an issue where installing a Palette [pack](../integrations/integrations.mdx) through a Helm chart incorrectly
   sets the Helm install version.
+- Fixed an issue where NTP settings modified via [Local UI](../clusters/edge/local-ui/local-ui.md) did not persist.
 
 ### Features
 
@@ -269,7 +507,7 @@ compatible version of the Palette CLI.
 ### Documentation & Education Updates
 
 - The Documentation & Education team is enabling a new Q&A bot functionality on the Spectro Cloud official documentation
-  site. Click the **Ask AI** widget in the bottom right corner or use the **Ctrl + I** (**Cmd + I** on macOS) keyboard
+  site. Click the **Ask AI** widget in the bottom right corner or use the **CTRL + I** (**CMD + I** on macOS) keyboard
   shortcut to bring up the chat interface.
 
   The Q&A bot is only trained on the latest version of the Spectro Cloud documentation. It is unable to answer
@@ -404,7 +642,7 @@ compatible version of the Palette CLI.
   [Create a VM Migration Assistant Profile](../vm-management/vm-migration-assistant/create-vm-migration-assistant-profile.md)
   guide to learn more.
 
-- The KubeVirt version in use is now v1.4.0. Other minor maintenance updates in support of Kubevirt 1.4.0 are also
+- The KubeVirt version in use is now v1.4.0. Other minor maintenance updates in support of KubeVirt 1.4.0 are also
   included.
 
 ### Packs

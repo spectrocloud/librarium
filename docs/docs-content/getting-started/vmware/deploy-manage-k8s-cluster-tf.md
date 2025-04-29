@@ -62,7 +62,7 @@ docker run --name tutorialContainer --interactive --tty ghcr.io/spectrocloud/tut
 Navigate to the folder that contains the tutorial code.
 
 ```shell
-cd /terraform/getting-started-deployment-tf
+cd terraform/getting-started-deployment-tf
 ```
 
 :::warning
@@ -98,7 +98,7 @@ podman run --name tutorialContainer --interactive --tty ghcr.io/spectrocloud/tut
 Navigate to the folder that contains the tutorial code.
 
 ```shell
-cd /terraform/getting-started-deployment-tf
+cd terraform/getting-started-deployment-tf
 ```
 
 :::warning
@@ -132,7 +132,7 @@ git checkout v1.1.10
 Navigate to the folder that contains the tutorial code.
 
 ```shell
-cd /terraform/getting-started-deployment-tf
+cd terraform/getting-started-deployment-tf
 ```
 
 </TabItem>
@@ -478,18 +478,18 @@ auth_token      = "REPLACE ME"     # The auth token for the API connection.
 Locate the VMware vSphere provider section and change `deploy-vmware = false` to `deploy-vmware = true`. Additionally,
 replace all occurrences of `REPLACE_ME` with the required variable values.
 
-- **metallb_ip** - Range of IP addresses for your MetalLB load balancer. If using static IP placement, this range must
-  be included in the PCG's static IP pool range.
-- **pcg_name** - Name of the PCG that will be used to deploy the Palette cluster.
-- **datacenter_name** - Name of the data center in vSphere.
-- **folder_name** - Name of the folder in vSphere.
-- **search_domain** - Name of the network search domain.
-- **vsphere_cluster** - Name of the cluster as it appears in vSphere.
-- **datastore_name** - Name of the datastore as it appears in vSphere.
-- **network_name** - Name of the network as it appears in vSphere.
-- **resource_pool_name** - Name of the resource pool as it appears in vSphere.
-- **ssh_key** - Path to a public SSH key. If not provided, a new key pair will be created.
-- **ssh_key_private** - Path to a private SSH key. If not provided, a new key pair will be created.
+- `metallb_ip` - Range of IP addresses for your MetalLB load balancer. If using static IP placement, this range must be
+  included in the PCG static IP pool range.
+- `pcg_name` - Name of the PCG that will be used to deploy the Palette cluster.
+- `datacenter_name` - Name of the data center in vSphere.
+- `folder_name` - Name of the folder in vSphere.
+- `search_domain` - Name of the network search domain.
+- `vsphere_cluster` - Name of the cluster as it appears in vSphere.
+- `datastore_name` - Name of the datastore as it appears in vSphere.
+- `network_name` - Name of the network as it appears in vSphere.
+- `resource_pool_name` - Name of the resource pool as it appears in vSphere.
+- `ssh_key` - Path to a public SSH key. If not provided, a new key pair will be created.
+- `ssh_key_private` - Path to a private SSH key. If not provided, a new key pair will be created.
 
 ```hcl {4,7-15}
 ############################
@@ -593,7 +593,7 @@ moments before clicking on the service URL to prevent the browser from caching a
 
 ![Deployed application](/getting-started/getting-started_deploy-k8s-cluster_hello-universe-with-api.webp)
 
-Welcome to Spacetastic's astronomy education platform. Feel free to explore the pages and learn more about space. The
+Welcome to the Spacetastic astronomy education platform. Feel free to explore the pages and learn more about space. The
 statistics page offers information on visitor counts on your deployed service.
 
 ## Version Cluster Profiles
