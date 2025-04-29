@@ -180,11 +180,11 @@ async function generateCVEs() {
             operator: "eq",
             value: "os",
           }, // Filtering for OS-K8s images
-          // {
-          //   field: "metadata.shouldPublish",
-          //   operator: "bool",
-          //   value: "false",
-          // },
+          {
+            field: "metadata.shouldPublish",
+            operator: "bool",
+            value: "false",
+          },
         ],
       });
 
