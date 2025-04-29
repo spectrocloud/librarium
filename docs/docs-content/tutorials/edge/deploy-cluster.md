@@ -195,9 +195,9 @@ learn more about customizing arguments.
 
 ## Create User Data
 
-Next, you will create a [`user-data`](../../clusters/edge/edgeforge-workflow/prepare-user-data.md) file that embeds
-your [tenant registration token](../../clusters/edge/site-deployment/site-installation/create-registration-token.md) and
-Edge host's login credentials in the Edge Installer ISO image.
+Next, you will create a [`user-data`](../../clusters/edge/edgeforge-workflow/prepare-user-data.md) file that embeds your
+[tenant registration token](../../clusters/edge/site-deployment/site-installation/create-registration-token.md) and Edge
+host's login credentials in the Edge Installer ISO image.
 
 Issue the command below to save your tenant registration token to a local variable. Replace
 `<your-palette-registration-token>` with your actual registration token.
@@ -227,7 +227,8 @@ EOF
 
 :::warning
 
-If you haven't set a default project for the registration token, ensure that you provide the `stylus.site.projectName` parameter with the value `Default` in `user-data`.
+If you haven't set a default project for the registration token, ensure that you provide the `stylus.site.projectName`
+parameter with the value `Default` in `user-data`.
 
 Ensure that you include the `install.poweroff.true` parameter. This ensures that the Edge host will power off after
 installation. If you do not include this parameter, this could lead to a VM you will use in a subsequent step to refuse
@@ -345,8 +346,8 @@ palette-edge-installer.iso
 palette-edge-installer.iso.sha256
 ```
 
-Export the path to the ISO file, the `build` directory, in the `ISOFILEPATH` local variable. Later in the tutorial,
-you will use this local variable to mount the `build` directory to a Docker container.
+Export the path to the ISO file, the `build` directory, in the `ISOFILEPATH` local variable. Later in the tutorial, you
+will use this local variable to mount the `build` directory to a Docker container.
 
 ```bash
 export ISOFILEPATH=$PWD/build
@@ -384,8 +385,8 @@ ttl.sh/ubuntu   k3s-1.30.5-v4.6.12-demo_linux_amd64    80f451092b91   2 hours ag
 
 ## Push Provider Images
 
-Push the provider images to the image registry indicated in the `.arg` file so that you can reference the provider
-image later in your cluster profile.
+Push the provider images to the image registry indicated in the `.arg` file so that you can reference the provider image
+later in your cluster profile.
 
 Since we used the provider image compatible with K3s v1.32 in the cluster profile, you would use the following command
 to push the provider image compatible with K3s v1.32 to the image registry. If you want to use the other provider image,
@@ -529,8 +530,8 @@ is an explanation of the options and sub-commands used below:
   `packer build` command has the following options:
 
   - The `-force` flag destroys any existing template.
-  - The `--var-file` option reads the `vsphere.hcl` file from the container. This file contains the VM template name,
-    VM configuration, and ISO file name to use. The VM configuration conforms to the
+  - The `--var-file` option reads the `vsphere.hcl` file from the container. This file contains the VM template name, VM
+    configuration, and ISO file name to use. The VM configuration conforms to the
     [minimum device requirements](../../clusters/edge/hardware-requirements.md).
 
   The `vsphere.hcl` file content is shown below for your reference. This tutorial does not require you to modify these
@@ -560,8 +561,8 @@ is an explanation of the options and sub-commands used below:
 
   :::info
 
-  Should you need to change the VM template name or VM settings defined in the `vsphere.hcl` file, or review the
-  Packer script, you must open a bash session into the container using the
+  Should you need to change the VM template name or VM settings defined in the `vsphere.hcl` file, or review the Packer
+  script, you must open a bash session into the container using the
   `docker run --interactive --tty --env-file .packerenv --volume "${ISOFILEPATH}:/edge/vmware/packer/build" ghcr.io/spectrocloud/tutorials:1.1.13 bash`
   command, and change to the `edge/vmware/packer/` directory to make the modifications. After you finish the
   modifications, issue the `packer build -force --var-file=vsphere.hcl build.pkr.hcl` command inside the container to
@@ -649,8 +650,8 @@ export GOVC_FOLDER="${vcenter_folder}"
 :::info
 
 Suppose you have changed the VM template name in the previous step or need to change the number of VMs to provision. In
-that case, you must modify the `setenv.sh` script. To do so, you can reuse the container bash session from the
-previous step if it is still active, or you can open another bash session into the container using the
+that case, you must modify the `setenv.sh` script. To do so, you can reuse the container bash session from the previous
+step if it is still active, or you can open another bash session into the container using the
 `docker run --interactive --tty --env-file .goenv ghcr.io/spectrocloud/tutorials:1.1.13 bash` command. If you use an
 existing container bash session, create the `.goenv` file described above and source it in your container environment.
 Next, change to the `edge/vmware/clone_vm_template/` directory to modify the `setenv.sh` script, and issue the

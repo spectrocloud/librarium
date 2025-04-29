@@ -145,11 +145,11 @@ customization.
    export CUSTOM_TAG=palette-learn
    ```
 
-7. Issue the command below to create the `.arg` file containing the custom tag. The remaining arguments in the
-   `.arg` file will use the default values. For example, `ubuntu` is the default operating system, `demo` is the
-   default tag, and [ttl.sh](https://ttl.sh/) is the default image registry. Refer to the existing `.arg.template`
-   file in the current directory or the [README](https://github.com/spectrocloud/CanvOS#readme) to learn more about the
-   available customizable arguments.
+7. Issue the command below to create the `.arg` file containing the custom tag. The remaining arguments in the `.arg`
+   file will use the default values. For example, `ubuntu` is the default operating system, `demo` is the default tag,
+   and [ttl.sh](https://ttl.sh/) is the default image registry. Refer to the existing `.arg.template` file in the
+   current directory or the [README](https://github.com/spectrocloud/CanvOS#readme) to learn more about the available
+   customizable arguments.
 
    :::info
 
@@ -159,8 +159,8 @@ customization.
 
    :::
 
-   Using the arguments defined in the `.arg` file, the final provider images you generate will have the following
-   naming convention, `[IMAGE_REGISTRY]/[IMAGE_REPO]:[CUSTOM_TAG]`. For example, one of the provider images will be
+   Using the arguments defined in the `.arg` file, the final provider images you generate will have the following naming
+   convention, `[IMAGE_REGISTRY]/[IMAGE_REPO]:[CUSTOM_TAG]`. For example, one of the provider images will be
    `ttl.sh/ubuntu:k3s-1.27.2-v4.4.12-palette-learn`.
 
    ```bash
@@ -216,12 +216,13 @@ customization.
             passwd: kairos
    EOF
    ```
+
    :::warning
 
-   If you haven't set a default project for the registration token, ensure that you provide the `stylus.site.projectName` parameter with the value `Default` in `user-data`.
+   If you haven't set a default project for the registration token, ensure that you provide the
+   `stylus.site.projectName` parameter with the value `Default` in `user-data`.
 
    :::
-   
 
    View the newly created `user-data` file to ensure the token is set correctly.
 
@@ -595,9 +596,9 @@ git checkout v4.4.12
    export OS_DISTRIBUTION=opensuse-leap
    ```
 
-10. Issue the command below to create the `.arg` file containing the custom tag, Docker Hub image registry hostname,
-    and openSUSE Leap OS distribution. The `.arg` file uses the default values for the remaining arguments. You can
-    refer to the existing `.arg.template` file to learn more about the available customizable arguments.
+10. Issue the command below to create the `.arg` file containing the custom tag, Docker Hub image registry hostname, and
+    openSUSE Leap OS distribution. The `.arg` file uses the default values for the remaining arguments. You can refer to
+    the existing `.arg.template` file to learn more about the available customizable arguments.
 
     ```bash
     cat << EOF > .arg
@@ -733,9 +734,11 @@ git checkout v4.4.12
         passwd: kairos
     EOF
     ```
+
     :::warning
 
-    If you haven't set a default project for the registration token, ensure that you provide the `stylus.site.projectName` parameter with the value `Default` in `user-data`.
+    If you haven't set a default project for the registration token, ensure that you provide the
+    `stylus.site.projectName` parameter with the value `Default` in `user-data`.
 
     :::
 
@@ -747,9 +750,9 @@ git checkout v4.4.12
     :::info
 
     If you need to pull images from a private image registry, you can supply the credentials for the registry in the
-    `user-data` file in the `registryCredentials` field or in the cluster profile. Credentials specified in the `user-data` file
-    overwrites the credentials provided in the cluster profile. To learn how to provide credentials in cluster profiles,
-    refer to
+    `user-data` file in the `registryCredentials` field or in the cluster profile. Credentials specified in the
+    `user-data` file overwrites the credentials provided in the cluster profile. To learn how to provide credentials in
+    cluster profiles, refer to
     [Deploy Cluster with a Private Registry](../../site-deployment/deploy-custom-registries/deploy-private-registry.md).
 
     :::
