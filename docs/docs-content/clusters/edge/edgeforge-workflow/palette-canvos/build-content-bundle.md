@@ -437,8 +437,8 @@ require a local Harbor registry. Built-in registries must be configured using ei
 
     :::
 
-    The result is a content bundle that you can use to preload into your installer. The content bundle will be a zst
-    file in a folder that starts with **content-** followed by a random string. For more information about how to use
+    The result is a content bundle that you can use to preload into your installer. The content bundle will be a `.zst`
+    file in a folder that starts with **content-** followed by a random string. For more information about how to use a
     content bundles, [Build Installer ISO](./build-installer-iso.md) or
     [Upload Content Bundle through Local UI](../../local-ui/cluster-management/upload-content-bundle.md).
 

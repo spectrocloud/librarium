@@ -20,9 +20,8 @@ instance of Palette and Palette VerteX.
   :::info
 
   If your environment is configured to use an external proxy, you can use the **No Proxy** list to exclude any domains
-  or IP addresses from proxying. You have the option to set the No Proxy list during the Palette installation flow. This
-  is useful in scenarios where you know the IP addresses you want to exclude before deployment, such as load balancer IP
-  addresses.
+  or IP addresses. You have the option to set the No Proxy list during the Palette installation flow. This is useful in
+  scenarios where you know the IP addresses you want to exclude before deployment, such as load balancer IP addresses.
 
   :::
 
