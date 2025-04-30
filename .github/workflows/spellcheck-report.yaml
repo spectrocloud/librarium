@@ -59,7 +59,7 @@ jobs:
 
       - name: Run Spellcheck
         run: |
-          # Run Vale on all markdown files in the docs directory
+          # Run Vale on all markdown files in the docs directory and all mdx files in _partials
           find docs/docs-content _partials -type f \( -name '*.md' -o -name '*.mdx' \) \
             ! -iname '*cve*' \
             ! -path 'docs/docs-content/security-bulletins/*' \
