@@ -684,7 +684,7 @@ internet.
    stylus:
      vip:
        skip: false
-     installationMode: airgap
+     managementMode: local
    stages:
      initramfs:
        - users:
@@ -713,7 +713,7 @@ internet.
    stylus:
      vip:
        skip: false
-     installationMode: airgap
+     managementMode: local
    stages:
      initramfs:
        - users:

@@ -647,8 +647,7 @@ required Edge artifacts.
 
     :::important
 
-    - The edge host must be deployed in `connected` mode, which is the default when `stylus.installationMode` is
-      omitted.
+    - The edge host must be deployed in `central` mode, which is the default when `stylus.managementMode` is omitted.
     - Replace `<registration-token>` with your Palette tenant registration token.
     - Replace `<palette-project-uid>` with the Palette project ID the Edge host should pair with. This field is only
       required if your Palette tenant registration token was not assigned to a project, or you want to assign the edge

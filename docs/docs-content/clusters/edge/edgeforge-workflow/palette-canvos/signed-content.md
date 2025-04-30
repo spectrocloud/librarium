@@ -120,9 +120,9 @@ your Edge hosts come from a trusted source. For more information about content b
 
    :::info
 
-   When building the installer ISO, you must set the `installationMode` parameter to `airgap` in your Edge installer
+   When building the installer ISO, you must set the `managementMode` parameter to `local` in your Edge installer
    configuration user data. This ensures that your Edge host does not try to register itself with Palette, as this
-   feature is not available to connected clusters. For more information, refer to
+   feature is not available to centrally managed clusters. For more information, refer to
    [Installer Reference](../../edge-configuration/installer-reference.md#palette-agent-parameters).
 
    :::

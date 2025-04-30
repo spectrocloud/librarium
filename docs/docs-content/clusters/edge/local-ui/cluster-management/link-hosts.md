@@ -63,7 +63,7 @@ with each other.
   information, refer to [Prepare User Data](../../edgeforge-workflow/prepare-user-data.md) and
   [Installer Reference](../../edge-configuration/installer-reference.md).
 
-- The `stylus.installationMode` parameter is set to `airgap` in your user data configuration for all your hosts.
+- The `stylus.managementMode` parameter is set to `local` in your user data configuration for all your hosts.
 
 - No follower host has any current cluster workloads. Refer to [Delete a Cluster](./delete-cluster.md) and
   [Unlink Hosts](#unlink-hosts) to learn how to delete a cluster and unlink a host to free it up for linking.

@@ -47,26 +47,27 @@ Installer configuration file and the OS pack support the usage of cloud-init sta
 
 ### Configure Installation Mode
 
-2. Decide whether you want to deploy an Edge host that is connected to a Palette instance. The default configuration is
-   a connected Edge host. If you want to deploy an Edge host that is not connected to a Palette instance, you need to
-   change the installation mode to `airgap`. Add the `installationMode` parameter to under the `stylus` parameter.
+2. Decide whether you want to deploy an Edge host that is managed locally or centrally by Palette. The default
+   configuration is a centrally management Edge host. If you want to deploy an Edge host that is not connected to a
+   Palette instance, you need to change the management mode to `local`. Add the `managementMode` parameter to under the
+   `stylus` parameter.
 
    ```yaml
    #cloud-init
    stylus:
-     installationMode: airgap
+     managementMode: local
    ```
 
    Edge hosts installed in airgap mode require you to provide assets needed to provision clusters. For more information
    about the deployment lifecycle of airgap Edge hosts, refer to
    [Edge Deployment Lifecycle](../edge-native-lifecycle.md).
 
-3. If you want to deploy the Edge host in `airgap` mode, skip this step.
+3. If you want to deploy a locally managed Edge host, skip this step.
 
-   If you want to deploy the Edge host in connected mode, you need to provide the Palette endpoint, in addition to
-   either a registration token or QR code registration configuration. For more information about Edge host registration,
-   refer to [Edge Host Registration](../site-deployment/site-installation/edge-host-registration.md). For example, the
-   following configuration provides the default Palette endpoint, a registration token, an a project name.
+   If you want to deploy the Edge host in central management mode, you need to provide the Palette endpoint, in addition
+   to either a registration token or QR code registration configuration. For more information about Edge host
+   registration, refer to [Edge Host Registration](../site-deployment/site-installation/edge-host-registration.md). For
+   example, the following configuration provides the default Palette endpoint, a registration token, an a project name.
 
    ```yaml
    #cloud-config
