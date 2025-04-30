@@ -51,8 +51,9 @@ You can use Disk Encryption Sets to encrypt your nodes' Operating System and dat
   | ----------------------------------------------------------------------------- | ------------------------- |
   | Create Key Vault and Key                                                      | Key Vault Contributor     |
   | Create Disk Encryption Set & Assign Key Vault Key                             | Key Vault Administrator   |
-  | Assign Key Vault Access Policies (GET, WRAP KEY, UNWRAP KEY)                  | <!-- vale off -->         |
-  | Key Vault Crypto Service Encryption User <!-- vale on -->                     |
+<!-- vale off -->
+  | Assign Key Vault Access Policies (GET, WRAP KEY, UNWRAP KEY)                  |  Key Vault Crypto Service Encryption User                     |
+<!-- vale on --> 
   | (Optional) Assign User-Assigned Identity to Key Vault and Disk Encryption Set | Managed Identity Operator |
 
   For more information, visit
