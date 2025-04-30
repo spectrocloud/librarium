@@ -263,20 +263,6 @@ async function generateOSK8sMarkdown(item, location) {
   const summary = item.metadata.summary || "No summary available.";
   const lastModified = formatDateCveDetails(item.metadata.advLastModifiedTimestamp);
   const createdTimestamp = formatDateCveDetails(item.metadata.advCreatedTimestamp);
-  const severity = item.spec.assessment.severity || "Unknown";
-  const impact = item.spec.assessment.impact || "Unknown";
-  const justification = item.spec.assessment.justification || "No justification provided.";
-  const isImpacting = item.spec.impact.isImpacting ? "Yes" : "No";
-  const impactedProducts =
-    Object.keys(item.spec.impact.impactedProducts)
-      .filter((key) => item.spec.impact.impactedProducts[key])
-      .join(", ") || "None";
-  const impactedDeployments =
-    Object.keys(item.spec.impact.impactedDeployments)
-      .filter((key) => item.spec.impact.impactedDeployments[key])
-      .join(", ") || "None";
-  const remediationAvailable = item.spec.remediation.isRemediationAvailable ? "Yes" : "No";
-  const remediationSteps = item.spec.remediation.remediationSteps || "No remediation steps available.";
 
   // Generate a table of linked vulnerabilities
   const vulnerabilitiesTable = generateOSK8sMarkdownTable(item.spec.linkedVulnerabilities);

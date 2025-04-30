@@ -20,7 +20,6 @@ DocSidebarItem
 
 *.test.js
 *.test.jsx
-src/components/OsCveTable/OsCveTable.tsx
 
 __mocks__
 

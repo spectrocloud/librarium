@@ -5,7 +5,6 @@ import Search from "../Technologies/Search";
 import { useColorMode } from "@docusaurus/theme-common";
 import type { ColumnsType } from "antd/es/table";
 import Admonition from "@theme/Admonition";
-import path from "path";
 import { Link } from "react-router-dom";
 
 type OsCve = {
@@ -108,14 +107,12 @@ const OsCveTable: React.FC<{ dataOverride?: AllCVEList }> = ({ dataOverride }) =
       colorPrimary: isDark ? "#44B2AF" : "#1F7A78",
     },
   };
-  const dirname = path.join(".docusaurus", "security-bulletins", "default");
-  const filename = path.join(dirname, "data.json");
 
   useEffect(() => {
     const fetchOsCveData = async () => {
       try {
         // Use dynamic import instead of fetch
-        let data;
+        let data: AllCVEList;
 
         if (dataOverride) {
           data = dataOverride;
@@ -125,7 +122,7 @@ const OsCveTable: React.FC<{ dataOverride?: AllCVEList }> = ({ dataOverride }) =
         }
 
         // Extract the OS CVE data from the provider array
-        const osCveData = data.provider.map((item: any) => {
+        const osCveData = data.provider.map((item: ProviderCveItem) => {
           const { metadata } = item;
 
           return {
@@ -149,7 +146,7 @@ const OsCveTable: React.FC<{ dataOverride?: AllCVEList }> = ({ dataOverride }) =
       }
     };
 
-    fetchOsCveData();
+    void fetchOsCveData();
   }, []);
 
   // Simplified search filtering
@@ -296,10 +293,6 @@ const getKubernetesVersion = (uid: string): string => {
   }
 
   return "Unspecified"; // Should never reach here
-};
-
-const generateLink = (uid: string): string => {
-  return `(./${uid})`;
 };
 
 const isFipsCompliant = (uid: string): boolean => {
