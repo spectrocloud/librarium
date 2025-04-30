@@ -1,15 +1,15 @@
+<!-- vale off -->
+
 ---
-sidebar_label: "CockroachDB"
-title: "CockroachDB"
-description: "Learn how to use CockroachDB with Palette Dev Engine."
-hide_table_of_contents: false
-type: "appTier"
-category: ["databases"]
-hiddenFromNav: false
-sidebar_position: 50
-logoUrl: "https://upload.wikimedia.org/wikipedia/en/thumb/3/31/Cockroach_Labs_Logo.png/220px-Cockroach_Labs_Logo.png"
-tags: ["devx", "app mode", "pde", "databases"]
+
+sidebar_label: "CockroachDB" title: "CockroachDB" description: "Learn how to use CockroachDB with Palette Dev Engine."
+hide_table_of_contents: false type: "appTier" category: ["databases"] hiddenFromNav: false sidebar_position: 50 logoUrl:
+"https://upload.wikimedia.org/wikipedia/en/thumb/3/31/Cockroach_Labs_Logo.png/220px-Cockroach_Labs_Logo.png" tags:
+["devx", "app mode", "pde", "databases"]
+
 ---
+
+<!-- vale on -->
 
 CockroachDB is a [distributed SQL database](https://www.cockroachlabs.com/blog/what-is-distributed-sql/) designed for
 cloud-native environments. CockroachDB provides a reliable and scalable solution for managing data across multiple nodes

@@ -1,15 +1,15 @@
+<!-- vale off -->
+
 ---
-sidebar_label: "Redis"
-title: "Redis"
-description: "Palette Dev Engine Redis Database Service"
-hide_table_of_contents: false
-type: "appTier"
-category: ["databases"]
-hiddenFromNav: false
-sidebar_position: 30
-logoUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjxG5Qb38rX39m1M2p1W4t8H70OKpRY2breg&usqp=CAU"
-tags: ["devx", "app mode", "pde", "databases"]
+
+sidebar_label: "Redis" title: "Redis" description: "Palette Dev Engine Redis Database Service" hide_table_of_contents:
+false type: "appTier" category: ["databases"] hiddenFromNav: false sidebar_position: 30 logoUrl:
+"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjxG5Qb38rX39m1M2p1W4t8H70OKpRY2breg&usqp=CAU" tags: ["devx",
+"app mode", "pde", "databases"]
+
 ---
+
+<!-- vale on -->
 
 [Redis](https://redis.io/docs/latest/) is an open source (BSD licensed), in-memory data structure store used as a data
 cache store or database service. Redis has built-in replication, Lua scripting, least recently used eviction,

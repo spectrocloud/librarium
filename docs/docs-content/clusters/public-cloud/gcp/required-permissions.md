@@ -107,6 +107,6 @@ having issues when deploying a host cluster.
 | `serviceusage.services.list`                           | List all Google Cloud services available to the user.                                           |
 | `recommender.containerDiagnosisInsights.*`             | Access insights about diagnosed issues with Google Kubernetes Engine containers.                |
 | `recommender.containerDiagnosisRecommendations.*`      | Access recommendations for resolving diagnosed issues with Google Kubernetes Engine containers. |
-| `recommender.locations.*`                              | Access details about locations in Google Cloud Recommender.                                     |
+| `recommender.locations.*`                              | <!-- vale off --> Access details about locations in Google Cloud Recommender. <!-- vale on -->  |
 | `recommender.networkAnalyzerGkeConnectivityInsights.*` | Access insights about network connectivity for Google Kubernetes Engine clusters.               |
 | `recommender.networkAnalyzerGkeIpAddressInsights.*`    | Access insights about IP address usage for Google Kubernetes Engine clusters.                   |

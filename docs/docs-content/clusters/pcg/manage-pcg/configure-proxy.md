@@ -38,7 +38,7 @@ Use the following steps to add and manage proxy configurations for a PCG.
 
   :::
 
-- The kubeconfig file for the Kubernetes cluster where the PCG is deployed. The Kubconfig file is used to authenticate
+- The kubeconfig file for the Kubernetes cluster where the PCG is deployed. The Kubeconfig file is used to authenticate
   with the Kubernetes cluster and deploy the Reach service.
 
 - Admin access to the Kubernetes cluster where the PCG is deployed. The Reach Helm Chart will create a namespace,

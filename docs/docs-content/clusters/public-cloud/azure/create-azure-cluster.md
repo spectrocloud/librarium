@@ -59,8 +59,8 @@ to create an IaaS Kubernetes cluster in Azure that Palette manages.
   information on deploying PCGs, refer to [Private Cloud Gateway](../../pcg/pcg.md). To learn how to connect a PCG to an
   Azure cloud account, refer to the [Register and Manage Azure Cloud Account](./azure-cloud.md) guide.
 
-- A Private DNS Zone is required to use the Private API Server load balancer. You also need to ensure the vNETs used for
-  the cluster supports
+- A Private DNS Zone is required to use the Private API Server load balancer. You also need to ensure the virtual
+  networks used for the cluster supports
   [Private DNS resolving](https://learn.microsoft.com/en-us/azure/dns/dns-private-resolver-overview). To learn more
   about Private DNS Zones, refer to
   [Private DNS Zones](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-dns).

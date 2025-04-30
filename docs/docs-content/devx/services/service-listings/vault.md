@@ -1,14 +1,14 @@
+<!-- vale off -->
+
 ---
-sidebar_label: "Vault"
-title: "Vault"
-description: "Learn how to use Vault with Palette Dev Engine."
-hide_table_of_contents: false
-type: "appTier"
-category: ["security"]
-hiddenFromNav: false
-sidebar_position: 40
-logoUrl: "/assets/icons/lock.svg"
+
+sidebar_label: "Vault" title: "Vault" description: "Learn how to use Vault with Palette Dev Engine."
+hide_table_of_contents: false type: "appTier" category: ["security"] hiddenFromNav: false sidebar_position: 40 logoUrl:
+"/assets/icons/lock.svg"
+
 ---
+
+<!-- vale on -->
 
 ## Vault
 

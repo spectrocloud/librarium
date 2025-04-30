@@ -38,9 +38,13 @@ for OIDC-based SSO in your Kubernetes cluster.
   | **Last Name**    | `family_name` | The user's last name.                                  |
   | **Spectro Team** | `groups`      | The user's group memberships in the Identity Provider. |
 
-  Change the claim names in your IdP if they are different from the default values. If the OIDC token does not contain
-  these claims, toggle the **Use userinfo endpoint** option in the OIDC configuration to allow Palette to fetch the
-  missing claims from the user information endpoint.
+<!-- vale off -->
+
+Change the claim names in your IdP if they are different from the default values. If the OIDC token does not contain
+these claims, toggle the **Use userinfo endpoint** option in the OIDC configuration to allow Palette to fetch the
+missing claims from the user information endpoint.
+
+<!-- vale on -->
 
 ## Enable SSO with OneLogin
 

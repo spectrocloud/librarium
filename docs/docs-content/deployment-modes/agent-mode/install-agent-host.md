@@ -211,7 +211,7 @@ Palette. You will then create a cluster profile and use the registered host to d
       sudo reboot
       ```
 
-  ### Configure firewalld (Cilium Only)
+  ### Configure `firewalld` (Cilium Only)
 
   12. (Optional) If you are using Cilium and have `firewalld` enabled, put the following commands into a shell script.
 
@@ -665,7 +665,7 @@ internet.
    sudo tar -xvf agent-mode-linux-<architecture>.tar -C /
    ```
 
-5. Issue the command below to create the **userdata** file and configure your host declaratively.
+5. Issue the command below to create the `userdata` file and configure your host declaratively.
 
    The following configuration indicates the installation mode to be airgap and sets up the `kairos` user. The host will
    not shut down and will reboot after the agent installation, with

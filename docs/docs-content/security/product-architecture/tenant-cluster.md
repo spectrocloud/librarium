@@ -84,10 +84,12 @@ Palette allows you to set up OS patching policies. You can patch the base OS whe
 Container images for various application services are built using distroless images, which have significantly fewer
 packages and improve security by reducing attack surface.
 
+<!-- vale off -->
+
 All container images are scanned for vulnerability using Palo Alto Networks Prisma Cloud (Twistlock) Defender before
 being published to a repository or deployed to the SaaS platform.
 
-<br />
+<!-- vale on -->
 
 ## Hardened Kubernetes
 

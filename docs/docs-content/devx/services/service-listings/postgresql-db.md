@@ -1,14 +1,15 @@
+<!-- vale off -->
+
 ---
-sidebar_label: "Postgres"
-title: "Postgres"
-description: "Palette Dev Engine Postgres Service"
-hide_table_of_contents: false
-type: "appTier"
-category: ["databases"]
-sidebar_position: 20
-logoUrl: "https://upload.wikimedia.org/wikipedia/commons/2/29/Postgresql_elephant.svg"
-tags: ["devx", "app mode", "pde", "databases"]
+
+sidebar_label: "Postgres" title: "Postgres" description: "Palette Dev Engine Postgres Service" hide_table_of_contents:
+false type: "appTier" category: ["databases"] sidebar_position: 20 logoUrl:
+"https://upload.wikimedia.org/wikipedia/commons/2/29/Postgresql_elephant.svg" tags: ["devx", "app mode", "pde",
+"databases"]
+
 ---
+
+<!-- vale on -->
 
 Palette supports [Postgres](https://www.postgresql.org/) as a database service. Postgres is a powerful open source
 object-relational database system with over 35 years of active deployment with a strong reputation for reliability,
