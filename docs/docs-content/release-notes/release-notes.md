@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## April 29, 2025 - Release 4.6.x
+## April 30, 2025 - Release 4.6.x
 
 ### Bug Fixes
 
@@ -24,6 +24,7 @@ tags: ["release-notes"]
   environments.
 - Fixed an issue that caused pack downloads with a double hyphen (`--`) in the label prefix to fail.
 - Fixed an issue that caused pack downloads to fail if the pack registry endpoint contained a port.
+- Fixed a UI discrepancy between the **Last Modified** timestamp on the cluster list and the cluster **Overview** tab.
 
 ### Improvements
 
