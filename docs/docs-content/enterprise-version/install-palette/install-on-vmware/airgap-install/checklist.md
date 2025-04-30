@@ -24,8 +24,8 @@ installation. Review this checklist with your Palette support team to ensure you
 
 - [ ] Start the airgap setup binary and verify the setup is completed successfully.
 
-- [ ] Review the list of [pack binaries](../../../../downloads/self-hosted-palette/additional-packs.md) to download and upload to your OCI
-      registry.
+- [ ] Review the list of [pack binaries](../../../../downloads/self-hosted-palette/additional-packs.md) to download and
+      upload to your OCI registry.
 
 - [ ] Download the release binary that contains the core packs and images required for the installation.
 

@@ -121,8 +121,8 @@ one through four. Otherwise, start at step five.
    curl --user <username>:<password> --output airgap-4.2.12.bin https://software.spectrocloud.com/airgap-v4.2.12.bin
    ```
 
-8. Refer to the [Additional Packs](../../../downloads/palette-vertex/additional-packs.md) page and update the packs you are currently
-   using. You must update each pack separately.
+8. Refer to the [Additional Packs](../../../downloads/palette-vertex/additional-packs.md) page and update the packs you
+   are currently using. You must update each pack separately.
 
 9. Use the following command template to execute the new Palette VerteX airgap installation bin.
 

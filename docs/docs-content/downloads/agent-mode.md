@@ -12,7 +12,9 @@ tags: ["downloads", "edge", "agent mode"]
 The following sections provide links to download the agent mode installation scripts depending on your environment.
 
 Agent mode is a deployment mode that enables Palette to manage your own host and operating system. Unlike other
-deployment modes, agent mode gives you more flexibility in managing your infrastructure and OS. Refer to the [agent mode documentation](../deployment-modes/agent-mode/agent-mode.md) for guidance on how to set up agent mode on your hosts.
+deployment modes, agent mode gives you more flexibility in managing your infrastructure and OS. Refer to the
+[agent mode documentation](../deployment-modes/agent-mode/agent-mode.md) for guidance on how to set up agent mode on
+your hosts.
 
 ## Connected
 

@@ -17,8 +17,8 @@ Review the following table to determine which pack binaries you need to download
 ## Additional Deployment Options
 
 Palette [Virtual Machine Orchestrator](../../vm-management/vm-management.md) (VMO) and
-[Virtual Clusters](../../clusters/palette-virtual-clusters/palette-virtual-clusters.md) can also be installed for airgapped
-self-hosted instances of Palette and Palette VerteX.
+[Virtual Clusters](../../clusters/palette-virtual-clusters/palette-virtual-clusters.md) can also be installed for
+airgapped self-hosted instances of Palette and Palette VerteX.
 
 | File Name                                            | URL                                                                                                       |
 | ---------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |

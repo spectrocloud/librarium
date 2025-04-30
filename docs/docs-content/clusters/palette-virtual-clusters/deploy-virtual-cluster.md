@@ -31,8 +31,8 @@ Use the following steps to deploy a virtual cluster on connected and airgapped e
 
 - If you are deploying a virtual cluster on an airgapped self-hosted instance of Palette or Palette VerteX, you must
   download and install the **airgap-pack-vcluster** pack on your airgap support VM. Refer to the
-  [Additional Packs for Airgap Environments](../../downloads/self-hosted-palette/additional-packs.md#additional-deployment-options) page for
-  guidance.
+  [Additional Packs for Airgap Environments](../../downloads/self-hosted-palette/additional-packs.md#additional-deployment-options)
+  page for guidance.
 
   :::info
 

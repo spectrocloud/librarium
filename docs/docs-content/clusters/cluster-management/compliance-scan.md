@@ -30,8 +30,8 @@ If you are using self-hosted Palette or VerteX in an airgap environment, you mus
 available in the self-hosted OCI registry before triggering scans. Refer to the
 [self-hosted Palette Additional Packs](../../downloads/self-hosted-palette/additional-packs.md#conformance-capabilities)
 page or the
-[Palette VerteX Supplemental Packs](../../downloads/palette-vertex/additional-packs.md#conformance-capabilities)
-page for guidance on how to upload the conformance packs to the self-hosted OCI registry.
+[Palette VerteX Supplemental Packs](../../downloads/palette-vertex/additional-packs.md#conformance-capabilities) page
+for guidance on how to upload the conformance packs to the self-hosted OCI registry.
 
 ## Configuration Security
 

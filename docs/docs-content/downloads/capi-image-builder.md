@@ -9,7 +9,11 @@ sidebar_custom_props:
 tags: ["downloads", "byoos", "vmware", "airgap"]
 ---
 
-The Cluster Application Programming Interface (CAPI) Image Builder is a tool that is used to simplify the process of creating custom operating system images for Kubernetes clusters. It helps you to create custom OS images for VMware vSphere environments in both airgapped and non-airgapped setups. Refer to the [CAPI Image Builder documentation](../byoos/capi-image-builder/capi-image-builder.md) for guidance on how to use the CAPI Image Builder tool.
+The Cluster Application Programming Interface (CAPI) Image Builder is a tool that is used to simplify the process of
+creating custom operating system images for Kubernetes clusters. It helps you to create custom OS images for VMware
+vSphere environments in both airgapped and non-airgapped setups. Refer to the
+[CAPI Image Builder documentation](../byoos/capi-image-builder/capi-image-builder.md) for guidance on how to use the
+CAPI Image Builder tool.
 
 ## Download CAPI Image Builder
 

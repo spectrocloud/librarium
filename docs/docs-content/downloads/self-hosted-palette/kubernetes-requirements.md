@@ -1,7 +1,8 @@
 ---
 sidebar_label: "Kubernetes Requirements"
 title: "Kubernetes Requirements"
-description: "Learn about the Kubernetes requirements and VMware download URLs for an airgapped self-hosted Palette installation."
+description:
+  "Learn about the Kubernetes requirements and VMware download URLs for an airgapped self-hosted Palette installation."
 sidebar_position: 30
 hide_table_of_contents: false
 tags: ["palette", "self-hosted", "airgap", "downloads"]
