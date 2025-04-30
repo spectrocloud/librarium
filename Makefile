@@ -3,8 +3,12 @@
 -include .env
 
 IMAGE:=spectrocloud/librarium
-# Retrieve all modified files in the content folder and compare the difference between the master branch git tree blob AND this commit's git tree blob
-CHANGED_FILE=$(shell git diff-tree -r --no-commit-id --name-only master HEAD | grep content)
+# Combined list: untracked + modified + committed .md/.mdx files (compared to master)
+CHANGED_FILES=$(shell \
+  (git diff --name-only master...HEAD; \
+   git ls-files --modified --others --exclude-standard) \
+   | sort -u | grep -E '\.(md|mdx)$$' || true \
+)
 
 TEMP_DIR=$(shell $TMPDIR)
 
@@ -232,8 +236,14 @@ docker-start: docker-image ## Build the docker image and start a local developme
 sync-vale: ## Install Vale plugins
 	vale sync
 
-check-writing: ## Run Vale lint checks
-	vale $(CHANGED_FILE) 
+check-writing: ## Run Vale on changed Markdown/MDX files
+	@echo "🔍 Looking for changed Markdown or MDX files..."
+	@if [ -n "$(CHANGED_FILES)" ]; then \
+		echo "📝 Running Vale on: $(CHANGED_FILES)"; \
+		vale $(CHANGED_FILES); \
+	else \
+		echo "✅ No changed Markdown or MDX files found."; \
+	fi
 
 ##@ Formatting Checks
 

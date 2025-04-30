@@ -63,29 +63,29 @@ jobs:
       - name: Run Spellcheck
         run: |
           # Run Vale on all markdown files in the docs directory
-          find docs/docs-content -name '*.md' \
+          find docs/docs-content _partials -type f \( -name '*.md' -o -name '*.mdx' \) \
             ! -iname '*cve*' \
             ! -path 'docs/docs-content/security-bulletins/*' \
             ! -path 'docs/docs-content/security-bulletins/**/*' \
-            | xargs vale --output line --no-exit > vale-output.txt
-            cat vale-output.txt
+            | xargs vale --output line --no-exit > vale-spellcheck-results.txt
+            cat vale-spellcheck-results.txt
 
       - name: Check Vale Results
         run: |
-          if [ -s vale-output.txt ]; then
-            echo "❌ Spellcheck errors found."
-            echo "VALE_ERRORS_FOUND=true" >> $GITHUB_ENV
-          else
+          if grep -q "0 errors" vale-spellcheck-results.txt; then
             echo "✅ No spellcheck errors found."
             echo "VALE_ERRORS_FOUND=false" >> $GITHUB_ENV
-          fi        
+          else
+            echo "❌ Spellcheck errors found."
+            echo "VALE_ERRORS_FOUND=true" >> $GITHUB_ENV
+          fi
 
       - name: Upload Vale Results
         if: ${{ env.VALE_ERRORS_FOUND == 'true'}}
         uses: actions/upload-artifact@v4
         with:
           name: "vale-spellcheck-results"
-          path: vale-output.txt
+          path: vale-spellcheck-results.txt
           if-no-files-found: error
           retention-days: 7
 
@@ -111,7 +111,7 @@ jobs:
           SLACK_COLOR: ${{ job.status }}
           SLACKIFY_MARKDOWN: true
           ENABLE_ESCAPES: true
-          SLACK_MESSAGE: "❌ Spellcheck errors found. Download the report."
+          SLACK_MESSAGE: "❌ Spellcheck errors found. Download the report using `gh run download ${{ github.run_id }} -n vale-spellcheck-results`."
 
       - name: Failure Slack Notification
         if: ${{ failure() }}
