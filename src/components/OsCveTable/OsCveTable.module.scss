@@ -50,10 +50,6 @@
   margin: 16px 0;
   overflow: auto;
 
-  @media screen and (max-width: 768px) {
-    display: none;
-  }
-
   :global {
     .ant-input-search {
       margin-bottom: 16px;
@@ -65,10 +61,6 @@
   border: 1px solid var(--ifm-toc-border-color);
   border-radius: 4px;
   padding: 16px;
-
-  @media screen and (max-width: 768px) {
-    padding: 8px;
-  }
 }
 
 .green {
@@ -119,12 +111,23 @@
 .unsupportedMessage {
   display: none;
   margin: 16px 0;
-
-  @media screen and (max-width: 768px) {
-    display: block;
-  }
 }
 
 .searchContainer {
   margin-bottom: 16px;
+}
+
+/* ✅ Combined media query for max-width: 768px */
+@media screen and (max-width: 768px) {
+  .tableContainer {
+    display: none;
+  }
+
+  .tableWrapper {
+    padding: 8px;
+  }
+
+  .unsupportedMessage {
+    display: block;
+  }
 }

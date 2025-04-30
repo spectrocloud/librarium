@@ -92,6 +92,15 @@ const columns: ColumnsType<OsCve> = [
   },
 ];
 
+const distroMap: [string, string][] = [
+  ["pxke-fips", "PXK-FIPS"],
+  ["pxke", "PXK"],
+  ["rke2", "RKE2"],
+  ["k3s", "K3s"],
+  ["nodeadm", "Nodeadm"],
+  ["kubernetes", "PXK"], // fallback if "kubernetes" is found
+];
+
 const OsCveTable: React.FC<{ dataOverride?: AllCVEList }> = ({ dataOverride }) => {
   const [searchValue, setSearchValue] = useState<string>("");
   const [osCves, setOsCves] = useState<OsCve[]>([]);
@@ -119,7 +128,14 @@ const OsCveTable: React.FC<{ dataOverride?: AllCVEList }> = ({ dataOverride }) =
         } else if (process.env.NODE_ENV !== "test") {
           const res = await fetch("/security-data/data.json");
           data = await res.json();
+        } else {
+          setError(true);
+          setLoading(false);
+          console.error("No data available for OS CVE table.");
+          return;
         }
+
+        console.log(data);
 
         // Extract the OS CVE data from the provider array
         const osCveData = data.provider.map((item: ProviderCveItem) => {
@@ -254,18 +270,10 @@ const getOsVersion = (uid: string): string => {
 const getKubernetesDistro = (summary: string): string => {
   const lowerSummary = summary.toLowerCase();
 
-  if (lowerSummary.includes("k3s")) {
-    return "K3s";
-  } else if (lowerSummary.includes("rke2")) {
-    return "RKE2";
-  } else if (lowerSummary.includes("pxke-fips")) {
-    return "PXK-FIPS";
-  } else if (lowerSummary.includes("pxke")) {
-    return "PXK";
-  } else if (lowerSummary.includes("nodeadm")) {
-    return "Nodeadm";
-  } else if (lowerSummary.includes("kubernetes")) {
-    return "PXK"; // Default to PXK if only "Kubernetes" is found
+  for (const [keyword, label] of distroMap) {
+    if (lowerSummary.includes(keyword)) {
+      return label;
+    }
   }
 
   return "Unspecified";

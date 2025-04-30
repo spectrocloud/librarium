@@ -183,7 +183,7 @@ async function generateCVEs() {
           {
             field: "metadata.shouldPublish",
             operator: "bool",
-            value: "false",
+            value: "true",
           },
         ],
       });
