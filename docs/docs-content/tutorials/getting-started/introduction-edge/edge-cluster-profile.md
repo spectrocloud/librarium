@@ -65,9 +65,9 @@ version matches the version used in the provider images.
 | --------------------- | ----------- | ---------------- | ---------- |
 | Palette Optimized K3s | 1.32.1      | Palette Registry | Kubernetes |
 
-Under **Pack Details**, select **Values** and replace the predefined `cluster-cidr` and `service-cidr` IP CIDRs if
-they overlap with the host network. For example, you can set `cluster-cidr` to `"100.64.0.0/18"` and `service-cidr`
-to `"100.64.64.0/18"`. This prevents any routing conflicts in the internal pod networking.
+Under **Pack Details**, select **Values** and replace the predefined `cluster-cidr` and `service-cidr` IP CIDRs if they
+overlap with the host network. For example, you can set `cluster-cidr` to `"100.64.0.0/18"` and `service-cidr` to
+`"100.64.64.0/18"`. This prevents any routing conflicts in the internal pod networking.
 
 ![A screenshot of the cluster profile creation step with the Kubernetes layer.](/getting-started/getting-started_introduction-edge_edge-cluster-profile_cluster-profile-k8s.webp)
 
@@ -86,9 +86,9 @@ cluster profile.
 | -------------- | ----------- | ---------------- | ------------- |
 | MetalLB (Helm) | 0.14.9      | Palette Registry | Load Balancer |
 
-The MetalLB pack implements a load balancer for your Edge Kubernetes cluster. It is required to help the
-`LoadBalancer` service specified in the Hello Universe pack obtain an IP address so that you can access the demo
-application from your browser.
+The MetalLB pack implements a load balancer for your Edge Kubernetes cluster. It is required to help the `LoadBalancer`
+service specified in the Hello Universe pack obtain an IP address so that you can access the demo application from your
+browser.
 
 Under **Pack Details**, select **Values** and replace the default `192.168.10.0/24` IP CIDR listed under the `addresses`
 field with a valid IP address or IP range from the host network. Click **Confirm & Create** to add the MetalLB pack to
@@ -107,8 +107,8 @@ options. This pack deploys the [hello-universe](https://github.com/spectrocloud/
 
 Under **Pack Details**, select **Values**, then choose **Presets**. This pack has two presets available:
 
-1. **Disable Hello Universe API** configures the `hello-universe` application as a standalone frontend application.
-   This is the default option.
+1. **Disable Hello Universe API** configures the `hello-universe` application as a standalone frontend application. This
+   is the default option.
 2. **Enable Hello Universe API** configures the `hello-universe` application as a three-tier application with a
    frontend, API server, and Postgres database.
 
