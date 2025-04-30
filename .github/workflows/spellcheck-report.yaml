@@ -4,6 +4,9 @@
 
 name: Spellcheck Entire Librarium
 on:
+  push:
+    branches:
+      - doc-1749-add-check-gha
   schedule:
     # Every Monday at 8AM UTC
     - cron: '0 8 * * 1'
