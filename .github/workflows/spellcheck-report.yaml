@@ -4,9 +4,6 @@
 
 name: Spellcheck Entire Librarium
 on:
-  push:
-    branches:
-      - doc-1749-add-check-gha
   schedule:
     # Every Monday at 8AM UTC
     - cron: '0 8 * * 1'
@@ -72,6 +69,7 @@ jobs:
 
       - name: Check Vale Results
         run: |
+          # Check if the Vale output contains any errors. It will output "0 errors" if no errors are found.           
           if grep -q "0 errors" vale-spellcheck-results.txt; then
             echo "✅ No spellcheck errors found."
             echo "VALE_ERRORS_FOUND=false" >> $GITHUB_ENV
@@ -99,7 +97,7 @@ jobs:
           SLACK_COLOR: ${{ job.status }}
           SLACKIFY_MARKDOWN: true
           ENABLE_ESCAPES: true
-          SLACK_MESSAGE: '✅ No spellcheck errors found in librarium.'
+          SLACK_MESSAGE: '✅ No spellcheck errors found in librarium. Good job!'
       
       - name: Slack Notification Vale Errors
         if: ${{ env.VALE_ERRORS_FOUND == 'true'}}
