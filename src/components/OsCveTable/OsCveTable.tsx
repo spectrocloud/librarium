@@ -101,6 +101,25 @@ const distroMap: [string, string][] = [
   ["kubernetes", "PXK"], // fallback if "kubernetes" is found
 ];
 
+function formatTimestamp(isoString: string): string {
+  const date = new Date(isoString);
+
+  // Check if the date is valid
+  if (isNaN(date.getTime())) {
+    console.warn(`Invalid date string: ${isoString}`);
+    return "N/A";
+  }
+
+  const month = String(date.getUTCMonth() + 1).padStart(2, "0");
+  const day = String(date.getUTCDate()).padStart(2, "0");
+  const year = date.getUTCFullYear();
+
+  const hours = String(date.getUTCHours()).padStart(2, "0");
+  const minutes = String(date.getUTCMinutes()).padStart(2, "0");
+
+  return `${month}/${day}/${year} ${hours}:${minutes} UTC`;
+}
+
 const OsCveTable: React.FC<{ dataOverride?: AllCVEList }> = ({ dataOverride }) => {
   const [searchValue, setSearchValue] = useState<string>("");
   const [osCves, setOsCves] = useState<OsCve[]>([]);
@@ -148,7 +167,7 @@ const OsCveTable: React.FC<{ dataOverride?: AllCVEList }> = ({ dataOverride }) =
             osVersion: getOsVersion(metadata.uid),
             k8sDistribution: getKubernetesDistro(metadata.summary),
             k8sVersion: getKubernetesVersion(metadata.uid),
-            timeLastUpdated: metadata.advLastModifiedTimestamp || metadata.advCreatedTimestamp,
+            timeLastUpdated: formatTimestamp(metadata.advLastModifiedTimestamp || metadata.advCreatedTimestamp),
             hash: Math.random().toString(36).substring(2, 15),
           };
         });
