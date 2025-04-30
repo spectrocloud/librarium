@@ -12,7 +12,7 @@ tags: ["getting-started", "tutorial", "edge"]
 
 [Cluster profiles](../../../profiles/profiles.md) are declarative, full-stack models that Palette uses to provision,
 scale, and maintain Kubernetes clusters. They are composed of layers, which can be Kubernetes manifests, Helm charts, or
-packs. [Packs](../../../registries-and-packs/registries-and-packs.md) are collection of files and configurations
+packs. [Packs](../../../registries-and-packs/registries-and-packs.md) are a collection of files and configurations
 deployed to a cluster to provide core infrastructure functionality or customize the cluster's behavior through add-on
 integrations.
 
@@ -35,9 +35,9 @@ host and use it as a node for deploying your first Edge cluster.
 Log in to [Palette](https://console.spectrocloud.com/) and select **Profiles** from the left main menu. Click **Add
 Cluster Profile** to create your cluster profile.
 
-Follow the wizard to create a new profile. In the **Basic Information** section, assign **gs-profile** as the name and
+Follow the wizard to create a new profile. In the **Basic Information** section, assign `gs-profile` as the name, and
 provide a brief profile description. Set the type as **Full** and add the tag `env:edge`. You may leave the version
-empty. Just be aware that the version defaults to `1.0.0` if not specified. Click **Next** to continue.
+empty, but note that the version defaults to `1.0.0` if not specified. Click **Next** to continue.
 
 The **Cloud Type** section allows you to choose the infrastructure provider for the cluster. Select **Edge Native** and
 click **Next**.
@@ -51,9 +51,9 @@ Add the **BYOS Edge OS** pack to the OS layer. This pack enables you to use the 
 | ------------- | ----------- | ---------------- | ---------------- |
 | BYOS Edge OS  | 2.1.0       | Palette Registry | Operating System |
 
-Select **Values** under **Pack Details** to open the YAML editor. Replace the default layer manifest with the custom
+Under **Pack Details**, select **Values** to open the YAML editor. Replace the default layer manifest with the custom
 manifest generated in the [Build Edge Artifacts] tutorial. This makes the cluster pull the provider images from the
-[ttl.sh](https://ttl.sh/) registry during the deployment. The following image displays the OS layer with the custom
+[ttl.sh](https://ttl.sh/) registry during deployment. The following image displays the OS layer with the custom
 manifest.
 
 ![A screenshot of the cluster profile creation step with the OS layer.](/getting-started/getting-started_introduction-edge_edge-cluster-profile_byos-cluster-profile.webp)
@@ -65,8 +65,8 @@ version matches the version used in the provider images.
 | --------------------- | ----------- | ---------------- | ---------- |
 | Palette Optimized K3s | 1.32.1      | Palette Registry | Kubernetes |
 
-Click **Values** under **Pack Details**, and replace the predefined **cluster-cidr** and **service-cidr** IP CIDRs if
-they overlap with the host network. For example, you can set **cluster-cidr** to `"100.64.0.0/18"` and **service-cidr**
+Under **Pack Details**, select **Values** and replace the predefined `cluster-cidr` and `service-cidr` IP CIDRs if
+they overlap with the host network. For example, you can set `cluster-cidr` to `"100.64.0.0/18"` and `service-cidr`
 to `"100.64.64.0/18"`. This prevents any routing conflicts in the internal pod networking.
 
 ![A screenshot of the cluster profile creation step with the Kubernetes layer.](/getting-started/getting-started_introduction-edge_edge-cluster-profile_cluster-profile-k8s.webp)
@@ -79,18 +79,18 @@ Click **Next Layer** to add the network layer. This tutorial uses Cilium as the 
 
 Click **Confirm** once you have completed adding all core layers.
 
-Next, click **Add New Pack** to include the add-on layers. Search for **MetalLB** and add the following pack to your
+Next, click **Add New Pack** to include the add-on layers. Search for `MetalLB` and add the following pack to your
 cluster profile.
 
 | **Pack Name**  | **Version** | **Registry**     | **Layer**     |
 | -------------- | ----------- | ---------------- | ------------- |
 | MetalLB (Helm) | 0.14.9      | Palette Registry | Load Balancer |
 
-The MetalLB pack provides a load a balancer implementation for your Edge Kubernetes cluster. It is required to help the
+The MetalLB pack implements a load balancer for your Edge Kubernetes cluster. It is required to help the
 `LoadBalancer` service specified in the Hello Universe pack obtain an IP address so that you can access the demo
 application from your browser.
 
-Click **Values** under **Pack Details** and replace the default `192.168.10.0/24` IP CIDR listed under the `addresses`
+Under **Pack Details**, select **Values** and replace the default `192.168.10.0/24` IP CIDR listed under the `addresses`
 field with a valid IP address or IP range from the host network. Click **Confirm & Create** to add the MetalLB pack to
 your cluster profile.
 
@@ -105,9 +105,9 @@ Finally, click **Add New Pack** again and search for the Hello Universe pack.
 Once you select the pack, Palette displays its README file, providing additional guidance on usage and configuration
 options. This pack deploys the [hello-universe](https://github.com/spectrocloud/hello-universe) demo application.
 
-Click **Values** under **Pack Details**, then select **Presets**. This pack has two presets available:
+Under **Pack Details**, select **Values**, then choose **Presets**. This pack has two presets available:
 
-1. **Disable Hello Universe API** configures the `hello-universe` application as a standalone front-end application.
+1. **Disable Hello Universe API** configures the `hello-universe` application as a standalone frontend application.
    This is the default option.
 2. **Enable Hello Universe API** configures the `hello-universe` application as a three-tier application with a
    frontend, API server, and Postgres database.
