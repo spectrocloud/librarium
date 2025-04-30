@@ -7,9 +7,10 @@ sidebar_position: 10
 tags: ["edge"]
 ---
 
-A primary registry is an in-cluster registry that stores images required for cluster deployment. Every disconnected Edge
-cluster must have a primary registry. Connected clusters can also benefit from using a primary registry for increased
-reliability and reduced bandwidth usage.
+A primary registry is an in-cluster registry that stores images required for cluster deployment. If your local cluster
+does not have connection to the internet, you can store all images required for cluster function in the primary registry
+so your cluster can operate in an airgap environment. In addition, both local and central clusters can benefit from
+using a primary registry for increased reliability and reduced bandwidth usage.
 
 :::preview
 
@@ -31,7 +32,7 @@ Harbor registry using **Registry Connect**, refer to
 
 ## Limitations
 
-- This feature is not supported on VerteX. If you are deploying a connected cluster, you can only connect to a Palette
+- This feature is not supported on VerteX. If you are deploying a central cluster, you can only connect to a Palette
   instance.
 
 - You cannot use the Palette Edge CLI to upload images to the primary registry. You must use the Palette CLI instead.
@@ -51,8 +52,7 @@ Harbor registry using **Registry Connect**, refer to
 - An Edge cluster profile. For information about how to create a cluster profile for Edge, refer to
   [Model Edge Cluster Profile](../../site-deployment/model-profile.md).
 
-- Your Palette agent version is 4.6.13 or later. For connected clusters, your Palette instance version is 4.6.19 or
-  later.
+- Your Palette agent version is 4.6.13 or later. For central clusters, your Palette instance version is 4.6.19 or later.
 
 ## Deploy with a Primary Registry
 

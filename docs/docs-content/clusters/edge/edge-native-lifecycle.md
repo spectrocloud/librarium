@@ -10,12 +10,12 @@ tags: ["edge"]
 The typical end-to-end lifecycle of deploying clusters at edge locations involves several distinct phases in which
 different organizations or teams need to perform specific tasks.
 
-## Connected Clusters
+## Central Clusters
 
-A connected cluster is a cluster that is managed by a Palette instance. The Palette instance could be the public Palette
-SaaS or a self-hosted instance. The following diagram represents the deployment lifecycle of a connected cluster.
+A central cluster is a cluster that is managed by a Palette instance. The Palette instance could be the public Palette
+SaaS or a self-hosted instance. The following diagram represents the deployment lifecycle of a central cluster.
 
-![A flow of the lifecycle for connected clusters: modeling, EdgeForge, installation, on-site deployment, cluster formation, and cluster management. ](/native-edge-deployment-lifecycle.webp)
+![A flow of the lifecycle for central clusters: modeling, EdgeForge, installation, on-site deployment, cluster formation, and cluster management. ](/native-edge-deployment-lifecycle.webp)
 
 1. **Modeling**. App owners build and test the applications in test environments and model application profiles in
    Palette for a cluster installation. For more information, refer to
@@ -50,19 +50,19 @@ and registration into one step and ship the fully configured Edge hosts to the e
 the edge location only needs to hook up the power and network cables without further device configuration. The Edge host
 will be ready to be centrally managed for cluster formation.
 
-## Airgapped Clusters
+## Local Clusters
 
-An airgapped cluster is a cluster that does not have a connection to a Palette instance. The deployment lifecycle for
-airgapped Edge hosts is slightly different from connected Edge hosts. Since there is no Palette instance and each Edge
-host is managed locally, there is no Edge host registration during the on-site deployment phase.
+A local cluster is a cluster that does not have a connection to a Palette instance. The deployment lifecycle for local
+Edge hosts is slightly different from central Edge hosts. Since there is no Palette instance and each Edge host is
+managed locally, there is no Edge host registration during the on-site deployment phase.
 
-In addition, you need to provide the Edge host with the images that are required for cluster deployment through a
-content bundle or through an external registry. After a cluster is formed, you manage the cluster locally with Local UI
-instead of using through a Palette instance.
+In addition, depending on whether or not the Edge host has internet access, you need to provide the Edge host with the
+images that are required for cluster deployment through a content bundle or through an external registry. After a
+cluster is formed, you manage the cluster locally with Local UI instead of using through a Palette instance.
 
-![A flow of the lifecycle for airgapped clusters: modeling, EdgeForge, installation, on-site deployment, cluster formation, and cluster management. ](/cluster_edge_edge-deployment-lifecycle-airgap.webp)
+![A flow of the lifecycle for local clusters: modeling, EdgeForge, installation, on-site deployment, cluster formation, and cluster management. ](/cluster_edge_edge-deployment-lifecycle-airgap.webp)
 
-The following are the phases of the deployment lifecycle of airgapped Edge hosts:
+The following are the phases of the deployment lifecycle of local Edge clusters:
 
 1. **Modeling**. App owners build and test the applications in test environments and model application profiles in
    Palette for a cluster installation.
@@ -82,7 +82,7 @@ The following are the phases of the deployment lifecycle of airgapped Edge hosts
 3. **Installation**. IT/Ops use the installer prepared in the EdgeForge phase and installs Palette Edge onto the Edge
    hosts. The Edge hosts are then shipped to edge sites.
 
-4. **On-site deployment**. Airgapped Edge hosts do not have a connection to Palette and therefore does not require
+4. **On-site deployment**. Local Edge hosts do not have a connection to Palette and therefore do not require
    registration. Site operator powers on the Edge host, which will boot up and serve Local UI and the Edge Management
    API instead of to the registration screen. The field technician also applies site-specific properties such as static
    IP address, network proxy, and SSL certificates with site user data or Palette Terminal User Interface (TUI). For
@@ -96,7 +96,7 @@ The following are the phases of the deployment lifecycle of airgapped Edge hosts
    or export the cluster definition and upload them to the Edge host through Local UI. For more information, refer to
    [Upload Content Bundle](./local-ui/cluster-management/upload-content-bundle.md). If the Edge host is configured to
    pull images from a private external registry, then cluster formation does not require a content bundle, but it will
-   still require a cluster definition. For more information about using
+   still require a cluster definition.
 
 6. **Cluster management**. In this phase, the IT/Ops teams perform maintenance and update activities on your active
    clusters. Using a in-cluster primary registry, you can provide images that can be used to upgrade your cluster. For

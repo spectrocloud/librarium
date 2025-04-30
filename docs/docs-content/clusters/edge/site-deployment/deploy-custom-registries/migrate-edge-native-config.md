@@ -8,9 +8,9 @@ sidebar_position: 80
 tags: ["edge"]
 ---
 
-Disconnected Edge clusters are required to use an in-cluster primary registry to store images needed for cluster
-deployment. Previously, this was implemented using the **Harbor Edge-Native Config** pack, which installs the Harbor
-registry as well as handles image pull redirects.
+Local Edge clusters without an internet connection are required to use an in-cluster primary registry to store images
+needed for cluster deployment. Previously, this was implemented using the **Harbor Edge-Native Config** pack, which
+installs the Harbor registry as well as handles image pull redirects.
 
 The **Harbor Edge-Native Config** pack has been deprecated and will no longer be supported in a future release. If you
 want to keep your cluster's registry infrastructure up-to-date, you need to migrate off the legacy pack and use the new
@@ -97,14 +97,14 @@ primary registry and keep it up-to-date with the latest upstream updates.
 
 <Tabs group="deployment">
 
-<TabItem value="Connected">
+<TabItem value="Central">
 
 14. Update your cluster to use the new profile. Refer to
     [Update a Cluster](../../../cluster-management/cluster-updates.md) for more information.
 
 </TabItem>
 
-<TabItem value="Disconnected (Airgap)">
+<TabItem value="Local">
 
 14. Use the following command to build a new content bundle and cluster definition. For more information, refer to
     [Export Cluster Definition](../../local-ui/cluster-management/export-cluster-definition.md) for more information.
