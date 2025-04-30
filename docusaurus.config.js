@@ -45,7 +45,12 @@ const allScripts = [
     "data-website-id": "9c212df9-d1fc-4f65-9c93-8bcd9c8ec6ca",
     "data-project-name": "Spectro Cloud Docs AI",
     "data-project-color": "#3A9D99",
-    "data-consent-required": true,
+    "data-consent-required": "true",
+    "data-consent-screen-title": "Privacy Notice",
+    "data-consent-screen-disclaimer":
+      "Thank you for using our chat service!  Information you submit through this chat is subject to our [Privacy Policy and Terms of Use](https://www.spectrocloud.com/privacy-policy) and will be processed by our service provider. Please do not enter sensitive information. Chat transcripts may be kept for future reference.",
+    "data-consent-screen-accept-button-text": "Accept",
+    "data-consent-screen-reject-button-text": "Decline",
     "data-project-logo": "/img/spectrocloud-mark-light-bkgd-RGB.svg",
     "data-modal-title": "Spectro Cloud - Ask Docs",
     "data-modal-disclaimer":
