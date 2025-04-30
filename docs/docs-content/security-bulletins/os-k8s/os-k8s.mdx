@@ -11,18 +11,18 @@ tags: ["security", "cve"]
 
 import OsCveTable from "@site/src/components/OsCveTable/OsCveTable";
 
-The page lists security notices detailing CVEs found in OS images and Kubernetes binaries used to provision workload
-clusters across the various deployment models. Only critical and high vulnerabilities are listed based on National
+This page lists security notices detailing CVEs found in OS images and Kubernetes binaries used to provision workload
+clusters across the various deployment models. Only critical and high vulnerabilities are listed based on the National
 Institute of Standards and Technology (NIST) severity.
 
 :::info
 
-The CVSS Severity is provided by either a third-party service provider, or NIST CVE. We do not provide the criticality
+The CVSS severity is provided by either a third-party service provider, or NIST CVE. We do not provide the criticality
 score for third-party components.
 
 :::
 
-By default, the table is sorted to display descending entries that were recently modified. Click on the CVE ID to view
+By default, the table is sorted to display descending entries that were recently modified. Click on the CVE **Name** to view
 the full details of the vulnerability.
 
 <OsCveTable />
