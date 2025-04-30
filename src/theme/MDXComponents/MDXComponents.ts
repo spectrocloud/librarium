@@ -18,6 +18,7 @@ import PaletteVertexUrlMapper from "@site/src/components/PaletteVertexUrlMapper/
 import Accordion from "@site/src/components/Accordion";
 import AccordionPanel from "@site/src/components/AccordionPanel";
 import RedirectPackPage from "@site/src/components/RedirectPackPage";
+import OsCveTable from "@site/src/components/OsCveTable/OsCveTable";
 
 export default {
   ...MDXComponents,
@@ -40,4 +41,5 @@ export default {
   VersionedLink,
   PaletteVertexUrlMapper,
   RedirectPackPage,
+  OsCveTable,
 };
