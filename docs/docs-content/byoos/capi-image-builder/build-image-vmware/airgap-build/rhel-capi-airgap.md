@@ -46,7 +46,7 @@ Enterprise Linux (RHEL) image with <VersionedLink text="Palette eXtended Kuberne
     details on supported operating systems.
 
   - Airgap Kubernetes pack binary of the version for which the image will be generated. This guide uses version `1.28.9`
-    as an example. Refer to the [Additional Packs](../../../../downloads/additional-packs.md) page for instructions on
+    as an example. Refer to the [Additional Packs](../../../../downloads/self-hosted-palette/additional-packs.md) page for instructions on
     how to download the binary. Additionally, check the supported Kubernetes versions in the
     [Compatibility Matrix](../../comp-matrix-capi-builder.md).
 

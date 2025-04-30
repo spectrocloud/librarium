@@ -11,6 +11,7 @@ import { faServer } from '@fortawesome/free-solid-svg-icons';
 import { faRoad } from '@fortawesome/free-solid-svg-icons';
 import { faUsers } from '@fortawesome/free-solid-svg-icons';
 import { faBook } from '@fortawesome/free-solid-svg-icons';
+import { faShield } from '@fortawesome/free-solid-svg-icons';
 import { faWarehouse } from '@fortawesome/free-solid-svg-icons';
 import { faFlagCheckered } from '@fortawesome/free-solid-svg-icons';
 import { faPalette } from '@fortawesome/free-solid-svg-icons';
@@ -21,7 +22,6 @@ import { faLock } from '@fortawesome/free-solid-svg-icons';
 import { faGears } from '@fortawesome/free-solid-svg-icons';
 import { faScrewdriverWrench } from '@fortawesome/free-solid-svg-icons';
 import { faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-import { faShield } from '@fortawesome/free-solid-svg-icons';
 import { faMicrochip } from '@fortawesome/free-solid-svg-icons';
 
 export const fontAwesomeIcons = {
@@ -38,6 +38,7 @@ export const fontAwesomeIcons = {
   "road": faRoad,
   "users": faUsers,
   "book": faBook,
+  "shield": faShield,
   "warehouse": faWarehouse,
   "flag-checkered": faFlagCheckered,
   "palette": faPalette,
@@ -48,6 +49,5 @@ export const fontAwesomeIcons = {
   "gears": faGears,
   "screwdriver-wrench": faScrewdriverWrench,
   "eye-slash": faEyeSlash,
-  "shield": faShield,
   "microchip": faMicrochip
 };

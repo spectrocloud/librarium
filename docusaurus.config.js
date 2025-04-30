@@ -370,17 +370,17 @@ const config = {
             activeBaseRegex: "^(?!/api/).*$",
           },
           {
-            to: "/api/introduction",
-            label: "API",
-            position: "left",
-          },
-          {
             to: "/downloads",
             type: "docSidebar",
             sidebarId: "downloadsSidebar",
             label: "Downloads",
             position: "left",
             activeBaseRegex: "^(?!/api/).*$",
+          },
+          {
+            to: "/api/introduction",
+            label: "API",
+            position: "left",
           },
           {
             href: "https://github.com/spectrocloud/librarium",

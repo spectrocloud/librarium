@@ -357,7 +357,7 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
 
     Once the Palette VerteX airgap binary completes its tasks, you will receive a **Setup Completed** success message.
 
-19. Review the [Additional Packs](../../../../../downloads/additional-packs.md) page and identify any additional packs
+19. Review the [Additional Packs](../../../../../downloads/palette-vertex/additional-packs.md) page and identify any additional packs
     you want to add to your OCI registry. You can also add additional packs after the installation is complete.
 
 20. Navigate back to the vSphere console and create a vSphere VM and Template folder named `spectro-templates`. Ensure
@@ -395,7 +395,7 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
     Place the OVA in the **spectro-templates** folder or in the folder you created in step **21**. Append the `r_`
     prefix, and remove the `.ova` suffix when assigning its name and target location. For example, the final output
     should look like `r_u-2204-0-k-1294-0`. This naming convention is required for the installation process to identify
-    the OVA. Refer to the [Supplement Packs](../../../../../downloads/additional-packs.md) page for a list of additional
+    the OVA. Refer to the [Additional OVAs](../../../../../downloads/palette-vertex/additional-ovas.md) page for a list of additional
     OS OVAs.
 
     You can terminate the deployment after the OVA is available in the `spectro-templates` folder. Refer to the

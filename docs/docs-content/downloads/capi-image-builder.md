@@ -1,14 +1,15 @@
 ---
-sidebar_label: "CAPI Image Builder Downloads"
-title: "CAPI Image Builder Downloads"
+sidebar_label: "CAPI Image Builder"
+title: "CAPI Image Builder"
 description: "Download links relating to the CAPI Image Builder."
 hide_table_of_contents: false
-draft: true
 sidebar_position: 60
 sidebar_custom_props:
   icon: "cubes"
 tags: ["downloads", "byoos", "vmware", "airgap"]
 ---
+
+The Cluster Application Programming Interface (CAPI) Image Builder is a tool that is used to simplify the process of creating custom operating system images for Kubernetes clusters. It helps you to create custom OS images for VMware vSphere environments in both airgapped and non-airgapped setups. Refer to the [CAPI Image Builder documentation](../byoos/capi-image-builder/capi-image-builder.md) for guidance on how to use the CAPI Image Builder tool.
 
 ## Download CAPI Image Builder
 
@@ -18,64 +19,8 @@ The following sections provide links to download the CAPI Image Builder dependin
 
 Download the CAPI Image Builder repository using either Docker or Podman.
 
-<Tabs>
-<TabItem value="Docker" label="Docker">
-
-```shell
-docker pull gcr.io/spectro-images-public/imagebuilder/capi-builder:v1.5.0
-```
-
-Confirm that the image was downloaded correctly.
-
-```shell
-docker images
-```
-
-```text hideClipboard
-REPOSITORY                                               TAG       IMAGE ID       CREATED      SIZE
-gcr.io/spectro-images-public/imagebuilder/capi-builder   v1.5.0    1d891fc2e8da   6 days ago   2.5GB
-```
-
-</TabItem>
-
-<TabItem value="Podman" label="Podman">
-
-```shell
-podman pull gcr.io/spectro-images-public/imagebuilder/capi-builder:v1.5.0
-```
-
-Confirm that the image was downloaded correctly.
-
-```shell
-podman images
-```
-
-```text hideClipboard
-REPOSITORY                                               TAG       IMAGE ID       CREATED      SIZE
-gcr.io/spectro-images-public/imagebuilder/capi-builder   v1.5.0    1d891fc2e8da   6 days ago   2.5GB
-```
-
-</TabItem>
-</Tabs>
+<PartialsComponent category="capi-image-builder" name="download-capi-image-builder-repository" />
 
 ### Airgap
 
-Download the CAPI Image Builder compressed archive file using the following link.
-
-```shell
-<url-pending>/capi-image-builder-v4.6.0.tgz
-```
-
-## Compatibility Matrix for Kubernetes Versions
-
-The following table lists the supported Kubernetes versions for the CAPI Image Builder, along with the compatible
-versions of its dependencies. You can also refer to this when choosing the airgap Kubernetes pack binary of the version
-for which the image will be generated. You can find the airgapped Kubernetes packs on the
-[Additional Packs for Airgap Environments](./additional-packs.md) page.
-
-| Kubernetes Version | Dependencies Version                                                                        |
-| ------------------ | ------------------------------------------------------------------------------------------- |
-| 1.27.13            | `cni_version` = 1.2.0 <br /> `containerd_version` = 1.7.13 <br /> `crictl_version` = 1.26.0 |
-| 1.28.9             | `cni_version` = 1.2.0 <br /> `containerd_version` = 1.7.13 <br /> `crictl_version` = 1.26.0 |
-| 1.29.4             | `cni_version` = 1.3.0 <br /> `containerd_version` = 1.7.13 <br /> `crictl_version` = 1.28.0 |
-| 1.30.4             | `cni_version` = 1.3.0 <br /> `containerd_version` = 1.7.13 <br /> `crictl_version` = 1.28.0 |
+Contact your Palette support representative to get the latest version of the CAPI Image Builder compressed archive file.

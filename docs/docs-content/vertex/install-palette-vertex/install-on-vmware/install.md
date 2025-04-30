@@ -141,7 +141,7 @@ Use the following steps to install Palette VerteX.
 
 4.  Append an `r_` prefix to the OVA name and remove the `.ova` suffix after the import. For example, the final output
     should look like `r_u-2204-0-k-12813-0`. This naming convention is required for the install process to identify the
-    OVA. Refer to the [Additional Packs](../../../downloads/additional-packs.md#additional-ovas) page for a list of
+    OVA. Refer to the [Additional OVAs](../../../downloads/palette-vertex/additional-ovas.md) page for a list of
     additional OVAs you can download and upload to your vCenter environment.
 
     :::tip

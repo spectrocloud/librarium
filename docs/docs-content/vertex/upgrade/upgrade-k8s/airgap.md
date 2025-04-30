@@ -245,7 +245,7 @@ Palette VerteX upgrade.
     Setup Completed
     ```
 
-7.  Refer to the [Additional Packs](../../../downloads/additional-packs.md) page and update the packages you are
+7.  Refer to the [Additional Packs](../../../downloads/palette-vertex/additional-packs.md) page and update the packages you are
     currently using. You must update each package separately.
 
     :::info

@@ -71,6 +71,6 @@ The following table outlines the supported platforms for an airgap VerteX instal
 
 ## Resources
 
-- [Additional Packs](../../downloads/additional-packs.md)
+- [Additional Packs](../../downloads/palette-vertex/additional-packs.md)
 
 - [Offline Documentation](../../downloads/offline-docs.md)

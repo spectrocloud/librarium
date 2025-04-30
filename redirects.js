@@ -779,11 +779,11 @@ let redirects = [
   },
   {
     from: "/enterprise-version/install-palette/airgap/supplemental-packs/",
-    to: "/downloads/additional-packs/",
+    to: "/downloads/self-hosted-palette/additional-packs/",
   },
   {
     from: "/vertex/install-palette-vertex/airgap/supplemental-packs/",
-    to: "/downloads/additional-packs/",
+    to: "/downloads/palette-vertex/additional-packs/",
   },
   {
     from: "/vertex/install-palette-vertex/airgap/offline-docs/",

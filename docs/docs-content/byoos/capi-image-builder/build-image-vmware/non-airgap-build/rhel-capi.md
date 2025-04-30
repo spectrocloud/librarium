@@ -38,47 +38,9 @@ Enterprise Linux (RHEL) image with <VersionedLink text="Palette eXtended Kuberne
 
 ## Build Custom Image
 
-1.  Open up a terminal session in your Linux machine and download the CAPI Image Builder version `1.5.0`.
+1.  Open up a terminal session in your Linux machine and download the CAPI Image Builder.
 
-        <Tabs>
-        <TabItem value="Docker" label="Docker">
-
-        ```shell
-        docker pull gcr.io/spectro-images-public/imagebuilder/capi-builder:v1.5.0
-        ```
-
-        Confirm that the image was downloaded correctly.
-
-        ```shell
-        docker images
-        ```
-
-        ```text hideClipboard
-        REPOSITORY                                               TAG       IMAGE ID       CREATED      SIZE
-        gcr.io/spectro-images-public/imagebuilder/capi-builder   v1.5.0    1d891fc2e8da   6 days ago   2.5GB
-        ```
-
-        </TabItem>
-
-        <TabItem value="Podman" label="Podman">
-
-        ```shell
-        podman pull gcr.io/spectro-images-public/imagebuilder/capi-builder:v1.5.0
-        ```
-
-        Confirm that the image was downloaded correctly.
-
-        ```shell
-        podman images
-        ```
-
-        ```text hideClipboard
-        REPOSITORY                                               TAG       IMAGE ID       CREATED      SIZE
-        gcr.io/spectro-images-public/imagebuilder/capi-builder   v1.5.0    1d891fc2e8da   6 days ago   2.5GB
-        ```
-
-        </TabItem>
-        </Tabs>
+    <PartialsComponent category="capi-image-builder" name="download-capi-image-builder-repository" />
 
 2.  Create an output directory to store the image files and set the required permissions.
 
