@@ -47,13 +47,16 @@ You can use Disk Encryption Sets to encrypt your nodes' Operating System and dat
 - An Azure user account with the following roles to create the Azure Key Vault and Disk Encryption Set with the
   necessary Key Vault access policies.
 
-  | Task                                                                          | Required Role             |
-  | ----------------------------------------------------------------------------- | ------------------------- |
-  | Create Key Vault and Key                                                      | Key Vault Contributor     |
-  | Create Disk Encryption Set & Assign Key Vault Key                             | Key Vault Administrator   |
-<!-- vale off -->
-  | Assign Key Vault Access Policies (GET, WRAP KEY, UNWRAP KEY)                  |  Key Vault Crypto Service Encryption User                     |
-<!-- vale on --> 
+  | Task                                              | Required Role           |
+  | ------------------------------------------------- | ----------------------- |
+  | Create Key Vault and Key                          | Key Vault Contributor   |
+  | Create Disk Encryption Set & Assign Key Vault Key | Key Vault Administrator |
+
+  <!-- vale off -->
+
+  | Assign Key Vault Access Policies (GET, WRAP KEY, UNWRAP KEY) | Key Vault Crypto Service Encryption User |
+  <!-- vale on -->
+
   | (Optional) Assign User-Assigned Identity to Key Vault and Disk Encryption Set | Managed Identity Operator |
 
   For more information, visit
