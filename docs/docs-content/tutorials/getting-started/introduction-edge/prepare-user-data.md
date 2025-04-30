@@ -18,9 +18,7 @@ Edge host boots from the installer ISO, it applies the user data configuration t
 
 After creating the user data file, you will proceed to the next tutorial in this series, where you will learn how to
 build the required Edge artifacts. You will then install the Palette agent on your host and use it as a node to deploy
-your first Edge cluster. The roadmap below outlines the sequence of tutorials to be followed.
-
-![Edge Getting Started Roadmap](/getting-started/getting-started_introduction-edge_user-data-roadmap.webp)
+your first Edge cluster.
 
 ## Prerequisites
 

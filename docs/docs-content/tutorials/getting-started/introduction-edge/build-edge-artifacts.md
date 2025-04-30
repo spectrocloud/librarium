@@ -14,19 +14,14 @@ process of building these artifacts is called
 [EdgeForge](../../../clusters/edge/edgeforge-workflow/edgeforge-workflow.md), and it is responsible for generating the
 installer ISO and provider image artifacts.
 
-- Installer ISO: An ISO image that installs the Palette Edge agent onto the Edge host.
+- Installer ISO: An ISO image that installs the Palette Edge agent on the host.
 - Provider Images: [Kairos-based](https://kairos.io/) images that include the Operating System (OS) and the desired
   Kubernetes versions. These images install an immutable OS and the software dependencies compatible with the selected
   Kubernetes version during cluster deployment.
 
-This tutorial teaches you how to build the Edge artifacts required for your Edge deployment. After building the
-artifacts, you will be ready to learn how to create an Edge [cluster profile](../../../profiles/profiles.md). You will
-then use the installer ISO to bootstrap the Edge installation on your host and use it as a node for deploying your first
-Edge cluster.
-
-The roadmap below outlines the sequence of tutorials to be followed.
-
-![Edge Getting Started Roadmap with EdgeForge](/getting-started/getting-started_introduction-edge_build-edge-artifacts_edgeforge.webp)
+This tutorial teaches you how to build the artifacts required for your Edge deployment. Once built, you will be ready to
+learn how to reference them in Edge [cluster profiles](../../../profiles/profiles.md) and how they are used to install
+the Palette agent on hosts.
 
 ## Prerequisites
 
@@ -62,7 +57,8 @@ Check the available Git tags.
 git tag
 ```
 
-Check out the latest available tag. This tutorial uses the tag **v4.6.9** as an example.
+Check out the desired tag. We recommend using a CanvOS major version that is the same as, or older than, Palette's major
+version. This tutorial uses the tag `v4.6.9` as an example.
 
 ```
 git checkout v4.6.9
@@ -347,6 +343,9 @@ Follow the steps below to build the artifacts using the script.
        exit 1
    fi
 
+   # Create .arg file with user input
+   echo "Creating .arg file..."
+
    # Prompt for Kubernetes distribution
    echo "⚙️ Available Kubernetes distributions:"
    cat k8s_version.json | jq -r 'keys[]'
@@ -379,10 +378,9 @@ Follow the steps below to build the artifacts using the script.
        fi
    done
 
-   # Create .arg file with user input
-   echo "Creating .arg file..."
-   read -p "Enter custom tag for the artifacts [default: getting-started]: " CUSTOM_TAG
-   CUSTOM_TAG=${CUSTOM_TAG:-getting-started}
+   # Prompt for other .arg file parameters
+   read -p "Enter custom tag for the artifacts [default: gs-tutorial]: " CUSTOM_TAG
+   CUSTOM_TAG=${CUSTOM_TAG:-gs-tutorial}
 
    read -p "Enter OS distribution [default: ubuntu]: " OS_DISTRIBUTION
    OS_DISTRIBUTION=${OS_DISTRIBUTION:-ubuntu}
@@ -410,11 +408,26 @@ Follow the steps below to build the artifacts using the script.
 
    # Build artifacts
    echo "Building Edge artifacts... This will take approximately 15 minutes."
-   if sudo ./earthly.sh +build-all-images; then
-       echo "✅ Artifacts built successfully."
+
+   # Create a temp file to capture the output
+   TEMP_BUILD_LOG=$(mktemp)
+
+   # Run the build, tee output to console and save it to temp file
+   if sudo ./earthly.sh +build-all-images | tee "$TEMP_BUILD_LOG"; then
+     echo "✅ Artifacts built successfully."
+
+     # Extract the manifest profile YAML from build output
+     awk '/^pack:/{flag=1} flag' "$TEMP_BUILD_LOG" > manifest-profile.yaml
+
+     if [ -s manifest-profile.yaml ]; then
+           echo "✅ Extracted manifest profile YAML to 'manifest-profile.yaml'."
+     else
+           echo "❌ Failed to extract manifest profile YAML from build output."
+     fi
    else
-       echo "❌ Failed to build artifacts. Please check the logs and try again."
-       exit 1
+     echo "❌ Failed to build artifacts. Please check the logs and try again."
+     rm -f "$TEMP_BUILD_LOG"
+     exit 1
    fi
 
    # Push images to registry
@@ -428,6 +441,7 @@ Follow the steps below to build the artifacts using the script.
 
    echo "✅ Build completed successfully."
    echo "Artifacts are located in the 'CanvOS/build' folder."
+   echo "The manifest to paste into your cluster profile is available in 'CanvOS/manifest-profile.yaml'"
    EOF
    ```
 
@@ -443,8 +457,8 @@ Follow the steps below to build the artifacts using the script.
    ./edgeforge.sh
    ```
 
-4. Once the build is complete, the script prints a manifest with predefined parameters that are required to create the
-   cluster profile. Copy and save the manifest, as you will need it later.
+4. Once the build is complete, the script generates a manifest in `CanvOS/manifest-profile.yaml` with predefined values
+   required to create the cluster profile. Ensure to save this manifest, as you will need it for the next tutorial.
 
 5. Confirm that the Edge installer ISO and its checksum have been created correctly.
 
@@ -463,4 +477,5 @@ Follow the steps below to build the artifacts using the script.
 
 In this tutorial, you built the artifacts required for your Edge deployment. We recommend proceeding to the Create an
 Edge Cluster Profile tutorial, where you will learn how to create an Edge native cluster profile that references the
-built provider image.
+built provider image. You will then learn how to use the installer ISO to bootstrap the Edge installation on your host
+and use it as a node for deploying your first Edge cluster.
