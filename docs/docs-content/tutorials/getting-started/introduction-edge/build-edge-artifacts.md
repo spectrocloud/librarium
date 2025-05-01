@@ -64,7 +64,7 @@ version. This tutorial uses the tag `v4.6.9` as an example.
 git checkout v4.6.9
 ```
 
-EdgeForge leverages [Earthly](https://earthly.dev/) to build the installer ISO and provider images artifacts. A **.arg**
+EdgeForge leverages [Earthly](https://earthly.dev/) to build the installer ISO and provider images artifacts. A `.arg`
 file is used to pass the values of a few arguments, such as the provider image tag and registry name, to Earthly for the
 build process.
 
@@ -87,15 +87,15 @@ Set a custom tag for the provider images. The tag must be an alphanumeric lowerc
 export CUSTOM_TAG=gs-tutorial
 ```
 
-Next, issue the following command to create the **.arg** file using the custom tag. The remaining arguments will use
+Next, issue the following command to create the `.arg` file using the custom tag. The remaining arguments will use
 predefined values. For example, this tutorial uses [K3s](https://k3s.io/) version `1.32.1` as the Kubernetes
 distribution, Ubuntu as the OS distribution, and [ttl.sh](https://ttl.sh/) as the image registry. Review the
 `k8s_version.json` file in the CanvOS repository for all supported Kubernetes versions.
 
 :::warning
 
-If you are using a CanvOS tag that is earlier than v4.4.12, the **k8s_version.json** file does not exist in those tags.
-In that case, review the **Earthfile** file in the CanvOS repository for all supported Kubernetes versions.
+If you are using a CanvOS tag that is earlier than v4.4.12, the `k8s_version.json` file does not exist in those tags. In
+that case, review the `Earthfile` file in the CanvOS repository for all supported Kubernetes versions.
 
 :::
 
@@ -136,7 +136,7 @@ complete, a success message appears.
 ```
 
 The output also includes a manifest with predefined values required to create the Edge cluster profile. These parameters
-reference the built provider image. Copy and save the manifest, as you will need it in the next tutorial.
+reference the built provider image. Copy and save the manifest, as you will need it for the next tutorial.
 
 <!-- prettier-ignore -->
 ```yaml
@@ -186,7 +186,7 @@ docker images --filter=reference="*/*:*$CUSTOM_TAG"
 
 ```text hideClipboard
 REPOSITORY      TAG                                IMAGE ID       CREATED          SIZE
-ttl.sh/ubuntu   k3s-1.32.1-v4.6.9-gs-tutorial     75811e3dfb42   13 minutes ago   4.93GB
+ttl.sh/ubuntu   k3s-1.32.1-v4.6.9-gs-tutorial      75811e3dfb42   13 minutes ago   4.93GB
 ```
 
 ## Push Provider Images
