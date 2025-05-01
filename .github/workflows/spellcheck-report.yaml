@@ -86,6 +86,11 @@ jobs:
           path: vale-spellcheck-results.txt
           if-no-files-found: error
           retention-days: 7
+      
+      - name: Clean up report
+        run: |
+          # Remove the vale-spellcheck-results.txt file
+          rm -f vale-spellcheck-results.txt
 
       - name: Slack Notification No Vale Errors
         if: ${{ env.VALE_ERRORS_FOUND == 'false'}}
