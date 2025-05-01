@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Kubernetes Debugging"
 title: "Kubernetes Debugging Tips"
-description: "Learn tips and tricks related to Kubernetes dubbging."
+description: "Learn tips and tricks related to Kubernetes debugging."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 0

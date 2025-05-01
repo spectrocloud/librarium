@@ -108,6 +108,7 @@ bandwidth use and protect against outages. For more information, refer to
 
   <Tabs>
   <TabItem value="single-registry" label="Single External Registry">
+    
     ```yaml
     #cloud-config
     stylus:
