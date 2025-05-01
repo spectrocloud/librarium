@@ -56,9 +56,9 @@ A local cluster is a cluster that does not have a connection to a Palette instan
 Edge hosts is slightly different from central Edge hosts. Since there is no Palette instance and each Edge host is
 managed locally, there is no Edge host registration during the on-site deployment phase.
 
-In addition, depending on whether or not the Edge host has internet access, you need to provide the Edge host with the
-images that are required for cluster deployment through a content bundle or through an external registry. After a
-cluster is formed, you manage the cluster locally with Local UI instead of using through a Palette instance.
+In addition, if your Edge host does not have internet access, you need to provide the Edge host with the images that are
+required for cluster deployment through a content bundle or through an external registry. After a cluster is formed, you
+manage the cluster locally with Local UI instead of using through a Palette instance.
 
 ![A flow of the lifecycle for local clusters: modeling, EdgeForge, installation, on-site deployment, cluster formation, and cluster management. ](/cluster_edge_edge-deployment-lifecycle-airgap.webp)
 

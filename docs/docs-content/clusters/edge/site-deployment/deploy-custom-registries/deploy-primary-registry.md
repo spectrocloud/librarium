@@ -9,8 +9,8 @@ tags: ["edge"]
 
 A primary registry is an in-cluster registry that stores images required for cluster deployment. If your local cluster
 does not have connection to the internet, you can store all images required for cluster function in the primary registry
-so your cluster can operate in an airgap environment. In addition, both local and central clusters can benefit from
-using a primary registry for increased reliability and reduced bandwidth usage.
+so your cluster can operate in a local environment. In addition, both local and central clusters can benefit from using
+a primary registry for increased reliability and reduced bandwidth usage.
 
 :::preview
 

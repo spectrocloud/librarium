@@ -7,10 +7,10 @@ sidebar_position: 30
 tags: ["edge"]
 ---
 
-To create a multi-node cluster with hosts provisioned in the airgap installation mode, the hosts must first be able to
-identify and securely communicate with each other. By default, hosts that are provisioned in the airgap installation
-mode are not aware of each other even if they are on the same network, and they do not have the credentials to
-communicate with each other securely.
+To create a multi-node cluster with hosts provisioned in the local management mode, the hosts must first be able to
+identify and securely communicate with each other. By default, hosts that are provisioned in the local management mode
+are not aware of each other even if they are on the same network, and they do not have the credentials to communicate
+with each other securely.
 
 ![A diagram of the order of operations for linking hosts.](/clusters_edge_localui_cluster-mgmt_link-hosts.webp)
 

@@ -58,8 +58,8 @@ Installer configuration file and the OS pack support the usage of cloud-init sta
      managementMode: local
    ```
 
-   Edge hosts installed in airgap mode require you to provide assets needed to provision clusters. For more information
-   about the deployment lifecycle of airgap Edge hosts, refer to
+   Edge hosts installed in local management mode require you to provide assets needed to provision clusters. For more
+   information about the deployment lifecycle of locally managed Edge hosts, refer to
    [Edge Deployment Lifecycle](../edge-native-lifecycle.md).
 
 3. If you want to deploy a locally managed Edge host, skip this step.

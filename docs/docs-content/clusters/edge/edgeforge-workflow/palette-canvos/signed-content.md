@@ -17,7 +17,7 @@ your Edge hosts come from a trusted source. For more information about content b
 
 ## Limitations
 
-- This feature is only available to airgapped Edge hosts without a connection to Palette.
+- This feature is only available to locally managed Edge hosts without a connection to Palette.
 
 ## Prerequisites
 

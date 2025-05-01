@@ -7,7 +7,7 @@ sidebar_position: 50
 tags: ["edge"]
 ---
 
-You can update existing local clusters in an airgapped Edge host from Local UI by uploading a new cluster profile
+You can update existing local clusters in a locally managed Edge host from Local UI by uploading a new cluster profile
 version. This guide explains how to update an existing cluster in Local UI.
 
 :::preview

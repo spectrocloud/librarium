@@ -52,8 +52,8 @@ configured through Local UI will be retained even after a [reset](./reset-reboot
 1. Log in to your Edge Host via SSH.
 
 2. Make a curl request from the command-line to any domain that only the proxy server would have access to. For example,
-   if your Edge deployment is airgapped and does not have access to the internet except through the proxy server, you
-   can make a curl call to Google.
+   if your Edge deployment does not have access to the internet except through the proxy server, you can make a curl
+   call to Google.
 
    ```shell
    curl https://www.google.com

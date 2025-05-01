@@ -10,9 +10,9 @@ tags: ["edge"]
 Once Palette Edge has been installed on the Edge host and the Edge host has gone through initial configuration, you will
 be able to access Local UI.
 
-- In airgapped Edge hosts, Local UI allows you to manage Edge hosts in your network locally, upload content bundles
-  containing images, Helm charts, and packs, and create Edge clusters locally in disconnected environments without
-  connections to a Palette instance.
+- In locally managed Edge hosts, Local UI allows you to manage Edge hosts in your network locally, upload content
+  bundles containing images, Helm charts, and packs, and create Edge clusters locally in disconnected environments
+  without connections to a Palette instance.
 - In connected Edge hosts, you cannot use the cluster-related functionalities because the cluster is managed by Palette,
   but you can still utilize Local UI to configure and manage the Edge host itself.
 
@@ -28,7 +28,7 @@ be able to access Local UI.
   credentials.
 
 - If you already included a content bundle and a cluster definition in your installer ISO, you can create a cluster in
-  your airgapped Edge host using the resources in the ISO directly. Refer to
+  your locally managed Edge host using the resources in the ISO directly. Refer to
   [Create Local Cluster](./cluster-management/create-cluster.md) for guidance. Refer to
   [EdgeForge Workflow](../edgeforge-workflow/edgeforge-workflow.md) for guidance on how to include content bundles and
   cluster definitions in your ISO.
@@ -42,7 +42,7 @@ be able to access Local UI.
 
 ## Cluster Management
 
-Cluster management features are only available to airgapped Edge hosts.
+Cluster management features are only available to locally managed Edge hosts.
 
 - [Link Hosts](./cluster-management/link-hosts.md)
 
@@ -56,7 +56,8 @@ Cluster management features are only available to airgapped Edge hosts.
 
 ## Host Management
 
-Most host management features, with the exception of reset, are available on both airgapped and connected Edge hosts.
+Most host management features, with the exception of reset, are available on both locally and centrally managed Edge
+hosts.
 
 - [Access Local UI](./host-management/access-console.md)
 

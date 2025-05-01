@@ -26,16 +26,16 @@ primary registry and keep it up-to-date with the latest upstream updates.
 
 - An existing Edge cluster with the **Harbor Edge-Native Config** pack.
 
-- (Airgap only) A physical or virtual Linux machine with AMD64 (also known as x86_64) processor architecture. You can
-  issue the following command in the terminal to check your processor architecture. You need this machine to build a
-  content bundle needed to update the cluster.
+- (Local management mode only) A physical or virtual Linux machine with AMD64 (also known as x86_64) processor
+  architecture. You can issue the following command in the terminal to check your processor architecture. You need this
+  machine to build a content bundle needed to update the cluster.
 
   ```bash
   uname -m
   ```
 
-- (Airgap only) The latest version of the Palette Edge CLI. Refer to the [Downloads](../../../../spectro-downloads.md)
-  page to download the CLI.
+- (Local management mode only) The latest version of the Palette Edge CLI. Refer to the
+  [Downloads](../../../../spectro-downloads.md) page to download the CLI.
 
 ## Migrate from Harbor Edge-Native Config Pack to Registry Connect
 
@@ -121,17 +121,17 @@ primary registry and keep it up-to-date with the latest upstream updates.
      --cluster-definition-profile-ids <CLUSTER_PROFILE_IDS>
     ```
 
-    | Flag                         | Description                                                                                                                                                                                                                                                                                                                            |
-    | ---------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | `--api-key`                  | Your Palette API key.                                                                                                                                                                                                                                                                                                                  |
-    | `--cluster-profile-ids`      | Comma-separated list of cluster profile IDs to download content for.                                                                                                                                                                                                                                                                   |
-    | `--cred-file-path`           | Path to the JSON file storing registry credentials if you are using a private registry.                                                                                                                                                                                                                                                |
-    | `--include-palette-content`  | Whether to include images for the Palette agent itself, including images to support cluster creation and cluster management. For airgap installations, you must use either this option or the `--include-core-images-only` option. We recommend you use `--include-core-images-only` instead to reduce the size of the content bundle. |
-    | `--include-core-images-only` | Whether to include images for the Palette agent that are necessary for cluster creation only. In airgap installations, we recommend using this option instead of `--include-palette-content` to reduce the size of the content bundle, as Local UI currently does not offer native backup and support features.                        |
-    | `--outfile`                  | Name of your content bundle. The final file name should have the following pattern: `core-<bundle-name>-random-string`.                                                                                                                                                                                                                |
-    | `--palette-endpoint`         | API endpoint for your Palette instance.                                                                                                                                                                                                                                                                                                |
-    | `--project-id`               | The ID of your Palette project.                                                                                                                                                                                                                                                                                                        |
-    | `--private-key`              | The path to the private key used to sign the content bundle and cluster definition if it is present. This is necessary if your Edge host has an embedded corresponding public key. For more information, refer to [Embed Public Key in Edge Artifacts](../../edgeforge-workflow/palette-canvos/signed-content.md).                     |
+    | Flag                         | Description                                                                                                                                                                                                                                                                                                                                                               |
+    | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | `--api-key`                  | Your Palette API key.                                                                                                                                                                                                                                                                                                                                                     |
+    | `--cluster-profile-ids`      | Comma-separated list of cluster profile IDs to download content for.                                                                                                                                                                                                                                                                                                      |
+    | `--cred-file-path`           | Path to the JSON file storing registry credentials if you are using a private registry.                                                                                                                                                                                                                                                                                   |
+    | `--include-palette-content`  | Whether to include images for the Palette agent itself, including images to support cluster creation and cluster management. In the case of installations for locally managed Edge hosts, you must use either this option or the `--include-core-images-only` option. We recommend you use `--include-core-images-only` instead to reduce the size of the content bundle. |
+    | `--include-core-images-only` | Whether to include images for the Palette agent that are necessary for cluster creation only. In the case of installations for locally managed Edge hosts, we recommend using this option instead of `--include-palette-content` to reduce the size of the content bundle, as Local UI currently does not offer native backup and support features.                       |
+    | `--outfile`                  | Name of your content bundle. The final file name should have the following pattern: `core-<bundle-name>-random-string`.                                                                                                                                                                                                                                                   |
+    | `--palette-endpoint`         | API endpoint for your Palette instance.                                                                                                                                                                                                                                                                                                                                   |
+    | `--project-id`               | The ID of your Palette project.                                                                                                                                                                                                                                                                                                                                           |
+    | `--private-key`              | The path to the private key used to sign the content bundle and cluster definition if it is present. This is necessary if your Edge host has an embedded corresponding public key. For more information, refer to [Embed Public Key in Edge Artifacts](../../edgeforge-workflow/palette-canvos/signed-content.md).                                                        |
 
 15. [Upload the new content bundle](../../local-ui/cluster-management/upload-content-bundle.md) to your Edge host.
 

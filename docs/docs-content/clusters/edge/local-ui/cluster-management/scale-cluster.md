@@ -17,11 +17,11 @@ the cluster by removing nodes from the cluster using Local UI.
 ## Scale up a Cluster
 
 To scale up a cluster is to add additional nodes to an active cluster. You can scale up a cluster deployed on hosts
-installed in airgap mode in Local UI.
+installed in local management mode in Local UI.
 
 ### Prerequisites
 
-- You have an active cluster composed of hosts installed in airgap mode. For more information, refer to
+- You have an active cluster composed of hosts installed in local management mode. For more information, refer to
   [Create Local Cluster](./create-cluster.md).
 
 - The new host you plan to add to the cluster are linked with the host in the existing cluster. For more information,
@@ -64,7 +64,7 @@ installed in airgap mode in Local UI.
 ## Scale down a Cluster
 
 To scale down a cluster is to remove existing nodes from an active cluster. You can scale down a cluster deployed on
-hosts installed in airgap mode in Local UI.
+hosts installed in local management mode in Local UI.
 
 :::warning
 
@@ -78,8 +78,8 @@ node.
 
 ### Prerequisites
 
-- You have an active multi-node cluster composed of hosts installed in airgap mode. For more information, refer to
-  [Create Local Cluster](./create-cluster.md).
+- You have an active multi-node cluster composed of hosts installed in local management mode. For more information,
+  refer to [Create Local Cluster](./create-cluster.md).
 
 - You have access to the leader node of the cluster. For more information about leader host, refer to
   [Link Hosts](./link-hosts.md).
