@@ -93,7 +93,7 @@ is either `02`, `06`, `0A`, or `0E`. The remaining part of the MAC address is ge
 
 ### Specify a MAC Address
 
-You can set a VM's MAC address by specifying a value in the VM's YAML configuration file under the `macAddress` field.
+You can set a VM MAC address by specifying a value in the YAML configuration file under the `macAddress` field.
 
 :::danger
 

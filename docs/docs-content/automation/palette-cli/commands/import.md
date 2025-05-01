@@ -28,7 +28,7 @@ imported clusters.
 | **Long Flag**      | **Description**                                                              | **Type** |
 | ------------------ | ---------------------------------------------------------------------------- | -------- |
 | `--kubeconfig`     | Path to the kubeconfig for the cluster you would like to import (optional)   | string   |
-| `--kubeconfig-dir` | Path to directory containing kubeconfigs for one or more clusters (optional) | string   |
+| `--kubeconfig-dir` | Path to directory containing kubeconfig files for one or more clusters (optional) | string   |
 | `--uuid`           | If true, a partial UUID is appended to each cluster name (optional)          | boolean  |
 
 :::info
