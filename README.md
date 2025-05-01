@@ -1065,12 +1065,17 @@ The [.vale.ini](.vale.ini) file contains the configuration for Vale. We use the
 
 ### Spellcheck Entire Librarium
 
-The [spellcheck-report.yaml](.github/workflows/spellcheck-report.yaml) is a recurrent job that uses Vale to run weekly spelling checks on the entire repository. The Documentation & Education team monitors the results of these spelling scans and ensures that errors are rectified.
+The [spellcheck-report.yaml](.github/workflows/spellcheck-report.yaml) is a recurrent job that uses Vale to run weekly
+spelling checks on the entire repository. The Documentation & Education team monitors the results of these spelling
+scans and ensures that errors are rectified.
 
 If you find an error, you can remediate it through the following possible actions:
 
-1. Raise a PR to add a new word to the [`spectro-vale-pkg`](https://github.com/spectrocloud/spectro-vale-pkg) accept list.
-2. Skip Vale checks on the portion of the file that is triggering the error using the `<!-- vale off -->` element. This element must be set on a separate line, so it cannot be used to ignore a single line of a table or Markdown file front matter.
+1. Raise a PR to add a new word to the [`spectro-vale-pkg`](https://github.com/spectrocloud/spectro-vale-pkg) accept
+   list.
+2. Skip Vale checks on the portion of the file that is triggering the error using the `<!-- vale off -->` element. This
+   element must be set on a separate line, so it cannot be used to ignore a single line of a table or Markdown file
+   front matter.
 3. Add the error to the `vale-spellcheck-ignore.txt` to flag as an exception to the Vale spelling checks.
 
 ## Check Formatting
