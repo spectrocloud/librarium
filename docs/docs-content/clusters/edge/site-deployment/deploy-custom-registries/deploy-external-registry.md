@@ -108,6 +108,7 @@ information, refer to [Enable Local Harbor Registry](./local-registry.md).
 
   <Tabs>
   <TabItem value="single-registry" label="Single External Registry">
+    
     ```yaml
     #cloud-config
     stylus:

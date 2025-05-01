@@ -114,13 +114,13 @@ Enterprise Linux (RHEL) image with <VersionedLink text="Palette eXtended Kuberne
     cp /opt/spectro/ssl/server.crt rpmrepo/
     ```
 
-9.  Open the **imageconfig** template file located in the `output` folder and fill in the required parameters. For a
+9.  Open the `imageconfig` template file located in the `output` folder and fill in the required parameters. For a
     complete list of parameters, refer to the [Configuration Reference](../../config-reference.md) page. Additionally,
     refer to the [Compatibility Matrix](../../comp-matrix-capi-builder.md) for a list of supported Kubernetes versions
     and their corresponding dependencies.
 
-    The **imageconfig** is the file you use to set up the CAPI Image Builder according to your requirements. This
-    includes specifying the OS type, Kubernetes version, whether the image should be FIPS compliant, and more.
+    The `imageconfig` is the file you use to set up the CAPI Image Builder according to your requirements. This includes
+    specifying the OS type, Kubernetes version, whether the image should be FIPS compliant, and more.
 
     Use the example configuration below for building a RHEL 8 CAPI image in an airgapped environment. Replace
     `<rhel-subscription-email>` and `<rhel-subscription-password>` with your RHEL subscription credentials. Replace
@@ -386,7 +386,7 @@ Enterprise Linux (RHEL) image with <VersionedLink text="Palette eXtended Kuberne
             Once you are finished doing the alterations, save and exit the file.
 
         2.  Issue the command below to start the CAPI Image Builder container and assign the container ID to the `BUILD_ID_CAPI`
-            variable. The tool will use the **imageconfig** file to create and configure a VM with static IP placement in
+            variable. The tool will use the `imageconfig` file to create and configure a VM with static IP placement in
             your VMware vSphere environment.
 
             <Tabs>
@@ -536,8 +536,7 @@ profile and deploy a VMware vSphere host cluster.
 
     :::warning
 
-    The Palette eXtended Kubernetes pack version must match the Kubernetes version specified in the **imageconfig**
-    file.
+    The Palette eXtended Kubernetes pack version must match the Kubernetes version specified in the `imageconfig` file.
 
     :::
 

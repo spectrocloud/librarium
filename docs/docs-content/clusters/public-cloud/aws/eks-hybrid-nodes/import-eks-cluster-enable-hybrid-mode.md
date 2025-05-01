@@ -244,7 +244,7 @@ Import your Amazon EKS cluster and enable hybrid mode to be able to create edge 
 
 17. If the `aws-auth` ConfigMap already exists, append the `mapRoles` entry in your existing ConfigMap.
 
-    You can edit the existing configmap using the following command.
+    You can edit the existing ConfigMap using the following command.
 
     ```shell
     kubectl edit configmap aws-auth --namespace kube-system

@@ -32,7 +32,7 @@ This page guides you through how to export your factory keys using command-line 
 
 1. Turn on the Edge device.
 
-2. Open a terminal session on the Edge host, or a Powershell session on Windows, and issue the following commands to
+2. Open a terminal session on the Edge host, or a PowerShell session on Windows, and issue the following commands to
    export the keys.
 
    <Tabs>
