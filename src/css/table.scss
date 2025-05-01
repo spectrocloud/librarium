@@ -48,3 +48,18 @@
     }
   }
 }
+
+.auto-generated-os-linked-table {
+  overflow-x: auto; /* Enables horizontal scroll if needed */
+}
+
+.auto-generated-os-linked-table table {
+  width: 100%;
+  table-layout: fixed; /* Prevents the table from stretching too far */
+  word-wrap: break-word; /* Ensures long text wraps inside cells */
+}
+
+.auto-generated-os-linked-table table td:first-child,
+.auto-generated-os-linked-table table th:first-child {
+  white-space: nowrap;
+}
