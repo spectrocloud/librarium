@@ -1,7 +1,7 @@
 ---
 sidebar_label: "PDE"
 title: "PDE"
-description: "Reference resource for the pde command."
+description: "Reference resource for the PDE command."
 hide_table_of_contents: false
 sidebar_position: 40
 tags: ["palette-cli"]

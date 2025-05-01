@@ -73,19 +73,19 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
     642ada8a49dbeca8cca6543b31196019ee3d649a0163b5db0e646c7409364eeb  Rocky-8-latest-x86_64-dvd.iso
     ```
 
-6.  Download the **imageconfig** template file.
+6.  Download the `imageconfig` template file.
 
     ```shell
     curl https://software.spectrocloud.com/tools/capi-image-builder/imageconfig --output imageconfig
     ```
 
-7.  Open the **imageconfig** template file in an editor of your choice and fill in the required parameters. For a
-    complete list of parameters, refer to the [Configuration Reference](../../config-reference.md) page. Additionally,
-    refer to the [Compatibility Matrix](../../comp-matrix-capi-builder.md) for a list of supported Kubernetes versions
-    and their corresponding dependencies.
+7.  Open the `imageconfig` template file in an editor of your choice and fill in the required parameters. For a complete
+    list of parameters, refer to the [Configuration Reference](../../config-reference.md) page. Additionally, refer to
+    the [Compatibility Matrix](../../comp-matrix-capi-builder.md) for a list of supported Kubernetes versions and their
+    corresponding dependencies.
 
-    The **imageconfig** is the file you use to set up the CAPI Image Builder according to your requirements. This
-    includes specifying the OS type, Kubernetes version, whether the image should be FIPS compliant, and more.
+    The `imageconfig` is the file you use to set up the CAPI Image Builder according to your requirements. This includes
+    specifying the OS type, Kubernetes version, whether the image should be FIPS compliant, and more.
 
     Use the example configuration below for building a Rocky 8 CAPI image. Replace `<iso-checksum>` with the Rocky ISO
     checksum you calculated in step **5** of this guide. Additionally, replace the VMware-related placeholders with the
@@ -223,7 +223,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
             Once you are finished doing the alterations, save and exit the file.
 
         3.  Issue the command below to start the CAPI Image Builder container and assign the container ID to the `BUILD_ID`
-            variable. The tool will use the **imageconfig** file to create and configure a VM with static IP placement in
+            variable. The tool will use the `imageconfig` file to create and configure a VM with static IP placement in
             your VMware vSphere environment.
 
             <Tabs>
@@ -359,8 +359,7 @@ profile and deploy a VMware host cluster.
 
     :::warning
 
-    The Palette eXtended Kubernetes pack version must match the Kubernetes version specified in the **imageconfig**
-    file.
+    The Palette eXtended Kubernetes pack version must match the Kubernetes version specified in the `imageconfig` file.
 
     :::
 

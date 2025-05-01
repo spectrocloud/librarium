@@ -329,7 +329,7 @@ If uploading your image to a `DataVolume` upload fails, you may restart the uplo
 6. Click the second warning button, named after the clusters **Environment** configuration. Select a new **Serial
    Number** for your environment ConfigMap. Then, click **Save**.
 
-   ![Fix configmap serial](/deploy-import-ova-guide/vm-management_create-manage-vm_advanced-topics_deploy-import-ova_fix-serial-number-warning.webp)
+   ![Fix ConfigMap serial](/deploy-import-ova-guide/vm-management_create-manage-vm_advanced-topics_deploy-import-ova_fix-serial-number-warning.webp)
 
 7. Select the **Actions** drop-down Menu. Then, select **Restart** to apply your changes. Once your changes have been
    applied, Palette will not display any warnings.
