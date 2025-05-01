@@ -31,8 +31,8 @@ Follow the instructions below to migrate VMs to a different node.
 
 - VMs that use Persistent Volumes must have shared `ReadWriteMany` (`RWX`) access. For more information, refer to the
   [Persistent Volume Access Modes](https://kubernetes.io/docs/concepts/storage/persistent-volumes/#access-modes)
-  Kubernetes resource. VMs that do not use persistent storage, such as containerDisks, do not require modifications for
-  live migration.
+  Kubernetes resource. VMs that do not use persistent storage, such as `containerDisks`, do not require modifications
+  for live migration.
 
 - A VM’s pod network cannot use a Bridge interface. Disable the default Bridge interface on the pod network. However,
   other interfaces such as those that Multus grants, may use a bridge interface for live migration.
