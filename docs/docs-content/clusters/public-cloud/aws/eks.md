@@ -161,8 +161,36 @@ an AWS account. This section guides you on how to create an EKS cluster in AWS t
     | ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
     | **Node pool name**              | A descriptive name for the node pool.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
     | **Number of nodes in the pool** | Specify the number of nodes in the worker pool.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-    | **Additional Labels**           | You can add optional labels to nodes in key-value format. For more information about applying labels, review [Node Labels](../../cluster-management/node-labels.md) guide. Example: `"environment": "production"`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+    | **Additional Labels**           | You can add optional labels to nodes in key-value format. Review the [Assign an AMI to a Node Pool](#assign-an-ami-to-a-node-pool) section for guidance on assigning specific AMIs to node pools. For general information about applying labels, review the [Node Labels](../../cluster-management/node-labels.md) guide. Example: `"environment": "production"`                                                                                                                                                                                                                                                                                                                                                                                                                               |
     | **Taints**                      | You can apply optional taint labels to a node pool during cluster creation or edit taint labels on an existing cluster. Review the [Node Pool](../../cluster-management/node-pool.md) management page and [Taints and Tolerations](../../cluster-management/taints.md) guide to learn more. Toggle the **Taint** button to create a taint label. When tainting is enabled, you need to provide a custom key-value pair. Use the **drop-down Menu** to choose one of the following **Effect** options:<br />**NoSchedule** - Pods are not scheduled onto nodes with this taint.<br />**PreferNoSchedule** - Kubernetes attempts to avoid scheduling pods onto nodes with this taint, but scheduling is not prohibited.<br />**NoExecute** - Existing pods on nodes with this taint are evicted. |
+
+    ##### Assign an AMI to a Node Pool
+
+    Assign an AMI to a node pool by adding an additional label specifying the AMI to use. You can choose from one of the
+    following supported AMIs. Copy the exact label shown in the code block and paste it to the **Additional Labels**
+    option in the **Node Configuration Settings**.
+
+    ```shell title="Amazon Linux 2 (x86-64)"
+    spectrocloud.com/ami-type:AL2_x86_64
+    ```
+
+    ```shell title="Amazon Linux 2023 (x86-64)"
+    spectrocloud.com/ami-type:AL2023_x86_64_STANDARD
+    ```
+
+    ```shell title="Amazon Linux 2023 with AWS Neuron drivers (x86-64)"
+    spectrocloud.com/ami-type:AL2023_x86_64_NEURON
+    ```
+
+    ```shell title="Amazon Linux 2023 with NVIDIA drivers (x86-64)"
+    spectrocloud.com/ami-type:AL2023_x86_64_NVIDIA
+    ```
+
+    :::info
+
+    The **Amazon Linux 2 (x86-64)** AMI is used by default if no AMI is specified or there is a typo in the label.
+
+    :::
 
     #### Cloud Configuration settings
 
