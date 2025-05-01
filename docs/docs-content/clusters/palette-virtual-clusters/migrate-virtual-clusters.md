@@ -61,7 +61,7 @@ The following steps may not cover all use-cases. Ensure you adjust them to your 
    [finalizers](https://kubernetes.io/docs/concepts/overview/working-with-objects/finalizers/) in the exported YAML
    files, if they appear. This will prevent conflicts in the new cluster.
 
-4. In the exported YAMLs, update references to external resources, such as a specific PersistentVolume name or private
+4. In the exported YAML files, update references to external resources, such as a specific PersistentVolume name or private
    registry secrets. For example, if your YAML references a PersistentVolume named `pv-old-cluster` in the old
    namespace, rename it to `pv-new-cluster` in the new namespace before deployment.
 
