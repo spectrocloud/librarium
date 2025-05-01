@@ -15,6 +15,8 @@ tags: ["release-notes"]
 
 ### Bug Fixes
 
+- Fixed an issue that caused [edge hosts](../clusters/edge/edge.md) to reboot continuously after a cluster deletion and
+  completed [reset](../clusters/edge/local-ui/host-management/reset-reboot.md#reset-edge-host).
 - Fixed an issue where Kubernetes version upgrades initiated through [Local UI](../clusters/edge/local-ui/local-ui.md)
   failed for [Edge](../clusters/edge/edge.md) clusters containing the `harbor-edge-native-config` pack.
 - Fixed an issue where
