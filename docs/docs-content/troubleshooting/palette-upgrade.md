@@ -41,7 +41,7 @@ Error: UPGRADE FAILED: failed to create resource: admission webhook "validate.ng
 
 4. Restart the upgrade process.
 
-## Mongo DNS Configmap Value is Incorrect
+## Mongo DNS ConfigMap Value is Incorrect
 
 In VMware vSphere VerteX installations, if you encounter an error during the upgrade process where the MongoDB DNS
 ConfigMap value is incorrect, use the following steps to resolve the issue.
@@ -57,8 +57,8 @@ ConfigMap value is incorrect, use the following steps to resolve the issue.
    kubectl get pods --namespace=hubble-system
    ```
 
-3. Verify that the configmap for the _configserver_ in the _hubble-system_ namespace contains the incorrect host value
-   `mongo-1.mongohubble-system.svc.cluster`. Use the following command to describe the configmap and search for the host
+3. Verify that the ConfigMap for the `configserver` in the `hubble-system` namespace contains the incorrect host value
+   `mongo-1.mongohubble-system.svc.cluster`. Use the following command to describe the ConfigMap and search for the host
    value.
 
    ```shell

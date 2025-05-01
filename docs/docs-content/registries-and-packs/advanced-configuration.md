@@ -151,7 +151,7 @@ storage: inmemory
 
 ## Authentication
 
-You can configure basic HTTP Auth. Basic Auth requires providing the pack registry server with an httppasswd file
+You can configure basic HTTP Auth. Basic Auth requires providing the pack registry server with an `httppasswd` file
 containing the credentials.
 
 <br />

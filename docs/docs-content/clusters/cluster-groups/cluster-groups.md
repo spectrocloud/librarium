@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Cluster Groups"
 title: "Cluster Groups"
-description: "Explore Palette Devx as Free Developer"
+description: "Explore Palette Dev Engine as Free Developer"
 hide_table_of_contents: false
 sidebar_custom_props:
   icon: "object-group"
