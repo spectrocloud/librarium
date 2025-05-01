@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Create and Manage IPAM Node Pools"
 title: "Create and Manage IPAM Node Pools"
-description: "Learn how to create and manage IPAM node pools for a PCG deplyed in a VMware vSphere environment."
+description: "Learn how to create and manage IPAM node pools for a PCG deployed in a VMware vSphere environment."
 hide_table_of_contents: false
 sidebar_position: 10
 tags: ["pcg"]

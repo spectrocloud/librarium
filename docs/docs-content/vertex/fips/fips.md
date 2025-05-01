@@ -24,9 +24,9 @@ Something to note when using RKE2 and K3s:
 - When we scan the binaries, which we consume directly from Rancher's RKE2 repository, issues are reported for the
   following components. These components were compiled with a Go compiler that is not FIPS-compliant.
 
-  - container-suseconnect
-  - container-suseconnect-zypp
-  - susecloud
+  - `container-suseconnect`
+  - `container-suseconnect-zypp`
+  - `susecloud`
 
   <br />
 
