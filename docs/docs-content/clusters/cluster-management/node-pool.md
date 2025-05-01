@@ -36,7 +36,7 @@ This section only applies to non-Edge clusters. To learn about the upgrade behav
 :::
 
 - **Control plane repave**: This takes place when certain changes are made to the Kubernetes configuration, such as
-  changing the **apiServer** specification. This type of repave also occurs when there are changes in the hardware
+  changing the `apiServer` specification. This type of repave also occurs when there are changes in the hardware
   specifications of the control plane nodes, such as during a node scale-up operation or when changing from one instance
   type to another. Control plane nodes are repaved sequentially.
 
