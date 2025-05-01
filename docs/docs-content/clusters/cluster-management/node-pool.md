@@ -29,7 +29,7 @@ have failed. You can configure the repave time interval for a node pool.
 Different types of repaving operations may occur, depending on what causes them:
 
 - **Control plane repave**: This takes place when certain changes are made to the Kubernetes configuration, such as
-  changing the **apiServer** specification. This type of repave also occurs when there are changes in the hardware
+  changing the `apiServer` specification. This type of repave also occurs when there are changes in the hardware
   specifications of the control plane nodes, such as during a node scale-up operation or when changing from one instance
   type to another. Control plane nodes are repaved sequentially.
 
