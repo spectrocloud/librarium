@@ -35,6 +35,11 @@ tags: ["release-notes"]
 
 #### Features
 
+- You can now assign an Amazon Machine Image (AMI) to a node pool when deploying Amazon EKS clusters. To do this, apply
+  an additional label in the **Node Configuration Settings** during cluster creation. For guidance and a list of
+  supported AMIs, refer to the
+  [Assign an AMI to a Node Pool](../clusters/public-cloud/aws/eks.md#assign-an-ami-to-a-node-pool) section.
+
 #### Improvements
 
 #### Deprecations and Removals
