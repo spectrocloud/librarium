@@ -1,7 +1,8 @@
 ---
 sidebar_label: "Share Local UI Authentication"
 title: "Share Local UI Authentication"
-description: "Learn how to integrate your application and have your application share the Local UI authentication token."
+description:
+  "Learn how to integrate your application and have your application share the Local UI authentication token."
 hide_table_of_contents: false
 sidebar_position: 60
 tags: ["edge"]
