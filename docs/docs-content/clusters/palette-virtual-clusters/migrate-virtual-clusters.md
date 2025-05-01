@@ -56,10 +56,10 @@ The following steps may not cover all use-cases. Ensure you adjust them to your 
      --output yaml > my-app-service.yaml
    ```
 
-3. Remove any cluster-specific fields from the exported YAMLs, such as `resourceVersion`, `uid`, `creationTimestamp`, or
-   `managedFields`. Also ensure to remove any `status` fields or
-   [finalizers](https://kubernetes.io/docs/concepts/overview/working-with-objects/finalizers/) in the exported YAMLs, if
-   they appear. This will prevent conflicts in the new cluster.
+3. Remove any cluster-specific fields from the exported YAML files, such as `resourceVersion`, `uid`,
+   `creationTimestamp`, or `managedFields`. Also ensure to remove any `status` fields or
+   [finalizers](https://kubernetes.io/docs/concepts/overview/working-with-objects/finalizers/) in the exported YAML
+   files, if they appear. This will prevent conflicts in the new cluster.
 
 4. In the exported YAMLs, update references to external resources, such as a specific PersistentVolume name or private
    registry secrets. For example, if your YAML references a PersistentVolume named `pv-old-cluster` in the old
@@ -199,7 +199,7 @@ the steps in this section to delete your legacy clusters.
 
 5. Enter the cluster name and click **OK**. The cluster status will change to **Deleting**.
 
-   Wait for the virtual cluster to be deprovisioned and deleted. This may take up to 10 minutes.
+   Wait for the virtual cluster resources to be deleted. This may take up to 10 minutes.
 
 6. If you have deleted all virtual clusters in a cluster group, you can then
    [delete your cluster group](../cluster-groups/create-cluster-group.md#delete-your-cluster-group).
