@@ -17,6 +17,8 @@ provides support for public cloud providers, data centers, bare metal, and edge 
 Kubernetes no matter the complexity or location of your production environments. Check out the following short video for
 a quick overview of Palette's key functionalities.
 
+Gud spel vale check
+
 <YouTube
   url="https://www.youtube.com/embed/P9QBOifS_cc"
   title="Demo | Spectro Cloud Palette - Kubernetes-as-a-Service"
