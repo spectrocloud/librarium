@@ -132,7 +132,7 @@ learn more about the available options.
 
 16. Click on **Add New Pack**.
 
-17. Use the following information to find the Spectrocloud Grafana Dashboards pack.
+17. Use the following information to find the Spectro Grafana Dashboards pack.
 
     - **Pack Type**: Monitoring
     - **Registry**: Public Repo
@@ -330,11 +330,11 @@ learn more about the available options.
 
 21. Click on **Add New Pack**.
 
-22. Use the following information to find the Spectrocloud Grafana Dashboards pack.
+22. Use the following information to find the Spectro Grafana Dashboards pack.
 
     - **Pack Type**: Monitoring
     - **Registry**: Public Repo
-    - **Pack Name**: Spectrocloud Grafana Dashboards
+    - **Pack Name**: Spectro Grafana Dashboards
     - **Pack Version**: 1.0.X or newer
 
 23. Use the default values. Confirm your changes by selecting **Confirm & Create**.
