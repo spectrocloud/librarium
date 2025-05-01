@@ -13,7 +13,8 @@ All certificates have an expiry date, and need to be renewed periodically.
 
 This page guides you through the different methods used to renew certificates in a local Palette Edge cluster. An local
 cluster is a cluster that has no connection to a Palette instance. For information on how to renew certificates on
-connected Edge clusters, refer to [Renew Cluster PKI Certificates](../../cluster-management/certificate-management.md).
+centrally managed Edge clusters, refer to
+[Renew Cluster PKI Certificates](../../cluster-management/certificate-management.md).
 
 ## Limitations
 

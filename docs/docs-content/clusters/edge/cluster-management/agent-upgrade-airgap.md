@@ -14,8 +14,8 @@ a new cluster profile, and upgrade the cluster using the new profile.
 
 This page teaches you how to identify the matching agent version of a Palette instance, as well as how to specify a
 Palette agent package in the Operating System (OS) pack of a cluster profile. This is useful for upgrading the Palette
-agent on a local Edge cluster and for launching new connected clusters while using an older version of the Palette
-agent.
+agent on a local Edge cluster and for launching new centrally managed clusters while using an older version of the
+Palette agent.
 
 ## Prerequisites
 
@@ -119,7 +119,7 @@ If you already know the agent version you want to use for your cluster, you can 
 
 </TabItem>
 
-<TabItem value="Connected">
+<TabItem value="Central">
 
 7. Refer to [Update a Cluster](../../cluster-management/cluster-updates.md) to update your cluster with the new profile
    version.
@@ -140,7 +140,7 @@ If you already know the agent version you want to use for your cluster, you can 
 
 </TabItem>
 
-<TabItem value="Connected">
+<TabItem value="Central">
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 

@@ -258,7 +258,7 @@ stages:
       name: Create user and assign to sudo group
 ```
 
-### Connected Sites - Multiple User Data Configuration
+### Centrally Managed Sites - Multiple User Data Configuration
 
 In this example, two configuration user user data files are used. The first one is used in the staging phase and is
 included with the Edge Installer image. Note how the first user data contains the registration information and creates a
@@ -304,12 +304,10 @@ stylus:
       zip-code: 95135
 ```
 
-### Connected Sites - Single User Data
+### Centrally Managed Sites - Single User Data
 
-This example configuration is for a _connected site_. In this scenario, only a single Edge Installer configuration user
-data is used for the entire deployment process.
-
-<br />
+This example configuration is for a _centrally managed site_. In this scenario, only a single Edge Installer
+configuration user data is used for the entire deployment process.
 
 ```yaml
 #cloud-config

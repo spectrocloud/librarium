@@ -13,8 +13,8 @@ be able to access Local UI.
 - In locally managed Edge hosts, Local UI allows you to manage Edge hosts in your network locally, upload content
   bundles containing images, Helm charts, and packs, and create Edge clusters locally in disconnected environments
   without connections to a Palette instance.
-- In connected Edge hosts, you cannot use the cluster-related functionalities because the cluster is managed by Palette,
-  but you can still utilize Local UI to configure and manage the Edge host itself.
+- In centrally managed Edge hosts, you cannot use the cluster-related functionalities because the cluster is managed by
+  Palette, but you can still utilize Local UI to configure and manage the Edge host itself.
 
 :::preview
 

@@ -13,8 +13,8 @@ profiles and their profile variables, from Palette to define your Edge cluster. 
 linked to each other, you can create multi-node clusters consisting of the linked hosts.
 
 Cluster operations in Local UI are only available to locally managed Edge hosts. You cannot use Local UI to create or
-manage clusters, upload content bundles, or cluster definition on a connected Edge host. You must use Palette to manage
-the cluster instead. For more information, refer to
+manage clusters, upload content bundles, or cluster definition on a centrally managed Edge host. You must use Palette to
+manage the cluster instead. For more information, refer to
 [Create Cluster Definition](../../site-deployment/cluster-deployment.md).
 
 :::preview

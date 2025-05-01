@@ -89,7 +89,7 @@ management.
 5. If you built a cluster definition into your Edge installer ISO, you can either choose to use the embedded config or
    import a cluster definition file. The embedded config uses a cluster definition you included during the creation of
    the ISO image you used to install Palette Edge on your Edge host. Ensure that the final profile for your deployed
-   cluster contains the pack **Harbor Edge-Native Config**. This pack is required for all disconnected Edge clusters.
+   cluster contains the pack **Harbor Edge-Native Config**. This pack is required for all locally managed Edge clusters.
 
    To learn more about how to export a cluster configuration and import it during this step, refer to
    [Export Cluster Definition](./export-cluster-definition.md).
