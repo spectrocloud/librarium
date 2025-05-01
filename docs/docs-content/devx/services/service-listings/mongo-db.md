@@ -1,15 +1,14 @@
-<!-- vale off -->
-
 ---
-
-sidebar_label: "MongoDB" title: "MongoDB" description: "Palette Dev Engine MongoDB Service" hide_table_of_contents:
-false type: "appTier" category: ["databases"] sidebar_position: 0 logoUrl:
-"https://newrelic.com/sites/default/files/styles/800w/public/2021-10/mongo_logo.jpg?itok=Z1PabBZB" tags: ["devx", "app
-mode", "pde", "databases"]
-
+sidebar_label: "MongoDB"
+title: "MongoDB"
+description: "Palette Dev Engine MongoDB Service"
+hide_table_of_contents: false
+type: "appTier"
+category: ["databases"]
+sidebar_position: 0
+logoUrl: "https://newrelic.com/sites/default/files/styles/800w/public/2021-10/mongo_logo.jpg?itok=Z1PabBZB"
+tags: ["devx", "app mode", "pde", "databases"]
 ---
-
-<!-- vale on -->
 
 [MongoDB](https://www.mongodb.com/) is a developer data platform that quickly builds applications with optimal
 performance and scalability. It provides data distribution and mobility across multiple cloud environments. In addition,
