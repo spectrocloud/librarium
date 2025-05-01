@@ -1076,7 +1076,7 @@ If you find an error, you can remediate it through the following possible action
 2. Skip Vale checks on the portion of the file that is triggering the error using the `<!-- vale off -->` element. This
    element must be set on a separate line, so it cannot be used to ignore a single line of a table or Markdown file
    front matter.
-3. Add the error to the `vale-spellcheck-ignore.txt` to flag as an exception to the Vale spelling checks.
+3. Add the error to the `vale-spellcheck-ignore.txt` file to flag it as an exception to the Vale spelling check job.
 
 ## Check Formatting
 
