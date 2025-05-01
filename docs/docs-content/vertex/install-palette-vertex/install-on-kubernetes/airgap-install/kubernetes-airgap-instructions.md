@@ -70,7 +70,7 @@ Complete the following steps before deploying the airgap VerteX installation.
    - Refer to the [Create a repository](https://docs.aws.amazon.com/AmazonECR/latest/userguide/repository-create.html)
      guide for information about creating a repository in AWS ECR.
 
-3. In your OCI registry, create a public repository named `spectro-images`. The public repositry will host the images
+3. In your OCI registry, create a public repository named `spectro-images`. The public repository will host the images
    required by VerteX.
 
 4. Download the Certificate Authority (CA) for your OCI registry and make it available in the local file system. You
