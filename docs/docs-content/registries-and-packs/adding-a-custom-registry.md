@@ -45,12 +45,7 @@ server using the designated Docker image and a TLS certificate issued by [Let's 
 
 <br />
 
-<<<<<<< HEAD
-1. Create a folder that contains an httppasswd file.
-   <br />
-=======
 1. Create a folder that contains an `httppasswd` file. <br />
->>>>>>> 9ccfbfac4 (docs: fix more spelling mistakes DOC-1746 (#6613))
 
 ```bash
 mkdir spectropaxconfig
@@ -67,10 +62,6 @@ htpasswd -Bbn admin "yourPasswordHere" > spectropaxconfig/htpasswd-basic
    block below displays the sample content for the `myconfig.yml` file. The current example assumes that your pack
    registry server will be hosted at `yourhost.companydomain.com` and the email id for notifications is
    `you@companydomain.com`. Replace the `host` and `email` attribute values as applicable to you.
-<<<<<<< HEAD
-   <br />
-=======
->>>>>>> 9ccfbfac4 (docs: fix more spelling mistakes DOC-1746 (#6613))
 
 ```yaml
 version: 0.1
