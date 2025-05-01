@@ -17,14 +17,14 @@ deployed to a cluster to provide core infrastructure functionality or customize 
 integrations.
 
 This tutorial teaches you how to create an Edge native cluster profile that includes the core infrastructure layers and
-a demo application that you can access on your browser. You will learn about the cluster profile layers and how to
-reference the provider images that you built in the [Build Edge Artifacts] tutorial. After creating the cluster profile,
-you will proceed to the next tutorial, where you will use the installer ISO to bootstrap the Edge installation on your
-host and use it as a node for deploying your first Edge cluster.
+a demo application that you can access on your browser. You will learn about cluster profile layers and how to reference
+the provider images that you built in the [Build Edge Artifacts](./build-edge-artifacts.md) tutorial. After creating the
+cluster profile, you will proceed to the next tutorial, where you will use the installer ISO to bootstrap the Edge
+installation on your host and use it as a node for deploying your first Edge cluster.
 
 ## Prerequisites
 
-- You have completed the steps in the [Build Edge Artifacts](./prepare-user-data.md) tutorial, including building the
+- You have completed the steps in the [Build Edge Artifacts](./build-edge-artifacts.md) tutorial, including building the
   installer ISO and provider image, and pushing the provider image to a registry.
 - A [Palette account](https://www.spectrocloud.com/get-started) with
   [tenant admin](../../../tenant-settings/tenant-settings.md) access.
@@ -45,16 +45,16 @@ click **Next**.
 The **Profile Layers** section defines the packs that compose the profile.
 
 Add the **BYOS Edge OS** pack to the OS layer. This pack enables you to use the custom OS you built in the
-[Build Edge Artifacts](./prepare-user-data.md) tutorial as the operating system for the cluster nodes.
+[Build Edge Artifacts](./build-edge-artifacts.md) tutorial as the operating system for the cluster nodes.
 
 | **Pack Name** | **Version** | **Registry**     | **Layer**        |
 | ------------- | ----------- | ---------------- | ---------------- |
 | BYOS Edge OS  | 2.1.0       | Palette Registry | Operating System |
 
 Under **Pack Details**, select **Values** to open the YAML editor. Replace the default layer manifest with the custom
-manifest generated in the [Build Edge Artifacts] tutorial. This makes the cluster pull the provider images from the
-[ttl.sh](https://ttl.sh/) registry during deployment. The following image displays the OS layer with the custom
-manifest.
+manifest generated in the [Build Edge Artifacts](./build-edge-artifacts.md) tutorial. This makes the cluster pull the
+provider images from the [ttl.sh](https://ttl.sh/) registry during deployment. The following image displays the OS layer
+with the custom manifest.
 
 ![A screenshot of the cluster profile creation step with the OS layer.](/getting-started/getting-started_introduction-edge_edge-cluster-profile_byos-cluster-profile.webp)
 
