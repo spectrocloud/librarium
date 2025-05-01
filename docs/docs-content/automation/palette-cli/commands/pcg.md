@@ -1,7 +1,7 @@
 ---
 sidebar_label: "PCG"
 title: "PCG"
-description: "Reference resource for the pcg command."
+description: "Reference resource for the PCG command."
 hide_table_of_contents: false
 sidebar_position: 30
 tags: ["palette-cli"]
