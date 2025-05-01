@@ -81,8 +81,8 @@ exceeds the 1 MB threshold and fails to deliver the messages. If the agent encou
 deliveries, the agent container may transition into a _CrashLoopBackOff_ state.
 
 If you encounter this scenario, you can configure the cluster to stop sending workload reports to Palette. To disable
-the workload report feature, create a _configMap_ with the following configuration. Use a cluster profile manifest layer
-to create the configMap.
+the workload report feature, create a ConfigMap with the following configuration. Use a cluster profile manifest layer
+to create the ConfigMap.
 
 ```shell
 apiVersion: v1

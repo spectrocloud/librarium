@@ -29,7 +29,7 @@ You can use the Palette Helm Chart to install Palette in a multi-node Kubernetes
   configuration to be installed as part of the installation process. If Cert Manager is already installed, you must
   uninstall it before installing Palette.
 
-- Palette requires a Container Storage Interface (CSI) to create Persistest Volume, which is used to store persistent
+- Palette requires a Container Storage Interface (CSI) to create Persistent Volumes, which are used to store persistent
   data. You may install any CSI that is compatible with your Kubernetes cluster.
 
 - If you are using a _self-hosted MongoDB_ instance, such as MongoDB Atlas, ensure the MongoDB database has a user named

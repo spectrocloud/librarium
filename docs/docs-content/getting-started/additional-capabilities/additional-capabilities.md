@@ -31,7 +31,7 @@ platform. They want to keep pushing the limits of their platform and implement s
 this growth, they will need to expand their team, infrastructure, and systems. They continue exploring the Getting
 Started section to learn how they can grow with Palette and have a long-term relationship with Spectro Cloud.
 
-> "Wouldn’t bringing some astronomy into everyone's home be great?" says Anya, Lead Astrophycist, who has always the
+> "Wouldn’t bringing some astronomy into everyone's home be great?" says Anya, Lead Astrophysicist, who has always the
 > dreamer of the team. "I wonder how we could make that possible."
 >
 > Kai is in charge of scaling the Spacetastic platform. "That would be a great dream and a challenge for us, Anya." they

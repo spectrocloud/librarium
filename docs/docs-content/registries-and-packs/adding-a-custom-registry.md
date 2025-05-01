@@ -21,7 +21,7 @@ registry server periodically.
 
 - Ensure you have a Docker container runtime Docker to be installed on the machine.
 
-- The HTTP utility _htpasswd_ is required to be installed for user authentication encryption.
+- The HTTP utility `htpasswd` is required to be installed for user authentication encryption.
 
 - The minimum machine compute specifications are 1 vCPU and 2 GB Memory.
 
@@ -45,8 +45,12 @@ server using the designated Docker image and a TLS certificate issued by [Let's 
 
 <br />
 
+<<<<<<< HEAD
 1. Create a folder that contains an httppasswd file.
    <br />
+=======
+1. Create a folder that contains an `httppasswd` file. <br />
+>>>>>>> 9ccfbfac4 (docs: fix more spelling mistakes DOC-1746 (#6613))
 
 ```bash
 mkdir spectropaxconfig
@@ -59,11 +63,14 @@ mkdir spectropaxconfig
 htpasswd -Bbn admin "yourPasswordHere" > spectropaxconfig/htpasswd-basic
 ```
 
-3. Create a pax registry configuration file titled **myconfig.yml** in the **spectropaxconfig** directory. The YAML code
-   block below displays the sample content for the **myconfig.yml** file. The current example assumes that your pack
+3. Create a pax registry configuration file titled `myconfig.yml` in the `spectropaxconfig` directory. The YAML code
+   block below displays the sample content for the `myconfig.yml` file. The current example assumes that your pack
    registry server will be hosted at `yourhost.companydomain.com` and the email id for notifications is
    `you@companydomain.com`. Replace the `host` and `email` attribute values as applicable to you.
+<<<<<<< HEAD
    <br />
+=======
+>>>>>>> 9ccfbfac4 (docs: fix more spelling mistakes DOC-1746 (#6613))
 
 ```yaml
 version: 0.1
