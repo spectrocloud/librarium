@@ -101,7 +101,8 @@ Installer configuration file and the OS pack support the usage of cloud-init sta
    OS_VERSION=22
    ```
 
-5. Refer to [Edge Artifact Build Configurations](./palette-canvos/arg.md) for
+5. Refer to [Edge Artifact Build Configurations](./palette-canvos/arg.md) for a comprehensive list of arguments you can
+   use
 
 ### Prepare User Data
 
