@@ -103,7 +103,7 @@ name, for example `cdi-uploadproxy.mycompany.io`, to the Nginx load balancer’s
    The following command uses the `gcr.io/spectro-images-public/release/vmo-jh:v4.5.0` image to create a VM that
    contains all the prerequisites required for the import and deployment process.
 
-   Alternatively, you skip VM creation and use any VM that has the following tools installed.
+   Alternatively, you can skip the VM creation and use any VM that has the following tools installed.
 
    - [Docker](https://docs.docker.com/engine/install/)
    - [`virtctl`](https://kubevirt.io/user-guide/user_workloads/virtctl_client_tool/)
