@@ -135,10 +135,10 @@ key that is in the Signature Database (DB). This is important both during instal
    | `OS_DISTRIBUTION`  | OS distribution.                                                                                      | `ubuntu`, `opensuse-leap`, `rhel`.   |
    | `OS_VERSION`       | OS version. This applies to Ubuntu only.                                                              | `23.10`, `24.04`                     |
 
-10. Open the **k8s_versions.json** file in the CanvOS directory. Remove the Kubernetes versions that you don't need from
+10. Open the **k8s_version.json** file in the CanvOS directory. Remove the Kubernetes versions that you don't need from
     the JSON object corresponding to your Kubernetes distribution.
 
-    If you are using a tag that is earlier than v4.4.12, the **k8s_versions.json** file does not exist in those tags.
+    If you are using a tag that is earlier than v4.4.12, the **k8s_version.json** file does not exist in those tags.
     Instead, open the **Earthfile** in the CanvOS directory. Under `build-provider-images`, remove the lines containing
     Kubernetes versions that you do not need.
 
