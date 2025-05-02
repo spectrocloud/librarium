@@ -11,130 +11,186 @@ category: ["tutorial"]
 
 # Introduction to Palette Virtual Machine Orchestrator
 
-
-Palette Virtual Machine Orchestrator (VMO) provides a unified platform for deploying, managing, and scaling Virtual
-Machines (VMs) and containerized applications within Kubernetes clusters. Palette VMO supports deployment to edge
-devices and bare metal servers in data centers.
-
-
-Palette VMO simplifies infrastructure management, improves resource utilization, and eliminates hypervisor costs.
-
+In this tutorial you will deploy a VM using Palette Virtual Machine Orchestrator (VMO). You will learn about the components that make up VMO, how to create and customize them for a Canonical MAAS VMO cluster deployment, and how to customize and deploy a VM. 
 
 We recommend reviewing the [VMO architecture](/vm-management/architecture.md) page before starting this tutorial. The
-architecture page provides describes what VMO is, the components it uses, and provides links to othe detailed
+architecture page describes what VMO is, a high level view of the components it uses, and provides links to more detailed
 information.
-
-
-## Use Cases
-
-
-You will benefit from Palette VMO in the following cases:
-
-
-You are planning to gradually shift from VMs to containers and want to continue using both during the transition.
-
-
-Your established infrastructure combines containers and VMs, and you want to manage them more effectively.
-
-
-You are integrating new VM-based applications into an existing containerized infrastructure.
-
-
-You are managing edge locations with VM-based workloads and would like to stop using a hypervisor.
 
 
 ## Prerequisites
 
-
 - A Palette account with tenant admin access.
 
-
 - MAAS datacenter environment
-
 
  - Two MAAS machines with a minimum spec of
    - 8 CPU
    - 32 GB RAM
    - 250 GB Storage (Worker node must have 2 disks)
 
+- Two routable, static IP addresses from your MAAS environment
 
 - A MAAS user with necessary permissions
 
-
- - _ADD PERMISSIONS HERE_
-
+  - _ADD PERMISSIONS HERE_
 
 - An existing [MAAS Private Cloud Gateway (PCG)](/clusters/pcg/deploy-pcg/maas.md)
 
-
 - Basic knowledge of containers
-
 
 - [kubectl](https://kubernetes.io/docs/tasks/tools/) installed locally
 
-
 - [virtctl](https://kubevirt.io/user-guide/user_workloads/virtctl_client_tool/) installed locally
+<br/>
+<br/>
+
+## Create a VMO Cluster Profile
+This section will review the packs used to create a VMO Cluster in a MAAS environment. You will learn what the packs are and how they work together to provide VMO services. You will be introduced to the Terraform deployment process and will customize the provided template to prepare for deployment in your MAAS environment.
+<br/>
+
+### Packs Used
+
+| **Pack Name**                    | **Description**                   | **ReadMe Link**                                                           |
+| -------------------------------- | --------------------------------- | ------------------------------------------------------------------------- |
+| **Virtual Machine Orchestrator**  | The Palette Virtual Machine Orchestrator (VMO) pack consolidates all components that you need to deploy and manage Virtual Machines (VMs) alongside containers in a Kubernetes host cluster. You can deploy VMO as an add-on cluster profile on top of an existing data center or edge cluster. | <VersionedLink text="Virtual Machine Orchestrator Readme" url="/integrations/packs/?pack=virtual-machine-orchestrator&version=4.6.3"/> |
+| **MetalLB (Helm)**  | A load-balancer implementation for bare metal Kubernetes clusters, using standard routing protocols. Offers a network load balancer implementation that integrates with standard network equipment. | <VersionedLink text="Cilium Readme" url="/integrations/packs/?pack=lb-metallb-helm&version=1.14.9"/> |
+| **Rook-Ceph (Helm)**  | **Rook** is an open source cloud-native storage orchestrator for Kubernetes, providing the platform, framework, and support for Ceph storage to natively integrate with Kubernetes. **Ceph** is a distributed storage system that provides file, block and object storage and is deployed in large scale production clusters. | <VersionedLink text="Cilium Readme" url="/integrations/packs/?pack=csi-rook-ceph-helm&version=1.16.3"/> |
+| **Cilium**    | Cilium is a networking, observability, and security solution with an eBPF-based dataplane. It provides a simple flat Layer 3 network with the ability to span multiple clusters in either a native routing or overlay mode. It is L7-protocol aware and can enforce network policies on L3-L7 using an identity based security model that is decoupled from network addressing.   | <VersionedLink text="Cilium Readme" url="/integrations/packs/?pack=cni-cilium-oss&version=1.17.1"/> |
+| **Palette eXtended Kubernetes**  | Palette eXtended Kubernetes (PXK) is a recompiled version of the open-source Cloud Native Computing Foundation (CNCF) distribution of Kubernetes. This Kubernetes version can be deployed through Palette to all major infrastructure providers, public cloud providers, and private data center providers. This is the default distribution when deploying a Kubernetes cluster through Palette | <VersionedLink text="Palette eXtended Kubernetes Readme" url="/integrations/packs/?pack=kubernetes&version=1.32.2"/> |
+| **Ubuntu Mass**                  | Ubuntu is a free, open-source operating system (OS) based on Linux that can be used on desktops, servers, in the cloud, and for IoT devices. Ubuntu is a Linux distribution derived from Debian.| <VersionedLink text="Ubuntu Readme" url="/integrations/packs/?pack=kubernetes&version=1.32.2"/> |
+<br/>
+
+### Core Terraform Files
+In this section you will learn about the purpose of the core files, how to customize them, and how they all work together to deploy your VMO cluster. The core Terraform files in the tutorial bundle will be used to explain how it works. Navigate to the Terraform tutorial bundle you downloaded. Extract the package and navigate to the root folder before continuing.
+
+#### provider.tf
+Terraform uses this file to import providers so they can be used locally to apply your configuration. This is very similar to how you would import a module for use in software development.
+
+In this example, you are telling terraform to import the list of providers from the public Terraform registry. Companies that require high security, pulling a provider from a public registry may be forbidden. This provider can be pulled to and served from private registry hosted by your company. This will allow you to continue to use the terraform provider while leveraging the enhanced security features of your private registry.
+
+```yaml
+terraform {
+  required_providers {
+    spectrocloud = {
+      version = ">= 0.22.2"
+      source  = "spectrocloud/spectrocloud"
+    }
+
+    tls = {
+      source  = "hashicorp/tls"
+      version = "4.0.4"
+    }
+
+    local = {
+      source  = "hashicorp/local"
+      version = "2.4.1"
+    }
+  }
+
+  required_version = ">= 1.9"
+}
+```
+
+#### cluster_profiles.tf
+This file creates the cluster profile you will use to build your VMO cluster. Each pack to be included in the profile is listed along with information to identify it in Palette. This file does not contain actual values for the **name**, **tag**, and **id** fields. These are looked up from the **data.tf** file. To obtain the values, visit the [packs](/integrations) page and search for the pack.
+
+In this example, you are creating a new Cluster Profile named "tf-maas-vmo-profile" and using the MetalLB pack from your target registry.
+```yaml
+resource "spectrocloud_cluster_profile" "maas-vmo-profile" {
+  count = var.deploy-maas ? 1 : 0
+
+  name        = "tf-maas-vmo-profile"                       # The profile name that will display in Palette.
+  description = "A basic cluster profile for MAAS VMO"      # The description of the profile that will display in Palette.
+  tags        = concat(var.tags, ["env:maas"])              # Tags that you want applied can be added as key value pairs in between the square brackets.
+  cloud       = "maas"                                      # The type of infrastructure you are using. Other values could be "GCP", "Azure", "AWS".
+  type        = "cluster"                                   # The type of profile you are creating. Other values could be "Infrastructure" or "App"
+  version     = "1.0.0"                                     # The version number you want to assign to the profile.
+
+  pack {                                                    # This pack is configured to retrieve information from a data source. See the data.tf section for more information.
+    name = data.spectrocloud_pack.maas_metallb.name
+    tag  = data.spectrocloud_pack.maas_metallb.version
+    uid  = data.spectrocloud_pack.maas_metallb.id
+    values = templatefile("manifests/metallb-values.yaml")  # This tells Terraform where the manifest to be applied is located. See the manifests section for more information.
+    type = "spectro"
+  }
+}
+```
 
 
-## Deploy a VMO Cluster
+#### data.tf
+The data.tf file in Terraform is used to look up information from data sources. In this tutorial, the data blocks are used to connect to the Palette registry and obtain the Palette_UID for the packs you are using.
 
+In this example, you need to obtain the id of the pack you want to use. To do this, you create a data block to call the Terraform provider and resource you need the info from. You need to provide some information about the pack so Palette can correctly identify the correct pack and version.
+```yaml
+data "spectrocloud_pack" "maas_ubuntu" {                          # Tells Terraform to use the "spectrocloud_pack" resource and look in the Palette registry for one named "maas_ubuntu"
+  name         = "ubuntu-maas"                                    # The name of the Palette pack.
+  version      = "22.04"                                          # The version of the Palette pack.
+  registry_uid = data.spectrocloud_registry.public_registry.id    # The information you need about the pack.
+}
+```
 
-This section demonstrates how to create a Virtual Machine Orchestrator (VMO) cluster using cluster profiles.
+#### Manifests
+Manifests are used to customize a pack's configuration. Some packs, like OS, Load Balancers, and more require information specific to your environment. When using terraform, the location of the manifest file for a pack must be specified as shown in the **cluster_profiles.tf** file. If a manifest is not provided, default values will be applied.
 
+In this example, the MetalLB load balancer pack needs IP Addresses defined to work properly. You need to update the IP addresses before deployment and would use a manifest to do so.
 
-### Create a VMO Profile
+```yaml
+charts:
+  metallb-full:
+    configuration:
+      ipaddresspools:
+        first-pool:
+          spec:
+            addresses:
+              - 192.168.10.0-192.168.10.10    # These IP addresses would need to be updated to reflect your environment.
+            avoidBuggyIPs: true
+            autoAssign: true
+      l2advertisements:
+        default:
+          spec:
+            ipAddressPools:
+              - first-pool
+```
 
+#### 
+### Customize the Deployment Package
 
-Download the pre-made cluster profile _here_ LINK REQUIRED. The file is in JSON format and contains a fully configured
-cluster profile, ready to deploy your VMO cluster.
+<br/>
+<br/>
 
+## Deploy a VMO Cluster to MAAS
 
-THe pre-made profile
+<br/>
 
+### Build the Cluster
 
-Import the cluster profile into your Palette instance:
-
-
-1. Download the **vmo-cluster-profile.json** file from the **Deploy VMO Cluster**
-  [Spectro Cloud Tutorials Repo](https://github.com/spectrocloud/tutorials).
-
-
-2. Log into your Palette instance.
-
-
-3. Select **Profiles** from the left main Menu.
-
-
-![Image showing the **Import Cluster Profile** button](/tutorials/deploy-vmo-cluster/1-tutorials_deploy-vmo-cluster_vmo-maas-tf_vmo-import-cluster-profile.webp)
-
-
-4. Select **Upload file**
-
-
-5. Navigate to the folder containing the **vmo-cluster-profile.json** you downloaded. Select it, then select **Open**.
-
-
-6. The json configuration values displays the values and customizations for each of the core packs required for VMO. You
-  may review the default values for the packs aif you wish. You will be customizing the configurations for your
-  environment in subsequent steps. Select **Validate**.
-
-
-![Image showing the **Validate** button](/tutorials/deploy-vmo-cluster/2-tutorials_deploy-vmo-cluster_vmo-maas-tf_validate-import.webp)
-
-
-7. If prompted to select repositories for one or more packs, select **Public Repo**. Select **Confirm**.
-
-
-### Deploy a VMO Cluster to MAAS
-
-1. 
-
+<br/>
 
 ### RBAC Configuration
 
+<br/>
 
-## Create a Virtual Machine
+### Verify the Deployment
 
+<br/>
+<br/>
+
+## Deploy a Virtual Machine
+
+<br/>
+
+### Core Terraform Files
+
+<br/>
+
+### Customize the VM
+
+<br/>
+
+### Deploy the VM
+
+<br/>
 
 ### Verify the Application
 

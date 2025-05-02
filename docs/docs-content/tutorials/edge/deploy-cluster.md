@@ -1,5 +1,5 @@
 ---
-sidebar_position: 0
+sidebar_position: 10
 sidebar_label: "Deploy an Edge Cluster on VMware"
 title: "Deploy an Edge Cluster on VMware"
 description:
