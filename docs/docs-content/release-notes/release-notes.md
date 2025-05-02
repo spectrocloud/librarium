@@ -27,7 +27,9 @@ tags: ["release-notes"]
 - Fixed an issue that caused pack downloads with a double hyphen (`--`) in the label prefix to fail.
 - Fixed an issue that caused pack downloads to fail if the pack registry endpoint contained a port.
 - Fixed a UI discrepancy between the **Last Modified** timestamp on the cluster list and the cluster **Overview** tab.
-- Fixed an issue where [Edge cluster](../clusters/edge/edge.md) deployment failed when a certificate for a [private provider registry](../clusters/edge/site-deployment/deploy-custom-registries/deploy-private-registry.md) was included in the cluster profile.
+- Fixed an issue where [Edge cluster](../clusters/edge/edge.md) deployment failed when a certificate for a
+  [private provider registry](../clusters/edge/site-deployment/deploy-custom-registries/deploy-private-registry.md) was
+  included in the cluster profile.
 
 ### Improvements
 
