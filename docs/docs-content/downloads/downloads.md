@@ -10,7 +10,7 @@ pagination_next: null
 tags: ["downloads"]
 ---
 
-Explore our downloads section to discover the latest and specific versions of accompanying software for Palette.
+Explore our downloads section to discover the latest and specific versions of support tools and utilities for Palette.
 
 <!-- vale off -->
 
@@ -19,7 +19,7 @@ Explore our downloads section to discover the latest and specific versions of ac
   cards={[
     {
       title: "CLI Tools",
-      description: "Download the CLI Tools related to Palette and Spectro Cloud.",
+      description: "Download the Palette and Spectro Cloud CLI Tools.",
       buttonText: "Learn more",
       url: "/downloads/cli-tools",
     },

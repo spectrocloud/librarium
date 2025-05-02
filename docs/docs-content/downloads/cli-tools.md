@@ -16,7 +16,7 @@ programmatically. The Palette Edge CLI focuses specifically on Edge computing sc
 broader platform management. Refer to the [Palette CLI documentation](../automation/palette-cli/palette-cli.md) for
 guidance on installing and using the Palette CLI and Palette Edge CLI.
 
-The Spectro CLI tool is a command-line interface to interact with a Palette registry server. You can use the CLI to
+The Spectro CLI tool is a command-line interface to interact with a Palette legacy registry server. You can use the CLI to
 upload or download packs and perform other operations. Refer to the
 [Spectro Cloud CLI Tool documentation](../registries-and-packs/spectro-cli-reference.md) for guidance on installing and
 using the Spectro Cloud CLI tool.

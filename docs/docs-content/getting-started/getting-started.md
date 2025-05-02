@@ -96,7 +96,7 @@ Explore more through the following pages.
 
 :::tip
 
-You can also explore our [downloads section](../downloads/downloads.md) to discover the latest and specific versions of
+You can also explore our [Downloads](../downloads/downloads.md) section to discover the latest and specific versions of
 accompanying software for Palette.
 
 :::
