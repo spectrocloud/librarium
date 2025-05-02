@@ -11,11 +11,11 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## May 1, 2025 - Release 4.6.24
+## May 2, 2025 - Release 4.6.24
 
 ### Bug Fixes
 
-- Fixed an issue that caused [edge hosts](../clusters/edge/edge.md) to reboot continuously after a cluster deletion and
+- Fixed an issue that caused [Edge hosts](../clusters/edge/edge.md) to reboot continuously after a cluster deletion and
   completed [reset](../clusters/edge/local-ui/host-management/reset-reboot.md#reset-edge-host).
 - Fixed an issue where Kubernetes version upgrades initiated through [Local UI](../clusters/edge/local-ui/local-ui.md)
   failed for [Edge](../clusters/edge/edge.md) clusters containing the `harbor-edge-native-config` pack.
@@ -27,6 +27,7 @@ tags: ["release-notes"]
 - Fixed an issue that caused pack downloads with a double hyphen (`--`) in the label prefix to fail.
 - Fixed an issue that caused pack downloads to fail if the pack registry endpoint contained a port.
 - Fixed a UI discrepancy between the **Last Modified** timestamp on the cluster list and the cluster **Overview** tab.
+- Fixed an issue where [Edge cluster](../clusters/edge/edge.md) deployment failed when a certificate for a [private provider registry](../clusters/edge/site-deployment/deploy-custom-registries/deploy-private-registry.md) was included in the cluster profile.
 
 ### Improvements
 
