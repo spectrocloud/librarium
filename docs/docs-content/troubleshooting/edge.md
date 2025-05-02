@@ -156,7 +156,7 @@ issues or not being available. Use the following steps to troubleshoot and resol
 
 ### Debug Steps
 
-1. Ensure you can access the Kubenetes cluster using kubectl. For more information, refer to
+1. Ensure you can access the Kubernetes cluster using kubectl. For more information, refer to
    [Access Cluster with CLI](../clusters/cluster-management/palette-webctl.md).
 
 2. Open up a terminal session and issue the following command to check the status of the

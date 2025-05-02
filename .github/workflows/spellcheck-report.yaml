@@ -1,0 +1,131 @@
+# This workflow runs the set of core vale checks on the entire repo.
+# The workflow runs every Monday at 8 am UTC.
+# This workflow supports on-demand execution using the workflow_dispatch event.
+
+name: Spellcheck Entire Librarium
+on:
+  schedule:
+    # Every Monday at 8AM UTC
+    - cron: '0 8 * * 1'
+  workflow_dispatch:
+
+concurrency:
+  group: spellcheck-${{ github.ref }}
+  cancel-in-progress: true
+ 
+
+jobs:
+  spellcheck_librarium:
+    name: Spellcheck Entire Librarium
+    runs-on: ubuntu-latest
+
+    steps:
+      
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Install Vale
+        run: |
+          # Detect architecture
+          arch=$(uname -m)
+          echo "Detected architecture: $arch"
+          if [ "$arch" = "x86_64" ]; then
+            arch="Linux_64-bit"
+          elif [ "$arch" = "aarch64" ]; then
+            arch="Linux_arm64"
+          else
+            echo "Unsupported architecture: $arch"
+            exit 1
+          fi
+
+          # Download the latest Vale release for the detected architecture
+          latest_version=$(curl -s https://api.github.com/repos/errata-ai/vale/releases/latest | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
+          wget https://github.com/errata-ai/vale/releases/download/$latest_version/vale_${latest_version:1}_$arch.tar.gz -O vale.tar.gz
+
+          # Extract the binary
+          tar -xzf vale.tar.gz
+          mv vale /usr/local/bin/vale
+
+          # Verify installation
+          vale --version
+
+      - name: Configure Vale
+        run: |
+          # Copy contents from vale-spellcheck.ini to .vale.ini
+          cp vale-spellcheck.ini .vale.ini
+          vale sync
+
+      - name: Run Spellcheck
+        run: |
+          # Run Vale on all markdown files in the docs directory and all mdx files in _partials
+          find docs/docs-content _partials -type f \( -name '*.md' -o -name '*.mdx' \) \
+            ! -iname '*cve*' \
+            ! -path 'docs/docs-content/security-bulletins/*' \
+            ! -path 'docs/docs-content/security-bulletins/**/*' \
+            | xargs vale --output line --no-exit > vale-spellcheck-results-unfiltered.txt
+          # Remove all lines contained in vale-spellcheck-ignore.txt using inverted matches -v.
+          # Add || true to prevent the job from failing if no lines are found after filtering.
+          grep -vFf vale-spellcheck-ignore.txt vale-spellcheck-results-unfiltered.txt > vale-spellcheck-results.txt || true
+
+
+      - name: Check Vale Results
+        run: |
+          # Check if the Vale output contains any errors. 
+          # It will output "0 errors" if no errors are found or be empty if all errors are ignored.           
+          if [ ! -s vale-spellcheck-results.txt ] || grep -q "0 errors" vale-spellcheck-results.txt; then
+            echo "✅ No spellcheck errors found."
+            echo "VALE_ERRORS_FOUND=false" >> $GITHUB_ENV
+          else
+            echo "❌ Spellcheck errors found."
+            echo "VALE_ERRORS_FOUND=true" >> $GITHUB_ENV
+          fi
+
+      - name: Upload Vale Results
+        if: ${{ env.VALE_ERRORS_FOUND == 'true'}}
+        uses: actions/upload-artifact@v4
+        with:
+          name: "vale-spellcheck-results"
+          path: vale-spellcheck-results.txt
+          if-no-files-found: error
+          retention-days: 7
+      
+      - name: Clean up reports
+        run: |
+          # Remove the vale-spellcheck-results.txt file
+          rm -f vale-spellcheck-results.txt  vale-spellcheck-results-unfiltered.txt
+
+      - name: Slack Notification No Vale Errors
+        if: ${{ env.VALE_ERRORS_FOUND == 'false'}}
+        uses: rtCamp/action-slack-notify@v2.3.2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
+          SLACK_USERNAME: "spectromate"
+          SLACK_ICON_EMOJI: ":ok_hand:"
+          SLACK_COLOR: ${{ job.status }}
+          SLACKIFY_MARKDOWN: true
+          ENABLE_ESCAPES: true
+          SLACK_MESSAGE: '✅ No spellcheck errors found in librarium. Good job!'
+      
+      - name: Slack Notification Vale Errors
+        if: ${{ env.VALE_ERRORS_FOUND == 'true'}}
+        uses: rtCamp/action-slack-notify@v2.3.2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
+          SLACK_USERNAME: "spectromate"
+          SLACK_ICON_EMOJI: ":ok_hand:"
+          SLACK_COLOR: ${{ job.status }}
+          SLACKIFY_MARKDOWN: true
+          ENABLE_ESCAPES: true
+          SLACK_MESSAGE: "❌ Spellcheck errors found. Download the report using `gh run download ${{ github.run_id }} -n vale-spellcheck-results`."
+
+      - name: Failure Slack Notification
+        if: ${{ failure() }}
+        uses: rtCamp/action-slack-notify@v2.3.2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
+          SLACK_COLOR: ${{ job.status }}
+          SLACKIFY_MARKDOWN: true
+          ENABLE_ESCAPES: true
+          SLACK_MESSAGE: 'The spellcheck-report job in `${{ github.repository }}` failed. [View details](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}).'

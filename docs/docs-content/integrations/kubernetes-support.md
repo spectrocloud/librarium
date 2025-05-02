@@ -58,7 +58,7 @@ We support other Kubernetes distributions such as K3s, Microk8s, and RKE2 until 
 the respective owner. Once we stop supporting the minor version, we initiate the deprecation process. You can learn more
 about our deprecation process in the [Pack Deprecation](./maintenance-policy.md#pack-deprecations) section.
 
-![Diagram of other Kubernetes Support Lifecycle. Other distros are supported until their EOL. After that, normal deprecation flow is initiated.](/integrations_kubernetes-support_support-cycle_other.webp)
+![Diagram of other Kubernetes Support Lifecycle. Other distributions are supported until their EOL. After that, normal deprecation flow is initiated.](/integrations_kubernetes-support_support-cycle_other.webp)
 
 ## Kubernetes Upgrades
 
