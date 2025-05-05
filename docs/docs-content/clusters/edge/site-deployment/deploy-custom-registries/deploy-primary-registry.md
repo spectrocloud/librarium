@@ -19,8 +19,8 @@ a primary registry for increased reliability and reduced bandwidth usage.
 When your Edge cluster is created for the first time, all images in the `pack.content.images` field in each layer of the
 profile loaded from the content bundle or external registries are stored locally in the primary registry. Subsequent
 image pulls from the cluster are made to the primary registry. This allows your Edge cluster to reboot containers or add
-new nodes without being connected to the external network and reduce bandwidth usage. If any image cannot be found in
-the primary registry, the Palette agent will then attempt to pull the images from the internet.
+new nodes using the content cached in the in-cluster registry. If any image cannot be found in the primary registry, the
+Palette agent will then attempt to pull the images from the internet.
 
 ![Diagram of how the primary registry works in a cluster](/clusters_edge_registries_primary-registry.webp)
 
