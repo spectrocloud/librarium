@@ -102,7 +102,7 @@ resource "spectrocloud_cluster_profile" "maas-vmo-profile" {
 
   name        = "tf-maas-vmo-profile"                       # The profile name that will display in Palette.
   description = "A basic cluster profile for MAAS VMO"      # The description of the profile that will display in Palette.
-  tags        = concat(var.tags, ["env:maas"])              # Tags that you want applied can be added as key value pairs in between the square brackets.
+  tags        = concat(var.tags, ["env:maas"])              # Tags to be applied can be added as key value pairs in between the square brackets.
   cloud       = "maas"                                      # The type of infrastructure you are using. Other values could be "GCP", "Azure", "AWS".
   type        = "cluster"                                   # The type of profile you are creating. Other values could be "Infrastructure" or "App"
   version     = "1.0.0"                                     # The version number you want to assign to the profile.
@@ -130,8 +130,37 @@ data "spectrocloud_pack" "maas_ubuntu" {                          # Tells Terraf
 }
 ```
 
+#### terraform.tfvars
+This file allows you to set values to be used for your variables. When properly configured, this is the only file you should need to modify to complete your deployments.
+
+```yaml
+#####################
+# Palette Settings
+#####################
+palette-project = "Default" # The name of your project in Palette.
+
+############################
+# MAAS Deployment Settings
+############################
+deploy-maas    = false # Set to true to deploy to MAAS.
+deploy-maas-vm = false # Set to true to create a VM on MAAS cluster once deployed.
+
+pcg-name    = "REPLACE ME" # Provide the name of the PCG that will be used to deploy the Palette cluster.
+maas-domain = "REPLACE ME" # Provide the MAAS domain that will be used to deploy the Palette cluster.
+
+maas-worker-nodes         = 1              # Provide the number of worker nodes that will be used for the Palette cluster.
+maas-worker-resource-pool = "REPLACE ME"   # Provide a resource pool for the worker nodes.
+maas-worker-azs           = ["REPLACE ME"] # Provide a set of availability zones for the worker nodes.
+maas-worker-node-tags     = ["REPLACE ME"] # Provide a set of node tags for the worker nodes.
+
+maas-control-plane-nodes         = 1              # Provide the number of control plane nodes that will be used for the Palette cluster.
+maas-control-plane-resource-pool = "REPLACE ME"   # Provide a resource pool for the control plane nodes.
+maas-control-plane-azs           = ["REPLACE ME"] # Provide a set of availability zones for the control plane nodes.
+maas-control-plane-node-tags     = ["REPLACE ME"] # Provide a set of node tags for the control plane nodes.
+```
+
 #### Manifests
-Manifests are used to customize a pack's configuration. Some packs, like OS, Load Balancers, and more require information specific to your environment. When using terraform, the location of the manifest file for a pack must be specified as shown in the **cluster_profiles.tf** file. If a manifest is not provided, default values will be applied.
+Manifests are used to customize a pack's configuration. Some packs, like OS, Load Balancers, and more, require information specific to your environment. When using terraform, the location of the manifest file for a pack must be specified as shown in the **cluster_profiles.tf** file. If a manifest is not provided, default values will be applied.
 
 In this example, the MetalLB load balancer pack needs IP Addresses defined to work properly. You need to update the IP addresses before deployment and would use a manifest to do so.
 
