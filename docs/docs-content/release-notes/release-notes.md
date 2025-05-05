@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## May 2, 2025 - Release 4.6.24
+## May 5, 2025 - Release 4.6.24
 
 ### Bug Fixes
 
