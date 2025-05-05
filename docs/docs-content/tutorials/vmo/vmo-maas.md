@@ -42,14 +42,15 @@ information.
 - [kubectl](https://kubernetes.io/docs/tasks/tools/) installed locally
 
 - [virtctl](https://kubevirt.io/user-guide/user_workloads/virtctl_client_tool/) installed locally
+
+- Downloaded copy of the Terraform [tutorial code](link here)
 <br/>
 <br/>
 
-## Create a VMO Cluster Profile
+## VMO Packs
+
 This section will review the packs used to create a VMO Cluster in a MAAS environment. You will learn what the packs are and how they work together to provide VMO services. You will be introduced to the Terraform deployment process and will customize the provided template to prepare for deployment in your MAAS environment.
-<br/>
 
-### Packs Used
 
 | **Pack Name**                    | **Description**                   | **ReadMe Link**                                                           |
 | -------------------------------- | --------------------------------- | ------------------------------------------------------------------------- |
@@ -61,13 +62,17 @@ This section will review the packs used to create a VMO Cluster in a MAAS enviro
 | **Ubuntu Mass**                  | Ubuntu is a free, open-source operating system (OS) based on Linux that can be used on desktops, servers, in the cloud, and for IoT devices. Ubuntu is a Linux distribution derived from Debian.| <VersionedLink text="Ubuntu Readme" url="/integrations/packs/?pack=kubernetes&version=1.32.2"/> |
 <br/>
 
-### Core Terraform Files
+## Customizing the Terraform Template
+
 In this section you will learn about the purpose of the core files, how to customize them, and how they all work together to deploy your VMO cluster. The core Terraform files in the tutorial bundle will be used to explain how it works. Navigate to the Terraform tutorial bundle you downloaded. Extract the package and navigate to the root folder before continuing.
 
-#### provider.tf
+---
+
+### provider.tf
+
 Terraform uses this file to import providers so they can be used locally to apply your configuration. This is very similar to how you would import a module for use in software development.
 
-In this example, you are telling terraform to import the list of providers from the public Terraform registry. Companies that require high security, pulling a provider from a public registry may be forbidden. This provider can be pulled to and served from private registry hosted by your company. This will allow you to continue to use the terraform provider while leveraging the enhanced security features of your private registry.
+In this example, a list of providers from the public Terraform registry that will be imported and used. Companies that require high security may restrict the use of public repositories and registries. This provider can be pulled to and served from a private registry hosted by your company. This will allow you to continue to use the terraform provider while leveraging the enhanced security features of your private registry.
 
 ```yaml
 terraform {
@@ -92,7 +97,26 @@ terraform {
 }
 ```
 
-#### cluster_profiles.tf
+---
+
+### data.tf
+
+The data.tf file in Terraform is used to look up information from data sources. In this tutorial, the data blocks are used to connect to the Palette registry and obtain the Palette_UID for the packs you are using.
+
+In this example, you need to obtain the id of the pack you want to use. To do this, you create a data block to call the Terraform provider and resource you need the info from. In the example., the name and version of the ubuntu OS pack is sent to Palette, which will use them to identify the correct pack and return its UID.
+
+```yaml
+data "spectrocloud_pack" "maas_ubuntu" {                          # Tells Terraform to use the "spectrocloud_pack" resource and look in the Palette registry for one named "maas_ubuntu"
+  name         = "ubuntu-maas"                                    # The name of the Palette pack.
+  version      = "22.04"                                          # The version of the Palette pack.
+  registry_uid = data.spectrocloud_registry.public_registry.id    # The information you need about the pack.
+}
+```
+
+---
+
+### cluster_profiles.tf
+
 This file creates the cluster profile you will use to build your VMO cluster. Each pack to be included in the profile is listed along with information to identify it in Palette. This file does not contain actual values for the **name**, **tag**, and **id** fields. These are looked up from the **data.tf** file. To obtain the values, visit the [packs](/integrations) page and search for the pack.
 
 In this example, you are creating a new Cluster Profile named "tf-maas-vmo-profile" and using the MetalLB pack from your target registry.
@@ -117,52 +141,66 @@ resource "spectrocloud_cluster_profile" "maas-vmo-profile" {
 }
 ```
 
+---
 
-#### data.tf
-The data.tf file in Terraform is used to look up information from data sources. In this tutorial, the data blocks are used to connect to the Palette registry and obtain the Palette_UID for the packs you are using.
+### terraform.tfvars
 
-In this example, you need to obtain the id of the pack you want to use. To do this, you create a data block to call the Terraform provider and resource you need the info from. You need to provide some information about the pack so Palette can correctly identify the correct pack and version.
-```yaml
-data "spectrocloud_pack" "maas_ubuntu" {                          # Tells Terraform to use the "spectrocloud_pack" resource and look in the Palette registry for one named "maas_ubuntu"
-  name         = "ubuntu-maas"                                    # The name of the Palette pack.
-  version      = "22.04"                                          # The version of the Palette pack.
-  registry_uid = data.spectrocloud_registry.public_registry.id    # The information you need about the pack.
-}
-```
+This file allows you to set values to be used for your variables in one place. We recommend using the *terraform.tfvars* file whenever possible as it help reduce human error and will make updating and reusing your Terraform scripts more efficient. 
 
-#### terraform.tfvars
-This file allows you to set values to be used for your variables. When properly configured, this is the only file you should need to modify to complete your deployments.
+All values in the terraform.tfvars file should be updated to reflect your environment.
 
-```yaml
-#####################
-# Palette Settings
-#####################
-palette-project = "Default" # The name of your project in Palette.
+General Palette Configuration Values
 
-############################
-# MAAS Deployment Settings
-############################
-deploy-maas    = false # Set to true to deploy to MAAS.
-deploy-maas-vm = false # Set to true to create a VM on MAAS cluster once deployed.
+| **Value**                            | **Data Type**  |**Instruction**                   |
+|--------------------------------------|----------------|----------------------------------|
+| **palette-project** | *string* | Set this value to the name of your project in Palette. <br/> <br/> Value must be inside "quotes". |
 
-pcg-name    = "REPLACE ME" # Provide the name of the PCG that will be used to deploy the Palette cluster.
-maas-domain = "REPLACE ME" # Provide the MAAS domain that will be used to deploy the Palette cluster.
+---
 
-maas-worker-nodes         = 1              # Provide the number of worker nodes that will be used for the Palette cluster.
-maas-worker-resource-pool = "REPLACE ME"   # Provide a resource pool for the worker nodes.
-maas-worker-azs           = ["REPLACE ME"] # Provide a set of availability zones for the worker nodes.
-maas-worker-node-tags     = ["REPLACE ME"] # Provide a set of node tags for the worker nodes.
+MAAS Configuration Values
 
-maas-control-plane-nodes         = 1              # Provide the number of control plane nodes that will be used for the Palette cluster.
-maas-control-plane-resource-pool = "REPLACE ME"   # Provide a resource pool for the control plane nodes.
-maas-control-plane-azs           = ["REPLACE ME"] # Provide a set of availability zones for the control plane nodes.
-maas-control-plane-node-tags     = ["REPLACE ME"] # Provide a set of node tags for the control plane nodes.
-```
+| **Value**                            | **Data Type**  |**Instruction**                   |
+|--------------------------------------|----------------|----------------------------------|
+| **deploy-maas** | *boolean* | This is a true or false value. If true, a VMO cluster will be deployed to MAAS. |
+| **deploy-maas-vm** | *boolean* | This is a true of false value. If true, an Ubuntu 22.04 VM with the Hello Universe app will be deployed in your VMO cluster |
+| **pcg-name** | *string* | Set this value to the name of your MAAS PCG. This can be pre-existing or one you created in the [MAAS Private Cloud Gateway (PCG)](/clusters/pcg/deploy-pcg/maas.md) tutorial. <br/> <br/> Value must be inside "quotes". |
+| **maas-domain** | *string* | Set this value to the domain your MAAS environment is in. example *spectronaut.com*. <br/> <br/> Value must be inside "quotes". |
 
-#### Manifests
+---
+
+Control Plane Node Configuration Values
+
+| **Value**                            | **Data Type**  |**Instruction**                   |
+|--------------------------------------|----------------|----------------------------------|
+| **maas-control-plane-nodes** | *number* | Set this value to the number of worker nodes you want to create. |
+| **maas-control-plane-resource-pool** | *string* | Set this value to match the MAAS resource pool you want to deploy your worker nodes to. <br/> <br/> Value must be inside "quotes". |
+| **maas-control-plane-azs** | *string* | Set this value to the MAAS availability zones you want your worker nodes deployed to. <br/> <br/> Value must be inside "quotes". |
+| **maas-control-plane-node-tags** | *string* | If you are using tags to target MAAS deployments to specific nodes using tags, enter those tags here. <br/> <br/> Value must be inside "quotes".|
+
+---
+
+Worker Node Configuration Values
+
+| **Value**                            | **Data Type**  |**Instruction**                   |
+|--------------------------------------|----------------|----------------------------------|
+| **maas-worker-nodes** | *number* | Set this value to the number of worker nodes you want to create. |
+| **maas-worker-resource-pool** | *string* | Set this value to match the MAAS resource pool you want to deploy your worker nodes to. <br/> <br/> Value must be inside "quotes". |
+| **maas-worker-azs** | *string* | Set this value to the MAAS availability zones you want your worker nodes deployed to. <br/> <br/> Value must be inside "quotes". |
+| **maas-worker-node-tags** | *string* | If you are using tags to target MAAS deployments to specific nodes, enter those tags here. <br/> <br/> Value must be inside "quotes".|
+
+---
+
+### Manifests
+
 Manifests are used to customize a pack's configuration. Some packs, like OS, Load Balancers, and more, require information specific to your environment. When using terraform, the location of the manifest file for a pack must be specified as shown in the **cluster_profiles.tf** file. If a manifest is not provided, default values will be applied.
 
-In this example, the MetalLB load balancer pack needs IP Addresses defined to work properly. You need to update the IP addresses before deployment and would use a manifest to do so.
+This tutorial requires the MetalLB load balancer pack to have 2 IP Addresses defined. 
+
+Navigate to the **/vmo-cluster/manifests** folder in the Terraform tutorial code folder you downloaded. 
+
+Open the **metallb-values.yaml** file.
+
+Update the IP addresses to reflect your environment and save the changes.
 
 ```yaml
 charts:
@@ -182,14 +220,99 @@ charts:
               - first-pool
 ```
 
-#### 
-### Customize the Deployment Package
+---
 
-<br/>
-<br/>
+### clusters.tf
+
+This file will create your VMO cluster in MAAS. The majority of values in this file are provided via variables you previously set. Line numbers in the table align to the tutorial package 
+
+General Configuration
+
+Values in this section are specific to the overall MAAS VMO cluster that will be built.
+
+| **Line Number** | **Value**                       | **Data Type**  |**Instruction**                   |
+|-----------------|---------------------------------|----------------|----------------------------------|
+| 11 | **name** | *string* | Set this value to the name you want your MAAS VMO cluster to have. Value must be inside "quotes". |
+
+---
+
+Control Plane Node Configuration
+
+Values on these lines are nested in the **vmo-maas-control-planes** machine pool section and will only impact control plane nodes.
+
+| **Line Number** | **Value**                       | **Data Type**  |**Instruction**                   |
+|-----------------|---------------------------------|----------------|----------------------------------|
+| 25 | **name** | *string* | Set this value to the name you want the MAAS Machine Pool to have for control plane nodes. <br/> <br/> Value must be inside "quotes". |
+| 26 | **count** | *number* |Set this value to the number of control plane nodes you want to have. |
+| 27 | **control_plane** | *boolean* | This is true false value. If not provided, the default value is false. Set this to **true** to have Palette create these VMs as your MAAS VMO cluster's control plane nodes. |
+| 31 | **min_cpu** | *number* | Set this value to reflect your desired CPU core count for control plane nodes in your environment.|
+| 32 | **min-memory-mb** | *number* | Set this value to reflect the desired memory allocation for control plane nodes in your environment.|
+
+:::tip
+For non-production environments, lower CPU and Memory resources can be used.
+
+:::
+
+---
+
+Worker Node Configuration
+
+Values on these lines are nested in the **vmo-maas-worker-nodes** machine pool section and will only impact worker nodes.
+
+| **Line Number** | **Value**                       | **Data Type**  |**Instruction**                   |
+|-----------------|---------------------------------|----------------|----------------------------------|
+| 40 | **name** | *string* | Set this value to the name you want the MAAS Machine Pool to have for control plane nodes. Value must be inside "quotes".<br/> <br/> Value must be inside "quotes". |
+| 41 | **count** | *number* |Set this value to the number of control plane nodes you want to have. |
+| 45 | **min_cpu** | *number* | Set this value to reflect your desired CPU core count for control plane nodes in your environment.|
+| 46 | **min-memory-mb** | Set this value to reflect the desired memory allocation for control plane nodes in your environment.|
+
+:::info
+Remember, your worker node must have 2 disks allocated to it.
+:::
+___
+
+### virtual_machines.tf
+
+This file defines the configuration of the VM you will deploy to your MAAS VMO cluster. You will gain a high level understanding of the file structure, what actions are being executed, and how your VM is tied into Kubernetes.
+
+General VM Information
+
+| **Line Number** | **Value**                       | **Data Type**  |**Instruction**                   |
+|-----------------|---------------------------------|----------------|----------------------------------|
+| 12 | **run_on_launch** | *boolean* | If set to true, the deployed VM will be started when the host is powered on. <br/><br/> We recommend this value to be set to **true** for production services. |
+| 13 | **namespace** | *string* |This value defines the namespace your VM will be created in. <br/><br/>These namespaces are standard kubernetes namespaces. Your VM will be impacted by any configurations applied at the namespace level such as network policies and quotas.<br/> <br/> Value must be inside "quotes".|
+| 14| **name** | *string* | The name you wish to assign to your VM. <br/> <br/> Value must be inside "quotes".|
+| 21-22 | **Labels** | *string* | Add any labels you want applied to your VM resource in Kubernetes. To create more labels, repeat the format in line 21 on a new line. <br/> <br/> Value must be inside "quotes".|
+
+---
+
+VM Storage Details
+
+| **Line Number** | **Value**                       | **Data Type**  |**Instruction**                   |
+|-----------------|---------------------------------|----------------|----------------------------------|
+| 29 - 82 | **multiple values** | *string* | These lines define the storage configuration for your VM and the PVC's containing the OS images needed to create it. <br/><br/> Default values will work for this tutorial.<br/> <br/> Value must be inside "quotes". |
+| 40 | **storage** | *number* | This value determines how much storage your VM will have. Set it as needed for your environment. |
+
+---
+
+VM Compute Resources
+
+| **Line Number** | **Value**                       | **Data Type**  |**Instruction**                   |
+|-----------------|---------------------------------|----------------|----------------------------------|
+| 85 | **cores** | *number* | The number of CPU cores you want your VM to have. |
+| 86 |**sockets** | *number* | This value determines the number of sockets the CPU cores can be spread across. <br/><br/> 2 cores and 2 sockets will place use one CPU core in one physical CPU socket and a second core in a different physical CPU socket. This granular control enables you to ensure High Availability (HA) and fault tolerance down to the CPU socket level. |
+| 87 | **threads** | *number* | This value determines how many CPU threads your VM can use. |
+| 90 | **guest** | *number* | This value is in the memory section and determines how much memory your VM will be assigned. Set it as needed for your environment. |
+
+#### Virtual Machine Networking
+
+Access to your VM is managed by Kubernetes and MetalLB. Customization can be done to put your VM on a different network within the cluster as needed for your environment. This tutorial uses default values.
+
+
 
 ## Deploy a VMO Cluster to MAAS
 
+In this section, you will execute the Terraform scripts you modified in the *Customizing the Terraform Template* section.
 <br/>
 
 ### Build the Cluster
