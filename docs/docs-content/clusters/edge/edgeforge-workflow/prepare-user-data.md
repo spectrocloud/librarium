@@ -36,14 +36,6 @@ This article guides you through several important parameters in the `.arg` file 
 Edge [Install Configuration](../edge-configuration/installer-reference.md) resource to learn more about all the
 supported configuration parameters you can use in the configuration user data.
 
-:::tip
-
-You can also use the Operating System (OS) pack to apply additional customization using cloud-init stages. Both the Edge
-Installer configuration file and the OS pack support the usage of cloud-init stages. Refer to the
-[Cloud-Init Stages](../edge-configuration/cloud-init.md) to learn more.
-
-:::
-
 <Tabs>
 
 <TabItem value="Manual File Creation">
@@ -164,6 +156,14 @@ Installer configuration file and the OS pack support the usage of cloud-init sta
          commands:
            - snap install amazon-ssm-agent --classic
    ```
+
+   :::tip
+
+   You can also use the Operating System (OS) pack to apply additional customization using cloud-init stages. Both the
+   Edge Installer configuration file and the OS pack support the usage of cloud-init stages. Refer to the
+   [Cloud-Init Stages](../edge-configuration/cloud-init.md) to learn more.
+
+   :::
 
 #### Configure Users
 
