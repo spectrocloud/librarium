@@ -74,8 +74,8 @@ done
 
 for link in $(echo "${GITHUB_BROKEN_LINKS_CONTENT}"); do
     ((BROKEN_LINK_COUNT++)) # All the links in this file are broken
-    filename="${line%%:*}"  # everything before the first colon
-    url="${line#*:}"        # everything after the first colon
+    filename="${link%%:*}"  # everything before the first colon
+    url="${link#*:}"        # everything after the first colon
 
     COMMENT="${COMMENT}\n\n:link: Broken URL: ${url}  \n:red_circle: State: BROKEN  \n:arrow_up: Parent Page: ${filename}\n\n"
 done
