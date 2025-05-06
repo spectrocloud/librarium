@@ -12,7 +12,8 @@ Palette provides cluster profiles, which allow you to specify layers for your wo
 packages, or cluster manifests. Packs serve as blueprints to the provisioning and deployment process, as they contain
 the versions of the container images that Palette installs for you. Cluster profiles provide consistency across
 environments during the cluster creation process, as well as when maintaining your clusters. Check out
-[Cluster Profiles](../introduction.md#cluster-profiles) to learn more. Once provisioned, you can update Palette deployments using three methods.
+[Cluster Profiles](../introduction.md#cluster-profiles) to learn more. Once provisioned, you can update Palette
+deployments using three methods.
 
 | Method                   | Description                                                                        | Cluster application process                                                                                                                                                                                |
 | ------------------------ | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -37,8 +38,8 @@ Additionally, you should install Kubectl locally. Use the Kubernetes
 [Install Tools](https://kubernetes.io/docs/tasks/tools/) page for further guidance.
 
 Follow the instructions of the [Deploy a Cluster](./deploy-k8s-cluster.md) tutorial to deploy a cluster with the
-[_hello-universe_](https://github.com/spectrocloud/hello-universe) app. Your cluster should be successfully
-provisioned and in a healthy state.
+[_hello-universe_](https://github.com/spectrocloud/hello-universe) app. Your cluster should be successfully provisioned
+and in a healthy state.
 
 The cluster profile name is `azure-profile` and the cluster name is `azure-cluster`.
 
@@ -198,8 +199,8 @@ The previous state of the cluster profile will not be saved once it is overwritt
 
 Navigate to the left **Main Menu** and select **Clusters**. Select the `azure-cluster` to view its **Overview** tab.
 
-Select the **Profile** tab. Then, select the **hello-universe** pack. Change the value of the `replicas` field on line `15` to `2`
-and **Save** your changes. The editor is closed.
+Select the **Profile** tab. Then, select the **hello-universe** pack. Change the value of the `replicas` field on line
+`15` to `2` and **Save** your changes. The editor is closed.
 
 This cluster now contains an override over its cluster profile. Palette uses the configuration you have just provided
 for the single cluster over its cluster profile and begins making the appropriate changes.
