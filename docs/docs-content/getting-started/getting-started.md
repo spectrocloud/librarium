@@ -91,3 +91,12 @@ Explore more through the following pages.
     },
   ]}
 />
+
+<br />
+
+:::tip
+
+You can also explore our [Downloads](../downloads/downloads.md) section to discover the latest and specific versions of
+accompanying software for Palette.
+
+:::

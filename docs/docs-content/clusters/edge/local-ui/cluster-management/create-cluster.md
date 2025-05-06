@@ -50,7 +50,7 @@ management.
   :::warning
 
   Content bundles must be built with a Palette Edge CLI version later than `4.5.7`, or a Palette CLI version `4.6.3` or
-  later. Visit the [Downloads](../../../../spectro-downloads.md#palette-edge-cli) page to download the appropriate
+  later. Visit the [Downloads](../../../../downloads/cli-tools.md#palette-edge-cli) page to download the appropriate
   version of the CLI to build the content bundle.
 
   :::
