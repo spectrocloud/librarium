@@ -35,7 +35,7 @@ primary registry and keep it up-to-date with the latest upstream updates.
   ```
 
 - (Local management mode only) The latest version of the Palette Edge CLI. Refer to the
-  [Downloads](../../../../spectro-downloads.md) page to download the CLI.
+  [Downloads](../../../../downloads/cli-tools.md) page to download the CLI.
 
 ## Migrate from Harbor Edge-Native Config Pack to Registry Connect
 

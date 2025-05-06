@@ -33,8 +33,8 @@ be enabled per Edge host by someone with sufficient permissions.
   information, refer to [Permissions](../../../user-management/palette-rbac/permissions.md).
 
 - Your Palette agent version must be 4.6.9 or later, and your Palette/VerteX version must be 4.6.12 or later.
-  - If your Palette agent version is 4.6.b or later, your Palette/Vertex version must be 4.6.b or later.
-  - If your Palette agent version earlier than 4.6.b, your Palette/Vertex version must be also be earlier than 4.6.b.
+  - If your Palette agent version is 4.6.23 or later, your Palette/Vertex version must be 4.6.23 or later.
+  - If your Palette agent version earlier than 4.6.23, your Palette/Vertex version must be also be earlier than 4.6.23.
 
 ## Procedure
 

@@ -54,7 +54,8 @@ were built into the ISO image during EdgeForge. If your host was [linked](../clu
 another host, resetting the host will unlink the host.
 
 If your Edge host has a connection to Palette, you cannot reset the Edge host through Local UI as the cluster is managed
-through Palette.
+through Palette. If you need to force a reset, you can
+[trigger one from the terminal](../../cluster-management/reset-host.md).
 
 :::info
 

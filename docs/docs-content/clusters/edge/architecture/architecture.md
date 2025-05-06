@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Architecture"
 title: "Architecture"
-description: "Learn about Palette Edge and the architecture used to suppport edge clusters."
+description: "Learn about Palette Edge and the architecture used to support edge clusters."
 hide_table_of_contents: false
 sidebar_position: 0
 tags: ["edge", "architecture"]
@@ -55,11 +55,11 @@ ARM64 support is only verified for the Nvidia Jetson Orin device family.
 
 Palette provides the following distributions for edge installations.
 
-| Name                                                                                                        | OS               | Kubernetes Distro | CNIs            | CSIs      |
-| ----------------------------------------------------------------------------------------------------------- | ---------------- | ----------------- | --------------- | --------- |
-| Palette Optimized K3s                                                                                       | openSUSE, Ubuntu | K3s               | Calico, Flannel | Rook Ceph |
-| Palette Optimized RKE2                                                                                      | openSUSE, Ubuntu | RKE2              | Calico, Flannel | Rook Ceph |
-| [Palette eXtended Kubernetes Edge (PXK-E)](../../../glossary-all.md#palette-extended-kubernetes-edge-pxk-e) | openSUSE, Ubuntu | CNCF              | Calico, Flannel | Rook Ceph |
+| Name                                                                                                        | OS               | Kubernetes Distribution | CNIs            | CSIs      |
+| ----------------------------------------------------------------------------------------------------------- | ---------------- | ----------------------- | --------------- | --------- |
+| Palette Optimized K3s                                                                                       | openSUSE, Ubuntu | K3s                     | Calico, Flannel | Rook Ceph |
+| Palette Optimized RKE2                                                                                      | openSUSE, Ubuntu | RKE2                    | Calico, Flannel | Rook Ceph |
+| [Palette eXtended Kubernetes Edge (PXK-E)](../../../glossary-all.md#palette-extended-kubernetes-edge-pxk-e) | openSUSE, Ubuntu | CNCF                    | Calico, Flannel | Rook Ceph |
 
 ## Supported Configurations
 

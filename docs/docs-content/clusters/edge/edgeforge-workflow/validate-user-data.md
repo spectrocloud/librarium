@@ -49,7 +49,7 @@ sudo ./earthly.sh +validate-user-data
 <TabItem value="Palette Edge CLI">
 
 From the directory where the Palette Edge CLI executable is present, issue the following command. Replace
-`<path-to-user-data>` with the path to your user-data file. Refer to [Downloads](../../../spectro-downloads.md) to
+`<path-to-user-data>` with the path to your user-data file. Refer to [Downloads](../../../downloads/cli-tools.md) to
 download the Palette Edge CLI.
 
 ```shell
