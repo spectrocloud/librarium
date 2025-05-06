@@ -7,8 +7,8 @@ sidebar_position: 80
 tags: ["edge"]
 ---
 
-If your Edge host is in a restricted network environment such as most corporate networks, you often need a proxy to
-access external networks such as the internet.
+If your Edge host is in a restricted network environment, such as most corporate networks, you often need a proxy to
+access external networks, such as the internet.
 
 You can configure your Edge hosts to use an HTTP/HTTPS proxy for secure internet access from Local UI. The proxy server
 configured through Local UI will be retained even after a [reset](./reset-reboot.md#reset-edge-host).

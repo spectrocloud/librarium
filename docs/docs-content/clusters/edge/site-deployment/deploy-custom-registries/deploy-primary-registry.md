@@ -7,17 +7,13 @@ sidebar_position: 10
 tags: ["edge"]
 ---
 
-A primary registry is an in-cluster registry that stores images required for cluster deployment. If your local cluster
-does not have connection to the internet, you can store all images required for cluster function in the primary registry
-so your cluster can operate in a local environment. In addition, both local and central clusters can benefit from using
-a primary registry for increased reliability and reduced bandwidth usage.
+A primary registry is an in-cluster registry that stores images required for cluster deployment. If your local cluster does not have internet connectivity, you can store all images required for cluster functionality in the primary registry so your cluster can operate in a local environment. In addition, both local and central clusters can benefit from using a primary registry for increased reliability and reduced bandwidth usage.
 
 :::preview
 
 :::
 
-When your Edge cluster is created for the first time, all images in the `pack.content.images` field in each layer of the
-profile loaded from the content bundle or external registries are stored locally in the primary registry. Subsequent
+When your Edge cluster is created for the first time, all images in the `pack.content.images` field in each profile layer loaded from the content bundle or external registries are stored locally in the primary registry. Subsequent
 image pulls from the cluster are made to the primary registry. This allows your Edge cluster to reboot containers or add
 new nodes using the content cached in the in-cluster registry. If any image cannot be found in the primary registry, the
 Palette agent will then attempt to pull the images from the internet.
