@@ -63,8 +63,7 @@ tags: ["release-notes"]
 
 :::info
 
-Check out the [Downloads](../spectro-downloads.md) and [Compatibility Matrix](../component.md) pages to find the
-compatible version of the Palette CLI.
+Check out the [Downloads](../downloads/cli-tools.md) page to find the compatible version of the Palette CLI.
 
 :::
 
@@ -73,6 +72,10 @@ compatible version of the Palette CLI.
 #### Improvements
 
 ### Docs and Education
+
+- We have added a new [Downloads](../downloads/downloads.md) tab to the top navigation bar of the Spectro Cloud
+  Documentation site. This tab provides a centralized location for downloading all support tools and utilities for
+  Palette.
 
 ### Packs
 
