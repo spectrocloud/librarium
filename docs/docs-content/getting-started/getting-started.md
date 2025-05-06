@@ -8,6 +8,8 @@ sidebar_custom_props:
 tags: ["getting-started"]
 ---
 
+[Broken link for testing](https://github.com/spectrocloud/invalid)
+
 This page gives you an overview of how to get started with Spectro Cloud Palette and begin leveraging its Kubernetes
 full-stack management at scale. Palette's unique capabilities provide end-to-end declarative cluster management, cluster
 monitoring and reconciliation, as well as enterprise-grade security.

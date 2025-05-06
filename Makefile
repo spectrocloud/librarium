@@ -317,6 +317,12 @@ verify-rate-limited-links-ci: ## Check for broken URLs in production in a GitHub
 	@rm temp_rate_limit_report.json
 	@mv filtered_rate_limit_report.json scripts/link_rate_limit_report.json
 
+verify-github-links-ci: ## Check for broken GitHub links in production in a GitHub Actions CI environment
+	@echo "Checking for broken GitHub links in CI environment..."
+	@rm link_report_github.txt || echo "No report exists. Proceeding to scan step"
+	./scripts/url-checker-github.sh
+	@mv link_report_github.txt scripts/link_report_github.txt
+
 ###@ Image Formatting
 
 format-images: ## Format images

@@ -19,7 +19,9 @@
     ".(jpg|jpeg|png|gif|webp)$$",
     "https://linux.die.net/man/.*$$",
     "https://mysql.com/.*.*$$",
-    "https://dev.mysql.com/doc/.*$$"
+    "https://dev.mysql.com/doc/.*$$",
+    "^https://github.com.*$$"
+
   ],
   "verbosity": "error",
   "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"

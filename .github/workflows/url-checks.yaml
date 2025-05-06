@@ -1,8 +1,11 @@
 # This workflow scans the markdown files in the repository for broken URLs.
 # Additional logic is added to the Make command verify-rate-limited-links-ci to check for rate-limited URLs, including guidance on what domains to ignore.
-# The workflow is scheduled to run every Monday at 6 am. All results are posted to the #docs channel in Slack.
+# The workflow is scheduled to run every Monday at 6 am.
 
 on:
+  push:
+    branches:
+      - doc-1877-github-broken-links
   schedule:
     # Every Monday at 6 am
     - cron: '0 6 * * 1'
@@ -35,6 +38,11 @@ jobs:
 
       - name: URL Rate Limit Checker
         run: make verify-rate-limited-links-ci
+
+      - name: Check for Broken Github Links
+        run: make verify-github-links-ci
+        env:
+          ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
   
       - name: Post Comment
         run: |
@@ -44,4 +52,4 @@ jobs:
           ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OWNER: ${{ github.repository_owner }}
           REPO: ${{ github.event.repository.name }}
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK_URL:  ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
