@@ -11,6 +11,31 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## May 5, 2025 - Release 4.6.24
+
+### Bug Fixes
+
+- Fixed an issue that caused [Edge hosts](../clusters/edge/edge.md) to reboot continuously after a cluster deletion and
+  completed [reset](../clusters/edge/local-ui/host-management/reset-reboot.md#reset-edge-host).
+- Fixed an issue where Kubernetes version upgrades initiated through [Local UI](../clusters/edge/local-ui/local-ui.md)
+  failed for [Edge](../clusters/edge/edge.md) clusters containing the `harbor-edge-native-config` pack.
+- Fixed an issue where
+  [Software Bill of Materials (SBOM)](../clusters/cluster-management/compliance-scan.md#sbom-dependencies--vulnerabilities)
+  scans failed to execute successfully for all clusters.
+- Fixed an issue where POST API calls to `/v1/spectroclusters/edge-native` failed for U.S. multi-tenant SaaS
+  environments.
+- Fixed an issue that caused pack downloads with a double hyphen (`--`) in the label prefix to fail.
+- Fixed an issue that caused pack downloads to fail if the pack registry endpoint contained a port.
+- Fixed a UI discrepancy between the **Last Modified** timestamp on the cluster list and the cluster **Overview** tab.
+- Fixed an issue where [Edge cluster](../clusters/edge/edge.md) deployment failed when a certificate for a
+  [private provider registry](../clusters/edge/site-deployment/deploy-custom-registries/deploy-private-registry.md) was
+  included in the cluster profile.
+
+### Improvements
+
+- The default timeout for [remote shell](../clusters/edge/cluster-management/remote-shell.md) has been increased to 12
+  hours of inactivity.
+
 ## April 19, 2025 - Release 4.6.23 {#release-notes-4.6.b}
 
 ### Security Notices
@@ -111,8 +136,7 @@ tags: ["release-notes"]
 
 :::info
 
-Check out the [Downloads](../spectro-downloads.md) and [Compatibility Matrix](../component.md) pages to find the
-compatible version of the Palette CLI.
+Check out the [Palette CLI Downloads](../downloads/cli-tools.md) page to find the compatible version of the Palette CLI.
 
 :::
 
@@ -382,8 +406,7 @@ available. For more details, refer to the Terraform provider
 
 :::info
 
-Check out the [Downloads](../spectro-downloads.md) and [Compatibility Matrix](../component.md) pages to find the
-compatible version of the Palette CLI.
+Check out the [Palette CLI Downloads](../downloads/cli-tools.md) page to find the compatible version of the Palette CLI.
 
 :::
 
