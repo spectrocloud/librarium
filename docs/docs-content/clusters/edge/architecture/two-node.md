@@ -40,7 +40,8 @@ change the number of nodes.
 
 ## Limitations
 
-- Two-node clusters can only be deployed in central management mode. You cannot deploy hosts in local management mode.
+- Two-node clusters can only be deployed in [central management mode](../edge-native-lifecycle.md#central-clusters). You
+  cannot deploy hosts in local management mode.
 - Agent mode is not supported for two-node clusters because two-node high availability relies on Kairos, which is only
   used in appliance mode. For more information, refer to
   [Deployment Modes](../../../deployment-modes/deployment-modes.md).
