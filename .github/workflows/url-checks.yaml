@@ -3,9 +3,6 @@
 # The workflow is scheduled to run every Monday at 6 am.
 
 on:
-  push:
-    branches:
-      - doc-1877-github-broken-links
   schedule:
     # Every Monday at 6 am
     - cron: '0 6 * * 1'
@@ -40,7 +37,7 @@ jobs:
         run: make verify-rate-limited-links-ci
 
       - name: Check for Broken Github Links
-        run: make verify-github-links-ci
+        run: make verify-github-links
         env:
           ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
   

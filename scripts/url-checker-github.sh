@@ -15,9 +15,9 @@ touch "$CACHE_FILE"
 
 echo "⏭️ Starting checks for Github URLs in Docs."
 
-# Find all GitHub links in the documentation
+# Find all GitHub links in the documentation.
+# Strip all parentheses and anchors from the links, as they will be heavily throttled by GitHub.
 grep -rHoE '\(https?://github\.com/[^") ]+' --include="*.md" ./docs | sed 's/[()]//g' | sed 's/#.*$//' > "$LINKS_FILE"
-
 
 if [[ -n "$ACCESS_TOKEN" ]]; then
     echo "🔏 Access token found. We will use it for authentication where possible."
