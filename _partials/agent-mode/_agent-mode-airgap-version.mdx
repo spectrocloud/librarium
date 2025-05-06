@@ -1,0 +1,24 @@
+---
+partial_category: agent-mode
+partial_name: agent-mode-airgap-version
+---
+
+<Tabs groupID="FIPS">
+
+<TabItem value="Non-FIPS">
+
+```shell
+curl -L https://github.com/spectrocloud/agent-mode/releases/download/<version>/agent-mode-linux-<architecture>.tar --output agent-mode-linux-<architecture>.tar
+```
+
+</TabItem>
+
+<TabItem value="FIPS">
+
+```shell
+curl -L https://github.com/spectrocloud/agent-mode/releases/download/<version>/agent-mode-fips-linux-<architecture>.tar --output agent-mode-linux-<architecture>.tar
+```
+
+</TabItem>
+
+</Tabs>

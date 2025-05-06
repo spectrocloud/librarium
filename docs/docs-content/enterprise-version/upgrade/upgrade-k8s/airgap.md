@@ -248,8 +248,8 @@ Palette upgrade.
     Setup Completed
     ```
 
-7.  Refer to the [Additional Packs](../../install-palette/airgap/supplemental-packs.md) page and update the packages you
-    are currently using. You must update each package separately.
+7.  Refer to the [Additional Packs](../../../downloads/self-hosted-palette/additional-packs.md) page and update the
+    packages you are currently using. You must update each package separately.
 
     :::info
 
