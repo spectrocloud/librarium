@@ -1,16 +1,11 @@
-User-agent: AI2Bot
 User-agent: Ai2Bot-Dolma
-User-agent: anthropic-ai
 User-agent: Brightbot 1.0
 User-agent: Bytespider
 User-agent: CCBot
-User-agent: Claude-Web
-User-agent: ClaudeBot
 User-agent: cohere-ai
 User-agent: cohere-training-data-crawler
 User-agent: Crawlspace
 User-agent: Diffbot
-User-agent: FacebookBot
 User-agent: FriendlyCrawler
 User-agent: iaskspider/2.0
 User-agent: ICC-Crawler
@@ -24,8 +19,6 @@ User-agent: Meta-ExternalFetcher
 User-agent: omgili
 User-agent: omgilibot
 User-agent: PanguBot
-User-agent: Perplexity-User
-User-agent: PerplexityBot
 User-agent: PetalBot
 User-agent: Scrapy
 User-agent: SemrushBot-OCOB
