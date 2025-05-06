@@ -45,7 +45,6 @@ information.
 
 - Downloaded copy of the Terraform [tutorial code](link here)
 <br/>
-<br/>
 
 ## VMO Packs
 
@@ -304,11 +303,6 @@ VM Compute Resources
 | 87 | **threads** | *number* | This value determines how many CPU threads your VM can use. |
 | 90 | **guest** | *number* | This value is in the memory section and determines how much memory your VM will be assigned. Set it as needed for your environment. |
 
-#### Virtual Machine Networking
-
-Access to your VM is managed by Kubernetes and MetalLB. Customization can be done to put your VM on a different network within the cluster as needed for your environment. This tutorial uses default values.
-
-
 
 ## Deploy a VMO Cluster to MAAS
 
@@ -317,32 +311,18 @@ In this section, you will execute the Terraform scripts you modified in the *Cus
 
 ### Build the Cluster
 
-<br/>
 
-### RBAC Configuration
+### Cluster RBAC Configuration
 
-<br/>
 
 ### Verify the Deployment
 
-<br/>
-<br/>
 
 ## Deploy a Virtual Machine
 
-<br/>
-
-### Core Terraform Files
-
-<br/>
-
-### Customize the VM
-
-<br/>
 
 ### Deploy the VM
 
-<br/>
 
 ### Verify the Application
 
