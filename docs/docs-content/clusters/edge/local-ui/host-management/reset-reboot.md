@@ -9,10 +9,6 @@ tags: ["edge"]
 
 You can reboot, shut down and reset an Edge host from Local UI.
 
-:::preview
-
-:::
-
 ## Reboot Edge Host
 
 You can reboot the Edge host from Local UI. Doing so will cause you to temporarily lose access to Local UI while the
