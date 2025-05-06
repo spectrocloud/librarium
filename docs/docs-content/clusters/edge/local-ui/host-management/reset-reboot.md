@@ -51,7 +51,8 @@ User Interface (TUI). Reset to factory default removes all workloads, content, a
 host. This includes content bundles that were built into the ISO image during EdgeForge.
 
 If your Edge host has a connection to Palette, you cannot reset the Edge host to factory default through Local UI as the
-cluster is managed through Palette.
+cluster is managed through Palette. If you need to force a reset, you can
+[trigger one from the terminal](../../cluster-management/reset-host.md).
 
 :::info
 
