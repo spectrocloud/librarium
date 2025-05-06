@@ -218,7 +218,8 @@ kubectl get pods --namespace hello-universe
 
 :::info
 
-The browser's native refresh button will not trigger Palette to refresh cluster status. You must use the in app refresh button.
+The browser's native refresh button will not trigger Palette to refresh cluster status. You must use the in app refresh
+button.
 
 :::
 
