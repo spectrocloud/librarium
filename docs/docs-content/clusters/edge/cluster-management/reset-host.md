@@ -18,11 +18,6 @@ Since the reset will return your Edge host to the state right after TUI configur
 agent since then, those upgrades will be reset as well. Your Palette agent version will return to the version you
 initially installed.
 
-If your host relies on certain features only available after a certain version, ensure that you upgrade the Palette
-agent first before creating a new cluster. Connected Edge hosts will upgrade the agent automatically unless you paused
-upgrades. Refer to [Upgrade Palette Agent](../cluster-management/agent-upgrade-airgap.md) to learn how to upgrade an
-agent on a disconnected Edge host.
-
 :::
 
 A reset removes all workloads, content, and cluster definitions from the Edge host. This includes content bundles that
