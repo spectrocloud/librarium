@@ -3,9 +3,6 @@
 # The workflow is scheduled to run every Monday at 6 am.
 
 on:
-  push:
-    branches:
-      - doc-1877-github-broken-links
   schedule:
     # Every Monday at 6 am
     - cron: '0 6 * * 1'
