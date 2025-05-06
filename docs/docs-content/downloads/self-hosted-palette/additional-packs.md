@@ -16,16 +16,9 @@ Review the following table to determine which pack binaries you need to download
 
 ## Additional Deployment Options
 
-Palette [Virtual Machine Orchestrator](../../vm-management/vm-management.md) (VMO) and
-[Virtual Clusters](../../clusters/palette-virtual-clusters/palette-virtual-clusters.md) can also be installed for
-airgapped self-hosted instances of Palette and Palette VerteX.
+<PartialsComponent category="self-hosted-and-vertex" name="additional-deployment-options" />
 
-| File Name                                            | URL                                                                                                       |
-| ---------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| `airgap-pack-virtual-machine-orchestrator-4.5.7.bin` | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-virtual-machine-orchestrator-4.5.7.bin |
-| `airgap-pack-vcluster-4.5.10.bin`                    | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-vcluster-4.5.10.bin                    |
-
-### Usage Instructions
+## Usage Instructions
 
 You must SSH into your Palette airgap support VM to download and install the binary. You must also provide the username
 and password for the support team's private repository. Reach out to our support team to
