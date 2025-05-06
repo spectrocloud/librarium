@@ -63,7 +63,7 @@ tags: ["release-notes"]
 
 :::info
 
-Check out the [Downloads](../spectro-downloads.md) and [Compatibility Matrix](../component.md) pages to find the
+Check out the [Downloads](../downloads/downloads.md) and [Compatibility Matrix](../component.md) pages to find the
 compatible version of the Palette CLI.
 
 :::
