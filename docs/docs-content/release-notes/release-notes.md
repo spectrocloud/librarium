@@ -63,7 +63,7 @@ tags: ["release-notes"]
 
 :::info
 
-Check out the [Downloads](../downloads/downloads.md) page to find the compatible version of the Palette CLI.
+Check out the [Downloads](../downloads/cli-tools.md) page to find the compatible version of the Palette CLI.
 
 :::
 
