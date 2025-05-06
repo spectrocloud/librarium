@@ -52,9 +52,9 @@ following diagram outlines the major pre-install steps for an airgap installatio
 
 To get started with an airgap Palette installation, check out the respective platform guide.
 
-- [Kubernetes Airgap Instructions](../install-on-kubernetes/airgap-install/kubernetes-airgap-instructions.md)
+- [Kubernetes Airgap Instructions](./install-on-kubernetes/airgap-install/kubernetes-airgap-instructions.md)
 
-- [VMware vSphere Airgap Instructions](../install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions.md)
+- [VMware vSphere Airgap Instructions](./install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions.md)
 
 Each platform guide provides detailed instructions on how to complete the pre-install steps.
 
@@ -71,4 +71,4 @@ The following table outlines the platforms supported for airgap VerteX installat
 
 ## Resources
 
-- [Additional Packs](../airgap/supplemental-packs.md)
+- [Additional Packs](../../downloads/self-hosted-palette/additional-packs.md)

@@ -34,7 +34,7 @@ primary registry and keep it up-to-date with the latest upstream updates.
   uname -m
   ```
 
-- (Airgap only) The latest version of the Palette Edge CLI. Refer to the [Downloads](../../../../spectro-downloads.md)
+- (Airgap only) The latest version of the Palette Edge CLI. Refer to the [Downloads](../../../../downloads/cli-tools.md)
   page to download the CLI.
 
 ## Migrate from Harbor Edge-Native Config Pack to Registry Connect
