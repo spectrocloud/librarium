@@ -52,9 +52,8 @@ create a content bundle at the same time with a single command.
 
 <TabItem value="Palette CLI" label="Palette CLI">
 
-1. Download the Palette CLI. Refer to the
-   [Palette Components Compatibility Matrix](../../../../component.md#palette-cli-versions) to find a compatible CLI
-   version and replace `<palette-cli-version>` with the selected version.
+1. Download the Palette CLI. Refer to the [Palette CLI Compatibility Matrix](../../../../downloads/cli-tools.md) to find
+   a compatible CLI version and replace `<palette-cli-version>` with the selected version.
 
    ```shell
    VERSION=<palette-cli-version>
@@ -142,9 +141,8 @@ create a content bundle at the same time with a single command.
 
 <TabItem value="Palette Edge CLI" label="Palette Edge CLI">
 
-1. Download the Palette Edge CLI. Refer to the
-   [Palette Components Compatibility Matrix](../../../../component.md#palette-edge-cli-versions) to find a compatible
-   CLI version and replace `<palette-edge-cli-version>` with the selected version.
+1. Download the Palette Edge CLI. Refer to the [Palette CLI Compatibility Matrix](../../../../downloads/cli-tools.md) to
+   find a compatible CLI version and replace `<palette-edge-cli-version>` with the selected version.
 
    ```shell
    VERSION=<palette-edge-cli-version>

@@ -59,4 +59,4 @@ with the [Install VerteX](./install.md) guide.
 
 - [Airgap Installation Checklist](checklist.md)
 
-- [Additional Packs](../../airgap/supplemental-packs.md)
+- [Additional Packs](../../../../downloads/palette-vertex/additional-packs.md)

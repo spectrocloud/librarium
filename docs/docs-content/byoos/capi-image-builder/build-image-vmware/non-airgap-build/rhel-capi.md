@@ -38,47 +38,9 @@ Enterprise Linux (RHEL) image with <VersionedLink text="Palette eXtended Kuberne
 
 ## Build Custom Image
 
-1.  Open up a terminal session in your Linux machine and download the CAPI Image Builder version `1.5.0`.
+1.  Open up a terminal session in your Linux machine and download the CAPI Image Builder.
 
-        <Tabs>
-        <TabItem value="Docker" label="Docker">
-
-        ```shell
-        docker pull gcr.io/spectro-images-public/imagebuilder/capi-builder:v1.5.0
-        ```
-
-        Confirm that the image was downloaded correctly.
-
-        ```shell
-        docker images
-        ```
-
-        ```text hideClipboard
-        REPOSITORY                                               TAG       IMAGE ID       CREATED      SIZE
-        gcr.io/spectro-images-public/imagebuilder/capi-builder   v1.5.0    1d891fc2e8da   6 days ago   2.5GB
-        ```
-
-        </TabItem>
-
-        <TabItem value="Podman" label="Podman">
-
-        ```shell
-        podman pull gcr.io/spectro-images-public/imagebuilder/capi-builder:v1.5.0
-        ```
-
-        Confirm that the image was downloaded correctly.
-
-        ```shell
-        podman images
-        ```
-
-        ```text hideClipboard
-        REPOSITORY                                               TAG       IMAGE ID       CREATED      SIZE
-        gcr.io/spectro-images-public/imagebuilder/capi-builder   v1.5.0    1d891fc2e8da   6 days ago   2.5GB
-        ```
-
-        </TabItem>
-        </Tabs>
+    <PartialsComponent category="capi-image-builder" name="download-capi-image-builder-repository" />
 
 2.  Create an output directory to store the image files and set the required permissions.
 
@@ -118,19 +80,19 @@ Enterprise Linux (RHEL) image with <VersionedLink text="Palette eXtended Kuberne
     519abcc58ee3b7212f57e180f5d30be3e8269e7a99e123a3399b7935c7e00a09  rhel-8.8-x86_64-dvd.iso
     ```
 
-6.  Download the **imageconfig** template file.
+6.  Download the `imageconfig` template file.
 
     ```shell
     curl https://software.spectrocloud.com/tools/capi-image-builder/imageconfig --output imageconfig
     ```
 
-7.  Open the **imageconfig** template file in an editor of your choice and fill in the required parameters. For a
-    complete list of parameters, refer to the [Configuration Reference](../../config-reference.md) page. Additionally,
-    refer to the [Compatibility Matrix](../../comp-matrix-capi-builder.md) for a list of supported Kubernetes versions
-    and their corresponding dependencies.
+7.  Open the `imageconfig` template file in an editor of your choice and fill in the required parameters. For a complete
+    list of parameters, refer to the [Configuration Reference](../../config-reference.md) page. Additionally, refer to
+    the [Compatibility Matrix](../../comp-matrix-capi-builder.md) for a list of supported Kubernetes versions and their
+    corresponding dependencies.
 
-    The **imageconfig** is the file you use to set up the CAPI Image Builder according to your requirements. This
-    includes specifying the OS type, Kubernetes version, whether the image should be FIPS compliant, and more.
+    The `imageconfig` is the file you use to set up the CAPI Image Builder according to your requirements. This includes
+    specifying the OS type, Kubernetes version, whether the image should be FIPS compliant, and more.
 
     Use the example configuration below for building a RHEL 8 CAPI image. Replace `<rhel-subscription-email>` and
     `<rhel-subscription-password>` with your RHEL subscription credentials. Use the SHA256 checksum of the RHEL ISO from
@@ -269,7 +231,7 @@ Enterprise Linux (RHEL) image with <VersionedLink text="Palette eXtended Kuberne
             Once you are finished doing the alterations, save and exit the file.
 
         3.  Issue the command below to start the CAPI Image Builder container and assign the container ID to the `BUILD_ID`
-            variable. The tool will use the **imageconfig** file to create and configure a VM with static IP placement in
+            variable. The tool will use the `imageconfig` file to create and configure a VM with static IP placement in
             your VMware vSphere environment.
 
             <Tabs>
@@ -405,8 +367,7 @@ profile and deploy a VMware host cluster.
 
     :::warning
 
-    The Palette eXtended Kubernetes pack version must match the Kubernetes version specified in the **imageconfig**
-    file.
+    The Palette eXtended Kubernetes pack version must match the Kubernetes version specified in the `imageconfig` file.
 
     :::
 

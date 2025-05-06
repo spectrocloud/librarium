@@ -70,7 +70,7 @@ Complete the following steps before deploying the airgap VerteX installation.
    - Refer to the [Create a repository](https://docs.aws.amazon.com/AmazonECR/latest/userguide/repository-create.html)
      guide for information about creating a repository in AWS ECR.
 
-3. In your OCI registry, create a public repository named `spectro-images`. The public repositry will host the images
+3. In your OCI registry, create a public repository named `spectro-images`. The public repository will host the images
    required by VerteX.
 
 4. Download the Certificate Authority (CA) for your OCI registry and make it available in the local file system. You
@@ -258,8 +258,8 @@ Complete the following steps before deploying the airgap VerteX installation.
 
 13. Review the additional packs available for download. The supplemental packs are optional and not required for a
     successful installation. However, to create cluster profiles you may require several of the packs available for
-    download. Refer to the [Additional Packs](../../airgap/supplemental-packs.md) resource for a list of available
-    packs.
+    download. Refer to the [Additional Packs](../../../../downloads/palette-vertex/additional-packs.md) resource for a
+    list of available packs.
 
 14. Once you select the packs you want to install, download the pack binaries and start the binary to initiate the
     upload process. This step requires internet access, so you may have to download the binaries on a separate machine
