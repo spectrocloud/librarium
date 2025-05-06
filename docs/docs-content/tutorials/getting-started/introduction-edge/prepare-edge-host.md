@@ -54,7 +54,7 @@ In the **ISO Image** field, select the Edge installer ISO file you built in the
 
 Set the machine **Type** as `Linux` and the **Version** as `Ubuntu (64-bit)`, and click **Next**.
 
-![A screenshot of the VirtualBox VM configuration.](/getting-started/getting-started_introduction-edge_prepare-edge-host_vm-config.png)
+![A screenshot of the VirtualBox VM configuration.](/getting-started/getting-started_introduction-edge_prepare-edge-host_vm-config.webp)
 
 Adjust the **Base Memory** to `8000 MB` and **Processors** to `2 CPU`. Click **Next** to proceed.
 
@@ -74,7 +74,7 @@ Select the VM to adjust its network settings. Click **Settings**, then select **
 Change the **Attached to:** option from `NAT` to `Bridged Adapter`. This allows the VM to receive an IP address from the
 same network as the host. Click **OK**.
 
-![A screenshot of the VirtualBox VM network configuration.](/getting-started/getting-started_introduction-edge_prepare-edge-host_vm-network.png)
+![A screenshot of the VirtualBox VM network configuration.](/getting-started/getting-started_introduction-edge_prepare-edge-host_vm-network.webp)
 
 Select the created VM and click **Start** to turn it on. The Edge installer bootstraps the Palette Edge installation
 onto the VM.
@@ -87,7 +87,7 @@ After the VM powers off, select it in VirtualBox. Click **Settings**, then selec
 Select the Edge installer ISO and click **Remove Attachment** to remove it from your VM. Confirm the deletion with
 **Remove** and click **OK** to close the settings window.
 
-![A screenshot of the VirtualBox VM storage configuration.](/getting-started/getting-started_introduction-edge_prepare-edge-host_vm-remove-iso.png)
+![A screenshot of the VirtualBox VM storage configuration.](/getting-started/getting-started_introduction-edge_prepare-edge-host_vm-remove-iso.webp)
 
 </TabItem>
 
@@ -130,7 +130,7 @@ After a few minutes, the VM screen displays an IP address and automatically regi
 using the registration token provided in the `user-data` file during the [Prepare User Data](./prepare-user-data.md)
 tutorial.
 
-![A screenshot of the Edge host.](/getting-started/getting-started_introduction-edge_prepare-edge-host_edge-host-vm.png)
+![A screenshot of the Edge host.](/getting-started/getting-started_introduction-edge_prepare-edge-host_edge-host-vm.webp)
 
 :::tip
 
@@ -146,7 +146,7 @@ Hosts** tab to view the registered hosts.
 Confirm that your Edge host is listed with a **Healthy** and **Ready** status. The **Machine ID** displayed in Palette
 should match the ID displayed on the VM screen.
 
-![A screenshot of the Edge host in Palette.](/getting-started/getting-started_introduction-edge_prepare-edge-host_edge-host-palette.png)
+![A screenshot of the Edge host in Palette.](/getting-started/getting-started_introduction-edge_prepare-edge-host_edge-host-palette.webp)
 
 </TabItem>
 
@@ -160,7 +160,7 @@ After a few minutes, the device screen displays an IP address and automatically 
 using the registration token provided in the `user-data` file during the [Prepare User Data](./prepare-user-data.md)
 tutorial.
 
-![A screenshot of the Edge host.](/getting-started/getting-started_introduction-edge_prepare-edge-host_edge-host-bm-screen.png)
+![A screenshot of the Edge host.](/getting-started/getting-started_introduction-edge_prepare-edge-host_edge-host-bm-screen.webp)
 
 :::tip
 
@@ -176,7 +176,7 @@ Hosts** tab to view the registered hosts.
 Confirm that your Edge host is listed with a **Healthy** and **Ready** status. The **Machine ID** displayed in Palette
 should match the ID displayed on the VM screen.
 
-![A screenshot of the Edge host in Palette.](/getting-started/getting-started_introduction-edge_prepare-edge-host_edge-host-bm-palette.png)
+![A screenshot of the Edge host in Palette.](/getting-started/getting-started_introduction-edge_prepare-edge-host_edge-host-bm-palette.webp)
 
 </TabItem>
 
