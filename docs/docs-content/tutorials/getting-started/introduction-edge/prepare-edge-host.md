@@ -54,11 +54,11 @@ In the **ISO Image** field, select the Edge installer ISO file you built in the
 
 Set the machine **Type** as `Linux` and the **Version** as `Ubuntu (64-bit)`, and click **Next**.
 
-![A screenshot of the VirtualBox VM configuration.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_vm-config.webp)
+![A screenshot of the VirtualBox VM configuration.](/getting-started/getting-started_introduction-edge_prepare-edge-host_vm-config.png)
 
 Adjust the **Base Memory** to `8000 MB` and **Processors** to `2 CPU`. Click **Next** to proceed.
 
-Set the **Disk Size** to 150 GB and ensure the option **Pre-Allocate Full Size** is not checked. Click **Next**.
+Set the **Disk Size** to 150 GB and ensure the option **Pre-Allocate Full Size** is _not_ checked. Click **Next**.
 
 :::info
 
@@ -69,15 +69,15 @@ vary.
 
 Confirm the VM settings and click **Finish** to create the VM.
 
-Select the VM to adjust its network settings. Click **Settings**, and select **Network**.
+Select the VM to adjust its network settings. Click **Settings**, then select **Network**.
 
 Change the **Attached to:** option from `NAT` to `Bridged Adapter`. This allows the VM to receive an IP address from the
 same network as the host. Click **OK**.
 
-![A screenshot of the VirtualBox VM network configuration.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_vm-network.webp)
+![A screenshot of the VirtualBox VM network configuration.](/getting-started/getting-started_introduction-edge_prepare-edge-host_vm-network.png)
 
-In VirtualBox, select the created VM and click **Start** to turn it on. The Edge installer bootstraps the Palette Edge
-installation onto the VM.
+Select the created VM and click **Start** to turn it on. The Edge installer bootstraps the Palette Edge installation
+onto the VM.
 
 Wait for the Edge Installer to complete copying content to the VM. This process may take a few minutes. The VM shuts
 down when the installation is complete.
@@ -87,7 +87,7 @@ After the VM powers off, select it in VirtualBox. Click **Settings**, then selec
 Select the Edge installer ISO and click **Remove Attachment** to remove it from your VM. Confirm the deletion with
 **Remove** and click **OK** to close the settings window.
 
-![A screenshot of the VirtualBox VM storage configuration.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_vm-remove-iso.webp)
+![A screenshot of the VirtualBox VM storage configuration.](/getting-started/getting-started_introduction-edge_prepare-edge-host_vm-remove-iso.png)
 
 </TabItem>
 
@@ -103,7 +103,7 @@ Power on the device and enter the Basic Input/Output System (BIOS) interface. Yo
 F1, or F10 immediately after powering on the device. The exact key varies by manufacturer. Consult the manufacturer
 instructions to learn how to enter the BIOS interface.
 
-In the BIOS interface, navigate to the boot order section and locate the boot order list.
+In the BIOS interface, navigate to the boot sequence section and locate the boot sequence list.
 
 Find the entry with your USB drive and move it to the top of the list. Save the changes and exit the BIOS interface. The
 device then boots from the USB drive and begins installing the Palette agent.
@@ -130,7 +130,7 @@ After a few minutes, the VM screen displays an IP address and automatically regi
 using the registration token provided in the `user-data` file during the [Prepare User Data](./prepare-user-data.md)
 tutorial.
 
-![A screenshot of the Edge host.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_edge-host.webp)
+![A screenshot of the Edge host.](/getting-started/getting-started_introduction-edge_prepare-edge-host_edge-host-vm.png)
 
 :::tip
 
@@ -146,13 +146,13 @@ Hosts** tab to view the registered hosts.
 Confirm that your Edge host is listed with a **Healthy** and **Ready** status. The **Machine ID** displayed in Palette
 should match the ID displayed on the VM screen.
 
-![A screenshot of the Edge host in Palette.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_edge-host-palette.webp)
+![A screenshot of the Edge host in Palette.](/getting-started/getting-started_introduction-edge_prepare-edge-host_edge-host-palette.png)
 
 </TabItem>
 
 <TabItem label="Bare Metal Host" value="Bare Metal Host">
 
-To register the host with Palette, power on your bare metal device. Let Palette Edge choose the boot option
+To register the host with Palette, power on your bare metal device. Let Palette Edge choose the registration boot option
 automatically from the GRand Unified Bootloader (GRUB) menu. The device boots and obtains an IP address from the
 network.
 
@@ -160,7 +160,7 @@ After a few minutes, the device screen displays an IP address and automatically 
 using the registration token provided in the `user-data` file during the [Prepare User Data](./prepare-user-data.md)
 tutorial.
 
-![A screenshot of the Edge host.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_edge-host.webp)
+![A screenshot of the Edge host.](/getting-started/getting-started_introduction-edge_prepare-edge-host_edge-host-bm-screen.png)
 
 :::tip
 
@@ -176,7 +176,7 @@ Hosts** tab to view the registered hosts.
 Confirm that your Edge host is listed with a **Healthy** and **Ready** status. The **Machine ID** displayed in Palette
 should match the ID displayed on the VM screen.
 
-![A screenshot of the Edge host in Palette.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_edge-host-palette.webp)
+![A screenshot of the Edge host in Palette.](/getting-started/getting-started_introduction-edge_prepare-edge-host_edge-host-bm-palette.png)
 
 </TabItem>
 
