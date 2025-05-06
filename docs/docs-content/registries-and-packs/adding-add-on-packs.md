@@ -224,13 +224,28 @@ the Spectro Cloud CLI:
     ...
    ```
 
-6. Log in to the pack registry using the following command:
+6. (Optional) If you are designing a pack that can be used in Edge cluster profiles in local environments, ensure you
+   include all images that are referenced in the pack in the `pack.content.images` section of the `values.yaml` file.
+
+   ```yaml
+   pack:
+     content:
+       images:
+         - docker.io/example-image:latest
+         - gcr.io/example-image-two:latest
+   ```
+
+   If you do not specify the images in the `pack.content.images` field, if your Edge cluster operates in a local
+   environment without a connection to a Palette instance, the images will not be loaded and deployment of the
+   application will fail.
+
+7. Log in to the pack registry using the following command:
 
    ```bash
     spectro registry login [REGISTRY_SERVER]
    ```
 
-7. Using the Spectro CLI, push the newly built pack to the pack registry:
+8. Using the Spectro CLI, push the newly built pack to the pack registry:
 
    ```bash
     spectro pack push prometheus-grafana --registry-server [REGISTRY-SERVER]
@@ -387,8 +402,6 @@ Spectro Cloud CLI.
 
 5. Create a file called `values.yaml` to provide configurable manifest parameters.
 
-   **values.yaml:**
-
    ```yaml
    manifests:
      permission-manager:
@@ -399,13 +412,28 @@ Spectro Cloud CLI.
        authPassword: "welcome123"
    ```
 
-6. Log in to the pack registry using the following command:
+6. (Optional) If you are designing a pack that can be used in Edge cluster profiles in local environments, ensure you
+   include all images that are referenced in the pack in the `pack.content.images` section of the `values.yaml` file.
+
+   ```yaml
+   pack:
+     content:
+       images:
+         - docker.io/example-image:latest
+         - gcr.io/example-image-two:latest
+   ```
+
+   If you do not specify the images in the `pack.content.images` field, if your Edge cluster operates in a local
+   environment without a connection to a Palette instance, the images will not be loaded and deployment of the
+   application will fail.
+
+7. Log in to the pack registry using the following command:
 
    ```bash
     spectro registry login [REGISTRY_SERVER]
    ```
 
-7. Using Spectro Cloud CLI push the newly built pack to the pack registry:
+8. Using Spectro Cloud CLI push the newly built pack to the pack registry:
 
    ```bash
     spectro pack push permission-manager --registry-server [REGISTRY-SERVER]
