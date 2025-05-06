@@ -257,47 +257,62 @@ Follow the steps below to create a custom pack.
 3. Create a file named `values.yaml`. This file consists of configurable parameters that need to be exposed to the
    end-users during the creation of a cluster profile.
 
-:::info
+   :::info
 
-A values.yaml file is mandatory for every pack. For an OS pack, there are typically no configurable parameters, but an
-empty file still needs to be added to the OS pack.
+   A values.yaml file is mandatory for every pack. For an OS pack, there are typically no configurable parameters, but
+   an empty file still needs to be added to the OS pack.
 
-:::
+   :::
 
-Parameters for all charts and manifests defined in the pack are defined in the `values.yaml` file. _Helm_ charts
-natively support values override. Any values defined are merged with those defined within a chart. _Manifests_ need to
-be explicitly configured to use parameters if desired.
+   Parameters for all charts and manifests defined in the pack are defined in the `values.yaml` file. _Helm_ charts
+   natively support values override. Any values defined are merged with those defined within a chart. _Manifests_ need
+   to be explicitly configured to use parameters if desired.
 
-```yaml
-    pack:
-        namespace : <default namespace for charts and manifests>
-    charts:
-        chart1:
-        <configurable chart1 parameters>
-        chart2:
-        <configurable chart2 parameters>
-    manifests:
-        manifest1:
-            <manifest1 parameters>
-        manifest2:
-            <manifest2 parameters>
-```
+   ```yaml
+   pack:
+      namespace : <default namespace for charts and manifests>
+   charts:
+      chart1:
+      <configurable chart1 parameters>
+      chart2:
+      <configurable chart2 parameters>
+   manifests:
+      manifest1:
+          <manifest1 parameters>
+      manifest2:
+          <manifest2 parameters>
+   ```
 
-4. A pack must have the logo file named `logo.png` and must be copied into the pack directory.
+4. (Optional) If you are designing a pack that can be used in Edge cluster profiles in local environments, ensure you
+   include all images that are referenced in the pack in the `pack.content.images` section of the `values.yaml` file.
 
-5. Login to the pack registry using the following command:
+   ```yaml
+   pack:
+     content:
+       images:
+         - docker.io/example-image:latest
+         - gcr.io/example-image-two:latest
+   ```
+
+   If you do not specify the images in the `pack.content.images` field, if your Edge cluster operates in a local
+   environment without a connection to a Palette instance, the images will not be loaded and deployment of the
+   application will fail.
+
+5. A pack must have the logo file named `logo.png` and must be copied into the pack directory.
+
+6. Login to the pack registry using the following command:
 
    ```bash
     spectro registry login [REGISTRY_SERVER]
    ```
 
-6. Push the newly defined pack to the pack registry using the following command:
+7. Push the newly defined pack to the pack registry using the following command:
 
    ```bash
     spectro pack push [PACK_DIR_LOCATION] --registry-server [REGISTRY_SERVER]
    ```
 
-7. To overwrite contents of a previously deployed pack, use the force option as follows:
+8. To overwrite contents of a previously deployed pack, use the force option as follows:
 
    ```bash
     spectro pack push [PACK_DIR_LOCATION] -f --registry-server [REGISTRY_SERVER]
