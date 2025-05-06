@@ -210,6 +210,20 @@ Once these changes are complete, select the **Workloads** tab. Then, select the 
 Two `ui` pods are available, instead of the one specified by your cluster profile. Your override has been successfully
 applied. If your changes are not displayed, use the **refresh** icon.
 
+You may also use kubectl to view the status of your pods with the following command:
+
+```shell
+kubectl get pods --namespace hello-universe
+```
+
+:::info
+
+The browser's native refresh button will not trigger Palette to refresh cluster status. You must use the in app refresh button.
+
+:::
+
+![Palette in app refresh button](/getting-started/azure/clusters_cluster-management_deploy-cluster-profile-updates_palette-refresh.webp)
+
 Navigate to the left **Main Menu** and select **Profiles** to view the cluster profile page. Find the cluster profile
 corresponding to your _hello-universe-frontend_ cluster, named `azure-profile`.
 
