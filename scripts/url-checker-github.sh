@@ -12,6 +12,7 @@ RETRY_DELAY=10  # increment seconds to wait before retrying
 
 # Create cache file if it doesn't exist
 touch "$CACHE_FILE"
+touch "$BROKEN_LINKS_FILE"
 
 echo "⏭️ Starting checks for Github URLs in Docs."
 
