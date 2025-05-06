@@ -21,9 +21,8 @@ initially installed.
 :::
 
 A reset removes all workloads, content, and cluster definitions from the Edge host. This includes content bundles that
-were built into the ISO image during EdgeForge. If your host was [linked](../local-ui/cluster-management/link-hosts.md)
-with other hosts, resetting the host will also unlink them. However, the content of the `/oem` folder is retained after
-the reset. This includes the content of your `user-data` file that you used to configure the installer.
+were built into the ISO image during EdgeForge. However, the content of the `/oem` folder is retained after the reset.
+This includes the content of your `user-data` file that you used to configure the installer.
 
 Unlike using reset from Local UI, resetting the host through the terminal works even if your host is centrally managed.
 If your Edge host is part of a cluster, resetting the Edge host will bring down the node in your cluster. Depending on
