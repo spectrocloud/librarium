@@ -26,8 +26,8 @@ of both modes.
 
 ## Agent Mode
 
-In Agent Mode, you install the Palette agent on your existing host OS. This agent communicates with Palette in connected
-mode to manage configurations, updates, and workloads.
+In Agent Mode, you install the Palette agent on your existing host OS. This agent communicates with Palette in central
+management mode to manage configurations, updates, and workloads.
 
 ### Prerequisites
 
