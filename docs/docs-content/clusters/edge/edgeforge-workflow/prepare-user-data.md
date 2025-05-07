@@ -75,15 +75,15 @@ with the parameters.
 
 ### Prepare .arg File
 
-2. Specify the system architecture and OS distribution and version. These configurations will apply to both the OS of
+1. Specify the system architecture and OS distribution and version. These configurations will apply to both the OS of
    your Edge host before and after cluster formation.
 
-3. Specify the Kubernetes distribution. The Kubernetes distribution is used together with the OS distribution and
+2. Specify the Kubernetes distribution. The Kubernetes distribution is used together with the OS distribution and
    version to create an immutable provider image that has your specified OS and Kubernetes.
 
    The Kubernetes version is specified in a different file named `k8s_version.json`.
 
-4. Specify the image registry, image repository name, and image tag that will be used to tag your provider images. The
+3. Specify the image registry, image repository name, and image tag that will be used to tag your provider images. The
    custom tag, together with the Palette agent version (the same number as the Git tag you are using), the version and
    distribution of Kubernetes and the OS distribution used by the image forms the tag of the image.
 
@@ -99,17 +99,17 @@ with the parameters.
    OS_VERSION=22
    ```
 
-5. (Optional) If your build machine isn't in a restricted network environment, or your build process does not require
+4. (Optional) If your build machine isn't in a restricted network environment, or your build process does not require
    access to a proxy server, skip this step.
 
    You can use `HTTP_PROXY` and `HTTPS_PROXY` to specify the URLs of the proxy servers to be used for your build.
 
-6. Refer to [Edge Artifact Build Configurations](./palette-canvos/arg.md) for a comprehensive list of arguments you can
+5. Refer to [Edge Artifact Build Configurations](./palette-canvos/arg.md) for a comprehensive list of arguments you can
    use to customize the build.
 
 ### Prepare User Data
 
-7. Decide whether you want to deploy an Edge host that is connected to a Palette instance. The default configuration is
+1. Decide whether you want to deploy an Edge host that is connected to a Palette instance. The default configuration is
    a connected Edge host. If you want to deploy an Edge host that is not connected to a Palette instance, you need to
    change the installation mode to `airgap`. Add the `installationMode` parameter to under the `stylus` parameter.
 
@@ -123,7 +123,7 @@ with the parameters.
    about the deployment lifecycle of airgap Edge hosts, refer to
    [Edge Deployment Lifecycle](../edge-native-lifecycle.md).
 
-8. If you want to deploy the Edge host in `airgap` mode, skip this step.
+2. If you want to deploy the Edge host in `airgap` mode, skip this step.
 
    If you want to deploy the Edge host in connected mode, you need to provide the Palette endpoint, in addition to
    either a registration token or QR code registration configuration. For more information about Edge host registration,
@@ -148,7 +148,7 @@ with the parameters.
 
 #### Configure Cloud Init Stages (Optional)
 
-9. Cloud-init stages allow you to configure your Edge host declaratively. For more information about cloud-init stages,
+4. Cloud-init stages allow you to configure your Edge host declaratively. For more information about cloud-init stages,
    refer to [Cloud-init Stages](../edge-configuration/cloud-init.md).
 
    To configure clout-init stages for your Edge host, use the `stages` block. For example, the following configuration
@@ -173,48 +173,48 @@ with the parameters.
 
 #### Configure Users
 
-10. If you would like to have SSH access to your Edge host, you must configure Operating System (OS) users on your Edge
-    host. You can do this using the `stages.initramfs.users` block. Replace `USERNAME` with the name of your user and
-    replace the value of the password with your password. You can also add the user to user groups, or add SSH keys to
-    the list of authorized keys for that user.
+5. If you would like to have SSH access to your Edge host, you must configure Operating System (OS) users on your Edge
+   host. You can do this using the `stages.initramfs.users` block. Replace `USERNAME` with the name of your user and
+   replace the value of the password with your password. You can also add the user to user groups, or add SSH keys to
+   the list of authorized keys for that user.
 
-```yaml
-#cloud-init
-stages:
- initramfs:
-   - users:
-       USERNAME:
-         passwd: ******
-         groups:
-         - sudo
-         ssh_authorized_keys:
-         - ssh-rsa AAAAB3N…
-     name: Create user and assign SSH key
-```
+   ```yaml
+   #cloud-init
+   stages:
+   initramfs:
+     - users:
+         USERNAME:
+           passwd: ******
+           groups:
+           - sudo
+           ssh_authorized_keys:
+           - ssh-rsa AAAAB3N…
+       name: Create user and assign SSH key
+   ```
 
 #### Configure Proxy Settings (Optional)
 
-11. Optionally, you can configure HTTP/HTTPS proxy settings for your Edge host. This instructs the Edge host OS as well
-    as the Palette agent to use the proxy server for outbound communications. Use the parameters from the table below to
-    configure proxy settings for your Edge host.
+6. Optionally, you can configure HTTP/HTTPS proxy settings for your Edge host. This instructs the Edge host OS as well
+   as the Palette agent to use the proxy server for outbound communications. Use the parameters from the table below to
+   configure proxy settings for your Edge host.
 
-    These settings are different from the proxy settings you provide to the `.arg` file. The settings in the `.arg` file
-    apply to the builder machine during the build process, while the settings in `user-data` apply to the Edge host
-    after installation.
+   These settings are different from the proxy settings you provide to the `.arg` file. The settings in the `.arg` file
+   apply to the builder machine during the build process, while the settings in `user-data` apply to the Edge host after
+   installation.
 
-    | Parameter                | Description                                                                           |
-    | ------------------------ | ------------------------------------------------------------------------------------- |
-    | `siteNetwork.httpProxy`  | The URL of the HTTP proxy endpoint.                                                   |
-    | `siteNetwork.httpsProxy` | The URL of the HTTPS proxy endpoint.                                                  |
-    | `siteNetwork.noProxy`    | The list of IP addresses or CIDR ranges to exclude routing through the network proxy. |
+   | Parameter                | Description                                                                           |
+   | ------------------------ | ------------------------------------------------------------------------------------- |
+   | `siteNetwork.httpProxy`  | The URL of the HTTP proxy endpoint.                                                   |
+   | `siteNetwork.httpsProxy` | The URL of the HTTPS proxy endpoint.                                                  |
+   | `siteNetwork.noProxy`    | The list of IP addresses or CIDR ranges to exclude routing through the network proxy. |
 
-    :::warning
+   :::warning
 
-    The proxy settings in user data configure Palette services to use the proxy network. However, these settings do not
-    automatically apply to application workloads. To configure applications to use the proxy configurations, refer to
-    [Configure Applications to Use Proxy Server](../../cluster-management/cluster-proxy.md).
+   The proxy settings in user data configure Palette services to use the proxy network. However, these settings do not
+   automatically apply to application workloads. To configure applications to use the proxy configurations, refer to
+   [Configure Applications to Use Proxy Server](../../cluster-management/cluster-proxy.md).
 
-    :::
+   :::
 
 #### Configure Post-Installation Behavior (Optional)
 
