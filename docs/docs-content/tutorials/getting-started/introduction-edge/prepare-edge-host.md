@@ -99,9 +99,9 @@ cluster.
 
 Insert the USB drive containing the flashed Edge installer ISO into the powered-off bare metal device.
 
-Power on the device and enter the Basic Input/Output System (BIOS) interface. You can accomplish this by pressing F2,
-F1, or F10 immediately after powering on the device. The exact key varies by manufacturer. Consult the manufacturer
-instructions to learn how to enter the BIOS interface.
+Power on the device and enter the Basic Input/Output System (BIOS) interface. You can accomplish this by pressing
+**F2**, **F1**, or **F10** immediately after powering on the device. The exact key varies by manufacturer. Consult the
+manufacturer instructions to learn how to enter the BIOS interface.
 
 In the BIOS interface, navigate to the boot sequence section and locate the boot sequence list.
 
