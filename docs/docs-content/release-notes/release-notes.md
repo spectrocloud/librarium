@@ -70,9 +70,9 @@ Check out the [Downloads](../downloads/cli-tools.md) page to find the compatible
 #### Breaking Changes {#breaking-changes-automation-4.6.c}
 
 - The Terraform resource `spectrocloud_macros` no longer supports the `project` field. Use the new `context` field to
-  specify the project or tenant scope for your macro. Additionally, you must use the `project_name` provider configuration
-  parameter to specify a project context. For more information, refer to the Spectro Cloud Terraform provider
-  [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
+  specify the project or tenant scope for your macro. Additionally, you must use the `project_name` provider
+  configuration parameter to specify a project context. For more information, refer to the Spectro Cloud Terraform
+  provider [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
 
 #### Features
 
