@@ -283,8 +283,10 @@ Follow the steps below to create a custom pack.
           <manifest2 parameters>
    ```
 
-4. (Optional) If you are designing a pack that can be used in Edge cluster profiles in local environments, ensure you
-   include all images that are referenced in the pack in the `pack.content.images` section of the `values.yaml` file.
+4. (Optional) If you are designing a pack that can be used in Edge cluster profiles in the `local` management mode,
+   ensure you include all images that are referenced in the pack in the `pack.content.images` section of the
+   `values.yaml` file. For more information about local deployments with primary registries, refer to
+   [Deploy with a Primary Registry](../clusters/edge/site-deployment/deploy-custom-registries/deploy-primary-registry.md).
 
    ```yaml
    pack:
@@ -294,9 +296,8 @@ Follow the steps below to create a custom pack.
          - gcr.io/example-image-two:latest
    ```
 
-   If you do not specify the images in the `pack.content.images` field, if your Edge cluster operates in a local
-   environment without a connection to a Palette instance, the images will not be loaded and deployment of the
-   application will fail.
+   If you do not specify the images in the `pack.content.images` field and your cluster is a local cluster with an
+   in-cluster primary registry, the images will not be loaded and deployment of the application will fail.
 
 5. A pack must have the logo file named `logo.png` and must be copied into the pack directory.
 

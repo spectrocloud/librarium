@@ -27,8 +27,6 @@ examples to create custom add-on packs.
 
 - [Manifests](#manifests)
 
-<br />
-
 ## Helm Charts
 
 The following example shows how to build the Prometheus-Grafana monitoring pack and push to a pack registry server using
@@ -224,8 +222,9 @@ the Spectro Cloud CLI:
     ...
    ```
 
-6. (Optional) If you are designing a pack that can be used in Edge cluster profiles in local environments, ensure you
-   include all images that are referenced in the pack in the `pack.content.images` section of the `values.yaml` file.
+6. (Optional) If you are designing a pack that can be used in Edge cluster profiles in the `local` management mode,
+   ensure you include all images that are referenced in the pack in the `pack.content.images` section of the
+   `values.yaml` file.
 
    ```yaml
    pack:
@@ -235,9 +234,8 @@ the Spectro Cloud CLI:
          - gcr.io/example-image-two:latest
    ```
 
-   If you do not specify the images in the `pack.content.images` field, if your Edge cluster operates in a local
-   environment without a connection to a Palette instance, the images will not be loaded and deployment of the
-   application will fail.
+   If you do not specify the images in the `pack.content.images` field and your cluster is a local cluster with an
+   in-cluster primary registry, the images will not be loaded and deployment of the application will fail.
 
 7. Log in to the pack registry using the following command:
 
@@ -412,8 +410,10 @@ Spectro Cloud CLI.
        authPassword: "welcome123"
    ```
 
-6. (Optional) If you are designing a pack that can be used in Edge cluster profiles in local environments, ensure you
-   include all images that are referenced in the pack in the `pack.content.images` section of the `values.yaml` file.
+6. (Optional) If you are designing a pack that can be used in Edge cluster profiles in the `local` management mode,
+   ensure you include all images that are referenced in the pack in the `pack.content.images` section of the
+   `values.yaml` file. For more information about local deployments with primary registries, refer to
+   [Deploy with a Primary Registry](../clusters/edge/site-deployment/deploy-custom-registries/deploy-primary-registry.md).
 
    ```yaml
    pack:
@@ -423,9 +423,8 @@ Spectro Cloud CLI.
          - gcr.io/example-image-two:latest
    ```
 
-   If you do not specify the images in the `pack.content.images` field, if your Edge cluster operates in a local
-   environment without a connection to a Palette instance, the images will not be loaded and deployment of the
-   application will fail.
+   If you do not specify the images in the `pack.content.images` field and your cluster is a local cluster with an
+   in-cluster primary registry, the images will not be loaded and deployment of the application will fail.
 
 7. Log in to the pack registry using the following command:
 
