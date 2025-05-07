@@ -10,8 +10,8 @@ sidebar_position: 50
 tags: ["getting-started", "tutorial", "edge"]
 ---
 
-Edge clusters are Kubernetes clusters configured on Edge hosts. These hosts can be either bare metal or virtual
-machines, and have the Palette agent installed.
+Edge clusters are Kubernetes clusters configured on Edge hosts. These hosts can be either bare metal or virtual machines
+and must have the Palette agent installed.
 
 In this tutorial, you will learn how to install the Palette agent on your virtual or physical host. You will boot the
 host using the Edge installer ISO created in the [Build Edge Artifacts](./build-edge-artifacts.md) tutorial, and then
