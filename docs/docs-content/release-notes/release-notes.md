@@ -74,6 +74,10 @@ compatible version of the Palette CLI.
 
 ### Docs and Education
 
+- We have added a new [Downloads](../downloads/downloads.md) tab to the top navigation bar of the Spectro Cloud
+  Documentation site. This tab provides a centralized location for downloading all support tools and utilities for
+  Palette.
+
 ### Packs
 
 #### Pack Notes

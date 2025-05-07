@@ -10,10 +10,6 @@ tags: ["edge"]
 You can update existing local clusters in a locally managed Edge host from Local UI by uploading a new cluster profile
 version. This guide explains how to update an existing cluster in Local UI.
 
-:::preview
-
-:::
-
 ## Prerequisites
 
 - Network access to the Edge device’s IP and port where Local UI is exposed. The default port is 5080.

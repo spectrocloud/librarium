@@ -16,10 +16,6 @@ be able to access Local UI.
 - In centrally managed Edge hosts, you cannot use the cluster-related functionalities because the cluster is managed by
   Palette, but you can still utilize Local UI to configure and manage the Edge host itself.
 
-:::preview
-
-:::
-
 ![A diagram illustrating how users and use EdgeForge and Local UI to deploy clusters without a Palette connection](/clusters_edge_emc_workflow.webp)
 
 ## Get Started

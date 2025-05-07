@@ -17,10 +17,6 @@ manage clusters, upload content bundles, or cluster definition on a centrally ma
 manage the cluster instead. For more information, refer to
 [Create Cluster Definition](../../site-deployment/cluster-deployment.md).
 
-:::preview
-
-:::
-
 Refer to the following resources to learn how to upload content and create a cluster using Local UI:
 
 - [Upload Content Bundle](./upload-content-bundle.md)

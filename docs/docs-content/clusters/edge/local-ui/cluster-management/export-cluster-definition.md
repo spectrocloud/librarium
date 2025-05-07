@@ -14,10 +14,6 @@ You can export the cluster definition using the Palette CLI, Palette Edge CLI, o
 user-friendly interface but requires a machine with X86_64 architecture. If you are using an ARM64 machine, such as
 Apple Silicon, use the API approach instead.
 
-:::preview
-
-:::
-
 ## Export Cluster Definition Using the CLI
 
 You can export cluster definitions using either the Palette and Palette Edge CLI. This approach also allows you to

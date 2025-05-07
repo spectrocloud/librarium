@@ -15,10 +15,6 @@ to create, update, scale, and delete the cluster. If your situation changes and 
 cluster, you can choose to [pair your local cluster to a Palette instance](./local-to-central.md) for centralized
 management.
 
-:::preview
-
-:::
-
 ## Limitations
 
 - For multi-node clusters, all hosts must be deployed in the same deployment mode. For more information, refer to

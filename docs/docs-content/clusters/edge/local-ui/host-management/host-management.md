@@ -14,10 +14,6 @@ host from Local UI.
 Host management features, with exception of resetting the Edge host to factory setting, are available to both centrally
 and locally Edge hosts.
 
-:::preview
-
-:::
-
 Refer to the following resources to learn how to configure your Edge host using Local UI:
 
 - [Access Local UI](./access-console.md)

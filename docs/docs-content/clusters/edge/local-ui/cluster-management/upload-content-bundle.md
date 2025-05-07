@@ -17,10 +17,6 @@ rest of the group of linked hosts.
 This page guides you through how to build a content bundle and upload it to an Edge host using the Edge management
 console.
 
-:::preview
-
-:::
-
 ## Prerequisites
 
 - An Edge host with installed with Edge Installer 4.3 or later using the local management mode.
