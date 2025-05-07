@@ -149,3 +149,8 @@ You may use one of our built-in registry packs or your own custom OCI registry.
 2. Use the credentials you provided in the cluster profile to log in to the registry.
 
 3. Confirm that the cluster images have been pushed to the registry in the corresponding projects.
+
+## Next Steps
+
+You can upload one or more content bundles to your primary registry using Local UI. Refer to
+[Upload Content Bundle](../../local-ui/cluster-management/upload-content-bundle.md) for more information.
