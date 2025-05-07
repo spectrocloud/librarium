@@ -64,13 +64,17 @@ jobs:
             ! -iname '*cve*' \
             ! -path 'docs/docs-content/security-bulletins/*' \
             ! -path 'docs/docs-content/security-bulletins/**/*' \
-            | xargs vale --output line --no-exit > vale-spellcheck-results.txt
-            cat vale-spellcheck-results.txt
+            | xargs vale --output line --no-exit > vale-spellcheck-results-unfiltered.txt
+          # Remove all lines contained in vale-spellcheck-ignore.txt using inverted matches -v.
+          # Add || true to prevent the job from failing if no lines are found after filtering.
+          grep -vFf vale-spellcheck-ignore.txt vale-spellcheck-results-unfiltered.txt > vale-spellcheck-results.txt || true
+
 
       - name: Check Vale Results
         run: |
-          # Check if the Vale output contains any errors. It will output "0 errors" if no errors are found.           
-          if grep -q "0 errors" vale-spellcheck-results.txt; then
+          # Check if the Vale output contains any errors. 
+          # It will output "0 errors" if no errors are found or be empty if all errors are ignored.           
+          if [ ! -s vale-spellcheck-results.txt ] || grep -q "0 errors" vale-spellcheck-results.txt; then
             echo "✅ No spellcheck errors found."
             echo "VALE_ERRORS_FOUND=false" >> $GITHUB_ENV
           else
@@ -87,10 +91,10 @@ jobs:
           if-no-files-found: error
           retention-days: 7
       
-      - name: Clean up report
+      - name: Clean up reports
         run: |
           # Remove the vale-spellcheck-results.txt file
-          rm -f vale-spellcheck-results.txt
+          rm -f vale-spellcheck-results.txt  vale-spellcheck-results-unfiltered.txt
 
       - name: Slack Notification No Vale Errors
         if: ${{ env.VALE_ERRORS_FOUND == 'false'}}
