@@ -111,6 +111,13 @@ If you already know the agent version you want to use for your cluster, you can 
    [Export Cluster Definition](../local-ui/cluster-management/export-cluster-definition.md) to build a content bundle
    using your new cluster profile and export the cluster definition.
 
+   :::warning
+
+   If you are upgrading to an agent version that is 4.6.16 or later, use the Palette CLI. Do not use the Palette Edge
+   CLI.
+
+   :::
+
 8. Upload the content bundle to your cluster through Local UI. For more information, refer to
    [Upload Content Bundle](../local-ui/cluster-management/upload-content-bundle.md).
 
