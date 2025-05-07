@@ -259,7 +259,7 @@ Follow the steps below to create a custom pack.
 
    :::info
 
-   A values.yaml file is mandatory for every pack. For an OS pack, there are typically no configurable parameters, but
+   A `values.yaml` file is mandatory for every pack. For an OS pack, there are typically no configurable parameters, but
    an empty file still needs to be added to the OS pack.
 
    :::
@@ -301,7 +301,7 @@ Follow the steps below to create a custom pack.
 
 5. A pack must have the logo file named `logo.png` and must be copied into the pack directory.
 
-6. Login to the pack registry using the following command:
+6. Log in to the pack registry using the following command:
 
    ```bash
     spectro registry login [REGISTRY_SERVER]
