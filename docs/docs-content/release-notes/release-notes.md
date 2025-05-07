@@ -17,7 +17,6 @@ tags: ["release-notes"]
 
 - Fixed an issue that caused the deletion of [GCP clusters](../clusters/public-cloud/gcp/gcp.md) to fail for clusters
   associated with cloud accounts that have been created on older Palette versions.
-- Fixed an issue that caused cross-tenant access to be possible when using `v1/tenants` API endpoints.
 
 ## May 5, 2025 - Release 4.6.24
 
