@@ -49,7 +49,7 @@ After an edit has been made, the new settings will apply after the host reboots.
     poweroff: false
   stylus:
     featureGate: UserDataForm
-    installationMode: airgap
+    managementMode: local
   ```
 
 - Access to [Local UI](./access-console.md).
@@ -83,13 +83,13 @@ After an edit has been made, the new settings will apply after the host reboots.
 
 6. In the **Palette** section, you can specify the following settings.
 
-   | Field                   | Description                                                                                                                                                                                                                                               |
-   | ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | Cluster Management Mode | This parameter decides whether the cluster is managed centrally by Palette or locally via Local UI. This corresponds to the `stylus.installationMode` parameter. All other fields in this section are only available if you choose **Centrally Managed**. |
-   | Endpoint                | The Palette API endpoint that the host will communicate with. This corresponds to the `stylus.site.paletteEndpoint` parameter.                                                                                                                            |
-   | Insecure                | Whether a client verifies the server's certificate chain and hostname. This corresponds to the `stylus.site.insecureSkipVerify` parameter.                                                                                                                |
-   | Registration Token      | This parameter contains the registration token the host will use to register itself with Palette. This corresponds to the `stylus.site.edgeHostToken` parameter.                                                                                          |
-   | Project Name            | This parameter specifies the name of the project that the host is registered in. This corresponds to the `stylus.site.projectName` parameter.                                                                                                             |
+   | Field                   | Description                                                                                                                                                                                                                                             |
+   | ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | Cluster Management Mode | This parameter decides whether the cluster is managed centrally by Palette or locally via Local UI. This corresponds to the `stylus.managementMode` parameter. All other fields in this section are only available if you choose **Centrally Managed**. |
+   | Endpoint                | The Palette API endpoint that the host will communicate with. This corresponds to the `stylus.site.paletteEndpoint` parameter.                                                                                                                          |
+   | Insecure                | Whether a client verifies the server's certificate chain and hostname. This corresponds to the `stylus.site.insecureSkipVerify` parameter.                                                                                                              |
+   | Registration Token      | This parameter contains the registration token the host will use to register itself with Palette. This corresponds to the `stylus.site.edgeHostToken` parameter.                                                                                        |
+   | Project Name            | This parameter specifies the name of the project that the host is registered in. This corresponds to the `stylus.site.projectName` parameter.                                                                                                           |
 
 7. In the **Advanced Configurations** section, you can configure external registry settings and cloud-init stages for
    your host. If you choose to enable external registries, you will need to provide the domain name of the registry as

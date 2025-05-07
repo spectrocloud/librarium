@@ -1,21 +1,21 @@
 ---
 sidebar_label: "Configure Palette Agent Version"
 title: "Configure Palette Agent Version"
-description: "Learn how to upgrade the Palette agent on airgap clusters. "
+description: "Learn how to upgrade the Palette agent on local clusters. "
 hide_table_of_contents: false
 sidebar_position: 30
 tags: ["edge", "architecture"]
 ---
 
-In connected clusters, the Palette agent gets upgraded automatically with Palette upgrades, unless you explicitly
-[pause upgrades](../../cluster-management/platform-settings/pause-platform-upgrades.md). In airgap clusters, this does
-not happen automatically. When you want to upgrade the agent version, you can include the new agent version in a new
-cluster profile, and upgrade the cluster using the new profile.
+In centrally managed clusters, the Palette agent gets upgraded automatically with Palette upgrades, unless you
+explicitly [pause upgrades](../../cluster-management/platform-settings/pause-platform-upgrades.md). In local clusters,
+this does not happen automatically. When you want to upgrade the agent version, you can include the new agent version in
+a new cluster profile, and upgrade the cluster using the new profile.
 
 This page teaches you how to identify the matching agent version of a Palette instance, as well as how to specify a
 Palette agent package in the Operating System (OS) pack of a cluster profile. This is useful for upgrading the Palette
-agent on an airgap Edge cluster and for launching new connected clusters while using an older version of the Palette
-agent.
+agent on a local Edge cluster and for launching new centrally managed clusters while using an older version of the
+Palette agent.
 
 ## Prerequisites
 
@@ -105,7 +105,7 @@ If you already know the agent version you want to use for your cluster, you can 
 
 <Tabs groupId="deploy">
 
-<TabItem value="Airgap">
+<TabItem value="Local">
 
 7. Follow [Build Content Bundles](../edgeforge-workflow/palette-canvos/build-content-bundle.md) and
    [Export Cluster Definition](../local-ui/cluster-management/export-cluster-definition.md) to build a content bundle
@@ -119,7 +119,7 @@ If you already know the agent version you want to use for your cluster, you can 
 
 </TabItem>
 
-<TabItem value="Connected">
+<TabItem value="Central">
 
 7. Refer to [Update a Cluster](../../cluster-management/cluster-updates.md) to update your cluster with the new profile
    version.
@@ -132,7 +132,7 @@ If you already know the agent version you want to use for your cluster, you can 
 
 <Tabs groupId="deploy">
 
-<TabItem value="Airgap">
+<TabItem value="Local">
 
 1. Log in to Local UI. Refer to [Access Local UI Console](../local-ui/host-management/access-console.md) for guidance.
 
@@ -140,7 +140,7 @@ If you already know the agent version you want to use for your cluster, you can 
 
 </TabItem>
 
-<TabItem value="Connected">
+<TabItem value="Central">
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 

@@ -25,7 +25,7 @@ cluster is created for the first time, all images from add-on packs downloaded f
 locally in the Harbor registry. Subsequent image pulls from the cluster are made to the local Harbor registry. This
 allows your Edge cluster to reboot containers or add new nodes without being connected to the external network.
 
-If you specified the installation mode of the Edge Installer to be `airgap`, any images that were included in the Edge
+If you specified the management mode of the Edge Installer to be `local`, any images that were included in the Edge
 Installer ISO will also be loaded into the Harbor registry. For more information about building content bundles, refer
 to [Build Content Bundle](../../edgeforge-workflow/palette-canvos/build-content-bundle.md) and
 [Build Edge Artifacts with Content Bundles](../../edgeforge-workflow/palette-canvos/palette-canvos.md).

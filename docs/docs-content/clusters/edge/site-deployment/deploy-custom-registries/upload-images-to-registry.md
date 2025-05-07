@@ -284,8 +284,7 @@ Palette Edge CLI to download the images and upload them to the external registry
     --cluster-profile-ids profile-ID \
     --palette-endpoint palette-API-endpoint \
     --outfile output-file-name \
-    --cred-file-path registry-creds.json \
-    --include-palette-content
+    --cred-file-path registry-creds.json
    ```
 
 9. Issue the following command to upload the images to the external registry. Replace `path-to-content-bundle` with the

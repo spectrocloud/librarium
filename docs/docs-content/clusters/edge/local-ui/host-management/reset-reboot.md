@@ -41,7 +41,7 @@ Edge host is rebooting.
 
 ## Reset Edge Host
 
-You can reset an airgapped Edge host from Local UI. This restores the Edge host to the state right after the
+You can reset an locally managed Edge host from Local UI. This restores the Edge host to the state right after the
 [initial configuration](../../site-deployment/site-installation/initial-setup.md) is completed in the Terminal User
 Interface (TUI).
 
