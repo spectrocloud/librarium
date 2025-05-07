@@ -151,5 +151,5 @@ that the layers you added are correct, and click **Finish Configuration** to cre
 ## Next Steps
 
 In this tutorial, you learned how to create a cluster profile for your Edge deployment. We recommend proceeding to the
-[Prepare Edge Host] tutorial to learn how to prepare your virtual or physical device to become a node of an Edge
-cluster.
+[Prepare Edge Host](./prepare-edge-host.md) tutorial to learn how to prepare your virtual or physical device to become a
+node of an Edge cluster.
