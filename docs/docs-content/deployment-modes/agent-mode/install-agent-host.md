@@ -30,7 +30,7 @@ Palette. You will then create a cluster profile and use the registered host to d
   | AMD64             | Ubuntu                            | K3s                                        | Flannel                           | :white_check_mark: |
   | AMD64             | Rocky Linux 8.10 (Green Obsidian) | Palette eXtended Kubernetes - Edge (PXK-E) | Cilium                            | :white_check_mark: |
 
-- Clusters with Flannel CNI is not verified for local management mode deployments.
+- Clusters with Flannel CNI are not verified for local management mode deployments.
 
 - Agent mode is only supported on Linux distributions that have
   [`systemd`](https://www.freedesktop.org/software/systemd/man/latest/systemd.html) installed and available.
@@ -38,8 +38,8 @@ Palette. You will then create a cluster profile and use the registered host to d
 - The FIPS-compliant version of Agent Mode is only available for Red Hat Enterprise Linux (RHEL) and Rocky Linux 8
   systems.
 
-- ARM64 support for local management mode clusters is not available. This is because Harbor, which is required for local
-  management mode clusters, does not have an ARM64 image.
+- ARM64 support for clusters in local management mode is not available. This is because Harbor, which is required for
+  local management mode, does not have an ARM64 image.
 
 ## Prerequisites
 
@@ -691,7 +691,8 @@ internet.
     ```
 
 17. Complete the cluster profile creation process by filling out the remaining layers. In the application layer, make
-    sure you include the **Harbor Edge-Native Config** pack. This pack is required for local management mode clusters.
+    sure you include the **Harbor Edge-Native Config** pack. This pack is required for clusters in local management
+    mode.
 
 18. Follow the steps in
     [Export Cluster Definition](../../clusters/edge/local-ui/cluster-management/export-cluster-definition.md) to export
