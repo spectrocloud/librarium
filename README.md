@@ -1060,7 +1060,7 @@ vale content/docs/08-user-management.md
 
 ## Vale
 
-The [vale.ini](vale.ini) file contains the configuration for Vale. We use the
+The [.vale.ini](.vale.ini) file contains the configuration for Vale. We use the
 [Spectro Cloud Vale](https://github.com/spectrocloud/spectro-vale-pkg) package to enforce our writing style.
 
 ## Check Formatting
