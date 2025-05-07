@@ -1,7 +1,7 @@
 ---
-sidebar_label: "Prepare User Data and Build Configuration"
-title: "Prepare User Data and Build Configuration"
-description: "Learn about building your staging user data"
+sidebar_label: "Prepare User Data and Argument Files"
+title: "Prepare User Data and Argument Files"
+description: "Learn about building your staging user data and .arg file"
 hide_table_of_contents: false
 sidebar_position: 0
 tags: ["edge"]
@@ -33,8 +33,14 @@ After installation, you can also use Local UI to make edits to the user data fil
 
 This article guides you through several important parameters in the `.arg` file and configuration blocks in the
 `user-data` file. However, you can use many additional parameters to further customize your installation. Review the
-Edge [Install Configuration](../edge-configuration/installer-reference.md) resource to learn more about all the
-supported configuration parameters you can use in the configuration user data.
+[Edge Artifact Build Configurations](../edgeforge-workflow/palette-canvos/arg.md) and
+[Installer Reference](../edge-configuration/installer-reference.md) resource to learn more about all the supported
+configuration parameters you can use in the configuration user data.
+
+The [Appliance Studio](./applicance-studio.md) is a lightweight Graphic User Interface (GUI) that allows you to design
+both files with zero risk of syntax errors and is our recommended approach to creating both files. However, since both
+`.arg` and `user-data` are plain text files, you can also manually create and edit these files once you are familiar
+with the parameters.
 
 <Tabs>
 
@@ -234,6 +240,10 @@ stages:
 </TabItem>
 
 <TabItem value="EdgeForge Studio">
+
+## Prerequisites
+
+## Procedure
 
 ### Create .arg file
 
