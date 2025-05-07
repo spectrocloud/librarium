@@ -301,19 +301,19 @@ Follow the steps below to create a custom pack.
 
 5. A pack must have the logo file named `logo.png` and must be copied into the pack directory.
 
-6. Log in to the pack registry using the following command:
+6. Log in to the pack registry using the following command.
 
    ```bash
     spectro registry login [REGISTRY_SERVER]
    ```
 
-7. Push the newly defined pack to the pack registry using the following command:
+7. Push the newly defined pack to the pack registry using the following command.
 
    ```bash
     spectro pack push [PACK_DIR_LOCATION] --registry-server [REGISTRY_SERVER]
    ```
 
-8. To overwrite contents of a previously deployed pack, use the force option as follows:
+8. To overwrite contents of a previously deployed pack, use the force option as follows.
 
    ```bash
     spectro pack push [PACK_DIR_LOCATION] -f --registry-server [REGISTRY_SERVER]

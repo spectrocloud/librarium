@@ -243,7 +243,7 @@ the Spectro Cloud CLI:
     spectro registry login [REGISTRY_SERVER]
    ```
 
-8. Using the Spectro CLI, push the newly built pack to the pack registry:
+8. Using the Spectro CLI, push the newly built pack to the pack registry.
 
    ```bash
     spectro pack push prometheus-grafana --registry-server [REGISTRY-SERVER]
@@ -426,13 +426,13 @@ Spectro Cloud CLI.
    If you do not specify the images in the `pack.content.images` field and your cluster is a local cluster with an
    in-cluster primary registry, the images will not be loaded and deployment of the application will fail.
 
-7. Log in to the pack registry using the following command:
+7. Log in to the pack registry using the following command.
 
    ```bash
     spectro registry login [REGISTRY_SERVER]
    ```
 
-8. Using Spectro Cloud CLI push the newly built pack to the pack registry:
+8. Using Spectro Cloud CLI push the newly built pack to the pack registry.
 
    ```bash
     spectro pack push permission-manager --registry-server [REGISTRY-SERVER]
