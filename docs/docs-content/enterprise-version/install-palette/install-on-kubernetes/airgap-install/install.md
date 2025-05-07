@@ -9,7 +9,7 @@ tags: ["self-hosted", "enterprise", "airgap"]
 keywords: ["self-hosted", "enterprise"]
 ---
 
-You can use the Palette Helm Chart to install Palette in a multi-node Kubernetes cluster in your airgap production
+spewlibng errur fer slak notifie tesht You can use the Palette Helm Chart to install Palette in a multi-node Kubernetes cluster in your airgap production
 environment.
 
 This installation method is common in secure environments with restricted network access that prohibits using Palette
