@@ -24,8 +24,8 @@ be enabled per Edge host by someone with sufficient permissions.
 
 ## Prerequisites
 
-- In your Edge host's `sshd` configuration, `PasswordAuthentication` must be set to `true`. In most cases, `true` is the default value for this attribute.
-  attribute is set to `true` by default.
+- In your Edge host's `sshd` configuration, `PasswordAuthentication` must be set to `true`. In most cases, `true` is the
+  default value for this attribute.
 
 - An Edge host registered with your Palette account. The Edge host may or may not be part of an Edge cluster.
 
