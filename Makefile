@@ -20,7 +20,8 @@ ALOGLIA_CONFIG=$(shell cat docsearch.dev.config.json | jq -r tostring)
 # Remove all security-bulletins and cve-reports.md because they are rate limited by nvd.nist.gov
 # Remove oss-licenses.md because they are rate limited by npmjs.com
 # Remove all /deprecated paths because we don't want to maintain their links
-VERIFY_URL_PATHS=$(shell find ./docs -name "*.md" | cut -c 3- | \
+VERIFY_URL_PATHS=$(shell find ./docs ./_partials \( -name "*.md" -o -name "*.mdx" \) | \
+ 	sed 's|^\./||' | \
 	sed '/security-bulletins/d' | \
 	sed '/cve-reports/d' | \
 	sed '/oss-licenses/d' | \
@@ -316,6 +317,12 @@ verify-rate-limited-links-ci: ## Check for broken URLs in production in a GitHub
 	@jq '[.links[] | select(.url | test("^https?://")) | select(.status >= 400)]' temp_rate_limit_report.json > filtered_rate_limit_report.json
 	@rm temp_rate_limit_report.json
 	@mv filtered_rate_limit_report.json scripts/link_rate_limit_report.json
+
+verify-github-links: ## Check for broken GitHub links
+	@echo "Checking for broken GitHub links in CI environment..."
+	@rm link_report_github.txt || echo "No report exists. Proceeding to scan step"
+	./scripts/url-checker-github.sh
+	@mv link_report_github.txt scripts/link_report_github.txt
 
 ###@ Image Formatting
 
