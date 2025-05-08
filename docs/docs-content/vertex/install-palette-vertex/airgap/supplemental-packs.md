@@ -62,6 +62,7 @@ Review the following table to determine which pack binaries you need to download
 | `airgap-vertex-pack-kubernetes-rke2-1.28.12-rke2r1-build20240717.bin` | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-kubernetes-rke2-1.28.12-rke2r1-build20240717.bin |
 | `airgap-vertex-pack-kubernetes-rke2-1.29.7-rke2r1-build20240717.bin`  | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-kubernetes-rke2-1.29.7-rke2r1-build20240717.bin  |
 | `airgap-vertex-pack-kubernetes-rke2-1.30.3-rke2r1-build20240717.bin`  | https://software-private.spectrocloud.com/airgap-vertex/packs/airgap-vertex-pack-kubernetes-rke2-1.30.3-rke2r1-build20240717.bin  |
+| `airgap-thirdparty-4.4.bin`                                           | https://software-private.spectrocloud.com/airgap/thirdparty/airgap-thirdparty-4.4.bin                                             |
 
 ### Usage Instructions
 

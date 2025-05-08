@@ -72,6 +72,7 @@ Review the following table to determine which pack binaries you need to download
 | `airgap-pack-prometheus-operator-58.6.0.bin`                   | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-prometheus-operator-58.6.0.bin                   |
 | `airgap-pack-reloader-1.0.74.bin`                              | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-reloader-1.0.74.bin                              |
 | `airgap-pack-reloader-1.0.107.bin`                             | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-reloader-1.0.107.bin                             |
+| `airgap-thirdparty-4.4.bin`                                    | https://software-private.spectrocloud.com/airgap/thirdparty/airgap-thirdparty-4.4.bin                               |
 | `airgap-pack-volume-snapshot-controller-8.0.1.bin`             | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-volume-snapshot-controller-8.0.1.bin             |
 
 ## Download Instructions
@@ -134,8 +135,8 @@ All binaries require the OCI environment variables to be set and for the registr
 In an airgap installation, you need to upload the conformance packs to the self-hosted OCI registry. The conformance
 binary contains the packs required to use the [Compliance Scan](../../../clusters/cluster-management/compliance-scan.md)
 capabilities. The conformance binary can be found in the pack table above. The binary has the prefix
-`airgap-thirdparty-`. Follow the [Usage Instructions](#usage-instructions) to upload the conformance packs to the OCI
-registry.
+`airgap-thirdparty-`. Follow the [Download Instructions](#download-instructions) to upload the conformance packs to the
+OCI registry.
 
 ## Additional OVAs
 
