@@ -146,7 +146,7 @@ Use the following steps to enable OIDC SSO in Palette with Microsoft Entra ID.
       Entra will send these groups by **Group ID**, not by name. If your security groups are synchronized into Entra
       from on-premise Active Directory, you will have the option to have Entra send the groups by **sAMAccountName**
       instead. Note that this will NOT work for any groups created in Entra directly.
-    - Alternatively, selecting **Groups assigned to the application** will will make Entra list membership of only
+    - Alternatively, selecting **Groups assigned to the application** will make Entra list membership of only
       groups that the user is both a member of AND that are assigned to the `palette-oidc` Enterprise Application. This
       approach is more suitable for when users are members of large amounts of groups. It however is only suitable to
       use when you have an Entra P1 or higher subscription, as the ability to assign groups to applications requires
@@ -159,7 +159,7 @@ Use the following steps to enable OIDC SSO in Palette with Microsoft Entra ID.
     - If you selected **Security groups**, Entra will send the groups by Group ID. If that is ok, just click **Add** to
       complete the wizard.
       - If your security groups are coming from an on-premise Active Directory environment and you want to send the
-        groups by by **sAMAccountName** instead, adjust the **Customize token properties by type** secton and select the
+        groups by **sAMAccountName** instead, adjust the **Customize token properties by type** section and select the
         `sAMAccountName` option for all three items (**ID**, **Access** and **SAML**). Then click **Add** to complete
         the wizard.
     - If you selected **Groups assigned to the application**, Entra will send the groups by Group ID. If that is ok,
