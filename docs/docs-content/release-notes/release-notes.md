@@ -88,6 +88,12 @@ Check out the [CLI Tools](../downloads/cli-tools.md) page to find the compatible
 
 #### Pack Notes
 
+<!-- prettier-ignore-start -->
+
+- The <VersionedLink text="BYOS - Agent Mode" url="integrations/packs/?pack=byoi-agent-mode" /> version 1.0.0 pack is now deprecated. We recommend using the <VersionedLink text="BYOS Edge OS" url="integrations/packs/?pack=edge-native-byoi" /> version 2.1.0 pack instead.
+
+<!-- prettier-ignore-end -->
+
 #### OS
 
 | Pack Name | New Version |
