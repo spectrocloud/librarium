@@ -354,8 +354,8 @@ stylus:
       separator: ":"
 ```
 
-You can specify tags from a script by using the `tagsFromScript` parameter object. The script must be bash script that is executable and
-return a JSON object that contains the tags in the following format.
+You can specify tags from a script by using the `tagsFromScript` parameter object. The script must be bash script that
+is executable and return a JSON object that contains the tags in the following format.
 
 ```json hideClipboard
 {
