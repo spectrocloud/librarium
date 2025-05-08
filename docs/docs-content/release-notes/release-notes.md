@@ -126,6 +126,13 @@ Check out the [CLI Tools](../downloads/cli-tools.md) page to find the compatible
 
 #### Deprecations and Removals
 
+## May 7, 2025 - Release 4.6.25
+
+### Bug Fixes
+
+- Fixed an issue that caused the deletion of [GCP clusters](../clusters/public-cloud/gcp/gcp.md) to fail for clusters
+  associated with cloud accounts that have been created on older Palette versions.
+
 ## May 5, 2025 - Release 4.6.24
 
 ### Bug Fixes
