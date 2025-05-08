@@ -58,8 +58,9 @@ Use the following steps to enable OIDC SSO in Palette with Microsoft Entra ID.
   | **Last Name**    | `family_name`        | The user's last name.                                  |
   | **Spectro Team** | `groups`             | The user's group memberships in the Identity Provider. |
 
-  Change the claim names in your IdP if they are different from the default values. Valid options for the "Email" claim are `email` or `preferred_username`.
-  
+  Change the claim names in your IdP if they are different from the default values. Valid options for the "Email" claim
+  are `email` or `preferred_username`.
+
   :::tip
 
   We recommend using `preferred_username` as this field will always be populated and match the user's login name for
