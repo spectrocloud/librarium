@@ -58,9 +58,8 @@ Use the following steps to enable OIDC SSO in Palette with Microsoft Entra ID.
   | **Last Name**    | `family_name`        | The user's last name.                                  |
   | **Spectro Team** | `groups`             | The user's group memberships in the Identity Provider. |
 
-  Change the claim names in your IdP if they are different from the default values. Valid options for the "Email" claim
-  or `email` or `preferred_username`.
-
+  Change the claim names in your IdP if they are different from the default values. Valid options for the "Email" claim are `email` or `preferred_username`.
+  
   :::tip
 
   We recommend using `preferred_username` as this field will always be populated and match the user's login name for
@@ -126,7 +125,7 @@ Use the following steps to enable OIDC SSO in Palette with Microsoft Entra ID.
 10. Select the **Add optional claim** button. Choose **Token type** as the **ID**, and add the claims `email`,
     `family_name`, `given_name` and `preferred_username`. When finished, click the **Add** button.
 
-    ![Add a claim button](/oidc-entra-id-images/user-management_saml-sso_palette-sso-with-entra-id-twooptionalclaims.webp)
+    ![Add a claim button](/oidc-entra-id-images/user-management_saml-sso_palette-sso-with-entra-id-optionalclaims.webp)
 
     :::info
 
@@ -224,6 +223,7 @@ Use the following steps to enable OIDC SSO in Palette with Microsoft Entra ID.
     | **Type**  | **Category**       | **Permission** | **Admin consent required** |
     | --------- | ------------------ | -------------- | -------------------------- |
     | Delegated | OpenId permissions | `email`        | No                         |
+    | Delegated | OpenId permissions | `openid`       | No                         |
     | Delegated | OpenId permissions | `profile`      | No                         |
     | Delegated | User               | `User.Read`    | No                         |
 
