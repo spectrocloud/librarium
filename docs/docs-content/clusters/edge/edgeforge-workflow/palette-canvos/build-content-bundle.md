@@ -140,10 +140,10 @@ require a local Harbor registry. Built-in registries must be configured using ei
     bundle.
 
 11. (Optional) If your cluster profile uses images or Helm charts that are hosted on private registries that require
-    authentication, you must use the `content registry-login` command to authenticate with the registry. Replace
-    `<registry-address>`, `<registry-username>`, and `<registry-password>` with your registry credentials. Refer to the
-    [content registry-login](../../../../automation/palette-cli/commands/content.md#registry-login) CLI command page for
-    more information.
+    authentication, you must use the `content registry-login` command to authenticate with each one of the registries.
+    Replace `<registry-address>`, `<registry-username>`, and `<registry-password>` with your registry credentials. Refer
+    to the [content registry-login](../../../../automation/palette-cli/commands/content.md#registry-login) CLI command
+    page for more information.
 
     ```shell
     palette content registry-login --registry <registry-address> \
@@ -163,19 +163,8 @@ require a local Harbor registry. Built-in registries must be configured using ei
      --output <output-directory>
     ```
 
-    :::warning
-
-    If you plan to create an airgap cluster or scale up an airgap cluster, ensure that you build the content bundle with
-    either the `--include-all-palette-images` or the `--include-core-palette-images-only` flag. The flag
-    `--include-all-palette-images` is enabled by default in the Palette CLI
-    [build](../../../../automation/palette-cli/commands/content.md#build) command. Content bundles uploaded to the
-    cluster that do not have either of these flags cannot be used to provision new nodes and will lead to failure during
-    cluster creation and scale-up.
-
-    :::
-
-    The result is a content bundle that you can use to preload into your installer. The content bundle will be a `.zst`
-    file. For more information about how to use a content bundles, refer to
+    The result is a content bundle that you can use to preload into your installer. The content bundle will be a
+    `.tar.zst` file. For more information about how to use a content bundles, refer to
     [Build Installer ISO](./build-installer-iso.md) or
     [Upload Content Bundle through Local UI](../../local-ui/cluster-management/upload-content-bundle.md).
 
@@ -204,8 +193,9 @@ require a local Harbor registry. Built-in registries must be configured using ei
     | `--cluster-definition-name`        | Filename of the cluster definition tgz file.                          |
     | `--cluster-definition-profile-ids` | List of cluster profile IDs to be included in the cluster definition. |
 
-    This command will generate an additional file named **cluster-definition-name.tgz**, which is the cluster definition
-    file.
+    This command will generate a `-spc.tgz` cluster definition file in the specified output directory. When you create a
+    cluster definition and content bundle using a single `build` command, the cluster definition is also embedded into
+    the content bundle.
 
 </TabItem>
 
