@@ -45,8 +45,9 @@ The `content` command includes the following subcommands:
 ### Build
 
 Use the `build` subcommand to create a content bundle or export a cluster definition. Refer to the
-[Build Content Bundle](../../../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md) guide for more
-information on how to create a content bundle.
+[Build Content Bundle](../../../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md) and
+[Export Cluster Definition](../../../clusters/edge/local-ui/cluster-management/export-cluster-definition.md) guides for
+additional information.
 
 ```shell
 palette content build [flags]
@@ -396,7 +397,7 @@ bundle. Replace `localhost` with the host's address if you are hosting the regis
 
 ### Upload
 
-Use the `upload` subcommand to upload a content bundle or to an Edge host. Refer to the
+Use the `upload` subcommand to upload a content bundle to an Edge host. Refer to the
 [Upload Content Bundle](../../../clusters/edge/local-ui/cluster-management/upload-content-bundle.md) for additional
 information on how to upload content bundles to Edge hosts.
 
