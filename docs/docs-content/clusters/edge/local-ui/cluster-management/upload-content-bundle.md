@@ -26,7 +26,7 @@ This page guides you through how to upload a content bundle to an Edge host usin
 
 ### Prerequisites
 
-- An Edge host with installed with Edge Installer 4.3 or later using the `airgapped` install mode.
+- An Edge host with installed with Edge Installer 4.3 or later.
 
 - You have built a content bundle that's necessary for provisioning a cluster using your intended cluster profile. For
   more information, refer to [Build Content Bundles](../../edgeforge-workflow/palette-canvos/build-content-bundle.md).
