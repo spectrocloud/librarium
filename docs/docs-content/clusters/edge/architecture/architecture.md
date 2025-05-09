@@ -42,8 +42,8 @@ The following are architectural highlights of Palette-provisioned Edge native cl
   - Cluster updates
   - Palette VerteX
   - Custom installation paths for Kubernetes and its dependencies in
-    [agent mode](https://docs.spectrocloud.com/deployment-modes/agent-mode/)
-  - Network overlay
+    [agent mode](../../../deployment-modes/agent-mode/)
+  - [Network overlay](../networking/vxlan-overlay/)
 
 ## Minimum Device Requirements
 
