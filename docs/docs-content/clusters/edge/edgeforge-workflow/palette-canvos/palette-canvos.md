@@ -147,8 +147,8 @@ customization.
 
 7. Issue the command below to create the `.arg` file containing the custom tag. The remaining arguments in the `.arg`
    file will use the default values. For example, `ubuntu` is the default operating system, `demo` is the default tag,
-   and [ttl.sh](https://ttl.sh/) is the default image registry. 
-   
+   and [ttl.sh](https://ttl.sh/) is the default image registry.
+
    :::info
 
    The default ttl.sh image registry is free and does not require a sign-up. Images pushed to ttl.sh are ephemeral and
@@ -156,13 +156,15 @@ customization.
    workflow on this page.
 
    :::
-   
+
    Refer to [Edge Artifact Build Configurations](./arg.md) for all available configuration parameters.
-   
+
    :::preview
-   
-   The `K8S_DISTRIBUTION` argument, defined in the `.arg` file, accepts `canonical` as a valid value. This value corresponds to the **Palette Optimized Canonical** pack, which is a Tech Preview feature and is subject to change. Do not use this feature in production workloads.
-   
+
+   The `K8S_DISTRIBUTION` argument, defined in the `.arg` file, accepts `canonical` as a valid value. This value
+   corresponds to the **Palette Optimized Canonical** pack, which is a Tech Preview feature and is subject to change. Do
+   not use this feature in production workloads.
+
    :::
 
    Using the arguments defined in the `.arg` file, the final provider images you generate will have the following naming
@@ -603,12 +605,15 @@ git checkout v4.4.12
    ```
 
 10. Issue the command below to create the `.arg` file containing the custom tag, Docker Hub image registry hostname, and
-    openSUSE Leap OS distribution. The `.arg` file uses the default values for the remaining arguments. Refer to [Edge Artifact Build Configurations](./arg.md) for all available configuration parameters.
-    
+    openSUSE Leap OS distribution. The `.arg` file uses the default values for the remaining arguments. Refer to
+    [Edge Artifact Build Configurations](./arg.md) for all available configuration parameters.
+
     :::preview
-    
-    The `K8S_DISTRIBUTION` argument, defined in the `.arg` file, accepts `canonical` as a valid value. This value corresponds to the **Palette Optimized Canonical** pack, which is a Tech Preview feature and is subject to change. Do not use this feature in production workloads.
-    
+
+    The `K8S_DISTRIBUTION` argument, defined in the `.arg` file, accepts `canonical` as a valid value. This value
+    corresponds to the **Palette Optimized Canonical** pack, which is a Tech Preview feature and is subject to change.
+    Do not use this feature in production workloads.
+
     :::
 
     ```bash

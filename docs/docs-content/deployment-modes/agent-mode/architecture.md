@@ -25,7 +25,8 @@ The following are architectural highlights of clusters deployed using agent mode
 
 ## Limitations
 
-- The Palette Optimized Canonical distribution that supports Canonical Kubernetes is a Tech Preview feature and does not support the following:
+- The Palette Optimized Canonical distribution that supports Canonical Kubernetes is a Tech Preview feature and does not
+  support the following:
   - non-Edge environments
   - ARM64 architecture
   - OS other than Ubuntu
@@ -41,12 +42,13 @@ The following are architectural highlights of clusters deployed using agent mode
 | ------------ | ----------------------- |
 | PXK-E        | 1.28.13, 1.28.9, 1.30.5 |
 | K3s          | 1.28.14, 1.28.9, 1.30.5 |
-| Canonical| 1.32.3|
+| Canonical    | 1.32.3                  |
 
 :::preview
-    
-The **Palette Optimized Canonical** distribution that supports Canonical Kubernetes is a Tech Preview feature and is subject to change. Do not use this feature in production workloads.
-    
+
+The **Palette Optimized Canonical** distribution that supports Canonical Kubernetes is a Tech Preview feature and is
+subject to change. Do not use this feature in production workloads.
+
 :::
 
 ## Minimum Device Requirements

@@ -147,8 +147,10 @@ artifacts at the same time.
 
     :::preview
 
-    The `K8S_DISTRIBUTION` argument, defined in the `.arg` file, accepts `canonical` as a valid value. This value corresponds to the **Palette Optimized Canonical** pack, which is a Tech Preview feature and is subject to change. Do not use this feature in production workloads.
-    
+    The `K8S_DISTRIBUTION` argument, defined in the `.arg` file, accepts `canonical` as a valid value. This value
+    corresponds to the **Palette Optimized Canonical** pack, which is a Tech Preview feature and is subject to change.
+    Do not use this feature in production workloads.
+
     :::
 
 11. (Optional) This step is only required if your builds occur in a proxied network environment, and your proxy servers

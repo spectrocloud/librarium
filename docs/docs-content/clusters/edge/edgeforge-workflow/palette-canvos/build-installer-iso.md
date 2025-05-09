@@ -108,15 +108,17 @@ Use the following instructions to build the Edge Installer ISO. The optional ste
 
 ### Prepare `.arg` file
 
-5. Review the `.arg.template` file to view a template of all the arguments that are used during the build process.
-   Since the process to build provider images uses the same `.arg` file, some of the arguments in the template are
-   related to the provider images. Refer to [Edge Artifact Build Configuration](./arg.md) for all available
-   configuration parameters.
-   
+5. Review the `.arg.template` file to view a template of all the arguments that are used during the build process. Since
+   the process to build provider images uses the same `.arg` file, some of the arguments in the template are related to
+   the provider images. Refer to [Edge Artifact Build Configuration](./arg.md) for all available configuration
+   parameters.
+
    :::preview
 
-   The `K8S_DISTRIBUTION` argument, defined in the `.arg` file, accepts `canonical` as a valid value. This value corresponds to the **Palette Optimized Canonical** pack, which is a Tech Preview feature and is subject to change. Do not use this feature in production workloads. 
-   
+   The `K8S_DISTRIBUTION` argument, defined in the `.arg` file, accepts `canonical` as a valid value. This value
+   corresponds to the **Palette Optimized Canonical** pack, which is a Tech Preview feature and is subject to change. Do
+   not use this feature in production workloads.
+
    :::
 
 6. Customize these arguments to use during the build process. The following is an example `.arg` file.
@@ -165,8 +167,8 @@ Use the following instructions to build the Edge Installer ISO. The optional ste
 
 ### Prepare User Data
 
-9. Refer to [Prepare User Data](./../prepare-user-data.md) to prepare the `user-data` file in the root directory of
-   the `CanvOS` directory.
+9. Refer to [Prepare User Data](./../prepare-user-data.md) to prepare the `user-data` file in the root directory of the
+   `CanvOS` directory.
 
    User data contains installer configuration and is required for an installer ISO. If you do not supply user data
    during this step, you must provide site user data before installation takes place. You can also use site user data to
@@ -207,8 +209,8 @@ a locally managed Edge host via [Local UI](../../local-ui/local-ui.md). For more
 
     :::
 
-11. When the content bundle build finishes, the output will be in a directory named `content-XXXXXX`, where XXXXXX is
-    a random alphanumerical string. Inside the directory is the content bundle file.
+11. When the content bundle build finishes, the output will be in a directory named `content-XXXXXX`, where XXXXXX is a
+    random alphanumerical string. Inside the directory is the content bundle file.
 
     :::warning
 
