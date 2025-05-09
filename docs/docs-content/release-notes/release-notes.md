@@ -33,6 +33,14 @@ tags: ["release-notes"]
   [Required IAM Permissions](../clusters/public-cloud/gcp/required-permissions.md#required-permissions) guide for all
   required GCP IAM permissions.
 
+- When deploying an Azure IaaS cluster through a [Self Hosted PCG](../clusters/pcg/deploy-pcg-k8s.md), you can now
+  select a specific resource group and private DNS zone for your private API server load balancer. This allows you to
+  reuse an existing private DNS zone for multiple private Azure IaaS clusters even when the zone is kept in a different
+  resource group.
+
+  Refer to the [Create and Manage Azure IaaS Cluster](../clusters/public-cloud/azure/create-azure-cluster.md) for
+  guidance.
+
 #### Features
 
 - You can now assign an Amazon Machine Image (AMI) to a node pool when deploying Amazon EKS clusters. To do this, apply
