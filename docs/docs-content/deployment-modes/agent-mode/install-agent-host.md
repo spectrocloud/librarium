@@ -30,7 +30,7 @@ Palette. You will then create a cluster profile and use the registered host to d
   | AMD64             | Ubuntu                            | K3s                                        | Flannel                           | :white_check_mark: |
   | AMD64             | Rocky Linux 8.10 (Green Obsidian) | Palette eXtended Kubernetes - Edge (PXK-E) | Cilium                            | :white_check_mark: |
 
-- Clusters with Flannel CNI is not verified for airgap deployments.
+- Clusters with Flannel CNI are not verified for local management mode deployments.
 
 - Agent mode is only supported on Linux distributions that have
   [`systemd`](https://www.freedesktop.org/software/systemd/man/latest/systemd.html) installed and available.
@@ -38,14 +38,14 @@ Palette. You will then create a cluster profile and use the registered host to d
 - The FIPS-compliant version of Agent Mode is only available for Red Hat Enterprise Linux (RHEL) and Rocky Linux 8
   systems.
 
-- ARM64 support for airgap clusters is not available. This is because Harbor, which is required for airgap clusters,
-  does not have an ARM64 image.
+- ARM64 support for clusters in local management mode is not available. This is because Harbor, which is required for
+  local management mode, does not have an ARM64 image.
 
 ## Prerequisites
 
-- A physical or virtual host with SSH access, access to the internet, and connection to Palette. For airgap deployments,
-  the host does not need to have a connection to Palette and may have limited access to the internet. This guide uses an
-  **Ubuntu 22.04** virtual machine deployed in VMware vSphere as an example.
+- A physical or virtual host with SSH access, access to the internet, and connection to Palette. For local management
+  mode deployments, the host does not need to have a connection to Palette and may have limited access to the internet.
+  This guide uses an **Ubuntu 22.04** virtual machine deployed in VMware vSphere as an example.
 
 - The host must meet the following minimum hardware requirements:
 
@@ -81,7 +81,7 @@ Palette. You will then create a cluster profile and use the registered host to d
     use PXKE as the Kubernetes layer
   - [iptables](https://linux.die.net/man/8/iptables)
   - [rsyslog](https://github.com/rsyslog/rsyslog). This is required for audit logs.
-  - (Airgap only) [Palette Edge CLI](../../downloads/cli-tools.md#palette-edge-cli)
+  - (Local management mode only) [Palette Edge CLI](../../downloads/cli-tools.md#palette-edge-cli)
 
   If you are using Ubuntu or any OS that uses apt or apt-get for package management, you can issue the following command
   to install all dependencies for installation (not including the Palette Edge CLI) with the following command:
@@ -303,7 +303,7 @@ Palette. You will then create a cluster profile and use the registered host to d
 
 <Tabs groupId="env">
 
-<TabItem value="Connected">
+<TabItem value="Central Management Mode">
 
 1. In your terminal, use the following command to SSH into the host. Replace `</path/to/private/key>` with the path to
    your private SSH key and `<host-ip-or-domain>` with the host's IP address or hostname.
@@ -556,9 +556,9 @@ guidance.
 
 </TabItem>
 
-<TabItem value="Airgap">
+<TabItem value="Local Management Mode">
 
-In an airgapped environment, your host does not have a connection to Palette and may also have limited access to the
+In local management mode, your host does not have a connection to Palette and may also have limited access to the
 internet.
 
 1. In your terminal, use the following command to SSH into the host. Replace `</path/to/private/key>` with the path to
@@ -598,7 +598,7 @@ internet.
 
 5. Issue the command below to create the `userdata` file and configure your host declaratively.
 
-   The following configuration indicates the installation mode to be airgap and sets up the `kairos` user. The host will
+   The following configuration indicates the management mode to be local and sets up the `kairos` user. The host will
    not shut down and will reboot after the agent installation, with
    [kube-vip](../../clusters/edge/networking/kubevip.md) enabled, as this is required for bare metal and VMware vSphere
    deployments. If your environment does not require kube-vip, set `stylus.vip.skip` to `true`. Refer to
@@ -615,7 +615,7 @@ internet.
    stylus:
      vip:
        skip: false
-     installationMode: airgap
+     managementMode: local
    stages:
      initramfs:
        - users:
@@ -644,7 +644,7 @@ internet.
    stylus:
      vip:
        skip: false
-     installationMode: airgap
+     managementMode: local
    stages:
      initramfs:
        - users:
@@ -691,7 +691,8 @@ internet.
     ```
 
 17. Complete the cluster profile creation process by filling out the remaining layers. In the application layer, make
-    sure you include the **Harbor Edge-Native Config** pack. This pack is required for airgapped clusters.
+    sure you include the **Harbor Edge-Native Config** pack. This pack is required for clusters in local management
+    mode.
 
 18. Follow the steps in
     [Export Cluster Definition](../../clusters/edge/local-ui/cluster-management/export-cluster-definition.md) to export
@@ -732,7 +733,7 @@ guidance.
 
 <Tabs groupId="env">
 
-<TabItem value="Connected">
+<TabItem value="Central Management Mode">
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
@@ -749,7 +750,7 @@ details on how to use these operations
 
 </TabItem>
 
-<TabItem value="Airgap">
+<TabItem value="Local Management Mode">
 
 1. Log in to [Local UI](../../clusters/edge/local-ui/host-management/access-console.md).
 

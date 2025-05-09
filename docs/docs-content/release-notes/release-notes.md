@@ -50,6 +50,8 @@ tags: ["release-notes"]
 
 #### Improvements
 
+- Improved the upgrade process for the Palette agent and increased its reliability.
+
 #### Bug Fixes
 
 ### VerteX
@@ -63,13 +65,30 @@ tags: ["release-notes"]
 
 :::info
 
-Check out the [Downloads](../downloads/cli-tools.md) page to find the compatible version of the Palette CLI.
+Check out the [CLI Tools](../downloads/cli-tools.md) page to find the compatible version of the Palette CLI.
 
 :::
+
+#### Breaking Changes {#breaking-changes-automation-4.6.c}
+
+- The Terraform resource `spectrocloud_macros` no longer supports the `project` field. Use the new `context` field to
+  specify the project or tenant scope for your macro. Additionally, you must use the `project_name` provider
+  configuration parameter to specify a project context. For more information, refer to the Spectro Cloud Terraform
+  provider [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
 
 #### Features
 
 #### Improvements
+
+### Virtual Machine Orchestrator (VMO)
+
+#### Improvements
+
+- The [Virtual Machine Migration Assistant](../vm-management/vm-migration-assistant/vm-migration-assistant.md) is now
+  supported for airgapped environments. Refer to the Additional Packs pages for
+  [self-hosted Palette](../downloads/self-hosted-palette/additional-packs.md#additional-deployment-options) and
+  [Palette VerteX](../downloads/palette-vertex/additional-packs.md#additional-deployment-options) for the relevant link
+  to download this pack and upload instructions.
 
 ### Docs and Education
 
@@ -80,6 +99,12 @@ Check out the [Downloads](../downloads/cli-tools.md) page to find the compatible
 ### Packs
 
 #### Pack Notes
+
+<!-- prettier-ignore-start -->
+
+- The <VersionedLink text="BYOS - Agent Mode" url="integrations/packs/?pack=byoi-agent-mode" /> version 1.0.0 pack is now deprecated. We recommend using the <VersionedLink text="BYOS Edge OS" url="integrations/packs/?pack=edge-native-byoi" /> version 2.1.0 pack instead.
+
+<!-- prettier-ignore-end -->
 
 #### OS
 
@@ -112,6 +137,13 @@ Check out the [Downloads](../downloads/cli-tools.md) page to find the compatible
 | --------- | ----------- |
 
 #### Deprecations and Removals
+
+## May 7, 2025 - Release 4.6.25
+
+### Bug Fixes
+
+- Fixed an issue that caused the deletion of [GCP clusters](../clusters/public-cloud/gcp/gcp.md) to fail for clusters
+  associated with cloud accounts that have been created on older Palette versions.
 
 ## May 5, 2025 - Release 4.6.24
 
