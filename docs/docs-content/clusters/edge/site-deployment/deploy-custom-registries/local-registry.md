@@ -7,10 +7,16 @@ sidebar_position: 60
 tags: ["edge"]
 ---
 
+<!-- prettier-ignore-start -->
+
 :::warning
 
 The implementation of the in-cluster local registry in this guide, together with the **Harbor Edge-Native Config** pack,
-are deprecated and will be removed in a future release. Palette Edge now implements a primary registry mechanism where
+are deprecated and will be removed in a future release.
+
+If you still want to use the <VersionedLink text="Harbor Edge Native Config" url="/integrations/packs/?pack=harbor-edge-native-config"/> pack, it should not be applied to existing clusters, only new clusters.
+
+Palette Edge now implements a primary registry mechanism where
 you can use any OCI-compliant registry to achieve the same goal as the local Harbor registry. For more information,
 refer to [Deploy with In-Cluster Primary Registry](./deploy-primary-registry.md).
 
@@ -19,6 +25,8 @@ If you have clusters using the **Harbor Edge-Native Config** pack, refer to
 solution with no impact to your production workload.
 
 :::
+
+<!-- prettier-ignore-end -->
 
 Palette Edge allows you to provision a local Harbor image registry as part of your Edge deployment. When your Edge
 cluster is created for the first time, all images from add-on packs downloaded from external registries are stored
