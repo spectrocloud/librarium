@@ -38,11 +38,11 @@ The following are architectural highlights of Palette-provisioned Edge native cl
 - The Palette Optimized Canonical distribution that supports Canonical Kubernetes is a Tech Preview feature and does not
   support the following:
   - ARM64 architecture
-  - versions other than 1.32.3
-  - updates
+  - Versions other than 1.32.3
+  - Cluster updates
   - Palette VerteX
-  - custom installation paths for Kubernetes and its dependencies in agent mode
-  - overlay-based customizations
+  - Custom installation paths for Kubernetes and its dependencies in [agent mode](https://docs.spectrocloud.com/deployment-modes/agent-mode/)
+  - Network overlay
 
 ## Minimum Device Requirements
 
