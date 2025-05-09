@@ -27,14 +27,15 @@ The following are architectural highlights of clusters deployed using agent mode
 
 - The Palette Optimized Canonical distribution that supports Canonical Kubernetes is a Tech Preview feature and does not
   support the following:
-  - non-Edge environments
+  - Non-Edge environments
   - ARM64 architecture
   - OS other than Ubuntu
   - Kubernetes versions other than 1.32.3
-  - updates
+  - Cluster updates
   - Palette VerteX
-  - custom installation paths for Kubernetes and its dependencies in agent mode
-  - overlay-based customizations
+  - Custom installation paths for Kubernetes and its dependencies in
+    [agent mode](../../../deployment-modes/agent-mode/)
+  - [Network overlay](../networking/vxlan-overlay/)
 
 ## Supported Kubernetes Distributions
 
