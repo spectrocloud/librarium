@@ -38,8 +38,8 @@ tags: ["release-notes"]
   reuse an existing private DNS zone for multiple private Azure IaaS clusters even when the zone is kept in a different
   resource group.
 
-  Refer to the [Create and Manage Azure IaaS Cluster](../clusters/public-cloud/azure/create-azure-cluster.md) for
-  guidance.
+  Refer to the [Create and Manage Azure IaaS Cluster](../clusters/public-cloud/azure/create-azure-cluster.md) guide for
+  more information.
 
 #### Features
 
