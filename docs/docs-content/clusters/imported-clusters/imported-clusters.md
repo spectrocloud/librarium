@@ -13,8 +13,8 @@ management, and additional capabilities such as application lifecycle management
 from various infrastructure providers, such as public and private clouds and bare-metal environments.
 
 Palette supports importing _generic_ or _cloud-specific_ clusters. Cloud-specific clusters enable more functionality
-because Palette understands how to interact with the infrastructure provider's API. Cloud-specific clusters provide the
-same experience as Palette deployed clusters.
+because Palette understands how to interact with the infrastructure provider's API. Refer to [Limitations](#limitations)
+for details on what functionality may be missing from generic or cloud-specific clusters when imported.
 
 The generic type is for a cluster that is deployed in an environment where Palette lacks integration with the underlying
 infrastructure provider's API. Palette can support basic operations for generic clusters, such as reporting metrics,
@@ -62,6 +62,8 @@ target import cluster and the Palette instance.
 
 ## Limitations
 
+### All Imported Clusters
+
 A few restrictions apply to all cluster imports that you need to be aware of before importing a cluster.
 
 | Limitation                 | Description                                                                                                                                        |
@@ -80,6 +82,19 @@ operations that require Palette to have knowledge of the underlying infrastructu
 :::
 
 <br />
+
+### Generic Clusters
+
+- Palette displays limited metadata for imported generic clusters when compared with cloud-specific clusters. The metadata displayed for generic clusters are `region` and `instance type`.
+
+### Cloud-Specific Clusters
+
+Imported Cloud-specific clusters provide a similar experience as Palette deployed clusters but with the following
+limitations:
+
+- Palette cannot manage [node groups/pools](../cluster-management/node-pool.md) for imported cloud-specific clusters because it does not provision the nodes directly.
+
+  - This does not apply to [Amazon EKS Hybrid node pools](../public-cloud/aws/eks-hybrid-nodes/create-hybrid-node-pools.md) as they are comprised of edge hosts that are managed by Palette.
 
 ## Delete Imported Cluster
 
