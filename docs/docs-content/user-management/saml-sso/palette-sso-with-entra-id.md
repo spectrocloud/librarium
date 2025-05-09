@@ -257,23 +257,21 @@ Use the following steps to enable OIDC SSO in Palette with Microsoft Entra ID.
     6. Create your Palette teams, with each team named after the **Entra ID Group ID** you recorded. The following table
        is an example configuration.
 
-
-        | Palette Team Name is the Entra Group ID | Entra ID Group Name              |
-        | --------------------------------------- | -------------------------------- |
-        | `e3ac07cc-bd12-4edc-92a4-983d783153ba`  | `palette_tenant_admins`          |
-        | `88f61c49-1dd1-40c3-a820-68a513a38725`  | `palette_default_project_admins` |
-        | `3f33c3a5-e0af-4ef6-9671-c7545fe264f3`  | `k8s_cluster_admins`             |
-        | `c4606295-e8b0-4df0-891b-de4428d7e54f`  | `k8s_cluster-editor`             |
+       | Palette Team Name is the Entra Group ID | Entra ID Group Name              |
+       | --------------------------------------- | -------------------------------- |
+       | `e3ac07cc-bd12-4edc-92a4-983d783153ba`  | `palette_tenant_admins`          |
+       | `88f61c49-1dd1-40c3-a820-68a513a38725`  | `palette_default_project_admins` |
+       | `3f33c3a5-e0af-4ef6-9671-c7545fe264f3`  | `k8s_cluster_admins`             |
+       | `c4606295-e8b0-4df0-891b-de4428d7e54f`  | `k8s_cluster-editor`             |
 
     7. Assign **Roles** to each Palette team. The following table is an example configuration.
 
-
-        | Palette Team Name                      | Role             | Entra ID Group Name              |
-        | -------------------------------------- | ---------------- | -------------------------------- |
-        | `e3ac07cc-bd12-4edc-92a4-983d783153ba` | Tenant Admin     | `palette_tenant_admins`          |
-        | `88f61c49-1dd1-40c3-a820-68a513a38725` | Project Admin    | `palette_default_project_admins` |
-        | `3f33c3a5-e0af-4ef6-9671-c7545fe264f3` | No role assigned | `k8s_cluster_admins`             |
-        | `c4606295-e8b0-4df0-891b-de4428d7e54f` | No role assigned | `k8s_cluster-editor`             |
+       | Palette Team Name                      | Role             | Entra ID Group Name              |
+       | -------------------------------------- | ---------------- | -------------------------------- |
+       | `e3ac07cc-bd12-4edc-92a4-983d783153ba` | Tenant Admin     | `palette_tenant_admins`          |
+       | `88f61c49-1dd1-40c3-a820-68a513a38725` | Project Admin    | `palette_default_project_admins` |
+       | `3f33c3a5-e0af-4ef6-9671-c7545fe264f3` | No role assigned | `k8s_cluster_admins`             |
+       | `c4606295-e8b0-4df0-891b-de4428d7e54f` | No role assigned | `k8s_cluster-editor`             |
 
       </details>
 
@@ -295,13 +293,12 @@ Use the following steps to enable OIDC SSO in Palette with Microsoft Entra ID.
 
     5. Assign **Roles** to each Palette team. The following table is an example configuration.
 
-
-        | Palette Team Name                | Role             |
-        | -------------------------------- | ---------------- |
-        | `palette_tenant_admins`          | Tenant Admin     |
-        | `palette_default_project_admins` | Project Admin    |
-        | `k8s_cluster_admins`             | No role assigned |
-        | `k8s_cluster`                    | No role assigned |
+       | Palette Team Name                | Role             |
+       | -------------------------------- | ---------------- |
+       | `palette_tenant_admins`          | Tenant Admin     |
+       | `palette_default_project_admins` | Project Admin    |
+       | `k8s_cluster_admins`             | No role assigned |
+       | `k8s_cluster`                    | No role assigned |
 
     </details>
 
