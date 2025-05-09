@@ -75,8 +75,8 @@ Palette provides the following distributions for edge installations.
 
 :::preview
 
-The **Palette Optimized Canonical** Kubernetes distribution is a Tech Preview feature and is subject to change. Do not use this
-feature in production workloads.
+The **Palette Optimized Canonical** Kubernetes distribution is a Tech Preview feature and is subject to change. Do not
+use this feature in production workloads.
 
 :::
 
