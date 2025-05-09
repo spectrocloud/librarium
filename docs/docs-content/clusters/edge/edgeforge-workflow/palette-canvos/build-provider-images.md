@@ -62,7 +62,7 @@ artifacts at the same time.
     git clone https://github.com/spectrocloud/CanvOS.git
     ```
 
-2.  Change to the **CanvOS/** directory.
+2.  Change to the `CanvOS` directory.
 
     ```bash
     cd CanvOS
@@ -82,11 +82,11 @@ artifacts at the same time.
 
 5.  Review the files relevant for this guide.
 
-    - **.arg.template** - A sample **.arg** file that defines arguments to use during the build process.
+    - `.arg.template` - A sample `.arg` file that defines arguments to use during the build process.
 
-    - **Earthfile** - Contains a series of commands to create target artifacts.
+    - `Earthfile` - Contains a series of commands to create target artifacts.
 
-    - **earthly.sh** - Script to invoke the Earthfile, and generate target artifacts.
+    - `earthly.sh` - Script to invoke the Earthfile, and generate target artifacts.
 
 6.  Issue the command below to assign an image tag value that will be used when creating the provider images. This guide
     uses the value `palette-learn` as an example. However, you can assign any lowercase and alphanumeric string to the
@@ -111,15 +111,15 @@ artifacts at the same time.
     export OS_VERSION=22.04
     ```
 
-9.  Open the **k8s_version.json** file in the CanvOS directory. Remove the Kubernetes versions that you don't need from
+9.  Open the `k8s_version.json` file in the CanvOS directory. Remove the Kubernetes versions that you don't need from
     the JSON object corresponding to your Kubernetes distribution.
 
-    If you are using a tag that is earlier than v4.4.12, the **k8s_version.json** file does not exist in those tags.
-    Instead, open the **Earthfile** in the CanvOS directory. In the file, find the block that starts with
+    If you are using a tag that is earlier than v4.4.12, the `k8s_version.json` file does not exist in those tags.
+    Instead, open the `Earthfile` in the `CanvOS` directory. In the file, find the block that starts with
     `build-provider-images-fips:` and delete the Kubernetes versions that you do not want. This will speed up the build
     process and save storage space.
 
-10. Issue the command below to create an **.arg** file. The **.arg** file uses the default values for the remaining
+10. Issue the command below to create an `.arg` file. The `.arg` file uses the default values for the remaining
     arguments.
 
     ```bash
@@ -143,12 +143,20 @@ artifacts at the same time.
     clusters. We recommend you clearly mark two-node provider images in the custom tag argument. For more information
     about two-node high availability architecture, refer to [Two-Node Architecture](../../architecture/two-node.md).
 
-    Refer to [Edge Artifact Build Configurations](./arg.md) for all available arguments.
+    Refer to [Edge Artifact Build Configurations](./arg.md) for all available configuration parameters.
+
+    :::preview
+
+    The `K8S_DISTRIBUTION` argument, defined in the `.arg` file, accepts `canonical` as a valid value. This value
+    corresponds to the **Palette Optimized Canonical** pack, which is a Tech Preview feature and is subject to change.
+    Do not use this feature in production workloads.
+
+    :::
 
 11. (Optional) This step is only required if your builds occur in a proxied network environment, and your proxy servers
     require client certificates or if your base image is in a registry that requires client certificates.
 
-    You can provide the base-64 encoded certificates in PEM format in the **certs** folder at the root directory of the
+    You can provide the base-64 encoded certificates in PEM format in the `certs` folder at the root directory of the
     **CanvOS** repository. You can provide as many certificates as you need in the folder.
 
     If you are using a CanvOS tag that is earlier than `4.5.15`, you need to use the `PROXY_CERT_PATH` build argument to
@@ -199,7 +207,7 @@ artifacts at the same time.
         Share your logs with an Earthly account (experimental)! Register for one at https://ci.earthly.dev.
         ```
 
-14. To use the provider images in your cluster profile, push them to your image registry mentioned in the **.arg** file.
+14. To use the provider images in your cluster profile, push them to your image registry mentioned in the `.arg` file.
     Issue the following command to log in to Docker Hub. Provide your Docker ID and password when prompted.
 
     ```bash
@@ -216,7 +224,7 @@ artifacts at the same time.
 ## Validate
 
 1. List the Docker images to review the provider images created. You can identify the provider images by reviewing the
-   image tag value you used in the **.arg** file's `CUSTOM_TAG` argument.
+   image tag value you used in the `.arg` file's `CUSTOM_TAG` argument.
 
    ```
    docker images --filter=reference='*/*:*palette-learn'

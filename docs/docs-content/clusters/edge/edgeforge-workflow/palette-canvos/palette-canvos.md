@@ -147,15 +147,23 @@ customization.
 
 7. Issue the command below to create the `.arg` file containing the custom tag. The remaining arguments in the `.arg`
    file will use the default values. For example, `ubuntu` is the default operating system, `demo` is the default tag,
-   and [ttl.sh](https://ttl.sh/) is the default image registry. Refer to the existing `.arg.template` file in the
-   current directory or the [README](https://github.com/spectrocloud/CanvOS#readme) to learn more about the available
-   customizable arguments.
+   and [ttl.sh](https://ttl.sh/) is the default image registry.
 
    :::info
 
    The default ttl.sh image registry is free and does not require a sign-up. Images pushed to ttl.sh are ephemeral and
    will expire after the 24 hrs time limit. Should you need to use a different image registry, refer to the Advanced
    workflow on this page.
+
+   :::
+
+   Refer to [Edge Artifact Build Configurations](./arg.md) for all available configuration parameters.
+
+   :::preview
+
+   The `K8S_DISTRIBUTION` argument, defined in the `.arg` file, accepts `canonical` as a valid value. This value
+   corresponds to the **Palette Optimized Canonical** pack, which is a Tech Preview feature and is subject to change. Do
+   not use this feature in production workloads.
 
    :::
 
@@ -597,8 +605,16 @@ git checkout v4.4.12
    ```
 
 10. Issue the command below to create the `.arg` file containing the custom tag, Docker Hub image registry hostname, and
-    openSUSE Leap OS distribution. The `.arg` file uses the default values for the remaining arguments. You can refer to
-    the existing `.arg.template` file to learn more about the available customizable arguments.
+    openSUSE Leap OS distribution. The `.arg` file uses the default values for the remaining arguments. Refer to
+    [Edge Artifact Build Configurations](./arg.md) for all available configuration parameters.
+
+    :::preview
+
+    The `K8S_DISTRIBUTION` argument, defined in the `.arg` file, accepts `canonical` as a valid value. This value
+    corresponds to the **Palette Optimized Canonical** pack, which is a Tech Preview feature and is subject to change.
+    Do not use this feature in production workloads.
+
+    :::
 
     ```bash
     cat << EOF > .arg
