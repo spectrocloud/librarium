@@ -16,14 +16,6 @@ are deprecated and will be removed in a future release.
 
 If you still want to use the <VersionedLink text="Harbor Edge Native Config" url="/integrations/packs/?pack=harbor-edge-native-config"/> pack, it should not be applied to existing clusters, only new clusters.
 
-Palette Edge now implements a primary registry mechanism where
-you can use any OCI-compliant registry to achieve the same goal as the local Harbor registry. For more information,
-refer to [Deploy with In-Cluster Primary Registry](./deploy-primary-registry.md).
-
-If you have clusters using the **Harbor Edge-Native Config** pack, refer to
-[Migrate from Harbor Edge-Native Config](./migrate-edge-native-config.md) to learn how to migrate off of the deprecated
-solution with no impact to your production workload.
-
 :::
 
 <!-- prettier-ignore-end -->
