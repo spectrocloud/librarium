@@ -11,10 +11,6 @@ Palette allows you to add custom links to the sidebar of Local UI. These links a
 applications with Local UI. When you click on a custom link, it can either open the page within the Local UI interface
 or open a new tab in your browser depending on how to configure the links.
 
-:::preview
-
-:::
-
 ## Prerequisites
 
 - The process to add custom links prior to deployment is based on the EdgeForge process. We recommend that you
@@ -153,9 +149,8 @@ or open a new tab in your browser depending on how to configure the links.
     ```
 
 11. Follow the [Build Edge Artifacts](../../edgeforge-workflow/palette-canvos/palette-canvos.md) guide from step onward
-    to finish the EdgeForge process. As long as the `local-ui.tar` file is at the root directory of `CanvOS` and the
-    installation mode is set to airgap as required by Local UI, the custom links will be added to the sidebar when you
-    log in to Local UI.
+    to finish the EdgeForge process. As long as the `local-ui.tar` file is at the root directory of `CanvOS`, the custom
+    links will be added to the sidebar when you log in to Local UI.
 
 ### Validate
 

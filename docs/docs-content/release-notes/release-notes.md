@@ -11,6 +11,133 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## May 17, 2025 - Release 4.6.X {#release-notes-4.6.c}
+
+### Security Notices
+
+- Review the [Security Bulletins](../security-bulletins/reports/reports.mdx) page for the latest security advisories.
+
+### Palette Enterprise {#palette-enterprise-4.6.c}
+
+#### Breaking Changes {#breaking-changes-4.6.c}
+
+- Due to an upgrade of Cluster API Provider GCP (CAPG) to
+  [v1.8.1](https://github.com/kubernetes-sigs/cluster-api-provider-gcp/releases/tag/v1.8.1), the following additional
+  IAM permissions are now required for GCP cluster deployments:
+
+  - `compute.disks.setLabels`
+  - `compute.globalForwardingRules.setLabels`
+
+  This is due to a fix in [v1.8.0](https://github.com/kubernetes-sigs/cluster-api-provider-gcp/releases/tag/v1.8.0) that
+  means labels may be populated for persistent disks and global forwarding rules. Refer to the
+  [Required IAM Permissions](../clusters/public-cloud/gcp/required-permissions.md#required-permissions) guide for all
+  required GCP IAM permissions.
+
+#### Features
+
+- You can now assign an Amazon Machine Image (AMI) to a node pool when deploying Amazon EKS clusters. To do this, apply
+  an additional label in the **Node Configuration Settings** during cluster creation. For guidance and a list of
+  supported AMIs, refer to the
+  [Assign an AMI to a Node Pool](../clusters/public-cloud/aws/eks.md#assign-an-ami-to-a-node-pool) section.
+
+#### Improvements
+
+#### Deprecations and Removals
+
+### Edge
+
+#### Features
+
+#### Improvements
+
+- Improved the upgrade process for the Palette agent and increased its reliability.
+
+#### Bug Fixes
+
+### VerteX
+
+#### Features
+
+- Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
+  [Palette section](#palette-enterprise-4.6.c) for more details.
+
+### Automation
+
+:::info
+
+Check out the [CLI Tools](../downloads/cli-tools.md) page to find the compatible version of the Palette CLI.
+
+:::
+
+#### Breaking Changes {#breaking-changes-automation-4.6.c}
+
+- The Terraform resource `spectrocloud_macros` no longer supports the `project` field. Use the new `context` field to
+  specify the project or tenant scope for your macro. Additionally, you must use the `project_name` provider
+  configuration parameter to specify a project context. For more information, refer to the Spectro Cloud Terraform
+  provider [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
+
+#### Features
+
+#### Improvements
+
+### Virtual Machine Orchestrator (VMO)
+
+#### Improvements
+
+- The [Virtual Machine Migration Assistant](../vm-management/vm-migration-assistant/vm-migration-assistant.md) is now
+  supported for airgapped environments. Refer to the Additional Packs pages for
+  [self-hosted Palette](../downloads/self-hosted-palette/additional-packs.md#additional-deployment-options) and
+  [Palette VerteX](../downloads/palette-vertex/additional-packs.md#additional-deployment-options) for the relevant link
+  to download this pack and upload instructions.
+
+### Docs and Education
+
+- We have added a new [Downloads](../downloads/downloads.md) tab to the top navigation bar of the Spectro Cloud
+  Documentation site. This tab provides a centralized location for downloading all support tools and utilities for
+  Palette.
+
+### Packs
+
+#### Pack Notes
+
+<!-- prettier-ignore-start -->
+
+- The <VersionedLink text="BYOS - Agent Mode" url="integrations/packs/?pack=byoi-agent-mode" /> version 1.0.0 pack is now deprecated. We recommend using the <VersionedLink text="BYOS Edge OS" url="integrations/packs/?pack=edge-native-byoi" /> version 2.1.0 pack instead.
+
+<!-- prettier-ignore-end -->
+
+#### OS
+
+| Pack Name | New Version |
+| --------- | ----------- |
+
+#### Kubernetes
+
+| Pack Name | New Version |
+| --------- | ----------- |
+
+#### CNI
+
+| Pack Name | New Version |
+| --------- | ----------- |
+
+#### CSI
+
+| Pack Name | New Version |
+| --------- | ----------- |
+
+#### Add-on Packs
+
+| Pack Name | New Version |
+| --------- | ----------- |
+
+#### FIPS Packs
+
+| Pack Name | New Version |
+| --------- | ----------- |
+
+#### Deprecations and Removals
+
 ## May 7, 2025 - Release 4.6.25
 
 ### Bug Fixes

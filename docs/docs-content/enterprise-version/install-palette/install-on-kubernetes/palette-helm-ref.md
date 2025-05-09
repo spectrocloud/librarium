@@ -116,7 +116,7 @@ mode.
 
 ```yaml
 config:
-  installationMode: "connected"
+  managementMode: "central"
 ```
 
 ### SSO

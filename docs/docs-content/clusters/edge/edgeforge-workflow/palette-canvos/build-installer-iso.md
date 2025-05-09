@@ -182,7 +182,7 @@ Installer ISO, you can provision a cluster using the images in your content bund
 image registry.
 
 If you do not include content bundle in your Edge Installer ISO, you can still build content bundles and upload them to
-a disconnected Edge host instance via [Local UI](../../local-ui/local-ui.md). For more information, refer to
+a locally managed Edge host via [Local UI](../../local-ui/local-ui.md). For more information, refer to
 [Upload Content Bundle](../../local-ui/cluster-management/upload-content-bundle.md).
 
 10. Refer to [Build Content Bundle](build-content-bundle.md) to learn how to build content bundles for your ISO image.
