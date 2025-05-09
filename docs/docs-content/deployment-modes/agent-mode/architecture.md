@@ -33,8 +33,8 @@ The following are architectural highlights of clusters deployed using agent mode
   - Kubernetes versions other than 1.32.3
   - Cluster updates
   - Palette VerteX
-  - Custom installation paths for Kubernetes and its dependencies in [agent mode](../../../deployment-modes/agent-mode/)
-  - [Network overlay](../networking/vxlan-overlay/)
+  - Custom installation paths for Kubernetes and its dependencies in [agent mode](../)
+  - [Network overlay](../../../clusters/edge/networking/vxlan-overlay/)
 
 ## Supported Kubernetes Distributions
 
