@@ -183,7 +183,7 @@ profile.
 
 :::warning
 
-The <VersionedLink text="Harbor Edge Native Config pack documentation" url="/integrations/packs/?pack=harbor-edge-native-config"/> should only be applied to new clusters, not active clusters.
+The <VersionedLink text="Harbor Edge Native Config" url="/integrations/packs/?pack=harbor-edge-native-config"/> pack should only be applied to new clusters, not active clusters.
 
 :::
 
