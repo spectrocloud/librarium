@@ -70,7 +70,7 @@ Palette provides the following distributions for edge installations.
 | Palette Optimized K3s                                                                                       | openSUSE, Ubuntu | K3s                     | Calico, Flannel | Rook Ceph |
 | Palette Optimized RKE2                                                                                      | openSUSE, Ubuntu | RKE2                    | Calico, Flannel | Rook Ceph |
 | [Palette eXtended Kubernetes Edge (PXK-E)](../../../glossary-all.md#palette-extended-kubernetes-edge-pxk-e) | openSUSE, Ubuntu | CNCF                    | Calico, Flannel | Rook Ceph |
-| Palette Optimized Canonical                                                                                     | Ubuntu | Canonical Kubernetes            | Calico, Cilium | Rook Ceph |
+| Palette Optimized Canonical                                                                                     | Ubuntu | Canonical Kubernetes            | Calico, Cilium | Longhorn |
 
 :::preview
     
