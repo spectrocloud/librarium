@@ -78,6 +78,16 @@ Check out the [CLI Tools](../downloads/cli-tools.md) page to find the compatible
 
 #### Improvements
 
+### Virtual Machine Orchestrator (VMO)
+
+#### Improvements
+
+- The [Virtual Machine Migration Assistant](../vm-management/vm-migration-assistant/vm-migration-assistant.md) is now
+  supported for airgapped environments. Refer to the Additional Packs pages for
+  [self-hosted Palette](../downloads/self-hosted-palette/additional-packs.md#additional-deployment-options) and
+  [Palette VerteX](../downloads/palette-vertex/additional-packs.md#additional-deployment-options) for the relevant link
+  to download this pack and upload instructions.
+
 ### Docs and Education
 
 - We have added a new [Downloads](../downloads/downloads.md) tab to the top navigation bar of the Spectro Cloud
