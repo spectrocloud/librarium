@@ -15,19 +15,19 @@ With a unique approach to managing multiple clusters, Palette gives IT teams com
 production-scale efficiencies to provide developers with highly curated Kubernetes stacks and tools based on their
 specific needs, with granular governance and enterprise-grade security.
 
-![Palette product high level overview eager-load](/getting-started/getting-started_introduction_product-overview.webp)
+![Palette product high level overview eager-load](/getting-started/getting-started_introduction-palette_product-overview.webp)
 
 ## Supported Environments
 
 Palette has the richest coverage in supported environments that includes:
 
-- Public Clouds: AWS, Azure, and Google Cloud. Palette supports both IaaS and managed Kubernetes services AWS EKS, Azure
-  AKS, and Google GKE.
+- Public Clouds: AWS, Azure, and Google Cloud. Palette supports both IaaS and managed Kubernetes services such as AWS
+  EKS, Azure AKS, and Google GKE.
 - Data Centers: VMware, Nutanix, and OpenStack
 - Bare Metal: Canonical MAAS
 - Edge
 
-The Getting Started section covers deployment flows for clusters hosted in [AWS](./aws/aws.md),
+The Palette Getting Started section covers deployment flows for clusters hosted in [AWS](./aws/aws.md),
 [Azure](./azure/azure.md), [Google Cloud](./gcp/gcp.md) and [VMware vSphere](./vmware/vmware.md).
 
 ## Cluster Profiles
@@ -47,38 +47,31 @@ reconcile the current state of your workloads with the desired state specified b
 Below are cluster profile types you can create:
 
 - _Infrastructure_ profiles provide the essential components for workload cluster deployments within a
-  [tenant](../../../glossary-all.md#tenant): Operating System (OS), Kubernetes, Network, and Storage. Collectively,
-  these layers form the infrastructure for your cluster.
+  [tenant](../../../glossary-all.md#tenant): Operating System (OS), Kubernetes, Network, and Storage.
 
 - _Add-on_ profiles are exclusively composed of add-on layers. They usually do not contain infrastructure components and
-  are instead designed for reusability across multiple clusters and multiple projects within a tenant. Since they
-  provide the flexibility to configure clusters based on specific requirements, _add-on_ profiles can be added to
-  _infrastructure_ profiles to create what we call a _full profile_.
+  are instead designed for reusability across multiple clusters and multiple projects within a tenant.
 
 - _Full profiles_ combine infrastructure packs with add-on layers. By adding layers, you can enhance cluster
   functionality. For example, you might add system apps, authentication, monitoring, ingress, load balancers, and more
   to your cluster.
 
-The diagram below illustrates the components of these profile types and how you can build on infrastructure layers with
-add-on layers to create a full cluster profile. You can also create separate add-on profiles to reuse among multiple
-clusters.
-
-![A flow diagram that shows how you can add layers to an infrastructure profile to create a full profile.](/getting-started/getting-started_cluster-profiles_cluster-profiles.webp)
-
 ## Packs
 
 Packs are the smallest component of a cluster profile. Each layer of a cluster profile is made up of a specific pack.
 Palette provides packs that are tailored for specific uses to support the core infrastructure a cluster needs. You can
-also use add-on packs, or create your own custom pack to extend Kubernetes functionality.
-
-The diagram below illustrates some of the popular technologies that you can use in your cluster profile layers. Check
-out the [Packs List](../../../integrations/integrations.mdx) page to learn more about individual packs.
-
-![Diagram of stack grouped as a unit](/getting-started/getting-started_cluster-profiles_stack-grouped-packs.webp)
+also use add-on packs, or create your own custom pack to extend Kubernetes functionality. Check out the
+[Packs List](../../../integrations/integrations.mdx) page to learn more about individual packs.
 
 ## Next Steps
 
-Select your infrastructure provider to start exploring Palette.
+In this section, you will learn how to create cluster profiles and use them to deploy your first cluster. Once you have
+deployed your first cluster, you will learn how to update it using Palette's cluster management functionality and how to
+automate the deployment workflow using Terraform.
+
+[ROADMAP IMAGE]
+
+Select your preferred infrastructure provider to start exploring Palette.
 
 <!-- vale off -->
 
