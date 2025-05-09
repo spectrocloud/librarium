@@ -7,6 +7,27 @@ sidebar_position: 60
 tags: ["edge"]
 ---
 
+<!-- prettier-ignore-start -->
+
+:::warning
+
+The implementation of the in-cluster local registry in this guide, together with the **Harbor Edge-Native Config** pack,
+are deprecated and will be removed in a future release.
+
+If you still want to use the <VersionedLink text="Harbor Edge Native Config" url="/integrations/packs/?pack=harbor-edge-native-config"/> pack, it should not be applied to existing clusters, only new clusters.
+
+Palette Edge now implements a primary registry mechanism where
+you can use any OCI-compliant registry to achieve the same goal as the local Harbor registry. For more information,
+refer to [Deploy with In-Cluster Primary Registry](./deploy-primary-registry.md).
+
+If you have clusters using the **Harbor Edge-Native Config** pack, refer to
+[Migrate from Harbor Edge-Native Config](./migrate-edge-native-config.md) to learn how to migrate off of the deprecated
+solution with no impact to your production workload.
+
+:::
+
+<!-- prettier-ignore-end -->
+
 Palette Edge allows you to provision a local Harbor image registry as part of your Edge deployment. When your Edge
 cluster is created for the first time, all images from add-on packs downloaded from external registries are stored
 locally in the Harbor registry. Subsequent image pulls from the cluster are made to the local Harbor registry. This
@@ -166,10 +187,19 @@ profile.
 
 11. Click **Save Changes**.
 
-12. Deploy a new Edge cluster with your updated profile. Or, if you have an active cluster, update the cluster to use
-    the new version of the cluster profile. The initial download of the images will require a connection to the external
-    network as the images are sourced from the original repository. Subsequent image pulls are sourced from the local
-    Harbor registry.
+12. Deploy a new Edge cluster with your updated profile. The initial download of the images will require a connection to
+    the external network as the images are sourced from the original repository. Subsequent image pulls are sourced from
+    the local Harbor registry.
+
+<!-- prettier-ignore-start -->
+
+:::warning
+
+The <VersionedLink text="Harbor Edge Native Config" url="/integrations/packs/?pack=harbor-edge-native-config"/> pack should only be applied to new clusters, not active clusters.
+
+:::
+
+<!-- prettier-ignore-end -->
 
 ## Validation
 
