@@ -90,7 +90,30 @@ Palette Edge CLI to download the images and upload them to the external registry
    bundle.
 
 10. (Optional) If your cluster profile uses images or Helm charts that are hosted on private registries that require
-    authentication, you must use the `content registry-login` command to authenticate with the registry. Replace
+    authentication, you must use the `content registry-login` command to authenticate with each one of the registries.
+    Replace `<registry-address>`, `<registry-username>`, and `<registry-password>` with your registry credentials. Refer
+    to the [content registry-login](../../../../automation/palette-cli/commands/content.md#registry-login) CLI command
+    page for more information.
+
+    ```shell
+    palette content registry-login --registry <registry-address> \
+    --username <registry-username> \
+    --password <registry-password>
+    ```
+
+11. Issue the following command to download the images as a content bundle. Replace the placeholder values with your
+    actual values. Refer to the [Build Content Bundle](../../edgeforge-workflow/palette-canvos/build-content-bundle.md)
+    guide for more information.
+
+    ```shell
+    palette content build --arch <bundle-architecture> \
+     --project-id <project-id> \
+     --profiles <cluster-profile-id1,cluster-profile-id2...> \
+     --name <bundle-name> \
+     --output <output-directory>
+    ```
+
+12. Use the `content registry-login` command again to authenticate with the external registry. Replace
     `<registry-address>`, `<registry-username>`, and `<registry-password>` with your registry credentials. Refer to the
     [content registry-login](../../../../automation/palette-cli/commands/content.md#registry-login) CLI command page for
     more information.
@@ -101,19 +124,7 @@ Palette Edge CLI to download the images and upload them to the external registry
     --password <registry-password>
     ```
 
-11. Issue the following command to download the images as a content bundle. Replace the placeholder values with your
-    actual values. Refer to the [content build](../../../../automation/palette-cli/commands/content.md#build) CLI
-    command page for a complete list of available flags.
-
-    ```shell
-    palette content build --arch <bundle-architecture> \
-     --project-id <project-id> \
-     --profiles <cluster-profile-id1,cluster-profile-id2...> \
-     --name <bundle-name> \
-     --output <output-directory>
-    ```
-
-12. Issue the following command to upload the images to the external registry. Replace `<path-to-content-bundle>` with
+13. Issue the following command to upload the images to the external registry. Replace `<path-to-content-bundle>` with
     the path to the content bundle you downloaded in the previous step, and `<registry-address` with the URL of your
     external registry. Refer to the [content push](../../../../automation/palette-cli/commands/content.md#push) CLI
     command page for a complete list of available flags.
