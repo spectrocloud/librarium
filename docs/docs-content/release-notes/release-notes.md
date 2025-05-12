@@ -77,6 +77,20 @@ tags: ["release-notes"]
 
   :::
 
+- The Palette UI allows users to specify an optional team description during team creation. This new field makes it
+  possible for system administrators to provide a meaningful description to user teams. Refer to the
+  [Create and Manage a Team](../user-management/users-and-teams/create-a-team.md) guide for further information.
+- Palette [interface customization](../enterprise-version/system-management/customize-interface.md) has been expanded to
+  include sidebar customization, documentation links, and all login screen logos.
+- The management of
+  [cluster profile variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/define-profile-variables.md)
+  has been improved in the Palette UI. Users can now review and modify variable values during
+  [cluster profile version changes](../profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile.md).
+- Palette uses Velero version 1.15 internally. Existing clusters with configured backups will be automatically updated
+  to Velero version 1.15, ensuring continuous access to Palette backup and restore functionality. Refer to the
+  [Backup and Restore](../clusters/cluster-management/backup-restore/backup-restore.md) page to learn more about backup
+  and restore tools in Palette.
+
 #### Deprecations and Removals
 
 ### Edge
@@ -137,41 +151,78 @@ Check out the [CLI Tools](../downloads/cli-tools.md) page to find the compatible
 
 <!-- prettier-ignore-start -->
 
-- The <VersionedLink text="BYOS - Agent Mode" url="integrations/packs/?pack=byoi-agent-mode" /> version 1.0.0 pack is now deprecated. We recommend using the <VersionedLink text="BYOS Edge OS" url="integrations/packs/?pack=edge-native-byoi" /> version 2.1.0 pack instead.
+- The <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> versions 1.31.x and 1.32.x packs now support cluster deployments to AWS.
+- The <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> version 1.32.x packs now support cluster deployments to AKS.
 
 <!-- prettier-ignore-end -->
 
-#### OS
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
 #### Kubernetes
 
-| Pack Name | New Version |
-| --------- | ----------- |
+| Pack Name                                | New Version |
+| ---------------------------------------- | ----------- |
+| Palette eXtended Kubernetes              | 1.32.3      |
+| Palette eXtended Kubernetes              | 1.31.7      |
+| Palette eXtended Kubernetes              | 1.30.11     |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.32.3      |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.31.7      |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.30.11     |
+| Palette Optimized Canonical              | 1.32.3      |
+| Palette Optimized K3S                    | 1.32.3      |
+| Palette Optimized K3S                    | 1.31.7      |
+| Palette Optimized K3S                    | 1.30.11     |
+| Palette Optimized RKE2                   | 1.32.3      |
+| Palette Optimized RKE2                   | 1.31.7      |
+| Palette Optimized RKE2                   | 1.30.11     |
+| RKE2                                     | 1.32.3      |
+| RKE2                                     | 1.31.7      |
+| RKE2                                     | 1.30.11     |
 
 #### CNI
 
 | Pack Name | New Version |
 | --------- | ----------- |
+| Flannel   | 0.26.4      |
 
 #### CSI
 
-| Pack Name | New Version |
-| --------- | ----------- |
+| Pack Name              | New Version |
+| ---------------------- | ----------- |
+| Local Path Provisioner | 0.0.31      |
 
 #### Add-on Packs
 
-| Pack Name | New Version |
-| --------- | ----------- |
+| Pack Name                    | New Version |
+| ---------------------------- | ----------- |
+| Local Path Provisioner       | 0.0.31      |
+| Spectro Kubernetes Dashboard | 7.11.1      |
+| Zot Registry                 | 0.1.66      |
 
 #### FIPS Packs
 
-| Pack Name | New Version |
-| --------- | ----------- |
+| Pack Name                                | New Version |
+| ---------------------------------------- | ----------- |
+| Local Path Provisioner                   | 0.0.31      |
+| Palette eXtended Kubernetes              | 1.32.3      |
+| Palette eXtended Kubernetes              | 1.31.7      |
+| Palette eXtended Kubernetes              | 1.30.11     |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.32.3      |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.31.7      |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.30.11     |
+| Palette Optimized RKE2                   | 1.32.3      |
+| Palette Optimized RKE2                   | 1.31.7      |
+| Palette Optimized RKE2                   | 1.30.11     |
+| RKE2                                     | 1.32.3      |
+| RKE2                                     | 1.31.7      |
+| RKE2                                     | 1.30.11     |
+| Zot Registry                             | 0.1.66      |
 
 #### Deprecations and Removals
+
+<!-- prettier-ignore-start -->
+
+- The <VersionedLink text="BYOS - Agent Mode" url="integrations/packs/?pack=byoi-agent-mode" /> version 1.0.0 pack is now deprecated. We recommend using the <VersionedLink text="BYOS Edge OS" url="integrations/packs/?pack=edge-native-byoi" /> version 2.1.0 pack instead.
+
+<!-- prettier-ignore-end -->
 
 ## May 7, 2025 - Release 4.6.25
 
