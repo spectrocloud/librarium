@@ -37,48 +37,10 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 
 ## Build Custom Image
 
-1.  Open a terminal session on your Linux machine and download the CAPI Image Builder image. This guide uses version
+1.  Open up a terminal session on your Linux machine and download the CAPI Image Builder image. This guide uses version
     `4.6.b` as an example. Replace `4.6.b` with your desired version.
 
-        <Tabs>
-        <TabItem value="Docker" label="Docker">
-
-        ```shell
-        docker pull us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:v4.6.b
-        ```
-
-        Confirm that the image was downloaded correctly.
-
-        ```shell
-        docker images
-        ```
-
-        ```text hideClipboard
-        REPOSITORY                                                           TAG       IMAGE ID       CREATED       SIZE
-        us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder   v4.6.b    2adff15eee2d   7 days ago    2.47 GB
-        ```
-
-        </TabItem>
-
-        <TabItem value="Podman" label="Podman">
-
-        ```shell
-        podman pull us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:v4.6.b
-        ```
-
-        Confirm that the image was downloaded correctly.
-
-        ```shell
-        podman images
-        ```
-
-        ```text hideClipboard
-        REPOSITORY                                                           TAG       IMAGE ID       CREATED       SIZE
-        us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder   v4.6.b    2adff15eee2d   7 days ago    2.47 GB
-        ```
-
-        </TabItem>
-        </Tabs>
+    <PartialsComponent category="capi-image-builder" name="download-capi-image-builder-repository" />
 
 2.  Create an `output` directory to store the image files and set the required permissions. This guide uses `ubuntu` as
     an example username. Replace `ubuntu` with your Linux username.
@@ -289,7 +251,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 
             Replace `<vcenter-static-ip-address>` with a valid IP address from your VMware vSphere environment and
             `<vcenter-netmask>`, `<vcenter-gateway>`, and `<vcenter-nameserver>` with the correct values from your VMware vSphere
-            environment.
+            environment. The `<vcenter-netmask>` parameter must be specified in dotted decimal notation, for example, `--netmask=255.255.255.0`.
 
             Once you are finished making changes, save and exit the file.
 

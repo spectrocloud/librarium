@@ -48,9 +48,8 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
     details on supported operating systems.
 
   - Airgap Kubernetes pack binary of the version for which the image will be generated. This guide uses version `1.30.5`
-    as an example. Refer to the
-    [Additional Packs](../../../../enterprise-version/install-palette/airgap/supplemental-packs.md) page for
-    instructions on how to download the binary. Additionally, check the supported Kubernetes versions in the
+    as an example. Refer to the [Additional Packs](../../../../downloads/self-hosted-palette/additional-packs.md) page
+    for instructions on how to download the binary. Additionally, check the supported Kubernetes versions in the
     [Compatibility Matrix](../../comp-matrix-capi-builder.md).
 
   - (Optional) Any custom Bash scripts (`.sh` or `.bash` files) that you want to execute when creating your RHEL image.
@@ -139,7 +138,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
     :::warning
 
     If you used the airgap support VM hostname during the execution of the `airgap-setup.sh` script, ensure you enter
-    the VM's hostname in the `airgap_ip` parameter. The same applies if you used the VM’s IP address.
+    the VM hostname in the `airgap_ip` parameter. The same applies if you used the VM IP address.
 
     :::
 
@@ -409,7 +408,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 
             Replace `<vcenter-static-ip-address>` with a valid IP address from your VMware vSphere environment and
             `<vcenter-netmask>`, `<vcenter-gateway>`, and `<vcenter-nameserver>` with the correct values from your VMware vSphere
-            environment.
+            environment. The `<vcenter-netmask>` parameter must be specified in dotted decimal notation, for example, `--netmask=255.255.255.0`.
 
             Once you are finished making changes, save and exit the file.
 

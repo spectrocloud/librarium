@@ -1,0 +1,47 @@
+---
+partial_category: capi-image-builder
+partial_name: download-capi-image-builder-repository
+---
+
+Download version `v4.6.b` of the CAPI Image Builder repository.
+
+<Tabs>
+
+<TabItem value="Docker" label="Docker">
+
+```shell
+docker pull us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:v4.6.b
+```
+
+Confirm that the image was downloaded correctly.
+
+```shell
+docker images
+```
+
+```text hideClipboard
+REPOSITORY                                                           TAG       IMAGE ID       CREATED       SIZE
+us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder   v4.6.b    2adff15eee2d   7 days ago    2.47 GB
+```
+
+</TabItem>
+
+<TabItem value="Podman" label="Podman">
+
+```shell
+podman pull us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:v4.6.b
+ ```
+
+Confirm that the image was downloaded correctly.
+
+```shell
+podman images
+```
+
+```text hideClipboard
+REPOSITORY                                                           TAG       IMAGE ID       CREATED       SIZE
+us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder   v4.6.b    2adff15eee2d   7 days ago    2.47 GB
+
+</TabItem>
+
+</Tabs>
