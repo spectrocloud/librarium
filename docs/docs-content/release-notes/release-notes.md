@@ -40,6 +40,14 @@ tags: ["release-notes"]
   supported AMIs, refer to the
   [Assign an AMI to a Node Pool](../clusters/public-cloud/aws/eks.md#assign-an-ami-to-a-node-pool) section.
 
+- When deploying an Azure IaaS cluster through a [Self Hosted PCG](../clusters/pcg/deploy-pcg-k8s.md), you can now
+  select a specific resource group and private DNS zone for your private API server load balancer. This allows you to
+  reuse an existing private DNS zone for multiple private Azure IaaS clusters even when the zone is kept in a different
+  resource group.
+
+  Refer to the [Create and Manage Azure IaaS Cluster](../clusters/public-cloud/azure/create-azure-cluster.md) guide for
+  more information.
+
 #### Improvements
 
 #### Deprecations and Removals
