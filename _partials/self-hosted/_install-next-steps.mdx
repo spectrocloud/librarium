@@ -1,0 +1,18 @@
+---
+partial_category: self-hosted
+partial_name: install-next-steps
+---
+
+Now that you have installed {props.edition}, you can either
+    <PaletteVertexUrlMapper
+        edition={props.edition}
+        text="create a tenant"
+        url="/system-management/tenant-management"
+    /> to host your users and set up your clusters, or you can
+    <PaletteVertexUrlMapper
+        edition={props.edition}
+        text="activate your installation"
+        url="/activate-installation"
+    /> .     
+
+Beginning with version 4.6.c, once you install {props.edition}, you have 30 days to activate it; versions older than 4.6.c do not need to be activated. During the 30-day trial period, you can use {props.edition} without any restrictions. After 30 days, you can continue to use {props.edition}, but you cannot deploy additional clusters or perform any day-2 operations on existing clusters until {props.edition} is activated. Each installation of {props.edition} must be activated separately. We recommend activating {props.edition} as soon as possible to avoid any disruptions.

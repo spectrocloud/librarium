@@ -881,6 +881,9 @@ Use the following steps to validate the VerteX installation.
 
 ## Next Steps
 
-You have successfully installed VerteX in a Kubernetes cluster. Your next steps are to configure VerteX for your
-organization. Start by creating the first tenant to host your users. Use the
-[Create a Tenant](../../../system-management/tenant-management.md) page for instructions on how to create a tenant.
+<PartialsComponent
+  category="self-hosted"
+  name="install-next-steps"
+  edition="VerteX"
+  version="Palette VerteX"
+/>
