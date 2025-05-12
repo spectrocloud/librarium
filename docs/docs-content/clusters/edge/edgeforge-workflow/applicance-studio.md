@@ -3,7 +3,7 @@ sidebar_label: "Appliance Studio"
 title: "Appliance Studio"
 description: "Overview of Appliance Studio."
 hide_table_of_contents: false
-sidebar_position: 5
+sidebar_position: 1
 tags: ["edge"]
 ---
 
@@ -26,16 +26,19 @@ You can deploy Appliance Studio locally either through Docker or Podman.
 
 <Tabs group="method">
 
-<IabItem value="Docker Compose">
+<TabItem value="Docker Compose">
 
 - [Docker](https://docker.io) and [Docker Compose](https://docs.docker.com/compose/install/) are installed and
   available.
 
 </TabItem>
 
-<IabItem value="Podman Compose">
+<TabItem value="Podman Compose">
 
-- [Podman] and [Podman Compose] are installed and available.
+- [Podman](https://podman.io/docs/installation) and
+  [Podman Compose](https://podman-desktop.io/docs/compose/setting-up-compose) are installed and available.
+
+- You have at least one active Podman machine.
 
 </TabItem>
 
@@ -48,6 +51,12 @@ You can deploy Appliance Studio locally either through Docker or Podman.
    ```shell
    git clone https://github.com/spectrocloud/appliance-studio.git
    cd appliance-studio
+   ```
+
+2. Change into the `deploy` directory.
+
+   ```shell
+   cd deploy
    ```
 
 <Tabs group="method">
@@ -98,12 +107,6 @@ You can deploy Appliance Studio locally either through Docker or Podman.
 
 <TabItem value="Docker Compose">
 
-2. Change into the `deploy` directory.
-
-   ```shell
-   cd deploy
-   ```
-
 3. (Optional) Modify persistent data directory. By default, the `docker-compose.yml` file configures the
    `deploy/appliance-studio-data` directory as the persistent data directory. You may change this to point to any other
    directory by modifying the `services.server.volumes` field.
@@ -142,12 +145,6 @@ You can deploy Appliance Studio locally either through Docker or Podman.
 </TabItem>
 
 <TabItem value="Podman Compose">
-
-2. Change into the `deploy` directory.
-
-   ```shell
-   cd deploy
-   ```
 
 3. (Optional) Modify persistent data directory. By default, the `docker-compose.yml` file configures the
    `deploy/appliance-studio-data` directory as the persistent data directory. You may change this to point to any other
