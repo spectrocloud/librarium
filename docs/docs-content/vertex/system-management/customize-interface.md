@@ -9,11 +9,11 @@ tags: ["self-hosted", "management", "account", "customize-interface"]
 keywords: ["self-hosted", "vertex", "customize-interface"]
 ---
 
-<PartialsComponent 
+<PartialsComponent
   category="self-hosted"
   name="customize-interface"
   edition="VerteX"
   reference="Palette VerteX"
   version="Palette VerteX"
-  andor="Palette VerteX" 
+  andor="Palette VerteX"
 />
