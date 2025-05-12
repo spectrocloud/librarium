@@ -18,24 +18,24 @@ that you can reuse to create new configuration files.
 
 ## Deploy Appliance Studio
 
-The Appliance Studio is released as a Docker image. Follow this guide to download the image and run it on your local
-machine.
+You can deploy Appliance Studio locally either through Docker or Podman.
 
 ### Prerequisites
 
 - [Git](https://git-scm.com/downloads). You can confirm git installation by issuing the `git --version` command.
 
-- [Docker](https://docker.io) is installed and available.
-
 <Tabs group="method">
 
-<IabItem value="Helm">
+<IabItem value="Docker Compose">
 
-- [Helm](https://helm.sh/docs/intro/install/) is installed and available.
+- [Docker](https://docker.io) and [Docker Compose](https://docs.docker.com/compose/install/) are installed and
+  available.
 
 </TabItem>
 
-<IabItem value="Docker Compose">
+<IabItem value="Podman Compose">
+
+- [Podman] and [Podman Compose] are installed and available.
 
 </TabItem>
 
@@ -46,12 +46,13 @@ machine.
 1. Clone the `appliance-studio` repository.
 
    ```shell
-   git clone
+   git clone https://github.com/spectrocloud/appliance-studio.git
+   cd appliance-studio
    ```
 
 <Tabs group="method">
 
-<IabItem value="Helm">
+<!-- <IabItem value="Helm">
 
 2. Issue the following command to create a `kind` cluster.
 
@@ -93,9 +94,95 @@ machine.
         --namespace appliance-studio --create-namespace
    ```
 
+</TabItem> -->
+
+<TabItem value="Docker Compose">
+
+2. Change into the `deploy` directory.
+
+   ```shell
+   cd deploy
+   ```
+
+3. (Optional) Modify persistent data directory. By default, the `docker-compose.yml` file configures the
+   `deploy/appliance-studio-data` directory as the persistent data directory. You may change this to point to any other
+   directory by modifying the `services.server.volumes` field.
+
+   Change the path before the `:` sign to point to the directory you want to mount. You can use either absolute path or
+   relative path. If you use a relative path, the path is relative to the `docker-compose.yaml` file, not the directory
+   from which you issue the `docker compose up` command.
+
+   ```yaml {11}
+   services:
+     server:
+       container_name: appliance-studio-server
+       ports:
+         - "4500:4500"
+       networks:
+         - appliance-studio-net
+       restart: unless-stopped
+       volumes:
+         # Mount a host directory to /data inside the container for persistent storage.
+         # IMPORTANT: Ensure the host directory (e.g., ./appliance-studio-data below) exists locally before running 'docker-compose up'.
+         # You can change './appliance-studio-data' to any path on your host machine.
+         - ./appliance-studio-data/additional-path:/data
+   ```
+
+4. If you did not modify the persistent data mount directory, skip this step.
+
+   If you modified the persistent data mount directory, ensure that the directory exists before proceeding to the next
+   step. Create the directory if it does not exist.
+
+5. Issue the following command to bring Appliance Studio.
+
+   ```yaml
+   docker compose up -d
+   ```
+
 </TabItem>
 
-<IabItem value="Docker Compose">
+<TabItem value="Podman Compose">
+
+2. Change into the `deploy` directory.
+
+   ```shell
+   cd deploy
+   ```
+
+3. (Optional) Modify persistent data directory. By default, the `docker-compose.yml` file configures the
+   `deploy/appliance-studio-data` directory as the persistent data directory. You may change this to point to any other
+   directory by modifying the `services.server.volumes` field.
+
+   Change the path before the `:` sign to point to the directory you want to mount. You can use either absolute path or
+   relative path. If you use a relative path, the path is relative to the `docker-compose.yaml` file, not the directory
+   from which you issue the `podman compose up` command.
+
+   ```yaml {11}
+   services:
+     server:
+       container_name: appliance-studio-server
+       ports:
+         - "4500:4500"
+       networks:
+         - appliance-studio-net
+       restart: unless-stopped
+       volumes:
+         # Mount a host directory to /data inside the container for persistent storage.
+         # IMPORTANT: Ensure the host directory (e.g., ./appliance-studio-data below) exists locally before running 'docker-compose up'.
+         # You can change './appliance-studio-data' to any path on your host machine.
+         - ./appliance-studio-data/additional-path:/data
+   ```
+
+4. If you did not modify the persistent data mount directory, skip this step.
+
+   If you modified the persistent data mount directory, ensure that the directory exists before proceeding to the next
+   step. Create the directory if it does not exist.
+
+5. Issue the following command to bring Appliance Studio.
+
+   ```yaml
+   podman compose up -d
+   ```
 
 </TabItem>
 
@@ -103,9 +190,14 @@ machine.
 
 ### Validate
 
-## Presets
+1. Visit port 8443 of your machine to access the Appliance Studio UI.
+
+2. Confirm that Appliance Studio is accessible.
 
 ## Resources
+
+Appliance Studio can help you prepare the two essential configuration files used during the EdgeForge process. Refer to
+the following pages for more information on the `.arg` file and `user-data` file.
 
 - [Prepare User Data and Argument Files](./prepare-user-data.md)
 
