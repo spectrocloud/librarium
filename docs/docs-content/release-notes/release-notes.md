@@ -33,6 +33,11 @@ tags: ["release-notes"]
   [Required IAM Permissions](../clusters/public-cloud/gcp/required-permissions.md#required-permissions) guide for all
   required GCP IAM permissions.
 
+- After upgrading Palette to this release, Palette will automatically trigger a repave on existing GKE clusters for node
+  pools. This is because the the CAPG version has been updated from v1.2.1 to v1.8.1, which automatically adds a new
+  ownership label `capg-<cluster-name>=owned`. As GKE treats a node pool label map as immutable, the label insertion
+  triggers a rolling repave of all worker nodes.
+
 #### Features
 
 - You can now assign an Amazon Machine Image (AMI) to a node pool when deploying Amazon EKS clusters. To do this, apply
@@ -49,6 +54,28 @@ tags: ["release-notes"]
   more information.
 
 #### Improvements
+
+- CAPG has been upgraded to [v1.8.1](https://github.com/kubernetes-sigs/cluster-api-provider-gcp/releases/tag/v1.8.1)
+  from [v1.2.1](https://github.com/kubernetes-sigs/cluster-api-provider-gcp/releases/tag/v1.2.1).
+
+  As part of this release, newly created GKE clusters will have an additional default label applied to their node pools.
+  This is due to a change starting from CAPG v1.3 where a cluster-ownership label is automatically injected into every
+  node pool.
+
+  The following table displays the default labels between the previous and current CAPG release.
+
+  | CAPG Version | Default Labels on Node Pools                                                     |
+  | ------------ | -------------------------------------------------------------------------------- |
+  | v1.2.1       | `goog-gke-node-pool-provisioning-model: on-demand`                               |
+  | v1.8.1       | `goog-gke-node-pool-provisioning-model: on-demand`, `capg-<cluster-name>: owned` |
+
+  :::warning
+
+  In GKE, a node pool’s label set is an immutable field, and any changes to it will trigger a repave. As such, any GKE
+  clusters built with an older release will be automatically repaved by Palette. This will occur after Palette has been
+  upgraded to this release or later.
+
+  :::
 
 #### Deprecations and Removals
 
