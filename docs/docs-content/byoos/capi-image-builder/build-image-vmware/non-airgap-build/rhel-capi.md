@@ -89,17 +89,17 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
     ```
 
 6.  Download the `imageconfig` template file.
-6.  Download the `imageconfig` template file.
+7.  Download the `imageconfig` template file.
 
     ```shell
     curl https://software.spectrocloud.com/tools/capi-image-builder/imageconfig --output imageconfig
     ```
 
-7.  Open the `imageconfig` template file in an editor of your choice and fill in the required parameters. For a complete
+8.  Open the `imageconfig` template file in an editor of your choice and fill in the required parameters. For a complete
     list of parameters, refer to the [Configuration Reference](../../config-reference.md) page. Additionally, refer to
     the [Compatibility Matrix](../../comp-matrix-capi-builder.md) for a list of supported Kubernetes versions and their
     corresponding dependencies.
-7.  Open the `imageconfig` template file in an editor of your choice and fill in the required parameters. For a complete
+9.  Open the `imageconfig` template file in an editor of your choice and fill in the required parameters. For a complete
     list of parameters, refer to the [Configuration Reference](../../config-reference.md) page. Additionally, refer to
     the [Compatibility Matrix](../../comp-matrix-capi-builder.md) for a list of supported Kubernetes versions and their
     corresponding dependencies.
@@ -195,7 +195,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 
     Once you are finished making changes, save and exit the file.
 
-8.  (Optional) You can add custom Bash scripts (`.sh` or `.bash` files) to be included before or after the build
+10. (Optional) You can add custom Bash scripts (`.sh` or `.bash` files) to be included before or after the build
     process. This feature is available beginning with CAPI Image Builder version `4.6.b`. If any scripts are found in
     the relevant directories, they are copied to the Ansible workflow.
 
@@ -216,7 +216,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
        chmod +x custom_scripts/pre/sample-script.sh
        ```
 
-9.  Issue the command below to start the CAPI Image Builder container and assign the container ID to the `BUILD_ID`
+11. Issue the command below to start the CAPI Image Builder container and assign the container ID to the `BUILD_ID`
     variable. The tool will create and configure a VM with Dynamic Host Configuration Protocol (DHCP) in your VMware
     vSphere environment using the `image_name` defined in `imageconfig`. For this guide, the VM is named `rhel-8`. The
     tool will then generate a RHEL 8 CAPI image from the VM and save it to the `output` directory.
@@ -293,7 +293,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 
         </details>
 
-10. Execute the following command to view the CAPI Image Builder container logs and monitor the build progress. If you
+12. Execute the following command to view the CAPI Image Builder container logs and monitor the build progress. If you
     added any custom scripts in step 8, the output will be displayed in the build log.
     <!-- prettier-ignore -->
     <Tabs>
@@ -321,7 +321,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 
     :::
 
-11. Once the build is complete, the RHEL 8 CAPI image will be downloaded to the `output` directory as the `image_name`
+13. Once the build is complete, the RHEL 8 CAPI image will be downloaded to the `output` directory as the `image_name`
     specified in the `imageconfig` file. For this example, the image is `rhel-8`. Once the image is created, the VM is
     deleted from VMware vSphere.
 
@@ -336,7 +336,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
         packer-manifest.json  rhel-8-disk-0.vmdk  rhel-8-kube-v1.30.4.mf  rhel-8-kube-v1.30.4.ova  rhel-8-kube-v1.30.4.ova.sha256  rhel-8-kube-v1.30.4.ovf  rhel-8.ovf
         ```
 
-12. To make the image available in VMware vSphere, log in to your environment and locate the `vcenter_folder` defined in
+14. To make the image available in VMware vSphere, log in to your environment and locate the `vcenter_folder` defined in
     the `imageconfig` in step 7 of this guide.
 
     :::tip
@@ -346,21 +346,21 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 
     :::
 
-13. Right-click the folder and select **Deploy OVF Template** to deploy a VM using the RHEL 8 OVA file that was built in
+15. Right-click the folder and select **Deploy OVF Template** to deploy a VM using the RHEL 8 OVA file that was built in
     step 9 of this guide.
 
-14. In the **Deploy OVF Template** wizard, select **Local File > Upload Files**, and choose the OVA file located in the
+16. In the **Deploy OVF Template** wizard, select **Local File > Upload Files**, and choose the OVA file located in the
     `output` folder on your local machine. This guide uses `rhel-8-kube-v1.30.4.ova` as an example. Select **Next** to
     continue.
 
-15. Assign a name to the virtual machine, such as `rhel-8-kube-v1.30.4`, and choose the folder you created previously as
+17. Assign a name to the virtual machine, such as `rhel-8-kube-v1.30.4`, and choose the folder you created previously as
     the target location. Select **Next** to proceed.
 
-16. Choose a compute resource and select **Next**.
+18. Choose a compute resource and select **Next**.
 
-17. Review the VM configuration, accept the license agreements, and select **Next**.
+19. Review the VM configuration, accept the license agreements, and select **Next**.
 
-18. Choose the storage location and network configuration and select **Next**. Then, select **Finish** to deploy the VM.
+20. Choose the storage location and network configuration and select **Next**. Then, select **Finish** to deploy the VM.
 
     :::warning
 
@@ -370,7 +370,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 
     :::
 
-19. Once the VM is created, right-click it and select **Convert to Template**. This will convert the VM into a RHEL 8
+21. Once the VM is created, right-click it and select **Convert to Template**. This will convert the VM into a RHEL 8
     image template that you can reference during the cluster profile creation.
 
 ### Validate
