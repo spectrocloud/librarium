@@ -34,7 +34,7 @@ tags: ["release-notes"]
   required GCP IAM permissions.
 
 - After upgrading Palette to this release, Palette will automatically trigger a repave on existing GKE clusters for node
-  pools. This is because the the CAPG version has been updated from v1.2.1 to v1.8.1, which automatically adds a new
+  pools. This is because the CAPG version has been updated from v1.2.1 to v1.8.1, which automatically adds a new
   ownership label `capg-<cluster-name>=owned`. As GKE treats a node pool label map as immutable, the label insertion
   triggers a rolling repave of all worker nodes.
 
