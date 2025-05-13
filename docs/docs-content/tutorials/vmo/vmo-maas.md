@@ -22,7 +22,7 @@ detailed information.
 
 - A Palette account with tenant admin access.
 
-- MAAS datacenter environment
+- MAAS datacenter environment.
 
 - Two MAAS machines with a minimum spec of
 
@@ -30,9 +30,9 @@ detailed information.
   - 32 GB RAM
   - 250 GB Storage (Worker node must have 2 disks)
 
-- Two routable, static IP addresses from your MAAS environment
+- Two routable, static IP addresses from your MAAS environment's network.
 
-- A MAAS user with necessary permissions
+- A MAAS user with necessary permissions.
 
   - _ADD PERMISSIONS HERE_
 
@@ -44,14 +44,13 @@ detailed information.
 
 - [virtctl](https://kubevirt.io/user-guide/user_workloads/virtctl_client_tool/) installed locally
 
-- Downloaded copy of the Terraform [tutorial code](link here)
   <br />
 
 ## Clone GitHub Repository
 
 This tutorial has pre-built Terraform scripts that you will use to create your VMO MAAS cluster and deploy a VM to it.
 
-clone the Spectro Cloud Terraform tutorial repository.
+Clone the Spectro Cloud Terraform tutorial repository.
 
 `git clone https://github.com/spectrocloud/tutorials`
 
@@ -69,7 +68,7 @@ efficient.
 
 :::info
 
-We recommend that you read the **Palette Specific Terraform Files** at the end of the tutorial. It will provide additional detail about the Palette specific files scripts in this tutorial, what they do, and how you might modify them for your own deployments.
+We recommend that you read the **Palette Specific Terraform Files** section at the end of this tutorial. It will provide additional detail about the Palette specific files in this tutorial, what they do, and how you might modify them for your own deployments.
 
 :::
 
@@ -209,7 +208,7 @@ maas-control-plane-node-tags     = ["docs-cp"]              # Provide a set of 
 
 ### Deploy the Cluster
 
-Once the variables in _terraform.tfvars_ have been updated to reflect your environment, you can proceed with the VMO cluster deployment. 
+Once the variables in _terraform.tfvars_ have been updated, you can proceed with the VMO cluster deployment. 
 
 First, you must set the `SPECTROCLOUD_APIKEY` environment variable to your API key.
 
@@ -285,6 +284,8 @@ Prior to deploying your VM you must modify the _terraform.tfvars_ file to reflec
 
                                                                                                                                                                        
 ## Clean Up
+
+To clean up the resources you deployed, execute the `terraform destroy` command. 
 
 ## Wrap-up
 
