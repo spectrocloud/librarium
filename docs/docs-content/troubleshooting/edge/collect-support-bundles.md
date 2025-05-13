@@ -9,7 +9,7 @@ toc_max_heading_level: 3
 tags: ["edge", "troubleshooting", "support"]
 ---
 
-When deploying or operating Edge clusters, you may encounter issues that require assistance from the SpectroCloud
+When deploying or operating Edge clusters, you may encounter issues that require assistance from the Spectro Cloud
 support team, such as Edge hosts failing to register, pod failures, or provisioning errors. To help our team
 troubleshoot these issues more effectively, follow this guide to collect support bundles and attach them to your support
 ticket.
@@ -45,7 +45,7 @@ The `support-bundle-infra.sh` script collects cluster-level diagnostics. Follow 
 2. Run the `support-bundle-infra.sh` script.
 
    ```bash
-   curl -sSL https://software.spectrocloud.com/scripts/support-bundle-infra.sh | bash
+   curl curl --silent --show-error --location https://software.spectrocloud.com/scripts/support-bundle-infra.sh | bash
    ```
 
    If the script runs successfully, it creates a file in your home directory. The file name follows the pattern
@@ -80,7 +80,7 @@ Kubernetes data accessible locally on that host. Follow the steps below on every
 2. Run the `support-bundle-edge.sh` script as a user with sudo privileges.
 
    ```bash
-   curl -sSL https://software.spectrocloud.com/scripts/support-bundle-edge.sh | sudo bash
+   curl curl --silent --show-error --location https://software.spectrocloud.com/scripts/support-bundle-edge.sh | sudo bash
    ```
 
    The table below contains the optional flags you can use when running the script.
