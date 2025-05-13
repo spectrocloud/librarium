@@ -10,10 +10,6 @@ tags: ["edge"]
 Local UI allows you to manage Edge hosts in your network locally, upload content such as images and packs, and create
 Edge clusters without connections to a Palette installation.
 
-:::preview
-
-:::
-
 This page guides you through how access the console, and log in, and manage your username and password.
 
 ## Log in to Local UI

@@ -77,7 +77,7 @@ Key points to remember about scopes:
   [Spectro Cloud provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) for more
   information.
 
-### Visiblity
+### Visibility
 
 As a user, you can only view the resources that are in the same scope as your role, or what is allowed by the highest
 scope role you have. For example, if you have a role in the project scope, you can only view resources in the defined

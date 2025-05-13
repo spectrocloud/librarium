@@ -3,8 +3,12 @@
 -include .env
 
 IMAGE:=spectrocloud/librarium
-# Retrieve all modified files in the content folder and compare the difference between the master branch git tree blob AND this commit's git tree blob
-CHANGED_FILE=$(shell git diff-tree -r --no-commit-id --name-only master HEAD | grep content)
+# Combined list: untracked + modified + committed .md/.mdx files (compared to master)
+CHANGED_FILES=$(shell \
+  (git diff --name-only master...HEAD; \
+   git ls-files --modified --others --exclude-standard) \
+   | sort -u | grep -E '\.(md|mdx)$$' || true \
+)
 
 TEMP_DIR=$(shell $TMPDIR)
 
@@ -16,7 +20,8 @@ ALOGLIA_CONFIG=$(shell cat docsearch.dev.config.json | jq -r tostring)
 # Remove all security-bulletins and cve-reports.md because they are rate limited by nvd.nist.gov
 # Remove oss-licenses.md because they are rate limited by npmjs.com
 # Remove all /deprecated paths because we don't want to maintain their links
-VERIFY_URL_PATHS=$(shell find ./docs -name "*.md" | cut -c 3- | \
+VERIFY_URL_PATHS=$(shell find ./docs ./_partials \( -name "*.md" -o -name "*.mdx" \) | \
+ 	sed 's|^\./||' | \
 	sed '/security-bulletins/d' | \
 	sed '/cve-reports/d' | \
 	sed '/oss-licenses/d' | \
@@ -64,6 +69,7 @@ clean-packs: ## Clean supplemental packs and pack images
 clean-security: ## Clean security bulletins
 	rm -rf .docusaurus/security-bulletins/default/*.json
 	rm -rfv docs/docs-content/security-bulletins/reports/*.md 
+	rm -rfv docs/docs-content/security-bulletins/os-k8s/u*.mdx
 
 clean-api: ## Clean API docs
 	@echo "cleaning api docs"
@@ -232,8 +238,14 @@ docker-start: docker-image ## Build the docker image and start a local developme
 sync-vale: ## Install Vale plugins
 	vale sync
 
-check-writing: ## Run Vale lint checks
-	vale $(CHANGED_FILE) 
+check-writing: ## Run Vale on changed Markdown/MDX files
+	@echo "🔍 Looking for changed Markdown or MDX files..."
+	@if [ -n "$(CHANGED_FILES)" ]; then \
+		echo "📝 Running Vale on: $(CHANGED_FILES)"; \
+		vale $(CHANGED_FILES); \
+	else \
+		echo "✅ No changed Markdown or MDX files found."; \
+	fi
 
 ##@ Formatting Checks
 
@@ -305,6 +317,12 @@ verify-rate-limited-links-ci: ## Check for broken URLs in production in a GitHub
 	@jq '[.links[] | select(.url | test("^https?://")) | select(.status >= 400)]' temp_rate_limit_report.json > filtered_rate_limit_report.json
 	@rm temp_rate_limit_report.json
 	@mv filtered_rate_limit_report.json scripts/link_rate_limit_report.json
+
+verify-github-links: ## Check for broken GitHub links
+	@echo "Checking for broken GitHub links in CI environment..."
+	@rm link_report_github.txt || echo "No report exists. Proceeding to scan step"
+	./scripts/url-checker-github.sh
+	@mv link_report_github.txt scripts/link_report_github.txt
 
 ###@ Image Formatting
 

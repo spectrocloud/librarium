@@ -9,8 +9,8 @@ tags: ["edge"]
 
 Edge hosts deployed in remote locations are often difficult to access. Traditional troubleshooting tools such as
 `kubectl` rely on the Kubernetes API being available, which is not always the case in an outage. Palette allows you to
-use a remote shell session to access your connected Edge host. This connection operates on the Operating System (OS)
-level and does not require Kubernetes to be available.
+use a remote shell session to access your centrally managed Edge host. This connection operates on the Operating System
+(OS) level and does not require Kubernetes to be available.
 
 ![Diagram of the relationship between user, Palette, and Edge host in Remote Shell](/clusters_edge_cluster-mgmt_remote-shell.webp)
 
@@ -24,6 +24,9 @@ be enabled per Edge host by someone with sufficient permissions.
 
 ## Prerequisites
 
+- In your Edge host's `sshd` configuration, `PasswordAuthentication` must be set to `true`. In most cases, `true` is the
+  default value for this attribute.
+
 - An Edge host registered with your Palette account. The Edge host may or may not be part of an Edge cluster.
 
 - You are logged in as a Palette user who has the `edgehost.sshUpdate` permission in the project to which the Edge host
@@ -33,8 +36,8 @@ be enabled per Edge host by someone with sufficient permissions.
   information, refer to [Permissions](../../../user-management/palette-rbac/permissions.md).
 
 - Your Palette agent version must be 4.6.9 or later, and your Palette/VerteX version must be 4.6.12 or later.
-  - If your Palette agent version is 4.6.b or later, your Palette/Vertex version must be 4.6.b or later.
-  - If your Palette agent version earlier than 4.6.b, your Palette/Vertex version must be also be earlier than 4.6.b.
+  - If your Palette agent version is 4.6.23 or later, your Palette/Vertex version must be 4.6.23 or later.
+  - If your Palette agent version earlier than 4.6.23, your Palette/Vertex version must be also be earlier than 4.6.23.
 
 ## Procedure
 

@@ -1,7 +1,7 @@
 ---
 sidebar_label: "Architecture"
 title: "Architecture"
-description: "Learn about Palette Edge and the architecture used to suppport edge clusters."
+description: "Learn about Palette Edge and the architecture used to support edge clusters."
 hide_table_of_contents: false
 sidebar_position: 0
 tags: ["edge", "architecture"]
@@ -55,11 +55,11 @@ ARM64 support is only verified for the Nvidia Jetson Orin device family.
 
 Palette provides the following distributions for edge installations.
 
-| Name                                                                                                        | OS               | Kubernetes Distro | CNIs            | CSIs      |
-| ----------------------------------------------------------------------------------------------------------- | ---------------- | ----------------- | --------------- | --------- |
-| Palette Optimized K3s                                                                                       | openSUSE, Ubuntu | K3s               | Calico, Flannel | Rook Ceph |
-| Palette Optimized RKE2                                                                                      | openSUSE, Ubuntu | RKE2              | Calico, Flannel | Rook Ceph |
-| [Palette eXtended Kubernetes Edge (PXK-E)](../../../glossary-all.md#palette-extended-kubernetes-edge-pxk-e) | openSUSE, Ubuntu | CNCF              | Calico, Flannel | Rook Ceph |
+| Name                                                                                                        | OS               | Kubernetes Distribution | CNIs            | CSIs      |
+| ----------------------------------------------------------------------------------------------------------- | ---------------- | ----------------------- | --------------- | --------- |
+| Palette Optimized K3s                                                                                       | openSUSE, Ubuntu | K3s                     | Calico, Flannel | Rook Ceph |
+| Palette Optimized RKE2                                                                                      | openSUSE, Ubuntu | RKE2                    | Calico, Flannel | Rook Ceph |
+| [Palette eXtended Kubernetes Edge (PXK-E)](../../../glossary-all.md#palette-extended-kubernetes-edge-pxk-e) | openSUSE, Ubuntu | CNCF                    | Calico, Flannel | Rook Ceph |
 
 ## Supported Configurations
 
@@ -68,7 +68,7 @@ table below describes these aspects and the available options.
 
 | **Parameter**                     | **Choices**                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | --------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Cluster Mode                      | - Connected: The site has internet connectivity and the installation is initiated via Palette Management Console<br/> - Air-Gapped: The site does not have internet connectivity. Installation is initiated via the Palette CLI.                                                                                                                                                                                                                                                         |
+| Management Mode                   | - Central: The site has a connection to Palette and is managed centrally via Palette Management Console<br/> - Local: The site does not have a connection to Palette and is managed locally.                                                                                                                                                                                                                                                                                             |
 | OS                                | - Ubuntu<br/>- OpenSUSE<br/>- Bring Your Own OS (BYOOS)                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | Kubernetes Flavor                 | - Palette eXtended K8s for Edge FIPS (PXK-E) <br /> - Palette eXtended K8s for Edge (PXK-E)<br/>- Palette Optimized K3s<br/>- Palette Optimized RKE2                                                                                                                                                                                                                                                                                                                                     |
 | Kubernetes Version                | - 1.28.x<br/>- 1.29.x<br />- 1.30.x                                                                                                                                                                                                                                                                                                                                                                                                                                                      |

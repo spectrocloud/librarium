@@ -188,26 +188,30 @@ You can create presets to use as templates for future instances of your configur
 
 ### Prepare User Data
 
-1. Decide whether you want to deploy an Edge host that is connected to a Palette instance. The default configuration is
-   a connected Edge host. If you want to deploy an Edge host that is not connected to a Palette instance, you need to
-   change the installation mode to `airgap`. Add the `installationMode` parameter to under the `stylus` parameter.
+1. Decide whether you want to deploy an Edge host that is managed locally or centrally by Palette. The default
+   configuration is a centrally management Edge host. If you want to deploy an Edge host that is not connected to a
+   Palette instance, you need to change the management mode to `local`. Add the `managementMode` parameter to under the
+   `stylus` parameter.
+
 
    ```yaml
    #cloud-init
    stylus:
-     installationMode: airgap
+     managementMode: local
    ```
 
-   Edge hosts installed in airgap mode require you to provide assets needed to provision clusters. For more information
-   about the deployment lifecycle of airgap Edge hosts, refer to
+   Edge hosts installed in local management mode require you to provide assets needed to provision clusters. For more
+   information about the deployment lifecycle of locally managed Edge hosts, refer to
    [Edge Deployment Lifecycle](../edge-native-lifecycle.md).
 
-2. If you want to deploy the Edge host in `airgap` mode, skip this step.
 
-   If you want to deploy the Edge host in connected mode, you need to provide the Palette endpoint, in addition to
-   either a registration token or QR code registration configuration. For more information about Edge host registration,
-   refer to [Edge Host Registration](../site-deployment/site-installation/edge-host-registration.md). For example, the
-   following configuration provides the default Palette endpoint, a registration token, an a project name.
+2. If you want to deploy a locally managed Edge host, skip this step.
+
+
+   If you want to deploy the Edge host in central management mode, you need to provide the Palette endpoint, in addition
+   to either a registration token or QR code registration configuration. For more information about Edge host
+   registration, refer to [Edge Host Registration](../site-deployment/site-installation/edge-host-registration.md). For
+   example, the following configuration provides the default Palette endpoint, a registration token, an a project name.
 
    ```yaml
    #cloud-config
@@ -390,7 +394,8 @@ the proxy server to gain access to the internet. This does not affect the finish
 The following are full examples of user data files for various use cases. Use these examples as a starting point to help
 you create user data configurations that fit your needs.
 
-### Connected Sites - Multiple User Data Configuration
+### Centrally Managed Sites - Multiple User Data Configuration
+
 
 In this example, two configuration user data files are used. The first one is used in the staging phase and is included
 with the Edge Installer image. Note how the first user data contains the registration information and creates a user
@@ -436,10 +441,11 @@ stylus:
       zip-code: 95135
 ```
 
-### Connected Sites - Single User Data
+### Centrally Managed Sites - Single User Data
 
-This example configuration is for a _connected site_. In this scenario, only a single Edge Installer configuration user
-data is used for the entire deployment process.
+This example configuration is for a _centrally managed site_. In this scenario, only a single Edge Installer
+configuration user data is used for the entire deployment process.
+
 
 ```yaml
 #cloud-config

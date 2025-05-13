@@ -21,7 +21,32 @@ tags: ["release-notes"]
 
 #### Breaking Changes {#breaking-changes-4.6.c}
 
+- Due to an upgrade of Cluster API Provider GCP (CAPG) to
+  [v1.8.1](https://github.com/kubernetes-sigs/cluster-api-provider-gcp/releases/tag/v1.8.1), the following additional
+  IAM permissions are now required for GCP cluster deployments:
+
+  - `compute.disks.setLabels`
+  - `compute.globalForwardingRules.setLabels`
+
+  This is due to a fix in [v1.8.0](https://github.com/kubernetes-sigs/cluster-api-provider-gcp/releases/tag/v1.8.0) that
+  means labels may be populated for persistent disks and global forwarding rules. Refer to the
+  [Required IAM Permissions](../clusters/public-cloud/gcp/required-permissions.md#required-permissions) guide for all
+  required GCP IAM permissions.
+
 #### Features
+
+- You can now assign an Amazon Machine Image (AMI) to a node pool when deploying Amazon EKS clusters. To do this, apply
+  an additional label in the **Node Configuration Settings** during cluster creation. For guidance and a list of
+  supported AMIs, refer to the
+  [Assign an AMI to a Node Pool](../clusters/public-cloud/aws/eks.md#assign-an-ami-to-a-node-pool) section.
+
+- When deploying an Azure IaaS cluster through a [Self Hosted PCG](../clusters/pcg/deploy-pcg-k8s.md), you can now
+  select a specific resource group and private DNS zone for your private API server load balancer. This allows you to
+  reuse an existing private DNS zone for multiple private Azure IaaS clusters even when the zone is kept in a different
+  resource group.
+
+  Refer to the [Create and Manage Azure IaaS Cluster](../clusters/public-cloud/azure/create-azure-cluster.md) guide for
+  more information.
 
 #### Improvements
 
@@ -32,6 +57,8 @@ tags: ["release-notes"]
 #### Features
 
 #### Improvements
+
+- Improved the upgrade process for the Palette agent and increased its reliability.
 
 #### Bug Fixes
 
@@ -46,20 +73,46 @@ tags: ["release-notes"]
 
 :::info
 
-Check out the [Downloads](../spectro-downloads.md) and [Compatibility Matrix](../component.md) pages to find the
-compatible version of the Palette CLI.
+Check out the [CLI Tools](../downloads/cli-tools.md) page to find the compatible version of the Palette CLI.
 
 :::
+
+#### Breaking Changes {#breaking-changes-automation-4.6.c}
+
+- The Terraform resource `spectrocloud_macros` no longer supports the `project` field. Use the new `context` field to
+  specify the project or tenant scope for your macro. Additionally, you must use the `project_name` provider
+  configuration parameter to specify a project context. For more information, refer to the Spectro Cloud Terraform
+  provider [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
 
 #### Features
 
 #### Improvements
 
+### Virtual Machine Orchestrator (VMO)
+
+#### Improvements
+
+- The [Virtual Machine Migration Assistant](../vm-management/vm-migration-assistant/vm-migration-assistant.md) is now
+  supported for airgapped environments. Refer to the Additional Packs pages for
+  [self-hosted Palette](../downloads/self-hosted-palette/additional-packs.md#additional-deployment-options) and
+  [Palette VerteX](../downloads/palette-vertex/additional-packs.md#additional-deployment-options) for the relevant link
+  to download this pack and upload instructions.
+
 ### Docs and Education
+
+- We have added a new [Downloads](../downloads/downloads.md) tab to the top navigation bar of the Spectro Cloud
+  Documentation site. This tab provides a centralized location for downloading all support tools and utilities for
+  Palette.
 
 ### Packs
 
 #### Pack Notes
+
+<!-- prettier-ignore-start -->
+
+- The <VersionedLink text="BYOS - Agent Mode" url="integrations/packs/?pack=byoi-agent-mode" /> version 1.0.0 pack is now deprecated. We recommend using the <VersionedLink text="BYOS Edge OS" url="integrations/packs/?pack=edge-native-byoi" /> version 2.1.0 pack instead.
+
+<!-- prettier-ignore-end -->
 
 #### OS
 
@@ -92,6 +145,38 @@ compatible version of the Palette CLI.
 | --------- | ----------- |
 
 #### Deprecations and Removals
+
+## May 7, 2025 - Release 4.6.25
+
+### Bug Fixes
+
+- Fixed an issue that caused the deletion of [GCP clusters](../clusters/public-cloud/gcp/gcp.md) to fail for clusters
+  associated with cloud accounts that have been created on older Palette versions.
+
+## May 5, 2025 - Release 4.6.24
+
+### Bug Fixes
+
+- Fixed an issue that caused [Edge hosts](../clusters/edge/edge.md) to reboot continuously after a cluster deletion and
+  completed [reset](../clusters/edge/local-ui/host-management/reset-reboot.md#reset-edge-host).
+- Fixed an issue where Kubernetes version upgrades initiated through [Local UI](../clusters/edge/local-ui/local-ui.md)
+  failed for [Edge](../clusters/edge/edge.md) clusters containing the `harbor-edge-native-config` pack.
+- Fixed an issue where
+  [Software Bill of Materials (SBOM)](../clusters/cluster-management/compliance-scan.md#sbom-dependencies--vulnerabilities)
+  scans failed to execute successfully for all clusters.
+- Fixed an issue where POST API calls to `/v1/spectroclusters/edge-native` failed for U.S. multi-tenant SaaS
+  environments.
+- Fixed an issue that caused pack downloads with a double hyphen (`--`) in the label prefix to fail.
+- Fixed an issue that caused pack downloads to fail if the pack registry endpoint contained a port.
+- Fixed a UI discrepancy between the **Last Modified** timestamp on the cluster list and the cluster **Overview** tab.
+- Fixed an issue where [Edge cluster](../clusters/edge/edge.md) deployment failed when a certificate for a
+  [private provider registry](../clusters/edge/site-deployment/deploy-custom-registries/deploy-private-registry.md) was
+  included in the cluster profile.
+
+### Improvements
+
+- The default timeout for [remote shell](../clusters/edge/cluster-management/remote-shell.md) has been increased to 12
+  hours of inactivity.
 
 ## April 19, 2025 - Release 4.6.23 {#release-notes-4.6.b}
 
@@ -193,8 +278,7 @@ compatible version of the Palette CLI.
 
 :::info
 
-Check out the [Downloads](../spectro-downloads.md) and [Compatibility Matrix](../component.md) pages to find the
-compatible version of the Palette CLI.
+Check out the [Palette CLI Downloads](../downloads/cli-tools.md) page to find the compatible version of the Palette CLI.
 
 :::
 
@@ -464,8 +548,7 @@ available. For more details, refer to the Terraform provider
 
 :::info
 
-Check out the [Downloads](../spectro-downloads.md) and [Compatibility Matrix](../component.md) pages to find the
-compatible version of the Palette CLI.
+Check out the [Palette CLI Downloads](../downloads/cli-tools.md) page to find the compatible version of the Palette CLI.
 
 :::
 

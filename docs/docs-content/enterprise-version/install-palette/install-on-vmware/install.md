@@ -115,8 +115,8 @@ Use the following steps to install Palette.
 
 4.  Append an `r_` prefix to the OVA name and remove the `.ova` suffix after the import. For example, the final output
     should look like `r_u-2204-0-k-12813-0`. This naming convention is required for the install process to identify the
-    OVA. Refer to the [Supplement Packs](../airgap/supplemental-packs.md#additional-ovas) page for a list of additional
-    OVAs you can download and upload to your vCenter environment.
+    OVA. Refer to the [Additional OVAs](../../../downloads/self-hosted-palette/additional-ovas.md) page for a list of
+    additional OVAs you can download and upload to your vCenter environment.
 
     :::tip
 
@@ -248,7 +248,7 @@ Use the following steps to install Palette.
     | **Parameter** | **Description**                                                                                                                                                             |
     | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
     | **Small**     | Deploy VM nodes with 8 CPU, 16 GB memory, 60 GB storage. The database specs are 20 GB database with 2 CPU limit and 4 GB memory limit.                                      |
-    | **Medium**    | Deploy VM nodes with 16 CPU, 32 GB memory, 100 GB storage. The database specs are 60 GB database with 4 cpu limit and 8 GB memory limit.                                    |
+    | **Medium**    | Deploy VM nodes with 16 CPU, 32 GB memory, 100 GB storage. The database specs are 60 GB database with 4 CPU limit and 8 GB memory limit.                                    |
     | **Large**     | Deploy VM nodes with 32 CPU, 64 GB memory, 120 GB storage. The database specs are 80 GB database with 8 CPU limit and 16 GB memory limit.                                   |
     | **Custom**    | Deploy VM nodes with custom CPU, memory, storage, database size, CPU limit, and memory limit. If you specify custom, you will be prompted for the CPU, memory, and storage. |
 

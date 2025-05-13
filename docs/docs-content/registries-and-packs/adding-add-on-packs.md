@@ -27,8 +27,6 @@ examples to create custom add-on packs.
 
 - [Manifests](#manifests)
 
-<br />
-
 ## Helm Charts
 
 The following example shows how to build the Prometheus-Grafana monitoring pack and push to a pack registry server using
@@ -224,13 +222,28 @@ the Spectro Cloud CLI:
     ...
    ```
 
-6. Log in to the pack registry using the following command:
+6. (Optional) If you are designing a pack that can be used in Edge cluster profiles in the `local` management mode,
+   ensure you include all images that are referenced in the pack in the `pack.content.images` section of the
+   `values.yaml` file.
+
+   ```yaml
+   pack:
+     content:
+       images:
+         - docker.io/example-image:latest
+         - gcr.io/example-image-two:latest
+   ```
+
+   If you do not specify the images in the `pack.content.images` field and your cluster is a local cluster with an
+   in-cluster primary registry, the images will not be loaded and deployment of the application will fail.
+
+7. Log in to the pack registry using the following command:
 
    ```bash
     spectro registry login [REGISTRY_SERVER]
    ```
 
-7. Using the Spectro CLI, push the newly built pack to the pack registry:
+8. Using the Spectro CLI, push the newly built pack to the pack registry.
 
    ```bash
     spectro pack push prometheus-grafana --registry-server [REGISTRY-SERVER]
@@ -269,7 +282,7 @@ Spectro Cloud CLI.
 3. Create a sub-directory called **manifests**.
 
 4. Copy the desired manifest files to the **manifests** directory and reference them in `pack.json` as shown in step 2.
-   If the configurability of the manifest is desired, then the manifest files must be refactored to introduce
+   If you want to make custom configurations to the manifest, then the manifest files must be refactored to introduce
    parameters. For example, _\{\{.Values.namespace}}_. These parameters are defined with default values in the
    `values.yaml` file and can be overridden in the cluster profile.
 
@@ -387,8 +400,6 @@ Spectro Cloud CLI.
 
 5. Create a file called `values.yaml` to provide configurable manifest parameters.
 
-   **values.yaml:**
-
    ```yaml
    manifests:
      permission-manager:
@@ -399,13 +410,29 @@ Spectro Cloud CLI.
        authPassword: "welcome123"
    ```
 
-6. Log in to the pack registry using the following command:
+6. (Optional) If you are designing a pack that can be used in Edge cluster profiles in the `local` management mode,
+   ensure you include all images that are referenced in the pack in the `pack.content.images` section of the
+   `values.yaml` file. For more information about local deployments with primary registries, refer to
+   [Deploy with a Primary Registry](../clusters/edge/site-deployment/deploy-custom-registries/deploy-primary-registry.md).
+
+   ```yaml
+   pack:
+     content:
+       images:
+         - docker.io/example-image:latest
+         - gcr.io/example-image-two:latest
+   ```
+
+   If you do not specify the images in the `pack.content.images` field and your cluster is a local cluster with an
+   in-cluster primary registry, the images will not be loaded and deployment of the application will fail.
+
+7. Log in to the pack registry using the following command.
 
    ```bash
     spectro registry login [REGISTRY_SERVER]
    ```
 
-7. Using Spectro Cloud CLI push the newly built pack to the pack registry:
+8. Using Spectro Cloud CLI push the newly built pack to the pack registry.
 
    ```bash
     spectro pack push permission-manager --registry-server [REGISTRY-SERVER]

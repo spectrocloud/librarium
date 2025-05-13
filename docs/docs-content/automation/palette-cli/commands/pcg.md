@@ -1,7 +1,7 @@
 ---
 sidebar_label: "PCG"
 title: "PCG"
-description: "Reference resource for the pcg command."
+description: "Reference resource for the PCG command."
 hide_table_of_contents: false
 sidebar_position: 30
 tags: ["palette-cli"]
@@ -48,7 +48,7 @@ by the `install` subcommand.
 :::warning
 
 Use the latest version of the Palette CLI that matches the version of your Palette or Palette VerteX instance. You can
-find the newest version of the Palette CLI on the [Downloads](../../../spectro-downloads.md#palette-cli) page.
+find the newest version of the Palette CLI on the [Downloads](../../../downloads/cli-tools.md#palette-cli) page.
 
 :::
 

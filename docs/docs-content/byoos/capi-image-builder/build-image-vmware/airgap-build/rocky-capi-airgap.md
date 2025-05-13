@@ -40,9 +40,8 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
     **SHA256** checksum available. This guide uses Rocky 8 as an example. Refer to the
     [Configuration Reference](../../config-reference.md) page for details on supported operating systems.
   - Airgap Kubernetes pack binary of the version for which the image will be generated. This guide uses version `1.28.9`
-    as an example. Refer to the
-    [Additional Packs](../../../../enterprise-version/install-palette/airgap/supplemental-packs.md) page for
-    instructions on how to download the binary. Additionally, check the supported Kubernetes versions in the
+    as an example. Refer to the [Additional Packs](../../../../downloads/self-hosted-palette/additional-packs.md) page
+    for instructions on how to download the binary. Additionally, check the supported Kubernetes versions in the
     [Compatibility Matrix](../../comp-matrix-capi-builder.md).
 
 ## Build Custom Image
@@ -110,13 +109,13 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
     cp /opt/spectro/ssl/server.crt rpmrepo/
     ```
 
-9.  Open the **imageconfig** template file located in the `output` folder and fill in the required parameters. For a
+9.  Open the `imageconfig` template file located in the `output` folder and fill in the required parameters. For a
     complete list of parameters, refer to the [Configuration Reference](../../config-reference.md) page. Additionally,
     refer to the [Compatibility Matrix](../../comp-matrix-capi-builder.md) for a list of supported Kubernetes versions
     and their corresponding dependencies.
 
-    The **imageconfig** is the file you use to set up the CAPI Image Builder according to your requirements. This
-    includes specifying the OS type, Kubernetes version, whether the image should be FIPS compliant, and more.
+    The `imageconfig` is the file you use to set up the CAPI Image Builder according to your requirements. This includes
+    specifying the OS type, Kubernetes version, whether the image should be FIPS compliant, and more.
 
     Use the example configuration below for building a Rocky 8 CAPI image in an airgapped environment. Replace
     `<iso-checksum>` with the Rocky ISO checksum. Replace the VMware-related placeholders with the values from your
@@ -381,7 +380,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
             Once you are finished doing the alterations, save and exit the file.
 
         2.  Issue the command below to start the CAPI Image Builder container and assign the container ID to the `BUILD_ID_CAPI`
-            variable. The tool will use the **imageconfig** file to create and configure a VM with static IP placement in
+            variable. The tool will use the `imageconfig` file to create and configure a VM with static IP placement in
             your VMware vSphere environment.
 
             <Tabs>
@@ -531,8 +530,7 @@ profile and deploy a VMware vSphere host cluster.
 
     :::warning
 
-    The Palette eXtended Kubernetes pack version must match the Kubernetes version specified in the **imageconfig**
-    file.
+    The Palette eXtended Kubernetes pack version must match the Kubernetes version specified in the `imageconfig` file.
 
     :::
 

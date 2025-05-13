@@ -30,7 +30,7 @@ Palette. You will then create a cluster profile and use the registered host to d
   | AMD64             | Ubuntu                            | K3s                                        | Flannel                           | :white_check_mark: |
   | AMD64             | Rocky Linux 8.10 (Green Obsidian) | Palette eXtended Kubernetes - Edge (PXK-E) | Cilium                            | :white_check_mark: |
 
-- Clusters with Flannel CNI is not verified for airgap deployments.
+- Clusters with Flannel CNI are not verified for local management mode deployments.
 
 - Agent mode is only supported on Linux distributions that have
   [`systemd`](https://www.freedesktop.org/software/systemd/man/latest/systemd.html) installed and available.
@@ -38,14 +38,14 @@ Palette. You will then create a cluster profile and use the registered host to d
 - The FIPS-compliant version of Agent Mode is only available for Red Hat Enterprise Linux (RHEL) and Rocky Linux 8
   systems.
 
-- ARM64 support for airgap clusters is not available. This is because Harbor, which is required for airgap clusters,
-  does not have an ARM64 image.
+- ARM64 support for clusters in local management mode is not available. This is because Harbor, which is required for
+  local management mode, does not have an ARM64 image.
 
 ## Prerequisites
 
-- A physical or virtual host with SSH access, access to the internet, and connection to Palette. For airgap deployments,
-  the host does not need to have a connection to Palette and may have limited access to the internet. This guide uses an
-  **Ubuntu 22.04** virtual machine deployed in VMware vSphere as an example.
+- A physical or virtual host with SSH access, access to the internet, and connection to Palette. For local management
+  mode deployments, the host does not need to have a connection to Palette and may have limited access to the internet.
+  This guide uses an **Ubuntu 22.04** virtual machine deployed in VMware vSphere as an example.
 
 - The host must meet the following minimum hardware requirements:
 
@@ -81,7 +81,7 @@ Palette. You will then create a cluster profile and use the registered host to d
     use PXKE as the Kubernetes layer
   - [iptables](https://linux.die.net/man/8/iptables)
   - [rsyslog](https://github.com/rsyslog/rsyslog). This is required for audit logs.
-  - (Airgap only) [Palette Edge CLI](../../spectro-downloads.md#palette-edge-cli)
+  - (Local management mode only) [Palette Edge CLI](../../downloads/cli-tools.md#palette-edge-cli)
 
   If you are using Ubuntu or any OS that uses apt or apt-get for package management, you can issue the following command
   to install all dependencies for installation (not including the Palette Edge CLI) with the following command:
@@ -303,7 +303,7 @@ Palette. You will then create a cluster profile and use the registered host to d
 
 <Tabs groupId="env">
 
-<TabItem value="Connected">
+<TabItem value="Central Management Mode">
 
 1. In your terminal, use the following command to SSH into the host. Replace `</path/to/private/key>` with the path to
    your private SSH key and `<host-ip-or-domain>` with the host's IP address or hostname.
@@ -448,68 +448,17 @@ Palette. You will then create a cluster profile and use the registered host to d
 
 6. Download the latest version of the Palette agent installation script. There is a FIPS-compliant script, if needed.
 
-    <Tabs groupId="FIPS">
+   <PartialsComponent category="agent-mode" name="agent-mode-latest-version" />
 
-    <TabItem value="Non-FIPS">
-
-   ```shell
-   curl --location --output ./palette-agent-install.sh https://github.com/spectrocloud/agent-mode/releases/latest/download/palette-agent-install.sh
-   ```
-
-    </TabItem>
-
-    <TabItem value="FIPS">
-
-   ```shell
-   curl --location --output ./palette-agent-install-fips.sh https://github.com/spectrocloud/agent-mode/releases/latest/download/palette-agent-install-fips.sh
-   ```
-
-    </TabItem>
-
-    </Tabs>
-
-    <details>
+   <details>
 
    {" "}
 
    <summary>Dedicated or On-Premises Palette Instance</summary>
 
-   If you have a dedicated or on-premises instance of Palette, you need to identify the correct agent version and then
-   download the corresponding version of the agent installation script. Use the command below and replace
-   `<palette-endpoint>` with your Palette endpoint and `<api-key>` with your Palette API key to identify the version.
+   <PartialsComponent category="agent-mode" name="agent-mode-versioned" />
 
-   ```shell
-   curl --location --request GET 'https://<palette-endpoint>/v1/services/stylus/version' --header 'Content-Type: application/json' --header 'Apikey: <api-key>'  | jq --raw-output '.spec.latestVersion.content | match("version: ([^\n]+)").captures[0].string'
-   ```
-
-   ```text hideClipboard
-   4.5.0
-   ```
-
-   Issue the following command to download the version of the Palette agent for your dedicated or on-prem instance.
-   Replace `<stylus-version>` with your output from the previous step.
-
-      <Tabs groupId="FIPS">
-
-      <TabItem value="Non-FIPS">
-
-   ```shell
-   curl --location --output ./palette-agent-install.sh https://github.com/spectrocloud/agent-mode/releases/download/v<stylus-version>/palette-agent-install.sh
-   ```
-
-      </TabItem>
-
-      <TabItem value="FIPS">
-
-   ```shell
-   curl --location --output ./palette-agent-install-fips.sh https://github.com/spectrocloud/agent-mode/releases/download/v<stylus-version>/palette-agent-install-fips.sh
-   ```
-
-      </TabItem>
-
-      </Tabs>
-
-    </details>
+   </details>
 
 7. Grant execution permissions to the installation script.
 
@@ -607,9 +556,9 @@ guidance.
 
 </TabItem>
 
-<TabItem value="Airgap">
+<TabItem value="Local Management Mode">
 
-In an airgapped environment, your host does not have a connection to Palette and may also have limited access to the
+In local management mode, your host does not have a connection to Palette and may also have limited access to the
 internet.
 
 1. In your terminal, use the following command to SSH into the host. Replace `</path/to/private/key>` with the path to
@@ -639,25 +588,7 @@ internet.
    `<version>` with the desired version number. In this example, we use `v4.5.0`. Refer to
    [Agent Mode Releases](https://github.com/spectrocloud/agent-mode/releases) for all the available releases.
 
-   <Tabs groupID="FIPS">
-
-   <TabItem value="Non-FIPS">
-
-   ```shell
-   curl -L https://github.com/spectrocloud/agent-mode/releases/download/<version>/agent-mode-linux-<architecture>.tar --output agent-mode-linux-<architecture>.tar
-   ```
-
-   </TabItem>
-
-   <TabItem value="FIPS">
-
-   ```shell
-   curl -L https://github.com/spectrocloud/agent-mode/releases/download/<version>/agent-mode-fips-linux-<architecture>.tar --output agent-mode-linux-<architecture>.tar
-   ```
-
-   </TabItem>
-
-   </Tabs>
+   <PartialsComponent category="agent-mode" name="agent-mode-airgap-version" />
 
 4. Extract the package to the root folder.
 
@@ -665,9 +596,9 @@ internet.
    sudo tar -xvf agent-mode-linux-<architecture>.tar -C /
    ```
 
-5. Issue the command below to create the **userdata** file and configure your host declaratively.
+5. Issue the command below to create the `userdata` file and configure your host declaratively.
 
-   The following configuration indicates the installation mode to be airgap and sets up the `kairos` user. The host will
+   The following configuration indicates the management mode to be local and sets up the `kairos` user. The host will
    not shut down and will reboot after the agent installation, with
    [kube-vip](../../clusters/edge/networking/kubevip.md) enabled, as this is required for bare metal and VMware vSphere
    deployments. If your environment does not require kube-vip, set `stylus.vip.skip` to `true`. Refer to
@@ -684,7 +615,7 @@ internet.
    stylus:
      vip:
        skip: false
-     installationMode: airgap
+     managementMode: local
    stages:
      initramfs:
        - users:
@@ -713,7 +644,7 @@ internet.
    stylus:
      vip:
        skip: false
-     installationMode: airgap
+     managementMode: local
    stages:
      initramfs:
        - users:
@@ -760,7 +691,8 @@ internet.
     ```
 
 17. Complete the cluster profile creation process by filling out the remaining layers. In the application layer, make
-    sure you include the **Harbor Edge-Native Config** pack. This pack is required for airgapped clusters.
+    sure you include the **Harbor Edge-Native Config** pack. This pack is required for clusters in local management
+    mode.
 
 18. Follow the steps in
     [Export Cluster Definition](../../clusters/edge/local-ui/cluster-management/export-cluster-definition.md) to export
@@ -801,7 +733,7 @@ guidance.
 
 <Tabs groupId="env">
 
-<TabItem value="Connected">
+<TabItem value="Central Management Mode">
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
@@ -818,7 +750,7 @@ details on how to use these operations
 
 </TabItem>
 
-<TabItem value="Airgap">
+<TabItem value="Local Management Mode">
 
 1. Log in to [Local UI](../../clusters/edge/local-ui/host-management/access-console.md).
 
