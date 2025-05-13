@@ -16,3 +16,4 @@ docs/docs-content/user-management/saml-sso/palette-sso-with-onelogin.md:42:34:Va
 docs/docs-content/user-management/saml-sso/palette-sso-with-entra-id.md:62:34:Vale.Spelling:Did you really mean 'userinfo'?
 docs/docs-content/user-management/saml-sso/palette-sso-with-adfs.md:53:34:Vale.Spelling:Did you really mean 'userinfo'?
 docs/docs-content/user-management/saml-sso/palette-sso-with-okta.md:41:34:Vale.Spelling:Did you really mean 'userinfo'?
+docs/docs-content/user-management/saml-sso/palette-sso-with-entra-id.md:78:5:Vale.Spelling:Did you really mean 'userinfo'?
