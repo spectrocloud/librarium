@@ -124,7 +124,7 @@ You can create presets to use as templates for future instances of your configur
 4. When you are done, click **Confirm & Save**. Give your new preset a name and optionally tags that will help you
    identify it.
 
-   The next time you create a new instance of either the `user-data` file or `.arg` file, you will see be able to use
+   The next time you create a new instance of either the `user-data` file or `.arg` file, you will be able to use
    your preset as a template and make customizations on top of it.
 
 </TabItem>
@@ -383,7 +383,7 @@ PROXY_CERT_PATH=/etc/certs/proxy-cert
 UPDATE_KERNEL=false
 ```
 
-In addition, this `.arg` file specifies an HTTPs proxy server, which means that the build process will communicate with
+In addition, this `.arg` file specifies an HTTPS proxy server, which means that the build process will communicate with
 the proxy server to gain access to the internet. This does not affect the finished artifacts that are built.
 
 ## Full User Data Samples
