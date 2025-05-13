@@ -35,12 +35,14 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
   - [Docker](https://docs.docker.com/engine/install/) or [Podman](https://podman.io/docs/installation)
   - [curl](https://curl.se/docs/install.html)
 
-- (Optional) Any custom Bash scripts (`.sh` files) that you want to execute when creating your RHEL image. Custom scripts are supported beginning with CAPI Image Builder version `4.6.23`.
+- (Optional) Any custom Bash scripts (`.sh` files) that you want to execute when creating your RHEL image. Custom
+  scripts are supported beginning with CAPI Image Builder version `4.6.23`.
 
 ## Build Custom Image
 
 1.  Open up a terminal session on your Linux machine and download the CAPI Image Builder image. This guide uses version
-    `4.6.23` as an example. Replace `4.6.23` with your desired version. Refer to the CAPI Image Builder [Downloads](../../../../downloads/capi-image-builder.md) page for the latest version.
+    `4.6.23` as an example. Replace `4.6.23` with your desired version. Refer to the CAPI Image Builder
+    [Downloads](../../../../downloads/capi-image-builder.md) page for the latest version.
 
     <Tabs>
 
@@ -222,9 +224,9 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 
     Once you are finished making changes, save and exit the file.
 
-8.  (Optional) You can add custom Bash scripts (`.sh` files) to run before or after the build
-    process. This feature is available beginning with CAPI Image Builder version `4.6.23`. If any scripts are found in
-    the relevant directories, they are copied to the Ansible playbook. If you do not want to add custom scripts, skip this step.
+8.  (Optional) You can add custom Bash scripts (`.sh` files) to run before or after the build process. This feature is
+    available beginning with CAPI Image Builder version `4.6.23`. If any scripts are found in the relevant directories,
+    they are copied to the Ansible playbook. If you do not want to add custom scripts, skip this step.
 
     <details>
 
@@ -258,7 +260,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
     Builder version.
 
     <Tabs>
-    <TabItem value="Docker" label="Docker">
+<TabItem value="Docker" label="Docker">
 
     ```bash
     BUILD_ID=$(docker run --net=host --volume /home/ubuntu/output:/home/imagebuilder/output  --detach  us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:v4.6.23)
@@ -273,7 +275,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
     ```
 
     </TabItem>
-    </Tabs>
+</Tabs>
 
     If you need the VM to use static IP placement instead of DHCP, follow the steps described below.
 
@@ -327,7 +329,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
     added any custom scripts in step 8, the output will be displayed in the build log.
 
     <Tabs>
-    <TabItem value="Docker" label="Docker">
+<TabItem value="Docker" label="Docker">
 
     ```shell
     docker logs --follow $BUILD_ID
@@ -342,7 +344,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
     ```
 
     </TabItem>
-    </Tabs>
+</Tabs>
 
     :::info
 
@@ -433,7 +435,8 @@ profile and deploy a VMware host cluster.
 
     <!-- prettier-ignore-start -->
 
-   Reference the custom RHEL 8 image template path in your VMware vSphere environment when populating the pack details for the <VersionedLink text="BYOOS" url="/integrations/packs/?pack=generic-byoi" /> layer.
+   Reference the custom RHEL 8 image template path in your VMware vSphere environment when populating the pack details
+   for the <VersionedLink text="BYOOS" url="/integrations/packs/?pack=generic-byoi" /> layer.
 
     <!-- prettier-ignore-end -->
 

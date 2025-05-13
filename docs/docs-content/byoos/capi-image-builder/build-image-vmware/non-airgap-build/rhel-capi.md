@@ -39,11 +39,14 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
   - [Docker](https://docs.docker.com/engine/install/) or [Podman](https://podman.io/docs/installation)
   - [curl](https://curl.se/docs/install.html)
 
-- (Optional) Any custom Bash scripts (`.sh` files) that you want to execute when creating your RHEL image. Custom scripts are supported beginning with CAPI Image Builder version `4.6.23`.
+- (Optional) Any custom Bash scripts (`.sh` files) that you want to execute when creating your RHEL image. Custom
+  scripts are supported beginning with CAPI Image Builder version `4.6.23`.
 
 ## Build Custom Image
 
-1.  Open up a terminal session on your Linux machine and download the CAPI Image Builder. This guide uses version `4.6.23` as an example. Replace `4.6.23` with your desired version. Refer to the CAPI Image Builder [Downloads](../../../../downloads/capi-image-builder.md) page for the latest version.
+1.  Open up a terminal session on your Linux machine and download the CAPI Image Builder. This guide uses version
+    `4.6.23` as an example. Replace `4.6.23` with your desired version. Refer to the CAPI Image Builder
+    [Downloads](../../../../downloads/capi-image-builder.md) page for the latest version.
 
     <Tabs>
 
@@ -231,9 +234,9 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 
     Once you are finished making changes, save and exit the file.
 
-8.  (Optional) You can add custom Bash scripts (`.sh` files) to run before or after the build
-    process. This feature is available beginning with CAPI Image Builder version `4.6.23`. If any scripts are found in
-    the relevant directories, they are copied to the Ansible playbook. If you do not want to add custom scripts, skip this step.
+8.  (Optional) You can add custom Bash scripts (`.sh` files) to run before or after the build process. This feature is
+    available beginning with CAPI Image Builder version `4.6.23`. If any scripts are found in the relevant directories,
+    they are copied to the Ansible playbook. If you do not want to add custom scripts, skip this step.
 
     <details>
 
@@ -255,7 +258,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
        mv sample-script.sh custom_scripts/pre/sample-script.sh
        chmod +x custom_scripts/pre/sample-script.sh
        ```
-    
+
     </details>
 
 9.  Issue the command below to start the CAPI Image Builder container and assign the container ID to the `BUILD_ID`
@@ -263,8 +266,8 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
     vSphere environment using the `image_name` defined in `imageconfig`. For this guide, the VM is named `rhel-8`. The
     tool will then generate a RHEL 8 CAPI image from the VM and save it to the `output` directory.
 
-    Before issuing the following command, replace `ubuntu` with your Linux username and `4.6.23` to match your CAPI Image
-    Builder version.
+    Before issuing the following command, replace `ubuntu` with your Linux username and `4.6.23` to match your CAPI
+    Image Builder version.
 
     <Tabs>
 
@@ -336,7 +339,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 
 10. Execute the following command to view the CAPI Image Builder container logs and monitor the build progress. If you
     added any custom scripts in step 8, the output will be displayed in the build log.
-    
+
     <Tabs>
 
     <TabItem value="Docker" label="Docker">
@@ -427,7 +430,6 @@ The RHEL 8 image is now built and available in the VMware vSphere environment. Y
 profile and deploy a VMware host cluster.
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
-   
 2. From the left main menu, select **Profiles > Add Cluster Profile**.
 
 3. In the **Basic Information** section, assign the cluster profile a **Name**, brief **Description**, and **Tags**.
@@ -447,7 +449,8 @@ profile and deploy a VMware host cluster.
 
     <!-- prettier-ignore-start -->
 
-   Reference the custom RHEL 8 image template path in your VMware vSphere environment when populating the pack details for the <VersionedLink text="BYOOS" url="/integrations/packs/?pack=generic-byoi" /> layer.
+   Reference the custom RHEL 8 image template path in your VMware vSphere environment when populating the pack details
+   for the <VersionedLink text="BYOOS" url="/integrations/packs/?pack=generic-byoi" /> layer.
 
     <!-- prettier-ignore-end -->
 
