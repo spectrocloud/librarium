@@ -256,101 +256,105 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
     vSphere environment using the `image_name` defined in `imageconfig`. For this guide, the VM is named `rocky-8`. The
     tool will then generate a RHEL 8 CAPI image from the VM and save it to the `output` directory.
 
-    Before issuing the following command, replace `ubuntu` with your Linux username and `4.6.23` with your CAPI Image
-    Builder version.
+        Before issuing the following command, replace `ubuntu` with your Linux username and `4.6.23` with your CAPI Image
+        Builder version.
 
-    <Tabs>
-<TabItem value="Docker" label="Docker">
+        <Tabs>
 
-    ```bash
-    BUILD_ID=$(docker run --net=host --volume /home/ubuntu/output:/home/imagebuilder/output  --detach  us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:v4.6.23)
-    ```
+    <TabItem value="Docker" label="Docker">
 
-    </TabItem>
+        ```bash
+        BUILD_ID=$(docker run --net=host --volume /home/ubuntu/output:/home/imagebuilder/output  --detach  us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:v4.6.23)
+        ```
 
-    <TabItem value="Podman" label="Podman">
+        </TabItem>
 
-    ```bash
-    BUILD_ID=$(podman run --net=host --volume /home/ubuntu/output:/home/imagebuilder/output  --detach  us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:v4.6.23)
-    ```
+        <TabItem value="Podman" label="Podman">
 
-    </TabItem>
-</Tabs>
+        ```bash
+        BUILD_ID=$(podman run --net=host --volume /home/ubuntu/output:/home/imagebuilder/output  --detach  us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:v4.6.23)
+        ```
 
-    If you need the VM to use static IP placement instead of DHCP, follow the steps described below.
+        </TabItem>
 
-        <details>
-        <summary>CAPI Image Builder with Static IP Placement </summary>
+    </Tabs>
 
-        1. Download the Rocky 8 `ks.cfg` file from the [Image Builder](https://github.com/kubernetes-sigs/image-builder)
-            GitHub repository directly into the output folder.
+        If you need the VM to use static IP placement instead of DHCP, follow the steps described below.
 
-            ```shell
-            curl --location https://github.com/kubernetes-sigs/image-builder/raw/main/images/capi/packer/ova/linux/rockylinux/http/8/ks.cfg.tmpl --output ks.cfg
-            ```
+            <details>
+            <summary>CAPI Image Builder with Static IP Placement </summary>
 
-        2. Open the `ks.cfg` file in an editor of your choice. Locate and replace the network line
-            `network --bootproto=dhcp --onboot=on --ipv6=auto --activate --hostname=capv.vm` with the configuration below.
+            1. Download the Rocky 8 `ks.cfg` file from the [Image Builder](https://github.com/kubernetes-sigs/image-builder)
+                GitHub repository directly into the output folder.
 
-            ```text
-            network --bootproto=static --ip=<vcenter-static-ip-address> --netmask=<vcenter-netmask> --gateway=<vcenter-gateway> --nameserver=<vcenter-nameserver>
-            ```
+                ```shell
+                curl --location https://github.com/kubernetes-sigs/image-builder/raw/main/images/capi/packer/ova/linux/rockylinux/http/8/ks.cfg.tmpl --output ks.cfg
+                ```
 
-            Replace `<vcenter-static-ip-address>` with a valid IP address from your VMware vSphere environment and
-            `<vcenter-netmask>`, `<vcenter-gateway>`, and `<vcenter-nameserver>` with the correct values from your VMware vSphere
-            environment. The `<vcenter-netmask>` parameter must be specified in dotted decimal notation, for example, `--netmask=255.255.255.0`.
+            2. Open the `ks.cfg` file in an editor of your choice. Locate and replace the network line
+                `network --bootproto=dhcp --onboot=on --ipv6=auto --activate --hostname=capv.vm` with the configuration below.
 
-            Once you are finished making changes, save and exit the file.
+                ```text
+                network --bootproto=static --ip=<vcenter-static-ip-address> --netmask=<vcenter-netmask> --gateway=<vcenter-gateway> --nameserver=<vcenter-nameserver>
+                ```
 
-        3.  Issue the command below to start the CAPI Image Builder container and assign the container ID to the `BUILD_ID`
-            variable. The tool will use the `imageconfig` file to create and configure a VM with static IP placement in
-            your VMware vSphere environment. Replace `ubuntu` with your Linux username and `4.6.23` to match the CAPI Image Builder version downloaded in step 1.
+                Replace `<vcenter-static-ip-address>` with a valid IP address from your VMware vSphere environment and
+                `<vcenter-netmask>`, `<vcenter-gateway>`, and `<vcenter-nameserver>` with the correct values from your VMware vSphere
+                environment. The `<vcenter-netmask>` parameter must be specified in dotted decimal notation, for example, `--netmask=255.255.255.0`.
 
-            <Tabs>
-            <TabItem value="Docker" label="Docker">
+                Once you are finished making changes, save and exit the file.
 
-             ```bash
-             BUILD_ID=$(docker run --net=host --volume /home/ubuntu/output:/home/imagebuilder/output  --detach  us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:v4.6.23)
-             ```
-            </TabItem>
+            3.  Issue the command below to start the CAPI Image Builder container and assign the container ID to the `BUILD_ID`
+                variable. The tool will use the `imageconfig` file to create and configure a VM with static IP placement in
+                your VMware vSphere environment. Replace `ubuntu` with your Linux username and `4.6.23` to match the CAPI Image Builder version downloaded in step 1.
 
-            <TabItem value="Podman" label="Podman">
+                <Tabs>
+                <TabItem value="Docker" label="Docker">
 
-             ```bash
-             BUILD_ID=$(podman run --net=host --volume /home/ubuntu/output:/home/imagebuilder/output  --detach  us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:v4.6.23)
-             ```
+                 ```bash
+                 BUILD_ID=$(docker run --net=host --volume /home/ubuntu/output:/home/imagebuilder/output  --detach  us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:v4.6.23)
+                 ```
+                </TabItem>
 
-            </TabItem>
-            </Tabs>
+                <TabItem value="Podman" label="Podman">
 
-        </details>
+                 ```bash
+                 BUILD_ID=$(podman run --net=host --volume /home/ubuntu/output:/home/imagebuilder/output  --detach  us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:v4.6.23)
+                 ```
+
+                </TabItem>
+                </Tabs>
+
+            </details>
 
 10. Execute the following command to view the CAPI Image Builder container logs and monitor the build progress. If you
     added any custom scripts in step 8, the output will be displayed in the build log.
 
-    <Tabs>
-<TabItem value="Docker" label="Docker">
+        <Tabs>
 
-    ```shell
-    docker logs --follow $BUILD_ID
-    ```
+    <TabItem value="Docker" label="Docker">
 
-    </TabItem>
+        ```shell
+        docker logs --follow $BUILD_ID
+        ```
 
-    <TabItem value="Podman" label="Podman">
+        </TabItem>
 
-    ```shell
-    podman logs --follow $BUILD_ID
-    ```
+        <TabItem value="Podman" label="Podman">
 
-    </TabItem>
-</Tabs>
+        ```shell
+        podman logs --follow $BUILD_ID
+        ```
 
-    :::info
+        </TabItem>
 
-    It may take a few minutes for the logs to start being displayed, and the build takes several minutes to complete.
+    </Tabs>
 
-    :::
+        :::info
+
+        It may take a few minutes for the logs to start being displayed, and the build takes several minutes to complete.
+
+        :::
 
 11. Once the build is complete, the RHEL 8 CAPI image will be downloaded to the `output` directory as the `image_name`
     specified in the `imageconfig` file. For this example, the image is `rocky-8`. Once the image is created, the VM is

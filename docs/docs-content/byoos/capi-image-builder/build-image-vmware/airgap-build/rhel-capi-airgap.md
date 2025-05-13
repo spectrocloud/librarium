@@ -437,29 +437,31 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 18. Execute the following command to view the CAPI Image Builder container logs and monitor the build progress. If you
     added any custom scripts in step 10, the output will be displayed in the build log.
 
-    <Tabs>
-<TabItem value="Docker" label="Docker">
+        <Tabs>
 
-    ```shell
-    docker logs --follow $BUILD_ID_CAPI
-    ```
+    <TabItem value="Docker" label="Docker">
 
-    </TabItem>
+        ```shell
+        docker logs --follow $BUILD_ID_CAPI
+        ```
 
-    <TabItem value="Podman" label="Podman">
+        </TabItem>
 
-    ```shell
-    podman logs --follow $BUILD_ID_CAPI
-    ```
+        <TabItem value="Podman" label="Podman">
 
-    </TabItem>
-</Tabs>
+        ```shell
+        podman logs --follow $BUILD_ID_CAPI
+        ```
 
-    :::info
+        </TabItem>
 
-    It may take a few minutes for the logs to start being displayed, and the build takes several minutes to complete.
+    </Tabs>
 
-    :::
+        :::info
+
+        It may take a few minutes for the logs to start being displayed, and the build takes several minutes to complete.
+
+        :::
 
 19. Once the build is complete, the RHEL 8 CAPI image will be downloaded to the `output` directory as the `image_name`
     specified in the `imageconfig` file. For this example, the image is `rhel-8`. Once the image is created, the VM is
