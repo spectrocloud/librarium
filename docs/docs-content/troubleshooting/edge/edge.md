@@ -249,9 +249,9 @@ prevents the nameserver from being configured, which will result in cluster depl
 ## Scenario - Degraded Performance on Disk Drives
 
 If you are experiencing degraded performance on disk drives, such as Solid-State Drive or Nonvolatile Memory Express
-drives, and you have [Trusted Boot](../../clusters/edge/trusted-boot/trusted-boot.md) enabled. The degraded performance may
-be caused by TRIM operations not being enabled on the drives. TRIM allows the OS to notify the drive which data blocks
-are no longer in use and can be erased internally. To enable TRIM operations, use the following steps.
+drives, and you have [Trusted Boot](../../clusters/edge/trusted-boot/trusted-boot.md) enabled. The degraded performance
+may be caused by TRIM operations not being enabled on the drives. TRIM allows the OS to notify the drive which data
+blocks are no longer in use and can be erased internally. To enable TRIM operations, use the following steps.
 
 ### Debug Steps
 
