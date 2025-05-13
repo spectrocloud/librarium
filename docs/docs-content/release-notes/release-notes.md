@@ -53,6 +53,12 @@ tags: ["release-notes"]
   Refer to the [Create and Manage Azure IaaS Cluster](../clusters/public-cloud/azure/create-azure-cluster.md) guide for
   more information.
 
+- Once you install Palette or upgrade to version 4.6.c or later, you have 30 days to activate it. During this time, you
+  have unrestricted access to all of Palette's features. After 30 days, you can continue to use Palette, and existing
+  clusters will continue to run, but you cannot perform the following day-2 operations until Palette is activated.
+
+  Refer to the Activate Palette guide for further information.
+
 #### Improvements
 
 - CAPG has been upgraded to [v1.8.1](https://github.com/kubernetes-sigs/cluster-api-provider-gcp/releases/tag/v1.8.1)
@@ -84,24 +90,56 @@ tags: ["release-notes"]
   include sidebar customization, documentation links, and all login screen logos.
 - The management of
   [cluster profile variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/define-profile-variables.md)
-  has been improved in the Palette UI. Users can now review and modify variable values during
+  has been improved in the Palette UI. Users can now review and mcodify variable values during
   [cluster profile version changes](../profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile.md).
 - Palette uses Velero version 1.15 internally. Existing clusters with configured backups will be automatically updated
   to Velero version 1.15, ensuring continuous access to Palette backup and restore functionality. Refer to the
   [Backup and Restore](../clusters/cluster-management/backup-restore/backup-restore.md) page to learn more about backup
   and restore tools in Palette.
-
-#### Deprecations and Removals
+- Palette now uses Cluster API Provider AWS (CAPA) version 2.7.1 internally. Refer to the
+  [documentation](https://github.com/kubernetes-sigs/cluster-api-provider-aws/tree/v2.7.1) for further information.
+- Palette now uses Cluster API Provider for GCP (CAPG) version 1.8.1 internally. Refer to the
+  [documentation](https://github.com/kubernetes-sigs/cluster-api-provider-gcp/tree/v1.8.1) for further information.
+- [Self-hosted Palette](../enterprise-version/enterprise-version.md) now supports anonymous SMTP mode, allowing users to
+  authenticate with a username and password. We recommend using authenticated SMTP wherever possible. Refer to the
+  [Configure SMTP](../enterprise-version/system-management/smtp.md) guide for further information.
 
 ### Edge
 
 #### Features
 
+- <TpBadge /> The new Appliance Studio is a lightweight Graphic User Interface (GUI) application allows allows you to
+  build, save, edit, and manage the two configuration files that are essential to the EdgeForge process, with zero risk
+  of syntax errors.
+
+  Refer to the Prepare User Data and Argument Files guide to learn more.
+
+- <TpBadge /> The Palette Optimized Canonical Kubernetes distribution is now an available selection for the [EdgeForge
+  workflow](../clusters/edge/edgeforge-workflow/edgeforge-workflow.md) of preparing an Edge host with all the required
+  components and dependencies. Refer to the [Build Edge
+  Artifacts](../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md) for further information.
+
 #### Improvements
 
 - Improved the upgrade process for the Palette agent and increased its reliability.
+- Palette now supports upload one or more content bundles as long as your Edge host has enough physical storage and you
+  have allocated sufficient storage to your registry. Refer to the
+  [Upload Content Bundle](../clusters/edge/local-ui/cluster-management/upload-content-bundle.md) guide for further
+  information.
+- [Local UI](../clusters/edge/local-ui/local-ui.md) has now exited Tech Preview and is ready to use for production
+  workloads. Check out the [Access Local UI](../clusters/edge/local-ui/host-management/access-console.md) guide for
+  further details.
+- A new troubleshooting script is now available to allow you to debug common errors such as Edge hosts failing to
+  register, pod failures, or provisioning errors. Refer to the Collect Support Bundles for Edge Cluster Troubleshooting
+  reference page for further details.
 
-#### Bug Fixes
+#### Deprecations and Removals
+
+- The `stylus.installationMode`
+  [Edge Installer Configuration](../clusters/edge/edge-configuration/installer-reference.md) flag is deprecated. We
+  recommend using the `stylus.managementMode` flag instead, which has two allowed values: `central` means the Edge host
+  is connected to Palette, `local` means the Edge host has no connection to a Palette instance. Refer to the
+  [Prepare User Data](../clusters/edge/edgeforge-workflow/prepare-user-data.md) for further information.
 
 ### VerteX
 
@@ -127,7 +165,29 @@ Check out the [CLI Tools](../downloads/cli-tools.md) page to find the compatible
 
 #### Features
 
+- The `content` command of the [Palette CLI](../automation/palette-cli/palette-cli.md) now has an `upload` subcommand.
+  This subcommand allows you to build a content bundle and upload it to a locally managed Edge host through Local UI.
+  Once the upload is complete, you can provision clusters locally using the uploaded content when the host does not have
+  a connection to a central Palette instance or an image repository.
+
+  Refer to the Upload Content Bundle reference page for further information.
+
+- The `spectrocloud_appliance` resource now supports [remote shell](../clusters/edge/cluster-management/remote-shell.md)
+  activation, allowing you to troubleshoot edge hosts by initiating an SSH connection from Palette. For more
+  information, refer to the Spectro Cloud Terraform provider
+  [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
+
 #### Improvements
+
+#### Deprecations and Removals
+
+- The `tc` subcommand of the [Palette CLI](../automation/palette-cli/palette-cli.md) is deprecated. This command
+  provided functionality for deploying target clusters using the Palette CLI. We recommend to use the
+  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) for
+  cluster deployment automation.
+- The `spectrocloud_macro` Terraform resource is deprecated. We recommend to use the `spectrocloud_macros` resource to
+  create and manage service output variables and macros. For more information, refer to the Spectro Cloud Terraform
+  provider [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
 
 ### Virtual Machine Orchestrator (VMO)
 
