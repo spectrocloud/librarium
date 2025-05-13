@@ -14,20 +14,15 @@ support team, such as Edge hosts failing to register, pod failures, or provision
 troubleshoot these issues more effectively, follow this guide to collect support bundles and attach them to your support
 ticket.
 
-## Limitations
-
-- This guide applies only to connected installation mode, not airgap environments, since it requires internet access to
-  run the troubleshooting script.
-
 ## Prerequisites
 
-- You have connected to the host you need to troubleshoot, using SSH, direct terminal access, or another connection
+- The host you need to troubleshoot has an active internet connection to access the troubleshooting script.
+- You have connected to the host using SSH, direct terminal access, or another connection
   method.
 - The following tools are available on the host:
   - `journalctl`
   - `systemctl`
-  - (Optional) `kubectl` (required for the full output of `support-bundle-infra.sh`)
-- (Optional) A valid `kubeconfig` file is configured (required for the full output of `support-bundle-infra.sh`)
+- (Optional) The host has a valid `kubeconfig` file configured and `kubectl` installed (required for the full output of `support-bundle-infra.sh`).
 
 ## Run the Troubleshooting Scripts
 
@@ -87,8 +82,8 @@ Kubernetes data accessible locally on that host. Follow the steps below on every
 
    | **Full Flag Name**           | **Short Flag Name** | **Description**                                                                                  | **Example**                         |
    | ---------------------------- | ------------------- | ------------------------------------------------------------------------------------------------ | ----------------------------------- |
-   | `--start-days-ago`           | `-s`                | Number of days before now to begin collecting journald logs from.                                | `-s 7`                              |
-   | `--end-days-ago`             | `-e`                | Number of days before now to stop collecting journald logs. The value must be smaller than `-s`. | `-e 5`                              |
+   | `--start-days-ago`           | `-s`                | Number of days in the past to start collecting journald logs.                                     | `-s 7`                              |
+   | `--end-days-ago`             | `-e`                | Number of days in the past to stop collecting journald logs. The value must be smaller than `-s`. | `-e 5`                              |
    | `--start-date`               | `-S`                | Start date for journald log collection.                                                          | `-S 2024-01-01`                     |
    | `--end-date`                 | `-E`                | End date for journald log collection. Must be later than `-S`.                                   | `-E 2024-01-06`                     |
    | `--namespaces`               | `-n`                | Additional namespaces to collect logs from.                                                      | `-n hello-universe,hello-world`     |
