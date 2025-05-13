@@ -77,7 +77,7 @@ Kubernetes data accessible locally on that host. Follow the steps below on every
 
    If you do not perform this step, the script defaults to using `/run/kubeconfig` if it exists.
 
-2. Run the `support-bundle-edge.sh` script as a user with sudo privileges.
+2. Run the `support-bundle-edge.sh` script as a user with root privileges.
 
    ```bash
    curl --silent --show-error --location https://software.spectrocloud.com/scripts/support-bundle-edge.sh | sudo bash
