@@ -794,12 +794,7 @@ Use the following steps to validate the VerteX installation.
 
 ## Next Steps
 
-<PartialsComponent
-  category="self-hosted"
-  name="install-next-steps"
-  edition="VerteX"
-  version="Palette VerteX"
-/>
+<PartialsComponent category="self-hosted" name="install-next-steps" edition="VerteX" version="Palette VerteX" />
 
 ## Resources
 

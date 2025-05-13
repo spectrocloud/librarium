@@ -412,12 +412,7 @@ You can also validate that a three-node Kubernetes cluster is launched and Palet
 
 ## Next Steps
 
-<PartialsComponent
-  category="self-hosted"
-  name="install-next-steps"
-  edition="Palette"
-  version="Palette"
-/>
+<PartialsComponent category="self-hosted" name="install-next-steps" edition="Palette" version="Palette" />
 
 ## Resources
 
