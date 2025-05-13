@@ -48,9 +48,7 @@ This page guides you through how to upload a content bundle to an Edge host usin
 
 ### Prerequisites
 
-- An Edge host.
-
-- SSH access to your Edge host.
+- An Edge host with SSH access.
 
 - A Linux machine (physical or VM) with an AMD64 architecture and network access to the Edge host.
 
