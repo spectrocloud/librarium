@@ -22,7 +22,7 @@ You can deploy Appliance Studio locally either through Docker or Podman.
 
 ### Prerequisites
 
-- [Git](https://git-scm.com/downloads). You can confirm git installation by issuing the `git --version` command.
+- [Git](https://git-scm.com/downloads). You can confirm Git installation by issuing the `git --version` command.
 
 <Tabs group="method">
 
@@ -61,7 +61,7 @@ You can deploy Appliance Studio locally either through Docker or Podman.
 
 <Tabs group="method">
 
-<!-- <IabItem value="Helm">
+<!-- <TabItem value="Helm">
 
 2. Issue the following command to create a `kind` cluster.
 
@@ -107,15 +107,15 @@ You can deploy Appliance Studio locally either through Docker or Podman.
 
 <TabItem value="Docker Compose">
 
-3. (Optional) Modify persistent data directory. By default, the `docker-compose.yml` file configures the
+3. (Optional) Modify the persistent data directory. By default, the `docker-compose.yml` file configures the
    `deploy/appliance-studio-data` directory as the persistent data directory. You may change this to point to any other
    directory by modifying the `services.server.volumes` field.
 
-   Change the path before the `:` sign to point to the directory you want to mount. You can use either absolute path or
-   relative path. If you use a relative path, the path is relative to the `docker-compose.yaml` file, not the directory
+   Change the path before the `:` sign to point to the directory you want to mount. You can use an absolute path or
+   a relative path. If you use a relative path, the path is relative to the `docker-compose.yaml` file, not the directory
    from which you issue the `docker compose up` command.
 
-   ```yaml {11}
+   ```yaml {11} title="Example" hideClipboard
    services:
      server:
        container_name: appliance-studio-server
@@ -146,15 +146,15 @@ You can deploy Appliance Studio locally either through Docker or Podman.
 
 <TabItem value="Podman Compose">
 
-3. (Optional) Modify persistent data directory. By default, the `docker-compose.yml` file configures the
+3. (Optional) Modify the persistent data directory. By default, the `docker-compose.yml` file configures the
    `deploy/appliance-studio-data` directory as the persistent data directory. You may change this to point to any other
    directory by modifying the `services.server.volumes` field.
 
-   Change the path before the `:` sign to point to the directory you want to mount. You can use either absolute path or
-   relative path. If you use a relative path, the path is relative to the `docker-compose.yaml` file, not the directory
+   Change the path before the `:` sign to point to the directory you want to mount. You can use an absolute path or
+   a relative path. If you use a relative path, the path is relative to the `docker-compose.yaml` file, not the directory
    from which you issue the `podman compose up` command.
 
-   ```yaml {11}
+   ```yaml {11} title="Example" hideClipboard
    services:
      server:
        container_name: appliance-studio-server
@@ -187,7 +187,7 @@ You can deploy Appliance Studio locally either through Docker or Podman.
 
 ### Validate
 
-1. Visit port 8443 of your machine to access the Appliance Studio UI.
+1. Visit port 8443 of your machine to access the Appliance Studio UI. You can do this by opening a web browser and entering the URL of `http://localhost:8443`.
 
 2. Confirm that Appliance Studio is accessible.
 
