@@ -19,13 +19,13 @@ differences between the two files.
 | **Format**            | Key-value pairs.                                                                            | YAML in [cloud-init](https://cloudinit.readthedocs.io/) format                                      |
 | **Main Contents**     | Image architecture, OS/K8s versions, image registry information, secure boot settings, etc. | Site information, proxy settings, network interfaces, cloud-init stages, tags, registration tokens. |
 | **Focus**             | Artifact generation and packaging.                                                          | System initialization and registration.                                                             |
-| **Controls**          | What gets built and how. For example, FIPS, SELinux, installer ISO name.                   | How the Edge host behaves post-install. For example, network config, certs, power off behavior.     |
+| **Controls**          | What gets built and how. For example, FIPS, SELinux, installer ISO name.                    | How the Edge host behaves post-install. For example, network config, certs, power off behavior.     |
 
 Since the `.arg` file controls the build process, you must ensure you provide the correct settings during build. If you
 provide the wrong arguments or miss any arguments, you will need to restart the build process to make changes. With
-`user-data`, you have an additional opportunity to provide site-specific configuration during site deployment. This can replace, supplement, or override the installer configuration you provide to the
-installer ISO. For more information, refer to
-[Apply Site User Data](../site-deployment/site-installation/site-user-data.md).
+`user-data`, you have an additional opportunity to provide site-specific configuration during site deployment. This can
+replace, supplement, or override the installer configuration you provide to the installer ISO. For more information,
+refer to [Apply Site User Data](../site-deployment/site-installation/site-user-data.md).
 
 After installation, you can also use Local UI to make edits to the user data file before you create a cluster. Refer to
 [Edit User Data](../local-ui/host-management/edit-user-data.md) for more information.
@@ -37,9 +37,9 @@ This article guides you through several important parameters in the `.arg` file 
 configuration parameters you can use in the configuration user data.
 
 The [Appliance Studio](./appliance-studio.md) is a lightweight Graphic User Interface (GUI) that allows you to design
-both files with zero risk of syntax errors. We recommend using this tool for file creation. However, since both
-`.arg` and `user-data` are plain text files, you can also manually create and edit these files once you are familiar
-with the parameters.
+both files with zero risk of syntax errors. We recommend using this tool for file creation. However, since both `.arg`
+and `user-data` are plain text files, you can also manually create and edit these files once you are familiar with the
+parameters.
 
 ## Prerequisites
 
@@ -70,8 +70,8 @@ with the parameters.
 
 1. Visit the Appliance Studio in your browser.
 
-2. Click **Design**. Then under **Argument files**, click **New .arg file**. If you have previously created and saved
-   a preset, you can choose **Continue with presets**. Otherwise, click **Start from scratch**.
+2. Click **Design**. Then under **Argument files**, click **New .arg file**. If you have previously created and saved a
+   preset, you can choose **Continue with presets**. Otherwise, click **Start from scratch**.
 
 3. Fill out each field in the form to customize your `.arg` file. Fields marked with `*` are mandatory. As you fill out
    each field, you can preview the `.arg` file in the code pane on the right. You can also make edits in the code pane
@@ -79,11 +79,11 @@ with the parameters.
 
    Refer to [Edge Artifact Build Configurations](./palette-canvos/arg.md) for a description of each argument.
 
-4. When you are done, click **Confirm & Save**. Give your new configuration a name and optional tags that will help
-   you identify it.
+4. When you are done, click **Confirm & Save**. Give your new configuration a name and optional tags that will help you
+   identify it.
 
-5. After you save the file, it will appear under **Argument files**. Hover over the file to reveal the three-dot
-   menu. Click on it and choose **Download** to download the file.
+5. After you save the file, it will appear under **Argument files**. Hover over the file to reveal the three-dot menu.
+   Click on it and choose **Download** to download the file.
 
 ### Create user-data File
 
@@ -100,14 +100,14 @@ with the parameters.
    Refer to [Installer Configuration Reference](../edge-configuration/installer-reference.md) for a description of each
    parameter.
 
-4. When you are done, click **Confirm & Save**. Give your new configuration a name and optional tags that will help
-   you identify it.
+4. When you are done, click **Confirm & Save**. Give your new configuration a name and optional tags that will help you
+   identify it.
 
    Once you save a `user-data` or `.arg` file, you can make edits to it at any time. To make edits, click on the file
    entry and the form will appear for you to make edits.
 
-5. After you save the file, it will appear under **User data files**. Hover over the file to reveal the three-dot
-   menu. Click on it and choose **Download** to download the file.
+5. After you save the file, it will appear under **User data files**. Hover over the file to reveal the three-dot menu.
+   Click on it and choose **Download** to download the file.
 
 ### (Optional) Create Presets for .arg and user-data Files
 
@@ -117,8 +117,8 @@ You can create presets to use as templates for future instances of your configur
 
 2. Under either **Argument files** or **User data configuration**, click on the **Presets** tab.
 
-3. Fill out the required fields in the form to customize your configuration. Since you are creating a preset, there are no
-   mandatory fields.
+3. Fill out the required fields in the form to customize your configuration. Since you are creating a preset, there are
+   no mandatory fields.
 
 4. When you are done, click **Confirm & Save**. Give your new preset a name and optional tags that will help you
    identify it.
