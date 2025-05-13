@@ -236,4 +236,4 @@ You can access a cluster with overlay network enabled in the following ways:
 ## Resources
 
 - [Publish Cluster Services with Kube-vip](kubevip.md)
-- [Troubleshooting - Edge](../../../troubleshooting/edge.md)
+- [Troubleshooting - Edge](../../../troubleshooting/edge/edge.md)
