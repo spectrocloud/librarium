@@ -45,7 +45,7 @@ The `support-bundle-infra.sh` script collects cluster-level diagnostics. Follow 
 2. Run the `support-bundle-infra.sh` script.
 
    ```bash
-   curl curl --silent --show-error --location https://software.spectrocloud.com/scripts/support-bundle-infra.sh | bash
+   curl --silent --show-error --location https://software.spectrocloud.com/scripts/support-bundle-infra.sh | bash
    ```
 
    If the script runs successfully, it creates a file in your home directory. The file name follows the pattern
@@ -80,7 +80,7 @@ Kubernetes data accessible locally on that host. Follow the steps below on every
 2. Run the `support-bundle-edge.sh` script as a user with sudo privileges.
 
    ```bash
-   curl curl --silent --show-error --location https://software.spectrocloud.com/scripts/support-bundle-edge.sh | sudo bash
+   curl --silent --show-error --location https://software.spectrocloud.com/scripts/support-bundle-edge.sh | sudo bash
    ```
 
    The table below contains the optional flags you can use when running the script.
