@@ -124,8 +124,8 @@ You can create presets to use as templates for future instances of your configur
 4. When you are done, click **Confirm & Save**. Give your new preset a name and optionally tags that will help you
    identify it.
 
-   The next time you create a new instance of either the `user-data` file or `.arg` file, you will be able to use
-   your preset as a template and make customizations on top of it.
+   The next time you create a new instance of either the `user-data` file or `.arg` file, you will be able to use your
+   preset as a template and make customizations on top of it.
 
 </TabItem>
 
