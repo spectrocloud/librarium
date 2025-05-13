@@ -114,9 +114,7 @@ Palette Edge CLI to download the images and upload them to the external registry
     ```
 
 12. Use the `content registry-login` command again to authenticate with the external registry. Replace
-    `<registry-address>`, `<registry-username>`, and `<registry-password>` with your registry credentials. Refer to the
-    [content registry-login](../../../../automation/palette-cli/commands/content.md#registry-login) CLI command page for
-    more information.
+    `<registry-address>`, `<registry-username>`, and `<registry-password>` with your registry credentials.
 
     ```shell
     palette content registry-login --registry <registry-address> \
