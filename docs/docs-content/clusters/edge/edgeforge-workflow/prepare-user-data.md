@@ -193,7 +193,6 @@ You can create presets to use as templates for future instances of your configur
    Palette instance, you need to change the management mode to `local`. Add the `managementMode` parameter to under the
    `stylus` parameter.
 
-
    ```yaml
    #cloud-init
    stylus:
@@ -204,9 +203,7 @@ You can create presets to use as templates for future instances of your configur
    information about the deployment lifecycle of locally managed Edge hosts, refer to
    [Edge Deployment Lifecycle](../edge-native-lifecycle.md).
 
-
 2. If you want to deploy a locally managed Edge host, skip this step.
-
 
    If you want to deploy the Edge host in central management mode, you need to provide the Palette endpoint, in addition
    to either a registration token or QR code registration configuration. For more information about Edge host
@@ -396,7 +393,6 @@ you create user data configurations that fit your needs.
 
 ### Centrally Managed Sites - Multiple User Data Configuration
 
-
 In this example, two configuration user data files are used. The first one is used in the staging phase and is included
 with the Edge Installer image. Note how the first user data contains the registration information and creates a user
 group. A bootable USB stick applies the second user data at the physical site. The secondary user data includes network
@@ -445,7 +441,6 @@ stylus:
 
 This example configuration is for a _centrally managed site_. In this scenario, only a single Edge Installer
 configuration user data is used for the entire deployment process.
-
 
 ```yaml
 #cloud-config
