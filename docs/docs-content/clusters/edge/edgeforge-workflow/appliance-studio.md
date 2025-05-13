@@ -9,7 +9,7 @@ tags: ["edge"]
 
 Appliance Studio is a lightweight and standalone configuration Graphic User Interface (GUI) for EdgeForge. It runs
 locally on your machine and allows you to build, save, edit, and manage the two configuration files that are essential
-to the EdgeForge process fast with zero risk of syntax errors. It also allows you to create presets, which are templates
+to the EdgeForge process, with zero risk of syntax errors. It also allows you to create presets, which are templates
 that you can reuse to create new configuration files.
 
 :::preview
@@ -136,9 +136,9 @@ You can deploy Appliance Studio locally either through Docker or Podman.
    If you modified the persistent data mount directory, ensure that the directory exists before proceeding to the next
    step. Create the directory if it does not exist.
 
-5. Issue the following command to bring Appliance Studio.
+5. Issue the following command to bring up Appliance Studio.
 
-   ```yaml
+   ```shell
    docker compose up -d
    ```
 
@@ -175,9 +175,9 @@ You can deploy Appliance Studio locally either through Docker or Podman.
    If you modified the persistent data mount directory, ensure that the directory exists before proceeding to the next
    step. Create the directory if it does not exist.
 
-5. Issue the following command to bring Appliance Studio.
+5. Issue the following command to bring up Appliance Studio.
 
-   ```yaml
+   ```shell
    podman compose up -d
    ```
 

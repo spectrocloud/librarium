@@ -37,7 +37,7 @@ This article guides you through several important parameters in the `.arg` file 
 [Installer Reference](../edge-configuration/installer-reference.md) resource to learn more about all the supported
 configuration parameters you can use in the configuration user data.
 
-The [Appliance Studio](./applicance-studio.md) is a lightweight Graphic User Interface (GUI) that allows you to design
+The [Appliance Studio](./appliance-studio.md) is a lightweight Graphic User Interface (GUI) that allows you to design
 both files with zero risk of syntax errors and is our recommended approach to creating both files. However, since both
 `.arg` and `user-data` are plain text files, you can also manually create and edit these files once you are familiar
 with the parameters.
@@ -48,7 +48,7 @@ with the parameters.
 
 <TabItem value="Appliance Studio">
 
-- A deployed instance of Appliance Studio. Refer to [Deploy Appliance Studio](./applicance-studio.md) to learn how to
+- A deployed instance of Appliance Studio. Refer to [Deploy Appliance Studio](./appliance-studio.md) to learn how to
   deploy Appliance Studio.
 
 </TabItem>
@@ -67,10 +67,6 @@ with the parameters.
 
 <TabItem value="Appliance Studio">
 
-## Prerequisites
-
-## Procedure
-
 ### Create .arg file
 
 1. Visit the Appliance Studio in your browser.
@@ -82,7 +78,7 @@ with the parameters.
    each field, you can preview the `.arg` file in the code pane on the right. You can also make edits in the code pane
    directly, which will automatically update the form.
 
-   Refer to [Edge Artifact Build Configurations](./palette-canvos/arg.md) for a descriptions of each argument.
+   Refer to [Edge Artifact Build Configurations](./palette-canvos/arg.md) for a description of each argument.
 
 4. When you are done, click **Confirm & Save**. Give your new configuration a name and optionally tags that will help
    you identify it.
@@ -102,13 +98,13 @@ with the parameters.
    out each field, you can preview the `user-data` file in the code pane on the right. You can also make edits in the
    code pane directly, which will automatically update the form.
 
-   Refer to [Installer Configuration Reference](../edge-configuration/installer-reference.md) for a descriptions of each
+   Refer to [Installer Configuration Reference](../edge-configuration/installer-reference.md) for a description of each
    parameter.
 
 4. When you are done, click **Confirm & Save**. Give your new configuration a name and optionally tags that will help
    you identify it.
 
-   Once you save a `user-data` or `.arg` file, you can made edits to it at any time. To make edits, click on the file
+   Once you save a `user-data` or `.arg` file, you can make edits to it at any time. To make edits, click on the file
    entry and the form will appear for you to make edits.
 
 5. After you save the file, the file will appear under **User data files**. Hover over the file to reveal the three-dot
@@ -326,9 +322,6 @@ You can create presets to use as templates for future instances of your configur
 
 ## Validate
 
-If you downloaded the file directly from Appliance Studio, your file is guaranteed to be valid schematically and there
-is no need for you use the `+validate-user-data` earthly build target to validate the files.
-
 You can use the `+validate-user-data` build target of EdgeForge to validate that your user data follows the expected
 schema. You need to perform this action on an AMD64 (also known as x86_64) machine.
 
@@ -399,10 +392,10 @@ you create user data configurations that fit your needs.
 
 ### Connected Sites - Multiple User Data Configuration
 
-In this example, two configuration user user data files are used. The first one is used in the staging phase and is
-included with the Edge Installer image. Note how the first user data contains the registration information and creates a
-user group. A bootable USB stick applies the second user data at the physical site. The secondary user data includes
-network configurations specific to the edge location.
+In this example, two configuration user data files are used. The first one is used in the staging phase and is included
+with the Edge Installer image. Note how the first user data contains the registration information and creates a user
+group. A bootable USB stick applies the second user data at the physical site. The secondary user data includes network
+configurations specific to the edge location.
 
 **Staging** - included with the Edge Installer.
 
