@@ -7,7 +7,7 @@
     "start": "npm run cves && npm run generate-partials && docusaurus start --host 0.0.0.0 --port 9000",
     "build": "npm run generate-api-docs && npm run cves && npm run generate-partials && docusaurus build",
     "swizzle": "docusaurus swizzle",
-    "cves": "node utils/cves/index.js",
+    "cves": "node utils/cves/index.js && npm run copy-cve-data ",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
     "serve": "docusaurus serve",
@@ -23,7 +23,8 @@
     "lint": "eslint . -c .eslintrc.js --ext .js,.ts,.jsx,.tsx",
     "lint:fix": "npm run lint -- --fix",
     "format": "prettier --write \"**/*.{js,jsx,json,ts,tsx,md,mdx,css}\"",
-    "format-check": "prettier . --check"
+    "format-check": "prettier . --check",
+    "copy-cve-data": "mkdir -p static/security-data && cp .docusaurus/security-bulletins/default/data.json static/security-data/data.json"
   },
   "lint-staged": {
     "**/*.{js,jsx,json,ts,tsx,md,mdx,css}": "npm run format"
@@ -61,7 +62,7 @@
     "prism-react-renderer": "^2.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.3.1",
-    "react-markdown": "9.0.1",
+    "react-markdown": "10.1.0",
     "react-select": "^5.10.0",
     "remark-gfm": "4.0.0",
     "sass": "^1.82.0",
@@ -99,7 +100,7 @@
     "jest-fetch-mock": "^3.0.3",
     "linkinator": "^6.1.2",
     "lint-staged": "^15.5.0",
-    "netlify-cli": "^17.38.1",
+    "netlify-cli": "^20.1.1",
     "prettier": "3.5.3",
     "semantic-release": "^24.2.0",
     "test-links": "^0.0.1",
