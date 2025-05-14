@@ -37,10 +37,11 @@ The `support-bundle-infra.sh` script collects cluster-level diagnostics. Follow 
    export KUBECONFIG=/etc/kubernetes/admin.conf
    ```
 
-2. Run the `support-bundle-infra.sh` script.
+2. Download and run the `support-bundle-infra.sh` script.
 
    ```bash
-   curl --silent --show-error --location https://software.spectrocloud.com/scripts/support-bundle-infra.sh | bash
+   curl --remote-name https://software.spectrocloud.com/scripts/support-bundle-infra.sh
+   bash support-bundle-infra.sh
    ```
 
    If the script runs successfully, it creates a file in your home directory. The file name follows the pattern
@@ -72,10 +73,11 @@ Kubernetes data accessible locally on that host. Follow the steps below on every
 
    If you do not perform this step, the script defaults to using `/run/kubeconfig` if it exists.
 
-2. Run the `support-bundle-edge.sh` script as a user with root privileges.
+2. Download the `support-bundle-edge.sh` script and run it as a user with root privileges.
 
    ```bash
-   curl --silent --show-error --location https://software.spectrocloud.com/scripts/support-bundle-edge.sh | sudo bash
+   curl --remote-name https://software.spectrocloud.com/scripts/support-bundle-edge.sh
+   sudo bash support-bundle-edge.sh
    ```
 
    The table below contains the optional flags you can use when running the script.
@@ -106,7 +108,7 @@ Kubernetes data accessible locally on that host. Follow the steps below on every
 
    :::
 
-3. Copy the file to your local computer. The command below serves as an example of how to copy the file
+4. Copy the file to your local computer. The command below serves as an example of how to copy the file
    `edge-e965384209c2d45078a29480e90bd275-2025-05-13_16_58_20.tar.gz` from the `kairos@10.10.150.150` host to your
    `Downloads` folder. Run the command on the machine to which you want to copy the file.
 
