@@ -86,12 +86,16 @@ tags: ["release-notes"]
 - The Palette UI allows users to specify an optional team description during team creation. This new field makes it
   possible for system administrators to provide a meaningful description to user teams. Refer to the
   [Create and Manage a Team](../user-management/users-and-teams/create-a-team.md) guide for further information.
-- Palette [interface customization](../enterprise-version/system-management/customize-interface.md) has been expanded with the ability to hide the login panel image and Spectro Cloud sidebar logo, change the default documentation domain, and change the **Sign in to your tenant** logo.
+- Palette [interface customization](../enterprise-version/system-management/customize-interface.md) has been expanded
+  with the ability to hide the login panel image and Spectro Cloud sidebar logo, change the default documentation
+  domain, and change the **Sign in to your tenant** logo.
 - The management of
   [cluster profile variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/define-profile-variables.md)
   has been improved in the Palette UI. Users can now review and modify variable values during
   [cluster profile version changes](../profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile.md).
-- Velero has been upgraded to version 1.15, which is used internally by Palette for backing up and restoring clusters. Existing clusters with backups configured will be automatically updated to Velero version 1.15, ensuring continuous access to backup and restore functionality. Refer to the
+- Velero has been upgraded to version 1.15, which is used internally by Palette for backing up and restoring clusters.
+  Existing clusters with backups configured will be automatically updated to Velero version 1.15, ensuring continuous
+  access to backup and restore functionality. Refer to the
   [Backup and Restore](../clusters/cluster-management/backup-restore/backup-restore.md) page to learn more about backup
   and restore tools in Palette.
 - Palette now uses Cluster API Provider AWS (CAPA) version 2.7.1 internally. Refer to the
@@ -104,9 +108,9 @@ tags: ["release-notes"]
 
 #### Features
 
-- <TpBadge /> The new Appliance Studio is a lightweight Graphical User Interface (GUI) application allows you to
-  build, save, edit, and manage the two configuration files that are essential to the EdgeForge process, with zero risk
-  of syntax errors.
+- <TpBadge /> The new Appliance Studio is a lightweight Graphical User Interface (GUI) application allows you to build,
+  save, edit, and manage the two configuration files that are essential to the EdgeForge process, with zero risk of
+  syntax errors.
 
   Refer to the Prepare User Data and Argument Files guide to learn more.
 
@@ -118,8 +122,8 @@ tags: ["release-notes"]
 #### Improvements
 
 - Improved the upgrade process for the Palette agent and increased its reliability.
-- Palette now supports uploading one or more content bundles as long as your Edge host has enough physical storage and you
-  have allocated sufficient storage to your registry. Refer to the
+- Palette now supports uploading one or more content bundles as long as your Edge host has enough physical storage and
+  you have allocated sufficient storage to your registry. Refer to the
   [Upload Content Bundle](../clusters/edge/local-ui/cluster-management/upload-content-bundle.md) guide for further
   information.
 - [Local UI](../clusters/edge/local-ui/local-ui.md) has now exited Tech Preview and is ready to use for production
@@ -133,9 +137,9 @@ tags: ["release-notes"]
 
 - The `stylus.installationMode`
   [Edge Installer Configuration](../clusters/edge/edge-configuration/installer-reference.md) flag is deprecated. We
-  recommend using the `stylus.managementMode` flag instead, which has two allowed values: `central`, which means the Edge host
-  is connected to Palette, and `local`, which means the Edge host has no connection to a Palette instance. Refer to the
-  [Prepare User Data](../clusters/edge/edgeforge-workflow/prepare-user-data.md) for further information.
+  recommend using the `stylus.managementMode` flag instead, which has two allowed values: `central`, which means the
+  Edge host is connected to Palette, and `local`, which means the Edge host has no connection to a Palette instance.
+  Refer to the [Prepare User Data](../clusters/edge/edgeforge-workflow/prepare-user-data.md) for further information.
 
 ### VerteX
 
