@@ -9,7 +9,7 @@ tags: ["vmo"]
 
 When managing virtual machines (VMs) using Virtual Machine Orchestrator (VMO), you may need to extend the disks on the
 VMs. When a VM has multiple disks of the same size, locating the disks on each VM can be difficult. The following
-sections help you locate disks on VMs running Linux and Windows operating systems.
+sections help you locate disks on Linux and Windows VMs.
 
 ## Prerequisites
 
@@ -108,7 +108,7 @@ sections help you locate disks on VMs running Linux and Windows operating system
 
 5. Enter `exit` to close the session on the pod.
 
-6. On the Windows VM, open a PowerShell terminal and run the following command.
+6. On the Windows VM, open a PowerShell terminal and issue the following command.
 
    ```powershell
    Get-PhysicalDisk | ft DeviceId,FriendlyName,{$_.Size /1GB},PhysicalLocation
@@ -120,7 +120,7 @@ sections help you locate disks on VMs running Linux and Windows operating system
 
    ![ps-get-partition](/locate-vm-disks-images/ps-get-partition.webp)
 
-7. Run the following PowerShell command to get the correct device ID for a specific drive letter. Replace
+7. Issue the following PowerShell command to get the correct device ID for a specific drive letter. Replace
    `<drive-letter>` with the drive you want to target.
 
    ```powershell
