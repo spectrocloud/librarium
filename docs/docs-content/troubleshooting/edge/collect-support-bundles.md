@@ -15,7 +15,9 @@ troubleshoot these issues more effectively, follow this guide to collect support
 ticket.
 
 ## Limitations
+
 - Only the `support-bundle-edge.sh` script is embedded and can run on hosts without an internet connection. The `support-bundle-infra.sh` script is not embedded and requires internet access.
+- The embedded `support-bundle-edge.sh` script does not update automatically. To use the latest version, download and run the script manually.
 
 ## Prerequisites
 
@@ -44,6 +46,10 @@ ticket.
 </Tabs>
 
 ## Run the Troubleshooting Scripts
+
+<Tabs group="method">
+
+<TabItem value="Downloaded Scripts">
 
 ### Run the Script to Collect Cluster Logs
 
@@ -132,8 +138,72 @@ Kubernetes data accessible locally on that host. Follow the steps below on every
    ```bash
    scp kairos@10.10.150.150:/opt/spectrocloud/logs/edge-e965384209c2d45078a29480e90bd275-2025-05-13_16_58_20.tar.gz ~/Downloads/
    ```
+</TabItem>
+<TabItem value="Embedded Script">
+
+### Run the Script to Collect Edge Host Logs
+
+The `support-bundle-edge.sh` script collects host-level diagnostics from an Edge node and, if available, includes
+Kubernetes data accessible locally on that host. Follow the steps below on every Edge host you want to troubleshoot.
+
+1. (Optional) Set the path to your `kubeconfig` file.
+
+   ```bash
+   export KUBECONFIG=/etc/kubernetes/admin.conf
+   ```
+
+   If you do not perform this step, the script defaults to using `/run/kubeconfig` if it exists.
+
+2. Run the `support-bundle-edge.sh` script as a user with root privileges.
+
+   ```bash
+   sudo bash /opt/spectrocloud/scripts/support-bundle-edge.sh
+   ```
+
+   The table below contains the optional flags you can use when running the script.
+
+   | **Full Flag Name**           | **Short Flag Name** | **Description**                                                                                  | **Example**                         |
+   | ---------------------------- | ------------------- | ------------------------------------------------------------------------------------------------ | ----------------------------------- |
+   | `--start-days-ago`           | `-s`                | Number of days in the past to start collecting journald logs.                                    | `-s 7`                              |
+   | `--end-days-ago`             | `-e`                | Number of days before now to stop collecting journald logs. The value must be smaller than `-s`. | `-e 5`                              |
+   | `--start-date`               | `-S`                | Start date for journald log collection.                                                          | `-S 2024-01-01`                     |
+   | `--end-date`                 | `-E`                | End date for journald log collection. Must be later than `-S`.                                   | `-E 2024-01-06`                     |
+   | `--namespaces`               | `-n`                | Additional namespaces to collect logs from.                                                      | `-n hello-universe,hello-world`     |
+   | `--resources-namespaced`     | `-r`                | Additional namespace-scoped resources to collect.                                                | `-r certificates.cert-manager.io`   |
+   | `--resources-cluster-scoped` | `-R`                | Additional cluster-scoped resources to collect.                                                  | `-R clusterissuers.cert-manager.io` |
+   | `--journald-services`        | `-j`                | Additional journald services to include in logs.                                                 | `-j cloud-init,systemd-resolved`    |
+
+   If the script runs successfully, it creates a file in the `/opt/spectrocloud/logs` directory. The file name follows
+   the pattern `<hostname>-<YYYY-MM-DD>_<HH_MM_SS>.tar.gz`. One of the messages the terminal displays contains the
+   created file's name and its path.
+
+   ```bash
+   Logs are archived in /opt/spectrocloud/logs/edge-e965384209c2d45078a29480e90bd275-2025-05-13_16_58_20.tar.gz
+   ```
+
+   :::info
+
+   The script collects only Helm release secrets from Spectro Cloud namespaces and excludes other Kubernetes secrets to
+   protect sensitive data.
+
+   :::
+
+3. Copy the file to your local computer. The command below serves as an example of how to copy the file
+   `edge-e965384209c2d45078a29480e90bd275-2025-05-13_16_58_20.tar.gz` from the `kairos@10.10.150.150` host to your
+   `Downloads` folder. Run the command on the machine to which you want to copy the file.
+
+   ```bash
+   scp kairos@10.10.150.150:/opt/spectrocloud/logs/edge-e965384209c2d45078a29480e90bd275-2025-05-13_16_58_20.tar.gz ~/Downloads/
+
+</TabItem>
+
+</Tabs>
 
 ## Validate
+
+<Tabs group="method">
+
+<TabItem value="Downloaded Scripts">
 
 Review the files you copied to the `Downloads` folder. The scripts archive the collected logs into compressed tarballs
 TAR.GAR.
@@ -157,6 +227,29 @@ Extract the file named in the format `<hostname>-<YYYY-MM-DD>_<HH_MM_SS>.tar.gz`
 - `systeminfo` folder
 - `usr` folder
 - `var` folder
+
+</TabItem>
+
+<TabItem value="Embedded Script">
+
+Review the files you copied to the `Downloads` folder. The scripts archive the collected logs into compressed tarballs
+TAR.GAR.
+
+Extract the file named in the format `<hostname>-<YYYY-MM-DD>_<HH_MM_SS>.tar.gz` and ensure it contains the following:
+
+- `console.log` file
+- `helm` folder
+- `journald` folder
+- `networking` folder
+- `oem` folder
+- `run` folder
+- `systeminfo` folder
+- `usr` folder
+- `var` folder
+
+</TabItem>
+
+</Tabs>
 
 ## Next Steps
 
