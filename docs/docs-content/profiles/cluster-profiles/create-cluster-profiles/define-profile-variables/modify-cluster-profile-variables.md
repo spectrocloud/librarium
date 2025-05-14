@@ -148,9 +148,9 @@ the appropriate workflow based on the changes you make to your cluster.
 
    Each profile must have a **Reviewed** status, indicated by a green check mark, before you can apply your changes.
    Hovering over each icon between **Running configuration** and **New configuration** explains what is being done
-   for each variable. In the following example, we changed:
+   for each variable. In the below example, we made the following changes:
 
-   - the Kubecost frontend `imagePullPolicy` from `Always` to `IfNotPresent`
+   - Changed the Kubecost frontend `imagePullPolicy` from `Always` to `IfNotPresent`.
 
    - changed the Default value of the Hello Universe `namespace` variable. The assigned value is remains the same from
      the Profile version 1.0.0 to 1.1.0.
