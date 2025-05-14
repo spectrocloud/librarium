@@ -108,7 +108,7 @@ Kubernetes data accessible locally on that host. Follow the steps below on every
 
    :::
 
-4. Copy the file to your local computer. The command below serves as an example of how to copy the file
+3. Copy the file to your local computer. The command below serves as an example of how to copy the file
    `edge-e965384209c2d45078a29480e90bd275-2025-05-13_16_58_20.tar.gz` from the `kairos@10.10.150.150` host to your
    `Downloads` folder. Run the command on the machine to which you want to copy the file.
 
