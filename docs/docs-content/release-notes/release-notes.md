@@ -86,27 +86,25 @@ tags: ["release-notes"]
 - The Palette UI allows users to specify an optional team description during team creation. This new field makes it
   possible for system administrators to provide a meaningful description to user teams. Refer to the
   [Create and Manage a Team](../user-management/users-and-teams/create-a-team.md) guide for further information.
-- Palette [interface customization](../enterprise-version/system-management/customize-interface.md) has been expanded to
-  include sidebar customization, documentation links, and all login screen logos.
+- Palette [interface customization](../enterprise-version/system-management/customize-interface.md) has been expanded with the ability to hide the login panel image and Spectro Cloud sidebar logo, change the default documentation domain, and change the **Sign in to your tenant** logo.
 - The management of
   [cluster profile variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/define-profile-variables.md)
-  has been improved in the Palette UI. Users can now review and mcodify variable values during
+  has been improved in the Palette UI. Users can now review and modify variable values during
   [cluster profile version changes](../profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile.md).
-- Palette uses Velero version 1.15 internally. Existing clusters with configured backups will be automatically updated
-  to Velero version 1.15, ensuring continuous access to Palette backup and restore functionality. Refer to the
+- Velero has been upgraded to version 1.15, which is used internally by Palette for backing up and restoring clusters. Existing clusters with backups configured will be automatically updated to Velero version 1.15, ensuring continuous access to backup and restore functionality. Refer to the
   [Backup and Restore](../clusters/cluster-management/backup-restore/backup-restore.md) page to learn more about backup
   and restore tools in Palette.
 - Palette now uses Cluster API Provider AWS (CAPA) version 2.7.1 internally. Refer to the
   [documentation](https://github.com/kubernetes-sigs/cluster-api-provider-aws/tree/v2.7.1) for further information.
 - [Self-hosted Palette](../enterprise-version/enterprise-version.md) now supports anonymous SMTP mode, allowing users to
-  authenticate with a username and password. We recommend using authenticated SMTP wherever possible. Refer to the
+  authenticate without a username and password. We recommend using authenticated SMTP wherever possible. Refer to the
   [Configure SMTP](../enterprise-version/system-management/smtp.md) guide for further information.
 
 ### Edge
 
 #### Features
 
-- <TpBadge /> The new Appliance Studio is a lightweight Graphic User Interface (GUI) application allows allows you to
+- <TpBadge /> The new Appliance Studio is a lightweight Graphical User Interface (GUI) application allows you to
   build, save, edit, and manage the two configuration files that are essential to the EdgeForge process, with zero risk
   of syntax errors.
 
@@ -120,7 +118,7 @@ tags: ["release-notes"]
 #### Improvements
 
 - Improved the upgrade process for the Palette agent and increased its reliability.
-- Palette now supports upload one or more content bundles as long as your Edge host has enough physical storage and you
+- Palette now supports uploading one or more content bundles as long as your Edge host has enough physical storage and you
   have allocated sufficient storage to your registry. Refer to the
   [Upload Content Bundle](../clusters/edge/local-ui/cluster-management/upload-content-bundle.md) guide for further
   information.
@@ -135,8 +133,8 @@ tags: ["release-notes"]
 
 - The `stylus.installationMode`
   [Edge Installer Configuration](../clusters/edge/edge-configuration/installer-reference.md) flag is deprecated. We
-  recommend using the `stylus.managementMode` flag instead, which has two allowed values: `central` means the Edge host
-  is connected to Palette, `local` means the Edge host has no connection to a Palette instance. Refer to the
+  recommend using the `stylus.managementMode` flag instead, which has two allowed values: `central`, which means the Edge host
+  is connected to Palette, and `local`, which means the Edge host has no connection to a Palette instance. Refer to the
   [Prepare User Data](../clusters/edge/edgeforge-workflow/prepare-user-data.md) for further information.
 
 ### VerteX
@@ -171,7 +169,7 @@ Check out the [CLI Tools](../downloads/cli-tools.md) page to find the compatible
   Refer to the Upload Content Bundle reference page for further information.
 
 - The `spectrocloud_appliance` resource now supports [remote shell](../clusters/edge/cluster-management/remote-shell.md)
-  activation, allowing you to troubleshoot edge hosts by initiating an SSH connection from Palette. For more
+  activation, allowing you to troubleshoot Edge hosts by initiating an SSH connection from Palette. For more
   information, refer to the Spectro Cloud Terraform provider
   [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
 
@@ -180,10 +178,10 @@ Check out the [CLI Tools](../downloads/cli-tools.md) page to find the compatible
 #### Deprecations and Removals
 
 - The `tc` subcommand of the [Palette CLI](../automation/palette-cli/palette-cli.md) is deprecated. This command
-  provided functionality for deploying target clusters using the Palette CLI. We recommend to use the
+  provided functionality for deploying target clusters using the Palette CLI. We recommend using the
   [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) for
   cluster deployment automation.
-- The `spectrocloud_macro` Terraform resource is deprecated. We recommend to use the `spectrocloud_macros` resource to
+- The `spectrocloud_macro` Terraform resource is deprecated. We recommend using the `spectrocloud_macros` resource to
   create and manage service output variables and macros. For more information, refer to the Spectro Cloud Terraform
   provider [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
 
@@ -210,7 +208,7 @@ Check out the [CLI Tools](../downloads/cli-tools.md) page to find the compatible
 <!-- prettier-ignore-start -->
 
 - The <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> versions 1.31.x and 1.32.x packs now support cluster deployments to AWS.
-- The <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> version 1.32.x packs now support cluster deployments to AKS.
+- The <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> version 1.32.x pack now supports cluster deployments to AKS.
 
 <!-- prettier-ignore-end -->
 
