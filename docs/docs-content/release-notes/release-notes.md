@@ -98,8 +98,6 @@ tags: ["release-notes"]
   and restore tools in Palette.
 - Palette now uses Cluster API Provider AWS (CAPA) version 2.7.1 internally. Refer to the
   [documentation](https://github.com/kubernetes-sigs/cluster-api-provider-aws/tree/v2.7.1) for further information.
-- Palette now uses Cluster API Provider for GCP (CAPG) version 1.8.1 internally. Refer to the
-  [documentation](https://github.com/kubernetes-sigs/cluster-api-provider-gcp/tree/v1.8.1) for further information.
 - [Self-hosted Palette](../enterprise-version/enterprise-version.md) now supports anonymous SMTP mode, allowing users to
   authenticate with a username and password. We recommend using authenticated SMTP wherever possible. Refer to the
   [Configure SMTP](../enterprise-version/system-management/smtp.md) guide for further information.
