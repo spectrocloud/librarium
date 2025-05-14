@@ -40,7 +40,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
   files on a system with internet access and then transfer them to your airgap environment.
 
   - CAPI Image Builder compressed archive file. Contact your Palette support representative to obtain the latest version
-    of the tool. This guide uses version `4.6.23` as an example.
+    of the tool. This guide uses version 4.6.23 as an example.
 
   - [RHEL ISO](https://developers.redhat.com/products/rhel/download?source=sso) version `8.8`. Ensure you download the
     `x86_64-dvd.iso` file and not the `x86_64-boot.iso` file, and make sure you have its SHA256 checksum available. This
@@ -53,16 +53,21 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
     [Compatibility Matrix](../../comp-matrix-capi-builder.md).
 
   - (Optional) Any custom Bash scripts (`.sh` files) that you want to execute when creating your RHEL image. Custom
-    scripts are supported beginning with CAPI Image Builder version `4.6.23`.
+    scripts are supported beginning with CAPI Image Builder version 4.6.23.
 
 ## Build Custom Image
 
-1.  Open a terminal window and SSH into the airgap support VM using the command below. Replace `/path/to/private_key`
-    with the path to the private SSH key, `ubuntu` with your airgap support VM username, and `palette.example.com` with
-    the IP address or hostname of the airgap support VM.
+1.  Open a terminal window and SSH into the airgap support VM using the command below. Replace `<path-to-private-key>`
+    with the path to the private SSH key, `<vm-username>` with your airgap support VM username, and `<airgap-vm-hostname>` with the IP address or Fully Qualified Domain Name (FQDN) of the airgap support VM (for example, `example-vm.palette.dev`).
+    
+    :::info
+    
+    Whether you use the IP address or FQDN depends on the hostname used when setting up your airgap support VM. If you used an [existing RHEL VM](../../../../enterprise-version/install-palette/install-on-vmware/airgap-install/environment-setup/env-setup-vm.md) to set up your VM, this is always the FQDN; if you used an [OVA](../../../../enterprise-version/install-palette/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions.md), it depends on the hostname used when invoking the command `/bin/airgap-setup.sh <airgap-vm-hostname>`. 
+
+    :::
 
     ```shell
-    ssh -i /path/to/private_key ubuntu@palette.example.com
+    ssh -i <path-to-private-key> <vm-username>@<airgap-vm-hostname>
     ```
 
 2.  Switch to the `root` user account to complete the remaining steps.
@@ -78,7 +83,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
     ls
     ```
 
-    ```text hideClipboard
+    ```text hideClipboard title="Example output"
     airgap-pack-kubernetes-1.30.5.bin  bin  capi-image-builder-v4.6.23.tgz  prep  rhel-8.8-x86_64-dvd.iso  snap
     ```
 
@@ -89,10 +94,10 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 
     :::
 
-4.  Extract the CAPI Image Builder file.
+4.  Extract the CAPI Image Builder file. Replace `<tag>` with your CAPI Image Builder version.
 
     ```shell
-    tar --extract --gzip --file=capi-image-builder-v4.6.23.tgz
+    tar --extract --gzip --file=capi-image-builder-<tag>.tgz
     ```
 
 5.  Update the permissions of the `output` folder to allow the CAPI Image Builder tool to create directories and files
@@ -219,7 +224,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
     Once you are finished making changes, save and exit the file.
 
 10. (Optional) You can add custom Bash scripts (`.sh` files) to run before or after the build process. This feature is
-    available beginning with CAPI Image Builder version `4.6.23`. If any scripts are found in the relevant directories,
+    available beginning with CAPI Image Builder version 4.6.23. If any scripts are found in the relevant directories,
     they are copied to an Ansible playbook.
 
     Move any scripts that you want to be executed _before_ the build process to the `output/custom_scripts/pre`
@@ -233,20 +238,20 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
     chmod +x custom_scripts/pre/sample-script.sh
     ```
 
-11. Load the CAPI Image Builder container image with the command below.
+11. Load the CAPI Image Builder container image with the command below. Replace `<tag>` with your CAPI Image Builder version.
 
         <Tabs>
         <TabItem value="Docker" label="Docker">
 
         ```shell
-        docker load < capi-builder-v4.6.23.tar
+        docker load < capi-builder-<tag>.tar
         ```
 
         </TabItem>
         <TabItem value="Podman" label="Podman">
 
         ```shell
-        podman load < capi-builder-v4.6.23.tar
+        podman load < capi-builder-<tag>.tar
         ```
 
         </TabItem>
@@ -280,7 +285,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
         ```shell
         docker images
         ```
-        ```text hideClipboard
+        ```text hideClipboard title="Example output"
         REPOSITORY                                                          TAG         IMAGE ID      CREATED       SIZE
         us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder  v4.6.23     2adff15eee2d  7 days ago    2.47 GB
         gcr.io/spectro-images-public/imagebuilder/yum-repo                  v1.0.0      b03879039936  6 weeks ago   603 MB
@@ -292,7 +297,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
         ```shell
         podman images
         ```
-        ```text hideClipboard
+        ```text hideClipboard title="Example output"
         REPOSITORY                                                          TAG         IMAGE ID      CREATED       SIZE
         us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder  v4.6.23     2adff15eee2d  7 days ago    2.47 GB
         gcr.io/spectro-images-public/imagebuilder/yum-repo                  v1.0.0      b03879039936  6 weeks ago   603 MB
@@ -374,20 +379,20 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
     vSphere environment using the `image_name` defined in `imageconfig`. For this guide, the VM is named `rhel-8`. The
     tool will then generate a RHEL 8 CAPI image from the VM and save it to the `output` directory.
 
-    Before issuing the following command, replace `4.6.23` to match your CAPI Image Builder version.
+    Replace `<tag>` with your CAPI Image Builder version.
 
         <Tabs>
         <TabItem value="Docker" label="Docker">
 
         ```bash
-        BUILD_ID_CAPI=$(docker run --net=host --volume /root/output:/home/imagebuilder/output --detach us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:v4.6.23)
+        BUILD_ID_CAPI=$(docker run --net=host --volume /root/output:/home/imagebuilder/output --detach us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:<tag>)
         ```
 
         </TabItem>
         <TabItem value="Podman" label="Podman">
 
         ```bash
-        BUILD_ID_CAPI=$(podman run --net=host --volume /root/output:/home/imagebuilder/output --detach us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:v4.6.23)
+        BUILD_ID_CAPI=$(podman run --net=host --volume /root/output:/home/imagebuilder/output --detach us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:<tag>)
         ```
 
         </TabItem>
@@ -413,20 +418,20 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 
         2.  Issue the command below to start the CAPI Image Builder container and assign the container ID to the `BUILD_ID_CAPI`
             variable. The tool will use the `imageconfig` file to create and configure a VM with static IP placement in
-            your VMware vSphere environment. Replace `4.6.23` with your CAPI Image Builder version.
+            your VMware vSphere environment. Replace `<tag>` with your CAPI Image Builder version.
 
             <Tabs>
             <TabItem value="Docker" label="Docker">
 
              ```bash
-             BUILD_ID_CAPI=$(docker run --net=host --volume /root/output:/home/imagebuilder/output --detach us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:v4.6.23)
+             BUILD_ID_CAPI=$(docker run --net=host --volume /root/output:/home/imagebuilder/output --detach us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:<tag>)
              ```
             </TabItem>
 
             <TabItem value="Podman" label="Podman">
 
              ```bash
-             BUILD_ID_CAPI=$(podman run --net=host --volume /root/output:/home/imagebuilder/output --detach us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:v4.6.23)
+             BUILD_ID_CAPI=$(podman run --net=host --volume /root/output:/home/imagebuilder/output --detach us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:<tag>)
              ```
 
             </TabItem>
@@ -439,7 +444,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 
         <Tabs>
 
-    <TabItem value="Docker" label="Docker">
+        <TabItem value="Docker" label="Docker">
 
         ```shell
         docker logs --follow $BUILD_ID_CAPI
@@ -455,13 +460,13 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 
         </TabItem>
 
-    </Tabs>
+        </Tabs>
 
-        :::info
+    :::info
 
-        It may take a few minutes for the logs to start being displayed, and the build takes several minutes to complete.
+    It may take a few minutes for the logs to start being displayed, and the build takes several minutes to complete.
 
-        :::
+    :::
 
 19. Once the build is complete, the RHEL 8 CAPI image will be downloaded to the `output` directory as the `image_name`
     specified in the `imageconfig` file. For this example, the image is `rhel-8`. Once the image is created, the VM is
@@ -474,23 +479,21 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
         ls output/rhel-8
         ```
 
-        ```text hideClipboard
+        ```text hideClipboard title="Example output"
         packer-manifest.json  rhel-8-kube-v1.30.5.mf  rhel-8-kube-v1.30.5.ova.sha256  rhel-8.ovf rhel-8-disk-0.vmdk  rhel-8-kube-v1.30.5.ova  rhel-8-kube-v1.30.5.ovf
         ```
 
-20. Copy the `rhel-8-kube-v1.30.5.ova` file to the home directory of the airgap support VM. Replace `ubuntu` with your
-    airgap support VM username.
+20. Copy the `rhel-8-kube-v1.30.5.ova` file to the home directory of the airgap support VM. Replace `<vm-username>` with your airgap support VM username.
 
     ```shell
-    cp /root/output/rhel-8/rhel-8-kube-v1.30.5.ova /home/ubuntu/
+    cp /root/output/rhel-8/rhel-8-kube-v1.30.5.ova /home/<vm-username>/
     ```
 
     Next, open a new terminal window on your local machine and use the `scp` command to copy the
-    `rhel-8-kube-v1.30.5.ova` file. Replace `/path/to/private_key` with the path to the private SSH key, `ubuntu` with
-    your airgap support VM username, and `palette.example.com` with the IP address or hostname of the airgap support VM.
+    `rhel-8-kube-v1.30.5.ova` file. Replace `<path-to-private-key>` with the path to the private SSH key, `<vm-username>` with your airgap support VM username, and `<airgap-vm-hostname>` with the IP address or hostname of the airgap support VM.
 
     ```shell
-    scp -i /path/to/private_key ubuntu@palette.example.com:/home/ubuntu/rhel-8-kube-v1.30.5.ova .
+    scp -i <path-to-private-key> <vm-username>@<airgap-vm-hostname>:/home/<vm-username>/rhel-8-kube-v1.30.5.ova .
     ```
 
 21. To make the image available in VMware vSphere, log in to your environment and locate the `vcenter_folder` you
@@ -567,7 +570,7 @@ profile and deploy a VMware vSphere host cluster.
 
     <!-- prettier-ignore-end -->
 
-   ```yaml
+   ```yaml hideClipboard title="Example YAML configuration"
    pack:
      osImageOverride: "/Datacenter/vm/sp-docs/rhel-8-kube-v1.30.5"
      osName: "rhel"

@@ -36,20 +36,18 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
   - [curl](https://curl.se/docs/install.html)
 
 - (Optional) Any custom Bash scripts (`.sh` files) that you want to execute when creating your Rocky image. Custom
-  scripts are supported beginning with CAPI Image Builder version `4.6.23`.
+  scripts are supported beginning with CAPI Image Builder version 4.6.23.
 
 ## Build Custom Image
 
-1.  Open up a terminal session on your Linux machine and download the CAPI Image Builder image. This guide uses version
-    `4.6.23` as an example. Replace `4.6.23` with your desired version. Refer to the CAPI Image Builder
-    [Downloads](../../../../downloads/capi-image-builder.md) page for the latest version.
+1.  Open up a terminal session on your Linux machine and download the CAPI Image Builder image, replacing `<tag>` with your desired CAPI Image Builder version. This guide uses version 4.6.23 as an example. Refer to the CAPI Image Builder [Downloads](../../../../downloads/capi-image-builder.md) page for the latest version.
 
     <Tabs>
 
         <TabItem value="Docker" label="Docker">
 
         ```shell
-        docker pull us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:v4.6.23
+        docker pull us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:<tag>
         ```
 
         Confirm that the image was downloaded correctly.
@@ -58,7 +56,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
         docker images
         ```
 
-        ```text hideClipboard title="Output"
+        ```text hideClipboard title="Example output"
         REPOSITORY                                                           TAG        IMAGE ID       CREATED       SIZE
         us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder   v4.6.23    2adff15eee2d   7 days ago    2.47 GB
         ```
@@ -68,7 +66,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
         <TabItem value="Podman" label="Podman">
 
         ```shell
-        podman pull us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:v4.6.23
+        podman pull us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:<tag>
         ```
 
         Confirm that the image was downloaded correctly.
@@ -77,7 +75,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
         podman images
         ```
 
-        ```text hideClipboard title="Output"
+        ```text hideClipboard title="Example output"
         REPOSITORY                                                           TAG        IMAGE ID       CREATED       SIZE
         us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder   v4.6.23    2adff15eee2d   7 days ago    2.47 GB
         ```
@@ -86,18 +84,17 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 
     </Tabs>
 
-2.  Create an `output` directory to store the image files and set the required permissions. This guide uses `ubuntu` as
-    an example username. Replace `ubuntu` with your Linux username.
+2.  Create an `output` directory to store the image files and set the required permissions. Replace `<username>` with your Linux username.
 
     ```shell
-    mkdir /home/ubuntu/output
-    chmod a+rwx /home/ubuntu/output
+    mkdir /home/<username>/output
+    chmod a+rwx /home/<username>/output
     ```
 
-3.  Navigate to the `output` directory.
+3.  Navigate to the `output` directory. Replace `<username>` with your Linux username.
 
     ```shell
-    cd /home/ubuntu/output
+    cd /home/<username>/output
     ```
 
 4.  Download the [Rocky Linux ISO file](https://download.rockylinux.org/pub/rocky/) into the `output` directory. Ensure
@@ -225,7 +222,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
     Once you are finished making changes, save and exit the file.
 
 8.  (Optional) You can add custom Bash scripts (`.sh` files) to run before or after the build process. This feature is
-    available beginning with CAPI Image Builder version `4.6.23`. If any scripts are found in the relevant directories,
+    available beginning with CAPI Image Builder version 4.6.23. If any scripts are found in the relevant directories,
     they are copied to an Ansible playbook. If you do not want to add custom scripts, skip this step.
 
     <details>
@@ -256,15 +253,14 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
     vSphere environment using the `image_name` defined in `imageconfig`. For this guide, the VM is named `rocky-8`. The
     tool will then generate a Rocky 8 CAPI image from the VM and save it to the `output` directory.
 
-        Before issuing the following command, replace `ubuntu` with your Linux username and `4.6.23` with your CAPI Image
-        Builder version.
+    Replace `<username>` with your Linux username and `<tag>` with your CAPI Image Builder version.
 
         <Tabs>
 
-    <TabItem value="Docker" label="Docker">
+        <TabItem value="Docker" label="Docker">
 
         ```bash
-        BUILD_ID=$(docker run --net=host --volume /home/ubuntu/output:/home/imagebuilder/output  --detach  us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:v4.6.23)
+        BUILD_ID=$(docker run --net=host --volume /home/<username>/output:/home/imagebuilder/output  --detach  us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:<tag>)
         ```
 
         </TabItem>
@@ -272,12 +268,12 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
         <TabItem value="Podman" label="Podman">
 
         ```bash
-        BUILD_ID=$(podman run --net=host --volume /home/ubuntu/output:/home/imagebuilder/output  --detach  us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:v4.6.23)
+        BUILD_ID=$(podman run --net=host --volume /home/<username>/output:/home/imagebuilder/output  --detach  us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:<tag>)
         ```
 
         </TabItem>
 
-    </Tabs>
+        </Tabs>
 
         If you need the VM to use static IP placement instead of DHCP, follow the steps described below.
 
@@ -306,20 +302,20 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 
             3.  Issue the command below to start the CAPI Image Builder container and assign the container ID to the `BUILD_ID`
                 variable. The tool will use the `imageconfig` file to create and configure a VM with static IP placement in
-                your VMware vSphere environment. Replace `ubuntu` with your Linux username and `4.6.23` to match the CAPI Image Builder version downloaded in step 1.
+                your VMware vSphere environment. Replace `<username>` with your Linux username and `<tag>` with your CAPI Image Builder version.
 
                 <Tabs>
                 <TabItem value="Docker" label="Docker">
 
                  ```bash
-                 BUILD_ID=$(docker run --net=host --volume /home/ubuntu/output:/home/imagebuilder/output  --detach  us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:v4.6.23)
+                 BUILD_ID=$(docker run --net=host --volume /home/<username>/output:/home/imagebuilder/output  --detach  us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:<tag>)
                  ```
                 </TabItem>
 
                 <TabItem value="Podman" label="Podman">
 
                  ```bash
-                 BUILD_ID=$(podman run --net=host --volume /home/ubuntu/output:/home/imagebuilder/output  --detach  us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:v4.6.23)
+                 BUILD_ID=$(podman run --net=host --volume /home/<username>/output:/home/imagebuilder/output  --detach  us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:<tag>)
                  ```
 
                 </TabItem>
@@ -332,7 +328,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 
         <Tabs>
 
-    <TabItem value="Docker" label="Docker">
+        <TabItem value="Docker" label="Docker">
 
         ```shell
         docker logs --follow $BUILD_ID
@@ -348,13 +344,13 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 
         </TabItem>
 
-    </Tabs>
+        </Tabs>
 
-        :::info
+    :::info
 
-        It may take a few minutes for the logs to start being displayed, and the build takes several minutes to complete.
+    It may take a few minutes for the logs to start being displayed, and the build takes several minutes to complete.
 
-        :::
+    :::
 
 11. Once the build is complete, the Rocky 8 CAPI image will be downloaded to the `output` directory as the `image_name`
     specified in the `imageconfig` file. For this example, the image is `rocky-8`. Once the image is created, the VM is
@@ -367,7 +363,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
         ls rocky-8
         ```
 
-        ```text hideClipboard
+        ```text hideClipboard title="Example output"
         packer-manifest.json  rockylinux-8-kube-v1.30.4.mf  rockylinux-8-kube-v1.30.4.ovf rocky-8-disk-0.vmdk  rockylinux-8-kube-v1.30.4.ova  rocky-8.ovf rockylinux-8-kube-v1.30.4.ova.sha256
         ```
 
@@ -444,7 +440,7 @@ profile and deploy a VMware host cluster.
 
     <!-- prettier-ignore-end -->
 
-   ```yaml
+   ```yaml hideClipboard title="Example YAML configuration"
    pack:
      osImageOverride: "/Datacenter/vm/sp-docs/rockylinux-8-kube-v1.30.4"
      osName: "rockylinux"
