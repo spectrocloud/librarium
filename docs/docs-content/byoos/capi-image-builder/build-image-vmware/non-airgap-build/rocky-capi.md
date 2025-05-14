@@ -134,9 +134,9 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
     the [Compatibility Matrix](../../comp-matrix-capi-builder.md) for a list of supported Kubernetes versions and their
     corresponding dependencies.
 
-    The `imageconfig` file is the file used to personalize the base CAPI image for your cluster, which you can alter to fit
-    your needs. This includes specifying the OS type, Kubernetes version, whether the image should be FIPS compliant,
-    and more.
+    The `imageconfig` file is the file used to personalize the base CAPI image for your cluster, which you can alter to
+    fit your needs. This includes specifying the OS type, Kubernetes version, whether the image should be FIPS
+    compliant, and more.
 
     Use the example configuration below to configure a Rocky 8 CAPI image. Use the SHA256 checksum of the Rocky ISO from
     step 5 of this guide for `<iso-checksum>`. Additionally, replace the VMware-related placeholders with the values
