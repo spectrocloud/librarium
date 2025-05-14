@@ -62,7 +62,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
         docker images
         ```
 
-        ```text hideClipboard
+        ```text hideClipboard title="Output"
         REPOSITORY                                                           TAG        IMAGE ID       CREATED       SIZE
         us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder   v4.6.23    2adff15eee2d   7 days ago    2.47 GB
         ```
@@ -81,7 +81,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
         podman images
         ```
 
-        ```text hideClipboard
+        ```text hideClipboard title="Output"
         REPOSITORY                                                           TAG        IMAGE ID       CREATED       SIZE
         us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder   v4.6.23    2adff15eee2d   7 days ago    2.47 GB
         ```
@@ -143,11 +143,11 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
     the [Compatibility Matrix](../../comp-matrix-capi-builder.md) for a list of supported Kubernetes versions and their
     corresponding dependencies.
 
-    The `imageconfig` file is the file used to build the base CAPI image for your cluster, which you can alter to fit
+    The `imageconfig` file is the file used to personalize the base CAPI image for your cluster, which you can alter to fit
     your needs. This includes specifying the OS type, Kubernetes version, whether the image should be FIPS compliant,
     and more.
 
-    Use the example configuration below to build a RHEL 8 CAPI image. Replace `<rhel-subscription-email>` and
+    Use the example configuration below to configure a RHEL 8 CAPI image. Replace `<rhel-subscription-email>` and
     `<rhel-subscription-password>` with your RHEL subscription credentials. Use the SHA256 checksum of the RHEL ISO from
     step 5 of this guide for `<iso-checksum>`. Additionally, replace the VMware-related placeholders with the values
     from your VMware vSphere environment.
@@ -236,7 +236,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 
 8.  (Optional) You can add custom Bash scripts (`.sh` files) to run before or after the build process. This feature is
     available beginning with CAPI Image Builder version `4.6.23`. If any scripts are found in the relevant directories,
-    they are copied to the Ansible playbook. If you do not want to add custom scripts, skip this step.
+    they are copied to an Ansible playbook. If you do not want to add custom scripts, skip this step.
 
     <details>
 

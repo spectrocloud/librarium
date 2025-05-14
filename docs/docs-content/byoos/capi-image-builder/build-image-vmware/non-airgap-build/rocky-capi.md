@@ -35,7 +35,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
   - [Docker](https://docs.docker.com/engine/install/) or [Podman](https://podman.io/docs/installation)
   - [curl](https://curl.se/docs/install.html)
 
-- (Optional) Any custom Bash scripts (`.sh` files) that you want to execute when creating your RHEL image. Custom
+- (Optional) Any custom Bash scripts (`.sh` files) that you want to execute when creating your Rocky image. Custom
   scripts are supported beginning with CAPI Image Builder version `4.6.23`.
 
 ## Build Custom Image
@@ -58,7 +58,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
         docker images
         ```
 
-        ```text hideClipboard
+        ```text hideClipboard title="Output"
         REPOSITORY                                                           TAG        IMAGE ID       CREATED       SIZE
         us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder   v4.6.23    2adff15eee2d   7 days ago    2.47 GB
         ```
@@ -77,7 +77,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
         podman images
         ```
 
-        ```text hideClipboard
+        ```text hideClipboard title="Output"
         REPOSITORY                                                           TAG        IMAGE ID       CREATED       SIZE
         us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder   v4.6.23    2adff15eee2d   7 days ago    2.47 GB
         ```
@@ -134,11 +134,11 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
     the [Compatibility Matrix](../../comp-matrix-capi-builder.md) for a list of supported Kubernetes versions and their
     corresponding dependencies.
 
-    The `imageconfig` file is the file used to build the base CAPI image for your cluster, which you can alter to fit
+    The `imageconfig` file is the file used to personalize the base CAPI image for your cluster, which you can alter to fit
     your needs. This includes specifying the OS type, Kubernetes version, whether the image should be FIPS compliant,
     and more.
 
-    Use the example configuration below to build a Rocky 8 CAPI image. Use the SHA256 checksum of the Rocky ISO from
+    Use the example configuration below to configure a Rocky 8 CAPI image. Use the SHA256 checksum of the Rocky ISO from
     step 5 of this guide for `<iso-checksum>`. Additionally, replace the VMware-related placeholders with the values
     from your VMware vSphere environment.
 
@@ -226,7 +226,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 
 8.  (Optional) You can add custom Bash scripts (`.sh` files) to run before or after the build process. This feature is
     available beginning with CAPI Image Builder version `4.6.23`. If any scripts are found in the relevant directories,
-    they are copied to the Ansible playbook. If you do not want to add custom scripts, skip this step.
+    they are copied to an Ansible playbook. If you do not want to add custom scripts, skip this step.
 
     <details>
 
@@ -254,7 +254,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 9.  Issue the command below to start the CAPI Image Builder container and assign the container ID to the `BUILD_ID`
     variable. The tool will create and configure a VM with Dynamic Host Configuration Protocol (DHCP) in your VMware
     vSphere environment using the `image_name` defined in `imageconfig`. For this guide, the VM is named `rocky-8`. The
-    tool will then generate a RHEL 8 CAPI image from the VM and save it to the `output` directory.
+    tool will then generate a Rocky 8 CAPI image from the VM and save it to the `output` directory.
 
         Before issuing the following command, replace `ubuntu` with your Linux username and `4.6.23` with your CAPI Image
         Builder version.
@@ -356,7 +356,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 
         :::
 
-11. Once the build is complete, the RHEL 8 CAPI image will be downloaded to the `output` directory as the `image_name`
+11. Once the build is complete, the Rocky 8 CAPI image will be downloaded to the `output` directory as the `image_name`
     specified in the `imageconfig` file. For this example, the image is `rocky-8`. Once the image is created, the VM is
     deleted from VMware vSphere.
 
@@ -405,7 +405,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 
     :::
 
-19. Once the VM is created, right-click it and select **Convert to Template**. This will convert the VM into a RHEL 8
+19. Once the VM is created, right-click it and select **Convert to Template**. This will convert the VM into a Rocky 8
     image template that you can reference during the cluster profile creation.
 
 ### Validate
@@ -439,7 +439,7 @@ profile and deploy a VMware host cluster.
 
     <!-- prettier-ignore-start -->
 
-   Reference the custom RHEL 8 image template path in your VMware vSphere environment when populating the pack details
+   Reference the custom Rocky 8 image template path in your VMware vSphere environment when populating the pack details
    for the <VersionedLink text="BYOOS" url="/integrations/packs/?pack=generic-byoi" /> layer.
 
     <!-- prettier-ignore-end -->

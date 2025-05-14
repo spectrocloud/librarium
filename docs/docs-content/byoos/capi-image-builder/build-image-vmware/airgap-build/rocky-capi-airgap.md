@@ -12,7 +12,7 @@ tags: ["operating system", "byoos", "profiles", "pxk", "vmware", "airgap"]
 
 <!-- prettier-ignore-start -->
 This guide teaches you how to use the [CAPI Image Builder](../../capi-image-builder.md) tool in an airgapped environment to create a custom
-[Rocky Linux](https://rockylinux.org/) image with <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> for clusters that target VMware vSphere and use the image to create a cluster profile.
+[Rocky Linux](https://rockylinux.org/) image with <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> for VMware vSphere and use the image to create a cluster profile.
 
 <!-- prettier-ignore-end -->
 
@@ -49,7 +49,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
     for instructions on how to download the binary. Additionally, check the supported Kubernetes versions in the
     [Compatibility Matrix](../../comp-matrix-capi-builder.md).
 
-  - (Optional) Any custom Bash scripts (`.sh` files) that you want to execute when creating your RHEL image. Custom
+  - (Optional) Any custom Bash scripts (`.sh` files) that you want to execute when creating your Rocky image. Custom
     scripts are supported beginning with CAPI Image Builder version `4.6.23`.
 
 ## Build Custom Image
@@ -122,7 +122,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
     the [Compatibility Matrix](../../comp-matrix-capi-builder.md) for a list of supported Kubernetes versions and their
     corresponding dependencies.
 
-    The `imageconfig` file is the file used to build the base CAPI image for your cluster, which you can alter to fit
+    The `imageconfig` file is the file used to personalize the base CAPI image for your cluster, which you can alter to fit
     your needs. This includes specifying the OS type, Kubernetes version, whether the image should be FIPS compliant,
     and more.
 
@@ -216,7 +216,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 
 10. (Optional) You can add custom Bash scripts (`.sh` files) to run before or after the build process. This feature is
     available beginning with CAPI Image Builder version `4.6.23`. If any scripts are found in the relevant directories,
-    they are copied to the Ansible playbook.
+    they are copied to an Ansible playbook.
 
     Move any scripts that you want to be executed _before_ the build process to the `output/custom_scripts/pre`
     directory. Move any scripts that you want to be executed _after_ the build process to the
@@ -524,7 +524,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 
     :::
 
-28. Once the VM is created, right-click it and select **Convert to Template**. This will convert the VM into a RHEL 8
+28. Once the VM is created, right-click it and select **Convert to Template**. This will convert the VM into a Rocky 8
     image template that you can reference during the cluster profile creation.
 
 ### Validate
@@ -559,7 +559,7 @@ profile and deploy a VMware vSphere host cluster.
 
     <!-- prettier-ignore-start -->
 
-   Reference the custom RHEL 8 image template path in your VMware vSphere environment when populating the pack details
+   Reference the custom Rocky 8 image template path in your VMware vSphere environment when populating the pack details
    for the <VersionedLink text="BYOOS" url="/integrations/packs/?pack=generic-byoi" /> layer.
 
     <!-- prettier-ignore-end -->
