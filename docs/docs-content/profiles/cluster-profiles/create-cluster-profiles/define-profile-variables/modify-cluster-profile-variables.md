@@ -147,12 +147,13 @@ the appropriate workflow based on the changes you make to your cluster.
    profile variable values must match the schema defined in the cluster profile variable.
 
    Each profile must have a **Reviewed** status, indicated by a green check mark, before you can apply your changes.
-   Hovering over each icon between **Running configuration** and **New configuration** explains what is being done
-   for each variable. In the below example, we made the following changes:
+   Hovering over each icon between **Running configuration** and **New configuration** explains what is being done for
+   each variable. In the below example, we made the following changes:
 
    - Changed the Kubecost frontend `imagePullPolicy` from `Always` to `IfNotPresent`.
 
-   - Changed the default value of the Hello Universe `namespace` variable. The value assigned for profile version 1.1.0 is the same as the value for version 1.0.0 and is not overwritten unless we select **Use new default**. 
+   - Changed the default value of the Hello Universe `namespace` variable. The value assigned for profile version 1.1.0
+     is the same as the value for version 1.0.0 and is not overwritten unless we select **Use new default**.
 
    - Added a new profile variable for Grafana.
 
