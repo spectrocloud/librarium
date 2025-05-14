@@ -55,11 +55,18 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 ## Build Custom Image
 
 1.  Open a terminal window and SSH into the airgap support VM using the command below. Replace `<path-to-private-key>`
-    with the path to the private SSH key, `<vm-username>` with your airgap support VM username, and `<airgap-vm-hostname>` with the IP address or Fully Qualified Domain Name (FQDN) of the airgap support VM (for example, `example-vm.palette.dev`).
-    
+    with the path to the private SSH key, `<vm-username>` with your airgap support VM username, and
+    `<airgap-vm-hostname>` with the IP address or Fully Qualified Domain Name (FQDN) of the airgap support VM (for
+    example, `example-vm.palette.dev`).
+
     :::info
-    
-    Whether you use the IP address or FQDN depends on the hostname used when setting up your airgap support VM. If you used an [existing RHEL VM](../../../../enterprise-version/install-palette/install-on-vmware/airgap-install/environment-setup/env-setup-vm.md) to set up your VM, this is always the FQDN; if you used an [OVA](../../../../enterprise-version/install-palette/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions.md), it depends on the hostname used when invoking the command `/bin/airgap-setup.sh <airgap-vm-hostname>`. 
+
+    Whether you use the IP address or FQDN depends on the hostname used when setting up your airgap support VM. If you
+    used an
+    [existing RHEL VM](../../../../enterprise-version/install-palette/install-on-vmware/airgap-install/environment-setup/env-setup-vm.md)
+    to set up your VM, this is always the FQDN; if you used an
+    [OVA](../../../../enterprise-version/install-palette/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions.md),
+    it depends on the hostname used when invoking the command `/bin/airgap-setup.sh <airgap-vm-hostname>`.
 
     :::
 
@@ -234,7 +241,8 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
     chmod +x custom_scripts/pre/sample-script.sh
     ```
 
-11. Load the CAPI Image Builder container image with the command below. Replace `<tag>` with your CAPI Image Builder version.
+11. Load the CAPI Image Builder container image with the command below. Replace `<tag>` with your CAPI Image Builder
+    version.
 
         <Tabs>
         <TabItem value="Docker" label="Docker">
@@ -479,14 +487,17 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
         packer-manifest.json  rockylinux-8-kube-v1.30.5.mf  rockylinux-8-kube-v1.30.5.ovf  rocky-8-disk-0.vmdk  rockylinux-8-kube-v1.30.5.ova  rocky-8.ovf rockylinux-8-kube-v1.30.5.ova.sha256
         ```
 
-20. Copy the `rockylinux-8-kube-v1.30.5.ova` file to the home directory of the airgap support VM. Replace `<vm-username>` with your airgap support VM username.
+20. Copy the `rockylinux-8-kube-v1.30.5.ova` file to the home directory of the airgap support VM. Replace
+    `<vm-username>` with your airgap support VM username.
 
     ```shell
     cp /root/output/rocky-8/rockylinux-8-kube-v1.30.5.ova /home/<vm-username>/
     ```
 
     Next, open a new terminal window on your local machine and use the `scp` command to copy the
-    `rockylinux-8-kube-v1.30.5.ova` file. Replace `<path-to-private-key>` with the path to the private SSH key, `<vm-username>` with your airgap support VM username, and `<airgap-vm-hostname>` with the IP address or hostname of the airgap support VM.
+    `rockylinux-8-kube-v1.30.5.ova` file. Replace `<path-to-private-key>` with the path to the private SSH key,
+    `<vm-username>` with your airgap support VM username, and `<airgap-vm-hostname>` with the IP address or hostname of
+    the airgap support VM.
 
     ```shell
     scp -i <path-to-private-key> <vm-username>@<airgap-vm-hostname>:/home/<vm-username>/rockylinux-8-kube-v1.30.5.ova .

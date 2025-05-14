@@ -44,7 +44,9 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 
 ## Build Custom Image
 
-1.  Open up a terminal session on your Linux machine and download the CAPI Image Builder, replacing `<tag>` with your desired CAPI Image Builder version. This guide uses version 4.6.23 as an example. Refer to the CAPI Image Builder [Downloads](../../../../downloads/capi-image-builder.md) page for the latest version.
+1.  Open up a terminal session on your Linux machine and download the CAPI Image Builder, replacing `<tag>` with your
+    desired CAPI Image Builder version. This guide uses version 4.6.23 as an example. Refer to the CAPI Image Builder
+    [Downloads](../../../../downloads/capi-image-builder.md) page for the latest version.
 
     <Tabs>
 
@@ -88,7 +90,8 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 
     </Tabs>
 
-2.  Create an `output` directory to store the image files and set the required permissions. Replace `<username>` with your Linux username.
+2.  Create an `output` directory to store the image files and set the required permissions. Replace `<username>` with
+    your Linux username.
 
     ```shell
     mkdir /home/<username>/output
