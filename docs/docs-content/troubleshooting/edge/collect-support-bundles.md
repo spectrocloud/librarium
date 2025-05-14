@@ -14,7 +14,14 @@ support team, such as Edge hosts failing to register, pod failures, or provision
 troubleshoot these issues more effectively, follow this guide to collect support bundles and attach them to your support
 ticket.
 
+## Limitations
+- Only the `support-bundle-edge.sh` script is embedded and can run on hosts without an internet connection. The `support-bundle-infra.sh` script is not embedded and requires internet access.
+
 ## Prerequisites
+
+<Tabs group="method">
+
+<TabItem value="Downloaded Scripts">
 
 - The host you need to troubleshoot has an active internet connection to access the troubleshooting script.
 - You have connected to the host using SSH, direct terminal access, or another connection method.
@@ -23,6 +30,18 @@ ticket.
   - `systemctl`
 - (Optional) The host has a valid `kubeconfig` file configured and `kubectl` installed (required for the full output of
   `support-bundle-infra.sh`).
+
+</TabItem>
+
+<TabItem value="Embedded Script">
+- You have connected to the host using SSH, direct terminal access, or another connection method.
+- The following tools are available on the host:
+  - `journalctl`
+  - `systemctl`
+
+</TabItem>
+
+</Tabs>
 
 ## Run the Troubleshooting Scripts
 
