@@ -4,7 +4,7 @@ title: "Edge"
 description: "Troubleshooting steps for common Edge scenarios."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 40
+sidebar_position: 0
 tags: ["edge", "troubleshooting"]
 ---
 
@@ -56,7 +56,7 @@ adjust the values of related environment variables in the KubeVip DaemonSet with
 ### Debug Steps
 
 1. Ensure you can access the cluster using kubectl. For more information, refer to
-   [Access Cluster with CLI](../clusters/cluster-management/palette-webctl.md).
+   [Access Cluster with CLI](../../clusters/cluster-management/palette-webctl.md).
 
 2. Issue the following command:
 
@@ -88,7 +88,7 @@ issues or not being available. Use the following steps to troubleshoot and resol
 ### Debug Steps
 
 1. Ensure you can access the Kubernetes cluster using kubectl. For more information, refer to
-   [Access Cluster with CLI](../clusters/cluster-management/palette-webctl.md).
+   [Access Cluster with CLI](../../clusters/cluster-management/palette-webctl.md).
 
 2. Open up a terminal session and issue the following command to check the status of the
    _palette-lite-controller-manager_ pods.
@@ -180,9 +180,9 @@ prevents the nameserver from being configured, which will result in cluster depl
 ## Scenario - Degraded Performance on Disk Drives
 
 If you are experiencing degraded performance on disk drives, such as Solid-State Drive or Nonvolatile Memory Express
-drives, and you have [Trusted Boot](../clusters/edge/trusted-boot/trusted-boot.md) enabled. The degraded performance may
-be caused by TRIM operations not being enabled on the drives. TRIM allows the OS to notify the drive which data blocks
-are no longer in use and can be erased internally. To enable TRIM operations, use the following steps.
+drives, and you have [Trusted Boot](../../clusters/edge/trusted-boot/trusted-boot.md) enabled. The degraded performance
+may be caused by TRIM operations not being enabled on the drives. TRIM allows the OS to notify the drive which data
+blocks are no longer in use and can be erased internally. To enable TRIM operations, use the following steps.
 
 ### Debug Steps
 
@@ -231,7 +231,7 @@ are no longer in use and can be erased internally. To enable TRIM operations, us
 
 6. Click on **Confirm Updates** to save the changes.
 
-7. Use the updated profile to create a [new Edge cluster](../clusters/edge/site-deployment/cluster-deployment.md) or
+7. Use the updated profile to create a [new Edge cluster](../../clusters/edge/site-deployment/cluster-deployment.md) or
    update an existing Edge cluster.
 
 ## Scenario - Clusters with Cilium and RKE2 Experiences Kubernetes Upgrade Failure
@@ -244,7 +244,8 @@ the Cilium DaemonSet.
 ### Debug Steps
 
 1. Connect to your cluster using kubectl. For more information, refer to
-   [Access Cluster with kubectl](../clusters/cluster-management/palette-webctl.md).
+   [Access Cluster with kubectl](../../clusters/cluster-management/palette-webctl.md).
+
 2. Issue the following command from the terminal edit the Cilium DaemonSet.
    ```bash
    kubectl edit ds cilium --namespace kube-system
