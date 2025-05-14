@@ -18,7 +18,8 @@ that you can reuse to create new configuration files.
 
 ## Deploy Appliance Studio
 
-You can deploy Appliance Studio locally either through Docker or Podman.
+You can deploy Appliance Studio locally either through Docker or Podman. Both AMD64 and ARM64 processor architectures
+are supported.
 
 ### Prerequisites
 
@@ -111,8 +112,8 @@ You can deploy Appliance Studio locally either through Docker or Podman.
    `deploy/appliance-studio-data` directory as the persistent data directory. You may change this to point to any other
    directory by modifying the `services.server.volumes` field.
 
-   Change the path before the `:` sign to point to the directory you want to mount. You can use an absolute path or
-   a relative path. If you use a relative path, the path is relative to the `docker-compose.yaml` file, not the directory
+   Change the path before the `:` sign to point to the directory you want to mount. You can use an absolute path or a
+   relative path. If you use a relative path, the path is relative to the `docker-compose.yaml` file, not the directory
    from which you issue the `docker compose up` command.
 
    ```yaml {11} title="Example" hideClipboard
@@ -150,8 +151,8 @@ You can deploy Appliance Studio locally either through Docker or Podman.
    `deploy/appliance-studio-data` directory as the persistent data directory. You may change this to point to any other
    directory by modifying the `services.server.volumes` field.
 
-   Change the path before the `:` sign to point to the directory you want to mount. You can use an absolute path or
-   a relative path. If you use a relative path, the path is relative to the `docker-compose.yaml` file, not the directory
+   Change the path before the `:` sign to point to the directory you want to mount. You can use an absolute path or a
+   relative path. If you use a relative path, the path is relative to the `docker-compose.yaml` file, not the directory
    from which you issue the `podman compose up` command.
 
    ```yaml {11} title="Example" hideClipboard
@@ -187,7 +188,9 @@ You can deploy Appliance Studio locally either through Docker or Podman.
 
 ### Validate
 
-1. Visit port 8443 of your machine to access the Appliance Studio UI. You can do this by opening a web browser and entering the URL of `http://localhost:8443`.
+1. Visit port 8443 of your machine to access the Appliance Studio UI. For example, if you are accessing Appliance Studio
+   on the same machine where it is deployed, you can do this by opening a web browser and entering the URL of
+   `http://localhost:8443`.
 
 2. Confirm that Appliance Studio is accessible.
 
