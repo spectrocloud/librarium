@@ -147,7 +147,7 @@ the appropriate workflow based on the changes you make to your cluster.
    profile variable values must match the schema defined in the cluster profile variable.
 
    Each profile must have a **Reviewed** status, indicated by a green check mark, before you can apply your changes.
-   Hovering over each icon between **Running configuration** and **New configuration** will explain what is being done
+   Hovering over each icon between **Running configuration** and **New configuration** explains what is being done
    for each variable. In the following example, we changed:
 
    - the Kubecost frontend `imagePullPolicy` from `Always` to `IfNotPresent`
