@@ -152,8 +152,6 @@ require a local Harbor registry. Built-in registries must be configured using ei
     ```
 
 12. Issue the following command to create the content bundle. Replace the placeholder values with your actual values.
-    Refer to the [content build](../../../../automation/palette-cli/commands/content.md#build) CLI command page for a
-    complete list of available flags.
 
     ```shell
     palette content build --arch <bundle-architecture> \
@@ -166,6 +164,15 @@ require a local Harbor registry. Built-in registries must be configured using ei
     The result is a `.tar.zst` content bundle that you can use to preload into your installer. For more information
     about how to use content bundles, refer to [Build Installer ISO](./build-installer-iso.md) or
     [Upload Content Bundle through Local UI](../../local-ui/cluster-management/upload-content-bundle.md).
+
+    :::tip
+
+    You can use the `--existing-bundles` flag with the `build` command to include existing `.tar.zst` bundle archives as
+    part of the content bundle build. This avoids the need to redownload images, charts, and raw files that are already
+    present in local bundles. Refer to the [content build](../../../../automation/palette-cli/commands/content.md#build)
+    CLI command page for a complete list of available flags and examples.
+
+    :::
 
 13. (Optional) You can download the cluster definition and the content bundle in a single step. A cluster definition
     contains one or more cluster profiles, including the profile variables used in the profiles. In local Edge
@@ -405,10 +412,10 @@ require a local Harbor registry. Built-in registries must be configured using ei
     ```
 
     | Flag                         | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-    | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --- |
+    | ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
     | `--api-key`                  | Your Palette API key.                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
     | `--cluster-profile-ids`      | Comma-separated list of cluster profile IDs to download content for. Ensure that between all the profiles you include in the content bundle, only one infrastructure layer exists. For example, you can have one infrastructure profile and many add-on files, or one full profile and many add-on files, but you cannot have multiple infrastructure and full-on profiles. For more information about the types of profiles, refer to [Cluster Profile](../../../../profiles/profiles.md). |
-    | `--cred-file-path`           | Path to the JSON file storing registry credentials if you are using a private registry.                                                                                                                                                                                                                                                                                                                                                                                                     |     |
+    | `--cred-file-path`           | Path to the JSON file storing registry credentials if you are using a private registry.                                                                                                                                                                                                                                                                                                                                                                                                     |
     | `--include-core-images-only` | Whether to include images for the Palette agent that are necessary for cluster creation only. By default, content bundles include images to support both cluster creation and cluster management. In the case of installations of locally managed Edge hosts, we recommend using this option to reduce the size of the content bundle, as Local UI currently does not offer native backup and support features.                                                                             |
     | `--outfile`                  | Name of your content bundle. The final file name should have the following pattern: `core-<bundle-name>-random-string`.                                                                                                                                                                                                                                                                                                                                                                     |
     | `--palette-endpoint`         | API endpoint for your Palette instance.                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
