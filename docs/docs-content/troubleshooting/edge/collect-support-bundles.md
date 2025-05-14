@@ -23,7 +23,7 @@ ticket.
 
 ## Prerequisites
 
-<Tabs group="method">
+<Tabs groupId="method">
 
 <TabItem value="Downloaded Scripts">
 
@@ -50,7 +50,7 @@ ticket.
 
 ## Run the Troubleshooting Scripts
 
-<Tabs group="method">
+<Tabs groupId="method">
 
 <TabItem value="Downloaded Scripts">
 
