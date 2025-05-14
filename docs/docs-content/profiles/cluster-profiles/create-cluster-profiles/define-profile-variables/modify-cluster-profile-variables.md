@@ -157,7 +157,7 @@ the appropriate workflow based on the changes you make to your cluster.
 
    - Added a new profile variable for Grafana.
 
-   ![Reviewing profile variable changes using the Change Summary Process](/profiles_cluster-profiles_create-cluster-profiles_define-profile-variables_modify-cluster-profile-variable-review-update-changes.webp)
+   ![Reviewing profile variable changes using the Change Summary Process](/profiles_cluster-profiles_create-cluster-profiles_define-profile-variables_modify-cluster-profile-variable-review-update-changes-updated.webp)
 
    :::tip
 
@@ -200,7 +200,7 @@ the appropriate workflow based on the changes you make to your cluster.
    variable. If you are overwriting the default value, you can revert to the original value by selecting **Use
    Default**. In the example below, we changed the Kubecost frontend `imagePullPolicy` from `Always` to `IfNotPresent`.
 
-   ![Overwriting existing cluster profile variables without modifying cluster profile](/profiles_cluster-profiles_create-cluster-profiles_define-profile-variables_modify-cluster-profile-variable-override.webp)
+   ![Overwriting existing cluster profile variables without modifying cluster profile](/profiles_cluster-profiles_create-cluster-profiles_define-profile-variables_modify-cluster-profile-variable-override-updated.webp)
 
    :::tip
 
