@@ -43,9 +43,15 @@ both files with zero risk of syntax errors. We recommend using this tool for fil
 and `user-data` are plain text files, you can also manually create and edit these files once you are familiar with the
 parameters.
 
+## Limitations
+
+- Appliance Studio validates the schema of your `.arg` file and `user-data`, but it does not validate the value in each
+  individual fields. Ensure that you input a valid value for each field to to avoid creating invalid `.arg` and
+  `user-data` files.
+
 ## Prerequisites
 
-<Tabs group="method">
+<Tabs groupId="method">
 
 <TabItem value="Appliance Studio">
 
@@ -64,7 +70,7 @@ parameters.
 
 ## Procedure
 
-<Tabs group="method">
+<Tabs groupId="method">
 
 <TabItem value="Appliance Studio">
 
