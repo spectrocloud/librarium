@@ -4,7 +4,7 @@ title: "Edge"
 description: "Troubleshooting steps for common Edge scenarios."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 40
+sidebar_position: 0
 tags: ["edge", "troubleshooting"]
 ---
 
@@ -56,7 +56,7 @@ adjust the values of related environment variables in the KubeVip DaemonSet with
 ### Debug Steps
 
 1. Ensure you can access the cluster using kubectl. For more information, refer to
-   [Access Cluster with CLI](../clusters/cluster-management/palette-webctl.md).
+   [Access Cluster with CLI](../../clusters/cluster-management/palette-webctl.md).
 
 2. Issue the following command:
 
@@ -88,7 +88,7 @@ issues or not being available. Use the following steps to troubleshoot and resol
 ### Debug Steps
 
 1. Ensure you can access the Kubernetes cluster using kubectl. For more information, refer to
-   [Access Cluster with CLI](../clusters/cluster-management/palette-webctl.md).
+   [Access Cluster with CLI](../../clusters/cluster-management/palette-webctl.md).
 
 2. Open up a terminal session and issue the following command to check the status of the
    _palette-lite-controller-manager_ pods.
@@ -187,7 +187,7 @@ the Cilium DaemonSet.
 ### Debug Steps
 
 1. Connect to your cluster using kubectl. For more information, refer to
-   [Access Cluster with kubectl](../clusters/cluster-management/palette-webctl.md).
+   [Access Cluster with kubectl](../../clusters/cluster-management/palette-webctl.md).
 2. Issue the following command from the terminal edit the Cilium DaemonSet.
    ```bash
    kubectl edit ds cilium --namespace kube-system

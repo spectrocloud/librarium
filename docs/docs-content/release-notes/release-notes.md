@@ -261,7 +261,7 @@ the following sections for a complete list of features, improvements, and known 
 - During the cluster provisioning process of new edge clusters, the palette webhook pods may not always deploy
   successfully, causing the cluster to be stuck in the provisioning phase. This issue does not impact deployed clusters.
   Review the
-  [Palette Webhook Pods Fail to Start](../troubleshooting/edge.md#scenario---palette-webhook-pods-fail-to-start)
+  [Palette Webhook Pods Fail to Start](../troubleshooting/edge/edge.md#scenario---palette-webhook-pods-fail-to-start)
   troubleshooting guide for resolution steps.
 
 ### Virtual Machine Orchestrator (VMO)
