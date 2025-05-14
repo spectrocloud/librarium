@@ -209,7 +209,7 @@ Kubernetes data accessible locally on that host. Follow the steps below on every
 
 ## Validate
 
-<Tabs group="method">
+<Tabs groupId="method">
 
 <TabItem value="Downloaded Scripts">
 
