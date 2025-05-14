@@ -103,9 +103,10 @@ Kubernetes data accessible locally on that host. Follow the steps below on every
 
 2.  Download the `support-bundle-edge.sh` script and run it as a user with root privileges.
 
-    ````bash
+    ```bash
     curl --remote-name https://software.spectrocloud.com/scripts/support-bundle-edge.sh
-    sudo bash support-bundle-edge.sh   ```
+    sudo bash support-bundle-edge.sh
+    ```
 
     The table below contains the optional flags you can use when running the script.
 
