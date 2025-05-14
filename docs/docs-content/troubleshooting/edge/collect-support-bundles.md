@@ -16,8 +16,10 @@ ticket.
 
 ## Limitations
 
-- Only the `support-bundle-edge.sh` script is embedded and can run on hosts without an internet connection. The `support-bundle-infra.sh` script is not embedded and requires internet access.
-- The embedded `support-bundle-edge.sh` script does not update automatically. To use the latest version, download and run the script manually.
+- Only the `support-bundle-edge.sh` script is embedded and can run on hosts without an internet connection. The
+  `support-bundle-infra.sh` script is not embedded and requires internet access.
+- The embedded `support-bundle-edge.sh` script does not update automatically. To use the latest version, download and
+  run the script manually.
 
 ## Prerequisites
 
@@ -100,7 +102,7 @@ Kubernetes data accessible locally on that host. Follow the steps below on every
 
 2. Download the `support-bundle-edge.sh` script and run it as a user with root privileges.
 
-   ```bash
+   ````bash
    curl --remote-name https://software.spectrocloud.com/scripts/support-bundle-edge.sh
    sudo bash support-bundle-edge.sh   ```
 
@@ -123,7 +125,7 @@ Kubernetes data accessible locally on that host. Follow the steps below on every
 
    ```bash
    Logs are archived in /opt/spectrocloud/logs/edge-e965384209c2d45078a29480e90bd275-2025-05-13_16_58_20.tar.gz
-   ```
+   ````
 
    :::info
 
@@ -139,7 +141,8 @@ Kubernetes data accessible locally on that host. Follow the steps below on every
    ```bash
    scp kairos@10.10.150.150:/opt/spectrocloud/logs/edge-e965384209c2d45078a29480e90bd275-2025-05-13_16_58_20.tar.gz ~/Downloads/
    ```
-</TabItem>
+
+   </TabItem>
 <TabItem value="Embedded Script">
 
 ### Run the Script to Collect Edge Host Logs
@@ -195,6 +198,7 @@ Kubernetes data accessible locally on that host. Follow the steps below on every
 
    ```bash
    scp kairos@10.10.150.150:/opt/spectrocloud/logs/edge-e965384209c2d45078a29480e90bd275-2025-05-13_16_58_20.tar.gz ~/Downloads/
+   ```
 
 </TabItem>
 
