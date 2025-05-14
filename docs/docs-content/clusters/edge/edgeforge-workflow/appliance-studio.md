@@ -188,9 +188,8 @@ are supported.
 
 ### Validate
 
-1. Visit port 8443 of your machine to access the Appliance Studio UI. For example, if you are accessing Appliance Studio
-   on the same machine where it is deployed, you can do this by opening a web browser and entering the URL of
-   `http://localhost:8443`.
+1. Visit port 8443 of your machine to access the Appliance Studio UI. You can do this by opening a web browser and
+   entering the URL of `http://localhost:8443`.
 
 2. Confirm that Appliance Studio is accessible.
 

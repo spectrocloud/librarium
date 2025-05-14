@@ -41,7 +41,7 @@ configuration parameters you can use in the configuration user data.
 The [Appliance Studio](./appliance-studio.md) is a lightweight Graphic User Interface (GUI) that allows you to design
 both files with zero risk of syntax errors. We recommend using this tool for file creation. However, since both `.arg`
 and `user-data` are plain text files, you can also manually create and edit these files once you are familiar with the
-parameters. This guide provides instructions for both methods.
+parameters.
 
 ## Prerequisites
 
@@ -83,9 +83,6 @@ parameters. This guide provides instructions for both methods.
 
 4. When you are done, click **Confirm & Save**. Give your new configuration a name and optional tags that will help you
    identify it.
-
-   Once you save a `user-data` file, you can make edits to it at any time. To make edits, click on the file entry and
-   the form will appear for you to make edits.
 
 5. After you save the file, it will appear under **Argument files**. Hover over the file to reveal the three-dot menu.
    Click on it and choose **Download** to download the file.
