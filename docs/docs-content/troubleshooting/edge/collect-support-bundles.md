@@ -142,7 +142,7 @@ Kubernetes data accessible locally on that host. Follow the steps below on every
    scp kairos@10.10.150.150:/opt/spectrocloud/logs/edge-e965384209c2d45078a29480e90bd275-2025-05-13_16_58_20.tar.gz ~/Downloads/
    ```
 
-   </TabItem>
+      </TabItem>
 <TabItem value="Embedded Script">
 
 ### Run the Script to Collect Edge Host Logs
