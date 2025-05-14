@@ -25,6 +25,10 @@ function generateRevisionHistory(revisions) {
     return acc;
   }, []);
 
+  if (rows.length === 0) {
+    return "No revisions available.";
+  }
+
   return `${headerRow}\n${separatorRow}\n${rows.join("\n")}`;
 }
 
@@ -51,21 +55,8 @@ function getItemDescription(revisedField, revisedFrom, revisedTo) {
       itemDescription = getSeverityDescription(revisedFrom, revisedTo);
       break;
 
-    case "spec.impact.impactedVersions":
-      itemDescription = getImpactedVersionsDescription(revisedFrom, revisedTo);
-      break;
-
     case "status.status":
       itemDescription = revisedFrom !== revisedTo ? `Status changed from ${revisedFrom} to ${revisedTo}` : "";
-      break;
-
-    case "spec.impact.isImpacting":
-      itemDescription =
-        revisedFrom === "false" && revisedTo === "true"
-          ? "Advisory is now impacting."
-          : revisedFrom === "true" && revisedTo === "false"
-            ? "Advisory is no longer impacting."
-            : "";
       break;
 
     default:

@@ -5,7 +5,6 @@ function generateMarkdownTable(cveImpactMap) {
     throw new Error("Invalid input: cveImpactMap must be an object.");
   }
 
-  // Extract impact data and ensure consistency
   const impactData = {
     "Palette Enterprise": cveImpactMap.palette,
     "Palette Enterprise Airgap": cveImpactMap.paletteAirgap,
@@ -13,13 +12,11 @@ function generateMarkdownTable(cveImpactMap) {
     "VerteX Airgap": cveImpactMap.vertexAirgap,
   };
 
-  // Check if all products are not impacted
   const allProductsFalse = Object.values(impactData).every((product) => product.impacts === false);
   if (allProductsFalse) {
     return "Investigation is ongoing to determine how this vulnerability affects our products.";
   }
 
-  // Check for any product impacted but no versions provided
   const anyProductTrueNoVersions = Object.values(impactData).some(
     (product) => product.impacts && (!product.versions || product.versions.length === 0)
   );
@@ -27,38 +24,80 @@ function generateMarkdownTable(cveImpactMap) {
     throw new Error("Error: Data inconsistency - Products impacted but no versions provided.");
   }
 
-  // Collect all unique versions across all products
-  const allVersions = Object.values(impactData)
-    .flatMap((product) => product.versions || [])
-    .filter((version) => semver.valid(version));
-  const uniqueVersions = Array.from(new Set(allVersions)).sort(semver.rcompare);
+  // Step 1: Gather impacted versions by product
+  const productVersions = {};
+  for (const [product, data] of Object.entries(impactData)) {
+    productVersions[product] = data.impacts ? (data.versions || []).filter((v) => semver.valid(v)) : [];
+  }
 
-  // Create the header row
+  // Step 2: Collect all impacted versions across all products
+  const allImpactedVersions = Object.values(productVersions).flat();
+  const groupedByMinor = {};
+
+  for (const version of allImpactedVersions) {
+    const parsed = semver.parse(version);
+    if (!parsed) continue;
+    const minorKey = `${parsed.major}.${parsed.minor}`;
+    if (!groupedByMinor[minorKey]) {
+      groupedByMinor[minorKey] = new Set();
+    }
+    groupedByMinor[minorKey].add(version);
+  }
+
+  // Step 3: Filter versions per minor key
+  const finalVersions = new Set();
+  for (const [minor, versions] of Object.entries(groupedByMinor)) {
+    const versionList = Array.from(versions);
+    if (versionList.length === 1) {
+      finalVersions.add(versionList[0]);
+    } else {
+      // Check which product each version belongs to
+      const versionProductMap = {};
+      for (const v of versionList) {
+        versionProductMap[v] = new Set();
+        for (const [product, versions] of Object.entries(productVersions)) {
+          if (versions.includes(v)) {
+            versionProductMap[v].add(product);
+          }
+        }
+      }
+
+      // Build a set of products for each version
+      const allProductSets = versionList.map((v) => Array.from(versionProductMap[v]).sort().join(","));
+
+      // Check if all versions share the same product set
+      const [firstSet, ...rest] = allProductSets;
+      const allSameProducts = rest.every((set) => set === firstSet);
+
+      if (allSameProducts) {
+        const max = versionList.sort(semver.rcompare)[0];
+        finalVersions.add(max);
+      } else {
+        for (const v of versionList) {
+          finalVersions.add(v);
+        }
+      }
+    }
+  }
+
+  const sortedVersions = Array.from(finalVersions).sort(semver.rcompare);
+
   const header = `| Version | Palette Enterprise | Palette Enterprise Airgap | VerteX | VerteX Airgap |\n`;
   const separator = `| - | -------- | -------- | -------- | -------- |\n`;
 
-  // Create rows for each version
-  const rows = uniqueVersions
+  const rows = sortedVersions
     .map((version) => {
       const row = [
         `| ${version}`,
-        impactData["Palette Enterprise"].impacts && impactData["Palette Enterprise"].versions.includes(version)
-          ? "⚠️ Impacted"
-          : "✅ No Impact",
-        impactData["Palette Enterprise Airgap"].impacts &&
-        impactData["Palette Enterprise Airgap"].versions.includes(version)
-          ? "⚠️ Impacted"
-          : "✅ No Impact",
-        impactData["VerteX"].impacts && impactData["VerteX"].versions.includes(version)
-          ? "⚠️ Impacted"
-          : "✅ No Impact",
-        impactData["VerteX Airgap"].impacts && impactData["VerteX Airgap"].versions.includes(version)
-          ? "⚠️ Impacted"
-          : "✅ No Impact",
+        productVersions["Palette Enterprise"].includes(version) ? "⚠️ Impacted" : "✅ No Impact",
+        productVersions["Palette Enterprise Airgap"].includes(version) ? "⚠️ Impacted" : "✅ No Impact",
+        productVersions["VerteX"].includes(version) ? "⚠️ Impacted" : "✅ No Impact",
+        productVersions["VerteX Airgap"].includes(version) ? "⚠️ Impacted" : "✅ No Impact",
       ].join(" | ");
       return row + " |";
     })
     .join("\n");
+
   return header + separator + rows;
 }
 
