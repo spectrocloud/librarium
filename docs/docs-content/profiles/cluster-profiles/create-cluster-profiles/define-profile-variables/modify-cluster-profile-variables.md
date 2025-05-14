@@ -155,7 +155,7 @@ the appropriate workflow based on the changes you make to your cluster.
    - changed the Default value of the Hello Universe `namespace` variable. The assigned value is remains the same from
      the Profile version 1.0.0 to 1.1.0.
 
-   - added a new profile variable for Grafana.
+   - Added a new profile variable for Grafana.
 
    ![Reviewing profile variable changes using the Change Summary Process](/profiles_cluster-profiles_create-cluster-profiles_define-profile-variables_modify-cluster-profile-variable-review-update-changes.webp)
 
