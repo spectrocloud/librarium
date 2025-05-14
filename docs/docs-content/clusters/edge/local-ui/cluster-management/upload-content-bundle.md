@@ -36,8 +36,8 @@ console.
 
 3. Under the upper-right user menu, Click **Actions** > **Upload Content**.
 
-4. Select your content bundle to upload it to your Edge host. You may select multiple content bundles and upload them in
-   batches. However, if you
+4. Select your content bundle to upload it to your Edge host. You may select multiple content bundles and perform a
+   batch upload. However, if you
    [embedded a public key in your Edge artifacts](../../edgeforge-workflow/palette-canvos/signed-content.md), you may
    only upload one bundle at a time.
 
