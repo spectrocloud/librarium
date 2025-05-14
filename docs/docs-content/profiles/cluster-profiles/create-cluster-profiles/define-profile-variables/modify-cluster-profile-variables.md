@@ -152,8 +152,7 @@ the appropriate workflow based on the changes you make to your cluster.
 
    - Changed the Kubecost frontend `imagePullPolicy` from `Always` to `IfNotPresent`.
 
-   - changed the Default value of the Hello Universe `namespace` variable. The assigned value is remains the same from
-     the Profile version 1.0.0 to 1.1.0.
+   - Changed the default value of the Hello Universe `namespace` variable. The value assigned for profile version 1.1.0 is the same as the value for version 1.0.0 and is not overwritten unless we select **Use new default**. 
 
    - Added a new profile variable for Grafana.
 
