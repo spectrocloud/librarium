@@ -19,7 +19,13 @@ You can customize the following user interface elements for {props.version} inst
 
 - Interface customization applies only to the tenant login screen, forgot password screen, and other {props.reference} tenant screens. Changes do not cascade to the system console.
 
-- Modifying the documentation URL changes the `docs.spectrocloud.com` domain for all documentation links throughout {props.reference}. To ensure the **Learn More** links in the UI function correctly, you must host your own documentation site based on Spectro Cloud's [librarium](https://github.com/spectrocloud/librarium) repository. Spectro Cloud does not manage or maintain downstream versions of its documentation.
+- Modifying the documentation URL changes the `docs.spectrocloud.com` domain for all documentation links throughout {props.reference}. To ensure the **Learn More** links in the UI function correctly, you must host your own documentation site based on Spectro Cloud's [librarium](https://github.com/spectrocloud/librarium) repository. We recommend using the librarium [image](http://ghcr.io/spectrocloud/librarium:nightly) to do so, which is updated daily. For more information, refer to our <VersionedLink text="Offline Documentation" url="/downloads/offline-docs" /> guide.
+
+    :::warning
+    
+    Spectro Cloud does not manage or maintain downstream versions of its documentation. Any changes made to the documentation are the responsibility of the user.
+
+    :::
 
 ## Prerequisites
 
@@ -65,7 +71,7 @@ You can customize the following user interface elements for {props.version} inst
     | **Login**             | **Login panel image** | Display or hide the {props.reference} image on the login and forgot password screens.  | 
     | | **Logo** | Change the logo on the login screen. The logo should have a maximum width of 180px and a maximum height of 67px. | 
     | | **Primary button color** | Change the color of the **Sign in** and **Reset Password** buttons, as well as the border color of the **Email**, **Password**, and **Sign in to your tenant** fields. | 
-    | | **Documentation URL** | Change the default domain of all documentation links throughout {props.reference}. Select the arrow beside the URL scheme to switch between `https://` and `http://`. If the URL is changed to a domain that is not based on Spectro Cloud's documentation, **Learn More** links within the UI will not function. Refer to the <PaletteVertexUrlMapper edition={props.edition} text="Limitations" url="/system-management/customize-interface/#limitations" /> section for more information. | 
+    | | **Documentation URL** | Change the default domain of all documentation links throughout {props.reference}. Select the arrow beside the URL protocol to switch between `https://` and `http://`. If the URL is changed to a domain that is not based on Spectro Cloud's documentation, **Learn More** links within the UI will not function. Refer to the <PaletteVertexUrlMapper edition={props.edition} text="Limitations" url="/system-management/customize-interface/#limitations" /> section for more information. | 
     | **Sidebar**           | **Logo** | Change the logo on the sidebar (expanded and minimized). The logo should have a maximum width of 180px and a maximum height of 67px. |
     | | **Sidebar background color** | Change the background color of the sidebar (expanded and minimized). | 
     | | **Show Spectro Cloud logo** | Display or hide the Spectro Cloud logo at the bottom of the sidebar (expanded). |
