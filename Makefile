@@ -39,7 +39,7 @@ initialize: ## Initialize the repository dependencies
 	@echo "initializing npm dependencies"
 	npm ci
 	touch .env
-	npx husky
+	npm run prepare
 	vale sync
 
 clean: clean-security ## Clean common artifacts
