@@ -25,7 +25,7 @@ are supported.
 
 - [Git](https://git-scm.com/downloads). You can confirm Git installation by issuing the `git --version` command.
 
-<Tabs group="method">
+<Tabs groupId="method">
 
 <TabItem value="Docker Compose">
 
@@ -60,7 +60,7 @@ are supported.
    cd deploy
    ```
 
-<Tabs group="method">
+<Tabs groupId="method">
 
 <!-- <TabItem value="Helm">
 
