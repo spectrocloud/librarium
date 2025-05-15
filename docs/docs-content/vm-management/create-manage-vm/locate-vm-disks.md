@@ -8,7 +8,8 @@ tags: ["vmo"]
 ---
 
 When managing Virtual Machines (VMs) using Virtual Machine Orchestrator (VMO), you may need to extend the disks on the
-VMs. When a VM has multiple disks of the same size, locating the disks on each VM can be difficult. Use this guide to help you locate disks on Linux and Windows VMs.
+VMs. When a VM has multiple disks of the same size, locating the disks on each VM can be difficult. Use this guide to
+help you locate disks on Linux and Windows VMs.
 
 ## Prerequisites
 
@@ -22,8 +23,8 @@ VMs. When a VM has multiple disks of the same size, locating the disks on each V
 
 <TabItem label="Linux" value="linux">
 
-1. Open a shell session on the VM. Refer to our [Virtctl](./advanced-topics/access-cluster-with-virtctl.md) guide
-   for help with accessing Linux VMs locally.
+1. Open a shell session on the VM. Refer to our [Virtctl](./advanced-topics/access-cluster-with-virtctl.md) guide for
+   help with accessing Linux VMs locally.
 
 2. Use the following `kubectl` command to locate the `virt-launcher` pod. This is the pod that contains the VM disks.
 
@@ -36,8 +37,8 @@ VMs. When a VM has multiple disks of the same size, locating the disks on each V
    my-vms       virt-launcher-vmname-9qz6n             3/3     Running            0          2h31m
    ```
 
-3. Open a shell session in the `virt-launcher` pod. Replace `<namespace>` with the namespace where the pod is located and
-   `<vm-name>` with the name of the `virt-launcher` pod.
+3. Open a shell session in the `virt-launcher` pod. Replace `<namespace>` with the namespace where the pod is located
+   and `<vm-name>` with the name of the `virt-launcher` pod.
 
    ```sh
    kubectl exec --stdin --tty --namespace <namespace> <vm-name> -- /bin/bash
@@ -79,8 +80,8 @@ VMs. When a VM has multiple disks of the same size, locating the disks on each V
    my-vms       virt-launcher-vmname-9qz6n             3/3     Running            0          2h31m
    ```
 
-3. Open a shell session in the `virt-launcher` pod. Replace `<namespace>` with the namespace where the pod is located and
-   `<vm-name>` with the name of the `virt-launcher` pod.
+3. Open a shell session in the `virt-launcher` pod. Replace `<namespace>` with the namespace where the pod is located
+   and `<vm-name>` with the name of the `virt-launcher` pod.
 
    ```sh
    kubectl exec --stdin --tty --namespace <namespace> <vm-name> -- /bin/bash
