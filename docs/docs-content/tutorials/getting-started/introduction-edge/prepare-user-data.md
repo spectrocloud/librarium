@@ -1,7 +1,9 @@
 ---
 sidebar_label: "Prepare User Data"
 title: "Prepare User Data for Edge Installation"
-description: "Learn how to create an user data file for your Edge deployment"
+description:
+  "Get started with Kubernetes at the edge. Learn how to create and validate a user data file to customize your Edge
+  installation."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 20
@@ -11,14 +13,12 @@ tags: ["getting-started", "tutorial", "edge"]
 This tutorial is the first in the [Edge Getting Started](./introduction-edge.md) series. You will learn how to create a
 [user data](../../../clusters/edge/edgeforge-workflow/prepare-user-data.md) file, which is a configuration file that
 allows you to customize the Edge installation process on the host. The user data file is embedded into the Edge
-Installer ISO during the [EdgeForge](../../../clusters/edge/edgeforge-workflow/edgeforge-workflow.md) process. When the
-Edge host boots from the Installer ISO, it applies the user data configuration to the host.
+installer ISO during the [EdgeForge](../../../clusters/edge/edgeforge-workflow/edgeforge-workflow.md) process. When the
+Edge host boots from the installer ISO, it applies the user data configuration to the host.
 
 After creating the user data file, you will proceed to the next tutorial in this series, where you will learn how to
 build the required Edge artifacts. You will then install the Palette agent on your host and use it as a node to deploy
-your first Edge cluster. The roadmap below outlines the sequence of tutorials to be followed.
-
-![Edge Getting Started Roadmap](/getting-started/getting-started_introduction-edge_user-data-roadmap.webp)
+your first Edge cluster.
 
 ## Prerequisites
 
@@ -26,6 +26,11 @@ To complete this tutorial, you will need the following prerequisites in place.
 
 - A [Palette account](https://www.spectrocloud.com/get-started) with
   [tenant admin](../../../tenant-settings/tenant-settings.md) access.
+- A physical or virtual Linux machine with an AMD64 (also known as x86_64) processor architecture and the following
+  minimum hardware configuration:
+  - 4 CPUs
+  - 8 GB memory
+  - 150 GB storage
 - The following software installed:
   - [Docker Engine](https://docs.docker.com/engine/install/) with `sudo` privileges. Alternatively, you can install
     [Earthly](https://earthly.dev/), in which case you will not need `sudo` privileges.
@@ -120,10 +125,10 @@ Check the available git tags.
 git tag
 ```
 
-Check out the newest available tag. This tutorial uses the tag `v4.6.5` as an example.
+Check out the newest available tag. This tutorial uses the tag `v4.6.9` as an example.
 
 ```shell
-git checkout v4.6.5
+git checkout v4.6.9
 ```
 
 ## Create User Data
@@ -231,5 +236,5 @@ itself. For example, an expired registration token will not be flagged by the va
 ## Next Steps
 
 In this tutorial, you created a user data file that allows you to provide custom configuration to the Edge Installer
-ISO. We recommend that you continue to the [Build Edge Artifacts] tutorial to learn how to use this file during the Edge
-Installer ISO build process.
+ISO. We recommend that you continue to the [Build Edge Artifacts](./build-edge-artifacts.md) tutorial to learn how to
+use this file during the Edge Installer ISO build process.
