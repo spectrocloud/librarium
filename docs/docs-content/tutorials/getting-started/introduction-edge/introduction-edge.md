@@ -78,5 +78,17 @@ Explore the sequence of tutorials below to learn how to deploy your first connec
       buttonText: "Learn more",
       url: "/tutorials/getting-started/introduction-edge/prepare-user-data",
     },
+    {
+      title: "Build Edge Artifacts",
+      description: "Build the artifacts required for your Edge deployment.",
+      buttonText: "Learn more",
+      url: "/tutorials/getting-started/introduction-edge/build-edge-artifacts",
+    },
+    {
+      title: "Create Edge Cluster Profile",
+      description: "Create an Edge native cluster profile to deploy Edge workloads.",
+      buttonText: "Learn more",
+      url: "/tutorials/getting-started/introduction-edge/edge-cluster-profile",
+    },
   ]}
 />
