@@ -275,20 +275,6 @@ Use these outputs to help [Match Disks](#match-disks) on the Palette VMO cluster
 
    </details>
 
-   <!-- - In Palette, we have the **disk-blk-3** disk.
-   - From the `virsh dumpxml 1` output, the `/dev/disk-blk-3` disk matches the disk named **disk-blk-3** in Palette.
-   - We can confirm that this is a Virtio drive from the `<target dev='vdc' bus='virtio'/>` line. This means the Bus number is the identifiable factor for this disk.
-   - The bus number can be found in the `<address ... bus='0x09' ... />` line as a hexadecimal, which is `9` in decimal.
-   - From examining the `Get-PhysicalDisk` output, we can identify the `DeviceId` as `2` for the drive in `Bus 9`.
-   - Using the `Get-Partition -DriveLetter E | get-disk` output, we can identify drive **E** as disk number `2`. This matches the `DeviceId` number from the `Get-PhysicalDisk` output.
-
-   - In Palette, we have the **disk-scsi-4** disk.
-   - From the `virsh dumpxml 1` output, the `/dev/disk-scsi-4` disk matches the disk named **disk-scsi-4** in Palette.
-   - We can confirm that this is a SCSI drive from the `<target dev='sda' bus='scsi'/>` line. This means the unit (LUN) number is the identifiable factor for this disk.
-   - The unit (LUN) number can be found in the `<address ... unit='0'/>` line, which is `0`.
-   - From examining the `Get-PhysicalDisk` output, we can identify the `DeviceId` as `3` for the drive in `LUN 0`.
-   - Using the `Get-Partition -DriveLetter F | get-disk` output, we can identify drive **F** as disk number `3`. This matches the `DeviceId` number from the `Get-PhysicalDisk` output. -->
-
    The following table demonstrates how the information is linked together for these examples.
 
    | Palette Disk Name | Source from `virsh dumpxml 1` | Identifier (Bus/LUN)  | `Get-PhysicalDisk` → `DeviceId` | `Get-Partition` → `Number` | Drive |
