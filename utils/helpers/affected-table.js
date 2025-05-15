@@ -46,38 +46,11 @@ function generateMarkdownTable(cveImpactMap) {
 
   // Step 3: Filter versions per minor key
   const finalVersions = new Set();
+
   for (const [minor, versions] of Object.entries(groupedByMinor)) {
     const versionList = Array.from(versions);
-    if (versionList.length === 1) {
-      finalVersions.add(versionList[0]);
-    } else {
-      // Check which product each version belongs to
-      const versionProductMap = {};
-      for (const v of versionList) {
-        versionProductMap[v] = new Set();
-        for (const [product, versions] of Object.entries(productVersions)) {
-          if (versions.includes(v)) {
-            versionProductMap[v].add(product);
-          }
-        }
-      }
-
-      // Build a set of products for each version
-      const allProductSets = versionList.map((v) => Array.from(versionProductMap[v]).sort().join(","));
-
-      // Check if all versions share the same product set
-      const [firstSet, ...rest] = allProductSets;
-      const allSameProducts = rest.every((set) => set === firstSet);
-
-      if (allSameProducts) {
-        const max = versionList.sort(semver.rcompare)[0];
-        finalVersions.add(max);
-      } else {
-        for (const v of versionList) {
-          finalVersions.add(v);
-        }
-      }
-    }
+    const latestPatch = versionList.sort(semver.rcompare)[0]; // highest version in this minor line
+    finalVersions.add(latestPatch);
   }
 
   const sortedVersions = Array.from(finalVersions).sort(semver.rcompare);
