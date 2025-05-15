@@ -69,7 +69,7 @@ In this section, you will learn how to create cluster profiles and use them to d
 deployed your first cluster, you will learn how to update it using Palette's cluster management functionality and how to
 automate the deployment workflow using Terraform.
 
-[ROADMAP IMAGE]
+![Palette Getting Started Roadmap](/getting-started/getting-started_introduction-palette_roadmap.webp)
 
 Select your preferred infrastructure provider to start exploring Palette.
 

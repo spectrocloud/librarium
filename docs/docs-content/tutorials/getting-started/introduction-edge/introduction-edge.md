@@ -64,7 +64,7 @@ In this section, you will learn how to build the required Edge artifacts, prepar
 cluster profile, and use it to deploy your cluster. Each tutorial is designed to guide you step-by-step, building on the
 concepts introduced in the previous one.
 
-[ROADMAP IMAGE]
+![Palette Getting Started Roadmap](/getting-started/getting-started_introduction-edge_roadmap.webp)
 
 Explore the sequence of tutorials below to learn how to deploy your first connected Edge cluster with Palette.
 

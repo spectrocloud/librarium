@@ -18,7 +18,7 @@ Kubernetes no matter the complexity or location of your production environments.
 a quick overview of Palette's key functionalities.
 
 <YouTube
-  url="https://www.youtube.com/embed/P9QBOifS_cc"
+  url="https://www.youtube.com/embed/p2k3ypzYHn0?si=9rzMO5dhcPyVV1Ol"
   title="Demo | Spectro Cloud Palette - Kubernetes-as-a-Service"
 />
 
@@ -43,13 +43,7 @@ The Getting Started section also introduces
 [Palette's additional capabilities](../tutorials/getting-started/additional-capabilities/additional-capabilities.md),
 including self-hosted deployments and virtual machine orchestration.
 
-<!-- <div className="desktop-only-display">
-
-![Overview of the getting started journey rocket](/getting-started/getting-started_getting-started_journey-overview.webp)
-
-</div>
-
-<br /> -->
+![Getting Started Summary](/getting-started/getting-started_summary.webp)
 
 Choose a roadmap from the following cards to start your journey with Palette.
 
