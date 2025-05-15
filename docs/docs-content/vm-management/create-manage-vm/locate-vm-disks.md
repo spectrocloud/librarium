@@ -60,8 +60,8 @@ help you locate disks on Linux and Windows VMs.
    sdb        /dev/disk-scsi-5
    ```
 
-   Use this output during [validation](#validate) to match the disks found on the Palette VMO cluster's **Virtual
-   Machines** > **Disks** tab.
+   Use this output to help [Match Disks](#match-disks) on the Palette VMO cluster's **Virtual Machines** > **Disks**
+   tab.
 
 </TabItem>
 
@@ -164,29 +164,32 @@ help you locate disks on Linux and Windows VMs.
    ```
 
 7. Issue the following PowerShell command to get the correct device ID for a specific drive letter. Replace
-   `<drive-letter>` with the drive you want to target.
+   `<drive-letters>` with the drives you want to target.
 
    ```powershell
-   Get-Partition -DriveLetter <drive-letter> | get-disk
+   Get-Partition -DriveLetter <drive-letters> | get-disk
    ```
 
-   ```powershell hideClipboard title="Example command and output"
-   Get-Partition -DriveLetter F | get-disk
+   In the following example, drives `E` and `F` are targeted.
 
-   Number FriendlyName           Serial Number Health Status OperationalStatus Total Size Partition
-                                                                                          Style
-   ------ ------------           ------------- ------------- ----------------- ---------- ---------
-   3      QEMU QEMU HARDDISK                   Healthy       Online                 10 GB GPT
+   ```powershell hideClipboard title="Example command"
+   Get-Partition -DriveLetter E, F | Get-Disk
    ```
 
-Use these outputs during [validation](#validate) to match the disks found on the Palette VMO cluster's **Virtual
-Machines** > **Disks** tab.
+   ```powershell hideClipboard title="Example output"
+   Number FriendlyName           SerialNumber HealthStatus OperationalStatus TotalSize PartitionStyle
+   ------ ------------           ------------ ------------ ---------------- ---------- --------------
+   2      Red Hat VirtIO                      Healthy     Online                 10 GB GPT
+   3      QEMU QEMU HARDDISK                  Healthy     Online                 10 GB GPT
+   ```
+
+Use these outputs to help [Match Disks](#match-disks) on the Palette VMO cluster's **Virtual Machines** > **Disks** tab.
 
 </TabItem>
 
 </Tabs>
 
-## Validate
+## Match Disks
 
 <Tabs groupId="operating-system">
 
@@ -204,6 +207,16 @@ Machines** > **Disks** tab.
    Palette. With this match, you can now determine the target for the disk as displayed in the `Target` column from the
    `virsh domblklist 1` output table.
 
+   ```shell hideClipboard title="Example output" {4}
+   Target     Source
+   ------------------------------------------------
+   vda        /dev/datavolume-os
+   vdb        /dev/disk-blk-2
+   vdc        /dev/disk-blk-3
+   sda        /dev/disk-scsi-4
+   sdb        /dev/disk-scsi-5
+   ```
+
 </TabItem>
 
 <TabItem label="Windows" value="windows">
@@ -214,26 +227,74 @@ Machines** > **Disks** tab.
 
 3. Navigate to the **Virtual Machines** > **Disks** tab.
 
-4. Use the final outputs from the [Locate Disks](#locate-disks) section to help match the disk names listed in Palette.
-   Here are some examples for SCSI and Virtio drives based on the example outputs provided in the
-   [Locate Disks](#locate-disks) steps.
+4. Use the final outputs from the [Locate Disks](#locate-disks) section to help match the disk names listed in Palette
+   to their drive letters. Here are some examples for SCSI and Virtio drives based on the example outputs provided in
+   the [Locate Disks](#locate-disks) section.
 
-   - Using the `Get-Partition` output, we can identify drive `F` as disk number `3`. From examining the
-     `Get-PhysicalDisk` output, we match the `DeviceId` with the disk number, which is `3`. As this is a SCSI drive, the
-     identifiable factor for this disk is `LUN 0`. We can find this as `/dev/disk-scsi-4` in the `virsh dumpxml 1`
-     output. This matches to the disk named `disk-scsi-4` in Palette.
+   <!-- prettier-ignore -->
+   <details>
+   <summary> Virtio Example </summary>
 
-   - Using the `Get-Partition` output, we can identify drive `E` as disk number `2`. From examining the
-     `Get-PhysicalDisk` output, we match the `DeviceId` with the disk number, which is `2`. As this is a Virtio drive,
-     the identifiable factor for this disk is `Bus 9`. We can find this as `/dev/disk-blk-3` in the `virsh dumpxml 1`
-     output. This matches to the disk named `disk-blk-3` in Palette.
+   1. Palette shows a disk named **disk-blk-3**.
+   2. In `virsh dumpxml 1`, the same device appears as `/dev/disk-blk-3`.
+
+      ```xml hideClipboard
+      <disk …>
+       <source dev='/dev/disk-blk-3'/>
+       <target dev='vdc' bus='virtio'/> <!-- Virtio drive, so bus number is the identifiable factor. -->
+       <address … bus='0x09' …/>        <!-- Bus number is 0x09 in hexadecimal, which is 9 in decimal. -->
+      </disk>
+      ```
+
+   3. The `Get-PhysicalDisk` output lists `DeviceId 2` on `Bus 9`, matching the `bus` value from the `virsh dumpxml 1`
+      output.
+   4. The `Get-Partition -DriveLetter E | get-disk` output displays `Number 2`. This confirms that drive **E** maps to
+      `DeviceId 2` and, subsequently, **disk-blk-3** in Palette.
+
+   </details>
+
+   <!-- prettier-ignore -->
+   <details>
+   <summary> SCSI Example </summary>
+
+   1. Palette shows a disk named **disk-scsi-4**.
+   2. In `virsh dumpxml 1`, the same device appears as `/dev/disk-scsi-4`.
+
+      ```xml hideClipboard
+      <disk …>
+       <source dev='/dev/disk-scsi-4'/>
+       <target dev='sda' bus='scsi'/>   <!-- SCSI drive, so unit number is the identifiable factor. -->
+       <address … unit='0'/>
+      </disk>
+      ```
+
+   3. The `Get-PhysicalDisk` output lists `DeviceId 3` on `LUN 0`, matching the `unit` value from the `virsh dumpxml 1`
+      output.
+   4. The `Get-Partition -DriveLetter F | get-disk` output displays `Number 3`. This confirms that drive **F** maps to
+      `DeviceId 3` and, subsequently, **disk-scsi-4** in Palette.
+
+   </details>
+
+   <!-- - In Palette, we have the **disk-blk-3** disk.
+   - From the `virsh dumpxml 1` output, the `/dev/disk-blk-3` disk matches the disk named **disk-blk-3** in Palette.
+   - We can confirm that this is a Virtio drive from the `<target dev='vdc' bus='virtio'/>` line. This means the Bus number is the identifiable factor for this disk.
+   - The bus number can be found in the `<address ... bus='0x09' ... />` line as a hexadecimal, which is `9` in decimal.
+   - From examining the `Get-PhysicalDisk` output, we can identify the `DeviceId` as `2` for the drive in `Bus 9`.
+   - Using the `Get-Partition -DriveLetter E | get-disk` output, we can identify drive **E** as disk number `2`. This matches the `DeviceId` number from the `Get-PhysicalDisk` output.
+
+   - In Palette, we have the **disk-scsi-4** disk.
+   - From the `virsh dumpxml 1` output, the `/dev/disk-scsi-4` disk matches the disk named **disk-scsi-4** in Palette.
+   - We can confirm that this is a SCSI drive from the `<target dev='sda' bus='scsi'/>` line. This means the unit (LUN) number is the identifiable factor for this disk.
+   - The unit (LUN) number can be found in the `<address ... unit='0'/>` line, which is `0`.
+   - From examining the `Get-PhysicalDisk` output, we can identify the `DeviceId` as `3` for the drive in `LUN 0`.
+   - Using the `Get-Partition -DriveLetter F | get-disk` output, we can identify drive **F** as disk number `3`. This matches the `DeviceId` number from the `Get-PhysicalDisk` output. -->
 
    The following table demonstrates how the information is linked together for these examples.
 
-   | Drive | `Get-Partition` → `Number` | `Get-PhysicalDisk` → `DeviceId` | Identifier (Bus/LUN) | Source from `virsh dumpxml 1` | Palette Disk Name |
-   | ----- | -------------------------- | ------------------------------- | -------------------- | ----------------------------- | ----------------- |
-   | **E** | `2`                        | `2`                             | `Bus 9`              | `/dev/disk-blk-3`             | **disk-blk-3**    |
-   | **F** | `3`                        | `3`                             | `LUN 0`              | `/dev/disk-scsi-4`            | **disk-scsi-4**   |
+   | Palette Disk Name | Source from `virsh dumpxml 1` | Identifier (Bus/LUN)  | `Get-PhysicalDisk` → `DeviceId` | `Get-Partition` → `Number` | Drive |
+   | ----------------- | ----------------------------- | --------------------- | ------------------------------- | -------------------------- | ----- |
+   | **disk-blk-3**    | `/dev/disk-blk-3`             | `bus='0x09'`, `Bus 9` | `2`                             | `2`                        | **E** |
+   | **disk-scsi-4**   | `/dev/disk-scsi-4`            | `unit='0'`, `LUN 0`   | `3`                             | `3`                        | **F** |
 
 </TabItem>
 
