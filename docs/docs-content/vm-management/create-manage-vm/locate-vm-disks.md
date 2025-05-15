@@ -7,9 +7,8 @@ sidebar_position: 60
 tags: ["vmo"]
 ---
 
-When managing virtual machines (VMs) using Virtual Machine Orchestrator (VMO), you may need to extend the disks on the
-VMs. When a VM has multiple disks of the same size, locating the disks on each VM can be difficult. The following
-sections help you locate disks on Linux and Windows VMs.
+When managing Virtual Machines (VMs) using Virtual Machine Orchestrator (VMO), you may need to extend the disks on the
+VMs. When a VM has multiple disks of the same size, locating the disks on each VM can be difficult. Use this guide to help you locate disks on Linux and Windows VMs.
 
 ## Prerequisites
 
@@ -23,11 +22,10 @@ sections help you locate disks on Linux and Windows VMs.
 
 <TabItem label="Linux" value="linux">
 
-1. Start a shell connection on the VM. Refer to our [Virtctl](./advanced-topics/access-cluster-with-virtctl.md) guide
+1. Open a shell session on the VM. Refer to our [Virtctl](./advanced-topics/access-cluster-with-virtctl.md) guide
    for help with accessing Linux VMs locally.
 
-2. You need to access the `virt-launcher` pod to be able to list the VM disks. Use the following `kubectl` command to
-   find the pod.
+2. Use the following `kubectl` command to locate the `virt-launcher` pod. This is the pod that contains the VM disks.
 
    ```sh
    kubectl get pods --all-namespaces --selector kubevirt.io=virt-launcher
@@ -38,8 +36,8 @@ sections help you locate disks on Linux and Windows VMs.
    my-vms       virt-launcher-vmname-9qz6n             3/3     Running            0          2h31m
    ```
 
-3. Open a shell inside the `virt-launcher` pod. Replace `<namespace>` with the namespace where the pod is located, and
-   `vm-name` with the name of the `virt-launcher` pod.
+3. Open a shell session in the `virt-launcher` pod. Replace `<namespace>` with the namespace where the pod is located and
+   `<vm-name>` with the name of the `virt-launcher` pod.
 
    ```sh
    kubectl exec --stdin --tty --namespace <namespace> <vm-name> -- /bin/bash
@@ -68,10 +66,9 @@ sections help you locate disks on Linux and Windows VMs.
 
 <TabItem label="Windows" value="windows">
 
-1. Start a shell connection on the VM and open a Windows Command Prompt (`cmd`) terminal.
+1. Connect to the VM and open the Windows Command Prompt (`cmd`) terminal.
 
-2. You need to access the `virt-launcher` pod to be able to list the VM disks. Use the following `kubectl` command to
-   find the pod.
+2. Use the following `kubectl` command to locate the `virt-launcher` pod. This is the pod that contains the VM disks.
 
    ```sh
    kubectl get pods --all-namespaces --selector kubevirt.io=virt-launcher
@@ -82,8 +79,8 @@ sections help you locate disks on Linux and Windows VMs.
    my-vms       virt-launcher-vmname-9qz6n             3/3     Running            0          2h31m
    ```
 
-3. Open a shell inside the `virt-launcher` pod. Replace `<namespace>` with the namespace where the pod is located, and
-   `vm-name` with the name of the `virt-launcher` pod.
+3. Open a shell session in the `virt-launcher` pod. Replace `<namespace>` with the namespace where the pod is located and
+   `<vm-name>` with the name of the `virt-launcher` pod.
 
    ```sh
    kubectl exec --stdin --tty --namespace <namespace> <vm-name> -- /bin/bash
@@ -196,11 +193,11 @@ Machines** > **Disks** tab.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. From the left **Main Menu**, click **Clusters** and click on your cluster.
+2. From the left main menu, select **Clusters** and click on your cluster.
 
 3. Navigate to the **Virtual Machines** > **Disks** tab.
 
-4. Use the final output from the [Locate Disks](#locate-disks) steps to help match the disk names in Palette.
+4. Use the final output from the [Locate Disks](#locate-disks) section to help match the disk names in Palette.
 
    For example, if the source for a disk in the terminal output is `/dev/disk-blk-2`, this would match `disk-blk-2` in
    Palette. With this match, you can now determine the target for the disk as displayed in the `Target` column from the
@@ -212,11 +209,11 @@ Machines** > **Disks** tab.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. From the left **Main Menu**, click **Clusters** and click on your cluster.
+2. From the left main menu, select **Clusters** and click on your cluster.
 
 3. Navigate to the **Virtual Machines** > **Disks** tab.
 
-4. Use the final outputs from the [Locate Disks](#locate-disks) steps to help match the disk names listed in Palette.
+4. Use the final outputs from the [Locate Disks](#locate-disks) section to help match the disk names listed in Palette.
    Here are some examples for SCSI and Virtio drives based on the example outputs provided in the
    [Locate Disks](#locate-disks) steps.
 
