@@ -26,8 +26,8 @@ of both modes.
 
 ## Agent Mode
 
-In Agent Mode, you install the Palette agent on your existing host OS. This agent communicates with Palette in connected
-mode to manage configurations, updates, and workloads.
+In Agent Mode, you install the Palette agent on your existing host OS. This agent communicates with Palette in central
+management mode to manage configurations, updates, and workloads.
 
 ### Prerequisites
 
@@ -147,7 +147,12 @@ mode to manage configurations, updates, and workloads.
   - [iptables](https://linux.die.net/man/8/iptables)
   - [rsyslog](https://github.com/rsyslog/rsyslog). This is required for audit logs.
 
-  <br />
+  If you are using Ubuntu or any OS that uses apt or apt-get for package management, you can issue the following command
+  to install all dependencies for installation with the following command:
+
+  ```shell
+  sudo apt-get update && sudo apt-get install -y bash jq zstd rsync systemd-timesyncd conntrack iptables rsyslog --no-install-recommends
+  ```
 
   :::warning
 
@@ -276,66 +281,15 @@ mode to manage configurations, updates, and workloads.
 
 6. Download the latest version of the Palette agent installation script. There is a FIPS-compliant script, if needed.
 
-   <Tabs groupId="FIPS">
-
-   <TabItem value="Non-FIPS">
-
-   ```shell
-   curl --location --output ./palette-agent-install.sh https://github.com/spectrocloud/agent-mode/releases/latest/download/palette-agent-install.sh
-   ```
-
-   </TabItem>
-
-   <TabItem value="FIPS">
-
-   ```shell
-   curl --location --output ./palette-agent-install-fips.sh https://github.com/spectrocloud/agent-mode/releases/latest/download/palette-agent-install-fips.sh
-   ```
-
-   </TabItem>
-
-   </Tabs>
+   <PartialsComponent category="agent-mode" name="agent-mode-latest-version" />
 
    <details>
 
-   <summary>Dedicated or On-Prem Palette Instance</summary>
+   {" "}
 
-   If you have a dedicated or on-prem instance of Palette, you need to identify the correct agent version and then
-   download the corresponding version of the agent installation script. Use the command below and replace
-   `<palette-endpoint>` with your Palette endpoint and `<api-key>` with your Palette API key to identify the version.
+   <summary>Dedicated or On-Premises Palette Instance</summary>
 
-   ```shell
-   curl --location --request GET 'https://<palette-endpoint>/v1/services/stylus/version' --header 'Content-Type: application/json' --header 'Apikey: <api-key>'  | jq --raw-output '.spec.latestVersion.content | match("version: ([^\n]+)").captures[0].string'
-   ```
-
-   Example output.
-
-   ```text hideClipboard
-   4.6.0
-   ```
-
-   Issue the following command to download the version of the Palette agent for your dedicated or on-prem instance.
-   Replace `<stylus-version>` with your output from the previous step.
-
-   <Tabs groupId="FIPS">
-
-   <TabItem value="Non-FIPS">
-
-   ```shell
-   curl --location --output ./palette-agent-install.sh https://github.com/spectrocloud/agent-mode/releases/download/v<stylus-version>/palette-agent-install.sh
-   ```
-
-   </TabItem>
-
-   <TabItem value="FIPS">
-
-   ```shell
-   curl --location --output ./palette-agent-install-fips.sh https://github.com/spectrocloud/agent-mode/releases/download/v<stylus-version>/palette-agent-install-fips.sh
-   ```
-
-   </TabItem>
-
-   </Tabs>
+   <PartialsComponent category="agent-mode" name="agent-mode-versioned" />
 
    </details>
 
@@ -647,8 +601,7 @@ required Edge artifacts.
 
     :::important
 
-    - The edge host must be deployed in `connected` mode, which is the default when `stylus.installationMode` is
-      omitted.
+    - The edge host must be deployed in `central` mode, which is the default when `stylus.managementMode` is omitted.
     - Replace `<registration-token>` with your Palette tenant registration token.
     - Replace `<palette-project-uid>` with the Palette project ID the Edge host should pair with. This field is only
       required if your Palette tenant registration token was not assigned to a project, or you want to assign the edge

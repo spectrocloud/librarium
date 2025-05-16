@@ -33,7 +33,7 @@ Use the following steps to create a team.
 
 5. Click **Create Team**.
 
-6. Enter the team name and select the users you want to add to the team.
+6. Enter the team name and the description (optional), then select the users to add to the team.
 
 7. Click **Confirm** to create the team.
 

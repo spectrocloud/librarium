@@ -7,9 +7,11 @@ sidebar_position: 0
 tags: ["edge"]
 ---
 
-You can build a content bundle and upload it to an airgapped Edge host through Local UI. The content you upload can
+You can build a content bundle and upload it to a locally managed Edge host through Local UI. The content you upload can
 include images, helm charts, and packs. This allows you to provision clusters locally using the content you upload to
-the Edge host when the host does not have a connection to a central Palette instance or an image repository.
+the Edge host when the host does not have a connection to a central Palette instance or an image repository. You can
+upload one or more content bundles as long as your Edge host has enough physical storage and you have allocated
+sufficient storage to your registry.
 
 If you upload a content bundle to the leader node of a group of linked hosts, the content bundle will be synced to the
 rest of the group of linked hosts.
@@ -17,18 +19,12 @@ rest of the group of linked hosts.
 This page guides you through how to build a content bundle and upload it to an Edge host using the Edge management
 console.
 
-:::preview
-
-:::
-
 ## Prerequisites
 
-- An Edge host with installed with Edge Installer 4.3 or later using the `airgapped` install mode.
+- An Edge host with installed with Edge Installer 4.3 or later using the local management mode.
 
 - You have built a content bundle that's necessary for provisioning a cluster using your intended cluster profile. For
   more information, refer to [Build Content Bundles](../../edgeforge-workflow/palette-canvos/build-content-bundle.md).
-  Ensure that you include the `--include-palette-content` flag when building the content bundle to include images for
-  Palette components.
 
 - Network access to the Edge host's port where Local UI is exposed. The default port is 5080.
 
@@ -40,7 +36,10 @@ console.
 
 3. Under the upper-right user menu, Click **Actions** > **Upload Content**.
 
-4. Select your content bundle to upload it to your Edge host.
+4. Select your content bundle to upload it to your Edge host. You may select multiple content bundles and perform a
+   batch upload. However, if you
+   [embedded a public key in your Edge artifacts](../../edgeforge-workflow/palette-canvos/signed-content.md), you may
+   only upload one bundle at a time.
 
 ## Validate
 

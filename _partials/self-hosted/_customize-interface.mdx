@@ -5,23 +5,27 @@ partial_name: customize-interface
 
 You can customize the following user interface elements for {props.version} installations to fit your brand:
 
-- Login window
+- Login and forgot password screens, including the logo, **Sign in to your tenant** icon, login panel image, primary button, and border color of the text fields. 
 
-- Expanded sidebar
+- Expanded tenant sidebar, including the logo and color.
 
-- Minimized sidebar
+- Minimized tenant sidebar, including the logo and color.
 
-- Favicon
+- Favicon on all {props.reference} screens.
 
-:::info
-
-If you customize your interface, the bottom of the sidebar will read **Powered by Spectro Cloud**.
-
-:::
+- Documentation URLs, including the login screen and all other links throughout {props.reference}.
 
 ## Limitations
 
-- Interface customization applies only to the login screen and across {props.version}. Changes do not cascade to the system console.
+- Interface customization applies only to the tenant login screen, forgot password screen, and other {props.reference} tenant screens. Changes do not cascade to the system console.
+
+- Modifying the documentation URL changes the `docs.spectrocloud.com` domain for all documentation links throughout {props.reference}. To ensure the **Learn More** links in the UI function correctly, you must host your own documentation site based on Spectro Cloud's [librarium](https://github.com/spectrocloud/librarium) repository. We recommend using the librarium [image](http://ghcr.io/spectrocloud/librarium:nightly) to do so, which is updated daily. For more information, refer to our <VersionedLink text="Offline Documentation" url="/downloads/offline-docs" /> guide.
+
+    :::warning
+    
+    Spectro Cloud does not manage or maintain downstream versions of its documentation. Any changes made to the documentation are the responsibility of the user.
+
+    :::
 
 ## Prerequisites
 
@@ -31,51 +35,54 @@ If you customize your interface, the bottom of the sidebar will read **Powered b
         text="system console"
         url="/system-management/#access-the-system-console"
       /> .
-<!-- prettier-ignore-start -->
+
 - Root Administrator or Operations Administrator permissions. Refer to the 
   <PaletteVertexUrlMapper
      edition={props.edition}
-     text="System Administrators"
+     text="Account Management"
      url="/system-management/account-management"
    /> page to learn more.
-<!-- prettier-ignore-end -->
 
 ## Enablement
 
-1. Log in to the system console. For additional guidance, check out the
+1. Log in to the {props.reference} system console. For additional guidance, check out the
     <PaletteVertexUrlMapper
         edition={props.edition}
-        text="Access to the System Console"
+        text="Access the System Console"
         url="/system-management/#access-the-system-console"
     /> guide.
 
-2. From the left **Main Menu**, select **Administration**. 
+2. From the left main menu, select **Administration**. 
 
-3. Navigate to the **Customize interface** tab. From here, you can customize the login window, sidebar, and favicon to fit your brand's logos and colors. The **Preview** pane is updated to reflect your changes.
+3. Navigate to the **Customize interface** tab. From here, you can customize the login screen, tenant sidebar, favicon, and documentation domain to fit your brand's needs. The **Preview** pane is updated to reflect your changes.
 
         ![The Customize interface tab of the Administration tab](/enterprise-version_system-management_customize-interface.webp)
 
-    The following table describes the various customization elements on each **Customize interface** tab. At any point, you can choose **Reset to default** to revert to the default Palette theme, resetting _all_ interface customization.
+    The following table describes the various customization elements on each **Customize interface** panel. At any point, you can choose **Reset to default** to revert to the default {props.reference} theme, resetting _all_ interface customization. To revert to the default {props.reference} logo for a certain element, select the **X** button beside your uploaded image.
 
     :::info
 
-    All logo images must be in PNG or SVG format. For best results, we recommend using images that are landscape oriented and do not exceed 1 MB in size. If you do not upload a logo, the default {props.edition} logo is used.
+    All logo images must be in PNG or SVG format. For best results, we recommend using images that are landscape oriented and do not exceed 1 MB in size. If you do not upload a logo, the default {props.reference} logo is used.
 
     :::
 
+    | Panel                   | Option                                                                      | Description |
+    | --------------------- | -------------------------------------------------------------------------------- | --- |
+    | **Login**             | **Login panel image** | Display or hide the {props.reference} image on the login and forgot password screens.  | 
+    | | **Logo** | Change the logo on the login screen. The logo should have a maximum width of 180px and a maximum height of 67px. | 
+    | | **Primary button color** | Change the color of the **Sign in** and **Reset Password** buttons, as well as the border color of the **Email**, **Password**, and **Sign in to your tenant** fields. | 
+    | | **Documentation URL** | Change the default domain of all documentation links throughout {props.reference}. Select the arrow beside the URL protocol to switch between `https://` and `http://`. If the URL is changed to a domain that is not based on Spectro Cloud's documentation, **Learn More** links within the UI will not function. Refer to the <PaletteVertexUrlMapper edition={props.edition} text="Limitations" url="/system-management/customize-interface/#limitations" /> section for more information. | 
+    | **Sidebar**           | **Logo** | Change the logo on the sidebar (expanded and minimized). The logo should have a maximum width of 180px and a maximum height of 67px. |
+    | | **Sidebar background color** | Change the background color of the sidebar (expanded and minimized). | 
+    | | **Show Spectro Cloud logo** | Display or hide the Spectro Cloud logo at the bottom of the sidebar (expanded). |
+    | **Minimized Sidebar** | **Logo** | Use a different logo when the sidebar is minimized, overwriting your **Sidebar > Logo** selection. This logo is also used on the {props.reference} login screen beside **Sign in to your tenant**. The logo should have a maximum width of 180px and a maximum height of 67px. |
+    | **Favicon**           | **Logo** | Change the favicon used for all {props.reference} screens. The logo should have a maximum width of 32px and a maximum height of 32px. |
 
-    | Tab                   | Description                                                                      | Logo Size Constraints                       |
-    | --------------------- | -------------------------------------------------------------------------------- | ------------------------------------------- |
-    | **Login**             | Change the logo on the login screen and the color of the **Sign in** button.     | Maximum width: 180px. Maximum height: 67px. |
-    | **Sidebar**           | Change the logo and color of the sidebar (expanded and minimized).               | Maximum width: 180px. Maximum height: 67px. |
-    | **Minimized Sidebar** | Use a different logo when the sidebar is minimized.                              | Maximum width: 180px. Maximum height: 67px. |
-    | **Favicon**           | Change the favicon used for the login screen and on {props.version} screens.     | Maximum width: 32px. Maximum height: 32px.  |
-
-4. When you are finished, select **Save changes**. 
+4. When you are finished, select **Save changes**.
 
 ## Validation
 
-1. Proceed to the login page of Palette. If you made any login screen or favicon changes, verify the changes have been applied.
+1. Proceed to the {props.reference} login screen. If you made any login screen or favicon changes, verify the changes have been applied. If you changed the documentation URL, verify that documentation link takes you to the expected domain.
 
-2. Log in to {props.edition}. If you made any favicon or sidebar changes, verify the changes have been applied.
+2. Log in to {props.reference}. If you made any favicon or sidebar changes, verify the changes have been applied. If you changed the documentation URL, verify that the **Docs** link beside the **User Menu** takes you to the expected domain.
 

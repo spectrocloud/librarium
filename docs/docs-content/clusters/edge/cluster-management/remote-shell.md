@@ -9,8 +9,8 @@ tags: ["edge"]
 
 Edge hosts deployed in remote locations are often difficult to access. Traditional troubleshooting tools such as
 `kubectl` rely on the Kubernetes API being available, which is not always the case in an outage. Palette allows you to
-use a remote shell session to access your connected Edge host. This connection operates on the Operating System (OS)
-level and does not require Kubernetes to be available.
+use a remote shell session to access your centrally managed Edge host. This connection operates on the Operating System
+(OS) level and does not require Kubernetes to be available.
 
 ![Diagram of the relationship between user, Palette, and Edge host in Remote Shell](/clusters_edge_cluster-mgmt_remote-shell.webp)
 
@@ -23,6 +23,9 @@ users have root privilege on the Edge host, allowing you the permissions often r
 be enabled per Edge host by someone with sufficient permissions.
 
 ## Prerequisites
+
+- In your Edge host's `sshd` configuration, `PasswordAuthentication` must be set to `true`. In most cases, `true` is the
+  default value for this attribute.
 
 - An Edge host registered with your Palette account. The Edge host may or may not be part of an Edge cluster.
 

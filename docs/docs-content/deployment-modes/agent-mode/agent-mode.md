@@ -24,16 +24,16 @@ The order of operations can be summarized as follows:
 3. You create a cluster profile in Palette. The profile contains the Kubernetes distribution, the Container Network
    Interface (CNI), the Container Storage Interface (CSI) as well as any other applications.
 
-4. If the agent is installed on your host in connected mode, it will register the host with Palette.
+4. If the agent is installed on your host in central management mode, it will register the host with Palette.
 
-   If the agent is installed on your host in airgap mode, you will need to export the cluster profile. Depending on
-   whether your host has access to image registries, you may also need to build a content bundle.
+   If the agent is installed on your host in local management mode, you will need to export the cluster profile.
+   Depending on whether your host has access to image registries, you may also need to build a content bundle.
 
-5. If the agent is installed on your host in connected mode, you can use the registered host to provision a cluster with
-   your cluster profile.
+5. If the agent is installed on your host in central management mode, you can use the registered host to provision a
+   cluster with your cluster profile.
 
-   If the agent is installed on your host in airgap mode, you can use the exported cluster profile to provision a
-   cluster from Local UI.
+   If the agent is installed on your host in local management mode, you can use the exported cluster profile to
+   provision a cluster from Local UI.
 
 ## Use Cases
 

@@ -9,11 +9,11 @@ sidebar_position: 80
 tags: ["edge"]
 ---
 
-Palette Edge allows you to deploy clusters to an external registry and use a local Harbor registry without manually
-configuring rewrites. This is possible because the Palette agent uses a webhook to redirect image pulls to the
+Palette Edge allows you to deploy clusters to an external registry and use an in-cluster primary registry without
+manually configuring rewrites. This is possible because the Palette agent uses a webhook to redirect image pulls to the
 appropriate locations depending on your configuration.
 
-While the webhook makes using an external registry or the local Harbor registry more streamlined, it can limit your
+While the webhook makes using an external registry or the primary registry more streamlined, it can limit your
 flexibility to configure your own image pull behavior. This guide guides you through how to disable the Palette agent
 webhook and provides an example custom image pull configuration.
 
@@ -22,15 +22,14 @@ webhook and provides an example custom image pull configuration.
 When the agent webhook is disabled, the Palette agent will not redirect any image pull operation by default. This means
 that even if you specify an external registry in the **user-data**, the Palette agent will not pull images from that
 registry unless it is otherwise configured to do so. This also means that the Palette agent will not pull images from
-the local Harbor registry, even if the images are downloaded and stored in the registry, unless it is otherwise
-configured to do so. Disabling the webhook removes restrictions, but does place the burden of ensuring that images are
-pulled from the correct locations on yourself.
+the primary registry, even if the images are downloaded and stored in the registry, unless it is otherwise configured to
+do so. Disabling the webhook removes restrictions, but does place the burden of ensuring that images are pulled from the
+correct locations on yourself.
 
 You may consider disabling the webhook if you want to configure your cluster to pull images from multiple authenticated
-registries, or if you do not want the default behavior that forces image pulls to be redirected to the local Harbor
-registry. Once the webhook is disabled, you can then take advantage of the rewrite features of some Kubernetes
-distributions such as K3s and RKE2, or other redirect mechanism that you implement on your own to customize the image
-pull behavior.
+registries, or if you do not want the default behavior that forces image pulls to be redirected to the primary registry.
+Once the webhook is disabled, you can then take advantage of the rewrite features of some Kubernetes distributions such
+as K3s and RKE2, or other redirect mechanism that you implement on your own to customize the image pull behavior.
 
 ## Prerequisites
 

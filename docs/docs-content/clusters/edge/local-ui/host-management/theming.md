@@ -11,10 +11,6 @@ Palette offers the option to customize the Local UI web interface. You can chang
 using your own logo. You can do this before deployment during the EdgeForge process to standardize the look feel of the
 console for all Edge hosts of your organization.
 
-:::preview
-
-:::
-
 ## Prerequisites
 
 - The theme customization process prior to deployment is based on the EdgeForge process. We recommend that you

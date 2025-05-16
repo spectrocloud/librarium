@@ -12,7 +12,7 @@ tools, but are accessible through a web interface. You can use these diagnostic 
 issues without having to establish an SSH connection to your Edge host.
 
 In air-gapped environments, you can use these tools to verify the connection to an endpoint within the network. For
-air-gapped clusters with proxy or in connected environments, you can use these tools to verify the connection to an
+locally managed clusters with proxy or in connected environments, you can use these tools to verify the connection to an
 endpoint outside the network, based on the scope of the connectivity. For example, these tools are useful to check if
 the Edge Host can connect to the internet or an external registry or to make sure there is no external connectivity in
 an air-gapped environment.

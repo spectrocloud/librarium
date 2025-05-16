@@ -412,12 +412,7 @@ You can also validate that a three-node Kubernetes cluster is launched and Palet
 
 ## Next Steps
 
-You have successfully installed Palette in vSphere. Your next steps are to configure Palette for your organization.
-Start by creating the first tenant to host your users. Refer
-to [Create a Tenant](../../../system-management/tenant-management.md) for instructions.
-
-After you create the tenant, you are ready to configure authentication types in tenant settings and create users and
-teams.
+<PartialsComponent category="self-hosted" name="install-next-steps" edition="Palette" version="Palette" />
 
 ## Resources
 
