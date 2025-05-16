@@ -21,6 +21,10 @@ tags: ["release-notes"]
 
 #### Breaking Changes {#breaking-changes-4.6.c}
 
+- Due to updates to Cluster API (CAPI) in this release, we recommend that you enable the
+  [Pause Agent Upgrades](../clusters/cluster-management/platform-settings/pause-platform-upgrades.md) feature on any
+  impacted clusters until you are ready for the cluster repaves.
+
 - Due to an upgrade of Cluster API Provider GCP (CAPG) to
   [v1.8.1](https://github.com/kubernetes-sigs/cluster-api-provider-gcp/releases/tag/v1.8.1), the following additional
   IAM permissions are now required for GCP cluster deployments:
