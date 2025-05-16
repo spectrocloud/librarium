@@ -79,15 +79,6 @@ function getSeverityDescription(revisedFrom, revisedTo) {
   return "";
 }
 
-function getImpactedVersionsDescription(revisedFrom, revisedTo) {
-  const formattedFrom = formatArray(revisedFrom);
-  const formattedTo = formatArray(revisedTo);
-
-  return revisedFrom === "[]"
-    ? `Added impacted versions: ${formattedTo}`
-    : `Impacted versions changed from ${formattedFrom} to ${formattedTo}`;
-}
-
 function formatArray(value) {
   return value.replace(/\s+/g, ", ").replace(/^\[|\]$/g, "");
 }
