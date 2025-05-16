@@ -21,6 +21,10 @@ tags: ["release-notes"]
 
 #### Breaking Changes {#breaking-changes-4.6.c}
 
+- Due to updates to Cluster API (CAPI) in this release, we recommend that you enable the
+  [Pause Agent Upgrades](../clusters/cluster-management/platform-settings/pause-platform-upgrades.md) feature on any
+  impacted clusters until you are ready for the cluster repaves.
+
 - Due to new behavior introduced with CAPI v1.9.4, you must add the `cluster.x-k8s.io/drain: skip` label to any
   deployments with the `Node.spec.unschedulable` field set. If not added, this can lead to deployments stuck in a
   termination loop due to an unwanted
