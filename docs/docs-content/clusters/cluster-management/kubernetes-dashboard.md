@@ -8,7 +8,9 @@ tags: ["clusters", "cluster management", "dashboard"]
 ---
 
 The **Spectro Kubernetes Dashboard** is a customized version of the open source
-[Kubernetes Dashboard](https://github.com/kubernetes/dashboard) project. Kubernetes Dashboard is a general purpose, web-based UI for Kubernetes clusters. It allows users to manage and troubleshoot applications, as well as manage the cluster itself.
+[Kubernetes Dashboard](https://github.com/kubernetes/dashboard) project. Kubernetes Dashboard is a general purpose,
+web-based UI for Kubernetes clusters. It allows users to manage and troubleshoot applications, as well as manage the
+cluster itself.
 
 For more information about the Kubernetes dashboard, visit the
 [Official Kubernetes Dashboard](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/) page.
@@ -19,7 +21,8 @@ For more information about the Kubernetes dashboard, visit the
 
 ## Enablement
 
-1. In Palette, select **Clusters** from the left Main Menu. Select the name of the cluster you want to provision the _Spectro Kubernetes Dashboard_ on.
+1. In Palette, select **Clusters** from the left Main Menu. Select the name of the cluster you want to provision the
+   _Spectro Kubernetes Dashboard_ on.
 
 2. Select the **Profile** tab and identify the name of the profile your cluster is using.
 
@@ -47,19 +50,20 @@ data store in the Kubernetes cluster. No loss of data occurs during the upgrade 
 
 9. No customizations are required for this deployment. Select **Confirm & Create** on the pack customization screen.
 
-10. The profile overview screen reflects that the **Spectro-k8s-Dashboard** pack is now part of your cluster profile. Select **Save Changes**.
+10. The profile overview screen reflects that the **Spectro-k8s-Dashboard** pack is now part of your cluster profile.
+    Select **Save Changes**.
 
 11. Select **Clusters** from the left Main Menu. Then select the cluster you wish to update.
 
 12. Select the **Profile** tab.
 
-13. Select the **Project** drop down menu from either the **Infrastructure Layers** or the **ADDON Layers** section. Select the new profile version that contains the _Spectro Kubernetes Dashboard_ pack.
+13. Select the **Project** drop down menu from either the **Infrastructure Layers** or the **ADDON Layers** section.
+    Select the new profile version that contains the _Spectro Kubernetes Dashboard_ pack.
 
 ![Image showing the selection of the profile version to be applied to the selected cluster](/clusters_cluster-management_spectro-kubernetes-dashboard_apply-profile.webp)
 
 14. Monitor cluster status with the **Overview** tab until the _Spectro Kubernetes Dashboard 7.11.1_ indicates
     successful deployment.
-
 
 ## Validate
 
@@ -67,7 +71,8 @@ data store in the Kubernetes cluster. No loss of data occurs during the upgrade 
 
 2. Select the cluster where you deployed the _Spectro Kubernetes Dashboard_ pack.
 
-3. On the **Overview** screen, a new row is displayed called **Kubernetes Dashboard** with a button titled **Connect**. Select the **Connect** button.
+3. On the **Overview** screen, a new row is displayed called **Kubernetes Dashboard** with a button titled **Connect**.
+   Select the **Connect** button.
 
 ![Image showing the Kubernetes Dashboard Connect button in the cluster overview screen](/clusters_cluster-management_spectro-kubernetes-dashboard_connect.webp)
 
