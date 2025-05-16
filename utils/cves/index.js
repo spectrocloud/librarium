@@ -232,7 +232,6 @@ async function generateMarkdownForCVEs(GlobalCVEData) {
   // To generate the Impact Product & Versions table we need to track all the instances of the same CVE
   // The following hashmap will store the data for each CVE and aggregate the impact data for each product
   const cveImpactMap = generateCVEMap(allCVEs);
-  console.log(cveImpactMap);
 
   const markdownPromises = allCVEs.map((item) => {
     if (item.kind === "os") {
