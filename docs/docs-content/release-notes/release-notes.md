@@ -29,8 +29,8 @@ impacted clusters until you are ready for the cluster repaves.
 
 :::
 
-- Due to new behavior introduced with CAPI v1.9.4, you must add the `cluster.x-k8s.io/drain: skip` label to any
-  deployments with the `Node.spec.unschedulable` field set. If not added, this can lead to deployments stuck in a
+- Due to new behavior introduced with Cluster API (CAPI) v1.9.4, you must add the `cluster.x-k8s.io/drain: skip` label
+  to any deployments with the `Node.spec.unschedulable` field set. If not added, this can lead to deployments stuck in a
   termination loop due to an unwanted
   [node drain](https://cluster-api.sigs.k8s.io/tasks/automated-machine-management/machine_deletions.html#node-drain).
   Use the following steps to help identify and apply the label to affected Deployments.
@@ -53,6 +53,11 @@ impacted clusters until you are ready for the cluster repaves.
        labels:
          cluster.x-k8s.io/drain: skip
      ```
+
+- Palette's upgrade to Cluster API (CAPI) v1.9.4 requires additional Amazon Web Services (AWS) permissions to operate
+  and perform actions on your behalf. Refer to the
+  [Required IAM Policies](../clusters/public-cloud/aws/required-iam-policies.md) reference page for a full list of core
+  policies and minimum permissions.
 
 - Due to an upgrade of Cluster API Provider GCP (CAPG) to
   [v1.8.1](https://github.com/kubernetes-sigs/cluster-api-provider-gcp/releases/tag/v1.8.1), the following additional
