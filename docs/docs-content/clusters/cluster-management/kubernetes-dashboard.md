@@ -7,15 +7,14 @@ sidebar_position: 210
 tags: ["clusters", "cluster management", "dashboard"]
 ---
 
-The **Spectro Kubernetes Dashboard** is a customized version of the open source
-[Kubernetes Dashboard](https://github.com/kubernetes/dashboard) project. Kubernetes Dashboard is a general purpose,
+The **Spectro Kubernetes Dashboard** pack allows you to add the
+[Kubernetes Dashboard](https://github.com/kubernetes/dashboard) to your cluster profiles. Kubernetes Dashboard is a general purpose,
 web-based UI for Kubernetes clusters. It allows users to manage and troubleshoot applications, as well as manage the
 cluster itself.
 
 ## Prerequisites
 
-- An active Palette cluster. If you are not working with an existing cluster, complete the steps for your preferred
-  cloud provider.
+- An active Palette cluster. 
 - [Deploy a Cluster with Azure](/getting-started/azure/deploy-k8s-cluster.md)
 - [Deploy a Cluster with AWS](/getting-started/aws/deploy-k8s-cluster.md)
 - [Deploy a Cluster with GCP](/getting-started/gcp/deploy-k8s-cluster.md)
@@ -28,7 +27,7 @@ cluster itself.
 ## Enablement
 
 1. In Palette, select **Clusters** from the left Main Menu. Select the name of the cluster you want to provision the
-   _Spectro Kubernetes Dashboard_ on. _Spectro Kubernetes Dashboard_ on.
+   Spectro Kubernetes Dashboard on. 
 
 2. Select the **Profile** tab and identify the name of the profile your cluster is using.
 
@@ -40,7 +39,7 @@ cluster itself.
 
 5. Enter the version number you wish to use for the updated profile and select **Confirm**.
 
-6. Select **Add New Pack**
+6. Select **Add New Pack**.
 
 7. Search for _Spectro Kubernetes Dashboard_ in the Search field and select it.
 
@@ -55,7 +54,7 @@ source Kubernetes Dashboard service without any customizations. Ensure you use t
 :::
 
 7. The _Spectro Kubernetes Dashboard_ pack exists in multiple registries. We recommend selecting the most recent pack
-   version available in the _Palette Registry_. Select your desired pack version, then select **Confirm** version
+   version of the **Spectro Kubernetes Dashboard** pack. Click **Confirm**.
    available in the _Palette Registry_. Select your desired pack version, then select **Confirm**
 
 ![Image of the pack showing multiple registries](/clusters_cluster-management_spectro-kubernetes-dashboard_pack-registry-select.webp)
@@ -63,7 +62,7 @@ source Kubernetes Dashboard service without any customizations. Ensure you use t
 :::info
 
 Upgrading the Kubernetes Dashboard from older versions is not supported. We recommend removing any older version of
-Kubernetes dashboard version prior to upgrading to the newest version. The Kubernetes dashboard reads metrics from a
+Kubernetes dashboard version prior to configuring the newest version. The Kubernetes dashboard reads metrics from a
 data store in the Kubernetes cluster. No loss of data occurs during the upgrade process.
 
 :::
@@ -121,7 +120,6 @@ the configurations required in your environment.
 
 ![Image showing a sample RBAC configuration](/clusters_cluster-management_spectro-kubernetes-dashboard_rbac.webp)
 
-Once your configuration changes are applied successfully, continue to the `Validate` section of this guide.
 
 ## Validate
 
@@ -132,15 +130,10 @@ Once your configuration changes are applied successfully, continue to the `Valid
 3. On the **Overview** screen, a new row is displayed called **Kubernetes Dashboard** with a button titled **Connect**.
    Select the **Connect** button. Select the **Connect** button.
 
-:::tip
-
-Depending on your display settings, you may need to scroll down to expose the **Connect** button.
-
-:::
 
 ![Image showing the Kubernetes Dashboard Connect button in the cluster overview screen](/clusters_cluster-management_spectro-kubernetes-dashboard_connect.webp)
 
-4. The _Spectro Kubernetes Dashboard_ is displayed.
+4. The Spectro Kubernetes Dashboard is displayed.
 
 :::info
 
@@ -152,6 +145,6 @@ review and select other namespaces in your cluster.
 
 ![Image showing a connected k8s dashboard with the Kubernetes-dashboard namespace selected](/clusters_cluster-management_spectro-kubernetes-dashboard_success.webp)
 
-Congratulations! You have successfully deployed the _Spectro Kubernetes Dashboard_. For more information about the
+For more information about the
 Kubernetes dashboard, visit the
 [Official Kubernetes Dashboard](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/) page.
