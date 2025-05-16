@@ -39,7 +39,7 @@ initialize: ## Initialize the repository dependencies
 	@echo "initializing npm dependencies"
 	npm ci
 	touch .env
-	npx husky-init
+	npm run prepare
 	vale sync
 
 clean: clean-security ## Clean common artifacts
@@ -94,7 +94,7 @@ init: ## Initialize npm dependencies
 	grep -q "^DSO_AUTH_TOKEN=" .env || echo "\nDISABLE_SECURITY_INTEGRATIONS=true\nDSO_AUTH_TOKEN=" >> .env
 	grep -q "^PALETTE_API_KEY=" .env || echo "\nDISABLE_PACKS_INTEGRATIONS=true" >> .env
 	grep -q "^SHOW_LAST_UPDATE_TIME=" .env || echo "\nSHOW_LAST_UPDATE_TIME=false" >> .env
-	npx husky install
+	npm run prepare
 
 start: ## Start a local development server
 	npm run start
@@ -358,7 +358,6 @@ generate-release-notes: ## Generate release notes only
 
 generate-release: ## Generate all release files except release notes
 	./scripts/release/generate-spectro-cli-reference.sh
-	./scripts/release/generate-compatibility-matrix.sh
 	./scripts/release/generate-downloads.sh
 	./scripts/release/generate-advanced-configuration.sh
 	./scripts/release/generate-install-palette-cli.sh

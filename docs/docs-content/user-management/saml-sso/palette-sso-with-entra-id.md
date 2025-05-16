@@ -35,6 +35,14 @@ If you want to enable OIDC at the Kubernetes cluster level, refer to the
 
 Use the following steps to enable OIDC SSO in Palette with Microsoft Entra ID.
 
+### Limitations
+
+- By default, Entra ID returns the group membership in the form of group IDs (such as
+  `a99cb9c2-b9df-4363-b91e-feb1a68670cd`), not group names. This can present usability challenges, as Team names in
+  Palette must use the returned group IDs to enable automatic membership. Depending on your environment, Entra may be
+  able to send group names instead of IDs. For more information, refer to step 11 of the
+  [Configure Microsoft Entra ID with Palette](#configure-microsoft-entra-id-with-palette) section.
+
 ### Prerequisites
 
 - Palette or Palette VerteX version 4.0.X or greater.
@@ -51,72 +59,111 @@ Use the following steps to enable OIDC SSO in Palette with Microsoft Entra ID.
 
 - Palette requires the following claims to be present in the OIDC token:
 
-  | Claim Name       | Default Value | Description                                            |
-  | ---------------- | ------------- | ------------------------------------------------------ |
-  | **Email**        | `email`       | The user's email address.                              |
-  | **First Name**   | `given_name`  | The user's first name.                                 |
-  | **Last Name**    | `family_name` | The user's last name.                                  |
-  | **Spectro Team** | `groups`      | The user's group memberships in the Identity Provider. |
+  | Claim Name       | Default Value        | Description                                            |
+  | ---------------- | -------------------- | ------------------------------------------------------ |
+  | **Email**        | `preferred_username` | The user's login name in email address form.           |
+  | **First Name**   | `given_name`         | The user's first name.                                 |
+  | **Last Name**    | `family_name`        | The user's last name.                                  |
+  | **Spectro Team** | `groups`             | The user's group memberships in the Identity Provider. |
 
-  Change the claim names in your IdP if they are different from the default values. If the OIDC token does not contain
-  these claims, toggle the **Use userinfo endpoint** option in the OIDC configuration to allow Palette to fetch the
-  missing claims from the user information endpoint.
+  Change the claim names in your IDP if they are different from the default values. Valid options for the **Email**
+  claim are `email` or `preferred_username`.
+
+  :::tip
+
+  - We recommend using `preferred_username` for the **Email** claim, as this field will always be populated and match
+    the user's login name for Entra. Because the `email` field may be empty or inconsistent with the user's Entra login
+    name, it is generally not recommended for identification.
+  - If the OIDC token does not contain the required claims, or if the user belongs to many groups, enable the **Use
+    userinfo endpoint** option in the OIDC configuration. This allows Palette to fetch claims from the user information
+    endpoint rather than the size-limited ID token.
+
+  :::
 
 ### Configure Microsoft Entra ID with Palette
 
-1. Log in to [Palette](https://console.spectrocloud.com) as a **Tenant Admin**.
+1.  Log in to [Palette](https://console.spectrocloud.com) as a **Tenant Admin**.
 
-2. Navigate to the left main menu and select **Tenant Settings**. From the **Tenant Menu**, select **SSO**, and on the
-   **Configure** tab, choose **OIDC**.
+2.  Navigate to the left main menu and select **Tenant Settings**. From the **Tenant Menu**, select **SSO**, and on the
+    **Configure** tab, choose **OIDC**.
 
-3. Copy the **Callback URL** to your clipboard. This URL will be used in step 14 to configure the Microsoft Entra ID app
-   registration.
+3.  Copy the **Callback URL** to your clipboard. This URL will be used in step 14 to configure the Microsoft Entra ID
+    app registration.
 
-4. In a separate browser tab, log in to the Microsoft Entra ID Admin console and open the
-   [App registration blade](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade).
+4.  In a separate browser tab, log in to the Microsoft Entra ID Admin console and open the
+    [App registration blade](https://portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade).
 
-5. Click on **New registration** and assign a name to the new registration. In this guide, the example app registration
-   is named `palette-oidc`.
+5.  Click on **New registration** and assign a name to the new registration. In this guide, the example app registration
+    is named `palette-oidc`.
 
-6. Click **Register**.
+6.  Click **Register**.
 
-7. From the app overview page, navigate to the left main menu and select **Certificates & secrets**. On the following
-   screen, click on **New client secret**.
+7.  From the app overview page, navigate to the left main menu and select **Certificates & secrets**. On the following
+    screen, click on **New client secret**.
 
-8. Add a description for the secret and select an expiration period. Click on **Add** to create the secret.
+8.  Add a description for the secret and select an expiration period. Click on **Add** to create the secret.
 
-   :::warning
+    :::warning
 
-   We recommend you store the secret value in a secure location, such as a password manager. You will need this value
-   later when you configure Palette.
-
-   :::
-
-9. From the application overview page, navigate to the left main menu and select **Token configuration**.
-
-10. Select the **Add optional claim** button. Choose **Token type** as the **ID**, and add the claims `email` and
-    `preferred_username`. When finished, click the **Add** button.
-
-    :::info
-
-    If you are using
-    [Entra v2 ID tokens](https://learn.microsoft.com/en-us/entra/identity-platform/access-tokens#v10-and-v20-tokens),
-    add the claim `family_name` and `given_name` to your token configuration. Entra v1 ID tokens already include these
-    claims by default.
+    We recommend you store the secret value in a secure location, such as a password manager. You will need this value
+    later when you configure Palette.
 
     :::
 
-    ![Add a claim button](/oidc-entra-id-images/user-management_saml-sso_palette-sso-with-entra-id-twooptionalclaims.webp)
+9.  From the application overview page, navigate to the left main menu and select **Token configuration**.
 
-11. In addition to allowing individual user authentication, Palette provides group claim functionality, allowing an OIDC
-    identity provider, like Microsoft Entra ID, to identify the user's Entra ID group membership within Palette.
+10. Select **Add optional claim**. Choose **Token type** as the **ID**, and add the claims `email`, `family_name`,
+    `given_name`, and `preferred_username`. When finished, select **Add**.
 
-    To enable group membership, select the **Add groups claim** button. Then select **Security groups** and **Group ID**
-    for each property:
+    ![Add a claim button](/oidc-entra-id-images/user-management_saml-sso_palette-sso-with-entra-id-optionalclaims.webp)
 
-    - **ID**
-    - **Access**
-    - **SAML**
+    :::info
+
+    If you are still using
+    [Entra v1 ID tokens](https://learn.microsoft.com/en-us/entra/identity-platform/access-tokens#v10-and-v20-tokens),
+    the claims `family_name` and `given_name` are already included and do not need to be added.
+
+    :::
+
+11. In addition to allowing individual user authentication, Palette also supports group claims, allowing Microsoft Entra
+    ID to pass a user's group membership information, which gets mapped to Teams within Palette.
+
+    To pass group membership claims, select **Add groups claim**. Select the type of claim that fits your scenario.
+
+    - **Security groups** - This option causes Entra to include security group membership in the OIDC token. By default,
+      Entra sends these groups by group ID, not as names. If your security groups are synchronized to Entra from an
+      on-premise Active Directory, you can configure Entra to send the groups using the `sAMAccountName` instead. Note
+      that this does _not_ work for groups created in Entra directly.
+
+    - **Groups assigned to the application** - This option limits claims to groups that are both assigned to the
+      `palette-oidc` Enterprise Application and that the user is a member of. This approach is recommended for users who
+      belong to many groups; however, it requires an Entra P1 or higher subscription. By default, Entra sends these
+      groups as group IDs, but this can be adjusted later to send group names instead of group IDs.
+
+    Regardless of which option you select, Entra will send group claims as group IDs unless configured otherwise. To
+    send group claims as group IDs, select **Add** to complete the wizard, and proceed to step 12. To adjust how groups
+    are sent, follow the appropriate steps below, depending on your selection.
+
+    - **Security groups** - If your security groups come from an on-premise Active Directory environment and you want to
+      send the groups by `sAMAccountName` instead, adjust the **Customize token properties by type** section and select
+      the `sAMAccountName` option for all three items (**ID**, **Access**, and **SAML**). Select **Add** to complete the
+      wizard.
+    - **Groups assigned to the application** - If you want your application groups to be sent by name, select **Add** to
+      complete the wizard, navigate to the left main menu, and select **Manifest**. In the JSON code, navigate to the
+      `idToken` section and search for the `name: "groups"` block. Change `"additionalProperties": [],` to
+      `"additionalProperties": ["cloud_displayname"],` and **Save** the manifest. The block should look as follows.
+
+      ```bash hideClipboard
+      "idToken": [
+        ...
+        {
+          "additionalProperties": ["cloud_displayname"],
+          "essential": false,
+          "name": "groups",
+          "source": null
+        }
+      ],
+      ```
 
     When completed, the **Token Configuration** page will look similar to the image below.
 
@@ -136,10 +183,10 @@ Use the following steps to enable OIDC SSO in Palette with Microsoft Entra ID.
     You can also add additional redirect URLs if needed. For example, to enable integration with the Kubernetes
     Dashboard, add the following **Single-page application** redirect URIs to the app registration.
 
-    | URL                                              | Type of Access                                                  |
-    | ------------------------------------------------ | --------------------------------------------------------------- |
-    | `http://localhost:8000`                          | Use `kubectl` with the `kube-login` plugin from a workstation   |
-    | `https://<fqdn_of_k8s_dashboard>/oauth/callback` | Use OIDC to authenticate and log in to the Kubernetes Dashboard |
+    | URL                                              | Type of Access                                                      |
+    | ------------------------------------------------ | ------------------------------------------------------------------- |
+    | `http://localhost:8000`                          | Use `kubectl` with the `kube-login` plugin from a workstation.      |
+    | `https://<fqdn_of_k8s_dashboard>/oauth/callback` | Use Entra ID to authenticate with OIDC to the Kubernetes Dashboard. |
 
     </details>
 
@@ -149,7 +196,6 @@ Use the following steps to enable OIDC SSO in Palette with Microsoft Entra ID.
     | Field                       | Description                                                       |
     | --------------------------- | ----------------------------------------------------------------- |
     | **Application (client) ID** | The unique identifier for your Azure application.                 |
-    | **Object ID**               | The unique identifier for the application in Azure AD.            |
     | **Directory (tenant) ID**   | The unique identifier for your Azure AD tenant.                   |
     | **Secret Value**            | The value of the client secret you created in the previous steps. |
 
@@ -162,50 +208,103 @@ Use the following steps to enable OIDC SSO in Palette with Microsoft Entra ID.
     | **Type**  | **Category**       | **Permission** | **Admin consent required** |
     | --------- | ------------------ | -------------- | -------------------------- |
     | Delegated | OpenId permissions | `email`        | No                         |
+    | Delegated | OpenId permissions | `openid`       | No                         |
     | Delegated | OpenId permissions | `profile`      | No                         |
     | Delegated | User               | `User.Read`    | No                         |
 
-    :::info
+19. Select **Add permissions**.
 
-    Palette does not need to look up or list groups in Azure as it uses the group’s Object ID to map to a team name in
-    Palette. The group's Object ID is obtained from the claims within the OIDC token.
+20. To assign groups to the application, follow the below procedure to set the groups that can be passed to Palette.
+    Otherwise skip this step.
 
-    :::
+    <details>
 
-19. Click **Add permissions** after selecting the permissions.
+    <summary>Assign Groups to the Application</summary>
 
-20. Navigate to the
-    [Microsoft Entra ID Groups page](https://entra.microsoft.com/#view/Microsoft_AAD_IAM/GroupsManagementMenuBlade/~/AllGroups/menuId/AllGroups).
+    1. Navigate to the
+       [Microsoft Entra ID Enterprise applications page](https://entra.microsoft.com/#view/Microsoft_AAD_IAM/StartboardApplicationsMenuBlade/~/AppAppsPreview).
 
-21. Find the groups that you want to add to Palette and record each group's **Name** and **Object ID**. You will use
-    this information in future steps to configure Palette.
+    2. Open the `palette-oidc` application and select **Users and groups**. Select **Add user/group**.
 
-22. Log in to [Palette](https://console.spectrocloud.com).
+    3. On the **Add Assignment** page, under **Users and Groups**, select **None Selected**. Select the **Groups**
+       column to list the groups.
 
-23. From the left main menu, select **Users and Teams**. Next, choose **Teams** and then select **Create New Team**.
+    4. Select all eligible groups that can be passed to Palette. When finished, choose **Select** to confirm your
+       selection.
 
-24. Create your Palette teams, with each team named after the **Entra ID Group ID** you recorded in step 21. The
-    following table is an example configuration.
+    5. **Assign** the selected groups to the application.
 
-    | Palette Team Name is the Entra Group ID | Entra ID Group Name              |
-    | --------------------------------------- | -------------------------------- |
-    | `e3ac07cc-bd12-4edc-92a4-983d783153ba`  | `palette_tenant_admins`          |
-    | `88f61c49-1dd1-40c3-a820-68a513a38725`  | `palette_default_project_admins` |
-    | `3f33c3a5-e0af-4ef6-9671-c7545fe264f3`  | `k8s_cluster_admins`             |
-    | `c4606295-e8b0-4df0-891b-de4428d7e54f`  | `k8s_cluster-editor`             |
+    </details>
 
-25. Assign **Roles** to each Palette team. The following table is an example configuration.
+21. If you chose the default option of sending group membership by group IDs, use the following procedure to define
+    Teams in Palette based on group IDs. If you are sending groups by name, skip this step.
 
-    | Palette Team Name                      | Role             | Entra ID Group Name              |
-    | -------------------------------------- | ---------------- | -------------------------------- |
-    | `e3ac07cc-bd12-4edc-92a4-983d783153ba` | Tenant Admin     | `palette_tenant_admins`          |
-    | `88f61c49-1dd1-40c3-a820-68a513a38725` | Project Admin    | `palette_default_project_admins` |
-    | `3f33c3a5-e0af-4ef6-9671-c7545fe264f3` | No role assigned | `k8s_cluster_admins`             |
-    | `c4606295-e8b0-4df0-891b-de4428d7e54f` | No role assigned | `k8s_cluster-editor`             |
+    <details>
 
-26. Navigate to left main menu and select **Tenant Settings**. Next, click on **SSO** and select the **OIDC** tab.
+    <summary>Match Group IDs to Palette Teams</summary>
 
-27. Configure the OIDC settings in Palette. Use the table below as a reference and populate the fields with the
+    1. Navigate to the
+       [Microsoft Entra ID Groups page](https://entra.microsoft.com/#view/Microsoft_AAD_IAM/GroupsManagementMenuBlade/~/AllGroups/menuId/AllGroups).
+
+    2. Find the groups you want to add to Palette and record each group's **Name** and **Object ID**. You will use this
+       information in future steps to configure Palette.
+
+    3. Log in to [Palette](https://console.spectrocloud.com) as a Tenant Admin.
+
+    4. From the left main menu, select **Users and Teams**.
+    5. On the **Teams** tab, select **Create team**.
+
+    6. Create your Palette teams, with each team named after the **Entra ID Group ID** you recorded. The following table
+       is an example configuration.
+
+       | Palette Team Name is the Entra Group ID | Entra ID Group Name              |
+       | --------------------------------------- | -------------------------------- |
+       | `e3ac07cc-bd12-4edc-92a4-983d783153ba`  | `palette_tenant_admins`          |
+       | `88f61c49-1dd1-40c3-a820-68a513a38725`  | `palette_default_project_admins` |
+       | `3f33c3a5-e0af-4ef6-9671-c7545fe264f3`  | `k8s_cluster_admins`             |
+       | `c4606295-e8b0-4df0-891b-de4428d7e54f`  | `k8s_cluster-editor`             |
+
+    7. Assign **Roles** to each Palette team. The following table is an example configuration.
+
+       | Palette Team Name                      | Role             | Entra ID Group Name              |
+       | -------------------------------------- | ---------------- | -------------------------------- |
+       | `e3ac07cc-bd12-4edc-92a4-983d783153ba` | Tenant Admin     | `palette_tenant_admins`          |
+       | `88f61c49-1dd1-40c3-a820-68a513a38725` | Project Admin    | `palette_default_project_admins` |
+       | `3f33c3a5-e0af-4ef6-9671-c7545fe264f3` | No role assigned | `k8s_cluster_admins`             |
+       | `c4606295-e8b0-4df0-891b-de4428d7e54f` | No role assigned | `k8s_cluster-editor`             |
+
+      </details>
+
+22. If you selected the option to send group membership by group name, use the following procedure to define Teams in
+    Palette based on group names. If you are sending groups by ID, skip this step.
+
+    <details>
+
+    <summary>Match Group Names to Palette Teams</summary>
+
+    1. Log in to [Palette](https://console.spectrocloud.com) as a Tenant Admin.
+
+    2. From the left main menu, select **Users and Teams**.
+    3. On the **Teams** tab, select **Create team**.
+
+    4. Create your Palette teams, with each team named after the **Entra ID Group Name**. This is either the
+       `sAMAccountName` for a security group synced from Active Directory or the regular group name of a group assigned
+       to the `palette-oidc` Enterprise Application.
+
+    5. Assign **Roles** to each Palette team. The following table is an example configuration.
+
+       | Palette Team Name                | Role             |
+       | -------------------------------- | ---------------- |
+       | `palette_tenant_admins`          | Tenant Admin     |
+       | `palette_default_project_admins` | Project Admin    |
+       | `k8s_cluster_admins`             | No role assigned |
+       | `k8s_cluster`                    | No role assigned |
+
+    </details>
+
+23. Navigate to left main menu and select **Tenant Settings**. Next, click on **SSO** and select the **OIDC** tab.
+
+24. Configure the OIDC settings in Palette. Use the table below as a reference and populate the fields with the
     information you saved from the previous steps.
 
     | Field             | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
@@ -217,7 +316,7 @@ Use the following steps to enable OIDC SSO in Palette with Microsoft Entra ID.
     | **Scopes**        | Add `openid`, `profile` and `email`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
     | **Email**         | Use `email` as the default value.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
 
-28. Leave other fields with the default values and click **Enable**. If all required values are provided, you will
+25. Leave other fields with the default values and click **Enable**. If all required values are provided, you will
     receive a message stating that OIDC is configured successfully.
 
     ![Example of Palette with populated input fields](/oidc-entra-id-images/user-management_saml-sso_palette-sso-with-entra-id-enable.webp)

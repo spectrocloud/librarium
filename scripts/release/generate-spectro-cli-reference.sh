@@ -5,6 +5,7 @@ source scripts/release/utilities.sh
 
 # Define compatibility maxtrix related files
 REFERENCE_FILE="docs/docs-content/registries-and-packs/spectro-cli-reference.md"
+PARTIALS_FILE="_partials/_spectro-cloud-cli-tool-download.mdx"
 OSX_TEMPLATE_FILE="scripts/release/templates/spectro-cli-install-osx.md"
 LINUX_TEMPLATE_FILE="scripts/release/templates/spectro-cli-install-linux.md"
 VERSION_TEMPLATE_FILE="scripts/release/templates/spectro-cli-install-version.md"
@@ -22,22 +23,22 @@ generate_parameterised_file $OSX_TEMPLATE_FILE $OSX_PARAMETERISED_FILE
 generate_parameterised_file $LINUX_TEMPLATE_FILE $LINUX_PARAMETERISED_FILE
 generate_parameterised_file $VERSION_TEMPLATE_FILE $VERSION_PARAMETERISED_FILE
 
-existing_cli_osx=$(search_line "spectro-cli-osx-install" $REFERENCE_FILE)
+existing_cli_osx=$(search_line "spectro-cli-osx-install" $PARTIALS_FILE)
 if [[ -n "$existing_cli_osx" && "$existing_cli_osx" -ne 0 ]]; then
     replace_index=$((existing_cli_osx + $SHELL_OFFSET))
-    replace_line $replace_index $OSX_PARAMETERISED_FILE $REFERENCE_FILE
-    echo "✅ Updated OSX Spectro CLI install in $REFERENCE_FILE"
+    replace_line $replace_index $OSX_PARAMETERISED_FILE $PARTIALS_FILE
+    echo "✅ Updated OSX Spectro CLI install in $PARTIALS_FILE"
 else 
-    echo "❌ No spectro-cli-osx-install tag found in  $REFERENCE_FILE. Nothing was inserted."
+    echo "❌ No spectro-cli-osx-install tag found in  $PARTIALS_FILE. Nothing was inserted."
 fi
 
-existing_cli_linux=$(search_line "spectro-cli-linux-install" $REFERENCE_FILE)
+existing_cli_linux=$(search_line "spectro-cli-linux-install" $PARTIALS_FILE)
 if [[ -n "$existing_cli_linux" && "$existing_cli_linux" -ne 0 ]]; then
     replace_index=$((existing_cli_linux + $SHELL_OFFSET))
-    replace_line $replace_index $LINUX_PARAMETERISED_FILE $REFERENCE_FILE
-    echo "✅ Updated Linux Spectro CLI install in $REFERENCE_FILE"
+    replace_line $replace_index $LINUX_PARAMETERISED_FILE $PARTIALS_FILE
+    echo "✅ Updated Linux Spectro CLI install in $PARTIALS_FILE"
 else 
-    echo "❌ No spectro-cli-linux-install tag found in $REFERENCE_FILE. Nothing was inserted."
+    echo "❌ No spectro-cli-linux-install tag found in $PARTIALS_FILE. Nothing was inserted."
 fi
 
 existing_version_output=$(search_line "spectro-cli-version-output" $REFERENCE_FILE)

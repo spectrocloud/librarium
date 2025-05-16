@@ -3,44 +3,44 @@ partial_category: capi-image-builder
 partial_name: download-capi-image-builder-repository
 ---
 
-Download version `v1.5.0` of the CAPI Image Builder repository.
-
 <Tabs>
-<TabItem value="Docker" label="Docker">
 
-```shell
-docker pull gcr.io/spectro-images-public/imagebuilder/capi-builder:v1.5.0
-```
+    <TabItem value="Docker" label="Docker">
 
-Confirm that the image was downloaded correctly.
+    ```shell
+    docker pull us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:v4.6.23
+    ```
 
-```shell
-docker images
-```
+    Confirm that the image was downloaded correctly.
 
-```text hideClipboard
-REPOSITORY                                               TAG       IMAGE ID       CREATED      SIZE
-gcr.io/spectro-images-public/imagebuilder/capi-builder   v1.5.0    1d891fc2e8da   6 days ago   2.5GB
-```
+    ```shell
+    docker images
+    ```
 
-</TabItem>
+    ```text hideClipboard title="Example output"
+    REPOSITORY                                                           TAG        IMAGE ID       CREATED       SIZE
+    us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder   v4.6.23    2adff15eee2d   7 days ago    2.47 GB
+    ```
 
-<TabItem value="Podman" label="Podman">
+    </TabItem>
 
-```shell
-podman pull gcr.io/spectro-images-public/imagebuilder/capi-builder:v1.5.0
-```
+    <TabItem value="Podman" label="Podman">
 
-Confirm that the image was downloaded correctly.
+    ```shell
+    podman pull us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:v4.6.23
+    ```
 
-```shell
-podman images
-```
+    Confirm that the image was downloaded correctly.
 
-```text hideClipboard
-REPOSITORY                                               TAG       IMAGE ID       CREATED      SIZE
-gcr.io/spectro-images-public/imagebuilder/capi-builder   v1.5.0    1d891fc2e8da   6 days ago   2.5GB
-```
+    ```shell
+    podman images
+    ```
 
-</TabItem>
+    ```text hideClipboard title="Example output"
+    REPOSITORY                                                           TAG        IMAGE ID       CREATED       SIZE
+    us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder   v4.6.23    2adff15eee2d   7 days ago    2.47 GB
+    ```
+
+    </TabItem>
+
 </Tabs>
