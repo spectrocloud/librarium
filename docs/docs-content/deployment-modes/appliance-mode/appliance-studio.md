@@ -223,7 +223,7 @@ podman compose down
 
 </TabItem>
 
-<Tabs>
+</Tabs>
 
 ## Resources
 

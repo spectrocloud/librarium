@@ -82,11 +82,28 @@ these files once you are familiar with the parameters.
 2. Click **Design**. Then under **Argument files**, click **New .arg file**. If you have previously created and saved a
    preset, you can choose **Continue with presets**. Otherwise, click **Start from scratch**.
 
+   - If you have previously created and saved a preset, you can choose **Continue with presets**. You can use multiple
+     presets as a starting point to build a new configuration by dragging the presets to the middle column. If any of
+     the parameters between the parameters conflict with each other, the presets higher in the list take precedence.
+   - If you do not have presets or want to create a new file from scratch, click **Start from scratch**.
+
+   :::warning
+
+   Some parameters in a preset may be invisible in the code pane because they are set to the default values. For
+   example, if you set `OS_VERSION` to `22`, the argument will not appear in the code pane. However, this setting will
+   still override presets lower on the list if they contain the same argument.
+
+   The same rule applies to `user-data` presets as well.
+
+   :::
+
 3. Fill out each field in the form to customize your `.arg` file. Fields marked with `*` are mandatory. As you fill out
    each field, you can preview the `.arg` file in the code pane on the right. You can also make edits in the code pane
-   directly, which will automatically update the form.
+   directly, which will automatically update the form. In some instances, you may not see a change in the code pane,
+   because you have specified the default value for the parameter, which is omitted.
 
-   Refer to [Edge Artifact Build Configurations](./palette-canvos/arg.md) for a description of each argument.
+   Refer to [Edge Artifact Build Configurations](./palette-canvos/arg.md) for a description of each argument and their
+   default values.
 
 4. When you are done, click **Confirm & Save**. Give your new configuration a name and optional tags that will help you
    identify it.
@@ -98,16 +115,20 @@ these files once you are familiar with the parameters.
 
 1. Visit the Appliance Studio in your browser.
 
-2. Click **Design**. Then under **User data configuration**, click **New user-data configuration**. If you have
-   previously created and saved a preset, you can choose **Continue with presets**. Otherwise, click **Start from
-   scratch**.
+2. Click **Design**. Then under **User data configuration**, click **New user-data configuration**.
+
+   - If you have previously created and saved a preset, you can choose **Continue with presets**. You can use multiple
+     presets as a starting point to build a new configuration by dragging the presets to the middle column. If any of
+     the parameters between the parameters conflict with each other, the presets higher in the list take precedence.
+   - If you do not have presets or want to create a new file from scratch, click **Start from scratch**.
 
 3. Fill out each field in the form to customize your `user-data` file. Fields marked with `*` are mandatory. As you fill
    out each field, you can preview the `user-data` file in the code pane on the right. You can also make edits in the
-   code pane directly, which will automatically update the form.
+   code pane directly, which will automatically update the form. In some instances, you may not see a change in the code
+   pane, because you have specified the default value for the parameter, which is omitted
 
    Refer to [Installer Configuration Reference](../edge-configuration/installer-reference.md) for a description of each
-   parameter.
+   parameter and their default values.
 
 4. When you are done, click **Confirm & Save**. Give your new configuration a name and optional tags that will help you
    identify it.
@@ -133,7 +154,7 @@ You can create presets to use as reusable building blocks for future instances o
    identify it.
 
    The next time you create a new instance of either the `user-data` file or `.arg` file, you will be able to use your
-   preset as a template and make customizations on top of it.
+   presets as building blocks to form a complete configuration.
 
 </TabItem>
 

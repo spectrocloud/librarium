@@ -48,7 +48,7 @@ for AWS, refer to the [Required IAM Policies](../clusters/public-cloud/aws/requi
 
 ## Appliance Mode
 
-In [appliance mode](./appliance-mode.md), you provide your own infrastructure. You start by using
+In [appliance mode](./appliance-mode/appliance-mode.md), you provide your own infrastructure. You start by using
 [EdgeForge](../clusters/edge/edgeforge-workflow/edgeforge-workflow.md) to build artifacts, including provider images and
 the installer ISO. You then [install](../clusters/edge/site-deployment/stage.md) the Palette agent on your host using
 the installer ISO. Once installed, you can use either [Local UI](../clusters/edge/local-ui/local-ui.md) or the Palette

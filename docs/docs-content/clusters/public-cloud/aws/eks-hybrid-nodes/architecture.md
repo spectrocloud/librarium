@@ -21,8 +21,8 @@ These are some of the architectural highlights when using Palette to manage your
 - Define cluster profiles to collectively manage your hybrid nodes. Each cluster profile for a hybrid node pool includes
   the following configurable layers:
 
-  - If you are using [Appliance Mode](../../../../deployment-modes/appliance-mode.md), configure the Operating System
-    (OS) layer to reference the provider image built during the
+  - If you are using [Appliance Mode](../../../../deployment-modes/appliance-mode/appliance-mode.md), configure the
+    Operating System (OS) layer to reference the provider image built during the
     [EdgeForge](../../../edge/edgeforge-workflow/edgeforge-workflow.md) workflow and optional customizations for your
     hybrid nodes.
 
@@ -57,7 +57,7 @@ If you want to use your edge hosts as Amazon EKS Hybrid Nodes, they must have be
 methods:
 
 - [Agent Mode](../../../../deployment-modes/agent-mode/agent-mode.md)
-- [Appliance Mode](../../../../deployment-modes/appliance-mode.md) using the
+- [Appliance Mode](../../../../deployment-modes/appliance-mode/appliance-mode.md) using the
   [EdgeForge workflow](../../../edge/edgeforge-workflow/edgeforge-workflow.md).
 
 Follow the steps in [Prepare Edge Hosts](./prepare-environment/prepare-edge-hosts.md) to prepare your edge hosts using
