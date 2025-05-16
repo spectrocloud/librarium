@@ -13,9 +13,9 @@ console for all hosts of your organization.
 
 :::warning
 
-This guide is specific to agent mode. If you have an Edge host deployed in
-[appliance mode](../../appliance-mode/appliance-mode.md), you need to provide the customizations during EdgeForge. Refer
-to [Customize Local UI Theme](../../../clusters/edge/local-ui/host-management/theming.md) for more information.
+This guide is specific to agent mode. If you have an Edge host deployed in [appliance mode](../../appliance-mode.md),
+you need to provide the customizations during EdgeForge. Refer to
+[Customize Local UI Theme](../../../clusters/edge/local-ui/host-management/theming.md) for more information.
 
 :::
 

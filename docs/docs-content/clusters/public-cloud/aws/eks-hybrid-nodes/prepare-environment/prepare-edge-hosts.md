@@ -11,7 +11,7 @@ This guide explains how to prepare edge hosts for use as Amazon EKS Hybrid Nodes
 There are two available methods to register these hosts:
 
 - [Agent Mode](../../../../../deployment-modes/agent-mode/agent-mode.md)
-- [Appliance Mode](../../../../../deployment-modes/appliance-mode/appliance-mode.md) using the
+- [Appliance Mode](../../../../../deployment-modes/appliance-mode.md) using the
   [EdgeForge Workflow](../../../../edge/edgeforge-workflow/edgeforge-workflow.md).
 
 Agent Mode installs a lightweight agent on existing systems, and Appliance Mode deploys a fully managed operating system
