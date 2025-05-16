@@ -71,8 +71,8 @@ Confirm the VM settings and click **Finish** to create the VM.
 
 Select the VM to adjust its network settings. Click **Settings**, then select **Network**.
 
-Change the **Attached to:** option from **NAT** to **Bridged Adapter**. This allows the VM to receive an IP address from the
-same network as the host. Click **OK**.
+Change the **Attached to:** option from **NAT** to **Bridged Adapter**. This allows the VM to receive an IP address from
+the same network as the host. Click **OK**.
 
 ![A screenshot of the VirtualBox VM network configuration.](/getting-started/getting-started_introduction-edge_prepare-edge-host_vm-network.webp)
 
@@ -127,8 +127,8 @@ To register the host with Palette, select the VM in VirtualBox and click **Start
 obtains an IP address from the host machine's bridged network.
 
 After a few minutes, the VM screen displays an IP address and automatically registers with Palette as an Edge host,
-using the registration token provided in the `user-data` file during the [Prepare User Data for Edge Installation](./prepare-user-data.md)
-tutorial.
+using the registration token provided in the `user-data` file during the
+[Prepare User Data for Edge Installation](./prepare-user-data.md) tutorial.
 
 ![A screenshot of the Edge host.](/getting-started/getting-started_introduction-edge_prepare-edge-host_edge-host-vm.webp)
 
@@ -157,8 +157,8 @@ automatically from the GRand Unified Bootloader (GRUB) menu. The device boots an
 network.
 
 After a few minutes, the device screen displays an IP address and automatically registers with Palette as an Edge host,
-using the registration token provided in the `user-data` file during the [Prepare User Data for Edge Installation](./prepare-user-data.md)
-tutorial.
+using the registration token provided in the `user-data` file during the
+[Prepare User Data for Edge Installation](./prepare-user-data.md) tutorial.
 
 ![A screenshot of the Edge host.](/getting-started/getting-started_introduction-edge_prepare-edge-host_edge-host-bm-screen.webp)
 
