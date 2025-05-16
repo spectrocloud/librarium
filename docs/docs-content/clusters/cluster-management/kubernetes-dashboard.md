@@ -20,29 +20,44 @@ cluster itself.
 - [Deploy a Cluster with AWS](/getting-started/aws/deploy-k8s-cluster.md)
 - [Deploy a Cluster with GCP](/getting-started/gcp/deploy-k8s-cluster.md)
 - [Deploy a Cluster with VMware](/getting-started/vmware/deploy-k8s-cluster.md)
+  cloud provider.
+- [Deploy a Cluster with Azure](/getting-started/azure/deploy-k8s-cluster.md)
+- [Deploy a Cluster with AWS](/getting-started/aws/deploy-k8s-cluster.md)
+- [Deploy a Cluster with GCP](/getting-started/gcp/deploy-k8s-cluster.md)
+- [Deploy a Cluster with VMware](/getting-started/vmware/deploy-k8s-cluster.md)
 
 ## Enablement
 
 1. In Palette, select **Clusters** from the left Main Menu. Select the name of the cluster you want to provision the
    _Spectro Kubernetes Dashboard_ on.
+   _Spectro Kubernetes Dashboard_ on.
 
-2. Select the **Profiles** tab and identify the name of the profile your cluster is using.
+2. Select the **Profile** tab and identify the name of the profile your cluster is using.
 
 ![Image of the Palette UI, cluster overview screen with the profile name called out](/clusters_cluster-management_spectro-kubernetes-dashboard_cluster-profile.webp)
 
 3. Select **Profiles** from the left Main Menu. Select the profile your desired cluster is using.
 
-4. Select **Create new version** from the drop down menu.
+4. Select **Create new version** from the version drop down menu.
 
 5. Enter the version number you wish to use for the updated profile and select **Confirm**.
 
 6. Select **Add New Pack**
 
-7. Search for _Spectro Kubernetes Dashboard_ in the Search field.
+7. Search for _Spectro Kubernetes Dashboard_ in the Search field and select it.
 
 ![Image of the pack search screen with the search result shown](/clusters_cluster-management_spectro-kubernetes-dashboard_select-dashboard-pack.webp)
 
+:::info
+
+There are two packs for the Kubernetes dashboard. One is the _Spectro Kubernetes Dashboard_ pack, which contains the
+customizations required for the service to function. The other is the _Kubernetes Dashboard_, which contains the open
+source Kubernetes Dashboard service without any customizations. Ensure you use the _Spectro Kubernetes Dashboard_ pack.
+
+:::
+
 7. The _Spectro Kubernetes Dashboard_ pack exists in multiple registries. We recommend selecting the most recent pack
+   version available in the _Palette Registry_. Select your desired pack version, then select **Confirm**
    version available in the _Palette Registry_. Select your desired pack version, then select **Confirm**
 
 ![Image of the pack showing multiple registries](/clusters_cluster-management_spectro-kubernetes-dashboard_pack-registry-select.webp)
@@ -61,6 +76,8 @@ data store in the Kubernetes cluster. No loss of data occurs during the upgrade 
 
 ![Image highlighting the Kubernetes layer](/clusters_cluster-management_spectro-kubernetes-dashboard_kube-layer.webp)
 
+10. Ensure the **OIDC Identity Provider** is configured correctly for your organization. Select **Confirm Updates** if
+    you made changes, otherwise select **Close**.
 10. Ensure the **OIDC Identity Provider** is set to the values your organization requires. Select **Confirm Updates** if
     you made changes, otherwise select **Close**.
 
@@ -75,6 +92,7 @@ the configurations required in your environment.
 
 11. The profile overview screen reflects that the **spectro-k8s-dashboard** pack is now part of your cluster profile.
     Select **Save Changes**.
+    Select **Save Changes**.
 
 ![Image showing the final graphical state of the profile in the Palette UI](/clusters_cluster-management_spectro-kubernetes-dashboard_final-profile.webp)
 
@@ -84,19 +102,25 @@ the configurations required in your environment.
 
 14. Select the **Project** drop down menu from either the **Infrastructure Layers** or the **ADDON Layers** section.
     Select the new profile version that contains the _Spectro Kubernetes Dashboard_ pack.
+    Select the new profile version that contains the _Spectro Kubernetes Dashboard_ pack.
 
 ![Image showing the selection of the profile version to be applied to the selected cluster](/clusters_cluster-management_spectro-kubernetes-dashboard_apply-profile.webp)
 
 15. Monitor cluster status with the **Overview** tab until the _Spectro Kubernetes Dashboard 7.11.1_ indicates
     successful deployment.
+    successful deployment.
 
 16. If you have built your cluster using our tutorials, you will need to update the RBAC rules. On the cluster
+    **Overview** tab **Settings > Cluster Settings**.
     **Overview** tab **Settings > Cluster Settings**.
 
 ![Image showing the location of the settings drop down](/clusters_cluster-management_spectro-kubernetes-dashboard_cluster-settings.webp)
 
 17. Select the **RBAC** option, then select **Add New Binding**.
 
+18. Enter the **Cluster Role name** that provides the user the K8s permissions they need to use the dashboard. For our
+    tutorials we use cluster-admin. Enter the username associated with your account in the **Subject name** field.
+    Select **Confirm**. Select **Save Changes**.
 18. Enter `cluster-admin` in the **Cluster Role name** field. Enter the username associated with your account in the
     **Subject name** field. Select **Confirm**. Select **Save Changes**.
 
@@ -112,6 +136,7 @@ Once your configuration changes are applied successfully, continue to the `Valid
 
 3. On the **Overview** screen, a new row is displayed called **Kubernetes Dashboard** with a button titled **Connect**.
    Select the **Connect** button.
+   Select the **Connect** button.
 
 :::tip
 
@@ -126,8 +151,8 @@ Depending on your display settings, you may need to scroll down to expose the **
 :::info
 
 The Spectro Kubernetes Dashboard displays the `default` namespace by default. If there are no deployments in that
-namespace, a message stating "There is nothing to display here" will be displayed. Select the namespace drop-down Menu
-to review and select other namespaces in your cluster.
+namespace, a message stating "There is nothing to display here" is displayed. Select the namespace drop-down Menu to
+review and select other namespaces in your cluster.
 
 :::
 
