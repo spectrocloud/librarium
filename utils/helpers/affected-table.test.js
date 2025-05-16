@@ -41,4 +41,18 @@ describe("generateMarkdownTable", () => {
       "Error: Data inconsistency - Products impacted but no versions provided."
     );
   });
+
+  it("keeps only latest patch", () => {
+    const map = {
+      palette: { impacts: true, versions: ["4.6.22", "4.6.24", "4.6.23"] },
+      paletteAirgap: { impacts: false, versions: [] },
+      vertex: { impacts: true, versions: ["4.6.22", "4.6.24", "4.6.23"] },
+      vertexAirgap: { impacts: false, versions: [] },
+    };
+
+    const result = generateMarkdownTable(map);
+    expect(result).toContain("| 4.6.24 | ⚠️ Impacted | ✅ No Impact | ⚠️ Impacted | ✅ No Impact |");
+    expect(result).not.toContain("4.6.22");
+    expect(result).not.toContain("4.6.23");
+  });
 });
