@@ -9,8 +9,10 @@ tags: ["edge"]
 
 Appliance Studio is a lightweight and standalone configuration Graphic User Interface (GUI) for EdgeForge. It runs
 locally on your machine and allows you to build, save, edit, and manage the two configuration files that are essential
-to the EdgeForge process, with zero risk of syntax errors. It also allows you to create presets, which are templates
-that you can reuse to create new configuration files.
+to the EdgeForge process, with zero risk of syntax errors.
+
+It also allows you to create presets, which are optional building blocks that you can reuse to create new configuration
+files.
 
 :::preview
 
@@ -132,6 +134,8 @@ are supported.
          - ./appliance-studio-data/additional-path:/data
    ```
 
+   The data stored in the data directory includes your saved configurations and presets.
+
 4. If you did not modify the persistent data mount directory, skip this step.
 
    If you modified the persistent data mount directory, ensure that the directory exists before proceeding to the next
@@ -193,13 +197,41 @@ are supported.
 
 2. Confirm that Appliance Studio is accessible.
 
+## Next Steps
+
+Refer to [Prepare User Data and Argument Files](../../clusters/edge/edgeforge-workflow/prepare-user-data.md) to learn
+how to use Appliance Studio to prepare your EdgeForge configuration files.
+
+Issue the following commands to bring down Application Studio once you are done. Your saved presets and configurations
+will persist when you bring it up again.
+
+<Tabs groupId="method">
+
+<TabItem value="Docker Compose">
+
+```shell
+docker compose down
+```
+
+</TabItem>
+
+<TabItem value="Podman Compose">
+
+```shell
+podman compose down
+```
+
+</TabItem>
+
+<Tabs>
+
 ## Resources
 
 Appliance Studio can help you prepare the two essential configuration files used during the EdgeForge process. Refer to
 the following pages for more information on the `.arg` file and `user-data` file.
 
-- [Prepare User Data and Argument Files](./prepare-user-data.md)
+- [Prepare User Data and Argument Files](../../clusters/edge/edgeforge-workflow/prepare-user-data.md)
 
-- [Edge Installer Reference](../edge-configuration/installer-reference.md)
+- [Edge Installer Reference](../../clusters/edge/edge-configuration/installer-reference.md)
 
-- [EdgeForge Build Configuration](./palette-canvos/arg.md)
+- [EdgeForge Build Configuration](../../clusters/edge/edgeforge-workflow/palette-canvos/arg.md)

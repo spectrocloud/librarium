@@ -38,10 +38,10 @@ configuration parameters you can use in the configuration user data.
 
 ## Appliance Studio vs Manual File Creation
 
-The [Appliance Studio](./appliance-studio.md) is a lightweight Graphic User Interface (GUI) that allows you to design
-both files with zero risk of syntax errors. We recommend using this tool for file creation. However, since both `.arg`
-and `user-data` are plain text files, you can also manually create and edit these files once you are familiar with the
-parameters.
+The [Appliance Studio](../../../deployment-modes/appliance-mode//appliance-studio.md) is a lightweight Graphic User
+Interface (GUI) that allows you to design both files with zero risk of syntax errors. We recommend using this tool for
+file creation. However, since both `.arg` and `user-data` are plain text files, you can also manually create and edit
+these files once you are familiar with the parameters.
 
 ## Limitations
 
@@ -55,8 +55,9 @@ parameters.
 
 <TabItem value="Appliance Studio">
 
-- A deployed instance of Appliance Studio. Refer to [Deploy Appliance Studio](./appliance-studio.md) to learn how to
-  deploy Appliance Studio.
+- A deployed instance of Appliance Studio. Refer to
+  [Deploy Appliance Studio](../../../deployment-modes/appliance-mode//appliance-studio.md) to learn how to deploy
+  Appliance Studio.
 
 </TabItem>
 
@@ -119,7 +120,7 @@ parameters.
 
 ### (Optional) Create Presets for .arg and user-data Files
 
-You can create presets to use as templates for future instances of your configuration files.
+You can create presets to use as reusable building blocks for future instances of your configuration files.
 
 1. Visit the Appliance Studio in your browser.
 

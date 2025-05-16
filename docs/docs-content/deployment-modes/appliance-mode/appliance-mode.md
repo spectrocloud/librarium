@@ -36,8 +36,8 @@ appliance mode deployments.
 
 ## Resources
 
-- [Architecture](../clusters/edge/architecture/architecture.md)
+- [Architecture](../../clusters/edge/architecture/architecture.md)
 
-- [Edge Deployment Lifecycle](../clusters/edge/edge-native-lifecycle.md)
+- [Edge Deployment Lifecycle](../../clusters/edge/edge-native-lifecycle.md)
 
-- [EdgeForge Workflow](../clusters/edge/edgeforge-workflow/edgeforge-workflow.md)
+- [EdgeForge Workflow](../../clusters/edge/edgeforge-workflow/edgeforge-workflow.md)
