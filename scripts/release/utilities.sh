@@ -64,7 +64,7 @@ insert_file_offset() {
     local line_counter=0
     local target_line=0
 
-    while IFS= read -r line || [[ -n "$line" ]]; do
+    while IFS= read -r line; do
         ((line_counter++))
 
         # Detect the first occurrence of the search term
