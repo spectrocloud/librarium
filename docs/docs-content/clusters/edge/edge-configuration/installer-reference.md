@@ -293,10 +293,8 @@ Location:Mumbai,India; Latitude:48.856614; Longitude:2.352221; owner:p78125d
 
 ### Tags From a Script
 
-You can specify tags from a script by using the `tagsFromScript` parameter object. The script must be executable and
-return a JSON object that contains the tags in the following format.
-
-<br />
+You can specify tags from a script by using the `tagsFromScript` parameter object. The script must be bash script that
+is executable and return a JSON object that contains the tags in the following format.
 
 ```json hideClipboard
 {
@@ -304,9 +302,7 @@ return a JSON object that contains the tags in the following format.
 }
 ```
 
-Example:
-
-<br />
+For example, if you have a bash script that returns the following JSON output:
 
 ```json
 {
