@@ -17,6 +17,8 @@ your stack and add any necessary add-ons to support your workloads.
 reconfiguration, while supporting both single-node and multi-node clusters. Additionally, it ensures that clusters
 continue enforcing policies locally, maintaining uninterrupted operations even when connectivity is disrupted.
 
+![Palette tactical Edge examples](/getting-started/getting-started_introduction-edge_tactical-edge.webp)
+
 ## Use Cases
 
 Palette Edge allows you to manage Kubernetes clusters at scale across distributed and remote locations. You can model
@@ -35,8 +37,6 @@ how you can leverage Palette Edge.
 
 - **Mission-Critical Edge**: Deploy AI-powered compute-intensive vision applications in remote environments to support
   real-time supply chain and logistics.
-
-![Palette tactical Edge examples](/getting-started/getting-started_introduction-edge_tactical-edge.webp)
 
 ## Architecture
 
@@ -60,42 +60,35 @@ which does not require a connection to Palette.
 
 ## Next Steps
 
-Explore the sequence of tutorials below to learn how to deploy your first connected Edge cluster with Palette. Each
-tutorial is designed to guide you step-by-step, building on the concepts introduced in the previous one.
+In this section, you will learn how to build the required Edge artifacts, prepare the Edge host, create an Edge native
+cluster profile, and use it to deploy your cluster. Each tutorial is designed to guide you step-by-step, building on the
+concepts introduced in the previous one.
+
+![Palette Getting Started Roadmap](/getting-started/getting-started_introduction-edge_roadmap.webp)
+
+Explore the sequence of tutorials below to learn how to deploy your first connected Edge cluster with Palette.
 
 <!-- vale off -->
 
-<!-- <SimpleCardGrid
+<SimpleCardGrid
   cards={[
     {
       title: "Prepare User Data",
-      description: "Create an user data file for your Edge deployment.",
+      description: "Create a user data file for your Edge deployment.",
       buttonText: "Learn more",
       url: "/tutorials/getting-started/introduction-edge/prepare-user-data",
     },
     {
-      title: "Prepare User Data",
-      description: "Create an user data file for your Edge deployment.",
+      title: "Build Edge Artifacts",
+      description: "Build the artifacts required for your Edge deployment.",
       buttonText: "Learn more",
-      url: "/tutorials/getting-started/introduction-edge/prepare-user-data",
+      url: "/tutorials/getting-started/introduction-edge/build-edge-artifacts",
     },
     {
-      title: "Prepare User Data",
-      description: "Create an user data file for your Edge deployment.",
+      title: "Create Edge Cluster Profile",
+      description: "Create an Edge native cluster profile to deploy Edge workloads.",
       buttonText: "Learn more",
-      url: "/tutorials/getting-started/introduction-edge/prepare-user-data",
-    },
-    {
-      title: "Prepare User Data",
-      description: "Create an user data file for your Edge deployment.",
-      buttonText: "Learn more",
-      url: "/tutorials/getting-started/introduction-edge/prepare-user-data",
-    },
-    {
-      title: "Prepare User Data",
-      description: "Create an user data file for your Edge deployment.",
-      buttonText: "Learn more",
-      url: "/tutorials/getting-started/introduction-edge/prepare-user-data",
+      url: "/tutorials/getting-started/introduction-edge/edge-cluster-profile",
     },
   ]}
-/> -->
+/>
