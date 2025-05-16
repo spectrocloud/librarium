@@ -24,7 +24,8 @@
     "lint:fix": "npm run lint -- --fix",
     "format": "prettier --write \"**/*.{js,jsx,json,ts,tsx,md,mdx,css}\"",
     "format-check": "prettier . --check",
-    "copy-cve-data": "mkdir -p static/security-data && cp .docusaurus/security-bulletins/default/data.json static/security-data/data.json"
+    "copy-cve-data": "mkdir -p static/security-data && cp .docusaurus/security-bulletins/default/data.json static/security-data/data.json",
+    "prepare": "husky"
   },
   "lint-staged": {
     "**/*.{js,jsx,json,ts,tsx,md,mdx,css}": "npm run format"
@@ -93,7 +94,7 @@
     "eslint-plugin-n": "^17.17.0",
     "eslint-plugin-promise": "^7.2.1",
     "eslint-plugin-react": "^7.37.3",
-    "husky": "^9.0.11",
+    "husky": "^9.1.7",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^29.5.0",
     "jest-environment-jsdom": "^29.6.2",
