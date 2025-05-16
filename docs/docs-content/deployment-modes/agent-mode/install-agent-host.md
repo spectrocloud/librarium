@@ -195,7 +195,7 @@ Palette. You will then create a cluster profile and use the registered host to d
       GRUB_DISABLE_SUBMENU=true
       GRUB_TERMINAL_OUTPUT="console"
       GRUB_CMDLINE_LINUX="crashkernel=auto resume=/dev/mapper/rl-swap rd.lvm.lv=rl/root rd.lvm.lv=rl/swap systemd.unified_cgroup_hierarchy=1
-      systemd.unified_cgroup_hierarchv=1" GRUB_DISABLE_RECOVERY=" true"
+      systemd.unified_cgroup_hierarchy=1" GRUB_DISABLE_RECOVERY="true"
       GRUB_ENABLE_BLSCFG=true
       ```
 
@@ -549,8 +549,8 @@ Palette. You will then create a cluster profile and use the registered host to d
 If using the FIPS version of Agent Mode on a Rocky Linux edge host, SELinux may incorrectly label the
 **kubeadm-flags.env** file during cluster deployment or when certain configurations are adjusted, preventing the Kubelet
 from accessing it and properly managing the cluster. Refer to the
-[Edge Troubleshooting Guide](../../troubleshooting/edge.md#scenario---kubelet-process-cannot-access-kubeadm-flags) for
-guidance.
+[Edge Troubleshooting Guide](../../troubleshooting/edge/edge.md#scenario---kubelet-process-cannot-access-kubeadm-flags)
+for guidance.
 
 :::
 
@@ -719,8 +719,8 @@ internet.
 If using the FIPS version of Agent Mode on a Rocky Linux edge host, SELinux may incorrectly label the
 **kubeadm-flags.env** file during cluster deployment or when certain configurations are adjusted, preventing the Kubelet
 from accessing it and properly managing the cluster. Refer to the
-[Edge Troubleshooting Guide](../../troubleshooting/edge.md#scenario---kubelet-process-cannot-access-kubeadm-flags) for
-guidance.
+[Edge Troubleshooting Guide](../../troubleshooting/edge/edge.md#scenario---kubelet-process-cannot-access-kubeadm-flags)
+for guidance.
 
 :::
 
