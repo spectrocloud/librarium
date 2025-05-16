@@ -47,7 +47,7 @@ You must then configure your networking to allow traffic to reach the pods on yo
    **Values** under **Pack Details**. Then, click on **Presets** on the right-hand side, and select **Agent Mode**.
 
 <!-- prettier-ignore -->
-8. If using [Appliance Mode](../../../../deployment-modes/appliance-mode/appliance-mode.md), on the **Configure Pack** page, click
+8. If using [Appliance Mode](../../../../deployment-modes/appliance-mode.md), on the **Configure Pack** page, click
    **Values** under **Pack Details**. Then, replace the contents of the pack manifest with your built image
    manifest.
 
