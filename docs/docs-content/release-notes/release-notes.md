@@ -21,6 +21,31 @@ tags: ["release-notes"]
 
 #### Breaking Changes {#breaking-changes-4.6.c}
 
+- Due to new behavior introduced with CAPI v1.9.4, you must add the `cluster.x-k8s.io/drain: skip` label to any
+  deployments with the `Node.spec.unschedulable` field set. If not added, this can lead to deployments stuck in a
+  termination loop due to an unwanted
+  [node drain](https://cluster-api.sigs.k8s.io/tasks/automated-machine-management/machine_deletions.html#node-drain).
+  Use the following steps to help identify and apply the label to affected Deployments.
+
+  1. Identify any Kubernetes Deployment manifests or Helm values that includes the following
+     [tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
+
+     ```yaml hideClipboard
+     - key: node.kubernetes.io/unschedulable
+       effect: NoSchedule
+     - key: node-role.kubernetes.io/unschedulable
+       operator: Exists
+       effect: NoSchedule
+     ```
+
+  2. Patch each deployment to include the `cluster.x-k8s.io/drain: skip` label.
+
+     ```yaml hideClipboard title="Example"
+     metadata:
+       labels:
+         cluster.x-k8s.io/drain: skip
+     ```
+
 - Due to an upgrade of Cluster API Provider GCP (CAPG) to
   [v1.8.1](https://github.com/kubernetes-sigs/cluster-api-provider-gcp/releases/tag/v1.8.1), the following additional
   IAM permissions are now required for GCP cluster deployments:
