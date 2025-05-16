@@ -19,7 +19,7 @@ register the host with Palette. Once registered, the host will be ready to be pa
 
 ## Prerequisites
 
-- A bare metal or virtual Linux host with an AMD64 processor architecture (also known as `x86_64`) and the following
+- A bare metal or virtual Linux host with an _AMD64_ processor architecture (also known as _x86_64_) and the following
   minimum hardware specifications.
   - 2 CPUs
   - 8 GB memory
@@ -52,7 +52,7 @@ Give the machine a name, for example, `edge-vm`.
 In the **ISO Image** field, select the Edge installer ISO file you built in the
 [Build Edge Artifacts](./build-edge-artifacts.md) tutorial. The ISO file is located in the `CanvOS/build` directory.
 
-Set the machine **Type** as `Linux` and the **Version** as `Ubuntu (64-bit)`, and click **Next**.
+Set the machine **Type** as **Linux** and the **Version** as **Ubuntu (64-bit)**, and click **Next**.
 
 ![A screenshot of the VirtualBox VM configuration.](/getting-started/getting-started_introduction-edge_prepare-edge-host_vm-config.webp)
 
@@ -71,7 +71,7 @@ Confirm the VM settings and click **Finish** to create the VM.
 
 Select the VM to adjust its network settings. Click **Settings**, then select **Network**.
 
-Change the **Attached to:** option from `NAT` to `Bridged Adapter`. This allows the VM to receive an IP address from the
+Change the **Attached to:** option from **NAT** to **Bridged Adapter**. This allows the VM to receive an IP address from the
 same network as the host. Click **OK**.
 
 ![A screenshot of the VirtualBox VM network configuration.](/getting-started/getting-started_introduction-edge_prepare-edge-host_vm-network.webp)
@@ -127,7 +127,7 @@ To register the host with Palette, select the VM in VirtualBox and click **Start
 obtains an IP address from the host machine's bridged network.
 
 After a few minutes, the VM screen displays an IP address and automatically registers with Palette as an Edge host,
-using the registration token provided in the `user-data` file during the [Prepare User Data](./prepare-user-data.md)
+using the registration token provided in the `user-data` file during the [Prepare User Data for Edge Installation](./prepare-user-data.md)
 tutorial.
 
 ![A screenshot of the Edge host.](/getting-started/getting-started_introduction-edge_prepare-edge-host_edge-host-vm.webp)
@@ -157,7 +157,7 @@ automatically from the GRand Unified Bootloader (GRUB) menu. The device boots an
 network.
 
 After a few minutes, the device screen displays an IP address and automatically registers with Palette as an Edge host,
-using the registration token provided in the `user-data` file during the [Prepare User Data](./prepare-user-data.md)
+using the registration token provided in the `user-data` file during the [Prepare User Data for Edge Installation](./prepare-user-data.md)
 tutorial.
 
 ![A screenshot of the Edge host.](/getting-started/getting-started_introduction-edge_prepare-edge-host_edge-host-bm-screen.webp)
