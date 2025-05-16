@@ -46,8 +46,8 @@ these files once you are familiar with the parameters.
 ## Limitations
 
 - Appliance Studio validates the schema of your `.arg` file and `user-data`, but it does not validate the value in each
-  individual fields. Ensure that you input a valid value for each field to to avoid creating invalid `.arg` and
-  `user-data` files.
+  individual fields. Ensure that you input a valid value for each field to avoid creating invalid `.arg` and `user-data`
+  files.
 
 ## Prerequisites
 
@@ -87,20 +87,9 @@ these files once you are familiar with the parameters.
      the parameters between the parameters conflict with each other, the presets higher in the list take precedence.
    - If you do not have presets or want to create a new file from scratch, click **Start from scratch**.
 
-   :::warning
-
-   Some parameters in a preset may be invisible in the code pane because they are set to the default values. For
-   example, if you set `OS_VERSION` to `22`, the argument will not appear in the code pane. However, this setting will
-   still override presets lower on the list if they contain the same argument.
-
-   The same rule applies to `user-data` presets as well.
-
-   :::
-
 3. Fill out each field in the form to customize your `.arg` file. Fields marked with `*` are mandatory. As you fill out
    each field, you can preview the `.arg` file in the code pane on the right. You can also make edits in the code pane
-   directly, which will automatically update the form. In some instances, you may not see a change in the code pane,
-   because you have specified the default value for the parameter, which is omitted.
+   directly, which will automatically update the form.
 
    Refer to [Edge Artifact Build Configurations](./palette-canvos/arg.md) for a description of each argument and their
    default values.
@@ -124,8 +113,7 @@ these files once you are familiar with the parameters.
 
 3. Fill out each field in the form to customize your `user-data` file. Fields marked with `*` are mandatory. As you fill
    out each field, you can preview the `user-data` file in the code pane on the right. You can also make edits in the
-   code pane directly, which will automatically update the form. In some instances, you may not see a change in the code
-   pane, because you have specified the default value for the parameter, which is omitted
+   code pane directly, which will automatically update the form.
 
    Refer to [Installer Configuration Reference](../edge-configuration/installer-reference.md) for a description of each
    parameter and their default values.
