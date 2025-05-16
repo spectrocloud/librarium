@@ -4,7 +4,7 @@
 source scripts/release/utilities.sh
 
 # Define files to modify
-DOWNLOADS_FILE="docs/docs-content/downloads/cli-tools.md"
+DOWNLOADS_FILE="docs/docs-content/spectro-downloads.md"
 CLI_TEMPLATE_FILE="scripts/release/templates/palette-cli.md"
 EDGE_CLI_TEMPLATE_FILE="scripts/release/templates/edge-cli.md"
 CLI_PARAMETERISED_FILE="scripts/release/cli-output.md"

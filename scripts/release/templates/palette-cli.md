@@ -1,1 +1,1 @@
-| <!-- palette-cli-{{RELEASE_NAME}} --> {{RELEASE_PALETTE_CLI_VERSION}} | v{{RELEASE_PALETTE_CLI_VERSION}} | [Linux-amd64](https://software.spectrocloud.com/palette-cli/v{{RELEASE_PALETTE_CLI_VERSION}}/linux/cli/palette) | `{{RELEASE_PALETTE_CLI_SHA}}` |
+| <!-- palette-cli-{{RELEASE_NAME}} --> {{RELEASE_PALETTE_CLI_VERSION}} | [Linux-amd64](https://software.spectrocloud.com/palette-cli/v{{RELEASE_PALETTE_CLI_VERSION}}/linux/cli/palette) | `{{RELEASE_PALETTE_CLI_SHA}}` |
