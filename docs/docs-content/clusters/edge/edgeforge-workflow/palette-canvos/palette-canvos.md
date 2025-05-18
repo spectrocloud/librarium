@@ -253,7 +253,7 @@ customization.
     <TabItem value="Earthly Installed">
 
     ```bash
-    earthly +build-all-images
+    ./earthly.sh +build-all-images
     ```
 
     </TabItem>
