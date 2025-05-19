@@ -2,14 +2,15 @@
 sidebar_label: "Offline Documentation"
 title: "Offline Documentation"
 description: "Learn how to use the Palette Vertex documentation offline."
-icon: ""
 hide_table_of_contents: false
 sidebar_position: 60
-tags: ["vertex", "enterprise", "airgap", "kubernetes", "offline"]
+sidebar_custom_props:
+  icon: "book"
+tags: ["vertex", "enterprise", "airgap", "kubernetes", "offline", "downloads"]
 keywords: ["self-hosted", "vertex"]
 ---
 
-If you are in an environment that requires the Palette Vertex documentation to be available offline, you can use our
+If you are in an environment that requires the Spectro Cloud documentation to be available offline, you can use our
 offline Docker image to serve the documentation locally. The image is updated nightly to ensure that the latest
 documentation is available. When you start the container, the documentation is available at `http://localhost:8080` and
 you can access it using your browser.
@@ -17,7 +18,7 @@ you can access it using your browser.
 :::tip
 
 You can use the Palette CLI to download and start the offline documentation container with a single command. Check out
-the Palette CLI `docs` command [page](../../../automation/palette-cli/commands/docs.md) for more information.
+the Palette CLI `docs` command [page](../automation/palette-cli/commands/docs.md) for more information.
 
 :::
 

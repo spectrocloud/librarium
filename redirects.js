@@ -763,6 +763,26 @@ let redirects = [
     from: "/clusters/public-cloud/deploy-k8s-cluster/",
     to: "/getting-started/",
   },
+  {
+    from: "/spectro-downloads",
+    to: "/downloads/cli-tools/",
+  },
+  {
+    from: "/component/",
+    to: "/downloads/cli-tools/",
+  },
+  {
+    from: "/enterprise-version/install-palette/airgap/supplemental-packs/",
+    to: "/downloads/self-hosted-palette/additional-packs/",
+  },
+  {
+    from: "/vertex/install-palette-vertex/airgap/supplemental-packs/",
+    to: "/downloads/palette-vertex/additional-packs/",
+  },
+  {
+    from: "/vertex/install-palette-vertex/airgap/offline-docs/",
+    to: "/downloads/offline-docs/",
+  },
 ];
 
 if (packRedirects.length > 0) {
