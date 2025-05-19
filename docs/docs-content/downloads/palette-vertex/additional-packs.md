@@ -25,7 +25,7 @@ airgapped self-hosted instances of Palette and Palette VerteX.
 | `airgap-pack-virtual-machine-orchestrator-4.5.7.bin` | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-virtual-machine-orchestrator-4.5.7.bin |
 | `airgap-pack-vcluster-4.5.10.bin`                    | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-vcluster-4.5.10.bin                    |
 
-### Usage Instructions
+## Usage Instructions
 
 You must SSH into your Palette VerteX airgap support VM to download and install the binary. You must also provide the
 username and password for the support team's private repository. Reach out to our support team to
