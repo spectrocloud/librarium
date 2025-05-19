@@ -146,11 +146,12 @@ impacted clusters until you've handled the below mentioned breaking changes and 
 
 #### Features
 
-- <TpBadge /> The new Appliance Studio is a lightweight Graphical User Interface (GUI) application allows you to build,
-  save, edit, and manage the two configuration files that are essential to the EdgeForge process, with zero risk of
-  syntax errors.
+- <TpBadge /> The new [Appliance Studio](../deployment-modes/appliance-mode/appliance-studio.md) is a lightweight
+  Graphical User Interface (GUI) application allows you to build, save, edit, and manage the two configuration files
+  that are essential to the EdgeForge process, with zero risk of syntax errors.
 
-  Refer to the Prepare User Data and Argument Files guide to learn more.
+  Refer to the [Prepare User Data and Argument Files](../clusters/edge/edgeforge-workflow/prepare-user-data.md) guide to
+  learn more.
 
 - <TpBadge /> The Palette Optimized Canonical Kubernetes distribution is now an available selection for the [EdgeForge
   workflow](../clusters/edge/edgeforge-workflow/edgeforge-workflow.md) of preparing an Edge host with all the required
