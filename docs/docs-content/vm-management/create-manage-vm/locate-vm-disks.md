@@ -279,8 +279,8 @@ Use these outputs to help [Match Disks](#match-disks) on the Palette VMO cluster
 
    | Palette Disk Name | Source from `virsh dumpxml 1` | Identifier (Bus/LUN)  | `Get-PhysicalDisk` → `DeviceId` | `Get-Partition` → `Number` | Drive |
    | ----------------- | ----------------------------- | --------------------- | ------------------------------- | -------------------------- | ----- |
-   | `disk-blk-3`    | `/dev/disk-blk-3`             | `bus='0x09'`, `Bus 9` | `2`                             | `2`                        | `E` |
-   | `disk-scsi-4`   | `/dev/disk-scsi-4`            | `unit='0'`, `LUN 0`   | `3`                             | `3`                        | `F` |
+   | `disk-blk-3`      | `/dev/disk-blk-3`             | `bus='0x09'`, `Bus 9` | `2`                             | `2`                        | `E`   |
+   | `disk-scsi-4`     | `/dev/disk-scsi-4`            | `unit='0'`, `LUN 0`   | `3`                             | `3`                        | `F`   |
 
 </TabItem>
 
