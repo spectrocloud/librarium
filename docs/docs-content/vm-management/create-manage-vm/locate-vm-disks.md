@@ -93,7 +93,7 @@ help you locate disks on Linux and Windows VMs.
    virsh dumpxml 1
    ```
 
-   ```xml hideClipboard title="Example output" {22,24,26,30,32,34}
+   ```xml hideClipboard title="Example output"
      <devices>
        <emulator>/usr/libexec/qemu-kvm</emulator>
        <disk type='block' device='disk' model='virtio-non-transitional'>
@@ -235,7 +235,7 @@ Use these outputs to help [Match Disks](#match-disks) on the Palette VMO cluster
    <details>
    <summary> Virtio Example </summary>
 
-   1. Palette shows a disk named **disk-blk-3**.
+   1. Palette shows a disk named `disk-blk-3`.
    2. In `virsh dumpxml 1`, the same device appears as `/dev/disk-blk-3`.
 
       ```xml hideClipboard
@@ -249,7 +249,7 @@ Use these outputs to help [Match Disks](#match-disks) on the Palette VMO cluster
    3. The `Get-PhysicalDisk` output lists `DeviceId 2` on `Bus 9`, matching the `bus` value from the `virsh dumpxml 1`
       output.
    4. The `Get-Partition -DriveLetter E | get-disk` output displays `Number 2`. This confirms that drive **E** maps to
-      `DeviceId 2` and, subsequently, **disk-blk-3** in Palette.
+      `DeviceId 2` and, subsequently, `disk-blk-3` in Palette.
 
    </details>
 
@@ -257,7 +257,7 @@ Use these outputs to help [Match Disks](#match-disks) on the Palette VMO cluster
    <details>
    <summary> SCSI Example </summary>
 
-   1. Palette shows a disk named **disk-scsi-4**.
+   1. Palette shows a disk named `disk-scsi-4`.
    2. In `virsh dumpxml 1`, the same device appears as `/dev/disk-scsi-4`.
 
       ```xml hideClipboard
@@ -271,7 +271,7 @@ Use these outputs to help [Match Disks](#match-disks) on the Palette VMO cluster
    3. The `Get-PhysicalDisk` output lists `DeviceId 3` on `LUN 0`, matching the `unit` value from the `virsh dumpxml 1`
       output.
    4. The `Get-Partition -DriveLetter F | get-disk` output displays `Number 3`. This confirms that drive **F** maps to
-      `DeviceId 3` and, subsequently, **disk-scsi-4** in Palette.
+      `DeviceId 3` and, subsequently, `disk-scsi-4` in Palette.
 
    </details>
 
@@ -279,8 +279,8 @@ Use these outputs to help [Match Disks](#match-disks) on the Palette VMO cluster
 
    | Palette Disk Name | Source from `virsh dumpxml 1` | Identifier (Bus/LUN)  | `Get-PhysicalDisk` → `DeviceId` | `Get-Partition` → `Number` | Drive |
    | ----------------- | ----------------------------- | --------------------- | ------------------------------- | -------------------------- | ----- |
-   | **disk-blk-3**    | `/dev/disk-blk-3`             | `bus='0x09'`, `Bus 9` | `2`                             | `2`                        | **E** |
-   | **disk-scsi-4**   | `/dev/disk-scsi-4`            | `unit='0'`, `LUN 0`   | `3`                             | `3`                        | **F** |
+   | `disk-blk-3`    | `/dev/disk-blk-3`             | `bus='0x09'`, `Bus 9` | `2`                             | `2`                        | `E` |
+   | `disk-scsi-4`   | `/dev/disk-scsi-4`            | `unit='0'`, `LUN 0`   | `3`                             | `3`                        | `F` |
 
 </TabItem>
 
