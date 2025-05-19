@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## May 17, 2025 - Release 4.6.X {#release-notes-4.6.c}
+## May 25, 2025 - Release 4.6.X {#release-notes-4.6.c}
 
 ### Security Notices
 
@@ -20,6 +20,44 @@ tags: ["release-notes"]
 ### Palette Enterprise {#palette-enterprise-4.6.c}
 
 #### Breaking Changes {#breaking-changes-4.6.c}
+
+:::warning
+
+Due to updates to Cluster API (CAPI) in this release, we recommend that you enable the
+[Pause Agent Upgrades](../clusters/cluster-management/platform-settings/pause-platform-upgrades.md) feature on any
+impacted clusters until you've handled the below mentioned breaking changes and are ready for cluster repaves.
+
+:::
+
+- Due to new behavior introduced with Cluster API (CAPI) v1.9.4, you must add the `cluster.x-k8s.io/drain: skip` label
+  to any deployments with the `Node.spec.unschedulable` toleration set. If not added, this can lead to deployments stuck
+  in a termination loop due to an unwanted
+  [node drain](https://cluster-api.sigs.k8s.io/tasks/automated-machine-management/machine_deletions.html#node-drain).
+  Use the following steps to help identify and apply the label to affected Deployments.
+
+  1. Identify any Kubernetes Deployment manifests or Helm values that includes the following
+     [tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
+
+     ```yaml hideClipboard
+     - key: node.kubernetes.io/unschedulable
+       effect: NoSchedule
+     - key: node-role.kubernetes.io/unschedulable
+       operator: Exists
+       effect: NoSchedule
+     ```
+
+  2. Patch each deployment to include the `cluster.x-k8s.io/drain: skip` label.
+
+     ```yaml hideClipboard title="Example"
+     metadata:
+       labels:
+         cluster.x-k8s.io/drain: skip
+     ```
+
+- Palette's upgrade to Cluster API (CAPI) v1.9.4 requires additional Amazon Web Services (AWS) permissions to operate
+  and perform actions on your behalf. Refer to the
+  [Required IAM Policies](../clusters/public-cloud/aws/required-iam-policies.md) reference page for a full list of core
+  policies and minimum permissions.
 
 - Due to an upgrade of Cluster API Provider GCP (CAPG) to
   [v1.8.1](https://github.com/kubernetes-sigs/cluster-api-provider-gcp/releases/tag/v1.8.1), the following additional
@@ -32,6 +70,11 @@ tags: ["release-notes"]
   means labels may be populated for persistent disks and global forwarding rules. Refer to the
   [Required IAM Permissions](../clusters/public-cloud/gcp/required-permissions.md#required-permissions) guide for all
   required GCP IAM permissions.
+
+- After upgrading Palette to this release, Palette will automatically trigger a repave on existing GKE clusters for node
+  pools. This is because the CAPG version has been updated from v1.2.1 to v1.8.1, which automatically adds a new
+  ownership label `capg-<cluster-name>=owned`. As GKE treats a node pool label map as immutable, the label insertion
+  triggers a rolling repave of all worker nodes.
 
 #### Features
 
@@ -48,19 +91,93 @@ tags: ["release-notes"]
   Refer to the [Create and Manage Azure IaaS Cluster](../clusters/public-cloud/azure/create-azure-cluster.md) guide for
   more information.
 
+- Once you install Palette or upgrade to version 4.6.c or later, you have 30 days to activate it. During this time, you
+  have unrestricted access to all of Palette's features. After 30 days, you can continue to use Palette, and existing
+  clusters will continue to run, but you cannot perform the following day-2 operations until Palette is activated.
+
+  Refer to the Activate Palette guide for further information.
+
 #### Improvements
 
-#### Deprecations and Removals
+- CAPG has been upgraded to [v1.8.1](https://github.com/kubernetes-sigs/cluster-api-provider-gcp/releases/tag/v1.8.1)
+  from [v1.2.1](https://github.com/kubernetes-sigs/cluster-api-provider-gcp/releases/tag/v1.2.1).
+
+  As part of this release, newly created GKE clusters will have an additional default label applied to their node pools.
+  This is due to a change starting from CAPG v1.3 where a cluster-ownership label is automatically injected into every
+  node pool.
+
+  The following table displays the default labels between the previous and current CAPG release.
+
+  | CAPG Version | Default Labels on Node Pools                                                     |
+  | ------------ | -------------------------------------------------------------------------------- |
+  | v1.2.1       | `goog-gke-node-pool-provisioning-model: on-demand`                               |
+  | v1.8.1       | `goog-gke-node-pool-provisioning-model: on-demand`, `capg-<cluster-name>: owned` |
+
+  :::warning
+
+  In GKE, a node pool’s label set is an immutable field, and any changes to it will trigger a repave. As such, any GKE
+  clusters built with an older release will be automatically repaved by Palette. This will occur after Palette has been
+  upgraded to this release or later.
+
+  :::
+
+- The Palette UI allows users to specify an optional team description during team creation. This new field makes it
+  possible for system administrators to provide a meaningful description to user teams. Refer to the
+  [Create and Manage a Team](../user-management/users-and-teams/create-a-team.md) guide for further information.
+- Palette [interface customization](../enterprise-version/system-management/customize-interface.md) has been expanded
+  with the ability to hide the login panel image and Spectro Cloud sidebar logo, change the default documentation
+  domain, and change the **Sign in to your tenant** logo.
+- The management of
+  [cluster profile variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/define-profile-variables.md)
+  has been improved in the Palette UI. Users can now review and modify variable values during
+  [cluster profile version changes](../profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile.md).
+- Velero has been upgraded to version 1.15, which is used internally by Palette for backing up and restoring clusters.
+  Existing clusters with backups configured will be automatically updated to Velero version 1.15, ensuring continuous
+  access to backup and restore functionality. Refer to the
+  [Backup and Restore](../clusters/cluster-management/backup-restore/backup-restore.md) page to learn more about backup
+  and restore tools in Palette.
+- Palette now uses Cluster API Provider AWS (CAPA) version 2.7.1 internally. Refer to the
+  [documentation](https://github.com/kubernetes-sigs/cluster-api-provider-aws/tree/v2.7.1) for further information.
+- [Self-hosted Palette](../enterprise-version/enterprise-version.md) now supports anonymous SMTP mode, allowing users to
+  authenticate without a username and password. We recommend using authenticated SMTP wherever possible. Refer to the
+  [Configure SMTP](../enterprise-version/system-management/smtp.md) guide for further information.
 
 ### Edge
 
 #### Features
 
+- <TpBadge /> The new Appliance Studio is a lightweight Graphical User Interface (GUI) application allows you to build,
+  save, edit, and manage the two configuration files that are essential to the EdgeForge process, with zero risk of
+  syntax errors.
+
+  Refer to the Prepare User Data and Argument Files guide to learn more.
+
+- <TpBadge /> The Palette Optimized Canonical Kubernetes distribution is now an available selection for the [EdgeForge
+  workflow](../clusters/edge/edgeforge-workflow/edgeforge-workflow.md) of preparing an Edge host with all the required
+  components and dependencies. Refer to the [Build Edge
+  Artifacts](../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md) for further information.
+
 #### Improvements
 
 - Improved the upgrade process for the Palette agent and increased its reliability.
+- Palette now supports uploading one or more content bundles as long as your Edge host has enough physical storage and
+  you have allocated sufficient storage to your registry. Refer to the
+  [Upload Content Bundle](../clusters/edge/local-ui/cluster-management/upload-content-bundle.md) guide for further
+  information.
+- [Local UI](../clusters/edge/local-ui/local-ui.md) has now exited Tech Preview and is ready to use for production
+  workloads. Check out the [Access Local UI](../clusters/edge/local-ui/host-management/access-console.md) guide for
+  further details.
+- A new troubleshooting script is now available to allow you to debug common errors such as Edge hosts failing to
+  register, pod failures, or provisioning errors. Refer to the Collect Support Bundles for Edge Cluster Troubleshooting
+  reference page for further details.
 
-#### Bug Fixes
+#### Deprecations and Removals
+
+- The `stylus.installationMode`
+  [Edge Installer Configuration](../clusters/edge/edge-configuration/installer-reference.md) flag is deprecated. We
+  recommend using the `stylus.managementMode` flag instead, which has two allowed values: `central`, which means the
+  Edge host is connected to Palette, and `local`, which means the Edge host has no connection to a Palette instance.
+  Refer to the [Prepare User Data](../clusters/edge/edgeforge-workflow/prepare-user-data.md) for further information.
 
 ### VerteX
 
@@ -86,7 +203,29 @@ Check out the [CLI Tools](../downloads/cli-tools.md) page to find the compatible
 
 #### Features
 
+- The `content` command of the [Palette CLI](../automation/palette-cli/palette-cli.md) now has an `upload` subcommand.
+  This subcommand allows you to build a content bundle and upload it to a locally managed Edge host through Local UI.
+  Once the upload is complete, you can provision clusters locally using the uploaded content when the host does not have
+  a connection to a central Palette instance or an image repository.
+
+  Refer to the Upload Content Bundle reference page for further information.
+
+- The `spectrocloud_appliance` resource now supports [remote shell](../clusters/edge/cluster-management/remote-shell.md)
+  activation, allowing you to troubleshoot Edge hosts by initiating an SSH connection from Palette. For more
+  information, refer to the Spectro Cloud Terraform provider
+  [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
+
 #### Improvements
+
+#### Deprecations and Removals
+
+- The `tc` subcommand of the [Palette CLI](../automation/palette-cli/palette-cli.md) is deprecated. This command
+  provided functionality for deploying target clusters using the Palette CLI. We recommend using the
+  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) for
+  cluster deployment automation.
+- The `spectrocloud_macro` Terraform resource is deprecated. We recommend using the `spectrocloud_macros` resource to
+  create and manage service output variables and macros. For more information, refer to the Spectro Cloud Terraform
+  provider [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
 
 ### Virtual Machine Orchestrator (VMO)
 
@@ -110,41 +249,78 @@ Check out the [CLI Tools](../downloads/cli-tools.md) page to find the compatible
 
 <!-- prettier-ignore-start -->
 
-- The <VersionedLink text="BYOS - Agent Mode" url="integrations/packs/?pack=byoi-agent-mode" /> version 1.0.0 pack is now deprecated. We recommend using the <VersionedLink text="BYOS Edge OS" url="integrations/packs/?pack=edge-native-byoi" /> version 2.1.0 pack instead.
+- The <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> versions 1.31.x and 1.32.x packs now support cluster deployments to AWS.
+- The <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> version 1.32.x pack now supports cluster deployments to AKS.
 
 <!-- prettier-ignore-end -->
 
-#### OS
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
 #### Kubernetes
 
-| Pack Name | New Version |
-| --------- | ----------- |
+| Pack Name                                | New Version |
+| ---------------------------------------- | ----------- |
+| Palette eXtended Kubernetes              | 1.32.3      |
+| Palette eXtended Kubernetes              | 1.31.7      |
+| Palette eXtended Kubernetes              | 1.30.11     |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.32.3      |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.31.7      |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.30.11     |
+| Palette Optimized Canonical              | 1.32.3      |
+| Palette Optimized K3S                    | 1.32.3      |
+| Palette Optimized K3S                    | 1.31.7      |
+| Palette Optimized K3S                    | 1.30.11     |
+| Palette Optimized RKE2                   | 1.32.3      |
+| Palette Optimized RKE2                   | 1.31.7      |
+| Palette Optimized RKE2                   | 1.30.11     |
+| RKE2                                     | 1.32.3      |
+| RKE2                                     | 1.31.7      |
+| RKE2                                     | 1.30.11     |
 
 #### CNI
 
 | Pack Name | New Version |
 | --------- | ----------- |
+| Flannel   | 0.26.4      |
 
 #### CSI
 
-| Pack Name | New Version |
-| --------- | ----------- |
+| Pack Name              | New Version |
+| ---------------------- | ----------- |
+| Local Path Provisioner | 0.0.31      |
 
 #### Add-on Packs
 
-| Pack Name | New Version |
-| --------- | ----------- |
+| Pack Name                    | New Version |
+| ---------------------------- | ----------- |
+| Local Path Provisioner       | 0.0.31      |
+| Spectro Kubernetes Dashboard | 7.11.1      |
+| Zot Registry                 | 0.1.66      |
 
 #### FIPS Packs
 
-| Pack Name | New Version |
-| --------- | ----------- |
+| Pack Name                                | New Version |
+| ---------------------------------------- | ----------- |
+| Local Path Provisioner                   | 0.0.31      |
+| Palette eXtended Kubernetes              | 1.32.3      |
+| Palette eXtended Kubernetes              | 1.31.7      |
+| Palette eXtended Kubernetes              | 1.30.11     |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.32.3      |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.31.7      |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.30.11     |
+| Palette Optimized RKE2                   | 1.32.3      |
+| Palette Optimized RKE2                   | 1.31.7      |
+| Palette Optimized RKE2                   | 1.30.11     |
+| RKE2                                     | 1.32.3      |
+| RKE2                                     | 1.31.7      |
+| RKE2                                     | 1.30.11     |
+| Zot Registry                             | 0.1.66      |
 
 #### Deprecations and Removals
+
+<!-- prettier-ignore-start -->
+
+- The <VersionedLink text="BYOS - Agent Mode" url="integrations/packs/?pack=byoi-agent-mode" /> version 1.0.0 pack is now deprecated. We recommend using the <VersionedLink text="BYOS Edge OS" url="integrations/packs/?pack=edge-native-byoi" /> version 2.1.0 pack instead.
+
+<!-- prettier-ignore-end -->
 
 ## May 7, 2025 - Release 4.6.25
 
