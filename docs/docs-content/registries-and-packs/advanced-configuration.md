@@ -221,9 +221,9 @@ http:
   tls:
     letsencrypt:
       cachefile: le-cache
-      email: oz@spectrocloud.com
+      email: you@companydomain.com
       hosts:
-        - pax-registry.spectrocloud.com
+        - yourhost.companydomain.com
 ```
 
 Let's Encrypt limits the number of free certificates issued for each domain for a set time. We recommend you mount a
