@@ -15,8 +15,10 @@ tags: ["release-notes"]
 
 ### Bug Fixes
 
-- Fixed an issue that caused frequent `stylus-agent` restarts and a `stylus-operator` failure loop when deploying clusters. 
-- Fixed an issue that prevented add-on profiles from being deployed on [Edge](../clusters/edge/edge.md) clusters containing the `harbor-edge-native-config` pack. 
+- Fixed an issue that caused frequent `stylus-agent` restarts and a `stylus-operator` failure loop when deploying
+  clusters.
+- Fixed an issue that prevented add-on profiles from being deployed on [Edge](../clusters/edge/edge.md) clusters
+  containing the `harbor-edge-native-config` pack.
 
 ## May 7, 2025 - Release 4.6.25
 
