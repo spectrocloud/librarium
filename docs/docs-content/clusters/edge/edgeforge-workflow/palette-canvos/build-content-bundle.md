@@ -53,11 +53,11 @@ Creating a content bundle provides several benefits that may address common use 
 - Edge content bundles created with Edge CLI version greater than `4.5.5`, are incompatible with Palette agent versions
   before `4.5.4` due to a new format schema. If you are using an older version of the Palette agent, use the Edge CLI
   version `4.5.3` or earlier to create content bundles. To download the latest version of the Edge CLI, visit the
-  [Downloads](../../../../spectro-downloads.md#palette-edge-cli) page.
+  [Downloads](../../../../downloads/cli-tools.md#palette-edge-cli) page.
 
 - Content bundles built with the Palette Edge CLI versions earlier than `4.5.20` cannot be used to provision multi-node
   clusters. Download the latest version of the Palette Edge CLI from the
-  [Downloads](../../../../spectro-downloads.md#palette-edge-cli) page to build the content bundle instead.
+  [Downloads](../../../../downloads/cli-tools.md#palette-edge-cli) page to build the content bundle instead.
 
 ## Prerequisites
 
@@ -75,12 +75,11 @@ Creating a content bundle provides several benefits that may address common use 
 
 ## Create Content Bundle
 
-1. Download Palette Edge CLI and assign the executable bit to the CLI. Refer to
-   [Palette Components Compatibility Matrix](../../../../component.md#palette-edge-cli-versions) to use the right
-   Palette Edge CLI version. This guide uses 4.5.5 as an example.
+1. Download the Palette Edge CLI. Refer to the [Palette CLI Compatibility Matrix](../../../../downloads/cli-tools.md) to
+   find a compatible CLI version and replace `<palette-edge-cli-version>` with the selected version.
 
    ```shell
-   VERSION=4.5.5
+   VERSION=<palette-edge-cli-version>
    wget https://software.spectrocloud.com/stylus/v$VERSION/cli/linux/palette-edge
    chmod +x palette-edge
    ```

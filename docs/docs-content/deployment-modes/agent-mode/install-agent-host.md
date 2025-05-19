@@ -85,7 +85,7 @@ Palette. You will then create a cluster profile and use the registered host to d
     use PXKE as the Kubernetes layer
   - [iptables](https://linux.die.net/man/8/iptables)
   - [rsyslog](https://github.com/rsyslog/rsyslog). This is required for audit logs.
-  - (Airgap only) [Palette Edge CLI](../../spectro-downloads.md#palette-edge-cli)
+  - (Airgap only) [Palette Edge CLI](../../downloads/cli-tools.md#palette-edge-cli)
 
   If you are using Ubuntu or any OS that uses apt or apt-get for package management, you can issue the following command
   to install all dependencies for installation (not including the Palette Edge CLI) with the following command:
@@ -452,68 +452,17 @@ Palette. You will then create a cluster profile and use the registered host to d
 
 6. Download the latest version of the Palette agent installation script. There is a FIPS-compliant script, if needed.
 
-    <Tabs groupId="FIPS">
+   <PartialsComponent category="agent-mode" name="agent-mode-latest-version" />
 
-    <TabItem value="Non-FIPS">
-
-   ```shell
-   curl --location --output ./palette-agent-install.sh https://github.com/spectrocloud/agent-mode/releases/latest/download/palette-agent-install.sh
-   ```
-
-    </TabItem>
-
-    <TabItem value="FIPS">
-
-   ```shell
-   curl --location --output ./palette-agent-install-fips.sh https://github.com/spectrocloud/agent-mode/releases/latest/download/palette-agent-install-fips.sh
-   ```
-
-    </TabItem>
-
-    </Tabs>
-
-    <details>
+   <details>
 
    {" "}
 
    <summary>Dedicated or On-Premises Palette Instance</summary>
 
-   If you have a dedicated or on-premises instance of Palette, you need to identify the correct agent version and then
-   download the corresponding version of the agent installation script. Use the command below and replace
-   `<palette-endpoint>` with your Palette endpoint and `<api-key>` with your Palette API key to identify the version.
+   <PartialsComponent category="agent-mode" name="agent-mode-versioned" />
 
-   ```shell
-   curl --location --request GET 'https://<palette-endpoint>/v1/services/stylus/version' --header 'Content-Type: application/json' --header 'Apikey: <api-key>'  | jq --raw-output '.spec.latestVersion.content | match("version: ([^\n]+)").captures[0].string'
-   ```
-
-   ```text hideClipboard
-   4.5.0
-   ```
-
-   Issue the following command to download the version of the Palette agent for your dedicated or on-prem instance.
-   Replace `<stylus-version>` with your output from the previous step.
-
-      <Tabs groupId="FIPS">
-
-      <TabItem value="Non-FIPS">
-
-   ```shell
-   curl --location --output ./palette-agent-install.sh https://github.com/spectrocloud/agent-mode/releases/download/v<stylus-version>/palette-agent-install.sh
-   ```
-
-      </TabItem>
-
-      <TabItem value="FIPS">
-
-   ```shell
-   curl --location --output ./palette-agent-install-fips.sh https://github.com/spectrocloud/agent-mode/releases/download/v<stylus-version>/palette-agent-install-fips.sh
-   ```
-
-      </TabItem>
-
-      </Tabs>
-
-    </details>
+   </details>
 
 7. Grant execution permissions to the installation script.
 
@@ -643,25 +592,7 @@ internet.
    `<version>` with the desired version number. In this example, we use `v4.5.0`. Refer to
    [Agent Mode Releases](https://github.com/spectrocloud/agent-mode/releases) for all the available releases.
 
-   <Tabs groupID="FIPS">
-
-   <TabItem value="Non-FIPS">
-
-   ```shell
-   curl -L https://github.com/spectrocloud/agent-mode/releases/download/<version>/agent-mode-linux-<architecture>.tar --output agent-mode-linux-<architecture>.tar
-   ```
-
-   </TabItem>
-
-   <TabItem value="FIPS">
-
-   ```shell
-   curl -L https://github.com/spectrocloud/agent-mode/releases/download/<version>/agent-mode-fips-linux-<architecture>.tar --output agent-mode-linux-<architecture>.tar
-   ```
-
-   </TabItem>
-
-   </Tabs>
+   <PartialsComponent category="agent-mode" name="agent-mode-airgap-version" />
 
 4. Extract the package to the root folder.
 

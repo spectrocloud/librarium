@@ -717,7 +717,7 @@ guide to learn how to create a Cluster Group.
   latest version of the Edge CLI, version `4.5.5`, are incompatible with Palette agent versions before `4.5.4` due to a
   new format schema. If you are using an older version of the Palette agent, use the Edge CLI version `4.5.3` or earlier
   to create content bundles. To download the latest version of the Edge CLI, visit the
-  [Downloads](../spectro-downloads.md#palette-edge-cli) page.
+  [Downloads](../downloads/cli-tools.md#palette-edge-cli) page.
 
 ### Improvements
 
@@ -727,7 +727,7 @@ guide to learn how to create a Cluster Group.
 - Cluster [Profile variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables.md) marked as hidden now include the ability to be mutable, hidden, and read-only.
 
 - [Edge content bundles](../clusters/edge/edgeforge-workflow/palette-canvos/build-content-bundle.md) will now retain tags and image signatures. In the past, tags and signatures were stripped when the content bundle was created. Use the latest version of the Edge CLI to create content bundles that retain tags and signatures. To download the latest version of the Edge CLI, visit the
-  [Downloads](../spectro-downloads.md#palette-edge-cli) page.
+  [Downloads](../downloads/cli-tools.md#palette-edge-cli) page.
 
 - Support for multiple authenticated external registries with domain mapping capabilities is now available for Edge clusters. Refer to the [External Registries](../clusters/edge/edge-configuration/installer-reference.md#multiple-external-registries) section in the Edge Installer Configuration Reference page for more information.
 
