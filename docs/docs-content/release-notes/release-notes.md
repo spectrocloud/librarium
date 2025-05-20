@@ -322,6 +322,14 @@ Check out the [CLI Tools](../downloads/cli-tools.md) page to find the compatible
 - The <VersionedLink text="BYOS - Agent Mode" url="integrations/packs/?pack=byoi-agent-mode" /> version 1.0.0 pack is now deprecated. We recommend using the <VersionedLink text="BYOS Edge OS" url="integrations/packs/?pack=edge-native-byoi" /> version 2.1.0 pack instead.
 
 <!-- prettier-ignore-end -->
+## May 20, 2025 - Release 4.6.26
+
+### Bug Fixes
+
+- Fixed an issue that occasionally caused `stylus-agent` restarts and a `stylus-operator` failure loop when deploying
+  clusters.
+- Fixed an issue that prevented add-on profiles from being deployed on [Edge](../clusters/edge/edge.md) clusters
+  containing the `harbor-edge-native-config` pack.
 
 ## May 7, 2025 - Release 4.6.25
 

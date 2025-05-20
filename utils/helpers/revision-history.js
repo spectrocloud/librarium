@@ -79,8 +79,4 @@ function getSeverityDescription(revisedFrom, revisedTo) {
   return "";
 }
 
-function formatArray(value) {
-  return value.replace(/\s+/g, ", ").replace(/^\[|\]$/g, "");
-}
-
 module.exports = { generateRevisionHistory };
