@@ -70,7 +70,7 @@ A few restrictions apply to all cluster imports that you need to be aware of bef
 | -------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Full Cluster Profile usage | You cannot use a full cluster profile. You are limited to using add-on profiles when deploying cluster profiles to imported clusters. This does not include full cluster profiles that are specifically created for [EKS Hybrid node pools](../public-cloud/aws/eks-hybrid-nodes/create-hybrid-node-pools.md). |
 | Kubeconfig file access     | You cannot download the cluster's kubeconfig file from Palette. You must use the underlying infrastructure provider to access the kubeconfig file.                                                                                                                                                             |
-| HTTP Proxy Configuration   | You cannot configure HTTP proxy settings for imported clusters with read-only mode. Import the cluster using Full Permission mode.                                                                                                                                                                             |
+| HTTP Proxy Configuration   | You cannot configure HTTP proxy settings for imported clusters in **Read-only** mode. Import the cluster using **Full Permission** mode.                                                                                                                                                                             |
 
 <br />
 
@@ -97,11 +97,9 @@ limitations:
   because it does not provision the nodes directly.
 
   - This does not apply to
-    [Amazon EKS Hybrid node pools](../public-cloud/aws/eks-hybrid-nodes/create-hybrid-node-pools.md) as they are
-    comprised of edge hosts that are managed by Palette.
+    [Amazon EKS Hybrid node pools](../public-cloud/aws/eks-hybrid-nodes/create-hybrid-node-pools.md), which consist of edge hosts managed by Palette.
 
-- When using the Palette API to interact with an imported Amazon EKS, GKE, or AKS cluster, the IaaS endpoint must be
-  used. Refer to the following tabs for examples.
+- When interacting with imported EKS, GKE, or AKS clusters through the Palette API, use the IaaS endpoint. Refer to the following tabs for examples.
 
   <Tabs>
 
