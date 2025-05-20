@@ -20,9 +20,8 @@ instance of Palette and Palette VerteX.
   :::info
 
   If your environment is configured to use an external proxy, you can use the **No Proxy** list to exclude any domains
-  or IP addresses from proxying. You have the option to set the No Proxy list during the Palette installation flow. This
-  is useful in scenarios where you know the IP addresses you want to exclude before deployment, such as load balancer IP
-  addresses.
+  or IP addresses. You have the option to set the No Proxy list during the Palette installation flow. This is useful in
+  scenarios where you know the IP addresses you want to exclude before deployment, such as load balancer IP addresses.
 
   :::
 
@@ -54,14 +53,14 @@ instance of Palette and Palette VerteX.
    sudo --login
    ```
 
-3. Refer to the [Palette Additional Packs](../enterprise-version/install-palette/airgap/supplemental-packs.md) page to
-   download and install the **airgap-pack-virtual-machine-orchestrator** and **airgap-pack-spectro-proxy** packs. You
-   will need these packs for both Proxied and Direct network configuration.
+3. Refer to the [Palette Additional Packs](../downloads/self-hosted-palette/additional-packs.md) page to download and
+   install the **airgap-pack-virtual-machine-orchestrator** and **airgap-pack-spectro-proxy** packs. You will need these
+   packs for both Proxied and Direct network configuration.
 
 4. If you are planning to deploy VMs with direct network access, repeat step three to install a load balancer pack of
    your choice. We recommend installing <VersionedLink text="MetalLB" url="/integrations/packs/?pack=lb-metallb" />
    (**airgap-pack-lb-metallb**), which you can find in
-   [Palette Additional Packs](../enterprise-version/install-palette/airgap/supplemental-packs.md).
+   [Palette Additional Packs](../downloads/self-hosted-palette/additional-packs.md).
 
 5. Log in to the Palette system console.
 

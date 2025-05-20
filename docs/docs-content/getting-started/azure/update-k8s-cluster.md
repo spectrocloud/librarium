@@ -10,10 +10,10 @@ tags: ["getting-started", "azure"]
 
 Palette provides cluster profiles, which allow you to specify layers for your workloads using packs, Helm charts, Zarf
 packages, or cluster manifests. Packs serve as blueprints to the provisioning and deployment process, as they contain
-the versions of the container images that Palette will install for you. Cluster profiles provide consistency across
+the versions of the container images that Palette installs for you. Cluster profiles provide consistency across
 environments during the cluster creation process, as well as when maintaining your clusters. Check out
-[Cluster Profiles](../introduction.md#cluster-profiles) to learn more. Once provisioned, there are three main ways to
-update your Palette deployments.
+[Cluster Profiles](../introduction.md#cluster-profiles) to learn more. Once provisioned, you can update Palette
+deployments using three methods.
 
 | Method                   | Description                                                                        | Cluster application process                                                                                                                                                                                |
 | ------------------------ | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -21,7 +21,7 @@ update your Palette deployments.
 | Cluster profile updates  | Change the cluster profile in place.                                               | Palette detects the difference between the provisioned resources and this profile. A pending update is available to clusters using this profile. Apply pending updates to the clusters you want to update. |
 | Cluster overrides        | Change the configuration of a single deployed cluster outside its cluster profile. | Save and apply the changes you've made to your cluster.                                                                                                                                                    |
 
-This tutorial will teach you how to update a cluster deployed with Palette to Microsoft Azure. You will explore each
+This tutorial teaches you how to update a cluster deployed with Palette to Microsoft Azure. The tutorial explores each
 cluster update method and learn how to apply these changes using Palette. The concepts you learn about in the Getting
 Started section are centered around a fictional case study company, Spacetastic Ltd.
 
@@ -38,8 +38,8 @@ Additionally, you should install Kubectl locally. Use the Kubernetes
 [Install Tools](https://kubernetes.io/docs/tasks/tools/) page for further guidance.
 
 Follow the instructions of the [Deploy a Cluster](./deploy-k8s-cluster.md) tutorial to deploy a cluster with the
-[_hello-universe_](https://github.com/spectrocloud/hello-universe) application. Your cluster should be successfully
-provisioned and in a healthy state.
+[_hello-universe_](https://github.com/spectrocloud/hello-universe) app. Your cluster should be successfully provisioned
+and in a healthy state.
 
 The cluster profile name is `azure-profile` and the cluster name is `azure-cluster`.
 
@@ -189,7 +189,7 @@ cluster profile. Once your changes are applied, Palette marks your layers with t
 
 ![Cluster details page with service URL highlighted](/getting-started/azure/getting-started_update-k8s-cluster_rollback.webp)
 
-## Pending Updates
+## Cluster Overrides
 
 Cluster profiles can also be updated in place, without the need to create a new cluster profile version. Palette
 monitors the state of your clusters and notifies you when updates are available for your host clusters. You may then
@@ -199,16 +199,31 @@ The previous state of the cluster profile will not be saved once it is overwritt
 
 Navigate to the left **Main Menu** and select **Clusters**. Select the `azure-cluster` to view its **Overview** tab.
 
-Select the **Profile** tab. Then, select the **hello-universe** pack. Change the `replicas` field on line `15` to `2`
-and **Save** your changes. The editor is closed.
+Select the **Profile** tab. Then, select the **hello-universe** pack. Change the value of the `replicas` field on line
+`15` to `2` and **Save** your changes. The editor is closed.
 
 This cluster now contains an override over its cluster profile. Palette uses the configuration you have just provided
 for the single cluster over its cluster profile and begins making the appropriate changes.
 
 Once these changes are complete, select the **Workloads** tab. Then, select the **hello-universe** namespace.
 
-Two **ui** pods are available, instead of the one specified by your cluster profile. Your override has been successfully
+Two `ui` pods are available, instead of the one specified by your cluster profile. Your override has been successfully
 applied. If your changes are not displayed, use the **refresh** icon.
+
+You may also use kubectl to view the status of your pods with the following command.
+
+```shell
+kubectl get pods --namespace hello-universe
+```
+
+:::info
+
+The browser's native refresh button will not trigger Palette to refresh cluster status. You must use the in app refresh
+button.
+
+:::
+
+![Palette in app refresh button](/getting-started/azure/clusters_cluster-management_deploy-cluster-profile-updates_palette-refresh.webp)
 
 Navigate to the left **Main Menu** and select **Profiles** to view the cluster profile page. Find the cluster profile
 corresponding to your _hello-universe-frontend_ cluster, named `azure-profile`.
@@ -241,7 +256,7 @@ Click on **Apply Changes** once you have finished reviewing your changes. This r
 Palette updates your cluster according to cluster profile specifications. Once these changes are complete, select the
 **Workloads** tab. Then, select the **hello-universe** namespace.
 
-Three **ui** pods are available. The cluster profile update is now reflected by your cluster. If your changes are not
+Three `ui` pods are available. The cluster profile update is now reflected by your cluster. If your changes are not
 displayed, use the **refresh** icon.
 
 ## Cluster Observability

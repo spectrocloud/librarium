@@ -35,7 +35,7 @@ Palette Edge CLI to download the images and upload them to the external registry
 - Edge content bundles created with Edge CLI version greater than `4.5.5`, are incompatible with Palette agent versions
   before `4.5.4` due to a new format schema. If you are using an older version of the Palette agent, use the Edge CLI
   version `4.5.3` or earlier to create content bundles. To download the latest version of the Edge CLI, visit the
-  [Downloads](../../../../spectro-downloads.md#palette-edge-cli) page.
+  [Downloads](../../../../downloads/cli-tools.md#palette-edge-cli) page.
 
 ## Upload Cluster Images to Registry
 
@@ -43,9 +43,8 @@ Palette Edge CLI to download the images and upload them to the external registry
 
 <TabItem value="Palette CLI" label="Palette CLI">
 
-1. Download the Palette CLI. Refer to the
-   [Palette Components Compatibility Matrix](../../../../component.md#palette-cli-versions) to find a compatible CLI
-   version and replace `<palette-cli-version>` with the selected version.
+1. Download the Palette CLI. Refer to the [Palette CLI Compatibility Matrix](../../../../downloads/cli-tools.md) to find
+   a compatible CLI version and replace `<palette-cli-version>` with the selected version.
 
    ```shell
    VERSION=<palette-cli-version>
@@ -127,9 +126,8 @@ Palette Edge CLI to download the images and upload them to the external registry
 
 <TabItem value="Palette Edge CLI" label="Palette Edge CLI">
 
-1. Download the Palette Edge CLI. Refer to the
-   [Palette Components Compatibility Matrix](../../../../component.md#palette-edge-cli-versions) to find a compatible
-   CLI version and replace `<palette-edge-cli-version>` with the selected version.
+1. Download the Palette Edge CLI. Refer to the [Palette Components CLI Matrix](../../../../downloads/cli-tools.md) to
+   find a compatible CLI version and replace `<palette-edge-cli-version>` with the selected version.
 
    ```shell
    VERSION=<palette-edge-cli-version>

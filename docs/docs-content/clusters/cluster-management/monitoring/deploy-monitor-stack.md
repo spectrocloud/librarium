@@ -132,7 +132,7 @@ learn more about the available options.
 
 16. Click on **Add New Pack**.
 
-17. Use the following information to find the Spectrocloud Grafana Dashboards pack.
+17. Use the following information to find the Spectro Grafana Dashboards pack.
 
     - **Pack Type**: Monitoring
     - **Registry**: Public Repo
@@ -332,11 +332,11 @@ learn more about the available options.
 
 21. Click on **Add New Pack**.
 
-22. Use the following information to find the Spectrocloud Grafana Dashboards pack.
+22. Use the following information to find the Spectro Grafana Dashboards pack.
 
     - **Pack Type**: Monitoring
     - **Registry**: Public Repo
-    - **Pack Name**: Spectrocloud Grafana Dashboards
+    - **Pack Name**: Spectro Grafana Dashboards
     - **Pack Version**: 1.0.X or newer
 
 23. Use the default values. Confirm your changes by selecting **Confirm & Create**.
@@ -436,7 +436,7 @@ network administrator team if you need additional guidance.
 :::
 
 41. Create a Canonical Name (CNAME) record for each of the following services and add the load balancer hostname to the
-    CNAME's record value. Use the table below to identify which mapping to use between the domain and each load balancer
+    CNAME record value. Use the table below to identify which mapping to use between the domain and each load balancer
     hostname.
 
 | Service                                             | Domain                   | CNAME Value Example                                                       |

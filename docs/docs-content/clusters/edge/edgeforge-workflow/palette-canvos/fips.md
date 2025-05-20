@@ -117,7 +117,7 @@ image with.
 When you create a cluster with an Edge host that operates the FIPS-compliant RHEL Operating System (OS), you may
 encounter an error where the `systemd-resolved.service` service enters the **failed** state. This prevents the
 nameserver from being configured, which will result in cluster deployment failure. Refer to
-[TroubleShooting](../../../../troubleshooting/edge.md#scenario---systemd-resolvedservice-enters-failed-state) for a
+[TroubleShooting](../../../../troubleshooting/edge/edge.md#scenario---systemd-resolvedservice-enters-failed-state) for a
 workaround.
 
 :::
@@ -319,10 +319,10 @@ workaround.
 Provider images are Kairos-based container images for a supported OS and Kubernetes distribution combination.
 FIPS-complaint provider images are built on top of the base OS image you have built previously.
 
-17. Open the **k8s_versions.json** file in the CanvOS directory. Remove the Kubernetes versions that you don't need from
+17. Open the **k8s_version.json** file in the CanvOS directory. Remove the Kubernetes versions that you don't need from
     the JSON object corresponding to your Kubernetes distribution.
 
-    If you are using a tag that is earlier than v4.4.12, the **k8s_versions.json** file does not exist in those tags.
+    If you are using a tag that is earlier than v4.4.12, the **k8s_version.json** file does not exist in those tags.
     Instead, open the **Earthfile** in the CanvOS directory. In the file, find the block that starts with
     `build-provider-images-fips:` and delete the Kubernetes versions that you do not want. This will speed up the build
     process and save storage space.
@@ -331,7 +331,7 @@ FIPS-complaint provider images are built on top of the base OS image you have bu
     provider images.
 
     ```shell
-      ./earthly +build-provider-images-fips
+      ./earthly.sh +build-provider-images-fips
     ```
 
     :::warning
@@ -345,8 +345,8 @@ FIPS-complaint provider images are built on top of the base OS image you have bu
 
 1. Follow the [Site Installation](../../site-deployment/stage.md) guide to install the Palette Edge on your Edge host.
 
-2. Press Fn + Ctrl + Cmd + F1 or Ctrl + Cmd + F1 keys on a mac keyboard and provide user credentials to log in to the
-   OS.
+2. Press the **FN + CTRL + CMD + F1** or **CTRL + CMD + F1** keys on a Mac keyboard and provide user credentials to log
+   in to the OS.
 
 3. Issue the following command and ensure that the output is `1`. This means the OS is FIPS enabled.
 

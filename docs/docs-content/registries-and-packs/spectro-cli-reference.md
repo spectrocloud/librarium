@@ -28,33 +28,7 @@ The Spectro CLI tool is currently available for OSX and Linux.
 
 1. Download the CLI file for your operating system.
 
-<!-- prettier-ignore-start -->
-
-   <Tabs>
-
-   <TabItem label="OSX" value="osx_cli">
-
-   <!-- spectro-cli-osx-install -->
-
-   ```bash
-   wget https://spectro-cli.s3.amazonaws.com/v4.6.0/osx/spectro
-   ```
-
-   </TabItem>
-
-   <TabItem label="Linux" value="linux_cli">
-
-   <!-- spectro-cli-linux-install -->
-
-   ```bash
-   wget https://spectro-cli.s3.amazonaws.com/v4.6.0/linux/spectro
-   ```
-
-   </TabItem>
-
-   </Tabs>
-
-<!-- prettier-ignore-end -->
+   <PartialsComponent category="cli-tools" name="spectro-cloud-cli-tool-download" />
 
 2. Provide the executable permission to the CLI spectro.
 
@@ -223,7 +197,7 @@ Download the packs from the pack registry to a pack target location:
 
 #### Arguments
 
-PACK_NAME: TAG|@DIGEST - Name of the pack for a particular tag or a sha digest.
+PACK_NAME: TAG|@DIGEST - Name of the pack for a particular tag or a SHA digest.
 
 PACK_TARGET_DIR - Directory location where pack content will be pulled.
 

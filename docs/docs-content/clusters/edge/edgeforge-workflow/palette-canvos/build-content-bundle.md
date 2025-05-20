@@ -65,11 +65,11 @@ require a local Harbor registry. Built-in registries must be configured using ei
 - Edge content bundles created with Edge CLI version greater than `4.5.5`, are incompatible with Palette agent versions
   before `4.5.4` due to a new format schema. If you are using an older version of the Palette agent, use the Edge CLI
   version `4.5.3` or earlier to create content bundles. To download the latest version of the Edge CLI, visit the
-  [Downloads](../../../../spectro-downloads.md#palette-edge-cli) page.
+  [Downloads](../../../../downloads/cli-tools.md#palette-edge-cli) page.
 
 - Content bundles built with the Palette Edge CLI versions earlier than `4.5.20` cannot be used to provision multi-node
   clusters. Download the latest version of the Palette Edge CLI from the
-  [Downloads](../../../../spectro-downloads.md#palette-edge-cli) page to build the content bundle instead.
+  [Downloads](../../../../downloads/cli-tools.md#palette-edge-cli) page to build the content bundle instead.
 
 ## Prerequisites
 
@@ -91,9 +91,8 @@ require a local Harbor registry. Built-in registries must be configured using ei
 
 <TabItem value="Palette CLI" label="Palette CLI">
 
-1. Download the Palette CLI. Refer to the
-   [Palette Components Compatibility Matrix](../../../../component.md#palette-cli-versions) to find a compatible CLI
-   version and replace `<palette-cli-version>` with the selected version.
+1. Download the Palette CLI. Refer to the [Palette CLI Compatibility Matrix](../../../../downloads/cli-tools.md) to find
+   a compatible CLI version and replace `<palette-cli-version>` with the selected version.
 
    ```shell
    VERSION=<palette-cli-version>
@@ -212,9 +211,8 @@ require a local Harbor registry. Built-in registries must be configured using ei
 
 <TabItem value="Palette Edge CLI" label="Palette Edge CLI">
 
-1. Download the Palette Edge CLI. Refer to the
-   [Palette Components Compatibility Matrix](../../../../component.md#palette-edge-cli-versions) to find a compatible
-   CLI version and replace `<palette-edge-cli-version>` with the selected version.
+1. Download the Palette Edge CLI. Refer to the [Palette CLI Compatibility Matrix](../../../../downloads/cli-tools.md) to
+   find a compatible CLI version and replace `<palette-edge-cli-version>` with the selected version.
 
    ```shell
    VERSION=<palette-edge-cli-version>
@@ -439,8 +437,8 @@ require a local Harbor registry. Built-in registries must be configured using ei
 
     :::
 
-    The result is a content bundle that you can use to preload into your installer. The content bundle will be a zst
-    file in a folder that starts with **content-** followed by a random string. For more information about how to use
+    The result is a content bundle that you can use to preload into your installer. The content bundle will be a `.zst`
+    file in a folder that starts with **content-** followed by a random string. For more information about how to use a
     content bundles, [Build Installer ISO](./build-installer-iso.md) or
     [Upload Content Bundle through Local UI](../../local-ui/cluster-management/upload-content-bundle.md).
 

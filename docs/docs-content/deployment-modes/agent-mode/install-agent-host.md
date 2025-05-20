@@ -81,7 +81,7 @@ Palette. You will then create a cluster profile and use the registered host to d
     use PXKE as the Kubernetes layer
   - [iptables](https://linux.die.net/man/8/iptables)
   - [rsyslog](https://github.com/rsyslog/rsyslog). This is required for audit logs.
-  - (Airgap only) [Palette Edge CLI](../../spectro-downloads.md#palette-edge-cli)
+  - (Airgap only) [Palette Edge CLI](../../downloads/cli-tools.md#palette-edge-cli)
 
   If you are using Ubuntu or any OS that uses apt or apt-get for package management, you can issue the following command
   to install all dependencies for installation (not including the Palette Edge CLI) with the following command:
@@ -100,8 +100,8 @@ Palette. You will then create a cluster profile and use the registered host to d
 - If installing the FIPS version of Agent Mode on a Rocky Linux edge host, you must configure your SELinux policies to
   grant rsync the required host permissions and ensure you enable cgroup V2.
 
-  If you are using Cilium and have firewalld enabled, you must also configure the appropriate firewalld rules. Follow
-  the process below to apply the necessary configurations before installing Agent Mode.
+  If you are using Cilium and have `firewalld` enabled, you must also configure the appropriate `firewalld` rules.
+  Follow the process below to apply the necessary configurations before installing Agent Mode.
 
   <details>
 
@@ -195,7 +195,7 @@ Palette. You will then create a cluster profile and use the registered host to d
       GRUB_DISABLE_SUBMENU=true
       GRUB_TERMINAL_OUTPUT="console"
       GRUB_CMDLINE_LINUX="crashkernel=auto resume=/dev/mapper/rl-swap rd.lvm.lv=rl/root rd.lvm.lv=rl/swap systemd.unified_cgroup_hierarchy=1
-      systemd.unified_cgroup_hierarchv=1" GRUB_DISABLE_RECOVERY=" true"
+      systemd.unified_cgroup_hierarchy=1" GRUB_DISABLE_RECOVERY="true"
       GRUB_ENABLE_BLSCFG=true
       ```
 
@@ -213,7 +213,7 @@ Palette. You will then create a cluster profile and use the registered host to d
 
   ### Configure firewalld (Cilium Only)
 
-  12. (Optional) If you are using Cilium and have firewalld enabled, put the following commands into a shell script.
+  12. (Optional) If you are using Cilium and have `firewalld` enabled, put the following commands into a shell script.
 
       ```shell
       cat << 'EOF' > firewalld-cilium.sh
@@ -290,7 +290,7 @@ Palette. You will then create a cluster profile and use the registered host to d
       chmod +x firewalld-cilium.sh
       ```
 
-  13. Execute the script with the name of the firewalld zone. For example, the following script sets the rules in the
+  13. Execute the script with the name of the `firewalld` zone. For example, the following script sets the rules in the
       firewall zone `public`.
 
       ```shell
@@ -351,9 +351,9 @@ Palette. You will then create a cluster profile and use the registered host to d
 
    - The host will not shut down and will instead reboot after the agent is installed, with
      [kube-vip](../../clusters/edge/networking/kubevip.md) enabled, as this is required for bare metal and VMware
-     vSphere deployments. If your environment does not require kube-vip, set `stylus.vip.skip` to `true`. Refer to the
-     [Prepare User Data](../../clusters/edge/edgeforge-workflow/prepare-user-data.md) guide to learn more about user
-     data configuration.
+     vSphere deployments. If your environment does not require kube-vip, set `stylus.vip.skip` to `true`. Refer to
+     [Edge Installer Configuration Reference](../../clusters/edge/edge-configuration/installer-reference.md) to learn
+     more about user data configuration.
    - The `projectName` parameter is not required if the associated Palette
      [registration token](../../clusters/edge/site-deployment/site-installation/create-registration-token.md) has a
      Default Project set.
@@ -448,68 +448,17 @@ Palette. You will then create a cluster profile and use the registered host to d
 
 6. Download the latest version of the Palette agent installation script. There is a FIPS-compliant script, if needed.
 
-    <Tabs groupId="FIPS">
+   <PartialsComponent category="agent-mode" name="agent-mode-latest-version" />
 
-    <TabItem value="Non-FIPS">
-
-   ```shell
-   curl --location --output ./palette-agent-install.sh https://github.com/spectrocloud/agent-mode/releases/latest/download/palette-agent-install.sh
-   ```
-
-    </TabItem>
-
-    <TabItem value="FIPS">
-
-   ```shell
-   curl --location --output ./palette-agent-install-fips.sh https://github.com/spectrocloud/agent-mode/releases/latest/download/palette-agent-install-fips.sh
-   ```
-
-    </TabItem>
-
-    </Tabs>
-
-    <details>
+   <details>
 
    {" "}
 
    <summary>Dedicated or On-Premises Palette Instance</summary>
 
-   If you have a dedicated or on-premises instance of Palette, you need to identify the correct agent version and then
-   download the corresponding version of the agent installation script. Use the command below and replace
-   `<palette-endpoint>` with your Palette endpoint and `<api-key>` with your Palette API key to identify the version.
+   <PartialsComponent category="agent-mode" name="agent-mode-versioned" />
 
-   ```shell
-   curl --location --request GET 'https://<palette-endpoint>/v1/services/stylus/version' --header 'Content-Type: application/json' --header 'Apikey: <api-key>'  | jq --raw-output '.spec.latestVersion.content | match("version: ([^\n]+)").captures[0].string'
-   ```
-
-   ```text hideClipboard
-   4.5.0
-   ```
-
-   Issue the following command to download the version of the Palette agent for your dedicated or on-prem instance.
-   Replace `<stylus-version>` with your output from the previous step.
-
-      <Tabs groupId="FIPS">
-
-      <TabItem value="Non-FIPS">
-
-   ```shell
-   curl --location --output ./palette-agent-install.sh https://github.com/spectrocloud/agent-mode/releases/download/v<stylus-version>/palette-agent-install.sh
-   ```
-
-      </TabItem>
-
-      <TabItem value="FIPS">
-
-   ```shell
-   curl --location --output ./palette-agent-install-fips.sh https://github.com/spectrocloud/agent-mode/releases/download/v<stylus-version>/palette-agent-install-fips.sh
-   ```
-
-      </TabItem>
-
-      </Tabs>
-
-    </details>
+   </details>
 
 7. Grant execution permissions to the installation script.
 
@@ -600,8 +549,8 @@ Palette. You will then create a cluster profile and use the registered host to d
 If using the FIPS version of Agent Mode on a Rocky Linux edge host, SELinux may incorrectly label the
 **kubeadm-flags.env** file during cluster deployment or when certain configurations are adjusted, preventing the Kubelet
 from accessing it and properly managing the cluster. Refer to the
-[Edge Troubleshooting Guide](../../troubleshooting/edge.md#scenario---kubelet-process-cannot-access-kubeadm-flags) for
-guidance.
+[Edge Troubleshooting Guide](../../troubleshooting/edge/edge.md#scenario---kubelet-process-cannot-access-kubeadm-flags)
+for guidance.
 
 :::
 
@@ -639,25 +588,7 @@ internet.
    `<version>` with the desired version number. In this example, we use `v4.5.0`. Refer to
    [Agent Mode Releases](https://github.com/spectrocloud/agent-mode/releases) for all the available releases.
 
-   <Tabs groupID="FIPS">
-
-   <TabItem value="Non-FIPS">
-
-   ```shell
-   curl -L https://github.com/spectrocloud/agent-mode/releases/download/<version>/agent-mode-linux-<architecture>.tar --output agent-mode-linux-<architecture>.tar
-   ```
-
-   </TabItem>
-
-   <TabItem value="FIPS">
-
-   ```shell
-   curl -L https://github.com/spectrocloud/agent-mode/releases/download/<version>/agent-mode-fips-linux-<architecture>.tar --output agent-mode-linux-<architecture>.tar
-   ```
-
-   </TabItem>
-
-   </Tabs>
+   <PartialsComponent category="agent-mode" name="agent-mode-airgap-version" />
 
 4. Extract the package to the root folder.
 
@@ -665,14 +596,14 @@ internet.
    sudo tar -xvf agent-mode-linux-<architecture>.tar -C /
    ```
 
-5. Issue the command below to create the **userdata** file and configure your host declaratively.
+5. Issue the command below to create the `userdata` file and configure your host declaratively.
 
    The following configuration indicates the installation mode to be airgap and sets up the `kairos` user. The host will
    not shut down and will reboot after the agent installation, with
    [kube-vip](../../clusters/edge/networking/kubevip.md) enabled, as this is required for bare metal and VMware vSphere
-   deployments. If your environment does not require kube-vip, set `stylus.vip.skip` to `true`. Refer to the
-   [Prepare User Data](../../clusters/edge/edgeforge-workflow/prepare-user-data.md) guide to learn more about user data
-   configuration.
+   deployments. If your environment does not require kube-vip, set `stylus.vip.skip` to `true`. Refer to
+   [Edge Installer Configuration Reference](../../clusters/edge/edge-configuration/installer-reference.md) to learn more
+   about user data configuration.
 
    ```shell
    sudo tee /var/lib/spectro/userdata > /dev/null << EOF
@@ -788,8 +719,8 @@ internet.
 If using the FIPS version of Agent Mode on a Rocky Linux edge host, SELinux may incorrectly label the
 **kubeadm-flags.env** file during cluster deployment or when certain configurations are adjusted, preventing the Kubelet
 from accessing it and properly managing the cluster. Refer to the
-[Edge Troubleshooting Guide](../../troubleshooting/edge.md#scenario---kubelet-process-cannot-access-kubeadm-flags) for
-guidance.
+[Edge Troubleshooting Guide](../../troubleshooting/edge/edge.md#scenario---kubelet-process-cannot-access-kubeadm-flags)
+for guidance.
 
 :::
 

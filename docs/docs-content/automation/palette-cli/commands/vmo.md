@@ -1,7 +1,7 @@
 ---
 sidebar_label: "VMO"
 title: "VMO"
-description: "Reference resource for the vmo command."
+description: "Reference resource for the VMO command."
 hide_table_of_contents: false
 sidebar_position: 60
 tags: ["palette-cli"]
@@ -55,7 +55,7 @@ Deploy a vSphere OVA previously imported to Palette VMO in interactive mode.
 palette vmo deploy-ova --config-file ~/.palette/vmo/vms/my-ova-name/my-ova-name.yaml
 ```
 
-Update the OVA configuration file without proceeding with the depoyment.
+Update the OVA configuration file without proceeding with the deployment.
 
 ```shell
 palette vmo import-ova --config-file ~/.palette/vmo/vms/my-ova-name/my-ova-name.yaml --config-only

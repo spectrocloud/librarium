@@ -11,6 +11,38 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## May 7, 2025 - Release 4.6.25
+
+### Bug Fixes
+
+- Fixed an issue that caused the deletion of [GCP clusters](../clusters/public-cloud/gcp/gcp.md) to fail for clusters
+  associated with cloud accounts that have been created on older Palette versions.
+
+## May 5, 2025 - Release 4.6.24
+
+### Bug Fixes
+
+- Fixed an issue that caused [Edge hosts](../clusters/edge/edge.md) to reboot continuously after a cluster deletion and
+  completed [reset](../clusters/edge/local-ui/host-management/reset-reboot.md#reset-edge-host).
+- Fixed an issue where Kubernetes version upgrades initiated through [Local UI](../clusters/edge/local-ui/local-ui.md)
+  failed for [Edge](../clusters/edge/edge.md) clusters containing the `harbor-edge-native-config` pack.
+- Fixed an issue where
+  [Software Bill of Materials (SBOM)](../clusters/cluster-management/compliance-scan.md#sbom-dependencies--vulnerabilities)
+  scans failed to execute successfully for all clusters.
+- Fixed an issue where POST API calls to `/v1/spectroclusters/edge-native` failed for U.S. multi-tenant SaaS
+  environments.
+- Fixed an issue that caused pack downloads with a double hyphen (`--`) in the label prefix to fail.
+- Fixed an issue that caused pack downloads to fail if the pack registry endpoint contained a port.
+- Fixed a UI discrepancy between the **Last Modified** timestamp on the cluster list and the cluster **Overview** tab.
+- Fixed an issue where [Edge cluster](../clusters/edge/edge.md) deployment failed when a certificate for a
+  [private provider registry](../clusters/edge/site-deployment/deploy-custom-registries/deploy-private-registry.md) was
+  included in the cluster profile.
+
+### Improvements
+
+- The default timeout for [remote shell](../clusters/edge/cluster-management/remote-shell.md) has been increased to 12
+  hours of inactivity.
+
 ## April 19, 2025 - Release 4.6.23 {#release-notes-4.6.b}
 
 ### Security Notices
@@ -29,14 +61,25 @@ tags: ["release-notes"]
 
 #### Bug Fixes
 
-- Fixed a bug where simultaneous updates to EKS logging and VPC config caused reconciliation failures due to API
-  limitations.
-- Fixed an issue in MAAS clusters where only the first node pool gets repaved when a full cluster repave is expected.
+- Fixed an issue where tags that contained spaces prevented [AWS](../clusters/public-cloud/aws/aws.md) clusters from
+  being deployed via API.
+- Fixed an issue where simultaneous updates to [EKS](../clusters/public-cloud/aws/eks.md) logging and VPC configuration
+  caused reconciliation failures due to API limitations.
+- Fixed an issue in [MAAS](../clusters/data-center/maas/maas.md) clusters where only the first node pool got repaved
+  when a full cluster repave was expected.
+- Fixed a UI discrepancy where the worker node count on the cluster **Review** page displayed the **Number of nodes in
+  pool** instead of the **Minimum size** and **Maximum size** for clusters with autoscaler enabled. This did not affect
+  cluster functionality.
+- Fixed an issue that caused repeated reconciliation errors when deploying an [EKS](../clusters/public-cloud/aws/eks.md)
+  cluster with private cluster endpoint access. This did not affect cluster functionality.
+- Fixed an issue during cluster setup where selecting **Copy from Control Plane Pool** would reset certain worker pool
+  configurations, such as autoscaler. Copied changes are now restricted to cloud configurations.
 
 #### Improvements
 
 - Palette and VerteX emails have been redesigned to ensure consistency and improve accessibility. The updates have been
   applied to sign-up, login, password reset, and billing update emails.
+- ResourceQuota and LimitRange resources are now set in the `system-upgrade` namespace.
 
 #### Deprecations and Removals
 
@@ -64,6 +107,12 @@ tags: ["release-notes"]
   elements are displayed across the entire product interface. Check out the
   [Welcome to the fold: meet the new Spectro Cloud brand](https://www.spectrocloud.com/blog/meet-the-new-spectro-cloud-brand)
   blog post to learn more.
+
+#### Bug Fixes
+
+- Fixed an issue that prevented DNS configuration changes made using the Terminal User Interface (TUI) from being
+  applied without restarting the `CoreDNS` deployment.
+- Fixed an issue where password updates were delayed on appliance mode [Edge](../clusters/edge/edge.md) hosts.
 
 #### Deprecations and Removals
 
@@ -94,8 +143,7 @@ tags: ["release-notes"]
 
 :::info
 
-Check out the [Downloads](../spectro-downloads.md) and [Compatibility Matrix](../component.md) pages to find the
-compatible version of the Palette CLI.
+Check out the [Palette CLI Downloads](../downloads/cli-tools.md) page to find the compatible version of the Palette CLI.
 
 :::
 
@@ -130,6 +178,13 @@ compatible version of the Palette CLI.
   [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
 - The `spectrocloud_cluster_eks` Terraform resource now supports the specification of availability zones and subnets.
   For more information, refer to the Spectro Cloud Terraform provider
+  [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
+- The `spectrocloud_cluster_profile` Terraform resource now supports defining cluster profile variables and referencing
+  them in the applicable `spectrocloud_cluster_<type>` resource during the same `terraform apply`. For more information,
+  refer to the Spectro Cloud Terraform provider
+  [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
+- The `spectrocloud_cluster_aws` and `spectrocloud_cluster_eks` Terraform resources now support `tag_maps`. For more
+  information, refer to the Spectro Cloud Terraform provider
   [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
 
 ### Virtual Machine Orchestrator (VMO)
@@ -358,8 +413,7 @@ available. For more details, refer to the Terraform provider
 
 :::info
 
-Check out the [Downloads](../spectro-downloads.md) and [Compatibility Matrix](../component.md) pages to find the
-compatible version of the Palette CLI.
+Check out the [Palette CLI Downloads](../downloads/cli-tools.md) page to find the compatible version of the Palette CLI.
 
 :::
 
@@ -471,6 +525,7 @@ compatible version of the Palette CLI.
   [Local UI](../clusters/edge/local-ui/local-ui.md) and API. Only one update can be in progress now.
 - Fixed an issue where installing a Palette [pack](../integrations/integrations.mdx) through a Helm chart incorrectly
   sets the Helm install version.
+- Fixed an issue where NTP settings modified via [Local UI](../clusters/edge/local-ui/local-ui.md) did not persist.
 
 ### Features
 
@@ -482,7 +537,7 @@ compatible version of the Palette CLI.
 ### Documentation & Education Updates
 
 - The Documentation & Education team is enabling a new Q&A bot functionality on the Spectro Cloud official documentation
-  site. Click the **Ask AI** widget in the bottom right corner or use the **Ctrl + I** (**Cmd + I** on macOS) keyboard
+  site. Click the **Ask AI** widget in the bottom right corner or use the **CTRL + I** (**CMD + I** on macOS) keyboard
   shortcut to bring up the chat interface.
 
   The Q&A bot is only trained on the latest version of the Spectro Cloud documentation. It is unable to answer
@@ -617,7 +672,7 @@ compatible version of the Palette CLI.
   [Create a VM Migration Assistant Profile](../vm-management/vm-migration-assistant/create-vm-migration-assistant-profile.md)
   guide to learn more.
 
-- The KubeVirt version in use is now v1.4.0. Other minor maintenance updates in support of Kubevirt 1.4.0 are also
+- The KubeVirt version in use is now v1.4.0. Other minor maintenance updates in support of KubeVirt 1.4.0 are also
   included.
 
 ### Packs
