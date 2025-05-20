@@ -15,10 +15,8 @@ hybrid mode, and configure a Container Network Interface (CNI) add-on cluster pr
 
 The following limitations apply after importing an existing Amazon EKS cluster.
 
-- You cannot use full cluster profiles on the imported cluster. You are limited to using add-on profiles when deploying
-  cluster profiles to imported clusters.
-  - This does not include full cluster profiles that are specifically created for hybrid node pools. Refer to
-    [Create Hybrid Node Pools](./create-hybrid-node-pools.md) for further details.
+- The [general limitations](../../../imported-clusters/imported-clusters.md#limitations) apply for imported clusters and
+  cloud-specific clusters.
 - You cannot download the cluster's kubeconfig file from Palette. You must use AWS to access the kubeconfig file.
 - [Cilium](https://docs.cilium.io/en/stable/overview/intro/) must be used as the CNI, as outlined in the
   [Import Amazon EKS Cluster and Enable Hybrid Mode](#import-amazon-eks-cluster-and-enable-hybrid-mode) steps.
