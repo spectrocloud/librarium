@@ -42,8 +42,10 @@ Select the mode you want to use when importing a cluster into Palette.
 4. Fill out the required information and make your selections:
 
    - Cluster Name - The name of the cluster you want to import.
-   - Cloud Type - Select the infrastructure environment your cluster resides in. Select **Generic** if the environment
-     list doesn't contain your specific environment, but be aware of the limitations with generic clusters.
+   - Cloud Type - Select the infrastructure environment your cluster resides in.
+     - Choose **Amazon** for Amazon EKS, **Google Cloud** for GKE, and **Azure** for AKS.
+     - Select **Generic** if the environment list doesn't contain your specific environment, but be aware of the
+       [limitations with generic clusters](./imported-clusters.md#generic-clusters).
    - Proxy - Optional and only available for generic clusters. Specify a network proxy address or DNS value.
    - No Proxy - Optional and only available for generic clusters. Specify a no proxy address or DNS value.
    - Host Path - Used to specify the Certificate Authority (CA) file path for the cluster. This is the location on the
