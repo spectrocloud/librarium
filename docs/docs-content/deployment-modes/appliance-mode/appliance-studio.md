@@ -25,7 +25,8 @@ are supported.
 
 ### Prerequisites
 
-- [Git](https://git-scm.com/downloads). You can confirm Git installation by issuing the `git --version` command.
+- (Optional) [Git](https://git-scm.com/downloads). You can confirm Git installation by issuing the `git --version`
+  command. Git is only required if you want to clone the Appliance Studio GitHub repository.
 
 <Tabs groupId="method">
 
@@ -49,18 +50,15 @@ are supported.
 
 ### Procedure
 
-1. Clone the `appliance-studio` repository.
+1. Clone the `appliance-studio` repository and change into the `/deploy` directory.
 
    ```shell
    git clone https://github.com/spectrocloud/appliance-studio.git
-   cd appliance-studio
+   cd appliance-studio/deploy
    ```
 
-2. Change into the `deploy` directory.
-
-   ```shell
-   cd deploy
-   ```
+   If you do not want to clone the repository, you can also download the Docker Compose file from the
+   [Releases](https://github.com/spectrocloud/appliance-studio/releases) page of the repository.
 
 <Tabs groupId="method">
 
@@ -110,12 +108,14 @@ are supported.
 
 <TabItem value="Docker Compose">
 
-3. (Optional) Modify the persistent data directory. By default, the `docker-compose.yml` file configures the
+2. (Optional) Modify the persistent data directory. By default, the `docker-compose.yml` file configures the
    `deploy/appliance-studio-data` directory as the persistent data directory. You may change this to point to any other
-   directory by modifying the `services.server.volumes` field.
+   directory by modifying the `services.server.volumes` field. If you did not clone the repository, you need to create a
+   directory named `appliance-studio-data` in the same directory as your `docker-compose.yml` file to match the default
+   configuration.
 
    Change the path before the `:` sign to point to the directory you want to mount. You can use an absolute path or a
-   relative path. If you use a relative path, the path is relative to the `docker-compose.yaml` file, not the directory
+   relative path. If you use a relative path, the path is relative to the `docker-compose.yml` file, not the directory
    from which you issue the `docker compose up` command.
 
    ```yaml {11} title="Example" hideClipboard
@@ -136,12 +136,12 @@ are supported.
 
    The data stored in the data directory includes your saved configurations and presets.
 
-4. If you did not modify the persistent data mount directory, skip this step.
+3. If you did not modify the persistent data mount directory, skip this step.
 
    If you modified the persistent data mount directory, ensure that the directory exists before proceeding to the next
    step. Create the directory if it does not exist.
 
-5. Issue the following command to bring up Appliance Studio.
+4. Issue the following command to bring up Appliance Studio.
 
    ```shell
    docker compose up -d
@@ -153,10 +153,12 @@ are supported.
 
 3. (Optional) Modify the persistent data directory. By default, the `docker-compose.yml` file configures the
    `deploy/appliance-studio-data` directory as the persistent data directory. You may change this to point to any other
-   directory by modifying the `services.server.volumes` field.
+   directory by modifying the `services.server.volumes` field. If you did not clone the repository, you need to create a
+   directory named `appliance-studio-data` in the same directory as your `docker-compose.yml` file to match the default
+   configuration.
 
    Change the path before the `:` sign to point to the directory you want to mount. You can use an absolute path or a
-   relative path. If you use a relative path, the path is relative to the `docker-compose.yaml` file, not the directory
+   relative path. If you use a relative path, the path is relative to the `docker-compose.yml` file, not the directory
    from which you issue the `podman compose up` command.
 
    ```yaml {11} title="Example" hideClipboard

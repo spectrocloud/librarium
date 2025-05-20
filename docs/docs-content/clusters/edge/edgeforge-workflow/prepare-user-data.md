@@ -49,6 +49,10 @@ these files once you are familiar with the parameters.
   individual fields. Ensure that you input a valid value for each field to avoid creating invalid `.arg` and `user-data`
   files.
 
+- The `install.extra-dirs-rootfs` parameter is not available in Appliance Studio. If you need to use this parameter, you
+  need to either create the file manually, or add the parameter manually after downloading the `user-data` file from
+  Appliance Studio.
+
 ## Prerequisites
 
 <Tabs groupId="method">
