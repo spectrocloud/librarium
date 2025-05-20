@@ -47,7 +47,7 @@ function generateMarkdownTable(cveImpactMap) {
   // Step 3: Filter versions per minor key
   const finalVersions = new Set();
 
-  for (const [minor, versions] of Object.entries(groupedByMinor)) {
+  for (const versions of Object.values(groupedByMinor)) {
     const versionList = Array.from(versions);
     const latestPatch = versionList.sort(semver.rcompare)[0]; // highest version in this minor line
     finalVersions.add(latestPatch);
