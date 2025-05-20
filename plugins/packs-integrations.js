@@ -500,7 +500,7 @@ async function pluginPacksAndIntegrationsData(context, options) {
         let apiPacksData = [];
         const promisesPackDetails = packDataArr.map((packData) => {
           packMDMap[packData.spec.name] = packData;
-          const cloudType = packData.spec.cloudTypes.includes("all") ? "aws" : packData.spec.cloudTypes[0];
+          const cloudType = packData.spec.cloudTypes.includes("all") ? "all" : packData.spec.cloudTypes[0];
           const registryPackData = [];
           try {
             for (const registry of packData.spec.registries) {
