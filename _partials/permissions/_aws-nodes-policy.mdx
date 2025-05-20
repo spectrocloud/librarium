@@ -18,7 +18,12 @@ partial_name: aws-nodes-policy
         "ecr:GetRepositoryPolicy",
         "ecr:DescribeRepositories",
         "ecr:ListImages",
-        "ecr:BatchGetImage"
+        "ecr:BatchGetImage",
+        "ec2:AssignIpv6Addresses",
+        "ec2:CreateTags",
+        "ec2:DescribeTags",
+        "ec2:DescribeNetworkInterfaces",
+        "ec2:DescribeInstanceTypes"
       ],
       "Resource": [
         "*"

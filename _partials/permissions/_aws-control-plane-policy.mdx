@@ -63,11 +63,13 @@ partial_name: aws-control-plane-policy
         "elasticloadbalancing:RegisterTargets",
         "elasticloadbalancing:SetLoadBalancerPoliciesOfListener",
         "iam:CreateServiceLinkedRole",
-        "kms:DescribeKey"
+        "kms:DescribeKey",
+        "ec2:AssignIpv6Addresses",
+        "elasticloadbalancing:SetSecurityGroups",
+        "elasticloadbalancing:DeregisterTargets",
+        "sts:AssumeRole"
       ],
-      "Resource": [
-        "*"
-      ],
+      "Resource": ["*"],
       "Effect": "Allow"
     }
   ]
