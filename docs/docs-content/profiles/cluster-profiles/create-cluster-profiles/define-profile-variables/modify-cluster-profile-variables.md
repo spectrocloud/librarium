@@ -146,11 +146,18 @@ the appropriate workflow based on the changes you make to your cluster.
    If you are overwriting the default value, you can revert to the original value by selecting **Use Default**. Updated
    profile variable values must match the schema defined in the cluster profile variable.
 
-   Each profile must have a **Reviewed** status, indicated by a green check mark, before you can apply your changes. In
-   the example below, we added a new profile variable for Grafana and changed the Kubecost frontend `imagePullPolicy`
-   from `Always` to `IfNotPresent`.
+   Each profile must have a **Reviewed** status, indicated by a green check mark, before you can apply your changes.
+   Hovering over each icon between **Running configuration** and **New configuration** explains what is being done for
+   each variable. In the below example, we made the following changes:
 
-   ![Reviewing profile variable changes using the Change Summary Process](/profiles_cluster-profiles_create-cluster-profiles_define-profile-variables_modify-cluster-profile-variable-review-update-changes.webp)
+   - Changed the Kubecost frontend `imagePullPolicy` from `Always` to `IfNotPresent`.
+
+   - Changed the default value of the Hello Universe `namespace` variable. The value assigned for profile version 1.1.0
+     is the same as the value for version 1.0.0 and is not overwritten unless we select **Use new default**.
+
+   - Added a new profile variable for Grafana.
+
+   ![Reviewing profile variable changes using the Change Summary Process](/profiles_cluster-profiles_create-cluster-profiles_define-profile-variables_modify-cluster-profile-variable-review-update-changes-updated.webp)
 
    :::tip
 
@@ -193,7 +200,7 @@ the appropriate workflow based on the changes you make to your cluster.
    variable. If you are overwriting the default value, you can revert to the original value by selecting **Use
    Default**. In the example below, we changed the Kubecost frontend `imagePullPolicy` from `Always` to `IfNotPresent`.
 
-   ![Overwriting existing cluster profile variables without modifying cluster profile](/profiles_cluster-profiles_create-cluster-profiles_define-profile-variables_modify-cluster-profile-variable-override.webp)
+   ![Overwriting existing cluster profile variables without modifying cluster profile](/profiles_cluster-profiles_create-cluster-profiles_define-profile-variables_modify-cluster-profile-variable-override-updated.webp)
 
    :::tip
 

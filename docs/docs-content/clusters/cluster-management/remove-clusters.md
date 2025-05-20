@@ -52,11 +52,19 @@ To force delete a cluster, follow the steps to delete the cluster. After 15 minu
 is available in the **Settings Menu**. The **drop-down Menu** will provide you with an estimated remaining time left
 before the force deletion becomes available.
 
+:::tip
+
+To ensure a complete cleanup of all associated resources, verify that your cloud credentials are valid and correctly
+configured. Force-deleting a cluster may leave some cloud resources behind if your cloud account credentials are
+invalid.
+
+:::
+
+### Remove Lingering Resources
+
 A force delete can result in Palette-provisioned resources being missed in the removal process. Verify there are no
 remaining resources by visiting the deployed resources in the target cluster's infrastructure provider environment. Use
 one of the following lists for your environment to help you identify resources to remove.
-
-<br />
 
 :::warning
 
@@ -64,9 +72,7 @@ Failure to remove provisioned resources can result in unexpected costs.
 
 :::
 
-<br />
-
-**Azure**
+#### Azure
 
 - Virtual Network (VNet)
 - Static Public IP addresses
@@ -76,7 +82,7 @@ Failure to remove provisioned resources can result in unexpected costs.
 - Managed Disks
 - Virtual Network Gateway
 
-**AWS**
+#### AWS
 
 - VPC
 - Elastic IP addresses
@@ -86,7 +92,7 @@ Failure to remove provisioned resources can result in unexpected costs.
 - EBS Volumes
 - Network Address Translation (NAT) Gateway
 
-**GCP**
+#### GCP
 
 - Virtual Private Cloud (VPC) Network
 - Static External IP addresses

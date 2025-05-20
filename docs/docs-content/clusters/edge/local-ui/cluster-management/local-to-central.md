@@ -2,19 +2,15 @@
 sidebar_label: "Pair Local Cluster with Palette"
 title: "Pair Local Cluster with Palette"
 description:
-  "Learn how to move a local cluster created on hosts with airgap installation mode to be managed by a Palette instance."
+  "Learn how to move a local cluster created on hosts with local management mode to be managed by a Palette instance."
 hide_table_of_contents: false
 sidebar_position: 55
 tags: ["edge"]
 ---
 
-Clusters provisioned on hosts that are installed in the airgap installation mode are managed locally by Local UI. You
-have the option to transfer the management of a local cluster from Local UI to a Palette instance to be managed
-centrally by pairing the local cluster with a Palette instance.
-
-:::preview
-
-:::
+Clusters provisioned on hosts that are installed in the local management mode are managed locally by Local UI. You have
+the option to transfer the management of a local cluster from Local UI to a Palette instance to be managed centrally by
+pairing the local cluster with a Palette instance.
 
 ![Diagram of the order of operations for transferring a cluster to central management.](/clusters_edge_local-ui_local-to-central.webp)
 

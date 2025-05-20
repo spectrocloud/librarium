@@ -10,6 +10,34 @@ tags: ["edge", "troubleshooting"]
 
 The following are common scenarios that you may encounter when using Edge.
 
+## Scenario - Cilium Pod Stuck During Kubernetes Upgrade Due to nsenter Permission Issue
+
+During a Kubernetes upgrade, the Cilium pod may get stuck in the `Init:CrashLoopBackoff` state due to nsenter permission
+issues. To address the issue, patch the cilium DaemonSet with the specified annotations.
+
+### Debug Steps
+
+1. [Connect to your cluster](../../clusters/cluster-management/palette-webctl.md) via `kubectl`.
+
+2. Issue the following command to edit the DaemonSet.
+
+   ```shell
+   kubectl --namespace kube-system edit ds cilium
+   ```
+
+3. Add the following annotations to the DaemonSet.
+
+   ```yaml
+   spec:
+     template:
+       metadata:
+         annotations:
+           container.apparmor.security.beta.kubernetes.io/cilium-agent: "unconfined"
+           container.apparmor.security.beta.kubernetes.io/mount-cgroup: "unconfined"
+           container.apparmor.security.beta.kubernetes.io/clean-cilium-state: "unconfined"
+           container.apparmor.security.beta.kubernetes.io/apply-sysctl-overwrites: "unconfined"
+   ```
+
 ## Scenario - Cluster Creation Failure Due to Nodeadm not Found
 
 <!-- prettier-ignore -->

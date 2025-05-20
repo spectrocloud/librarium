@@ -3345,6 +3345,9 @@
         "hardwareSpec": {
           "$ref": "#/definitions/v1HardwareSpec"
         },
+        "managementMode": {
+          "$ref": "#/definitions/v1ManagementMode"
+        },
         "networkInfo": {
           "type": "array",
           "items": {
@@ -4185,6 +4188,13 @@
         }
       }
     },
+    "v1ManagementMode": {
+      "type": "string",
+      "enum": [
+        "central",
+        "local"
+      ]
+    },
     "v1Memory": {
       "type": "object",
       "properties": {
@@ -4782,6 +4792,9 @@
             "airgap",
             "connected"
           ]
+        },
+        "managementMode": {
+          "$ref": "#/definitions/v1ManagementMode"
         }
       }
     },
