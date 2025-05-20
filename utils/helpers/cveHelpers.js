@@ -68,8 +68,25 @@ function generateOSK8sMarkdownTable(linkedVulnerabilities) {
     UNKNOWN: 0,
   };
 
-  // Sort vulnerabilities by baseSeverity (descending)
-  const sorted = linkedVulnerabilities.slice().sort((a, b) => {
+  // Create a map to deduplicate by CVE ID
+  const cveMap = new Map();
+
+  linkedVulnerabilities.forEach((entry) => {
+    const vuln = entry.vulnerability;
+    const cve = vuln.cve;
+    const severity = (vuln.baseSeverity || "UNKNOWN").toUpperCase();
+
+    // If we haven't seen this CVE or found a more severe instance, store/update it
+    if (
+      !cveMap.has(cve) ||
+      severityRank[severity] > severityRank[(cveMap.get(cve).vulnerability.baseSeverity || "UNKNOWN").toUpperCase()]
+    ) {
+      cveMap.set(cve, entry);
+    }
+  });
+
+  // Sort deduplicated vulnerabilities by severity
+  const uniqueVulns = Array.from(cveMap.values()).sort((a, b) => {
     const aSeverity = (a.vulnerability.baseSeverity || "UNKNOWN").toUpperCase();
     const bSeverity = (b.vulnerability.baseSeverity || "UNKNOWN").toUpperCase();
     return severityRank[bSeverity] - severityRank[aSeverity];
@@ -80,7 +97,7 @@ function generateOSK8sMarkdownTable(linkedVulnerabilities) {
 |--------|---------|-------------------|----------|-----------|
 `;
 
-  sorted.forEach((vuln) => {
+  uniqueVulns.forEach((vuln) => {
     const cve = vuln.vulnerability.cve;
     const pkg = vuln.package;
     const version = vuln.installedVersion || "Unknown";
