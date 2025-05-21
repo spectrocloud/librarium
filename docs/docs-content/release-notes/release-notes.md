@@ -91,11 +91,14 @@ impacted clusters until you've handled the below mentioned breaking changes and 
   Refer to the [Create and Manage Azure IaaS Cluster](../clusters/public-cloud/azure/create-azure-cluster.md) guide for
   more information.
 
-- Once you install Palette or upgrade to version 4.6.c or later, you have 30 days to activate it. During this time, you
-  have unrestricted access to all of Palette's features. After 30 days, you can continue to use Palette, and existing
-  clusters will continue to run, but you cannot perform the following day-2 operations until Palette is activated.
+- Starting with version 4.6.c, Palette and VerteX installations need to be activated after 30 days. Once you install or
+  upgrade Palette or VerteX to version 4.6.c or later, you have 30 days to activate it. During this time, you have
+  unrestricted access to all of Palette's features. After 30 days, you can continue to use Palette, and existing
+  clusters will remain operational, but you cannot perform day-2 operations such as creating new clusters and modifying
+  existing ones until Palette is activated.
 
-  Refer to the Activate Palette guide for further information.
+  Refer to the [Activate Palette](../enterprise-version/activate-installation/activate-installation.md) and
+  [Activate VerteX](../vertex/activate-installation/activate-installation.md) guides for further information.
 
 #### Improvements
 
@@ -169,7 +172,8 @@ impacted clusters until you've handled the below mentioned breaking changes and 
   workloads. Check out the [Access Local UI](../clusters/edge/local-ui/host-management/access-console.md) guide for
   further details.
 - A new troubleshooting script is now available to allow you to debug common errors such as Edge hosts failing to
-  register, pod failures, or provisioning errors. Refer to the Collect Support Bundles for Edge Cluster Troubleshooting
+  register, pod failures, or provisioning errors. Refer to the
+  [Collect Support Bundles for Edge Cluster](../troubleshooting/edge/collect-support-bundles.md) troubleshooting
   reference page for further details.
 
 #### Deprecations and Removals
@@ -209,7 +213,8 @@ Check out the [CLI Tools](../downloads/cli-tools.md) page to find the compatible
   Once the upload is complete, you can provision clusters locally using the uploaded content when the host does not have
   a connection to a central Palette instance or an image repository.
 
-  Refer to the Upload Content Bundle reference page for further information.
+  Refer to the [Upload Content Bundle](../clusters/edge/local-ui/cluster-management/upload-content-bundle.md) reference
+  page for further information.
 
 - The `spectrocloud_appliance` resource now supports [remote shell](../clusters/edge/cluster-management/remote-shell.md)
   activation, allowing you to troubleshoot Edge hosts by initiating an SSH connection from Palette. For more
