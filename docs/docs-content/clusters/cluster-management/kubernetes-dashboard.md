@@ -20,9 +20,10 @@ For more information about the Kubernetes dashboard, visit the
 - An active Palette cluster.
 
 ## Enablement
+
 1. Log in to [Palette](https://console.spectrocloud.com/).
-2. From the left main menu, select **Clusters**. Select the cluster you want to provision the
-   Spectro Kubernetes Dashboard on.
+2. From the left main menu, select **Clusters**. Select the cluster you want to provision the Spectro Kubernetes
+   Dashboard on.
 
 3. Select the **Profile** tab and identify the name of the profile your cluster is using.
 
@@ -42,8 +43,10 @@ For more information about the Kubernetes dashboard, visit the
 
 :::info
 
-Upgrading the Spectro Kubernetes Dashboard from older versions is not supported. To upgrade versions, you must remove the old Spectro Kubernetes Dashboard version from your cluster profile and add the desired version. The Spectro Kubernetes Dashboard reads metrics from a
-data store in the Kubernetes cluster. No data is lost during the upgrade process.
+Upgrading the Spectro Kubernetes Dashboard from older versions is not supported. To upgrade versions, you must remove
+the old Spectro Kubernetes Dashboard version from your cluster profile and add the desired version. The Spectro
+Kubernetes Dashboard reads metrics from a data store in the Kubernetes cluster. No data is lost during the upgrade
+process.
 
 :::
 
@@ -56,15 +59,18 @@ data store in the Kubernetes cluster. No data is lost during the upgrade process
 
 13. Select the **Profile** tab.
 
-14. From the applicable **Infrastructure Layers** or **Addon Layers** version drop-down menu, select the profile version that contains the **Spectro Kubernetes Dashboard** pack.
+14. From the applicable **Infrastructure Layers** or **Addon Layers** version drop-down menu, select the profile version
+    that contains the **Spectro Kubernetes Dashboard** pack.
 
 15. **Save** your changes.
 
 ![Image showing the selection of the profile version to be applied to the selected cluster](/clusters_cluster-management_spectro-kubernetes-dashboard_apply-profile.webp)
 
-16. Use the **Overview** tab to monitor the cluster's status until the **Spectro Kubernetes Dashboard** layer is successfully deployed, indicated by a solid green circle.
+16. Use the **Overview** tab to monitor the cluster's status until the **Spectro Kubernetes Dashboard** layer is
+    successfully deployed, indicated by a solid green circle.
 
 ## Validate
+
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
 2. From the left main menu, select **Clusters**.
@@ -78,8 +84,8 @@ data store in the Kubernetes cluster. No data is lost during the upgrade process
 :::info
 
 By default, the Spectro Kubernetes Dashboard displays the `default` namespace. If there are no deployments in that
-namespace, the message "There is nothing to display here" is displayed. Select the namespace drop-down menu to
-review and select other namespaces in your cluster.
+namespace, the message "There is nothing to display here" is displayed. Select the namespace drop-down menu to review
+and select other namespaces in your cluster.
 
 :::
 
