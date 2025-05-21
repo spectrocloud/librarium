@@ -10,6 +10,128 @@ tags: ["troubleshooting", "cluster-deployment"]
 
 The following steps will help you troubleshoot errors in the event issues arise while deploying a cluster.
 
+## Scenario - PV/PVC Stuck in Pending Status for EKS Cluster using AL2023 AMI
+
+After deploying an Amazon EKS cluster using an
+[Amazon Linux 2023 (AL2023) Amazon Machine Image (AMI)](../clusters/public-cloud/aws/eks.md#assign-an-ami-to-a-node-pool),
+PersistentVolumes (PVs) or PersistentVolumeClaims (PVCs) are stuck in a pending status.
+
+```shell title="Example"
+NAMESPACE   NAME                                 STATUS    VOLUME   CAPACITY   ACCESS MODES   STORAGECLASS            VOLUMEATTRIBUTESCLASS   AGE   VOLUMEMODE
+wordpress   data-wordpress-wordpress-mariadb-0   Pending                                      spectro-storage-class   <unset>                 16m   Filesystem
+wordpress   wordpress-wordpress                  Pending                                      spectro-storage-class   <unset>                 16m   Filesystem
+```
+
+This issue can arise when an add-on pack or Helm chart that requires a PV or PVC is deployed to an existing cluster or
+during creation of a new cluster.
+
+The PV or PVC provisioning fails because IAM Roles for Service Accounts (IRSA) has not been configured for the Amazon
+Elastic Block Store (EBS) Container Storage Interface (CSI). For instances launched on AL2023, IMDSv2 is enforced by
+default, and IRSA is the [recommended approach](https://docs.aws.amazon.com/eks/latest/userguide/ebs-csi.html) to
+provide IAM permissions to Amazon EBS CSI.
+
+### Debug Steps
+
+1. Log in to [Palette](https://console.spectrocloud.com/).
+
+2. Ensure you are in the correct project scope.
+
+3. From the left main menu, navigate to the **Profiles** page. Find and click on your cluster profile.
+
+4. [Create a new version of the cluster profile](../profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile.md).
+
+5. Select the **Kubernetes** layer of your cluster profile.
+
+6. Use the YAML editor to configure IRSA roles for the `managedControlPlane` and `managedMachinePool`.
+
+   ```yaml hideClipboard title="Example"
+   managedControlPlane:
+   ---
+   irsaRoles:
+     - name: "{{.spectro.system.cluster.name}}-irsa-cni"
+       policies:
+         - arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy
+       serviceAccount:
+         name: aws-node
+         namespace: kube-system
+     - name: "{{.spectro.system.cluster.name}}-irsa-csi"
+       policies:
+         - arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy
+   ---
+   managedMachinePool:
+     roleAdditionalPolicies:
+       - "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
+   ```
+
+7. Click **Confirm Updates** after editing.
+
+8. Select the **Storage** layer of your cluster profile.
+
+9. Use the YAML editor to add an IAM role ARN annotation to the AWS EBS CSI Driver so that the IRSA role is correctly
+   referenced. Replace `<aws-account-id>` with your AWS account ID.
+
+   ```yaml hideClipboard title="Example" {12}
+   charts:
+   ...
+     aws-ebs-csi-driver:
+     ...
+       controller:
+       ...
+         serviceAccount:
+           # A service account will be created for you if set to true. Set to false if you want to use your own.
+           create: true
+           name: ebs-csi-controller-sa
+           annotations: {
+             "eks.amazonaws.com/role-arn":"arn:aws:iam::<aws-account-id>:role/{{.spectro.system.cluster.name}}-irsa-csi"
+           }
+           ## Enable if EKS IAM for SA is used
+           # eks.amazonaws.com/role-arn: arn:<partition>:iam::<account>:role/ebs-csi-role
+           automountServiceAccountToken: true
+   ```
+
+10. Update the custom labels for the AWS EBS CSI Driver to retrigger the deployment.
+
+```yaml hideClipboard title="Example"
+charts:
+...
+  aws-ebs-csi-driver:
+  ...
+    customLabels: {
+      restart: "true"
+    }
+```
+
+11. Click **Confirm Updates** after editing.
+
+12. Click **Save Changes** on the cluster profile page.
+
+13. Update your cluster to use the new cluster profile version that you created with these changes. Refer to
+    [Update a Cluster](../clusters/cluster-management/cluster-updates.md#enablement) for guidance.
+
+14. Wait for the repave of nodes and redeployment of the AWS EBS CSI Driver to complete.
+
+15. Check that the PV or PVC status is `Bound` by issuing one of the following `kubectl` commands.
+
+    ```shell title="Example command for PVs"
+    kubectl get pv --output wide
+    ```
+
+    ```shell title="Example output for PVs"
+    NAME               CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM                                         STORAGECLASS            VOLUMEATTRIBUTESCLASS   AGE   VOLUMEMODE
+    pv-xyz...          10Gi       RWO            Delete           Bound    wordpress/data-wordpress-wordpress-mariadb-0  spectro-storage-class   <unset>                 16m   Filesystem
+    pv-abc...          8Gi        RWO            Delete           Bound    wordpress/wordpress-wordpress                 spectro-storage-class   <unset>                 16m   Filesystem
+    ```
+
+    ```shell title="Example command for PVCs"
+    kubectl get pvc --all-namespaces --output wide
+    ```
+
+    ```shell title="Example output for PVCs"
+    NAMESPACE   NAME                                 STATUS    VOLUME      CAPACITY   ACCESS MODES   STORAGECLASS            VOLUMEATTRIBUTESCLASS   AGE   VOLUMEMODE
+    wordpress   data-wordpress-wordpress-mariadb-0   Bound     pvc-xyz...  10Gi       RWO            spectro-storage-class   <unset>                 16m   Filesystem
+    wordpress   wordpress-wordpress                  Bound     pvc-abc...  8Gi        RWO            spectro-storage-class   <unset>                 16m   Filesystem
+    ```
+
 ## Scenario - Instances Continuously Delete Every 30 Minutes
 
 An instance is launched and terminated every 30 minutes prior to completion of its deployment, and the **Events Tab**

@@ -29,6 +29,102 @@ an AWS account. This section guides you on how to create an EKS cluster in AWS t
 
   :::
 
+- If you choose to [assign an Amazon Linux 2023 AMI](#assign-an-ami-to-a-node-pool) to your worker nodes and you are using PersistentVolumes (PVs) or PersistentVolumeClaims (PVCs), you must make additional edits to your **AWS EKS** cluster profile to configure IAM Roles for Service Accounts (IRSA) for the Amazon Elastic Block Store (EBS) Container Storage Interface (CSI).
+
+  <!-- prettier-ignore --> 
+  <details>
+  <summary> Configure IRSA for the EBS CSI driver so PVs/PVCs can bind on AL2023 worker nodes</summary>
+
+  Use the following steps to configure IRSA for the Amazon EBS CSI. For instances launched on Amazon Linux 2023, IMDSv2 is enforced by default, and IRSA is the [recommended approach](https://docs.aws.amazon.com/eks/latest/userguide/ebs-csi.html) to provide IAM permissions to Amazon EBS CSI.
+
+  1. Log in to [Palette](https://console.spectrocloud.com/).
+
+  2. Ensure you are in the correct project scope.
+
+  3. From the left main menu, navigate to the **Profiles** page.
+
+  4. If you want to edit an existing cluster profile, skip to the next step. Otherwise, create a new **AWS EKS** [cluster profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md) to your requirements, including any add-on packs or additional Helm charts. Once you have finished creating it, proceed to the next step to start making the necessary edits.
+
+  5. Find and click on your cluster profile.
+
+  6. Select the **Kubernetes** layer of your cluster profile.
+
+  7. Use the YAML editor to configure IRSA roles for the `managedControlPlane` and `managedMachinePool`.
+
+     ```yaml hideClipboard title="Example"
+     managedControlPlane:
+     ...
+       irsaRoles:
+       - name: "{{.spectro.system.cluster.name}}-irsa-cni"
+         policies:
+           - arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy
+         serviceAccount:
+           name: aws-node
+           namespace: kube-system
+       - name: "{{.spectro.system.cluster.name}}-irsa-csi"
+         policies:
+           - arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy
+     ...
+     managedMachinePool:
+       roleAdditionalPolicies:
+         - "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
+     ```
+
+  8. Click **Confirm Updates** after editing.
+
+  9. Select the **Storage** layer of your cluster profile.
+
+  10. Use the YAML editor to add an IAM role ARN annotation to the AWS EBS CSI Driver so that the IRSA role is correctly referenced. Replace `<aws-account-id>` with your AWS account ID.
+
+     ```yaml hideClipboard title="Example" {12}
+     charts:
+     ...
+       aws-ebs-csi-driver:
+       ...
+         controller:
+         ...
+           serviceAccount:
+             # A service account will be created for you if set to true. Set to false if you want to use your own.
+             create: true
+             name: ebs-csi-controller-sa
+             annotations: {
+               "eks.amazonaws.com/role-arn":"arn:aws:iam::<aws-account-id>:role/{{.spectro.system.cluster.name}}-irsa-csi"
+             }
+             ## Enable if EKS IAM for SA is used
+             # eks.amazonaws.com/role-arn: arn:<partition>:iam::<account>:role/ebs-csi-role
+             automountServiceAccountToken: true
+     ```
+
+  11. Click **Confirm Updates** after editing.
+
+  12. Click **Save Changes** on the cluster profile page.
+
+  13. [Deploy your AWS EKS cluster](#deploy-an-aws-eks-cluster).
+
+  14. Once the cluster is running and healthy, you can check that the PV or PVC status is `Bound` by issuing one of the following `kubectl` commands.
+
+      ```shell title="Example command for PVs"
+      kubectl get pv --output wide
+      ```
+
+      ```shell title="Example output for PVs"
+      NAME               CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM                                         STORAGECLASS            VOLUMEATTRIBUTESCLASS   AGE   VOLUMEMODE
+      pv-xyz...          10Gi       RWO            Delete           Bound    wordpress/data-wordpress-wordpress-mariadb-0  spectro-storage-class   <unset>                 16m   Filesystem
+      pv-abc...          8Gi        RWO            Delete           Bound    wordpress/wordpress-wordpress                 spectro-storage-class   <unset>                 16m   Filesystem
+      ```
+
+      ```shell title="Example command for PVCs"
+      kubectl get pvc --all-namespaces --output wide
+      ```
+
+      ```shell title="Example output for PVCs"
+      NAMESPACE   NAME                                 STATUS    VOLUME      CAPACITY   ACCESS MODES   STORAGECLASS            VOLUMEATTRIBUTESCLASS   AGE   VOLUMEMODE
+      wordpress   data-wordpress-wordpress-mariadb-0   Bound     pvc-xyz...  10Gi       RWO            spectro-storage-class   <unset>                 16m   Filesystem
+      wordpress   wordpress-wordpress                  Bound     pvc-abc...  8Gi        RWO            spectro-storage-class   <unset>                 16m   Filesystem
+      ```
+
+  </details>
+
 <!-- prettier-ignore -->
 - If you want to use <VersionedLink text="Cilium" url="/integrations/packs/?pack=cni-cilium-oss"/> as the network pack
   for your EKS cluster, you will need to perform additional configuration changes to your cluster profile and a manual
@@ -98,7 +194,7 @@ an AWS account. This section guides you on how to create an EKS cluster in AWS t
 
 2. Ensure you are in the correct project scope.
 
-3. From the left **Main Menu** select **Clusters**, and click **Add New Cluster**.
+3. From the left main menu, select **Clusters** and click **Add New Cluster**.
 
 4. In **Public Clouds**, under **Managed Kubernetes**, select **AWS EKS**.
 
@@ -260,7 +356,7 @@ You can validate your cluster is up and in **Running** state.
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
-2. Navigate to the left **Main Menu** and select **Clusters**. The **Clusters** page displays a list of all available
+2. Navigate to the left main menu and select **Clusters**. The **Clusters** page displays a list of all available
    clusters that Palette manages.
 
 3. Click on the cluster you created to view its details page.
