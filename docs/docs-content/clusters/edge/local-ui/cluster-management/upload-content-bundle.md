@@ -56,11 +56,14 @@ This page guides you through how to upload a content bundle to an Edge host usin
   [Build Content Bundles](../../edgeforge-workflow/palette-canvos/build-content-bundle.md). The content bundle must be
   available in your Linux machine.
 
-   :::warning
+  :::warning
 
-   The content bundle must have an unique name. This can be specified using the `--name` flag with the [`content build`](../../../../automation/palette-cli/commands/content.md#build) command. If a unique name is not provided, the `build` command generates a default name in the `<bundle>-<project-id>` format, which is not unique and may lead to issues, as bundles using the same default name can be overwritten during upload to Local UI.
+  The content bundle must have an unique name. This can be specified using the `--name` flag with the
+  [`content build`](../../../../automation/palette-cli/commands/content.md#build) command. If a unique name is not
+  provided, the `build` command generates a default name in the `<bundle>-<project-id>` format, which is not unique and
+  may lead to issues, as bundles using the same default name can be overwritten during upload to Local UI.
 
-   :::
+  :::
 
 ### Upload Bundle
 
