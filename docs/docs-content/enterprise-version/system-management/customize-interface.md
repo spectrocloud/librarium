@@ -13,6 +13,7 @@ keywords: ["self-hosted", "palette", "customize-interface"]
   category="self-hosted"
   name="customize-interface"
   edition="Palette"
+  reference="Palette"
   version="dedicated SaaS and self-hosted Palette"
   andor="dedicated SaaS or self-hosted Palette"
 />
