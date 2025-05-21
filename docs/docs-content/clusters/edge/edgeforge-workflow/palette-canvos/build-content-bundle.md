@@ -199,7 +199,7 @@ require a local Harbor registry. Built-in registries must be configured using ei
     | `--cluster-definition-name`        | Filename of the cluster definition tgz file.                          |
     | `--cluster-definition-profile-ids` | List of cluster profile IDs to be included in the cluster definition. |
 
-    This command will generate a `-spc.tgz` cluster definition file in the specified output directory. When you create a
+    This command will generate a `.tgz` cluster definition file in the specified output directory. When you create a
     cluster definition and content bundle using a single `build` command, the cluster definition is also embedded into
     the content bundle.
 

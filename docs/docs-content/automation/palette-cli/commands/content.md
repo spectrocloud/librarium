@@ -105,8 +105,8 @@ Build Summary
 bundle example-bundle saved to output/example-bundle.tar.zst
 ```
 
-The following example creates a cluster definition named `example-definition-spc.tgz` using the cluster profiles
-specified by the `--cluster-definition-profile-ids` flag. The definition is created in the example `output` folder.
+The following example creates a cluster definition named `example-definition.tgz` using the cluster profiles specified
+by the `--cluster-definition-profile-ids` flag. The definition is created in the example `output` folder.
 
 ```shell
 palette content build --arch amd64 --project-id 1617181929 --cluster-definition-name example-definition --cluster-definition-profile-ids 12345678910 --output ./output
@@ -120,8 +120,8 @@ bundle example-definition saved to output/example-definition.tar.zst
 ```
 
 The following example creates both a content bundle named `example-bundle.tar.zst` and a cluster definition named
-`example-definition-spc.tgz`. The bundle and the definition are created in the example `output` folder. When you create
-a cluster definition and content bundle using a single `build` command, the cluster definition is also embedded into the
+`example-definition.tgz`. The bundle and the definition are created in the example `output` folder. When you create a
+cluster definition and content bundle using a single `build` command, the cluster definition is also embedded into the
 content bundle.
 
 ```shell
@@ -446,13 +446,13 @@ palette content upload [flags] [host]
 
 The following flags are supported by the `upload` subcommand.
 
-| Short Flag | Long Flag          | Description                                                                                                                                                             | Type   |
-| ---------- | ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
-|            | `--cluster-export` | The cluster definition `spc.tgz` file to be uploaded. You can only upload a cluster definition if a content bundle is not being uploaded in the same command execution. | string |
-| `-f`       | `--file`           | The file path of the content bundle to be uploaded.                                                                                                                     | string |
-| `-h`       | `--help`           | Help for the `upload` subcommand.                                                                                                                                       | -      |
-| `-p`       | `--port`           | The Edge host target port. The default port is `5082`.                                                                                                                  | string |
-|            | `--token`          | The authentication token used to validate the client. The token is located on the Edge host at `/opt/spectrocloud/.upload-auth-token`.                                  | string |
+| Short Flag | Long Flag          | Description                                                                                                                                                          | Type   |
+| ---------- | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------ |
+|            | `--cluster-export` | The cluster definition `.tgz` file to be uploaded. You can only upload a cluster definition if a content bundle is not being uploaded in the same command execution. | string |
+| `-f`       | `--file`           | The file path of the content bundle to be uploaded.                                                                                                                  | string |
+| `-h`       | `--help`           | Help for the `upload` subcommand.                                                                                                                                    | -      |
+| `-p`       | `--port`           | The Edge host target port. The default port is `5082`.                                                                                                               | string |
+|            | `--token`          | The authentication token used to validate the client. The token is located on the Edge host at `/opt/spectrocloud/.upload-auth-token`.                               | string |
 
 #### Example
 

@@ -104,7 +104,7 @@ create a content bundle at the same time with a single command.
     the profiles.
 
 11. Issue the following command to export the cluster definition, replacing the placeholder values with your actual
-    values. The `build` command will generate a `-spc.tgz` cluster definition file in the directory specified by the
+    values. The `build` command will generate a `.tgz` cluster definition file in the directory specified by the
     `--output` flag. Refer to the [content build](../../../../automation/palette-cli/commands/content.md#build) CLI
     command page for a complete list of available flags.
 
