@@ -56,7 +56,7 @@ You can validate the account is available in Palette by reviewing the list of cl
 
 ## Next Steps
 
-Now that you have added an AWS account to Palette, you deploy clusters to your GCP account. To learn how to get started
-with deploying Kubernetes clusters to GCP, check out the
+Now that you have added a GCP account to Palette, you can deploy clusters to your GCP account. To learn how to get
+started with deploying Kubernetes clusters to GCP, check out the
 [Create and Manage GCP IaaS Cluster](create-gcp-iaas-cluster.md) guide or the
 [Create and Manage AWS GKE Cluster](create-gcp-gke-cluster.md) guide.
