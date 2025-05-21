@@ -81,6 +81,10 @@ process.
 
 ![Image showing the Kubernetes Dashboard Connect button in the cluster overview screen](/clusters_cluster-management_spectro-kubernetes-dashboard_connect.webp)
 
+5. The Spectro Kubernetes Dashboard is displayed.
+
+![Image showing a connected k8s dashboard with the Kubernetes-dashboard namespace selected](/clusters_cluster-management_spectro-kubernetes-dashboard_success.webp)
+
 :::info
 
 By default, the Spectro Kubernetes Dashboard displays the `default` namespace. If there are no deployments in that
@@ -88,7 +92,3 @@ namespace, the message "There is nothing to display here" is displayed. Select t
 and select other namespaces in your cluster.
 
 :::
-
-5. The Spectro Kubernetes Dashboard is displayed.
-
-![Image showing a connected k8s dashboard with the Kubernetes-dashboard namespace selected](/clusters_cluster-management_spectro-kubernetes-dashboard_success.webp)
