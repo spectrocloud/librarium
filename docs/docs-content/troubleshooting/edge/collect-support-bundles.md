@@ -110,7 +110,7 @@ Kubernetes data accessible locally on that host. Follow the steps below on every
 
    :::warning
 
-   The default values for frags may change, refer to the scripts for the most accurate information.
+   The default values for flags may change. Refer to the scripts for the most accurate information.
 
    :::
 
