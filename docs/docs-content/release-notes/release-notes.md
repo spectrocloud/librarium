@@ -84,7 +84,7 @@ impacted clusters until you've handled the below mentioned breaking changes and 
   [Assign an AMI to a Node Pool](../clusters/public-cloud/aws/eks.md#assign-an-ami-to-a-node-pool) section.
 
   - If you choose to assign an Amazon Linux 2023 AMI to your worker nodes and you are using PersistentVolumes (PVs) or
-    PersistentVolumeClaims (PVCs), you must make additional edits to your **AWS EKS** cluster profile to configure IAM
+    PersistentVolumeClaims (PVCs), you must make additional edits to your AWS EKS cluster profile to configure IAM
     Roles for Service Accounts (IRSA) for the Amazon Elastic Block Store (EBS) Container Storage Interface (CSI). Refer
     to the [prerequisites for creating EKS clusters](../clusters/public-cloud/aws/eks.md#prerequisites) for guidance.
 

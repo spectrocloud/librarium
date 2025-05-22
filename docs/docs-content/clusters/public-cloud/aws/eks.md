@@ -29,13 +29,13 @@ an AWS account. This section guides you on how to create an EKS cluster in AWS t
 
   :::
 
-- If you choose to [assign an Amazon Linux 2023 AMI](#assign-an-ami-to-a-node-pool) to your worker nodes and you are using PersistentVolumes (PVs) or PersistentVolumeClaims (PVCs), you must make additional edits to your **AWS EKS** cluster profile to configure IAM Roles for Service Accounts (IRSA) for the Amazon Elastic Block Store (EBS) Container Storage Interface (CSI).
+- If you choose to [assign an Amazon Linux 2023 AMI](#assign-an-ami-to-a-node-pool)(AL2023) to your worker nodes and you are using PersistentVolumes (PVs) or PersistentVolumeClaims (PVCs), you must make additional edits to your AWS EKS cluster profile to configure IAM Roles for Service Accounts (IRSA) for the Amazon Elastic Block Store (EBS) Container Storage Interface (CSI).
 
   <!-- prettier-ignore --> 
   <details>
-  <summary> Configure IRSA for the EBS CSI driver so PVs/PVCs can bind on AL2023 worker nodes</summary>
+  <summary>Configure IRSA for Amazon EBS CSI</summary>
 
-  Use the following steps to configure IRSA for the Amazon EBS CSI. For instances launched on Amazon Linux 2023, IMDSv2 is enforced by default, and IRSA is the [recommended approach](https://docs.aws.amazon.com/eks/latest/userguide/ebs-csi.html) to provide IAM permissions to Amazon EBS CSI.
+  Use the following steps to configure IRSA for the Amazon EBS CSI. For instances launched on Amazon Linux 2023, IMDSv2 is enforced by default, and IRSA is the [recommended approach](https://docs.aws.amazon.com/eks/latest/userguide/ebs-csi.html) for providing IAM permissions to Amazon EBS CSI.
 
   1. Log in to [Palette](https://console.spectrocloud.com/).
 
@@ -43,15 +43,14 @@ an AWS account. This section guides you on how to create an EKS cluster in AWS t
 
   3. From the left main menu, navigate to the **Profiles** page.
 
-  4. If you want to edit an existing cluster profile, skip to the next step. Otherwise, create a new **AWS EKS** [cluster profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md) to your requirements, including any add-on packs or additional Helm charts. Once you have finished creating it, proceed to the next step to start making the necessary edits.
+  4. Select an existing AWS EKS cluster profile or [create a new AWS EKS cluster profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md) that meets your requirements, including any necessary add-on packs or additional Helm charts.
 
-  5. Find and click on your cluster profile.
 
   6. Select the **Kubernetes** layer of your cluster profile.
 
   7. Use the YAML editor to configure IRSA roles for the `managedControlPlane` and `managedMachinePool`.
 
-     ```yaml hideClipboard title="Example"
+     ```yaml hideClipboard title="Example configuration"
      managedControlPlane:
      ...
        irsaRoles:
@@ -76,7 +75,7 @@ an AWS account. This section guides you on how to create an EKS cluster in AWS t
 
   10. Use the YAML editor to add an IAM role ARN annotation to the AWS EBS CSI Driver so that the IRSA role is correctly referenced. Replace `<aws-account-id>` with your AWS account ID.
 
-     ```yaml hideClipboard title="Example" {12}
+     ```yaml hideClipboard title="Example configuration" {12}
      charts:
      ...
        aws-ebs-csi-driver:
@@ -101,7 +100,7 @@ an AWS account. This section guides you on how to create an EKS cluster in AWS t
 
   13. [Deploy your AWS EKS cluster](#deploy-an-aws-eks-cluster).
 
-  14. Once the cluster is running and healthy, you can check that the PV or PVC status is `Bound` by issuing one of the following `kubectl` commands.
+  14. Once the cluster is running and healthy, verify that the PV or PVC status is `Bound` by issuing one of the following `kubectl` commands.
 
       ```shell title="Example command for PVs"
       kubectl get pv --output wide

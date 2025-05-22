@@ -10,7 +10,7 @@ tags: ["troubleshooting", "cluster-deployment"]
 
 The following steps will help you troubleshoot errors in the event issues arise while deploying a cluster.
 
-## Scenario - PV/PVC Stuck in Pending Status for EKS Cluster using AL2023 AMI
+## Scenario - PV/PVC Stuck in Pending Status for EKS Cluster Using AL2023 AMI
 
 After deploying an Amazon EKS cluster using an
 [Amazon Linux 2023 (AL2023) Amazon Machine Image (AMI)](../clusters/public-cloud/aws/eks.md#assign-an-ami-to-a-node-pool),
@@ -23,12 +23,11 @@ wordpress   wordpress-wordpress                  Pending                        
 ```
 
 This issue can arise when an add-on pack or Helm chart that requires a PV or PVC is deployed to an existing cluster or
-during creation of a new cluster.
+while creating a new cluster.
 
 The PV or PVC provisioning fails because IAM Roles for Service Accounts (IRSA) has not been configured for the Amazon
 Elastic Block Store (EBS) Container Storage Interface (CSI). For instances launched on AL2023, IMDSv2 is enforced by
-default, and IRSA is the [recommended approach](https://docs.aws.amazon.com/eks/latest/userguide/ebs-csi.html) to
-provide IAM permissions to Amazon EBS CSI.
+default, and IRSA is the [recommended approach](https://docs.aws.amazon.com/eks/latest/userguide/ebs-csi.html) for providing IAM permissions to Amazon EBS CSI.
 
 ### Debug Steps
 
@@ -44,7 +43,7 @@ provide IAM permissions to Amazon EBS CSI.
 
 6. Use the YAML editor to configure IRSA roles for the `managedControlPlane` and `managedMachinePool`.
 
-   ```yaml hideClipboard title="Example"
+   ```yaml hideClipboard title="Example configuration"
    managedControlPlane:
    ---
    irsaRoles:
@@ -70,7 +69,7 @@ provide IAM permissions to Amazon EBS CSI.
 9. Use the YAML editor to add an IAM role ARN annotation to the AWS EBS CSI Driver so that the IRSA role is correctly
    referenced. Replace `<aws-account-id>` with your AWS account ID.
 
-   ```yaml hideClipboard title="Example" {12}
+   ```yaml hideClipboard title="Example configuration" {12}
    charts:
    ...
      aws-ebs-csi-driver:
@@ -108,7 +107,7 @@ charts:
 13. Update your cluster to use the new cluster profile version that you created with these changes. Refer to
     [Update a Cluster](../clusters/cluster-management/cluster-updates.md#enablement) for guidance.
 
-14. Wait for the repave of nodes and redeployment of the AWS EBS CSI Driver to complete.
+14. Wait for the nodes to be repaved and the AWS EBS CSI Driver to be redeployed.
 
 15. Check that the PV or PVC status is `Bound` by issuing one of the following `kubectl` commands.
 
