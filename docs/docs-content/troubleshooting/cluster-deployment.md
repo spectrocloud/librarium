@@ -91,15 +91,15 @@ providing IAM permissions to Amazon EBS CSI.
 
 10. Update the custom labels for the AWS EBS CSI Driver to retrigger the deployment.
 
-```yaml hideClipboard title="Example"
-charts:
-...
-  aws-ebs-csi-driver:
-  ...
-    customLabels: {
-      restart: "true"
-    }
-```
+    ```yaml hideClipboard title="Example"
+    charts:
+    ...
+      aws-ebs-csi-driver:
+      ...
+        customLabels: {
+          restart: "true"
+        }
+    ```
 
 11. Click **Confirm Updates** after editing.
 
