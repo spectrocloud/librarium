@@ -17,8 +17,7 @@ ticket.
 ## Prerequisites
 
 - The host you need to troubleshoot has an active internet connection to access the troubleshooting script.
-- You are connected to the host using SSH, [remote shell](../../clusters/edge/cluster-management/remote-shell.md),
-  direct terminal access, or another connection method.
+- You are connected to the host using SSH, direct terminal access, or another connection method.
 - The following tools are available on the host:
   - `journalctl`
   - `systemctl`
