@@ -18,7 +18,7 @@ list in your Edge installer `user-data`.
 
 ### Debug Steps
 
-1. Log in to [Palette](console.spectrocloud.com).
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 2. From the left **Main Menu**, select **Profiles**. Then select the profile you will use to deploy your cluster.
 
