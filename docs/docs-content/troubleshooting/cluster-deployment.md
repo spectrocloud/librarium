@@ -27,7 +27,8 @@ while creating a new cluster.
 
 The PV or PVC provisioning fails because IAM Roles for Service Accounts (IRSA) has not been configured for the Amazon
 Elastic Block Store (EBS) Container Storage Interface (CSI). For instances launched on AL2023, IMDSv2 is enforced by
-default, and IRSA is the [recommended approach](https://docs.aws.amazon.com/eks/latest/userguide/ebs-csi.html) for providing IAM permissions to Amazon EBS CSI.
+default, and IRSA is the [recommended approach](https://docs.aws.amazon.com/eks/latest/userguide/ebs-csi.html) for
+providing IAM permissions to Amazon EBS CSI.
 
 ### Debug Steps
 
