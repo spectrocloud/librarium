@@ -17,7 +17,7 @@ ticket.
 ## Prerequisites
 
 - The host you need to troubleshoot has an active internet connection to access the troubleshooting script.
-- You have connected to the host using SSH, direct terminal access, or another connection method.
+- You have connected to the host using SSH, [remote shell](../../clusters/edge/cluster-management/remote-shell.md), direct terminal access, or another connection method.
 - The following tools are available on the host:
   - `journalctl`
   - `systemctl`
@@ -43,6 +43,20 @@ The `support-bundle-infra.sh` script collects cluster-level diagnostics. Follow 
    curl --remote-name https://software.spectrocloud.com/scripts/support-bundle-infra.sh
    bash support-bundle-infra.sh
    ```
+
+   The table below contains the optional flags you can use when running the script.
+
+   | **Full Flag Name**           | **Short Flag Name** | **Description**                                                                                  | **Example**                         |
+   | ---------------------------- | ------------------- | ------------------------------------------------------------------------------------------------ | ----------------------------------- |
+   | `--namespaces`               | `-n`                | Additional namespaces to collect logs from. By default, the script collects the logs from the following namespaces: `capa-system`, `capi-kubeadm-bootstrap-system`, `capi-kubeadm-control-plane-system`, `capi-system`, `capi-webhook-system`, `cert-manager`, `default`, `harbor`, `kube-system`, `kube-public`, `longhorn-system`, `os-patch`, `palette-system`, `reach-system`, `spectro-system`, `system-upgrade`. | `-n hello-universe,hello-world`     |
+   | `--resources-namespaced`     | `-r`                | Additional namespace-scoped resources to collect. By default, the script collects the  following namespace-scoped resources: `apiservices`, `configmaps`, `cronjobs`, `daemonsets`, `deployments`, `endpoints`, `endpointslices`, `events`, `hpa`, `ingress`, `jobs`, `leases`, `limitranges`, `networkpolicies`, `poddisruptionbudgets`, `pods`, `pvc`, `replicasets`, `resourcequotas`, `roles`, `rolebindings`, `services`, `serviceaccounts`, `statefulsets`. | `-r certificates.cert-manager.io`   |
+   | `--resources-cluster-scoped` | `-R`                | Additional cluster-scoped resources to collect. By default, the script collects the  following cluster-scoped resources: `apiservices`, `clusterroles`, `clusterrolebindings`, `crds`, `csr`, `mutatingwebhookconfigurations`, `namespaces`, `nodes`, `priorityclasses`, `pv`, `storageclasses`, `validatingwebhookconfigurations`, `volumeattachments`. | `-R clusterissuers.cert-manager.io` |
+
+   :::warning
+   
+   The default values for frags may change, refer to the scripts for the most accurate information.
+
+   :::
 
    If the script runs successfully, it creates a file in your home directory. The file name follows the pattern
    `<cluster name>-<YYYY-MM-DD>_<HH_MM_SS>.tar.gz`. If the script is unable to determine the cluster name, it defaults
@@ -88,10 +102,16 @@ Kubernetes data accessible locally on that host. Follow the steps below on every
    | `--end-days-ago`             | `-e`                | Number of days before now to stop collecting journald logs. The value must be smaller than `-s`. | `-e 5`                              |
    | `--start-date`               | `-S`                | Start date for journald log collection.                                                          | `-S 2024-01-01`                     |
    | `--end-date`                 | `-E`                | End date for journald log collection. Must be later than `-S`.                                   | `-E 2024-01-06`                     |
-   | `--namespaces`               | `-n`                | Additional namespaces to collect logs from.                                                      | `-n hello-universe,hello-world`     |
-   | `--resources-namespaced`     | `-r`                | Additional namespace-scoped resources to collect.                                                | `-r certificates.cert-manager.io`   |
-   | `--resources-cluster-scoped` | `-R`                | Additional cluster-scoped resources to collect.                                                  | `-R clusterissuers.cert-manager.io` |
-   | `--journald-services`        | `-j`                | Additional journald services to include in logs.                                                 | `-j cloud-init,systemd-resolved`    |
+   | `--namespaces`               | `-n`                | Additional namespaces to collect logs from. By default, the script collects the logs from the following namespaces: `capi-webhook-system`, `cert-manager`, `harbor`, `kube-system`, `kube-public`, `longhorn-system`, `os-patch`, `palette-system`, `reach-system`, `spectro-system`, `system-upgrade`. | `-n hello-universe,hello-world`     |
+   | `--resources-namespaced`     | `-r`                | Additional namespace-scoped resources to collect. By default, the script collects the  following namespace-scoped resources: `apiservices`, `configmaps`, `cronjobs`, `daemonsets`, `deployments`, `endpoints`, `endpointslices`, `events`, `hpa`, `ingress`, `jobs`, `leases`, `limitranges`, `networkpolicies`, `poddisruptionbudgets`, `pods`, `pvc`, `replicasets`, `resourcequotas`, `roles`, `rolebindings`, `services`, `serviceaccounts`, `statefulsets`. | `-r certificates.cert-manager.io`   |
+   | `--resources-cluster-scoped` | `-R`                | Additional cluster-scoped resources to collect. By default, the script collects the  following cluster-scoped resources: `apiservices`, `clusterroles`, `clusterrolebindings`, `crds`, `csr`, `mutatingwebhookconfigurations`, `namespaces`, `nodes`, `priorityclasses`, `pv`, `storageclasses`, `validatingwebhookconfigurations`, `volumeattachments`. | `-R clusterissuers.cert-manager.io` |
+   | `--journald-services`        | `-j`                | Additional journald services to include in logs. By default, the script includes the following journald services: `stylus-agent`, `stylus-operator`, `palette-tui`, `spectro-stylus-agent`, `spectro-stylus-operator`, `spectro-init`, `spectro-palette-agent-start`, `spectro-palette-agent-initramfs`, `spectro-palette-agent-boot`, `spectro-palette-agent-network`, `spectro-palette-agent-bootstrap`, `systemd-timesyncd`, `containerd`, `kubelet`, `k3s`, `k3s-agent`, `rke2-server`, `rke2-agent`, `cos-setup-boot`. |`-j cloud-init,systemd-resolved`    |
+
+   :::warning
+   
+   The default values for frags may change, refer to the scripts for the most accurate information.
+
+   :::
 
    If the script runs successfully, it creates a file in the `/opt/spectrocloud/logs` directory. The file name follows
    the pattern `<hostname>-<YYYY-MM-DD>_<HH_MM_SS>.tar.gz`. One of the messages the terminal displays contains the
