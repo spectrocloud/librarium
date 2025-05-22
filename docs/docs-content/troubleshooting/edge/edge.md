@@ -29,7 +29,7 @@ list in your Edge installer `user-data`.
 5. Add the second IP of the CIDR block in the `service_cidr` to the `stylus.site.network.noProxy` parameter. For
    example, if your `service_cidr` is `192.169.0.0/16`, you need to add `192.169.0.1` to the parameter.
 
-   ```yaml {13} title="Example"
+   ```yaml {14} title="Example"
    #cloud-config
    stylus:
      site:
