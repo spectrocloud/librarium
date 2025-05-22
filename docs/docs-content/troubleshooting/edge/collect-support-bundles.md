@@ -55,12 +55,13 @@ The `support-bundle-infra.sh` script collects cluster-level diagnostics. Follow 
 
    :::info
 
-   The default values for flags may change. Refer to the scripts for the most accurate information. For example,
-   you can display the script content in the terminal with the following command.
+   The default values for flags may change. Refer to the scripts for the most accurate information. For example, you can
+   display the script content in the terminal with the following command.
 
    ```bash
    cat support-bundle-infra.sh
    ```
+
    :::
 
    If the script runs successfully, it creates a file in your home directory. The file name follows the pattern
@@ -71,7 +72,7 @@ The `support-bundle-infra.sh` script collects cluster-level diagnostics. Follow 
    Logs are archived in spectro-cluster-2025-05-13_16_50_50.tar.gz
    ```
 
-4. Copy the file to your local computer. The command below serves as an example of how to copy the file
+3. Copy the file to your local computer. The command below serves as an example of how to copy the file
    `spectro-cluster-2025-05-13_16_50_50.tar.gz` from the `kairos@10.10.150.150` host to your `Downloads` folder. Run the
    command on the machine to which you want to copy the file.
 
