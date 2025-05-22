@@ -31,15 +31,13 @@ an AWS account. This section guides you on how to create an EKS cluster in AWS t
 
 <!-- prettier-ignore-end -->
 
-- If you choose to [assign an Amazon Linux 2023 AMI](#assign-an-ami-to-a-node-pool)(AL2023) to your worker nodes and you
-  are using PersistentVolumes (PVs) or PersistentVolumeClaims (PVCs), you must make additional edits to your AWS EKS
+- If you choose to [assign an Amazon Linux 2023 AMI](#assign-an-ami-to-a-node-pool) (AL2023) to your worker nodes and
+  you are using PersistentVolumes (PVs) or PersistentVolumeClaims (PVCs), you must make additional edits to your AWS EKS
   cluster profile to configure IAM Roles for Service Accounts (IRSA) for the Amazon Elastic Block Store (EBS) Container
   Storage Interface (CSI).
 
-      <!-- prettier-ignore-start -->
-
-      <details>
-
+  <!-- prettier-ignore -->
+  <details>
   <summary>Configure IRSA for Amazon EBS CSI</summary>
 
   Use the following steps to configure IRSA for the Amazon EBS CSI. For instances launched on Amazon Linux 2023, IMDSv2
@@ -135,9 +133,7 @@ an AWS account. This section guides you on how to create an EKS cluster in AWS t
       wordpress   wordpress-wordpress                  Bound     pvc-abc...  8Gi        RWO            spectro-storage-class   <unset>                 16m   Filesystem
       ```
 
-      </details>
-
-      <!-- prettier-ignore-end -->
+  </details>
 
 <!-- prettier-ignore-start -->
 - If you want to use <VersionedLink text="Cilium" url="/integrations/packs/?pack=cni-cilium-oss"/> as the network pack
