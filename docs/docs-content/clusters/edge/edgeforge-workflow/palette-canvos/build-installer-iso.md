@@ -119,6 +119,10 @@ Use the following instructions to build the Edge Installer ISO. The optional ste
    corresponds to the **Palette Optimized Canonical** pack, which is a Tech Preview feature and is subject to change. Do
    not use this feature in production workloads.
 
+   In addition, Canonical clusters deployed in a proxied network environment may experience a
+   [known issue](../../../../troubleshooting/edge/edge.md#scenario---canonical-edge-clusters-in-proxied-environments-experience-failure-upon-reboot)
+   when you reboot nodes in the cluster.
+
    :::
 
 6. Customize these arguments to use during the build process. The following is an example `.arg` file.
