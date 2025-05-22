@@ -29,7 +29,7 @@ impacted clusters until you've handled the below mentioned breaking changes and 
 
 :::
 
-- Due to new behavior introduced with Cluster API (CAPI) v1.9.4, you must add the `cluster.x-k8s.io/drain: skip` label
+- Due to a new behavior introduced with Cluster API (CAPI) v1.9.4, you must add the `cluster.x-k8s.io/drain: skip` label
   to any deployments with the `Node.spec.unschedulable` toleration set. If not added, this can lead to deployments stuck
   in a termination loop due to an unwanted
   [node drain](https://cluster-api.sigs.k8s.io/tasks/automated-machine-management/machine_deletions.html#node-drain).
@@ -54,8 +54,8 @@ impacted clusters until you've handled the below mentioned breaking changes and 
          cluster.x-k8s.io/drain: skip
      ```
 
-- Palette's upgrade to Cluster API (CAPI) v1.9.4 requires additional Amazon Web Services (AWS) permissions to operate
-  and perform actions on your behalf. Refer to the
+- Due to an upgrade of Cluster API Provider AWS (CAPA) to v2.7.1, Palette requires additional Amazon Web Services (AWS)
+  permissions to operate and perform actions on your behalf. Refer to the
   [Required IAM Policies](../clusters/public-cloud/aws/required-iam-policies.md) reference page for a full list of core
   policies and minimum permissions.
 
@@ -66,8 +66,8 @@ impacted clusters until you've handled the below mentioned breaking changes and 
   - `compute.disks.setLabels`
   - `compute.globalForwardingRules.setLabels`
 
-  This is due to a fix in [v1.8.0](https://github.com/kubernetes-sigs/cluster-api-provider-gcp/releases/tag/v1.8.0) that
-  means labels may be populated for persistent disks and global forwarding rules. Refer to the
+  This is due to a fix in [v1.8.0](https://github.com/kubernetes-sigs/cluster-api-provider-gcp/releases/tag/v1.8.0)
+  where labels may be populated for persistent disks and global forwarding rules. Refer to the
   [Required IAM Permissions](../clusters/public-cloud/gcp/required-permissions.md#required-permissions) guide for all
   required GCP IAM permissions.
 
@@ -96,11 +96,14 @@ impacted clusters until you've handled the below mentioned breaking changes and 
   Refer to the [Create and Manage Azure IaaS Cluster](../clusters/public-cloud/azure/create-azure-cluster.md) guide for
   more information.
 
-- Once you install Palette or upgrade to version 4.6.c or later, you have 30 days to activate it. During this time, you
-  have unrestricted access to all of Palette's features. After 30 days, you can continue to use Palette, and existing
-  clusters will continue to run, but you cannot perform the following day-2 operations until Palette is activated.
+- Starting with version 4.6.c, Palette and VerteX installations need to be activated after 30 days. Once you install or
+  upgrade Palette or VerteX to version 4.6.c or later, you have 30 days to activate it. During this time, you have
+  unrestricted access to all of Palette's features. After 30 days, you can continue to use Palette, and existing
+  clusters will remain operational, but you cannot perform day-2 operations such as creating new clusters and modifying
+  existing ones until Palette is activated.
 
-  Refer to the Activate Palette guide for further information.
+  Refer to the [Activate Palette](../enterprise-version/activate-installation/activate-installation.md) and
+  [Activate VerteX](../vertex/activate-installation/activate-installation.md) guides for further information.
 
 #### Improvements
 
@@ -152,8 +155,8 @@ impacted clusters until you've handled the below mentioned breaking changes and 
 #### Features
 
 - <TpBadge /> The new [Appliance Studio](../deployment-modes/appliance-mode/appliance-studio.md) is a lightweight
-  Graphical User Interface (GUI) application allows you to build, save, edit, and manage the two configuration files
-  that are essential to the EdgeForge process, with zero risk of syntax errors.
+  Graphical User Interface (GUI) application that allows you to build, save, edit, and manage the two configuration
+  files that are essential to the EdgeForge process, with zero risk of syntax errors.
 
   Refer to the [Prepare User Data and Argument Files](../clusters/edge/edgeforge-workflow/prepare-user-data.md) guide to
   learn more.
@@ -166,15 +169,17 @@ impacted clusters until you've handled the below mentioned breaking changes and 
 #### Improvements
 
 - Improved the upgrade process for the Palette agent and increased its reliability.
-- Palette now supports uploading one or more content bundles as long as your Edge host has enough physical storage and
-  you have allocated sufficient storage to your registry. Refer to the
+- Palette CLI now supports uploading one or more content bundles to the Edge host as long as the host has enough
+  physical storage and you have allocated sufficient storage to your registry. Refer to the
   [Upload Content Bundle](../clusters/edge/local-ui/cluster-management/upload-content-bundle.md) guide for further
   information.
-- [Local UI](../clusters/edge/local-ui/local-ui.md) has now exited Tech Preview and is ready to use for production
-  workloads. Check out the [Access Local UI](../clusters/edge/local-ui/host-management/access-console.md) guide for
-  further details.
-- A new troubleshooting script is now available to allow you to debug common errors such as Edge hosts failing to
-  register, pod failures, or provisioning errors. Refer to the Collect Support Bundles for Edge Cluster Troubleshooting
+- [Local UI](../clusters/edge/local-ui/local-ui.md) has now exited Tech Preview and is ready for production workloads.
+  Check out the [Access Local UI](../clusters/edge/local-ui/host-management/access-console.md) guide for further
+  details.
+- A troubleshooting script named `support-bundle-edge.sh` is now embedded on the Edge host. It can run on hosts without
+  an internet connection, allowing you to debug common issues, such as Edge hosts failing to register, pod failures, or
+  provisioning errors. Refer to the
+  [Collect Support Bundles for Edge Cluster](../troubleshooting/edge/collect-support-bundles.md) troubleshooting
   reference page for further details.
 
 #### Deprecations and Removals
@@ -210,11 +215,12 @@ Check out the [CLI Tools](../downloads/cli-tools.md) page to find the compatible
 #### Features
 
 - The `content` command of the [Palette CLI](../automation/palette-cli/palette-cli.md) now has an `upload` subcommand.
-  This subcommand allows you to build a content bundle and upload it to a locally managed Edge host through Local UI.
-  Once the upload is complete, you can provision clusters locally using the uploaded content when the host does not have
-  a connection to a central Palette instance or an image repository.
+  This subcommand allows you to upload a content bundle to a locally managed Edge host through Local UI. Once the upload
+  is complete, you can provision clusters locally using the uploaded content when the host does not have a connection to
+  a central Palette instance or an image repository.
 
-  Refer to the Upload Content Bundle reference page for further information.
+  Refer to the [Upload Content Bundle](../clusters/edge/local-ui/cluster-management/upload-content-bundle.md) reference
+  page for further information.
 
 - The `spectrocloud_appliance` resource now supports [remote shell](../clusters/edge/cluster-management/remote-shell.md)
   activation, allowing you to troubleshoot Edge hosts by initiating an SSH connection from Palette. For more
