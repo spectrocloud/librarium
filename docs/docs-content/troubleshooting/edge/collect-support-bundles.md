@@ -53,7 +53,7 @@ The `support-bundle-infra.sh` script collects cluster-level diagnostics. Follow 
    | `--resources-namespaced`     | `-r`               | Additional namespace-scoped resources to collect. By default, the script collects the following namespace-scoped resources: `apiservices`, `configmaps`, `cronjobs`, `daemonsets`, `deployments`, `endpoints`, `endpointslices`, `events`, `hpa`, `ingress`, `jobs`, `leases`, `limitranges`, `networkpolicies`, `poddisruptionbudgets`, `pods`, `pvc`, `replicasets`, `resourcequotas`, `roles`, `rolebindings`, `services`, `serviceaccounts`, and `statefulsets`. | `-r certificates.cert-manager.io`   |
    | `--resources-cluster-scoped` | `-R`               | Additional cluster-scoped resources to collect. By default, the script collects the following cluster-scoped resources: `apiservices`, `clusterroles`, `clusterrolebindings`, `crds`, `csr`, `mutatingwebhookconfigurations`, `namespaces`, `nodes`, `priorityclasses`, `pv`, `storageclasses`, `validatingwebhookconfigurations`, and `volumeattachments`.                                                                                                          | `-R clusterissuers.cert-manager.io` |
 
-   The default values for frags may change. Refer to the scripts for the most accurate information. For example, you can
+   The default values for flags may change. Refer to the scripts for the most accurate information. For example, you can
    display the script content in the terminal with the following command.
 
    ```bash
