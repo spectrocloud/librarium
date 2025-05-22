@@ -171,8 +171,9 @@ impacted clusters until you've handled the below mentioned breaking changes and 
 - [Local UI](../clusters/edge/local-ui/local-ui.md) has now exited Tech Preview and is ready to use for production
   workloads. Check out the [Access Local UI](../clusters/edge/local-ui/host-management/access-console.md) guide for
   further details.
-- A new troubleshooting script is now available to allow you to debug common errors such as Edge hosts failing to
-  register, pod failures, or provisioning errors. Refer to the
+- A troubleshooting script named `support-bundle-edge.sh` is now embedded on the Edge host. It can run on hosts without
+  an internet connection, allowing you to debug common issues, such as Edge hosts failing to register, pod failures, or
+  provisioning errors. Refer to the
   [Collect Support Bundles for Edge Cluster](../troubleshooting/edge/collect-support-bundles.md) troubleshooting
   reference page for further details.
 
