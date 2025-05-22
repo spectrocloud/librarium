@@ -12,7 +12,7 @@ The following are common scenarios that you may encounter when using Edge.
 
 ## Scenario - Canonical Edge Clusters in Proxied Environments Experience Failure upon Reboot
 
-When rebooting nodes in a Canonical Edge cluster deployed in a proxied environment, the nodes may fail to come back
+When rebooting nodes in an Edge cluster using Palette Optimized Canonical deployed in a proxied environment, the nodes may fail to come back
 online. To prevent this, add the second IP address in the `service_cidr` range from the Canonical pack to the `NO_PROXY`
 list in your Edge installer `user-data`.
 
@@ -22,11 +22,11 @@ list in your Edge installer `user-data`.
 
 2. From the left **Main Menu**, select **Profiles**. Then select the profile you will use to deploy your cluster.
 
-3. Select the Kubernetes layer, which is the Canonical Kubernetes pack. Click **values.yaml** to view the values.
+3. Select the Kubernetes layer, the `Palette Optimized Canonical` pack. Click **values.yaml** to view the values.
 
 4. Take note of the `service_cidr` value in `pack.cluster.config`.
 
-5. Add the second IP of the CIDR block in the `service_cidr` to the `stylus.site.network.noProxy` parameter. For
+5. Add the second IP of the CIDR block in the `service_cidr` range to the `stylus.site.network.noProxy` parameter. For
    example, if your `service_cidr` is `192.169.0.0/16`, you need to add `192.169.0.1` to the parameter.
 
    ```yaml {14} title="Example"
