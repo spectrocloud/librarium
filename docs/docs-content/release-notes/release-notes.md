@@ -15,7 +15,8 @@ tags: ["release-notes"]
 
 ### Bug Fixes
 
-- Fixed an issue where certain artifacts were not found while syncing registries for [Edge](../clusters/edge/edge.md) clusters. 
+- Fixed an issue where certain artifacts were not found while syncing registries for [Edge](../clusters/edge/edge.md)
+  clusters.
 - Fixed an issue that prevented add-on profiles from being deployed on [Edge](../clusters/edge/edge.md) clusters
   containing the `harbor-edge-native-config` pack.
 
