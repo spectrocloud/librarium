@@ -12,9 +12,9 @@ The following are common scenarios that you may encounter when using Edge.
 
 ## Scenario - Canonical Edge Clusters in Proxied Environments Experience Failure upon Reboot
 
-When rebooting nodes in an Edge cluster using Palette Optimized Canonical deployed in a proxied environment, the nodes may fail to come back
-online. To prevent this, add the second IP address in the `service_cidr` range from the Canonical pack to the `NO_PROXY`
-list in your Edge installer `user-data`.
+When rebooting nodes in an Edge cluster using Palette Optimized Canonical deployed in a proxied environment, the nodes
+may fail to come back online. To prevent this, add the second IP address in the `service_cidr` range from the Canonical
+pack to the `NO_PROXY` list in your Edge installer `user-data`.
 
 ### Debug Steps
 
