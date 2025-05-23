@@ -18,7 +18,9 @@ ticket.
 
 - Only the `support-bundle-edge.sh` script is embedded and can run on hosts without an internet connection. The
   `support-bundle-infra.sh` script is not embedded and requires internet access.
-- The `support-bundle-edge.sh` script is included with the version of Stylus that was in use at the time of provisioning. It is updated only when Stylus is upgraded through an ISO or a Palette update. To ensure you're using the most current version, download and run the script manually.
+- The `support-bundle-edge.sh` script is included with the version of Stylus that was in use at the time of
+  provisioning. It is updated only when Stylus is upgraded through an ISO or a Palette update. To ensure you're using
+  the most current version, download and run the script manually.
 
 ## Prerequisites
 
@@ -129,22 +131,21 @@ Kubernetes data accessible locally on that host. Follow the steps below on every
 
     The table below contains the optional flags you can use when running the script.
 
-    | **Longhand Flags**           | **Shorthand Flags** | **Description**                                                                                  | **Example**                         |
-    | ---------------------------- | ------------------- | ------------------------------------------------------------------------------------------------ | ----------------------------------- |
-    | `--start-days-ago`           | `-s`                | Number of days in the past to start collecting journald logs from.                                    | `-s 7`                              |
-    | `--end-days-ago`             | `-e`                | Number of days before now to stop collecting journald logs. The value must be smaller than `-s`. | `-e 5`                              |
-    | `--start-date`               | `-S`                | Start date for journald log collection.                                                          | `-S 2024-01-01`                     |
-    | `--end-date`                 | `-E`                | End date for journald log collection. Must be later than `-S`.                                   | `-E 2024-01-06`                     |
-    | `--namespaces`               | `-n`                | Additional namespaces to collect logs from. By default, the script collects the logs from the following namespaces: `capi-webhook-system`, `cert-manager`, `harbor`, `kube-system`, `kube-public`, `longhorn-system`, `os-patch`, `palette-system`, `reach-system`, `spectro-system`, and `system-upgrade`. | `-n hello-universe,hello-world`     |
-    | `--resources-namespaced`     | `-r`                | Additional namespace-scoped resources to collect. By default, the script collects the following namespace-scoped resources: `apiservices`, `configmaps`, `cronjobs`, `daemonsets`, `deployments`, `endpoints`, `endpointslices`, `events`, `hpa`, `ingress`, `jobs`, `leases`, `limitranges`, `networkpolicies`, `poddisruptionbudgets`, `pods`, `pvc`, `replicasets`, `resourcequotas`, `roles`, `rolebindings`, `services`, `serviceaccounts`, and `statefulsets`. | `-r certificates.cert-manager.io`   |
-    | `--resources-cluster-scoped` | `-R`                | Additional cluster-scoped resources to collect. By default, the script collects the following cluster-scoped resources: `apiservices`, `clusterroles`, `clusterrolebindings`, `crds`, `csr`, `mutatingwebhookconfigurations`, `namespaces`, `nodes`, `priorityclasses`, `pv`, `storageclasses`, `validatingwebhookconfigurations`, and `volumeattachments`.| `-R clusterissuers.cert-manager.io` |
+    | **Longhand Flags**           | **Shorthand Flags** | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                | **Example**                         |
+    | ---------------------------- | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ----------------------------------- |
+    | `--start-days-ago`           | `-s`                | Number of days in the past to start collecting journald logs from.                                                                                                                                                                                                                                                                                                                                                                                                             | `-s 7`                              |
+    | `--end-days-ago`             | `-e`                | Number of days before now to stop collecting journald logs. The value must be smaller than `-s`.                                                                                                                                                                                                                                                                                                                                                                               | `-e 5`                              |
+    | `--start-date`               | `-S`                | Start date for journald log collection.                                                                                                                                                                                                                                                                                                                                                                                                                                        | `-S 2024-01-01`                     |
+    | `--end-date`                 | `-E`                | End date for journald log collection. Must be later than `-S`.                                                                                                                                                                                                                                                                                                                                                                                                                 | `-E 2024-01-06`                     |
+    | `--namespaces`               | `-n`                | Additional namespaces to collect logs from. By default, the script collects the logs from the following namespaces: `capi-webhook-system`, `cert-manager`, `harbor`, `kube-system`, `kube-public`, `longhorn-system`, `os-patch`, `palette-system`, `reach-system`, `spectro-system`, and `system-upgrade`.                                                                                                                                                                    | `-n hello-universe,hello-world`     |
+    | `--resources-namespaced`     | `-r`                | Additional namespace-scoped resources to collect. By default, the script collects the following namespace-scoped resources: `apiservices`, `configmaps`, `cronjobs`, `daemonsets`, `deployments`, `endpoints`, `endpointslices`, `events`, `hpa`, `ingress`, `jobs`, `leases`, `limitranges`, `networkpolicies`, `poddisruptionbudgets`, `pods`, `pvc`, `replicasets`, `resourcequotas`, `roles`, `rolebindings`, `services`, `serviceaccounts`, and `statefulsets`.           | `-r certificates.cert-manager.io`   |
+    | `--resources-cluster-scoped` | `-R`                | Additional cluster-scoped resources to collect. By default, the script collects the following cluster-scoped resources: `apiservices`, `clusterroles`, `clusterrolebindings`, `crds`, `csr`, `mutatingwebhookconfigurations`, `namespaces`, `nodes`, `priorityclasses`, `pv`, `storageclasses`, `validatingwebhookconfigurations`, and `volumeattachments`.                                                                                                                    | `-R clusterissuers.cert-manager.io` |
     | `--journald-services`        | `-j`                | By default, the script includes the following journald services: `stylus-agent`, `stylus-operator`, `palette-tui`, `spectro-stylus-agent`, `spectro-stylus-operator`, `spectro-init`, `spectro-palette-agent-start`, `spectro-palette-agent-initramfs`, `spectro-palette-agent-boot`, `spectro-palette-agent-network`, `spectro-palette-agent-bootstrap`, `systemd-timesyncd`, `containerd`, `kubelet`, `k3s`, `k3s-agent`, `rke2-server`, `rke2-agent`, and `cos-setup-boot`. | `-j cloud-init,systemd-resolved`    |
-
 
     :::info
 
-    The default values for flags may change. Refer to the scripts for the most accurate information. For example, you can
-    display the script content in the terminal with the following command.
+    The default values for flags may change. Refer to the scripts for the most accurate information. For example, you
+    can display the script content in the terminal with the following command.
 
     ```bash
     cat support-bundle-infra.sh
@@ -167,7 +168,7 @@ Kubernetes data accessible locally on that host. Follow the steps below on every
 
     :::
 
-4.  Copy the file to your local computer. The command below serves as an example of how to copy the file
+3.  Copy the file to your local computer. The command below serves as an example of how to copy the file
     `edge-e965384209c2d45078a29480e90bd275-2025-05-13_16_58_20.tar.gz` from the `kairos@10.10.150.150` host to your
     `Downloads` folder. Run the command on the machine to which you want to copy the file.
 
