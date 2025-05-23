@@ -154,17 +154,18 @@ impacted clusters until you've handled the below mentioned breaking changes and 
 
 - Fixed an issue that caused the `velero-upgrade-crds` job to fail, which prevented CRD updates and impacted Velero's
   backup and restore operations in clusters.
-- Fixed an issue in Palette's UI that prevented custom cluster profile variable values from being applied to a cluster
-  when updating to a new version of the cluster profile.
-- Fixed an issue in Palette's UI that prevented certain special characters from being used in AWS resource tags.
+- Fixed an issue in Palette's UI that prevented custom
+  [cluster profile variable](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/create-cluster-profile-variables.md)
+  values from being applied to a cluster when updating to a new version of the cluster profile.
 - Fixed an issue where entering an invalid regex pattern in cluster profile variables caused a UI error.
 - Fixed a UI issue where lengthy
   [cluster profile variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/define-profile-variables.md)
   hid the three-dot menu and copy icon in the **Profile variables** pane.
 - Fixed a UI issue where selecting a non-OS layer on the cluster **Overview** tab opened the YAML editor for the OS
   layer.
-- Fixed an issue where the API allowed invalid regex patterns to be defined in cluster profile variables without
-  validation.
+- Fixed an issue where the API allowed invalid regex patterns to be defined in
+  [cluster profile variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/create-cluster-profile-variables.md)
+  without validation.
 - Fixed an issue that caused a `code` of `Unauthorized` to be returned instead of an integer when providing the same
   `newPassword` and `oldPassword` during POST API calls to `v1/users/default/password/reset`.
 - Fixed an issue that caused the `cluster-management-agent` pod to be repeatedly terminated and scheduled onto the same
