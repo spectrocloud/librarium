@@ -206,8 +206,8 @@ maas-control-plane-node-tags     = ["docs-cp"]              # Provide a set of 
 
 **MetalLB Values**
 
-| **Variable**        | **Data Type** | **Instruction**                                                                                                                                                                                                                                             |
-| ------------------- | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Variable**        | **Data Type** | **Instruction**                                                                                                                                                                                                          |
+| ------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | **metallb-ip-pool** | _number_      | Set this value to the IP address range you want MetalLB to use. These IP's should be routable and the NIC on your MAAS nodes should be connected to a Switchport that has your subnets VLAN ID set as the untagged VLAN. |
 
 ### Deploy the Cluster
@@ -271,17 +271,17 @@ In this section, you will modify and execute Terraform scripts to deploy a new V
 Prior to deploying your VM you must modify the _terraform.tfvars_ file to reflect the configuration you want your VM to
 have. Make changes to your _terraform.tfvars_ file as instructed in the table.
 
-| **Variable**            | **Data Type** | **Instruction**                                                                                                                                                                                                                                               |
-| ----------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **deploy-maas-vm**      | _boolean_     | This is a true of false value. If true, an Ubuntu 22.04 VM with the Hello Universe app will be deployed in your VMO cluster. Set this value to _true_ for this section of the tutorial.                                                                       |
+| **Variable**            | **Data Type** | **Instruction**                                                                                                                                                                                                                                              |
+| ----------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **deploy-maas-vm**      | _boolean_     | This is a true of false value. If true, an Ubuntu 22.04 VM with the Hello Universe app will be deployed in your VMO cluster. Set this value to _true_ for this section of the tutorial.                                                                      |
 | **vm-deploy-namespace** | _string_      | Set this value to the name of the VLAN you want your VMs to be deployed to.<br/><br/>These namespaces are standard Kubernetes namespaces. Your VM will be impacted by any configurations applied at the namespace level such as network policies and quotas. |
-| **vm-deploy-name**      | _string_      | Set this value to the name you want your VM to have.                                                                                                                                                                                                          |
-| **vm-labels**           | _string_      | Set this value to a single label you want applied to your VM. For multiple labels, you must modify _virtual_machines.tf_ to include one line for each label.                                                                                                  |
-| **vm-storage-Gi**       | _string_      | Set this value to the size of disk you want your VM to have. You must include 'Gi' in your value. Example _vm-storage-Gi = 50Gi_                                                                                                                              |
-| **vm-vpu-cores**        | _number_      | This value will set the number of CPU cores your VM will use.                                                                                                                                                                                                 |
-| **vm-cpu-sockets**      | _number_      | This value will set the number of physical CPU sockets your VM must use. This is intended to enable hardware resilience in the event of a single CPU socket related failure.                                                                                  |
-| **vm-cpu-threads**      | _number_      | The number of CPU threads your VM is allowed to use. You can assign 1 CPU core and a single thread if desired.                                                                                                                                                |
-| **vm-memory-Gi**        | _string_      | Set this value to the amount of RAM (memory) you want your VM to have. You must include 'Gi' in your value. Example _vm-memory-Gi = 4Gi_                                                                                                                      |
+| **vm-deploy-name**      | _string_      | Set this value to the name you want your VM to have.                                                                                                                                                                                                         |
+| **vm-labels**           | _string_      | Set this value to a single label you want applied to your VM. For multiple labels, you must modify _virtual_machines.tf_ to include one line for each label.                                                                                                 |
+| **vm-storage-Gi**       | _string_      | Set this value to the size of disk you want your VM to have. You must include 'Gi' in your value. Example _vm-storage-Gi = 50Gi_                                                                                                                             |
+| **vm-vpu-cores**        | _number_      | This value will set the number of CPU cores your VM will use.                                                                                                                                                                                                |
+| **vm-cpu-sockets**      | _number_      | This value will set the number of physical CPU sockets your VM must use. This is intended to enable hardware resilience in the event of a single CPU socket related failure.                                                                                 |
+| **vm-cpu-threads**      | _number_      | The number of CPU threads your VM is allowed to use. You can assign 1 CPU core and a single thread if desired.                                                                                                                                               |
+| **vm-memory-Gi**        | _string_      | Set this value to the amount of RAM (memory) you want your VM to have. You must include 'Gi' in your value. Example _vm-memory-Gi = 4Gi_                                                                                                                     |
 
 ### Deploy the Virtual Machine
 
@@ -590,6 +590,7 @@ selection to remove the cluster profile.
 In this tutorial, you created a new cluster profile and used it to deploy new Kubernetes cluster with _Palette Virtual
 Machine Orchestrator_ configured on it. You deployed a VM that was pre-built with the _Hello Universe_ app and confirmed
 it was functioning in your VMO cluster correctly.
+
 <br />
 <br />
 
@@ -597,9 +598,9 @@ it was functioning in your VMO cluster correctly.
 
 ### Palette Specific Terraform Files
 
-This section will guide you through the Palette specific terraform files used in the tutorial. You will gain a better understanding of how the
-variables in _terraform.tfvars_ fit with the other deployment files, and what the Terraform scripts are actually doing
-when you execute `terraform apply`.
+This section will guide you through the Palette specific terraform files used in the tutorial. You will gain a better
+understanding of how the variables in _terraform.tfvars_ fit with the other deployment files, and what the Terraform
+scripts are actually doing when you execute `terraform apply`.
 
 #### Manifests
 
@@ -797,7 +798,7 @@ customize the provided template to prepare for deployment in your MAAS environme
 | **Virtual Machine Orchestrator** | v##         | The Palette Virtual Machine Orchestrator (VMO) pack consolidates all components that you need to deploy and manage Virtual Machines (VMs) alongside containers in a Kubernetes host cluster. You can deploy VMO as an add-on cluster profile on top of an existing data center or edge cluster.                                                                                                  | <VersionedLink text="Virtual Machine Orchestrator Readme" url="/integrations/packs/?pack=virtual-machine-orchestrator&version=4.6.3"/> |
 | **MetalLB (Helm)**               | v##         | A load-balancer implementation for bare metal Kubernetes clusters, using standard routing protocols. Offers a network load balancer implementation that integrates with standard network equipment.                                                                                                                                                                                              | <VersionedLink text="Cilium Readme" url="/integrations/packs/?pack=lb-metallb-helm&version=1.14.9"/>                                   |
 | **Rook-Ceph (Helm)**             | v##         | **Rook** is an open source cloud-native storage orchestrator for Kubernetes, providing the platform, framework, and support for Ceph storage to natively integrate with Kubernetes. **Ceph** is a distributed storage system that provides file, block and object storage and is deployed in large scale production clusters.                                                                    | <VersionedLink text="Cilium Readme" url="/integrations/packs/?pack=csi-rook-ceph-helm&version=1.16.3"/>                                |
-| **Cilium**                       | v##         | Cilium is a networking, observability, and security solution with an eBPF-based data plane.                                                                                                                                                                                                                                                                                                       | <VersionedLink text="Cilium Readme" url="/integrations/packs/?pack=cni-cilium-oss&version=1.17.1"/>                                    |
+| **Cilium**                       | v##         | Cilium is a networking, observability, and security solution with an eBPF-based data plane.                                                                                                                                                                                                                                                                                                      | <VersionedLink text="Cilium Readme" url="/integrations/packs/?pack=cni-cilium-oss&version=1.17.1"/>                                    |
 | **Palette eXtended Kubernetes**  | v##         | Palette eXtended Kubernetes (PXK) is a recompiled version of the open source Cloud Native Computing Foundation (CNCF) distribution of Kubernetes. This Kubernetes version can be deployed through Palette to all major infrastructure providers, public cloud providers, and private data center providers. This is the default distribution when deploying a Kubernetes cluster through Palette | <VersionedLink text="Palette eXtended Kubernetes Readme" url="/integrations/packs/?pack=kubernetes&version=1.32.2"/>                   |
 | **Ubuntu Mass**                  | v##         | Ubuntu is a free, open source Operating System (OS) based on Linux that can be used on desktops, servers, in the cloud, and for IoT devices. Ubuntu is a Linux distribution derived from Debian.                                                                                                                                                                                                 | <VersionedLink text="Ubuntu Readme" url="/integrations/packs/?pack=kubernetes&version=1.32.2"/>                                        |
 
