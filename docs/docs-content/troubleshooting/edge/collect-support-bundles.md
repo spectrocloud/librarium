@@ -18,8 +18,7 @@ ticket.
 
 - Only the `support-bundle-edge.sh` script is embedded and can run on hosts without an internet connection. The
   `support-bundle-infra.sh` script is not embedded and requires internet access.
-- The embedded `support-bundle-edge.sh` script does not update automatically. To use the latest version, download and
-  run the script manually.
+- The `support-bundle-edge.sh` script is included with the version of Stylus that was in use at the time of provisioning. It is updated only when Stylus is upgraded through an ISO or a Palette update. To ensure you're using the most current version, download and run the script manually.
 
 ## Prerequisites
 
@@ -40,7 +39,7 @@ ticket.
 
 <TabItem value="Embedded Script">
   
-- You have connected to the host using SSH, direct terminal access, or another connection method.
+- You are connected to the host using SSH, [remote shell](../../clusters/edge/cluster-management/remote-shell.md), direct terminal access, or another connection method.
 - The following tools are available on the host:
   - `journalctl`
   - `systemctl`
@@ -130,16 +129,16 @@ Kubernetes data accessible locally on that host. Follow the steps below on every
 
     The table below contains the optional flags you can use when running the script.
 
-    | **Full Flag Name**           | **Short Flag Name** | **Description**                                                                                  | **Example**                         |
+    | **Longhand Flags**           | **Shorthand Flags** | **Description**                                                                                  | **Example**                         |
     | ---------------------------- | ------------------- | ------------------------------------------------------------------------------------------------ | ----------------------------------- |
-    | `--start-days-ago`           | `-s`                | Number of days in the past to start collecting journald logs.                                    | `-s 7`                              |
+    | `--start-days-ago`           | `-s`                | Number of days in the past to start collecting journald logs from.                                    | `-s 7`                              |
     | `--end-days-ago`             | `-e`                | Number of days before now to stop collecting journald logs. The value must be smaller than `-s`. | `-e 5`                              |
     | `--start-date`               | `-S`                | Start date for journald log collection.                                                          | `-S 2024-01-01`                     |
     | `--end-date`                 | `-E`                | End date for journald log collection. Must be later than `-S`.                                   | `-E 2024-01-06`                     |
-    | `--namespaces`               | `-n`                | Additional namespaces to collect logs from.                                                      | `-n hello-universe,hello-world`     |
-    | `--resources-namespaced`     | `-r`                | Additional namespace-scoped resources to collect.                                                | `-r certificates.cert-manager.io`   |
-    | `--resources-cluster-scoped` | `-R`                | Additional cluster-scoped resources to collect.                                                  | `-R clusterissuers.cert-manager.io` |
-    | `--journald-services`        | `-j`                | Additional journald services to include in logs.                                                 | `-j cloud-init,systemd-resolved`    |
+    | `--namespaces`               | `-n`                | Additional namespaces to collect logs from. By default, the script collects the logs from the following namespaces: `capi-webhook-system`, `cert-manager`, `harbor`, `kube-system`, `kube-public`, `longhorn-system`, `os-patch`, `palette-system`, `reach-system`, `spectro-system`, and `system-upgrade`. | `-n hello-universe,hello-world`     |
+    | `--resources-namespaced`     | `-r`                | Additional namespace-scoped resources to collect. By default, the script collects the following namespace-scoped resources: `apiservices`, `configmaps`, `cronjobs`, `daemonsets`, `deployments`, `endpoints`, `endpointslices`, `events`, `hpa`, `ingress`, `jobs`, `leases`, `limitranges`, `networkpolicies`, `poddisruptionbudgets`, `pods`, `pvc`, `replicasets`, `resourcequotas`, `roles`, `rolebindings`, `services`, `serviceaccounts`, and `statefulsets`. | `-r certificates.cert-manager.io`   |
+    | `--resources-cluster-scoped` | `-R`                | Additional cluster-scoped resources to collect. By default, the script collects the following cluster-scoped resources: `apiservices`, `clusterroles`, `clusterrolebindings`, `crds`, `csr`, `mutatingwebhookconfigurations`, `namespaces`, `nodes`, `priorityclasses`, `pv`, `storageclasses`, `validatingwebhookconfigurations`, and `volumeattachments`.| `-R clusterissuers.cert-manager.io` |
+    | `--journald-services`        | `-j`                | By default, the script includes the following journald services: `stylus-agent`, `stylus-operator`, `palette-tui`, `spectro-stylus-agent`, `spectro-stylus-operator`, `spectro-init`, `spectro-palette-agent-start`, `spectro-palette-agent-initramfs`, `spectro-palette-agent-boot`, `spectro-palette-agent-network`, `spectro-palette-agent-bootstrap`, `systemd-timesyncd`, `containerd`, `kubelet`, `k3s`, `k3s-agent`, `rke2-server`, `rke2-agent`, and `cos-setup-boot`. | `-j cloud-init,systemd-resolved`    |
 
     If the script runs successfully, it creates a file in the `/opt/spectrocloud/logs` directory. The file name follows
     the pattern `<hostname>-<YYYY-MM-DD>_<HH_MM_SS>.tar.gz`. One of the messages the terminal displays contains the
