@@ -22,7 +22,7 @@ detailed information.
 
 - A Palette account with tenant admin access.
 
-- MAAS datacenter environment.
+- MAAS Datacenter environment.
 
 - Two MAAS machines with a minimum spec of
 
@@ -208,13 +208,13 @@ maas-control-plane-node-tags     = ["docs-cp"]              # Provide a set of 
 
 | **Variable**        | **Data Type** | **Instruction**                                                                                                                                                                                                                                             |
 | ------------------- | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **metallb-ip-pool** | _number_      | Set this value to the IP address range you want MetalLB to use. These IP's should be routable and the NIC on your MAAS nodes should be connected to a switchport that has the untagged VLAN set to the VLAN related to the subnet your IP addresses are in. |
+| **metallb-ip-pool** | _number_      | Set this value to the IP address range you want MetalLB to use. These IP's should be routable and the NIC on your MAAS nodes should be connected to a Switchport that has your subnets VLAN ID set as the untagged VLAN. |
 
 ### Deploy the Cluster
 
 Once the variables in _terraform.tfvars_ have been updated, you can proceed with the VMO cluster deployment.
 
-First, you must set the `SPECTROCLOUD_APIKEY` environment variable to your API key.
+First, you must set the `SPECTROCLOUD_APIKEY` environment variable to your API key by using the command below.
 
 ```shell
 export SPECTROCLOUD_APIKEY="YOUR KEY HERE"
@@ -274,7 +274,7 @@ have. Make changes to your _terraform.tfvars_ file as instructed in the table.
 | **Variable**            | **Data Type** | **Instruction**                                                                                                                                                                                                                                               |
 | ----------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **deploy-maas-vm**      | _boolean_     | This is a true of false value. If true, an Ubuntu 22.04 VM with the Hello Universe app will be deployed in your VMO cluster. Set this value to _true_ for this section of the tutorial.                                                                       |
-| **vm-deploy-namespace** | _string_      | Set this value to the name of the VLAN you want your VM's to be deployed to.<br/><br/>These namespaces are standard kubernetes namespaces. Your VM will be impacted by any configurations applied at the namespace level such as network policies and quotas. |
+| **vm-deploy-namespace** | _string_      | Set this value to the name of the VLAN you want your VMs to be deployed to.<br/><br/>These namespaces are standard Kubernetes namespaces. Your VM will be impacted by any configurations applied at the namespace level such as network policies and quotas. |
 | **vm-deploy-name**      | _string_      | Set this value to the name you want your VM to have.                                                                                                                                                                                                          |
 | **vm-labels**           | _string_      | Set this value to a single label you want applied to your VM. For multiple labels, you must modify _virtual_machines.tf_ to include one line for each label.                                                                                                  |
 | **vm-storage-Gi**       | _string_      | Set this value to the size of disk you want your VM to have. You must include 'Gi' in your value. Example _vm-storage-Gi = 50Gi_                                                                                                                              |
@@ -330,9 +330,9 @@ To clean up the resources you deployed, execute the `terraform destroy` command.
 
 :::info
 
-VMO is currently supported in the following environments:
+VMO is currently supported in the following environments: UPDATE WITH DETAILS
 
-- :::
+:::
 
 5. The first profile layer you are asked to configure is the OS layer. Your selection will be used as the base OS for
    the nodes in your Kubernetes Cluster. This tutorial uses the _Ubuntu v22.04_ OS image from the _Palette Registry
@@ -433,7 +433,7 @@ Review the values for **podCIDR** and **serviceClusterIpRange** and update them 
 | cilium.cni.exclusive              | false         | true           | Instructs the cluster to remove all other CNI configuration files.                                 |
 | cilium.socketLB.hostNamespaceOnly | true          | false          | Disables socket level load balancing and moves the function back to the virtual network interface. |
 
-    For more information on these configurations, visit the official Cilium documentation site for [socket load balancers](https://docs.cilium.io/en/latest/network/kubernetes/kubeproxy-free/#socketlb-host-netns-only) and [CNI configuration adjustments](https://docs.cilium.io/en/latest/network/kubernetes/configuration/#adjusting-cni-configuration).
+    For more information on these configurations, visit the official Cilium documentation site for [socket load balancers](https://docs.cilium.io/en/latest/network/Kubernetes/kubeproxy-free/#socketlb-host-netns-only) and [CNI configuration adjustments](https://docs.cilium.io/en/latest/network/kubernetes/configuration/#adjusting-cni-configuration).
 
 Select **Next layer**.
 
@@ -590,12 +590,14 @@ selection to remove the cluster profile.
 In this tutorial, you created a new cluster profile and used it to deploy new Kubernetes cluster with _Palette Virtual
 Machine Orchestrator_ configured on it. You deployed a VM that was pre-built with the _Hello Universe_ app and confirmed
 it was functioning in your VMO cluster correctly.
+<br />
+<br />
 
 ## Additional Information
 
 ### Palette Specific Terraform Files
 
-This section will walk through the Palette specific terraform files. You will gain a better understanding of how the
+This section will guide you through the Palette specific terraform files used in the tutorial. You will gain a better understanding of how the
 variables in _terraform.tfvars_ fit with the other deployment files, and what the Terraform scripts are actually doing
 when you execute `terraform apply`.
 
@@ -664,7 +666,7 @@ resource "spectrocloud_cluster_profile" "maas-vmo-profile" {
 
 #### clusters.tf
 
-This file creatse your VMO cluster in MAAS. The majority of values in this file are provided via variables you set in
+This file creates your VMO cluster in MAAS. The majority of values in this file are provided via variables you set in
 _terrafrom.tfvars_.
 
 General Configuration
@@ -774,7 +776,7 @@ understanding of the file structure, what actions are being executed, and how yo
 | **Variable**        | **Data Type** | **Instruction**                                                                                                                                                                                                                                                                                                                                    |
 | ------------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **run_on_launch**   | _boolean_     | If set to true, the deployed VM will be started when the host is powered on. <br/><br/> We recommend this value to be set to **true** for production services.                                                                                                                                                                                     |
-| **namespace**       | _string_      | This value defines the namespace your VM will be created in. <br/><br/>These namespaces are standard kubernetes namespaces. Your VM will be impacted by any configurations applied at the namespace level such as network policies and quotas.                                                                                                     |
+| **namespace**       | _string_      | This value defines the namespace your VM will be created in. <br/><br/>These namespaces are standard Kubernetes namespaces. Your VM will be impacted by any configurations applied at the namespace level such as network policies and quotas.                                                                                                     |
 | **name**            | _string_      | The name you wish to assign to your VM.                                                                                                                                                                                                                                                                                                            |
 | **Labels**          | _string_      | Add any labels you want applied to your VM resource in Kubernetes. To create more labels, repeat the format in line 21 on a new line.                                                                                                                                                                                                              |
 | **storage configs** | _string_      | Multiple lines are used to define the storage configuration for your VM and the PVC's containing the OS images needed to create it. <br/><br/> Default values were used for this tutorial with the exception of the value you set for _vm-storage-Gi_<br/> in _terraform.tfvars_                                                                   |
@@ -795,8 +797,8 @@ customize the provided template to prepare for deployment in your MAAS environme
 | **Virtual Machine Orchestrator** | v##         | The Palette Virtual Machine Orchestrator (VMO) pack consolidates all components that you need to deploy and manage Virtual Machines (VMs) alongside containers in a Kubernetes host cluster. You can deploy VMO as an add-on cluster profile on top of an existing data center or edge cluster.                                                                                                  | <VersionedLink text="Virtual Machine Orchestrator Readme" url="/integrations/packs/?pack=virtual-machine-orchestrator&version=4.6.3"/> |
 | **MetalLB (Helm)**               | v##         | A load-balancer implementation for bare metal Kubernetes clusters, using standard routing protocols. Offers a network load balancer implementation that integrates with standard network equipment.                                                                                                                                                                                              | <VersionedLink text="Cilium Readme" url="/integrations/packs/?pack=lb-metallb-helm&version=1.14.9"/>                                   |
 | **Rook-Ceph (Helm)**             | v##         | **Rook** is an open source cloud-native storage orchestrator for Kubernetes, providing the platform, framework, and support for Ceph storage to natively integrate with Kubernetes. **Ceph** is a distributed storage system that provides file, block and object storage and is deployed in large scale production clusters.                                                                    | <VersionedLink text="Cilium Readme" url="/integrations/packs/?pack=csi-rook-ceph-helm&version=1.16.3"/>                                |
-| **Cilium**                       | v##         | Cilium is a networking, observability, and security solution with an eBPF-based dataplane.                                                                                                                                                                                                                                                                                                       | <VersionedLink text="Cilium Readme" url="/integrations/packs/?pack=cni-cilium-oss&version=1.17.1"/>                                    |
-| **Palette eXtended Kubernetes**  | v##         | Palette eXtended Kubernetes (PXK) is a recompiled version of the open-source Cloud Native Computing Foundation (CNCF) distribution of Kubernetes. This Kubernetes version can be deployed through Palette to all major infrastructure providers, public cloud providers, and private data center providers. This is the default distribution when deploying a Kubernetes cluster through Palette | <VersionedLink text="Palette eXtended Kubernetes Readme" url="/integrations/packs/?pack=kubernetes&version=1.32.2"/>                   |
-| **Ubuntu Mass**                  | v##         | Ubuntu is a free, open-source operating system (OS) based on Linux that can be used on desktops, servers, in the cloud, and for IoT devices. Ubuntu is a Linux distribution derived from Debian.                                                                                                                                                                                                 | <VersionedLink text="Ubuntu Readme" url="/integrations/packs/?pack=kubernetes&version=1.32.2"/>                                        |
+| **Cilium**                       | v##         | Cilium is a networking, observability, and security solution with an eBPF-based data plane.                                                                                                                                                                                                                                                                                                       | <VersionedLink text="Cilium Readme" url="/integrations/packs/?pack=cni-cilium-oss&version=1.17.1"/>                                    |
+| **Palette eXtended Kubernetes**  | v##         | Palette eXtended Kubernetes (PXK) is a recompiled version of the open source Cloud Native Computing Foundation (CNCF) distribution of Kubernetes. This Kubernetes version can be deployed through Palette to all major infrastructure providers, public cloud providers, and private data center providers. This is the default distribution when deploying a Kubernetes cluster through Palette | <VersionedLink text="Palette eXtended Kubernetes Readme" url="/integrations/packs/?pack=kubernetes&version=1.32.2"/>                   |
+| **Ubuntu Mass**                  | v##         | Ubuntu is a free, open source Operating System (OS) based on Linux that can be used on desktops, servers, in the cloud, and for IoT devices. Ubuntu is a Linux distribution derived from Debian.                                                                                                                                                                                                 | <VersionedLink text="Ubuntu Readme" url="/integrations/packs/?pack=kubernetes&version=1.32.2"/>                                        |
 
                                          |
