@@ -140,6 +140,18 @@ Kubernetes data accessible locally on that host. Follow the steps below on every
     | `--resources-cluster-scoped` | `-R`                | Additional cluster-scoped resources to collect. By default, the script collects the following cluster-scoped resources: `apiservices`, `clusterroles`, `clusterrolebindings`, `crds`, `csr`, `mutatingwebhookconfigurations`, `namespaces`, `nodes`, `priorityclasses`, `pv`, `storageclasses`, `validatingwebhookconfigurations`, and `volumeattachments`.| `-R clusterissuers.cert-manager.io` |
     | `--journald-services`        | `-j`                | By default, the script includes the following journald services: `stylus-agent`, `stylus-operator`, `palette-tui`, `spectro-stylus-agent`, `spectro-stylus-operator`, `spectro-init`, `spectro-palette-agent-start`, `spectro-palette-agent-initramfs`, `spectro-palette-agent-boot`, `spectro-palette-agent-network`, `spectro-palette-agent-bootstrap`, `systemd-timesyncd`, `containerd`, `kubelet`, `k3s`, `k3s-agent`, `rke2-server`, `rke2-agent`, and `cos-setup-boot`. | `-j cloud-init,systemd-resolved`    |
 
+
+    :::info
+
+    The default values for flags may change. Refer to the scripts for the most accurate information. For example, you can
+    display the script content in the terminal with the following command.
+
+    ```bash
+    cat support-bundle-infra.sh
+    ```
+
+    :::
+
     If the script runs successfully, it creates a file in the `/opt/spectrocloud/logs` directory. The file name follows
     the pattern `<hostname>-<YYYY-MM-DD>_<HH_MM_SS>.tar.gz`. One of the messages the terminal displays contains the
     created file's name and its path.
@@ -155,7 +167,7 @@ Kubernetes data accessible locally on that host. Follow the steps below on every
 
     :::
 
-3.  Copy the file to your local computer. The command below serves as an example of how to copy the file
+4.  Copy the file to your local computer. The command below serves as an example of how to copy the file
     `edge-e965384209c2d45078a29480e90bd275-2025-05-13_16_58_20.tar.gz` from the `kairos@10.10.150.150` host to your
     `Downloads` folder. Run the command on the machine to which you want to copy the file.
 
