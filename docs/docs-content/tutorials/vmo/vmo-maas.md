@@ -36,7 +36,7 @@ detailed information.
 
   - _ADD PERMISSIONS HERE_
 
-- An existing [MAAS Private Cloud Gateway (PCG)](/clusters/pcg/deploy-pcg/maas.md)
+- An existing [MAAS Private Cloud Gateway (PCG)](/clusters/pcg/deploy-pcg/maas.md) in your MAAS environment.
 
 - Basic knowledge of containers
 
@@ -45,6 +45,10 @@ detailed information.
 - [virtctl](https://kubevirt.io/user-guide/user_workloads/virtctl_client_tool/) installed locally
 
   <br />
+
+<Tabs>
+
+<TabItem label="Terraform Workflow" value="Terraform Workflow">
 
 ## Clone GitHub Repository
 
@@ -250,13 +254,9 @@ Execute the `terraform apply` command. This process may take up to an hour or mo
 
 ```
 
-### Cluster RBAC Configuration
-
-Do the access thing.
-
 ### Verify the Deployment
 
-Do the verification thing.
+To validate your cluster deployment, navigate to the **Clusters** option in the left Main Menu in Palette. Select the cluster name you created. On the overview page, ensure the cluster status is healthy. No further validation is necessary.
 
 ## Deploy a Virtual Machine
 
@@ -280,15 +280,290 @@ Prior to deploying your VM you must modify the _terraform.tfvars_ file to reflec
 
 ### Deploy the Virtual Machine
 
+Execute the `terraform plan` command to ensure there are no errors, the install plan is correct, and you have connectivity to your Spectro Cloud tenant.
+
+Execute the `terraform apply` command to create the VM in your VMO Cluster.
+
 ### Verify the Application
 
-                                                                                                                                                                       
+The deployed VM should be successfully provisioned, in a healthy state, and the [_hello-universe_](https://github.com/spectrocloud/hello-universe) application be installed and functional.
+
+In Palette, navigate to the left main menu and select **Clusters**. Select the cluster you created.
+
+Select the URL link for port **:8080** to access the Hello Universe application.
+
+![Image that shows the cluster overview of the Hello Universe Frontend Cluster](/tutorials/deploy-cluster-profile-updates/clusters_cluster-management_deploy-cluster-profile-updates_deployed-FE-cluster.webp)
+
+Your result should be similar to the below screenshot.
+
+![Image that shows the cluster overview of the Hello Universe Frontend Cluster](/tutorials/deploy-cluster-profile-updates/clusters_cluster-management_deploy-cluster-profile-updates_hello-universe-without-api.webp)
+
+
 ## Clean Up
 
 To clean up the resources you deployed, execute the `terraform destroy` command. 
 
+</TabItem>
+
+<TabItem label="Palette UI Workflow" value="Palette UI Workflow">
+
+## Deploy a VMO Cluster to MAAS with the Palette UI
+
+<br />
+
+### Create a VMO Cluster Profile
+
+1.  Log in to [Palette](https://console.spectrocloud.com).
+
+2.  From the left Main Menu, select **Profiles** and select **Add Cluster Profile**.
+
+3. Enter the name, version number, and any tags you wish to apply to the profile. Set the type value to **full**. Select **Next**.
+
+4. Select **MAAS** from the **infrastructure provider** column. Select **Next**.
+
+:::info 
+
+VMO is currently supported in the following environments:
+- 
+:::
+
+5. The first profile layer you are asked to configure is the OS layer. Your selection will be used as the base OS for the nodes in your Kubernetes Cluster. This tutorial uses the _Ubuntu v22.04_ OS image from the _Palette Registry OCI_. 
+
+    Select **Ubuntu latest: v22.04**.
+
+6. Ubuntu requires customizations to be made for it to be functional in your environment. Select **Values** and paste the configuration below into the text editor frame.
+
+    Update the value for **NETWORKS** to something that works for your environment. Select **Next layer**.
+
+```yaml
+
+kubeadmconfig:
+  preKubeadmCommands:
+    - 'echo "====> Applying pre Kubeadm commands"'
+    # Force specific IP address as the Node InternalIP for kubelet
+    - apt update
+    - apt install -y grepcidr
+    - |
+      NETWORKS="REPLACE_ME"
+      IPS=$(hostname -I)
+      for IP in $IPS
+      do
+         echo "$IP" | grepcidr "$NETWORKS" >/dev/null && echo " --node-ip=$IP" >> /etc/default/kubelet
+         if [ $? == 0 ]; then break; fi
+      done
+    # Increase audit_backlog_limit
+    - sed -i 's/GRUB_CMDLINE_LINUX=""/GRUB_CMDLINE_LINUX="audit_backlog_limit=256"/g' /etc/default/grub
+    - update-grub
+    # Clean up stale container images
+    - (crontab -l || true; echo "0 4 * * * /usr/bin/crictl -c /etc/crictl.yaml rmi --prune")| crontab -
+    # Update CA certs
+    - update-ca-certificates
+    # Start containerd with new configuration
+    - systemctl daemon-reload
+    - systemctl restart containerd
+  postKubeadmCommands:
+    - 'echo "====> Applying post Kubeadm commands"'
+  files:
+    - targetPath: /etc/containerd/config.toml
+      targetOwner: "root:root"
+      targetPermissions: "0644"
+      content: |
+        ## template: jinja
+
+        # Use config version 2 to enable new configuration fields.
+        # Config file is parsed as version 1 by default.
+        version = 2
+
+        imports = ["/etc/containerd/conf.d/*.toml"]
+
+        [plugins]
+          [plugins."io.containerd.grpc.v1.cri"]
+            sandbox_image = "registry.k8s.io/pause:3.9"
+            device_ownership_from_security_context = true
+          [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc]
+            runtime_type = "io.containerd.runc.v2"
+          [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc.options]
+            SystemdCgroup = true
+
+```
+
+7. The next profile layer determines the version of Kubernetes your cluster will use. Select **Palette eXtended Kubernetes v1.32.2** from the _Palette Registry OCI_.
+
+8. Select the **Properties** icon.
+
+    The Palette eXtended Kubernetes pack defaults to use a custom OIDC provider. This tutorial uses the **Pallete** OIDC Identity Provider. By using Palette as your OIDC provider, your cluster is configured to send authentication requests to your Palette tenant's configured OIDC provider.
+
+    Select **Palette** as the OIDC Identity Provider.
+
+![Image of the properties icon](/tutorials/deploy-vmo-maas/tutorials_vmo_vmo-maas_configure-OIDC-properties.webp)
+
+You may configure a different OIDC provider by selecting the **Values** icon, uncommenting the OIDC clientConfig section, and adding your configuration values.
+
+![Image of the properties icon](/tutorials/deploy-vmo-maas/tutorials_vmo_vmo-maas_configure-OIDC-values.webp)
+
+The Palette eXtended Kubernetes pack is pre-configured with subnets for both the clusters internal Pods and Services. Review the values for **podCIDR** and **serviceClusterIpRange** and update them if necessary.
+
+![Image of the configuration lines where Pod and Services Subnets are set.](/tutorials/deploy-vmo-maas/tutorials_vmo_vmo-maas_pod-service-ips.webp)
+
+9. Select **Next layer**
+
+10. The next profile layer to select is the Container Network Interface (CNI) your cluster will use. Select the **Cilium v1.17.1** pack from the Palette Registry (OCI). 
+
+    Cilium requires some customization to work correctly with VMO. Select **Values**. From the **Presets** drop down menu, set the value for VMO Compatibility to **Enable**. 
+
+    Enabling this flag makes the following changes to the Cilium deployment manifest.
+
+| Field | Default Value | Modified Value | Description |
+|------------------------------------|---------------------|--------------------|-------------------------------------------------------------------------|
+| cilium.cni.exclusive | false | true | Instructs the cluster to remove all other CNI configuration files. |
+| cilium.socketLB.hostNamespaceOnly | true | false | Disables socket level load balancing and moves the function back to the virtual network interface. |
+
+    For more information on these configurations, visit the official Cilium documentation site for [socket load balancers](https://docs.cilium.io/en/latest/network/kubernetes/kubeproxy-free/#socketlb-host-netns-only) and [CNI configuration adjustments](https://docs.cilium.io/en/latest/network/kubernetes/configuration/#adjusting-cni-configuration).
+
+ Select **Next layer**.
+
+12. The next profile layer determines which Container Storage Interface (CSI) your cluster will use. Select **Rook-Ceph (Helm) v1.16.3** from the Palette OCI Registry. Select **Next**.
+
+13. Select **Confirm**.
+
+14. Your profile now contains the base infrastructure configurations you need. You need to add some additional packs to complete your configuration.
+
+    Select **Add New Pack**.
+
+15. Search for MetalLB and select the **MetalLB (Helm) v0.14.9** pack.
+
+    Select **Values**. Update the value of the **addresses** field. The IP addresses entered will be used for the metalLB service and must be accessible to other services in your environment. Do not use IP addresses from any non routable subnets.
+
+  ![Image of the properties icon](/tutorials/deploy-vmo-maas/tutorials_vmo_vmo-maas_metallb-ips.webp)
+
+    Select **Confirm & Create**.
+
+16. Select **Add New Pack**
+
+17. Search for virtual machine orchestrator and select the **Virtual Machine Orchestrator v4.6.3** pack.
+
+    The VMO pack defaults to use the proxied access architecture access pattern. This requires the **Spectro Proxy** service to be installed on your cluster to manage connectivity back to your Palette tenant. 
+    
+    For more information on the Spectro proxy, visit the [Official Spectro Proxy documentation page](/integrations/spectro-proxy.mdx)
+
+18. Select **Next**
+
+19. Select **Finish Configuration**
+
+### Deploy a VMO Cluster
+
+1.  Log in to [Palette](https://console.spectrocloud.com).
+
+2.  From the left Main Menu, select **Clusters**. Select **Add New Cluster**.
+
+3.  In the **Data Center** section, select **MAAS**. In the bottom-right corner, select **Start MAAS Configuration**.
+
+4. Provide basic cluster information: **Cluster name**, **Description**, and **Tags**. Select the PCG deployed in your MAAS environment from the **Cloud Account** drop down menu. Select **Next**.
+
+5. Select **Add Cluster Profile**.
+
+6. Locate and select the cluster profile you created in the Create a VMO Cluster Profile section. Select **Confirm**.
+
+7. Review and override pack parameters as desired and click **Next**. By default, parameters for all packs are set with
+    values defined in the cluster profile.
+
+9. Select a domain from the **Domain drop-down Menu** and click **Next**.
+
+10. Configure the control plane and worker node pools. The following input fields apply to MAAS control plane and worker
+    node pools. For a description of input fields that are common across target platforms refer to the
+    [Node Pools](clusters/cluster-management/node-pool.md) management page.
+
+#### Control Plane Pool Configuration
+
+No changes will be made to the first section of configurations in this tutorial. We recommend reviewing these values to understand how they impact the deployment and how you might use them in a production deployment. 
+
+#### Control Plane - Cloud Configuration
+
+| Variable | Instruction |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------|
+| Resource Pool | Set this value to the resource pool that your target MAAS machine is a member of. |
+| Minimum CPU | Set this to the minimum number of CPU cores you want your Control Plane server to have. Do not set values lower than 4. |
+| Minimum Memory (GB) | Set this to the maximum amount of memory you want your Control Plane server to have. Do not set values lower than 8 GB. |
+| Availability zones | This is an optional value that allows you to specify which AZ's to use for your node deployment. This configuration is critical to consider when planning high availability patterns for your infrastructure. |
+Tags | This is an option value that allows you to assign a tag to the MAAS machine selected for the build. <br /> To learn more about MAAS automatic tags, refer to the [MAAS Tags](https://maas.cloud.cbh.kth.se/MAAS/docs/cli/how-to-tag-machines.html#heading--how-to-create-automatic-tags) documentation. |
+
+#### Worker Pool Configuration
+
+No changes will be made to the first section of configurations in this tutorial. We recommend reviewing these values to understand how they impact the deployment and how you might use them in a production deployment. 
+
+#### Worker Pool - Cloud Configuration
+
+| Variable | Instruction |
+|---------------------|-------------------------------------------------------------------------------------------------------------------------------|
+| Resource Pool | Set this value to the resource pool that your target MAAS machine is a member of. |
+| Minimum CPU | Set this to the minimum number of CPU cores you want your Control Plane server to have. Do not set values lower than 5. |
+| Minimum Memory (GB) | Set this to the maximum amount of memory you want your Control Plane server to have. Do not set values lower than 8 GB. |
+| Availability zones | This is an optional value that allows you to specify which AZ's to use for your node deployment. This configuration is critical to consider when planning high availability patterns for your infrastructure. |
+Tags | This is an option value that allows you to assign the associated . <br /> To learn more about MAAS automatic tags, refer to the [MAAS Tags](https://maas.cloud.cbh.kth.se/MAAS/docs/cli/how-to-tag-machines.html#heading--how-to-create-automatic-tags) documentation. |
+
+   
+Select **Next**.
+
+
+12. The **Optional cluster settings** screen is displayed. This tutorial requires changes to the **RBAC** configuration.
+
+    Select **RBAC**. 
+
+    Select **Add New Binding** and enter information as instructed in the table below.
+
+    | Field | Instruction |
+    |-------|-------------|
+    | Cluster Role Name | For the purpose of this tutorial, you will use the _cluster-admin_ role. |
+    | Subject Type | Set this value to _user_. |
+    | Subject Name | The VMO cluster you created was set to use Palette for OIDC. In this field, enter the ID you use when logging into Palette. |
+
+    Select **Validate**.
+
+:::caution
+
+If you are not using a test cluster for this tutorial, we strongly recommend adhering to your companies security standards when configuring RBAC for your cluster. If there are no clear standards, we recommend following the [Principle of Least Privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege) security model.
+
+:::
+
+13. Select **Finish Configuration** to begin deployment of your cluster.
+
+## Clean Up - UI
+
+Use the following steps to remove all the resources you created for the tutorial.
+
+To remove the cluster, navigate to the left Main Menu and click on **Clusters**. Select the cluster you want to
+delete to access its overview page.
+
+Click on **Settings** to expand the menu, and select **Delete Cluster**.
+
+![Delete cluster](/getting-started/azure/getting-started_deploy-k8s-cluster_delete-cluster-button.webp)
+
+You will be prompted to type in the cluster name to confirm the delete action. Type in the cluster name to proceed with
+the delete step. The deletion process takes several minutes to complete.
+
+<br />
+
+:::info
+
+If a cluster remains in the delete phase for over 15 minutes, it becomes eligible for a force delete. To trigger a force
+delete, navigate to the cluster’s details page, click on **Settings**, then select **Force Delete Cluster**. Palette
+automatically removes clusters stuck in the cluster deletion phase for over 24 hours.
+
+:::
+
+<br />
+
+Once the cluster is deleted, navigate to the left **Main Menu** and click on **Profiles**. Find the cluster profile you
+created and click on the **three-dot Menu** to display the **Delete** button. Select **Delete** and confirm the
+selection to remove the cluster profile.
+
+</TabItem>
+
+</Tabs>
+
 ## Wrap-up
 
+In this tutorial, you created a new cluster profile and used it to deploy new Kubernetes cluster with _Palette Virtual Machine Orchestrator_ configured on it. You deployed a VM that was pre-built with the _Hello Universe_ app and confirmed it was functioning in your VMO cluster correctly. 
 
 ## Additional Information
 
@@ -298,7 +573,7 @@ This section will walk through the Palette specific terraform files. You will ga
 
 #### Manifests
 
-Manifests are used to customize a pack's configuration. Some packs, like OS, Load Balancers, and more, require
+Manifests are used to customize a pack's configuration. Some packs, like OS, Load Balancers require
 information specific to your environment. When using terraform, the location of the manifest file for a pack must be
 specified as shown in the **cluster_profiles.tf** file. If a manifest is not provided, default values will be applied.
 
