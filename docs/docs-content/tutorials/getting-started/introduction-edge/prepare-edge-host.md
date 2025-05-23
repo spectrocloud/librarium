@@ -56,7 +56,7 @@ Set the machine **Type** as **Linux** and the **Version** as **Ubuntu (64-bit)**
 
 ![A screenshot of the VirtualBox VM configuration.](/getting-started/getting-started_introduction-edge_prepare-edge-host_vm-config.webp)
 
-Adjust the **Base Memory** to `8000 MB` and **Processors** to `2 CPU`. Click **Next** to proceed.
+Adjust the **Base Memory** to 8000 MB and **Processors** to 2 CPU. Click **Next** to proceed.
 
 Set the **Disk Size** to 150 GB and ensure the option **Pre-Allocate Full Size** is _not_ checked. Click **Next**.
 
@@ -79,13 +79,15 @@ the same network as the host. Click **OK**.
 Select the created VM and click **Start** to turn it on. The Edge installer bootstraps the Palette Edge installation
 onto the VM.
 
-Wait for the Edge Installer to complete copying content to the VM. This process may take a few minutes. The VM shuts
-down when the installation is complete.
+Wait for the Edge Installer to complete copying content to the VM. This process may take a few minutes. When the
+installation is complete, the VM shuts down automatically. This behavior is configured in the `user-data` file, as
+specified in the [Prepare User Data](./prepare-user-data.md) tutorial with the line `poweroff: true`.
 
 After the VM powers off, select it in VirtualBox. Click **Settings**, then select **Storage**.
 
 Select the Edge installer ISO and click **Remove Attachment** to remove it from your VM. Confirm the deletion with
-**Remove** and click **OK** to close the settings window.
+**Remove** and click **OK** to close the settings window. Leaving the installer ISO attached would cause the VM to boot
+from it again, restarting the installation process.
 
 ![A screenshot of the VirtualBox VM storage configuration.](/getting-started/getting-started_introduction-edge_prepare-edge-host_vm-remove-iso.webp)
 
@@ -108,10 +110,14 @@ In the BIOS interface, navigate to the boot sequence section and locate the boot
 Find the entry with your USB drive and move it to the top of the list. Save the changes and exit the BIOS interface. The
 device then boots from the USB drive and begins installing the Palette agent.
 
-Wait for the Edge installer to complete copying content to the device. Once the installation is complete, the device
-automatically powers off.
+Wait for the Edge Installer to complete copying content to the device. This process may take a few minutes. When the
+installation is complete, the device shuts down automatically. This behavior is configured in the `user-data` file, as
+specified in the [Prepare User Data](./prepare-user-data.md) tutorial with the line `poweroff: true`.
 
-Once the device powers off, remove the USB drive. The device is now ready to be registered with Palette as an Edge host.
+Once the device powers off, remove the USB drive. Since it was previously selected as the boot volume, leaving it
+inserted would cause the system to boot from it again, restarting the installation process.
+
+The device is now ready to be registered with Palette as an Edge host.
 
 </TabItem>
 
