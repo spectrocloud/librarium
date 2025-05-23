@@ -33,11 +33,11 @@ benefits of Palette first-hand.
 We have curated the pages in the Getting Started section to give you a gradual introduction to the fundamental concepts
 you need to deploy and manage Kubernetes clusters through Palette. This section covers two main workflows:
 
-- Palette: Covers the cluster deployment workflow to major infrastructure providers, such as AWS, Azure, GCP, and
-  VMware. This section also includes more advanced topics such as cluster deployment with Terraform and Day-2
+- **Palette**: Covers the cluster deployment workflow to major infrastructure providers, such as AWS, Azure, GCP, and
+  VMware. This section also includes more advanced topics, such as cluster deployment with Terraform and day-2
   operations.
 
-- Palette Edge: Covers the workflows required to deploy a Palette cluster at the edge.
+- **Palette Edge**: Covers the workflows required to deploy a Palette cluster at the edge.
 
 The Getting Started section also introduces
 [Palette's additional capabilities](../tutorials/getting-started/additional-capabilities/additional-capabilities.md),

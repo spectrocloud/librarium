@@ -21,11 +21,11 @@ specific needs, with granular governance and enterprise-grade security.
 
 Palette has the richest coverage in supported environments that includes:
 
-- Public Clouds: AWS, Azure, and Google Cloud. Palette supports both IaaS and managed Kubernetes services such as AWS
+- **Public Clouds**: AWS, Azure, and Google Cloud. Palette supports both IaaS and managed Kubernetes services, such as AWS
   EKS, Azure AKS, and Google GKE.
-- Data Centers: VMware, Nutanix, and OpenStack
-- Bare Metal: Canonical MAAS
-- Edge
+- **Data Centers**: VMware, Nutanix, and OpenStack
+- **Bare Metal**: Canonical MAAS
+- **Edge**
 
 The Palette Getting Started section covers deployment flows for clusters hosted in [AWS](./aws/aws.md),
 [Azure](./azure/azure.md), [Google Cloud](./gcp/gcp.md) and [VMware vSphere](./vmware/vmware.md).
@@ -60,7 +60,7 @@ Below are cluster profile types you can create:
 
 Packs are the smallest component of a cluster profile. Each layer of a cluster profile is made up of a specific pack.
 Palette provides packs that are tailored for specific uses to support the core infrastructure a cluster needs. You can
-also use add-on packs, or create your own custom pack to extend Kubernetes functionality. Check out the
+also use add-on packs or create your own custom pack to extend Kubernetes functionality. Check out the
 [Packs List](../../../integrations/integrations.mdx) page to learn more about individual packs.
 
 ## Next Steps
