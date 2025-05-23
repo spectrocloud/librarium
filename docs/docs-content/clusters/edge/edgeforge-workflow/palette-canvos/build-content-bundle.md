@@ -140,10 +140,10 @@ require a local Harbor registry. Built-in registries must be configured using ei
     bundle.
 
 11. (Optional) If your cluster profile uses images or Helm charts that are hosted on private registries that require
-    authentication, you must use the `content registry-login` command to authenticate with the registry. Replace
-    `<registry-address>`, `<registry-username>`, and `<registry-password>` with your registry credentials. Refer to the
-    [content registry-login](../../../../automation/palette-cli/commands/content.md#registry-login) CLI command page for
-    more information.
+    authentication, you must use the `content registry-login` command to authenticate with each one of the registries.
+    Replace `<registry-address>`, `<registry-username>`, and `<registry-password>` with your registry credentials. Refer
+    to the [content registry-login](../../../../automation/palette-cli/commands/content.md#registry-login) CLI command
+    page for more information.
 
     ```shell
     palette content registry-login --registry <registry-address> \
@@ -152,8 +152,6 @@ require a local Harbor registry. Built-in registries must be configured using ei
     ```
 
 12. Issue the following command to create the content bundle. Replace the placeholder values with your actual values.
-    Refer to the [content build](../../../../automation/palette-cli/commands/content.md#build) CLI command page for a
-    complete list of available flags.
 
     ```shell
     palette content build --arch <bundle-architecture> \
@@ -163,24 +161,21 @@ require a local Harbor registry. Built-in registries must be configured using ei
      --output <output-directory>
     ```
 
-    :::warning
+    The result is a `.tar.zst` content bundle that you can use to preload into your installer. For more information
+    about how to use content bundles, refer to [Build Installer ISO](./build-installer-iso.md) or
+    [Upload Content Bundle through Local UI](../../local-ui/cluster-management/upload-content-bundle.md).
 
-    If you plan to create an airgap cluster or scale up an airgap cluster, ensure that you build the content bundle with
-    either the `--include-all-palette-images` or the `--include-core-palette-images-only` flag. The flag
-    `--include-all-palette-images` is enabled by default in the Palette CLI
-    [build](../../../../automation/palette-cli/commands/content.md#build) command. Content bundles uploaded to the
-    cluster that do not have either of these flags cannot be used to provision new nodes and will lead to failure during
-    cluster creation and scale-up.
+    :::tip
+
+    You can use the `--existing-bundles` flag with the `build` command to include existing `.tar.zst` bundle archives as
+    part of the content bundle build. This avoids the need to redownload images, charts, and raw files that are already
+    present in local bundles. Refer to the [content build](../../../../automation/palette-cli/commands/content.md#build)
+    CLI command page for a complete list of available flags and examples.
 
     :::
 
-    The result is a content bundle that you can use to preload into your installer. The content bundle will be a `.zst`
-    file. For more information about how to use a content bundles, refer to
-    [Build Installer ISO](./build-installer-iso.md) or
-    [Upload Content Bundle through Local UI](../../local-ui/cluster-management/upload-content-bundle.md).
-
 13. (Optional) You can download the cluster definition and the content bundle in a single step. A cluster definition
-    contains one or more cluster profiles, including the profile variables used in the profiles. In airgapped Edge
+    contains one or more cluster profiles, including the profile variables used in the profiles. In local Edge
     deployments, cluster definitions are required to provision a cluster from Local UI. For more information, refer to
     [Create a Cluster with Local UI](../../local-ui/cluster-management/create-cluster.md).
 
@@ -204,8 +199,9 @@ require a local Harbor registry. Built-in registries must be configured using ei
     | `--cluster-definition-name`        | Filename of the cluster definition tgz file.                          |
     | `--cluster-definition-profile-ids` | List of cluster profile IDs to be included in the cluster definition. |
 
-    This command will generate an additional file named **cluster-definition-name.tgz**, which is the cluster definition
-    file.
+    This command will generate a `.tgz` cluster definition file in the specified output directory. When you create a
+    cluster definition and content bundle using a single `build` command, the cluster definition is also embedded into
+    the content bundle.
 
 </TabItem>
 
@@ -412,8 +408,7 @@ require a local Harbor registry. Built-in registries must be configured using ei
      --palette-endpoint <PALETTE_API_ENDPOINT> \
      --outfile <BUNDLE_NAME> \
      --cred-file-path <FILE_PATH> \
-     --private-key <PRIVATE_KEY_PATH>\
-     --include-palette-content
+     --private-key <PRIVATE_KEY_PATH>
     ```
 
     | Flag                         | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
@@ -421,21 +416,11 @@ require a local Harbor registry. Built-in registries must be configured using ei
     | `--api-key`                  | Your Palette API key.                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
     | `--cluster-profile-ids`      | Comma-separated list of cluster profile IDs to download content for. Ensure that between all the profiles you include in the content bundle, only one infrastructure layer exists. For example, you can have one infrastructure profile and many add-on files, or one full profile and many add-on files, but you cannot have multiple infrastructure and full-on profiles. For more information about the types of profiles, refer to [Cluster Profile](../../../../profiles/profiles.md). |
     | `--cred-file-path`           | Path to the JSON file storing registry credentials if you are using a private registry.                                                                                                                                                                                                                                                                                                                                                                                                     |
-    | `--include-palette-content`  | Whether to include images for the Palette agent itself, including images to support cluster creation and cluster management. For airgap installations, you must use either this option or the `--include-core-images-only` option. We recommend you use `--include-core-images-only` instead to reduce the size of the content bundle.                                                                                                                                                      |
-    | `--include-core-images-only` | Whether to include images for the Palette agent that are necessary for cluster creation only. In airgap installations, we recommend using this option instead of `--include-palette-content` to reduce the size of the content bundle, as Local UI currently does not offer native backup and support features.                                                                                                                                                                             |
+    | `--include-core-images-only` | Whether to include images for the Palette agent that are necessary for cluster creation only. By default, content bundles include images to support both cluster creation and cluster management. In the case of installations of locally managed Edge hosts, we recommend using this option to reduce the size of the content bundle, as Local UI currently does not offer native backup and support features.                                                                             |
     | `--outfile`                  | Name of your content bundle. The final file name should have the following pattern: `core-<bundle-name>-random-string`.                                                                                                                                                                                                                                                                                                                                                                     |
     | `--palette-endpoint`         | API endpoint for your Palette instance.                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
     | `--project-id`               | The ID of your Palette project.                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
     | `--private-key`              | The path to the private key used to sign the content bundle and cluster definition if it is present. This is necessary if your Edge host has an embedded corresponding public key. For more information, refer to [Embed Public Key in Edge Artifacts](./signed-content.md).                                                                                                                                                                                                                |
-
-    :::warning
-
-    If you plan to create an airgap cluster or scale up an airgap cluster, you must ensure that you build the content
-    bundle with either the `--include-palette-content` or the `--include-core-images-only` flag. Content bundles
-    uploaded to the cluster that do not have either of these flags cannot be used to provision new nodes and will lead
-    to failure during cluster creation and scale-up.
-
-    :::
 
     The result is a content bundle that you can use to preload into your installer. The content bundle will be a `.zst`
     file in a folder that starts with **content-** followed by a random string. For more information about how to use a
@@ -460,7 +445,6 @@ require a local Harbor registry. Built-in registries must be configured using ei
      --palette-endpoint <PALETTE_API_ENDPOINT> \
      --outfile <BUNDLE_NAME> \
      --cred-file-path <FILE_PATH> \
-     --include-palette-content \
      --cluster-definition-name <CLUSTER_DEFINITION_FILENAME> \
      --cluster-definition-profile-ids <CLUSTER_PROFILE_IDS>
     ```

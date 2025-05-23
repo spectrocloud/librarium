@@ -25,10 +25,10 @@ A primary registry is a local registry that runs on your cluster. After the init
 registries, all images except for infrastructure layer images will be uploaded to the primary registry. Subsequently,
 all requests for application images from the cluster will be made to the primary registry.
 
-A primary registry is required for disconnected Edge clusters. You can use any OCI-compliant registry as the primary
-registry. Palette provides you with an out-of-the-box configuration with [Zot](https://zotregistry.dev) and
-[Harbor](https://goharbor.io/). For connected Edge clusters, a primary registry can still help you reduce network
-bandwidth usage and protect against outages.
+A primary registry is required for local Edge clusters that are deployed in environments without an internet connection.
+You can use any OCI-compliant registry as the primary registry. Palette provides you with an out-of-the-box
+configuration with [Zot](https://zotregistry.dev) and [Harbor](https://goharbor.io/). For central Edge clusters, a
+primary registry can still help you reduce network bandwidth usage and protect against outages.
 
 For more information, refer to [Deploy Cluster with Primary Registry](./deploy-primary-registry.md).
 

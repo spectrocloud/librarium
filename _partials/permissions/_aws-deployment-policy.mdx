@@ -2,7 +2,7 @@
 partial_category: permissions
 partial_name: aws-deployment-policy
 ---
-**Last Update**: April 20, 2023
+**Last Update**: May 25, 2025
 
 ```json
 {
@@ -44,7 +44,17 @@ partial_name: aws-deployment-policy
         "iam:DeleteGroup",
         "iam:DeleteInstanceProfile",
         "iam:RemoveRoleFromInstanceProfile",
-        "iam:RemoveUserFromGroup"
+        "iam:RemoveUserFromGroup",
+        "ec2:AttachVolume",
+        "ec2:CreateTags",
+        "ec2:CreateVolume",
+        "ec2:DeleteTags",
+        "ec2:DeleteVolume",
+        "ec2:DescribeAvailabilityZones",
+        "ec2:DescribeInstances",
+        "ec2:DescribeVolumes",
+        "ec2:DetachVolume",
+        "ec2:ModifyVolume"   
       ],
       "Resource": "*"
     }

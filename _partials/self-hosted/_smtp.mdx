@@ -7,46 +7,52 @@ You can configure a Simple Mail Transport Protocol (SMTP) server to send emails 
 instance. An SMTP server is required to change the email address of the admin user and to send the initial tenant
 invitation email.
 
-## Limitations
+SMTP servers can be authenticated with a username and password or anonymously. 
 
-- Anonymous SMTP configuration (configuration without a username and password) is not supported at this time. 
+:::warning
+
+Anonymous SMTP configuration introduces additional security risks. We recommend using authenticated SMTP whenever possible.
+
+:::
 
 ## Prerequisites
 
-- Access to the system console.
-
-- SMTP server details such as the host name, port number, and login credentials.
-
-- The outgoing SMTP port must be open on the cluster to allow {props.version} to send emails.
-
-## Configure SMTP
-
-1. Log in to the 
+- Access to the
   <PaletteVertexUrlMapper
      edition={props.edition}
      text="system console"
      url="/system-management/#access-the-system-console"
    />.
 
-2. From the **left Main Menu**, select **Administration**.
+- SMTP server details such as the host name and port number. If you are using authenticated SMTP instead of anonymous SMTP, your SMTP server username and password are also required.
 
-3. Click on the **SMTP** tab.
+- The outgoing SMTP port must be open on the cluster to allow {props.version} to send emails.
+
+## Configure SMTP
+
+1. Log in to the system console.
+
+2. From the left main menu, select **Administration**.
+
+3. Select the **SMTP** tab.
 
 4. Fill out the following fields.
 
-  | **Field**                    | **Description**                                                                                                                                                                           | **Required** |
-  | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
-  | **Outgoing Server**          | The host name of the SMTP server. For example, `smtp.gmail.com`.                                                                                                                           | Yes |
-  | **Outgoing Port**            | The port number of the SMTP server.                                                                                                                                                       | Yes |
-  | **From Email**               | The email address from which emails will be sent. Emails sent from {props.version} will be sent from this email address.                                                                      | Yes |
-  | **Username**                 | The username of the SMTP server.                                                                                                                                                          | Yes |
-  | **Password**                 | The password of the SMTP server. Certain SMTP servers, such as `smtp.gmail.com`, require app passwords instead of user passwords.                                                                                                                                                         | Yes |
-  | **Insecure Skip TLS Verify** | This option disables Transport Layer Security (TLS) certificate verification. Enable this option if your SMTP server is using a self-signed certificate or has a certificate that is not trusted by the system.  | No |
+    | **Field**                    | **Description**                                                                                                                                                                           | **Required** |
+    | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
+    | **Insecure Skip TLS Verify** | This option disables Transport Layer Security (TLS) certificate verification. Enable this option if your SMTP server is using a self-signed certificate or has a certificate that is not trusted by the system.  | No |
+    | **Outgoing Server**          | The host name of the SMTP server. For example, `smtp.gmail.com`.                                                                                                                           | Yes |
+    | **Outgoing Port**            | The port number of the SMTP server.                                                                                                                                                       | Yes |
+    | **From Email**               | Emails sent by {props.version} will use this email address as the sender.                                                                      | Yes |
+    | **Username**                 | The username of the SMTP server. This is required for authenticated SMTP. If you are using anonymous SMTP, do not include a username or password.                                                                                                                                                         | No |
+    | **Password**                 | The password of the SMTP server. This is required for authenticated SMTP. Certain SMTP servers, such as `smtp.gmail.com`, require app passwords instead of user passwords. If you are using anonymous SMTP configuration, do not include a username or password.                                                                                                                                                         | No |
 
-5. Click **Validate configuration**. A success message is displayed if the configuration is valid; otherwise, an error message is displayed. Additional error details can be found in the {props.version} `system-<ID>-<ID>` container logs, located in the `hubble-system` namespace.
+5. Select **Validate configuration**. A success message is displayed if the configuration is valid; otherwise, an error message is displayed. For additional error details, refer to the {props.version} `system-<ID>-<ID>` container logs, located in the `hubble-system` namespace.
 
 6. **Save** your changes.
 
+    If you are using anonymous SMTP, a security message is displayed. If possible, update your configuration to use authenticated SMTP. The system console reminds you that you are using an anonymous SMTP configuration by displaying a warning icon beside **Connection**.
+
 ## Validate
 
-The SMTP configuration is validated when you click **Validate configuration**. A success message is displayed if the configuration is valid; otherwise, an error message is displayed. Additional error details can be found in the {props.version} `system-<ID>-<ID>` container logs, located in the `hubble-system` namespace.
+The SMTP configuration is validated when you select **Validate configuration**. A success message is displayed if the configuration is valid; otherwise, an error message is displayed. For additional error details, refer to the {props.version} `system-<ID>-<ID>` container logs, located in the `hubble-system` namespace.
