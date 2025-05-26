@@ -39,7 +39,7 @@ Use the following steps to create a new host cluster so that you can add Edge ho
   is because whenever a node is drained during an upgrade or for any other reason, the volumes will not dynamically move
   with the local path provisioner.
 
-- Two-node clusters only support K3s and no other Kubernetes distributions.
+- Two-node clusters only support K3s and Palette Optimized Canonical Kubernetes distributions. However, Palette Optimized Canonical Kubernetes clusters require at least three nodes to operate in high availability mode.
 
 ### Prerequisites
 

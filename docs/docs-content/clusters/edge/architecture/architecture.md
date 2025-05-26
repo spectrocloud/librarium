@@ -43,6 +43,27 @@ The following are architectural highlights of Palette-provisioned Edge native cl
   - Palette VerteX
   - Custom installation paths for Kubernetes and its dependencies in [agent mode](../../../deployment-modes/agent-mode/)
   - [Network overlay](../networking/vxlan-overlay/)
+  - High availability mode with one or two nodes.
+
+- When scaling down a Palette Optimized Canonical Kubernetes cluster with two nodes, ensure you do not delete the leader node. In this configuration, one node is the leader (and voter), while the other is a spare. Deleting the leader will render the cluster inaccessible, as database updates are not replicated to the spare node.
+
+:::info
+
+The Palette Optimized Canonical Kubernetes distibution uses DQLite as its datastore. Each node assumes one of the following roles at any given time:
+- Voter: replication and leader election voting are enabled.
+- Stand-by: only replication is enabled.
+- Spare: neither replication nor election is enabled.
+
+Run the `k8s status` command on a control plane node to view the current roles of all nodes in the cluster.
+
+```bash
+root@edge-d86b3842940aaf4296dcdb0d5f374f89:~# k8s status
+cluster status:           ready
+control plane nodes:      10.10.216.81:6400 (voter), 10.10.217.4:6400 (voter), 10.10.220.115:6400 (voter)
+high availability:        yes
+datastore:                k8s-dqlite
+```
+:::
 
 ## Minimum Device Requirements
 
