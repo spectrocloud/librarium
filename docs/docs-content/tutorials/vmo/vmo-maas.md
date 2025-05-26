@@ -411,7 +411,7 @@ kubeadmconfig:
 You may configure a different OIDC provider by selecting the **Values** icon, uncommenting the OIDC clientConfig
 section, and adding your configuration values.
 
-![Image of the properties icon](/tutorials/deploy-vmo-maas/tutorials_vmo_vmo-maas_Configure-OIDC-values.webp)
+![Image of the properties icon](/tutorials/deploy-vmo-maas/tutorials_vmo_vmo-maas_Configure-OIDC-Values.webp)
 
 The Palette eXtended Kubernetes pack is pre-configured with subnets for both the clusters internal Pods and Services.
 Review the values for **podCIDR** and **serviceClusterIpRange** and update them if necessary.
