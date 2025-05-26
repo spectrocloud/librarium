@@ -21,8 +21,9 @@ detailed information.
 ## Supported Environments
 
 VMO is supported in the following environments:
-- Private Clouds 
-  - MAAS 
+
+- Private Clouds
+  - MAAS
   - Palette Edge
   - VMWare
 - Public Clouds
@@ -86,8 +87,8 @@ efficient.
 :::info
 
 We recommend that you read the **Palette Specific Terraform Files** section at the end of this tutorial. It will provide
-additional detail about the Palette specific files in this tutorial, what they do, and how you can modify them for
-your own deployments.
+additional detail about the Palette specific files in this tutorial, what they do, and how you can modify them for your
+own deployments.
 
 :::
 
@@ -257,9 +258,9 @@ resource capacity you selected for your MAAS VMO Cluster.
 
 #### Verify the Deployment
 
-To verify your cluster deployment was successful, navigate to the **Clusters** option in the left Main Menu in Palette. Select the
-cluster name you created. On the overview page, ensure the cluster status is healthy. No further validation is
-necessary.
+To verify your cluster deployment was successful, navigate to the **Clusters** option in the left Main Menu in Palette.
+Select the cluster name you created. On the overview page, ensure the cluster status is healthy. No further validation
+is necessary.
 
 ### Deploy a Virtual Machine
 
@@ -419,12 +420,13 @@ Review the values for **podCIDR** and **serviceClusterIpRange** and update them 
 
     Select **Next layer**
 
-9. The next profile layer is the Container Network Interface (CNI). Select **Cilium v1.17.1** from the Palette Registry (OCI).
+9. The next profile layer is the Container Network Interface (CNI). Select **Cilium v1.17.1** from the Palette Registry
+   (OCI).
 
-    Cilium requires some customization to work correctly with VMO. Select **Values**. From the **Presets** drop down
-    menu, set the value for VMO Compatibility to **Enable**.
+   Cilium requires some customization to work correctly with VMO. Select **Values**. From the **Presets** drop down
+   menu, set the value for VMO Compatibility to **Enable**.
 
-    Enabling this flag makes the following changes to the Cilium deployment manifest.
+   Enabling this flag makes the following changes to the Cilium deployment manifest.
 
 | Field                             | Default Value | Modified Value | Description                                                                                        |
 | --------------------------------- | ------------- | -------------- | -------------------------------------------------------------------------------------------------- |
@@ -460,7 +462,8 @@ Select **Next layer**.
 15. Search for virtual machine orchestrator and select the **Virtual Machine Orchestrator v4.6.3** pack.
 
     The VMO pack defaults to use the proxied access architecture access pattern. This requires the **Spectro Proxy**
-    service to be installed on your cluster to manage connectivity back to your Palette tenant. The pack will install the **Spectro Proxy** service for you if it is not already installed.
+    service to be installed on your cluster to manage connectivity back to your Palette tenant. The pack will install
+    the **Spectro Proxy** service for you if it is not already installed.
 
     For more information on the Spectro proxy, visit the
     [Official Spectro Proxy documentation page](/integrations/spectro-proxy.mdx)
@@ -718,7 +721,7 @@ charts:
         - VMPersistentState
         - Sidecar
         - VolumeMigration
-        - CPUManager   
+        - CPUManager
         #- VMPersistentState
         # for additional feature gates refer to https://docs.spectrocloud.com/vm-management#featuregates
 
@@ -1214,6 +1217,7 @@ charts:
           #   action: replace
 
 ```
+
 16. Select **Next**
 
 17. Select **Finish Configuration**
@@ -1233,8 +1237,8 @@ charts:
 
 6.  Locate and select the cluster profile you created in the Create a VMO Cluster Profile section. Select **Confirm**.
 
-7.  Review and override pack parameters as desired and select **Next**. By default, parameters for all packs are set with
-    values defined in the cluster profile.
+7.  Review and override pack parameters as desired and select **Next**. By default, parameters for all packs are set
+    with values defined in the cluster profile.
 
 8.  Select a domain from the **Domain drop-down Menu** and select **Next**.
 
@@ -1254,7 +1258,7 @@ understand how they impact the deployment and how you might use them in a produc
 | Resource Pool       | Set this value to the resource pool that your target MAAS machine is a member of.                                                                                                                                                                                                                       |
 | Minimum CPU         | Set this to the minimum number of CPU cores you want your Control Plane server to have. Do not set values lower than 4.                                                                                                                                                                                 |
 | Minimum Memory (GB) | Set this to the maximum amount of memory you want your Control Plane server to have. Do not set values lower than 8 GB.                                                                                                                                                                                 |
-| Availability zones  | This is an optional value that allows you to specify which AZ's to use for your node deployment. This configuration is critical to consider when planning high availability infrastructure deployments.                                                                                           |
+| Availability zones  | This is an optional value that allows you to specify which AZ's to use for your node deployment. This configuration is critical to consider when planning high availability infrastructure deployments.                                                                                                 |
 | Tags                | This is an option value that allows you to assign a tag to the MAAS machine selected for the build. <br /> To learn more about MAAS automatic tags, refer to the [MAAS Tags](https://maas.cloud.cbh.kth.se/MAAS/docs/cli/how-to-tag-machines.html#heading--how-to-create-automatic-tags) documentation. |
 
 ##### Worker Pool Configuration
@@ -1300,9 +1304,9 @@ standards when configuring RBAC for your cluster. If there are no clear standard
 
 ### Verify the Deployment
 
-To verify your cluster deployment was successful, navigate to the **Clusters** option in the left Main Menu in Palette. Select the
-cluster name you created. On the overview page, ensure the cluster status is healthy. No further validation is
-necessary.
+To verify your cluster deployment was successful, navigate to the **Clusters** option in the left Main Menu in Palette.
+Select the cluster name you created. On the overview page, ensure the cluster status is healthy. No further validation
+is necessary.
 
 ### Deploy a Virtual Machine
 
@@ -1312,25 +1316,31 @@ necessary.
 
 3. Select the cluster you deployed in the _Deploy a VMO Cluster with the Palette UI_ section.
 
-4. Select the **Virtual Machines** tab. If the **Virtual Machines** tab is not displayed, review the RBAC configuration in the _Deploy a VMO Cluster with the Palette UI_ and ensure your user account is configured as instructed.
+4. Select the **Virtual Machines** tab. If the **Virtual Machines** tab is not displayed, review the RBAC configuration
+   in the _Deploy a VMO Cluster with the Palette UI_ and ensure your user account is configured as instructed.
 
-5. Select the *VirtualMachines* namespace from the **Namespace** drop down menu. This value will be used as the target deployment namespace in your VM manifest. Select **New Virutal Machine**.
+5. Select the _VirtualMachines_ namespace from the **Namespace** drop down menu. This value will be used as the target
+   deployment namespace in your VM manifest. Select **New Virutal Machine**.
 
-6. Select the **Ubuntu 22.04 (pod nw)** template. This template configures your VM to get IP addresses from your configured pod subnets.
+6. Select the **Ubuntu 22.04 (pod nw)** template. This template configures your VM to get IP addresses from your
+   configured pod subnets.
 
-    The **VM settings** page allows you to customize basic VM configurations. Set the values as instructed in the table below. Select **Next**.
+   The **VM settings** page allows you to customize basic VM configurations. Set the values as instructed in the table
+   below. Select **Next**.
 
-| Configuration | Value | Description |
-|---------------|-------|-------------|
-| CPUs (cores) | 2 | The number of CPU cores your VM will have. |
-| Memory (GiB) | 2 | The amount of Memory your VM will have in GiB |
-| Storage Access Mode | ReadWriteMany | We recommend always using ReadWriteMany. This configuration allows your VM to read the storage volume from any node in your cluster. This is required if you plan to migrate your VM between nodes. <br /> This configuration also helps to avoid node congestion as Kubernetes will attempt to schedule your VM on the node where the storage volume is first mounted. |
-| OS image URL | N/A | Your image location is defined in the Ubuntu 22.04 (pod nw) template. This field can be used if you choose to use custom OS images for your VM. |
-| Start VM automatically after creation | Halted | This can be set to your preference. The tutorial will cover how to manually start your VM. |
+| Configuration                         | Value         | Description                                                                                                                                                                                                                                                                                                                                                             |
+| ------------------------------------- | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| CPUs (cores)                          | 2             | The number of CPU cores your VM will have.                                                                                                                                                                                                                                                                                                                              |
+| Memory (GiB)                          | 2             | The amount of Memory your VM will have in GiB                                                                                                                                                                                                                                                                                                                           |
+| Storage Access Mode                   | ReadWriteMany | We recommend always using ReadWriteMany. This configuration allows your VM to read the storage volume from any node in your cluster. This is required if you plan to migrate your VM between nodes. <br /> This configuration also helps to avoid node congestion as Kubernetes will attempt to schedule your VM on the node where the storage volume is first mounted. |
+| OS image URL                          | N/A           | Your image location is defined in the Ubuntu 22.04 (pod nw) template. This field can be used if you choose to use custom OS images for your VM.                                                                                                                                                                                                                         |
+| Start VM automatically after creation | Halted        | This can be set to your preference. The tutorial will cover how to manually start your VM.                                                                                                                                                                                                                                                                              |
 
 :::info
 
-The [virtual_machines.tf](/tutorials/vmo/vmo-maas/#virtual_machinestf) section contains a table the discusses some of the values displayed in the text editor frame. We recommened reviweing the table to learn more about customizing your VM deployment.
+The [virtual_machines.tf](/tutorials/vmo/vmo-maas/#virtual_machinestf) section contains a table the discusses some of
+the values displayed in the text editor frame. We recommened reviweing the table to learn more about customizing your VM
+deployment.
 
 :::
 
@@ -1353,15 +1363,16 @@ Your result should be similar to the below screenshot.
 
 ![Image that shows the cluster overview of the Hello Universe Frontend Cluster](/tutorials/deploy-cluster-profile-updates/clusters_cluster-management_deploy-cluster-profile-updates_hello-universe-without-api.webp)
 
-
-The Palette UI provides a prebuilt command you can use to connect to your VM with SSH. Select **Copy SSH command** from the **Actions** drop down menu. This command can be pasted into a terminal window on your workstation. This requires virtctl to be installed on your local machine. 
+The Palette UI provides a prebuilt command you can use to connect to your VM with SSH. Select **Copy SSH command** from
+the **Actions** drop down menu. This command can be pasted into a terminal window on your workstation. This requires
+virtctl to be installed on your local machine.
 
 ### Clean Up - UI Workflow
 
 Use the following steps to remove all the resources you created for the tutorial.
 
-To remove the cluster, navigate to the left Main Menu and select **Clusters**. Select the cluster you want to delete
-to access its overview page.
+To remove the cluster, navigate to the left Main Menu and select **Clusters**. Select the cluster you want to delete to
+access its overview page.
 
 Select on **Settings** to expand the menu, and select **Delete Cluster**.
 
@@ -1383,8 +1394,8 @@ automatically removes clusters stuck in the cluster deletion phase for over 24 h
 <br />
 
 Once the cluster is deleted, navigate to the left **Main Menu** and select **Profiles**. Find the cluster profile you
-created and select the **three-dot Menu** to display the **Delete** button. Select **Delete** and confirm the
-selection to remove the cluster profile.
+created and select the **three-dot Menu** to display the **Delete** button. Select **Delete** and confirm the selection
+to remove the cluster profile.
 
 </TabItem>
 
