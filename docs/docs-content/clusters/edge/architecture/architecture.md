@@ -52,8 +52,8 @@ The following are architectural highlights of Palette-provisioned Edge native cl
 
 :::info
 
-The Palette Optimized Canonical Kubernetes distribution uses Dqlite (distributed SQLite) as its datastore. Each node assumes one of the
-following roles at any given time:
+The Palette Optimized Canonical Kubernetes distribution uses Dqlite (distributed SQLite) as its datastore. Each node
+assumes one of the following roles at any given time:
 
 - Voter: replication and leader election voting are enabled.
 - Stand-by: only replication is enabled.
