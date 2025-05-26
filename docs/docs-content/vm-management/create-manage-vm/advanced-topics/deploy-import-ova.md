@@ -94,7 +94,24 @@ name, for example `cdi-uploadproxy.mycompany.io`, to the Nginx load balancer’s
    ```
 
 3. Execute the following command in your terminal. It creates a dedicated VM inside your VMO cluster which contains all
-   the tools required for OVA import and deployment. The VM is named `vmo-jh`.
+   the tools required for OVA import and deployment. The VM is named `vmo-jh`. Depending on the configuration of your
+   VMO cluster's CSI layer, you may need to change the configured `ReadWriteMany` access mode to `ReadWriteOnce`. Check
+   the documentation for your chosen CSI to ensure you have the correct setting.
+
+   :::info
+
+   The following command uses the `gcr.io/spectro-images-public/release/vmo-jh:v4.5.0` image to create a VM that
+   contains all the prerequisites required for the import and deployment process.
+
+   Alternatively, you can skip the VM creation and use any VM that has the following tools installed:
+
+   - [Docker](https://docs.docker.com/engine/install/)
+   - [`virtctl`](https://kubevirt.io/user-guide/user_workloads/virtctl_client_tool/)
+   - [`kubectl`](https://kubernetes.io/docs/tasks/tools/)
+   - [`qemu-utils`](https://www.qemu.org/download/)
+   - [`libguestfs-tools`](https://libguestfs.org/)
+
+   :::
 
    ```shell
    cat <<EOF | kubectl apply --filename -
@@ -162,13 +179,6 @@ name, for example `cdi-uploadproxy.mycompany.io`, to the Nginx load balancer’s
    EOF
    ```
 
-   :::info
-
-   Depending on the configuration of your VMO cluster's CSI layer, you may need to change the configured `ReadWriteMany`
-   access mode to `ReadWriteOnce`. Check the documentation for your chosen CSI to ensure you have the correct setting.
-
-   :::
-
 4. The VM provisioning and start up process will take a few minutes to complete. Execute the following command to check
    the status of your VMs.
 
@@ -209,7 +219,7 @@ name, for example `cdi-uploadproxy.mycompany.io`, to the Nginx load balancer’s
    virtctl scp <path-to-downloaded-kubeconfig-file> --identity-file <path-to-private-key> root@vmo-jh.default:/root
    ```
 
-7. Download the newest [Palette CLI](../../../spectro-downloads.md#palette-cli) binary. Copy the binary to the VM, in
+7. Download the newest [Palette CLI](../../../downloads/cli-tools.md#palette-cli) binary. Copy the binary to the VM, in
    the same way you copied the kubeconfig file. Replace the placeholders with local path to the downloaded binary and
    the path to your private key.
 

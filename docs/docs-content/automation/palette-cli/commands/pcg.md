@@ -48,7 +48,7 @@ by the `install` subcommand.
 :::warning
 
 Use the latest version of the Palette CLI that matches the version of your Palette or Palette VerteX instance. You can
-find the newest version of the Palette CLI on the [Downloads](../../../spectro-downloads.md#palette-cli) page.
+find the newest version of the Palette CLI on the [Downloads](../../../downloads/cli-tools.md#palette-cli) page.
 
 :::
 

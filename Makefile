@@ -20,7 +20,8 @@ ALOGLIA_CONFIG=$(shell cat docsearch.dev.config.json | jq -r tostring)
 # Remove all security-bulletins and cve-reports.md because they are rate limited by nvd.nist.gov
 # Remove oss-licenses.md because they are rate limited by npmjs.com
 # Remove all /deprecated paths because we don't want to maintain their links
-VERIFY_URL_PATHS=$(shell find ./docs -name "*.md" | cut -c 3- | \
+VERIFY_URL_PATHS=$(shell find ./docs ./_partials \( -name "*.md" -o -name "*.mdx" \) | \
+ 	sed 's|^\./||' | \
 	sed '/security-bulletins/d' | \
 	sed '/cve-reports/d' | \
 	sed '/oss-licenses/d' | \
@@ -38,7 +39,7 @@ initialize: ## Initialize the repository dependencies
 	@echo "initializing npm dependencies"
 	npm ci
 	touch .env
-	npx husky-init
+	npm run prepare
 	vale sync
 
 clean: clean-security ## Clean common artifacts
@@ -93,7 +94,7 @@ init: ## Initialize npm dependencies
 	grep -q "^DSO_AUTH_TOKEN=" .env || echo "\nDISABLE_SECURITY_INTEGRATIONS=true\nDSO_AUTH_TOKEN=" >> .env
 	grep -q "^PALETTE_API_KEY=" .env || echo "\nDISABLE_PACKS_INTEGRATIONS=true" >> .env
 	grep -q "^SHOW_LAST_UPDATE_TIME=" .env || echo "\nSHOW_LAST_UPDATE_TIME=false" >> .env
-	npx husky install
+	npm run prepare
 
 start: ## Start a local development server
 	npm run start
@@ -317,6 +318,12 @@ verify-rate-limited-links-ci: ## Check for broken URLs in production in a GitHub
 	@rm temp_rate_limit_report.json
 	@mv filtered_rate_limit_report.json scripts/link_rate_limit_report.json
 
+verify-github-links: ## Check for broken GitHub links
+	@echo "Checking for broken GitHub links in CI environment..."
+	@rm link_report_github.txt || echo "No report exists. Proceeding to scan step"
+	./scripts/url-checker-github.sh
+	@mv link_report_github.txt scripts/link_report_github.txt
+
 ###@ Image Formatting
 
 format-images: ## Format images
@@ -351,7 +358,6 @@ generate-release-notes: ## Generate release notes only
 
 generate-release: ## Generate all release files except release notes
 	./scripts/release/generate-spectro-cli-reference.sh
-	./scripts/release/generate-compatibility-matrix.sh
 	./scripts/release/generate-downloads.sh
 	./scripts/release/generate-advanced-configuration.sh
 	./scripts/release/generate-install-palette-cli.sh

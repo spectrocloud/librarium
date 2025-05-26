@@ -15,7 +15,7 @@ support team by opening up a ticket through our [support page](http://support.sp
 
 - [Cluster Deployment](cluster-deployment.md)
 
-- [Edge](edge.md)
+- [Edge](edge/edge.md)
 
 - [Enterprise Install](enterprise-install.md)
 

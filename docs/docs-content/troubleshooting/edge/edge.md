@@ -4,7 +4,7 @@ title: "Edge"
 description: "Troubleshooting steps for common Edge scenarios."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 40
+sidebar_position: 0
 tags: ["edge", "troubleshooting"]
 ---
 
@@ -14,15 +14,15 @@ The following are common scenarios that you may encounter when using Edge.
 
 <!-- prettier-ignore -->
 When attempting to deploy a cluster with <VersionedLink text="Palette eXtended Kubernetes - Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" />
-and [agent mode](../deployment-modes/agent-mode/agent-mode.md) on Palette agent version 4.5.14, adding a custom `stylus.path` to
+and [agent mode](../../deployment-modes/agent-mode/agent-mode.md) on Palette agent version 4.5.14, adding a custom `stylus.path` to
 the **user-data** file causes cluster creation to fail as it cannot find
 [kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/). A custom `stylus.path` can be added during the
-[Install Palette Agent](../deployment-modes/agent-mode/install-agent-host.md#install-palette-agent) steps.
+[Install Palette Agent](../../deployment-modes/agent-mode/install-agent-host.md#install-palette-agent) steps.
 
 :::tip
 
 Refer to
-[Identify the Target Agent Version](../clusters/edge/cluster-management/agent-upgrade-airgap.md#identify-the-target-agent-version)
+[Identify the Target Agent Version](../../clusters/edge/cluster-management/agent-upgrade-airgap.md#identify-the-target-agent-version)
 for guidance in retrieving your Palette agent version number.
 
 :::
@@ -54,7 +54,7 @@ pack configuration by following the debug steps below.
    ```
 
    Replace `<customStylusPath>` with the custom `stylus.path` you provided in the **user-data** file during the
-   [Install Palette Agent](../deployment-modes/agent-mode/install-agent-host.md#install-palette-agent) steps, as
+   [Install Palette Agent](../../deployment-modes/agent-mode/install-agent-host.md#install-palette-agent) steps, as
    demonstrated in the following example.
 
    ```yaml hideClipboard {7-13}
@@ -125,7 +125,7 @@ adjust the values of related environment variables in the KubeVip DaemonSet with
 ### Debug Steps
 
 1. Ensure you can access the cluster using kubectl. For more information, refer to
-   [Access Cluster with CLI](../clusters/cluster-management/palette-webctl.md).
+   [Access Cluster with CLI](../../clusters/cluster-management/palette-webctl.md).
 
 2. Issue the following command:
 
@@ -157,7 +157,7 @@ issues or not being available. Use the following steps to troubleshoot and resol
 ### Debug Steps
 
 1. Ensure you can access the Kubernetes cluster using kubectl. For more information, refer to
-   [Access Cluster with CLI](../clusters/cluster-management/palette-webctl.md).
+   [Access Cluster with CLI](../../clusters/cluster-management/palette-webctl.md).
 
 2. Open up a terminal session and issue the following command to check the status of the
    _palette-lite-controller-manager_ pods.
@@ -249,9 +249,9 @@ prevents the nameserver from being configured, which will result in cluster depl
 ## Scenario - Degraded Performance on Disk Drives
 
 If you are experiencing degraded performance on disk drives, such as Solid-State Drive or Nonvolatile Memory Express
-drives, and you have [Trusted Boot](../clusters/edge/trusted-boot/trusted-boot.md) enabled. The degraded performance may
-be caused by TRIM operations not being enabled on the drives. TRIM allows the OS to notify the drive which data blocks
-are no longer in use and can be erased internally. To enable TRIM operations, use the following steps.
+drives, and you have [Trusted Boot](../../clusters/edge/trusted-boot/trusted-boot.md) enabled. The degraded performance
+may be caused by TRIM operations not being enabled on the drives. TRIM allows the OS to notify the drive which data
+blocks are no longer in use and can be erased internally. To enable TRIM operations, use the following steps.
 
 ### Debug Steps
 
@@ -300,7 +300,7 @@ are no longer in use and can be erased internally. To enable TRIM operations, us
 
 6. Click on **Confirm Updates** to save the changes.
 
-7. Use the updated profile to create a [new Edge cluster](../clusters/edge/site-deployment/cluster-deployment.md) or
+7. Use the updated profile to create a [new Edge cluster](../../clusters/edge/site-deployment/cluster-deployment.md) or
    update an existing Edge cluster.
 
 ## Scenario - Clusters with Cilium and RKE2 Experiences Kubernetes Upgrade Failure
@@ -313,7 +313,7 @@ the Cilium DaemonSet.
 ### Debug Steps
 
 1. Connect to your cluster using kubectl. For more information, refer to
-   [Access Cluster with kubectl](../clusters/cluster-management/palette-webctl.md).
+   [Access Cluster with kubectl](../../clusters/cluster-management/palette-webctl.md).
 
 2. Issue the following command from the terminal edit the Cilium DaemonSet.
 
@@ -377,7 +377,7 @@ Palette agent:
 
 ## Scenario - Kubelet Process Cannot Access kubeadm-flags
 
-If using the FIPS version of [Agent Mode](../deployment-modes/agent-mode/install-agent-host.md) on a Rocky Linux edge
+If using the FIPS version of [Agent Mode](../../deployment-modes/agent-mode/install-agent-host.md) on a Rocky Linux edge
 host, SELinux may incorrectly label the **kubeadm-flags.env** file during cluster deployment or when certain
 configurations are adjusted, preventing the Kubelet from accessing it and properly managing the cluster. To resolve this
 issue, reset the SELinux context of the Kubelet environment variable to its default state based on SELinux policy rules.
@@ -451,4 +451,4 @@ incorrectly. This prevents the CNI that do not run as root, such as Cilium, from
    ```
 
 5. Save the changes as a new version of the cluster profile and update your agent mode cluster to use the updated
-   profile. For more information, refer to [Update a Cluster](../clusters/cluster-management/cluster-updates.md).
+   profile. For more information, refer to [Update a Cluster](../../clusters/cluster-management/cluster-updates.md).

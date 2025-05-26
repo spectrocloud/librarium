@@ -1,1 +1,0 @@
-| <!-- edge-{{RELEASE_NAME}} --> {{RELEASE_VERSION}} | v{{RELEASE_EDGE_CLI_VERSION}} |
