@@ -270,6 +270,8 @@ Check out the [CLI Tools](../downloads/cli-tools.md) page to find the compatible
 
 | Pack Name                                | New Version |
 | ---------------------------------------- | ----------- |
+| Kubernetes GKE                           | 1.31        |
+| Kubernetes AKS                           | 1.32        |
 | Palette eXtended Kubernetes              | 1.32.3      |
 | Palette eXtended Kubernetes              | 1.31.7      |
 | Palette eXtended Kubernetes              | 1.30.11     |
@@ -289,28 +291,41 @@ Check out the [CLI Tools](../downloads/cli-tools.md) page to find the compatible
 
 #### CNI
 
-| Pack Name | New Version |
-| --------- | ----------- |
-| Flannel   | 0.26.4      |
+| Pack Name      | New Version |
+| -------------- | ----------- |
+| Calico (Azure) | 3.29.3      |
+| Flannel        | 0.26.4      |
 
 #### CSI
 
 | Pack Name              | New Version |
 | ---------------------- | ----------- |
 | Local Path Provisioner | 0.0.31      |
+| Piraeus                | 2.8.0       |
+| Portworx /w Operator   | 3.2.3       |
 
 #### Add-on Packs
 
 | Pack Name                    | New Version |
 | ---------------------------- | ----------- |
+| AWS Application Loadbalancer | 2.12.0      |
+| Cilium Tetragon              | 1.4.0       |
+| External Secrets Operator    | 0.15.0      |
+| Flux2                        | 2.15.0      |
 | Local Path Provisioner       | 0.0.31      |
+| Nvidia GPU Operator          | 25.3.0      |
+| Prometheus - Grafana         | 70.2.1      |
 | Spectro Kubernetes Dashboard | 7.11.1      |
-| Zot Registry                 | 0.1.66      |
+| Zot Registry                 | 0.1.67      |
 
 #### FIPS Packs
 
 | Pack Name                                | New Version |
 | ---------------------------------------- | ----------- |
+| Calico                                   | 3.29.3      |
+| Calico (Azure)                           | 3.29.3      |
+| Cilium                                   | 1.17.1      |
+| Flannel                                  | 0.26.4      |
 | Local Path Provisioner                   | 0.0.31      |
 | Palette eXtended Kubernetes              | 1.32.3      |
 | Palette eXtended Kubernetes              | 1.31.7      |
@@ -321,10 +336,11 @@ Check out the [CLI Tools](../downloads/cli-tools.md) page to find the compatible
 | Palette Optimized RKE2                   | 1.32.3      |
 | Palette Optimized RKE2                   | 1.31.7      |
 | Palette Optimized RKE2                   | 1.30.11     |
+| Registry Connect                         | 0.1.0       |
 | RKE2                                     | 1.32.3      |
 | RKE2                                     | 1.31.7      |
 | RKE2                                     | 1.30.11     |
-| Zot Registry                             | 0.1.66      |
+| Zot Registry                             | 0.1.67      |
 
 #### Deprecations and Removals
 
