@@ -11,12 +11,12 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## May 23, 2025 - Release 4.6.x
+## May 26, 2025 - Release 4.6.28
 
 ### Bug Fixes
 
-- Fixed an issue where add-on packs/helm-chart artifacts were not found while syncing registries for [Edge](../clusters/edge/edge.md)
-  clusters.
+- Fixed an issue where add-on packs and Helm chart artifacts were not found while synchronizing registries for
+  [Edge](../clusters/edge/edge.md) clusters.
 - Fixed an issue that prevented add-on profiles from being deployed on [Edge](../clusters/edge/edge.md) clusters
   containing the `harbor-edge-native-config` pack.
 
