@@ -18,6 +18,17 @@ We recommend reviewing the [VMO architecture](/vm-management/architecture.md) pa
 architecture page describes what VMO is, a high level view of the components it uses, and provides links to more
 detailed information.
 
+## Supported Environments
+
+VMO is supported in the following environments:
+- Private Clouds 
+  - MAAS 
+  - Palette Edge
+  - VMWare
+- Public Clouds
+  - AWS
+  - Azure
+
 ## Prerequisites
 
 - A Palette account with tenant admin access.
@@ -60,11 +71,13 @@ Clone the Spectro Cloud Terraform tutorial repository.
 
 The directory containing the files you will use in this tutorial is _/terraform/vmo-cluster_.
 
-## Deploy a VMO Cluster to MAAS
+## Terraform Workflow
+
+### Deploy a VMO Cluster
 
 In this section, you will modify and execute Terraform scripts to deploy a new VMO Cluster to your MAAS environment.
 
-### Update terraform.tfvars
+#### Update terraform.tfvars
 
 This file allows you to set values to be used for your variables in one place. We recommend using the _terraform.tfvars_
 file whenever possible as it helps reduce human error and makes updating and reusing your Terraform scripts more
@@ -73,7 +86,7 @@ efficient.
 :::info
 
 We recommend that you read the **Palette Specific Terraform Files** section at the end of this tutorial. It will provide
-additional detail about the Palette specific files in this tutorial, what they do, and how you might modify them for
+additional detail about the Palette specific files in this tutorial, what they do, and how you can modify them for
 your own deployments.
 
 :::
@@ -90,7 +103,7 @@ Make the changes to your _terraform.tfvars_ as instructed in the table.
 #####################
 # Palette Settings
 #####################
-palette-project = "Default"                                 # The name of your project in Palette.
+palette-project = "REPLACE_ME"                                 # The name of your project in Palette.
 
 ############################
 # MAAS Deployment Settings
@@ -99,61 +112,47 @@ palette-project = "Default"                                 # The name of your p
 deploy-maas    = true                                       # Set to true to deploy to a new VMO cluster to MAAS.
 deploy-maas-vm = false                                      # Set to true to create a VM on MAAS VMO cluster once deployed.
 
-pcg-name    = "maas-pcg"                                    # Provide the name of the PCG that will be used to deploy the Palette cluster.
-maas-domain = "maas.sc"                                     # Provide the MAAS domain that will be used to deploy the Palette cluster.
+pcg-name    = "REPLACE_ME"                                    # Provide the name of the PCG that will be used to deploy the Palette cluster.
+maas-domain = "REPLACE_ME"                                     # Provide the MAAS domain that will be used to deploy the Palette cluster.
 
 maas-worker-nodes         = 1                               # Provide the number of worker nodes that will be used for the Palette cluster.
-maas-worker-resource-pool = "bm-generic"                    # Provide a resource pool for the worker nodes.
-maas-worker-azs           = ["default"]                     # Provide a set of availability zones for the worker nodes.
-maas-worker-node-tags     = ["docs"]                        # Provide a set of node tags for the worker nodes.
+maas-worker-resource-pool = "REPLACE_ME"                    # Provide a resource pool for the worker nodes.
+maas-worker-azs           = ["REPLACE_ME"]                     # Provide a set of availability zones for the worker nodes.
+maas-worker-node-tags     = ["REPLACE_ME"]                        # Provide a set of node tags for the worker nodes.
 
 maas-control-plane-nodes         = 1                        # Provide the number of control plane nodes that will be used for the Palette cluster.
-maas-control-plane-resource-pool = "Palette-Sustaining"     # Provide a resource pool for the control plane nodes.
-maas-control-plane-azs           = ["az1"]                  # Provide a set of availability zones for the control plane nodes.
-maas-control-plane-node-tags     = ["docs-cp"]              # Provide a set of node tags for the control plane nodes.
+maas-control-plane-resource-pool = "REPLACE_ME"     # Provide a resource pool for the control plane nodes.
+maas-control-plane-azs           = ["REPLACE_ME"]                  # Provide a set of availability zones for the control plane nodes.
+maas-control-plane-node-tags     = ["REPLACE_ME"]              # Provide a set of node tags for the control plane nodes.
 
 
 # #####################
 # # cluster_profiles.tf
 # #####################
-# vmo_cluster_name        = "vmo-cluster-maas"
-# clusterProfileType      =   "Full"                          # Infrastructure, Full, or Add-on
-# clusterProfileVersion   =   1.0.0                           # Version number for the cluster profile in Palette
+vmo-cluster-name        = "REPLACE_ME"
+cluster-profile-type      = "REPLACE_ME"                          # Infrastructure, Full, or Add-on
+cluster-profile-version   = "REPLACE_ME"                          # Version number for the cluster profile in Palette
 
 
 # ##############
 # # clusters.tf
 # ##############
-# ctl-node-min-cpu          = "6"                             # Minimum number of CPU cores required for control plane nodes
-# ctl-node-min-memory-mb    = "16384"                         # Minimum amount of RAM (memory) required for control plane nodes
-# wrk_-ode-min-cpu          = "8"                             # Minimum number of CPU cores required for worker nodes
-# wrk-node-min-memory-mb    = "16384"                         # Minimum amount of RAM (memory) required for worker nodes
-
-
-# ###########################
-# # manifests/k8s-values.yaml
-# ###########################
-# pod-CIDR                =   "100.64.0.0/16"                                      # Set the subnet that your pods will run on
-# serviceClusterIpRange   =   "10.10.189.128/28"
-
-
-# ###############################
-# # manifests/metallb-values.yaml
-# ###############################
-# metallb-ip-pool         =   1.1.1.1-2.2.2.2                 # IP addresses to be assigned for use by MetalLB
+ctl-node-min-cpu          = REPLACE_ME                            # Minimum number of CPU cores required for control plane nodes
+ctl-node-min-memory-mb    = REPLACE_ME                         # Minimum amount of RAM (memory) required for control plane nodes
+wrk-node-min-cpu          = REPLACE_ME                             # Minimum number of CPU cores required for worker nodes
+wrk-node-min-memory-mb    = REPLACE_ME                         # Minimum amount of RAM (memory) required for worker nodes
 
 
 # #####################
 # # virtual_machines.tf
 # #####################
-# vm-deploy-namespace       = "default"                       # Namespace where your VM will be deployed.
-# vm-deploy-name            = "vmo-vm"                        # The name of your VM
-# vm-labels                 = "my-vmo-vm"                     # Labels that will be applied to your VM. For this tutorial, use a single label.
-# vm-storage-Gi             = "50Gi"                          # Size of the disk (PVC) that your VM will have.
-# vm-cpu-cores              = 2                               # Number of CPU cores your VM will have.
-# vm-cpu-sockets            = 1                               # Number of physical CPU sockets the CPU cores should be spread over.
-# vm-cpu-threads            = 2                               # Number of CPU threads to use for the VM CPU
-# vm-memory-Gi              = "4Gi"                           # Amount of RAM (memory) your VM will have
+vm-deploy-namespace       = "REPLACE_ME"                       # Namespace where your VM will be deployed.
+vm-deploy-name            = "REPLACE_ME"                        # The name of your VM
+vm-storage-Gi             = "REPLACE_ME"                          # Size of the disk (PVC) that your VM will have.
+vm-cpu-cores              = REPLACE_ME                              # Number of CPU cores your VM will have.
+vm-cpu-sockets            = REPLACE_ME                               # Number of physical CPU sockets the CPU cores should be spread over.
+vm-cpu-threads            = REPLACE_ME                               # Number of CPU threads to use for the VM CPU
+vm-memory-Gi              = "REPLACE_ME"                           # Amount of RAM (memory) your VM will have
 
 ```
 
@@ -210,7 +209,7 @@ maas-control-plane-node-tags     = ["docs-cp"]              # Provide a set of 
 | ------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | **metallb-ip-pool** | _number_      | Set this value to the IP address range you want MetalLB to use. These IP's should be routable and the NIC on your MAAS nodes should be connected to a Switchport that has your subnets VLAN ID set as the untagged VLAN. |
 
-### Deploy the Cluster
+#### Deploy the Cluster
 
 Once the variables in _terraform.tfvars_ have been updated, you can proceed with the VMO cluster deployment.
 
@@ -256,17 +255,17 @@ resource capacity you selected for your MAAS VMO Cluster.
 
 ```
 
-### Verify the Deployment
+#### Verify the Deployment
 
-To validate your cluster deployment, navigate to the **Clusters** option in the left Main Menu in Palette. Select the
+To verify your cluster deployment was successful, navigate to the **Clusters** option in the left Main Menu in Palette. Select the
 cluster name you created. On the overview page, ensure the cluster status is healthy. No further validation is
 necessary.
 
-## Deploy a Virtual Machine
+### Deploy a Virtual Machine
 
 In this section, you will modify and execute Terraform scripts to deploy a new VMO Cluster to your MAAS environment.
 
-### Update terraform.tfvars
+#### Update terraform.tfvars
 
 Prior to deploying your VM you must modify the _terraform.tfvars_ file to reflect the configuration you want your VM to
 have. Make changes to your _terraform.tfvars_ file as instructed in the table.
@@ -283,14 +282,14 @@ have. Make changes to your _terraform.tfvars_ file as instructed in the table.
 | **vm-cpu-threads**      | _number_      | The number of CPU threads your VM is allowed to use. You can assign 1 CPU core and a single thread if desired.                                                                                                                                               |
 | **vm-memory-Gi**        | _string_      | Set this value to the amount of RAM (memory) you want your VM to have. You must include 'Gi' in your value. Example _vm-memory-Gi = 4Gi_                                                                                                                     |
 
-### Deploy the Virtual Machine
+#### Deploy the Virtual Machine
 
 Execute the `terraform plan` command to ensure there are no errors, the install plan is correct, and you have
 connectivity to your Spectro Cloud tenant.
 
 Execute the `terraform apply` command to create the VM in your VMO Cluster.
 
-### Verify the Application
+#### Verify the Application
 
 The deployed VM should be successfully provisioned, in a healthy state, and the
 [_hello-universe_](https://github.com/spectrocloud/hello-universe) application be installed and functional.
@@ -305,7 +304,7 @@ Your result should be similar to the below screenshot.
 
 ![Image that shows the cluster overview of the Hello Universe Frontend Cluster](/tutorials/deploy-cluster-profile-updates/clusters_cluster-management_deploy-cluster-profile-updates_hello-universe-without-api.webp)
 
-## Clean Up
+### Clean Up - Terraform Workflow
 
 To clean up the resources you deployed, execute the `terraform destroy` command.
 
@@ -313,7 +312,7 @@ To clean up the resources you deployed, execute the `terraform destroy` command.
 
 <TabItem label="Palette UI Workflow" value="Palette UI Workflow">
 
-## Deploy a VMO Cluster to MAAS with the Palette UI
+## UI Workflow
 
 <br />
 
@@ -418,10 +417,9 @@ Review the values for **podCIDR** and **serviceClusterIpRange** and update them 
 
 ![Image of the configuration lines where Pod and Services Subnets are set.](/tutorials/deploy-vmo-maas/tutorials_vmo_vmo-maas_pod-service-ips.webp)
 
-9. Select **Next layer**
+    Select **Next layer**
 
-10. The next profile layer to select is the Container Network Interface (CNI) your cluster will use. Select the **Cilium
-    v1.17.1** pack from the Palette Registry (OCI).
+9. The next profile layer is the Container Network Interface (CNI). Select **Cilium v1.17.1** from the Palette Registry (OCI).
 
     Cilium requires some customization to work correctly with VMO. Select **Values**. From the **Presets** drop down
     menu, set the value for VMO Compatibility to **Enable**.
@@ -437,17 +435,17 @@ Review the values for **podCIDR** and **serviceClusterIpRange** and update them 
 
 Select **Next layer**.
 
-12. The next profile layer determines which Container Storage Interface (CSI) your cluster will use. Select **Rook-Ceph
-    (Helm) v1.16.3** from the Palette OCI Registry. Select **Next**.
+10. The next profile layer determines which Container Storage Interface (CSI) your cluster will use. Select **Rook-Ceph
+    (Helm) v1.16.3** from the Palette OCI Registry.
 
-13. Select **Confirm**.
+11. Select **Confirm**.
 
-14. Your profile now contains the base infrastructure configurations you need. You need to add some additional packs to
+12. Your profile now contains the base infrastructure configurations you need. You need to add some additional packs to
     complete your configuration.
 
     Select **Add New Pack**.
 
-15. Search for MetalLB and select the **MetalLB (Helm) v0.14.9** pack.
+13. Search for MetalLB and select the **MetalLB (Helm) v0.14.9** pack.
 
     Select **Values**. Update the value of the **addresses** field. The IP addresses entered will be used for the
     metalLB service and must be accessible to other services in your environment. Do not use IP addresses from any non
@@ -457,25 +455,774 @@ Select **Next layer**.
 
     Select **Confirm & Create**.
 
-16. Select **Add New Pack**
+14. Select **Add New Pack**
 
-17. Search for virtual machine orchestrator and select the **Virtual Machine Orchestrator v4.6.3** pack.
+15. Search for virtual machine orchestrator and select the **Virtual Machine Orchestrator v4.6.3** pack.
 
     The VMO pack defaults to use the proxied access architecture access pattern. This requires the **Spectro Proxy**
-    service to be installed on your cluster to manage connectivity back to your Palette tenant.
+    service to be installed on your cluster to manage connectivity back to your Palette tenant. The pack will install the **Spectro Proxy** service for you if it is not already installed.
 
     For more information on the Spectro proxy, visit the
     [Official Spectro Proxy documentation page](/integrations/spectro-proxy.mdx)
 
-18. Select **Next**
+    Paste the config below into the displayed text editor frame.
 
-19. Select **Finish Configuration**
+```yaml
+    pack:
+  content:
+    images:
+    - image: us-docker.pkg.dev/palette-images/palette/spectro-vm-dashboard:4.6.3
+    - image: us-docker.pkg.dev/palette-images/third-party/kubevirt-ui:v19
+    - image: us-docker.pkg.dev/palette-images/palette/kubevirt/virt-operator:v1.4.0
+    - image: registry.k8s.io/sig-storage/snapshot-validation-webhook:v8.1.0
+    - image: registry.k8s.io/sig-storage/snapshot-controller:v8.1.0
+    - image: registry.k8s.io/descheduler/descheduler:v0.32.0
+    - image: ghcr.io/k8snetworkplumbingwg/multus-cni:v4.1.4-thick
+    - image: ghcr.io/k8snetworkplumbingwg/multus-dynamic-networks-controller:latest-amd64
+    - image: quay.io/kubevirt/cdi-operator:v1.61.0
+    - image: quay.io/kubevirt/cdi-uploadproxy:v1.61.0
+    - image: quay.io/kubevirt/cdi-controller:v1.61.0
+    - image: quay.io/kubevirt/cdi-apiserver:v1.61.0
+    - image: quay.io/kubevirt/cdi-importer:v1.61.0
+    - image: quay.io/kubevirt/cdi-uploadserver:v1.61.0
+    - image: quay.io/kubevirt/cdi-cloner:v1.61.0
+    - image: us-docker.pkg.dev/palette-images/palette/kubevirt/virt-handler:v1.4.0
+    - image: us-docker.pkg.dev/palette-images/palette/kubevirt/virt-launcher:v1.4.0
+    - image: us-docker.pkg.dev/palette-images/palette/kubevirt/virt-exportproxy:v1.4.0
+    - image: us-docker.pkg.dev/palette-images/palette/kubevirt/virt-exportserver:v1.4.0
+    - image: us-docker.pkg.dev/palette-images/palette/kubevirt/virt-controller:v1.4.0
+    - image: us-docker.pkg.dev/palette-images/palette/kubevirt/virt-api:v1.4.0
+    - image: us-docker.pkg.dev/palette-images/palette/virtual-machine-orchestrator/os/ubuntu-container-disk:22.04
+    - image: us-docker.pkg.dev/palette-images/palette/virtual-machine-orchestrator/os/fedora-container-disk:37
+    - image: us-docker.pkg.dev/palette-images/palette/virtual-machine-orchestrator/vlan-filtering/ubuntu:latest
+    - image: us-docker.pkg.dev/palette-images/palette/spectro-cleanup:1.0.3
+    - image: us-docker.pkg.dev/palette-images/palette/spectro-kubectl:v1.31.5-vmo
+  namespace: vm-dashboard
+  palette:
+    config:
+      dashboard:
+        access: private
+
+charts:
+  virtual-machine-orchestrator:
+    image:
+      repository: us-docker.pkg.dev/palette-images/palette/spectro-vm-dashboard
+      tag: "4.6.3"
+    service:
+      type: "ClusterIP"
+    appConfig:
+      clusterInfo:
+        consoleBaseAddress: ""
+
+    fullnameOverride: "virtual-machine-orchestrator"
+
+    serviceAccount:
+      # Specifies whether a service account should be created
+      create: true
+      # Annotations to add to the service account
+      annotations: {}
+      # The name of the service account to use.
+      # If not set and create is true, a name is generated using the fullname template
+      name: "virtual-machine-orchestrator"
+
+    sampleTemplates:
+      fedora37: true
+      ubuntu2204: false
+      ubuntu2204WithVol: true
+      ubuntu2204staticIP: true
+      fedora37staticIP: true
+      # To create additional vm templates refer to https://docs.spectrocloud.com/vm-management/create-manage-vm/create-vm-template
+
+    # This namespace will be used to store golden images
+    goldenImagesNamespace: "vmo-golden-images"
+
+    # These namespaces will be created and set up to deploy VMs into
+    vmEnabledNamespaces:
+      - "default"
+      - "virtual-machines"
+
+    grafana:
+      namespace: monitoring
+
+    vlanFiltering:
+      enabled: false
+      namespace: kube-system
+      image:
+        repository: us-docker.pkg.dev/palette-images/palette/virtual-machine-orchestrator/vlan-filtering/ubuntu
+        pullPolicy: IfNotPresent
+        tag: "latest"
+      env:
+        # Which bridge interface to control
+        bridgeIF: "br0"
+        # Beginning of VLAN range to enable
+        allowedVlans: "1"
+        # Set to "true" to enable VLANs on the br0 interface for the host to use itself
+        allowVlansOnSelf: "true"
+        # Beginning of VLAN range to enable for use by the node itself
+        allowedVlansOnSelf: "1"
+
+    snapshot-controller:
+      enabled: true
+      replicas: 1
+      # controller image and policies
+      image:
+        repository: registry.k8s.io/sig-storage/snapshot-controller
+        pullPolicy: IfNotPresent
+        tag: "v8.1.0"
+
+      # A list/array of extra args that should be used
+      # when running the controller. Default args include log verbose level
+      # and leader election
+      extraArgs: []
+
+      # snapshot webhook config
+      webhook:
+       # all below values take effect only if webhook is enabled
+       enabled: true
+       # webhook controller image and policies
+       image:
+         # change the image if you wish to use your own custom validation server image
+         repository: registry.k8s.io/sig-storage/snapshot-validation-webhook
+         pullPolicy: IfNotPresent
+         # Overrides the image tag whose default is the chart appVersion.
+         tag: "v8.1.0"
+
+       validatingWebhook:
+         failurePolicy: Fail
+         timeoutSeconds: 2
+
+       # Validating webhook is exposed on an HTTPS endpoint, and so
+       # TLS certificate is required. This Helm chart relies on
+       # cert-manager.io for managing TLS certificates.
+       tls:
+         # If not empty, this issuer will be used to sign the certificate.
+         # If none is provided, a new, self-signing issuer will be created.
+         issuerRef: { }
+         # name: <ISSUER NAME>
+         # kind: <ClusterIssuer|Issuer>
+         # group: cert-manager.io
+
+         # Certificate duration. The generated certificate will be automatically
+         # renewed 1/3 of `certDuration` before its expiry.
+         # Value must be in units accepted by Go time.ParseDuration.
+         # See https://golang.org/pkg/time/#ParseDuration for allowed formats.
+         # Minimum accepted duration is `1h`.
+         # This option may be ignored/overridden by some issuer types.
+         certDuration: 8760h
+
+       service:
+         # when running in cluster webhook service is recommended to be of type ClusterIP
+         type: ClusterIP
+         port: 443
+
+       serviceAccount:
+         # Specifies whether a service account should be created.
+         create: true
+         # Annotations to add to the service account.
+         annotations: { }
+         # The name of the service account to use.
+         # If not set and create is true, a name is generated using the fullname template.
+         name: ""
+
+       # Log verbosity level.
+       # See https://github.com/kubernetes/community/blob/master/contributors/devel/sig-instrumentation/logging.md
+       # for description of individual verbosity levels.
+       logVerbosityLevel: 2
+
+       podAnnotations: { }
+
+       resources: { }
+
+       nodeSelector: { }
+
+       tolerations: [ ]
+
+       affinity: { }
+
+       nameOverride: ""
+       fullnameOverride: ""
+
+      imagePullSecrets: []
+      nameOverride: ""
+      fullnameOverride: ""
+
+      resources: {}
+        # We usually recommend not to specify default resources and to leave this as a conscious
+        # choice for the user. This also increases chances charts run on environments with little
+        # resources, such as Minikube. If you do want to specify resources, uncomment the following
+        # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+        # limits:
+        #   cpu: 100m
+        #   memory: 128Mi
+        # requests:
+      #   cpu: 100m
+      #   memory: 128Mi
+
+      nodeSelector: {}
+
+      tolerations: []
+
+      affinity: {}
+
+      # create a default volume snapshot class
+      volumeSnapshotClass:
+        create: false
+        name: "default-snapshot-class"
+        driver: "mydriver"
+        # deletionPolicy determines whether a VolumeSnapshotContent created through
+        # the VolumeSnapshotClass should be deleted when its bound VolumeSnapshot is deleted.
+        # Supported values are "Retain" and "Delete".
+        deletionPolicy: ""
+        # params is a key-value map with storage driver specific parameters for creating snapshots.
+        params: {}
+
+        # key-value pair of extra labels to apply to the volumesnapshotclass
+        extraLabels: {}
+
+      # time for sleep hook in seconds
+      hooksleepTime: 12
+
+    kubevirt:
+      enabled: true
+      # defaults to kubevirt
+      namespace: kubevirt
+      namespaceLabels:
+        pod-security.kubernetes.io/enforce: privileged
+        pod-security.kubernetes.io/enforce-version: v{{ .spectro.system.kubernetes.version | substr 0 4 }}
+      replicas: 1
+
+      service:
+        type: LoadBalancer
+        port: 443
+        targetPort: 8443
+
+      image:
+        repository: us-docker.pkg.dev/palette-images/palette/kubevirt/virt-operator
+        pullPolicy: IfNotPresent
+        # Overrides the image tag whose default is the chart appVersion.
+        tag: "v1.4.0"
+
+      ## The Kubevirt CR that gets created
+      kubevirtResource:
+        name: kubevirt
+        useEmulation: false
+        # below gates are required for virtual machine orchestrator pack, users can append additional gates
+        additionalFeatureGates:
+        - LiveMigration
+        - HotplugVolumes
+        - Snapshot
+        - VMExport
+        - ExpandDisks
+        - HotplugNICs
+        - VMLiveUpdateFeatures
+        - VMPersistentState
+        - Sidecar
+        - VolumeMigration
+        - CPUManager   
+        #- VMPersistentState
+        # for additional feature gates refer to https://docs.spectrocloud.com/vm-management#featuregates
+
+        config:
+          evictionStrategy: "LiveMigrate"
+          # additionalConfig lets you define any configuration other than developerConfiguration and evictionStrategy
+          additionalConfig:
+            #vmStateStorageClass: "" #fileSystem-based storageclass for persistent TPM
+            migrations:
+                allowAutoConverge: true
+                completionTimeoutPerGiB: 800
+          # additionalDevConfig lets you define dev config other than emulation and feature gate
+          additionalDevConfig: {}
+          # vmRolloutStrategy lets you define how changes to a VM object propagate to its VMI objects
+          vmRolloutStrategy: LiveUpdate
+
+        certificateRotateStrategy: {}
+
+        customizeComponents:
+          # flags:
+          #   api:
+          #     v:
+          #       "5"
+          #     port:
+          #       "8443"
+
+        imagePullPolicy: IfNotPresent
+
+        infra: {}
+        # The name of the Prometheus service account that needs read-access to KubeVirt endpoints
+        monitorAccount: "prometheus-operator-prometheus"
+        # The namespace Prometheus is deployed in
+        monitorNamespace: "monitoring"
+        # The namespace the service monitor will be deployed. Either specify this or the monitorNamespace
+        serviceMonitorNamespace: "monitoring"
+
+        workloads: {}
+
+        workloadsUpdateStrategy:
+          workloadUpdateMethods:
+          - LiveMigrate
+
+        # uninstallStrategy to use, options are RemoveWorkloads, BlockUninstallIfWorkloadsExist
+        uninstallStrategy: ""
+
+      ingress:
+        enabled: false
+        ingressClassName: nginx
+        annotations:
+          cert-manager.io/issuer: kubevirt-selfsigned-issuer
+          nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+        labels: {}
+        hosts:
+          - host: virt-exportproxy.maas.sc
+            paths:
+              - path: /
+                pathType: ImplementationSpecific
+        # tls:
+        #   - secretName: chart-example-tls
+        #     hosts:
+        #       - virt-exportproxy.maas.sc
+
+    cdi:
+      enabled: true
+      namespaceLabels:
+        pod-security.kubernetes.io/enforce: privileged
+        pod-security.kubernetes.io/enforce-version: v{{ .spectro.system.kubernetes.version | substr 0 4 }}
+      replicas: 1
+
+      image:
+        repository: quay.io/kubevirt/cdi-operator
+        pullPolicy: IfNotPresent
+        # Overrides the image tag whose default is the chart appVersion.
+        tag: "v1.61.0"
+
+      # set enabled to true and add private registry details to bring up VMs in airgap environment
+      privateRegistry:
+        enabled: false
+        registryIP: #Ex: 10.10.225.20
+        registryBasePath: #Ex: specto-images
+
+      serviceAccount:
+        # Specifies whether a service account should be created
+        create: true
+        # Annotations to add to the service account
+        annotations: {}
+        # The name of the service account to use.
+        # If not set and create is true, a name is generated using the fullname template
+        name: ""
+
+      service:
+        type: LoadBalancer
+        port: 443
+        targetPort: 8443
+
+      ingress:
+        enabled: false
+        className: "nginx"
+        annotations:
+          cert-manager.io/issuer: cdi-selfsigned-issuer
+          nginx.ingress.kubernetes.io/proxy-body-size: "0"
+          nginx.ingress.kubernetes.io/proxy-read-timeout: "600"
+          nginx.ingress.kubernetes.io/proxy-send-timeout: "600"
+          nginx.ingress.kubernetes.io/proxy-request-buffering: "off"
+          nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+        hosts:
+          - host: cdi-uploadproxy.maas.sc
+            paths:
+              - path: /
+                pathType: ImplementationSpecific
+        tls: []
+        #  - secretName: chart-example-tls
+        #    hosts:
+        #      - cdi-uploadproxy.maas.sc
+
+      resources: {}
+        # We usually recommend not to specify default resources and to leave this as a conscious
+        # choice for the user. This also increases chances charts run on environments with little
+        # resources, such as Minikube. If you do want to specify resources, uncomment the following
+        # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+        # limits:
+        #   cpu: 100m
+        #   memory: 128Mi
+        # requests:
+        #   cpu: 100m
+        #   memory: 128Mi
+
+      ## The CDI CR that gets created
+      cdiResource:
+        additionalFeatureGates:
+        # - FeatureName
+        additionalConfig:
+          filesystemOverhead:
+            global: "0.08"
+            storageClass:
+              spectro-storage-class: "0.08"
+          podResourceRequirements:
+              requests:
+                  cpu: 250m
+                  memory: 1G
+              limits:
+                  cpu: 1
+                  memory: 8G
+          insecureRegistries: [] # List of insecure registries to allow in the CDI importer, preffered in air-gapped environments
+          importProxy:
+          #HTTPProxy: "http://username:password@your-proxy-server:3128"
+          #HTTPSProxy: "http://username:password@your-proxy-server:3128"
+          #noProxy: "127.0.0.1,localhost,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,.company.local"
+          #TrustedCAProxy: configmap-name # optional: the ConfigMap name of an user-provided trusted certificate authority (CA) bundle to be added to the importer pod CA bundle
+        additionalSpec:
+          infra:
+            nodeSelector:
+              kubernetes.io/os: linux
+            tolerations:
+              - key: CriticalAddonsOnly
+                operator: Exists
+          workload:
+            nodeSelector:
+              kubernetes.io/os: linux
+          imagePullPolicy: IfNotPresent
+
+    multus:
+      enabled: true
+      image:
+        repository: ghcr.io/k8snetworkplumbingwg/multus-cni
+        pullPolicy: IfNotPresent
+        # Overrides the image tag whose default is the chart appVersion.
+        tag: "v4.1.4-thick"
+
+      networkController:
+        criSocket:
+          enableK3SHostPath: false # true for K3S and RKE2, false for PXK-E
+          paletteAgentMode: false # true for running Palette Agent Mode clusters with PXK-E
+          # criSocketHostPathOverride: /run/containerd/containerd.sock
+
+      imagePullSecrets: []
+
+      podAnnotations: {}
+
+      resources:
+        # We usually recommend not to specify default resources and to leave this as a conscious
+        # choice for the user. This also increases chances charts run on environments with little
+        # resources, such as Minikube. If you do want to specify resources, uncomment the following
+        # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+        limits:
+          cpu: 100m
+          memory: 1Gi
+        requests:
+          cpu: 100m
+          memory: 50Mi
+
+      nodeSelector: {}
+
+      affinity: {}
+
+      dpdkCompatibility: false
+
+      cleanup:
+        image: us-docker.pkg.dev/palette-images/palette/spectro-cleanup
+        tag: "1.0.3"
+
+      networkAttachDef:
+        create: false
+        # a json string to apply
+        config: ''
+        # a sample config
+          # '{
+          #   "cniVersion": "0.3.0",
+          #   "type": "macvlan",
+          #   "master": "ens5",
+          #   "mode": "bridge",
+          #   "ipam": {
+          #     "type": "host-local",
+          #     "subnet": "192.168.1.0/24",
+          #     "rangeStart": "192.168.1.200",
+          #     "rangeEnd": "192.168.1.216",
+          #     "routes": [
+          #       { "dst": "0.0.0.0/0" }
+          #     ],
+          #     "gateway": "192.168.1.1"
+          #   }
+          # }'
+
+    descheduler:
+      enabled: true
+      namespace: "kube-system"
+      # CronJob or Deployment
+      kind: CronJob
+
+      image:
+        repository: registry.k8s.io/descheduler/descheduler
+        # Overrides the image tag whose default is the chart version
+        tag: "v0.32.0"
+        pullPolicy: IfNotPresent
+
+      imagePullSecrets:
+      #   - name: container-registry-secret
+
+      resources:
+        requests:
+          cpu: 500m
+          memory: 256Mi
+        limits:
+          cpu: 500m
+          memory: 256Mi
+
+      ports:
+        - containerPort: 10258
+          protocol: TCP
+
+      securityContext:
+        allowPrivilegeEscalation: false
+        capabilities:
+          drop:
+            - ALL
+        privileged: false
+        readOnlyRootFilesystem: true
+        runAsNonRoot: true
+        runAsUser: 1000
+
+      # podSecurityContext -- [Security context for pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/)
+      podSecurityContext: {}
+        # fsGroup: 1000
+
+      nameOverride: ""
+      fullnameOverride: "descheduler"
+
+      # -- Override the deployment namespace; defaults to .Release.Namespace
+      namespaceOverride: ""
+
+      # labels that'll be applied to all resources
+      commonLabels: {}
+
+      cronJobApiVersion: "batch/v1"
+      schedule: "*/15 * * * *"
+      suspend: false
+      # startingDeadlineSeconds: 200
+      # successfulJobsHistoryLimit: 3
+      # failedJobsHistoryLimit: 1
+      # ttlSecondsAfterFinished 600
+      # timeZone: Etc/UTC
+
+      # Required when running as a Deployment
+      deschedulingInterval: 15m
+
+      # Specifies the replica count for Deployment
+      # Set leaderElection if you want to use more than 1 replica
+      # Set affinity.podAntiAffinity rule if you want to schedule onto a node
+      # only if that node is in the same zone as at least one already-running descheduler
+      replicas: 1
+
+      # Specifies whether Leader Election resources should be created
+      # Required when running as a Deployment
+      # NOTE: Leader election can't be activated if DryRun enabled
+      leaderElection: {}
+      #  enabled: true
+      #  leaseDuration: 15s
+      #  renewDeadline: 10s
+      #  retryPeriod: 2s
+      #  resourceLock: "leases"
+      #  resourceName: "descheduler"
+      #  resourceNamespace: "kube-system"
+
+      command:
+      - "/bin/descheduler"
+
+      cmdOptions:
+        v: 3
+
+      # Recommended to use the latest Policy API version supported by the Descheduler app version
+      deschedulerPolicyAPIVersion: "descheduler/v1alpha2"
+
+      # deschedulerPolicy contains the policies the descheduler will execute.
+      # To use policies stored in an existing configMap use:
+      # NOTE: The name of the cm should comply to {{ template "descheduler.fullname" . }}
+      # deschedulerPolicy: {}
+      deschedulerPolicy:
+        nodeSelector: kubevirt.io/schedulable=true
+        maxNoOfPodsToEvictPerNode: 10
+        # maxNoOfPodsToEvictPerNamespace: 10
+        metricsCollector:
+          enabled: true
+        # ignorePvcPods: true
+        # evictLocalStoragePods: true
+        # evictDaemonSetPods: true
+        # tracing:
+        #   collectorEndpoint: otel-collector.observability.svc.cluster.local:4317
+        #   transportCert: ""
+        #   serviceName: ""
+        #   serviceNamespace: ""
+        #   sampleRate: 1.0
+        #   fallbackToNoOpProviderOnError: true
+        profiles:
+          - name: default
+            pluginConfig:
+              - name: DefaultEvictor
+                args:
+                  ignorePvcPods: true
+                  evictLocalStoragePods: true
+                  nodeFit: true
+                  ignorePodsWithoutPDB: true
+              - name: RemoveDuplicates
+              - name: RemovePodsHavingTooManyRestarts
+                args:
+                  podRestartThreshold: 100
+                  includingInitContainers: true
+              - name: RemovePodsViolatingNodeAffinity
+                args:
+                  nodeAffinityType:
+                  - requiredDuringSchedulingIgnoredDuringExecution
+              - name: RemovePodsViolatingNodeTaints
+                args:
+                  excludedTaints:
+                      - node.kubernetes.io/unschedulable
+              - name: RemovePodsViolatingInterPodAntiAffinity
+              - name: RemovePodsViolatingTopologySpreadConstraint
+              - name: LowNodeUtilization
+                args:
+                  thresholds:
+                    cpu: 20
+                    memory: 25
+                    pods: 100
+                  targetThresholds:
+                    cpu: 60
+                    memory: 75
+                    pods: 100
+                  metricsUtilization:
+                    metricsServer: true
+                  evictableNamespaces:
+                      exclude:
+                          - "cert-manager"
+                          - "kube-system"
+                          - "palette-system"
+                          - "metallb-system"
+                          - "cluster-{{ .spectro.system.cluster.uid }}"
+                          - "kubevirt"
+                          - "monitoring"
+                          - "nginx"
+                          - "vm-dashboard"
+            plugins:
+              balance:
+                enabled:
+                  - RemoveDuplicates
+                  - RemovePodsViolatingTopologySpreadConstraint
+                  - LowNodeUtilization
+              deschedule:
+                enabled:
+                  - RemovePodsHavingTooManyRestarts
+                  - RemovePodsViolatingNodeTaints
+                  - RemovePodsViolatingNodeAffinity
+                  - RemovePodsViolatingInterPodAntiAffinity
+
+      priorityClassName: system-cluster-critical
+
+      nodeSelector: {}
+      #  foo: bar
+
+      affinity: {}
+      # nodeAffinity:
+      #   requiredDuringSchedulingIgnoredDuringExecution:
+      #     nodeSelectorTerms:
+      #     - matchExpressions:
+      #       - key: kubernetes.io/e2e-az-name
+      #         operator: In
+      #         values:
+      #         - e2e-az1
+      #         - e2e-az2
+      #  podAntiAffinity:
+      #    requiredDuringSchedulingIgnoredDuringExecution:
+      #      - labelSelector:
+      #          matchExpressions:
+      #            - key: app.kubernetes.io/name
+      #              operator: In
+      #              values:
+      #                - descheduler
+      #        topologyKey: "kubernetes.io/hostname"
+      topologySpreadConstraints: []
+      # - maxSkew: 1
+      #   topologyKey: kubernetes.io/hostname
+      #   whenUnsatisfiable: DoNotSchedule
+      #   labelSelector:
+      #     matchLabels:
+      #       app.kubernetes.io/name: descheduler
+      tolerations: []
+      # - key: 'management'
+      #   operator: 'Equal'
+      #   value: 'tool'
+      #   effect: 'NoSchedule'
+
+      rbac:
+        # Specifies whether RBAC resources should be created
+        create: true
+
+      serviceAccount:
+        # Specifies whether a ServiceAccount should be created
+        create: true
+        # The name of the ServiceAccount to use.
+        # If not set and create is true, a name is generated using the fullname template
+        name:
+        # Specifies custom annotations for the serviceAccount
+        annotations: {}
+
+      podAnnotations: {}
+
+      podLabels:
+        spectrocloud.com/connection: proxy
+
+      dnsConfig: {}
+
+      livenessProbe:
+        failureThreshold: 3
+        httpGet:
+          path: /healthz
+          port: 10258
+          scheme: HTTPS
+        initialDelaySeconds: 3
+        periodSeconds: 10
+
+      service:
+        enabled: false
+        # @param service.ipFamilyPolicy [string], support SingleStack, PreferDualStack and RequireDualStack
+        #
+        ipFamilyPolicy: ""
+        # @param service.ipFamilies [array] List of IP families (e.g. IPv4, IPv6) assigned to the service.
+        # Ref: https://kubernetes.io/docs/concepts/services-networking/dual-stack/
+        # E.g.
+        # ipFamilies:
+        #   - IPv6
+        #   - IPv4
+        ipFamilies: []
+
+      serviceMonitor:
+        enabled: false
+        # The namespace where Prometheus expects to find service monitors.
+        # namespace: ""
+        # Add custom labels to the ServiceMonitor resource
+        additionalLabels: {}
+          # prometheus: kube-prometheus-stack
+        interval: ""
+        # honorLabels: true
+        insecureSkipVerify: true
+        serverName: null
+        metricRelabelings: []
+          # - action: keep
+          #   regex: 'descheduler_(build_info|pods_evicted)'
+          #   sourceLabels: [__name__]
+        relabelings: []
+          # - sourceLabels: [__meta_kubernetes_pod_node_name]
+          #   separator: ;
+          #   regex: ^(.*)$
+          #   targetLabel: nodename
+          #   replacement: $1
+          #   action: replace
+
+```
+16. Select **Next**
+
+17. Select **Finish Configuration**
 
 ### Deploy a VMO Cluster
 
 1.  Log in to [Palette](https://console.spectrocloud.com).
 
-2.  From the left Main Menu, select **Clusters**. Select **Add New Cluster**.
+2.  From the left Main Menu, select **Clusters**. Select **Create Cluster**.
 
 3.  In the **Data Center** section, select **MAAS**. In the bottom-right corner, select **Start MAAS Configuration**.
 
@@ -486,36 +1233,36 @@ Select **Next layer**.
 
 6.  Locate and select the cluster profile you created in the Create a VMO Cluster Profile section. Select **Confirm**.
 
-7.  Review and override pack parameters as desired and click **Next**. By default, parameters for all packs are set with
+7.  Review and override pack parameters as desired and select **Next**. By default, parameters for all packs are set with
     values defined in the cluster profile.
 
-8.  Select a domain from the **Domain drop-down Menu** and click **Next**.
+8.  Select a domain from the **Domain drop-down Menu** and select **Next**.
 
 9.  Configure the control plane and worker node pools. The following input fields apply to MAAS control plane and worker
     node pools. For a description of input fields that are common across target platforms refer to the
     [Node Pools](clusters/cluster-management/node-pool.md) management page.
 
-#### Control Plane Pool Configuration
+##### Control Plane Pool Configuration
 
-No changes will be made to the first section of configurations in this tutorial. We recommend reviewing these values to
+No changes will be made to the first section of control plane pool configuration. We recommend reviewing these values to
 understand how they impact the deployment and how you might use them in a production deployment.
 
-#### Control Plane - Cloud Configuration
+##### Control Plane - Cloud Configuration
 
 | Variable            | Instruction                                                                                                                                                                                                                                                                                             |
 | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Resource Pool       | Set this value to the resource pool that your target MAAS machine is a member of.                                                                                                                                                                                                                       |
 | Minimum CPU         | Set this to the minimum number of CPU cores you want your Control Plane server to have. Do not set values lower than 4.                                                                                                                                                                                 |
 | Minimum Memory (GB) | Set this to the maximum amount of memory you want your Control Plane server to have. Do not set values lower than 8 GB.                                                                                                                                                                                 |
-| Availability zones  | This is an optional value that allows you to specify which AZ's to use for your node deployment. This configuration is critical to consider when planning high availability patterns for your infrastructure.                                                                                           |
+| Availability zones  | This is an optional value that allows you to specify which AZ's to use for your node deployment. This configuration is critical to consider when planning high availability infrastructure deployments.                                                                                           |
 | Tags                | This is an option value that allows you to assign a tag to the MAAS machine selected for the build. <br /> To learn more about MAAS automatic tags, refer to the [MAAS Tags](https://maas.cloud.cbh.kth.se/MAAS/docs/cli/how-to-tag-machines.html#heading--how-to-create-automatic-tags) documentation. |
 
-#### Worker Pool Configuration
+##### Worker Pool Configuration
 
-No changes will be made to the first section of configurations in this tutorial. We recommend reviewing these values to
+No changes will be made to the first section of the worker pool configuration. We recommend reviewing these values to
 understand how they impact the deployment and how you might use them in a production deployment.
 
-#### Worker Pool - Cloud Configuration
+##### Worker Pool - Cloud Configuration
 
 | Variable            | Instruction                                                                                                                                                                                                                                                            |
 | ------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -551,14 +1298,72 @@ standards when configuring RBAC for your cluster. If there are no clear standard
 
 13. Select **Finish Configuration** to begin deployment of your cluster.
 
-## Clean Up - UI
+### Verify the Deployment
+
+To verify your cluster deployment was successful, navigate to the **Clusters** option in the left Main Menu in Palette. Select the
+cluster name you created. On the overview page, ensure the cluster status is healthy. No further validation is
+necessary.
+
+### Deploy a Virtual Machine
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. From the left Main Menu, select **Clusters**.
+
+3. Select the cluster you deployed in the _Deploy a VMO Cluster with the Palette UI_ section.
+
+4. Select the **Virtual Machines** tab. If the **Virtual Machines** tab is not displayed, review the RBAC configuration in the _Deploy a VMO Cluster with the Palette UI_ and ensure your user account is configured as instructed.
+
+5. Select the *VirtualMachines* namespace from the **Namespace** drop down menu. This value will be used as the target deployment namespace in your VM manifest. Select **New Virutal Machine**.
+
+6. Select the **Ubuntu 22.04 (pod nw)** template. This template configures your VM to get IP addresses from your configured pod subnets.
+
+    The **VM settings** page allows you to customize basic VM configurations. Set the values as instructed in the table below. Select **Next**.
+
+| Configuration | Value | Description |
+|---------------|-------|-------------|
+| CPUs (cores) | 2 | The number of CPU cores your VM will have. |
+| Memory (GiB) | 2 | The amount of Memory your VM will have in GiB |
+| Storage Access Mode | ReadWriteMany | We recommend always using ReadWriteMany. This configuration allows your VM to read the storage volume from any node in your cluster. This is required if you plan to migrate your VM between nodes. <br /> This configuration also helps to avoid node congestion as Kubernetes will attempt to schedule your VM on the node where the storage volume is first mounted. |
+| OS image URL | N/A | Your image location is defined in the Ubuntu 22.04 (pod nw) template. This field can be used if you choose to use custom OS images for your VM. |
+| Start VM automatically after creation | Halted | This can be set to your preference. The tutorial will cover how to manually start your VM. |
+
+:::info
+
+The [virtual_machines.tf](/tutorials/vmo/vmo-maas/#virtual_machinestf) section contains a table the discusses some of the values displayed in the text editor frame. We recommened reviweing the table to learn more about customizing your VM deployment.
+
+:::
+
+7. Select **Next**.
+
+8. Select **Create Virtual Machine**.
+
+### Validate the Application
+
+The deployed VM should be successfully provisioned, in a healthy state, and the
+[_hello-universe_](https://github.com/spectrocloud/hello-universe) application be installed and functional.
+
+In Palette, navigate to the left main menu and select **Clusters**. Select the cluster you created.
+
+Select the URL link for port **:8080** to access the Hello Universe application.
+
+![Image that shows the cluster overview of the Hello Universe Frontend Cluster](/tutorials/deploy-cluster-profile-updates/clusters_cluster-management_deploy-cluster-profile-updates_deployed-FE-cluster.webp)
+
+Your result should be similar to the below screenshot.
+
+![Image that shows the cluster overview of the Hello Universe Frontend Cluster](/tutorials/deploy-cluster-profile-updates/clusters_cluster-management_deploy-cluster-profile-updates_hello-universe-without-api.webp)
+
+
+The Palette UI provides a prebuilt command you can use to connect to your VM with SSH. Select **Copy SSH command** from the **Actions** drop down menu. This command can be pasted into a terminal window on your workstation. This requires virtctl to be installed on your local machine. 
+
+### Clean Up - UI Workflow
 
 Use the following steps to remove all the resources you created for the tutorial.
 
-To remove the cluster, navigate to the left Main Menu and click on **Clusters**. Select the cluster you want to delete
+To remove the cluster, navigate to the left Main Menu and select **Clusters**. Select the cluster you want to delete
 to access its overview page.
 
-Click on **Settings** to expand the menu, and select **Delete Cluster**.
+Select on **Settings** to expand the menu, and select **Delete Cluster**.
 
 ![Delete cluster](/getting-started/azure/getting-started_deploy-k8s-cluster_delete-cluster-button.webp)
 
@@ -570,15 +1375,15 @@ the delete step. The deletion process takes several minutes to complete.
 :::info
 
 If a cluster remains in the delete phase for over 15 minutes, it becomes eligible for a force delete. To trigger a force
-delete, navigate to the cluster’s details page, click on **Settings**, then select **Force Delete Cluster**. Palette
+delete, navigate to the cluster’s details page, select on **Settings**, then select **Force Delete Cluster**. Palette
 automatically removes clusters stuck in the cluster deletion phase for over 24 hours.
 
 :::
 
 <br />
 
-Once the cluster is deleted, navigate to the left **Main Menu** and click on **Profiles**. Find the cluster profile you
-created and click on the **three-dot Menu** to display the **Delete** button. Select **Delete** and confirm the
+Once the cluster is deleted, navigate to the left **Main Menu** and select **Profiles**. Find the cluster profile you
+created and select the **three-dot Menu** to display the **Delete** button. Select **Delete** and confirm the
 selection to remove the cluster profile.
 
 </TabItem>
