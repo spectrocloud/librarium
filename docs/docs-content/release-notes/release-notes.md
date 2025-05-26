@@ -15,7 +15,7 @@ tags: ["release-notes"]
 
 ### Bug Fixes
 
-- Fixed an issue where certain artifacts were not found while syncing registries for [Edge](../clusters/edge/edge.md)
+- Fixed an issue where add-on packs/helm-chart artifacts were not found while syncing registries for [Edge](../clusters/edge/edge.md)
   clusters.
 - Fixed an issue that prevented add-on profiles from being deployed on [Edge](../clusters/edge/edge.md) clusters
   containing the `harbor-edge-native-config` pack.
@@ -25,7 +25,7 @@ tags: ["release-notes"]
 ### Bug Fixes
 
 - Fixed an issue that occasionally caused `stylus-agent` restarts and a `stylus-operator` failure loop when deploying
-  clusters.
+  clusters due to unsafe concurrent data access.
 
 ## May 7, 2025 - Release 4.6.25
 
