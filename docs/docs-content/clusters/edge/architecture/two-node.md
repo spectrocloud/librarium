@@ -47,7 +47,9 @@ change the number of nodes.
   [Deployment Modes](../../../deployment-modes/deployment-modes.md).
 - Two-node clusters can only have exactly two nodes in the control plane pool. You cannot adjust the number of the nodes
   in the control plane pool after cluster creation.
-- Two-node clusters only support K3s and Palette Optimized Canonical Kubernetes distributions. Other Kubernetes distributions are not supported. However, Palette Optimized Canonical Kubernetes clusters require at least three nodes to operate in high availability mode.
+- Two-node clusters only support K3s and Palette Optimized Canonical Kubernetes distributions. Other Kubernetes
+  distributions are not supported. However, Palette Optimized Canonical Kubernetes clusters require at least three nodes
+  to operate in high availability mode.
 
 ## Use Cases
 

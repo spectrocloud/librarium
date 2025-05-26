@@ -37,6 +37,7 @@ The following are architectural highlights of Palette-provisioned Edge native cl
 
 - The Palette Optimized Canonical distribution that supports Canonical Kubernetes is a Tech Preview feature and does not
   support the following:
+
   - ARM64 architecture
   - Versions other than 1.32.3
   - Cluster updates
@@ -45,11 +46,15 @@ The following are architectural highlights of Palette-provisioned Edge native cl
   - [Network overlay](../networking/vxlan-overlay/)
   - High availability mode with one or two nodes.
 
-- When scaling down a Palette Optimized Canonical Kubernetes cluster with two nodes, ensure you do not delete the leader node. In this configuration, one node is the leader (and voter), while the other is a spare. Deleting the leader will render the cluster inaccessible, as database updates are not replicated to the spare node.
+- When scaling down a Palette Optimized Canonical Kubernetes cluster with two nodes, ensure you do not delete the leader
+  node. In this configuration, one node is the leader (and voter), while the other is a spare. Deleting the leader will
+  render the cluster inaccessible, as database updates are not replicated to the spare node.
 
 :::info
 
-The Palette Optimized Canonical Kubernetes distibution uses Dqlite as its datastore. Each node assumes one of the following roles at any given time:
+The Palette Optimized Canonical Kubernetes distibution uses Dqlite as its datastore. Each node assumes one of the
+following roles at any given time:
+
 - Voter: replication and leader election voting are enabled.
 - Stand-by: only replication is enabled.
 - Spare: neither replication nor election is enabled.
@@ -63,6 +68,7 @@ control plane nodes:      10.10.216.81:6400 (voter), 10.10.217.4:6400 (voter), 1
 high availability:        yes
 datastore:                k8s-dqlite
 ```
+
 :::
 
 ## Minimum Device Requirements
