@@ -127,7 +127,7 @@ Machines (VMs) that need to be migrated.
 
        Replace the `<myregistry/myrepository:tag>` with your chosen base image registry, repository, and tag (for example: `ubuntu:22.04`).
 
-    6. Authenticate with your OCI registry. The following examples are for the Harbor and AWS ECR.
+    6. Authenticate with your OCI registry. The following examples are for Harbor and AWS ECR.
 
        <Tabs groupId="oci-registry">
 
