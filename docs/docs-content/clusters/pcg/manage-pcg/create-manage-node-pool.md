@@ -23,8 +23,8 @@ natively support IPAM and DHCP.
 :::
 
 You can create additional node pools to meet the requirements of your workloads, such as defining different node pools
-for different workloads, better managing the IP address utilization, or providing additional capacity. Additional IPAM
-node pools can be assigned when deploying a VMware vSphere cluster with a static IP network. This guide provides
+for different workloads, better managing the IP address utilization, or providing additional capacity. You can assign additional IPAM
+node pools when deploying a VMware vSphere cluster with a static IP network. This guide provides
 instructions on how to create an IPAM node pool for a PCG deployed in a VMware vSphere environment.
 
 ## Prerequisites
@@ -82,7 +82,7 @@ instructions on how to create an IPAM node pool for a PCG deployed in a VMware v
    | ------------------ | -------------------------------------------------------- |
    | **IP Start range** | The starting IP address for the node pool.               |
    | **IP End range**   | The ending IP address for the node pool.                 |
-   | **Network Prefix** | The network prefix for the node pool. For example `/18`. |
+   | **Network Prefix** | The network prefix for the node pool. For example, `/18`. |
 
    #### Subnet
 
