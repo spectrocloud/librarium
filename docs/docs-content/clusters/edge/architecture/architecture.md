@@ -55,9 +55,9 @@ The following are architectural highlights of Palette-provisioned Edge native cl
 The Palette Optimized Canonical Kubernetes distribution uses distributed SQLite (Dqlite) as its datastore. Each node
 assumes one of the following roles at any given time:
 
-- Voter: replication and leader election voting are enabled.
-- Stand-by: only replication is enabled.
-- Spare: neither replication nor election is enabled.
+- Voter - replication and leader election voting are enabled.
+- Stand-by - only replication is enabled.
+- Spare - neither replication nor election is enabled.
 
 Run the `k8s status` command on a control plane node to view the current roles of all nodes in the cluster.
 
