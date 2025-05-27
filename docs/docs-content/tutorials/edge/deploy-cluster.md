@@ -548,7 +548,7 @@ is an explanation of the options and sub-commands used below:
   vm_cpu_sockets          = 4
   vm_cpu_cores            = 1
   vm_mem_size             = 8192
-  vm_disk_size            = 102400
+  vm_disk_size            = 153600
   thin_provision          = true
   disk_eagerly_scrub      = false
   vm_disk_controller_type = ["pvscsi"]
