@@ -61,8 +61,7 @@ assumes one of the following roles at any given time:
 
 Run the `k8s status` command on a control plane node to view the current roles of all nodes in the cluster.
 
-```bash
-root@edge-d86b3842940aaf4296dcdb0d5f374f89:~# k8s status
+```bash hideClipboard title="Example output of 'k8s status'"
 cluster status:           ready
 control plane nodes:      10.10.216.81:6400 (voter), 10.10.217.4:6400 (voter), 10.10.220.115:6400 (voter)
 high availability:        yes
