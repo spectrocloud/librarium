@@ -8,7 +8,7 @@ tags: ["pcg"]
 ---
 
 You can create and manage additional node pools for a Private Cloud Gateway (PCG) deployed in VMware vSphere. By
-default, a PCG is created with a single IP Address Management (IPAM) node pool definition based on the values provided during the installation process. The default node pool created during the installation is reserved for the PCG cluster and cannot be used by other clusters. A secondary IPAM node pool is also required if you selected static placement during the PCG installation process.
+default, a PCG is created with a single node pool definition based on the values provided during the installation process. The default node pool created during the installation is reserved for the PCG cluster and cannot be used by other clusters. A secondary IP Address Management (IPAM) node pool is also required if you selected static placement during the PCG installation process.
 
 :::info
 
