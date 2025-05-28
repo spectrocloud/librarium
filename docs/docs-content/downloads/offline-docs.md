@@ -102,7 +102,7 @@ The following software must be installed on your system:
 docker run --publish 8080:80 --publish 2019:2019 --rm ghcr.io/spectrocloud/librarium:nightly
 ```
 
-## Deploy the Documentation with Custom Logos
+## Deploy the Offline Documentation with Custom Logos
 
 You can provide your own custom logos to the Spectro Cloud documentation.
 
@@ -112,17 +112,17 @@ We recommend that you provide two logos, one for dark mode and one for light mod
 
 :::
 
-1. Download the logos you want to configure to your local machine. Replace the placeholders in the following command
-   with the path to your logo files. Then, execute the command in your terminal to save the location of the files to two
-   environment variables.
+1. Download the logos you want to configure to your local machine.
+
+2. Replace the placeholders in the following command with the path to your logo files. Then, execute the command in your
+   terminal to save the location of the files to two environment variables.
 
 ```shell
-export LIGHT_LOGO_PATH= path/to/your/light/logo/file
-export DARK_LOGO_PATH= path/to/your/dark/logo/file
-
+export LIGHT_LOGO_PATH=path/to/light/custom/logo/file \
+export DARK_LOGO_PATH=path/to/dark/custom/logo/file
 ```
 
-2. Use the following command to start the documentation in a Docker container.
+3. Use the following command to start the documentation in a Docker container.
 
    ```shell
    docker run \
@@ -146,8 +146,8 @@ export DARK_LOGO_PATH= path/to/your/dark/logo/file
 
    :::
 
-3. Open a browser and navigate to `http://localhost:8080` to view the documentation. The navigation bar displays your
-   configured logo.
+4. Open a browser and navigate to `http://localhost:8080` to view the documentation. The navigation bar displays your
+   custom configured logo.
 
 ## Validation
 
