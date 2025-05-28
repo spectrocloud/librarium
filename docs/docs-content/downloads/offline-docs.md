@@ -22,7 +22,7 @@ the Palette CLI `docs` command [page](../automation/palette-cli/commands/docs.md
 
 :::
 
-### Limitations
+## Limitations
 
 The following limitations apply when using the offline documentation:
 
@@ -32,7 +32,7 @@ The following limitations apply when using the offline documentation:
 
 - The documentation AI helper is not available.
 
-### Prerequisites
+## Prerequisites
 
 The following software must be installed on your system:
 
