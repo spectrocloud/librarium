@@ -29,13 +29,37 @@ impacted clusters until you've handled the below mentioned breaking changes and 
 
 :::
 
-- Earlier Palette releases carried a stop-gap patch to drain Portworx pods gracefully during node repaves. In this
-  release, that patch has been removed to avoid including vendor-specific logic in Palette. The equivalent logic now
-  resides inside the Portworx CSI pack v3.2.3 or later.
+- Due to an upgrade of Cluster API Provider AWS (CAPA) to v2.7.1, Palette requires additional Amazon Web Services (AWS)
+  permissions to operate and perform actions on your behalf. Refer to the
+  [Required IAM Policies](../clusters/public-cloud/aws/required-iam-policies.md) reference page for a full list of core
+  policies and minimum permissions.
 
-  For any clusters using the <VersionedLink text="Portworx CSI" url="/integrations/packs/?pack=csi-portworx-generic"/>
-  v3.2.2 or earlier, you must choose _one_ of the following actions to prevent Portworx pods failing during node repaves
-  after Palette has been upgraded to this release.
+- Due to an upgrade of Cluster API Provider GCP (CAPG) to
+  [v1.8.1](https://github.com/kubernetes-sigs/cluster-api-provider-gcp/releases/tag/v1.8.1), the following additional
+  IAM permissions are now required for GCP cluster deployments:
+
+  - `compute.disks.setLabels`
+  - `compute.globalForwardingRules.setLabels`
+
+  This is due to a fix in [v1.8.0](https://github.com/kubernetes-sigs/cluster-api-provider-gcp/releases/tag/v1.8.0)
+  where labels may be populated for persistent disks and global forwarding rules. Refer to the
+  [Required IAM Permissions](../clusters/public-cloud/gcp/required-permissions.md#required-permissions) guide for all
+  required GCP IAM permissions.
+
+- After upgrading Palette to this release, Palette will automatically trigger a repave on existing GKE clusters for node
+  pools. This is because the CAPG version has been updated from v1.2.1 to v1.8.1, which automatically adds a new
+  ownership label `capg-<cluster-name>=owned`. As GKE treats a node pool label map as immutable, the label insertion
+  triggers a rolling repave of all worker nodes.
+
+  <!--prettier-ignore-start-->
+
+- Earlier Palette releases carried a stop-gap patch to drain Portworx pods gracefully during node repaves. In this
+  release, that patch has been moved to the
+  <VersionedLink text="Portworx CSI pack" url="/integrations/packs/?pack=csi-portworx-generic" /> from v3.2.3 onwards.
+  <!--prettier-ignore-end-->
+
+  For any clusters using the Portworx CSI pack v3.2.2 or earlier, you must choose _one_ of the following actions to
+  prevent Portworx pods failing during node repaves after Palette has been upgraded to this release.
 
   - Update the Portworx CSI pack to the latest available version, which is v3.2.3 in this Palette release, and
     [update your cluster](../clusters/cluster-management/cluster-updates.md).
@@ -89,28 +113,6 @@ impacted clusters until you've handled the below mentioned breaking changes and 
        labels:
          cluster.x-k8s.io/drain: skip
      ```
-
-- Due to an upgrade of Cluster API Provider AWS (CAPA) to v2.7.1, Palette requires additional Amazon Web Services (AWS)
-  permissions to operate and perform actions on your behalf. Refer to the
-  [Required IAM Policies](../clusters/public-cloud/aws/required-iam-policies.md) reference page for a full list of core
-  policies and minimum permissions.
-
-- Due to an upgrade of Cluster API Provider GCP (CAPG) to
-  [v1.8.1](https://github.com/kubernetes-sigs/cluster-api-provider-gcp/releases/tag/v1.8.1), the following additional
-  IAM permissions are now required for GCP cluster deployments:
-
-  - `compute.disks.setLabels`
-  - `compute.globalForwardingRules.setLabels`
-
-  This is due to a fix in [v1.8.0](https://github.com/kubernetes-sigs/cluster-api-provider-gcp/releases/tag/v1.8.0)
-  where labels may be populated for persistent disks and global forwarding rules. Refer to the
-  [Required IAM Permissions](../clusters/public-cloud/gcp/required-permissions.md#required-permissions) guide for all
-  required GCP IAM permissions.
-
-- After upgrading Palette to this release, Palette will automatically trigger a repave on existing GKE clusters for node
-  pools. This is because the CAPG version has been updated from v1.2.1 to v1.8.1, which automatically adds a new
-  ownership label `capg-<cluster-name>=owned`. As GKE treats a node pool label map as immutable, the label insertion
-  triggers a rolling repave of all worker nodes.
 
 #### Features
 
