@@ -29,6 +29,42 @@ impacted clusters until you've handled the below mentioned breaking changes and 
 
 :::
 
+- Earlier Palette releases carried a stop-gap patch to drain Portworx pods gracefully during node repaves. In this
+  release, that patch has been removed to avoid including vendor-specific logic in Palette. The equivalent logic now
+  resides inside the Portworx CSI pack v3.2.3 or later.
+
+  For any clusters using the <VersionedLink text="Portworx CSI" url="/integrations/packs/?pack=csi-portworx-generic"/>
+  v3.2.2 or earlier, you must choose _one_ of the following actions to prevent Portworx pods failing during node
+  repaves.
+
+  - Update the Portworx CSI pack to the latest available version, which is v3.2.3 in this Palette release, and
+    [update your cluster](../clusters/cluster-management/cluster-updates.md).
+
+  - Add the following
+    [MachineDrainRule](https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240930-machine-drain-rules.md)
+    manifest to your Portworx CSI layer in Palette and
+    [update your cluster](../clusters/cluster-management/cluster-updates.md).
+
+    ![New manifest option in Portworx CSI layer](/release-notes_release-notes_new-manifest-portworx.webp)
+
+    ```yaml
+    apiVersion: cluster.x-k8s.io/v1beta1
+    kind: MachineDrainRule
+    metadata:
+      name: portworx
+      namespace: portworx
+    spec:
+      drain:
+        behavior: Drain
+        order: 100
+      machines:
+        - selector: {}
+      pods:
+        - selector:
+            matchLabels:
+              operator.libopenstorage.org/managed-by: portworx
+    ```
+
 - Due to a new behavior introduced with Cluster API (CAPI) v1.9.4, you must add the `cluster.x-k8s.io/drain: skip` label
   to any deployments with the `Node.spec.unschedulable` toleration set. If not added, this can lead to deployments stuck
   in a termination loop due to an unwanted
