@@ -230,8 +230,7 @@ docker-image: ## Build the docker image
 	docker build -t $(IMAGE) .
 
 docker-start: docker-image ## Build the docker image and start a local development container
-	docker run --env-file=.env --rm -it -v $(CURDIR)/docs:/librarium/docs/ -v $(CURDIR)/_partials/:/librarium/_partials/ -p 9000:9000 $(IMAGE)
-
+	IMAGE=$(IMAGE) ./scripts/start-docker.sh
 
 ##@ Writing Checks
 
@@ -249,7 +248,7 @@ check-writing: ## Run Vale on changed Markdown/MDX files
 
 ##@ Formatting Checks
 
-format: ## Apply Prettier formating to all files.
+format: ## Apply Prettier formatting to all files.
 	npm run format
 
 format-check: ## Check if all files are formatted with Prettier.
