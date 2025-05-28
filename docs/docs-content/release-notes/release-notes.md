@@ -212,7 +212,7 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 - The Bring-Your-Own-Registry (BYOR) approach to configuring
   [primary registries](../clusters/edge/site-deployment/deploy-custom-registries/deploy-primary-registry.md), along with
-  the associated **Zot**, **Harbor**, and **Registry Connect** packs, are exiting Tech Preview status and now
+  the associated Zot, Harbor, and Registry Connect packs, are exiting Tech Preview status and are now
   production-ready.
 - Improved the upgrade process for the Palette agent and increased its reliability.
 - Palette CLI now supports uploading one or more content bundles to the Edge host as long as the host has enough
