@@ -117,10 +117,10 @@ We recommend that you provide two logos, one for dark mode and one for light mod
 2. Replace the placeholders in the following command with the path to your logo files. Then, execute the command in your
    terminal to save the location of the files to two environment variables.
 
-```shell
-export LIGHT_LOGO_PATH=path/to/light/custom/logo/file \
-export DARK_LOGO_PATH=path/to/dark/custom/logo/file
-```
+   ```shell
+   export LIGHT_LOGO_PATH=path/to/light/custom/logo/file \
+   export DARK_LOGO_PATH=path/to/dark/custom/logo/file
+   ```
 
 3. Use the following command to start the documentation in a Docker container.
 
@@ -134,17 +134,6 @@ export DARK_LOGO_PATH=path/to/dark/custom/logo/file
     --publish 2019:2019  \
     --rm ghcr.io/spectrocloud/librarium:nightly
    ```
-
-   :::info
-
-   If another process is using port `8080`, you can change the port mapping to use a different port. For example, to use
-   port `8081`, use the following command:
-
-   ```shell
-   docker run --publish 8081:80 --publish 2019:2019 --rm ghcr.io/spectrocloud/librarium:nightly
-   ```
-
-   :::
 
 4. Open a browser and navigate to `http://localhost:8080` to view the documentation. The navigation bar displays your
    custom configured logo.
