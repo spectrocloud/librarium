@@ -62,6 +62,7 @@ having issues when deploying a host cluster.
 | `compute.instanceGroups.list`                          | List instance groups                                                                            |
 | `compute.instanceGroups.update`                        | Update instance groups                                                                          |
 | `compute.instanceGroups.use`                           | Use instance groups                                                                             |
+| `compute.instanceGroupManagers.get`                    | Get instance group manager information                                                          |
 | `compute.instances.create`                             | Create instances                                                                                |
 | `compute.instances.delete`                             | Delete instances                                                                                |
 | `compute.instances.get`                                | Get instance information                                                                        |
