@@ -22,7 +22,7 @@ the Palette CLI `docs` command [page](../automation/palette-cli/commands/docs.md
 
 :::
 
-## Limitations
+### Limitations
 
 The following limitations apply when using the offline documentation:
 
@@ -32,7 +32,7 @@ The following limitations apply when using the offline documentation:
 
 - The documentation AI helper is not available.
 
-## Prerequisites
+### Prerequisites
 
 The following software must be installed on your system:
 
@@ -101,42 +101,6 @@ The following software must be installed on your system:
 ```shell
 docker run --publish 8080:80 --publish 2019:2019 --rm ghcr.io/spectrocloud/librarium:nightly
 ```
-
-## Deploy the Offline Documentation with Custom Logos
-
-You can provide your own custom logos to the Spectro Cloud documentation.
-
-:::info
-
-We recommend that you provide two logos, one for dark mode and one for light mode. The files must be in PNG format.
-
-:::
-
-1. Download the logos you want to configure to your local machine.
-
-2. Replace the placeholders in the following command with the path to your logo files. Then, execute the command in your
-   terminal to save the location of the files to two environment variables.
-
-   ```shell
-   export LIGHT_LOGO_PATH=path/to/light/custom/logo/file \
-   export DARK_LOGO_PATH=path/to/dark/custom/logo/file
-   ```
-
-3. Use the following command to start the documentation in a Docker container.
-
-   ```shell
-   docker run \
-    --env LIGHT_LOGO_PATH=$LIGHT_LOGO_PATH \
-    --env DARK_LOGO_PATH=$DARK_LOGO_PATH \
-    --volume "$(realpath "$LIGHT_LOGO_PATH")":/librarium/static/img/custom-light-logo.png \
-    --volume "$(realpath "$DARK_LOGO_PATH")":/librarium/static/img/custom-dark-logo.png \
-    --publish 8080:80 \
-    --publish 2019:2019  \
-    --rm ghcr.io/spectrocloud/librarium:nightly
-   ```
-
-4. Open a browser and navigate to `http://localhost:8080` to view the documentation. The navigation bar displays your
-   custom configured logo.
 
 ## Validation
 
