@@ -285,9 +285,9 @@ Check out the [CLI Tools](../downloads/cli-tools.md) page to find the compatible
 | Palette eXtended Kubernetes Edge (PXK-E) | 1.31.7      |
 | Palette eXtended Kubernetes Edge (PXK-E) | 1.30.11     |
 | Palette Optimized Canonical              | 1.32.3      |
-| Palette Optimized K3S                    | 1.32.3      |
-| Palette Optimized K3S                    | 1.31.7      |
-| Palette Optimized K3S                    | 1.30.11     |
+| Palette Optimized K3s                    | 1.32.3      |
+| Palette Optimized K3s                    | 1.31.7      |
+| Palette Optimized K3s                    | 1.30.11     |
 | Palette Optimized RKE2                   | 1.32.3      |
 | Palette Optimized RKE2                   | 1.31.7      |
 | Palette Optimized RKE2                   | 1.30.11     |
