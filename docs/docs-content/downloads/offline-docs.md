@@ -126,10 +126,10 @@ We recommend that you provide two logos, one for dark mode and one for light mod
 
    ```shell
    docker run \
-    -e LIGHT_LOGO_PATH=$LIGHT_LOGO_PATH \
-    -e DARK_LOGO_PATH=$DARK_LOGO_PATH \
-    -v "$(realpath "$LIGHT_LOGO_PATH")":/librarium/static/img/custom-light-logo.png \
-    -v "$(realpath "$DARK_LOGO_PATH")":/librarium/static/img/custom-dark-logo.png \
+    --env LIGHT_LOGO_PATH=$LIGHT_LOGO_PATH \
+    --env DARK_LOGO_PATH=$DARK_LOGO_PATH \
+    --volume "$(realpath "$LIGHT_LOGO_PATH")":/librarium/static/img/custom-light-logo.png \
+    --volume "$(realpath "$DARK_LOGO_PATH")":/librarium/static/img/custom-dark-logo.png \
     --publish 8080:80 \
     --publish 2019:2019  \
     --rm ghcr.io/spectrocloud/librarium:nightly
