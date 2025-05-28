@@ -56,13 +56,13 @@ having issues when deploying a host cluster.
 | `compute.healthChecks.get`                             | Get health check information                                                                    |
 | `compute.healthChecks.list`                            | List health checks                                                                              |
 | `compute.healthChecks.useReadOnly`                     | Use health checks in read-only mode                                                             |
+| `compute.instanceGroupManagers.get`                    | Get instance group manager information                                                          |
 | `compute.instanceGroups.create`                        | Create instance groups                                                                          |
 | `compute.instanceGroups.delete`                        | Delete instance groups                                                                          |
 | `compute.instanceGroups.get`                           | Get instance group information                                                                  |
 | `compute.instanceGroups.list`                          | List instance groups                                                                            |
 | `compute.instanceGroups.update`                        | Update instance groups                                                                          |
 | `compute.instanceGroups.use`                           | Use instance groups                                                                             |
-| `compute.instanceGroupManagers.get`                    | Get instance group manager information                                                          |
 | `compute.instances.create`                             | Create instances                                                                                |
 | `compute.instances.delete`                             | Delete instances                                                                                |
 | `compute.instances.get`                                | Get instance information                                                                        |
@@ -85,29 +85,40 @@ having issues when deploying a host cluster.
 | `compute.routes.delete`                                | Delete routes                                                                                   |
 | `compute.routes.get`                                   | Get route information                                                                           |
 | `compute.routes.list`                                  | List routes                                                                                     |
-| `compute.subnetworks.create`                           | Create subnetwork                                                                               |
-| `compute.subnetworks.delete`                           | Delete subnetwork                                                                               |
+| `compute.subnetworks.create`                           | Create subnetworks                                                                              |
+| `compute.subnetworks.delete`                           | Delete subnetworks                                                                              |
+| `compute.subnetworks.get`                              | Get subnetwork information                                                                      |
 | `compute.subnetworks.list`                             | List subnetworks                                                                                |
-| `compute.subnetworks.use`                              | Use subnetwork                                                                                  |
+| `compute.subnetworks.use`                              | Use subnetworks                                                                                 |
+| `compute.targetTcpProxies.create`                      | Create target TCP proxies                                                                       |
+| `compute.targetTcpProxies.delete`                      | Delete target TCP proxies                                                                       |
+| `compute.targetTcpProxies.get`                         | Get target TCP proxy information                                                                |
+| `compute.targetTcpProxies.use`                         | Use target TCP proxies                                                                          |
+| `compute.zones.get`                                    | Get zone information                                                                            |
 | `compute.zones.list`                                   | List zones                                                                                      |
-| `container.clusters.create`                            | Create cluster                                                                                  |
-| `container.clusters.delete`                            | Delete cluster                                                                                  |
-| `container.clusters.get`                               | Get clusters                                                                                    |
+| `container.clusters.create`                            | Create clusters                                                                                 |
+| `container.clusters.delete`                            | Delete clusters                                                                                 |
+| `container.clusters.get`                               | Get cluster information                                                                         |
 | `container.clusters.list`                              | List clusters                                                                                   |
-| `container.clusters.update`                            | Update cluster                                                                                  |
-| `resourcemanager.projects.get`                         | Get details of a specified Google Cloud project.                                                |
-| `resourcemanager.projects.list`                        | List all Google Cloud projects that the user has access to.                                     |
-| `storage.objects.get`                                  | Get details of a specified object in Google Cloud Storage.                                      |
-| `storage.objects.list`                                 | List all objects in a specified Google Cloud Storage bucket.                                    |
-| `iam.serviceAccounts.actAs`                            | Act as the service account specified, allowing access to its resources.                         |
-| `iam.serviceAccounts.get`                              | Get details of a specified service account.                                                     |
-| `iam.serviceAccounts.getAccessToken`                   | Get the Oauth2 access token for the service account.                                            |
-| `iam.serviceAccounts.list`                             | List all service accounts available to the user.                                                |
-| `serviceusage.quotas.get`                              | Get quota information for a specified Google Cloud service.                                     |
-| `serviceusage.services.get`                            | Get details of a specified Google Cloud service.                                                |
-| `serviceusage.services.list`                           | List all Google Cloud services available to the user.                                           |
-| `recommender.containerDiagnosisInsights.*`             | Access insights about diagnosed issues with Google Kubernetes Engine containers.                |
-| `recommender.containerDiagnosisRecommendations.*`      | Access recommendations for resolving diagnosed issues with Google Kubernetes Engine containers. |
-| `recommender.locations.*`                              | Access details about locations in Google Cloud Recommender.                                     |
-| `recommender.networkAnalyzerGkeConnectivityInsights.*` | Access insights about network connectivity for Google Kubernetes Engine clusters.               |
-| `recommender.networkAnalyzerGkeIpAddressInsights.*`    | Access insights about IP address usage for Google Kubernetes Engine clusters.                   |
+| `container.clusters.update`                            | Update clusters                                                                                 |
+| `container.operations.get`                             | Get details of container (GKE) operations                                                       |
+| `container.operations.list`                            | List container (GKE) operations                                                                 |
+| `iam.serviceAccounts.actAs`                            | Act as the specified service account                                                            |
+| `iam.serviceAccounts.get`                              | Get details of a specified service account                                                      |
+| `iam.serviceAccounts.getAccessToken`                   | Get an OAuth 2.0 access token for the service account                                           |
+| `iam.serviceAccounts.list`                             | List all service accounts                                                                       |
+| `orgpolicy.policy.get`                                 | Get organization policy information                                                             |
+| `recommender.containerDiagnosisInsights.*`             | Access insights about GKE container diagnostics                                                 |
+| `recommender.containerDiagnosisRecommendations.*`      | Access recommendations for GKE container diagnostics                                            |
+| `recommender.locations.*`                              | Access Recommender location details                                                             |
+| `recommender.networkAnalyzerGkeConnectivityInsights.*` | Access network connectivity insights for GKE clusters                                           |
+| `recommender.networkAnalyzerGkeIpAddressInsights.*`    | Access IP address usage insights for GKE clusters                                               |
+| `resourcemanager.projects.get`                         | Get details of a specified Google Cloud project                                                 |
+| `resourcemanager.projects.list`                        | List all Google Cloud projects the user can access                                              |
+| `serviceusage.quotas.get`                              | Get quota information for a Google Cloud service                                                |
+| `serviceusage.services.get`                            | Get details of a Google Cloud service                                                           |
+| `serviceusage.services.list`                           | List all enabled Google Cloud services                                                          |
+| `storage.objects.create`                               | Create new objects in Cloud Storage                                                             |
+| `storage.objects.delete`                               | Delete objects from Cloud Storage                                                               |
+| `storage.objects.get`                                  | Get details of a specified object in Cloud Storage                                              |
+| `storage.objects.list`                                 | List all objects in a specified Cloud Storage bucket                                            |
