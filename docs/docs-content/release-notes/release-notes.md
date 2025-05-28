@@ -34,8 +34,8 @@ impacted clusters until you've handled the below mentioned breaking changes and 
   resides inside the Portworx CSI pack v3.2.3 or later.
 
   For any clusters using the <VersionedLink text="Portworx CSI" url="/integrations/packs/?pack=csi-portworx-generic"/>
-  v3.2.2 or earlier, you must choose _one_ of the following actions to prevent Portworx pods failing during node
-  repaves.
+  v3.2.2 or earlier, you must choose _one_ of the following actions to prevent Portworx pods failing during node repaves
+  after Palette has been upgraded to this release.
 
   - Update the Portworx CSI pack to the latest available version, which is v3.2.3 in this Palette release, and
     [update your cluster](../clusters/cluster-management/cluster-updates.md).
