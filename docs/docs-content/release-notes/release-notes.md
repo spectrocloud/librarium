@@ -152,6 +152,12 @@ impacted clusters until you've handled the below mentioned breaking changes and 
 
 ### Edge
 
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.6.c Palette release is 4.6.21.
+
+:::
+
 #### Features
 
 - <TpBadge /> The new [Appliance Studio](../deployment-modes/appliance-mode/appliance-studio.md) is a lightweight
