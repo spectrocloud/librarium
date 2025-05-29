@@ -22,8 +22,9 @@ tags: ["release-notes"]
 
 - The required IAM permissions for GCP have been updated.
 
-    <details>
-<summary> Added permissions </summary>
+      <details>
+
+  <summary> Added permissions </summary>
 
   - `compute.instanceGroupManagers.get`
   - `compute.subnetworks.get`
@@ -38,10 +39,11 @@ tags: ["release-notes"]
   - `compute.targetTcpProxies.delete`
   - `compute.targetTcpProxies.use`
 
-    </details>
+        </details>
 
-    <details>
-<summary> Changed permissions </summary>
+        <details>
+
+    <summary> Changed permissions </summary>
 
   - `recommender.containerDiagnosisInsights.*` changes to:
 
@@ -66,15 +68,15 @@ tags: ["release-notes"]
     - `recommender.networkAnalyzerGkeConnectivityInsights.list`
     - `recommender.networkAnalyzerGkeConnectivityInsights.update`
 
-  - `recommender.networkAnalyzerGkeIpAddressInsights.*` changes to:
-    - `recommender.networkAnalyzerGkeIpAddressInsights.get`
-    - `recommender.networkAnalyzerGkeIpAddressInsights.list`
-    - `recommender.networkAnalyzerGkeIpAddressInsights.update`
+  - `recommender.networkAnalyzerGkeIpAddressInsights.*` changes to: -
+    `recommender.networkAnalyzerGkeIpAddressInsights.get` - `recommender.networkAnalyzerGkeIpAddressInsights.list` -
+    `recommender.networkAnalyzerGkeIpAddressInsights.update`
 
-    </details>
+        </details>
 
-    <details>
-<summary> Removed permissions </summary>
+        <details>
+
+    <summary> Removed permissions </summary>
 
   - `resourcemanager.projects.list`
   - `serviceusage.quotas.get`
