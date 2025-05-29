@@ -68,9 +68,11 @@ tags: ["release-notes"]
     - `recommender.networkAnalyzerGkeConnectivityInsights.list`
     - `recommender.networkAnalyzerGkeConnectivityInsights.update`
 
-  - `recommender.networkAnalyzerGkeIpAddressInsights.*` changes to: -
-    `recommender.networkAnalyzerGkeIpAddressInsights.get` - `recommender.networkAnalyzerGkeIpAddressInsights.list` -
-    `recommender.networkAnalyzerGkeIpAddressInsights.update`
+  - `recommender.networkAnalyzerGkeIpAddressInsights.*` changes to:
+
+    - `recommender.networkAnalyzerGkeIpAddressInsights.get`
+    - `recommender.networkAnalyzerGkeIpAddressInsights.list`
+    - `recommender.networkAnalyzerGkeIpAddressInsights.update`
 
   </details>
 
