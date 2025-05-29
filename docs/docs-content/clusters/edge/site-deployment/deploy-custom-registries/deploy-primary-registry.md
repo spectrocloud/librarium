@@ -12,10 +12,6 @@ does not have internet connectivity, you can store all images required for clust
 so your cluster can operate in a local environment. In addition, both local and central clusters can benefit from using
 a primary registry for increased reliability and reduced bandwidth usage.
 
-:::preview
-
-:::
-
 When your Edge cluster is created for the first time, all images in the `pack.content.images` field in each profile
 layer loaded from the content bundle or external registries are stored locally in the primary registry. Subsequent image
 pulls from the cluster are made to the primary registry. This allows your Edge cluster to reboot containers or add new
