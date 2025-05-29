@@ -22,7 +22,7 @@ tags: ["release-notes"]
 
 - The required IAM permissions for GCP have been updated.
 
-  <details>
+    <details>
 <summary> Added permissions </summary>
 
   - `compute.instanceGroupManagers.get`
@@ -38,9 +38,9 @@ tags: ["release-notes"]
   - `compute.targetTcpProxies.delete`
   - `compute.targetTcpProxies.use`
 
-  </details>
+    </details>
 
-  <details>
+    <details>
 <summary> Changed permissions </summary>
 
   - `recommender.containerDiagnosisInsights.*` changes to:
@@ -71,15 +71,15 @@ tags: ["release-notes"]
     - `recommender.networkAnalyzerGkeIpAddressInsights.list`
     - `recommender.networkAnalyzerGkeIpAddressInsights.update`
 
-  </details>
+    </details>
 
-  <details>
+    <details>
 <summary> Removed permissions </summary>
 
   - `resourcemanager.projects.list`
   - `serviceusage.quotas.get`
 
-  </details>
+    </details>
 
   Refer to the [Required IAM Permissions](../clusters/public-cloud/gcp/required-permissions.md#required-permissions)
   guide for all required GCP IAM permissions.
