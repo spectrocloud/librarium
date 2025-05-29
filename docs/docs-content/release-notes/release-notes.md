@@ -20,6 +20,65 @@ tags: ["release-notes"]
 - Fixed an issue that prevented add-on profiles from being deployed on [Edge](../clusters/edge/edge.md) clusters
   containing the `harbor-edge-native-config` pack.
 
+- The required IAM permissions for GCP have been updated.
+
+  <details>
+  <summary> Added permissions </summary>
+
+  - `compute.instanceGroupManagers.get`
+  - `compute.subnetworks.get`
+  - `compute.zones.get`
+  - `container.operations.get`
+  - `container.operations.list`
+  - `orgpolicy.policy.get`
+  - `storage.objects.create`
+  - `storage.objects.delete`
+  - `compute.targetTcpProxies.create`
+  - `compute.targetTcpProxies.get`
+  - `compute.targetTcpProxies.delete`
+  - `compute.targetTcpProxies.use`
+
+  </details>
+
+  <details>
+  <summary> Changed permissions </summary>
+
+  - `recommender.containerDiagnosisInsights.*` changes to:
+    - `recommender.containerDiagnosisInsights.get`
+    - `recommender.containerDiagnosisInsights.list`
+    - `recommender.containerDiagnosisInsights.update`
+
+  - `recommender.containerDiagnosisRecommendations.*` changes to:
+    - `recommender.containerDiagnosisRecommendations.get`
+    - `recommender.containerDiagnosisRecommendations.list`
+    - `recommender.containerDiagnosisRecommendations.update`
+
+  - `recommender.locations.*` changes to:
+    - `recommender.locations.get`
+    - `recommender.locations.list`
+
+  - `recommender.networkAnalyzerGkeConnectivityInsights.*` changes to:
+    - `recommender.networkAnalyzerGkeConnectivityInsights.get`
+    - `recommender.networkAnalyzerGkeConnectivityInsights.list`
+    - `recommender.networkAnalyzerGkeConnectivityInsights.update`
+
+  - `recommender.networkAnalyzerGkeIpAddressInsights.*` changes to:
+    - `recommender.networkAnalyzerGkeIpAddressInsights.get`
+    - `recommender.networkAnalyzerGkeIpAddressInsights.list`
+    - `recommender.networkAnalyzerGkeIpAddressInsights.update`
+
+  </details>
+
+  <details>
+  <summary> Removed permissions </summary>
+
+  - `resourcemanager.projects.list`
+  - `serviceusage.quotas.get` 
+
+  </details>
+
+  Refer to the [Required IAM Permissions](../clusters/public-cloud/gcp/required-permissions.md#required-permissions) guide for all required GCP IAM permissions.
+
 ## May 20, 2025 - Release 4.6.26
 
 ### Bug Fixes
