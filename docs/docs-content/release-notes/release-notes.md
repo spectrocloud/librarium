@@ -29,6 +29,66 @@ impacted clusters until you've handled the below mentioned breaking changes and 
 
 :::
 
+- Due to an upgrade of Cluster API Provider AWS (CAPA) to v2.7.1, Palette requires additional Amazon Web Services (AWS)
+  permissions to operate and perform actions on your behalf. Refer to the
+  [Required IAM Policies](../clusters/public-cloud/aws/required-iam-policies.md) reference page for a full list of core
+  policies and minimum permissions.
+
+- Due to an upgrade of Cluster API Provider GCP (CAPG) to
+  [v1.8.1](https://github.com/kubernetes-sigs/cluster-api-provider-gcp/releases/tag/v1.8.1), the following additional
+  IAM permissions are now required for GCP cluster deployments:
+
+  - `compute.disks.setLabels`
+  - `compute.globalForwardingRules.setLabels`
+
+  This is due to a fix in [v1.8.0](https://github.com/kubernetes-sigs/cluster-api-provider-gcp/releases/tag/v1.8.0)
+  where labels may be populated for persistent disks and global forwarding rules. Refer to the
+  [Required IAM Permissions](../clusters/public-cloud/gcp/required-permissions.md#required-permissions) guide for all
+  required GCP IAM permissions.
+
+- After upgrading Palette to this release, Palette will automatically trigger a repave on existing GKE clusters for node
+  pools. This is because the CAPG version has been updated from v1.2.1 to v1.8.1, which automatically adds a new
+  ownership label `capg-<cluster-name>=owned`. As GKE treats a node pool label map as immutable, the label insertion
+  triggers a rolling repave of all worker nodes.
+
+  <!--prettier-ignore-start-->
+
+- Earlier Palette releases carried a stop-gap patch to drain Portworx pods gracefully during node repaves. In this
+  release, that patch has been moved to the
+  <VersionedLink text="Portworx CSI pack" url="/integrations/packs/?pack=csi-portworx-generic" /> from v3.2.3 onwards.
+  <!--prettier-ignore-end-->
+
+  For any clusters using the Portworx CSI pack v3.2.2 or earlier, you must choose _one_ of the following actions to
+  prevent Portworx pods failing during node repaves after Palette has been upgraded to this release.
+
+  - Update the Portworx CSI pack to the latest available version, which is v3.2.3 in this Palette release, and
+    [update your cluster](../clusters/cluster-management/cluster-updates.md).
+
+  - Add the following
+    [MachineDrainRule](https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240930-machine-drain-rules.md)
+    manifest to your Portworx CSI layer in Palette and
+    [update your cluster](../clusters/cluster-management/cluster-updates.md).
+
+    ![New manifest option in Portworx CSI layer](/release-notes_release-notes_new-manifest-portworx.webp)
+
+    ```yaml
+    apiVersion: cluster.x-k8s.io/v1beta1
+    kind: MachineDrainRule
+    metadata:
+      name: portworx
+      namespace: portworx
+    spec:
+      drain:
+        behavior: Drain
+        order: 100
+      machines:
+        - selector: {}
+      pods:
+        - selector:
+            matchLabels:
+              operator.libopenstorage.org/managed-by: portworx
+    ```
+
 - Due to a new behavior introduced with Cluster API (CAPI) v1.9.4, you must add the `cluster.x-k8s.io/drain: skip` label
   to any deployments with the `Node.spec.unschedulable` toleration set. If not added, this can lead to deployments stuck
   in a termination loop due to an unwanted
@@ -53,28 +113,6 @@ impacted clusters until you've handled the below mentioned breaking changes and 
        labels:
          cluster.x-k8s.io/drain: skip
      ```
-
-- Due to an upgrade of Cluster API Provider AWS (CAPA) to v2.7.1, Palette requires additional Amazon Web Services (AWS)
-  permissions to operate and perform actions on your behalf. Refer to the
-  [Required IAM Policies](../clusters/public-cloud/aws/required-iam-policies.md) reference page for a full list of core
-  policies and minimum permissions.
-
-- Due to an upgrade of Cluster API Provider GCP (CAPG) to
-  [v1.8.1](https://github.com/kubernetes-sigs/cluster-api-provider-gcp/releases/tag/v1.8.1), the following additional
-  IAM permissions are now required for GCP cluster deployments:
-
-  - `compute.disks.setLabels`
-  - `compute.globalForwardingRules.setLabels`
-
-  This is due to a fix in [v1.8.0](https://github.com/kubernetes-sigs/cluster-api-provider-gcp/releases/tag/v1.8.0)
-  where labels may be populated for persistent disks and global forwarding rules. Refer to the
-  [Required IAM Permissions](../clusters/public-cloud/gcp/required-permissions.md#required-permissions) guide for all
-  required GCP IAM permissions.
-
-- After upgrading Palette to this release, Palette will automatically trigger a repave on existing GKE clusters for node
-  pools. This is because the CAPG version has been updated from v1.2.1 to v1.8.1, which automatically adds a new
-  ownership label `capg-<cluster-name>=owned`. As GKE treats a node pool label map as immutable, the label insertion
-  triggers a rolling repave of all worker nodes.
 
 #### Features
 
@@ -173,6 +211,12 @@ impacted clusters until you've handled the below mentioned breaking changes and 
 
 ### Edge
 
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.6.c Palette release is 4.6.21.
+
+:::
+
 #### Features
 
 - <TpBadge /> The new [Appliance Studio](../deployment-modes/appliance-mode/appliance-studio.md) is a lightweight
@@ -189,6 +233,11 @@ impacted clusters until you've handled the below mentioned breaking changes and 
 
 #### Improvements
 
+<!-- prettier-ignore -->
+- The Bring-Your-Own-Registry (BYOR) approach to configuring
+  [primary registries](../clusters/edge/site-deployment/deploy-custom-registries/deploy-primary-registry.md), along with
+  the associated <VersionedLink text="Zot" url="/integrations/packs/?pack=zot-registry" />, <VersionedLink text="Harbor" url="/integrations/packs/?pack=harbor" />, and  <VersionedLink text="Registry Connect" url="/integrations/packs/?pack=registry-connect" /> packs,
+  are exiting Tech Preview status and are now production-ready.
 - Improved the upgrade process for the Palette agent and increased its reliability.
 - Palette CLI now supports uploading one or more content bundles to the Edge host as long as the host has enough
   physical storage and you have allocated sufficient storage to your registry. Refer to the
@@ -312,6 +361,8 @@ Check out the [CLI Tools](../downloads/cli-tools.md) page to find the compatible
 
 | Pack Name                                | New Version |
 | ---------------------------------------- | ----------- |
+| Kubernetes GKE                           | 1.31        |
+| Kubernetes AKS                           | 1.32        |
 | Palette eXtended Kubernetes              | 1.32.3      |
 | Palette eXtended Kubernetes              | 1.31.7      |
 | Palette eXtended Kubernetes              | 1.30.11     |
@@ -319,9 +370,9 @@ Check out the [CLI Tools](../downloads/cli-tools.md) page to find the compatible
 | Palette eXtended Kubernetes Edge (PXK-E) | 1.31.7      |
 | Palette eXtended Kubernetes Edge (PXK-E) | 1.30.11     |
 | Palette Optimized Canonical              | 1.32.3      |
-| Palette Optimized K3S                    | 1.32.3      |
-| Palette Optimized K3S                    | 1.31.7      |
-| Palette Optimized K3S                    | 1.30.11     |
+| Palette Optimized K3s                    | 1.32.3      |
+| Palette Optimized K3s                    | 1.31.7      |
+| Palette Optimized K3s                    | 1.30.11     |
 | Palette Optimized RKE2                   | 1.32.3      |
 | Palette Optimized RKE2                   | 1.31.7      |
 | Palette Optimized RKE2                   | 1.30.11     |
@@ -331,28 +382,41 @@ Check out the [CLI Tools](../downloads/cli-tools.md) page to find the compatible
 
 #### CNI
 
-| Pack Name | New Version |
-| --------- | ----------- |
-| Flannel   | 0.26.4      |
+| Pack Name      | New Version |
+| -------------- | ----------- |
+| Calico (Azure) | 3.29.3      |
+| Flannel        | 0.26.4      |
 
 #### CSI
 
 | Pack Name              | New Version |
 | ---------------------- | ----------- |
 | Local Path Provisioner | 0.0.31      |
+| Piraeus                | 2.8.0       |
+| Portworx /w Operator   | 3.2.3       |
 
 #### Add-on Packs
 
 | Pack Name                    | New Version |
 | ---------------------------- | ----------- |
+| AWS Application Loadbalancer | 2.12.0      |
+| Cilium Tetragon              | 1.4.0       |
+| External Secrets Operator    | 0.15.0      |
+| Flux2                        | 2.15.0      |
 | Local Path Provisioner       | 0.0.31      |
+| Nvidia GPU Operator          | 25.3.0      |
+| Prometheus - Grafana         | 70.2.1      |
 | Spectro Kubernetes Dashboard | 7.11.1      |
-| Zot Registry                 | 0.1.66      |
+| Zot Registry                 | 0.1.67      |
 
 #### FIPS Packs
 
 | Pack Name                                | New Version |
 | ---------------------------------------- | ----------- |
+| Calico                                   | 3.29.3      |
+| Calico (Azure)                           | 3.29.3      |
+| Cilium                                   | 1.17.1      |
+| Flannel                                  | 0.26.4      |
 | Local Path Provisioner                   | 0.0.31      |
 | Palette eXtended Kubernetes              | 1.32.3      |
 | Palette eXtended Kubernetes              | 1.31.7      |
@@ -363,10 +427,11 @@ Check out the [CLI Tools](../downloads/cli-tools.md) page to find the compatible
 | Palette Optimized RKE2                   | 1.32.3      |
 | Palette Optimized RKE2                   | 1.31.7      |
 | Palette Optimized RKE2                   | 1.30.11     |
+| Registry Connect                         | 0.1.0       |
 | RKE2                                     | 1.32.3      |
 | RKE2                                     | 1.31.7      |
 | RKE2                                     | 1.30.11     |
-| Zot Registry                             | 0.1.66      |
+| Zot Registry                             | 0.1.67      |
 
 #### Deprecations and Removals
 
@@ -376,14 +441,89 @@ Check out the [CLI Tools](../downloads/cli-tools.md) page to find the compatible
 
 <!-- prettier-ignore-end -->
 
+## May 26, 2025 - Release 4.6.28
+
+### Bug Fixes
+
+- Fixed an issue where add-on packs and Helm chart artifacts were not found while synchronizing registries for
+  [Edge](../clusters/edge/edge.md) clusters.
+- Fixed an issue that prevented add-on profiles from being deployed on [Edge](../clusters/edge/edge.md) clusters
+  containing the `harbor-edge-native-config` pack.
+
+- The required IAM permissions for GCP have been updated.
+
+  <!--prettier-ignore-->
+  <details>
+  <summary> Added permissions </summary>
+
+  - `compute.instanceGroupManagers.get`
+  - `compute.subnetworks.get`
+  - `compute.zones.get`
+  - `container.operations.get`
+  - `container.operations.list`
+  - `orgpolicy.policy.get`
+  - `storage.objects.create`
+  - `storage.objects.delete`
+  - `compute.targetTcpProxies.create`
+  - `compute.targetTcpProxies.get`
+  - `compute.targetTcpProxies.delete`
+  - `compute.targetTcpProxies.use`
+
+  </details>
+
+  <!--prettier-ignore-->
+  <details>
+  <summary> Changed permissions </summary>
+
+  - `recommender.containerDiagnosisInsights.*` changes to:
+
+    - `recommender.containerDiagnosisInsights.get`
+    - `recommender.containerDiagnosisInsights.list`
+    - `recommender.containerDiagnosisInsights.update`
+
+  - `recommender.containerDiagnosisRecommendations.*` changes to:
+
+    - `recommender.containerDiagnosisRecommendations.get`
+    - `recommender.containerDiagnosisRecommendations.list`
+    - `recommender.containerDiagnosisRecommendations.update`
+
+  - `recommender.locations.*` changes to:
+
+    - `recommender.locations.get`
+    - `recommender.locations.list`
+
+  - `recommender.networkAnalyzerGkeConnectivityInsights.*` changes to:
+
+    - `recommender.networkAnalyzerGkeConnectivityInsights.get`
+    - `recommender.networkAnalyzerGkeConnectivityInsights.list`
+    - `recommender.networkAnalyzerGkeConnectivityInsights.update`
+
+  - `recommender.networkAnalyzerGkeIpAddressInsights.*` changes to:
+
+    - `recommender.networkAnalyzerGkeIpAddressInsights.get`
+    - `recommender.networkAnalyzerGkeIpAddressInsights.list`
+    - `recommender.networkAnalyzerGkeIpAddressInsights.update`
+
+  </details>
+
+  <!--prettier-ignore-->
+  <details>
+  <summary> Removed permissions </summary>
+
+  - `resourcemanager.projects.list`
+  - `serviceusage.quotas.get`
+
+  </details>
+
+  Refer to the [Required IAM Permissions](../clusters/public-cloud/gcp/required-permissions.md#required-permissions)
+  guide for all required GCP IAM permissions.
+
 ## May 20, 2025 - Release 4.6.26
 
 ### Bug Fixes
 
 - Fixed an issue that occasionally caused `stylus-agent` restarts and a `stylus-operator` failure loop when deploying
-  clusters.
-- Fixed an issue that prevented add-on profiles from being deployed on [Edge](../clusters/edge/edge.md) clusters
-  containing the `harbor-edge-native-config` pack.
+  clusters due to unsafe concurrent data access.
 
 ## May 7, 2025 - Release 4.6.25
 
