@@ -188,6 +188,27 @@ impacted clusters until you've handled the below mentioned breaking changes and 
   authenticate without a username and password. We recommend using authenticated SMTP wherever possible. Refer to the
   [Configure SMTP](../enterprise-version/system-management/smtp.md) guide for further information.
 
+#### Bug Fixes
+
+- Fixed an issue that caused the `velero-upgrade-crds` job to fail, which prevented CRD updates and impacted Velero's
+  backup and restore operations in clusters.
+- Fixed a UI issue that prevented custom
+  [cluster profile variable](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/create-cluster-profile-variables.md)
+  values from being applied to a cluster when updating the cluster profile version.
+- Fixed an issue where entering an invalid regex pattern in cluster profile variables caused a UI error.
+- Fixed a UI issue where lengthy
+  [cluster profile variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/define-profile-variables.md)
+  hid the three-dot menu and copy icon in the **Profile variables** pane.
+- Fixed a UI issue where selecting a non-OS layer on the cluster **Overview** tab opened the YAML editor for the OS
+  layer.
+- Fixed an issue where the API allowed invalid regex patterns to be defined in
+  [cluster profile variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/create-cluster-profile-variables.md)
+  without validation.
+- Fixed an issue that caused a `code` of `Unauthorized` to be returned instead of an integer when providing the same
+  `newPassword` and `oldPassword` during POST API calls to `v1/users/default/password/reset`.
+- Fixed an issue that caused the `cluster-management-agent` pod to be repeatedly terminated and scheduled onto the same
+  cordoned node after upgrading CAPI versions.
+
 ### Edge
 
 :::info
@@ -230,6 +251,7 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   provisioning errors. Refer to the
   [Collect Support Bundles for Edge Cluster](../troubleshooting/edge/collect-support-bundles.md) troubleshooting
   reference page for further details.
+- Debug logs are now disabled for `system-upgrade-controller` pods in [Edge](../clusters/edge/edge.md) clusters.
 
 #### Deprecations and Removals
 
@@ -238,6 +260,24 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   recommend using the `stylus.managementMode` flag instead, which has two allowed values: `central`, which means the
   Edge host is connected to Palette, and `local`, which means the Edge host has no connection to a Palette instance.
   Refer to the [Prepare User Data](../clusters/edge/edgeforge-workflow/prepare-user-data.md) for further information.
+
+#### Bug Fixes
+
+- Fixed an issue where clusters with [trusted boot](../clusters/edge/trusted-boot/trusted-boot.md) Edge hosts got stuck
+  in the provisioning state when reusing a host from a previously deleted cluster.
+- Fixed an issue that changed certain image paths when upgrading the Palette version on [Edge](../clusters/edge/edge.md)
+  clusters with external registries configured using `stylus.registryCredentials`.
+- Fixed an issue on clusters with [trusted boot](../clusters/edge/trusted-boot/trusted-boot.md) Edge hosts that caused
+  pod upgrades to `system-upgrade-controller` to get stuck due to an `OOMKilled` status.
+- Fixed an issue where the Palette agent incorrectly parsed Helm chart names and versions, leading to uploads
+  overwriting each other.
+
+### Palette Dev Engine (PDE)
+
+#### Bug Fixes
+
+- Fixed an issue where the **Refresh** button was incorrectly displayed in the **Virtual Clusters** tab of the host
+  cluster **Workloads** pane.
 
 ### VerteX
 
@@ -277,6 +317,8 @@ Check out the [CLI Tools](../downloads/cli-tools.md) page to find the compatible
   [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
 
 #### Improvements
+
+- The Spectro Cloud Terraform provider now supports renaming projects.
 
 #### Deprecations and Removals
 
