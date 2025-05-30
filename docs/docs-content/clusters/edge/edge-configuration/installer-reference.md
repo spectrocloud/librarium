@@ -275,8 +275,8 @@ of the default path **/sys/class/dmi/id/product_uuid**, you can use the board Se
 | `stylus.site.deviceUIDPaths[*].name`  | The path of the file containing the UID.         |
 | `stylus.site.deviceUIDPaths[*].regex` | The regular expression pattern to match the UID. |
 
-You can use the `regex` parameter to remove unsupported characters from attributes to Refer to the warning box below for
-a list of unsupported characters.
+You can use the `regex` parameter to remove unsupported characters from attributes. Refer to the warning box below for a
+list of unsupported characters.
 
 ```yaml
 #cloud-config
