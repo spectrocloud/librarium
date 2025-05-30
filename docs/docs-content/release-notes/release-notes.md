@@ -192,9 +192,9 @@ impacted clusters until you've handled the below mentioned breaking changes and 
 
 - Fixed an issue that caused the `velero-upgrade-crds` job to fail, which prevented CRD updates and impacted Velero's
   backup and restore operations in clusters.
-- Fixed an issue in Palette's UI that prevented custom
+- Fixed a UI issue that prevented custom
   [cluster profile variable](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/create-cluster-profile-variables.md)
-  values from being applied to a cluster when updating to a new version of the cluster profile.
+  values from being applied to a cluster when updating the cluster profile version.
 - Fixed an issue where entering an invalid regex pattern in cluster profile variables caused a UI error.
 - Fixed a UI issue where lengthy
   [cluster profile variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/define-profile-variables.md)
