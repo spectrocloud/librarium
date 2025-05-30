@@ -220,6 +220,8 @@ impacted clusters until you've handled the below mentioned breaking changes and 
   clusters with external registries configured using `stylus.registryCredentials`.
 - Fixed an issue on clusters with [trusted boot](../clusters/edge/trusted-boot/trusted-boot.md) Edge hosts that caused
   pod upgrades to `system-upgrade-controller` to get stuck due to an `OOMKilled` status.
+- Fixed an issue where the Palette agent incorrectly parsed Helm chart names and versions, leading to uploads
+  overwriting each other.
 
 ### Palette Dev Engine (PDE)
 
