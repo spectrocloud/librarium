@@ -10,6 +10,78 @@ tags: ["troubleshooting", "self-hosted", "palette", "vertex"]
 
 Refer to the following sections to troubleshoot errors encountered when installing an Enterprise Cluster.
 
+## Scenario - IP Pool Exhausted During Airgapped Upgrade
+
+When upgrading a self-hosted airgapped cluster to version 4.6.c, the IPAM controller may report an `Exhausted IP Pools` error despite having available IP addresses. This is due to a race condition in CAPV version 1.12.0, which may lead to an orphaned IP claim when its associated VMware vSphere machine is deleted during the control plane rollout. When this occurs, the IP claim and IP address are not cleaned up, keeping the IP reserved and exhausting the IP pool. To complete the upgrade, you must manually release the orphaned claim holding the IP address. 
+
+### Debug Steps
+
+1. Open up a terminal session in an environment that has network access to the cluster. Refer to
+   [Access Cluster with CLI](../clusters/cluster-management/palette-webctl.md) for additional guidance.
+
+2. Issue the following command to list the IP addresses of the current nodes in the cluster. 
+
+      :::info
+   
+      The airgap support VM is not listed, only the nodes in the cluster.
+
+      :::
+
+   ```bash
+   kubectl get nodes \
+   --output jsonpath='{range .items[*]}{.status.addresses[?(@.type=="InternalIP")].address}{"\n"}{end}'
+   ```
+
+   ```bash hideClipboard title="Example output"
+   10.10.227.13
+   10.10.227.11
+   10.10.227.14
+   ```
+
+3. List all IP claims in the `spectro-mgmt` namespace. The base `spectro-mgmt-cluster` claim belongs to the airgap support VM.
+
+   ```bash
+   kubectl get ipclaim --namespace spectro-mgmt
+   ```
+
+   ```bash hideClipboard title="Example output"
+   NAMESPACE      NAME                                   AGE
+   spectro-mgmt   spectro-mgmt-cluster                   29h
+   spectro-mgmt   spectro-mgmt-cluster-cp-43978-dw858-0  14h
+   spectro-mgmt   spectro-mgmt-cluster-cp-43978-p2bpg-0  29h
+   spectro-mgmt   spectro-mgmt-cluster-cp-dt44d-0        14h
+   spectro-mgmt   spectro-mgmt-cluster-cp-qx4vw-0        6m
+   ```
+
+4. Map each claim to its allocated IP. 
+
+   ```bash
+   kubectl get ipclaim --namespace spectro-mgmt \
+   --output jsonpath='{range .items[*]}{.metadata.name}{"\t"}{.status.address.name}{"\n"}{end}'
+   ```
+   Compare the IP addresses of the nodes in the cluster to the IP addresses in the claim list, ignoring the `spectro-mgmt-cluster` claim of the airgap support VM. The IP that appears in the claim list that does not appear in the node list is the orphaned claim. In the below example, the orphaned claim is `spectro-mgmt-cluster-cp-qx4vw-0`, which is tied to the IP address 10.10.227.12 (`spectro-mgmt-cluster-cluster1-10-10-227-12`).
+
+   ```bash hideClipboard title="Example output" {5}
+   spectro-mgmt-cluster                   spectro-mgmt-cluster-cluster1-10-10-227-10
+   spectro-mgmt-cluster-cp-43978-dw858-0  spectro-mgmt-cluster-cluster1-10-10-227-14
+   spectro-mgmt-cluster-cp-43978-p2bpg-0  spectro-mgmt-cluster-cluster1-10-10-227-13
+   spectro-mgmt-cluster-cp-dt44d-0        spectro-mgmt-cluster-cluster1-10-10-227-11
+   spectro-mgmt-cluster-cp-qx4vw-0        spectro-mgmt-cluster-cluster1-10-10-227-12
+   ```
+
+5. Delete the orphaned claim.
+
+   ```bash
+   kubectl delete ipclaim --namespace spectro-mgmt <claim-name>
+   ```
+
+   ```bash hideClipboard title="Example command"
+   kubectl delete ipclaim --namespace spectro-mgmt spectro-mgmt-cluster-cp-qx4vw-0
+   ```
+
+6. Re-run the upgrade. For guidance, refer to the applicable upgrade guide for your airgapped instance of [Palette](../enterprise-version/upgrade/upgrade-vmware/airgap.md) or [VerteX](../vertex/upgrade/upgrade-vmware/airgap.md).
+
+
 ## Scenario - Self-Linking Error
 
 When installing an Enterprise Cluster, you may encounter an error stating that the enterprise cluster is unable to
