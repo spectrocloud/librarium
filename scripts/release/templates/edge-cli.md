@@ -1,1 +1,1 @@
-| <!-- edge-{{RELEASE_NAME}} --> {{RELEASE_EDGE_CLI_VERSION}} | v{{RELEASE_EDGE_CLI_VERSION}} | [Linux-amd64](https://software.spectrocloud.com/stylus/v{{RELEASE_EDGE_CLI_VERSION}}/cli/linux/palette-edge) | `{{RELEASE_EDGE_CLI_SHA}}` |
+| <!-- edge-{{RELEASE_NAME}} --> {{RELEASE_VERSION}} | {{RELEASE_EDGE_CLI_VERSION}} | https://software.spectrocloud.com/stylus/v{{RELEASE_EDGE_CLI_VERSION}}/cli/linux/palette-edge | `{{RELEASE_EDGE_CLI_SHA}}` |
