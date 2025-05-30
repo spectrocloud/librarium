@@ -275,8 +275,8 @@ of the default path **/sys/class/dmi/id/product_uuid**, you can use the board Se
 | `stylus.site.deviceUIDPaths[*].name`  | The path of the file containing the UID.         |
 | `stylus.site.deviceUIDPaths[*].regex` | The regular expression pattern to match the UID. |
 
-You can use the `regex` parameter to remove unsupported characters from attributes to Refer to the warning box below for
-a list of unsupported characters.
+You can use the `regex` parameter to remove unsupported characters from attributes. Refer to the warning box below for a
+list of unsupported characters.
 
 ```yaml
 #cloud-config
@@ -393,21 +393,21 @@ The `install` block allows you to configure the installer to make bind mounts an
 addition, you can specify post-installation behavior, such as instructing the Edge host to power off automatically after
 installation is complete.
 
-| Parameter                                      | Description                                                                                                                                                   | Type                       | Default |
-| ---------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- | ------- |
-| `install.bind_mounts`                          | The list of folders to bind mount from the installer environment into the Edge host.                                                                          | Array of strings           | None    |
-| `install.extra-dirs-rootfs`                    | The list of folders to bind mount from the installer to the Edge host's root file system. These folders are created in the `rootfs` path during installation. | Array of strings           | None    |
-| `install.grub_options.extra_cmdline`           | Kernel command-line parameters to add to the installer.                                                                                                       | Map of strings             | None    |
-| `install.partitions.persistent`                | A persistent partition object that you can configure for extra storage.                                                                                       | Object                     | None    |
-| `install.partitions.persistent.size`           | The size of the persistent partition.                                                                                                                         | Integer                    | `0`     |
-| `install.partitions.persistent.fs`             | The file system type for the persistent partition.                                                                                                            | String                     | `''`    |
-| `install.extra-partitions`              | The list of extra partitions to create. Each item accepts `name`, `size`, `fs`, and `label`.                                                                  | Array of partition objects | None    |
-| `install.extra-partitions[*].name`      | The name of the extra partition.                                                                                                                              | String                     | `''`    |
-| `install.extra-partitions[*].size`      | The size of the extra partition.                                                                                                                              | Integer                    | `0`     |
-| `install.extra-partitions[*].fs`        | The file system of the extra partition.                                                                                                                       | String                     | `''`    |
-| `install.extra-partitions[*].label`     | The label of the extra partition.                                                                                                                             | String                     | `''`    |
-| `install.poweroff`                             | Whether to power off the Edge host after installation completes.                                                                                              | boolean                    | `false` |
-| `install.reboot`                               | Whether to reboot the Edge host after installation completes.                                                                                                 | boolean                    | `false` |
+| Parameter                            | Description                                                                                                                                                   | Type                       | Default |
+| ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- | ------- |
+| `install.bind_mounts`                | The list of folders to bind mount from the installer environment into the Edge host.                                                                          | Array of strings           | None    |
+| `install.extra-dirs-rootfs`          | The list of folders to bind mount from the installer to the Edge host's root file system. These folders are created in the `rootfs` path during installation. | Array of strings           | None    |
+| `install.grub_options.extra_cmdline` | Kernel command-line parameters to add to the installer.                                                                                                       | Map of strings             | None    |
+| `install.partitions.persistent`      | A persistent partition object that you can configure for extra storage.                                                                                       | Object                     | None    |
+| `install.partitions.persistent.size` | The size of the persistent partition.                                                                                                                         | Integer                    | `0`     |
+| `install.partitions.persistent.fs`   | The file system type for the persistent partition.                                                                                                            | String                     | `''`    |
+| `install.extra-partitions`           | The list of extra partitions to create. Each item accepts `name`, `size`, `fs`, and `label`.                                                                  | Array of partition objects | None    |
+| `install.extra-partitions[*].name`   | The name of the extra partition.                                                                                                                              | String                     | `''`    |
+| `install.extra-partitions[*].size`   | The size of the extra partition.                                                                                                                              | Integer                    | `0`     |
+| `install.extra-partitions[*].fs`     | The file system of the extra partition.                                                                                                                       | String                     | `''`    |
+| `install.extra-partitions[*].label`  | The label of the extra partition.                                                                                                                             | String                     | `''`    |
+| `install.poweroff`                   | Whether to power off the Edge host after installation completes.                                                                                              | boolean                    | `false` |
+| `install.reboot`                     | Whether to reboot the Edge host after installation completes.                                                                                                 | boolean                    | `false` |
 
 ## Cloud Init Stages
 
