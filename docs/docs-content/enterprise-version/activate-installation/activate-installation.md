@@ -9,7 +9,7 @@ tags: ["self-hosted", "account", "activate"]
 keywords: ["self-hosted", "palette", "activate"]
 ---
 
-Beginning with version 4.6.c, once you install Palette or upgrade to version 4.6.c or later, you have 30 days to
+Beginning with version 4.6.31, once you install Palette or upgrade to version 4.6.31 or later, you have 30 days to
 activate it. During this time, you have unrestricted access to all of Palette's features. After 30 days, you can
 continue to use Palette, and existing clusters will continue to run, but you cannot perform the following operations
 until Palette is activated:
@@ -43,7 +43,7 @@ Below is an overview of the activation process.
 
     ![Diagram of the self-hosted system activation process](/enterprise-version_activate-installation_system-activation-diagram.webp)
 
-1. The system admin installs Palette or upgrades to version 4.6.c or later.
+1. The system admin installs Palette or upgrades to version 4.6.31 or later.
 2. Palette enters trial mode. During this time, you have 30 days to take advantage of all of Palette's features. After
    30 days, the trial expires, and Palette functionality is restricted. Any clusters that you have deployed will remain
    functional, but you cannot perform [day-2 operations](../../clusters/cluster-management/cluster-management.md), and
