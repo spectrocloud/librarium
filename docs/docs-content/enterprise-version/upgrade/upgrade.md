@@ -45,7 +45,7 @@ minor version available.
 
 | **Source Version** | **Target Version** |    **Support**     |
 | :----------------: | :----------------: | :----------------: |
-|       4.6.24       |       4.6.31       | :white_check_mark: |
+|       4.6.23       |       4.6.32       | :white_check_mark: |
 |       4.6.18       |       4.6.23       | :white_check_mark: |
 |       4.6.13       |       4.6.23       | :white_check_mark: |
 |       4.6.13       |       4.6.18       | :white_check_mark: |
@@ -76,7 +76,7 @@ minor version available.
 |       4.6.6        |       4.6.7        | :white_check_mark: |
 |       4.5.23       |       4.6.23       | :white_check_mark: |
 |       4.5.23       |       4.6.18       | :white_check_mark: |
-|       4.5.21       |       4.6.31       | :white_check_mark: |
+|       4.5.21       |       4.6.32       | :white_check_mark: |
 |       4.5.21       |       4.6.23       | :white_check_mark: |
 |       4.5.21       |       4.6.18       | :white_check_mark: |
 |       4.5.21       |       4.6.13       | :white_check_mark: |
@@ -93,7 +93,7 @@ minor version available.
 |       4.5.20       |       4.6.8        | :white_check_mark: |
 |       4.5.20       |       4.6.7        | :white_check_mark: |
 |       4.5.20       |       4.6.6        | :white_check_mark: |
-|       4.4.24       |       4.6.31       | :white_check_mark: |
+|       4.4.24       |       4.6.32       | :white_check_mark: |
 |       4.4.24       |       4.6.23       | :white_check_mark: |
 
 **4.5.x**
@@ -175,7 +175,7 @@ minor version available.
 
 | **Source Version** | **Target Version** |    **Support**     |
 | :----------------: | :----------------: | :----------------: |
-|       4.6.24       |       4.6.31       | :white_check_mark: |
+|       4.6.24       |       4.6.32       | :white_check_mark: |
 |       4.6.18       |       4.6.23       | :white_check_mark: |
 |       4.6.13       |       4.6.23       | :white_check_mark: |
 |       4.6.13       |       4.6.18       | :white_check_mark: |
@@ -205,7 +205,7 @@ minor version available.
 |       4.6.6        |       4.6.8        | :white_check_mark: |
 |       4.6.6        |       4.6.7        | :white_check_mark: |
 |       4.5.23       |       4.6.23       | :white_check_mark: |
-|       4.5.21       |       4.6.31       | :white_check_mark: |
+|       4.5.21       |       4.6.32       | :white_check_mark: |
 |       4.5.21       |       4.6.23       | :white_check_mark: |
 |       4.5.21       |       4.6.18       | :white_check_mark: |
 |       4.5.21       |       4.6.13       | :white_check_mark: |
@@ -222,7 +222,7 @@ minor version available.
 |       4.5.20       |       4.6.8        | :white_check_mark: |
 |       4.5.20       |       4.6.7        | :white_check_mark: |
 |       4.5.20       |       4.6.6        | :white_check_mark: |
-|       4.4.x        |       4.6.31       | :white_check_mark: |
+|       4.4.24       |       4.6.32       | :white_check_mark: |
 |       4.4.24       |       4.6.23       | :white_check_mark: |
 
 **4.5.x**

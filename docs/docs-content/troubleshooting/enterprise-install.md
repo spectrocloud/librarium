@@ -12,7 +12,7 @@ Refer to the following sections to troubleshoot errors encountered when installi
 
 ## Scenario - IP Pool Exhausted During Airgapped Upgrade
 
-When upgrading a self-hosted airgapped cluster to version 4.6.31, the IPAM controller may report an `Exhausted IP Pools`
+When upgrading a self-hosted airgapped cluster to version 4.6.32, the IPAM controller may report an `Exhausted IP Pools`
 error despite having available IP addresses. This is due to a race condition in CAPV version 1.12.0, which may lead to
 an orphaned IP claim when its associated VMware vSphere machine is deleted during the control plane rollout. When this
 occurs, the IP claim and IP address are not cleaned up, keeping the IP reserved and exhausting the IP pool. To complete
