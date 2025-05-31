@@ -9,10 +9,10 @@ tags: ["self-hosted", "account", "activate"]
 keywords: ["self-hosted", "vertex", "activate"]
 ---
 
-Beginning with version 4.6.c, once you install Palette VerteX or upgrade to version 4.6.c or later, you have 30 days to
-activate it. During this time, you have unrestricted access to all of VerteX's features. After 30 days, you can continue
-to use VerteX, and existing clusters will continue to run, but you cannot perform the following operations until VerteX
-is activated:
+Beginning with version 4.6.32, once you install Palette VerteX or upgrade to version 4.6.32 or later, you have 30 days
+to activate it. During this time, you have unrestricted access to all of VerteX's features. After 30 days, you can
+continue to use VerteX, and existing clusters will continue to run, but you cannot perform the following operations
+until VerteX is activated:
 
 - Create new clusters.
 
@@ -41,7 +41,7 @@ Below is an overview of the activation process.
 
 ![Diagram of the self-hosted system activation process](/enterprise-version_activate-installation_system-activation-diagram.webp)
 
-1. The system admin installs Palette VerteX or upgrades to version 4.6.c or later.
+1. The system admin installs Palette VerteX or upgrades to version 4.6.32 or later.
 2. VerteX enters trial mode. During this time, you have 30 days to take advantage of all of VerteX's features. After 30
    days, the trial expires, and VerteX functionality is restricted. Any clusters that you have deployed will remain
    functional, but you cannot perform [day-2 operations](../../clusters/cluster-management/cluster-management.md), and

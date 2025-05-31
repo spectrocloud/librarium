@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## May 25, 2025 - Release 4.6.X {#release-notes-4.6.c}
+## May 31, 2025 - Release 4.6.32 {#release-notes-4.6.c}
 
 ### Security Notices
 
@@ -134,8 +134,8 @@ impacted clusters until you've handled the below mentioned breaking changes and 
   Refer to the [Create and Manage Azure IaaS Cluster](../clusters/public-cloud/azure/create-azure-cluster.md) guide for
   more information.
 
-- Starting with version 4.6.c, Palette and VerteX installations need to be activated after 30 days. Once you install or
-  upgrade Palette or VerteX to version 4.6.c or later, you have 30 days to activate it. During this time, you have
+- Starting with version 4.6.32, Palette and VerteX installations need to be activated after 30 days. Once you install or
+  upgrade Palette or VerteX to version 4.6.32 or later, you have 30 days to activate it. During this time, you have
   unrestricted access to all of Palette's features. After 30 days, you can continue to use Palette, and existing
   clusters will remain operational, but you cannot perform day-2 operations such as creating new clusters and modifying
   existing ones until Palette is activated.
@@ -213,7 +213,7 @@ impacted clusters until you've handled the below mentioned breaking changes and 
 
 :::info
 
-The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.6.c Palette release is 4.6.21.
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.6.32 Palette release is 4.6.21.
 
 :::
 

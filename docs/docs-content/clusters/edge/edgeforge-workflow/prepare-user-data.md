@@ -167,10 +167,10 @@ You can create presets to use as reusable building blocks for future instances o
    git tag
    ```
 
-3. Check out the latest available tag. This guide uses the tag v4.6.c as an example.
+3. Check out the latest available tag. This guide uses the tag v4.6.21 as an example.
 
    ```bash
-   git checkout v4.6.c
+   git checkout v4.6.21
    ```
 
 ### Prepare .arg File
@@ -188,7 +188,7 @@ You can create presets to use as reusable building blocks for future instances o
    distribution of Kubernetes and the OS distribution used by the image forms the tag of the image.
 
    For example, if your `.arg` file contains the following arguments, the full image reference would be
-   `ttl.sh/ubuntu:k3s-1.32.1-v4.6.c-demo`.
+   `ttl.sh/ubuntu:k3s-1.32.1-v4.6.21-demo`.
 
    ```text
    IMAGE_REGISTRY=ttl.sh
