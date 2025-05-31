@@ -2,7 +2,7 @@
 partial_category: permissions
 partial_name: aws-dynamic-permissions
 ---
-**Last Update**: March 12, 2025
+**Last Update**: May 25, 2025
 
 ```json
 {
@@ -65,6 +65,7 @@ partial_name: aws-dynamic-permissions
         "ec2:DescribeVolumesModifications",
         "ec2:DescribeVpcAttribute",
         "ec2:DescribeVpcs",
+        "ec2:DescribeVpcEndpoints",
         "ec2:DetachInternetGateway",
         "ec2:DisassociateAddress",
         "ec2:DisassociateRouteTable",
@@ -138,12 +139,8 @@ partial_name: aws-dynamic-permissions
     },
     {
       "Effect": "Allow",
-      "Action": [
-        "iam:PassRole"
-      ],
-      "Resource": [
-        "arn:*:iam::*:role/*.cluster-api-provider-aws.sigs.k8s.io"
-      ]
+      "Action": ["iam:PassRole"],
+      "Resource": ["arn:*:iam::*:role/*.cluster-api-provider-aws.sigs.k8s.io"]
     }
   ]
 }
