@@ -189,7 +189,7 @@ your environment. Reach out to our support team if you need assistance.
       storageClass: ""  # leave empty to use the default storage class
 
     config:
-      installationMode: "connected" #values can be connected or airgap.
+      managementMode: "central" #values can be connected or airgap.
 
       # SSO SAML Configuration (Optional for self-hosted type)
       sso:
@@ -401,7 +401,7 @@ your environment. Reach out to our support team if you need assistance.
       storageClass: ""  # leave empty to use the default storage class
 
     config:
-      installationMode: "connected" #values can be connected or airgap.
+      managementMode: "central" #values can be connected or airgap.
 
       # SSO SAML Configuration (Optional for self-hosted type)
       sso:
@@ -785,6 +785,4 @@ Use the following steps to validate the Palette installation.
 
 ## Next Steps
 
-You have successfully installed Palette in a Kubernetes cluster. Your next steps are to configure Palette for your
-organization. Start by creating the first tenant to host your users. Use the
-[Create a Tenant](../../system-management/tenant-management.md) page for instructions on how to create a tenant.
+<PartialsComponent category="self-hosted" name="install-next-steps" edition="Palette" version="Palette" />

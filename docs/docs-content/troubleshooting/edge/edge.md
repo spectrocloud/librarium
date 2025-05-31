@@ -10,6 +10,71 @@ tags: ["edge", "troubleshooting"]
 
 The following are common scenarios that you may encounter when using Edge.
 
+## Scenario - Canonical Edge Clusters in Proxied Environments Experience Failure upon Reboot
+
+When rebooting nodes in an Edge cluster using Palette Optimized Canonical deployed in a proxied environment, the nodes
+may fail to come back online. To prevent this, add the second IP address in the `service_cidr` range from the Canonical
+pack to the `NO_PROXY` list in your Edge installer `user-data`.
+
+### Debug Steps
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. From the left **Main Menu**, select **Profiles**. Then select the profile you will use to deploy your cluster.
+
+3. Select the Kubernetes layer, the `Palette Optimized Canonical` pack. Click **values.yaml** to view the values.
+
+4. Take note of the `service_cidr` value in `pack.cluster.config`.
+
+5. Add the second IP of the CIDR block in the `service_cidr` range to the `stylus.site.network.noProxy` parameter. For
+   example, if your `service_cidr` is `192.169.0.0/16`, you need to add `192.169.0.1` to the parameter.
+
+   ```yaml {14} title="Example"
+   #cloud-config
+   stylus:
+     site:
+       paletteEndpoint: api.spectrocloud.com
+       edgeHostToken: <yourRegistrationToken>
+       projectName: edge-sites
+       tags:
+         city: chicago
+         building: building-1
+         zip-code: 95135
+       network:
+         httpProxy: http://proxy.example.com
+         httpsProxy: https://proxy.example.com
+         noProxy: 10.10.128.10,10.0.0.0/8,192.169.0.1
+         nameserver: 1.1.1.1
+   ```
+
+## Scenario - Cilium Pod Stuck During Kubernetes Upgrade Due to nsenter Permission Issue
+
+During a Kubernetes upgrade, the Cilium pod may get stuck in the `Init:CrashLoopBackoff` state due to nsenter permission
+issues. To address the issue, patch the cilium DaemonSet with the specified annotations.
+
+### Debug Steps
+
+1. [Connect to your cluster](../../clusters/cluster-management/palette-webctl.md) via `kubectl`.
+
+2. Issue the following command to edit the DaemonSet.
+
+   ```shell
+   kubectl --namespace kube-system edit ds cilium
+   ```
+
+3. Add the following annotations to the DaemonSet.
+
+   ```yaml
+   spec:
+     template:
+       metadata:
+         annotations:
+           container.apparmor.security.beta.kubernetes.io/cilium-agent: "unconfined"
+           container.apparmor.security.beta.kubernetes.io/mount-cgroup: "unconfined"
+           container.apparmor.security.beta.kubernetes.io/clean-cilium-state: "unconfined"
+           container.apparmor.security.beta.kubernetes.io/apply-sysctl-overwrites: "unconfined"
+   ```
+
 ## Scenario - Cluster Creation Failure Due to Nodeadm not Found
 
 <!-- prettier-ignore -->

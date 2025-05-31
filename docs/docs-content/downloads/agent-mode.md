@@ -16,7 +16,7 @@ deployment modes, agent mode gives you more flexibility in managing your infrast
 [agent mode documentation](../deployment-modes/agent-mode/agent-mode.md) for guidance on how to set up agent mode on
 your hosts.
 
-## Connected
+## Central Management Mode
 
 This version of agent mode requires internet access on the host to connect to a Palette instance.
 
@@ -30,11 +30,12 @@ Use the following command to download the latest version of the Palette agent in
 
 <PartialsComponent category="agent-mode" name="agent-mode-versioned" />
 
-## Airgap
+## Local Management Mode
 
-This version of agent mode is designed for environments without direct internet access.
+This version of agent mode is designed for environments without a connection to Palette and may also have limited access
+to the internet.
 
-Download the airgap agent installation package and save it as a TAR file.
+Download the agent installation package and save it as a TAR file.
 
 - Replace `<architecture>` with the architecture of your CPU. If you have ARM64, use `arm64`. If you have AMD64 or
   x86_64, use `amd64`.

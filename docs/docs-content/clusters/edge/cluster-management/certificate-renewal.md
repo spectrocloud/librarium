@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Renew Certificates for Airgap Clusters"
-title: "Renew Certificates for Airgap Clusters"
+sidebar_label: "Renew Certificates for Local Clusters"
+title: "Renew Certificates for Local Clusters"
 description: "Learn how to renew certificates for different Kubernetes components in your cluster."
 hide_table_of_contents: false
 sidebar_position: 20
@@ -11,9 +11,9 @@ Kubernetes uses SSL certificates to secure the communication between different c
 certificates allows Kubernetes to secure API connections, verify the authenticity of the nodes, and encrypt connections.
 All certificates have an expiry date, and need to be renewed periodically.
 
-This page guides you through the different methods used to renew certificates in an airgapped Palette Edge cluster. An
-airgapped cluster means a cluster that has no connection to a Palette instance. For information on how to renew
-certificates on connected Edge clusters, refer to
+This page guides you through the different methods used to renew certificates in a local Palette Edge cluster. An local
+cluster is a cluster that has no connection to a Palette instance. For information on how to renew certificates on
+centrally managed Edge clusters, refer to
 [Renew Cluster PKI Certificates](../../cluster-management/certificate-management.md).
 
 ## Limitations
@@ -29,7 +29,7 @@ expire. You can follow the steps below to check when the next automatic renewal 
 
 ### Prerequisite
 
-- You have an active cluster in a airgapped Edge host.
+- You have an active cluster in a locally managed Edge host.
 - You have access to Local UI for the Edge host. For more information, refer to
   [Access Local UI](../local-ui/host-management/access-console.md).
 
@@ -60,7 +60,7 @@ Management API.
 
 ### Prerequisite
 
-- You have an active cluster in a airgapped Edge host.
+- You have an active local Edge cluster.
 - You have access to Local UI for the Edge host. For more information, refer to
   [Access Local UI](../local-ui/host-management/access-console.md).
 

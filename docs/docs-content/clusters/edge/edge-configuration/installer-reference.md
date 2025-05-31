@@ -26,20 +26,21 @@ These parameters start with the prefix `stylus`. Palette agent parameters contro
 configuration, including networking, logging, services, as well as users and permissions. Parameters in this section are
 listed in alphabetical order.
 
-| Parameter                      | Description                                                                                                                                                                              | Type    | Default     |
-| ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- | ----------- |
-| `stylus.debug`                 | Enable this parameter for debug output. Allowed values are `true` or `false`.                                                                                                            | boolean | `false`     |
-| `stylus.disablePasswordUpdate` | Disables the ability to update Operating System (OS) user passwords from the Local UI if set to true. Updating the password through the OS and API is still allowed.                     | boolean | `false`     |
-| `stylus.enableMultiNode`       | When set to `true`, the host can link with other nodes to form a multi-node cluster. For more information, refer to [Link Hosts](../local-ui/cluster-management/link-hosts.md).          | boolean | `false`     |
-| `stylus.externalRegistries`    | Use this parameter to configure multiple external registries and apply domain re-mapping rules. Refer to [Multiple External Registries](#multiple-external-registries) for more details. | Object  | None        |
-| `stylus.featureGate`           | This parameter contains a comma-separated list of features you want to enable on your host.                                                                                              | String  | `''`        |
-| `stylus.includeTui`            | Enable Palette TUI for initial Edge host configuration. For more information, refer to [Initial Edge Host Configuration](../site-deployment/site-installation/initial-setup.md).         | boolean | `false`     |
-| `stylus.installationMode`      | Allowed values are `connected` and `airgap`. `connected` means the Edge host is connected to Palette; `airgap` means the Edge host has no connection.                                    | String  | `connected` |
-| `stylus.localUI.port`          | Specifies the port that the Local UI is exposed on.                                                                                                                                      | Integer | `5080`      |
-| `stylus.registryCredentials`   | Only used when a single external registry is in use and no mapping rules are needed. Refer to [Single External Registry](#single-external-registry) for more details.                    | Object  | None        |
-| `stylus.site`                  | Review [Site Parameters](#site-parameters) for more information.                                                                                                                         | Object  | None        |
-| `stylus.trace`                 | Enable trace output. Allowed values are `true` or `false`.                                                                                                                               | boolean | `false`     |
-| `stylus.vip.skip`              | When set to `true`, the installer skips the configuration of kube-vip and enables the use of an external load balancer instead. Applicable only in agent deployment mode.                | boolean | `false`     |
+| Parameter                      | Description                                                                                                                                                                                                                                                                                        | Type    | Default     |
+| ------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- | ----------- |
+| `stylus.debug`                 | Enable this parameter for debug output. Allowed values are `true` or `false`.                                                                                                                                                                                                                      | boolean | `false`     |
+| `stylus.disablePasswordUpdate` | Disables the ability to update Operating System (OS) user passwords from the Local UI if set to true. Updating the password through the OS and API is still allowed.                                                                                                                               | boolean | `false`     |
+| `stylus.enableMultiNode`       | When set to `true`, the host can link with other nodes to form a multi-node cluster. For more information, refer to [Link Hosts](../local-ui/cluster-management/link-hosts.md).                                                                                                                    | boolean | `false`     |
+| `stylus.externalRegistries`    | Use this parameter to configure multiple external registries and apply domain re-mapping rules. Refer to [Multiple External Registries](#multiple-external-registries) for more details.                                                                                                           | Object  | None        |
+| `stylus.featureGate`           | This parameter contains a comma-separated list of features you want to enable on your host.                                                                                                                                                                                                        | String  | `''`        |
+| `stylus.includeTui`            | Enable Palette TUI for initial Edge host configuration. For more information, refer to [Initial Edge Host Configuration](../site-deployment/site-installation/initial-setup.md).                                                                                                                   | boolean | `false`     |
+| `stylus.installationMode`      | (Deprecated) Allowed values are `connected` and `airgap`. `connected` means the Edge host is connected to Palette; `airgap` means the Edge host has no connection. This parameter has been deprecated and will be removed in an future release. Use the `stylus.managementMode` parameter instead. | String  | `connected` |
+| `stylus.localUI.port`          | Specifies the port that the Local UI is exposed on.                                                                                                                                                                                                                                                | Integer | `5080`      |
+| `stylus.managementMode`        | Allowed values are `local` and `central`. `central` means the Edge host is connected to Palette; `local` means the Edge host has no connection to a Palette instance.                                                                                                                              | string  | `central`   |
+| `stylus.registryCredentials`   | Only used when a single external registry is in use and no mapping rules are needed. Refer to [Single External Registry](#single-external-registry) for more details.                                                                                                                              | Object  | None        |
+| `stylus.site`                  | Review [Site Parameters](#site-parameters) for more information.                                                                                                                                                                                                                                   | Object  | None        |
+| `stylus.trace`                 | Enable trace output. Allowed values are `true` or `false`.                                                                                                                                                                                                                                         | boolean | `false`     |
+| `stylus.vip.skip`              | When set to `true`, the installer skips the configuration of kube-vip and enables the use of an external load balancer instead. Applicable only in agent deployment mode.                                                                                                                          | boolean | `false`     |
 
 ### Feature Gates
 
@@ -156,10 +157,10 @@ the example in the following diagram, if an image named `alpine:latest` is store
 
 ![Example of registry mapping rules](/clusters_edge_edge-configuration_installer-reference_registry-mapping.webp)
 
-##### Airgap Environment
+##### Local Management
 
-In an airgap environment, use the `registryMappingRules` parameter to map domain names to external registries that were
-downloaded when creating the [content bundle](../edgeforge-workflow/palette-canvos/build-content-bundle.md).
+For a locally managed cluster, use the `registryMappingRules` parameter to map domain names to external registries that
+were downloaded when creating the [content bundle](../edgeforge-workflow/palette-canvos/build-content-bundle.md).
 
 :::info
 
@@ -170,16 +171,16 @@ Palette will automatically update the image path when <VersionedLink text="Harbo
 "us-east1-docker.pkg.dev/spectro-images/daily": "example.registry.com/internal-images"
 ```
 
-Then the image tag will be updated with the prefix URL to the Harbor registry, such as
+Then the image tag will be updated with the prefix URL to the primary registry, such as
 `https://10.10.100.45:30003/example.registry.com/internal-images`. Palette will do this for all registry mapping rules
 specified in the user data. This allows the Edge host to find and pull images that came from an external registry
-through the local Harbor registry.
+through the primary registry.
 
 :::
 
 ```yaml
 stylus:
-  installationMode: airgap
+  managementMode: local
   externalRegistries:
     registryMappingRules:
       "us-east1-docker.pkg.dev/spectro-images/daily": "example.registry.com/internal-images"
@@ -274,8 +275,8 @@ of the default path **/sys/class/dmi/id/product_uuid**, you can use the board Se
 | `stylus.site.deviceUIDPaths[*].name`  | The path of the file containing the UID.         |
 | `stylus.site.deviceUIDPaths[*].regex` | The regular expression pattern to match the UID. |
 
-You can use the `regex` parameter to remove unsupported characters from attributes to Refer to the warning box below for
-a list of unsupported characters.
+You can use the `regex` parameter to remove unsupported characters from attributes. Refer to the warning box below for a
+list of unsupported characters.
 
 ```yaml
 #cloud-config
@@ -392,21 +393,21 @@ The `install` block allows you to configure the installer to make bind mounts an
 addition, you can specify post-installation behavior, such as instructing the Edge host to power off automatically after
 installation is complete.
 
-| Parameter                               | Description                                                                                                                                                   | Type                       | Default |
-| --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- | ------- |
-| `install.bind_mounts`                   | The list of folders to bind mount from the installer environment into the Edge host.                                                                          | Array of strings           | None    |
-| `install.bind_mounts.extra-dirs-rootfs` | The list of folders to bind mount from the installer to the Edge host's root file system. These folders are created in the `rootfs` path during installation. | Array of strings           | None    |
-| `install.grub_options.extra_cmdline`    | Kernel command-line parameters to add to the installer.                                                                                                       | Map of strings             | None    |
-| `install.partitions.persistent`         | A persistent partition object that you can configure for extra storage.                                                                                       | Object                     | None    |
-| `install.partitions.persistent.size`    | The size of the persistent partition.                                                                                                                         | Integer                    | `0`     |
-| `install.partitions.persistent.fs`      | The file system type for the persistent partition.                                                                                                            | String                     | `''`    |
-| `install.extra-partitions`              | The list of extra partitions to create. Each item accepts `name`, `size`, `fs`, and `label`.                                                                  | Array of partition objects | None    |
-| `install.extra-partitions[*].name`      | The name of the extra partition.                                                                                                                              | String                     | `''`    |
-| `install.extra-partitions[*].size`      | The size of the extra partition.                                                                                                                              | Integer                    | `0`     |
-| `install.extra-partitions[*].fs`        | The file system of the extra partition.                                                                                                                       | String                     | `''`    |
-| `install.extra-partitions[*].label`     | The label of the extra partition.                                                                                                                             | String                     | `''`    |
-| `install.poweroff`                      | Whether to power off the Edge host after installation completes.                                                                                              | boolean                    | `false` |
-| `install.reboot`                        | Whether to reboot the Edge host after installation completes.                                                                                                 | boolean                    | `false` |
+| Parameter                            | Description                                                                                                                                                   | Type                       | Default |
+| ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------- | ------- |
+| `install.bind_mounts`                | The list of folders to bind mount from the installer environment into the Edge host.                                                                          | Array of strings           | None    |
+| `install.extra-dirs-rootfs`          | The list of folders to bind mount from the installer to the Edge host's root file system. These folders are created in the `rootfs` path during installation. | Array of strings           | None    |
+| `install.grub_options.extra_cmdline` | Kernel command-line parameters to add to the installer.                                                                                                       | Map of strings             | None    |
+| `install.partitions.persistent`      | A persistent partition object that you can configure for extra storage.                                                                                       | Object                     | None    |
+| `install.partitions.persistent.size` | The size of the persistent partition.                                                                                                                         | Integer                    | `0`     |
+| `install.partitions.persistent.fs`   | The file system type for the persistent partition.                                                                                                            | String                     | `''`    |
+| `install.extra-partitions`           | The list of extra partitions to create. Each item accepts `name`, `size`, `fs`, and `label`.                                                                  | Array of partition objects | None    |
+| `install.extra-partitions[*].name`   | The name of the extra partition.                                                                                                                              | String                     | `''`    |
+| `install.extra-partitions[*].size`   | The size of the extra partition.                                                                                                                              | Integer                    | `0`     |
+| `install.extra-partitions[*].fs`     | The file system of the extra partition.                                                                                                                       | String                     | `''`    |
+| `install.extra-partitions[*].label`  | The label of the extra partition.                                                                                                                             | String                     | `''`    |
+| `install.poweroff`                   | Whether to power off the Edge host after installation completes.                                                                                              | boolean                    | `false` |
+| `install.reboot`                     | Whether to reboot the Edge host after installation completes.                                                                                                 | boolean                    | `false` |
 
 ## Cloud Init Stages
 

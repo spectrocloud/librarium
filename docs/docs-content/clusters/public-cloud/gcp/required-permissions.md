@@ -38,6 +38,7 @@ having issues when deploying a host cluster.
 | `compute.backendServices.update`                            | Update backend services                                                            |
 | `compute.backendServices.use`                               | Use backend services                                                               |
 | `compute.disks.create`                                      | Create persistent disks                                                            |
+| `compute.disks.setLabels`                                   | Add or update labels on persistent disks                                           |
 | `compute.firewalls.create`                                  | Create firewall rules                                                              |
 | `compute.firewalls.delete`                                  | Delete firewall rules                                                              |
 | `compute.firewalls.get`                                     | Get firewall rule information                                                      |
@@ -51,6 +52,7 @@ having issues when deploying a host cluster.
 | `compute.globalForwardingRules.delete`                      | Delete global forwarding rules                                                     |
 | `compute.globalForwardingRules.get`                         | Get global forwarding rule information                                             |
 | `compute.globalForwardingRules.list`                        | List global forwarding rules                                                       |
+| `compute.globalForwardingRules.setLabels`                   | Add or update labels on global forwarding rules                                    |
 | `compute.healthChecks.create`                               | Create health checks                                                               |
 | `compute.healthChecks.delete`                               | Delete health checks                                                               |
 | `compute.healthChecks.get`                                  | Get health check information                                                       |

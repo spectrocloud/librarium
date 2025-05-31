@@ -2,7 +2,7 @@
 partial_category: permissions
 partial_name: aws-controller-policy
 ---
-**Last Update**: April 20, 2023
+**Last Update**: May 25, 2025
 
 ```json
 {
@@ -83,11 +83,44 @@ partial_name: aws-controller-policy
         "elasticloadbalancing:RegisterInstancesWithLoadBalancer",
         "elasticloadbalancing:RemoveTags",
         "iam:CreateOpenIDConnectProvider",
-        "tag:GetResources"
+        "tag:GetResources",
+        "ec2:DescribeIpamPools",
+        "ec2:AllocateIpamPoolCidr",
+        "ec2:AttachNetworkInterface",
+        "ec2:DetachNetworkInterface",
+        "ec2:AssignIpv6Addresses",
+        "ec2:AssignPrivateIpAddresses",
+        "ec2:UnassignPrivateIpAddresses",
+        "ec2:AssociateVpcCidrBlock",
+        "ec2:CreateCarrierGateway",
+        "ec2:CreateEgressOnlyInternetGateway",
+        "ec2:CreateNetworkInterface",
+        "ec2:CreateVpcEndpoint",
+        "ec2:DisassociateVpcCidrBlock",
+        "ec2:ModifyVpcEndpoint",
+        "ec2:DeleteCarrierGateway",
+        "ec2:DeleteEgressOnlyInternetGateway",
+        "ec2:DeleteVpcEndpoints",
+        "ec2:DescribeCarrierGateways",
+        "ec2:DescribeInstanceTypes",
+        "ec2:DescribeEgressOnlyInternetGateways",
+        "ec2:DescribeVpcEndpoints",
+        "ec2:DescribeDhcpOptions",
+        "ec2:DescribeTags",
+        "ec2:ModifyInstanceMetadataOptions",
+        "elasticloadbalancing:DescribeTargetGroups",
+        "elasticloadbalancing:SetSecurityGroups",
+        "elasticloadbalancing:SetSubnets",
+        "elasticloadbalancing:ModifyTargetGroupAttributes",
+        "elasticloadbalancing:CreateTargetGroup",
+        "elasticloadbalancing:DescribeListeners",
+        "elasticloadbalancing:CreateListener",
+        "elasticloadbalancing:DescribeTargetHealth",
+        "elasticloadbalancing:RegisterTargets",
+        "elasticloadbalancing:DeleteListener",
+        "sts:AssumeRole"
       ],
-      "Resource": [
-        "*"
-      ],
+      "Resource": ["*"],
       "Effect": "Allow"
     },
     {
@@ -110,9 +143,7 @@ partial_name: aws-controller-policy
           "iam:AWSServiceName": "autoscaling.amazonaws.com"
         }
       },
-      "Action": [
-        "iam:CreateServiceLinkedRole"
-      ],
+      "Action": ["iam:CreateServiceLinkedRole"],
       "Resource": [
         "arn:*:iam::*:role/aws-service-role/autoscaling.amazonaws.com/AWSServiceRoleForAutoScaling"
       ],
@@ -124,9 +155,7 @@ partial_name: aws-controller-policy
           "iam:AWSServiceName": "elasticloadbalancing.amazonaws.com"
         }
       },
-      "Action": [
-        "iam:CreateServiceLinkedRole"
-      ],
+      "Action": ["iam:CreateServiceLinkedRole"],
       "Resource": [
         "arn:*:iam::*:role/aws-service-role/elasticloadbalancing.amazonaws.com/AWSServiceRoleForElasticLoadBalancing"
       ],
@@ -138,21 +167,15 @@ partial_name: aws-controller-policy
           "iam:AWSServiceName": "spot.amazonaws.com"
         }
       },
-      "Action": [
-        "iam:CreateServiceLinkedRole"
-      ],
+      "Action": ["iam:CreateServiceLinkedRole"],
       "Resource": [
         "arn:*:iam::*:role/aws-service-role/spot.amazonaws.com/AWSServiceRoleForEC2Spot"
       ],
       "Effect": "Allow"
     },
     {
-      "Action": [
-        "iam:PassRole"
-      ],
-      "Resource": [
-        "arn:*:iam::*:role/*.cluster-api-provider-aws.sigs.k8s.io"
-      ],
+      "Action": ["iam:PassRole"],
+      "Resource": ["arn:*:iam::*:role/*.cluster-api-provider-aws.sigs.k8s.io"],
       "Effect": "Allow"
     },
     {
@@ -161,9 +184,7 @@ partial_name: aws-controller-policy
         "secretsmanager:DeleteSecret",
         "secretsmanager:TagResource"
       ],
-      "Resource": [
-        "arn:*:secretsmanager:*:*:secret:aws.cluster.x-k8s.io/*"
-      ],
+      "Resource": ["arn:*:secretsmanager:*:*:secret:aws.cluster.x-k8s.io/*"],
       "Effect": "Allow"
     },
     {
@@ -175,9 +196,7 @@ partial_name: aws-controller-policy
         "s3:PutObjectAcl",
         "s3:PutObject"
       ],
-      "Resource": [
-        "arn:*:s3:::*"
-      ],
+      "Resource": ["arn:*:s3:::*"],
       "Effect": "Allow"
     }
   ]
