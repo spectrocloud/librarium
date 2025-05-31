@@ -9,10 +9,6 @@ tags: ["edge"]
 
 You can reboot, shut down and reset an Edge host from Local UI.
 
-:::preview
-
-:::
-
 ## Reboot Edge Host
 
 You can reboot the Edge host from Local UI. Doing so will cause you to temporarily lose access to Local UI while the
@@ -45,7 +41,7 @@ Edge host is rebooting.
 
 ## Reset Edge Host
 
-You can reset an airgapped Edge host from Local UI. This restores the Edge host to the state right after the
+You can reset an locally managed Edge host from Local UI. This restores the Edge host to the state right after the
 [initial configuration](../../site-deployment/site-installation/initial-setup.md) is completed in the Terminal User
 Interface (TUI).
 

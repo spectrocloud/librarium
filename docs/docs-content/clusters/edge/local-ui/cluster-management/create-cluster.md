@@ -7,17 +7,13 @@ sidebar_position: 20
 tags: ["edge"]
 ---
 
-You can create and manage single-node as well as multi-node clusters on airgapped hosts locally from Local UI. This page
-teaches you how to create a cluster using Local UI.
+You can create and manage single-node as well as multi-node clusters on locally managed hosts locally from Local UI.
+This page teaches you how to create a cluster using Local UI.
 
 Unlike clusters that are managed by Palette, a local cluster is managed locally through Local UI. You can use Local UI
 to create, update, scale, and delete the cluster. If your situation changes and you need central management of the
 cluster, you can choose to [pair your local cluster to a Palette instance](./local-to-central.md) for centralized
 management.
-
-:::preview
-
-:::
 
 ## Limitations
 
@@ -39,7 +35,7 @@ management.
 - The `stylus.enableMultiNode` parameter is set to `true` in your user data configuration. For more information, refer
   to [Prepare User Data](../../edgeforge-workflow/prepare-user-data.md).
 
-- The `stylus.installationMode` parameter is set to `airgap` in your user data configuration for all your hosts.
+- The `stylus.managementMode` parameter is set to `local` in your user data configuration for all your hosts.
 
 - Credentials to log into Local UI. Any OS user can be used to log in to Local UI.
 
@@ -88,9 +84,8 @@ management.
 
 5. If you built a cluster definition into your Edge installer ISO, you can either choose to use the embedded config or
    import a cluster definition file. The embedded config uses a cluster definition you included during the creation of
-   the ISO image you used to install Palette Edge on your Edge host. Ensure that the final profile for your deployed
-   cluster contains a primary registry. A primary registry is required for all disconnected Edge clusters. For more
-   information, refer to
+   the ISO image you used to install Palette Edge on your Edge host. For local clusters, we recommend you the final
+   profile for your deployed cluster contain a primary registry. For more information, refer to
    [Deploy with a Primary Registry](../../site-deployment/deploy-custom-registries/deploy-primary-registry.md).
 
    To learn more about how to export a cluster configuration and import it during this step, refer to
