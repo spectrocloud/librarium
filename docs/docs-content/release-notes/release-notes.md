@@ -115,7 +115,7 @@ impacted clusters until you've handled the below mentioned breaking changes and 
      ```
 
 - Dynamic IP allocation is no longer supported for private API server load balancers on Azure IaaS clusters. You must
-  now use static IP allocation and provide a static IP address during cluster configuration. Otherwise,cluster
+  now use static IP allocation and provide a static IP address during cluster configuration. Otherwise, cluster
   provisioning will fail if you omit providing these settings. Refer to the
   [Private API Server LB Settings](../clusters/public-cloud/azure/create-azure-cluster.md#private-api-server-lb-settings)
   section for further details.
