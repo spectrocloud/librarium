@@ -32,7 +32,7 @@
 
 :::info
 
-Check out the [Downloads](../spectro-downloads.md) and [Compatibility Matrix](../component.md) pages to find the compatible version of the Palette CLI.
+Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible version of the Palette CLI.
 
 :::
 
