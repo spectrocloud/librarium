@@ -204,7 +204,7 @@ Creating a content bundle provides several benefits that may address common use 
         },
         {
           "endpoint": "docker.io",
-          "username": "akhileshpvt",
+          "username": "username",
           "password": "*********"
         }
       ]
