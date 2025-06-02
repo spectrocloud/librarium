@@ -230,8 +230,8 @@ Palette Edge CLI to download the images and upload them to the external registry
        },
        {
          "endpoint": "docker.io",
-         "username": "akhileshpvt",
-         "password": "Lucent122333!"
+         "username": "username",
+         "password": "*********"
        }
      ]
    }

@@ -344,7 +344,7 @@ require a local Harbor registry. Built-in registries must be configured using ei
         },
         {
           "endpoint": "docker.io",
-          "username": "akhileshpvt",
+          "username": "username",
           "password": "*********"
         }
       ]
