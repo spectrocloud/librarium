@@ -11,7 +11,8 @@ You can add an OCI Zarf registry to Palette and use the Zarf packages in cluster
 
 ## Prerequisites
 
-- You must have an OCI registry that contains Zarf packages.
+- You must have an OCI registry that contains Zarf packages. Refer to the
+  [Zarf documentation](https://docs.zarf.dev/tutorials/6-publish-and-deploy/) for guidance on creating a Zarf package.
 
 - Credentials to access the OCI registry. Public OCI registries are not supported.
 
@@ -22,44 +23,39 @@ You can add an OCI Zarf registry to Palette and use the Zarf packages in cluster
 
 ## Add OCI Zarf Registry
 
-Use the following steps to add an OCI Zarf registry to Palette.
+Take the following steps to add an OCI Zarf registry to Palette.
 
-1. Log in to the [Palette](https://console.spectrocloud.com) as a Tenant administrator.
+1. Log in to [Palette](https://console.spectrocloud.com) as a Tenant administrator.
 
-2. From the left **Main Menu** select **Tenant Settings**.
+2. From the left main menu, select **Tenant Settings**.
 
-3. From the **Tenant Settings Menu**, Select **Registries**.
+3. From the **Tenant Settings** menu, select **Registries > OCI Registries > Add New OCI Registry**.
 
-4. Click on the **OCI Registries** tab.
+4. Enter the **Name** of the registry. Select **Zarf** as the **Provider**.
 
-5. Click **Add New OCI Registry**.
+5. Enter the registry URL in the **Endpoint** field.
 
-6. Fill out the **Name** field and select **Helm** as the registry type.
+6. Choose whether to **Enable Authentication** for your registry. If enabled, enter your registry credentials in the
+   **Username** and **Password** fields.
 
-7. Select the **OCI Authentication Type** as **Basic**.
+7. If your OCI registry server is using a self-signed certificate, or if the server certificate is not signed by a
+   trusted CA, select **Insecure Skip TLS Verify** to skip verifying the x509 certificate, and select **Upload file** to
+   upload the certificate.
 
-8. Provide the registry URL in the **Endpoint** field.
-
-9. Fill out the **Username** and **Password** fields with the credentials to access the registry.
-
-10. If your OCI registry server is using a self-signed certificate or if the server certificate is not signed by a
-    trusted CA, check the **Insecure Skip TLS Verify** box to skip verifying the x509 certificate, and click **Upload
-    file** to upload the certificate.
-
-11. Click **Confirm** to complete adding the registry.
+8. **Confirm** your registry.
 
 ## Validate
 
-Use the following steps to validate that the OCI registry is added to Palette correctly.
+Take the following steps to confirm that the OCI registry was added to Palette.
 
-1. Log in to the [Palette](https://console.spectrocloud.com).
+1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. From the left **Main Menu**, click on **Profiles**.
+2. From the left main menu, select **Profiles**.
 
-3. Click **Add Cluster Profile**.
+3. Choose **Add Cluster Profile**.
 
-4. Provide a name and select the type **Add-on**.
+4. Enter a **Name** for the profile. For the **Type**, choose **Add-on**, and select **Next**.
 
-5. In the following screen, click **Add Zarf**.
+5. On the **Profile Layers** screen, select **Add Zarf**.
 
-6. Verify the Zarf registry you added is displayed in the **Registry drop-down Menu**.
+6. Verify the Zarf registry you added is displayed in the **Registry** drop-down menu.

@@ -153,7 +153,7 @@ want to create a FIPS-compliant image or a non-FIPS-compliant image.
     | Field Name            | Description                                                                |
     | --------------------- | -------------------------------------------------------------------------- |
     | `cluster`             | The name of the vSphere cluster where the Packer VM will be created.       |
-    | `datacenter`          | The name of the vSphere datacenter where the Packer VM will be created.    |
+    | `datacenter`          | The name of the vSphere data center where the Packer VM will be created.   |
     | `datastore`           | The name of the vSphere datastore the Packer VM will use.                  |
     | `folder`              | The name of the vSphere folder where the vSphere template will be created. |
     | `insecure_connection` | Set to `true` if you are using a self-signed certificate for vCenter.      |
@@ -400,7 +400,7 @@ want to create a FIPS-compliant image or a non-FIPS-compliant image.
     | Field Name            | Description                                                                |
     | --------------------- | -------------------------------------------------------------------------- |
     | `cluster`             | The name of the vSphere cluster where the Packer VM will be created.       |
-    | `datacenter`          | The name of the vSphere datacenter where the Packer VM will be created.    |
+    | `datacenter`          | The name of the vSphere data center where the Packer VM will be created.   |
     | `datastore`           | The name of the vSphere datastore the Packer VM will use.                  |
     | `folder`              | The name of the vSphere folder where the vSphere template will be created. |
     | `insecure_connection` | Set to `true` if you are using a self-signed certificate for vCenter.      |

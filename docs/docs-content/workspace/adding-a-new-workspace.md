@@ -83,16 +83,16 @@ how to create a workspace in Palette. All workspace settings can be updated afte
    to consume 2 Gi memory each. For more information about resource quotas, refer to
    [Resource Management](./workspace-mgmt/resource-mgmt.md).
 
-   You must ensure that the namespaced limits, when added together, do not exceed the total workspace limit you
-   configured. If you impose a workspace quota of 4 Gi memory for a two-cluster workspace, then a namespace cannot have
-   more than 2 Gi of memory as its limit, since there are two such namespaces in the workspace and both of them added
-   together are allowed 4 Gi of memory.
+   You must ensure that the limits placed on specific namespaces, when added together, do not exceed the total workspace
+   limit you configured. If you impose a workspace quota of 4 Gi memory for a two-cluster workspace, then a namespace
+   cannot have more than 2 Gi of memory as its limit, since there are two such namespaces in the workspace and both of
+   them added together are allowed 4 Gi of memory.
 
-10. On the same **Namsespaces** page, you can optionally configure role bindings. When you configure a role binding for
-    a namespace, you are configuring the same role binding in that namespace in every cluster. Like in Kubernetes, you
-    can use either a role or a cluster role in a role binding. Similar to cluster role bindings, this action does not
-    create the roles or the subject for you. You must ensure that the corresponding role and subject referenced in the
-    role binding exists in the namespaces you configured.
+10. On the same **Namespaces** page, you can optionally configure role bindings. When you configure a role binding for a
+    namespace, you are configuring the same role binding in that namespace in every cluster. Like in Kubernetes, you can
+    use either a role or a cluster role in a role binding. Similar to cluster role bindings, this action does not create
+    the roles or the subject for you. You must ensure that the corresponding role and subject referenced in the role
+    binding exists in the namespaces you configured.
 
     You can use Regular Expressions (regex) to create role bindings in multiple namespaces that match a certain pattern.
     To do so, enter the regex in the namespace field. For example, `/palette-.*/` will match all namespaces that start

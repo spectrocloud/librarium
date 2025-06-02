@@ -13,9 +13,9 @@ console for all hosts of your organization.
 
 :::warning
 
-This guide is specific to agent mode. If you have an Edge host deployed in [appliance mode](../../appliance-mode.md),
-you need to provide the customizations during EdgeForge. Refer to
-[Customize Local UI Theme](../../../clusters/edge/local-ui/host-management/theming.md) for more information.
+This guide is specific to agent mode. If you have an Edge host deployed in
+[appliance mode](../../appliance-mode/appliance-mode.md), you need to provide the customizations during EdgeForge. Refer
+to [Customize Local UI Theme](../../../clusters/edge/local-ui/host-management/theming.md) for more information.
 
 :::
 
@@ -23,20 +23,20 @@ you need to provide the customizations during EdgeForge. Refer to
 
 - You have installed the Palette agent on your host machine deployed in agent mode.
 
-- You have SSH access to your host and have sufficient privilege to make changes in the **/opt/spectrocloud/localui/ui**
+- You have SSH access to your host and have sufficient privilege to make changes in the `/opt/spectrocloud/localui/ui`
   folder.
 
 ## Procedure
 
 1. Connect to your host via SSH.
 
-2. Navigate to the **/opt/spectrocloud/localui/ui** folder.
+2. Navigate to the `/opt/spectrocloud/localui/ui` folder.
 
-3. In the **ui** folder, upload a logo you would like to use for Local UI to the **ui** directory. All file types are
+3. In the `ui` folder, upload a logo you would like to use for Local UI to the `ui` directory. All file types are
    allowed. We recommend limiting the height of the logo image to between 64 pixels and 120 pixels. If you do not upload
    a logo, Local UI will use the Spectro Cloud logo.
 
-4. In the **ui** folder, create a file named **customizations.json**.
+4. In the `ui` folder, create a file named `customizations.json`.
 
 5. Populate the file with the following schema:
 

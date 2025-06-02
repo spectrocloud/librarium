@@ -782,6 +782,8 @@ let redirects = [
       "/integrations/ubuntu",
       "/integrations/vsphere-csi",
       "/integrations/ngrok",
+      "/integrations/generic-vm-libvirt",
+      "/integrations/ubuntu-libvirt",
     ],
     to: "/integrations/",
   },
@@ -898,6 +900,34 @@ let redirects = [
       "/security-bulletins/reports/cve-2024-7592",
     ],
     to: "/security-bulletins/reports/",
+  },
+  {
+    from: "/tutorials/cluster-management/public-cloud/deploy-k8s-cluster/",
+    to: "/getting-started/",
+  },
+  {
+    from: "/clusters/public-cloud/deploy-k8s-cluster/",
+    to: "/getting-started/",
+  },
+  {
+    from: "/spectro-downloads",
+    to: "/downloads/cli-tools/",
+  },
+  {
+    from: "/component/",
+    to: "/downloads/cli-tools/",
+  },
+  {
+    from: "/enterprise-version/install-palette/airgap/supplemental-packs/",
+    to: "/downloads/self-hosted-palette/additional-packs/",
+  },
+  {
+    from: "/vertex/install-palette-vertex/airgap/supplemental-packs/",
+    to: "/downloads/palette-vertex/additional-packs/",
+  },
+  {
+    from: "/vertex/install-palette-vertex/airgap/offline-docs/",
+    to: "/downloads/offline-docs/",
   },
 ];
 

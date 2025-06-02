@@ -42,7 +42,7 @@ Complete the [Environment Setup](./kubernetes-airgap-instructions.md) steps befo
   configuration to be installed as part of the installation process. If Cert Manager is already installed, you must
   uninstall it before installing Palette.
 
-- Palette requires a Container Storage Interface (CSI) to create Persistest Volume, which is used to store persistent
+- Palette requires a Container Storage Interface (CSI) to create Persistent Volumes, which are used to store persistent
   data. You may install any CSI that is compatible with your Kubernetes cluster.
 
 - If you are using a _self-hosted MongoDB_ instance, such as MongoDB Atlas, ensure the MongoDB database has a user named
@@ -128,10 +128,10 @@ environment. Reach out to our support team if you need assistance.
 
     ```yaml hideClipboard
     image:
-      cainjectorImage: "my-oci-registry.com/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-cainjector:v1.15.0-spectro-4.5.0"
-      controllerImage: "my-oci-registry.com/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-controller:v1.15.0-spectro-4.5.0"
-      webhookImage: "my-oci-registry.com/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-webhook:v1.15.0-spectro-4.5.0"
-      amceResolverImage: "my-oci-registry.com/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-acmesolver:v1.15.0-spectro-4.4.2"
+      cainjectorImage: "my-oci-registry.com/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-cainjector:v1.17.0-spectro-4.6.1"
+      controllerImage: "my-oci-registry.com/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-controller:v1.17.0-spectro-4.6.1"
+      webhookImage: "my-oci-registry.com/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-webhook:v1.17.0-spectro-4.6.1"
+      amceResolverImage: "my-oci-registry.com/spectro-images/us-docker.pkg.dev/palette-images-fips/palette/spectro-cert-manager/cert-manager-acmesolver:v1.17.0-spectro-4.6.1"
     ```
 
 4.  Install Cert Manager using the following command. Replace the actual file name of the Cert Manager Helm Chart with
@@ -871,6 +871,4 @@ Use the following steps to validate the Palette installation.
 
 ## Next Steps
 
-You have successfully installed Palette in a Kubernetes cluster. Your next steps are to configure Palette for your
-organization. Start by creating the first tenant to host your users. Use the
-[Create a Tenant](../../../system-management/tenant-management.md) page for instructions on how to create a tenant.
+<PartialsComponent category="self-hosted" name="install-next-steps" edition="Palette" version="Palette" />

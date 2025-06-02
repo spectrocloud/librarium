@@ -26,10 +26,10 @@ another registry.
 
 :::tip
 
-You can use a private external registry together with a local Harbor image registry by adding the Harbor Edge-Native
-Config pack to your cluster profile. All images for add-on layers of the cluster will be stored in the local Harbor
-registry after the initial download, which allows you to reduce the bandwidth use and protect against outages. For more
-information, refer to [Enable Local Harbor Registry](./local-registry.md).
+You can use a private external registry together with a in-cluster primary registry. All images for add-on layers of the
+cluster will be stored in the in-cluster primary registry after the initial download, which allows you to reduce the
+bandwidth use and protect against outages. For more information, refer to
+[Deploy Cluster with Primary Registry](./deploy-primary-registry.md)..
 
 :::
 
@@ -43,7 +43,7 @@ information, refer to [Enable Local Harbor Registry](./local-registry.md).
   from the external registry even if you provide a content bundle, and deployment will fail if the necessary images
   cannot be located in the external registry. For more information, refer to
   [Build Content Bundles](../../edgeforge-workflow/palette-canvos/build-content-bundle.md) and
-  [Enable Local Harbor Registry](../../site-deployment/deploy-custom-registries/local-registry.md).
+  [Deploy Cluster with Primary Registry](../../site-deployment/deploy-custom-registries/deploy-primary-registry.md).
 
 ## Prerequisites
 
@@ -108,6 +108,7 @@ information, refer to [Enable Local Harbor Registry](./local-registry.md).
 
   <Tabs>
   <TabItem value="single-registry" label="Single External Registry">
+    
     ```yaml
     #cloud-config
     stylus:
@@ -127,31 +128,31 @@ information, refer to [Enable Local Harbor Registry](./local-registry.md).
     ```yaml
     #cloud-config
     stylus:
-    externalRegistries:
-      registries:
-      - domain: "10.10.254.254:8000/spectro-images"
-        username: "admin"
-        password: ***************
-        repositoryName: "example-repository-private"
-        certificates: |
-          -----BEGIN CERTIFICATE-----
-          MIIDBzCCAe+gAwIBAgIJAJzQ
-          ...
-          -----END CERTIFICATE-----
-      - domain: "10.10.11.60:3899/security-images"
-        username: "projectAdmin2"
-        password: "***************"
-        repositoryName: security-images
-        certificates: |
-          -----BEGIN CERTIFICATE-----
-          MIIDBzCCAe+gAwIBAgIJAJzQ
-          ...
-          -----END CERTIFICATE-----
-    registryMappingRules:
-      "us-east1-docker.pkg.dev/spectro-images/daily": "example.registry.com/internal-images"
-      "us-docker.pkg.dev/palette-images": "example.registry.com/internal-images"
-      "grc.io/spectro-dev-public": "example.registry.com/internal-images"
-      "grc.io/spectro-images-public": "example.registry.com/internal-images"
+      externalRegistries:
+        registries:
+        - domain: "10.10.254.254:8000/spectro-images"
+          username: "admin"
+          password: ***************
+          repositoryName: "example-repository-private"
+          certificates: |
+            -----BEGIN CERTIFICATE-----
+            MIIDBzCCAe+gAwIBAgIJAJzQ
+            ...
+            -----END CERTIFICATE-----
+        - domain: "10.10.11.60:3899/security-images"
+          username: "projectAdmin2"
+          password: "***************"
+          repositoryName: security-images
+          certificates: |
+            -----BEGIN CERTIFICATE-----
+            MIIDBzCCAe+gAwIBAgIJAJzQ
+            ...
+            -----END CERTIFICATE-----
+        registryMappingRules:
+          "us-east1-docker.pkg.dev/spectro-images/daily": "example.registry.com/internal-images"
+          "us-docker.pkg.dev/palette-images": "example.registry.com/internal-images"
+          "grc.io/spectro-dev-public": "example.registry.com/internal-images"
+          "grc.io/spectro-images-public": "example.registry.com/internal-images"
     ```
     Refer to [Installer Configuration](../../edge-configuration/installer-reference.md#multiple-external-registries) for a
     description of each field.

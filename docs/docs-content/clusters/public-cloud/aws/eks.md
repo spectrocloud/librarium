@@ -16,7 +16,7 @@ an AWS account. This section guides you on how to create an EKS cluster in AWS t
 
 - Palette integration with AWS account. Review [Add AWS Account](add-aws-accounts.md) for guidance.
 
-<!-- prettier-ignore -->
+<!-- prettier-ignore-start -->
 - An infrastructure cluster profile for AWS EKS. When you create the profile, ensure you choose **EKS** as the **Managed
   Kubernetes** cloud type. Review
   [Create an Infrastructure Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md)
@@ -29,18 +29,136 @@ an AWS account. This section guides you on how to create an EKS cluster in AWS t
 
   :::
 
-<!-- prettier-ignore -->
+<!-- prettier-ignore-end -->
+
+- If you choose to [assign an Amazon Linux 2023 AMI](#assign-an-ami-to-a-node-pool) (AL2023) to your worker nodes and
+  you are using PersistentVolumes (PVs) or PersistentVolumeClaims (PVCs), you must make additional edits to your AWS EKS
+  cluster profile to configure IAM Roles for Service Accounts (IRSA) for the Amazon Elastic Block Store (EBS) Container
+  Storage Interface (CSI).
+
+  <!-- prettier-ignore -->
+  <details>
+  <summary>Configure IRSA for Amazon EBS CSI</summary>
+
+  Use the following steps to configure IRSA for the Amazon EBS CSI. For instances launched on Amazon Linux 2023, IMDSv2
+  is enforced by default, and IRSA is the
+  [recommended approach](https://docs.aws.amazon.com/eks/latest/userguide/ebs-csi.html) for providing IAM permissions to
+  Amazon EBS CSI.
+
+  1. Log in to [Palette](https://console.spectrocloud.com/).
+
+  2. Ensure you are in the correct project scope.
+
+  3. From the left main menu, navigate to the **Profiles** page.
+
+  4. Select an existing AWS EKS cluster profile or
+     [create a new AWS EKS cluster profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md)
+     that meets your requirements, including any necessary add-on packs or additional Helm charts.
+
+  5. Select the **Kubernetes** layer of your cluster profile.
+
+  6. Use the YAML editor to configure IRSA roles for the `managedControlPlane` and `managedMachinePool`.
+
+     ```yaml hideClipboard title="Example configuration"
+     managedControlPlane:
+     ---
+     irsaRoles:
+       - name: "{{.spectro.system.cluster.name}}-irsa-cni"
+         policies:
+           - arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy
+         serviceAccount:
+           name: aws-node
+           namespace: kube-system
+       - name: "{{.spectro.system.cluster.name}}-irsa-csi"
+         policies:
+           - arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy
+     ---
+     managedMachinePool:
+       roleAdditionalPolicies:
+         - "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
+     ```
+
+  7. Click **Confirm Updates** after editing.
+
+  8. Select the **Storage** layer of your cluster profile.
+
+  9. Use the YAML editor to add an IAM role ARN annotation to the AWS EBS CSI Driver so that the IRSA role is correctly
+     referenced. Replace `<aws-account-id>` with your AWS account ID.
+
+     ```yaml hideClipboard title="Example configuration" {12}
+     charts:
+     ...
+       aws-ebs-csi-driver:
+       ...
+         controller:
+         ...
+           serviceAccount:
+             # A service account will be created for you if set to true. Set to false if you want to use your own.
+             create: true
+             name: ebs-csi-controller-sa
+             annotations: {
+               "eks.amazonaws.com/role-arn":"arn:aws:iam::<aws-account-id>:role/{{.spectro.system.cluster.name}}-irsa-csi"
+             }
+             ## Enable if EKS IAM for SA is used
+             # eks.amazonaws.com/role-arn: arn:<partition>:iam::<account>:role/ebs-csi-role
+             automountServiceAccountToken: true
+     ```
+
+  10. Click **Confirm Updates** after editing.
+
+  11. Click **Save Changes** on the cluster profile page.
+
+  12. [Deploy your AWS EKS cluster](#deploy-an-aws-eks-cluster).
+
+  13. Once the cluster is running and healthy, verify that the PV or PVC status is `Bound` by issuing one of the
+      following `kubectl` commands.
+
+      ```shell title="Example command for PVs"
+      kubectl get pv --output wide
+      ```
+
+      ```shell title="Example output for PVs"
+      NAME               CAPACITY   ACCESS MODES   RECLAIM POLICY   STATUS   CLAIM                                         STORAGECLASS            VOLUMEATTRIBUTESCLASS   AGE   VOLUMEMODE
+      pv-xyz...          10Gi       RWO            Delete           Bound    wordpress/data-wordpress-wordpress-mariadb-0  spectro-storage-class   <unset>                 16m   Filesystem
+      pv-abc...          8Gi        RWO            Delete           Bound    wordpress/wordpress-wordpress                 spectro-storage-class   <unset>                 16m   Filesystem
+      ```
+
+      ```shell title="Example command for PVCs"
+      kubectl get pvc --all-namespaces --output wide
+      ```
+
+      ```shell title="Example output for PVCs"
+      NAMESPACE   NAME                                 STATUS    VOLUME      CAPACITY   ACCESS MODES   STORAGECLASS            VOLUMEATTRIBUTESCLASS   AGE   VOLUMEMODE
+      wordpress   data-wordpress-wordpress-mariadb-0   Bound     pvc-xyz...  10Gi       RWO            spectro-storage-class   <unset>                 16m   Filesystem
+      wordpress   wordpress-wordpress                  Bound     pvc-abc...  8Gi        RWO            spectro-storage-class   <unset>                 16m   Filesystem
+      ```
+
+  </details>
+
+<!-- prettier-ignore-start -->
 - If you want to use <VersionedLink text="Cilium" url="/integrations/packs/?pack=cni-cilium-oss"/> as the network pack
   for your EKS cluster, you will need to perform additional configuration changes to your cluster profile and a manual
   edit during deployment. Refer to
   [Scenario - AWS EKS Cluster Deployment Fails when Cilium is Used as CNI](../../../troubleshooting/pack-issues.md#scenario---aws-eks-cluster-deployment-fails-when-cilium-is-used-as-cni)
   for full guidance.
 
-- An EC2 key pair for the target region that provides a secure connection to your EC2 instances. To learn how to create
-  a key pair, refer to the
+<!-- prettier-ignore-end -->
+
+- An EC2 key pair for the target region that provides a secure connection to your EC2 instances. A key pair is required
+  for dynamic placement and is optional for static placement. To learn how to create a key pair, refer to the
   [Amazon EC2 key pairs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html) resource.
 
-- Your Amazon EKS cluster must be deployed with at least one worker node to host the Palette agent, which is necessary for Palette to manage the cluster. Because of EKS architecture constraints, the agent cannot be installed on the control plane.
+  :::info
+
+  Dynamic placement means Palette automatically creates and manages a new VPC and subnets for your EKS cluster. Static
+  placement means Palette uses your existing VPC, requiring you to specify the necessary network resources.
+
+  :::
+
+- Your Amazon EKS cluster must be deployed with at least one worker node to host the Palette agent, which is necessary
+  for Palette to manage the cluster. Because of EKS architecture constraints, the agent cannot be installed on the
+  control plane.
+
   - The minimum instance type required is **t3.xlarge** with at least 20 GB of storage.
   - Be sure at least one worker node is always available so Palette can continue managing the cluster.
 
@@ -94,7 +212,7 @@ an AWS account. This section guides you on how to create an EKS cluster in AWS t
 
 2. Ensure you are in the correct project scope.
 
-3. From the left **Main Menu** select **Clusters**, and click **Add New Cluster**.
+3. From the left main menu, select **Clusters** and click **Add New Cluster**.
 
 4. In **Public Clouds**, under **Managed Kubernetes**, select **AWS EKS**.
 
@@ -126,7 +244,7 @@ an AWS account. This section guides you on how to create an EKS cluster in AWS t
     | --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
     | **Static Placement**        | By default, Palette uses dynamic placement. This creates a new Virtual Private Cloud (VPC) for the cluster that contains two subnets in different Availability Zones (AZs), which is required for EKS cluster deployment. Palette places resources in these clusters, manages the resources, and deletes them when the corresponding cluster is deleted.<br /><br />If you want to place resources into pre-existing VPCs, enable the **Static Placement** option, and provide the VPCID in the **VPCID** field that displays with this option enabled. If you are deploying your cluster in an [AWS Secret](./add-aws-accounts.md#aws-secret-cloud-account-us) region, static placement is required. You will need to specify two subnets in different Availability Zones (AZs).                                                                                                                                                                                      |
     | **Region**                  | Use the **drop-down Menu** to choose the AWS region where you would like to provision the cluster.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-    | **SSH Key Pair Name**       | Choose the SSH key pair for the region you selected. SSH key pairs must be pre-configured in your AWS environment. This is called an EC2 Key Pair in AWS. The key you select is inserted into the provisioned VMs.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
+    | **SSH Key Pair Name**       | Choose the SSH key pair for the region you selected. This is required for dynamic placement and optional for static placement. SSH key pairs must be pre-configured in your AWS environment. This is called an EC2 Key Pair in AWS. The key you select is inserted into the provisioned VMs.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
     | **Cluster Endpoint Access** | This setting provides access to the Kubernetes API endpoint. Select **Private**, **Public** or **Private & Public**. If you are deploying your cluster in an [AWS Secret](./add-aws-accounts.md#aws-secret-cloud-account-us) region, use **Private & Public**. For more information, refer to the [Amazon EKS cluster endpoint access control](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html) reference guide.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
     | **Public Access CIDRs**     | This setting controls which IP address CIDR ranges can access the cluster. To fully allow unrestricted network access, enter `0.0.0.0/0` in the field. For more information, refer to the [Amazon EKS cluster endpoint access control](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html) reference guide.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        |
     | **Private Access CIDRs**    | This setting controls which private IP address CIDR ranges can access the cluster. Private CIDRs provide a way to specify private, self-hosted, and air-gapped networks or Private Cloud Gateway (PCG) that may be located in other VPCs connected to the VPC hosting the cluster endpoint.<br /><br />To restrict network access, replace the pre-populated 0.0.0.0/0 with the IP address CIDR range that should be allowed access to the cluster endpoint. Only the IP addresses that are within the specified VPC CIDR range - and any other connected VPCs - will be able to reach the private endpoint. For example, while using `0.0.0.0/0` would allow traffic throughout the VPC and all peered VPCs, specifying the VPC CIDR `10.0.0.0/16` would limit traffic to an individual VPC. For more information, refer to the [Amazon EKS cluster endpoint access control](https://docs.aws.amazon.com/eks/latest/userguide/cluster-endpoint.html) reference guide. |
@@ -143,16 +261,13 @@ an AWS account. This section guides you on how to create an EKS cluster in AWS t
 11. Provide the following node pool and cloud configuration information. If you will be using Fargate profiles, you can
     add them here.
 
-<!-- prettier-ignore-start -->
-
     :::info
 
-    To automatically scale the number of worker nodes for EKS clusters, you must add the
-    <VersionedLink text="AWS Cluster Autoscaler" url="/integrations/packs/?pack=aws-cluster-autoscaler"/> pack to your cluster profile.
+    <!-- prettier-ignore -->
+    To automatically scale the number of worker nodes for EKS clusters, you must add the <VersionedLink text="AWS Cluster Autoscaler" url="/integrations/packs/?pack=aws-cluster-autoscaler" />
+    pack to your cluster profile.
 
     :::
-
-<!-- prettier-ignore-end -->
 
     #### Node Configuration Settings
 
@@ -160,8 +275,36 @@ an AWS account. This section guides you on how to create an EKS cluster in AWS t
     | ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
     | **Node pool name**              | A descriptive name for the node pool.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
     | **Number of nodes in the pool** | Specify the number of nodes in the worker pool.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
-    | **Additional Labels**           | You can add optional labels to nodes in key-value format. For more information about applying labels, review [Node Labels](../../cluster-management/node-labels.md) guide. Example: `"environment": "production"`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+    | **Additional Labels**           | You can add optional labels to nodes in key-value format. Review the [Assign an AMI to a Node Pool](#assign-an-ami-to-a-node-pool) section for guidance on assigning specific AMIs to node pools. For general information about applying labels, review the [Node Labels](../../cluster-management/node-labels.md) guide. Example: `"environment": "production"`                                                                                                                                                                                                                                                                                                                                                                                                                               |
     | **Taints**                      | You can apply optional taint labels to a node pool during cluster creation or edit taint labels on an existing cluster. Review the [Node Pool](../../cluster-management/node-pool.md) management page and [Taints and Tolerations](../../cluster-management/taints.md) guide to learn more. Toggle the **Taint** button to create a taint label. When tainting is enabled, you need to provide a custom key-value pair. Use the **drop-down Menu** to choose one of the following **Effect** options:<br />**NoSchedule** - Pods are not scheduled onto nodes with this taint.<br />**PreferNoSchedule** - Kubernetes attempts to avoid scheduling pods onto nodes with this taint, but scheduling is not prohibited.<br />**NoExecute** - Existing pods on nodes with this taint are evicted. |
+
+    ##### Assign an AMI to a Node Pool
+
+    Assign an AMI to a node pool by adding an additional label specifying the AMI to use. You can choose from one of the
+    following supported AMIs. Copy the exact label shown in the code block and paste it to the **Additional Labels**
+    option in the **Node Configuration Settings**.
+
+    ```shell title="Amazon Linux 2 (x86-64)"
+    spectrocloud.com/ami-type:AL2_x86_64
+    ```
+
+    ```shell title="Amazon Linux 2023 (x86-64)"
+    spectrocloud.com/ami-type:AL2023_x86_64_STANDARD
+    ```
+
+    ```shell title="Amazon Linux 2023 with AWS Neuron drivers (x86-64)"
+    spectrocloud.com/ami-type:AL2023_x86_64_NEURON
+    ```
+
+    ```shell title="Amazon Linux 2023 with NVIDIA drivers (x86-64)"
+    spectrocloud.com/ami-type:AL2023_x86_64_NVIDIA
+    ```
+
+    :::info
+
+    The **Amazon Linux 2 (x86-64)** AMI is used by default if no AMI is specified or there is a typo in the label.
+
+    :::
 
     #### Cloud Configuration settings
 
@@ -231,7 +374,7 @@ You can validate your cluster is up and in **Running** state.
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
-2. Navigate to the left **Main Menu** and select **Clusters**. The **Clusters** page displays a list of all available
+2. Navigate to the left main menu and select **Clusters**. The **Clusters** page displays a list of all available
    clusters that Palette manages.
 
 3. Click on the cluster you created to view its details page.
@@ -279,14 +422,18 @@ To use custom OIDC, you need to do the following:
   more information and to learn about other available helper applications, you can visit
   [OIDC Identity Provider authentication for Amazon EKS](https://aws.amazon.com/blogs/containers/introducing-oidc-identity-provider-authentication-amazon-eks/).
 
-<!-- prettier-ignore -->
+<!-- prettier-ignore-start -->
 - Configure OIDC in the Kubernetes pack YAML file. Refer to steps for Amazon EKS in the
   <VersionedLink text="Configure Custom OIDC" url="/integrations/packs/?pack=kubernetes-eks" /> guide.
- 
 
+<!-- prettier-ignore-end -->
+
+<!-- prettier-ignore-start -->
 - Map a set of users or groups to a Kubernetes RBAC role. To learn how to map a Kubernetes role to users and groups,
   refer to [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings). Refer to
-   <VersionedLink text="Configure Custom OIDC" url="/integrations/packs/?pack=kubernetes-eks" /> for an example.
+  <VersionedLink text="Configure Custom OIDC" url="/integrations/packs/?pack=kubernetes-eks" /> for an example.
+
+<!-- prettier-ignore-end -->
 
 - Download the kubeconfig file from the cluster details page. Refer to the
   [Kubectl](../../cluster-management/palette-webctl.md) guide for more information.

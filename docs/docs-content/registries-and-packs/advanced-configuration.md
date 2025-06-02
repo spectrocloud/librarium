@@ -135,7 +135,7 @@ storage: inmemory
 
 ## Authentication
 
-You can configure basic HTTP Auth. Basic Auth requires providing the pack registry server with an httppasswd file
+You can configure basic HTTP Auth. Basic Auth requires providing the pack registry server with an `httppasswd` file
 containing the credentials.
 
 ```yaml
@@ -195,9 +195,9 @@ http:
   tls:
     letsencrypt:
       cachefile: le-cache
-      email: oz@spectrocloud.com
+      email: you@companydomain.com
       hosts:
-        - pax-registry.spectrocloud.com
+        - yourhost.companydomain.com
 ```
 
 Let's Encrypt limits the number of free certificates issued for each domain for a set time. We recommend you mount a

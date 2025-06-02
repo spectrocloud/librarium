@@ -17,7 +17,7 @@ your Edge hosts come from a trusted source. For more information about content b
 
 ## Limitations
 
-- This feature is only available to airgapped Edge hosts without a connection to Palette.
+- This feature is only available to locally managed Edge hosts without a connection to Palette.
 
 ## Prerequisites
 
@@ -26,11 +26,11 @@ your Edge hosts come from a trusted source. For more information about content b
 
 - [Git](https://git-scm.com/downloads). You can ensure git installation by issuing the `git --version` command.
 
-- [openssl](https://www.openssl.org/docs). You can ensure openssl installation by issuing the `openssl --help` command.
+- [OpenSSL](https://www.openssl.org/docs). You can ensure OpenSSL installation by issuing the `openssl --help` command.
 
-- An RSA key pair. Both the public and private key must be in PEM format. You can use `openssl` to convert keys from
-  other formats into PEM. For more information, refer to
-  [openssl documentation](https://www.openssl.org/docs/manmaster/man1/openssl.html).
+- An RSA key pair. Both the public and private key must be in PEM format. You can use OpenSSL to convert keys from other
+  formats into PEM. For more information, refer to
+  [OpenSSL documentation](https://www.openssl.org/docs/manmaster/man1/openssl.html).
 
 - A physical or virtual Linux machine with _AMD64_ (also known as _x86_64_) processor architecture to build the Edge
   artifacts. You can issue the following command in the terminal to check your processor architecture.
@@ -120,9 +120,9 @@ your Edge hosts come from a trusted source. For more information about content b
 
    :::info
 
-   When building the installer ISO, you must set the `installationMode` parameter to `airgap` in your Edge installer
+   When building the installer ISO, you must set the `managementMode` parameter to `local` in your Edge installer
    configuration user data. This ensures that your Edge host does not try to register itself with Palette, as this
-   feature is not available to connected clusters. For more information, refer to
+   feature is not available to centrally managed clusters. For more information, refer to
    [Installer Reference](../../edge-configuration/installer-reference.md#palette-agent-parameters).
 
    :::

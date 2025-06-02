@@ -66,3 +66,12 @@ Choose a roadmap from the following cards to start your journey with Palette.
     },
   ]}
 />
+
+<br />
+
+:::tip
+
+You can also explore our [Downloads](../downloads/downloads.md) section to discover the latest and specific versions of
+accompanying software for Palette.
+
+:::

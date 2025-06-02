@@ -10,9 +10,11 @@ sidebar_position: 10
 tags: ["operating system", "byoos", "profiles", "pxk", "vmware", "airgap"]
 ---
 
-<!-- prettier-ignore -->
-This guide teaches you how to use the [CAPI Image Builder](../../capi-image-builder.md) tool in an airgapped environment to create a custom Red Hat
-Enterprise Linux (RHEL) image with <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> for clusters that target VMware vSphere.
+<!-- prettier-ignore-start -->
+
+This guide teaches you how to use the [CAPI Image Builder](../../capi-image-builder.md) tool in an airgapped environment to create a custom [Red Hat Enterprise Linux (RHEL)](https://developers.redhat.com/) image with <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> for VMware vSphere and use the image to create a cluster profile.
+
+<!-- prettier-ignore-end -->
 
 :::preview
 
@@ -32,33 +34,47 @@ Enterprise Linux (RHEL) image with <VersionedLink text="Palette eXtended Kuberne
 
 - SSH access to the VMware vSphere
   [airgap support VM](../../../../enterprise-version/install-palette/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions.md)
-  utilized to deploy the airgapped instance of Palette or Vertex.
+  used to deploy the airgapped instance of Palette or Vertex.
 
 - The following artifacts must be available in the root home directory of the airgap support VM. You can download the
-  files in a system with internet access and then transfer them to your airgap environment.
+  files on a system with internet access and then transfer them to your airgap environment.
 
   - CAPI Image Builder compressed archive file. Contact your Palette support representative to obtain the latest version
-    of the tool. This guide uses version `4.6.0` as an example.
+    of the tool. This guide uses version 4.6.23 as an example.
 
   - [RHEL ISO](https://developers.redhat.com/products/rhel/download?source=sso) version `8.8`. Ensure you download the
-    **x86_64 DVD ISO** and not the **x86_64 BOOT ISO**, and make sure you have its **SHA256** checksum available. This
+    `x86_64-dvd.iso` file and not the `x86_64-boot.iso` file, and make sure you have its SHA256 checksum available. This
     guide uses RHEL 8.8 as an example. Refer to the [Configuration Reference](../../config-reference.md) page for
     details on supported operating systems.
 
-  - Airgap Kubernetes pack binary of the version for which the image will be generated. This guide uses version `1.28.9`
-    as an example. Refer to the
-    [Additional Packs](../../../../enterprise-version/install-palette/airgap/supplemental-packs.md) page for
-    instructions on how to download the binary. Additionally, check the supported Kubernetes versions in the
+  - Airgap Kubernetes pack binary of the version for which the image will be generated. This guide uses version `1.30.5`
+    as an example. Refer to the [Additional Packs](../../../../downloads/self-hosted-palette/additional-packs.md) page
+    for instructions on how to download the binary. Additionally, check the supported Kubernetes versions in the
     [Compatibility Matrix](../../comp-matrix-capi-builder.md).
+
+  - (Optional) Any custom Bash scripts (`.sh` files) that you want to execute when creating your RHEL image. Custom
+    scripts are supported beginning with CAPI Image Builder version 4.6.23.
 
 ## Build Custom Image
 
-1.  Open a terminal window and SSH into the airgap support VM using the command below. Replace `/path/to/private_key`
-    with the path to the private SSH key and `palette.example.com` with the IP address or hostname of the airgap support
-    VM.
+1.  Open a terminal window and SSH into the airgap support VM using the command below. Replace `<path-to-private-key>`
+    with the path to the private SSH key, `<vm-username>` with your airgap support VM username, and
+    `<airgap-vm-hostname>` with the IP address or Fully Qualified Domain Name (FQDN) of the airgap support VM (for
+    example, `example-vm.palette.dev`).
+
+    :::info
+
+    Whether you use the IP address or FQDN depends on the hostname used when setting up your airgap support VM. If you
+    used an
+    [existing RHEL VM](../../../../enterprise-version/install-palette/install-on-vmware/airgap-install/environment-setup/env-setup-vm.md)
+    to set up your VM, this is always the FQDN; if you used an
+    [OVA](../../../../enterprise-version/install-palette/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions.md),
+    it depends on the hostname used when invoking the command `/bin/airgap-setup.sh <airgap-vm-hostname>`.
+
+    :::
 
     ```shell
-    ssh -i /path/to/private_key ubuntu@palette.example.com
+    ssh -i <path-to-private-key> <vm-username>@<airgap-vm-hostname>
     ```
 
 2.  Switch to the `root` user account to complete the remaining steps.
@@ -67,32 +83,32 @@ Enterprise Linux (RHEL) image with <VersionedLink text="Palette eXtended Kuberne
     sudo --login
     ```
 
-3.  Ensure all the artifacts listed in the [Prerequisites](#prerequisites) section are available in the root home
+3.  Ensure all artifacts listed in the [Prerequisites](#prerequisites) section are available in the `root` home
     directory of the airgap support VM.
 
     ```shell
     ls
     ```
 
-    ```text hideClipboard
-    airgap-pack-kubernetes-1.28.9.bin  bin  capi-image-builder-v4.6.0.tgz  prep  rhel-8.8-x86_64-dvd.iso  snap
+    ```text hideClipboard title="Example output"
+    airgap-pack-kubernetes-1.30.5.bin  bin  capi-image-builder-v4.6.23.tgz  prep  rhel-8.8-x86_64-dvd.iso  snap
     ```
 
     :::warning
 
-    The following steps will use these file names as an example. Adjust the commands if you downloaded the artifacts
-    with different names.
+    The following steps use the preceding file names as an example. Adjust the commands if your artifacts have different
+    names.
 
     :::
 
-4.  Extract the CAPI Image Builder file.
+4.  Extract the CAPI Image Builder file. Replace `<tag>` with your CAPI Image Builder version.
 
     ```shell
-    tar --extract --gzip --file=capi-image-builder-v4.6.0.tgz
+    tar --extract --gzip --file=capi-image-builder-<tag>.tgz
     ```
 
-5.  Update the permissions of the `output` folder to allow the CAPI Builder tool to create directories and files within
-    it.
+5.  Update the permissions of the `output` folder to allow the CAPI Image Builder tool to create directories and files
+    within it.
 
     ```shell
     chmod a+rwx output
@@ -116,15 +132,16 @@ Enterprise Linux (RHEL) image with <VersionedLink text="Palette eXtended Kuberne
     cp /opt/spectro/ssl/server.crt rpmrepo/
     ```
 
-9.  Open the **imageconfig** template file located in the `output` folder and fill in the required parameters. For a
-    complete list of parameters, refer to the [Configuration Reference](../../config-reference.md) page. Additionally,
-    refer to the [Compatibility Matrix](../../comp-matrix-capi-builder.md) for a list of supported Kubernetes versions
-    and their corresponding dependencies.
+9.  Open the `imageconfig` template file in an editor of your choice and fill in the required parameters. For a complete
+    list of parameters, refer to the [Configuration Reference](../../config-reference.md) page. Additionally, refer to
+    the [Compatibility Matrix](../../comp-matrix-capi-builder.md) for a list of supported Kubernetes versions and their
+    corresponding dependencies.
 
-    The **imageconfig** is the file you use to set up the CAPI Image Builder according to your requirements. This
-    includes specifying the OS type, Kubernetes version, whether the image should be FIPS compliant, and more.
+    The `imageconfig` file is the file used to personalize the base CAPI image for your cluster, which you can alter to
+    fit your needs. This includes specifying the OS type, Kubernetes version, whether the image should be FIPS
+    compliant, and more.
 
-    Use the example configuration below for building a RHEL 8 CAPI image in an airgapped environment. Replace
+    Use the example configuration below to build a RHEL 8 CAPI image in an airgapped environment. Replace
     `<rhel-subscription-email>` and `<rhel-subscription-password>` with your RHEL subscription credentials if your CAPI
     Image Builder version is earlier than `4.6.0`. Replace `<iso-checksum>` with the RHEL ISO checksum. Update the
     VMware-related placeholders with the values from your VMware vSphere environment. Additionally, replace
@@ -132,8 +149,8 @@ Enterprise Linux (RHEL) image with <VersionedLink text="Palette eXtended Kuberne
 
     :::warning
 
-    If you used the airgap support VM hostname during the execution of the `airgap-setup.sh` script, ensure to enter the
-    VM's hostname in the `airgap_ip` parameter. The same applies if you used the VM’s IP address.
+    If you used the airgap support VM hostname during the execution of the `airgap-setup.sh` script, ensure you enter
+    the VM hostname in the `airgap_ip` parameter. The same applies if you used the VM IP address.
 
     :::
 
@@ -156,10 +173,10 @@ Enterprise Linux (RHEL) image with <VersionedLink text="Palette eXtended Kuberne
      #
      # containerd crictl and cni version update should be done
      #   only if the images are available in the upstream repositories
-     k8s_version=1.28.9
-     cni_version=1.2.0
+     k8s_version=1.30.5
+     cni_version=1.3.0
      containerd_version=1.7.13
-     crictl_version=1.26.0
+     crictl_version=1.28.0
 
      # Define RHEL subscription credentials(if $image_type=rhel)
      # used while image creation to use package manager
@@ -211,28 +228,44 @@ Enterprise Linux (RHEL) image with <VersionedLink text="Palette eXtended Kuberne
 
     :::
 
-    Once you are done making the alterations, save and exit the file.
+    Once you are finished making changes, save and exit the file.
 
-10. Load the CAPI Image Builder container image with the command below.
+10. (Optional) You can add custom Bash scripts (`.sh` files) to run before or after the build process. This feature is
+    available beginning with CAPI Image Builder version 4.6.23. If any scripts are found in the relevant directories,
+    they are copied to an Ansible playbook.
+
+    Move any scripts that you want to be executed _before_ the build process to the `output/custom_scripts/pre`
+    directory. Move any scripts that you want to be executed _after_ the build process to the
+    `output/custom_scripts/post` directory. Ensure the scripts are executable.
+
+    Below is an example of moving a pre-install script to the appropriate `pre` directory and making it executable.
+
+    ```bash hideClipboard title="Example of moving a script and modifying permissions"
+    mv sample-script.sh output/custom_scripts/pre/sample-script.sh
+    chmod +x custom_scripts/pre/sample-script.sh
+    ```
+
+11. Load the CAPI Image Builder container image with the command below. Replace `<tag>` with your CAPI Image Builder
+    version.
 
         <Tabs>
         <TabItem value="Docker" label="Docker">
 
         ```shell
-        docker load < capi-builder-v4.6.0.tar
+        docker load < capi-builder-<tag>.tar
         ```
 
         </TabItem>
         <TabItem value="Podman" label="Podman">
 
         ```shell
-        podman load < capi-builder-v4.6.0.tar
+        podman load < capi-builder-<tag>.tar
         ```
 
         </TabItem>
         </Tabs>
 
-11. Load the Yum container image with the command below. The Yum container is used to serve the packages required by the
+12. Load the Yum container image with the command below. The Yum container is used to serve the packages required by the
     CAPI Image Builder.
 
         <Tabs>
@@ -252,7 +285,7 @@ Enterprise Linux (RHEL) image with <VersionedLink text="Palette eXtended Kuberne
         </TabItem>
         </Tabs>
 
-12. Confirm that both container images were loaded correctly.
+13. Confirm that both container images were loaded correctly.
 
         <Tabs>
         <TabItem value="Docker" label="Docker">
@@ -260,9 +293,9 @@ Enterprise Linux (RHEL) image with <VersionedLink text="Palette eXtended Kuberne
         ```shell
         docker images
         ```
-        ```text hideClipboard
+        ```text hideClipboard title="Example output"
         REPOSITORY                                                          TAG         IMAGE ID      CREATED       SIZE
-        us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder  v4.6.0      d27849b14d5d  10 days ago   2.66 GB
+        us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder  v4.6.23     2adff15eee2d  7 days ago    2.47 GB
         gcr.io/spectro-images-public/imagebuilder/yum-repo                  v1.0.0      b03879039936  6 weeks ago   603 MB
         ```
 
@@ -272,16 +305,16 @@ Enterprise Linux (RHEL) image with <VersionedLink text="Palette eXtended Kuberne
         ```shell
         podman images
         ```
-        ```text hideClipboard
+        ```text hideClipboard title="Example output"
         REPOSITORY                                                          TAG         IMAGE ID      CREATED       SIZE
-        us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder  v4.6.0      d27849b14d5d  10 days ago   2.66 GB
+        us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder  v4.6.23     2adff15eee2d  7 days ago    2.47 GB
         gcr.io/spectro-images-public/imagebuilder/yum-repo                  v1.0.0      b03879039936  6 weeks ago   603 MB
         ```
 
         </TabItem>
         </Tabs>
 
-13. Start the Yum container and assign its ID to the `BUILD_ID_YUM` variable.
+14. Start the Yum container and assign its ID to the `BUILD_ID_YUM` variable.
 
         <Tabs>
         <TabItem value="Docker" label="Docker">
@@ -300,7 +333,7 @@ Enterprise Linux (RHEL) image with <VersionedLink text="Palette eXtended Kuberne
         </TabItem>
         </Tabs>
 
-14. Execute the command below to visualize the Yum container logs.
+15. Execute the command below to visualize the Yum container logs.
 
         <Tabs>
         <TabItem value="Docker" label="Docker">
@@ -309,7 +342,7 @@ Enterprise Linux (RHEL) image with <VersionedLink text="Palette eXtended Kuberne
         docker logs --follow $BUILD_ID_YUM
         ```
 
-        Monitor the output until a `Pool finished` message appears, indicating that the process has completed successfully.
+        Monitor the output until a `Pool finished` message appears, indicating that the process was completed successfully.
 
         ```text hideClipboard {7}
         # Output condensed for readability
@@ -328,7 +361,7 @@ Enterprise Linux (RHEL) image with <VersionedLink text="Palette eXtended Kuberne
         podman logs --follow $BUILD_ID_YUM
         ```
 
-        Monitor the output until you see a `Pool finished` message, which indicates that the process has completed successfully.
+        Monitor the output until you see a `Pool finished` message, which indicates that the process was completed successfully.
 
         ```text hideClipboard {7}
         # Output condensed for readability
@@ -342,29 +375,32 @@ Enterprise Linux (RHEL) image with <VersionedLink text="Palette eXtended Kuberne
         </TabItem>
         </Tabs>
 
-15. Issue the following command to upload the airgap Kubernetes pack to the airgap registry.
+16. Issue the following command to upload the airgap Kubernetes pack to the airgap registry.
 
     ```shell
-    chmod +x airgap-pack-kubernetes-1.28.9.bin && \
-    ./airgap-pack-kubernetes-1.28.9.bin
+    chmod +x airgap-pack-kubernetes-1.30.5.bin && \
+    ./airgap-pack-kubernetes-1.30.5.bin
     ```
 
-16. Start the CAPI Image Builder container and assign the container ID to the `BUILD_ID_CAPI` variable. The tool will
-    create and configure a VM named `rhel-8` with Dynamic Host Configuration Protocol (DHCP) in your VMware vSphere
-    environment. It will then generate a RHEL 8 CAPI image from the VM and save it to the `output` folder.
+17. Issue the command below to start the CAPI Image Builder container and assign the container ID to the `BUILD_ID_CAPI`
+    variable. The tool will create and configure a VM with Dynamic Host Configuration Protocol (DHCP) in your VMware
+    vSphere environment using the `image_name` defined in `imageconfig`. For this guide, the VM is named `rhel-8`. The
+    tool will then generate a RHEL 8 CAPI image from the VM and save it to the `output` directory.
+
+    Replace `<tag>` with your CAPI Image Builder version.
 
         <Tabs>
         <TabItem value="Docker" label="Docker">
 
         ```bash
-        BUILD_ID_CAPI=$(docker run --net=host --volume /root/output:/home/imagebuilder/output --detach us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:v4.6.0)
+        BUILD_ID_CAPI=$(docker run --net=host --volume /root/output:/home/imagebuilder/output --detach us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:<tag>)
         ```
 
         </TabItem>
         <TabItem value="Podman" label="Podman">
 
         ```bash
-        BUILD_ID_CAPI=$(podman run --net=host --volume /root/output:/home/imagebuilder/output --detach us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:v4.6.0)
+        BUILD_ID_CAPI=$(podman run --net=host --volume /root/output:/home/imagebuilder/output --detach us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:<tag>)
         ```
 
         </TabItem>
@@ -372,39 +408,38 @@ Enterprise Linux (RHEL) image with <VersionedLink text="Palette eXtended Kuberne
 
     If you need the VM to use static IP placement instead of DHCP, follow the steps described below.
 
-    <!-- prettier-ignore -->
         <details>
         <summary>CAPI Image Builder with Static IP Placement </summary>
 
-        1. Open the `ks.cfg` file located in the output folder. Find and replace the network line
-            `network --bootproto=dhcp --onboot=on --ipv6=auto --activate --hostname=capv.vm` with the configuration below.
+        1. Open the `ks.cfg` file located in the output folder. Locate and replace the network lines
+            `network --bootproto=dhcp --device=link --activate` and `network --hostname=rhel8` with the configuration below.
 
             ```text
             network --bootproto=static --ip=<vcenter-static-ip-address> --netmask=<vcenter-netmask> --gateway=<vcenter-gateway> --nameserver=<vcenter-nameserver>
             ```
 
-            Then, replace `<vcenter-static-ip-address>` with a valid IP address from your VMware vSphere environment, and
+            Replace `<vcenter-static-ip-address>` with a valid IP address from your VMware vSphere environment and
             `<vcenter-netmask>`, `<vcenter-gateway>`, and `<vcenter-nameserver>` with the correct values from your VMware vSphere
-            environment.
+            environment. The `<vcenter-netmask>` parameter must be specified in dotted decimal notation, for example, `--netmask=255.255.255.0`.
 
-            Once you are finished doing the alterations, save and exit the file.
+            Once you are finished making changes, save and exit the file.
 
         2.  Issue the command below to start the CAPI Image Builder container and assign the container ID to the `BUILD_ID_CAPI`
-            variable. The tool will use the **imageconfig** file to create and configure a VM with static IP placement in
-            your VMware vSphere environment.
+            variable. The tool will use the `imageconfig` file to create and configure a VM with static IP placement in
+            your VMware vSphere environment. Replace `<tag>` with your CAPI Image Builder version.
 
             <Tabs>
             <TabItem value="Docker" label="Docker">
 
              ```bash
-             BUILD_ID_CAPI=$(docker run --net=host --volume /root/output:/home/imagebuilder/output --detach us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:v4.6.0)
+             BUILD_ID_CAPI=$(docker run --net=host --volume /root/output:/home/imagebuilder/output --detach us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:<tag>)
              ```
             </TabItem>
 
             <TabItem value="Podman" label="Podman">
 
              ```bash
-             BUILD_ID_CAPI=$(podman run --net=host --volume /root/output:/home/imagebuilder/output --detach us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:v4.6.0)
+             BUILD_ID_CAPI=$(podman run --net=host --volume /root/output:/home/imagebuilder/output --detach us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:<tag>)
              ```
 
             </TabItem>
@@ -412,26 +447,28 @@ Enterprise Linux (RHEL) image with <VersionedLink text="Palette eXtended Kuberne
 
         </details>
 
-17. Execute the following command to view the CAPI Image Builder container logs and monitor the build progress.
-    <!-- prettier-ignore -->
-    <Tabs>
-    <TabItem value="Docker" label="Docker">
+18. Execute the following command to view the CAPI Image Builder container logs and monitor the build progress. If you
+    added any custom scripts in step 10, the output will be displayed in the build log.
 
-    ```shell
-    docker logs --follow $BUILD_ID_CAPI
-    ```
+        <Tabs>
 
-    </TabItem>
+        <TabItem value="Docker" label="Docker">
 
-    <TabItem value="Podman" label="Podman">
+        ```shell
+        docker logs --follow $BUILD_ID_CAPI
+        ```
 
-    ```shell
-    podman logs --follow $BUILD_ID_CAPI
-    ```
+        </TabItem>
 
-    <!-- prettier-ignore -->
-    </TabItem>
-    </Tabs>
+        <TabItem value="Podman" label="Podman">
+
+        ```shell
+        podman logs --follow $BUILD_ID_CAPI
+        ```
+
+        </TabItem>
+
+        </Tabs>
 
     :::info
 
@@ -439,120 +476,137 @@ Enterprise Linux (RHEL) image with <VersionedLink text="Palette eXtended Kuberne
 
     :::
 
-18. Once the build is complete, the RHEL 8 CAPI image will be downloaded to a folder named `rhel-8` within the output
-    directory on your airgap support VM, and the CAPI Image Builder VM will be deleted from VMware vSphere. Issue the
-    command below to confirm that the build files are present in the output directory.
+19. Once the build is complete, the RHEL 8 CAPI image will be downloaded to the `output` directory as the `image_name`
+    specified in the `imageconfig` file. For this example, the image is `rhel-8`. Once the image is created, the VM is
+    deleted from VMware vSphere.
+
+    Issue the command below to confirm that the build files are present in the `output` directory, replacing `rhel-8`
+    with your specified `image_name`, if different.
 
         ```shell
         ls output/rhel-8
         ```
 
-        ```text hideClipboard
-        packer-manifest.json  rhel-8-kube-v1.28.9.mf  rhel-8-kube-v1.28.9.ova.sha256  rhel-8.ovf rhel-8-disk-0.vmdk  rhel-8-kube-v1.28.9.ova  rhel-8-kube-v1.28.9.ovf
+        ```text hideClipboard title="Example output"
+        packer-manifest.json  rhel-8-kube-v1.30.5.mf  rhel-8-kube-v1.30.5.ova.sha256  rhel-8.ovf rhel-8-disk-0.vmdk  rhel-8-kube-v1.30.5.ova  rhel-8-kube-v1.30.5.ovf
         ```
 
-19. Copy the `rhel-8-kube-v1.28.9.ova` file to the home directory of the airgap support VM.
+20. Copy the `rhel-8-kube-v1.30.5.ova` file to the home directory of the airgap support VM. Replace `<vm-username>` with
+    your airgap support VM username.
 
     ```shell
-    cp /root/output/rhel-8/rhel-8-kube-v1.28.9.ova /home/ubuntu/
+    cp /root/output/rhel-8/rhel-8-kube-v1.30.5.ova /home/<vm-username>/
     ```
 
     Next, open a new terminal window on your local machine and use the `scp` command to copy the
-    `rhel-8-kube-v1.28.9.ova` file. Replace `/path/to/private_key` with the path to the private SSH key and
-    `palette.example.com` with the IP address or hostname of the airgap support VM.
+    `rhel-8-kube-v1.30.5.ova` file. Replace `<path-to-private-key>` with the path to the private SSH key,
+    `<vm-username>` with your airgap support VM username, and `<airgap-vm-hostname>` with the IP address or hostname of
+    the airgap support VM.
 
     ```shell
-    scp -i /path/to/private_key ubuntu@palette.example.com:/home/ubuntu/rhel-8-kube-v1.28.9.ova .
+    scp -i <path-to-private-key> <vm-username>@<airgap-vm-hostname>:/home/<vm-username>/rhel-8-kube-v1.30.5.ova .
     ```
 
-20. To make the image available in VMware vSphere, log in to your environment and locate the `vcenter_folder` you
-    defined in step **10** of this guide.
+21. To make the image available in VMware vSphere, log in to your environment and locate the `vcenter_folder` you
+    defined in step 9 of this guide.
 
-    :::info
+    :::tip
 
     You can also use the following steps to make the image available in a VMware vSphere environment that is not
     connected to the one you used for building the image.
 
     :::
 
-21. Right-click the folder and select **Deploy OVF Template** to deploy a VM using the RHEL 8 OVA file that was built in
-    step **16** of this guide.
+22. Right-click the folder and select **Deploy OVF Template** to deploy a VM using the RHEL 8 OVA file that was built in
+    step 17 of this guide.
 
-22. In the **Deploy OVF Template** wizard, click **Local File**, then **Upload Files**, and select the
-    `rhel-8-kube-v1.28.9.ova` file from the folder on your local machine. Click **Next** to continue.
+23. In the **Deploy OVF Template** wizard, select **Local File > Upload Files**, and choose the OVA file located in the
+    `output` folder on your local machine. This guide uses `rhel-8-kube-v1.30.5.ova` as an example. Select **Next** to
+    continue.
 
-23. Assign a name to the virtual machine, such as `rhel-8-kube-v1.28.9`, and select the folder you created previously as
-    the target location. Click **Next** to proceed.
+24. Assign a name to the virtual machine, such as `rhel-8-kube-v1.30.5`, and choose the folder you created previously as
+    the target location. Select **Next** to proceed.
 
-24. Select a compute resource and click **Next**.
+25. Choose a compute resource and select **Next**.
 
-25. Review the VM configuration, accept the license agreements, and click **Next**.
+26. Review the VM configuration, accept the license agreements, and select **Next**.
 
-26. Select the storage location and network configuration and click **Next**. Then, click **Finish** to deploy the VM.
+27. Choose the storage location and network configuration and select **Next**. Then, select **Finish** to deploy the VM.
 
     :::warning
 
-    It takes a while for the VM to deploy, approximately 45 minutes or more. The download of the OVA file takes up the
-    majority of the time. You can monitor the progress of this process in VMware vSphere by looking at the **Recent
-    Tasks** tab and filtering the **Task Name** column by `Deploy OVF Template`.
+    It takes a while for the VM to deploy, approximately 45 minutes or more, depending on your internet connection. The
+    download of the OVA file takes the majority of the time. You can monitor the progress of this process in VMware
+    vSphere by looking at the **Recent Tasks** tab and filtering the **Task Name** column by `Deploy OVF Template`.
 
     :::
 
-27. Once the VM is created, right-click it and select **Convert to Template**. This will convert the VM into a RHEL 8
+28. Once the VM is created, right-click it and select **Convert to Template**. This will convert the VM into a RHEL 8
     image template that you can reference during the cluster profile creation.
+
+### Validate
+
+1. Log in to the VMware vSphere environment and navigate to the **Inventory** view.
+
+2. Select the **VMs and Templates** tab and verify the custom RHEL 8 image is available.
 
 ## Create Cluster Profile
 
 The RHEL 8 image is now built and available in the VMware vSphere environment. You can use it to create a cluster
 profile and deploy a VMware vSphere host cluster.
 
-19. Log in to your airgapped instance of Palette or VerteX and select **Profiles** from the left **Main Menu**.
+1. Log in to your airgapped instance of Palette or VerteX.
 
-20. Click **Add Cluster Profile** and follow the wizard to create a new profile.
+2. From the left main menu, select **Profiles > Add Cluster Profile**.
 
-21. In the **Basic Information** section, assign the cluster profile a name and a brief description, and select the type
-    as **Full**. Click **Next**.
+3. In the **Basic Information** section, assign the cluster profile a **Name**, brief **Description**, and **Tags**.
+   Choose **Full** for the profile **Type** and select **Next**.
 
-22. In the **Cloud Type** section, select **VMware** and click **Next**.
+4. In the **Cloud Type** section, choose **VMware vSphere** and select **Next**.
 
-23. The **Profile Layers** section is where you specify the packs that compose the profile. This guide uses the
-    following packs as an example.
+5. The **Profile Layers** section is where you specify the packs that compose the profile. For this guide, use the
+   following packs.
 
-    | Pack Name                   | Version | Layer            |
-    | --------------------------- | ------- | ---------------- |
-    | BYOOS                       | 1.0.0   | Operating System |
-    | Palette eXtended Kubernetes | 1.28.9  | Kubernetes       |
-    | Calico                      | 3.28.0  | Network          |
-    | vSphere CSI                 | 3.2.0   | Storage          |
+   | Pack Name                   | Version | Layer            |
+   | --------------------------- | ------- | ---------------- |
+   | BYOOS                       | 1.0.0   | Operating System |
+   | Palette eXtended Kubernetes | 1.30.5  | Kubernetes       |
+   | Cilium                      | 1.15.3  | Network          |
+   | vSphere CSI                 | 3.2.0   | Storage          |
 
-    <!-- prettier-ignore -->
-    Reference the custom RHEL 8 image template path in your VMware vSphere environment when populating the pack details
-    for the <VersionedLink text="BYOOS" url="/integrations/packs/?pack=generic-byoi" /> layer. For example, in the code snippet below, `/Datacenter/vm/sp-docs/rhel-8-kube-v1.28.9` is the vSphere path to the image.
+    <!-- prettier-ignore-start -->
 
-    ```yaml
-    pack:
-      osImageOverride: "/Datacenter/vm/sp-docs/rhel-8-kube-v1.28.9"
-      osName: "rhel"
-      osVersion: "8"
-    ```
+   Reference the custom RHEL 8 image template path in your VMware vSphere environment when populating the pack details
+   for the <VersionedLink text="BYOOS" url="/integrations/packs/?pack=generic-byoi" /> layer.
 
-    As you fill out the information for each layer, click **Next** to proceed.
+    <!-- prettier-ignore-end -->
 
-    :::warning
+   ```yaml hideClipboard title="Example YAML configuration"
+   pack:
+     osImageOverride: "/Datacenter/vm/sp-docs/rhel-8-kube-v1.30.5"
+     osName: "rhel"
+     osVersion: "8"
+   ```
 
-    The Palette eXtended Kubernetes pack version must match the Kubernetes version specified in the **imageconfig**
-    file.
+   As you fill out the information for each layer, select **Next** to proceed.
 
-    :::
+   :::warning
 
-24. Review the profile layers and click **Finish Configuration** to create the cluster profile.
+   The Palette eXtended Kubernetes pack version must match the `k8s_version` specified in the `imageconfig` file.
 
-25. Deploy a VMware host cluster using the created cluster profile. Refer to the
-    [Create and Manage VMware Clusters](../../../../clusters/data-center/vmware/create-manage-vmware-clusters.md) guide
-    for instructions on deploying a VMware host cluster.
+   :::
 
-## Validate
+6. Review the profile layers and select **Finish Configuration** to create the cluster profile.
 
-1. Log in to the VMware vSphere environment and navigate to the **Inventory** view.
+### Validate
 
-2. Select the **VMs and Templates** tab and verify the custom RHEL 8 image is available.
+1. Log in to your airgapped instance of Palette or VerteX.
+
+2. From the left main menu, select **Profiles**. Verify that your new cluster profile is available.
+
+## Next Steps
+
+After you have created an OS image with CAPI Image Builder and have it referenced in a cluster profile, you can deploy a
+VMware host cluster using the created cluster profile. Refer to the
+[Create and Manage VMware Clusters](../../../../clusters/data-center/vmware/create-manage-vmware-clusters.md) guide for
+instructions on deploying a VMware host cluster.

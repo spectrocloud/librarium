@@ -63,11 +63,11 @@ Creating a content bundle provides several benefits that may address common use 
 2. Log in to [Palette](https://console.spectrocloud.com).
 
 3. Select the project you want to deploy the Edge host to and copy down the **Project ID**. You can find the project id
-   at the top right side corner of the landing page below the **User drop-down Menu**.
+   in the top right side corner of the landing page below the user drop-down menu.
 
-4. Navigate to the left **Main Menu** and select **Profiles**.
+4. Navigate to the left main menu and select **Profiles**.
 
-5. Use the **Cloud Types drop-down Menu** and select **Edge Native**.
+5. Use the **Cloud Types** drop-down menu and select **Edge Native**.
 
 6. Click on the cluster profile you want to include in the content bundle.
 
@@ -150,8 +150,8 @@ Creating a content bundle provides several benefits that may address common use 
        },
        {
          "endpoint": "docker.io",
-         "username": "akhileshpvt",
-         "password": "Lucent122333!"
+         "username": "username",
+         "password": "*********"
        }
      ]
    }
@@ -220,19 +220,17 @@ Creating a content bundle provides several benefits that may address common use 
     --cluster-profile-ids <CLUSTER_PROFILE_ID1,CLUSTER_PROFILE_ID2...> \
     --palette-endpoint <Palette API Endpoint> \
     --outfile <bundle-name> \
-    --cred-file-path <file-path> \
-    --include-palette-content \
+    --cred-file-path <file-path>
    ```
 
-   | Flag                        | Description                                                                                                             |
-   | --------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-   | `--api-key`                 | Your Palette API key.                                                                                                   |
-   | `--cluster-profile-ids`     | Comma-separated list of cluster profile IDs to download content for.                                                    |
-   | `--cred-file-path`          | Path to the JSON file storing registry credentials if you are using a private registry.                                 |
-   | `--include-palette-content` | Whether to include content necessary for Palette itself. Required for airgap installations.                             |
-   | `--outfile`                 | Name of your content bundle. The final file name should have the following pattern: `core-<bundle-name>-random-string`. |
-   | `--palette-endpoint`        | API endpoint for your Palette instance.                                                                                 |
-   | `--project-id`              | The ID of your Palette project.                                                                                         |
+   | Flag                    | Description                                                                                                             |
+   | ----------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+   | `--api-key`             | Your Palette API key.                                                                                                   |
+   | `--cluster-profile-ids` | Comma-separated list of cluster profile IDs to download content for.                                                    |
+   | `--cred-file-path`      | Path to the JSON file storing registry credentials if you are using a private registry.                                 |
+   | `--outfile`             | Name of your content bundle. The final file name should have the following pattern: `core-<bundle-name>-random-string`. |
+   | `--palette-endpoint`    | API endpoint for your Palette instance.                                                                                 |
+   | `--project-id`          | The ID of your Palette project.                                                                                         |
 
    The result is a content bundle that you can use to preload into your installer. For more information, refer to
    [Build Edge Artifacts with Content Bundle](./palette-canvos/build-artifacts.md) or

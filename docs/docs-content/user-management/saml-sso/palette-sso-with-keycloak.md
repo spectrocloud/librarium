@@ -36,7 +36,7 @@ up Keycloak as an OIDC provider for Palette.
 
   You can deploy a Kubernetes cluster in a public cloud with load balancer resources using Palette. You can also deploy
   to an on-prem or edge environment and use the MetalLB pack to expose a load balancer service. Check out the
-  [Deploy a Cluster](../../clusters/public-cloud/deploy-k8s-cluster.md) guide for more information.
+  [Getting Started](/getting-started/) tutorials for more information.
 
   :::
 
@@ -160,11 +160,11 @@ up Keycloak as an OIDC provider for Palette.
 
 12. Click on **Save** to save the client configuration.
 
-    ![alt_text](/keycloak/user-management_saml-sso_keycloak-06-keycloak-callback.webp "Keycloak callback")
+    ![Keycloak callback](/keycloak/user-management_saml-sso_keycloak-06-keycloak-callback.webp "Keycloak callback")
 
 13. In the following screen, select the **Credentials** tab to retrieve client secret.
 
-    ![alt_text](/keycloak/user-management_saml-sso_keycloak-07-keycloak-credentials.webp "Keycloak Credentials")
+    ![Keycloak Credentials](/keycloak/user-management_saml-sso_keycloak-07-keycloak-credentials.webp "Keycloak Credentials")
 
 14. Switch back to Palette and paste client secret in the **Client Secret** field. Fill out the following fields with
     the instructions provided in the table below.
@@ -183,7 +183,7 @@ up Keycloak as an OIDC provider for Palette.
 16. Navigate back to the Keycloak admin console. In the left **Main Menu**, select **Users**. Fill in first name, second
     name, and the email address of the admin user.
 
-    ![View of the Keycloack admin portal screen](/keycloak/user-management_saml-sso_keycloak-10-keycloak-admin.webp "Keycloak Admin")
+    ![View of the Keycloak admin portal screen](/keycloak/user-management_saml-sso_keycloak-10-keycloak-admin.webp "Keycloak Admin")
 
 You have now configured SSO for Palette with Keycloak. You can now log in to Palette using the admin user you created in
 Keycloak. Use the validation steps below to validate the SSO configuration. Check out the

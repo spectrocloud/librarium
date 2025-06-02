@@ -1,1 +1,0 @@
-| <!-- cli-{{RELEASE_NAME}} --> {{RELEASE_VERSION}} | v{{RELEASE_PALETTE_CLI_VERSION}} |

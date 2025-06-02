@@ -38,7 +38,7 @@ Use the following steps to add and manage proxy configurations for a PCG.
 
   :::
 
-- The kubeconfig file for the Kubernetes cluster where the PCG is deployed. The Kubconfig file is used to authenticate
+- The kubeconfig file for the Kubernetes cluster where the PCG is deployed. The kubeconfig file is used to authenticate
   with the Kubernetes cluster and deploy the Reach service.
 
 - Admin access to the Kubernetes cluster where the PCG is deployed. The Reach Helm Chart will create a namespace,
@@ -117,13 +117,14 @@ Use the following steps to add and manage proxy configurations for a PCG.
 6. Open the **reach-system/values.yaml** file in a text editor. Fill out the following YAML fields with the proxy
    configuration details:
 
-   | Field Name                              | Description                                                                                                                                                                                |
-   | --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-   | `reachSystem.enabled`                   | Set this field to `true` to enable the Reach service.                                                                                                                                      |
-   | `reachSystem.proxySettings.http_proxy`  | The HTTP proxy URL, including the port number.                                                                                                                                             |
-   | `reachSystem.proxySettings.https_proxy` | The HTTPS proxy URL, including the port number.                                                                                                                                            |
-   | `reachSystem.proxySettings.no_proxy`    | A comma-separated list of URLs that should bypass the proxy.                                                                                                                               |
-   | `reachSystem.proxySettings.ca_crt_path` | The path to the CA certificate file used to authenticate the proxy server. Make sure the CA certificate is in the PEM format. If you do not have a CA certificate, leave this field empty. |
+   | Field Name                              | Description                                                                                                                                                                                                                                                                                                                                      |
+   | --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+   | `reachSystem.enabled`                   | Set this field to `true` to enable the Reach service.                                                                                                                                                                                                                                                                                            |
+   | `reachSystem.proxySettings.http_proxy`  | The HTTP proxy URL, including the port number.                                                                                                                                                                                                                                                                                                   |
+   | `reachSystem.proxySettings.https_proxy` | The HTTPS proxy URL, including the port number.                                                                                                                                                                                                                                                                                                  |
+   | `reachSystem.proxySettings.no_proxy`    | A comma-separated list of URLs that should bypass the proxy.                                                                                                                                                                                                                                                                                     |
+   | `reachSystem.proxySettings.ca_crt_path` | The path to the CA certificate file used to authenticate the proxy server. Make sure the CA certificate is in the PEM format. If you do not have a CA certificate, leave this field empty.                                                                                                                                                       |
+   | `reachSystem.scheduleOnControlPlane`    | Specifies whether to schedule the reach system on the control plane. Due to node affinity configurations, you must set `scheduleOnControlPlane: false` for managed clusters deployed to [Azure AKS](../../public-cloud/azure/aks.md), [AWS EKS](../../public-cloud/aws/eks.md), and [GCP GKE](../../public-cloud/gcp/create-gcp-gke-cluster.md). |
 
    <br />
 

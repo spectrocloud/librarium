@@ -125,7 +125,7 @@ displays. The Palette UI confirms that the cluster profile was created in the sc
 Select the cluster profile to view its details. The cluster profile summary appears.
 
 This cluster profile deploys the [Hello Universe](https://github.com/spectrocloud/hello-universe) application using a
-pack. Click on the **hellouniverse 1.2.0** layer. The pack manifest editor appears.
+pack. Click on the `hellouniverse 1.2.0` layer. The pack manifest editor appears.
 
 Click on **Presets** on the right-hand side. You can learn more about the pack presets on the pack README, which is
 available in the Palette UI. Select the **Enable Hello Universe API** preset. The pack manifest changes accordingly.
@@ -144,7 +144,7 @@ Click on the **lb-metallb-helm** layer. The pack manifest editor appears.
 Replace the predefined `192.168.10.0/24` IP CIDR listed below the **addresses** line with a valid IP address or IP range
 from your VMware environment to be assigned to your load balancer.
 
-![Metallb Helm-based pack.](/getting-started/vmware/getting-started_scale-secure-cluster_metallb-pack.webp)
+![MetalLb Helm-based pack.](/getting-started/vmware/getting-started_scale-secure-cluster_metallb-pack.webp)
 
 Click on **Confirm Updates**. The manifest editor closes. Then, click on **Save Changes** to save your updates.
 
@@ -202,7 +202,7 @@ Click on the version drop-down and select **Create new version**. The version cr
 Fill in **1.1.0** in the **Version** input field. Then, click on **Confirm**. The new cluster profile version is created
 with the same layers as version **1.0.0**.
 
-Select the **kubernetes 1.27.x** layer of the profile. The pack manifest editor appears.
+Select the `kubernetes 1.27.x` layer of the profile. The pack manifest editor appears.
 
 Click on the **Pack Version** dropdown. All of the available versions of the **Palette eXtended Kubernetes** pack
 appear. The cluster profile is configured to use the latest patch version of **Kubernetes 1.27**.
@@ -423,7 +423,7 @@ workloads execute on which nodes.
 Switch back to Palette in your web browser. Navigate to the left **Main Menu** and select **Profiles**. Select the
 cluster profile deployed to your cluster, named `vmware-profile`. Ensure that the **1.1.0** version is selected.
 
-Click on the **hellouniverse 1.2.0** layer. The manifest editor appears. Set the
+Click on the `hellouniverse 1.2.0` layer. The manifest editor appears. Set the
 `manifests.hello-universe.ui.useTolerations` field on line 19 to `true`. Then, set the
 `manifests.hello-universe.ui.effect` field on line 21 to `NoExecute`. This toleration describes that the UI pods of
 Hello Universe will tolerate the taint with the effect `NoExecute`, key `app`, and value `ui`. The tolerations of the UI

@@ -59,266 +59,266 @@ the list of operations.
 <Accordion>
 <AccordionPanel title="API Keys">
 
-- create
-- get
-- list
-- update
-- delete
+- `create`
+- `get`
+- `list`
+- `update`
+- `delete`
 
 </AccordionPanel>
 <AccordionPanel title="Audit">
 
-- get
-- list
+- `get`
+- `list`
 
 </AccordionPanel>
 <AccordionPanel title="App Deployment">
 
-- create
-- delete
-- get
-- list
-- update
+- `create`
+- `delete`
+- `get`
+- `list`
+- `update`
 
 </AccordionPanel>
 <AccordionPanel title="App Profile">
 
-- create
-- delete
-- get
-- list
-- update
+- `create`
+- `delete`
+- `get`
+- `list`
+- `update`
 
 </AccordionPanel>
 <AccordionPanel title="Cloud Account">
 
-- create
-- delete
-- get
-- list
-- update
+- `create`
+- `delete`
+- `get`
+- `list`
+- `update`
 
 </AccordionPanel>
 <AccordionPanel title="Cloud Config">
 
-- create
-- delete
-- get
-- list
-- update
+- `create`
+- `delete`
+- `get`
+- `list`
+- `update`
 
 </AccordionPanel>
 <AccordionPanel title="Cluster">
 
-- create
-- delete
-- get
-- list
-- update
+- `create`
+- `delete`
+- `get`
+- `list`
+- `update`
 
 </AccordionPanel>
 
 <AccordionPanel title="Cluster Group">
 
-- create
-- delete
-- get
-- list
-- update
+- `create`
+- `delete`
+- `get`
+- `list`
+- `update`
 
 </AccordionPanel>
 
 <AccordionPanel title="Cluster Pair">
 
-- delete
-- get
-- list
-- update
+- `delete`
+- `get`
+- `list`
+- `update`
 
 </AccordionPanel>
 
 <AccordionPanel title="Cluster Profile">
 
-- create
-- delete
-- get
-- list
-- update
-- publish
+- `create`
+- `delete`
+- `get`
+- `list`
+- `update`
+- `publish`
 
 </AccordionPanel>
 <AccordionPanel title="DNS Mapping">
 
-- create
-- delete
-- get
-- list
-- update
+- `create`
+- `delete`
+- `get`
+- `list`
+- `update`
 
 </AccordionPanel>
 <AccordionPanel title="Edge Host">
 
-- create
-- delete
-- get
-- list
-- update
-- sshUpdate
-- sshUserUpdate
+- `create`
+- `delete`
+- `get`
+- `list`
+- `update`
+- `sshUpdate`
+- `sshUserUpdate`
 
 </AccordionPanel>
 <AccordionPanel title="Edge Host Token">
 
-- create
-- delete
-- get
-- list
-- update
+- `create`
+- `delete`
+- `get`
+- `list`
+- `update`
 
 </AccordionPanel>
 <AccordionPanel title="Filter">
 
-- create
-- delete
-- get
-- list
-- update
+- `create`
+- `delete`
+- `get`
+- `list`
+- `update`
 
 </AccordionPanel>
 <AccordionPanel title="Location">
 
-- create
-- delete
-- get
-- list
-- update
+- `create`
+- `delete`
+- `get`
+- `list`
+- `update`
 
 </AccordionPanel>
 <AccordionPanel title="Macro">
 
-- create
-- delete
-- get
-- list
-- update
+- `create`
+- `delete`
+- `get`
+- `list`
+- `update`
 
 </AccordionPanel>
 <AccordionPanel title="Machine">
 
-- create
-- delete
-- get
-- list
-- update
+- `create`
+- `delete`
+- `get`
+- `list`
+- `update`
 
 </AccordionPanel>
 <AccordionPanel title="Private Gateway">
 
-- create
-- delete
-- get
-- list
-- update
+- `create`
+- `delete`
+- `get`
+- `list`
+- `update`
 
 </AccordionPanel>
 <AccordionPanel title="Project">
 
-- create
-- delete
-- get
-- list
-- update
+- `create`
+- `delete`
+- `get`
+- `list`
+- `update`
 
 </AccordionPanel>
 <AccordionPanel title="Role">
 
-- create
-- delete
-- get
-- list
-- update
+- `create`
+- `delete`
+- `get`
+- `list`
+- `update`
 
 </AccordionPanel>
 <AccordionPanel title="Registry">
 
-- create
-- delete
-- get
-- list
-- update
+- `create`
+- `delete`
+- `get`
+- `list`
+- `update`
 
 </AccordionPanel>
 <AccordionPanel title="Tag">
 
-- update
+- `update`
 
 </AccordionPanel>
 <AccordionPanel title="Team">
 
-- create
-- delete
-- get
-- list
-- update
+- `create`
+- `delete`
+- `get`
+- `list`
+- `update`
 
 </AccordionPanel>
 <AccordionPanel title="User">
 
-- create
-- delete
-- get
-- list
-- update
+- `create`
+- `delete`
+- `get`
+- `list`
+- `update`
 
 </AccordionPanel>
 <AccordionPanel title="Virtual Cloud Config">
 
-- create
-- delete
-- get
-- list
-- update
+- `create`
+- `delete`
+- `get`
+- `list`
+- `update`
 
 </AccordionPanel>
 <AccordionPanel title="Virtual Cluster">
 
-- create
-- delete
-- get
-- list
-- update
+- `create`
+- `delete`
+- `get`
+- `list`
+- `update`
 
 </AccordionPanel>
 <AccordionPanel title="Virtual Machine">
 
-- create
-- delete
-- get
-- list
-- update
-- clone
-- migrate
-- pause
-- restart
-- resume
-- snapshotCreate
-- snapshotDelete
-- snapshotGet
-- snapshotList
-- snapshotUpdate
-- start
-- stop
+- `create`
+- `delete`
+- `get`
+- `list`
+- `update`
+- `clone`
+- `migrate`
+- `pause`
+- `restart`
+- `resume`
+- `snapshotCreate`
+- `snapshotDelete`
+- `snapshotGet`
+- `snapshotList`
+- `snapshotUpdate`
+- `start`
+- `stop`
 
 </AccordionPanel>
 <AccordionPanel title="Workspace">
 
-- create
-- delete
-- get
-- list
-- update
-- restore
-- backup
+- `create`
+- `delete`
+- `get`
+- `list`
+- `update`
+- `restore`
+- `backup`
 
 </AccordionPanel>
 </Accordion>

@@ -36,7 +36,7 @@ has the necessary network connectivity for VerteX to operate successfully.
   configuration to be installed as part of the installation process. If Cert Manager is already installed, you must
   uninstall it before installing VerteX.
 
-- Palette requires a Container Storage Interface (CSI) to create Persistest Volume, which is used to store persistent
+- Palette requires a Container Storage Interface (CSI) to create Persistent Volumes, which are used to store persistent
   data. You may install any CSI that is compatible with your Kubernetes cluster.
 
 - If you are using a _self-hosted MongoDB_ instance, such as MongoDB Atlas, ensure the MongoDB database has a user named
@@ -794,9 +794,7 @@ Use the following steps to validate the VerteX installation.
 
 ## Next Steps
 
-You have successfully installed VerteX in a Kubernetes cluster. Your next steps are to configure VerteX for your
-organization. Start by creating the first tenant to host your users. Use the
-[Create a Tenant](../../system-management/tenant-management.md) page for instructions on how to create a tenant.
+<PartialsComponent category="self-hosted" name="install-next-steps" edition="VerteX" version="Palette VerteX" />
 
 ## Resources
 

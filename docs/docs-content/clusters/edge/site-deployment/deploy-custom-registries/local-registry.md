@@ -7,12 +7,33 @@ sidebar_position: 60
 tags: ["edge"]
 ---
 
+<!-- prettier-ignore-start -->
+
+:::warning
+
+The implementation of the in-cluster local registry in this guide, together with the **Harbor Edge-Native Config** pack,
+are deprecated and will be removed in a future release.
+
+If you still want to use the <VersionedLink text="Harbor Edge Native Config" url="/integrations/packs/?pack=harbor-edge-native-config"/> pack, it should not be applied to existing clusters, only new clusters.
+
+Palette Edge now implements a primary registry mechanism where
+you can use any OCI-compliant registry to achieve the same goal as the local Harbor registry. For more information,
+refer to [Deploy with In-Cluster Primary Registry](./deploy-primary-registry.md).
+
+If you have clusters using the **Harbor Edge-Native Config** pack, refer to
+[Migrate from Harbor Edge-Native Config](./migrate-edge-native-config.md) to learn how to migrate off of the deprecated
+solution with no impact to your production workload.
+
+:::
+
+<!-- prettier-ignore-end -->
+
 Palette Edge allows you to provision a local Harbor image registry as part of your Edge deployment. When your Edge
 cluster is created for the first time, all images from add-on packs downloaded from external registries are stored
 locally in the Harbor registry. Subsequent image pulls from the cluster are made to the local Harbor registry. This
 allows your Edge cluster to reboot containers or add new nodes without being connected to the external network.
 
-If you specified the installation mode of the Edge Installer to be `airgap`, any images that were included in the Edge
+If you specified the management mode of the Edge Installer to be `local`, any images that were included in the Edge
 Installer ISO will also be loaded into the Harbor registry. For more information about building content bundles, refer
 to [Build Content Bundle](../../edgeforge-workflow/palette-canvos/build-content-bundle.md) and
 [Build Edge Artifacts with Content Bundles](../../edgeforge-workflow/palette-canvos/palette-canvos.md).
@@ -24,10 +45,6 @@ instruct the Palette agent to not pull that image from the Harbor registry by di
 namespaces. You can do this by giving a namespace the label `stylus.io/imageswap=disable`. For more information, refer
 to <VersionedLink text="Harbor Edge-Native Config pack" url="/integrations/packs/?pack=harbor-edge-native-config#enable-image-download-from-outside-of-harbor"/> documentation.
 <!-- prettier-ignore-end -->
-
-:::preview
-
-:::
 
 ![Local Harbor Registry Architecture](/clusters_edge_networking_local_harbor_architecture.webp)
 
@@ -166,10 +183,19 @@ profile.
 
 11. Click **Save Changes**.
 
-12. Deploy a new Edge cluster with your updated profile. Or, if you have an active cluster, update the cluster to use
-    the new version of the cluster profile. The initial download of the images will require a connection to the external
-    network as the images are sourced from the original repository. Subsequent image pulls are sourced from the local
-    Harbor registry.
+12. Deploy a new Edge cluster with your updated profile. The initial download of the images will require a connection to
+    the external network as the images are sourced from the original repository. Subsequent image pulls are sourced from
+    the local Harbor registry.
+
+<!-- prettier-ignore-start -->
+
+:::warning
+
+The <VersionedLink text="Harbor Edge Native Config" url="/integrations/packs/?pack=harbor-edge-native-config"/> pack should only be applied to new clusters, not active clusters.
+
+:::
+
+<!-- prettier-ignore-end -->
 
 ## Validation
 

@@ -258,7 +258,7 @@ Use the following steps to install Palette VerteX.
 
         | **Parameter**       | **Description**                                                                                                                                                                                                                                                                                                           |
         | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-        | **Datacenter**      | The installer retrieves the Datacenter automatically.                                                                                                                                                                                                                                                                     |
+        | **Datacenter**      | The installer retrieves the data center automatically.                                                                                                                                                                                                                                                                     |
         | **Folder**          | Select the folder that contains the VM instance.                                                                                                                                                                                                                                                                          |
         | **Image Template Folder** | Select the folder that contains the CAPI image templates.                                                                                                                                                                                                                                                                 |
         | **Cluster**         | Select the cluster where you want to deploy Palette.                                                                                                                                                                                                                                                                      |
@@ -429,7 +429,7 @@ You can also validate that a three-node Kubernetes cluster is launched and Palet
 
 1. Log in to the vCenter Server by using vSphere Client.
 
-2. Navigate to your vSphere Datacenter and locate your Palette VM instances. The VMs are prefixed with the name you
+2. Navigate to your vSphere data center and locate your Palette VM instances. The VMs are prefixed with the name you
    provided during the installation. For example, if you provided `spectro-mgmt-cluster` as the name, the VMs are named
    `spectro-mgmt-cluster-`, followed by a unique set of alphanumeric values. Verify three nodes are available.
 
@@ -443,12 +443,7 @@ You can also validate that a three-node Kubernetes cluster is launched and Palet
 
 ## Next Steps
 
-You have successfully installed Palette VerteX in vSphere. Your next steps are to configure Palette VerteX for your
-organization. Start by creating the first tenant to host your users. Refer
-to [Create a Tenant](../../../system-management/tenant-management.md) for instructions.
-
-After you create the tenant, you are ready to configure authentication types in tenant settings and create users and
-teams.
+<PartialsComponent category="self-hosted" name="install-next-steps" edition="VerteX" version="Palette VerteX" />
 
 ## Resources
 

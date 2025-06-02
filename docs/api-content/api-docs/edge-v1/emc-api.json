@@ -697,7 +697,7 @@
         "tags": [
           "edge-mgmt"
         ],
-        "summary": "parses the cluster-config archive.",
+        "summary": "parses the preloaded cluster-config archive if it was included in the ISO.",
         "operationId": "V1ClusterConfigArchiveEmbedded",
         "responses": {
           "200": {
@@ -717,12 +717,60 @@
     },
     "/v1/edge-mgmt/clusters/archive/overridden/details": {
       "get": {
-        "description": "parses the cluster-config archive if it exists.",
+        "description": "parses the cluster-config archive if it was uploaded as a standalone configuration.",
         "tags": [
           "edge-mgmt"
         ],
         "summary": "parses the cluster-config archive if it exists.",
         "operationId": "v1ClusterConfigArchiveOverriden",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/v1ClusterConfigArchiveDetails"
+            }
+          },
+          "default": {
+            "description": "Error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/clusters/archive/update": {
+      "delete": {
+        "description": "Delete or reject the cluster update archive",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "Delete or reject the cluster update archive",
+        "operationId": "v1DeleteClusterUpdateArchive",
+        "responses": {
+          "202": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AcceptedResponseWithMessage"
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "schema": {
+              "$ref": "#/definitions/v1Error"
+            }
+          }
+        }
+      }
+    },
+    "/v1/edge-mgmt/clusters/archive/update/details": {
+      "get": {
+        "description": "parses the cluster-config update archive if it was included in the uploaded content-bundle.",
+        "tags": [
+          "edge-mgmt"
+        ],
+        "summary": "parses the cluster-config update archive if it was included in the uploaded content-bundle.",
+        "operationId": "v1ClusterConfigArchiveUpdate",
         "responses": {
           "200": {
             "description": "OK",
@@ -3297,6 +3345,9 @@
         "hardwareSpec": {
           "$ref": "#/definitions/v1HardwareSpec"
         },
+        "managementMode": {
+          "$ref": "#/definitions/v1ManagementMode"
+        },
         "networkInfo": {
           "type": "array",
           "items": {
@@ -4137,6 +4188,13 @@
         }
       }
     },
+    "v1ManagementMode": {
+      "type": "string",
+      "enum": [
+        "central",
+        "local"
+      ]
+    },
     "v1Memory": {
       "type": "object",
       "properties": {
@@ -4734,6 +4792,9 @@
             "airgap",
             "connected"
           ]
+        },
+        "managementMode": {
+          "$ref": "#/definitions/v1ManagementMode"
         }
       }
     },

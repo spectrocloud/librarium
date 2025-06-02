@@ -289,6 +289,30 @@
       },
       "type": "object"
     },
+    "v1ActivationsSystemResponse": {
+      "properties": {
+        "status": {
+          "properties": {
+            "expiresAt": {
+              "$ref": "#/definitions/v1Time"
+            },
+            "state": {
+              "enum": [
+                "Active",
+                "Pending",
+                "Inactive"
+              ],
+              "type": "string"
+            }
+          },
+          "required": [
+            "state"
+          ],
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
     "v1ActiveTenantResources": {
       "description": "Active resources of tenant",
       "properties": {
@@ -4825,18 +4849,6 @@
       },
       "type": "object"
     },
-    "v1CPUPassthroughSpec": {
-      "properties": {
-        "cachePassthrough": {
-          "type": "boolean"
-        },
-        "isEnabled": {
-          "description": "Enables the CPU Passthrough for the libvirt domain",
-          "type": "boolean"
-        }
-      },
-      "type": "object"
-    },
     "v1Card": {
       "description": "Card details object",
       "properties": {
@@ -6070,6 +6082,9 @@
           "type": "integer",
           "x-omitempty": false
         },
+        "kubernetesDistroType": {
+          "$ref": "#/definitions/v1ClusterKubernetesDistroType"
+        },
         "memory": {
           "$ref": "#/definitions/v1ClusterGroupResource",
           "description": "Deprecated"
@@ -6253,7 +6268,8 @@
       "default": "k3s",
       "enum": [
         "k3s",
-        "cncf_k8s"
+        "cncf_k8s",
+        "vcluster-generic"
       ],
       "type": "string"
     },
@@ -10306,7 +10322,6 @@
         "type": {
           "description": "Deprecated. Cloudtype of the provisioned edge host",
           "enum": [
-            "libvirt",
             "vsphere",
             "edge-native"
           ],
@@ -10442,7 +10457,6 @@
         },
         "edgeHostType": {
           "enum": [
-            "libvirt",
             "edge-native",
             "vsphere"
           ],
@@ -11853,6 +11867,23 @@
       },
       "type": "object"
     },
+    "v1Error": {
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "details": {
+          "type": "object"
+        },
+        "message": {
+          "type": "string"
+        },
+        "ref": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "v1Event": {
       "description": "Describes the component event details",
       "properties": {
@@ -12096,18 +12127,6 @@
       "required": [
         "items"
       ],
-      "type": "object"
-    },
-    "v1FileUploadResponse": {
-      "description": "File upload response",
-      "properties": {
-        "name": {
-          "type": "string"
-        },
-        "uid": {
-          "type": "string"
-        }
-      },
       "type": "object"
     },
     "v1FilterArray": {
@@ -12363,31 +12382,6 @@
       },
       "type": "object"
     },
-    "v1GPUConfig": {
-      "properties": {
-        "addresses": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "description": "Addresses is a map of PCI device entry name to its addresses.\nExample entry would be \"11:00.0 VGA compatible controller [0300]: NVIDIA\nCorporation Device [10de:1eb1] (rev a1)\"- > 0000_11_00_0\" The address is\nBDF (Bus Device Function) identifier format seperated by underscores. The\nfirst 4 bits are almost always 0000. In the above example 11 is Bus, 00\nis Device,0 is function. The values of these addreses are expected in hexadecimal\nformat\n",
-          "type": "object"
-        },
-        "deviceModel": {
-          "description": "DeviceModel is the model of GPU, for a given vendor, for eg., TU104GL [Tesla T4]",
-          "type": "string"
-        },
-        "numGPUs": {
-          "description": "NumGPUs is the number of GPUs",
-          "format": "int32",
-          "type": "integer"
-        },
-        "vendorName": {
-          "description": "VendorName is the GPU vendor, for eg., NVIDIA or AMD",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
     "v1GPUDeviceSpec": {
       "properties": {
         "addresses": {
@@ -12461,7 +12455,7 @@
           "type": "string"
         },
         "jsonCredentialsFileUid": {
-          "description": "Reference of the credentials stored in the file",
+          "description": "Deprecated - Use jsonCredentials for Gcp account credentials; Reference of the credentials stored in the file",
           "type": "string"
         }
       },
@@ -12509,7 +12503,7 @@
           "type": "string"
         },
         "jsonCredentialsFileUid": {
-          "description": "Reference of the credentials stored in the file",
+          "description": "Deprecated - Use jsonCredentials for Gcp account credentials; Reference of the credentials stored in the file",
           "type": "string"
         }
       },
@@ -15127,562 +15121,6 @@
       },
       "type": "object"
     },
-    "v1LibvirtCloudClusterConfigEntity": {
-      "description": "Libvirt cloud cluster config entity",
-      "properties": {
-        "clusterConfig": {
-          "$ref": "#/definitions/v1LibvirtClusterConfig"
-        }
-      },
-      "type": "object"
-    },
-    "v1LibvirtCloudConfig": {
-      "description": "LibvirtCloudConfig is the Schema for the libvirtcloudconfigs API",
-      "properties": {
-        "apiVersion": {
-          "description": "APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources",
-          "type": "string"
-        },
-        "kind": {
-          "description": "Kind is a string value representing the REST resource this object represents. Servers may infer this from the endpoint the client submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds",
-          "type": "string"
-        },
-        "metadata": {
-          "$ref": "#/definitions/v1ObjectMeta"
-        },
-        "spec": {
-          "$ref": "#/definitions/v1LibvirtCloudConfigSpec"
-        },
-        "status": {
-          "$ref": "#/definitions/v1LibvirtCloudConfigStatus"
-        }
-      },
-      "type": "object"
-    },
-    "v1LibvirtCloudConfigSpec": {
-      "description": "LibvirtCloudConfigSpec defines the desired state of LibvirtCloudConfig",
-      "properties": {
-        "clusterConfig": {
-          "$ref": "#/definitions/v1LibvirtClusterConfig"
-        },
-        "machinePoolConfig": {
-          "items": {
-            "$ref": "#/definitions/v1LibvirtMachinePoolConfig"
-          },
-          "type": "array"
-        }
-      },
-      "required": [
-        "clusterConfig",
-        "machinePoolConfig"
-      ],
-      "type": "object"
-    },
-    "v1LibvirtCloudConfigStatus": {
-      "properties": {
-        "conditions": {
-          "items": {
-            "$ref": "#/definitions/v1ClusterCondition"
-          },
-          "type": "array"
-        },
-        "nodeImages": {
-          "description": "NodeImages are the list of images generated on all the LibvirtHosts",
-          "items": {
-            "$ref": "#/definitions/v1LibvirtImage"
-          },
-          "type": "array"
-        },
-        "sourceImageId": {
-          "description": "SourceImageId can be from packref's annotations or from pack.json",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1LibvirtClusterConfig": {
-      "properties": {
-        "controlPlaneEndpoint": {
-          "$ref": "#/definitions/v1LibvirtControlPlaneEndPoint",
-          "description": "ControlPlaneEndpoint is the control plane endpoint, which can be an IP or FQDN"
-        },
-        "ntpServers": {
-          "description": "NTPServers is a list of NTP servers to use instead of the machine image's default NTP server list",
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        },
-        "sshKeys": {
-          "description": "SSHKeys specifies a list of ssh authorized keys to access the vms as a 'spectro' user",
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        },
-        "staticIp": {
-          "description": "StaticIP indicates if IP allocation type is static IP. DHCP is the default allocation type",
-          "type": "boolean"
-        }
-      },
-      "type": "object"
-    },
-    "v1LibvirtControlPlaneEndPoint": {
-      "properties": {
-        "ddnsSearchDomain": {
-          "description": "DDNSSearchDomain is the search domain used for resolving IP addresses when the EndpointType is DDNS. This search domain is appended to the generated Hostname to obtain the complete DNS name for the endpoint. If Host is already a DDNS FQDN, DDNSSearchDomain is not required",
-          "type": "string"
-        },
-        "host": {
-          "description": "Host is FQDN(DDNS) or IP",
-          "type": "string"
-        },
-        "type": {
-          "description": "Type indicates DDNS or VIP",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1LibvirtDiskSpec": {
-      "properties": {
-        "dataStoragePool": {
-          "description": "DataStoragePool is the storage pool from which additional disks are assigned",
-          "type": "string"
-        },
-        "managed": {
-          "description": "Managed indicates if the disk is a persistent or not. By default its false indicating all disks are ephemeral.",
-          "type": "boolean"
-        },
-        "sizeInGB": {
-          "description": "SizeInGB is the target size in GB of the disk to be added",
-          "format": "int32",
-          "type": "integer"
-        }
-      },
-      "required": [
-        "sizeInGB"
-      ],
-      "type": "object"
-    },
-    "v1LibvirtHostIdentity": {
-      "properties": {
-        "caCert": {
-          "description": "CACert is the client CA certificate",
-          "type": "string"
-        },
-        "mode": {
-          "description": "Mode indicates a system or session connection to the host",
-          "type": "string"
-        },
-        "socketPath": {
-          "description": "SocketPath is an optional path to the socket on the host, if not using defaults",
-          "type": "string"
-        },
-        "sshSecret": {
-          "$ref": "#/definitions/v1EdgeHostSSHSecret",
-          "description": "SSHSecrets to the secret containing ssh-username"
-        }
-      },
-      "type": "object"
-    },
-    "v1LibvirtImage": {
-      "description": "LibvirtImage is the Image generated on the LibvirtHost",
-      "properties": {
-        "hostID": {
-          "description": "HostID is the ID of the LibvirtHost",
-          "type": "string"
-        },
-        "imageName": {
-          "description": "ImageName is the name of the Libvirt image",
-          "type": "string"
-        },
-        "storagePool": {
-          "description": "StoragePool is the name of the storagePool where is image is located",
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1LibvirtInstanceType": {
-      "description": "LibvirtInstanceType defines the instance configuration for a virtual machine",
-      "properties": {
-        "cpuPassthroughSpec": {
-          "$ref": "#/definitions/v1CPUPassthroughSpec",
-          "description": "Defines CPU Passthrough Spec. A not null value enables CPU Passthrough for the libvirt domain. Further cache passthrough can be enabled with the CPU passthrough spec."
-        },
-        "cpuset": {
-          "description": "CPUSet defines cpuset for an instance which allows allocation specific set of cpus E.g  cpuset=\"1-4,^3,6\" See https://libvirt.org/formatdomain.html#cpu-allocation",
-          "type": "string"
-        },
-        "gpuConfig": {
-          "$ref": "#/definitions/v1GPUConfig",
-          "description": "GPU configuration"
-        },
-        "memoryInMB": {
-          "description": "MemoryinMB is the memory in megabytes",
-          "format": "int32",
-          "type": "integer"
-        },
-        "numCPUs": {
-          "description": "NumCPUs is the number of CPUs",
-          "format": "int32",
-          "type": "integer"
-        }
-      },
-      "required": [
-        "numCPUs",
-        "memoryInMB"
-      ],
-      "type": "object"
-    },
-    "v1LibvirtMachine": {
-      "description": "Libvirt cloud VM definition",
-      "properties": {
-        "apiVersion": {
-          "type": "string"
-        },
-        "kind": {
-          "type": "string"
-        },
-        "metadata": {
-          "$ref": "#/definitions/v1ObjectMeta"
-        },
-        "spec": {
-          "$ref": "#/definitions/v1LibvirtMachineSpec"
-        },
-        "status": {
-          "$ref": "#/definitions/v1CloudMachineStatus"
-        }
-      }
-    },
-    "v1LibvirtMachinePoolCloudConfigEntity": {
-      "properties": {
-        "instanceType": {
-          "$ref": "#/definitions/v1LibvirtInstanceType"
-        },
-        "nonRootDisksInGB": {
-          "description": "NonRootDisksInGB is the list of additional disks, if required, in GB",
-          "items": {
-            "$ref": "#/definitions/v1LibvirtDiskSpec"
-          },
-          "type": "array"
-        },
-        "placements": {
-          "description": "Placements configuration Placements If defined, will replace default values defined in VsphereClusterConfig Array means one MachinePool can span across multiple vsphere compute cluster",
-          "items": {
-            "$ref": "#/definitions/v1LibvirtPlacementEntity"
-          },
-          "type": "array",
-          "uniqueItems": true
-        },
-        "rootDiskInGB": {
-          "description": "RootDiskInGB is the size of a vm's root disk, in GiB",
-          "format": "int32",
-          "type": "integer"
-        },
-        "xslTemplate": {
-          "description": "XSLTemplate defines a base64-encoded raw xsl template which will be included in the machine definition",
-          "type": "string"
-        }
-      },
-      "required": [
-        "instanceType",
-        "placements",
-        "rootDiskInGB"
-      ]
-    },
-    "v1LibvirtMachinePoolConfig": {
-      "properties": {
-        "additionalLabels": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "description": "additionalLabels",
-          "type": "object"
-        },
-        "additionalTags": {
-          "additionalProperties": {
-            "type": "string"
-          },
-          "description": "AdditionalTags is an optional set of tags to add to resources managed by the provider, in addition to the ones added by default. For eg., tags for EKS nodeGroup or EKS NodegroupIAMRole",
-          "type": "object"
-        },
-        "instanceType": {
-          "$ref": "#/definitions/v1LibvirtInstanceType",
-          "description": "InstanceType defines the instance configuration of the vms in the machine pool"
-        },
-        "isControlPlane": {
-          "description": "whether this pool is for control plane",
-          "type": "boolean"
-        },
-        "labels": {
-          "description": "labels for this pool, example: control-plane/worker, gpu, windows",
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        },
-        "machinePoolProperties": {
-          "$ref": "#/definitions/v1MachinePoolProperties"
-        },
-        "maxSize": {
-          "description": "max size of the pool, for scaling",
-          "format": "int32",
-          "type": "integer"
-        },
-        "minSize": {
-          "description": "min size of the pool, for scaling",
-          "format": "int32",
-          "type": "integer"
-        },
-        "name": {
-          "type": "string"
-        },
-        "nodeRepaveInterval": {
-          "description": "Minimum number of seconds a node should be Ready, before the next node is selected for repave. Applicable only for workerpools in infrastructure cluster",
-          "format": "int32",
-          "type": "integer"
-        },
-        "nonRootDisksInGB": {
-          "description": "NonRootDisksInGB is the list of additional disks, if required, in GB",
-          "items": {
-            "$ref": "#/definitions/v1LibvirtDiskSpec"
-          },
-          "type": "array"
-        },
-        "placements": {
-          "description": "Placements defines the configurations of the failureDomains(hosts) for the machine pool",
-          "items": {
-            "$ref": "#/definitions/v1LibvirtPlacementConfig"
-          },
-          "type": "array"
-        },
-        "rootDiskInGB": {
-          "description": "RootDiskInGB is the size of a vm's root disk, in GB",
-          "format": "int32",
-          "type": "integer"
-        },
-        "size": {
-          "description": "size of the pool, number of machines",
-          "format": "int32",
-          "type": "integer"
-        },
-        "taints": {
-          "description": "control plane or worker taints",
-          "items": {
-            "$ref": "#/definitions/v1Taint"
-          },
-          "type": "array",
-          "uniqueItems": true
-        },
-        "updateStrategy": {
-          "$ref": "#/definitions/v1UpdateStrategy",
-          "description": "rolling update strategy for this machinepool if not specified, will use ScaleOut"
-        },
-        "useControlPlaneAsWorker": {
-          "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove control plane taint this will not be used for worker pools",
-          "type": "boolean"
-        },
-        "xslTemplate": {
-          "description": "XSLTemplate defines a base64-encoded raw xsl template which will be included in the machine definition",
-          "type": "string"
-        }
-      },
-      "required": [
-        "instanceType",
-        "placements",
-        "rootDiskInGB"
-      ],
-      "type": "object"
-    },
-    "v1LibvirtMachinePoolConfigEntity": {
-      "properties": {
-        "cloudConfig": {
-          "$ref": "#/definitions/v1LibvirtMachinePoolCloudConfigEntity"
-        },
-        "poolConfig": {
-          "$ref": "#/definitions/v1MachinePoolConfigEntity"
-        }
-      },
-      "type": "object"
-    },
-    "v1LibvirtMachineSpec": {
-      "description": "libvirt cloud VM definition spec",
-      "properties": {
-        "disks": {
-          "items": {
-            "$ref": "#/definitions/v1LibvirtDiskSpec"
-          },
-          "type": "array"
-        },
-        "edgeHostUid": {
-          "type": "string"
-        },
-        "failureDomain": {
-          "type": "string"
-        },
-        "imageName": {
-          "type": "string"
-        },
-        "instanceType": {
-          "$ref": "#/definitions/v1LibvirtInstanceType"
-        },
-        "nics": {
-          "items": {
-            "$ref": "#/definitions/v1LibvirtNicSpec"
-          },
-          "type": "array"
-        },
-        "targetStoragePool": {
-          "type": "string"
-        }
-      },
-      "type": "object"
-    },
-    "v1LibvirtMachines": {
-      "description": "Libvirt machine list",
-      "properties": {
-        "items": {
-          "items": {
-            "$ref": "#/definitions/v1LibvirtMachine"
-          },
-          "type": "array",
-          "uniqueItems": true
-        }
-      },
-      "required": [
-        "items"
-      ],
-      "type": "object"
-    },
-    "v1LibvirtNetworkSpec": {
-      "description": "LibvirtNetworkSpec defines the network configuration for a virtual machine",
-      "properties": {
-        "networkName": {
-          "description": "NetworkName of the libvirt network where this machine will be connected",
-          "type": "string"
-        },
-        "networkType": {
-          "description": "NetworkType  specifies the type of network",
-          "enum": [
-            "default",
-            "bridge"
-          ],
-          "type": "string"
-        }
-      },
-      "required": [
-        "networkName",
-        "networkType"
-      ],
-      "type": "object"
-    },
-    "v1LibvirtNicSpec": {
-      "description": "Libvirt network interface",
-      "properties": {
-        "index": {
-          "format": "int8",
-          "type": "integer"
-        },
-        "macAddress": {
-          "type": "string"
-        },
-        "privateIPs": {
-          "items": {
-            "type": "string"
-          },
-          "type": "array"
-        }
-      },
-      "required": [
-        "macAddress"
-      ],
-      "type": "object"
-    },
-    "v1LibvirtPlacementConfig": {
-      "properties": {
-        "dataStoragePool": {
-          "description": "DataStoragePool is the storage pool from which additional disks are assigned",
-          "type": "string"
-        },
-        "gpuDevices": {
-          "description": "GPU Devices is the list of LibvirtHost GPU devices, to be used for this placement",
-          "items": {
-            "$ref": "#/definitions/v1GPUDeviceSpec"
-          },
-          "type": "array"
-        },
-        "hostAddress": {
-          "description": "HostAddress is a FQDN or IP address of the LibvirtHost",
-          "type": "string"
-        },
-        "hostIdentity": {
-          "$ref": "#/definitions/v1LibvirtHostIdentity",
-          "description": "HostIdentity is the identity to access the LibvirtHost"
-        },
-        "hostUid": {
-          "description": "HostUid is the ID of the LibvirtHost",
-          "type": "string"
-        },
-        "networks": {
-          "description": "Networks defines the network specifications of the vms in the machine pool",
-          "items": {
-            "$ref": "#/definitions/v1LibvirtNetworkSpec"
-          },
-          "type": "array"
-        },
-        "sourceStoragePool": {
-          "description": "SourceStoragePool is the storage pool for the vm image",
-          "type": "string"
-        },
-        "targetStoragePool": {
-          "description": "TargetStoragePool is the optional storage pool from which additional disks are assigned. If not specified, the sourceStoragePool is also used as the targetStoragePool",
-          "type": "string"
-        }
-      },
-      "required": [
-        "hostUid",
-        "hostAddress",
-        "networks",
-        "sourceStoragePool"
-      ],
-      "type": "object"
-    },
-    "v1LibvirtPlacementEntity": {
-      "description": "Libvirt placement config",
-      "properties": {
-        "dataStoragePool": {
-          "type": "string"
-        },
-        "gpuDevices": {
-          "description": "GPUDevices defines an array of gpu device for a specific edge host. This will be overridden by edge host GPU devices if configured during registration.",
-          "items": {
-            "$ref": "#/definitions/v1GPUDeviceSpec"
-          },
-          "type": "array"
-        },
-        "hostUid": {
-          "type": "string"
-        },
-        "networks": {
-          "items": {
-            "$ref": "#/definitions/v1LibvirtNetworkSpec"
-          },
-          "type": "array"
-        },
-        "sourceStoragePool": {
-          "type": "string"
-        },
-        "targetStoragePool": {
-          "type": "string"
-        }
-      },
-      "required": [
-        "hostUid"
-      ],
-      "type": "object"
-    },
     "v1LifecycleConfig": {
       "properties": {
         "pause": {
@@ -15801,6 +15239,10 @@
           "type": "string"
         },
         "privateDNSName": {
+          "type": "string"
+        },
+        "privateDNSZoneResourceGroup": {
+          "description": "PrivateDNSZoneResourceGroup defines the resource group to be used for Azure Private DNS Zone.\nIf not specified, the resource group of the cluster will be used to create the Azure Private DNS Zone.",
           "type": "string"
         },
         "type": {
@@ -23101,9 +22543,6 @@
         "generic": {
           "$ref": "#/definitions/v1PrivateCloudRateConfig"
         },
-        "libvirt": {
-          "$ref": "#/definitions/v1PrivateCloudRateConfig"
-        },
         "maas": {
           "$ref": "#/definitions/v1PrivateCloudRateConfig"
         },
@@ -25852,6 +25291,72 @@
       },
       "type": "object"
     },
+    "v1SpectroClusterMeta": {
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/v1ObjectMeta"
+        },
+        "spec": {
+          "$ref": "#/definitions/v1SpectroClusterMetaSpec"
+        },
+        "status": {
+          "$ref": "#/definitions/v1SpectroClusterMetaStatus"
+        }
+      },
+      "type": "object"
+    },
+    "v1SpectroClusterMetaSpec": {
+      "description": "Spectro cluster meta summary",
+      "properties": {
+        "archType": {
+          "description": "Architecture type of the cluster",
+          "items": {
+            "$ref": "#/definitions/v1ArchType"
+          },
+          "type": "array"
+        },
+        "cloudAccountUid": {
+          "description": "Unique identifier for the cloud account used by this cluster",
+          "type": "string"
+        },
+        "cloudRegion": {
+          "description": "Geographic region where the cluster is deployed",
+          "type": "string"
+        },
+        "cloudType": {
+          "description": "Infrastructure provider type for the cluster",
+          "type": "string"
+        },
+        "clusterType": {
+          "description": "Type classification of the cluster",
+          "type": "string"
+        },
+        "location": {
+          "$ref": "#/definitions/v1ClusterMetaSpecLocation",
+          "description": "Geographical location metadata for the cluster"
+        },
+        "tags": {
+          "description": "User-defined labels associated with this cluster",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
+    "v1SpectroClusterMetaStatus": {
+      "properties": {
+        "state": {
+          "description": "Current state of the cluster",
+          "type": "string"
+        }
+      },
+      "required": [
+        "state"
+      ],
+      "type": "object"
+    },
     "v1SpectroClusterMetaSummary": {
       "description": "Spectro cluster meta summary",
       "properties": {
@@ -27287,6 +26792,12 @@
       },
       "type": "object"
     },
+    "v1SpectroClustersMeta": {
+      "items": {
+        "$ref": "#/definitions/v1SpectroClusterMeta"
+      },
+      "type": "array"
+    },
     "v1SpectroClustersMetadata": {
       "properties": {
         "items": {
@@ -27801,74 +27312,6 @@
         },
         "listmeta": {
           "$ref": "#/definitions/v1ListMetaData"
-        }
-      },
-      "type": "object"
-    },
-    "v1SpectroLibvirtClusterEntity": {
-      "description": "Libvirt cluster request payload for create and update",
-      "properties": {
-        "metadata": {
-          "$ref": "#/definitions/v1ObjectMeta"
-        },
-        "spec": {
-          "properties": {
-            "cloudConfig": {
-              "$ref": "#/definitions/v1LibvirtClusterConfig"
-            },
-            "clusterConfig": {
-              "$ref": "#/definitions/v1ClusterConfigEntity",
-              "description": "General cluster configuration like health, patching settings, namespace resource allocation, rbac"
-            },
-            "machinepoolconfig": {
-              "items": {
-                "$ref": "#/definitions/v1LibvirtMachinePoolConfigEntity"
-              },
-              "type": "array"
-            },
-            "policies": {
-              "$ref": "#/definitions/v1SpectroClusterPolicies"
-            },
-            "profiles": {
-              "items": {
-                "$ref": "#/definitions/v1SpectroClusterProfileEntity"
-              },
-              "type": "array"
-            }
-          },
-          "type": "object"
-        }
-      },
-      "type": "object"
-    },
-    "v1SpectroLibvirtClusterImportEntity": {
-      "description": "Spectro Libvirt cluster import request payload",
-      "properties": {
-        "metadata": {
-          "$ref": "#/definitions/v1ObjectMetaInputEntity"
-        },
-        "spec": {
-          "properties": {
-            "clusterConfig": {
-              "$ref": "#/definitions/v1ImportClusterConfig"
-            }
-          },
-          "type": "object"
-        }
-      },
-      "type": "object"
-    },
-    "v1SpectroLibvirtClusterRateEntity": {
-      "description": "libvirt cluster request payload for estimating rate",
-      "properties": {
-        "cloudConfig": {
-          "$ref": "#/definitions/v1LibvirtClusterConfig"
-        },
-        "machinepoolconfig": {
-          "items": {
-            "$ref": "#/definitions/v1LibvirtMachinePoolConfigEntity"
-          },
-          "type": "array"
         }
       },
       "type": "object"
@@ -28998,6 +28441,63 @@
       },
       "type": "object"
     },
+    "v1SystemActivateRequest": {
+      "properties": {
+        "activationKey": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "activationKey"
+      ],
+      "type": "object"
+    },
+    "v1SystemActivationResponse": {
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/v1ObjectMeta"
+        },
+        "spec": {
+          "properties": {
+            "activationKeyUid": {
+              "type": "string"
+            },
+            "planUid": {
+              "type": "string"
+            },
+            "systemUid": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "systemUid",
+            "planUid",
+            "activationKeyUid"
+          ],
+          "type": "object"
+        },
+        "status": {
+          "properties": {
+            "lastActivatedAt": {
+              "$ref": "#/definitions/v1Time"
+            },
+            "state": {
+              "enum": [
+                "Pending",
+                "Active",
+                "Inactive"
+              ],
+              "type": "string"
+            }
+          },
+          "required": [
+            "state"
+          ],
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
     "v1SystemAdmin": {
       "description": "System Admin information",
       "properties": {
@@ -29656,29 +29156,6 @@
       },
       "type": "object"
     },
-    "v1SystemLibvirtImage": {
-      "description": "SystemAdmin",
-      "properties": {
-        "spec": {
-          "$ref": "#/definitions/v1SystemLibvirtImageSpec"
-        }
-      },
-      "type": "object"
-    },
-    "v1SystemLibvirtImageSpec": {
-      "description": "system libvirt account specifications",
-      "properties": {
-        "caCert": {
-          "type": "string"
-        },
-        "imagesHostEndpoint": {
-          "type": "string"
-        },
-        "insecureSkipVerify": {
-          "type": "boolean"
-        }
-      }
-    },
     "v1SystemLoggerSpec": {
       "description": "system logger config spec",
       "properties": {
@@ -30279,6 +29756,32 @@
         },
         "s3": {
           "$ref": "#/definitions/v1SystemS3Spec"
+        }
+      },
+      "type": "object"
+    },
+    "v1SystemSysplan": {
+      "properties": {
+        "metadata": {
+          "$ref": "#/definitions/v1ObjectMeta"
+        },
+        "spec": {
+          "properties": {
+            "expiresAt": {
+              "$ref": "#/definitions/v1Time"
+            },
+            "type": {
+              "enum": [
+                "Trial",
+                "Unlimited"
+              ],
+              "type": "string"
+            }
+          },
+          "required": [
+            "type"
+          ],
+          "type": "object"
         }
       },
       "type": "object"
@@ -52366,6 +51869,118 @@
         ]
       }
     },
+    "/v1/clouds/cloudTypes/{cloudType}/content/core": {
+      "delete": {
+        "operationId": "V1CustomCloudTypeCoreDelete",
+        "parameters": [
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was deleted successfully"
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Delete the custom cloud type core",
+        "tags": [
+          "clouds"
+        ]
+      },
+      "get": {
+        "operationId": "V1CustomCloudTypeCoreGet",
+        "parameters": [
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1CustomCloudTypeContentResponse"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Returns the custom cloud type core",
+        "tags": [
+          "clouds"
+        ]
+      },
+      "parameters": [
+        {
+          "description": "Unique cloud type",
+          "in": "path",
+          "name": "cloudType",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "put": {
+        "consumes": [
+          "multipart/form-data"
+        ],
+        "operationId": "V1CustomCloudTypeCoreUpdate",
+        "parameters": [
+          {
+            "in": "formData",
+            "name": "fileName",
+            "type": "file"
+          },
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Ok response without content",
+            "headers": {
+              "AuditUid": {
+                "description": "Audit uid for the request",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Update the custom cloud type core",
+        "tags": [
+          "clouds"
+        ]
+      }
+    },
     "/v1/clouds/cloudTypes/{cloudType}/content/templates/clusterTemplate": {
       "delete": {
         "operationId": "V1CustomCloudTypeClusterTemplateDelete",
@@ -54353,67 +53968,6 @@
           }
         ],
         "summary": "Retrieves vsphere env",
-        "tags": [
-          "clouds"
-        ]
-      }
-    },
-    "/v1/clouds/{cloudType}/instance/spotprice": {
-      "get": {
-        "operationId": "V1CloudInstanceSpotPriceGet",
-        "parameters": [
-          {
-            "description": "Cloud type [aws/azure/gcp]",
-            "in": "path",
-            "name": "cloudType",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "description": "Instance type for a specific cloud type",
-            "in": "query",
-            "name": "instanceType",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "description": "Availability zone for a specific cloud type",
-            "in": "query",
-            "name": "zone",
-            "required": true,
-            "type": "string"
-          },
-          {
-            "description": "Time is a wrapper around time.Time which supports correct marshaling to YAML and JSON.  Wrappers are provided for many of the factory methods that the time package offers.",
-            "format": "date-time",
-            "in": "query",
-            "name": "timestamp",
-            "type": "string"
-          },
-          {
-            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
-            "in": "header",
-            "name": "ProjectUid",
-            "type": "string"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "(empty)",
-            "schema": {
-              "$ref": "#/definitions/v1CloudSpotPrice"
-            }
-          }
-        },
-        "security": [
-          {
-            "ApiKey": []
-          },
-          {
-            "Authorization": []
-          }
-        ],
-        "summary": "Retrieves the cloud instance spot price based on zone and timestamp for a specific cloud",
         "tags": [
           "clouds"
         ]
@@ -57687,6 +57241,40 @@
         ]
       }
     },
+    "/v1/dashboard/spectroclusters/meta": {
+      "get": {
+        "description": "Returns metadata information for all clusters",
+        "operationId": "v1SpectroClustersMetaGet",
+        "parameters": [
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An array of cluster metadata items",
+            "schema": {
+              "$ref": "#/definitions/v1SpectroClustersMeta"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Get all clusters metadata",
+        "tags": [
+          "dashboard"
+        ]
+      }
+    },
     "/v1/dashboard/spectroclusters/metadata": {
       "get": {
         "operationId": "v1SpectroClustersMetadataGet",
@@ -59490,7 +59078,6 @@
         "parameters": [
           {
             "enum": [
-              "libvirt",
               "edge-native",
               "vsphere"
             ],
@@ -59577,7 +59164,6 @@
         "parameters": [
           {
             "enum": [
-              "libvirt",
               "edge-native",
               "vsphere"
             ],
@@ -69136,7 +68722,8 @@
             "description": "Kubernetes distribution type",
             "enum": [
               "k3s",
-              "cncf_k8s"
+              "cncf_k8s",
+              "vcluster-generic"
             ],
             "in": "query",
             "name": "kubernetesDistroType",
@@ -70791,6 +70378,51 @@
           "type": "string"
         }
       ]
+    },
+    "/v1/spectroclusters/{uid}/edge/reset": {
+      "parameters": [
+        {
+          "description": "Cluster uid",
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "post": {
+        "operationId": "V1SpectroClustersUidEdgeReset",
+        "parameters": [
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Ok response without content",
+            "headers": {
+              "AuditUid": {
+                "description": "Audit uid for the request",
+                "type": "string"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "reset the edge clusters by deleting machine pools and conditions",
+        "tags": [
+          "spectroclusters"
+        ]
+      }
     },
     "/v1/spectroclusters/{uid}/features/backup": {
       "delete": {

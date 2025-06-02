@@ -115,8 +115,8 @@ Use the following steps to install Palette.
 
 4.  Append an `r_` prefix to the OVA name and remove the `.ova` suffix after the import. For example, the final output
     should look like `r_u-2204-0-k-12813-0`. This naming convention is required for the install process to identify the
-    OVA. Refer to the [Supplement Packs](../airgap/supplemental-packs.md#additional-ovas) page for a list of additional
-    OVAs you can download and upload to your vCenter environment.
+    OVA. Refer to the [Additional OVAs](../../../downloads/self-hosted-palette/additional-ovas.md) page for a list of
+    additional OVAs you can download and upload to your vCenter environment.
 
     :::tip
 
@@ -214,7 +214,7 @@ Use the following steps to install Palette.
 
     | **Parameter**             | **Description**                                                                                                                                                                                                                                                                                                           |
     | ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Datacenter**            | The installer retrieves the Datacenter automatically.                                                                                                                                                                                                                                                                     |
+    | **Datacenter**            | The installer retrieves the data center automatically.                                                                                                                                                                                                                                                                    |
     | **Folder**                | Select the folder that contains the VM instance.                                                                                                                                                                                                                                                                          |
     | **Image Template Folder** | Select the folder that contains the CAPI image templates.                                                                                                                                                                                                                                                                 |
     | **Cluster**               | Select the cluster where you want to deploy Palette.                                                                                                                                                                                                                                                                      |
@@ -248,7 +248,7 @@ Use the following steps to install Palette.
     | **Parameter** | **Description**                                                                                                                                                             |
     | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
     | **Small**     | Deploy VM nodes with 8 CPU, 16 GB memory, 60 GB storage. The database specs are 20 GB database with 2 CPU limit and 4 GB memory limit.                                      |
-    | **Medium**    | Deploy VM nodes with 16 CPU, 32 GB memory, 100 GB storage. The database specs are 60 GB database with 4 cpu limit and 8 GB memory limit.                                    |
+    | **Medium**    | Deploy VM nodes with 16 CPU, 32 GB memory, 100 GB storage. The database specs are 60 GB database with 4 CPU limit and 8 GB memory limit.                                    |
     | **Large**     | Deploy VM nodes with 32 CPU, 64 GB memory, 120 GB storage. The database specs are 80 GB database with 8 CPU limit and 16 GB memory limit.                                   |
     | **Custom**    | Deploy VM nodes with custom CPU, memory, storage, database size, CPU limit, and memory limit. If you specify custom, you will be prompted for the CPU, memory, and storage. |
 
@@ -381,7 +381,7 @@ You can also validate that a three-node Kubernetes cluster is launched and Palet
 
 1. Log in to the vCenter Server by using vSphere Client.
 
-2. Navigate to your vSphere Datacenter and locate your Palette VM instances. The VMs are prefixed with the name you
+2. Navigate to your vSphere data center and locate your Palette VM instances. The VMs are prefixed with the name you
    provided during the installation. For example, if you provided `spectro-mgmt-cluster` as the name, the VMs are named
    `spectro-mgmt-cluster-`, followed by a unique set of alphanumeric values. Verify three nodes are available.
 
@@ -395,12 +395,7 @@ You can also validate that a three-node Kubernetes cluster is launched and Palet
 
 ## Next Steps
 
-You have successfully installed Palette in vSphere. Your next steps are to configure Palette for your organization.
-Start by creating the first tenant to host your users. Refer
-to [Create a Tenant](../../system-management/tenant-management.md) for instructions.
-
-After you create the tenant, you are ready to configure authentication types in tenant settings and create users and
-teams.
+<PartialsComponent category="self-hosted" name="install-next-steps" edition="Palette" version="Palette" />
 
 ## Resources
 

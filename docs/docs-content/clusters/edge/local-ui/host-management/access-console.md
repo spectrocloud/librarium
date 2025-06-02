@@ -10,10 +10,6 @@ tags: ["edge"]
 Local UI allows you to manage Edge hosts in your network locally, upload content such as images and packs, and create
 Edge clusters without connections to a Palette installation.
 
-:::preview
-
-:::
-
 This page guides you through how access the console, and log in, and manage your username and password.
 
 ## Log in to Local UI
@@ -124,8 +120,8 @@ API to update the password.
 
 1. Power up the Edge host.
 
-2. Press **Alt + right arrow key**, or **Ctrl + Alt + F1** on a keyboard connected to the Edge host. Replace **Alt**
-   with **Options** on a Mac keyboard. This will bring up the login screen for you to log in to the terminal.
+2. Press the **ALT + RIGHT ARROW** keys, or **CTRL + ALT + F1** on a keyboard connected to the Edge host. Replace
+   **ALT** with **OPTION** on a Mac keyboard. This will bring up the login screen for you to log in to the terminal.
 
    Alternatively, establish an SSH connection to the Edge host.
 

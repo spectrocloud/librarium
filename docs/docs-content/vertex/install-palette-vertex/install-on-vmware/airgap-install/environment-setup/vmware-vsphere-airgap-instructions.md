@@ -108,7 +108,7 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
     | **Default User's password**                | Enter the password for the user account you will use to access the airgap support VM. You will be asked to change this password the first time you log in through SSH. | Yes      |
     | **A Unique Instance ID for this instance** | Enter a unique instance ID for the airgap support VM. The default value is `id-ovf`.                                                                                   | Yes      |
     | **Hostname**                               | Enter a fully qualified hostname for the airgap support VM. For example, `vertex.example.com`. The default value is `ubuntuguest`.                                     | Yes      |
-    | **Url to seed instance data from**         | You can specify a URL to seed instance data from. You can leave this value empty.                                                                                      | No       |
+    | **URL to seed instance data from**         | You can specify a URL to seed instance data from. You can leave this value empty.                                                                                      | No       |
 
 9.  Review the details and click on **Finish** to deploy the airgap support VM.
 
@@ -357,8 +357,9 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
 
     Once the Palette VerteX airgap binary completes its tasks, you will receive a **Setup Completed** success message.
 
-19. Review the [Additional Packs](../../../airgap/supplemental-packs.md) page and identify any additional packs you want
-    to add to your OCI registry. You can also add additional packs after the installation is complete.
+19. Review the [Additional Packs](../../../../../downloads/palette-vertex/additional-packs.md) page and identify any
+    additional packs you want to add to your OCI registry. You can also add additional packs after the installation is
+    complete.
 
 20. Navigate back to the vSphere console and create a vSphere VM and Template folder named `spectro-templates`. Ensure
     you can access this folder with the user account you plan to use when deploying the VerteX installation. You can
@@ -395,8 +396,8 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
     Place the OVA in the **spectro-templates** folder or in the folder you created in step **21**. Append the `r_`
     prefix, and remove the `.ova` suffix when assigning its name and target location. For example, the final output
     should look like `r_u-2204-0-k-1294-0`. This naming convention is required for the installation process to identify
-    the OVA. Refer to the [Supplement Packs](../../../airgap/supplemental-packs.md) page for a list of additional OS
-    OVAs.
+    the OVA. Refer to the [Additional OVAs](../../../../../downloads/palette-vertex/additional-ovas.md) page for a list
+    of additional OS OVAs.
 
     You can terminate the deployment after the OVA is available in the `spectro-templates` folder. Refer to the
     [Deploy an OVF or OVA Template](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-vm-administration/GUID-AFEDC48B-C96F-4088-9C1F-4F0A30E965DE.html)

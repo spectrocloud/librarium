@@ -100,10 +100,6 @@
     "description": "CentOS Linux distribution is a stable, predictable, manageable and reproducible platform derived from the sources of RedHat Enterprise Linux (RHEL). It provides a rich base platform for open-source communities to build upon."
   },
   {
-    "name": "centos-libvirt",
-    "description": "CentOS Linux distribution is a stable, predictable, manageable and reproducible platform derived from the sources of RedHat Enterprise Linux (RHEL). It provides a rich base platform for open-source communities to build upon."
-  },
-  {
     "name": "ceph-rbd",
     "description": "A Container Storage Interface (CSI) driver, provisioner, snapshotter, resizer and attacher for Ceph RBD."
   },
@@ -420,10 +416,6 @@
     "description": "Gatekeeper is a validating and mutating webhook that enforces CRD-based policies executed by Open Policy Agent, a policy engine for Cloud Native environments hosted by CNCF."
   },
   {
-    "name": "generic-vm-libvirt",
-    "description": "Generic-VM-Libvirt is a Palette Add-on pack used to simplify deploying the virtual machine applications from a cluster profile or a system profile. Generic-VM-Libvirt extracts all Terraform constructs inside the pack and exposes nothing but the values. Users will then have the ability to modify the add-on pack for the different applications."
-  },
-  {
     "name": "generic-vm-vsphere",
     "description": "Generic-VM-vSphere is a Palette Add-on pack used to simplify deploying the virtual machine resource from a cluster profile or a system profile. Generic-VM-vSphere extracts all Terraform constructs inside the pack and exposes nothing but the values. Users will then have the ability to modify the add-on pack for the different applications."
   },
@@ -470,6 +462,10 @@
   {
     "name": "kubernetes-rke2",
     "description": "RKE2, also known as RKE Government, is Rancher's next-generation Kubernetes distribution. RKE2 is a fully conformant Kubernetes distribution that focuses security and compliance within the U.S. Federal Government sector."
+  },
+  {
+    "name": "edge-canonical",
+    "description": "Palette Optimized Canonical delivers the Canonical Kubernetes distribution and enables consistent, automated cluster operations. It provides a secure and stable Kubernetes stack that simplifies deployment and lifecycle management when used with Palette."
   },
   {
     "name": "edge-rke2",
@@ -602,10 +598,6 @@
   {
     "name": "palette-upgrader",
     "description": "The Palette Upgrader pack enables you to manage the Palette upgrade version of Edge-virtual clusters."
-  },
-  {
-    "name": "pfsense-vm-libvirt",
-    "description": "pfSense is an open-source customized distribution of the FreeBSD operating system designed for use as a firewall and router in libvirt VMs."
   },
   {
     "name": "pfsense-vm-vsphere",
@@ -881,10 +873,6 @@
   },
   {
     "name": "ubuntu-edge",
-    "description": "Ubuntu is a free, open-source operating system (OS) based on Linux that can be used on desktops, servers, in the cloud, and for IoT devices. Ubuntu is a Linux distribution derived from Debian."
-  },
-  {
-    "name": "ubuntu-libvirt",
     "description": "Ubuntu is a free, open-source operating system (OS) based on Linux that can be used on desktops, servers, in the cloud, and for IoT devices. Ubuntu is a Linux distribution derived from Debian."
   },
   {

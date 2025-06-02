@@ -15,10 +15,8 @@ hybrid mode, and configure a Container Network Interface (CNI) add-on cluster pr
 
 The following limitations apply after importing an existing Amazon EKS cluster.
 
-- You cannot use full cluster profiles on the imported cluster. You are limited to using add-on profiles when deploying
-  cluster profiles to imported clusters.
-  - This does not include full cluster profiles that are specifically created for hybrid node pools. Refer to
-    [Create Hybrid Node Pools](./create-hybrid-node-pools.md) for further details.
+- The [general limitations](../../../imported-clusters/imported-clusters.md#limitations) apply for imported clusters and
+  cloud-specific clusters.
 - You cannot download the cluster's kubeconfig file from Palette. You must use AWS to access the kubeconfig file.
 - [Cilium](https://docs.cilium.io/en/stable/overview/intro/) must be used as the CNI, as outlined in the
   [Import Amazon EKS Cluster and Enable Hybrid Mode](#import-amazon-eks-cluster-and-enable-hybrid-mode) steps.
@@ -149,7 +147,6 @@ Import your Amazon EKS cluster and enable hybrid mode to be able to create edge 
    customresourcedefinition.apiextensions.k8s.io/edgecloudconfigs.cluster.spectrocloud.com configured
    customresourcedefinition.apiextensions.k8s.io/edgenativecloudconfigs.cluster.spectrocloud.com configured
    customresourcedefinition.apiextensions.k8s.io/gcpcloudconfigs.cluster.spectrocloud.com configured
-   customresourcedefinition.apiextensions.k8s.io/libvirtcloudconfigs.cluster.spectrocloud.com configured
    customresourcedefinition.apiextensions.k8s.io/maascloudconfigs.cluster.spectrocloud.com configured
    customresourcedefinition.apiextensions.k8s.io/nestedcloudconfigs.cluster.spectrocloud.com configured
    customresourcedefinition.apiextensions.k8s.io/openstackcloudconfigs.cluster.spectrocloud.com configured
@@ -243,7 +240,7 @@ Import your Amazon EKS cluster and enable hybrid mode to be able to create edge 
 
 17. If the `aws-auth` ConfigMap already exists, append the `mapRoles` entry in your existing ConfigMap.
 
-    You can edit the existing configmap using the following command.
+    You can edit the existing ConfigMap using the following command.
 
     ```shell
     kubectl edit configmap aws-auth --namespace kube-system

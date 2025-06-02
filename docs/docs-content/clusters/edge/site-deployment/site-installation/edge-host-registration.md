@@ -40,8 +40,8 @@ stylus:
 
 ### Auto Registration
 
-Edge hosts that use the default `connected` installation mode automatically register during the on-site deployment
-process when a tenant registration token value is present. Set the parameter `disableAutoRegister` to `true` in the Edge
+Edge hosts that use the default `central` management mode automatically register during the on-site deployment process
+when a tenant registration token value is present. Set the parameter `disableAutoRegister` to `true` in the Edge
 Installer configuration to disable auto registration and require manual device registration.
 
 If you selected a default project for the registration token, that is the project the Edge host will be registered

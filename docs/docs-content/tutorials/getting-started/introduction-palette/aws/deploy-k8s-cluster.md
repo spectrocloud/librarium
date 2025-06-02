@@ -136,7 +136,7 @@ moments before clicking on the service URL to prevent the browser from caching a
 
 ![Image that shows the cluster overview of the Hello Universe Frontend Cluster](/getting-started/getting-started_deploy-k8s-cluster_hello-universe-with-api.webp)
 
-Welcome to Spacetastic's astronomy education platform. Feel free to explore the pages and learn more about space. The
+Welcome to the Spacetastic astronomy education platform. Feel free to explore the pages and learn more about space. The
 statistics page offers information on visitor counts on your deployed cluster.
 
 You have deployed your first application to a cluster managed by Palette. Your first application is a three-tier
