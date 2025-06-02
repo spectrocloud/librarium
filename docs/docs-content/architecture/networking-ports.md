@@ -56,7 +56,7 @@ is entirely optional and not required for Palette to operate appropriately.
 
 ## Self-Hosted Network Communications and Ports
 
-![On-prem network diagram](/architecture_networking-ports_on_prem_network-diagram-grpc.webp)
+![On-prem network diagram](/architecture_networking-ports_on_prem_network-diagram-grpc-new.webp)
 
 The following ports must be reachable from a network perspective for Palette self-hosted to function correctly.
 
