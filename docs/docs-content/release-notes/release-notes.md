@@ -195,6 +195,17 @@ impacted clusters until you've handled the below mentioned breaking changes and 
          cluster.x-k8s.io/drain: skip
      ```
 
+- Dynamic IP allocation is no longer supported for private API server load balancers on Azure IaaS clusters. You must
+  now use static IP allocation and provide a static IP address during cluster configuration. Otherwise, cluster
+  provisioning will fail if you omit providing these settings. Refer to the
+  [Private API Server LB Settings](../clusters/public-cloud/azure/create-azure-cluster.md#private-api-server-lb-settings)
+  section for further details.
+
+- Due to an upgrade of Cluster API Provider AWS (CAPA) to v2.7.1, Palette triggers automatic repaves for existing
+  [AWS EKS clusters](../clusters/public-cloud/aws/eks.md) that have configured
+  [node pool customizations](../clusters/public-cloud/aws/eks.md#cloud-configuration-settings) and configured a custom
+  AMI or disk type for their node pools. AWS EKS clusters without this configuration are not affected.
+
 #### Features
 
 - You can now assign an Amazon Machine Image (AMI) to a node pool when deploying Amazon EKS clusters. To do this, apply
