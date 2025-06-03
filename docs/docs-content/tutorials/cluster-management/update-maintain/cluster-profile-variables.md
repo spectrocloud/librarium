@@ -188,7 +188,7 @@ profile.
 
 ## Create Profile with Variables (Terraform)
 
-When we create cluster profiles in Terraform, we do it as part of the cluster creation rather than as a separate process. 
+When we create cluster profiles in Terraform, we do it as part of the cluster creation rather than as a separate process. If you have more than profile version
 
 To start you can clone the [Tutorials](https://github.com/spectrocloud/tutorials) repository locally or follow along by
 downloading a container image that includes the tutorial code and all dependencies. Once you have the Terraform tutorial repository in place, navigate to the folder that contains
@@ -198,7 +198,7 @@ the cluster profile variable tutorial code.
 cd terraform/cluster-profile-variables-tf
 ```
 
-When creating cluster profile variables in Terraform, we add them to the cluster profile section. 
+When creating cluster profile variables in Terraform, we add them to the cluster profile section and they get added when you create the cluster itself. 
 
 We will start with the **cluster_profiles.tf** file. We will add all our variables at the end of the **AWS Cluster Profile v1.0.0** code block.
 
@@ -208,24 +208,24 @@ profile_variables {
       name = "replicaCount"
       display_name = "Number of replicas"
       format = "number"
-      description = "This is the number of replicas to deploy for Apache"
+      description = "This is the number of replicas to deploy for Wordpress"
       default_value = var.replicaCount
       required = true
     } 
     variable {
-      name = "wordpress_username"
-      display_name = "Wordpress Username to login with"
+      name = "wordpress_namespace"
+      display_name = "Wordpress: Namespace"
       format = "string"
-      description = "This is the user you would log into Wordpress with"
-      default_value = var.wordpressUsername
+      description = "Enter a new namespace for the Wordpress pack"
+      default_value = var.wordpress_namespace
       required = true
     }   
       variable {
-      name = "wordpress_password"
-      display_name = "Wordpress Password"
-      format = "string"
-      description = "This is the password you would use to log into Wordpress with"
-      default_value = var.wordpressPassword
+      name = "wordpress_port"
+      display_name = "Wordpress: Port"
+      format = "number"
+      description = "Set a new port for Wordpress HTTP"
+      default_value = var.wordpress_port
       is_sensitive = true
       required = true
     }
@@ -236,24 +236,20 @@ Next, we will modify each of the YAML files found in the manifests folder.
 
 | Manifests file |YAML line location            | Variable to add                         |
 | ----------------------------- | ----------------------------- | --------------------------------------- |
-| manifest/wordpress-chart-variables.yaml | wordpressUsername: admin      | `'{{ .spectro.var.wordpress_username }}'` |
-| manifest/wordpress-chart-variables.yaml |  wordpressPassword: welcome123 | `'{{ .spectro.var.wordpress_password }}'`  |
+| manifest/wordpress-chart-variables.yaml | namespace: wordpress      | `'{{ .spectro.var.wordpress_namespace }}'` |
+| manifest/wordpress-chart-variables.yaml |  ports: http: 80 | `'{{ .spectro.var.wordpress_port }}'`  |
 | manifest/wordpress-chart-variables.yaml | replicaCount: 1               | `'{{ .spectro.var.replicaCount }}'`       |
 
 It is important to note that the syntax of the variable to add, particularly the spaces and . at the start of the variable. 
 
 Once the variables are in place, we can then modify the values in **terraform.tfvars**. 
 
-```hcl {7-11}
+```hcl {4-7}
 ##############################
 # Application Configuration
 ##############################
-app_port          = 8080                                             # The cluster port number on which the service will listen for incoming traffic.
-replicas_number   = 1                                                # The number of pods to be created for Hello Universe.
 replicaCount      = 3                                                # The number of pods to be created for Wordpress.
 profile_namespace = "REPLACE ME"                                     # The namespace in which the application will be deployed.
-db_password       = "REPLACE ME"                                     # The database password to connect to the API database.
-auth_token        = "REPLACE ME"                                     # The auth token for the API connection.
 wordpressUsername = "REPLACE ME"                                     # The Wordpress admin username
 wordpressPassword = "REPLACE ME"                                     # The Wordpress admin password
 ```
