@@ -122,8 +122,8 @@ impacted clusters until you've handled the below mentioned breaking changes and 
 
 - Due to an upgrade of Cluster API Provider AWS (CAPA) to v2.7.1, Palette triggers automatic repaves for existing
   [AWS EKS clusters](../clusters/public-cloud/aws/eks.md) that have enabled
-  [nodepool customization](../clusters/public-cloud/aws/eks.md#cloud-configuration-settings) and configured a custom AMI
-  for their node pools. AWS EKS clusters without this configuration are not affected.
+  [node pool customization](../clusters/public-cloud/aws/eks.md#cloud-configuration-settings) and configured a custom
+  AMI for their node pools. AWS EKS clusters without this configuration are not affected.
 
 #### Features
 
