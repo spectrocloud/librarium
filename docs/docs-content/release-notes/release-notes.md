@@ -120,6 +120,11 @@ impacted clusters until you've handled the below mentioned breaking changes and 
   [Private API Server LB Settings](../clusters/public-cloud/azure/create-azure-cluster.md#private-api-server-lb-settings)
   section for further details.
 
+- Due to an upgrade of Cluster API Provider AWS (CAPA) to v2.7.1, Palette triggers automatic repaves for existing
+  [AWS EKS clusters](../clusters/public-cloud/aws/eks.md) that have enabled
+  [nodepool customization](../clusters/public-cloud/aws/eks.md#cloud-configuration-settings) and configured a custom AMI
+  for their node pools. AWS EKS clusters without this configuration are not affected.
+
 #### Features
 
 - You can now assign an Amazon Machine Image (AMI) to a node pool when deploying Amazon EKS clusters. To do this, apply
