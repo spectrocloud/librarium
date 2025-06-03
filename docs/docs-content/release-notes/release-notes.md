@@ -114,6 +114,12 @@ impacted clusters until you've handled the below mentioned breaking changes and 
          cluster.x-k8s.io/drain: skip
      ```
 
+- Dynamic IP allocation is no longer supported for private API server load balancers on Azure IaaS clusters. You must
+  now use static IP allocation and provide a static IP address during cluster configuration. Otherwise, cluster
+  provisioning will fail if you omit providing these settings. Refer to the
+  [Private API Server LB Settings](../clusters/public-cloud/azure/create-azure-cluster.md#private-api-server-lb-settings)
+  section for further details.
+
 #### Features
 
 - You can now assign an Amazon Machine Image (AMI) to a node pool when deploying Amazon EKS clusters. To do this, apply
