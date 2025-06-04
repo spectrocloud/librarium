@@ -10,7 +10,7 @@ category: ["tutorial"]
 ---
 
 [Cluster profile variables](https://docs.spectrocloud.com/profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/)
-were recently introduced in Palette. You can leverage variables to allow for profile-layer specific configurations. This
+allow you to provide profile-layer specific configurations. This capability
 allows you to reuse a profile version for many different deployments while using unique specifications, particularly for
 layers that focus on networking, security, etc. In many ways, this treats the profile as a template that App Users can
 use and reuse for Day-2 operations and unique use case deployments. It is important to consider the type of variable you create and use, and its context to the packs they are applied against. Some variables can be applied while a cluster is running; others may only be relevant when the cluster is built; and some may not be good candidates due to strict restrictions on the value (review the [limitations](https://docs.spectrocloud.com/profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/#limitations)).
