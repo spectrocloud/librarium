@@ -11,6 +11,13 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## June 4, 2025 - Release 4.6.33
+
+### Bug Fixes
+
+- Fixed an issue that caused newly created [AWS EKS clusters](../clusters/public-cloud/aws/eks.md) with configured
+  [node pool customizations](../clusters/public-cloud/aws/eks.md#cloud-configuration-settings) to fail to provision.
+
 ## May 31, 2025 - Release 4.6.32 {#release-notes-4.6.c}
 
 ### Security Notices
@@ -448,7 +455,7 @@ Check out the [CLI Tools](../downloads/cli-tools.md) page to find the compatible
 
 <!-- prettier-ignore-start -->
 
-- The <VersionedLink text="BYOS - Agent Mode" url="integrations/packs/?pack=byoi-agent-mode" /> version 1.0.0 pack is now deprecated. We recommend using the <VersionedLink text="BYOS Edge OS" url="integrations/packs/?pack=edge-native-byoi" /> version 2.1.0 pack instead.
+- The <VersionedLink text="BYOS - Agent Mode" url="/integrations/packs/?pack=byoi-agent-mode" /> version 1.0.0 pack is now deprecated. We recommend using the <VersionedLink text="BYOS Edge OS" url="/integrations/packs/?pack=edge-native-byoi" /> version 2.1.0 pack instead.
 
 <!-- prettier-ignore-end -->
 
