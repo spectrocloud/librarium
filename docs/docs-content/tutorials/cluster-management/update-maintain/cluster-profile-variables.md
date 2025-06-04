@@ -133,7 +133,7 @@ clipboard and add it to the appropriate location.
 
 ### Deploy Clusters with Cluster Profile Variables
 
-Our cluster profile now has two versions, one without variables and one with. We can either deploy two separate clusters (one for each version), or we can deploy one cluster, starting it with version 1.0.0 and then upgrade it. We will use the latter option.
+Your cluster profile now has two versions, one without variables and one with. We can either deploy two separate clusters (one for each version), or we can deploy one cluster using version 1.0.0 and then upgrade it to version 1.1.0. This tutorial demonstrates the latter option.
 
 Select your profile and ensure it is set to version 1.0.0. Click Deploy and go through the wizard to deploy the cluster, leaving all options to their default. The cluster will take a few minutes to build. 
 
