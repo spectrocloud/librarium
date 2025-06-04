@@ -33,8 +33,8 @@ for cluster deployments. You will also learn how to leverage them as part of an 
 
 ## Create Profile with Variables (Palette)
 
-Before we build any clusters, we will start with a basic cluster profile creation. The cluster profile can be viewed as a
-template from which we can build clusters. When we add cluster profile variables, this allows us to create
+Cluster profiles can be viewed as a
+template from which you can build clusters. When you add cluster profile variables, this allows you to create
 clusters that are unique and can be customized for various use cases.
 
 In Palette, navigate to Profiles and select **Add Cluster Profile**. The version number of a given profile must be unique
