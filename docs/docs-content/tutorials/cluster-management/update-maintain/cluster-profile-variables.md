@@ -37,7 +37,7 @@ Cluster profiles can be viewed as a
 template from which you can build clusters. When you add cluster profile variables, this allows you to create
 clusters that are unique and can be customized for various use cases.
 
-In Palette, navigate to Profiles and select **Add Cluster Profile**. The version number of a given profile must be unique
+Navigate to **Profiles** and select **Add Cluster Profile**. The version number of a given profile must be unique
 and use the semantic versioning format major.minor.patch. If you do not specify a version for your cluster profile, it
 will default to **1.0.0.**. Start your profile with the following packs.
 
