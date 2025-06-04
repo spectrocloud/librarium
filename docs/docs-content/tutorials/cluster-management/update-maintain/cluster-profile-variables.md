@@ -161,7 +161,7 @@ Go to **Workloads** and select **Namespaces**. Refresh the page.
 
 ![Image that shows new namespace available for Wordpress](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-validate-namespace.webp)
 
-Go to **Workloads** and select **Pods**. Refresh the screen using the circular arrows and then filter for **wordpress** namespace. You will see 3 new Pods added to the Wordpress namespace.
+Select to **Workloads** tab. Then, select **Pods**. Refresh the screen using the circular arrows and then filter for **wordpress** namespace. You will see 3 new Pods added to the Wordpress namespace.
 
 ![Image that shows new replicas in new namespace for Wordpress](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-validate-replica.webp)
 
