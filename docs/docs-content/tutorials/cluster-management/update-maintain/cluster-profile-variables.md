@@ -153,7 +153,7 @@ Select **Apply Changes**. This process will cause part of the cluster to repave 
 
 ### Validation
 
-We can easily validate that the profile variables have been applied. Go to your cluster **Overview** page. Click on the 9090 port to launch the default Wordpress application.
+Navigate to **Clusters** and select to your cluster. The **Overview** page appears. Click on the `:9090` port to launch the default Wordpress application.
 
 ![Image that shows new port available for Wordpress](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-validate-overview.webp)
 
