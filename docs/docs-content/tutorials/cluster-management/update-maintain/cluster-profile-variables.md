@@ -188,7 +188,7 @@ profile.
 
 ## Create Profile with Variables (Terraform)
 
-When we create cluster profiles in Terraform, we do it as part of the cluster creation rather than as a separate process. If you have more than profile version
+When we create cluster profiles in Terraform, we do it as part of the cluster creation rather than as a separate process. If you have more than profile version, the variables must appear in all versions. However, you can have different pack manifest files where one has no variables assigned and the other does. 
 
 To start you can clone the [Tutorials](https://github.com/spectrocloud/tutorials) repository locally or follow along by
 downloading a container image that includes the tutorial code and all dependencies. Once you have the Terraform tutorial repository in place, navigate to the folder that contains
@@ -198,7 +198,7 @@ the cluster profile variable tutorial code.
 cd terraform/cluster-profile-variables-tf
 ```
 
-When creating cluster profile variables in Terraform, we add them to the cluster profile section and they get added when you create the cluster itself. 
+When creating cluster profile variables in Terraform, we add them to the cluster profile section. and they get added when you create the cluster itself. 
 
 We will start with the **cluster_profiles.tf** file. We will add all our variables at the end of the **AWS Cluster Profile v1.0.0** code block.
 
@@ -340,6 +340,18 @@ profile to review its layers and versions.
 
 ### Validation
 
+We can easily validate that the profile variables have been applied. Go to Palette and go to your cluster **Overview** page. Click on the 9090 port to launch the default Wordpress application.
+
+![Image that shows new port available for Wordpress](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-validate-overview.webp)
+
+Go to **Workloads** and select **Namespaces**. Refresh the page
+
+![Image that shows new namespace available for Wordpress](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-validate-namespace.webp)
+
+Go to **Workloads** and select **Pods**. Refresh the screen using the circular arrows and then filter for **wordpress** namespace. You will see 3 new Pods added to the Wordpress namespace.
+
+![Image that shows new replicas in new namespace for Wordpress](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-validate-replica.webp)
+
 ### Terraform Cleanup
 
 Use the following steps to clean up the resources you created for the tutorial. Use the `destroy` command to remove all
@@ -365,11 +377,8 @@ delete the cluster. Palette automatically removes clusters stuck in the cluster 
 
 ## Wrap-Up
 
-In this tutorial, you updated a cluster profile using three different methods: create a new cluster profile version,
-cluster profile override, and update a cluster profile in place. You deployed and rolled back the Kubecost application
-and modified the configuration of the **_hello-universe_** deployment using cluster profile updates.
-
-Cluster profiles provide consistency during the cluster creation process and when maintaining your clusters. They can be
+In this tutorial, you created two cluster profiles, one with cluster profile variables and one without. You deployed a cluster and updated it with cluster profile variables.
+Cluster profile variables provide the ability to leverage cluster profiles as a templating function. Cluster profiles with cluster profile variables can be
 versioned to store previously working cluster states, giving you visibility when updating or rolling back workloads
 across your environments.
 
@@ -385,16 +394,5 @@ We encourage you to check out the reference resources below to learn more about 
 
 - [Hello Universe GitHub repository](https://github.com/spectrocloud/hello-universe)
 
-:::tip
+- [Spectro Cloud Terraform Documentation on Cluster Profiles](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_profile)
 
-This workflow can also be completed using Terraform by following the tutorials linked below.
-
-- [Deploy and Manage K8s Cluster with Terraform - Azure](/getting-started/azure/deploy-manage-k8s-cluster-tf.md)
-
-- [Deploy and Manage K8s Cluster with Terraform - GCP](/getting-started/gcp/deploy-manage-k8s-cluster-tf.md)
-
-- [Deploy and Manage K8s with Terraform - AWS](/getting-started/aws/deploy-manage-k8s-cluster-tf.md)
-
-- [Deploy and Manage K8s with Terraform - VMWare](/getting-started/vmware/deploy-manage-k8s-cluster-tf.md)
-
-:::
