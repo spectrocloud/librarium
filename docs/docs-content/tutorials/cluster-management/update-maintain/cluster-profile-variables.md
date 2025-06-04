@@ -39,7 +39,7 @@ clusters that are unique and can be customized for various use cases.
 
 Navigate to **Profiles** and select **Add Cluster Profile**. The version number of a given profile must be unique
 and use the semantic versioning format major.minor.patch. If you do not specify a version for your cluster profile, it
-will default to **1.0.0.**. Start your profile with the following packs.
+will default to **1.0.0.**. Configure your profile with the following packs.
 
     | Pack | Version |
     | ----------------- | --------- |
