@@ -13,7 +13,7 @@ category: ["tutorial"]
 allow you to provide profile-layer specific configurations. This capability
 provides you the ability to reuse a profile version for many different deployments while using unique specifications.
  In many ways, this treats the cluster profile as a template that can be
-use and reuse for Day-2 operations and unique use case deployments. It is important to consider the type of variable you create and use, and its context to the packs they are applied against. Some variables can be applied while a cluster is running; others may only be relevant when the cluster is built; and some may not be good candidates due to strict restrictions on the value (review the [limitations](https://docs.spectrocloud.com/profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/#limitations)).
+uses and reused for Day-2 operations. It is important to consider the type of variable you create and use, and its context to the packs they are applied against. Some variables can be applied while a cluster is running; others may only be relevant when the cluster is built; and some may not be good candidates due to strict restrictions on the value. Refer to the [limitations](https://docs.spectrocloud.com/profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/#limitations) section for further information.
 
 Profile versions are commonly used to add or remove layers, specific pack configurations, and templating clusters through the use of profile variables. When we leverage Cluster
 Profile Variables they are applied to a specific profile version and tied to whichever version of the profile the variable is
