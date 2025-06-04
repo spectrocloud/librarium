@@ -157,7 +157,7 @@ We can easily validate that the profile variables have been applied. Go to your 
 
 ![Image that shows new port available for Wordpress](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-validate-overview.webp)
 
-Go to **Workloads** and select **Namespaces**. Refresh the page
+Go to **Workloads** and select **Namespaces**. Refresh the page.
 
 ![Image that shows new namespace available for Wordpress](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-validate-namespace.webp)
 
