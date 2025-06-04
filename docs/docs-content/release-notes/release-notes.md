@@ -11,6 +11,13 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## June 4, 2025 - Release 4.6.33
+
+### Bug Fixes
+
+- Fixed an issue that caused newly created [AWS EKS clusters](../clusters/public-cloud/aws/eks.md) with configured
+  [node pool customizations](../clusters/public-cloud/aws/eks.md#cloud-configuration-settings) to fail to provision.
+
 ## May 31, 2025 - Release 4.6.32 {#release-notes-4.6.c}
 
 ### Security Notices
@@ -113,6 +120,17 @@ impacted clusters until you've handled the below mentioned breaking changes and 
        labels:
          cluster.x-k8s.io/drain: skip
      ```
+
+- Dynamic IP allocation is no longer supported for private API server load balancers on Azure IaaS clusters. You must
+  now use static IP allocation and provide a static IP address during cluster configuration. Otherwise, cluster
+  provisioning will fail if you omit providing these settings. Refer to the
+  [Private API Server LB Settings](../clusters/public-cloud/azure/create-azure-cluster.md#private-api-server-lb-settings)
+  section for further details.
+
+- Due to an upgrade of Cluster API Provider AWS (CAPA) to v2.7.1, Palette triggers automatic repaves for existing
+  [AWS EKS clusters](../clusters/public-cloud/aws/eks.md) that have configured
+  [node pool customizations](../clusters/public-cloud/aws/eks.md#cloud-configuration-settings) and configured a custom
+  AMI or disk type for their node pools. AWS EKS clusters without this configuration are not affected.
 
 #### Features
 
@@ -437,7 +455,7 @@ Check out the [CLI Tools](../downloads/cli-tools.md) page to find the compatible
 
 <!-- prettier-ignore-start -->
 
-- The <VersionedLink text="BYOS - Agent Mode" url="integrations/packs/?pack=byoi-agent-mode" /> version 1.0.0 pack is now deprecated. We recommend using the <VersionedLink text="BYOS Edge OS" url="integrations/packs/?pack=edge-native-byoi" /> version 2.1.0 pack instead.
+- The <VersionedLink text="BYOS - Agent Mode" url="/integrations/packs/?pack=byoi-agent-mode" /> version 1.0.0 pack is now deprecated. We recommend using the <VersionedLink text="BYOS Edge OS" url="/integrations/packs/?pack=edge-native-byoi" /> version 2.1.0 pack instead.
 
 <!-- prettier-ignore-end -->
 
