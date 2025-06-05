@@ -175,12 +175,10 @@ kubeadmconfig:
 10. The next profile layer defines the Container Network Interface (CNI) your cluster uses. Search for and select
     **Cilium v1.17.1** from the Palette Registry (OCI).
 
-
     Select **Values**
 
-    Cilium requires customizations to work correctly with VMO. From the **Presets** drop down menu,
-    set the value for **VMO Compatibility** to **Enable**, and the value for **Cillium Operator** to **For Multi-Node
-    Cluster**.
+    Cilium requires customizations to work correctly with VMO. From the **Presets** drop down menu, set the value for
+    **VMO Compatibility** to **Enable**, and the value for **Cillium Operator** to **For Multi-Node Cluster**.
 
     Enabling VMO Compatibility adjusts the following configurations.
 
