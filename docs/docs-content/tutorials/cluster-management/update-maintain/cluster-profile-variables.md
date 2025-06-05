@@ -15,13 +15,12 @@ version for many different deployments while using unique specifications.
 
 In many ways, this treats the cluster profile as a template that can be used and reused for Day-2 operations. It is
 important to consider the type of variable you create and use, and its context to the packs they are applied against.
-Some variables can be applied while a cluster is running; others may only be relevant when the cluster is built; and
+Some variables can be applied while a cluster is running; others may only be relevant when the cluster is deployed; and
 some may not be good candidates due to strict restrictions on the value. Refer to the
 [limitations](https://docs.spectrocloud.com/profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/#limitations)
-section for further information.
+section for further information on cluster profile variable definition.
 
-In this tutorial, you will learn how to apply cluster profile variables directly in Palette. Alternatively, you can
-choose to follow along with the tutorial using Terraform.
+In this tutorial, you will learn how to apply cluster profile variables using Palette's UI and Terraform workflows. 
 
 ## Prerequisites
 
@@ -34,13 +33,12 @@ choose to follow along with the tutorial using Terraform.
 - Basic knowledge of containers and Kubernetes manifest file attributes. Refer to the
   [Docker Get Started](https://docs.docker.com/get-started/) guide and the
   [Learn Kubernetes Basics](https://kubernetes.io/docs/tutorials/kubernetes-basics/) tutorial to start learning.
-- Terraform (setup and configured)
 
 ## Create Profile with Variables (UI Workflow)
 
-Log into Palette. Navigate to **Profiles** and select **Add Cluster Profile**. The version number of a given profile
+Log into [Palette](https://console.spectrocloud.com/). Navigate to **Profiles** and select **Add Cluster Profile**. The version number of a given profile
 must be unique and use the semantic versioning format major.minor.patch. If you do not specify a version for your
-cluster profile, it will default to **1.0.0.**. Configure your profile with the following packs.
+cluster profile, it will default to **1.0.0**. Configure your profile with the following packs.
 
     | Pack | Version |
     | ----------------- | --------- |
@@ -77,12 +75,12 @@ close the Profile variable tab.
 
 ![Image that shows how to copy and paste variable, then save it in the YAML file](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-variable-clipboard.webp)
 
-You are going to add the variable to the pack manifest YAML file. To access this click on the `wordpress-chart 6.4.3` to
+You must add the variable to the pack manifest YAML file in order to use it. Click on the `wordpress-chart 6.4.3` to
 open the editor. Paste the variable to replace the default namespace value.
 
 ![Image that shows adding variable and confirm update](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-add-variable-and-confirm-update.webp)
 
-Once the variable has been set, click **Confirm Updates** and finally click **Save Changes**. This will make it part of
+Click **Confirm Updates** and finally click **Save Changes**. This will make it part of
 the cluster profile. You can verify that the variable is in use by clicking on **{} Variables**.
 
 As shown in the following image, the namespace variable is displayed as in use in one layer (one pack). Additionally,
@@ -93,11 +91,10 @@ variables.
 
 ### Update a Cluster Profile Variables
 
-Cluster profile versioning provides you better change visibility and control over the layers in your host clusters.
+Cluster profile versioning provides better change visibility and control over the layers in your host clusters.
 Learn more about
-[cluster profiles](https://docs.spectrocloud.com/profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile/).
+[cluster profile versions](https://docs.spectrocloud.com/profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile/).
 
-For the tutorial, we will create a new version 1.1.0 and add 2 new variables for the Wordpress pack.
 
 Log in to Palette and click on **Profiles** in the left **Main Menu**. Select your cluster profile.
 
@@ -105,7 +102,7 @@ From the **drop-down Menu** next to the cluster profile name, select **Create ne
 
 Provide the version number `1.1.0` and click **Confirm**. There should be versioning successful message displayed.
 
-Once you have created your new version add the following variables and their default values. After each variable ensure
+Once you have created your new version, add the following variables and their default values. After each variable, ensure
 you click **Create**.
 
 #### Variable: wordpress_replica
