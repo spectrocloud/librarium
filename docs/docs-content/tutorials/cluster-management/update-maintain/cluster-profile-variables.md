@@ -1,9 +1,9 @@
 ---
-sidebar_position: 0
+sidebar_position: 10
 sidebar_label: "Deploy Cluster with Profile Variables"
 title: "Deploy Cluster with Profile Variables"
 description:
-  "Learn how to leverage Cluster Profiles Variables directly in Palette and within Terraform deployments to Palette to ease Day-2 operations. This tutorial teaches you how to use Cluster Profile Variables as a templating function when it comes to cluster creation. Get started with the basics of adding additional variable options in Palette and Terraform through the use of versioning. 
+  "Learn how to leverage Cluster Profiles Variables using the Palette UI and Palette Terraform deployments. This tutorial teaches you how to use cluster profile variables to template and reuse cluster profiles. Get started with the basics of adding additional variable options in Palette and Terraform through the use of cluster profile versioning. 
 "
 tags: ["cluster profiles", "cluster profile variables", "tutorial"]
 category: ["tutorial"]
