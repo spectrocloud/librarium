@@ -135,7 +135,7 @@ clipboard and add it to the appropriate location.
 | -------------------- | ---------------------------------------- |
 | namespace: wordpress | `'{{.spectro.var.wordpress_namespace}}'` |
 | ports: http: 80      | `'{{.spectro.var.wordpress_port}}'`      |
-| replicaCount: 1      | `'{{.spectro.var.wordpress_replica}}'`        |
+| replicaCount: 1      | `'{{.spectro.var.wordpress_replica}}'`   |
 
 ### Deploy Clusters with Cluster Profile Variables
 
@@ -260,7 +260,7 @@ Wordpress Chart application and `wordpress-chart-variables.yaml` has the 3 varia
 | --------------------------------------- | -------------------- | ------------------------------------------ |
 | manifest/wordpress-chart-variables.yaml | namespace: wordpress | `'{{ .spectro.var.wordpress_namespace }}'` |
 | manifest/wordpress-chart-variables.yaml | ports: http: 80      | `'{{ .spectro.var.wordpress_port }}'`      |
-| manifest/wordpress-chart-variables.yaml | replicaCount: 1      | `'{{ .spectro.var.wordpress_replica }}'`        |
+| manifest/wordpress-chart-variables.yaml | replicaCount: 1      | `'{{ .spectro.var.wordpress_replica }}'`   |
 
 It is important to note that the syntax of the variable to add, particularly the spaces and . at the start of the
 variable.
