@@ -20,7 +20,7 @@ some may not be good candidates due to strict restrictions on the value. Refer t
 [limitations](https://docs.spectrocloud.com/profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/#limitations)
 section for further information on cluster profile variable definition.
 
-In this tutorial, you will learn how to apply cluster profile variables using Palette's UI and Terraform workflows. 
+In this tutorial, you will learn how to apply cluster profile variables using Palette's UI and Terraform workflows.
 
 ## Prerequisites
 
@@ -36,9 +36,10 @@ In this tutorial, you will learn how to apply cluster profile variables using Pa
 
 ## Create Profile with Variables (UI Workflow)
 
-Log into [Palette](https://console.spectrocloud.com/). Navigate to **Profiles** and select **Add Cluster Profile**. The version number of a given profile
-must be unique and use the semantic versioning format major.minor.patch. If you do not specify a version for your
-cluster profile, it will default to **1.0.0**. Configure your profile with the following packs.
+Log into [Palette](https://console.spectrocloud.com/). Navigate to **Profiles** and select **Add Cluster Profile**. The
+version number of a given profile must be unique and use the semantic versioning format major.minor.patch. If you do not
+specify a version for your cluster profile, it will default to **1.0.0**. Configure your profile with the following
+packs.
 
     | Pack | Version |
     | ----------------- | --------- |
@@ -80,8 +81,8 @@ open the editor. Paste the variable to replace the default namespace value.
 
 ![Image that shows adding variable and confirm update](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-add-variable-and-confirm-update.webp)
 
-Click **Confirm Updates** and finally click **Save Changes**. This will make it part of
-the cluster profile. You can verify that the variable is in use by clicking on **{} Variables**.
+Click **Confirm Updates** and finally click **Save Changes**. This will make it part of the cluster profile. You can
+verify that the variable is in use by clicking on **{} Variables**.
 
 As shown in the following image, the namespace variable is displayed as in use in one layer (one pack). Additionally,
 this profile has already been used to create a cluster. Once a profile version is in use, you cannot modify any of its
@@ -91,10 +92,9 @@ variables.
 
 ### Update a Cluster Profile Variables
 
-Cluster profile versioning provides better change visibility and control over the layers in your host clusters.
-Learn more about
+Cluster profile versioning provides better change visibility and control over the layers in your host clusters. Learn
+more about
 [cluster profile versions](https://docs.spectrocloud.com/profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile/).
-
 
 Log in to Palette and click on **Profiles** in the left **Main Menu**. Select your cluster profile.
 
@@ -102,8 +102,8 @@ From the **drop-down Menu** next to the cluster profile name, select **Create ne
 
 Provide the version number `1.1.0` and click **Confirm**. There should be versioning successful message displayed.
 
-Once you have created your new version, add the following variables and their default values. After each variable, ensure
-you click **Create**.
+Once you have created your new version, add the following variables and their default values. After each variable,
+ensure you click **Create**.
 
 #### Variable: wordpress_replica
 
