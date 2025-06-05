@@ -163,6 +163,16 @@ impacted clusters until you've handled the below mentioned breaking changes and 
 
 #### Improvements
 
+:::info
+
+All Cluster API provider versions were updated in this release. Refer to the
+[Cluster API Provider Versions](../architecture/orchestration-spectrocloud.md#cluster-api-provider-versions) section
+further details.
+
+:::
+
+- Palette now uses Cluster API Provider AWS (CAPA) version 2.7.1 internally. Refer to the
+  [documentation](https://github.com/kubernetes-sigs/cluster-api-provider-aws/tree/v2.7.1) for further information.
 - CAPG has been upgraded to [v1.8.1](https://github.com/kubernetes-sigs/cluster-api-provider-gcp/releases/tag/v1.8.1)
   from [v1.2.1](https://github.com/kubernetes-sigs/cluster-api-provider-gcp/releases/tag/v1.2.1).
 
@@ -200,8 +210,6 @@ impacted clusters until you've handled the below mentioned breaking changes and 
   access to backup and restore functionality. Refer to the
   [Backup and Restore](../clusters/cluster-management/backup-restore/backup-restore.md) page to learn more about backup
   and restore tools in Palette.
-- Palette now uses Cluster API Provider AWS (CAPA) version 2.7.1 internally. Refer to the
-  [documentation](https://github.com/kubernetes-sigs/cluster-api-provider-aws/tree/v2.7.1) for further information.
 - [Self-hosted Palette](../enterprise-version/enterprise-version.md) now supports anonymous SMTP mode, allowing users to
   authenticate without a username and password. We recommend using authenticated SMTP wherever possible. Refer to the
   [Configure SMTP](../enterprise-version/system-management/smtp.md) guide for further information.
