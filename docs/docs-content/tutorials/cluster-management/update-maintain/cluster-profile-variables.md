@@ -108,11 +108,11 @@ Provide the version number `1.1.0` and click **Confirm**. There should be versio
 Once you have created your new version add the following variables and their default values. After each variable ensure
 you click **Create**.
 
-#### Variable: replicaCount
+#### Variable: wordpress_replica
 
 | Variable Setting | Value                                        |
 | ---------------- | -------------------------------------------- |
-| Variable         | replicaCount                                 |
+| Variable         | wordpress_replica                            |
 | Display name     | Wordpress: Replica Count                     |
 | Description      | The number of replicas for the Wordpress app |
 | Format           | Number                                       |
@@ -135,7 +135,7 @@ clipboard and add it to the appropriate location.
 | -------------------- | ---------------------------------------- |
 | namespace: wordpress | `'{{.spectro.var.wordpress_namespace}}'` |
 | ports: http: 80      | `'{{.spectro.var.wordpress_port}}'`      |
-| replicaCount: 1      | `'{{.spectro.var.replicaCount}}'`        |
+| replicaCount: 1      | `'{{.spectro.var.wordpress_replica}}'`        |
 
 ### Deploy Clusters with Cluster Profile Variables
 
@@ -226,29 +226,29 @@ Cluster Profile v1.0.0** code block.
 ```hcl
 profile_variables {
     variable {
-      name = "replicaCount"
-      display_name = "Number of replicas"
-      format = "number"
-      description = "This is the number of replicas to deploy for Wordpress"
-      default_value = var.replicaCount
-      required = true
+      name          = "wordpress_replica"
+      display_name  = "Number of replicas"
+      format        = "number"
+      description   = "This is the number of replicas to deploy for Wordpress"
+      default_value = var.wordpress_replica
+      required      = true
     }
     variable {
-      name = "wordpress_namespace"
-      display_name = "Wordpress: Namespace"
-      format = "string"
-      description = "Enter a new namespace for the Wordpress pack"
+      name          = "wordpress_namespace"
+      display_name  = "Wordpress: Namespace"
+      format        = "string"
+      description   = "Enter a new namespace for the Wordpress pack"
       default_value = var.wordpress_namespace
-      required = true
+      required      = true
     }
-      variable {
-      name = "wordpress_port"
-      display_name = "Wordpress: Port"
-      format = "number"
-      description = "Set a new port for Wordpress HTTP"
+    variable {
+      name          = "wordpress_port"
+      display_name  = "Wordpress: Port"
+      format        = "number"
+      description   = "Set a new port for Wordpress HTTP"
       default_value = var.wordpress_port
-      is_sensitive = true
-      required = true
+      is_sensitive  = true
+      required      = true
     }
   }
 ```
@@ -260,7 +260,7 @@ Wordpress Chart application and `wordpress-chart-variables.yaml` has the 3 varia
 | --------------------------------------- | -------------------- | ------------------------------------------ |
 | manifest/wordpress-chart-variables.yaml | namespace: wordpress | `'{{ .spectro.var.wordpress_namespace }}'` |
 | manifest/wordpress-chart-variables.yaml | ports: http: 80      | `'{{ .spectro.var.wordpress_port }}'`      |
-| manifest/wordpress-chart-variables.yaml | replicaCount: 1      | `'{{ .spectro.var.replicaCount }}'`        |
+| manifest/wordpress-chart-variables.yaml | replicaCount: 1      | `'{{ .spectro.var.wordpress_replica }}'`        |
 
 It is important to note that the syntax of the variable to add, particularly the spaces and . at the start of the
 variable.
@@ -271,9 +271,9 @@ With the variables in place in the YAML file, you can then modify the values in 
 ##############################
 # Application Configuration
 ##############################
-replicaCount      = "REPLACE ME"             # The number of pods to be created for Wordpress.
+wordpress_replica   = "REPLACE ME"           # The number of pods to be created for Wordpress.
 wordpress_namespace = "REPLACE ME"           # The namespace to be created for Wordpress.
-wordpress_port = "REPLACE ME"                # The port to be created for HTTP for Wordpress.
+wordpress_port      = "REPLACE ME"           # The port to be created for HTTP for Wordpress.
 ```
 
 Additionally, you will need to put in the cloud specific info. For this tutorial, you will use AWS. Locate the AWS
