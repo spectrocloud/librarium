@@ -103,7 +103,7 @@ Log in to Palette and click on **Profiles** in the left **Main Menu**. Select yo
 
 From the **drop-down Menu** next to the cluster profile name, select **Create new version**.
 
-Provide the version number `1.1.0` and click **Confirm**. There should be versioning successful message displayed.
+Provide the version number `1.1.0` and click **Confirm**. You should see a versioning successful message.
 
 Once you have created your new version add the following variables and their default values. After each variable ensure
 you click **Create**.
@@ -146,7 +146,7 @@ This tutorial demonstrates the latter option.
 In Palette, select your profile and use the **drop-down Menu** is set to version 1.0.0 . Click Deploy and go through the
 wizard to deploy the cluster, leaving all options to their default. The cluster will take a few minutes to build.
 
-Under **Workloads**, select **Deployments** and filter for **wordpress**. There should be three pods displayed.
+Under **Workloads**, select **Deployments** and filter for **wordpress**. You should see 3 Pods.
 
 Go to **Profile** and from the **drop-down Menu** select cluster profile version **1.1.0**. Choose **Review & Save**. On
 the **Changes Summary**, select **Review changes in Editor**.
@@ -178,7 +178,7 @@ Go to **Workloads** and select **Namespaces**. Refresh the page.
 ![Image that shows new namespace available for Wordpress](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-validate-namespace.webp)
 
 Select to **Workloads** tab. Then, select **Pods**. Refresh the screen using the circular arrows and then filter for
-**wordpress** namespace. There should be three new pods displayed in the newly added Wordpress namespace.
+**wordpress** namespace. You will see 3 new Pods added to the Wordpress namespace.
 
 ![Image that shows new replicas in new namespace for Wordpress](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-validate-replica.webp)
 
@@ -204,10 +204,10 @@ profile.
 ## Create Profile with Variables (Terraform Workflow)
 
 When you create cluster profiles in Terraform, you will do it as part of the cluster creation rather than as a separate
-process. If you need to have more than one profile version, the variables must appear in all versions.
+process. If you need to have more than one profile version, the variables must appear in all versions. 
 
-You do not have to have the variables assigned to the pack. You can use different pack manifest files within the
-different cluster profile versions.
+You do not have to have the variables assigned to the pack. You can use
+different pack manifest files within the different cluster profile versions.
 
 To start you can clone the [Tutorials](https://github.com/spectrocloud/tutorials) repository locally or follow along by
 downloading a container image that includes the tutorial code and all dependencies. Once you have the Terraform tutorial
@@ -217,11 +217,9 @@ repository in place, navigate to the folder that contains the cluster profile va
 cd terraform/cluster-profile-variables-tf
 ```
 
-When creating cluster profile variables in Terraform, they are added to the cluster profile section. They will get added
-when you create the cluster itself.
+When creating cluster profile variables in Terraform, they are added to the cluster profile section. They will get added when you create the cluster itself.
 
-You will start with the **cluster_profiles.tf** file. You can review variables that were placed at the end of the **AWS
-Cluster Profile v1.0.0** code block.
+You will start with the **cluster_profiles.tf** file. You can review variables that were placed at the end of the **AWS Cluster Profile v1.0.0** code block.
 
 ```hcl
 profile_variables {
@@ -253,17 +251,15 @@ profile_variables {
   }
 ```
 
-Review the two files in the manifests folder. `wordpress-chart-default.yaml` contains the default configuration for the
-Wordpress Chart application and `wordpress-chart-variables.yaml` has the following three variables defined in it.
+Review the two files in the manifests folder. `wordpress-chart-default.yaml` contains the default configuration for the Wordpress Chart application and `wordpress-chart-variables.yaml` has the 3 variables defined in it.
 
-| Manifests file                          | YAML line location   | Variable added                             |
+| Manifests file                          | YAML line location   | Variable to add                            |
 | --------------------------------------- | -------------------- | ------------------------------------------ |
 | manifest/wordpress-chart-variables.yaml | namespace: wordpress | `'{{ .spectro.var.wordpress_namespace }}'` |
 | manifest/wordpress-chart-variables.yaml | ports: http: 80      | `'{{ .spectro.var.wordpress_port }}'`      |
 | manifest/wordpress-chart-variables.yaml | replicaCount: 1      | `'{{ .spectro.var.replicaCount }}'`        |
 
-It is important to note that the syntax of the variable to add, particularly the spaces and . at the start of the
-variable.
+It is important to note that the syntax of the variable to add, particularly the spaces and . at the start of the variable.
 
 With the variables in place in the YAML file, you can then modify the values in **terraform.tfvars**.
 
@@ -323,8 +319,7 @@ When you are done making the required changes, save the file.
 
 ### Deploy Clusters with Cluster Profile Variables
 
-Before starting the cluster provisioning, export your **Palette API key** as an environment variable. This step allows
-the Terraform code to authenticate with the Palette API.
+Before starting the cluster provisioning, export your **Palette API key** as an environment variable. This step allows the Terraform code to authenticate with the Palette API.
 
 ```bash
 export SPECTROCLOUD_APIKEY=<Your-Spectro-Cloud-API-key>
@@ -332,8 +327,7 @@ export SPECTROCLOUD_APIKEY=<Your-Spectro-Cloud-API-key>
 
 :::warning
 
-Before deploying the resources, ensure that there are no active clusters named `aws-cluster` or cluster profiles named
-`aws-profile-variables-tf` in your Palette project.
+Before deploying the resources, ensure that there are no active clusters named `aws-cluster` or cluster profiles named `aws-profile-variables-tf` in your Palette project.
 
 :::
 
@@ -356,14 +350,12 @@ To deploy the resources, use the `apply` command.
 terraform apply -auto-approve
 ```
 
-To check that the cluster profile was created correctly, log in to [Palette](https://console.spectrocloud.com), and
-click **Profiles** from the left **Main Menu**. Locate the cluster profile named `aws-profile-variables-tf`. Click on
-the cluster profile to review its layers and versions.
+To check that the cluster profile was created correctly, log in to [Palette](https://console.spectrocloud.com), and click **Profiles** from the left **Main Menu**. Locate the cluster profile named `aws-profile-variables-tf`. Click on the cluster profile to review its layers and versions.
 
 ### Validation
 
-You can validate that the profile variables have been applied. Go to Palette and go to your cluster **Overview** page.
-Click on the 9090 port to launch the default Wordpress application.
+We can easily validate that the profile variables have been applied. Go to Palette and go to your cluster **Overview**
+page. Click on the 9090 port to launch the default Wordpress application.
 
 ![Image that shows new port available for Wordpress](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-validate-overview.webp)
 
@@ -372,14 +364,13 @@ Go to **Workloads** and select **Namespaces**. Refresh the page
 ![Image that shows new namespace available for Wordpress](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-validate-namespace.webp)
 
 Go to **Workloads** and select **Pods**. Refresh the screen using the circular arrows and then filter for **wordpress**
-namespace. There should be three new pods displayed in the newly added Wordpress namespace.
+namespace. You will see 3 new Pods added to the Wordpress namespace.
 
 ![Image that shows new replicas in new namespace for Wordpress](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-validate-replica.webp)
 
 ### Terraform Cleanup
 
-Use the following steps to clean up the resources you created for the tutorial. Use the `destroy` command to remove all
-the resources you created through Terraform.
+Use the following steps to clean up the resources you created for the tutorial. Use the `destroy` command to remove all the resources you created through Terraform.
 
 ```shell
 terraform destroy --auto-approve
@@ -393,17 +384,13 @@ Destroy complete! Resources: 3 destroyed.
 
 :::info
 
-If a cluster remains in the delete phase for over 15 minutes, it becomes eligible for force delete. To trigger a force
-delete action, navigate to the cluster’s details page and click on **Settings**. Click on **Force Delete Cluster** to
-delete the cluster. Palette automatically removes clusters stuck in the cluster deletion phase for over 24 hours.
+If a cluster remains in the delete phase for over 15 minutes, it becomes eligible for force delete. To trigger a force delete action, navigate to the cluster’s details page and click on **Settings**. Click on **Force Delete Cluster** to delete the cluster. Palette automatically removes clusters stuck in the cluster deletion phase for over 24 hours.
 
 :::
 
 ## Wrap-Up
 
-In this tutorial, you created two cluster profiles versions, one with cluster profile variables and one without. You
-deployed a cluster and updated it to apply the cluster profile variables. Cluster profile variables provide the ability
-to leverage cluster profiles as a templating function.
+In this tutorial, you created two cluster profiles versions, one with cluster profile variables and one without. You deployed a cluster and updated it to apply the cluster profile variables. Cluster profile variables provide the ability to leverage cluster profiles as a templating function. 
 
 We encourage you to check out the reference resources below to learn more about Palette.
 
