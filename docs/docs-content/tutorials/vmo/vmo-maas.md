@@ -84,7 +84,7 @@ VMO is supported in the following environments:
     below into the text editor frame.
 
     Update the value for **NETWORKS** to the appropriate subnet for your environment. The value you enter must be in
-    cidr notation and encapsulated in quotes. Example "192.169.0.0/16".
+    CIDR notation and encapsulated in quotes. Example "192.169.0.0/16".
 
 ```yaml
 kubeadmconfig:
@@ -942,8 +942,8 @@ charts:
 
 :::info
 
-VMO allows specifc network configurations to be applied which enables you to define and tag the VLANs your VMs have
-access to. The tutorial example configures VMO to only support untagged VLANS. Modify the values in the network
+VMO allows specific network configurations to be applied which enables you to define and tag the VLANs your VMs have
+access to. The tutorial example configures VMO to only support untagged VLANs. Modify the values in the network
 configuration section to match your environments specifications.
 
 ```yaml
@@ -983,7 +983,7 @@ vlanFiltering:
 
 :::info
 
-The configurations below include setting up the default ubuntu administrator account. This example uses Clear text
+The configurations below include setting up the default Ubuntu Administrator account. This example uses Clear text
 passwords. We recommend only using this configuration template for this tutorial.
 
 :::
@@ -1175,7 +1175,7 @@ impact the deployment and how you might use them in a production deployment.
 
 | Variable            | Instruction                                                                                                                                                                                                                                                                                               |
 | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Resource Pool       | Set this value to the name of the MAAS resource pool you want your control plane server to used from from.                                                                                                                                                                                                |
+| Resource Pool       | Set this value to the name of the MAAS resource pool you want your control plane server to be taken from.                                                                                                                                                                                                |
 | Minimum CPU         | Set this to the minimum number of CPU cores you want your Control Plane server to have. Do not set values lower than 5.                                                                                                                                                                                   |
 | Minimum Memory (GB) | Set this to the maximum amount of memory you want your Control Plane server to have. Do not set values lower than 8 GB.                                                                                                                                                                                   |
 | Availability zones  | This is an optional value that allows you to specify which AZ's to use for your node deployment. This configuration is critical to consider when planning high availability patterns for your infrastructure.                                                                                             |
@@ -1196,7 +1196,7 @@ impact the deployment and how you might use them in a production deployment.
     | Subject Type      | Set this value to `user`.                                                                                                  |
     | Subject Name      | The VMO cluster you created is set to use Palette for OIDC. In this field, enter the ID you use when logging into Palette. |
 
-    Select **Add Subject** to create another binding. Enter the informationas instructed in the table below.
+    Select **Add Subject** to create another binding. Enter the information as instructed in the table below.
 
     | Field             | Instruction                          | Description                                                                                                                                                           |
     | ----------------- | ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -1335,7 +1335,7 @@ Server Version: v1.32.2
     access to your Kubernetes cluster by mapping a network port on the host to the network port your app is listening on
     in the cluster.
 
-Once the connection passes through MetalLB, the Kuberentes service itself acts like a load balancer inside your cluster.
+Once the connection passes through MetalLB, the Kubernetes service itself acts like a load balancer inside your cluster.
 Since pods dynamically scale, the service keeps track of all your app pods using a label selector. In this tutorial, the
 label `kubevirt.io/domain: hellouni` is used to uniquely identify pods running the `hello-universe` app.
 
