@@ -103,7 +103,7 @@ Log in to Palette and click on **Profiles** in the left **Main Menu**. Select yo
 
 From the **drop-down Menu** next to the cluster profile name, select **Create new version**.
 
-Provide the version number `1.1.0` and click **Confirm**. You should see a versioning successful message.
+Provide the version number `1.1.0` and click **Confirm**. There should be versioning successful message displayed.
 
 Once you have created your new version add the following variables and their default values. After each variable ensure
 you click **Create**.
@@ -146,7 +146,7 @@ This tutorial demonstrates the latter option.
 In Palette, select your profile and use the **drop-down Menu** is set to version 1.0.0 . Click Deploy and go through the
 wizard to deploy the cluster, leaving all options to their default. The cluster will take a few minutes to build.
 
-Under **Workloads**, select **Deployments** and filter for **wordpress**. You should see 3 Pods.
+Under **Workloads**, select **Deployments** and filter for **wordpress**. There should be three pods displayed.
 
 Go to **Profile** and from the **drop-down Menu** select cluster profile version **1.1.0**. Choose **Review & Save**. On
 the **Changes Summary**, select **Review changes in Editor**.
@@ -178,7 +178,7 @@ Go to **Workloads** and select **Namespaces**. Refresh the page.
 ![Image that shows new namespace available for Wordpress](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-validate-namespace.webp)
 
 Select to **Workloads** tab. Then, select **Pods**. Refresh the screen using the circular arrows and then filter for
-**wordpress** namespace. You will see 3 new Pods added to the Wordpress namespace.
+**wordpress** namespace. There should be three new pods displayed in the newly added Wordpress namespace.
 
 ![Image that shows new replicas in new namespace for Wordpress](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-validate-replica.webp)
 
@@ -362,8 +362,8 @@ the cluster profile to review its layers and versions.
 
 ### Validation
 
-We can easily validate that the profile variables have been applied. Go to Palette and go to your cluster **Overview**
-page. Click on the 9090 port to launch the default Wordpress application.
+You can validate that the profile variables have been applied. Go to Palette and go to your cluster **Overview** page.
+Click on the 9090 port to launch the default Wordpress application.
 
 ![Image that shows new port available for Wordpress](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-validate-overview.webp)
 
@@ -372,7 +372,7 @@ Go to **Workloads** and select **Namespaces**. Refresh the page
 ![Image that shows new namespace available for Wordpress](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-validate-namespace.webp)
 
 Go to **Workloads** and select **Pods**. Refresh the screen using the circular arrows and then filter for **wordpress**
-namespace. You will see 3 new Pods added to the Wordpress namespace.
+namespace. There should be three new pods displayed in the newly added Wordpress namespace.
 
 ![Image that shows new replicas in new namespace for Wordpress](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-validate-replica.webp)
 
