@@ -84,9 +84,11 @@ be enabled per Edge host by someone with sufficient permissions.
 11. Click **Confirm** to start the session.
 
     :::info
-    
-    The default timeout for a remote shell session is 12 hours of inactivity. After that, the session terminates. Additionally, some browsers may suspend background tabs after a shorter period of inactivity, which causes the remote shell connection to terminate sooner.
-    
+
+    The default timeout for a remote shell session is 12 hours of inactivity. After that, the session terminates.
+    Additionally, some browsers may suspend background tabs after a shorter period of inactivity, which causes the
+    remote shell connection to terminate sooner.
+
     :::
 
 ## Validate
