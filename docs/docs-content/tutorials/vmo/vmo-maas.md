@@ -10,33 +10,33 @@ category: ["tutorial"]
 
 # Introduction to Palette Virtual Machine Orchestrator
 
+Palette Virtual Machine Orchestrator (VMO) provides a unified platform for deploying, managing, and scaling Virtual
+Machines (VMs) and containerized applications within Kubernetes clusters. Palette VMO supports deployment to edge
+devices and bare metal servers in data centers.
+
+Palette VMO simplifies infrastructure management, improves resource utilization, and eliminates hypervisor costs.
+
+Visit the [VMO architecture](/vm-management/architecture.md) page for more information.
+
+![A drawing of VMs deployed to Palette](/vm-mangement_vmo-diagram.webp)
+
+## Use Cases
+
+You will benefit from Palette VMO in the following cases:
+
+- You are planning to gradually shift from VMs to containers and want to continue using both during the transition.
+
+- Your established infrastructure combines containers and VMs, and you want to manage them more effectively.
+
+- You are integrating new VM-based applications into an existing containerized infrastructure.
+
+- You are managing edge locations with VM-based workloads and would like to stop using a hypervisor.
+
 In this tutorial, you will deploy a VM using Palette Virtual Machine Orchestrator (VMO). You will learn about the components
 that make up VMO, how to create and customize them for a Canonical MAAS VMO cluster deployment, and how to customize and
 deploy a VM.
 
-We recommend reviewing the [VMO architecture](/vm-management/architecture.md) page before starting this tutorial. The
-architecture page describes what VMO is, a high level view of the components it uses, and provides links to more
-detailed information.
-
-## Supported Environments
-
-VMO is supported in the following environments:
-
-- Private Clouds
-  - MAAS
-  - Palette Edge
-  - VMware
-- Public Clouds
-  - AWS
-  - Azure
-
 ## Prerequisites
-
-<Tabs groupId="Workflows">
-
-<TabItem label="UI" value="UI Workflow">
-
-- A Palette account with tenant admin access.
 
 - MAAS Datacenter environment.
 
@@ -44,9 +44,10 @@ VMO is supported in the following environments:
 
   - 8 CPU Cores
   - 32 GB RAM
-  - 250 GB Storage (Worker node must have 2 disks)
+  - 250 GB Storage
+  - Worker node must have 2 disks
 
-- Two routable, static IP addresses available in your MAAS environment's network.
+- Three routable, static IP addresses available in your MAAS environment's network.
 
 - A MAAS user with necessary permissions.
 
@@ -54,11 +55,7 @@ VMO is supported in the following environments:
 
 - An existing [MAAS Private Cloud Gateway (PCG)](/clusters/pcg/deploy-pcg/maas.md) in your MAAS environment.
 
-
 - [kubectl](https://kubernetes.io/docs/tasks/tools/) installed locally.
-
-</TabItem>
-
 
 ## Cluster Profile and Cluster Creation
 
@@ -68,25 +65,22 @@ VMO is supported in the following environments:
 
 <TabItem label="UI" value="UI Workflow">
 
-1.  Log in to [Palette](https://console.spectrocloud.com).
+Log in to [Palette](https://console.spectrocloud.com).
 
-2.  From the left main menu, select **Profiles** and select **Add Cluster Profile**.
+From the left main menu, select **Profiles** and select **Add Cluster Profile**.
 
-3.  Enter the name, version number, and any tags you wish to apply to the profile. Set the type value to **Full**.
-    Select **Next**.
+Enter the name, version number, and any tags you wish to apply to the profile. Set the type value to **Full**. Select **Next**.
 
-4.  Select **MAAS** from the **infrastructure provider** column. Select **Next**.
+Select **MAAS** from the **infrastructure provider** column. Select **Next**.
 
-5.  The first profile layer is the OS layer. Your selection is used as the base OS for all nodes in your Kubernetes
-    cluster. This tutorial uses the _Ubuntu v22.04_ OS image from the _Palette Registry (OCI)_.
+The first profile layer is the OS layer. Your selection is used as the base OS for all nodes in your Kubernetes cluster. This tutorial uses the _Ubuntu v22.04_ OS image from the _Palette Registry (OCI)_.
 
-    Select **Ubuntu latest: v22.04**.
+Select **Ubuntu latest: v22.04**.
 
-6.  Ubuntu requires customizations to be functional in your environment. Select **Values** and paste the configuration
-    below into the text editor frame.
+Ubuntu requires customizations to be functional in your environment. Select **Values** and paste the configuration below into the text editor frame.
 
-    Update the value for `NETWORKS` to the appropriate subnet for your environment. The value you enter must be in
-    CIDR notation and encapsulated in quotes. For example, `192.169.0.0/16`.
+Update the value for `NETWORKS` to the appropriate subnet for your environment. The value you enter must be in
+CIDR notation and encapsulated in quotes. For example, `192.169.0.0/16`.
 
 ```yaml
 kubeadmconfig:
@@ -101,8 +95,8 @@ kubeadmconfig:
       IPS=$(hostname -I)
       for IP in $IPS
       do
-         echo "$IP" | grepcidr "$NETWORKS" >/dev/null && echo " --node-ip=$IP" >> /etc/default/kubelet
-         if [ $? == 0 ]; then break; fi
+        echo "$IP" | grepcidr "$NETWORKS" >/dev/null && echo " --node-ip=$IP" >> /etc/default/kubelet
+        if [ $? == 0 ]; then break; fi
       done
     # Increase audit_backlog_limit
     - sed -i 's/GRUB_CMDLINE_LINUX=""/GRUB_CMDLINE_LINUX="audit_backlog_limit=256"/g' /etc/default/grub
@@ -139,77 +133,75 @@ kubeadmconfig:
             SystemdCgroup = true
 ```
 
-    Select **Next layer**.
+Select **Next layer**.
 
-7. The next profile layer determines the version of Kubernetes your cluster uses. Select **Palette eXtended Kubernetes
-   v1.32.2** from the Palette Registry (OCI).
+The next profile layer determines the version of Kubernetes your cluster uses. Select **Palette eXtended Kubernetes
+v1.32.2** from the Palette Registry (OCI).
 
-8. Select the **Properties** icon.
+Select the **Properties** icon.
 
-   The Palette eXtended Kubernetes pack defaults to use a custom OIDC provider. This tutorial uses the **Palette** OIDC
-   Identity Provider. By using Palette as your OIDC provider, your cluster is configured to send authentication requests
-   to your Palette tenant's configured OIDC provider.
+The Palette eXtended Kubernetes pack defaults to use a custom OIDC provider. This tutorial uses the Palette OIDC
+Identity Provider. By using Palette as your OIDC provider, your cluster is configured to send authentication requests
+to your Palette tenant's configured OIDC provider.
 
-   Select **Palette** as the OIDC Identity Provider.
+Select **Palette** as the OIDC Identity Provider.
 
 ![Image of the properties icon](/tutorials/deploy-vmo-maas/tutorials_vmo_vmo-maas_configure-OIDC-properties.webp)
 
-9.  Select the **Values** icon.
+Select the **Values** icon.
 
-    You may configure a different OIDC provider by uncommenting the OIDC clientConfig section, and adding your
-    configuration values.
+You may configure a different OIDC provider by uncommenting the OIDC `clientConfig` section, and adding your
+configuration values.
 
 ![Image of the properties icon](/tutorials/deploy-vmo-maas/tutorials_vmo_vmo-maas_Configure-OIDC-Values.webp)
 
-    The Palette eXtended Kubernetes pack is pre-configured with subnets for both the clusters internal Pods and Services.
-    Review the values for **podCIDR** and **serviceClusterIpRange** and update them if necessary.
+The Palette eXtended Kubernetes pack is pre-configured with subnets for both the clusters internal Pods and Services.
+Review the values for **podCIDR** and **serviceClusterIpRange** and update them if necessary.
 
 ![Image of the configuration lines where Pod and Services Subnets are set.](/tutorials/deploy-vmo-maas/tutorials_vmo_vmo-maas_pod-service-ips.webp)
 
-    This template contains security configurations that restrict pod actions. In order for the Rook-Ceph Container Storage Interface (CSI) to function properly, the namespace it is deployed to must be excluded from these security configurations.
+This template contains security configurations that restrict pod actions. In order for the Rook-Ceph Container Storage Interface (CSI) to function properly, the namespace it is deployed to must be excluded from these security configurations.
 
-    Search for `PodSecurity` and update the exceptions value for `namespaces` to include `rook-ceph`.
+Search for `PodSecurity` and update the exceptions value for `namespaces` to include `rook-ceph`.
 
 ![Image of the pod security namespace exclusion values](/tutorials/deploy-vmo-maas/tutorials_vmo_vmo-maas_podSecurity.webp)
 
-    Select **Next layer**
+Select **Next layer**
 
-10. The next profile layer defines the Container Network Interface (CNI) your cluster uses. Select
-    **Cilium v1.17.1** from the Palette Registry (OCI).
+The next profile layer defines the Container Network Interface (CNI) your cluster uses. Select **Cilium v1.17.1** from the Palette Registry (OCI).
 
-    Select **Values**.
+Select **Values**.
 
-    Cilium requires customizations to work correctly with VMO. From the **Presets** drop down menu, set the value for
-    **VMO Compatibility** to **Enable**, and the value for **Cillium Operator** to **For Multi-Node Cluster**.
+Cilium requires customizations to work correctly with VMO. From the **Presets** drop down menu, set the value for
+**VMO Compatibility** to **Enable**, and the value for **Cillium Operator** to **For Multi-Node Cluster**.
 
-    Enabling VMO Compatibility adjusts the following configurations.
+Enabling VMO Compatibility adjusts the following configurations.
 
-    | Field                             | Default Value | Modified Value | Description                                                                                        |
-    | --------------------------------- | ------------- | -------------- | -------------------------------------------------------------------------------------------------- |
-    | cilium.cni.exclusive              | false         | true           | Instructs the cluster to remove all other CNI configuration files.                                 |
-    | cilium.socketLB.hostNamespaceOnly | true          | false          | Disables socket level load balancing and moves the function back to the virtual network interface. |
+| Field                             | Default Value | Modified Value | Description                                                                                        |
+| --------------------------------- | ------------- | -------------- | -------------------------------------------------------------------------------------------------- |
+| cilium.cni.exclusive              | `false`         | `true`           | Instructs the cluster to remove all other CNI configuration files.                                 |
+| cilium.socketLB.hostNamespaceOnly | `true`          | `false`          | Disables socket level load balancing and moves the function back to the virtual network interface. |
 
-        Visit the Cilium documentation site for more information on [socket load balancers](https://docs.cilium.io/en/latest/network/Kubernetes/kubeproxy-free/#socketlb-host-netns-only) and [CNI configuration adjustments](https://docs.cilium.io/en/latest/network/kubernetes/configuration/#adjusting-cni-configuration).
+Visit the Cilium documentation site for more information on [socket load balancers](https://docs.cilium.io/en/latest/network/Kubernetes/kubeproxy-free/#socketlb-host-netns-only) and [CNI configuration adjustments](https://docs.cilium.io/en/latest/network/kubernetes/configuration/#adjusting-cni-configuration).
 
 Select **Next layer**.
 
-11. The next profile layer determines the Container Storage Interface (CSI) your cluster uses. Search for and select
-    **Rook-Ceph (Helm) v1.16.3** from the Palette Registry (OCI).
+The next profile layer determines the Container Storage Interface (CSI) your cluster uses. Search for and select **Rook-Ceph (Helm) v1.16.3** from the Palette Registry (OCI).
 
-    Select **Values**
+Select **Values**
 
-    From the **Presets** drop down menu, set the value for **Cluster Configuration** to **Single Node Cluster**.
+From the **Presets** drop down menu, set the value for **Cluster Configuration** to **Single Node Cluster**.
 
 :::info
 
-    The preset for 'Single Node Cluster' in the rook-ceph pack implies that a single is worker node is used, not that the Kubernetes Control
-    Plane and workloads use a single node.
+  The preset for 'Single Node Cluster' in the rook-ceph pack implies that a single is worker node is used, not that the Kubernetes Control
+  Plane and workloads use a single node.
 
 :::
 
-    Search the text editor for `replica` and change all values for **replicas** and **size** to `1`.
+  Search the text editor for `replica` and change all values for **replicas** and **size** to `1`.
 
-    Example code block
+  Example code block
 
 ```yaml
     cephBlockPools:
@@ -221,55 +213,54 @@ Select **Next layer**.
         size: 1
 ```
 
-    Select **Confirm**.
+Select **Confirm**.
 
-12. The infrastructure layers of your Cluster Profile are now complete. You need to add some additional layers to deploy
-    VMO and supporting services.
+The infrastructure layers of your Cluster Profile are now complete. You need to add some additional layers to deploy VMO and supporting services.
 
-13. Select **Add New Pack**.
+Select **Add New Pack**.
 
-14. Search for metallb and select the **MetalLB (Helm) 0.14.9** pack from the Palette Registry (OCI).
+Search for metallb and select the **MetalLB (Helm) 0.14.9** pack from the Palette Registry (OCI).
 
-15. Select **Values**.
+Select **Values**.
 
-    MetalLB needs a range of routable IP Addresses. Locate the configuration block containing the **addreses:** value.
-    The value for this field can be either an IP Address range. Example: 192.168.40.0-192.168.40.10, or a subnet using
-    cidr notation. Example 192.168.1.0/24.
+MetalLB needs a range of routable IP Addresses. Locate the configuration block containing the **addreses:** value.
+The value for this field can be either an IP Address range. Example: 192.168.40.0-192.168.40.10, or a subnet using
+cidr notation. Example 192.168.1.0/24.
 
-    These IP addresses must be reserved from the subnet connected to your MAAS servers. Reserve these addresses in your
-    MAAS console or modify the DHCP scope for your environment if needed.
+These IP addresses must be reserved from the subnet connected to your MAAS servers. Reserve these addresses in your
+MAAS console or modify the DHCP scope for your environment if needed.
 
 ![Image of the configuration lines where Pod and Services Subnets are set.](/tutorials/deploy-vmo-maas/tutorials_vmo_vmo-maas_metallb-ips.webp)
 
-    Select **Confirm & Create**.
+Select **Confirm & Create**.
 
-16. Select **Add New Pack**.
+Select **Add New Pack**.
 
-17. Search for and select the **Virtual Machine Orchestrator** pack from the Palette Registry (OCI).
+Search for and select the **Virtual Machine Orchestrator** pack from the Palette Registry (OCI).
 
-    Set the **Pack Version** to **4.6.3** and select **Confirm Changes**.
+Set the **Pack Version** to **4.6.3** and select **Confirm Changes**.
 
-    VMO has two different connectivity options, Proxied and Direct.
+VMO has two different connectivity options, Proxied and Direct.
 
-    | Connectivity Mode | Description                                                                                                                                                                                                                                                                                                                       |
-    | ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | Proxied           | Communications between your Palette tenant and the VMO dashboard utilize Spectro Proxy services in your cluster. This method is commonly used in environments with high security requirements, such as air gapped environments. If the Spectro Proxy services is not installed in your cluster, the VMO pack installs it for you. |
-    | Direct            | This mode is intended for use in an environment with no access restrictions. Communications to the cluster are open and reachable from your corporate networks. This mode will configure the MetallB load balancer to allow ingress to VMO services.                                                                              |
+| Connectivity Mode | Description                                                                                                                                                                                                                                                                                                                       |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Proxied           | Communications between your Palette tenant and the VMO dashboard utilize Spectro Proxy services in your cluster. This method is commonly used in environments with high security requirements, such as air gapped environments. If the Spectro Proxy services is not installed in your cluster, the VMO pack installs it for you. |
+| Direct            | This mode is intended for use in an environment with no access restrictions. Communications to the cluster are open and reachable from your corporate networks. This mode will configure the MetallB load balancer to allow ingress to VMO services.                                                                              |
 
-    For more information on the Spectro proxy, visit the
-    [Official Spectro Proxy documentation page](/integrations/spectro-proxy.mdx)
+For more information on the Spectro proxy, visit the
+[Official Spectro Proxy documentation page](/integrations/spectro-proxy.mdx)
 
-    Select the **Properties** icon. Select **Proxied**.
+Select the **Properties** icon. Select **Proxied**.
 
-    The Virtual Machine Orchestrator pack contains prerequisite CRD's for subsequent layers configurations. The
-    **Install Order** field allows you to control the installation order of your packs by using numerical values. The
-    install order value defaults to `0` which implies top priority. The higher the value is, the lower the install
-    priority is.
+The Virtual Machine Orchestrator pack contains prerequisite CRD's for subsequent layers configurations. The
+**Install Order** field allows you to control the installation order of your packs by using numerical values. The
+install order value defaults to `0` which implies top priority. The higher the value is, the lower the install
+priority is.
 
-    Set the **Install Order** value to `10`.
+Set the **Install Order** value to `10`.
 
-    Select the **Values** icon. Remove all configurations in the text editor iFrame and paste in the configuration
-    below.
+Select the **Values** icon. Remove all configurations in the text editor iFrame and paste in the configuration
+below.
 
 ```yaml
 pack:
@@ -969,19 +960,19 @@ vlanFiltering:
 
 :::
 
-    Select **Confirm & Create**.
+Select **Confirm & Create**.
 
-18. Next, the VM deployment templates, data volumes containing OS Images, and storage profiles available in VMO are
-    created. These configurations can be customized, allowing you control of the OS images, Image repositories, storage,
-    and VM configurations.
+Next, the VM deployment templates, data volumes containing OS Images, and storage profiles available in VMO are
+created. These configurations can be customized, allowing you control of the OS images, Image repositories, storage,
+and VM configurations.
 
-    Select **Add Manifest**.
+Select **Add Manifest**.
 
-19. Name the new layer **vmo-extras**. Set the **Install Order** field to 20 to ensure these configurations apply after
-    the Virtual Machine Orchestrator pack is installed. Select **New manifest** and name the manifest
-    **vmo-extras-manifest**. Select the blue check mark.
+Name the new layer **vmo-extras**. Set the **Install Order** field to 20 to ensure these configurations apply after
+the Virtual Machine Orchestrator pack is installed. Select **New manifest** and name the manifest
+**vmo-extras-manifest**. Select the blue check mark.
 
-20. Copy the below YAML config and paste it in the text editor window.
+Copy the below YAML config and paste it in the text editor window.
 
 :::info
 
@@ -1134,6 +1125,16 @@ spec:
 </TabItem>
 
 <TabItem label="Terraform" value="Terraform Workflow">
+
+#### Clone GitHub Repository
+
+This tutorial has pre-built Terraform scripts that you will use to create your VMO MAAS cluster and deploy a VM to it.
+
+Clone the Spectro Cloud Terraform tutorial repository.
+
+`git clone https://github.com/spectrocloud/tutorials`
+
+The directory containing the files you will use in this tutorial is _/terraform/vmo-cluster_.
 
 #### Update terraform.tfvars
 
@@ -1312,25 +1313,23 @@ to match your environments requirements.
 
 <TabItem label="UI" value="UI Workflow">
 
-1.  Log in to [Palette](https://console.spectrocloud.com).
+Log in to [Palette](https://console.spectrocloud.com).
 
-2.  From the left Main Menu, select **Clusters**. Select **Add New Cluster**.
+From the left Main Menu, select **Clusters**. Select **Add New Cluster**.
 
-3.  In the **Data Center** section, select **MAAS**. In the bottom-right corner, select **Start MAAS Configuration**.
+In the **Data Center** section, select **MAAS**. In the bottom-right corner, select **Start MAAS Configuration**.
 
-4.  Provide basic cluster information: **Cluster name**, **Description**, and **Tags**. Select the PCG deployed in your
-    MAAS environment from the **Cloud Account** drop down menu. Select **Next**.
+Provide basic cluster information: **Cluster name**, **Description**, and **Tags**. Select the PCG deployed in your MAAS environment from the **Cloud Account** drop down menu. Select **Next**.
 
-5.  Select **Add Cluster Profile**.
+Select **Add Cluster Profile**.
 
-6.  Locate and select the cluster profile you created in the `Create a VMO Cluster Profile` section. Select **Confirm**.
+Locate and select the cluster profile you created in the `Create a VMO Cluster Profile` section. Select **Confirm**.
 
-7.  The profile layers displayed reflect what you defined during cluster profile creation. Review and override pack
-    parameters as necessary. Select **Next**.
+The profile layers displayed reflect what you defined during cluster profile creation. Review and override packparameters as necessary. Select **Next**.
 
-8.  Select your target MAAS domain from the **Domain drop-down Menu** and select **Next**.
+Select your target MAAS domain from the **Domain drop-down Menu** and select **Next**.
 
-9.  Configure the control plane and worker node pools using the sections below.
+Configure the control plane and worker node pools using the sections below.
 
 ##### Control Plane Pool Configuration
 
@@ -1364,30 +1363,29 @@ impact the deployment and how you might use them in a production deployment.
 
     Select **Next**.
 
-10. The **Optional cluster settings** screen is displayed. VMO requires permissions to be granted to users as well as
-    the VMO service account.
+The **Optional cluster settings** screen is displayed. VMO requires permissions to be granted to users as well as the VMO service account.
 
-    Select **RBAC**.
+Select **RBAC**.
 
-    Select **Add New Binding** and enter information as instructed in the table below.
+Select **Add New Binding** and enter information as instructed in the table below.
 
-    | Field             | Instruction                                                                                                                |
-    | ----------------- | -------------------------------------------------------------------------------------------------------------------------- |
-    | Cluster Role Name | For this tutorial, use the `cluster-admin` role.                                                                           |
-    | Subject Type      | Set this value to `user`.                                                                                                  |
-    | Subject Name      | The VMO cluster you created is set to use Palette for OIDC. In this field, enter the ID you use when logging into Palette. |
+| Field             | Instruction                                                                                                                |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| Cluster Role Name | For this tutorial, use the `cluster-admin` role.                                                                           |
+| Subject Type      | Set this value to `user`.                                                                                                  |
+| Subject Name      | The VMO cluster you created is set to use Palette for OIDC. In this field, enter the ID you use when logging into Palette. |
 
-    Select **Add Subject** to create another binding. Enter the information as instructed in the table below.
+Select **Add Subject** to create another binding. Enter the information as instructed in the table below.
 
-    | Field             | Instruction                          | Description                                                                                                                                                           |
-    | ----------------- | ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | Subject Type      | Set this value to _Service Account_  | Identifies the type of resource to map to the Cluster Role                                                                                                            |
-    | Subject Name      | Enter `virtual-machine-orchestrator` | This value is the name of the service account that is granted permissions to access the VM-dashboard. This service account is created when the VMO pack is installed. |
-    | Subject Namespace | Enter `vm-dashboard`                 | This is the namespace the service account is granted access to.                                                                                                       |
+| Field             | Instruction                          | Description                                                                                                                                                           |
+| ----------------- | ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Subject Type      | Set this value to _Service Account_  | Identifies the type of resource to map to the Cluster Role                                                                                                            |
+| Subject Name      | Enter `virtual-machine-orchestrator` | This value is the name of the service account that is granted permissions to access the VM-dashboard. This service account is created when the VMO pack is installed. |
+| Subject Namespace | Enter `vm-dashboard`                 | This is the namespace the service account is granted access to.                                                                                                       |
 
-    Select **Confirm**.
+Select **Confirm**.
 
-    Select **Validate**.
+Select **Validate**.
 
 ![Image of the configured Cluster Role Bindings](/tutorials/deploy-vmo-maas/tutorials_vmo_vmo-maas_Configure-RBAC.webp)
 
@@ -1399,7 +1397,7 @@ standards when configuring RBAC for your cluster. If no clear standards exist, w
 
 :::
 
-11. Select **Finish Configuration** to begin deployment of your cluster.
+Select **Finish Configuration** to begin deployment of your cluster.
 
 </TabItem>
 
@@ -1461,23 +1459,20 @@ is necessary.
 
 <TabItem label="UI" value="UI Workflow">
 
-1. Log in to [Palette](https://console.spectrocloud.com).
+Log in to [Palette](https://console.spectrocloud.com).
 
-2. From the left Main Menu, select **Clusters**.
+From the left Main Menu, select **Clusters**.
 
-3. Select the cluster you deployed in the `Deploy a VMO Cluster with the Palette UI` section.
+Select the cluster you deployed in the `Deploy a VMO Cluster with the Palette UI` section.
 
-4. Select the **Virtual Machines** tab. If the **Virtual Machines** tab is not displayed, review the RBAC configuration
-   in the _Deploy a VMO Cluster with the Palette UI_ section and ensure your user account and the VMO service account is
-   configured as instructed.
+Select the **Virtual Machines** tab. If the **Virtual Machines** tab is not displayed, review the RBAC configuration in the _Deploy a VMO Cluster with the Palette UI_ section and ensure your user account and the VMO service account is
+configured as instructed.
 
-5. Select the **Virtual Machines** namespace from the **Namespace** drop down menu. This value is used as the target
-   deployment namespace in your VM manifest. Select **New Virutal Machine**.
+Select the **Virtual Machines** namespace from the **Namespace** drop down menu. This value is used as the target deployment namespace in your VM manifest. Select **New Virutal Machine**.
 
-6. Select the **Ubuntu 22.04** template.
+Select the **Ubuntu 22.04** template.
 
-   The **VM settings** page allows you to customize basic VM configurations. Set the values as instructed in the table
-   below. Select **Next**.
+The **VM settings** page allows you to customize basic VM configurations. Set the values as instructed in the table below. Select **Next**.
 
 | Configuration                         | Value         | Description                                                                                                                                                                                                                                                                                                                                                                     |
 | ------------------------------------- | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -1495,9 +1490,9 @@ VM deployments.
 
 :::
 
-7. Select **Next**.
+Select **Next**.
 
-8. Select **Create Virtual Machine**.
+Select **Create Virtual Machine**.
 
 </TabItem>
 
@@ -1535,43 +1530,43 @@ Execute the `terraform apply` command to create the VM in your VMO Cluster.
 
 ### Deploy the Application
 
-1. Log in to [Palette](https://console.spectrocloud.com).
+Log in to [Palette](https://console.spectrocloud.com).
 
-2. From the left Main Menu, select **Clusters**.
+From the left Main Menu, select **Clusters**.
 
-3. Select the cluster you deployed in the `Deploy a VMO Cluster with the Palette UI` section.
+Select the cluster you deployed in the `Deploy a VMO Cluster with the Palette UI` section.
 
-4. Select the **Virtual Machines** tab. If the **Virtual Machines** tab is not displayed, review the RBAC configuration
-   in the _Deploy a VMO Cluster with the Palette UI_ section and ensure your user account and the VMO service account is
-   configured as instructed.
+Select the **Virtual Machines** tab. If the **Virtual Machines** tab is not displayed, review the RBAC configuration
+in the _Deploy a VMO Cluster with the Palette UI_ section and ensure your user account and the VMO service account is
+configured as instructed.
 
-5. Select the **Virtual Machines** namespace from the **Namespace** drop down menu. Select the VM you created in the
-   Deploy a Virtual Machine section.
+Select the **Virtual Machines** namespace from the **Namespace** drop down menu. Select the VM you created in the
+Deploy a Virtual Machine section.
 
-6. Select the **Open web console** option.
+Select the **Open web console** option.
 
-7. Login to your VM with the following user name and password.
+Login to your VM with the following user name and password.
 
 | User Name | Password |
 | --------- | -------- |
 | ubuntu    | spectro  |
 
-8. Execute the `docker version` command to confirm Docker was successfully installed by cloud init.
+Execute the `docker version` command to confirm Docker was successfully installed by cloud init.
 
-9. Next, you need to pull and run the `Hello Universe` container.
+Next, you need to pull and run the `Hello Universe` container.
 
-   Execute `docker run -d --restart=always -p 9080:8080 ghcr.io/spectrocloud/hello-universe:1.2.0`.
+Execute `docker run -d --restart=always -p 9080:8080 ghcr.io/spectrocloud/hello-universe:1.2.0`.
 
-   Docker pulls the specified container image from the repository if a local copy is not present. Once the image is
-   pulled, docker starts the container.
+Docker pulls the specified container image from the repository if a local copy is not present. Once the image is
+pulled, docker starts the container.
 
-10. In Palette, open the **Cluster Overview** page for the cluster you built. Select the download link for your clusters
-    admin kubeconfig file.
+In Palette, open the **Cluster Overview** page for the cluster you built. Select the download link for your clusters
+admin kubeconfig file.
 
 ![Image of the admin kubeconfig link](/tutorials/deploy-vmo-maas/tutorials_vmo-mass_admin-kubeconfig.webp)
 
-11. Open a terminal on your workstation. Update the command below to point to the location of the kubeconfig file you
-    downloaded. The example shows kubeconfig file being sourced from the default download folder on a MAC system.
+Open a terminal on your workstation. Update the command below to point to the location of the kubeconfig file you
+downloaded. The example shows kubeconfig file being sourced from the default download folder on a MAC system.
 
 ```shell
 
@@ -1598,15 +1593,15 @@ Server Version: v1.32.2
 
 ```
 
-13. To access your app, you must create a service in Kubernetes. The service configures MetalLB to provide ingress
-    access to your Kubernetes cluster by mapping a network port on the host to the network port your app is listening on
-    in the cluster.
+To access your app, you must create a service in Kubernetes. The service configures MetalLB to provide ingress
+access to your Kubernetes cluster by mapping a network port on the host to the network port your app is listening on
+in the cluster.
 
 Once the connection passes through MetalLB, the Kubernetes service itself acts like a load balancer inside your cluster.
 Since pods dynamically scale, the service keeps track of all your app pods using a label selector. In this tutorial, the
 label `kubevirt.io/domain: hellouni` is used to uniquely identify pods running the `hello-universe` app.
 
-    Execute the command below to create the Kubernetes service for the app.
+Execute the command below to create the Kubernetes service for the app.
 
 ```shell
 kubectl apply -f - <<EOF
