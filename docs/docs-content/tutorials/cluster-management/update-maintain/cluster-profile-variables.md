@@ -21,7 +21,7 @@ some may not be good candidates due to strict restrictions on the value. Refer t
 [limitations](https://docs.spectrocloud.com/profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/#limitations)
 section for further information on cluster profile variable definition.
 
-In this tutorial, you will learn how to apply cluster profile variables using Palette's UI and Terraform workflows.
+In this tutorial, you will learn how to apply cluster profile variables using [Palette's UI ](#create-profile-with-variables-ui-workflow) and [Terraform](#create-profile-with-variables-terraform-workflow) workflows.
 While the tutorial will use Amazon Web Services (AWS), you can also use the same steps to deploy to Microsoft Azure or
 Google Cloud Platform (GCP).
 
@@ -36,24 +36,52 @@ Google Cloud Platform (GCP).
 
 ## Create Profile with Variables (UI Workflow)
 
-<!--  -->
-<!-- Ask about versioning and how to use 1.0.0 & 1.1.0 -->
+Log into [Palette](https://console.spectrocloud.com/). Navigate to **Profiles** and select **Add Cluster Profile**.
+Leave the default value for the version and configure your profile with the following packs.
 
-Log into [Palette](https://console.spectrocloud.com/). Navigate to **Profiles** and select **Add Cluster Profile**. The
-version number of a given profile must be unique and use the semantic versioning format major.minor.patch. If you do not
-specify a version for your cluster profile, it will default to **1.0.0**. Configure your profile with the following
-packs.
+<!-- prettier-ignore-start -->
 
-<!--  -->
-<!-- ask adelina for help on versionedlinks for each pack -->
+<Tabs groupId="tutorial-packs">
+
+<TabItem label="AWS" value="AWS Packs">
 
     | Pack | Version |
-    | ----------------- | --------- |
-    | Ubuntu | 22.x |
-    | Palette eXtended Kubernetes | 1.30.x |
-    | Calico | 3.29.2 |
-    | Amazon EBS CSI | 1.41.x |
-    | Wordpress Chart | 6.4.3 |
+    | --------- | --------- |
+    | <VersionedLink text="Ubuntu" url="/integrations/packs/?pack=ubuntu-aws" /> | 22.x |
+    | <VersionedLink text="Palette eXtended Kubernetes" url="/integrations/packs/?pack=kubernetes" /> | 1.30.x |
+    | <VersionedLink text="Calico" url="/integrations/packs/?pack=cni-calico" />| 3.29.2 |
+    | <VersionedLink text="Amazon EBS CSI" url="/integrations/packs/?pack=csi-aws-ebs" />| 1.41.x |
+    | <VersionedLink text="WordPress" url="/integrations/packs/?pack=wordpress-chart" /> | 6.4.3 |
+
+</TabItem>
+
+<TabItem label="Azure" value="Azure Packs">
+
+    | Pack | Version |
+    | --------- | --------- |
+    | <VersionedLink text="Ubuntu" url="/integrations/packs/?pack=ubuntu-azure" /> | 22.x |
+    | <VersionedLink text="Palette eXtended Kubernetes" url="/integrations/packs/?pack=kubernetes" /> | 1.30.x |
+    | <VersionedLink text="Calico" url="/integrations/packs/?pack=cni-calico-azure" />| 3.29.2 |
+    | <VersionedLink text="Azure Disk" url="/integrations/packs/?pack=csi-azure" />| 1.41.x |
+    | <VersionedLink text="WordPress" url="/integrations/packs/?pack=wordpress-chart" /> | 6.4.3 |
+
+</TabItem>
+
+<TabItem label="GCP" value="GCP Packs">
+
+    | Pack | Version |
+    | --------- | --------- |
+    | <VersionedLink text="Ubuntu" url="/integrations/packs/?pack=ubuntu-gcp" /> | 22.x |
+    | <VersionedLink text="Palette eXtended Kubernetes" url="/integrations/packs/?pack=kubernetes" /> | 1.30.x |
+    | <VersionedLink text="Calico" url="/integrations/packs/?pack=cni-calico" />| 3.29.2 |
+    | <VersionedLink text="GCE Persistent Disk CSI" url="/integrations/packs/?pack=csi-gcp-driver" />| 1.41.x |
+    | <VersionedLink text="WordPress" url="/integrations/packs/?pack=wordpress-chart" /> | 6.4.3 |
+
+</TabItem>
+
+</Tabs>
+
+<!-- prettier-ignore-end -->
 
 In [Palette](https://console.spectrocloud.com/), go to your profile and select **{} Variables**. Next select **{} Create
 variable**.
@@ -63,10 +91,10 @@ On the **Create variable** page, fill in the following information.
 | Variable Setting | Value                                                                                                         |
 | ---------------- | ------------------------------------------------------------------------------------------------------------- |
 | **Variable**     | namespace (this is case-sensitive and should use lower-case and underscores)                                  |
-| **Display**      | Wordpress: Namespace                                                                                          |
-| **Description**  | Enter a new namespace for the Wordpress Pack                                                                  |
-| **Forma**        | Select String from the drop-down                                                                              |
-| **Default**      | set to enable and in the box enter "namespace" (the Wordpress pack normally uses wordpress for the namespace) |
+| **Display**      | WordPress: Namespace                                                                                          |
+| **Description**  | Enter a new namespace for the WordPress Pack                                                                  |
+| **Format**       | Select String from the drop-down                                                                              |
+| **Default**      | set to enable and in the box enter "namespace" (the WordPress pack normally uses wordpress for the namespace) |
 
 Click **Create** to save your cluster profile variable options.
 
@@ -112,8 +140,8 @@ ensure you click **Create**.
 | Variable Setting | Value                                        |
 | ---------------- | -------------------------------------------- |
 | **Variable**     | wordpress_replica                            |
-| **Display name** | Wordpress: Replica Count                     |
-| **Description**  | The number of replicas for the Wordpress app |
+| **Display name** | WordPress: Replica Count                     |
+| **Description**  | The number of replicas for the WordPress app |
 | **Format**       | Number                                       |
 | **Default**      | 1                                            |
 
@@ -122,12 +150,12 @@ ensure you click **Create**.
 | Variable Setting  | Value                              |
 | ----------------- | ---------------------------------- |
 | **Variable**      | wordpress_port                     |
-| **Display name**  | Wordpress: New HTTP Wordpress port |
-| **Description**   | Set a new port for Wordpress HTTP  |
+| **Display name**  | WordPress: New HTTP WordPress port |
+| **Description**   | Set a new port for WordPress HTTP  |
 | **Format**        | Number                             |
 | **Default value** | set to enable and enter "80"       |
 
-Now that your variables are created you can then add them to the Wordpress manifest YAML. For each variable, copy it to
+Now that your variables are created you can then add them to the WordPress manifest YAML. For each variable, copy it to
 the clipboard and add it to the appropriate location.
 
 | YAML line location     | Line number in Palette Editor | Variable to add                          |
@@ -147,8 +175,8 @@ In [Palette](https://console.spectrocloud.com/), select your profile and use the
 will take a few minutes to deploy.
 
 Select **Workloads** tab. Then, select **Deployments** and filter for **wordpress**. There should be three pods
-displayed similar to the following screenshot: one will be for the MariaDB, one for Wordpress database memory cache and
-the Wordpress web server. This is the default deployment behavior for the Wordpress pack.
+displayed similar to the following screenshot: one will be for the MariaDB, one for WordPress database memory cache and
+the WordPress web server. This is the default deployment behavior for the WordPress pack.
 
 <!-- image here -->
 
@@ -156,13 +184,13 @@ In [Palette](https://console.spectrocloud.com/), select your profile and use the
 version to **1.1.0**. Choose **Review & Save**. On the **Changes Summary** page, select **Review changes in Editor**.
 
 Select **{} Profile variables changes** and open the **Review Update Changes**. Select your profile and enter in new
-values for each variable:
+values for each variable.
 
 | Variable Name                | New Value          |
 | ---------------------------- | ------------------ |
-| **Wordpress: Replica Count** | `3`                |
-| **Wordpress: HTTP Port**     | `9090`             |
-| **Wordpress: Namespace**     | `new-wordpress-ns` |
+| **WordPress: Replica Count** | `3`                |
+| **WordPress: HTTP Port**     | `9090`             |
+| **WordPress: Namespace**     | `new-wordpress-ns` |
 
 <!--  -->
 <!-- Redo image -->
@@ -176,16 +204,16 @@ cluster completes the **Addon deployment** step.
 
 Select the **Overview** tab. Click on the `:9090` port to launch the default Wordpress application.
 
-![Image that shows new port available for Wordpress](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-validate-overview.webp)
+![Image that shows new port available for WordPress](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-validate-overview.webp)
 
 Select the **Workloads** tab. Then, select **Namespaces**. Refresh the page
 
-![Image that shows new namespace available for Wordpress](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-validate-namespace.webp)
+![Image that shows new namespace available for WordPress](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-validate-namespace.webp)
 
-Select the **Workloads** tab. Then, select **Pods**. Refresh the page and then filter for **new-wordpress-ns**
-namespace. Three additional Wordpress web server pods appear in the new Wordpress namespace, `new-wordpress-ns`.
+Select the **Workloads** tab. Then, select **Pods**. Refresh the page and then filter for **new-WordPress-ns**
+namespace. Three additional WordPress web server pods appear in the new WordPress namespace, `new-wordpress-ns`.
 
-![Image that shows new replicas in new namespace for Wordpress](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-validate-replica.webp)
+![Image that shows new replicas in new namespace for WordPress](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-validate-replica.webp)
 
 ### Cleanup
 
@@ -228,23 +256,23 @@ profile_variables {
       name          = "wordpress_replica"
       display_name  = "Number of replicas"
       format        = "number"
-      description   = "This is the number of replicas to deploy for Wordpress"
+      description   = "This is the number of replicas to deploy for WordPress"
       default_value = var.wordpress_replica
       required      = true
     }
     variable {
       name          = "wordpress_namespace"
-      display_name  = "Wordpress: Namespace"
+      display_name  = "WordPress: Namespace"
       format        = "string"
-      description   = "Enter a new namespace for the Wordpress pack"
+      description   = "Enter a new namespace for the WordPress pack"
       default_value = var.wordpress_namespace
       required      = true
     }
     variable {
       name          = "wordpress_port"
-      display_name  = "Wordpress: Port"
+      display_name  = "WordPress: Port"
       format        = "number"
-      description   = "Set a new port for Wordpress HTTP"
+      description   = "Set a new port for WordPress HTTP"
       default_value = var.wordpress_port
       is_sensitive  = true
       required      = true
@@ -253,7 +281,7 @@ profile_variables {
 ```
 
 Review the two files in the manifests folder. `wordpress-chart-default.yaml` contains the default configuration for the
-Wordpress Chart application and `wordpress-chart-variables.yaml` has the following three variables defined in it.
+WordPress Chart application and `wordpress-chart-variables.yaml` has the following three variables defined in it.
 
 | Manifests file                            | YAML line location     | Variable to add                            |
 | ----------------------------------------- | ---------------------- | ------------------------------------------ |
@@ -269,9 +297,9 @@ With the variables in place in the YAML file, you can then modify their values i
 ##############################
 # Application Configuration
 ##############################
-wordpress_replica   = "REPLACE ME"           # The number of pods to be created for Wordpress.
-wordpress_namespace = "REPLACE ME"           # The namespace to be created for Wordpress.
-wordpress_port      = "REPLACE ME"           # The port to be created for HTTP for Wordpress.
+wordpress_replica   = "REPLACE ME"           # The number of pods to be created for WordPress.
+wordpress_namespace = "REPLACE ME"           # The namespace to be created for WordPress.
+wordpress_port      = "REPLACE ME"           # The port to be created for HTTP for WordPress.
 ```
 
 Additionally, you will need to put in the cloud specific info. If you are using either Microsoft Azure or Google Cloud
@@ -355,13 +383,13 @@ cluster profile named `aws-profile-variables-tf`. Click on the cluster profile t
 Use the **drop-down Menu** to set the profile to version **1.1.0**. Choose **Review & Save**. On the **Changes
 Summary**, select **Review changes in Editor**.
 
-Select **{} Profile variables changes** and open the Running/New configuration. Enter in new values for each variable:
+Select **{} Profile variables changes** and open the Running/New configuration. Enter in new values for each variable.
 
 | Variable Name                | New Value          |
 | ---------------------------- | ------------------ |
-| **Wordpress: Replica Count** | `3`                |
-| **Wordpress: HTTP Port**     | `9090`             |
-| **Wordpress: Namespace**     | `new-wordpress-ns` |
+| **WordPress: Replica Count** | `3`                |
+| **WordPress: HTTP Port**     | `9090`             |
+| **WordPress: Namespace**     | `new-wordpress-ns` |
 
 ![Image that shows how to copy and paste variable, then save it in the YAML file](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-update-variables.webp)
 
@@ -370,18 +398,18 @@ cluster completes the **Addon deployment** step.
 
 ![Image that shows how to copy and paste variable, then save it in the YAML file](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-addon-deployment-update.webp)
 
-Select the **Overview** tab. Click on the `:9090` port to launch the default Wordpress application.
+Select the **Overview** tab. Click on the `:9090` port to launch the default WordPress application.
 
-![Image that shows new port available for Wordpress](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-validate-overview.webp)
+![Image that shows new port available for WordPress](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-validate-overview.webp)
 
 Select the **Workloads** tab. Then, select **Namespaces**. Refresh the page
 
-![Image that shows new namespace available for Wordpress](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-validate-namespace.webp)
+![Image that shows new namespace available for WordPress](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-validate-namespace.webp)
 
 Select the **Workloads** tab. Then, select **Pods**. Refresh the page and then filter for **new-wordpress-ns**
-namespace. Three additional Wordpress web server pods appear in the new Wordpress namespace, `new-wordpress-ns`.
+namespace. Three additional WordPress web server pods appear in the new WordPress namespace, `new-wordpress-ns`.
 
-![Image that shows new replicas in new namespace for Wordpress](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-validate-replica.webp)
+![Image that shows new replicas in new namespace for WordPress](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-validate-replica.webp)
 
 ### Terraform Cleanup
 
