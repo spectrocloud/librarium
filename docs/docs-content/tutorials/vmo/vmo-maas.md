@@ -10,7 +10,7 @@ category: ["tutorial"]
 
 # Introduction to Palette Virtual Machine Orchestrator
 
-In this tutorial you deploy a VM using Palette Virtual Machine Orchestrator (VMO). You will learn about the components
+In this tutorial, you will deploy a VM using Palette Virtual Machine Orchestrator (VMO). You will learn about the components
 that make up VMO, how to create and customize them for a Canonical MAAS VMO cluster deployment, and how to customize and
 deploy a VM.
 
@@ -40,13 +40,13 @@ VMO is supported in the following environments:
 
 - MAAS Datacenter environment.
 
-- Two MAAS machines with a minimum spec of
+- Two MAAS machines with the following minimum hardware requirements:
 
-  - 8 CPU
+  - 8 CPU Cores
   - 32 GB RAM
   - 250 GB Storage (Worker node must have 2 disks)
 
-- Two routable, static IP addresses from your MAAS environment's network.
+- Two routable, static IP addresses available in your MAAS environment's network.
 
 - A MAAS user with necessary permissions.
 
@@ -54,53 +54,11 @@ VMO is supported in the following environments:
 
 - An existing [MAAS Private Cloud Gateway (PCG)](/clusters/pcg/deploy-pcg/maas.md) in your MAAS environment.
 
-- Basic knowledge of containers
 
-- [kubectl](https://kubernetes.io/docs/tasks/tools/) installed locally
-
-</TabItem>
-
-<TabItem label="Terraform" value="Terraform Workflow">
-
-- A Palette account with tenant admin access.
-
-- MAAS Datacenter environment.
-
-- Two MAAS machines with a minimum spec of
-
-  - 8 CPU
-  - 32 GB RAM
-  - 250 GB Storage (Worker node must have 2 disks)
-
-- Two routable, static IP addresses from your MAAS environment's network.
-
-- A MAAS user with necessary permissions.
-
-  - _ADD PERMISSIONS HERE_
-
-- An existing [MAAS Private Cloud Gateway (PCG)](/clusters/pcg/deploy-pcg/maas.md) in your MAAS environment.
-
-- Basic knowledge of containers
-
-- [kubectl](https://kubernetes.io/docs/tasks/tools/) installed locally
-
-- Clone the GitHub Repository
-
-    This tutorial has pre-built Terraform scripts used use to create your VMO MAAS cluster and deploy a VM to it.
-
-    Clone the Spectro Cloud Terraform tutorial repository.
-
-    `git clone https://github.com/spectrocloud/tutorials`
-
-    The directory containing the files used in this tutorial is _/terraform/vmo-cluster_.
-
-In this section, the Terraform scripts to deploy a new VMO Cluster to your MAAS environment are modified and executed.
+- [kubectl](https://kubernetes.io/docs/tasks/tools/) installed locally.
 
 </TabItem>
 
-</Tabs>
-
-<br />
 
 ## Cluster Profile and Cluster Creation
 
@@ -112,23 +70,23 @@ In this section, the Terraform scripts to deploy a new VMO Cluster to your MAAS 
 
 1.  Log in to [Palette](https://console.spectrocloud.com).
 
-2.  From the left Main Menu, select **Profiles** and select **Add Cluster Profile**.
+2.  From the left main menu, select **Profiles** and select **Add Cluster Profile**.
 
-3.  Enter the name, version number, and any tags you wish to apply to the profile. Set the type value to **full**.
+3.  Enter the name, version number, and any tags you wish to apply to the profile. Set the type value to **Full**.
     Select **Next**.
 
 4.  Select **MAAS** from the **infrastructure provider** column. Select **Next**.
 
 5.  The first profile layer is the OS layer. Your selection is used as the base OS for all nodes in your Kubernetes
-    Cluster. This tutorial uses the _Ubuntu v22.04_ OS image from the _Palette Registry (OCI)_.
+    cluster. This tutorial uses the _Ubuntu v22.04_ OS image from the _Palette Registry (OCI)_.
 
     Select **Ubuntu latest: v22.04**.
 
 6.  Ubuntu requires customizations to be functional in your environment. Select **Values** and paste the configuration
     below into the text editor frame.
 
-    Update the value for **NETWORKS** to the appropriate subnet for your environment. The value you enter must be in
-    CIDR notation and encapsulated in quotes. Example "192.169.0.0/16".
+    Update the value for `NETWORKS` to the appropriate subnet for your environment. The value you enter must be in
+    CIDR notation and encapsulated in quotes. For example, `192.169.0.0/16`.
 
 ```yaml
 kubeadmconfig:
@@ -184,7 +142,7 @@ kubeadmconfig:
     Select **Next layer**.
 
 7. The next profile layer determines the version of Kubernetes your cluster uses. Select **Palette eXtended Kubernetes
-   v1.32.2** from the _Palette Registry (OCI)_.
+   v1.32.2** from the Palette Registry (OCI).
 
 8. Select the **Properties** icon.
 
@@ -210,16 +168,16 @@ kubeadmconfig:
 
     This template contains security configurations that restrict pod actions. In order for the Rook-Ceph Container Storage Interface (CSI) to function properly, the namespace it is deployed to must be excluded from these security configurations.
 
-    Search for **PodSecurity** and update the exceptions value for **namespaces** to include `rook-ceph`.
+    Search for `PodSecurity` and update the exceptions value for `namespaces` to include `rook-ceph`.
 
 ![Image of the pod security namespace exclusion values](/tutorials/deploy-vmo-maas/tutorials_vmo_vmo-maas_podSecurity.webp)
 
     Select **Next layer**
 
-10. The next profile layer defines the Container Network Interface (CNI) your cluster uses. Search for and select
+10. The next profile layer defines the Container Network Interface (CNI) your cluster uses. Select
     **Cilium v1.17.1** from the Palette Registry (OCI).
 
-    Select **Values**
+    Select **Values**.
 
     Cilium requires customizations to work correctly with VMO. From the **Presets** drop down menu, set the value for
     **VMO Compatibility** to **Enable**, and the value for **Cillium Operator** to **For Multi-Node Cluster**.
@@ -231,7 +189,7 @@ kubeadmconfig:
     | cilium.cni.exclusive              | false         | true           | Instructs the cluster to remove all other CNI configuration files.                                 |
     | cilium.socketLB.hostNamespaceOnly | true          | false          | Disables socket level load balancing and moves the function back to the virtual network interface. |
 
-        For more information on these configurations, visit the official Cilium documentation site for [socket load balancers](https://docs.cilium.io/en/latest/network/Kubernetes/kubeproxy-free/#socketlb-host-netns-only) and [CNI configuration adjustments](https://docs.cilium.io/en/latest/network/kubernetes/configuration/#adjusting-cni-configuration).
+        Visit the Cilium documentation site for more information on [socket load balancers](https://docs.cilium.io/en/latest/network/Kubernetes/kubeproxy-free/#socketlb-host-netns-only) and [CNI configuration adjustments](https://docs.cilium.io/en/latest/network/kubernetes/configuration/#adjusting-cni-configuration).
 
 Select **Next layer**.
 
