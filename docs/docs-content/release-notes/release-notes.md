@@ -16,7 +16,7 @@ tags: ["release-notes"]
 ### Bug Fixes
 
 - Fixed an issue that caused [AWS EKS clusters](../clusters/public-cloud/aws/eks.md) configured with private API
-  endpoints to get stuck during during cluster deletion.
+  endpoints to get stuck during cluster deletion.
 - Fixed an issue that prevented [AWS EKS clusters](../clusters/public-cloud/aws/eks.md)
   [node pool customizations](../clusters/public-cloud/aws/eks.md#cloud-configuration-settings) that do not specify an
   Amazon Machine Image (AMI) ID from being created.
