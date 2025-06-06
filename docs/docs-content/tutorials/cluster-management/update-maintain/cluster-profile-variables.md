@@ -21,9 +21,10 @@ some may not be good candidates due to strict restrictions on the value. Refer t
 [limitations](https://docs.spectrocloud.com/profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/#limitations)
 section for further information on cluster profile variable definition.
 
-In this tutorial, you will learn how to apply cluster profile variables using [Palette's UI ](#create-profile-with-variables-ui-workflow) and [Terraform](#create-profile-with-variables-terraform-workflow) workflows.
-While the tutorial will use Amazon Web Services (AWS), you can also use the same steps to deploy to Microsoft Azure or
-Google Cloud Platform (GCP).
+In this tutorial, you will learn how to apply cluster profile variables using
+[Palette's UI ](#create-profile-with-variables-ui-workflow) and
+[Terraform](#create-profile-with-variables-terraform-workflow) workflows. While the tutorial will use Amazon Web
+Services (AWS), you can also use the same steps to deploy to Microsoft Azure or Google Cloud Platform (GCP).
 
 ## Prerequisites
 
