@@ -11,6 +11,26 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## June 10, 2025 - Release 4.6.X
+
+### Bug Fixes
+
+- Fixed an issue that caused system errors after
+  [resetting system administrator passwords](../enterprise-version/system-management/account-management/manage-system-accounts.md#reset-system-administrator-password).
+- Fixed an issue that caused [Azure IaaS](../clusters/public-cloud/azure/create-azure-cluster.md) and
+  [Azure AKS](../clusters/public-cloud/azure/aks.md) clusters configured to use an
+  [Azure Government cloud account](../clusters/public-cloud/azure/azure-cloud.md#add-azure-cloud-account) to fail
+  provisioning.
+- Fixed an issue that cause some [AWS EKS clusters](../clusters/public-cloud/aws/eks.md) with
+  [node pool customizations](../clusters/public-cloud/aws/eks.md#cloud-configuration-settings) to be unnecessarily
+  repaved following a Palette system upgrade.
+- Fixed an issue that allowed both
+  [node pool customizations](../clusters/public-cloud/aws/eks.md#cloud-configuration-settings) and an Amazon Machine
+  Image (AMI) label on [AWS EKS clusters](../clusters/public-cloud/aws/eks.md). Only one of these options is allowed to
+  be configured.
+- Fixed an issue that caused [node pool labels](../clusters/public-cloud/aws/eks.md#assign-an-ami-to-a-node-pool) on
+  [AWS EKS clusters](../clusters/public-cloud/aws/eks.md) to be incorrectly saved on AWS machine pool resources.
+
 ## June 6, 2025 - Release 4.6.34
 
 ### Bug Fixes
