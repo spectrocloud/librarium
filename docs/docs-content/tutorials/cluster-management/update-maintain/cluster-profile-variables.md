@@ -177,7 +177,7 @@ will take a few minutes to deploy.
 
 Select **Workloads** tab. Then, select **Deployments** and filter for **wordpress**. There should be three pods
 displayed similar to the following screenshot: one will be for the MariaDB, one for WordPress database memory cache and
-the WordPress web server. This is the default deployment behavior for the WordPress pack.
+one for the WordPress web server. This is the default deployment behavior for the WordPress pack.
 
 <!-- image here -->
 
@@ -216,7 +216,7 @@ namespace. Three additional WordPress web server pods appear in the new WordPres
 
 ![Image that shows new replicas in new namespace for WordPress](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-validate-replica.webp)
 
-### Cleanup
+### Palette UI Cleanup
 
 Use the following steps to clean up the resources you created for the tutorial.
 
