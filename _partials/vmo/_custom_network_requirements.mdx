@@ -1,0 +1,30 @@
+---
+partial_category: vmo
+partial_name: custom-network-requirements
+---
+
+<details>
+  <summary>Custom Network Requirements</summary>
+<p>
+VMO allows you to define and tag the VLANs your VMs will use. This tutorial configures VMO to operate using untagged VLANs. This configuration may not work in your environment. Modify the values in the network configuration section to match network requirements in your environment.
+
+```yaml
+vlanFiltering:
+  enabled: true
+  namespace: kube-system
+  image:
+    repository: us-docker.pkg.dev/palette-images/palette/virtual-machine-orchestrator/vlan-filtering/ubuntu
+    pullPolicy: IfNotPresent
+    tag: "latest"
+  env:
+    # Which bridge interface to control
+    bridgeIF: "br0"
+    # Beginning of VLAN range to enable
+    allowedVlans: "1"
+    # Set to "true" to enable VLANs on the br0 interface for the host to use itself
+    allowVlansOnSelf: "true"
+    # Beginning of VLAN range to enable for use by the node itself
+    allowedVlansOnSelf: "1"
+```
+</p>
+</details>

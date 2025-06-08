@@ -7,16 +7,7 @@ sidebar_position: 0
 tags: ["vmo", "architecture"]
 ---
 
-The Palette Virtual Machine Orchestrator (VMO) pack consolidates all components that you need to deploy and manage
-Virtual Machines (VMs) alongside containers in a Kubernetes host cluster. You can deploy VMO as an
-[add-on cluster profile](../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-addon-profile.md)
-on top of an existing data center or edge cluster.
-
-![Diagram that explains the architecture behind Palette VMO.](/vm-management_architecture_vmo-architecture.webp)
-
-For more detailed information about the technical architecture of VMO, refer to the
-[Spectro Cloud Resource Center](https://www.spectrocloud.com/resource-center). From the left **Main Menu**, click on the
-"virtual machines" topic to find the latest version of the Palette VMO Reference Architecture.
+<PartialsComponent category="vmo" name="intro-to-vmo" />
 
 ## Palette VMO Components
 
