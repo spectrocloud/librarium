@@ -55,33 +55,20 @@ your Edge hosts come from a trusted source. For more information about content b
 
 ## Embed a Public Key in Edge Artifacts
 
-1. Clone the **CanvOS** repository.
+<PartialsComponent category="palette-edge-canvos-version" name="canvos-version" />
 
-   ```shell
-    git clone https://github.com/spectrocloud/CanvOS.git
-   ```
+5. If you are using a self-hosted instance of Palette and have determined a specific CanvOS version, checkout out the
+   corresponding tag.
 
-2. Change to the **CanvOS/** directory.
-
-   ```shell
-   cd CanvOS
-   ```
-
-3. View the available git tag.
-
-   ```shell
-   git tag
-   ```
-
-4. Check out the latest available tag. This guide uses the tag v4.4.3 as an example.
+   Otherwise, Check out the newest available tag. This guide uses the tag v4.4.3 as an example.
 
    ```
    git checkout v4.4.4
    ```
 
-5. In **CanvOS**, create a file named **.edge_custom_config.yaml**.
+6. In **CanvOS**, create a file named **.edge_custom_config.yaml**.
 
-6. Populate the YAML file with the following content. Replace the value for `base64EncodedValue` with the base64 encoded
+7. Populate the YAML file with the following content. Replace the value for `base64EncodedValue` with the base64 encoded
    value of your public key. You can convert your PEM file to base64 using this command replacing `sample.pem` with your
    filename.
 
@@ -97,7 +84,7 @@ your Edge hosts come from a trusted source. For more information about content b
              description: "This is a public key used for verifying content bundles and cluster definitions." 
    ```
 
-7. In your **.arg** file, add the following parameter `EDGE_CUSTOM_CONFIG` and provide the path to your
+8. In your **.arg** file, add the following parameter `EDGE_CUSTOM_CONFIG` and provide the path to your
    **.edge_custom_config.yaml** file.
 
    ```text {12}
@@ -115,7 +102,7 @@ your Edge hosts come from a trusted source. For more information about content b
     EDGE_CUSTOM_CONFIG=.edge-custom-config.yaml
    ```
 
-8. Finish the rest of the EdgeForge process to build either the installer ISO or provider images. For more information,
+9. Finish the rest of the EdgeForge process to build either the installer ISO or provider images. For more information,
    refer to [Build Installer ISO](./build-installer-iso.md) and [Build Provider Images](./build-provider-images.md).
 
    :::info

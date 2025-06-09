@@ -133,7 +133,7 @@ key that is in the Signature Database (DB). This is important both during instal
    | ------------------ | ----------------------------------------------------------------------------------------------------- | ------------------------------------ |
    | `IS_UKI`           | Determines whether to build a provider image that supports Trusted Boot. You must set this to `true`. | `true`, `false`. Default is `false`. |
    | `K8S_DISTRIBUTION` | Kubernetes distribution.                                                                              | `rke2`                               |
-   | `K8S_VERSION`      | Kubernetes version                                                                                    | Semantic version numbers `x.y.z`     |
+   | `K8S_VERSION`      | Kubernetes version.                                                                                   | Semantic version numbers `x.y.z`     |
    | `OS_DISTRIBUTION`  | OS distribution.                                                                                      | `ubuntu`, `opensuse-leap`, `rhel`.   |
    | `OS_VERSION`       | OS version. This applies to Ubuntu only.                                                              | `23.10`, `24.04`                     |
 

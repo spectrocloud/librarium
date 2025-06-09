@@ -105,31 +105,18 @@ To complete this basic guide, you will need the following items:
 Use the following instructions on your Linux machine to create all the required Edge artifacts with minimal
 customization.
 
-1. Check out the [CanvOS](https://github.com/spectrocloud/CanvOS) GitHub repository containing the starter code.
+<PartialsComponent category="palette-edge-canvos-version" name="canvos-version" />
 
-   ```bash
-   git clone https://github.com/spectrocloud/CanvOS.git
-   ```
+5. If you are using a self-hosted instance of Palette and have determined a specific CanvOS version, checkout out the
+   corresponding tag.
 
-2. Change to the `CanvOS` directory.
-
-   ```bash
-   cd CanvOS
-   ```
-
-3. View the available [git tag](https://github.com/spectrocloud/CanvOS/tags).
-
-   ```bash
-   git tag
-   ```
-
-4. Check out the newest available tag. This guide uses the tag **v4.4.12** as an example.
+   Otherwise, Check out the newest available tag. This guide uses the tag **v4.4.12** as an example.
 
    ```shell
    git checkout v4.4.12
    ```
 
-5. Review the files relevant for this guide.
+6. Review the files relevant for this guide.
 
    - `.arg.template` - A sample `.arg` file that defines arguments to use during the build process.
    - `Dockerfile` - Embeds the arguments and other configurations in the image.
@@ -137,7 +124,7 @@ customization.
    - `earthly.sh` - Script to invoke the `Earthfile`, and generate target artifacts.
    - `user-data.template` - A sample user-data file.
 
-6. Issue the command below to assign an image tag value that will be used when creating the provider images. This guide
+7. Issue the command below to assign an image tag value that will be used when creating the provider images. This guide
    uses the value `palette-learn` as an example. However, you can assign any lowercase and alphanumeric string to the
    `CUSTOM_TAG` argument.
 
@@ -145,7 +132,7 @@ customization.
    export CUSTOM_TAG=palette-learn
    ```
 
-7. Issue the command below to create the `.arg` file containing the custom tag. The remaining arguments in the `.arg`
+8. Issue the command below to create the `.arg` file containing the custom tag. The remaining arguments in the `.arg`
    file will use the default values. For example, `ubuntu` is the default operating system, `demo` is the default tag,
    and [ttl.sh](https://ttl.sh/) is the default image registry.
 
@@ -199,63 +186,63 @@ customization.
    cat .arg
    ```
 
-8. Issue the command below to save your tenant registration token to an environment variable. Replace
+9. Issue the command below to save your tenant registration token to an environment variable. Replace
    `[your_token_here]` with your actual registration token.
 
    ```bash
    export token=[your_token_here]
    ```
 
-9. Use the following command to create the `user-data` file containing the tenant registration token.
+10. Use the following command to create the `user-data` file containing the tenant registration token.
 
-   ```shell
-   cat <<EOF > user-data
-   #cloud-config
+    ```shell
+    cat <<EOF > user-data
+    #cloud-config
 
-   stylus:
-      site:
-        edgeHostToken: $token
+    stylus:
+       site:
+         edgeHostToken: $token
 
-   install:
-      poweroff: true
+    install:
+       poweroff: true
 
-   stages:
-      initramfs:
-      - name: "Core system setup"
-        users:
-          kairos:
-            groups:
-              - admin
-            passwd: kairos
-   EOF
-   ```
+    stages:
+       initramfs:
+       - name: "Core system setup"
+         users:
+           kairos:
+             groups:
+               - admin
+             passwd: kairos
+    EOF
+    ```
 
-   :::warning
+    :::warning
 
-   If you haven't set a default project for the registration token, ensure that you provide the
-   `stylus.site.projectName` parameter with the value `Default` in `user-data`.
+    If you haven't set a default project for the registration token, ensure that you provide the
+    `stylus.site.projectName` parameter with the value `Default` in `user-data`.
 
-   :::
+    :::
 
-   View the newly created `user-data` file to ensure the token is set correctly.
+    View the newly created `user-data` file to ensure the token is set correctly.
 
-   ```bash
-   cat user-data
-   ```
+    ```bash
+    cat user-data
+    ```
 
-   :::tip
+    :::tip
 
-   You can take advantage of the Tech Preview feature to edit user data in Local UI after installation. However, we
-   still recommend you provide user data during EdgeForge for production workloads because this is a Tech Preview
-   feature and not all fields are available for edit in Local UI.
+    You can take advantage of the Tech Preview feature to edit user data in Local UI after installation. However, we
+    still recommend you provide user data during EdgeForge for production workloads because this is a Tech Preview
+    feature and not all fields are available for edit in Local UI.
 
-   :::
+    :::
 
-10. (Optional) If you want to build multiple versions of a provider image using different Kubernetes versions, remove
+11. (Optional) If you want to build multiple versions of a provider image using different Kubernetes versions, remove
     the `K8S_VERSION` argument from the `.arg` file. Open the `k8s_version.json` file in the CanvOS directory. Remove
     the Kubernetes versions that you don't need from the JSON object corresponding to your Kubernetes distribution.
 
-11. Issue the following command to start the build process.
+12. Issue the following command to start the build process.
 
     <Tabs group="earthly">
 
@@ -330,7 +317,7 @@ customization.
       system.osVersion: 22
     ```
 
-12. List the Docker images to review the provider images created. You can identify the provider images by reviewing the
+13. List the Docker images to review the provider images created. You can identify the provider images by reviewing the
     image tag value you used in the `.arg` file's `CUSTOM_TAG` argument.
 
     ```shell
@@ -342,7 +329,7 @@ customization.
     ttl.sh/ubuntu          k3s-1.27.2-v4.4.12-palette-learn       075134ad5d4b   10 minutes ago   4.11GB
     ```
 
-13. To use the provider images in your cluster profile, push them to the image registry mentioned in the `.arg` file.
+14. To use the provider images in your cluster profile, push them to the image registry mentioned in the `.arg` file.
     The current example uses the [ttl.sh](https://ttl.sh/) image registry. This image registry is free to use and does
     not require a sign-up. Images pushed to _ttl.sh_ are ephemeral and will expire after the 24 hrs time limit. Use the
     following commands to push the provider images to the _ttl.sh_ image registry.
@@ -360,21 +347,21 @@ customization.
 
     :::
 
-14. After pushing the provider images to the image registry, open a web browser and log in to
+15. After pushing the provider images to the image registry, open a web browser and log in to
     [Palette](https://console.spectrocloud.com). Ensure you are in the **Default** project scope before creating a
     cluster profile.
 
-15. Navigate to the left **Main Menu** and select **Profiles**. Click on the **Add Cluster Profile** button, and fill
+16. Navigate to the left **Main Menu** and select **Profiles**. Click on the **Add Cluster Profile** button, and fill
     out the required basic information fields to create a cluster profile for Edge.
 
-16. Add the following <VersionedLink text="BYOS Edge OS" url="/integrations/packs/?pack=generic-byoi"/> pack to the OS
+17. Add the following <VersionedLink text="BYOS Edge OS" url="/integrations/packs/?pack=generic-byoi"/> pack to the OS
     layer in the **Profile Layers** section.
 
     | **Pack Type** | **Registry** | **Pack Name** | **Pack Version** |
     | ------------- | ------------ | ------------- | ---------------- |
     | OS            | Public Repo  | BYOS Edge OS  | `1.0.0`          |
 
-17. Replace the cluster profile's BYOOS pack manifest with the following custom manifest so that the cluster profile can
+18. Replace the cluster profile's BYOOS pack manifest with the following custom manifest so that the cluster profile can
     pull the provider image from the ttl.sh image registry.
 
     The `system.xxxxx` attribute values below refer to the arguments defined in the `.arg` file. If you modified the
@@ -425,7 +412,7 @@ customization.
 
     :::
 
-18. Add the following **Palette Optimized K3s** pack to the Kubernetes layer of your cluster profile. Select the k3s
+19. Add the following **Palette Optimized K3s** pack to the Kubernetes layer of your cluster profile. Select the k3s
     version 1.27.x because earlier in this how-to guide, you pushed a provider image compatible with k3s v1.27.2 to the
     ttl.sh image registry.
 
@@ -433,7 +420,7 @@ customization.
     | ------------- | ------------ | --------------------- | ---------------- |
     | Kubernetes    | Public Repo  | Palette Optimized k3s | `1.27.x`         |
 
-19. Add the network layer to your cluster profile, and choose a Container Network Interface (CNI) pack that best fits
+20. Add the network layer to your cluster profile, and choose a Container Network Interface (CNI) pack that best fits
     your needs, such as Calico, Flannel, Cilium, or Custom CNI. For example, you can add the following network layer.
     This step completes the core infrastructure layers in the cluster profile.
 
@@ -441,9 +428,9 @@ customization.
     | ------------- | ------------ | ------------- | ---------------- |
     | Network       | Public Repo  | Calico        | `3.25.x`         |
 
-20. Add add-on layers and manifests to your cluster profile per your requirements.
+21. Add add-on layers and manifests to your cluster profile per your requirements.
 
-21. If there are no errors or compatibility issues, Palette displays the newly created complete cluster profile for
+22. If there are no errors or compatibility issues, Palette displays the newly created complete cluster profile for
     review. Verify the layers you added, and finish creating the cluster profile.
 
 ### Validate
@@ -524,31 +511,18 @@ This guide uses Docker Hub as an example. You can use any other image registry t
 Use the following instructions on your Linux machine to customize the arguments and `Dockerfile` and then create all the
 required Edge artifacts.
 
-1. Check out the [CanvOS](https://github.com/spectrocloud/CanvOS.git) GitHub repository containing the starter code.
+<PartialsComponent category="palette-edge-canvos-version" name="canvos-version" />
 
-```bash
-git clone https://github.com/spectrocloud/CanvOS.git
-```
+5. If you are using a self-hosted instance of Palette and have determined a specific CanvOS version, checkout out the
+   corresponding tag.
 
-2. Change to the `CanvOS` directory.
+   Otherwise, Check out the newest available tag. This guide uses **v4.4.12** tag as an example.
 
-```bash
-cd CanvOS
-```
+   ```shell
+   git checkout v4.4.12
+   ```
 
-3. View the available [git tag](https://github.com/spectrocloud/CanvOS/tags).
-
-```bash
-git tag
-```
-
-4. Check out the newest available tag. This guide uses **v3.4.3** tag as an example.
-
-```shell
-git checkout v4.4.12
-```
-
-5. Review the files relevant for this guide.
+6. Review the files relevant for this guide.
 
    - `.arg.template` - A sample `.arg` file that defines arguments to use during the build process.
    - `Dockerfile` - Embeds the arguments and other configurations in the image.
@@ -556,7 +530,7 @@ git checkout v4.4.12
    - `earthly.sh` - Script to invoke the `Earthfile`, and generate target artifacts.
    - `user-data.template` - A sample user-data file.
 
-6. Review the `.arg` file containing the customizable arguments, such as image tag, image registry, image repository,
+7. Review the `.arg` file containing the customizable arguments, such as image tag, image registry, image repository,
    and OS distribution. The table below shows all arguments, their default value, and allowed values.
 
    | **Argument**       | **Description**                                                                                                                                                                                                                  | **Default Value**                                   | **Allowed Values**                                                                             |
@@ -579,7 +553,7 @@ git checkout v4.4.12
 
    Next, you will customize these arguments to use during the build process.
 
-7. Issue the command below to assign an image tag value that will be used when creating the provider images. This guide
+8. Issue the command below to assign an image tag value that will be used when creating the provider images. This guide
    uses the value `palette-learn` as an example. However, you can assign any lowercase and alphanumeric string to the
    `CUSTOM_TAG` argument.
 
@@ -587,7 +561,7 @@ git checkout v4.4.12
    export CUSTOM_TAG=palette-learn
    ```
 
-8. Use the command below to save the Docker Hub image registry hostname in the `IMAGE_REGISTRY` argument. Before you
+9. Use the command below to save the Docker Hub image registry hostname in the `IMAGE_REGISTRY` argument. Before you
    execute the command, replace `[DOCKER-ID]` in the declaration below with your Docker ID. Your image registry hostname
    must comply with standard DNS rules and may not contain underscores.
 
@@ -595,13 +569,13 @@ git checkout v4.4.12
    export IMAGE_REGISTRY=docker.io/[DOCKER-ID]
    ```
 
-9. Issue the following command to use the openSUSE Leap OS distribution.
+10. Issue the following command to use the openSUSE Leap OS distribution.
 
-   ```bash
-   export OS_DISTRIBUTION=opensuse-leap
-   ```
+    ```bash
+    export OS_DISTRIBUTION=opensuse-leap
+    ```
 
-10. Issue the command below to create the `.arg` file containing the custom tag, Docker Hub image registry hostname, and
+11. Issue the command below to create the `.arg` file containing the custom tag, Docker Hub image registry hostname, and
     openSUSE Leap OS distribution. The `.arg` file uses the default values for the remaining arguments. Refer to
     [Edge Artifact Build Configurations](./arg.md) for all available configuration parameters.
 
@@ -644,11 +618,11 @@ git checkout v4.4.12
 
     :::
 
-11. (Optional) If you want to build multiple versions of a provider image using different Kubernetes versions, remove
+12. (Optional) If you want to build multiple versions of a provider image using different Kubernetes versions, remove
     the `K8S_VERSION` argument from the `.arg` file. Open the `k8s_version.json` file in the CanvOS directory. Remove
     the Kubernetes versions that you don't need from the JSON object corresponding to your Kubernetes distribution.
 
-12. (Optional) This step is only required if your builds occur in a proxied network environment, and your proxy servers
+13. (Optional) This step is only required if your builds occur in a proxied network environment, and your proxy servers
     require client certificates, or if your base image is in a registry that requires client certificates.
 
     You can provide the base-64 encoded certificates in PEM format in the `certs` folder at the root directory of the
@@ -668,7 +642,7 @@ git checkout v4.4.12
 
     :::
 
-13. Use the following command to append the [WireGuard](https://www.wireguard.com/install/) installation instructions to
+14. Use the following command to append the [WireGuard](https://www.wireguard.com/install/) installation instructions to
     the `Dockerfile`. You can install more tools and dependencies and configure the image to meet your needs. Add your
     customizations below the line tagged with the `Add any other image customizations here` comment in the `Dockerfile`.
     Do not edit or add any lines before this tagged comment.
@@ -692,14 +666,14 @@ git checkout v4.4.12
 
     :::
 
-14. Issue the command below to save your tenant registration token to a local variable. Replace `[your_token_here]` with
+15. Issue the command below to save your tenant registration token to a local variable. Replace `[your_token_here]` with
     your actual registration token.
 
     ```bash
     export token=[your_token_here]
     ```
 
-15. Use the following command to create the `user-data` file containing the tenant registration token.
+16. Use the following command to create the `user-data` file containing the tenant registration token.
 
     ```shell
     cat << EOF > user-data
@@ -785,7 +759,7 @@ git checkout v4.4.12
     [Edge Configuration Stages](../../edge-configuration/cloud-init.md) and
     [User Data Parameters](../../edge-configuration/installer-reference.md) documents to learn more.
 
-16. CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. Issue the following command to
+17. CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. Issue the following command to
     start the build process.
 
     <Tabs group="earthly">
@@ -857,7 +831,7 @@ git checkout v4.4.12
       system.osVersion:
     ```
 
-17. List the Docker images to review the provider images created. By default, provider images for all the Palette's
+18. List the Docker images to review the provider images created. By default, provider images for all the Palette's
     Edge-supported Kubernetes versions are created. You can identify the provider images by reviewing the image tag
     value you used in the `.arg` file's `CUSTOM_TAG` argument.
 
@@ -870,7 +844,7 @@ git checkout v4.4.12
     spectrocloud/opensuse-leap   k3s-1.27.2-v4.4.12-palette-learn   2427e3667b2f   24 minutes ago   2.22GB
     ```
 
-18. To use the provider images in your cluster profile, push them to your image registry mentioned in the `.arg` file.
+19. To use the provider images in your cluster profile, push them to your image registry mentioned in the `.arg` file.
     Issue the following command to log in to Docker Hub. Provide your Docker ID and password when prompted.
 
     ```bash
@@ -881,7 +855,7 @@ git checkout v4.4.12
     Login Succeeded
     ```
 
-19. Use the following commands to push the provider images to the Docker Hub image registry you specified. Replace the
+20. Use the following commands to push the provider images to the Docker Hub image registry you specified. Replace the
     `[DOCKER-ID]` and version numbers in the command below with your Docker ID and respective Kubernetes versions that
     the utility created.
 
@@ -889,21 +863,21 @@ git checkout v4.4.12
     docker push docker.io/[DOCKER-ID]/opensuse-leap:k3s-1.27.2-v4.4.12-palette-learn
     ```
 
-20. After pushing the provider images to the image registry, open a web browser and log in to
+21. After pushing the provider images to the image registry, open a web browser and log in to
     [Palette](https://console.spectrocloud.com). Ensure you are in the **Default** project scope before creating a
     cluster profile.
 
-21. Navigate to the left **Main Menu** and select **Profiles**. Click on the **Add Cluster Profile** button, and fill
+22. Navigate to the left **Main Menu** and select **Profiles**. Click on the **Add Cluster Profile** button, and fill
     out the required basic information fields to create a cluster profile for Edge.
 
-22. Add the following <VersionedLink text="BYOS Edge OS" url="/integrations/packs/?pack=generic-byoi"/> pack to the OS
+23. Add the following <VersionedLink text="BYOS Edge OS" url="/integrations/packs/?pack=generic-byoi"/> pack to the OS
     layer in the **Profile Layers** section.
 
     | **Pack Type** | **Registry** | **Pack Name** | **Pack Version** |
     | ------------- | ------------ | ------------- | ---------------- |
     | OS            | Public Repo  | BYOS Edge OS  | `1.0.0`          |
 
-23. Replace the cluster profile's BYOOS pack manifest with the output that was provided to you earlier and that you
+24. Replace the cluster profile's BYOOS pack manifest with the output that was provided to you earlier and that you
     copied.
 
     The `system.xxxxx` attribute values below refer to the arguments defined in the `.arg` file. If you modified the
@@ -954,7 +928,7 @@ git checkout v4.4.12
 
     :::
 
-24. Add the following **Palette Optimized K3s** pack to the Kubernetes layer of your cluster profile. Select the K3s
+25. Add the following **Palette Optimized K3s** pack to the Kubernetes layer of your cluster profile. Select the K3s
     version 1.27.x because earlier in this how-to guide, you pushed a provider image compatible with k3s v1.27.2 to the
     ttl.sh image registry.
 
@@ -962,7 +936,7 @@ git checkout v4.4.12
     | ------------- | ------------ | --------------------- | ---------------- |
     | Kubernetes    | Public Repo  | Palette Optimized K3s | `1.27.x`         |
 
-25. Add the network layer to your cluster profile, and choose a Container Network Interface (CNI) pack that best fits
+26. Add the network layer to your cluster profile, and choose a Container Network Interface (CNI) pack that best fits
     your needs, such as Calico, Flannel, Cilium, or Custom CNI. For example, you can add the following network layer.
     This step completes the core infrastructure layers in the cluster profile.
 
@@ -970,9 +944,9 @@ git checkout v4.4.12
     | ------------- | ------------ | ------------- | ---------------- |
     | Network       | Public Repo  | Calico        | `3.25.x`         |
 
-26. Add add-on layers and manifests to your cluster profile per your requirements.
+27. Add add-on layers and manifests to your cluster profile per your requirements.
 
-27. If there are no errors or compatibility issues, Palette displays the newly created complete cluster profile for
+28. If there are no errors or compatibility issues, Palette displays the newly created complete cluster profile for
     review. Verify the layers you added, and finish creating the cluster profile.
 
 ### Validate

@@ -80,20 +80,12 @@ Palette is not FIPS compliant. If you need a FIPS-compliant solution, you need t
 
 ### Clone CanvOS Repository
 
-1. Clone the [CanvOS](https://github.com/spectrocloud/CanvOS) GitHub repository containing the starter code.
+<PartialsComponent category="palette-edge-canvos-version" name="canvos-version" />
 
-   ```bash
-   git clone https://github.com/spectrocloud/CanvOS.git
-   ```
+5. If you are using a self-hosted instance of Palette and have determined a specific CanvOS version, checkout out the
+   corresponding tag.
 
-2. Change to the **CanvOS/** directory.
-
-   ```bash
-   cd CanvOS
-   ```
-
-3. View the available tags and check out the latest tag or any specific version of your choosing. This guide uses
-   **v4.4.12** as an example.
+   Otherwise, Check out the newest available tag. This guide uses **v4.4.12** as an example.
 
    ```bash
    git tag

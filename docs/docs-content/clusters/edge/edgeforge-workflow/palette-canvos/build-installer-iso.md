@@ -82,25 +82,12 @@ Use the following instructions to build the Edge Installer ISO. The optional ste
 
 ### Clone EdgeForge Repository
 
-1. Clone the **CanvOS** repository.
+<PartialsComponent category="palette-edge-canvos-version" name="canvos-version" />
 
-   ```shell
-    git clone https://github.com/spectrocloud/CanvOS.git
-   ```
+5. If you are using a self-hosted instance of Palette and have determined a specific CanvOS version, checkout out the
+   corresponding tag.
 
-2. Change to the `CanvOS` directory.
-
-   ```shell
-   cd CanvOS
-   ```
-
-3. View the available git tag.
-
-   ```shell
-   git tag
-   ```
-
-4. Check out the latest available tag. This guide uses the tag v4.3.0 as an example.
+   Otherwise, Check out the newest available tag. This guide uses the tag v4.3.0 as an example.
 
    ```
    git checkout v4.3.0
