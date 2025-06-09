@@ -61,14 +61,14 @@ From the left main menu, select **Profiles** > **Add Cluster Profile**.
 Enter the name, version number, and any tags you wish to apply to the profile. Set the type value to **Full**. Select
 **Next**.
 
-The **Cloud Type** screen displays all available options fo automated deployment of Kubernetes clusters. Select **MAAS**
+The **Cloud Type** screen appears with all available options for automated deployment of Kubernetes clusters. Select **MAAS**
 from the **Infrastructure provider** column. Select **Next**.
 
 The first profile layer is the OS layer. This tutorial uses the _Ubuntu v22.04_ OS image from the _Palette Registry (OCI)_.
 
 Select **Ubuntu latest: v22.04**.
 
-Ubuntu requires customizations to support VMO. Select **Values** and paste ßthe configuration below
+Ubuntu requires customizations to support VMO. Select **Values** and paste the following configuration
 into the text editor frame.
 
 Update the value for `NETWORKS` to the appropriate subnet for your environment. The value you enter must be in CIDR
@@ -190,9 +190,8 @@ Kubernetes Control Plane and workloads use a single node.
 
 Search the text editor for `replica` and change all values for **replicas** and **size** to `1`.
 
-Example code block
 
-```yaml
+```yaml title="Example code block"
     cephBlockPools:
   - name: ceph-blockpool
     # see https://github.com/rook/rook/blob/master/Documentation/CRDs/Block-Storage/ceph-block-pool-crd.md#spec for available configuration
