@@ -60,7 +60,7 @@ your Edge hosts come from a trusted source. For more information about content b
 5. If you are using a self-hosted instance of Palette and have determined a specific CanvOS version, checkout out the
    corresponding tag.
 
-   Otherwise, Check out the newest available tag. This guide uses the tag v4.4.3 as an example.
+   Otherwise, Check out the newest available tag. This guide uses the tag v4.4.4 as an example.
 
    ```
    git checkout v4.4.4
