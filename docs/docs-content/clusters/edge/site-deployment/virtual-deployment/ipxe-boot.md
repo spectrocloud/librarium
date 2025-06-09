@@ -30,7 +30,7 @@ same boot artifacts across any number of nodes.
 
 - `govc` is installed on your Linux VM and available.
 
-- Access to a VMware vCenter environment where you can provision new VMs and upload files to datastores. You VMs in
+- Access to a VMware vCenter environment where you can provision new VMs and upload files to datastores. Your VMs in
   vCenter must be able to access the HTTP/HTTPS server you provision.
 
 ## Procedure
@@ -94,8 +94,8 @@ same boot artifacts across any number of nodes.
    ```
 
 7. Download the generic iPXE ISO and upload it to your vCenter datastore. Replace `path/to/datastore/iso` to the vCenter
-   datastore path where you want to upload the ISO. You may need to ensure configure the correct environment variables
-   with credentials to your vCenter environment to use the `govc` command.
+   datastore path where you want to upload the ISO. You may need to configure the correct environment variables with
+   credentials to your vCenter environment to use the `govc` command.
 
    ```bash
    wget https://boot.ipxe.org/ipxe.iso -O ~/ipxe/ipxe.iso
@@ -125,9 +125,16 @@ same boot artifacts across any number of nodes.
 
 10. Finish configuring your VM and power it on.
 
-11. Launch a web console to access your VM. As soon as the "iPXE boot image" screen shows, press **Ctrl+B** to interrupt
-    and enter the iPXE> prompt. The interval you have to press **Ctrl+B** is very short. So make sure to launch the web
-    console as soon as your VM boots and get ready to press the keys.
+11. Open the VM’s console via the vCenter web client to access your VM. As soon as the "iPXE boot image" screen shows,
+    press **Ctrl+B** to interrupt and enter the iPXE> prompt. The interval you have to press **Ctrl+B** is very short.
+    So make sure to launch the web console as soon as your VM boots and get ready to press the keys.
+
+    :::tip
+
+    If the VM does not register **Ctrl + B**, try pressing **ESC + B** instead. Many BIOS-level environments and virtual
+    terminals interpret **Esc + B** as a fallback for **Ctrl + B**, especially when Ctrl is not reliably passed through.
+
+    :::
 
 12. Issue the following commands in the `iPXE> prompt`.
 
