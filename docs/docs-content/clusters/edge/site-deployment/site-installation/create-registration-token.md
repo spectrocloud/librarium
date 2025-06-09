@@ -7,8 +7,8 @@ sidebar_position: 10
 tags: ["edge"]
 ---
 
-Registration tokens are tokens that are associated with a project in Palette. You need the registration token in
-the following situations:
+Registration tokens are tokens that are associated with a project in Palette. You need the registration token in the
+following situations:
 
 - When you need to register an Edge host with Palette. For more information, refer to
   [Edge Host Registration](./edge-host-registration.md).
@@ -62,7 +62,8 @@ To create a registration token, use the following steps.
 
 4. Select **Registration Tokens** in the **Tenant Settings** menu.
 
-5. Validate the tenant registration token is available. Palette only displays the first and last four characters of the token value. To view the entire token, click the eye icon.
+5. Validate the tenant registration token is available. Palette only displays the first and last four characters of the
+   token value. To view the entire token, click the eye icon.
 
 ## Next Steps
 
