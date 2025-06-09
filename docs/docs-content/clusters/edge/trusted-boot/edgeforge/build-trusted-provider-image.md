@@ -120,6 +120,7 @@ key that is in the Signature Database (DB). This is important both during instal
    IMAGE_REPO=$OS_DISTRIBUTION
    CUSTOM_TAG=$CUSTOM_TAG
    K8S_DISTRIBUTION=rke2
+   K8S_VERSION=1.28.2
    ARCH=amd64
    UPDATE_KERNEL=false
    IS_UKI=true
@@ -132,15 +133,13 @@ key that is in the Signature Database (DB). This is important both during instal
    | ------------------ | ----------------------------------------------------------------------------------------------------- | ------------------------------------ |
    | `IS_UKI`           | Determines whether to build a provider image that supports Trusted Boot. You must set this to `true`. | `true`, `false`. Default is `false`. |
    | `K8S_DISTRIBUTION` | Kubernetes distribution.                                                                              | `rke2`                               |
+   | `K8S_VERSION`      | Kubernetes version                                                                                    | Semantic version numbers `x.y.z`     |
    | `OS_DISTRIBUTION`  | OS distribution.                                                                                      | `ubuntu`, `opensuse-leap`, `rhel`.   |
    | `OS_VERSION`       | OS version. This applies to Ubuntu only.                                                              | `23.10`, `24.04`                     |
 
-10. Open the **k8s_version.json** file in the CanvOS directory. Remove the Kubernetes versions that you don't need from
-    the JSON object corresponding to your Kubernetes distribution.
-
-    If you are using a tag that is earlier than v4.4.12, the **k8s_version.json** file does not exist in those tags.
-    Instead, open the **Earthfile** in the CanvOS directory. Under `build-provider-images`, remove the lines containing
-    Kubernetes versions that you do not need.
+10. (Optional) If you want to build multiple versions of a provider image using different Kubernetes versions, remove
+    the `K8S_VERSION` argument from the `.arg` file. Open the `k8s_version.json` file in the CanvOS directory. Remove
+    the Kubernetes versions that you don't need from the JSON object corresponding to your Kubernetes distribution.
 
 11. CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. Issue the following command to
     start the build process.

@@ -183,6 +183,7 @@ customization.
    IMAGE_REPO=ubuntu
    OS_VERSION=22.04
    K8S_DISTRIBUTION=k3s
+   K8s_VERSION=1.27.2
    ISO_NAME=palette-edge-installer
    ARCH=amd64
    HTTPS_PROXY=
@@ -250,13 +251,9 @@ customization.
 
    :::
 
-10. Open the `k8s_version.json` file in the `CanvOS` directory. Remove the Kubernetes versions that you don't need from
-    the JSON object corresponding to your Kubernetes distribution.
-
-    If you are using a tag that is earlier than v4.4.12, the `k8s_version.json` file does not exist in those tags.
-    Instead, open the `Earthfile` in the `CanvOS` directory. In the file, find the block that starts with
-    `build-provider-images-fips:` and delete the Kubernetes versions that you do not want. This will speed up the build
-    process and save storage space.
+10. (Optional) If you want to build multiple versions of a provider image using different Kubernetes versions, remove
+    the `K8S_VERSION` argument from the `.arg` file. Open the `k8s_version.json` file in the CanvOS directory. Remove
+    the Kubernetes versions that you don't need from the JSON object corresponding to your Kubernetes distribution.
 
 11. Issue the following command to start the build process.
 
@@ -333,9 +330,8 @@ customization.
       system.osVersion: 22
     ```
 
-12. List the Docker images to review the provider images created. By default, provider images for all the Palette's
-    Edge-supported Kubernetes versions are created. You can identify the provider images by reviewing the image tag
-    value you used in the `.arg` file's `CUSTOM_TAG` argument.
+12. List the Docker images to review the provider images created. You can identify the provider images by reviewing the
+    image tag value you used in the `.arg` file's `CUSTOM_TAG` argument.
 
     ```shell
     docker images --filter=reference='*/*:*palette-learn'
@@ -344,8 +340,6 @@ customization.
     ```hideClipboard bash
     REPOSITORY             TAG                                   IMAGE ID       CREATED         SIZE
     ttl.sh/ubuntu          k3s-1.27.2-v4.4.12-palette-learn       075134ad5d4b   10 minutes ago   4.11GB
-    ttl.sh/ubuntu          k3s-1.25.2-v4.4.12-palette-learn       02424d29fcac   10 minutes ago   4.09GB
-    ttl.sh/ubuntu          k3s-1.26.4-v4.4.12-palette-learn       4e373ddfb53f   10 minutes ago   4.11GB
     ```
 
 13. To use the provider images in your cluster profile, push them to the image registry mentioned in the `.arg` file.
@@ -354,8 +348,6 @@ customization.
     following commands to push the provider images to the _ttl.sh_ image registry.
 
     ```bash
-    docker push ttl.sh/ubuntu:k3s-1.25.2-v4.4.12-palette-learn
-    docker push ttl.sh/ubuntu:k3s-1.26.4-v4.4.12-palette-learn
     docker push ttl.sh/ubuntu:k3s-1.27.2-v4.4.12-palette-learn
     ```
 
@@ -567,22 +559,23 @@ git checkout v4.4.12
 6. Review the `.arg` file containing the customizable arguments, such as image tag, image registry, image repository,
    and OS distribution. The table below shows all arguments, their default value, and allowed values.
 
-   | **Argument**       | **Description**                                                                              | **Default Value**      | **Allowed Values**                                                                             |
-   | ------------------ | -------------------------------------------------------------------------------------------- | ---------------------- | ---------------------------------------------------------------------------------------------- |
-   | `CUSTOM_TAG`       | Tag for the provider images                                                                  | demo                   | Lowercase alphanumeric string without spaces.                                                  |
-   | `IMAGE_REGISTRY`   | Image registry name                                                                          | ttl.sh                 | Your image registry hostname, without `http` or `https` <br /> Example: docker.io/spectrocloud |
-   | `OS_DISTRIBUTION`  | OS Distribution                                                                              | ubuntu                 | ubuntu, opensuse-leap                                                                          |
-   | `IMAGE_REPO`       | Image repository name.<br /> It is the same as the OS distribution.                          | `$OS_DISTRIBUTION`     | Your image repository name.                                                                    |
-   | `OS_VERSION`       | OS version, only applies to Ubuntu                                                           | 22                     | 20, 22                                                                                         |
-   | `K8S_DISTRIBUTION` | Kubernetes Distribution                                                                      | k3s                    | k3s, rke2, kubeadm                                                                             |
-   | `ISO_NAME`         | Name of the Installer ISO                                                                    | palette-edge-installer | Lowercase alphanumeric string without spaces. The characters `-` and `_` are allowed.          |
-   | `ARCH`             | Architecture of the image.                                                                   | `amd64`                | `amd64`, `arm64`                                                                               |
-   | `FIPS_ENABLED`     | to generate FIPS compliant binaries `true`or`false`                                          | `false`                | `true`, `false`                                                                                |
-   | `HTTP_PROXY`       | URL of the HTTP Proxy server.                                                                | `""`                   | URL string                                                                                     |
-   | `HTTPS_PROXY`      | URL of the HTTPS Proxy server.                                                               | `""`                   | URL string                                                                                     |
-   | `NO_PROXY`         | URLS that should be excluded from the proxy.                                                 | `""`                   | Comma separated URL string                                                                     |
-   | `PROXY_CERT_PATH`  | Absolute path of the SSL Proxy certificate in PEM format.                                    | `""`                   | Absolute path string                                                                           |
-   | `UPDATE_KERNEL`    | Determines whether to upgrade the Kernel version to the latest from the upstream OS provider | `false`                | `true`, `false`                                                                                |
+   | **Argument**       | **Description**                                                                                                                                                                                                                  | **Default Value**                                   | **Allowed Values**                                                                             |
+   | ------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+   | `CUSTOM_TAG`       | Tag for the provider images                                                                                                                                                                                                      | demo                                                | Lowercase alphanumeric string without spaces.                                                  |
+   | `IMAGE_REGISTRY`   | Image registry name                                                                                                                                                                                                              | ttl.sh                                              | Your image registry hostname, without `http` or `https` <br /> Example: docker.io/spectrocloud |
+   | `OS_DISTRIBUTION`  | OS Distribution                                                                                                                                                                                                                  | ubuntu                                              | ubuntu, opensuse-leap                                                                          |
+   | `IMAGE_REPO`       | Image repository name.<br /> It is the same as the OS distribution.                                                                                                                                                              | `$OS_DISTRIBUTION`                                  | Your image repository name.                                                                    |
+   | `OS_VERSION`       | OS version, only applies to Ubuntu                                                                                                                                                                                               | 22                                                  | 20, 22                                                                                         |
+   | `K8S_DISTRIBUTION` | Kubernetes Distribution                                                                                                                                                                                                          | k3s                                                 | k3s, rke2, kubeadm                                                                             |
+   | `K8S_VERSION`      | Kubernetes version. The available versions vary depending on the specified `K8S_DISTRIBUTION`. Review the `k8s_version.json` file in the [CanvOS](https://github.com/spectrocloud/CanvOS) repository for all supported versions. | Semantic Versioning patch release format - `x.y.z`. |
+   | `ISO_NAME`         | Name of the Installer ISO                                                                                                                                                                                                        | palette-edge-installer                              | Lowercase alphanumeric string without spaces. The characters `-` and `_` are allowed.          |
+   | `ARCH`             | Architecture of the image.                                                                                                                                                                                                       | `amd64`                                             | `amd64`, `arm64`                                                                               |
+   | `FIPS_ENABLED`     | to generate FIPS compliant binaries `true`or`false`                                                                                                                                                                              | `false`                                             | `true`, `false`                                                                                |
+   | `HTTP_PROXY`       | URL of the HTTP Proxy server.                                                                                                                                                                                                    | `""`                                                | URL string                                                                                     |
+   | `HTTPS_PROXY`      | URL of the HTTPS Proxy server.                                                                                                                                                                                                   | `""`                                                | URL string                                                                                     |
+   | `NO_PROXY`         | URLS that should be excluded from the proxy.                                                                                                                                                                                     | `""`                                                | Comma separated URL string                                                                     |
+   | `PROXY_CERT_PATH`  | Absolute path of the SSL Proxy certificate in PEM format.                                                                                                                                                                        | `""`                                                | Absolute path string                                                                           |
+   | `UPDATE_KERNEL`    | Determines whether to upgrade the Kernel version to the latest from the upstream OS provider                                                                                                                                     | `false`                                             | `true`, `false`                                                                                |
 
    Next, you will customize these arguments to use during the build process.
 
@@ -627,6 +620,7 @@ git checkout v4.4.12
     IMAGE_REPO=$OS_DISTRIBUTION
     CUSTOM_TAG=$CUSTOM_TAG
     K8S_DISTRIBUTION=k3s
+    K8S_VERSION=1.27.2
     ISO_NAME=palette-edge-installer
     ARCH=amd64
     HTTPS_PROXY=
@@ -650,7 +644,11 @@ git checkout v4.4.12
 
     :::
 
-11. (Optional) This step is only required if your builds occur in a proxied network environment, and your proxy servers
+11. (Optional) If you want to build multiple versions of a provider image using different Kubernetes versions, remove
+    the `K8S_VERSION` argument from the `.arg` file. Open the `k8s_version.json` file in the CanvOS directory. Remove
+    the Kubernetes versions that you don't need from the JSON object corresponding to your Kubernetes distribution.
+
+12. (Optional) This step is only required if your builds occur in a proxied network environment, and your proxy servers
     require client certificates, or if your base image is in a registry that requires client certificates.
 
     You can provide the base-64 encoded certificates in PEM format in the `certs` folder at the root directory of the
@@ -670,7 +668,7 @@ git checkout v4.4.12
 
     :::
 
-12. Use the following command to append the [WireGuard](https://www.wireguard.com/install/) installation instructions to
+13. Use the following command to append the [WireGuard](https://www.wireguard.com/install/) installation instructions to
     the `Dockerfile`. You can install more tools and dependencies and configure the image to meet your needs. Add your
     customizations below the line tagged with the `Add any other image customizations here` comment in the `Dockerfile`.
     Do not edit or add any lines before this tagged comment.
@@ -694,14 +692,14 @@ git checkout v4.4.12
 
     :::
 
-13. Issue the command below to save your tenant registration token to a local variable. Replace `[your_token_here]` with
+14. Issue the command below to save your tenant registration token to a local variable. Replace `[your_token_here]` with
     your actual registration token.
 
     ```bash
     export token=[your_token_here]
     ```
 
-14. Use the following command to create the `user-data` file containing the tenant registration token.
+15. Use the following command to create the `user-data` file containing the tenant registration token.
 
     ```shell
     cat << EOF > user-data
@@ -787,7 +785,7 @@ git checkout v4.4.12
     [Edge Configuration Stages](../../edge-configuration/cloud-init.md) and
     [User Data Parameters](../../edge-configuration/installer-reference.md) documents to learn more.
 
-15. CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. Issue the following command to
+16. CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. Issue the following command to
     start the build process.
 
     <Tabs group="earthly">
@@ -859,7 +857,7 @@ git checkout v4.4.12
       system.osVersion:
     ```
 
-16. List the Docker images to review the provider images created. By default, provider images for all the Palette's
+17. List the Docker images to review the provider images created. By default, provider images for all the Palette's
     Edge-supported Kubernetes versions are created. You can identify the provider images by reviewing the image tag
     value you used in the `.arg` file's `CUSTOM_TAG` argument.
 
@@ -870,11 +868,9 @@ git checkout v4.4.12
     ```hideClipboard bash
     REPOSITORY                   TAG                               IMAGE ID       CREATED          SIZE
     spectrocloud/opensuse-leap   k3s-1.27.2-v4.4.12-palette-learn   2427e3667b2f   24 minutes ago   2.22GB
-    spectrocloud/opensuse-leap   k3s-1.26.6-v4.4.12-palette-learn   0f2efd533a33   24 minutes ago   2.22GB
-    spectrocloud/opensuse-leap   k3s-1.25.2-v4.4.12-palette-learn   2427e3667b2f   24 minutes ago   2.22GB
     ```
 
-17. To use the provider images in your cluster profile, push them to your image registry mentioned in the `.arg` file.
+18. To use the provider images in your cluster profile, push them to your image registry mentioned in the `.arg` file.
     Issue the following command to log in to Docker Hub. Provide your Docker ID and password when prompted.
 
     ```bash
@@ -885,31 +881,29 @@ git checkout v4.4.12
     Login Succeeded
     ```
 
-18. Use the following commands to push the provider images to the Docker Hub image registry you specified. Replace the
+19. Use the following commands to push the provider images to the Docker Hub image registry you specified. Replace the
     `[DOCKER-ID]` and version numbers in the command below with your Docker ID and respective Kubernetes versions that
     the utility created.
 
     ```bash
     docker push docker.io/[DOCKER-ID]/opensuse-leap:k3s-1.27.2-v4.4.12-palette-learn
-    docker push docker.io/[DOCKER-ID]/opensuse-leap:k3s-1.26.6-v4.4.12-palette-learn
-    docker push docker.io/[DOCKER-ID]/opensuse-leap:k3s-1.25.2-v4.4.12-palette-learn
     ```
 
-19. After pushing the provider images to the image registry, open a web browser and log in to
+20. After pushing the provider images to the image registry, open a web browser and log in to
     [Palette](https://console.spectrocloud.com). Ensure you are in the **Default** project scope before creating a
     cluster profile.
 
-20. Navigate to the left **Main Menu** and select **Profiles**. Click on the **Add Cluster Profile** button, and fill
+21. Navigate to the left **Main Menu** and select **Profiles**. Click on the **Add Cluster Profile** button, and fill
     out the required basic information fields to create a cluster profile for Edge.
 
-21. Add the following <VersionedLink text="BYOS Edge OS" url="/integrations/packs/?pack=generic-byoi"/> pack to the OS
+22. Add the following <VersionedLink text="BYOS Edge OS" url="/integrations/packs/?pack=generic-byoi"/> pack to the OS
     layer in the **Profile Layers** section.
 
     | **Pack Type** | **Registry** | **Pack Name** | **Pack Version** |
     | ------------- | ------------ | ------------- | ---------------- |
     | OS            | Public Repo  | BYOS Edge OS  | `1.0.0`          |
 
-22. Replace the cluster profile's BYOOS pack manifest with the output that was provided to you earlier and that you
+23. Replace the cluster profile's BYOOS pack manifest with the output that was provided to you earlier and that you
     copied.
 
     The `system.xxxxx` attribute values below refer to the arguments defined in the `.arg` file. If you modified the
@@ -960,7 +954,7 @@ git checkout v4.4.12
 
     :::
 
-23. Add the following **Palette Optimized K3s** pack to the Kubernetes layer of your cluster profile. Select the K3s
+24. Add the following **Palette Optimized K3s** pack to the Kubernetes layer of your cluster profile. Select the K3s
     version 1.27.x because earlier in this how-to guide, you pushed a provider image compatible with k3s v1.27.2 to the
     ttl.sh image registry.
 
@@ -968,7 +962,7 @@ git checkout v4.4.12
     | ------------- | ------------ | --------------------- | ---------------- |
     | Kubernetes    | Public Repo  | Palette Optimized K3s | `1.27.x`         |
 
-24. Add the network layer to your cluster profile, and choose a Container Network Interface (CNI) pack that best fits
+25. Add the network layer to your cluster profile, and choose a Container Network Interface (CNI) pack that best fits
     your needs, such as Calico, Flannel, Cilium, or Custom CNI. For example, you can add the following network layer.
     This step completes the core infrastructure layers in the cluster profile.
 
@@ -976,9 +970,9 @@ git checkout v4.4.12
     | ------------- | ------------ | ------------- | ---------------- |
     | Network       | Public Repo  | Calico        | `3.25.x`         |
 
-25. Add add-on layers and manifests to your cluster profile per your requirements.
+26. Add add-on layers and manifests to your cluster profile per your requirements.
 
-26. If there are no errors or compatibility issues, Palette displays the newly created complete cluster profile for
+27. If there are no errors or compatibility issues, Palette displays the newly created complete cluster profile for
     review. Verify the layers you added, and finish creating the cluster profile.
 
 ### Validate

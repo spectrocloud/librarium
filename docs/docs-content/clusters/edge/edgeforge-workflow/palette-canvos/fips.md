@@ -215,17 +215,18 @@ workaround.
 13. In the **.arg** file, provide the following required information. Refer to
     [Edge Artifact Build Configuration](arg.md) for more information.
 
-    | Argument         | Description                                                                                                                                                       |
-    | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | IMAGE_REGISTRY   | The image registry to use for tagging the generated provider images.                                                                                              |
-    | OS_DISTRIBUTION  | The OS distribution in your provider image.                                                                                                                       |
-    | IMAGE_REPO       | The image repository to use for tagging the generated provider images.                                                                                            |
-    | OS_VERSION       | The OS version in your provider image. This applies to Ubuntu only.                                                                                               |
-    | K8S_DISTRIBUTION | The Kubernetes distribution for your provider image. Allowed values are `rke2` (RKE2) and `kubeadm-fips` (PXK-E). The other distributions are not FIPS-compliant. |
-    | FIPS_ENABLED     | Whether to enable FIPS compliance. This parameter must be set to `true`.                                                                                          |
-    | ARCH             | The architecture of the image. Allowed values are `amd64` and `arm64`.                                                                                            |
-    | BASE_IMAGE       | The base image used by EdgeForge to build the Edge Installer and provider images. This must be the same image that you build in the previous step.                |
-    | ISO_NAME         | The file name of the ISO file that will be generated.                                                                                                             |
+    | Argument         | Description                                                                                                                                                                                                                      |
+    | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | IMAGE_REGISTRY   | The image registry to use for tagging the generated provider images.                                                                                                                                                             |
+    | OS_DISTRIBUTION  | The OS distribution in your provider image.                                                                                                                                                                                      |
+    | IMAGE_REPO       | The image repository to use for tagging the generated provider images.                                                                                                                                                           |
+    | OS_VERSION       | The OS version in your provider image. This applies to Ubuntu only.                                                                                                                                                              |
+    | K8S_DISTRIBUTION | The Kubernetes distribution for your provider image. Allowed values are `rke2` (RKE2) and `kubeadm-fips` (PXK-E). The other distributions are not FIPS-compliant.                                                                |
+    | K8S_VERSION      | Kubernetes version. The available versions vary depending on the specified `K8S_DISTRIBUTION`. Review the `k8s_version.json` file in the [CanvOS](https://github.com/spectrocloud/CanvOS) repository for all supported versions. |
+    | FIPS_ENABLED     | Whether to enable FIPS compliance. This parameter must be set to `true`.                                                                                                                                                         |
+    | ARCH             | The architecture of the image. Allowed values are `amd64` and `arm64`.                                                                                                                                                           |
+    | BASE_IMAGE       | The base image used by EdgeForge to build the Edge Installer and provider images. This must be the same image that you build in the previous step.                                                                               |
+    | ISO_NAME         | The file name of the ISO file that will be generated.                                                                                                                                                                            |
 
 14. (Optional) This step is only required if your builds occur in a proxied network environment, and your proxy servers
     require client certificates or if your base image is in a registry that requires client certificates.
@@ -319,13 +320,9 @@ workaround.
 Provider images are Kairos-based container images for a supported OS and Kubernetes distribution combination.
 FIPS-complaint provider images are built on top of the base OS image you have built previously.
 
-17. Open the **k8s_version.json** file in the CanvOS directory. Remove the Kubernetes versions that you don't need from
-    the JSON object corresponding to your Kubernetes distribution.
-
-    If you are using a tag that is earlier than v4.4.12, the **k8s_version.json** file does not exist in those tags.
-    Instead, open the **Earthfile** in the CanvOS directory. In the file, find the block that starts with
-    `build-provider-images-fips:` and delete the Kubernetes versions that you do not want. This will speed up the build
-    process and save storage space.
+17. (Optional) If you want to build multiple versions of a provider image using different Kubernetes versions, remove
+    the `K8S_VERSION` argument from the `.arg` file. Open the `k8s_version.json` file in the CanvOS directory. Remove
+    the Kubernetes versions that you don't need from the JSON object corresponding to your Kubernetes distribution.
 
 18. Review the **.arg** file again to ensure the parameters are correct. Issue the following command to build the
     provider images.
