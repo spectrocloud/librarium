@@ -11,7 +11,7 @@ tags: ["edge", "tutorial"]
 Palette Edge supports deployment through iPXE netboot. This method is helpful when you want to automate provisioning,
 use external configuration, or avoid embedding `user-data` configuration into each ISO. It’s especially useful when
 deploying many VMs or Edge hosts dynamically. This guide teaches you how to provision Edge hosts in VMware using iPXE.
-To use iPXE provisioning, you need to use an HTTP/HTTPs server to serve the necessary boot artifacts and the iPXE
+To use iPXE provisioning, you need to use an HTTP/HTTPS server to serve the necessary boot artifacts and the iPXE
 configuration files, and configure the VMs to boot from a iPXE ISO file, which then chains a script that downloads the
 boot artifacts and boot using those artifacts.
 
@@ -25,7 +25,7 @@ same boot artifacts across any number of nodes.
   using `user-data`, because you will only be extracting a few boot artifacts from this ISO and customizations will not
   be preserved.
 
-- A Linux host machine that is capable of serving files over an HTTP/HTTPs server. This guide uses Python 3 and the
+- A Linux host machine that is capable of serving files over an HTTP/HTTPS server. This guide uses Python 3 and the
   `http-server` module to serve the artifacts, but you can use any other tool to start your server.
 
 - `govc` is installed on your Linux VM and available.
