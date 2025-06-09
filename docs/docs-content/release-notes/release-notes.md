@@ -15,15 +15,22 @@ tags: ["release-notes"]
 
 ### Breaking Changes
 
-- Beginning with Palette version 4.6.x, a [Private Cloud Gateway (PCG)](../clusters/pcg/pcg.md) is required to add an Azure US Government account.
+- Beginning with Palette version 4.6.x, a [Private Cloud Gateway (PCG)](../clusters/pcg/pcg.md) is required to add an
+  Azure US Government account.
 
-  If you are using a [self-hosted Palette](../enterprise-version/enterprise-version.md) or [VerteX](../vertex/vertex.md) instance, a PCG is not required for Azure US Government accounts unless you configure both an Azure Public Cloud and Azure US Government account on the same installation. If do not configure a PCG for Azure US Government clusters, you must install two instances of Palette or VerteX: one for Azure Public Cloud clusters and one for Azure US Government clusters. For more information on adding Azure cloud accounts, refer to the [Register and Manage Azure Cloud Account](../clusters/public-cloud/azure/azure-cloud.md) guide.
+  If you are using a [self-hosted Palette](../enterprise-version/enterprise-version.md) or [VerteX](../vertex/vertex.md)
+  instance, a PCG is not required for Azure US Government accounts unless you configure both an Azure Public Cloud and
+  Azure US Government account on the same installation. If do not configure a PCG for Azure US Government clusters, you
+  must install two instances of Palette or VerteX: one for Azure Public Cloud clusters and one for Azure US Government
+  clusters. For more information on adding Azure cloud accounts, refer to the
+  [Register and Manage Azure Cloud Account](../clusters/public-cloud/azure/azure-cloud.md) guide.
 
 ### Bug Fixes
 
 - Fixed an issue that prevented [Azure IaaS](../clusters/public-cloud/azure/create-azure-cluster.md) and
   [Azure AKS](../clusters/public-cloud/azure/aks.md) clusters configured to use an
-  [Azure US Government cloud account](../clusters/public-cloud/azure/azure-cloud.md#add-azure-cloud-account) from being provisioned.
+  [Azure US Government cloud account](../clusters/public-cloud/azure/azure-cloud.md#add-azure-cloud-account) from being
+  provisioned.
 - Fixed an issue that caused system errors after
   [resetting system administrator passwords](../enterprise-version/system-management/account-management/manage-system-accounts.md#reset-system-administrator-password).
 - Fixed an issue that caused [AWS clusters](../clusters/public-cloud/aws/aws.md) to fail to find bastion node Amazon
