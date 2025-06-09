@@ -127,7 +127,7 @@ same boot artifacts across any number of nodes.
 
 11. Open the VM’s console via the vCenter web client to access your VM. As soon as the "iPXE boot image" screen shows,
     press **Ctrl+B** to interrupt and enter the iPXE> prompt. The interval you have to press **Ctrl+B** is very short.
-    So make sure to launch the web console as soon as your VM boots and get ready to press the keys.
+    Therefore, make sure to launch the web console as soon as your VM boots and get ready to press the keys.
 
     :::tip
 
