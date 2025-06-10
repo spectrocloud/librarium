@@ -33,7 +33,8 @@ using Amazon Web Services (AWS), you can also use the same steps to deploy to Mi
 - Any public cloud credential
   (<VersionedLink text="AWS" url="/clusters/public-cloud/aws/add-aws-accounts/#aws-account" />,
   <VersionedLink text="Azure" url="/clusters/public-cloud/azure/azure-cloud/#add-azure-cloud-account" /> or
-  <VersionedLink text="Google Cloud" url="/clusters/public-cloud/gcp/add-gcp-accounts/#create-account" />).
+  <VersionedLink text="Google Cloud" url="/clusters/public-cloud/gcp/add-gcp-accounts/#create-account" />
+  ).
 - An SSH key available in the region where you plan to deploy the cluster.
 - Ensure that the
   [Palette Community Registry](../../../registries-and-packs/registries/registries.md#default-registries) is available
