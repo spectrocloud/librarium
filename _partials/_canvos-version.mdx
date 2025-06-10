@@ -29,6 +29,9 @@ partial_name: canvos-version
    ```shell
    curl --location --request GET 'https://<palette-endpoint>/v1/services/stylus/version' --header 'Content-Type: application/json' --header 'Apikey: <api-key>'  | jq --raw-output '.spec.latestVersion.content | match("version: ([^\n]+)").captures[0].string'
    ```
+   
+   The output is the version number you must use to build the ISO. For example, if the output is `4.5.15`, you can
+   check out the `v4.5.15` tag in the CanvOS repository.
 
    ```text hideClipboard title="Example output"
    4.5.15
