@@ -62,8 +62,8 @@ To create a registration token, use the following steps.
 
 4. Select **Registration Tokens** in the **Tenant Settings** menu.
 
-5. Verify that the tenant registration token is available. Palette displays only the first and last four characters of the
-   token value. To view the entire token, click the eye icon.
+5. Verify that the tenant registration token is available. Palette displays only the first and last four characters of
+   the token value. To view the entire token, click the eye icon.
 
 ## Next Steps
 
