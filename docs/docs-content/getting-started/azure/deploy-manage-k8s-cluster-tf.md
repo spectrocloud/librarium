@@ -36,7 +36,6 @@ To complete this tutorial, you will need the following items in place:
   - [Git](https://git-scm.com/downloads)
   - [Kubectl](https://kubernetes.io/docs/tasks/tools/)
 
-
 ## Set Up Local Environment
 
 <PartialsComponent category="getting-started" name="setup-local-environment" />

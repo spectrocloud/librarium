@@ -46,7 +46,6 @@ Navigate to the folder that contains the tutorial code.
 cd terraform/getting-started-deployment-tf
 ```
 
-
 ## Resources Review
 
 To help you get started with Terraform, the tutorial code is structured to support deploying a cluster to either AWS,

@@ -30,10 +30,16 @@ using Amazon Web Services (AWS), you can also use the same steps to deploy to Mi
 ## Prerequisites
 
 - A Palette account.
-- Any public cloud credential (<VersionedLink text="AWS" url="/clusters/public-cloud/aws/add-aws-accounts/#aws-account" />, <VersionedLink text="Azure" url="/clusters/public-cloud/azure/azure-cloud/#add-azure-cloud-account" /> or <VersionedLink text="Google Cloud" url="/clusters/public-cloud/gcp/add-gcp-accounts/#create-account" />).
+- Any public cloud credential
+  (<VersionedLink text="AWS" url="/clusters/public-cloud/aws/add-aws-accounts/#aws-account" />,
+  <VersionedLink text="Azure" url="/clusters/public-cloud/azure/azure-cloud/#add-azure-cloud-account" /> or
+  <VersionedLink text="Google Cloud" url="/clusters/public-cloud/gcp/add-gcp-accounts/#create-account" />).
 - An SSH key available in the region where you plan to deploy the cluster.
-- Ensure that the [Palette Community Registry](../../../registries-and-packs/registries/registries.md#default-registries)
-  is available in your Palette environment. Refer to the [Add OCI Packs Registry](../../../registries-and-packs/registries/oci-registry/add-oci-packs.md) guide for additional guidance.
+- Ensure that the
+  [Palette Community Registry](../../../registries-and-packs/registries/registries.md#default-registries) is available
+  in your Palette environment. Refer to the
+  [Add OCI Packs Registry](../../../registries-and-packs/registries/oci-registry/add-oci-packs.md) guide for additional
+  guidance.
 - Basic knowledge of containers and Kubernetes manifest file attributes. Refer to the
   [Docker Get Started](https://docs.docker.com/get-started/) guide and the
   [Learn Kubernetes Basics](https://kubernetes.io/docs/tutorials/kubernetes-basics/) tutorial to start learning.
@@ -156,13 +162,14 @@ Add the following variables and their default values. After each variable, ensur
 | **Format**        | Select **Number** from drop-down.           |
 | **Default value** | Set to enable and enter "80".               |
 
+Now that your variables are created, add them to the WordPress manifest YAML using the same steps as you used for
+`{{.spectro.var.wordpress_name}}`. For each variable, copy it to the clipboard and add it to the line location as noted
+in the following table.
 
-Now that your variables are created, add them to the WordPress manifest YAML using the same steps as you used for `{{.spectro.var.wordpress_name}}`. For each variable, copy it to the clipboard and add it to the line location as noted in the following table.
-
-|  YAML Line number | Variable to add                          |
-| ----------- | ---------------------------------------- |
-| Line 205    | `http: '{{.spectro.var.wordpress_port}}'`      |
-| Line 502    | `replicaCount: '{{.spectro.var.wordpress_replica}}'`   |
+| YAML Line number | Variable to add                                      |
+| ---------------- | ---------------------------------------------------- |
+| Line 205         | `http: '{{.spectro.var.wordpress_port}}'`            |
+| Line 502         | `replicaCount: '{{.spectro.var.wordpress_replica}}'` |
 
 Click **Confirm Updates** and click **Save Changes**.
 
@@ -176,8 +183,10 @@ In [Palette](https://console.spectrocloud.com/), select your profile and use the
 1.0.0 . Click **Deploy** and go through the wizard to deploy the cluster, leaving all options to their default. The
 cluster will take a few minutes to deploy.
 
-Select your cluster once it is deployed and then navigate to the **Workloads** tab. Then, select **Deployments** and filter for **wordpress**. Three pods are displayed
-similar to the following screenshot: one for MariaDB, one for WordPress database memory cache and one for the WordPress web server. This is the default deployment behavior for the WordPress pack.
+Select your cluster once it is deployed and then navigate to the **Workloads** tab. Then, select **Deployments** and
+filter for **wordpress**. Three pods are displayed similar to the following screenshot: one for MariaDB, one for
+WordPress database memory cache and one for the WordPress web server. This is the default deployment behavior for the
+WordPress pack.
 
 <!-- image here -->
 
@@ -187,8 +196,8 @@ version to **1.1.0**. Choose **Review & Save**. On the **Changes Summary** page,
 Select **{} Profile variables changes** and open the **Review Update Changes**. Select your profile and enter in new
 values for each variable.
 
-| Variable Name                | New Value          |
-| ---------------------------- | ------------------ |
+| Variable Name                | New Value                   |
+| ---------------------------- | --------------------------- |
 | **WordPress: Replica Count** | Enter "`3`".                |
 | **WordPress: HTTP Port**     | Enter "`9090`".             |
 | **WordPress: Namespace**     | Enter "`new-wordpress-ns`". |
@@ -198,8 +207,8 @@ values for each variable.
 
 ![Image that shows how to copy and paste variable, then save it in the YAML file](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-update-variables.webp)
 
-Click **Apply Changes**. This process will cause the cluster to add additional containers. Wait until the
-cluster completes the **Addon deployment** step.
+Click **Apply Changes**. This process will cause the cluster to add additional containers. Wait until the cluster
+completes the **Addon deployment** step.
 
 ![Image that shows how to copy and paste variable, then save it in the YAML file](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-addon-deployment-update.webp)
 
@@ -237,7 +246,8 @@ profile.
 
 ## Create Profile with Variables (Terraform Workflow)
 
-When you create cluster profiles in Terraform, the cluster profile variables must be defined in all versions of the profile.
+When you create cluster profiles in Terraform, the cluster profile variables must be defined in all versions of the
+profile.
 
 <PartialsComponent category="getting-started" name="setup-local-environment" />
 
@@ -283,21 +293,23 @@ profile_variables {
 Review the two files in the manifests folder. `wordpress-default.yaml` contains the default configuration for the
 WordPress Chart application and `wordpress-variables.yaml` has the following three variables defined in it.
 
-|  YAML Line number | Variable to add                          |
-| ----------- | ---------------------------------------- |
-| Line 13     | `namespace: '{{.spectro.var.wordpress_namespace}}'` |
-| Line 205    | `http: '{{.spectro.var.wordpress_port}}'`      |
-| Line 502    | `replicaCount: '{{.spectro.var.wordpress_replica}}'`   |
+| YAML Line number | Variable to add                                      |
+| ---------------- | ---------------------------------------------------- |
+| Line 13          | `namespace: '{{.spectro.var.wordpress_namespace}}'`  |
+| Line 205         | `http: '{{.spectro.var.wordpress_port}}'`            |
+| Line 502         | `replicaCount: '{{.spectro.var.wordpress_replica}}'` |
 
-| YAML line location     | Variable changed              |
-| ---------------------- | ----------------------------- |
-| Line 13  | `'{{ .spectro.var.wordpress_namespace }}'`  |
-| Line 205 | `'{{ .spectro.var.wordpress_port }}'`       |
-| Line 502 | `'{{ .spectro.var.wordpress_replica }}'`    |
+| YAML line location | Variable changed                           |
+| ------------------ | ------------------------------------------ |
+| Line 13            | `'{{ .spectro.var.wordpress_namespace }}'` |
+| Line 205           | `'{{ .spectro.var.wordpress_port }}'`      |
+| Line 502           | `'{{ .spectro.var.wordpress_replica }}'`   |
 
-Note that the syntax of the variable must have spaces at the start and end of the variable, and . at the start of the variable.
+Note that the syntax of the variable must have spaces at the start and end of the variable, and . at the start of the
+variable.
 
-With the variables in place in the YAML file, you can then modify their values found at lines 13-15 in **terraform.tfvars**.
+With the variables in place in the YAML file, you can then modify their values found at lines 13-15 in
+**terraform.tfvars**.
 
 ```hcl
 ##############################
@@ -391,8 +403,8 @@ Summary**, select **Review changes in Editor**.
 
 Select **{} Profile variables changes** and open the Running/New configuration. Enter in new values for each variable.
 
-| Variable Name                | New Value          |
-| ---------------------------- | ------------------ |
+| Variable Name                | New Value                   |
+| ---------------------------- | --------------------------- |
 | **WordPress: Replica Count** | Enter "`3`".                |
 | **WordPress: HTTP Port**     | Enter "`9090`".             |
 | **WordPress: Namespace**     | Enter "`new-wordpress-ns`". |
