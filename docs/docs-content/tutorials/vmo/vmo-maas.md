@@ -210,26 +210,25 @@ Select **Add New Pack**.
 
 Search for metallb and select the **MetalLB (Helm) 0.14.9** pack from the Palette Registry (OCI).
 
-Select **Values**.
+Select **Values**. The MetalLB YAML manifest editor appears.
 
-MetalLB needs a range of routable IP Addresses. Locate the configuration block containing the **addreses:** value. The
-value for this field can be either an IP Address range. Example: 192.168.40.0-192.168.40.10, or a subnet using cidr
-notation. Example 192.168.1.0/24.
+MetalLB needs a range of routable IP Addresses. Locate the configuration block containing the **addresses:** value. The
+value for this field can be either an IP Address range or a subnet using CIDR
+notation. For example, `192.168.40.10` and  `192.168.1.0/24` are both valid values.
 
-These IP addresses must be reserved from the subnet connected to your MAAS servers. Reserve these addresses in your MAAS
-console or modify the DHCP scope for your environment if needed.
+Ensure these IP addresses are reserved from the subnet connected to your MAAS servers.
 
 ![Image of the configuration lines where Pod and Services Subnets are set.](/tutorials/deploy-vmo-maas/tutorials_vmo_vmo-maas_metallb-ips.webp)
 
 Select **Confirm & Create**.
 
-Select **Add New Pack**.
+Then, select **Add New Pack**.
 
 Search for and select the **Virtual Machine Orchestrator** pack from the Palette Registry (OCI).
 
 Set the **Pack Version** to **4.6.3** and select **Confirm Changes**.
 
-VMO has two different connectivity options, Proxied and Direct.
+VMO has two different connectivity options, **Proxied** and **Direct**.
 
 | **Connectivity Mode** | **Description**                                                                                                                                                                                                                                                                              |
 | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -241,13 +240,13 @@ For more information on the Spectro proxy, visit the
 
 Select the **Properties** icon. Select **Proxied**.
 
-The VMO pack contains prerequisite CRD's for subsequent packs. The **Install Order** field allows you to control the
+The VMO pack contains prerequisite CRDs for subsequent packs. The **Install Order** field allows you to control the
 installation order of your packs by using numerical values. The install order value defaults to `0` which implies top
 priority. The higher the value is, the lower the install priority is.
 
-Set the **Install Order** value to `10`.
+Set the **Install Order** value to `10`, ensuring VMO is installed last.
 
-Select the **Values** icon. Remove all configurations in the text editor iFrame and paste in the configuration below.
+Select the **Values** icon. Remove all configurations in the YAML manifest editor and paste in the configuration below.
 
 ```yaml
 pack:
@@ -923,8 +922,8 @@ charts:
 
 Select **Confirm & Create**.
 
-Next, you will configure the deployment of the VM deployment templates, data volumes containing OS Images, and storage
-profiles available in VMO. These configurations can be customized, allowing you control of the OS images, Image
+Next, you will configure the VM deployment templates, data volumes containing OS Images, and storage
+profiles available in VMO. These configurations can be customized, allowing you control of the OS images, image
 repositories, storage, and VM configurations.
 
 Select **Add Manifest**.
@@ -933,7 +932,7 @@ Name the new layer **vmo-extras**. Set the value of the **Install Order** field 
 apply after the VMO pack is installed. Select **New manifest** and name the manifest **vmo-extras-manifest**. Select the
 **blue check mark**.
 
-Copy the YAML config below and paste it in the text editor iFrame.
+Copy the YAML config below and paste it in the manifest editor.
 
 :::info
 
@@ -1197,12 +1196,10 @@ Select your target MAAS domain from the **Domain drop-down menu**. Select **Next
 The **Node pools configuration** screen allows customization of the control plane node pool, worker node pool, and
 control of which MAAS machines will be used to build your cluster.
 
-##### Control Plane Pool Configuration
 
 The control plane pool configuration section allows configuration of the Kubernetes values that will apply to your
 control plane nodes. No changes are required in this section.
 
-##### Control Plane - Cloud Configuration
 
 The **Control Plane - Cloud Configuration** section allows you to control which MAAS machines your cluster can use. The
 table below reviews each value and provides guidance on how to set them.
@@ -1210,17 +1207,15 @@ table below reviews each value and provides guidance on how to set them.
 | **Variable**        | **Instruction**                                                                                                                                                                                                                                                                                           |
 | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Resource Pool       | Enter the name of the MAAS resource pool you want your control plane server to used from.                                                                                                                                                                                                                 |
-| Minimum CPU         | Enter the minimum number of CPU cores you want your Control Plane server to have. Do not set values lower than 4.                                                                                                                                                                                         |
+| Minimum CPU         | Enter the minimum number of CPU cores you want your Control Plane server to have. We recommend values higher than 4.                                                                                                                                                                                         |
 | Minimum Memory (GB) | Enter the maximum amount of memory you want your Control Plane server to have. Do not set values lower than 8 GB.                                                                                                                                                                                         |
 | Availability zones  | This is an optional value that allows you to specify which MAAS Availability Zones to use for your control plane node deployments. This configuration is critical to consider when planning high availability infrastructure deployments.                                                                 |
 | Tags                | This is an optional value that allows you to assign a tag to the MAAS machine selected for the build. <br /> To learn more about MAAS automatic tags, refer to the [MAAS Tags](https://maas.cloud.cbh.kth.se/MAAS/docs/cli/how-to-tag-machines.html#heading--how-to-create-automatic-tags) documentation. |
 
-##### Worker Pool Configuration
 
 The worker pool configuration section requires no changes. We recommend reviewing these values to understand how they
 impact the deployment and how you might use them in a production deployment.
 
-##### Worker Pool - Cloud Configuration
 
 The **Worker Pool - Cloud Configuration** section allows you to control which MAAS machines your cluster can use. The
 table below reviews each value and provides guidance on how to set them.
@@ -1228,7 +1223,7 @@ table below reviews each value and provides guidance on how to set them.
 | **Variable**        | **Instruction**                                                                                                                                                                                                                                                                                           |
 | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Resource Pool       | Set this value to the name of the MAAS resource pool you want your control plane server to be taken from.                                                                                                                                                                                                 |
-| Minimum CPU         | Set this to the minimum number of CPU cores you want your Control Plane server to have. Do not set values lower than 5.                                                                                                                                                                                   |
+| Minimum CPU         | Set this to the minimum number of CPU cores you want your Control Plane server to have. We recommend that you set values higher than 5.                                                                                                                                                                                   |
 | Minimum Memory (GB) | Set this to the maximum amount of memory you want your Control Plane server to have. Do not set values lower than 8 GB.                                                                                                                                                                                   |
 | Availability zones  | This is an optional value that allows you to specify which AZ's to use for your node deployment. This configuration is critical to consider when planning high availability patterns for your infrastructure.                                                                                             |
 | Tags                | This is an optional value that allows you to assign a tag to the MAAS machine selected for the build. <br /> To learn more about MAAS automatic tags, refer to the [MAAS Tags](https://maas.cloud.cbh.kth.se/MAAS/docs/cli/how-to-tag-machines.html#heading--how-to-create-automatic-tags) documentation. |
@@ -1320,7 +1315,7 @@ Execute the `terraform apply` command. This process may take up to an hour or mo
 ## Verify the Cluster Deployment
 
 Navigate to the **Clusters** option in the left main menu in Palette. Select the cluster you created. On the overview
-page, ensure the cluster status is healthy. No further validation is necessary.
+page, ensure the cluster status is healthy. 
 
 ## Deploy a Virtual Machine
 
@@ -1328,7 +1323,7 @@ page, ensure the cluster status is healthy. No further validation is necessary.
 
 <TabItem label="UI" value="UI Workflow">
 
-Log in to [Palette](https://console.spectrocloud.com).
+Navigate to [Palette](https://console.spectrocloud.com).
 
 From the left main menu, select **Clusters**.
 
@@ -1358,7 +1353,7 @@ below. Select **Next**.
 The **Customize Configuration** screen displays the yaml that will be used to build your VM. KubeVirt enables
 configuration deployment, and management of your VMs using the same process used to configure and deploy pods.
 
-The YAML config can be deployed using any deployment tools you are currently using for your Kubernetes clusters, giving
+The YAML configuration can be deployed using any deployment tools you are currently using for your Kubernetes clusters, giving
 you a single platform to manage your pods and VMs. The configuration can also be manually applied using standard
 `kubectl apply -f <filename>` YAML commands.
 
@@ -1372,9 +1367,8 @@ Select **Create Virtual Machine**.
 
 In this section, the Terraform scripts to deploy a new VMO Cluster to your MAAS environment are modified and executed.
 
-#### Update terraform.tfvars
 
-Prior to deploying your VM you must modify the terraform.tfvars file to reflect the configuration you want your VM to
+Prior to deploying your VM you must modify the `terraform.tfvars` file to reflect the configuration you want your VM to
 have. Update terraform.tfvars as instructed in the table below.
 
 **MAAS Deployment Settings**
@@ -1396,7 +1390,6 @@ have. Update terraform.tfvars as instructed in the table below.
 | **vm-cpu-threads**      | `number`      | The number of CPU threads your VM is allowed to use. You can assign 1 CPU core and a single thread if desired.                                                                                                                                     |
 | **vm-memory-Gi**        | `string`      | Set this value to the amount of RAM (memory) you want your VM to have. You must include 'Gi' in your value. Example `4Gi`                                                                                                                          |
 
-#### Deploy the Virtual Machine
 
 Execute the `terraform plan` command to ensure there are no errors, and you have connectivity to your Spectro Cloud
 tenant.
@@ -1445,11 +1438,11 @@ admin kubeconfig file.
 ![Image of the admin kubeconfig link](/tutorials/deploy-vmo-maas/tutorials_vmo-mass_admin-kubeconfig.webp)
 
 Open a terminal on your workstation. Update the command below to point to the location of the kubeconfig file you
-downloaded. The example below shows the kubeconfig file being sourced from the default download folder on a MAC.
+downloaded. 
 
 ```shell
 
-export KUBECONFIG=~/Downloads/admin.your-cluster-name.kubeconfig
+export KUBECONFIG=<path-to-your-kubeconfig-file>
 
 ```
 
@@ -1468,7 +1461,7 @@ To access your app, you must create a service in Kubernetes. The service configu
 your Kubernetes cluster by mapping a network port on the nodes to the network port your app is listening on in the
 cluster.
 
-Once the connection passes through MetalLB, the Kubernetes service acts like a load balancer inside your cluster. Since
+Once the connection passes through MetalLB, the Kubernetes service acts as a load balancer inside your cluster. Since
 pods dynamically scale, the service keeps track of all pods running your app by using a label selector. In this
 tutorial, the label `kubevirt.io/domain: hellouni` is used to uniquely identify pods running the hello-universe app.
 
