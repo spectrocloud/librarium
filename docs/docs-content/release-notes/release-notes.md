@@ -91,6 +91,22 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 | --------- | ----------- |
 
 #### Deprecations and Removals
+## June 6, 2025 - Release 4.6.34
+
+### Bug Fixes
+
+- Fixed an issue that caused [AWS EKS clusters](../clusters/public-cloud/aws/eks.md) configured with private API
+  endpoints to get stuck during cluster deletion.
+- Fixed an issue that prevented [AWS EKS clusters](../clusters/public-cloud/aws/eks.md)
+  [node pool customizations](../clusters/public-cloud/aws/eks.md#cloud-configuration-settings) that do not specify an
+  Amazon Machine Image (AMI) ID from being created.
+
+## June 4, 2025 - Release 4.6.33
+
+### Bug Fixes
+
+- Fixed an issue that caused newly created [AWS EKS clusters](../clusters/public-cloud/aws/eks.md) with configured
+  [node pool customizations](../clusters/public-cloud/aws/eks.md#cloud-configuration-settings) to fail to provision.
 
 ## May 31, 2025 - Release 4.6.32 {#release-notes-4.6.c}
 
@@ -237,6 +253,16 @@ impacted clusters until you've handled the below mentioned breaking changes and 
 
 #### Improvements
 
+:::info
+
+All Cluster API provider versions were updated in this release. Refer to the
+[Cluster API Provider Versions](../architecture/orchestration-spectrocloud.md#cluster-api-provider-versions) section
+further details.
+
+:::
+
+- Palette now uses Cluster API Provider AWS (CAPA) version 2.7.1 internally. Refer to the
+  [documentation](https://github.com/kubernetes-sigs/cluster-api-provider-aws/tree/v2.7.1) for further information.
 - CAPG has been upgraded to [v1.8.1](https://github.com/kubernetes-sigs/cluster-api-provider-gcp/releases/tag/v1.8.1)
   from [v1.2.1](https://github.com/kubernetes-sigs/cluster-api-provider-gcp/releases/tag/v1.2.1).
 
@@ -274,8 +300,6 @@ impacted clusters until you've handled the below mentioned breaking changes and 
   access to backup and restore functionality. Refer to the
   [Backup and Restore](../clusters/cluster-management/backup-restore/backup-restore.md) page to learn more about backup
   and restore tools in Palette.
-- Palette now uses Cluster API Provider AWS (CAPA) version 2.7.1 internally. Refer to the
-  [documentation](https://github.com/kubernetes-sigs/cluster-api-provider-aws/tree/v2.7.1) for further information.
 - [Self-hosted Palette](../enterprise-version/enterprise-version.md) now supports anonymous SMTP mode, allowing users to
   authenticate without a username and password. We recommend using authenticated SMTP wherever possible. Refer to the
   [Configure SMTP](../enterprise-version/system-management/smtp.md) guide for further information.
@@ -529,7 +553,7 @@ Check out the [CLI Tools](../downloads/cli-tools.md) page to find the compatible
 
 <!-- prettier-ignore-start -->
 
-- The <VersionedLink text="BYOS - Agent Mode" url="integrations/packs/?pack=byoi-agent-mode" /> version 1.0.0 pack is now deprecated. We recommend using the <VersionedLink text="BYOS Edge OS" url="integrations/packs/?pack=edge-native-byoi" /> version 2.1.0 pack instead.
+- The <VersionedLink text="BYOS - Agent Mode" url="/integrations/packs/?pack=byoi-agent-mode" /> version 1.0.0 pack is now deprecated. We recommend using the <VersionedLink text="BYOS Edge OS" url="/integrations/packs/?pack=edge-native-byoi" /> version 2.1.0 pack instead.
 
 <!-- prettier-ignore-end -->
 
