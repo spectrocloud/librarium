@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Use iPXE Netboot to Provision Edge Host in VMware"
-title: "Use iPXE Netboot to Provision Edge Host in VMware"
+sidebar_label: "Provision an Edge Host VM Using iPXE Netboot"
+title: "Provision an Edge Host VM Using iPXE Netboot"
 description: "Learn how to provision a VM as a Palette Edge host using iPXE netboot and HTTP boot artifacts."
 icon: ""
 hide_table_of_contents: false
@@ -11,7 +11,7 @@ tags: ["edge", "tutorial"]
 Palette Edge supports deployment through iPXE netboot. This method is helpful when you want to automate provisioning,
 use external configuration, or avoid embedding `user-data` configuration into each ISO. It’s especially useful when
 deploying many VMs or Edge hosts dynamically. This guide teaches you how to provision Edge hosts in VMware using iPXE.
-To use iPXE provisioning, you need to use an HTTP/HTTPS server to serve the necessary boot artifacts and the iPXE
+To use iPXE provisioning, you must use an HTTP/HTTPS server to serve the necessary boot artifacts and the iPXE
 configuration files, and configure the VMs to boot from a iPXE ISO file, which then chains a script that downloads the
 boot artifacts and boot using those artifacts.
 
@@ -21,9 +21,9 @@ same boot artifacts across any number of nodes.
 
 ## Prerequisites
 
-- A Palette Installer ISO built using CanvOS tag version 4.6.21 or later. You do not need to customize this installer
-  using `user-data`, because you will only be extracting a few boot artifacts from this ISO and customizations will not
-  be preserved.
+- A Palette Installer ISO built using [CanvOS](https://github.com/spectrocloud/CanvOS) tag version 4.6.21 or later. You
+  do not need to customize this installer using `user-data`, because you will only be extracting a few boot artifacts
+  from this ISO and customizations will not be preserved.
 
 - A Linux host machine that is capable of serving files over an HTTP/HTTPS server. This guide uses Python 3 and the
   `http-server` module to serve the artifacts, but you can use any other tool to start your server.
@@ -103,7 +103,7 @@ same boot artifacts across any number of nodes.
    ```
 
    You are now done with all the steps you need to perform from your Linux host. Your `~/ipxe/netboot` folder should
-   contain the following files. Leave your HTTP server running and open your browser to your vCenter environment.
+   contain the following files.
 
    ```
    ~/ipxe/netboot/
@@ -113,6 +113,8 @@ same boot artifacts across any number of nodes.
     ├── config.yaml
     └── palette.ipxe
    ```
+
+   Leave your HTTP server running and open your browser to your vCenter environment.
 
 8. In your vCenter, create a new VM with the following hardware configurations.
 
