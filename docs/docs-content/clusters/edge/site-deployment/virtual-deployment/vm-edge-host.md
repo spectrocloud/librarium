@@ -4,7 +4,7 @@ title: "Provision an Edge Host VM"
 description: "Learn how to provision a VM as an Edge host using an OVF template. "
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 30
+sidebar_position: 0
 tags: ["edge", "tutorial"]
 ---
 
