@@ -23,7 +23,8 @@ same boot artifacts across any number of nodes.
 
 - A Palette Installer ISO built using CanvOS tag version 4.6.21 or later. You do not need to customize this installer
   using `user-data`, because you only need to extract a few boot artifacts from this ISO and it does not preserve
-  customizations.
+  customizations. For more information, refer to
+  [Build Installer ISO](../../edgeforge-workflow/palette-canvos/build-installer-iso.md).
 
 - A Linux host machine that is capable of serving files over an HTTP/HTTPS server. This guide uses Python 3 and the
   `http-server` module to serve the artifacts, but you can use any other tool to start your server.
