@@ -85,7 +85,7 @@ Palette is not FIPS compliant. If you need a FIPS-compliant solution, you need t
 5. If you are using a self-hosted instance of Palette and have determined a specific CanvOS version, checkout out the
    corresponding tag.
 
-   Otherwise, Check out the newest available tag. This guide uses **v4.4.12** as an example.
+   Otherwise, check out the newest available tag. This guide uses `v4.4.12` as an example.
 
    ```bash
    git tag
@@ -114,9 +114,9 @@ workaround.
 
 :::
 
-6. Change into the **rhel-fips** directory.
+6. Change into the `rhel-fips` directory.
 
-7. In the file **Dockerfile**, provide your RHEL subscription username and password.
+7. In the file `Dockerfile`, provide your RHEL subscription username and password.
 
    ```text
    ARG USERNAME=name@spectrocloud.com
@@ -160,9 +160,9 @@ workaround.
 
 <TabItem label="Ubuntu" value="ubuntu">
 
-6. Change into the **ubuntu-fips** directory.
+6. Change into the `ubuntu-fips` directory.
 
-7. In the file **pro-attach-config.yaml**, provide your Ubuntu Pro subscription token.
+7. In the file `pro-attach-config.yaml`, provide your Ubuntu Pro subscription token.
 
    ```yaml
    token: *******
@@ -196,15 +196,15 @@ workaround.
 
 ### Build Edge Installer ISO
 
-12. Return to the **CanvOS** directory.
+12. Return to the `CanvOS` directory.
 
     ```shell
     cd ..
     ```
 
-13. Create a file named **.arg**. This file will contain parameters that customize the Edge Installer ISO build.
+13. Create a file named `.arg`. This file will contain parameters that customize the Edge Installer ISO build.
 
-14. In the **.arg** file, provide the following required information. Refer to
+14. In the `.arg` file, provide the following required information. Refer to
     [Edge Artifact Build Configuration](arg.md) for more information.
 
     | Argument         | Description                                                                                                                                                                                                                      |
@@ -240,7 +240,7 @@ workaround.
 
     :::
 
-16. Create a file named **user-data**. It must have the `#cloud-init` header at the top of the file. Ensure you have the
+16. Create a file named `user-data`. It must have the `#cloud-init` header at the top of the file. Ensure you have the
     following blocks at the root level of the **user-data** file. Replace the value for `edgeHostToken` with your VerteX
     registration token, and replace the value `paletteEndPoint` with the URL of your Palette instance. Replace the user
     `kairos` and its password with your desired username and password.
@@ -279,7 +279,7 @@ workaround.
     the Edge Host with the registration token and the Palette endpoint. And the configurations in the `stage` block
     create a system user that you can use to log in to the Operating System (OS).
 
-17. Add further customization to the **user-data** file as needed. This file configures the Edge Installer. Refer to
+17. Add further customization to the `user-data` file as needed. This file configures the Edge Installer. Refer to
     [Installer Reference](../../edge-configuration/installer-reference.md) for more information.
 
 18. Issue the following command to build the Edge Installer ISO.
@@ -313,10 +313,10 @@ Provider images are Kairos-based container images for a supported OS and Kuberne
 FIPS-complaint provider images are built on top of the base OS image you have built previously.
 
 19. (Optional) If you want to build multiple versions of a provider image using different Kubernetes versions, remove
-    the `K8S_VERSION` argument from the `.arg` file. Open the `k8s_version.json` file in the CanvOS directory. Remove
+    the `K8S_VERSION` argument from the `.arg` file. Open the `k8s_version.json` file in the `CanvOS` directory. Remove
     the Kubernetes versions that you don't need from the JSON object corresponding to your Kubernetes distribution.
 
-20. Review the **.arg** file again to ensure the parameters are correct. Issue the following command to build the
+20. Review the `.arg` file again to ensure the parameters are correct. Issue the following command to build the
     provider images.
 
     ```shell

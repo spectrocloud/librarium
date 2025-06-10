@@ -84,10 +84,10 @@ Use the following instructions to build the Edge Installer ISO. The optional ste
 
 <PartialsComponent category="palette-edge-canvos-version" name="canvos-version" />
 
-5. If you are using a self-hosted instance of Palette and have determined a specific CanvOS version, checkout out the
+5. If you are using a self-hosted instance of Palette and have determined a specific CanvOS version, check out the
    corresponding tag.
 
-   Otherwise, Check out the newest available tag. This guide uses the tag v4.3.0 as an example.
+   Otherwise, check out the newest available tag. This guide uses the tag `v4.3.0` as an example.
 
    ```
    git checkout v4.3.0
@@ -168,9 +168,7 @@ Use the following instructions to build the Edge Installer ISO. The optional ste
 
     :::tip
 
-    You can take advantage of the Tech Preview feature to edit user data in Local UI after installation. However, we
-    still recommend you provide user data during EdgeForge for production workloads because this is a Tech Preview
-    feature and not all fields are available for edit in Local UI.
+    You can take advantage of the Tech Preview feature to edit user data in Local UI after installation. However, we still recommend providing user data during EdgeForge when deploying production workloads, as this is a Tech Preview feature and not all fields are editable in the Local UI.
 
     :::
 

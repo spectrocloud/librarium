@@ -57,16 +57,16 @@ your Edge hosts come from a trusted source. For more information about content b
 
 <PartialsComponent category="palette-edge-canvos-version" name="canvos-version" />
 
-5. If you are using a self-hosted instance of Palette and have determined a specific CanvOS version, checkout out the
+5. If you are using a self-hosted instance of Palette and have determined a specific CanvOS version, check out the
    corresponding tag.
 
-   Otherwise, Check out the newest available tag. This guide uses the tag v4.4.4 as an example.
+   Otherwise, check out the newest available tag. This guide uses the tag v4.4.4 as an example.
 
    ```
    git checkout v4.4.4
    ```
 
-6. In **CanvOS**, create a file named **.edge_custom_config.yaml**.
+6. In `CanvOS`, create a file named `edge_custom_config.yaml`.
 
 7. Populate the YAML file with the following content. Replace the value for `base64EncodedValue` with the base64 encoded
    value of your public key. You can convert your PEM file to base64 using this command replacing `sample.pem` with your
@@ -84,8 +84,8 @@ your Edge hosts come from a trusted source. For more information about content b
              description: "This is a public key used for verifying content bundles and cluster definitions." 
    ```
 
-8. In your **.arg** file, add the following parameter `EDGE_CUSTOM_CONFIG` and provide the path to your
-   **.edge_custom_config.yaml** file.
+8. In your `.arg` file, add the following parameter `EDGE_CUSTOM_CONFIG` and provide the path to your
+   `.edge_custom_config.yaml` file.
 
    ```text {12}
     CUSTOM TAG=demo

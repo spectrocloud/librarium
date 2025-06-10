@@ -45,16 +45,16 @@ This document guides you through the process of producing Edge Installer ISOs th
 
 <PartialsComponent category="palette-edge-canvos-version" name="canvos-version" />
 
-5. If you are using a self-hosted instance of Palette and have determined a specific CanvOS version, checkout out the
+5. If you are using a self-hosted instance of Palette and have determined a specific CanvOS version, check out the
    corresponding tag.
 
-   Otherwise, Check out the newest available tag. This guide uses **v4.4.0** tag as an example.
+   Otherwise, check out the newest available tag. This guide uses `v4.4.0` tag as an example.
 
    ```shell
    git checkout v4.4.0
    ```
 
-6. Create a file named **.arg**. You can use the **.arg.template** file in the repository as a starting point. Refer to
+6. Create a file named `.arg`. You can use the `.arg.template` file in the repository as a starting point. Refer to
    [Edge Artifact Build Configurations](../../edgeforge-workflow/palette-canvos/arg.md) for available configuration
    parameters.
 
@@ -75,7 +75,7 @@ This document guides you through the process of producing Edge Installer ISOs th
 
    :::
 
-7. Create a file named **user-data**. You can use the **user-data.template** file in the repository as a starting point.
+7. Create a file named `user-data`. You can use the `user-data.template` file in the repository as a starting point.
    This is the file with which you can configure the Edge installer. Refer to
    [Edge Installer Configuration](../../edge-configuration/installer-reference.md) for available configuration
    parameters.
@@ -88,10 +88,10 @@ This document guides you through the process of producing Edge Installer ISOs th
 
    :::
 
-8. Customize the **Dockerfile**. You can install tools and dependencies and configure the image to meet your needs. Add
+8. Customize the `Dockerfile`. You can install tools and dependencies and configure the image to meet your needs. Add
    your customizations below the line tagged with the `Add any other image customizations here` comment in the
    Dockerfile. Do not edit or add any lines before this tagged comment. For example, you can add the following line to
-   the **Dockerfile** to install WireGuard.
+   the `Dockerfile` to install WireGuard.
 
    ```dockerfile
    ...

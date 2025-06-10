@@ -158,7 +158,7 @@ artifacts at the same time.
     :::
 
 11. (Optional) If you want to build multiple versions of provider images using different Kubernetes versions, remove the
-    `K8S_VERSION` argument from the `.arg` file. Open the `k8s_version.json` file in the CanvOS directory. Remove the
+    `K8S_VERSION` argument from the `.arg` file. Open the `k8s_version.json` file in the `CanvOS` directory. Remove the
     Kubernetes versions that you don't need from the JSON object corresponding to your Kubernetes distribution.
 
 12. (Optional) This step is only required if your builds occur in a proxied network environment, and your proxy servers
