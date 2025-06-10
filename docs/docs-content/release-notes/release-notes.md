@@ -16,12 +16,8 @@ tags: ["release-notes"]
 ### Breaking Changes
 
 - Beginning with Palette version 4.6.x, a [Private Cloud Gateway (PCG)](../clusters/pcg/pcg.md) is required for
-  [self-hosted Palette](../enterprise-version/enterprise-version.md) or [VerteX](../vertex/vertex.md) installations
-  using both [Azure Public Cloud](../clusters/public-cloud/azure/azure.md) and
-  [Azure US Government](https://azure.microsoft.com/en-us/explore/global-infrastructure/government).
-
-  A PCG is not required unless you configure both an Azure Public Cloud and Azure US Government account on the same
-  installation.
+  [self-hosted Palette](../enterprise-version/enterprise-version.md) and [VerteX](../vertex/vertex.md) installations
+if you need to configure both an [Azure Public Cloud](../clusters/public-cloud/azure/azure.md) and [Azure US Government](https://azure.microsoft.com/en-us/explore/global-infrastructure/government) account.
 
   If you do not configure a PCG, you must install two instances of Palette or VerteX: one for Azure Public Cloud
   clusters and one for Azure US Government clusters. For more information on adding Azure cloud accounts, refer to the
