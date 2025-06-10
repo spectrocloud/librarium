@@ -21,9 +21,9 @@ same boot artifacts across any number of nodes.
 
 ## Prerequisites
 
-- A Palette Installer ISO built using [CanvOS](https://github.com/spectrocloud/CanvOS) tag version 4.6.21 or later. You
-  do not need to customize this installer using `user-data`, because you will only be extracting a few boot artifacts
-  from this ISO and customizations will not be preserved.
+- A Palette Installer ISO built using CanvOS tag version 4.6.21 or later. You do not need to customize this installer
+  using `user-data`, because you only need to extract a few boot artifacts from this ISO and it does not preserve
+  customizations.
 
 - A Linux host machine that is capable of serving files over an HTTP/HTTPS server. This guide uses Python 3 and the
   `http-server` module to serve the artifacts, but you can use any other tool to start your server.
@@ -59,9 +59,9 @@ same boot artifacts across any number of nodes.
    sudo umount /mnt
    ```
 
-4. Create a configuration file that will be used by the installer. This is equivalent to your `user-data` file you use
-   to configure the Edge installer ISO. Refer to [Prepare User Data](../../edgeforge-workflow/prepare-user-data.md) for
-   more information.
+4. Create a configuration file for the installer to use. This is equivalent to your `user-data` file you use to
+   configure the Edge installer ISO. Refer to
+   [Prepare User Data and Argument Files](../../edgeforge-workflow/prepare-user-data.md) for more information.
 
    ```bash
    cat > ~/ipxe/netboot/config.yaml <<'EOF'
@@ -79,10 +79,10 @@ same boot artifacts across any number of nodes.
 
    Leave this server running and perform the subsequent steps in a different terminal tab.
 
-6. In different terminal tab, but still on your Linux host, create an iPXE script that will tell your VMs booted from
-   the iPXE ISO to download the boot artifacts and boot using those artifacts. Replace `<YOUR_SERVER_IP>` with the IP
-   address of your HTTP server. Often, this is the IP address of your Linux host, unless you specified otherwise. You
-   can use `ip addr show` to obtain your IP address if your do not know it.
+6. In a different terminal tab, but still on your Linux host, create an iPXE script that tells your VMs booted from the
+   iPXE ISO to download the boot artifacts and boot using those artifacts. Replace `<YOUR_SERVER_IP>` with the IP
+   address of your HTTP server. Often, this is the IP address of your Linux host unless you specify otherwise. You can
+   use `ip addr show` to obtain your IP address if your do not know it.
 
    ```bash
    cat > ~/ipxe/netboot/palette.ipxe <<'EOF'
@@ -93,9 +93,9 @@ same boot artifacts across any number of nodes.
    EOF
    ```
 
-7. Download the generic iPXE ISO and upload it to your vCenter datastore. Replace `path/to/datastore/iso` to the vCenter
-   datastore path where you want to upload the ISO. You may need to configure the correct environment variables with
-   credentials to your vCenter environment to use the `govc` command.
+7. Download the generic iPXE ISO and upload it to your vCenter datastore. Replace `path/to/datastore/iso` with the
+   vCenter datastore path where you want to upload the ISO. You may need to configure the correct environment variables
+   with credentials to your vCenter environment to use the `govc` command.
 
    ```bash
    wget https://boot.ipxe.org/ipxe.iso -O ~/ipxe/ipxe.iso
@@ -122,8 +122,8 @@ same boot artifacts across any number of nodes.
    - 32 GB RAM
    - 300 GB disk
 
-9. Add a CD/DVD device to your VM. Choose the iPXE ISO you previously uploaded to your vCenter datastore. Ensure that
-   you check **Connect on Power On** option to ensure that the ISO is connected when your VM boots.
+9. Add a CD/DVD device to your VM. Choose the iPXE ISO you previously uploaded to your vCenter datastore. Make sure you
+   check **Connect on Power On** option to ensure that the ISO is connected when your VM boots.
 
 10. Finish configuring your VM and power it on.
 
@@ -146,8 +146,8 @@ same boot artifacts across any number of nodes.
     ```
 
     This tells iPXE to download and execute the script you wrote, which kicks off the install using the boot artifacts
-    and your config file. The VM will download the `kernel`, `initrd`, and `rootfs` and begin the installation using
-    your `config.yaml` (user-data).
+    and your config file. The VM then downloads `kernel`, `initrd`, and `rootfs` and begin the installation using your
+    `config.yaml` (user-data).
 
 ## Validate
 
