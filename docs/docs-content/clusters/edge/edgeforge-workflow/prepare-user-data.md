@@ -178,14 +178,16 @@ You can create presets to use as reusable building blocks for future instances o
 1. Specify the system architecture and OS distribution and version. These configurations will apply to both the OS of
    your Edge host before and after cluster formation.
 
-2. Specify the Kubernetes distribution. The Kubernetes distribution is used together with the OS distribution and
-   version to create an immutable provider image that has your specified OS and Kubernetes.
+2. Specify the Kubernetes distribution and version. The Kubernetes distribution is used together with the OS
+   distribution and version to create an immutable provider image that has your specified OS and Kubernetes.
 
-   The Kubernetes version is specified in a different file named `k8s_version.json`.
+   If you want to build multiple versions of a provider image with different Kubernetes versions, use the
+   `k8s_version.json` file in the repository. You must leave the `K8s_VERSION` empty if you want to use the JSON file
+   because it is only used when `K8s_VERSION` is not detected as an argument.
 
 3. Specify the image registry, image repository name, and image tag that will be used to tag your provider images. The
    custom tag, together with the Palette agent version (the same number as the Git tag you are using), the version and
-   distribution of Kubernetes and the OS distribution used by the image forms the tag of the image.
+   distribution of Kubernetes and the OS used by the image forms the tag of the image.
 
    For example, if your `.arg` file contains the following arguments, the full image reference would be
    `ttl.sh/ubuntu:k3s-1.32.1-v4.6.21-demo`.
@@ -195,6 +197,7 @@ You can create presets to use as reusable building blocks for future instances o
    IMAGE_REPO=ubuntu
    CUSTOM_TAG=demo
    K8S_DISTRIBUTION=k3s
+   K8s_VERSION=1.31.7
    OS_DISTRIBUTION=ubuntu
    OS_VERSION=22
    ```
