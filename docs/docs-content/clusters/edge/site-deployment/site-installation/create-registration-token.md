@@ -29,7 +29,7 @@ To create a registration token, use the following steps.
 
 3. Navigate to the left main menu and select **Tenant Settings**.
 
-4. Select **Registration Tokens** in the **Tenant Settings** menu.
+4. Select **Registration Tokens** in the **Tenant Settings Menu**.
 
 5. Click **Add New Registration Token**.
 
