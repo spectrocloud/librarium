@@ -204,8 +204,8 @@ workaround.
 
 13. Create a file named `.arg`. This file will contain parameters that customize the Edge Installer ISO build.
 
-14. In the `.arg` file, provide the following required information. Refer to
-    [Edge Artifact Build Configuration](arg.md) for more information.
+14. In the `.arg` file, provide the following required information. Refer to [Edge Artifact Build Configuration](arg.md)
+    for more information.
 
     | Argument         | Description                                                                                                                                                                                                                      |
     | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -316,8 +316,8 @@ FIPS-complaint provider images are built on top of the base OS image you have bu
     the `K8S_VERSION` argument from the `.arg` file. Open the `k8s_version.json` file in the `CanvOS` directory. Remove
     the Kubernetes versions that you don't need from the JSON object corresponding to your Kubernetes distribution.
 
-20. Review the `.arg` file again to ensure the parameters are correct. Issue the following command to build the
-    provider images.
+20. Review the `.arg` file again to ensure the parameters are correct. Issue the following command to build the provider
+    images.
 
     ```shell
       ./earthly.sh +build-provider-images-fips
