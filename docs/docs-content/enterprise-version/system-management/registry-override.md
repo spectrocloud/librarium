@@ -94,7 +94,7 @@ Select the appropriate tab below based on the environment in which your VertX cl
    | `baseContentPath`    | The base path of the custom image registry.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                | Yes      |
    | `insecureSkipVerify` | Set to `true` if the custom image registry uses an insecure connection or a self-signed certificate. Set to `false` if the custom image registry uses a secure connection.                                                                                                                                                                                                                                                                                                                                                 | Yes      |
    | `caCert`             | The Certificate Authority of the custom image registry in the PEM format. Required if the custom image registry uses a self-signed certificate.                                                                                                                                                                                                                                                                                                                                                                            | No       |
-   | `mirrorRegistries`   | [image swap format](https://github.com/phenixblue/imageswap-webhook/blob/master/docs/configuration.md) for pulling images. For example: `docker.io::harbor.example.org/airgap-images/docker.io,gcr.io::harbor.example.org/airgap-images/gcr.io,ghcr.io::harbor.example.org/airgap-images/ghcr.io,k8s.gcr.io::harbor.example.org/airgap-images/gcr.io,registry.k8s.io::harbor.example.org/airgap-images/k8s.io,quay.io::harbor.example.org/airgap-images/quay.io,us-east1-docker.pkg.dev::harbor.example.org/airgap-images` | Yes      |
+   | `mirrorRegistries`   | [image swap format](https://github.com/phenixblue/imageswap-webhook/blob/master/docs/configuration.md) for pulling images. For example: `docker.io::harbor.example.org/airgap-images/docker.io,gcr.io::harbor.example.org/airgap-images/gcr.io,ghcr.io::harbor.example.org/airgap-images/ghcr.io,k8s.gcr.io::harbor.example.org/airgap-images/gcr.io,registry.k8s.io::harbor.example.org/airgap-images/k8s.io,quay.io::harbor.example.org/airgap-images/quay.io,us-docker.pkg.dev::harbor.example.org/airgap-images` | Yes      |
 
     <details>
     <!-- prettier-ignore -->
@@ -117,7 +117,7 @@ Select the appropriate tab below based on the environment in which your VertX cl
        baseContentPath: "airgap-images" #<Contact Spectro Cloud Sales for More info>
        insecureSkipVerify: false
        caCert: ""
-       mirrorRegistries: "docker.io::harbor.example.org/airgap-images/docker.io,gcr.io::harbor.example.org/airgap-images/gcr.io,ghcr.io::harbor.example.org/airgap-images/ghcr.io,k8s.gcr.io::harbor.example.org/airgap-images/gcr.io,registry.k8s.io::harbor.example.org/airgap-images/k8s.io,quay.io::harbor.example.org/airgap-images/quay.io,us-east1-docker.pkg.dev::harbor.example.org/airgap-images"
+       mirrorRegistries: "docker.io::harbor.example.org/airgap-images/docker.io,gcr.io::harbor.example.org/airgap-images/gcr.io,ghcr.io::harbor.example.org/airgap-images/ghcr.io,k8s.gcr.io::harbor.example.org/airgap-images/gcr.io,registry.k8s.io::harbor.example.org/airgap-images/k8s.io,quay.io::harbor.example.org/airgap-images/quay.io,us-docker.pkg.dev::harbor.example.org/airgap-images"
    ```
 
     </details>
@@ -186,7 +186,7 @@ Select the appropriate tab below based on the environment in which your VertX cl
    | `PASSWORD`          | The password to authenticate with the custom image registry. If the custom image registry does not require authentication, you can leave this field empty.                                                                                                                                                                                                                                                                                                                                                                                                                           | No       |
    | `INSECURE`          | Set to `true` if the custom image registry uses an insecure connection or a self-signed certificate. Set to `false` if the custom image registry uses a secure connection.                                                                                                                                                                                                                                                                                                                                                                                                           | Yes      |
    | `CA_CERT`           | The Certificate Authority of the custom image registry in the PEM format. Required if the custom image registry uses a self-signed certificate.                                                                                                                                                                                                                                                                                                                                                                                                                                      | No       |
-   | `MIRROR_REGISTRIES` | A comma-separated list of mirror registries in the [image swap format](https://github.com/phenixblue/imageswap-webhook/blob/master/docs/configuration.md) to use for pulling images. For example: `docker.io::harbor.example.org/airgap-images/docker.io,gcr.io::harbor.example.org/airgap-images/gcr.io,ghcr.io::harbor.example.org/airgap-images/ghcr.io,k8s.gcr.io::harbor.example.org/airgap-images/gcr.io,registry.k8s.io::harbor.example.org/airgap-images/k8s.io,quay.io::harbor.example.org/airgap-images/quay.io,us-east1-docker.pkg.dev::harbor.example.org/airgap-images` | Yes      |
+   | `MIRROR_REGISTRIES` | A comma-separated list of mirror registries in the [image swap format](https://github.com/phenixblue/imageswap-webhook/blob/master/docs/configuration.md) to use for pulling images. For example: `docker.io::harbor.example.org/airgap-images/docker.io,gcr.io::harbor.example.org/airgap-images/gcr.io,ghcr.io::harbor.example.org/airgap-images/ghcr.io,k8s.gcr.io::harbor.example.org/airgap-images/gcr.io,registry.k8s.io::harbor.example.org/airgap-images/k8s.io,quay.io::harbor.example.org/airgap-images/quay.io,us-docker.pkg.dev::harbor.example.org/airgap-images` | Yes      |
 
       <details>
       <!-- prettier-ignore -->
@@ -202,7 +202,7 @@ Select the appropriate tab below based on the environment in which your VertX cl
      PASSWORD: ""
      INSECURE: "false"
      CA_CERT: ""
-     MIRROR_REGISTRIES: docker.io::harbor.example.org/airgap-images/docker.io,gcr.io::harbor.example.org/airgap-images/gcr.io,ghcr.io::harbor.example.org/airgap-images/ghcr.io,k8s.gcr.io::harbor.example.org/airgap-images/gcr.io,registry.k8s.io::harbor.example.org/airgap-images/k8s.io,quay.io::harbor.example.org/airgap-images/quay.io,us-east1-docker.pkg.dev::harbor.example.org/airgap-images
+     MIRROR_REGISTRIES: docker.io::harbor.example.org/airgap-images/docker.io,gcr.io::harbor.example.org/airgap-images/gcr.io,ghcr.io::harbor.example.org/airgap-images/ghcr.io,k8s.gcr.io::harbor.example.org/airgap-images/gcr.io,registry.k8s.io::harbor.example.org/airgap-images/k8s.io,quay.io::harbor.example.org/airgap-images/quay.io,us-docker.pkg.dev::harbor.example.org/airgap-images
    kind: Secret
    metadata:
      name: registry-info
@@ -291,7 +291,7 @@ Use the following steps to override the image registry configuration.
      PASSWORD: ""
      INSECURE: "false"
      CA_CERT: ""
-     MIRROR_REGISTRIES: docker.io::harbor.example.org/airgap-images/docker.io,gcr.io::harbor.example.org/airgap-images/gcr.io,ghcr.io::harbor.example.org/airgap-images/ghcr.io,k8s.gcr.io::harbor.example.org/airgap-images/gcr.io,registry.k8s.io::harbor.example.org/airgap-images/k8s.io,quay.io::harbor.example.org/airgap-images/quay.io,us-east1-docker.pkg.dev::harbor.example.org/airgap-images
+     MIRROR_REGISTRIES: docker.io::harbor.example.org/airgap-images/docker.io,gcr.io::harbor.example.org/airgap-images/gcr.io,ghcr.io::harbor.example.org/airgap-images/ghcr.io,k8s.gcr.io::harbor.example.org/airgap-images/gcr.io,registry.k8s.io::harbor.example.org/airgap-images/k8s.io,quay.io::harbor.example.org/airgap-images/quay.io,us-docker.pkg.dev::harbor.example.org/airgap-images
    kind: Secret
    metadata:
      name: registry-info
@@ -329,7 +329,7 @@ Use the following steps to override the image registry configuration.
    The command returns the mirror registries that you configured in the `MIRROR_REGISTRIES` parameter.
 
    ```shell hideClipboard
-   docker.io::harbor.example.org/airgap-images/docker.io,gcr.io::harbor.example.org/airgap-images/gcr.io,ghcr.io::harbor.example.org/airgap-images/ghcr.io,k8s.gcr.io::harbor.example.org/airgap-images/gcr.io,registry.k8s.io::harbor.example.org/airgap-images/k8s.io,quay.io::harbor.example.org/airgap-images/quay.io,us-east1-docker.pkg.dev::harbor.example.org/airgap-images
+   docker.io::harbor.example.org/airgap-images/docker.io,gcr.io::harbor.example.org/airgap-images/gcr.io,ghcr.io::harbor.example.org/airgap-images/ghcr.io,k8s.gcr.io::harbor.example.org/airgap-images/gcr.io,registry.k8s.io::harbor.example.org/airgap-images/k8s.io,quay.io::harbor.example.org/airgap-images/quay.io,us-docker.pkg.dev::harbor.example.org/airgap-images
    ```
 
 4. Deploy a cluster through Palette. Palette will propagate the image registry configuration to the workload cluster,
@@ -378,6 +378,6 @@ Use the following steps to override the image registry configuration.
            endpoint = ["harbor.example.org/airgap-images/k8s.io"]
          [plugins."io.containerd.grpc.v1.cri".registry.mirrors."quay.io"]
            endpoint = ["harbor.example.org/airgap-images/quay.io"]
-         [plugins."io.containerd.grpc.v1.cri".registry.mirrors."us-east1-docker.pkg.dev"]
+         [plugins."io.containerd.grpc.v1.cri".registry.mirrors."us-docker.pkg.dev"]
            endpoint = ["harbor.example.org/airgap-images"]
    ```
