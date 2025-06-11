@@ -11,25 +11,19 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## June 10, 2025 - Release 4.6.35
+## June 11, 2025 - Release 4.6.35
 
 ### Breaking Changes
 
-- Beginning with Palette version 4.6.35, a [Private Cloud Gateway (PCG)](../clusters/pcg/pcg.md) is required for
-  [self-hosted Palette](../enterprise-version/enterprise-version.md) and [VerteX](../vertex/vertex.md) installations if
-  you need to configure both an [Azure Public Cloud](../clusters/public-cloud/azure/azure.md) and
-  [Azure US Government](https://azure.microsoft.com/en-us/explore/global-infrastructure/government) account.
+- Beginning with Palette version 4.6.35, a [Private Cloud Gateway (PCG)](../clusters/pcg/pcg.md) is required to add an [Azure US Government](https://azure.microsoft.com/en-us/explore/global-infrastructure/government) cloud account. 
 
-  If you do not configure a PCG, you must install two instances of Palette or VerteX: one for Azure Public Cloud
-  clusters and one for Azure US Government clusters. For more information on adding Azure cloud accounts, refer to the
-  [Register and Manage Azure Cloud Account](../clusters/public-cloud/azure/azure-cloud.md) guide.
+  If you are using a [self-hosted Palette](../enterprise-version/enterprise-version.md) or [VerteX](../vertex/vertex.md) instance, a PCG is not required unless you configure both an [Azure Public Cloud](../clusters/public-cloud/azure/azure.md) and Azure US Government account on the same installation; in this case, a PCG can be used for either cloud account. If you do not configure a PCG, you must install two instances of Palette or VerteX: one for Azure Public Cloud clusters and one for Azure US Government clusters. For more information on adding Azure cloud accounts, refer to the [Register and Manage Azure Cloud Account](../clusters/public-cloud/azure/azure-cloud.md) guide.
 
 ### Bug Fixes
 
 - Fixed an issue that prevented [Azure IaaS](../clusters/public-cloud/azure/create-azure-cluster.md) and
-  [Azure AKS](../clusters/public-cloud/azure/aks.md) clusters configured to use an
-  [Azure US Government cloud account](../clusters/public-cloud/azure/azure-cloud.md#add-azure-cloud-account) from being
-  provisioned. Clusters using both [Azure Public Cloud](../clusters/public-cloud/azure/azure.md) and
+  [AKS](../clusters/public-cloud/azure/aks.md) clusters from being deployed using an
+  [Azure US Government cloud account](../clusters/public-cloud/azure/azure-cloud.md#add-azure-cloud-account). Clusters that will be deployed on both [Azure Public Cloud](../clusters/public-cloud/azure/azure.md) and
   [Azure US Government](https://azure.microsoft.com/en-us/explore/global-infrastructure/government) require a PCG. Refer
   to [Known Issues](./known-issues.md) for further details.
 - Fixed an issue that caused system errors after
@@ -39,6 +33,7 @@ tags: ["release-notes"]
   Machine Image (AMI).
 - Fixed an issue that caused memory leaks on [Azure IaaS clusters](../clusters/public-cloud/azure/azure.md). This was
   caused by an [upstream issue](https://github.com/kubernetes-sigs/cluster-api-provider-azure/issues/5410) in CAPZ.
+- Fixed an issue that prevented [Azure IaaS](../clusters/public-cloud/azure/create-azure-cluster.md) clusters using the same control plane and worker node subnet from being deployed.
 
 ## June 6, 2025 - Release 4.6.34
 
