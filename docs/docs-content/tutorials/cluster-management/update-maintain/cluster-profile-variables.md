@@ -98,13 +98,13 @@ Select **{} Variables**. Next, select **{} Create variable**.
 
 On the **Create variable** page, fill in the following information.
 
-| Variable Setting  | Value                                                 |
-| ----------------- | ----------------------------------------------------- |
-| **Variable**      | Enter "namespace".                                    |
-| **Display**       | Enter "WordPress: Namespace".                         |
-| **Description**   | Enter "Enter a new namespace for the WordPress pack." |
-| **Format**        | Select **String** from the drop-down.                 |
-| **Default value** | Set to **enable** and in the box enter "wordpress".   |
+| Variable Setting  | Value                                               |
+| ----------------- | --------------------------------------------------- |
+| **Variable**      | Enter "namespace".                                  |
+| **Display**       | Enter "WordPress: Namespace".                       |
+| **Description**   | Enter "Namespace for the WordPress pack."           |
+| **Format**        | Select **String** from the drop-down.               |
+| **Default value** | Set to **enable** and in the box enter "wordpress". |
 
 Click **Create** to save your cluster profile variable options.
 
@@ -145,13 +145,13 @@ Add the following variables and their default values. After each variable, ensur
 
 #### Variable: wordpress_replica
 
-| Variable Setting  | Value                                                 |
-| ----------------- | ----------------------------------------------------- |
-| **Variable**      | Enter "`wordpress_replica`".                          |
-| **Display name**  | Enter "WordPress: Replica Count".                     |
-| **Description**   | Enter "The number of replicas for the WordPress app". |
-| **Format**        | Select **Number** from the drop-down.                 |
-| **Default value** | Set to enable and enter "1".                          |
+| Variable Setting  | Value                                             |
+| ----------------- | ------------------------------------------------- |
+| **Variable**      | Enter "`wordpress_replica`".                      |
+| **Display name**  | Enter "WordPress: Replica Count".                 |
+| **Description**   | Enter "Number of replicas for the WordPress app". |
+| **Format**        | Select **Number** from the drop-down.             |
+| **Default value** | Set to enable and enter "1".                      |
 
 #### Variable: wordpress_port
 
@@ -189,7 +189,7 @@ filter for **wordpress**. Three pods are displayed similar to the following scre
 WordPress database memory cache and one for the WordPress web server. This is the default deployment behavior for the
 WordPress pack.
 
-<!-- image here -->
+![Image that shows default WordPress deployment](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-default-wp-deploy.webp)
 
 In [Palette](https://console.spectrocloud.com/), select your profile and use the **drop-down Menu** to set the profile
 version to **1.1.0**. Choose **Review & Save**. On the **Changes Summary** page, select **Review changes in Editor**.
@@ -202,9 +202,6 @@ values for each variable.
 | **WordPress: Replica Count** | Enter "`3`".                |
 | **WordPress: HTTP Port**     | Enter "`9090`".             |
 | **WordPress: Namespace**     | Enter "`new-wordpress-ns`". |
-
-<!--  -->
-<!-- Redo image -->
 
 ![Image that shows how to copy and paste variable, then save it in the YAML file](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-update-variables.webp)
 
