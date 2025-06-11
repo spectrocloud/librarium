@@ -88,7 +88,7 @@ Below is an example of how to configure an external registry.
 stylus:
   externalRegistries:
     registries:
-      - domain: "example.registry.com/internal-images"
+      - domain: "example.registry.com/palette-images"
         username: "admin"
         password: "***************"
         repositoryName: example-repository-private
@@ -120,10 +120,10 @@ stylus:
             DlN636dYFSJBG3LjGuzyO66kEvbGJAIT
             -----END CERTIFICATE-----
     registryMappingRules:
-      "us-east1-docker.pkg.dev/spectro-images/daily": "example.registry.com/internal-images"
-      "us-docker.pkg.dev/palette-images": "example.registry.com/internal-images"
-      "grc.io/spectro-dev-public": "example.registry.com/internal-images"
-      "grc.io/spectro-images-public": "example.registry.com/internal-images"
+      "us-docker.pkg.dev/palette-images": "example.registry.com/palette-images"
+      "us-east1-docker.pkg.dev/spectro-images/daily": "example.registry.com/palette-images"
+      "grc.io/spectro-dev-public": "example.registry.com/palette-images"
+      "grc.io/spectro-images-public": "example.registry.com/palette-images"
 ```
 
 #### Registry Mapping Rules
@@ -131,22 +131,22 @@ stylus:
 Use registry mapping rules to map a domain name to an external registry. The `registryMappingRules` parameter accepts a
 list of key-value pairs where the key is the domain name and the value is a URL mapping to the external registry.
 
-Below is an example of registry mapping rules. The registry in the code snippet, `example.registry.com/internal-images`
+Below is an example of registry mapping rules. The registry in the code snippet, `example.registry.com/palette-images`
 is assumed to contain the images that are mapped from the external registries.
 
 ```yaml
 stylus:
   externalRegistries:
     registries:
-      - domain: "example.registry.com/internal-images"
+      - domain: "example.registry.com/palette-images"
         repositoryName: "primary-registry"
         username: "admin"
         password: "***************"
     registryMappingRules:
-      "us-east1-docker.pkg.dev/spectro-images/daily": "example.registry.com/internal-images"
-      "us-docker.pkg.dev/palette-images": "example.registry.com/internal-images"
-      "grc.io/spectro-dev-public": "example.registry.com/internal-images"
-      "grc.io/spectro-images-public": "example.registry.com/internal-images"
+      "us-docker.pkg.dev/palette-images": "example.registry.com/palette-images"
+      "us-east1-docker.pkg.dev/spectro-images/daily": "example.registry.com/palette-images"
+      "grc.io/spectro-dev-public": "example.registry.com/palette-images"
+      "grc.io/spectro-images-public": "example.registry.com/palette-images"
 ```
 
 All matched portion on the source URL will be replaced with the mapped value and any unmatched path is preserved. Using
@@ -167,11 +167,11 @@ downloaded when creating the [content bundle](../edgeforge-workflow/palette-canv
 Palette will automatically update the image path when <VersionedLink text="Harbor Edge-Native Config" url="/integrations/packs/?pack=harbor-edge-native-config" />  pack is enabled. For example, if you have a registry mapping rule such as the following.
 
 ```yaml
-"us-east1-docker.pkg.dev/spectro-images/daily": "example.registry.com/internal-images"
+"us-docker.pkg.dev/palette-images": "example.registry.com/palette-images"
 ```
 
 Then the image tag will be updated with the prefix URL to the Harbor registry, such as
-`https://10.10.100.45:30003/example.registry.com/internal-images`. Palette will do this for all registry mapping rules
+`https://10.10.100.45:30003/example.registry.com/palette-images`. Palette will do this for all registry mapping rules
 specified in the user data. This allows the Edge host to find and pull images that came from an external registry
 through the local Harbor registry.
 
@@ -182,10 +182,10 @@ stylus:
   installationMode: airgap
   externalRegistries:
     registryMappingRules:
-      "us-east1-docker.pkg.dev/spectro-images/daily": "example.registry.com/internal-images"
-      "us-docker.pkg.dev/palette-images": "example.registry.com/internal-images"
-      "grc.io/spectro-dev-public": "example.registry.com/internal-images"
-      "grc.io/spectro-images-public": "example.registry.com/internal-images"
+      "us-docker.pkg.dev/palette-images": "example.registry.com/palette-images"
+      "us-east1-docker.pkg.dev/spectro-images/daily": "example.registry.com/palette-images"
+      "grc.io/spectro-dev-public": "example.registry.com/palette-images"
+      "grc.io/spectro-images-public": "example.registry.com/palette-images"
 ```
 
 ### Single External Registry

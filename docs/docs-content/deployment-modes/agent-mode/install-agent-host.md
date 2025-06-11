@@ -378,7 +378,7 @@ Palette. You will then create a cluster profile and use the registered host to d
          projectName: Default
        externalRegistries:
          registries:
-           - domain: "example.registry.com/internal-images"
+           - domain: "example.registry.com/palette-images"
              username: "admin"
              password: "***************"
              repositoryName: example-repository-private
@@ -388,7 +388,7 @@ Palette. You will then create a cluster profile and use the registered host to d
                   **********************
                   -----END CERTIFICATE-----
          registryMappingRules:
-           "us-east1-docker.pkg.dev/spectro-images/daily": "example.registry.com/internal-images"
+           "us-docker.pkg.dev/palette-images": "example.registry.com/palette-images"
 
      stages:
        initramfs:
@@ -424,7 +424,7 @@ Palette. You will then create a cluster profile and use the registered host to d
        projectName: Default
      externalRegistries:
        registries:
-         - domain: "example.registry.com/internal-images"
+         - domain: "example.registry.com/palette-images"
            username: "admin"
            password: "***************"
            repositoryName: example-repository-private
@@ -434,7 +434,7 @@ Palette. You will then create a cluster profile and use the registered host to d
                 **********************
                 -----END CERTIFICATE-----
        registryMappingRules:
-         "us-east1-docker.pkg.dev/spectro-images/daily": "example.registry.com/internal-images"
+         "us-docker.pkg.dev/palette-images": "example.registry.com/palette-images"
    stages:
      initramfs:
        - users:
