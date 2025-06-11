@@ -16,65 +16,67 @@ customize and deploy a VM.
 
 ## Prerequisites
 
-- Access to a MAAS data center environment.
+<Tabs groupId="Workflows">
 
-- Two MAAS machines with the following minimum hardware requirements:
+<TabItem label="UI Workflow" value="UI Workflow">
 
-  - 8 CPU Cores
-  - 32 GB RAM
-  - 250 GB Storage
-  - Worker node must have two disks
+<PartialsComponent category="vmo" name="vmo-tutorial-requirements" />
 
-- Three routable, static IP addresses available in your MAAS environment's network.
+</TabItem>
 
-- An existing [MAAS Private Cloud Gateway (PCG)](/clusters/pcg/deploy-pcg/maas.md) in your MAAS environment.
+<TabItem label="Terraform Workflow" value="Terraform Workflow">
 
-- [kubectl](https://kubernetes.io/docs/tasks/tools/) installed locally.
+<PartialsComponent category="vmo" name="vmo-tutorial-requirements" />
 
-- Terraform Only
+- The following software installed locally
 
-  - [Git](https://git-scm.com/downloads) installed locally.
+  - [Git](https://git-scm.com/downloads)
 
-  - [Terraform v1.12.1](https://developer.hashicorp.com/terraform/install) installed locally.
+  - [Terraform v1.12.1](https://developer.hashicorp.com/terraform/install)
 
-#### Packs Used
+- Clone the Spectro Cloud Tutorials repo.
 
-| **Pack Name**                    | **Version** | **Description**                                                                                                                                                                                                                                                                                                                                                                                  | **ReadMe Link**                                                                                                                        |
-| -------------------------------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------- |
-| Virtual Machine Orchestrator | `4.6.3`     | The Palette Virtual Machine Orchestrator (VMO) pack consolidates all components that you need to deploy and manage Virtual Machines (VMs) alongside containers in a Kubernetes host cluster. You can deploy VMO as an add-on cluster profile on top of an existing data center or edge cluster.                                                                                                  | <VersionedLink text="Virtual Machine Orchestrator Readme" url="/integrations/packs/?pack=virtual-machine-orchestrator&version=4.6.3"/> |
-| MetalLB (Helm)              | `0.14.9`    | A load-balancer implementation for bare metal Kubernetes clusters, using standard routing protocols. Offers a network load balancer implementation that integrates with standard network equipment.                                                                                                                                                                                              | <VersionedLink text="Cilium Readme" url="/integrations/packs/?pack=lb-metallb-helm&version=1.14.9"/>                                   |
-| Rook-Ceph (Helm)           | `v1.16.3`   | **Rook** is an open source cloud-native storage orchestrator for Kubernetes, providing the platform, framework, and support for Ceph storage to natively integrate with Kubernetes. **Ceph** is a distributed storage system that provides file, block and object storage and is deployed in large scale production clusters.                                                                    | <VersionedLink text="Cilium Readme" url="/integrations/packs/?pack=csi-rook-ceph-helm&version=1.16.3"/>                                |
-| Cilium                       | `v1.17.1`   | Cilium is a networking, observability, and security solution with an eBPF-based data plane.                                                                                                                                                                                                                                                                                                      | <VersionedLink text="Cilium Readme" url="/integrations/packs/?pack=cni-cilium-oss&version=1.17.1"/>                                    |
-| Palette eXtended Kubernetes  | `v1.32.2`   | Palette eXtended Kubernetes (PXK) is a recompiled version of the open source Cloud Native Computing Foundation (CNCF) distribution of Kubernetes. This Kubernetes version can be deployed through Palette to all major infrastructure providers, public cloud providers, and private data center providers. This is the default distribution when deploying a Kubernetes cluster through Palette | <VersionedLink text="Palette eXtended Kubernetes Readme" url="/integrations/packs/?pack=kubernetes&version=1.32.2"/>                   |
-| Ubuntu Mass                  | `v22.04`    | Ubuntu is a free, open source Operating System (OS) based on Linux used on desktops, servers, in the cloud, and for IoT devices. Ubuntu is a Linux distribution derived from Debian.                                                                                                                                                                                                             | <VersionedLink text="Ubuntu Readme" url="/integrations/packs/?pack=kubernetes&version=1.32.2"/>                                        |
+```shell
+git clone https://github.com/spectrocloud/tutorials.git
+```
+
+- Navigate to the vmo-cluster folder
+
+```shell
+cd tutorials/terraform/vmo-cluster
+```
+</TabItem>
+
+</Tabs>
 
 ## Create a VMO Cluster Profile
 
 <Tabs groupId="Workflows">
 
-<TabItem label="UI" value="UI Workflow">
+<TabItem label="UI Workflow" value="UI Workflow">
 
-Log in to [Palette](https://console.spectrocloud.com).
+This section will guide you through creating a cluster profile using the Palette UI. 
 
-From the left main menu, select **Profiles** > **Add Cluster Profile**.
+Log in to [Palette](https://console.spectrocloud.com). From the left main menu, select **Profiles** > **Add Cluster Profile**.
 
-Enter the name, version number, and any tags you wish to apply to the profile. Set the type value to **Full**. Select
-**Next**.
+In the **Basic Information** section, enter the name, version number, and any tags you wish to apply to the profile. Set the type value to **Full**. Select **Next**.
 
-The **Cloud Type** screen appears with all available options for automated deployment of Kubernetes clusters. Select **MAAS**
-from the **Infrastructure provider** column. Select **Next**.
+The **Cloud Type** screen appears with all available infrastructure options for the automated deployment of your Kubernetes cluster. Select **MAAS** from the **Infrastructure provider** column. Select **Next**.
 
-The first profile layer is the OS layer. This tutorial uses the _Ubuntu v22.04_ OS image from the _Palette Registry (OCI)_.
+The **Profile Layers** section allows you to select the packs that will compose your cluster profile.
 
-Select **Ubuntu latest: v22.04**.
+Add the **Ubuntu v22.04** to the OS layer.
+
+| **Pack Name** | **Version** | **Registry** | **Layer** |
+|---------------|-------------|--------------|-----------|
+| Ubuntu | 22.04 | Public Repo | Operating System |
+
+
 
 Ubuntu requires customizations to support VMO. Select **Values** and paste the following configuration
-into the text editor frame.
+into the **Manifest Editor**.
 
-Update the value for `NETWORKS` to the appropriate subnet for your environment. The value you enter must be in CIDR
-notation and encapsulated in quotes. For example, `192.169.0.0/16`.
-
-```yaml
+```yaml {9}
 kubeadmconfig:
   preKubeadmCommands:
     - 'echo "====> Applying pre Kubeadm commands"'
@@ -125,11 +127,18 @@ kubeadmconfig:
             SystemdCgroup = true
 ```
 
-Select **Next layer**.
+Update the value for `NETWORKS` to the appropriate "subnet for your environment. The value you enter must be in CIDR
+notation and encapsulated in quotes. For example, `"192.168.0.0/16"`. The image below displays the OS layer with the custom manifest and updated `NETWORKS` value.
 
-Select **Palette eXtended Kubernetes v1.32.2** from the Palette Registry (OCI).
+![image of the OS Layer configuration](/tutorials/deploy-vmo-maas/tutorials_vmo_vmo-maas_OS-Layer.webp)
 
-Select the **Properties** icon.
+Select **Next layer**. Add the **Palette Extended Kubernetes** pack to your cluster profile.
+
+| **Pack Name** | **Version** | **Registry** | **Layer** |
+|---------------|-------------|--------------|-----------|
+| Palette eXtended Kubernetes | 1.32.2 | Public Repo | Kubernetes |
+
+If necessary, set the **Pack Version** to `1.32.2` and select **Confirm Changes**. Select  **Values** to display the **OIDC Identity Provider** options.
 
 The Palette eXtended Kubernetes pack defaults to use a custom OIDC provider. This tutorial uses the Palette OIDC
 Identity Provider. By using Palette as your OIDC provider, your cluster is configured to send authentication requests to
@@ -139,94 +148,78 @@ Select **Palette** as the OIDC Identity Provider.
 
 ![Image of the properties icon](/tutorials/deploy-vmo-maas/tutorials_vmo_vmo-maas_configure-OIDC-properties.webp)
 
-Select the **Values** icon.
+Select the **Values** icon to open the **Manifest Editor**.
 
-You may configure a different OIDC provider by uncommenting the OIDC `clientConfig` section, and adding your
-configuration values.
-
-![Image of the properties icon](/tutorials/deploy-vmo-maas/tutorials_vmo_vmo-maas_Configure-OIDC-Values.webp)
-
-The Palette eXtended Kubernetes pack is pre-configured with subnets for both the clusters internal Pods and Services.
+The Palette eXtended Kubernetes pack is pre-configured with subnets for the clusters internal pods and services.
 Review the values for **podCIDR** and **serviceClusterIpRange** and update them if necessary.
 
 ![Image of the configuration lines where Pod and Services Subnets are set.](/tutorials/deploy-vmo-maas/tutorials_vmo_vmo-maas_pod-service-ips.webp)
 
-This template contains security configurations that restrict pod actions. In order for the Rook-Ceph Container Storage
-Interface (CSI) to function properly, the namespace it is deployed to must be excluded from these security
-configurations.
+This template contains security configurations that restrict pod actions. While this is a good practice, it can prevent some services from functioning correctly. One such service is the **Rook-Ceph** Container Storage Interface (CSI), which you will configure later in this tutorial. 
 
-Search for `PodSecurity` and update the exceptions value for `namespaces` to include `rook-ceph`.
+The **Rook-Ceph** deployment must be excluded from default pod security settings by excluding the namespace to which it will be deployed. Search the **Manifest Editor** for `namespaces` and update the value to include `rook-ceph`. The following screenshot displays the **Manifest Editor** with the `namespaces` field highlighted and the value updated.
 
 ![Image of the pod security namespace exclusion values](/tutorials/deploy-vmo-maas/tutorials_vmo_vmo-maas_podSecurity.webp)
 
-Select **Next layer**
+Select **Next layer** to advance to the Container Network Interface (CNI) layer.
 
-Select **Cilium v1.17.1** from the Palette Registry (OCI).
+Add the **Cilium** pack to your cluster profile.
 
-Select **Values**.
+| **Pack Name** | **Version** | **Registry** | **Layer** |
+|---------------|-------------|--------------|-----------|
+| Cilium | 1.17.1 | Public Repo | Network |
 
-Cilium requires customizations to support VMO. From the **Presets** drop down menu, set the value for **VMO
+If necessary, set the **Pack Version** to `1.17.1` and select **Confirm Changes**.
+
+Select **Values**. Cilium requires customizations to support VMO. From the **Presets** drop-down menu, set the value for **VMO
 Compatibility** to **Enable**, and the value for **Cillium Operator** to **For Multi-Node Cluster**.
 
-Visit the Cilium documentation site for more information on
-[socket load balancers](https://docs.cilium.io/en/latest/network/Kubernetes/kubeproxy-free/#socketlb-host-netns-only)
-and
-[CNI configuration adjustments](https://docs.cilium.io/en/latest/network/kubernetes/configuration/#adjusting-cni-configuration).
+Select **Next layer** to advance to the CSI layer.
 
-Select **Next layer**.
+Add the **Rook-Ceph (Helm)** pack to your cluster profile.
 
-Search for and select **Rook-Ceph (Helm) v1.16.3** from the Palette Registry (OCI).
+| **Pack Name** | **Version** | **Registry** | **Layer** |
+|---------------|-------------|--------------|-----------|
+| Rook-Ceph (Helm) | 1.16.3 | Public Repo | Storage |
 
-Select **Values**.
+If necessary, set the **Pack Version** to `1.16.3` and select **Confirm Changes**.
 
-From the **Presets** drop down menu, set the value for **Cluster Configuration** to **Single Node Cluster**.
-
-:::info
-
-The preset for 'Single Node Cluster' in the rook-ceph pack implies that a single is worker node is used, not that the
+Select **Values**. From the **Presets** drop-down menu, set the value for **Cluster Configuration** to **Single Node Cluster**. The preset for 'Single Node Cluster' in the rook-ceph pack implies that a single worker node is used, not that the
 Kubernetes Control Plane and workloads use a single node.
 
-:::
+When deploying a single workload cluster, running multiple CSI pods is unnecessary. Search the **Manifest Editor** for `replica` and change all values for `provisionerReplicas` and `replicated.size`, to `1`. The following image displays the CSI manifest with the `replicated.size` value set.
 
-Search the text editor for `replica` and change all values for **replicas** and **size** to `1`.
+![Image of the pod security namespace exclusion values](/tutorials/deploy-vmo-maas/tutorials_vmo_vmo-maas_CSI-Config.webp)
 
+Select **Confirm** once all the infrastructure layers of your cluster profile are complete.
 
-```yaml title="Example code block"
-    cephBlockPools:
-  - name: ceph-blockpool
-    # see https://github.com/rook/rook/blob/master/Documentation/CRDs/Block-Storage/ceph-block-pool-crd.md#spec for available configuration
-    spec:
-      failureDomain: host
-      replicated:
-        size: 1
-```
+Additional layers are needed to enable connectivity to your cluster, enable VMO services, and deploy VM templates. Select **Add New Pack**. Search for metallb and add the following pack to your cluster profile.
 
-Select **Confirm**.
+| **Pack Name** | **Version** | **Registry** | **Layer** |
+|---------------|-------------|--------------|-----------|
+| MetalLB (Helm) | 0.14.9| Public Repo | Load Balancer |
 
-The infrastructure layers of your Cluster Profile are now complete. You need to add some additional layers to deploy VMO
-and supporting services.
-
-Select **Add New Pack**.
-
-Search for metallb and select the **MetalLB (Helm) 0.14.9** pack from the Palette Registry (OCI).
+If necessary, set the **Pack Version** to `0.14.9` and select **Confirm Changes**.
 
 Select **Values**. The MetalLB YAML manifest editor appears.
 
 MetalLB needs a range of routable IP Addresses. Locate the configuration block containing the **addresses:** value. The
 value for this field can be either an IP Address range or a subnet using CIDR
-notation. For example, `192.168.40.10` and  `192.168.1.0/24` are both valid values.
+notation. For example, `192.168.40.10` and  `192.168.1.0/24` are valid values.
 
 Ensure these IP addresses are reserved from the subnet connected to your MAAS servers.
 
 ![Image of the configuration lines where Pod and Services Subnets are set.](/tutorials/deploy-vmo-maas/tutorials_vmo_vmo-maas_metallb-ips.webp)
 
-Select **Confirm & Create**.
+Select **Confirm & Create** to add the MetalLB pack to your cluster profile.
 
-Then, select **Add New Pack**.
+Select **Add New Pack**, search for **Virtual Machine Orchestrator**, and add the following pack to your cluster profile.
 
-Search for and select the **Virtual Machine Orchestrator** pack from the Palette Registry (OCI).
+| **Pack Name** | **Version** | **Registry** | **Layer** |
+|---------------|-------------|--------------|-----------|
+| Virtual Machine Orchestrator | 4.6.3 | Public Repo | VM Hypervisor |
 
-Set the **Pack Version** to **4.6.3** and select **Confirm Changes**.
+If necessary, set the **Pack Version** to **4.6.3** and select **Confirm Changes**.
 
 VMO has two different connectivity options, **Proxied** and **Direct**.
 
@@ -236,17 +229,16 @@ VMO has two different connectivity options, **Proxied** and **Direct**.
 | Direct                | This mode is intended for use in an environment with no access restrictions. Communications to the cluster are open and reachable from your corporate networks. This mode will configure the MetallB load balancer to allow ingress to VMO services.                                         |
 
 For more information on the Spectro proxy, visit the
-[Official Spectro Proxy documentation page](/integrations/spectro-proxy.mdx)
+[Official Spectro Proxy documentation page](https://docs.spectrocloud.com/integrations/packs/?pack=spectro-proxy&version=1.5.6&parent=1.5.x&tab=main)
 
-Select the **Properties** icon. Select **Proxied**.
+Select **Values** and set the **Access** option to **Proxied**.
 
-The VMO pack contains prerequisite CRDs for subsequent packs. The **Install Order** field allows you to control the
-installation order of your packs by using numerical values. The install order value defaults to `0` which implies top
+The VMO pack contains prerequisite CRDs for subsequent packs. The **Install Order** field lets you control your packs' installation order using numerical values. The install order value defaults to `0`, which implies top
 priority. The higher the value is, the lower the install priority is.
 
-Set the **Install Order** value to `10`, ensuring VMO is installed last.
+Set the **Install Order** value to `10`. Packs that depend on this pack will have their install order value set to 11 or greater, ensuring they are installed after the VMO pack. 
 
-Select the **Values** icon. Remove all configurations in the YAML manifest editor and paste in the configuration below.
+Select the **Values** icon, remove all configurations in the **Manifest Editor**, and paste in the configuration below.
 
 ```yaml
 pack:
@@ -920,25 +912,21 @@ charts:
 
 <PartialsComponent category="vmo" name="custom-network-requirements" />
 
-Select **Confirm & Create**.
+Select **Confirm & Create** to add the **Virtual Machine Orchestrator** pack to your cluster profile.
 
 Next, you will configure the VM deployment templates, data volumes containing OS Images, and storage
 profiles available in VMO. These configurations can be customized, allowing you control of the OS images, image
 repositories, storage, and VM configurations.
 
-Select **Add Manifest**.
-
-Name the new layer **vmo-extras**. Set the value of the **Install Order** field to 20 to ensure these configurations
-apply after the VMO pack is installed. Select **New manifest** and name the manifest **vmo-extras-manifest**. Select the
+Select **Add Manifest**. Name the new layer **vmo-extras**. Set the value of the **Install Order** field to 20 to ensure these configurations apply after the VMO pack is installed. Select **New manifest** and name the manifest **vmo-extras-manifest**. Select the
 **blue check mark**.
 
-Copy the YAML config below and paste it in the manifest editor.
+The **Manifest Editor** appears. Copy the YAML config below and paste it into the **Manifest Editor**. This configuration applies some configuration templates to the VMO services, such as the VM deployment template, storage profiles, and data volumes.
 
-:::info
+:::warning
 
-The configurations below include setting up the default Ubuntu Administrator account. This example uses Clear text
-passwords for testing purposes only. We recommend that any deployments use methods to encrypt the password or pull it
-from a system for managing secure data such as HashiCorp Vault, or CyberArk.
+The configurations below include setting up the default Ubuntu Administrator account for the VM you will deploy. This example uses clear-text passwords for testing purposes only. We recommend that any deployments use methods to encrypt the password or pull it
+from a system for managing secure data, such as HashiCorp Vault or CyberArk.
 
 :::
 
@@ -1077,89 +1065,21 @@ spec:
   cloneStrategy: csi-clone
 ```
 
-21. Select **Confirm and Create**
+Select **Confirm and Create** to add the vmo-extras layer to your cluster profile.
 
-22. Select **Next**
+The visual of the cluster profile reflects the install order you defined while adding and configuring your packs. Your cluster profile should reflect the following image. 
 
-23. Select **Finish Configuration**
+![Image of completed cluster profile.](/tutorials/deploy-vmo-maas/tutorials_vmo_vmo-maas_complete-cluster-profile.webp)
+
+If the install order is incorrect, you can select the pack that needs to be modified and update the **Install order** field in the **Edit additional pack section**.
+
+Select **Next** to proceed to the **Cluster Profile Review** screen. Select **Finish Configuration** to save your cluster profile.
 
 </TabItem>
 
-<TabItem label="Terraform" value="Terraform Workflow">
+<TabItem label="Terraform Worklow" value="Terraform Workflow">
 
-#### Update terraform.tfvars
-
-This file allows you to set values to use for your variables in one place. We recommend creating and setting variables
-terraform.tfvars file whenever possible as it helps reduce human error and makes updating and reusing your Terraform
-scripts more efficient.
-
-The provided terraform.tfvars file is broken into sections to relate the variables to the files that use them.
-
-Update **terraform.tfvars** as instructed in the table below.
-
-**Palette Settings**
-
-| **Variable**    | **Data Type** | **Instruction**                                     |
-| --------------- | ------------- | --------------------------------------------------- |
-| palette-project | `string`      | Set this value to the name of your Palette project. |
-
-**MAAS Deployment Settings**
-
-| **Variable**                     | **Data Type**   | **Instruction**                                                                                                                                                                                                                           |
-| -------------------------------- | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| deploy-maas                      | `boolean`       | This is a true or false value. If true, a VMO cluster is deployed to MAAS. Set this value to `true` for this section of the tutorial.                                                                                                     |
-| deploy-maas-vm                   | `boolean`       | This is a true of false value. If true, an Ubuntu 22.04 VM with Docker pre-installed is deployed in your VMO cluster. Set this to `false` for this section of the tutorial.                                                               |
-| pcg-name                         | `string`        | Set this value to the name of your MAAS PCG. This can be pre-existing or one you created in the [MAAS Private Cloud Gateway (PCG)](/clusters/pcg/deploy-pcg/maas.md) tutorial.                                                            |
-| maas-domain                      | `string`        | Set this value to the domain your MAAS environment is in. example `spectronaut.com`.                                                                                                                                                      |
-| maas-control-plane-nodes         | `number`        | Set this value to the number of control plane nodes you want to create.                                                                                                                                                                   |
-| maas-control-plane-resource-pool | `string`        | Set this value to match the MAAS resource pool you want your control plane nodes deployed to.                                                                                                                                             |
-| maas-control-plane-azs           | `set of string` | This is an optional value that allows you to specify which MAAS availability zones to use for your control plane node deployments. This configuration is critical to consider when planning high availability infrastructure deployments. |
-| maas-control-plane-node-tags     | `set of string` | Enter any tags used to target specific machines in MAAS.                                                                                                                                                                                  |
-| ctl-node-min-cpu                 | `number`        | Set this value to the minimum number of CPU cores you want assigned to your control plan nodes.                                                                                                                                           |
-| ctl-node-min-mem-mb              | `number`        | Set this value to the minimum amount of RAM (Memory) you want assigned to your control plan nodes.                                                                                                                                        |
-| maas-worker-nodes                | `number`        | Set this value to the number of worker nodes you want to create.                                                                                                                                                                          |
-| maas-worker-resource-pool        | `string`        | Set this value to match the MAAS resource pool you want your worker nodes deployed to.                                                                                                                                                    |
-| maas-worker-azs                  | `set of string` | This is an optional value that allows you to specify which MAAS availability zones to use for your worker node deployments. This configuration is critical to consider when planning high availability infrastructure deployments.        |
-| maas-worker-node-tags            | `set of string` | Enter any tags used to target specific machines in MAAS.                                                                                                                                                                                  |
-| wrk-node-min-cpu                 | `number`        | Set this value to the minimum number of CPU cores you want assigned to your worker nodes.                                                                                                                                                 |
-| wrk-node-min-mem-mb              | `number`        | Set this value to the minimum amount of RAM (Memory) you want assigned to your worker nodes.                                                                                                                                              |
-
-**cluster_profiles.tf**
-
-| **Variable**            | **Data Type** | **Instruction**                                                                                                                                      |
-| ----------------------- | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| vmo-cluster-name        | `string`      | Enter the name you want your VMO cluster to have.                                                                                                    |
-| cluster-profile-type    | `string`      | Values must be `Infrastructure`,`Add-On`, or `Full`. Enter `Full`. Visit the [cluster profiles](profiles/cluster-profiles/cluster-profiles.md) page. |
-| cluster-profile-version | `number`      | The version number that is assigned to your Palette Cluster Profile.                                                                                 |
-
-**vmo_values.tf**
-
-| **Variable**          | **Data Type**   | **Instruction**                                                 |
-| --------------------- | --------------- | --------------------------------------------------------------- |
-| vmo-network-interface | `set of string` | Enter the id of the network interface VMO will use.             |
-| vm-vlans              | `number`        | Enter the VLAN IDs your VMs will be able to communicate on.     |
-| host-vlans            | `number`        | Enter the VLAN IDs you VMO nodes will be able to communicate on |
-
-<PartialsComponent category="vmo" name="custom-network-requirements" />
-
-**manifests/k8s-values.yaml**
-
-| **Variable**          | **Data Type**    | **Instruction**                                                                                                 |
-| --------------------- | ---------------- | --------------------------------------------------------------------------------------------------------------- |
-| pod-CIDR              | `set of string`  | Enter the subnet you want your pod network to use. Format must be standard CIDR notation `192.168.0.0/24`.      |
-| cluster-services-CIDR | ` set of string` | Enter the subnet you want your cluster services to use. Format must be standard CIDR notation `192.168.0.0/24`. |
-
-**manifests/metallb-values.yaml**
-
-| **Variable**    | **Data Type**   | **Instruction**                                                                                                                                    |
-| --------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
-| metallb-ip-pool | `set of string` | Enter the IP address range you want MetalLB to use. These IPs should be routable and align to VLAN subnets in your network and VMO congfiguration. |
-
-#### Update ubuntu-values.yaml
-
-| **Variable** | **Data Type** | **Instruction**                       |
-| ------------ | ------------- | ------------------------------------- |
-| node-network | `string`      | Enter the subnet your nodes will use. |
+The Terraform workflow creates the cluster profile and the cluster in a single step. Cluster profile configurations using Terraform are included in the [Deploy a VMO Cluster](#deploy-a-vmo-cluster) section.
 
 </TabItem>
 
@@ -1169,98 +1089,73 @@ Update **terraform.tfvars** as instructed in the table below.
 
 <Tabs groupId="Workflows">
 
-<TabItem label="UI" value="UI Workflow">
+<TabItem label="UI Workflow" value="UI Workflow">
 
 Log in to [Palette](https://console.spectrocloud.com).
 
 From the left main menu, select **Clusters** > **Add New Cluster**.
 
-The **Cluster Type** screen displays all available options fo automated deployment of Kubernetes clusters. In the **Data
+The **Cluster Type** screen displays all available options for automated deployment of Kubernetes clusters. In the **Data
 Center** section, select **MAAS**. In the bottom-right corner, select **Start MAAS Configuration**.
 
-The **Cluster Information** screen allows you to provide details about your cluster such as the name it will have. Enter
+The **Cluster Information** screen allows you to provide details about your cluster, such as its name. Enter
 the values for **Cluster name**, **Description**, and **Tags**. Select the PCG deployed in your MAAS environment from
-the **Cloud Account** drop down menu. Select **Next**.
+the **Cloud Account** drop-down menu. Select **Next** to proceed to the cluster profile selection screen.
 
 Select **Add Cluster Profile**.
 
-In the **Choose a Profile** slide out menu, locate and select the cluster profile you created in the _Create a VMO
+In the **Choose a Profile** slide-out menu, locate and select the cluster profile you created in the [Create a VMO Cluster Profile](#create-a-vmo-cluster-profile) section.
 Cluster Profile_ section. Select **Confirm**.
 
-The **Cluster Profile** screen provides the details of all the packs in the cluster profile you selected. This screen
-enables use of the same profile for multiple cluster by allowing you to change pack values, modify presets, or set
-variable values for your packs. Select **Next**.
+The **Cluster Profile** screen provides the details of all the packs in the selected cluster profile. Palette
+enables the same profile to be used for multiple clusters by allowing you to change pack values, modify presets, or set
+variable values for your packs when they are used to create a new cluster. Select **Next** to accept the cluster profile.
 
-Select your target MAAS domain from the **Domain drop-down menu**. Select **Next**.
+The wizard begins to guide you through configuring the hardware Palette will use to build your cluster. Select your target MAAS domain from the **Domain drop-down menu**. Select **Next**.
 
 The **Node pools configuration** screen allows customization of the control plane node pool, worker node pool, and
-control of which MAAS machines will be used to build your cluster.
+which MAAS machines will be used to build your cluster.
 
-
-The control plane pool configuration section allows configuration of the Kubernetes values that will apply to your
+The **CONTROL-PLANE-POOL-CONFIGURATION** section allows changes to Kubernetes values that will apply to your
 control plane nodes. No changes are required in this section.
 
 
-The **Control Plane - Cloud Configuration** section allows you to control which MAAS machines your cluster can use. The
-table below reviews each value and provides guidance on how to set them.
+The Control Plane—Cloud Configuration section lets you control the specifications of the MAAS machines for your control plane nodes. The following table provides information about the values and how to set them.
 
 | **Variable**        | **Instruction**                                                                                                                                                                                                                                                                                           |
 | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Resource Pool       | Enter the name of the MAAS resource pool you want your control plane server to used from.                                                                                                                                                                                                                 |
+| Resource Pool       | Enter the name of the MAAS resource pool you want your control plane server to use.                                                                                                                                                                                                                 |
 | Minimum CPU         | Enter the minimum number of CPU cores you want your Control Plane server to have. We recommend values higher than 4.                                                                                                                                                                                         |
-| Minimum Memory (GB) | Enter the maximum amount of memory you want your Control Plane server to have. Do not set values lower than 8 GB.                                                                                                                                                                                         |
-| Availability zones  | This is an optional value that allows you to specify which MAAS Availability Zones to use for your control plane node deployments. This configuration is critical to consider when planning high availability infrastructure deployments.                                                                 |
-| Tags                | This is an optional value that allows you to assign a tag to the MAAS machine selected for the build. <br /> To learn more about MAAS automatic tags, refer to the [MAAS Tags](https://maas.cloud.cbh.kth.se/MAAS/docs/cli/how-to-tag-machines.html#heading--how-to-create-automatic-tags) documentation. |
+| Minimum Memory (GB) | Enter the minimum memory you want your Control Plane server to have.                                                                                                                                                                                        |
+| Availability zones  | This optional value allows you to specify which MAAS Availability Zones to use for your control plane node deployments. This configuration is critical to consider when planning high-availability infrastructure deployments.                                                                 |
+| Tags                | This optional value allows you to assign a tag to the MAAS machine selected for the build. <br /> To learn more about MAAS automatic tags, refer to the [MAAS Tags](https://maas.cloud.cbh.kth.se/MAAS/docs/cli/how-to-tag-machines.html#heading--how-to-create-automatic-tags) documentation. |
 
 
-The worker pool configuration section requires no changes. We recommend reviewing these values to understand how they
+The **WORKER-POOL-CONFIGURATION**  section requires no changes. We recommend reviewing these values to understand how they
 impact the deployment and how you might use them in a production deployment.
 
-
-The **Worker Pool - Cloud Configuration** section allows you to control which MAAS machines your cluster can use. The
-table below reviews each value and provides guidance on how to set them.
+The **Worker Pool - Cloud Configuration** section lets you control the specifications of the MAAS machines for your worker nodes The following table provides information about the values and how to set them.
 
 | **Variable**        | **Instruction**                                                                                                                                                                                                                                                                                           |
 | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Resource Pool       | Set this value to the name of the MAAS resource pool you want your control plane server to be taken from.                                                                                                                                                                                                 |
+| Resource Pool       | Set this value to the name of the MAAS resource pool from which your control plane server will be taken.                                                                                                                                                                                                 |
 | Minimum CPU         | Set this to the minimum number of CPU cores you want your Control Plane server to have. We recommend that you set values higher than 5.                                                                                                                                                                                   |
-| Minimum Memory (GB) | Set this to the maximum amount of memory you want your Control Plane server to have. Do not set values lower than 8 GB.                                                                                                                                                                                   |
-| Availability zones  | This is an optional value that allows you to specify which AZ's to use for your node deployment. This configuration is critical to consider when planning high availability patterns for your infrastructure.                                                                                             |
-| Tags                | This is an optional value that allows you to assign a tag to the MAAS machine selected for the build. <br /> To learn more about MAAS automatic tags, refer to the [MAAS Tags](https://maas.cloud.cbh.kth.se/MAAS/docs/cli/how-to-tag-machines.html#heading--how-to-create-automatic-tags) documentation. |
+| Minimum Memory (GB) | Set this to the minimum memory you want your Control Plane server to have.                                                                                                                                                                                   |
+| Availability zones  | This optional value lets you specify which AZs to use for your node deployment. This configuration is critical when planning high availability patterns for your infrastructure.                                                                                             |
+| Tags                | This optional value allows you to assign a tag to the MAAS machine selected for the build. <br /> To learn more about MAAS automatic tags, refer to the [MAAS Tags](https://maas.cloud.cbh.kth.se/MAAS/docs/cli/how-to-tag-machines.html#heading--how-to-create-automatic-tags) documentation. |
 
-Select **Next**.
+Select **Next** to accept your node pool configurations.
 
-The **Optional cluster settings** screen is displayed. VMO requires permissions to be granted to users as well as the
-VMO service account.
-
-Select **RBAC**.
-
-Select **Add New Binding** and enter information as instructed in the table below.
-
-| **Field**         | **Instruction**                                                                                                            |
-| ----------------- | -------------------------------------------------------------------------------------------------------------------------- |
-| Cluster Role Name | For this tutorial, use the `cluster-admin` role.                                                                           |
-| Subject Type      | Set this value to `user`.                                                                                                  |
-| Subject Name      | The VMO cluster you created is set to use Palette for OIDC. In this field, enter the ID you use when logging into Palette. |
-
-Select **Add Subject** to create another binding. Enter the information as instructed in the table below.
-
-| **Field**         | **Instruction**                      | **Description**                                                                                                                                                       |
-| ----------------- | ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Subject Type      | Set this value to `Service Account`  | Identifies the type of resource to map to the Cluster Role                                                                                                            |
-| Subject Name      | Enter `virtual-machine-orchestrator` | This value is the name of the service account that is granted permissions to access the VM-dashboard. This service account is created when the VMO pack is installed. |
-| Subject Namespace | Enter `vm-dashboard`                 | This is the namespace the service account is granted access to.                                                                                                       |
-
-Select **Confirm**.
-
-Select **Validate**.
+<PartialsComponent category="vmo" name="vmo-rbac-config" />
 
 ![Image of the configured Cluster Role Bindings](/tutorials/deploy-vmo-maas/tutorials_vmo_vmo-maas_Configure-RBAC.webp)
 
+Select **Validate**.
+
 :::Warning
 
-If the cluster used for this tutorial is not a test cluster, we strongly recommend adhering to your companies security
-standards when configuring RBAC for your cluster. If no clear standards exist, we recommend following the
+If the cluster used for this tutorial is not a test cluster, we strongly recommend adhering to your company's security
+standards when configuring RBAC for your cluster. If no standards exist, we recommend following the
 [Principle of Least Privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege) security model.
 
 :::
@@ -1269,44 +1164,424 @@ Select **Finish Configuration** to begin deployment of your cluster.
 
 </TabItem>
 
-<TabItem label="Terraform" value="Terraform Workflow">
+<TabItem label="Terraform Workflow" value="Terraform Workflow">
 
-First, you must set the `SPECTROCLOUD_APIKEY` environment variable to your API key by using the command below.
+#### Terraform Resources Review
 
-```shell
-export SPECTROCLOUD_APIKEY="YOUR KEY HERE"
-```
+To help you get started with Terraform, the tutorial code is structured to support deploying a cluster to either AWS,
+Azure, GCP, or VMware vSphere. Before you deploy a host cluster to Azure, review the following files in the folder
+structure.
 
-Execute the `terraform plan` command to ensure there are no errors and you have connectivity to your Spectro Cloud
-tenant.
+| **File**                | **Description**                                                                                                        |
+| ----------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| **provider.tf**         | This file contains the Terraform providers used to support the deployment of the cluster.                     |
+| **inputs.tf**           | This file contains all the Terraform variables required for the deployment logic.                                      |
+| **data.tf**             | This file contains all the query resources that perform read actions.                                                  |
+| **cluster_profiles.tf** | This file contains the cluster profile definitions for each cloud provider.                                            |
+| **clusters.tf**         | This file has the cluster configurations required to deploy a host cluster to one of the cloud providers.              |
+| **terraform.tfvars**    | Use this file to target a specific cloud provider and customize the deployment. This is the only file you must modify. |
+| **virtual-machines.tf**           | This file contains the configuration that will be applied to the VM you create in your VMO cluster.                     |
 
-```shell
-terraform plan
-data.spectrocloud_registry.public_registry: Reading...
-data.spectrocloud_cloudaccount_maas.account[0]: Reading...
-data.spectrocloud_cloudaccount_maas.account[0]: Read complete after 0s [id=680a7a2321e9c36a9a0efa4f]
-data.spectrocloud_registry.public_registry: Read complete after 0s [id=5eecc89d0b150045ae661cef]
-data.spectrocloud_pack.maas_csi: Reading...
-data.spectrocloud_pack.maas_metallb: Reading...
-data.spectrocloud_pack.maas_vmo: Reading...
-data.spectrocloud_pack.maas_k8s: Reading...
-data.spectrocloud_pack.maas_cni: Reading...
-data.spectrocloud_pack.maas_ubuntu: Reading...
-data.spectrocloud_pack.maas_metallb: Read complete after 0s [id=678d28cce2561ecca5cf0aea]
-.
-.
-.
-              + name    = "vmo-extras"
-              + uid     = (known after apply)
-            }
-        }
+Expand the details boxes for more info on the Terraform files used in this tutorial.
+
+<details>
+  <summary>provider.tf</summary>
+
+The **provider.tf** file contains the Terraform providers used in the tutorial and their respective versions. This
+tutorial uses four providers:
+
+- [Spectro Cloud](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs)
+- [TLS](https://registry.terraform.io/providers/hashicorp/tls/latest)
+- [Local](https://registry.terraform.io/providers/hashicorp/local/latest)
+
+Note how the project name is specified in the `provider "spectrocloud" {}` block. You can change the target project by
+modifying the value of the `palette-project` variable in the **terraform.tfvars** file.
+
+```hcl
+terraform {
+  required_providers {
+    spectrocloud = {
+      version = "0.23.6"
+      source  = "spectrocloud/spectrocloud"
     }
 
-Plan: 2 to add, 0 to change, 0 to destroy.
-\
+    tls = {
+      source  = "hashicorp/tls"
+      version = "4.0.4"
+    }
+
+    local = {
+      source  = "hashicorp/local"
+      version = "2.4.1"
+    }
+  }
+
+  required_version = ">= 1.9"
+}
+
+provider "spectrocloud" {
+  # API key set through the environment variable SPECTROCLOUD_APIKEY
+  project_name = var.palette-project
+}
 ```
 
-Execute the `terraform apply` command. This process may take up to an hour or more depending on your environment.
+</details>
+
+<details>
+  <summary>cluster_profiles.tf</summary>
+
+The `spectrocloud_cluster_profile`
+resource allows you to create a cluster profile and customize its layers. You can specify the packs and versions to use
+or add a manifest or Helm chart.
+
+Cluster profiles include layers for the Operating System (OS), Kubernetes, container network interface, and
+container storage interface. The first `pack {}` block in the list equates to the bottom layer of the cluster profile.
+Ensure you define the bottom layer of the cluster profile - the OS layer - first in the list of `pack {}` blocks, as the
+order in which you arrange the contents of the `pack {}` blocks plays an important role in the cluster profile creation.
+The table below displays the packs deployed in each version of the cluster profile.
+
+| **Pack Type** | **Pack Name**      | **Version** |
+|---------------|--------------------|-------------|
+| OS | `ubuntu-maas 22.04` | `22.04` |
+| Kubernetes | `kubernetes` | `1.32.3` |
+| Network | `cni-ccilium-oss 1.17.1` | `1.17.1` |
+| Storage | `csi--rook-ceph-helm 1.16.3` | `1.16.3` |
+| Load Balancer | `lb-metallb-helm 0.14.9` | `0.14.9` |
+| App Services | `virtual-machine-orchestrator 4.6.3` | `4.6.3` |
+| Custom Manifest | `vmo-extras' | `1.0.0` |
+
+```hcl
+##########################
+# MAAS VMO Cluster Profile
+##########################
+resource "spectrocloud_cluster_profile" "maas-vmo-profile" {
+  count = var.deploy-maas ? 1 : 0
+
+  name        = "tf-maas-vmo-profile"
+  description = "A basic cluster profile for MAAS VMO"
+  tags        = concat(var.tags, ["env:maas"])
+  cloud       = "maas"
+  type        = var.cluster-profile-type
+  version     = var.cluster-profile-version
+
+  pack {
+    name = data.spectrocloud_pack.maas_ubuntu.name
+    tag  = data.spectrocloud_pack.maas_ubuntu.version
+    uid  = data.spectrocloud_pack.maas_ubuntu.id
+    values = templatefile("manifests/ubuntu-values.yaml", {
+      node-network = var.node-network
+    })
+    type = "spectro"
+  }
+
+  pack {
+    name = data.spectrocloud_pack.maas_k8s.name
+    tag  = data.spectrocloud_pack.maas_k8s.version
+    uid  = data.spectrocloud_pack.maas_k8s.id
+    values = templatefile("manifests/k8s-values.yaml", {
+      pod-CIDR            = var.pod-CIDR,
+      clusterServicesCIDR = var.cluster-services-CIDR
+      type                = "spectro"
+    })
+  }
+
+  pack {
+    name   = data.spectrocloud_pack.maas_cni.name
+    tag    = data.spectrocloud_pack.maas_cni.version
+    uid    = data.spectrocloud_pack.maas_cni.id
+    values = file("manifests/cni-values.yaml")
+    type   = "spectro"
+  }
+
+  pack {
+    name = data.spectrocloud_pack.maas_csi.name
+    tag  = data.spectrocloud_pack.maas_csi.version
+    uid  = data.spectrocloud_pack.maas_csi.id
+    values = templatefile("manifests/csi-values.yaml", {
+      worker_nodes = var.maas-worker-nodes
+    })
+    type = "spectro"
+  }
+
+  pack {
+    name = data.spectrocloud_pack.maas_metallb.name
+    tag  = data.spectrocloud_pack.maas_metallb.version
+    uid  = data.spectrocloud_pack.maas_metallb.id
+    values = templatefile("manifests/metallb-values.yaml", {
+      metallb-ip-pool = var.metallb-ip-pool
+    })
+    type = "spectro"
+  }
+
+  pack {
+    name = data.spectrocloud_pack.maas_vmo.name
+    tag  = data.spectrocloud_pack.maas_vmo.version
+    uid  = data.spectrocloud_pack.maas_vmo.id
+    values = templatefile("manifests/vmo-values.yaml", {
+      vmo-network-interface = var.vmo-network-interface,
+      vm-vlans              = var.vm-vlans,
+      host-vlans            = var.host-vlans
+    })
+    type = "spectro"
+  }
+
+  pack {
+    name   = "vmo-extras"
+    type   = "manifest"
+    tag    = "1.0.0"
+    values = file("manifests/vmo-extras-values.yaml")
+    manifest {
+      name = "vmo-extras"
+      content = templatefile("manifests/vmo-extras-manifest.yaml", {
+        palette-user-id = var.palette-user-id
+      })
+    }
+  }
+
+}
+```
+
+</details>
+
+<details>
+  <summary>cluster.tf</summary>
+
+The **clusters.tf** file contains the definitions required for deploying a host cluster to one of the infrastructure
+providers. To create an MAAS host cluster, you must set the `deploy-maas` variable in the **terraform.tfvars** file to true.
+
+When deploying a cluster using Terraform, you must provide the same parameters as those available in the Palette UI for
+the cluster deployment step, such as the instance size and number of nodes. You can learn more about each parameter by
+reviewing the
+[MAAS cluster resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_maas)
+documentation.
+
+```hcl
+# Copyright (c) Spectro Cloud
+# SPDX-License-Identifier: Apache-2.0
+
+################
+# MAAS Cluster
+################
+
+resource "spectrocloud_cluster_maas" "maas-cluster" {
+  count = var.deploy-maas ? 1 : 0
+
+  name                 = var.vmo-cluster-name
+  tags                 = concat(var.tags, ["env:maas"])
+  cloud_account_id     = data.spectrocloud_cloudaccount_maas.account[0].id
+  pause_agent_upgrades = "unlock"
+
+  cloud_config {
+    domain = var.maas-domain
+  }
+
+  cluster_profile {
+    id = resource.spectrocloud_cluster_profile.maas-vmo-profile[0].id
+  }
+
+  machine_pool {
+    name          = "maas-control-plane"
+    count         = 1
+    control_plane = true
+    azs           = var.maas-control-plane-azs
+    node_tags     = var.maas-control-plane-node-tags
+    instance_type {
+      min_cpu       = var.ctl-node-min-cpu
+      min_memory_mb = var.ctl-node-min-memory-mb
+    }
+    placement {
+      resource_pool = var.maas-control-plane-resource-pool
+    }
+  }
+
+  machine_pool {
+    name      = "maas-worker-basic"
+    count     = 1
+    azs       = var.maas-worker-azs
+    node_tags = var.maas-worker-node-tags
+    instance_type {
+      min_cpu       = var.wrk-node-min-cpu
+      min_memory_mb = var.wrk-node-min-memory-mb
+    }
+    placement {
+      resource_pool = var.maas-worker-resource-pool
+    }
+  }
+}
+```
+
+</details>
+
+<details>
+  <summary>data.tf</summary>
+
+Each pack {} block contains references to a data resource. Data resources are used to perform read actions in Terraform. The Spectro Cloud Terraform provider exposes several data resources to help you make your Terraform code more dynamic. The data resource used in the cluster profile is spectrocloud_pack. This resource lets you query Palette for information about a specific pack, such as its unique ID, registry ID, available versions, and YAML values.
+
+Below is the data resource used to query Palette for information about the Kubernetes pack for version 1.32.2.
+
+```hcl
+data "spectrocloud_pack" "maas_k8s" {
+  name         = "kubernetes"
+  version      = "1.32.2"
+  registry_uid = data.spectrocloud_registry.public_registry.id
+}
+```
+Using the data resource helps you avoid manually entering the parameter values required by the cluster profile's pack {} block.
+
+</details>
+
+<details>
+  <summary>virtual-machines.tf</summary>
+
+The **clusters.tf** file contains the definitions required for deploying a host cluster to one of the infrastructure
+providers. To create an MAAS host cluster, you must set the `deploy-maa-vm` variable in the **terraform.tfvars** file to true.
+
+When deploying a VM using Terraform, you must provide the same parameters as those available in the Palette UI for
+the VM deployment step, such as the CPU and storage to allocate to the VM. You can learn more about each parameter by
+reviewing the
+[virtual machine resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/virtual_machine)
+documentation.
+
+```hcl
+##########################
+# MAAS Virtual Machine
+##########################
+resource "spectrocloud_virtual_machine" "virtual-machine" {
+  count      = var.deploy-maas-vm ? 1 : 0
+  depends_on = [spectrocloud_cluster_maas.maas-cluster]
+
+  cluster_uid     = data.spectrocloud_cluster.maas_vmo_cluster[0].id
+  cluster_context = data.spectrocloud_cluster.maas_vmo_cluster[0].context
+
+  #run_on_launch = true
+  run_strategy = "Halted"
+  namespace    = var.vm-deploy-namespace
+  name         = var.vm-deploy-name
+
+  timeouts {
+    create = "60m"
+  }
+
+  labels = {
+    #var.vm-labels
+    # "tf"             = "spectrocloud-tutorials"
+    "kubevirt.io/vm" = "ubuntu-2204"
+  }
+
+  data_volume_templates {
+    metadata {
+      name      = "ubuntu-2204"
+      namespace = var.vm-deploy-namespace
+    }
+    spec {
+      source {
+        pvc {
+          name      = "template-ubuntu-2204"
+          namespace = "vmo-golden-images"
+        }
+      }
+      pvc {
+        access_modes = ["ReadWriteMany"]
+        resources {
+          requests = {
+            storage = var.vm-storage-Gi
+          }
+        }
+        storage_class_name = "ceph-block"
+        volume_mode        = "Block"
+      }
+    }
+  }
+
+  volume {
+    name = "ubuntu-2204"
+    volume_source {
+      data_volume {
+        name = "ubuntu-2204"
+      }
+    }
+  }
+
+  volume {
+    name = "cloudinitdisk"
+    volume_source {
+      cloud_init_no_cloud {
+        user_data = file("virtual-machines/cloud-init")
+      }
+    }
+  }
+
+  disk {
+    name = "ubuntu-2204"
+    disk_device {
+      disk {
+        bus = "virtio"
+      }
+    }
+  }
+  disk {
+    name = "cloudinitdisk"
+    disk_device {
+      disk {
+        bus = "virtio"
+      }
+    }
+  }
+
+  cpu {
+    cores   = var.vm-cpu-cores
+    sockets = var.vm-cpu-sockets
+    threads = var.vm-cpu-threads
+  }
+  memory {
+    guest = var.vm-memory-Gi
+  }
+
+  resources {}
+
+  interface {
+    name                     = "default"
+    interface_binding_method = "InterfaceMasquerade"
+  }
+
+  network {
+    name = "default"
+    network_source {
+      pod {}
+    }
+  }
+}
+```
+
+</details>
+
+#### Custom Network Configuration
+
+The VMO pack may require custom network configurations to function correctly in your environment. Expand the following details box for more information.
+
+<PartialsComponent category="vmo" name="custom-network-requirements" />
+
+#### Terraform Cluster Deployment
+
+To deploy a cluster using Terraform, you must first modify the **terraform.tfvars** file. Open it in the editor of your choice. 
+
+The **terraform.tf** file is structured into sections. Each section contains variables that need to be filled in, identified by the placeholder `REPLACE_ME`. Additionally, there is a toggle variable named `deploy-maas` must be set to `true` to deploy your MAAS cluster.
+
+In the **Palette Settings** section, modify the name of the palette-project variable if you wish to deploy to a Palette project different from the default one.
+
+For more information about the variables and their usage, refer to the `.readme` file in the `vmo-cluster` folder of the tutorial package..
+
+<PartialsComponent category="vmo" name="vmo-terraform-plan" />
+
+Execute the `terraform apply` command. Depending on your environment, this process may take up to an hour or more. You can monitor the progress of your cluster build by logging into your [Palette](https://console.spectrocloud.com) tenant and selecting **Clusters** from the left main menu. 
+
+Lastly, you must configure cluster role bindings for your user account and the `virtual-machine-orchestrator` service account
+
+In Palette, select the **Clusters** option in the left main menu and select the cluster you created. Select **Settings** > **Cluster Settings** to access the **Optional Cluster Settings** menu.
+
+<PartialsComponent category="vmo" name="vmo-rbac-config" />
+
+Your cluster role bindings have now been applied to your cluster.
 
 </TabItem>
 
@@ -1314,85 +1589,69 @@ Execute the `terraform apply` command. This process may take up to an hour or mo
 
 ## Verify the Cluster Deployment
 
-Navigate to the **Clusters** option in the left main menu in Palette. Select the cluster you created. On the overview
-page, ensure the cluster status is healthy. 
+Log in to [Palette](https://console.spectrocloud.com).
+
+Select the **Clusters** option in the left main menu in Palette. Select the cluster you created in the [Deploy a VMO Cluster](#deploy-a-vmo-cluster) section. On the **Cluster Overview** page, ensure the cluster status is healthy, and the **Virtual Machines** tab appears. No further validation is required.
+
+![Image of succesfully deployed cluster](/tutorials/deploy-vmo-maas/tutorials_vmo_vmo-maas_verify-cluster.webp)
 
 ## Deploy a Virtual Machine
 
 <Tabs groupId="Workflows">
 
-<TabItem label="UI" value="UI Workflow">
+<TabItem label="UI Workflow" value="UI Workflow">
 
-Navigate to [Palette](https://console.spectrocloud.com).
+Log in to [Palette](https://console.spectrocloud.com).
 
-From the left main menu, select **Clusters**.
+From the left main menu, select **Clusters** to open the cluster management console. Select the cluster you deployed in the [Deploy a VMO Cluster](#deploy-a-vmo-cluster) section to open its **Cluster Overview** page.
 
-Select the cluster you deployed in the _Deploy a VMO Cluster with the Palette UI_ section.
+Select the **Virtual Machines** tab to connect to the **VM Dashboard**. If the **Virtual Machines** tab is not displayed, review the RBAC configuration in the [Create a VMO Cluster](#create-a-vmo-cluster-profile) section and ensure your `user account` and the `virtual-machine-orchestrator` service account have been configured as instructed.
 
-Select the **Virtual Machines** tab. If the **Virtual Machines** tab is not displayed, review the RBAC configuration in
-the _Create a VMO Cluster_ section and ensure your `user account` and the `virtual-machine-orchestrator` service account
-have been configured as instructed.
+The `default` namespace is automatically displayed on the **VM Dashboard**. Select the **virtual-machines** namespace from the **Namespace** drop-down menu. The display will update to show the status of any VMs running in that namespace. This also specifies the namespace where your VMs will be deployed. Select **New Virtual Machine** to begin deploying your VM.
 
-Select the **virtual-machines** namespace from the **Namespace** drop down menu. This value is used as the target
-deployment namespace in your VM manifest. Select **New Virutal Machine**.
+The next screen allows you to select and configure the OS for your VM. The VM template displayed is the one you deployed in the [Create a VMO Cluster Profile](#create-a-vmo-cluster-profile) section. Select the **Ubuntu 22.04** template.
 
-Select the **Ubuntu 22.04** template.
-
-The **VM settings** page allows you to customize basic VM configurations. Set the values as instructed in the table
-below. Select **Next**.
+The **VM settings** page allows you to customize the basic configuration for your VM. Set the values as instructed in the following table. When you are done, select **Next** to accept your settings.
 
 | **Configuration**                     | **Value**       | **Description**                                                                                                                                                                                                                                                                                                                                                                 |
 | ------------------------------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Name                                  | `Choose a name` | The name of the VM to be deployed.                                                                                                                                                                                                                                                                                                                                              |
 | CPUs (cores)                          | `2`             | The number of CPU cores your VM needs.                                                                                                                                                                                                                                                                                                                                          |
 | Memory (GiB)                          | `2`             | The amount of Memory your VM needs have in GiB                                                                                                                                                                                                                                                                                                                                  |
-| Storage Access Mode                   | `ReadWriteMany` | We recommend always using ReadWriteMany. This configuration allows your VM to read the storage volume from any node in your cluster. This is required if you plan to migrate your VM between nodes. <br /> This configuration also helps to avoid node congestion as Kubernetes attempts to schedule your VM on a node that has a Volume with the matching Storage Access Mode. |
-| OS image URL                          | `N/A`           | Your image location is defined in the Ubuntu 22.04 template. This field is used to specify custom OS images or custom image repositories for VM.                                                                                                                                                                                                                                |
-| Start VM automatically after creation | `Halted`        | We recommend setting this value to halted to ensure no issues occur during the cloud-init process                                                                                                                                                                                                                                                                               |
+| Storage Access Mode                   | `ReadWriteMany` | We recommend always using ReadWriteMany. This configuration allows your VM to read the storage volume from any node in your cluster. This is required if you plan to migrate your VM between nodes. <br /> This configuration also helps avoid node congestion as Kubernetes attempts to schedule your VM on a node with a Volume with the matching Storage Access Mode. |
+| OS image URL                          | `N/A`           | Your image location is defined in the Ubuntu 22.04 template. This field is used to specify custom OS images or custom image repositories for a VM.                                                                                                                                                                                                                                |
+| Start VM automatically after creation | `Halted`        | We recommend setting this value to halted to ensure no issues occur during the cloud-init process |
 
-The **Customize Configuration** screen displays the yaml that will be used to build your VM. KubeVirt enables
-configuration deployment, and management of your VMs using the same process used to configure and deploy pods.
+The **Customize Configuration** screen displays the YAML used to build your VM. KubeVirt enables
+configuration, deployment, and management of your VMs using the same process used to configure and deploy pods.
 
-The YAML configuration can be deployed using any deployment tools you are currently using for your Kubernetes clusters, giving
-you a single platform to manage your pods and VMs. The configuration can also be manually applied using standard
-`kubectl apply -f <filename>` YAML commands.
+The YAML configuration can be integrated into many deployment tools that support the deployment of Kubernetes configurations. The configuration can also be manually applied using kubectl by using the
+`kubectl apply --filename <filename>` command.
 
-Select **Next**.
-
-Select **Create Virtual Machine**.
+Select **Next** to apply your customizations. Select **Create Virtual Machine**.
 
 </TabItem>
 
-<TabItem label="Terraform" value="Terraform Workflow">
+<TabItem label="Terraform Workflow" value="Terraform Workflow">
 
-In this section, the Terraform scripts to deploy a new VMO Cluster to your MAAS environment are modified and executed.
+This section introduces and reviews the Terraform scripts used to deploy a VM into your MAAS VMO cluster.
 
-
-Prior to deploying your VM you must modify the `terraform.tfvars` file to reflect the configuration you want your VM to
-have. Update terraform.tfvars as instructed in the table below.
-
-**MAAS Deployment Settings**
+Before deploying your VM, you must modify the `terraform.tfvars` file to reflect the configuration you want your VM to
+have. Update terraform.tfvars as instructed in the following table.
 
 | **Variable**       | **Data Type** | **Instruction**                                                                                                                                                              |
 | ------------------ | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **deploy-maas-vm** | `boolean`     | This is a true of false value. If true, an Ubuntu 22.04 VM with Docker installed is deployed in your VMO cluster. Set this value to `true` for this section of the tutorial. |
-
-**virtual_machines.tf**
-
-| **Variable**            | **Data Type** | **Instruction**                                                                                                                                                                                                                                    |
-| ----------------------- | ------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **vm-deploy-namespace** | `string`      | Set this value to the name of the VLAN you want your VMs to deploy on.<br/><br/>These namespaces are standard Kubernetes namespaces. Your VM is impacted by any configurations applied at the namespace level such as network policies and quotas. |
+| **vm-deploy-namespace** | `string`      | Set this value to the name of the VLAN you want your VMs to deploy on.<br/><br/>These namespaces are standard Kubernetes namespaces. Your VM is impacted by any configurations applied at the namespace level, such as network policies and quotas. |
 | **vm-deploy-name**      | `string`      | Set this value to the name you want your VM to have.                                                                                                                                                                                               |
 | **vm-labels**           | `string`      | Set this value to a single label you want applied to your VM. For multiple labels, you must modify _virtual_machines.tf_ to include one line for each label.                                                                                       |
-| **vm-storage-Gi**       | `string`      | Set this value to the size of disk you want your VM to have. You must include 'Gi' in your value. Example `50Gi`                                                                                                                                   |
+| **vm-storage-Gi**       | `string`      | Set this value to the disk size you want your VM to have. You must include 'Gi' in your value. Example `50Gi`                                                                                                                                   |
 | **vm-vpu-cores**        | `number`      | Set this value to the number of CPU cores your VM will have.                                                                                                                                                                                       |
-| **vm-cpu-sockets**      | `number`      | Set this value to the number of physical CPU sockets your VM needs. This is intended to enable hardware resilience in the event of a single CPU socket related failure.                                                                            |
-| **vm-cpu-threads**      | `number`      | The number of CPU threads your VM is allowed to use. You can assign 1 CPU core and a single thread if desired.                                                                                                                                     |
+| **vm-cpu-sockets**      | `number`      | Set this value to the number of physical CPU sockets your VM needs. This is intended to enable hardware resilience in case of a single CPU socket-related failure.                                                                            |
+| **vm-cpu-threads**      | `number`      | The number of CPU threads your VM can use. You can assign 1 CPU core and a single thread if desired.                                                                                                                                     |
 | **vm-memory-Gi**        | `string`      | Set this value to the amount of RAM (memory) you want your VM to have. You must include 'Gi' in your value. Example `4Gi`                                                                                                                          |
 
-
-Execute the `terraform plan` command to ensure there are no errors, and you have connectivity to your Spectro Cloud
-tenant.
+<PartialsComponent category="vmo" name="vmo-terraform-plan" />
 
 Execute the `terraform apply` command to create the VM in your VMO Cluster.
 
@@ -1404,41 +1663,36 @@ Execute the `terraform apply` command to create the VM in your VMO Cluster.
 
 Log in to [Palette](https://console.spectrocloud.com).
 
-From the left main menu, select **Clusters**.
+From the left main menu, select **Clusters** to open the cluster management console. Select the cluster you deployed in the [Deploy a VMO Cluster](#deploy-a-vmo-cluster) section to open its **Cluster Overview** page.
 
-Select the cluster you deployed in the _Deploy a VMO Cluster with the Palette UI_ section.
+Select the **Virtual Machines** tab to connect to the **VM Dashboard**. If the **Virtual Machines** tab is not displayed, review the RBAC configuration in the [Create a VMO Cluster Profile](#create-a-vmo-cluster-profile) section and ensure your `user account` and the `virtual-machine-orchestrator` service account have been configured as instructed.
 
-Select the **Virtual Machines** tab. If the **Virtual Machines** tab is not displayed, review the RBAC configuration in
-the _Deploy a VMO Cluster with the Palette UI_ section and ensure your user account and the VMO service account is
-configured as instructed.
+Select the **Virtual Machines** namespace from the **Namespace** drop-down menu. Select the VM you created in the
+[Deploy a Virtual Machine](#deploy-a-virtual-machine) section.
 
-Select the **Virtual Machines** namespace from the **Namespace** drop down menu. Select the VM you created in the
-_Deploy a Virtual Machine_ section.
+Select the **Start Icon** to start your VM.
 
-Select the **Open web console** option.
+![Image of the start icon](/tutorials/deploy-vmo-maas/tutorials_vmo_vmo-maas_start-vm.webp)
 
-Login to your VM with the following user name and password.
+Select the **Open web console** option. Palette will connect to your VM and display a terminal window.
+
+Log in to your VM using the following username and password:
 
 | **User Name** | **Password** |
 | ------------- | ------------ |
 | ubuntu        | spectro      |
 
-Execute the `docker version` command to confirm Docker was successfully installed during the cloud init process.
+Execute the `docker version` command to confirm Docker was successfully installed during the cloud-init process.
 
-Next, you need to pull and run the `Hello Universe` container.
+Next, you must pull and run the `Hello Universe` container.
 
 Execute `docker run -d --restart=always -p 9080:8080 ghcr.io/spectrocloud/hello-universe:1.2.0`.
 
-Docker will pull the specified container image from the repository if a local copy is not present. Once the image is
-pulled, docker will start the container.
-
-In Palette, open the **Cluster Overview** page for the cluster you built. Select the download link for your clusters
-admin kubeconfig file.
+In Palette, open the **Cluster Overview** page for the cluster you built in the [Deploy a VMO Cluster](#deploy-a-vmo-cluster) section. Select the download link for your cluster's admin kubeconfig file.
 
 ![Image of the admin kubeconfig link](/tutorials/deploy-vmo-maas/tutorials_vmo-mass_admin-kubeconfig.webp)
 
-Open a terminal on your workstation. Update the command below to point to the location of the kubeconfig file you
-downloaded. 
+Open a terminal on your workstation. Update the following command to set the `KUBECONFIG` environment variable to your downloaded file.
 
 ```shell
 
@@ -1446,7 +1700,7 @@ export KUBECONFIG=<path-to-your-kubeconfig-file>
 
 ```
 
-Use the command below to confirm the kubeconfig environment variable has been successfully exported.
+Use the following command to confirm the kubeconfig environment variable has been successfully exported.
 
 ```shell
 
@@ -1458,14 +1712,14 @@ Server Version: v1.32.2
 ```
 
 To access your app, you must create a service in Kubernetes. The service configures MetalLB to provide ingress access to
-your Kubernetes cluster by mapping a network port on the nodes to the network port your app is listening on in the
+your Kubernetes cluster by mapping a network port on the nodes to the network port your app is listening on inside the
 cluster.
 
 Once the connection passes through MetalLB, the Kubernetes service acts as a load balancer inside your cluster. Since
-pods dynamically scale, the service keeps track of all pods running your app by using a label selector. In this
-tutorial, the label `kubevirt.io/domain: hellouni` is used to uniquely identify pods running the hello-universe app.
+pods dynamically scale, the service keeps track of all pods running your app using a label selector. In this
+tutorial, the label `kubevirt.io/domain: hellouni` uniquely identifies pods running the hello-universe app.
 
-Execute the command below to create the Kubernetes service for the app.
+Use the following command to create the Kubernetes service for the hello-universe app.
 
 ```shell
 kubectl apply -f - <<EOF
@@ -1487,15 +1741,19 @@ EOF
 
 ## Verify the Application
 
-In Palette, navigate to the left main menu and select **Clusters**. Select the cluster you created.
+Log in to [Palette](https://console.spectrocloud.com). Then, navigate to the left main menu and select **Clusters**. Select the cluster you created in the [Deploy a VMO Cluster](#deploy-a-vmo-cluster) to display the **Cluster Overview** screen.
 
-The **hello-universe-service** is displayed in the **Services** section.
+The **Services** section of the cluster overview screen displays any active services or port-forwards in your cluster. Select the **:9080** link for the **hello-universe-service** to access the Hello Universe app.
 
-Select the URL link **:9080** for the **hello-universe-service** to access the Hello Universe app.
+:::tip
+
+It may take up to 5 minutes for Palette to refresh your cluster's information and display the **hello-universe-service** on the **Cluster Overview** screen.
+
+:::
 
 ![Image that shows the cluster overview of the Hello Universe Frontend Cluster](/tutorials/deploy-vmo-maas/tutorials_vmo_vmo-maas_hello-uni-service.webp)
 
-Your result should be similar to the below screenshot.
+Your result should be similar to the following screenshot.
 
 ![Image that shows the cluster overview of the Hello Universe Frontend Cluster](/tutorials/deploy-cluster-profile-updates/clusters_cluster-management_deploy-cluster-profile-updates_hello-universe-without-api.webp)
 
@@ -1503,42 +1761,32 @@ Your result should be similar to the below screenshot.
 
 <Tabs groupId="Workflows">
 
-<TabItem label="UI" value="UI Workflow">
+<TabItem label="UI Workflow" value="UI Workflow">
 
 Use the following steps to remove all the resources you created for the tutorial.
 
-To remove the cluster, navigate to the left Main Menu and select **Clusters**. Select the cluster you want to delete to
-access its overview page.
-
-Select the **Settings** drop down menu. Select **Delete Cluster**.
+To remove the cluster, log in to [Palette](https://console.spectrocloud.com) and select **Clusters** from the left main menu. On the **Cluster Overview** page, select Settings** > Delete Cluster**.
 
 ![Delete cluster](/getting-started/azure/getting-started_deploy-k8s-cluster_delete-cluster-button.webp)
 
-Enter the name of the cluster to confirm the delete action. The deletion process takes several minutes to complete.
+Enter the name of the cluster to confirm the delete action. The process takes several minutes to complete.
 
 <br />
 
-:::tip
-
-If a cluster remains in the delete phase for over 15 minutes, it becomes eligible for a forced delete. To trigger a
-forced delete, navigate to the cluster’s details page, select **Settings**, then select **Force Delete Cluster**.
-Palette automatically removes clusters stuck in the cluster deletion phase for over 24 hours.
-
-If a force delete is required, ensure you use the MAAS console to manually release the resources you used for this
-tutorial.
-
-:::
+<PartialsComponent category="vmo" name="clean-up-tip" />
 
 <br />
 
-Navigate to the left main menu and select **Profiles**. Find the cluster profile you created and select the **three-dot
-Menu** to display the **Delete** button. Select **Delete** and confirm the selection to remove the cluster profile.
+In Palette, navigate to the left main menu and select **Profiles**. Find the cluster profile you created in the [Create a VMO Cluster Profile](#create-a-vmo-cluster-profile) section and select the three-dot
+menu to display the **Delete** button. Select **Delete** and confirm the selection to remove the cluster profile.
 
 </TabItem>
 
-<TabItem label="Terraform" value="Terraform Workflow">
+<TabItem label="Terraform Workflow" value="Terraform Workflow">
 
-To clean up the resources you deployed, execute the `terraform destroy` command.
+Use the `terraform destroy` command to clean up the resources you deployed.
+
+<PartialsComponent category="vmo" name="clean-up-tip" />
 
 </TabItem>
 
@@ -1546,8 +1794,8 @@ To clean up the resources you deployed, execute the `terraform destroy` command.
 
 ## Wrap-up
 
-In this tutorial, you created a new cluster profile and used it to deploy new Kubernetes cluster with Palette Virtual
-Machine Orchestrator configured on it. You deployed a VM and used Palette's features to connect to the VM and deploy the
-**Hello Universe** and confirmed it was running successfully.
+In this tutorial, you created a new cluster profile and used it to deploy a new Kubernetes cluster with the Palette Virtual
+Machine Orchestrator service. You deployed a VM and used Palette's features to connect to the VM and deploy the
+**Hello Universe** and confirmed it was operating successfully.
 
- For more information on VMO, Visit the [VMO architecture](/vm-management/architecture.md) page.
+For more information on VMO, visit the [VMO architecture](/vm-management/architecture.md) page.

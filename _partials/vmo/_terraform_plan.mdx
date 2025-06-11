@@ -1,0 +1,33 @@
+---
+partial_category: vmo
+partial_name: vmo-terraform-plan
+---
+
+Execute the `terraform plan` command to ensure there are no errors and you have connectivity to your Spectro Cloud
+tenant.
+
+```shell
+terraform plan
+data.spectrocloud_registry.public_registry: Reading...
+data.spectrocloud_cloudaccount_maas.account[0]: Reading...
+data.spectrocloud_cloudaccount_maas.account[0]: Read complete after 0s [id=680a7a2321e9c36a9a0efa4f]
+data.spectrocloud_registry.public_registry: Read complete after 0s [id=5eecc89d0b150045ae661cef]
+data.spectrocloud_pack.maas_csi: Reading...
+data.spectrocloud_pack.maas_metallb: Reading...
+data.spectrocloud_pack.maas_vmo: Reading...
+data.spectrocloud_pack.maas_k8s: Reading...
+data.spectrocloud_pack.maas_cni: Reading...
+data.spectrocloud_pack.maas_ubuntu: Reading...
+data.spectrocloud_pack.maas_metallb: Read complete after 0s [id=678d28cce2561ecca5cf0aea]
+.
+.
+.
+              + name    = "vmo-extras"
+              + uid     = (known after apply)
+            }
+        }
+    }
+
+Plan: 2 to add, 0 to change, 0 to destroy.
+\
+```

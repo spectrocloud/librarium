@@ -9,6 +9,18 @@ tags: ["vmo", "architecture"]
 
 <PartialsComponent category="vmo" name="intro-to-vmo" />
 
+## Use Cases
+
+You will benefit from Palette VMO in the following cases:
+
+- You are planning to gradually shift from VMs to containers and want to continue using both during the transition.
+
+- Your established infrastructure combines containers and VMs, and you want to manage them more effectively.
+
+- You are integrating new VM-based applications into an existing containerized infrastructure.
+
+- You are managing edge locations with VM-based workloads and would like to stop using a hypervisor.
+
 ## Palette VMO Components
 
 By default, Palette VMO includes the following components:

@@ -1,0 +1,24 @@
+---
+partial_category: vmo
+partial_name: vmo-rbac-config
+---
+
+The **Optional cluster settings** screen provides advanced options for OS patching, scheduled scans, scheduled backups, and cluster role binding. VMO services require configuration of cluster roles to enable users and the VMO service account access to the VMO Dashboard. 
+
+Select **RBAC**. Select **Add New Binding** and enter information as instructed in the table below. This binding will assign your Palette user ID cluster-admin permissions.
+
+| **Field**         | **Instruction**                                                                                                            |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| Cluster Role Name | Use the `cluster-admin` role for this tutorial.                                                                           |
+| Subject Type      | Set this value to `user`.                                                                                                  |
+| Subject Name      | The VMO cluster you created is set to use Palette for OIDC. In this field, enter the ID you use when logging into Palette. |
+
+Select **Add Subject** to create another binding. Enter the information as instructed in the table below. This binding will allow the `virtual-machine-orchestrator` service account access to the `vm-dashboard` namespace to perform the operations needed to operate successfully.
+
+| **Field**         | **Instruction**                      | **Description**                                                                                                                                                       |
+| ----------------- | ------------------------------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Subject Type      | Set this value to `Service Account`  | Identifies the type of resource to map to the Cluster Role                                                                                                            |
+| Subject Name      | Enter `virtual-machine-orchestrator` | This value is the service account's name that is granted permissions to access the VM dashboard. This service account is created when the VMO pack is installed. |
+| Subject Namespace | Enter `vm-dashboard`                 | This is the namespace to which the service account is granted access.                                                                                                       |
+
+Select **Confirm**.
