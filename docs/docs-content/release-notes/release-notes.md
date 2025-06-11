@@ -11,11 +11,11 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## June 10, 2025 - Release 4.6.X
+## June 10, 2025 - Release 4.6.35
 
 ### Breaking Changes
 
-- Beginning with Palette version 4.6.x, a [Private Cloud Gateway (PCG)](../clusters/pcg/pcg.md) is required for
+- Beginning with Palette version 4.6.35, a [Private Cloud Gateway (PCG)](../clusters/pcg/pcg.md) is required for
   [self-hosted Palette](../enterprise-version/enterprise-version.md) and [VerteX](../vertex/vertex.md) installations if
   you need to configure both an [Azure Public Cloud](../clusters/public-cloud/azure/azure.md) and
   [Azure US Government](https://azure.microsoft.com/en-us/explore/global-infrastructure/government) account.
