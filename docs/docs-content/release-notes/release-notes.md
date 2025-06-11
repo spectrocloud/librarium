@@ -33,7 +33,7 @@ tags: ["release-notes"]
   [Azure US Government](https://azure.microsoft.com/en-us/explore/global-infrastructure/government) require a PCG. Refer
   to [Known Issues](./known-issues.md) for further details.
 - Fixed an issue that caused system errors after
-  [resetting system administrator passwords](../enterprise-version/system-management/account-management/manage-system-accounts.md#reset-system-administrator-password).
+  [resetting system administrator passwords](../enterprise-version/system-management/account-management/manage-system-accounts.md#reset-system-administrator-password) in [data center](../clusters/data-center/data-center.md) environments.
 - Fixed an issue that caused [AWS clusters](../clusters/public-cloud/aws/aws.md) to fail to find bastion node Amazon
   Machine Image (AMI).
 - Fixed an issue that caused memory leaks on [Azure IaaS clusters](../clusters/public-cloud/azure/azure.md). This was
