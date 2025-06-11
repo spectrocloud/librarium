@@ -10,10 +10,10 @@ const { pluginPacksAndIntegrationsData } = require("./plugins/packs-integrations
 const { pluginImportFontAwesomeIcons } = require("./plugins/font-awesome");
 import path from "path";
 
-// Logo paths are hardcoded through Docker mounts or we use the default logos.
+// Logo paths are hardcoded or we use the default logos.
 function getLightLogoPath() {
-  if (process.env.LIGHT_LOGO_PATH && process.env.LIGHT_LOGO_PATH.trim() !== "") {
-    return "img/custom-light-logo.png";
+  if (process.env.CUSTOM_LIGHT_LOGO && process.env.CUSTOM_LIGHT_LOGO.trim() === "true") {
+    return "img/custom-light-logo.svg";
   }
 
   return "img/spectrocloud-logo-light.svg?new=true";
@@ -21,8 +21,8 @@ function getLightLogoPath() {
 
 // Logo paths are hardcoded through Docker mounts or we use the default logos.
 function getDarkLogoPath() {
-  if (process.env.DARK_LOGO_PATH && process.env.DARK_LOGO_PATH.trim() !== "") {
-    return "img/custom-dark-logo.png";
+  if (process.env.CUSTOM_DARK_LOGO && process.env.CUSTOM_DARK_LOGO.trim() === "true") {
+    return "img/custom-dark-logo.svg";
   }
 
   return "img/spectrocloud-logo-dark.svg?new=true";

@@ -102,19 +102,29 @@ The following software must be installed on your system:
 docker run --publish 8080:80 --publish 2019:2019 --rm ghcr.io/spectrocloud/librarium:nightly
 ```
 
+7. Open a browser and navigate to `http://localhost:8080`. The documentation should be displayed in the browser.
+
 ## Deploy the Offline Documentation with Custom Logos
 
 You can provide your own custom logos to the Spectro Cloud documentation.
 
 :::info
 
-We recommend that you provide two logos, one for dark mode and one for light mode. The files must be in PNG format.
+We recommend that you provide two logos, one for dark mode and one for light mode. The files must be in SVG format.
 
 :::
 
-1. Download the logos you want to configure to your local machine.
+1. Clone the Spectro Cloud Docs [GitHub repository](https://github.com/spectrocloud/librarium) to your local machine.
+   Navigate to the root of the repository.
 
-2. Replace the placeholders in the following command with the path to your logo files. Then, execute the command in your
+```shell
+git clone https://github.com/spectrocloud/librarium.git \
+cd librarium
+```
+
+2. Download the logos you want to configure to your local machine.
+
+3. Replace the placeholders in the following command with the path to your logo files. Then, execute the command in your
    terminal to save the location of the files to two environment variables.
 
    ```shell
@@ -122,26 +132,41 @@ We recommend that you provide two logos, one for dark mode and one for light mod
    export DARK_LOGO_PATH=path/to/dark/custom/logo/file
    ```
 
-3. Use the following command to start the documentation in a Docker container.
+4. Execute the following script from the root of the cloned Docs GitHub repository to build a customized Docker image.
 
    ```shell
-   docker run \
-    --env LIGHT_LOGO_PATH=$LIGHT_LOGO_PATH \
-    --env DARK_LOGO_PATH=$DARK_LOGO_PATH \
-    --volume "$(realpath "$LIGHT_LOGO_PATH")":/librarium/static/img/custom-light-logo.png \
-    --volume "$(realpath "$DARK_LOGO_PATH")":/librarium/static/img/custom-dark-logo.png \
-    --publish 8080:80 \
-    --publish 2019:2019  \
-    --rm ghcr.io/spectrocloud/librarium:nightly
+   ./scripts/build-custom-offline-docker.sh
    ```
 
-4. Open a browser and navigate to `http://localhost:8080` to view the documentation. The navigation bar displays your
-   custom configured logo.
+   The script will all required environment variables and creates a Docker image named `spectrocloud/librarium:custom`.
+   Additionally, the script creates a `.env` file with all the environment variables required.
 
-## Validation
+   ```shell title="Successful output"
+   ✅ Docker image built successfully: spectrocloud/librarium:custom
 
-To validate that the offline documentation is working, open a browser and navigate to `http://localhost:8080`. The
-documentation should be displayed in the browser.
+   ℹ️  Use the following command to run the Docker container :
+   ⏭️  docker run --env-file=.env --publish 9000:9000 --rm spectrocloud/librarium:custom
+   ```
+
+:::info
+
+The Docker image contains a copy of your configured custom logos. Any changes made to the files after the image has been
+built will not be reflected in the image.
+
+:::
+
+5. Execute the following command to start a container using the built Docker image.
+
+```shell
+docker run --env-file=.env --publish 9000:9000 --rm spectrocloud/librarium:custom
+```
+
+6. Open a browser and navigate to `http://localhost:9000` to view the documentation. The navigation bar displays your
+   custom configured logos.
+
+   Alternatively, you can can push your Docker image to a registry and host your offline documentation using a
+   third-party static site hosting provider. The generated `.env` file contains all the environment variables that you
+   should configure.
 
 ## Container Image Authenticity
 
