@@ -82,25 +82,12 @@ Use the following instructions to build the Edge Installer ISO. The optional ste
 
 ### Clone EdgeForge Repository
 
-1. Clone the **CanvOS** repository.
+<PartialsComponent category="palette-edge-canvos-version" name="canvos-version" />
 
-   ```shell
-    git clone https://github.com/spectrocloud/CanvOS.git
-   ```
+5. If you are using a self-hosted instance of Palette and have determined a specific CanvOS version, check out the
+   corresponding tag.
 
-2. Change to the `CanvOS` directory.
-
-   ```shell
-   cd CanvOS
-   ```
-
-3. View the available git tag.
-
-   ```shell
-   git tag
-   ```
-
-4. Check out the latest available tag. This guide uses the tag v4.3.0 as an example.
+   Otherwise, check out the newest available tag. This guide uses the tag `v4.3.0` as an example.
 
    ```
    git checkout v4.3.0
@@ -108,7 +95,7 @@ Use the following instructions to build the Edge Installer ISO. The optional ste
 
 ### Prepare `.arg` file
 
-5. Review the `.arg.template` file to view a template of all the arguments that are used during the build process. Since
+6. Review the `.arg.template` file to view a template of all the arguments that are used during the build process. Since
    the process to build provider images uses the same `.arg` file, some of the arguments in the template are related to
    the provider images. Refer to [Edge Artifact Build Configuration](./arg.md) for all available configuration
    parameters.
@@ -125,7 +112,7 @@ Use the following instructions to build the Edge Installer ISO. The optional ste
 
    :::
 
-6. Customize these arguments to use during the build process. The following is an example `.arg` file.
+7. Customize these arguments to use during the build process. The following is an example `.arg` file.
 
    ```
    CUSTOM_TAG=palette-learn
@@ -142,14 +129,14 @@ Use the following instructions to build the Edge Installer ISO. The optional ste
    UPDATE_KERNEL=false
    ```
 
-7. (Optional) You can embed a public key in your Edge installer ISO. If you choose to add a public key to your ISO or
+8. (Optional) You can embed a public key in your Edge installer ISO. If you choose to add a public key to your ISO or
    provider image, then only content that is signed by the corresponding private key can be uploaded to the Edge host
    through Local UI. This includes both the content bundle and cluster definition. For more information, refer to
    [Embed Public Key in Edge Artifacts](./signed-content.md).
 
 ### Provide Client Certificates for Proxy Servers
 
-8. (Optional) This step is only required if your builds occur in a proxied network environment, and your proxy servers
+9. (Optional) This step is only required if your builds occur in a proxied network environment, and your proxy servers
    require client certificates, or if your base image is in a registry that requires client certificates.
 
    You can provide the base-64 encoded certificates in PEM format in the `certs` folder at the root directory of the
@@ -171,21 +158,21 @@ Use the following instructions to build the Edge Installer ISO. The optional ste
 
 ### Prepare User Data
 
-9. Refer to [Prepare User Data](./../prepare-user-data.md) to prepare the `user-data` file in the root directory of the
-   `CanvOS` directory.
+10. Refer to [Prepare User Data](./../prepare-user-data.md) to prepare the `user-data` file in the root directory of the
+    `CanvOS` directory.
 
-   User data contains installer configuration and is required for an installer ISO. If you do not supply user data
-   during this step, you must provide site user data before installation takes place. You can also use site user data to
-   override or supplement configuration you provided to the installer ISO. For more information, refer to
-   [Apply Site User Data](../../site-deployment/site-installation/site-user-data.md).
+    User data contains installer configuration and is required for an installer ISO. If you do not supply user data
+    during this step, you must provide site user data before installation takes place. You can also use site user data
+    to override or supplement configuration you provided to the installer ISO. For more information, refer to
+    [Apply Site User Data](../../site-deployment/site-installation/site-user-data.md).
 
-   :::tip
+    :::tip
 
-   You can take advantage of the Tech Preview feature to edit user data in Local UI after installation. However, we
-   still recommend you provide user data during EdgeForge for production workloads because this is a Tech Preview
-   feature and not all fields are available for edit in Local UI.
+    You can take advantage of the Tech Preview feature to edit user data in Local UI after installation. However, we
+    still recommend providing user data during EdgeForge when deploying production workloads, as this is a Tech Preview
+    feature and not all fields are editable in the Local UI.
 
-   :::
+    :::
 
 ### Build Content Bundle
 
@@ -197,7 +184,7 @@ If you do not include content bundle in your Edge Installer ISO, you can still b
 a locally managed Edge host via [Local UI](../../local-ui/local-ui.md). For more information, refer to
 [Upload Content Bundle](../../local-ui/cluster-management/upload-content-bundle.md).
 
-10. Refer to [Build Content Bundle](build-content-bundle.md) to learn how to build content bundles for your ISO image.
+11. Refer to [Build Content Bundle](build-content-bundle.md) to learn how to build content bundles for your ISO image.
     Since you are including the content bundle in the Installer ISO, you should choose either the ZST format or the tar
     format for the content bundle. Do not build the content bundle as an ISO image.
 
@@ -213,7 +200,7 @@ a locally managed Edge host via [Local UI](../../local-ui/local-ui.md). For more
 
     :::
 
-11. When the content bundle build finishes, the output will be in a directory named `content-XXXXXX`, where XXXXXX is a
+12. When the content bundle build finishes, the output will be in a directory named `content-XXXXXX`, where XXXXXX is a
     random alphanumerical string. Inside the directory is the content bundle file.
 
     :::warning
@@ -225,7 +212,7 @@ a locally managed Edge host via [Local UI](../../local-ui/local-ui.md). For more
 
     :::
 
-12. Place the directory containing the content bundle file in the root directory of the `CanvOS` directory.
+13. Place the directory containing the content bundle file in the root directory of the `CanvOS` directory.
 
 ### Prepare Cluster Definition (Tech Preview)
 
@@ -236,12 +223,12 @@ API endpoint.
 If you do not include cluster definitions in your Edge Installer ISO, you can still import the cluster definition from
 Local UI once you finish installing Palette on the Edge host.
 
-13. Refer to [Export Cluster Definition](../../local-ui/cluster-management/export-cluster-definition.md) to learn how to
+14. Refer to [Export Cluster Definition](../../local-ui/cluster-management/export-cluster-definition.md) to learn how to
     export cluster definitions.
 
-14. Put the cluster definition tgz file in the `CanvOS` directory.
+15. Put the cluster definition tgz file in the `CanvOS` directory.
 
-15. In the `.arg` file, add an argument `CLUSTERCONFIG` and set it to the name of the cluster configuration file. For
+16. In the `.arg` file, add an argument `CLUSTERCONFIG` and set it to the name of the cluster configuration file. For
     example:
 
     ```
@@ -250,14 +237,14 @@ Local UI once you finish installing Palette on the Edge host.
 
 ### Build Edge Installer ISO
 
-16. Ensure that all components of the ISO you want to include are in the `CanvOS` directory:
+17. Ensure that all components of the ISO you want to include are in the `CanvOS` directory:
 
     - `.args` file: `CanvOS/.args`
     - User data: `CanvOS/user-data`
     - Content bundle: `CanvOS/content-XXXXX/core-spectro-content`
     - Cluster definition: `CanvOS/cluster-name-XXXX.tgz`
 
-17. Issue the following command to build the ISO image.
+18. Issue the following command to build the ISO image.
 
     <Tabs group="earthly">
 
