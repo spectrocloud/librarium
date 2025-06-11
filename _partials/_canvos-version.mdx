@@ -1,0 +1,38 @@
+---
+partial_category: palette-edge-canvos-version
+partial_name: canvos-version
+---
+
+1. Check out the [CanvOS](https://github.com/spectrocloud/CanvOS.git) GitHub repository containing the starter code.
+
+   ```bash
+   git clone https://github.com/spectrocloud/CanvOS.git
+   ```
+
+2. Change to the `CanvOS` directory.
+
+   ```bash
+   cd CanvOS
+   ```
+
+3. View the available [git tag](https://github.com/spectrocloud/CanvOS/tags).
+
+   ```bash
+   git tag
+   ```
+
+4. (Optional) If you are using a self-hosted instance of Palette, you need to build the ISO using the corresponding CanvOS version. 
+   Use the following command to identify the agent version for your Palette instance. Replace `<palette-endpoint>` with
+   your Palette endpoint and `<api-key>` with your
+   [Palette API key](/user-management/authentication/api-key/).
+
+   ```shell
+   curl --location --request GET 'https://<palette-endpoint>/v1/services/stylus/version' --header 'Content-Type: application/json' --header 'Apikey: <api-key>'  | jq --raw-output '.spec.latestVersion.content | match("version: ([^\n]+)").captures[0].string'
+   ```
+   
+   The output is the version number you must use to build the ISO. For example, if the output is `4.5.15`, you must
+   check out the `v4.5.15` tag in the CanvOS repository to build the ISO.
+
+   ```text hideClipboard title="Example output"
+   4.5.15
+   ```
