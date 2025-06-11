@@ -21,10 +21,9 @@ tags: ["release-notes"]
   If you are using a [self-hosted Palette](../enterprise-version/enterprise-version.md) or [VerteX](../vertex/vertex.md)
   instance, a PCG is not required unless you configure both an
   [Azure Public Cloud](../clusters/public-cloud/azure/azure.md) and Azure US Government account on the same
-  installation. If you do not configure a PCG, you must
-  install two instances of Palette or VerteX: one for Azure Public Cloud clusters and one for Azure US Government
-  clusters. For more information on adding Azure cloud accounts, refer to the
-  [Register and Manage Azure Cloud Account](../clusters/public-cloud/azure/azure-cloud.md) guide.
+  installation. If you do not configure a PCG, you must install two instances of Palette or VerteX: one for Azure Public
+  Cloud clusters and one for Azure US Government clusters. For more information on adding Azure cloud accounts, refer to
+  the [Register and Manage Azure Cloud Account](../clusters/public-cloud/azure/azure-cloud.md) guide.
 
 ### Bug Fixes
 
