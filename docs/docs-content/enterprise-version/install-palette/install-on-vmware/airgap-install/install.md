@@ -60,8 +60,6 @@ and assets.
 
 - Assigned IP addresses for application workload services, such as Load Balancer services.
 
-- Shared Storage between VMware vSphere hosts.
-
 - A [StorageClass](https://kubernetes.io/docs/concepts/storage/storage-classes/) to manage persistent storage, with the
   annotation `storageclass.kubernetes.io/is-default-class` set to `true`. To override the default StorageClass for a
   workload, modify the `storageClass` parameter. Check out the
