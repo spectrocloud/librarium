@@ -139,13 +139,12 @@ We recommend that you provide two logos, one for dark mode and one for light mod
    ./scripts/build-custom-offline-docker.sh
    ```
 
-   The script creates a Docker image named `spectrocloud/librarium:custom` and the `.env` file with all the environment
-   variables required.
+   The script creates a Docker image named `spectrocloud/librarium:custom` and a `.env` file with all the required environment variables.
 
    ```shell title="Successful output"
    ✅ Docker image built successfully: spectrocloud/librarium:custom
 
-   ℹ️  Use the following command to run the Docker container :
+   ℹ️  Use the following command to run the Docker container:
    ⏭️  docker run --env-file=.env --publish 9000:9000 --rm spectrocloud/librarium:custom
    ```
 
@@ -166,7 +165,7 @@ has been built will not be reflected in the image.
    custom configured logos.
 
    Alternatively, you can push your Docker image to a registry and host your offline documentation using a third-party
-   static site hosting provider. The generated `.env` file contains all the environment variables that you should
+   static site hosting provider. The generated `.env` file contains all the environment variables that you must
    configure.
 
 ## Container Image Authenticity
