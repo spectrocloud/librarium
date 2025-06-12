@@ -91,6 +91,7 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 | --------- | ----------- |
 
 #### Deprecations and Removals
+
 ## June 12, 2025 - Release 4.6.36
 
 ### Breaking Changes
