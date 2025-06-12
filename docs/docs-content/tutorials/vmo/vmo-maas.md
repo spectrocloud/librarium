@@ -57,7 +57,7 @@ cd tutorials/terraform/vmo-cluster
 
 This section will guide you through creating a cluster profile using the Palette UI. 
 
-Log in to [Palette](https://console.spectrocloud.com). From the left main menu, select **Profiles** > **Add Cluster Profile**.
+In Palette, navigate to the left main menu, select **Profiles** > **Add Cluster Profile**.
 
 In the **Basic Information** section, enter the name, version number, and any tags you wish to apply to the profile. Set the type value to **Full**. Select **Next**.
 
@@ -1091,8 +1091,6 @@ The Terraform workflow creates the cluster profile and the cluster in a single s
 
 <TabItem label="UI Workflow" value="UI Workflow">
 
-Log in to [Palette](https://console.spectrocloud.com).
-
 From the left main menu, select **Clusters** > **Add New Cluster**.
 
 The **Cluster Type** screen displays all available options for automated deployment of Kubernetes clusters. In the **Data
@@ -1589,8 +1587,6 @@ Your cluster role bindings have now been applied to your cluster.
 
 ## Verify the Cluster Deployment
 
-Log in to [Palette](https://console.spectrocloud.com).
-
 Select the **Clusters** option in the left main menu in Palette. Select the cluster you created in the [Deploy a VMO Cluster](#deploy-a-vmo-cluster) section. On the **Cluster Overview** page, ensure the cluster status is healthy, and the **Virtual Machines** tab appears. No further validation is required.
 
 ![Image of succesfully deployed cluster](/tutorials/deploy-vmo-maas/tutorials_vmo_vmo-maas_verify-cluster.webp)
@@ -1600,8 +1596,6 @@ Select the **Clusters** option in the left main menu in Palette. Select the clus
 <Tabs groupId="Workflows">
 
 <TabItem label="UI Workflow" value="UI Workflow">
-
-Log in to [Palette](https://console.spectrocloud.com).
 
 From the left main menu, select **Clusters** to open the cluster management console. Select the cluster you deployed in the [Deploy a VMO Cluster](#deploy-a-vmo-cluster) section to open its **Cluster Overview** page.
 
@@ -1660,8 +1654,6 @@ Execute the `terraform apply` command to create the VM in your VMO Cluster.
 </Tabs>
 
 ## Deploy the Application
-
-Log in to [Palette](https://console.spectrocloud.com).
 
 From the left main menu, select **Clusters** to open the cluster management console. Select the cluster you deployed in the [Deploy a VMO Cluster](#deploy-a-vmo-cluster) section to open its **Cluster Overview** page.
 
@@ -1741,7 +1733,7 @@ EOF
 
 ## Verify the Application
 
-Log in to [Palette](https://console.spectrocloud.com). Then, navigate to the left main menu and select **Clusters**. Select the cluster you created in the [Deploy a VMO Cluster](#deploy-a-vmo-cluster) to display the **Cluster Overview** screen.
+In Palette, navigate to the left main menu and select **Clusters**. Select the cluster you created in the [Deploy a VMO Cluster](#deploy-a-vmo-cluster) to display the **Cluster Overview** screen.
 
 The **Services** section of the cluster overview screen displays any active services or port-forwards in your cluster. Select the **:9080** link for the **hello-universe-service** to access the Hello Universe app.
 
@@ -1765,7 +1757,7 @@ Your result should be similar to the following screenshot.
 
 Use the following steps to remove all the resources you created for the tutorial.
 
-To remove the cluster, log in to [Palette](https://console.spectrocloud.com) and select **Clusters** from the left main menu. On the **Cluster Overview** page, select Settings** > Delete Cluster**.
+To remove the cluster, select **Clusters** from the left main menu. On the **Cluster Overview** page, select Settings** > Delete Cluster**.
 
 ![Delete cluster](/getting-started/azure/getting-started_deploy-k8s-cluster_delete-cluster-button.webp)
 
@@ -1798,4 +1790,4 @@ In this tutorial, you created a new cluster profile and used it to deploy a new 
 Machine Orchestrator service. You deployed a VM and used Palette's features to connect to the VM and deploy the
 **Hello Universe** and confirmed it was operating successfully.
 
-For more information on VMO, visit the [VMO architecture](/vm-management/architecture.md) page.
+For more information on VMO, visit the [VMO architecture](../../vm-management/architecture.md) page.
