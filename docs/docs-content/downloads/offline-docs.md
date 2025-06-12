@@ -106,7 +106,7 @@ docker run --publish 8080:80 --publish 2019:2019 --rm ghcr.io/spectrocloud/libra
 
 ## Deploy the Offline Documentation with Custom Logos
 
-You can provide your own custom logos to the Spectro Cloud documentation. The documentation provides 
+You can provide your own custom logos to the Spectro Cloud documentation. The documentation provides
 
 :::info
 
