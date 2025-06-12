@@ -1096,14 +1096,12 @@ From the left main menu, select **Clusters** > **Add New Cluster**.
 The **Cluster Type** screen displays all available options for automated deployment of Kubernetes clusters. In the **Data
 Center** section, select **MAAS**. In the bottom-right corner, select **Start MAAS Configuration**.
 
-The **Cluster Information** screen allows you to provide details about your cluster, such as its name. Enter
-the values for **Cluster name**, **Description**, and **Tags**. Select the PCG deployed in your MAAS environment from
+Enter the values for **Cluster name**, **Description**, and **Tags**. Select the PCG deployed in your MAAS environment from
 the **Cloud Account** drop-down menu. Select **Next** to proceed to the cluster profile selection screen.
 
 Select **Add Cluster Profile**.
 
-In the **Choose a Profile** slide-out menu, locate and select the cluster profile you created in the [Create a VMO Cluster Profile](#create-a-vmo-cluster-profile) section.
-Cluster Profile_ section. Select **Confirm**.
+In the **Choose a Profile** slide-out menu, locate and select the cluster profile you created in the [Create a VMO Cluster Profile](#create-a-vmo-cluster-profile) section. Select **Confirm**.
 
 The **Cluster Profile** screen provides the details of all the packs in the selected cluster profile. Palette
 enables the same profile to be used for multiple clusters by allowing you to change pack values, modify presets, or set
@@ -1345,7 +1343,7 @@ resource "spectrocloud_cluster_profile" "maas-vmo-profile" {
   <summary>cluster.tf</summary>
 
 The **clusters.tf** file contains the definitions required for deploying a host cluster to one of the infrastructure
-providers. To create an MAAS host cluster, you must set the `deploy-maas` variable in the **terraform.tfvars** file to true.
+providers. To create an MAAS host cluster, you must set the `deploy-maas` variable in the `terraform.tfvars` file to true.
 
 When deploying a cluster using Terraform, you must provide the same parameters as those available in the Palette UI for
 the cluster deployment step, such as the instance size and number of nodes. You can learn more about each parameter by
@@ -1432,7 +1430,7 @@ Using the data resource helps you avoid manually entering the parameter values r
   <summary>virtual-machines.tf</summary>
 
 The **clusters.tf** file contains the definitions required for deploying a host cluster to one of the infrastructure
-providers. To create an MAAS host cluster, you must set the `deploy-maa-vm` variable in the **terraform.tfvars** file to true.
+providers. To create an MAAS host cluster, you must set the `deploy-maa-vm` variable in the `terraform.tfvars` file to true.
 
 When deploying a VM using Terraform, you must provide the same parameters as those available in the Palette UI for
 the VM deployment step, such as the CPU and storage to allocate to the VM. You can learn more about each parameter by
@@ -1561,7 +1559,7 @@ The VMO pack may require custom network configurations to function correctly in 
 
 #### Terraform Cluster Deployment
 
-To deploy a cluster using Terraform, you must first modify the **terraform.tfvars** file. Open it in the editor of your choice. 
+To deploy a cluster using Terraform, you must first modify the `terraform.tfvars` file. Open it in the editor of your choice. 
 
 The **terraform.tf** file is structured into sections. Each section contains variables that need to be filled in, identified by the placeholder `REPLACE_ME`. Additionally, there is a toggle variable named `deploy-maas` must be set to `true` to deploy your MAAS cluster.
 
@@ -1569,7 +1567,34 @@ In the **Palette Settings** section, modify the name of the palette-project vari
 
 For more information about the variables and their usage, refer to the `.readme` file in the `vmo-cluster` folder of the tutorial package..
 
-<PartialsComponent category="vmo" name="vmo-terraform-plan" />
+Execute the `terraform plan` command to ensure there are no errors and you have connectivity to your Spectro Cloud
+tenant.
+
+```shell
+terraform plan
+data.spectrocloud_registry.public_registry: Reading...
+data.spectrocloud_cloudaccount_maas.account[0]: Reading...
+data.spectrocloud_cloudaccount_maas.account[0]: Read complete after 0s [id=680a7a2321e9c36a9a0efa4f]
+data.spectrocloud_registry.public_registry: Read complete after 0s [id=5eecc89d0b150045ae661cef]
+data.spectrocloud_pack.maas_csi: Reading...
+data.spectrocloud_pack.maas_metallb: Reading...
+data.spectrocloud_pack.maas_vmo: Reading...
+data.spectrocloud_pack.maas_k8s: Reading...
+data.spectrocloud_pack.maas_cni: Reading...
+data.spectrocloud_pack.maas_ubuntu: Reading...
+data.spectrocloud_pack.maas_metallb: Read complete after 0s [id=678d28cce2561ecca5cf0aea]
+.
+.
+.
+              + name    = "vmo-extras"
+              + uid     = (known after apply)
+            }
+        }
+    }
+
+Plan: 2 to add, 0 to change, 0 to destroy.
+\
+```
 
 Execute the `terraform apply` command. Depending on your environment, this process may take up to an hour or more. You can monitor the progress of your cluster build by logging into your [Palette](https://console.spectrocloud.com) tenant and selecting **Clusters** from the left main menu. 
 
@@ -1599,8 +1624,6 @@ Select the **Clusters** option in the left main menu in Palette. Select the clus
 
 From the left main menu, select **Clusters** to open the cluster management console. Select the cluster you deployed in the [Deploy a VMO Cluster](#deploy-a-vmo-cluster) section to open its **Cluster Overview** page.
 
-Select the **Virtual Machines** tab to connect to the **VM Dashboard**. If the **Virtual Machines** tab is not displayed, review the RBAC configuration in the [Create a VMO Cluster](#create-a-vmo-cluster-profile) section and ensure your `user account` and the `virtual-machine-orchestrator` service account have been configured as instructed.
-
 The `default` namespace is automatically displayed on the **VM Dashboard**. Select the **virtual-machines** namespace from the **Namespace** drop-down menu. The display will update to show the status of any VMs running in that namespace. This also specifies the namespace where your VMs will be deployed. Select **New Virtual Machine** to begin deploying your VM.
 
 The next screen allows you to select and configure the OS for your VM. The VM template displayed is the one you deployed in the [Create a VMO Cluster Profile](#create-a-vmo-cluster-profile) section. Select the **Ubuntu 22.04** template.
@@ -1619,9 +1642,6 @@ The **VM settings** page allows you to customize the basic configuration for you
 The **Customize Configuration** screen displays the YAML used to build your VM. KubeVirt enables
 configuration, deployment, and management of your VMs using the same process used to configure and deploy pods.
 
-The YAML configuration can be integrated into many deployment tools that support the deployment of Kubernetes configurations. The configuration can also be manually applied using kubectl by using the
-`kubectl apply --filename <filename>` command.
-
 Select **Next** to apply your customizations. Select **Create Virtual Machine**.
 
 </TabItem>
@@ -1631,7 +1651,7 @@ Select **Next** to apply your customizations. Select **Create Virtual Machine**.
 This section introduces and reviews the Terraform scripts used to deploy a VM into your MAAS VMO cluster.
 
 Before deploying your VM, you must modify the `terraform.tfvars` file to reflect the configuration you want your VM to
-have. Update terraform.tfvars as instructed in the following table.
+have. Update `terraform.tfvars` as instructed in the following table.
 
 | **Variable**       | **Data Type** | **Instruction**                                                                                                                                                              |
 | ------------------ | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -1645,7 +1665,32 @@ have. Update terraform.tfvars as instructed in the following table.
 | **vm-cpu-threads**      | `number`      | The number of CPU threads your VM can use. You can assign 1 CPU core and a single thread if desired.                                                                                                                                     |
 | **vm-memory-Gi**        | `string`      | Set this value to the amount of RAM (memory) you want your VM to have. You must include 'Gi' in your value. Example `4Gi`                                                                                                                          |
 
-<PartialsComponent category="vmo" name="vmo-terraform-plan" />
+Execute the `terraform plan` command to ensure there are no errors and you have connectivity to your Spectro Cloud
+tenant.
+
+```shell
+terraform plan
+data.spectrocloud_registry.public_registry: Reading...
+data.spectrocloud_cloudaccount_maas.account[0]: Reading...
+data.spectrocloud_cloudaccount_maas.account[0]: Read complete after 0s [id=680a7a2321e9c36a9a0efa4f]
+data.spectrocloud_registry.public_registry: Read complete after 0s [id=5eecc89d0b150045ae661cef]
+data.spectrocloud_pack.maas_csi: Reading...
+data.spectrocloud_pack.maas_metallb: Reading...
+data.spectrocloud_pack.maas_vmo: Reading...
+data.spectrocloud_pack.maas_k8s: Reading...
+data.spectrocloud_pack.maas_cni: Reading...
+data.spectrocloud_pack.maas_ubuntu: Reading...
+data.spectrocloud_pack.maas_metallb: Read complete after 0s [id=678d28cce2561ecca5cf0aea]
+.
+.
+.
+            }
+        }
+    }
+
+Plan: 1 to add, 0 to change, 0 to destroy.
+
+```
 
 Execute the `terraform apply` command to create the VM in your VMO Cluster.
 
@@ -1674,11 +1719,11 @@ Log in to your VM using the following username and password:
 | ------------- | ------------ |
 | ubuntu        | spectro      |
 
+Use the password you configured if you made changes in the [Deploy a Virtual Machine](#deploy-a-virtual-machine) section.
+
 Execute the `docker version` command to confirm Docker was successfully installed during the cloud-init process.
 
-Next, you must pull and run the `Hello Universe` container.
-
-Execute `docker run -d --restart=always -p 9080:8080 ghcr.io/spectrocloud/hello-universe:1.2.0`.
+Execute `docker run -d --restart=always -p 9080:8080 ghcr.io/spectrocloud/hello-universe:1.2.0`. This will pull and run the `Hello Universe` container.
 
 In Palette, open the **Cluster Overview** page for the cluster you built in the [Deploy a VMO Cluster](#deploy-a-vmo-cluster) section. Select the download link for your cluster's admin kubeconfig file.
 
@@ -1790,4 +1835,4 @@ In this tutorial, you created a new cluster profile and used it to deploy a new 
 Machine Orchestrator service. You deployed a VM and used Palette's features to connect to the VM and deploy the
 **Hello Universe** and confirmed it was operating successfully.
 
-For more information on VMO, visit the [VMO architecture](../../vm-management/architecture.md) page.
+For information on VM management topics such as VM Migration and snapshots, visit visit our <VersionedLink text="VM Management" url="/vm-management/create-manage-vm/#wm-management"/> page.
