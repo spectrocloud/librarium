@@ -11,11 +11,11 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## June 11, 2025 - Release 4.6.35
+## June 11, 2025 - Release 4.6.36
 
 ### Breaking Changes
 
-- Beginning with Palette version 4.6.35, a [Private Cloud Gateway (PCG)](../clusters/pcg/pcg.md) is required to add an
+- Beginning with Palette version 4.6.36, a [Private Cloud Gateway (PCG)](../clusters/pcg/pcg.md) is required to add an
   [Azure US Government](https://azure.microsoft.com/en-us/explore/global-infrastructure/government) cloud account.
 
   If you are using a [self-hosted Palette](../enterprise-version/enterprise-version.md) or [VerteX](../vertex/vertex.md)
@@ -40,8 +40,8 @@ tags: ["release-notes"]
   Machine Image (AMI).
 - Fixed an issue that caused memory leaks on [Azure IaaS clusters](../clusters/public-cloud/azure/azure.md). This was
   caused by an [upstream issue](https://github.com/kubernetes-sigs/cluster-api-provider-azure/issues/5410) in CAPZ.
-- Fixed an issue that prevented [Azure IaaS](../clusters/public-cloud/azure/create-azure-cluster.md) clusters using the
-  same control plane and worker node subnet from being deployed.
+- Fixed an issue that caused errors in the `palette-controller-manager` pods on self-hosted
+  [Palette VerteX](../clusters/public-cloud/azure/create-azure-cluster.md) installations.
 
 ## June 6, 2025 - Release 4.6.34
 
