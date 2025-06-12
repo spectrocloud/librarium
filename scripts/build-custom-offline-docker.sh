@@ -17,8 +17,6 @@ if [ ! -f .env ]; then
     echo "ALGOLIA_INDEX_NAME=madeup-index" >> .env
     echo "DISABLE_PACKS_INTEGRATIONS=true" >> .env
     echo "DISABLE_SECURITY_INTEGRATIONS=true" >> .env
-    echo "CUSTOM_LIGHT_LOGO=true" >> .env
-    echo "CUSTOM_DARK_LOGO=true" >> .env
     echo "✅ .env file created for offline documentation."
 else
     echo "ℹ️ .env file already exists, skipping creation."
@@ -28,12 +26,14 @@ fi
 if [ -n "${LIGHT_LOGO_PATH}" ]; then
     cp "${LIGHT_LOGO_PATH}" "${CURRENT_DIR}/static/img/custom-light-logo.svg"
     echo "✅ Copied light logo to static/img/custom-light-logo.svg"
+    echo "CUSTOM_LIGHT_LOGO=true" >> .env
 else
     echo "ℹ️ No custom light logo provided, using default."
 fi
 if [ -n "${DARK_LOGO_PATH}" ]; then
     cp "${DARK_LOGO_PATH}" "${CURRENT_DIR}/static/img/custom-dark-logo.svg"
     echo "✅ Copied dark logo to static/img/custom-dark-logo.svg"
+    echo "CUSTOM_DARK_LOGO=true" >> .env
 else
     echo "ℹ️ No custom dark logo provided, using default."
 fi

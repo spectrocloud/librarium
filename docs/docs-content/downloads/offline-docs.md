@@ -106,7 +106,7 @@ docker run --publish 8080:80 --publish 2019:2019 --rm ghcr.io/spectrocloud/libra
 
 ## Deploy the Offline Documentation with Custom Logos
 
-You can provide your own custom logos to the Spectro Cloud documentation.
+You can provide your own custom logos to the Spectro Cloud documentation. The documentation provides 
 
 :::info
 
@@ -117,10 +117,10 @@ We recommend that you provide two logos, one for dark mode and one for light mod
 1. Clone the Spectro Cloud Docs [GitHub repository](https://github.com/spectrocloud/librarium) to your local machine.
    Navigate to the root of the repository.
 
-```shell
-git clone https://github.com/spectrocloud/librarium.git \
-cd librarium
-```
+   ```shell
+   git clone https://github.com/spectrocloud/librarium.git \
+   cd librarium
+   ```
 
 2. Download the logos you want to configure to your local machine.
 
@@ -138,8 +138,8 @@ cd librarium
    ./scripts/build-custom-offline-docker.sh
    ```
 
-   The script will all required environment variables and creates a Docker image named `spectrocloud/librarium:custom`.
-   Additionally, the script creates a `.env` file with all the environment variables required.
+   The script creates a Docker image named `spectrocloud/librarium:custom` and the `.env` file with all the environment
+   variables required.
 
    ```shell title="Successful output"
    ✅ Docker image built successfully: spectrocloud/librarium:custom
@@ -150,23 +150,23 @@ cd librarium
 
 :::info
 
-The Docker image contains a copy of your configured custom logos. Any changes made to the files after the image has been
-built will not be reflected in the image.
+The Docker image contains a copy of your configured custom logos. Any changes made to the external files after the image
+has been built will not be reflected in the image.
 
 :::
 
 5. Execute the following command to start a container using the built Docker image.
 
-```shell
-docker run --env-file=.env --publish 9000:9000 --rm spectrocloud/librarium:custom
-```
+   ```shell
+   docker run --env-file=.env --publish 9000:9000 --rm spectrocloud/librarium:custom
+   ```
 
 6. Open a browser and navigate to `http://localhost:9000` to view the documentation. The navigation bar displays your
    custom configured logos.
 
-   Alternatively, you can can push your Docker image to a registry and host your offline documentation using a
-   third-party static site hosting provider. The generated `.env` file contains all the environment variables that you
-   should configure.
+   Alternatively, you can push your Docker image to a registry and host your offline documentation using a third-party
+   static site hosting provider. The generated `.env` file contains all the environment variables that you should
+   configure.
 
 ## Container Image Authenticity
 
