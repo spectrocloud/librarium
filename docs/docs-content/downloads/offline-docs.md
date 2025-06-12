@@ -139,7 +139,8 @@ We recommend that you provide two logos, one for dark mode and one for light mod
    ./scripts/build-custom-offline-docker.sh
    ```
 
-   The script creates a Docker image named `spectrocloud/librarium:custom` and a `.env` file with all the required environment variables.
+   The script creates a Docker image named `spectrocloud/librarium:custom` and a `.env` file with all the required
+   environment variables.
 
    ```shell title="Successful output"
    ✅ Docker image built successfully: spectrocloud/librarium:custom
@@ -148,12 +149,17 @@ We recommend that you provide two logos, one for dark mode and one for light mod
    ⏭️  docker run --env-file=.env --publish 9000:9000 --rm spectrocloud/librarium:custom
    ```
 
-:::info
+   :::info
 
-The Docker image contains a copy of your configured custom logos. Any changes made to the external files after the image
-has been built will not be reflected in the image.
+   The Docker image contains a copy of your configured custom logos. Any changes made to the external files after the
+   image has been built will not be reflected in the image.
 
-:::
+   Additionally, the image contains the documentation at the time that you cloned the repository and will not receive
+   any updates from Spectro Cloud. You should update your local copy of the Spectro Cloud Docs
+   [GitHub repository](https://github.com/spectrocloud/librarium) and rebuild the Docker container if you want to update
+   the content.
+
+   :::
 
 5. Execute the following command to start a container using the built Docker image.
 
