@@ -424,7 +424,7 @@ palette-project = "Default" # The name of your project in Palette.
 # Application Configuration
 ##############################
 wordpress_replica   = 3 # The number of pods to be created for Wordpress.
-wordpress_namespace = "new-wordpress-namespace" # The namespace to be created for Wordpress.
+wordpress_namespace = "new-wordpress-ns" # The namespace to be created for Wordpress.
 wordpress_port      = 9090 # The port to be created for HTTP for Wordpress.
 
 ############################
@@ -447,7 +447,7 @@ cluster profile.
 Plan: 0 to add, 1 to change, 0 to destroy.
 ```
 
-To deploy the resources, use the `apply` command.
+To modify the cluster profile, use the `apply` command.
 
 ```shell
 terraform apply -auto-approve
