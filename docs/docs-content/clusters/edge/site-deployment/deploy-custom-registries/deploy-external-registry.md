@@ -149,10 +149,10 @@ bandwidth use and protect against outages. For more information, refer to
             ...
             -----END CERTIFICATE-----
         registryMappingRules:
-          "us-east1-docker.pkg.dev/spectro-images/daily": "example.registry.com/internal-images"
-          "us-docker.pkg.dev/palette-images": "example.registry.com/internal-images"
-          "grc.io/spectro-dev-public": "example.registry.com/internal-images"
-          "grc.io/spectro-images-public": "example.registry.com/internal-images"
+          "us-docker.pkg.dev/palette-images": "example.registry.com/palette-images"
+          "us-east1-docker.pkg.dev/spectro-images/daily": "example.registry.com/palette-images"
+          "grc.io/spectro-dev-public": "example.registry.com/palette-images"
+          "grc.io/spectro-images-public": "example.registry.com/palette-images"
     ```
     Refer to [Installer Configuration](../../edge-configuration/installer-reference.md#multiple-external-registries) for a
     description of each field.

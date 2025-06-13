@@ -234,14 +234,6 @@ with all other versions deleted.
 
 Once you are done making the alterations, save and exit the file.
 
-:::warning
-
-If you are using a CanvOS tag that is earlier than v4.4.12, the **k8s_version.json** file does not exist in those tags.
-Instead, open the **Earthfile** in the CanvOS directory. Under `build-provider-images`, remove the lines containing
-Kubernetes versions that you do not need.
-
-:::
-
 Next, execute the command below to build the Edge Installer ISO and provider images artifacts.
 
 ```bash
