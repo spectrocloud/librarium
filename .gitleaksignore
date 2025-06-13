@@ -661,6 +661,8 @@ d7f1d994a23cddef49ebe1f301783acd878b99ae:docs/docs-content/integrations/k8s-dash
 01156f282242aa5f7e1c532137825817731bdfaf:docs/docs-content/enterprise-version/install-palette/install-on-kubernetes/airgap-install/install.md:docker-config-json:471
 01156f282242aa5f7e1c532137825817731bdfaf:docs/docs-content/vertex/install-palette-vertex/install-on-kubernetes/airgap-install/install.md:docker-config-json:481
 01156f282242aa5f7e1c532137825817731bdfaf:docs/docs-content/vertex/install-palette-vertex/install-on-kubernetes/install.md:docker-config-json:392
+6f2f00eb967de5fdfbd1b64bf893f0266a3511c4:docs/docs-content/tutorials/getting-started/introduction-edge/edge-cluster-profile.md:generic-api-key:142
+bd206bcbc929e78db96a611634e5e7057369c584:docs/docs-content/tutorials/getting-started/introduction-edge/edge-cluster-profile.md:generic-api-key:143
 c0c63dc4222907cff4801266617c52c782fb01f7:docs/docs-content/enterprise-version/install-palette/install-on-kubernetes/airgap-install/install.md:docker-config-json:259
 c0c63dc4222907cff4801266617c52c782fb01f7:docs/docs-content/enterprise-version/install-palette/install-on-kubernetes/install.md:docker-config-json:170
 c0c63dc4222907cff4801266617c52c782fb01f7:docs/docs-content/enterprise-version/install-palette/install-on-kubernetes/airgap-install/install.md:docker-config-json:471
