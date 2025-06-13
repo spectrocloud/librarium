@@ -108,7 +108,7 @@ On the **Create variable** page, fill in the following information.
 
 Click **Create** to save your cluster profile variable options.
 
-![Image that shows how to copy and paste variable, then save it in the YAML file](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-create-variable.webp)
+![Image that shows how to create the variable](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-create-variable.webp)
 
 You can now add the created cluster profile variable to the cluster profile. Click the **Copy to Clipboard** icon and
 close the **Profile variables** tab.
@@ -164,7 +164,7 @@ Add the following variables and their default values. After each variable, ensur
 | **Default value** | Set to enable and enter "80".               |
 
 Now that your variables are created, add them to the WordPress manifest YAML using the same steps as you used for
-`{{.spectro.var.wordpress_name}}`. For each variable, copy it to the clipboard and add it to the line location as noted
+`{{.spectro.var.wordpress_namespace}}`. For each variable, copy it to the clipboard and add it to the line location as noted
 in the following table.
 
 | YAML Line number | Variable to add                                      |
@@ -184,7 +184,7 @@ In [Palette](https://console.spectrocloud.com/), select your profile and use the
 1.0.0 . Click **Deploy** and go through the wizard to deploy the cluster, leaving all options to their default. The
 cluster will take a few minutes to deploy.
 
-Select your cluster once it is deployed and then navigate to the **Workloads** tab. Then, select **Deployments** and
+Select your cluster once it is deployed and then navigate to the **Workloads** tab. Then, select **Pods** and
 filter for **wordpress**. Three pods are displayed similar to the following screenshot: one for MariaDB, one for
 WordPress database memory cache and one for the WordPress web server. This is the default deployment behavior for the
 WordPress pack.
@@ -208,7 +208,7 @@ values for each variable.
 Click **Apply Changes**. This process will cause the cluster to add additional containers. Wait until the cluster
 completes the **Addon deployment** step.
 
-![Image that shows how to copy and paste variable, then save it in the YAML file](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-addon-deployment-update.webp)
+![Image that shows how to update the cluster profile variable when applying a new version of the cluster profile](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-addon-deployment-update.webp)
 
 Select the **Overview** tab. Click on the `:9090` port to launch the default Wordpress application.
 
@@ -244,8 +244,7 @@ profile.
 
 ## Create Profile with Variables (Terraform Workflow)
 
-When you create cluster profiles in Terraform, the cluster profile variables must be defined in all versions of the
-profile.
+When you create cluster profiles in Terraform, the cluster profile variables cab be defined in the profile versions that you want to apply the variables against.
 
 <PartialsComponent category="getting-started" name="setup-local-environment" />
 
@@ -255,8 +254,7 @@ Navigate to the folder that contains the tutorial code.
 cd terraform/cluster-profile-variables-tf
 ```
 
-Open the **cluster_profiles.tf** file. You can review variables that were placed at the end of the **AWS Cluster Profile
-v1.0.0** code block.
+Open the **cluster_profiles.tf** file. In the **AWS Cluster Profile v1.0.0**, there are no variables defined and the WordPress pack points to `wordpress-default.yaml`. This file is the default YAML configuration file for the WordPress pack. Within the **AWS Cluster Profile v1.1.0** code block the WordPress pack points to `wordpress-variables.yaml`, which contains the cluster profile variables.Additional, at the end of the code block, you will find the following cluster profile variables that will be used. 
 
 ```hcl
 profile_variables {
@@ -297,11 +295,6 @@ WordPress Chart application and `wordpress-variables.yaml` has the following thr
 | Line 205         | `http: '{{.spectro.var.wordpress_port}}'`            |
 | Line 502         | `replicaCount: '{{.spectro.var.wordpress_replica}}'` |
 
-| YAML line location | Variable changed                           |
-| ------------------ | ------------------------------------------ |
-| Line 13            | `'{{ .spectro.var.wordpress_namespace }}'` |
-| Line 205           | `'{{ .spectro.var.wordpress_port }}'`      |
-| Line 502           | `'{{ .spectro.var.wordpress_replica }}'`   |
 
 Note that the syntax of the variable must have spaces at the start and end of the variable, and . at the start of the
 variable.
@@ -393,13 +386,18 @@ terraform apply -auto-approve
 
 The cluster deployment will take a few minutes.
 
-Log in to [Palette](https://console.spectrocloud.com), and click **Profiles** from the left main menu. Locate the
-cluster profile named `aws-profile-variables-tf`. Click on the cluster profile to review its layers and versions.
+Log in to [Palette](https://console.spectrocloud.com), and click **Clusters** from the left main menu. 
 
-Use the **drop-down Menu** to set the profile to version **1.1.0**. Choose **Review & Save**. On the **Changes
-Summary**, select **Review changes in Editor**.
+Navigate to the newly created cluster and select the **Profile** tab. The profile in use should be **1.0.0**. 
 
-Select **{} Profile variables changes** and open the Running/New configuration. Enter in new values for each variable.
+Navigate to the **Workloads** tab. Then, select **Pods** and filter for **wordpress**. Three pods are displayed similar to the following screenshot: one for MariaDB, one for
+WordPress database memory cache and one for the WordPress web server. This is the default deployment behavior for the WordPress pack.
+
+![Image that shows default WordPress deployment](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-default-wp-deploy.webp)
+
+Navigatge to the **Overview** tab and click the **80** port. This will launch the WordPress blog page.
+
+Return to your terminal window and modify the `terraform.tfvars` file so that `deploy-aws-var` is set to `true`. Additionally, modify the Application Configuration values. These values will be used for your cluster profile variables values. 
 
 | Variable Name                | New Value                   |
 | ---------------------------- | --------------------------- |
@@ -407,25 +405,61 @@ Select **{} Profile variables changes** and open the Running/New configuration. 
 | **WordPress: HTTP Port**     | Enter "`9090`".             |
 | **WordPress: Namespace**     | Enter "`new-wordpress-ns`". |
 
-![Image that shows how to copy and paste variable, then save it in the YAML file](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-update-variables.webp)
+```hcl {12-14,20}
+# Copyright (c) Spectro Cloud
+# SPDX-License-Identifier: Apache-2.0
 
-Click **Apply Changes**. This process will cause part of the cluster to repave. Wait until the cluster completes the
-**Addon deployment** step.
+#####################
+# Palette Settings
+#####################
+palette-project = "Default" # The name of your project in Palette.
 
-![Image that shows how to copy and paste variable, then save it in the YAML file](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-addon-deployment-update.webp)
+##############################
+# Application Configuration
+##############################
+wordpress_replica   = 3 # The number of pods to be created for Wordpress.
+wordpress_namespace = "new-wordpress-namespace" # The namespace to be created for Wordpress.
+wordpress_port      = 9090 # The port to be created for HTTP for Wordpress.
 
-Select the **Overview** tab. Click on the `:9090` port to launch the default WordPress application.
+############################
+# AWS Deployment Settings
+############################
+deploy-aws     = true # Set to true to deploy to AWS.
+deploy-aws-var = true # Set to true to deploy AWS with WordPress Pack and cluster profile variables
+```
 
-![Image that shows new port available for WordPress](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-validate-overview.webp)
+Issue the `plan` command to preview the resources that Terraform will create.
 
-Select the **Workloads** tab. Then, select **Namespaces**. Refresh the page
+```shell
+terraform plan
+```
 
-![Image that shows new namespace available for WordPress](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-validate-namespace.webp)
+The output indicates that one resource, the profile, will be modified. The host cluster will use version `1.1.0` of the cluster profile.
 
-Select the **Workloads** tab. Then, select **Pods**. Refresh the page and then filter for **new-wordpress-ns**
+```shell
+Plan: 0 to add, 1 to change, 0 to destroy.
+```
+
+To deploy the resources, use the `apply` command.
+
+```shell
+terraform apply -auto-approve
+```
+
+The cluster modification will take a few minutes.
+
+Return to [Palette](https://console.spectrocloud.com), and click **Clusters** from the left main menu. 
+
+Navigate to your cluster and select the **Profile** tab. The profile in use should be **1.1.0**. 
+
+Select the **Workloads** tab. Then, select **Pods**. Refresh the page and then filter for **new-WordPress-ns**
 namespace. Three additional WordPress web server pods appear in the new WordPress namespace, `new-wordpress-ns`.
 
 ![Image that shows new replicas in new namespace for WordPress](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-validate-replica.webp)
+
+Navigatge to the **Overview** tab and click the **9090** port. This will launch the WordPress blog page. You may need to wait a few minutes for the port to be active.
+
+![Image that shows new port available for WordPress](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-validate-overview.webp)
 
 ### Terraform Cleanup
 
