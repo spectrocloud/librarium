@@ -8,7 +8,7 @@ IMAGE=spectrocloud/librarium:custom
 echo "ℹ️ LIGHT_LOGO_PATH: ${LIGHT_LOGO_PATH}"
 echo "ℹ️ DARK_LOGO_PATH: ${DARK_LOGO_PATH}"
 
-# Utility function to add variables to .env file is they do not exist
+# Utility function to add variables to .env file if they do not exist
 # Params: 
 # $1 - variable name
 # $2 - variable value
