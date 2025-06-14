@@ -21,11 +21,8 @@ may not be good candidates due to strict restrictions on the value. Refer to the
 [limitations](https://docs.spectrocloud.com/profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/#limitations)
 section for further information on cluster profile variable definition.
 
-In this tutorial, you will learn how to apply cluster profile variables using
-[Palette's UI ](#create-profile-with-variables-ui-workflow) and
-[Terraform](#create-profile-with-variables-terraform-workflow) workflows. While the tutorial demonstrates the workflow
-using Amazon Web Services (AWS), you can also use the same steps to deploy to Microsoft Azure or Google Cloud Platform
-(GCP).
+In this tutorial, you will learn how to use cluster profile variables with workload clusters through both [Palette's UI](#create-profile-with-variables-ui-workflow) and [Terraform](#create-profile-with-variables-terraform-workflow) workflows. While the tutorial demonstrates the workflow
+using Amazon Web Services (AWS), you can also use the same steps with Microsoft Azure or Google Cloud Platform (GCP).
 
 ## Prerequisites
 
@@ -45,10 +42,13 @@ using Amazon Web Services (AWS), you can also use the same steps to deploy to Mi
   [Docker Get Started](https://docs.docker.com/get-started/) guide and the
   [Learn Kubernetes Basics](https://kubernetes.io/docs/tutorials/kubernetes-basics/) tutorial to start learning.
 
-## Create Profile with Variables (UI Workflow)
+## Create Cluster Profile with Variables (UI Workflow)
 
-Log into [Palette](https://console.spectrocloud.com/). Navigate to **Profiles** and select **Add Cluster Profile**.
-Leave the default value for the version and configure your profile with the following packs.
+Log in to [Palette](https://console.spectrocloud.com/), select **Profiles** from the left main menu, and click **Add Cluster Profile**.
+
+Assign the cluster profile a name and leave the default value for the version. Click **Next** to continue.
+
+In the **Profile Layers** section, configure your profile with the following packs. Click **Next layer** to continue to the next layer.
 
 <!-- prettier-ignore-start -->
 
@@ -58,7 +58,7 @@ Leave the default value for the version and configure your profile with the foll
 
     | Pack | Version |
     | --------- | --------- |
-    | <VersionedLink text="Ubuntu" url="/integrations/packs/?pack=ubuntu-aws" /> | 22.x |
+    | <VersionedLink text="Ubuntu" url="/integrations/packs/?pack=ubuntu-aws" /> | 22.04.x |
     | <VersionedLink text="Palette eXtended Kubernetes" url="/integrations/packs/?pack=kubernetes" /> | 1.30.x |
     | <VersionedLink text="Calico" url="/integrations/packs/?pack=cni-calico" />| 3.29.2 |
     | <VersionedLink text="Amazon EBS CSI" url="/integrations/packs/?pack=csi-aws-ebs" />| 1.41.x |
@@ -70,7 +70,7 @@ Leave the default value for the version and configure your profile with the foll
 
     | Pack | Version |
     | --------- | --------- |
-    | <VersionedLink text="Ubuntu" url="/integrations/packs/?pack=ubuntu-azure" /> | 22.x |
+    | <VersionedLink text="Ubuntu" url="/integrations/packs/?pack=ubuntu-azure" /> | 22.04.x |
     | <VersionedLink text="Palette eXtended Kubernetes" url="/integrations/packs/?pack=kubernetes" /> | 1.30.x |
     | <VersionedLink text="Calico" url="/integrations/packs/?pack=cni-calico-azure" />| 3.29.2 |
     | <VersionedLink text="Azure Disk" url="/integrations/packs/?pack=csi-azure" />| 1.41.x |
@@ -82,7 +82,7 @@ Leave the default value for the version and configure your profile with the foll
 
     | Pack | Version |
     | --------- | --------- |
-    | <VersionedLink text="Ubuntu" url="/integrations/packs/?pack=ubuntu-gcp" /> | 22.x |
+    | <VersionedLink text="Ubuntu" url="/integrations/packs/?pack=ubuntu-gcp" /> | 22.04.x |
     | <VersionedLink text="Palette eXtended Kubernetes" url="/integrations/packs/?pack=kubernetes" /> | 1.30.x |
     | <VersionedLink text="Calico" url="/integrations/packs/?pack=cni-calico" />| 3.29.2 |
     | <VersionedLink text="GCE Persistent Disk CSI" url="/integrations/packs/?pack=csi-gcp-driver" />| 1.41.x |
@@ -94,54 +94,51 @@ Leave the default value for the version and configure your profile with the foll
 
 <!-- prettier-ignore-end -->
 
-Select **{} Variables**. Next, select **{} Create variable**.
+After adding the packs to your cluster profile, select **{} Variables**. Next, select **{} Create variable**.
 
 On the **Create variable** page, fill in the following information.
 
 | Variable Setting  | Value                                               |
 | ----------------- | --------------------------------------------------- |
-| **Variable**      | Enter "namespace".                                  |
-| **Display**       | Enter "WordPress: Namespace".                       |
-| **Description**   | Enter "Namespace for the WordPress pack."           |
+| **Variable**      | `namespace`                                  |
+| **Display name**       | `WordPress: Namespace`                      |
+| **Description**   | `Namespace for the WordPress pack`           |
 | **Format**        | Select **String** from the drop-down.               |
-| **Default value** | Set to **enable** and in the box enter "wordpress". |
+| **Default value** | Enable the option and enter `wordpress`. |
 
-Click **Create** to save your cluster profile variable options.
+Click **Create** to create the cluster profile variable.
 
 ![Image that shows how to create the variable](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-create-variable.webp)
 
-You can now add the created cluster profile variable to the cluster profile. Click the **Copy to Clipboard** icon and
+You can now add the created cluster profile variable to the cluster profile. Click the **Copy to clipboard** icon and
 close the **Profile variables** tab.
 
 ![Image that shows how to copy and paste variable, then save it in the YAML file](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-variable-clipboard.webp)
 
-You must add the variable to the pack manifest YAML file in order to use it. Click on the `wordpress-chart 6.4.3` to
+You must add the variable to the pack manifest YAML file in order to use it. Click the WordPress pack **Values** button to
 open the editor. Paste the variable to replace the default namespace value.
 
 ![Image that shows adding variable and confirm update](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-add-variable-and-confirm-update.webp)
 
-Click **Confirm Updates** and finally click **Save Changes**. This will make it part of the cluster profile. You can
-verify that the variable is in use by clicking on **{} Variables**.
+Click **Confirm Updates**, and then click **Next**. This will make the variable part of the cluster profile.
 
 As shown in the following image, the namespace variable is displayed as in use in one layer, corresponding to the
-WordPress pack. Additionally, this profile has already been used to create a cluster. Once a profile version is in use,
-you cannot modify any of its variables.
+WordPress pack.
 
 ![Image that shows variables in use and warning that profile version in use](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-inuse.webp)
 
 ### Update Cluster Profile Variables
 
-Cluster profile versioning provides better change visibility and control over the layers in your host clusters. Learn
-more about
-[cluster profile versions](https://docs.spectrocloud.com/profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile/).
+Cluster profile versioning provides better change visibility and control over the layers in your host clusters. Refer to the [Version a Cluster Profile](https://docs.spectrocloud.com/profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile/) guide to learn
+more about cluster profile versioning.
 
-Click on **Profiles** in the left **Main Menu**. Select your cluster profile.
+To create a new cluster profile version, click on **Profiles** in the left main menu and select your cluster profile.
 
-From the **drop-down Menu** next to the cluster profile name, select **Create new version**.
+From the drop-down menu next to the cluster profile name, select **Create new version**.
 
 Provide the version number `1.1.0` and click **Confirm**. A versioning successful message displays.
 
-Add the following variables and their default values. After each variable, ensure you click **Create**.
+Select **{} Variables** and click **{} Create variable**. Add the following variables and their default values to the new version of the cluster profile. After each variable, ensure you click **Create**.
 
 #### Variable: wordpress_replica
 
@@ -172,7 +169,7 @@ noted in the following table.
 | Line 205         | `http: '{{.spectro.var.wordpress_port}}'`            |
 | Line 502         | `replicaCount: '{{.spectro.var.wordpress_replica}}'` |
 
-Click **Confirm Updates** and click **Save Changes**.
+Click **Confirm Updates** and **Save Changes** to add the new variables to the WordPress pack.
 
 ### Deploy Cluster with Cluster Profile Variables
 
@@ -190,26 +187,26 @@ memory cache and one for the WordPress web server. This is the default deploymen
 
 ![Image that shows default WordPress deployment](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-default-wp-deploy.webp)
 
-In [Palette](https://console.spectrocloud.com/), select your profile and use the **drop-down Menu** to set the profile
+In [Palette](https://console.spectrocloud.com/), select your profile and use the drop-down menu to set the profile
 version to **1.1.0**. Choose **Review & Save**. On the **Changes Summary** page, select **Review changes in Editor**.
 
-Select **{} Profile variables changes** and open the **Review Update Changes**. Select your profile and enter in new
+Select **{} Profile variables changes**, open the **Review Update Changes**, and enter the following new
 values for each variable.
 
 | Variable Name                | New Value                   |
 | ---------------------------- | --------------------------- |
-| **WordPress: Replica Count** | Enter "`3`".                |
-| **WordPress: HTTP Port**     | Enter "`9090`".             |
-| **WordPress: Namespace**     | Enter "`new-wordpress-ns`". |
+| **WordPress: Replica Count** | `3`                |
+| **WordPress: HTTP Port**     | `9090`             |
+| **WordPress: Namespace**     | `new-wordpress-ns` |
 
 ![Image that shows how to copy and paste variable, then save it in the YAML file](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-update-variables.webp)
 
-Click **Apply Changes**. This process will cause the cluster to add additional containers. Wait until the cluster
+Click **Apply Changes**. This process causes the cluster to add an additional namespace and replicas. Wait until the cluster
 completes the **Addon deployment** step.
 
 ![Image that shows how to update the cluster profile variable when applying a new version of the cluster profile](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-addon-deployment-update.webp)
 
-Select the **Overview** tab. Click on the `:9090` port to launch the default Wordpress application.
+Select the **Overview** tab to verify that the WordPress pack was deployed successfully. Click on the `:9090` port to launch the default Wordpress application.
 
 ![Image that shows new port available for WordPress](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-validate-overview.webp)
 
@@ -222,11 +219,11 @@ namespace. Three additional WordPress web server pods appear in the new WordPres
 
 ![Image that shows new replicas in new namespace for WordPress](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-validate-replica.webp)
 
-### Palette UI Cleanup
+### Cleanup
 
 Use the following steps to clean up the resources you created for the tutorial.
 
-Navigate to the left main menu and select **Clusters**. Select the cluster you created in this tutorial.
+From the left main menu, select **Clusters**. Then, select the cluster you created in this tutorial.
 
 Select **Settings** to expand the menu, and select **Delete Cluster**.
 
@@ -234,16 +231,16 @@ A dialog appears. Input the cluster name to confirm the delete action.
 
 The deletion process takes several minutes to complete.
 
-Once the cluster is deleted, navigate to the left main menu and select **Profiles**.
+Once the cluster is deleted, select **Profiles** from the left main menu.
 
 Select the cluster profile you created in this tutorial. Select the three-dot menu to display the **Delete** button.
 
 Select **Delete** and confirm the selection to remove the cluster profile. Make sure you delete both versions of this
 profile.
 
-## Create Profile with Variables (Terraform Workflow)
+## Create Clusters with Cluster Profile Variables (Terraform Workflow)
 
-When you create cluster profiles in Terraform, the cluster profile variables cab be defined in the profile versions that
+When you create cluster profiles in Terraform, the cluster profile variables can be defined in the profile versions that
 you want to apply the variables against.
 
 <PartialsComponent category="getting-started" name="setup-local-environment" />
@@ -256,8 +253,8 @@ cd terraform/cluster-profile-variables-tf
 
 Open the **cluster_profiles.tf** file. In the **AWS Cluster Profile v1.0.0**, there are no variables defined and the
 WordPress pack points to `wordpress-default.yaml`. This file is the default YAML configuration file for the WordPress
-pack. Within the **AWS Cluster Profile v1.1.0** code block the WordPress pack points to `wordpress-variables.yaml`,
-which contains the cluster profile variables.Additional, at the end of the code block, you will find the following
+pack. Within the **AWS Cluster Profile v1.1.0** code block, the WordPress pack points to `wordpress-variables.yaml`,
+which references the cluster profile variables. Additionally, at the end of the code block, you will find the following
 cluster profile variables that will be used.
 
 ```hcl
@@ -266,7 +263,7 @@ profile_variables {
       name          = "wordpress_replica"
       display_name  = "Number of replicas"
       format        = "number"
-      description   = "This is the number of replicas to deploy for WordPress"
+      description   = "The number of WordPress replicas to be deployed."
       default_value = var.wordpress_replica
       required      = true
     }
@@ -274,7 +271,7 @@ profile_variables {
       name          = "wordpress_namespace"
       display_name  = "WordPress: Namespace"
       format        = "string"
-      description   = "Enter a new namespace for the WordPress pack"
+      description   = "The namespace for the WordPress pack."
       default_value = var.wordpress_namespace
       required      = true
     }
@@ -282,7 +279,7 @@ profile_variables {
       name          = "wordpress_port"
       display_name  = "WordPress: Port"
       format        = "number"
-      description   = "Set a new port for WordPress HTTP"
+      description   = "The WordPress HTTP port."
       default_value = var.wordpress_port
       is_sensitive  = true
       required      = true
@@ -299,10 +296,9 @@ WordPress Chart application and `wordpress-variables.yaml` has the following thr
 | Line 205         | `http: '{{.spectro.var.wordpress_port}}'`            |
 | Line 502         | `replicaCount: '{{.spectro.var.wordpress_replica}}'` |
 
-Note that the syntax of the variable must have spaces at the start and end of the variable, and . at the start of the
-variable.
+Note that the variable syntax requires spaces at both the beginning and end of the variable, as well as a `.` at the start of the variable.
 
-With the variables in place in the YAML file, you can then modify their values found at lines 13-15 in
+With the references to the variables in place in the YAML file, you can modify their values in
 **terraform.tfvars**.
 
 ```hcl
@@ -311,11 +307,11 @@ With the variables in place in the YAML file, you can then modify their values f
 ##############################
 wordpress_replica   = "REPLACE ME"           # The number of pods to be created for WordPress.
 wordpress_namespace = "REPLACE ME"           # The namespace to be created for WordPress.
-wordpress_port      = "REPLACE ME"           # The port to be created for HTTP for WordPress.
+wordpress_port      = "REPLACE ME"           # The HTTP port to be exposed for WordPress.
 ```
 
-Additionally, you will need to fill in the cloud-specific configurations. If you are using either Microsoft Azure or
-Google Cloud Platform (GCP), find the relevant provider section. For the tutorial, the steps will use AWS.
+Additionally, you will need to fill in the cloud-specific configurations. If you are using either Azure or
+GCP, find the relevant provider section. For this tutorial, the steps will use AWS.
 
 Locate the AWS provider section and change `deploy-aws = false` to `deploy-aws = true`. Additionally, replace all
 occurrences of `REPLACE_ME` with their corresponding values, such as those for the `aws-cloud-account-name`,
@@ -391,7 +387,7 @@ The cluster deployment will take a few minutes.
 
 Log in to [Palette](https://console.spectrocloud.com), and click **Clusters** from the left main menu.
 
-Navigate to the newly created cluster and select the **Profile** tab. The profile in use should be **1.0.0**.
+Navigate to the newly created cluster and select the **Profile** tab. The profile in use should be version **1.0.0**.
 
 Navigate to the **Workloads** tab. Then, select **Pods** and filter for **wordpress**. Three pods are displayed similar
 to the following screenshot: one for MariaDB, one for WordPress database memory cache and one for the WordPress web
@@ -469,7 +465,7 @@ wait a few minutes for the port to be active.
 
 ![Image that shows new port available for WordPress](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-validate-overview.webp)
 
-### Terraform Cleanup
+### Cleanup
 
 Use the following steps to clean up the resources you created for the tutorial. Use the `destroy` command to remove all
 the resources you created through Terraform.
@@ -508,6 +504,3 @@ We encourage you to check out the following reference resources to learn more ab
 
 - [Deploy a Custom Pack](../../../tutorials/profiles/deploy-pack.md)
 
-- [Hello Universe GitHub repository](https://github.com/spectrocloud/hello-universe)
-
-- [Spectro Cloud Terraform Documentation on Cluster Profiles](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_profile)
