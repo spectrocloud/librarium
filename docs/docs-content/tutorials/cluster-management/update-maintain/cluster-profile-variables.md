@@ -223,9 +223,10 @@ Example:
 export KUBECONFIG=~/Downloads/admin.aws-profile-variables.kubeconfig
 ```
 
-Use `kubectl get pods --namespace wordpress -output wide` to get a listing of the default pod deployment for the Wordpress app. Three
-pods are displayed similar to the following output: one for MariaDB, one for WordPress database memory cache and one for
-the WordPress web server. The row highlighted in the output is an example of the Wordpress web server.
+Use `kubectl get pods --namespace wordpress -output wide` to get a listing of the default pod deployment for the
+Wordpress app. Three pods are displayed similar to the following output: one for MariaDB, one for WordPress database
+memory cache and one for the WordPress web server. The row highlighted in the output is an example of the Wordpress web
+server.
 
 ```shell {2}
 NAME                                                   READY   STATUS    RESTARTS   AGE   IP              NODE                         NOMINATED NODE   READINESS GATES
@@ -303,9 +304,10 @@ Example:
 export KUBECONFIG=~/Downloads/admin.aws-profile-variables.kubeconfig
 ```
 
-Use `kubectl get pods --namespace new-wordpress-ns --output wide` to get a listing of the default pod deployment for the Wordpress app.
-Five pods are displayed similar to the following output: one for MariaDB, one for WordPress database memory cache and
-three for the WordPress web server. The rows highlighted in the output are an example of the Wordpress web server.
+Use `kubectl get pods --namespace new-wordpress-ns --output wide` to get a listing of the default pod deployment for the
+Wordpress app. Five pods are displayed similar to the following output: one for MariaDB, one for WordPress database
+memory cache and three for the WordPress web server. The rows highlighted in the output are an example of the Wordpress
+web server.
 
 ```shell {2-4}
 NAME                                                   READY   STATUS    RESTARTS   AGE   IP              NODE                         NOMINATED NODE   READINESS GATES
@@ -426,11 +428,11 @@ occurrences of `REPLACE_ME` with their corresponding values, such as those for t
 the control plane or worker node pools as needed. Additionally, modify the Application Configuration values. These
 values will be used for your cluster profile variables values.
 
-| Variable Name                | New Value                   |
-| ---------------------------- | --------------------------- |
-| **WordPress: Replica Count** | `3`                         |
-| **WordPress: HTTP Port**     | `9090`                      |
-| **WordPress: Namespace**     | `new-wordpress-ns`          |
+| Variable Name                | New Value          |
+| ---------------------------- | ------------------ |
+| **WordPress: Replica Count** | `3`                |
+| **WordPress: HTTP Port**     | `9090`             |
+| **WordPress: Namespace**     | `new-wordpress-ns` |
 
 ```hcl {4,7-9,16,24}
 ###########################
@@ -527,9 +529,10 @@ Example:
 export KUBECONFIG=~/Downloads/admin.aws-profile-var-tf.kubeconfig
 ```
 
-Use `kubectl get pods --namespace wordpress --output wide` to get a listing of the default pod deployment for the Wordpress app. Three
-pods are displayed similar to the following output: one for MariaDB, one for WordPress database memory cache and one for
-the WordPress web server. The row highlighted in the output is an example of the Wordpress web server.
+Use `kubectl get pods --namespace wordpress --output wide` to get a listing of the default pod deployment for the
+Wordpress app. Three pods are displayed similar to the following output: one for MariaDB, one for WordPress database
+memory cache and one for the WordPress web server. The row highlighted in the output is an example of the Wordpress web
+server.
 
 ```shell {2}
 NAME                                                   READY   STATUS    RESTARTS   AGE   IP              NODE                         NOMINATED NODE   READINESS GATES
@@ -616,9 +619,10 @@ Example:
 export KUBECONFIG=~/Downloads/admin.aws-profile-variables-tf.kubeconfig
 ```
 
-Use `kubectl get pods --namespace new-wordpress-ns --output wide` to get a listing of the default pod deployment for the Wordpress app.
-Five pods are displayed similar to the following output: one for MariaDB, one for WordPress database memory cache and
-three for the WordPress web server. The rows highlighted in the output are an example of the Wordpress web server.
+Use `kubectl get pods --namespace new-wordpress-ns --output wide` to get a listing of the default pod deployment for the
+Wordpress app. Five pods are displayed similar to the following output: one for MariaDB, one for WordPress database
+memory cache and three for the WordPress web server. The rows highlighted in the output are an example of the Wordpress
+web server.
 
 ```shell {2-4}
 NAME                                                   READY   STATUS    RESTARTS   AGE   IP              NODE                         NOMINATED NODE   READINESS GATES
