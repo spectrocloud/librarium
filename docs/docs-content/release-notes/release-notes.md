@@ -15,6 +15,17 @@ tags: ["release-notes"]
 
 ### Bug Fixes
 
+- Fixed an issue that prevented [Azure IaaS](../clusters/public-cloud/azure/create-azure-cluster.md) clusters using the
+  same control plane and worker node subnet from being deployed.
+- Fixed an issue that prevented [Azure IaaS](../clusters/public-cloud/azure/create-azure-cluster.md) clusters using the
+  same control plane and worker node subnet from being deleted.
+
+### Improvements
+
+- Palette now uses an in-house solution for OS patching with Crony. This improvement provides simplified workflows for
+  scheduled OS patches and enhanced rolling upgrade capabilities. Refer to
+  [Configure Regularly Scheduled OS Upgrades](../deployment-modes/agent-mode/manage-agent/os-upgrades.md) for further
+  information.
 
 ## June 12, 2025 - Release 4.6.36
 
