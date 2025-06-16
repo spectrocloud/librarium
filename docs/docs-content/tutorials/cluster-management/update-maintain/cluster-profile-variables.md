@@ -37,29 +37,34 @@ Google Cloud Platform (GCP).
   [Azure](../../../../clusters/public-cloud/azure/azure-cloud/#add-azure-cloud-account) or
   [Google Cloud](../../../../clusters/public-cloud/gcp/add-gcp-accounts/#create-account).
 - An SSH key available in the region where you plan to deploy the cluster.
-<!-- Need agreement from both Adelina & Carolina as to whether to keep or remove Community Registry -->
 - Ensure that the
   [Palette Community Registry](../../../registries-and-packs/registries/registries.md#default-registries) is available
   in your Palette environment. Refer to the
   [Add OCI Packs Registry](../../../registries-and-packs/registries/oci-registry/add-oci-packs.md) guide for additional
   guidance.
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/) or [Podman](https://podman.io/docs/installation)
+  installed if you choose to follow along using the tutorial container.
 - Basic knowledge of containers and Kubernetes manifest file attributes. Refer to the
   [Docker Get Started](https://docs.docker.com/get-started/) guide and the
   [Learn Kubernetes Basics](https://kubernetes.io/docs/tutorials/kubernetes-basics/) tutorial to start learning.
 - Kubectl installed locally. Use the Kubernetes [Install Tools](https://kubernetes.io/docs/tasks/tools/) for additional
   guidance.
 
-## Create Clusters with Cluster Profile Variables (UI Workflow)
+## Cluster Profile Variables (UI Workflow)
+
+In this part of the tutorial, you will use [Palette](https://console.spectrocloud.com/) to create your cluster and
+cluster profile. The cluster profile will have two versions as part of it. The **1.0.0** version will be a clean,
+default version while the **1.1.0** version will have the variables added to it.
+
+### Create Cluster Profile
 
 Log in to [Palette](https://console.spectrocloud.com/), select **Profiles** from the left main menu, and click **Add
-Cluster Profile**. Log in to [Palette](https://console.spectrocloud.com/), select **Profiles** from the left main menu,
-and click **Add Cluster Profile**.
+Cluster Profile**.
 
 Assign the cluster profile a name and leave the default value for the version. Click **Next** to continue.
 
 In the **Profile Layers** section, configure your profile with the following packs. Click **Next layer** to continue to
-the next layer. In the **Profile Layers** section, configure your profile with the following packs. Click **Next layer**
-to continue to the next layer.
+the next layer.
 
 <!-- prettier-ignore-start -->
 
@@ -107,8 +112,7 @@ to continue to the next layer.
 
 After adding the packs to your cluster profile, click **Confirm & Create**.
 
-Click **Next** and click **Finish Configuration** to create the **1.0.0** cluster profile version. This version will act
-as a clean, default profile to start with.
+Click **Next** and click **Finish Configuration** to create the **1.0.0** cluster profile version.
 
 ### Add Cluster Profile Variables
 
@@ -120,8 +124,8 @@ To create a new cluster profile version, click on **Profiles** in the left main 
 
 From the drop-down menu next to the cluster profile name, select **Create new version**.
 
-Provide the version number `1.1.0` and click **Confirm**. A versioning successful message displays. Select **\{\}
-Variables**. Next, select **\{\} Create variable**.
+Provide the version number `1.1.0` and click **Confirm**. A versioning successful message displays. Select
+**\{\}Variables**. Next, select **\{\} Create variable**.
 
 On the **Create variable** page, fill in the following information.
 
@@ -159,9 +163,9 @@ profile. After each variable, ensure you click **Create**.
 
 | Variable Setting  | Value                                      |
 | ----------------- | ------------------------------------------ |
-| **Variable**      | "`wordpress_replica`                       |
-| **Display name**  | 'WordPress: Replica Count'                 |
-| **Description**   | 'Number of replicas for the WordPress app' |
+| **Variable**      | `wordpress_replica`                        |
+| **Display name**  | `WordPress: Replica Count`                 |
+| **Description**   | `Number of replicas for the WordPress app` |
 | **Format**        | Select **Number** from the drop-down.      |
 | **Default value** | Enable the option and enter `1`.           |
 
@@ -179,10 +183,13 @@ Now that your variables are created, add them to the WordPress manifest YAML usi
 `{{.spectro.var.wordpress_namespace}}`. For each variable, copy it to the clipboard and add it to the line location as
 noted in the following table.
 
-| YAML Line number | Variable to add                                      |
-| ---------------- | ---------------------------------------------------- |
-| Line 205         | `replicaCount: '{{.spectro.var.wordpress_replica}}'` |
-| Line 502         | `http: '{{.spectro.var.wordpress_port}}'`            |
+For `replicaCount: '{{.spectro.var.wordpress_replica}}'`, add it to `charts.wordpress.replicaCount`.
+
+![Image that shows default WordPress deployment](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-http-port.webp)
+
+For `http: '{{.spectro.var.wordpress_port}}'`, add it to `charts.wordpress.service.ports.http`.
+
+![Image that shows default WordPress deployment](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-replicacount.webp)
 
 Click **Confirm Updates** and **Save Changes** to add the new variables to the WordPress pack.
 
@@ -192,26 +199,16 @@ Your cluster profile now has two versions, one without variables and one with va
 separate clusters, one for each version, or deploy one cluster using version 1.0.0 and then upgrade it to version 1.1.0.
 This tutorial demonstrates the latter option.
 
-In [Palette](https://console.spectrocloud.com/), select your profile and use the **drop-down Menu** is set to version
+In [Palette](https://console.spectrocloud.com/), select your profile and use the **Drop-down Menu** is set to version
 1.0.0 . You should now deploy the cluster. Check out the
 [Deploy a Cluster](../../../../getting-started/aws/deploy-k8s-cluster/) section to learn more. The cluster deployment
 process can take 15 to 30 minutes.
 
 <Tabs groupId="cluster-deployment-verification">
+<TabItem label="kubectl" value="kubectl config">
+From the left main menu, select **Clusters**. Then, select the cluster you created in this tutorial. Select the **Overview** tab, navigate to the middle column containing cluster details and locate the **Kubernetes Config File** row.
 
-<TabItem label="Palette UI" value="Palette UI Workloads">
-Select your cluster once it is deployed and then navigate to the **Workloads** tab. Then, select **Pods** and filter for
-**wordpress**. Three pods are displayed similar to the following screenshot: one for MariaDB, one for WordPress database
-memory cache and one for the WordPress web server. This is the default deployment behavior for the WordPress pack.
-
-![Image that shows default WordPress deployment](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-default-wp-deploy.webp)
-
-</TabItem>
-
-<TabItem label="kubectrl" value="kubectl config">
-From the cluster overview page, navigate to the middle column containing cluster details and locate the **Kubernetes Config File** row.
-
-Click on the kubeconfig link to download the file.
+Click on the **Admin Kubeconfig File** link to download the file.
 
 ![Image that shows how to download kubeconfig file](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-download-kubeconfig.webp)
 
@@ -237,6 +234,14 @@ wordpress-chart-wordpress-memcached-56cffcf458-fq59l   1/1     Running   0      
 
 </TabItem>
 
+<TabItem label="Palette UI" value="Palette UI Workloads">
+Select your cluster once it is deployed and then navigate to the **Workloads** tab. Then, select **Pods** and filter for
+**wordpress**. Three pods are displayed similar to the following screenshot: one for MariaDB, one for WordPress database
+memory cache and one for the WordPress web server. This is the default deployment behavior for the WordPress pack.
+
+![Image that shows default WordPress deployment](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-default-wp-deploy.webp)
+
+</TabItem>
 </Tabs>
 
 Select the **Overview** tab to verify that the WordPress pack was deployed successfully. Click on the `:80` port to
@@ -253,11 +258,8 @@ profile version to **1.1.0**. Choose **Review & Save**. On the **Changes Summary
 Editor**.
 
 Select **{} Profile variables changes**, open the **Review Update Changes**, and enter the following new values for each
-variable. Select **{} Profile variables changes**, open the **Review Update Changes**, and enter the following new
-values for each variable.
+variable.
 
-| Variable Name                | New Value          |
-| ---------------------------- | ------------------ |
 | Variable Name                | New Value          |
 | ---------------------------- | ------------------ |
 | **WordPress: Replica Count** | `3`                |
@@ -266,32 +268,16 @@ values for each variable.
 
 ![Image that shows how to copy and paste variable, then save it in the YAML file](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-update-variables.webp)
 
-Click **Apply Changes**. This process causes the cluster to add an additional namespace and replicas. Wait until the
-cluster completes the **Addon deployment** step. Click **Apply Changes**. This process causes the cluster to add an
-additional namespace and replicas. Wait until the cluster completes the **Addon deployment** step.
-
-<!-- ![Image that shows how to update the cluster profile variable when applying a new version of the cluster profile](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-addon-deployment-update.webp) -->
+Click **Apply Changes**. Wait until the cluster completes the **Addon deployment** step. This process causes the cluster
+to create a new namespace and three new replicas for WordPress under the new namespace, without deleting the existing
+resources. It will also cause the WordPress application to open a new HTTP port.
 
 Select the **Overview** tab to verify that the WordPress pack was deployed successfully. Click on the `:9090` port to
-launch the default Wordpress application. Select the **Overview** tab to verify that the WordPress pack was deployed
-successfully. Click on the `:9090` port to launch the default Wordpress application.
+launch the default Wordpress application.
 
 ![Image that shows new port available for WordPress](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-validate-overview.webp)
 
 <Tabs groupId="cluster-deployment-verification">
-
-<TabItem label="Palette UI" value="Palette UI Workloads">
-
-Select the **Workloads** tab. Then, select **Namespaces**. Refresh the page.
-
-![Image that shows new namespace available for WordPress](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-validate-namespace.webp)
-
-Select the **Workloads** tab. Then, select **Pods**. Refresh the page and then filter for **new-WordPress-ns**
-namespace. Three additional WordPress web server pods appear in the new WordPress namespace, `new-wordpress-ns`.
-
-![Image that shows new replicas in new namespace for WordPress](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-validate-replica.webp)
-
-</TabItem>
 
 <TabItem label="kubectl" value="kubectl config">
 
@@ -320,6 +306,19 @@ wordpress-chart-wordpress-memcached-56cffcf458-hd9x6   1/1     Running   0      
 
 </TabItem>
 
+<TabItem label="Palette UI" value="Palette UI Workloads">
+
+Select the **Workloads** tab. Then, select **Namespaces**. Refresh the page.
+
+![Image that shows new namespace available for WordPress](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-validate-namespace.webp)
+
+Select the **Workloads** tab. Then, select **Pods**. Refresh the page and then filter for **new-wordpress-ns**
+namespace. Three additional WordPress web server pods appear in the new WordPress namespace, `new-wordpress-ns`.
+
+![Image that shows new replicas in new namespace for WordPress](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-validate-replica.webp)
+
+</TabItem>
+
 </Tabs>
 
 ### Cleanup
@@ -341,7 +340,7 @@ Select the cluster profile you created in this tutorial. Select the three-dot me
 Select **Delete** and confirm the selection to remove the cluster profile. Make sure you delete both versions of this
 profile.
 
-## Create Clusters with Cluster Profile Variables (Terraform Workflow)
+## Cluster Profile Variables (Terraform Workflow)
 
 When you create cluster profiles in Terraform, the cluster profile variables can be defined in the profile versions that
 you want to apply the variables against.
@@ -395,18 +394,76 @@ profile_variables {
 Review the two files in the manifests folder. `wordpress-default.yaml` contains the default configuration for the
 WordPress Chart application and `wordpress-variables.yaml` has the following three variables defined in it.
 
-| YAML Line number | Variable to add                                        |
-| ---------------- | ------------------------------------------------------ |
-| Line 13          | `namespace: '{{ .spectro.var.wordpress_namespace }}'`  |
-| Line 205         | `replicaCount: '{{ .spectro.var.wordpress_replica }}'` |
-| Line 502         | `http: '{{ .spectro.var.wordpress_port }}'`            |
+For `namespace: '{{ .spectro.var.wordpress_namespace }}'`, the variable was added to `pack.namespace`.
+
+```hcl {13}
+pack:
+  #The namespace (on the target cluster) to install this chart
+  #When not found, a new namespace will be created
+  content:
+    images:
+      - image: docker.io/bitnami/mariadb:11.2.3-debian-12-r4
+      - image: docker.io/bitnami/memcached:1.6.24-debian-12-r0
+      - image: docker.io/bitnami/wordpress:6.4.3-debian-12-r16
+    charts:
+      - repo: https://charts.bitnami.com/wordpress
+        name: wordpress
+        version: 19.4.3
+  namespace: '{{ .spectro.var.wordpress_namespace }}'
+  spectrocloud.com/install-priority: 0
+```
+
+For `replicaCount: '{{ .spectro.var.wordpress_replica }}'`, the variable was added to `charts.wordpress.replicaCount`.
+
+```hcl {12}
+   multisite:
+      enable: false
+      host: ""
+      networkType: subdomain
+      enableNipIoRedirect: false
+    ## @section WordPress deployment parameters
+    ##
+
+    ## @param replicaCount Number of WordPress replicas to deploy
+    ## NOTE: ReadWriteMany PVC(s) are required if replicaCount > 1
+    ##
+    replicaCount: '{{ .spectro.var.wordpress_replica }}'
+    ## @param updateStrategy.type WordPress deployment strategy type
+    ## ref: https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#strategy
+    ## NOTE: Set it to `Recreate` if you use a PV that cannot be mounted on multiple pods
+```
+
+For `http: '{{ .spectro.var.wordpress_port }}'`, the variable was added to `charts.wordpress.service.ports.http`.
+
+```hcl {11}
+ ## WordPress service parameters
+    ##
+    service:
+      ## @param service.type WordPress service type
+      ##
+      type: LoadBalancer
+      ## @param service.ports.http WordPress service HTTP port
+      ## @param service.ports.https WordPress service HTTPS port
+      ##
+      ports:
+        http: '{{ .spectro.var.wordpress_port }}'
+        https: 443
+      ## @param service.httpsTargetPort Target port for HTTPS
+      ##
+      httpsTargetPort: https
+```
 
 Note that the variable syntax requires spaces at both the beginning and end of the variable, as well as a `.` at the
-start of the variable. Note that the variable syntax requires spaces at both the beginning and end of the variable, as
-well as a `.` at the start of the variable.
+start of the variable.
 
-With the references to the variables in place in the YAML file, you can modify their values in **terraform.tfvars**.
-With the references to the variables in place in the YAML file, you can modify their values in **terraform.tfvars**.
+With the references to the variables in place in the YAML file, you can modify their values in **terraform.tfvars**
+using the values listed in the following table.
+
+| Variable Name                | New Value          |
+| ---------------------------- | ------------------ |
+| **WordPress: Replica Count** | `3`                |
+| **WordPress: HTTP Port**     | `9090`             |
+| **WordPress: Namespace**     | `new-wordpress-ns` |
 
 ```hcl
 ##############################
@@ -418,21 +475,13 @@ wordpress_port      = "REPLACE ME"           # The HTTP port to be exposed for W
 ```
 
 Additionally, you will need to fill in the cloud-specific configurations. If you are using either Azure or GCP, find the
-relevant provider section. For this tutorial, the steps will use AWS. Additionally, you will need to fill in the
-cloud-specific configurations. If you are using either Azure or GCP, find the relevant provider section. For this
-tutorial, the steps will use AWS.
+relevant provider section. For this tutorial, the steps will use AWS.
 
 Locate the AWS provider section and change `deploy-aws = false` to `deploy-aws = true`. Additionally, replace all
 occurrences of `REPLACE_ME` with their corresponding values, such as those for the `aws-cloud-account-name`,
 `aws-region`, `aws-key-pair-name`, and `availability_zones` variables. You can also update the values for the nodes in
 the control plane or worker node pools as needed. Additionally, modify the Application Configuration values. These
 values will be used for your cluster profile variables values.
-
-| Variable Name                | New Value          |
-| ---------------------------- | ------------------ |
-| **WordPress: Replica Count** | `3`                |
-| **WordPress: HTTP Port**     | `9090`             |
-| **WordPress: Namespace**     | `new-wordpress-ns` |
 
 ```hcl {4,7-9,16,24}
 ###########################
@@ -507,18 +556,11 @@ Navigate to the newly created cluster and select the **Profile** tab. The profil
 
 <Tabs groupId="cluster-deployment-verification">
 
-<TabItem label="Palette UI" value="Palette UI Workloads">
-Navigate to the **Workloads** tab. Then, select **Pods** and filter for **wordpress**. Three pods are displayed similar to the following screenshot: one for MariaDB, one for WordPress database
-memory cache and one for the WordPress web server. This is the default deployment behavior for the WordPress pack.
+<TabItem label="kubectl" value="kubectl config">
+From the left main menu, select **Clusters**. Then, select the cluster you created in this tutorial. Select the **Overview** tab, navigate to the middle column containing cluster details and locate the **Kubernetes Config File** row.
 
-![Image that shows default WordPress deployment](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-default-wp-deploy.webp)
+Click on the **Admin Kubeconfig File** link to download the file.
 
-</TabItem>
-
-<TabItem label="kubectrl" value="kubectl config">
-From the cluster overview page, navigate to the middle column containing cluster details and locate the **Kubernetes Config File** row.
-
-Click on the kubeconfig link to download the file.
 ![Image that shows how to download kubeconfig file](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-download-kubeconfig-tf.webp)
 
 Open a terminal window and set the `KUBECONFIG` environment variable to the file path of the **kubeconfig** file.
@@ -543,6 +585,14 @@ wordpress-chart-wordpress-memcached-56cffcf458-fq59l   1/1     Running   0      
 
 </TabItem>
 
+<TabItem label="Palette UI" value="Palette UI Workloads">
+Navigate to the **Workloads** tab. Then, select **Pods** and filter for **wordpress**. Three pods are displayed similar to the following screenshot: one for MariaDB, one for WordPress database
+memory cache and one for the WordPress web server. This is the default deployment behavior for the WordPress pack.
+
+![Image that shows default WordPress deployment](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-default-wp-deploy.webp)
+
+</TabItem>
+
 </Tabs>
 
 Navigate to the **Overview** tab and click the **80** port. This will launch the WordPress blog page.
@@ -551,15 +601,7 @@ Navigate to the **Overview** tab and click the **80** port. This will launch the
 
 Return to your terminal window and modify the `terraform.tfvars` file so that `deploy-aws-var` is set to `true`.
 
-```hcl {12-14,20}
-# Copyright (c) Spectro Cloud
-# SPDX-License-Identifier: Apache-2.0
-
-#####################
-# Palette Settings
-#####################
-palette-project = "Default" # The name of your project in Palette.
-
+```hcl {12}
 ##############################
 # Application Configuration
 ##############################
@@ -580,7 +622,7 @@ Issue the `plan` command to preview the resources that Terraform will create.
 terraform plan
 ```
 
-The output indicates that one resource, the profile, will be modified. This will create a new namespace and three new
+The output indicates that one resource, the cluster, will be modified. This will create a new namespace and three new
 replicas for WordPress under the new namespace, without deleting the existing resources. The host cluster will use
 version `1.1.0` of the cluster profile.
 
@@ -601,14 +643,6 @@ Return to [Palette](https://console.spectrocloud.com), and click **Clusters** fr
 Navigate to your cluster and select the **Profile** tab. The profile in use should be **1.1.0**.
 
 <Tabs groupId="cluster-deployment-verification-next">
-
-<TabItem label="Palette UI" value="Palette UI Workloads">
-Select the **Workloads** tab. Then, select **Pods**. Refresh the page and then filter for **new-WordPress-ns**
-namespace. Three additional WordPress web server pods appear in the new WordPress namespace, `new-wordpress-ns`.
-
-![Image that shows new replicas in new namespace for WordPress](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-validate-replica.webp)
-
-</TabItem>
 
 <TabItem label="kubectl" value="kubectl commands">
 Return to your terminal window and ensure the `KUBECONFIG` environment variable is still set to the file path of the **kubeconfig** file.
@@ -632,6 +666,14 @@ wordpress-chart-wordpress-dd7d944cb-n78rc              0/1     Running   0      
 wordpress-chart-wordpress-mariadb-0                    0/1     Running   0          25s   192.168.71.75   ip-10-0-1-169.ec2.internal   <none>           <none>
 wordpress-chart-wordpress-memcached-56cffcf458-hd9x6   1/1     Running   0          25s   192.168.71.71   ip-10-0-1-169.ec2.internal   <none>           <none>
 ```
+
+</TabItem>
+
+<TabItem label="Palette UI" value="Palette UI Workloads">
+Select the **Workloads** tab. Then, select **Pods**. Refresh the page and then filter for **new-WordPress-ns**
+namespace. Three additional WordPress web server pods appear in the new WordPress namespace, `new-wordpress-ns`.
+
+![Image that shows new replicas in new namespace for WordPress](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-validate-replica.webp)
 
 </TabItem>
 
