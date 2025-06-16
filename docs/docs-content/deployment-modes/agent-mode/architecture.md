@@ -37,6 +37,7 @@ The following are architectural highlights of clusters deployed using agent mode
 ## Supported Kubernetes Distributions
 
 Agent mode deployments support the following Kubernetes distributions:
+
 - PXK-E
 - K3s
 - Canonical
