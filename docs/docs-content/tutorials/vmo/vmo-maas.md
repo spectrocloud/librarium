@@ -1,7 +1,7 @@
 ---
 sidebar_position: 10
 sidebar_label: "Deploy and Manage VMs with VMO"
-title: "Deploy and Manage VMs with VMO and Terraform"
+title: "Deploy and Manage VMs with VMO"
 description:
   "Learn how to create and manage Virtual Machines using Palette VMO on host clusters deployed to Canonical MAAS."
 tags: ["VMO", "tutorial", "maas"]
@@ -40,7 +40,7 @@ customize and deploy a VM.
 git clone https://github.com/spectrocloud/tutorials.git
 ```
 
-- Navigate to the vmo-cluster folder
+- Navigate to the `vmo-cluster` folder
 
 ```shell
 cd tutorials/terraform/vmo-cluster
