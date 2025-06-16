@@ -140,8 +140,8 @@ be selected based on configured node labels and upgraded periodically according 
     type: Opaque
     stringData:
         plan.yaml: |
-            apiVersion: upgrade.cattle.io/v1
-            kind: Plan
+            apiVersion: cluster.spectrocloud.com/v1alpha1
+            kind: SpectroSystemTask
             metadata:
                 name: os-upgrade-plan
                 namespace: $SYSTEM_UPGRADE_NAMESPACE
@@ -150,24 +150,24 @@ be selected based on configured node labels and upgraded periodically according 
                 nodeSelector:
                     matchExpressions:
                         - { key: $SYSTEM_UPGRADE_NODE_LABEL, operator: Exists }
-                serviceAccountName: system-upgrade
+                serviceAccountName: spectro-task
                 secrets:
                     - name: os-upgrade-script
-                      path: /host/run/system-upgrade/secrets/bionic
+                    path: /host/run/spectro-task/secrets/bionic
                 tolerations:
                     - key: node-role.kubernetes.io/master
-                      operator: Exists
-                      effect: NoSchedule
+                    operator: Exists
+                    effect: NoSchedule
                     - key: node-role.kubernetes.io/controlplane
-                      operator: Exists
-                      effect: NoSchedule
+                    operator: Exists
+                    effect: NoSchedule
                 drain:
                     force: true
                 version: bionic
-                upgrade:
+                task:
                     image: us-docker.pkg.dev/palette-images/third-party/ubuntu:22.04
                     command: ["chroot", "/host"]
-                    args: ["sh", "/run/system-upgrade/secrets/bionic/upgrade.sh"]
+                    args: ["sh", "/run/spectro-task/secrets/bionic/upgrade.sh"]
     ---
     apiVersion: batch/v1
     kind: CronJob
@@ -180,26 +180,26 @@ be selected based on configured node labels and upgraded periodically according 
             spec:
                 template:
                     spec:
-                        serviceAccountName: system-upgrade
+                        serviceAccountName: spectro-task
                         containers:
                             - name: os-upgrade-job
-                              image: us-docker.pkg.dev/palette-images/third-party/ubuntu:22.04
-                              command:
+                            image: us-docker.pkg.dev/palette-images/third-party/ubuntu:22.04
+                            command:
                                 - sh
                                 - -c
                                 - |
-                                  apt-get update
-                                  apt-get install -y curl
-                                  curl -LO "https://dl.k8s.io/release/\$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-                                  chmod +x kubectl
-                                  mv kubectl /usr/local/bin/
-                                  export KUBECONFIG=/run/kubeconfig
-                                  kubectl get plan os-upgrade-plan --namespace $SYSTEM_UPGRADE_NAMESPACE
-                                  if [ \$? -eq 0 ]; then
+                                apt-get update
+                                apt-get install -y curl
+                                curl -LO "https://dl.k8s.io/release/\$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+                                chmod +x kubectl
+                                mv kubectl /usr/local/bin/
+                                export KUBECONFIG=/run/kubeconfig
+                                kubectl get plan os-upgrade-plan --namespace $SYSTEM_UPGRADE_NAMESPACE
+                                if [ \$? -eq 0 ]; then
                                     echo "Upgrade plan exists. Retrigger it."
                                     VERSION="os-upgrade-plan-\$(date +%Y%m%d%H%M%S)"
                                     kubectl patch plan os-upgrade-plan --namespace $SYSTEM_UPGRADE_NAMESPACE --type=json --patch="[{\"op\": \"replace\", \"path\": \"/spec/version\", \"value\": \"\${VERSION}\"}]"
-                                  else
+                                else
                                     echo "Upgrade plan does not exist. Create it."
                                     kubectl get secret os-upgrade-plan --namespace $SYSTEM_UPGRADE_NAMESPACE --output go-template='{{ index .data "plan.yaml" | base64decode }}' | kubectl apply --filename -
                                     fi
