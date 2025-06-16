@@ -39,8 +39,6 @@ The following are architectural highlights of Palette-provisioned Edge native cl
   support the following:
 
   - ARM64 architecture
-  - Versions other than 1.32.3
-  - Cluster updates
   - Palette VerteX
   - Custom installation paths for Kubernetes and its dependencies in [agent mode](../../../deployment-modes/agent-mode/)
   - [Network overlay](../networking/vxlan-overlay/)
