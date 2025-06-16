@@ -1,6 +1,6 @@
 ---
 sidebar_position: 10
-sidebar_label: "Deploy and Manage VMs with VMO and Terraform"
+sidebar_label: "Deploy and Manage VMs with VMO"
 title: "Deploy and Manage VMs with VMO and Terraform"
 description:
   "Learn how to create and manage Virtual Machines using Palette VMO on host clusters deployed to Canonical MAAS."
@@ -55,7 +55,7 @@ cd tutorials/terraform/vmo-cluster
 
 <TabItem label="UI Workflow" value="UI Workflow">
 
-This section will guide you through creating a cluster profile using the Palette UI. 
+This section guides you through creating a cluster profile using the Palette UI. 
 
 In Palette, navigate to the left main menu, select **Profiles** > **Add Cluster Profile**.
 
@@ -148,7 +148,7 @@ Select **Palette** as the OIDC Identity Provider.
 
 ![Image of the properties icon](/tutorials/deploy-vmo-maas/tutorials_vmo_vmo-maas_configure-OIDC-properties.webp)
 
-Select the **Values** icon to open the **Manifest Editor**.
+Select the **Values** icon to open the manifest editor.
 
 The Palette eXtended Kubernetes pack is pre-configured with subnets for the clusters internal pods and services.
 Review the values for **podCIDR** and **serviceClusterIpRange** and update them if necessary.
@@ -157,7 +157,7 @@ Review the values for **podCIDR** and **serviceClusterIpRange** and update them 
 
 This template contains security configurations that restrict pod actions. While this is a good practice, it can prevent some services from functioning correctly. One such service is the **Rook-Ceph** Container Storage Interface (CSI), which you will configure later in this tutorial. 
 
-The **Rook-Ceph** deployment must be excluded from default pod security settings by excluding the namespace to which it will be deployed. Search the **Manifest Editor** for `namespaces` and update the value to include `rook-ceph`. The following screenshot displays the **Manifest Editor** with the `namespaces` field highlighted and the value updated.
+The **Rook-Ceph** deployment must be excluded from default pod security settings by excluding the namespace to which it will be deployed. Search the manifest editor for `namespaces` and update the value to include `rook-ceph`. The following screenshot displays the manifest editor with the `namespaces` field highlighted and the value updated.
 
 ![Image of the pod security namespace exclusion values](/tutorials/deploy-vmo-maas/tutorials_vmo_vmo-maas_podSecurity.webp)
 
@@ -238,7 +238,7 @@ priority. The higher the value is, the lower the install priority is.
 
 Set the **Install Order** value to `10`. Packs that depend on this pack will have their install order value set to 11 or greater, ensuring they are installed after the VMO pack. 
 
-Select the **Values** icon, remove all configurations in the **Manifest Editor**, and paste in the configuration below.
+Select the **Values** icon, remove all configurations in the manifest editor, and paste in the configuration below.
 
 ```yaml
 pack:
@@ -921,7 +921,7 @@ repositories, storage, and VM configurations.
 Select **Add Manifest**. Name the new layer **vmo-extras**. Set the value of the **Install Order** field to 20 to ensure these configurations apply after the VMO pack is installed. Select **New manifest** and name the manifest **vmo-extras-manifest**. Select the
 **blue check mark**.
 
-The **Manifest Editor** appears. Copy the YAML config below and paste it into the **Manifest Editor**. This configuration applies some configuration templates to the VMO services, such as the VM deployment template, storage profiles, and data volumes.
+The manifest editor appears. Copy the YAML config below and paste it into the manifest editor. This configuration applies some configuration templates to the VMO services, such as the VM deployment template, storage profiles, and data volumes.
 
 :::warning
 
@@ -1065,7 +1065,7 @@ spec:
   cloneStrategy: csi-clone
 ```
 
-Select **Confirm and Create** to add the vmo-extras layer to your cluster profile.
+Select **Confirm and Create** to add the `vmo-extras` layer to your cluster profile.
 
 The visual of the cluster profile reflects the install order you defined while adding and configuring your packs. Your cluster profile should reflect the following image. 
 
@@ -1340,7 +1340,7 @@ resource "spectrocloud_cluster_profile" "maas-vmo-profile" {
 </details>
 
 <details>
-  <summary>cluster.tf</summary>
+  <summary>clusters.tf</summary>
 
 The **clusters.tf** file contains the definitions required for deploying a host cluster to one of the infrastructure
 providers. To create an MAAS host cluster, you must set the `deploy-maas` variable in the `terraform.tfvars` file to true.
@@ -1561,7 +1561,7 @@ The VMO pack may require custom network configurations to function correctly in 
 
 To deploy a cluster using Terraform, you must first modify the `terraform.tfvars` file. Open it in the editor of your choice. 
 
-The **terraform.tf** file is structured into sections. Each section contains variables that need to be filled in, identified by the placeholder `REPLACE_ME`. Additionally, there is a toggle variable named `deploy-maas` must be set to `true` to deploy your MAAS cluster.
+The **terraform.tfvars** file is structured into sections. Each section contains variables that need to be filled in, identified by the placeholder `REPLACE_ME`. Additionally, there is a toggle variable named `deploy-maas` must be set to `true` to deploy your MAAS cluster.
 
 In the **Palette Settings** section, modify the name of the palette-project variable if you wish to deploy to a Palette project different from the default one.
 
@@ -1802,7 +1802,7 @@ Your result should be similar to the following screenshot.
 
 Use the following steps to remove all the resources you created for the tutorial.
 
-To remove the cluster, select **Clusters** from the left main menu. On the **Cluster Overview** page, select Settings** > Delete Cluster**.
+To remove the cluster, select **Clusters** from the left main menu. On the **Cluster Overview** page, select **Settings** > **Delete Cluster**.
 
 ![Delete cluster](/getting-started/azure/getting-started_deploy-k8s-cluster_delete-cluster-button.webp)
 
