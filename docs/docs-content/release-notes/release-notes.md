@@ -120,7 +120,7 @@ impacted clusters until you've handled the below mentioned breaking changes and 
 
 - Earlier Palette releases carried a stop-gap patch to drain Portworx pods gracefully during node repaves. In this
   release, that patch has been moved to the
-  <VersionedLink text="Portworx CSI pack" url="/integrations/packs/?pack=csi-portworx-generic" /> from v3.2.3 onwards.
+  <VersionedLink text="Portworx CSI pack" url="/integrations/packs/?pack=csi-portworx-generic" /> from v3.2.3 or later.
   <!--prettier-ignore-end-->
 
   For any clusters using the Portworx CSI pack v3.2.2 or earlier, you must choose _one_ of the following actions to

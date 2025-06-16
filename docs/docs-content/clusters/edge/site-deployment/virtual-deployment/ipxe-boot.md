@@ -15,9 +15,9 @@ To use iPXE provisioning, you must use an HTTP/HTTPS server to serve the necessa
 configuration files, and configure the VMs to boot from a iPXE ISO file, which then chains a script that downloads the
 boot artifacts and boot using those artifacts.
 
-You do not need to customize the Palette Edge Installer ISO. It is only used to extract the generic kernel, initrd, and
-root filesystem. Configuration is handled externally via a `config.yaml` file served over HTTP. This lets you reuse the
-same boot artifacts across any number of nodes.
+You do not need to customize the Palette Edge Installer ISO. It is only used to extract the generic kernel, `initrd`,
+and root filesystem. Configuration is handled externally via a `config.yaml` file served over HTTP. This lets you reuse
+the same boot artifacts across any number of nodes.
 
 ## Prerequisites
 
@@ -129,13 +129,13 @@ same boot artifacts across any number of nodes.
 10. Finish configuring your VM and power it on.
 
 11. Open the VM’s console via the vCenter web client to access your VM. As soon as the "iPXE boot image" screen shows,
-    press **Ctrl+B** to interrupt and enter the `iPXE>` prompt. The interval you have to press **Ctrl+B** is very short.
-    Therefore, make sure to launch the web console as soon as your VM boots and get ready to press the keys.
+    press **CTRL + B** to interrupt and enter the `iPXE>` prompt. The interval you have to press **CTRL + B** is very
+    short. Therefore, make sure to launch the web console as soon as your VM boots and get ready to press the keys.
 
     :::tip
 
-    If the VM does not register **Ctrl + B**, try pressing **ESC + B** instead. Many BIOS-level environments and virtual
-    terminals interpret **Esc + B** as a fallback for **Ctrl + B**, especially when Ctrl is not reliably passed through.
+    If the VM does not register **CTRL + B**, try pressing **ESC + B** instead. Many BIOS-level environments and virtual
+    terminals interpret **ESC + B** as a fallback for **CTRL + B**, especially when CTRL is not reliably passed through.
 
     :::
 
