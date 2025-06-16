@@ -1,7 +1,7 @@
 ---
 sidebar_position: 10
-sidebar_label: "Deploy and Manage VMs with VMO"
-title: "Deploy and Manage VMs with VMO"
+sidebar_label: "Deploy and Manage VMs with VMO and Terraform"
+title: "Deploy and Manage VMs with VMO and Terraform"
 description:
   "Learn how to create and manage Virtual Machines using Palette VMO on host clusters deployed to Canonical MAAS."
 tags: ["VMO", "tutorial", "maas"]
@@ -36,15 +36,16 @@ customize and deploy a VM.
 
 - Clone the Spectro Cloud Tutorials repo.
 
-```shell
-git clone https://github.com/spectrocloud/tutorials.git
-```
+    ```shell
+    git clone https://github.com/spectrocloud/tutorials.git   
+    ```
 
-- Navigate to the `vmo-cluster` folder
+- Navigate to the vmo-cluster folder
 
-```shell
-cd tutorials/terraform/vmo-cluster
-```
+    ```shell
+    cd tutorials/terraform/vmo-cluster
+    ```
+
 </TabItem>
 
 </Tabs>
@@ -55,9 +56,9 @@ cd tutorials/terraform/vmo-cluster
 
 <TabItem label="UI Workflow" value="UI Workflow">
 
-This section guides you through creating a cluster profile using the Palette UI. 
+This section will guide you through creating a cluster profile using the Palette UI. 
 
-In Palette, navigate to the left main menu, select **Profiles** > **Add Cluster Profile**.
+Log in to [Palette](https://console.spectrocloud.com/). Navigate to the left main menu, select **Profiles** > **Add Cluster Profile**.
 
 In the **Basic Information** section, enter the name, version number, and any tags you wish to apply to the profile. Set the type value to **Full**. Select **Next**.
 
@@ -71,61 +72,59 @@ Add the **Ubuntu v22.04** to the OS layer.
 |---------------|-------------|--------------|-----------|
 | Ubuntu | 22.04 | Public Repo | Operating System |
 
-
-
 Ubuntu requires customizations to support VMO. Select **Values** and paste the following configuration
-into the **Manifest Editor**.
+into the manifest editor.
 
-```yaml {9}
-kubeadmconfig:
-  preKubeadmCommands:
-    - 'echo "====> Applying pre Kubeadm commands"'
-    # Force specific IP address as the Node IP for kubelet
-    - apt update
-    - apt install -y grepcidr
-    - |
-      # Enter as a CIDR '192.168.1.0/24'
-      NETWORKS="REPLACE_ME"  
-      IPS=$(hostname -I)
-      for IP in $IPS
-      do
-        echo "$IP" | grepcidr "$NETWORKS" >/dev/null && echo " --node-ip=$IP" >> /etc/default/kubelet
-        if [ $? == 0 ]; then break; fi
-      done
-    # Increase audit_backlog_limit
-    - sed -i 's/GRUB_CMDLINE_LINUX=""/GRUB_CMDLINE_LINUX="audit_backlog_limit=256"/g' /etc/default/grub
-    - update-grub
-    # Clean up stale container images
-    - (crontab -l || true; echo "0 4 * * * /usr/bin/crictl -c /etc/crictl.yaml rmi --prune")| crontab -
-    # Update CA certs
-    - update-ca-certificates
-    # Start containerd with new configuration
-    - systemctl daemon-reload
-    - systemctl restart containerd
-  postKubeadmCommands:
-    - 'echo "====> Applying post Kubeadm commands"'
-  files:
-    - targetPath: /etc/containerd/config.toml
-      targetOwner: "root:root"
-      targetPermissions: "0644"
-      content: |
-        ## template: jinja
+    ```yaml {9}
+    kubeadmconfig:
+      preKubeadmCommands:
+        - 'echo "====> Applying pre Kubeadm commands"'
+        # Force specific IP address as the Node IP for kubelet
+        - apt update
+        - apt install -y grepcidr
+        - |
+          # Enter as a CIDR '192.168.1.0/24'
+          NETWORKS="REPLACE_ME"  
+          IPS=$(hostname -I)
+          for IP in $IPS
+          do
+            echo "$IP" | grepcidr "$NETWORKS" >/dev/null && echo " --node-ip=$IP" >> /etc/default/kubelet
+            if [ $? == 0 ]; then break; fi
+          done
+        # Increase audit_backlog_limit
+        - sed -i 's/GRUB_CMDLINE_LINUX=""/GRUB_CMDLINE_LINUX="audit_backlog_limit=256"/g' /etc/default/grub
+        - update-grub
+        # Clean up stale container images
+        - (crontab -l || true; echo "0 4 * * * /usr/bin/crictl -c /etc/crictl.yaml rmi --prune")| crontab -
+        # Update CA certs
+        - update-ca-certificates
+        # Start containerd with new configuration
+        - systemctl daemon-reload
+        - systemctl restart containerd
+      postKubeadmCommands:
+        - 'echo "====> Applying post Kubeadm commands"'
+      files:
+        - targetPath: /etc/containerd/config.toml
+          targetOwner: "root:root"
+          targetPermissions: "0644"
+          content: |
+            ## template: jinja
 
-        # Use config version 2 to enable new configuration fields.
-        # Config file is parsed as version 1 by default.
-        version = 2
+            # Use config version 2 to enable new configuration fields.
+            # Config file is parsed as version 1 by default.
+            version = 2
 
-        imports = ["/etc/containerd/conf.d/*.toml"]
+            imports = ["/etc/containerd/conf.d/*.toml"]
 
-        [plugins]
-          [plugins."io.containerd.grpc.v1.cri"]
-            sandbox_image = "registry.k8s.io/pause:3.9"
-            device_ownership_from_security_context = true
-          [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc]
-            runtime_type = "io.containerd.runc.v2"
-          [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc.options]
-            SystemdCgroup = true
-```
+            [plugins]
+              [plugins."io.containerd.grpc.v1.cri"]
+                sandbox_image = "registry.k8s.io/pause:3.9"
+                device_ownership_from_security_context = true
+              [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc]
+                runtime_type = "io.containerd.runc.v2"
+              [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc.options]
+                SystemdCgroup = true
+    ```
 
 Update the value for `NETWORKS` to the appropriate "subnet for your environment. The value you enter must be in CIDR
 notation and encapsulated in quotes. For example, `"192.168.0.0/16"`. The image below displays the OS layer with the custom manifest and updated `NETWORKS` value.
@@ -157,9 +156,138 @@ Review the values for **podCIDR** and **serviceClusterIpRange** and update them 
 
 This template contains security configurations that restrict pod actions. While this is a good practice, it can prevent some services from functioning correctly. One such service is the **Rook-Ceph** Container Storage Interface (CSI), which you will configure later in this tutorial. 
 
-The **Rook-Ceph** deployment must be excluded from default pod security settings by excluding the namespace to which it will be deployed. Search the manifest editor for `namespaces` and update the value to include `rook-ceph`. The following screenshot displays the manifest editor with the `namespaces` field highlighted and the value updated.
+The **Rook-Ceph** deployment must be excluded from default pod security settings by excluding the namespace to which it will be deployed. The following screenshot displays the manifest editor with the `namespaces` field highlighted and the value updated.
 
 ![Image of the pod security namespace exclusion values](/tutorials/deploy-vmo-maas/tutorials_vmo_vmo-maas_podSecurity.webp)
+
+Select **Values** and paste the following configuration into the manifest editor.
+
+    ```yaml
+    pack:
+      content:
+        images:
+          - image: registry.k8s.io/coredns/coredns:v1.11.3
+          - image: registry.k8s.io/etcd:3.5.16-0
+          - image: registry.k8s.io/kube-apiserver:v1.32.2
+          - image: registry.k8s.io/kube-controller-manager:v1.32.2
+          - image: registry.k8s.io/kube-proxy:v1.32.2
+          - image: registry.k8s.io/kube-scheduler:v1.32.2
+          - image: registry.k8s.io/pause:3.9
+          - image: registry.k8s.io/pause:3.8
+      #CIDR Range for Pods in cluster
+      # Note : This must not overlap with any of the host or service network
+      podCIDR: "100.64.0.0/18"
+      #CIDR notation IP range from which to assign service cluster IPs
+      # Note : This must not overlap with any IP ranges assigned to nodes for pods.
+      serviceClusterIpRange: "100.64.64.0/18"
+      palette:
+        config:
+          dashboard:
+            identityProvider: palette
+      # serviceDomain: "cluster.local"
+
+    kubeadmconfig:
+      apiServer:
+        extraArgs:
+          # Note : secure-port flag is used during kubeadm init. Do not change this flag on a running cluster
+          secure-port: "6443"
+          anonymous-auth: "true"
+          profiling: "false"
+          disable-admission-plugins: "AlwaysAdmit"
+          default-not-ready-toleration-seconds: "60"
+          default-unreachable-toleration-seconds: "60"
+          enable-admission-plugins: "AlwaysPullImages,NamespaceLifecycle,ServiceAccount,NodeRestriction,PodSecurity"
+          admission-control-config-file: "/etc/kubernetes/pod-security-standard.yaml"
+          audit-log-path: /var/log/apiserver/audit.log
+          audit-policy-file: /etc/kubernetes/audit-policy.yaml
+          audit-log-maxage: "30"
+          audit-log-maxbackup: "10"
+          audit-log-maxsize: "100"
+          authorization-mode: RBAC,Node
+          kubelet-certificate-authority: "/etc/kubernetes/pki/ca.crt"
+          tls-cipher-suites: "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256"
+        extraVolumes:
+          - name: audit-log
+            hostPath: /var/log/apiserver
+            mountPath: /var/log/apiserver
+            pathType: DirectoryOrCreate
+          - name: audit-policy
+            hostPath: /etc/kubernetes/audit-policy.yaml
+            mountPath: /etc/kubernetes/audit-policy.yaml
+            readOnly: true
+            pathType: File
+          - name: pod-security-standard
+            hostPath: /etc/kubernetes/pod-security-standard.yaml
+            mountPath: /etc/kubernetes/pod-security-standard.yaml
+            readOnly: true
+            pathType: File
+      controllerManager:
+        extraArgs:
+          profiling: "false"
+          terminated-pod-gc-threshold: "25"
+          use-service-account-credentials: "true"
+          feature-gates: "RotateKubeletServerCertificate=true"
+      scheduler:
+        extraArgs:
+          profiling: "false"
+      kubeletExtraArgs:
+        read-only-port: "0"
+        event-qps: "0"
+        feature-gates: "RotateKubeletServerCertificate=true"
+        protect-kernel-defaults: "true"
+        rotate-server-certificates: "true"
+        tls-cipher-suites: "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256,TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305,TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_256_GCM_SHA384,TLS_RSA_WITH_AES_128_GCM_SHA256"
+      files:
+        - path: hardening/audit-policy.yaml
+          targetPath: /etc/kubernetes/audit-policy.yaml
+          targetOwner: "root:root"
+          targetPermissions: "0600"
+        - path: hardening/90-kubelet.conf
+          targetPath: /etc/sysctl.d/90-kubelet.conf
+          targetOwner: "root:root"
+          targetPermissions: "0600"
+        - targetPath: /etc/kubernetes/pod-security-standard.yaml
+          targetOwner: "root:root"
+          targetPermissions: "0600"
+          content: |
+            apiVersion: apiserver.config.k8s.io/v1
+            kind: AdmissionConfiguration
+            plugins:
+            - name: PodSecurity
+              configuration:
+                apiVersion: pod-security.admission.config.k8s.io/v1
+                kind: PodSecurityConfiguration
+                defaults:
+                  enforce: "baseline"
+                  enforce-version: "v1.32"
+                  audit: "baseline"
+                  audit-version: "v1.32"
+                  warn: "restricted"
+                  warn-version: "v1.32"
+                exemptions:
+                  # Array of authenticated usernames to exempt.
+                  usernames: []
+                  # Array of runtime class names to exempt.
+                  runtimeClasses: []
+                  # Array of namespaces to exempt.
+                  namespaces: [kube-system, rook-ceph]
+
+      preKubeadmCommands:
+        # For enabling 'protect-kernel-defaults' flag to kubelet, kernel parameters changes are required
+        - 'echo "====> Applying kernel parameters for Kubelet"'
+        - 'sysctl -p /etc/sysctl.d/90-kubelet.conf'
+
+      postKubeadmCommands:
+        - 'chmod 600 /var/lib/kubelet/config.yaml'
+        # - 'echo "List of post kubeadm commands to be executed"'
+
+        # Client configuration to add OIDC based authentication flags in kubeconfig
+        #clientConfig:
+        #oidc-issuer-url: "{{ .spectro.pack.kubernetes.kubeadmconfig.apiServer.extraArgs.oidc-issuer-url }}"
+        #oidc-client-id: "{{ .spectro.pack.kubernetes.kubeadmconfig.apiServer.extraArgs.oidc-client-id }}"
+        #oidc-client-secret: 1gsranjjmdgahm10j8r6m47ejokm9kafvcbhi3d48jlc3rfpprhv
+        #oidc-extra-scope: profile,email
+    ```
 
 Select **Next layer** to advance to the Container Network Interface (CNI) layer.
 
@@ -187,9 +315,1419 @@ If necessary, set the **Pack Version** to `1.16.3` and select **Confirm Changes*
 Select **Values**. From the **Presets** drop-down menu, set the value for **Cluster Configuration** to **Single Node Cluster**. The preset for 'Single Node Cluster' in the rook-ceph pack implies that a single worker node is used, not that the
 Kubernetes Control Plane and workloads use a single node.
 
-When deploying a single workload cluster, running multiple CSI pods is unnecessary. Search the **Manifest Editor** for `replica` and change all values for `provisionerReplicas` and `replicated.size`, to `1`. The following image displays the CSI manifest with the `replicated.size` value set.
+When deploying a single workload cluster, running multiple CSI pods is unnecessary. The manifest below contains configuration that force all CSI pods to use a single instance.
 
-![Image of the pod security namespace exclusion values](/tutorials/deploy-vmo-maas/tutorials_vmo_vmo-maas_CSI-Config.webp)
+Select **Values** and paste the following configuration into the manifest editor.
+
+    ```yaml
+    pack:
+      content:
+        images:
+          - image: us-docker.pkg.dev/palette-images/packs/rook-ceph-helm/1.16.3/k8s-sidecar:v0.11.0
+          - image: us-docker.pkg.dev/palette-images/packs/rook-ceph-helm/1.16.3/cephcsi:v3.13.0
+          - image: us-docker.pkg.dev/palette-images/packs/rook-ceph-helm/1.16.3/csi-node-driver-registrar:v2.13.0
+          - image: us-docker.pkg.dev/palette-images/packs/rook-ceph-helm/1.16.3/csi-resizer:v1.13.1
+          - image: us-docker.pkg.dev/palette-images/packs/rook-ceph-helm/1.16.3/csi-provisioner:v5.1.0
+          - image: us-docker.pkg.dev/palette-images/packs/rook-ceph-helm/1.16.3/csi-snapshotter:v8.2.0
+          - image: us-docker.pkg.dev/palette-images/packs/rook-ceph-helm/1.16.3/csi-attacher:v4.8.0
+          - image: us-docker.pkg.dev/palette-images/packs/rook-ceph-helm/1.16.3/rook/ceph:v1.16.3
+          - image: us-docker.pkg.dev/palette-images/packs/rook-ceph-helm/1.16.3/ceph/ceph:v19.2.0
+
+      charts:
+        - repo: https://charts.rook.io/release
+          name: rook-release/rook-ceph
+          version: 1.16.3
+        - repo: https://charts.rook.io/release
+          name: rook-release/rook-ceph-cluster
+          version: 1.16.3
+
+      namespace: rook-ceph
+      namespaceLabels:
+        "rook-ceph": "pod-security.kubernetes.io/enforce=privileged,pod-security.kubernetes.io/enforce-version=v{{ .spectro.system.kubernetes.version | substr 0 4 }}"
+
+    readinessCheck:
+      v1beta1:
+        - name: "rook-ceph"
+          namespace: "rook-ceph"
+          kind: "CephCluster"
+          group: "ceph.rook.io"
+          version: "v1"
+          expectedValue: "Ready"
+          keyToCheck: "status.phase"
+
+    charts:
+      rook-ceph:
+        # Default values for rook-ceph-operator
+        image:
+          # -- Image
+          repository: us-docker.pkg.dev/palette-images/packs/rook-ceph-helm/1.16.3/rook/ceph
+          # -- Image tag
+          # @default -- `master`
+          tag: v1.16.3
+          # -- Image pull policy
+          pullPolicy: IfNotPresent
+
+        crds:
+          # -- Whether the helm chart should create and update the CRDs. If false, the CRDs must be
+          # managed independently with deploy/examples/crds.yaml.
+          # **WARNING** Only set during first deployment. If later disabled the cluster may be DESTROYED.
+          # If the CRDs are deleted in this case, see
+          # [the disaster recovery guide](https://rook.io/docs/rook/latest/Troubleshooting/disaster-recovery/#restoring-crds-after-deletion)
+          # to restore them.
+          enabled: true
+
+        # -- Pod resource requests & limits
+        resources:
+          limits:
+            memory: 512Mi
+          requests:
+            cpu: 200m
+            memory: 128Mi
+
+        # -- Kubernetes [`nodeSelector`](https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#nodeselector) to add to the Deployment.
+        nodeSelector: {}
+        # Constraint rook-ceph-operator Deployment to nodes with label `disktype: ssd`.
+        # For more info, see https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#nodeselector
+        #  disktype: ssd
+
+        # -- List of Kubernetes [`tolerations`](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/) to add to the Deployment.
+        tolerations: []
+
+        # -- Delay to use for the `node.kubernetes.io/unreachable` pod failure toleration to override
+        # the Kubernetes default of 5 minutes
+        unreachableNodeTolerationSeconds: 5
+
+        # -- Whether the operator should watch cluster CRD in its own namespace or not
+        currentNamespaceOnly: false
+
+        # -- Pod annotations
+        annotations: {}
+
+        # -- Global log level for the operator.
+        # Options: `ERROR`, `WARNING`, `INFO`, `DEBUG`
+        logLevel: INFO
+
+        # -- If true, create & use RBAC resources
+        rbacEnable: true
+
+        rbacAggregate:
+          # -- If true, create a ClusterRole aggregated to [user facing roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) for objectbucketclaims
+          enableOBCs: false
+
+        # -- If true, create & use PSP resources
+        pspEnable: false
+
+        # -- Set the priority class for the rook operator deployment if desired
+        priorityClassName:
+
+        # -- Set the container security context for the operator
+        containerSecurityContext:
+          runAsNonRoot: true
+          runAsUser: 2016
+          runAsGroup: 2016
+          capabilities:
+            drop: [ "ALL" ]
+        # -- If true, loop devices are allowed to be used for osds in test clusters
+        allowLoopDevices: false
+
+        # Settings for whether to disable the drivers or other daemons if they are not
+        # needed
+        csi:
+          # -- Enable Ceph CSI RBD driver
+          enableRbdDriver: true
+          # -- Enable Ceph CSI CephFS driver
+          enableCephfsDriver: true
+          # -- Disable the CSI driver.
+          disableCsiDriver: "false"
+
+          # -- Enable host networking for CSI CephFS and RBD nodeplugins. This may be necessary
+          # in some network configurations where the SDN does not provide access to an external cluster or
+          # there is significant drop in read/write performance
+          enableCSIHostNetwork: true
+          # -- Deprecation note: Rook uses "holder" pods to allow CSI to connect to the multus public network
+          # without needing hosts to the network. Holder pods are being removed. See issue for details:
+          # https://github.com/rook/rook/issues/13055. New Rook deployments should set this to "true".
+          disableHolderPods: true
+          # -- Enable Snapshotter in CephFS provisioner pod
+          enableCephfsSnapshotter: true
+          # -- Enable Snapshotter in NFS provisioner pod
+          enableNFSSnapshotter: true
+          # -- Enable Snapshotter in RBD provisioner pod
+          enableRBDSnapshotter: true
+          # -- Enable Host mount for `/etc/selinux` directory for Ceph CSI nodeplugins
+          enablePluginSelinuxHostMount: false
+          # -- Enable Ceph CSI PVC encryption support
+          enableCSIEncryption: false
+
+          # -- Enable volume group snapshot feature. This feature is
+          # enabled by default as long as the necessary CRDs are available in the cluster.
+          enableVolumeGroupSnapshot: true
+          # -- PriorityClassName to be set on csi driver plugin pods
+          pluginPriorityClassName: system-node-critical
+
+          # -- PriorityClassName to be set on csi driver provisioner pods
+          provisionerPriorityClassName: system-cluster-critical
+
+          # -- Policy for modifying a volume's ownership or permissions when the RBD PVC is being mounted.
+          # supported values are documented at https://kubernetes-csi.github.io/docs/support-fsgroup.html
+          rbdFSGroupPolicy: "File"
+
+          # -- Policy for modifying a volume's ownership or permissions when the CephFS PVC is being mounted.
+          # supported values are documented at https://kubernetes-csi.github.io/docs/support-fsgroup.html
+          cephFSFSGroupPolicy: "File"
+
+          # -- Policy for modifying a volume's ownership or permissions when the NFS PVC is being mounted.
+          # supported values are documented at https://kubernetes-csi.github.io/docs/support-fsgroup.html
+          nfsFSGroupPolicy: "File"
+
+          # -- OMAP generator generates the omap mapping between the PV name and the RBD image
+          # which helps CSI to identify the rbd images for CSI operations.
+          # `CSI_ENABLE_OMAP_GENERATOR` needs to be enabled when we are using rbd mirroring feature.
+          # By default OMAP generator is disabled and when enabled, it will be deployed as a
+          # sidecar with CSI provisioner pod, to enable set it to true.
+          enableOMAPGenerator: false
+
+          # -- Set CephFS Kernel mount options to use https://docs.ceph.com/en/latest/man/8/mount.ceph/#options.
+          # Set to "ms_mode=secure" when connections.encrypted is enabled in CephCluster CR
+          cephFSKernelMountOptions:
+
+          # -- Enable adding volume metadata on the CephFS subvolumes and RBD images.
+          # Not all users might be interested in getting volume/snapshot details as metadata on CephFS subvolume and RBD images.
+          # Hence enable metadata is false by default
+          enableMetadata: false
+
+          # -- Set replicas for csi provisioner deployment
+          provisionerReplicas: 1
+
+          # -- Cluster name identifier to set as metadata on the CephFS subvolume and RBD images. This will be useful
+          # in cases like for example, when two container orchestrator clusters (Kubernetes/OCP) are using a single ceph cluster
+          clusterName:
+
+          # -- Set logging level for cephCSI containers maintained by the cephCSI.
+          # Supported values from 0 to 5. 0 for general useful logs, 5 for trace level verbosity.
+          logLevel: 0
+
+          # -- Set logging level for Kubernetes-csi sidecar containers.
+          # Supported values from 0 to 5. 0 for general useful logs (the default), 5 for trace level verbosity.
+          # @default -- `0`
+          sidecarLogLevel:
+
+          # -- CSI driver name prefix for cephfs, rbd and nfs.
+          # @default -- `namespace name where rook-ceph operator is deployed`
+          csiDriverNamePrefix:
+
+          # -- CSI RBD plugin daemonset update strategy, supported values are OnDelete and RollingUpdate
+          # @default -- `RollingUpdate`
+          rbdPluginUpdateStrategy:
+
+          # -- A maxUnavailable parameter of CSI RBD plugin daemonset update strategy.
+          # @default -- `1`
+          rbdPluginUpdateStrategyMaxUnavailable:
+
+          # -- CSI CephFS plugin daemonset update strategy, supported values are OnDelete and RollingUpdate
+          # @default -- `RollingUpdate`
+          cephFSPluginUpdateStrategy:
+
+          # -- A maxUnavailable parameter of CSI cephFS plugin daemonset update strategy.
+          # @default -- `1`
+          cephFSPluginUpdateStrategyMaxUnavailable:
+
+          # -- CSI NFS plugin daemonset update strategy, supported values are OnDelete and RollingUpdate
+          # @default -- `RollingUpdate`
+          nfsPluginUpdateStrategy:
+
+          # -- Set GRPC timeout for csi containers (in seconds). It should be >= 120. If this value is not set or is invalid, it defaults to 150
+          grpcTimeoutInSeconds: 150
+
+          # -- Allow starting an unsupported ceph-csi image
+          allowUnsupportedVersion: false
+
+          # -- Burst to use while communicating with the kubernetes apiserver.
+          kubeApiBurst:
+
+          # -- QPS to use while communicating with the kubernetes apiserver.
+          kubeApiQPS:
+
+          # -- The volume of the CephCSI RBD plugin DaemonSet
+          csiRBDPluginVolume: #  - name: lib-modules
+
+          #    hostPath:
+          #      path: /run/booted-system/kernel-modules/lib/modules/
+          #  - name: host-nix
+          #    hostPath:
+          #      path: /nix
+
+          # -- The volume mounts of the CephCSI RBD plugin DaemonSet
+          csiRBDPluginVolumeMount: #  - name: host-nix
+
+          #    mountPath: /nix
+          #    readOnly: true
+
+          # -- The volume of the CephCSI CephFS plugin DaemonSet
+          csiCephFSPluginVolume: #  - name: lib-modules
+
+          #    hostPath:
+          #      path: /run/booted-system/kernel-modules/lib/modules/
+          #  - name: host-nix
+          #    hostPath:
+          #      path: /nix
+
+          # -- The volume mounts of the CephCSI CephFS plugin DaemonSet
+          csiCephFSPluginVolumeMount: #  - name: host-nix
+
+          #    mountPath: /nix
+          #    readOnly: true
+
+          # -- CEPH CSI RBD provisioner resource requirement list
+          # csi-omap-generator resources will be applied only if `enableOMAPGenerator` is set to `true`
+          # @default -- see values.yaml
+          csiRBDProvisionerResource: |
+            - name : csi-provisioner
+              resource:
+                requests:
+                  memory: 128Mi
+                  cpu: 100m
+                limits:
+                  memory: 256Mi
+            - name : csi-resizer
+              resource:
+                requests:
+                  memory: 128Mi
+                  cpu: 100m
+                limits:
+                  memory: 256Mi
+            - name : csi-attacher
+              resource:
+                requests:
+                  memory: 128Mi
+                  cpu: 100m
+                limits:
+                  memory: 256Mi
+            - name : csi-snapshotter
+              resource:
+                requests:
+                  memory: 128Mi
+                  cpu: 100m
+                limits:
+                  memory: 256Mi
+            - name : csi-rbdplugin
+              resource:
+                requests:
+                  memory: 512Mi
+                limits:
+                  memory: 1Gi
+            - name : csi-omap-generator
+              resource:
+                requests:
+                  memory: 512Mi
+                  cpu: 250m
+                limits:
+                  memory: 1Gi
+            - name : liveness-prometheus
+              resource:
+                requests:
+                  memory: 128Mi
+                  cpu: 50m
+                limits:
+                  memory: 256Mi
+
+          # -- CEPH CSI RBD plugin resource requirement list
+          # @default -- see values.yaml
+          csiRBDPluginResource: |
+            - name : driver-registrar
+              resource:
+                requests:
+                  memory: 128Mi
+                  cpu: 50m
+                limits:
+                  memory: 256Mi
+            - name : csi-rbdplugin
+              resource:
+                requests:
+                  memory: 512Mi
+                  cpu: 250m
+                limits:
+                  memory: 1Gi
+            - name : liveness-prometheus
+              resource:
+                requests:
+                  memory: 128Mi
+                  cpu: 50m
+                limits:
+                  memory: 256Mi
+
+          # -- CEPH CSI CephFS provisioner resource requirement list
+          # @default -- see values.yaml
+          csiCephFSProvisionerResource: |
+            - name : csi-provisioner
+              resource:
+                requests:
+                  memory: 128Mi
+                  cpu: 100m
+                limits:
+                  memory: 256Mi
+            - name : csi-resizer
+              resource:
+                requests:
+                  memory: 128Mi
+                  cpu: 100m
+                limits:
+                  memory: 256Mi
+            - name : csi-attacher
+              resource:
+                requests:
+                  memory: 128Mi
+                  cpu: 100m
+                limits:
+                  memory: 256Mi
+            - name : csi-snapshotter
+              resource:
+                requests:
+                  memory: 128Mi
+                  cpu: 100m
+                limits:
+                  memory: 256Mi
+            - name : csi-cephfsplugin
+              resource:
+                requests:
+                  memory: 512Mi
+                  cpu: 250m
+                limits:
+                  memory: 1Gi
+            - name : liveness-prometheus
+              resource:
+                requests:
+                  memory: 128Mi
+                  cpu: 50m
+                limits:
+                  memory: 256Mi
+
+          # -- CEPH CSI CephFS plugin resource requirement list
+          # @default -- see values.yaml
+          csiCephFSPluginResource: |
+            - name : driver-registrar
+              resource:
+                requests:
+                  memory: 128Mi
+                  cpu: 50m
+                limits:
+                  memory: 256Mi
+            - name : csi-cephfsplugin
+              resource:
+                requests:
+                  memory: 512Mi
+                  cpu: 250m
+                limits:
+                  memory: 1Gi
+            - name : liveness-prometheus
+              resource:
+                requests:
+                  memory: 128Mi
+                  cpu: 50m
+                limits:
+                  memory: 256Mi
+
+          # -- CEPH CSI NFS provisioner resource requirement list
+          # @default -- see values.yaml
+          csiNFSProvisionerResource: |
+            - name : csi-provisioner
+              resource:
+                requests:
+                  memory: 128Mi
+                  cpu: 100m
+                limits:
+                  memory: 256Mi
+            - name : csi-nfsplugin
+              resource:
+                requests:
+                  memory: 512Mi
+                  cpu: 250m
+                limits:
+                  memory: 1Gi
+            - name : csi-attacher
+              resource:
+                requests:
+                  memory: 512Mi
+                  cpu: 250m
+                limits:
+                  memory: 1Gi
+
+          # -- CEPH CSI NFS plugin resource requirement list
+          # @default -- see values.yaml
+          csiNFSPluginResource: |
+            - name : driver-registrar
+              resource:
+                requests:
+                  memory: 128Mi
+                  cpu: 50m
+                limits:
+                  memory: 256Mi
+            - name : csi-nfsplugin
+              resource:
+                requests:
+                  memory: 512Mi
+                  cpu: 250m
+                limits:
+                  memory: 1Gi
+
+          # Set provisionerTolerations and provisionerNodeAffinity for provisioner pod.
+          # The CSI provisioner would be best to start on the same nodes as other ceph daemons.
+
+          # -- Array of tolerations in YAML format which will be added to CSI provisioner deployment
+          provisionerTolerations: #    - key: key
+
+          #      operator: Exists
+          #      effect: NoSchedule
+
+          # -- The node labels for affinity of the CSI provisioner deployment [^1]
+          provisionerNodeAffinity:
+            #key1=value1,value2; key2=value3
+            # Set pluginTolerations and pluginNodeAffinity for plugin daemonset pods.
+
+          # The CSI plugins need to be started on all the nodes where the clients need to mount the storage.
+
+          # -- Array of tolerations in YAML format which will be added to CephCSI plugin DaemonSet
+          pluginTolerations: #    - key: key
+
+          #      operator: Exists
+          #      effect: NoSchedule
+
+          # -- The node labels for affinity of the CephCSI RBD plugin DaemonSet [^1]
+          pluginNodeAffinity: # key1=value1,value2; key2=value3
+
+          # -- Enable Ceph CSI Liveness sidecar deployment
+          enableLiveness: false
+
+          # -- CSI CephFS driver metrics port
+          # @default -- `9081`
+          cephfsLivenessMetricsPort:
+
+          # -- CSI Addons server port
+          # @default -- `9070`
+          csiAddonsPort:
+
+          # -- Enable Ceph Kernel clients on kernel < 4.17. If your kernel does not support quotas for CephFS
+          # you may want to disable this setting. However, this will cause an issue during upgrades
+          # with the FUSE client. See the [upgrade guide](https://rook.io/docs/rook/v1.2/ceph-upgrade.html)
+          forceCephFSKernelClient: true
+
+          # -- Ceph CSI RBD driver metrics port
+          # @default -- `8080`
+          rbdLivenessMetricsPort:
+
+          serviceMonitor:
+            # -- Enable ServiceMonitor for Ceph CSI drivers
+            enabled: false
+            # -- Service monitor scrape interval
+            interval: 10s
+            # -- ServiceMonitor additional labels
+            labels: {}
+            # -- Use a different namespace for the ServiceMonitor
+            namespace:
+
+              # -- Kubelet root directory path (if the Kubelet uses a different path for the `--root-dir` flag)
+              # @default -- `/var/lib/kubelet`
+          kubeletDirPath:
+
+          # -- Duration in seconds that non-leader candidates will wait to force acquire leadership.
+          # @default -- `137s`
+          csiLeaderElectionLeaseDuration:
+
+          # -- Deadline in seconds that the acting leader will retry refreshing leadership before giving up.
+          # @default -- `107s`
+          csiLeaderElectionRenewDeadline:
+
+          # -- Retry period in seconds the LeaderElector clients should wait between tries of actions.
+          # @default -- `26s`
+          csiLeaderElectionRetryPeriod:
+
+          cephcsi:
+            # -- Ceph CSI image repository
+            repository: us-docker.pkg.dev/palette-images/packs/rook-ceph-helm/1.16.3/cephcsi
+            # -- Ceph CSI image tag
+            tag: v3.13.0
+
+          registrar:
+            # -- Kubernetes CSI registrar image repository
+            repository: us-docker.pkg.dev/palette-images/packs/rook-ceph-helm/1.16.3/csi-node-driver-registrar
+            # -- Registrar image tag
+            tag: v2.13.0
+
+          provisioner:
+            # -- Kubernetes CSI provisioner image repository
+            repository: us-docker.pkg.dev/palette-images/packs/rook-ceph-helm/1.16.3/csi-provisioner
+            # -- Provisioner image tag
+            tag: v5.1.0
+
+          snapshotter:
+            # -- Kubernetes CSI snapshotter image repository
+            repository: us-docker.pkg.dev/palette-images/packs/rook-ceph-helm/1.16.3/csi-snapshotter
+            # -- Snapshotter image tag
+            tag: v8.2.0
+
+          attacher:
+            # -- Kubernetes CSI Attacher image repository
+            repository: us-docker.pkg.dev/palette-images/packs/rook-ceph-helm/1.16.3/csi-attacher
+            # -- Attacher image tag
+            tag: v4.8.0
+
+          resizer:
+            # -- Kubernetes CSI resizer image repository
+            repository: us-docker.pkg.dev/palette-images/packs/rook-ceph-helm/1.16.3/csi-resizer
+            # -- Resizer image tag
+            tag: v1.13.1
+
+          # -- Image pull policy
+          imagePullPolicy: IfNotPresent
+
+          # -- Labels to add to the CSI CephFS Deployments and DaemonSets Pods
+          cephfsPodLabels: #"key1=value1,key2=value2"
+
+          # -- Labels to add to the CSI NFS Deployments and DaemonSets Pods
+          nfsPodLabels: #"key1=value1,key2=value2"
+
+          # -- Labels to add to the CSI RBD Deployments and DaemonSets Pods
+          rbdPodLabels: #"key1=value1,key2=value2"
+
+          csiAddons:
+            # -- Enable CSIAddons
+            enabled: false
+            # -- CSIAddons sidecar image repository
+            repository: us-docker.pkg.dev/palette-images/packs/rook-ceph-helm/1.16.3/k8s-sidecar
+            # -- CSIAddons sidecar image tag
+            tag: v0.11.0
+
+          nfs:
+            # -- Enable the nfs csi driver
+            enabled: false
+
+          topology:
+            # -- Enable topology based provisioning
+            enabled: false
+            # NOTE: the value here serves as an example and needs to be
+            # updated with node labels that define domains of interest
+            # -- domainLabels define which node labels to use as domains
+            # for CSI nodeplugins to advertise their domains
+            domainLabels:
+              # - kubernetes.io/hostname
+              # - topology.kubernetes.io/zone
+              # - topology.rook.io/rack
+
+              # -- Whether to skip any attach operation altogether for CephFS PVCs. See more details
+              # [here](https://kubernetes-csi.github.io/docs/skip-attach.html#skip-attach-with-csi-driver-object).
+              # If cephFSAttachRequired is set to false it skips the volume attachments and makes the creation
+              # of pods using the CephFS PVC fast. **WARNING** It's highly discouraged to use this for
+              # CephFS RWO volumes. Refer to this [issue](https://github.com/kubernetes/kubernetes/issues/103305) for more details.
+          cephFSAttachRequired: true
+          # -- Whether to skip any attach operation altogether for RBD PVCs. See more details
+          # [here](https://kubernetes-csi.github.io/docs/skip-attach.html#skip-attach-with-csi-driver-object).
+          # If set to false it skips the volume attachments and makes the creation of pods using the RBD PVC fast.
+          # **WARNING** It's highly discouraged to use this for RWO volumes as it can cause data corruption.
+          # csi-addons operations like Reclaimspace and PVC Keyrotation will also not be supported if set
+          # to false since we'll have no VolumeAttachments to determine which node the PVC is mounted on.
+          # Refer to this [issue](https://github.com/kubernetes/kubernetes/issues/103305) for more details.
+          rbdAttachRequired: true
+          # -- Whether to skip any attach operation altogether for NFS PVCs. See more details
+          # [here](https://kubernetes-csi.github.io/docs/skip-attach.html#skip-attach-with-csi-driver-object).
+          # If cephFSAttachRequired is set to false it skips the volume attachments and makes the creation
+          # of pods using the NFS PVC fast. **WARNING** It's highly discouraged to use this for
+          # NFS RWO volumes. Refer to this [issue](https://github.com/kubernetes/kubernetes/issues/103305) for more details.
+          nfsAttachRequired: true
+
+        # -- Enable discovery daemon
+        enableDiscoveryDaemon: false
+        # -- Set the discovery daemon device discovery interval (default to 60m)
+        discoveryDaemonInterval: 60m
+
+        # -- The timeout for ceph commands in seconds
+        cephCommandsTimeoutSeconds: "15"
+
+        # -- If true, run rook operator on the host network
+        useOperatorHostNetwork:
+
+        # -- If true, scale down the rook operator.
+        # This is useful for administrative actions where the rook operator must be scaled down, while using gitops style tooling
+        # to deploy your helm charts.
+        scaleDownOperator: false
+
+        ## Rook Discover configuration
+        ## toleration: NoSchedule, PreferNoSchedule or NoExecute
+        ## tolerationKey: Set this to the specific key of the taint to tolerate
+        ## tolerations: Array of tolerations in YAML format which will be added to agent deployment
+        ## nodeAffinity: Set to labels of the node to match
+
+        discover:
+          # -- Toleration for the discover pods.
+          # Options: `NoSchedule`, `PreferNoSchedule` or `NoExecute`
+          toleration: # -- The specific key of the taint to tolerate
+
+          tolerationKey: # -- Array of tolerations in YAML format which will be added to discover deployment
+
+          tolerations: #   - key: key
+
+          #     operator: Exists
+          #     effect: NoSchedule
+          # -- The node labels for affinity of `discover-agent` [^1]
+          nodeAffinity: #   key1=value1,value2; key2=value3
+
+          #
+          #   or
+          #
+          #   requiredDuringSchedulingIgnoredDuringExecution:
+          #     nodeSelectorTerms:
+          #       - matchExpressions:
+          #           - key: storage-node
+          #             operator: Exists
+          # -- Labels to add to the discover pods
+          podLabels:
+            # "key1=value1,key2=value2"
+            # -- Add resources to discover daemon pods
+
+          resources:
+            #   - limits:
+            #       memory: 512Mi
+            #   - requests:
+            #       cpu: 100m
+            #       memory: 128Mi
+
+            # -- Custom label to identify node hostname. If not set `kubernetes.io/hostname` will be used
+        customHostnameLabel:
+
+        # -- Runs Ceph Pods as privileged to be able to write to `hostPaths` in OpenShift with SELinux restrictions.
+        hostpathRequiresPrivileged: false
+
+        # -- Whether to create all Rook pods to run on the host network, for example in environments where a CNI is not enabled
+        enforceHostNetwork: false
+
+        # -- Disable automatic orchestration when new devices are discovered.
+        disableDeviceHotplug: false
+
+        # -- The revision history limit for all pods created by Rook. If blank, the K8s default is 10.
+        revisionHistoryLimit:
+
+        # -- Blacklist certain disks according to the regex provided.
+        discoverDaemonUdev:
+
+        # -- imagePullSecrets option allow to pull docker images from private docker registry. Option will be passed to all service accounts.
+        imagePullSecrets: # - name: my-registry-secret
+
+        # -- Whether the OBC provisioner should watch on the operator namespace or not, if not the namespace of the cluster will be used
+        enableOBCWatchOperatorNamespace: true
+
+        # -- Specify the prefix for the OBC provisioner in place of the cluster namespace
+        # @default -- `ceph cluster namespace`
+        obcProvisionerNamePrefix:
+
+        monitoring:
+          # -- Enable monitoring. Requires Prometheus to be pre-installed.
+          # Enabling will also create RBAC rules to allow Operator to create ServiceMonitors
+          enabled: false
+
+      rook-ceph-cluster:
+        # Default values for a single rook-ceph cluster
+        # This is a YAML-formatted file.
+        # Declare variables to be passed into your templates.
+
+        # -- Namespace of the main rook operator
+        operatorNamespace: rook-ceph
+
+        # -- The metadata.name of the CephCluster CR
+        # @default -- The same as the namespace
+        clusterName:
+
+        # -- Optional override of the target kubernetes version
+        kubeVersion: #  mon_allow_pool_delete = true
+
+        #  osd_pool_default_size = 3
+        #  osd_pool_default_min_size = 2
+
+        # Installs a debugging toolbox deployment
+        toolbox:
+          # -- Enable Ceph debugging pod deployment. See [toolbox](../Troubleshooting/ceph-toolbox.md)
+          enabled: true
+          # -- Toolbox image, defaults to the image used by the Ceph cluster
+          image:
+            #us-docker.pkg.dev/palette-images/packs/rook-ceph-helm/1.16.3/ceph/ceph:v19.2.0
+            # -- Toolbox tolerations
+
+          tolerations: []
+          # -- Toolbox affinity
+          affinity: {}
+          # -- Toolbox container security context
+          containerSecurityContext:
+            runAsNonRoot: true
+            runAsUser: 2016
+            runAsGroup: 2016
+            capabilities:
+              drop: [ "ALL" ]
+          # -- Toolbox resources
+          resources:
+            limits:
+              memory: "1Gi"
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+          # -- Set the priority class for the toolbox if desired
+          priorityClassName:
+
+
+        monitoring:
+          # -- Enable Prometheus integration, will also create necessary RBAC rules to allow Operator to create ServiceMonitors.
+          # Monitoring requires Prometheus to be pre-installed
+          enabled: false
+          # -- Whether to disable the metrics reported by Ceph. If false, the prometheus mgr module and Ceph exporter are enabled
+          metricsDisabled: false
+          # -- Whether to create the Prometheus rules for Ceph alerts
+          createPrometheusRules: false
+          # -- The namespace in which to create the prometheus rules, if different from the rook cluster namespace.
+          # If you have multiple rook-ceph clusters in the same k8s cluster, choose the same namespace (ideally, namespace with prometheus
+          # deployed) to set rulesNamespaceOverride for all the clusters. Otherwise, you will get duplicate alerts with multiple alert definitions.
+          rulesNamespaceOverride: # Monitoring settings for external clusters:
+
+          # externalMgrEndpoints: <list of endpoints>
+          # externalMgrPrometheusPort: <port>
+          # Scrape interval for prometheus
+          # interval: 10s
+          # allow adding custom labels and annotations to the prometheus rule
+          prometheusRule:
+            # -- Labels applied to PrometheusRule
+            labels: {}
+            # -- Annotations applied to PrometheusRule
+            annotations: {}
+
+        # -- Create & use PSP resources. Set this to the same value as the rook-ceph chart.
+        pspEnable: false
+
+        # imagePullSecrets option allow to pull docker images from private docker registry. Option will be passed to all service accounts.
+        # imagePullSecrets:
+        # - name: my-registry-secret
+
+        # All values below are taken from the CephCluster CRD
+        # -- Cluster configuration.
+        # @default -- See [below](#ceph-cluster-spec)
+        cephClusterSpec:
+          # This cluster spec example is for a converged cluster where all the Ceph daemons are running locally,
+          # as in the host-based example (cluster.yaml). For a different configuration such as a
+          # PVC-based cluster (cluster-on-pvc.yaml), external cluster (cluster-external.yaml),
+          # or stretch cluster (cluster-stretched.yaml), replace this entire `cephClusterSpec`
+          # with the specs from those examples.
+
+          # For more details, check https://rook.io/docs/rook/v1.10/CRDs/Cluster/ceph-cluster-crd/
+          cephVersion:
+            # The container image used to launch the Ceph daemon pods (mon, mgr, osd, mds, rgw).
+            # v18 is Reef, v19 is Squid
+            # RECOMMENDATION: In production, use a specific version tag instead of the general v18 flag, which pulls the latest release and could result in different
+            # versions running within the cluster. See tags available at https://hub.docker.com/r/ceph/ceph/tags/.
+            # If you want to be more precise, you can always use a timestamp tag such as quay.io/ceph/ceph:v19.2.0-20240927
+            # This tag might not contain a new Ceph version, just security fixes from the underlying operating system, which will reduce vulnerabilities
+            image: us-docker.pkg.dev/palette-images/packs/rook-ceph-helm/1.16.3/ceph/ceph:v19.2.0
+            # Whether to allow unsupported versions of Ceph. Currently Reef and Squid are supported.
+            # Future versions such as Tentacle (v20) would require this to be set to `true`.
+            # Do not set to true in production.
+            allowUnsupported: false
+
+          # The path on the host where configuration files will be persisted. Must be specified. If there are multiple clusters, the directory must be unique for each cluster.
+          # Important: if you reinstall the cluster, make sure you delete this directory from each host or else the mons will fail to start on the new cluster.
+          # In Minikube, the '/data' directory is configured to persist across reboots. Use "/data/rook" in Minikube environment.
+          dataDirHostPath: /var/lib/rook
+
+          # Whether or not upgrade should continue even if a check fails
+          # This means Ceph's status could be degraded and we don't recommend upgrading but you might decide otherwise
+          # Use at your OWN risk
+          # To understand Rook's upgrade process of Ceph, read https://rook.io/docs/rook/v1.10/Upgrade/ceph-upgrade/
+          skipUpgradeChecks: false
+
+          # Whether or not continue if PGs are not clean during an upgrade
+          continueUpgradeAfterChecksEvenIfNotHealthy: false
+
+          # WaitTimeoutForHealthyOSDInMinutes defines the time (in minutes) the operator would wait before an OSD can be stopped for upgrade or restart.
+          # If the timeout exceeds and OSD is not ok to stop, then the operator would skip upgrade for the current OSD and proceed with the next one
+          # if `continueUpgradeAfterChecksEvenIfNotHealthy` is `false`. If `continueUpgradeAfterChecksEvenIfNotHealthy` is `true`, then operator would
+          # continue with the upgrade of an OSD even if its not ok to stop after the timeout. This timeout won't be applied if `skipUpgradeChecks` is `true`.
+          # The default wait timeout is 10 minutes.
+          waitTimeoutForHealthyOSDInMinutes: 10
+
+          # Whether or not requires PGs are clean before an OSD upgrade. If set to `true` OSD upgrade process won't start until PGs are healthy.
+          # This configuration will be ignored if `skipUpgradeChecks` is `true`.
+          # Default is false.
+          upgradeOSDRequiresHealthyPGs: false
+
+          mon:
+            # Set the number of mons to be started. Generally recommended to be 3.
+            # For highest availability, an odd number of mons should be specified.
+            count: 1
+            # The mons should be on unique nodes. For production, at least 3 nodes are recommended for this reason.
+            # Mons should only be allowed on the same node for test environments where data loss is acceptable.
+            allowMultiplePerNode: true
+
+          mgr:
+            # When higher availability of the mgr is needed, increase the count to 2.
+            # In that case, one mgr will be active and one in standby. When Ceph updates which
+            # mgr is active, Rook will update the mgr services to match the active mgr.
+            modules:
+              # List of modules to optionally enable or disable.
+              # Note the "dashboard" and "monitoring" modules are already configured by other settings in the cluster CR.
+              # - name: rook
+              #   enabled: true
+
+              # enable the ceph dashboard for viewing cluster status
+            count: 1
+            allowMultiplePerNode: true
+          dashboard:
+            enabled: true
+            # serve the dashboard under a subpath (useful when you are accessing the dashboard via a reverse proxy)
+            # urlPrefix: /ceph-dashboard
+            # serve the dashboard at the given port.
+            # port: 8443
+            # Serve the dashboard using SSL (if using ingress to expose the dashboard and `ssl: true` you need to set
+            # the corresponding "backend protocol" annotation(s) for your ingress controller of choice)
+            ssl: true
+
+          # Network configuration, see: https://github.com/rook/rook/blob/master/Documentation/CRDs/Cluster/ceph-cluster-crd.md#network-configuration-settings
+          network:
+            connections:
+              # Whether to encrypt the data in transit across the wire to prevent eavesdropping the data on the network.
+              # The default is false. When encryption is enabled, all communication between clients and Ceph daemons, or between Ceph daemons will be encrypted.
+              # When encryption is not enabled, clients still establish a strong initial authentication and data integrity is still validated with a crc check.
+              # IMPORTANT: Encryption requires the 5.11 kernel for the latest nbd and cephfs drivers. Alternatively for testing only,
+              # you can set the "mounter: rbd-nbd" in the rbd storage class, or "mounter: fuse" in the cephfs storage class.
+              # The nbd and fuse drivers are *not* recommended in production since restarting the csi driver pod will disconnect the volumes.
+              encryption:
+                enabled: false
+              # Whether to compress the data in transit across the wire. The default is false.
+              # The kernel requirements above for encryption also apply to compression.
+              compression:
+                enabled: false
+              # Whether to require communication over msgr2. If true, the msgr v1 port (6789) will be disabled
+              # and clients will be required to connect to the Ceph cluster with the v2 port (3300).
+              # Requires a kernel that supports msgr v2 (kernel 5.11 or CentOS 8.4 or newer).
+              requireMsgr2: false
+          #   # enable host networking
+          #   provider: host
+          #   # EXPERIMENTAL: enable the Multus network provider
+          #   provider: multus
+          #   selectors:
+          #     # The selector keys are required to be `public` and `cluster`.
+          #     # Based on the configuration, the operator will do the following:
+          #     #   1. if only the `public` selector key is specified both public_network and cluster_network Ceph settings will listen on that interface
+          #     #   2. if both `public` and `cluster` selector keys are specified the first one will point to 'public_network' flag and the second one to 'cluster_network'
+          #     #
+          #     # In order to work, each selector value must match a NetworkAttachmentDefinition object in Multus
+          #     #
+          #     # public: public-conf --> NetworkAttachmentDefinition object name in Multus
+          #     # cluster: cluster-conf --> NetworkAttachmentDefinition object name in Multus
+          #   # Provide internet protocol version. IPv6, IPv4 or empty string are valid options. Empty string would mean IPv4
+          #   ipFamily: "IPv6"
+          #   # Ceph daemons to listen on both IPv4 and Ipv6 networks
+          #   dualStack: false
+
+          # enable the crash collector for ceph daemon crash collection
+          crashCollector:
+            disable: false
+            # Uncomment daysToRetain to prune ceph crash entries older than the
+            # specified number of days.
+            # daysToRetain: 30
+
+            # enable log collector, daemons will log on files and rotate
+          logCollector:
+            enabled: true
+            periodicity: daily # one of: hourly, daily, weekly, monthly
+            maxLogSize: 500M # SUFFIX may be 'M' or 'G'. Must be at least 1M.
+
+          # automate [data cleanup process](https://github.com/rook/rook/blob/master/Documentation/Storage-Configuration/ceph-teardown.md#delete-the-data-on-hosts) in cluster destruction.
+          cleanupPolicy:
+            # Since cluster cleanup is destructive to data, confirmation is required.
+            # To destroy all Rook data on hosts during uninstall, confirmation must be set to "yes-really-destroy-data".
+            # This value should only be set when the cluster is about to be deleted. After the confirmation is set,
+            # Rook will immediately stop configuring the cluster and only wait for the delete command.
+            # If the empty string is set, Rook will not destroy any data on hosts during uninstall.
+            confirmation: ""
+            # sanitizeDisks represents settings for sanitizing OSD disks on cluster deletion
+            sanitizeDisks:
+              # method indicates if the entire disk should be sanitized or simply ceph's metadata
+              # in both case, re-install is possible
+              # possible choices are 'complete' or 'quick' (default)
+              method: quick
+              # dataSource indicate where to get random bytes from to write on the disk
+              # possible choices are 'zero' (default) or 'random'
+              # using random sources will consume entropy from the system and will take much more time then the zero source
+              dataSource: zero
+              # iteration overwrite N times instead of the default (1)
+              # takes an integer value
+              iteration: 1
+            # allowUninstallWithVolumes defines how the uninstall should be performed
+            # If set to true, cephCluster deletion does not wait for the PVs to be deleted.
+            allowUninstallWithVolumes: false
+
+          # To control where various services will be scheduled by kubernetes, use the placement configuration sections below.
+          # The example under 'all' would have all services scheduled on kubernetes nodes labeled with 'role=storage-node' and
+          # tolerate taints with a key of 'storage-node'.
+          # placement:
+          #   all:
+          #     nodeAffinity:
+          #       requiredDuringSchedulingIgnoredDuringExecution:
+          #         nodeSelectorTerms:
+          #           - matchExpressions:
+          #             - key: role
+          #               operator: In
+          #               values:
+          #               - storage-node
+          #     podAffinity:
+          #     podAntiAffinity:
+          #     topologySpreadConstraints:
+          #     tolerations:
+          #     - key: storage-node
+          #       operator: Exists
+          #   # The above placement information can also be specified for mon, osd, and mgr components
+          #   mon:
+          #   # Monitor deployments may contain an anti-affinity rule for avoiding monitor
+          #   # collocation on the same node. This is a required rule when host network is used
+          #   # or when AllowMultiplePerNode is false. Otherwise this anti-affinity rule is a
+          #   # preferred rule with weight: 50.
+          #   osd:
+          #   mgr:
+          #   cleanup:
+
+          # annotations:
+          #   all:
+          #   mon:
+          #   osd:
+          #   cleanup:
+          #   prepareosd:
+          #   # If no mgr annotations are set, prometheus scrape annotations will be set by default.
+          #   mgr:
+          #   dashboard:
+
+          # labels:
+          #   all:
+          #   mon:
+          #   osd:
+          #   cleanup:
+          #   mgr:
+          #   prepareosd:
+          #   # monitoring is a list of key-value pairs. It is injected into all the monitoring resources created by operator.
+          #   # These labels can be passed as LabelSelector to Prometheus
+          #   monitoring:
+          #   dashboard:
+
+          resources:
+            mgr:
+              limits:
+                memory: "1Gi"
+              requests:
+                cpu: "500m"
+                memory: "512Mi"
+            mon:
+              limits:
+                memory: "2Gi"
+              requests:
+                cpu: "1000m"
+                memory: "1Gi"
+            osd:
+              limits:
+                memory: "4Gi"
+              requests:
+                cpu: "1000m"
+                memory: "4Gi"
+            prepareosd:
+              # limits: It is not recommended to set limits on the OSD prepare job
+              #         since it's a one-time burst for memory that must be allowed to
+              #         complete without an OOM kill.  Note however that if a k8s
+              #         limitRange guardrail is defined external to Rook, the lack of
+              #         a limit here may result in a sync failure, in which case a
+              #         limit should be added.  1200Mi may suffice for up to 15Ti
+              #         OSDs ; for larger devices 2Gi may be required.
+              #         cf. https://github.com/rook/rook/pull/11103
+              requests:
+                cpu: "500m"
+                memory: "50Mi"
+            mgr-sidecar:
+              limits:
+                memory: "100Mi"
+              requests:
+                cpu: "100m"
+                memory: "40Mi"
+            crashcollector:
+              limits:
+                memory: "60Mi"
+              requests:
+                cpu: "100m"
+                memory: "60Mi"
+            logcollector:
+              limits:
+                memory: "1Gi"
+              requests:
+                cpu: "100m"
+                memory: "100Mi"
+            cleanup:
+              limits:
+                memory: "1Gi"
+              requests:
+                cpu: "500m"
+                memory: "100Mi"
+            exporter:
+              limits:
+                memory: "128Mi"
+              requests:
+                cpu: "50m"
+                memory: "50Mi"
+
+          # The option to automatically remove OSDs that are out and are safe to destroy.
+          removeOSDsIfOutAndSafeToRemove: false
+
+          # priority classes to apply to ceph resources
+          priorityClassNames:
+            mon: system-node-critical
+            osd: system-node-critical
+            mgr: system-cluster-critical
+
+          storage:
+            # cluster level storage configuration and selection
+            useAllNodes: true
+            useAllDevices: true
+            # deviceFilter:
+            # config:
+            #   crushRoot: "custom-root" # specify a non-default root label for the CRUSH map
+            #   metadataDevice: "md0" # specify a non-rotational storage so ceph-volume will use it as block db device of bluestore.
+            #   databaseSizeMB: "1024" # uncomment if the disks are smaller than 100 GB
+            #   osdsPerDevice: "1" # this value can be overridden at the node or device level
+            #   encryptedDevice: "true" # the default value for this option is "false"
+            # # Individual nodes and their config can be specified as well, but 'useAllNodes' above must be set to false. Then, only the named
+            # # nodes below will be used as storage resources. Each node's 'name' field should match their 'kubernetes.io/hostname' label.
+            # nodes:
+            #   - name: "172.17.4.201"
+            #     devices: # specific devices to use for storage can be specified for each node
+            #       - name: "sdb"
+            #       - name: "nvme01" # multiple osds can be created on high performance devices
+            #         config:
+            #           osdsPerDevice: "5"
+            #       - name: "/dev/disk/by-id/ata-ST4000DM004-XXXX" # devices can be specified using full udev paths
+            #     config: # configuration can be specified at the node level which overrides the cluster level config
+            #   - name: "172.17.4.301"
+            #     deviceFilter: "^sd."
+
+            # The section for configuring management of daemon disruptions during upgrade or fencing.
+          disruptionManagement:
+            # If true, the operator will create and manage PodDisruptionBudgets for OSD, Mon, RGW, and MDS daemons. OSD PDBs are managed dynamically
+            # via the strategy outlined in the [design](https://github.com/rook/rook/blob/master/design/ceph/ceph-managed-disruptionbudgets.md). The operator will
+            # block eviction of OSDs by default and unblock them safely when drains are detected.
+            managePodBudgets: true
+            # A duration in minutes that determines how long an entire failureDomain like `region/zone/host` will be held in `noout` (in addition to the
+            # default DOWN/OUT interval) when it is draining. This is only relevant when  `managePodBudgets` is `true`. The default value is `30` minutes.
+            osdMaintenanceTimeout: 30
+            # A duration in minutes that the operator will wait for the placement groups to become healthy (active+clean) after a drain was completed and OSDs came back up.
+            # Operator will continue with the next drain if the timeout exceeds. It only works if `managePodBudgets` is `true`.
+            # No values or 0 means that the operator will wait until the placement groups are healthy before unblocking the next drain.
+            pgHealthCheckTimeout: 0
+
+          # Configure the healthcheck and liveness probes for ceph pods.
+          # Valid values for daemons are 'mon', 'osd', 'status'
+          healthCheck:
+            daemonHealth:
+              mon:
+                disabled: false
+                interval: 45s
+              osd:
+                disabled: false
+                interval: 60s
+              status:
+                disabled: false
+                interval: 60s
+            # Change pod liveness probe, it works for all mon, mgr, and osd pods.
+            livenessProbe:
+              mon:
+                disabled: false
+              mgr:
+                disabled: false
+              osd:
+                disabled: false
+
+        ingress:
+          # -- Enable an ingress for the ceph-dashboard
+          dashboard: {}
+            # annotations:
+            #   external-dns.alpha.kubernetes.io/hostname: dashboard.example.com
+            #   nginx.ingress.kubernetes.io/rewrite-target: /ceph-dashboard/$2
+            # If the dashboard has ssl: true the following will make sure the NGINX Ingress controller can expose the dashboard correctly
+            #   nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+            #   nginx.ingress.kubernetes.io/server-snippet: |
+            #     proxy_ssl_verify off;
+            # host:
+            #   name: dashboard.example.com
+            #   path: "/ceph-dashboard(/|$)(.*)"
+            # tls:
+            # - hosts:
+            #     - dashboard.example.com
+            #   secretName: testsecret-tls
+            ## Note: Only one of ingress class annotation or the `ingressClassName:` can be used at a time
+            ## to set the ingress class
+            # ingressClassName: nginx
+
+        # -- A list of CephBlockPool configurations to deploy
+        # @default -- See [below](#ceph-block-pools)
+        cephBlockPools:
+          - name: ceph-blockpool
+            # see https://github.com/rook/rook/blob/master/Documentation/CRDs/Block-Storage/ceph-block-pool-crd.md#spec for available configuration
+            spec:
+              failureDomain: host
+              replicated:
+                size: 1
+              # Enables collecting RBD per-image IO statistics by enabling dynamic OSD performance counters. Defaults to false.
+              # For reference: https://docs.ceph.com/docs/latest/mgr/prometheus/#rbd-io-statistics
+              # enableRBDStats: true
+            storageClass:
+              enabled: true
+              name: ceph-block
+              annotations: {}
+              labels: {}
+              isDefault: false
+              reclaimPolicy: Delete
+              allowVolumeExpansion: true
+              volumeBindingMode: "Immediate"
+              mountOptions: []
+              # see https://kubernetes.io/docs/concepts/storage/storage-classes/#allowed-topologies
+              allowedTopologies: []
+              #        - matchLabelExpressions:
+              #            - key: rook-ceph-role
+              #              values:
+              #                - storage-node
+              # see https://github.com/rook/rook/blob/master/Documentation/Storage-Configuration/Block-Storage-RBD/block-storage.md#provision-storage for available configuration
+              parameters:
+                # (optional) mapOptions is a comma-separated list of map options.
+                # For krbd options refer
+                # https://docs.ceph.com/docs/latest/man/8/rbd/#kernel-rbd-krbd-options
+                # For nbd options refer
+                # https://docs.ceph.com/docs/latest/man/8/rbd-nbd/#options
+                # mapOptions: lock_on_read,queue_depth=1024
+
+                # (optional) unmapOptions is a comma-separated list of unmap options.
+                # For krbd options refer
+                # https://docs.ceph.com/docs/latest/man/8/rbd/#kernel-rbd-krbd-options
+                # For nbd options refer
+                # https://docs.ceph.com/docs/latest/man/8/rbd-nbd/#options
+                # unmapOptions: force
+
+                # RBD image format. Defaults to "2".
+                imageFormat: "2"
+
+                # RBD image features, equivalent to OR'd bitfield value: 63
+                # Available for imageFormat: "2". Older releases of CSI RBD
+                # support only the `layering` feature. The Linux kernel (KRBD) supports the
+                # full feature complement as of 5.4
+                imageFeatures: layering
+
+                # These secrets contain Ceph admin credentials.
+                csi.storage.k8s.io/provisioner-secret-name: rook-csi-rbd-provisioner
+                csi.storage.k8s.io/provisioner-secret-namespace: "{{ .Release.Namespace }}"
+                csi.storage.k8s.io/controller-expand-secret-name: rook-csi-rbd-provisioner
+                csi.storage.k8s.io/controller-expand-secret-namespace: "{{ .Release.Namespace }}"
+                csi.storage.k8s.io/node-stage-secret-name: rook-csi-rbd-node
+                csi.storage.k8s.io/node-stage-secret-namespace: "{{ .Release.Namespace }}"
+                # Specify the filesystem type of the volume. If not specified, csi-provisioner
+                # will set default as `ext4`. Note that `xfs` is not recommended due to potential deadlock
+                # in hyperconverged settings where the volume is mounted on the same node as the osds.
+                csi.storage.k8s.io/fstype: ext4
+
+        # -- A list of CephFileSystem configurations to deploy
+        # @default -- See [below](#ceph-file-systems)
+        cephFileSystems:
+          - name: ceph-filesystem
+            # see https://github.com/rook/rook/blob/master/Documentation/CRDs/Shared-Filesystem/ceph-filesystem-crd.md#filesystem-settings for available configuration
+            spec:
+              metadataPool:
+                replicated:
+                  size: 1
+              dataPools:
+                - failureDomain: host
+                  replicated:
+                    size: 1
+                  # Optional and highly recommended, 'data0' by default, see https://github.com/rook/rook/blob/master/Documentation/CRDs/Shared-Filesystem/ceph-filesystem-crd.md#pools
+                  name: data0
+              metadataServer:
+                activeCount: 1
+                activeStandby: true
+                resources:
+                  limits:
+                    memory: "4Gi"
+                  requests:
+                    cpu: "1000m"
+                    memory: "4Gi"
+                priorityClassName: system-cluster-critical
+            storageClass:
+              enabled: true
+              isDefault: true
+              annotations: {}
+              labels: {}
+              name: ceph-filesystem
+              # (Optional) specify a data pool to use, must be the name of one of the data pools above, 'data0' by default
+              pool: data0
+              reclaimPolicy: Delete
+              allowVolumeExpansion: true
+              volumeBindingMode: "Immediate"
+              mountOptions: []
+              # see https://github.com/rook/rook/blob/master/Documentation/Storage-Configuration/Shared-Filesystem-CephFS/filesystem-storage.md#provision-storage for available configuration
+              parameters:
+                # The secrets contain Ceph admin credentials.
+                csi.storage.k8s.io/provisioner-secret-name: rook-csi-cephfs-provisioner
+                csi.storage.k8s.io/provisioner-secret-namespace: "{{ .Release.Namespace }}"
+                csi.storage.k8s.io/controller-expand-secret-name: rook-csi-cephfs-provisioner
+                csi.storage.k8s.io/controller-expand-secret-namespace: "{{ .Release.Namespace }}"
+                csi.storage.k8s.io/node-stage-secret-name: rook-csi-cephfs-node
+                csi.storage.k8s.io/node-stage-secret-namespace: "{{ .Release.Namespace }}"
+                # Specify the filesystem type of the volume. If not specified, csi-provisioner
+                # will set default as `ext4`. Note that `xfs` is not recommended due to potential deadlock
+                # in hyperconverged settings where the volume is mounted on the same node as the osds.
+                csi.storage.k8s.io/fstype: ext4
+
+        # -- Settings for the filesystem snapshot class
+        # @default -- See [CephFS Snapshots](../Storage-Configuration/Ceph-CSI/ceph-csi-snapshot.md#cephfs-snapshots)
+        cephFileSystemVolumeSnapshotClass:
+          enabled: false
+          name: ceph-filesystem
+          isDefault: true
+          deletionPolicy: Delete
+          annotations: {}
+          labels: {}
+          # see https://rook.io/docs/rook/v1.10/Storage-Configuration/Ceph-CSI/ceph-csi-snapshot/#cephfs-snapshots for available configuration
+          parameters: {}
+
+        # -- Settings for the block pool snapshot class
+        # @default -- See [RBD Snapshots](../Storage-Configuration/Ceph-CSI/ceph-csi-snapshot.md#rbd-snapshots)
+        cephBlockPoolsVolumeSnapshotClass:
+          enabled: false
+          name: ceph-block
+          isDefault: false
+          deletionPolicy: Delete
+          annotations: {}
+          labels: {}
+          # see https://rook.io/docs/rook/v1.10/Storage-Configuration/Ceph-CSI/ceph-csi-snapshot/#rbd-snapshots for available configuration
+          parameters: {}
+
+        # -- A list of CephObjectStore configurations to deploy
+        # @default -- See [below](#ceph-object-stores)
+        cephObjectStores:
+          - name: ceph-objectstore
+            # see https://github.com/rook/rook/blob/master/Documentation/CRDs/Object-Storage/ceph-object-store-crd.md#object-store-settings for available configuration
+            spec:
+              metadataPool:
+                failureDomain: host
+                replicated:
+                  size: 1
+              dataPool:
+                failureDomain: host
+                erasureCoded:
+                  dataChunks: 2
+                  codingChunks: 1
+                parameters:
+                  bulk: "true"
+              preservePoolsOnDelete: true
+              gateway:
+                port: 80
+                resources:
+                  limits:
+                    memory: "2Gi"
+                  requests:
+                    cpu: "1000m"
+                    memory: "1Gi"
+                # securePort: 443
+                # sslCertificateRef:
+                instances: 1
+                priorityClassName: system-cluster-critical
+                # opsLogSidecar:
+                #   resources:
+                #     limits:
+                #       memory: "100Mi"
+                #     requests:
+                #       cpu: "100m"
+                #       memory: "40Mi"
+            storageClass:
+              enabled: true
+              name: ceph-bucket
+              reclaimPolicy: Delete
+              volumeBindingMode: "Immediate"
+              annotations: {}
+              labels: {}
+              # see https://github.com/rook/rook/blob/master/Documentation/Storage-Configuration/Object-Storage-RGW/ceph-object-bucket-claim.md#storageclass for available configuration
+              parameters:
+                # note: objectStoreNamespace and objectStoreName are configured by the chart
+                region: us-east-1
+            ingress:
+              # Enable an ingress for the ceph-objectstore
+              enabled: false
+              # annotations: {}
+              # host:
+              #   name: objectstore.example.com
+              #   path: /
+              # tls:
+              # - hosts:
+              #     - objectstore.example.com
+              #   secretName: ceph-objectstore-tls
+              # ingressClassName: nginx
+              ## cephECBlockPools are disabled by default, please remove the comments and set desired values to enable it
+              ## For erasure coded a replicated metadata pool is required.
+              ## https://rook.io/docs/rook/latest/CRDs/Shared-Filesystem/ceph-filesystem-crd/#erasure-coded
+              #cephECBlockPools:
+              #  - name: ec-pool
+              #    spec:
+              #      metadataPool:
+              #        replicated:
+              #          size: 2
+              #      dataPool:
+              #        failureDomain: osd
+              #        erasureCoded:
+              #          dataChunks: 2
+              #          codingChunks: 1
+              #        deviceClass: hdd
+              #
+              #    parameters:
+              #      # clusterID is the namespace where the rook cluster is running
+              #      # If you change this namespace, also change the namespace below where the secret namespaces are defined
+              #      clusterID: rook-ceph # namespace:cluster
+              #      # (optional) mapOptions is a comma-separated list of map options.
+              #      # For krbd options refer
+              #      # https://docs.ceph.com/docs/latest/man/8/rbd/#kernel-rbd-krbd-options
+              #      # For nbd options refer
+              #      # https://docs.ceph.com/docs/latest/man/8/rbd-nbd/#options
+              #      # mapOptions: lock_on_read,queue_depth=1024
+              #
+              #      # (optional) unmapOptions is a comma-separated list of unmap options.
+              #      # For krbd options refer
+              #      # https://docs.ceph.com/docs/latest/man/8/rbd/#kernel-rbd-krbd-options
+              #      # For nbd options refer
+              #      # https://docs.ceph.com/docs/latest/man/8/rbd-nbd/#options
+              #      # unmapOptions: force
+              #
+              #      # RBD image format. Defaults to "2".
+              #      imageFormat: "2"
+              #
+              #      # RBD image features, equivalent to OR'd bitfield value: 63
+              #      # Available for imageFormat: "2". Older releases of CSI RBD
+              #      # support only the `layering` feature. The Linux kernel (KRBD) supports the
+              #      # full feature complement as of 5.4
+              #      # imageFeatures: layering,fast-diff,object-map,deep-flatten,exclusive-lock
+              #      imageFeatures: layering
+              #
+              #    storageClass:
+              #      provisioner: rook-ceph.rbd.csi.ceph.com # csi-provisioner-name
+              #      enabled: true
+              #      name: rook-ceph-block
+              #      isDefault: false
+              #      annotations: { }
+              #      labels: { }
+              #      allowVolumeExpansion: true
+              #      reclaimPolicy: Delete
+
+              # -- CSI driver name prefix for cephfs, rbd and nfs.
+              # @default -- `namespace name where rook-ceph operator is deployed`
+        csiDriverNamePrefix:
+        configOverride: |
+          [global]
+          osd_pool_default_size = 1
+          mon_warn_on_pool_no_redundancy = false
+          bdev_flock_retry = 20
+          bluefs_buffered_io = false
+          mon_data_avail_warn = 10
+    ```
 
 Select **Confirm** once all the infrastructure layers of your cluster profile are complete.
 
@@ -240,675 +1778,675 @@ Set the **Install Order** value to `10`. Packs that depend on this pack will hav
 
 Select the **Values** icon, remove all configurations in the manifest editor, and paste in the configuration below.
 
-```yaml
-pack:
-  content:
-    images:
-      - image: us-docker.pkg.dev/palette-images/palette/spectro-vm-dashboard:4.6.3
-      - image: us-docker.pkg.dev/palette-images/third-party/kubevirt-ui:v19
-      - image: us-docker.pkg.dev/palette-images/palette/kubevirt/virt-operator:v1.4.0
-      - image: registry.k8s.io/sig-storage/snapshot-validation-webhook:v8.1.0
-      - image: registry.k8s.io/sig-storage/snapshot-controller:v8.1.0
-      - image: registry.k8s.io/descheduler/descheduler:v0.32.0
-      - image: ghcr.io/k8snetworkplumbingwg/multus-cni:v4.1.4-thick
-      - image: ghcr.io/k8snetworkplumbingwg/multus-dynamic-networks-controller:latest-amd64
-      - image: quay.io/kubevirt/cdi-operator:v1.61.0
-      - image: quay.io/kubevirt/cdi-uploadproxy:v1.61.0
-      - image: quay.io/kubevirt/cdi-controller:v1.61.0
-      - image: quay.io/kubevirt/cdi-apiserver:v1.61.0
-      - image: quay.io/kubevirt/cdi-importer:v1.61.0
-      - image: quay.io/kubevirt/cdi-uploadserver:v1.61.0
-      - image: quay.io/kubevirt/cdi-cloner:v1.61.0
-      - image: us-docker.pkg.dev/palette-images/palette/kubevirt/virt-handler:v1.4.0
-      - image: us-docker.pkg.dev/palette-images/palette/kubevirt/virt-launcher:v1.4.0
-      - image: us-docker.pkg.dev/palette-images/palette/kubevirt/virt-exportproxy:v1.4.0
-      - image: us-docker.pkg.dev/palette-images/palette/kubevirt/virt-exportserver:v1.4.0
-      - image: us-docker.pkg.dev/palette-images/palette/kubevirt/virt-controller:v1.4.0
-      - image: us-docker.pkg.dev/palette-images/palette/kubevirt/virt-api:v1.4.0
-      - image: us-docker.pkg.dev/palette-images/palette/virtual-machine-orchestrator/os/ubuntu-container-disk:22.04
-      - image: us-docker.pkg.dev/palette-images/palette/virtual-machine-orchestrator/os/fedora-container-disk:37
-      - image: us-docker.pkg.dev/palette-images/palette/virtual-machine-orchestrator/vlan-filtering/ubuntu:latest
-      - image: us-docker.pkg.dev/palette-images/palette/spectro-cleanup:1.0.3
-      - image: us-docker.pkg.dev/palette-images/palette/spectro-kubectl:v1.31.5-vmo
-  namespace: vm-dashboard
-  palette:
-    config:
-      dashboard:
-        access: private
-  spectrocloud.com/install-priority: "10"
-charts:
-  virtual-machine-orchestrator:
-    image:
-      repository: us-docker.pkg.dev/palette-images/palette/spectro-vm-dashboard
-      tag: "4.6.3"
-    service:
-      type: "ClusterIP"
-    appConfig:
-      clusterInfo:
-        consoleBaseAddress: ""
-    fullnameOverride: "virtual-machine-orchestrator"
-    serviceAccount:
-      # Specifies whether a service account should be created
-      create: true
-      # Annotations to add to the service account
-      annotations: {}
-      # The name of the service account to use.
-      # If not set and create is true, a name is generated using the fullname template
-      name: "virtual-machine-orchestrator"
-    sampleTemplates:
-      fedora37: false
-      ubuntu2204: false
-      ubuntu2204WithVol: false
-      ubuntu2204staticIP: false
-      fedora37staticIP: false
-      # To create additional vm templates refer to https://docs.spectrocloud.com/vm-management/create-manage-vm/create-vm-template
-    # This namespace used to store golden images.
-
-    goldenImagesNamespace: "vmo-golden-images"
-    # These namespaces are created and set up to deploy VMs into
-    vmEnabledNamespaces:
-      - "default"
-      - "virtual-machines"
-      - ns-adv
-      - ns-edge
-      - ns-product
-      - ns-packs
-    grafana:
-      namespace: monitoring
-    vlanFiltering:
-      enabled: true
-      namespace: kube-system
-      image:
-        repository: us-docker.pkg.dev/palette-images/palette/virtual-machine-orchestrator/vlan-filtering/ubuntu
-        pullPolicy: IfNotPresent
-        tag: "latest"
-      env:
-        # Which bridge interface to control
-        bridgeIF: "br0"
-        # Beginning of VLAN range to enable
-        allowedVlans: "1"
-        # Set to "true" to enable VLANs on the br0 interface for the host to use itself
-        allowVlansOnSelf: "true"
-        # Beginning of VLAN range to enable for use by the node itself
-        allowedVlansOnSelf: "1"
-    snapshot-controller:
-      enabled: true
-      replicas: 1
-      # controller image and policies
-      image:
-        repository: registry.k8s.io/sig-storage/snapshot-controller
-        pullPolicy: IfNotPresent
-        tag: "v8.1.0"
-      # A list/array of extra args to use
-      # when running the controller. Default args include log verbose level
-      # and leader election
-      extraArgs: []
-      # snapshot webhook config
-      webhook:
-        # all below values take effect only if webhook is enabled
-        enabled: true
-        # webhook controller image and policies
+    ```yaml
+    pack:
+      content:
+        images:
+          - image: us-docker.pkg.dev/palette-images/palette/spectro-vm-dashboard:4.6.3
+          - image: us-docker.pkg.dev/palette-images/third-party/kubevirt-ui:v19
+          - image: us-docker.pkg.dev/palette-images/palette/kubevirt/virt-operator:v1.4.0
+          - image: registry.k8s.io/sig-storage/snapshot-validation-webhook:v8.1.0
+          - image: registry.k8s.io/sig-storage/snapshot-controller:v8.1.0
+          - image: registry.k8s.io/descheduler/descheduler:v0.32.0
+          - image: ghcr.io/k8snetworkplumbingwg/multus-cni:v4.1.4-thick
+          - image: ghcr.io/k8snetworkplumbingwg/multus-dynamic-networks-controller:latest-amd64
+          - image: quay.io/kubevirt/cdi-operator:v1.61.0
+          - image: quay.io/kubevirt/cdi-uploadproxy:v1.61.0
+          - image: quay.io/kubevirt/cdi-controller:v1.61.0
+          - image: quay.io/kubevirt/cdi-apiserver:v1.61.0
+          - image: quay.io/kubevirt/cdi-importer:v1.61.0
+          - image: quay.io/kubevirt/cdi-uploadserver:v1.61.0
+          - image: quay.io/kubevirt/cdi-cloner:v1.61.0
+          - image: us-docker.pkg.dev/palette-images/palette/kubevirt/virt-handler:v1.4.0
+          - image: us-docker.pkg.dev/palette-images/palette/kubevirt/virt-launcher:v1.4.0
+          - image: us-docker.pkg.dev/palette-images/palette/kubevirt/virt-exportproxy:v1.4.0
+          - image: us-docker.pkg.dev/palette-images/palette/kubevirt/virt-exportserver:v1.4.0
+          - image: us-docker.pkg.dev/palette-images/palette/kubevirt/virt-controller:v1.4.0
+          - image: us-docker.pkg.dev/palette-images/palette/kubevirt/virt-api:v1.4.0
+          - image: us-docker.pkg.dev/palette-images/palette/virtual-machine-orchestrator/os/ubuntu-container-disk:22.04
+          - image: us-docker.pkg.dev/palette-images/palette/virtual-machine-orchestrator/os/fedora-container-disk:37
+          - image: us-docker.pkg.dev/palette-images/palette/virtual-machine-orchestrator/vlan-filtering/ubuntu:latest
+          - image: us-docker.pkg.dev/palette-images/palette/spectro-cleanup:1.0.3
+          - image: us-docker.pkg.dev/palette-images/palette/spectro-kubectl:v1.31.5-vmo
+      namespace: vm-dashboard
+      palette:
+        config:
+          dashboard:
+            access: private
+      spectrocloud.com/install-priority: "10"
+    charts:
+      virtual-machine-orchestrator:
         image:
-          # change the image if you wish to use your own custom validation server image
-          repository: registry.k8s.io/sig-storage/snapshot-validation-webhook
-          pullPolicy: IfNotPresent
-          # Overrides the image tag whose default is the chart appVersion.
-          tag: "v8.1.0"
-        validatingWebhook:
-          failurePolicy: Fail
-          timeoutSeconds: 2
-        # Validating webhook is exposed on an HTTPS endpoint, and so
-        # TLS certificate is required. This Helm chart relies on
-        # cert-manager.io for managing TLS certificates.
-        tls:
-          # If not empty, this issuer is used to sign the certificate.
-          # If none is provided, a new, self-signing issuer is created.
-          issuerRef: {}
-          # name: <ISSUER NAME>
-          # kind: <ClusterIssuer|Issuer>
-          # group: cert-manager.io
-
-          # Certificate duration. The generated certificate is automatically
-          # renewed 1/3 of `certDuration` before its expiry.
-          # Value must be in units accepted by Go time.ParseDuration.
-          # See https://golang.org/pkg/time/#ParseDuration for allowed formats.
-          # Minimum accepted duration is `1h`.
-          # This option may be ignored/overridden by some issuer types.
-          certDuration: 8760h
+          repository: us-docker.pkg.dev/palette-images/palette/spectro-vm-dashboard
+          tag: "4.6.3"
         service:
-          type: ClusterIP
-          port: 443
+          type: "ClusterIP"
+        appConfig:
+          clusterInfo:
+            consoleBaseAddress: ""
+        fullnameOverride: "virtual-machine-orchestrator"
         serviceAccount:
-          # Specifies whether a service account should be created.
+          # Specifies whether a service account should be created
           create: true
-          # Annotations to add to the service account.
+          # Annotations to add to the service account
           annotations: {}
           # The name of the service account to use.
-          # If not set and create is true, a name is generated using the fullname template.
-          name: ""
-        # Log verbosity level.
-        # See https://github.com/kubernetes/community/blob/master/contributors/devel/sig-instrumentation/logging.md
-        # for description of individual verbosity levels.
-        logVerbosityLevel: 2
-        podAnnotations: {}
-        resources: {}
-        nodeSelector: {}
-        tolerations: []
-        affinity: {}
-        nameOverride: ""
-        fullnameOverride: ""
-      imagePullSecrets: []
-      nameOverride: ""
-      fullnameOverride: ""
-      resources: {}
-      # We usually recommend not to specify default resources and to leave this as a conscious
-      # choice for the user. This also increases chances charts run on environments with little
-      # resources, such as Minikube. If you do want to specify resources, uncomment the following
-      # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-      # limits:
-      #   cpu: 100m
-      #   memory: 128Mi
-      # requests:
-      #   cpu: 100m
-      #   memory: 128Mi
+          # If not set and create is true, a name is generated using the fullname template
+          name: "virtual-machine-orchestrator"
+        sampleTemplates:
+          fedora37: false
+          ubuntu2204: false
+          ubuntu2204WithVol: false
+          ubuntu2204staticIP: false
+          fedora37staticIP: false
+          # To create additional vm templates refer to https://docs.spectrocloud.com/vm-management/create-manage-vm/create-vm-template
+        # This namespace used to store golden images.
 
-      nodeSelector: {}
-      tolerations: []
-      affinity: {}
-      # create a default volume snapshot class
-      volumeSnapshotClass:
-        create: true
-        name: "ceph-block-snapshot-class"
-        driver: "rook-ceph.rbd.csi.ceph.com"
-        # deletionPolicy determines whether a VolumeSnapshotContent created through
-        # the VolumeSnapshotClass should be deleted when its bound VolumeSnapshot is deleted.
-        # Supported values are "Retain" and "Delete".
-        deletionPolicy: "Delete"
-        # params is a key-value map with storage driver specific parameters for creating snapshots.
-        params:
-          clusterID: rook-ceph
-          csi.storage.k8s.io/snapshotter-secret-name: csi-rbd-secret
-          csi.storage.k8s.io/snapshotter-secret-namespace: rook-ceph
-        # key-value pair of extra labels to apply to the volumesnapshotclass
-        extraLabels:
-          velero.io/csi-volumesnapshot-class: "true"
-      # time for sleep hook in seconds
-      hooksleepTime: 12
-    kubevirt:
-      enabled: true
-      # defaults to kubevirt
-      namespace: kubevirt
-      namespaceLabels:
-        pod-security.kubernetes.io/enforce: privileged
-        pod-security.kubernetes.io/enforce-version: v{{ .spectro.system.kubernetes.version | substr 0 4 }}
-      replicas: 1
-      service:
-        type: LoadBalancer
-        port: 443
-        targetPort: 8443
-      image:
-        repository: us-docker.pkg.dev/palette-images/palette/kubevirt/virt-operator
-        pullPolicy: IfNotPresent
-        # Overrides the image tag whose default is the chart appVersion.
-        tag: "v1.4.0"
-      ## The Kubevirt CR that gets created
-      kubevirtResource:
-        name: kubevirt
-        useEmulation: false
-        # below gates are required for virtual machine orchestrator pack, users can append additional gates
-        additionalFeatureGates:
-          - LiveMigration
-          - HotplugVolumes
-          - Snapshot
-          - VMExport
-          - ExpandDisks
-          - HotplugNICs
-          - VMLiveUpdateFeatures
-          - VMPersistentState
-          - VolumesUpdateStrategy
-          - VolumeMigration
-          - CPUManager
-          - Sidecar
-        #- VMPersistentState
-        # for additional feature gates refer to https://docs.spectrocloud.com/vm-management#featuregates
-        config:
-          evictionStrategy: "LiveMigrate"
-          # additionalConfig lets you define any configuration other than developerConfiguration and evictionStrategy
-          additionalConfig:
-            vmStateStorageClass: "ceph-filesystem"
-            #vmStateStorageClass: "" #fileSystem-based storageclass for persistent TPM
-            migrations:
-              allowAutoConverge: true
-              completionTimeoutPerGiB: 800
-          # additionalDevConfig lets you define dev config other than emulation and feature gate
-          additionalDevConfig: {}
-          # vmRolloutStrategy lets you define how changes to a VM object propagate to its VMI objects
-          vmRolloutStrategy: LiveUpdate
-        certificateRotateStrategy: {}
-        customizeComponents:
-        # flags:
-        #   api:
-        #     v:
-        #       "5"
-        #     port:
-        #       "8443"
-        imagePullPolicy: IfNotPresent
-        infra: {}
-        # The name of the Prometheus service account that needs read-access to KubeVirt endpoints
-        monitorAccount: "prometheus-operator-prometheus"
-        # The namespace Prometheus is deployed in
-        monitorNamespace: "monitoring"
-        # The namespace the service monitor is deployed to. Either specify this or the monitorNamespace
-        serviceMonitorNamespace: "monitoring"
-        workloads: {}
-        workloadsUpdateStrategy:
-          workloadUpdateMethods:
-            - LiveMigrate
-        # uninstallStrategy to use, options are RemoveWorkloads, BlockUninstallIfWorkloadsExist
-        uninstallStrategy: ""
-      ingress:
-        enabled: false
-        ingressClassName: nginx
-        annotations:
-          cert-manager.io/issuer: kubevirt-selfsigned-issuer
-          nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-        labels: {}
-        hosts:
-          - host: virt-exportproxy.maas.sc
-            paths:
-              - path: /
-                pathType: ImplementationSpecific
-                # tls:
-                #   - secretName: chart-example-tls
-                #     hosts:
-                #       - virt-exportproxy.maas.sc
-    cdi:
-      enabled: true
-      namespaceLabels:
-        pod-security.kubernetes.io/enforce: privileged
-        pod-security.kubernetes.io/enforce-version: v{{ .spectro.system.kubernetes.version | substr 0 4 }}
-      replicas: 1
-      image:
-        repository: quay.io/kubevirt/cdi-operator
-        pullPolicy: IfNotPresent
-        # Overrides the image tag whose default is the chart appVersion.
-        tag: "v1.61.0"
-      # set enabled to true and add private registry details to bring up VMs in airgap environment
-      privateRegistry:
-        enabled: false
-        registryIP: #Ex: 10.10.225.20
-        registryBasePath:
-        #Ex: specto-images
-      serviceAccount:
-        # Specifies whether a service account should be created
-        create: true
-        # Annotations to add to the service account
-        annotations: {}
-        # The name of the service account to use.
-        # If not set and create is true, a name is generated using the fullname template
-        name: ""
-      service:
-        type: LoadBalancer
-        port: 443
-        targetPort: 8443
-      ingress:
-        enabled: false
-        className: "nginx"
-        annotations:
-          cert-manager.io/issuer: cdi-selfsigned-issuer
-          nginx.ingress.kubernetes.io/proxy-body-size: "0"
-          nginx.ingress.kubernetes.io/proxy-read-timeout: "600"
-          nginx.ingress.kubernetes.io/proxy-send-timeout: "600"
-          nginx.ingress.kubernetes.io/proxy-request-buffering: "off"
-          nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-        hosts:
-          - host: cdi-uploadproxy.maas.sc
-            paths:
-              - path: /
-                pathType: ImplementationSpecific
-        tls: []
-        #  - secretName: chart-example-tls
-        #    hosts:
-        #      - cdi-uploadproxy.maas.sc
-      resources: {}
-      # We usually recommend not to specify default resources and to leave this as a conscious
-      # choice for the user. This also increases chances charts run on environments with little
-      # resources, such as Minikube. If you do want to specify resources, uncomment the following
-      # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-      # limits:
-      #   cpu: 100m
-      #   memory: 128Mi
-      # requests:
-      #   cpu: 100m
-      #   memory: 128Mi
-
-      ## The CDI CR that gets created
-      cdiResource:
-        additionalFeatureGates: # - FeatureName
-        additionalConfig:
-          filesystemOverhead:
-            global: "0.08"
-            storageClass:
-              spectro-storage-class: "0.08"
-          podResourceRequirements:
-            requests:
-              cpu: 250m
-              memory: 1G
-            limits:
-              cpu: 1
-              memory: 8G
-          insecureRegistries: [] # List of insecure registries to allow in the CDI importer, preffered in air-gapped environments
-          importProxy:
-          #HTTPProxy: "http://username:password@your-proxy-server:3128"
-          #HTTPSProxy: "http://username:password@your-proxy-server:3128"
-          #noProxy: "127.0.0.1,localhost,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,.company.local"
-          #TrustedCAProxy: configmap-name # optional: the ConfigMap name of an user-provided trusted certificate authority (CA) bundle to be added to the importer pod CA bundle
-        additionalSpec:
-          infra:
-            nodeSelector:
-              kubernetes.io/os: linux
-            tolerations:
-              - key: CriticalAddonsOnly
-                operator: Exists
-          workload:
-            nodeSelector:
-              kubernetes.io/os: linux
-          imagePullPolicy: IfNotPresent
-    multus:
-      enabled: true
-      image:
-        repository: ghcr.io/k8snetworkplumbingwg/multus-cni
-        pullPolicy: IfNotPresent
-        # Overrides the image tag whose default is the chart appVersion.
-        tag: "v4.1.4-thick"
-      networkController:
-        criSocket:
-          enableK3SHostPath: false # true for K3S and RKE2, false for PXK-E
-          paletteAgentMode: false # true for running Palette Agent Mode clusters with PXK-E
-          # criSocketHostPathOverride: /run/containerd/containerd.sock
-      imagePullSecrets: []
-      podAnnotations: {}
-      resources:
-        # We usually recommend not to specify default resources and to leave this as a conscious
-        # choice for the user. This also increases chances charts run on environments with little
-        # resources, such as Minikube. If you do want to specify resources, uncomment the following
-        # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
-        limits:
-          cpu: 100m
-          memory: 1Gi
-        requests:
-          cpu: 100m
-          memory: 50Mi
-      nodeSelector: {}
-      affinity: {}
-      dpdkCompatibility: false
-      cleanup:
-        image: us-docker.pkg.dev/palette-images/palette/spectro-cleanup
-        tag: "1.0.3"
-      networkAttachDef:
-        create: false
-        # a json string to apply
-        config: ""
-        # a sample config
-        # '{
-        #   "cniVersion": "0.3.0",
-        #   "type": "macvlan",
-        #   "master": "ens5",
-        #   "mode": "bridge",
-        #   "ipam": {
-        #     "type": "host-local",
-        #     "subnet": "192.168.1.0/24",
-        #     "rangeStart": "192.168.1.200",
-        #     "rangeEnd": "192.168.1.216",
-        #     "routes": [
-        #       { "dst": "0.0.0.0/0" }
-        #     ],
-        #     "gateway": "192.168.1.1"
-        #   }
-        # }'
-    descheduler:
-      enabled: true
-      namespace: "kube-system"
-      # CronJob or Deployment
-      kind: CronJob
-      image:
-        repository: registry.k8s.io/descheduler/descheduler
-        # Overrides the image tag whose default is the chart version
-        tag: "v0.32.0"
-        pullPolicy: IfNotPresent
-      imagePullSecrets: #   - name: container-registry-secret
-      resources:
-        requests:
-          cpu: 500m
-          memory: 256Mi
-        limits:
-          cpu: 500m
-          memory: 256Mi
-      ports:
-        - containerPort: 10258
-          protocol: TCP
-      securityContext:
-        allowPrivilegeEscalation: false
-        capabilities:
-          drop:
-            - ALL
-        privileged: false
-        readOnlyRootFilesystem: true
-        runAsNonRoot: true
-        runAsUser: 1000
-      # podSecurityContext -- [Security context for pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/)
-      podSecurityContext: {} # fsGroup: 1000
-      nameOverride: ""
-      fullnameOverride: "descheduler"
-      # -- Override the deployment namespace; defaults to .Release.Namespace
-      namespaceOverride: ""
-      # labels that'll be applied to all resources
-      commonLabels: {}
-      cronJobApiVersion: "batch/v1"
-      schedule: "*/15 * * * *"
-      suspend: false
-      # startingDeadlineSeconds: 200
-      # successfulJobsHistoryLimit: 3
-      # failedJobsHistoryLimit: 1
-      # ttlSecondsAfterFinished 600
-      # timeZone: Etc/UTC
-
-      # Required when running as a Deployment
-      deschedulingInterval: 15m
-      # Specifies the replica count for Deployment
-      # Set leaderElection if you want to use more than 1 replica
-      # Set affinity.podAntiAffinity rule if you want to schedule onto a node
-      # only if that node is in the same zone as at least one already-running descheduler
-      replicas: 1
-      # Specifies whether Leader Election resources should be created
-      # Required when running as a Deployment
-      # NOTE: Leader election can't be activated if DryRun enabled
-      leaderElection: {}
-      #  enabled: true
-      #  leaseDuration: 15s
-      #  renewDeadline: 10s
-      #  retryPeriod: 2s
-      #  resourceLock: "leases"
-      #  resourceName: "descheduler"
-      #  resourceNamespace: "kube-system"
-
-      command:
-        - "/bin/descheduler"
-      cmdOptions:
-        v: 3
-      # Recommended to use the latest Policy API version supported by the Descheduler app version
-      deschedulerPolicyAPIVersion: "descheduler/v1alpha2"
-      # deschedulerPolicy contains the policies the descheduler executes.
-      # To use policies stored in an existing configMap use:
-      # NOTE: The name of the cm should comply to {{ template "descheduler.fullname" . }}
-      # deschedulerPolicy: {}
-      deschedulerPolicy:
-        nodeSelector: kubevirt.io/schedulable=true
-        maxNoOfPodsToEvictPerNode: 10
-        # maxNoOfPodsToEvictPerNamespace: 10
-        metricsCollector:
+        goldenImagesNamespace: "vmo-golden-images"
+        # These namespaces are created and set up to deploy VMs into
+        vmEnabledNamespaces:
+          - "default"
+          - "virtual-machines"
+          - ns-adv
+          - ns-edge
+          - ns-product
+          - ns-packs
+        grafana:
+          namespace: monitoring
+        vlanFiltering:
           enabled: true
-        # ignorePvcPods: true
-        # evictLocalStoragePods: true
-        # evictDaemonSetPods: true
-        # tracing:
-        #   collectorEndpoint: otel-collector.observability.svc.cluster.local:4317
-        #   transportCert: ""
-        #   serviceName: ""
-        #   serviceNamespace: ""
-        #   sampleRate: 1.0
-        #   fallbackToNoOpProviderOnError: true
-        profiles:
-          - name: default
-            pluginConfig:
-              - name: DefaultEvictor
-                args:
-                  ignorePvcPods: true
-                  evictLocalStoragePods: true
-                  nodeFit: true
-                  ignorePodsWithoutPDB: true
-              - name: RemoveDuplicates
-              - name: RemovePodsHavingTooManyRestarts
-                args:
-                  podRestartThreshold: 100
-                  includingInitContainers: true
-              - name: RemovePodsViolatingNodeAffinity
-                args:
-                  nodeAffinityType:
-                    - requiredDuringSchedulingIgnoredDuringExecution
-              - name: RemovePodsViolatingNodeTaints
-                args:
-                  excludedTaints:
-                    - node.kubernetes.io/unschedulable
-              - name: RemovePodsViolatingInterPodAntiAffinity
-              - name: RemovePodsViolatingTopologySpreadConstraint
-              - name: LowNodeUtilization
-                args:
-                  thresholds:
-                    cpu: 20
-                    memory: 25
-                    pods: 100
-                  targetThresholds:
-                    cpu: 60
-                    memory: 75
-                    pods: 100
-                  metricsUtilization:
-                    metricsServer: true
-                  evictableNamespaces:
-                    exclude:
-                      - "cert-manager"
-                      - "kube-system"
-                      - "palette-system"
-                      - "metallb-system"
-                      - "cluster-{{ .spectro.system.cluster.uid }}"
-                      - "kubevirt"
-                      - "monitoring"
-                      - "nginx"
-                      - "vm-dashboard"
-            plugins:
-              balance:
-                enabled:
-                  - RemoveDuplicates
-                  - RemovePodsViolatingTopologySpreadConstraint
-                  - LowNodeUtilization
-              deschedule:
-                enabled:
-                  - RemovePodsHavingTooManyRestarts
-                  - RemovePodsViolatingNodeTaints
-                  - RemovePodsViolatingNodeAffinity
-                  - RemovePodsViolatingInterPodAntiAffinity
-      priorityClassName: system-cluster-critical
-      nodeSelector: {}
-      #  foo: bar
+          namespace: kube-system
+          image:
+            repository: us-docker.pkg.dev/palette-images/palette/virtual-machine-orchestrator/vlan-filtering/ubuntu
+            pullPolicy: IfNotPresent
+            tag: "latest"
+          env:
+            # Which bridge interface to control
+            bridgeIF: "br0"
+            # Beginning of VLAN range to enable
+            allowedVlans: "1"
+            # Set to "true" to enable VLANs on the br0 interface for the host to use itself
+            allowVlansOnSelf: "true"
+            # Beginning of VLAN range to enable for use by the node itself
+            allowedVlansOnSelf: "1"
+        snapshot-controller:
+          enabled: true
+          replicas: 1
+          # controller image and policies
+          image:
+            repository: registry.k8s.io/sig-storage/snapshot-controller
+            pullPolicy: IfNotPresent
+            tag: "v8.1.0"
+          # A list/array of extra args to use
+          # when running the controller. Default args include log verbose level
+          # and leader election
+          extraArgs: []
+          # snapshot webhook config
+          webhook:
+            # all below values take effect only if webhook is enabled
+            enabled: true
+            # webhook controller image and policies
+            image:
+              # change the image if you wish to use your own custom validation server image
+              repository: registry.k8s.io/sig-storage/snapshot-validation-webhook
+              pullPolicy: IfNotPresent
+              # Overrides the image tag whose default is the chart appVersion.
+              tag: "v8.1.0"
+            validatingWebhook:
+              failurePolicy: Fail
+              timeoutSeconds: 2
+            # Validating webhook is exposed on an HTTPS endpoint, and so
+            # TLS certificate is required. This Helm chart relies on
+            # cert-manager.io for managing TLS certificates.
+            tls:
+              # If not empty, this issuer is used to sign the certificate.
+              # If none is provided, a new, self-signing issuer is created.
+              issuerRef: {}
+              # name: <ISSUER NAME>
+              # kind: <ClusterIssuer|Issuer>
+              # group: cert-manager.io
 
-      affinity: {}
-      # nodeAffinity:
-      #   requiredDuringSchedulingIgnoredDuringExecution:
-      #     nodeSelectorTerms:
-      #     - matchExpressions:
-      #       - key: kubernetes.io/e2e-az-name
-      #         operator: In
-      #         values:
-      #         - e2e-az1
-      #         - e2e-az2
-      #  podAntiAffinity:
-      #    requiredDuringSchedulingIgnoredDuringExecution:
-      #      - labelSelector:
-      #          matchExpressions:
-      #            - key: app.kubernetes.io/name
-      #              operator: In
-      #              values:
-      #                - descheduler
-      #        topologyKey: "kubernetes.io/hostname"
-      topologySpreadConstraints: []
-      # - maxSkew: 1
-      #   topologyKey: kubernetes.io/hostname
-      #   whenUnsatisfiable: DoNotSchedule
-      #   labelSelector:
-      #     matchLabels:
-      #       app.kubernetes.io/name: descheduler
-      tolerations: []
-      # - key: 'management'
-      #   operator: 'Equal'
-      #   value: 'tool'
-      #   effect: 'NoSchedule'
+              # Certificate duration. The generated certificate is automatically
+              # renewed 1/3 of `certDuration` before its expiry.
+              # Value must be in units accepted by Go time.ParseDuration.
+              # See https://golang.org/pkg/time/#ParseDuration for allowed formats.
+              # Minimum accepted duration is `1h`.
+              # This option may be ignored/overridden by some issuer types.
+              certDuration: 8760h
+            service:
+              type: ClusterIP
+              port: 443
+            serviceAccount:
+              # Specifies whether a service account should be created.
+              create: true
+              # Annotations to add to the service account.
+              annotations: {}
+              # The name of the service account to use.
+              # If not set and create is true, a name is generated using the fullname template.
+              name: ""
+            # Log verbosity level.
+            # See https://github.com/kubernetes/community/blob/master/contributors/devel/sig-instrumentation/logging.md
+            # for description of individual verbosity levels.
+            logVerbosityLevel: 2
+            podAnnotations: {}
+            resources: {}
+            nodeSelector: {}
+            tolerations: []
+            affinity: {}
+            nameOverride: ""
+            fullnameOverride: ""
+          imagePullSecrets: []
+          nameOverride: ""
+          fullnameOverride: ""
+          resources: {}
+          # We usually recommend not to specify default resources and to leave this as a conscious
+          # choice for the user. This also increases chances charts run on environments with little
+          # resources, such as Minikube. If you do want to specify resources, uncomment the following
+          # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+          # limits:
+          #   cpu: 100m
+          #   memory: 128Mi
+          # requests:
+          #   cpu: 100m
+          #   memory: 128Mi
 
-      rbac:
-        # Specifies whether RBAC resources should be created
-        create: true
-      serviceAccount:
-        # Specifies whether a ServiceAccount should be created
-        create: true
-        # The name of the ServiceAccount to use.
-        # If not set and create is true, a name is generated using the fullname template
-        name: # Specifies custom annotations for the serviceAccount
-        annotations: {}
-      podAnnotations: {}
-      podLabels:
-        spectrocloud.com/connection: proxy
-      dnsConfig: {}
-      livenessProbe:
-        failureThreshold: 3
-        httpGet:
-          path: /healthz
-          port: 10258
-          scheme: HTTPS
-        initialDelaySeconds: 3
-        periodSeconds: 10
-      service:
-        enabled: false
-        # @param service.ipFamilyPolicy [string], support SingleStack, PreferDualStack and RequireDualStack
-        #
-        ipFamilyPolicy: ""
-        # @param service.ipFamilies [array] List of IP families (e.g. IPv4, IPv6) assigned to the service.
-        # Ref: https://kubernetes.io/docs/concepts/services-networking/dual-stack/
-        # E.g.
-        # ipFamilies:
-        #   - IPv6
-        #   - IPv4
-        ipFamilies: []
-      serviceMonitor:
-        enabled: false
-        # The namespace where Prometheus expects to find service monitors.
-        # namespace: ""
-        # Add custom labels to the ServiceMonitor resource
-        additionalLabels: {} # prometheus: kube-prometheus-stack
-        interval: ""
-        # honorLabels: true
-        insecureSkipVerify: true
-        serverName: null
-        metricRelabelings: []
-        # - action: keep
-        #   regex: 'descheduler_(build_info|pods_evicted)'
-        #   sourceLabels: [__name__]
-        relabelings: []
-        # - sourceLabels: [__meta_kubernetes_pod_node_name]
-        #   separator: ;
-        #   regex: ^(.*)$
-        #   targetLabel: nodename
-        #   replacement: $1
-        #   action: replace
-```
+          nodeSelector: {}
+          tolerations: []
+          affinity: {}
+          # create a default volume snapshot class
+          volumeSnapshotClass:
+            create: true
+            name: "ceph-block-snapshot-class"
+            driver: "rook-ceph.rbd.csi.ceph.com"
+            # deletionPolicy determines whether a VolumeSnapshotContent created through
+            # the VolumeSnapshotClass should be deleted when its bound VolumeSnapshot is deleted.
+            # Supported values are "Retain" and "Delete".
+            deletionPolicy: "Delete"
+            # params is a key-value map with storage driver specific parameters for creating snapshots.
+            params:
+              clusterID: rook-ceph
+              csi.storage.k8s.io/snapshotter-secret-name: csi-rbd-secret
+              csi.storage.k8s.io/snapshotter-secret-namespace: rook-ceph
+            # key-value pair of extra labels to apply to the volumesnapshotclass
+            extraLabels:
+              velero.io/csi-volumesnapshot-class: "true"
+          # time for sleep hook in seconds
+          hooksleepTime: 12
+        kubevirt:
+          enabled: true
+          # defaults to kubevirt
+          namespace: kubevirt
+          namespaceLabels:
+            pod-security.kubernetes.io/enforce: privileged
+            pod-security.kubernetes.io/enforce-version: v{{ .spectro.system.kubernetes.version | substr 0 4 }}
+          replicas: 1
+          service:
+            type: LoadBalancer
+            port: 443
+            targetPort: 8443
+          image:
+            repository: us-docker.pkg.dev/palette-images/palette/kubevirt/virt-operator
+            pullPolicy: IfNotPresent
+            # Overrides the image tag whose default is the chart appVersion.
+            tag: "v1.4.0"
+          ## The Kubevirt CR that gets created
+          kubevirtResource:
+            name: kubevirt
+            useEmulation: false
+            # below gates are required for virtual machine orchestrator pack, users can append additional gates
+            additionalFeatureGates:
+              - LiveMigration
+              - HotplugVolumes
+              - Snapshot
+              - VMExport
+              - ExpandDisks
+              - HotplugNICs
+              - VMLiveUpdateFeatures
+              - VMPersistentState
+              - VolumesUpdateStrategy
+              - VolumeMigration
+              - CPUManager
+              - Sidecar
+            #- VMPersistentState
+            # for additional feature gates refer to https://docs.spectrocloud.com/vm-management#featuregates
+            config:
+              evictionStrategy: "LiveMigrate"
+              # additionalConfig lets you define any configuration other than developerConfiguration and evictionStrategy
+              additionalConfig:
+                vmStateStorageClass: "ceph-filesystem"
+                #vmStateStorageClass: "" #fileSystem-based storageclass for persistent TPM
+                migrations:
+                  allowAutoConverge: true
+                  completionTimeoutPerGiB: 800
+              # additionalDevConfig lets you define dev config other than emulation and feature gate
+              additionalDevConfig: {}
+              # vmRolloutStrategy lets you define how changes to a VM object propagate to its VMI objects
+              vmRolloutStrategy: LiveUpdate
+            certificateRotateStrategy: {}
+            customizeComponents:
+            # flags:
+            #   api:
+            #     v:
+            #       "5"
+            #     port:
+            #       "8443"
+            imagePullPolicy: IfNotPresent
+            infra: {}
+            # The name of the Prometheus service account that needs read-access to KubeVirt endpoints
+            monitorAccount: "prometheus-operator-prometheus"
+            # The namespace Prometheus is deployed in
+            monitorNamespace: "monitoring"
+            # The namespace the service monitor is deployed to. Either specify this or the monitorNamespace
+            serviceMonitorNamespace: "monitoring"
+            workloads: {}
+            workloadsUpdateStrategy:
+              workloadUpdateMethods:
+                - LiveMigrate
+            # uninstallStrategy to use, options are RemoveWorkloads, BlockUninstallIfWorkloadsExist
+            uninstallStrategy: ""
+          ingress:
+            enabled: false
+            ingressClassName: nginx
+            annotations:
+              cert-manager.io/issuer: kubevirt-selfsigned-issuer
+              nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+            labels: {}
+            hosts:
+              - host: virt-exportproxy.maas.sc
+                paths:
+                  - path: /
+                    pathType: ImplementationSpecific
+                    # tls:
+                    #   - secretName: chart-example-tls
+                    #     hosts:
+                    #       - virt-exportproxy.maas.sc
+        cdi:
+          enabled: true
+          namespaceLabels:
+            pod-security.kubernetes.io/enforce: privileged
+            pod-security.kubernetes.io/enforce-version: v{{ .spectro.system.kubernetes.version | substr 0 4 }}
+          replicas: 1
+          image:
+            repository: quay.io/kubevirt/cdi-operator
+            pullPolicy: IfNotPresent
+            # Overrides the image tag whose default is the chart appVersion.
+            tag: "v1.61.0"
+          # set enabled to true and add private registry details to bring up VMs in airgap environment
+          privateRegistry:
+            enabled: false
+            registryIP: #Ex: 10.10.225.20
+            registryBasePath:
+            #Ex: specto-images
+          serviceAccount:
+            # Specifies whether a service account should be created
+            create: true
+            # Annotations to add to the service account
+            annotations: {}
+            # The name of the service account to use.
+            # If not set and create is true, a name is generated using the fullname template
+            name: ""
+          service:
+            type: LoadBalancer
+            port: 443
+            targetPort: 8443
+          ingress:
+            enabled: false
+            className: "nginx"
+            annotations:
+              cert-manager.io/issuer: cdi-selfsigned-issuer
+              nginx.ingress.kubernetes.io/proxy-body-size: "0"
+              nginx.ingress.kubernetes.io/proxy-read-timeout: "600"
+              nginx.ingress.kubernetes.io/proxy-send-timeout: "600"
+              nginx.ingress.kubernetes.io/proxy-request-buffering: "off"
+              nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+            hosts:
+              - host: cdi-uploadproxy.maas.sc
+                paths:
+                  - path: /
+                    pathType: ImplementationSpecific
+            tls: []
+            #  - secretName: chart-example-tls
+            #    hosts:
+            #      - cdi-uploadproxy.maas.sc
+          resources: {}
+          # We usually recommend not to specify default resources and to leave this as a conscious
+          # choice for the user. This also increases chances charts run on environments with little
+          # resources, such as Minikube. If you do want to specify resources, uncomment the following
+          # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+          # limits:
+          #   cpu: 100m
+          #   memory: 128Mi
+          # requests:
+          #   cpu: 100m
+          #   memory: 128Mi
+
+          ## The CDI CR that gets created
+          cdiResource:
+            additionalFeatureGates: # - FeatureName
+            additionalConfig:
+              filesystemOverhead:
+                global: "0.08"
+                storageClass:
+                  spectro-storage-class: "0.08"
+              podResourceRequirements:
+                requests:
+                  cpu: 250m
+                  memory: 1G
+                limits:
+                  cpu: 1
+                  memory: 8G
+              insecureRegistries: [] # List of insecure registries to allow in the CDI importer, preffered in air-gapped environments
+              importProxy:
+              #HTTPProxy: "http://username:password@your-proxy-server:3128"
+              #HTTPSProxy: "http://username:password@your-proxy-server:3128"
+              #noProxy: "127.0.0.1,localhost,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16,.company.local"
+              #TrustedCAProxy: configmap-name # optional: the ConfigMap name of an user-provided trusted certificate authority (CA) bundle to be added to the importer pod CA bundle
+            additionalSpec:
+              infra:
+                nodeSelector:
+                  kubernetes.io/os: linux
+                tolerations:
+                  - key: CriticalAddonsOnly
+                    operator: Exists
+              workload:
+                nodeSelector:
+                  kubernetes.io/os: linux
+              imagePullPolicy: IfNotPresent
+        multus:
+          enabled: true
+          image:
+            repository: ghcr.io/k8snetworkplumbingwg/multus-cni
+            pullPolicy: IfNotPresent
+            # Overrides the image tag whose default is the chart appVersion.
+            tag: "v4.1.4-thick"
+          networkController:
+            criSocket:
+              enableK3SHostPath: false # true for K3S and RKE2, false for PXK-E
+              paletteAgentMode: false # true for running Palette Agent Mode clusters with PXK-E
+              # criSocketHostPathOverride: /run/containerd/containerd.sock
+          imagePullSecrets: []
+          podAnnotations: {}
+          resources:
+            # We usually recommend not to specify default resources and to leave this as a conscious
+            # choice for the user. This also increases chances charts run on environments with little
+            # resources, such as Minikube. If you do want to specify resources, uncomment the following
+            # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+            limits:
+              cpu: 100m
+              memory: 1Gi
+            requests:
+              cpu: 100m
+              memory: 50Mi
+          nodeSelector: {}
+          affinity: {}
+          dpdkCompatibility: false
+          cleanup:
+            image: us-docker.pkg.dev/palette-images/palette/spectro-cleanup
+            tag: "1.0.3"
+          networkAttachDef:
+            create: false
+            # a json string to apply
+            config: ""
+            # a sample config
+            # '{
+            #   "cniVersion": "0.3.0",
+            #   "type": "macvlan",
+            #   "master": "ens5",
+            #   "mode": "bridge",
+            #   "ipam": {
+            #     "type": "host-local",
+            #     "subnet": "192.168.1.0/24",
+            #     "rangeStart": "192.168.1.200",
+            #     "rangeEnd": "192.168.1.216",
+            #     "routes": [
+            #       { "dst": "0.0.0.0/0" }
+            #     ],
+            #     "gateway": "192.168.1.1"
+            #   }
+            # }'
+        descheduler:
+          enabled: true
+          namespace: "kube-system"
+          # CronJob or Deployment
+          kind: CronJob
+          image:
+            repository: registry.k8s.io/descheduler/descheduler
+            # Overrides the image tag whose default is the chart version
+            tag: "v0.32.0"
+            pullPolicy: IfNotPresent
+          imagePullSecrets: #   - name: container-registry-secret
+          resources:
+            requests:
+              cpu: 500m
+              memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 256Mi
+          ports:
+            - containerPort: 10258
+              protocol: TCP
+          securityContext:
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+            privileged: false
+            readOnlyRootFilesystem: true
+            runAsNonRoot: true
+            runAsUser: 1000
+          # podSecurityContext -- [Security context for pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/)
+          podSecurityContext: {} # fsGroup: 1000
+          nameOverride: ""
+          fullnameOverride: "descheduler"
+          # -- Override the deployment namespace; defaults to .Release.Namespace
+          namespaceOverride: ""
+          # labels that'll be applied to all resources
+          commonLabels: {}
+          cronJobApiVersion: "batch/v1"
+          schedule: "*/15 * * * *"
+          suspend: false
+          # startingDeadlineSeconds: 200
+          # successfulJobsHistoryLimit: 3
+          # failedJobsHistoryLimit: 1
+          # ttlSecondsAfterFinished 600
+          # timeZone: Etc/UTC
+
+          # Required when running as a Deployment
+          deschedulingInterval: 15m
+          # Specifies the replica count for Deployment
+          # Set leaderElection if you want to use more than 1 replica
+          # Set affinity.podAntiAffinity rule if you want to schedule onto a node
+          # only if that node is in the same zone as at least one already-running descheduler
+          replicas: 1
+          # Specifies whether Leader Election resources should be created
+          # Required when running as a Deployment
+          # NOTE: Leader election can't be activated if DryRun enabled
+          leaderElection: {}
+          #  enabled: true
+          #  leaseDuration: 15s
+          #  renewDeadline: 10s
+          #  retryPeriod: 2s
+          #  resourceLock: "leases"
+          #  resourceName: "descheduler"
+          #  resourceNamespace: "kube-system"
+
+          command:
+            - "/bin/descheduler"
+          cmdOptions:
+            v: 3
+          # Recommended to use the latest Policy API version supported by the Descheduler app version
+          deschedulerPolicyAPIVersion: "descheduler/v1alpha2"
+          # deschedulerPolicy contains the policies the descheduler executes.
+          # To use policies stored in an existing configMap use:
+          # NOTE: The name of the cm should comply to {{ template "descheduler.fullname" . }}
+          # deschedulerPolicy: {}
+          deschedulerPolicy:
+            nodeSelector: kubevirt.io/schedulable=true
+            maxNoOfPodsToEvictPerNode: 10
+            # maxNoOfPodsToEvictPerNamespace: 10
+            metricsCollector:
+              enabled: true
+            # ignorePvcPods: true
+            # evictLocalStoragePods: true
+            # evictDaemonSetPods: true
+            # tracing:
+            #   collectorEndpoint: otel-collector.observability.svc.cluster.local:4317
+            #   transportCert: ""
+            #   serviceName: ""
+            #   serviceNamespace: ""
+            #   sampleRate: 1.0
+            #   fallbackToNoOpProviderOnError: true
+            profiles:
+              - name: default
+                pluginConfig:
+                  - name: DefaultEvictor
+                    args:
+                      ignorePvcPods: true
+                      evictLocalStoragePods: true
+                      nodeFit: true
+                      ignorePodsWithoutPDB: true
+                  - name: RemoveDuplicates
+                  - name: RemovePodsHavingTooManyRestarts
+                    args:
+                      podRestartThreshold: 100
+                      includingInitContainers: true
+                  - name: RemovePodsViolatingNodeAffinity
+                    args:
+                      nodeAffinityType:
+                        - requiredDuringSchedulingIgnoredDuringExecution
+                  - name: RemovePodsViolatingNodeTaints
+                    args:
+                      excludedTaints:
+                        - node.kubernetes.io/unschedulable
+                  - name: RemovePodsViolatingInterPodAntiAffinity
+                  - name: RemovePodsViolatingTopologySpreadConstraint
+                  - name: LowNodeUtilization
+                    args:
+                      thresholds:
+                        cpu: 20
+                        memory: 25
+                        pods: 100
+                      targetThresholds:
+                        cpu: 60
+                        memory: 75
+                        pods: 100
+                      metricsUtilization:
+                        metricsServer: true
+                      evictableNamespaces:
+                        exclude:
+                          - "cert-manager"
+                          - "kube-system"
+                          - "palette-system"
+                          - "metallb-system"
+                          - "cluster-{{ .spectro.system.cluster.uid }}"
+                          - "kubevirt"
+                          - "monitoring"
+                          - "nginx"
+                          - "vm-dashboard"
+                plugins:
+                  balance:
+                    enabled:
+                      - RemoveDuplicates
+                      - RemovePodsViolatingTopologySpreadConstraint
+                      - LowNodeUtilization
+                  deschedule:
+                    enabled:
+                      - RemovePodsHavingTooManyRestarts
+                      - RemovePodsViolatingNodeTaints
+                      - RemovePodsViolatingNodeAffinity
+                      - RemovePodsViolatingInterPodAntiAffinity
+          priorityClassName: system-cluster-critical
+          nodeSelector: {}
+          #  foo: bar
+
+          affinity: {}
+          # nodeAffinity:
+          #   requiredDuringSchedulingIgnoredDuringExecution:
+          #     nodeSelectorTerms:
+          #     - matchExpressions:
+          #       - key: kubernetes.io/e2e-az-name
+          #         operator: In
+          #         values:
+          #         - e2e-az1
+          #         - e2e-az2
+          #  podAntiAffinity:
+          #    requiredDuringSchedulingIgnoredDuringExecution:
+          #      - labelSelector:
+          #          matchExpressions:
+          #            - key: app.kubernetes.io/name
+          #              operator: In
+          #              values:
+          #                - descheduler
+          #        topologyKey: "kubernetes.io/hostname"
+          topologySpreadConstraints: []
+          # - maxSkew: 1
+          #   topologyKey: kubernetes.io/hostname
+          #   whenUnsatisfiable: DoNotSchedule
+          #   labelSelector:
+          #     matchLabels:
+          #       app.kubernetes.io/name: descheduler
+          tolerations: []
+          # - key: 'management'
+          #   operator: 'Equal'
+          #   value: 'tool'
+          #   effect: 'NoSchedule'
+
+          rbac:
+            # Specifies whether RBAC resources should be created
+            create: true
+          serviceAccount:
+            # Specifies whether a ServiceAccount should be created
+            create: true
+            # The name of the ServiceAccount to use.
+            # If not set and create is true, a name is generated using the fullname template
+            name: # Specifies custom annotations for the serviceAccount
+            annotations: {}
+          podAnnotations: {}
+          podLabels:
+            spectrocloud.com/connection: proxy
+          dnsConfig: {}
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /healthz
+              port: 10258
+              scheme: HTTPS
+            initialDelaySeconds: 3
+            periodSeconds: 10
+          service:
+            enabled: false
+            # @param service.ipFamilyPolicy [string], support SingleStack, PreferDualStack and RequireDualStack
+            #
+            ipFamilyPolicy: ""
+            # @param service.ipFamilies [array] List of IP families (e.g. IPv4, IPv6) assigned to the service.
+            # Ref: https://kubernetes.io/docs/concepts/services-networking/dual-stack/
+            # E.g.
+            # ipFamilies:
+            #   - IPv6
+            #   - IPv4
+            ipFamilies: []
+          serviceMonitor:
+            enabled: false
+            # The namespace where Prometheus expects to find service monitors.
+            # namespace: ""
+            # Add custom labels to the ServiceMonitor resource
+            additionalLabels: {} # prometheus: kube-prometheus-stack
+            interval: ""
+            # honorLabels: true
+            insecureSkipVerify: true
+            serverName: null
+            metricRelabelings: []
+            # - action: keep
+            #   regex: 'descheduler_(build_info|pods_evicted)'
+            #   sourceLabels: [__name__]
+            relabelings: []
+            # - sourceLabels: [__meta_kubernetes_pod_node_name]
+            #   separator: ;
+            #   regex: ^(.*)$
+            #   targetLabel: nodename
+            #   replacement: $1
+            #   action: replace
+    ```
 
 <PartialsComponent category="vmo" name="custom-network-requirements" />
 
@@ -930,142 +2468,142 @@ from a system for managing secure data, such as HashiCorp Vault or CyberArk.
 
 :::
 
-```yaml
-apiVersion: spectrocloud.com/v1
-kind: VmTemplate
-metadata:
-  name: ubuntu-2204
-spec:
-  description: Ubuntu 22.04
-  displayName: Ubuntu 22.04
-  icon: https://s3.amazonaws.com/manifests.spectrocloud.com/logos/ubuntu.png
-  dataVolumeTemplates:
-    - metadata:
-        name: ubuntu-2204
-      spec:
-        source:
-          pvc:
-            name: template-ubuntu-2204
-            namespace: vmo-golden-images
-        pvc:
-          accessModes:
-            - ReadWriteMany
-          resources:
-            requests:
-              storage: 50Gi
-          volumeMode: Block
-          storageClassName: ceph-block
-  template:
+    ```yaml
+    apiVersion: spectrocloud.com/v1
+    kind: VmTemplate
     metadata:
-      annotations:
-        descheduler.alpha.kubernetes.io/evict: "true"
-      labels:
-        kubevirt.io/size: small
-        kubevirt.io/domain: hellouni
+      name: ubuntu-2204
     spec:
-      domain:
-        cpu:
-          cores: 2
-          sockets: 1
-          threads: 1
-        devices:
-          disks:
-            - disk:
-                bus: virtio
-              name: datavolume-os
-            - disk:
-                bus: virtio
-              name: cloudinitdisk
-          interfaces:
-            - masquerade: {}
-              name: default
-              model: virtio
-              #macAddress: '00:5e:ab:cd:ef:01'
-        machine:
-          type: q35
-        resources:
-          limits:
-            memory: 2Gi
-          requests:
-            memory: 2Gi
-      networks:
-        - name: default
-          pod: {}
-      volumes:
-        - dataVolume:
+      description: Ubuntu 22.04
+      displayName: Ubuntu 22.04
+      icon: https://s3.amazonaws.com/manifests.spectrocloud.com/logos/ubuntu.png
+      dataVolumeTemplates:
+        - metadata:
             name: ubuntu-2204
-          name: datavolume-os
-        - cloudInitNoCloud:
-            userData: |
-              #cloud-config
-              ssh_pwauth: True
-              chpasswd: { expire: False }
-              password: spectro
-              disable_root: false
-              runcmd:
-                - apt-get update
-                - apt-get install -y qemu-guest-agent
-                - systemctl start qemu-guest-agent
-                - | 
-                  apt-get -y install ca-certificates curl
-                  install -m 0755 -d /etc/apt/keyrings
-                  curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
-                  chmod a+r /etc/apt/keyrings/docker.asc
-                  echo \
-                    "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
-                    $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
-                    tee /etc/apt/sources.list.d/docker.list > /dev/null
-                  apt-get update
-                  apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
-                  groupadd docker
-                  gpasswd -a ubuntu docker
-          name: cloudinitdisk
----
-apiVersion: cdi.kubevirt.io/v1beta1
-kind: DataVolume
-metadata:
-  name: "template-ubuntu-2204"
-  namespace: "vmo-golden-images"
-  annotations:
-    cdi.kubevirt.io/storage.deleteAfterCompletion: "false"
-    cdi.kubevirt.io/storage.bind.immediate.requested: ""
-spec:
-  storage:
-    accessModes:
-      - ReadWriteMany
-    resources:
-      requests:
-        storage: 50Gi
-    volumeMode: Block
-    storageClassName: ceph-block
-  source:
-    registry:
-      url: "docker://gcr.io/spectro-images-public/release/vm-dashboard/os/ubuntu-container-disk:22.04"
----
-apiVersion: cdi.kubevirt.io/v1beta1
-kind: StorageProfile
-metadata:
-  name: ceph-filesystem
-spec:
-  claimPropertySets:
-    - accessModes:
-        - ReadWriteMany
-      volumeMode: Filesystem
-  cloneStrategy: csi-clone
----
-apiVersion: cdi.kubevirt.io/v1beta1
-kind: StorageProfile
-metadata:
-  name: ceph-block
-spec:
-  claimPropertySets:
-    - accessModes:
-        - ReadWriteMany
-      volumeMode: Block
-  cloneStrategy: csi-clone
-```
+          spec:
+            source:
+              pvc:
+                name: template-ubuntu-2204
+                namespace: vmo-golden-images
+            pvc:
+              accessModes:
+                - ReadWriteMany
+              resources:
+                requests:
+                  storage: 50Gi
+              volumeMode: Block
+              storageClassName: ceph-block
+      template:
+        metadata:
+          annotations:
+            descheduler.alpha.kubernetes.io/evict: "true"
+          labels:
+            kubevirt.io/size: small
+            kubevirt.io/domain: hellouni
+        spec:
+          domain:
+            cpu:
+              cores: 2
+              sockets: 1
+              threads: 1
+            devices:
+              disks:
+                - disk:
+                    bus: virtio
+                  name: datavolume-os
+                - disk:
+                    bus: virtio
+                  name: cloudinitdisk
+              interfaces:
+                - masquerade: {}
+                  name: default
+                  model: virtio
+                  #macAddress: '00:5e:ab:cd:ef:01'
+            machine:
+              type: q35
+            resources:
+              limits:
+                memory: 2Gi
+              requests:
+                memory: 2Gi
+          networks:
+            - name: default
+              pod: {}
+          volumes:
+            - dataVolume:
+                name: ubuntu-2204
+              name: datavolume-os
+            - cloudInitNoCloud:
+                userData: |
+                  #cloud-config
+                  ssh_pwauth: True
+                  chpasswd: { expire: False }
+                  password: spectro
+                  disable_root: false
+                  runcmd:
+                    - apt-get update
+                    - apt-get install -y qemu-guest-agent
+                    - systemctl start qemu-guest-agent
+                    - | 
+                      apt-get -y install ca-certificates curl
+                      install -m 0755 -d /etc/apt/keyrings
+                      curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+                      chmod a+r /etc/apt/keyrings/docker.asc
+                      echo \
+                        "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+                        $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+                        tee /etc/apt/sources.list.d/docker.list > /dev/null
+                      apt-get update
+                      apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+                      groupadd docker
+                      gpasswd -a ubuntu docker
+              name: cloudinitdisk
+    ---
+    apiVersion: cdi.kubevirt.io/v1beta1
+    kind: DataVolume
+    metadata:
+      name: "template-ubuntu-2204"
+      namespace: "vmo-golden-images"
+      annotations:
+        cdi.kubevirt.io/storage.deleteAfterCompletion: "false"
+        cdi.kubevirt.io/storage.bind.immediate.requested: ""
+    spec:
+      storage:
+        accessModes:
+          - ReadWriteMany
+        resources:
+          requests:
+            storage: 50Gi
+        volumeMode: Block
+        storageClassName: ceph-block
+      source:
+        registry:
+          url: "docker://gcr.io/spectro-images-public/release/vm-dashboard/os/ubuntu-container-disk:22.04"
+    ---
+    apiVersion: cdi.kubevirt.io/v1beta1
+    kind: StorageProfile
+    metadata:
+      name: ceph-filesystem
+    spec:
+      claimPropertySets:
+        - accessModes:
+            - ReadWriteMany
+          volumeMode: Filesystem
+      cloneStrategy: csi-clone
+    ---
+    apiVersion: cdi.kubevirt.io/v1beta1
+    kind: StorageProfile
+    metadata:
+      name: ceph-block
+    spec:
+      claimPropertySets:
+        - accessModes:
+            - ReadWriteMany
+          volumeMode: Block
+      cloneStrategy: csi-clone
+    ```
 
-Select **Confirm and Create** to add the `vmo-extras` layer to your cluster profile.
+Select **Confirm and Create** to add the vmo-extras layer to your cluster profile.
 
 The visual of the cluster profile reflects the install order you defined while adding and configuring your packs. Your cluster profile should reflect the following image. 
 
@@ -1120,9 +2658,9 @@ The Control Plane—Cloud Configuration section lets you control the specificati
 
 | **Variable**        | **Instruction**                                                                                                                                                                                                                                                                                           |
 | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Resource Pool       | Enter the name of the MAAS resource pool you want your control plane server to use.                                                                                                                                                                                                                 |
-| Minimum CPU         | Enter the minimum number of CPU cores you want your Control Plane server to have. We recommend values higher than 4.                                                                                                                                                                                         |
-| Minimum Memory (GB) | Enter the minimum memory you want your Control Plane server to have.                                                                                                                                                                                        |
+| **Resource Pool**       | Enter the name of the MAAS resource pool you want your control plane server to use.                                                                                                                                                                                                                 |
+| **Minimum CPU**         | Enter the minimum number of CPU cores you want your Control Plane server to have. We recommend values higher than 4.                                                                                                                                                                                         |
+| **Minimum Memory (GB)** | Enter the minimum memory you want your Control Plane server to have.                                                                                                                                                                                        |
 | Availability zones  | This optional value allows you to specify which MAAS Availability Zones to use for your control plane node deployments. This configuration is critical to consider when planning high-availability infrastructure deployments.                                                                 |
 | Tags                | This optional value allows you to assign a tag to the MAAS machine selected for the build. <br /> To learn more about MAAS automatic tags, refer to the [MAAS Tags](https://maas.cloud.cbh.kth.se/MAAS/docs/cli/how-to-tag-machines.html#heading--how-to-create-automatic-tags) documentation. |
 
@@ -1134,11 +2672,11 @@ The **Worker Pool - Cloud Configuration** section lets you control the specifica
 
 | **Variable**        | **Instruction**                                                                                                                                                                                                                                                                                           |
 | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Resource Pool       | Set this value to the name of the MAAS resource pool from which your control plane server will be taken.                                                                                                                                                                                                 |
-| Minimum CPU         | Set this to the minimum number of CPU cores you want your Control Plane server to have. We recommend that you set values higher than 5.                                                                                                                                                                                   |
-| Minimum Memory (GB) | Set this to the minimum memory you want your Control Plane server to have.                                                                                                                                                                                   |
-| Availability zones  | This optional value lets you specify which AZs to use for your node deployment. This configuration is critical when planning high availability patterns for your infrastructure.                                                                                             |
-| Tags                | This optional value allows you to assign a tag to the MAAS machine selected for the build. <br /> To learn more about MAAS automatic tags, refer to the [MAAS Tags](https://maas.cloud.cbh.kth.se/MAAS/docs/cli/how-to-tag-machines.html#heading--how-to-create-automatic-tags) documentation. |
+| **Resource Pool**       | Set this value to the name of the MAAS resource pool from which your control plane server will be taken.                                                                                                                                                                                                 |
+| **Minimum CPU**         | Set this to the minimum number of CPU cores you want your Control Plane server to have. We recommend that you set values higher than 5.                                                                                                                                                                                   |
+| **Minimum Memory (GB)** | Set this to the minimum memory you want your Control Plane server to have.                                                                                                                                                                                   |
+| **Availability zones**  | This optional value lets you specify which AZs to use for your node deployment. This configuration is critical when planning high availability patterns for your infrastructure.                                                                                             |
+| **Tags**                | This optional value allows you to assign a tag to the MAAS machine selected for the build. <br /> To learn more about MAAS automatic tags, refer to the [MAAS Tags](https://maas.cloud.cbh.kth.se/MAAS/docs/cli/how-to-tag-machines.html#heading--how-to-create-automatic-tags) documentation. |
 
 Select **Next** to accept your node pool configurations.
 
@@ -1164,8 +2702,7 @@ Select **Finish Configuration** to begin deployment of your cluster.
 
 #### Terraform Resources Review
 
-To help you get started with Terraform, the tutorial code is structured to support deploying a cluster to either AWS,
-Azure, GCP, or VMware vSphere. Before you deploy a host cluster to Azure, review the following files in the folder
+To help you get started with Terraform, the tutorial code is structured to support deploying a cluster to MAAS. Before you deploy a host cluster, review the following files in the folder
 structure.
 
 | **File**                | **Description**                                                                                                        |
@@ -1174,7 +2711,7 @@ structure.
 | **inputs.tf**           | This file contains all the Terraform variables required for the deployment logic.                                      |
 | **data.tf**             | This file contains all the query resources that perform read actions.                                                  |
 | **cluster_profiles.tf** | This file contains the cluster profile definitions for each cloud provider.                                            |
-| **clusters.tf**         | This file has the cluster configurations required to deploy a host cluster to one of the cloud providers.              |
+| **cluster.tf**         | This file has the cluster configurations required to deploy a host cluster to one of the cloud providers.              |
 | **terraform.tfvars**    | Use this file to target a specific cloud provider and customize the deployment. This is the only file you must modify. |
 | **virtual-machines.tf**           | This file contains the configuration that will be applied to the VM you create in your VMO cluster.                     |
 
@@ -1193,33 +2730,33 @@ tutorial uses four providers:
 Note how the project name is specified in the `provider "spectrocloud" {}` block. You can change the target project by
 modifying the value of the `palette-project` variable in the **terraform.tfvars** file.
 
-```hcl
-terraform {
-  required_providers {
-    spectrocloud = {
-      version = "0.23.6"
-      source  = "spectrocloud/spectrocloud"
+    ```hcl
+    terraform {
+      required_providers {
+        spectrocloud = {
+          version = "0.23.6"
+          source  = "spectrocloud/spectrocloud"
+        }
+
+        tls = {
+          source  = "hashicorp/tls"
+          version = "4.0.4"
+        }
+
+        local = {
+          source  = "hashicorp/local"
+          version = "2.4.1"
+        }
+      }
+
+      required_version = ">= 1.9"
     }
 
-    tls = {
-      source  = "hashicorp/tls"
-      version = "4.0.4"
+    provider "spectrocloud" {
+      # API key set through the environment variable SPECTROCLOUD_APIKEY
+      project_name = var.palette-project
     }
-
-    local = {
-      source  = "hashicorp/local"
-      version = "2.4.1"
-    }
-  }
-
-  required_version = ">= 1.9"
-}
-
-provider "spectrocloud" {
-  # API key set through the environment variable SPECTROCLOUD_APIKEY
-  project_name = var.palette-project
-}
-```
+    ```
 
 </details>
 
@@ -1246,103 +2783,103 @@ The table below displays the packs deployed in each version of the cluster profi
 | App Services | `virtual-machine-orchestrator 4.6.3` | `4.6.3` |
 | Custom Manifest | `vmo-extras' | `1.0.0` |
 
-```hcl
-##########################
-# MAAS VMO Cluster Profile
-##########################
-resource "spectrocloud_cluster_profile" "maas-vmo-profile" {
-  count = var.deploy-maas ? 1 : 0
+    ```hcl
+    ##########################
+    # MAAS VMO Cluster Profile
+    ##########################
+    resource "spectrocloud_cluster_profile" "maas-vmo-profile" {
+      count = var.deploy-maas ? 1 : 0
 
-  name        = "tf-maas-vmo-profile"
-  description = "A basic cluster profile for MAAS VMO"
-  tags        = concat(var.tags, ["env:maas"])
-  cloud       = "maas"
-  type        = var.cluster-profile-type
-  version     = var.cluster-profile-version
+      name        = "tf-maas-vmo-profile"
+      description = "A basic cluster profile for MAAS VMO"
+      tags        = concat(var.tags, ["env:maas"])
+      cloud       = "maas"
+      type        = var.cluster-profile-type
+      version     = var.cluster-profile-version
 
-  pack {
-    name = data.spectrocloud_pack.maas_ubuntu.name
-    tag  = data.spectrocloud_pack.maas_ubuntu.version
-    uid  = data.spectrocloud_pack.maas_ubuntu.id
-    values = templatefile("manifests/ubuntu-values.yaml", {
-      node-network = var.node-network
-    })
-    type = "spectro"
-  }
+      pack {
+        name = data.spectrocloud_pack.maas_ubuntu.name
+        tag  = data.spectrocloud_pack.maas_ubuntu.version
+        uid  = data.spectrocloud_pack.maas_ubuntu.id
+        values = templatefile("manifests/ubuntu-values.yaml", {
+          node-network = var.node-network
+        })
+        type = "spectro"
+      }
 
-  pack {
-    name = data.spectrocloud_pack.maas_k8s.name
-    tag  = data.spectrocloud_pack.maas_k8s.version
-    uid  = data.spectrocloud_pack.maas_k8s.id
-    values = templatefile("manifests/k8s-values.yaml", {
-      pod-CIDR            = var.pod-CIDR,
-      clusterServicesCIDR = var.cluster-services-CIDR
-      type                = "spectro"
-    })
-  }
+      pack {
+        name = data.spectrocloud_pack.maas_k8s.name
+        tag  = data.spectrocloud_pack.maas_k8s.version
+        uid  = data.spectrocloud_pack.maas_k8s.id
+        values = templatefile("manifests/k8s-values.yaml", {
+          pod-CIDR            = var.pod-CIDR,
+          clusterServicesCIDR = var.cluster-services-CIDR
+          type                = "spectro"
+        })
+      }
 
-  pack {
-    name   = data.spectrocloud_pack.maas_cni.name
-    tag    = data.spectrocloud_pack.maas_cni.version
-    uid    = data.spectrocloud_pack.maas_cni.id
-    values = file("manifests/cni-values.yaml")
-    type   = "spectro"
-  }
+      pack {
+        name   = data.spectrocloud_pack.maas_cni.name
+        tag    = data.spectrocloud_pack.maas_cni.version
+        uid    = data.spectrocloud_pack.maas_cni.id
+        values = file("manifests/cni-values.yaml")
+        type   = "spectro"
+      }
 
-  pack {
-    name = data.spectrocloud_pack.maas_csi.name
-    tag  = data.spectrocloud_pack.maas_csi.version
-    uid  = data.spectrocloud_pack.maas_csi.id
-    values = templatefile("manifests/csi-values.yaml", {
-      worker_nodes = var.maas-worker-nodes
-    })
-    type = "spectro"
-  }
+      pack {
+        name = data.spectrocloud_pack.maas_csi.name
+        tag  = data.spectrocloud_pack.maas_csi.version
+        uid  = data.spectrocloud_pack.maas_csi.id
+        values = templatefile("manifests/csi-values.yaml", {
+          worker_nodes = var.maas-worker-nodes
+        })
+        type = "spectro"
+      }
 
-  pack {
-    name = data.spectrocloud_pack.maas_metallb.name
-    tag  = data.spectrocloud_pack.maas_metallb.version
-    uid  = data.spectrocloud_pack.maas_metallb.id
-    values = templatefile("manifests/metallb-values.yaml", {
-      metallb-ip-pool = var.metallb-ip-pool
-    })
-    type = "spectro"
-  }
+      pack {
+        name = data.spectrocloud_pack.maas_metallb.name
+        tag  = data.spectrocloud_pack.maas_metallb.version
+        uid  = data.spectrocloud_pack.maas_metallb.id
+        values = templatefile("manifests/metallb-values.yaml", {
+          metallb-ip-pool = var.metallb-ip-pool
+        })
+        type = "spectro"
+      }
 
-  pack {
-    name = data.spectrocloud_pack.maas_vmo.name
-    tag  = data.spectrocloud_pack.maas_vmo.version
-    uid  = data.spectrocloud_pack.maas_vmo.id
-    values = templatefile("manifests/vmo-values.yaml", {
-      vmo-network-interface = var.vmo-network-interface,
-      vm-vlans              = var.vm-vlans,
-      host-vlans            = var.host-vlans
-    })
-    type = "spectro"
-  }
+      pack {
+        name = data.spectrocloud_pack.maas_vmo.name
+        tag  = data.spectrocloud_pack.maas_vmo.version
+        uid  = data.spectrocloud_pack.maas_vmo.id
+        values = templatefile("manifests/vmo-values.yaml", {
+          vmo-network-interface = var.vmo-network-interface,
+          vm-vlans              = var.vm-vlans,
+          host-vlans            = var.host-vlans
+        })
+        type = "spectro"
+      }
 
-  pack {
-    name   = "vmo-extras"
-    type   = "manifest"
-    tag    = "1.0.0"
-    values = file("manifests/vmo-extras-values.yaml")
-    manifest {
-      name = "vmo-extras"
-      content = templatefile("manifests/vmo-extras-manifest.yaml", {
-        palette-user-id = var.palette-user-id
-      })
+      pack {
+        name   = "vmo-extras"
+        type   = "manifest"
+        tag    = "1.0.0"
+        values = file("manifests/vmo-extras-values.yaml")
+        manifest {
+          name = "vmo-extras"
+          content = templatefile("manifests/vmo-extras-manifest.yaml", {
+            palette-user-id = var.palette-user-id
+          })
+        }
+      }
+
     }
-  }
-
-}
-```
+    ```
 
 </details>
 
 <details>
-  <summary>clusters.tf</summary>
+  <summary>cluster.tf</summary>
 
-The **clusters.tf** file contains the definitions required for deploying a host cluster to one of the infrastructure
+The **cluster.tf** file contains the definitions required for deploying a host cluster to one of the infrastructure
 providers. To create an MAAS host cluster, you must set the `deploy-maas` variable in the `terraform.tfvars` file to true.
 
 When deploying a cluster using Terraform, you must provide the same parameters as those available in the Palette UI for
@@ -1351,60 +2888,60 @@ reviewing the
 [MAAS cluster resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/cluster_maas)
 documentation.
 
-```hcl
-# Copyright (c) Spectro Cloud
-# SPDX-License-Identifier: Apache-2.0
+    ```hcl
+    # Copyright (c) Spectro Cloud
+    # SPDX-License-Identifier: Apache-2.0
 
-################
-# MAAS Cluster
-################
+    ################
+    # MAAS Cluster
+    ################
 
-resource "spectrocloud_cluster_maas" "maas-cluster" {
-  count = var.deploy-maas ? 1 : 0
+    resource "spectrocloud_cluster_maas" "maas-cluster" {
+      count = var.deploy-maas ? 1 : 0
 
-  name                 = var.vmo-cluster-name
-  tags                 = concat(var.tags, ["env:maas"])
-  cloud_account_id     = data.spectrocloud_cloudaccount_maas.account[0].id
-  pause_agent_upgrades = "unlock"
+      name                 = var.vmo-cluster-name
+      tags                 = concat(var.tags, ["env:maas"])
+      cloud_account_id     = data.spectrocloud_cloudaccount_maas.account[0].id
+      pause_agent_upgrades = "unlock"
 
-  cloud_config {
-    domain = var.maas-domain
-  }
+      cloud_config {
+        domain = var.maas-domain
+      }
 
-  cluster_profile {
-    id = resource.spectrocloud_cluster_profile.maas-vmo-profile[0].id
-  }
+      cluster_profile {
+        id = resource.spectrocloud_cluster_profile.maas-vmo-profile[0].id
+      }
 
-  machine_pool {
-    name          = "maas-control-plane"
-    count         = 1
-    control_plane = true
-    azs           = var.maas-control-plane-azs
-    node_tags     = var.maas-control-plane-node-tags
-    instance_type {
-      min_cpu       = var.ctl-node-min-cpu
-      min_memory_mb = var.ctl-node-min-memory-mb
+      machine_pool {
+        name          = "maas-control-plane"
+        count         = 1
+        control_plane = true
+        azs           = var.maas-control-plane-azs
+        node_tags     = var.maas-control-plane-node-tags
+        instance_type {
+          min_cpu       = var.ctl-node-min-cpu
+          min_memory_mb = var.ctl-node-min-memory-mb
+        }
+        placement {
+          resource_pool = var.maas-control-plane-resource-pool
+        }
+      }
+
+      machine_pool {
+        name      = "maas-worker-basic"
+        count     = 1
+        azs       = var.maas-worker-azs
+        node_tags = var.maas-worker-node-tags
+        instance_type {
+          min_cpu       = var.wrk-node-min-cpu
+          min_memory_mb = var.wrk-node-min-memory-mb
+        }
+        placement {
+          resource_pool = var.maas-worker-resource-pool
+        }
+      }
     }
-    placement {
-      resource_pool = var.maas-control-plane-resource-pool
-    }
-  }
-
-  machine_pool {
-    name      = "maas-worker-basic"
-    count     = 1
-    azs       = var.maas-worker-azs
-    node_tags = var.maas-worker-node-tags
-    instance_type {
-      min_cpu       = var.wrk-node-min-cpu
-      min_memory_mb = var.wrk-node-min-memory-mb
-    }
-    placement {
-      resource_pool = var.maas-worker-resource-pool
-    }
-  }
-}
-```
+    ```
 
 </details>
 
@@ -1415,13 +2952,13 @@ Each pack {} block contains references to a data resource. Data resources are us
 
 Below is the data resource used to query Palette for information about the Kubernetes pack for version 1.32.2.
 
-```hcl
-data "spectrocloud_pack" "maas_k8s" {
-  name         = "kubernetes"
-  version      = "1.32.2"
-  registry_uid = data.spectrocloud_registry.public_registry.id
-}
-```
+    ```hcl
+    data "spectrocloud_pack" "maas_k8s" {
+      name         = "kubernetes"
+      version      = "1.32.2"
+      registry_uid = data.spectrocloud_registry.public_registry.id
+    }
+    ```
 Using the data resource helps you avoid manually entering the parameter values required by the cluster profile's pack {} block.
 
 </details>
@@ -1429,8 +2966,7 @@ Using the data resource helps you avoid manually entering the parameter values r
 <details>
   <summary>virtual-machines.tf</summary>
 
-The **clusters.tf** file contains the definitions required for deploying a host cluster to one of the infrastructure
-providers. To create an MAAS host cluster, you must set the `deploy-maa-vm` variable in the `terraform.tfvars` file to true.
+The **virtual-machines.tf** file contains the configuration required to deploy a VM to your MAAS VMO cluster. To create a VM, you must set the `deploy-maas-vm` variable in the `terraform.tfvars` file to true.
 
 When deploying a VM using Terraform, you must provide the same parameters as those available in the Palette UI for
 the VM deployment step, such as the CPU and storage to allocate to the VM. You can learn more about each parameter by
@@ -1438,116 +2974,116 @@ reviewing the
 [virtual machine resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/virtual_machine)
 documentation.
 
-```hcl
-##########################
-# MAAS Virtual Machine
-##########################
-resource "spectrocloud_virtual_machine" "virtual-machine" {
-  count      = var.deploy-maas-vm ? 1 : 0
-  depends_on = [spectrocloud_cluster_maas.maas-cluster]
+    ```hcl
+    ##########################
+    # MAAS Virtual Machine
+    ##########################
+    resource "spectrocloud_virtual_machine" "virtual-machine" {
+      count      = var.deploy-maas-vm ? 1 : 0
+      depends_on = [spectrocloud_cluster_maas.maas-cluster]
 
-  cluster_uid     = data.spectrocloud_cluster.maas_vmo_cluster[0].id
-  cluster_context = data.spectrocloud_cluster.maas_vmo_cluster[0].context
+      cluster_uid     = data.spectrocloud_cluster.maas_vmo_cluster[0].id
+      cluster_context = data.spectrocloud_cluster.maas_vmo_cluster[0].context
 
-  #run_on_launch = true
-  run_strategy = "Halted"
-  namespace    = var.vm-deploy-namespace
-  name         = var.vm-deploy-name
+      #run_on_launch = true
+      run_strategy = "Halted"
+      namespace    = var.vm-deploy-namespace
+      name         = var.vm-deploy-name
 
-  timeouts {
-    create = "60m"
-  }
-
-  labels = {
-    #var.vm-labels
-    # "tf"             = "spectrocloud-tutorials"
-    "kubevirt.io/vm" = "ubuntu-2204"
-  }
-
-  data_volume_templates {
-    metadata {
-      name      = "ubuntu-2204"
-      namespace = var.vm-deploy-namespace
-    }
-    spec {
-      source {
-        pvc {
-          name      = "template-ubuntu-2204"
-          namespace = "vmo-golden-images"
-        }
+      timeouts {
+        create = "60m"
       }
-      pvc {
-        access_modes = ["ReadWriteMany"]
-        resources {
-          requests = {
-            storage = var.vm-storage-Gi
+
+      labels = {
+        #var.vm-labels
+        # "tf"             = "spectrocloud-tutorials"
+        "kubevirt.io/vm" = "ubuntu-2204"
+      }
+
+      data_volume_templates {
+        metadata {
+          name      = "ubuntu-2204"
+          namespace = var.vm-deploy-namespace
+        }
+        spec {
+          source {
+            pvc {
+              name      = "template-ubuntu-2204"
+              namespace = "vmo-golden-images"
+            }
+          }
+          pvc {
+            access_modes = ["ReadWriteMany"]
+            resources {
+              requests = {
+                storage = var.vm-storage-Gi
+              }
+            }
+            storage_class_name = "ceph-block"
+            volume_mode        = "Block"
           }
         }
-        storage_class_name = "ceph-block"
-        volume_mode        = "Block"
       }
-    }
-  }
 
-  volume {
-    name = "ubuntu-2204"
-    volume_source {
-      data_volume {
+      volume {
         name = "ubuntu-2204"
+        volume_source {
+          data_volume {
+            name = "ubuntu-2204"
+          }
+        }
       }
-    }
-  }
 
-  volume {
-    name = "cloudinitdisk"
-    volume_source {
-      cloud_init_no_cloud {
-        user_data = file("virtual-machines/cloud-init")
+      volume {
+        name = "cloudinitdisk"
+        volume_source {
+          cloud_init_no_cloud {
+            user_data = file("virtual-machines/cloud-init")
+          }
+        }
       }
-    }
-  }
 
-  disk {
-    name = "ubuntu-2204"
-    disk_device {
       disk {
-        bus = "virtio"
+        name = "ubuntu-2204"
+        disk_device {
+          disk {
+            bus = "virtio"
+          }
+        }
       }
-    }
-  }
-  disk {
-    name = "cloudinitdisk"
-    disk_device {
       disk {
-        bus = "virtio"
+        name = "cloudinitdisk"
+        disk_device {
+          disk {
+            bus = "virtio"
+          }
+        }
+      }
+
+      cpu {
+        cores   = var.vm-cpu-cores
+        sockets = var.vm-cpu-sockets
+        threads = var.vm-cpu-threads
+      }
+      memory {
+        guest = var.vm-memory-Gi
+      }
+
+      resources {}
+
+      interface {
+        name                     = "default"
+        interface_binding_method = "InterfaceMasquerade"
+      }
+
+      network {
+        name = "default"
+        network_source {
+          pod {}
+        }
       }
     }
-  }
-
-  cpu {
-    cores   = var.vm-cpu-cores
-    sockets = var.vm-cpu-sockets
-    threads = var.vm-cpu-threads
-  }
-  memory {
-    guest = var.vm-memory-Gi
-  }
-
-  resources {}
-
-  interface {
-    name                     = "default"
-    interface_binding_method = "InterfaceMasquerade"
-  }
-
-  network {
-    name = "default"
-    network_source {
-      pod {}
-    }
-  }
-}
-```
+    ```
 
 </details>
 
@@ -1565,36 +3101,36 @@ The **terraform.tfvars** file is structured into sections. Each section contains
 
 In the **Palette Settings** section, modify the name of the palette-project variable if you wish to deploy to a Palette project different from the default one.
 
-For more information about the variables and their usage, refer to the `.readme` file in the `vmo-cluster` folder of the tutorial package..
+For more information about the variables and their usage, refer to the [.README](https://github.com/spectrocloud/tutorials/blob/main/terraform/vmo-cluster/README.md) file.
 
 Execute the `terraform plan` command to ensure there are no errors and you have connectivity to your Spectro Cloud
 tenant.
 
-```shell
-terraform plan
-data.spectrocloud_registry.public_registry: Reading...
-data.spectrocloud_cloudaccount_maas.account[0]: Reading...
-data.spectrocloud_cloudaccount_maas.account[0]: Read complete after 0s [id=680a7a2321e9c36a9a0efa4f]
-data.spectrocloud_registry.public_registry: Read complete after 0s [id=5eecc89d0b150045ae661cef]
-data.spectrocloud_pack.maas_csi: Reading...
-data.spectrocloud_pack.maas_metallb: Reading...
-data.spectrocloud_pack.maas_vmo: Reading...
-data.spectrocloud_pack.maas_k8s: Reading...
-data.spectrocloud_pack.maas_cni: Reading...
-data.spectrocloud_pack.maas_ubuntu: Reading...
-data.spectrocloud_pack.maas_metallb: Read complete after 0s [id=678d28cce2561ecca5cf0aea]
-.
-.
-.
-              + name    = "vmo-extras"
-              + uid     = (known after apply)
+    ```shell
+    terraform plan
+    data.spectrocloud_registry.public_registry: Reading...
+    data.spectrocloud_cloudaccount_maas.account[0]: Reading...
+    data.spectrocloud_cloudaccount_maas.account[0]: Read complete after 0s [id=680a7a2321e9c36a9a0efa4f]
+    data.spectrocloud_registry.public_registry: Read complete after 0s [id=5eecc89d0b150045ae661cef]
+    data.spectrocloud_pack.maas_csi: Reading...
+    data.spectrocloud_pack.maas_metallb: Reading...
+    data.spectrocloud_pack.maas_vmo: Reading...
+    data.spectrocloud_pack.maas_k8s: Reading...
+    data.spectrocloud_pack.maas_cni: Reading...
+    data.spectrocloud_pack.maas_ubuntu: Reading...
+    data.spectrocloud_pack.maas_metallb: Read complete after 0s [id=678d28cce2561ecca5cf0aea]
+    .
+    .
+    .
+                  + name    = "vmo-extras"
+                  + uid     = (known after apply)
+                }
             }
         }
-    }
 
-Plan: 2 to add, 0 to change, 0 to destroy.
-\
-```
+    Plan: 2 to add, 0 to change, 0 to destroy.
+    \
+    ```
 
 Execute the `terraform apply` command. Depending on your environment, this process may take up to an hour or more. You can monitor the progress of your cluster build by logging into your [Palette](https://console.spectrocloud.com) tenant and selecting **Clusters** from the left main menu. 
 
@@ -1632,12 +3168,12 @@ The **VM settings** page allows you to customize the basic configuration for you
 
 | **Configuration**                     | **Value**       | **Description**                                                                                                                                                                                                                                                                                                                                                                 |
 | ------------------------------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Name                                  | `Choose a name` | The name of the VM to be deployed.                                                                                                                                                                                                                                                                                                                                              |
-| CPUs (cores)                          | `2`             | The number of CPU cores your VM needs.                                                                                                                                                                                                                                                                                                                                          |
-| Memory (GiB)                          | `2`             | The amount of Memory your VM needs have in GiB                                                                                                                                                                                                                                                                                                                                  |
-| Storage Access Mode                   | `ReadWriteMany` | We recommend always using ReadWriteMany. This configuration allows your VM to read the storage volume from any node in your cluster. This is required if you plan to migrate your VM between nodes. <br /> This configuration also helps avoid node congestion as Kubernetes attempts to schedule your VM on a node with a Volume with the matching Storage Access Mode. |
+| **Name**                                  | `Choose a name` | The name of the VM to be deployed.                                                                                                                                                                                                                                                                                                                                              |
+| **CPUs (cores)**                          | `2`             | The number of CPU cores your VM needs.                                                                                                                                                                                                                                                                                                                                          |
+| **Memory (GiB)**                          | `2`             | The amount of Memory your VM needs have in GiB                                                                                                                                                                                                                                                                                                                                 |
+| **Storage Access Mode**                   | `ReadWriteMany` | We recommend always using ReadWriteMany. This configuration allows your VM to read the storage volume from any node in your cluster. This is required if you plan to migrate your VM between nodes. <br /> This configuration also helps avoid node congestion as Kubernetes attempts to schedule your VM on a node with a Volume with the matching Storage Access Mode. |
 | OS image URL                          | `N/A`           | Your image location is defined in the Ubuntu 22.04 template. This field is used to specify custom OS images or custom image repositories for a VM.                                                                                                                                                                                                                                |
-| Start VM automatically after creation | `Halted`        | We recommend setting this value to halted to ensure no issues occur during the cloud-init process |
+| **Start VM automatically after creation** | `Halted`        | We recommend setting this value to halted to ensure no issues occur during the cloud-init process |
 
 The **Customize Configuration** screen displays the YAML used to build your VM. KubeVirt enables
 configuration, deployment, and management of your VMs using the same process used to configure and deploy pods.
@@ -1668,29 +3204,29 @@ have. Update `terraform.tfvars` as instructed in the following table.
 Execute the `terraform plan` command to ensure there are no errors and you have connectivity to your Spectro Cloud
 tenant.
 
-```shell
-terraform plan
-data.spectrocloud_registry.public_registry: Reading...
-data.spectrocloud_cloudaccount_maas.account[0]: Reading...
-data.spectrocloud_cloudaccount_maas.account[0]: Read complete after 0s [id=680a7a2321e9c36a9a0efa4f]
-data.spectrocloud_registry.public_registry: Read complete after 0s [id=5eecc89d0b150045ae661cef]
-data.spectrocloud_pack.maas_csi: Reading...
-data.spectrocloud_pack.maas_metallb: Reading...
-data.spectrocloud_pack.maas_vmo: Reading...
-data.spectrocloud_pack.maas_k8s: Reading...
-data.spectrocloud_pack.maas_cni: Reading...
-data.spectrocloud_pack.maas_ubuntu: Reading...
-data.spectrocloud_pack.maas_metallb: Read complete after 0s [id=678d28cce2561ecca5cf0aea]
-.
-.
-.
+    ```shell
+    terraform plan
+    data.spectrocloud_registry.public_registry: Reading...
+    data.spectrocloud_cloudaccount_maas.account[0]: Reading...
+    data.spectrocloud_cloudaccount_maas.account[0]: Read complete after 0s [id=680a7a2321e9c36a9a0efa4f]
+    data.spectrocloud_registry.public_registry: Read complete after 0s [id=5eecc89d0b150045ae661cef]
+    data.spectrocloud_pack.maas_csi: Reading...
+    data.spectrocloud_pack.maas_metallb: Reading...
+    data.spectrocloud_pack.maas_vmo: Reading...
+    data.spectrocloud_pack.maas_k8s: Reading...
+    data.spectrocloud_pack.maas_cni: Reading...
+    data.spectrocloud_pack.maas_ubuntu: Reading...
+    data.spectrocloud_pack.maas_metallb: Read complete after 0s [id=678d28cce2561ecca5cf0aea]
+    .
+    .
+    .
+                }
             }
         }
-    }
 
-Plan: 1 to add, 0 to change, 0 to destroy.
+    Plan: 1 to add, 0 to change, 0 to destroy.
 
-```
+    ```
 
 Execute the `terraform apply` command to create the VM in your VMO Cluster.
 
@@ -1731,22 +3267,22 @@ In Palette, open the **Cluster Overview** page for the cluster you built in the 
 
 Open a terminal on your workstation. Update the following command to set the `KUBECONFIG` environment variable to your downloaded file.
 
-```shell
+    ```shell
 
-export KUBECONFIG=<path-to-your-kubeconfig-file>
+    export KUBECONFIG=<path-to-your-kubeconfig-file>
 
-```
+    ```
 
 Use the following command to confirm the kubeconfig environment variable has been successfully exported.
 
-```shell
+    ```shell
 
-user@vmo-tutorial ~ % kubectl version
-Client Version: v1.32.3
-Kustomize Version: v5.5.0
-Server Version: v1.32.2
+    user@vmo-tutorial ~ % kubectl version
+    Client Version: v1.32.3
+    Kustomize Version: v5.5.0
+    Server Version: v1.32.2
 
-```
+    ```
 
 To access your app, you must create a service in Kubernetes. The service configures MetalLB to provide ingress access to
 your Kubernetes cluster by mapping a network port on the nodes to the network port your app is listening on inside the
@@ -1758,23 +3294,23 @@ tutorial, the label `kubevirt.io/domain: hellouni` uniquely identifies pods runn
 
 Use the following command to create the Kubernetes service for the hello-universe app.
 
-```shell
-kubectl apply -f - <<EOF
-apiVersion: v1
-kind: Service
-metadata:
-  name: hello-universe-service
-  namespace: virtual-machines
-spec:
-  type: LoadBalancer
-  selector:
-    kubevirt.io/domain: hellouni
-  ports:
-  - protocol: TCP
-    port: 9080
-    targetPort: 9080
-EOF
-```
+    ```shell
+    kubectl apply -f - <<EOF
+    apiVersion: v1
+    kind: Service
+    metadata:
+      name: hello-universe-service
+      namespace: virtual-machines
+    spec:
+      type: LoadBalancer
+      selector:
+        kubevirt.io/domain: hellouni
+      ports:
+      - protocol: TCP
+        port: 9080
+        targetPort: 9080
+    EOF
+    ```
 
 ## Verify the Application
 
@@ -1802,7 +3338,7 @@ Your result should be similar to the following screenshot.
 
 Use the following steps to remove all the resources you created for the tutorial.
 
-To remove the cluster, select **Clusters** from the left main menu. On the **Cluster Overview** page, select **Settings** > **Delete Cluster**.
+To remove the cluster, select **Clusters** from the left main menu. On the **Cluster Overview** page, select Settings** > Delete Cluster**.
 
 ![Delete cluster](/getting-started/azure/getting-started_deploy-k8s-cluster_delete-cluster-button.webp)
 
@@ -1835,4 +3371,4 @@ In this tutorial, you created a new cluster profile and used it to deploy a new 
 Machine Orchestrator service. You deployed a VM and used Palette's features to connect to the VM and deploy the
 **Hello Universe** and confirmed it was operating successfully.
 
-For information on VM management topics such as VM Migration and snapshots, visit visit our <VersionedLink text="VM Management" url="/vm-management/create-manage-vm/#wm-management"/> page.
+For information on VM management topics such as VM Migration and snapshots, visit visit our [VM Management](../../vm-management/create-manage-vm/create-manage-vm.md) page.
