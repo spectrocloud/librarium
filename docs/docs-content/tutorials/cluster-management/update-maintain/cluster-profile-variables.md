@@ -678,13 +678,12 @@ kubectl get pods --namespace wordpress
 ``` 
 
 ```shell title="Example Output" {2-4}
-NAME                                                   READY   STATUS    RESTARTS   AGE   IP              NODE                         NOMINATED NODE   READINESS GATES
-wordpress-chart-wordpress-dd7d944cb-f2prh              0/1     Running   0          25s   192.168.71.72   ip-10-0-1-169.ec2.internal   <none>           <none>
-wordpress-chart-wordpress-dd7d944cb-fdmwt              0/1     Running   0          25s   192.168.71.74   ip-10-0-1-169.ec2.internal   <none>           <none>
-wordpress-chart-wordpress-dd7d944cb-n78rc              0/1     Running   0          25s   192.168.71.73   ip-10-0-1-169.ec2.internal   <none>           <none>
-wordpress-chart-wordpress-mariadb-0                    0/1     Running   0          25s   192.168.71.75   ip-10-0-1-169.ec2.internal   <none>           <none>
-wordpress-chart-wordpress-memcached-56cffcf458-hd9x6   1/1     Running   0          25s   192.168.71.71   ip-10-0-1-169.ec2.internal   <none>           <none>
-```
+NAME                                                   READY   STATUS    RESTARTS   AGE
+wordpress-chart-wordpress-dd7d944cb-f2prh              0/1     Running   0          25s
+wordpress-chart-wordpress-dd7d944cb-fdmwt              0/1     Running   0          25s
+wordpress-chart-wordpress-dd7d944cb-n78rc              0/1     Running   0          25s
+wordpress-chart-wordpress-mariadb-0                    0/1     Running   0          25s
+wordpress-chart-wordpress-memcached-56cffcf458-hd9x6   1/1     Running   0          25s
 
 </TabItem>
 
