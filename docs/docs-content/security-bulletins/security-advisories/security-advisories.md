@@ -13,25 +13,35 @@ additional details regarding vulnerabilities and offering remediation steps.
 
 ## Security Advisory 002 - Kubernetes Race Condition
 
-This advisory outlines security vulnerabilities related to `REPLACE-ME` and the recommended remediation actions.
+This advisory outlines security vulnerabilities related to the use of the os.RemoveAll function in Go and the recommended remediation actions.
 
 - **Release Date**: 
 - **Last Updated**: 
 - **Severity**: 
-- **Affected Versions**: 
-- **Fixed Versions**: 
+- **Affected Versions**: Kubernetes versions prior to v1.26.15, v1.27.15, v1.28.11, 1.29.6, and v1.30.2
+- **Fixed Versions**: v1.27.15, v1.28.11, v1.29.6, and v1.30.2
 
 ### Related CVEs
 
-Refer to the [Security Bulletins](../reports/reports.mdx) page for detailed information about each CVE.
-
-- 
+This advisory has not been assigned a CVE.
 
 ### Timeline
 
+- **June 17, 2025**: First notified of vulnerabilities. 
+
 ### Summary
 
+The identified vulnerability affects Kubernetes clusters compiled with Go versions prior to 1.21.11 or 1.22.4. The issue relates to the use of the os.RemoveAll function in Go. It involves a symlink race condition that allows local non-root users (such as a containerized process) with the same UID as the Pod user to delete arbitrary directories on a host node with root privileges. This issue is especially relevant in environments running multi-tenant or untrusted workloads, where a compromised workload may pose a broader threat to the host.
+All the clusters using an affected Kubernetes version must be updated manually. All users should review their cluster profiles and workload clusters and upgrade the Kubernetes version to a fixed version.
+
 ### Recommended Actions
+
+This vulnerability affects both workload clusters and Palette deployments. If you have any workload clusters, Palette Enterprise or VerteX clusters using an affected Kubernetes version, you must update the cluster profile to use one of the fixed versions.
+
+- Refer to the [Update a Cluster Profile](../../profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile.md) guide for instructions on how to update a cluster profile and apply the updates to workload clusters.
+
+- Refer to the to the [Palette Enterprise](../../enterprise-version/upgrade/upgrade.md) or
+  [VerteX](../../vertex/upgrade/upgrade.md) upgrade guides for guidance on upgrading your Palette version for all connected and airgapped Palette Enterprise and VerteX clusters.
 
 ## Security Advisory 001 - Nginx Vulnerability
 
