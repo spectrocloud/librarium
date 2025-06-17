@@ -29,7 +29,7 @@ with Microsoft Azure or Google Cloud Platform (GCP).
 ## Prerequisites
 
 - A Palette account.
-- A Palette API key for the [Terraform](#create-clusters-with-cluster-profile-variables-terraform-workflow) workflow.
+- A Palette API key for the [Terraform](#cluster-profile-variables-terraform-workflow) workflow.
   You can follow the steps on
   [Creating a Palette API Key](../../../../getting-started/aws/setup/#create-a-palette-api-key).
 - Any public cloud credential [AWS](../../../../clusters/public-cloud/aws/add-aws-accounts/#aws-account),
