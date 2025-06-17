@@ -15,7 +15,6 @@ function getLightLogoPath() {
   if (process.env.CUSTOM_LIGHT_LOGO && process.env.CUSTOM_LIGHT_LOGO.trim() === "true") {
     return "img/custom-light-logo.svg";
   }
-
   return "img/spectrocloud-logo-light.svg?new=true";
 }
 
@@ -24,7 +23,6 @@ function getDarkLogoPath() {
   if (process.env.CUSTOM_DARK_LOGO && process.env.CUSTOM_DARK_LOGO.trim() === "true") {
     return "img/custom-dark-logo.svg";
   }
-
   return "img/spectrocloud-logo-dark.svg?new=true";
 }
 
