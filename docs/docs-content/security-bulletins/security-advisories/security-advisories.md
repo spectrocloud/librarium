@@ -11,6 +11,28 @@ tags: ["security", "cve", "advisories"]
 Security advisories supplement <VersionedLink text="security bulletins" url="/security-bulletins/reports/" />, providing
 additional details regarding vulnerabilities and offering remediation steps.
 
+## Security Advisory 002 - Kubernetes Race Condition
+
+This advisory outlines security vulnerabilities related to `REPLACE-ME` and the recommended remediation actions.
+
+- **Release Date**: 
+- **Last Updated**: 
+- **Severity**: 
+- **Affected Versions**: 
+- **Fixed Versions**: 
+
+### Related CVEs
+
+Refer to the [Security Bulletins](../reports/reports.mdx) page for detailed information about each CVE.
+
+- 
+
+### Timeline
+
+### Summary
+
+### Recommended Actions
+
 ## Security Advisory 001 - Nginx Vulnerability
 
 This advisory outlines security vulnerabilities related to [ingress-nginx](https://github.com/kubernetes/ingress-nginx)
