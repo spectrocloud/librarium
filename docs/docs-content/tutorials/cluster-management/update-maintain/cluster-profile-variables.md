@@ -64,7 +64,7 @@ Cluster Profile**.
 
 Assign the cluster profile a name and leave the default value for the version. Click **Next** to continue.
 
-In the **Profile Layers** section, configure your profile with the following packs. 
+In the **Profile Layers** section, configure your profile with the following packs.
 
 <!-- prettier-ignore-start -->
 
@@ -219,14 +219,13 @@ Open a terminal window and set the `KUBECONFIG` environment variable to the file
 export KUBECONFIG=~/Downloads/admin.aws-profile-variables.kubeconfig
 ```
 
-Use the following command to get a listing of the default pod deployment  for the
-Wordpress app. Three pods are displayed similar to the following output: one for MariaDB, one for WordPress database
-memory cache and one for the WordPress web server. The row highlighted in the output is an example of the Wordpress web
-server.
+Use the following command to get a listing of the default pod deployment for the Wordpress app. Three pods are displayed
+similar to the following output: one for MariaDB, one for WordPress database memory cache and one for the WordPress web
+server. The row highlighted in the output is an example of the Wordpress web server.
 
 ```shell
 kubectl get pods --namespace wordpress
-``` 
+```
 
 ```shell title="Example Output" {3}
 NAME                                                   READY   STATUS    RESTARTS   AGE
@@ -286,14 +285,13 @@ launch the default Wordpress application.
 
 Return to your terminal window.
 
-Use the following command to get a listing of the default pod deployment for the
-Wordpress app. Five pods are displayed similar to the following output: one for MariaDB, one for WordPress database
-memory cache and three for the WordPress web server. The rows highlighted in the output are an example of the Wordpress
-web server.
+Use the following command to get a listing of the default pod deployment for the Wordpress app. Five pods are displayed
+similar to the following output: one for MariaDB, one for WordPress database memory cache and three for the WordPress
+web server. The rows highlighted in the output are an example of the Wordpress web server.
 
 ```shell
 kubectl get pods --namespace wordpress
-``` 
+```
 
 ```shell title="Example Output" {2-4}
 NAME                                                   READY   STATUS    RESTARTS   AGE
@@ -347,7 +345,7 @@ you want to apply the variables against.
 
 <PartialsComponent category="getting-started" name="setup-local-environment" />
 
-Navigate to the folder that contains the tutorial code. 
+Navigate to the folder that contains the tutorial code.
 
 ```shell
 cd terraform/cluster-profile-variables-tf
@@ -355,20 +353,21 @@ cd terraform/cluster-profile-variables-tf
 
 ### Resources Review
 
-To help you get started with Terraform, the tutorial code is structured to support deploying a cluster to either AWS, Azure, or GCP. Before you deploy a host cluster to AWS, review the following files in the folder structure.
+To help you get started with Terraform, the tutorial code is structured to support deploying a cluster to either AWS,
+Azure, or GCP. Before you deploy a host cluster to AWS, review the following files in the folder structure.
 
-| **File**                | **Description**                                                                                                        |
-| ----------------------- | ---------------------------------------------------------------------------------------------------------------------- |
-| **provider.tf**         | This file contains the Terraform providers that are used to support the deployment of the cluster.                     |
-| **inputs.tf**           | This file contains all the Terraform variables required for the deployment logic.                                      |
-| **data.tf**             | This file contains all the query resources that perform read actions.                                                  |
-| **cluster_profiles.tf** | This file contains the cluster profile definitions for each cloud provider.                                            |
-| **clusters.tf**         | This file has the cluster configurations required to deploy a host cluster to one of the cloud providers.              |
-| **terraform.tfvars**    | Use this file to target a specific cloud provider and customize the deployment. This is the only file you must modify. |
-| **ssh-key.tf**          | This file has the SSH key resource definition required for Azure deployments.                                          |
-| **outputs.tf**          | This file contains the content that will be displayed in the terminal after a successful Terraform `apply` action.     |
-| **manifests/wordpress-default.yaml** | This file contains the default configuration for the WordPress pack.                                      |
-| **manifests/wordpress-varaibles.yaml** | This file contains the configuration for the WordPress pack with cluster profile variables added.       |
+| **File**                               | **Description**                                                                                                        |
+| -------------------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+| **provider.tf**                        | This file contains the Terraform providers that are used to support the deployment of the cluster.                     |
+| **inputs.tf**                          | This file contains all the Terraform variables required for the deployment logic.                                      |
+| **data.tf**                            | This file contains all the query resources that perform read actions.                                                  |
+| **cluster_profiles.tf**                | This file contains the cluster profile definitions for each cloud provider.                                            |
+| **clusters.tf**                        | This file has the cluster configurations required to deploy a host cluster to one of the cloud providers.              |
+| **terraform.tfvars**                   | Use this file to target a specific cloud provider and customize the deployment. This is the only file you must modify. |
+| **ssh-key.tf**                         | This file has the SSH key resource definition required for Azure deployments.                                          |
+| **outputs.tf**                         | This file contains the content that will be displayed in the terminal after a successful Terraform `apply` action.     |
+| **manifests/wordpress-default.yaml**   | This file contains the default configuration for the WordPress pack.                                                   |
+| **manifests/wordpress-varaibles.yaml** | This file contains the configuration for the WordPress pack with cluster profile variables added.                      |
 
 Open the **cluster_profiles.tf** file. In the **AWS Cluster Profile v1.0.0**, there are no variables defined and the
 WordPress pack points to `wordpress-default.yaml`. This file is the default YAML configuration file for the WordPress
@@ -491,13 +490,13 @@ wordpress_namespace = "REPLACE ME"           # The namespace to be created for W
 wordpress_port      = "REPLACE ME"           # The HTTP port to be exposed for WordPress.
 ```
 
-Additionally, fill in the cloud-specific configurations. If you are using either Azure or GCP, find the
-relevant provider section. For this tutorial, the steps will use AWS.
+Additionally, fill in the cloud-specific configurations. If you are using either Azure or GCP, find the relevant
+provider section. For this tutorial, the steps will use AWS.
 
 Locate the AWS provider section and change `deploy-aws = false` to `deploy-aws = true`. Additionally, replace all
 occurrences of `REPLACE_ME` with their corresponding values, such as those for the `aws-cloud-account-name`,
 `aws-region`, `aws-key-pair-name`, and `availability_zones` variables. You can also update the values for the nodes in
-the control plane or worker node pools as needed. 
+the control plane or worker node pools as needed.
 
 ```hcl {4,7-9,16,24}
 ###########################
@@ -588,14 +587,13 @@ Example:
 export KUBECONFIG=~/Downloads/admin.aws-profile-var-tf.kubeconfig
 ```
 
-Use the following command to get a listing of the default pod deployment  for the
-Wordpress app. Three pods are displayed similar to the following output: one for MariaDB, one for WordPress database
-memory cache and one for the WordPress web server. The row highlighted in the output is an example of the Wordpress web
-server.
+Use the following command to get a listing of the default pod deployment for the Wordpress app. Three pods are displayed
+similar to the following output: one for MariaDB, one for WordPress database memory cache and one for the WordPress web
+server. The row highlighted in the output is an example of the Wordpress web server.
 
 ```shell
 kubectl get pods --namespace wordpress
-``` 
+```
 
 ```shell title="Example Output" {2}
 NAME                                                   READY   STATUS    RESTARTS   AGE
@@ -670,14 +668,15 @@ resources were deployed successfully, you can use either the Palette's UI or the
 <TabItem label="kubectl" value="Access Cluster with CLI">
 Return to your terminal window.
 
-Use the following command to get a listing of the default pod deployment for the Wordpress app. Five pods are displayed similar to the following output: one for MariaDB, one for WordPress database memory cache and three for the WordPress web server. The rows highlighted in the output are an example of the Wordpress
-web server.
+Use the following command to get a listing of the default pod deployment for the Wordpress app. Five pods are displayed
+similar to the following output: one for MariaDB, one for WordPress database memory cache and three for the WordPress
+web server. The rows highlighted in the output are an example of the Wordpress web server.
 
 ```shell
 kubectl get pods --namespace wordpress
-``` 
+```
 
-```shell title="Example Output" {2-4}
+````shell title="Example Output" {2-4}
 NAME                                                   READY   STATUS    RESTARTS   AGE
 wordpress-chart-wordpress-dd7d944cb-f2prh              0/1     Running   0          25s
 wordpress-chart-wordpress-dd7d944cb-fdmwt              0/1     Running   0          25s
@@ -712,7 +711,7 @@ the resources you created through Terraform.
 
 ```shell
 terraform destroy --auto-approve
-```
+````
 
 A successful execution of `terraform destroy` will output the following.
 
