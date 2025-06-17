@@ -29,11 +29,14 @@ with Microsoft Azure or Google Cloud Platform (GCP).
 ## Prerequisites
 
 - A Palette account.
-- A Palette API key if you choose to follow along using the [Terraform](#cluster-profile-variables-terraform-workflow) workflow. Refer to the [Create a Palette API Key
-](../../../../getting-started/aws/setup/#create-a-palette-api-key) guide for further instructions.
-- A public cloud account registered in Palette. Refer to [AWS](../../../../clusters/public-cloud/aws/add-aws-accounts/#aws-account),
+- A Palette API key if you choose to follow along using the [Terraform](#cluster-profile-variables-terraform-workflow)
+  workflow. Refer to the [Create a Palette API Key ](../../../../getting-started/aws/setup/#create-a-palette-api-key)
+  guide for further instructions.
+- A public cloud account registered in Palette. Refer to
+  [AWS](../../../../clusters/public-cloud/aws/add-aws-accounts/#aws-account),
   [Azure](../../../../clusters/public-cloud/azure/azure-cloud/#add-azure-cloud-account) or
-  [Google Cloud](../../../../clusters/public-cloud/gcp/add-gcp-accounts/#create-account) to learn how to register a cloud account.
+  [Google Cloud](../../../../clusters/public-cloud/gcp/add-gcp-accounts/#create-account) to learn how to register a
+  cloud account.
 - An SSH key available in the region where you plan to deploy the cluster.
 - Ensure that the
   [Palette Community Registry](../../../registries-and-packs/registries/registries.md#default-registries) is available
@@ -142,8 +145,8 @@ Click **Create** to create the cluster profile variable.
 You can now add the created cluster profile variable to the cluster profile. Click the **Copy to clipboard** icon and
 close the **Profile variables** tab.
 
-You must add the variable to the pack manifest YAML file in order to use it. Click on the WordPress pack, and select
-the **Values** button to open the editor. Paste the variable to replace the default namespace value.
+You must add the variable to the pack manifest YAML file in order to use it. Click on the WordPress pack, and select the
+**Values** button to open the editor. Paste the variable to replace the default namespace value.
 
 Click **Confirm Updates**, and then click **Save Changes**. This will make the variable part of the cluster profile.
 
@@ -154,8 +157,8 @@ WordPress pack.
 
 ![Image that shows variables in use and warning that profile version in use](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-variable-layer-inuse.webp)
 
-Next, select **{} Create variable** to add the remaining variables. Add the following variables and their default values to the new version of the cluster
-profile. After each variable, ensure you click **Create**.
+Next, select **{} Create variable** to add the remaining variables. Add the following variables and their default values
+to the new version of the cluster profile. After each variable, ensure you click **Create**.
 
 #### Variable: wordpress_replica
 
@@ -199,8 +202,9 @@ This tutorial demonstrates the latter option.
 
 In [Palette](https://console.spectrocloud.com/), select your profile and ensure the drop-down menu is set to version
 1.0.0 . Select **Deploy** to deploy the cluster. Check out the
-[Deploy a Cluster](../../../../getting-started/aws/deploy-k8s-cluster/) tutorial for guidance on how to deploy a cluster. The cluster deployment
-process can take 15 to 30 minutes. You can use either the Palette UI or the kubectl tool to verify that the deployment was successful.
+[Deploy a Cluster](../../../../getting-started/aws/deploy-k8s-cluster/) tutorial for guidance on how to deploy a
+cluster. The cluster deployment process can take 15 to 30 minutes. You can use either the Palette UI or the kubectl tool
+to verify that the deployment was successful.
 
 <Tabs groupId="cluster-deployment-verification">
 <TabItem label="kubectl" value="kubectl config">
@@ -212,7 +216,7 @@ Click on the **Admin Kubeconfig File** link to download the file.
 
 Open a terminal window and set the `KUBECONFIG` environment variable to the file path of the kubeconfig file.
 
-```shell title="Example"
+````shell title="Example"
 export KUBECONFIG=~/Downloads/admin.aws-profile-variables.kubeconfig
 
 Use `kubectl get pods --namespace wordpress -output wide` to get a listing of the default pod deployment for the
@@ -225,7 +229,7 @@ NAME                                                   READY   STATUS    RESTART
 wordpress-chart-wordpress-dd7d944cb-kw5dm              1/1     Running   0          23m   192.168.71.70   ip-10-0-1-169.ec2.internal   <none>           <none>
 wordpress-chart-wordpress-mariadb-0                    1/1     Running   0          23m   192.168.71.69   ip-10-0-1-169.ec2.internal   <none>           <none>
 wordpress-chart-wordpress-memcached-56cffcf458-fq59l   1/1     Running   0          23m   192.168.71.68   ip-10-0-1-169.ec2.internal   <none>           <none>
-```
+````
 
 </TabItem>
 
@@ -307,8 +311,8 @@ Select the **Workloads** tab. Then, select **Namespaces**. Refresh the page.
 
 ![Image that shows new namespace available for WordPress](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-validate-namespace.webp)
 
-Select the **Workloads** tab. Then, select **Pods**. Refresh the page and then filter for `new-wordpress-ns`
-namespace. Three additional WordPress web server pods appear in the new WordPress namespace, `new-wordpress-ns`.
+Select the **Workloads** tab. Then, select **Pods**. Refresh the page and then filter for `new-wordpress-ns` namespace.
+Three additional WordPress web server pods appear in the new WordPress namespace, `new-wordpress-ns`.
 
 ![Image that shows new replicas in new namespace for WordPress](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-validate-replica.webp)
 
@@ -549,7 +553,8 @@ The cluster deployment takes a few minutes.
 
 Log in to [Palette](https://console.spectrocloud.com), and click **Clusters** from the left main menu.
 
-Navigate to the newly created cluster and select the **Profile** tab. The profile in use should be version **1.0.0**. To verify that the resources were deployed successfully, you can use either the Palette's UI or the kubectl tool.
+Navigate to the newly created cluster and select the **Profile** tab. The profile in use should be version **1.0.0**. To
+verify that the resources were deployed successfully, you can use either the Palette's UI or the kubectl tool.
 
 <Tabs groupId="cluster-deployment-verification">
 
@@ -596,7 +601,8 @@ Navigate to the **Overview** tab and click the **80** port to launch the WordPre
 
 ![Image that shows default WordPress page](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-wordpress-default-page.webp)
 
-Return to your terminal window and modify the `terraform.tfvars` file so that `deploy-aws-var` is set to `true`. This updates the cluster to use version 1.1.0 of the cluster profile, which contains the cluster profile variables.
+Return to your terminal window and modify the `terraform.tfvars` file so that `deploy-aws-var` is set to `true`. This
+updates the cluster to use version 1.1.0 of the cluster profile, which contains the cluster profile variables.
 
 ```hcl {12}
 ##############################
@@ -637,7 +643,8 @@ The cluster modification will take a few minutes.
 
 Return to [Palette](https://console.spectrocloud.com), and click **Clusters** from the left main menu.
 
-Navigate to your cluster and select the **Profile** tab. The profile in use should be **1.1.0**. To verify that the resources were deployed successfully, you can use either the Palette's UI or the kubectl tool.
+Navigate to your cluster and select the **Profile** tab. The profile in use should be **1.1.0**. To verify that the
+resources were deployed successfully, you can use either the Palette's UI or the kubectl tool.
 
 <Tabs groupId="cluster-deployment-verification-next">
 
