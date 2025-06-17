@@ -32,6 +32,7 @@ This advisory has not been assigned a CVE.
 ### Summary
 
 The identified vulnerability affects Kubernetes clusters compiled with Go versions prior to 1.21.11 or 1.22.4. The issue relates to the use of the os.RemoveAll function in Go. It involves a symlink race condition that allows local non-root users (such as a containerized process) with the same UID as the Pod user to delete arbitrary directories on a host node with root privileges. This issue is especially relevant in environments running multi-tenant or untrusted workloads, where a compromised workload may pose a broader threat to the host.
+
 All the clusters using an affected Kubernetes version must be updated manually. All users should review their cluster profiles and workload clusters and upgrade the Kubernetes version to a fixed version.
 
 ### Recommended Actions
@@ -40,7 +41,7 @@ This vulnerability affects both workload clusters and Palette deployments. If yo
 
 - Refer to the [Update a Cluster Profile](../../profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile.md) guide for instructions on how to update a cluster profile and apply the updates to workload clusters.
 
-- Refer to the to the [Palette Enterprise](../../enterprise-version/upgrade/upgrade.md) or
+- Refer to the [Palette Enterprise](../../enterprise-version/upgrade/upgrade.md) or
   [VerteX](../../vertex/upgrade/upgrade.md) upgrade guides for guidance on upgrading your Palette version for all connected and airgapped Palette Enterprise and VerteX clusters.
 
 ## Security Advisory 001 - Nginx Vulnerability
