@@ -22,10 +22,9 @@ may not be good candidates due to strict restrictions on the value. Refer to the
 section for further information on cluster profile variable definition.
 
 In this tutorial, you will learn how to use cluster profile variables with workload clusters through both
-[Palette's UI](#cluster-profile-variables-ui-workflow) and
-[Terraform](#cluster-profile-variables-terraform-workflow) workflows. While the tutorial
-demonstrates the workflow using Amazon Web Services (AWS), you can also use the same steps with Microsoft Azure or
-Google Cloud Platform (GCP).
+[Palette's UI](#cluster-profile-variables-ui-workflow) and [Terraform](#cluster-profile-variables-terraform-workflow)
+workflows. While the tutorial demonstrates the workflow using Amazon Web Services (AWS), you can also use the same steps
+with Microsoft Azure or Google Cloud Platform (GCP).
 
 ## Prerequisites
 
