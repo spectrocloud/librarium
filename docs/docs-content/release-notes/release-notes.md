@@ -22,8 +22,8 @@ tags: ["release-notes"]
 
 ### Improvements
 
-- Palette now uses an in-house solution for OS patching. This improvement provides simplified workflows for
-  scheduled OS patches and enhanced rolling upgrade capabilities. Refer to
+- Palette now uses an in-house solution for OS patching. This improvement provides simplified workflows for scheduled OS
+  patches and enhanced rolling upgrade capabilities. Refer to
   [Configure Regularly Scheduled OS Upgrades](../deployment-modes/agent-mode/manage-agent/os-upgrades.md) for further
   information.
 
