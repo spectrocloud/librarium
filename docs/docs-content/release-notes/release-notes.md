@@ -13,6 +13,16 @@ tags: ["release-notes"]
 
 ## June 21, 2025 - Release 4.6.X
 
+### Breaking Changes
+
+- Palette now uses an in-house solution for OS patching instead of `system-upgrade-controller` on Edge clusters deployed
+  using [agent mode](../deployment-modes/agent-mode/agent-mode.md). This improvement provides simplified workflows for
+  scheduled OS patches and enhanced rolling upgrade capabilities. If you have an agent mode cluster with OS upgrades
+  already scheduled using the old upgrade script with `system-upgrade-controller`, they will need to be removed and
+  recreated. Refer to
+  [Configure Regularly Scheduled OS Upgrades](../deployment-modes/agent-mode/manage-agent/os-upgrades.md) for further
+  information.
+
 ### Bug Fixes
 
 - Fixed an issue that prevented [Azure IaaS](../clusters/public-cloud/azure/create-azure-cluster.md) clusters using the
@@ -24,13 +34,6 @@ tags: ["release-notes"]
   upgrades. This was caused by a discrepancy in failure domain resources.
 - Fixed an issue that caused [edge hosts](../clusters/edge/edge.md) using a newer version of the Palette agent than the
   Palette instance itself to be become unhealthy upon registration.
-
-### Improvements
-
-- Palette now uses an in-house solution for OS patching. This improvement provides simplified workflows for scheduled OS
-  patches and enhanced rolling upgrade capabilities. Refer to
-  [Configure Regularly Scheduled OS Upgrades](../deployment-modes/agent-mode/manage-agent/os-upgrades.md) for further
-  information.
 
 ## June 12, 2025 - Release 4.6.36
 
