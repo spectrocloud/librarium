@@ -113,7 +113,7 @@ the next layer.
 
 After adding the packs to your cluster profile, click **Confirm & Create**.
 
-Click **Next** and click **Finish Configuration** to create the **1.0.0** cluster profile version.
+Click **Next**. Then, click **Finish Configuration** to create the **1.0.0** cluster profile version.
 
 ### Add Cluster Profile Variables
 
@@ -207,7 +207,7 @@ cluster. The cluster deployment process can take 15 to 30 minutes. You can use e
 to verify that the deployment was successful.
 
 <Tabs groupId="cluster-deployment-verification">
-<TabItem label="kubectl" value="kubectl config">
+<TabItem label="kubectl" value="Access Cluster with CLI">
 From the left main menu, select **Clusters**. Then, select the cluster you created in this tutorial. Select the **Overview** tab, navigate to the middle column containing cluster details and locate the **Kubernetes Config File** row.
 
 Click on the **Admin Kubeconfig File** link to download the file.
@@ -236,7 +236,7 @@ wordpress-chart-wordpress-memcached-56cffcf458-fq59l   1/1     Running   0      
 <TabItem label="Palette UI" value="Palette UI Workloads">
 Select your cluster once it is deployed and then navigate to the **Workloads** tab. Then, select **Pods** and filter for
 **wordpress**. Three pods are displayed similar to the following screenshot: one for MariaDB, one for WordPress database
-memory cache and one for the WordPress web server. This is the default deployment behavior for the WordPress pack.
+memory cache, and one for the WordPress web server. This is the default deployment behavior for the WordPress pack.
 
 ![Image that shows default WordPress deployment](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-default-wp-deploy.webp)
 
@@ -278,7 +278,7 @@ launch the default Wordpress application.
 
 <Tabs groupId="cluster-deployment-verification">
 
-<TabItem label="kubectl" value="kubectl config">
+<TabItem label="kubectl" value="Access Cluster with CLI">
 
 Return to your terminal window and ensure the `KUBECONFIG` environment variable is still set to the file path of the
 kubeconfig file.
@@ -558,7 +558,7 @@ verify that the resources were deployed successfully, you can use either the Pal
 
 <Tabs groupId="cluster-deployment-verification">
 
-<TabItem label="kubectl" value="kubectl config">
+<TabItem label="kubectl" value="Access Cluster with CLI">
 From the left main menu, select **Clusters**. Then, select the cluster you created in this tutorial. Select the **Overview** tab, navigate to the middle column containing cluster details and locate the **Kubernetes Config File** row.
 
 Click on the **Admin Kubeconfig File** link to download the file.
@@ -648,7 +648,7 @@ resources were deployed successfully, you can use either the Palette's UI or the
 
 <Tabs groupId="cluster-deployment-verification-next">
 
-<TabItem label="kubectl" value="kubectl commands">
+<TabItem label="kubectl" value="Access Cluster with CLI">
 Return to your terminal window and ensure the `KUBECONFIG` environment variable is still set to the file path of the kubeconfig file.
 
 Example:
