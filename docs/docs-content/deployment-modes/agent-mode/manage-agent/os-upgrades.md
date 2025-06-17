@@ -56,7 +56,7 @@ be selected based on configured node labels and upgraded periodically according 
    The output will be similar to the following snippet.
 
    ```shell hideClipboard
-   spectro-task-xxxxxxxxxxxxx
+   spectro-task-6851ddd04b1b188784c06291
    ```
 
 7. Provide an upgrade frequency using a cron format. This is used to configure a Kubernetes
@@ -183,8 +183,8 @@ be selected based on configured node labels and upgraded periodically according 
                         serviceAccountName: spectro-task
                         containers:
                             - name: os-upgrade-job
-                            image: us-docker.pkg.dev/palette-images/third-party/ubuntu:22.04
-                            command:
+                              image: us-docker.pkg.dev/palette-images/third-party/ubuntu:22.04
+                              command:
                                 - sh
                                 - -c
                                 - |
