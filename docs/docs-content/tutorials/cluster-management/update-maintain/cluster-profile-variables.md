@@ -677,7 +677,7 @@ web server. The rows highlighted in the output are an example of the Wordpress w
 kubectl get pods --namespace wordpress
 ```
 
-````shell title="Example Output" {2-4}
+```shell title="Example Output" {2-4}
 NAME                                                   READY   STATUS    RESTARTS   AGE
 wordpress-chart-wordpress-dd7d944cb-f2prh              0/1     Running   0          25s
 wordpress-chart-wordpress-dd7d944cb-fdmwt              0/1     Running   0          25s
@@ -713,7 +713,7 @@ the resources you created through Terraform.
 
 ```shell
 terraform destroy --auto-approve
-````
+```
 
 A successful execution of `terraform destroy` will output the following.
 
