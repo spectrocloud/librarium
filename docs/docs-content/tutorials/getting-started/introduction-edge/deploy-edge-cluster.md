@@ -77,13 +77,13 @@ Click **Next** to continue.
 In the **Nodes Config** section, provide the following details for the control plane pool. This tutorial deploys a
 single-node Edge cluster with no worker pool.
 
-| **Field**                       | **Value**                                                                                                                                                                                          |
-| ------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Node pool name                  | control-plane-pool                                                                                                                                                                                 |
-| Allow worker capability         | Yes                                                                                                                                                                                                |
-| Additional Labels (Optional)    | None                                                                                                                                                                                               |
-| Taints                          | None                                                                                                                                                                                               |
-| Pool Configuration > Edge Hosts | Select the Edge host configured in the [Prepare Edge Host](./prepare-edge-host.md) tutorial to become the node of your cluster. Palette automatically displays the NIC Name for the selected host. |
+| **Field**                               | **Value**                                                                                                                                                                                          |
+| --------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Node pool name**                      | `control-plane-pool`                                                                                                                                                                               |
+| **Allow worker capability**             | Yes                                                                                                                                                                                                |
+| **Additional Labels (Optional)**        | None                                                                                                                                                                                               |
+| **Taints (Optional)**                   | None                                                                                                                                                                                               |
+| **Pool Configuration** > **Edge Hosts** | Select the Edge host configured in the [Prepare Edge Host](./prepare-edge-host.md) tutorial to become the node of your cluster. Palette automatically displays the NIC Name for the selected host. |
 
 Next, select **Remove** to delete the worker pool and click **Next** to proceed with the deployment.
 
@@ -146,7 +146,7 @@ automatically removes clusters stuck in the cluster deletion phase for over 24 h
 Once the cluster is deleted, proceed with the cluster profile deletion.
 
 From the left main menu, select **Profiles**. Select the `gs-profile` cluster profile, click on the three-dot menu, and
-click **Delete**. Confirm the selection to remove the cluster profile.
+select **Delete**. Confirm the selection to remove the cluster profile.
 
 ### Edge Host
 
@@ -158,11 +158,19 @@ Palette but does not delete the underlying infrastructure.
 
 ![A screenshot of the Edge Hosts page.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_delete-host.webp)
 
+<Tabs groupId="host">
+
+<TabItem label="VM Host" value="VM Host">
+
 If you used a VirtualBox VM as the Edge host, open the **VirtualBox** application on your host machine to delete the VM.
 
 Right-click the `edge-vm` VM and select **Stop**. Then, click **Power Off** to turn the machine off.
 
 Next, right-click the VM again and select **Remove**. Click **Delete all files** to delete the VM and its hard disk.
+
+</TabItem>
+
+<TabItem label="Bare Metal Host" value="Bare Metal Host">
 
 If you used a physical device as the Edge host, you can reset it to its post-initial setup state. This removes all
 workloads, content, and cluster definitions from the Edge host.
@@ -181,6 +189,10 @@ sudo reboot
 
 Refer to [Reset Host via Terminal](../../../clusters/edge/cluster-management/reset-host.md) for more information about
 Edge host resetting.
+
+</TabItem>
+
+</Tabs>
 
 ### Edge Artifacts
 
@@ -204,8 +216,9 @@ docker rmi ttl.sh/ubuntu:k3s-1.32.1-v4.6.9-gs-tutorial_linux_amd64
 ## Wrap-up
 
 In this tutorial, you learned how to deploy a single-node Edge cluster along with a demo application, using the Edge
-host, cluster profile, and artifacts prepared in earlier tutorials in this series. This deployment completes the Edge
+host, cluster profile, and artifacts prepared in earlier tutorials from this series. This deployment completes the Edge
 Getting Started tutorial series.
 
 We encourage you to check out the [Additional Capabilities](../additional-capabilities/additional-capabilities.md)
-section to explore other Palette functionalities.
+section to explore other Palette functionalities, and the [Edge](../../../clusters/edge/edge.md) documentation section
+to learn more about Palette Edge.
