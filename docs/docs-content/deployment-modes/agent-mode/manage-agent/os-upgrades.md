@@ -260,7 +260,7 @@ the `system-upgrade-xxx` namespace.
    export KUBECONFIG=/path/to/your/kubeconfig
    ```
 
-6. Execute the following commands to find the `system-upgrade-XXX` namespace of your cluster and save it to the
+6. Execute the following commands to find the `spectro-task-XXX` namespace of your cluster and save it to the
    `SYSTEM_UPGRADE_NAMESPACE` variable. This namespace will be different between clusters.
 
    ```shell
