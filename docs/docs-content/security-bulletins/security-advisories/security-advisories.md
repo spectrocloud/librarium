@@ -13,14 +13,13 @@ additional details regarding vulnerabilities and offering remediation steps.
 
 ## Security Advisory 002 - Kubernetes Race Condition
 
-This advisory outlines security vulnerabilities related to the use of the `os.RemoveAll` function in Go and the
-recommended remediation actions.
+This advisory outlines security vulnerabilities related to the use of the `os.RemoveAll` function in Go, which affects Kubernetes clusters compiled with vulnerable Go versions, as well as the recommended remediation actions.
 
-- **Release Date**:
-- **Last Updated**:
-- **Severity**:
+- **Release Date**: June 18, 2025
+- **Last Updated**: June 18, 2025
+- **Severity**: High
 - **Affected Versions**: Kubernetes versions prior to v1.26.15, v1.27.15, v1.28.11, 1.29.6, and v1.30.2
-- **Fixed Versions**: v1.27.15, v1.28.11, v1.29.6, and v1.30.2
+- **Fixed Versions**: v1.27.15+, v1.28.11+, v1.29.6+, and v1.30.2+
 
 ### Related CVEs
 
@@ -38,14 +37,14 @@ users (such as a containerized process) with the same UID as the Pod user to del
 with root privileges. This issue is especially relevant in environments running multi-tenant or untrusted workloads,
 where a compromised workload may pose a broader threat to the host.
 
-All the clusters using an affected Kubernetes version must be updated manually. All users should review their cluster
-profiles and workload clusters and upgrade the Kubernetes version to a fixed version.
+All the clusters using an affected Kubernetes version must be updated manually. Users must review their cluster
+profiles, workload clusters, and instances of Palette, and upgrade the Kubernetes version to a fixed version.
 
 ### Recommended Actions
 
 This vulnerability affects both workload clusters and Palette deployments. If you have any workload clusters, Palette
-Enterprise or VerteX clusters using an affected Kubernetes version, you must update the cluster profile to use one of
-the fixed versions.
+Enterprise or VerteX clusters using an affected Kubernetes version, you must update the cluster to use one of
+the patched versions (v1.27.15, v1.28.11, v1.29.6, and v1.30.2) or newer.
 
 - Refer to the
   [Update a Cluster Profile](../../profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile.md) guide
