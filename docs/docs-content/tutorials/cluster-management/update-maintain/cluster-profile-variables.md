@@ -207,7 +207,7 @@ to verify that the deployment was successful.
 
 <Tabs groupId="cluster-deployment-verification">
 
-<TabItem label="kubectl" value="Access Cluster with CLI">
+<TabItem label="Access Cluster with CLI" value="Access Cluster with CLI">
 From the left main menu, select **Clusters**. Then, select the cluster you created in this tutorial. Select the **Overview** tab, navigate to the middle column containing cluster details and locate the **Kubernetes Config File** row.
 
 Click on the **Admin Kubeconfig File** link to download the file.
@@ -282,7 +282,7 @@ launch the default Wordpress application.
 
 <Tabs groupId="cluster-deployment-verification">
 
-<TabItem label="kubectl" value="Access Cluster with CLI">
+<TabItem label="Access Cluster with CLI" value="Access Cluster with CLI">
 
 Return to your terminal window.
 
@@ -368,7 +368,7 @@ Azure, or GCP. Before you deploy a host cluster to AWS, review the following fil
 | **ssh-key.tf**                         | This file has the SSH key resource definition required for Azure deployments.                                          |
 | **outputs.tf**                         | This file contains the content that will be displayed in the terminal after a successful Terraform `apply` action.     |
 | **manifests/wordpress-default.yaml**   | This file contains the default configuration for the WordPress pack.                                                   |
-| **manifests/wordpress-varaibles.yaml** | This file contains the configuration for the WordPress pack with cluster profile variables added.                      |
+| **manifests/wordpress-variables.yaml** | This file contains the configuration for the WordPress pack with cluster profile variables added.                      |
 
 Open the **cluster_profiles.tf** file. In the **AWS Cluster Profile v1.0.0**, there are no variables defined and the
 WordPress pack points to `wordpress-default.yaml`. This file is the default YAML configuration file for the WordPress
@@ -573,7 +573,7 @@ verify that the resources were deployed successfully, you can use either the Pal
 
 <Tabs groupId="cluster-deployment-verification">
 
-<TabItem label="kubectl" value="Access Cluster with CLI">
+<TabItem label="Access Cluster with CLI" value="Access Cluster with CLI">
 From the left main menu, select **Clusters**. Then, select the cluster you created in this tutorial. Select the **Overview** tab, navigate to the middle column containing cluster details and locate the **Kubernetes Config File** row.
 
 Click on the **Admin Kubeconfig File** link to download the file.
@@ -581,8 +581,6 @@ Click on the **Admin Kubeconfig File** link to download the file.
 ![Image that shows how to download kubeconfig file](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-download-kubeconfig-tf.webp)
 
 Open a terminal window and set the `KUBECONFIG` environment variable to the file path of the kubeconfig file.
-
-Example:
 
 ```shell title="Example"
 export KUBECONFIG=~/Downloads/admin.aws-profile-var-tf.kubeconfig
@@ -666,7 +664,7 @@ resources were deployed successfully, you can use either the Palette's UI or the
 
 <Tabs groupId="cluster-deployment-verification-next">
 
-<TabItem label="kubectl" value="Access Cluster with CLI">
+<TabItem label="Access Cluster with CLI" value="Access Cluster with CLI">
 Return to your terminal window.
 
 Use the following command to get a listing of the default pod deployment for the Wordpress app. Five pods are displayed
