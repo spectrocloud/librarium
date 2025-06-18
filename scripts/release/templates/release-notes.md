@@ -30,6 +30,16 @@
 
 ### Automation
 
+:::info
+
+Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible version of the Palette CLI.
+
+:::
+
+#### Features
+
+#### Improvements
+
 ### Docs and Education
 
 ### Packs
