@@ -31,7 +31,8 @@ tags: ["release-notes"]
   same control plane and worker node subnet from being deleted.
 - Fixed an issue that caused multiple machine sets to be created following
   [node repaves](../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration) triggered by Palette
-  upgrades. This was caused by a discrepancy in failure domain resources.
+  upgrades on [data center clusters](../clusters/data-center/data-center.md). This was caused by a discrepancy in
+  failure domain resources.
 - Fixed an issue that caused [edge hosts](../clusters/edge/edge.md) using a newer version of the Palette agent than the
   Palette instance itself to be become unhealthy upon registration.
 
