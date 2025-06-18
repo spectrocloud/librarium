@@ -13,7 +13,7 @@ additional details regarding vulnerabilities and offering remediation steps.
 
 ## Security Advisory 002 - Kubernetes Race Condition
 
-This advisory outlines security vulnerabilities related to the use of the os.RemoveAll function in Go and the
+This advisory outlines security vulnerabilities related to the use of the `os.RemoveAll` function in Go and the
 recommended remediation actions.
 
 - **Release Date**:
@@ -33,7 +33,7 @@ This advisory has not been assigned a CVE.
 ### Summary
 
 The identified vulnerability affects Kubernetes clusters compiled with Go versions prior to 1.21.11 or 1.22.4. The issue
-relates to the use of the os.RemoveAll function in Go. It involves a symlink race condition that allows local non-root
+relates to the use of the `os.RemoveAll` function in Go. It involves a symlink race condition that allows local non-root
 users (such as a containerized process) with the same UID as the Pod user to delete arbitrary directories on a host node
 with root privileges. This issue is especially relevant in environments running multi-tenant or untrusted workloads,
 where a compromised workload may pose a broader threat to the host.
