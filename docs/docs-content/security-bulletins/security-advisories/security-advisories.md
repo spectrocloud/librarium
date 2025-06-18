@@ -13,7 +13,8 @@ additional details regarding vulnerabilities and offering remediation steps.
 
 ## Security Advisory 002 - Kubernetes Race Condition
 
-This advisory outlines security vulnerabilities related to the use of the `os.RemoveAll` function in Go, which affects Kubernetes clusters compiled with vulnerable Go versions, as well as the recommended remediation actions.
+This advisory outlines security vulnerabilities related to the use of the `os.RemoveAll` function in Go, which affects
+Kubernetes clusters compiled with vulnerable Go versions, as well as the recommended remediation actions.
 
 - **Release Date**: June 18, 2025
 - **Last Updated**: June 18, 2025
@@ -43,8 +44,8 @@ profiles, workload clusters, and instances of Palette, and upgrade the Kubernete
 ### Recommended Actions
 
 This vulnerability affects both workload clusters and Palette deployments. If you have any workload clusters, Palette
-Enterprise or VerteX clusters using an affected Kubernetes version, you must update the cluster to use one of
-the patched versions (v1.27.15, v1.28.11, v1.29.6, and v1.30.2) or newer.
+Enterprise or VerteX clusters using an affected Kubernetes version, you must update the cluster to use one of the
+patched versions (v1.27.15, v1.28.11, v1.29.6, and v1.30.2) or newer.
 
 - Refer to the
   [Update a Cluster Profile](../../profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile.md) guide
