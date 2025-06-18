@@ -280,8 +280,8 @@ the `system-upgrade-xxx` namespace.
    kubectl get secret,cronjob --namespace $SYSTEM_UPGRADE_NAMESPACE
    ```
 
-   Confirm the secrets `secret/os-upgrade-plan`, `secret/os-upgrade-script` and the
-   `cronjob.batch/os-upgrade-cronjob` cron job were created successfully.
+   Confirm the secrets `secret/os-upgrade-plan`, `secret/os-upgrade-script` and the `cronjob.batch/os-upgrade-cronjob`
+   cron job were created successfully.
 
    ```text title="Example Output"
    NAME                           TYPE     DATA   AGE
