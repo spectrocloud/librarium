@@ -70,7 +70,7 @@ to a bootable device, such as a USB stick.
                fi
     ```
 
-2.  Create an empty `meta-data` file:
+2.  Create an empty `meta-data` file.
 
     ```shell
     touch meta-data
