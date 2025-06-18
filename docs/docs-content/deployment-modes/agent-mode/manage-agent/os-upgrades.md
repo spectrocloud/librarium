@@ -11,10 +11,9 @@ Agent mode hosts install and manage their Operating System (OS) outside Palette.
 in terms of architecture, but it has the drawback that Palette cannot upgrade, patch or manage the operating systems of
 the hosts. This can lead to inconsistencies, missed updates, or operational risks.
 
-This page demonstrates how to configure regularly scheduled OS upgrades by leveraging cluster profiles and the
-[system upgrade controller](https://github.com/rancher/system-upgrade-controller) already installed by Palette. You will
-learn how to create your own Kubernetes manifest containing your custom OS upgrade script. Your cluster nodes will then
-be selected based on configured node labels and upgraded periodically according to a cron schedule you choose.
+This page demonstrates how to configure regularly scheduled OS upgrades by leveraging cluster profiles. You will learn
+how to create your own Kubernetes manifest containing your custom OS upgrade script. Your cluster nodes will then be
+selected based on configured node labels and upgraded periodically according to a cron schedule you choose.
 
 ## Prerequisites
 
@@ -45,7 +44,7 @@ be selected based on configured node labels and upgraded periodically according 
    export KUBECONFIG=/path/to/your/kubeconfig
    ```
 
-6. Execute the following commands to find the `system-upgrade-XXX` namespace of your cluster and save it to the
+6. Execute the following commands to find the `spectro-task-XXX` namespace of your cluster and save it to the
    `SYSTEM_UPGRADE_NAMESPACE` variable. This namespace will be different between clusters.
 
    ```shell
@@ -210,11 +209,11 @@ be selected based on configured node labels and upgraded periodically according 
     The command creates the `upgrades.yaml` file in your current directory. The YAML file defines the following
     Kubernetes resources.
 
-    | **Resource** | **Name**            | **Description**                                                                                                                                                                                                                                                                                                                                               |
-    | ------------ | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | `Secret`     | `os-upgrade-script` | Saves the upgrade instructions to an opaque secret.                                                                                                                                                                                                                                                                                                           |
-    | `Secret`     | `os-upgrade-plan`   | Saves the upgrade script execution on the cluster nodes using the specified upgrade concurrency and node selector labels. The execution is configured using the `Plan` resource defined by the [`system-upgrade-controller` project](https://github.com/rancher/system-upgrade-controller). Palette has installed all required dependencies for this project. |
-    | `CronJob`    | `os-upgrade-job`    | Schedules the upgrade plan to execute at regular intervals and provides a restart policy should the plan fail.                                                                                                                                                                                                                                                |
+    | **Resource** | **Name**            | **Description**                                                                                                                                                                         |
+    | ------------ | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | `Secret`     | `os-upgrade-script` | Stores the `upgrade.sh` shell script, which defines the upgrade logic to be executed on target nodes. This script is later mounted into the container via a secret volume.              |
+    | `Secret`     | `os-upgrade-plan`   | Stores the YAML definition of a `SpectroSystemTask` resource in its `plan.yaml` field. The CronJob retrieves this secret and applies the embedded plan to initiate the upgrade process. |
+    | `CronJob`    | `os-upgrade-job`    | Schedules the upgrade plan to execute at regular intervals and provides a restart policy should the plan fail.                                                                          |
 
 12. Navigate back to [Palette](https://console.spectrocloud.com) in your browser. Select **Profiles** from the left
     **Main Menu**.
@@ -239,7 +238,7 @@ be selected based on configured node labels and upgraded periodically according 
 20. Select the newly created version of your cluster profile. Click **Save**.
 
 Palette applies your manifest to the cluster. The Kubernetes resources responsible for the system upgrade are created in
-the `system-upgrade-xxx` namespace.
+the `spectro-task-xxx` namespace.
 
 ## Validate
 
@@ -260,7 +259,7 @@ the `system-upgrade-xxx` namespace.
    export KUBECONFIG=/path/to/your/kubeconfig
    ```
 
-6. Execute the following commands to find the `system-upgrade-XXX` namespace of your cluster and save it to the
+6. Execute the following commands to find the `spectro-task-XXX` namespace of your cluster and save it to the
    `SYSTEM_UPGRADE_NAMESPACE` variable. This namespace will be different between clusters.
 
    ```shell
