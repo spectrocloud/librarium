@@ -189,7 +189,7 @@ Paste `'{{.spectro.var.wordpress_replica}}'` to the value of the `charts.wordpre
 
 Next, paste `'{{.spectro.var.wordpress_port}}'` to the value of the `charts.wordpress.service.ports.http` resource.
 
-![Image that shows shows WordPress variable for ports](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-http-port.webp)
+![Image that shows WordPress variable for ports](/tutorials/deploy-cluster-profile-variables/clusters_cluster-management_deploy-cluster-profile-variables-http-port.webp)
 
 Click **Confirm Updates** and **Save Changes** to add the new variables to the WordPress pack.
 
@@ -206,6 +206,7 @@ cluster. The cluster deployment process can take 15 to 30 minutes. You can use e
 to verify that the deployment was successful.
 
 <Tabs groupId="cluster-deployment-verification">
+
 <TabItem label="kubectl" value="Access Cluster with CLI">
 From the left main menu, select **Clusters**. Then, select the cluster you created in this tutorial. Select the **Overview** tab, navigate to the middle column containing cluster details and locate the **Kubernetes Config File** row.
 
@@ -683,6 +684,7 @@ wordpress-chart-wordpress-dd7d944cb-fdmwt              0/1     Running   0      
 wordpress-chart-wordpress-dd7d944cb-n78rc              0/1     Running   0          25s
 wordpress-chart-wordpress-mariadb-0                    0/1     Running   0          25s
 wordpress-chart-wordpress-memcached-56cffcf458-hd9x6   1/1     Running   0          25s
+```
 
 </TabItem>
 
