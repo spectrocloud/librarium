@@ -1,7 +1,7 @@
 ---
 sidebar_position: 10
-sidebar_label: "Deploy and Manage VMs with VMO and Terraform"
-title: "Deploy and Manage VMs with VMO and Terraform"
+sidebar_label: "Deploy and Manage VMs with VMO"
+title: "Deploy and Manage VMs with VMO"
 description:
   "Learn how to create and manage Virtual Machines using Palette VMO on host clusters deployed to Canonical MAAS."
 tags: ["VMO", "tutorial", "maas"]
@@ -28,7 +28,7 @@ customize and deploy a VM.
 
 <PartialsComponent category="vmo" name="vmo-tutorial-requirements" />
 
-- The following software installed locally
+- If you choose to clone the repository instead of using the tutorial container, make sure you have the following software installed locally:
 
   - [Git](https://git-scm.com/downloads)
 
@@ -58,7 +58,7 @@ customize and deploy a VM.
 
 This section will guide you through creating a cluster profile using the Palette UI. 
 
-Log in to [Palette](https://console.spectrocloud.com/). Navigate to the left main menu, select **Profiles** > **Add Cluster Profile**.
+Log in to [Palette](https://console.spectrocloud.com/). From the left main menu, select **Profiles** > **Add Cluster Profile**.
 
 In the **Basic Information** section, enter the name, version number, and any tags you wish to apply to the profile. Set the type value to **Full**. Select **Next**.
 
@@ -126,7 +126,7 @@ into the manifest editor.
                 SystemdCgroup = true
     ```
 
-Update the value for `NETWORKS` to the appropriate "subnet for your environment. The value you enter must be in CIDR
+Update the value for `NETWORKS` to the appropriate subnet for your environment. The value you enter must be in CIDR
 notation and encapsulated in quotes. For example, `"192.168.0.0/16"`. The image below displays the OS layer with the custom manifest and updated `NETWORKS` value.
 
 ![image of the OS Layer configuration](/tutorials/deploy-vmo-maas/tutorials_vmo_vmo-maas_OS-Layer.webp)
@@ -154,9 +154,9 @@ Review the values for **podCIDR** and **serviceClusterIpRange** and update them 
 
 ![Image of the configuration lines where Pod and Services Subnets are set.](/tutorials/deploy-vmo-maas/tutorials_vmo_vmo-maas_pod-service-ips.webp)
 
-This template contains security configurations that restrict pod actions. While this is a good practice, it can prevent some services from functioning correctly. One such service is the **Rook-Ceph** Container Storage Interface (CSI), which you will configure later in this tutorial. 
+This template contains security configurations that restrict pod actions. While this is a good practice, it can prevent some services from functioning correctly. One such service is the Rook-Ceph Container Storage Interface (CSI), which you will configure later in this tutorial. 
 
-The **Rook-Ceph** deployment must be excluded from default pod security settings by excluding the namespace to which it will be deployed. The following screenshot displays the manifest editor with the `namespaces` field highlighted and the value updated.
+The Rook-Ceph deployment must be excluded from default pod security settings by excluding the namespace to which it will be deployed. The following screenshot displays the manifest editor with the `namespaces` field highlighted and the value updated.
 
 ![Image of the pod security namespace exclusion values](/tutorials/deploy-vmo-maas/tutorials_vmo_vmo-maas_podSecurity.webp)
 
@@ -312,10 +312,10 @@ Add the **Rook-Ceph (Helm)** pack to your cluster profile.
 
 If necessary, set the **Pack Version** to `1.16.3` and select **Confirm Changes**.
 
-Select **Values**. From the **Presets** drop-down menu, set the value for **Cluster Configuration** to **Single Node Cluster**. The preset for 'Single Node Cluster' in the rook-ceph pack implies that a single worker node is used, not that the
-Kubernetes Control Plane and workloads use a single node.
+Select **Values**. From the **Presets** drop-down menu, set the value for **Cluster Configuration** to **Single Node Cluster**. The preset for **Single Node Cluster** in the Rook-Ceph pack implies that a single worker node is used, not that the
+Kubernetes control plane and workloads use a single node.
 
-When deploying a single workload cluster, running multiple CSI pods is unnecessary. The manifest below contains configuration that force all CSI pods to use a single instance.
+When deploying a single workload cluster, running multiple CSI pods is unnecessary. The manifest below contains configuration that forces all CSI pods to use a single instance.
 
 Select **Values** and paste the following configuration into the manifest editor.
 
@@ -1731,7 +1731,7 @@ Select **Values** and paste the following configuration into the manifest editor
 
 Select **Confirm** once all the infrastructure layers of your cluster profile are complete.
 
-Additional layers are needed to enable connectivity to your cluster, enable VMO services, and deploy VM templates. Select **Add New Pack**. Search for metallb and add the following pack to your cluster profile.
+Additional layers are needed to enable connectivity to your cluster, enable VMO services, and deploy VM templates. Select **Add New Pack**. Search for `metallb` and add the following pack to your cluster profile.
 
 | **Pack Name** | **Version** | **Registry** | **Layer** |
 |---------------|-------------|--------------|-----------|
@@ -1767,7 +1767,7 @@ VMO has two different connectivity options, **Proxied** and **Direct**.
 | Direct                | This mode is intended for use in an environment with no access restrictions. Communications to the cluster are open and reachable from your corporate networks. This mode will configure the MetallB load balancer to allow ingress to VMO services.                                         |
 
 For more information on the Spectro proxy, visit the
-[Official Spectro Proxy documentation page](https://docs.spectrocloud.com/integrations/packs/?pack=spectro-proxy&version=1.5.6&parent=1.5.x&tab=main)
+[Spectro Proxy](https://docs.spectrocloud.com/integrations/packs/?pack=spectro-proxy&version=1.5.6&parent=1.5.x&tab=main) documentation page.
 
 Select **Values** and set the **Access** option to **Proxied**.
 
@@ -2453,13 +2453,13 @@ Select the **Values** icon, remove all configurations in the manifest editor, an
 Select **Confirm & Create** to add the **Virtual Machine Orchestrator** pack to your cluster profile.
 
 Next, you will configure the VM deployment templates, data volumes containing OS Images, and storage
-profiles available in VMO. These configurations can be customized, allowing you control of the OS images, image
+profiles available in VMO. These configurations can be customized, allowing you to control the OS images, image
 repositories, storage, and VM configurations.
 
-Select **Add Manifest**. Name the new layer **vmo-extras**. Set the value of the **Install Order** field to 20 to ensure these configurations apply after the VMO pack is installed. Select **New manifest** and name the manifest **vmo-extras-manifest**. Select the
+Select **Add Manifest**. Name the new layer `vmo-extras`. Set the value of the **Install Order** field to 20 to ensure these configurations apply after the VMO pack is installed. Select **New manifest** and name the manifest `vmo-extras-manifest`. Select the
 **blue check mark**.
 
-The manifest editor appears. Copy the YAML config below and paste it into the manifest editor. This configuration applies some configuration templates to the VMO services, such as the VM deployment template, storage profiles, and data volumes.
+The manifest editor appears. Copy the YAML configuration below and paste it into the manifest editor. This configuration applies different templates to the VMO services, such as the VM deployment template, storage profiles, and data volumes.
 
 :::warning
 
@@ -2609,7 +2609,7 @@ The visual of the cluster profile reflects the install order you defined while a
 
 ![Image of completed cluster profile.](/tutorials/deploy-vmo-maas/tutorials_vmo_vmo-maas_complete-cluster-profile.webp)
 
-If the install order is incorrect, you can select the pack that needs to be modified and update the **Install order** field in the **Edit additional pack section**.
+If the install order is incorrect, you can select the pack that needs to be modified and update the **Install order** field in the **Edit additional pack** section.
 
 Select **Next** to proceed to the **Cluster Profile Review** screen. Select **Finish Configuration** to save your cluster profile.
 
@@ -2645,7 +2645,7 @@ The **Cluster Profile** screen provides the details of all the packs in the sele
 enables the same profile to be used for multiple clusters by allowing you to change pack values, modify presets, or set
 variable values for your packs when they are used to create a new cluster. Select **Next** to accept the cluster profile.
 
-The wizard begins to guide you through configuring the hardware Palette will use to build your cluster. Select your target MAAS domain from the **Domain drop-down menu**. Select **Next**.
+The wizard guides you through configuring the machines that Palette will use to build your cluster. Select your target MAAS domain from the **Domain** drop-down menu. Select **Next**.
 
 The **Node pools configuration** screen allows customization of the control plane node pool, worker node pool, and
 which MAAS machines will be used to build your cluster.
@@ -2672,9 +2672,9 @@ The **Worker Pool - Cloud Configuration** section lets you control the specifica
 
 | **Variable**        | **Instruction**                                                                                                                                                                                                                                                                                           |
 | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Resource Pool**       | Set this value to the name of the MAAS resource pool from which your control plane server will be taken.                                                                                                                                                                                                 |
-| **Minimum CPU**         | Set this to the minimum number of CPU cores you want your Control Plane server to have. We recommend that you set values higher than 5.                                                                                                                                                                                   |
-| **Minimum Memory (GB)** | Set this to the minimum memory you want your Control Plane server to have.                                                                                                                                                                                   |
+| **Resource Pool**       | Set this value to the name of the MAAS resource pool from which your worker server will be taken.                                                                                                                                                                                                 |
+| **Minimum CPU**         | Set this to the minimum number of CPU cores you want your worker server to have. We recommend that you set values higher than 5.                                                                                                                                                                                   |
+| **Minimum Memory (GB)** | Set this to the minimum memory you want your worker server to have.                                                                                                                                                                                   |
 | **Availability zones**  | This optional value lets you specify which AZs to use for your node deployment. This configuration is critical when planning high availability patterns for your infrastructure.                                                                                             |
 | **Tags**                | This optional value allows you to assign a tag to the MAAS machine selected for the build. <br /> To learn more about MAAS automatic tags, refer to the [MAAS Tags](https://maas.cloud.cbh.kth.se/MAAS/docs/cli/how-to-tag-machines.html#heading--how-to-create-automatic-tags) documentation. |
 
@@ -2694,7 +2694,7 @@ standards when configuring RBAC for your cluster. If no standards exist, we reco
 
 :::
 
-Select **Finish Configuration** to begin deployment of your cluster.
+Select **Finish Configuration** to begin the deployment of your cluster.
 
 </TabItem>
 
@@ -2702,7 +2702,7 @@ Select **Finish Configuration** to begin deployment of your cluster.
 
 #### Terraform Resources Review
 
-To help you get started with Terraform, the tutorial code is structured to support deploying a cluster to MAAS. Before you deploy a host cluster, review the following files in the folder
+The tutorial code is structured to support deploying a cluster to MAAS. Before you deploy a host cluster, review the following files in the folder
 structure.
 
 | **File**                | **Description**                                                                                                        |
@@ -2715,13 +2715,13 @@ structure.
 | **terraform.tfvars**    | Use this file to target a specific cloud provider and customize the deployment. This is the only file you must modify. |
 | **virtual-machines.tf**           | This file contains the configuration that will be applied to the VM you create in your VMO cluster.                     |
 
-Expand the details boxes for more info on the Terraform files used in this tutorial.
+Expand the following boxes for more information on the Terraform files used in this tutorial.
 
 <details>
   <summary>provider.tf</summary>
 
 The **provider.tf** file contains the Terraform providers used in the tutorial and their respective versions. This
-tutorial uses four providers:
+tutorial uses three providers:
 
 - [Spectro Cloud](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs)
 - [TLS](https://registry.terraform.io/providers/hashicorp/tls/latest)
@@ -2771,7 +2771,7 @@ Cluster profiles include layers for the Operating System (OS), Kubernetes, conta
 container storage interface. The first `pack {}` block in the list equates to the bottom layer of the cluster profile.
 Ensure you define the bottom layer of the cluster profile - the OS layer - first in the list of `pack {}` blocks, as the
 order in which you arrange the contents of the `pack {}` blocks plays an important role in the cluster profile creation.
-The table below displays the packs deployed in each version of the cluster profile.
+The table below displays the packs used in the cluster profiles.
 
 | **Pack Type** | **Pack Name**      | **Version** |
 |---------------|--------------------|-------------|
@@ -2781,7 +2781,7 @@ The table below displays the packs deployed in each version of the cluster profi
 | Storage | `csi--rook-ceph-helm 1.16.3` | `1.16.3` |
 | Load Balancer | `lb-metallb-helm 0.14.9` | `0.14.9` |
 | App Services | `virtual-machine-orchestrator 4.6.3` | `4.6.3` |
-| Custom Manifest | `vmo-extras' | `1.0.0` |
+| Custom Manifest | `vmo-extras` | `1.0.0` |
 
     ```hcl
     ##########################
@@ -2880,7 +2880,7 @@ The table below displays the packs deployed in each version of the cluster profi
   <summary>cluster.tf</summary>
 
 The **cluster.tf** file contains the definitions required for deploying a host cluster to one of the infrastructure
-providers. To create an MAAS host cluster, you must set the `deploy-maas` variable in the `terraform.tfvars` file to true.
+providers. To create a MAAS host cluster, you must set the `deploy-maas` variable in the `terraform.tfvars` file to true.
 
 When deploying a cluster using Terraform, you must provide the same parameters as those available in the Palette UI for
 the cluster deployment step, such as the instance size and number of nodes. You can learn more about each parameter by
@@ -2948,7 +2948,7 @@ documentation.
 <details>
   <summary>data.tf</summary>
 
-Each pack {} block contains references to a data resource. Data resources are used to perform read actions in Terraform. The Spectro Cloud Terraform provider exposes several data resources to help you make your Terraform code more dynamic. The data resource used in the cluster profile is spectrocloud_pack. This resource lets you query Palette for information about a specific pack, such as its unique ID, registry ID, available versions, and YAML values.
+Each pack {} block contains references to a data resource. Data resources are used to perform read actions in Terraform. The Spectro Cloud Terraform provider exposes several data resources to help you make your Terraform code more dynamic. The data resource used in the cluster profile is `spectrocloud_pack`. This resource lets you query Palette for information about a specific pack, such as its unique ID, registry ID, available versions, and YAML values.
 
 Below is the data resource used to query Palette for information about the Kubernetes pack for version 1.32.2.
 
@@ -3097,11 +3097,11 @@ The VMO pack may require custom network configurations to function correctly in 
 
 To deploy a cluster using Terraform, you must first modify the `terraform.tfvars` file. Open it in the editor of your choice. 
 
-The **terraform.tfvars** file is structured into sections. Each section contains variables that need to be filled in, identified by the placeholder `REPLACE_ME`. Additionally, there is a toggle variable named `deploy-maas` must be set to `true` to deploy your MAAS cluster.
+The **terraform.tfvars** file is structured into sections. Each section contains variables that need to be filled in, identified by the placeholder `REPLACE_ME`. Additionally, there is a toggle variable named `deploy-maas` that must be set to `true` to deploy your MAAS cluster.
 
 In the **Palette Settings** section, modify the name of the palette-project variable if you wish to deploy to a Palette project different from the default one.
 
-For more information about the variables and their usage, refer to the [.README](https://github.com/spectrocloud/tutorials/blob/main/terraform/vmo-cluster/README.md) file.
+For more information about the variables and their usage, refer to the [README](https://github.com/spectrocloud/tutorials/blob/main/terraform/vmo-cluster/README.md) file.
 
 Execute the `terraform plan` command to ensure there are no errors and you have connectivity to your Spectro Cloud
 tenant.
@@ -3134,7 +3134,7 @@ tenant.
 
 Execute the `terraform apply` command. Depending on your environment, this process may take up to an hour or more. You can monitor the progress of your cluster build by logging into your [Palette](https://console.spectrocloud.com) tenant and selecting **Clusters** from the left main menu. 
 
-Lastly, you must configure cluster role bindings for your user account and the `virtual-machine-orchestrator` service account
+Lastly, you must configure cluster role bindings for your user account and the `virtual-machine-orchestrator` service account.
 
 In Palette, select the **Clusters** option in the left main menu and select the cluster you created. Select **Settings** > **Cluster Settings** to access the **Optional Cluster Settings** menu.
 
@@ -3148,7 +3148,7 @@ Your cluster role bindings have now been applied to your cluster.
 
 ## Verify the Cluster Deployment
 
-Select the **Clusters** option in the left main menu in Palette. Select the cluster you created in the [Deploy a VMO Cluster](#deploy-a-vmo-cluster) section. On the **Cluster Overview** page, ensure the cluster status is healthy, and the **Virtual Machines** tab appears. No further validation is required.
+Select the **Clusters** option in the left main menu in Palette. Select the cluster you created in the [Deploy a VMO Cluster](#deploy-a-vmo-cluster) section. On the cluster's **Overview** page, ensure the cluster status is healthy, and the **Virtual Machines** tab appears. No further validation is required.
 
 ![Image of succesfully deployed cluster](/tutorials/deploy-vmo-maas/tutorials_vmo_vmo-maas_verify-cluster.webp)
 
@@ -3158,9 +3158,9 @@ Select the **Clusters** option in the left main menu in Palette. Select the clus
 
 <TabItem label="UI Workflow" value="UI Workflow">
 
-From the left main menu, select **Clusters** to open the cluster management console. Select the cluster you deployed in the [Deploy a VMO Cluster](#deploy-a-vmo-cluster) section to open its **Cluster Overview** page.
+From the left main menu, select **Clusters** to open the cluster management console. Select the cluster you deployed in the [Deploy a VMO Cluster](#deploy-a-vmo-cluster) section to open its **Overview** page.
 
-The `default` namespace is automatically displayed on the **VM Dashboard**. Select the **virtual-machines** namespace from the **Namespace** drop-down menu. The display will update to show the status of any VMs running in that namespace. This also specifies the namespace where your VMs will be deployed. Select **New Virtual Machine** to begin deploying your VM.
+The `default` namespace is automatically displayed on the **VM Dashboard**. Select the `virtual-machines` namespace from the **Namespace** drop-down menu. The display will update to show the status of any VMs running in that namespace. This also specifies the namespace where your VMs will be deployed. Select **New Virtual Machine** to begin deploying your VM.
 
 The next screen allows you to select and configure the OS for your VM. The VM template displayed is the one you deployed in the [Create a VMO Cluster Profile](#create-a-vmo-cluster-profile) section. Select the **Ubuntu 22.04** template.
 
@@ -3170,12 +3170,12 @@ The **VM settings** page allows you to customize the basic configuration for you
 | ------------------------------------- | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Name**                                  | `Choose a name` | The name of the VM to be deployed.                                                                                                                                                                                                                                                                                                                                              |
 | **CPUs (cores)**                          | `2`             | The number of CPU cores your VM needs.                                                                                                                                                                                                                                                                                                                                          |
-| **Memory (GiB)**                          | `2`             | The amount of Memory your VM needs have in GiB                                                                                                                                                                                                                                                                                                                                 |
-| **Storage Access Mode**                   | `ReadWriteMany` | We recommend always using ReadWriteMany. This configuration allows your VM to read the storage volume from any node in your cluster. This is required if you plan to migrate your VM between nodes. <br /> This configuration also helps avoid node congestion as Kubernetes attempts to schedule your VM on a node with a Volume with the matching Storage Access Mode. |
-| OS image URL                          | `N/A`           | Your image location is defined in the Ubuntu 22.04 template. This field is used to specify custom OS images or custom image repositories for a VM.                                                                                                                                                                                                                                |
-| **Start VM automatically after creation** | `Halted`        | We recommend setting this value to halted to ensure no issues occur during the cloud-init process |
+| **Memory (GiB)**                          | `2`             | The amount of memory your VM needs to have in GiB                                                                                                                                                                                                                                                                                                                                 |
+| **Storage Access Mode**                   | `ReadWriteMany` | We recommend always using `ReadWriteMany`. This configuration allows your VM to read the storage volume from any node in your cluster. This is required if you plan to migrate your VM between nodes. <br /> This configuration also helps avoid node congestion as Kubernetes attempts to schedule your VM on a node with a volume with the matching storage access mode. |
+| **OS image URL**                         | `N/A`           | Your image location is defined in the Ubuntu 22.04 template. This field is used to specify custom OS images or custom image repositories for a VM.                                                                                                                                                                                                                                |
+| **Start VM automatically after creation** | `Halted`        | We recommend setting this value to halted to ensure no issues occur during the cloud-init process. |
 
-The **Customize Configuration** screen displays the YAML used to build your VM. KubeVirt enables
+The **Customize Configuration** screen displays the YAML used to build your VM. [KubeVirt](https://kubevirt.io/) enables
 configuration, deployment, and management of your VMs using the same process used to configure and deploy pods.
 
 Select **Next** to apply your customizations. Select **Create Virtual Machine**.
@@ -3191,15 +3191,15 @@ have. Update `terraform.tfvars` as instructed in the following table.
 
 | **Variable**       | **Data Type** | **Instruction**                                                                                                                                                              |
 | ------------------ | ------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **deploy-maas-vm** | `boolean`     | This is a true of false value. If true, an Ubuntu 22.04 VM with Docker installed is deployed in your VMO cluster. Set this value to `true` for this section of the tutorial. |
+| **deploy-maas-vm** | `boolean`     | If true, an Ubuntu 22.04 VM with Docker installed is deployed in your VMO cluster. Set this value to `true` for this section of the tutorial. |
 | **vm-deploy-namespace** | `string`      | Set this value to the name of the VLAN you want your VMs to deploy on.<br/><br/>These namespaces are standard Kubernetes namespaces. Your VM is impacted by any configurations applied at the namespace level, such as network policies and quotas. |
 | **vm-deploy-name**      | `string`      | Set this value to the name you want your VM to have.                                                                                                                                                                                               |
 | **vm-labels**           | `string`      | Set this value to a single label you want applied to your VM. For multiple labels, you must modify _virtual_machines.tf_ to include one line for each label.                                                                                       |
-| **vm-storage-Gi**       | `string`      | Set this value to the disk size you want your VM to have. You must include 'Gi' in your value. Example `50Gi`                                                                                                                                   |
+| **vm-storage-Gi**       | `string`      | Set this value to the disk size you want your VM to have. You must include 'Gi' in your value. For example, `50Gi`.                                                                                                                                   |
 | **vm-vpu-cores**        | `number`      | Set this value to the number of CPU cores your VM will have.                                                                                                                                                                                       |
 | **vm-cpu-sockets**      | `number`      | Set this value to the number of physical CPU sockets your VM needs. This is intended to enable hardware resilience in case of a single CPU socket-related failure.                                                                            |
 | **vm-cpu-threads**      | `number`      | The number of CPU threads your VM can use. You can assign 1 CPU core and a single thread if desired.                                                                                                                                     |
-| **vm-memory-Gi**        | `string`      | Set this value to the amount of RAM (memory) you want your VM to have. You must include 'Gi' in your value. Example `4Gi`                                                                                                                          |
+| **vm-memory-Gi**        | `string`      | Set this value to the amount of RAM (memory) you want your VM to have. You must include 'Gi' in your value. For example, `4Gi`.                                                                                                                          |
 
 Execute the `terraform plan` command to ensure there are no errors and you have connectivity to your Spectro Cloud
 tenant.
@@ -3236,14 +3236,14 @@ Execute the `terraform apply` command to create the VM in your VMO Cluster.
 
 ## Deploy the Application
 
-From the left main menu, select **Clusters** to open the cluster management console. Select the cluster you deployed in the [Deploy a VMO Cluster](#deploy-a-vmo-cluster) section to open its **Cluster Overview** page.
+From the left main menu, select **Clusters** to open the cluster management console. Select the cluster you deployed in the [Deploy a VMO Cluster](#deploy-a-vmo-cluster) section to open its **Overview** page.
 
 Select the **Virtual Machines** tab to connect to the **VM Dashboard**. If the **Virtual Machines** tab is not displayed, review the RBAC configuration in the [Create a VMO Cluster Profile](#create-a-vmo-cluster-profile) section and ensure your `user account` and the `virtual-machine-orchestrator` service account have been configured as instructed.
 
 Select the **Virtual Machines** namespace from the **Namespace** drop-down menu. Select the VM you created in the
 [Deploy a Virtual Machine](#deploy-a-virtual-machine) section.
 
-Select the **Start Icon** to start your VM.
+Select the **Start** icon to start your VM.
 
 ![Image of the start icon](/tutorials/deploy-vmo-maas/tutorials_vmo_vmo-maas_start-vm.webp)
 
@@ -3259,32 +3259,31 @@ Use the password you configured if you made changes in the [Deploy a Virtual Mac
 
 Execute the `docker version` command to confirm Docker was successfully installed during the cloud-init process.
 
-Execute `docker run -d --restart=always -p 9080:8080 ghcr.io/spectrocloud/hello-universe:1.2.0`. This will pull and run the `Hello Universe` container.
+Issue the following command to pull and run the `Hello Universe` container.
 
-In Palette, open the **Cluster Overview** page for the cluster you built in the [Deploy a VMO Cluster](#deploy-a-vmo-cluster) section. Select the download link for your cluster's admin kubeconfig file.
+```shell
+docker run -d --restart=always -p 9080:8080 ghcr.io/spectrocloud/hello-universe:1.2.0
+
+In Palette, open the **Overview** page for the cluster you built in the [Deploy a VMO Cluster](#deploy-a-vmo-cluster) section. Select the download link for your cluster's admin kubeconfig file.
 
 ![Image of the admin kubeconfig link](/tutorials/deploy-vmo-maas/tutorials_vmo-mass_admin-kubeconfig.webp)
 
 Open a terminal on your workstation. Update the following command to set the `KUBECONFIG` environment variable to your downloaded file.
 
     ```shell
-
     export KUBECONFIG=<path-to-your-kubeconfig-file>
-
     ```
 
 Use the following command to confirm the kubeconfig environment variable has been successfully exported.
 
     ```shell
-
     user@vmo-tutorial ~ % kubectl version
     Client Version: v1.32.3
     Kustomize Version: v5.5.0
     Server Version: v1.32.2
-
     ```
 
-To access your app, you must create a service in Kubernetes. The service configures MetalLB to provide ingress access to
+To access your app, you must create a service in Kubernetes. The service configures MetalLB to provide access to
 your Kubernetes cluster by mapping a network port on the nodes to the network port your app is listening on inside the
 cluster.
 
@@ -3314,7 +3313,7 @@ Use the following command to create the Kubernetes service for the hello-univers
 
 ## Verify the Application
 
-In Palette, navigate to the left main menu and select **Clusters**. Select the cluster you created in the [Deploy a VMO Cluster](#deploy-a-vmo-cluster) to display the **Cluster Overview** screen.
+In Palette, navigate to the left main menu and select **Clusters**. Select the cluster you created in the [Deploy a VMO Cluster](#deploy-a-vmo-cluster) to display the cluster's **Overview** screen.
 
 The **Services** section of the cluster overview screen displays any active services or port-forwards in your cluster. Select the **:9080** link for the **hello-universe-service** to access the Hello Universe app.
 
@@ -3338,17 +3337,15 @@ Your result should be similar to the following screenshot.
 
 Use the following steps to remove all the resources you created for the tutorial.
 
-To remove the cluster, select **Clusters** from the left main menu. On the **Cluster Overview** page, select Settings** > Delete Cluster**.
+To remove the cluster, select **Clusters** from the left main menu. On the **Overview** page, select **Settings** > **Delete Cluster**.
 
 ![Delete cluster](/getting-started/azure/getting-started_deploy-k8s-cluster_delete-cluster-button.webp)
 
 Enter the name of the cluster to confirm the delete action. The process takes several minutes to complete.
 
-<br />
 
 <PartialsComponent category="vmo" name="clean-up-tip" />
 
-<br />
 
 In Palette, navigate to the left main menu and select **Profiles**. Find the cluster profile you created in the [Create a VMO Cluster Profile](#create-a-vmo-cluster-profile) section and select the three-dot
 menu to display the **Delete** button. Select **Delete** and confirm the selection to remove the cluster profile.
@@ -3357,7 +3354,10 @@ menu to display the **Delete** button. Select **Delete** and confirm the selecti
 
 <TabItem label="Terraform Workflow" value="Terraform Workflow">
 
-Use the `terraform destroy` command to clean up the resources you deployed.
+Use the following command to clean up the resources you deployed.
+
+```shell
+terraform destroy --auto-approve
 
 <PartialsComponent category="vmo" name="clean-up-tip" />
 
@@ -3367,8 +3367,8 @@ Use the `terraform destroy` command to clean up the resources you deployed.
 
 ## Wrap-up
 
-In this tutorial, you created a new cluster profile and used it to deploy a new Kubernetes cluster with the Palette Virtual
-Machine Orchestrator service. You deployed a VM and used Palette's features to connect to the VM and deploy the
-**Hello Universe** and confirmed it was operating successfully.
+In this tutorial, you created a cluster profile and used it to deploy a Kubernetes cluster with the Palette Virtual
+Machine Orchestrator service. You then deployed a VM and used Palette's features to connect to the VM and deploy the
+**Hello Universe** demo application.
 
-For information on VM management topics such as VM Migration and snapshots, visit visit our [VM Management](../../vm-management/create-manage-vm/create-manage-vm.md) page.
+For information on VM management topics such as VM Migration and snapshots, visit our [VM Management](../../vm-management/create-manage-vm/create-manage-vm.md) page.

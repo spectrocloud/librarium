@@ -3,7 +3,7 @@ partial_category: vmo
 partial_name: vmo-rbac-config
 ---
 
-The **Optional cluster settings** screen provides advanced options for OS patching, scheduled scans, scheduled backups, and cluster role binding. VMO services require configuration of cluster roles to enable users and the VMO service account access to the VMO Dashboard. 
+The **Optional cluster settings** screen provides advanced options for OS patching, scheduled scans, scheduled backups, and cluster role binding. VMO services require configuration of cluster roles to enable users and the VMO service account access to the VMO dashboard. 
 
 Select **RBAC**. Select **Add New Binding** and enter information as instructed in the table below. This binding will assign your Palette user ID cluster-admin permissions.
 
@@ -17,7 +17,7 @@ Select **Add Subject** to create another binding. Enter the information as instr
 
 | **Field**         | **Instruction**                      | **Description** |
 |-------------------|--------------------------------------|-----------------|
-| Subject Type      | Set this value to `Service Account`  | Identifies the type of resource to map to the Cluster Role                                                                                                            |
+| Subject Type      | Set this value to `Service Account`  | Identifies the type of resource to map to the cluster role.                                                                                                            |
 | Subject Name      | Enter `virtual-machine-orchestrator` | This value is the service account's name that is granted permissions to access the VM dashboard. This service account is created when the VMO pack is installed. |
 | Subject Namespace | Enter `vm-dashboard`                 | This is the namespace to which the service account is granted access.                                                                                                       |
 
