@@ -25,10 +25,8 @@ tags: ["release-notes"]
 
 ### Bug Fixes
 
-- Fixed an issue that prevented [Azure IaaS](../clusters/public-cloud/azure/create-azure-cluster.md) clusters using the
-  same control plane and worker node subnet from being deployed.
-- Fixed an issue that prevented [Azure IaaS](../clusters/public-cloud/azure/create-azure-cluster.md) clusters using the
-  same control plane and worker node subnet from being deleted.
+- Fixed an issue that prevented [Azure IaaS](../clusters/public-cloud/azure/create-azure-cluster.md) clusters from being
+  deployed or deleted when the same subnet was used for both the control plane and worker nodes.
 - Fixed an issue that caused multiple machine sets to be created following
   [node repaves](../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration) triggered by Palette
   upgrades on [data center clusters](../clusters/data-center/data-center.md). This was caused by a discrepancy in
