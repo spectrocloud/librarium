@@ -10,8 +10,8 @@ tags: ["edge"]
 You can provide site-specific Edge Installer configuration user data if you need to apply new values or override default
 values from the Edge Installer user data you created in [EdgeForge](../../edgeforge-workflow/prepare-user-data.md).
 
-Use the following steps to create an ISO file containing the additional user data and load it
-to a bootable device, such as a USB stick.
+Use the following steps to create an ISO file containing the additional user data and load it to a bootable device, such
+as a USB stick.
 
 ## Prerequisites
 
@@ -25,10 +25,10 @@ to a bootable device, such as a USB stick.
 
 ## Create ISO
 
-1.  Create a file called `user-data` that contains the additional configurations you want to override or inject.
-    Ensure that the file starts with a line that only contains `#cloud-config`. Only include configurations you'd like
-    to add or override. There is no need to include user data that was already present when the ISO image was build in
-    the [Build Edge Artifacts](../../edgeforge-workflow/palette-canvos/palette-canvos.md) step.
+1.  Create a file called `user-data` that contains the additional configurations you want to override or inject. Ensure
+    that the file starts with a line that only contains `#cloud-config`. Only include configurations you'd like to add
+    or override. There is no need to include user data that was already present when the ISO image was build in the
+    [Build Edge Artifacts](../../edgeforge-workflow/palette-canvos/palette-canvos.md) step.
 
     ```shell
     touch user-data
@@ -106,19 +106,23 @@ to a bootable device, such as a USB stick.
     [balenaEtcher](https://www.balena.io/etcher). For a PXE server, there are open source projects such as
     [Fog](https://fogproject.org/download.php) or
     [Windows Deployment Services](https://learn.microsoft.com/en-us/windows/deployment/wds-boot-support) for Windows.
-    
+
     :::info
-    
-    The site user data ISO file is not bootable. It contains only configuration data, which the system reads after booting from the internal disk. If you use a tool like balenaEtcher to write the ISO file to a USB stick, it may display the corresponding warning. You can safely ignore it and continue writing the image to USB.
-    
+
+    The site user data ISO file is not bootable. It contains only configuration data, which the system reads after
+    booting from the internal disk. If you use a tool like balenaEtcher to write the ISO file to a USB stick, it may
+    display the corresponding warning. You can safely ignore it and continue writing the image to USB.
+
     :::
 
-5.  Once the Edge host arrives at the physical site, load the USB drive to the Edge host before powering it on. The system boots from the internal disk, detects the USB drive, and automatically applies the additional user data configuration during this first site boot.
+5.  Once the Edge host arrives at the physical site, load the USB drive to the Edge host before powering it on. The
+    system boots from the internal disk, detects the USB drive, and automatically applies the additional user data
+    configuration during this first site boot.
 
 ## Validate
 
-You can validate that the ISO file is not corrupted by attempting to flash a bootable device. Most software that
-creates a bootable device will validate the ISO file before the flash process.
+You can validate that the ISO file is not corrupted by attempting to flash a bootable device. Most software that creates
+a bootable device will validate the ISO file before the flash process.
 
 If you have SSH access, you can also SSH into the Edge host and locate your `user-data` file in either `/oem` or
 `/run/stylus`. The site-specific user data is named `user-data` while the original user data file is named something
