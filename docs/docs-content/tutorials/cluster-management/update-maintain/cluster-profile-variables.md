@@ -228,7 +228,7 @@ server. The row highlighted in the output is an example of the Wordpress web ser
 kubectl get pods --namespace wordpress
 ```
 
-```shell title="Example Output" {3}
+```shell title="Example Output" {2}
 NAME                                                   READY   STATUS    RESTARTS   AGE
 wordpress-chart-wordpress-dd7d944cb-vwd6c              1/1     Running   0          6m44s
 wordpress-chart-wordpress-mariadb-0                    1/1     Running   0          6m44s
