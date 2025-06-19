@@ -39,9 +39,9 @@ directories on a host node with root privileges. This issue is especially releva
 or untrusted workloads, where a compromised workload may pose a broader threat to the host.
 
 All the clusters using an affected Kubernetes version must be updated manually. Users must review their cluster
-profiles, workload clusters, and instances of Palette, and upgrade the Kubernetes version to a fixed version. The
-following Kubernetes versions, available in Palette or VerteX deployments for workload cluster provisioning, are
-vulnerable.
+profiles, workload clusters, and instances of Palette Enterprise or Palette VerteX, and upgrade the Kubernetes version
+to a fixed version. The following Kubernetes versions, available in Palette Enterprise or Palette VerteX deployments for
+workload cluster provisioning, are vulnerable.
 
 | Palette Version          | Kubernetes Versions                                                                                                        |
 | ------------------------ | -------------------------------------------------------------------------------------------------------------------------- |
@@ -56,16 +56,16 @@ vulnerable.
 ### Recommended Actions
 
 This vulnerability affects both workload clusters and Palette deployments. If you have any workload clusters, Palette
-Enterprise or VerteX clusters using an affected Kubernetes version, you must update the cluster to use one of the
-patched versions (v1.27.15, v1.28.11, v1.29.6, and v1.30.2) or newer.
+Enterprise or Palette VerteX clusters using an affected Kubernetes version, you must update the cluster to use one of
+the patched versions (v1.27.15, v1.28.11, v1.29.6, and v1.30.2) or newer.
 
 - Refer to the
   [Update a Cluster Profile](../../profiles/cluster-profiles/modify-cluster-profiles/update-cluster-profile.md) guide
   for instructions on how to update a cluster profile and apply the updates to workload clusters.
 
 - Refer to the [Palette Enterprise](../../enterprise-version/upgrade/upgrade.md) or
-  [VerteX](../../vertex/upgrade/upgrade.md) upgrade guides for guidance on upgrading your Palette version for all
-  connected and airgapped Palette Enterprise and VerteX clusters.
+  [Palette VerteX](../../vertex/upgrade/upgrade.md) upgrade guides for guidance on upgrading the version for all
+  connected and airgapped Palette Enterprise and Palette VerteX clusters.
 
 ## Security Advisory 001 - Nginx Vulnerability
 
