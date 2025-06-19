@@ -34,6 +34,10 @@ tags: ["release-notes"]
 - Fixed an issue that caused [edge hosts](../clusters/edge/edge.md) using a newer version of the Palette agent than the
   Palette instance itself to be become unhealthy upon registration.
 
+<!--prettier-ignore-start-->
+- Fixed an issue that caused errors when using <VersionedLink text="Registry Connect" url="/integrations/packs/?pack=registry-connect" /> on RKE2 clusters.
+<!--prettier-ignore-end-->
+
 ## June 12, 2025 - Release 4.6.36
 
 ### Breaking Changes
