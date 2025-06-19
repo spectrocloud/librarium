@@ -282,6 +282,8 @@ an AWS account. This section guides you on how to create an EKS cluster in AWS t
 
     :::warning
 
+    <!-- prettier-ignore-start -->
+
     Node pools configured with an AMI label cannot be configured with the **Enable Nodepool Customization** setting,
     which allows you to specify Amazon Machine Image (AMI) ID or disk type. Clusters with both configurations may fail
     to provision.
@@ -293,6 +295,8 @@ an AWS account. This section guides you on how to create an EKS cluster in AWS t
     <VersionedLink text="AWS Application Loadbalancer" url="/integrations/packs/?pack=aws-alb" />. Refer to
     [Scenario - PV/PVC Stuck in Pending Status for EKS Cluster Using AL2023 AMI](../../../troubleshooting/cluster-deployment.md#scenario---pvpvc-stuck-in-pending-status-for-eks-cluster-using-al2023-ami)
     troubleshooting guide for further information.
+
+    <!-- prettier-ignore-end -->
 
     :::
 
