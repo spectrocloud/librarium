@@ -9,11 +9,11 @@ tags: ["getting-started", "tutorial", "edge"]
 ---
 
 This is the final tutorial in the Edge Getting Started series. It teaches you how to deploy an Edge Kubernetes cluster
-in Palette using the provider images, Edge host, and cluster profile created in previous tutorials of this series.
+in Palette using the provider images, Edge host, and cluster profile created in the previous tutorials.
 
-You will learn how to assign your Edge host to the cluster, select the desired cluster profile, configure the number of
-nodes, and verify the deployment was successful by accessing the demo application included in the cluster profile,
-[Hello Universe](https://github.com/spectrocloud/hello-universe).
+You will learn how to select the desired cluster profile, assign the registered Edge host to the cluster, configure the
+number of nodes, and verify the deployment was successful by accessing the demo application included in the cluster
+profile, [Hello Universe](https://github.com/spectrocloud/hello-universe).
 
 ## Prerequisites
 
@@ -87,7 +87,7 @@ single-node Edge cluster with no worker pool.
 
 Next, select **Remove** to delete the worker pool and click **Next** to proceed with the deployment.
 
-![A screenshot of the nodes config during cluster deployment.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_cluster-deployment-nodes.webp)
+![A screenshot of the nodes config during cluster deployment.](/getting-started/getting-started_introduction-edge_deploy-edge-cluster_cluster-deployment-nodes.webp)
 
 The **Cluster Settings** section provides advanced options for scheduled scans, scheduled backups, and cluster role
 binding. For this tutorial, you can use the default settings. Select **Validate** to continue.
@@ -114,12 +114,12 @@ Confirm that your cluster displays a **Running** status and is listed as **Healt
 When the Hello Universe application is deployed and ready for network traffic, Palette exposes the service URL in the
 **Services** field. Click the URL on port **:8080** to access the application's landing page.
 
-![A screenshot of the cluster's Overview tab](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_cluster-overview.webp)
+![A screenshot of the cluster's Overview tab](/getting-started/getting-started_introduction-edge_deploy-edge-cluster_cluster-overview.webp)
 
 Welcome to the Spacetastic astronomy education platform. Feel free to explore the pages to learn more about space. The
 statistics page offers information on visitor counts for your deployed cluster.
 
-![A screenshot of the Hello Universe application.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_hello-universe.webp)
+![A screenshot of the Hello Universe application.](/getting-started/getting-started_introduction-edge_deploy-edge-cluster_hello-universe.webp)
 
 ## Clean Up
 
@@ -156,7 +156,7 @@ Locate the Edge host configured in the [Prepare Edge Host](./prepare-edge-host.m
 and select **Delete** to delete the Edge host. Confirm the deletion by clicking **OK**. This removes the Edge host from
 Palette but does not delete the underlying infrastructure.
 
-![A screenshot of the Edge Hosts page.](/tutorials/edge-vbox/tutorials_edge-vbox_deploy-cluster-virtualbox_delete-host.webp)
+![A screenshot of the Edge Hosts page.](/getting-started/getting-started_introduction-edge_deploy-edge-cluster_delete-host.webp)
 
 <Tabs groupId="host">
 
