@@ -110,7 +110,7 @@ as a USB stick.
     :::info
 
     The site user data ISO file is not bootable. It contains only configuration data, which the system reads after
-    booting from the internal disk. If you use a tool like balenaEtcher to write the ISO file to a USB stick, it may
+    booting from the internal disk. If you use a tool like [balenaEtcher](https://etcher.balena.io/) to write the ISO file to a USB stick, it may
     display the corresponding warning. You can safely ignore it and continue writing the image to USB.
 
     :::
