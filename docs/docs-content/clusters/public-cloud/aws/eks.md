@@ -280,19 +280,21 @@ an AWS account. This section guides you on how to create an EKS cluster in AWS t
 
     ##### Assign an AMI to a Node Pool
 
-<!-- prettier-ignore-start -->
-
     :::warning
 
     Node pools configured with an AMI label cannot be configured with the **Enable Nodepool Customization** setting,
     which allows you to specify Amazon Machine Image (AMI) ID or disk type. Clusters with both configurations may fail
     to provision.
 
-    Nodes using Amazon Linux 2023 must configure IAM Roles for Service Accounts (IRSA) if they are using such as AWS CSIs such as <VersionedLink text="Amazon EBS" url="/integrations/packs/?pack=csi-aws-ebs" />, <VersionedLink text="Amazon EFS" url="/integrations/packs/?pack=csi-aws-efs" />, <VersionedLink text="Amazon Cloud Native" url="/integrations/packs/?pack=csi-aws" /> together with  <VersionedLink text="AWS Application Loadbalancer" url="/integrations/packs/?pack=aws-alb" />. Refer to [Scenario - PV/PVC Stuck in Pending Status for EKS Cluster Using AL2023 AMI](../../../troubleshooting/cluster-deployment.md#scenario---pvpvc-stuck-in-pending-status-for-eks-cluster-using-al2023-ami) troubleshooting guide for further information.
+    Nodes using Amazon Linux 2023 must configure IAM Roles for Service Accounts (IRSA) if they are using such as AWS
+    CSIs such as <VersionedLink text="Amazon EBS" url="/integrations/packs/?pack=csi-aws-ebs" />,
+    <VersionedLink text="Amazon EFS" url="/integrations/packs/?pack=csi-aws-efs" />,
+    <VersionedLink text="Amazon Cloud Native" url="/integrations/packs/?pack=csi-aws" /> together with
+    <VersionedLink text="AWS Application Loadbalancer" url="/integrations/packs/?pack=aws-alb" />. Refer to
+    [Scenario - PV/PVC Stuck in Pending Status for EKS Cluster Using AL2023 AMI](../../../troubleshooting/cluster-deployment.md#scenario---pvpvc-stuck-in-pending-status-for-eks-cluster-using-al2023-ami)
+    troubleshooting guide for further information.
 
     :::
-
-<!-- prettier-ignore-end -->
 
     Assign an AMI to a node pool by adding an additional label specifying the AMI to use. You can choose from one of the
     following supported AMIs. Copy the exact label shown in the code block and paste it to the **Additional Labels**
