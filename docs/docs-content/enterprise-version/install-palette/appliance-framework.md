@@ -78,40 +78,72 @@ The Appliance Framework self-hosted Palette ISO is supported on the following in
 
 1. Download the Palette Enterprise ISO from the Artifact Studio.
 
-2. Boot each node from the ISO to install the necessary software for Palette. The installation process will automatically configure the nodes with the required components, including the operating system, Kubernetes, CNI, and CSI.
+2. Upload the ISO to your infrastructure provider. This can be done using the web interface of your infrastructure provider or using command-line tools.
 
-   - For VMware vSphere, you can use the vSphere Client to attach the ISO to each node and set them to boot from it.
-   - For Bare Metal or MAAS, you can use your preferred method to boot the nodes from the ISO.
-
-3. Once the nodes have booted from the ISO, they will automatically start the installation process. This will take at least 15 minutes, depending on the resources available on the nodes.
-
-4. Log in to the nodes using the default credentials for Kairos Ubuntu. The default username is `kairos` and the password is `kairos`. You can change the password after logging in.
-
-5. In the Palette Text-based User Interface (TUI), configure the node as per your environment requirements. This includes setting up the network, hostname, and other configurations.
-
-6. Select `Quit` to exit the Palette TUI once you have completed the configuration.
-
-   :::info
+   - For VMware vSphere, you can upload the ISO to a datastore using the vSphere Client or the `govc` CLI tool.
+   - For Bare Metal, you can use tools like `scp` or `rsync` to transfer the ISO to the nodes.
+   - For Machine as a Service (MAAS), you can use the MAAS web interface to upload the ISO.
    
-   If you need to reconfigure the nodes, you can execute `sudo pxk tui` to access the Palette TUI again.
+   Ensure that the ISO is accessible to all nodes that will be part of the Palette management cluster.
 
-   :::
+3. Boot each node from the ISO to install the necessary software for Palette. The installation process will automatically configure the nodes with the required components, including the operating system, Kubernetes, CNI, and CSI.
 
-7. Log in to Local UI using the default credentials. The default username is `kairos` and the password is `kairos`. You can change the password after logging in.
+4. Once the nodes have booted from the ISO, they will automatically start the installation process. You may see a GRand Unified Bootloader (GRUB) screen with selectable options, this should be ignored as the installation will proceed automatically.
 
-   The Local UI is accessible via the IP address of the Palette node on port 5080.
+   Wait for the installation process to complete. This will take at least 15 minutes, depending on the resources available on the nodes. After completion, the nodes will reboot and display the Palette Terminal User Interface (TUI).
 
-8. Use the Local UI to cluster the three nodes.
+5. Log in to the nodes using the default credentials for Kairos Ubuntu. The default username is `kairos` and the password is `kairos`.
 
-9. Log in to Palette and activate it.
+6. In the Palette TUI, configure the node as per your environment requirements. Use the Tab key or the up and down arrow keys to switch between fields. When you make a change, press **Enter** to apply the change. Use **Esc** to back.
 
-10. Download your pack bundles from the Artifact Studio.
+7. In **Hostname**, check the existing hostname and, optionally, change it to a new one.
 
-11. Transfer the pack bundles to one of your Palette nodes.
+8. In **Host Network Adapters**, select a network adapter you'd like to configure. By default, the network adapters
+   request an IP automatically from the Dynamic Host Configuration Protocol (DHCP) server. The CIDR block of an
+   adapter's possible IP address is displayed in the **Host Network Adapters** screen without selecting an individual
+   adapter.
 
-12. Install the pack bundles on the Palette node.
+   In the configuration page for each adapter, you can change the IP addressing scheme of the adapter and choose static
+   IP instead of DHCP. In Static IP mode, you will need to provide a static IP address, subnet mask, as well as the
+   address of the default gateway. Specifying a static IP will remove the existing DHCP settings.
 
-13. Profit.
+   You can also specify the Maximum Transmission Unit (MTU) for your network adapter. The MTU defines the largest size, in bytes, of a packet that can be sent over a network interface without needing to be fragmented.
+
+9. In **DNS Configuration**, specify the IP address of the primary and alternate name servers. You can optionally specify a search domain.
+
+10. After you are satisfied with the configurations, navigate to **Quit** and press **Enter** to finish the configuration. Press **Enter** again on the confirmation prompt.
+
+    After a few seconds, the terminal displays the **Device Info** and prompts you to provision the device through the Local UI.
+
+    :::info
+
+    If you need to reconfigure the nodes, you can execute the `palette-tui` command to access the Palette TUI again.
+
+    :::
+
+11. The address of Local UI console is displayed on the terminal screen of the node. In your web browser, go to `https://<node-ip>:5080`. Replace `<node-ip>` with the IP address of your node. If you have changed the default port of the console, replace `5080` with the Local UI port.
+
+    :::info
+
+    The Local UI is used to manage the Palette nodes and perform administrative tasks. It provides a web-based interface for managing the Palette management cluster.
+
+    :::
+
+12. Log in to Local UI using the default credentials. The default username is `kairos` and the password is `kairos`. You can change the password after logging in.
+
+13. Click the username dropdown menu in the top right corner and select **Update password**. Provide the **Old Password** as `kairos`, and set a new password in the **New Password** field. This will be the password you use to log in to Local UI in the future.
+
+14. Use the Local UI to cluster the three nodes.
+
+15. Log in to Palette and activate it.
+
+16. Download your pack bundles from the Artifact Studio.
+
+17. Transfer the pack bundles to one of your Palette nodes.
+
+18. Install the pack bundles on the Palette node.
+
+19. Profit.
 
 ## Validate
 
