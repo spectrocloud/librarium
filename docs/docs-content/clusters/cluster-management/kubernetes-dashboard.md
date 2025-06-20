@@ -18,7 +18,7 @@ For more information about the Kubernetes dashboard, visit the
 ## Prerequisites
 
 - An active Palette cluster.
-- An OIDC Identity Provider. For more information about using custom OIDC, visit the page on
+- An OIDC Identity Provider. For more information about using a custom OIDC, visit the page on
   [SAML and OIDC SSO](/../../user-management/saml-sso/#palette-oidc-and-pxk).
 
 ## Enablement
@@ -74,14 +74,13 @@ process.
 
 17. On the **Add Cluster Role Binding**, enter `cluster-admin` for **Cluster Role name**.
 
-18. Leave the **Subject type** set to user, and enter the email address of the user in **Subject Name**. Click
-    **Confirm**.
+18. Leave the **Subject type** set to user, and enter the email address of the user in **Subject Name**.
 
 ![Image showing how to create a Cluster Role Binding](/clusters_cluster-management_spectro-kubernetes-dashboard_add-role-binding.webp)
 
-19. Repeat this step as needed.
+19. To add additional users, click **Add Subject** and repeat step 18. Click **Confirm** when you have finished.
 
-20. Click the **X** at the top left to close the **Settings** page.
+20. Close the **Settings** page.
 
 21. Select your Kubernetes layer and set the OIDC to **Palette**.
 
