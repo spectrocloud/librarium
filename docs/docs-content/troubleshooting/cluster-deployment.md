@@ -29,8 +29,10 @@ The PV or PVC provisioning fails because IAM Roles for Service Accounts (IRSA) h
 packs such as Amazon EBS CSI, Amazon EFS CSI, and Amazon Cloud Native. It is also required if using the AWS Application
 Loadbalancer.
 
-For instances launched on AL2023, [IMDSv2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-metadata-transition-to-version-2.html) is enforced by default, and IRSA is the recommended approach for providing IAM
-permissions to [Amazon EBS CSI](https://docs.aws.amazon.com/eks/latest/userguide/ebs-csi.html) and
+For instances launched on AL2023,
+[IMDSv2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-metadata-transition-to-version-2.html) is enforced
+by default, and IRSA is the recommended approach for providing IAM permissions to
+[Amazon EBS CSI](https://docs.aws.amazon.com/eks/latest/userguide/ebs-csi.html) and
 [Amazon EFS CSI](https://docs.aws.amazon.com/eks/latest/userguide/efs-csi.html).
 
 ### Debug Steps
