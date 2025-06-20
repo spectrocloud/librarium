@@ -748,6 +748,10 @@
     "description": "kube-bench is a tool that checks whether Kubernetes is deployed securely by running the checks documented in the CIS Kubernetes Benchmark."
   },
   {
+    "name": "registry-connect",
+    "description": "The Registry Connect Pack enables seamless integration with OCI-compliant registries. This pack allows you to bring your own registry to use as an in-cluster primary registry while maintaining compatibility with the deployment model of Palette Edge."
+  },
+  {
     "name": "spectro-proxy",
     "description": "Spectro Proxy is a pack that enables the use of a reverse proxy with a Kubernetes cluster. The reverse proxy allows you to connect to the cluster API of a Palette-managed Kubernetes cluster in private networks or clusters configured with private API endpoints. The reverse proxy managed by Spectro Cloud is also known as the forward reverse proxy (FRP)."
   },
