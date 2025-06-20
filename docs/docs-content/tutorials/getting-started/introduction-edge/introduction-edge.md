@@ -90,5 +90,17 @@ Explore the sequence of tutorials below to learn how to deploy your first connec
       buttonText: "Learn more",
       url: "/tutorials/getting-started/introduction-edge/edge-cluster-profile",
     },
+    {
+      title: "Prepare Edge Host",
+      description: "Install the Palette agent on your Edge host and register the host with Palette.",
+      buttonText: "Learn more",
+      url: "/tutorials/getting-started/introduction-edge/prepare-edge-host",
+    },
+    {
+      title: "Deploy Edge Cluster",
+      description: "Deploy an Edge cluster with Palette.",
+      buttonText: "Learn more",
+      url: "/tutorials/getting-started/introduction-edge/deploy-edge-cluster",
+    },
   ]}
 />
