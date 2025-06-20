@@ -23,7 +23,8 @@ profile, [Hello Universe](https://github.com/spectrocloud/hello-universe).
   :::warning
 
   If you used [ttl.sh](https://ttl.sh) as the registry, make sure the images were pushed less than 24 hours before
-  following this tutorial. `ttl.sh` is a short-lived registry, and images expire 24 hours after being uploaded.
+  starting this tutorial. `ttl.sh` is a short-lived registry, and images expire 24 hours after being uploaded. If more
+  than 24 hours have passed, you can push the images again to make them available for the tutorial.
 
   :::
 
@@ -32,8 +33,8 @@ profile, [Hello Universe](https://github.com/spectrocloud/hello-universe).
 - You have completed the [Create Edge Cluster Profile](./edge-cluster-profile.md) tutorial and have an Edge cluster
   profile created in Palette.
 - You have access to [Palette's UI](https://www.spectrocloud.com/get-started).
-- You have a DHCP-enabled network with one available IP address on the same network as the Edge host. This IP will be
-  used as the cluster's Virtual IP (VIP) address.
+- You have a DHCP-enabled network with one available IP address on the same network as the Edge host. You will use this
+  IP as the cluster's Virtual IP (VIP) address.
 
 ## Deploy Edge Cluster
 
@@ -85,9 +86,11 @@ single-node Edge cluster with no worker pool.
 | **Taints (Optional)**                   | None                                                                                                                                                                                               |
 | **Pool Configuration** > **Edge Hosts** | Select the Edge host configured in the [Prepare Edge Host](./prepare-edge-host.md) tutorial to become the node of your cluster. Palette automatically displays the NIC Name for the selected host. |
 
-Next, select **Remove** to delete the worker pool and click **Next** to proceed with the deployment.
+The following image shows the Edge host selection in the control plane pool.
 
 ![A screenshot of the nodes config during cluster deployment.](/getting-started/getting-started_introduction-edge_deploy-edge-cluster_cluster-deployment-nodes.webp)
+
+Next, select **Remove** to delete the worker pool and click **Next** to proceed with the deployment.
 
 The **Cluster Settings** section provides advanced options for scheduled scans, scheduled backups, and cluster role
 binding. For this tutorial, you can use the default settings. Select **Validate** to continue.
