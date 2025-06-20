@@ -29,14 +29,14 @@ selected based on configured node labels and upgraded periodically according to 
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. Navigate to the **left Main Menu** and select **Clusters**.
+2. Navigate to the left main menu and select **Clusters**.
 
 3. Select your cluster to access the cluster details page.
 
 4. Download the **kubeconfig** file for your cluster. Open a terminal and navigate to the location of the file.
 
-5. Set the `KUBECONFIG` environment variable to the file path of the **kubeconfig** file to enable you to connect to it
-   using [kubectl CLI](https://kubernetes.io/docs/reference/kubectl/). Refer to the
+5. Set the `KUBECONFIG` environment variable to the file path of the **kubeconfig** file to enable you to connect to the
+   cluster using [kubectl CLI](https://kubernetes.io/docs/reference/kubectl/). Refer to the
    [Access Cluster with CLI](../../../clusters/cluster-management/palette-webctl.md#access-cluster-with-cli) section for
    further guidance.
 
@@ -215,12 +215,12 @@ selected based on configured node labels and upgraded periodically according to 
     | `Secret`     | `os-upgrade-plan`   | Stores the YAML definition of a `SpectroSystemTask` resource in its `plan.yaml` field. The CronJob retrieves this secret and applies the embedded plan to initiate the upgrade process. |
     | `CronJob`    | `os-upgrade-job`    | Schedules the upgrade plan to execute at regular intervals and provides a restart policy should the plan fail.                                                                          |
 
-12. Navigate back to [Palette](https://console.spectrocloud.com) in your browser. Select **Profiles** from the left
-    **Main Menu**.
+12. Navigate back to [Palette](https://console.spectrocloud.com) in your browser. Select **Profiles** from the left main
+    menu.
 
 13. Select the cluster profile corresponding to your agent mode cluster.
 
-14. Click on the version **drop-down Menu**. Select the **Create new version** option. Fill in the **Version** input and
+14. Click on the version drop-down menu. Select the **Create new version** option. Fill in the **Version** input and
     click **Confirm** to create a new version of your cluster profile. The new profile version opens.
 
 15. Click **Add manifest**. The manifest editor appears. Fill in the **Layer name** input field. Then, click **New
@@ -229,7 +229,7 @@ selected based on configured node labels and upgraded periodically according to 
 16. Paste the contents of the `upgrades.yaml` file that you have created in **Step 11**. Click **Confirm Updates** to
     save your manifest. Then, click **Save Changes** to save your manifest to the cluster profile.
 
-17. Navigate to the left **Main Menu** and select **Clusters**.
+17. Navigate to the left main menu and select **Clusters**.
 
 18. Select your cluster to access the cluster details page.
 
@@ -244,7 +244,7 @@ the `spectro-task-xxx` namespace.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. Navigate to the **left Main Menu** and select **Clusters**.
+2. Navigate to the left main menu and select **Clusters**.
 
 3. Select your cluster to access the cluster details page.
 

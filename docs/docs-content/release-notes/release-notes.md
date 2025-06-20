@@ -25,6 +25,7 @@ tags: ["release-notes"]
 
 ### Bug Fixes
 
+<!--prettier-ignore-start-->
 - Fixed an issue that prevented [Azure IaaS](../clusters/public-cloud/azure/create-azure-cluster.md) clusters from being
   deployed or deleted when the same subnet was used for both the control plane and worker nodes.
 - Fixed an issue that caused multiple machine sets to be created following
@@ -32,10 +33,10 @@ tags: ["release-notes"]
   upgrades on [data center clusters](../clusters/data-center/data-center.md). This was caused by a discrepancy in
   failure domain resources.
 - Fixed an issue that caused [edge hosts](../clusters/edge/edge.md) using a newer version of the Palette agent than the
-  Palette instance itself to be become unhealthy upon registration.
-
-<!--prettier-ignore-start-->
-- Fixed an issue that caused errors when using <VersionedLink text="Registry Connect" url="/integrations/packs/?pack=registry-connect" /> on RKE2 clusters.
+Palette instance itself to become unhealthy upon registration.
+- Fixed an issue that caused errors when using
+<VersionedLink text="Registry Connect" url="/integrations/packs/?pack=registry-connect" /> on RKE2 clusters.
+- Fixed an issue that prevented the [Pause Agent Upgrades](../clusters/cluster-management/platform-settings/pause-platform-upgrades.md) configuration from being applied to Edge hosts that are not part of a cluster.
 <!--prettier-ignore-end-->
 
 ## June 12, 2025 - Release 4.6.36
