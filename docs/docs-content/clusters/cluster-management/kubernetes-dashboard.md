@@ -19,7 +19,7 @@ For more information about the Kubernetes dashboard, visit the
 
 - An active Palette cluster.
 - An OIDC Identity Provider. For more information about using a custom OIDC, visit the page on
-  [SAML and OIDC SSO](/../../user-management/saml-sso/#palette-oidc-and-pxk).
+  [SAML and OIDC SSO](../../user-management/saml-sso/saml-sso.md#palette-oidc-and-pxk).
 
 ## Enablement
 
