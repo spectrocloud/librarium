@@ -25,11 +25,11 @@ wordpress   wordpress-wordpress                  Pending                        
 This issue can arise when an add-on pack or Helm chart that requires a PV or PVC is deployed to an existing cluster or
 while creating a new cluster.
 
-The PV or PVC provisioning fails because IAM Roles for Service Accounts (IRSA) has not been configured for the AWS CSI
+The PV or PVC provisioning fails because IAM Roles for Service Accounts (IRSA) have not been configured for the AWS CSI
 packs such as Amazon EBS CSI, Amazon EFS CSI, and Amazon Cloud Native. It is also required if using the AWS Application
 Loadbalancer.
 
-For instances launched on AL2023, IMDSv2 is enforced by default, and IRSA is the recommended approach for providing IAM
+For instances launched on AL2023, [IMDSv2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-metadata-transition-to-version-2.html) is enforced by default, and IRSA is the recommended approach for providing IAM
 permissions to [Amazon EBS CSI](https://docs.aws.amazon.com/eks/latest/userguide/ebs-csi.html) and
 [Amazon EFS CSI](https://docs.aws.amazon.com/eks/latest/userguide/efs-csi.html).
 
@@ -45,7 +45,7 @@ permissions to [Amazon EBS CSI](https://docs.aws.amazon.com/eks/latest/userguide
 
 5. Select the **Kubernetes** layer of your cluster profile.
 
-6. Use the YAML editor to configure IRSA roles for the `managedControlPlane` and `managedMachinePool`.
+6. Use the YAML editor to configure IRSA roles for the `managedControlPlane` and `managedMachinePool` resources.
 
    <Tabs groupId="aws-csi">
 
