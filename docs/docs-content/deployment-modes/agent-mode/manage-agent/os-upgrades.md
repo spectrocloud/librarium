@@ -11,10 +11,9 @@ Agent mode hosts install and manage their Operating System (OS) outside Palette.
 in terms of architecture, but it has the drawback that Palette cannot upgrade, patch or manage the operating systems of
 the hosts. This can lead to inconsistencies, missed updates, or operational risks.
 
-This page demonstrates how to configure regularly scheduled OS upgrades by leveraging cluster profiles and the
-[system upgrade controller](https://github.com/rancher/system-upgrade-controller) already installed by Palette. You will
-learn how to create your own Kubernetes manifest containing your custom OS upgrade script. Your cluster nodes will then
-be selected based on configured node labels and upgraded periodically according to a cron schedule you choose.
+This page demonstrates how to configure regularly scheduled OS upgrades by leveraging cluster profiles. You will learn
+how to create your own Kubernetes manifest containing your custom OS upgrade script. Your cluster nodes will then be
+selected based on configured node labels and upgraded periodically according to a cron schedule you choose.
 
 ## Prerequisites
 
@@ -30,14 +29,14 @@ be selected based on configured node labels and upgraded periodically according 
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. Navigate to the **left Main Menu** and select **Clusters**.
+2. Navigate to the left main menu and select **Clusters**.
 
 3. Select your cluster to access the cluster details page.
 
 4. Download the **kubeconfig** file for your cluster. Open a terminal and navigate to the location of the file.
 
-5. Set the `KUBECONFIG` environment variable to the file path of the **kubeconfig** file to enable you to connect to it
-   using [kubectl CLI](https://kubernetes.io/docs/reference/kubectl/). Refer to the
+5. Set the `KUBECONFIG` environment variable to the file path of the **kubeconfig** file to enable you to connect to the
+   cluster using [kubectl CLI](https://kubernetes.io/docs/reference/kubectl/). Refer to the
    [Access Cluster with CLI](../../../clusters/cluster-management/palette-webctl.md#access-cluster-with-cli) section for
    further guidance.
 
@@ -45,18 +44,18 @@ be selected based on configured node labels and upgraded periodically according 
    export KUBECONFIG=/path/to/your/kubeconfig
    ```
 
-6. Execute the following commands to find the `system-upgrade-XXX` namespace of your cluster and save it to the
+6. Execute the following commands to find the `spectro-task-XXX` namespace of your cluster and save it to the
    `SYSTEM_UPGRADE_NAMESPACE` variable. This namespace will be different between clusters.
 
    ```shell
-   export SYSTEM_UPGRADE_NAMESPACE=$(kubectl get namespaces --no-headers --output custom-columns=":metadata.name" | grep '^system-upgrade')
+   export SYSTEM_UPGRADE_NAMESPACE=$(kubectl get namespaces --no-headers --output custom-columns=":metadata.name" | grep '^spectro-task')
    echo $SYSTEM_UPGRADE_NAMESPACE
    ```
 
    The output will be similar to the following snippet.
 
    ```shell hideClipboard
-   system-upgrade-67991934afb6a8ea13ee0e01
+   spectro-task-6851ddd04b1b188784c06291
    ```
 
 7. Provide an upgrade frequency using a cron format. This is used to configure a Kubernetes
@@ -140,8 +139,8 @@ be selected based on configured node labels and upgraded periodically according 
     type: Opaque
     stringData:
         plan.yaml: |
-            apiVersion: upgrade.cattle.io/v1
-            kind: Plan
+            apiVersion: cluster.spectrocloud.com/v1alpha1
+            kind: SpectroSystemTask
             metadata:
                 name: os-upgrade-plan
                 namespace: $SYSTEM_UPGRADE_NAMESPACE
@@ -150,10 +149,10 @@ be selected based on configured node labels and upgraded periodically according 
                 nodeSelector:
                     matchExpressions:
                         - { key: $SYSTEM_UPGRADE_NODE_LABEL, operator: Exists }
-                serviceAccountName: system-upgrade
+                serviceAccountName: spectro-task
                 secrets:
                     - name: os-upgrade-script
-                      path: /host/run/system-upgrade/secrets/bionic
+                      path: /host/run/spectro-task/secrets/bionic
                 tolerations:
                     - key: node-role.kubernetes.io/master
                       operator: Exists
@@ -164,10 +163,10 @@ be selected based on configured node labels and upgraded periodically according 
                 drain:
                     force: true
                 version: bionic
-                upgrade:
+                task:
                     image: us-docker.pkg.dev/palette-images/third-party/ubuntu:22.04
                     command: ["chroot", "/host"]
-                    args: ["sh", "/run/system-upgrade/secrets/bionic/upgrade.sh"]
+                    args: ["sh", "/run/spectro-task/secrets/bionic/upgrade.sh"]
     ---
     apiVersion: batch/v1
     kind: CronJob
@@ -180,7 +179,7 @@ be selected based on configured node labels and upgraded periodically according 
             spec:
                 template:
                     spec:
-                        serviceAccountName: system-upgrade
+                        serviceAccountName: spectro-task
                         containers:
                             - name: os-upgrade-job
                               image: us-docker.pkg.dev/palette-images/third-party/ubuntu:22.04
@@ -210,18 +209,18 @@ be selected based on configured node labels and upgraded periodically according 
     The command creates the `upgrades.yaml` file in your current directory. The YAML file defines the following
     Kubernetes resources.
 
-    | **Resource** | **Name**            | **Description**                                                                                                                                                                                                                                                                                                                                               |
-    | ------------ | ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | `Secret`     | `os-upgrade-script` | Saves the upgrade instructions to an opaque secret.                                                                                                                                                                                                                                                                                                           |
-    | `Secret`     | `os-upgrade-plan`   | Saves the upgrade script execution on the cluster nodes using the specified upgrade concurrency and node selector labels. The execution is configured using the `Plan` resource defined by the [`system-upgrade-controller` project](https://github.com/rancher/system-upgrade-controller). Palette has installed all required dependencies for this project. |
-    | `CronJob`    | `os-upgrade-job`    | Schedules the upgrade plan to execute at regular intervals and provides a restart policy should the plan fail.                                                                                                                                                                                                                                                |
+    | **Resource** | **Name**            | **Description**                                                                                                                                                                         |
+    | ------------ | ------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | `Secret`     | `os-upgrade-script` | Stores the `upgrade.sh` shell script, which defines the upgrade logic to be executed on target nodes. This script is later mounted into the container via a secret volume.              |
+    | `Secret`     | `os-upgrade-plan`   | Stores the YAML definition of a `SpectroSystemTask` resource in its `plan.yaml` field. The CronJob retrieves this secret and applies the embedded plan to initiate the upgrade process. |
+    | `CronJob`    | `os-upgrade-job`    | Schedules the upgrade plan to execute at regular intervals and provides a restart policy should the plan fail.                                                                          |
 
-12. Navigate back to [Palette](https://console.spectrocloud.com) in your browser. Select **Profiles** from the left
-    **Main Menu**.
+12. Navigate back to [Palette](https://console.spectrocloud.com) in your browser. Select **Profiles** from the left main
+    menu.
 
 13. Select the cluster profile corresponding to your agent mode cluster.
 
-14. Click on the version **drop-down Menu**. Select the **Create new version** option. Fill in the **Version** input and
+14. Click on the version drop-down menu. Select the **Create new version** option. Fill in the **Version** input and
     click **Confirm** to create a new version of your cluster profile. The new profile version opens.
 
 15. Click **Add manifest**. The manifest editor appears. Fill in the **Layer name** input field. Then, click **New
@@ -230,7 +229,7 @@ be selected based on configured node labels and upgraded periodically according 
 16. Paste the contents of the `upgrades.yaml` file that you have created in **Step 11**. Click **Confirm Updates** to
     save your manifest. Then, click **Save Changes** to save your manifest to the cluster profile.
 
-17. Navigate to the left **Main Menu** and select **Clusters**.
+17. Navigate to the left main menu and select **Clusters**.
 
 18. Select your cluster to access the cluster details page.
 
@@ -239,28 +238,60 @@ be selected based on configured node labels and upgraded periodically according 
 20. Select the newly created version of your cluster profile. Click **Save**.
 
 Palette applies your manifest to the cluster. The Kubernetes resources responsible for the system upgrade are created in
-the `system-upgrade-xxx` namespace.
+the `spectro-task-xxx` namespace.
 
 ## Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. Navigate to the left **Main Menu** and select **Clusters**.
+2. Navigate to the left main menu and select **Clusters**.
 
 3. Select your cluster to access the cluster details page.
 
-4. Click **Settings** and select **Download Logs** from the dropdown. The **Download Logs** window appears.
+4. Download the **kubeconfig** file for your cluster. Open a terminal and navigate to the location of the file.
 
-5. Ensure that **Node Logs** is selected and click **Download**. The logs will take a few minutes to generate. A
-   download link will appear once the logs are ready.
+5. Set the `KUBECONFIG` environment variable to the file path of the **kubeconfig** file to enable you to connect to it
+   using [kubectl CLI](https://kubernetes.io/docs/reference/kubectl/). Refer to the
+   [Access Cluster with CLI](../../../clusters/cluster-management/palette-webctl.md#access-cluster-with-cli) section for
+   further guidance.
 
-The download contains a zip archive of files. Details of all executed upgrades are in a folder with the same name as
-your system upgrade namespace. You can search for executions of the `os-upgrade-plan` in this file. The following
-snippet provides an example of the logging output you will find.
+   ```shell
+   export KUBECONFIG=/path/to/your/kubeconfig
+   ```
 
-```shell hideClipboard
-time="2025-02-05T12:41:36Z" level=debug msg="PLAN GENERATING HANDLER: plan=system-upgrade-67a34d38a6c18dc781e61927/os-upgrade-plan@17071, status={Conditions:[{Type:LatestResolved Status:True LastUpdateTime:2025-02-05T12:41:36Z LastTransitionTime: Reason:Version Message:}] LatestVersion:os-upgrade-plan-20250205124022 LatestHash:66a0761c0738aed60e58393b923ea083d13c6783c11dbcc74a64a99a Applying:[edge-4238a4fc050ab635da929b5d0b272380]}" func="github.com/rancher/system-upgrade-controller/pkg/upgrade.(*Controller).handlePlans.func2 " file="/workspace/pkg/upgrade/handle_upgrade.go:68"
-time="2025-02-05T12:41:36Z" level=debug msg="PLAN STATUS HANDLER: plan=system-upgrade-67a34d38a6c18dc781e61927/os-upgrade-plan@17071, status={Conditions:[{Type:LatestResolvedStatus:True LastUpdateTime:2025-02-05T12:41:36Z LastTransitionTime: Reason:Version Message:}] LatestVersion:os-upgrade-plan-20250205124022 LatestHash:66a0761c0738aed60e58393b923ea083d13c6783c11dbcc74a64a99a Applying:[edge-4238a4fc050ab635da929b5d0b272380]}" func="github.com/rancher/system-upgrade-controller/pkg/upgrade.(*Controller).handlePlans.func1" file="/workspace/pkg/upgrade/handle_upgrade.go:30"
-```
+6. Execute the following commands to find the `spectro-task-XXX` namespace of your cluster and save it to the
+   `SYSTEM_UPGRADE_NAMESPACE` variable. This namespace will be different between clusters.
 
-You can add further logging to your upgrade script if you require granular detail of its execution.
+   ```shell
+   export SYSTEM_UPGRADE_NAMESPACE=$(kubectl get namespaces --no-headers --output custom-columns=":metadata.name" | grep '^spectro-task')
+   echo $SYSTEM_UPGRADE_NAMESPACE
+   ```
+
+   The output will be similar to the following snippet.
+
+   ```shell hideClipboard
+   spectro-task-6851ddd04b1b188784c06291
+   ```
+
+7. Issue the following command to retrieve a list of secrets and cronjobs under the `spectro-task-xxxxx` namespace.
+
+   ```bash
+   kubectl get secret,cronjob --namespace $SYSTEM_UPGRADE_NAMESPACE
+   ```
+
+   Confirm the secrets `secret/os-upgrade-plan`, `secret/os-upgrade-script` and the `cronjob.batch/os-upgrade-cronjob`
+   cron job were created successfully.
+
+   ```text title="Example Output"
+   NAME                           TYPE     DATA   AGE
+   secret/cert-renewal-script     Opaque   1      41m
+   secret/ntp-update-config       Opaque   1      42m
+   secret/ntp-update-script       Opaque   1      42m
+   secret/os-upgrade-plan         Opaque   1      10m
+   secret/os-upgrade-script       Opaque   1      10m
+   secret/sshkeys-update-script   Opaque   1      41m
+   secret/stylus-upgrade          Opaque   1      41m
+
+   NAME                               SCHEDULE    TIMEZONE   SUSPEND   ACTIVE   LAST SCHEDULE   AGE
+   cronjob.batch/os-upgrade-cronjob   0 * * * *   <none>     False     0        <none>          10m
+   ```
