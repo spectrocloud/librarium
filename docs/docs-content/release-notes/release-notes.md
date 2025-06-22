@@ -37,7 +37,7 @@ Palette instance itself to become unhealthy upon registration.
 - Fixed an issue that caused errors when using
 <VersionedLink text="Registry Connect" url="/integrations/packs/?pack=registry-connect" /> on RKE2 clusters.
 - Fixed an issue that caused the <VersionedLink text="Spectro Kubernetes Dashboard" url="/integrations/packs/?pack=spectro-k8s-dashboard" /> to be inaccessible for some clusters.
-- Fixed an issue that prevented the [Pause Agent Upgrades](../clusters/cluster-management/platform-settings/pause-platform-upgrades.md) configuration from being applied to Edge hosts that are not part of a cluster.
+- Fixed an issue that prevented the [Pause Agent Upgrades](../clusters/cluster-management/platform-settings/pause-platform-upgrades.md) configuration from being applied to new Edge hosts that are not part of a cluster.
 <!--prettier-ignore-end-->
 
 ## June 12, 2025 - Release 4.6.36
