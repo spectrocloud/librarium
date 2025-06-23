@@ -3,7 +3,7 @@ sidebar_label: "Offline Documentation"
 title: "Offline Documentation"
 description: "Learn how to use the Palette Vertex documentation offline."
 hide_table_of_contents: false
-sidebar_position: 60
+sidebar_position: 70
 sidebar_custom_props:
   icon: "book"
 tags: ["vertex", "enterprise", "airgap", "kubernetes", "offline", "downloads"]
