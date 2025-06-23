@@ -339,6 +339,7 @@ find-unused-images:
 ###@ Generate _partials/index.ts required to automatic partials usage.
 
 generate-partials: ## Generate
+	./scripts/index-breaking-changes.sh
 	./scripts/generate-partials.sh
 
 ###@ Fetch cached packs assets.
