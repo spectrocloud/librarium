@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## June 22, 2025 - Release 4.6.40
+## June 23, 2025 - Release 4.6.40
 
 ### Breaking Changes
 
