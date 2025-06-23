@@ -36,11 +36,19 @@ listed in alphabetical order.
 | `stylus.includeTui`            | Enable Palette TUI for initial Edge host configuration. For more information, refer to [Initial Edge Host Configuration](../site-deployment/site-installation/initial-setup.md).                                                                                                                   | boolean | `false`     |
 | `stylus.installationMode`      | (Deprecated) Allowed values are `connected` and `airgap`. `connected` means the Edge host is connected to Palette; `airgap` means the Edge host has no connection. This parameter has been deprecated and will be removed in an future release. Use the `stylus.managementMode` parameter instead. | String  | `connected` |
 | `stylus.localUI.port`          | Specifies the port that the Local UI is exposed on.                                                                                                                                                                                                                                                | Integer | `5080`      |
-| `stylus.managementMode`        | Allowed values are `local` and `central`. `central` means the Edge host is connected to Palette; `local` means the Edge host has no connection to a Palette instance.                                                                                                                              | string  | `central`   |
+| `stylus.managementMode`        | Allowed values are `local` and `central`. `central` means the Edge host is connected to Palette; `local` means the Edge host has no connection to a Palette instance.                                                                                                                              | String  | `central`   |
+| `stylus.path`                  | Specifies Stylus installation directory. Stylus appends its internal layout, `/opt/spectrocloud`, to this path. If you omit this parameter, the system uses `/` as the default root and installs Stylus to `/opt/spectrocloud`.                                                                    | String  | `/`         |
 | `stylus.registryCredentials`   | Only used when a single external registry is in use and no mapping rules are needed. Refer to [Single External Registry](#single-external-registry) for more details.                                                                                                                              | Object  | None        |
 | `stylus.site`                  | Review [Site Parameters](#site-parameters) for more information.                                                                                                                                                                                                                                   | Object  | None        |
 | `stylus.trace`                 | Enable trace output. Allowed values are `true` or `false`.                                                                                                                                                                                                                                         | boolean | `false`     |
-| `stylus.vip.skip`              | When set to `true`, the installer skips the configuration of kube-vip and enables the use of an external load balancer instead. Applicable only in agent deployment mode.                                                                                                                          | boolean | `false`     |
+| `stylus.vip.skip`              | When set to `true`, the installer skips the configuration of kube-vip and enables the use of an external load balancer instead.                                                                                                                                                                    | boolean | `false`     |
+
+:::warning
+
+Using custom `stylus.path` values can lead to deployment issues in some configurations. Refer to
+[Known issues](../../../release-notes/known-issues.md) for details.
+
+:::
 
 ### Feature Gates
 
@@ -89,7 +97,7 @@ Below is an example of how to configure an external registry.
 stylus:
   externalRegistries:
     registries:
-      - domain: "example.registry.com/internal-images"
+      - domain: "example.registry.com/palette-images"
         username: "admin"
         password: "***************"
         repositoryName: example-repository-private
@@ -121,10 +129,10 @@ stylus:
             DlN636dYFSJBG3LjGuzyO66kEvbGJAIT
             -----END CERTIFICATE-----
     registryMappingRules:
-      "us-east1-docker.pkg.dev/spectro-images/daily": "example.registry.com/internal-images"
-      "us-docker.pkg.dev/palette-images": "example.registry.com/internal-images"
-      "grc.io/spectro-dev-public": "example.registry.com/internal-images"
-      "grc.io/spectro-images-public": "example.registry.com/internal-images"
+      "us-docker.pkg.dev/palette-images": "example.registry.com/palette-images"
+      "us-east1-docker.pkg.dev/spectro-images/daily": "example.registry.com/palette-images"
+      "grc.io/spectro-dev-public": "example.registry.com/palette-images"
+      "grc.io/spectro-images-public": "example.registry.com/palette-images"
 ```
 
 #### Registry Mapping Rules
@@ -132,22 +140,22 @@ stylus:
 Use registry mapping rules to map a domain name to an external registry. The `registryMappingRules` parameter accepts a
 list of key-value pairs where the key is the domain name and the value is a URL mapping to the external registry.
 
-Below is an example of registry mapping rules. The registry in the code snippet, `example.registry.com/internal-images`
+Below is an example of registry mapping rules. The registry in the code snippet, `example.registry.com/palette-images`
 is assumed to contain the images that are mapped from the external registries.
 
 ```yaml
 stylus:
   externalRegistries:
     registries:
-      - domain: "example.registry.com/internal-images"
+      - domain: "example.registry.com/palette-images"
         repositoryName: "primary-registry"
         username: "admin"
         password: "***************"
     registryMappingRules:
-      "us-east1-docker.pkg.dev/spectro-images/daily": "example.registry.com/internal-images"
-      "us-docker.pkg.dev/palette-images": "example.registry.com/internal-images"
-      "grc.io/spectro-dev-public": "example.registry.com/internal-images"
-      "grc.io/spectro-images-public": "example.registry.com/internal-images"
+      "us-docker.pkg.dev/palette-images": "example.registry.com/palette-images"
+      "us-east1-docker.pkg.dev/spectro-images/daily": "example.registry.com/palette-images"
+      "grc.io/spectro-dev-public": "example.registry.com/palette-images"
+      "grc.io/spectro-images-public": "example.registry.com/palette-images"
 ```
 
 All matched portion on the source URL will be replaced with the mapped value and any unmatched path is preserved. Using
@@ -168,11 +176,11 @@ were downloaded when creating the [content bundle](../edgeforge-workflow/palette
 Palette will automatically update the image path when <VersionedLink text="Harbor Edge-Native Config" url="/integrations/packs/?pack=harbor-edge-native-config" />  pack is enabled. For example, if you have a registry mapping rule such as the following.
 
 ```yaml
-"us-east1-docker.pkg.dev/spectro-images/daily": "example.registry.com/internal-images"
+"us-docker.pkg.dev/palette-images": "example.registry.com/palette-images"
 ```
 
 Then the image tag will be updated with the prefix URL to the primary registry, such as
-`https://10.10.100.45:30003/example.registry.com/internal-images`. Palette will do this for all registry mapping rules
+`https://10.10.100.45:30003/example.registry.com/palette-images`. Palette will do this for all registry mapping rules
 specified in the user data. This allows the Edge host to find and pull images that came from an external registry
 through the primary registry.
 
@@ -183,10 +191,10 @@ stylus:
   managementMode: local
   externalRegistries:
     registryMappingRules:
-      "us-east1-docker.pkg.dev/spectro-images/daily": "example.registry.com/internal-images"
-      "us-docker.pkg.dev/palette-images": "example.registry.com/internal-images"
-      "grc.io/spectro-dev-public": "example.registry.com/internal-images"
-      "grc.io/spectro-images-public": "example.registry.com/internal-images"
+      "us-docker.pkg.dev/palette-images": "example.registry.com/palette-images"
+      "us-east1-docker.pkg.dev/spectro-images/daily": "example.registry.com/palette-images"
+      "grc.io/spectro-dev-public": "example.registry.com/palette-images"
+      "grc.io/spectro-images-public": "example.registry.com/palette-images"
 ```
 
 ### Single External Registry
@@ -229,7 +237,7 @@ The `stylus.site` blocks accept the following parameters.
 | `stylus.site.clusterName`        | The name of the cluster the Edge host belongs to.                                                                                                                                                                                                           | String                           | `''`    |
 | `stylus.site.deviceUIDPaths`     | A list of file paths for reading in a product or board serial that can be used to set the device ID. The default file path is `/sys/class/dmi/id/product_uuid`. Refer to the [Device ID (UID) Parameters](#device-id-uid-parameters) section to learn more. | Array of `FileList`              | None    |
 | `stylus.site.edgeHostToken`      | A token created at the tenant scope that is required for auto registration.                                                                                                                                                                                 | String                           | `''`    |
-| `stylus.site.hostName`           | The host name for the Edge host. This will also be the node's name when the host is added to a cluster. If you do not specify a host name, the `stylus.site.name` value becomes the host name.                                                              | string                           | `''`    |
+| `stylus.site.hostName`           | The host name for the Edge host. This will also be the node's name when the host is added to a cluster. If you do not specify a host name, the `stylus.site.name` value becomes the host name.                                                              | String                           | `''`    |
 | `stylus.site.insecureSkipVerify` | This controls whether or not a client verifies the server’s certificate chain and hostname.                                                                                                                                                                 | boolean                          | `false` |
 | `stylus.site.name`               | The Edge host ID with which the host registers with Palette.                                                                                                                                                                                                | String                           | `''`    |
 | `stylus.site.network`            | The network configuration settings. Refer to [Site Network Parameters](#site-network-parameters) for more details.                                                                                                                                          | Object                           | None    |

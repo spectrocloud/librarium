@@ -80,20 +80,12 @@ Palette is not FIPS compliant. If you need a FIPS-compliant solution, you need t
 
 ### Clone CanvOS Repository
 
-1. Clone the [CanvOS](https://github.com/spectrocloud/CanvOS) GitHub repository containing the starter code.
+<PartialsComponent category="palette-edge-canvos-version" name="canvos-version" />
 
-   ```bash
-   git clone https://github.com/spectrocloud/CanvOS.git
-   ```
+5. If you are using a self-hosted instance of Palette and have determined a specific CanvOS version, checkout out the
+   corresponding tag.
 
-2. Change to the **CanvOS/** directory.
-
-   ```bash
-   cd CanvOS
-   ```
-
-3. View the available tags and check out the latest tag or any specific version of your choosing. This guide uses
-   **v4.4.12** as an example.
+   Otherwise, check out the newest available tag. This guide uses `v4.4.12` as an example.
 
    ```bash
    git tag
@@ -122,16 +114,16 @@ workaround.
 
 :::
 
-5. Change into the **rhel-fips** directory.
+6. Change into the `rhel-fips` directory.
 
-6. In the file **Dockerfile**, provide your RHEL subscription username and password.
+7. In the file `Dockerfile`, provide your RHEL subscription username and password.
 
    ```text
    ARG USERNAME=name@spectrocloud.com
    ARG PASSWORD=***********
    ```
 
-7. Issue the following command to start building the provider images.
+8. Issue the following command to start building the provider images.
 
    ```shell
    bash build.sh
@@ -148,17 +140,17 @@ workaround.
 
    :::
 
-8. When the build finishes, issue `docker images` and confirm there is an image named `rhel-byoi-fips:latest`. This is
+9. When the build finishes, issue `docker images` and confirm there is an image named `rhel-byoi-fips:latest`. This is
    the base image that you will use to build provider images and the Edge installer ISO later on.
 
-9. Tag the image with a repository that is accessible by your Linux machine. For example, the following command uses the
-   publicly accessible `ttl.sh` repository.
+10. Tag the image with a repository that is accessible by your Linux machine. For example, the following command uses
+    the publicly accessible `ttl.sh` repository.
 
-   ```shell
-   docker tag rhel-byoi-fips:latest ttl.sh/rhel/rhel-byoi-fips:latest
-   ```
+    ```shell
+    docker tag rhel-byoi-fips:latest ttl.sh/rhel/rhel-byoi-fips:latest
+    ```
 
-10. Push the image to the repository.
+11. Push the image to the repository.
 
     ```shell
     docker push ttl.sh/rhel/rhel-byoi-fips:latest
@@ -168,31 +160,31 @@ workaround.
 
 <TabItem label="Ubuntu" value="ubuntu">
 
-5. Change into the **ubuntu-fips** directory.
+6. Change into the `ubuntu-fips` directory.
 
-6. In the file **pro-attach-config.yaml**, provide your Ubuntu Pro subscription token.
+7. In the file `pro-attach-config.yaml`, provide your Ubuntu Pro subscription token.
 
    ```yaml
    token: *******
    ```
 
-7. Issue the following command to start building the provider images.
+8. Issue the following command to start building the provider images.
 
    ```shell
    bash build.sh
    ```
 
-8. When the build finishes, issue `docker images` and confirm there is an image named `ubuntu-focal-fips:latest`. This
+9. When the build finishes, issue `docker images` and confirm there is an image named `ubuntu-focal-fips:latest`. This
    is the base image that you will use to build provider images and the Edge installer ISO later on.
 
-9. Tag the image with a repository that is accessible by your Linux machine. For example, use the publicly accessible
-   `ttl.sh` repository.
+10. Tag the image with a repository that is accessible by your Linux machine. For example, use the publicly accessible
+    `ttl.sh` repository.
 
-   ```shell
-   docker tag ubuntu-focal-fips:latest ttl.sh/ubuntu/ubuntu-focal-fips:latest
-   ```
+    ```shell
+    docker tag ubuntu-focal-fips:latest ttl.sh/ubuntu/ubuntu-focal-fips:latest
+    ```
 
-10. Push the image to the repository.
+11. Push the image to the repository.
 
     ```shell
     docker push ttl.sh/ubuntu/ubuntu-focal-fips:latest
@@ -204,30 +196,31 @@ workaround.
 
 ### Build Edge Installer ISO
 
-11. Return to the **CanvOS** directory.
+12. Return to the `CanvOS` directory.
 
     ```shell
     cd ..
     ```
 
-12. Create a file named **.arg**. This file will contain parameters that customize the Edge Installer ISO build.
+13. Create a file named `.arg`. This file will contain parameters that customize the Edge Installer ISO build.
 
-13. In the **.arg** file, provide the following required information. Refer to
-    [Edge Artifact Build Configuration](arg.md) for more information.
+14. In the `.arg` file, provide the following required information. Refer to [Edge Artifact Build Configuration](arg.md)
+    for more information.
 
-    | Argument         | Description                                                                                                                                                       |
-    | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | IMAGE_REGISTRY   | The image registry to use for tagging the generated provider images.                                                                                              |
-    | OS_DISTRIBUTION  | The OS distribution in your provider image.                                                                                                                       |
-    | IMAGE_REPO       | The image repository to use for tagging the generated provider images.                                                                                            |
-    | OS_VERSION       | The OS version in your provider image. This applies to Ubuntu only.                                                                                               |
-    | K8S_DISTRIBUTION | The Kubernetes distribution for your provider image. Allowed values are `rke2` (RKE2) and `kubeadm-fips` (PXK-E). The other distributions are not FIPS-compliant. |
-    | FIPS_ENABLED     | Whether to enable FIPS compliance. This parameter must be set to `true`.                                                                                          |
-    | ARCH             | The architecture of the image. Allowed values are `amd64` and `arm64`.                                                                                            |
-    | BASE_IMAGE       | The base image used by EdgeForge to build the Edge Installer and provider images. This must be the same image that you build in the previous step.                |
-    | ISO_NAME         | The file name of the ISO file that will be generated.                                                                                                             |
+    | Argument         | Description                                                                                                                                                                                                                      |
+    | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | IMAGE_REGISTRY   | The image registry to use for tagging the generated provider images.                                                                                                                                                             |
+    | OS_DISTRIBUTION  | The OS distribution in your provider image.                                                                                                                                                                                      |
+    | IMAGE_REPO       | The image repository to use for tagging the generated provider images.                                                                                                                                                           |
+    | OS_VERSION       | The OS version in your provider image. This applies to Ubuntu only.                                                                                                                                                              |
+    | K8S_DISTRIBUTION | The Kubernetes distribution for your provider image. Allowed values are `rke2` (RKE2) and `kubeadm-fips` (PXK-E). The other distributions are not FIPS-compliant.                                                                |
+    | K8S_VERSION      | Kubernetes version. The available versions vary depending on the specified `K8S_DISTRIBUTION`. Review the `k8s_version.json` file in the [CanvOS](https://github.com/spectrocloud/CanvOS) repository for all supported versions. |
+    | FIPS_ENABLED     | Whether to enable FIPS compliance. This parameter must be set to `true`.                                                                                                                                                         |
+    | ARCH             | The architecture of the image. Allowed values are `amd64` and `arm64`.                                                                                                                                                           |
+    | BASE_IMAGE       | The base image used by EdgeForge to build the Edge Installer and provider images. This must be the same image that you build in the previous step.                                                                               |
+    | ISO_NAME         | The file name of the ISO file that will be generated.                                                                                                                                                                            |
 
-14. (Optional) This step is only required if your builds occur in a proxied network environment, and your proxy servers
+15. (Optional) This step is only required if your builds occur in a proxied network environment, and your proxy servers
     require client certificates or if your base image is in a registry that requires client certificates.
 
     You can provide the base-64 encoded certificates in PEM format in the **certs** folder at the root directory of the
@@ -247,7 +240,7 @@ workaround.
 
     :::
 
-15. Create a file named **user-data**. It must have the `#cloud-init` header at the top of the file. Ensure you have the
+16. Create a file named `user-data`. It must have the `#cloud-init` header at the top of the file. Ensure you have the
     following blocks at the root level of the **user-data** file. Replace the value for `edgeHostToken` with your VerteX
     registration token, and replace the value `paletteEndPoint` with the URL of your Palette instance. Replace the user
     `kairos` and its password with your desired username and password.
@@ -286,10 +279,10 @@ workaround.
     the Edge Host with the registration token and the Palette endpoint. And the configurations in the `stage` block
     create a system user that you can use to log in to the Operating System (OS).
 
-16. Add further customization to the **user-data** file as needed. This file configures the Edge Installer. Refer to
+17. Add further customization to the `user-data` file as needed. This file configures the Edge Installer. Refer to
     [Installer Reference](../../edge-configuration/installer-reference.md) for more information.
 
-17. Issue the following command to build the Edge Installer ISO.
+18. Issue the following command to build the Edge Installer ISO.
 
     <Tabs group="earthly">
 
@@ -319,16 +312,12 @@ workaround.
 Provider images are Kairos-based container images for a supported OS and Kubernetes distribution combination.
 FIPS-complaint provider images are built on top of the base OS image you have built previously.
 
-17. Open the **k8s_version.json** file in the CanvOS directory. Remove the Kubernetes versions that you don't need from
-    the JSON object corresponding to your Kubernetes distribution.
+19. (Optional) If you want to build multiple versions of a provider image using different Kubernetes versions, remove
+    the `K8S_VERSION` argument from the `.arg` file. Open the `k8s_version.json` file in the `CanvOS` directory. Remove
+    the Kubernetes versions that you don't need from the JSON object corresponding to your Kubernetes distribution.
 
-    If you are using a tag that is earlier than v4.4.12, the **k8s_version.json** file does not exist in those tags.
-    Instead, open the **Earthfile** in the CanvOS directory. In the file, find the block that starts with
-    `build-provider-images-fips:` and delete the Kubernetes versions that you do not want. This will speed up the build
-    process and save storage space.
-
-18. Review the **.arg** file again to ensure the parameters are correct. Issue the following command to build the
-    provider images.
+20. Review the `.arg` file again to ensure the parameters are correct. Issue the following command to build the provider
+    images.
 
     ```shell
       ./earthly.sh +build-provider-images-fips

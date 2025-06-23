@@ -11,6 +11,48 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## June 12, 2025 - Release 4.6.36
+
+### Breaking Changes
+
+- Beginning with Palette version 4.6.36, a [Private Cloud Gateway (PCG)](../clusters/pcg/pcg.md) is required to add an
+  [Azure US Government](https://azure.microsoft.com/en-us/explore/global-infrastructure/government) cloud account.
+
+  If you are using a [self-hosted Palette](../enterprise-version/enterprise-version.md) or [VerteX](../vertex/vertex.md)
+  instance, a PCG is not required unless you configure both an
+  [Azure Public Cloud](../clusters/public-cloud/azure/azure.md) and Azure US Government account on the same
+  installation. If you do not configure a PCG, you must install two instances of Palette or VerteX: one for Azure Public
+  Cloud clusters and one for Azure US Government clusters. For more information on adding Azure cloud accounts, refer to
+  the [Register and Manage Azure Cloud Account](../clusters/public-cloud/azure/azure-cloud.md) guide.
+
+### Bug Fixes
+
+- Fixed an issue that prevented [Azure IaaS](../clusters/public-cloud/azure/create-azure-cluster.md) and
+  [AKS](../clusters/public-cloud/azure/aks.md) clusters from being deployed using an
+  [Azure US Government cloud account](../clusters/public-cloud/azure/azure-cloud.md#add-azure-cloud-account). Clusters
+  that will be deployed on both [Azure Public Cloud](../clusters/public-cloud/azure/azure.md) and
+  [Azure US Government](https://azure.microsoft.com/en-us/explore/global-infrastructure/government) require a PCG. Refer
+  to [Known Issues](./known-issues.md) for further details.
+- Fixed an issue that caused system errors after
+  [resetting system administrator passwords](../enterprise-version/system-management/account-management/manage-system-accounts.md#reset-system-administrator-password)
+  in [data center](../clusters/data-center/data-center.md) environments.
+- Fixed an issue that caused [AWS clusters](../clusters/public-cloud/aws/aws.md) to fail to find bastion node Amazon
+  Machine Image (AMI).
+- Fixed an issue that caused memory leaks on [Azure IaaS clusters](../clusters/public-cloud/azure/azure.md). This was
+  caused by an [upstream issue](https://github.com/kubernetes-sigs/cluster-api-provider-azure/issues/5410) in CAPZ.
+- Fixed an issue that caused errors in the `palette-controller-manager` pods on self-hosted
+  [Palette VerteX](../clusters/public-cloud/azure/create-azure-cluster.md) installations.
+
+## June 6, 2025 - Release 4.6.34
+
+### Bug Fixes
+
+- Fixed an issue that caused [AWS EKS clusters](../clusters/public-cloud/aws/eks.md) configured with private API
+  endpoints to get stuck during cluster deletion.
+- Fixed an issue that prevented [AWS EKS clusters](../clusters/public-cloud/aws/eks.md)
+  [node pool customizations](../clusters/public-cloud/aws/eks.md#cloud-configuration-settings) that do not specify an
+  Amazon Machine Image (AMI) ID from being created.
+
 ## June 4, 2025 - Release 4.6.33
 
 ### Bug Fixes
@@ -62,7 +104,7 @@ impacted clusters until you've handled the below mentioned breaking changes and 
 
 - Earlier Palette releases carried a stop-gap patch to drain Portworx pods gracefully during node repaves. In this
   release, that patch has been moved to the
-  <VersionedLink text="Portworx CSI pack" url="/integrations/packs/?pack=csi-portworx-generic" /> from v3.2.3 onwards.
+  <VersionedLink text="Portworx CSI pack" url="/integrations/packs/?pack=csi-portworx-generic" /> from v3.2.3 or later.
   <!--prettier-ignore-end-->
 
   For any clusters using the Portworx CSI pack v3.2.2 or earlier, you must choose _one_ of the following actions to
@@ -163,6 +205,16 @@ impacted clusters until you've handled the below mentioned breaking changes and 
 
 #### Improvements
 
+:::info
+
+All Cluster API provider versions were updated in this release. Refer to the
+[Cluster API Provider Versions](../architecture/orchestration-spectrocloud.md#cluster-api-provider-versions) section
+further details.
+
+:::
+
+- Palette now uses Cluster API Provider AWS (CAPA) version 2.7.1 internally. Refer to the
+  [documentation](https://github.com/kubernetes-sigs/cluster-api-provider-aws/tree/v2.7.1) for further information.
 - CAPG has been upgraded to [v1.8.1](https://github.com/kubernetes-sigs/cluster-api-provider-gcp/releases/tag/v1.8.1)
   from [v1.2.1](https://github.com/kubernetes-sigs/cluster-api-provider-gcp/releases/tag/v1.2.1).
 
@@ -200,8 +252,6 @@ impacted clusters until you've handled the below mentioned breaking changes and 
   access to backup and restore functionality. Refer to the
   [Backup and Restore](../clusters/cluster-management/backup-restore/backup-restore.md) page to learn more about backup
   and restore tools in Palette.
-- Palette now uses Cluster API Provider AWS (CAPA) version 2.7.1 internally. Refer to the
-  [documentation](https://github.com/kubernetes-sigs/cluster-api-provider-aws/tree/v2.7.1) for further information.
 - [Self-hosted Palette](../enterprise-version/enterprise-version.md) now supports anonymous SMTP mode, allowing users to
   authenticate without a username and password. We recommend using authenticated SMTP wherever possible. Refer to the
   [Configure SMTP](../enterprise-version/system-management/smtp.md) guide for further information.

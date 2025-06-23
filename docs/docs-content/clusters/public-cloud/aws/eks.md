@@ -280,6 +280,20 @@ an AWS account. This section guides you on how to create an EKS cluster in AWS t
 
     ##### Assign an AMI to a Node Pool
 
+    :::warning
+
+    - Node pools configured with an AMI label cannot be configured with the **Enable Nodepool Customization** setting,
+      which allows you to specify an Amazon Machine Image (AMI) ID or disk type. Clusters with both configurations may
+      fail to provision.
+
+    - Nodes using Amazon Linux 2023 must configure IAM Roles for Service Accounts (IRSA) if you are using AWS CSI packs
+      such as Amazon EBS CSI, Amazon EFS CSI, and Amazon Cloud Native. It is also required if using the AWS Application
+      Loadbalancer. Refer to the
+      [Scenario - PV/PVC Stuck in Pending Status for EKS Cluster Using AL2023 AMI](../../../troubleshooting/cluster-deployment.md#scenario---pvpvc-stuck-in-pending-status-for-eks-cluster-using-al2023-ami)
+      troubleshooting guide for further information.
+
+    :::
+
     Assign an AMI to a node pool by adding an additional label specifying the AMI to use. You can choose from one of the
     following supported AMIs. Copy the exact label shown in the code block and paste it to the **Additional Labels**
     option in the **Node Configuration Settings**.

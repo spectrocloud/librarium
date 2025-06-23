@@ -38,9 +38,6 @@ Palette. You will then create a cluster profile and use the registered host to d
 - The FIPS-compliant version of Agent Mode is only available for Red Hat Enterprise Linux (RHEL) and Rocky Linux 8
   systems.
 
-- ARM64 support for clusters in local management mode is not available. This is because Harbor, which is required for
-  local management mode, does not have an ARM64 image.
-
 ## Prerequisites
 
 - A physical or virtual host with SSH access, access to the internet, and connection to Palette. For local management
@@ -374,7 +371,7 @@ Palette. You will then create a cluster profile and use the registered host to d
          projectName: Default
        externalRegistries:
          registries:
-           - domain: "example.registry.com/internal-images"
+           - domain: "example.registry.com/palette-images"
              username: "admin"
              password: "***************"
              repositoryName: example-repository-private
@@ -384,7 +381,7 @@ Palette. You will then create a cluster profile and use the registered host to d
                   **********************
                   -----END CERTIFICATE-----
          registryMappingRules:
-           "us-east1-docker.pkg.dev/spectro-images/daily": "example.registry.com/internal-images"
+           "us-docker.pkg.dev/palette-images": "example.registry.com/palette-images"
 
      stages:
        initramfs:
@@ -420,7 +417,7 @@ Palette. You will then create a cluster profile and use the registered host to d
        projectName: Default
      externalRegistries:
        registries:
-         - domain: "example.registry.com/internal-images"
+         - domain: "example.registry.com/palette-images"
            username: "admin"
            password: "***************"
            repositoryName: example-repository-private
@@ -430,7 +427,7 @@ Palette. You will then create a cluster profile and use the registered host to d
                 **********************
                 -----END CERTIFICATE-----
        registryMappingRules:
-         "us-east1-docker.pkg.dev/spectro-images/daily": "example.registry.com/internal-images"
+         "us-docker.pkg.dev/palette-images": "example.registry.com/palette-images"
    stages:
      initramfs:
        - users:
@@ -446,19 +443,12 @@ Palette. You will then create a cluster profile and use the registered host to d
    export USERDATA=./user-data
    ```
 
-6. Download the latest version of the Palette agent installation script. There is a FIPS-compliant script, if needed.
+6. If you are using Palette SaaS, download the latest Palette agent installation script. There is a FIPS-compliant
+   script, if needed.
 
    <PartialsComponent category="agent-mode" name="agent-mode-latest-version" />
 
-   <details>
-
-   {" "}
-
-   <summary>Dedicated or On-Premises Palette Instance</summary>
-
    <PartialsComponent category="agent-mode" name="agent-mode-versioned" />
-
-   </details>
 
 7. Grant execution permissions to the installation script.
 
