@@ -76,6 +76,7 @@ artifact.zip
 .netlify/
 # Ignore _partials/index.ts
 _partials/index.ts
+_partials/breaking-changes/*
 
 # Ignore statoc/img/packs
 static/img/packs
