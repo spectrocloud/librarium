@@ -9,7 +9,7 @@ sidebar_custom_props:
 tags: ["downloads", "artifact-studio"]
 ---
 
-Artifacts Studio is a unified platform that helps air-gapped and regulatory-focused organizations to populate their own internal registries with bundles, packs and installers to be used with Palette or VerteX. There are four main areas for Artifacts:
+[Artifacts Studio](https://artifact-studio.internal.spectrocloud.com/) is a unified platform that helps air-gapped and regulatory-focused organizations to populate their own internal registries with bundles, packs and installers to be used with Palette or VerteX. There are four main areas for Artifacts:
 	- Download of Palette Enterprise (binary or ISO).
 	- Download of Palette VerteX (binary or ISO).
 	- Create a pack bundle to download.
@@ -19,12 +19,16 @@ Artifacts Studio is a unified platform that helps air-gapped and regulatory-focu
 
 ## Install Palette Enterprise
 
+Navigate to [Artifacts Studio](https://artifact-studio.internal.spectrocloud.com/).
+
 From the drop-down, select the version needed, and click **Show Binaries**.
 
 Click **Download** on Enterprise Binary or Release Iso, whichever file is appropriate for your environment. 
 
 
 ## Install Palette VerteX
+
+Navigate to [Artifacts Studio](https://artifact-studio.internal.spectrocloud.com/).
 
 From the drop-down, select the version needed, and click **Show Binaries**.
 
@@ -34,7 +38,9 @@ Click on **Bundle Verification Instructions** found at the top right of the page
 
 ## Create pack bundle
 
+Navigate to [Artifacts Studio](https://artifact-studio.internal.spectrocloud.com/).
 
+....
 
 Click on **Bundle Verification Instructions** found at the top right of the page. 
 
