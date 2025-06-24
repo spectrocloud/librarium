@@ -1,7 +1,7 @@
 ---
-sidebar_label: "Login Banner"
-title: "Login Banner"
-description: "Learn how to add an ATO banner in Palette."
+sidebar_label: "Login Banners"
+title: "Login Banners"
+description: "Learn how to add login and classification banners, also known as Authority to Operate (ATO) banners, in Palette."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 100
