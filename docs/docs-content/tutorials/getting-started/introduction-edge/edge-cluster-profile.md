@@ -100,7 +100,7 @@ Finally, click **Add New Pack** again and search for the Hello Universe pack.
 
 | **Pack Name**  | **Version** | **Registry**               | **Layer**   |
 | -------------- | ----------- | -------------------------- | ----------- |
-| Hello Universe | 1.2.0       | Palette Community Registry | Application |
+| Hello Universe | 1.3.0       | Palette Community Registry | Application |
 
 Once you select the pack, Palette displays its README file, providing additional guidance on usage and configuration
 options. This pack deploys the [hello-universe](https://github.com/spectrocloud/hello-universe) demo application.

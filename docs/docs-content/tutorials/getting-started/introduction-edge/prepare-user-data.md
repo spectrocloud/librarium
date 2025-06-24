@@ -140,9 +140,8 @@ parameter block to power off the host once the Edge installation completes.
 
 :::tip
 
-The `CanvOS` repository provides a
-[user data template](https://github.com/spectrocloud/CanvOS/blob/main/user-data.template) to help you create your user
-data files.
+You can also use the [Appliance Studio](../../../deployment-modes/appliance-mode/appliance-studio.md) configuration
+Graphic User Interface (GUI) to help you create and validate your user data files.
 
 :::
 

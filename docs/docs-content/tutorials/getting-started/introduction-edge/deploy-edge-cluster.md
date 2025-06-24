@@ -54,6 +54,15 @@ earlier, and click **Confirm**.
 
 Review the cluster profile layers and click **Next** to proceed.
 
+:::tip
+
+We recommend enabling the overlay network when using DHCP-enabled networks to ensure stable IP addresses for the
+cluster. However, for education purposes, this tutorials does not use the overlay network. For production use or
+detailed configuration instructions, refer to the
+[Enable Overlay Network](../../../clusters/edge/networking/vxlan-overlay.md) guide.
+
+:::
+
 In the **Cluster Config** section, provide a Virtual IP (VIP) address for the Edge cluster. This address must be an
 unused address on the same network as your Edge host.
 

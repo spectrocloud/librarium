@@ -28,7 +28,7 @@ the Palette agent on hosts.
 To complete this tutorial, ensure the following prerequisites are in place.
 
 - You have completed the steps in the [Prepare User Data for Edge Installation](./prepare-user-data.md) tutorial,
-  including cloning the CanvOS repository and creating and validating a `user-data` file.
+  including cloning the CanvOS repository and creating and validating a user data file.
 - A physical or virtual Linux machine with an AMD64 (also known as `x86_64`) processor architecture and the following
   minimum hardware configuration:
   - 4 CPUs
@@ -119,6 +119,13 @@ Verify that the file was created correctly using the `cat` command.
 ```
 cat .arg
 ```
+
+:::tip
+
+You can also use the [Appliance Studio](../../../deployment-modes/appliance-mode/appliance-studio.md) configuration
+Graphic User Interface (GUI) to help you create the `.arg` file.
+
+:::
 
 ## Build Artifacts
 
@@ -475,7 +482,7 @@ Follow the steps below to build the artifacts using the script.
 
 ## Next Steps
 
-In this tutorial, you built the artifacts required for your Edge deployment. We recommend proceeding to the Create an
-Edge Cluster Profile tutorial, where you will learn how to create an Edge native cluster profile that references the
-built provider image. You will then learn how to use the installer ISO to bootstrap the Edge installation on your host
-and use it as a node for deploying your first Edge cluster.
+In this tutorial, you built the artifacts required for your Edge deployment. We recommend proceeding to the
+[Create Edge Cluster Profile](./edge-cluster-profile.md) tutorial, where you will learn how to create an Edge native
+cluster profile that references the built provider image. You will then learn how to use the installer ISO to bootstrap
+the Edge installation on your host and use it as a node for deploying your first Edge cluster.
