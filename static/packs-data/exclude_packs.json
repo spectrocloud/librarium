@@ -19,5 +19,8 @@
   "cni-tke-global-router",
   "generic-vm-libvirt",
   "centos-libvirt",
-  "pfsense-vm-libvirt"
+  "pfsense-vm-libvirt",
+  "vm-migration-assistant-pack",
+  "cni-cilium",
+  "custom-cni"
 ]
