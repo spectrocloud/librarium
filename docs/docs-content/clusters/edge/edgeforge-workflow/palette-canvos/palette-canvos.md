@@ -152,10 +152,6 @@ customization.
    corresponds to the **Palette Optimized Canonical** pack, which is a Tech Preview feature and is subject to change. Do
    not use this feature in production workloads.
 
-   In addition, Canonical clusters deployed in a proxied network environment may experience a
-   [known issue](../../../../troubleshooting/edge/edge.md#scenario---canonical-edge-clusters-in-proxied-environments-experience-failure-upon-reboot)
-   when you reboot nodes in the cluster.
-
    :::
 
    Using the arguments defined in the `.arg` file, the final provider images you generate will have the following naming
