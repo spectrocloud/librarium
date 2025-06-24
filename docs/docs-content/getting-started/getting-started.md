@@ -62,7 +62,7 @@ Choose a roadmap from the following cards to start your journey with Palette.
       title: "Palette Edge",
       description: "Learn how to deploy Palette clusters at the edge.",
       buttonText: "Learn more",
-      url: "/tutorials/getting-started/introduction-edge",
+      url: "/tutorials/getting-started/palette-edge",
     },
   ]}
 />

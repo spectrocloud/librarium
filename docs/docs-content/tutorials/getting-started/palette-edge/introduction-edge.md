@@ -60,47 +60,6 @@ which does not require a connection to Palette.
 
 ## Next Steps
 
-In this section, you will learn how to build the required Edge artifacts, prepare the Edge host, create an Edge native
-cluster profile, and use it to deploy your cluster. Each tutorial is designed to guide you step-by-step, building on the
-concepts introduced in the previous one.
-
-![Palette Getting Started Roadmap](/getting-started/getting-started_introduction-edge_roadmap.webp)
-
-Explore the sequence of tutorials below to learn how to deploy your first connected Edge cluster with Palette.
-
-<!-- vale off -->
-
-<SimpleCardGrid
-  cards={[
-    {
-      title: "Prepare User Data",
-      description: "Create a user data file for your Edge deployment.",
-      buttonText: "Learn more",
-      url: "/tutorials/getting-started/introduction-edge/prepare-user-data",
-    },
-    {
-      title: "Build Edge Artifacts",
-      description: "Build the artifacts required for your Edge deployment.",
-      buttonText: "Learn more",
-      url: "/tutorials/getting-started/introduction-edge/build-edge-artifacts",
-    },
-    {
-      title: "Create Edge Cluster Profile",
-      description: "Create an Edge native cluster profile to deploy Edge workloads.",
-      buttonText: "Learn more",
-      url: "/tutorials/getting-started/introduction-edge/edge-cluster-profile",
-    },
-    {
-      title: "Prepare Edge Host",
-      description: "Install the Palette agent on your Edge host and register the host with Palette.",
-      buttonText: "Learn more",
-      url: "/tutorials/getting-started/introduction-edge/prepare-edge-host",
-    },
-    {
-      title: "Deploy Edge Cluster",
-      description: "Deploy an Edge cluster with Palette.",
-      buttonText: "Learn more",
-      url: "/tutorials/getting-started/introduction-edge/deploy-edge-cluster",
-    },
-  ]}
-/>
+On this page, you became familiar with Palette Edge, its core capabilities, and architecture. Continue to the
+[Prepare User Data](./prepare-user-data.md) tutorial to learn how to create a user data file, which is required for your
+first Edge deployment.
