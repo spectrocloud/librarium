@@ -12,11 +12,9 @@ The following are common scenarios that you may encounter when using Edge.
 
 ## Scenario - PXK-E Clusters in VerteX Deployments Experience Failure upon Reboot
 
-When rebooting control plane nodes in <VersionedLink text="Palette eXtended Kubernetes - Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> clusters
-deployed via VerteX, the `kube-vip` component may fail to start due to early DNS resolution issues. You can observe
-repeated errors in the system logs using `journalctl --unit=kubelet`.
+When rebooting control plane nodes in <VersionedLink text="Palette eXtended Kubernetes - Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> clusters deployed via VerteX, the `kube-vip` component may fail to start due to early DNS resolution issues. You can observe repeated errors in the system logs using `journalctl --unit=kubelet`.
 
-```shell title="Example"
+```shell title="Example output"
 E0619 21:53:53.613367       1 leaderelection.go:327] error retrieving resource lock kube-system/plndr-cp-lock: Get "https://kubernetes:6443/apis/coordination.k8s.io/v1/namespaces/kube-system/leases/plndr-cp-lock": dial tcp: lookup kubernetes on 10.10.128.8:53: no such host
 E0619 21:54:00.647219       1 leaderelection.go:327] error retrieving resource lock kube-system/plndr-cp-lock: Get "https://kubernetes:6443/apis/coordination.k8s.io/v1/namespaces/kube-system/leases/plndr-cp-lock": dial tcp: lookup kubernetes on 10.10.128.8:53: no such host
 ```
