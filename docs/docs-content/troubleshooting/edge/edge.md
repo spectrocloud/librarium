@@ -27,7 +27,7 @@ remove the container manually. The Kubelet then restarts the component using the
 
 ### Debug Steps
 
-1. On each control plane node, list all operating `kube-vip` containers.
+1. On each control plane node, list all operating `kube-vip` containers using the [`crictl`](https://kubernetes.io/docs/tasks/debug/debug-cluster/crictl/) tool.
 
 ```shell
 crictl ps 2>/dev/null | grep kube-vip | awk '{print $1}'
