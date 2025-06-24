@@ -1,7 +1,7 @@
 ---
-title: "Appliance Framework for Self-Hosted Palette"
+title: "Appliance Framework for Palette VerteX"
 sidebar_label: "Appliance Framework"
-description: "Learn how to deploy self-hosted Palette to your environment using the Appliance Framework"
+description: "Learn how to deploy Palette VerteX to your environment using the Appliance Framework"
 hide_table_of_contents: false
 # sidebar_custom_props:
 #   icon: "chart-diagram"
@@ -9,15 +9,15 @@ tags: ["appliance framework", "self-hosted", "enterprise"]
 sidebar_position: 0
 ---
 
-The Appliance Framework lets you install self-hosted Palette in your environment using an ISO file. The ISO file contains all the necessary components needed for Palette to function. The ISO file is used to boot the nodes, which are then clustered to form a Palette management cluster.
+The Appliance Framework lets you install Palette VerteX in your environment using an ISO file. The ISO file contains all the necessary components needed for Palette to function. The ISO file is used to boot the nodes, which are then clustered to form a Palette management cluster.
 
 Once Palette has been installed and configured, you can download pack bundles to create your cluster profiles. You will then be able to deploy clusters in your environment.
 
 ## Architecture
 
-The Appliance Framework is downloadable as an ISO file and is a solution for installing self-hosted Palette on your infrastructure. The ISO contains all the necessary components, including the operating system, Kubernetes distribution, Container Network Interface (CNI), and Container Storage Interface (CSI). This solution is designed to be immutable, secure, and compliant with industry standards, such as the Federal Information Processing Standards (FIPS) and Security Technical Implementation Guides (STIG).
+The Appliance Framework is downloadable as an ISO file and is a solution for installing Palette VerteX on your infrastructure. The ISO contains all the necessary components, including the operating system, Kubernetes distribution, Container Network Interface (CNI), and Container Storage Interface (CSI). This solution is designed to be immutable, secure, and compliant with industry standards, such as the Federal Information Processing Standards (FIPS) and Security Technical Implementation Guides (STIG).
 
-The following table displays the infrastructure profile for the self-hosted Palette appliance.
+The following table displays the infrastructure profile for the Palette VerteX appliance.
 
 | **Layer** | **Component** |
 | --- | --- |
@@ -28,7 +28,7 @@ The following table displays the infrastructure profile for the self-hosted Pale
 
 ## Supported Platforms
 
-The Appliance Framework self-hosted Palette ISO is supported on the following infrastructure platforms:
+The Appliance Framework Palette VerteX ISO is supported on the following infrastructure platforms:
 
 - VMware vSphere
 - Bare Metal
@@ -38,7 +38,7 @@ The Appliance Framework self-hosted Palette ISO is supported on the following in
 
 - Access to the Palette Artifact Studio to download the Palette Enterprise ISO and pack bundles.
 
-- A minimum of three nodes must be provisioned in advance for the Palette installation. We recommended the following resources for each node. Refer to the Palette [Size Guidelines](./install-palette.md#size-guidelines) for additional sizing information.
+- A minimum of three nodes must be provisioned in advance for the Palette installation. We recommended the following resources for each node. Refer to the Palette VerteX [Size Guidelines](./install-palette-vertex.md#size-guidelines) for additional sizing information.
 
   - 8 CPUs per node.
 
@@ -133,7 +133,7 @@ The Appliance Framework self-hosted Palette ISO is supported on the following in
 
 15. Click the username dropdown menu in the top right corner and select **Update password**. Provide the **Old Password** as `kairos`, and set a new password in the **New Password** field. This will be the password you use to log in to Local UI in the future.
 
-16. (Optional) If you need to configure a HTTP proxy server for the node, follow the steps in the [Configure HTTP-Proxy in Local UI](../../clusters/edge/local-ui/host-management/configure-proxy.md) guide. When done, proceed to the next step.
+16. (Optional) If you need to configure a HTTP proxy server for the node, follow the steps in the [Configure HTTP-Proxy in Local UI](../../clusters/edge/local-ui/host-management/configure-proxy.md) guide.
 
 17. From the left main menu, click **Linked Edge Hosts**.
 
