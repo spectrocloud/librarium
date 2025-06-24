@@ -56,7 +56,7 @@ Choose a roadmap from the following cards to start your journey with Palette.
       title: "Palette",
       description: "Learn how to deploy Palette clusters to major infrastructure providers.",
       buttonText: "Learn more",
-      url: "/tutorials/getting-started/introduction-palette",
+      url: "/tutorials/getting-started/palette",
     },
     {
       title: "Palette Edge",

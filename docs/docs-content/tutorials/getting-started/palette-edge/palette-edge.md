@@ -1,6 +1,6 @@
 ---
 sidebar_label: "Palette Edge"
-title: "Palette Edge"
+title: "Palette Edge Getting Started"
 description: "Learn about the Palette Edge Getting Started section."
 icon: ""
 hide_table_of_contents: false

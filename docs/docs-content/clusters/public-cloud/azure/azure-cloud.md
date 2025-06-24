@@ -50,5 +50,5 @@ account from Palette.
 After you have added your Azure cloud account to Palette or VerteX, you can start deploying an Azure IaaS cluster by
 following the [Create and Manage IaaS Cluster](./create-azure-cluster.md) guide, or if you prefer an Azure Managed
 Kubernetes Service (AKS) cluster, refer to the [Create and Manage Azure AKS Cluster](./azure.md) guide. We also
-encourage you to check out the [Getting Started](../../../tutorials/getting-started/introduction-palette/azure/azure.md)
-tutorials for further guidance on the cluster creation process.
+encourage you to check out the [Getting Started](../../../tutorials/getting-started/palette/azure/azure.md) tutorials
+for further guidance on the cluster creation process.
