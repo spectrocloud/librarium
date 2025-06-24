@@ -22,6 +22,8 @@ the provider images that you built in the [Build Edge Artifacts](./build-edge-ar
 cluster profile, you will proceed to the next tutorial, where you will use the installer ISO to bootstrap the Edge
 installation on your host and use it as a node for deploying your first Edge cluster.
 
+![Palette Edge architecture diagram](/getting-started/getting-started_introduction-edge_edge-diagram-profile.webp)
+
 ## Prerequisites
 
 - You have completed the steps in the [Build Edge Artifacts](./build-edge-artifacts.md) tutorial, including building the

@@ -17,6 +17,8 @@ In this tutorial, you will learn how to install the Palette agent on your virtua
 host using the Edge installer ISO created in the [Build Edge Artifacts](./build-edge-artifacts.md) tutorial, and then
 register the host with Palette. Once registered, the host will be ready to be part of an Edge cluster.
 
+![Palette Edge architecture diagram](/getting-started/getting-started_introduction-edge_edge-diagram-host.webp)
+
 ## Prerequisites
 
 - A bare metal or virtual Linux host with an _AMD64_ processor architecture (also known as _x86_64_) and the following

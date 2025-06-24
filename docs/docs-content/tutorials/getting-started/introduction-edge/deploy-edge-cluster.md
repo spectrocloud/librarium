@@ -15,6 +15,8 @@ You will learn how to select the desired cluster profile, assign the registered 
 number of nodes, and verify the deployment was successful by accessing the demo application included in the cluster
 profile, [Hello Universe](https://github.com/spectrocloud/hello-universe).
 
+![Palette Edge architecture diagram](/getting-started/getting-started_introduction-edge_edge-diagram-cluster.webp)
+
 ## Prerequisites
 
 - You have completed the [Build Edge Artifacts](./build-edge-artifacts.md) tutorial and pushed the provider images to a
