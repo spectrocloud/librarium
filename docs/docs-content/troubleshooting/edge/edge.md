@@ -12,9 +12,7 @@ The following are common scenarios that you may encounter when using Edge.
 
 ## Scenario - PXK-E Clusters in VerteX Deployments Experience Failure upon Reboot
 
-When rebooting control plane nodes in
-
-<VersionedLink text="Palette eXtended Kubernetes - Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> clusters
+When rebooting control plane nodes in <VersionedLink text="Palette eXtended Kubernetes - Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> clusters
 deployed via VerteX, the `kube-vip` component may fail to start due to early DNS resolution issues. You can observe
 repeated errors in the system logs using `journalctl --unit=kubelet`.
 
