@@ -35,9 +35,9 @@ crictl ps 2>/dev/null | grep kube-vip | awk '{print $1}'
 
 2. Stop and remove each container.
 
-```shell
-crictl stop <container-id> && crictl rm <container-id>
-```
+   ```shell
+   crictl stop <container-id> && crictl rm <container-id>
+   ```
 
 ## Scenario - Canonical Edge Clusters in Proxied Environments Experience Failure upon Reboot
 
