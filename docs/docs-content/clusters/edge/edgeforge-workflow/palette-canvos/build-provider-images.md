@@ -151,10 +151,6 @@ artifacts at the same time.
     corresponds to the **Palette Optimized Canonical** pack, which is a Tech Preview feature and is subject to change.
     Do not use this feature in production workloads.
 
-    In addition, Canonical clusters deployed in a proxied network environment may experience a
-    [known issue](../../../../troubleshooting/edge/edge.md#scenario---canonical-edge-clusters-in-proxied-environments-experience-failure-upon-reboot)
-    when you reboot nodes in the cluster.
-
     :::
 
 11. (Optional) If you want to build multiple versions of provider images using different Kubernetes versions, remove the
