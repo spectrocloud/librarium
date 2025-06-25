@@ -25,10 +25,15 @@ wordpress   wordpress-wordpress                  Pending                        
 This issue can arise when an add-on pack or Helm chart that requires a PV or PVC is deployed to an existing cluster or
 while creating a new cluster.
 
-The PV or PVC provisioning fails because IAM Roles for Service Accounts (IRSA) has not been configured for the Amazon
-Elastic Block Store (EBS) Container Storage Interface (CSI). For instances launched on AL2023, IMDSv2 is enforced by
-default, and IRSA is the [recommended approach](https://docs.aws.amazon.com/eks/latest/userguide/ebs-csi.html) for
-providing IAM permissions to Amazon EBS CSI.
+The PV or PVC provisioning fails because IAM Roles for Service Accounts (IRSA) have not been configured for the AWS CSI
+packs such as Amazon EBS CSI, Amazon EFS CSI, and Amazon Cloud Native. It is also required if using the AWS Application
+Loadbalancer.
+
+For instances launched on AL2023,
+[IMDSv2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-metadata-transition-to-version-2.html) is enforced
+by default, and IRSA is the recommended approach for providing IAM permissions to
+[Amazon EBS CSI](https://docs.aws.amazon.com/eks/latest/userguide/ebs-csi.html) and
+[Amazon EFS CSI](https://docs.aws.amazon.com/eks/latest/userguide/efs-csi.html).
 
 ### Debug Steps
 
@@ -42,7 +47,11 @@ providing IAM permissions to Amazon EBS CSI.
 
 5. Select the **Kubernetes** layer of your cluster profile.
 
-6. Use the YAML editor to configure IRSA roles for the `managedControlPlane` and `managedMachinePool`.
+6. Use the YAML editor to configure IRSA roles for the `managedControlPlane` and `managedMachinePool` resources.
+
+   <Tabs groupId="aws-csi">
+
+   <TabItem value="AWS EBS CSI" label="AWS EBS CSI">
 
    ```yaml hideClipboard title="Example configuration"
    managedControlPlane:
@@ -63,12 +72,43 @@ providing IAM permissions to Amazon EBS CSI.
        - "arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy"
    ```
 
+   </TabItem>
+
+   <TabItem value="AWS EFS CSI" label="AWS EFS CSI">
+
+   ```yaml hideClipboard title="Example configuration"
+   managedControlPlane:
+   ---
+   irsaRoles:
+     - name: "{{.spectro.system.cluster.name}}-irsa-cni"
+       policies:
+         - arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy
+       serviceAccount:
+         name: aws-node
+         namespace: kube-system
+     - name: "{{.spectro.system.cluster.name}}-irsa-csi"
+       policies:
+         - arn:aws:iam::aws:policy/service-role/AmazonEFSCSIDriverPolicy
+   ---
+   managedMachinePool:
+     roleAdditionalPolicies:
+       - "arn:aws:iam::aws:policy/service-role/AmazonEFSCSIDriverPolicy"
+   ```
+
+   </TabItem>
+
+   </Tabs>
+
 7. Click **Confirm Updates** after editing.
 
 8. Select the **Storage** layer of your cluster profile.
 
-9. Use the YAML editor to add an IAM role ARN annotation to the AWS EBS CSI Driver so that the IRSA role is correctly
+9. Use the YAML editor to add an IAM role ARN annotation to the AWS CSI Driver so that the IRSA role is correctly
    referenced. Replace `<aws-account-id>` with your AWS account ID.
+
+   <Tabs groupId="aws-csi">
+
+   <TabItem value="AWS EBS CSI" label="AWS EBS CSI">
 
    ```yaml hideClipboard title="Example configuration" {12}
    charts:
@@ -89,7 +129,37 @@ providing IAM permissions to Amazon EBS CSI.
            automountServiceAccountToken: true
    ```
 
-10. Update the custom labels for the AWS EBS CSI Driver to retrigger the deployment.
+   </TabItem>
+
+   <TabItem value="AWS EFS CSI" label="AWS EFS CSI">
+
+   ```yaml hideClipboard title="Example configuration" {12}
+   charts:
+   ...
+     aws-efs-csi-driver:
+     ...
+       controller:
+       ...
+         serviceAccount:
+           # A service account will be created for you if set to true. Set to false if you want to use your own.
+           create: true
+           name: efs-csi-controller-sa
+           annotations: {
+             "eks.amazonaws.com/role-arn":"arn:aws:iam::<aws-account-id>:role/{{.spectro.system.cluster.name}}-irsa-csi"
+           }
+           ## Enable if EKS IAM for SA is used
+           #  eks.amazonaws.com/role-arn: arn:aws:iam::111122223333:role/efs-csi-role
+   ```
+
+   </TabItem>
+
+   </Tabs>
+
+10. Update the custom labels for the AWS CSI Driver to retrigger the deployment.
+
+    <Tabs groupId="aws-csi">
+
+    <TabItem value="AWS EBS CSI" label="AWS EBS CSI">
 
     ```yaml hideClipboard title="Example"
     charts:
@@ -101,6 +171,30 @@ providing IAM permissions to Amazon EBS CSI.
         }
     ```
 
+    </TabItem>
+
+    <TabItem value="AWS EFS CSI" label="AWS EFS CSI">
+
+    ```yaml hideClipboard title="Example"
+    charts:
+    ...
+      aws-efs-csi-driver:
+      ...
+        controller:
+          podLabels: {
+            restart: "true"
+          }
+        ...
+        node:
+          podLabels: {
+            restart: "true"
+          }
+    ```
+
+    </TabItem>
+
+    </Tabs>
+
 11. Click **Confirm Updates** after editing.
 
 12. Click **Save Changes** on the cluster profile page.
@@ -108,7 +202,7 @@ providing IAM permissions to Amazon EBS CSI.
 13. Update your cluster to use the new cluster profile version that you created with these changes. Refer to
     [Update a Cluster](../clusters/cluster-management/cluster-updates.md#enablement) for guidance.
 
-14. Wait for the nodes to be repaved and the AWS EBS CSI Driver to be redeployed.
+14. Wait for the nodes to be repaved and the AWS CSI Driver to be redeployed.
 
 15. Check that the PV or PVC status is `Bound` by issuing one of the following `kubectl` commands.
 
