@@ -1,0 +1,50 @@
+# This workflow is triggered on a pull request labeled with 'ready_for_review'. 
+# The workflow invokes a Slack notification to alert the team that a pull request is ready for review.
+# This is primarily used on pull requests that are not in draft status.
+# This workflow is not needed for pull requests that are in draft status, as they are not ready for review.
+
+name: Ready for Review
+
+on:
+  pull_request:
+    types: [ready_for_review, review_requested, opened, reopened] # Trigger on PR ready for review, review requested, opened, or reopened
+
+permissions:
+  contents: read # Allows the workflow to read the repository contents
+  pull-requests: read # Allows the workflow to read pull request information
+
+concurrency:
+  group: ci-${{ github.ref }} # Ensures that only one workflow runs at a time for the same branch
+  cancel-in-progress: true # Cancels any in-progress runs of this workflow for the same branch
+
+jobs:
+  notify-slack: # Notify Slack when PR is ready for review
+    if: github.event.pull_request.draft == false #  Only run if the PR is not a draft  
+    runs-on: ubuntu-latest # Use the latest Ubuntu runner
+
+    steps:
+      - name: Send Slack Notification
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }} # Slack webhook URL stored in GitHub secrets
+        shell: bash
+        run: |
+          PR_TITLE="${{ github.event.pull_request.title }}" 
+          PR_URL="${{ github.event.pull_request.html_url }}" 
+          PR_AUTHOR="${{ github.event.pull_request.user.login }}" 
+
+          PAYLOAD=$(cat <<EOF
+          {
+            "text": ":eyes: *New PR Ready for Review!* :review: ",
+            "attachments": [
+              {
+                "title": "${PR_TITLE}",
+                "title_link": "${PR_URL}",
+                "text": "Author: ${PR_AUTHOR}",
+                "color": "#cc00cc"
+              }
+            ]
+          }
+          EOF
+          )
+
+          curl -X POST -H 'Content-type: application/json' --data "${PAYLOAD}" "${SLACK_WEBHOOK_URL}" 
