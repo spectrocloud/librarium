@@ -11,6 +11,101 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## June 28, 2025 - Release 4.7.X {#release-notes-4.7.0}
+
+### Security Notices
+
+- Review the [Security Bulletins](../security-bulletins/reports/reports.mdx) page for the latest security advisories.
+
+### Palette Enterprise {#palette-enterprise-4.7.0}
+
+#### Breaking Changes {#breaking-changes-4.7.0}
+
+- The [log fetcher API endpoints](/api/v1/v-1-cluster-feature-log-fetcher-create/) now only support creating and
+  retrieving logs from the following log paths:
+
+  - `/var/log`
+  - `/var/log/syslog`
+  - `/var/log/cloud-init`
+
+  All other log paths are now unsupported.
+
+  In addition, log downloads are only permitted from the following namespaces:
+
+  - `kube-system`
+  - `cluster-<cluster-uid>`
+
+#### Features
+
+#### Improvements
+
+#### Deprecations and Removals
+
+### Edge
+
+#### Features
+
+#### Improvements
+
+#### Bug Fixes
+
+### VerteX
+
+#### Features
+
+- Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
+  [Palette section](#palette-enterprise-4.7.0) for more details.
+
+### Automation
+
+:::info
+
+Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible version of the Palette CLI.
+
+:::
+
+#### Features
+
+#### Improvements
+
+### Docs and Education
+
+### Packs
+
+#### Pack Notes
+
+#### OS
+
+| Pack Name | New Version |
+| --------- | ----------- |
+
+#### Kubernetes
+
+| Pack Name | New Version |
+| --------- | ----------- |
+
+#### CNI
+
+| Pack Name | New Version |
+| --------- | ----------- |
+
+#### CSI
+
+| Pack Name | New Version |
+| --------- | ----------- |
+
+#### Add-on Packs
+
+| Pack Name | New Version |
+| --------- | ----------- |
+
+#### FIPS Packs
+
+| Pack Name | New Version |
+| --------- | ----------- |
+
+#### Deprecations and Removals
+
 ## June 23, 2025 - Release 4.6.41
 
 ### Bug Fixes

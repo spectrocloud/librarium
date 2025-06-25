@@ -30,19 +30,17 @@ The following are architectural highlights of clusters deployed using agent mode
   - Non-Edge environments
   - ARM64 architecture
   - OS other than Ubuntu
-  - Kubernetes versions other than 1.32.3
-  - Cluster updates
   - Palette VerteX
   - Custom installation paths for Kubernetes and its dependencies in [agent mode](../)
   - [Network overlay](../../../clusters/edge/networking/vxlan-overlay/)
 
 ## Supported Kubernetes Distributions
 
-| Distribution | Versions                |
-| ------------ | ----------------------- |
-| PXK-E        | 1.28.13, 1.28.9, 1.30.5 |
-| K3s          | 1.28.14, 1.28.9, 1.30.5 |
-| Canonical    | 1.32.3                  |
+Agent mode deployments support the following Kubernetes distributions:
+
+- PXK-E
+- K3s
+- Canonical
 
 :::preview
 
