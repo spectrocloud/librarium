@@ -68,7 +68,7 @@ also use add-on packs or create your own custom pack to extend Kubernetes functi
 On this page, you became familiar with Palette, its core concepts, and the supported environments. Choose your preferred
 infrastructure provider from the following list to start exploring Palette:
 
-- [Deploy a Cluster to Amazon Web Services (AWS)](./aws/)
-- [Deploy a Cluster to Azure](./azure/)
-- [Deploy a Cluster to Google Cloud Platform (GCP)](./gcp/)
-- [Deploy a Cluster to VMware](./vmware/)
+- [Deploy a Cluster to Amazon Web Services (AWS)](./aws/aws.md)
+- [Deploy a Cluster to Azure](./azure/azure.md)
+- [Deploy a Cluster to Google Cloud Platform (GCP)](./gcp/gcp.md)
+- [Deploy a Cluster to VMware](./vmware/vmware.md)
