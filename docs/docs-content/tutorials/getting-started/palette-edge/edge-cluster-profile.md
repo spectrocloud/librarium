@@ -55,8 +55,8 @@ Add the **BYOS Edge OS** pack to the OS layer. This pack enables you to use the 
 
 Under **Pack Details**, select **Values** to open the YAML editor. Replace the default layer manifest with the custom
 manifest generated in the [Build Edge Artifacts](./build-edge-artifacts.md) tutorial. This makes the cluster pull the
-provider images from the [ttl.sh](https://ttl.sh/) registry during deployment. The following image displays the OS layer
-with the custom manifest.
+provider images from the [Docker Hub](https://www.docker.com/products/docker-hub/) registry during deployment. The
+following image displays the OS layer with the custom manifest.
 
 ![A screenshot of the cluster profile creation step with the OS layer.](/getting-started/getting-started_introduction-edge_edge-cluster-profile_byos-cluster-profile.webp)
 

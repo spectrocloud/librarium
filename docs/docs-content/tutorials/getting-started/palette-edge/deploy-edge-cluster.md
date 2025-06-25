@@ -21,15 +21,6 @@ profile, [Hello Universe](https://github.com/spectrocloud/hello-universe).
 
 - You have completed the [Build Edge Artifacts](./build-edge-artifacts.md) tutorial and pushed the provider images to a
   registry.
-
-  :::warning
-
-  If you used [ttl.sh](https://ttl.sh) as the registry, make sure the images were pushed less than 24 hours before
-  starting this tutorial. `ttl.sh` is a short-lived registry, and images expire 24 hours after being uploaded. If more
-  than 24 hours have passed, you can push the images again to make them available for the tutorial.
-
-  :::
-
 - You have completed the [Prepare Edge Host](./prepare-edge-host.md) tutorial and have a registered Edge host in
   Palette.
 - You have completed the [Create Edge Cluster Profile](./edge-cluster-profile.md) tutorial and have an Edge cluster
