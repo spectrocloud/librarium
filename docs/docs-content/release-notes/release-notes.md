@@ -21,6 +21,19 @@ tags: ["release-notes"]
 
 #### Breaking Changes {#breaking-changes-4.7.0}
 
+- It is now only possible to [create](/api/v1/v-1-cluster-feature-log-fetcher-create/) and
+  [get](/api/v1/v-1-cluster-feature-log-fetcher-get/) logs from the following log paths when using the log fetcher API
+  endpoints:
+
+  - `/var/log`
+  - `/var/log/syslog`
+  - `/var/log/cloud-init`
+
+  In addition, logs are only downloadable from the following namespaces:
+
+  - `kube-system`
+  - `cluster-<id>`
+
 #### Features
 
 #### Improvements
