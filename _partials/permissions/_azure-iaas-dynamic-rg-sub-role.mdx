@@ -2,7 +2,7 @@
 partial_category: permissions
 partial_name: azure-iaas-dynamic-rg-sub-role
 ---
-**Last Update**: October 29, 2024
+**Last Update**: June 25, 2025
 
 ```json
 {
@@ -35,11 +35,18 @@ partial_name: azure-iaas-dynamic-rg-sub-role
     "Microsoft.Network/loadBalancers/inboundNatRules/write",
     "Microsoft.Network/loadBalancers/read",
     "Microsoft.Network/loadBalancers/write",
+    "Microsoft.Network/natGateways/read",
+    "Microsoft.Network/natGateways/write",
+    "Microsoft.Network/natGateways/delete",
+    "Microsoft.Network/natGateways/join/action",
     "Microsoft.Network/networkInterfaces/delete",
     "Microsoft.Network/networkInterfaces/join/action",
     "Microsoft.Network/networkInterfaces/read",
     "Microsoft.Network/networkInterfaces/write",
     "Microsoft.Network/networkSecurityGroups/read",
+    "Microsoft.Network/networkSecurityGroups/write",
+    "Microsoft.Network/networkSecurityGroups/delete",
+    "Microsoft.Network/networkSecurityGroups/join/action",
     "Microsoft.Network/networkSecurityGroups/securityRules/delete",
     "Microsoft.Network/networkSecurityGroups/securityRules/read",
     "Microsoft.Network/networkSecurityGroups/securityRules/write",
@@ -59,8 +66,8 @@ partial_name: azure-iaas-dynamic-rg-sub-role
     "Microsoft.Network/routeTables/delete",
     "Microsoft.Network/routeTables/read",
     "Microsoft.Network/routeTables/write",
+    "Microsoft.Network/routeTables/join/action",
     "Microsoft.Network/virtualNetworks/delete",
-    "Microsoft.Network/virtualNetworks/join/action",
     "Microsoft.Network/virtualNetworks/join/action",
     "Microsoft.Network/virtualNetworks/joinLoadBalancer/action",
     "Microsoft.Network/virtualNetworks/peer/action",
@@ -79,6 +86,7 @@ partial_name: azure-iaas-dynamic-rg-sub-role
     "Microsoft.Resources/subscriptions/resourceGroups/read",
     "Microsoft.Storage/storageAccounts/blobServices/containers/read",
     "Microsoft.Storage/storageAccounts/blobServices/containers/write",
+    "Microsoft.Storage/storageAccounts/listKeys/action",
     "Microsoft.Storage/storageAccounts/read",
     "Microsoft.Storage/storageAccounts/write"
   ],
