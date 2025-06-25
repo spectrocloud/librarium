@@ -28,7 +28,7 @@ tags: ["release-notes"]
   - `/var/log/syslog`
   - `/var/log/cloud-init`
 
-  All other log paths are now restricted.
+  All other log paths are now unsupported.
 
   In addition, log downloads are only permitted from the following namespaces:
 
