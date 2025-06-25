@@ -33,7 +33,7 @@ tags: ["release-notes"]
   In addition, log downloads are only permitted from the following namespaces:
 
   - `kube-system`
-  - `cluster-<id>`
+  - `cluster-<cluster-uid>`
 
 #### Features
 
