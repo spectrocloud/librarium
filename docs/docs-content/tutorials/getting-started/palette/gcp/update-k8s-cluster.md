@@ -12,8 +12,8 @@ Palette provides cluster profiles, which allow you to specify layers for your wo
 packages, or cluster manifests. Packs serve as blueprints to the provisioning and deployment process, as they contain
 the versions of the container images that Palette will install for you. Cluster profiles provide consistency across
 environments during the cluster creation process, as well as when maintaining your clusters. Check out
-[Cluster Profiles](../../introduction-palette/introduction-palette.md#cluster-profiles) to learn more. Once provisioned,
-there are three main ways to update your Palette deployments.
+[Cluster Profiles](../../palette/introduction-palette.md#cluster-profiles) to learn more. Once provisioned, there are
+three main ways to update your Palette deployments.
 
 | Method                   | Description                                                                        | Cluster application process                                                                                                                                                                                |
 | ------------------------ | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |

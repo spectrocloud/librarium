@@ -15,19 +15,12 @@ You will learn how to select the desired cluster profile, assign the registered 
 number of nodes, and verify the deployment was successful by accessing the demo application included in the cluster
 profile, [Hello Universe](https://github.com/spectrocloud/hello-universe).
 
+![Palette Edge architecture diagram](/getting-started/getting-started_introduction-edge_edge-diagram-cluster.webp)
+
 ## Prerequisites
 
 - You have completed the [Build Edge Artifacts](./build-edge-artifacts.md) tutorial and pushed the provider images to a
   registry.
-
-  :::warning
-
-  If you used [ttl.sh](https://ttl.sh) as the registry, make sure the images were pushed less than 24 hours before
-  starting this tutorial. `ttl.sh` is a short-lived registry, and images expire 24 hours after being uploaded. If more
-  than 24 hours have passed, you can push the images again to make them available for the tutorial.
-
-  :::
-
 - You have completed the [Prepare Edge Host](./prepare-edge-host.md) tutorial and have a registered Edge host in
   Palette.
 - You have completed the [Create Edge Cluster Profile](./edge-cluster-profile.md) tutorial and have an Edge cluster
@@ -53,6 +46,15 @@ In the **Cluster Profile** section, click **Add Cluster Profile**, select the `g
 earlier, and click **Confirm**.
 
 Review the cluster profile layers and click **Next** to proceed.
+
+:::tip
+
+We recommend enabling the overlay network when using DHCP-enabled networks to ensure stable IP addresses for the
+cluster. However, for education purposes, this tutorials does not use the overlay network. For production use or
+detailed configuration instructions, refer to the
+[Enable Overlay Network](../../../clusters/edge/networking/vxlan-overlay.md) guide.
+
+:::
 
 In the **Cluster Config** section, provide a Virtual IP (VIP) address for the Edge cluster. This address must be an
 unused address on the same network as your Edge host.

@@ -30,37 +30,37 @@ your cluster is deployed, you can update it using cluster profile updates.
       title: "Set up Palette with AWS",
       description: "Set up the prerequisites of using Palette with AWS.",
       buttonText: "Learn more",
-      url: "/tutorials/getting-started/introduction-palette/aws/setup",
+      url: "/tutorials/getting-started/palette/aws/setup",
     },
     {
       title: "Create a Cluster Profile",
       description: "Create a full cluster profile in Palette.",
       buttonText: "Learn more",
-      url: "/tutorials/getting-started/introduction-palette/aws/create-cluster-profile",
+      url: "/tutorials/getting-started/palette/aws/create-cluster-profile",
     },
     {
       title: "Deploy a Cluster",
       description: "Deploy a Palette host cluster to AWS.",
       buttonText: "Learn more",
-      url: "/tutorials/getting-started/introduction-palette/aws/deploy-k8s-cluster",
+      url: "/tutorials/getting-started/palette/aws/deploy-k8s-cluster",
     },
     {
       title: "Deploy Cluster Profile Updates",
       description: "Update your deployed clusters using Palette Cluster Profiles.",
       buttonText: "Learn more",
-      url: "/tutorials/getting-started/introduction-palette/aws/update-k8s-cluster",
+      url: "/tutorials/getting-started/palette/aws/update-k8s-cluster",
     },
     {
       title: "Cluster Management with Terraform",
       description: "Deploy and update a Palette host cluster with Terraform.",
       buttonText: "Learn more",
-      url: "/tutorials/getting-started/introduction-palette/aws/deploy-manage-k8s-cluster-tf",
+      url: "/tutorials/getting-started/palette/aws/deploy-manage-k8s-cluster-tf",
     },
     {
       title: "Scale, Upgrade, and Secure Clusters",
       description: "Learn how to scale, upgrade, and secure Palette host clusters deployed to AWS.",
       buttonText: "Learn more",
-      url: "/tutorials/getting-started/introduction-palette/aws/scale-secure-cluster",
+      url: "/tutorials/getting-started/palette/aws/scale-secure-cluster",
     },
   ]}
 />

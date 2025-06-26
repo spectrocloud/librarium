@@ -56,22 +56,13 @@ Choose a roadmap from the following cards to start your journey with Palette.
       title: "Palette",
       description: "Learn how to deploy Palette clusters to major infrastructure providers.",
       buttonText: "Learn more",
-      url: "/tutorials/getting-started/introduction-palette",
+      url: "/tutorials/getting-started/palette",
     },
     {
       title: "Palette Edge",
       description: "Learn how to deploy Palette clusters at the edge.",
       buttonText: "Learn more",
-      url: "/tutorials/getting-started/introduction-edge",
+      url: "/tutorials/getting-started/palette-edge",
     },
   ]}
 />
-
-<br />
-
-:::tip
-
-You can also explore our [Downloads](../downloads/downloads.md) section to discover the latest and specific versions of
-accompanying software for Palette.
-
-:::
