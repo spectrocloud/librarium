@@ -15,7 +15,7 @@ Once Palette has been installed and configured, you can download pack bundles to
 
 ## Architecture
 
-The Appliance Framework is downloadable as an ISO file and is a solution for installing self-hosted Palette on your infrastructure. The ISO contains all the necessary components, including the operating system, Kubernetes distribution, Container Network Interface (CNI), and Container Storage Interface (CSI). This solution is designed to be immutable, secure, and compliant with industry standards, such as the Federal Information Processing Standards (FIPS) and Security Technical Implementation Guides (STIG).
+The Appliance Framework is downloadable as an ISO file and is a solution for installing self-hosted Palette on your infrastructure. The ISO contains all the necessary components, including the Operating System (OS), Kubernetes distribution, Container Network Interface (CNI), and Container Storage Interface (CSI). This solution is designed to be immutable, secure, and compliant with industry standards, such as the Federal Information Processing Standards (FIPS) and Security Technical Implementation Guides (STIG).
 
 The following table displays the infrastructure profile for the self-hosted Palette appliance.
 
@@ -25,6 +25,8 @@ The following table displays the infrastructure profile for the self-hosted Pale
 | **Kubernetes** | Palette Kubernetes (PXK) – STIG-hardened and FIPS compiled. |
 | **CNI** | Calico - FIPS compiled. |
 | **CSI** | Rook Ceph - FIPS compiled. |
+
+A [Zot registry](https://zotregistry.dev/) is included in the Appliance Framework ISO. Zot is a lightweight, OCI-compliant container image registry that is used to store the Palette packs needed to create cluster profiles.
 
 ## Supported Platforms
 
@@ -44,7 +46,7 @@ The Appliance Framework self-hosted Palette ISO is supported on the following in
 
   - 16 GB Memory per node.
 
-  - 100 GB Disk Space per node.
+  - 250 GB Disk Space per node.
 
 - The following network ports must be accessible on each node for Palette to operate successfully.
 
@@ -71,6 +73,15 @@ The Appliance Framework self-hosted Palette ISO is supported on the following in
   <!-- - Permissions to upload, register and update OS or VM templates that Palette uses during cluster creation (e.g. populate the `spectro-templates` folder on vSphere, or the image repository in MAAS). -->
 
 - Access to your external registry server (if applicable) to store and pull the Palette packs. This is only required if you do not wish to use the Zot registry that comes with Palette.
+
+  - You must provide the following registry credentials during the Palette installation process:
+
+    - The username for the registry.
+    - The password for the registry.
+    - The certificate for the registry.
+    - The CA certificate for the registry.
+    - The private key for the registry certificate.
+    - The image replacement rules for the cluster.
 
   - The nodes used to host the Palette management cluster must have access to the external registry server.
 
@@ -153,21 +164,63 @@ The Appliance Framework self-hosted Palette ISO is supported on the following in
 
 25. Repeat steps 19-23 for every host you want to link to the leader host.
 
-26. In **Linked Edge Hosts**, confirm that all hosts you linked together show up in the **Linked Edge Hosts** table.
+26. Confirm that all linked hosts appear in the **Linked Edge Hosts** table.
 
-    For all hosts, the **Status** column should show **Ready**, the **Content** column should show **Synced**, and the **Health** column should show **Healthy**.
+    Before proceeding to the next step, for all hosts, check that the following columns show the required statuses:
+
+    - **Status** = Ready
+    - **Content** = Synced (content synchronization will take at least five minutes to complete)
+    - **Health** = Healthy
 
 27. On the left main menu, click **Cluster**.
 
-28. WIP Log in to Palette and activate it.
+28. Click **Create cluster**.
 
-29. Download your pack bundles from the Artifact Studio.
+29. For **Basic Information**, provide a name for the cluster and optional tags in `key:value` format.
 
-30. Transfer the pack bundles to one of your Palette nodes.
+30. In **Cluster Profile**, the **Imported Applications preview** section displays the applications that are included with the Appliance Framework. These applications are pre-configured and used to deploy your Palette management cluster.
 
-31. Install the pack bundles on the Palette node.
+    Leave the default options in place and click **Next**. 
 
-32. Profit.
+31. In **Profile Config**, configure the cluster profile settings to your requirements. Review the following tables for the available options.
+
+    #### Cluster Profile Options
+
+    | **Option** | **Description** | **Type** | **Default** |
+    | --- | --- | --- | --- |
+    | **Pod CIDR** | The CIDR range for the pod network. This is used to allocate IP addresses to pods in the cluster. | CIDR notation | `192.168.0.0/16` |
+    | **Service CIDR** | The CIDR range for the service network. This is used to allocate IP addresses to services in the cluster. | CIDR notation | `192.169.0.0/16` |
+    | **Storage Pool Drive** | The storage pool device to use for the cluster. | String | `/dev/sdb` |
+    | **Ubuntu Pro Token (Optional)** | The token for your Ubuntu Pro subscription. | String | _No default_ |
+
+    #### Registry Options
+
+    | **Option** | **Description** | **Type** | **Default** |
+    | --- | --- | --- | --- |
+    | **Registry Password** | If using the internal Zot registry, change the password to your requirements. If using an external registry, provide the appropriate password. | String | **`Spectro@123`** |
+    | **Registry Username** | If using the internal Zot registry, you leave the default username or adjust to your requirements. If using an external registry, provide the appropriate username. | String | **`admin`** |
+    | **Registry Cert** | The certificate for the registry. | Base64 encoded string | _No default - must be provided_ |
+    | **Registry CA Cert** | The CA certificate for the registry. | Base64 encoded string | _No default - must be provided_ |
+    | **Root Domain (Optional)** | The root domain for the registry. The default is set for the internal Zot registry, adjust if using an external registry. | String | **`{{.spectro.system.cluster.kubevip}}`** |
+    | **Mongo Replicas (Optional)** | The number of MongoDB replicas to create for the cluster. This is used to provide high availability for the MongoDB database. The accepted values are **1** or **3**. | Integer | **`3`** |
+    | **Registry Base Content Path (Optional)** | The base path for the registry content. Palette packs will be stored in this directory. | String | **`spectro-content`** |
+    | **Use-Incluster Registry (Optional)** | **True** = use internal Zot registry, **False** = use external registry. | Boolean | **True** |
+    | **Registry Endpoint** | The endpoint for the registry. The default is set for the internal Zot registry, adjust if using an external registry. | String | **`{{.spectro.system.cluster.kubevip}}`** |
+    | **Registry Port** | The port for the registry. The default is set for the internal Zot registry, adjust if using an external registry. | Integer | **`30003`** |
+    | **Registry Private Cert Key** | The private key for the registry certificate. This must be provided in base64 format. | Base64 encoded string | _No default - must be provided_ |
+    | **Image Replacement Rules (Optional)** | Set rules for replacing image references when using an external registry. For example, `old-registry.com/new-registry.com`. Leave empty if using the internal Zot registry.  | String | _No default_ |
+
+32. Click **Next** when you are done.
+
+33. WIP Log in to Palette and activate it.
+
+34. Download your pack bundles from the Artifact Studio.
+
+35. Transfer the pack bundles to one of your Palette nodes.
+
+36. Install the pack bundles on the Palette node.
+
+37. Profit.
 
 ## Validate
 

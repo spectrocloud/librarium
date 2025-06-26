@@ -15,7 +15,7 @@ Once Palette has been installed and configured, you can download pack bundles to
 
 ## Architecture
 
-The Appliance Framework is downloadable as an ISO file and is a solution for installing Palette VerteX on your infrastructure. The ISO contains all the necessary components, including the operating system, Kubernetes distribution, Container Network Interface (CNI), and Container Storage Interface (CSI). This solution is designed to be immutable, secure, and compliant with industry standards, such as the Federal Information Processing Standards (FIPS) and Security Technical Implementation Guides (STIG).
+The Appliance Framework is downloadable as an ISO file and is a solution for installing Palette VerteX on your infrastructure. The ISO contains all the necessary components, including the Operating System (OS), Kubernetes distribution, Container Network Interface (CNI), and Container Storage Interface (CSI). This solution is designed to be immutable, secure, and compliant with industry standards, such as the Federal Information Processing Standards (FIPS) and Security Technical Implementation Guides (STIG).
 
 The following table displays the infrastructure profile for the Palette VerteX appliance.
 
@@ -25,6 +25,8 @@ The following table displays the infrastructure profile for the Palette VerteX a
 | **Kubernetes** | Palette Kubernetes (PXK) – STIG-hardened and FIPS compiled. |
 | **CNI** | Calico - FIPS compiled. |
 | **CSI** | Rook Ceph - FIPS compiled. |
+
+A [Zot registry](https://zotregistry.dev/) is included in the Appliance Framework ISO. Zot is a lightweight, OCI-compliant container image registry that is used to store the Palette packs needed to create cluster profiles.
 
 ## Supported Platforms
 
@@ -44,7 +46,7 @@ The Appliance Framework Palette VerteX ISO is supported on the following infrast
 
   - 16 GB Memory per node.
 
-  - 100 GB Disk Space per node.
+  - 250 GB Disk Space per node.
 
 - The following network ports must be accessible on each node for Palette to operate successfully.
 
