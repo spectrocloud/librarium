@@ -138,7 +138,7 @@ After a few minutes, the VM screen displays an IP address and automatically regi
 using the registration token provided in the `user-data` file during the
 [Prepare User Data for Edge Installation](./prepare-user-data.md) tutorial.
 
-![A screenshot of the Edge host.](/getting-started/getting-started_introduction-edge_prepare-edge-host_edge-host-vm.webp)
+![A screenshot of the Edge host.](/getting-started/getting-started_introduction-edge_prepare-edge-host_edge-host-screen.webp)
 
 :::tip
 
@@ -168,7 +168,7 @@ After a few minutes, the device screen displays an IP address and automatically 
 using the registration token provided in the `user-data` file during the
 [Prepare User Data for Edge Installation](./prepare-user-data.md) tutorial.
 
-![A screenshot of the Edge host.](/getting-started/getting-started_introduction-edge_prepare-edge-host_edge-host-bm-screen.webp)
+![A screenshot of the Edge host.](/getting-started/getting-started_introduction-edge_prepare-edge-host_edge-host-screen.webp)
 
 :::tip
 
@@ -184,7 +184,7 @@ Hosts** tab to view the registered hosts.
 Confirm that your Edge host is listed with a **Healthy** and **Ready** status. The **Machine ID** displayed in Palette
 should match the ID displayed on the VM screen.
 
-![A screenshot of the Edge host in Palette.](/getting-started/getting-started_introduction-edge_prepare-edge-host_edge-host-bm-palette.webp)
+![A screenshot of the Edge host in Palette.](/getting-started/getting-started_introduction-edge_prepare-edge-host_edge-host-palette.webp)
 
 </TabItem>
 
