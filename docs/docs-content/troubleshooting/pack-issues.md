@@ -10,6 +10,133 @@ tags: ["troubleshooting", "packs"]
 
 The following are common scenarios that you may encounter when using Packs.
 
+## Scenario - Calico Fails to Start when IPv6 is Enabled
+
+Calico fails to start when IPv6 is enabled on hosts running certain Linux kernel versions due to missing or incompatible ip6tables mark support. Logs contain errors like `ip6tables-restore: MARK: bad value for option "--set-mark", or out of range missing kernel module?`. The issue occurs when required kernel modules are unavailable or incompatible with Calico’s ip6tables rule structure.
+There are several possible ways to troublsoot this issue:
+- Use a Container Network Interface (CNI) other than Calico.
+- [Use an unaffected or fixed kernel version](#debug-steps---use-an-unaffected-or-fixed-kernel-version).
+- [Disable IPv6 on the Calico pack level](#debug-steps---disable-ipv6-on-the-calico-pack-level).
+- [Disable IPv6 on the BYOS Edge OS pack level](#debug-steps---disable-ipv6-on-the-byos-pack-level).
+- [Disable IPv6 in user data](#debug-steps---disable-ipv6-in-user-data).
+
+### Debug Steps - Use an Unaffected or Fixed Kernel Version
+
+1. Check your current kernel version using the command below.
+   ```shell
+   uname -r
+   ```
+2. Compare your version with the affected list below.
+   | Branch| Affected Versions | Fixed Version|
+   |-------|-------------------|--------------|
+   | 5.15.0 generic| 5.15.0-127, 5.15.0-128| 5.15.0-130|
+   | 6.8.0 generic| 6.8.0-57, 6.8.0-58| 6.8.0-60|
+   | 6.8.0 cloud| 6.8.0-1022| 6.8.0-1027|
+
+3.  If your current kernel version matches any of the affected versions, update to a fixed or unaffected version. The method for updating depends on your deployment environment.
+
+#### Example - Change Kernel Version for an Edge Deployment
+
+1. Castomize the `Dockerfile`. Refer to [Build Edge Artifacts](../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md), advanced workflow for the details.
+   For example, to set a specific kernel version for Ubuntu, add the command below to the `Dockerfile`. In this example, the kernel version is set to `6.8.0-60-generic`, which allows to avoid the problematic 6.8.0-57 generic version that is usually set by default in `CanvOS`. Replace it with the required version.
+
+   ```dockerfile
+   ...
+   ########################### Add any other image customizations here #######################
+   # Install specific kernel version if KERNEL_VERSION is provided
+   RUN if [ "${OS_DISTRIBUTION}" = "ubuntu" ]; then \
+        apt-get update && \
+        apt-get install -y "linux-image-6.8.0-60-generic" "linux-headers-6.8.0-60-generic" "linux-modules-6.8.0-60-generic" && \
+        apt-get purge -y $(dpkg -l | awk '/^ii\s+linux-(image|headers|modules)/ {print $2}' | grep -v "6.8.0-60-generic") && \
+        apt-get autoremove -y && \
+        rm -rf /var/lib/apt/lists/* && \
+        kernel=$(ls /boot/vmlinuz-* | grep "6.8.0-60-generic" | head -n1) && \
+        ln -sf "${kernel#/boot/}" /boot/vmlinuz && \
+        kernel=$(ls /lib/modules | grep "6.8.0-60-generic" | head -n1) && \
+        dracut -f "/boot/initrd-${kernel}" "${kernel}" && \
+        ln -sf "initrd-${kernel}" /boot/initrd && \
+        depmod -a "${kernel}"; \
+    fi; \
+   ```
+   :::warning
+
+   Make sure that the `UPDATE_KERNEL` parameter value in the `.arg` file is `false`. This prevents Kairos from updating the kernel during runtime upgrades.
+
+   :::
+
+2. Build new provider image and ISO.
+
+#### Example - Change Kernel Version for a MAAS Deployment
+
+1. Cutsomize the `/var/lib/snap/maas/current/preseeds/curtin_userdata_custom` file to pin the kernel version during host provisioning. Add the following lines. Replace `6.5.0-44-generic` with the required version.
+
+   ```yaml
+   #cloud-config
+   kernel:
+   package: linux-image-<your-version>
+   flavor: hwe
+
+   late_commands:
+   extra_modules: ["curtin", "in-target", "--", "apt", "install", "-y", "linux-modules-extra-<your-version>"]
+   ```
+
+2. Deploy the node through MAAS to apply the pinned kernel during installation. Refer to [Create and Manage MAAS Clusters](../clusters/data-center/maas/create-manage-maas-clusters.md) for the details.
+
+### Debug Steps - Disable IPv6 on the Calico Pack Level
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. From the left **Main Menu**, select **Profiles**.
+
+3. On the **Profiles** page, click on your cluster profile that uses Calico as the network pack.
+
+4. Click on the Calico pack to view the **Edit Pack** page.
+
+5. In the pack's YAML file, uncomment the following parameter and set its value to `false`.
+   ```yaml
+   env:
+    calicoNode:
+     FELIX_IPV6SUPPORT: false
+   ```
+
+6. Click **Confirm Updates** after making the required changes.
+
+7. Click **Save Changes** on the cluster profile page.
+
+8. Deploy a new cluster using this profile, or update an existing cluster to apply the change.
+
+### Debug Steps - Disable IPv6 on the BYOS Edge OS Pack Level
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. From the left **Main Menu**, select **Profiles**.
+
+3. On the **Profiles** page, click on your cluster profile that uses the BYOS Edge OS pack.
+
+4. Click on the BYOS pack to view the **Edit Pack** page.
+
+5. In the pack's YAML file, add the following lines.
+   ```yaml
+   pack:
+   stages:
+    boot:
+      - name: disable-ipv6
+        commands:
+          - sysctl -w net.ipv6.conf.all.disable_ipv6=1
+          - sysctl -w net.ipv6.conf.default.disable_ipv6=1
+   ```
+6. Click **Confirm Updates** after making the required changes.
+
+7. Click **Save Changes** on the cluster profile page.
+
+8. Deploy a new cluster using this profile, or update an existing cluster to apply the change.
+
+### Debug Steps - Disable IPv6 in User Data
+
+#### Example - Disable IPv6 in User Data for an Edge Deployment
+
+#### Example - Disable IPv6 in User Data for a MAAS Deployment
+
 ## Scenario - AWS EKS Cluster Deployment Fails when Cilium is Used as CNI
 
 <!-- prettier-ignore -->
