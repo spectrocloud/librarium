@@ -13,6 +13,7 @@ import TOCInline from "@theme/TOCInline";
 import { TechnicalPreviewReleaseNote as TpBadge } from "@site/src/components/Badges";
 import SimpleCardGrid from "@site/src/components/SimpleCardGrid/index";
 import ReleaseNotesVersions from "@site/src/components/ReleaseNotesVersions/index";
+import ReleaseNotesBreakingChanges from "@site/src/components/ReleaseNotesBreakingChanges/index";
 import PartialsComponent from "@site/src/components/PartialsComponent";
 import VersionedLink from "@site/src/components/VersionedLink";
 import PaletteVertexUrlMapper from "@site/src/components/PaletteVertexUrlMapper/PaletteVertexUrlMapper";
@@ -44,4 +45,5 @@ export default {
   PaletteVertexUrlMapper,
   RedirectPackPage,
   OsCveTable,
+  ReleaseNotesBreakingChanges,
 };
