@@ -25,8 +25,8 @@ Kube-vip has many environment variables you can use to customize its behavior. T
 By default, Palette uses the following `cluster.kubevipArgs` values during initial cluster deployment. You can change
 these values when deploying a cluster or performing Day-2 cluster operations.
 
-| Environment Variable | Description                                                                                     | Default Value   |
-| -------------------- | ----------------------------------------------------------------------------------------------- | --------------- |
+| Environment Variable | Description                                                                                     | Default Value |
+| -------------------- | ----------------------------------------------------------------------------------------------- | ------------- |
 | `vip_arp`            | Enables ARP broadcasts from leader.                                                             | `true`        |
 | `port`               | Specifies the port number that `kube-vip` will use.                                             | `6443`        |
 | `vip_cidr`           | Sets the CIDR notation for the Virtual IP. A value of `32` denotes a single IP address in IPv4. | `32`          |
