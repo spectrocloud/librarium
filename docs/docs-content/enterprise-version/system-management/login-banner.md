@@ -5,7 +5,7 @@ description:
   "Learn how to add login and classification banners, also known as Authority to Operate (ATO) banners, in Palette."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 40
+sidebar_position: 100
 tags: ["enterprise", "management", "ato", "banner"]
 keywords: ["self-hosted", "enterprise", "ato", "banner"]
 ---
@@ -18,7 +18,9 @@ keywords: ["self-hosted", "enterprise", "ato", "banner"]
 
 ## Add Login Banner
 
-Take the following steps to add a login banner to your system console and tenant login pages.
+Take the following steps to add a login banner to your system console and tenant login pages, such as the one below.
+
+![An example of a login banner on the Palette system console login page](/enterprise-version_system-management_login-banner_login-banner.webp)
 
 :::warning
 
@@ -26,8 +28,6 @@ Login banners configured in the system console override tenant-specific login ba
 [Tenant Login Banner](../../tenant-settings/login-banner.md) guide to learn more about tenant-specific login banners.
 
 :::
-
-![An example of a login banner on the Palette system console login page](/enterprise-version_system-management_login-banner_login-banner.webp)
 
 ### Enablement
 
@@ -39,7 +39,7 @@ Login banners configured in the system console override tenant-specific login ba
 
 ## Add Classification Banner
 
-Take the following steps to add a classification banner across all system console and tenant pages.
+Take the following steps to add a classification banner across all system console and tenant pages, such as the one below.
 
 ![An example of a classification banner for a Secret environment](/enterprise-version_system-management_login-banner_classification-banner.webp)
 

@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Enable Non-FIPS Settings"
-title: "Enable Non-FIPS Settings"
+sidebar_label: "Enable non-FIPS Settings"
+title: "Enable non-FIPS Settings"
 description:
   "Enable settings in Palette VerteX that allow you to use non-FIPS resources and perform non-FIPS compliant actions."
 icon: ""

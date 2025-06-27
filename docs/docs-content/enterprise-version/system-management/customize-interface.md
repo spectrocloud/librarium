@@ -4,7 +4,7 @@ title: "Customize Interface"
 description: "Learn how to customize the branding and interface of Palette "
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 70
+sidebar_position: 55
 tags: ["self-hosted", "management", "account", "customize-interface"]
 keywords: ["self-hosted", "palette", "customize-interface"]
 ---

@@ -6,7 +6,7 @@ description:
   images."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 100
+sidebar_position: 125
 tags: ["vertex", "management", "scar"]
 keywords: ["self-hosted", "vertex"]
 ---

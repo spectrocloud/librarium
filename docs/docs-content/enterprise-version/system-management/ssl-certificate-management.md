@@ -4,7 +4,7 @@ title: "System Address Management"
 description: "Manage system address and SSL certificates in Palette."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 130
+sidebar_position: 70
 tags: ["palette", "management"]
 keywords: ["self-hosted", "enterprise"]
 ---
