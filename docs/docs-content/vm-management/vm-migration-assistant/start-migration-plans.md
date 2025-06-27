@@ -37,8 +37,8 @@ Follow this guide to start migration plans in the VM Migration Assistant.
 - The <VersionedLink text="Virtual Machine Migration Assistant" url="/integrations/packs/?pack=vm-migration-assistant"/> pack must be added to your cluster profile. Refer to [Create a VM Migration Assistant Cluster Profile](./create-vm-migration-assistant-profile.md) for guidance.
 
 <!-- prettier-ignore-end -->
-  
-  - The VM Migration Assistant service console must be accessible from a web browser.
+
+- The VM Migration Assistant service console must be accessible from a web browser.
 
 ### Start Cold Migration
 
@@ -107,7 +107,8 @@ Follow this guide to start migration plans in the VM Migration Assistant.
 - A warm migration plan created and ready to start. Refer to [Create Migration Plans](./create-migration-plans.md) for
   guidance.
 
-- [Changed Block Tracking](https://knowledge.broadcom.com/external/article/315370/enabling-or-disabling-changed-block-trac.html) must be enabled on your VMs.
+- [Changed Block Tracking](https://knowledge.broadcom.com/external/article/315370/enabling-or-disabling-changed-block-trac.html)
+  must be enabled on your VMs.
 
 - Terminal access to execute [kubectl](https://kubernetes.io/docs/reference/kubectl/) commands on your VMO cluster.
 
@@ -116,8 +117,8 @@ Follow this guide to start migration plans in the VM Migration Assistant.
 - The <VersionedLink text="Virtual Machine Migration Assistant" url="/integrations/packs/?pack=vm-migration-assistant"/> pack must be added to your cluster profile. Refer to [Create a VM Migration Assistant Cluster Profile](./create-vm-migration-assistant-profile.md) for guidance.
 
 <!-- prettier-ignore-end -->
-  
-  - The VM Migration Assistant service console must be accessible from a web browser.
+
+- The VM Migration Assistant service console must be accessible from a web browser.
 
 ### Start Warm Migration
 

@@ -13,7 +13,6 @@ Follow this guide to create migration plans using the VM Migration Assistant.
 ## Limitations
 
 - You can migrate only VMs hosted in VMware vSphere 7.0 or 8.0.
-  
 - You can migrate only VMs whose operating systems are present in the
   [`virt-v2v` supported guest systems](https://libguestfs.org/virt-v2v-support.1.html) list. Refer to
   [Verified Migrations](./vm-migration-assistant.md#verified-migrations) for a list of operating systems and migration
