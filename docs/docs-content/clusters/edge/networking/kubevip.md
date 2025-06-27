@@ -18,10 +18,12 @@ services of type `LoadBalancer`.
 
 ## Default Values
 
-Kube-vip has many environment variables you can use to customize its behavior. To set values for kube-vip, use the `cluster.kubevipArgs` parameter. For a complete list environment variables, refer to the
+Kube-vip has many environment variables you can use to customize its behavior. To set values for kube-vip, use the
+`cluster.kubevipArgs` parameter. For a complete list environment variables, refer to the
 [kube-vip documentation](https://kube-vip.io/docs/installation/flags/?query=vip_interface#environment-variables).
 
-By default, Palette uses the following `cluster.kubevipArgs` values during initial cluster deployment. You can change these values when deploying a cluster or performing Day-2 operations.
+By default, Palette uses the following `cluster.kubevipArgs` values during initial cluster deployment. You can change
+these values when deploying a cluster or performing Day-2 operations.
 
 | Environment Variable | Description                                                                                     | Default Value   |
 | -------------------- | ----------------------------------------------------------------------------------------------- | --------------- |
@@ -32,8 +34,8 @@ By default, Palette uses the following `cluster.kubevipArgs` values during initi
 | `cp_namespace`       | The namespace where the lease will reside.                                                      | `"kube-system"` |
 | `vip_ddns`           | Enables Dynamic DNS support.                                                                    | `"{{ .DDNS}}"`  |
 | `vip_leaderelection` | Enables Kubernetes LeaderElection.                                                              | `"true"`        |
-| `vip_leaseduration`  | Sets the lease duration in seconds.                                                             | `"5"`          |
-| `vip_renewdeadline`  | Specifies the deadline in seconds for renewing the lease.                                       | `"3"`          |
+| `vip_leaseduration`  | Sets the lease duration in seconds.                                                             | `"5"`           |
+| `vip_renewdeadline`  | Specifies the deadline in seconds for renewing the lease.                                       | `"3"`           |
 | `vip_retryperiod`    | Number of times the leader will hold the lease for.                                             | `"1"`           |
 | `address`            | Template placeholder for the virtual IP address.                                                | `"{{ .VIP}}"`   |
 
@@ -42,7 +44,6 @@ By default, Palette uses the following `cluster.kubevipArgs` values during initi
 Do not modify the default `address` value. Changing this value makes the cluster inaccessible.
 
 :::
-
 
 ## Prerequisites
 
