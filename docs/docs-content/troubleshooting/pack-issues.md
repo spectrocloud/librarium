@@ -14,9 +14,9 @@ The following are common scenarios that you may encounter when using Packs.
 
 Calico fails to start when IPv6 is enabled on hosts running certain Linux kernel versions due to missing or incompatible ip6tables mark support. Logs contain errors like `ip6tables-restore: MARK: bad value for option "--set-mark", or out of range missing kernel module?`. The issue occurs when required kernel modules are unavailable or incompatible with Calico’s ip6tables rule structure.
 There are several possible ways to troublsoot this issue:
-- Use a Container Network Interface (CNI) other than Calico.
-- [Use an unaffected or fixed kernel version](#debug-steps---use-an-unaffected-or-fixed-kernel-version).
-- [Disable IPv6 on the Calico pack level](#debug-steps---disable-ipv6-on-the-calico-pack-level).
+- Use a Container Network Interface (CNI) other than Calico. This is a preffered approach, if Calico is optional.
+- [Use an unaffected or fixed kernel version](#debug-steps---use-an-unaffected-or-fixed-kernel-version). This is a preffered approach, if you need Calico and IPv6. 
+- [Disable IPv6 on the Calico pack level](#debug-steps---disable-ipv6-on-the-calico-pack-level). This is a preffered approach, if kernel change is not feasible
 - [Disable IPv6 on the BYOS Edge OS pack level](#debug-steps---disable-ipv6-on-the-byos-pack-level).
 - [Disable IPv6 in user data](#debug-steps---disable-ipv6-in-user-data).
 
@@ -33,11 +33,13 @@ There are several possible ways to troublsoot this issue:
    | 6.8.0 generic| 6.8.0-57, 6.8.0-58| 6.8.0-60|
    | 6.8.0 cloud| 6.8.0-1022| 6.8.0-1027|
 
-3.  If your current kernel version matches any of the affected versions, update to a fixed or unaffected version. The method for updating depends on your deployment environment.
+3.  If your current kernel version matches any of the affected versions, update it to a fixed or unaffected version. The method for updating depends on your deployment environment.
 
-#### Example - Change Kernel Version for an Edge Deployment
+#### Example - Pin Kernel Version During Image Build (`Dockerfile`)
 
-1. Castomize the `Dockerfile`. Refer to [Build Edge Artifacts](../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md), advanced workflow for the details.
+Use this approach if you are building a Kairos or PXK image from a `Dockerfile`. It allows you to bake in a specific kernel version during the image build process.
+
+1. Castomize the `Dockerfile`. 
    For example, to set a specific kernel version for Ubuntu, add the command below to the `Dockerfile`. In this example, the kernel version is set to `6.8.0-60-generic`, which allows to avoid the problematic 6.8.0-57 generic version that is usually set by default in `CanvOS`. Replace it with the required version.
 
    ```dockerfile
@@ -58,15 +60,18 @@ There are several possible ways to troublsoot this issue:
         depmod -a "${kernel}"; \
     fi; \
    ```
-   :::warning
+   :::info
 
-   Make sure that the `UPDATE_KERNEL` parameter value in the `.arg` file is `false`. This prevents Kairos from updating the kernel during runtime upgrades.
+   For the details on `Dockerfile` usage in EdgeForge, refer to [Build Edge Artifacts](../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md), advanced workflow.
+   Also make sure that the `UPDATE_KERNEL` parameter value in the `.arg` file is `false`. This prevents Kairos from updating the kernel during runtime upgrades.
 
    :::
 
-2. Build new provider image and ISO.
+2. Build the required image.
 
-#### Example - Change Kernel Version for a MAAS Deployment
+#### Example - Pin Kernel Version During MAAS Provisioning
+
+Use this approach if you want to override the kernel during MAAS provisioning without rebuilding the OS image.
 
 1. Cutsomize the `/var/lib/snap/maas/current/preseeds/curtin_userdata_custom` file to pin the kernel version during host provisioning. Add the following lines. Replace `6.5.0-44-generic` with the required version.
 
@@ -131,11 +136,49 @@ There are several possible ways to troublsoot this issue:
 
 8. Deploy a new cluster using this profile, or update an existing cluster to apply the change.
 
+9. (Optional) If the cluster is already operating, reboot the nodes. Establish an SSH connection to your host and use the following command to trigger a reboot.
+
+   ```shell
+   sudo reboot
+   ```
+
 ### Debug Steps - Disable IPv6 in User Data
 
 #### Example - Disable IPv6 in User Data for an Edge Deployment
 
+1. Add the following lines to the `user-data` file.
+   ```yaml
+   stages:
+     initramfs:
+       - users:
+           kairos:
+             passwd: kairos
+     boot:
+       - name: disable-ipv6
+         commands:
+           - sysctl -w net.ipv6.conf.all.disable_ipv6=1
+           - sysctl -w net.ipv6.conf.default.disable_ipv6=1
+   ```
+2. If you don't have an ISO image yet or if the cluster is already operating, build a new ISO image and deploy (or redeploy) the cluster. If you already have an ISO image, but the cluster is not operating yet, create an ISO file containing the additional user data. Refer to [Apply Site User Data](../clusters/edge/site-deployment/site-installation/site-user-data.md).
+
 #### Example - Disable IPv6 in User Data for a MAAS Deployment
+
+1. Add the following lines to the `/var/lib/snap/maas/current/preseeds/curtin_userdata_custom` file.
+   ```yaml
+   #cloud-config
+   write_files:
+     - path: /etc/sysctl.d/99-disable-ipv6.conf
+       permissions: '0644'
+       content: |
+         net.ipv6.conf.all.disable_ipv6 = 1
+         net.ipv6.conf.default.disable_ipv6 = 1
+
+   runcmd:
+     - sysctl -p /etc/sysctl.d/99-disable-ipv6.conf
+   ```
+
+2. Deploy a new cluster using this profile or redeploy an operating cluster.
+
 
 ## Scenario - AWS EKS Cluster Deployment Fails when Cilium is Used as CNI
 
