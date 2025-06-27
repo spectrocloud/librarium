@@ -10,6 +10,36 @@ tags: ["edge", "troubleshooting"]
 
 The following are common scenarios that you may encounter when using Edge.
 
+## Scenario - PXK-E Clusters in VerteX Deployments Experience Failure upon Reboot
+
+<!-- prettier-ignore -->
+When rebooting control plane nodes in <VersionedLink text="Palette eXtended Kubernetes - Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> clusters
+deployed via VerteX, the `kube-vip` component may fail to start due to early DNS resolution issues. You can observe
+repeated errors in the system logs using `journalctl --unit=kubelet`.
+
+```shell title="Example output"
+E0619 21:53:53.613367       1 leaderelection.go:327] error retrieving resource lock kube-system/plndr-cp-lock: Get "https://kubernetes:6443/apis/coordination.k8s.io/v1/namespaces/kube-system/leases/plndr-cp-lock": dial tcp: lookup kubernetes on 10.10.128.8:53: no such host
+E0619 21:54:00.647219       1 leaderelection.go:327] error retrieving resource lock kube-system/plndr-cp-lock: Get "https://kubernetes:6443/apis/coordination.k8s.io/v1/namespaces/kube-system/leases/plndr-cp-lock": dial tcp: lookup kubernetes on 10.10.128.8:53: no such host
+```
+
+Although DNS becomes available shortly after boot, `kube-vip` does not recover automatically. To fix this, stop and
+remove the container manually. The kubelet then restarts the component using the current system state.
+
+### Debug Steps
+
+1. On each control plane node, list all operating `kube-vip` containers using the
+   [`crictl`](https://kubernetes.io/docs/tasks/debug/debug-cluster/crictl/) tool.
+
+   ```shell
+   crictl ps 2>/dev/null | grep kube-vip | awk '{print $1}'
+   ```
+
+2. Stop and remove each container.
+
+   ```shell
+   crictl stop <container-id> && crictl rm <container-id>
+   ```
+
 ## Scenario - Canonical Edge Clusters in Proxied Environments Experience Failure upon Reboot
 
 When rebooting nodes in an Edge cluster using Palette Optimized Canonical deployed in a proxied environment, the nodes
