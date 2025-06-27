@@ -39,7 +39,8 @@ Login banners configured in the system console override tenant-specific login ba
 
 ## Add Classification Banner
 
-Take the following steps to add a classification banner across all system console and tenant pages, such as the one below.
+Take the following steps to add a classification banner across all system console and tenant pages, such as the one
+below.
 
 ![An example of a classification banner for a Secret environment](/vertex_system-management_login-banner_classification-banner.webp)
 
