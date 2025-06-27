@@ -72,18 +72,60 @@ The Appliance Framework self-hosted Palette ISO is supported on the following in
 
   <!-- - Permissions to upload, register and update OS or VM templates that Palette uses during cluster creation (e.g. populate the `spectro-templates` folder on vSphere, or the image repository in MAAS). -->
 
-- Access to your external registry server (if applicable) to store and pull the Palette packs. This is only required if you do not wish to use the Zot registry that comes with Palette.
+- If you plan to use an external registry instead of the internal Zot registry that comes with Palette, you must provide the following external registry credentials during the Palette installation process:
 
-  - You must provide the following registry credentials during the Palette installation process:
+  - The endpoint and port for the external registry.
+  - The username for the registry.
+  - The password for the registry.
+  - The certificate for the registry used for TLS encryption.
+  - The Certificate Authority (CA) certificate that was used to sign the registry certificate.
+  - The private key for the registry certificate used for TLS encryption.
 
-    - The username for the registry.
-    - The password for the registry.
-    - The certificate for the registry.
-    - The CA certificate for the registry.
-    - The private key for the registry certificate.
-    - The image replacement rules for the cluster.
+  Ensure the nodes used to host the Palette management cluster have access to the external registry server.
 
-  - The nodes used to host the Palette management cluster must have access to the external registry server.
+- If you choose to use the internal Zot registry, you will need to provide the following TLS certificates and keys in Base64 format during the Palette installation process:
+
+  - A private key for the Zot registry certificate.
+  - A certificate for the Zot registry.
+  - A CA certificate for the Zot registry that was used to sign the registry certificate.
+
+<!-- - If you have an [Ubuntu Pro](https://ubuntu.com/pro) subscription, you can provide the Ubuntu Pro token during the Palette installation process. This is optional but recommended for security and compliance purposes. -->
+
+- A virtual IP address (VIP) must be available for the Palette management cluster. This is assigned during the Palette installation process and is used for load balancing and high availability. The VIP must be accessible to all nodes in the Palette management cluster.
+
+  <details>
+  <summary> How to discover free VIPs in your environment </summary>
+
+  You can discover free VIPs in your environment by using a tool like `arping` or `nmap`. For example, you can run the following command to probe a CIDR block for free IP addresses.
+
+  ```bash
+  nmap --unprivileged -sT -Pn 10.10.200.0/24
+  ```
+  
+  This command will scan the CIDR block and output any hosts it finds.
+
+  ```shell hideClipboard title="Example nmap output"
+  Nmap scan report for test-worker-pool-cluster2-6655ab7a-tyuio.company.dev (10.10.200.2)
+  Host is up.
+  All 1000 scanned ports on test-worker-pool-cluster2-6655ab7a-tyuio.company.dev (10.10.200.2) are in ignored states.
+  Not shown: 1000 filtered tcp ports (no-response)
+  ```
+
+  For any free IP addresses, you can use `arping` to double-check if the IP is available.
+
+  ```bash title="Example arping command"
+  arping -D -c 4 10.10.200.101
+  ```
+
+  ```shell hideClipboard title="Example arping output"
+  ARPING 10.10.200.101 from 0.0.0.0 ens103
+  Sent 4 probes (4 broadcast(s))
+  Received 0 response(s)
+  ```
+
+  If you receive no responses like the example output above, the IP address is likely free.
+
+  </details>
 
 ## Install Palette
 
@@ -92,7 +134,7 @@ The Appliance Framework self-hosted Palette ISO is supported on the following in
 2. Upload the ISO to your infrastructure provider. This can be done using the web interface of your infrastructure provider or using command-line tools.
 
    - For VMware vSphere, you can upload the ISO to a datastore using the vSphere Client or the `govc` CLI tool.
-   - For Bare Metal, you can use tools like `scp` or `rsync` to transfer the ISO to the nodes.
+   - For Bare Metal, you can use tools like `scp` or `rsync` to transfer the ISO to the nodes, or use a USB drive to boot the nodes from the ISO.
    - For Machine as a Service (MAAS), you can use the MAAS web interface to upload the ISO.
    
    Ensure that the ISO is accessible to all nodes that will be part of the Palette management cluster.
@@ -188,10 +230,10 @@ The Appliance Framework self-hosted Palette ISO is supported on the following in
 
     | **Option** | **Description** | **Type** | **Default** |
     | --- | --- | --- | --- |
-    | **Pod CIDR** | The CIDR range for the pod network. This is used to allocate IP addresses to pods in the cluster. | CIDR notation | `192.168.0.0/16` |
-    | **Service CIDR** | The CIDR range for the service network. This is used to allocate IP addresses to services in the cluster. | CIDR notation | `192.169.0.0/16` |
-    | **Storage Pool Drive** | The storage pool device to use for the cluster. | String | `/dev/sdb` |
-    | **Ubuntu Pro Token (Optional)** | The token for your Ubuntu Pro subscription. | String | _No default_ |
+    | **Pod CIDR** | The CIDR range for the pod network. This is used to allocate IP addresses to pods in the cluster. | CIDR notation | **`192.168.0.0/16`** |
+    | **Service CIDR** | The CIDR range for the service network. This is used to allocate IP addresses to services in the cluster. | CIDR notation | **`192.169.0.0/16`** |
+    | **Storage Pool Drive** | The storage pool device to use for the cluster. | String | **`/dev/sdb`** |
+    <!-- | **Ubuntu Pro Token (Optional)** | The token for your [Ubuntu Pro](https://ubuntu.com/pro) subscription. | String | _No default_ | -->
 
     #### Registry Options
 
@@ -199,28 +241,92 @@ The Appliance Framework self-hosted Palette ISO is supported on the following in
     | --- | --- | --- | --- |
     | **Registry Password** | If using the internal Zot registry, change the password to your requirements. If using an external registry, provide the appropriate password. | String | **`Spectro@123`** |
     | **Registry Username** | If using the internal Zot registry, you leave the default username or adjust to your requirements. If using an external registry, provide the appropriate username. | String | **`admin`** |
-    | **Registry Cert** | The certificate for the registry. | Base64 encoded string | _No default - must be provided_ |
-    | **Registry CA Cert** | The CA certificate for the registry. | Base64 encoded string | _No default - must be provided_ |
-    | **Root Domain (Optional)** | The root domain for the registry. The default is set for the internal Zot registry, adjust if using an external registry. | String | **`{{.spectro.system.cluster.kubevip}}`** |
+    | **Registry Cert** | The certificate for the registry used for TLS encryption. | Base64 encoded string | _No default - must be provided_ |
+    | **Registry CA Cert** | The CA certificate that was used to sign the registry certificate. | Base64 encoded string | _No default - must be provided_ |
+    | **Root Domain (Optional)** | The root domain for the registry. The default is set for the internal Zot registry, which is a virtual IP address assigned by [kube-vip](https://kube-vip.io/). Adjust if using an external registry. | String | **`{{.spectro.system.cluster.kubevip}}`** |
     | **Mongo Replicas (Optional)** | The number of MongoDB replicas to create for the cluster. This is used to provide high availability for the MongoDB database. The accepted values are **1** or **3**. | Integer | **`3`** |
-    | **Registry Base Content Path (Optional)** | The base path for the registry content. Palette packs will be stored in this directory. | String | **`spectro-content`** |
+    | **Registry Base Content Path (Optional)** | The base path for the registry content for the internal or external registry. Palette packs will be stored in this directory. | String | **`spectro-content`** |
     | **Use-Incluster Registry (Optional)** | **True** = use internal Zot registry, **False** = use external registry. | Boolean | **True** |
-    | **Registry Endpoint** | The endpoint for the registry. The default is set for the internal Zot registry, adjust if using an external registry. | String | **`{{.spectro.system.cluster.kubevip}}`** |
-    | **Registry Port** | The port for the registry. The default is set for the internal Zot registry, adjust if using an external registry. | Integer | **`30003`** |
-    | **Registry Private Cert Key** | The private key for the registry certificate. This must be provided in base64 format. | Base64 encoded string | _No default - must be provided_ |
-    | **Image Replacement Rules (Optional)** | Set rules for replacing image references when using an external registry. For example, `old-registry.com/new-registry.com`. Leave empty if using the internal Zot registry.  | String | _No default_ |
+    | **Registry Endpoint** | The endpoint for the registry. The default is set for the internal Zot registry, which is a virtual IP address assigned by [kube-vip](https://kube-vip.io/). Adjust if using an external registry. | String | **`{{.spectro.system.cluster.kubevip}}`** |
+    | **Registry Port** | The port for the registry. The default value can be changed for the internal Zot registry. Adjust if using an external registry. | Integer | **`30003`** |
+    | **Registry Private Cert Key** | The private key for the registry certificate used for TLS encryption. | Base64 encoded string | _No default - must be provided_ |
+    | **Image Replacement Rules (Optional)** | Set rules for replacing image references when using an external registry. For example, `old-registry.com/new-registry.com`. Leave empty if using the internal Zot registry. | String | _No default_ |
 
 32. Click **Next** when you are done.
 
-33. WIP Log in to Palette and activate it.
+33. In **Cluster Config**, configure the following options.
 
-34. Download your pack bundles from the Artifact Studio.
+    #### Cluster Config Options
 
-35. Transfer the pack bundles to one of your Palette nodes.
+    | **Option** | **Description** | **Type** | **Default** |
+    | --- | --- | --- | --- |
+    | **Network Time Protocol (NTP) (Optional)** | The NTP servers to synchronize time within the cluster. | String | _No default_ |
+    | **SSH Keys (Optional)** | The public SSH keys to access the cluster nodes. Add additional keys by clicking **Add Item**. | String | _No default_ |
+    | **Virtual IP Address (VIP)** | The virtual IP address for the cluster. This is used for load balancing and high availability. | String | _No default_ |
 
-36. Install the pack bundles on the Palette node.
+    Click **Next** when you are done.
 
-37. Profit.
+34. In **Node Config**, configure the following options.
+
+    :::info
+
+    It is recommended to remove the **Worker Pool** and add all other hosts that you installed using the Appliance Framework ISO to the control plane pool. This will ensure that the Palette management cluster is highly available and can withstand node failures.
+
+    If doing this, ensure that the **Allow worker capability** option is enabled for the control plane pool.
+
+    :::
+
+    <Tabs>
+
+    <TabItem value="control-plane-pool-options" label="Control Plane Pool Options">
+
+    | **Option** | **Description** | **Type** | **Default** |
+    | --- | --- | --- | --- |
+    | **Node pool name** | The name of the control plane node pool. This will be used to identify the node pool in Palette. | String | **`control-plane-pool`** |
+    | **Allow worker capability (Optional)** | Whether to allow workloads to be scheduled on this control plane node pool. | Boolean | **True** |
+    | **Additional Kubernetes Node Labels (Optional)** | Tags for the node pool in `key:value` format. These tags can be used to filter and search for node pools in Palette. | String | _No default_ |
+    | **Taints** | Taints for the node pool in `key=value:effect` format. Taints are used to prevent pods from being scheduled on the nodes in this pool unless they tolerate the taint. | Key = string, Value = string, Effect = string (enum) | _No default_ |
+
+    </TabItem>
+
+    <TabItem value="worker-pool-options" label="Worker Pool Options">
+
+    | **Option** | **Description** | **Type** | **Default** |
+    | --- | --- | --- | --- |
+    | **Node pool name** | The name of the worker node pool. This will be used to identify the node pool in Palette. | String | **`worker-pool`** |
+    | **Additional Kubernetes Node Labels (Optional)** | Tags for the node pool in `key:value` format. These tags can be used to filter and search for node pools in Palette. | String | _No default_ |
+    | **Taints** | Taints for the node pool in `key=value:effect` format. Taints are used to prevent pods from being scheduled on the nodes in this pool unless they tolerate the taint. | Key = string, Value = string, Effect = string (enum) | _No default_ |
+
+    </TabItem>
+
+    </Tabs>
+
+    ##### Pool Configuration
+    
+    The following options are available for both the control plane and worker node pools. You can configure these options to your requirements. You can also remove worker pools if not needed.
+
+    | **Option** | **Description** | **Type** | **Default** |
+    | --- | --- | --- | --- |
+    | **Architecture** | The CPU architecture of the nodes. This is used to ensure compatibility with the applications running on the nodes. | String (enum) | **`amd64`** |
+    | **Add Edge Hosts** | Click **Add Item** and select the other hosts that you installed using the Appliance Framework ISO. These hosts will be added to the node pool. Each pool must contain at least one node. | N/A | - **Control Plane Pool** = _Current host selected_ <br /> - **Worker Pool** = _No host selected_ |
+    | **NIC Name** | The name of the network interface card (NIC) to use for the nodes. Leave on **Auto** to let the system choose the appropriate NIC, or select one manually from the drop-down menu. | N/A | **Auto** |
+    | **Host Name (Optional)** | The hostname for the nodes. This is used to identify the nodes in the cluster. A generated hostname is provided automatically, and you can adjust to your requirements. | String | **`edge-*`** |
+
+35. Click **Next** when you are done.
+
+36. In **Review**, check that your configuration is correct. If you need to make changes, click on any of the sections in the left sidebar to go back and edit the configuration.
+
+    When you are satisfied with your configuration, click **Deploy Cluster**. This will start the cluster creation process.
+
+    The cluster creation process will take some time to complete. You can monitor the progress in the **Cluster Status** section of the Local UI. Once the cluster is created, you will see a success message. 
+
+37. Log in to Palette and activate it.
+
+38. Download your pack bundles from the Artifact Studio.
+
+39. Transfer the pack bundles to one of your Palette nodes.
+
+40. Install the pack bundles on the Palette node.
 
 ## Validate
 
