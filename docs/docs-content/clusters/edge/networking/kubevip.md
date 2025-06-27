@@ -19,11 +19,11 @@ services of type `LoadBalancer`.
 ## Default Values
 
 Kube-vip has many environment variables you can use to customize its behavior. To set values for kube-vip, use the
-`cluster.kubevipArgs` parameter. For a complete list environment variables, refer to the
+`cluster.kubevipArgs` parameter. For a complete list of environment variables, refer to the
 [kube-vip documentation](https://kube-vip.io/docs/installation/flags/?query=vip_interface#environment-variables).
 
 By default, Palette uses the following `cluster.kubevipArgs` values during initial cluster deployment. You can change
-these values when deploying a cluster or performing Day-2 operations.
+these values when deploying a cluster or performing Day-2 cluster operations.
 
 | Environment Variable | Description                                                                                     | Default Value   |
 | -------------------- | ----------------------------------------------------------------------------------------------- | --------------- |
