@@ -4,7 +4,7 @@ title: "Modify Cloud Provider Configuration"
 description: "Learn how to modify the system-level cloud provider configuration in Palette VerteX."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 130
+sidebar_position: 110
 tags: ["vertex", "management", "clouds"]
 keywords: ["self-hosted", "vertex"]
 ---
