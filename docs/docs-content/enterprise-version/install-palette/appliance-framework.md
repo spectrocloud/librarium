@@ -318,7 +318,7 @@ The Appliance Framework self-hosted Palette ISO is supported on the following in
 
     When you are satisfied with your configuration, click **Deploy Cluster**. This will start the cluster creation process.
 
-    The cluster creation process will take some time to complete. You can monitor the progress in the **Cluster Status** section of the Local UI. Once the cluster is created, you will see a success message. 
+    The cluster creation process will take 20-30 minutes to complete. You can monitor progress from the **Overview** tab on the **Cluster** page in the left main menu. Once the cluster is created, you will see a success message.
 
 37. Log in to Palette and activate it.
 
