@@ -26,9 +26,10 @@ add-on pack that can be added to your cluster profile and works alongside the
 
 ## Limitations
 
-- You can only migrate VMs hosted in VMware vSphere 7.0 and 8.0.
-- Only VMs whose operating systems are included under
-  [`virt-v2v` supported guest systems](https://libguestfs.org/virt-v2v-support.1.html) can be migrated.
+- You can migrate only VMs hosted in VMware vSphere 7.0 or 8.0.
+
+- You can migrate only VMs whose operating systems are present in the
+  [`virt-v2v` supported guest systems](https://libguestfs.org/virt-v2v-support.1.html) list.
 
 - Open Virtual Appliance (OVA) files are not supported as a provider type for migrations.
 
