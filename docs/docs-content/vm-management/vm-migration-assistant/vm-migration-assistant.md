@@ -27,24 +27,23 @@ add-on pack that can be added to your cluster profile and works alongside the
 ## Limitations
 
 - You can only migrate VMs hosted in VMware vSphere 7.0 and 8.0.
-  
 - Only VMs whose operating systems are included under
   [`virt-v2v` supported guest systems](https://libguestfs.org/virt-v2v-support.1.html) can be migrated.
 
 - Open Virtual Appliance (OVA) files are not supported as a provider type for migrations.
-  
+
 ## Verified Migrations
 
-The following table lists `virt-v2v` migration combinations verified by Spectro Cloud. Other combinations may be valid but have not been verified.
+The following table lists `virt-v2v` migration combinations verified by Spectro Cloud. Other combinations may be valid
+but have not been verified.
 
-  | Operating System | Cold Migration | Warm Migration |
-  | --- | :---: | :---: |
-  | Fedora | ✅ | ❌ |
-  | Red Hat Enterprise Linux 9 | ✅ | ❌ |
-  | Red Hat Enterprise Linux 9.4 | ✅ | ❌ |
-  | Ubuntu | ✅ | ❌ |
-  | Windows Server 2019 | ✅ | ✅ |
-
+| Operating System             | Cold Migration | Warm Migration |
+| ---------------------------- | :------------: | :------------: |
+| Fedora                       |       ✅       |       ❌       |
+| Red Hat Enterprise Linux 9   |       ✅       |       ❌       |
+| Red Hat Enterprise Linux 9.4 |       ✅       |       ❌       |
+| Ubuntu                       |       ✅       |       ❌       |
+| Windows Server 2019          |       ✅       |       ✅       |
 
 ## Resources
 

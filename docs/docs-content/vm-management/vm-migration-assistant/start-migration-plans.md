@@ -18,10 +18,11 @@ Follow this guide to start migration plans in the VM Migration Assistant.
   guidance.
 
 - One or more VMs hosted in VMware vSphere. Only VMs whose operating systems are included under
-  [`virt-v2v` supported guest systems](https://libguestfs.org/virt-v2v-support.1.html) can be migrated. Refer to [Verified Migrations](./vm-migration-assistant.md#verified-migrations) for a list of operating systems and migration combinations verified by Spectro Cloud. 
+  [`virt-v2v` supported guest systems](https://libguestfs.org/virt-v2v-support.1.html) can be migrated. Refer to
+  [Verified Migrations](./vm-migration-assistant.md#verified-migrations) for a list of operating systems and migration
+  combinations verified by Spectro Cloud.
 
   - If you are migrating more than one VM in the same plan, they must all share the same network.
-  
   - Ensure that VMs operating Windows are shut down at the virtualized OS level.
 
 <!--prettier-ignore-->

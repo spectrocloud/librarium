@@ -15,7 +15,9 @@ Follow this guide to create migration plans using the VM Migration Assistant.
 - You can only migrate VMs hosted in VMware vSphere 7.0 and 8.0.
 
 - Only VMs whose operating systems are included under
-  [`virt-v2v` supported guest systems](https://libguestfs.org/virt-v2v-support.1.html) can be migrated. Refer to [Verified Migrations](./vm-migration-assistant.md#verified-migrations) for a list of operating systems and migration combinations verified by Spectro Cloud. 
+  [`virt-v2v` supported guest systems](https://libguestfs.org/virt-v2v-support.1.html) can be migrated. Refer to
+  [Verified Migrations](./vm-migration-assistant.md#verified-migrations) for a list of operating systems and migration
+  combinations verified by Spectro Cloud.
 
 ## Prerequisites
 
