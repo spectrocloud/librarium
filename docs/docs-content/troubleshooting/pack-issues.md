@@ -14,10 +14,10 @@ The following are common scenarios that you may encounter when using Packs.
 
 Calico fails to start when IPv6 is enabled on hosts running certain Linux kernel versions due to missing or incompatible ip6tables mark support. Logs contain errors like `ip6tables-restore: MARK: bad value for option "--set-mark", or out of range missing kernel module?`. The issue occurs when required kernel modules are unavailable or incompatible with Calico’s ip6tables rule structure.
 There are several possible ways to troublsoot this issue:
-- Use a Container Network Interface (CNI) other than Calico. This is a preffered approach, if Calico is optional.
-- [Use an unaffected or fixed kernel version](#debug-steps---use-an-unaffected-or-fixed-kernel-version). This is a preffered approach, if you need Calico and IPv6. 
-- [Disable IPv6 on the Calico pack level](#debug-steps---disable-ipv6-on-the-calico-pack-level). This is a preffered approach, if kernel change is not feasible
-- [Disable IPv6 on the BYOS Edge OS pack level](#debug-steps---disable-ipv6-on-the-byos-pack-level).
+- Use a Container Network Interface (CNI) other than Calico. This is a preffered approach if Calico is optional.
+- [Use an unaffected or fixed kernel version](#debug-steps---use-an-unaffected-or-fixed-kernel-version). This is a preffered approach if you need Calico and IPv6. 
+- [Disable IPv6 on the Calico pack level](#debug-steps---disable-ipv6-on-the-calico-pack-level). This is a preffered approach if kernel change is not feasible
+- [Disable IPv6 on the BYOS Edge OS pack level].
 - [Disable IPv6 in user data](#debug-steps---disable-ipv6-in-user-data).
 
 ### Debug Steps - Use an Unaffected or Fixed Kernel Version
@@ -98,6 +98,7 @@ Use this approach if you want to override the kernel during MAAS provisioning wi
 4. Click on the Calico pack to view the **Edit Pack** page.
 
 5. In the pack's YAML file, uncomment the following parameter and set its value to `false`.
+
    ```yaml
    env:
     calicoNode:
@@ -121,6 +122,7 @@ Use this approach if you want to override the kernel during MAAS provisioning wi
 4. Click on the BYOS pack to view the **Edit Pack** page.
 
 5. In the pack's YAML file, add the following lines.
+
    ```yaml
    pack:
    stages:
@@ -134,9 +136,9 @@ Use this approach if you want to override the kernel during MAAS provisioning wi
 
 7. Click **Save Changes** on the cluster profile page.
 
-8. Deploy a new cluster using this profile, or update an existing cluster to apply the change.
+8. Deploy a new cluster using this profile.
 
-9. (Optional) If the cluster is already operating, reboot the nodes. Establish an SSH connection to your host and use the following command to trigger a reboot.
+   If the cluster is already operating and you need to update it, reboot the nodes. Establish an SSH connection to each node and use the following command to trigger a reboot.
 
    ```shell
    sudo reboot
@@ -159,7 +161,7 @@ Use this approach if you want to override the kernel during MAAS provisioning wi
            - sysctl -w net.ipv6.conf.all.disable_ipv6=1
            - sysctl -w net.ipv6.conf.default.disable_ipv6=1
    ```
-2. If you don't have an ISO image yet or if the cluster is already operating, build a new ISO image and deploy (or redeploy) the cluster. If you already have an ISO image, but the cluster is not operating yet, create an ISO file containing the additional user data. Refer to [Apply Site User Data](../clusters/edge/site-deployment/site-installation/site-user-data.md).
+2. If you don't have an ISO image yet or if the cluster is already operating, build a new ISO image and deploy (or redeploy) the cluster. If you already have an ISO image, but the cluster is not operating yet, create an ISO file containing the additional user data and apply the changes. Refer to [Apply Site User Data](../clusters/edge/site-deployment/site-installation/site-user-data.md).
 
 #### Example - Disable IPv6 in User Data for a MAAS Deployment
 
