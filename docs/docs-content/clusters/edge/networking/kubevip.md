@@ -27,17 +27,17 @@ these values when deploying a cluster or performing Day-2 cluster operations.
 
 | Environment Variable | Description                                                                                     | Default Value   |
 | -------------------- | ----------------------------------------------------------------------------------------------- | --------------- |
-| `vip_arp`            | Enables ARP broadcasts from leader.                                                             | `"true"`        |
-| `port`               | Specifies the port number that `kube-vip` will use.                                             | `"6443"`        |
-| `vip_cidr`           | Sets the CIDR notation for the Virtual IP. A value of `32` denotes a single IP address in IPv4. | `"32"`          |
-| `cp_enable`          | Enables kube-vip control plane functionality.                                                   | `"true"`        |
-| `cp_namespace`       | The namespace where the lease will reside.                                                      | `"kube-system"` |
-| `vip_ddns`           | Enables Dynamic DNS support.                                                                    | `"{{ .DDNS}}"`  |
-| `vip_leaderelection` | Enables Kubernetes LeaderElection.                                                              | `"true"`        |
-| `vip_leaseduration`  | Sets the lease duration in seconds.                                                             | `"5"`           |
-| `vip_renewdeadline`  | Specifies the deadline in seconds for renewing the lease.                                       | `"3"`           |
-| `vip_retryperiod`    | Number of times the leader holds the lease for.                                                 | `"1"`           |
-| `address`            | Template placeholder for the virtual IP address.                                                | `"{{ .VIP}}"`   |
+| `vip_arp`            | Enables ARP broadcasts from leader.                                                             | `true`        |
+| `port`               | Specifies the port number that `kube-vip` will use.                                             | `6443`        |
+| `vip_cidr`           | Sets the CIDR notation for the Virtual IP. A value of `32` denotes a single IP address in IPv4. | `32`          |
+| `cp_enable`          | Enables kube-vip control plane functionality.                                                   | `true`        |
+| `cp_namespace`       | The namespace where the lease will reside.                                                      | `kube-system` |
+| `vip_ddns`           | Enables Dynamic DNS support.                                                                    | `{{ .DDNS}}`  |
+| `vip_leaderelection` | Enables Kubernetes LeaderElection.                                                              | `true`        |
+| `vip_leaseduration`  | Sets the lease duration in seconds.                                                             | `5`           |
+| `vip_renewdeadline`  | Specifies the deadline in seconds for renewing the lease.                                       | `3`           |
+| `vip_retryperiod`    | Number of times the leader holds the lease for.                                                 | `1`           |
+| `address`            | Template placeholder for the virtual IP address.                                                | `{{ .VIP}}`   |
 
 :::warning
 
