@@ -259,61 +259,62 @@ Machines (VMs) that need to be migrated.
     created in the namespace where the VMs will be migrated to, and the `metadata.name` value must be
     `vddk-image-pull-secret`.
 
-    <!-- prettier-ignore-start -->
+        <!-- prettier-ignore-start -->
 
-    <details>
-<summary> Example Secret Creation </summary>
+        <details>
 
-    A Secret can be created by issuing the following command.
+    <summary> Example Secret Creation </summary>
 
-    ```shell
-    kubectl create secret docker-registry vddk-image-pull-secret \
-    --docker-server=myRegistryServer \
-    --docker-username=myUsername \
-    --docker-password=myPassword \
-    --docker-email=myEmail \
-    --kubeconfig=/path/to/myKubeconfig \
-    --namespace=myVmMigrationNamespace \
-    --output yaml
-    ```
+        A Secret can be created by issuing the following command.
 
-    This creates the Secret named `vddk-image-pull-secret` in your destination cluster under the namespace provided.
-    Ensure that this namespace matches the one you have chosen for the VM migration.
+        ```shell
+        kubectl create secret docker-registry vddk-image-pull-secret \
+        --docker-server=myRegistryServer \
+        --docker-username=myUsername \
+        --docker-password=myPassword \
+        --docker-email=myEmail \
+        --kubeconfig=/path/to/myKubeconfig \
+        --namespace=myVmMigrationNamespace \
+        --output yaml
+        ```
 
-    ```yaml hideClipboard
-    apiVersion: v1
-    kind: Secret
-    metadata:
-      name: vddk-image-pull-secret
-    data:
-      .dockerconfigjson: #base64 encoded dockerconfigjson
-    type: kubernetes.io/dockerconfigjson
-    ```
+        This creates the Secret named `vddk-image-pull-secret` in your destination cluster under the namespace provided.
+        Ensure that this namespace matches the one you have chosen for the VM migration.
 
-    The `data.dockerconfigjson` value contains your registry credentials, which have been base64 encoded by the command.
+        ```yaml hideClipboard
+        apiVersion: v1
+        kind: Secret
+        metadata:
+          name: vddk-image-pull-secret
+        data:
+          .dockerconfigjson: #base64 encoded dockerconfigjson
+        type: kubernetes.io/dockerconfigjson
+        ```
 
-    Alternatively, you can manually encode a `config.json` by issuing the following command.
+        The `data.dockerconfigjson` value contains your registry credentials, which have been base64 encoded by the command.
 
-    ```shell
-    cat path/to/config.json | base64 --wrap=0
-    ```
+        Alternatively, you can manually encode a `config.json` by issuing the following command.
 
-    ```text hideClipboard title="Example output"
-    eyJodHRwczovL2luZGV4L ... J0QUl6RTIifX0=
-    ```
+        ```shell
+        cat path/to/config.json | base64 --wrap=0
+        ```
 
-    You can then use this output to create your own Secret manually. Ensure that the `metadata.name` is set to
-    `vddk-image-pull-secret`.
+        ```text hideClipboard title="Example output"
+        eyJodHRwczovL2luZGV4L ... J0QUl6RTIifX0=
+        ```
 
-    Refer to the
-    [Pull an Image from a Private Registry](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/)
-    and
-    [kubectl create secret docker-registry](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_create/kubectl_create_secret_docker-registry/)
-    documentation for additional guidance.
+        You can then use this output to create your own Secret manually. Ensure that the `metadata.name` is set to
+        `vddk-image-pull-secret`.
 
-    </details>
+        Refer to the
+        [Pull an Image from a Private Registry](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/)
+        and
+        [kubectl create secret docker-registry](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_create/kubectl_create_secret_docker-registry/)
+        documentation for additional guidance.
 
-    <!-- prettier-ignore-end -->
+        </details>
+
+        <!-- prettier-ignore-end -->
 
 ## Create Source Provider
 
