@@ -14,6 +14,8 @@ to create a Kubernetes cluster that is deployed to GKE and that Palette manages.
 
 - Autoscaling is not supported for GKE clusters.
 
+- GPU machine types cannot be used to configure node pools.
+
 ## Prerequisites
 
 Ensure the following requirements are met before you attempt to deploy a cluster to GCP.

@@ -9,6 +9,10 @@ sidebar_position: 20
 Palette supports creating and managing Kubernetes clusters deployed to a Google Cloud Platform (GCP) account. This
 section guides you to create an IaaS Kubernetes cluster in GCP that Palette manages.
 
+## Limitations
+
+- GPU machine types cannot be used to configure node pools.
+
 ## Prerequisites
 
 Ensure the following requirements are met before you attempt to deploy a cluster to GCP:
