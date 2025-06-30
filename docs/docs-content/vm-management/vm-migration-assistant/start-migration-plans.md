@@ -38,7 +38,7 @@ Follow this guide to start migration plans in the VM Migration Assistant.
 
 <!-- prettier-ignore-end -->
 
-  - The VM Migration Assistant service console must be accessible from a web browser.
+- The VM Migration Assistant service console must be accessible from a web browser.
 
 ### Start Cold Migration
 
