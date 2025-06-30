@@ -24,8 +24,8 @@ This migration method uses the [Palette CLI](../../../automation/palette-cli/pal
 
 - You can migrate only VMs whose operating systems are present in the
   [`virt-v2v` supported guest systems](https://libguestfs.org/virt-v2v-support.1.html) list. Refer to
-  [Verified Migrations](../../vm-migration-assistant/vm-migration-assistant.md#verified-migrations) for a list of operating systems and migration
-  combinations verified by Spectro Cloud.
+  [Verified Migrations](../../vm-migration-assistant/vm-migration-assistant.md#verified-migrations) for a list of
+  operating systems and migration combinations verified by Spectro Cloud.
 
 - If you are migrating more than one VM in the same plan, they must all share the same network.
 
@@ -90,9 +90,8 @@ This migration method uses the [Palette CLI](../../../automation/palette-cli/pal
 - One or more VMs hosted in VMware vSphere.
 
   - The VMs must be powered off before migration.
-  
   - Ensure that VMs operating Windows are shut down at the virtualized OS level.
-  
+
 - The Palette CLI installed and setup. Refer to the
   [Installation](../../../automation/palette-cli/install-palette-cli.md) guide for further details.
   - The Palette CLI must have access to both the VMO cluster and the machines to be migrated.

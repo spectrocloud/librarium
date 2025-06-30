@@ -73,7 +73,6 @@ Follow this guide to create migration plans using the VM Migration Assistant.
 - One or more VMs hosted in VMware vSphere.
 
   - For cold migrations, ensure that VMs operating Windows are shut down at the guest OS level.
-  
   - For warm migrations,
     [Changed Block Tracking](https://knowledge.broadcom.com/external/article/315370/enabling-or-disabling-changed-block-trac.html)
     must be enabled on your VMs.
