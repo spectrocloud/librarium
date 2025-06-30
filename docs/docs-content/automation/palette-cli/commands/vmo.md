@@ -29,14 +29,14 @@ The VMs can then be used with the Virtual Machine Orchestrator (VMO).
   [Verified Migrations](../../../vm-management/vm-migration-assistant/vm-migration-assistant.md#verified-migrations) for
   a list of operating systems and migration combinations verified by Spectro Cloud.
 
-## Deploy OVA
-
-### Prerequisites
+## Prerequisites
 
 - A healthy VMO cluster. Refer to the [Create a VMO Profile](../../../vm-management/create-vmo-profile.md) for further
   guidance.
 
 - One or more VMs hosted in VMware vSphere.
+
+## Deploy OVA
 
 ### Usage
 
@@ -73,13 +73,6 @@ palette vmo deploy-ova --config-file ~/.palette/vmo/vms/my-ova-name/my-ova-name.
 ```
 
 ## Import OVA
-
-### Prerequisites
-
-- A healthy VMO cluster. Refer to the [Create a VMO Profile](../../../vm-management/create-vmo-profile.md) for further
-  guidance.
-
-- One or more VMs hosted in VMware vSphere.
 
 ### Usage
 

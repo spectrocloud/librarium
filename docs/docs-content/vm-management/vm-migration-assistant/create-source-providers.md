@@ -32,7 +32,7 @@ Machines (VMs) that need to be migrated.
 
 <!-- prettier-ignore-end -->
 
-- The VM Migration Assistant service console must be accessible from a web browser.
+  - The VM Migration Assistant service console must be accessible from a web browser.
 
 - A healthy Virtual Machine Orchestrator (VMO) cluster. Refer to the [Create a VMO Profile](../create-vmo-profile.md)
   for further guidance.
@@ -114,21 +114,21 @@ Machines (VMs) that need to be migrated.
 
     <TabItem label="Airgap" value="airgap">
 
-    6.  Download the VDDK image from the
+    1.  Download the VDDK image from the
         [Broadcom Developer Portal](https://developer.broadcom.com/sdks/vmware-virtual-disk-development-kit-vddk/latest).
 
-    7.  Copy or move the VDDK image to another Linux environment inside your airgap environment. Use any approved method
+    2.  Copy or move the VDDK image to another Linux environment inside your airgap environment. Use any approved method
         to transfer the binary to the airgap environment.
 
-    8.  Log in to the Linux environment inside your airgap environment where you copied the VDDK image.
+    3.  Log in to the Linux environment inside your airgap environment where you copied the VDDK image.
 
-    9.  Decompress the downloaded image.
+    4.  Decompress the downloaded image.
 
         ```shell
         tar -xzf VMware-vix-disklib-<version>.x86_64.tar.gz
         ```
 
-    10. Create a Dockerfile to build the VDDK image.
+    5. Create a Dockerfile to build the VDDK image.
 
         ```shell
         cat > Dockerfile <<EOF
@@ -143,7 +143,7 @@ Machines (VMs) that need to be migrated.
         Replace the `<myregistry/myrepository:tag>` with your chosen base image registry, repository, and tag (for
         example: `ubuntu:22.04`).
 
-    11. Authenticate with your OCI registry. The following examples are for Harbor and AWS ECR.
+    6. Authenticate with your OCI registry. The following examples are for Harbor and AWS ECR.
 
            <Tabs groupId="oci-registry">
 
@@ -194,7 +194,7 @@ Machines (VMs) that need to be migrated.
 
            </Tabs>
 
-    12. Build the image.
+    7. Build the image.
 
         <Tabs groupId="oci-registry">
 
@@ -221,7 +221,7 @@ Machines (VMs) that need to be migrated.
 
         </Tabs>
 
-    13. Push the built image to your image registry.
+    8. Push the built image to your image registry.
 
         <Tabs groupId="oci-registry">
 
