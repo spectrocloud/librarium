@@ -13,28 +13,36 @@ Machines (VMs) that need to be migrated.
 
 ## Limitations
 
-- You can only migrate VMs hosted in VMware vSphere 7.0 and 8.0.
-- Only VMs whose operating systems are included under
-  [`virt-v2v` supported guest systems](https://libguestfs.org/virt-v2v-support.1.html) can be migrated.
+- You can migrate only VMs hosted in VMware vSphere 7.0 or 8.0.
+- You can migrate only VMs whose operating systems are present in the
+  [`virt-v2v` supported guest systems](https://libguestfs.org/virt-v2v-support.1.html) list. Refer to
+  [Verified Migrations](./vm-migration-assistant.md#verified-migrations) for a list of operating systems and migration
+  combinations verified by Spectro Cloud.
+
 - Open Virtual Appliance (OVA) files are not supported as a provider type for migrations.
 
 ## Prerequisites
 
-<!--prettier-ignore-->
-- The <VersionedLink text="Virtual Machine Migration Assistant" url="/integrations/packs/?pack=vm-migration-assistant"/> pack must be added to your cluster profile. Refer to [Create a VM Migration Assistant Cluster Profile](./create-vm-migration-assistant-profile.md) for guidance.
-  - The VM Migration Assistant service console must be accessible from a web browser.
+<!-- prettier-ignore-start -->
 
-- A healthy Virtual Machine Orchestrator (VMO) cluster. Refer to the [Create a VMO Profile](../create-vmo-profile.md) for further guidance.
+- The <VersionedLink text="Virtual Machine Migration Assistant" url="/integrations/packs/?pack=vm-migration-assistant"/> pack must be added to your cluster profile. Refer to [Create a VM Migration Assistant Cluster Profile](./create-vm-migration-assistant-profile.md) for guidance.
+
+<!-- prettier-ignore-end -->
+
+- The VM Migration Assistant service console must be accessible from a web browser.
+
+- A healthy Virtual Machine Orchestrator (VMO) cluster. Refer to the [Create a VMO Profile](../create-vmo-profile.md)
+  for further guidance.
 
   - The VMO cluster must have network connectivity to vCenter and ESXi hosts, and the VMs you want to migrate.
 
 - A vCenter user account with the following necessary privileges to perform migrations.
-  
-  | **Privileges**                                      | **Description**                   |
-  |----------------------------------------------------|------------------------------------------------------------------------------------------------------------------------|
-  | [**Virtual Machine Interaction Privileges** (all)](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-security-8-0/defined-privileges/virtual-machine-interaction-privileges.html) | Allow creating, cloning, modifying, customizing, and managing templates, virtual machines, their files, and customization specifications, as well as performing disk and deployment-related operations. |
-  | **[Virtual machine.Snapshot management.Create snapshot](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-security-8-0/defined-privileges/virtual-machine-snapshot-management-privileges.html)** | Allows capturing the current state of a virtual machine as a snapshot.  |
-  | **[Virtual machine.Snapshot management.Remove Snapshot](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-security-8-0/defined-privileges/virtual-machine-snapshot-management-privileges.html)** | Permits deletion of a snapshot from the snapshot history.    |
+
+  | **Privileges**                                                                                                                                                                                                            | **Description**                                                                                                                                                                                         |
+  | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | [**Virtual Machine Interaction Privileges** (all)](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-security-8-0/defined-privileges/virtual-machine-interaction-privileges.html)                | Allow creating, cloning, modifying, customizing, and managing templates, virtual machines, their files, and customization specifications, as well as performing disk and deployment-related operations. |
+  | **[Virtual machine.Snapshot management.Create snapshot](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-security-8-0/defined-privileges/virtual-machine-snapshot-management-privileges.html)** | Allows capturing the current state of a virtual machine as a snapshot.                                                                                                                                  |
+  | **[Virtual machine.Snapshot management.Remove Snapshot](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/8-0/vsphere-security-8-0/defined-privileges/virtual-machine-snapshot-management-privileges.html)** | Permits deletion of a snapshot from the snapshot history.                                                                                                                                               |
 
   - Migrations can be optionally accelerated by providing credentials for the ESXi hosts where the VMs reside.
 
@@ -49,12 +57,16 @@ Machines (VMs) that need to be migrated.
 
 - We recommend providing a
   [VMware Virtual Disk Development Kit (VDDK) image](https://developer.broadcom.com/sdks/vmware-virtual-disk-development-kit-vddk/latest)
-  for the migration. This will significantly speed up the migration. The migration engine uses VDDK on the destination VMO cluster to read virtual disks from the source environment, transfer the data, and write it to the target storage.
+  for the migration. This will significantly speed up the migration. The migration engine uses VDDK on the destination
+  VMO cluster to read virtual disks from the source environment, transfer the data, and write it to the target storage.
 
-  - You must build and host the VDDK image in your own image registry, which must be accessible to the destination VMO cluster for migrations.
+  - You must build and host the VDDK image in your own image registry, which must be accessible to the destination VMO
+    cluster for migrations.
 
-    <!--prettier-ignore-->
+    <!-- prettier-ignore-start -->
+
     <details>
+
     <summary> Example steps to build and upload VDDK image </summary>
 
     1. Download the VDDK image from the
@@ -78,7 +90,8 @@ Machines (VMs) that need to be migrated.
        EOF
        ```
 
-       Replace the `<myregistry/myrepository:tag>` with your chosen base image registry/repository (for example: `alpine:latest`).
+       Replace the `<myregistry/myrepository:tag>` with your chosen base image registry, repository, and tag (for
+       example: `ubuntu:22.04`).
 
     4. Build the image.
 
@@ -94,62 +107,68 @@ Machines (VMs) that need to be migrated.
 
     </details>
 
+    <!-- prettier-ignore-end -->
+
   - If you are using a private image registry, you must create a Secret to be used for the migration. The Secret must be
     created in the namespace where the VMs will be migrated to, and the `metadata.name` value must be
     `vddk-image-pull-secret`.
 
-    <!--prettier-ignore-->
-    <details>
+        <!-- prettier-ignore-start -->
+
+        <details>
+
     <summary> Example Secret Creation </summary>
 
-    A Secret can be created by issuing the following command.
+        A Secret can be created by issuing the following command.
 
-    ```shell
-    kubectl create secret docker-registry vddk-image-pull-secret \
-    --docker-server=myRegistryServer \
-    --docker-username=myUsername \
-    --docker-password=myPassword \
-    --docker-email=myEmail \
-    --kubeconfig=/path/to/myKubeconfig \
-    --namespace=myVmMigrationNamespace \
-    --output yaml
-    ```
+        ```shell
+        kubectl create secret docker-registry vddk-image-pull-secret \
+        --docker-server=myRegistryServer \
+        --docker-username=myUsername \
+        --docker-password=myPassword \
+        --docker-email=myEmail \
+        --kubeconfig=/path/to/myKubeconfig \
+        --namespace=myVmMigrationNamespace \
+        --output yaml
+        ```
 
-    This creates the Secret named `vddk-image-pull-secret` in your destination cluster under the namespace provided.
-    Ensure that this namespace matches the one you have chosen for the VM migration.
+        This creates the Secret named `vddk-image-pull-secret` in your destination cluster under the namespace provided.
+        Ensure that this namespace matches the one you have chosen for the VM migration.
 
-    ```yaml hideClipboard
-    apiVersion: v1
-    kind: Secret
-    metadata:
-      name: vddk-image-pull-secret
-    data:
-      .dockerconfigjson: #base64 encoded dockerconfigjson
-    type: kubernetes.io/dockerconfigjson
-    ```
+        ```yaml hideClipboard
+        apiVersion: v1
+        kind: Secret
+        metadata:
+          name: vddk-image-pull-secret
+        data:
+          .dockerconfigjson: #base64 encoded dockerconfigjson
+        type: kubernetes.io/dockerconfigjson
+        ```
 
-    The `data.dockerconfigjson` value contains your registry credentials, which have been base64 encoded by the command.
+        The `data.dockerconfigjson` value contains your registry credentials, which have been base64 encoded by the command.
 
-    Alternatively, you can manually encode a `config.json` by issuing the following command.
+        Alternatively, you can manually encode a `config.json` by issuing the following command.
 
-    ```shell
-    cat path/to/config.json | base64 --wrap=0
-    ```
+        ```shell
+        cat path/to/config.json | base64 --wrap=0
+        ```
 
-    ```text hideClipboard title="Example output"
-    eyJodHRwczovL2luZGV4L ... J0QUl6RTIifX0=
-    ```
+        ```text hideClipboard title="Example output"
+        eyJodHRwczovL2luZGV4L ... J0QUl6RTIifX0=
+        ```
 
-    You can then use this output to create your own Secret manually. Ensure that the `metadata.name` is set to
-    `vddk-image-pull-secret`.
+        You can then use this output to create your own Secret manually. Ensure that the `metadata.name` is set to
+        `vddk-image-pull-secret`.
 
-    Refer to the
-    [Pull an Image from a Private Registry](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/)
-    and
-    [kubectl create secret docker-registry](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_create/kubectl_create_secret_docker-registry/)
-    documentation for additional guidance.
+        Refer to the
+        [Pull an Image from a Private Registry](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/)
+        and
+        [kubectl create secret docker-registry](https://kubernetes.io/docs/reference/kubectl/generated/kubectl_create/kubectl_create_secret_docker-registry/)
+        documentation for additional guidance.
 
-    </details>
+        </details>
+
+        <!-- prettier-ignore-end -->
 
 ## Create Source Provider
 
