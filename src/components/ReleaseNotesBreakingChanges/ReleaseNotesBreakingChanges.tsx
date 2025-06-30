@@ -8,9 +8,8 @@ import styles from "./ReleaseNotesBreakingChanges.module.scss";
 import ArchivedVersions from "../../../archiveVersions.json";
 import Select, { components, OptionProps } from "react-select";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import useIsBrowser from "@docusaurus/useIsBrowser";
-import Link from "@docusaurus/Link";
 
 interface VersionOption {
   label: string;
@@ -97,14 +96,33 @@ export function ReleaseNotesBreakingChanges(): JSX.Element | null {
         Use the version selector below to find all the breaking changes between two releases.
       </p>
       <div className={styles.dropdownContainer}>
-        <Select
-          classNamePrefix="reactSelect"
-          onChange={handleVersionChange}
-          value={selectedVersion}
-          options={versions}
-          components={{ Option: CustomOption }}
-          styles={customSelectStyles}
-        />
+        <div className={styles.dropdownGroupFirst}>
+          <label className={styles.dropdownLabel} htmlFor="version-select-1">Current Version:</label>
+          <Select
+            inputId="version-select-1"
+            classNamePrefix="reactSelect"
+            onChange={handleVersionChange}
+            value={selectedVersion}
+            options={versions}
+            components={{ Option: CustomOption }}
+            styles={customSelectStyles}
+          />
+        </div>
+        <div className={styles.arrowContainer}>
+          <FontAwesomeIcon icon={faArrowRight} />
+        </div>
+        <div className={styles.dropdownGroupSecond}>
+          <label className={styles.dropdownLabel} htmlFor="version-select-2">Version to Upgrade to:</label>
+          <Select
+            inputId="version-select-2"
+            classNamePrefix="reactSelect"
+            onChange={handleVersionChange}
+            value={selectedVersion}
+            options={versions}
+            components={{ Option: CustomOption }}
+            styles={customSelectStyles}
+          />
+        </div>
       </div>
     </Admonition>
   );
