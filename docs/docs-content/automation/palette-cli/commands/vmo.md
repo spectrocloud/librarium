@@ -22,7 +22,12 @@ The VMs can then be used with the Virtual Machine Orchestrator (VMO).
 
 ## Limitations
 
-- You can only use the `vmo` subcommand with VMs hosted in VMware vSphere.
+- You can use the `vmo` subcommand only with VMs hosted in VMware vSphere.
+
+- You can migrate only VMs whose operating systems are present in the
+  [`virt-v2v` supported guest systems](https://libguestfs.org/virt-v2v-support.1.html) list. Refer to
+  [Verified Migrations](../../../vm-management/vm-migration-assistant/vm-migration-assistant.md#verified-migrations) for a list of operating systems and migration
+  combinations verified by Spectro Cloud.
 
 ## Deploy OVA
 
@@ -30,8 +35,8 @@ The VMs can then be used with the Virtual Machine Orchestrator (VMO).
 
 - A healthy VMO cluster. Refer to the [Create a VMO Profile](../../../vm-management/create-vmo-profile.md) for further
   guidance.
-- One or more VMs hosted in VMware vSphere. Only VMs whose operating systems are included under
-  [`virt-v2v` supported guest systems](https://libguestfs.org/virt-v2v-support.1.html) can be migrated.
+
+- One or more VMs hosted in VMware vSphere.
 
 ### Usage
 
@@ -73,8 +78,8 @@ palette vmo deploy-ova --config-file ~/.palette/vmo/vms/my-ova-name/my-ova-name.
 
 - A healthy VMO cluster. Refer to the [Create a VMO Profile](../../../vm-management/create-vmo-profile.md) for further
   guidance.
-- One or more VMs hosted in VMware vSphere. Only VMs whose operating systems are included under
-  [`virt-v2v` supported guest systems](https://libguestfs.org/virt-v2v-support.1.html) can be migrated.
+
+- One or more VMs hosted in VMware vSphere.
 
 ### Usage
 
