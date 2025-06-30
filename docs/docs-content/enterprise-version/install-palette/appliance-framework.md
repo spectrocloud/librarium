@@ -70,16 +70,14 @@ The Appliance Framework self-hosted Palette ISO is supported on the following in
 
   - Permissions to monitor tasks/events/sessions of the infrastructure provider so Palette can track job statuses without requiring full administrator access.
 
-  <!-- - Permissions to upload, register and update OS or VM templates that Palette uses during cluster creation (e.g. populate the `spectro-templates` folder on vSphere, or the image repository in MAAS). -->
-
 - If you plan to use an external registry instead of the internal Zot registry that comes with Palette, you must provide the following external registry credentials during the Palette installation process:
 
   - The endpoint and port for the external registry.
   - The username for the registry.
   - The password for the registry.
   - The certificate for the registry used for TLS encryption.
-  - The Certificate Authority (CA) certificate that was used to sign the registry certificate.
   - The private key for the registry certificate used for TLS encryption.
+  - (Optional) The Certificate Authority (CA) certificate that was used to sign the registry certificate.
 
   Ensure the nodes used to host the Palette management cluster have access to the external registry server.
 
@@ -87,9 +85,9 @@ The Appliance Framework self-hosted Palette ISO is supported on the following in
 
   - A private key for the Zot registry certificate.
   - A certificate for the Zot registry.
-  - A CA certificate for the Zot registry that was used to sign the registry certificate.
+  - (Optional) A CA certificate for the Zot registry that was used to sign the registry certificate.
 
-<!-- - If you have an [Ubuntu Pro](https://ubuntu.com/pro) subscription, you can provide the Ubuntu Pro token during the Palette installation process. This is optional but recommended for security and compliance purposes. -->
+- If you have an [Ubuntu Pro](https://ubuntu.com/pro) subscription, you can provide the Ubuntu Pro token during the Palette installation process. This is optional but recommended for security and compliance purposes.
 
 - A virtual IP address (VIP) must be available for the Palette management cluster. This is assigned during the Palette installation process and is used for load balancing and high availability. The VIP must be accessible to all nodes in the Palette management cluster.
 
@@ -168,12 +166,6 @@ The Appliance Framework self-hosted Palette ISO is supported on the following in
 
     After a few seconds, the terminal displays the **Device Info** and prompts you to provision the device through the Local UI.
 
-    :::info
-
-    If you need to reconfigure the nodes, you can execute the `palette-tui` command to access the Palette TUI again.
-
-    :::
-
 11. Ensure you complete the configuration on each node before proceeding to the next step.
 
 12. Decide on the host that you plan to use as the leader of the group. Refer to [Link Hosts](../../clusters/edge/local-ui/cluster-management/link-hosts.md#leader-hosts) for more information about leader hosts.
@@ -204,14 +196,13 @@ The Appliance Framework self-hosted Palette ISO is supported on the following in
 
 24. Click **Confirm**.
 
-25. Repeat steps 19-23 for every host you want to link to the leader host.
+25. Repeat steps 20-24 for every host you want to link to the leader host.
 
-26. Confirm that all linked hosts appear in the **Linked Edge Hosts** table.
-
-    Before proceeding to the next step, for all hosts, check that the following columns show the required statuses:
+26. Confirm that all linked hosts appear in the **Linked Edge Hosts** table. The following columns should show the required statuses:
 
     - **Status** = Ready
-    - **Content** = Synced (content synchronization will take at least five minutes to complete)
+    - **Content** = Synced
+      - Content synchronization will take at least five minutes to complete dependant on your network resources.
     - **Health** = Healthy
 
 27. On the left main menu, click **Cluster**.
@@ -232,24 +223,24 @@ The Appliance Framework self-hosted Palette ISO is supported on the following in
     | --- | --- | --- | --- |
     | **Pod CIDR** | The CIDR range for the pod network. This is used to allocate IP addresses to pods in the cluster. | CIDR notation | **`192.168.0.0/16`** |
     | **Service CIDR** | The CIDR range for the service network. This is used to allocate IP addresses to services in the cluster. | CIDR notation | **`192.169.0.0/16`** |
-    | **Storage Pool Drive** | The storage pool device to use for the cluster. | String | **`/dev/sdb`** |
-    <!-- | **Ubuntu Pro Token (Optional)** | The token for your [Ubuntu Pro](https://ubuntu.com/pro) subscription. | String | _No default_ | -->
+    | **Ubuntu Pro Token (Optional)** | The token for your [Ubuntu Pro](https://ubuntu.com/pro) subscription. | String | _No default_ |
+    | **Storage Pool Drive (Optional)** | The storage pool device to use for the cluster. | String | **`/dev/sdb`** |
 
     #### Registry Options
 
     | **Option** | **Description** | **Type** | **Default** |
     | --- | --- | --- | --- |
-    | **Registry Password** | If using the internal Zot registry, change the password to your requirements. If using an external registry, provide the appropriate password. | String | **`Spectro@123`** |
+    | **OCI Registry Base Content Path (Optional)** | The base path for the registry content for the internal or external registry. Palette packs will be stored in this directory. | String | **`spectro-content`** |
     | **Registry Username** | If using the internal Zot registry, you leave the default username or adjust to your requirements. If using an external registry, provide the appropriate username. | String | **`admin`** |
-    | **Registry Cert** | The certificate for the registry used for TLS encryption. | Base64 encoded string | _No default - must be provided_ |
-    | **Registry CA Cert** | The CA certificate that was used to sign the registry certificate. | Base64 encoded string | _No default - must be provided_ |
+    | **OCI Pack Registry Password** | If using the internal Zot registry, change the password to your requirements. If using an external registry, provide the appropriate password. | String | **`Spectro@123`** |
+    | **OCI Pack Registry Ca Cert (Optional)** | The CA certificate that was used to sign the registry certificate. | Base64 encoded string | _No default_ |
     | **Root Domain (Optional)** | The root domain for the registry. The default is set for the internal Zot registry, which is a virtual IP address assigned by [kube-vip](https://kube-vip.io/). Adjust if using an external registry. | String | **`{{.spectro.system.cluster.kubevip}}`** |
     | **Mongo Replicas (Optional)** | The number of MongoDB replicas to create for the cluster. This is used to provide high availability for the MongoDB database. The accepted values are **1** or **3**. | Integer | **`3`** |
-    | **Registry Base Content Path (Optional)** | The base path for the registry content for the internal or external registry. Palette packs will be stored in this directory. | String | **`spectro-content`** |
-    | **Use-Incluster Registry (Optional)** | **True** = use internal Zot registry, **False** = use external registry. | Boolean | **True** |
-    | **Registry Endpoint** | The endpoint for the registry. The default is set for the internal Zot registry, which is a virtual IP address assigned by [kube-vip](https://kube-vip.io/). Adjust if using an external registry. | String | **`{{.spectro.system.cluster.kubevip}}`** |
     | **Registry Port** | The port for the registry. The default value can be changed for the internal Zot registry. Adjust if using an external registry. | Integer | **`30003`** |
     | **Registry Private Cert Key** | The private key for the registry certificate used for TLS encryption. | Base64 encoded string | _No default - must be provided_ |
+    | **Registry Cert** | The certificate for the registry used for TLS encryption. | Base64 encoded string | _No default - must be provided_ |
+    | **Registry Endpoint** | The DNS/IP endpoint for the registry. Leave the default entry if using the internal Zot registry, which is a virtual IP address assigned by [kube-vip](https://kube-vip.io/). Adjust if using an external registry. | String | **`{{.spectro.system.cluster.kubevip}}`** |
+    | **In Cluster Registry (Optional)** | **True** = use internal Zot registry, **False** = use external registry. | Boolean | **True** |
     | **Image Replacement Rules (Optional)** | Set rules for replacing image references when using an external registry. For example, `old-registry.com/new-registry.com`. Leave empty if using the internal Zot registry. | String | _No default_ |
 
 32. Click **Next** when you are done.
@@ -268,13 +259,13 @@ The Appliance Framework self-hosted Palette ISO is supported on the following in
 
 34. In **Node Config**, configure the following options.
 
-    :::info
+    :::caution
 
-    It is recommended to remove the **Worker Pool** and add all other hosts that you installed using the Appliance Framework ISO to the control plane pool. This will ensure that the Palette management cluster is highly available and can withstand node failures.
-
-    If doing this, ensure that the **Allow worker capability** option is enabled for the control plane pool.
+    You must have at least one node assigned to the worker pool. If no worker pool is assigned, the cluster will fail to provision.
 
     :::
+
+    #### Node Pool Options
 
     <Tabs>
 

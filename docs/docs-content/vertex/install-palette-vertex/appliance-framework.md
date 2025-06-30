@@ -117,12 +117,6 @@ The Appliance Framework Palette VerteX ISO is supported on the following infrast
 
     After a few seconds, the terminal displays the **Device Info** and prompts you to provision the device through the Local UI.
 
-    :::info
-
-    If you need to reconfigure the nodes, you can execute the `palette-tui` command to access the Palette TUI again.
-
-    :::
-
 11. Ensure you complete the configuration on each node before proceeding to the next step.
 
 12. Decide on the host that you plan to use as the leader of the group. Refer to [Link Hosts](../../clusters/edge/local-ui/cluster-management/link-hosts.md#leader-hosts) for more information about leader hosts.
@@ -153,11 +147,13 @@ The Appliance Framework Palette VerteX ISO is supported on the following infrast
 
 24. Click **Confirm**.
 
-25. Repeat steps 19-23 for every host you want to link to the leader host.
+25. Repeat steps 20-24 for every host you want to link to the leader host.
 
-26. In **Linked Edge Hosts**, confirm that all hosts you linked together show up in the **Linked Edge Hosts** table.
+26. Confirm that all linked hosts appear in the **Linked Edge Hosts** table. The following columns should show the required statuses:
 
-    For all hosts, the **Status** column should show **Ready**, the **Content** column should show **Synced**, and the **Health** column should show **Healthy**.
+    - **Status** = Ready
+    - **Content** = Synced (content synchronization will take at least five minutes to complete)
+    - **Health** = Healthy
 
 27. On the left main menu, click **Cluster**.
 
