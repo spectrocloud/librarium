@@ -164,7 +164,7 @@ Use this approach if you want to override the kernel during MAAS provisioning wi
          "--post-data",
          "{{node_disable_pxe_data|escape.json}}",
          "-O",
-         "/dev/null"
+         "/dev/null",
        ]
      extra_modules: ["curtin", "in-target", "--", "apt", "install", "--yes", "linux-modules-extra-6.8.0-60-generic"]
    ```
