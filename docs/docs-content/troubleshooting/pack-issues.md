@@ -42,7 +42,7 @@ There are several possible ways to troubleshoot this issue:
 1. Check your current kernel version using the command below.
 
    ```shell
-   uname -r
+   uname --kernel-release
    ```
 
 2. Compare your version with the affected list below. | Branch| Affected Versions | Fixed Version|
@@ -59,9 +59,9 @@ There are several possible ways to troubleshoot this issue:
 
    :::
 
-#### Example – Pin Kernel Version in Kairos Base Image (`Dockerfile`)
+#### Example - Pin Kernel Version in Kairos Base Image (`Dockerfile`)
 
-Use this approach if you are building a Kairos image from a `Dockerfile` and simply want to pin the kernel version.
+Use this approach if you are building a Kairos image from a `Dockerfile` and want to pin the kernel version.
 
 1. Clone the [Kairos GitHub Repository](https://github.com/kairos-io/kairos) and check out the required version.
 
@@ -74,7 +74,7 @@ Use this approach if you are building a Kairos image from a `Dockerfile` and sim
 2. Customize the `images/Dockerfile.ubuntu` file. Remove the following lines.
 
    ```dockerfile
-   RUN [ -z "$(ls -A /boot/vmlinuz*)" ] && apt-get install -y --no-install-recommends \
+   RUN [ -z "$(ls -A /boot/vmlinuz*)" ] && apt-get install --yes --no-install-recommends \
        linux-image-generic-hwe-24.04 || true
    RUN apt-get clean && rm -rf /var/lib/apt/lists/*
    ```
@@ -84,7 +84,7 @@ Use this approach if you are building a Kairos image from a `Dockerfile` and sim
    version.
 
    ```dockerfile
-   RUN [ -z "$(ls -A /boot/vmlinuz*)" ] && apt-get install -y --no-install-recommends \
+   RUN [ -z "$(ls -A /boot/vmlinuz*)" ] && apt-get install --yes --no-install-recommends \
       linux-image-6.8.0-60-generic linux-modules-extra-6.8.0-60-generic || true
    RUN apt-get clean && rm -rf /var/lib/apt/lists/*
    ```
@@ -99,7 +99,7 @@ Use this approach if you are building a Kairos image from a `Dockerfile` and sim
 
    :::
 
-#### Example – Pin Kernel Version with Full Boot Configuration (`Dockerfile`)
+#### Example - Pin Kernel Version with Full Boot Configuration (`Dockerfile`)
 
 Use this approach if you are building a Kairos image from a `Dockerfile` and need full control over the kernel and boot
 configuration.
@@ -113,16 +113,16 @@ configuration.
    # Install specific kernel version if KERNEL_VERSION is provided
    RUN if [ "${OS_DISTRIBUTION}" = "ubuntu" ]; then \
            apt-get update && \
-           apt-get install -y "linux-image-6.8.0-60-generic" "linux-headers-6.8.0-60-generic" "linux-modules-6.8.0-60-generic" && \
-           apt-get purge -y $(dpkg -l | awk '/^ii\s+linux-(image|headers|modules)/ {print $2}' | grep -v "6.8.0-60-generic") && \
-           apt-get autoremove -y && \
-           rm -rf /var/lib/apt/lists/* && \
-           kernel=$(ls /boot/vmlinuz-* | grep "6.8.0-60-generic" | head -n1) && \
-           ln -sf "${kernel#/boot/}" /boot/vmlinuz && \
-           kernel=$(ls /lib/modules | grep "6.8.0-60-generic" | head -n1) && \
-           dracut -f "/boot/initrd-${kernel}" "${kernel}" && \
-           ln -sf "initrd-${kernel}" /boot/initrd && \
-           depmod -a "${kernel}"; \
+           apt-get install --yes linux-image-6.8.0-60-generic linux-headers-6.8.0-60-generic linux-modules-6.8.0-60-generic && \
+           apt-get purge --yes $(dpkg-query --list | awk '/^ii\s+linux-(image|headers|modules)/ {print $2}' | grep --invert-match "6.8.0-60-generic") && \
+           apt-get autoremove --yes && \
+           rm --recursive --force /var/lib/apt/lists/* && \
+           kernel=$(ls /boot/vmlinuz-* | grep --fixed-strings "6.8.0-60-generic" | head --lines=1) && \
+           ln --symbolic --force "${kernel#/boot/}" /boot/vmlinuz && \
+           kernel=$(ls /lib/modules | grep --fixed-strings "6.8.0-60-generic" | head --lines=1) && \
+           dracut --force "/boot/initrd-${kernel}" "${kernel}" && \
+           ln --symbolic --force "initrd-${kernel}" /boot/initrd && \
+           depmod --all "${kernel}"; \
        fi; \
    ```
 
