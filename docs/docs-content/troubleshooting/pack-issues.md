@@ -209,7 +209,6 @@ Use this approach if you want to override the kernel during MAAS provisioning wi
 5. In the pack's YAML file, add the following lines.
 
    ```yaml
-   pack:
    stages:
      boot:
        - name: disable-ipv6
