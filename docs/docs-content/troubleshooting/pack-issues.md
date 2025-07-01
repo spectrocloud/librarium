@@ -13,7 +13,8 @@ The following are common scenarios that you may encounter when using Packs.
 ## Scenario - Calico Fails to Start when IPv6 is Enabled
 
 When deploying clusters with the <VersionedLink text="Calico" url="/integrations/packs/?pack=cni-calico"/> pack and IPv6
-enabled, Calico fails to start on hosts running specific Linux kernel versions due to missing or incompatible kernel modules required for `ip6tables` `MARK` support.
+enabled, Calico fails to start on hosts running specific Linux kernel versions due to missing or incompatible kernel
+modules required for `ip6tables` `MARK` support.
 
 ```shell
 Failed to execute ip(6)tables-restore command error=exit status 2 errorOutput=... MARK: bad value for option \"--set-mark\", or out of range (0–4294967295)...
