@@ -17,8 +17,10 @@ Palette VMO.
 
 ## Limitations
 
-- Only OVAs whose operating systems are included under
-  [`virt-v2v` supported guest systems](https://libguestfs.org/virt-v2v-support.1.html) can be imported.
+- You can import only OVAs whose operating systems are present in the
+  [`virt-v2v` supported guest systems](https://libguestfs.org/virt-v2v-support.1.html) list. Refer to
+  [Verified Migrations](../../vm-migration-assistant/vm-migration-assistant.md#verified-migrations) for a list of
+  operating systems and migration combinations verified by Spectro Cloud.
 
 ## Prerequisites
 
