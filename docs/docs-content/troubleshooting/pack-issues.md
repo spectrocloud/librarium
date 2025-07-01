@@ -123,7 +123,7 @@ configuration.
            dracut --force "/boot/initrd-${kernel}" "${kernel}" && \
            ln --symbolic --force "initrd-${kernel}" /boot/initrd && \
            depmod --all "${kernel}"; \
-       fi; \
+       fi;
    ```
 
    :::info
@@ -156,17 +156,8 @@ Use this approach if you want to override the kernel during MAAS provisioning wi
        {{line}}
        {{endfor}}
    late_commands:
-     maas:
-       [
-         wget,
-         "--no-proxy",
-         { { node_disable_pxe_url|escape.json } },
-         "--post-data",
-         { { node_disable_pxe_data|escape.json } },
-         "-O",
-         "/dev/null",
-       ]
-     extra_modules: ["curtin", "in-target", "--", "apt", "install", "-y", "linux-modules-extra-6.8.0-60-generic"]
+     maas: ["wget", "--no-proxy", "{{node_disable_pxe_url|escape.json}}", "--post-data", "{{node_disable_pxe_data|escape.json}}", "-O", "/dev/null"]
+     extra_modules: ["curtin", "in-target", "--", "apt", "install", "--yes", "linux-modules-extra-6.8.0-60-generic"]
    ```
 
 2. Deploy the node through MAAS to apply the pinned kernel during installation. Refer to
@@ -214,8 +205,8 @@ Use this approach if you want to override the kernel during MAAS provisioning wi
      boot:
        - name: disable-ipv6
          commands:
-           - sysctl --write net.ipv6.conf.all.disable_ipv6=1
-           - sysctl --write net.ipv6.conf.default.disable_ipv6=1
+           - sysctl -w net.ipv6.conf.all.disable_ipv6=1
+           - sysctl -w net.ipv6.conf.default.disable_ipv6=1
    ```
 
 6. Click **Confirm Updates** after making the required changes.
@@ -237,15 +228,11 @@ Use this approach if you want to override the kernel during MAAS provisioning wi
 
    ```yaml
    stages:
-     initramfs:
-       - users:
-           kairos:
-             passwd: kairos
      boot:
        - name: disable-ipv6
          commands:
-           - sysctl --write net.ipv6.conf.all.disable_ipv6=1
-           - sysctl --write net.ipv6.conf.default.disable_ipv6=1
+           - sysctl -w net.ipv6.conf.all.disable_ipv6=1
+           - sysctl -w net.ipv6.conf.default.disable_ipv6=1
    ```
 
 2. If you don't have an ISO image or the cluster is already operating, build a new ISO image and deploy (or redeploy)
