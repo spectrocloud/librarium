@@ -14,10 +14,13 @@ Machines (VMs) that need to be migrated.
 ## Limitations
 
 - You can migrate only VMs hosted in VMware vSphere 7.0 or 8.0.
+
 - You can migrate only VMs whose operating systems are present in the
   [`virt-v2v` supported guest systems](https://libguestfs.org/virt-v2v-support.1.html) list. Refer to
   [Verified Migrations](./vm-migration-assistant.md#verified-migrations) for a list of operating systems and migration
   combinations verified by Spectro Cloud.
+
+- If you are migrating more than one VM in the same plan, they must all share the same network.
 
 - Open Virtual Appliance (OVA) files are not supported as a provider type for migrations.
 
@@ -46,10 +49,8 @@ Machines (VMs) that need to be migrated.
 
   - Migrations can be optionally accelerated by providing credentials for the ESXi hosts where the VMs reside.
 
-- One or more VMs hosted in VMware vSphere. Only VMs whose operating systems are included under
-  [`virt-v2v` supported guest systems](https://libguestfs.org/virt-v2v-support.1.html) can be migrated.
+- One or more VMs hosted in VMware vSphere.
 
-  - If you are migrating more than one VM in the same plan, they must all share the same network.
   - For cold migrations, ensure that VMs operating Windows are shut down at the guest OS level.
   - For warm migrations,
     [Changed Block Tracking](https://knowledge.broadcom.com/external/article/315370/enabling-or-disabling-changed-block-trac.html)
