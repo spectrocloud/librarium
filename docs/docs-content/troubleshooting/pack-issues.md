@@ -74,7 +74,7 @@ Use this approach if you are building a Kairos image from a `Dockerfile` and wan
 2. Customize the `images/Dockerfile.ubuntu` file. Remove the following lines.
 
    ```dockerfile
-   RUN [ -z "$(ls -A /boot/vmlinuz*)" ] && apt-get install --yes --no-install-recommends \
+   RUN [ -z "$(ls -A /boot/vmlinuz*)" ] && apt-get install -y --no-install-recommends \
        linux-image-generic-hwe-24.04 || true
    RUN apt-get clean && rm -rf /var/lib/apt/lists/*
    ```
