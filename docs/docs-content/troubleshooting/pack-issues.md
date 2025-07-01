@@ -123,7 +123,7 @@ configuration.
            dracut --force "/boot/initrd-${kernel}" "${kernel}" && \
            ln --symbolic --force "initrd-${kernel}" /boot/initrd && \
            depmod --all "${kernel}"; \
-       fi;
+       fi; \
    ```
 
    :::info
