@@ -14,6 +14,8 @@ to create a Kubernetes cluster that is deployed to GKE and that Palette manages.
 
 - Autoscaling is not supported for GKE clusters.
 
+- GPU machine types cannot be used to configure node pools.
+
 ## Prerequisites
 
 Ensure the following requirements are met before you attempt to deploy a cluster to GCP.
@@ -82,7 +84,7 @@ Ensure the following requirements are met before you attempt to deploy a cluster
 
     You can add new worker pools to customize specific worker nodes to run specialized workloads. For example, the
     default worker pool may be configured with the c2.standard-4 instance types for general-purpose workloads. You can
-    configure another worker pool with instance type g2-standard-4 to run GPU workloads.
+    configure another worker pool with instance type g2-standard-4 to run supported machine types.
 
     :::
 
