@@ -148,7 +148,7 @@ Use this approach if you want to override the kernel during MAAS provisioning wi
 1. Customize the `/var/lib/snap/maas/current/preseeds/curtin_userdata_custom` file on the MAAS controller node to pin
    the kernel version during host provisioning. Add the following lines. Replace `6.8.0-60-generic` with the required
    version.
-   
+
 <!-- prettier-ignore -->
    ```yaml
    #cloud-config
