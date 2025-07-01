@@ -12,13 +12,13 @@ The following are common scenarios that you may encounter when using Packs.
 
 ## Scenario - Calico Fails to Start when IPv6 is Enabled
 
-When deploying clusters with the <VersionedLink text="Calico" url="/integrations/packs/?pack=cni-calico"/> pack and IPv6 enabled, Calico fails to start on hosts running specific Linux kernel versions due to missing or incompatible ip6tables mark support. Logs contain the error below.
+When deploying clusters with the <VersionedLink text="Calico" url="/integrations/packs/?pack=cni-calico"/> pack and IPv6 enabled, Calico fails to start on hosts running specific Linux kernel versions due to missing or incompatible `ip6tables` `MARK` support. Logs contain the error below.
  
  ```shell
  Failed to execute ip(6)tables-restore command error=exit status 2 errorOutput=... MARK: bad value for option \"--set-mark\", or out of range (0–4294967295)...
  ```
 
- The issue occurs when required kernel modules are unavailable or incompatible with Calico's ip6tables rule structure.
+ The issue occurs when the required kernel modules are unavailable or incompatible with Calico's `ip6tables` rule structure.
 
 There are several possible ways to troubleshoot this issue:
 - Use a Container Network Interface (CNI) other than Calico. This is a preferred approach if Calico is optional.
@@ -53,7 +53,7 @@ There are several possible ways to troubleshoot this issue:
 
 Use this approach if you are building a Kairos image from a `Dockerfile` and simply want to pin the kernel version.
 
-1. Clone the the [Kairos GitHub Repository](https://github.com/kairos-io/kairos) and check out the required version.
+1. Clone the [Kairos GitHub Repository](https://github.com/kairos-io/kairos) and check out the required version.
 
    ```shell
    git clone https://github.com/kairos-io/kairos.git
@@ -68,7 +68,7 @@ Use this approach if you are building a Kairos image from a `Dockerfile` and sim
        linux-image-generic-hwe-24.04 || true
    RUN apt-get clean && rm -rf /var/lib/apt/lists/*
    ```
-   Paste the following lines instead. In this example, the kernel version is set to `6.8.0-60-generic`, which allows to avoid the problematic `6.8.0-57-generic` version that is usually set by default in `CanvOS`. Replace it with the required version.
+   Paste the following lines instead. In this example, the kernel version is set to `6.8.0-60-generic` to avoid the problematic `6.8.0-57-generic` version, which is typically the default in `CanvOS`. Replace it with the required version.
 
    ```dockerfile
    RUN [ -z "$(ls -A /boot/vmlinuz*)" ] && apt-get install -y --no-install-recommends \
@@ -80,7 +80,7 @@ Use this approach if you are building a Kairos image from a `Dockerfile` and sim
 
    :::info
 
-   For more information on how to build provider images and ISO artifacts for Edge deployments, and use them in your cluster setup refer to [Build Edge Artifacts](../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md).
+   For more information on how to build provider images and ISO artifacts for Edge deployments and how to use them in your cluster setup, refer to [Build Edge Artifacts](../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md).
    
    :::
 
@@ -213,9 +213,9 @@ Use this approach if you want to override the kernel during MAAS provisioning wi
            - sysctl -w net.ipv6.conf.all.disable_ipv6=1
            - sysctl -w net.ipv6.conf.default.disable_ipv6=1
    ```
-2. If you don't have an ISO image yet or if the cluster is already operating, build a new ISO image and deploy (or redeploy) the cluster.
+2. If you don't have an ISO image or the cluster is already operating, build a new ISO image and deploy (or redeploy) the cluster.
    
-   If you already have an ISO image, but the cluster is not operating yet, create an ISO file containing the additional user data and apply the changes. Refer to [Apply Site User Data](../clusters/edge/site-deployment/site-installation/site-user-data.md).
+   If you already have an ISO image, but the cluster is not operating yet, create an ISO file containing the additional user data and apply the changes. Refer to [Apply Site User Data](../clusters/edge/site-deployment/site-installation/site-user-data.md) for more information.
 
 ## Scenario - AWS EKS Cluster Deployment Fails when Cilium is Used as CNI
 
