@@ -148,7 +148,8 @@ Use this approach if you want to override the kernel during MAAS provisioning wi
 1. Customize the `/var/lib/snap/maas/current/preseeds/curtin_userdata_custom` file on the MAAS controller node to pin
    the kernel version during host provisioning. Add the following lines. Replace `6.8.0-60-generic` with the required
    version.
-
+   
+<!-- prettier-ignore -->
    ```yaml
    #cloud-config
    kernel:
@@ -160,20 +161,11 @@ Use this approach if you want to override the kernel during MAAS provisioning wi
        {{line}}
        {{endfor}}
    late_commands:
-     maas:
-       [
-         "wget",
-         "--no-proxy",
-         "{{node_disable_pxe_url|escape.json}}",
-         "--post-data",
-         "{{node_disable_pxe_data|escape.json}}",
-         "-O",
-         "/dev/null",
-       ]
+     maas: [wget, '--no-proxy', {{node_disable_pxe_url|escape.json}}, '--post-data', {{node_disable_pxe_data|escape.json}}, '-O', '/dev/null']
      extra_modules: ["curtin", "in-target", "--", "apt", "install", "--yes", "linux-modules-extra-6.8.0-60-generic"]
    ```
 
-2. Deploy the node through MAAS to apply the pinned kernel during installation. Refer to
+3. Deploy the node through MAAS to apply the pinned kernel during installation. Refer to
    [Create and Manage MAAS Clusters](../clusters/data-center/maas/create-manage-maas-clusters.md) for the details.
 
 ### Debug Steps - Disable IPv6 on the Calico Pack Level
