@@ -156,7 +156,16 @@ Use this approach if you want to override the kernel during MAAS provisioning wi
        {{line}}
        {{endfor}}
    late_commands:
-     maas: ["wget", "--no-proxy", "{{node_disable_pxe_url|escape.json}}", "--post-data", "{{node_disable_pxe_data|escape.json}}", "-O", "/dev/null"]
+     maas:
+       [
+         "wget",
+         "--no-proxy",
+         "{{node_disable_pxe_url|escape.json}}",
+         "--post-data",
+         "{{node_disable_pxe_data|escape.json}}",
+         "-O",
+         "/dev/null",
+       ]
      extra_modules: ["curtin", "in-target", "--", "apt", "install", "--yes", "linux-modules-extra-6.8.0-60-generic"]
    ```
 
