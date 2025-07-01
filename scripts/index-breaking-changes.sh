@@ -5,13 +5,15 @@ set -e
 RELEASE_NOTES_PATH="docs/docs-content/release-notes/release-notes.md"
 OLD_RELEASE_NOTES_PATH="docs/docs-content/release-notes.md"
 BREAKING_CHANGES_PARTIALS_PATH="_partials/breaking-changes"
+ALL_VERSIONS_PATH="src/components/ReleaseNotesBreakingChanges/versions.json"
 
 # Function to create partials file for breaking changes
 # Params:
 # $1 - release number, example: 4.0.0
 create_partials_file () {
   release_number=$1
-  filename="$BREAKING_CHANGES_PARTIALS_PATH/br_$release_number.mdx"
+  replaced=$(echo "$release_number" | tr '.' '_')  # Replace dots with underscores as they cause errors in partials
+  filename="$BREAKING_CHANGES_PARTIALS_PATH/br_$replaced.mdx"
   
   # Create the directory if it doesn't exist
   mkdir -p $BREAKING_CHANGES_PARTIALS_PATH
@@ -33,8 +35,9 @@ create_partials_file () {
 # $1 - release number, example: 4.0.0
 # $2 - body text of the breaking change
 add_breaking_changes_body() {
-  release_number=$1
-  filename="$BREAKING_CHANGES_PARTIALS_PATH/br_$release_number.mdx"
+  release_number=$1  
+  replaced=$(echo "$release_number" | tr '.' '_')  # Replace dots with underscores as they cause errors in partials
+  filename="$BREAKING_CHANGES_PARTIALS_PATH/br_$replaced.mdx"
   line=$2
   new_line="$line"
 
@@ -51,6 +54,11 @@ add_breaking_changes_body() {
     # Skip full external links (http, https)
     if [[ "$full_link" == http* ]]; then
       break  # or use `continue` if inside a larger loop
+    fi
+
+    # Skip image links ending in .webp so we don't break images.
+    if [[ "$full_link" == *.webp ]]; then
+      break  # or use `continue` if you're looping over multiple matches
     fi
 
     # Normalize: remove leading ../ if present
@@ -95,7 +103,6 @@ add_breaking_changes_body() {
 # Function to clean up files by removing multiple blank lines.
 clean_files() {
   for file in $BREAKING_CHANGES_PARTIALS_PATH/*.mdx; do
-    echo "Cleaning $file"
     # Replace multiple blank lines with a single blank line
     awk 'NF { blank=0 } !NF { if (!blank) print ""; blank=1; next } { print }' "$file" > tmpfile && mv tmpfile "$file"
   done
@@ -132,10 +139,11 @@ for b in $branches; do
   git fetch origin $b:$b
 done
 
-echo $branches
-
 # Make sure we are in a clean state for repeatable runs.
 rm -rf $BREAKING_CHANGES_PARTIALS_PATH
+rm -f $ALL_VERSIONS_PATH
+touch $ALL_VERSIONS_PATH
+echo "[" >> $ALL_VERSIONS_PATH
 
 for branch in $branches; do
   echo "Checking branch: $branch"
@@ -162,9 +170,9 @@ for branch in $branches; do
         sed -E 's/\{#.*\}//' |                                   # Remove markdown anchor fragments
         sed -E 's/.*Release[[:space:]]+//' |                     # Remove everything before 'Release'
         sed -E 's/.* -[[:space:]]*([0-9]+\.[0-9]+\.[0-9]+).*/\1/' |  # Extract last version in range
-        sed -E 's/^([0-9]+\.[0-9]+\.[0-9]+).*/\1/' |               # Extract version if no range
-        tr '.' '_'          # Replace dots with underscores as they cause errors in partials 
+        sed -E 's/^([0-9]+\.[0-9]+\.[0-9]+).*/\1/'               # Extract version if no range
       )
+      echo "\"$release_number\"," >> "$ALL_VERSIONS_PATH"
       # New release version, set breaking changes to false.
       in_breaking_changes=false
       continue
@@ -193,5 +201,8 @@ done
 
 clean_files
 
+# Remove the last comma from the ALL_VERSIONS_PATH file
+sed '$s/,\s*$//' $ALL_VERSIONS_PATH > temp && mv temp $ALL_VERSIONS_PATH
+echo "]" >> $ALL_VERSIONS_PATH
 git checkout "$current_branch"
 echo "All branches checked. Current branch restored to: $current_branch"

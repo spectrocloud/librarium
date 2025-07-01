@@ -1,19 +1,27 @@
-/* eslint-disable */
-
-import React, { useEffect, useState } from "react";
-import { useHistory } from "@docusaurus/router";
+import React, { useEffect, useState, FunctionComponent, useMemo } from "react";
 import Admonition from "@theme/Admonition";
-import { useVersions } from "@docusaurus/plugin-content-docs/client";
 import styles from "./ReleaseNotesBreakingChanges.module.scss";
-import ArchivedVersions from "../../../archiveVersions.json";
+import Versions from "./versions.json";
 import Select, { components, OptionProps } from "react-select";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import useIsBrowser from "@docusaurus/useIsBrowser";
+import PartialsComponent from "../PartialsComponent";
 
 interface VersionOption {
   label: string;
   value: string;
+}
+
+ interface Modules {
+  [key: string]: Module;
+}
+
+interface Module {
+  frontMatter: {
+    partial_category: string;
+    partial_name: string;
+  };
+  default: FunctionComponent;
 }
 
 interface CustomOptionProps extends OptionProps<VersionOption, false> {}
@@ -31,43 +39,162 @@ const CustomOption: React.FC<CustomOptionProps> = (props) => {
   );
 };
 
+function compareVersions(a: string, b: string, direction: 'ASC' | 'DESC' = 'DESC'): number {
+  const aParts = a.split('.').map(Number);
+  const bParts = b.split('.').map(Number);
+
+  for (let i = 0; i < 3; i++) {
+    const aVal = aParts[i] || 0;
+    const bVal = bParts[i] || 0;
+
+    if (aVal !== bVal) {
+      return direction === 'ASC' ? aVal - bVal : bVal - aVal;
+    }
+  }
+
+  return 0; // equal
+}
+
+
+function isGreaterVersion(a: string, b: string): boolean {
+  const aParts = a.split('.').map(Number);
+  const bParts = b.split('.').map(Number);
+
+  for (let i = 0; i < 3; i++) {
+    const aVal = aParts[i] || 0;
+    const bVal = bParts[i] || 0;
+    if (aVal > bVal) return true;
+    if (aVal < bVal) return false;
+  }
+
+  return false; // equal
+}
+
+function isVersionInRange(input: string, from: string, to: string): boolean {
+  const parse = (v: string) => v.split('.').map(Number);
+
+  const [iMajor, iMinor, iPatch] = parse(input);
+  const [fMajor, fMinor, fPatch] = parse(from);
+  const [tMajor, tMinor, tPatch] = parse(to);
+
+  const isStrictlyGreaterThanFrom =
+    iMajor > fMajor ||
+    (iMajor === fMajor && iMinor > fMinor) ||
+    (iMajor === fMajor && iMinor === fMinor && iPatch > fPatch);
+
+  const isLessThanOrEqualToTo =
+    iMajor < tMajor ||
+    (iMajor === tMajor && iMinor < tMinor) ||
+    (iMajor === tMajor && iMinor === tMinor && iPatch <= tPatch);
+
+  return isStrictlyGreaterThanFrom && isLessThanOrEqualToTo;
+}
+
+
+function getVersionsFromFile(): string[] {
+  const versions: string[] = Versions;
+  versions.sort((a, b) => compareVersions(a, b, 'DESC'));
+  return versions;
+}
+
+function getBreakingChangesBetweenVersions(from:string, to:string): string[] {
+  let breakingVersionsList: string[] = [];
+  const module: Modules = require("@site/_partials");
+  const partialKeys: string[] = Object.keys(module);
+  partialKeys.map(function (pkey) {
+    const currentPartial: Module = module[pkey];
+    const catFrontMatter = currentPartial.frontMatter.partial_category;
+    const nameFrontMatter = currentPartial.frontMatter.partial_name.toString();
+    if (catFrontMatter == "breaking-changes" && isVersionInRange(nameFrontMatter, from, to)) {
+      breakingVersionsList.push(nameFrontMatter);
+    }
+  });
+  
+  breakingVersionsList.sort((a, b) => compareVersions(a, b, 'ASC'));
+  return breakingVersionsList;
+}
+
 export function ReleaseNotesBreakingChanges(): JSX.Element | null {
-  const [selectedVersion, setSelectedVersion] = useState<VersionOption | null>(null);
-  const versionsList = useVersions("default");
+  const [selectedFromVersion, setSelectedFromVersion] = useState<VersionOption | null>(null);
+  const [selectedToVersion, setSelectedToVersion] = useState<VersionOption | null>(null);
+  const versionsList = getVersionsFromFile();
+  const breakingVersionsList = useMemo(() => {
+    if (!selectedFromVersion || !selectedToVersion) return [];
+    return getBreakingChangesBetweenVersions(selectedFromVersion.value, selectedToVersion.value);
+  }, [selectedFromVersion, selectedToVersion]);
+
 
   const versions: VersionOption[] = [
-    ...versionsList.map(({ label, path }) => ({
-      label: label === "current" ? "latest" : label,
-      value: label,
-    })),
-    ...Object.entries(ArchivedVersions).map(([versionName, versionUrl]) => ({
-      label: `${versionName} `,
-      value: `${versionName} `,
+    ...versionsList.map(( version) => ({
+      label: version,
+      value: version,
     })),
   ];
 
+  const toVersionOptions = useMemo(() => {
+    if (!selectedFromVersion) return versions;
+  
+    return versions.filter(v => isGreaterVersion(v.value, selectedFromVersion.value));
+  }, [selectedFromVersion, versions]);
+
   useEffect(() => {
-    const savedVersion = localStorage.getItem("selectedVersion");
-    if (savedVersion) {
-      const savedVersionObj: any = versions.find((v) => v.value === savedVersion);
-      if (savedVersionObj?.value !== selectedVersion?.value) {
-        setSelectedVersion(savedVersionObj);
+    if (
+      selectedFromVersion &&
+      selectedToVersion &&
+      !isGreaterVersion(selectedToVersion.value, selectedFromVersion.value)
+    ) {
+      setSelectedToVersion(null);
+      localStorage.removeItem("selectedToVersion");
+    }
+  }, [selectedFromVersion, selectedToVersion]);
+
+  useEffect(() => {
+    const savedFromVersion = localStorage.getItem("selectedFromVersion");
+    if (savedFromVersion) {
+      const savedFromVersionObj = versions.find((v) => v.value === savedFromVersion) || null;
+      if (savedFromVersionObj && savedFromVersionObj.value !== selectedFromVersion?.value) {
+        setSelectedFromVersion(savedFromVersionObj);
+      }
+
+    }
+  }, [versions]);
+
+  useEffect(() => {
+    const savedToVersion = localStorage.getItem("selectedToVersion");
+    if (savedToVersion) {
+      const savedToVersionObj = versions.find((v) => v.value === savedToVersion) || null;
+      if (savedToVersionObj && savedToVersionObj.value !== selectedToVersion?.value) {
+        setSelectedToVersion(savedToVersionObj);
       }
     }
-  }, [selectedVersion?.value]);
+  }, [versions]);
 
 
-  const handleVersionChange = (selectedOption: VersionOption | null) => {
-    setSelectedVersion(selectedOption);
-    localStorage.setItem("selectedVersion", selectedOption?.value ?? "");
+  const handleFromVersionChange = (selectedOption: VersionOption | null) => {
+    setSelectedFromVersion(selectedOption);
+    localStorage.setItem("selectedFromVersion", selectedOption?.value ?? "");
+  };
+  const handleToVersionChange = (selectedOption: VersionOption | null) => {
+    setSelectedToVersion(selectedOption);
+    localStorage.setItem("selectedToVersion", selectedOption?.value ?? "");
   };
 
   const customSelectStyles = {
-    control: (provided: any) => ({
+    control: (provided: any, state: any) => ({
       ...provided,
       background: "var(--custom-release-notes-background-color)",
       color: "var(--custom-release-notes-background-font-color)",
       boxShadow: "none",
+      cursor: state.isDisabled ? "not-allowed" : "default",
+      opacity: state.isDisabled ? 0.6 : 1,
+    }),
+    container: (provided: any, state: any) => ({
+      ...provided,
+      cursor: state.isDisabled ? "not-allowed" : "default",
+    }),
+    valueContainer: (provided: any, state: any) => ({
+      ...provided,
+      cursor: state.isDisabled ? "not-allowed" : "default",
     }),
     menu: (provided: any) => ({
       ...provided,
@@ -82,6 +209,7 @@ export function ReleaseNotesBreakingChanges(): JSX.Element | null {
       ...provided,
       borderRadius: "0.25rem",
       color: "var(--custom-release-notes-option-font-color)",
+      cursor: state.isDisabled ? "not-allowed" : "pointer",
       background: state.isSelected
         ? "var(--custom-release-notes-selected-background)"
         : state.isFocused
@@ -93,7 +221,7 @@ export function ReleaseNotesBreakingChanges(): JSX.Element | null {
   return (
     <Admonition type="info" title="Breaking Changes">
       <p>
-        Use the version selector below to find all the breaking changes between two releases.
+        Use the version selector below to find all the breaking changes between two releases. Start by selecting the current version you have installed.
       </p>
       <div className={styles.dropdownContainer}>
         <div className={styles.dropdownGroupFirst}>
@@ -101,8 +229,8 @@ export function ReleaseNotesBreakingChanges(): JSX.Element | null {
           <Select
             inputId="version-select-1"
             classNamePrefix="reactSelect"
-            onChange={handleVersionChange}
-            value={selectedVersion}
+            onChange={handleFromVersionChange}
+            value={selectedFromVersion}
             options={versions}
             components={{ Option: CustomOption }}
             styles={customSelectStyles}
@@ -116,14 +244,29 @@ export function ReleaseNotesBreakingChanges(): JSX.Element | null {
           <Select
             inputId="version-select-2"
             classNamePrefix="reactSelect"
-            onChange={handleVersionChange}
-            value={selectedVersion}
-            options={versions}
+            onChange={handleToVersionChange}
+            isDisabled={!selectedFromVersion}
+            value={selectedToVersion}
+            options={toVersionOptions}
             components={{ Option: CustomOption }}
             styles={customSelectStyles}
           />
         </div>
       </div>
+      {selectedFromVersion && selectedToVersion && (
+        <div className={styles.versionSummary}>
+          <hr className="divider" />
+          <h4>
+            Breaking Changes from <strong>{selectedFromVersion.label}</strong> to <strong>{selectedToVersion.label}</strong>
+          </h4>
+          {breakingVersionsList.map((version) => (
+            <div>
+              <div key={version}>{version}</div>
+              <PartialsComponent category="breaking-changes" name={version} />
+            </div>
+          ))}
+        </div>
+      )}
     </Admonition>
   );
 }
