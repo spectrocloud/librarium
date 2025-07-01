@@ -45,11 +45,15 @@ There are several possible ways to troubleshoot this issue:
    uname --kernel-release
    ```
 
-2. Compare your version with the affected list below. | Branch| Affected Versions | Fixed Version|
-   |-------|-------------------|--------------| | 5.15.0 generic| 5.15.0-127, 5.15.0-128| 5.15.0-130| | 6.8.0 generic|
-   6.8.0-57, 6.8.0-58| 6.8.0-60| | 6.8.0 cloud| 6.8.0-1022| 6.8.0-1027|
+2. Compare your version with the affected list below.
+  
+   | Branch| Affected Versions | Fixed Version|
+   |-------|-------------------|--------------|
+   | 5.15.0 generic| 5.15.0-127, 5.15.0-128| 5.15.0-130|
+   | 6.8.0 generic| 6.8.0-57, 6.8.0-58| 6.8.0-60|
+   | 6.8.0 cloud| 6.8.0-1022| 6.8.0-1027|
 
-3. If your current kernel version matches any affected version, update it to a fixed or unaffected version. The method
+5. If your current kernel version matches any affected version, update it to a fixed or unaffected version. The method
    for updating depends on your deployment environment.
 
    :::warning
@@ -113,13 +117,13 @@ configuration.
    # Install specific kernel version if KERNEL_VERSION is provided
    RUN if [ "${OS_DISTRIBUTION}" = "ubuntu" ]; then \
            apt-get update && \
-           apt-get install --yes linux-image-6.8.0-60-generic linux-headers-6.8.0-60-generic linux-modules-6.8.0-60-generic && \
+           apt-get install --yes "linux-image-6.8.0-60-generic" "linux-headers-6.8.0-60-generic" "linux-modules-6.8.0-60-generic" && \
            apt-get purge --yes $(dpkg-query --list | awk '/^ii\s+linux-(image|headers|modules)/ {print $2}' | grep --invert-match "6.8.0-60-generic") && \
            apt-get autoremove --yes && \
            rm --recursive --force /var/lib/apt/lists/* && \
-           kernel=$(ls /boot/vmlinuz-* | grep --fixed-strings "6.8.0-60-generic" | head --lines=1) && \
+           kernel=$(ls /boot/vmlinuz-* | grep "6.8.0-60-generic" | head --lines=1) && \
            ln --symbolic --force "${kernel#/boot/}" /boot/vmlinuz && \
-           kernel=$(ls /lib/modules | grep --fixed-strings "6.8.0-60-generic" | head --lines=1) && \
+           kernel=$(ls /lib/modules | grep "6.8.0-60-generic" | head --lines=1) && \
            dracut --force "/boot/initrd-${kernel}" "${kernel}" && \
            ln --symbolic --force "initrd-${kernel}" /boot/initrd && \
            depmod --all "${kernel}"; \
