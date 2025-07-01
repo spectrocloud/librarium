@@ -4,14 +4,6 @@
   gap: 1rem;
 }
 
-.dropdownContainer > div:first-child {
-  // // width: 50%;
-
-  // @media (max-width: 768px) {
-  //   width: 100%;
-  // }
-}
-
 .dropdownGroupFirst {
   display: flex;
   flex-direction: row;
@@ -34,4 +26,17 @@
   display: flex;
   flex-direction: row;
   padding: 0 1rem;
+}
+
+.versionSummary {
+  margin-top: 1rem;
+  background-color: var(--custom-release-notes-summary-bg);
+  color: var(--custom-release-notes-summary-color);
+  border-radius: 0.5rem;
+}
+
+.divider {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin: 1rem 0;
 }

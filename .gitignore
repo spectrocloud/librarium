@@ -77,6 +77,7 @@ artifact.zip
 # Ignore _partials/index.ts
 _partials/index.ts
 _partials/breaking-changes/*
+src/components/ReleaseNotesBreakingChanges/versions.json
 
 # Ignore statoc/img/packs
 static/img/packs
