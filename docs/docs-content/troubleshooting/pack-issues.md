@@ -46,14 +46,14 @@ There are several possible ways to troubleshoot this issue:
    ```
 
 2. Compare your version with the affected list below.
-  
-   | Branch| Affected Versions | Fixed Version|
-   |-------|-------------------|--------------|
-   | 5.15.0 generic| 5.15.0-127, 5.15.0-128| 5.15.0-130|
-   | 6.8.0 generic| 6.8.0-57, 6.8.0-58| 6.8.0-60|
-   | 6.8.0 cloud| 6.8.0-1022| 6.8.0-1027|
 
-5. If your current kernel version matches any affected version, update it to a fixed or unaffected version. The method
+   | Branch         | Affected Versions      | Fixed Version |
+   | -------------- | ---------------------- | ------------- |
+   | 5.15.0 generic | 5.15.0-127, 5.15.0-128 | 5.15.0-130    |
+   | 6.8.0 generic  | 6.8.0-57, 6.8.0-58     | 6.8.0-60      |
+   | 6.8.0 cloud    | 6.8.0-1022             | 6.8.0-1027    |
+
+3. If your current kernel version matches any affected version, update it to a fixed or unaffected version. The method
    for updating depends on your deployment environment.
 
    :::warning
