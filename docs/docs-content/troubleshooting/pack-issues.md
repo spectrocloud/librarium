@@ -214,8 +214,8 @@ Use this approach if you want to override the kernel during MAAS provisioning wi
      boot:
        - name: disable-ipv6
          commands:
-           - sysctl -w net.ipv6.conf.all.disable_ipv6=1
-           - sysctl -w net.ipv6.conf.default.disable_ipv6=1
+           - sysctl --write net.ipv6.conf.all.disable_ipv6=1
+           - sysctl --write net.ipv6.conf.default.disable_ipv6=1
    ```
 
 6. Click **Confirm Updates** after making the required changes.
@@ -244,8 +244,8 @@ Use this approach if you want to override the kernel during MAAS provisioning wi
      boot:
        - name: disable-ipv6
          commands:
-           - sysctl -w net.ipv6.conf.all.disable_ipv6=1
-           - sysctl -w net.ipv6.conf.default.disable_ipv6=1
+           - sysctl --write net.ipv6.conf.all.disable_ipv6=1
+           - sysctl --write net.ipv6.conf.default.disable_ipv6=1
    ```
 
 2. If you don't have an ISO image or the cluster is already operating, build a new ISO image and deploy (or redeploy)
