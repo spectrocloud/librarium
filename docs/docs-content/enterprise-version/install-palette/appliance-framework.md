@@ -9,24 +9,22 @@ tags: ["appliance framework", "self-hosted", "enterprise"]
 sidebar_position: 0
 ---
 
-The Appliance Framework lets you install self-hosted Palette in your environment using an ISO file. The ISO file contains all the necessary components needed for Palette to function. The ISO file is used to boot the nodes, which are then clustered to form a Palette management cluster.
+The Appliance Framework is downloadable as an ISO file and is a solution for installing self-hosted Palette on your infrastructure. The ISO file contains all the necessary components needed for Palette to function. The ISO file is used to boot the nodes, which are then clustered to form a Palette management cluster.
 
 Once Palette has been installed and configured, you can download pack bundles to create your cluster profiles. You will then be able to deploy clusters in your environment.
 
 ## Architecture
 
-The Appliance Framework is downloadable as an ISO file and is a solution for installing self-hosted Palette on your infrastructure. The ISO contains all the necessary components, including the Operating System (OS), Kubernetes distribution, Container Network Interface (CNI), and Container Storage Interface (CSI). This solution is designed to be immutable, secure, and compliant with industry standards, such as the Federal Information Processing Standards (FIPS) and Security Technical Implementation Guides (STIG).
+The ISO file is built with the Operating System (OS), Kubernetes distribution, Container Network Interface (CNI), and Container Storage Interface (CSI). A [Zot registry](https://zotregistry.dev/) is also included in the Appliance Framework ISO. Zot is a lightweight, OCI-compliant container image registry that is used to store the Palette packs needed to create cluster profiles.
 
-The following table displays the infrastructure profile for the self-hosted Palette appliance.
+This solution is designed to be immutable, secure, and compliant with industry standards, such as the Federal Information Processing Standards (FIPS) and Security Technical Implementation Guides (STIG). The following table displays the infrastructure profile for the self-hosted Palette appliance.
 
 | **Layer** | **Component** |
 | --- | --- |
 | **OS** | Ubuntu – Immutable Kairos, STIG-hardened and FIPS compiled. |
 | **Kubernetes** | Palette Kubernetes (PXK) – STIG-hardened and FIPS compiled. |
 | **CNI** | Calico - FIPS compiled. |
-| **CSI** | Rook Ceph - FIPS compiled. |
-
-A [Zot registry](https://zotregistry.dev/) is included in the Appliance Framework ISO. Zot is a lightweight, OCI-compliant container image registry that is used to store the Palette packs needed to create cluster profiles.
+| **CSI** | Piraeus |
 
 ## Supported Platforms
 
@@ -46,7 +44,9 @@ The Appliance Framework self-hosted Palette ISO is supported on the following in
 
   - 16 GB Memory per node.
 
-  - 250 GB Disk Space per node.
+  - 450 GB Disk Space per node.
+
+    - The disk space must be split between at least two disks, with a minimum of 250 GB for the first disk and 200 GB for the second disk. The first disk is used for the ISO stack, and the second disk is used for the storage pool.
 
 - The following network ports must be accessible on each node for Palette to operate successfully.
 
@@ -58,7 +58,7 @@ The Appliance Framework self-hosted Palette ISO is supported on the following in
 
 - Relevant permissions to install Palette on the nodes including permission to attach or mount an ISO and set nodes to boot from it.
 
-- The installation account/role for Palette must have the following permissions on the infrastructure provider:
+<!-- - The installation account/role for Palette must have the following permissions on the infrastructure provider:
 
   - Permissions to read and tag top-level objects within your infrastructure so Palette can discover inventory and propagate permissions.
 
@@ -68,11 +68,11 @@ The Appliance Framework self-hosted Palette ISO is supported on the following in
 
   - Permissions to create provider-native tags or labels and assign them to datacenters, clusters, or hosts. Palette converts these into `topology.kubernetes.io/{region,zone}` node labels for workload placement and high availability. Zone tagging is mandatory on VMware vSphere and recommended everywhere.
 
-  - Permissions to monitor tasks/events/sessions of the infrastructure provider so Palette can track job statuses without requiring full administrator access.
+  - Permissions to monitor tasks/events/sessions of the infrastructure provider so Palette can track job statuses without requiring full administrator access. -->
 
 - If you plan to use an external registry instead of the internal Zot registry that comes with Palette, you must provide the following external registry credentials during the Palette installation process:
 
-  - The endpoint and port for the external registry.
+  - The DNS/IP endpoint and port for the external registry.
   - The username for the registry.
   - The password for the registry.
   - The certificate for the registry used for TLS encryption.
@@ -309,7 +309,19 @@ The Appliance Framework self-hosted Palette ISO is supported on the following in
 
     When you are satisfied with your configuration, click **Deploy Cluster**. This will start the cluster creation process.
 
-    The cluster creation process will take 20-30 minutes to complete. You can monitor progress from the **Overview** tab on the **Cluster** page in the left main menu. Once the cluster is created, you will see a success message.
+    The cluster creation process will take 20-30 minutes to complete. You can monitor progress from the **Overview** tab on the **Cluster** page in the left main menu. The cluster is fully provisioned when the status changes to **Running** and the health status is **Healthy**.
+
+37. Once the cluster is provisioned, you can access Palette using the virtual IP address (VIP) you configured earlier. Open your web browser and go to `https://<vip-address>/system`. Replace `<vip-address>` with the VIP you configured for the cluster.
+
+    You will be prompted to log in to Palette system console. Use `admin` as the username and `admin` as the password. You can change the password after logging in. 
+
+38. After login, in the next window prompt, provide an email address, the old password, and a new password for the admin user. Refer to [Password Requirements and Security](../system-management/account-management/credentials.md#password-requirements-and-security) to learn about password requirements.
+
+39. 
+
+## Validate
+
+## Next Steps
 
 37. Log in to Palette and activate it.
 
@@ -318,7 +330,3 @@ The Appliance Framework self-hosted Palette ISO is supported on the following in
 39. Transfer the pack bundles to one of your Palette nodes.
 
 40. Install the pack bundles on the Palette node.
-
-## Validate
-
-## Next Steps
