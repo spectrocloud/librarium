@@ -9,6 +9,10 @@ sidebar_position: 20
 Palette supports creating and managing Kubernetes clusters deployed to a Google Cloud Platform (GCP) account. This
 section guides you to create an IaaS Kubernetes cluster in GCP that Palette manages.
 
+## Limitations
+
+- GPU machine types cannot be used to configure node pools.
+
 ## Prerequisites
 
 Ensure the following requirements are met before you attempt to deploy a cluster to GCP:
@@ -88,9 +92,9 @@ Ensure the following requirements are met before you attempt to deploy a cluster
 
 :::info
 
-You can add new worker pools to customize specific worker nodes to run specialized workloads. For example, the default
-worker pool may be configured with the c2.standard-4 instance types for general-purpose workloads. You can configure
-another worker pool with instance type g2-standard-4 to leverage GPU workloads.
+    You can add new worker pools to customize specific worker nodes to run specialized workloads. For example, the
+    default worker pool may be configured with the c2.standard-4 instance types for general-purpose workloads. You can
+    configure another worker pool with instance type g2-standard-4 to leverage supported machine types.
 
 :::
 
