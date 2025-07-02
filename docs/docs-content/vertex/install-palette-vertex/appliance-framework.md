@@ -59,18 +59,6 @@ The Appliance Framework Palette VerteX ISO is supported on the following infrast
 
 - Relevant permissions to install Palette on the nodes including permission to attach or mount an ISO and set nodes to boot from it.
 
-<!-- - The installation account/role for Palette must have the following permissions on the infrastructure provider:
-
-  - Permissions to read and tag top-level objects within your infrastructure so Palette can discover inventory and propagate permissions.
-
-  - Permissions to create, modify, and power-cycle VMs or bare-metal nodes, including storage allocation, network assignment, and template/image operations.
-
-  - Permissions to assign networks/port-groups, browse/allocate datastore or disk space, and migrate or move machines as needed for cluster scaling and upgrades.
-
-  - Permissions to create provider-native tags or labels and assign them to datacenters, clusters, or hosts. Palette converts these into `topology.kubernetes.io/{region,zone}` node labels for workload placement and high availability. Zone tagging is mandatory on VMware vSphere and recommended everywhere.
-
-  - Permissions to monitor tasks/events/sessions of the infrastructure provider so Palette can track job statuses without requiring full administrator access. -->
-
 - If you plan to use an external registry instead of the internal Zot registry that comes with Palette, you must provide the following external registry credentials during the Palette installation process:
 
   - The DNS/IP endpoint and port for the external registry.
