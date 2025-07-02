@@ -168,9 +168,9 @@ Use the following instructions to build the Edge Installer ISO. The optional ste
 
     :::tip
 
-    You can take advantage of the Tech Preview feature to edit user data in Local UI after installation. However, we
-    still recommend providing user data during EdgeForge when deploying production workloads, as this is a Tech Preview
-    feature and not all fields are editable in the Local UI.
+    You can also [edit user data in Local UI](../../local-ui/host-management/edit-user-data.md) after installation.
+    However, we recommend providing user data during EdgeForge for production workloads, as not all user data fields can
+    be updated in Local UI.
 
     :::
 
