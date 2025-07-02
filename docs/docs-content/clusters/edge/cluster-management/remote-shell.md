@@ -22,9 +22,9 @@ You can generate temporary user credentials with root privileges or use an exist
 users have root privilege on the Edge host, allowing you the permissions often required to troubleshoot, but they must
 be enabled per Edge host by someone with sufficient permissions.
 
-After 24 hours of inactivity, all remote shell temporary user credentials and the underlying remote shell tunnel will be
-removed. The Palette UI will display accordingly that remote shell is disabled on the host. If you want to use remote
-shell after 24 hours of inactivity, you will need to enable it again.
+After 24 hours of inactivity, all remote shell temporary user credentials and the underlying remote shell tunnel are
+removed. The Palette UI displays accordingly that remote shell is disabled on the host. If you want to use remote shell
+after 24 hours of inactivity, you need to enable it again.
 
 ## Prerequisites
 
@@ -94,10 +94,10 @@ shell after 24 hours of inactivity, you will need to enable it again.
     remote shell connection to terminate sooner.
 
     This is different from the tunnel and credential termination caused by 24 hours of inactivity. After 12 hours of
-    inactivity, only the shell session is terminated. The underlying tunnel and the user credentials still remain and
-    the UI still shows remote shell is enabled on your host. You can start a new session with the same credentials.
-    After 24 hours of inactivity, the tunnel and the credentials are both removed. The UI will display remote shell
-    status as disabled. You will need to re-enable remote shell and create new credentials.
+    inactivity, only the shell session is terminated. The underlying tunnel and the temporary user credentials still
+    remain and the UI still shows remote shell is enabled on your host. You can start a new session with the same
+    credentials. After 24 hours of inactivity, the tunnel and the credentials are both removed. The UI displays remote
+    shell status as disabled. You will need to re-enable remote shell and create new credentials.
 
     :::
 
