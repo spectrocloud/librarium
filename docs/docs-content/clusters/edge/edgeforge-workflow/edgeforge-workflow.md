@@ -72,8 +72,8 @@ ISO can also contain the following components:
   profiles. You have the option to build content bundles into the Edge Installer ISO, which allows your Edge host to
   build clusters without a connection to external image registries.
 
-- **Cluster definition** - A cluster definition include one or more cluster profiles. You can export cluster
-  definitions from any existing cluster profiles in your Palette account. If you include a cluster definition in your
+- **Cluster definition** - A cluster definition includes one or more cluster profiles. You can export cluster
+  definitions from any existing cluster profile in your Palette account. If you include a cluster definition in your
   Edge Installer ISO, you can use the profiles contained within to build a cluster without a connection to a Palette
   instance.
 

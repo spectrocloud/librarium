@@ -31,7 +31,7 @@ You can build the following content into the Edge installer ISO to customize you
     [Apply Site User Data](../../site-deployment/site-installation/site-user-data.md).
 - **Content bundles** - This is an archive of all images, Helm charts and packs used for any number of specified cluster
   profiles. Content bundles are optional to include in an installer ISO.
-- **Cluster definition** - Cluster definitions contains cluster profiles and any profile variables used in the
+- **Cluster definition** - Cluster definitions contain cluster profiles and any profile variables used in the
   profiles. When you include a cluster definition during the Edge Installer ISO build process, you can create a new
   cluster that uses your imported cluster definition in your Edge host using Local UI. Cluster definitions are optional
   to include in an installer ISO.
