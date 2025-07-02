@@ -17,14 +17,15 @@ Once Palette has been installed and configured, you can download pack bundles to
 
 The ISO file is built with the Operating System (OS), Kubernetes distribution, Container Network Interface (CNI), and Container Storage Interface (CSI). A [Zot registry](https://zotregistry.dev/) is also included in the Appliance Framework ISO. Zot is a lightweight, OCI-compliant container image registry that is used to store the Palette packs needed to create cluster profiles.
 
-This solution is designed to be immutable, secure, and compliant with industry standards, such as the Federal Information Processing Standards (FIPS) and Security Technical Implementation Guides (STIG). The following table displays the infrastructure profile for the self-hosted Palette appliance.
+This solution is designed to be immutable, secure, and compliant with industry standards, such as the Security Technical Implementation Guides (STIG). The following table displays the infrastructure profile for the self-hosted Palette appliance.
 
 | **Layer** | **Component** |
 | --- | --- |
-| **OS** | Ubuntu – Immutable Kairos, STIG-hardened and FIPS compiled. |
-| **Kubernetes** | Palette Kubernetes (PXK) – STIG-hardened and FIPS compiled. |
-| **CNI** | Calico - FIPS compiled. |
+| **OS** | Ubuntu – Immutable Kairos and STIG-hardened. |
+| **Kubernetes** | Palette Kubernetes (PXK) – STIG-hardened. |
+| **CNI** | Calico |
 | **CSI** | Piraeus |
+| **Registry** | Zot |
 
 ## Supported Platforms
 
@@ -34,9 +35,11 @@ The Appliance Framework self-hosted Palette ISO is supported on the following in
 - Bare Metal
 - Machine as a Service (MAAS)
 
-## Prerequisites
+## Installation Steps
 
-- Access to the Palette Artifact Studio to download the Palette Enterprise ISO and pack bundles.
+### Prerequisites
+
+- Access to the Palette Artifact Studio to download the Palette Enterprise ISO and pack bundles. Refer to the Artifact Studio (link TBC) guide for instructions on how to access and download the ISO.
 
 - A minimum of three nodes must be provisioned in advance for the Palette installation. We recommended the following resources for each node. Refer to the Palette [Size Guidelines](./install-palette.md#size-guidelines) for additional sizing information.
 
@@ -125,9 +128,9 @@ The Appliance Framework self-hosted Palette ISO is supported on the following in
 
   </details>
 
-## Install Palette
+### Install Palette
 
-1. Download the Palette Enterprise ISO from the Artifact Studio.
+1. Download the Palette Enterprise ISO from the Artifact Studio. Refer to the Artifact Studio (link TBC) guide for instructions on how to access and download the ISO.
 
 2. Upload the ISO to your infrastructure provider. This can be done using the web interface of your infrastructure provider or using command-line tools.
 
@@ -173,6 +176,8 @@ The Appliance Framework self-hosted Palette ISO is supported on the following in
 13. Access the Local UI of the leader host. The Local UI is used to manage the Palette nodes and perform administrative tasks. It provides a web-based interface for managing the Palette management cluster.
 
     In your web browser, go to `https://<node-ip>:5080`. Replace `<node-ip>` with the IP address of your node. If you have changed the default port of the console, replace `5080` with the Local UI port. The address of Local UI console is also displayed on the terminal screen of the node. 
+
+    If you are accessing the Local UI for the first time, you may see a security warning in your web browser. This is because the Local UI uses a self-signed certificate. You can safely ignore this warning and proceed to the Local UI.
 
 14. Log in to Local UI using the default credentials. The default username is `kairos` and the password is `kairos`. You can change the password after logging in.
 
@@ -259,9 +264,9 @@ The Appliance Framework self-hosted Palette ISO is supported on the following in
 
 34. In **Node Config**, configure the following options.
 
-    :::caution
+    :::important
 
-    You must have at least one node assigned to the worker pool. If no worker pool is assigned, the cluster will fail to provision.
+    It is recommended to have at least three control plane nodes for high availability. You can remove the worker node pool as it is not required for the Palette management cluster. Ensure that the **Allow worker capability** option is enabled for the control plane node pool.
 
     :::
 
@@ -274,7 +279,7 @@ The Appliance Framework self-hosted Palette ISO is supported on the following in
     | **Option** | **Description** | **Type** | **Default** |
     | --- | --- | --- | --- |
     | **Node pool name** | The name of the control plane node pool. This will be used to identify the node pool in Palette. | String | **`control-plane-pool`** |
-    | **Allow worker capability (Optional)** | Whether to allow workloads to be scheduled on this control plane node pool. | Boolean | **True** |
+    | **Allow worker capability (Optional)** | Whether to allow workloads to be scheduled on this control plane node pool. Ensure that this is enabled if no worker pool is assigned to the cluster. | Boolean | **True** |
     | **Additional Kubernetes Node Labels (Optional)** | Tags for the node pool in `key:value` format. These tags can be used to filter and search for node pools in Palette. | String | _No default_ |
     | **Taints** | Taints for the node pool in `key=value:effect` format. Taints are used to prevent pods from being scheduled on the nodes in this pool unless they tolerate the taint. | Key = string, Value = string, Effect = string (enum) | _No default_ |
 
@@ -311,22 +316,66 @@ The Appliance Framework self-hosted Palette ISO is supported on the following in
 
     The cluster creation process will take 20-30 minutes to complete. You can monitor progress from the **Overview** tab on the **Cluster** page in the left main menu. The cluster is fully provisioned when the status changes to **Running** and the health status is **Healthy**.
 
-37. Once the cluster is provisioned, you can access Palette using the virtual IP address (VIP) you configured earlier. Open your web browser and go to `https://<vip-address>/system`. Replace `<vip-address>` with the VIP you configured for the cluster.
+37. Once the cluster is provisioned, access the Palette system console using the virtual IP address (VIP) you configured earlier. Open your web browser and go to `https://<vip-address>/system`. Replace `<vip-address>` with the VIP you configured for the cluster.
 
-    You will be prompted to log in to Palette system console. Use `admin` as the username and `admin` as the password. You can change the password after logging in. 
+    The first time you visit the system console, a warning message about an untrusted TLS certificate may appear. This is expected, as you have not yet uploaded your TLS certificate. You can ignore this warning message and proceed.
 
-38. After login, in the next window prompt, provide an email address, the old password, and a new password for the admin user. Refer to [Password Requirements and Security](../system-management/account-management/credentials.md#password-requirements-and-security) to learn about password requirements.
+38. You will be prompted to log in to Palette system console. Use `admin` as the username and `admin` as the password. You will change the password after logging in.
 
-39. 
+39. In the **Account Info** window, provide the following information:
+    
+    - **Email address** - This is used for notifications and password recovery as well as logging in to the Palette system console.
+      - This will not be active until you [configure SMTP settings](../system-management/smtp.md) in Palette system console and verify your email address.
+    - **Current password** - Use `admin` as the current password.
+    - **New password** - Enter a new password for the account.
+    - **Confirm new password** - Re-enter the new password for confirmation.
 
-## Validate
+    Refer to [Password Requirements and Security](../system-management/account-management/credentials.md#password-requirements-and-security) to learn about password requirements.
+
+After login, a summary page is displayed. You now have access to the Palette system console, where you can manage your Palette environment.
+
+If you are accessing the Palette system console for the first time, you may see a security warning in your web browser. This is because Palette is configured with a self-signed certificate. You can replace the self-signed certificate with your own SSL certificates as guided later in [Next Steps](#next-steps).
+
+### Validate
+
+1. Log in to the Palette system console using the virtual IP address (VIP) you configured earlier. Open your web browser and go to `https://<vip-address>/system`. Replace `<vip-address>` with the VIP you configured for the cluster.
+
+2. On the login page, use `admin` as the username and the new password you set during the initial login.
+
+3. On the **Summary** page, check that the **On-prem system console is healthy** message is displayed.
+
+4. Log in to the Local UI of the leader host using the URL `https://<node-ip>:5080`. Replace `<node-ip>` with the IP address of the leader host. If you have changed the default port of the console, replace `5080` with the Local UI port.
+
+5. In the Local UI, click on **Cluster** in the left main menu.
+
+6. Check that the cluster status is **Running** and the health status is **Healthy**. In the **Applications** section on this page, the listed applications should be in the **Running** state.
+
+## Download and Install Packs for Palette
+
+### Prerequisites
+
+### Download and Install Packs
+
+Download your pack bundles from the Artifact Studio.
+
+Transfer the pack bundles to one of your Palette nodes.
+
+Install the pack bundles on the Palette node.
+
+### Validate
 
 ## Next Steps
 
-37. Log in to Palette and activate it.
+The following actions are recommended after installing Palette to ensure your environment is ready for use:
 
-38. Download your pack bundles from the Artifact Studio.
+- Assign your SSL certificates to Palette. Palette is installed with a self-signed SSL certificate. To assign a different SSL certificate, upload the certificate, key, and certificate authority files to Palette. You can upload the files using the system console. Refer to the [Configure HTTPS Encryption](../system-management/ssl-certificate-management.md) page for instructions on how to upload the SSL certificate files to Palette.
 
-39. Transfer the pack bundles to one of your Palette nodes.
+- Create a tenant in Palette to host your users. Refer to the [Create a Tenant](../system-management/tenant-management.md) guide for instructions on how to create a tenant in Palette.
 
-40. Install the pack bundles on the Palette node.
+- Activate your Palette installation before the trial mode expires. Refer to the [Activate Palette](../activate-installation/activate-installation.md) guide for instructions on how to activate your installation.
+
+- Create additional system administrator accounts and assign roles to users in the system console. Refer to the [Account Management](../system-management/account-management/account-management.md) guide for instructions on how to manage user accounts and roles in Palette.
+
+- Configure SMTP settings to enable email notifications and password recovery. Refer to the [Configure SMTP Settings](../system-management/smtp.md) guide for instructions on how to configure SMTP settings in Palette.
+
+For all system management options in Palette, refer to the [System Management](../system-management/system-management.md) guide.

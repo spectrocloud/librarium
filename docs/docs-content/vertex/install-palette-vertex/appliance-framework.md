@@ -5,28 +5,27 @@ description: "Learn how to deploy Palette VerteX to your environment using the A
 hide_table_of_contents: false
 # sidebar_custom_props:
 #   icon: "chart-diagram"
-tags: ["appliance framework", "self-hosted", "enterprise"]
+tags: ["appliance framework", "self-hosted", "vertex"]
 sidebar_position: 0
 ---
 
-The Appliance Framework lets you install Palette VerteX in your environment using an ISO file. The ISO file contains all the necessary components needed for Palette to function. The ISO file is used to boot the nodes, which are then clustered to form a Palette management cluster.
+The Appliance Framework is downloadable as an ISO file and is a solution for installing Palette VerteX on your infrastructure. The ISO file contains all the necessary components needed for Palette to function. The ISO file is used to boot the nodes, which are then clustered to form a Palette management cluster.
 
 Once Palette has been installed and configured, you can download pack bundles to create your cluster profiles. You will then be able to deploy clusters in your environment.
 
 ## Architecture
 
-The Appliance Framework is downloadable as an ISO file and is a solution for installing Palette VerteX on your infrastructure. The ISO contains all the necessary components, including the Operating System (OS), Kubernetes distribution, Container Network Interface (CNI), and Container Storage Interface (CSI). This solution is designed to be immutable, secure, and compliant with industry standards, such as the Federal Information Processing Standards (FIPS) and Security Technical Implementation Guides (STIG).
+The ISO file is built with the Operating System (OS), Kubernetes distribution, Container Network Interface (CNI), and Container Storage Interface (CSI). A [Zot registry](https://zotregistry.dev/) is also included in the Appliance Framework ISO. Zot is a lightweight, OCI-compliant container image registry that is used to store the Palette packs needed to create cluster profiles.
 
-The following table displays the infrastructure profile for the Palette VerteX appliance.
+This solution is designed to be immutable, secure, and compliant with industry standards, such as the Federal Information Processing Standards (FIPS) and Security Technical Implementation Guides (STIG). The following table displays the infrastructure profile for the Palette VerteX appliance.
 
 | **Layer** | **Component** |
 | --- | --- |
 | **OS** | Ubuntu – Immutable Kairos, STIG-hardened and FIPS compiled. |
 | **Kubernetes** | Palette Kubernetes (PXK) – STIG-hardened and FIPS compiled. |
 | **CNI** | Calico - FIPS compiled. |
-| **CSI** | Rook Ceph - FIPS compiled. |
-
-A [Zot registry](https://zotregistry.dev/) is included in the Appliance Framework ISO. Zot is a lightweight, OCI-compliant container image registry that is used to store the Palette packs needed to create cluster profiles.
+| **CSI** | Piraeus |
+| **Registry** | Zot – FIPS compiled. |
 
 ## Supported Platforms
 
@@ -38,15 +37,17 @@ The Appliance Framework Palette VerteX ISO is supported on the following infrast
 
 ## Prerequisites
 
-- Access to the Palette Artifact Studio to download the Palette Enterprise ISO and pack bundles.
+- Access to the Palette Artifact Studio to download the Palette VerteX ISO and pack bundles. Refer to the Artifact Studio (link TBC) guide for instructions on how to access and download the ISO.
 
-- A minimum of three nodes must be provisioned in advance for the Palette installation. We recommended the following resources for each node. Refer to the Palette VerteX [Size Guidelines](./install-palette-vertex.md#size-guidelines) for additional sizing information.
+- A minimum of three nodes must be provisioned in advance for the Palette installation. We recommended the following resources for each node. Refer to the Palette [Size Guidelines](./install-palette-vertex.md#size-guidelines) for additional sizing information.
 
   - 8 CPUs per node.
 
   - 16 GB Memory per node.
 
-  - 250 GB Disk Space per node.
+  - 450 GB Disk Space per node.
+
+    - The disk space must be split between at least two disks, with a minimum of 250 GB for the first disk and 200 GB for the second disk. The first disk is used for the ISO stack, and the second disk is used for the storage pool.
 
 - The following network ports must be accessible on each node for Palette to operate successfully.
 
@@ -58,7 +59,7 @@ The Appliance Framework Palette VerteX ISO is supported on the following infrast
 
 - Relevant permissions to install Palette on the nodes including permission to attach or mount an ISO and set nodes to boot from it.
 
-- The installation account/role for Palette must have the following permissions on the infrastructure provider:
+<!-- - The installation account/role for Palette must have the following permissions on the infrastructure provider:
 
   - Permissions to read and tag top-level objects within your infrastructure so Palette can discover inventory and propagate permissions.
 
@@ -68,22 +69,71 @@ The Appliance Framework Palette VerteX ISO is supported on the following infrast
 
   - Permissions to create provider-native tags or labels and assign them to datacenters, clusters, or hosts. Palette converts these into `topology.kubernetes.io/{region,zone}` node labels for workload placement and high availability. Zone tagging is mandatory on VMware vSphere and recommended everywhere.
 
-  - Permissions to monitor tasks/events/sessions of the infrastructure provider so Palette can track job statuses without requiring full administrator access.
+  - Permissions to monitor tasks/events/sessions of the infrastructure provider so Palette can track job statuses without requiring full administrator access. -->
 
-  <!-- - Permissions to upload, register and update OS or VM templates that Palette uses during cluster creation (e.g. populate the `spectro-templates` folder on vSphere, or the image repository in MAAS). -->
+- If you plan to use an external registry instead of the internal Zot registry that comes with Palette, you must provide the following external registry credentials during the Palette installation process:
 
-- Access to your external registry server (if applicable) to store and pull the Palette packs. This is only required if you do not wish to use the Zot registry that comes with Palette.
+  - The DNS/IP endpoint and port for the external registry.
+  - The username for the registry.
+  - The password for the registry.
+  - The certificate for the registry used for TLS encryption.
+  - The private key for the registry certificate used for TLS encryption.
+  - (Optional) The Certificate Authority (CA) certificate that was used to sign the registry certificate.
 
-  - The nodes used to host the Palette management cluster must have access to the external registry server.
+  Ensure the nodes used to host the Palette management cluster have access to the external registry server.
 
-## Install Palette
+- If you choose to use the internal Zot registry, you will need to provide the following TLS certificates and keys in Base64 format during the Palette installation process:
 
-1. Download the Palette Enterprise ISO from the Artifact Studio.
+  - A private key for the Zot registry certificate.
+  - A certificate for the Zot registry.
+  - (Optional) A CA certificate for the Zot registry that was used to sign the registry certificate.
+
+- If you have an [Ubuntu Pro](https://ubuntu.com/pro) subscription, you can provide the Ubuntu Pro token during the Palette installation process. This is optional but recommended for security and compliance purposes.
+
+- A virtual IP address (VIP) must be available for the Palette management cluster. This is assigned during the Palette installation process and is used for load balancing and high availability. The VIP must be accessible to all nodes in the Palette management cluster.
+
+  <details>
+  <summary> How to discover free VIPs in your environment </summary>
+
+  You can discover free VIPs in your environment by using a tool like `arping` or `nmap`. For example, you can run the following command to probe a CIDR block for free IP addresses.
+
+  ```bash
+  nmap --unprivileged -sT -Pn 10.10.200.0/24
+  ```
+  
+  This command will scan the CIDR block and output any hosts it finds.
+
+  ```shell hideClipboard title="Example nmap output"
+  Nmap scan report for test-worker-pool-cluster2-6655ab7a-tyuio.company.dev (10.10.200.2)
+  Host is up.
+  All 1000 scanned ports on test-worker-pool-cluster2-6655ab7a-tyuio.company.dev (10.10.200.2) are in ignored states.
+  Not shown: 1000 filtered tcp ports (no-response)
+  ```
+
+  For any free IP addresses, you can use `arping` to double-check if the IP is available.
+
+  ```bash title="Example arping command"
+  arping -D -c 4 10.10.200.101
+  ```
+
+  ```shell hideClipboard title="Example arping output"
+  ARPING 10.10.200.101 from 0.0.0.0 ens103
+  Sent 4 probes (4 broadcast(s))
+  Received 0 response(s)
+  ```
+
+  If you receive no responses like the example output above, the IP address is likely free.
+
+  </details>
+
+## Install Palette VerteX
+
+1. Download the Palette VerteX ISO from the Artifact Studio. Refer to the Artifact Studio (link TBC) guide for instructions on how to access and download the ISO.
 
 2. Upload the ISO to your infrastructure provider. This can be done using the web interface of your infrastructure provider or using command-line tools.
 
    - For VMware vSphere, you can upload the ISO to a datastore using the vSphere Client or the `govc` CLI tool.
-   - For Bare Metal, you can use tools like `scp` or `rsync` to transfer the ISO to the nodes.
+   - For Bare Metal, you can use tools like `scp` or `rsync` to transfer the ISO to the nodes, or use a USB drive to boot the nodes from the ISO.
    - For Machine as a Service (MAAS), you can use the MAAS web interface to upload the ISO.
    
    Ensure that the ISO is accessible to all nodes that will be part of the Palette management cluster.
@@ -125,11 +175,13 @@ The Appliance Framework Palette VerteX ISO is supported on the following infrast
 
     In your web browser, go to `https://<node-ip>:5080`. Replace `<node-ip>` with the IP address of your node. If you have changed the default port of the console, replace `5080` with the Local UI port. The address of Local UI console is also displayed on the terminal screen of the node. 
 
+    If you are accessing the Local UI for the first time, you may see a security warning in your web browser. This is because the Local UI uses a self-signed certificate. You can safely ignore this warning and proceed to the Local UI.
+
 14. Log in to Local UI using the default credentials. The default username is `kairos` and the password is `kairos`. You can change the password after logging in.
 
 15. Click the username dropdown menu in the top right corner and select **Update password**. Provide the **Old Password** as `kairos`, and set a new password in the **New Password** field. This will be the password you use to log in to Local UI in the future.
 
-16. (Optional) If you need to configure a HTTP proxy server for the node, follow the steps in the [Configure HTTP-Proxy in Local UI](../../clusters/edge/local-ui/host-management/configure-proxy.md) guide.
+16. (Optional) If you need to configure a HTTP proxy server for the node, follow the steps in the [Configure HTTP-Proxy in Local UI](../../clusters/edge/local-ui/host-management/configure-proxy.md) guide. When done, proceed to the next step.
 
 17. From the left main menu, click **Linked Edge Hosts**.
 
@@ -152,21 +204,176 @@ The Appliance Framework Palette VerteX ISO is supported on the following infrast
 26. Confirm that all linked hosts appear in the **Linked Edge Hosts** table. The following columns should show the required statuses:
 
     - **Status** = Ready
-    - **Content** = Synced (content synchronization will take at least five minutes to complete)
+    - **Content** = Synced
+      - Content synchronization will take at least five minutes to complete dependant on your network resources.
     - **Health** = Healthy
 
 27. On the left main menu, click **Cluster**.
 
-28. WIP Log in to Palette and activate it.
+28. Click **Create cluster**.
 
-29. Download your pack bundles from the Artifact Studio.
+29. For **Basic Information**, provide a name for the cluster and optional tags in `key:value` format.
 
-30. Transfer the pack bundles to one of your Palette nodes.
+30. In **Cluster Profile**, the **Imported Applications preview** section displays the applications that are included with the Appliance Framework. These applications are pre-configured and used to deploy your Palette management cluster.
 
-31. Install the pack bundles on the Palette node.
+    Leave the default options in place and click **Next**. 
 
-32. Profit.
+31. In **Profile Config**, configure the cluster profile settings to your requirements. Review the following tables for the available options.
+
+    #### Cluster Profile Options
+
+    | **Option** | **Description** | **Type** | **Default** |
+    | --- | --- | --- | --- |
+    | **Pod CIDR** | The CIDR range for the pod network. This is used to allocate IP addresses to pods in the cluster. | CIDR notation | **`192.168.0.0/16`** |
+    | **Service CIDR** | The CIDR range for the service network. This is used to allocate IP addresses to services in the cluster. | CIDR notation | **`192.169.0.0/16`** |
+    | **Ubuntu Pro Token (Optional)** | The token for your [Ubuntu Pro](https://ubuntu.com/pro) subscription. | String | _No default_ |
+    | **Storage Pool Drive (Optional)** | The storage pool device to use for the cluster. | String | **`/dev/sdb`** |
+
+    #### Registry Options
+
+    | **Option** | **Description** | **Type** | **Default** |
+    | --- | --- | --- | --- |
+    | **OCI Registry Base Content Path (Optional)** | The base path for the registry content for the internal or external registry. Palette packs will be stored in this directory. | String | **`spectro-content`** |
+    | **Registry Username** | If using the internal Zot registry, you leave the default username or adjust to your requirements. If using an external registry, provide the appropriate username. | String | **`admin`** |
+    | **OCI Pack Registry Password** | If using the internal Zot registry, change the password to your requirements. If using an external registry, provide the appropriate password. | String | **`Spectro@123`** |
+    | **OCI Pack Registry Ca Cert (Optional)** | The CA certificate that was used to sign the registry certificate. | Base64 encoded string | _No default_ |
+    | **Root Domain (Optional)** | The root domain for the registry. The default is set for the internal Zot registry, which is a virtual IP address assigned by [kube-vip](https://kube-vip.io/). Adjust if using an external registry. | String | **`{{.spectro.system.cluster.kubevip}}`** |
+    | **Mongo Replicas (Optional)** | The number of MongoDB replicas to create for the cluster. This is used to provide high availability for the MongoDB database. The accepted values are **1** or **3**. | Integer | **`3`** |
+    | **Registry Port** | The port for the registry. The default value can be changed for the internal Zot registry. Adjust if using an external registry. | Integer | **`30003`** |
+    | **Registry Private Cert Key** | The private key for the registry certificate used for TLS encryption. | Base64 encoded string | _No default - must be provided_ |
+    | **Registry Cert** | The certificate for the registry used for TLS encryption. | Base64 encoded string | _No default - must be provided_ |
+    | **Registry Endpoint** | The DNS/IP endpoint for the registry. Leave the default entry if using the internal Zot registry, which is a virtual IP address assigned by [kube-vip](https://kube-vip.io/). Adjust if using an external registry. | String | **`{{.spectro.system.cluster.kubevip}}`** |
+    | **In Cluster Registry (Optional)** | **True** = use internal Zot registry, **False** = use external registry. | Boolean | **True** |
+    | **Image Replacement Rules (Optional)** | Set rules for replacing image references when using an external registry. For example, `old-registry.com/new-registry.com`. Leave empty if using the internal Zot registry. | String | _No default_ |
+
+32. Click **Next** when you are done.
+
+33. In **Cluster Config**, configure the following options.
+
+    #### Cluster Config Options
+
+    | **Option** | **Description** | **Type** | **Default** |
+    | --- | --- | --- | --- |
+    | **Network Time Protocol (NTP) (Optional)** | The NTP servers to synchronize time within the cluster. | String | _No default_ |
+    | **SSH Keys (Optional)** | The public SSH keys to access the cluster nodes. Add additional keys by clicking **Add Item**. | String | _No default_ |
+    | **Virtual IP Address (VIP)** | The virtual IP address for the cluster. This is used for load balancing and high availability. | String | _No default_ |
+
+    Click **Next** when you are done.
+
+34. In **Node Config**, configure the following options.
+
+    :::important
+
+    It is recommended to have at least three control plane nodes for high availability. You can remove the worker node pool as it is not required for the Palette management cluster. Ensure that the **Allow worker capability** option is enabled for the control plane node pool.
+
+    :::
+
+    #### Node Pool Options
+
+    <Tabs>
+
+    <TabItem value="control-plane-pool-options" label="Control Plane Pool Options">
+
+    | **Option** | **Description** | **Type** | **Default** |
+    | --- | --- | --- | --- |
+    | **Node pool name** | The name of the control plane node pool. This will be used to identify the node pool in Palette. | String | **`control-plane-pool`** |
+    | **Allow worker capability (Optional)** | Whether to allow workloads to be scheduled on this control plane node pool. Ensure that this is enabled if no worker pool is assigned to the cluster. | Boolean | **True** |
+    | **Additional Kubernetes Node Labels (Optional)** | Tags for the node pool in `key:value` format. These tags can be used to filter and search for node pools in Palette. | String | _No default_ |
+    | **Taints** | Taints for the node pool in `key=value:effect` format. Taints are used to prevent pods from being scheduled on the nodes in this pool unless they tolerate the taint. | Key = string, Value = string, Effect = string (enum) | _No default_ |
+
+    </TabItem>
+
+    <TabItem value="worker-pool-options" label="Worker Pool Options">
+
+    | **Option** | **Description** | **Type** | **Default** |
+    | --- | --- | --- | --- |
+    | **Node pool name** | The name of the worker node pool. This will be used to identify the node pool in Palette. | String | **`worker-pool`** |
+    | **Additional Kubernetes Node Labels (Optional)** | Tags for the node pool in `key:value` format. These tags can be used to filter and search for node pools in Palette. | String | _No default_ |
+    | **Taints** | Taints for the node pool in `key=value:effect` format. Taints are used to prevent pods from being scheduled on the nodes in this pool unless they tolerate the taint. | Key = string, Value = string, Effect = string (enum) | _No default_ |
+
+    </TabItem>
+
+    </Tabs>
+
+    ##### Pool Configuration
+    
+    The following options are available for both the control plane and worker node pools. You can configure these options to your requirements. You can also remove worker pools if not needed.
+
+    | **Option** | **Description** | **Type** | **Default** |
+    | --- | --- | --- | --- |
+    | **Architecture** | The CPU architecture of the nodes. This is used to ensure compatibility with the applications running on the nodes. | String (enum) | **`amd64`** |
+    | **Add Edge Hosts** | Click **Add Item** and select the other hosts that you installed using the Appliance Framework ISO. These hosts will be added to the node pool. Each pool must contain at least one node. | N/A | - **Control Plane Pool** = _Current host selected_ <br /> - **Worker Pool** = _No host selected_ |
+    | **NIC Name** | The name of the network interface card (NIC) to use for the nodes. Leave on **Auto** to let the system choose the appropriate NIC, or select one manually from the drop-down menu. | N/A | **Auto** |
+    | **Host Name (Optional)** | The hostname for the nodes. This is used to identify the nodes in the cluster. A generated hostname is provided automatically, and you can adjust to your requirements. | String | **`edge-*`** |
+
+35. Click **Next** when you are done.
+
+36. In **Review**, check that your configuration is correct. If you need to make changes, click on any of the sections in the left sidebar to go back and edit the configuration.
+
+    When you are satisfied with your configuration, click **Deploy Cluster**. This will start the cluster creation process.
+
+    The cluster creation process will take 20-30 minutes to complete. You can monitor progress from the **Overview** tab on the **Cluster** page in the left main menu. The cluster is fully provisioned when the status changes to **Running** and the health status is **Healthy**.
+
+37. Once the cluster is provisioned, access the Palette VerteX system console using the virtual IP address (VIP) you configured earlier. Open your web browser and go to `https://<vip-address>/system`. Replace `<vip-address>` with the VIP you configured for the cluster.
+
+    The first time you visit the system console, a warning message about an untrusted TLS certificate may appear. This is expected, as you have not yet uploaded your TLS certificate. You can ignore this warning message and proceed.
+
+38. You will be prompted to log in to Palette VerteX system console. Use `admin` as the username and `admin` as the password. You will change the password after logging in.
+
+39. In the **Account Info** window, provide the following information:
+
+    - **Email address** - This is used for notifications and password recovery as well as logging in to the Palette VerteX system console.
+      - This will not be active until you [configure SMTP settings](../system-management/smtp.md) in Palette VerteX system console and verify your email address.
+    - **Current password** - Use `admin` as the current password.
+    - **New password** - Enter a new password for the account.
+    - **Confirm new password** - Re-enter the new password for confirmation.
+
+    Refer to [Password Requirements and Security](../system-management/account-management/credentials.md#password-requirements-and-security) to learn about password requirements.
+
+After login, a summary page is displayed. You now have access to the Palette VerteX system console, where you can manage your Palette VerteX environment.
+
+If you are accessing Palette VerteX system console for the first time, you may see a security warning in your web browser. This is because Palette VerteX is configured with a self-signed certificate. You can replace the self-signed certificate with your own SSL certificates as guided later in [Next Steps](#next-steps).
 
 ## Validate
 
+1. Log in to the Palette VerteX system console using the virtual IP address (VIP) you configured earlier. Open your web browser and go to `https://<vip-address>/system`. Replace `<vip-address>` with the VIP you configured for the cluster.
+
+2. On the login page, use `admin` as the username and the new password you set during the initial login.
+
+3. On the **Summary** page, check that the **On-prem system console is healthy** message is displayed.
+
+4. Log in to the Local UI of the leader host using the URL `https://<node-ip>:5080`. Replace `<node-ip>` with the IP address of the leader host. If you have changed the default port of the console, replace `5080` with the Local UI port.
+
+5. In the Local UI, click on **Cluster** in the left main menu.
+
+6. Check that the cluster status is **Running** and the health status is **Healthy**. In the **Applications** section on this page, the listed applications should be in the **Running** state.
+
+## Download Packs for Palette VerteX
+
+### Prerequisites
+
+### Download and Install Packs
+
+Download your pack bundles from the Artifact Studio.
+
+Transfer the pack bundles to one of your Palette nodes.
+
+Install the pack bundles on the Palette node.
+
+### Validate
+
 ## Next Steps
+
+The following actions are recommended after installing Palette VerteX to ensure your environment is ready for use:
+
+- Assign your SSL certificates to Palette VerteX. Palette VerteX is installed with a self-signed SSL certificate. To assign a different SSL certificate, upload the certificate, key, and certificate authority files to Palette VerteX. You can upload the files using the system console. Refer to the [Configure HTTPS Encryption](../system-management/ssl-certificate-management.md) page for instructions on how to upload the SSL certificate files to Palette VerteX.
+
+- Create a tenant in Palette VerteX to host your users. Refer to the [Create a Tenant](../system-management/tenant-management.md) guide for instructions on how to create a tenant in Palette VerteX.
+
+- Activate your Palette VerteX installation before the trial mode expires. Refer to the [Activate Palette VerteX](../activate-installation/activate-installation.md) guide for instructions on how to activate your installation.
+
+- Create additional system administrator accounts and assign roles to users in the system console. Refer to the [Account Management](../system-management/account-management/account-management.md) guide for instructions on how to manage user accounts and roles in Palette VerteX.
+
+- Configure SMTP settings to enable email notifications and password recovery. Refer to the [Configure SMTP Settings](../system-management/smtp.md) guide for instructions on how to configure SMTP settings in Palette VerteX.
+
+For all system management options in Palette VerteX, refer to the [System Management](../system-management/system-management.md) guide.
