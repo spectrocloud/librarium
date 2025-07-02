@@ -8,8 +8,7 @@ tags: ["edge", "architecture"]
 ---
 
 Palette Edge allows you to provision a highly available (HA) cluster capable of withstanding any single node failure
-with only two nodes instead of three. In two-node HA clusters, Palette achieves this by sidestepping a critical
-limitation of etcd by using Postgres as the backend storage with [Kine](https://github.com/k3s-io/kine). Kine is only
+with only two nodes instead of three. In two-node HA clusters, Palette overcomes a significant limitation of etcd by utilizing Postgres as the backend storage with [Kine](https://github.com/k3s-io/kine). Kine is only
 used in two-node clusters.
 
 :::preview
