@@ -124,7 +124,7 @@ etc.
 ## Local UI
 
 Local UI is a browser-based tool that allows you to manage your Edge host and perform tasks such as creating local
-clusters, upload content bundles, and configure network settings.
+clusters, uploading content bundles, and configuring network settings.
 
 ## Helm Charts
 
