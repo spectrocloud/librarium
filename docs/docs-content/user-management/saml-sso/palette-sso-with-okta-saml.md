@@ -63,8 +63,7 @@ repeat this for any other team that you configured with group claims.
 
 ### Create the Okta Application
 
-9. Log in to your Okta Admin console and navigate to **Applications** --> **Applications**. Click the **Create App
-   Integration** button.
+9. Log in to your Okta Admin console and navigate to **Applications** --> **Applications**. Click the **Create App Integration** button.
 
    :::info
 
@@ -83,7 +82,7 @@ repeat this for any other team that you configured with group claims.
 
 12. On the **General Settings** page, enter **App name** field, enter `Spectro Cloud Palette SAML` in the **App name** box. If desired, you can also upload a logo for the application.
 
-13. Open a web browser and navigate to your Palette subscription. Navigate to **Tenant Settings** --> **SSO** and click
+13. Open a web browser and navigate to your [Palette](https://console.spectrocloud.com/). Navigate to **Tenant Settings** --> **SSO** and click
    **SAML**. Click the button next to **Login URL** to copy the value to the clipboard.
 
 14. Set the value of **Service** to **Okta**.   
@@ -147,8 +146,10 @@ repeat this for any other team that you configured with group claims.
 3. If this is the first time you are logging in with SSO, you will be redirected to the Okta login page. Depending on
    your organization's SSO settings, this could be a simple login form or require MFA (Multi-Factor Authentication).
 
-4. You are now automatically added to the `Okta Team` team in Palette. To verify, navigate to the left **Main Menu**,
-   select **Tenant Settings** --> **Users & Teams** --> **Teams** tab. Click on the **Okta Team** team and view the team
+4. You are now automatically added to the `Okta Team` team in Palette. To verify, navigate to the left **Main Menu**, and
+   select **Tenant Settings**
+   
+5. Select **Users & Teams**, and click **Teams** tab. Select on the **Okta Team** team and view the team
    members section.
 
 ## Resources
