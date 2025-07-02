@@ -69,6 +69,7 @@ The following flags are supported by the `build` subcommand.
 |            | `--download-cluster-config-only`     | If enabled, only the cluster configuration will be downloaded.                                                                                                                                                                                                                                                                                                                              | boolean |
 |            | `--existing-bundles`                 | Existing `.tar.zst` bundle archives to include as part of the content bundle build. This avoids the need to redownload images, charts, and raw files that are already present in local bundles.                                                                                                                                                                                             | string  |
 | `-k`       | `--encryption-passphrase`            | The encryption passphrase used to secure sensitive data.                                                                                                                                                                                                                                                                                                                                    | string  |
+|            | `--exclude-profiles`                 | A comma-separated list of cluster profile IDs to exclude from the generated content bundle.                                                                                                                                                                                                                                                                                                 | string  |
 |            | `--fips`                             | If enabled, the bundle will include only FIPS service images.                                                                                                                                                                                                                                                                                                                               | boolean |
 | `-h`       | `--help`                             | Help for the `build` subcommand.                                                                                                                                                                                                                                                                                                                                                            | -       |
 |            | `--include-core-palette-images-only` | Whether to include only the essential Palette images required for cluster creation, excluding day-2 images. This option is recommended for airgap installations to reduce the size of the content bundle. By default, this flag is set to `false`, and the `build` command includes both core and day-2 images.                                                                             | boolean |
@@ -77,7 +78,7 @@ The following flags are supported by the `build` subcommand.
 | `-f`       | `--metadata-file`                    | The file path to the content bundle definition metadata file `bundle-definition.yaml` to be used for building the content bundle.                                                                                                                                                                                                                                                           | string  |
 |            | `--metadata-only`                    | If enabled, only the bundle definition metadata file `bundle-definition.yaml` is generated. You can edit this file, for example to change a registry path, and then use it with the `--metadata-file` flag to build a content bundle.                                                                                                                                                       | boolean |
 | `-n`       | `--name`                             | The name of the content bundle. This is required to generate bundles with unique names. If not provided, the command generates a default name in the `<bundle>-<project-id>` format, which is not unique and may lead to issues, as bundles using the same default name can be overwritten during [upload](#upload) to Local UI.                                                            | string  |
-| `-o`       | `--output`                           | The output directory where the bundle will be saved.                                                                                                                                                                                                                                                                                                                                        | string  |
+| `-o`       | `--output`                           | The output directory where the bundle will be saved. If not specified, the bundle will be saved to `<current-directory>/output/content-bundle/` by default.                                                                                                                                                                                                                                 | string  |
 |            | `--packs`                            | Comma-separated list of local paths to the pack `tar.gz` archive or directory files to include in the bundle.                                                                                                                                                                                                                                                                               | string  |
 |            | `--private-key`                      | The path to the private key used to sign the content bundle and cluster definition if it is present. If the Edge host has an embedded corresponding public key, the signature of the uploaded content will be verified. For more information, refer to [Embed Public Key in Edge Artifacts](../../../clusters/edge/edgeforge-workflow/palette-canvos/signed-content.md).                    | string  |
 |            | `--profiles`                         | Comma-separated list of cluster profile IDs to download content for the content bundle. Ensure that between all the profiles you include in the content bundle, only one infrastructure layer exists. For example, you can have one infrastructure profile and many add-on files, or one full profile and many add-on files, but you cannot have multiple infrastructure and full profiles. | string  |
@@ -92,71 +93,73 @@ The following flags are supported by the `build` subcommand.
 #### Examples
 
 The following example creates a content bundle named `example-bundle.tar.zst` using the cluster profiles specified by
-the `--profiles` flag. The bundle is created in the example `output` folder.
+the `--profiles` flag. The bundle is created in the `<current-directory>/output/content-bundle/` folder by default.
 
 ```shell
-palette content build --arch amd64 --profiles 12345678910 --project-id 1617181929  --output ./output --name example-bundle
+palette content build --arch amd64 --profiles 12345678910 --project-id 1617181929 --name example-bundle
 ```
 
 ```text hideClipBoard title="Example Output"
 -----------------------------
 Build Summary
 -----------------------------
-bundle example-bundle saved to output/example-bundle.tar.zst
+bundle example-bundle saved to /home/ubuntu/output/content-bundle/example-bundle.tar.zst
 ```
 
 The following example creates a cluster definition named `example-definition.tgz` using the cluster profiles specified
-by the `--cluster-definition-profile-ids` flag. The definition is created in the example `output` folder.
+by the `--cluster-definition-profile-ids` flag. The definition is created in the `<current-directory>/output/` folder by
+default.
 
 ```shell
-palette content build --arch amd64 --project-id 1617181929 --cluster-definition-name example-definition --cluster-definition-profile-ids 12345678910 --output ./output
+palette content build --arch amd64 --project-id 1617181929 --cluster-definition-name example-definition --cluster-definition-profile-ids 12345678910
 ```
 
 ```text hideClipBoard title="Example Output"
 -----------------------------
 Build Summary
 -----------------------------
-bundle example-definition saved to output/example-definition.tar.zst
+bundle bundle saved to /home/ubuntu/output/content-bundle/bundle.tar.zst
 ```
 
 The following example creates both a content bundle named `example-bundle.tar.zst` and a cluster definition named
-`example-definition.tgz`. The bundle and the definition are created in the example `output` folder. When you create a
-cluster definition and content bundle using a single `build` command, the cluster definition is also embedded into the
-content bundle.
+`example-definition.tgz`. The definition is created in the `<current-directory>/output/` folder, and the bundle is
+created in the `<current-directory>/output/content-bundle/` folder by default. When you create a cluster definition and
+content bundle using a single `build` command, the cluster definition is also embedded into the content bundle.
 
 ```shell
-palette content build --arch amd64 --profiles 12345678910 --project-id 1617181929 --cluster-definition-name example-definition --cluster-definition-profile-ids 12345678910 --output ./output --name example-bundle
+palette content build --arch amd64 --profiles 12345678910 --project-id 1617181929 --cluster-definition-name example-definition --cluster-definition-profile-ids 12345678910 --name example-bundle
 ```
 
 ```text hideClipBoard title="Example Output"
 -----------------------------
 Build Summary
 -----------------------------
-bundle example-bundle saved to output/example-bundle.tar.zst
+bundle example-bundle saved to /home/ubuntu/output/content-bundle/example-bundle.tar.zst
 ```
 
-The following example creates a bundle definition named `bundle-definition.yaml` in the example `output` folder.
+The following example creates a bundle definition named `bundle-definition.yaml` in the
+`<current-directory>/output/content-bundle/` folder.
 
 ```shell
-palette content build --arch amd64 --metadata-only --profiles 12345678910 --project-id 1617181929 --output ./output --name example-bundle
+palette content build --arch amd64 --metadata-only --profiles 12345678910 --project-id 1617181929 --name example-bundle
 ```
 
 ```text hideClipBoard title="Example Output"
-Writing flattened bundle definition file at path output/bundle-definition.yaml
+Writing flattened bundle definition file at path /home/ubuntu/output/content-bundle/bundle-definition.yaml
 ```
 
 You can modify the definition according to your use case. For example, you can change the registry path of the images
 and then use the `--metadata-file` flag to build a content bundle from the updated definition file.
 
 ```shell
-palette content build --metadata-file output/bundle-definition.yaml --output ./output
+palette content build --metadata-file /home/ubuntu/output/content-bundle/bundle-definition.yaml
 ```
 
 ```text hideClipBoard title="Example Output"
 -----------------------------
 Build Summary
 -----------------------------
-bundle example-bundle saved to output/example-bundle.tar.zst
+bundle example-bundle saved to /home/ubuntu/output/content-bundle/example-bundle.tar.zst
 ```
 
 The following example creates a new content bundle named `example-bundle.tar.zst` using the cluster profiles specified
@@ -164,14 +167,14 @@ by the `--profiles` flag and the existing bundle specified by the `--existing-bu
 redownload images defined in the profiles that are already present in the existing bundle.
 
 ```shell
-palette content build --arch amd64 --profiles 12345678910 --project-id 1617181929  --output ./output --name example-bundle --existing-bundles ./bundles/example-existing-bundle.tar.zst
+palette content build --arch amd64 --profiles 12345678910 --project-id 1617181929 --name example-bundle --existing-bundles ./bundles/example-existing-bundle.tar.zst
 ```
 
 ```text hideClipBoard title="Example Output"
 -----------------------------
 Build Summary
 -----------------------------
-bundle example-bundle saved to output/example-bundle.tar.zst
+bundle example-bundle saved to /home/ubuntu/output/content-bundle/example-bundle.tar.zst
 ```
 
 ### Copy
