@@ -14,7 +14,7 @@ create_partials_file () {
   release_number=$1
   replaced=$(echo "$release_number" | tr '.' '_')  # Replace dots with underscores as they cause errors in partials
   filename="$BREAKING_CHANGES_PARTIALS_PATH/br_$replaced.mdx"
-  
+
   # Create the directory if it doesn't exist
   mkdir -p $BREAKING_CHANGES_PARTIALS_PATH
 
@@ -192,7 +192,7 @@ for branch in $branches; do
         in_breaking_changes=false
         continue
       fi
-      
+
       add_breaking_changes_body "$release_number" "$line"
     fi
 

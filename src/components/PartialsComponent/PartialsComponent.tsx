@@ -33,17 +33,10 @@ export default function PartialsComponent(details: ComponentProperties): React.R
     );
   }
 
-  // Map elements to object properties
-  const propAttribute: { [key: string]: string } = {};
-  for (const key in details) {
-    // Don't send category and name to the partial
-    if (key == "category" || key == "name") {
-      continue;
-    }
-    propAttribute[key] = details[key];
-  }
+  // Remove the key from the details, as it is not a valid prop for the component.
+  const { category, name, key: _, ...safeProps } = details;
 
-  return React.createElement(foundPartial, propAttribute);
+  return React.createElement(foundPartial, safeProps);
 }
 
 function getMapKey(ver: string, category: string, name: string): string {

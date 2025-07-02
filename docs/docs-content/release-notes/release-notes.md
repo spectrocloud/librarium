@@ -35,12 +35,87 @@ tags: ["release-notes"]
   - `kube-system`
   - `cluster-<cluster-uid>`
 
-- The Palette UI now supports the configuration of custom Amazon Linux 2023 (AL2023) and Amazon Linux 2 (AL2) AMIs for
-  AWS EKS nodes. Previously, default AMI types were configured using node labels. EKS clusters previously deployed with
-  **Enable Nodepool Customization** enabled and AMI node labels will be repaved upon upgrading to version 4.7.3. AWS EKS
-  clusters that did not specify an AMI type will now use AL2_X86_64 by default. Refer to the
-  [Create and Manage AWS EKS Cluster](../clusters/public-cloud/aws/eks.md#cloud-configuration-settings) guide for the
-  updated configuration process.
+  - `compute.disks.setLabels`
+  - `compute.globalForwardingRules.setLabels`
+
+  This is due to a fix in [v1.8.0](https://github.com/kubernetes-sigs/cluster-api-provider-gcp/releases/tag/v1.8.0)
+  where labels may be populated for persistent disks and global forwarding rules. Refer to the
+  [Required IAM Permissions](../clusters/public-cloud/gcp/required-permissions.md#required-permissions) guide for all
+  required GCP IAM permissions.
+
+- After upgrading Palette to this release, Palette will automatically trigger a repave on existing GKE clusters for node
+  pools. This is because the CAPG version has been updated from v1.2.1 to v1.8.1, which automatically adds a new
+  ownership label `capg-<cluster-name>=owned`. As GKE treats a node pool label map as immutable, the label insertion
+  triggers a rolling repave of all worker nodes.
+
+  <!--prettier-ignore-start-->
+
+- Earlier Palette releases carried a stop-gap patch to drain Portworx pods gracefully during node repaves. In this
+  release, that patch has been moved to the
+  <VersionedLink text="Portworx CSI pack" url="/integrations/packs/?pack=csi-portworx-generic" /> from v3.2.3 or later.
+  <!--prettier-ignore-end-->
+
+  For any clusters using the Portworx CSI pack v3.2.2 or earlier, you must choose _one_ of the following actions to
+  prevent Portworx pods failing during node repaves after Palette has been upgraded to this release.
+
+  - Update the Portworx CSI pack to the latest available version, which is v3.2.3 in this Palette release, and
+    [update your cluster](../clusters/cluster-management/cluster-updates.md).
+
+  - Add the following
+    [MachineDrainRule](https://github.com/kubernetes-sigs/cluster-api/blob/main/docs/proposals/20240930-machine-drain-rules.md)
+    manifest to your Portworx CSI layer in Palette and
+    [update your cluster](../clusters/cluster-management/cluster-updates.md).
+
+    ![New manifest option in Portworx CSI layer](/release-notes_release-notes_new-manifest-portworx.webp)
+
+    ```yaml
+    apiVersion: cluster.x-k8s.io/v1beta1
+    kind: MachineDrainRule
+    metadata:
+      name: portworx
+      namespace: portworx
+    spec:
+      drain:
+        behavior: Drain
+        order: 100
+      machines:
+        - selector: {}
+      pods:
+        - selector:
+            matchLabels:
+              operator.libopenstorage.org/managed-by: portworx
+    ```
+
+- Due to a new behavior introduced with Cluster API (CAPI) v1.9.4, you must add the `cluster.x-k8s.io/drain: skip` label
+  to any deployments with the `Node.spec.unschedulable` toleration set. If not added, this can lead to deployments stuck
+  in a termination loop due to an unwanted
+  [node drain](https://cluster-api.sigs.k8s.io/tasks/automated-machine-management/machine_deletions.html#node-drain).
+  Use the following steps to help identify and apply the label to affected Deployments.
+
+  1. Identify any Kubernetes Deployment manifests or Helm values that includes the following
+     [tolerations](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/).
+
+     ```yaml hideClipboard
+     - key: node.kubernetes.io/unschedulable
+       effect: NoSchedule
+     - key: node-role.kubernetes.io/unschedulable
+       operator: Exists
+       effect: NoSchedule
+     ```
+
+  2. Patch each deployment to include the `cluster.x-k8s.io/drain: skip` label.
+
+     ```yaml hideClipboard title="Example"
+     metadata:
+       labels:
+         cluster.x-k8s.io/drain: skip
+     ```
+
+
+- Due to an upgrade of Cluster API Provider AWS (CAPA) to v2.7.1, Palette triggers automatic repaves for existing
+  [AWS EKS clusters](../clusters/public-cloud/aws/eks.md) that have configured
+  [node pool customizations](../clusters/public-cloud/aws/eks.md#cloud-configuration-settings) and configured a custom
+  AMI or disk type for their node pools. AWS EKS clusters without this configuration are not affected.
 
 #### Features
 

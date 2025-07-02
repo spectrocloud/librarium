@@ -1,7 +1,15 @@
+.breakingChangesContainer {
+  border-radius: 0.5rem;
+  background-color: var(--custom-breaking-changes-background-color);
+  padding: 1rem 2rem;
+  color: var(--custom-release-notes-summary-color);
+  margin: 1rem 0 1.5rem 0;
+}
+
 .dropdownContainer {
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  gap: 2rem;
 }
 
 .dropdownGroupFirst {
@@ -15,7 +23,6 @@
   align-items: center;
   justify-content: center;
   font-size: 1.25rem;
-  color: var(--custom-release-notes-background-font-color);
 }
 
 .dropdownLabel {
@@ -28,15 +35,7 @@
   padding: 0 1rem;
 }
 
-.versionSummary {
-  margin-top: 1rem;
-  background-color: var(--custom-release-notes-summary-bg);
-  color: var(--custom-release-notes-summary-color);
-  border-radius: 0.5rem;
-}
-
-.divider {
-  border: none;
-  border-top: 1px solid #ccc;
-  margin: 1rem 0;
+.breakingChangeTitle {
+  font-weight: bold;
+  margin-bottom: 1rem;
 }

@@ -1,5 +1,4 @@
 import React, { useEffect, useState, FunctionComponent, useMemo } from "react";
-import Admonition from "@theme/Admonition";
 import styles from "./ReleaseNotesBreakingChanges.module.scss";
 import Versions from "./versions.json";
 import Select, { components, OptionProps } from "react-select";
@@ -219,55 +218,61 @@ export function ReleaseNotesBreakingChanges(): JSX.Element | null {
   };
 
   return (
-    <Admonition type="info" title="Breaking Changes">
-      <p>
-        Use the version selector below to find all the breaking changes between two releases. Start by selecting the current version you have installed.
-      </p>
-      <div className={styles.dropdownContainer}>
-        <div className={styles.dropdownGroupFirst}>
-          <label className={styles.dropdownLabel} htmlFor="version-select-1">Current Version:</label>
-          <Select
-            inputId="version-select-1"
-            classNamePrefix="reactSelect"
-            onChange={handleFromVersionChange}
-            value={selectedFromVersion}
-            options={versions}
-            components={{ Option: CustomOption }}
-            styles={customSelectStyles}
-          />
-        </div>
-        <div className={styles.arrowContainer}>
-          <FontAwesomeIcon icon={faArrowRight} />
-        </div>
-        <div className={styles.dropdownGroupSecond}>
-          <label className={styles.dropdownLabel} htmlFor="version-select-2">Version to Upgrade to:</label>
-          <Select
-            inputId="version-select-2"
-            classNamePrefix="reactSelect"
-            onChange={handleToVersionChange}
-            isDisabled={!selectedFromVersion}
-            value={selectedToVersion}
-            options={toVersionOptions}
-            components={{ Option: CustomOption }}
-            styles={customSelectStyles}
-          />
+    <div>
+      <div className={styles.breakingChangesContainer}>
+        <p>
+          Use the version selector below to find all the breaking changes between two releases. <br/> Start by selecting the current version you have installed.
+        </p>
+        <div className={styles.dropdownContainer}>
+          <div className={styles.dropdownGroupFirst}>
+            <label className={styles.dropdownLabel} htmlFor="version-select-1">Current Version:</label>
+            <Select
+              inputId="version-select-1"
+              classNamePrefix="reactSelect"
+              onChange={handleFromVersionChange}
+              value={selectedFromVersion}
+              options={versions}
+              components={{ Option: CustomOption }}
+              styles={customSelectStyles}
+            />
+          </div>
+          <div className={styles.arrowContainer}>
+            <FontAwesomeIcon icon={faArrowRight} />
+          </div>
+          <div className={styles.dropdownGroupSecond}>
+            <label className={styles.dropdownLabel} htmlFor="version-select-2"> Target Version:</label>
+            <Select
+              inputId="version-select-2"
+              classNamePrefix="reactSelect"
+              onChange={handleToVersionChange}
+              isDisabled={!selectedFromVersion}
+              value={selectedToVersion}
+              options={toVersionOptions}
+              components={{ Option: CustomOption }}
+              styles={customSelectStyles}
+            />
+          </div>
         </div>
       </div>
       {selectedFromVersion && selectedToVersion && (
-        <div className={styles.versionSummary}>
-          <hr className="divider" />
-          <h4>
+        <div className={styles.breakingChangesContainer}>
+          <h3>
             Breaking Changes from <strong>{selectedFromVersion.label}</strong> to <strong>{selectedToVersion.label}</strong>
-          </h4>
-          {breakingVersionsList.map((version) => (
-            <div>
-              <div key={version}>{version}</div>
-              <PartialsComponent category="breaking-changes" name={version} />
-            </div>
-          ))}
+          </h3>
+          <br/>
+          {breakingVersionsList.length === 0 ? (
+            <div>No breaking changes found.</div>
+          ) : (
+            breakingVersionsList.map((version) => (
+              <div key={version}>
+                <div className={styles.breakingChangeTitle}>{version}</div>
+                <PartialsComponent category="breaking-changes" name={version} />
+              </div>
+            ))
+          )}
         </div>
       )}
-    </Admonition>
+    </div>
   );
 }
 

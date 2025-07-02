@@ -13,8 +13,6 @@ This page lists the upcoming breaking changes, deprecations, and removals in Pal
 
 ## Upcoming Breaking Changes
 
-<ReleaseNotesBreakingChanges />
-
 <!-- vale on -->
 
 Stay informed about the upcoming breaking changes in Palette and Palette VerteX. Use the information below to prepare
