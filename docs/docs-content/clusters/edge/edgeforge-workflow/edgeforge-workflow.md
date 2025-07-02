@@ -63,8 +63,8 @@ An ISO file that bootstraps the installation is created in the EdgeForge process
 Installer that installs the Palette Edge host agent and metadata to perform the initial installation. The Edge Installer
 ISO can also contain the following components:
 
-- **User data** - User data includes essential configurations for the Edge Installer. The Edge Installer ISO requires user
-  data to function. If you choose to not supply user data in the ISO, you must supply it before the Edge Installer
+- **User data** - User data includes essential configurations for the Edge Installer. The Edge Installer ISO requires
+  user data to function. If you choose to not supply user data in the ISO, you must supply it before the Edge Installer
   initiates with a site user data. You can also use site user data to override or supplement the user data supplied in
   the installer ISO.
 
