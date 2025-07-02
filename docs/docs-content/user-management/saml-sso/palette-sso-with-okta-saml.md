@@ -99,7 +99,7 @@ any other team that you configured with group claims.
 
     ![Configure Okta General Settings](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_general-settings.webp)
 
-16. Navigate to **Attribute Statements (Optional)**, and enter the the following values.
+16. Navigate to **Attribute Statements (Optional)**, and enter the following values.
 
     | Name        | Name Format   | Value            |
     | ----------- | ------------- | ---------------- |
