@@ -60,9 +60,9 @@ There are several possible ways to troubleshoot this issue:
 
    :::
 
-#### Example - Pin Kernel Version in Kairos Base Image (`Dockerfile`)
+#### Example - Pin Kernel Version in Kairos Base Image (`Dockerfile.ubuntu`)
 
-Use this approach if you are building a Kairos image from a `Dockerfile` and want to pin the kernel version.
+Use this approach if you are building a Kairos image from `Dockerfile.ubuntu` and want to pin the kernel version.
 
 1. Clone the [Kairos GitHub Repository](https://github.com/kairos-io/kairos) and check out the required version.
 
