@@ -269,9 +269,9 @@ workaround.
 
     :::tip
 
-    You can take advantage of the Tech Preview feature to edit user data in Local UI after installation. However, we
-    still recommend you provide user data during EdgeForge for production workloads because this is a Tech Preview
-    feature and not all fields are available for edit in Local UI.
+    You can also [edit user data in Local UI](../../local-ui/host-management/edit-user-data.md) after installation.
+    However, we recommend providing user data during EdgeForge for production workloads, as not all user data fields can
+    be updated in Local UI.
 
     :::
 

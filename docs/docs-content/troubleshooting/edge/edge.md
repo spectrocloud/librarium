@@ -10,6 +10,73 @@ tags: ["edge", "troubleshooting"]
 
 The following are common scenarios that you may encounter when using Edge.
 
+## Scenario - PXK-E Clusters in VerteX Deployments Experience Failure upon Reboot
+
+<!-- prettier-ignore -->
+When rebooting control plane nodes in <VersionedLink text="Palette eXtended Kubernetes - Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> clusters
+deployed via VerteX, the `kube-vip` component may fail to start due to early DNS resolution issues. You can observe
+repeated errors in the system logs using `journalctl --unit=kubelet`.
+
+```shell title="Example output"
+E0619 21:53:53.613367       1 leaderelection.go:327] error retrieving resource lock kube-system/plndr-cp-lock: Get "https://kubernetes:6443/apis/coordination.k8s.io/v1/namespaces/kube-system/leases/plndr-cp-lock": dial tcp: lookup kubernetes on 10.10.128.8:53: no such host
+E0619 21:54:00.647219       1 leaderelection.go:327] error retrieving resource lock kube-system/plndr-cp-lock: Get "https://kubernetes:6443/apis/coordination.k8s.io/v1/namespaces/kube-system/leases/plndr-cp-lock": dial tcp: lookup kubernetes on 10.10.128.8:53: no such host
+```
+
+Although DNS becomes available shortly after boot, `kube-vip` does not recover automatically. To fix this, stop and
+remove the container manually. The kubelet then restarts the component using the current system state.
+
+### Debug Steps
+
+1. On each control plane node, list all operating `kube-vip` containers using the
+   [`crictl`](https://kubernetes.io/docs/tasks/debug/debug-cluster/crictl/) tool.
+
+   ```shell
+   crictl ps 2>/dev/null | grep kube-vip | awk '{print $1}'
+   ```
+
+2. Stop and remove each container.
+
+   ```shell
+   crictl stop <container-id> && crictl rm <container-id>
+   ```
+
+## Scenario - Canonical Edge Clusters in Proxied Environments Experience Failure upon Reboot
+
+When rebooting nodes in an Edge cluster using Palette Optimized Canonical deployed in a proxied environment, the nodes
+may fail to come back online. To prevent this, add the second IP address in the `service_cidr` range from the Canonical
+pack to the `NO_PROXY` list in your Edge installer `user-data`.
+
+### Debug Steps
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. From the left **Main Menu**, select **Profiles**. Then select the profile you will use to deploy your cluster.
+
+3. Select the Kubernetes layer, the `Palette Optimized Canonical` pack. Click **values.yaml** to view the values.
+
+4. Take note of the `service_cidr` value in `pack.cluster.config`.
+
+5. Add the second IP of the CIDR block in the `service_cidr` range to the `stylus.site.network.noProxy` parameter. For
+   example, if your `service_cidr` is `192.169.0.0/16`, you need to add `192.169.0.1` to the parameter.
+
+   ```yaml {14} title="Example"
+   #cloud-config
+   stylus:
+     site:
+       paletteEndpoint: api.spectrocloud.com
+       edgeHostToken: <yourRegistrationToken>
+       projectName: edge-sites
+       tags:
+         city: chicago
+         building: building-1
+         zip-code: 95135
+       network:
+         httpProxy: http://proxy.example.com
+         httpsProxy: https://proxy.example.com
+         noProxy: 10.10.128.10,10.0.0.0/8,192.169.0.1
+         nameserver: 1.1.1.1
+   ```
+
 ## Scenario - Cilium Pod Stuck During Kubernetes Upgrade Due to nsenter Permission Issue
 
 During a Kubernetes upgrade, the Cilium pod may get stuck in the `Init:CrashLoopBackoff` state due to nsenter permission
