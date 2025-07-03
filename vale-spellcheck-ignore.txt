@@ -17,3 +17,10 @@ docs/docs-content/user-management/saml-sso/palette-sso-with-entra-id.md:62:34:Va
 docs/docs-content/user-management/saml-sso/palette-sso-with-adfs.md:53:34:Vale.Spelling:Did you really mean 'userinfo'?
 docs/docs-content/user-management/saml-sso/palette-sso-with-okta.md:41:34:Vale.Spelling:Did you really mean 'userinfo'?
 docs/docs-content/user-management/saml-sso/palette-sso-with-entra-id.md:78:5:Vale.Spelling:Did you really mean 'userinfo'?
+docs/docs-content/deployment-modes/agent-mode/install-agent-host.md:211:17:Vale.Spelling:Did you really mean 'firewalld'?
+docs/docs-content/clusters/public-cloud/gcp/required-permissions.md:119:104:Vale.Spelling:Did you really mean 'Recommender'?
+docs/docs-content/clusters/public-cloud/gcp/required-permissions.md:120:105:Vale.Spelling:Did you really mean 'Recommender'?
+docs/docs-content/clusters/public-cloud/aws/eks.md:285:84:Vale.Spelling:Did you really mean 'Nodepool'?
+docs/docs-content/clusters/public-cloud/aws/eks.md:323:16:Vale.Spelling:Did you really mean 'Nodepool'?
+docs/docs-content/release-notes/release-notes.md:470:19:Vale.Spelling:Did you really mean 'Loadbalancer'?
+

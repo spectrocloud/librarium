@@ -10,6 +10,24 @@ const { pluginPacksAndIntegrationsData } = require("./plugins/packs-integrations
 const { pluginImportFontAwesomeIcons } = require("./plugins/font-awesome");
 import path from "path";
 
+// Logo paths are hardcoded or we use the default logos.
+function getLightLogoPath() {
+  if (process.env.CUSTOM_LIGHT_LOGO && process.env.CUSTOM_LIGHT_LOGO.trim() === "true") {
+    return "img/custom-light-logo.svg";
+  }
+
+  return "img/spectrocloud-logo-light.svg?new=true";
+}
+
+// Logo paths are hardcoded through Docker mounts or we use the default logos.
+function getDarkLogoPath() {
+  if (process.env.CUSTOM_DARK_LOGO && process.env.CUSTOM_DARK_LOGO.trim() === "true") {
+    return "img/custom-dark-logo.svg";
+  }
+
+  return "img/spectrocloud-logo-dark.svg?new=true";
+}
+
 // We will only show the update time if the environment variable is set to true.
 function showLastUpdateTime() {
   const envValue = process.env.SHOW_LAST_UPDATE_TIME || "";
@@ -354,8 +372,8 @@ const config = {
           width: 105,
           height: 48,
           alt: "Spectro cloud logo",
-          src: "img/spectrocloud-logo-light.svg?new=true",
-          srcDark: "img/spectrocloud-logo-dark.svg?new=true",
+          src: getLightLogoPath(),
+          srcDark: getDarkLogoPath(),
         },
         items: [
           {

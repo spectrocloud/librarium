@@ -152,10 +152,6 @@ customization.
    corresponds to the **Palette Optimized Canonical** pack, which is a Tech Preview feature and is subject to change. Do
    not use this feature in production workloads.
 
-   In addition, Canonical clusters deployed in a proxied network environment may experience a
-   [known issue](../../../../troubleshooting/edge/edge.md#scenario---canonical-edge-clusters-in-proxied-environments-experience-failure-upon-reboot)
-   when you reboot nodes in the cluster.
-
    :::
 
    Using the arguments defined in the `.arg` file, the final provider images you generate will have the following naming
@@ -232,9 +228,9 @@ customization.
 
     :::tip
 
-    You can take advantage of the Tech Preview feature to edit user data in Local UI after installation. However, we
-    still recommend you provide user data during EdgeForge for production workloads because this is a Tech Preview
-    feature and not all fields are available for edit in Local UI.
+    You can also [edit user data in Local UI](../../local-ui/host-management/edit-user-data.md) after installation.
+    However, we recommend providing user data during EdgeForge for production workloads, as not all user data fields can
+    be updated in Local UI.
 
     :::
 
@@ -734,10 +730,9 @@ required Edge artifacts.
 
     :::
 
-    You can take advantage of the Tech Preview feature to edit user data in Local UI after installation. Refer to
-    [Edit User Data](../../local-ui/host-management/edit-user-data.md) for more information. However, we still recommend
-    you provide user data during EdgeForge for production workloads, because not all user data fields can be updated in
-    Local UI.
+    You can also [edit user data in Local UI](../../local-ui/host-management/edit-user-data.md) after installation.
+    However, we recommend providing user data during EdgeForge for production workloads, as not all user data fields can
+    be updated in Local UI.
 
     :::info
 

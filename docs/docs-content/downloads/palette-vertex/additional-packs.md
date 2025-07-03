@@ -90,6 +90,6 @@ All binaries require the OCI environment variables to be set and for the registr
 
 In an airgap installation, you need to upload the conformance packs to the self-hosted OCI registry. The conformance
 binary contains the packs required to use the [Compliance Scan](../../clusters/cluster-management/compliance-scan.md)
-capabilities. The conformance binary can be found in the pack table above. The binary has the prefix
-`airgap-thirdparty-`. Follow the [Usage Instructions](#usage-instructions) to upload the conformance packs to the OCI
-registry.
+capabilities. The conformance binary can be found in the [Cluster Profile Packs](#cluster-profile-packs) table. The
+binary has the prefix `airgap-thirdparty-`. Follow the [Usage Instructions](#usage-instructions) to upload the
+conformance packs to the OCI registry.

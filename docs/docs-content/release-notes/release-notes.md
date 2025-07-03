@@ -21,6 +21,20 @@ tags: ["release-notes"]
 
 #### Breaking Changes {#breaking-changes-4.7.0}
 
+- The [log fetcher API endpoints](/api/v1/v-1-cluster-feature-log-fetcher-create/) now only support creating and
+  retrieving logs from the following log paths:
+
+  - `/var/log`
+  - `/var/log/syslog`
+  - `/var/log/cloud-init`
+
+  All other log paths are now unsupported.
+
+  In addition, log downloads are only permitted from the following namespaces:
+
+  - `kube-system`
+  - `cluster-<cluster-uid>`
+
 #### Features
 
 - The Appliance Framework is a new method to install self-hosted Palette in your infrastructure environment. It provides
@@ -103,6 +117,39 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 | --------- | ----------- |
 
 #### Deprecations and Removals
+
+## June 23, 2025 - Release 4.6.41
+
+### Bug Fixes
+
+- Fixed an issue that prevented [Azure IaaS](../clusters/public-cloud/azure/create-azure-cluster.md) clusters from being
+  deployed or deleted when the same subnet was used for both the control plane and worker nodes.
+- Fixed an issue that caused multiple machine sets to be created following
+  [node repaves](../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration) triggered by Palette
+  upgrades on [data center clusters](../clusters/data-center/data-center.md). This was caused by a discrepancy in
+  failure domain resources.
+
+## June 23, 2025 - Release 4.6.40
+
+### Breaking Changes
+
+- Palette now uses an in-house solution for OS patching instead of `system-upgrade-controller` on Edge clusters deployed
+  using [agent mode](../deployment-modes/agent-mode/agent-mode.md). This improvement provides simplified workflows for
+  scheduled OS patches and enhanced rolling upgrade capabilities. If you have an agent mode cluster with OS upgrades
+  already scheduled using the old upgrade script with `system-upgrade-controller`, they will need to be removed and
+  recreated. Refer to
+  [Configure Regularly Scheduled OS Upgrades](../deployment-modes/agent-mode/manage-agent/os-upgrades.md) for further
+  information.
+
+### Bug Fixes
+
+<!--prettier-ignore-start-->
+- Fixed an issue that caused [edge hosts](../clusters/edge/edge.md) using a newer version of the Palette agent than the
+Palette instance itself to become unhealthy upon registration.
+- Fixed an issue that caused errors when using
+<VersionedLink text="Registry Connect" url="/integrations/packs/?pack=registry-connect" /> on RKE2 clusters.
+- Fixed an issue that caused the <VersionedLink text="Spectro Kubernetes Dashboard" url="/integrations/packs/?pack=spectro-k8s-dashboard" /> to be inaccessible for some clusters.
+<!--prettier-ignore-end-->
 
 ## June 12, 2025 - Release 4.6.36
 
@@ -197,7 +244,7 @@ impacted clusters until you've handled the below mentioned breaking changes and 
 
 - Earlier Palette releases carried a stop-gap patch to drain Portworx pods gracefully during node repaves. In this
   release, that patch has been moved to the
-  <VersionedLink text="Portworx CSI pack" url="/integrations/packs/?pack=csi-portworx-generic" /> from v3.2.3 onwards.
+  <VersionedLink text="Portworx CSI pack" url="/integrations/packs/?pack=csi-portworx-generic" /> from v3.2.3 or later.
   <!--prettier-ignore-end-->
 
   For any clusters using the Portworx CSI pack v3.2.2 or earlier, you must choose _one_ of the following actions to

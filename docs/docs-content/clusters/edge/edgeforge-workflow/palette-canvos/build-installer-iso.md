@@ -23,22 +23,18 @@ artifacts at the same time.
 
 You can build the following content into the Edge installer ISO to customize your installation:
 
-- User data. This is a YAML file that contains the configuration for the Edge Installer. For all available configuration
-  options, refer to [Installer Configuration](../../edge-configuration/installer-reference.md). User data is required
-  for the installer ISO. The build process validates the user data first before building the ISO.
+- **User data** - This is a YAML file that contains the configuration for the Edge Installer. For all available
+  configuration options, refer to [Installer Configuration](../../edge-configuration/installer-reference.md). User data
+  is required for the installer ISO. The build process validates the user data first before building the ISO.
   - If you do not include the user data file during the Edge Installer ISO build process, you must provide this
     configuration before the installation takes place with site user data. For more information, refer to
     [Apply Site User Data](../../site-deployment/site-installation/site-user-data.md).
-- Content bundles. This is an archive of all images, Helm charts and packs used for any number of specified cluster
+- **Content bundles** - This is an archive of all images, Helm charts and packs used for any number of specified cluster
   profiles. Content bundles are optional to include in an installer ISO.
-- Cluster definition (Tech Preview). Cluster definitions contains cluster profiles and any profile variables used in the
-  profiles. When you include a cluster definition during the Edge Installer ISO build process, you can create a new
-  cluster that uses your imported cluster definition in your Edge host using Local UI. Cluster definitions are optional
-  to include in an installer ISO.
-
-  :::preview
-
-  :::
+- **Cluster definition** - Cluster definitions contain cluster profiles and any profile variables used in the profiles.
+  When you include a cluster definition during the Edge Installer ISO build process, you can create a new cluster that
+  uses your imported cluster definition in your Edge host using Local UI. Cluster definitions are optional to include in
+  an installer ISO.
 
 The benefits of building the installer configuration, content bundles, and cluster definition into the installer ISO is
 that you can ensure the standardization of your Edge deployments through the installer. Whether you build the content
@@ -106,10 +102,6 @@ Use the following instructions to build the Edge Installer ISO. The optional ste
    corresponds to the **Palette Optimized Canonical** pack, which is a Tech Preview feature and is subject to change. Do
    not use this feature in production workloads.
 
-   In addition, Canonical clusters deployed in a proxied network environment may experience a
-   [known issue](../../../../troubleshooting/edge/edge.md#scenario---canonical-edge-clusters-in-proxied-environments-experience-failure-upon-reboot)
-   when you reboot nodes in the cluster.
-
    :::
 
 7. Customize these arguments to use during the build process. The following is an example `.arg` file.
@@ -168,9 +160,9 @@ Use the following instructions to build the Edge Installer ISO. The optional ste
 
     :::tip
 
-    You can take advantage of the Tech Preview feature to edit user data in Local UI after installation. However, we
-    still recommend providing user data during EdgeForge when deploying production workloads, as this is a Tech Preview
-    feature and not all fields are editable in the Local UI.
+    You can also [edit user data in Local UI](../../local-ui/host-management/edit-user-data.md) after installation.
+    However, we recommend providing user data during EdgeForge for production workloads, as not all user data fields can
+    be updated in Local UI.
 
     :::
 
@@ -214,7 +206,7 @@ a locally managed Edge host via [Local UI](../../local-ui/local-ui.md). For more
 
 13. Place the directory containing the content bundle file in the root directory of the `CanvOS` directory.
 
-### Prepare Cluster Definition (Tech Preview)
+### Prepare Cluster Definition
 
 Optionally, you can include a cluster definition in your Edge Installer ISO. Cluster definitions include one or more
 cluster profile and any dynamic values used in the cluster profiles. Cluster definitions can be exported from an Palette

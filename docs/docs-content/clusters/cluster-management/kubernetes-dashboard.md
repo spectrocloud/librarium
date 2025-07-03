@@ -18,28 +18,29 @@ For more information about the Kubernetes dashboard, visit the
 ## Prerequisites
 
 - An active Palette cluster.
+- An OIDC Identity Provider. For more information about using a custom OIDC, visit the page on
+  [SAML and OIDC SSO](../../user-management/saml-sso/saml-sso.md#palette-oidc-and-pxk).
 
 ## Enablement
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
+
 2. From the left main menu, select **Clusters**. Select the cluster you want to provision the Spectro Kubernetes
    Dashboard on.
 
-3. Select the **Profile** tab and identify the name of the profile your cluster is using.
+3. Select the **Profile** tab and select the profile your desired cluster is using.
 
-4. From the left main menu, select **Profiles**. Select the profile your desired cluster is using.
+4. From the version drop-down menu, select **Create new version**.
 
-5. From the version drop-down menu, select **Create new version**.
+5. Enter the semantic version number you wish to use for the updated profile and select **Confirm**.
 
-6. Enter the semantic version number you wish to use for the updated profile and select **Confirm**.
+6. Select **Add New Pack**.
 
-7. Select **Add New Pack**.
-
-8. In the search field, search for and select the **Spectro Kubernetes Dashboard** pack.
+7. In the search field, search for and select the **Spectro Kubernetes Dashboard** pack.
 
 ![Image of the pack search screen with the search result shown](/clusters_cluster-management_spectro-kubernetes-dashboard_select-dashboard-pack.webp)
 
-9. Select the most recent version and **Confirm** your changes.
+8. Select the most recent version and **Confirm** your changes.
 
 :::info
 
@@ -50,23 +51,44 @@ process.
 
 :::
 
-10. No customization is required for this deployment. Select **Confirm & Create** on the pack customization screen.
+9. Leave the default values for the **Spectro Kubernetes Dashboard** pack and select **Confirm & Create** on the pack
+   customization screen.
 
-11. The profile overview screen reflects that the `spectro-k8s-dashboard` pack is now part of your cluster profile.
+10. The profile overview screen reflects that the `spectro-k8s-dashboard` pack is now part of your cluster profile.
     Select **Save Changes**.
 
-12. From the left main menu, select **Clusters**. Select the cluster you wish to update.
+11. From the left main menu, select **Clusters**. Select the cluster you wish to update.
 
-13. Select the **Profile** tab.
+12. Select the **Profile** tab.
 
-14. From the applicable **Infrastructure Layers** or **Addon Layers** version drop-down menu, select the profile version
+13. From the applicable **Infrastructure Layers** or **Addon Layers** version drop-down menu, select the profile version
     that contains the **Spectro Kubernetes Dashboard** pack.
 
-15. **Save** your changes.
+14. Click **Save Changes**.
 
 ![Image showing the selection of the profile version to be applied to the selected cluster](/clusters_cluster-management_spectro-kubernetes-dashboard_apply-profile.webp)
 
-16. Use the **Overview** tab to monitor the cluster's status until the **Spectro Kubernetes Dashboard** layer is
+15. Select **Settings** from the top right, and click on **Cluster Settings**.
+
+16. Click on **RBAC**, and on the Cluster tab, click **Add New Binding**.
+
+17. On the **Add Cluster Role Binding**, enter `cluster-admin` for **Cluster Role name**.
+
+18. Leave the **Subject type** set to user, and enter the email address of the user in **Subject Name**.
+
+![Image showing how to create a Cluster Role Binding](/clusters_cluster-management_spectro-kubernetes-dashboard_add-role-binding.webp)
+
+19. To add additional users, click **Add Subject** and repeat step 18. Click **Confirm** when you have finished.
+
+20. Close the **Settings** page.
+
+21. Select your Kubernetes layer and set the OIDC to **Palette**.
+
+![Image of the Kubernetes OIDC selection page](/clusters_cluster-management_spectro-kubernetes-dashboard_select-kubernetes-pack.webp)
+
+22. Click **Save Changes**
+
+23. Use the **Overview** tab to monitor the cluster's status until the **Spectro Kubernetes Dashboard** layer is
     successfully deployed, indicated by a solid green circle.
 
 ## Validate
