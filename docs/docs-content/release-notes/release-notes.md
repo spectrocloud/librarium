@@ -23,7 +23,11 @@ tags: ["release-notes"]
 
 #### Features
 
-- The Appliance Framework is a new method to install self-hosted Palette in your infrastructure environment. It provides a simple and efficient way to deploy Palette using an ISO file. The Appliance Framework is available for VMware, Bare Metal, and Machine as a Service (MAAS) environments. Refer to the [Install Palette with Appliance Framework](../enterprise-version/install-palette/appliance-framework.md) guide for further information.
+- The Appliance Framework is a new method to install self-hosted Palette in your infrastructure environment. It provides
+  a simple and efficient way to deploy Palette using an ISO file. The Appliance Framework is available for VMware, Bare
+  Metal, and Machine as a Service (MAAS) environments. Refer to the
+  [Install Palette with Appliance Framework](../enterprise-version/install-palette/appliance-framework.md) guide for
+  further information.
 
 #### Improvements
 
@@ -44,7 +48,11 @@ tags: ["release-notes"]
 - Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
   [Palette section](#palette-enterprise-4.7.0) for more details.
 
-- The Appliance Framework is a new method to install Palette VerteX in your infrastructure environment. It provides a simple and efficient way to deploy Palette VerteX using an ISO file. The Appliance Framework is available for VMware, Bare Metal, and Machine as a Service (MAAS) environments. Refer to the [Install Palette with Appliance Framework](../vertex/install-palette-vertex/appliance-framework.md) guide for further information.
+- The Appliance Framework is a new method to install Palette VerteX in your infrastructure environment. It provides a
+  simple and efficient way to deploy Palette VerteX using an ISO file. The Appliance Framework is available for VMware,
+  Bare Metal, and Machine as a Service (MAAS) environments. Refer to the
+  [Install Palette with Appliance Framework](../vertex/install-palette-vertex/appliance-framework.md) guide for further
+  information.
 
 ### Automation
 
