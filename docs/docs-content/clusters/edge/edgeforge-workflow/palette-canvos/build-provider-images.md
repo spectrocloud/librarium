@@ -112,6 +112,7 @@ artifacts at the same time.
     ```
 
     <!-- prettier-ignore -->
+    
     :::warning
 
     If RHEL is the base OS for your
@@ -122,14 +123,14 @@ artifacts at the same time.
 
     :::
 
-9.  Issue the following command to use the K3s Kubernetes distribution and use the 1.32.3 version.
+10.  Issue the following command to use the K3s Kubernetes distribution and use the 1.32.3 version.
 
     ```bash
     export K8S_DISTRIBUTION=k3s
     export K8S_VERSION=1.32.3
     ```
 
-10. Issue the command below to create an `.arg` file. The `.arg` file uses the default values for the remaining
+11. Issue the command below to create an `.arg` file. The `.arg` file uses the default values for the remaining
     arguments.
 
     ```bash
@@ -168,11 +169,11 @@ artifacts at the same time.
 
     :::
 
-11. (Optional) If you want to build multiple versions of provider images using different Kubernetes versions, remove the
+12. (Optional) If you want to build multiple versions of provider images using different Kubernetes versions, remove the
     `K8S_VERSION` argument from the `.arg` file. Open the `k8s_version.json` file in the `CanvOS` directory. Remove the
     Kubernetes versions that you don't need from the JSON object corresponding to your Kubernetes distribution.
 
-12. (Optional) This step is only required if your builds occur in a proxied network environment, and your proxy servers
+13. (Optional) This step is only required if your builds occur in a proxied network environment, and your proxy servers
     require client certificates or if your base image is in a registry that requires client certificates.
 
     You can provide the base-64 encoded certificates in PEM format in the `certs` folder at the root directory of the
@@ -192,12 +193,12 @@ artifacts at the same time.
 
     :::
 
-13. (Optional) You can embed a public key in your provider image. If you choose to add a public key to your provider
+14. (Optional) You can embed a public key in your provider image. If you choose to add a public key to your provider
     image, after you create a cluster with the provider image, only content that is signed by the corresponding private
     key can be uploaded to the Edge host through Local UI. This includes both the content bundle and cluster definition.
     For more information, refer to [Embed Public Key in Edge Artifacts](./signed-content.md).
 
-14. CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. Issue the following command to
+15. CanvOS utility uses [Earthly](https://earthly.dev/) to build the target artifacts. Issue the following command to
     start the build process.
 
         <Tabs group="earthly">
@@ -226,14 +227,14 @@ artifacts at the same time.
         Share your logs with an Earthly account (experimental)! Register for one at https://ci.earthly.dev.
         ```
 
-15. To use the provider images in your cluster profile, push them to your image registry mentioned in the `.arg` file.
+16. To use the provider images in your cluster profile, push them to your image registry mentioned in the `.arg` file.
     Issue the following command to log in to Docker Hub. Provide your Docker ID and password when prompted.
 
     ```bash
     docker login
     ```
 
-16. Use the following commands to push the provider images to the Docker Hub image registry you specified. Replace the
+17. Use the following commands to push the provider images to the Docker Hub image registry you specified. Replace the
     `[REGISTRY-HOSTNAME]` and version numbers in the command below.
 
     ```bash
