@@ -120,11 +120,11 @@ process for any other team with group claims.
 14. On the **Sign On** tab of your Okta application, in the **SAML 2.0** section, select **Copy** beneath **Metadata
     URL**.
 
-![Copy Okta SAML Metadata](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_metadata-url.webp)
+    ![Copy Okta SAML Metadata](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_metadata-url.webp)
 
 15. Open a new browser tab and paste the URL in the address bar. Copy the XML.
 
-![Copy Okta Metadata XML](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_metadata-xml.webp)
+    ![Copy Okta Metadata XML](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_metadata-xml.webp)
 
 16. Return to Palette. On the **Manage SSO** page, paste the XML into the **Identity Provider Metadata** field.
 

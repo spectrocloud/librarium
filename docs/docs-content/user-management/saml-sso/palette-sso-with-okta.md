@@ -82,32 +82,32 @@ Your Okta login URL follows the format `https://<your-okta-account-id>-admin.okt
 9. Return to [Palette](https://console.spectrocloud.com/). On the **Manage SSO** page, select the **Logout URL**
    clipboard icon to copy the URL.
 
-10. Return to your Okta Admin console and paste the copied value into the **Sign-out redirect URIs** field.
+10. Return to your Okta Admin console and paste the copied value into the **Sign-out redirect URIs** field. 
 
-![Paste Logout URI](/oidc-okta-images/oidc-okta_paste-logout-uri.webp)
+    ![Paste Logout URI](/oidc-okta-images/oidc-okta_paste-logout-uri.webp)
 
 :::tip
 
-The sign-in and sign-out redirect URIs are required for SSO to work with Palette, but you can also add additional
-redirect URIs. The URIs in the table below are useful when you want to use Okta for OIDC authentication into your
-Kubernetes clusters.
+    The sign-in and sign-out redirect URIs are required for SSO to work with Palette, but you can also add additional redirect URIs. The URIs in the table below are useful when you want to use Okta for OIDC authentication into your Kubernetes clusters.
+
+:::
 
 | URL                                              | Type of Access                                               |
 | ------------------------------------------------ | ------------------------------------------------------------ |
 | `http://localhost:8000`                          | Using kubectl with the kube-login plugin from a workstation. |
 | `https://<fqdn_of_k8s_dashboard>/oauth/callback` | Using OIDC authentication into Kubernetes Dashboard.         |
 
-:::
+    :::
 
 11. Scroll down to the **Assignments** section and select **Allow everyone in your organization to access**. Leave the
     **Enable immediate access with Federation Broker Mode** option enabled and click **Save**.
 
-![Configure the Assignments](/oidc-okta-images/oidc-okta_assignments.webp)
+    ![Configure the Assignments](/oidc-okta-images/oidc-okta_assignments.webp)
 
 12. From the **General** tab of your Okta application, select the **Copy to clipboard** icon beside **Client ID** to
     copy the ID to your clipboard. Save this value, as you will need it later.
 
-![Copy the Client ID](/oidc-okta-images/oidc-okta_copy-client-id.webp)
+    ![Copy the Client ID](/oidc-okta-images/oidc-okta_copy-client-id.webp)
 
 13. Select the **Copy to clipboard** icon beside **Client Secret** to copy the secret to your clipboard. Save this
     value, as you will need it later.
