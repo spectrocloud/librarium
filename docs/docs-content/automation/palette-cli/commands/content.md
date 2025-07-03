@@ -69,7 +69,7 @@ The following flags are supported by the `build` subcommand.
 |            | `--download-cluster-config-only`     | If enabled, only the cluster configuration will be downloaded.                                                                                                                                                                                                                                                                                                                              | boolean |
 |            | `--existing-bundles`                 | Existing `.tar.zst` bundle archives to include as part of the content bundle build. This avoids the need to redownload images, charts, and raw files that are already present in local bundles.                                                                                                                                                                                             | string  |
 | `-k`       | `--encryption-passphrase`            | The encryption passphrase used to secure sensitive data.                                                                                                                                                                                                                                                                                                                                    | string  |
-|            | `--exclude-profiles`                 | A comma-separated list of cluster profile IDs to exclude from the generated content bundle.                                                                                                                                                                                                                                                                                                 | string  |
+|            | `--exclude-profiles`                 | A comma-separated list of cluster profile IDs whose content should be excluded from the generated content bundle.                                                                                                                                                                                                                                                                           | string  |
 |            | `--fips`                             | If enabled, the bundle will include only FIPS service images.                                                                                                                                                                                                                                                                                                                               | boolean |
 | `-h`       | `--help`                             | Help for the `build` subcommand.                                                                                                                                                                                                                                                                                                                                                            | -       |
 |            | `--include-core-palette-images-only` | Whether to include only the essential Palette images required for cluster creation, excluding day-2 images. This option is recommended for airgap installations to reduce the size of the content bundle. By default, this flag is set to `false`, and the `build` command includes both core and day-2 images.                                                                             | boolean |
@@ -168,6 +168,23 @@ redownload images defined in the profiles that are already present in the existi
 
 ```shell
 palette content build --arch amd64 --profiles 12345678910 --project-id 1617181929 --name example-bundle --existing-bundles ./bundles/example-existing-bundle.tar.zst
+```
+
+```text hideClipBoard title="Example Output"
+-----------------------------
+Build Summary
+-----------------------------
+bundle example-bundle saved to /home/ubuntu/output/content-bundle/example-bundle.tar.zst
+```
+
+You can exclude content defined in cluster profiles from a content bundle. For example, the following command creates a
+new content bundle named `example-bundle.tar.zst` using the cluster profiles specified by the `--profiles` flag, while
+excluding any images, charts, or raw files defined in the profiles listed under the `--exclude-profiles` flag. For
+instance, if both cluster profiles `12345678910` and `11121314151` include the Hello Universe pack, this pack will be
+excluded from the resulting content bundle.
+
+```shell
+palette content build --arch amd64 --profiles 12345678910 --project-id 1617181929 --name example-bundle --exclude-profiles 11121314151
 ```
 
 ```text hideClipBoard title="Example Output"
