@@ -12,13 +12,18 @@ The following are common scenarios that you may encounter when using Edge.
 
 ## Scenario – PXK-E Clusters on RHEL and Rocky 8 Fail Kubernetes Initialization
 
-<VersionedLink text="Palette eXtended Kubernetes - Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s"/> clusters running Kubernetes v1.32.x or later on RHEL or Rocky Linux 8.x may experience failure during Kubernetes initialization. This occurs because RHEL and Rocky 8.x come with kernel version 4.18.x, which does not meet the [kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/) system requirements introduced in Kubernetes v1.32.x. You can observe the following error in `kube-init` logs.
+<VersionedLink text="Palette eXtended Kubernetes - Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> clusters
+running Kubernetes v1.32.x or later on RHEL or Rocky Linux 8.x may experience failure during Kubernetes initialization.
+This occurs because RHEL and Rocky 8.x come with kernel version 4.18.x, which does not meet the
+[kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/) system requirements introduced in Kubernetes
+v1.32.x. You can observe the following error in `kube-init` logs.
 
 ```shell
 [ERROR SystemVerification]: kernel release 4.18.0-553.16.1.el8_10.x86_64 is unsupported. Recommended LTS version from the 4.x series is 4.19. Any 5.x or 6.x versions are also supported. For cgroups v2 support, the minimal version is 4.15 and the recommended version is 5.8+...
 ```
 
 There are several possible ways to troubleshoot this issue:
+
 - Rebuild the OS using RHEL or Rocky Linux 9.x, as they come with kernel 5.14+ by default.
 - [Update the kernel version](#debug-steps---update-the-kernel-version).
 
@@ -38,6 +43,7 @@ There are several possible ways to troubleshoot this issue:
        update-ca-trust; \
        fi
    ```
+
    Update it as in the example below to install a supported kernel version using ELRepo.
 
    ```dockerfile
@@ -50,16 +56,18 @@ There are several possible ways to troubleshoot this issue:
        dnf clean all; \
        fi
    ```
+
 2. Rebuild the ISO and provider image and redeploy the cluster.
 3. After the deployment is complete, issue the following command on the node to ensure the kernel version is 5.x.
-   
+
    ```shell
    uname -r
    ```
 
 #### Debug Steps - Update the Kernel Version for Agent Mode
 
-1. Install a supported kernel version using ELRepo. Establish an SSH connection to the PXK-E node and issue the following commands.
+1. Install a supported kernel version using ELRepo. Establish an SSH connection to the PXK-E node and issue the
+   following commands.
 
    ```shell
    dnf install --assumeyes https://www.elrepo.org/elrepo-release-8.el8.elrepo.noarch.rpm
@@ -67,8 +75,9 @@ There are several possible ways to troubleshoot this issue:
    dnf --enablerepo=elrepo-kernel install --assumeyes kernel-lt kernel-lt-modules-extra
    reboot
    ```
+
 2. Issue the following command after the reboot to ensure the kernel version is 5.x.
-   
+
    ```shell
    uname -r
    ```
