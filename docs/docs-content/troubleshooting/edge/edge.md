@@ -61,7 +61,7 @@ There are several possible ways to troubleshoot this issue:
 3. After the deployment is complete, issue the following command on the node to ensure the kernel version is 5.x.
 
    ```shell
-   uname -r
+   uname --kernel-release
    ```
 
 #### Debug Steps - Update the Kernel Version for Agent Mode
@@ -79,7 +79,7 @@ There are several possible ways to troubleshoot this issue:
 2. Issue the following command after the reboot to ensure the kernel version is 5.x.
 
    ```shell
-   uname -r
+   uname --kernel-release
    ```
 
 ## Scenario - PXK-E Clusters in VerteX Deployments Experience Failure upon Reboot
