@@ -49,7 +49,7 @@ The following steps will guide you on how to enable Palette SSO with
 
 1. Log in to your Okta Admin console and navigate to **Applications > Applications**. Select **Create App Integration**.
 
-   :::info
+:::info
 
 Your Okta login URL follows the format `https://<your-okta-account-id>-admin.okta.com/admin/getting-started`. Replace
 `<your-okta-account-id>` with your Okta account ID.
