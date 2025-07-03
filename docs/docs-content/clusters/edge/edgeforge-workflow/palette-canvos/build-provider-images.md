@@ -115,9 +115,10 @@ artifacts at the same time.
     :::warning
 
     If RHEL is the base OS for your
-    <VersionedLink text="Palette eXtended Kubernetes - Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s"/> cluster
-    running Kubernetes v1.32.x or later, we recommend using RHEL 9.x to avoid a
-    [known kernel compatibility issue](../../../../troubleshooting/edge/edge.md#scenario--pxk-e-clusters-on-rhel-and-rocky-8-fail-kubernetes-initialization).
+
+    <VersionedLink text="Palette eXtended Kubernetes - Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> cluster
+    running Kubernetes v1.32.x or later, we recommend using RHEL 9.x to avoid a [known kernel compatibility
+    issue](../../../../troubleshooting/edge/edge.md#scenario--pxk-e-clusters-on-rhel-and-rocky-8-fail-kubernetes-initialization).
 
     :::
 
