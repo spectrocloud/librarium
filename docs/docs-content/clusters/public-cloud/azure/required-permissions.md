@@ -77,13 +77,17 @@ remainder of the permissions required by IaaS can be assigned at the resource gr
 1. Open a terminal or command prompt. Export your Azure subscription ID to a variable.
 
    ```shell
-   export SUBSCRIPTION_ID=<your-subscription-id>
+   "AssignableScopes": [
+    "/subscriptions/<subscription-id>"
+  ]
    ```
 
 2. Create a JSON file named `iaas_static_vnet_role.json` containing all the permissions that must be applied at the
    virtual network scope level.
 
    <PartialsComponent category="permissions" name="azure-iaas-static-vnet-role" />
+
+3. Navigate to the end of the JSON file and replace `<subscription-id>` with your Azure subscription ID.
 
 3. Next, create a JSON file named `iaas_static_rg_sub_role.json` for the permissions that must be applied at the
    resource group or subscription scope level.
