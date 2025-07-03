@@ -27,13 +27,13 @@ This solution is designed to be immutable, secure, and compliant with industry s
 Implementation Guides (STIG). The following table displays the infrastructure profile for the self-hosted Palette
 appliance.
 
-| **Layer**      | **Component**                                |
-| -------------- | -------------------------------------------- |
-| **OS**         | Ubuntu – Immutable Kairos and STIG-hardened. |
-| **Kubernetes** | Palette Kubernetes (PXK) – STIG-hardened.    |
-| **CNI**        | Calico                                       |
-| **CSI**        | Piraeus                                      |
-| **Registry**   | Zot                                          |
+| **Layer**      | **Component**                              |
+| -------------- | ------------------------------------------ |
+| **OS**         | Ubuntu: Immutable Kairos and STIG-hardened |
+| **Kubernetes** | Palette Kubernetes (PXK): STIG-hardened    |
+| **CNI**        | Calico                                     |
+| **CSI**        | Piraeus                                    |
+| **Registry**   | Zot                                        |
 
 ## Supported Platforms
 
@@ -107,7 +107,7 @@ Follow the instructions to install Palette using the Appliance Framework ISO on 
 
   <summary> How to discover free VIPs in your environment </summary>
 
-  You can discover free VIPs in your environment by using a tool like `arping` or `nmap`. For example, you can run the
+  You can discover free VIPs in your environment by using a tool like `arping` or `nmap`. For example, you can issue the
   following command to probe a CIDR block for free IP addresses.
 
   ```bash
@@ -158,9 +158,9 @@ Follow the instructions to install Palette using the Appliance Framework ISO on 
    automatically configure the nodes with the required components, including the operating system, Kubernetes, CNI, and
    CSI.
 
-4. Once the nodes have booted from the ISO, they will automatically start the installation process. You may see a GRand
-   Unified Bootloader (GRUB) screen with selectable options, this should be ignored as the installation will proceed
-   automatically.
+4. Once the nodes have booted from the ISO, they will automatically start the installation process. The GRand Unified
+   Bootloader (GRUB) screen may be displayed with selectable options, this should be ignored as the installation will
+   proceed automatically.
 
    Wait for the installation process to complete. This will take at least 15 minutes, depending on the resources
    available on the nodes. After completion, the nodes will reboot and display the Palette Terminal User Interface
@@ -209,13 +209,14 @@ Follow the instructions to install Palette using the Appliance Framework ISO on 
     have changed the default port of the console, replace `5080` with the Local UI port. The address of Local UI console
     is also displayed on the terminal screen of the node.
 
-    If you are accessing the Local UI for the first time, you may see a security warning in your web browser. This is
-    because the Local UI uses a self-signed certificate. You can safely ignore this warning and proceed to the Local UI.
+    If you are accessing the Local UI for the first time, a security warning may be displayed in your web browser. This
+    is because the Local UI uses a self-signed certificate. You can safely ignore this warning and proceed to the Local
+    UI.
 
 14. Log in to Local UI using the default credentials. The default username is `kairos` and the password is `kairos`. You
     can change the password after logging in.
 
-15. Click the username dropdown menu in the top right corner and select **Update password**. Provide the **Old
+15. Click the username drop-down menu in the top right corner and select **Update password**. Provide the **Old
     Password** as `kairos`, and set a new password in the **New Password** field. This will be the password you use to
     log in to Local UI in the future.
 
@@ -394,9 +395,9 @@ Follow the instructions to install Palette using the Appliance Framework ISO on 
 After login, a summary page is displayed. You now have access to the Palette system console, where you can manage your
 Palette environment.
 
-If you are accessing the Palette system console for the first time, you may see a security warning in your web browser.
-This is because Palette is configured with a self-signed certificate. You can replace the self-signed certificate with
-your own SSL certificates as guided later in [Next Steps](#next-steps).
+If you are accessing the Palette system console for the first time, a security warning may be displayed in your web
+browser. This is because Palette is configured with a self-signed certificate. You can replace the self-signed
+certificate with your own SSL certificates as guided later in [Next Steps](#next-steps).
 
 ### Validate
 
