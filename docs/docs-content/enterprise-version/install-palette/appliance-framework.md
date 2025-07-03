@@ -311,8 +311,8 @@ Follow the instructions to install Palette using the Appliance Framework ISO on 
     :::important
 
     It is recommended to have at least three control plane nodes for high availability. You can remove the worker node
-    pool as it is not required for the Palette management cluster. Ensure that the **Allow worker capability** option is
-    enabled for the control plane node pool.
+    pool as it is not required for the Palette management cluster. If doing this, ensure that the **Allow worker
+    capability** option is enabled for the control plane node pool.
 
     :::
 
