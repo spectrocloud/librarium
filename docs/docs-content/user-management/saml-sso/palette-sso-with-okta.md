@@ -82,7 +82,7 @@ Your Okta login URL follows the format `https://<your-okta-account-id>-admin.okt
 9. Return to [Palette](https://console.spectrocloud.com/). On the **Manage SSO** page, select the **Logout URL**
    clipboard icon to copy the URL.
 
-10. Return to your Okta Admin console and paste the copied value into the **Sign-out redirect URIs** field. 
+10. Return to your Okta Admin console and paste the copied value into the **Sign-out redirect URIs** field.
 
     ![Paste Logout URI](/oidc-okta-images/oidc-okta_paste-logout-uri.webp)
 
