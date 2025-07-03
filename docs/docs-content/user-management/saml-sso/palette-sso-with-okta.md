@@ -23,8 +23,7 @@ The following steps will guide you on how to enable Palette SSO with
   [HTTPS](../../../enterprise-version/system-management/ssl-certificate-management#enablement) and configure TLS. If you
   are using Palette SaaS, HTTPS and TLS are already enabled.
 
-- A free or paid subscription with Okta. Okta provides free
-  [developer subscriptions](https://developer.okta.com/signup/) for testing purposes.
+- A free or paid subscription with Okta. Okta provides free [developer subscriptions](https://developer.okta.com/signup/) for testing purposes.
 
 - If you want to use the same Okta application for OIDC-based SSO for your Kubernetes cluster itself, you need to
   install [kubelogin](https://github.com/int128/kubelogin) on your local workstation to handle the retrieval of access
