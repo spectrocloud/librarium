@@ -39,8 +39,6 @@ The following are architectural highlights of Palette-provisioned Edge native cl
   support the following:
 
   - ARM64 architecture
-  - Versions other than 1.32.3
-  - Cluster updates
   - Palette VerteX
   - Custom installation paths for Kubernetes and its dependencies in [agent mode](../../../deployment-modes/agent-mode/)
   - [Network overlay](../networking/vxlan-overlay/)
@@ -103,10 +101,6 @@ Palette provides the following distributions for edge installations.
 
 The **Palette Optimized Canonical** Kubernetes distribution is a Tech Preview feature and is subject to change. Do not
 use this feature in production workloads.
-
-In addition, Canonical clusters deployed in a proxied network environment may experience a
-[known issue](../../../troubleshooting/edge/edge.md#scenario---canonical-edge-clusters-in-proxied-environments-experience-failure-upon-reboot)
-when you reboot nodes in the cluster.
 
 :::
 

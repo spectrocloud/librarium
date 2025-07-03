@@ -31,14 +31,10 @@ You can build the following content into the Edge installer ISO to customize you
     [Apply Site User Data](../../site-deployment/site-installation/site-user-data.md).
 - **Content bundles** - This is an archive of all images, Helm charts and packs used for any number of specified cluster
   profiles. Content bundles are optional to include in an installer ISO.
-- **Cluster definition** (Tech Preview) - Cluster definitions contain cluster profiles and any profile variables used in
-  the profiles. When you include a cluster definition during the Edge Installer ISO build process, you can create a new
-  cluster that uses your imported cluster definition in your Edge host using Local UI. Cluster definitions are optional
-  to include in an installer ISO.
-
-  :::preview
-
-  :::
+- **Cluster definition** - Cluster definitions contain cluster profiles and any profile variables used in the profiles.
+  When you include a cluster definition during the Edge Installer ISO build process, you can create a new cluster that
+  uses your imported cluster definition in your Edge host using Local UI. Cluster definitions are optional to include in
+  an installer ISO.
 
 The benefits of building the installer configuration, content bundles, and cluster definition into the installer ISO is
 that you can ensure the standardization of your Edge deployments through the installer. Whether you build the content
@@ -105,10 +101,6 @@ Use the following instructions to build the Edge Installer ISO. The optional ste
    The `K8S_DISTRIBUTION` argument, defined in the `.arg` file, accepts `canonical` as a valid value. This value
    corresponds to the **Palette Optimized Canonical** pack, which is a Tech Preview feature and is subject to change. Do
    not use this feature in production workloads.
-
-   In addition, Canonical clusters deployed in a proxied network environment may experience a
-   [known issue](../../../../troubleshooting/edge/edge.md#scenario---canonical-edge-clusters-in-proxied-environments-experience-failure-upon-reboot)
-   when you reboot nodes in the cluster.
 
    :::
 
@@ -214,7 +206,7 @@ a locally managed Edge host via [Local UI](../../local-ui/local-ui.md). For more
 
 13. Place the directory containing the content bundle file in the root directory of the `CanvOS` directory.
 
-### Prepare Cluster Definition (Tech Preview)
+### Prepare Cluster Definition
 
 Optionally, you can include a cluster definition in your Edge Installer ISO. Cluster definitions include one or more
 cluster profile and any dynamic values used in the cluster profiles. Cluster definitions can be exported from an Palette
