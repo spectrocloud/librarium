@@ -56,7 +56,8 @@ Your Okta login URL follows the format `https://<your-okta-account-id>-admin.okt
 
 :::
 
-2. Select **OIDC - OpenID Connect** for the sign-in method and **Web Application** for the application type, then click **Next**.
+2. Select **OIDC - OpenID Connect** for the sign-in method and **Web Application** for the application type, then click
+   **Next**.
 
 3. On the **New Web App Integration** page, change the name from `My Web App` to `Spectro Cloud Palette OIDC`. Leave the
    **Grant type** set to its default value of **Authorization Code**.
