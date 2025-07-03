@@ -19,11 +19,10 @@ The following steps will guide you on how to enable Palette SSO with
 
 ## Prerequisites
 
-- For Okta SAML to work correctly with Palette, you must enable
-  [HTTPS](../../../enterprise-version/system-management/ssl-certificate-management#enablement) and configure TLS.
+- For Okta SAML to work correctly with Self-Hosted Palette, you must enable
+  [HTTPS](../../../enterprise-version/system-management/ssl-certificate-management#enablement) and configure TLS. If you are using Palette SaaS, HTTPS and TLS are already enabled.
 
-- A free or paid subscription with Okta. Okta provides free
-  [developer subscriptions](https://developer.okta.com/signup/) for testing purposes.
+- A free or paid subscription with Okta. Okta provides free [developer subscriptions](https://developer.okta.com/signup/) for testing purposes.
 
 ## Enablement
 
@@ -142,7 +141,7 @@ process for any other team with group claims.
    ![User Logout](/oidc-okta-images/oidc-okta_user-logout.webp)
 
 2. The Palette login screen now displays a **Sign in** button and no longer presents a username and password field.
-   Below the **Sign In** button, there is an **SSO issues? --> Use your password** link. This link can be used to bypass
+   Below the **Sign In** button, there is an **SSO issues? Use your password** link. This link can be used to bypass
    SSO and log in with a local Palette account in case there is an issue with SSO and you need to access Palette without
    SSO. Click on the **Sign in** button to log in via SSO.
 
@@ -151,10 +150,9 @@ process for any other team with group claims.
 3. If this is the first time you are logging in with SSO, you will be redirected to the Okta login page. Depending on
    your organization's SSO settings, this could be a simple login form or require MFA (Multi-Factor Authentication).
 
-4. You are now automatically added to the `Okta Team` team in Palette. To verify, navigate to the left **Main Menu**,
-   and select **Tenant Settings**
-5. Select **Users & Teams**, and click **Teams** tab. Select on the **Okta Team** team and view the team members
-   section.
+4. You are now automatically added to the `Okta Team` team in Palette. To verify, navigate to the left main menu, and select **Users & Teams**
+
+5. Select the **Teams** tab and choose `Okta Team`. The list of **Team Members** is displayed on the left side of the **Team Details**.
 
 ## Resources
 
