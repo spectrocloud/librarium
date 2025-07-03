@@ -80,7 +80,8 @@ Use this approach if you are building a Kairos image from `Dockerfile.ubuntu` an
    RUN apt-get clean && rm -rf /var/lib/apt/lists/*
    ```
 
-   Paste the following lines instead. In this example, the kernel version is set to `6.8.0-60-generic`. Replace it with the required version.
+   Paste the following lines instead. In this example, the kernel version is set to `6.8.0-60-generic`. Replace it with
+   the required version.
 
    ```dockerfile
    RUN [ -z "$(ls -A /boot/vmlinuz*)" ] && apt-get install --yes --no-install-recommends \
@@ -88,7 +89,8 @@ Use this approach if you are building a Kairos image from `Dockerfile.ubuntu` an
    RUN apt-get clean && rm -rf /var/lib/apt/lists/*
    ```
 
-3. Issue the following command to generate custom Kairos base image. For Trusted Boot (Unified Kernel Image) build replace `--BOOTLOADER=grub` with `--BOOTLOADER=systemd-boot`. 
+3. Issue the following command to generate custom Kairos base image. For Trusted Boot (Unified Kernel Image) build
+   replace `--BOOTLOADER=grub` with `--BOOTLOADER=systemd-boot`.
 
    ```shell
    ./earthly.sh +base-image \
@@ -110,15 +112,15 @@ Use this approach if you are building a Kairos image from `Dockerfile.ubuntu` an
    ```shell title="Example"
    docker tag kairos/ubuntu-core-base:latest my-registry.io/kairos/kairos-base:6.8.0-60
    ```
-      
+
 5. Push the image to your registry.
 
    ```shell title="Example"
    docker push my-registry.io/kairos/kairos-base:6.8.0-60
    ```
-     
+
 6. Set the BASE_IMAGE value in the `.arg` file in the `CanvOS` directory to the image name.
-  
+
    ```shell title="Example"
    BASE_IMAGE=my-registry.io/kairos/kairos-base:6.8.0-60
    ```
@@ -127,7 +129,9 @@ Use this approach if you are building a Kairos image from `Dockerfile.ubuntu` an
 
    :::info
 
-   For more information on how to build provider images and ISO artifacts for Edge deployments and how to use them in your cluster setup, refer to [Build Edge Artifacts (../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md).
+   For more information on how to build provider images and ISO artifacts for Edge deployments and how to use them in
+   your cluster setup, refer to [Build Edge Artifacts
+   (../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md).
 
    :::
 
@@ -173,12 +177,15 @@ configuration.
 
 Use this approach if you want to override the kernel during MAAS provisioning without rebuilding the OS image.
 
-1. To pin the kernel version during host provisioning with MAAS, create or modify the appropriate file depending on the image type you're deploying:
-   - If you use MAAS to deploy an official unmodified Ubuntu image for Agent Mode clusters, create the `/var/lib/snap/maas/current/preseeds/curtin_userdata_ubuntu` file.
-   - If you use MAAS to deploy a custom OS image, modify the `/var/lib/snap/maas/current/preseeds/curtin_userdata_custom` file.
-     
-   In both cases, add the following contents to pin the kernel. Replace `6.8.0-60-generic` with the required
-   version.
+1. To pin the kernel version during host provisioning with MAAS, create or modify the appropriate file depending on the
+   image type you're deploying:
+
+   - If you use MAAS to deploy an official unmodified Ubuntu image for Agent Mode clusters, create the
+     `/var/lib/snap/maas/current/preseeds/curtin_userdata_ubuntu` file.
+   - If you use MAAS to deploy a custom OS image, modify the
+     `/var/lib/snap/maas/current/preseeds/curtin_userdata_custom` file.
+
+   In both cases, add the following contents to pin the kernel. Replace `6.8.0-60-generic` with the required version.
 
    <!-- prettier-ignore -->
    ```yaml
