@@ -31,7 +31,7 @@ There are several possible ways to troubleshoot this issue:
 
 #### Limitations
 
-1. Appliance mode is supported only for RHEL-based images and is not supported for Rocky Linux.
+- Appliance mode is supported only for RHEL-based images and is not supported for Rocky Linux.
 
 #### Debug Steps - Update the Kernel Version for Appliance Mode
 
