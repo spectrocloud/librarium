@@ -161,6 +161,17 @@ require a local Harbor registry. Built-in registries must be configured using ei
      --output <output-directory>
     ```
 
+    :::warning
+
+    If your registry enforces image signature verification, you must ensure that the `--arch` option you use is
+    identical to the architecture of the signed images. If your cluster profile uses images that are multi-architecture,
+    you must omit the `--arch` flag to build a multi-architecture content bundle. This is because when you sign an
+    image, the signature is generated on the index manifest, which is different for single-architecture and
+    multi-architecture images. If your images are signed as multi-architecture images, but you specify `--arch amd64`,
+    the signature verification will fail.
+
+    :::
+
     The result is a `.tar.zst` content bundle that you can use to preload into your installer. For more information
     about how to use content bundles, refer to [Build Installer ISO](./build-installer-iso.md) or
     [Upload Content Bundle through Local UI](../../local-ui/cluster-management/upload-content-bundle.md).
