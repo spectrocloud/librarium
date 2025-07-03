@@ -29,77 +29,80 @@ The following steps will guide you on how to enable Palette SSO with
 
 ### Create Teams in Palette
 
-This step is to create teams in Palette that will be used for Okta SAML, and will give them the appropriate permissions.
-For this example, you will create the `Okta Team` team and give it **Tenant Admin** permissions. You can repeat this for
-any other team that you configured with group claims.
+Follow this guide to create teams in Palette that will be used for Okta SAML and give them the appropriate permissions.
+In this example, you will create an `Okta Team` and give the team **Tenant Admin** permissions. You can repeat this process for
+any other team with group claims.
 
-1.  Open a web browser and log in to your [Palette](https://console.spectrocloud.com/) subscription.
+1.  Log in to [Palette](https://console.spectrocloud.com/) as a tenant admin.
 
-2.  Navigate to left **Main Menu** and select **Tenant Settings**.
 
-3.  From the left **Tenant Menu**, select **Users & Teams**.
+2.  From the left main menu, select **Users & Teams**.
 
-4.  Click the **Teams** tab, and click on **+ Create Team**.
+3.  Navigate to the **Teams** tab and select **Create Team**.
 
     ![Create Palette Team](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_create-team.webp)
 
-5.  Specify `Okta Team` in the **Team name** field. You don't need to set any members now, as this will happen
-    automatically from the SSO. Click **Confirm** to create the team.
+4.  Enter `Okta Team` for the **Team name**. You do not need to add any members, as members will be added automatically with SSO. Select **Confirm** to create the team.
 
     ![Name Palette Team](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_name-team.webp)
 
-6.  You will receive a message stating that the team has been created successfully. Select the newly created **Okta
-    Team** team to review its details. To give this team administrative access to the entire tenant and all the projects
-    in it, assign the **Tenant Admin** role. Select the **Tenant Roles** tab and click **+ Add Tenant Role**.
+5.  A message states that the team was created. Select the newly created `Okta
+    Team` to review the team's details. 
+    
+6. To give the team administrative access to the entire tenant and all projects within the tenant, select the **Tenant Roles** tab and click **Add Tenant Role**.
 
     ![Palette Tenant Roles](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_tenant-roles.webp)
 
-7.  Select **Tenant Admin** to enable the role. Click **Confirm** to add the role.
+7.  In the **Add Roles** dialog, select **Tenant Admin**. Click **Confirm** to add the role.
 
     ![Add Tenant Role](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_add-tenant-role.webp)
 
-    You will receive a message stating **Roles have been updated**. Repeat this procedure for any other teams, taking
+    A message states that **Roles have been updated**. Repeat this procedure for any other necessary teams, taking
     care to ensure they are given the appropriate permissions.
 
-8.  Click the **X** next to **Team Details** in the top left corner to exit this screen.
 
 ### Create the Okta Application
 
-9. Log in to your Okta Admin console and navigate to **Applications** --> **Applications**. Click the **Create App
-   Integration** button.
+1. Open a new browser tab and log in to your Okta Admin console.
 
    :::info
 
-   Your Okta login URL follows the format `https://{your-okta-account-id}-admin.okta.com/admin/getting-started`. Replace
-   `{your-okta-account-id}` with your Okta account ID.
+   Your Okta login URL follows the format `https://<your-okta-account-id>-admin.okta.com/admin/getting-started`. Replace
+   `<your-okta-account-id>` with your Okta account ID.
 
    :::
 
-10. In the screen that opens, select **Create App Integration**.
+2. Navigate to **Applications > Applications**, and select **Create App
+   Integration**.
 
     ![Create Okta Application](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_create-application.webp)
 
-11. Select **SAML 2.0** and click **Next**.
+3. Select **SAML 2.0** and click **Next**.
 
     ![Configure Okta General Settings](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_app_integration.webp)
 
-12. On the **General Settings** page, enter **App name** field, enter `Spectro Cloud Palette SAML` in the **App name**
-    box. If desired, you can also upload a logo for the application.
+4. On the **General Settings** page, enter `Spectro Cloud Palette SAML` for the **App name**. If desired, upload a logo for the application.
 
-13. Open a web browser and navigate to your [Palette](https://console.spectrocloud.com/). Navigate to **Tenant
-    Settings** --> **SSO** and click **SAML**. Click the button next to **Login URL** to copy the value to the
-    clipboard.
+5. Return to [Palette](https://console.spectrocloud.com/). If you have been logged out, sign in again as a tenant admin.
 
-14. Set the value of **Service** to **Okta**.
+6. From the left main menu, select **Tenant Settings**.
+
+7. On the **Tenant Settings Menu**, select **SSO**, and choose an **SSO Auth type** of **SAML**.
+
+8. From the **Service** drop-down, select **Okta**.
 
     ![Configure Okta General Settings on Palette](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_palette-okta-setting.webp)
 
-15. Return to your Okta Admin page. Paste the **Login URL** into the **Single sign-on URL** and **Audience URI (SP
-    Entity ID)** locations.
+9. Scroll to the **Login URL** field and select the clipboard icon to copy the URL.
+
+
+
+10. Return to your Okta Admin page. Paste the **Login URL** into the **Single sign-on URL** and **Audience URI (SP
+    Entity ID)** fields.
 
     ![Configure Okta General Settings](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_general-settings.webp)
 
-16. Navigate to **Attribute Statements (Optional)**, and enter the following values.
+11. Navigate to **Attribute Statements (Optional)** and enter the following values.
 
     | Name        | Name Format   | Value            |
     | ----------- | ------------- | ---------------- |
@@ -107,7 +110,7 @@ any other team that you configured with group claims.
     | `LastName`  | `Unspecified` | `user.lastName`  |
     | `Email`     | `Unspecified` | `user.email`     |
 
-17. Under **Group Attribute Statements (Optional)** specify the below values.
+12. Under **Group Attribute Statements (Optional)**, enter the below values.
 
     | Name          | Name Format   | Filter          | Value |
     | ------------- | ------------- | --------------- | ----- |
@@ -115,26 +118,24 @@ any other team that you configured with group claims.
 
     ![Configure Attribute Statements](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_attribute-statements.webp)
 
-18. Click **Next** and click **Finish**.
+13. Select **Next**, then **Finish**.
 
-19. On the **Sign On** page, click the copy **Copy** under **Metadata URL**.
+14. On the **Sign On** tab of your Okta application, in the **SAML 2.0** section, select **Copy** beneath **Metadata URL**.
 
 ![Copy Okta SAML Metadata](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_metadata-url.webp)
 
-20. Open a new browser tab and paste the URL in the browser URI box. Copy the contents of the XML.
+15. Open a new browser tab and paste the URL in the address bar. Copy the XML.
 
 ![Copy Okta Metadata XML](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_metadata-xml.webp)
 
-21. Go back to Palette SSO settings then paste the contents of the Okta SAML Metadata into **Identity Provider
-    Metadata**.
+16. Return to Palette. On the **Manage SSO** page, paste the XML into the **Identity Provider Metadata** field.
 
     ![Paste Metadata in Palette SSO Manager](/saml-okta-images/user-management_saml-sso_palette-sso-with-okta-saml_palette-manage-sso-okta-saml_meta_data.webp)
 
-22. Under **Default Teams**, search for and select **Okta Team**. This connects all Okta users with the team and the
+17. In the **Default Teams** field, search for and select `Okta Team`. This connects all Okta users with the team and the
     team permissions set earlier.
 
-23. When all the information has been entered, click **Save** to activate SSO. You will receive a message stating SAML
-    configured successfully.
+18. **Save** your changes to activate SSO. You receive a message stating that SAML was configured successfully.
 
 ## Validate
 
