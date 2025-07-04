@@ -119,7 +119,7 @@ Use this approach if you are building a Kairos image from `Dockerfile.ubuntu` an
    docker push my-registry.io/kairos/kairos-base:6.8.0-60
    ```
 
-6. Set the BASE_IMAGE value in the `.arg` file in the `CanvOS` directory to the image name.
+6. Set the `BASE_IMAGE` value in the `.arg` file in the `CanvOS` directory to the image name.
 
    ```shell title="Example"
    BASE_IMAGE=my-registry.io/kairos/kairos-base:6.8.0-60
