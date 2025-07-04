@@ -266,7 +266,7 @@ Follow the steps below to build the artifacts using the script.
    echo "Fetching git tags..."
    git fetch --tags
    echo "Available tags:"
-   git --no-pager tag --list | sort -V
+   git --no-pager tag --list | sort --version-sort
 
    # Prompt for tag selection
    while true; do
