@@ -14,7 +14,7 @@ The following are common scenarios that you may encounter when using Packs.
 
 When deploying clusters with the <VersionedLink text="Calico" url="/integrations/packs/?pack=cni-calico"/> pack and IPv6
 enabled, Calico fails to start on hosts running specific Linux kernel versions due to missing or incompatible kernel
-modules required for `ip6tables` `MARK` support.
+modules required for `ip6tables` `MARK` support. You can observe the following error in the pod logs.
 
 ```shell
 Failed to execute ip(6)tables-restore command error=exit status 2 errorOutput=... MARK: bad value for option \"--set-mark\", or out of range (0–4294967295)...
@@ -89,7 +89,7 @@ Use this approach if you are building a Kairos image from `Dockerfile.ubuntu` an
    RUN apt-get clean && rm -rf /var/lib/apt/lists/*
    ```
 
-3. Issue the following command to generate custom Kairos base image. For Trusted Boot (Unified Kernel Image) build
+3. Issue the following command to generate a custom Kairos base image. For Trusted Boot (Unified Kernel Image) builds,
    replace `--BOOTLOADER=grub` with `--BOOTLOADER=systemd-boot`.
 
    ```shell
@@ -180,9 +180,9 @@ Use this approach if you want to override the kernel during MAAS provisioning wi
 1. To pin the kernel version during host provisioning with MAAS, create or modify the appropriate file depending on the
    image type you're deploying:
 
-   - If you use MAAS to deploy an official unmodified Ubuntu image for Agent Mode clusters, create the
+   - If you are using MAAS to deploy an official unmodified Ubuntu image for Agent Mode clusters, create the
      `/var/lib/snap/maas/current/preseeds/curtin_userdata_ubuntu` file.
-   - If you use MAAS to deploy a custom OS image, modify the
+   - If you are using MAAS to deploy a custom OS image, modify the
      `/var/lib/snap/maas/current/preseeds/curtin_userdata_custom` file.
 
    In both cases, add the following contents to pin the kernel. Replace `6.8.0-60-generic` with the required version.
