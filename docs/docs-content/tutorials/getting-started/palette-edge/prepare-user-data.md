@@ -22,7 +22,7 @@ your first Edge cluster.
 
 ## Prerequisites
 
-To complete this tutorial, you will need the following prerequisites in place.
+To complete this tutorial, ensure the following prerequisites are in place.
 
 - A [Palette account](https://www.spectrocloud.com/get-started) with
   [tenant admin](../../../tenant-settings/tenant-settings.md) access.
@@ -31,7 +31,7 @@ To complete this tutorial, you will need the following prerequisites in place.
   - 4 CPUs
   - 8 GB memory
   - 150 GB storage
-- The following software installed:
+- The following software installed on the Linux machine:
   - [Docker Engine](https://docs.docker.com/engine/install/) with `sudo` privileges. Alternatively, you can install
     [Earthly](https://earthly.dev/), in which case you will not need `sudo` privileges.
   - [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
@@ -106,8 +106,8 @@ changes and copy the generated registration token.
 
 ## Check Out Starter Code
 
-Open up a terminal window and clone the `CanvOS` repository. This repository contains the files and scripts required to
-build Edge artifacts.
+Open up a terminal window on your Linux machine and clone the `CanvOS` repository. This repository contains the files
+and scripts required to build Edge artifacts.
 
 ```shell
 git clone https://github.com/spectrocloud/CanvOS.git
@@ -122,13 +122,13 @@ cd CanvOS
 Check the available git tags.
 
 ```shell
-git tag
+git tag --sort=v:refname
 ```
 
-Check out the newest available tag. This tutorial uses the tag `v4.6.9` as an example.
+Check out the newest available tag. This tutorial uses the tag `v4.6.24` as an example.
 
 ```shell
-git checkout v4.6.9
+git checkout v4.6.24
 ```
 
 ## Create User Data
@@ -140,9 +140,8 @@ parameter block to power off the host once the Edge installation completes.
 
 :::tip
 
-The `CanvOS` repository provides a
-[user data template](https://github.com/spectrocloud/CanvOS/blob/main/user-data.template) to help you create your user
-data files.
+You can also use the [Appliance Studio](../../../deployment-modes/appliance-mode/appliance-studio.md) configuration
+Graphic User Interface (GUI) to help you create and validate your user data files.
 
 :::
 
@@ -223,7 +222,7 @@ The output should contain a success message similar to the one displayed below, 
 valid.
 
 ```text hideClipboard
-+validate-user-data | time="2025-03-14T15:23:55Z" level=info msg="Validation successful!"
++validate-user-data | time="2025-06-25T14:00:07Z" level=info msg="user data validated successfully"
 ```
 
 :::warning
