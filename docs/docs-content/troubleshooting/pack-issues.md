@@ -131,7 +131,7 @@ Use this approach if you are building a Kairos image from `Dockerfile.ubuntu` an
 
    For more information on how to build provider images and ISO artifacts for Edge deployments and how to use them in
    your cluster setup, refer to
-   [Build Edge Artifacts](../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md).
+   [Build Edge Artifacts](../clusters/edge/edgeforge-workflow/palette-canvos.md).
 
    :::
 
@@ -166,7 +166,7 @@ configuration.
 
    For more information on how to build provider images and ISO artifacts for Edge deployments and how to use them in
    your cluster setup, refer to
-   [Build Edge Artifacts](../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md). For details on
+   [Build Edge Artifacts](../clusters/edge/edgeforge-workflow/palette-canvos.md). For details on
    `Dockerfile` usage in EdgeForge, refer to the advanced workflow.
 
    :::
