@@ -36,7 +36,7 @@ To complete this tutorial, ensure the following prerequisites are in place.
   - 4 CPUs
   - 8 GB memory
   - 150 GB storage
-- Access to a private image registry. This tutorial uses [Docker Hub](https://www.docker.com/products/docker-hub/) as an
+- Access to an image registry. This tutorial uses [Docker Hub](https://www.docker.com/products/docker-hub/) as an
   example.
 - The following software installed on the Linux machine:
   - [Docker Engine](https://docs.docker.com/engine/install/) with
@@ -85,11 +85,11 @@ When the Edge host boots from the installer ISO, it applies the user data config
 :::
 
 Set a custom tag for the provider images. The tag must be an alphanumeric lowercase string. This tutorial uses
-`gs-tutorial` as an example. Additionally, replace `docker.io/spectrocloud` with the name of your registry.
+`gs-tutorial` as an example. Additionally, replace `spectrocloud` with the name of your registry.
 
 ```bash
 export CUSTOM_TAG=gs-tutorial
-export IMAGE_REGISTRY=docker.io/spectrocloud
+export IMAGE_REGISTRY=spectrocloud
 ```
 
 Next, issue the following command to create the `.arg` file using the custom tag and registry. The remaining arguments
@@ -170,7 +170,7 @@ options:
   system.uri: "{{ .spectro.pack.edge-native-byoi.options.system.registry }}/{{ .spectro.pack.edge-native-byoi.options.system.repo }}:{{ .spectro.pack.edge-native-byoi.options.system.k8sDistribution }}-{{ .spectro.system.kubernetes.version }}-{{ .spectro.pack.edge-native-byoi.options.system.peVersion }}-{{ .spectro.pack.edge-native-byoi.options.system.customTag }}"
 
 
-  system.registry: docker.io/spectrocloud
+  system.registry: spectrocloud
   system.repo: ubuntu
   system.k8sDistribution: k3s
   system.osName: ubuntu
@@ -196,25 +196,15 @@ docker images --filter=reference="*/*:*$CUSTOM_TAG"
 ```
 
 ```text hideClipboard
-REPOSITORY            TAG                                          IMAGE ID       CREATED          SIZE
-spectrocloud/ubuntu   k3s-1.32.3-v4.6.24-gs-tutorial               c9d5bb05a9ed   34 minutes ago   5.05GB
+REPOSITORY           TAG                                          IMAGE ID       CREATED          SIZE
+spectrodocs/ubuntu   k3s-1.32.3-v4.6.24-gs-tutorial               d28750baa9a6   33 minutes ago   5.05GB
+spectrodocs/ubuntu   k3s-1.32.3-v4.6.24-gs-tutorial_linux_amd64   d28750baa9a6   33 minutes ago   5.05GB
 ```
 
 ## Push Provider Images
 
-To use the provider image with your Edge deployment, push it to the image registry specified in the `.arg` file. Issue
-the following command to log in to Docker Hub. Provide your Docker ID and password when prompted.
-
-```bash
-docker login
-```
-
-```text hideClipboard
-Login Succeeded
-```
-
-Once authenticated, push the provider image to the registry so that your Edge host can download it during the cluster
-deployment.
+Push the provider image to the image registry specified in the `.arg` file, so that your Edge host can download it
+during the cluster deployment.
 
 ```bash
 docker push $IMAGE_REGISTRY/ubuntu:k3s-1.32.3-v4.6.24-$CUSTOM_TAG
@@ -402,11 +392,11 @@ Follow the steps below to build the artifacts using the script.
    OS_VERSION=${OS_VERSION:-22.04}
 
    while true; do
-       read -p "Enter Image Registry (for example, docker.io/spectrocloud): " IMAGE_REGISTRY
+       read -p "Enter Image Registry Name (for example, spectrocloud): " IMAGE_REGISTRY
        if [ -n "$IMAGE_REGISTRY" ]; then
            break
        else
-           echo "❌ Image Registry cannot be empty. Please enter a valid registry."
+           echo "❌ Image registry name cannot be empty. Please enter a valid registry."
        fi
    done
 
@@ -470,27 +460,16 @@ Follow the steps below to build the artifacts using the script.
    chmod +x edgeforge.sh
    ```
 
-3. Log in to the image registry that you will use to host the provider images. This tutorial uses Docker Hub as an
-   example. Provide your Docker ID and password when prompted.
-
-   ```bash
-   docker login
-   ```
-
-   ```text hideClipboard
-   Login Succeeded
-   ```
-
-4. Invoke the script to build the artifacts, answering the prompts.
+3. Invoke the script to build the artifacts, answering the prompts.
 
    ```shell
    ./edgeforge.sh
    ```
 
-5. Once the build is complete, the script generates a manifest in `CanvOS/manifest-profile.yaml` with predefined values
+4. Once the build is complete, the script generates a manifest in `CanvOS/manifest-profile.yaml` with predefined values
    required to create the cluster profile. Ensure to save this manifest, as you will need it for the next tutorial.
 
-6. Confirm that the Edge installer ISO and its checksum have been created correctly.
+5. Confirm that the Edge installer ISO and its checksum have been created correctly.
 
    ```bash
    ls CanvOS/build

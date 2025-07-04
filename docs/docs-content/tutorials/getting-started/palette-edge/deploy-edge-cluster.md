@@ -49,8 +49,8 @@ Review the cluster profile layers and click **Next** to proceed.
 
 :::tip
 
-We recommend enabling the overlay network when using DHCP-enabled networks to ensure stable IP addresses for the
-cluster. However, for education purposes, this tutorials does not use the overlay network. For production use or
+We recommend enabling the overlay network configuration when using DHCP-enabled networks to ensure stable IP addresses
+for the cluster. However, for education purposes, this tutorials does not use the overlay network. For production use or
 detailed configuration instructions, refer to the
 [Enable Overlay Network](../../../clusters/edge/networking/vxlan-overlay.md) guide.
 
@@ -65,7 +65,7 @@ You can use the [nmap](https://nmap.org/book/man.html) tool to scan your network
 use. Issue the following command in your terminal, replacing the example CIDR `192.168.0.0/24` with your network's CIDR.
 
     ```bash
-    nmap -sn 192.168.0.0/24
+    sudo nmap -sn 192.168.0.0/24
     ```
 
 The output displays the IP addresses that are currently in use on your network.
@@ -155,7 +155,8 @@ select **Delete**. Confirm the selection to remove the cluster profile.
 
 ### Edge Host
 
-After removing the Edge cluster and cluster profile, select **Clusters** from the left main menu.
+After removing the Edge cluster and cluster profile, select **Clusters** from the left main menu, then select **Edge
+Hosts**.
 
 Locate the Edge host configured in the [Prepare Edge Host](./prepare-edge-host.md) tutorial. Click on the three-dot menu
 and select **Delete** to delete the Edge host. Confirm the deletion by clicking **OK**. This removes the Edge host from
@@ -211,11 +212,12 @@ rm build/palette-edge-installer.iso
 rm build/palette-edge-installer.iso.sha256
 ```
 
-Next, delete the provider images.
+Next, delete the provider images both locally and from the registry where you pushed them. Issue the following command
+to delete them locally, replacing `<registry-name>` with the name of your registry.
 
 ```bash
-docker rmi ttl.sh/ubuntu:k3s-1.32.1-v4.6.9-gs-tutorial
-docker rmi ttl.sh/ubuntu:k3s-1.32.1-v4.6.9-gs-tutorial_linux_amd64
+docker rmi <registry-name>/ubuntu:k3s-1.32.1-v4.6.9-gs-tutorial
+docker rmi <registry-name>/ubuntu:k3s-1.32.1-v4.6.9-gs-tutorial_linux_amd64
 ```
 
 ## Wrap-up

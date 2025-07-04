@@ -58,17 +58,6 @@ manifest generated in the [Build Edge Artifacts](./build-edge-artifacts.md) tuto
 provider images from the image registry specified in the [Build Edge Artifacts](./build-edge-artifacts.md) tutorial
 during deployment.
 
-Since the registry is private, add the following snippet below the manifest, replacing the placeholder values with your
-actual registry credentials. The `providerCredentials.password` field will be masked when you provide it in the YAML
-file.
-
-```shell
-providerCredentials:
-    registry: <registry-address>
-    user: <registry-user>
-    password: <registry-password>
-```
-
 The following image displays the OS layer with the custom manifest and registry credentials.
 
 ![A screenshot of the cluster profile creation step with the OS layer.](/getting-started/getting-started_introduction-edge_edge-cluster-profile_byos-cluster-profile.webp)
