@@ -74,21 +74,35 @@ remainder of the permissions required by IaaS can be assigned at the resource gr
 
 #### Create Role and Assign Permissions
 
-1. Create a JSON file named `iaas_static_vnet_role.json` containing all the permissions that must be applied at the
+1. Open a terminal or command prompt. Export your Azure subscription ID to a variable.
+
+   ```shell
+   export SUBSCRIPTION_ID=<your-subscription-id>
+   ```
+
+2. Create a JSON file named `iaas_static_vnet_role.json` containing all the permissions that must be applied at the
    virtual network scope level.
 
    <PartialsComponent category="permissions" name="azure-iaas-static-vnet-role" />
 
-2. Navigate to the end of the JSON file and replace `<subscription-id>` with your Azure subscription ID.
+3. Return to your terminal or command prompt. Use `sed` to replace the variable in the JSON file with your shell exported variable. This process will also make a backup copy of the JSON file.
 
-3. Next, create a JSON file named `iaas_static_rg_sub_role.json` for the permissions that must be applied at the
+   ```shell
+   sed -i.bak 's|\$SUBSCRIPTION_ID|'"$SUBSCRIPTION_ID"'|g' iaas_static_vnet_role.json
+   ```
+
+4. Next, create a JSON file named `iaas_static_rg_sub_role.json` for the permissions that must be applied at the
    resource group or subscription scope level.
 
    <PartialsComponent category="permissions" name="azure-iaas-static-rg-sub-role" />
 
-4. Navigate to the end of the JSON file and replace `<subscription-id>` with your Azure subscription ID.
+5. Return to your terminal or command prompt. Use `sed` to replace the variable in the JSON file with your shell exported variable. This process will also make a backup copy of the JSON file.
 
-5. Create a role for each of the JSON files you created in the previous steps. Issue the following commands to create
+   ```shell
+   sed -i.bak 's|\$SUBSCRIPTION_ID|'"$SUBSCRIPTION_ID"'|g' iaas_static_rg_sub_role.json
+   ```
+
+6. Create a role for each of the JSON files you created in the previous steps. Issue the following commands to create
    the roles.
 
    ```shell
@@ -96,7 +110,7 @@ remainder of the permissions required by IaaS can be assigned at the resource gr
    az role definition create --role-definition @iaas_static_rg_sub_role.json --output table
    ```
 
-6. Export the client ID of the
+7. Export the client ID of the
    [service principal](https://learn.microsoft.com/en-us/azure/role-based-access-control/overview#security-principal)
    you want to use with Palette to a variable.
 
@@ -104,14 +118,14 @@ remainder of the permissions required by IaaS can be assigned at the resource gr
    export ASSIGNEE="<service_principal_client_id>"
    ```
 
-7. Export the resource group name and virtual network name to a variable.
+8. Export the resource group name and virtual network name to a variable.
 
    ```shell
    export RESOURCE_GROUP_NAME="<resource-group-name>"
    export VNET_NAME="<vnet-name>"
    ```
 
-8. Assign the roles to the service principal. Use the following commands to assign the roles.
+9. Assign the roles to the service principal. Use the following commands to assign the roles.
 
    ```json
    az role assignment create --assignee $ASSIGNEE \
@@ -154,19 +168,29 @@ subscription as scope instead of the resource group as scope.
 
 #### Create Role and Assign Permissions
 
-1. Create a JSON file named `iaas_dynamic_rg_sub_role.json` containing all the required permissions to create resources.
+1. Open a terminal or command prompt. Export your Azure subscription ID to a variable.
+
+   ```shell
+   export SUBSCRIPTION_ID=<your-subscription-id>
+   ```
+
+2. Create a JSON file named `iaas_dynamic_rg_sub_role.json` containing all the required permissions to create resources.
 
    <PartialsComponent category="permissions" name="azure-iaas-dynamic-rg-sub-role" />
 
-2. Navigate to the end of the JSON file and replace `<subscription-id>` with your Azure subscription ID.
+3. Return to your terminal or command prompt. Use `sed` to replace the variable in the JSON file with your shell exported variable. This process will also make a backup copy of the JSON file.
 
-3. Create a role using the JSON file you created in the previous step. Issue the following command to create the role.
+   ```shell
+   sed -i.bak 's|\$SUBSCRIPTION_ID|'"$SUBSCRIPTION_ID"'|g' iaas_dynamic_rg_sub_role.json
+   ```
+
+4. Create a role using the JSON file you created in the previous step. Issue the following command to create the role.
 
    ```shell
    az role definition create --role-definition @iaas_dynamic_rg_sub_role.json --output table
    ```
 
-4. Export the client ID of the
+5. Export the client ID of the
    [service principal](https://learn.microsoft.com/en-us/azure/role-based-access-control/overview#security-principal)
    you want to use with Palette to a variable.
 
@@ -174,13 +198,13 @@ subscription as scope instead of the resource group as scope.
    export ASSIGNEE="<service_principal_client_id>"
    ```
 
-5. Export the resource group name to a variable.
+6. Export the resource group name to a variable.
 
    ```shell
    export RESOURCE_GROUP_NAME="<resource-group-name>"
    ```
 
-6. Assign the role to the service principal. Use the following command to assign the role.
+7. Assign the role to the service principal. Use the following command to assign the role.
 
    ```shell
    az role assignment create --assignee $ASSIGNEE \
@@ -223,23 +247,45 @@ remainder of the permissions required by AKS can be assigned at the subscription
 
 #### Create Role and Assign Permissions
 
-1. Create a JSON file named `aks_static_vnet_role.json` containing all the permissions that must be applied at the
+1. Open a terminal or command prompt. Export your Azure subscription ID to a variable.
+
+   ```shell
+   export SUBSCRIPTION_ID=<your-subscription-id>
+   ```
+
+2. Create a JSON file named `aks_static_vnet_role.json` containing all the permissions that must be applied at the
    virtual network scope level.
 
    <PartialsComponent category="permissions" name="azure-aks-static-vnet-role" />
 
-2. Navigate to the end of the JSON file and replace `<subscription-id>` with your Azure subscription ID.
+3. Return to your terminal or command prompt. Use `sed` to replace the variable in the JSON file with your shell exported variable. This process will also make a backup copy of the JSON file.
 
-3. Create a JSON file named `aks_static_sub_role.json` for the permissions that must be applied at the subscription
+   ```shell
+   sed -i.bak 's|\$SUBSCRIPTION_ID|'"$SUBSCRIPTION_ID"'|g' aks_static_vnet_role.json
+   ```   
+
+4. Create a JSON file named `aks_static_sub_role.json` for the permissions that must be applied at the subscription
    scope level.
 
    <PartialsComponent category="permissions" name="azure-aks-static-sub-role" />
 
-4. Create another JSON file named `aks_static_rg_sub_role.json` for the remaining permissions required by AKS.
+5. Return to your terminal or command prompt. Use `sed` to replace the variable in the JSON file with your shell exported variable. This process will also make a backup copy of the JSON file.
+
+   ```shell
+   sed -i.bak 's|\$SUBSCRIPTION_ID|'"$SUBSCRIPTION_ID"'|g' aks_static_sub_role.json
+   ```
+
+6. Create another JSON file named `aks_static_rg_sub_role.json` for the remaining permissions required by AKS.
 
    <PartialsComponent category="permissions" name="azure-aks-static-rg-sub-role" />
 
-5. Create a role for each of the JSON files you created in the previous steps. Issue the following commands to create
+7. Return to your terminal or command prompt. Use `sed` to replace the variable in the JSON file with your shell exported variable. This process will also make a backup copy of the JSON file.
+
+   ```shell
+   sed -i.bak 's|\$SUBSCRIPTION_ID|'"$SUBSCRIPTION_ID"'|g' aks_static_rg_sub_role.json
+   ```   
+
+8. Create a role for each of the JSON files you created in the previous steps. Issue the following commands to create
    the roles.
 
    ```shell
@@ -248,40 +294,40 @@ remainder of the permissions required by AKS can be assigned at the subscription
    az role definition create --role-definition @aks_static_rg_sub_role.json --output table
    ```
 
-6. Export the client ID of the
+9. Export the client ID of the
    [service principal](https://learn.microsoft.com/en-us/azure/role-based-access-control/overview#security-principal)
    you want to use with Palette to a variable.
 
    ```shell
    export ASSIGNEE="<service_principal_client_id>"
    ```
+   
+10. Export the resource group name and virtual network name to a variable.
 
-7. Export the resource group name and virtual network name to a variable.
+      ```shell
+      export RESOURCE_GROUP_NAME="<resource-group-name>"
+      export VNET_NAME="<vnet-name>"
+      ```
 
-   ```shell
-   export RESOURCE_GROUP_NAME="<resource-group-name>"
-   export VNET_NAME="<vnet-name>"
-   ```
+ 11. Assign the roles to the service principal. Use the following commands to assign the roles.
 
-8. Assign the roles to the service principal. Use the following commands to assign the roles.
+      ```json
+      az role assignment create --assignee $ASSIGNEE \
+         --role "Palette Static Placement AKS Cluster Deployer (vnet)" \
+         --scope "/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP_NAME/providers/Microsoft.Network/virtualNetworks/$VNET_NAME"
+      ```
 
-   ```json
-   az role assignment create --assignee $ASSIGNEE \
-     --role "Palette Static Placement AKS Cluster Deployer (vnet)" \
-     --scope "/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP_NAME/providers/Microsoft.Network/virtualNetworks/$VNET_NAME"
-   ```
+      ```json
+      az role assignment create --assignee $ASSIGNEE \
+        --role "Palette Static Placement AKS Cluster Deployer (sub)" \
+        --scope "/subscriptions/$SUBSCRIPTION_ID"
+      ```
 
-   ```json
-   az role assignment create --assignee $ASSIGNEE \
-     --role "Palette Static Placement AKS Cluster Deployer (sub)" \
-     --scope "/subscriptions/$SUBSCRIPTION_ID"
-   ```
-
-   ```json
-   az role assignment create --assignee $ASSIGNEE \
-     --role "Palette Static Placement AKS Cluster Deployer (rg/sub)" \
-     --scope "/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP_NAME"
-   ```
+      ```json
+      az role assignment create --assignee $ASSIGNEE \
+        --role "Palette Static Placement AKS Cluster Deployer (rg/sub)" \
+        --scope "/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP_NAME"
+      ```
 
 #### Validate
 
@@ -313,19 +359,33 @@ resource groups within a subscription.
 
 #### Create Role and Assign Permissions
 
-1. Create a JSON file named `aks_dynamic_sub_role.json` containing all the required subscription level permissions.
+1. Open a terminal or command prompt. Export your Azure subscription ID to a variable.
+
+   ```shell
+   export SUBSCRIPTION_ID=<your-subscription-id>
+   ```
+
+2. Create a JSON file named `aks_dynamic_sub_role.json` containing all the required subscription level permissions.
 
    <PartialsComponent category="permissions" name="azure-aks-dynamic-sub-role" />
 
-2. Navigate to the end of the JSON file and replace `<subscription-id>` with your Azure subscription ID.
+3. Return to your terminal or command prompt. Use `sed` to replace the variable in the JSON file with your shell exported variable. This process will also make a backup copy of the JSON file.
 
-3. Create another JSON file named `aks_dynamic_rg_sub_role.json` containing the remaining permissions required for AKS.
+   ```shell
+   sed -i.bak 's|\$SUBSCRIPTION_ID|'"$SUBSCRIPTION_ID"'|g' aks_dynamic_sub_role.json
+   ```
+
+4. Create another JSON file named `aks_dynamic_rg_sub_role.json` containing the remaining permissions required for AKS.
 
    <PartialsComponent category="permissions" name="azure-aks-dynamic-rg-sub-role" />
 
-4. Navigate to the end of the JSON file and replace `<subscription-id>` with your Azure subscription ID.
+5. Return to your terminal or command prompt. Use `sed` to replace the variable in the JSON file with your shell exported variable. This process will also make a backup copy of the JSON file.
 
-5. Create a role for each of the JSON files you created in the previous steps. Issue the following commands to create
+   ```shell
+   sed -i.bak 's|\$SUBSCRIPTION_ID|'"$SUBSCRIPTION_ID"'|g' aks_dynamic_rg_sub_role.json
+   ```   
+
+6. Create a role for each of the JSON files you created in the previous steps. Issue the following commands to create
    the roles.
 
    ```shell
@@ -333,7 +393,7 @@ resource groups within a subscription.
    az role definition create --role-definition @aks_dynamic_rg_sub_role.json --output table
    ```
 
-6. Export the client ID of the
+7. Export the client ID of the
    [service principal](https://learn.microsoft.com/en-us/azure/role-based-access-control/overview#security-principal)
    you want to use with Palette to a variable.
 
@@ -341,14 +401,14 @@ resource groups within a subscription.
    export ASSIGNEE="<service_principal_client_id>"
    ```
 
-7. Export the resource group name to a variable.
+8. Export the resource group name to a variable.
 
    ```shell
    export RESOURCE_GROUP_NAME="<resource-group-name>"
    export VNET_NAME="<vnet-name>"
    ```
 
-8. Assign the roles to the service principal. Use the following commands to assign the roles.
+9. Assign the roles to the service principal. Use the following commands to assign the roles.
 
    ```json
    az role assignment create --assignee $ASSIGNEE \
