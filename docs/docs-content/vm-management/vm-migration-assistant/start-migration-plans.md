@@ -10,21 +10,35 @@ tags: ["vmo", "vm migration assistant"]
 
 Follow this guide to start migration plans in the VM Migration Assistant.
 
+## Limitations
+
+- You can migrate only VMs hosted in VMware vSphere 7.0 or 8.0.
+
+- You can migrate only VMs whose operating systems are present in the
+  [`virt-v2v` supported guest systems](https://libguestfs.org/virt-v2v-support.1.html) list. Refer to
+  [Verified Migrations](./vm-migration-assistant.md#verified-migrations) for a list of operating systems and migration
+  combinations verified by Spectro Cloud.
+
+- If you are migrating more than one VM in the same plan, they must all share the same network.
+
 ## Start Cold Migration Plans
 
 ### Prerequisites
 
 - A cold migration plan created and ready to start. Refer to [Create Migration Plans](./create-migration-plans.md) for
   guidance.
-- One or more VMs hosted in VMware vSphere. Only VMs whose operating systems are included under
-  [`virt-v2v` supported guest systems](https://libguestfs.org/virt-v2v-support.1.html) can be migrated.
 
-  - If you are migrating more than one VM in the same plan, they must all share the same network.
-  - Ensure that VMs operating Windows are shut down at the virtualized OS level.
+- One or more VMs hosted in VMware vSphere.
 
-<!--prettier-ignore-->
+  - VMs operating Windows must be shut down at the virtualized OS level.
+
+<!-- prettier-ignore-start -->
+
 - The <VersionedLink text="Virtual Machine Migration Assistant" url="/integrations/packs/?pack=vm-migration-assistant"/> pack must be added to your cluster profile. Refer to [Create a VM Migration Assistant Cluster Profile](./create-vm-migration-assistant-profile.md) for guidance.
-  - The VM Migration Assistant service console must be accessible from a web browser.
+
+<!-- prettier-ignore-end -->
+
+- The VM Migration Assistant service console must be accessible from a web browser.
 
 ### Start Cold Migration
 
@@ -81,18 +95,21 @@ Follow this guide to start migration plans in the VM Migration Assistant.
 
 - A warm migration plan created and ready to start. Refer to [Create Migration Plans](./create-migration-plans.md) for
   guidance.
-- One or more VMs hosted in VMware vSphere. Only VMs whose operating systems are included under
-  [`virt-v2v` supported guest systems](https://libguestfs.org/virt-v2v-support.1.html) can be migrated.
 
-  - If you are migrating more than one VM in the same plan, they must all share the same network.
-  - [Changed Block Tracking](https://knowledge.broadcom.com/external/article/315370/enabling-or-disabling-changed-block-trac.html)
-    must be enabled on your VMs.
+- One or more VMs hosted in VMware vSphere.
+
+- [Changed Block Tracking](https://knowledge.broadcom.com/external/article/315370/enabling-or-disabling-changed-block-trac.html)
+  must be enabled on your VMs.
 
 - Terminal access to execute [kubectl](https://kubernetes.io/docs/reference/kubectl/) commands on your VMO cluster.
 
-<!--prettier-ignore-->
+<!-- prettier-ignore-start -->
+
 - The <VersionedLink text="Virtual Machine Migration Assistant" url="/integrations/packs/?pack=vm-migration-assistant"/> pack must be added to your cluster profile. Refer to [Create a VM Migration Assistant Cluster Profile](./create-vm-migration-assistant-profile.md) for guidance.
-  - The VM Migration Assistant service console must be accessible from a web browser.
+
+<!-- prettier-ignore-end -->
+
+- The VM Migration Assistant service console must be accessible from a web browser.
 
 ### Start Warm Migration
 
