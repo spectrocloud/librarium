@@ -35,6 +35,8 @@ tags: ["release-notes"]
   - `kube-system`
   - `cluster-<cluster-uid>`
 
+- [AWS EKS clusters] deployed through Palette now require an **Amazon Machine Image (AMI) Type** selection when configuring worker node pools. The default AMI type is **AL2_x86_64**. Previously, AMI types were specified using the **Additional Labels** field; a dedicated **Amazon Machine Image (AMI) Type** drop-down menu replaces this method. Refer to the [Create and Manage AWS EKS Cluster](../clusters/public-cloud/aws/eks.md#node-configuration-settings) cluster guide for more information on configuring EKS node pools.    
+
 #### Features
 
 #### Improvements
