@@ -157,12 +157,12 @@ require a local Harbor registry. Built-in registries must be configured using ei
     palette content build --arch <bundle-architecture> \
      --project-id <project-id> \
      --profiles <cluster-profile-id1,cluster-profile-id2...> \
-     --name <bundle-name> \
-     --output <output-directory>
+     --name <bundle-name>
     ```
 
-    The result is a `.tar.zst` content bundle that you can use to preload into your installer. For more information
-    about how to use content bundles, refer to [Build Installer ISO](./build-installer-iso.md) or
+    The result is a `.tar.zst` content bundle that you can use to preload into your installer. The bundle is generated
+    in the `<current-directory>/output/content-bundle/` folder by default. For more information about how to use content
+    bundles, refer to [Build Installer ISO](./build-installer-iso.md) or
     [Upload Content Bundle through Local UI](../../local-ui/cluster-management/upload-content-bundle.md).
 
     :::tip
@@ -188,8 +188,7 @@ require a local Harbor registry. Built-in registries must be configured using ei
      --profiles <cluster-profile-id1,cluster-profile-id2...> \
      --cluster-definition-name <cluster-definition-name> \
      --cluster-definition-profile-ids <cluster-definition-profile-ids> \
-     --name <bundle-name> \
-     --output <output-directory>
+     --name <bundle-name>
     ```
 
     Compared with the previous command, this command has two additional flags.
@@ -199,9 +198,10 @@ require a local Harbor registry. Built-in registries must be configured using ei
     | `--cluster-definition-name`        | Filename of the cluster definition tgz file.                          |
     | `--cluster-definition-profile-ids` | List of cluster profile IDs to be included in the cluster definition. |
 
-    This command will generate a `.tgz` cluster definition file in the specified output directory. When you create a
-    cluster definition and content bundle using a single `build` command, the cluster definition is also embedded into
-    the content bundle.
+    This command will generate a `.tgz` cluster definition file in the `<current-directory>/output/` folder, and a
+    content bundle in the `<current-directory>/output/content-bundle/` folder by default. When you create a cluster
+    definition and content bundle using a single `build` command, the cluster definition is also embedded into the
+    content bundle.
 
 </TabItem>
 
