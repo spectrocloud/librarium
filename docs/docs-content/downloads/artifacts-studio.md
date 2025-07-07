@@ -9,11 +9,15 @@ sidebar_custom_props:
 tags: ["downloads", "artifact-studio"]
 ---
 
-[Artifacts Studio](https://artifact-studio.internal.spectrocloud.com/) is a unified platform that helps air-gapped and regulatory-focused organizations to populate their own internal registries with bundles, packs and installers to be used with Palette or VerteX. There are four main areas for Artifacts:
+[Artifacts Studio](https://artifact-studio.internal.spectrocloud.com/) is a unified platform that helps air-gapped and regulatory-focused organizations to populate their own internal registries with bundles, packs and installers to be used with Palette or VerteX. It provides a single location for packs and images, streamlining access and management. There are four main areas for Artifacts:
 	- Download of Palette Enterprise (binary or ISO).
 	- Download of Palette VerteX (binary or ISO).
 	- Create a pack bundle to download.
 	- Browse pack Catalog to download individual packs. 
+
+:::preview
+
+:::
 
 ![Image of the default homepage of Artifacts Studio](../../../static/assets/docs/images/downloads/downloads_artifacts-studio-main.webp)
 
@@ -22,6 +26,8 @@ tags: ["downloads", "artifact-studio"]
 1. Navigate to [Artifacts Studio](https://artifact-studio.internal.spectrocloud.com/).
 
 2. From the drop-down, select the version needed, and click **Show Binaries**.
+
+  ![Download dropdown for Palette binaries](../../../static/assets/docs/images/downloads/downloads_artifacts-studio-install-palette.webp)
 
 3. Click **Download** on Enterprise Binary or Release Iso, whichever file is appropriate for your environment. 
 
@@ -32,6 +38,8 @@ tags: ["downloads", "artifact-studio"]
 
 2. From the drop-down, select the version needed, and click **Show Binaries**.
 
+  ![Download dropdown for VerteX binaries](../../../static/assets/docs/images/downloads/downloads_artifacts-studio-install-vertex.webp)
+
 3. Click **Download** on VerteX Binary or Release Iso, whichever file is appropriate for your environment. 
 
 ## Create pack bundle
@@ -39,6 +47,12 @@ tags: ["downloads", "artifact-studio"]
 1. Navigate to [Artifacts Studio](https://artifact-studio.internal.spectrocloud.com/).
 
 2. Click on **Build bundle**.
+
+:::tip
+
+Ensure that pop-ups are enabled for [Artifacts Studio](https://artifact-studio.internal.spectrocloud.com/) to allow for multiple artifact downloads. 
+
+:::
 
 ![Image of Create pack bundle](../../../static/assets/docs/images/downloads/downloads_artifacts-studio-build-bundle.webp)
 
