@@ -19,7 +19,10 @@ The following steps will guide you on how to enable Palette SSO with
 
 ## Prerequisites
 
-- For Okta SAML to work correctly with self-hosted Palette, ensure that HTTPS is enabled and TLS is configured. For additional information, refer to the appropriate [Palette](../../../enterprise-version/system-management/ssl-certificate-management) or [VerteX](../../../vertex/system-management/ssl-certificate-management) System Address Management guide.
+- For Okta SAML to work correctly with self-hosted Palette, ensure that HTTPS is enabled and TLS is configured. For
+  additional information, refer to the appropriate
+  [Palette](../../../enterprise-version/system-management/ssl-certificate-management) or
+  [VerteX](../../../vertex/system-management/ssl-certificate-management) System Address Management guide.
 
 - A free or paid subscription with Okta. Okta provides free
   [developer subscriptions](https://developer.okta.com/signup/) for testing purposes.
@@ -150,8 +153,8 @@ process for any other team with group claims.
 3. If this is the first time you are logging in with SSO, you will be redirected to the Okta login page. Depending on
    your organization's SSO settings, this could be a simple login form or require MFA (Multi-Factor Authentication).
 
-4. Upon logging in, you are automatically added to the `Okta Team` in Palette. To verify, navigate to the left main menu, and
-   select **Users & Teams**
+4. Upon logging in, you are automatically added to the `Okta Team` in Palette. To verify, navigate to the left main
+   menu, and select **Users & Teams**
 
 5. Select the **Teams** tab and choose `Okta Team`. The list of **Team Members** is displayed on the left side of the
    **Team Details**.
