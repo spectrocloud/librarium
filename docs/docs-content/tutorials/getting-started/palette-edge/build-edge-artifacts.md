@@ -23,18 +23,22 @@ This tutorial teaches you how to build the artifacts required for your Edge depl
 learn how to reference them in Edge [cluster profiles](../../../profiles/profiles.md) and how they are used to install
 the Palette agent on hosts.
 
+![Palette Edge architecture diagram](/getting-started/getting-started_introduction-edge_edge-diagram-edgeforge.webp)
+
 ## Prerequisites
 
 To complete this tutorial, ensure the following prerequisites are in place.
 
 - You have completed the steps in the [Prepare User Data for Edge Installation](./prepare-user-data.md) tutorial,
-  including cloning the CanvOS repository and creating and validating a `user-data` file.
+  including cloning the CanvOS repository and creating and validating a user data file.
 - A physical or virtual Linux machine with an AMD64 (also known as `x86_64`) processor architecture and the following
   minimum hardware configuration:
   - 4 CPUs
   - 8 GB memory
   - 150 GB storage
-- The following software installed:
+- Access to an image registry. This tutorial uses [Docker Hub](https://www.docker.com/products/docker-hub/) as an
+  example.
+- The following software installed on the Linux machine:
   - [Docker Engine](https://docs.docker.com/engine/install/) with
     [`sudo`](https://docs.docker.com/engine/install/linux-postinstall/) privileges. Alternatively, you can install
     [Earthly](https://earthly.dev/), in which case you do not need `sudo` privileges.
@@ -58,10 +62,10 @@ git tag
 ```
 
 Check out the desired tag. We recommend using a CanvOS major version that is the same as, or older than, Palette's major
-version. This tutorial uses the tag `v4.6.9` as an example.
+version. This tutorial uses the tag `v4.6.24` as an example.
 
 ```
-git checkout v4.6.9
+git checkout v4.6.24
 ```
 
 EdgeForge leverages [Earthly](https://earthly.dev/) to build the installer ISO and provider images artifacts. A `.arg`
@@ -81,16 +85,17 @@ When the Edge host boots from the installer ISO, it applies the user data config
 :::
 
 Set a custom tag for the provider images. The tag must be an alphanumeric lowercase string. This tutorial uses
-`gs-tutorial` as an example.
+`gs-tutorial` as an example. Additionally, replace `spectrocloud` with the name of your registry.
 
 ```bash
 export CUSTOM_TAG=gs-tutorial
+export IMAGE_REGISTRY=spectrocloud
 ```
 
-Next, issue the following command to create the `.arg` file using the custom tag. The remaining arguments will use
-predefined values. For example, this tutorial uses [K3s](https://k3s.io/) version `1.32.1` as the Kubernetes
-distribution, Ubuntu as the OS distribution, and [ttl.sh](https://ttl.sh/) as the image registry. Review the
-`k8s_version.json` file in the CanvOS repository for all supported Kubernetes versions.
+Next, issue the following command to create the `.arg` file using the custom tag and registry. The remaining arguments
+use predefined values. For example, this tutorial uses [K3s](https://k3s.io/) version `1.32.3` as the Kubernetes
+distribution and Ubuntu as the OS distribution. Review the `k8s_version.json` file in the CanvOS repository for all
+supported Kubernetes versions.
 
 :::warning
 
@@ -102,12 +107,12 @@ that case, review the `Earthfile` file in the CanvOS repository for all supporte
 ```bash
 cat << EOF > .arg
 CUSTOM_TAG=$CUSTOM_TAG
-IMAGE_REGISTRY=ttl.sh
+IMAGE_REGISTRY=$IMAGE_REGISTRY
 OS_DISTRIBUTION=ubuntu
 IMAGE_REPO=ubuntu
 OS_VERSION=22.04
 K8S_DISTRIBUTION=k3s
-K8S_VERSION=1.32.1
+K8S_VERSION=1.32.3
 ISO_NAME=palette-edge-installer
 ARCH=amd64
 UPDATE_KERNEL=false
@@ -119,6 +124,13 @@ Verify that the file was created correctly using the `cat` command.
 ```
 cat .arg
 ```
+
+:::tip
+
+You can also use the [Appliance Studio](../../../deployment-modes/appliance-mode/appliance-studio.md) configuration
+Graphic User Interface (GUI) to help you create the `.arg` file.
+
+:::
 
 ## Build Artifacts
 
@@ -158,11 +170,11 @@ options:
   system.uri: "{{ .spectro.pack.edge-native-byoi.options.system.registry }}/{{ .spectro.pack.edge-native-byoi.options.system.repo }}:{{ .spectro.pack.edge-native-byoi.options.system.k8sDistribution }}-{{ .spectro.system.kubernetes.version }}-{{ .spectro.pack.edge-native-byoi.options.system.peVersion }}-{{ .spectro.pack.edge-native-byoi.options.system.customTag }}"
 
 
-  system.registry: ttl.sh
+  system.registry: spectrocloud
   system.repo: ubuntu
   system.k8sDistribution: k3s
   system.osName: ubuntu
-  system.peVersion: v4.6.9
+  system.peVersion: v4.6.24
   system.customTag: gs-tutorial
   system.osVersion: 22.04
 ```
@@ -174,8 +186,7 @@ ls build
 ```
 
 ```text hideClipboard
-palette-edge-installer.iso
-palette-edge-installer.iso.sha256
+palette-edge-installer.iso  palette-edge-installer.iso.sha256
 ```
 
 List the container images to confirm that the provider images were built successfully.
@@ -185,17 +196,18 @@ docker images --filter=reference="*/*:*$CUSTOM_TAG"
 ```
 
 ```text hideClipboard
-REPOSITORY      TAG                                IMAGE ID       CREATED          SIZE
-ttl.sh/ubuntu   k3s-1.32.1-v4.6.9-gs-tutorial      75811e3dfb42   13 minutes ago   4.93GB
+REPOSITORY           TAG                                          IMAGE ID       CREATED          SIZE
+spectrodocs/ubuntu   k3s-1.32.3-v4.6.24-gs-tutorial               d28750baa9a6   33 minutes ago   5.05GB
+spectrodocs/ubuntu   k3s-1.32.3-v4.6.24-gs-tutorial_linux_amd64   d28750baa9a6   33 minutes ago   5.05GB
 ```
 
 ## Push Provider Images
 
-Push the provider image to the [ttl.sh](https://ttl.sh/) registry so that your Edge host can download it during the
-cluster deployment.
+Push the provider image to the image registry specified in the `.arg` file, so that your Edge host can download it
+during the cluster deployment.
 
 ```bash
-docker push ttl.sh/ubuntu:k3s-1.32.1-v4.6.9-$CUSTOM_TAG
+docker push $IMAGE_REGISTRY/ubuntu:k3s-1.32.3-v4.6.24-$CUSTOM_TAG
 ```
 
 The output confirms that the image was pushed to the registry with the correct tag and is ready to be used in a cluster
@@ -203,17 +215,8 @@ profile.
 
 ```text hideClipboard
 ...
-k3s-1.32.1-v4.6.9-gs-tutorial: digest: sha256:c0045ff16f01c3fac47fdff83a051ab0c2fee1ff600b8b8e35caa6aa86736478 size: 16783
+k3s-1.32.3-v4.6.24-gs-tutorial: digest: sha256:518f937c3256e49c31b54ae72404812c99198281ddea647183b6ee8fc6938aaa size: 16576
 ```
-
-:::warning
-
-[ttl.sh](https://ttl.sh/) is a free registry and does not require you to sign in. However, this is a short-lived image
-registry, which means that the pushed images will expire after 24 hours. Refer to the
-[Build Edge Artifacts](../../../clusters/edge/edgeforge-workflow/palette-canvos/palette-canvos.md) guide to learn how to
-push images to a different registry.
-
-:::
 
 ## Automate EdgeForge
 
@@ -263,11 +266,11 @@ Follow the steps below to build the artifacts using the script.
    echo "Fetching git tags..."
    git fetch --tags
    echo "Available tags:"
-   git --no-pager tag --list
+   git --no-pager tag --list | sort --version-sort
 
    # Prompt for tag selection
    while true; do
-       read -p "Enter the CanvOS tag to checkout (for example, v4.6.5): " TAG
+       read -p "Enter the CanvOS tag to checkout (for example, v4.6.24): " TAG
 
        # Validate the tag exists
        if git --no-pager tag --list | grep --quiet --line-regexp "$TAG"; then
@@ -330,7 +333,7 @@ Follow the steps below to build the artifacts using the script.
    echo "Validating user-data file..."
    VALIDATION_OUTPUT=$(sudo ./earthly.sh +validate-user-data 2>&1)
 
-   if echo "$VALIDATION_OUTPUT" | grep --ignore-case --quiet "Validation successful"; then
+   if echo "$VALIDATION_OUTPUT" | grep --ignore-case --quiet -e "Validation successful" -e "user data validated successfully"; then
        echo "✅ User data validation passed. Proceeding..."
    else
        echo "❌ User data validation failed. Please check 'user-data' and try again."
@@ -388,8 +391,14 @@ Follow the steps below to build the artifacts using the script.
    read -p "Enter OS version [default: 22.04]: " OS_VERSION
    OS_VERSION=${OS_VERSION:-22.04}
 
-   read -p "Enter Image Registry [default: ttl.sh]: " IMAGE_REGISTRY
-   IMAGE_REGISTRY=${IMAGE_REGISTRY:-ttl.sh}
+   while true; do
+       read -p "Enter Image Registry Name (for example, spectrocloud): " IMAGE_REGISTRY
+       if [ -n "$IMAGE_REGISTRY" ]; then
+           break
+       else
+           echo "❌ Image registry name cannot be empty. Please enter a valid registry."
+       fi
+   done
 
    cat << EOF > .arg
    CUSTOM_TAG=$CUSTOM_TAG
@@ -463,19 +472,18 @@ Follow the steps below to build the artifacts using the script.
 5. Confirm that the Edge installer ISO and its checksum have been created correctly.
 
    ```bash
-   ls build
+   ls CanvOS/build
    ```
 
    ```text hideClipboard
-   palette-edge-installer.iso
-   palette-edge-installer.iso.sha256
+   palette-edge-installer.iso  palette-edge-installer.iso.sha256
    ```
 
 </details>
 
 ## Next Steps
 
-In this tutorial, you built the artifacts required for your Edge deployment. We recommend proceeding to the Create an
-Edge Cluster Profile tutorial, where you will learn how to create an Edge native cluster profile that references the
-built provider image. You will then learn how to use the installer ISO to bootstrap the Edge installation on your host
-and use it as a node for deploying your first Edge cluster.
+In this tutorial, you built the artifacts required for your Edge deployment. We recommend proceeding to the
+[Create Edge Cluster Profile](./edge-cluster-profile.md) tutorial, where you will learn how to create an Edge native
+cluster profile that references the built provider image. You will then learn how to use the installer ISO to bootstrap
+the Edge installation on your host and use it as a node for deploying your first Edge cluster.

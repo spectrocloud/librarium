@@ -50,10 +50,10 @@ backups before making any cluster profile version changes in your production env
 
 - An active Palette cluster. This tutorial builds upon steps in
   [Getting Started](../../../getting-started/getting-started.md). Complete the steps for your preferred cloud provider.
-  - [Deploy a Cluster with Azure](../../getting-started/introduction-palette/azure/deploy-k8s-cluster.md)
-  - [Deploy a Cluster with AWS](../../getting-started/introduction-palette/aws/deploy-k8s-cluster.md)
-  - [Deploy a Cluster with GCP](../../getting-started/introduction-palette/gcp/deploy-k8s-cluster.md)
-  - [Deploy a Cluster with VMware](../../getting-started/introduction-palette/vmware/deploy-k8s-cluster.md)
+  - [Deploy a Cluster with Azure](../../getting-started/palette/azure/deploy-k8s-cluster.md)
+  - [Deploy a Cluster with AWS](../../getting-started/palette/aws/deploy-k8s-cluster.md)
+  - [Deploy a Cluster with GCP](../../getting-started/palette/gcp/deploy-k8s-cluster.md)
+  - [Deploy a Cluster with VMware](../../getting-started/palette/vmware/deploy-k8s-cluster.md)
 
 ## Set Up Cluster
 
@@ -320,12 +320,12 @@ We encourage you to check out the reference resources below to learn more about 
 
 This workflow can also be completed using Terraform by following the tutorials linked below.
 
-- [Deploy and Manage K8s Cluster with Terraform - Azure](../../getting-started/introduction-palette/azure/deploy-manage-k8s-cluster-tf.md)
+- [Deploy and Manage K8s Cluster with Terraform - Azure](../../getting-started/palette/azure/deploy-manage-k8s-cluster-tf.md)
 
-- [Deploy and Manage K8s Cluster with Terraform - GCP](../../getting-started/introduction-palette/gcp/deploy-manage-k8s-cluster-tf.md)
+- [Deploy and Manage K8s Cluster with Terraform - GCP](../../getting-started/palette/gcp/deploy-manage-k8s-cluster-tf.md)
 
-- [Deploy and Manage K8s with Terraform - AWS](../../getting-started/introduction-palette/aws/deploy-manage-k8s-cluster-tf.md)
+- [Deploy and Manage K8s with Terraform - AWS](../../getting-started/palette/aws/deploy-manage-k8s-cluster-tf.md)
 
-- [Deploy and Manage K8s with Terraform - VMWare](../../getting-started/introduction-palette/vmware/deploy-manage-k8s-cluster-tf.md)
+- [Deploy and Manage K8s with Terraform - VMWare](../../getting-started/palette/vmware/deploy-manage-k8s-cluster-tf.md)
 
 :::

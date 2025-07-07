@@ -17,6 +17,8 @@ In this tutorial, you will learn how to install the Palette agent on your virtua
 host using the Edge installer ISO created in the [Build Edge Artifacts](./build-edge-artifacts.md) tutorial, and then
 register the host with Palette. Once registered, the host will be ready to be part of an Edge cluster.
 
+![Palette Edge architecture diagram](/getting-started/getting-started_introduction-edge_edge-diagram-host.webp)
+
 ## Prerequisites
 
 - A bare metal or virtual Linux host with an _AMD64_ processor architecture (also known as _x86_64_) and the following
@@ -136,7 +138,7 @@ After a few minutes, the VM screen displays an IP address and automatically regi
 using the registration token provided in the `user-data` file during the
 [Prepare User Data for Edge Installation](./prepare-user-data.md) tutorial.
 
-![A screenshot of the Edge host.](/getting-started/getting-started_introduction-edge_prepare-edge-host_edge-host-vm.webp)
+![A screenshot of the Edge host.](/getting-started/getting-started_introduction-edge_prepare-edge-host_edge-host-screen.webp)
 
 :::tip
 
@@ -166,7 +168,7 @@ After a few minutes, the device screen displays an IP address and automatically 
 using the registration token provided in the `user-data` file during the
 [Prepare User Data for Edge Installation](./prepare-user-data.md) tutorial.
 
-![A screenshot of the Edge host.](/getting-started/getting-started_introduction-edge_prepare-edge-host_edge-host-bm-screen.webp)
+![A screenshot of the Edge host.](/getting-started/getting-started_introduction-edge_prepare-edge-host_edge-host-screen.webp)
 
 :::tip
 
@@ -182,7 +184,7 @@ Hosts** tab to view the registered hosts.
 Confirm that your Edge host is listed with a **Healthy** and **Ready** status. The **Machine ID** displayed in Palette
 should match the ID displayed on the VM screen.
 
-![A screenshot of the Edge host in Palette.](/getting-started/getting-started_introduction-edge_prepare-edge-host_edge-host-bm-palette.webp)
+![A screenshot of the Edge host in Palette.](/getting-started/getting-started_introduction-edge_prepare-edge-host_edge-host-palette.webp)
 
 </TabItem>
 
@@ -191,5 +193,5 @@ should match the ID displayed on the VM screen.
 ## Next Steps
 
 In this tutorial, you learned how to install the Palette agent on your host and register the host with Palette. We
-recommend proceeding to the [Deploy Edge Cluster] tutorial to learn how to use the registered Edge host to deploy an
-Edge cluster in Palette.
+recommend proceeding to the [Deploy Edge Cluster](./deploy-edge-cluster.md) tutorial to learn how to use the registered
+Edge host to deploy an Edge cluster in Palette.

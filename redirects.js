@@ -106,7 +106,7 @@ let redirects = [
   },
   {
     from: `/getting-started/cluster-profiles`,
-    to: `/tutorials/getting-started/introduction-palette/`,
+    to: `/tutorials/getting-started/palette/introduction-palette/`,
   },
   {
     from: `/clusters/public-cloud/eks`,
@@ -600,123 +600,123 @@ let redirects = [
   },
   {
     from: "/getting-started/introduction/",
-    to: "/tutorials/getting-started/introduction-palette/",
+    to: "/tutorials/getting-started/palette/introduction-palette/",
   },
   {
     from: "/getting-started/aws/",
-    to: "/tutorials/getting-started/introduction-palette/aws/",
+    to: "/tutorials/getting-started/palette/aws/",
   },
   {
     from: "/getting-started/aws/setup/",
-    to: "/tutorials/getting-started/introduction-palette/aws/setup/",
+    to: "/tutorials/getting-started/palette/aws/setup/",
   },
   {
     from: "/getting-started/aws/create-cluster-profile/",
-    to: "/tutorials/getting-started/introduction-palette/aws/create-cluster-profile/",
+    to: "/tutorials/getting-started/palette/aws/create-cluster-profile/",
   },
   {
     from: "/getting-started/aws/deploy-k8s-cluster/",
-    to: "/tutorials/getting-started/introduction-palette/aws/deploy-k8s-cluster/",
+    to: "/tutorials/getting-started/palette/aws/deploy-k8s-cluster/",
   },
   {
     from: "/getting-started/aws/update-k8s-cluster/",
-    to: "/tutorials/getting-started/introduction-palette/aws/update-k8s-cluster/",
+    to: "/tutorials/getting-started/palette/aws/update-k8s-cluster/",
   },
   {
     from: "/getting-started/aws/deploy-manage-k8s-cluster-tf/",
-    to: "/tutorials/getting-started/introduction-palette/aws/deploy-manage-k8s-cluster-tf/",
+    to: "/tutorials/getting-started/palette/aws/deploy-manage-k8s-cluster-tf/",
   },
   {
     from: "/getting-started/aws/scale-secure-cluster/",
-    to: "/tutorials/getting-started/introduction-palette/aws/scale-secure-cluster/",
+    to: "/tutorials/getting-started/palette/aws/scale-secure-cluster/",
   },
   {
     from: "/getting-started/gcp/",
-    to: "/tutorials/getting-started/introduction-palette/gcp/",
+    to: "/tutorials/getting-started/palette/gcp/",
   },
   {
     from: "/getting-started/gcp/setup/",
-    to: "/tutorials/getting-started/introduction-palette/gcp/setup/",
+    to: "/tutorials/getting-started/palette/gcp/setup/",
   },
   {
     from: "/getting-started/gcp/create-cluster-profile/",
-    to: "/tutorials/getting-started/introduction-palette/gcp/create-cluster-profile/",
+    to: "/tutorials/getting-started/palette/gcp/create-cluster-profile/",
   },
   {
     from: "/getting-started/gcp/deploy-k8s-cluster/",
-    to: "/tutorials/getting-started/introduction-palette/gcp/deploy-k8s-cluster/",
+    to: "/tutorials/getting-started/palette/gcp/deploy-k8s-cluster/",
   },
   {
     from: "/getting-started/gcp/update-k8s-cluster/",
-    to: "/tutorials/getting-started/introduction-palette/gcp/update-k8s-cluster/",
+    to: "/tutorials/getting-started/palette/gcp/update-k8s-cluster/",
   },
   {
     from: "/getting-started/gcp/deploy-manage-k8s-cluster-tf/",
-    to: "/tutorials/getting-started/introduction-palette/gcp/deploy-manage-k8s-cluster-tf/",
+    to: "/tutorials/getting-started/palette/gcp/deploy-manage-k8s-cluster-tf/",
   },
   {
     from: "/getting-started/gcp/scale-secure-cluster/",
-    to: "/tutorials/getting-started/introduction-palette/gcp/scale-secure-cluster/",
+    to: "/tutorials/getting-started/palette/gcp/scale-secure-cluster/",
   },
   {
     from: "/getting-started/azure/",
-    to: "/tutorials/getting-started/introduction-palette/azure/",
+    to: "/tutorials/getting-started/palette/azure/",
   },
   {
     from: "/getting-started/azure/setup/",
-    to: "/tutorials/getting-started/introduction-palette/azure/setup/",
+    to: "/tutorials/getting-started/palette/azure/setup/",
   },
   {
     from: "/getting-started/azure/create-cluster-profile/",
-    to: "/tutorials/getting-started/introduction-palette/azure/create-cluster-profile/",
+    to: "/tutorials/getting-started/palette/azure/create-cluster-profile/",
   },
   {
     from: "/getting-started/azure/deploy-k8s-cluster/",
-    to: "/tutorials/getting-started/introduction-palette/azure/deploy-k8s-cluster/",
+    to: "/tutorials/getting-started/palette/azure/deploy-k8s-cluster/",
   },
   {
     from: "/getting-started/azure/update-k8s-cluster/",
-    to: "/tutorials/getting-started/introduction-palette/azure/update-k8s-cluster/",
+    to: "/tutorials/getting-started/palette/azure/update-k8s-cluster/",
   },
   {
     from: "/getting-started/azure/deploy-manage-k8s-cluster-tf/",
-    to: "/tutorials/getting-started/introduction-palette/azure/deploy-manage-k8s-cluster-tf/",
+    to: "/tutorials/getting-started/palette/azure/deploy-manage-k8s-cluster-tf/",
   },
   {
     from: "/getting-started/azure/scale-secure-cluster/",
-    to: "/tutorials/getting-started/introduction-palette/azure/scale-secure-cluster/",
+    to: "/tutorials/getting-started/palette/azure/scale-secure-cluster/",
   },
   {
     from: "/getting-started/vmware/",
-    to: "/tutorials/getting-started/introduction-palette/vmware/",
+    to: "/tutorials/getting-started/palette/vmware/",
   },
   {
     from: "/getting-started/vmware/setup/",
-    to: "/tutorials/getting-started/introduction-palette/vmware/setup/",
+    to: "/tutorials/getting-started/palette/vmware/setup/",
   },
   {
     from: "/getting-started/vmware/deploy-pcg/",
-    to: "/tutorials/getting-started/introduction-palette/vmware/deploy-pcg/",
+    to: "/tutorials/getting-started/palette/vmware/deploy-pcg/",
   },
   {
     from: "/getting-started/vmware/create-cluster-profile/",
-    to: "/tutorials/getting-started/introduction-palette/vmware/create-cluster-profile/",
+    to: "/tutorials/getting-started/palette/vmware/create-cluster-profile/",
   },
   {
     from: "/getting-started/vmware/deploy-k8s-cluster/",
-    to: "/tutorials/getting-started/introduction-palette/vmware/deploy-k8s-cluster/",
+    to: "/tutorials/getting-started/palette/vmware/deploy-k8s-cluster/",
   },
   {
     from: "/getting-started/vmware/update-k8s-cluster/",
-    to: "/tutorials/getting-started/introduction-palette/vmware/update-k8s-cluster/",
+    to: "/tutorials/getting-started/palette/vmware/update-k8s-cluster/",
   },
   {
     from: "/getting-started/vmware/deploy-manage-k8s-cluster-tf/",
-    to: "/tutorials/getting-started/introduction-palette/vmware/deploy-manage-k8s-cluster-tf/",
+    to: "/tutorials/getting-started/palette/vmware/deploy-manage-k8s-cluster-tf/",
   },
   {
     from: "/getting-started/vmware/scale-secure-cluster/",
-    to: "/tutorials/getting-started/introduction-palette/vmware/scale-secure-cluster/",
+    to: "/tutorials/getting-started/palette/vmware/scale-secure-cluster/",
   },
   {
     from: "/getting-started/additional-capabilities/",

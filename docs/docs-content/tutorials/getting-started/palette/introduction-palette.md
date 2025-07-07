@@ -4,7 +4,7 @@ title: "Introduction to Palette"
 description: "Learn about Spectro Cloud Palette."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 10
+sidebar_position: 0
 tags: ["getting-started", "tutorial"]
 ---
 
@@ -65,42 +65,10 @@ also use add-on packs or create your own custom pack to extend Kubernetes functi
 
 ## Next Steps
 
-In this section, you will learn how to create cluster profiles and use them to deploy your first cluster. Once you have
-deployed your first cluster, you will learn how to update it using Palette's cluster management functionality and how to
-automate the deployment workflow using Terraform.
+On this page, you became familiar with Palette, its core concepts, and the supported environments. Choose your preferred
+infrastructure provider from the following list to start exploring Palette:
 
-![Palette Getting Started Roadmap](/getting-started/getting-started_introduction-palette_roadmap.webp)
-
-Select your preferred infrastructure provider to start exploring Palette.
-
-<!-- vale off -->
-
-<SimpleCardGrid
-  hideNumber="true"
-  cards={[
-    {
-      title: "Deploy a Cluster to Amazon Web Services (AWS)",
-      description: "Deploy and update a Palette host cluster to AWS.",
-      buttonText: "Learn more",
-      url: "/tutorials/getting-started/introduction-palette/aws",
-    },
-    {
-      title: "Deploy a Cluster to Microsoft Azure",
-      description: "Deploy and update a Palette host cluster to Azure.",
-      buttonText: "Learn more",
-      url: "/tutorials/getting-started/introduction-palette/azure",
-    },
-    {
-      title: "Deploy a Cluster to Google Cloud Platform (GCP)",
-      description: "Deploy and update a Palette host cluster to Google Cloud.",
-      buttonText: "Learn more",
-      url: "/tutorials/getting-started/introduction-palette/gcp",
-    },
-    {
-      title: "Deploy a Cluster to VMware",
-      description: "Deploy and update a Palette host cluster to VMware vSphere.",
-      buttonText: "Learn more",
-      url: "/tutorials/getting-started/introduction-palette/vmware",
-    },
-  ]}
-/>
+- [Deploy a Cluster to Amazon Web Services (AWS)](./aws/aws.md)
+- [Deploy a Cluster to Azure](./azure/azure.md)
+- [Deploy a Cluster to Google Cloud Platform (GCP)](./gcp/gcp.md)
+- [Deploy a Cluster to VMware](./vmware/vmware.md)

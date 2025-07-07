@@ -12,8 +12,8 @@ started with GCP, start by adding your GCP account in Palette. Check out the
 
 ## Get Started
 
-Check out the [Getting Started](../../../tutorials/getting-started/introduction-palette/gcp/gcp.md) tutorials to learn
-how to deploy a cluster to GCP by using Palette.
+Check out the [Getting Started](../../../tutorials/getting-started/palette/gcp/gcp.md) tutorials to learn how to deploy
+a cluster to GCP by using Palette.
 
 ## Resources
 

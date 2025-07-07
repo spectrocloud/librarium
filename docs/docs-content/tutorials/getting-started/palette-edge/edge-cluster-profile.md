@@ -22,6 +22,8 @@ the provider images that you built in the [Build Edge Artifacts](./build-edge-ar
 cluster profile, you will proceed to the next tutorial, where you will use the installer ISO to bootstrap the Edge
 installation on your host and use it as a node for deploying your first Edge cluster.
 
+![Palette Edge architecture diagram](/getting-started/getting-started_introduction-edge_edge-diagram-profile.webp)
+
 ## Prerequisites
 
 - You have completed the steps in the [Build Edge Artifacts](./build-edge-artifacts.md) tutorial, including building the
@@ -44,7 +46,7 @@ click **Next**.
 
 The **Profile Layers** section defines the packs that compose the profile.
 
-Add the **BYOS Edge OS** pack to the OS layer. This pack enables you to use the custom OS you built in the
+Add the **BYOS Edge OS** pack to the OS layer. This pack enables you to use the custom image you built in the
 [Build Edge Artifacts](./build-edge-artifacts.md) tutorial as the operating system for the cluster nodes.
 
 | **Pack Name** | **Version** | **Registry**     | **Layer**        |
@@ -53,8 +55,10 @@ Add the **BYOS Edge OS** pack to the OS layer. This pack enables you to use the 
 
 Under **Pack Details**, select **Values** to open the YAML editor. Replace the default layer manifest with the custom
 manifest generated in the [Build Edge Artifacts](./build-edge-artifacts.md) tutorial. This makes the cluster pull the
-provider images from the [ttl.sh](https://ttl.sh/) registry during deployment. The following image displays the OS layer
-with the custom manifest.
+provider images from the image registry specified in the [Build Edge Artifacts](./build-edge-artifacts.md) tutorial
+during deployment.
+
+The following image displays the OS layer with the custom manifest and registry credentials.
 
 ![A screenshot of the cluster profile creation step with the OS layer.](/getting-started/getting-started_introduction-edge_edge-cluster-profile_byos-cluster-profile.webp)
 
@@ -63,7 +67,7 @@ version matches the version used in the provider images.
 
 | **Pack Name**         | **Version** | **Registry**     | **Layer**  |
 | --------------------- | ----------- | ---------------- | ---------- |
-| Palette Optimized K3s | 1.32.1      | Palette Registry | Kubernetes |
+| Palette Optimized K3s | 1.32.3      | Palette Registry | Kubernetes |
 
 Under **Pack Details**, select **Values** and replace the predefined `cluster-cidr` and `service-cidr` IP CIDRs if they
 overlap with the host network. For example, you can set `cluster-cidr` to `"100.64.0.0/18"` and `service-cidr` to
@@ -100,7 +104,7 @@ Finally, click **Add New Pack** again and search for the Hello Universe pack.
 
 | **Pack Name**  | **Version** | **Registry**               | **Layer**   |
 | -------------- | ----------- | -------------------------- | ----------- |
-| Hello Universe | 1.2.0       | Palette Community Registry | Application |
+| Hello Universe | 1.3.0       | Palette Community Registry | Application |
 
 Once you select the pack, Palette displays its README file, providing additional guidance on usage and configuration
 options. This pack deploys the [hello-universe](https://github.com/spectrocloud/hello-universe) demo application.
@@ -113,8 +117,6 @@ Under **Pack Details**, select **Values**, then choose **Presets**. This pack ha
    frontend, API server, and Postgres database.
 
 Select the **Enable Hello Universe API** preset. The pack manifest changes according to this selection.
-
-![A screenshot of the cluster profile creation step with the Hello Universe layer.](/getting-started/getting-started_introduction-edge_edge-cluster-profile_cluster-profile-hellouni.webp)
 
 When using this preset, you must provide two base64-encoded values: one for the authorization token and one for the
 database password. Replace the database password value with your own encoded value.
@@ -142,6 +144,8 @@ For the token, use the default encoded value listed in the
 dbPassword: "cGFzc3dvcmQ="
 authToken: "OTMxQTNCMDItOERDQy01NDNGLUExQjItNjk0MjNEMUEwQjk0"
 ```
+
+![A screenshot of the cluster profile creation step with the Hello Universe layer.](/getting-started/getting-started_introduction-edge_edge-cluster-profile_cluster-profile-hellouni.webp)
 
 Click **Confirm & Create** to save the alterations and add the pack to your cluster profile.
 
