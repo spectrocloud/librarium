@@ -86,7 +86,7 @@ remainder of the permissions required by IaaS can be assigned at the resource gr
 
    <PartialsComponent category="permissions" name="azure-iaas-static-rg-sub-role" />
 
-4. Navigate to the end of the JSON file and replace `<subscription-id>` with your Azure subscription ID.   
+4. Navigate to the end of the JSON file and replace `<subscription-id>` with your Azure subscription ID.
 
 5. Create a role for each of the JSON files you created in the previous steps. Issue the following commands to create
    the roles.
@@ -96,7 +96,9 @@ remainder of the permissions required by IaaS can be assigned at the resource gr
    az role definition create --role-definition @iaas_static_rg_sub_role.json --output table
    ```
 
-6. Export the client ID of the [service principal](https://learn.microsoft.com/en-us/azure/role-based-access-control/overview#security-principal) you want to use with Palette to a variable.
+6. Export the client ID of the
+   [service principal](https://learn.microsoft.com/en-us/azure/role-based-access-control/overview#security-principal)
+   you want to use with Palette to a variable.
 
    ```shell
    export ASSIGNEE="<service_principal_client_id>"
@@ -321,7 +323,7 @@ resource groups within a subscription.
 
    <PartialsComponent category="permissions" name="azure-aks-dynamic-rg-sub-role" />
 
-4. Navigate to the end of the JSON file and replace `<subscription-id>` with your Azure subscription ID.  
+4. Navigate to the end of the JSON file and replace `<subscription-id>` with your Azure subscription ID.
 
 5. Create a role for each of the JSON files you created in the previous steps. Issue the following commands to create
    the roles.
@@ -359,6 +361,7 @@ resource groups within a subscription.
      --role "Palette Dynamic Placement AKS Cluster Deployer (rg/sub)" \
      --scope "/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP_NAME"
    ```
+
 #### Validate
 
 1. Log in to the Azure portal.
