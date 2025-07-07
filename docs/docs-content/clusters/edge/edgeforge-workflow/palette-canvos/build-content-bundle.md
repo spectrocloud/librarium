@@ -159,6 +159,7 @@ require a local Harbor registry. Built-in registries must be configured using ei
      --profiles <cluster-profile-id1,cluster-profile-id2...> \
      --name <bundle-name>
     ```
+
     :::warning
 
     If your registry enforces image signature verification, we recommend omitting the `--arch` option.  
@@ -172,7 +173,6 @@ require a local Harbor registry. Built-in registries must be configured using ei
     However, if you omit `--arch`, the Palette CLI will pull the image as-is, preserving their existing signature.
 
     :::
-
 
     The result is a `.tar.zst` content bundle that you can use to preload into your installer. The bundle is generated
     in the `<current-directory>/output/content-bundle/` folder by default. For more information about how to use content
