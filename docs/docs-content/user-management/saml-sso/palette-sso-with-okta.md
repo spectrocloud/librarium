@@ -273,8 +273,7 @@ ensure they are given the appropriate permissions.
 4. Upon logging in, you are automatically added to the `palette-tenant-admins` team in Palette. To verify, navigate to
    the left main menu, and select **Users & Teams**.
 
-5. Select the **Teams** tab and choose **palette-tenant-admins** team.The list of **Team Members** is displayed on the
-   left side of **Team Details**.
+5. Select the **Teams** tab and choose **palette-tenant-admins** team.The list of **Team Members** is displayed on the left side of **Team Details**.
 
 ## Resources
 

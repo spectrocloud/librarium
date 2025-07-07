@@ -159,8 +159,7 @@ process for any other team with group claims.
 4. Upon logging in, you are automatically added to the `Okta Team` in Palette. To verify, navigate to the left main
    menu, and select **Users & Teams**
 
-5. Select the **Teams** tab and choose `Okta Team`. The list of **Team Members** is displayed on the left side of the
-   **Team Details**.
+5. Select the **Teams** tab and choose `Okta Team`. The list of **Team Members** is displayed on the left side of the **Team Details**.
 
 ## Resources
 
