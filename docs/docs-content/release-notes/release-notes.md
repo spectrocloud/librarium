@@ -173,8 +173,8 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
   [Virtual Machine Orchestrator](../vm-management/vm-management.md) with
   [self-hosted Palette](../enterprise-version/enterprise-version.md) installations.
 
-- The KubeVirt version in use is now v1.5.0. Other components of the VMO pack have have also been upgraded, enhancing
-  system reliability and security.
+- The KubeVirt version in use is now v1.5.0. Other components of the VMO pack have also been upgraded, enhancing system
+  reliability and security.
 
 ### Packs
 
