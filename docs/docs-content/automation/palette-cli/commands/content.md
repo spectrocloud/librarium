@@ -113,14 +113,11 @@ by the `--cluster-definition-profile-ids` flag. The definition is created in the
 default.
 
 ```shell
-palette content build --arch amd64 --project-id 1617181929 --cluster-definition-name example-definition --cluster-definition-profile-ids 12345678910
+palette content build --arch amd64 --download-cluster-config-only --project-id 1617181929 --cluster-definition-name example-definition --cluster-definition-profile-ids 12345678910
 ```
 
 ```text hideClipBoard title="Example Output"
------------------------------
-Build Summary
------------------------------
-bundle bundle saved to /home/ubuntu/output/content-bundle/bundle.tar.zst
+Downloaded cluster config at /home/ubuntu/output/example-definition.tgz
 ```
 
 The following example creates both a content bundle named `example-bundle.tar.zst` and a cluster definition named
@@ -179,11 +176,17 @@ Build Summary
 bundle example-bundle saved to /home/ubuntu/output/content-bundle/example-bundle.tar.zst
 ```
 
-You can exclude content defined in cluster profiles from a content bundle. For example, the following command creates a
-new content bundle named `example-bundle.tar.zst` using the cluster profiles specified by the `--profiles` flag, while
-excluding any images, charts, or raw files defined in the profiles listed under the `--exclude-profiles` flag. For
-instance, if both cluster profiles `12345678910` and `11121314151` include the Hello Universe pack, this pack will be
-excluded from the resulting content bundle.
+You can exclude content defined in specific cluster profiles from a content bundle using the `--exclude-profiles` flag.
+This is useful in day-2 scenarios, where a new version of a cluster profile includes most of the same content as before,
+with only minor additions, such as a new pack. By specifying the older profile version under `--exclude-profiles`, you
+can exclude any content that was already included in a previous bundle, ensuring that only the new content is added.
+
+The following command creates a new content bundle named `example-bundle.tar.zst` using the cluster profiles specified
+by the `--profiles` flag, while excluding any images, charts, or raw files defined in the profiles listed under the
+`--exclude-profiles` flag. For example, suppose you created a content bundle on day-1 from cluster profile
+`11121314151`, containing packs A, B, and C. On day-2, you create a new version of the cluster profile and add pack D.
+You can then use the `--exclude-profiles` flag to create a new bundle that includes only pack D and excludes the packs
+already present in the first profile version.
 
 ```shell
 palette content build --arch amd64 --profiles 12345678910 --project-id 1617181929 --name example-bundle --exclude-profiles 11121314151
