@@ -138,15 +138,18 @@ process for any other team with group claims.
 
 ## Validate
 
-1. Log in to Palette through SSO as an Okta user who is a member of the Okta application to verify SSO. If you are still
-   logged into Palette with a non-SSO user, log out by selecting **Logout** in the **User Menu** at the top right.
+1. Log out of Palette by selecting **Logout** in the **User Menu** at the top right.
 
    ![User Logout](/oidc-okta-images/oidc-okta_user-logout.webp)
 
 2. The Palette login screen now displays a **Sign in** button and no longer presents a username and password field.
-   Below the **Sign In** button, there is an **SSO issues? Use your password** link. This link can be used to bypass SSO
-   and log in with a local Palette account in case there is an issue with SSO and you need to access Palette without
-   SSO. Click on the **Sign in** button to log in via SSO.
+   Click on the **Sign in** button to log in via SSO.
+
+   :::tip
+
+   Below the **Sign in** button, there is an **SSO issues? Use your password** link. Use this link if you need to bypass SSO and log in with your Palette account instead.
+
+   :::
 
    ![User SSO Login](/oidc-okta-images/oidc-okta_palette-login.webp)
 

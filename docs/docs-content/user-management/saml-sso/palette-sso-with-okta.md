@@ -50,12 +50,11 @@ The following steps will guide you on how to enable Palette SSO with
 
 1. Log in to your Okta Admin console and navigate to **Applications > Applications**. Select **Create App Integration**.
 
-:::info
+   :::info
 
-Your Okta login URL follows the format `https://<your-okta-account-id>-admin.okta.com/admin/getting-started`. Replace
-`<your-okta-account-id>` with your Okta account ID.
+   Your Okta login URL follows the format `https://<your-okta-account-id>-admin.okta.com/admin/getting-started`. Replace `<your-okta-account-id>` with your Okta account ID.
 
-:::
+   :::
 
 2. Select **OIDC - OpenID Connect** for the sign-in method and **Web Application** for the application type, then click
    **Next**.
@@ -87,18 +86,18 @@ Your Okta login URL follows the format `https://<your-okta-account-id>-admin.okt
 
     ![Paste Logout URI](/oidc-okta-images/oidc-okta_paste-logout-uri.webp)
 
-:::tip
+   :::tip
 
-    The sign-in and sign-out redirect URIs are required for SSO to work with Palette, but you can also add additional redirect URIs. The URIs in the table below are useful when you want to use Okta for OIDC authentication into your Kubernetes clusters.
+   The sign-in and sign-out redirect URIs are required for SSO to work with Palette, but you can also add additional redirect URIs. The URIs in the table below are useful when you want to use Okta for OIDC authentication into your Kubernetes clusters.
 
-:::
+   
 
-| URL                                              | Type of Access                                               |
-| ------------------------------------------------ | ------------------------------------------------------------ |
-| `http://localhost:8000`                          | Using kubectl with the kube-login plugin from a workstation. |
-| `https://<fqdn_of_k8s_dashboard>/oauth/callback` | Using OIDC authentication into Kubernetes Dashboard.         |
+   | URL                                              | Type of Access                                               |
+   | ------------------------------------------------ | ------------------------------------------------------------ |
+   | `http://localhost:8000`                          | Using kubectl with the kube-login plugin from a workstation. |
+   | `https://<fqdn_of_k8s_dashboard>/oauth/callback` | Using OIDC authentication into Kubernetes Dashboard.         |
 
-    :::
+   :::
 
 11. Scroll down to the **Assignments** section and select **Allow everyone in your organization to access**. Leave the
     **Enable immediate access with Federation Broker Mode** option enabled and click **Save**.
@@ -204,9 +203,9 @@ OIDC claims required by Palette and Kubernetes.
    | Last Name     | Set this to `u_last_name`.                                                                                                                                                                                                     |
    | Spectro Team  | Keep `groups` as the default.                                                                                                                                                                                                  |
 
-![Enable Palette OIDC SSO Part 1](/oidc-okta-images/oidc-okta_configure-palette-oidc-part1.webp)
+   ![Enable Palette OIDC SSO Part 1](/oidc-okta-images/oidc-okta_configure-palette-oidc-part1.webp)
 
-![Enable Palette OIDC SSO Part 2](/oidc-okta-images/oidc-okta_configure-palette-oidc-part2.webp)
+   ![Enable Palette OIDC SSO Part 2](/oidc-okta-images/oidc-okta_configure-palette-oidc-part2.webp)
 
 5. When all the information has been entered, click **Save** to activate SSO. You receive the message **OIDC configured
    successfully**.
@@ -246,16 +245,18 @@ ensure they are given the appropriate permissions.
 
 ## Validate
 
-1. Log in to Palette through SSO as a user that is a member of the `palette-tenant-admins` group in Okta to verify that
-   users are automatically added to the `palette-tenant-admins` group in Palette. If you're still logged into Palette
-   with a non-SSO user, log out by selecting **Logout** in the **User Drop-down Menu** at the top right.
+1. Log out of Palette by selecting **Logout** in the **User Menu** at the top right.
 
    ![User Logout](/oidc-okta-images/oidc-okta_user-logout.webp)
 
 2. The Palette login screen now displays a **Sign in** button and no longer presents a username and password field.
-   Below the **Sign In** button, there is an **SSO issues? Use your password** link. This link can be used to bypass SSO
-   and log in with a local Palette account in case there is an issue with SSO and you need to access Palette without
-   SSO. Click on the **Sign in** button to log in via SSO.
+   Click on the **Sign in** button to log in via SSO.
+
+   :::tip
+
+   Below the **Sign in** button, there is an **SSO issues? Use your password** link. Use this link if you need to bypass SSO and log in with your Palette account instead.
+
+   :::
 
    ![User SSO Login](/oidc-okta-images/oidc-okta_palette-login.webp)
 
