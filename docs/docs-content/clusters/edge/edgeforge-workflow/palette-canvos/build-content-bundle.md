@@ -163,12 +163,15 @@ require a local Harbor registry. Built-in registries must be configured using ei
 
     :::warning
 
-    If your registry enforces image signature verification, you must ensure that the `--arch` option you use is
-    identical to the architecture of the signed images. If your cluster profile uses images that are multi-architecture,
-    you must omit the `--arch` flag to build a multi-architecture content bundle. This is because when you sign an
-    image, the signature is generated on the index manifest, which is different for single-architecture and
-    multi-architecture images. If your images are signed as multi-architecture images, but you specify `--arch amd64`,
-    the signature verification will fail.
+    If your registry enforces image signature verification, we recommend omitting the `--arch` option.  
+    This is because image signatures are tied to the image's digest, and that digest depends on the manifest type.
+
+    When you sign a multi-architecture image, the signature is generated on its index manifest.  
+    If you later specify `--arch`, the CLI resolves each image to a single-architecture manifest, which produces a
+    different digest.
+
+    As a result, Cosign will fail to verify the signature if it was originally created for the multi-arch image.
+    However, if you omit `--arch`, the Palette CLI will pull the image as-is, preserving their existing signature.
 
     :::
 
