@@ -52,7 +52,8 @@ The following steps will guide you on how to enable Palette SSO with
 
    :::info
 
-   Your Okta login URL follows the format `https://<your-okta-account-id>-admin.okta.com/admin/getting-started`. Replace `<your-okta-account-id>` with your Okta account ID.
+   Your Okta login URL follows the format `https://<your-okta-account-id>-admin.okta.com/admin/getting-started`. Replace
+   `<your-okta-account-id>` with your Okta account ID.
 
    :::
 
@@ -86,18 +87,18 @@ The following steps will guide you on how to enable Palette SSO with
 
     ![Paste Logout URI](/oidc-okta-images/oidc-okta_paste-logout-uri.webp)
 
-   :::tip
+:::tip
 
-   The sign-in and sign-out redirect URIs are required for SSO to work with Palette, but you can also add additional redirect URIs. The URIs in the table below are useful when you want to use Okta for OIDC authentication into your Kubernetes clusters.
+The sign-in and sign-out redirect URIs are required for SSO to work with Palette, but you can also add additional
+redirect URIs. The URIs in the table below are useful when you want to use Okta for OIDC authentication into your
+Kubernetes clusters.
 
-   
+| URL                                              | Type of Access                                               |
+| ------------------------------------------------ | ------------------------------------------------------------ |
+| `http://localhost:8000`                          | Using kubectl with the kube-login plugin from a workstation. |
+| `https://<fqdn_of_k8s_dashboard>/oauth/callback` | Using OIDC authentication into Kubernetes Dashboard.         |
 
-   | URL                                              | Type of Access                                               |
-   | ------------------------------------------------ | ------------------------------------------------------------ |
-   | `http://localhost:8000`                          | Using kubectl with the kube-login plugin from a workstation. |
-   | `https://<fqdn_of_k8s_dashboard>/oauth/callback` | Using OIDC authentication into Kubernetes Dashboard.         |
-
-   :::
+:::
 
 11. Scroll down to the **Assignments** section and select **Allow everyone in your organization to access**. Leave the
     **Enable immediate access with Federation Broker Mode** option enabled and click **Save**.
@@ -254,7 +255,8 @@ ensure they are given the appropriate permissions.
 
    :::tip
 
-   Below the **Sign in** button, there is an **SSO issues? Use your password** link. Use this link if you need to bypass SSO and log in with your Palette account instead.
+   Below the **Sign in** button, there is an **SSO issues? Use your password** link. Use this link if you need to bypass
+   SSO and log in with your Palette account instead.
 
    :::
 
@@ -273,7 +275,8 @@ ensure they are given the appropriate permissions.
 4. Upon logging in, you are automatically added to the `palette-tenant-admins` team in Palette. To verify, navigate to
    the left main menu, and select **Users & Teams**.
 
-5. Select the **Teams** tab and choose **palette-tenant-admins** team.The list of **Team Members** is displayed on the left side of **Team Details**.
+5. Select the **Teams** tab and choose **palette-tenant-admins** team.The list of **Team Members** is displayed on the
+   left side of **Team Details**.
 
 ## Resources
 
