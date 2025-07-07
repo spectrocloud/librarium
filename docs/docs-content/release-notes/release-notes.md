@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## June 28, 2025 - Release 4.7.X {#release-notes-4.7.0}
+## July 12, 2025 - Release 4.7.0 - 4.7.X {#release-notes-4.7.0}
 
 ### Security Notices
 
@@ -60,11 +60,28 @@ tags: ["release-notes"]
   accessing Azure blob storage during [Azure IaaS](../clusters/public-cloud/azure/azure.md) and
   [Azure AKS](../clusters/public-cloud/azure/aks.md) cluster provisioning.
 
+#### Bug Fixes
+
+- Fixed an issue that caused the certificate renewal job to fail once clusters provisioned with Kubernetes 1.28 or older
+  are updated to Kubernetes 1.29.
+- Fixed an issue that caused resource reconciliation to fail when deleting a pack whose resources have already been
+  removed.
+- Fixed an issue that caused
+  [Sprig template functions](../registries-and-packs/pack-constraints.md#sprig-template-functions) to fail to apply on
+  [macros](../clusters/cluster-management/macros.md) used as part of custom manifests.
+- Fixed an issue that restricted cluster tags from containing numbers, spaces and the following special characters: `_`,
+  `.`, `:`, `/`, `=`, `+`, `-`, and `@`.
+- Fixed an issue that caused Palette to repave and upgrade multiple [MAAS](../clusters/data-center/maas/maas.md) worker
+  nodes at the same time.
+- Fixed an issue that caused cluster health events to be incorrectly reported in Palette after partial broker service
+  outages.
+
 ### Edge
 
 #### Improvements
 
 <!--prettier-ignore-start-->
+
 - Palette now provides enhanced support for upgrades to
 <VersionedLink text="Palette Optimized Canonical" url="/integrations/packs/?pack=edge-canonical" />. This improvement
 ensures successful upgrades between minor and patch versions on connected and airgap Edge clusters.
@@ -79,6 +96,36 @@ ensures successful upgrades between minor and patch versions on connected and ai
   workloads.
 - [Cluster Definition](../clusters/edge/edgeforge-workflow/palette-canvos/build-installer-iso.md) has now exited Tech
   Preview and is ready for production workloads.
+
+#### Bug Fixes
+
+- Fixed an issue that caused [Edge clusters](../clusters/edge/edge.md) using Helm chart names with multiple hyphens to
+  fail to provision successfully.
+- Fixed an issue that caused the `containerd sync` job to perform unnecessary file copying and I/O operations on
+  disconnected [Edge clusters](../clusters/edge/edge.md).
+- Fixed an issue that caused API calls to add [Edge cluster](../clusters/edge/edge.md) nodes to fail.
+- Fixed an issue that caused proxy certificates to be incorrectly shown in
+  [Local UI](../clusters/edge/local-ui/local-ui.md).
+- Fixed an issue that caused the connection configuration validation in the Palette UI to fail for some valid endpoints
+  and [registration tokens](../clusters/edge/site-deployment/site-installation/edge-host-registration.md).
+- Fixed an issue that caused commands to the API delete endpoint to reset Edge hosts that are being provisioned to an
+  [Edge cluster](../clusters/edge/edge.md).
+- Fixed an issue that caused the `/usr/local` directory on Edge nodes to be repeatedly resized.
+- Fixed an issue that prevented new certificates from being reconciled in clusters provisioned with a certificate that
+  has recently expired.
+- Fixed an issue that prevented the migration of resources from the `system-upgrade` namespace to the
+  `system-upgrade-<cluster-uid>` namespace.
+- Fixed an issue that caused Palette to incorrectly report the status of successfully installed packs.
+- Fixed an issue that caused pods related to upgrades of [agent mode](../deployment-modes/agent-mode/agent-mode.md)
+  clusters to be stuck in `Terminating` state.
+- Fixed an issue that caused Palette to incorrectly report certificate errors on
+  [Edge clusters](../clusters/edge/edge.md).
+- Fixed an issue that caused certificate errors on [agent mode](../deployment-modes/agent-mode/agent-mode.md) Edge
+  clusters following a Palette upgrade.
+- Fixed an issue that caused continuous retries on malformed bundles during the deployment of
+  [Edge clusters](../clusters/edge/edge.md) instead of initializing a fresh pack download.
+- Fixed an issue that caused [Kube-vip](../clusters/edge/networking/kubevip.md) arguments to be incorrectly reconciled
+  after cluster creation.
 
 ### VerteX
 
@@ -113,6 +160,11 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
   and `name` fields. For more information, refer to the Spectro Cloud Terraform provider
   [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
 
+#### Bug Fixes
+
+- Fixed an issue that caused the [Palette CLI `content` command](../automation/palette-cli/commands/content.md) to fail
+  to bundle packs content.
+
 ### Virtual Machine Orchestrator (VMO)
 
 #### Improvements
@@ -129,6 +181,7 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 #### Pack Notes
 
 <!--prettier-ignore-start-->
+
 - Palette VerteX now supports Zot OCI-native container image registries through the
 <VersionedLink text="Zot Registry" url="/integrations/packs/?pack=zot-registry" /> pack.
 <!--prettier-ignore-end-->
