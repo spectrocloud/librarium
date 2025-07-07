@@ -19,14 +19,12 @@ The following steps will guide you on how to enable Palette SSO with
 
 ## Prerequisites
 
-- For Okta OIDC to work correctly with Self-Hosted Palette, you must enable
-  [HTTPS](../../../enterprise-version/system-management/ssl-certificate-management#enablement) and configure TLS. If you
-  are using Palette SaaS, HTTPS and TLS are already enabled.
+- For Okta SAML to work correctly with self-hosted Palette, ensure that HTTPS is enabled and TLS is configured. For additional information, refer to the appropriate [Palette](../../../enterprise-version/system-management/ssl-certificate-management) or [VerteX](../../../vertex/system-management/ssl-certificate-management) System Address Management guide.
 
 - A free or paid subscription with Okta. Okta provides free
   [developer subscriptions](https://developer.okta.com/signup/) for testing purposes.
 
-- If you want to use the same Okta application for OIDC-based SSO for your Kubernetes cluster itself, you need to
+- If you want to use the same Okta application for logging in to Palette and for accessing your Kubernetes cluster itself using OIDC-based SSO, you need to
   install [kubelogin](https://github.com/int128/kubelogin) on your local workstation to handle the retrieval of access
   tokens for your cluster.
 
@@ -127,7 +125,7 @@ OIDC claims required by Palette and Kubernetes.
    ![Add Authorization Server](/oidc-okta-images/oidc-okta_add-authz-server.webp)
 
 3. Enter a name for the server, for example, `Palette OIDC`. For the **Audience** field, paste the **Client ID** that
-   you saved in step 12. Optionally, provide a description, and **Save** your changes.
+   you saved in step 12 of [Create the Okta Application](#create-the-okta-application). Optionally, provide a description, and **Save** your changes.
 
    ![Name Authorization Server](/oidc-okta-images/oidc-okta_name-authz-server.webp)
 
@@ -135,8 +133,7 @@ OIDC claims required by Palette and Kubernetes.
 
    ![Add Claims](/oidc-okta-images/oidc-okta_add-claims.webp)
 
-5. Create two claims using the information in the following table, with each row being one claim. Select **Create** to
-   save each claim. claims in total. First, create two claims for the user information.
+5. Create two user information claims using the information in the following table, with each row being one claim. Select **Create** to save each claim.
 
    | Claim Name     | Include in token type | Value Type | Value            | Disable claim | Include In |
    | -------------- | --------------------- | ---------- | ---------------- | ------------- | ---------- |
@@ -165,7 +162,7 @@ OIDC claims required by Palette and Kubernetes.
    ![Add Access Policy](/oidc-okta-images/oidc-okta_add-access-policy.webp)
 
 10. Set the **Name** and **Description** fields to `Palette`, then change the **Assign to** option to **The following
-    clients**. In the drop-down, search for the Okta application you created in step 3; in our example, we used
+    clients**. In the drop-down, search for the Okta application you created in step 3 of [Create the Okta Application](#create-the-okta-application); in our example, we used
     `Spectro Cloud Palette OIDC`. Once selected, click **Create Policy**.
 
     ![Name Access Policy](/oidc-okta-images/oidc-okta_name-access-policy.webp)
@@ -195,7 +192,7 @@ OIDC claims required by Palette and Kubernetes.
    | Client ID     | The client identifier that you saved in step 12 of [Create the Okta Application](#create-the-okta-application).                                                                                                                |
    | Client Secret | The shared secret that you generated in step 13 of [Create the Okta Application](#create-the-okta-application)..                                                                                                               |
    | Default Teams | Leave blank if you do not want users without group claims to be assigned to a default group. If you do, enter the desired default group name. If you use this option, be careful with how much access you assign to the group. |
-   | Scopes        | Keep `openid`, `profile` and `email` as the default.                                                                                                                                                                           |
+   | Scopes        | Keep `openid`, `profile`, and `email` as the default.                                                                                                                                                                           |
    | Email         | Keep `email` as the default.                                                                                                                                                                                                   |
    | First Name    | Set this to `u_first_name`.                                                                                                                                                                                                    |
    | Last Name     | Set this to `u_last_name`.                                                                                                                                                                                                     |
@@ -266,7 +263,7 @@ ensure they are given the appropriate permissions.
 
    :::
 
-4. You are now automatically added to the `palette-tenant-admins` team in Palette. To verify, navigate to the left main
+4. Upon logging in, you are automatically added to the `palette-tenant-admins` team in Palette. To verify, navigate to the left main
    menu, and select **Users & Teams**.
 
 5. Select the **Teams** tab and choose **palette-tenant-admins** team.The list of **Team Members** is displayed on the
