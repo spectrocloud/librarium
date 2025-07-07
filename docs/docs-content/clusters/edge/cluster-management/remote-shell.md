@@ -23,7 +23,7 @@ users have root privilege on the Edge host, allowing you the permissions often r
 be enabled per Edge host by someone with sufficient permissions.
 
 After 24 hours of inactivity, the remote shell temporary user credentials and the underlying tunnel are both removed for
-security purposes. The Palette UI displays accordingly that remote shell is disabled on the host. If you want to use
+security purposes, and the Palette UI displays that remote shell is disabled on the host. If you want to use
 remote shell after 24 hours of inactivity, you need to re-enable it.
 
 ## Prerequisites
@@ -94,10 +94,10 @@ remote shell after 24 hours of inactivity, you need to re-enable it.
     remote shell connection to terminate sooner.
 
     This is different from the tunnel and credential termination caused by 24 hours of inactivity. After 12 hours of
-    inactivity, only the shell session is terminated. The underlying tunnel and the temporary user credentials still
-    remain and the UI still shows remote shell is enabled on your host. You can start a new session with the same
-    credentials. After 24 hours of inactivity, the tunnel and the credentials are both removed. The UI displays remote
-    shell status as disabled. You will need to re-enable remote shell and create new credentials.
+    inactivity, only the shell session is terminated; the underlying tunnel and the temporary user credentials
+    remain, and the UI still shows remote shell as enabled on your host, allowing you to start a new session with the same
+    credentials. After 24 hours of inactivity, the tunnel and the credentials are both removed, and the UI displays the remote
+    shell status as disabled. To use remote shell again, you will need to re-enable it and create new credentials.
 
     :::
 
