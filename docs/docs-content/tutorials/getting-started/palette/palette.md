@@ -8,7 +8,7 @@ sidebar_position: 0
 tags: ["getting-started", "tutorial", "edge"]
 ---
 
-This section gives you an overview of how to get started with Spectro Cloud Palette. You will begin by learning the core
+This section gives you an overview of how to get started with Palette. You will begin by learning the core
 concepts of Palette, then move on to creating cluster profiles, which are the blueprints for your Kubernetes stacks.
 Next, you will deploy your first cluster using the created cluster profile. After deployment, you will explore how to
 update the cluster using Palette's cluster management functionality. The Getting Started section also covers other

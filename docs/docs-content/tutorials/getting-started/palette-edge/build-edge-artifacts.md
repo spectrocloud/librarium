@@ -93,7 +93,7 @@ export IMAGE_REGISTRY=spectrocloud
 ```
 
 Next, issue the following command to create the `.arg` file using the custom tag and registry. The remaining arguments
-will use predefined values. For example, this tutorial uses [K3s](https://k3s.io/) version `1.32.3` as the Kubernetes
+use predefined values. For example, this tutorial uses [K3s](https://k3s.io/) version `1.32.3` as the Kubernetes
 distribution and Ubuntu as the OS distribution. Review the `k8s_version.json` file in the CanvOS repository for all
 supported Kubernetes versions.
 

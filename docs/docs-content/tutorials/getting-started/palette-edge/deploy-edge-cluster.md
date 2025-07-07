@@ -50,7 +50,7 @@ Review the cluster profile layers and click **Next** to proceed.
 :::tip
 
 We recommend enabling the overlay network configuration when using DHCP-enabled networks to ensure stable IP addresses
-for the cluster. However, for education purposes, this tutorials does not use the overlay network. For production use or
+for the cluster. However, for education purposes, this tutorial does not use the overlay network. For production use or
 detailed configuration instructions, refer to the
 [Enable Overlay Network](../../../clusters/edge/networking/vxlan-overlay.md) guide.
 
