@@ -22,6 +22,10 @@ You can generate temporary user credentials with root privileges or use an exist
 users have root privilege on the Edge host, allowing you the permissions often required to troubleshoot, but they must
 be enabled per Edge host by someone with sufficient permissions.
 
+After 24 hours of inactivity, the remote shell temporary user credentials and the underlying tunnel are both removed for
+security purposes, and the Palette UI displays that remote shell is disabled on the host. If you want to use
+remote shell after 24 hours of inactivity, you need to re-enable it.
+
 ## Prerequisites
 
 - In your Edge host's `sshd` configuration, `PasswordAuthentication` must be set to `true`. In most cases, `true` is the
@@ -88,6 +92,12 @@ be enabled per Edge host by someone with sufficient permissions.
     The default timeout for a remote shell session is 12 hours of inactivity. After that, the session terminates.
     Additionally, some browsers may suspend background tabs after a shorter period of inactivity, which causes the
     remote shell connection to terminate sooner.
+
+    This is different from the tunnel and credential termination caused by 24 hours of inactivity. After 12 hours of
+    inactivity, only the shell session is terminated; the underlying tunnel and the temporary user credentials
+    remain, and the UI still shows remote shell as enabled on your host, allowing you to start a new session with the same
+    credentials. After 24 hours of inactivity, the tunnel and the credentials are both removed, and the UI displays the remote
+    shell status as disabled. To use remote shell again, you will need to re-enable it and create new credentials.
 
     :::
 
