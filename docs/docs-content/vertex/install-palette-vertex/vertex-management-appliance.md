@@ -1,15 +1,19 @@
 ---
-title: "Appliance Framework for Palette VerteX"
-sidebar_label: "Appliance Framework"
-description: "Learn how to deploy Palette VerteX to your environment using the Appliance Framework"
+title: "VerteX Management Appliance"
+sidebar_label: "VerteX Management Appliance"
+description: "Learn how to deploy Palette VerteX to your environment using the VerteX Management Appliance"
 hide_table_of_contents: false
 # sidebar_custom_props:
 #   icon: "chart-diagram"
-tags: ["appliance framework", "self-hosted", "vertex"]
-sidebar_position: 0
+tags: ["verteX management appliance", "self-hosted", "vertex"]
+sidebar_position: 20
 ---
 
-The Appliance Framework is downloadable as an ISO file and is a solution for installing Palette VerteX on your
+:::preview
+
+:::
+
+The VerteX Management Appliance is downloadable as an ISO file and is a solution for installing Palette VerteX on your
 infrastructure. The ISO file contains all the necessary components needed for Palette to function. The ISO file is used
 to boot the nodes, which are then clustered to form a Palette management cluster.
 
@@ -37,7 +41,7 @@ displays the infrastructure profile for the Palette VerteX appliance.
 
 ## Supported Platforms
 
-The Appliance Framework Palette VerteX ISO can be used on the following infrastructure platforms:
+The VerteX Management Appliance can be used on the following infrastructure platforms:
 
 - VMware vSphere
 - Bare Metal
@@ -45,7 +49,7 @@ The Appliance Framework Palette VerteX ISO can be used on the following infrastr
 
 ## Installation Steps
 
-Follow the instructions to install Palette VerteX using the Appliance Framework ISO on your infrastructure platform.
+Follow the instructions to install Palette VerteX using the VerteX Management Appliance on your infrastructure platform.
 
 ### Prerequisites
 
@@ -55,6 +59,7 @@ Follow the instructions to install Palette VerteX using the Appliance Framework 
   edition="VerteX"
   version="Palette VerteX"
   iso="Palette VerteX"
+  app="VerteX Management Appliance"
 />
 
 ### Install Palette VerteX
@@ -65,6 +70,7 @@ Follow the instructions to install Palette VerteX using the Appliance Framework 
   edition="VerteX"
   version="Palette VerteX"
   iso="Palette VerteX"
+  app="VerteX Management Appliance"
 />
 
 ### Validate
@@ -75,6 +81,7 @@ Follow the instructions to install Palette VerteX using the Appliance Framework 
   edition="VerteX"
   version="Palette VerteX"
   iso="Palette VerteX"
+  app="VerteX Management Appliance"
 />
 
 ## Upload Packs to Palette VerteX
@@ -90,6 +97,7 @@ Follow the instructions to upload packs to your Palette VerteX instance. Packs a
   edition="VerteX"
   version="Palette VerteX"
   iso="Palette VerteX"
+  app="VerteX Management Appliance"
 />
 
 ### Upload Packs
@@ -100,6 +108,7 @@ Follow the instructions to upload packs to your Palette VerteX instance. Packs a
   edition="VerteX"
   version="Palette VerteX"
   iso="Palette VerteX"
+  app="VerteX Management Appliance"
 />
 
 ### Validate
@@ -110,6 +119,7 @@ Follow the instructions to upload packs to your Palette VerteX instance. Packs a
   edition="VerteX"
   version="Palette VerteX"
   iso="Palette VerteX"
+  app="VerteX Management Appliance"
 />
 
 ## Next Steps

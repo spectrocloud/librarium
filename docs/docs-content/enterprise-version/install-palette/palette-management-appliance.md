@@ -1,17 +1,21 @@
 ---
-title: "Appliance Framework for Self-Hosted Palette"
-sidebar_label: "Appliance Framework"
-description: "Learn how to deploy self-hosted Palette to your environment using the Appliance Framework"
+title: "Palette Management Appliance"
+sidebar_label: "Palette Management Appliance"
+description: "Learn how to deploy self-hosted Palette to your environment using the Palette Management Appliance"
 hide_table_of_contents: false
 # sidebar_custom_props:
 #   icon: "chart-diagram"
-tags: ["appliance framework", "self-hosted", "enterprise"]
-sidebar_position: 0
+tags: ["palette management appliance", "self-hosted", "enterprise"]
+sidebar_position: 20
 ---
 
-The Appliance Framework is downloadable as an ISO file and is a solution for installing self-hosted Palette on your
-infrastructure. The ISO file contains all the necessary components needed for Palette to function. The ISO file is used
-to boot the nodes, which are then clustered to form a Palette management cluster.
+:::preview
+
+:::
+
+The Palette Management Appliance is downloadable as an ISO file and is a solution for installing self-hosted Palette on
+your infrastructure. The ISO file contains all the necessary components needed for Palette to function. The ISO file is
+used to boot the nodes, which are then clustered to form a Palette management cluster.
 
 Once Palette has been installed, you can download pack bundles to create your cluster profiles. You will then be able to
 deploy clusters in your environment.
@@ -37,7 +41,7 @@ appliance.
 
 ## Supported Platforms
 
-The Appliance Framework self-hosted Palette ISO can be used on the following infrastructure platforms:
+The Palette Management Appliance can be used on the following infrastructure platforms:
 
 - VMware vSphere
 - Bare Metal
@@ -45,7 +49,7 @@ The Appliance Framework self-hosted Palette ISO can be used on the following inf
 
 ## Installation Steps
 
-Follow the instructions to install Palette using the Appliance Framework ISO on your infrastructure platform.
+Follow the instructions to install Palette using the Palette Management Appliance on your infrastructure platform.
 
 ### Prerequisites
 
@@ -55,6 +59,7 @@ Follow the instructions to install Palette using the Appliance Framework ISO on 
   edition="Palette"
   version="Palette"
   iso="Palette Enterprise"
+  app="Palette Management Appliance"
 />
 
 ### Install Palette
@@ -65,6 +70,7 @@ Follow the instructions to install Palette using the Appliance Framework ISO on 
   edition="Palette"
   version="Palette"
   iso="Palette Enterprise"
+  app="Palette Management Appliance"
 />
 
 ### Validate
@@ -75,6 +81,7 @@ Follow the instructions to install Palette using the Appliance Framework ISO on 
   edition="Palette"
   version="Palette"
   iso="Palette Enterprise"
+  app="Palette Management Appliance"
 />
 
 ## Upload Packs to Palette
@@ -90,6 +97,7 @@ Follow the instructions to upload packs to your Palette instance. Packs are used
   edition="Palette"
   version="Palette"
   iso="Palette Enterprise"
+  app="Palette Management Appliance"
 />
 
 ### Upload Packs
@@ -100,6 +108,7 @@ Follow the instructions to upload packs to your Palette instance. Packs are used
   edition="Palette"
   version="Palette"
   iso="Palette Enterprise"
+  app="Palette Management Appliance"
 />
 
 ### Validate
@@ -110,6 +119,7 @@ Follow the instructions to upload packs to your Palette instance. Packs are used
   edition="Palette"
   version="Palette"
   iso="Palette Enterprise"
+  app="Palette Management Appliance"
 />
 
 ## Next Steps

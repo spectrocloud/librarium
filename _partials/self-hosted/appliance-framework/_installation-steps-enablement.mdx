@@ -117,7 +117,7 @@ partial_name: installation-steps-enablement
 29. For **Basic Information**, provide a name for the cluster and optional tags in `key:value` format.
 
 30. In **Cluster Profile**, the **Imported Applications preview** section displays the applications that are included
-    with the Appliance Framework. These applications are pre-configured and used to deploy your {props.version} management
+    with the {props.app}. These applications are pre-configured and used to deploy your {props.version} management
     cluster.
 
     Leave the default options in place and click **Next**.
@@ -210,7 +210,7 @@ partial_name: installation-steps-enablement
     | **Option**               | **Description**                                                                                                                                                                           | **Type**      | **Default**                                                                                      |
     | ------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------- | ------------------------------------------------------------------------------------------------ |
     | **Architecture**         | The CPU architecture of the nodes. This is used to ensure compatibility with the applications operating on the nodes.                                                                       | String (enum) | **`amd64`**                                                                                      |
-    | **Add Edge Hosts**       | Click **Add Item** and select the other hosts that you installed using the Appliance Framework ISO. These hosts will be added to the node pool. Each pool must contain at least one node. | N/A           | - **Control Plane Pool** = _Current host selected_ <br /> - **Worker Pool** = _No host selected_ |
+    | **Add Edge Hosts**       | Click **Add Item** and select the other hosts that you installed using the {props.app} ISO. These hosts will be added to the node pool. Each pool must contain at least one node. | N/A           | - **Control Plane Pool** = _Current host selected_ <br /> - **Worker Pool** = _No host selected_ |
     | **NIC Name**             | The name of the network interface card (NIC) to use for the nodes. Leave on **Auto** to let the system choose the appropriate NIC, or select one manually from the drop-down menu.        | N/A           | **Auto**                                                                                         |
     | **Host Name (Optional)** | The hostname for the nodes. This is used to identify the nodes in the cluster. A generated hostname is provided automatically, and you can adjust to your requirements.                   | String        | **`edge-*`**                                                                                     |
 

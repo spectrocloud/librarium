@@ -12,28 +12,28 @@ Palette is available as a self-hosted application that you install in your envir
 dedicated Palette environment hosted on VMware instances or in an existing Kubernetes cluster. Palette is available in
 the following modes:
 
-| **Method**          | **Supported Platforms**  | **Description**                                                       | **Install Guide**                                          |
-| ------------------- | ------------------------ | --------------------------------------------------------------------- | ---------------------------------------------------------- |
-| Palette CLI         | VMware                   | Install Palette in VMware environment.                                | [Install on VMware](install-on-vmware/install.md)          |
-| Helm Chart          | Kubernetes               | Install Palette using a Helm Chart in an existing Kubernetes cluster. | [Install on Kubernetes](install-on-kubernetes/install.md)  |
-| Appliance Framework | VMware, Bare Metal, MAAS | Install Palette using the Appliance Framework ISO file.               | [Install with Appliance Framework](appliance-framework.md) |
+| **Method**                               | **Supported Platforms**  | **Description**                                                       | **Install Guide**                                                            |
+| ---------------------------------------- | ------------------------ | --------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| Palette CLI                              | VMware                   | Install Palette in VMware environment.                                | [Install on VMware](install-on-vmware/install.md)                            |
+| Helm Chart                               | Kubernetes               | Install Palette using a Helm Chart in an existing Kubernetes cluster. | [Install on Kubernetes](install-on-kubernetes/install.md)                    |
+| <TpBadge /> Palette Management Appliance | VMware, Bare Metal, MAAS | Install Palette using the Palette Management Appliance ISO file.      | [Install with Palette Management Appliance](palette-management-appliance.md) |
 
 ## Airgap Installation
 
 You can also install Palette in an airgap environment. For more information, refer to the
 [Airgap Installation](./airgap.md) section.
 
-| **Method**          | **Supported Airgap Platforms** | **Description**                                                                                                        | **Install Guide**                                                                     |
-| ------------------- | ------------------------------ | ---------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| Palette CLI         | VMware                         | Install Palette in VMware environment using your own OCI registry server.                                              | [VMware Airgap Install](./install-on-vmware/airgap-install/airgap-install.md)         |
-| Helm Chart          | Kubernetes                     | Install Palette using a Helm Chart in an existing Kubernetes cluster with your own OCI registry server OR use AWS ECR. | [Kubernetes Airgap Install](./install-on-kubernetes/airgap-install/airgap-install.md) |
-| Appliance Framework | VMware, Bare Metal, MAAS       | Install Palette using the Appliance Framework ISO file.                                                                | [Install with Appliance Framework](appliance-framework.md)                            |
+| **Method**                               | **Supported Airgap Platforms** | **Description**                                                                                                        | **Install Guide**                                                                     |
+| ---------------------------------------- | ------------------------------ | ---------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| Palette CLI                              | VMware                         | Install Palette in VMware environment using your own OCI registry server.                                              | [VMware Airgap Install](./install-on-vmware/airgap-install/airgap-install.md)         |
+| Helm Chart                               | Kubernetes                     | Install Palette using a Helm Chart in an existing Kubernetes cluster with your own OCI registry server OR use AWS ECR. | [Kubernetes Airgap Install](./install-on-kubernetes/airgap-install/airgap-install.md) |
+| <TpBadge /> Palette Management Appliance | VMware, Bare Metal, MAAS       | Install Palette using the Palette Management Appliance ISO file.                                                       | [Install with Palette Management Appliance](palette-management-appliance.md)          |
 
 The next sections provide sizing guidelines we recommend you review before installing Palette in your environment.
 
 ## Size Guidelines
 
-<PartialsComponent category="self-hosted" name="size-guidelines" edition="Palette" />
+<PartialsComponent category="self-hosted" name="size-guidelines" edition="Palette" app="Palette Management Appliance" />
 
 ## Kubernetes Requirements
 
