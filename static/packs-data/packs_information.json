@@ -176,10 +176,6 @@
     "description": "Flannel is a network layer, layer three, fabric for Kubernetes. It is designed to work with Linux routing infrastructure and creates a virtual network that gives each computing host a subnet. Flannel uses either the Kubernetes API or etcd directly to store the network configuration, the allocated subnets, and any auxiliary data such as the host’s public IP address."
   },
   {
-    "name": "cni-cilium",
-    "description": "The Cilium agent runs on all clusters and servers to provide networking, security and observability to the workload running on that node."
-  },
-  {
     "name": "csi-azure",
     "description": "Azure Disk CSI Driver allows Kubernetes to access Azure Disk volumes. The driver is implemented as a Container Storage Interface (CSI) plugin."
   },
@@ -497,10 +493,6 @@
   },
   {
     "name": "cni-cilium-oss",
-    "description": "Cilium is an open-source software for securing and observing network connectivity between cloud-native container workloads."
-  },
-  {
-    "name": "cni-cilium",
     "description": "Cilium is an open-source software for securing and observing network connectivity between cloud-native container workloads."
   },
   {

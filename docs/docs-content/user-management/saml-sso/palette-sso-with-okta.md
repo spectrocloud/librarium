@@ -19,14 +19,17 @@ The following steps will guide you on how to enable Palette SSO with
 
 ## Prerequisites
 
-- For Okta OIDC to work correctly with Palette, you must enable HTTPS and configure TLS.
+- For Okta SAML to work correctly with self-hosted Palette, ensure that HTTPS is enabled and TLS is configured. For
+  additional information, refer to the appropriate
+  [Palette](../../../enterprise-version/system-management/ssl-certificate-management) or
+  [VerteX](../../../vertex/system-management/ssl-certificate-management) System Address Management guide.
 
-- You need to have either a free or paid subscription with Okta. Okta provides free
+- A free or paid subscription with Okta. Okta provides free
   [developer subscriptions](https://developer.okta.com/signup/) for testing purposes.
 
-- If you want to use the same Okta application for OIDC-based SSO into your Kubernetes cluster itself, you need to
-  install [kubelogin](https://github.com/int128/kubelogin) on your local workstation to handle retrieval of access
-  tokens for your cluster.
+- If you want to use the same Okta application for logging in to Palette and for accessing your Kubernetes cluster
+  itself using OIDC-based SSO, you need to install [kubelogin](https://github.com/int128/kubelogin) on your local
+  workstation to handle the retrieval of access tokens for your cluster.
 
 - Palette requires the following claims to be present in the OIDC token:
 
@@ -45,66 +48,70 @@ The following steps will guide you on how to enable Palette SSO with
 
 ### Create the Okta Application
 
-1. Log in to your Okta Admin console and navigate to **Applications** --> **Applications**. Click the **Create App
-   Integration** button.
+1. Log in to your Okta Admin console and navigate to **Applications > Applications**. Select **Create App Integration**.
 
    :::info
 
-   Your Okta login URL has the following format, `https://{your-okta-account-id}-admin.okta.com/admin/getting-started`.
-   Replace `{your-okta-account-id}` with your Okta account ID.
+   Your Okta login URL follows the format `https://<your-okta-account-id>-admin.okta.com/admin/getting-started`. Replace
+   `<your-okta-account-id>` with your Okta account ID.
 
    :::
 
-2. In the screen that opens, select **OIDC - OpenID Connect**` for the sign-in method, then select **Web Application**
-   for the application type. Then click **Next**.
+2. Select **OIDC - OpenID Connect** for the sign-in method and **Web Application** for the application type, then click
+   **Next**.
 
-3. The following screen allows you to configure the new Web App Integration. On the **App integration name** field,
-   change the name from `My Web App` to `Spectro Cloud Palette OIDC`. If desired, you can also upload a logo for the
-   application. Leave the **Grant type** to its default value - **Authorization Code**.
+3. On the **New Web App Integration** page, change the name from `My Web App` to `Spectro Cloud Palette OIDC`. Leave the
+   **Grant type** set to its default value of **Authorization Code**.
 
    ![Configure General Settings](/oidc-okta-images/oidc-okta_okta-general-settings.webp)
 
-4. Open a web browser and navigate to your Palette subscription. Navigate to **Tenant Settings** --> **SSO** and click
-   **OIDC**. Click the button next to **Callback URL** to copy the value to the clipboard.
+4. Open a new browser tab and log in to [Palette](https://console.spectrocloud.com/) as a tenant admin.
+
+5. From the left main menu, select **Tenant Settings**.
+
+6. On the **Tenant Settings Menu**, select **SSO**, and choose an **SSO Auth type** of **OIDC**.
+
+7. Scroll to the **Callback URL** field and select the clipboard icon to copy the URL.
 
    ![Copy Callback URL](/oidc-okta-images/oidc-okta_copy-callback-url.webp)
 
-5. Switch back to your Okta Admin console and paste the copied value into the **Sign-in redirect URIs** field, replacing
-   the existing value:
+8. Return to your Okta Admin console and paste the copied value into the **Sign-in redirect URIs** field, replacing the
+   existing value.
 
    ![Paste Redirect URI](/oidc-okta-images/oidc-okta_paste-redirect-uri.webp)
 
-6. Switch back to Palette in the web browser and click the button next to **Logout URL** to copy the value to the
-   clipboard.
+9. Return to [Palette](https://console.spectrocloud.com/). On the **Manage SSO** page, select the **Logout URL**
+   clipboard icon to copy the URL.
 
-7. Switch back to your Okta Admin console and paste the copied value into the **Redirect URI** field, then click **Add**
-   to add it to the list:
+10. Return to your Okta Admin console and paste the copied value into the **Sign-out redirect URIs** field.
 
-   ![Paste Logout URI](/oidc-okta-images/oidc-okta_paste-logout-uri.webp)
+    ![Paste Logout URI](/oidc-okta-images/oidc-okta_paste-logout-uri.webp)
 
-8. These two redirect URIs are required for SSO to work with Palette. You can also add additional redirect URIs. The
-   URIs in the table below are useful when you want to use Okta for OIDC authentication into your Kubernetes clusters.
+:::tip
 
-   | URL                                              | Type of Access                                               |
-   | ------------------------------------------------ | ------------------------------------------------------------ |
-   | `http://localhost:8000`                          | Using kubectl with the kube-login plugin from a workstation. |
-   | `https://<fqdn_of_k8s_dashboard>/oauth/callback` | Using OIDC authentication into Kubernetes Dashboard.         |
+The sign-in and sign-out redirect URIs are required for SSO to work with Palette, but you can also add additional
+redirect URIs. The URIs in the table below are useful when you want to use Okta for OIDC authentication into your
+Kubernetes clusters.
 
-9. When you have completed entering redirect URIs, scroll down to the **Assignments** section and section and select
-   **Allow everyone in your organization to access**. Leave the **Enable immediate access with Federation Broker Mode**
-   option enabled and click **Save**.
+| URL                                              | Type of Access                                               |
+| ------------------------------------------------ | ------------------------------------------------------------ |
+| `http://localhost:8000`                          | Using kubectl with the kube-login plugin from a workstation. |
+| `https://<fqdn_of_k8s_dashboard>/oauth/callback` | Using OIDC authentication into Kubernetes Dashboard.         |
 
-   ![Configure Assignments](/oidc-okta-images/oidc-okta_assignments.webp)
+:::
 
-10. You have now created the Okta Application! Next, you need to retrieve the Client ID and Client Secret information,
-    which you will use in the following steps. You should have landed on the **General** tab of your Okta Application.
-    Click the **Copy to clipboard** button next to the **Client ID** to copy the secret value and save it somewhere. You
-    will need this value for later.
+11. Scroll down to the **Assignments** section and select **Allow everyone in your organization to access**. Leave the
+    **Enable immediate access with Federation Broker Mode** option enabled and click **Save**.
 
-    ![Copy Client ID](/oidc-okta-images/oidc-okta_copy-client-id.webp)
+    ![Configure the Assignments](/oidc-okta-images/oidc-okta_assignments.webp)
 
-11. Click the **Copy to clipboard** button next to the **Client Secret** to copy the secret value and save it. You will
-    need this value for a later step.
+12. From the **General** tab of your Okta application, select the **Copy to clipboard** icon beside **Client ID** to
+    copy the ID to your clipboard. Save this value, as you will need it later.
+
+    ![Copy the Client ID](/oidc-okta-images/oidc-okta_copy-client-id.webp)
+
+13. Select the **Copy to clipboard** icon beside **Client Secret** to copy the secret to your clipboard. Save this
+    value, as you will need it later.
 
     ![Copy Shared Secret](/oidc-okta-images/oidc-okta_copy-shared-secret.webp)
 
@@ -114,133 +121,144 @@ To ensure Okta issues OIDC tokens with the correct claims, you must create a cus
 Authorization Server is required to customize the authorization tokens issued by Okta so that they contain the necessary
 OIDC claims required by Palette and Kubernetes.
 
-12. Navigate to **Security** --> **API** and on the **Authorization Servers** tab and click **Add Authorization
-    Server**.
+1. From the left main menu of your Okta admin console, select **Security > API**.
 
-    ![Add Authorization Server](/oidc-okta-images/oidc-okta_add-authz-server.webp)
+2. On the **Authorization Servers** tab, select **Add Authorization Server**.
 
-13. Enter a name for the server, for example `Palette OIDC`. For the **Audience** field, enter the client identifier
-    that you saved in step **10**. Optionally provide a description. Then click **Save**.
+   ![Add Authorization Server](/oidc-okta-images/oidc-okta_add-authz-server.webp)
 
-    ![Name Authorization Server](/oidc-okta-images/oidc-okta_name-authz-server.webp)
+3. Enter a name for the server, for example, `Palette OIDC`. For the **Audience** field, paste the **Client ID** that
+   you saved in step 12 of [Create the Okta Application](#create-the-okta-application). Optionally, provide a
+   description, and **Save** your changes.
 
-14. Navigate to the **Claims** tab and click **Add Claim**.
+   ![Name Authorization Server](/oidc-okta-images/oidc-okta_name-authz-server.webp)
 
-    ![Add Claims](/oidc-okta-images/oidc-okta_add-claims.webp)
+4. Navigate to the **Claims** tab and select **Add Claim**.
 
-15. Enter the required information from the following tables below and click **Create**. Use this flow to create three
-    claims in total. First, create two claims for the user information.
+   ![Add Claims](/oidc-okta-images/oidc-okta_add-claims.webp)
 
-    | Claim Name     | Include in token type | Value Type | Value            | Disable claim | Include In |
-    | -------------- | --------------------- | ---------- | ---------------- | ------------- | ---------- |
-    | `u_first_name` | ID Token (Always)     | Expression | `user.firstName` | Unchecked     | Any scope  |
-    | `u_last_name`  | ID Token (Always)     | Expression | `user.lastName`  | Unchecked     | Any scope  |
+5. Create two user information claims using the information in the following table, with each row being one claim.
+   Select **Create** to save each claim.
 
-16. Next, create a claim for group membership. The example below will include the names of any groups that the Okta user
-    is a member of, that start with `palette-`, in the `groups` claim of the ticket. For Palette SSO, Palette will make
-    the user a member of Teams in Palette that have the identical name.
+   | Claim Name     | Include in token type | Value Type | Value            | Disable claim | Include In |
+   | -------------- | --------------------- | ---------- | ---------------- | ------------- | ---------- |
+   | `u_first_name` | ID Token (Always)     | Expression | `user.firstName` | Unchecked     | Any scope  |
+   | `u_last_name`  | ID Token (Always)     | Expression | `user.lastName`  | Unchecked     | Any scope  |
 
-    | Claim Name | Include in token type | Value Type | Filter                  | Disable claim | Include In |
-    | ---------- | --------------------- | ---------- | ----------------------- | ------------- | ---------- |
-    | `groups`   | ID Token (Always)     | Groups     | Starts with: `palette-` | Unchecked     | Any scope  |
+6. Next, create a claim for group membership. The example below includes the names of any groups that the Okta user is a
+   member of that start with `palette-` in the `groups` claim of the ticket. For Palette SSO, Palette makes the user a
+   member of a Palette team that has an identical name.
 
-    ![Claims Result](/oidc-okta-images/oidc-okta_claims-result.webp)
+   | Claim Name | Include in token type | Value Type | Filter                  | Disable claim | Include In |
+   | ---------- | --------------------- | ---------- | ----------------------- | ------------- | ---------- |
+   | `groups`   | ID Token (Always)     | Groups     | Starts with: `palette-` | Unchecked     | Any scope  |
 
-17. Click on **\<-- Back to Authorization Servers** at the top of the page to navigate back to the list of all servers.
-    The authorization server you created is displayed in the list. Select the **Issuer URI** shown and copy it to the
-    clipboard. Save this value as you will use it in a later step.
+   ![Claims Result](/oidc-okta-images/oidc-okta_claims-result.webp)
 
-    ![Get Issuer URI](/oidc-okta-images/oidc-okta_get-issuer-uri.webp)
+7. At the top of the page, select the **Back to Authorization Servers** breadcrumb to return to your list of servers.
 
-18. Navigate to the **Access Policies** tab and click **Add Policy**.
+8. The authorization server you created is displayed in the list. Select the **Issuer URI** shown and copy it to the
+   clipboard. Save this value, as you will need it later.
 
-    ![Add Access Policy](/oidc-okta-images/oidc-okta_add-access-policy.webp)
+   ![Get Issuer URI](/oidc-okta-images/oidc-okta_get-issuer-uri.webp)
 
-19. Set the **Name** and **Description** fields to `Palette`, then change the **Assign to** option to the Okta
-    Application you created in step three -`Spectro Cloud Palette OIDC`. Type in the first few characters of the
-    application name and wait for a search result to come up that you can click on.
+9. Select the Palette OIDC application and navigate to the **Access Policies** tab. Select **Add Policy**.
+
+   ![Add Access Policy](/oidc-okta-images/oidc-okta_add-access-policy.webp)
+
+10. Set the **Name** and **Description** fields to `Palette`, then change the **Assign to** option to **The following
+    clients**. In the drop-down, search for the Okta application you created in step 3 of
+    [Create the Okta Application](#create-the-okta-application); in our example, we used `Spectro Cloud Palette OIDC`.
+    Once selected, click **Create Policy**.
 
     ![Name Access Policy](/oidc-okta-images/oidc-okta_name-access-policy.webp)
 
-20. Click the **Add rule** button to add a rule to this Access Policy:
+11. Select **Add rule** to add a rule to this Access Policy.
 
     ![Add Policy Rule](/oidc-okta-images/oidc-okta_add-policy-rule.webp)
 
-21. Set the **Rule Name** to `AuthCode`. Then deselect all Grant types but one, only leaving **Authorization Code**
-    selected. Then click **Create Rule**.
+12. Set the **Rule Name** to `AuthCode` and deselect all **Core Grant** options except **Authorization Code**. When
+    finished, select **Create Rule**.
 
     ![Configure Policy Rule](/oidc-okta-images/oidc-okta_configure-policy-rule.webp)
 
-You have now completed all configuration steps in Okta.
-
 ### Enable OIDC SSO in Palette
 
-22. Open a web browser and navigate to your [Palette](https://console.spectrocloud.com) subscription. From the left
-    **Main Menu**, select **Tenant Settings** and click on **SSO**. Next click on **OIDC**. Enter the following
-    information.
+1. Return to [Palette](https://console.spectrocloud.com/). If you have been logged out, sign in again as a tenant admin.
 
-    | Parameter     | Value                                                                                                                                                                                                                         |
-    | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | Issuer URL    | The Issuer URI that you saved in step **15**.                                                                                                                                                                                 |
-    | Client ID     | The client identifier that you saved in step **10**.                                                                                                                                                                          |
-    | Client Secret | The shared secret that you generated in step **11**.                                                                                                                                                                          |
-    | Default Teams | Leave blank if you don't want users without group claims to be assigned to a default group. If you do, enter the desired default group name. If you use this option, be careful with how much access you assign to the group. |
-    | Scopes        | Keep `openid`, `profile` and `email` as the default.                                                                                                                                                                          |
-    | Email         | Keep `email` as the default.                                                                                                                                                                                                  |
-    | First Name    | Set this to `u_first_name`.                                                                                                                                                                                                   |
-    | Last Name     | Set this to `u_last_name`.                                                                                                                                                                                                    |
-    | Spectro Team  | Keep `groups` as the default.                                                                                                                                                                                                 |
+2. From the left main menu, select **Tenant Settings**.
 
-![Enable Palette OIDC SSO](/oidc-okta-images/oidc-okta_configure-palette-oidc.webp)
+3. On the **Tenant Settings Menu**, select **SSO**, and choose an **SSO Auth type** of **OIDC**.
 
-23. When all the information has been entered, click **Enable** to activate SSO. You will receive a message stating
-    **OIDC configured successfully**.
+4. Enter the following OIDC information.
+
+   | Parameter     | Value                                                                                                                                                                                                                          |
+   | ------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+   | Issuer URL    | The Issuer URI that you saved in step 8 of [Create an Okta Authorization Server](#create-an-okta-authorization-server).                                                                                                        |
+   | Client ID     | The client identifier that you saved in step 12 of [Create the Okta Application](#create-the-okta-application).                                                                                                                |
+   | Client Secret | The shared secret that you generated in step 13 of [Create the Okta Application](#create-the-okta-application)..                                                                                                               |
+   | Default Teams | Leave blank if you do not want users without group claims to be assigned to a default group. If you do, enter the desired default group name. If you use this option, be careful with how much access you assign to the group. |
+   | Scopes        | Keep `openid`, `profile`, and `email` as the default.                                                                                                                                                                          |
+   | Email         | Keep `email` as the default.                                                                                                                                                                                                   |
+   | First Name    | Set this to `u_first_name`.                                                                                                                                                                                                    |
+   | Last Name     | Set this to `u_last_name`.                                                                                                                                                                                                     |
+   | Spectro Team  | Keep `groups` as the default.                                                                                                                                                                                                  |
+
+   ![Enable Palette OIDC SSO Part 1](/oidc-okta-images/oidc-okta_configure-palette-oidc-part1.webp)
+
+   ![Enable Palette OIDC SSO Part 2](/oidc-okta-images/oidc-okta_configure-palette-oidc-part2.webp)
+
+5. When all the information has been entered, click **Save** to activate SSO. You receive the message **OIDC configured
+   successfully**.
 
 ### Create Teams in Palette
 
-The remaining step is to create teams in Palette for the group that you allowed to be passed in the OIDC ticket in Okta,
-and give them the appropriate permissions. For this example, you will create the `palette-tenant-admins` team and give
-it **Tenant Admin** permissions. You can repeat this for any other team that you have a matching Okta group for.
+The final step is to create teams in Palette for the group that you will allow to be passed in the OIDC ticket in Okta
+and give that group the appropriate permissions. For this example, you will create the `palette-tenant-admins` team and
+give it **Tenant Admin** permissions. You can repeat this for any other team that you have a matching Okta group for.
 
-24. Open a web browser and navigate to your Palette subscription. Navigate to **Tenant Settings** --> **Users & Teams**
-    --> **Teams** tab, and click **+ Create Team**.
+1. Log in to [Palette](https://console.spectrocloud.com/) as a tenant admin.
 
-    ![Create Palette Team](/oidc-okta-images/oidc-okta_create-team.webp)
+2. From the left main menu, select **Users & Teams**.
 
-25. Specify `palette-tenant-admins` in the **Team name** field. You don't need to set any members now, as this will
-    happen automatically from the SSO. Click **Confirm** to create the team.
+3. Navigate to the **Teams** tab and select **Create Team**.
 
-    ![Name Palette Team](/oidc-okta-images/oidc-okta_name-team.webp)
+   ![Create Palette Team](/oidc-okta-images/oidc-okta_create-team.webp)
 
-26. The list of teams displays again. Select the newly created **palette-tenant-admins** team to review its details. To
-    give this team administrative access to the entire tenant and all the projects in it, assign the **Tenant Admin**
-    role. Select **Tenant Roles** and click **+ Add Tenant Role**:
+4. Enter `palette-tenant-admins` for the **Team name**. You do not need to add any members, as members will be added
+   automatically with SSO. Select **Confirm** to create the team.
 
-    ![Palette Tenant Roles](/oidc-okta-images/oidc-okta_tenant-roles.webp)
+   ![Name Palette Team](/oidc-okta-images/oidc-okta_name-team.webp)
 
-27. Click on **Tenant Admin** to enable the role. Click **Confirm** to add the role.
+5. A message states that the team was created. Select the newly created `palette-tenant-admins` team to review the
+   team's details.
+6. To give the team administrative access to the entire tenant and all projects within the tenant, select the **Tenant
+   Roles** tab and click **Add Tenant Role**.
 
-    ![Add Tenant Role](/oidc-okta-images/oidc-okta_add-tenant-role.webp)
+   ![Palette Tenant Roles](/oidc-okta-images/oidc-okta_tenant-roles.webp)
 
-    You will receive a message stating **Roles have been updated**. Repeat this procedure for any other teams while
-    ensuring they are given the appropriate access permissions.
+7. In the **Add Roles** dialog, select **Tenant Admin**. Click **Confirm** to add the role.
 
-28. Click the **X** next to **Team Details** in the top left corner to exit this screen.
+   ![Add Tenant Role](/oidc-okta-images/oidc-okta_add-tenant-role.webp)
 
-You have now successfully configured Palette SSO based on OIDC with Okta.
+A message states that **Roles have been updated**. Repeat this procedure for any other necessary teams, taking care to
+ensure they are given the appropriate permissions.
 
 ## Validate
 
-1. Log in to Palette through SSO as a user that is a member of the `palette-tenant-admins` group in Okta to verify that
-   users are automatically added to the `palette-tenant-admins` group in Palette. If you're still logged into Palette
-   with a non-SSO user, log out by selecting **Logout** in the **User Drop-down Menu** at the top right.
+1. Log out of Palette by selecting **Logout** in the **User Menu** at the top right.
 
    ![User Logout](/oidc-okta-images/oidc-okta_user-logout.webp)
 
 2. The Palette login screen now displays a **Sign in** button and no longer presents a username and password field.
-   Below the **Sign In** button, there is an **SSO issues? --> Use your password** link. This link can be used to bypass
-   SSO and log in with a local Palette account in case there is an issue with SSO and you need to access Palette without
-   SSO. Click on the **Sign in** button to log in via SSO.
+   Click on the **Sign in** button to log in via SSO.
+
+   :::tip
+
+   Below the **Sign in** button, there is an **SSO issues? Use your password** link. Use this link if you need to bypass
+   SSO and log in with your Palette account instead.
+
+   :::
 
    ![User SSO Login](/oidc-okta-images/oidc-okta_palette-login.webp)
 
@@ -254,9 +272,11 @@ You have now successfully configured Palette SSO based on OIDC with Okta.
 
    :::
 
-4. You are now automatically added to the `palette-tenant-admins` team in Palette. To verify, navigate to the left
-   **Main Menu**, select **Tenant Settings** --> **Users & Teams** --> **Teams** tab. Click the
-   **palette-tenant-admins** team and view the team members section.
+4. Upon logging in, you are automatically added to the `palette-tenant-admins` team in Palette. To verify, navigate to
+   the left main menu, and select **Users & Teams**.
+
+5. Select the **Teams** tab and choose **palette-tenant-admins** team.The list of **Team Members** is displayed on the
+   left side of **Team Details**.
 
 ## Resources
 
