@@ -317,19 +317,19 @@ remainder of the permissions required by AKS can be assigned at the subscription
 
 11. Assign the roles to the service principal. Use the following commands to assign the roles.
 
-    ```json
+    ```shell
     az role assignment create --assignee $ASSIGNEE \
        --role "Palette Static Placement AKS Cluster Deployer (vnet)" \
        --scope "/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP_NAME/providers/Microsoft.Network/virtualNetworks/$VNET_NAME"
     ```
 
-    ```json
+    ```shell
     az role assignment create --assignee $ASSIGNEE \
       --role "Palette Static Placement AKS Cluster Deployer (sub)" \
       --scope "/subscriptions/$SUBSCRIPTION_ID"
     ```
 
-    ```json
+    ```shell
     az role assignment create --assignee $ASSIGNEE \
       --role "Palette Static Placement AKS Cluster Deployer (rg/sub)" \
       --scope "/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP_NAME"
