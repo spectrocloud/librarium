@@ -23,11 +23,10 @@ There are four main artifact areas:
 	- Create a pack bundle to download.
 	- Browse pack Catalog to download individual packs. 
 
-:::preview
+  :::preview
+  :::
 
-:::
-
-![Image of the default homepage of Artifact Studio](../../../static/assets/docs/images/downloads/downloads_artifact-studio-main.webp)
+  ![Image of the default homepage of Artifact Studio](../../../static/assets/docs/images/downloads/downloads_artifact-studio-main.webp)
 
 ## Install Palette
 
@@ -49,22 +48,20 @@ There are four main artifact areas:
 ## Create a Pack Bundle
 
 :::warning
-
 Agent mode binaries are excluded from this release of Artifact Studio. They will be introduced in a later release.
-
 :::
-
+    
 1. Navigate to [Artifact Studio](https://artifact-studio.internal.spectrocloud.com/).
 
 2. Click on **Build bundle**.
 
-:::tip
+    :::tip
 
-Ensure that pop-ups are enabled in your browser for [Artifact Studio](https://artifact-studio.internal.spectrocloud.com/) to allow for multiple artifact downloads. 
+    Ensure that pop-ups are enabled in your browser for [Artifact Studio](https://artifact-studio.internal.spectrocloud.com/) to allow for multiple artifact downloads. 
 
-:::
-
-![Image of Create pack bundle](../../../static/assets/docs/images/downloads/downloads_Artifact-studio-build-bundle.webp)
+    :::
+    
+    ![Image of Create pack bundle](../../../static/assets/docs/images/downloads/downloads_Artifact-studio-build-bundle.webp)
 
 3. On the **Select Product** page select either **Palette Enterprise Appliance** or **Palette Vertex Appliance**. 
 
@@ -110,70 +107,70 @@ To verify the bundle integrity and authenticity, you can do a checksum verificat
 
 3. Use the following command to verify the individual pack integrity. 
 
-```
-openssl dgst -sha256 -verify public_key.pem -signature bundle-name.tar.sig.bin bundle-name.zst
-```
+    ```
+    openssl dgst -sha256 -verify public_key.pem -signature bundle-name.tar.sig.bin bundle-name.zst
+    ```
 
 4. A successful verification will show: **Verification OK**.
 
-Alternatively, use the following sample script to check all the files downloaded in the same folder. Ensure that `REPLACE ME` is replaced with the name of the public key downloaded. 
+   Alternatively, use the following sample script to check all the files downloaded in the same folder. Ensure that `REPLACE ME` is replaced with the name of the public key downloaded. 
 
-```shell title="Example" {10}
+   ```shell title="Example" {10}
  
-# This script verifies the signatures of data files against a public key.
-# It expects files named like `datafile.zst` and corresponding signatures `datafile.sig.bin`.
-# Ensure you have OpenSSL installed to run this script and that the public key is in PEM format.
-# Ensure the script has execute permissions: `chmod +x verify.sh`
-# Usage: ./verify.sh 
+    # This script verifies the signatures of data files against a public key.
+    # It expects files named like `datafile.zst` and corresponding signatures `datafile.sig.bin`.
+    # Ensure you have OpenSSL installed to run this script and that the public key is in PEM format.
+    # Ensure the script has execute permissions: `chmod +x verify.sh`
+    # Usage: ./verify.sh 
 
-#!/bin/bash
+    #!/bin/bash
 
-PUBKEY="REPLACE ME" # Enter path to public key file
+    PUBKEY="REPLACE ME" # Enter path to public key file
 
-for sigfile in *.sig.bin; do
-  # Strip `.sig.bin` to get base filename and corresponding data file
-  base="${sigfile%.sig.bin}"
-  datafile="${base}.zst"
+    for sigfile in *.sig.bin; do
+      # Strip `.sig.bin` to get base filename and corresponding data file
+      base="${sigfile%.sig.bin}"
+      datafile="${base}.zst"
 
-  if [[ ! -f "$datafile" ]]; then # Check if data file exists
-    echo "$datafile: ❌ Data file not found" # Skip to next iteration  
-    continue
-  fi
+      if [[ ! -f "$datafile" ]]; then # Check if data file exists
+        echo "$datafile: ❌ Data file not found" # Skip to next iteration  
+        continue
+      fi
 
-  # Run signature verification
-  if openssl dgst -sha256 -verify "$PUBKEY" -signature "$sigfile" "$datafile" > /dev/null 2>&1; then # Verify signature
-    echo "$datafile: ✅ Signature valid" # Print success message
-  else
-    echo "$datafile: ❌ Signature invalid" # Print failure message
-  fi
-done
-```
+      # Run signature verification
+      if openssl dgst -sha256 -verify "$PUBKEY" -signature "$sigfile" "$datafile" > /dev/null 2>&1; then # Verify signature
+        echo "$datafile: ✅ Signature valid" # Print success message
+      else
+        echo "$datafile: ❌ Signature invalid" # Print failure message
+      fi
+    done
+    ```
 
-You should see the following output.
+    You should see the following output.
 
-```shell title="Output Example"
-cni-calico-3.29.2.zst: ✅ Signature valid
-csi-aws-ebs-1.41.0.zst: ✅ Signature valid
-kubernetes-1.32.3.zst: ✅ Signature valid
-spectro-k8s-dashboard-7.11.1.zst: ✅ Signature valid
-ubuntu-aws-22.04.zst: ✅ Signature valid
-```
+    ```shell title="Output Example"
+      cni-calico-3.29.2.zst: ✅ Signature valid
+      csi-aws-ebs-1.41.0.zst: ✅ Signature valid
+      kubernetes-1.32.3.zst: ✅ Signature valid
+      spectro-k8s-dashboard-7.11.1.zst: ✅ Signature valid
+      ubuntu-aws-22.04.zst: ✅ Signature valid
+    ``` 
 
 ## Download a Specific Pack
 
 1. Click on **Browse Packs**.
 
-![Image showing where to download individual packs](../../../static/assets/docs/images/downloads/downloads_Artifact-studio-browse-packs.webp)
+   ![Image showing where to download individual packs](../../../static/assets/docs/images/downloads/downloads_Artifact-studio-browse-packs.webp)
 
 2. Filter based on **Product**, **Version** (Product version), **Cloud type**, **Layer type**, CPU version and whether it is FIPS compliant or not. 
 
 3. Enter your search terms and click **Search** to further filter. 
 
-![Image showing filter and search together](../../../static/assets/docs/images/downloads/downloads_Artifact-studio-search-and-filter.webp)
+   ![Image showing filter and search together](../../../static/assets/docs/images/downloads/downloads_Artifact-studio-search-and-filter.webp)
 
 4. Select one or more packs, and click the **I'm not a robot** reCAPTCHA to download the bundle. The bundle will download as individual pack files (`<filename>.zst`) and individual signature file (`<filename>.bin`). Ensure that all the files are saved in the same folder.
 
-![Image showing download of multiple packs](../../../static/assets/docs/images/downloads/downloads_Artifact-studio-individual-packs-download.webp)
+   ![Image showing download of multiple packs](../../../static/assets/docs/images/downloads/downloads_Artifact-studio-individual-packs-download.webp)
 
 ### Specific Pack Download Verification
 
@@ -185,51 +182,51 @@ To verify the bundle integrity and authenticity, you can do a checksum verificat
 
 3. Use the following command to verify the individual pack integrity. 
 
-```
-openssl dgst -sha256 -verify public_key.pem -signature bundle-name.tar.sig.bin bundle-name.zst
-```
+    ```
+    openssl dgst -sha256 -verify public_key.pem -signature bundle-name.tar.sig.bin bundle-name.zst
+    ```
 
 4. A successful verification will show: **Verification OK**.
 
-Alternatively, use the following sample script to check all the files downloaded in the same folder. Ensure that `REPLACE ME` is replaced with the name of the public key downloaded. 
+   Alternatively, use the following sample script to check all the files downloaded in the same folder. Ensure that `REPLACE ME` is replaced with the name of the public key downloaded. 
 
-```shell title="Example" {10}
+   ```shell title="Example" {10}
  
-# This script verifies the signatures of data files against a public key.
-# It expects files named like `datafile.zst` and corresponding signatures `datafile.sig.bin`.
-# Ensure you have OpenSSL installed to run this script and that the public key is in PEM format.
-# Ensure the script has execute permissions: `chmod +x verify.sh`
-# Usage: ./verify.sh 
+    # This script verifies the signatures of data files against a public key.
+    # It expects files named like `datafile.zst` and corresponding signatures `datafile.sig.bin`.
+    # Ensure you have OpenSSL installed to run this script and that the public key is in PEM format.
+    # Ensure the script has execute permissions: `chmod +x verify.sh`
+    # Usage: ./verify.sh 
 
-#!/bin/bash
+    #!/bin/bash
 
-PUBKEY="REPLACE ME" # Enter path to public key file
+    PUBKEY="REPLACE ME" # Enter path to public key file
 
-for sigfile in *.sig.bin; do
-  # Strip `.sig.bin` to get base filename and corresponding data file
-  base="${sigfile%.sig.bin}"
-  datafile="${base}.zst"
+    for sigfile in *.sig.bin; do
+      # Strip `.sig.bin` to get base filename and corresponding data file
+      base="${sigfile%.sig.bin}"
+      datafile="${base}.zst"
 
-  if [[ ! -f "$datafile" ]]; then # Check if data file exists
-    echo "$datafile: ❌ Data file not found" # Skip to next iteration  
-    continue
-  fi
+      if [[ ! -f "$datafile" ]]; then # Check if data file exists
+        echo "$datafile: ❌ Data file not found" # Skip to next iteration  
+        continue
+      fi
 
-  # Run signature verification
-  if openssl dgst -sha256 -verify "$PUBKEY" -signature "$sigfile" "$datafile" > /dev/null 2>&1; then # Verify signature
-    echo "$datafile: ✅ Signature valid" # Print success message
-  else
-    echo "$datafile: ❌ Signature invalid" # Print failure message
-  fi
-done
-```
+      # Run signature verification
+      if openssl dgst -sha256 -verify "$PUBKEY" -signature "$sigfile" "$datafile" > /dev/null 2>&1; then # Verify signature
+        echo "$datafile: ✅ Signature valid" # Print success message
+      else
+        echo "$datafile: ❌ Signature invalid" # Print failure message
+      fi
+    done
+    ```
 
-You should see the following output.
+    You should see the following output.
 
-```shell title="Output Example"
-cni-calico-3.29.2.zst: ✅ Signature valid
-csi-aws-ebs-1.41.0.zst: ✅ Signature valid
-kubernetes-1.32.3.zst: ✅ Signature valid
-spectro-k8s-dashboard-7.11.1.zst: ✅ Signature valid
-ubuntu-aws-22.04.zst: ✅ Signature valid
-```
+    ```shell title="Output Example"
+      cni-calico-3.29.2.zst: ✅ Signature valid
+      csi-aws-ebs-1.41.0.zst: ✅ Signature valid
+      kubernetes-1.32.3.zst: ✅ Signature valid
+      spectro-k8s-dashboard-7.11.1.zst: ✅ Signature valid
+      ubuntu-aws-22.04.zst: ✅ Signature valid
+    ``` 
