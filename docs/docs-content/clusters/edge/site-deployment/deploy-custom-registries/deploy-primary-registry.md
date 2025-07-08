@@ -29,6 +29,9 @@ Harbor registry using **Registry Connect**, refer to
 
 ## Limitations
 
+- The Harbor registry is not supported on VerteX. If your Edge cluster is managed by a VerteX instance, you cannot use
+  Harbor as a primary registry.
+
 - You cannot use the Palette Edge CLI to upload images to the primary registry. You must use the Palette CLI instead.
   Refer to [Upload Cluster Images to Registry with the CLI](./upload-images-to-registry.md) for more information.
 
