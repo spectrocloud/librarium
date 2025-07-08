@@ -9,7 +9,7 @@ sidebar_custom_props:
 tags: ["downloads", "artifact-studio"]
 ---
 
-[Artifact Studio](https://artifact-studio.internal.spectrocloud.com/) Artifact Studio is a unified platform that helps airgapped, regulatory-focused and security conscious organizations to populate their own internal registries with bundles, packs and installers to be used with Palette or VerteX. It provides a single location for packs and images, streamlining access and management.
+[Artifact Studio](https://artifact-studio.internal.spectrocloud.com/) is a unified platform that helps airgapped, regulatory-focused and security conscious organizations to populate their own internal registries with bundles, packs and installers to be used with Palette or VerteX. It provides a single location for packs and images, streamlining access and management.
 
 **Who is this for?**
 
