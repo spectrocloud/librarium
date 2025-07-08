@@ -87,7 +87,7 @@ tags: ["release-notes"]
 ensures successful upgrades between minor and patch versions on connected and airgap Edge clusters.
 <!--prettier-ignore-end-->
 - [Remote shell](../clusters/edge/cluster-management/remote-shell.md) temporary user credentials and the remote shell
-  tunnel are now removed after 24 hours of inactivity.The removal of inactive sessions reduces the risk of unauthorized
+  tunnel are now removed after 24 hours of inactivity. The removal of inactive tunnels and credentials reduces the risk of unauthorized
   access and helps maintain an efficient system.
 - The Palette UI now partially obfuscates
   [Edge host registration tokens](../clusters/edge/site-deployment/site-installation/edge-host-registration.md). Users
