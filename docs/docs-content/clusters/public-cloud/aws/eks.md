@@ -32,8 +32,8 @@ an AWS account. This section guides you on how to create an EKS cluster in AWS t
 
 <!-- prettier-ignore-end -->
 
-- If you choose to [assign an Amazon Linux 2023 AMI](#cloud-configuration-settings) (AL2023) to your worker nodes and you
-  are using PersistentVolumes (PVs) or PersistentVolumeClaims (PVCs), you must make additional edits to your AWS EKS
+- If you choose to [assign an Amazon Linux 2023 AMI](#cloud-configuration-settings) (AL2023) to your worker nodes and
+  you are using PersistentVolumes (PVs) or PersistentVolumeClaims (PVCs), you must make additional edits to your AWS EKS
   cluster profile to configure IAM Roles for Service Accounts (IRSA) for the Amazon Elastic Block Store (EBS) Container
   Storage Interface (CSI).
 
