@@ -1,0 +1,20 @@
+---
+partial_category: self-hosted
+partial_name: installation-steps-validate
+---
+
+1. Log in to the Local UI of the leader host using the URL `https://<node-ip>:5080`. Replace `<node-ip>` with the IP
+   address of the leader host. If you have changed the default port of the console, replace `5080` with the Local UI
+   port.
+
+2. In the Local UI, click on **Cluster** in the left main menu.
+
+3. Check that the cluster status is **Running** and the health status is **Healthy**. In the **Applications** section on
+   this page, the listed applications should be in the **Running** state.
+
+4. Log in to the {props.version} system console using the virtual IP address (VIP) you configured earlier. Open your web browser
+   and go to `https://<vip-address>/system`. Replace `<vip-address>` with the VIP you configured for the cluster.
+
+5. On the login page, use `admin` as the username and the new password you set during the initial login.
+
+6. On the **Summary** page, check that the **On-prem system console is healthy** message is displayed.
