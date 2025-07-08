@@ -9,7 +9,7 @@ sidebar_custom_props:
 tags: ["downloads", "artifact-studio"]
 ---
 
-[Artifacts Studio](https://artifact-studio.internal.spectrocloud.com/) is a unified platform that helps air-gapped and regulatory-focused organizations to populate their own internal registries with bundles, packs and installers to be used with Palette or VerteX. It provides a single location for packs and images, streamlining access and management. There are four main areas for Artifacts:
+[Artifacts Studio](https://artifact-studio.internal.spectrocloud.com/) is a unified platform that helps airgapped and regulatory-focused organizations to populate their own internal registries with bundles, packs, and installers to be used with Palette or VerteX. It provides a single location for packs and images, streamlining access and management. There are four main areas for Artifacts:
 	- Download of Palette Enterprise (binary or ISO).
 	- Download of Palette VerteX (binary or ISO).
 	- Create a pack bundle to download.
@@ -21,7 +21,7 @@ tags: ["downloads", "artifact-studio"]
 
 ![Image of the default homepage of Artifacts Studio](../../../static/assets/docs/images/downloads/downloads_artifacts-studio-main.webp)
 
-## Install Palette Enterprise
+## Install Palette
 
 1. Navigate to [Artifacts Studio](https://artifact-studio.internal.spectrocloud.com/).
 
@@ -29,7 +29,7 @@ tags: ["downloads", "artifact-studio"]
 
   ![Download dropdown for Palette binaries](../../../static/assets/docs/images/downloads/downloads_artifacts-studio-install-palette.webp)
 
-3. Click **Download** on Enterprise Binary or Release Iso, whichever file is appropriate for your environment. 
+3. Click **Download** on **Enterprise Binary** or **Release ISO**, whichever file is appropriate for your environment. 
 
 
 ## Install Palette VerteX
@@ -40,9 +40,9 @@ tags: ["downloads", "artifact-studio"]
 
   ![Download dropdown for VerteX binaries](../../../static/assets/docs/images/downloads/downloads_artifacts-studio-install-vertex.webp)
 
-3. Click **Download** on VerteX Binary or Release Iso, whichever file is appropriate for your environment. 
+3. Click **Download** on **VerteX Binary** or **Release ISO**, whichever file is appropriate for your environment. 
 
-## Create pack bundle
+## Create a Pack Bundle
 
 1. Navigate to [Artifacts Studio](https://artifact-studio.internal.spectrocloud.com/).
 
@@ -50,7 +50,7 @@ tags: ["downloads", "artifact-studio"]
 
 :::tip
 
-Ensure that pop-ups are enabled for [Artifacts Studio](https://artifact-studio.internal.spectrocloud.com/) to allow for multiple artifact downloads. 
+Ensure that pop-ups are enabled in your browser for [Artifacts Studio](https://artifact-studio.internal.spectrocloud.com/) to allow for multiple artifact downloads. 
 
 :::
 
@@ -70,7 +70,7 @@ Ensure that pop-ups are enabled for [Artifacts Studio](https://artifact-studio.i
 | FIPs? | TBA |
 | additional? | TBA |
 
-6. Select the Public Cloud or Data Center.
+6. Select the Public Cloud or Data Center that you want to download bundles for.
 
 7. On the **Build your bundle** page, select **OS**. This will start the process of building the bundle.
 
@@ -145,7 +145,7 @@ ubuntu-aws-22.04.zst: ✅ Signature valid
 
 19. Click **Artifacts Home** to repeat the process for additional bundles.
 
-## Download specific pack
+## Download a Specific Pack
 
 1. Click on **Browse Packs**.
 
