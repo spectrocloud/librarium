@@ -307,7 +307,7 @@ impacted clusters until you've handled the below mentioned breaking changes and 
 - You can now assign an Amazon Machine Image (AMI) to a node pool when deploying Amazon EKS clusters. To do this, apply
   an additional label in the **Node Configuration Settings** during cluster creation. For guidance and a list of
   supported AMIs, refer to the
-  [Assign an AMI to a Node Pool](../clusters/public-cloud/aws/eks.md#assign-an-ami-to-a-node-pool) section.
+  [Assign an AMI to a Node Pool](../clusters/public-cloud/aws/eks.md#node-configuration-settings) section.
 
   - If you choose to assign an Amazon Linux 2023 AMI to your worker nodes and you are using PersistentVolumes (PVs) or
     PersistentVolumeClaims (PVCs), you must make additional edits to your AWS EKS cluster profile to configure IAM Roles

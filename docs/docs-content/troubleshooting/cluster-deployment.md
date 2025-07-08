@@ -13,7 +13,7 @@ The following steps will help you troubleshoot errors in the event issues arise 
 ## Scenario - PV/PVC Stuck in Pending Status for EKS Cluster Using AL2023 AMI
 
 After deploying an Amazon EKS cluster using an
-[Amazon Linux 2023 (AL2023) Amazon Machine Image (AMI)](../clusters/public-cloud/aws/eks.md#assign-an-ami-to-a-node-pool),
+[Amazon Linux 2023 (AL2023) Amazon Machine Image (AMI)](../clusters/public-cloud/aws/eks.md#node-configuration-settings),
 PersistentVolumes (PVs) or PersistentVolumeClaims (PVCs) are stuck in a pending status.
 
 ```shell title="Example"
