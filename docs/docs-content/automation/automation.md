@@ -30,3 +30,11 @@ This section contains documentation and guides for tools essential in automating
 - [Palette Go SDK](./palette-sdk/palette-sdk.md)
 - [Palette Terraform Provider](./terraform/terraform.md)
 - [Palette Crossplane Provider](./crossplane/crossplane.md)
+
+## Test Section
+
+This is a test table. It will not be merged.
+
+| This  | Is  | A   | Test |
+| ----- | --- | --- | ---- |
+| Hello | How | Are | You  |
