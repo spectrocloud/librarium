@@ -396,39 +396,39 @@ resource groups within a subscription.
 6. Create a role for each of the JSON files you created in the previous steps. Issue the following commands to create
    the roles.
 
-    ```shell
-    az role definition create --role-definition @aks_dynamic_sub_role.json --output table
-    az role definition create --role-definition @aks_dynamic_rg_sub_role.json --output table
-    ```
+   ```shell
+   az role definition create --role-definition @aks_dynamic_sub_role.json --output table
+   az role definition create --role-definition @aks_dynamic_rg_sub_role.json --output table
+   ```
 
 7. Export the client ID of the
    [service principal](https://learn.microsoft.com/en-us/azure/role-based-access-control/overview#security-principal)
    you want to use with Palette to a variable.
 
-    ```shell
-    export ASSIGNEE="<service_principal_client_id>"
-    ```
+   ```shell
+   export ASSIGNEE="<service_principal_client_id>"
+   ```
 
 8. Export the resource group name to a variable.
 
-    ```shell
-    export RESOURCE_GROUP_NAME="<resource-group-name>"
-    export VNET_NAME="<vnet-name>"
-    ```
+   ```shell
+   export RESOURCE_GROUP_NAME="<resource-group-name>"
+   export VNET_NAME="<vnet-name>"
+   ```
 
 9. Assign the roles to the service principal. Use the following commands to assign the roles.
 
-    ```shell
-    az role assignment create --assignee $ASSIGNEE \
-      --role "Palette Dynamic Placement AKS Cluster Deployer (sub)" \
-      --scope "/subscriptions/$SUBSCRIPTION_ID"
-    ```
+   ```shell
+   az role assignment create --assignee $ASSIGNEE \
+     --role "Palette Dynamic Placement AKS Cluster Deployer (sub)" \
+     --scope "/subscriptions/$SUBSCRIPTION_ID"
+   ```
 
-    ```shell
-    az role assignment create --assignee $ASSIGNEE \
-      --role "Palette Dynamic Placement AKS Cluster Deployer (rg/sub)" \
-      --scope "/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP_NAME"
-    ```
+   ```shell
+   az role assignment create --assignee $ASSIGNEE \
+     --role "Palette Dynamic Placement AKS Cluster Deployer (rg/sub)" \
+     --scope "/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP_NAME"
+   ```
 
 #### Validate
 
