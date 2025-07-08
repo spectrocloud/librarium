@@ -60,7 +60,7 @@ Agent mode binaries are excluded from this release of Artifact Studio. They will
 
     :::
     
-    ![Image of Create pack bundle](../../../static/assets/docs/images/downloads/downloads_Artifact-studio-build-bundle.webp)
+    ![Image of Create pack bundle](../../../static/assets/docs/images/downloads/downloads_artifact-studio-build-bundle.webp)
 
 3. On the **Select Product** page select either **Palette Enterprise Appliance** or **Palette Vertex Appliance**. 
 
@@ -159,17 +159,17 @@ To verify the bundle integrity and authenticity, you can do a checksum verificat
 
 1. Click on **Browse Packs**.
 
-   ![Image showing where to download individual packs](../../../static/assets/docs/images/downloads/downloads_Artifact-studio-browse-packs.webp)
+   ![Image showing where to download individual packs](../../../static/assets/docs/images/downloads/downloads_artifact-studio-browse-packs.webp)
 
 2. Filter based on **Product**, **Version** (Product version), **Cloud type**, **Layer type**, CPU version and whether it is FIPS compliant or not. 
 
 3. Enter your search terms and click **Search** to further filter. 
 
-   ![Image showing filter and search together](../../../static/assets/docs/images/downloads/downloads_Artifact-studio-search-and-filter.webp)
+   ![Image showing filter and search together](../../../static/assets/docs/images/downloads/downloads_artifact-studio-search-and-filter.webp)
 
 4. Select one or more packs, and click the **I'm not a robot** reCAPTCHA to download the bundle. The bundle will download as individual pack files (`<filename>.zst`) and individual signature file (`<filename>.bin`). Ensure that all the files are saved in the same folder.
 
-   ![Image showing download of multiple packs](../../../static/assets/docs/images/downloads/downloads_Artifact-studio-individual-packs-download.webp)
+   ![Image showing download of multiple packs](../../../static/assets/docs/images/downloads/downloads_artifact-studio-individual-packs-download.webp)
 
 ### Specific Pack Download Verification
 
