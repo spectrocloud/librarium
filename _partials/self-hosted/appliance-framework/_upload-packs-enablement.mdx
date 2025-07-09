@@ -54,7 +54,7 @@ partial_name: upload-packs-enablement
    <TabItem label="Harbor" value="harbor">
 
    Use `oras` to log in to your OCI registry. Replace the values below with your environment configuration values.
-   If you are using a Harbor registry with a self-signed certificate, you will need to add the `--insecure` flag to the
+   If you are using a Harbor registry with a self-signed certificate, add the `--insecure` flag to the
    `oras` command.
 
    <Tabs>
@@ -101,7 +101,7 @@ partial_name: upload-packs-enablement
 
    <TabItem label="Public ECR" value="public-ecr">
 
-   For a public image repository, use the `docker` CLI instead of using `oras`. Replace the values below with your
+   For a public image repository, use the `docker` CLI instead of `oras`. Replace the values below with your
    environment configuration values.
 
    ```shell
@@ -158,7 +158,7 @@ partial_name: upload-packs-enablement
    :::tip
 
    Be aware of the timeout period for the authentication token. The process of uploading images and packages to an OCI
-   registry can take approximately an hour. If the authentication token expires, you will need to re-authenticate to
+   registry can take approximately one hour. If the authentication token expires, you will need to re-authenticate to
    the OCI registry and restart the upload process.
 
    :::
