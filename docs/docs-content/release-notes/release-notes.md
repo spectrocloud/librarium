@@ -37,7 +37,7 @@ tags: ["release-notes"]
 
 - The Palette UI now supports the configuration of custom Amazon Linux 2023 and Amazon Linux 2 AMIs for AWS EKS nodes.
   Previously, AL2023 AMIs without any customizations were configured using node labels. Refer to the
-  [Create and Manage AWS EKS Cluster](../clusters/public-cloud/aws/eks.md) guide for the updated configuration process.
+  [Create and Manage AWS EKS Cluster](../clusters/public-cloud/aws/eks.md#cloud-configuration-settings) guide for the updated configuration process.
 
 #### Features
 
@@ -80,12 +80,12 @@ tags: ["release-notes"]
 
 #### Improvements
 
-<!--prettier-ignore-start-->
+<!-- prettier-ignore-start -->
 
 - Palette now provides enhanced support for upgrades to
 <VersionedLink text="Palette Optimized Canonical" url="/integrations/packs/?pack=edge-canonical" />. This improvement
 ensures successful upgrades between minor and patch versions on connected and airgapped Edge clusters.
-<!--prettier-ignore-end-->
+<!-- prettier-ignore-end -->
 - [Remote shell](../clusters/edge/cluster-management/remote-shell.md) temporary user credentials and the remote shell
   tunnel are now removed after 24 hours of inactivity. The removal of inactive tunnels and credentials reduces the risk
   of unauthorized access and helps maintain an efficient system.
@@ -179,11 +179,11 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 #### Pack Notes
 
-<!--prettier-ignore-start-->
+<!- prettier-ignore-start -->
 
 - Palette VerteX now supports Zot OCI-native container image registries through the
 <VersionedLink text="Zot Registry" url="/integrations/packs/?pack=zot-registry" /> pack.
-<!--prettier-ignore-end-->
+<!-- prettier-ignore-end -->
 
 #### Kubernetes
 
