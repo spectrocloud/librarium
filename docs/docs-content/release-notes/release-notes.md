@@ -41,15 +41,15 @@ tags: ["release-notes"]
 
 #### Features
 
-- Palette's Artifacts Studio is a unified platform that helps airgapped and regulatory-focused organizations to populate
-  their own internal registries with bundles, packs and installers to be used with Palette or VerteX. It provides a
+- Palette's Artifacts Studio is a unified platform that helps airgapped and regulatory-focused organizations populate
+  their own internal registries with bundles, packs, and installers to be used with Palette or VerteX. It provides a
   single location for packs and images, streamlining access and management.
 - [Self-hosted Palette](../enterprise-version/enterprise-version.md) can now be installed using the Appliance Framework.
   The Appliance Framework is downloadable as an ISO file and is a solution for installing self-hosted Palette on your
   infrastructure. The ISO file contains all the necessary components needed for Palette to function. The ISO file is
   used to boot the nodes, which are then clustered to form a Palette management cluster. This installation mode supports
   both non-airgapped and airgapped environments.
-- [Self-hosted Palette](../enterprise-version/enterprise-version.md) now support the configuration of a classification
+- [Self-hosted Palette](../enterprise-version/enterprise-version.md) now supports the configuration of a classification
   banner. System administrators can set the banner text and color through the
   [system console](../enterprise-version/system-management/system-management.md#system-console). Refer to the
   [Banners](../enterprise-version/system-management/login-banner.md) guide for further guidance.
@@ -66,10 +66,10 @@ tags: ["release-notes"]
   are updated to Kubernetes 1.29.
 - Fixed an issue that caused resource reconciliation to fail when deleting a pack whose resources have already been
   removed.
-- Fixed an issue that caused
-  [Sprig template functions](../registries-and-packs/pack-constraints.md#sprig-template-functions) to fail to apply on
+- Fixed an issue that prevented
+  [Sprig template functions](../registries-and-packs/pack-constraints.md#sprig-template-functions) from being applied to
   [macros](../clusters/cluster-management/macros.md) used as part of custom manifests.
-- Fixed an issue that restricted cluster tags from containing numbers, spaces and the following special characters: `_`,
+- Fixed an issue that restricted cluster tags from containing numbers, spaces, and the following special characters: `_`,
   `.`, `:`, `/`, `=`, `+`, `-`, and `@`.
 - Fixed an issue that caused Palette to repave and upgrade multiple [MAAS](../clusters/data-center/maas/maas.md) worker
   nodes at the same time.
@@ -84,7 +84,7 @@ tags: ["release-notes"]
 
 - Palette now provides enhanced support for upgrades to
 <VersionedLink text="Palette Optimized Canonical" url="/integrations/packs/?pack=edge-canonical" />. This improvement
-ensures successful upgrades between minor and patch versions on connected and airgap Edge clusters.
+ensures successful upgrades between minor and patch versions on connected and airgapped Edge clusters.
 <!--prettier-ignore-end-->
 - [Remote shell](../clusters/edge/cluster-management/remote-shell.md) temporary user credentials and the remote shell
   tunnel are now removed after 24 hours of inactivity. The removal of inactive tunnels and credentials reduces the risk
@@ -99,16 +99,15 @@ ensures successful upgrades between minor and patch versions on connected and ai
 
 #### Bug Fixes
 
-- Fixed an issue that caused [Edge clusters](../clusters/edge/edge.md) using Helm chart names with multiple hyphens to
-  fail to provision successfully.
+- Fixed an issue that prevented [Edge clusters](../clusters/edge/edge.md) with multi-hyphen Helm chart names from provisioning.
 - Fixed an issue that caused the `containerd sync` job to perform unnecessary file copying and I/O operations on
   disconnected [Edge clusters](../clusters/edge/edge.md).
 - Fixed an issue that caused API calls to add [Edge cluster](../clusters/edge/edge.md) nodes to fail.
 - Fixed an issue that caused proxy certificates to be incorrectly shown in
   [Local UI](../clusters/edge/local-ui/local-ui.md).
-- Fixed an issue that caused the connection configuration validation in the Palette UI to fail for some valid endpoints
+- Fixed an issue that caused the connection configuration validation in the Palette UI to fail for certain valid endpoints
   and [registration tokens](../clusters/edge/site-deployment/site-installation/edge-host-registration.md).
-- Fixed an issue that caused commands to the API delete endpoint to reset Edge hosts that are being provisioned to an
+- Fixed an issue that caused commands to the API delete endpoint to reset Edge hosts actively being provisioned to an
   [Edge cluster](../clusters/edge/edge.md).
 - Fixed an issue that caused the `/usr/local` directory on Edge nodes to be repeatedly resized.
 - Fixed an issue that prevented new certificates from being reconciled in clusters provisioned with a certificate that
@@ -116,8 +115,8 @@ ensures successful upgrades between minor and patch versions on connected and ai
 - Fixed an issue that prevented the migration of resources from the `system-upgrade` namespace to the
   `system-upgrade-<cluster-uid>` namespace.
 - Fixed an issue that caused Palette to incorrectly report the status of successfully installed packs.
-- Fixed an issue that caused pods related to upgrades of [agent mode](../deployment-modes/agent-mode/agent-mode.md)
-  clusters to be stuck in `Terminating` state.
+- Fixed an issue that caused pods related to [agent mode](../deployment-modes/agent-mode/agent-mode.md)
+  cluster upgrades to get stuck in a `Terminating` state.
 - Fixed an issue that caused Palette to incorrectly report certificate errors on
   [Edge clusters](../clusters/edge/edge.md).
 - Fixed an issue that caused certificate errors on [agent mode](../deployment-modes/agent-mode/agent-mode.md) Edge
@@ -146,8 +145,8 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 - The `content build` command of the [Palette CLI](../automation/palette-cli/palette-cli.md) now includes the
   `--exclude-profiles` flag. This flag allows you to exclude content such as images, charts, or raw files present in the
-  listed profiles from the generated content bundle. Additionally, content bundles are now saved to
-  `<current-directory>/output/content-bundle/` directory by default, and you can override this location by using the
+  listed profiles from the generated content bundle. Additionally, content bundles are now saved to the
+  `<current-directory>/output/content-bundle/` directory by default; you can override this location by using the
   `--output` flag. Refer to the [Content](../automation/palette-cli/commands/content.md) command reference page for
   further information.
 
