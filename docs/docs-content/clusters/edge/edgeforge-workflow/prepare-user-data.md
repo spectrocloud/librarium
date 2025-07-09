@@ -38,7 +38,9 @@ configuration parameters you can use in the configuration user data.
 
 :::preview
 
-The [Appliance Studio](../../../deployment-modes/appliance-mode//appliance-studio.md) is a Tech Preview feature and is subject to change. Do not use this feature in production workloads. Both `.arg` and `user-data` are plain text files. Once you are familiar with the parameters, you can manually create and edit them.
+The [Appliance Studio](../../../deployment-modes/appliance-mode//appliance-studio.md) is a Tech Preview feature and is
+subject to change. Do not use this feature in production workloads. Both `.arg` and `user-data` are plain text files.
+Once you are familiar with the parameters, you can manually create and edit them.
 
 :::
 
