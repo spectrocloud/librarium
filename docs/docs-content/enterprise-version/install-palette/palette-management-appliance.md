@@ -125,29 +125,11 @@ environment.
 
 ## Next Steps
 
-The following actions are recommended after installing Palette to ensure your environment is ready for use:
-
-- Assign your SSL certificates to Palette. Palette is installed with a self-signed SSL certificate. To assign a
-  different SSL certificate, upload the certificate, key, and certificate authority files to Palette. You can upload the
-  files using the system console. Refer to the
-  [Configure HTTPS Encryption](../system-management/ssl-certificate-management.md) page for instructions on how to
-  upload the SSL certificate files to Palette.
-
-- Create a tenant in Palette to host your users. Refer to the
-  [Create a Tenant](../system-management/tenant-management.md) guide for instructions on how to create a tenant in
-  Palette.
-
-- Activate your Palette installation before the trial mode expires. Refer to the
-  [Activate Palette](../activate-installation/activate-installation.md) guide for instructions on how to activate your
-  installation.
-
-- Create additional system administrator accounts and assign roles to users in the system console. Refer to the
-  [Account Management](../system-management/account-management/account-management.md) guide for instructions on how to
-  manage user accounts and roles in Palette.
-
-- Configure SMTP settings to enable email notifications and password recovery. Refer to the
-  [Configure SMTP Settings](../system-management/smtp.md) guide for instructions on how to configure SMTP settings in
-  Palette.
-
-For all system management options in Palette, refer to the
-[System Management](../system-management/system-management.md) guide.
+<PartialsComponent
+  category="self-hosted"
+  name="next-steps"
+  edition="Palette"
+  version="Palette"
+  iso="Palette Enterprise"
+  app="Palette Management Appliance"
+/>
