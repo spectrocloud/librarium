@@ -40,6 +40,7 @@ The following ports must be reachable from a network perspective for Palette to 
 | :-------------- | :-------- | :----------------------------------------------------------- |
 | HTTPS (tcp/443) | INBOUND   | Browser/API access to management platform .                  |
 | HTTPS (tcp/443) | INBOUND   | gRPC communication between Palette and the workload cluster. |
+| HTTPS (tcp/6443) | OUTBOUND      | Workload K8s cluster API Server                                                         |
 
 ### Workload Cluster
 

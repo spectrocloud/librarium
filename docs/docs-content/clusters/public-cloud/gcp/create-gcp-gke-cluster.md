@@ -39,6 +39,10 @@ Ensure the following requirements are met before you attempt to deploy a cluster
   - Persistent Disks
   - Cloud Router
 
+:::warning
+For static network deployments, you must have port 6443 open between Palette and the Workload cluster. Refer to the [Network Ports](../../../architecture/networking-ports.md) documentation for detailed network architecture diagrams and to learn more about the ports used for communication.
+:::
+
 ## Deploy a GKE Cluster
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
