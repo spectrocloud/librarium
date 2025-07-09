@@ -55,9 +55,11 @@ The following prerequisites must be met before deploying a cluster to AWS:
   will need to either rename the existing security group before creating the cluster, or use a different cluster name.
   Otherwise, the cluster creation will fail due to duplicate resource name in the VPC.
 
-:::warning For static network deployments, you must have port 6443 open between Palette and the Workload cluster. Refer
-to the [Network Ports](../../../architecture/networking-ports.md) documentation for detailed network architecture
-diagrams and to learn more about the ports used for communication. :::
+:::warning
+
+For static network deployments, you must have port 6443 open between Palette and the Workload cluster. Refer to the [Network Ports](../../../architecture/networking-ports.md) documentation for detailed network architecture diagrams and to learn more about the ports used for communication.
+
+:::
 
 ## Deploy an AWS Cluster
 
