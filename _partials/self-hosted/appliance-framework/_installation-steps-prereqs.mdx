@@ -11,9 +11,9 @@ partial_name: installation-steps-prereqs
 
   - 8 CPUs per node.
 
-  - 16 GB Memory per node.
+  - 16 GB memory per node.
 
-  - 450 GB Disk Space per node.
+  - 450 GB disk space per node.
 
     - The disk space must be split between at least two disks, with a minimum of 250 GB for the first disk and 200 GB
       for the second disk. The first disk is used for the ISO stack, and the second disk is used for the storage pool.
@@ -36,12 +36,9 @@ partial_name: installation-steps-prereqs
   - The DNS/IP endpoint and port for the external registry.
   - The username for the registry.
   - The password for the registry.
-  - The certificate for the registry used for TLS encryption.
-    - The certificate entry must be provided in Base64 format.
-  - The private key for the registry certificate used for TLS encryption.
-    - The private key entry must be provided in Base64 format.
-  - (Optional) The Certificate Authority (CA) certificate that was used to sign the registry certificate.
-    - The CA certificate entry must be provided in Base64 format.
+  - The certificate for the registry used for TLS encryption in Base64 format.
+  - The private key for the registry certificate used for TLS encryption in Base64 format.
+  - (Optional) The Certificate Authority (CA) certificate that was used to sign the registry certificate in Base64 format.
 
   Ensure the nodes used to host the Palette management cluster have access to the external registry server.
 
@@ -89,9 +86,9 @@ partial_name: installation-steps-prereqs
 
   <details>
 
-  <summary> How to discover free VIPs in your environment </summary>
+  <summary> How to discover free IPs in your environment </summary>
 
-  You can discover free VIPs in your environment by using a tool like `arping` or `nmap`. For example, you can issue the
+  You can discover free IPs in your environment by using a tool like `arping` or `nmap`. For example, you can issue the
   following command to probe a CIDR block for free IP addresses.
 
   ```bash
