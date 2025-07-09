@@ -183,7 +183,7 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 #### Pack Notes
 
-<!- prettier-ignore-start -->
+<!-- prettier-ignore-start -->
 
 - Palette VerteX now supports Zot OCI-native container image registries through the
 <VersionedLink text="Zot Registry" url="/integrations/packs/?pack=zot-registry" /> pack.
