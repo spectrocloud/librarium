@@ -3,6 +3,10 @@ partial_category: self-hosted
 partial_name: upload-packs-enablement
 ---
 
+<Tabs>
+
+<TabItem value="internal-zot-registry" label="Internal Zot Registry">
+
 1. Navigate to the Artifact Studio through a web browser and click the **Build bundle** option.
 
 2. Select the **{props.iso} Appliance** product on the **Product selection** step and build your pack
@@ -27,3 +31,138 @@ partial_name: upload-packs-enablement
    the **Upload Content** dialog.
 
    Wait for the **Upload Successful** confirmation message to appear.
+
+</TabItem>
+
+<TabItem value="external-registry" label="External Registry">
+
+1. Navigate to the Artifact Studio through a web browser and click the **Build bundle** option.
+
+2. Select the **{props.iso} Appliance** product on the **Product selection** step and build your pack
+   bundles by following the prompts in the Artifact Studio.
+
+   Refer to the Artifact Studio (link TBC) guide for detailed guidance on how to build pack bundles and verify the
+   integrity of the downloaded files.
+
+3. Download the pack bundles to your local machine. Each pack is downloaded in `.zst` format.
+
+4. Authenticate with your external registry using the command line or a GUI tool of your choice. The following examples
+   demonstrate how to authenticate with an OCI registry using the [`oras`](https://oras.land/docs/) CLI tool.
+
+   <Tabs groupId="oci-registry">
+
+   <TabItem label="Harbor" value="harbor">
+
+   Use `oras` to log in to your OCI registry. Replace the values below with your environment configuration values.
+   If you are using a Harbor registry with a self-signed certificate, you will need to add the `--insecure` flag to the
+   `oras` command.
+
+   <Tabs>
+
+   <TabItem label="Regular Certificate" value="regular-certificate">
+
+   ```shell
+   oras login <registry-url-or-ip> --username '<user-name>' --password '<password>'
+   ```
+
+   </TabItem>
+
+   <TabItem label="Self-Signed Certificate" value="self-signed-certificate">
+
+   ```shell
+   oras login <registry-url-or-ip> --insecure --username '<user-name>' --password '<password>'
+   ```
+
+   </TabItem>
+
+   </Tabs>
+
+   </TabItem>
+
+   <TabItem label="AWS ECR" value="aws-ecr">
+
+   You can acquire the AWS ECR authentication command from the AWS ECR console. From the ECR repository details page,
+   click on the **View push commands** button to access the command. Refer to the
+   [AWS ECR Authentication](https://docs.aws.amazon.com/AmazonECR/latest/userguide/getting-started-cli.html#cli-authenticate-registry)
+   documentation for more information.
+
+   <Tabs>
+
+   <TabItem label="Private ECR" value="private-ecr">
+
+   Use the following command to authenticate with AWS ECR. The output of the `aws` command is passed to `oras` to
+   authenticate with the ECR registry. Replace the values below with your environment configuration values.
+
+   ```shell
+   aws ecr get-login-password --region <aws-region> | oras login --username <aws-username> --password-stdin <aws-ecr-url>
+   ```
+
+   </TabItem>
+
+   <TabItem label="Public ECR" value="public-ecr">
+
+   For a public image repository, use the `docker` CLI instead of using `oras`. Replace the values below with your
+   environment configuration values.
+
+   ```shell
+   aws ecr-public get-login-password --region <aws-region> | docker login --username <aws-username> --password-stdin <aws-ecr-public-url>
+   ```
+
+   </TabItem>
+
+   </Tabs>
+
+   </TabItem>
+
+   </Tabs>
+
+5. Upload the pack bundles to the OCI registry using the `oras` CLI tool. The following example commands upload a pack bundle
+   to the OCI registry in the `spectro-content` base path. Replace the values below with your environment configuration values.
+
+   <Tabs>
+
+   <TabItem label="Harbor" value="harbor-upload">
+
+   <Tabs>
+
+   <TabItem label="Regular Certificate" value="regular-certificate">
+
+   ```shell
+   oras push <harbor-url-or-ip>/spectro-content/<repository-name>:<tag> --file <path-to-pack-bundle-zst>
+   ```
+
+   </TabItem>
+
+   <TabItem label="Self-Signed Certificate" value="self-signed-certificate">
+
+   ```shell
+   oras push --insecure <harbor-url-or-ip>/spectro-content/<repository-name>:<tag> --file <path-to-pack-bundle-zst>
+   ```
+
+   </TabItem>
+
+   </Tabs>
+
+   </TabItem>
+
+   <TabItem label="AWS ECR" value="aws-ecr-upload">
+
+   ```shell
+   oras push <aws-ecr-url>/spectro-content/<repository-name>:<tag> --file <path-to-pack-bundle-zst>
+   ```
+
+   </TabItem>
+
+   </Tabs>
+
+   :::tip
+
+   Be aware of the timeout period for the authentication token. The process of uploading images and packages to an OCI
+   registry can take approximately an hour. If the authentication token expires, you will need to re-authenticate to
+   the OCI registry and restart the upload process.
+
+   :::
+
+</TabItem>
+
+</Tabs>
