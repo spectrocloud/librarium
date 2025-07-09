@@ -90,6 +90,14 @@ Follow the instructions to upload packs to your Palette VerteX instance. Packs a
 [cluster profiles](../../profiles/cluster-profiles/cluster-profiles.md) and deploy workload clusters in your
 environment.
 
+:::info
+
+If you are intending to upgrade Palette VerteX using a content bundle, you must upload the bundle to the internal Zot
+registry using Local UI. This is regardless of whether you are using an external registry or the internal Zot registry
+for your pack bundles.
+
+:::
+
 ### Prerequisites
 
 <PartialsComponent
