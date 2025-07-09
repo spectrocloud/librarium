@@ -58,8 +58,8 @@ The following prerequisites must be met before deploying a cluster to AWS:
   :::warning
 
   For static network deployments, you must have port 6443 open between Palette and the workload cluster. Refer to the
-  [Network Ports](../../../architecture/networking-ports.md) documentation for detailed network architecture diagrams and
-  to learn more about the ports used for communication.
+  [Network Ports](../../../architecture/networking-ports.md) documentation for detailed network architecture diagrams
+  and to learn more about the ports used for communication.
 
   :::
 

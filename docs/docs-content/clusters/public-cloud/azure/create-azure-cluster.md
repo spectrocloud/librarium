@@ -57,10 +57,10 @@ to create an IaaS Kubernetes cluster in Azure that Palette manages.
   :::warning
 
   For static network deployments, you must have port 6443 open between Palette and the workload cluster. Refer to the
-  [Network Ports](../../../architecture/networking-ports.md) documentation for detailed network architecture diagrams and
-  to learn more about the ports used for communication.
+  [Network Ports](../../../architecture/networking-ports.md) documentation for detailed network architecture diagrams
+  and to learn more about the ports used for communication.
 
-  ::: 
+  :::
 
 - To enable the `fullyPrivateAddressing` parameter and use a Private API Server load balancer, you need a self-hosted
   Private Cloud Gateway (PCG) deployed in Azure. Ensure the Azure cloud account selected is connected to a PCG. For more
