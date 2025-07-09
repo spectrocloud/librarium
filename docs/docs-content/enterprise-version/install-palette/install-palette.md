@@ -9,7 +9,7 @@ keywords: ["self-hosted", "enterprise"]
 ---
 
 Palette is available as a self-hosted application that you install in your environment. Palette is available in the
-following modes:
+following modes.
 
 | **Method**                               | **Supported Platforms**  | **Description**                                                       | **Install Guide**                                                            |
 | ---------------------------------------- | ------------------------ | --------------------------------------------------------------------- | ---------------------------------------------------------------------------- |

@@ -9,7 +9,7 @@ keywords: ["self-hosted", "vertex"]
 ---
 
 Palette VerteX is available as a self-hosted application that you install in your environment. Palette VerteX is
-available in the following modes:
+available in the following modes.
 
 | **Method**                              | **Supported Platforms**  | **Description**                                                              | **Install Guide**                                                          |
 | --------------------------------------- | ------------------------ | ---------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
