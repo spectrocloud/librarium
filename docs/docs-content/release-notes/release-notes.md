@@ -37,7 +37,8 @@ tags: ["release-notes"]
 
 - The Palette UI now supports the configuration of custom Amazon Linux 2023 and Amazon Linux 2 AMIs for AWS EKS nodes.
   Previously, AL2023 AMIs without any customizations were configured using node labels. Refer to the
-  [Create and Manage AWS EKS Cluster](../clusters/public-cloud/aws/eks.md#cloud-configuration-settings) guide for the updated configuration process.
+  [Create and Manage AWS EKS Cluster](../clusters/public-cloud/aws/eks.md#cloud-configuration-settings) guide for the
+  updated configuration process.
 
 #### Features
 
@@ -69,8 +70,8 @@ tags: ["release-notes"]
 - Fixed an issue that prevented
   [Sprig template functions](../registries-and-packs/pack-constraints.md#sprig-template-functions) from being applied to
   [macros](../clusters/cluster-management/macros.md) used as part of custom manifests.
-- Fixed an issue that restricted cluster tags from containing numbers, spaces, and the following special characters: `_`,
-  `.`, `:`, `/`, `=`, `+`, `-`, and `@`.
+- Fixed an issue that restricted cluster tags from containing numbers, spaces, and the following special characters:
+  `_`, `.`, `:`, `/`, `=`, `+`, `-`, and `@`.
 - Fixed an issue that caused Palette to repave and upgrade multiple [MAAS](../clusters/data-center/maas/maas.md) worker
   nodes at the same time.
 - Fixed an issue that caused cluster health events to be incorrectly reported in Palette after partial broker service
@@ -99,14 +100,15 @@ ensures successful upgrades between minor and patch versions on connected and ai
 
 #### Bug Fixes
 
-- Fixed an issue that prevented [Edge clusters](../clusters/edge/edge.md) with multi-hyphen Helm chart names from provisioning.
+- Fixed an issue that prevented [Edge clusters](../clusters/edge/edge.md) with multi-hyphen Helm chart names from
+  provisioning.
 - Fixed an issue that caused the `containerd sync` job to perform unnecessary file copying and I/O operations on
   disconnected [Edge clusters](../clusters/edge/edge.md).
 - Fixed an issue that caused API calls to add [Edge cluster](../clusters/edge/edge.md) nodes to fail.
 - Fixed an issue that caused proxy certificates to be incorrectly shown in
   [Local UI](../clusters/edge/local-ui/local-ui.md).
-- Fixed an issue that caused the connection configuration validation in the Palette UI to fail for certain valid endpoints
-  and [registration tokens](../clusters/edge/site-deployment/site-installation/edge-host-registration.md).
+- Fixed an issue that caused the connection configuration validation in the Palette UI to fail for certain valid
+  endpoints and [registration tokens](../clusters/edge/site-deployment/site-installation/edge-host-registration.md).
 - Fixed an issue that caused commands to the API delete endpoint to reset Edge hosts actively being provisioned to an
   [Edge cluster](../clusters/edge/edge.md).
 - Fixed an issue that caused the `/usr/local` directory on Edge nodes to be repeatedly resized.
@@ -115,8 +117,8 @@ ensures successful upgrades between minor and patch versions on connected and ai
 - Fixed an issue that prevented the migration of resources from the `system-upgrade` namespace to the
   `system-upgrade-<cluster-uid>` namespace.
 - Fixed an issue that caused Palette to incorrectly report the status of successfully installed packs.
-- Fixed an issue that caused pods related to [agent mode](../deployment-modes/agent-mode/agent-mode.md)
-  cluster upgrades to get stuck in a `Terminating` state.
+- Fixed an issue that caused pods related to [agent mode](../deployment-modes/agent-mode/agent-mode.md) cluster upgrades
+  to get stuck in a `Terminating` state.
 - Fixed an issue that caused Palette to incorrectly report certificate errors on
   [Edge clusters](../clusters/edge/edge.md).
 - Fixed an issue that caused certificate errors on [agent mode](../deployment-modes/agent-mode/agent-mode.md) Edge
