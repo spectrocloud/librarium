@@ -36,8 +36,11 @@ To complete this tutorial, ensure the following prerequisites are in place.
   - 4 CPUs
   - 8 GB memory
   - 150 GB storage
-- Access to an image registry. This tutorial uses [Docker Hub](https://www.docker.com/products/docker-hub/) as an
-  example.
+- Access to a public image registry and permissions to push images. This tutorial uses
+  [Docker Hub](https://www.docker.com/products/docker-hub/) as an example. If you need to use a private registry, refer
+  to the
+  [Deploy Cluster with a Private Provider Registry](../../../clusters/edge/site-deployment/deploy-custom-registries/deploy-private-registry.md)
+  guide for instructions on how to configure the credentials.
 - The following software installed on the Linux machine:
   - [Docker Engine](https://docs.docker.com/engine/install/) with
     [`sudo`](https://docs.docker.com/engine/install/linux-postinstall/) privileges. Alternatively, you can install
@@ -45,7 +48,7 @@ To complete this tutorial, ensure the following prerequisites are in place.
   - [jq](https://jqlang.org/download/), if you build the artifacts using the [script](#automate-edgeforge).
   - [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
 
-## Define Arguments
+## Define Build Arguments
 
 Open a terminal window on your Linux machine and navigate to the `CanvOS` repository that you cloned in the
 [Prepare User Data for Edge Installation](./prepare-user-data.md) tutorial. This repository contains the utilities
@@ -61,7 +64,7 @@ Check the available Git tags.
 git tag
 ```
 
-Check out the desired tag. We recommend using a CanvOS major version that is the same as, or older than, Palette's major
+Check out the desired tag. We recommend using a CanvOS minor version that is the same as, or older than, Palette's minor
 version. This tutorial uses the tag `v4.6.24` as an example.
 
 ```
@@ -197,14 +200,25 @@ docker images --filter=reference="*/*:*$CUSTOM_TAG"
 
 ```text hideClipboard
 REPOSITORY           TAG                                          IMAGE ID       CREATED          SIZE
-spectrodocs/ubuntu   k3s-1.32.3-v4.6.24-gs-tutorial               d28750baa9a6   33 minutes ago   5.05GB
-spectrodocs/ubuntu   k3s-1.32.3-v4.6.24-gs-tutorial_linux_amd64   d28750baa9a6   33 minutes ago   5.05GB
+spectrocloud/ubuntu   k3s-1.32.3-v4.6.24-gs-tutorial               d28750baa9a6   33 minutes ago   5.05GB
+spectrocloud/ubuntu   k3s-1.32.3-v4.6.24-gs-tutorial_linux_amd64   d28750baa9a6   33 minutes ago   5.05GB
 ```
 
 ## Push Provider Images
 
-Push the provider image to the image registry specified in the `.arg` file, so that your Edge host can download it
-during the cluster deployment.
+To use the provider image with your Edge deployment, push it to the image registry specified in the `.arg` file. Issue
+the following command to log in to Docker Hub. Provide your Docker ID and password when prompted.
+
+```bash
+docker login
+```
+
+```text hideClipboard
+Login Succeeded
+```
+
+Once authenticated, push the provider image to the registry so that your Edge host can download it during the cluster
+deployment.
 
 ```bash
 docker push $IMAGE_REGISTRY/ubuntu:k3s-1.32.3-v4.6.24-$CUSTOM_TAG
@@ -460,16 +474,27 @@ Follow the steps below to build the artifacts using the script.
    chmod +x edgeforge.sh
    ```
 
-3. Invoke the script to build the artifacts, answering the prompts.
+3. Log in to the image registry that you will use to host the provider images. This tutorial uses Docker Hub as an
+   example. Provide your Docker ID and password when prompted.
+
+   ```bash
+   docker login
+   ```
+
+   ```text hideClipboard
+   Login Succeeded
+   ```
+
+4. Invoke the script to build the artifacts, answering the prompts.
 
    ```shell
    ./edgeforge.sh
    ```
 
-4. Once the build is complete, the script generates a manifest in `CanvOS/manifest-profile.yaml` with predefined values
+5. Once the build is complete, the script generates a manifest in `CanvOS/manifest-profile.yaml` with predefined values
    required to create the cluster profile. Ensure to save this manifest, as you will need it for the next tutorial.
 
-5. Confirm that the Edge installer ISO and its checksum have been created correctly.
+6. Confirm that the Edge installer ISO and its checksum have been created correctly.
 
    ```bash
    ls CanvOS/build

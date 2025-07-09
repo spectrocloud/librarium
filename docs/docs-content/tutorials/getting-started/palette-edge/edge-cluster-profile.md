@@ -58,6 +58,10 @@ manifest generated in the [Build Edge Artifacts](./build-edge-artifacts.md) tuto
 provider images from the image registry specified in the [Build Edge Artifacts](./build-edge-artifacts.md) tutorial
 during deployment.
 
+Alternatively, if you no longer have access to the manifest, you can manually fill in the `options.system.uri` parameter
+with the address of the provider image you pushed to the registry. For example, the address used in this tutorial is
+`spectrocloud/ubuntu:k3s-1.32.3-v4.6.24-gs-tutorial`.
+
 The following image displays the OS layer with the custom manifest and registry credentials.
 
 ![A screenshot of the cluster profile creation step with the OS layer.](/getting-started/getting-started_introduction-edge_edge-cluster-profile_byos-cluster-profile.webp)
@@ -82,6 +86,14 @@ Click **Next Layer** to add the network layer. This tutorial uses Cilium as the 
 | Cilium        | 1.17.1      | Palette Registry | Network   |
 
 Click **Confirm** once you have completed adding all core layers.
+
+:::info
+
+The Edge cluster profile's core infrastructure layers do not include a Container Storage Interface (CSI) layer by
+default. If your application requires persistent storage, you must include a CSI pack. This tutorial's scope does not
+include a CSI pack.
+
+:::
 
 Next, click **Add New Pack** to include the add-on layers. Search for `MetalLB` and add the following pack to your
 cluster profile.
