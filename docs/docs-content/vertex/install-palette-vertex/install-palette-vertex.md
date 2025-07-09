@@ -8,9 +8,8 @@ tags: ["vertex"]
 keywords: ["self-hosted", "vertex"]
 ---
 
-Palette VerteX is available as a self-hosted application that you install in your environment. The self-hosted version
-is a dedicated Palette VerteX environment hosted on VMware instances or in an existing Kubernetes cluster. Palette
-VerteX is available in the following modes:
+Palette VerteX is available as a self-hosted application that you install in your environment. Palette VerteX is
+available in the following modes:
 
 | **Method**                              | **Supported Platforms**  | **Description**                                                              | **Install Guide**                                                          |
 | --------------------------------------- | ------------------------ | ---------------------------------------------------------------------------- | -------------------------------------------------------------------------- |

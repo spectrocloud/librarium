@@ -9,10 +9,10 @@ partial_name: installation-steps-enablement
 2. Upload the ISO to your infrastructure provider. This can be done using the web interface of your infrastructure
    provider or using command-line tools.
 
-   - For VMware vSphere, you can upload the ISO to a datastore using the vSphere Client or the `govc` CLI tool.
+   - For VMware vSphere, you can upload the ISO to a datastore using the vSphere Client or the `govc` CLI tool. Refer to the [vSphere](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/9-0/upload-iso-image-installation-media-for-a-guest-operating-system.html) or [govc](https://github.com/vmware/govmomi/tree/main/govc) documentation for more information.
    - For Bare Metal, you can use tools like `scp` or `rsync` to transfer the ISO to the nodes, or use a USB drive to
      boot the nodes from the ISO.
-   - For Machine as a Service (MAAS), you can use the MAAS web interface to upload the ISO.
+   - For Machine as a Service (MAAS), you can upload and deploy ISOs using Packer. Refer to the [MAAS documentation](https://maas.io/docs/about-images#p-17467-custom-images) for more information.
 
    Ensure that the ISO is accessible to all nodes that will be part of the {props.version} management cluster.
 
@@ -31,9 +31,9 @@ partial_name: installation-steps-enablement
 5. Log in to the nodes using the default credentials for Kairos Ubuntu. The default username is `kairos`, and the
    password is `kairos`.
 
-6. In the Palette TUI, configure the nodes as per your environment requirements. Use the **TAB** key or the up and down
-   arrow keys to switch between fields. When you make a change, press **ENTER** to apply the change. Use **ESC** to go
-   back.
+6. In the Palette TUI, the available configuration options are displayed and are described in the next three steps.
+   Use the **TAB** key or the up and down arrow keys to switch between fields. When you make a change, press **ENTER**
+   to apply the change. Use **ESC** to go back.
 
 7. In **Hostname**, check the existing hostname and, optionally, change it to a new one.
 
@@ -102,12 +102,15 @@ partial_name: installation-steps-enablement
 25. Repeat steps 20-24 for every host you want to link to the leader host.
 
 26. Confirm that all linked hosts appear in the **Linked Edge Hosts** table. The following columns should show the
-    required statuses:
+    required statuses.
 
-    - **Status** = Ready
-    - **Content** = Synced
-      - Content synchronization will take at least five minutes to complete, depending on your network resources.
-    - **Health** = Healthy
+    | **Column**  | **Status** |
+    | ----------- | ---------- |
+    | **Status**  | Ready      |
+    | **Content** | Synced     |
+    | **Health**  | Healthy    |
+
+    Content synchronization will take at least five minutes to complete, depending on your network resources.
 
 27. On the left main menu, click **Cluster**.
 
@@ -235,14 +238,14 @@ partial_name: installation-steps-enablement
 38. You will be prompted to log in to {props.version} system console. Use `admin` as the username and `admin` as the password.
     You will be prompted to change the password after logging in.
 
-39. In the **Account Info** window, provide the following information:
+39. In the **Account Info** window, provide the following information.
 
-    - **Email address** - This is used for notifications and password recovery as well as logging in to the {props.version}
-      system console.
-      - This will not be active until you <PaletteVertexUrlMapper edition={props.edition} text="configure SMTP settings" url="/system-management/smtp"/> in {props.version} system console and verify your email address.
-    - **Current password** - Use `admin` as the current password.
-    - **New password** - Enter a new password for the account.
-    - **Confirm new password** - Re-enter the new password for confirmation.
+    | **Field**                | **Description**    |
+    |--------------------------|--------------------|
+    | **Email address**        | This is used for notifications and password recovery as well as logging in to the {props.version} system console. This will not be active until you <PaletteVertexUrlMapper edition={props.edition} text="configure SMTP settings" url="/system-management/smtp"/> in {props.version} system console and verify your email address. |
+    | **Current password**     | Use `admin` as the current password. |
+    | **New password**         | Enter a new password for the account. |
+    | **Confirm new password** | Re-enter the new password for confirmation. |
 
     Refer to <PaletteVertexUrlMapper edition={props.edition} text="Password Requirements and Security" url="/system-management/account-management/credentials#password-requirements-and-security"/> to learn about password requirements.
 

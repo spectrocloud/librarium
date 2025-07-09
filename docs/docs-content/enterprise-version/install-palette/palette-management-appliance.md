@@ -31,13 +31,13 @@ This solution is designed to be immutable, secure, and compliant with industry s
 Implementation Guides (STIG). The following table displays the infrastructure profile for the self-hosted Palette
 appliance.
 
-| **Layer**      | **Component**                              |
-| -------------- | ------------------------------------------ |
-| **OS**         | Ubuntu: Immutable Kairos and STIG-hardened |
-| **Kubernetes** | Palette Kubernetes (PXK): STIG-hardened    |
-| **CNI**        | Calico                                     |
-| **CSI**        | Piraeus                                    |
-| **Registry**   | Zot                                        |
+| **Layer**      | **Component**                                                   |
+| -------------- | --------------------------------------------------------------- |
+| **OS**         | Ubuntu: Immutable [Kairos](https://kairos.io) and STIG-hardened |
+| **Kubernetes** | Palette Kubernetes (PXK): STIG-hardened                         |
+| **CNI**        | Calico                                                          |
+| **CSI**        | Piraeus                                                         |
+| **Registry**   | Zot                                                             |
 
 ## Supported Platforms
 
@@ -87,7 +87,8 @@ Follow the instructions to install Palette using the Palette Management Applianc
 ## Upload Packs to Palette
 
 Follow the instructions to upload packs to your Palette instance. Packs are used to create
-[cluster profiles](../../profiles/cluster-profiles/cluster-profiles.md) and deploy clusters in your environment.
+[cluster profiles](../../profiles/cluster-profiles/cluster-profiles.md) and deploy workload clusters in your
+environment.
 
 ### Prerequisites
 

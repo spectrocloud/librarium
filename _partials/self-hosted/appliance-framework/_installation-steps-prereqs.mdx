@@ -30,8 +30,25 @@ partial_name: installation-steps-prereqs
 - Relevant permissions to install Palette on the nodes including permission to attach or mount an ISO and set nodes to
   boot from it.
 
-- If you plan to use an external registry instead of the internal Zot registry that comes with Palette, you must provide
-  the following external registry credentials during the Palette installation process:
+- Registry credentials and TLS certificates are required for the Palette installation. You can choose to use either an
+  internal Zot registry that comes with Palette or an external registry of your choice.
+
+  <Tabs>
+
+  <TabItem value="internal-zot-registry" label="Internal Zot Registry">
+
+  If you choose to use the internal Zot registry, you will need to provide the following TLS certificates and keys in
+  Base64 format during the Palette installation process:
+
+  - A private key for the Zot registry certificate.
+  - A certificate for the Zot registry.
+  - (Optional) A CA certificate for the Zot registry that was used to sign the registry certificate.
+
+  </TabItem>
+
+  <TabItem value="external-registry" label="External Registry">
+
+  If you plan to use an external registry, you must provide the following external registry credentials during the Palette installation process:
 
   - The DNS/IP endpoint and port for the external registry.
   - The username for the registry.
@@ -42,27 +59,9 @@ partial_name: installation-steps-prereqs
 
   Ensure the nodes used to host the Palette management cluster have access to the external registry server.
 
-  <details>
+  </TabItem>
 
-  <summary> How to get Base64 encoded entries for certificates and keys </summary>
-
-  You can get the Base64 encoded entry from your certificates and keys by using the following command. Replace
-  `<certificate-or-key-file>` with the filename of your certificate or key file.
-
-  ```bash
-  base64 --wrap 0 <certificate-or-key-file>
-  ```
-
-  </details>
-
-- If you choose to use the internal Zot registry, you will need to provide the following TLS certificates and keys in
-  Base64 format during the Palette installation process:
-
-  - A private key for the Zot registry certificate.
-  - A certificate for the Zot registry.
-  - (Optional) A CA certificate for the Zot registry that was used to sign the registry certificate.
-
-  <br />
+  </Tabs>
 
   <details>
 

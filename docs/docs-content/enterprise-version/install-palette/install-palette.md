@@ -8,9 +8,8 @@ tags: ["palette", "self-hosted"]
 keywords: ["self-hosted", "enterprise"]
 ---
 
-Palette is available as a self-hosted application that you install in your environment. The self-hosted version is a
-dedicated Palette environment hosted on VMware instances or in an existing Kubernetes cluster. Palette is available in
-the following modes:
+Palette is available as a self-hosted application that you install in your environment. Palette is available in the
+following modes:
 
 | **Method**                               | **Supported Platforms**  | **Description**                                                       | **Install Guide**                                                            |
 | ---------------------------------------- | ------------------------ | --------------------------------------------------------------------- | ---------------------------------------------------------------------------- |

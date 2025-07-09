@@ -31,13 +31,13 @@ This solution is designed to be immutable, secure, and compliant with industry s
 Information Processing Standards (FIPS) and Security Technical Implementation Guides (STIG). The following table
 displays the infrastructure profile for the Palette VerteX appliance.
 
-| **Layer**      | **Component**                                              |
-| -------------- | ---------------------------------------------------------- |
-| **OS**         | Ubuntu: Immutable Kairos, STIG-hardened and FIPS compiled. |
-| **Kubernetes** | Palette Kubernetes (PXK): STIG-hardened and FIPS compiled. |
-| **CNI**        | Calico: FIPS compiled.                                     |
-| **CSI**        | Piraeus                                                    |
-| **Registry**   | Zot: FIPS compiled.                                        |
+| **Layer**      | **Component**                                                                   |
+| -------------- | ------------------------------------------------------------------------------- |
+| **OS**         | Ubuntu: Immutable [Kairos](https://kairos.io), STIG-hardened and FIPS compiled. |
+| **Kubernetes** | Palette Kubernetes (PXK): STIG-hardened and FIPS compiled.                      |
+| **CNI**        | Calico: FIPS compiled.                                                          |
+| **CSI**        | Piraeus                                                                         |
+| **Registry**   | Zot: FIPS compiled.                                                             |
 
 ## Supported Platforms
 
@@ -87,7 +87,8 @@ Follow the instructions to install Palette VerteX using the VerteX Management Ap
 ## Upload Packs to Palette VerteX
 
 Follow the instructions to upload packs to your Palette VerteX instance. Packs are used to create
-[cluster profiles](../../profiles/cluster-profiles/cluster-profiles.md) and deploy clusters in your environment.
+[cluster profiles](../../profiles/cluster-profiles/cluster-profiles.md) and deploy workload clusters in your
+environment.
 
 ### Prerequisites
 
