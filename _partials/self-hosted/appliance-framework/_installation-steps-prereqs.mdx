@@ -44,6 +44,8 @@ partial_name: installation-steps-prereqs
   - A certificate for the Zot registry.
   - (Optional) A CA certificate for the Zot registry that was used to sign the registry certificate.
 
+  Ensure that the Domain Name System (DNS) name listed in the certificate's Common Name (CN) and/or the Subject Alternative Name (SAN) resolves to the virtual IP address (VIP) that will be assigned to the Palette management cluster.
+
   </TabItem>
 
   <TabItem value="external-registry" label="External Registry">
