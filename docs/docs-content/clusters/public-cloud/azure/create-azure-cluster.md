@@ -54,6 +54,14 @@ to create an IaaS Kubernetes cluster in Azure that Palette manages.
   - Managed Disks
   - Virtual Network Address Translation (NAT) Gateway
 
+  :::warning
+
+  For static network deployments, you must have port 6443 open between Palette and the workload cluster. Refer to the
+  [Network Ports](../../../architecture/networking-ports.md) documentation for detailed network architecture diagrams
+  and to learn more about the ports used for communication.
+
+  :::
+
 - To enable the `fullyPrivateAddressing` parameter and use a Private API Server load balancer, you need a self-hosted
   Private Cloud Gateway (PCG) deployed in Azure. Ensure the Azure cloud account selected is connected to a PCG. For more
   information on deploying PCGs, refer to [Private Cloud Gateway](../../pcg/pcg.md). To learn how to connect a PCG to an
@@ -174,7 +182,6 @@ Use the following steps to deploy an Azure cluster.
     | **Network Resource Group** | The logical container for grouping related Azure resources. |
     | **Virtual Network**        | Select the VNet.                                            |
     | **CIDR Block**             | Select the IP address CIDR range.                           |
-    | **Security Group Name**    | Select the security group name.                             |
     | **Control Plane Subnet**   | Select the control plane subnet.                            |
     | **Worker Subnet**          | Select the worker network.                                  |
 

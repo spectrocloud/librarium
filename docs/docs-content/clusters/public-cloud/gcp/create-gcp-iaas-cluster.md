@@ -9,6 +9,10 @@ sidebar_position: 20
 Palette supports creating and managing Kubernetes clusters deployed to a Google Cloud Platform (GCP) account. This
 section guides you to create an IaaS Kubernetes cluster in GCP that Palette manages.
 
+## Limitations
+
+- GPU machine types cannot be used to configure node pools.
+
 ## Prerequisites
 
 Ensure the following requirements are met before you attempt to deploy a cluster to GCP:
@@ -28,6 +32,7 @@ Ensure the following requirements are met before you attempt to deploy a cluster
 
 - Palette creates compute, network, and storage resources while provisioning Kubernetes clusters. Ensure there is
   sufficient capacity in the preferred GCP region to create the following resources:
+
   - Virtual Private Cloud (VPC) Network
   - Static External IP Address
   - Network Interfaces
@@ -35,6 +40,14 @@ Ensure the following requirements are met before you attempt to deploy a cluster
   - Cloud Load Balancing
   - Persistent Disks
   - Cloud Router
+
+  :::warning
+
+  For static network deployments, you must have port 6443 open between Palette and the workload cluster. Refer to the
+  [Network Ports](../../../architecture/networking-ports.md) documentation for detailed network architecture diagrams
+  and to learn more about the ports used for communication.
+
+  :::
 
 ## Deploy a GCP Cluster
 
@@ -93,7 +106,7 @@ Ensure the following requirements are met before you attempt to deploy a cluster
 
     You can add new worker pools to customize specific worker nodes to run specialized workloads. For example, the
     default worker pool may be configured with the c2.standard-4 instance types for general-purpose workloads. You can
-    configure another worker pool with instance type g2-standard-4 to leverage GPU workloads.
+    configure another worker pool with instance type g2-standard-4 to leverage supported machine types.
 
     :::
 

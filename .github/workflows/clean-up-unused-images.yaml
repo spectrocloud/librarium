@@ -19,6 +19,11 @@ jobs:
   find_unused_images:
     runs-on: ubuntu-latest
 
+    env:
+      ALGOLIA_APP_ID: "123456789"
+      ALGOLIA_INDEX_NAME: "123456789"
+      ALGOLIA_SEARCH_KEY: "123456789"
+
     steps:
       - name: Retrieve Credentials
         id: import-secrets
