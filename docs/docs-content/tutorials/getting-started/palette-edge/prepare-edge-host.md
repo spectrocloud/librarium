@@ -182,7 +182,7 @@ Log in to [Palette](https://console.spectrocloud.com/). From the left main menu,
 Hosts** tab to view the registered hosts.
 
 Confirm that your Edge host is listed with a **Healthy** and **Ready** status. The **Machine ID** displayed in Palette
-should match the ID displayed on the VM screen.
+should match the ID displayed on the host screen.
 
 ![A screenshot of the Edge host in Palette.](/getting-started/getting-started_introduction-edge_prepare-edge-host_edge-host-palette.webp)
 

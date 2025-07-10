@@ -61,7 +61,7 @@ cd CanvOS
 Check the available Git tags.
 
 ```shell
-git tag
+git tag --sort=v:refname
 ```
 
 Check out the desired tag. We recommend using a CanvOS minor version that is the same as, or older than, Palette's minor
@@ -199,7 +199,7 @@ docker images --filter=reference="*/*:*$CUSTOM_TAG"
 ```
 
 ```text hideClipboard
-REPOSITORY           TAG                                          IMAGE ID       CREATED          SIZE
+REPOSITORY            TAG                                          IMAGE ID       CREATED          SIZE
 spectrocloud/ubuntu   k3s-1.32.3-v4.6.24-gs-tutorial               d28750baa9a6   33 minutes ago   5.05GB
 spectrocloud/ubuntu   k3s-1.32.3-v4.6.24-gs-tutorial_linux_amd64   d28750baa9a6   33 minutes ago   5.05GB
 ```

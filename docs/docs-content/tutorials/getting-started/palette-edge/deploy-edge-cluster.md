@@ -80,13 +80,13 @@ Click **Next** to continue.
 In the **Nodes Config** section, provide the following details for the control plane pool. This tutorial deploys a
 single-node Edge cluster with no worker pool.
 
-| **Field**                               | **Value**                                                                                                                                                                                          |
-| --------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Node pool name**                      | `control-plane-pool`                                                                                                                                                                               |
-| **Allow worker capability**             | Yes                                                                                                                                                                                                |
-| **Additional Labels (Optional)**        | None                                                                                                                                                                                               |
-| **Taints (Optional)**                   | None                                                                                                                                                                                               |
-| **Pool Configuration** > **Edge Hosts** | Select the Edge host configured in the [Prepare Edge Host](./prepare-edge-host.md) tutorial to become the node of your cluster. Palette automatically displays the NIC Name for the selected host. |
+| **Field**                               | **Value**                                                                                                                       |
+| --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| **Node pool name**                      | `control-plane-pool`                                                                                                            |
+| **Allow worker capability**             | Yes                                                                                                                             |
+| **Additional Labels (Optional)**        | None                                                                                                                            |
+| **Taints (Optional)**                   | None                                                                                                                            |
+| **Pool Configuration** > **Edge Hosts** | Select the Edge host configured in the [Prepare Edge Host](./prepare-edge-host.md) tutorial to become the node of your cluster. |
 
 The following image shows the Edge host selection in the control plane pool.
 
