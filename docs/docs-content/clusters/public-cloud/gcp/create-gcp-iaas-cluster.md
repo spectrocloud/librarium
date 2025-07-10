@@ -39,8 +39,8 @@ Ensure the following requirements are met before you attempt to deploy a cluster
   - Cloud NAT
   - Cloud Load Balancing
   - Persistent Disks
-  - Cloud Router      
-  :::warning
+  - Cloud Router  
+    :::warning
 
   For static network deployments, you must have port 6443 open between Palette and the workload cluster. Refer to the
   [Network Ports](../../../architecture/networking-ports.md) documentation for detailed network architecture diagrams

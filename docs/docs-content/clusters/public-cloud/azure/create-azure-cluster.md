@@ -52,10 +52,8 @@ to create an IaaS Kubernetes cluster in Azure that Palette manages.
   - Load Balancers
   - Virtual Hard Disk (VHD)
   - Managed Disks
-  - Virtual Network Address Translation (NAT) Gateway   
+  - Virtual Network Address Translation (NAT) Gateway
 
-       
-       
   :::warning
 
   For static network deployments, you must have port 6443 open between Palette and the workload cluster. Refer to the

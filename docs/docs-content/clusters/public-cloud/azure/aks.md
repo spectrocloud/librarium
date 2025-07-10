@@ -52,8 +52,7 @@ explains how you can create an Azure AKS cluster managed by Palette.
   - Virtual Hard Disk (VHD)
   - Managed Disks
   - Virtual Network Address Translation (NAT) Gateway
-     
-     
+
 :::warning
 
 For static network deployments, you must have port 6443 open between Palette and the workload cluster. Refer to the
