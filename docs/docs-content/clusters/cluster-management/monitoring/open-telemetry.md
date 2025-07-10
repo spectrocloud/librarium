@@ -8,6 +8,27 @@ sidebar_position: 20
 tags: ["clusters", "cluster management", "monitoring"]
 ---
 
+The monitoring stack you will use leverages the [OpenTelemetry (OTel)](https://opentelemetry.io/) ecosystem to meet your
+environment’s observability requirements. OTel standardizes how telemetry data such as logs, metrics, and traces is
+generated and exported. Any backend that supports the OpenTelemetry Protocol (OTLP) is compatible, making the OTel stack
+one of the most flexible and vendor-neutral observability solutions available. OTel is widely supported by a variety of
+monitoring and backend tools, including [Prometheus](https://prometheus.io/), [Jaeger](https://www.jaegertracing.io/),
+[OpenObserve](https://github.com/openobserve/openobserve), and [Datadog](https://docs.datadoghq.com/).
+
+Use the following steps to deploy a monitoring stack with [OpenTelemetry](https://opentelemetry.io/) and configure a
+host cluster to forward metrics to [OpenObserve](https://github.com/openobserve/openobserve).
+
+The stack uses the following architecture:
+
+- One or more workload clusters are instrumented with OpenTelemetry to gather metrics. These metrics are sent to a
+  centralized component known as the _central collector_.
+- The _central collector_ is configured with OpenTelemetry and is responsible for receiving, processing, and forwarding
+  the telemetry data.
+- The collector uses an _exporter_ to send the processed metrics to _OpenObserve_, which acts as the observability
+  backend and provides a dashboard to visualize the metrics.
+
+![OTel architecture](/clusters_cluster-management_monitoring_open-telemetry_otel-architecture.webp)
+
 ## Prerequisites
 
 - A Palette account.
