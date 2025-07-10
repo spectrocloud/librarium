@@ -34,8 +34,8 @@ tags: ["clusters", "cluster management", "monitoring"]
     | PostgreSQL   | 1.22.x      | Palette Registry (OCI) | No customization required.                                                                                                                                                                                          |
     | Open Observe | 0.14.x      | Palette Registry (OCI) | Set a user email in the `charts.openobserve.auth.ZO_ROOT_USER_EMAIL` field or leave the default value of `admin@openobserve.dev`. Set a user password in the `charts.openobserve.auth.ZO_ROOT_USER_PASSWORD` field. |
 
-    Make a note of the base64 encoding of the `useremail:password` you have configured here. For example, the string
-    `admin@openobserve.dev:admin` is encoded to `YWRtaW5Ab3Blbm9ic2VydmUuZGV2OmFkbWl`.
+    Make a note of the base64 encoding of the `useremail:password` you have configured in the Open Observe pack. For
+    example, the string `admin@openobserve.dev:admin` is encoded to `YWRtaW5Ab3Blbm9ic2VydmUuZGV2OmFkbWl`.
 
     Review the configuration you have provided and click **Finish Configuration** to save your cluster profile. This
     profile configures and deploys the Open Observe dashboard.
@@ -50,8 +50,9 @@ tags: ["clusters", "cluster management", "monitoring"]
     configuration and click **Save**.
 
 5.  Select **Overview** tab and monitor the progress of your add-on profile. This may take a few minutes. You will find
-    two services deployed once the add-on profile correctly applies. Make a note of the address of the services by
-    copying the link under port 5080.
+    two services deployed once the add-on profile correctly applies.
+
+    Make a note of the address of the services by copying the link under port 5080.
 
     ![Exporter profile deployed](/clusters_cluster-management_monitoring_open-telemetry_exporter-deployed.webp)
 
@@ -82,8 +83,9 @@ tags: ["clusters", "cluster management", "monitoring"]
     configuration and click **Save**.
 
 8.  Select **Overview** tab and monitor the progress of your add-on profile. This may take a few minutes. You will find
-    six services deployed once the add-on profile correctly applies. Make a note of the address of the services by
-    copying the link under port 4317.
+    six services deployed once the add-on profile correctly applies.
+
+    Make a note of the address of the services by copying the link under port 4317.
 
     ![Central Collector profile deployed](/clusters_cluster-management_monitoring_open-telemetry_central-collector-deployed.webp)
 
@@ -124,8 +126,8 @@ tags: ["clusters", "cluster management", "monitoring"]
 
     :::tip
 
-    You can deploy this profile to as many workload clusters as you want to monitor. They will all connect to the
-    central collector cluster.
+    You can deploy this profile to as many workload clusters as you want to monitor. They will all connect and send data
+    to the central collector cluster.
 
     :::
 
@@ -135,3 +137,24 @@ tags: ["clusters", "cluster management", "monitoring"]
     ![Workload profile deployed](/clusters_cluster-management_monitoring_open-telemetry_workload-deployed.webp)
 
 ## Validation
+
+1.  Log in to [Palette](https://console.spectrocloud.com).
+
+2.  Navigate to the left **Main Menu** and select **Clusters** to view the cluster profile page. Select the cluster that
+    you have deployed the **exporter-profile** to. The **Overview** tab appears.
+
+3.  Open the Open Observe dashboard by clicking on the link under 5080. The Open Observe login page appears. Enter the
+    user email and password that you have configured in the cluster profile. Then, click **Login**.
+
+4.  The Open Observe dashboard appears. The exporter contains metrics from all workload clusters and the central
+    collector.
+
+    ![Open Observe dashboard](/clusters_cluster-management_monitoring_open-telemetry_open-observe-dashboard.webp)
+
+    The **Metrics** tab allows you to create various types of charts to visualize your workload cluster metrics.
+
+    ![Open Observe metrics tab ](/clusters_cluster-management_monitoring_open-telemetry_open-observe-metrics.webp)
+
+    The Open Observe dashboard contains a wealth of functionality that you can use to monitor and track the health of
+    your clusters. Refer to the
+    [Open Observe documentation](https://github.com/openobserve/openobserve?tab=readme-ov-file) for further information.
