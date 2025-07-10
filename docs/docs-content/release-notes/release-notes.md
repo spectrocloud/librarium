@@ -153,6 +153,10 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
   `<current-directory>/output/content-bundle/` directory by default; you can override this location by using the
   `--output` flag. Refer to the [Content](../automation/palette-cli/commands/content.md) command reference page for
   further information.
+- Terraform version 0.24.0 of the
+  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
+  available. For more details, refer to the Terraform provider
+  [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
 
 #### Improvements
 
