@@ -214,8 +214,6 @@ an AWS account. This section guides you on how to create an EKS cluster in AWS t
 
   :::
 
-
-
 ## Deploy an AWS EKS Cluster
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
