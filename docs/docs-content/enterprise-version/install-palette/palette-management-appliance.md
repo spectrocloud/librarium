@@ -27,17 +27,15 @@ Container Storage Interface (CSI). A [Zot registry](https://zotregistry.dev/) is
 Framework ISO. Zot is a lightweight, OCI-compliant container image registry that is used to store the Palette packs
 needed to create cluster profiles.
 
-This solution is designed to be immutable, secure, and compliant with industry standards, such as the Security Technical
-Implementation Guides (STIG). The following table displays the infrastructure profile for the self-hosted Palette
-appliance.
+The following table displays the infrastructure profile for the self-hosted Palette appliance.
 
-| **Layer**      | **Component**                                                   |
-| -------------- | --------------------------------------------------------------- |
-| **OS**         | Ubuntu: Immutable [Kairos](https://kairos.io) and STIG-hardened |
-| **Kubernetes** | Palette Kubernetes (PXK): STIG-hardened                         |
-| **CNI**        | Calico                                                          |
-| **CSI**        | Piraeus                                                         |
-| **Registry**   | Zot                                                             |
+| **Layer**      | **Component**                                 | **Version** |
+| -------------- | --------------------------------------------- | ----------- |
+| **OS**         | Ubuntu: Immutable [Kairos](https://kairos.io) | 22.04       |
+| **Kubernetes** | Palette eXtended Kubernetes Edge (PXK-E)      | 1.32.3      |
+| **CNI**        | Calico                                        | 3.29.2      |
+| **CSI**        | Piraeus                                       | 2.8.1       |
+| **Registry**   | Zot                                           | 0.1.67      |
 
 ## Supported Platforms
 

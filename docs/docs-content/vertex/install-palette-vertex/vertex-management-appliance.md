@@ -28,16 +28,16 @@ Framework ISO. Zot is a lightweight, OCI-compliant container image registry that
 needed to create cluster profiles.
 
 This solution is designed to be immutable, secure, and compliant with industry standards, such as the Federal
-Information Processing Standards (FIPS) and Security Technical Implementation Guides (STIG). The following table
-displays the infrastructure profile for the Palette VerteX appliance.
+Information Processing Standards (FIPS). The following table displays the infrastructure profile for the Palette VerteX
+appliance.
 
-| **Layer**      | **Component**                                                                   |
-| -------------- | ------------------------------------------------------------------------------- |
-| **OS**         | Ubuntu: Immutable [Kairos](https://kairos.io), STIG-hardened and FIPS compiled. |
-| **Kubernetes** | Palette Kubernetes (PXK): STIG-hardened and FIPS compiled.                      |
-| **CNI**        | Calico: FIPS compiled.                                                          |
-| **CSI**        | Piraeus                                                                         |
-| **Registry**   | Zot: FIPS compiled.                                                             |
+| **Layer**      | **Component**                                 | **Version** | **FIPS-compliant** |
+| -------------- | --------------------------------------------- | ----------- | ------------------ |
+| **OS**         | Ubuntu: Immutable [Kairos](https://kairos.io) | 20.04       | :white_check_mark: |
+| **Kubernetes** | Palette eXtended Kubernetes Edge (PXK-E)      | 1.32.3      | :white_check_mark: |
+| **CNI**        | Calico                                        | 3.29.2      | :white_check_mark: |
+| **CSI**        | Piraeus                                       | 2.8.1       | :white_check_mark: |
+| **Registry**   | Zot                                           | 0.1.67      | :white_check_mark: |
 
 ## Supported Platforms
 
