@@ -10,8 +10,6 @@ partial_name: azure-iaas-static-vnet-role
   "IsCustom": true,
   "Description": "Can use Palette to deploy IaaS clusters using static placement. This role contains the permissions that must be applied at the virtual network scope level.",
   "Actions": [
-    "Microsoft.Network/networkSecurityGroups/read",
-    "Microsoft.Network/networkSecurityGroups/securityRules/read",
     "Microsoft.Network/privateDnsZones/A/delete",
     "Microsoft.Network/privateDnsZones/A/read",
     "Microsoft.Network/privateDnsZones/A/write",
@@ -31,6 +29,7 @@ partial_name: azure-iaas-static-vnet-role
     "Microsoft.Network/virtualNetworks/read",
     "Microsoft.Network/virtualNetworks/subnets/join/action",
     "Microsoft.Network/virtualNetworks/subnets/joinLoadBalancer/action",
+    "Microsoft.Network/virtualNetworks/subnets/prepareNetworkPolicies/action",
     "Microsoft.Network/virtualNetworks/subnets/read",
     "Microsoft.Network/virtualNetworks/subnets/virtualMachines/read",
     "Microsoft.Network/virtualNetworks/virtualMachines/read",
