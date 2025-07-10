@@ -46,7 +46,7 @@ tags: ["release-notes"]
   banner. System administrators can set the banner text and color through the
   [system console](../enterprise-version/system-management/system-management.md#system-console). Refer to the
   [Banners](../enterprise-version/system-management/login-banner.md) guide for further guidance.
-- All images built by Spectro Cloud that are essential to Palette and VerteX functionality are now signed using [Cosign](https://docs.sigstore.dev/cosign/system_config/installation/), ensuring artifacts are traceable, tamper-evident, and aligned with modern compliance frameworks. Generated keys use the FIPS-compliant ECDSA-P256 cryptographic algorithm for the signature and SHA256 for hashes; keys are stored in PEM-encoded PKCS8 format. 
+- All images built by Spectro Cloud that are essential to Palette and Palette VerteX functionality are now signed using [Cosign](https://docs.sigstore.dev/cosign/system_config/installation/), ensuring artifacts are traceable, tamper-evident, and aligned with modern compliance frameworks. Generated keys use the FIPS-compliant ECDSA-P256 cryptographic algorithm for the signature and SHA256 for hashes; keys are stored in PEM-encoded PKCS8 format. 
 
 #### Improvements
 
