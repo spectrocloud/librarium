@@ -35,27 +35,18 @@ tags: ["release-notes"]
   - `kube-system`
   - `cluster-<cluster-uid>`
 
-- The Palette UI now supports the configuration of custom Amazon Linux 2023 and Amazon Linux 2 AMIs for AWS EKS nodes.
-  Previously, AL2023 AMIs without any customizations were configured using node labels. Refer to the
+- The Palette UI now supports the configuration of custom Amazon Linux 2023 (AL2023) and Amazon Linux 2 (AL2) AMIs for AWS EKS nodes.
+  Previously, default AMI types were configured using node labels. EKS clusters previously deployed with **Enable Nodepool Customization** enabled and AMI node labels will be repaved upon upgrading to version 4.7.0. Refer to the
   [Create and Manage AWS EKS Cluster](../clusters/public-cloud/aws/eks.md#cloud-configuration-settings) guide for the
   updated configuration process.
 
 #### Features
 
-- <TpBadge /> Artifact Studio is a unified platform that helps airgapped, regulatory-focused and security conscious
-  organizations to populate their own internal registries with bundles, packs and installers to be used with Palette or
-  VerteX. It provides a single location for packs and images, streamlining access and management. Artifact bundles
-  replace the previous self- extracting binaries used for airgapped environments with a more familiar `zstandard`
-  compressed format that can be moved and manipulated with the [Palette CLI](../automation/palette-cli/palette-cli.md).
-- <TpBadge /> [Self-hosted Palette](../enterprise-version/enterprise-version.md) can now be installed using the
-  Appliance Framework. The Appliance Framework is downloadable as an ISO file and is a solution for installing
-  self-hosted Palette on your infrastructure. The ISO file contains all the necessary components needed for Palette to
-  function. The ISO file is used to boot the nodes, which are then clustered to form a Palette management cluster. This
-  installation mode supports both non-airgapped and airgapped environments.
 - [Self-hosted Palette](../enterprise-version/enterprise-version.md) now supports the configuration of a classification
   banner. System administrators can set the banner text and color through the
   [system console](../enterprise-version/system-management/system-management.md#system-console). Refer to the
   [Banners](../enterprise-version/system-management/login-banner.md) guide for further guidance.
+- All images built by Spectro Cloud that are essential to Palette and VerteX functionality are now signed using [Cosign](https://docs.sigstore.dev/cosign/system_config/installation/), ensuring artifacts are traceable, tamper-evident, and aligned with modern compliance frameworks. Generated keys use the FIPS-compliant ECDSA-P256 cryptographic algorithm for the signature and SHA256 for hashes; keys are stored in PEM-encoded PKCS8 format. 
 
 #### Improvements
 
@@ -80,6 +71,12 @@ tags: ["release-notes"]
   outages.
 
 ### Edge
+
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.7.0 Palette release is 4.7.0.
+
+:::
 
 #### Improvements
 
