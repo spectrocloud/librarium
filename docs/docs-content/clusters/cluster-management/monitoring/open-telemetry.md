@@ -153,7 +153,7 @@ The stack uses the following architecture:
     :::
 
 11. Select the **Overview** tab and monitor the progress of your add-on profile. This may take a few minutes. Palette
-    marks all the cluster profile layers with green indicator once they are succesfully deployed.
+    marks all the cluster profile layers with green indicator once they are successfully deployed.
 
     ![Workload profile deployed](/clusters_cluster-management_monitoring_open-telemetry_workload-deployed.webp)
 
