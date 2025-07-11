@@ -32,9 +32,7 @@ values being different across the nodes.
 
 <TabItem value="node1" label="Example output from node 1">
 
-````shell hideClipboard
-
-```shell hideClipboard title="Example output from node 1"
+```shell hideClipboard
                Local time: Fri 2025-07-11 09:41:42 UTC
            Universal time: Fri 2025-07-11 09:41:42 UTC
                  RTC time: Fri 2025-07-11 09:41:42
