@@ -18,7 +18,7 @@ After installing self-hosted Palette/Palette VerteX using the
 unexpected logouts when using the tenant console. This can be caused by a time skew on your Palette/VerteX management
 cluster nodes, which leads to authentication issues.
 
-To check this, open a terminal session on each node in your Palette/VerteX management cluster and issue the following
+To verify the system time, open a terminal session on each node in your Palette/VerteX management cluster and issue the following
 command to check the system time.
 
 ```bash
