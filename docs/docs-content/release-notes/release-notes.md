@@ -234,19 +234,28 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 #### CNI
 
-| Pack Name      | New Version |
-| -------------- | ----------- |
-| Calico         | 3.30.1      |
-| Calico (Azure) | 3.30.1      |
-| Calico (FIPS)  | 3.30.1      |
+| Pack Name          | New Version |
+| ------------------ | ----------- |
+| AWS VPC CNI (Helm) | 1.19.5      |
+| Calico             | 3.30.1      |
+| Calico (Azure)     | 3.30.1      |
+| Calico (FIPS)      | 3.30.1      |
+| Cilium             | 1.17.4      |
+| Cilium             | 1.16.10     |
+| Flannel            | 0.27.0      |
+| Flannel            | 0.26.7      |
 
 #### CSI
 
-| Pack Name      | New Version |
-| -------------- | ----------- |
-| Amazon EBS CSI | 1.43.0      |
-| Amazon EFS     | 2.1.7       |
-| Amazon EFS     | 2.1.8       |
+| Pack Name        | New Version |
+| ---------------- | ----------- |
+| Amazon EBS CSI   | 1.43.0      |
+| Amazon EFS       | 2.1.7       |
+| Amazon EFS       | 2.1.8       |
+| Longhorn         | 1.8.1       |
+| Piraeus Operator | 2.8.1       |
+| Portworx         | 3.3.1       |
+| vSphere CSI      | 3.4.0       |
 
 #### Add-on Packs
 
@@ -255,7 +264,19 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 | AWS Application Loadbalancer | 2.13.2      |
 | Amazon EFS                   | 2.1.7       |
 | Amazon EFS                   | 2.1.8       |
+| Argo CD                      | 8.0.1       |
+| Argo CD                      | 7.9.0       |
+| ExternalDNS                  | 0.16.1      |
 | External Secrets Operator    | 0.17.0      |
+| Istio                        | 1.26.0      |
+| Istio                        | 1.25.1      |
+| Kong                         | 2.48.0      |
+| MetalLB                      | 0.15.2      |
+| Nginx                        | 1.12.2      |
+| Open Policy Agent            | 3.18.3      |
+| Open Observe                 | 0.14.7      |
+| Open Telemetry               | 0.127.0     |
+| PostgreSQL                   | 1.22.1      |
 | Reloader                     | 1.4.2       |
 | Vault                        | 0.30.0      |
 
@@ -263,8 +284,10 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 | Pack Name                                | New Version |
 | ---------------------------------------- | ----------- |
+| AWS VPC CNI (Helm)                       | 1.19.5      |
 | Calico                                   | 3.30.1      |
 | Calico (FIPS)                            | 3.30.1      |
+| Cilium                                   | 1.17.4      |
 | Palette eXtended Kubernetes              | 1.32.4      |
 | Palette eXtended Kubernetes              | 1.31.8      |
 | Palette eXtended Kubernetes              | 1.30.12     |
@@ -276,6 +299,8 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 | Palette Optimized RKE2                   | 1.32.4      |
 | Palette Optimized RKE2                   | 1.31.8      |
 | Palette Optimized RKE2                   | 1.30.12     |
+| Piraeus Operator                         | 2.8.1       |
 | RKE2                                     | 1.32.7      |
 | RKE2                                     | 1.31.8      |
 | RKE2                                     | 1.30.12     |
+| vSphere CSI                              | 3.4.0       |
