@@ -1022,13 +1022,18 @@ it, but a custom-built solution has high upfront as well as maintenance costs.
 
 ### Configuration Block
 
-Since we use Docusaurs, which Kapa has built dedicated customization for, all we did to enable Kapa was to add a
+Since we use Docusaurus, which Kapa has built dedicated customization for, all we did to enable Kapa was to add a
 configuration block in our `docusaurus.config.js` file. You can find the relevant block in the `allScripts` variable.
 
 ### Customizations
 
 All customizations we made on Kapa, with the exception of the keyboard shortcut, were made using Kapa's exposed
-configurable fields.
+configurable fields. You can review all available parameters in the
+[Kapa documentation - Configuration](https://docs.kapa.ai/integrations/website-widget/configuration) page.
+
+We can technically try to use custom CSS and JavaScript to alter the appearance and behavior of the widget that isn't
+prescribed by the exposed configuration parameters, but this is strongly discouraged by Kapa as future updates may break
+our configurations.
 
 #### Branding
 
@@ -1046,7 +1051,7 @@ The entire implementation also only required changes to the configuration block.
 #### Privacy Notice
 
 The Kapa widget has a built-in disclaimer function. We used the following blocks to implement the privacy notice to meet
-compliance requirements.
+compliance requirements. The text was provided by our compliance team.
 
 ```json
 ...
@@ -1062,7 +1067,7 @@ compliance requirements.
 #### Keyboard Shortcut
 
 We use the `/static/scripts/kapa-shortcut.js` file to implement a keyboard shortcut for users to open the Kapa widget
-with the `Ctrl + I` keyboard shortcut.
+with the `Ctrl + I` keyboard shortcut. We wanted to use `Ctrl + K`, but that space was taken up by Algolia.
 
 ## Netlify Previews
 
