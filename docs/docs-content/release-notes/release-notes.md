@@ -37,6 +37,21 @@ tags: ["release-notes"]
 
 #### Features
 
+- Palette now supports
+  [Azure Entra ID authentication for Azure Blob Storage](https://learn.microsoft.com/en-us/azure/storage/blobs/authorize-access-azure-active-directory)
+  for Azure IaaS and AKS clusters. Palette still uses
+  [Shared Access Signature (SAS)](https://learn.microsoft.com/en-us/azure/storage/common/storage-sas-overview) by
+  default, but if your Azure environment has restrictions that block SAS, Entra ID is automatically used instead.
+
+  To enable this feature, the following `DataActions` have been added to the dynamic and static Azure IaaS permission
+  sets:
+
+  - `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read`
+  - `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write`
+
+  These additional permissions are not required for AKS. Refer to the
+  [Required Permissions](../clusters/public-cloud/azure/required-permissions.md) guide for all required permissions.
+
 #### Improvements
 
 #### Deprecations and Removals
