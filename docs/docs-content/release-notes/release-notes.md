@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## July 12, 2025 - Release 4.7.0 - 4.7.X {#release-notes-4.7.0}
+## July 13, 2025 - Release 4.7.0 - 4.7.1 {#release-notes-4.7.0}
 
 ### Security Notices
 
