@@ -633,7 +633,8 @@ management mode.
    ```
 
    The response is the content of the user data file.
-
+   
+<!-- prettier-ignore -->
    ```yaml
    #cloud-config
    install:
@@ -647,10 +648,10 @@ management mode.
    stages:
      initramfs:
        - users:
-           kairos:
-             groups:
-               - sudo
-             passwd: kairos
+          kairos:
+            groups:
+              - sudo
+            passwd: kairos
          name: "Configure user"
    ```
 
