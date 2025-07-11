@@ -1,0 +1,31 @@
+---
+partial_category: self-hosted
+partial_name: upload-packs-prereqs
+---
+
+- Access to the Artifact Studio to download the {props.iso} pack bundles. Refer to the Artifact Studio
+  (link TBC) guide for instructions on how to access and download the bundles.
+
+- Access to your registry depending on the registry type you choose to use for {props.version}.
+
+  <Tabs>
+
+  <TabItem value="internal-zot-registry" label="Internal Zot Registry">
+
+  If using the internal Zot registry, access to the Local UI of the leader node of the {props.version} management cluster.
+
+  - Ensure your local machine has access to the Local UI of the {props.version} management cluster as airgapped environments may
+    have strict network polices that prevent direct access to the {props.version} management cluster.
+
+  </TabItem>
+
+  <TabItem value="external-registry" label="External Registry">
+
+  If using an external registry, ensure your local machine has access to the external registry server.
+
+  - Ensure you have the necessary permissions to push images to the registry.
+
+  </TabItem>
+
+  </Tabs>
+
