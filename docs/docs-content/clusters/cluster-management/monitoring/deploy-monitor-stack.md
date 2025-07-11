@@ -8,10 +8,10 @@ sidebar_position: 0
 tags: ["clusters", "cluster management", "monitoring"]
 ---
 
-The monitoring stack you will deploy uses the open source tool, [Prometheus](https://prometheus.ition/overview/), to
-support your environment's monitoring requirements.o/docs/introduc The monitoring stack is a centralized server or
-aggregation spot to which all other clusters will forward metrics. The monitoring stack is a dedicated Kubernetes
-cluster for monitoring and metrics aggregation in your Palette environment.
+The monitoring stack you will deploy uses the open source tool,
+[Prometheus](https://prometheus.io/docs/introduction/overview/), to support your environment's monitoring requirements.
+The monitoring stack is a centralized server or aggregation spot to which all other clusters will forward metrics. The
+monitoring stack is a dedicated Kubernetes cluster for monitoring and metrics aggregation in your Palette environment.
 
 <!-- prettier-ignore-start -->
 
