@@ -30,8 +30,9 @@ with Microsoft Azure or Google Cloud Platform (GCP).
 
 - A Palette account.
 - A Palette API key if you choose to follow along using the [Terraform](#cluster-profile-variables-terraform-workflow)
-  workflow. Refer to the [Create a Palette API Key ](../../../../getting-started/aws/setup/#create-a-palette-api-key)
-  guide for further instructions.
+  workflow. Refer to the
+  [Create a Palette API Key ](../../getting-started/palette/aws/setup.md#create-a-palette-api-key) guide for further
+  instructions.
 - A public cloud account registered in Palette. Refer to
   [AWS](../../../../clusters/public-cloud/aws/add-aws-accounts/#aws-account),
   [Azure](../../../../clusters/public-cloud/azure/azure-cloud/#add-azure-cloud-account) or
@@ -201,7 +202,7 @@ This tutorial demonstrates the latter option.
 
 In [Palette](https://console.spectrocloud.com/), select your profile and ensure the drop-down menu is set to version
 1.0.0 . Select **Deploy** to deploy the cluster. Check out the
-[Deploy a Cluster](../../../../getting-started/aws/deploy-k8s-cluster/) tutorial for guidance on how to deploy a
+[Deploy a Cluster](../../getting-started/palette/aws/deploy-k8s-cluster.md) tutorial for guidance on how to deploy a
 cluster. The cluster deployment process can take 15 to 30 minutes. You can use either the Palette UI or the kubectl tool
 to verify that the deployment was successful.
 
