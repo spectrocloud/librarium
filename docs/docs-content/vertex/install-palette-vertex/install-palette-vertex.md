@@ -8,30 +8,31 @@ tags: ["vertex"]
 keywords: ["self-hosted", "vertex"]
 ---
 
-Palette VerteX is available as a self-hosted application that you install in your environment. The self-hosted version
-is a dedicated Palette VerteX environment hosted on VMware instances or in an existing Kubernetes cluster. Palette
-VerteX is available in the following modes:
+Palette VerteX is available as a self-hosted application that you install in your environment. Palette VerteX is
+available in the following modes.
 
-| **Supported Platform** | **Description**                                                              | **Install Guide**                                           |
-| ---------------------- | ---------------------------------------------------------------------------- | ----------------------------------------------------------- |
-| VMware                 | Install Palette VerteX in VMware environment.                                | [Install on VMware](./install-on-vmware/install.md)         |
-| Kubernetes             | Install Palette VerteX using a Helm Chart in an existing Kubernetes cluster. | [Install on Kubernetes](./install-on-kubernetes/install.md) |
+| **Method**                              | **Supported Platforms**  | **Description**                                                              | **Install Guide**                                                          |
+| --------------------------------------- | ------------------------ | ---------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| Palette CLI                             | VMware                   | Install Palette VerteX in VMware environment.                                | [Install on VMware](./install-on-vmware/install.md)                        |
+| Helm Chart                              | Kubernetes               | Install Palette VerteX using a Helm Chart in an existing Kubernetes cluster. | [Install on Kubernetes](./install-on-kubernetes/install.md)                |
+| <TpBadge /> VerteX Management Appliance | VMware, Bare Metal, MAAS | Install Palette VerteX using the VerteX Management Appliance ISO file.       | [Install with VerteX Management Appliance](vertex-management-appliance.md) |
 
 ## Airgap Installation
 
 You can also install Palette VerteX in an airgap environment. For more information, refer to the
 [Airgap Installation](./airgap.md) section.
 
-| **Supported Airgap Platform** | **Description**                                                                                                               | **Install Guide**                                                          |
-| ----------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
-| VMware                        | Install Palette VerteX in VMware environment using your own OCI registry server.                                              |
-| Kubernetes                    | Install Palette VerteX using a Helm Chart in an existing Kubernetes cluster with your own OCI registry server OR use AWS ECR. | [Airgap Install](./install-on-kubernetes/airgap-install/airgap-install.md) |
+| **Method**                              | **Supported Airgap Platforms** | **Description**                                                                                                               | **Install Guide**                                                          |
+| --------------------------------------- | ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| Palette CLI                             | VMware                         | Install Palette VerteX in VMware environment using your own OCI registry server.                                              |
+| Helm Chart                              | Kubernetes                     | Install Palette VerteX using a Helm Chart in an existing Kubernetes cluster with your own OCI registry server OR use AWS ECR. | [Airgap Install](./install-on-kubernetes/airgap-install/airgap-install.md) |
+| <TpBadge /> VerteX Management Appliance | VMware, Bare Metal, MAAS       | Install Palette VerteX using the VerteX Management Appliance ISO file.                                                        | [Install with VerteX Management Appliance](vertex-management-appliance.md) |
 
 The next sections describe specific requirements for installing Palette VerteX.
 
 ## Size Guidelines
 
-<PartialsComponent category="self-hosted" name="size-guidelines" edition="VerteX" />
+<PartialsComponent category="self-hosted" name="size-guidelines" edition="VerteX" app="VerteX Management Appliance" />
 
 ## Kubernetes Requirements
 
