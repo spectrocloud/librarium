@@ -74,23 +74,17 @@ System clock synchronized: no
 
 </Tabs>
 
-<!-- You may also notice errors in the auth service logs similar to the following.
+You may also notice errors in the `auth-*` pod logs in the `hubble-system` namespace similar to the following.
 
-```shell hideClipboard
-auth-5f95c77cb-xslmk Jul  7 12:35:30.306 ERROR [err_logger.go:47/root.LogError] [reqId:r1751891730295getb911939434c9] [Unable to read the 'Authorization' cookie dat
-a] [arg1=[null] code=CookieReadError mtd=GET ref=xyz uri=/v1/auth/cookie/refresh ]
-auth-5f95c77cb-xslmk Jul  7 17:02:22.548 INFO [auth_broker.go:46/service.(*AuthBrokerService).AuthBroker] [reqId:r1751907742548pose5396e802750] [Client service 'all
-y' got authorized] [orgId= sessionId=ally5a03 ]
-auth-5f95c77cb-xslmk Jul  7 17:22:12.673 ERROR [hubble_token.go:426/hucontext.getClaimsFromToken] [Unable to parse the token 'abcd...1234' due to Token used before
+```bash title="Example command to extract logs from auth pod"
+kubectl logs --namespace hubble-system auth-5f95c77cb-49jtv
+```
+
+```shell hideClipboard title="Example output"
+auth-5f95c77cb-49jtv Jul  7 17:22:46.378 ERROR [hubble_token.go:426/hucontext.getClaimsFromToken] [Unable to parse the token 'abcd...1234' due to Token used before
 issued]
-auth-5f95c77cb-xslmk Jul  7 17:22:16.004 INFO [auth_login.go:450/internal.(*AuthLoginService).CreateUserToken] [reqId:r1751908935214posa171c4b915ad] [Auth success:
-12345abc67890def12345abc,johndoe/johndoe@company.com - Going for MFA false] [orgId=johndoe tenantUid=12345abc67890def12345abc ]
-auth-5f95c77cb-xslmk Jul  7 17:22:46.378 ERROR [hubble_token.go:426/hucontext.getClaimsFromToken] [Unable to parse the token 'abcd...1234' due to Token used before
-issued]
-auth-5f95c77cb-xslmk Jul  7 17:22:46.378 ERROR [auth_service.go:282/service.(*AuthService).Logout] [provided token 'xxxxx' is not valid Token used before issued]
-auth-5f95c77cb-xslmk Jul  7 17:22:57.473 INFO [auth_login.go:450/internal.(*AuthLoginService).CreateUserToken] [reqId:r1751908976769pos6533ca18ccb3] [Auth success:
-12345abc67890def12345abc,johndoe/johndoe@company.com - Going for MFA false] [orgId=johndoe tenantUid=12345abc67890def12345abc ]
-``` -->
+auth-5f95c77cb-49jtv Jul  7 17:22:46.378 ERROR [auth_service.go:282/service.(*AuthService).Logout] [provided token 'xxxxx' is not valid Token used before issued]
+```
 
 This indicates that the system time on your Palette/VerteX management cluster nodes is not synchronized with a Network
 Time Protocol (NTP) server. To resolve this issue, you can configure an NTP server in the Palette/VerteX management
