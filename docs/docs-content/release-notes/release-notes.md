@@ -46,13 +46,25 @@ tags: ["release-notes"]
   banner. System administrators can set the banner text and color through the
   [system console](../enterprise-version/system-management/system-management.md#system-console). Refer to the
   [Banners](../enterprise-version/system-management/login-banner.md) guide for further guidance.
-- All images built by Spectro Cloud that are essential to Palette and Palette VerteX functionality are now signed using [Cosign](https://docs.sigstore.dev/cosign/system_config/installation/), ensuring artifacts are traceable, tamper-evident, and aligned with modern compliance frameworks. Generated keys use the FIPS-compliant ECDSA-P256 cryptographic algorithm for the signature and SHA256 for hashes; keys are stored in PEM-encoded PKCS8 format. 
+
+- All images built by Spectro Cloud that are essential to Palette and Palette VerteX functionality are now signed using [Cosign](https://docs.sigstore.dev/cosign/system_config/installation/), ensuring artifacts are traceable, tamper-evident, and aligned with modern compliance frameworks. Generated keys use the FIPS-compliant ECDSA-P256 cryptographic algorithm for the signature and SHA256 for hashes; keys are stored in PEM-encoded PKCS8 format.
 
 #### Improvements
 
-- Palette now uses [Microsoft Entra ID](../user-management/saml-sso/palette-sso-with-entra-id.md) authentication for
-  accessing Azure blob storage during [Azure IaaS](../clusters/public-cloud/azure/azure.md) and
-  [Azure AKS](../clusters/public-cloud/azure/aks.md) cluster provisioning.
+- Palette now supports
+  [Azure Entra ID authentication for Azure Blob Storage](https://learn.microsoft.com/en-us/azure/storage/blobs/authorize-access-azure-active-directory)
+  for [Azure IaaS](../clusters/public-cloud/azure/azure.md) and [AKS](../clusters/public-cloud/azure/aks.md) cluster provisioning. Palette still uses
+  [Shared Access Signature (SAS)](https://learn.microsoft.com/en-us/azure/storage/common/storage-sas-overview) by
+  default, but if your Azure environment has restrictions that block SAS, Entra ID is automatically used instead.
+
+  To enable this feature, the following `DataActions` have been added to the dynamic and static Azure IaaS permission
+  sets:
+
+  - `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read`
+  - `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write`
+
+  These additional permissions are not required for AKS. Refer to the
+  [Required Permissions](../clusters/public-cloud/azure/required-permissions.md) guide for all required permissions.
 
 #### Bug Fixes
 

@@ -29,8 +29,8 @@ Harbor registry using **Registry Connect**, refer to
 
 ## Limitations
 
-- This feature is not supported on VerteX. If you are deploying a central cluster, you can only connect to a Palette
-  instance.
+- The Harbor registry is not supported on VerteX. If your Edge cluster is managed by a VerteX instance, you cannot use
+  Harbor as a primary registry.
 
 - You cannot use the Palette Edge CLI to upload images to the primary registry. You must use the Palette CLI instead.
   Refer to [Upload Cluster Images to Registry with the CLI](./upload-images-to-registry.md) for more information.
@@ -65,10 +65,12 @@ You may use one of our built-in registry packs or your own custom OCI registry.
 
 3. Select the profile you want to use to deploy the cluster.
 
-<!-- prettier-ignore -->
+<!-- prettier-ignore-start -->
+
 4. Click **Add New Pack** and choose from either the
    <VersionedLink text="Harbor" url="/integrations/packs/?pack=harbor" /> pack or the
    <VersionedLink text="Zot" url="/integrations/packs/?pack=zot" /> pack.
+<!-- prettier-ignore-end-->
 
 5. Configure the credentials used to log in to the registry.
 
@@ -88,14 +90,33 @@ You may use one of our built-in registry packs or your own custom OCI registry.
    - **Harbor**. Select this if you want to use the built **Harbor Internal Registry** pack and use Harbor as your
      in-cluster primary registry.
 
-9. Under `inClusterRegistry.projects`, the default project name under which the images are stored is `spectro-images`. You may change this value as you see fit.
+9. Under `inClusterRegistry.projects`, the default project name under which the images are stored is `spectro-images`.
+   You may change this value as you see fit.
 
-10. Click **Confirm & Create** to finish customizing the **Registry Connect** pack.
+10. (Optional) If your cluster is locally managed, and you do not want the cluster to access external registries or sync
+    content to the primary registry, modify the `charts.registry-connect.config.content.sync.enable` parameter and set
+    it to `false`. The parameter defaults to `true`, which means that it will attempt to download content from the
+    internet and external registries if any of the content expected by the cluster is missing.
 
-11. Save and publish the new version of your profile.
+    Setting the parameter to false means you need to ensure that all images needed by your cluster are uploaded to the
+    in-cluster registry. Any missing content may lead to application or cluster deployment failure.
 
-12. Follow [Create Cluster Definition](../cluster-deployment.md) to create a cluster using the new
-    profile.
+    ```yaml {6}
+    charts:
+      registry-connect:
+        config:
+          content:
+            sync:
+              enable: false
+              projects:
+                images: spectro-images # project in the registry where docker images will be stored
+    ```
+
+11. Click **Confirm & Create** to finish customizing the **Registry Connect** pack.
+
+12. Save and publish the new version of your profile.
+
+13. Follow [Create Cluster Definition](../cluster-deployment.md) to create a cluster using the new profile.
 
 </TabItem>
 
@@ -131,7 +152,26 @@ You may use one of our built-in registry packs or your own custom OCI registry.
 
 9. Modify the `charts.registry-connect.config.certificates` parameter to specify the location of the TLS certificates.
 
-10. Click **Confirm & Create** to finish customizing the **Registry Connect** pack.
+10. (Optional) If your cluster is locally managed, and you do not want the cluster to access external registries or sync
+    content to the primary registry, modify the `charts.registry-connect.config.content.sync.enable` parameter and set
+    it to `false`. The parameter defaults to `true`, which means that it will attempt to download content from the
+    internet and external registries if any of the content expected by the cluster is missing.
+
+    Setting the parameter to false means you need to ensure that all images needed by your cluster are uploaded to the
+    in-cluster registry. Any missing content may lead to application or cluster deployment failure.
+
+    ```yaml {6}
+    charts:
+      registry-connect:
+        config:
+          content:
+            sync:
+              enable: false
+              projects:
+                images: spectro-images # project in the registry where docker images will be stored
+    ```
+
+11. Click **Confirm & Create** to finish customizing the **Registry Connect** pack.
 
 </TabItem>
 
