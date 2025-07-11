@@ -40,7 +40,7 @@ values being different across the nodes.
 System clock synchronized: no
               NTP service: active
           RTC in local TZ: no
-````
+```
 
 </TabItem>
 
