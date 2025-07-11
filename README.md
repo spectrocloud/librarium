@@ -1014,6 +1014,56 @@ its usage is as follows.
 
 Your page will now redirect to `/integrations/packs/?pack=myPack`.
 
+## Kapa AI Bot
+
+Kapa provides a plug-and-play JavaScript script that loads the Kapa widget with a solid list of built-in customization
+options that come out-of-the-box. It also has a JavaScript API that we can use to build customized functions if we need
+it, but a custom-built solution has high upfront as well as maintenance costs.
+
+### Configuration Block
+
+Since we use Docusaurs, which Kapa has built dedicated customization for, all we did to enable Kapa was to add a
+configuration block in our `docusaurus.config.js` file. You can find the relevant block in the `allScripts` variable.
+
+### Customizations
+
+All customizations we made on Kapa, with the exception of the keyboard shortcut, were made using Kapa's exposed
+configurable fields.
+
+#### Branding
+
+We use fields such as `"data-project-color"` and `"data-project-logo"` to customize the color and logo of the website
+widget and the logo it displays.
+
+#### Pop-up Style
+
+Instead of having a central pop-up that blocks the rest of the site, we chose a dialogue window that appears on the side
+which allows users to navigate to different pages while continuing the conversation. We did this by following the
+instructions on
+[Style the widget like a customer help chat](https://docs.kapa.ai/integrations/website-widget/tutorials/style-widget-like-help-chat).
+The entire implementation also only required changes to the configuration block.
+
+#### Privacy Notice
+
+The Kapa widget has a built-in disclaimer function. We used the following blocks to implement the privacy notice to meet
+compliance requirements.
+
+```json
+...
+    "data-consent-required": "true",
+    "data-consent-screen-title": "Privacy Notice",
+    "data-consent-screen-disclaimer":
+      "Thank you for using our chat service!  Information you submit through this chat is subject to our [Privacy Policy and Terms of Use](https://www.spectrocloud.com/privacy-policy) and will be processed by our service provider. Please do not enter sensitive information. Chat transcripts may be kept for future reference.",
+    "data-consent-screen-accept-button-text": "Accept",
+    "data-consent-screen-reject-button-text": "Decline",
+...
+```
+
+#### Keyboard Shortcut
+
+We use the `/static/scripts/kapa-shortcut.js` file to implement a keyboard shortcut for users to open the Kapa widget
+with the `Ctrl + I` keyboard shortcut.
+
 ## Netlify Previews
 
 By default Netlify previews are enabled for pull requests. However, some branches do not require Netlify previews. In
