@@ -149,6 +149,10 @@ ensures successful upgrades between minor and patch versions on connected and ai
 
 #### Features
 
+- The <VersionedLink text="Zot" url="/integrations/packs/?pack=zot-registry" /> registry is now supported as a primary
+  registry for clusters managed by VerteX. Refer to
+  [Deploy Cluster with a Primary Registry](../clusters/edge/site-deployment/deploy-custom-registries/deploy-primary-registry.md)
+  for more information.
 - Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
   [Palette section](#palette-enterprise-4.7.0) for more details.
 
