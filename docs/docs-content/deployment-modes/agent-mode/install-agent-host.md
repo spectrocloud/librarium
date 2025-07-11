@@ -555,7 +555,8 @@ internet.
 
 :::warning
 
-Ensure you use CanvOS version 4.6.21 or later to build Edge artifacts, as earlier versions do not support local management mode.
+Ensure you use CanvOS version 4.6.21 or later to build Edge artifacts, as earlier versions do not support local
+management mode.
 
 :::
 
@@ -646,10 +647,10 @@ Ensure you use CanvOS version 4.6.21 or later to build Edge artifacts, as earlie
    stages:
      initramfs:
        - users:
-          kairos:
-            groups:
-              - sudo
-            passwd: kairos
+           kairos:
+             groups:
+               - sudo
+             passwd: kairos
          name: "Configure user"
    ```
 
