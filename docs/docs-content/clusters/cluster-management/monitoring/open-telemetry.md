@@ -55,7 +55,7 @@ The stack uses the following architecture:
     | PostgreSQL   | 1.22.x      | Palette Registry (OCI) | No customization required.                                                                                                                                                                                          |
     | Open Observe | 0.14.x      | Palette Registry (OCI) | Set a user email in the `charts.openobserve.auth.ZO_ROOT_USER_EMAIL` field or leave the default value of `admin@openobserve.dev`. Set a user password in the `charts.openobserve.auth.ZO_ROOT_USER_PASSWORD` field. |
 
-    Make a note of the base64 encoding of the `useremail:password` you have configured in the Open Observe pack. For
+    Construct a base64 encoding of the credentials you have configured in the format `useremail:password` in the Open Observe pack. For
     example, the string `admin@openobserve.dev:admin` is encoded to `YWRtaW5Ab3Blbm9ic2VydmUuZGV2OmFkbWl`.
 
     Review the configuration you have provided and click **Finish Configuration** to save your cluster profile. This
