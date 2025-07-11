@@ -177,6 +177,14 @@ an AWS account. This section guides you on how to create an EKS cluster in AWS t
   [cluster profile](../../../profiles/cluster-profiles/cluster-profiles.md) to redirect public image requests to your
   internal or Elastic Container Registry.
 
+  :::warning
+
+  For static network deployments, you must have port 6443 open between Palette and the workload cluster. Refer to the
+  [Network Ports](../../../architecture/networking-ports.md) documentation for detailed network architecture diagrams
+  and to learn more about the ports used for communication.
+
+  :::
+
 - If you do not provide your own Virtual Private Cloud (VPC), Palette creates one for you with compute, network, and
   storage resources in AWS when it provisions Kubernetes clusters. Ensure there is sufficient capacity in the preferred
   AWS region to create the following resources. Note that Palette does not create these resources if you specify an

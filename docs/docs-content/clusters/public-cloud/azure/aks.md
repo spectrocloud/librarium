@@ -53,6 +53,14 @@ explains how you can create an Azure AKS cluster managed by Palette.
   - Managed Disks
   - Virtual Network Address Translation (NAT) Gateway
 
+:::warning
+
+For static network deployments, you must have port 6443 open between Palette and the workload cluster. Refer to the
+[Network Ports](../../../architecture/networking-ports.md) documentation for detailed network architecture diagrams and
+to learn more about the ports used for communication.
+
+:::
+
 ## Deploy an Azure AKS Cluster
 
 1.  Log in to [Palette](https://console.spectrocloud.com).
@@ -200,7 +208,6 @@ explains how you can create an Azure AKS cluster managed by Palette.
     | **Network Resource Group** | The logical container for grouping related Azure resources. |
     | **Virtual Network**        | Select the VNet.                                            |
     | **CIDR Block**             | Select the IP address CIDR range.                           |
-    | **Security Group Name**    | Select the security group name.                             |
     | **Control Plane Subnet**   | Select the control plane subnet.                            |
     | **Worker Subnet**          | Select the worker network.                                  |
 
