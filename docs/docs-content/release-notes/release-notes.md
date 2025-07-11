@@ -35,8 +35,10 @@ tags: ["release-notes"]
   - `kube-system`
   - `cluster-<cluster-uid>`
 
-- The Palette UI now supports the configuration of custom Amazon Linux 2023 (AL2023) and Amazon Linux 2 (AL2) AMIs for AWS EKS nodes.
-  Previously, default AMI types were configured using node labels. EKS clusters previously deployed with **Enable Nodepool Customization** enabled and AMI node labels will be repaved upon upgrading to version 4.7.0. AWS EKS clusters that did not specify an AMI type will now use AL2_X86_64 by default. Refer to the
+- The Palette UI now supports the configuration of custom Amazon Linux 2023 (AL2023) and Amazon Linux 2 (AL2) AMIs for
+  AWS EKS nodes. Previously, default AMI types were configured using node labels. EKS clusters previously deployed with
+  **Enable Nodepool Customization** enabled and AMI node labels will be repaved upon upgrading to version 4.7.0. AWS EKS
+  clusters that did not specify an AMI type will now use AL2_X86_64 by default. Refer to the
   [Create and Manage AWS EKS Cluster](../clusters/public-cloud/aws/eks.md#cloud-configuration-settings) guide for the
   updated configuration process.
 
@@ -47,13 +49,17 @@ tags: ["release-notes"]
   [system console](../enterprise-version/system-management/system-management.md#system-console). Refer to the
   [Banners](../enterprise-version/system-management/login-banner.md) guide for further guidance.
 
-- All images built by Spectro Cloud that are essential to Palette and Palette VerteX functionality are now signed using [Cosign](https://docs.sigstore.dev/cosign/system_config/installation/), ensuring artifacts are traceable, tamper-evident, and aligned with modern compliance frameworks. Generated keys use the FIPS-compliant ECDSA-P256 cryptographic algorithm for the signature and SHA256 for hashes; keys are stored in PEM-encoded PKCS8 format.
+- All images built by Spectro Cloud that are essential to Palette and Palette VerteX functionality are now signed using
+  [Cosign](https://docs.sigstore.dev/cosign/system_config/installation/), ensuring artifacts are traceable,
+  tamper-evident, and aligned with modern compliance frameworks. Generated keys use the FIPS-compliant ECDSA-P256
+  cryptographic algorithm for the signature and SHA256 for hashes; keys are stored in PEM-encoded PKCS8 format.
 
 #### Improvements
 
 - Palette now supports
   [Azure Entra ID authentication for Azure Blob Storage](https://learn.microsoft.com/en-us/azure/storage/blobs/authorize-access-azure-active-directory)
-  for [Azure IaaS](../clusters/public-cloud/azure/azure.md) and [AKS](../clusters/public-cloud/azure/aks.md) cluster provisioning. Palette still uses
+  for [Azure IaaS](../clusters/public-cloud/azure/azure.md) and [AKS](../clusters/public-cloud/azure/aks.md) cluster
+  provisioning. Palette still uses
   [Shared Access Signature (SAS)](https://learn.microsoft.com/en-us/azure/storage/common/storage-sas-overview) by
   default, but if your Azure environment has restrictions that block SAS, Entra ID is automatically used instead.
 
