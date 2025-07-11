@@ -1014,11 +1014,12 @@ its usage is as follows.
 
 Your page will now redirect to `/integrations/packs/?pack=myPack`.
 
-## Kapa AI Bot
+## Our Kapa Widget Setup
 
-Kapa provides a plug-and-play JavaScript script that loads the Kapa widget with a solid list of built-in customization
-options that come out-of-the-box. It also has a JavaScript API that we can use to build customized functions if we need
-it, but a custom-built solution has high upfront as well as maintenance costs.
+Kapa is our embedded AI assistant that helps users navigate documentation and find answers through natural-language
+search. It provides a plug-and-play JavaScript script that loads the Kapa widget with a solid list of built-in
+customization options that come out-of-the-box. It also has a JavaScript API that we can use to build customized
+functions if we need it, but a custom-built solution has high upfront as well as maintenance costs.
 
 ### Configuration Block
 
@@ -1027,18 +1028,21 @@ configuration block in our `docusaurus.config.js` file. You can find the relevan
 
 ### Customizations
 
-All customizations we made on Kapa, with the exception of the keyboard shortcut, were made using Kapa's exposed
-configurable fields. You can review all available parameters in the
-[Kapa documentation - Configuration](https://docs.kapa.ai/integrations/website-widget/configuration) page.
-
-We can technically try to use custom CSS and JavaScript to alter the appearance and behavior of the widget that isn't
-prescribed by the exposed configuration parameters, but this is strongly discouraged by Kapa as future updates may break
-our configurations.
+All of our customizations, except for the keyboard shortcut, were made using Kapa’s supported configuration fields.
+While additional changes using CSS or JavaScript are technically possible, Kapa strongly discourages unsupported
+customizations due to maintenance and compatibility risks with future updates. You can review all available parameters
+in the [Kapa documentation - Configuration](https://docs.kapa.ai/integrations/website-widget/configuration) page.
 
 #### Branding
 
 We use fields such as `"data-project-color"` and `"data-project-logo"` to customize the color and logo of the website
 widget and the logo it displays.
+
+```json
+...
+    "data-project-color": "#3A9D99",
+    "data-project-logo": "/img/spectrocloud-mark-light-bkgd-RGB.svg"
+```
 
 #### Pop-up Style
 
@@ -1050,8 +1054,8 @@ The entire implementation also only required changes to the configuration block.
 
 #### Privacy Notice
 
-The Kapa widget has a built-in disclaimer function. We used the following blocks to implement the privacy notice to meet
-compliance requirements. The text was provided by our compliance team.
+These fields are part of Kapa's built-in consent flow and can be set directly in the config block. We used the following
+blocks to implement the privacy notice to meet compliance requirements. The text was provided by our compliance team.
 
 ```json
 ...
