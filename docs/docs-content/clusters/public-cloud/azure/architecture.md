@@ -64,23 +64,33 @@ guide.
 
 The following sections cover a few scenarios where you have the need to customize Azure storage in an Azure cluster.
 
-## Custom Name
+### Custom Name
 
 If you need a custom name for the storage resources, you must create the storage resource and attach it to the cluster.
 Palette, by default, creates a storage account and container with an auto-generated name. Specify a custom storage
 account or container with the custom name during the cluster creation process. You can attach a custom storage account,
 custom container, or both if needed.
 
-## Restrict User Access
+### Restrict User Access
 
 To restrict the user access to the storage resource, apply custom policies, or limit the network access, then you need
 to attach a custom storage account or container to the Azure cluster that contains the desired security customization.
 
-## Network Access
+### Network Access
 
 Clusters that use a Palette self-hosted [Private Cloud Gateway](../../pcg/architecture.md) (PCG), should use a custom
 storage account and container that are restricted to the VNet that the PCG and cluster are located in. Ensure you
 disable public access and use private access for the Azure storage account.
+
+### Storage Authentication
+
+Palette supports both
+[Azure Entra ID](https://learn.microsoft.com/en-us/azure/storage/blobs/authorize-access-azure-active-directory) and
+[Shared Access Signature (SAS)](https://learn.microsoft.com/en-us/azure/storage/common/storage-sas-overview)
+authentication for Azure Blob Storage.
+
+Palette uses SAS by default, but if your Azure environment has restrictions that block SAS, Entra ID is automatically
+used instead.
 
 ## Pricing Options
 

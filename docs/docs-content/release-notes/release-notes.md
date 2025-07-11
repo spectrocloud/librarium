@@ -43,6 +43,21 @@ tags: ["release-notes"]
   Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) guide for further
   information.
 
+- Palette now supports
+  [Azure Entra ID authentication for Azure Blob Storage](https://learn.microsoft.com/en-us/azure/storage/blobs/authorize-access-azure-active-directory)
+  for Azure IaaS and AKS clusters. Palette still uses
+  [Shared Access Signature (SAS)](https://learn.microsoft.com/en-us/azure/storage/common/storage-sas-overview) by
+  default, but if your Azure environment has restrictions that block SAS, Entra ID is automatically used instead.
+
+  To enable this feature, the following `DataActions` have been added to the dynamic and static Azure IaaS permission
+  sets:
+
+  - `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read`
+  - `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write`
+
+  These additional permissions are not required for AKS. Refer to the
+  [Required Permissions](../clusters/public-cloud/azure/required-permissions.md) guide for all required permissions.
+
 #### Improvements
 
 #### Deprecations and Removals
@@ -318,7 +333,7 @@ impacted clusters until you've handled the below mentioned breaking changes and 
 - You can now assign an Amazon Machine Image (AMI) to a node pool when deploying Amazon EKS clusters. To do this, apply
   an additional label in the **Node Configuration Settings** during cluster creation. For guidance and a list of
   supported AMIs, refer to the
-  [Assign an AMI to a Node Pool](../clusters/public-cloud/aws/eks.md#assign-an-ami-to-a-node-pool) section.
+  [Cloud Configuration Settings](../clusters/public-cloud/aws/eks.md#cloud-configuration-settings) section.
 
   - If you choose to assign an Amazon Linux 2023 AMI to your worker nodes and you are using PersistentVolumes (PVs) or
     PersistentVolumeClaims (PVCs), you must make additional edits to your AWS EKS cluster profile to configure IAM Roles
