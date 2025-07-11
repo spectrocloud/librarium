@@ -634,7 +634,7 @@ management mode.
 
    The response is the content of the user data file.
 
-<!-- prettier-ignore -->
+   <!-- prettier-ignore -->
    ```yaml
    #cloud-config
    install:
