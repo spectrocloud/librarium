@@ -38,6 +38,8 @@ Palette. You will then create a cluster profile and use the registered host to d
 - The FIPS-compliant version of Agent Mode is only available for Red Hat Enterprise Linux (RHEL) and Rocky Linux 8
   systems.
 
+- CanvOS versions prior to 4.6.21 do not support local management mode.
+
 ## Prerequisites
 
 - A physical or virtual host with SSH access, access to the internet, and connection to Palette. For local management
@@ -551,6 +553,13 @@ for guidance.
 In local management mode, your host does not have a connection to Palette and may also have limited access to the
 internet.
 
+:::warning
+
+Ensure you use CanvOS version 4.6.21 or later to build Edge artifacts, as earlier versions do not support local
+management mode.
+
+:::
+
 1. In your terminal, use the following command to SSH into the host. Replace `</path/to/private/key>` with the path to
    your private SSH key and `<host-ip-or-domain>` with the host's IP address or hostname.
 
@@ -575,7 +584,7 @@ internet.
 
 3. Download the airgap agent installation package and save it as a TAR file. Replace `<architecture>` with the
    architecture of your CPU. If you have ARM64, use `arm64`. If you have AMD64 or x86_64, use `amd64`. Replace
-   `<version>` with the desired version number. In this example, we use `v4.5.0`. Refer to
+   `<version>` with the desired version number. In this example, we use `v4.6.24`. Refer to
    [Agent Mode Releases](https://github.com/spectrocloud/agent-mode/releases) for all the available releases.
 
    <PartialsComponent category="agent-mode" name="agent-mode-airgap-version" />
@@ -613,7 +622,7 @@ internet.
             groups:
               - sudo
             passwd: kairos
-       name: "Configure user"
+         name: "Configure user"
    EOF
    ```
 
@@ -625,6 +634,7 @@ internet.
 
    The response is the content of the user data file.
 
+   <!-- prettier-ignore -->
    ```yaml
    #cloud-config
    install:
@@ -642,7 +652,7 @@ internet.
             groups:
               - sudo
             passwd: kairos
-       name: "Configure user"
+         name: "Configure user"
    ```
 
 7. Reboot the host. The host will automatically start the installation process once it reboots.
