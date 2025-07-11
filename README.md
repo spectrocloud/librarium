@@ -1035,8 +1035,8 @@ in the [Kapa documentation - Configuration](https://docs.kapa.ai/integrations/we
 
 #### Branding
 
-We use fields such as `"data-project-color"` and `"data-project-logo"` to customize the color and logo of the website
-widget and the logo it displays.
+We use fields such as `data-project-color` and `data-project-logo` to customize the color and logo of the website
+widget.
 
 ```json
 ...
@@ -1046,8 +1046,8 @@ widget and the logo it displays.
 
 #### Pop-up Style
 
-Instead of having a central pop-up that blocks the rest of the site, we chose a dialogue window that appears on the side
-which allows users to navigate to different pages while continuing the conversation. We did this by following the
+Instead of having a central pop-up that blocks the rest of the site, we chose a dialogue window that appears on the side.
+It allows users to navigate to different pages while continuing the conversation. We did this by following the
 instructions on
 [Style the widget like a customer help chat](https://docs.kapa.ai/integrations/website-widget/tutorials/style-widget-like-help-chat).
 The entire implementation also only required changes to the configuration block.
@@ -1055,7 +1055,7 @@ The entire implementation also only required changes to the configuration block.
 #### Privacy Notice
 
 These fields are part of Kapa's built-in consent flow and can be set directly in the config block. We used the following
-blocks to implement the privacy notice to meet compliance requirements. The text was provided by our compliance team.
+blocks to implement the privacy notice in accordance with compliance requirements. Our compliance team provided the text.
 
 ```json
 ...
@@ -1070,8 +1070,7 @@ blocks to implement the privacy notice to meet compliance requirements. The text
 
 #### Keyboard Shortcut
 
-We use the `/static/scripts/kapa-shortcut.js` file to implement a keyboard shortcut for users to open the Kapa widget
-with the `Ctrl + I` keyboard shortcut. We wanted to use `Ctrl + K`, but that space was taken up by Algolia.
+We use the `/static/scripts/kapa-shortcut.js` file to enable the **CTRL + I** keyboard shortcut for opening the Kapa widget. We wanted to use **CTRL + K**, but that space was taken up by Algolia.
 
 ## Netlify Previews
 
