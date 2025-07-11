@@ -25,8 +25,8 @@ command to check the system time.
 timedatectl
 ```
 
-An output similar to the following will be displayed. A time skew is indicated by the `Local time` and `Universal time` values
-being different across the nodes.
+An output similar to the following will be displayed. A time skew is indicated by the `Local time` and `Universal time`
+values being different across the nodes.
 
 <Tabs>
 
