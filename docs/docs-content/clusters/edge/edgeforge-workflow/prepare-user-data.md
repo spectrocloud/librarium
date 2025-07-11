@@ -36,12 +36,12 @@ This article guides you through several important parameters in the `.arg` file 
 [Installer Reference](../edge-configuration/installer-reference.md) resource to learn more about all the supported
 configuration parameters you can use in the configuration user data.
 
-## Appliance Studio vs Manual File Creation
+:::preview
 
-The [Appliance Studio](../../../deployment-modes/appliance-mode//appliance-studio.md) is a lightweight Graphic User
-Interface (GUI) that allows you to design both files with zero risk of syntax errors. We recommend using this tool for
-file creation. However, since both `.arg` and `user-data` are plain text files, you can also manually create and edit
-these files once you are familiar with the parameters.
+The [Appliance Studio](../../../deployment-modes/appliance-mode//appliance-studio.md) is a Tech Preview feature and is
+subject to change. For production workloads, create the `.arg` and `user-data` files manually.
+
+:::
 
 ## Limitations
 
@@ -57,6 +57,12 @@ these files once you are familiar with the parameters.
 
 <Tabs groupId="method">
 
+<TabItem value="Manual File Creation">
+
+- [Git](https://git-scm.com/downloads). You can ensure git installation by issuing the `git --version` command.
+
+</TabItem>
+
 <TabItem value="Appliance Studio">
 
 - A deployed instance of Appliance Studio. Refer to
@@ -65,90 +71,11 @@ these files once you are familiar with the parameters.
 
 </TabItem>
 
-<TabItem value="Manual File Creation">
-
-- [Git](https://git-scm.com/downloads). You can ensure git installation by issuing the `git --version` command.
-
-</TabItem>
-
 </Tabs>
 
 ## Procedure
 
 <Tabs groupId="method">
-
-<TabItem value="Appliance Studio">
-
-### Create .arg File
-
-1. Visit the Appliance Studio in your browser.
-
-2. Click **Design**. Then under **Argument files**, click **New .arg file**. If you have previously created and saved a
-   preset, you can choose **Continue with presets**. Otherwise, click **Start from scratch**.
-
-   - If you have previously created and saved a preset, you can choose **Continue with presets**. You can use multiple
-     presets as a starting point to build a new configuration by dragging the presets to the middle column. If any of
-     the parameters between the parameters conflict with each other, the presets higher in the list take precedence.
-   - If you do not have presets or want to create a new file from scratch, click **Start from scratch**.
-
-3. Fill out each field in the form to customize your `.arg` file. Fields marked with `*` are mandatory. As you fill out
-   each field, you can preview the `.arg` file in the code pane on the right. You can also make edits in the code pane
-   directly, which will automatically update the form.
-
-   Refer to [Edge Artifact Build Configurations](./palette-canvos/arg.md) for a description of each argument and their
-   default values.
-
-4. When you are done, click **Confirm & Save**. Give your new configuration a name and optional tags that will help you
-   identify it.
-
-5. After you save the file, it will appear under **Argument files**. Hover over the file to reveal the three-dot menu.
-   Click on it and choose **Download** to download the file.
-
-### Create user-data File
-
-1. Visit the Appliance Studio in your browser.
-
-2. Click **Design**. Then under **User data configuration**, click **New user-data configuration**.
-
-   - If you have previously created and saved a preset, you can choose **Continue with presets**. You can use multiple
-     presets as a starting point to build a new configuration by dragging the presets to the middle column. If any of
-     the parameters between the parameters conflict with each other, the presets higher in the list take precedence.
-   - If you do not have presets or want to create a new file from scratch, click **Start from scratch**.
-
-3. Fill out each field in the form to customize your `user-data` file. Fields marked with `*` are mandatory. As you fill
-   out each field, you can preview the `user-data` file in the code pane on the right. You can also make edits in the
-   code pane directly, which will automatically update the form.
-
-   Refer to [Installer Configuration Reference](../edge-configuration/installer-reference.md) for a description of each
-   parameter and their default values.
-
-4. When you are done, click **Confirm & Save**. Give your new configuration a name and optional tags that will help you
-   identify it.
-
-   Once you save a `user-data` file, you can make edits to it at any time. To make edits, click on the file entry and
-   the form will appear for you to make edits.
-
-5. After you save the file, it will appear under **User data files**. Hover over the file to reveal the three-dot menu.
-   Click on it and choose **Download** to download the file.
-
-### (Optional) Create Presets for .arg and user-data Files
-
-You can create presets to use as reusable building blocks for future instances of your configuration files.
-
-1. Visit the Appliance Studio in your browser.
-
-2. Under either **Argument files** or **User data configuration**, click on the **Presets** tab.
-
-3. Fill out the required fields in the form to customize your configuration. Since you are creating a preset, there are
-   no mandatory fields.
-
-4. When you are done, click **Confirm & Save**. Give your new preset a name and optional tags that will help you
-   identify it.
-
-   The next time you create a new instance of either the `user-data` file or `.arg` file, you will be able to use your
-   presets as building blocks to form a complete configuration.
-
-</TabItem>
 
 <TabItem value="Manual File Creation">
 
@@ -340,6 +267,79 @@ You can create presets to use as reusable building blocks for future instances o
    process again.
 
    :::
+
+</TabItem>
+
+<TabItem value="Appliance Studio">
+
+### Create .arg File
+
+1. Visit the Appliance Studio in your browser.
+
+2. Click **Design**. Then under **Argument files**, click **New .arg file**. If you have previously created and saved a
+   preset, you can choose **Continue with presets**. Otherwise, click **Start from scratch**.
+
+   - If you have previously created and saved a preset, you can choose **Continue with presets**. You can use multiple
+     presets as a starting point to build a new configuration by dragging the presets to the middle column. If any of
+     the parameters between the parameters conflict with each other, the presets higher in the list take precedence.
+   - If you do not have presets or want to create a new file from scratch, click **Start from scratch**.
+
+3. Fill out each field in the form to customize your `.arg` file. Fields marked with `*` are mandatory. As you fill out
+   each field, you can preview the `.arg` file in the code pane on the right. You can also make edits in the code pane
+   directly, which will automatically update the form.
+
+   Refer to [Edge Artifact Build Configurations](./palette-canvos/arg.md) for a description of each argument and their
+   default values.
+
+4. When you are done, click **Confirm & Save**. Give your new configuration a name and optional tags that will help you
+   identify it.
+
+5. After you save the file, it will appear under **Argument files**. Hover over the file to reveal the three-dot menu.
+   Click on it and choose **Download** to download the file.
+
+### Create user-data File
+
+1. Visit the Appliance Studio in your browser.
+
+2. Click **Design**. Then under **User data configuration**, click **New user-data configuration**.
+
+   - If you have previously created and saved a preset, you can choose **Continue with presets**. You can use multiple
+     presets as a starting point to build a new configuration by dragging the presets to the middle column. If any of
+     the parameters between the parameters conflict with each other, the presets higher in the list take precedence.
+   - If you do not have presets or want to create a new file from scratch, click **Start from scratch**.
+
+3. Fill out each field in the form to customize your `user-data` file. Fields marked with `*` are mandatory. As you fill
+   out each field, you can preview the `user-data` file in the code pane on the right. You can also make edits in the
+   code pane directly, which will automatically update the form.
+
+   Refer to [Installer Configuration Reference](../edge-configuration/installer-reference.md) for a description of each
+   parameter and their default values.
+
+4. When you are done, click **Confirm & Save**. Give your new configuration a name and optional tags that will help you
+   identify it.
+
+   Once you save a `user-data` file, you can make edits to it at any time. To make edits, click on the file entry and
+   the form will appear for you to make edits.
+
+5. After you save the file, it will appear under **User data files**. Hover over the file to reveal the three-dot menu.
+   Click on it and choose **Download** to download the file.
+
+### (Optional) Create Presets for .arg and user-data Files
+
+You can create presets to use as reusable building blocks for future instances of your configuration files.
+
+1. Visit the Appliance Studio in your browser.
+
+2. Under either **Argument files** or **User data configuration**, click on the **Presets** tab.
+
+3. Fill out the required fields in the form to customize your configuration. Since you are creating a preset, there are
+   no mandatory fields.
+
+4. When you are done, click **Confirm & Save**. Give your new preset a name and optional tags that will help you
+   identify it.
+
+   The next time you create a new instance of either the `user-data` file or `.arg` file, you will be able to use your
+   presets as building blocks to form a complete configuration.
 
 </TabItem>
 
