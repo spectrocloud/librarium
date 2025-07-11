@@ -18,8 +18,12 @@ concurrency:
   cancel-in-progress: true # Cancels any in-progress runs of this workflow for the same branch
 
 jobs:
-  notify-slack: # Notify Slack when PR is ready for review
-    if: github.event.pull_request.draft == false #  Only run if the PR is not a draft  
+  notify-slack:
+    # Run only if PR is not a draft and has the 'notify-slack' label
+    if: > 
+      github.event.pull_request.draft == false && 
+      contains(github.event.pull_request.labels.*.name, 'notify-slack')
+
     runs-on: ubuntu-latest # Use the latest Ubuntu runner
 
     steps:
