@@ -157,12 +157,27 @@ require a local Harbor registry. Built-in registries must be configured using ei
     palette content build --arch <bundle-architecture> \
      --project-id <project-id> \
      --profiles <cluster-profile-id1,cluster-profile-id2...> \
-     --name <bundle-name> \
-     --output <output-directory>
+     --name <bundle-name>
     ```
 
-    The result is a `.tar.zst` content bundle that you can use to preload into your installer. For more information
-    about how to use content bundles, refer to [Build Installer ISO](./build-installer-iso.md) or
+    :::warning
+
+    If your registry enforces image signature verification, we recommend omitting the `--arch` option.  
+    This is because image signatures are tied to the image's digest, and that digest depends on the manifest type.
+
+    When you sign a multi-architecture image, the signature is generated on its index manifest.  
+    If you later specify `--arch`, the CLI resolves each image to a single-architecture manifest, which produces a
+    different digest.
+
+    As a result, Cosign will fail to verify the signature if it was originally created for the multi-arch image.
+    However, if you omit `--arch`, the Palette CLI will pull the image as-is, preserving their existing signature.
+
+    :::
+
+    The result is a `.tar.zst` content bundle that you can use to preload into your installer. The bundle is generated
+    in the `<current-directory>/output/content-bundle/` folder by default. For more information about how to use content
+    bundles, refer to [Build Installer ISO](./build-installer-iso.md) or
+
     [Upload Content Bundle through Local UI](../../local-ui/cluster-management/upload-content-bundle.md).
 
     :::tip
@@ -188,8 +203,7 @@ require a local Harbor registry. Built-in registries must be configured using ei
      --profiles <cluster-profile-id1,cluster-profile-id2...> \
      --cluster-definition-name <cluster-definition-name> \
      --cluster-definition-profile-ids <cluster-definition-profile-ids> \
-     --name <bundle-name> \
-     --output <output-directory>
+     --name <bundle-name>
     ```
 
     Compared with the previous command, this command has two additional flags.
@@ -199,9 +213,10 @@ require a local Harbor registry. Built-in registries must be configured using ei
     | `--cluster-definition-name`        | Filename of the cluster definition tgz file.                          |
     | `--cluster-definition-profile-ids` | List of cluster profile IDs to be included in the cluster definition. |
 
-    This command will generate a `.tgz` cluster definition file in the specified output directory. When you create a
-    cluster definition and content bundle using a single `build` command, the cluster definition is also embedded into
-    the content bundle.
+    This command will generate a `.tgz` cluster definition file in the `<current-directory>/output/` folder, and a
+    content bundle in the `<current-directory>/output/content-bundle/` folder by default. When you create a cluster
+    definition and content bundle using a single `build` command, the cluster definition is also embedded into the
+    content bundle.
 
 </TabItem>
 
@@ -423,7 +438,7 @@ require a local Harbor registry. Built-in registries must be configured using ei
     | `--private-key`              | The path to the private key used to sign the content bundle and cluster definition if it is present. This is necessary if your Edge host has an embedded corresponding public key. For more information, refer to [Embed Public Key in Edge Artifacts](./signed-content.md).                                                                                                                                                                                                                |
 
     The result is a content bundle that you can use to preload into your installer. The content bundle will be a `.zst`
-    file in a folder that starts with **content-** followed by a random string. For more information about how to use a
+    file in a folder that starts with **content-** followed by a random string. For more information about how to use
     content bundles, [Build Installer ISO](./build-installer-iso.md) or
     [Upload Content Bundle through Local UI](../../local-ui/cluster-management/upload-content-bundle.md).
 

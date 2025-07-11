@@ -2711,9 +2711,6 @@
         "kernelVersion": {
           "type": "string"
         },
-        "kubeProxyVersion": {
-          "type": "string"
-        },
         "kubeletVersion": {
           "type": "string"
         },
@@ -3345,6 +3342,9 @@
         "hardwareSpec": {
           "$ref": "#/definitions/v1HardwareSpec"
         },
+        "hostInfo": {
+          "$ref": "#/definitions/v1HostInfo"
+        },
         "managementMode": {
           "$ref": "#/definitions/v1ManagementMode"
         },
@@ -3965,6 +3965,20 @@
         }
       }
     },
+    "v1HostInfo": {
+      "type": "object",
+      "properties": {
+        "hostState": {
+          "type": "string"
+        },
+        "hostType": {
+          "type": "string"
+        },
+        "secureBoot": {
+          "type": "boolean"
+        }
+      }
+    },
     "v1HttpPatch": {
       "type": "object",
       "required": [
@@ -4419,6 +4433,12 @@
       "type": "object",
       "properties": {
         "family": {
+          "type": "string"
+        },
+        "kernel": {
+          "type": "string"
+        },
+        "kernelVersion": {
           "type": "string"
         },
         "version": {

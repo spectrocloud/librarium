@@ -1,0 +1,20 @@
+---
+partial_category: self-hosted
+partial_name: login-banner-intro
+---
+
+{props.official} allows you to add banners, also known as Authority to Operate (ATO) banners, to your {props.edition} instance. There are two types of banners:
+
+- 
+  <PaletteVertexUrlMapper
+     edition={props.edition}
+     text="Login banner"
+     url="/system-management/login-banner/#add-login-banner"
+   /> - Displays important information to users _before_ they log in to the system console or an individual tenant. These messages are similar to popups that must be acknowledged before logging in. Login banners configured in the system console override <VersionedLink text="tenant-specific login banners" url="/tenant-settings/login-banner/"/>.
+
+- 
+  <PaletteVertexUrlMapper
+     edition={props.edition}
+     text="Classification banner"
+     url="/system-management/login-banner/#add-classification-banner"
+   /> - Displays the type of environment the tenant is working in, such as **CLASSIFIED** or **TOP SECRET**. Classification banners can also be treated as "message-of-the-day" banners, used to convey important information across all system console and tenant screens, including login screens. Classification banners cascade to _all_ tenants and cannot be dismissed.

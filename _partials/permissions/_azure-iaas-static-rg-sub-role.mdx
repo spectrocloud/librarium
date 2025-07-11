@@ -2,7 +2,7 @@
 partial_category: permissions
 partial_name: azure-iaas-static-rg-sub-role
 ---
-**Last Update**: July 10, 2025
+**Last Update**: July 13, 2025
 
 ```json
 {
@@ -71,6 +71,10 @@ partial_name: azure-iaas-static-rg-sub-role
     "Microsoft.Compute/virtualMachines/runCommand/action"
   ],
   "NotActions": [],
+  "DataActions": [
+    "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/read",
+    "Microsoft.Storage/storageAccounts/blobServices/containers/blobs/write"
+  ],
   "AssignableScopes": [
     "/subscriptions/$SUBSCRIPTION_ID"
   ]

@@ -99,7 +99,7 @@ To complete this tutorial, you will need the following:
   The screenshot below shows a sample registration token in the **Tenant Settings** > **Registration Tokens** section in
   Palette.
 
-  ![A screenshot of a registration token in Palette](/tutorials/edge/clusters_edge_deploy-cluster_registration-token.webp)
+  ![A screenshot of a registration token in Palette](/tutorials/edge/tutorials_edge_deploy-cluster_registration-token.webp)
 
 ## Build Edge Artifacts
 

@@ -269,10 +269,6 @@ using embedded cluster definitions.
 You can find the Open API Swagger specification for the Edge Management API at the following location:
 https://raw.githubusercontent.com/spectrocloud/librarium/version-4-4/docs/api-content/api-docs/edge-v1/emc-api.json
 
-:::preview
-
-:::
-
 ### Authentication
 
 Use the `POST /v1/users/default/login` endpoint to generate an authentication token with your OS username and password.
