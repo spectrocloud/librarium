@@ -123,8 +123,8 @@ stylus:
     registryMappingRules:
       "us-docker.pkg.dev/palette-images": "example.registry.com/palette-images"
       "us-east1-docker.pkg.dev/spectro-images/daily": "example.registry.com/palette-images"
-      "grc.io/spectro-dev-public": "example.registry.com/palette-images"
-      "grc.io/spectro-images-public": "example.registry.com/palette-images"
+      "gcr.io/spectro-dev-public": "example.registry.com/palette-images"
+      "gcr.io/spectro-images-public": "example.registry.com/palette-images"
 ```
 
 #### Registry Mapping Rules
@@ -146,8 +146,8 @@ stylus:
     registryMappingRules:
       "us-docker.pkg.dev/palette-images": "example.registry.com/palette-images"
       "us-east1-docker.pkg.dev/spectro-images/daily": "example.registry.com/palette-images"
-      "grc.io/spectro-dev-public": "example.registry.com/palette-images"
-      "grc.io/spectro-images-public": "example.registry.com/palette-images"
+      "gcr.io/spectro-dev-public": "example.registry.com/palette-images"
+      "gcr.io/spectro-images-public": "example.registry.com/palette-images"
 ```
 
 All matched portion on the source URL will be replaced with the mapped value and any unmatched path is preserved. Using
@@ -185,8 +185,8 @@ stylus:
     registryMappingRules:
       "us-docker.pkg.dev/palette-images": "example.registry.com/palette-images"
       "us-east1-docker.pkg.dev/spectro-images/daily": "example.registry.com/palette-images"
-      "grc.io/spectro-dev-public": "example.registry.com/palette-images"
-      "grc.io/spectro-images-public": "example.registry.com/palette-images"
+      "gcr.io/spectro-dev-public": "example.registry.com/palette-images"
+      "gcr.io/spectro-images-public": "example.registry.com/palette-images"
 ```
 
 ### Single External Registry
