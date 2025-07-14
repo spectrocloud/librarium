@@ -19,7 +19,7 @@ tags: ["release-notes"]
 - Fixed an issue that caused the controller manager pods to report errors due to insufficient memory allocations.
 - Fixed an issue that caused newly created [cluster groups](../clusters/cluster-groups/cluster-groups.md) to deploy incorrectly configured [virtual clusters](../devx/palette-virtual-clusters/palette-virtual-clusters.md).
 - Fixed an issue that caused <VersionedLink text="Virtual Machine Orchestrator" url="/integrations/packs/?pack=virtual-machine-orchestrator" /> upgrades to fail due to a missing `MachineDrainRule`.
-- Fixed an issue that caused some sensitive information to appear in the install logs of [Edge clusters](../clusters/edge/edge.md).
+- Fixed an issue where, under certain conditions, sensitive information could appear in the install logs of [Edge clusters](../clusters/edge/edge.md).
 <!-- prettier-ignore-end -->
 
 ## June 23, 2025 - Release 4.6.41
