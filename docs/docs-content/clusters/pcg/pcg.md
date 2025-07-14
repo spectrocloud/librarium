@@ -39,7 +39,7 @@ a PCG to an existing Kubernetes cluster. Refer to the
 
 | **Palette Version** <!-- pcg-kubernetes-version-table --> | **Kubernetes Version** |
 | --------------------------------------------------------- | ---------------------- |
-| <!-- pcg-k8s-4-7-0 --> 4.7.1                              | 1.31.8                 |
+| <!-- pcg-k8s-4-7-0 --> 4.7.2                              | 1.31.8                 |
 | <!-- pcg-k8s-4.6.x --> 4.6.40                             | 1.30.9                 |
 | <!-- pcg-k8s-4.6.c --> 4.6.32                             | 1.30.9                 |
 | <!-- pcg-k8s-4.6.b --> 4.6.23                             | 1.30.9                 |
