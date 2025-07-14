@@ -41,6 +41,12 @@ Palette needs access to your Azure cloud account in order to create and manage A
 Follow the steps below to create an SSH key using the terminal and upload it to Palette. This step is not required for
 the [Cluster Management with Terraform](./deploy-manage-k8s-cluster-tf.md) tutorial.
 
+:::warning
+
+Only RSA SSH keys are supported for [Azure AKS clusters](../../clusters/public-cloud/azure/aks.md) deployed using Palette.
+
+:::
+
 <PartialsComponent category="palette-setup" name="generate-ssh-key" />
 
 ### Create a Palette API Key
