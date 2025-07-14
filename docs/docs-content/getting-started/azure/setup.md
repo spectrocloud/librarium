@@ -43,7 +43,8 @@ the [Cluster Management with Terraform](./deploy-manage-k8s-cluster-tf.md) tutor
 
 :::warning
 
-Only RSA SSH keys are supported for [Azure AKS clusters](../../clusters/public-cloud/azure/aks.md) deployed using Palette.
+Only RSA SSH keys are supported for [Azure AKS clusters](../../clusters/public-cloud/azure/aks.md) deployed using
+Palette.
 
 :::
 
