@@ -77,7 +77,7 @@ jobs:
 
 
       - name: Commit Changes
-        uses: stefanzweifel/git-auto-commit-action@v5
+        uses: stefanzweifel/git-auto-commit-action@v6
         with:
           commit_message: "ci: auto-formatting API changes"
           file_pattern: '*.json **.json **/*.json'
