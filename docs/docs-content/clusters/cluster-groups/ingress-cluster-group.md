@@ -36,10 +36,6 @@ cluster contains.
           enable-ssl-passthrough: true
   ```
 
-- Palette's `nginx-ingress` add-on profile automatically reroutes inbound requests from port 6443 to port 443 using
-  a TCP service configuration. This is so that TLS termination on port 443 for all Apps can occur at the cloud load
-  balancer while simultaneously allowing connections to the API servers of your Virtual Clusters on port 6443.
-
 If you are using an ingress controller other than the Nginx Ingress Controller and would like to terminate TLS at your
 ingress controller's cloud load balancer, an equivalent TCP service configuration would be required. Alternatively, you
 may handle all TLS termination inside the cluster by configuring cert-manager to issue a certificate for each
