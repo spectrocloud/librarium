@@ -39,7 +39,8 @@ Palette. You will then create a cluster profile and use the registered host to d
   systems.
 
 - Palette versions prior to 4.6.32 do not support local management mode. Even if you build an ISO using Palette agent
-  and CanvOS version 4.6.21 or later, which support local management mode, the agent may be downgraded if your cluster uses a content bundle built against a Palette instance older than 4.6.32. This results in deployment failure.
+  and CanvOS version 4.6.21 or later, which support local management mode, the agent may be downgraded if your cluster
+  uses a content bundle built against a Palette instance older than 4.6.32. This results in deployment failure.
 
 ## Prerequisites
 
