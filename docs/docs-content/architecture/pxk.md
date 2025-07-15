@@ -27,8 +27,8 @@ and CNCF kubeadm.
 
 ## Shared Core with CNCF-Distribution
 
-Both PXK and PXK-E use official upstream images from registry.k8s.io, the same registry used by CNCF distributions.
-These images include all essential components:
+The default, non-FIPS-compliant variants of PXK and PXK-E use official upstream images from registry.k8s.io, the same
+registry used by CNCF distributions. These images include all essential components:
 
 - kube-apiserver
 - etcd
@@ -38,8 +38,12 @@ These images include all essential components:
 - CoreDNS
 - pause
 
-We do not fork or modify Kubernetes binaries. This ensures that PXK and PXK-E are fully CNCF-conformant and compatible
-with ecosystem tools such as Helm, `kubectl`, and Kubernetes-native APIs.
+The FIPS-compliant variant of PXK and PXK-E, used in Palette VerteX, do not use upstream images directly. Instead they
+use images recompiled with FIPS-compliant cryptographic libraries. For more information, refer to
+[FIPS-Compliant Components](../vertex/fips/fips-compliant-components.md).
+
+Both the FIPS and non-FIPS variants of PXK and PXK-E are fully CNCF-conformant and compatible with ecosystem tools such
+as Helm, `kubectl`, and Kubernetes-native APIs.
 
 ## Security Hardening
 
@@ -48,7 +52,7 @@ In addition to being CNCF-conformant, PXK comes with out-of-the-box security har
 - PodSecurity admission enabled with baseline enforcement and strict warning
 - Audit logging configured with sane filters and volume mounts
 - Secure API server flags
-- Kubelet hardened with read-only port disabled and cert rotation.
+- Kubelet hardened with read-only port disabled and cert rotation
 
 These security hardening measures make your clusters production ready without manual security intervention.
 
@@ -74,7 +78,7 @@ scripts, and ensures consistent behavior across environments.
 
 ## PXK vs PXK-E
 
-PXK-E makes a few adjustments on top of PXK to account for the Edge environments by streamlining configuration files,
+PXK-E makes a few adjustments on top of PXK to account for Edge environments by streamlining configuration files,
 reducing deployment complexity, and emphasizing immutability. The following table provides a brief comparison between
 PXK and PXK-E.
 
