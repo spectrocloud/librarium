@@ -6,7 +6,7 @@ hide_table_of_contents: false
 ---
 
 <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> is a customized
-version of the open-source Cloud Native Computing Foundation (CNCF) distribution of Kubernetes. This Kubernetes version
+version of the open source Cloud Native Computing Foundation (CNCF) distribution of Kubernetes. This Kubernetes version
 can be deployed through Palette to all major infrastructure providers, public cloud providers, and private data center
 providers. This is the default distribution when deploying a Kubernetes cluster through Palette. For Edge deployments,
 we also offer Palette eXtended Kubernetes - Edge (PXK-E), which is a version of PXK specifically designed for Edge
@@ -15,13 +15,13 @@ deployments.
 PXK and <VersionedLink text="Palette eXtended Kubernetes - Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" />
 share the core Cloud Native Computing Foundation (CNCF) binaries, with out-of-the-box security hardening that makes them
 ideal for production workloads without manual intervention. The following table offers a comparison overview between PXK
-and CNCF Kubeadm.
+and CNCF kubeadm.
 
-| Feature                 | PXK                      | Kubeadm         |
+| Feature                 | PXK                      | kubeadm         |
 | ----------------------- | ------------------------ | --------------- |
 | Audit logging           | ✅ Enabled               | ❌ Manual       |
 | PodSecurity admission   | ✅ Enabled + configured  | ❌ Not enabled  |
-| Hardened kubelet config | ✅ Enforced              | ❌ Optional     |
+| Hardened Kubelet config | ✅ Enforced              | ❌ Optional     |
 | Kernel tuning           | ✅ Applied automatically | ❌ Manual       |
 | Lifecycle hooks         | ✅ Pre/Post support      | ❌ Not built-in |
 
