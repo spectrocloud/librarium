@@ -12,7 +12,7 @@ interface SimpleCard {
   index?: number;
   description: string;
   buttonText: string;
-  relativeURL: string;
+  url: string;
   hideNumber?: boolean;
 }
 
@@ -31,7 +31,7 @@ export default function SimpleCardGrid({ cards = [], hideNumber = false }: Simpl
           index={index + 1}
           description={card.description}
           buttonText={card.buttonText}
-          relativeURL={card.relativeURL}
+          url={card.url}
           key={`simpleCard-${index}`}
           hideNumber={hideNumber}
         />
@@ -40,9 +40,9 @@ export default function SimpleCardGrid({ cards = [], hideNumber = false }: Simpl
   );
 }
 
-function SimpleCard({ title, index, description, buttonText, relativeURL, hideNumber }: SimpleCard) {
+function SimpleCard({ title, index, description, buttonText, url, hideNumber }: SimpleCard) {
   return (
-    <a href={relativeURL}>
+    <a href={url}>
       <div className={styles.simpleCard}>
         <SimpleCardHeader index={index} title={title} hideNumber={hideNumber} />
         <div className={styles.simpleCardBody}>
