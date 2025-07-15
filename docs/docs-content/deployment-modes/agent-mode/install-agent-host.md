@@ -555,7 +555,7 @@ internet.
 
 :::warning
 
-Ensure your Palette tenant is version 4.6.32 or later to build Edge artifacts, as earlier versions do not support local
+Ensure your Palette instance is version 4.6.32 or later to build Edge artifacts, as earlier versions do not support local
 management mode.
 
 You can check the Stylus version your Palette environment uses with the following command. Replace `<palette-endpoint>`
