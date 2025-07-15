@@ -567,7 +567,9 @@ curl --location --request GET 'https://<palette-endpoint>/v1/services/stylus/ver
 ```
 
 The Stylus version should be 4.6.21 or later, which corresponds to Palette tenant version 4.6.32. If you are building a
-custom Edge ISO, ensure you use CanvOS version 4.6.21 or later as well. :::
+custom Edge ISO, ensure you use CanvOS version 4.6.21 or later as well.
+
+:::
 
 1. In your terminal, use the following command to SSH into the host. Replace `</path/to/private/key>` with the path to
    your private SSH key and `<host-ip-or-domain>` with the host's IP address or hostname.
