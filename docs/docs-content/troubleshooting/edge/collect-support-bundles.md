@@ -18,9 +18,9 @@ ticket.
 
 - Only the `support-bundle-edge.sh` script is embedded and can run on hosts without an internet connection. The
   `support-bundle-infra.sh` script is not embedded and requires internet access.
-- The embedded `support-bundle-edge.sh` script is included with the version of Palette agent that was in use at the time of
-  provisioning. It is updated only when Palette agent is upgraded through an ISO or a Palette update. To ensure you are using
-  the most current version, download and run the script manually.
+- The embedded `support-bundle-edge.sh` script is included with the version of Palette agent that was in use at the time
+  of provisioning. It is updated only when Palette agent is upgraded through an ISO or a Palette update. To ensure you
+  are using the most current version, download and run the script manually.
 
 ## Prerequisites
 
