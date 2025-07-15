@@ -11,6 +11,16 @@ tags: ["vertex", "management", "scar"]
 keywords: ["self-hosted", "vertex"]
 ---
 
-import ScarMigration from "../../../../_partials/self-hosted/_scar-migration.mdx";
+<PartialsComponent category="self-hosted" name="scar-migration-intro" edition="VerteX" />
 
-<ScarMigration name="scar-migration" edition="VerteX" />
+## Prerequisites
+
+<PartialsComponent category="self-hosted" name="scar-migration-prerequisites" edition="VerteX" />
+
+## Migrate SCAR
+
+<PartialsComponent category="self-hosted" name="scar-migration-guide" edition="VerteX" />
+
+## Validate
+
+<PartialsComponent category="self-hosted" name="scar-migration-validate" edition="VerteX" />
