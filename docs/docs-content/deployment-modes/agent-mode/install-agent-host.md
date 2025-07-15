@@ -555,19 +555,19 @@ internet.
 
 :::warning
 
-Ensure your Palette instance is version 4.6.32 or later to build Edge artifacts, as earlier versions do not support local
-management mode.
+Ensure your Palette instance is version 4.6.32 or later to build Edge artifacts, as earlier versions do not support
+local management mode.
 
-You can check the Palette agent version your Palette environment uses with the following command. Replace `<palette-endpoint>`
-with your Palette endpoint and `<api-key>` with your
+You can check the Palette agent version your Palette environment uses with the following command. Replace
+`<palette-endpoint>` with your Palette endpoint and `<api-key>` with your
 [Palette API key](../../user-management/authentication/api-key/api-key.md).
 
 ```shell
 curl --location --request GET 'https://<palette-endpoint>/v1/services/stylus/version' --header 'Content-Type: application/json' --header 'Apikey: <api-key>'  | jq --raw-output '.spec.latestVersion.content | match("version: ([^\n]+)").captures[0].string'
 ```
 
-The Palette agent version should be 4.6.21 or later, which corresponds to Palette instance version 4.6.32. If you are building a
-custom Edge ISO, ensure you use CanvOS version 4.6.21 or later as well.
+The Palette agent version should be 4.6.21 or later, which corresponds to Palette instance version 4.6.32. If you are
+building a custom Edge ISO, ensure you use CanvOS version 4.6.21 or later as well.
 
 :::
 
