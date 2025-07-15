@@ -14,8 +14,8 @@ Palette supports integration with [Microsoft Azure](https://azure.microsoft.com/
 
 ## Get Started
 
-Check out the [Getting Started](/getting-started/azure/) tutorials to learn how to deploy a cluster to Azure by using
-Palette.
+Check out the [Getting Started](../../../tutorials/getting-started/palette/azure/azure.md) tutorials to learn how to
+deploy a cluster to Azure by using Palette.
 
 ## Resources
 
