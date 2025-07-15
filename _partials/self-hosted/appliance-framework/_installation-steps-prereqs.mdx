@@ -30,36 +30,26 @@ partial_name: installation-steps-prereqs
 - Relevant permissions to install Palette on the nodes including permission to attach or mount an ISO and set nodes to
   boot from it.
 
-- Registry credentials and TLS certificates are required for the Palette installation. You can choose to use either an
-  internal Zot registry that comes with Palette or an external registry of your choice.
+- You can choose to use either an internal Zot registry that comes with Palette or an external registry of your choice. Depending on your choice, you will need to provide the following information during the Palette installation process.
 
   <Tabs>
 
   <TabItem value="internal-zot-registry" label="Internal Zot Registry">
 
-  If you choose to use the internal Zot registry, you will need to provide the following TLS certificates and keys in
-  Base64 format during the Palette installation process:
-
-  - A private key for the Zot registry certificate.
-  - A certificate for the Zot registry.
-  - (Optional) A CA certificate for the Zot registry that was used to sign the registry certificate.
-
-  Ensure that the Domain Name System (DNS) name listed in the certificate's Common Name (CN) and/or the Subject Alternative Name (SAN) resolves to the virtual IP address (VIP) that will be assigned to the Palette management cluster.
+  - (Optional) A CA certificate for the Zot registry in Base64 format.
 
   </TabItem>
 
   <TabItem value="external-registry" label="External Registry">
 
-  If you plan to use an external registry, you must provide the following external registry credentials during the Palette installation process:
-
   - The DNS/IP endpoint and port for the external registry.
   - The username for the registry.
   - The password for the registry.
-  - The certificate for the registry used for TLS encryption in Base64 format.
-  - The private key for the registry certificate used for TLS encryption in Base64 format.
-  - (Optional) The Certificate Authority (CA) certificate that was used to sign the registry certificate in Base64 format.
+  - (Optional) The Certificate Authority (CA) certificate that was used to sign the external registry certificate in Base64 format.
 
-  Ensure the nodes used to host the Palette management cluster have access to the external registry server.
+  <br />
+
+  Ensure the nodes used to host the Palette management cluster have network access to the external registry server.
 
   </TabItem>
 
@@ -67,13 +57,12 @@ partial_name: installation-steps-prereqs
 
   <details>
 
-  <summary> How to get Base64 encoded entries for certificates and keys </summary>
+  <summary> How to get Base64 encoded entries for a certificate </summary>
 
-  You can get the Base64 encoded entry from your certificates and keys by using the following command. Replace
-  `<certificate-or-key-file>` with the filename of your certificate or key file.
+  You can get the Base64 encoded entry from your certificate by using the following command. Replace `<certificate-file>` with the filename of your certificate file.
 
   ```bash
-  base64 --wrap 0 <certificate-or-key-file>
+  base64 --wrap 0 <certificate-file>
   ```
 
   </details>
