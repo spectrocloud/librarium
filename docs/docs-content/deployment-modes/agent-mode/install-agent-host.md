@@ -38,7 +38,7 @@ Palette. You will then create a cluster profile and use the registered host to d
 - The FIPS-compliant version of Agent Mode is only available for Red Hat Enterprise Linux (RHEL) and Rocky Linux 8
   systems.
 
-- Palette versions prior to 4.6.32 do not support local management mode.
+- Palette versions prior to 4.6.32 do not support local management mode. Even if you build an ISO using Palette agent and CanvOS version 4.6.21 or later, which support local management mode, a Palette instance older than 4.6.32 may downgrade the agent during content bundle deployment. This results in deployment failure.
 
 ## Prerequisites
 
