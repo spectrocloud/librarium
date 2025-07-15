@@ -32,6 +32,7 @@ Ensure the following requirements are met before you attempt to deploy a cluster
 
 - Palette creates compute, network, and storage resources while provisioning Kubernetes clusters. Ensure there is
   sufficient capacity in the preferred GCP region to create the following resources:
+
   - Virtual Private Cloud (VPC) Network
   - Static External IP Address
   - Network Interfaces
@@ -39,6 +40,14 @@ Ensure the following requirements are met before you attempt to deploy a cluster
   - Cloud Load Balancing
   - Persistent Disks
   - Cloud Router
+
+  :::warning
+
+  For static network deployments, you must have port 6443 open between Palette and the workload cluster. Refer to the
+  [Network Ports](../../../architecture/networking-ports.md) documentation for detailed network architecture diagrams
+  and to learn more about the ports used for communication.
+
+  :::
 
 ## Deploy a GCP Cluster
 
