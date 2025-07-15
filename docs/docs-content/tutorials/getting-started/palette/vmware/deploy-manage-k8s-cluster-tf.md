@@ -40,104 +40,13 @@ To complete this tutorial, you will need the following items in place:
 
 ## Set Up Local Environment
 
-You can clone the [Tutorials](https://github.com/spectrocloud/tutorials) repository locally or follow along by
-downloading a container image that includes the tutorial code and all dependencies.
-
-<Tabs>
-
-<TabItem label="Docker" value="docker">
-
-Start Docker Desktop and ensure that the Docker daemon is available by issuing the following command.
-
-```bash
-docker ps
-```
-
-Next, download the tutorial image, start the container, and open a bash session into it.
-
-```shell
-docker run --name tutorialContainer --interactive --tty ghcr.io/spectrocloud/tutorials:1.1.10 bash
-```
+<PartialsComponent category="getting-started" name="setup-local-environment" />
 
 Navigate to the folder that contains the tutorial code.
 
 ```shell
 cd terraform/getting-started-deployment-tf
 ```
-
-:::warning
-
-Do not exit the container until the tutorial is complete. Otherwise, you may lose your progress.
-
-:::
-
-</TabItem>
-
-<TabItem label="Podman" value="podman">
-
-If you are not using a Linux operating system, create and start the Podman Machine in your local environment. Otherwise,
-skip this step.
-
-```bash
-podman machine init
-podman machine start
-```
-
-Use the following command and ensure you receive an output displaying the installation information.
-
-```bash
-podman info
-```
-
-Next, download the tutorial image, start the container, and open a bash session into it.
-
-```shell
-podman run --name tutorialContainer --interactive --tty ghcr.io/spectrocloud/tutorials:1.1.10 bash
-```
-
-Navigate to the folder that contains the tutorial code.
-
-```shell
-cd terraform/getting-started-deployment-tf
-```
-
-:::warning
-
-Do not exit the container until the tutorial is complete. Otherwise, you may lose your progress.
-
-:::
-
-</TabItem>
-
-<TabItem label="Git" value="git">
-
-Open a terminal window and download the tutorial code from GitHub.
-
-```shell
-git clone https://github.com/spectrocloud/tutorials.git
-```
-
-Change the directory to the tutorial folder.
-
-```shell
-cd tutorials/
-```
-
-Check out the following git tag.
-
-```shell
-git checkout v1.1.10
-```
-
-Navigate to the folder that contains the tutorial code.
-
-```shell
-cd terraform/getting-started-deployment-tf
-```
-
-</TabItem>
-
-</Tabs>
 
 ## Resources Review
 
