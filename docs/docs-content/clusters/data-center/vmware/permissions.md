@@ -7,6 +7,4 @@ sidebar_position: 60
 tags: ["data center", "vmware", "permissions"]
 ---
 
-import VspherPermissions from "../../../../../_partials/permissions/_vsphere-permissions.mdx";
-
-<VspherPermissions category="permissions" name="vsphere-permissions" />
+<PartialsComponent category="permissions" name="vsphere-permissions" />
