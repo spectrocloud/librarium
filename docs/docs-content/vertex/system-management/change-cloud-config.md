@@ -29,7 +29,7 @@ provider configuration for your self-hosted VerteX instance.
 ## Prerequisites
 
 - System administrator permissions, either a Root Administrator or Operations Administrator. Refer to the
-  [System Administrators](../system-management/account-management/account-management.md#system-administrators)page to
+  [System Administrators](../system-management/account-management/account-management.md#system-administrators) page to
   learn more about system administrator roles.
 
 - You need cloud credentials from us to download the required infrastructure provider images. Reach out to our support
