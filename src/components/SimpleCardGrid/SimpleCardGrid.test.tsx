@@ -13,7 +13,7 @@ describe("Display SimpleCardGrid", () => {
     title: string;
     description: string;
     buttonText: string;
-    relativeURL: string;
+    url: string;
   }
 
   interface testCase {
@@ -26,19 +26,19 @@ describe("Display SimpleCardGrid", () => {
       title: "First Card",
       description: "Card 1",
       buttonText: "Learn more 1",
-      relativeURL: "./getting-started-1",
+      url: "./getting-started-1",
     },
     {
       title: "Second Card",
       description: "Card 2",
       buttonText: "Learn more 2",
-      relativeURL: "./getting-started-2",
+      url: "./getting-started-2",
     },
     {
       title: "Third Card",
       description: "Card 3",
       buttonText: "Learn more 3",
-      relativeURL: "./getting-started-3",
+      url: "./getting-started-3",
     },
   ];
 
@@ -74,7 +74,7 @@ describe("Display SimpleCardGrid", () => {
       expect(screen.getByText(tc.buttonText, { selector: "button" })).toBeInTheDocument();
       expect(
         screen.getAllByRole("link").filter((value) => {
-          return value.getAttribute("href") == tc.relativeURL;
+          return value.getAttribute("href") == tc.url;
         })
       ).not.toBeNull();
     });
