@@ -8,7 +8,7 @@ sidebar_custom_props:
 tags: ["getting-started"]
 ---
 
-This page gives you an overview of how to get started with Spectro Cloud Palette and begin leveraging its Kubernetes
+This section gives you an overview of how to get started with Spectro Cloud Palette and begin leveraging its Kubernetes
 full-stack management at scale. Palette's unique capabilities provide end-to-end declarative cluster management, cluster
 monitoring and reconciliation, as well as enterprise-grade security.
 
@@ -18,7 +18,7 @@ Kubernetes no matter the complexity or location of your production environments.
 a quick overview of Palette's key functionalities.
 
 <YouTube
-  url="https://www.youtube.com/embed/P9QBOifS_cc"
+  url="https://www.youtube.com/embed/p2k3ypzYHn0?si=9rzMO5dhcPyVV1Ol"
   title="Demo | Spectro Cloud Palette - Kubernetes-as-a-Service"
 />
 
@@ -31,63 +31,38 @@ The first step towards adopting Palette in your organization is to
 benefits of Palette first-hand.
 
 We have curated the pages in the Getting Started section to give you a gradual introduction to the fundamental concepts
-and workflows you need to deploy and manage Kubernetes clusters through Palette.
+you need to deploy and manage Kubernetes clusters through Palette. This section covers two main workflows:
 
-<div className="desktop-only-display">
+- **Palette**: Covers the cluster deployment workflow to major infrastructure providers, such as AWS, Azure, GCP, and
+  VMware. This section also includes more advanced topics, such as cluster deployment with Terraform and day-2
+  operations.
 
-![Overview of the getting started journey rocket](/getting-started/getting-started_getting-started_journey-overview.webp)
+- **Palette Edge**: Covers the workflows required to deploy a Palette cluster at the edge.
 
-</div>
+The Getting Started section also introduces
+[Palette's additional capabilities](../tutorials/getting-started/additional-capabilities/additional-capabilities.md),
+including self-hosted deployments and virtual machine orchestration.
 
-<br />
+![Getting Started Summary](/getting-started/getting-started_summary.webp)
 
-First, you will learn how to create cluster profiles, which are the blueprints for your Kubernetes stacks. Then, you
-will deploy your first cluster using your cluster profile. Once you have deployed your first cluster, you update it
-using Palette's cluster management functionality. The Getting Started section also includes other topics that you can
-explore further, such as cluster deployment with Terraform, Palette's edge capabilities, and virtual machine
-orchestration.
-
-Explore more through the following pages.
+Choose a roadmap from the following cards to start your journey with Palette.
 
 <!-- vale off -->
 
 <SimpleCardGrid
+  hideNumber="true"
   cards={[
     {
-      title: "Introduction to Palette",
-      description: "Learn about what makes Palette different.",
+      title: "Palette",
+      description: "Learn how to deploy Palette clusters to major infrastructure providers.",
       buttonText: "Learn more",
-      url: "/getting-started/introduction",
+      url: "/tutorials/getting-started/palette",
     },
     {
-      title: "Deploy a Cluster to Amazon Web Services (AWS)",
-      description: "Deploy and update a Palette host cluster to AWS.",
+      title: "Palette Edge",
+      description: "Learn how to deploy Palette clusters at the edge.",
       buttonText: "Learn more",
-      url: "/getting-started/aws",
-    },
-    {
-      title: "Deploy a Cluster to Microsoft Azure",
-      description: "Deploy and update a Palette host cluster to Azure.",
-      buttonText: "Learn more",
-      url: "/getting-started/azure",
-    },
-    {
-      title: "Deploy a Cluster to Google Cloud Platform (GCP)",
-      description: "Deploy and update a Palette host cluster to Google Cloud.",
-      buttonText: "Learn more",
-      url: "/getting-started/gcp",
-    },
-    {
-      title: "Deploy a Cluster to VMware",
-      description: "Deploy and update a Palette host cluster to VMware vSphere.",
-      buttonText: "Learn more",
-      url: "/getting-started/vmware",
-    },
-    {
-      title: "Additional Capabilities",
-      description: "Learn about Palette's additional capabilities.",
-      buttonText: "Learn more",
-      url: "/getting-started/additional-capabilities",
+      url: "/tutorials/getting-started/palette-edge",
     },
   ]}
 />
