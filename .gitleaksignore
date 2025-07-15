@@ -677,6 +677,8 @@ cd686abe24271f32fa0e2ada2102c479c2d1e5aa:docs/docs-content/vertex/install-palett
 3f9e9fa4d6d55f1ca6b6fa72070e92bbcc7d2b49:docs/docs-content/vertex/install-palette-vertex/install-on-kubernetes/airgap-install/install.md:docker-config-json:270
 3f9e9fa4d6d55f1ca6b6fa72070e92bbcc7d2b49:docs/docs-content/vertex/install-palette-vertex/install-on-kubernetes/install.md:docker-config-json:392
 3f9e9fa4d6d55f1ca6b6fa72070e92bbcc7d2b49:docs/docs-content/vertex/install-palette-vertex/install-on-kubernetes/airgap-install/install.md:docker-config-json:481
+6f2f00eb967de5fdfbd1b64bf893f0266a3511c4:docs/docs-content/tutorials/getting-started/introduction-edge/edge-cluster-profile.md:generic-api-key:142
+bd206bcbc929e78db96a611634e5e7057369c584:docs/docs-content/tutorials/getting-started/introduction-edge/edge-cluster-profile.md:generic-api-key:143
 c0c63dc4222907cff4801266617c52c782fb01f7:docs/docs-content/enterprise-version/install-palette/install-on-kubernetes/airgap-install/install.md:docker-config-json:259
 c0c63dc4222907cff4801266617c52c782fb01f7:docs/docs-content/enterprise-version/install-palette/install-on-kubernetes/install.md:docker-config-json:170
 c0c63dc4222907cff4801266617c52c782fb01f7:docs/docs-content/enterprise-version/install-palette/install-on-kubernetes/airgap-install/install.md:docker-config-json:471
@@ -685,3 +687,4 @@ c0c63dc4222907cff4801266617c52c782fb01f7:docs/docs-content/vertex/install-palett
 c0c63dc4222907cff4801266617c52c782fb01f7:docs/docs-content/vertex/install-palette-vertex/install-on-kubernetes/install.md:docker-config-json:181
 c0c63dc4222907cff4801266617c52c782fb01f7:docs/docs-content/vertex/install-palette-vertex/install-on-kubernetes/install.md:docker-config-json:392
 c0c63dc4222907cff4801266617c52c782fb01f7:docs/docs-content/vertex/install-palette-vertex/install-on-kubernetes/airgap-install/install.md:docker-config-json:481
+25db25d400ce532148fb3f545f2d1f9bedadb667:docs/docs-content/tutorials/getting-started/palette-edge/edge-cluster-profile.md:generic-api-key:157
