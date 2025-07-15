@@ -37,10 +37,7 @@ To complete this tutorial, ensure the following prerequisites are in place.
   - 8 GB memory
   - 150 GB storage
 - Access to a public image registry and permissions to push images. This tutorial uses
-  [Docker Hub](https://www.docker.com/products/docker-hub/) as an example. If you need to use a private registry, refer
-  to the
-  [Deploy Cluster with a Private Provider Registry](../../../clusters/edge/site-deployment/deploy-custom-registries/deploy-private-registry.md)
-  guide for instructions on how to configure the credentials.
+  [Docker Hub](https://www.docker.com/products/docker-hub/) as an example.
 - The following software installed on the Linux machine:
   - [Docker Engine](https://docs.docker.com/engine/install/) with
     [`sudo`](https://docs.docker.com/engine/install/linux-postinstall/) privileges. Alternatively, you can install
@@ -80,10 +77,8 @@ build process.
 While both the `.arg` file and [user-data](./prepare-user-data.md) file are configuration files used during the
 EdgeForge process, they serve different purposes. The `.arg` file is used to customize the Edge artifact build process.
 For example, you can specify the name of the installer ISO to be built, the Kubernetes distribution and version for the
-provider images, the registry to push the images to, and more. The
-[Edge Artifact Build Configurations](../../../clusters/edge/edgeforge-workflow/palette-canvos/arg.md) page contains a
-list of all the configurable parameters. In contrast, the `user-data` file focuses on customizing the installer ISO.
-When the Edge host boots from the installer ISO, it applies the user data configuration to the host.
+provider images, the registry to push the images to, and more. In contrast, the `user-data` file focuses on customizing
+the installer ISO. When the Edge host boots from the installer ISO, it applies the user data configuration to the host.
 
 :::
 
