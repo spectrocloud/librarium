@@ -523,7 +523,7 @@ Palette. You will then create a cluster profile and use the registered host to d
 15. Select **Edge Native** as the **Cloud Type** and click **Next**.
 
 16. The **Profile Layers** section specifies the packs that compose the profile. Add the **BYOS Edge OS** pack version
-    **2.0.0** to the OS layer.
+    **2.1.0** to the OS layer.
 
 17. Click **Values** under **Pack Details**, then click on **Presets** on the right-hand side. Select **Agent Mode**.
 
