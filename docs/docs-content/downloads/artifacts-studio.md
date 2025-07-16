@@ -9,7 +9,7 @@ sidebar_custom_props:
 tags: ["downloads", "artifact-studio"]
 ---
 
-[Artifact Studio](https://artifact-studio.internal.spectrocloud.com/) is a unified platform that helps airgapped, regulatory-focused and security conscious organizations to populate their own internal registries with bundles, packs and installers to be used with Palette or VerteX. It provides a single location for packs and images, streamlining access and management.
+[Artifact Studio](https://artifact-studio.spectrocloud.com/) is a unified platform that helps airgapped, regulatory-focused and security conscious organizations to populate their own internal registries with bundles, packs and installers to be used with Palette or VerteX. It provides a single location for packs and images, streamlining access and management.
 
 **Who is this for?**
 
@@ -17,8 +17,8 @@ All self-hosted customers will be able to download the Palette or VerteX Managem
 
 There are four main artifact areas:
 
-	- Download of Palette Enterprise (binary or ISO).
-	- Download of Palette VerteX (binary or ISO).
+	- Install Palette Enterprise (content bundle, ISO or Helm chart).
+	- Install Palette VerteX (content bundle, ISO or Helm chart).
 	- Create a pack bundle to download.
 	- Browse pack Catalog to download individual packs. 
 
@@ -27,22 +27,26 @@ There are four main artifact areas:
 
   ![Image of the default homepage of Artifact Studio](../../../static/assets/docs/images/downloads/downloads_artifact-studio-main.webp)
 
-## Install Palette
+## Install Palette Enterprise
 
-1. Navigate to [Artifact Studio](https://artifact-studio.internal.spectrocloud.com/).
+1. Navigate to [Artifact Studio](https://artifact-studio.spectrocloud.com/).
 
-2. From the drop-down, select the version needed, and click **Show Binaries**.
+2. From the drop-down, select the version needed, and click **Show Artifacts**.
 
-3. Click **Download** on **Enterprise Binary** or **Release ISO**, whichever file is appropriate for your environment. 
+3. Click **Download** on **Content bundle**, **Palette management appliance ISO**, or **Helm installation**, whichever file is appropriate for your environment. 
+
+Once you have the file, you can deploy Palette as a self-hosted application. Review the [Self-Hosted Palette](../enterprise-version/install-palette/install-palette.md) for more information on deploying Palette locally.
 
 
 ## Install Palette VerteX
 
-1. Navigate to [Artifact Studio](https://artifact-studio.internal.spectrocloud.com/).
+1. Navigate to [Artifact Studio](https://artifact-studio.spectrocloud.com/).
 
-2. From the drop-down, select the version needed, and click **Show Binaries**.
+2. From the drop-down, select the version needed, and click **Show Artifacts**.
 
-3. Click **Download** on **VerteX Binary** or **Release ISO**, whichever file is appropriate for your environment. 
+3. Click **Download** on **Content bundle**, **VerteX management appliance ISO**, or **Helm installation**, whichever file is appropriate for your environment. 
+
+Once you have the file, you can deploy Palette VerteX as a self-hosted application. Review the [VerteX Installation](../vertex/install-palette-vertex/install-palette-vertex.md) for more information on deploying Palette VerteX locally.
 
 ## Create a Pack Bundle
 
@@ -50,15 +54,15 @@ There are four main artifact areas:
 Agent mode binaries are excluded from this release of Artifact Studio. They will be introduced in a later release.
 :::
     
-1. Navigate to [Artifact Studio](https://artifact-studio.internal.spectrocloud.com/).
+1. Navigate to [Artifact Studio](https://artifact-studio.spectrocloud.com/).
 
 2. Click on **Build bundle**.
 
-    :::tip
+     :::tip
 
-    Ensure that pop-ups are enabled in your browser for [Artifact Studio](https://artifact-studio.internal.spectrocloud.com/) to allow for multiple artifact downloads. 
+     Ensure that pop-ups are enabled in your browser for [Artifact Studio](https://artifact-studio.spectrocloud.com/) to allow for multiple artifact downloads. 
 
-    :::
+     :::
     
     ![Image of Create pack bundle](../../../static/assets/docs/images/downloads/downloads_artifact-studio-build-bundle.webp)
 
@@ -94,7 +98,7 @@ Agent mode binaries are excluded from this release of Artifact Studio. They will
 
 14. Click the **I'm not a robot** reCAPTCHA to download the bundle. The bundle will download as individual pack files (`<filename>.zst`) and individual signature file (`<filename>.bin`). Ensure that all the files are saved in the same folder. 
 
-15. Click **Artifact Home** to repeat the process for additional bundles.
+15. Click **Artifact Studio Home** to repeat the process for additional bundles.
 
 ### Bundle Download Verification
 
@@ -170,6 +174,12 @@ To verify the bundle integrity and authenticity, you can do a checksum verificat
 4. Select one or more packs, and click the **I'm not a robot** reCAPTCHA to download the bundle. The bundle will download as individual pack files (`<filename>.zst`) and individual signature file (`<filename>.bin`). Ensure that all the files are saved in the same folder.
 
    ![Image showing download of multiple packs](../../../static/assets/docs/images/downloads/downloads_artifact-studio-individual-packs-download.webp)
+
+    :::tip
+
+    Ensure that pop-ups are enabled in your browser for [Artifact Studio](https://artifact-studio.spectrocloud.com/) to allow for multiple artifact downloads. 
+
+    :::
 
 ### Specific Pack Download Verification
 
