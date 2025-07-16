@@ -135,7 +135,7 @@ the cluster profile.
 | **Pack Type** | **Pack Name**     | **Version** | **Cluster Profile v1.0.0** | **Cluster Profile v1.1.0** |
 | ------------- | ----------------- | ----------- | -------------------------- | -------------------------- |
 | OS            | `ubuntu-vsphere`  | `22.04`     | :white_check_mark:         | :white_check_mark:         |
-| Kubernetes    | `kubernetes`      | `1.32.3`   | :white_check_mark:         | :white_check_mark:         |
+| Kubernetes    | `kubernetes`      | `1.32.3`    | :white_check_mark:         | :white_check_mark:         |
 | Network       | `cni-calico`      | `3.29.3`    | :white_check_mark:         | :white_check_mark:         |
 | Storage       | `csi-vsphere-csi` | `3.3.1`     | :white_check_mark:         | :white_check_mark:         |
 | Load Balancer | `lb-metallb-helm` | `0.14.9`    | :white_check_mark:         | :white_check_mark:         |
