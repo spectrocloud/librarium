@@ -239,7 +239,7 @@ Review each of the following five files in the **hello-universe-pack** folder.
     "kubeManifests": ["manifests/hello-universe.yaml"],
     "layer": "addon",
     "name": "hellouniverse",
-    "version": "1.0.0"
+    "version": "1.2.0"
   }
   ```
 
@@ -263,7 +263,7 @@ Review each of the following five files in the **hello-universe-pack** folder.
     hello-universe:
       registry: ghcr.io
       repository: spectrocloud/hello-universe
-      tag: 1.0.12
+      tag: 1.2.0
   ```
 
   Optionally, you can define _presets_, which are pack configuration values predefined in a file called **presets.yaml**
