@@ -7,8 +7,8 @@ sidebar_position: 0
 tags: ["edge"]
 ---
 
-[Cluster profiles](../../../profiles/cluster-profiles/cluster-profiles.md) contain the desired specifications the for
-your Edge cluster. All Edge profiles require you to provide an Operating System (OS) pack, a Kubernetes pack and a
+[Cluster profiles](../../../profiles/cluster-profiles/cluster-profiles.md) contain the desired specifications for
+your Edge cluster. All Edge profiles require you to provide an Operating System (OS) pack, a Kubernetes pack, and a
 Container Network Interface (CNI) pack. Unlike other types of profiles, Edge profiles does not require you to use a
 Container Storage Interface (CSI) pack. This is because many Edge deployments are subject to hardware limitations and do
 not require persistent storage. However, if your cluster needs to use persistent storage, you need to include a CSI
