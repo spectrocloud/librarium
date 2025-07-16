@@ -56,7 +56,8 @@ using agent mode. Refer to [Agent Mode](../../../deployment-modes/agent-mode/age
    ![A view of the Kubernetes pack editor with a YAML configuration](/clusters_site-deployment_model-profile_byoos-pack-yaml.webp)
 
 10. Update the `system.uri` parameter in the pack editor. Use the provider image you created in the EdgeForge process.
-    If you have not built the image yet, fill the parameter with where the image will be uploaded to.
+    If you have not built the image yet, fill the parameter with where the image will be uploaded to or fill it with a
+    placeholder value and update it when you upload the image.
 
     Refer to the EdgeForge [Build Images](../edgeforge-workflow/palette-canvos/palette-canvos.md) guide for more
     information. The following snippet is an example where your cluster will expect a provider image at
@@ -89,6 +90,7 @@ using agent mode. Refer to [Agent Mode](../../../deployment-modes/agent-mode/age
     You can customize the node drainage behavior and specify additional images that you may have created that are part
     of the content bundle. Specify any additional image required by the cluster profile in the `images` section. Add an
     `- image: ` entry for each image you need to specify. Refer to the
+
     <VersionedLink text="BYOOS Pack" url="/integrations/packs/?pack=generic-byoi" /> resource to learn more about the
     pack details.
 
