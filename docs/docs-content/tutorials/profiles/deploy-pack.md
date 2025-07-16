@@ -844,7 +844,7 @@ In the **Profile Layers** section, add the following core infrastructure layers.
 
 | **Pack Type** | **Registry** | **Pack Name**               | **Pack Version** |
 | ------------- | ------------ | --------------------------- | ---------------- |
-| OS            | Public Repo  | Ubuntu                      | `22.04`    |
+| OS            | Public Repo  | Ubuntu                      | `22.04`          |
 | Kubernetes    | Public Repo  | Palette eXtended Kubernetes | `1.32.3`         |
 | Network       | Public Repo  | Calico                      | `3.29.3`         |
 | Storage       | Public Repo  | Amazon EBS CSI              | `1.41.0`         |
