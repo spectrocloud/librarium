@@ -881,9 +881,9 @@ ECR registry, select **ecr-registry**.
 
 | **Pack Type** | **Registry Type** | **Registry Name**     | **Pack Name**  | **Pack Version** |
 | ------------- | ----------------- | --------------------- | -------------- | ---------------- |
-| App Services  | Spectro Registry  | spectro-pack-registry | Hello Universe | `1.2.0`          |
-| App Services  | ECR               | ecr-registry          | Hello Universe | `1.2.0`          |
-| App Services  | Basic             | harbor-registry       | Hello Universe | `1.2.0`          |
+| App Services  | Spectro Registry  | `spectro-pack-registry` | Hello Universe | `1.2.0`          |
+| App Services  | ECR               | `ecr-registry`          | Hello Universe | `1.2.0`          |
+| App Services  | Basic             | `harbor-registry`       | Hello Universe | `1.2.0`          |
 
 Click on the **Confirm & Create** button to finish adding the Hello Universe pack.
 
