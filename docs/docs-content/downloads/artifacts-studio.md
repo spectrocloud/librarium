@@ -13,7 +13,7 @@ tags: ["downloads", "artifact-studio"]
 
 **Who is this for?**
 
-All self-hosted customers will be able to download the Palette or VerteX Management Appliance or Helm chart in order to instantiate or upgrade their environment. Additionally, disconnected customers are able to browse through all available packs, and download only the components you wish to use. You can also validate the integrity and authencity of the bundle via code signature. With these new artifact bundles, we are replacing the self-extracting binaries we create for airgapped environments with a more familiar zstandard compressed format (`zst`) that can be moved and manipulated with palette-cli. 
+All self-hosted customers will be able to download the Palette or VerteX Management Appliance or Helm chart in order to instantiate or upgrade their environment. Additionally, disconnected customers are able to browse through all available packs, and download only the components you wish to use. You can also validate the integrity and authenticity of the bundle via code signature. With these new artifact bundles, we are replacing the self-extracting binaries we create for airgapped environments with a more familiar zstandard compressed format (`zst`) that can be moved and manipulated with palette-cli. 
 
 There are four main artifact areas:
 
@@ -68,7 +68,7 @@ Agent mode binaries are excluded from this release of Artifact Studio. They will
 
 3. On the **Select Product** page select either **Palette Enterprise Appliance** or **Palette Vertex Appliance**. 
 
-4. On the **Current Version** page select the version the pack bundle will run on. 
+4. On the **Current Version** page select the version the pack bundle will installed on. 
 
 5. On the **Use case** page, select the use case for the bundle.
 
