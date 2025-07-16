@@ -55,6 +55,8 @@ and permissions for your VMs.
 
 - [Create a VMO Profile](./create-vmo-profile.md)
 
+- [Configure Private CA Certificate to enable trust with Self-Hosted Palette or Palette VerteX](./configure-private-ca-certificate.md)
+
 - [Create and Manage VMs](./create-manage-vm/create-manage-vm.md)
 
 - [Advanced Topics](./create-manage-vm/advanced-topics/advanced-topics.md)

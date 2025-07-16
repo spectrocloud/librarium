@@ -193,7 +193,9 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 - Configuration adjustments have been made to improve the compatibility of the
   [Virtual Machine Orchestrator](../vm-management/vm-management.md) with
-  [self-hosted Palette](../enterprise-version/enterprise-version.md) installations.
+  [self-hosted Palette](../enterprise-version/enterprise-version.md) installations. This includes the ability to
+  configure a private CA certificate for secure communication. Refer to the
+  [Configure Private CA Certificate](../vm-management/configure-private-ca-certificate.md) guide for more details.
 
 - The KubeVirt version in use is now v1.5.0. Other components of the VMO pack have also been upgraded, enhancing system
   reliability and security.
