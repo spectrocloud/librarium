@@ -89,6 +89,7 @@ using agent mode. Refer to [Agent Mode](../../../deployment-modes/agent-mode/age
     You can customize the node drainage behavior and specify additional images that you may have created that are part
     of the content bundle. Specify any additional image required by the cluster profile in the `images` section. Add an
     `- image: ` entry for each image you need to specify. Refer to the
+
     <VersionedLink text="BYOOS Pack" url="/integrations/packs/?pack=generic-byoi" /> resource to learn more about the
     pack details.
 
