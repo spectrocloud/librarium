@@ -1,0 +1,54 @@
+---
+partial_category: self-hosted
+partial_name: scar-migration-prerequisites
+---
+
+- A deployed self-hosted {props.edition} <PaletteVertexUrlMapper
+    edition={props.edition}
+    text="cluster"
+    palettePath="/install-palette"
+    vertexPath="/install-palette-vertex"
+  /> that uses a customer-managed SCAR to host {props.edition}
+  manifests.
+- Access to the {props.edition} cluster kubeconfig file to verify the SCAR endpoint.
+
+  :::tip
+
+  If you deployed {props.edition} using the Palette CLI, you can download the kubeconfig file from the {props.edition} cluster details
+  page in the system console. Navigate to the **Enterprise Cluster Migration** page and click on the **Admin
+  Kubeconfig** link to download the kubeconfig file. If you deployed {props.edition} to an existing Kubernetes cluster, contact
+  your cluster administrator to obtain the kubeconfig file. For instructions on using the kubeconfig file to access your
+  cluster, refer to the <VersionedLink text="Access Cluster with CLI" url="/clusters/cluster-management/palette-webctl"/>.
+
+  :::
+
+- Access to the file server that hosts the {props.edition} manifests.
+- Ensure the Kubernetes cluster has a Container Storage Interface (CSI) available and at least 10 GB of free space. The Specman service requires this to create a Persistent Volume Claim (PVC) for storing content.
+- The {props.edition} cluster must have been upgraded to version `4.5.15` or later. This is required for the SCAR migration to
+  function properly.
+- Access to the {props.edition} system console.
+- Ensure the following software is installed and available in the environment hosting the file server. For example, if
+  you deployed an airgapped instance of {props.edition} to VMware using an <PaletteVertexUrlMapper
+    edition={props.edition}
+    text="OVA"
+    palettePath="/install-palette/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions"
+    vertexPath="/install-palette-vertex/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions"
+  />, these tools must be available on your airgap support VM.
+
+  - [tar](https://www.gnu.org/software/tar/)
+  - [AWS CLI v2](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) - Required only for AWS
+    ECR.
+  - [ORAS](https://oras.land/docs/installation/) v1.0.0
+
+  <br />
+
+  :::warning
+
+  This specific version of ORAS is explicitly required for pushing packs to OCI registries.
+
+  :::
+
+- Ensure the following software is installed and available locally on your workstation. 
+  - [curl](https://curl.se/docs/install.html)
+  - [jq](https://jqlang.github.io/jq/download/)
+  - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
