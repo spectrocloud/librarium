@@ -95,7 +95,7 @@ Agent mode binaries are excluded from this release of Artifact Studio. They will
 
 13. Click **Next Step**. 
 
-14. On the **Review and download** page, click the **I'm not a robot** reCAPTCHA to download the bundle. The bundle will download as individual pack files (`<filename>.zst`) and individual signature file (`<filename>.bin`). Ensure that all the files are saved in the same folder. 
+14. On the **Review and download** page, click the **I'm not a robot** reCAPTCHA to download the bundle. The bundle will download as individual pack files (`<filename>.zst`) and individual signature file (`<filename>.bin`). Ensure that all the files are saved in the same folder. Alternatively, you click **Copy all URLs** to download the individual files via the individual URLs. 
 
 15. Click **Artifact Studio Home** to repeat the process for additional bundles.
 
@@ -170,7 +170,7 @@ To verify the bundle integrity and authenticity, you can do a checksum verificat
 
    ![Image showing filter and search together](../../../static/assets/docs/images/downloads/downloads_artifact-studio-search-and-filter.webp)
 
-4. Select one or more packs, and click the **I'm not a robot** reCAPTCHA to download the bundle. The bundle will download as individual pack files (`<filename>.zst`) and individual signature file (`<filename>.bin`). Ensure that all the files are saved in the same folder.
+4. Select one or more packs, and click the **I'm not a robot** reCAPTCHA to download the bundle. The bundle will download as individual pack files (`<filename>.zst`) and individual signature file (`<filename>.bin`). Ensure that all the files are saved in the same folder. Alternatively, you click **Copy all URLs** to download the individual files via the individual URLs.
 
    ![Image showing download of multiple packs](../../../static/assets/docs/images/downloads/downloads_artifact-studio-individual-packs-download.webp)
 
@@ -179,6 +179,8 @@ To verify the bundle integrity and authenticity, you can do a checksum verificat
     Ensure that pop-ups are enabled in your browser for [Artifact Studio](https://artifact-studio.spectrocloud.com/) to allow for multiple artifact downloads. 
 
     :::
+
+   
 
 ### Specific Pack Download Verification
 
