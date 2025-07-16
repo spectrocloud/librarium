@@ -844,10 +844,10 @@ In the **Profile Layers** section, add the following core infrastructure layers.
 
 | **Pack Type** | **Registry** | **Pack Name**               | **Pack Version** |
 | ------------- | ------------ | --------------------------- | ---------------- |
-| OS            | Public Repo  | Ubuntu                      | `LTS__22.4.x`    |
-| Kubernetes    | Public Repo  | Palette eXtended Kubernetes | `1.28.x`         |
-| Network       | Public Repo  | Calico                      | `3.26.x`         |
-| Storage       | Public Repo  | Amazon EBS CSI              | `1.22.x`         |
+| OS            | Public Repo  | Ubuntu                      | `22.04`    |
+| Kubernetes    | Public Repo  | Palette eXtended Kubernetes | `1.32.3`         |
+| Network       | Public Repo  | Calico                      | `3.29.3`         |
+| Storage       | Public Repo  | Amazon EBS CSI              | `1.41.0`         |
 
 As you add each layer, click on the **Next layer** button. After adding the **Storage** layer, click on the **Confirm**
 button to complete the core infrastructure stack. Palette displays the newly created infrastructure profile as a layered
@@ -881,9 +881,9 @@ ECR registry, select **ecr-registry**.
 
 | **Pack Type** | **Registry Type** | **Registry Name**     | **Pack Name**  | **Pack Version** |
 | ------------- | ----------------- | --------------------- | -------------- | ---------------- |
-| App Services  | Spectro Registry  | spectro-pack-registry | Hello Universe | `1.0.x`          |
-| App Services  | ECR               | ecr-registry          | Hello Universe | `1.0.x`          |
-| App Services  | Basic             | harbor-registry       | Hello Universe | `1.0.x`          |
+| App Services  | Spectro Registry  | spectro-pack-registry | Hello Universe | `1.2.0`          |
+| App Services  | ECR               | ecr-registry          | Hello Universe | `1.2.0`          |
+| App Services  | Basic             | harbor-registry       | Hello Universe | `1.2.0`          |
 
 Click on the **Confirm & Create** button to finish adding the Hello Universe pack.
 
@@ -1073,10 +1073,10 @@ We recommend that you explore all Terraform files. Below is a high-level overvie
   | **Pack Type** | **Registry** | **Pack Name**   | **Tag**       | **Version** |
   | ------------- | ------------ | --------------- | ------------- | ----------- |
   | OS            | Public Repo  | `ubuntu-aws`    | `LTS__22.4.x` | `22.04`     |
-  | Kubernetes    | Public Repo  | `kubernetes`    | `1.28.x`      | `1.28.2`    |
-  | Network       | Public Repo  | `cni-calico`    | `3.26.x`      | `3.26.1`    |
-  | Storage       | Public Repo  | `csi-aws-ebs`   | `1.22.x`      | `1.22.0`    |
-  | App Services  | Private Repo | `hellouniverse` | `1.0.x`       | `1.0.0`     |
+  | Kubernetes    | Public Repo  | `kubernetes`    | `1.28.x`      | `1.32.3`    |
+  | Network       | Public Repo  | `cni-calico`    | `3.26.x`      | `3.29.3`    |
+  | Storage       | Public Repo  | `csi-aws-ebs`   | `1.22.x`      | `1.41.0`    |
+  | App Services  | Private Repo | `hellouniverse` | `1.0.x`       | `1.2.0`     |
 
 - **inputs.tf** - contains the variables used in the tutorial, such as the names of cluster profile, cluster, cloud
   account, SSH key name, AWS region, pack name, and registry server.
