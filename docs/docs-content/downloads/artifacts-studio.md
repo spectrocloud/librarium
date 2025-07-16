@@ -77,12 +77,11 @@ Agent mode binaries are excluded from this release of Artifact Studio. They will
 | Controller mode | Download specific component packs for your existing environment.|
 | Agent mode or Appliance mode | Get required packages for deploying Kubernetes at remote edge locations. |
 | Add-on only | Download just supplementary tools and features to enhance your clusters. |
-| FIPs? | TBA |
-| additional? | TBA |
 
-6. Select the Public Cloud or Data Center that you want to download bundles for.
 
-7. On the **Build your bundle** page, select **OS**. This will start the process of building the bundle.
+6. On the **Configure cloud types**, select the appropriate cloud for your bundle. Depending on the use case, cloud types include **Public Clouds** (AWS, GCP, Azure), **Data Centers** (MAAS, OpenStack, vSphere) and **Bare Metal** (Edge Native)
+
+7. On the **Configure bundle** page, select **OS**. This will start the process of building the bundle.
 
 8. Select the Operating System and click **Next Layer**. 
 
@@ -96,7 +95,7 @@ Agent mode binaries are excluded from this release of Artifact Studio. They will
 
 13. Click **Next Step**. 
 
-14. Click the **I'm not a robot** reCAPTCHA to download the bundle. The bundle will download as individual pack files (`<filename>.zst`) and individual signature file (`<filename>.bin`). Ensure that all the files are saved in the same folder. 
+14. On the **Review and download** page, click the **I'm not a robot** reCAPTCHA to download the bundle. The bundle will download as individual pack files (`<filename>.zst`) and individual signature file (`<filename>.bin`). Ensure that all the files are saved in the same folder. 
 
 15. Click **Artifact Studio Home** to repeat the process for additional bundles.
 
@@ -106,17 +105,17 @@ To verify the bundle integrity and authenticity, you can do a checksum verificat
 
 1. Click on **Bundle Verification Instructions** found at the top right of the page. 
 
-2. Download the public key file `public_key.pem`.
+2. Download the public key file `spectro_public_key.pem`.
 
 3. Use the following command to verify the individual pack integrity. 
 
     ```
-    openssl dgst -sha256 -verify public_key.pem -signature bundle-name.tar.sig.bin bundle-name.zst
+    openssl dgst -sha256 -verify spectro_public_key.pem -signature bundle-name.sig.bin bundle-name.zst
     ```
 
 4. A successful verification will show: **Verification OK**.
 
-   Alternatively, use the following sample script to check all the files downloaded in the same folder. Ensure that `REPLACE ME` is replaced with the name of the public key downloaded. 
+   Alternatively, use the following sample script to check all the files downloaded in the same folder. Ensure that `REPLACE ME` is replaced with the path and name of the public key downloaded. 
 
    ```shell title="Example" {10}
  
@@ -152,11 +151,11 @@ To verify the bundle integrity and authenticity, you can do a checksum verificat
     You should see the following output.
 
     ```shell title="Output Example"
-      cni-calico-3.29.2.zst: ✅ Signature valid
-      csi-aws-ebs-1.41.0.zst: ✅ Signature valid
-      kubernetes-1.32.3.zst: ✅ Signature valid
-      spectro-k8s-dashboard-7.11.1.zst: ✅ Signature valid
-      ubuntu-aws-22.04.zst: ✅ Signature valid
+    cni-calico-3.30.1.zst: ✅ Signature valid
+    csi-aws-ebs-1.43.0.zst: ✅ Signature valid
+    kubernetes-1.32.4.zst: ✅ Signature valid
+    spectro-k8s-dashboard-7.11.1.zst: ✅ Signature valid
+    ubuntu-aws-22.04.zst: ✅ Signature valid
     ``` 
 
 ## Download a Specific Pack
@@ -187,17 +186,17 @@ To verify the bundle integrity and authenticity, you can do a checksum verificat
 
 1. Click on **Bundle Verification Instructions** found at the top right of the page. 
 
-2. Download the public key file `public_key.pem`.
+2. Download the public key file `spectro_public_key.pem`.
 
 3. Use the following command to verify the individual pack integrity. 
 
     ```
-    openssl dgst -sha256 -verify public_key.pem -signature bundle-name.tar.sig.bin bundle-name.zst
+    openssl dgst -sha256 -verify spectro_public_key.pem -signature bundle-name.sig.bin bundle-name.zst
     ```
 
 4. A successful verification will show: **Verification OK**.
 
-   Alternatively, use the following sample script to check all the files downloaded in the same folder. Ensure that `REPLACE ME` is replaced with the name of the public key downloaded. 
+   Alternatively, use the following sample script to check all the files downloaded in the same folder. Ensure that `REPLACE ME` is replaced with the path and name of the public key downloaded. 
 
    ```shell title="Example" {10}
  
@@ -233,9 +232,9 @@ To verify the bundle integrity and authenticity, you can do a checksum verificat
     You should see the following output.
 
     ```shell title="Output Example"
-      cni-calico-3.29.2.zst: ✅ Signature valid
-      csi-aws-ebs-1.41.0.zst: ✅ Signature valid
-      kubernetes-1.32.3.zst: ✅ Signature valid
-      spectro-k8s-dashboard-7.11.1.zst: ✅ Signature valid
-      ubuntu-aws-22.04.zst: ✅ Signature valid
+    cni-calico-3.30.1.zst: ✅ Signature valid
+    csi-aws-ebs-1.43.0.zst: ✅ Signature valid
+    kubernetes-1.32.4.zst: ✅ Signature valid
+    spectro-k8s-dashboard-7.11.1.zst: ✅ Signature valid
+    ubuntu-aws-22.04.zst: ✅ Signature valid
     ``` 
