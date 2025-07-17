@@ -1,0 +1,91 @@
+---
+partial_category: security
+partial_name: artifact-studio-signature-verification
+---
+
+1. Navigate to [Artifact Studio](https://artifact-studio.spectrocloud.com/).
+
+2. At the top right of the page, select **Bundle Verification Instructions**. 
+
+3. Download the public key file `spectro_public_key.pem`.
+
+4. Use the appropriate command to verify the individual pack integrity, depending on the type of file downloaded.
+
+    <Tabs>
+
+    <TabItem label="Content Bundle (TAR ZST)" value="tar">
+
+    ```bash
+    openssl dgst -sha256 -verify spectro_public_key.pem -signature <bundle-name>.tar.sig.bin <bundle-name>.tar.zst
+    ```
+
+    </TabItem>
+
+    <TabItem label="Management Appliance (ISO)" value="iso">
+
+    ```bash
+    openssl dgst -sha256 -verify spectro_public_key.pem -signature <management-appliance>.iso.sig.bin <management-appliance>.iso
+    ```
+
+    </TabItem>
+
+    <TabItem label="Pack Bundle (ZST)" value="zst">
+
+    ```bash
+    openssl dgst -sha256 -verify spectro_public_key.pem -signature <bundle-name>.sig.bin <bundle-name>.zst
+    ```
+
+    </TabItem>
+
+    </Tabs>
+
+4. A successful verification displays `Verification OK`.
+
+5. Alternatively, if verifying the signature for a content or pack bundle, use the following sample script to check all files downloaded in the current folder. Substitute `REPLACE ME` with the path to `spectro_public_key.pem`.
+
+   ```shell title="Sample script" {7}
+    # This script verifies the signatures of data files against a public key.
+    # It expects files named like `datafile.zst` and corresponding signatures `datafile.sig.bin`.
+    # Ensure you have OpenSSL installed to run this script and that the public key is in PEM format.
+    # Ensure the script has execute permissions: `chmod +x verify-signatures.sh`
+    # Usage: ./verify-signatures.sh 
+    #!/bin/bash
+    PUBKEY="REPLACE ME" # Enter path to public key file
+    for sigfile in *.sig.bin; do
+      # Strip `.sig.bin` to get base filename and corresponding data file
+      base="${sigfile%.sig.bin}"
+      datafile="${base}.zst"
+      if [[ ! -f "$datafile" ]]; then # Check if data file exists
+        echo "$datafile: ❌ Data file not found" # Skip to next iteration  
+        continue
+      fi
+      # Run signature verification
+      if openssl dgst -sha256 -verify "$PUBKEY" -signature "$sigfile" "$datafile" > /dev/null 2>&1; then # Verify signature
+        echo "$datafile: ✅ Signature valid" # Print success message
+      else
+        echo "$datafile: ❌ Signature invalid" # Print failure message
+      fi
+    done
+    ```
+
+  Grant the script execute permissions.
+
+    ```bash
+    chmod +x verify-signatures.sh
+    ```
+
+  Execute the script. 
+
+    ```bash
+    ./verify-signatures.sh
+    ```
+
+  The output should be similar to the following.
+
+    ```shell title="Example output" hideClipboard
+      cni-calico-3.29.2.zst: ✅ Signature valid
+      csi-aws-ebs-1.41.0.zst: ✅ Signature valid
+      kubernetes-1.32.3.zst: ✅ Signature valid
+      spectro-k8s-dashboard-7.11.1.zst: ✅ Signature valid
+      ubuntu-aws-22.04.zst: ✅ Signature valid
+    ``` 
