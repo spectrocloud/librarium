@@ -61,7 +61,7 @@ jobs:
     steps:
       - name: Retrieve Credentials
         id: import-secrets
-        uses: hashicorp/vault-action@v3.3.0
+        uses: hashicorp/vault-action@v3.4.0
         with:
           url: https://vault.prism.spectrocloud.com
           method: approle
@@ -87,7 +87,7 @@ jobs:
         run: make format
 
       - name: Commit Changes
-        uses: stefanzweifel/git-auto-commit-action@v5
+        uses: stefanzweifel/git-auto-commit-action@v6
         with:
           commit_message: "ci: auto-formatting prettier issues"
           branch: ${{ github.head_ref }}
