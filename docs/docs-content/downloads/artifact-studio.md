@@ -50,8 +50,8 @@ There are four main artifact areas:
 | Helm installation | Used to install with Helm charts                                                       |
 
 Once you have the file, you can deploy Palette as a self-hosted application. Review the
-[Self-Hosted Palette](../enterprise-version/install-palette/palette-management-appliance.md) for more information on deploying
-Palette locally.
+[Self-Hosted Palette](../enterprise-version/install-palette/palette-management-appliance.md) for more information on
+deploying Palette locally.
 
 ## Install Palette VerteX
 
