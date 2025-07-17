@@ -47,8 +47,7 @@ tags: ["release-notes"]
 - <TpBadge /> The Palette Management Appliance is a new method to install self-hosted Palette in your infrastructure
   environment. It provides a simple and efficient way to deploy Palette using an ISO file. The Palette Management
   Appliance is available for VMware, Bare Metal, and Machine as a Service (MAAS) environments. Refer to the Palette
-  Management Appliance guide for further
-  information.
+  Management Appliance guide for further information.
 
 - The Artifact Studio is a new platform for obtaining bundles, packs, and installers relating to Palette Enterprise and
   Palette VerteX. It provides a single source for these artifacts, which you can download and then upload to your
