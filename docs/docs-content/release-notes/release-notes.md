@@ -44,6 +44,16 @@ tags: ["release-notes"]
 
 #### Features
 
+- <TpBadge /> The Palette Management Appliance is a new method to install self-hosted Palette in your infrastructure
+  environment. It provides a simple and efficient way to deploy Palette using an ISO file. The Palette Management
+  Appliance is available for VMware, Bare Metal, and Machine as a Service (MAAS) environments. Refer to the Palette
+  Management Appliance guide for further
+  information.
+
+- The Artifact Studio is a new platform for obtaining bundles, packs, and installers relating to Palette Enterprise and
+  Palette VerteX. It provides a single source for these artifacts, which you can download and then upload to your
+  registries. Refer to the Artifact Studio guide for further information.
+
 - [Self-hosted Palette](../enterprise-version/enterprise-version.md) now supports the configuration of a classification
   banner. System administrators can set the banner text and color through the
   [system console](../enterprise-version/system-management/system-management.md#system-console). Refer to the
@@ -149,10 +159,20 @@ ensures successful upgrades between minor and patch versions on connected and ai
 
 #### Features
 
+- <TpBadge /> The VerteX Management Appliance is a new method to install Palette VerteX in your infrastructure
+  environment. It provides a simple and efficient way to deploy Palette VerteX using an ISO file. The VerteX Management
+  Appliance is available for VMware, Bare Metal, and Machine as a Service (MAAS) environments. Refer to the VerteX
+  Management Appliance guide for further information.
+
+- The Artifact Studio is a new platform for obtaining bundles, packs, and installers relating to Palette Enterprise and
+  Palette VerteX. It provides a single source for these artifacts, which you can download and then upload to your
+  registries. Refer to the Artifact Studio guide for further information.
+
 - The <VersionedLink text="Zot" url="/integrations/packs/?pack=zot-registry" /> registry is now supported as a primary
   registry for clusters managed by VerteX. Refer to
   [Deploy Cluster with a Primary Registry](../clusters/edge/site-deployment/deploy-custom-registries/deploy-primary-registry.md)
   for more information.
+
 - Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
   [Palette section](#palette-enterprise-4.7.0) for more details.
 
