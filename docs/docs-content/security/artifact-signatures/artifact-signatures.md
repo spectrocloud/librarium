@@ -26,8 +26,6 @@ To support trusted deployment and secure validation, Spectro Cloud currently sig
   - `gcr.io/spectro-images-fips`
   
   - `gcr.io/spectro-images-public`
-  
-  - `gcr.io/palette-images`
 
   :::warning
 
