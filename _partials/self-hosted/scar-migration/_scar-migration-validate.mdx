@@ -1,0 +1,45 @@
+---
+partial_category: self-hosted
+partial_name: scar-migration-validate
+---
+
+Use the following steps to verify that the endpoint was updated successfully.
+
+1. Export your {props.edition} credentials as environment variables. Replace `<cluster-url>` with the
+address of your {props.edition} cluster and `<sys-admin-password>` with the system administrator password.
+
+    ```shell
+    export ENDPOINT=<cluster-url>
+    export PASSWORD=<sys-admin-password>
+    ```
+
+2. Log in to the Palette System API using the `/v1/auth/syslogin` endpoint. The response will contain the authentication token that you will use in the next request.
+
+    ```shell
+    AUTH_TOKEN=$(curl --location "${ENDPOINT}/v1/auth/syslogin" \
+    --header 'Content-Type: application/json' \
+    --data '{
+        "username": "admin",
+        "password": "'${PASSWORD}'"
+    }' | jq ."Authorization")
+    ```
+
+    :::tip
+
+    If your cluster is using the default self-signed certificate, you can use the `--insecure` flag with the `curl` commands
+    to bypass the certificate check.
+
+    :::
+
+3. Use the `/v1/system/config/scar` endpoint to confirm that the SCAR endpoint has been correctly updated.
+
+    ```shell
+    curl --location "${ENDPOINT}/v1/system/config/scar" \
+    --header "Cookie: Authorization=${AUTH_TOKEN}"
+    ```
+
+    The output should contain the updated SCAR endpoint.
+
+    ```text hideClipboard
+    {"endpoint":"https://specman-service.hubble-system.svc.cluster.local:8443"}
+    ```
