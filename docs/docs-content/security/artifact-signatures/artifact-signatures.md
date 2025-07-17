@@ -44,7 +44,7 @@ bundles that originate from a Spectro Cloud registry are also signed and can be 
 ### Prerequisites
 
 - Artifacts installed from [Artifact Studio](https://artifact-studio.spectrocloud.com/). For more information, refer to
-  our [Artifact Studio guide][LINK PENDING].
+  our [Artifact Studio guide](../../downloads/artifact-studio.md).
 
 - [OpenSSL](https://www.openssl.org/) installed on the machine where the downloaded artifacts are located.
 
