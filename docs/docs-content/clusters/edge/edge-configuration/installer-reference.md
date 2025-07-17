@@ -212,8 +212,8 @@ enable the local Harbor registry. For more information, refer to
 | Parameter                                    | Description                                                                                                 | Type    | Default |
 | -------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ------- | ------- |
 | `stylus.registryCredentials.domain`          | The domain of the registry. You can use an IP address plus a port or a domain name.                         | String  | `''`    |
+| `stylus.registryCredentials.username`        | The username to authenticate with the registry.                                                             | String  | `''`    |
 | `stylus.registryCredentials.password`        | The password to authenticate with the registry.                                                             | String  | `''`    |
-| `stylus.registryCredentials.insecure`        | Whether to allow insecure connections to the registry.                                                      | boolean | `false` |
 | `stylus.registryCredentials.encodedPassword` | Set to `true` if the password given is base64 encoded. Set to `false` if the password given is not encoded. | boolean | `false` |
 
 ```yaml
