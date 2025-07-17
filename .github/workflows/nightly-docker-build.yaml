@@ -9,9 +9,9 @@ on:
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   # We cannot use our production values for nightly Docker builds as that would leak our production secrets.
-  ALGOLIA_ADMIN_KEY: "123456789"
-  ALGOLIA_APP_ID: "123456789"
-  ALGOLIA_SEARCH_KEY: "123456789"
+  ALGOLIA_ADMIN_KEY: "123456789" # pragma: allowlist-secret
+  ALGOLIA_APP_ID: "123456789" # pragma: allowlist-secret
+  ALGOLIA_SEARCH_KEY: "123456789" # pragma: allowlist-secret
   ALGOLIA_INDEX_NAME: "madeup-index"
   PALETTE_API_KEY: ${{ secrets.PALETTE_API_KEY }}
   DISABLE_PACKS_INTEGRATIONS: ${{ secrets.DISABLE_PACKS_INTEGRATIONS }}
