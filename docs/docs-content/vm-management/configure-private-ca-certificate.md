@@ -172,7 +172,7 @@ to ensure that VMO can securely communicate with your self-hosted Palette or Pal
 
    :::
 
-2. Check that the CA certificate is present by using the following command:
+2. Check that the CA certificate is present by using the following command.
 
    ```bash
    kubectl exec --namespace vm-dashboard <pod-name> -- ls /etc/ssl/certs/
@@ -190,7 +190,7 @@ to ensure that VMO can securely communicate with your self-hosted Palette or Pal
    command. Replace `<palette-dns-name>` with the DNS name of your self-hosted Palette or Palette VerteX instance.
 
    ```bash
-   kubectl exec --namespace vm-dashboard <pod-name> -- curl -v https://<palette-dns-name>
+   kubectl exec --namespace vm-dashboard <pod-name> -- curl --verbose https://<palette-dns-name>
    ```
 
    The output should have the `SSL certificate verify ok.` and `HTTP/1.1 200 OK` messages, indicating that the VMO pod
