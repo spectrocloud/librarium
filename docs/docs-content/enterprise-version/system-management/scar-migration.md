@@ -11,6 +11,16 @@ tags: ["enterprise", "management", "scar"]
 keywords: ["self-hosted", "enterprise"]
 ---
 
-import ScarMigration from "../../../../_partials/self-hosted/_scar-migration.mdx";
+<PartialsComponent category="self-hosted" name="scar-migration-intro" edition="Palette" />
 
-<ScarMigration name="scar-migration" edition="Palette" />
+## Prerequisites
+
+<PartialsComponent category="self-hosted" name="scar-migration-prerequisites" edition="Palette" />
+
+## Migrate SCAR
+
+<PartialsComponent category="self-hosted" name="scar-migration-guide" edition="Palette" />
+
+## Validate
+
+<PartialsComponent category="self-hosted" name="scar-migration-validate" edition="Palette" />

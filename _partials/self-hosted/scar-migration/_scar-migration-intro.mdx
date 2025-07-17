@@ -1,0 +1,20 @@
+---
+partial_category: self-hosted
+partial_name: scar-migration-intro
+---
+
+The {props.edition} installation process requires users to configure and maintain an HTTP server to host {props.edition} manifests. This
+server is known as the Spectro Cloud Artifact Regisry (SCAR). Alternatively, users now have the option to migrate these
+manifests to the same OCI registry that hosts the {props.edition} images and packs. This migration is handled by a service
+called Specman, which fetches the manifests from the OCI registry and serves them via an internal HTTP server.
+
+The migration process involves two main steps:
+
+- Pushing the {props.edition} manifests to the OCI registry.
+- Updating the SCAR endpoint to point to the new internal HTTP server.
+
+Once the migration is complete, there is no longer a need to maintain a separate file server exclusively for hosting the
+{props.edition} manifests.
+
+This guide will direct you through the steps required to push the {props.edition} manifests to the OCI registry and update the
+SCAR endpoint.
