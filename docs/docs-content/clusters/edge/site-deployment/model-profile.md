@@ -18,14 +18,6 @@ to define integrations or applications that must be included when Palette deploy
 
 The following steps will guide you on how to create an Edge-type cluster profile.
 
-:::info
-
-This page covers modeling cluster profiles in
-[Appliance Mode](../../../deployment-modes/appliance-mode/appliance-mode.md). You can also deploy a cluster at the Edge
-using agent mode. Refer to [Agent Mode](../../../deployment-modes/agent-mode/agent-mode.md) for more information.
-
-:::
-
 ## Prerequisites
 
 - The OS layer expects a provider image reference, which is Kairos-based container image for specific OS and Kubernetes
