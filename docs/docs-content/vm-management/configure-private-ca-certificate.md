@@ -35,12 +35,22 @@ to ensure that VMO can securely communicate with your self-hosted Palette or Pal
 
 ## Enablement Steps
 
-1. Use the following command to extract the TLS certificate chain from your self-hosted Palette or Palette VerteX
-   instance. Replace `<palette-dns-name>` with the DNS name of your self-hosted Palette or Palette VerteX instance. Do
-   not include the `https://` prefix in the DNS name.
+1. Export the environment variable `PALETTE_DNS_NAME` with the value being the DNS name of your self-hosted Palette or
+   Palette VerteX instance. Do not include the `https://` prefix in the DNS name.
 
    ```bash
-   openssl s_client -connect <palette-dns-name>:443 -showcerts </dev/null \
+   export PALETTE_DNS_NAME=<palette-dns-name>
+   ```
+
+   ```shell hideClipboard title="Example"
+   export PALETTE_DNS_NAME=tenant.company.com
+   ```
+
+2. Use the following command to extract the TLS certificate chain from your self-hosted Palette or Palette VerteX
+   instance.
+
+   ```bash
+   openssl s_client -connect $PALETTE_DNS_NAME:443 -showcerts </dev/null \
    | awk '/BEGIN CERTIFICATE/,/END CERTIFICATE/' > palette-ca.crt
    ```
 
@@ -55,14 +65,14 @@ to ensure that VMO can securely communicate with your self-hosted Palette or Pal
    DONE
    ```
 
-2. Use the following command to split the certificate chain into individual certificates. This command will create files
+3. Use the following command to split the certificate chain into individual certificates. This command will create files
    named `cert-<number>.pem` containing the individual certificates from the chain.
 
    ```bash
    awk 'BEGIN {c=0;} /BEGIN CERTIFICATE/ {out=sprintf("cert-%02d.pem", c++);} {print > out}' palette-ca.crt
    ```
 
-3. After creating the individual certificate files, use the following command to inspect their contents.
+4. After creating the individual certificate files, use the following command to inspect their contents.
 
    ```bash
    for f in cert-*.pem; \
@@ -84,23 +94,23 @@ to ensure that VMO can securely communicate with your self-hosted Palette or Pal
    subject=C=US, O=Amazon, CN=Amazon Root CA 1
    ```
 
-4. Identify the intermediate or root CA certificate that you need from the output in step 3. In this example, the
+5. Identify the intermediate or root CA certificate that you need from the output in step 3. In this example, the
    `cert-02.pem` file contains the root CA certificate.
 
-5. Save the identified root CA certificate to a file named `root-ca.pem`.
+6. Save the identified root CA certificate to a file named `root-ca.pem`.
 
    ```bash
    cp cert-02.pem root-ca.pem
    ```
 
-6. Set the environment variable `KUBECONFIG` to point to the kubeconfig file for your self-hosted Palette or Palette
+7. Set the environment variable `KUBECONFIG` to point to the kubeconfig file for your self-hosted Palette or Palette
    VerteX cluster.
 
    ```bash
    export KUBECONFIG=/path/to/your/kubeconfig
    ```
 
-7. Use the following command to create a ConfigMap in the `vm-dashboard` namespace with the root CA certificate.
+8. Use the following command to create a ConfigMap in the `vm-dashboard` namespace with the root CA certificate.
 
    ```bash
    kubectl create configmap custom-ca \
@@ -112,20 +122,20 @@ to ensure that VMO can securely communicate with your self-hosted Palette or Pal
    configmap/custom-ca created
    ```
 
-8. Log in to your self-hosted Palette or Palette VerteX tenant console.
+9. Log in to your self-hosted Palette or Palette VerteX tenant console.
 
-9. In the left main menu, click **Profiles** and find the profile for your VMO cluster.
+10. In the left main menu, click **Profiles** and find the profile for your VMO cluster.
 
-10. Click on the profile name to open the profile details.
+11. Click on the profile name to open the profile details.
 
-11. Create a new version of the profile. For more information, refer to
+12. Create a new version of the profile. For more information, refer to
     [Version a Cluster Profile](../profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile.md).
 
-12. Select the **virtual-machine-orchestrator** layer to view the **Edit pack** page.
+13. Select the **virtual-machine-orchestrator** layer to view the **Edit pack** page.
 
-13. Click **Values** under **Pack Details** and find the `charts.virtual-machine-orchestrator.privateCaCertificate` key.
+14. Click **Values** under **Pack Details** and find the `charts.virtual-machine-orchestrator.privateCaCertificate` key.
 
-14. Change the `enabled` value to `true`.
+15. Change the `enabled` value to `true`.
 
     ```yaml hideClipboard title="Example"
     privateCaCertificate:
@@ -135,16 +145,16 @@ to ensure that VMO can securely communicate with your self-hosted Palette or Pal
       mountPath: /etc/ssl/certs/
     ```
 
-15. Click **Confirm Updates**, and then click **Save Changes** in the cluster profile page.
+16. Click **Confirm Updates**, and then click **Save Changes** in the cluster profile page.
 
-16. In the left main menu, click **Clusters** and click on the cluster where you want to apply the changes.
+17. In the left main menu, click **Clusters** and click on the cluster where you want to apply the changes.
 
-17. Select the **Profile** tab and click the version drop-down menu for the **ADDON LAYERS**. Select the version of the
-    profile you modified in step 10.
+18. Select the **Profile** tab and click the version drop-down menu for the **ADDON LAYERS**. Select the version of the
+    profile you modified in step 12.
 
-18. Click **Review & Save**, and then click **Review changes in Editor** when the pop-up window appears.
+19. Click **Review & Save**, and then click **Review changes in Editor** when the pop-up window appears.
 
-19. Review the changes and click **Apply Changes** when satisfied.
+20. Review the changes and click **Apply Changes** when satisfied.
 
 ## Validate
 
@@ -187,10 +197,10 @@ to ensure that VMO can securely communicate with your self-hosted Palette or Pal
    ```
 
 3. Check that the VMO pod now trusts the self-hosted Palette or Palette VerteX TLS certificate by issuing the following
-   command. Replace `<palette-dns-name>` with the DNS name of your self-hosted Palette or Palette VerteX instance.
+   command.
 
    ```bash
-   kubectl exec --namespace vm-dashboard <pod-name> -- curl --verbose https://<palette-dns-name>
+   kubectl exec --namespace vm-dashboard <pod-name> -- curl --verbose https://$PALETTE_DNS_NAME
    ```
 
    The output should have the `SSL certificate verify ok.` and `HTTP/1.1 200 OK` messages, indicating that the VMO pod
