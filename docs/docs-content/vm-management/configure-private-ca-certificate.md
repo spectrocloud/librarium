@@ -196,7 +196,7 @@ to ensure that VMO can securely communicate with your self-hosted Palette or Pal
    The output should have the `SSL certificate verify ok.` and `HTTP/1.1 200 OK` messages, indicating that the VMO pod
    trusts the self-hosted Palette or Palette VerteX TLS certificate.
 
-   ````shell hideClipboard title="Example Output"
+   ```shell hideClipboard title="Example Output"
    ...
    * Server certificate:
    *  subject: CN=tenant.company.com
@@ -208,4 +208,3 @@ to ensure that VMO can securely communicate with your self-hosted Palette or Pal
    ...
    < HTTP/1.1 200 OK
    ```
-   ````
