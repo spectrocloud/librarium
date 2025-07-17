@@ -126,7 +126,7 @@ Agent mode binaries are not supported for download.
 
 ### Bundle Download Verification
 
-<PartialsComponent category="verifications" name="artifact-studio-signature-verification" />
+<PartialsComponent category="security" name="artifact-studio-signature-verification" />
 
 ## Download a Specific Pack
 
@@ -157,4 +157,4 @@ Agent mode binaries are not supported for download.
 
 ### Specific Pack Download Verification
 
-<PartialsComponent category="verifications" name="artifact-studio-signature-verification" />
+<PartialsComponent category="security" name="artifact-studio-signature-verification" />
