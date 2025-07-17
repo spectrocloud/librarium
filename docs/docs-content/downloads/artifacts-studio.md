@@ -10,9 +10,9 @@ tags: ["downloads", "artifact-studio"]
 ---
 
 [Artifact Studio](https://artifact-studio.spectrocloud.com/) is a unified platform that helps airgapped,
-regulatory-focused, and security-conscious organizations populate their registries with bundles, packs
-, and installers to be used with Palette or VerteX. It provides a single location for packs and images, streamlining
-access and management.
+regulatory-focused, and security-conscious organizations populate their registries with bundles, packs , and installers
+to be used with Palette or VerteX. It provides a single location for packs and images, streamlining access and
+management.
 
 ## Use Cases
 
@@ -89,7 +89,7 @@ Agent mode binaries are not supported for download.
 
 5. On the **Use case** page, select the use case for the bundle.
 
-| Use Case                 | Definition                                                           |
+| Use Case                     | Definition                                                               |
 | ---------------------------- | ------------------------------------------------------------------------ |
 | Controller mode              | Download specific component packs for your existing environment.         |
 | Agent mode or Appliance mode | Get required packages for deploying Kubernetes at remote edge locations. |
