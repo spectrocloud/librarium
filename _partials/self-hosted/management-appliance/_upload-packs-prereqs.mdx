@@ -6,26 +6,10 @@ partial_name: upload-packs-prereqs
 - Access to the Artifact Studio to download the {props.iso} pack bundles. Refer to the Artifact Studio
   (link TBC) guide for instructions on how to access and download the bundles.
 
-- Access to your registry depending on the registry type you choose to use for {props.version}.
+- Access to your registry depending on the registry type you chose to use for {props.version}.
 
-  <Tabs>
+  - If using the internal Zot registry, ensure you have access to the Local UI of the leader node of the {props.version} management cluster. Also, verify that your local machine can access the Local UI, as airgapped environments may have strict network policies preventing direct access.
 
-  <TabItem value="internal-zot-registry" label="Internal Zot Registry">
+  - If using an external registry, ensure your local machine has access to the external registry server and you have the necessary permissions to push images to the registry.
 
-  If using the internal Zot registry, access to the Local UI of the leader node of the {props.version} management cluster.
-
-  - Ensure your local machine has access to the Local UI of the {props.version} management cluster as airgapped environments may
-    have strict network polices that prevent direct access to the {props.version} management cluster.
-
-  </TabItem>
-
-  <TabItem value="external-registry" label="External Registry">
-
-  If using an external registry, ensure your local machine has access to the external registry server.
-
-  - Ensure you have the necessary permissions to push images to the registry.
-
-  </TabItem>
-
-  </Tabs>
-
+- (Optional) The Palette CLI installed on your local machine if you prefer to use the command line for uploading packs. Refer to the <VersionedLink text="Palette CLI" url="/automation/palette-cli"/> guide for installation instructions.
