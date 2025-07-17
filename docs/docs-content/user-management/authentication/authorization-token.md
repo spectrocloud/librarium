@@ -14,7 +14,7 @@ minutes. You can refresh the token using the refresh token API endpoint.
 API requests using the authorization token must use the HTTP header `Authorization` with a token as the value.
 
 ```bash
-TOKEN=abcd1234
+TOKEN=abcd1234 # pragma: allowlist-secret
 ```
 
 ```bash
