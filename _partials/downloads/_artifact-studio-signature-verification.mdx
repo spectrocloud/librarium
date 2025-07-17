@@ -1,6 +1,6 @@
 ---
-partial_category: signatures
-partial_name: signature-verification
+partial_category: downloads
+partial_name: artifact-studio-signature-verification
 ---
 
 1. Navigate to [Artifact Studio](https://artifact-studio.spectrocloud.com/).
@@ -43,7 +43,7 @@ partial_name: signature-verification
 
 5. Alternatively, if verifying the signature for a content or pack bundle, use the following sample script to check all files downloaded in the current folder. Substitute `REPLACE ME` with the path to `spectro_public_key.pem`.
 
-   ```shell title="Sample script" {10}
+   ```shell title="Sample script" {7}
     # This script verifies the signatures of data files against a public key.
     # It expects files named like `datafile.zst` and corresponding signatures `datafile.sig.bin`.
     # Ensure you have OpenSSL installed to run this script and that the public key is in PEM format.
