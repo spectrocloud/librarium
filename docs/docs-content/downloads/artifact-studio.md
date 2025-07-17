@@ -16,8 +16,8 @@ management.
 
 ## Use Cases
 
-All self-hosted customers will be able to download the Palette or VerteX Management Appliance or Helm chart in order to
-instantiate or upgrade their environment. Additionally, disconnected customers are able to browse through all available
+You will be able to download the Palette or VerteX Management Appliance or Helm chart in order to
+instantiate or upgrade your environment. Additionally, if you are using an airgapped environment, you will beable to browse through all available
 packs, and download only the components you wish to use. You can also validate the integrity and authenticity of the
 bundle via code signature. With these new artifact bundles, we are replacing the self-extracting binaries we create for
 airgapped environments with a more familiar zstandard compressed format (`zst`) that can be moved and manipulated with
@@ -34,8 +34,6 @@ There are four main artifact areas:
 
 :::
 
-![Image of the default homepage of Artifact Studio](../../../static/assets/docs/images/downloads/downloads_artifact-studio-main.webp)
-
 ## Install Palette Enterprise
 
 1. Navigate to [Artifact Studio](https://artifact-studio.spectrocloud.com/).
@@ -44,6 +42,12 @@ There are four main artifact areas:
 
 3. Click **Download** on **Content bundle**, **Palette management appliance ISO**, or **Helm installation**, whichever
    file is appropriate for your environment.
+
+| Download Option   | Use Case |
+|-------------------|----------|
+| Content bundle    | Used for traditional application install         |
+| ISO               | Used for installation from ISO device in a virtual machine, edge device, or bare-metal |
+| Helm installation | Used to install with Helm charts |
 
 Once you have the file, you can deploy Palette as a self-hosted application. Review the
 [Self-Hosted Palette](../enterprise-version/install-palette/install-palette.md) for more information on deploying
@@ -59,7 +63,7 @@ Palette locally.
    file is appropriate for your environment.
 
 Once you have the file, you can deploy Palette VerteX as a self-hosted application. Review the
-[VerteX Installation](../vertex/install-palette-vertex/install-palette-vertex.md) for more information on deploying
+[VerteX Installation](../vertex/install-palette-vertex/vertex-management-appliance.md) for more information on deploying
 Palette VerteX locally.
 
 ## Create a Pack Bundle
@@ -91,7 +95,7 @@ Agent mode binaries are not supported for download.
 
 | Use Case                     | Definition                                                               |
 | ---------------------------- | ------------------------------------------------------------------------ |
-| Controller mode              | Download specific component packs for your existing environment.         |
+| Controller mode              | Download specific component packs for provisioning CAPI-based clusters on public cloud or datacenters.         |
 | Agent mode or Appliance mode | Get required packages for deploying Kubernetes at remote edge locations. |
 | Add-on only                  | Download just supplementary tools and features to enhance your clusters. |
 
@@ -122,7 +126,7 @@ Agent mode binaries are not supported for download.
 
 ### Bundle Download Verification
 
-<PartialsComponent category="downloads" name="artifact-studio-signature-verification" />
+<PartialsComponent category="verifications" name="artifact-studio-signature-verification" />
 
 ## Download a Specific Pack
 
@@ -153,4 +157,4 @@ Agent mode binaries are not supported for download.
 
 ### Specific Pack Download Verification
 
-<PartialsComponent category="downloads" name="artifact-studio-signature-verification" />
+<PartialsComponent category="verifications" name="artifact-studio-signature-verification" />
