@@ -10,27 +10,29 @@ tags: ["downloads", "artifact-studio"]
 ---
 
 [Artifact Studio](https://artifact-studio.spectrocloud.com/) is a unified platform that helps airgapped,
-regulatory-focused and security conscious organizations to populate their own internal registries with bundles, packs
-and installers to be used with Palette or VerteX. It provides a single location for packs and images, streamlining
+regulatory-focused, and security-conscious organizations populate their registries with bundles, packs
+, and installers to be used with Palette or VerteX. It provides a single location for packs and images, streamlining
 access and management.
 
-**Who is this for?**
+## Use Cases
 
 All self-hosted customers will be able to download the Palette or VerteX Management Appliance or Helm chart in order to
 instantiate or upgrade their environment. Additionally, disconnected customers are able to browse through all available
 packs, and download only the components you wish to use. You can also validate the integrity and authenticity of the
 bundle via code signature. With these new artifact bundles, we are replacing the self-extracting binaries we create for
 airgapped environments with a more familiar zstandard compressed format (`zst`) that can be moved and manipulated with
-palette-cli.
+the Palette CLI.
 
 There are four main artifact areas:
 
-    - Install Palette Enterprise (content bundle, ISO or Helm chart).
-    - Install Palette VerteX (content bundle, ISO or Helm chart).
-    - Create a pack bundle to download.
-    - Browse pack Catalog to download individual packs.
+- Install Palette Enterprise (content bundle, ISO or Helm chart).
+- Install Palette VerteX (content bundle, ISO or Helm chart).
+- Create a pack bundle to download.
+- Browse the pack catalog to download individual packs.
 
-:::preview :::
+:::preview
+
+:::
 
 ![Image of the default homepage of Artifact Studio](../../../static/assets/docs/images/downloads/downloads_artifact-studio-main.webp)
 
@@ -62,8 +64,11 @@ Palette VerteX locally.
 
 ## Create a Pack Bundle
 
-:::warning Agent mode binaries are excluded from this release of Artifact Studio. They will be introduced in a later
-release. :::
+:::warning
+
+Agent mode binaries are not supported for download.
+
+:::
 
 1. Navigate to [Artifact Studio](https://artifact-studio.spectrocloud.com/).
 
@@ -84,7 +89,7 @@ release. :::
 
 5. On the **Use case** page, select the use case for the bundle.
 
-| **Use Case**                 | \*\*Definition                                                           |
+| Use Case                 | Definition                                                           |
 | ---------------------------- | ------------------------------------------------------------------------ |
 | Controller mode              | Download specific component packs for your existing environment.         |
 | Agent mode or Appliance mode | Get required packages for deploying Kubernetes at remote edge locations. |
@@ -129,7 +134,7 @@ To verify the bundle integrity and authenticity, you can do a checksum verificat
    openssl dgst -sha256 -verify spectro_public_key.pem -signature bundle-name.sig.bin bundle-name.zst
    ```
 
-4. A successful verification will show: **Verification OK**.
+4. A successful verification will show **Verification OK**.
 
    Alternatively, use the following sample script to check all the files downloaded in the same folder. Ensure that
    `REPLACE ME` is replaced with the path and name of the public key downloaded.
@@ -216,7 +221,7 @@ To verify the bundle integrity and authenticity, you can do a checksum verificat
    openssl dgst -sha256 -verify spectro_public_key.pem -signature bundle-name.sig.bin bundle-name.zst
    ```
 
-4. A successful verification will show: **Verification OK**.
+4. A successful verification will show **Verification OK**.
 
    Alternatively, use the following sample script to check all the files downloaded in the same folder. Ensure that
    `REPLACE ME` is replaced with the path and name of the public key downloaded.
