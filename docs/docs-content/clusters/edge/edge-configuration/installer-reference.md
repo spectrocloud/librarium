@@ -47,12 +47,12 @@ enable the local Harbor registry. For more information, refer to
 [Build Content Bundles](../edgeforge-workflow/palette-canvos/build-content-bundle.md) and
 [Enable Local Harbor Registry](../site-deployment/deploy-custom-registries/local-registry.md).
 
-| Parameter                                    | Description                                                                                                                                                                                                                                                                                                   | Default |
-| -------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
-| `stylus.registryCredentials.domain`          | The domain of the registry. You can use an IP address plus the port or a domain name.                                                                                                                                                                                                                         |         |
-| `stylus.registryCredentials.encodedPassword` | Specifies whether the password as given is base64 encoded.`true` means that the provided password is base64 encoded and that when using the password to authenticate, the password must be decoded first. `false` means the password is not encoded and must be used as is to authenticate with the registry. | `False` |
-| `stylus.registryCredentials.insecure`        | Whether to allow insecure connections to the registry.                                                                                                                                                                                                                                                        | `False` |
-| `stylus.registryCredentials.password`        | The password to authenticate with the registry.                                                                                                                                                                                                                                                               |         |
+| Parameter                                    | Description                                                                                                 | Type    | Default |
+| -------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ------- | ------- |
+| `stylus.registryCredentials.domain`          | The domain of the registry. You can use an IP address plus a port or a domain name.                         | String  | `''`    |
+| `stylus.registryCredentials.username`        | The username to authenticate with the registry.                                                             | String  | `''`    |
+| `stylus.registryCredentials.password`        | The password to authenticate with the registry.                                                             | String  | `''`    |
+| `stylus.registryCredentials.encodedPassword` | Set to `true` if the password given is base64 encoded. Set to `false` if the password given is not encoded. | boolean | `false` |
 
 ```yaml
 #cloud-config
@@ -61,7 +61,6 @@ stylus:
     domain: 10.10.254.254:8000/spectro-images
     username: ubuntu
     password: <yourPassword>
-    insecure: true
 ```
 
 ### Site Parameters
@@ -228,20 +227,20 @@ The `install` block allows you to configure the installer to make bind mounts an
 addition, you can specify post-installation behavior, such as instructing the Edge host to power off automatically after
 installation is complete.
 
-| Parameter                                      | Description                                                                                                                                                      | Default |
-| ---------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
-| `install.bind_mounts`                          | The list of folders to bind mount from the installer to the Edge host                                                                                            | None    |
-| `install.grub_options.extra_cmdline`           | Kernel command-line parameters to add to the installer.                                                                                                          | None    |
-| `install.partitions.persistent`                | A persistent partition object. Providing this parameter creates an extra persistent partition on the Edge host. Accepts two parameters as follows in this table. | None    |
-| `install.partitions.persistent.size`           | The size of the persistent partition                                                                                                                             | None    |
-| `install.partitions.persistent.fs`             | The type of the file system for the persistent partition                                                                                                         | None    |
-| `install.extra-partitions`                     | The list of extra partitions to create. Each list item accepts parameters as follows in this table.                                                              | None    |
-| `install.extra-partitions[*].name`             | The name of the extra partition                                                                                                                                  | None    |
-| `install.extra-partitions[*].size`             | The size of the extra partition                                                                                                                                  | None    |
-| `install.extra-partitions[*].fs`               | The file system of the extra partition                                                                                                                           | None    |
-| `install.extra-partitions[*].label`            | The label of the extra partition                                                                                                                                 | None    |
-| `install.poweroff`                             | Whether to power off the Edge host after installation is complete.                                                                                               | `False` |
-| `install.reboot`                               | Whether to reboot the Edge host after installation is complete                                                                                                   | `False` |
+| Parameter                            | Description                                                                                                                                                      | Default |
+| ------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- |
+| `install.bind_mounts`                | The list of folders to bind mount from the installer to the Edge host                                                                                            | None    |
+| `install.grub_options.extra_cmdline` | Kernel command-line parameters to add to the installer.                                                                                                          | None    |
+| `install.partitions.persistent`      | A persistent partition object. Providing this parameter creates an extra persistent partition on the Edge host. Accepts two parameters as follows in this table. | None    |
+| `install.partitions.persistent.size` | The size of the persistent partition                                                                                                                             | None    |
+| `install.partitions.persistent.fs`   | The type of the file system for the persistent partition                                                                                                         | None    |
+| `install.extra-partitions`           | The list of extra partitions to create. Each list item accepts parameters as follows in this table.                                                              | None    |
+| `install.extra-partitions[*].name`   | The name of the extra partition                                                                                                                                  | None    |
+| `install.extra-partitions[*].size`   | The size of the extra partition                                                                                                                                  | None    |
+| `install.extra-partitions[*].fs`     | The file system of the extra partition                                                                                                                           | None    |
+| `install.extra-partitions[*].label`  | The label of the extra partition                                                                                                                                 | None    |
+| `install.poweroff`                   | Whether to power off the Edge host after installation is complete.                                                                                               | `False` |
+| `install.reboot`                     | Whether to reboot the Edge host after installation is complete                                                                                                   | `False` |
 
 ## Cloud Init Stages
 
