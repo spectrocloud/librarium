@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## July 19, 2025 - Release 4.7.0 - 4.7.2 {#release-notes-4.7.0}
+## July 19, 2025 - Release 4.7.0 - 4.7.3 {#release-notes-4.7.0}
 
 ### Security Notices
 
@@ -37,7 +37,7 @@ tags: ["release-notes"]
 
 - The Palette UI now supports the configuration of custom Amazon Linux 2023 (AL2023) and Amazon Linux 2 (AL2) AMIs for
   AWS EKS nodes. Previously, default AMI types were configured using node labels. EKS clusters previously deployed with
-  **Enable Nodepool Customization** enabled and AMI node labels will be repaved upon upgrading to version 4.7.0. AWS EKS
+  **Enable Nodepool Customization** enabled and AMI node labels will be repaved upon upgrading to version 4.7.3. AWS EKS
   clusters that did not specify an AMI type will now use AL2_X86_64 by default. Refer to the
   [Create and Manage AWS EKS Cluster](../clusters/public-cloud/aws/eks.md#cloud-configuration-settings) guide for the
   updated configuration process.
@@ -101,7 +101,7 @@ tags: ["release-notes"]
 
 :::info
 
-The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.7.0 Palette release is 4.7.0.
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.7.3 Palette release is 4.7.2.
 
 :::
 
@@ -191,7 +191,7 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
   `<current-directory>/output/content-bundle/` directory by default; you can override this location by using the
   `--output` flag. Refer to the [Content](../automation/palette-cli/commands/content.md) command reference page for
   further information.
-- Terraform version 0.24.0 of the
+- Terraform version 0.23.8 of the
   [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
   available. For more details, refer to the Terraform provider
   [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
