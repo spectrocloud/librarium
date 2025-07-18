@@ -13,10 +13,10 @@ The following are common scenarios that you may encounter when using Packs.
 ## Scenario - Pods with NamespaceLabels are Stuck on Deployment
 
 When deploying a workload cluster with packs that declare `namespaceLabels`, the associated Pods never start if the
-cluster was deployed via self-hosted [Palette](../enterprise-version/enterprise-version.md) or [Palette VerteX](../vertex/vertex.md) or if the `palette-agent` ConfigMap has
-`data.feature.workloads: disable`. This is due to the necessary labels not being applied to the target namespace,
-resulting in the namespace lacking the elevated privileges the Pods require and the Kubernetes’ PodSecurity admission
-blocks the Pods.
+cluster was deployed via self-hosted [Palette](../enterprise-version/enterprise-version.md) or
+[Palette VerteX](../vertex/vertex.md) or if the `palette-agent` ConfigMap has `data.feature.workloads: disable`. This is
+due to the necessary labels not being applied to the target namespace, resulting in the namespace lacking the elevated
+privileges the Pods require and the Kubernetes’ PodSecurity admission blocks the Pods.
 
 To resolve this issue, force-apply the PodSecurity policies directly to the namespace of the affected Pods.
 
@@ -29,72 +29,72 @@ To resolve this issue, force-apply the PodSecurity policies directly to the name
 3. Download the `kubeconfig` file of the cluster and set your `KUBECONFIG` environment variable to the `kubeconfig` file
    path. For guidance, refer to our [kubectl](../clusters/cluster-management/palette-webctl.md) guide.
 
-4. Identify any Pods in the cluster that are not running. Note the namespace that belongs to the Pods associated with the
-   pack using `namespaceLabels`.
+4. Identify any Pods in the cluster that are not running. Note the namespace that belongs to the Pods associated with
+   the pack using `namespaceLabels`.
 
-    ```bash
-    kubectl get pods --all-namespaces --field-selector status.phase!=Running
-    ```
+   ```bash
+   kubectl get pods --all-namespaces --field-selector status.phase!=Running
+   ```
 
-    ```bash title="Example output" hideClipboard
-    NAME                                                  READY   STATUS                     RESTARTS   AGE
-    lb-metallb-helm-metallb-full-speaker-abcde            0/1     Pending                    0          3m
-    lb-metallb-helm-metallb-full-speaker-fghij            0/1     CreateContainerConfigError 0          3m
-    ```
+   ```bash title="Example output" hideClipboard
+   NAME                                                  READY   STATUS                     RESTARTS   AGE
+   lb-metallb-helm-metallb-full-speaker-abcde            0/1     Pending                    0          3m
+   lb-metallb-helm-metallb-full-speaker-fghij            0/1     CreateContainerConfigError 0          3m
+   ```
 
 5. Confirm the namespace is missing the `privileged` labels. Replace `<namespace>` with the namespace of the affected
    Pods.
 
-    ```bash
-    kubectl get namespace <namespace> --show-labels
-    ```
+   ```bash
+   kubectl get namespace <namespace> --show-labels
+   ```
 
-    ```bash title="Example output" hideClipboard
-    NAME             STATUS   AGE    LABELS
-    metallb-system   Active   10m    kubernetes.io/metadata.name=metallb-system
-    ```
+   ```bash title="Example output" hideClipboard
+   NAME             STATUS   AGE    LABELS
+   metallb-system   Active   10m    kubernetes.io/metadata.name=metallb-system
+   ```
 
 6. Force-apply the `privileged` labels to the namespace.
 
-    ```bash
-    kubectl label namespace <namespace> \
-      pod-security.kubernetes.io/enforce=privileged \
-      pod-security.kubernetes.io/audit=privileged \
-      pod-security.kubernetes.io/warn=privileged \
-      --overwrite
-    ```
+   ```bash
+   kubectl label namespace <namespace> \
+     pod-security.kubernetes.io/enforce=privileged \
+     pod-security.kubernetes.io/audit=privileged \
+     pod-security.kubernetes.io/warn=privileged \
+     --overwrite
+   ```
 
 7. Verify the labels are now present.
 
-    ```bash
-    kubectl get namespace <namespace> --show-labels
-    ```
+   ```bash
+   kubectl get namespace <namespace> --show-labels
+   ```
 
-    ```bash title="Example output" hideClipboard
-    NAME             STATUS   AGE    LABELS
-    metallb-system   Active   12m    kubernetes.io/metadata.name=metallb-system,
-                                        pod-security.kubernetes.io/enforce=privileged,
-                                        pod-security.kubernetes.io/audit=privileged,
-                                        pod-security.kubernetes.io/warn=privileged
-    ```
+   ```bash title="Example output" hideClipboard
+   NAME             STATUS   AGE    LABELS
+   metallb-system   Active   12m    kubernetes.io/metadata.name=metallb-system,
+                                       pod-security.kubernetes.io/enforce=privileged,
+                                       pod-security.kubernetes.io/audit=privileged,
+                                       pod-security.kubernetes.io/warn=privileged
+   ```
 
 8. Delete the stuck Pods so that they pick up the new labels.
 
-    ```bash
-    kubectl delete pods --namespace <namespace> --all
-    ```
+   ```bash
+   kubectl delete pods --namespace <namespace> --all
+   ```
 
 9. Wait for the Pods to be redeployed and come up in a `Running` state.
 
-    ```bash
-    kubectl get pods --namespace <namespace>
-    ```
+   ```bash
+   kubectl get pods --namespace <namespace>
+   ```
 
-    ```bash title="Example output"
-    NAME                                                  READY   STATUS    RESTARTS   AGE
-    lb-metallb-helm-metallb-full-speaker-abcde            1/1     Running   0          30s
-    lb-metallb-helm-metallb-full-speaker-fghij            1/1     Running   0          30s
-    ```
+   ```bash title="Example output"
+   NAME                                                  READY   STATUS    RESTARTS   AGE
+   lb-metallb-helm-metallb-full-speaker-abcde            1/1     Running   0          30s
+   lb-metallb-helm-metallb-full-speaker-fghij            1/1     Running   0          30s
+   ```
 
 ## Scenario - Calico Fails to Start when IPv6 is Enabled
 
