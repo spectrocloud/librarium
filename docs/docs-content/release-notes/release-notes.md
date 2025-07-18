@@ -153,6 +153,8 @@ ensures successful upgrades between minor and patch versions on connected and ai
   [Edge clusters](../clusters/edge/edge.md) instead of initializing a fresh pack download.
 - Fixed an issue that caused [Kube-vip](../clusters/edge/networking/kubevip.md) arguments to be incorrectly reconciled
   after cluster creation.
+- Fixed an issue that caused sensitive cluster profile variables to appear in plain text in
+  [Edge Management API](/api/introduction/#edge-management-api) responses.
 
 ### VerteX
 
