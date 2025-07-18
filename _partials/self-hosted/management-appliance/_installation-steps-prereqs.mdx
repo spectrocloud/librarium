@@ -37,30 +37,15 @@ partial_name: installation-steps-prereqs
 
   :::
 
-- You can choose to use either an internal Zot registry that comes with Palette or an external registry of your choice. Depending on your choice, you will need to provide the following information during the Palette installation process.
-
-  <Tabs>
-
-  <TabItem value="internal-zot-registry" label="Internal Zot Registry">
-
-  - (Optional) A CA certificate for the Zot registry in Base64 format.
-
-  </TabItem>
-
-  <TabItem value="external-registry" label="External Registry">
+- You can choose to use either an internal Zot registry that comes with Palette or an external registry of your choice. If using an external registry, you will need to provide the following information during the Palette installation process.
 
   - The DNS/IP endpoint and port for the external registry.
+    - Ensure the nodes used to host the Palette management cluster have network access to the external registry server.
   - The username for the registry.
   - The password for the registry.
   - (Optional) The Certificate Authority (CA) certificate that was used to sign the external registry certificate in Base64 format.
 
   <br />
-
-  Ensure the nodes used to host the Palette management cluster have network access to the external registry server.
-
-  </TabItem>
-
-  </Tabs>
 
   <details>
 
