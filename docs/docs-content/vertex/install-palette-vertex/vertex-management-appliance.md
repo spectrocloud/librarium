@@ -20,6 +20,10 @@ to boot the nodes, which are then clustered to form a Palette management cluster
 Once Palette VerteX has been installed, you can download pack bundles to create your cluster profiles. You will then be
 able to deploy clusters in your environment.
 
+There is an additional option to download and install the Third Party pack that contains complementary functionality to
+Palette VerteX. This pack is not required for Palette VerteX to function, but it does provide additional features and
+capabilities that enhance the Palette VerteX experience.
+
 ## Architecture
 
 The ISO file is built with the Operating System (OS), Kubernetes distribution, Container Network Interface (CNI), and
@@ -125,6 +129,44 @@ for your pack bundles.
 <PartialsComponent
   category="self-hosted"
   name="upload-packs-validate"
+  edition="VerteX"
+  version="Palette VerteX"
+  iso="Palette VerteX"
+  app="VerteX Management Appliance"
+/>
+
+## (Optional) Upload Third Party Pack
+
+Follow the instructions to upload the Third Party pack to your Palette VerteX instance. The Third Party pack contains
+additional functionality and capabilities that enhance the Palette VerteX experience.
+
+### Prerequisites
+
+<PartialsComponent
+  category="self-hosted"
+  name="upload-third-party-pack-prereqs"
+  edition="VerteX"
+  version="Palette VerteX"
+  iso="Palette VerteX"
+  app="VerteX Management Appliance"
+/>
+
+### Upload Packs
+
+<PartialsComponent
+  category="self-hosted"
+  name="upload-third-party-pack-enablement"
+  edition="VerteX"
+  version="Palette VerteX"
+  iso="Palette VerteX"
+  app="VerteX Management Appliance"
+/>
+
+### Validate
+
+<PartialsComponent
+  category="self-hosted"
+  name="upload-third-party-pack-validate"
   edition="VerteX"
   version="Palette VerteX"
   iso="Palette VerteX"

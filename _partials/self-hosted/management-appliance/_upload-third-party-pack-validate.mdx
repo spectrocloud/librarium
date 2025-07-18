@@ -1,0 +1,71 @@
+---
+partial_category: self-hosted
+partial_name: upload-third-party-pack-validate
+---
+
+<Tabs groupId="registry-type">
+
+<TabItem value="internal-zot-registry" label="Internal Zot Registry">
+
+1. Log in to the Local UI of the leader host of the {props.version} management cluster.
+
+2. From the left main menu, click **Content**.
+
+3. Enter the filename of the Third Party pack in the **Filter by name** search bar. The pack should appear in the table
+   below.
+
+</TabItem>
+
+<TabItem value="external-registry" label="External Registry">
+
+1. Use the following example `oras` commands to list the repositories in the OCI registry under the `spectro-content` base path. Replace the values below with your environment configuration values.
+
+   <Tabs>
+
+   <TabItem label="Harbor" value="harbor-list">
+
+   <Tabs>
+
+   <TabItem label="Regular Certificate" value="regular-certificate">
+
+   ```shell
+   oras repo ls <harbor-url-or-ip>/spectro-content
+   ```
+
+   </TabItem>
+
+   <TabItem label="Self-Signed Certificate" value="self-signed-certificate">
+
+   ```shell
+   oras repo ls --insecure <harbor-url-or-ip>/spectro-content
+   ```
+
+   </TabItem>
+
+   </Tabs>
+
+   </TabItem>
+
+   <TabItem label="AWS ECR" value="aws-ecr-list">
+
+   ```shell
+   oras repo ls <aws-ecr-url>/spectro-content
+   ```
+
+   </TabItem>
+
+   </Tabs>
+
+   :::tip
+
+   Be aware of the timeout period for the authentication token. The process of uploading images and packages to an OCI
+   registry can take approximately an hour. If the authentication token expires, you will need to re-authenticate to
+   the OCI registry and restart the upload process.
+
+   :::
+
+2. Check that the Third Party pack you uploaded is listed in the output as a repository.
+
+</TabItem>
+
+</Tabs>

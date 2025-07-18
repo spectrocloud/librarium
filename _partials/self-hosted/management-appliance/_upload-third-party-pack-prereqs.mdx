@@ -1,0 +1,14 @@
+---
+partial_category: self-hosted
+partial_name: upload-third-party-pack-prereqs
+---
+
+- Access to the [Artifact Studio](https://artifact-studio.spectrocloud.com/). Refer to the <VersionedLink text="Artifact Studio guide" url="/downloads/artifact-studio"/> for instructions on how to access and download the bundles.
+
+- Access to your registry depending on the registry type you chose to use for {props.version}.
+
+  - If using the internal Zot registry, ensure you have access to the Local UI of the leader node of the {props.version} management cluster. Also, verify that your local machine can access the Local UI, as airgapped environments may have strict network policies preventing direct access.
+
+  - If using an external registry, ensure your local machine has access to the external registry server and you have the necessary permissions to push images to the registry.
+
+- (Optional) The Palette CLI installed on your local machine if you prefer to use the command line for uploading packs. Refer to the <VersionedLink text="Palette CLI" url="/automation/palette-cli"/> guide for installation instructions.

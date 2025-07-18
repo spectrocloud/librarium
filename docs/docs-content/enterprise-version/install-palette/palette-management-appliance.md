@@ -20,6 +20,10 @@ used to boot the nodes, which are then clustered to form a Palette management cl
 Once Palette has been installed, you can download pack bundles to create your cluster profiles. You will then be able to
 deploy clusters in your environment.
 
+There is an additional option to download and install the Third Party pack that contains complementary functionality to
+Palette. This pack is not required for Palette to function, but it does provide additional features and capabilities
+that enhance the Palette experience.
+
 ## Architecture
 
 The ISO file is built with the Operating System (OS), Kubernetes distribution, Container Network Interface (CNI), and
@@ -123,6 +127,44 @@ pack bundles.
 <PartialsComponent
   category="self-hosted"
   name="upload-packs-validate"
+  edition="Palette"
+  version="Palette"
+  iso="Palette Enterprise"
+  app="Palette Management Appliance"
+/>
+
+## (Optional) Upload Third Party Pack
+
+Follow the instructions to upload the Third Party pack to your Palette instance. The Third Party pack contains
+additional functionality and capabilities that enhance the Palette experience.
+
+### Prerequisites
+
+<PartialsComponent
+  category="self-hosted"
+  name="upload-third-party-pack-prereqs"
+  edition="Palette"
+  version="Palette"
+  iso="Palette Enterprise"
+  app="Palette Management Appliance"
+/>
+
+### Upload Packs
+
+<PartialsComponent
+  category="self-hosted"
+  name="upload-third-party-pack-enablement"
+  edition="Palette"
+  version="Palette"
+  iso="Palette Enterprise"
+  app="Palette Management Appliance"
+/>
+
+### Validate
+
+<PartialsComponent
+  category="self-hosted"
+  name="upload-third-party-pack-validate"
   edition="Palette"
   version="Palette"
   iso="Palette Enterprise"
