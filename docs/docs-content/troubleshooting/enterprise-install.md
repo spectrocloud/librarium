@@ -12,8 +12,8 @@ Refer to the following sections to troubleshoot errors encountered when installi
 
 ## Scenario - Palette/VerteX Management Appliance Installation Stalled due to piraeus-operator Pack in Error State
 
-During the installation of [Palette](../enterprise-version/install-palette/palette-management-appliance.md) or
-[Palette VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md), the
+During the installation of the [Palette](../enterprise-version/install-palette/palette-management-appliance.md) or
+[VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md), the
 `piraeus-operator` pack can enter an error state in Local UI. This can be caused by stalled creation of Kubernetes
 secrets in the `piraeus-system` namespace and can prevent the installation from completing successfully.
 
