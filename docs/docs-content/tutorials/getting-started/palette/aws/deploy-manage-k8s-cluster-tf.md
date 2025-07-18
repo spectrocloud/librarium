@@ -132,9 +132,9 @@ The table below displays the packs deployed in each version of the cluster profi
 | **Pack Type** | **Pack Name**   | **Version** | **Cluster Profile v1.0.0** | **Cluster Profile v1.1.0** |
 | ------------- | --------------- | ----------- | -------------------------- | -------------------------- |
 | OS            | `ubuntu-aws`    | `22.04`     | :white_check_mark:         | :white_check_mark:         |
-| Kubernetes    | `kubernetes`    | `1.29.0`    | :white_check_mark:         | :white_check_mark:         |
-| Network       | `cni-calico`    | `3.27.0`    | :white_check_mark:         | :white_check_mark:         |
-| Storage       | `csi-aws-ebs`   | `1.26.1`    | :white_check_mark:         | :white_check_mark:         |
+| Kubernetes    | `kubernetes`    | `1.32.3`    | :white_check_mark:         | :white_check_mark:         |
+| Network       | `cni-calico`    | `3.29.3`    | :white_check_mark:         | :white_check_mark:         |
+| Storage       | `csi-aws-ebs`   | `1.41.0`    | :white_check_mark:         | :white_check_mark:         |
 | App Services  | `hellouniverse` | `1.2.0`     | :white_check_mark:         | :white_check_mark:         |
 | App Services  | `cost-analyzer` | `1.103.3`   | :x:                        | :white_check_mark:         |
 
@@ -217,7 +217,7 @@ Below is the data resource used to query Palette for information about the Kuber
 ```hcl
 data "spectrocloud_pack" "aws_k8s" {
   name    = "kubernetes"
-  version = "1.29.0"
+  version = "1.32.3"
   registry_uid = data.spectrocloud_registry.public_registry.id
 }
 ```
@@ -273,8 +273,8 @@ resource "spectrocloud_cluster_aws" "aws-cluster" {
   }
 
   timeouts {
-    create = "30m"
-    delete = "15m"
+    create = "45m"
+    delete = "45m"
   }
 }
 ```
@@ -370,7 +370,7 @@ aws-key-pair-name      = "REPLACE ME"
 aws_control_plane_nodes = {
   count              = "1"
   control_plane      = true
-  instance_type      = "m4.xlarge"
+  instance_type      = "m4.2xlarge"
   disk_size_gb       = "60"
   availability_zones = ["REPLACE ME"] # If you want to deploy to multiple AZs, add them here. Example: ["us-east-1a", "us-east-1b"].
 }
@@ -378,7 +378,7 @@ aws_control_plane_nodes = {
 aws_worker_nodes = {
   count              = "1"
   control_plane      = false
-  instance_type      = "m4.xlarge"
+  instance_type      = "m4.2xlarge"
   disk_size_gb       = "60"
   availability_zones = ["REPLACE ME"] # If you want to deploy to multiple AZs, add them here. Example: ["us-east-1a", "us-east-1b"].
 }

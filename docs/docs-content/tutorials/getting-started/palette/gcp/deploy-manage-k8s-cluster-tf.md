@@ -132,9 +132,9 @@ The table below displays the packs deployed in each version of the cluster profi
 | **Pack Type** | **Pack Name**    | **Version** | **Cluster Profile v1.0.0** | **Cluster Profile v1.1.0** |
 | ------------- | ---------------- | ----------- | -------------------------- | -------------------------- |
 | OS            | `ubuntu-gcp`     | `22.04`     | :white_check_mark:         | :white_check_mark:         |
-| Kubernetes    | `kubernetes`     | `1.28.3`    | :white_check_mark:         | :white_check_mark:         |
-| Network       | `cni-calico`     | `3.27.0`    | :white_check_mark:         | :white_check_mark:         |
-| Storage       | `csi-gcp-driver` | `1.12.4`    | :white_check_mark:         | :white_check_mark:         |
+| Kubernetes    | `kubernetes`     | `1.32.3`    | :white_check_mark:         | :white_check_mark:         |
+| Network       | `cni-calico`     | `3.29.3`    | :white_check_mark:         | :white_check_mark:         |
+| Storage       | `csi-gcp-driver` | `1.15.4`    | :white_check_mark:         | :white_check_mark:         |
 | App Services  | `hellouniverse`  | `1.2.0`     | :white_check_mark:         | :white_check_mark:         |
 | App Services  | `cost-analyzer`  | `1.103.3`   | :x:                        | :white_check_mark:         |
 
@@ -217,7 +217,7 @@ Below is the data resource used to query Palette for information about the Kuber
 ```hcl
 data "spectrocloud_pack" "gcp_k8s" {
   name         = "kubernetes"
-  version      = "1.28.3"
+  version      = "1.32.3"
   registry_uid = data.spectrocloud_registry.public_registry.id
 }
 ```
@@ -273,8 +273,8 @@ resource "spectrocloud_cluster_gcp" "gcp-cluster" {
   }
 
   timeouts {
-    create = "30m"
-    delete = "15m"
+    create = "45m"
+    delete = "45m"
   }
 }
 ```
@@ -367,7 +367,7 @@ gcp_project_name       = "REPLACE ME"
 gcp_control_plane_nodes = {
   count              = "1"
   control_plane      = true
-  instance_type      = "n1-standard-4"
+  instance_type      = "n2-standard-4"
   disk_size_gb       = "60"
   availability_zones = ["REPLACE ME"] # If you want to deploy to multiple AZs, add them here. Example: ["us-central1-a", "us-central1-b"].
 }
@@ -375,7 +375,7 @@ gcp_control_plane_nodes = {
 gcp_worker_nodes = {
   count              = "1"
   control_plane      = false
-  instance_type      = "n1-standard-4"
+  instance_type      = "n2-standard-4"
   disk_size_gb       = "60"
   availability_zones = ["REPLACE ME"] # If you want to deploy to multiple AZs, add them here. Example: ["us-central1-a", "us-central1-b"].
 }

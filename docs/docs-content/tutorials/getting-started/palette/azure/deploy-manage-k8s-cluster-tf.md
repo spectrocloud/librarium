@@ -132,9 +132,9 @@ The table below displays the packs deployed in each version of the cluster profi
 | **Pack Type** | **Pack Name**      | **Version** | **Cluster Profile v1.0.0** | **Cluster Profile v1.1.0** |
 | ------------- | ------------------ | ----------- | -------------------------- | -------------------------- |
 | OS            | `ubuntu-azure`     | `22.04`     | :white_check_mark:         | :white_check_mark:         |
-| Kubernetes    | `kubernetes`       | `1.30.4`    | :white_check_mark:         | :white_check_mark:         |
-| Network       | `cni-calico-azure` | `3.26.1`    | :white_check_mark:         | :white_check_mark:         |
-| Storage       | `csi-azure`        | `1.28.3`    | :white_check_mark:         | :white_check_mark:         |
+| Kubernetes    | `kubernetes`       | `1.32.3`    | :white_check_mark:         | :white_check_mark:         |
+| Network       | `cni-calico-azure` | `3.29.3`    | :white_check_mark:         | :white_check_mark:         |
+| Storage       | `csi-azure`        | `1.32.0`    | :white_check_mark:         | :white_check_mark:         |
 | App Services  | `hellouniverse`    | `1.2.0`     | :white_check_mark:         | :white_check_mark:         |
 | App Services  | `cost-analyzer`    | `1.103.3`   | :x:                        | :white_check_mark:         |
 
@@ -217,7 +217,7 @@ Below is the data resource used to query Palette for information about the Kuber
 ```hcl
 data "spectrocloud_pack" "azure_k8s" {
   name         = "kubernetes"
-  version      = "1.30.4"
+  version      = "1.32.3"
   registry_uid = data.spectrocloud_registry.public_registry.id
 }
 ```
@@ -279,8 +279,8 @@ resource "spectrocloud_cluster_azure" "azure-cluster" {
   }
 
   timeouts {
-    create = "30m"
-    delete = "15m"
+    create = "45m"
+    delete = "45m"
   }
 }
 ```
@@ -376,7 +376,7 @@ azure_resource_group     = "REPLACE ME"
 azure_control_plane_nodes = {
   count               = "1"
   control_plane       = true
-  instance_type       = "Standard_A8_v2"
+  instance_type       = "Standard_D4s_v3"
   disk_size_gb        = "60"
   azs                 = ["1"] # If you want to deploy to multiple AZs, add them here.
   is_system_node_pool = false
@@ -385,7 +385,7 @@ azure_control_plane_nodes = {
 azure_worker_nodes = {
   count               = "1"
   control_plane       = false
-  instance_type       = "Standard_A8_v2"
+  instance_type       = "Standard_D4s_v3"
   disk_size_gb        = "60"
   azs                 = ["1"] # If you want to deploy to multiple AZs, add them here.
   is_system_node_pool = false
