@@ -93,15 +93,15 @@ Agent mode binaries are not supported for download.
 
 5. On the **Use case** page, select the use case for the bundle.
 
-| Use Case                     | Definition                                                                                             |
-| ---------------------------- | ------------------------------------------------------------------------------------------------------ |
-| Controller mode              | Download specific component packs for provisioning CAPI-based clusters on public cloud or datacenters. |
-| Agent mode or Appliance mode | Get required packages for deploying Kubernetes at remote edge locations.                               |
-| Add-on only                  | Download just supplementary tools and features to enhance your clusters.                               |
+   | Use Case                     | Definition                                                                                             |
+   | ---------------------------- | ------------------------------------------------------------------------------------------------------ |
+   | Controller mode              | Download specific component packs for provisioning CAPI-based clusters on public cloud or datacenters. |
+   | Agent mode or Appliance mode | Get required packages for deploying Kubernetes at remote edge locations.                               |
+   | Add-on only                  | Download just supplementary tools and features to enhance your clusters.                               |
 
 6. On the **Configure cloud types**, select the appropriate cloud for your bundle. Depending on the use case, cloud
    types include **Public Clouds** (AWS, GCP, Azure), **Data Centers** (MAAS, OpenStack, vSphere) and **Bare Metal**
-   (Edge Native)
+   (Edge Native).
 
 7. On the **Configure bundle** page, select **OS**. This will start the process of building the bundle.
 
