@@ -9,18 +9,20 @@ sidebar_custom_props:
 tags: ["downloads", "artifact-studio"]
 ---
 
-The Spectro Cloud [Artifact Studio](https://artifact-studio.spectrocloud.com/) is a unified platform that helps airgapped,
-regulatory-focused, and security-conscious organizations populate their registries with bundles, packs, and installers
-to be used with self-hosted [Palette](../enterprise-version/enterprise-version.md) or [Palette VerteX](../vertex/vertex.md). It provides a single location for packs and images, streamlining access and
+The Spectro Cloud [Artifact Studio](https://artifact-studio.spectrocloud.com/) is a unified platform that helps
+airgapped, regulatory-focused, and security-conscious organizations populate their registries with bundles, packs, and
+installers to be used with self-hosted [Palette](../enterprise-version/enterprise-version.md) or
+[Palette VerteX](../vertex/vertex.md). It provides a single location for packs and images, streamlining access and
 management.
 
 ## Use Cases
 
-Use the Palette or VerteX Management Appliance or Helm chart to instantiate or upgrade
-your self-hosted environment. Additionally, if you are using an airgapped environment, you can browse all
-available packs and download only the components you wish to use. The integrity and authenticity of all bundles and ISOs downloaded from Artifact Studio can be validated via signatures. These artifact bundles replace the self-extracting binaries we
-create for airgapped environments with a more familiar Zstandard compressed format (`zst`) that can be moved and
-manipulated with the Palette CLI.
+Use the Palette or VerteX Management Appliance or Helm chart to instantiate or upgrade your self-hosted environment.
+Additionally, if you are using an airgapped environment, you can browse all available packs and download only the
+components you wish to use. The integrity and authenticity of all bundles and ISOs downloaded from Artifact Studio can
+be validated via signatures. These artifact bundles replace the self-extracting binaries we create for airgapped
+environments with a more familiar Zstandard compressed format (`zst`) that can be moved and manipulated with the Palette
+CLI.
 
 There are four main artifact areas:
 
@@ -37,37 +39,41 @@ There are four main artifact areas:
 
 1. Navigate to [Artifact Studio](https://artifact-studio.spectrocloud.com/).
 
-2. In the **Install Palette Enterprise** section, use the drop-down to select the version needed, and select **Show Artifacts**.
+2. In the **Install Palette Enterprise** section, use the drop-down to select the version needed, and select **Show
+   Artifacts**.
 
-3. **Download** the appropriate **Content bundle**, **Palette management appliance ISO**, or **Helm installation** that is applicable to your environment and use case.
+3. **Download** the appropriate **Content bundle**, **Palette management appliance ISO**, or **Helm installation** that
+   is applicable to your environment and use case.
 
-   | **Download Option**   | **Use Case**                                                                               |
-   | ----------------- | -------------------------------------------------------------------------------------- |
-   | **Content bundle**    | Used for traditional application install. A signature file (`sig.bin`) is included with the ZST bundle.                                              |
-   | **ISO**              | Used to install from an ISO on a virtual machine, edge device, or bare-metal system. A signature file (`sig.bin`) is included with the ISO file. |
-   | **Helm installation** | Used to install with Helm charts.                                                       |
+   | **Download Option**   | **Use Case**                                                                                                                                     |
+   | --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+   | **Content bundle**    | Used for traditional application install. A signature file (`sig.bin`) is included with the ZST bundle.                                          |
+   | **ISO**               | Used to install from an ISO on a virtual machine, edge device, or bare-metal system. A signature file (`sig.bin`) is included with the ISO file. |
+   | **Helm installation** | Used to install with Helm charts.                                                                                                                |
 
 Once you have the file, you can deploy Palette as a self-hosted application. For ISO downloads, review the
-[Palette Management Appliance Installation guide](../enterprise-version/install-palette/palette-management-appliance.md) for more information on
-deploying Palette locally.
+[Palette Management Appliance Installation guide](../enterprise-version/install-palette/palette-management-appliance.md)
+for more information on deploying Palette locally.
 
 ## Download Palette VerteX
 
 1. Navigate to [Artifact Studio](https://artifact-studio.spectrocloud.com/).
 
-2. In the **Install Palette VerteX** section, use the drop-down to select the version needed, and select **Show Artifacts**.
+2. In the **Install Palette VerteX** section, use the drop-down to select the version needed, and select **Show
+   Artifacts**.
 
-3. **Download** the appropriate **Content bundle**, **Palette management appliance ISO**, or **Helm installation** that is applicable to your environment and use case.
+3. **Download** the appropriate **Content bundle**, **Palette management appliance ISO**, or **Helm installation** that
+   is applicable to your environment and use case.
 
-   | **Download Option**   | **Use Case**                                                                               |
-   | ----------------- | -------------------------------------------------------------------------------------- |
-   | **Content bundle**    | Used for traditional application install. A signature file (`sig.bin`) is included with the ZST bundle.                                              |
-   | **ISO**              | Used for installation from ISO device in a virtual machine, edge device, or bare-metal. A signature file (`sig.bin`) is included with the ISO file. |
-   | **Helm installation** | Used to install with Helm charts.                                                       |
+   | **Download Option**   | **Use Case**                                                                                                                                        |
+   | --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Content bundle**    | Used for traditional application install. A signature file (`sig.bin`) is included with the ZST bundle.                                             |
+   | **ISO**               | Used for installation from ISO device in a virtual machine, edge device, or bare-metal. A signature file (`sig.bin`) is included with the ISO file. |
+   | **Helm installation** | Used to install with Helm charts.                                                                                                                   |
 
 Once you have the file, you can deploy Palette VerteX as a self-hosted application. For ISO downloads, review the
-[VerteX Management Appliance Installation guide](../vertex/install-palette-vertex/vertex-management-appliance.md) for more information on deploying
-Palette VerteX locally.
+[VerteX Management Appliance Installation guide](../vertex/install-palette-vertex/vertex-management-appliance.md) for
+more information on deploying Palette VerteX locally.
 
 ## Download a Pack Bundle
 
@@ -94,23 +100,26 @@ Agent mode binaries cannot be downloaded at this time.
 
 4. On the **Current Version** page, select the version of Palette or Palette VerteX you want to install.
 
-5. On the **Use case** page, select the use case for the bundle. The use case you select determines the options presented to you.
+5. On the **Use case** page, select the use case for the bundle. The use case you select determines the options
+   presented to you.
 
-   | **Use Case**                     | **Definition**                                                                                             |
-   | ---------------------------- | ------------------------------------------------------------------------------------------------------ |
-   | **Controller mode**             | Download specific component packs for provisioning CAPI-based clusters on public clouds or data centers. |
-   | **Agent mode or Appliance mode** | Get required packages for deploying Kubernetes at remote edge locations.                               |
-   | **Add-on only**                 | Download supplementary tools and features to enhance your clusters.                               |
+   | **Use Case**                     | **Definition**                                                                                           |
+   | -------------------------------- | -------------------------------------------------------------------------------------------------------- |
+   | **Controller mode**              | Download specific component packs for provisioning CAPI-based clusters on public clouds or data centers. |
+   | **Agent mode or Appliance mode** | Get required packages for deploying Kubernetes at remote edge locations.                                 |
+   | **Add-on only**                  | Download supplementary tools and features to enhance your clusters.                                      |
 
 <Tabs>
 
 <TabItem label="Controller Mode" value="controller">
 
-6. Select the appropriate cloud type to deploy your cluster on. Public clouds include **AWS**, **GCP**, and **Azure**. Data centers include **MAAS**, **OpenStack**, and **vSphere**.
+6. Select the appropriate cloud type to deploy your cluster on. Public clouds include **AWS**, **GCP**, and **Azure**.
+   Data centers include **MAAS**, **OpenStack**, and **vSphere**.
 
-7. On the **Configure bundle** page, select the **OS** layer to begin building your bundle. Only the packs compatible with your previous selections are displayed. Choose an operating system and select **Next Layer**. 
+7. On the **Configure bundle** page, select the **OS** layer to begin building your bundle. Only the packs compatible
+   with your previous selections are displayed. Choose an operating system and select **Next Layer**.
 
-8. Choose your Kubernetes distribution and version and select **Next Layer**. 
+8. Choose your Kubernetes distribution and version and select **Next Layer**.
 
 9. Choose your networking pack and select **Next Layer**.
 
@@ -118,11 +127,15 @@ Agent mode binaries cannot be downloaded at this time.
 
 11. Add additional packs to your bundle as needed. When finished, select **Add to Bundle**.
 
-12. Review your bundle. If any changes are needed, select the applicable layer, and add or remove packs as necessary. When finished, proceed to the **Next Step**.
+12. Review your bundle. If any changes are needed, select the applicable layer, and add or remove packs as necessary.
+    When finished, proceed to the **Next Step**.
 
-13. Confirm that the bundle specifications and content are correct. If you need to make any changes, return to the applicable page using the left menu. To add additional packs, select **Explore additional add-ons**. 
+13. Confirm that the bundle specifications and content are correct. If you need to make any changes, return to the
+    applicable page using the left menu. To add additional packs, select **Explore additional add-ons**.
 
-      When finished, select the **I'm not a robot** reCAPTCHA checkbox, and select **Download Bundle**. Alternatively, you can **Copy all URLs** so that you can download the applicable files later in an alternate manner of your choosing, such as via `curl`.
+    When finished, select the **I'm not a robot** reCAPTCHA checkbox, and select **Download Bundle**. Alternatively, you
+    can **Copy all URLs** so that you can download the applicable files later in an alternate manner of your choosing,
+    such as via `curl`.
 
 14. The download begins. Each pack is downloaded as a ZST file with an accompanying signature file (`.sig.bin`).
 
@@ -132,23 +145,30 @@ Agent mode binaries cannot be downloaded at this time.
 
 :::info
 
-When you select **Agent mode or Appliance mode**, you are automatically taken to the **Configure bundle** page. An infrastructure type of **Edge Native** is assumed. 
+When you select **Agent mode or Appliance mode**, you are automatically taken to the **Configure bundle** page. An
+infrastructure type of **Edge Native** is assumed.
 
 :::
 
-6. On the **Configure bundle** page, select the **OS** layer to begin building your bundle. Only the packs compatible with your previous selections are displayed in each layer. Choose an operating system and select **Next Layer**.
+6. On the **Configure bundle** page, select the **OS** layer to begin building your bundle. Only the packs compatible
+   with your previous selections are displayed in each layer. Choose an operating system and select **Next Layer**.
 
-7.  Choose your Kubernetes distribution and version and select **Next Layer**. 
+7. Choose your Kubernetes distribution and version and select **Next Layer**.
 
-8.  Choose your networking pack and select **Next Layer**.
+8. Choose your networking pack and select **Next Layer**.
 
-9.  Choose your storage pack and select **Next Layer**.
+9. Choose your storage pack and select **Next Layer**.
 
 10. Add additional packs to your bundle as needed. When finished, select **Add to Bundle**.
 
-11. Review your bundle. If any changes are needed, select the applicable layer, and add or remove packs as necessary. When finished, proceed to the **Next Step**.
+11. Review your bundle. If any changes are needed, select the applicable layer, and add or remove packs as necessary.
+    When finished, proceed to the **Next Step**.
 
-12. Confirm that the bundle specifications and content are correct. If you need to make any changes, return to the applicable page using the left menu. To add additional packs, select **Explore additional add-ons**. When finished, select the **I'm not a robot** reCAPTCHA checkbox, and select **Download Bundle**. Alternatively, you can **Copy all URLs** so that you can download the applicable files later in an alternate manner of your choosing, such as via `curl`.
+12. Confirm that the bundle specifications and content are correct. If you need to make any changes, return to the
+    applicable page using the left menu. To add additional packs, select **Explore additional add-ons**. When finished,
+    select the **I'm not a robot** reCAPTCHA checkbox, and select **Download Bundle**. Alternatively, you can **Copy all
+    URLs** so that you can download the applicable files later in an alternate manner of your choosing, such as via
+    `curl`.
 
 13. The download begins. Each pack is downloaded as a ZST file with an accompanying signature file (`.sig.bin`).
 
@@ -156,19 +176,26 @@ When you select **Agent mode or Appliance mode**, you are automatically taken to
 
 <TabItem label="Add-On" value="addon">
 
-6. When you select **Add-on only**, you are automatically taken to the **Configure bundle** page. Here, you can search for and select any packs you want to download. Select **Next Step** once you have selected your desired packs.
+6. When you select **Add-on only**, you are automatically taken to the **Configure bundle** page. Here, you can search
+   for and select any packs you want to download. Select **Next Step** once you have selected your desired packs.
 
-7. Confirm that the bundle specifications and content are correct. If you need to make any changes, return to the applicable page using the left menu. To add additional packs, select **Explore additional add-ons**. 
+7. Confirm that the bundle specifications and content are correct. If you need to make any changes, return to the
+   applicable page using the left menu. To add additional packs, select **Explore additional add-ons**.
 
-      When finished, select the **I'm not a robot** reCAPTCHA checkbox, and select **Download bundle**. Alternatively, you can **Copy all URLs** so that you can download the applicable files later in an alternate manner of your choosing, such as via `curl`.
+   When finished, select the **I'm not a robot** reCAPTCHA checkbox, and select **Download bundle**. Alternatively, you
+   can **Copy all URLs** so that you can download the applicable files later in an alternate manner of your choosing,
+   such as via `curl`.
 
-8. The download begins. Each pack is downloaded as an individual ZST file (`<pack-name>.zst`) with an accompanying signature file (`<pack-name>.sig.bin`).
+8. The download begins. Each pack is downloaded as an individual ZST file (`<pack-name>.zst`) with an accompanying
+   signature file (`<pack-name>.sig.bin`).
 
 </TabItem>
 
 </Tabs>
 
-To create additional bundles, select **Artifact Studio Home** in the top-left corner, and repeat the above process. For information on how to verify the authenticity and integrity of your bundles, refer to the [Verify Signatures](#verify-signatures) section.
+To create additional bundles, select **Artifact Studio Home** in the top-left corner, and repeat the above process. For
+information on how to verify the authenticity and integrity of your bundles, refer to the
+[Verify Signatures](#verify-signatures) section.
 
 ## Download a Specific Pack
 
@@ -178,15 +205,21 @@ To create additional bundles, select **Artifact Studio Home** in the top-left co
 
    ![Image showing where to download individual packs](../../../static/assets/docs/images/downloads/downloads_artifact-studio-browse-packs.webp)
 
-3. On the left menu, choose any applicable pack filters, such as **Product**, product **Version**, **Cloud type**, and **Layer type**. Beside the search bar are additional filters: infrastructure type (**AMD64** or **ARM64**), and FIPS compliance (FIPS or non-FIPS).
+3. On the left menu, choose any applicable pack filters, such as **Product**, product **Version**, **Cloud type**, and
+   **Layer type**. Beside the search bar are additional filters: infrastructure type (**AMD64** or **ARM64**), and FIPS
+   compliance (FIPS or non-FIPS).
 
-4. After you have applied any necessary filters, navigate through the list of packs. Use the **Search** bar to filter your results further.
+4. After you have applied any necessary filters, navigate through the list of packs. Use the **Search** bar to filter
+   your results further.
 
    ![Image showing filter and search together](../../../static/assets/docs/images/downloads/downloads_artifact-studio-search-and-filter.webp)
 
-5. When finished, select the **I'm not a robot** reCAPTCHA checkbox, and select **Download Bundle**. Alternatively, you can **Copy all URLs** so that you can download the applicable files later in an alternate manner of your choosing, such as via `curl`.
+5. When finished, select the **I'm not a robot** reCAPTCHA checkbox, and select **Download Bundle**. Alternatively, you
+   can **Copy all URLs** so that you can download the applicable files later in an alternate manner of your choosing,
+   such as via `curl`.
 
-6. The download begins. Each pack is downloaded as an individual ZST file (`<pack-name>.zst`) with an accompanying signature file (`<pack-name>.sig.bin`).
+6. The download begins. Each pack is downloaded as an individual ZST file (`<pack-name>.zst`) with an accompanying
+   signature file (`<pack-name>.sig.bin`).
 
    ![Image showing download of multiple packs](../../../static/assets/docs/images/downloads/downloads_artifact-studio-individual-packs-download.webp)
 
@@ -197,7 +230,9 @@ To create additional bundles, select **Artifact Studio Home** in the top-left co
 
    :::
 
-To download additional packs, select **Artifact Studio Home** in the top-left corner, and repeat the above process. For information on how to verify the authenticity and integrity of your bundles, refer to the [Verify Signatures](#verify-signatures) section.
+To download additional packs, select **Artifact Studio Home** in the top-left corner, and repeat the above process. For
+information on how to verify the authenticity and integrity of your bundles, refer to the
+[Verify Signatures](#verify-signatures) section.
 
 ## Verify Signatures
 
@@ -205,11 +240,13 @@ All ZST bundles and ISO files downloaded from Artifact Studio are signed. An add
 artifact, which must be decrypted using Spectro Cloud's public key, `spectro_public_key.pem`. Images embedded within ZST
 bundles that originate from a Spectro Cloud registry are also signed and can be verified using validation flows.
 
-For additional information on how Spectro Cloud signs artifacts, refer to our [Artifact Signatures guide](../security/artifact-signatures/artifact-signatures.md).
+For additional information on how Spectro Cloud signs artifacts, refer to our
+[Artifact Signatures guide](../security/artifact-signatures/artifact-signatures.md).
 
 ### Prerequisites
 
-- ZST bundles or ISO files installed from [Artifact Studio](https://artifact-studio.spectrocloud.com/) with their accompanying signature files.
+- ZST bundles or ISO files installed from [Artifact Studio](https://artifact-studio.spectrocloud.com/) with their
+  accompanying signature files.
 
 - [OpenSSL](https://www.openssl.org/) installed on the machine where the downloaded artifacts are located.
 
