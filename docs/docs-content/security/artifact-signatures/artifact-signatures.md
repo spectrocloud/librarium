@@ -25,12 +25,16 @@ To support trusted deployment and secure validation, Spectro Cloud currently sig
   - `gcr.io/spectro-images-fips`
   - `gcr.io/spectro-images-public`
 
-  :::warning
+<!-- prettier-ignore-start -->
 
-  Images are signed only if they are built after version 4.7.0. Individual image signatures must be verified by existing
-  Secure Supply Chain validation flows.
+:::warning
 
-  :::
+Images are signed only if they are built after version 4.7.0. Individual image signatures must be verified by existing
+Secure Supply Chain validation flows.
+
+:::
+
+<!-- prettier-ignore-end -->
 
 For signature information related to Spectro Cloud's offline documentation, refer to our
 [Offline Documentation guide](../../downloads/offline-docs.md#container-image-authenticity).
@@ -43,7 +47,7 @@ bundles that originate from a Spectro Cloud registry are also signed and can be 
 
 ### Prerequisites
 
-- Artifacts installed from [Artifact Studio](https://artifact-studio.spectrocloud.com/). For more information, refer to
+- ZST bundles or ISO files installed from [Artifact Studio](https://artifact-studio.spectrocloud.com/) with their accompanying signature files. For more information, refer to
   our [Artifact Studio guide](../../downloads/artifact-studio.md).
 
 - [OpenSSL](https://www.openssl.org/) installed on the machine where the downloaded artifacts are located.
