@@ -20,7 +20,7 @@ You will be able to download the Palette or VerteX Management Appliance or Helm 
 your environment. Additionally, if you are using an airgapped environment, you will be able to browse through all
 available packs, and download only the components you wish to use. You can also validate the integrity and authenticity
 of the bundle via code signature. With these new artifact bundles, we are replacing the self-extracting binaries we
-create for airgapped environments with a more familiar zstandard compressed format (`zst`) that can be moved and
+create for airgapped environments with a more familiar Zstandard compressed format (`zst`) that can be moved and
 manipulated with the Palette CLI.
 
 There are four main artifact areas:
