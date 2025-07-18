@@ -11,6 +11,9 @@ sidebar_position: 20
 
 :::preview
 
+This is a Tech Preview feature and is subject to change. Upgrades from a Tech Preview deployment may not be available.
+Do not use this feature in production workloads.
+
 :::
 
 The Palette Management Appliance is downloadable as an ISO file and is a solution for installing self-hosted Palette on
