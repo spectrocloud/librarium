@@ -73,7 +73,10 @@ Follow the instructions to install Palette using the Palette Management Applianc
 
 :::warning
 
-If your installation is not successful, verify that the `piraeus-operator` pack was correctly installed. For more information, refer to the [Self-Hosted Installation - Troubleshooting](../../troubleshooting/enterprise-install.md#scenario---palettevertex-management-appliance-installation-stalled-due-to-piraeus-operator-pack-in-error-state) guide.
+If your installation is not successful, verify that the `piraeus-operator` pack was correctly installed. For more
+information, refer to the
+[Self-Hosted Installation - Troubleshooting](../../troubleshooting/enterprise-install.md#scenario---palettevertex-management-appliance-installation-stalled-due-to-piraeus-operator-pack-in-error-state)
+guide.
 
 :::
 
