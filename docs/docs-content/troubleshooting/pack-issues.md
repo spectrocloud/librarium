@@ -12,7 +12,11 @@ The following are common scenarios that you may encounter when using Packs.
 
 ## Scenario - Pods with namespaceLabels are Stuck on Deployment
 
-When deploying a workload cluster with packs that declare `namespaceLabels`, the associated Pods never start if the cluster was deployed via self-hosted Palette or Palette VerteX, or if the `palette-agent` ConfigMap has `data.feature.workloads: disable`. This is due to the necessary labels not being applied to the target namespace, resulting in the namespace lacking the elevated privileges the Pods require and the Kubernetes’ PodSecurity admission blocks the Pods.
+When deploying a workload cluster with packs that declare `namespaceLabels`, the associated Pods never start if the
+cluster was deployed via self-hosted Palette or Palette VerteX, or if the `palette-agent` ConfigMap has
+`data.feature.workloads: disable`. This is due to the necessary labels not being applied to the target namespace,
+resulting in the namespace lacking the elevated privileges the Pods require and the Kubernetes’ PodSecurity admission
+blocks the Pods.
 
 To resolve this issue, force apply the PodSecurity policies directly to the namespace of the affected Pods.
 
@@ -20,9 +24,11 @@ To resolve this issue, force apply the PodSecurity policies directly to the name
 
 2. From the left main menu, select **Clusters**. Navigate to the affected cluster.
 
-3. Download the `kubeconfig` file of the cluster and set your `KUBECONFIG` environment variable to the `kubeconfig` file path. For guidance, refer to our [kubectl](../clusters/cluster-management/palette-webctl.md) guide.
+3. Download the `kubeconfig` file of the cluster and set your `KUBECONFIG` environment variable to the `kubeconfig` file
+   path. For guidance, refer to our [kubectl](../clusters/cluster-management/palette-webctl.md) guide.
 
-4. Identify any Pods in the cluster that are not running. Note the namespace that belongs to the Pods belonging to the pack with `namespaceLabels`.
+4. Identify any Pods in the cluster that are not running. Note the namespace that belongs to the Pods belonging to the
+   pack with `namespaceLabels`.
 
 ```bash
 kubectl get pods --all-namespaces --field-selector status.phase!=Running
@@ -34,7 +40,8 @@ lb-metallb-helm-metallb-full-speaker-abcde            0/1     Pending           
 lb-metallb-helm-metallb-full-speaker-fghij            0/1     CreateContainerConfigError 0          3m
 ```
 
-5. Confirm the namespace is missing the `privileged` labels. Replace `<namespace>` with the namespace of the affected Pods.
+5. Confirm the namespace is missing the `privileged` labels. Replace `<namespace>` with the namespace of the affected
+   Pods.
 
 ```bash
 kubectl get namespace <namespace> --show-labels
