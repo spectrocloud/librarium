@@ -16,8 +16,9 @@ During the installation of Palette/VerteX Management Appliance, the `piraeus-ope
 Local UI. This can be caused by stalled creation of Kubernetes secrets in the `piraeus-system` namespace and can prevent
 the installation from completing successfully.
 
-To resolve, you can manually delete any pending secrets in the `piraeus-system` namespace. This will allow the
-`piraeus-operator` pack to complete its deployment and the Palette/VerteX Management Appliance installation to proceed.
+To resolve, you can manually delete any secrets in the `piraeus-system` namespace that have a `pending-install` status
+label. This will allow the `piraeus-operator` pack to complete its deployment and the Palette/VerteX Management
+Appliance installation to proceed.
 
 ### Debug Steps
 
@@ -37,41 +38,66 @@ To resolve, you can manually delete any pending secrets in the `piraeus-system` 
    export KUBECONFIG=<path-to-kubeconfig-file>
    ```
 
-6. Use the following command to list all secrets in the `piraeus-system` namespace.
+6. Use `kubectl` to list all secrets in the `piraeus-system` namespace.
 
    ```bash
    kubectl get secrets --namespace piraeus-system
    ```
 
-   Note down any secrets that are in a `pending` state.
-
    ```bash hideClipboard title="Example output"
    NAME                                                      TYPE                             DATA   AGE
-   10.11.12.13-30003-pull-secret                             kubernetes.io/dockerconfigjson   1      27h
-   linstor-backup-for-linstor-controller-7c4f4ff895-zdlqw    piraeus.io/linstor-backup        1      27h
-   linstor-passphrase                                        Opaque                           1      27h
-   piraeusoperator-piraeus-tls                               kubernetes.io/tls                3      27h
-   sh.helm.release.v1.piraeusoperator-linstor-gui.v1         helm.sh/release.v1               1      27h
-   sh.helm.release.v1.piraeusoperator-linstor-gui.v2         helm.sh/release.v1               1      27h
-   sh.helm.release.v1.piraeusoperator-linstor-gui.v3         helm.sh/release.v1               1      27h
-   sh.helm.release.v1.piraeusoperator-linstor-gui.v4         helm.sh/release.v1               1      27h
-   sh.helm.release.v1.piraeusoperator-piraeus-cluster.v1     helm.sh/release.v1               1      27h
-   sh.helm.release.v1.piraeusoperator-piraeus-dashboard.v1   helm.sh/release.v1               1      27h
-   sh.helm.release.v1.piraeusoperator-piraeus.v1             helm.sh/release.v1               1      27h
-   sh.helm.release.v1.piraeusoperator-piraeus.v2             helm.sh/release.v1               1      27h
-   sh.helm.release.v1.piraeusoperator-piraeus.v3             helm.sh/release.v1               1      27h
-   sh.helm.release.v1.piraeusoperator-piraeus.v4             helm.sh/release.v1               1      27h
+   sh.helm.release.v1.piraeusoperator-linstor-gui.v1         helm.sh/release.v1               1      1h
+   sh.helm.release.v1.piraeusoperator-linstor-gui.v2         helm.sh/release.v1               1      1h
+   sh.helm.release.v1.piraeusoperator-piraeus-cluster.v1     helm.sh/release.v1               1      1h
+   sh.helm.release.v1.piraeusoperator-piraeus-dashboard.v1   helm.sh/release.v1               1      1h
+   sh.helm.release.v1.piraeusoperator-piraeus.v1             helm.sh/release.v1               1      1h
+   sh.helm.release.v1.piraeusoperator-piraeus.v2             helm.sh/release.v1               1      1h
    ```
 
-7. Use the following command to delete any pending secrets in the `piraeus-system` namespace. Replace `<secret-name>`
-   with the name of the secret you want to delete.
+7. Use the following command to check each secret for a `pending-install` status label. Replace `<secret-name>` with the
+   name of the secret you want to check.
+
+   ```bash
+   kubectl describe secrets <secret-name> --namespace piraeus-system
+   ```
+
+   ```shell hideClipboard title="Example output" {6}
+   Name:         sh.helm.release.v1.piraeusoperator-piraeus-cluster.v1
+   Namespace:    piraeus-system
+   Labels:       modifiedAt=0123456789
+                 name=piraeusoperator-piraeus-cluster
+                 owner=helm
+                 status=pending-install
+                 version=1
+   Annotations:  <none>
+
+   Type:  helm.sh/release.v1
+
+   Data
+   ====
+   release:  7156 bytes
+   ```
+
+   :::tip
+
+   You can also try using the following command to filter for secrets with a `pending-install` status label.
+
+   ```bash
+   kubectl describe secrets --namespace piraeus-system --selector status=pending-install
+   ```
+
+   :::
+
+8. If you find any secrets with this label, delete them using the following command. Replace `<secret-name>` with the
+   name of the secret you want to delete.
 
    ```bash
    kubectl delete secrets <secret-name> --namespace piraeus-system
    ```
 
-8. Wait for the `piraeus-operator` pack to enter a **Running** status in Local UI. The installation of Palette/VerteX
-   Management Appliance should then proceed successfully.
+9. After deleting any secrets with a `pending-install` status label, wait for the `piraeus-operator` pack to enter a
+   **Running** status in Local UI. The installation of Palette/VerteX Management Appliance should then proceed
+   successfully.
 
 ## Scenario - Unexpected Logouts in Tenant Console After Palette/VerteX Management Appliance Installation
 
