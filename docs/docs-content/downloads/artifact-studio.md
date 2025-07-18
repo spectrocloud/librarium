@@ -43,11 +43,11 @@ There are four main artifact areas:
 3. Click **Download** on **Content bundle**, **Palette management appliance ISO**, or **Helm installation**, whichever
    file is appropriate for your environment.
 
-| Download Option   | Use Case                                                                               |
-| ----------------- | -------------------------------------------------------------------------------------- |
-| Content bundle    | Used for traditional application install                                               |
-| ISO               | Used for installation from ISO device in a virtual machine, edge device, or bare-metal |
-| Helm installation | Used to install with Helm charts                                                       |
+   | Download Option   | Use Case                                                                               |
+   | ----------------- | -------------------------------------------------------------------------------------- |
+   | Content bundle    | Used for traditional application install                                               |
+   | ISO               | Used for installation from ISO device in a virtual machine, edge device, or bare-metal |
+   | Helm installation | Used to install with Helm charts                                                       |
 
 Once you have the file, you can deploy Palette as a self-hosted application. Review the
 [Self-Hosted Palette](../enterprise-version/install-palette/palette-management-appliance.md) for more information on
