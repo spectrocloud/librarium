@@ -10,6 +10,69 @@ tags: ["troubleshooting", "self-hosted", "palette", "vertex"]
 
 Refer to the following sections to troubleshoot errors encountered when installing an Enterprise Cluster.
 
+## Scenario - Palette/VerteX Management Appliance Installation Stalled due to piraeus-operator Pack in Error State
+
+During the installation of Palette/VerteX Management Appliance, the `piraeus-operator` pack can enter an error state in
+Local UI. This can be caused by stalled creation of Kubernetes secrets in the `piraeus-system` namespace and can prevent
+the installation from completing successfully.
+
+To resolve, you can manually delete any pending secrets in the `piraeus-system` namespace. This will allow the
+`piraeus-operator` pack to complete its deployment and the Palette/VerteX Management Appliance installation to proceed.
+
+### Debug Steps
+
+1. Log in to the Local UI of the leader node of your Palette/VerteX management cluster. By default, Local UI is
+   accessible at `https://<node-ip>:5080`. Replace `<node-ip>` with the IP address of the leader node.
+
+2. From the left main menu, click **Cluster**.
+
+3. Download the **Admin Kubeconfig File** by clicking on the `<cluster-name>.kubeconfig` hyperlink.
+
+4. Open a terminal session in an environment that has network access to the Palette/VerteX management cluster.
+
+5. Issue the following command to set the `KUBECONFIG` environment variable to the path of the kubeconfig file you
+   downloaded in step 3.
+
+   ```bash
+   export KUBECONFIG=<path-to-kubeconfig-file>
+   ```
+
+6. Use the following command to list all secrets in the `piraeus-system` namespace.
+
+   ```bash
+   kubectl get secrets --namespace piraeus-system
+   ```
+
+   Note down any secrets that are in a `pending` state.
+
+   ```bash hideClipboard title="Example output"
+   NAME                                                      TYPE                             DATA   AGE
+   10.11.12.13-30003-pull-secret                             kubernetes.io/dockerconfigjson   1      27h
+   linstor-backup-for-linstor-controller-7c4f4ff895-zdlqw    piraeus.io/linstor-backup        1      27h
+   linstor-passphrase                                        Opaque                           1      27h
+   piraeusoperator-piraeus-tls                               kubernetes.io/tls                3      27h
+   sh.helm.release.v1.piraeusoperator-linstor-gui.v1         helm.sh/release.v1               1      27h
+   sh.helm.release.v1.piraeusoperator-linstor-gui.v2         helm.sh/release.v1               1      27h
+   sh.helm.release.v1.piraeusoperator-linstor-gui.v3         helm.sh/release.v1               1      27h
+   sh.helm.release.v1.piraeusoperator-linstor-gui.v4         helm.sh/release.v1               1      27h
+   sh.helm.release.v1.piraeusoperator-piraeus-cluster.v1     helm.sh/release.v1               1      27h
+   sh.helm.release.v1.piraeusoperator-piraeus-dashboard.v1   helm.sh/release.v1               1      27h
+   sh.helm.release.v1.piraeusoperator-piraeus.v1             helm.sh/release.v1               1      27h
+   sh.helm.release.v1.piraeusoperator-piraeus.v2             helm.sh/release.v1               1      27h
+   sh.helm.release.v1.piraeusoperator-piraeus.v3             helm.sh/release.v1               1      27h
+   sh.helm.release.v1.piraeusoperator-piraeus.v4             helm.sh/release.v1               1      27h
+   ```
+
+7. Use the following command to delete any pending secrets in the `piraeus-system` namespace. Replace `<secret-name>`
+   with the name of the secret you want to delete.
+
+   ```bash
+   kubectl delete secrets <secret-name> --namespace piraeus-system
+   ```
+
+8. Wait for the `piraeus-operator` pack to enter a **Running** status in Local UI. The installation of Palette/VerteX
+   Management Appliance should then proceed successfully.
+
 ## Scenario - Unexpected Logouts in Tenant Console After Palette/VerteX Management Appliance Installation
 
 After installing self-hosted Palette/Palette VerteX using the
