@@ -29,7 +29,7 @@ To support trusted deployment and secure validation, Spectro Cloud currently sig
 
 :::warning
 
-Images are signed only if they are built after version 4.7.0. Individual image signatures must be verified by existing
+Images are signed only if they are built after version 4.7.3. Individual image signatures must be verified by existing
 Secure Supply Chain validation flows.
 
 :::
