@@ -49,16 +49,16 @@ tags: ["release-notes"]
   Appliance is available for VMware, Bare Metal, and Machine as a Service (MAAS) environments. Refer to the Palette
   Management Appliance guide for further information.
 
-- The Artifact Studio is a new platform for obtaining bundles, packs, and installers relating to Palette Enterprise and
-  Palette VerteX. It provides a single source for these artifacts, which you can download and then upload to your
-  registries. Refer to the Artifact Studio guide for further information.
+- <TpBadge /> The Artifact Studio is a new platform for obtaining bundles, packs, and installers relating to Palette
+  Enterprise and Palette VerteX. It provides a single source for these artifacts, which you can download and then upload
+  to your registries. Refer to the Artifact Studio guide for further information.
 
 - [Self-hosted Palette](../enterprise-version/enterprise-version.md) now supports the configuration of a classification
   banner. System administrators can set the banner text and color through the
   [system console](../enterprise-version/system-management/system-management.md#system-console). Refer to the
   [Banners](../enterprise-version/system-management/login-banner.md) guide for further guidance.
 
-- All images built by Spectro Cloud that are essential to Palette and Palette VerteX functionality are now signed using
+- All ZST bundles, ISO files, and images in Spectro Cloud-owned registries are now signed using
   [Cosign](https://docs.sigstore.dev/cosign/system_config/installation/), ensuring artifacts are traceable,
   tamper-evident, and aligned with modern compliance frameworks. Generated keys use the FIPS-compliant ECDSA-P256
   cryptographic algorithm for the signature and SHA256 for hashes; keys are stored in PEM-encoded PKCS8 format.
@@ -87,13 +87,8 @@ tags: ["release-notes"]
   are updated to Kubernetes 1.29.
 - Fixed an issue that caused resource reconciliation to fail when deleting a pack whose resources have already been
   removed.
-- Fixed an issue that prevented
-  [Sprig template functions](../registries-and-packs/pack-constraints.md#sprig-template-functions) from being applied to
-  [macros](../clusters/cluster-management/macros.md) used as part of custom manifests.
 - Fixed an issue that restricted cluster tags from containing numbers, spaces, and the following special characters:
   `_`, `.`, `:`, `/`, `=`, `+`, `-`, and `@`.
-- Fixed an issue that caused Palette to repave and upgrade multiple [MAAS](../clusters/data-center/maas/maas.md) worker
-  nodes at the same time.
 - Fixed an issue that caused cluster health events to be incorrectly reported in Palette after partial broker service
   outages.
 
@@ -147,14 +142,10 @@ ensures successful upgrades between minor and patch versions on connected and ai
   to get stuck in a `Terminating` state.
 - Fixed an issue that caused Palette to incorrectly report certificate errors on
   [Edge clusters](../clusters/edge/edge.md).
-- Fixed an issue that caused certificate errors on [agent mode](../deployment-modes/agent-mode/agent-mode.md) Edge
-  clusters following a Palette upgrade.
 - Fixed an issue that caused continuous retries on malformed bundles during the deployment of
   [Edge clusters](../clusters/edge/edge.md) instead of initializing a fresh pack download.
 - Fixed an issue that caused [Kube-vip](../clusters/edge/networking/kubevip.md) arguments to be incorrectly reconciled
   after cluster creation.
-- Fixed an issue that caused sensitive cluster profile variables to appear in plain text in
-  [Edge Management API](/api/introduction/#edge-management-api) responses.
 
 ### VerteX
 
