@@ -48,49 +48,49 @@ create a content bundle at the same time with a single command.
 
 <TabItem value="Palette CLI" label="Palette CLI">
 
-1. Download the Palette CLI. Refer to the [Palette CLI Compatibility Matrix](../../../../downloads/cli-tools.md) to find
-   a compatible CLI version and replace `<palette-cli-version>` with the selected version.
+1.  Download the Palette CLI. Refer to the [Palette CLI Compatibility Matrix](../../../../downloads/cli-tools.md) to
+    find a compatible CLI version and replace `<palette-cli-version>` with the selected version.
 
-   ```shell
-   VERSION=<palette-cli-version>
-   wget https://software.spectrocloud.com/palette-cli/v$VERSION/linux/cli/palette
-   chmod +x palette
-   ```
+    ```shell
+    VERSION=<palette-cli-version>
+    wget https://software.spectrocloud.com/palette-cli/v$VERSION/linux/cli/palette
+    chmod +x palette
+    ```
 
-2. Use the following command to move the `palette` binary to the **/usr/local/bin** directory to make the binary
-   available in your system $PATH. This will allow you to issue the `palette` command from any directory in your
-   development environment.
+2.  Use the following command to move the `palette` binary to the **/usr/local/bin** directory to make the binary
+    available in your system $PATH. This will allow you to issue the `palette` command from any directory in your
+    development environment.
 
-   ```bash
-   mv palette /usr/local/bin
-   ```
+    ```bash
+    mv palette /usr/local/bin
+    ```
 
-3. Verify that the Palette CLI is part of your system path by issuing the Palette CLI `version` command.
+3.  Verify that the Palette CLI is part of your system path by issuing the Palette CLI `version` command.
 
-   ```bash
-   palette version
-   ```
+    ```bash
+    palette version
+    ```
 
-   ```hideClipboard text
-   Palette CLI version: [version number]
-   ```
+    ```hideClipboard text
+    Palette CLI version: [version number]
+    ```
 
-4. Authenticate with Palette using the `login` command. Replace `<your-api-key>` with your Palette API key.
+4.  Authenticate with Palette using the `login` command. Replace `<your-api-key>` with your Palette API key.
 
-   ```shell
-   palette login --api-key <your-api-key> --console-url https://console.spectrocloud.com/
-   ```
+    ```shell
+    palette login --api-key <your-api-key> --console-url https://console.spectrocloud.com/
+    ```
 
-5. Log in to the [Palette](https://console.spectrocloud.com) console.
+5.  Log in to the [Palette](https://console.spectrocloud.com) console.
 
-6. Select the project you want to deploy the Edge host to and copy down the project ID. You can find the project ID at
-   the top right side corner of the landing page below the user drop-down menu.
+6.  Select the project you want to deploy the Edge host to and copy down the project ID. You can find the project ID at
+    the top right side corner of the landing page below the user drop-down menu.
 
-7. Navigate to the left main menu and select **Profiles**.
+7.  Navigate to the left main menu and select **Profiles**.
 
-8. Use the **Cloud Types** drop-down menu and select **Edge Native**.
+8.  Use the **Cloud Types** drop-down menu and select **Edge Native**.
 
-9. Click on the cluster profile you want to include in the cluster definition.
+9.  Click on the cluster profile you want to include in the cluster definition.
 
 10. You can find the cluster profile ID by reviewing the URL of the current page. The cluster profile ID is the last
     value in the URL. Repeat this step for all the cluster profiles you want to include in the cluster definition.
@@ -104,33 +104,32 @@ create a content bundle at the same time with a single command.
     the profiles.
 
 11. Issue the following command to export the cluster definition, replacing the placeholder values with your actual
-    values. The `build` command will generate a `.tgz` cluster definition file in the directory specified by the
-    `--output` flag. Refer to the [content build](../../../../automation/palette-cli/commands/content.md#build) CLI
+    values. The `build` command will generate the `.tgz` cluster definition file in the `<current-directory>/output/`
+    folder by default. Refer to the [content build](../../../../automation/palette-cli/commands/content.md#build) CLI
     command page for a complete list of available flags.
 
     ```shell
     palette content build --arch <bundle-architecture> \
     --project-id <project-id> \
     --cluster-definition-name <definition-name> \
-    --cluster-definition-profile-ids <cluster-profile-id1,cluster-profile-id2...> \
-    --output <output-directory>
+    --cluster-definition-profile-ids <cluster-profile-id1,cluster-profile-id2...>
     ```
 
-12. (Optional) You can also build a content bundle together with your cluster definition in a single command by adding
-    the `profiles` and `name` flags to the command. Content bundles are archives of all the container images required
-    for one or more cluster profiles. You can upload a content bundle to your Edge host through Local UI or the Palette
-    CLI, and use the resources in the content bundle to provision clusters without a connection to external networks.
-    For more information, refer to
+12. (Optional) You can also build a content bundle along with your cluster definition in a single command by adding the
+    `profiles` and `name` flags to the command. By default, the content bundle will be generated in the
+    `<current-directory>/output/content-bundle/` folder. Content bundles are archives of all the container images
+    required for one or more cluster profiles. You can upload a content bundle to your Edge host through Local UI or the
+    Palette CLI, and use the resources in the content bundle to provision clusters without a connection to external
+    networks. For more information, refer to
     [Build Content Bundles](../../edgeforge-workflow/palette-canvos/build-content-bundle.md).
 
     ```shell
     palette content build --arch <bundle-architecture> \
-     --project-id <project-id> \
-     --profiles <cluster-profile-id1,cluster-profile-id2...> \
-     --cluster-definition-name <cluster-definition-name> \
-     --cluster-definition-profile-ids <cluster-definition-profile-ids> \
-     --name <bundle-name> \
-     --output <output-directory>
+    --project-id <project-id> \
+    --profiles <cluster-profile-id1,cluster-profile-id2...> \
+    --cluster-definition-name <cluster-definition-name> \
+    --cluster-definition-profile-ids <cluster-definition-profile-ids> \
+    --name <bundle-name>
     ```
 
 </TabItem>

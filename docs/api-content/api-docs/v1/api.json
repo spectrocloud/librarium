@@ -398,6 +398,19 @@
       },
       "type": "array"
     },
+    "v1AmiTypes": {
+      "description": "List of AWS AMI types",
+      "properties": {
+        "amiTypes": {
+          "description": "List of AWS AMI types",
+          "items": {
+            "type": "string"
+          },
+          "type": "array"
+        }
+      },
+      "type": "object"
+    },
     "v1ApiEndpoint": {
       "description": "APIEndpoint represents a reachable Kubernetes API endpoint.",
       "properties": {
@@ -4983,6 +4996,14 @@
         }
       },
       "type": "object"
+    },
+    "v1ClassificationBanner": {
+      "properties": {
+        "config": {
+          "description": "JSON-formatted string containing classification banner configuration data",
+          "type": "string"
+        }
+      }
     },
     "v1CleanUpResource": {
       "description": "Resources of tenant",
@@ -9963,6 +9984,25 @@
           },
           "type": "array"
         },
+        "hostState": {
+          "default": "registration",
+          "description": "State of edge host device",
+          "enum": [
+            "registration",
+            "cluster",
+            "recovery"
+          ],
+          "type": "string"
+        },
+        "hostType": {
+          "default": "appliance",
+          "description": "Type of the edge host device",
+          "enum": [
+            "appliance",
+            "agent-mode"
+          ],
+          "type": "string"
+        },
         "memory": {
           "$ref": "#/definitions/v1Memory"
         },
@@ -9974,6 +10014,11 @@
         },
         "os": {
           "$ref": "#/definitions/v1OS"
+        },
+        "secureBoot": {
+          "default": false,
+          "description": "Secure boot configuration",
+          "type": "boolean"
         }
       },
       "type": "object"
@@ -11658,6 +11703,10 @@
     },
     "v1EksMachineCloudConfigEntity": {
       "properties": {
+        "amiType": {
+          "description": "ami type",
+          "type": "string"
+        },
         "awsLaunchTemplate": {
           "$ref": "#/definitions/v1AwsLaunchTemplate"
         },
@@ -11718,6 +11767,10 @@
           },
           "description": "AdditionalTags is an optional set of tags to add to resources managed by the provider, in addition to the ones added by default. For eg., tags for EKS nodeGroup or EKS NodegroupIAMRole",
           "type": "object"
+        },
+        "amiType": {
+          "description": "ami type",
+          "type": "string"
         },
         "awsLaunchTemplate": {
           "$ref": "#/definitions/v1AwsLaunchTemplate"
@@ -17962,6 +18015,12 @@
     "v1OS": {
       "properties": {
         "family": {
+          "type": "string"
+        },
+        "kernel": {
+          "type": "string"
+        },
+        "kernelVersion": {
           "type": "string"
         },
         "version": {
@@ -37990,7 +38049,7 @@
     }
   },
   "info": {
-    "title": "Palette APIs - 4.6",
+    "title": "Palette APIs - 4.7",
     "version": "v1"
   },
   "paths": {
@@ -49488,6 +49547,39 @@
         ]
       }
     },
+    "/v1/clouds/aws/amiTypes": {
+      "get": {
+        "operationId": "V1AwsAmiTypes",
+        "parameters": [
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1AmiTypes"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Retrieves a list of AWS AMI types",
+        "tags": [
+          "clouds"
+        ]
+      }
+    },
     "/v1/clouds/aws/cloudwatch/validate": {
       "post": {
         "description": "Validates aws cloud watch credentials",
@@ -54587,6 +54679,12 @@
             "schema": {
               "$ref": "#/definitions/v1ClusterProfileEntity"
             }
+          },
+          {
+            "description": "If true then cluster profile will be created and published in a single transaction",
+            "in": "query",
+            "name": "publish",
+            "type": "boolean"
           },
           {
             "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
