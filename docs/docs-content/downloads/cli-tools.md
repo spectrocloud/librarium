@@ -3,7 +3,7 @@ sidebar_label: "CLI Tools"
 title: "CLI Tools"
 description: "Overview of the CLI tool downloads and their respective URL and checksums."
 hide_table_of_contents: false
-sidebar_position: 10
+sidebar_position: 20
 sidebar_custom_props:
   icon: "terminal"
 tags: ["downloads", "palette-cli"]
