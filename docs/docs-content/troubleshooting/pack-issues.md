@@ -24,12 +24,17 @@ To resolve this issue, force-apply the PodSecurity policies directly to the name
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. From the left main menu, select **Clusters**. Navigate to the affected cluster.
+2. From the left main menu, select **Clusters**. Choose the affected cluster.
 
-3. Download the `kubeconfig` file of the cluster and set your `KUBECONFIG` environment variable to the `kubeconfig` file
-   path. For guidance, refer to our [kubectl](../clusters/cluster-management/palette-webctl.md) guide.
+3. On the cluster **Overview** tab, click the **Kubeconfig file** link to download the cluster's `kubeconfig` file.
 
-4. Identify any Pods in the cluster that are not running. Note the namespace that belongs to the Pods associated with
+4. Open a terminal session and set the `KUBECONFIG` environment variable to the path of the `kubeconfig` file.
+
+   ```bash
+   export KUBECONFIG=<path-to-kubeconfig-file>
+   ```
+
+5. Use `kubectl` to identify any Pods in the cluster that are not running. Note the namespace that belongs to the Pods associated with
    the pack using `namespaceLabels`.
 
    ```bash
@@ -42,7 +47,7 @@ To resolve this issue, force-apply the PodSecurity policies directly to the name
    lb-metallb-helm-metallb-full-speaker-fghij            0/1     CreateContainerConfigError 0          3m
    ```
 
-5. Confirm the namespace is missing the `privileged` labels. Replace `<namespace>` with the namespace of the affected
+6. Confirm the namespace is missing the `privileged` labels. Replace `<namespace>` with the namespace of the affected
    Pods.
 
    ```bash
@@ -54,7 +59,7 @@ To resolve this issue, force-apply the PodSecurity policies directly to the name
    metallb-system   Active   10m    kubernetes.io/metadata.name=metallb-system
    ```
 
-6. Force-apply the `privileged` labels to the namespace.
+7. Force-apply the `privileged` labels to the namespace.
 
    ```bash
    kubectl label namespace <namespace> \
@@ -64,7 +69,7 @@ To resolve this issue, force-apply the PodSecurity policies directly to the name
      --overwrite
    ```
 
-7. Verify the labels are now present.
+8. Verify the labels are now present.
 
    ```bash
    kubectl get namespace <namespace> --show-labels
@@ -78,13 +83,13 @@ To resolve this issue, force-apply the PodSecurity policies directly to the name
                                        pod-security.kubernetes.io/warn=privileged
    ```
 
-8. Delete the stuck Pods so that they pick up the new labels.
+9.  Delete the stuck Pods so that they pick up the new labels.
 
    ```bash
    kubectl delete pods --namespace <namespace> --all
    ```
 
-9. Wait for the Pods to be redeployed and come up in a `Running` state.
+10. Wait for the Pods to be redeployed and come up in a `Running` state.
 
    ```bash
    kubectl get pods --namespace <namespace>
