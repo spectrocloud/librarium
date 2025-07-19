@@ -44,14 +44,14 @@ tags: ["release-notes"]
 
 #### Features
 
-- <TpBadge /> The Palette Management Appliance is a new method to install self-hosted Palette in your infrastructure
-  environment. It provides a simple and efficient way to deploy Palette using an ISO file. The Palette Management
-  Appliance is available for VMware, Bare Metal, and Machine as a Service (MAAS) environments. Refer to the Palette
-  Management Appliance guide for further information.
+- <TpBadge /> The [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md)
+  is a new method to install self-hosted Palette in your infrastructure environment. It provides a simple and efficient
+  way to deploy Palette using an ISO file. The Palette Management Appliance is available for VMware, Bare Metal, and
+  Machine as a Service (MAAS) environments.
 
-- <TpBadge /> The Artifact Studio is a new platform for obtaining bundles, packs, and installers relating to Palette
-  Enterprise and Palette VerteX. It provides a single source for these artifacts, which you can download and then upload
-  to your registries. Refer to the Artifact Studio guide for further information.
+- <TpBadge /> The [Artifact Studio](../downloads/artifact-studio.md) is a new platform for obtaining bundles, packs, and
+  installers relating to Palette Enterprise and Palette VerteX. It provides a single source for these artifacts, which
+  you can download and then upload to your registries.
 
 - [Self-hosted Palette](../enterprise-version/enterprise-version.md) now supports the configuration of a classification
   banner. System administrators can set the banner text and color through the
@@ -61,7 +61,8 @@ tags: ["release-notes"]
 - All ZST bundles, ISO files, and images in Spectro Cloud-owned registries are now signed using
   [Cosign](https://docs.sigstore.dev/cosign/system_config/installation/), ensuring artifacts are traceable,
   tamper-evident, and aligned with modern compliance frameworks. Generated keys use the FIPS-compliant ECDSA-P256
-  cryptographic algorithm for the signature and SHA256 for hashes; keys are stored in PEM-encoded PKCS8 format.
+  cryptographic algorithm for the signature and SHA256 for hashes; keys are stored in PEM-encoded PKCS8 format. Refer to
+  the [Artifact Signatures](../security/artifact-signatures/artifact-signatures.md) guide for further information.
 
 #### Improvements
 
