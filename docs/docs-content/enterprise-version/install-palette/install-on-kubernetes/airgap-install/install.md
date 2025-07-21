@@ -267,8 +267,7 @@ environment. Reach out to our support team if you need assistance.
     kubectl create --filename registry-secret.yaml
     ```
 
-Install the image-swap chart using the following command. Point to the **values.yaml** file you configured in steps five
-through six.
+    Install the image-swap chart using the following command. Point to the **values.yaml** file you configured in steps five through six.
 
     ```shell
     helm upgrade --values extras/image-swap/values.yaml \
@@ -292,7 +291,7 @@ through six.
 
     :::
 
-12. Open the **values.yaml** file in the **spectro-mgmt-plane** folder with a text editor of your choice. The
+11. Open the **values.yaml** file in the **spectro-mgmt-plane** folder with a text editor of your choice. The
     **values.yaml** file contains the default values for the Palette installation parameters. However, you must populate
     the following parameters before installing Palette. You can learn more about the parameters on the **values.yaml**
     file on the [Helm Configuration Reference](../palette-helm-ref.md) page.
@@ -796,7 +795,7 @@ through six.
 
     :::
 
-13. This step is only required if you are installing Palette in an environment where a network proxy must be configured
+12. This step is only required if you are installing Palette in an environment where a network proxy must be configured
     for Palette to access the internet. If you are not using a network proxy, skip to the next step.
 
     Install the reach-system chart using the following command. Point to the **values.yaml** file you configured in step
@@ -836,7 +835,7 @@ through six.
 
     </details>
 
-14. Install the Palette Helm Chart using the following command.
+13. Install the Palette Helm Chart using the following command.
 
     ```shell
     helm upgrade --values palette/values.yaml \
@@ -853,7 +852,7 @@ through six.
     TEST SUITE: None
     ```
 
-15. Track the installation process using the command below. Palette is ready when the deployments in the namespaces
+14. Track the installation process using the command below. Palette is ready when the deployments in the namespaces
     `cp-system`, `hubble-system`, `ingress-nginx`, `jet-system`, and `ui-system` reach the _Ready_ state. The
     installation takes two to three minutes to complete.
 
@@ -868,7 +867,7 @@ through six.
 
     :::
 
-16. Create a DNS CNAME record that is mapped to the Palette `ingress-nginx-controller` load balancer. You can use the
+15. Create a DNS CNAME record that is mapped to the Palette `ingress-nginx-controller` load balancer. You can use the
     following command to retrieve the load balancer IP address. You may require the assistance of your network
     administrator to create the DNS record.
 
@@ -877,16 +876,18 @@ through six.
     --output jsonpath='{.status.loadBalancer.ingress[0].hostname}'
     ```
 
-    :::info
+    :::warning
 
-    As you create tenants in Palette, the tenant name is prefixed to the domain name you assigned to Palette. For
-    example, if you create a tenant named `tenant1` and the domain name you assigned to Palette is
-    `palette.example.com`, the tenant URL will be `tenant1.palette.example.com`. You can create an additional wildcard
-    DNS record to map all tenant URLs to the Palette load balancer.
+    If Palette has only one tenant and you use local accounts with Single Sign-On (SSO) disabled, you can access Palette
+    using the IP address or any domain name that resolves to that IP. However, once you enable SSO, users must log in
+    using the tenant-specific subdomain. For example, if you create a tenant named `tenant1` and the domain name you
+    assigned to Palette is `palette.example.com`, the tenant URL will be `tenant1.palette.example.com`. We recommend you
+    create an additional wildcard DNS record to map all tenant URLs to the Palette load balancer. For example,
+    `*.palette.example.com`.
 
     :::
 
-17. Use the custom domain name or the IP address of the load balancer to visit the Palette system console. To access the
+16. Use the custom domain name or the IP address of the load balancer to visit the Palette system console. To access the
     system console, open a web browser, paste the custom domain URL in the address bar, and append the value `/system`.
 
     The first time you visit the Palette system console, a warning message about a not-trusted SSL certificate may
@@ -895,7 +896,7 @@ through six.
 
     ![Screenshot of the Palette system console showing Username and Password fields.](/palette_installation_install-on-vmware_palette-system-console.webp)
 
-18. Log in to the system console using the following default credentials. Refer to the
+17. Log in to the system console using the following default credentials. Refer to the
     [password requirements](../../../system-management/account-management/credentials.md#password-requirements-and-security)
     documentation page to learn more about password requirements.
 
@@ -910,7 +911,7 @@ through six.
     Refer to the [Account Management](../../../system-management/account-management/account-management.md) documentation
     page for more information.
 
-19. After login, a summary page is displayed. Palette is installed with a self-signed SSL certificate. To assign a
+18. After login, a summary page is displayed. Palette is installed with a self-signed SSL certificate. To assign a
     different SSL certificate, you must upload the SSL certificate, SSL certificate key, and SSL certificate authority
     files to Palette. You can upload the files using the Palette system console. Refer to the
     [Configure HTTPS Encryption](../../../system-management/ssl-certificate-management.md) page for instructions on how
