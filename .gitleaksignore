@@ -699,3 +699,5 @@ c0c63dc4222907cff4801266617c52c782fb01f7:docs/docs-content/vertex/install-palett
 46390e6717983b96079d0f0776fbf113118f2e74:docs/docs-content/user-management/authentication/api-key/delete-api-key.md:curl-auth-header:178
 bee050efeb29aba56698a812cd87a44c757cf058:docs/docs-content/kubernetes-knowlege-hub/how-to/how-to-retrieve-images-from-private-registry.md:generic-api-key:93
 e11218c007c0708d63fc907d8027b7bca1df161e:docs/api-content/api-docs/1-introduction.md:curl-auth-header:36
+94bea0443c93c8aecb555b3605273f52d791aba8:docs/docs-content/palette-cli/commands/login.md:generic-api-key:69
+d3492285bb751ca5f78d4bd997aee46a7ee9be58:docs/docs-content/palette-cli/commands/login.md:generic-api-key:69
