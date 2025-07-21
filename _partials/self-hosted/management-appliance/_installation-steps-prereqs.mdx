@@ -1,0 +1,102 @@
+---
+partial_category: self-hosted
+partial_name: installation-steps-prereqs
+---
+
+- Access to the Palette [Artifact Studio](https://artifact-studio.spectrocloud.com/) to download the {props.iso} ISO. Refer to the <VersionedLink text="Artifact Studio guide" url="/downloads/artifact-studio"/> guide for instructions on how to access and download the ISO.
+
+- A minimum of three nodes must be provisioned in advance for the Palette installation. We recommended the following
+  resources for each node. Refer to the Palette <PaletteVertexUrlMapper edition={props.edition} text="Size Guidelines" palettePath="/install-palette#size-guidelines" vertexPath="/install-palette-vertex#size-guidelines"/> for additional sizing information.
+
+  - 8 CPUs per node.
+
+  - 16 GB memory per node.
+
+  - Two disks per node.
+
+    - The first disk must be at least 250 GB and is used for the ISO stack.
+
+    - The second disk must be at least 500 GB and is used for the storage pool.
+
+- The following network ports must be accessible on each node for Palette to operate successfully.
+
+  - TCP/443: Must be open between all Palette nodes and accessible for user connections to the Palette management
+    cluster.
+
+  - TCP/6443: Outbound traffic from the Palette management cluster to the deployed cluster's Kubernetes API server.
+
+- SSH access must be available to the nodes used for Palette installation.
+
+- Relevant permissions to install Palette on the nodes including permission to attach or mount an ISO and set nodes to
+  boot from it.
+
+  :::warning
+
+  The ISO is only supported on Unified Extensible Firmware Interface (UEFI) systems. Ensure you configured the nodes to boot from the ISO in UEFI mode.
+
+  :::
+
+- You can choose to use either an internal Zot registry that comes with Palette or an external registry of your choice. If using an external registry, you will need to provide the following information during the Palette installation process.
+
+  - The DNS/IP endpoint and port for the external registry.
+    - Ensure the nodes used to host the Palette management cluster have network access to the external registry server.
+  - The username for the registry.
+  - The password for the registry.
+  - (Optional) The Certificate Authority (CA) certificate that was used to sign the external registry certificate in Base64 format.
+
+  <br />
+
+  <details>
+
+  <summary> How to get Base64 encoded entries for a certificate </summary>
+
+  You can get the Base64 encoded entry from your certificate by using the following command. Replace `<certificate-file>` with the filename of your certificate file.
+
+  ```bash
+  base64 --wrap 0 <certificate-file>
+  ```
+
+  </details>
+
+- If you have an [Ubuntu Pro](https://ubuntu.com/pro) subscription, you can provide the Ubuntu Pro token during the
+  Palette installation process. This is optional but recommended for security and compliance purposes.
+
+- A virtual IP address (VIP) must be available for the Palette management cluster. This is assigned during the Palette
+  installation process and is used for load balancing and high availability. The VIP must be accessible to all nodes in
+  the Palette management cluster.
+
+  <details>
+
+  <summary> How to discover free IPs in your environment </summary>
+
+  You can discover free IPs in your environment by using a tool like `arping` or `nmap`. For example, you can issue the
+  following command to probe a CIDR block for free IP addresses.
+
+  ```bash
+  nmap --unprivileged -sT -Pn 10.10.200.0/24
+  ```
+
+  This command will scan the CIDR block and output any hosts it finds.
+
+  ```shell hideClipboard title="Example nmap output"
+  Nmap scan report for test-worker-pool-cluster2-6655ab7a-tyuio.company.dev (10.10.200.2)
+  Host is up.
+  All 1000 scanned ports on test-worker-pool-cluster2-6655ab7a-tyuio.company.dev (10.10.200.2) are in ignored states.
+  Not shown: 1000 filtered tcp ports (no-response)
+  ```
+
+  For any free IP addresses, you can use `arping` to double-check if the IP is available.
+
+  ```bash title="Example arping command"
+  arping -D -c 4 10.10.200.101
+  ```
+
+  ```shell hideClipboard title="Example arping output"
+  ARPING 10.10.200.101 from 0.0.0.0 ens103
+  Sent 4 probes (4 broadcast(s))
+  Received 0 response(s)
+  ```
+
+  If you receive no responses like the example output above, the IP address is likely free.
+
+  </details>
