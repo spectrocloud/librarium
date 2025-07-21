@@ -412,6 +412,17 @@ Use the following steps to install Palette.
 
     ![Screenshot of the Summary page showing where to click Go to Tenant Management button.](/palette_installation_install-on-vmware_goto-tenant-management.webp)
 
+    :::warning
+
+    If Palette has only one tenant and you use local accounts with Single Sign-On (SSO) disabled, you can access Palette
+    using the IP address or any domain name that resolves to that IP. However, once you enable SSO, users must log in
+    using the tenant-specific subdomain. For example, if you create a tenant named `tenant1` and the domain name you
+    assigned to Palette is `palette.example.com`, the tenant URL will be `tenant1.palette.example.com`. We recommend you
+    create an additional wildcard DNS record to map all tenant URLs to the Palette load balancer. For example,
+    `*.palette.example.com`.
+
+    :::
+
 ## Validate
 
 You can verify the installation is successful if you can access the system console using the IP address provided in
