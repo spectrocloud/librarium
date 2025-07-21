@@ -59,7 +59,7 @@ data "spectrocloud_registry" "public_registry" {
 
 data "spectrocloud_pack_simple" "byoos" {
   name         = "edge-native-byoi"
-  version      = "2.0.0"
+  version      = "2.1.0"
   type         = "helm"
   registry_uid = data.spectrocloud_registry.public_registry.id
 }
