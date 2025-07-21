@@ -88,8 +88,8 @@ init: ## Initialize npm dependencies
 	@echo "initializing npm dependencies"
 	npm ci
 	touch .env
-	grep -q "^ALGOLIA_APP_ID=" .env || echo "\nALGOLIA_APP_ID=1234567890" >> .env # pragma: allowlist-secret
-	grep -q "^ALGOLIA_SEARCH_KEY=" .env || echo "\nALGOLIA_SEARCH_KEY=1234567890" >> .env # pragma: allowlist-secret
+	grep -q "^ALGOLIA_APP_ID=" .env || echo "\nALGOLIA_APP_ID=1234567890" >> .env
+	grep -q "^ALGOLIA_SEARCH_KEY=" .env || echo "\nALGOLIA_SEARCH_KEY=1234567890" >> .env
 	grep -q "^ALGOLIA_INDEX_NAME=" .env || echo "\nALGOLIA_INDEX_NAME=spectrocloud" >> .env
 	grep -q "^DSO_AUTH_TOKEN=" .env || echo "\nDISABLE_SECURITY_INTEGRATIONS=true\nDSO_AUTH_TOKEN=" >> .env
 	grep -q "^PALETTE_API_KEY=" .env || echo "\nDISABLE_PACKS_INTEGRATIONS=true" >> .env
