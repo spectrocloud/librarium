@@ -54,6 +54,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v4
@@ -104,6 +106,7 @@ jobs:
           file_pattern: '*.js *.txt **.txt **.js **/*.txt **/*.js'
           disable_globbing: true
           commit_message: "ci: adding missing robots.txt or updating noindex in docusaurus.config.js"
+          branch: ${{ github.head_ref }}
 
       - name: Slack Notification
         if: ${{ failure() }}
