@@ -23,9 +23,11 @@ To help you get started with deploying a monitoring stack to your Palette enviro
 
 <!-- prettier-ignore-start -->
 
-- [Deploy Monitoring Stack](deploy-monitor-stack.md)
+- [Deploy Monitoring Stack](./deploy-monitor-stack.md)
 
-- [Enable Monitoring on Host Cluster](deploy-agent.md)
+- [Enable Monitoring on Host Cluster](./deploy-agent.md)
+
+- [Deploy OpenTelemetry Monitoring Stack](./open-telemetry.md)
 
 - <VersionedLink text="Prometheus Operator Pack" url="/integrations/packs/?pack=prometheus-operator" />
 

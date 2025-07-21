@@ -10,6 +10,190 @@ tags: ["troubleshooting", "self-hosted", "palette", "vertex"]
 
 Refer to the following sections to troubleshoot errors encountered when installing an Enterprise Cluster.
 
+## Scenario - Palette/VerteX Management Appliance Installation Stalled due to piraeus-operator Pack in Error State
+
+During the installation of the [Palette](../enterprise-version/install-palette/palette-management-appliance.md) or
+[VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md), the `piraeus-operator`
+pack can enter an error state in Local UI. This can be caused by stalled creation of Kubernetes secrets in the
+`piraeus-system` namespace and can prevent the installation from completing successfully.
+
+To resolve, you can manually delete any secrets in the `piraeus-system` namespace that have a `pending-install` status
+label. This will allow the `piraeus-operator` pack to complete its deployment and the Palette/VerteX Management
+Appliance installation to proceed.
+
+### Debug Steps
+
+1. Log in to the Local UI of the leader node of your Palette/VerteX management cluster. By default, Local UI is
+   accessible at `https://<node-ip>:5080`. Replace `<node-ip>` with the IP address of the leader node.
+
+2. From the left main menu, click **Cluster**.
+
+3. Download the **Admin Kubeconfig File** by clicking on the `<cluster-name>.kubeconfig` hyperlink.
+
+4. Open a terminal session in an environment that has network access to the Palette/VerteX management cluster.
+
+5. Issue the following command to set the `KUBECONFIG` environment variable to the path of the kubeconfig file you
+   downloaded in step 3.
+
+   ```bash
+   export KUBECONFIG=<path-to-kubeconfig-file>
+   ```
+
+6. Use `kubectl` to list all secrets in the `piraeus-system` namespace.
+
+   ```bash
+   kubectl get secrets --namespace piraeus-system
+   ```
+
+   ```bash hideClipboard title="Example output"
+   NAME                                                      TYPE                             DATA   AGE
+   sh.helm.release.v1.piraeusoperator-linstor-gui.v1         helm.sh/release.v1               1      1h
+   sh.helm.release.v1.piraeusoperator-linstor-gui.v2         helm.sh/release.v1               1      1h
+   sh.helm.release.v1.piraeusoperator-piraeus-cluster.v1     helm.sh/release.v1               1      1h
+   sh.helm.release.v1.piraeusoperator-piraeus-dashboard.v1   helm.sh/release.v1               1      1h
+   sh.helm.release.v1.piraeusoperator-piraeus.v1             helm.sh/release.v1               1      1h
+   sh.helm.release.v1.piraeusoperator-piraeus.v2             helm.sh/release.v1               1      1h
+   ```
+
+7. Use the following command to check each secret for a `pending-install` status label. Replace `<secret-name>` with the
+   name of the secret you want to check.
+
+   ```bash
+   kubectl describe secrets <secret-name> --namespace piraeus-system
+   ```
+
+   ```shell hideClipboard title="Example output" {6}
+   Name:         sh.helm.release.v1.piraeusoperator-piraeus-cluster.v1
+   Namespace:    piraeus-system
+   Labels:       modifiedAt=0123456789
+                 name=piraeusoperator-piraeus-cluster
+                 owner=helm
+                 status=pending-install
+                 version=1
+   Annotations:  <none>
+
+   Type:  helm.sh/release.v1
+
+   Data
+   ====
+   release:  7156 bytes
+   ```
+
+   :::tip
+
+   You can also try using the following command to filter for secrets with a `pending-install` status label.
+
+   ```bash
+   kubectl describe secrets --namespace piraeus-system --selector status=pending-install
+   ```
+
+   :::
+
+8. If you find any secrets with this label, delete them using the following command. Replace `<secret-name>` with the
+   name of the secret you want to delete.
+
+   ```bash
+   kubectl delete secrets <secret-name> --namespace piraeus-system
+   ```
+
+9. After deleting any secrets with a `pending-install` status label, wait for the `piraeus-operator` pack to enter a
+   **Running** status in Local UI. The installation of Palette/VerteX Management Appliance should then proceed
+   successfully.
+
+## Scenario - Unexpected Logouts in Tenant Console After Palette/VerteX Management Appliance Installation
+
+After installing self-hosted Palette/Palette VerteX using the
+[Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) or
+[VerteX Management Appliance](../vertex/install-palette-vertex/vertex-management-appliance.md), you may experience
+unexpected logouts when using the tenant console. This can be caused by a time skew on your Palette/VerteX management
+cluster nodes, which leads to authentication issues.
+
+To verify the system time, open a terminal session on each node in your Palette/VerteX management cluster and issue the
+following command to check the system time.
+
+```bash
+timedatectl
+```
+
+An output similar to the following will be displayed. A time skew is indicated by the `Local time` and `Universal time`
+values being different across the nodes.
+
+<Tabs>
+
+<TabItem value="node1" label="Example output from node 1">
+
+```shell hideClipboard
+               Local time: Fri 2025-07-11 09:41:42 UTC
+           Universal time: Fri 2025-07-11 09:41:42 UTC
+                 RTC time: Fri 2025-07-11 09:41:42
+                Time zone: UTC (UTC, +0000)
+System clock synchronized: no
+              NTP service: active
+          RTC in local TZ: no
+```
+
+</TabItem>
+
+<TabItem value="node2" label="Example output from node 2">
+
+```shell hideClipboard
+               Local time: Fri 2025-07-11 09:41:45 UTC
+           Universal time: Fri 2025-07-11 09:41:45 UTC
+                 RTC time: Fri 2025-07-11 09:41:45
+                Time zone: UTC (UTC, +0000)
+System clock synchronized: no
+              NTP service: active
+          RTC in local TZ: no
+```
+
+</TabItem>
+
+<TabItem value="node3" label="Example output from node 3">
+
+```shell hideClipboard
+               Local time: Fri 2025-07-11 09:41:49 UTC
+           Universal time: Fri 2025-07-11 09:41:49 UTC
+                 RTC time: Fri 2025-07-11 09:41:49
+                Time zone: UTC (UTC, +0000)
+System clock synchronized: no
+              NTP service: active
+          RTC in local TZ: no
+```
+
+</TabItem>
+
+</Tabs>
+
+You may also notice errors in the `auth-*` pod logs in the `hubble-system` namespace similar to the following.
+
+```bash title="Example command to extract logs from auth pod"
+kubectl logs --namespace hubble-system auth-5f95c77cb-49jtv
+```
+
+```shell hideClipboard title="Example output"
+auth-5f95c77cb-49jtv Jul  7 17:22:46.378 ERROR [hubble_token.go:426/hucontext.getClaimsFromToken] [Unable to parse the token 'abcd...1234' due to Token used before
+issued]
+auth-5f95c77cb-49jtv Jul  7 17:22:46.378 ERROR [auth_service.go:282/service.(*AuthService).Logout] [provided token 'xxxxx' is not valid Token used before issued]
+```
+
+This indicates that the system time on your Palette/VerteX management cluster nodes is not synchronized with a Network
+Time Protocol (NTP) server. To resolve this issue, you can configure an NTP server in the Palette/VerteX management
+cluster settings.
+
+### Debug Steps
+
+1. Log in to Local UI of the leader node of your Palette/VerteX management cluster.
+
+2. On the left main menu, click **Cluster**.
+
+3. Click **Actions** in the top-right corner and select **Cluster Settings** from the drop-down menu.
+
+4. In the **Network Time Protocol (NTP) (Optional)** field, enter the NTP server that you want to use for your
+   Palette/VerteX management cluster. For example, you can use `pool.ntp.org` or any other NTP server that is accessible
+   from your Palette/VerteX management cluster nodes.
+
+5. Click **Save Changes** to apply the changes.
+
 ## Scenario - IP Pool Exhausted During Airgapped Upgrade
 
 When upgrading a self-hosted airgapped cluster to version 4.6.32, the IPAM controller may report an `Exhausted IP Pools`
