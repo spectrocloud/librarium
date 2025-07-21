@@ -877,12 +877,14 @@ environment. Reach out to our support team if you need assistance.
     --output jsonpath='{.status.loadBalancer.ingress[0].hostname}'
     ```
 
-    :::info
+    :::warning
 
-    As you create tenants in Palette, the tenant name is prefixed to the domain name you assigned to Palette. For
-    example, if you create a tenant named `tenant1` and the domain name you assigned to Palette is
-    `palette.example.com`, the tenant URL will be `tenant1.palette.example.com`. You can create an additional wildcard
-    DNS record to map all tenant URLs to the Palette load balancer.
+    If Palette has only one tenant and you use local accounts with Single Sign-On (SSO) disabled, you can access Palette
+    using the IP address or any domain name that resolves to that IP. However, once you enable SSO, users must log in
+    using the tenant-specific subdomain. For example, if you create a tenant named `tenant1` and the domain name you
+    assigned to Palette is `palette.example.com`, the tenant URL will be `tenant1.palette.example.com`. We recommend you
+    create an additional wildcard DNS record to map all tenant URLs to the Palette load balancer. For example,
+    `*.palette.example.com`.
 
     :::
 

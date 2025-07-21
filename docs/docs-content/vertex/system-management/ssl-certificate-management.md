@@ -35,9 +35,12 @@ updating the system address may require manual reconciliation on deployed cluste
 - You need to have an x509 certificate and a key file in PEM format. The certificate file must contain the full
   certificate chain. Reach out to your network administrator or security team if you do not have these files.
 
-- Ensure the certificate is created for the custom domain name you specified for your Palette VerteX installation. If
-  you did not specify a custom domain name, the certificate must be created for the Palette VerteX system console's IP
-  address. You can also specify a load balancer IP address if you are using a load balancer to access Palette VerteX.
+- If you installed Palette VerteX on
+  [Kubernetes](../install-palette-vertex/install-on-kubernetes/install-on-kubernetes.md) and specified a custom domain
+  name, ensure that you created a certificate for that domain. If you did not specify a custom domain name, or if you
+  installed Palette VerteX on [VMware](../install-palette-vertex/install-on-vmware/install-on-vmware.md), you must
+  create a certificate for the Palette VerteX system console’s IP address. You can also specify a load balancer IP
+  address if you are using a load balancer to access Palette VerteX.
 
 - The new SSL certificate must also include the previous DNS name or IP address in the Subject Alternative Name (SAN)
   field. This ensures that existing connections are not interrupted.
