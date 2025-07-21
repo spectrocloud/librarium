@@ -44,7 +44,7 @@ updating the system address may require manual reconciliation on deployed cluste
   in Unix-based systems. Alternatively, you can use an online tool to convert the files to base64-encoded strings.
 
 - If you installed Palette VerteX on
-  [Kubernetes](../install-palette-vertex/install-on-kubernetes/install-on-kubernetes.md),and specified a custom domain
+  [Kubernetes](../install-palette-vertex/install-on-kubernetes/install-on-kubernetes.md) and specified a custom domain
   name, ensure that you created a certificate for that domain. If you did not specify a custom domain name, or if you
   installed Palette VerteX on [VMware](../install-palette-vertex/install-on-vmware/install-on-vmware.md), you must
   create a certificate for the Palette VerteX system console’s IP address. You can also specify a load balancer IP
