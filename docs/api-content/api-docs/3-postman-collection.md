@@ -35,7 +35,7 @@ Learn more about [authentication methods](/user-management/authentication/api-ke
 
 Use the following URL to import your configuration into Postman:
 
-https://raw.githubusercontent.com/spectrocloud/librarium/version-4-6/docs/api-content/api-docs/palette-apis.json
+https://raw.githubusercontent.com/spectrocloud/librarium/version-4-7/docs/api-content/api-docs/palette-apis.json
 
 1. Open the **Import** dialog.
 

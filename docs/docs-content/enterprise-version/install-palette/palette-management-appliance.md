@@ -11,6 +11,9 @@ sidebar_position: 20
 
 :::preview
 
+This is a Tech Preview feature and is subject to change. Upgrades from a Tech Preview deployment may not be available.
+Do not use this feature in production workloads.
+
 :::
 
 The Palette Management Appliance is downloadable as an ISO file and is a solution for installing self-hosted Palette on
@@ -74,6 +77,15 @@ Follow the instructions to install Palette using the Palette Management Applianc
   iso="Palette Enterprise"
   app="Palette Management Appliance"
 />
+
+:::warning
+
+If your installation is not successful, verify that the `piraeus-operator` pack was correctly installed. For more
+information, refer to the
+[Self-Hosted Installation - Troubleshooting](../../troubleshooting/enterprise-install.md#scenario---palettevertex-management-appliance-installation-stalled-due-to-piraeus-operator-pack-in-error-state)
+guide.
+
+:::
 
 ### Validate
 

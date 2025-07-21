@@ -15,6 +15,8 @@ partial_name: artifact-studio-signature-verification
 
     <TabItem label="Content Bundle (TAR ZST)" value="tar">
 
+    Replace `<bundle-name>` with the name of the bundle.
+
     ```bash
     openssl dgst -sha256 -verify spectro_public_key.pem -signature <bundle-name>.tar.sig.bin <bundle-name>.tar.zst
     ```
@@ -23,6 +25,8 @@ partial_name: artifact-studio-signature-verification
 
     <TabItem label="Management Appliance (ISO)" value="iso">
 
+    Replace `<management-appliance>` with the name of the appliance.
+
     ```bash
     openssl dgst -sha256 -verify spectro_public_key.pem -signature <management-appliance>.iso.sig.bin <management-appliance>.iso
     ```
@@ -30,6 +34,8 @@ partial_name: artifact-studio-signature-verification
     </TabItem>
 
     <TabItem label="Pack Bundle (ZST)" value="zst">
+
+    Replace `<bundle-name>` with the name of the bundle.
 
     ```bash
     openssl dgst -sha256 -verify spectro_public_key.pem -signature <bundle-name>.sig.bin <bundle-name>.zst
@@ -43,7 +49,7 @@ partial_name: artifact-studio-signature-verification
 
 5. Alternatively, if verifying the signature for a content or pack bundle, use the following sample script to check all files downloaded in the current folder. Substitute `REPLACE ME` with the path to `spectro_public_key.pem`.
 
-   ```shell title="Sample script" {7}
+   ```shell title="Sample script" {10}
     # This script verifies the signatures of data files against a public key.
     # It expects files named like `datafile.zst` and corresponding signatures `datafile.sig.bin`.
     # Ensure you have OpenSSL installed to run this script and that the public key is in PEM format.
@@ -67,21 +73,15 @@ partial_name: artifact-studio-signature-verification
       fi
     done
     ```
+      
+    Next, grant the script execute permissions, and run the script.
 
-   Grant the script execute permissions.
+    ```bash
+    chmod +x verify-signatures.sh
+    ./verify-signatures.sh
+    ```
 
-   ```bash
-   chmod +x verify-signatures.sh
-   ```
-
-   Execute the script. 
-
-   ```bash
-   ./verify-signatures.sh
-   ```
-
-   The output should be similar to the following.
-
+    The output should be similar to the following.
    ```shell title="Example output" hideClipboard
      cni-calico-3.29.2.zst: ✅ Signature valid
      csi-aws-ebs-1.41.0.zst: ✅ Signature valid
