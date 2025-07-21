@@ -287,8 +287,7 @@ through six.
 
     :::tip
 
-    If you need to override the image-swap registry configuration post-deployment, refer to the
-    [Override Registry Configuration](../../../system-management/registry-override.md) page for instructions.
+    If you need to override the image-swap registry configuration post-deployment, refer to the [Override Registry Configuration](../../../system-management/registry-override.md) page for instructions.
 
     :::
 
