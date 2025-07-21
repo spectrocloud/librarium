@@ -135,10 +135,10 @@ the cluster profile.
 | **Pack Type** | **Pack Name**     | **Version** | **Cluster Profile v1.0.0** | **Cluster Profile v1.1.0** |
 | ------------- | ----------------- | ----------- | -------------------------- | -------------------------- |
 | OS            | `ubuntu-vsphere`  | `22.04`     | :white_check_mark:         | :white_check_mark:         |
-| Kubernetes    | `kubernetes`      | `1.28.13`   | :white_check_mark:         | :white_check_mark:         |
-| Network       | `cni-calico`      | `3.27.2`    | :white_check_mark:         | :white_check_mark:         |
-| Storage       | `csi-vsphere-csi` | `3.1.2`     | :white_check_mark:         | :white_check_mark:         |
-| Load Balancer | `lb-metallb-helm` | `0.14.8`    | :white_check_mark:         | :white_check_mark:         |
+| Kubernetes    | `kubernetes`      | `1.32.3`    | :white_check_mark:         | :white_check_mark:         |
+| Network       | `cni-calico`      | `3.29.3`    | :white_check_mark:         | :white_check_mark:         |
+| Storage       | `csi-vsphere-csi` | `3.3.1`     | :white_check_mark:         | :white_check_mark:         |
+| Load Balancer | `lb-metallb-helm` | `0.14.9`    | :white_check_mark:         | :white_check_mark:         |
 | App Services  | `hellouniverse`   | `1.2.0`     | :white_check_mark:         | :white_check_mark:         |
 | App Services  | `cost-analyzer`   | `1.103.3`   | :x:                        | :white_check_mark:         |
 
@@ -229,7 +229,7 @@ Below is the data resource used to query Palette for information about the Kuber
 ```hcl
 data "spectrocloud_pack" "vmware_k8s" {
   name         = "kubernetes"
-  version      = "1.28.13"
+  version      = "1.32.3"
   registry_uid = data.spectrocloud_registry.public_registry.id
 }
 ```
@@ -685,7 +685,7 @@ the following command to stop and remove the container.
 
 ```shell
 docker stop tutorialContainer && \
-docker rmi --force ghcr.io/spectrocloud/tutorials:1.1.10
+docker rmi --force ghcr.io/spectrocloud/tutorials:1.3.0
 ```
 
 </TabItem>
@@ -694,7 +694,7 @@ docker rmi --force ghcr.io/spectrocloud/tutorials:1.1.10
 
 ```shell
 podman stop tutorialContainer && \
-podman rmi --force ghcr.io/spectrocloud/tutorials:1.1.10
+podman rmi --force ghcr.io/spectrocloud/tutorials:1.3.0
 ```
 
 </TabItem>
