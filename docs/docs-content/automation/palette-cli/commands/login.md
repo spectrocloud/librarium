@@ -70,7 +70,7 @@ paletteConfig:
     scarUsername: ""
     scarPassword: ""
   mgmt:
-    apikey: 2abVsxDfFcJpYZ08+6dNWhkk
+    apikey: ************************
     endpoint: https://console.spectrocloud.com
     insecure: false
     pairingcode: ""
