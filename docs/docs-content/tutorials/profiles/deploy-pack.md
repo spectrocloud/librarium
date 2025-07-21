@@ -95,17 +95,17 @@ the currently active containers.
 docker ps
 ```
 
-Use the following command to download the `ghcr.io/spectrocloud/tutorials:1.1.7` image to your local machine. This
+Use the following command to download the `ghcr.io/spectrocloud/tutorials:1.3.0` image to your local machine. This
 Docker image includes the necessary tools.
 
 ```bash
-docker pull ghcr.io/spectrocloud/tutorials:1.1.7
+docker pull ghcr.io/spectrocloud/tutorials:1.3.0
 ```
 
 Next, start the container and open a bash session into it.
 
 ```bash
-docker run --name tutorialContainer --publish 7000:5000 --interactive --tty ghcr.io/spectrocloud/tutorials:1.1.7 bash
+docker run --name tutorialContainer --publish 7000:5000 --interactive --tty ghcr.io/spectrocloud/tutorials:1.3.0 bash
 ```
 
 </TabItem>
@@ -118,17 +118,17 @@ Ensure that Podman is available by issuing a command to list the currently activ
 podman ps
 ```
 
-Use the following command to download the `ghcr.io/spectrocloud/tutorials:1.1.7` image to your local machine. This image
+Use the following command to download the `ghcr.io/spectrocloud/tutorials:1.3.0` image to your local machine. This image
 includes the necessary tools.
 
 ```bash
-podman pull ghcr.io/spectrocloud/tutorials:1.1.7
+podman pull ghcr.io/spectrocloud/tutorials:1.3.0
 ```
 
 Next, start the container and open a bash session into it.
 
 ```bash
-podman run --name tutorialContainer --publish 7000:5000 --interactive --tty ghcr.io/spectrocloud/tutorials:1.1.7 bash
+podman run --name tutorialContainer --publish 7000:5000 --interactive --tty ghcr.io/spectrocloud/tutorials:1.3.0 bash
 ```
 
 </TabItem>
