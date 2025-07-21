@@ -267,8 +267,7 @@ environment. Reach out to our support team if you need assistance.
     kubectl create --filename registry-secret.yaml
     ```
 
-Install the image-swap chart using the following command. Point to the **values.yaml** file you configured in steps five
-through six.
+    Install the image-swap chart using the following command. Point to the **values.yaml** file you configured in steps five through six.
 
     ```shell
     helm upgrade --values extras/image-swap/values.yaml \
@@ -284,10 +283,11 @@ through six.
     REVISION: 1
     TEST SUITE: None
     ```
-    
+
     :::tip
     
-    If you need to override the image-swap registry configuration post-deployment, refer to the [Override Registry Configuration](../../../system-management/registry-override.md) page for instructions.
+    If you need to override the image-swap registry configuration post-deployment, refer to the
+    [Override Registry Configuration](../../../system-management/registry-override.md) page for instructions.
     
     :::
 
@@ -312,9 +312,7 @@ through six.
     | `ingress.enabled`                   | Whether to install the Nginx ingress controller. Set this to `false` if you already have an Nginx controller deployed in the cluster.                                                                                                                                                                                                                 | boolean  |
     | `reach-system`                      | Set `reach-system.enabled` to `true` and configure the `reach-system.proxySettings` parameters for Palette to use a network proxy in your environment.                                                                                                                                                                                                | object   |
 
-    Save the **values.yaml** file after you have populated the required parameters mentioned in the table.
-
-    Select one of the following tabs to review an example of the **values.yaml** file with the required parameters highlighted.
+    Save the **values.yaml** file after you have populated the required parameters mentioned in the table. Select one of the following tabs to review an example of the **values.yaml** file with the required parameters highlighted.
 
     <!-- prettier-ignore -->
     <Tabs>
@@ -796,7 +794,7 @@ through six.
 
     :::
 
-14. This step is only required if you are installing Palette in an environment where a network proxy must be configured
+13. This step is only required if you are installing Palette in an environment where a network proxy must be configured
     for Palette to access the internet. If you are not using a network proxy, skip to the next step.
 
     Install the reach-system chart using the following command. Point to the **values.yaml** file you configured in step
@@ -836,7 +834,7 @@ through six.
 
     </details>
 
-15. Install the Palette Helm Chart using the following command.
+14. Install the Palette Helm Chart using the following command.
 
     ```shell
     helm upgrade --values palette/values.yaml \
@@ -853,7 +851,7 @@ through six.
     TEST SUITE: None
     ```
 
-16. Track the installation process using the command below. Palette is ready when the deployments in the namespaces
+15. Track the installation process using the command below. Palette is ready when the deployments in the namespaces
     `cp-system`, `hubble-system`, `ingress-nginx`, `jet-system`, and `ui-system` reach the _Ready_ state. The
     installation takes two to three minutes to complete.
 
@@ -868,7 +866,7 @@ through six.
 
     :::
 
-17. Create a DNS CNAME record that is mapped to the Palette `ingress-nginx-controller` load balancer. You can use the
+16. Create a DNS CNAME record that is mapped to the Palette `ingress-nginx-controller` load balancer. You can use the
     following command to retrieve the load balancer IP address. You may require the assistance of your network
     administrator to create the DNS record.
 
@@ -888,7 +886,7 @@ through six.
 
     :::
 
-18. Use the custom domain name or the IP address of the load balancer to visit the Palette system console. To access the
+17. Use the custom domain name or the IP address of the load balancer to visit the Palette system console. To access the
     system console, open a web browser, paste the custom domain URL in the address bar, and append the value `/system`.
 
     The first time you visit the Palette system console, a warning message about a not-trusted SSL certificate may
@@ -897,7 +895,7 @@ through six.
 
     ![Screenshot of the Palette system console showing Username and Password fields.](/palette_installation_install-on-vmware_palette-system-console.webp)
 
-19. Log in to the system console using the following default credentials. Refer to the
+18. Log in to the system console using the following default credentials. Refer to the
     [password requirements](../../../system-management/account-management/credentials.md#password-requirements-and-security)
     documentation page to learn more about password requirements.
 
@@ -912,7 +910,7 @@ through six.
     Refer to the [Account Management](../../../system-management/account-management/account-management.md) documentation
     page for more information.
 
-20. After login, a summary page is displayed. Palette is installed with a self-signed SSL certificate. To assign a
+19. After login, a summary page is displayed. Palette is installed with a self-signed SSL certificate. To assign a
     different SSL certificate, you must upload the SSL certificate, SSL certificate key, and SSL certificate authority
     files to Palette. You can upload the files using the Palette system console. Refer to the
     [Configure HTTPS Encryption](../../../system-management/ssl-certificate-management.md) page for instructions on how
