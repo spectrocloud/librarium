@@ -231,7 +231,7 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 | Pack Name                                | New Version |
 | ---------------------------------------- | ----------- |
-| Palette Optimized Canonical              | 1.32.5      |
+| Palette Optimized Canonical              | 1.33.0      |
 | Palette Optimized K3s                    | 1.33.1      |
 | Palette Optimized K3s                    | 1.32.4      |
 | Palette Optimized K3s                    | 1.31.8      |
