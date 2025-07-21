@@ -20,8 +20,9 @@ The VerteX Management Appliance is downloadable as an ISO file and is a solution
 infrastructure. The ISO file contains all the necessary components needed for Palette to function. The ISO file is used
 to boot the nodes, which are then clustered to form a Palette management cluster.
 
-Once Palette VerteX has been installed, you can download pack bundles to create your cluster profiles. You will then be
-able to deploy clusters in your environment.
+Once Palette VerteX has been installed, you can download pack bundles and upload them to the internal Zot registry or an
+external registry. These pack bundles are used to create your cluster profiles. You will then be able to deploy clusters
+in your environment.
 
 ## Architecture
 
@@ -49,6 +50,10 @@ The VerteX Management Appliance can be used on the following infrastructure plat
 - VMware vSphere
 - Bare Metal
 - Machine as a Service (MAAS)
+
+## Limitations
+
+- Only public image registries are supported if you are choosing to use an external registry for your pack bundles.
 
 ## Installation Steps
 
