@@ -286,9 +286,7 @@ through six.
     ```
 
     :::tip
-
     If you need to override the image-swap registry configuration post-deployment, refer to the [Override Registry Configuration](../../../system-management/registry-override.md) page for instructions.
-
     :::
 
 12. Open the **values.yaml** file in the **spectro-mgmt-plane** folder with a text editor of your choice. The
