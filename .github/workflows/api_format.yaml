@@ -54,6 +54,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           token: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
+          ref: ${{ github.head_ref }}
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v4
@@ -82,8 +83,7 @@ jobs:
           commit_message: "ci: auto-formatting API changes"
           file_pattern: '*.json **.json **/*.json'
           disable_globbing: true
-
-
+          branch: ${{ github.head_ref }}
 
       - name: Slack Notification
         if: ${{ failure() }}
