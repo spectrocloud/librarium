@@ -634,7 +634,7 @@ the following command to stop and remove the container.
 
 ```shell
 docker stop tutorialContainer && \
-docker rmi --force ghcr.io/spectrocloud/tutorials:1.1.10
+docker rmi --force ghcr.io/spectrocloud/tutorials:1.3.0
 ```
 
 </TabItem>
@@ -643,7 +643,7 @@ docker rmi --force ghcr.io/spectrocloud/tutorials:1.1.10
 
 ```shell
 podman stop tutorialContainer && \
-podman rmi --force ghcr.io/spectrocloud/tutorials:1.1.10
+podman rmi --force ghcr.io/spectrocloud/tutorials:1.3.0
 ```
 
 </TabItem>
