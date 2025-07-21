@@ -11,6 +11,15 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## July 23, 2025 - Release 4.6.X
+
+### Bug Fixes
+
+- Fixed an issue that caused some sensitive information to appear in the install logs of
+  [Edge clusters](../clusters/edge/edge.md).
+- Fixed an issue that caused masked cluster profile variable values to be displayed as plain text in
+  [Edge Management API](/api/introduction/#edge-management-api)responses.
+
 ## July 15, 2025 - Release 4.6.43
 
 ### Bug Fixes
