@@ -25,7 +25,7 @@ fi
 echo "Temp directory: $tempdir"
 echo "Base directory: $baseDir"
 # List of version branches to exclude
-exclude_branches=(version-3-4 version-4-0 version-4-1 version-4-2 version-4-3 version-4-4) # DO NOT ADD A COMMA BETWEEN THE BRANCHES. ADD A SPACE INSTEAD AND THE NEW VERSION STRING.
+exclude_branches=(version-3-4 version-4-0 version-4-1 version-4-2 version-4-3 version-4-4 version-4-5) # DO NOT ADD A COMMA BETWEEN THE BRANCHES. ADD A SPACE INSTEAD AND THE NEW VERSION STRING.
 # exclude_branches=("version-3-4")
 
 # Save the current branch name

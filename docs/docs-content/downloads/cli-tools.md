@@ -3,7 +3,7 @@ sidebar_label: "CLI Tools"
 title: "CLI Tools"
 description: "Overview of the CLI tool downloads and their respective URL and checksums."
 hide_table_of_contents: false
-sidebar_position: 10
+sidebar_position: 20
 sidebar_custom_props:
   icon: "terminal"
 tags: ["downloads", "palette-cli"]
@@ -27,6 +27,7 @@ The Palette CLI is supported on Linux operating systems running on AMD64 (x86_64
 
 | Palette Release <!-- palette-cli-version-table --> | Recommended CLI Version          | Download URL                                                           | Checksum (SHA256)                                                  |
 | -------------------------------------------------- | -------------------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| <!-- cli-4-7-0 --> 4.7.3                           | 4.7.0                            | https://software.spectrocloud.com/palette-cli/v4.7.0/linux/cli/palette | `743300629069d89d9a40acc3c3463e427adcc3b80fbdc4b1806badbaea5fc1f5` |
 | <!-- cli-4.6.x --> 4.6.40                          | 4.6.8                            | https://software.spectrocloud.com/palette-cli/v4.6.8/linux/cli/palette | `33a81b1ddfcaf35bef73e6f8ae7016f1dd30bce16af74eeeb53e0f3209fcdcc4` |
 | <!-- cli-4.6.c --> 4.6.32                          | 4.6.6                            | https://software.spectrocloud.com/palette-cli/v4.6.6/linux/cli/palette | `5884500e5a04a7c2beb573674eb78a8804794a0dd25e4da5b38829e7303a29fe` |
 | <!-- cli-4.6.b --> 4.6.23                          | <!-- palette-cli-4.6.b --> 4.6.5 | https://software.spectrocloud.com/palette-cli/v4.6.5/linux/cli/palette | `b56af3f083130ca0665e8c0a4f3e2d903572209f714a50f19c0110452122e28d` |
@@ -48,6 +49,7 @@ The Palette Edge CLI is supported on Linux operating systems running on AMD64 (x
 
 | Palette Release <!-- edge-version-table --> | CLI Version                | Download URL                                                            | Checksum (SHA256)                                                  |
 | ------------------------------------------- | -------------------------- | ----------------------------------------------------------------------- | ------------------------------------------------------------------ |
+| <!-- edge-4-7-0 --> 4.7.3                   | 4.7.2                      | https://software.spectrocloud.com/stylus/v4.7.2/cli/linux/palette-edge  | `8a68c6eacff423d48d48ce2d9420b98832dd65660ddc9115562a530d5c325ebc` |
 | <!-- edge-4.6.x --> 4.6.40                  | 4.6.24                     | https://software.spectrocloud.com/stylus/v4.6.24/cli/linux/palette-edge | `c90741bb2e959e8188337bd6ece73f67d6512c5f20e9c79a64b01aab9c0708de` |
 | <!-- edge-4.6.c --> 4.6.32                  | 4.6.21                     | https://software.spectrocloud.com/stylus/v4.6.21/cli/linux/palette-edge | `17e057172b8b2cd42cdc5aff0735dfdff6e864ec03b5404e18ae130bfd315b87` |
 | <!-- edge-4.6.b --> 4.6.23                  | <!-- edge-4.6.b --> 4.6.16 | https://software.spectrocloud.com/stylus/v4.6.16/cli/linux/palette-edge | `628c3668633943e9fd4b7859093948843d508494ec88b906f75aea9e80ec0f5f` |
