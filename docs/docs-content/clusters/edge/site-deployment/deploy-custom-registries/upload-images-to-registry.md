@@ -125,7 +125,7 @@ download the images and upload them to the external registry.
        {
          "endpoint": "ttl.sh",
          "username": "admin",
-         "password": "Welc0me!123"
+         "password": "*********"
        },
        {
          "endpoint": "docker.io",
