@@ -9,25 +9,25 @@ hide_table_of_contents: false
 version of the open source Cloud Native Computing Foundation (CNCF) distribution of Kubernetes. This Kubernetes version
 can be deployed through Palette to all major infrastructure providers, public cloud providers, and private data center
 providers. This is the default distribution when deploying a Kubernetes cluster through Palette. For Edge deployments,
-we also offer Palette eXtended Kubernetes - Edge (PXK-E), which is a version of PXK specifically designed for Edge
+we also offer <VersionedLink text="Palette eXtended Kubernetes - Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" />, which is a version of PXK specifically designed for Edge
 deployments.
 
-PXK and <VersionedLink text="Palette eXtended Kubernetes - Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" />
+PXK and PXK-E
 share the core Cloud Native Computing Foundation (CNCF) binaries, with out-of-the-box security hardening that makes them
-ideal for production workloads without manual intervention. The following table offers a comparison overview between PXK
+ideal for production workloads without manual intervention. The following table offers a comparative overview between PXK
 and CNCF kubeadm.
 
 | Feature                 | PXK                      | kubeadm         |
 | ----------------------- | ------------------------ | --------------- |
 | Audit logging           | ✅ Enabled               | ❌ Manual       |
 | PodSecurity admission   | ✅ Enabled + configured  | ❌ Not enabled  |
-| Hardened Kubelet config | ✅ Enforced              | ❌ Optional     |
+| Hardened kubelet config | ✅ Enforced              | ❌ Optional     |
 | Kernel tuning           | ✅ Applied automatically | ❌ Manual       |
 | Lifecycle hooks         | ✅ Pre/Post support      | ❌ Not built-in |
 
 ## Shared Core with CNCF-Distribution Kubeadm
 
-The default, non-FIPS-compliant variants of PXK and PXK-E use official upstream images from registry.k8s.io, the same
+The default, non-FIPS-compliant variants of PXK and PXK-E use official upstream images from `registry.k8s.io`, the same
 registry used by CNCF distributions. These images include all essential components:
 
 - kube-apiserver
@@ -38,7 +38,7 @@ registry used by CNCF distributions. These images include all essential componen
 - CoreDNS
 - pause
 
-The FIPS-compliant variant of PXK and PXK-E, used in Palette VerteX, do not use upstream images directly. Instead they
+The FIPS-compliant variants of PXK and PXK-E, used in Palette VerteX, do not use upstream images directly. Instead, they
 use images recompiled with FIPS-compliant cryptographic libraries. For more information, refer to
 [FIPS-Compliant Components](../vertex/fips/fips-compliant-components.md).
 
@@ -56,10 +56,10 @@ to learn about all the configurations exposed in the
 
 In addition to being CNCF-conformant, PXK comes with out-of-the-box security hardening:
 
-- PodSecurity admission enabled with baseline enforcement and strict warning
-- Audit logging configured with sane filters and volume mounts
-- Secure API server flags
-- Kubelet hardened with read-only port disabled and cert rotation
+- PodSecurity admission enabled with baseline enforcement and strict warning.
+- Audit logging configured with sane filters and volume mounts.
+- Secure API server flags.
+- Kubelet hardened with read-only port disabled and cert rotation.
 
 These security hardening measures make your clusters production ready without manual security intervention.
 
@@ -68,7 +68,7 @@ These security hardening measures make your clusters production ready without ma
 By default, PXK applies Linux kernel parameter tuning that aligns with Kubernetes best practices and production
 hardening:
 
-- Allows VM memory overcommit to ensure predictable memory allocation behavior for Pods.
+- Allows VM memory overcommit to ensure predictable memory allocation behavior for pods.
 - Automatically reboots the node 10 seconds after a kernel panic.
 - Treats kernel “oops” events as fatal, triggering panic and recovery.
 
@@ -97,7 +97,7 @@ between PXK and PXK-E.
 | Feature                   | PXK                                         | PXK-E                                                                       |
 | ------------------------- | ------------------------------------------- | --------------------------------------------------------------------------- |
 | Supported deployment mode | Controller mode                             | Appliance mode or agent mode                                                |
-| Pod security admission    | ✅ Included                                 | Not explicitly configured                                                   |
+| Pod security admission    | Included                                 | Not explicitly configured                                                   |
 | Kubelet config            | `kubeletExtraArgs` + sysctl files           | Native `kubeletConfiguration` block                                         |
 | Audit policy              | External file (mounted)                     | Inline YAML                                                                 |
 | Lifecycle hooks           | `preKubeadmCommands`, `postKubeadmCommands` | Uses [cloud-init stages](../clusters/edge/edge-configuration/cloud-init.md) |
