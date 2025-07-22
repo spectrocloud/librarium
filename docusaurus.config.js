@@ -149,7 +149,7 @@ const config = {
       lightningCssMinimizer: true,
       rspackBundler: true,
       mdxCrossCompilerCache: true,
-    }
+    },
   },
   customFields: {
     // Used to access the environment variable in the build process during the client-side step
