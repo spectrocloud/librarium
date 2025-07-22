@@ -140,15 +140,15 @@ const config = {
     v4: {
       removeLegacyPostBuildHeadAttribute: true, // required
     },
-    experimental_faster: true, 
-      // ssgWorkerThreads: true,
-      // swcJsLoader: false, // Set to 'false' as Netlify builds fail with this enabled.
-      // swcJsMinimizer: true,
-      // swcHtmlMinimizer: true,
-      // lightningCssMinimizer: true,
-      // rspackBundler: true,
-      // mdxCrossCompilerCache: true,
-    },
+    experimental_faster: true,
+    // ssgWorkerThreads: true,
+    // swcJsLoader: false, // Set to 'false' as Netlify builds fail with this enabled.
+    // swcJsMinimizer: true,
+    // swcHtmlMinimizer: true,
+    // lightningCssMinimizer: true,
+    // rspackBundler: true,
+    // mdxCrossCompilerCache: true,
+  },
   // },
   customFields: {
     // Used to access the environment variable in the build process during the client-side step
