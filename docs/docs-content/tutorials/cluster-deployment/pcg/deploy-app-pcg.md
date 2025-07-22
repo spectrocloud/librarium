@@ -267,11 +267,11 @@ overview of each file.
   | Pack Name            | Version | Layer            |
   | -------------------- | ------- | ---------------- |
   | `ubuntu-vsphere LTS` | 22.4.x  | Operating System |
-  | `kubernetes`         | 1.28.x  | Kubernetes       |
-  | `cni-calico`         | 3.26.x  | Network          |
-  | `csi-vsphere-csi`    | 3.0.x   | Storage          |
-  | `lb-metallb-helm`    | 0.13.x  | Load Balancer    |
-  | `hello-universe`     | 1.1.x   | App Service      |
+  | `kubernetes`         | 1.32.3  | Kubernetes       |
+  | `cni-calico`         | 3.29.3  | Network          |
+  | `csi-vsphere-csi`    | 3.3.1   | Storage          |
+  | `lb-metallb-helm`    | 0.14.9  | Load Balancer    |
+  | `hello-universe`     | 1.2.0   | App Service      |
 
   The <VersionedLink text="MetalLB" url="/integrations/packs/?pack=lb-metallb-helm"/> pack provides a load-balancer
   implementation for your Kubernetes cluster, as VMware does not offer a load balancer solution natively. The load
