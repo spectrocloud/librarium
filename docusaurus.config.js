@@ -144,7 +144,7 @@ const config = {
     experimental_faster: {
       ssgWorkerThreads: true,
       swcJsLoader: false, // Set to 'false' as Netlify builds fail with this enabled.
-      swcJsMinimizer: true,
+      swcJsMinimizer: false,
       swcHtmlMinimizer: true,
       lightningCssMinimizer: true,
       rspackBundler: true,
