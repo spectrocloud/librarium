@@ -9,21 +9,21 @@ hide_table_of_contents: false
 version of the open source Cloud Native Computing Foundation (CNCF) distribution of Kubernetes. This Kubernetes version
 can be deployed through Palette to all major infrastructure providers, public cloud providers, and private data center
 providers. This is the default distribution when deploying a Kubernetes cluster through Palette. For Edge deployments,
-we also offer <VersionedLink text="Palette eXtended Kubernetes - Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" />, which is a version of PXK specifically designed for Edge
-deployments.
+we also offer
+<VersionedLink text="Palette eXtended Kubernetes - Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" />, which is a
+version of PXK specifically designed for Edge deployments.
 
-PXK and PXK-E
-share the core Cloud Native Computing Foundation (CNCF) binaries, with out-of-the-box security hardening that makes them
-ideal for production workloads without manual intervention. The following table offers a comparative overview between PXK
-and CNCF kubeadm.
+PXK and PXK-E share the core Cloud Native Computing Foundation (CNCF) binaries, with out-of-the-box security hardening
+that makes them ideal for production workloads without manual intervention. The following table offers a comparative
+overview between PXK and CNCF kubeadm.
 
-| Feature                 | PXK                      | kubeadm         |
-| ----------------------- | ------------------------ | --------------- |
-| Audit logging           | ✅ Enabled               | ❌ Manual       |
-| PodSecurity admission   | ✅ Enabled + configured  | ❌ Not enabled  |
-| Hardened kubelet config | ✅ Enforced              | ❌ Optional     |
-| Kernel tuning           | ✅ Applied automatically | ❌ Manual       |
-| Lifecycle hooks         | ✅ Pre/Post support      | ❌ Not built-in |
+| Feature                 | PXK                      | kubeadm                    |
+| ----------------------- | ------------------------ | -------------------------- |
+| Audit logging           | ✅ Enabled               | ❌ Not enabled by default  |
+| PodSecurity admission   | ✅ Enabled + configured  | ❌ Not enabled by default  |
+| Hardened kubelet config | ✅ Enforced              | ❌ Not enforced by default |
+| Kernel tuning           | ✅ Applied automatically | ❌ Manual                  |
+| Lifecycle hooks         | ✅ Pre/Post support      | ❌ Not built-in            |
 
 ## Shared Core with CNCF-Distribution Kubeadm
 
@@ -97,7 +97,7 @@ between PXK and PXK-E.
 | Feature                   | PXK                                         | PXK-E                                                                       |
 | ------------------------- | ------------------------------------------- | --------------------------------------------------------------------------- |
 | Supported deployment mode | Controller mode                             | Appliance mode or agent mode                                                |
-| Pod security admission    | Included                                 | Not explicitly configured                                                   |
+| Pod security admission    | Included                                    | Not explicitly configured                                                   |
 | Kubelet config            | `kubeletExtraArgs` + sysctl files           | Native `kubeletConfiguration` block                                         |
 | Audit policy              | External file (mounted)                     | Inline YAML                                                                 |
 | Lifecycle hooks           | `preKubeadmCommands`, `postKubeadmCommands` | Uses [cloud-init stages](../clusters/edge/edge-configuration/cloud-init.md) |
