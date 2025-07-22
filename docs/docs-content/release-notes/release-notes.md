@@ -11,6 +11,13 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## July 23, 2025 - Release 4.6.7
+
+### Bug Fixes
+
+- Fixed an issue where the Palette agent failed to start when using a [MAAS PCG](../clusters/pcg/deploy-pcg/maas.md)
+  with the `maas-preferred-subnet` ConfigMap.
+
 ## July 19, 2025 - Release 4.7.0 - 4.7.3 {#release-notes-4.7.0}
 
 ### Security Notices
