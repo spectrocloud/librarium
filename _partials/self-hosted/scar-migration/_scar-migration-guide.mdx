@@ -1,0 +1,286 @@
+---
+partial_category: self-hosted
+partial_name: scar-migration-guide
+---
+
+1. In a terminal with connectivity to your {props.edition} cluster, delete any existing secrets named `spectro-manifest-registry-secrets` in the `hubble-system` namespace.
+
+    ```shell
+    kubectl delete secret spectro-manifest-registry-secrets --nampespace hubble-system
+    ```
+
+    ```text hideClipboard
+    secret "spectro-manifest-registry-secrets" deleted
+    ```
+
+2.  Next, open a terminal window in the environment hosting the file server and navigate to the folder where the {props.edition}
+    manifests are stored. For example, if you deployed an airgapped instance of {props.edition} to VMware using an <PaletteVertexUrlMapper
+    edition={props.edition}
+    text="OVA"
+    palettePath="/install-palette/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions"
+    vertexPath="/install-palette-vertex/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions"
+  />, navigate to the `/var/www/html/`
+    directory.
+
+    ```shell
+    cd /var/www/html/
+    ```
+
+    Alternatively, if you deployed {props.edition} in an airgapped Kubernetes environment using <PaletteVertexUrlMapper
+    edition={props.edition}
+    text="Helm charts"
+    palettePath="/install-palette/install-on-kubernetes/airgap-install/kubernetes-airgap-instructions"
+    vertexPath="/install-palette-vertex/install-on-kubernetes/airgap-install/kubernetes-airgap-instructions"
+  />, navigate to the directory served by the file server you configured. 
+
+3.  Compress the folder contents into an archive file called `manifests.tgz`. Issue the following command to create the
+    archive.
+
+    ```shell
+    tar -czvf manifests.tgz .
+    ```
+
+4.  After compressing the files, authenticate with the OCI registry that hosts the {props.edition} images and packs.
+
+    :::tip
+
+    If you deployed an airgapped instance of {props.edition} to VMware using an <PaletteVertexUrlMapper
+    edition={props.edition}
+    text="OVA"
+    palettePath="/install-palette/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions"
+    vertexPath="/install-palette-vertex/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions"
+    />, the OCI registry address is provided by the `airgap-setup.sh` script output. Alternatively, if you
+    deployed {props.edition} to an existing Kubernetes cluster using <PaletteVertexUrlMapper
+    edition={props.edition}
+    text="Helm charts"
+    palettePath="/install-palette/install-on-kubernetes/airgap-install/kubernetes-airgap-instructions"
+    vertexPath="/install-palette-vertex/install-on-kubernetes/airgap-install/kubernetes-airgap-instructions"
+    />, contact your cluster administrator for the OCI
+    registry configuration.
+
+    :::
+
+    <!-- prettier-ignore -->
+    <Tabs groupId="registry">
+    <TabItem label="Harbor" value="Harbor_Registry">
+
+    Use `oras` to log in to your OCI registry. Replace the values below with your environment configuration. For
+    additional information about CLI flags and examples, check out the
+    [oras login](https://oras.land/docs/commands/oras_login) documentation. Replace `<harbor-address>` with the address
+    of your Harbor registry without the `https://` prefix, and `<harbor-username>` and `<harbor-password>` with your
+    Harbor credentials.
+
+        ```shell
+        oras login <harbor-address> --username <harbor-username> --password <harbor-password>
+        ```
+
+        If you are using a Harbor registry with a self-signed certificate, you must add the `--insecure` flag according to the following example.
+
+        ```shell
+        oras login <harbor-address> --insecure --username <harbor-username> --password <harbor-password>
+        ```
+
+        If the login is successful, you will receive the following confirmation message.
+
+        ```hideClipboard
+        Login Succeeded
+        ```
+
+    <!-- prettier-ignore -->
+    </TabItem>
+    <TabItem label="ECR" value="ECR_Registry">
+
+    Authenticate to your ECR registry using the `aws ecr get-login-password` command. This command generates an ECR
+    authorization token, which is then passed to the `oras login` command with `AWS` as username. Replace `<aws-region>`
+    with the AWS region where your ECR registry is configured, and `<aws-account-id>` with your AWS account ID.
+
+        ```bash
+        aws ecr get-login-password --region <aws-region> | oras login --username AWS --password-stdin <aws-account-id>.dkr.ecr.<aws-region>.amazonaws.com
+        ```
+
+        If the login is successful, you will receive the following confirmation message.
+
+        ```hideClipboard
+        Login Succeeded
+        ```
+
+    <!-- prettier-ignore -->
+    </TabItem>
+    </Tabs>
+
+5.  Push the `manifests.tgz` file to your OCI registry.
+    <!-- prettier-ignore -->
+    <Tabs groupId="registry">
+    <TabItem label="Harbor" value="Harbor_Registry">
+
+    Issue the following command to push the `manifests.tgz` file to your Harbor registry. Replace `<harbor-address>` with the address of your Harbor registry.
+
+        ```shell
+        oras push <harbor-address>/spectro-packs/spectro-manifests/manifest:0.0.0 manifests.tgz
+        ```
+
+    <!-- prettier-ignore -->
+    </TabItem>
+    <TabItem label="ECR" value="ECR_Registry">
+
+    Issue the following command to push the `manifests.tgz` file to your ECR registry. Replace `<aws-region>` with the AWS region where your ECR registry is configured and `<aws-account-id>` with your AWS account ID.
+
+        ```shell
+        oras push <aws-account-id>.dkr.ecr.<aws-region>.amazonaws.com/spectro-packs/spectro-manifests/manifest:0.0.0 manifests.tgz
+        ```
+
+    <!-- prettier-ignore -->
+    </TabItem>
+    </Tabs>
+
+6.  Next, login to the {props.edition} system console and select **Administration** from the left **Main Menu**.
+
+7.  Select the **Pack Registries** tab, click the **three-dot Menu** at the end of the OCI registry row, and then select **Edit**.
+
+8.  Check the **Contains Spectro Manifests** box, click **Validate**, and then click **Confirm**.
+
+    ![View of the 'Contains Spectro Manifests' OCI registry box.](/enterprise-version_system-management_scar-migration.webp)
+
+9.  In a terminal with connectivity to your {props.edition} cluster, issue the following command to verify that the `Specman`
+    service is fetching the content pushed to the OCI registry in step **5** of this guide, with the tag `0.0.0`.
+
+    ```shell
+    kubectl logs --namespace hubble-system specman-0
+    ```
+
+    ```text hideClipboard
+    time="2024-12-06T12:43:14Z" level=info msg="Syncing with OCI repo"
+    time="2024-12-06T12:43:14Z" level=info msg="tags[4.5.13 4.5.15 0.0.0]"
+    time="2024-12-06T12:43:14Z" level=info msg="Downloading 0.0.0"
+    time="2024-12-06T12:43:14Z" level=info msg="tags[4.5.13 4.5.15 0.0.0]"
+    time="2024-12-06T12:43:14Z" level=info msg="Downloading 0.0.0"
+    time="2024-12-06T12:43:14Z" level=info msg="listing dir /tmp/0.0.03808764833"
+    time="2024-12-06T12:43:14Z" level=info msg="filename: manifests.tgz, isDir: false"
+    time="2024-12-06T12:43:14Z" level=info msg="Persisting 0.0.0"
+    ```
+
+10.  The final step to complete the migration involves updating the SCAR endpoint to the internal HTTP server endpoint
+    that now serves the {props.edition} manifests: `https://specman-service.hubble-system.svc.cluster.local:8443`. Issue the
+    following command to create the script responsible for updating the endpoint.
+
+        ```shell
+        cat << 'EOF1' > scar-registry-update.sh
+        #!/bin/bash
+        ###############################################################################
+        # Usage:
+        # ./ec-scar-registry-update.sh https://<PALETTE_URL> admin <SYS_ADMIN_PASSWORD>
+        ###############################################################################
+        #
+
+        set -u
+        set -x
+
+        export ENDPOINT=$1
+        export SYSTEM_ADMIN_USERNAME=$2
+        export SYSTEM_ADMIN_PASSWORD=$3
+
+        export SCAR_ENDPOINT=https://specman-service.hubble-system.svc.cluster.local:8443
+        export SCAR_USERNAME=
+        export SCAR_PASSWORD=
+
+        auth_request() {
+        cat <<EOF
+        {
+            "username": "${SYSTEM_ADMIN_USERNAME}",
+            "password": "${SYSTEM_ADMIN_PASSWORD}"
+        }
+        EOF
+        }
+
+        scar_request(){
+        cat <<EOF
+        {
+            "endpoint": "${SCAR_ENDPOINT}",
+            "password": "${SCAR_PASSWORD}",
+            "username": "${SCAR_USERNAME}"
+        }
+        EOF
+        }
+
+        get_auth_token() {
+        authtoken=$(curl -k --location --silent --request POST "${ENDPOINT}/v1/auth/syslogin?setCookie=true" \
+            --header 'Content-Type: application/json' \
+            --data "$(auth_request)" | jq ."Authorization")
+        if [[ "${authtoken}" == null ]]; then
+            echo "Error Logging in. Please check the credentials and URL"
+            exit 1
+        fi
+        }
+
+        update_scar_repo() {
+        response=$(curl -k --write-out '%{http_code}' --silent --output /dev/null --location --request PUT "${ENDPOINT}/v1/system/config/scar" \
+            --header 'Content-Type: application/json' \
+            --header 'Accept: application/json' \
+            --header "Cookie: Authorization=${authtoken}" \
+            --data-raw "$(scar_request)")
+        if [[ "${response}" != "204" ]]; then
+            echo "Error: Unable to update the Scar Repo"
+        else
+            echo "Success Setting the Scar Repo. Waiting for a minute to get the changes syncing"
+            sleep 60
+        fi
+        }
+
+        update_instance_type() {
+        response=$(curl -k --write-out '%{http_code}' --location "${ENDPOINT}/v1/jobs/internal/syncCloudInstanceTypesData/run" \
+            --header 'Content-Type: application/json' \
+            --header 'Accept: application/json' \
+            --header "Cookie: Authorization=${authtoken}")
+        if [[ "${response}" != "204" ]]; then
+            echo "Error: Unable to update the Instance Type"
+        else
+            echo "Started Syncing Storage Type from the palette Service"
+        fi
+        }
+
+        update_storage_type() {
+        response=$(curl -k --write-out '%{http_code}' --location "${ENDPOINT}/v1/jobs/internal/syncCloudStorageTypesData/run" \
+            --header 'Content-Type: application/json' \
+            --header 'Accept: application/json' \
+            --header "Cookie: Authorization=${authtoken}")
+        if [[ "${response}" != "204" ]]; then
+            echo "Error: Unable to update the Storage Type"
+        else
+            echo "Started Syncing Storage Type from the palette Service"
+        fi
+        }
+
+        get_auth_token
+        update_scar_repo
+        update_instance_type
+        update_storage_type
+
+        echo "Wait for 5 minute for the sync process to complete."
+        EOF1
+        ```
+
+11. Grant execution permissions to the `scar-registry-update.sh` script.
+
+    ```shell
+    chmod +x scar-registry-update.sh
+    ```
+
+12. Invoke the script to update the SCAR endpoint. Replace `<cluster-url>` with the address of your {props.edition} instance and
+    `<sys-admin-password>` with the system administrator password.
+
+    ```shell
+    ./scar-registry-update.sh <cluster-url> admin <sys-admin-password>
+    ```
+
+    Consider the following example for reference.
+
+    ```shell hideClipboard
+    ./scar-registry-update.sh https://example.spectrocloud.com admin examplepassword
+    ```
+
+    The following message confirms that the script has completed its tasks.
+
+    ```text hideClipboard
+    Wait for 5 minutes for the sync process to complete.
+    ```
+    You have now migrated SCAR to the OCI registry that hosts the {props.edition} images and packs. In subsequent releases, the {props.edition} airgap installation binary will handle pushing the new manifest to the OCI registry.

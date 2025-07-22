@@ -385,7 +385,7 @@ export default function PacksReadme() {
                 className={styles.versionSelectBox}
                 showSearch
                 value={selectedVersion}
-                dropdownStyle={{ maxHeight: 400, overflow: "auto" }}
+                styles={{ popup: { maxHeight: 400, overflow: "auto" } }}
                 placeholder="Search"
                 treeDefaultExpandAll
                 onChange={(item) =>

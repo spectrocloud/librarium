@@ -102,15 +102,15 @@ Palette Edge CLI to download the images and upload them to the external registry
     ```
 
 11. Issue the following command to download the images as a content bundle. Replace the placeholder values with your
-    actual values. Refer to the [Build Content Bundle](../../edgeforge-workflow/palette-canvos/build-content-bundle.md)
-    guide for more information.
+    actual values. The bundle is generated in the `<current-directory>/output/content-bundle/` folder by default. Refer
+    to the [Build Content Bundle](../../edgeforge-workflow/palette-canvos/build-content-bundle.md) guide for more
+    information.
 
     ```shell
     palette content build --arch <bundle-architecture> \
      --project-id <project-id> \
      --profiles <cluster-profile-id1,cluster-profile-id2...> \
-     --name <bundle-name> \
-     --output <output-directory>
+     --name <bundle-name>
     ```
 
 12. Use the `content registry-login` command again to authenticate with the external registry. Replace
@@ -226,7 +226,7 @@ Palette Edge CLI to download the images and upload them to the external registry
        {
          "endpoint": "ttl.sh",
          "username": "admin",
-         "password": "Welc0me!123"
+         "password": "*********"
        },
        {
          "endpoint": "docker.io",

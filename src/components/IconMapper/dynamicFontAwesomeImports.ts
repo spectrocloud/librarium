@@ -9,6 +9,9 @@ import { faCloudArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { faNetworkWired } from '@fortawesome/free-solid-svg-icons';
 import { faServer } from '@fortawesome/free-solid-svg-icons';
 import { faUsers } from '@fortawesome/free-solid-svg-icons';
+import { faLayerGroup } from '@fortawesome/free-solid-svg-icons';
+import { faBook } from '@fortawesome/free-solid-svg-icons';
+import { faShield } from '@fortawesome/free-solid-svg-icons';
 import { faWarehouse } from '@fortawesome/free-solid-svg-icons';
 import { faFlagCheckered } from '@fortawesome/free-solid-svg-icons';
 import { faPalette } from '@fortawesome/free-solid-svg-icons';
@@ -35,6 +38,9 @@ export const fontAwesomeIcons = {
   "network-wired": faNetworkWired,
   "server": faServer,
   "users": faUsers,
+  "layer-group": faLayerGroup,
+  "book": faBook,
+  "shield": faShield,
   "warehouse": faWarehouse,
   "flag-checkered": faFlagCheckered,
   "palette": faPalette,
