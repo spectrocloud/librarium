@@ -1,6 +1,6 @@
 ---
 partial_category: self-hosted
-partial_name: upload-third-party-pack-enablement
+partial_name: upload-third-party-packs-enablement
 ---
 
 <Tabs groupId="registry-type">
@@ -17,13 +17,13 @@ partial_name: upload-third-party-pack-enablement
 
 3. On the **Use case** step, select the **Add-on only** option.
 
-4. On the **Configure bundle** step, enter `Palette Third Party` in the **Search packs** field and click **Search**. Alternatively, you can find the pack in the **thirdparty** category.
+4. On the **Configure bundle** step, enter `Palette Third Party` in the **Search packs** field and click **Search**. Alternatively, you can find the packs in the **thirdparty** category.
 
-   Click the checkbox next to the **Palette Third Party** pack to select it, and click **Next Step**.
+   Click the checkbox next to the **Palette Third Party** and **Palette Third Party Conformance** packs to select them, and click **Next Step**.
 
 5. On the **Review and download** step, click the **I'm not a robot** reCAPTCHA checkbox, and then click the **Download bundle** button to begin the download. Alternatively, you can click the **Copy all URLs** button to copy the download URLs to your clipboard.
 
-   Wait until the pack has been downloaded to your local machine. The pack is downloaded in `.zst` format alongside a signature file in `sig.bin` format.
+   Wait until the packs have been downloaded to your local machine. The packs are downloaded in `.zst` format alongside a signature file in `sig.bin` format.
 
    :::tip
 
@@ -39,10 +39,10 @@ partial_name: upload-third-party-pack-enablement
 
 8. Click **Actions** in the top right and select **Upload Content** from the drop-down menu.
 
-9. Click the upload icon to open the file selection dialog and select the Third Party ZST file from your local
-   machine. Alternatively, you can drag and drop the file into the upload area.
+9. Click the upload icon to open the file selection dialog and select the Third Party ZST files from your local
+   machine. Alternatively, you can drag and drop the files into the upload area.
 
-   The upload process starts automatically once the file is selected. You can monitor the upload progress in
+   The upload process starts automatically once the files are selected. You can monitor the upload progress in
    the **Upload Content** dialog.
 
    Wait for the **Upload Successful** confirmation message to appear.
@@ -63,13 +63,13 @@ partial_name: upload-third-party-pack-enablement
 
 3. On the **Use case** step, select the **Add-on only** option.
 
-4. On the **Configure bundle** step, enter `Palette Third Party` in the **Search packs** field and click **Search**. Alternatively, you can find the pack in the **thirdparty** category.
+4. On the **Configure bundle** step, enter `Palette Third Party` in the **Search packs** field and click **Search**. Alternatively, you can find the packs in the **thirdparty** category.
 
-   Click the checkbox next to the **Palette Third Party** pack to select it, and click **Next Step**.
+   Click the checkbox next to the **Palette Third Party** and **Palette Third Party Conformance** packs to select them, and click **Next Step**.
 
 5. On the **Review and download** step, click the **I'm not a robot** reCAPTCHA checkbox, and then click the **Download bundle** button to begin the download. Alternatively, you can click the **Copy all URLs** button to copy the download URLs to your clipboard.
 
-   Wait until the pack has been downloaded to your local machine. The pack is downloaded in `.zst` format alongside a signature file in `sig.bin` format.
+   Wait until the packs have been downloaded to your local machine. The packs are downloaded in `.zst` format alongside a signature file in `sig.bin` format.
 
    :::tip
 
@@ -78,7 +78,7 @@ partial_name: upload-third-party-pack-enablement
 
    :::
 
-4. Open a terminal on your local machine and navigate to the directory where the Third Party ZST file is located.
+4. Open a terminal on your local machine and navigate to the directory where the Third Party ZST files are located.
 
 5. Use the Palette CLI to log in to the internal Zot registry. Replace `<management-vip>` with the VIP address of the {props.version} management cluster, `<username>` with your username, and `<password>` with your password. If you have changed the default port for the Zot registry, replace `30003` with the correct port number.
 
@@ -89,7 +89,7 @@ partial_name: upload-third-party-pack-enablement
    --password <password>
    ```
 
-6. Upload the pack to the internal Zot registry using the Palette CLI. Replace `<third-party-zst>` with your downloaded Third Party pack ZST file and `<management-vip>` with the VIP address of the {props.version} management cluster. If you have changed the default port or the base content path for the Zot registry, replace `30003` with the correct port number and `spectro-content` with the correct content path.
+6. Upload the packs to the internal Zot registry using the Palette CLI. Replace `<third-party-zst>` and `<third-party-conformance-zst>` with your downloaded Third Party pack ZST files and `<management-vip>` with the VIP address of the {props.version} management cluster. If you have changed the default port or the base content path for the Zot registry, replace `30003` with the correct port number and `spectro-content` with the correct content path.
 
    If you are using custom TLS certificates or choosing to skip TLS, use the appropriate flags as shown below.
 
@@ -97,10 +97,19 @@ partial_name: upload-third-party-pack-enablement
 
    <TabItem label="Custom TLS Certificate" value="custom-tls-certificate">
 
-   ```shell
+   ```shell title="Upload Third Party Pack with Custom TLS Certificate"
    palette content push \
    --registry <management-vip>:30003/spectro-content \
    --file <third-party-zst> \
+   --ca-cert <path-to-ca-cert> \
+   --tls-cert <path-to-tls-cert> \
+   --tls-key <path-to-tls-key>
+   ```
+
+   ```shell title="Upload Third Party Conformance Pack with Custom TLS Certificate"
+   palette content push \
+   --registry <management-vip>:30003/spectro-content \
+   --file <third-party-conformance-zst> \
    --ca-cert <path-to-ca-cert> \
    --tls-cert <path-to-tls-cert> \
    --tls-key <path-to-tls-key>
@@ -110,10 +119,17 @@ partial_name: upload-third-party-pack-enablement
 
    <TabItem label="Skip TLS" value="skip-tls">
 
-   ```shell
+   ```shell title="Upload Third Party Pack skipping TLS"
    palette content push \
    --registry <management-vip>:30003/spectro-content \
    --file <third-party-zst> \
+   --insecure
+   ```
+
+   ```shell title="Upload Third Party Conformance Pack skipping TLS"
+   palette content push \
+   --registry <management-vip>:30003/spectro-content \
+   --file <third-party-conformance-zst> \
    --insecure
    ```
 
@@ -121,7 +137,7 @@ partial_name: upload-third-party-pack-enablement
 
    </Tabs>
 
-   The following example output is expected when the upload is successful.
+   The following example output is expected when an upload is successful.
 
    ```shell hideClipboard title="Example Output"
    ...
@@ -152,13 +168,13 @@ partial_name: upload-third-party-pack-enablement
 
 3. On the **Use case** step, select the **Add-on only** option.
 
-4. On the **Configure bundle** step, enter `Palette Third Party` in the **Search packs** field and click **Search**. Alternatively, you can find the pack in the **thirdparty** category.
+4. On the **Configure bundle** step, enter `Palette Third Party` in the **Search packs** field and click **Search**. Alternatively, you can find the packs in the **thirdparty** category.
 
-   Click the checkbox next to the **Palette Third Party** pack to select it, and click **Next Step**.
+   Click the checkbox next to the **Palette Third Party** and **Palette Third Party Conformance** packs to select it, and click **Next Step**.
 
 5. On the **Review and download** step, click the **I'm not a robot** reCAPTCHA checkbox, and then click the **Download bundle** button to begin the download. Alternatively, you can click the **Copy all URLs** button to copy the download URLs to your clipboard.
 
-   Wait until the pack has been downloaded to your local machine. The pack is downloaded in `.zst` format alongside a signature file in `sig.bin` format.
+   Wait until the packs have been downloaded to your local machine. The packs are downloaded in `.zst` format alongside a signature file in `sig.bin` format.
 
    :::tip
 
@@ -167,7 +183,7 @@ partial_name: upload-third-party-pack-enablement
 
    :::
 
-6. Open a terminal on your local machine and navigate to the directory where the Third Party ZST file is located.
+6. Open a terminal on your local machine and navigate to the directory where the Third Party ZST files are located.
 
 7. Authenticate with your external registry using the command line or a GUI tool of your choice. The following examples
    demonstrate how to authenticate with an OCI registry using the [`oras`](https://oras.land/docs/) CLI tool and the Palette CLI.
@@ -252,7 +268,7 @@ partial_name: upload-third-party-pack-enablement
 
    </Tabs>
 
-8. Upload the pack to the OCI registry. The following example commands upload the pack to the OCI registry in the `spectro-content` base path. Replace the values below with your environment configuration values.
+8. Upload the packs to the OCI registry. The following example commands upload the packs to the OCI registry in the `spectro-content` base path. Replace the values below with your environment configuration values.
 
    <Tabs>
 
@@ -262,16 +278,24 @@ partial_name: upload-third-party-pack-enablement
 
    <TabItem label="Regular Certificate" value="regular-certificate">
 
-   ```shell
+   ```shell title="Upload Third Party Pack with Regular Certificate"
    oras push <harbor-url-or-ip>/spectro-content/<repository-name>:<tag> --file <path-to-third-party-zst>
+   ```
+
+   ```shell title="Upload Third Party Conformance Pack with Regular Certificate"
+   oras push <harbor-url-or-ip>/spectro-content/<repository-name>:<tag> --file <path-to-third-party-conformance-zst>
    ```
 
    </TabItem>
 
    <TabItem label="Self-Signed Certificate" value="self-signed-certificate">
 
-   ```shell
+   ```shell title="Upload Third Party Pack with Self-Signed Certificate"
    oras push --insecure <harbor-url-or-ip>/spectro-content/<repository-name>:<tag> --file <path-to-third-party-zst>
+   ```
+
+   ```shell title="Upload Third Party Conformance Pack with Self-Signed Certificate"
+   oras push --insecure <harbor-url-or-ip>/spectro-content/<repository-name>:<tag> --file <path-to-third-party-conformance-zst>
    ```
 
    </TabItem>
@@ -282,15 +306,19 @@ partial_name: upload-third-party-pack-enablement
 
    <TabItem label="AWS ECR" value="aws-ecr-upload">
 
-   ```shell
+   ```shell title="Upload Third Party Pack to AWS ECR"
    oras push <aws-ecr-url>/spectro-content/<repository-name>:<tag> --file <path-to-third-party-zst>
+   ```
+
+   ```shell title="Upload Third Party Conformance Pack to AWS ECR"
+   oras push <aws-ecr-url>/spectro-content/<repository-name>:<tag> --file <path-to-third-party-conformance-zst>
    ```
 
    </TabItem>
 
    <TabItem label="Palette CLI" value="palette-cli">
 
-   Upload the pack to your external registry using the Palette CLI. Replace `<third-party-zst>` with your downloaded pack bundle file, `<registry-dns-or-ip>` with the DNS/IP address of your registry, and `<registry-port>` with the port number of your registry. If you have changed the base content path from the default, replace `spectro-content` with the correct content path.
+   Upload the packs to your external registry using the Palette CLI. Replace `<third-party-zst>` and `<third-party-conformance-zst>` with your downloaded pack bundle files, `<registry-dns-or-ip>` with the DNS/IP address of your registry, and `<registry-port>` with the port number of your registry. If you have changed the base content path from the default, replace `spectro-content` with the correct content path.
 
    If you are using custom TLS certificates or choosing to skip TLS, use the appropriate flags as shown below.
 
@@ -298,10 +326,19 @@ partial_name: upload-third-party-pack-enablement
 
    <TabItem label="Custom TLS Certificate" value="custom-tls-certificate">
 
-   ```shell
+   ```shell title="Upload Third Party Pack with Custom TLS Certificate"
    palette content push \
    --registry <management-vip>:30003/spectro-content \
    --file <third-party-zst> \
+   --ca-cert <path-to-ca-cert> \
+   --tls-cert <path-to-tls-cert> \
+   --tls-key <path-to-tls-key>
+   ```
+
+   ```shell title="Upload Third Party Conformance Pack with Custom TLS Certificate"
+   palette content push \
+   --registry <management-vip>:30003/spectro-content \
+   --file <third-party-conformance-zst> \
    --ca-cert <path-to-ca-cert> \
    --tls-cert <path-to-tls-cert> \
    --tls-key <path-to-tls-key>
@@ -311,10 +348,17 @@ partial_name: upload-third-party-pack-enablement
 
    <TabItem label="Skip TLS" value="skip-tls">
 
-   ```shell
+   ```shell title="Upload Third Party Pack skipping TLS"
    palette content push \
    --registry <management-vip>:30003/spectro-content \
    --file <third-party-zst> \
+   --insecure
+   ```
+
+   ```shell title="Upload Third Party Conformance Pack skipping TLS"
+   palette content push \
+   --registry <management-vip>:30003/spectro-content \
+   --file <third-party-conformance-zst> \
    --insecure
    ```
 
@@ -322,7 +366,7 @@ partial_name: upload-third-party-pack-enablement
 
    </Tabs>
 
-   The following example output is expected when the upload is successful.
+   The following example output is expected when an upload is successful.
 
    ```shell hideClipboard title="Example Output"
    ...
