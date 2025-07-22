@@ -137,12 +137,17 @@ const config = {
     locales: ["en"],
   },
   future: {
+    v4: {
+      removeLegacyPostBuildHeadAttribute: true,
+    },
     experimental_faster: {
+      ssgWorkerThreads: true,
       swcJsLoader: false, // Set to 'false' as Netlify builds fail with this enabled.
       swcJsMinimizer: true,
       swcHtmlMinimizer: true,
       lightningCssMinimizer: true,
       rspackBundler: true,
+      rspackPersistentCache: true,
       mdxCrossCompilerCache: true,
     },
   },
