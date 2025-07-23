@@ -3,5 +3,10 @@
     "version": "3.4.x",
     "banner": "unmaintained",
     "label": "v3.4.x and prior"
+  },
+  {
+    "version": "4.0.x",
+    "banner": "unmaintained",
+    "label": "v4.0.x"
   }
 ]
