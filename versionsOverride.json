@@ -8,5 +8,10 @@
     "version": "4.0.x",
     "banner": "unmaintained",
     "label": "v4.0.x"
+  },
+  {
+    "version": "4.1.x",
+    "banner": "unmaintained",
+    "label": "v4.1.x"
   }
 ]
