@@ -673,3 +673,9 @@ c0c63dc4222907cff4801266617c52c782fb01f7:docs/docs-content/vertex/install-palett
 c0c63dc4222907cff4801266617c52c782fb01f7:docs/docs-content/vertex/install-palette-vertex/install-on-kubernetes/install.md:docker-config-json:392
 c0c63dc4222907cff4801266617c52c782fb01f7:docs/docs-content/vertex/install-palette-vertex/install-on-kubernetes/airgap-install/install.md:docker-config-json:481
 4384feb2c2bc403bf7c30819e0b868ede52014a4:docs/docs-content/tutorials/getting-started/palette-edge/edge-cluster-profile.md:generic-api-key:157
+16fc219887555e9856c1da75e13afde0d29b03c7:_partials/getting-started/_cluster_profile_import_gcp.mdx:generic-api-key:42
+16fc219887555e9856c1da75e13afde0d29b03c7:_partials/getting-started/_cluster_profile_import_azure.mdx:generic-api-key:42
+16fc219887555e9856c1da75e13afde0d29b03c7:_partials/getting-started/_cluster_profile_import_vmware.mdx:generic-api-key:42
+16fc219887555e9856c1da75e13afde0d29b03c7:_partials/getting-started/_cluster_profile_import_aws.mdx:generic-api-key:42
+5834bd69656ea6d8af5519b519b23f7e7d25bfad:docs/docs-content/user-management/authentication/api-key/delete-api-key.md:curl-auth-header:122
+5834bd69656ea6d8af5519b519b23f7e7d25bfad:docs/docs-content/user-management/authentication/api-key/delete-api-key.md:curl-auth-header:178
