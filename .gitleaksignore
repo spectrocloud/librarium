@@ -243,3 +243,4 @@ ef0dbf8d3904534f0895c5583185b6996b1a1b01:docs/docs-content/integrations/kubernet
 4e46c6c2a90d3bb1ea17b70c15c8262aabf11c05:docs/docs-content/integrations/kubernetes-dashboard.md:jwt:548
 4e46c6c2a90d3bb1ea17b70c15c8262aabf11c05:docs/docs-content/integrations/kubernetes-dashboard.md:jwt:658
 4e46c6c2a90d3bb1ea17b70c15c8262aabf11c05:docs/docs-content/integrations/kubernetes-dashboard.md:jwt:756
+66834122dec731739abb0ccb774ffb6d067eb7cb:docs/docs-content/enterprise-version/install-palette/install-on-kubernetes/airgap-instructions.md:curl-auth-user:447
