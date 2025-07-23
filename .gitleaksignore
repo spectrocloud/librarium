@@ -148,3 +148,4 @@ d2baeb49cd558743e3ee2d74cced390fa30e7b33:_partials/getting-started/_cluster_prof
 d2baeb49cd558743e3ee2d74cced390fa30e7b33:_partials/getting-started/_cluster_profile_import_aws.mdx:generic-api-key:42
 d2baeb49cd558743e3ee2d74cced390fa30e7b33:_partials/getting-started/_cluster_profile_import_vmware.mdx:generic-api-key:42
 82d4fbfe0f8dbdfb227a7db8eb77647c17032d44:docs/api-content/api-docs/1-introduction.md:curl-auth-header:131
+ef0dbf8d3904534f0895c5583185b6996b1a1b01:docs/docs-content/kubernetes-knowlege-hub/how-to/how-to-retrieve-images-from-private-registry.md:generic-api-key:92
