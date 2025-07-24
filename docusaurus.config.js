@@ -142,9 +142,9 @@ const config = {
       useCssCascadeLayers: true,
     },
     experimental_faster: {
-      ssgWorkerThreads: true,
+      ssgWorkerThreads: false,
       swcJsLoader: false, // Set to 'false' as Netlify builds fail with this enabled.
-      swcJsMinimizer: false,
+      swcJsMinimizer: true,
       swcHtmlMinimizer: true,
       lightningCssMinimizer: true,
       rspackBundler: true,
