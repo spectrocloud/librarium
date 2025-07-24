@@ -138,11 +138,11 @@ const config = {
   },
   future: {
     v4: {
-      removeLegacyPostBuildHeadAttribute: true, // `ssgWorkerThreads:` must be set to same value
+      removeLegacyPostBuildHeadAttribute: true,
       useCssCascadeLayers: true,
     },
     experimental_faster: {
-      ssgWorkerThreads: true, // `removeLegacyPostBuildHeadAttribute:` must be set to same value
+      ssgWorkerThreads: false, // Set to 'false' as Netlify builds fail with this enabled.
       swcJsLoader: false, // Set to 'false' as Netlify builds fail with this enabled.
       swcJsMinimizer: true,
       swcHtmlMinimizer: true,
