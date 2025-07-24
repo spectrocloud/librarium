@@ -32,12 +32,16 @@ probe will stop receiving responses and the surviving node will remain the leade
 
 ![Architectural diagram of a two-node architecture](/clusters_edge_architecture_two-node-diagram.webp)
 
+:::warning
+
 To create two-node Edge clusters, ensure you set the `TWO_NODE` argument to `true` during EdgeForge when building
 provider images, and toggle on **Two-Node Mode** during Edge cluster creation. For more information, refer to
 [Build Provider Images](../edgeforge-workflow/palette-canvos/build-provider-images.md) and
 [Create Cluster Definition](../site-deployment/cluster-deployment.md). If you create a two-node cluster, you must use
 exactly two nodes in the control plane. You will also not be able to change it to a regular etcd-backed cluster or
 change the number of nodes.
+
+:::
 
 ## Limitations
 
