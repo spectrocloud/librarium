@@ -24,6 +24,18 @@ Once Palette VerteX has been installed, you can download pack bundles and upload
 external registry. These pack bundles are used to create your cluster profiles. You will then be able to deploy clusters
 in your environment.
 
+There is an additional option to download and install the Third Party packs that provide complementary functionality to
+Palette VerteX. These packs are not required for Palette VerteX to function, but they do provide additional features and
+capabilities as described in the following table.
+
+| **Feature**                                                                                                                           | **Included with Palette Third Party Pack** | **Included with Palette Third Party Conformance Pack** |
+| ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ | ------------------------------------------------------ |
+| [Backup and Restore](../../clusters/cluster-management/backup-restore/backup-restore.md)                                              | :white_check_mark:                         | :x:                                                    |
+| [Configuration Security](../../clusters/cluster-management/compliance-scan.md#configuration-security)                                 | :white_check_mark:                         | :x:                                                    |
+| [Penetration Testing](../../clusters/cluster-management/compliance-scan.md#penetration-testing)                                       | :white_check_mark:                         | :x:                                                    |
+| [Software Bill Of Materials (SBOM) scanning](../../clusters/cluster-management/compliance-scan.md#sbom-dependencies--vulnerabilities) | :white_check_mark:                         | :x:                                                    |
+| [Conformance Testing](../../clusters/cluster-management/compliance-scan.md#conformance-testing)                                       | :x:                                        | :white_check_mark:                                     |
+
 ## Architecture
 
 The ISO file is built with the Operating System (OS), Kubernetes distribution, Container Network Interface (CNI), and
@@ -142,6 +154,45 @@ for your pack bundles.
 <PartialsComponent
   category="self-hosted"
   name="upload-packs-validate"
+  edition="VerteX"
+  version="Palette VerteX"
+  iso="Palette VerteX"
+  app="VerteX Management Appliance"
+/>
+
+## (Optional) Upload Third Party Packs
+
+Follow the instructions to upload the Third Party packs to your Palette VerteX instance. The Third Party packs contain
+additional functionality and capabilities that enhance the Palette VerteX experience, such as backup and restore,
+configuration scanning, penetration scanning, SBOM scanning, and conformance scanning.
+
+### Prerequisites
+
+<PartialsComponent
+  category="self-hosted"
+  name="upload-third-party-packs-prereqs"
+  edition="VerteX"
+  version="Palette VerteX"
+  iso="Palette VerteX"
+  app="VerteX Management Appliance"
+/>
+
+### Upload Packs
+
+<PartialsComponent
+  category="self-hosted"
+  name="upload-third-party-packs-enablement"
+  edition="VerteX"
+  version="Palette VerteX"
+  iso="Palette VerteX"
+  app="VerteX Management Appliance"
+/>
+
+### Validate
+
+<PartialsComponent
+  category="self-hosted"
+  name="upload-third-party-packs-validate"
   edition="VerteX"
   version="Palette VerteX"
   iso="Palette VerteX"
