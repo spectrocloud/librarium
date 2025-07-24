@@ -1,18 +1,17 @@
 ---
 partial_category: self-hosted
-partial_name: upload-packs-validate
+partial_name: upload-third-party-packs-validate
 ---
 
 <Tabs groupId="registry-type">
 
 <TabItem value="internal-zot-registry" label="Internal Zot Registry">
 
-1. Log in to the Local UI of the leader host of the {props.version} management cluster.
+1. Log in to the Local UI of the leader host of the {props.version} management cluster. By default, Local UI is accessible at `https://<node-ip>:5080`. Replace `<node-ip>` with the IP address of the leader host.
 
 2. From the left main menu, click **Content**.
 
-3. Enter the filename of the uploaded pack in the **Filter by name** search bar. The pack should appear in the table
-   below. You can repeat this step for each pack you uploaded.
+3. Enter the filename of each Third Party pack in the **Filter by name** search bar. The packs should appear in the table.
 
 </TabItem>
 
@@ -64,7 +63,7 @@ partial_name: upload-packs-validate
 
    :::
 
-2. Check that the pack bundles you uploaded are listed in the output as repositories.
+2. Check that the Third Party packs you uploaded are listed in the output as a repository.
 
 </TabItem>
 
