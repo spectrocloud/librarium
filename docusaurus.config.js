@@ -173,7 +173,7 @@ const config = {
           versions: {
             current: {
               label: "latest",
-              banner: process.env.UNRELEASED_VERSION_BANNER == "true" ? "unreleased" : "none",
+              banner: "unmaintained",
             },
           },
           admonitions: {
