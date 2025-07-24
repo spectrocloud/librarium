@@ -148,10 +148,14 @@ artifacts at the same time.
     EOF
     ```
 
+    :::warning
+
     If you want your host eligible to become part of a two-node high availability cluster, you must set `TWO_NODE` to
     `true`. This setting cannot be changed later. A two-node provider image cannot be used to provision regular etcd
     clusters. We recommend you clearly mark two-node provider images in the custom tag argument. For more information
     about two-node high availability architecture, refer to [Two-Node Architecture](../../architecture/two-node.md).
+
+    :::
 
     Refer to [Edge Artifact Build Configurations](./arg.md) for all available configuration parameters.
 
@@ -160,10 +164,6 @@ artifacts at the same time.
     The `K8S_DISTRIBUTION` argument, defined in the `.arg` file, accepts `canonical` as a valid value. This value
     corresponds to the **Palette Optimized Canonical** pack, which is a Tech Preview feature and is subject to change.
     Do not use this feature in production workloads.
-
-    In addition, Canonical clusters deployed in a proxied network environment may experience a
-    [known issue](../../../../troubleshooting/edge/edge.md#scenario---canonical-edge-clusters-in-proxied-environments-experience-failure-upon-reboot)
-    when you reboot nodes in the cluster.
 
     :::
 

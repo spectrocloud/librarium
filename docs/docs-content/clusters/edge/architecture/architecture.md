@@ -39,8 +39,6 @@ The following are architectural highlights of Palette-provisioned Edge native cl
   support the following:
 
   - ARM64 architecture
-  - Versions other than 1.32.3
-  - Cluster updates
   - Palette VerteX
   - Custom installation paths for Kubernetes and its dependencies in [agent mode](../../../deployment-modes/agent-mode/)
   - [Network overlay](../networking/vxlan-overlay/)
@@ -104,10 +102,6 @@ Palette provides the following distributions for edge installations.
 The **Palette Optimized Canonical** Kubernetes distribution is a Tech Preview feature and is subject to change. Do not
 use this feature in production workloads.
 
-In addition, Canonical clusters deployed in a proxied network environment may experience a
-[known issue](../../../troubleshooting/edge/edge.md#scenario---canonical-edge-clusters-in-proxied-environments-experience-failure-upon-reboot)
-when you reboot nodes in the cluster.
-
 :::
 
 ## Supported Configurations
@@ -120,7 +114,7 @@ table below describes these aspects and the available options.
 | Management Mode                   | - Central: The site has a connection to Palette and is managed centrally via Palette Management Console<br/> - Local: The site does not have a connection to Palette and is managed locally.                                                                                                                                                                                                                                                                                             |
 | OS                                | - Ubuntu<br/>- OpenSUSE<br/>- Bring Your Own OS (BYOOS)                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | Kubernetes Flavor                 | - Palette eXtended K8s for Edge FIPS (PXK-E) <br /> - Palette eXtended K8s for Edge (PXK-E) <br/> - Palette Optimized K3s <br/> - Palette Optimized RKE2<br/>- Palette Optimized Canonical                                                                                                                                                                                                                                                                                               |
-| Kubernetes Version                | - 1.26.x<br/>- 1.27.x<br/>- 1.28.x<br/>- 1.29.x<br/>- 1.30.x<br/>- 1.31.x<br/>- 1.32.x                                                                                                                                                                                                                                                                                                                                                                                                   |
+| Kubernetes Version                | - 1.26.x<br/>- 1.27.x<br/>- 1.28.x<br/>- 1.29.x<br/>- 1.30.x<br/>- 1.31.x<br/>- 1.32.x <br/>- 1.33.x                                                                                                                                                                                                                                                                                                                                                                                     |
 | FIPS Mode                         | - True: Enforce usage of FIPS packs and other required FIPS configuration to meet FIPS compliance<br/>- False                                                                                                                                                                                                                                                                                                                                                                            |
 | Edge Host Registration Mode       | - Manual: A unique Edge host ID is manually entered into the Palette Management Console <br/> - Auto: Edge hosts automatically register with the Palette through the usage of a registration token supplied in the use-data<br/>- QR Code: Scan a QR code that takes you to a web application that registers the Edge host with Palette. This method is considered advanced with the benefit of simplifying the Edge host registration without needing a tenant token or a manual entry. |
 | Edge Host Type - Installer Format | Create an ISO image that contains all your dependencies and custom configurations.                                                                                                                                                                                                                                                                                                                                                                                                       |
