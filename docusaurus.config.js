@@ -139,7 +139,7 @@ const config = {
   future: {
     v4: {
       removeLegacyPostBuildHeadAttribute: true,
-      useCssCascadeLayers: true,
+      useCssCascadeLayers: false,
     },
     experimental_faster: {
       ssgWorkerThreads: false, // Set to 'false' as Netlify builds fail with this enabled.
