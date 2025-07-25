@@ -6,8 +6,8 @@
 name: Ready for Review
 
 on:
-  pull_request:
-    types: [ready_for_review, review_requested, opened, reopened] # Trigger on PR ready for review, review requested, opened, or reopened
+   pull_request:
+    types: [labeled] # Trigger on PR ready for review, review requested, opened, or reopened
 
 permissions:
   contents: read # Allows the workflow to read the repository contents
