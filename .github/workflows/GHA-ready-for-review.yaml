@@ -1,63 +1,38 @@
-# This workflow is triggered on a pull request labeled with 'ready_for_review'. 
-# The workflow invokes a Slack notification to alert the team that a pull request is ready for review.
-# This is primarily used on pull requests that are not in draft status.
-# This workflow is not needed for pull requests that are in draft status, as they are not ready for review.
+# This workflow is triggered on a pull request labeled with 'notify-slack' 
+# and only runs if the PR is not a draft. It sends a Slack notification 
+# to alert the team that a PR is ready for review.
 
 name: Ready for Review
 
 on:
-   pull_request:
-    types: ["labeled"] # Trigger on PR ready for review, review requested, opened, or reopened
+  pull_request:
+    types: [labeled]
 
 permissions:
-  contents: read # Allows the workflow to read the repository contents
-  pull-requests: read # Allows the workflow to read pull request information
+  pull-requests: read
 
 concurrency:
-  group: readyforreviewci-${{ github.ref }} # Ensures that only one workflow runs at a time for the same branch
-  cancel-in-progress: true # Cancels any in-progress runs of this workflow for the same branch
+  group: readyforreviewci-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   notify-slack:
-    # Run only if PR is not a draft and has the 'notify-slack' label
     if: > 
       github.event.pull_request.draft == false && 
       contains(github.event.pull_request.labels.*.name, 'notify-slack')
 
-    runs-on: ubuntu-latest # Use the latest Ubuntu runner
+    runs-on: ubuntu-latest
 
     steps:
-      - name: Slack Notification
+      - name: Send Slack Notification
         uses: rtCamp/action-slack-notify@v2.3.3
-        # env:
-          # SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_TEST_WEBHOOK }}
-          # SLACK_USERNAME: "spectromate"
-        #   SLACK_ICON_EMOJI: ":robot_panic:"
-        #   SLACK_COLOR: ${{ job.status }}
-        #   SLACK_MESSAGE: 'Linus test ${{env.GITHUB_BRANCH}} .'
-
-      - name: Send Slack Notification (custom message)
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_TEST_WEBHOOK }}
-        run: |
-          PR_TITLE="${{ github.event.pull_request.title }}" 
-          PR_URL="${{ github.event.pull_request.html_url }}" 
-          PR_AUTHOR="${{ github.event.pull_request.user.login }}" 
-
-          PAYLOAD=$(cat <<EOM
-          {
-            "text": ":eyes: *New PR Ready for Review!* :review: ",
-            "attachments": [
-              {
-                "title": "${PR_TITLE}",
-                "title_link": "${PR_URL}",
-                "text": "Author: ${PR_AUTHOR}",
-                "color": "#cc00cc"
-              }
-            ]
-          }
-          EOM
-          )
-
-          curl -X POST -H 'Content-type: application/json' --data "${PAYLOAD}" "${SLACK_WEBHOOK}"
-        shell: bash
+          SLACK_USERNAME: "spectromate"
+          SLACK_ICON_EMOJI: ":robot_panic:"
+          SLACK_COLOR: "good"
+          SLACK_MESSAGE: |
+            :eyes: *${{ github.event.pull_request.title }}* is ready for review!
+            ➡️ ${{ github.event.pull_request.html_url }}
+            🧑‍💻 Author: ${{ github.event.pull_request.user.login }}
+            :calendar: Created on ${{ github.event.pull_request.created_at }}
