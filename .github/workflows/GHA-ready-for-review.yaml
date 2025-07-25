@@ -14,7 +14,7 @@ permissions:
   pull-requests: read # Allows the workflow to read pull request information
 
 concurrency:
-  group: ci-${{ github.ref }} # Ensures that only one workflow runs at a time for the same branch
+  group: readyforreviewci-${{ github.ref }} # Ensures that only one workflow runs at a time for the same branch
   cancel-in-progress: true # Cancels any in-progress runs of this workflow for the same branch
 
 jobs:
