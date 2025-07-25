@@ -29,7 +29,7 @@ jobs:
     steps:
       - name: Send Slack Notification
         env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }} # Slack webhook URL stored in GitHub secrets
+          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_TEST_WEBHOOK }} # Slack webhook URL stored in GitHub secrets
         shell: bash
         run: |
           PR_TITLE="${{ github.event.pull_request.title }}" 
