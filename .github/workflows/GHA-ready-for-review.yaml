@@ -27,28 +27,38 @@ jobs:
     runs-on: ubuntu-latest # Use the latest Ubuntu runner
 
     steps:
-      - name: Send Slack Notification
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@v2.3.3
         env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_TEST_WEBHOOK }} # Slack webhook URL stored in GitHub secrets
-        shell: bash
-        run: |
-          PR_TITLE="${{ github.event.pull_request.title }}" 
-          PR_URL="${{ github.event.pull_request.html_url }}" 
-          PR_AUTHOR="${{ github.event.pull_request.user.login }}" 
+          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_TEST_WEBHOOK }}
+          SLACK_USERNAME: "spectromate"
+          SLACK_ICON_EMOJI: ":robot_panic:"
+          SLACK_COLOR: ${{ job.status }}
+          SLACK_MESSAGE: 'Linus test ${{env.GITHUB_BRANCH}} .'
 
-          PAYLOAD=$(cat <<EOF
-          {
-            "text": ":eyes: *New PR Ready for Review!* :review: ",
-            "attachments": [
-              {
-                "title": "${PR_TITLE}",
-                "title_link": "${PR_URL}",
-                "text": "Author: ${PR_AUTHOR}",
-                "color": "#cc00cc"
-              }
-            ]
-          }
-          EOF
-          )
 
-          curl -X POST -H 'Content-type: application/json' --data "${PAYLOAD}" "${SLACK_WEBHOOK_URL}" 
+      # - name: Send Slack Notification
+      #   env:
+      #   #   SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_TEST_WEBHOOK }} # Slack webhook URL stored in GitHub secrets
+        # shell: bash
+        # run: |
+        #   PR_TITLE="${{ github.event.pull_request.title }}" 
+        #   PR_URL="${{ github.event.pull_request.html_url }}" 
+        #   PR_AUTHOR="${{ github.event.pull_request.user.login }}" 
+
+        #   PAYLOAD=$(cat <<EOF
+        #   {
+        #     "text": ":eyes: *New PR Ready for Review!* :review: ",
+        #     "attachments": [
+        #       {
+        #         "title": "${PR_TITLE}",
+        #         "title_link": "${PR_URL}",
+        #         "text": "Author: ${PR_AUTHOR}",
+        #         "color": "#cc00cc"
+        #       }
+        #     ]
+        #   }
+        #   EOF
+        #   )
+
+        #   curl -X POST -H 'Content-type: application/json' --data "${PAYLOAD}" "${SLACK_WEBHOOK_URL}" 
