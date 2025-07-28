@@ -17,9 +17,7 @@ concurrency:
 
 jobs:
   notify-slack:
-    if: > 
-      github.event.pull_request.draft == false && 
-      contains(github.event.pull_request.labels.*.name, 'notify-slack')
+    if: contains(github.event.pull_request.labels.*.name, 'notify-slack')
 
     runs-on: ubuntu-latest
 
