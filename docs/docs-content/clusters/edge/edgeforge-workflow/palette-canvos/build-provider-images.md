@@ -148,10 +148,14 @@ artifacts at the same time.
     EOF
     ```
 
+    :::warning
+
     If you want your host eligible to become part of a two-node high availability cluster, you must set `TWO_NODE` to
     `true`. This setting cannot be changed later. A two-node provider image cannot be used to provision regular etcd
     clusters. We recommend you clearly mark two-node provider images in the custom tag argument. For more information
     about two-node high availability architecture, refer to [Two-Node Architecture](../../architecture/two-node.md).
+
+    :::
 
     Refer to [Edge Artifact Build Configurations](./arg.md) for all available configuration parameters.
 

@@ -11,6 +11,13 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## July 23, 2025 - Release 4.7.4
+
+### Bug Fixes
+
+- Fixed an issue where the Palette agent failed to start when using a [MAAS PCG](../clusters/pcg/deploy-pcg/maas.md)
+  with the `maas-preferred-subnet` ConfigMap.
+
 ## July 19, 2025 - Release 4.7.0 - 4.7.3 {#release-notes-4.7.0}
 
 ### Security Notices
@@ -231,7 +238,7 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 | Pack Name                                | New Version |
 | ---------------------------------------- | ----------- |
-| Palette Optimized Canonical              | 1.32.5      |
+| Palette Optimized Canonical              | 1.33.0      |
 | Palette Optimized K3s                    | 1.33.1      |
 | Palette Optimized K3s                    | 1.32.4      |
 | Palette Optimized K3s                    | 1.31.8      |
