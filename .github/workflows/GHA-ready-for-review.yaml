@@ -1,0 +1,37 @@
+# This workflow is triggered on a pull request labeled with 'notify-slack' 
+# and only runs if the PR is not a draft. It sends a Slack notification 
+# to alert the team that a PR is ready for review.
+
+name: Ready for Review
+
+on:
+  pull_request:
+    types: [labeled]
+
+permissions:
+  pull-requests: read
+
+concurrency:
+  group: readyforreviewci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  notify-slack:
+    if: > 
+      github.event.pull_request.draft == false && 
+      contains(github.event.pull_request.labels.*.name, 'notify-slack')
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Send Slack Notification
+        uses: rtCamp/action-slack-notify@v2.3.3
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
+          SLACK_USERNAME: "spectromate"
+          SLACK_ICON_EMOJI: ":robot_panic:"
+          SLACK_COLOR: "#A020F0"
+          SLACK_MESSAGE: |
+            :review: *<${{ github.event.pull_request.html_url }}|${{ github.event.pull_request.title }}>* is ready for review!
+
+           
