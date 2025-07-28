@@ -119,13 +119,18 @@ const config = {
     locales: ["en"],
   },
   future: {
+    v4: {
+      removeLegacyPostBuildHeadAttribute: true,
+      useCssCascadeLayers: true, // Slightly decreases padding of admonitions when set to `true`.
+    },
     experimental_faster: {
-      swcJsLoader: false,
-      // Set to 'false' as Netlify builds fail with this enabled.
+      ssgWorkerThreads: false, // Set to 'false' as Netlify builds fail with this enabled.
+      swcJsLoader: false, // Set to 'false' as Netlify builds fail with this enabled.
       swcJsMinimizer: true,
       swcHtmlMinimizer: true,
       lightningCssMinimizer: true,
       rspackBundler: true,
+      rspackPersistentCache: true,
       mdxCrossCompilerCache: true,
     },
   },
