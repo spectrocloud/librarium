@@ -14,5 +14,6 @@
   "azure/aks/dynamic-placement/sub_role.json": "_partials/permissions/_azure-aks-dynamic-sub-role.mdx",
   "azure/aks/static-placement/rg_sub_role.json": "_partials/permissions/_azure-aks-static-rg-sub-role.mdx",
   "azure/aks/static-placement/sub_role.json": "_partials/permissions/_azure-aks-static-sub-role.mdx",
-  "azure/aks/static-placement/vnet_role.json": "_partials/permissions/_azure-aks-static-vnet-role.mdx"
+  "azure/aks/static-placement/vnet_role.json": "_partials/permissions/_azure-aks-static-vnet-role.mdx",
+  "gcp/deployment-role.json": "_partials/permissions/_gcp-deployment-role.mdx"
 }
