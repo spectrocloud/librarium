@@ -86,9 +86,8 @@ scripts, and ensures consistent behavior across environments.
 ## PXK vs PXK-E
 
 The biggest difference between PXK and PXK-E is that PXK-E is only available when integrated with Kairos in a
-[provider image](../clusters/edge/edgeforge-workflow/edgeforge-workflow.md#edge-provider-container-images), or used as
-the Kubernetes layer in [agent mode](../deployment-modes/agent-mode/agent-mode.md) deployments, while PXK is used in
-[controller mode](../deployment-modes/controller-mode.md) clusters.
+[provider image](../clusters/edge/edgeforge-workflow/edgeforge-workflow.md#edge-provider-container-images), while PXK is
+used in non-Edge clusters as an independent Kubernetes layer.
 
 In addition, PXK-E makes a few adjustments on top of PXK to account for Edge environments by streamlining configuration
 files, reducing deployment complexity, and emphasizing immutability. The following table provides a brief comparison
