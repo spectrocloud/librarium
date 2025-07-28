@@ -1,5 +1,4 @@
-# This workflow is triggered on a pull request labeled with 'notify-slack' 
-# and only runs if the PR is not a draft. It sends a Slack notification 
+# This workflow is triggered on a pull request labeled with 'notify-slack'. It sends a Slack notification 
 # to alert the team that a PR is ready for review.
 
 name: Ready for Review
