@@ -127,7 +127,7 @@ management.
 
    Optionally, you can also enable network overlay, especially if your cluster will operate in an DHCP environment. For
    more information, refer to [Enable Overlay Network](../../networking/vxlan-overlay.md). If you enable the overlay
-   network, you need to specify a CIDR range to be used by the overlay network.x
+   network, you need to specify a CIDR range to be used by the overlay network.
 
 8. In the **Node Config** step, you can specify configurations for worker pools and control plane pools. To assign a
    host to a node pool, click **Add Edge Hosts** in the corresponding node pool and select the host to add to the pool.

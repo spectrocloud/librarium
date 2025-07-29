@@ -8,7 +8,7 @@ sidebar_position: 10
 tags: ["edge", "agent mode"]
 ---
 
-Kubernetes clusters expect stable IP addresses that are not always possible in the network conditions of Edge locations.
+Kubernetes clusters expect stable IP addresses that are not always possible in Edge network environments.
 Palette Edge allows you to enable an overlay network to ensure the cluster has stable IP addresses even if the
 underlying physical IPs change.
 
@@ -16,7 +16,7 @@ However, overlay networks on Palette clusters rely on `systemd-networkd` and `sy
 clusters deployed in agent mode have independent Operating System (OS) configurations that are not managed by the
 Palette agent, you must configure your host OS properly to meet the prerequisites before creating your cluster.
 
-This guide walks you through how to configure your host to use `systemd-networkd` to manage interfaces and
+This guide walks you through configuring your host to use `systemd-networkd` for interface management and
 `systemd-resolved` for DNS resolution. If your host already uses these services, you can skip this guide entirely. You
 can use the [Validate](#validate) steps to verify if your host already uses `systemd-networkd` and `systemd-resolved`.
 
@@ -39,7 +39,7 @@ run those commands automatically during agent installation.
 <TabItem value="Manual Configuration in Command-line">
 
 1. Issue the following commands to enable and restart `systemd-resolved`, and create a symlink between
-   `/run/systemd/resolve/resolv.conf` and `/etc/resolv.conf`. They ensure that `systemd-resolved` starts managing DNS
+   `/run/systemd/resolve/resolv.conf` and `/etc/resolv.conf`. This ensures that `systemd-resolved` starts managing DNS
    resolution for your host immediately.
 
    ```bash
@@ -86,7 +86,7 @@ run those commands automatically during agent installation.
    sudo systemctl restart systemd-networkd
    ```
 
-6. You have now configured your host to use `systemd-networkd` for DNS resolution and your cluster with this host will
+6. You have now configured your host to use `systemd-networkd` for DNS resolution, and your cluster with this host will
    now support overlay network.
 
 </TabItem>
@@ -96,7 +96,7 @@ run those commands automatically during agent installation.
 The installer configuration user data can declaratively configure your host to perform specified actions during
 `cloud-init` stages. You can use one user data block to configure the same DNS settings across different hosts. We break
 down the configuration step by step to explain each block. However, if you would like to copy the entire configuration,
-expand the following details block to copy the entire configuration.
+expand the following details block.
 
 <details>
 
@@ -287,7 +287,7 @@ stages:
 
 Use the following steps to ensure that your DNS is now managed by `systemd-networkd`.
 
-1. Issue the following command to retrieve a list of your network interfaces.
+1. Issue the following command to retrieve the list of your network interfaces.
 
    ```bash
    networkctl
@@ -304,7 +304,7 @@ Use the following steps to ensure that your DNS is now managed by `systemd-netwo
    2 enp0s3 ether    routable    configured
    ```
 
-2. Issue the following command for non-loopback interfaces.
+2. Issue the following command for interfaces whose `TYPE` is not `loopback`.
 
    ```bash
    networkctl status enp0s3
@@ -344,5 +344,4 @@ the overlay network without first tearing down the cluster. Refer to
 [Enable Overlay Network - Centrally Managed Cluster](../../clusters/edge/networking/vxlan-overlay.md) to learn more
 about whether or not you should enable network overlay.
 
-Refer to [Create Local Cluster](../../clusters/edge/local-ui/cluster-management/create-cluster.md) to learn about how to
-create a local cluster, during which you can decide whether or not to enable the overlay network.
+Refer to [Create Local Cluster](../../clusters/edge/local-ui/cluster-management/create-cluster.md) to learn how to create a local cluster and choose whether to enable the overlay network.
