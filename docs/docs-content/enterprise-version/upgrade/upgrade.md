@@ -43,7 +43,7 @@ minor version available.
 Upgrading self-hosted Palette or Palette VerteX from version 4.6.x to 4.7.x can cause the upgrade to hang if any member
 of the MongoDB ReplicaSet is not fully synced and in a healthy state prior to the upgrade. For guidance on verifying the
 health status of MongoDB ReplicaSet members, refer to our
-[Troubleshooting](../../troubleshooting/palette-upgrade.md#upgrade-to-palette-or-vertex-47x-hangs) guide.
+[Troubleshooting](../../troubleshooting/palette-upgrade.md#self-hosted-palette-or-palette-vertex-upgrade-hangs) guide.
 
 :::
 

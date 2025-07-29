@@ -12,7 +12,7 @@ We recommend you review the [Release Notes](../release-notes/release-notes.md) a
 [Upgrade Notes](../enterprise-version/upgrade/upgrade.md) before attempting to upgrade Palette. Use this information to
 address common issues that may occur during an upgrade.
 
-## Upgrade to Palette or Palette VerteX Version 4.7.x Hangs
+## Self-Hosted Palette or Palette VerteX Upgrade Hangs
 
 Upgrading [self-hosted Palette](../enterprise-version/enterprise-version.md) or [Palette VerteX](../vertex/vertex.md)
 from version 4.6.x to 4.7.x can cause the upgrade to hang if any member of a MongoDB ReplicaSet is not fully synced and
