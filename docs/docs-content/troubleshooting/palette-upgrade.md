@@ -14,11 +14,14 @@ address common issues that may occur during an upgrade.
 
 ## Upgrade to Palette or Palette VerteX Version 4.7.x Hangs
 
-Upgrading [self-hosted Palette](../enterprise-version/enterprise-version.md) or [Palette VerteX](../vertex/vertex.md) from version 4.6.x to 4.7.x can cause the upgrade to hang if any member of a MongoDB ReplicaSet is not fully synced and in a healthy state prior to the upgrade.
+Upgrading [self-hosted Palette](../enterprise-version/enterprise-version.md) or [Palette VerteX](../vertex/vertex.md)
+from version 4.6.x to 4.7.x can cause the upgrade to hang if any member of a MongoDB ReplicaSet is not fully synced and
+in a healthy state prior to the upgrade.
 
 ### Debug Steps
 
-To verify the health status of each MongoDB ReplicaSet member, follow the below procedure based on whether TLS is configured with MongoDB.
+To verify the health status of each MongoDB ReplicaSet member, follow the below procedure based on whether TLS is
+configured with MongoDB.
 
 1. Export your MongoDB username and password as environment variables.
 
@@ -37,11 +40,12 @@ To verify the health status of each MongoDB ReplicaSet member, follow the below 
 
    :::
 
-<Tabs> 
+<Tabs>
 
 <TabItem label="With TLS" value="tls">
 
-2. Run the following command to query the ReplicaSet for its current primary host, extract the Pod name, and set its value to the `MONGO_PRIMARY` environment variable.
+2. Run the following command to query the ReplicaSet for its current primary host, extract the Pod name, and set its
+   value to the `MONGO_PRIMARY` environment variable.
 
    ```shell
    MONGO_PRIMARY=$(
@@ -65,7 +69,8 @@ To verify the health status of each MongoDB ReplicaSet member, follow the below 
    ) | jq --raw-output .primary | awk -F. '{print $1}'
    ```
 
-3. Run the following command to connect to the primary Pod and print each ReplicaSet member’s host, state, and health status.
+3. Run the following command to connect to the primary Pod and print each ReplicaSet member’s host, state, and health
+   status.
 
    ```shell
    kubectl exec \
@@ -85,9 +90,10 @@ To verify the health status of each MongoDB ReplicaSet member, follow the below 
             --quiet \
             --eval "rs.status().members.forEach(m => printjson({host:m.name,state:m.stateStr,health:m.health}))"
       '
-      ```
+   ```
 
-   All healthy members should have a `health` status of `1`. If the ReplicaSet members are healthy, proceed with upgrading self-hosted Palette or VerteX.
+   All healthy members should have a `health` status of `1`. If the ReplicaSet members are healthy, proceed with
+   upgrading self-hosted Palette or VerteX.
 
    ```shell title="Example output" hideClipboard {4,9,14}
    {
@@ -107,11 +113,12 @@ To verify the health status of each MongoDB ReplicaSet member, follow the below 
    }
    ```
 
-</TabItem> 
+</TabItem>
 
 <TabItem label="Without TLS" value="non-tls">
 
-2. Run the following command to query the ReplicaSet for its current primary host, extract the Pod name, and set its value to the `MONGO_PRIMARY` environment variable.
+2. Run the following command to query the ReplicaSet for its current primary host, extract the Pod name, and set its
+   value to the `MONGO_PRIMARY` environment variable.
 
    ```shell
    MONGO_PRIMARY=$(
@@ -131,7 +138,8 @@ To verify the health status of each MongoDB ReplicaSet member, follow the below 
    )
    ```
 
-3. Run the following command to connect to the primary Pod and print each ReplicaSet member’s host, state, and health status.
+3. Run the following command to connect to the primary Pod and print each ReplicaSet member’s host, state, and health
+   status.
 
    ```shell
    kubectl exec \
@@ -147,7 +155,8 @@ To verify the health status of each MongoDB ReplicaSet member, follow the below 
          --eval "rs.status().members.forEach(m => printjson({host:m.name,state:m.stateStr,health:m.health}))"
    ```
 
-   All healthy members should have a `health` status of `1`. If the ReplicaSet members are healthy, proceed with upgrading self-hosted Palette or VerteX.
+   All healthy members should have a `health` status of `1`. If the ReplicaSet members are healthy, proceed with
+   upgrading self-hosted Palette or VerteX.
 
    ```shell title="Example output" hideClipboard {4,9,14}
    {
