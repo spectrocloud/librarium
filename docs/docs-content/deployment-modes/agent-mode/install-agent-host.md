@@ -38,7 +38,9 @@ Palette. You will then create a cluster profile and use the registered host to d
 - The FIPS-compliant version of Agent Mode is only available for Red Hat Enterprise Linux (RHEL) and Rocky Linux 8
   systems.
 
-- CanvOS versions prior to 4.6.21 do not support local management mode.
+- Palette versions prior to 4.6.32 do not support local management mode. Even if you build an ISO using Palette agent
+  and CanvOS version 4.6.21 or later, which support local management mode, the agent may be downgraded if your cluster
+  uses a content bundle built against a Palette instance older than 4.6.32. This results in deployment failure.
 
 ## Prerequisites
 
@@ -555,8 +557,19 @@ internet.
 
 :::warning
 
-Ensure you use CanvOS version 4.6.21 or later to build Edge artifacts, as earlier versions do not support local
-management mode.
+Ensure your Palette instance is version 4.6.32 or later to build Edge artifacts, as earlier versions do not support
+local management mode.
+
+You can check the Palette agent version your Palette environment uses with the following command. Replace
+`<palette-endpoint>` with your Palette endpoint and `<api-key>` with your
+[Palette API key](../../user-management/authentication/api-key/api-key.md).
+
+```shell
+curl --location --request GET 'https://<palette-endpoint>/v1/services/stylus/version' --header 'Content-Type: application/json' --header 'Apikey: <api-key>'  | jq --raw-output '.spec.latestVersion.content | match("version: ([^\n]+)").captures[0].string'
+```
+
+The Palette agent version should be 4.6.21 or later, which corresponds to Palette instance version 4.6.32. If you are
+building a custom Edge ISO, ensure you use CanvOS version 4.6.21 or later as well.
 
 :::
 
