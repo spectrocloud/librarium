@@ -12,6 +12,165 @@ We recommend you review the [Release Notes](../release-notes/release-notes.md) a
 [Upgrade Notes](../enterprise-version/upgrade/upgrade.md) before attempting to upgrade Palette. Use this information to
 address common issues that may occur during an upgrade.
 
+## Upgrade to Palette or Palette VerteX Version 4.7.x Hangs
+
+Upgrading [self-hosted Palette](../enterprise-version/enterprise-version.md) or [Palette VerteX](../vertex/vertex.md) from version 4.6.x to 4.7.x can cause the upgrade to hang if any member of a MongoDB ReplicaSet is not fully synced and in a healthy state prior to the upgrade.
+
+### Debug Steps
+
+To verify the health status of each MongoDB ReplicaSet member, follow the below procedure based on whether TLS is configured with MongoDB.
+
+1. Export your MongoDB username and password as environment variables.
+
+   ```shell
+   export MONGO_INITDB_ROOT_PASSWORD=<mongo-password>
+   export MONGO_INITDB_ROOT_USERNAME=<mongo-username>
+   ```
+
+   :::tip
+
+   Your MongoDB username and password can be found by running the following command.
+
+   ```shell
+   kubectl exec --namespace hubble-system mongo-0 --container mongo -- env | grep MONGO
+   ```
+
+   :::
+
+<Tabs> 
+
+<TabItem label="With TLS" value="tls">
+
+2. Run the following command to query the ReplicaSet for its current primary host, extract the Pod name, and set its value to the `MONGO_PRIMARY` environment variable.
+
+   ```shell
+   MONGO_PRIMARY=$(
+      kubectl exec \
+         --namespace hubble-system \
+         mongo-1 \
+         --container mongo \
+         -- bash -c '
+            mongosh \
+               --username "$MONGODB_INITDB_ROOT_USERNAME" \
+               --password "$MONGODB_INITDB_ROOT_PASSWORD" \
+               --host "$HOSTNAME" \
+               --tls \
+               --tlsCAFile /var/mongodb/tls/ca.crt \
+               --tlsCertificateKeyFile /var/mongodb/tls/tls-combined.pem \
+               --tlsAllowInvalidHostnames \
+               admin \
+               --quiet \
+               --eval "print(JSON.stringify(rs.isMaster()))"
+         '
+   ) | jq --raw-output .primary | awk -F. '{print $1}'
+   ```
+
+3. Run the following command to connect to the primary Pod and print each ReplicaSet member’s host, state, and health status.
+
+   ```shell
+   kubectl exec \
+      --namespace hubble-system \
+      "${MONGO_PRIMARY}" \
+      --container mongo \
+      -- bash -c '
+         mongosh \
+            --username "$MONGODB_INITDB_ROOT_USERNAME" \
+            --password "$MONGODB_INITDB_ROOT_PASSWORD" \
+            --host "$HOSTNAME" \
+            --tls \
+            --tlsCAFile /var/mongodb/tls/ca.crt \
+            --tlsCertificateKeyFile /var/mongodb/tls/tls-combined.pem \
+            --tlsAllowInvalidHostnames \
+            admin \
+            --quiet \
+            --eval "rs.status().members.forEach(m => printjson({host:m.name,state:m.stateStr,health:m.health}))"
+      '
+      ```
+
+   All healthy members should have a `health` status of `1`. If the ReplicaSet members are healthy, proceed with upgrading self-hosted Palette or VerteX.
+
+   ```shell title="Example output" hideClipboard {4,9,14}
+   {
+      host: 'mongo-1.mongo.hubble-system.svc.cluster.local:27017',
+      state: 'PRIMARY',
+      health: 1
+   }
+   {
+      host: 'mongo-0.mongo.hubble-system.svc.cluster.local:27017',
+      state: 'SECONDARY',
+      health: 1
+   }
+   {
+      host: 'mongo-2.mongo.hubble-system.svc.cluster.local:27017',
+      state: 'SECONDARY',
+      health: 1
+   }
+   ```
+
+</TabItem> 
+
+<TabItem label="Without TLS" value="non-tls">
+
+2. Run the following command to query the ReplicaSet for its current primary host, extract the Pod name, and set its value to the `MONGO_PRIMARY` environment variable.
+
+   ```shell
+   MONGO_PRIMARY=$(
+      kubectl exec \
+         --namespace hubble-system \
+         mongo-1 \
+         --container mongo \
+         -- \
+         mongosh \
+            --username "$MONGODB_INITDB_ROOT_USERNAME" \
+            --password "$MONGODB_INITDB_ROOT_PASSWORD" \
+            admin \
+            --quiet \
+            --eval "print(JSON.stringify(rs.hello()))" \
+      | jq --raw-output .primary \
+      | awk -F. '{print $1}'
+   )
+   ```
+
+3. Run the following command to connect to the primary Pod and print each ReplicaSet member’s host, state, and health status.
+
+   ```shell
+   kubectl exec \
+      --namespace hubble-system \
+      "${MONGO_PRIMARY}" \
+      --container mongo \
+      -- \
+      mongosh \
+         --username "$MONGO_INITDB_ROOT_USERNAME" \
+         --password "$MONGO_INITDB_ROOT_PASSWORD" \
+         admin \
+         --quiet \
+         --eval "rs.status().members.forEach(m => printjson({host:m.name,state:m.stateStr,health:m.health}))"
+   ```
+
+   All healthy members should have a `health` status of `1`. If the ReplicaSet members are healthy, proceed with upgrading self-hosted Palette or VerteX.
+
+   ```shell title="Example output" hideClipboard {4,9,14}
+   {
+      host: 'mongo-1.mongo.hubble-system.svc.cluster.local:27017',
+      state: 'PRIMARY',
+      health: 1
+   }
+   {
+      host: 'mongo-0.mongo.hubble-system.svc.cluster.local:27017',
+      state: 'SECONDARY',
+      health: 1
+   }
+   {
+      host: 'mongo-2.mongo.hubble-system.svc.cluster.local:27017',
+      state: 'SECONDARY',
+      health: 1
+   }
+   ```
+
+</TabItem>
+
+</Tabs>
+
 ## Ingress Errors
 
 If you receive the following error message when attempting to upgrade to Palette versions greater than Palette 3.4.X in
