@@ -64,7 +64,6 @@ server. The region experiences a bad weather event that causes a sustained outag
 
   - For Virtual Machine (VM) Edge hosts in VMware, this means features such as promiscuous mode must be enabled to allow
     broadcasts between hosts.
-
   - Switches cannot implement features that block broadcasts between ports where Edge hosts are connected.
 
 - If you are launching your Edge hosts in virtual machine environments and you are using either Cilium or Flannel as
@@ -83,6 +82,14 @@ server. The region experiences a bad weather event that causes a sustained outag
   This is related to a
   [known issue with VMware's VMXNET3 adapter](https://github.com/cilium/cilium/issues/13096#issuecomment-723901955),
   which is widely used in different virtual machine management services, including VMware vSphere and Hyper-V.
+
+- If your host's physical IP address is static, ensure that you configure the IP address using the
+  [network block](../edge-configuration/installer-reference.md#site-network-parameters) in your `user-data` file.
+
+- If your hosts are deployed in [agent mode](../../../deployment-modes/agent-mode/agent-mode.md), ensure that your hosts
+  use `systemd-networkd` and `systemd-resolved` for interface and DNS management. Refer to
+  [Configure networkd to Prepare Host for Overlay Network](../../../deployment-modes/agent-mode/overlay-preparation.md)
+  for more information.
 
 ## Enable Overlay Network
 

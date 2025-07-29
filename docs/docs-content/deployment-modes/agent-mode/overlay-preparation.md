@@ -12,26 +12,27 @@ Kubernetes clusters expect stable IP addresses that are not always possible in t
 Palette Edge allows you to enable an overlay network to ensure the cluster has stable IP addresses even if the
 underlying physical IPs change.
 
-However, overlay networks on Palette clusters rely on `systemd-networkd` to function. Since clusters deployed in agent
-mode have independent Operating System (OS) configurations that are not managed by the Palette agent, you must configure
-your host OS properly to meet the prerequisites before creating your cluster.
+However, overlay networks on Palette clusters rely on `systemd-networkd` and `systemd-resolved` to function. Since
+clusters deployed in agent mode have independent Operating System (OS) configurations that are not managed by the
+Palette agent, you must configure your host OS properly to meet the prerequisites before creating your cluster.
 
-This guide walks you through how to configure your host to use `systemd-networkd` to manage DNS resolution. If your host
-already uses `systemd-networkd`, you can skip this guide entirely.
+This guide walks you through how to configure your host to use `systemd-networkd` to manage interfaces and
+`systemd-resolved` for DNS resolution. If your host already uses these services, you can skip this guide entirely. You
+can use the [Validate](#validate) steps to verify if your host already uses `systemd-networkd` and `systemd-resolved`.
 
 ## Prerequisites
 
 - This guide assumes your host uses Ubuntu as its OS. If you use a different OS distribution, you may need to find the
-  appropriate commands that can accomplish the same goals in your OS.
+  equivalent commands that can accomplish the same goals in your OS.
 
-- If using the "User Data Block During Agent Installation" workflow, you must perform this action before you install the
-  Palette agent on your host.
+- A Linux host that meets
+  [the minimum requirements for agent mode deployments](architecture.md#minimum-device-requirements).
 
-## Prepare Host for Overlay Network
+## Configure networkd
 
 You can configure your host to make it overlay-ready either by issuing commands in the terminal to install the
-prerequisite packages and configuring them, or use a declarative block in the installer configuration user data to run
-those commands automatically during agent installation.
+prerequisite packages and configuring them, or by using a declarative block in the installer configuration user data to
+run those commands automatically during agent installation.
 
 <Tabs groupId="method">
 
@@ -55,18 +56,18 @@ those commands automatically during agent installation.
    sudo mv /etc/netplan/*.yaml /etc/netplan/backup/
    ```
 
-3. Issue the following command to masks the service `systemd-networkd-wait-online.service`. This prevents the system
-   from waiting for the network to come online at boot.
+3. Issue the following command to mask the service `systemd-networkd-wait-online.service`. This prevents the system from
+   waiting for the network to come online at boot.
 
    ```bash
-   sudo systemctl mask systemd-networkd-wait-online.services
+   sudo systemctl mask systemd-networkd-wait-online.service
    ```
 
 4. Issue the following commands to create a configuration file for `systemd-networkd`. This configuration tells
    `systemd-networkd` to manage all interfaces with names starting with `en`. If your network interfaces have different
-   naming schemes, change this pattern so that the configurations matches.
+   naming schemes, change this pattern so that the configuration matches.
 
-   ```bash{4}
+   ```bash {3}
    cat > /etc/systemd/network/20-dhcp.network << EOF
    [Match]
    Name=en*
@@ -77,8 +78,8 @@ those commands automatically during agent installation.
    EOF
    ```
 
-5. Issue the following commands to enable and restart `systemd-networkd`. If you are connected your host with an SSH
-   connection, this will terminate the session becauue your host IP will change
+5. Issue the following commands to enable and restart `systemd-networkd`. If you are connected to your host with an SSH
+   connection, this will terminate the session because your host IP will change.
 
    ```bash
    sudo systemctl enable systemd-networkd
@@ -94,7 +95,7 @@ those commands automatically during agent installation.
 
 The installer configuration user data can declaratively configure your host to perform specified actions during
 `cloud-init` stages. You can use one user data block to configure the same DNS settings across different hosts. We break
-down the configuration step-by-step to explain each block. However, if you would like to copy the entire configuration,
+down the configuration step by step to explain each block. However, if you would like to copy the entire configuration,
 expand the following details block to copy the entire configuration.
 
 <details>
@@ -195,7 +196,7 @@ stages:
 
 3. Add a `systemd-networkd` configuration for interfaces with names starting with `en*` to enable DHCP.
 
-   ```yaml
+   ```yaml {13}
    #cloud-config
    stages:
      initramfs:
@@ -292,7 +293,7 @@ Use the following steps to ensure that your DNS is now managed by `systemd-netwo
    networkctl
    ```
 
-   `networkctl` is installed as part of the `systemd` package. If `networkctl` is not installed, then it is unilkely
+   `networkctl` is installed as part of the `systemd` package. If `networkctl` is not installed, then it is unlikely
    that your network is being managed by `systemd-networkd`.
 
    Look for entries similar to the following.
@@ -313,6 +314,27 @@ Use the following steps to ensure that your DNS is now managed by `systemd-netwo
 
    ```bash
    Managed by: systemd-networkd
+   ```
+
+   This confirms that your host is using `systemd-networkd` for interface management.
+
+3. Issue the following command to confirm the `systemd-resolved` service is active.
+
+   ```bash
+   systemctl is-active systemd-resolved
+   ```
+
+4. Issue the following command to check if `/etc/resolv.conf` is symlinked to `resolved`.
+
+   ```bash
+   readlink -f /etc/resolv.conf
+   ```
+
+   The expected output should be the following. This output, together with the service itself being active, confirms
+   that your host uses `systemd-resolved` for DNS management.
+
+   ```text
+   /run/systemd/resolve/resolv.conf
    ```
 
 ## Next Steps
