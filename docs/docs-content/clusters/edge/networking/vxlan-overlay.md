@@ -58,7 +58,7 @@ server. The region experiences a bad weather event that causes a sustained outag
 ## Prerequisites
 
 - At least one Edge host registered with your Palette account.
-- Your cluster profile must have K3s or RKE2 as its Kubernetes distribution.
+- Your cluster profile must have K3s, RKE2, or PXK-E as its Kubernetes distribution.
 - All Edge hosts must be on the same Layer-2 network.
 - Broadcast messages must be allowed between all Edge hosts participating in the cluster.
 
