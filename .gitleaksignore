@@ -788,3 +788,9 @@ d2baeb49cd558743e3ee2d74cced390fa30e7b33:_partials/getting-started/_cluster_prof
 82d4fbfe0f8dbdfb227a7db8eb77647c17032d44:docs/api-content/api-docs/1-introduction.md:curl-auth-header:131
 ef0dbf8d3904534f0895c5583185b6996b1a1b01:docs/docs-content/kubernetes-knowlege-hub/how-to/how-to-retrieve-images-from-private-registry.md:generic-api-key:92
 6834122dec731739abb0ccb774ffb6d067eb7cb:docs/docs-content/enterprise-version/install-palette/install-on-kubernetes/airgap-instructions.md:curl-auth-user:447
+490b11ed285f2497bdd63b531ad3ee4809ef751d:docs/docs-content/user-management/authentication/api-key/delete-api-key.md:curl-auth-header:122
+490b11ed285f2497bdd63b531ad3ee4809ef751d:docs/docs-content/user-management/authentication/api-key/delete-api-key.md:curl-auth-header:178
+3397538ff03e22c3e385db5b6086892f2f427249:docs/docs-content/kubernetes-knowlege-hub/how-to/how-to-retrieve-images-from-private-registry.md:generic-api-key:93
+26bb9338870474437610328787239785a7ab296a:docs/api-content/api-docs/1-introduction.md:curl-auth-header:36
+ddcebce814f33251ab01e112e3010fb974be812c:docs/api-content/api-docs/1-introduction.md:curl-auth-header:132
+024aacacb2890795e4dcc04a869c166ecdaa0e1a:content/docs/12.5-palette-cli/20-commands.md:generic-api-key:263
