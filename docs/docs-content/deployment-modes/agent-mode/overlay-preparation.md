@@ -8,9 +8,9 @@ sidebar_position: 10
 tags: ["edge", "agent mode"]
 ---
 
-Kubernetes clusters expect stable IP addresses that are not always possible in Edge network environments.
-Palette Edge allows you to enable an overlay network to ensure the cluster has stable IP addresses even if the
-underlying physical IPs change.
+Kubernetes clusters expect stable IP addresses that are not always possible in Edge network environments. Palette Edge
+allows you to enable an overlay network to ensure the cluster has stable IP addresses even if the underlying physical
+IPs change.
 
 However, overlay networks on Palette clusters rely on `systemd-networkd` and `systemd-resolved` to function. Since
 clusters deployed in agent mode have independent Operating System (OS) configurations that are not managed by the
@@ -344,4 +344,5 @@ the overlay network without first tearing down the cluster. Refer to
 [Enable Overlay Network - Centrally Managed Cluster](../../clusters/edge/networking/vxlan-overlay.md) to learn more
 about whether or not you should enable network overlay.
 
-Refer to [Create Local Cluster](../../clusters/edge/local-ui/cluster-management/create-cluster.md) to learn how to create a local cluster and choose whether to enable the overlay network.
+Refer to [Create Local Cluster](../../clusters/edge/local-ui/cluster-management/create-cluster.md) to learn how to
+create a local cluster and choose whether to enable the overlay network.
