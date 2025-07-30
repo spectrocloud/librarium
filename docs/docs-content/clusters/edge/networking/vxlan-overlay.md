@@ -58,7 +58,7 @@ server. The region experiences a bad weather event that causes a sustained outag
 - If you configured static IP on any host of your cluster using the
   [Terminal User Interface (TUI)](../site-deployment/site-installation/initial-setup.md), enabling network overlay is
   not supported. Static IPs reduce the need to configure an overlay network, but if you must use network overlay on top
-  of static IPs, you can configure the static IP using the
+  of static IPs, you can configure the static IPs using the
   [user data network block](../edge-configuration/installer-reference.md#site-network-parameters) instead.
 
 ## Prerequisites
