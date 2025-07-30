@@ -32,6 +32,8 @@ workloads operating on the cluster, so ensure you have planned for this before p
     - `kms:ListKeys`
     - `kms:ListAliases`
 
+    <br />
+
     <details>
 
     <summary> Example PaletteControllersEKSPolicy Snippet </summary>
