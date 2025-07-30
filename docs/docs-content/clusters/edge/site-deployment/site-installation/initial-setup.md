@@ -96,7 +96,7 @@ perform the setup, you can issue the command `palette-tui` in the terminal to tr
 
    :::warning
 
-   If you intend to create a cluster using this host that will enable network overlay, do not configure static IP
+   If you intend to create a cluster using this host and enable network overlay, do not configure static IP
    through the TUI. If you need to configure static IP, use the
    [user data network block](../../edge-configuration/installer-reference.md#site-network-parameters) instead.
 
