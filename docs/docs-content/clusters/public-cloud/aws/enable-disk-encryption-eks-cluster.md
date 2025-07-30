@@ -7,7 +7,7 @@ sidebar_position: 45
 ---
 
 Palette allows you to enable encryption on EBS root volumes for EKS cluster worker nodes using AWS KMS keys,
-specifically customer managed keys. You can follow this guide to enable disk encryption for your EKS clusters.
+specifically customer managed keys.
 
 Once disk encryption is enabled, all current and new worker nodes in the cluster will have their root volumes encrypted
 using the specified KMS key. This includes any disk changes made to the worker node pools using
@@ -116,7 +116,7 @@ workloads operating on the cluster, so ensure you have planned for this before p
 
 <TabItem value="new-cluster-profile" label="New Cluster Profile">
 
-1. Log in to Palette.
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 2. In the left main menu, click **Profiles**.
 
@@ -127,7 +127,7 @@ workloads operating on the cluster, so ensure you have planned for this before p
 4. Once you have configured your profile and are viewing the **Profile Layers** step, click on the **Kubernetes** layer
    to edit this pack.
 
-5. Select **Values** in pack details and use the YAML editor to add the following configuration. Replace `<kms-key-id>`
+5. Under **Pack Details**, select **Values** and use the YAML editor to add the following configuration. Replace `<kms-key-id>`
    with the key ID of your AWS KMS key.
 
    ```yaml
@@ -145,22 +145,22 @@ workloads operating on the cluster, so ensure you have planned for this before p
 
 6. Click **Confirm Updates** once you have added the configuration.
 
-7. Click **Next** on the Profile Layers step.
+7. On the **Profile Layers** step, click **Next**.
 
 8. Click **Finish Configuration**.
 
-You can now use this cluster profile to [create a new EKS cluster](./eks.md) with disk encryption enabled. Wait till the
+You can now use this cluster profile to [create a new EKS cluster](./eks.md) with disk encryption enabled. Wait until the
 new cluster is fully provisioned before proceeding to [validate the disk encryption](#validate).
 
 </TabItem>
 
 <TabItem value="existing-cluster" label="Existing Cluster">
 
-1. Log in to Palette.
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 2. In the left main menu, click **Profiles**.
 
-3. Find the profile for your EKS cluster and click on it.
+3. Locate and select your EKS cluster profile.
 
 4. Create a new version of your cluster profile. Refer to the
    [Version a Cluster Profile](../../../profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile.md)
@@ -168,7 +168,7 @@ new cluster is fully provisioned before proceeding to [validate the disk encrypt
 
 5. Click on the **Kubernetes** layer to edit the pack.
 
-6. Select **Values** in pack details and use the YAML editor to add the following configuration. Replace `<kms-key-id>`
+6. Under **Pack Details**, select **Values** and use the YAML editor to add the following configuration. Replace `<kms-key-id>`
    with the key ID of your AWS KMS key.
 
    ```yaml
@@ -186,11 +186,11 @@ new cluster is fully provisioned before proceeding to [validate the disk encrypt
 
 7. Click **Confirm Updates** once you have added the configuration.
 
-8. Click **Save Changes** on the cluster profile page.
+8. On the **Cluster Profile** page, click **Save Changes**.
 
 9. In the left main menu, click **Clusters**.
 
-10. Find the EKS cluster you want to update and click on it.
+10. Locate and select the EKS cluster you want to enable disk encryption on.
 
 11. Click on the **Profile** tab.
 
@@ -225,10 +225,10 @@ new cluster is fully provisioned before proceeding to [validate the disk encrypt
 
 3. Click on the **Compute** tab and click on one of your worker pools within the **Node Groups** section.
 
-4. In the **Node group configuration** section, click on the **Launch template** to view the details of the launch
+4. In the **Node group configuration** section, click **Launch template** to view the details of the launch
    template used by the worker pool.
 
-5. Click on the **Storage** tab in the **Launch template version details** section.
+5. In the **Launch template version details** section, select the **Storage** tab. 
 
 6. Verify that the volumes are encrypted and that the **Key** is set to the KMS key ID you specified in the cluster
    profile.
