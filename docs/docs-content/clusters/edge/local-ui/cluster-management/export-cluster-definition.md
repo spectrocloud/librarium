@@ -7,8 +7,17 @@ sidebar_position: 10
 tags: ["edge"]
 ---
 
-You can export cluster definitions from a cluster in Palette and use the definition to provision a cluster in an Edge
-host. A cluster definition contains one or more cluster profiles, including the profile variables used in the profiles.
+You can export cluster definitions from a cluster in Palette and use the definition to provision or update a cluster in
+an Edge host. A cluster definition contains one or more cluster profiles, including the profile variables used in the
+profiles.
+
+:::info
+
+If you create a new cluster or update an existing one with a cluster definition and content bundle built on a Palette
+instance, your Palette agent will be updated to match the version of that Palette instance. This may result in an
+upgrade if the instance is newer than your Palette agent, or a downgrade if it is older.
+
+:::
 
 You can export the cluster definition using the Palette CLI, Palette Edge CLI, or Palette API. The CLI offers a more
 user-friendly interface but requires a machine with X86_64 architecture. If you are using an ARM64 machine, such as
