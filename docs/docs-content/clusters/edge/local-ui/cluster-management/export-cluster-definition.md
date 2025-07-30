@@ -15,7 +15,7 @@ profiles.
 
 If you create a new cluster or update an existing one with a cluster definition and content bundle built on a Palette
 instance, your Palette agent will be updated to match the version of that Palette instance. This may result in an
-upgrade if the instance is newer than your current Palette agent, or a downgrade if it is older.
+upgrade if the instance is newer than your Palette agent, or a downgrade if it is older.
 
 :::
 
