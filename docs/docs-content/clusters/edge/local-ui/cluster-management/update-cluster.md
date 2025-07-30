@@ -57,8 +57,10 @@ version. This guide explains how to update an existing cluster in Local UI.
 9. In the bottom-left corner, click **Update**.
 
    :::info
-   
-   If you upload a modified cluster definition along with a content bundle built after a Palette version upgrade, and then update the cluster using the Local UI, the Palette agent will be upgraded to match the version specified in the content bundle.
+
+   If you upload a modified cluster definition along with a content bundle built after a Palette version upgrade, and
+   then update the cluster using the Local UI, the Palette agent will be upgraded to match the version specified in the
+   content bundle.
 
    :::
 
