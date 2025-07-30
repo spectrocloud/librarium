@@ -26,12 +26,10 @@ workloads operating on the cluster, so ensure you have planned for this before p
   [Required IAM Policies](required-iam-policies.md), including the
   [**PaletteControllersEKSPolicy**](required-iam-policies.md#controllers-eks-policy) policy.
 
-  - The following additional permissions are required for Palette to list and use the KMS key for disk encryption:
+  - The following additional permissions are required for Palette to list and use the KMS key for disk encryption. Add these permissions to the **PaletteControllersEKSPolicy** policy in your AWS account:
 
     - `kms:ListKeys`
     - `kms:ListAliases`
-
-    Add these permissions to the **PaletteControllersEKSPolicy** policy in your AWS account.
 
     <details>
 
