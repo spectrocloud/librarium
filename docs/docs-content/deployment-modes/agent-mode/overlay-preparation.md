@@ -98,9 +98,10 @@ The installer configuration user data can declaratively configure your host to p
 break down the configuration step by step to explain each block.
 
 However, if you would like to copy the entire configuration, expand the following details block. All commands provided
-in this guide are specific to Ubuntu. If you have a different OS, you will to replace them with commands that will help
-you accomplish the same goals on your OS. Replace the regex with a value that will match the names of the interfaces
-your host uses. The example in the block is `en*`, which matches all interfaces with names starting with `en`.
+in this guide are specific to Ubuntu. If you have a different OS, you will need to replace them with commands that will
+help you accomplish the same goals on your OS. Replace the regex with a value that will match the names of the
+interfaces your host uses. The example in the block is `en*`, which matches all interfaces with names starting with
+`en`.
 
 <details>
 
@@ -328,7 +329,7 @@ Use the following steps to ensure that your interfaces are now managed by `syste
    systemctl is-active systemd-resolved
    ```
 
-4. Issue the following command to check if `/etc/resolv.conf` is symlinked to `resolved`.
+4. Issue the following command to check if `/etc/resolv.conf` is symlinked to `/run/systemd/resolve/resolv.conf`.
 
    ```bash
    readlink -f /etc/resolv.conf
