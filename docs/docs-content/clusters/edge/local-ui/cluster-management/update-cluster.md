@@ -58,7 +58,9 @@ version. This guide explains how to update an existing cluster in Local UI.
 
    :::info
 
-   If you update a cluster with a modified cluster definition and content bundle built on a Palette instance, your Palette agent will be updated to match the version of that Palette instance. This may result in an upgrade if the instance is newer than your current Palette agent, or a downgrade if it is older.
+   If you update a cluster with a modified cluster definition and content bundle built on a Palette instance, your
+   Palette agent will be updated to match the version of that Palette instance. This may result in an upgrade if the
+   instance is newer than your current Palette agent, or a downgrade if it is older.
 
    :::
 
