@@ -54,14 +54,14 @@ As a final step, apply the cluster profile to your cluster.
 ## Terraform
 
 ```hcl
-data "spectrocloud_registry" "public_add_on_repo" {
-  name = "Spectro Addon Repo"
+data "spectrocloud_registry" "community_registry" {
+  name = "Palette Community Registry"
 }
 
 data "spectrocloud_pack_simple" "cloudanix" {
   name         = "cloudanix"
   version      = "0.0.2"
   type         = "helm"
-  registry_uid = data.spectrocloud_registry.public_add_on_repo.id
+  registry_uid = data.spectrocloud_registry.community_registry.id
 }
 ```
