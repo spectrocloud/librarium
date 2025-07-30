@@ -6,8 +6,8 @@ tags: ["public cloud", "aws", "eks", "kms"]
 sidebar_position: 45
 ---
 
-Palette allows you to enable encryption on Elastic Block Store (EBS) root volumes for Elastic Kubernetes Service (EKS) cluster worker nodes using AWS Key Management Service (KMS) keys,
-specifically customer managed keys.
+Palette allows you to enable encryption on Elastic Block Store (EBS) root volumes for Elastic Kubernetes Service (EKS)
+cluster worker nodes using AWS Key Management Service (KMS) keys, specifically customer managed keys.
 
 Once disk encryption is enabled, all current and new worker nodes in the cluster will have their root volumes encrypted
 using the specified KMS key. This includes any disk changes made to the worker node pools using
@@ -26,7 +26,8 @@ workloads operating on the cluster, so ensure you have planned for this before p
   [Required IAM Policies](required-iam-policies.md), including the
   [**PaletteControllersEKSPolicy**](required-iam-policies.md#controllers-eks-policy) policy.
 
-  - The following additional permissions are required for Palette to list and use the KMS key for disk encryption. Add these permissions to the **PaletteControllersEKSPolicy** policy in your AWS account:
+  - The following additional permissions are required for Palette to list and use the KMS key for disk encryption. Add
+    these permissions to the **PaletteControllersEKSPolicy** policy in your AWS account:
 
     - `kms:ListKeys`
     - `kms:ListAliases`
@@ -125,8 +126,8 @@ workloads operating on the cluster, so ensure you have planned for this before p
 4. Once you have configured your profile and are viewing the **Profile Layers** step, click on the **Kubernetes** layer
    to edit this pack.
 
-5. Under **Pack Details**, select **Values** and use the YAML editor to add the following configuration. Replace `<kms-key-id>`
-   with the key ID of your AWS KMS key.
+5. Under **Pack Details**, select **Values** and use the YAML editor to add the following configuration. Replace
+   `<kms-key-id>` with the key ID of your AWS KMS key.
 
    ```yaml
    cloud:
@@ -147,8 +148,8 @@ workloads operating on the cluster, so ensure you have planned for this before p
 
 8. Click **Finish Configuration**.
 
-You can now use this cluster profile to [create a new EKS cluster](./eks.md) with disk encryption enabled. Wait until the
-new cluster is fully provisioned before proceeding to [validate the disk encryption](#validate).
+You can now use this cluster profile to [create a new EKS cluster](./eks.md) with disk encryption enabled. Wait until
+the new cluster is fully provisioned before proceeding to [validate the disk encryption](#validate).
 
 </TabItem>
 
@@ -166,8 +167,8 @@ new cluster is fully provisioned before proceeding to [validate the disk encrypt
 
 5. Click on the **Kubernetes** layer to edit the pack.
 
-6. Under **Pack Details**, select **Values** and use the YAML editor to add the following configuration. Replace `<kms-key-id>`
-   with the key ID of your AWS KMS key.
+6. Under **Pack Details**, select **Values** and use the YAML editor to add the following configuration. Replace
+   `<kms-key-id>` with the key ID of your AWS KMS key.
 
    ```yaml
    cloud:
@@ -223,10 +224,10 @@ new cluster is fully provisioned before proceeding to [validate the disk encrypt
 
 3. Click on the **Compute** tab and click on one of your worker pools within the **Node Groups** section.
 
-4. In the **Node group configuration** section, click **Launch template** to view the details of the launch
-   template used by the worker pool.
+4. In the **Node group configuration** section, click **Launch template** to view the details of the launch template
+   used by the worker pool.
 
-5. In the **Launch template version details** section, select the **Storage** tab. 
+5. In the **Launch template version details** section, select the **Storage** tab.
 
 6. Verify that the volumes are encrypted and that the **Key** is set to the KMS key ID you specified in the cluster
    profile.
