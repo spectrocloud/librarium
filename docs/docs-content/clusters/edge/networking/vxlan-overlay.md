@@ -55,6 +55,12 @@ server. The region experiences a bad weather event that causes a sustained outag
 - When adding multiple Edge hosts to an existing cluster with overlay enabled, failure to add one host will block the
   addition of the other hosts.
 
+- If you configured static IP on any host of your cluster using the
+  [Terminal User Interface (TUI)](../site-deployment/site-installation/initial-setup.md), enabling network overlay is
+  not supported. Static IPs reduce the need to configure an overlay network, but if you must use network overlay on top
+  of static IPs, you can configure the static IP using the
+  [user data network block](../edge-configuration/installer-reference.md#site-network-parameters) instead.
+
 ## Prerequisites
 
 - At least one Edge host registered with your Palette account.
