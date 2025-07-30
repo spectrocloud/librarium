@@ -94,6 +94,14 @@ perform the setup, you can issue the command `palette-tui` in the terminal to tr
    IP instead of DHCP. In Static IP mode, you will need to provide a static IP address, subnet mask, as well as the
    address of the default gateway. Specifying a static IP will remove the existing DHCP settings.
 
+   :::warning
+
+   If you intend to create a cluster using this host and enable network overlay, do not configure static IP
+   through the TUI. If you need to configure static IP, use the
+   [user data network block](../../edge-configuration/installer-reference.md#site-network-parameters) instead.
+
+   :::
+
 6. In the configuration page of each network adapter, you can also specify the Maximum Transmission Unit (MTU) for your
    network adapter. The MTU defines the largest size, in bytes, of a packet that can be sent over a network interface
    without needing to be fragmented. Press **Enter** to apply the change.
