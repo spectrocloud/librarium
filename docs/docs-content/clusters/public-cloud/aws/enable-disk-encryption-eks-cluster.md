@@ -7,8 +7,7 @@ sidebar_position: 45
 ---
 
 Palette allows you to enable encryption on EBS root volumes for EKS cluster worker nodes using AWS KMS keys,
-specifically customer managed keys. This guide will walk you through the prerequisites and steps to enable disk
-encryption for your EKS clusters.
+specifically customer managed keys. You can follow this guide to enable disk encryption for your EKS clusters.
 
 Once disk encryption is enabled, all current and new worker nodes in the cluster will have their root volumes encrypted
 using the specified KMS key. This includes any disk changes made to the worker node pools using
@@ -17,7 +16,7 @@ using the specified KMS key. This includes any disk changes made to the worker n
 Enabling disk encryption on an existing cluster will trigger a
 [worker node pool repave](../../cluster-management/node-pool.md#repave-behavior-and-configuration), which will replace
 the existing worker nodes with new nodes that have encrypted root volumes. This may cause temporary downtime for
-workloads running on the cluster, so ensure you have planned for this before proceeding.
+workloads operating on the cluster, so ensure you have planned for this before proceeding.
 
 ## Prerequisites
 
@@ -207,7 +206,7 @@ new cluster is fully provisioned before proceeding to [validate the disk encrypt
     Once you click **Update**, a
     [worker node pool repave](../../cluster-management/node-pool.md#repave-behavior-and-configuration) is triggered,
     which will cause the worker nodes to be replaced with new nodes that have encrypted root volumes. This may cause
-    temporary downtime for workloads running on the cluster. Ensure you have planned for this downtime before
+    temporary downtime for workloads operating on the cluster. Ensure you have planned for this downtime before
     proceeding.
 
     :::
