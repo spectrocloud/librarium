@@ -48,8 +48,8 @@ run those commands automatically during agent installation.
    sudo ln -sf /run/systemd/resolve/resolv.conf /etc/resolv.conf
    ```
 
-2. Create a backup of your current DNS configurations and remove them. The following commands are an example of how to
-   create a backup if you are using `netplan`.
+2. Create a backup of your current network configurations and remove them. The following commands are an example of how
+   to create a backup if you are using `netplan`.
 
    ```bash
    sudo mkdir -p /etc/netplan/backup
@@ -79,30 +79,34 @@ run those commands automatically during agent installation.
    ```
 
 5. Issue the following commands to enable and restart `systemd-networkd`. If you are connected to your host with an SSH
-   connection, this will terminate the session because your host IP will change.
+   connection, this may terminate the session because your host IP may change.
 
    ```bash
    sudo systemctl enable systemd-networkd
    sudo systemctl restart systemd-networkd
    ```
 
-6. You have now configured your host to use `systemd-networkd` for DNS resolution, and your cluster with this host will
-   now support overlay network.
+6. You have now configured your host to use `systemd-networkd` for DNS resolution and interface management. This host
+   now meets the network prerequisites for enabling network overlay.
 
 </TabItem>
 
 <TabItem value="User Data Block During Agent Installation">
 
 The installer configuration user data can declaratively configure your host to perform specified actions during
-`cloud-init` stages. You can use one user data block to configure the same DNS settings across different hosts. We break
-down the configuration step by step to explain each block. However, if you would like to copy the entire configuration,
-expand the following details block.
+`cloud-init` stages. You can use the same user data block to configure the same DNS settings across different hosts. We
+break down the configuration step by step to explain each block.
+
+However, if you would like to copy the entire configuration, expand the following details block. All commands provided
+in this guide are specific to Ubuntu. If you have a different OS, you will to replace them with commands that will help
+you accomplish the same goals on your OS. Replace the regex with a value that will match the names of the interfaces
+your host uses. The example in the block is `en*`, which matches all interfaces with names starting with `en`.
 
 <details>
 
 <summary>Full User Data YAML</summary>
 
-```yaml
+```yaml {23}
 #cloud-config
 stages:
   initramfs:
@@ -285,7 +289,7 @@ stages:
 
 ## Validate
 
-Use the following steps to ensure that your DNS is now managed by `systemd-networkd`.
+Use the following steps to ensure that your interfaces are now managed by `systemd-networkd`.
 
 1. Issue the following command to retrieve the list of your network interfaces.
 
@@ -296,12 +300,12 @@ Use the following steps to ensure that your DNS is now managed by `systemd-netwo
    `networkctl` is installed as part of the `systemd` package. If `networkctl` is not installed, then it is unlikely
    that your network is being managed by `systemd-networkd`.
 
-   Look for entries similar to the following.
+   Look for entries similar to the following showing names and types of your interfaces.
 
    ```bash
-   IDX LINK  TYPE     OPERATIONAL SETUP
-   1 lo    loopback carrier     unmanaged
-   2 enp0s3 ether    routable    configured
+   IDX LINK   TYPE     OPERATIONAL SETUP
+   1   lo     loopback carrier     unmanaged
+   2   enp0s3 ether    routable    configured
    ```
 
 2. Issue the following command for interfaces whose `TYPE` is not `loopback`.
