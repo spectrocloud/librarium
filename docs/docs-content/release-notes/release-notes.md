@@ -18,13 +18,11 @@ tags: ["release-notes"]
 ### Improvements
 
 - Clusters provisioned in [controller mode](../deployment-modes/controller-mode.md) using [Cluster API (CAPI)](https://cluster-api.sigs.k8s.io/) now support the configuration of [node taints](../clusters/cluster-management/taints.md).
-- The <VersionedLink text="Palette eXtended Kubernetes Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> distribution now supports virtual network overlays. Refer to the [Enable Overlay Network](../clusters/edge/networking/vxlan-overlay.md) guide for further details.
+- The <VersionedLink text="Palette eXtended Kubernetes Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> distribution now supports virtual network overlays for single node clusters. Refer to the [Enable Overlay Network](../clusters/edge/networking/vxlan-overlay.md) guide for further details.
 - [Locally managed](../clusters/edge/local-ui/local-ui.md) clusters now support [network overlays](../clusters/edge/networking/vxlan-overlay.md).
 
 ### Bug Fixes
 
-
-- Fixed an issue that caused custom `stylus.path` to the `user-data` file to be incorrectly applied during [Edge cluster](../clusters/edge/edge.md) creation.
 - Fixed an issue that caused certificates added through the <VersionedLink text="Registry Connect" url="/integrations/packs/?pack=registry-connect" /> pack to be incorrectly added on Edge clusters.
 - Fixed an issue that caused [registry mapping rules](../clusters/edge/edge-configuration/installer-reference.md#registry-mapping-rules) to be incorrectly applied for registries configured using the <VersionedLink text="Registry Connect" url="/integrations/packs/?pack=registry-connect" /> pack.
 - Fixed an issue that caused masked cluster profile variable values to be displayed as plain text in [Edge Management API](/api/introduction/#edge-management-api) calls.
