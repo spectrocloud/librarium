@@ -11,7 +11,7 @@ In centrally managed clusters, the Palette agent gets upgraded automatically wit
 explicitly [pause upgrades](../../cluster-management/platform-settings/pause-platform-upgrades.md).
 
 In local clusters, this happens automatically only if you upload a modified cluster definition along with a content
-bundle built after a Palette version upgrade, and then update the cluster through Local UI.
+bundle built after a Palette version upgrade, and then update the cluster through Local UI. The Palette agent is then upgraded to match the version included in the content bundle.
 
 When you want to explicitly trigger the agent version update, you can include the new agent version in a new cluster
 profile, and upgrade the cluster using the new profile. This page teaches you how to identify the matching agent version
