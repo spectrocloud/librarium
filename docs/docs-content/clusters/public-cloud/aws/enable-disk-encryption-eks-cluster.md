@@ -6,7 +6,7 @@ tags: ["public cloud", "aws", "eks", "kms"]
 sidebar_position: 45
 ---
 
-Palette allows you to enable encryption on EBS root volumes for EKS cluster worker nodes using AWS KMS keys,
+Palette allows you to enable encryption on Elastic Block Store (EBS) root volumes for Elastic Kubernetes Service (EKS) cluster worker nodes using AWS Key Management Service (KMS) keys,
 specifically customer managed keys.
 
 Once disk encryption is enabled, all current and new worker nodes in the cluster will have their root volumes encrypted
