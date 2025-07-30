@@ -13,9 +13,7 @@ profiles.
 
 :::info
 
-If you upload a modified cluster definition along with a content bundle built after a Palette version upgrade, and then
-update the cluster through Local UI, the Palette agent will be upgraded to match the version specified in the content
-bundle.
+If you create a new cluster or update an existing one with a cluster definition and content bundle built on a Palette instance, your Palette agent will be updated to match the version of that Palette instance. This may result in an upgrade if the instance is newer than your current Palette agent, or a downgrade if it is older.
 
 :::
 
