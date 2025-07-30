@@ -366,3 +366,9 @@ deployment using Local UI during cluster creation.
 - [Build Edge Installer ISO](../../edgeforge-workflow/palette-canvos/build-installer-iso.md)
 
 - [Create Local Cluster](../cluster-management/create-cluster.md)
+
+:::info
+   
+If you upload a content bundle built after a Palette version upgrade, along with a modified cluster definition, and update the cluster through the Local UI, it will lead to the Palette agent being upgraded in accordance with the version included in the content bundle.
+
+:::
