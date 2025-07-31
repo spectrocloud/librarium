@@ -212,14 +212,14 @@ jobs:
           echo "CURRENT_STEP=release" >> $GITHUB_ENV
           npx semantic-release
 
-      - name: Slack Notification on Failure
-        if: ${{ failure() }}
-        uses: rtCamp/action-slack-notify@v2.3.3
-        env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
-          SLACK_USERNAME: "spectromate"
-          SLACK_ICON_EMOJI: ":robot_panic:"
-          SLACK_COLOR: "danger"
-          SLACKIFY_MARKDOWN: true
-          ENABLE_ESCAPES: true
-          SLACK_MESSAGE: "The release job for `${{ github.workflow }}` in `${{ github.repository }}` failed at step: `${{ env.CURRENT_STEP }}`. [View details](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})."
+      # - name: Slack Notification on Failure
+      #   if: ${{ failure() }}
+      #   uses: rtCamp/action-slack-notify@v2.3.3
+      #   env:
+      #     SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
+      #     SLACK_USERNAME: "spectromate"
+      #     SLACK_ICON_EMOJI: ":robot_panic:"
+      #     SLACK_COLOR: "danger"
+      #     SLACKIFY_MARKDOWN: true
+      #     ENABLE_ESCAPES: true
+      #     SLACK_MESSAGE: "The release job for `${{ github.workflow }}` in `${{ github.repository }}` failed at step: `${{ env.CURRENT_STEP }}`. [View details](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})."
