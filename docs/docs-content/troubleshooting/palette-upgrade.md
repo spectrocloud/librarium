@@ -23,29 +23,12 @@ in a healthy state prior to the upgrade.
 To verify the health status of each MongoDB ReplicaSet member, follow the below procedure based on whether TLS is
 configured with MongoDB.
 
-1. Export your MongoDB username and password as environment variables.
-
-   ```shell
-   export MONGO_INITDB_ROOT_PASSWORD=<mongo-password>
-   export MONGO_INITDB_ROOT_USERNAME=<mongo-username>
-   ```
-
-   :::tip
-
-   Your MongoDB username and password can be found by running the following command.
-
-   ```shell
-   kubectl exec --namespace hubble-system mongo-0 --container mongo -- env | grep MONGO
-   ```
-
-   :::
-
 <Tabs>
 
 <TabItem label="With TLS" value="tls">
 
-2. Run the following command to query the ReplicaSet for its current primary host, extract the Pod name, and set its
-   value to the `MONGO_PRIMARY` environment variable.
+1. Issue the following command to query the ReplicaSet for its current primary host, extract the Pod name, and save its
+   value as `MONGO_PRIMARY`.
 
    ```shell
    MONGO_PRIMARY=$(
@@ -53,8 +36,8 @@ configured with MongoDB.
          --namespace hubble-system \
          mongo-1 \
          --container mongo \
-         -- bash -c '
-            mongosh \
+         -- bash -c \
+            'mongosh \
                --username "$MONGODB_INITDB_ROOT_USERNAME" \
                --password "$MONGODB_INITDB_ROOT_PASSWORD" \
                --host "$HOSTNAME" \
@@ -64,12 +47,11 @@ configured with MongoDB.
                --tlsAllowInvalidHostnames \
                admin \
                --quiet \
-               --eval "print(JSON.stringify(rs.isMaster()))"
-         '
+               --eval "print(JSON.stringify(rs.isMaster()))"' 
    ) | jq --raw-output .primary | awk -F. '{print $1}'
    ```
 
-3. Run the following command to connect to the primary Pod and print each ReplicaSet member’s host, state, and health
+2. Issue the following command to connect to the primary Pod and print each ReplicaSet member’s host, state, and health
    status.
 
    ```shell
@@ -77,8 +59,8 @@ configured with MongoDB.
       --namespace hubble-system \
       "${MONGO_PRIMARY}" \
       --container mongo \
-      -- bash -c '
-         mongosh \
+      -- bash -c \
+         'mongosh \
             --username "$MONGODB_INITDB_ROOT_USERNAME" \
             --password "$MONGODB_INITDB_ROOT_PASSWORD" \
             --host "$HOSTNAME" \
@@ -88,8 +70,7 @@ configured with MongoDB.
             --tlsAllowInvalidHostnames \
             admin \
             --quiet \
-            --eval "rs.status().members.forEach(m => printjson({host:m.name,state:m.stateStr,health:m.health}))"
-      '
+            --eval "rs.status().members.forEach(m => printjson({host:m.name,state:m.stateStr,health:m.health}))"'
    ```
 
    All healthy members should have a `health` status of `1`. If the ReplicaSet members are healthy, proceed with
@@ -117,8 +98,8 @@ configured with MongoDB.
 
 <TabItem label="Without TLS" value="non-tls">
 
-2. Run the following command to query the ReplicaSet for its current primary host, extract the Pod name, and set its
-   value to the `MONGO_PRIMARY` environment variable.
+1. Issue the following command to query the ReplicaSet for its current primary host, extract the Pod name, and save its
+   value as `MONGO_PRIMARY`.
 
    ```shell
    MONGO_PRIMARY=$(
@@ -138,7 +119,7 @@ configured with MongoDB.
    )
    ```
 
-3. Run the following command to connect to the primary Pod and print each ReplicaSet member’s host, state, and health
+2. Issue the following command to connect to the primary Pod and print each ReplicaSet member’s host, state, and health
    status.
 
    ```shell
@@ -146,13 +127,14 @@ configured with MongoDB.
       --namespace hubble-system \
       "${MONGO_PRIMARY}" \
       --container mongo \
-      -- \
-      mongosh \
+      -- bash -c \
+      'mongosh \
          --username "$MONGO_INITDB_ROOT_USERNAME" \
          --password "$MONGO_INITDB_ROOT_PASSWORD" \
+         --host "$HOSTNAME" \
          admin \
          --quiet \
-         --eval "rs.status().members.forEach(m => printjson({host:m.name,state:m.stateStr,health:m.health}))"
+   --eval "rs.status().members.forEach(m => printjson({host:m.name,state:m.stateStr,health:m.health}))"'
    ```
 
    All healthy members should have a `health` status of `1`. If the ReplicaSet members are healthy, proceed with
