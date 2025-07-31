@@ -273,6 +273,102 @@ clientConfig:
 
 </details>
 
+## Node Customization
+
+The following sections relate to the customizable options within the `nodeCustomization.*` section.
+
+This section only applies to worker node pools where you have selected to use a custom [Amazon Machine Image (AMI) Type](../clusters/public-cloud/aws/eks.md#cloud-configuration-settings), such as Amazon Linux 2 or Amazon Linux 2023.
+
+:::info
+
+The `nodeCustomization` section is not included by default in the Kubernetes pack manifest. You can add it to your manifest in the top-level of the YAML file. Ensure it is not nested under any other section.
+
+:::
+
+### Configure Amazon Linux 2 AMI Nodes
+
+If you have selected an Amazon Linux 2 AMI for one or more of your worker node groups, you can provide additional configuration as described in the following table.
+
+| Parameter                     | Description                                                                                               |
+| ----------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `preKubeadmCommands`          | A list of shell commands to run before the `kubeadm` command is executed. These commands are run on each worker node before the cluster is joined. |
+| `postKubeadmCommands`         | A list of shell commands to run after the `kubeadm` command is executed. These commands are run on each worker node after the cluster is joined. This can be useful for additional setup or configuration tasks that need to be performed after the node joins the cluster. |
+
+<details>
+
+<summary> Template </summary>
+
+```yaml
+nodeCustomization:
+  al2:
+    preKubeadmCommands:
+      - <command>
+    postKubeadmCommands:
+      - <command>
+```
+
+</details>
+
+<details>
+
+<summary> Example </summary>
+
+```yaml hideClipboard
+nodeCustomization:
+  al2:
+    preKubeadmCommands:
+      - <command>
+    postKubeadmCommands:
+      - <command>
+```
+
+</details>
+
+### Configure Amazon Linux 2023 AMI Nodes
+
+If you have selected an Amazon Linux 2023 AMI for one or more of your worker node groups, you can provide additional configuration as described in the following table.
+
+| Parameter                     | Description                                                                                               |
+| ----------------------------- | --------------------------------------------------------------------------------------------------------- |
+| `script`                      | A custom shell script to run on each worker node. This script can be used to perform additional setup or configuration tasks that are not covered by the default node setup.
+| `nodeConfig.Containerd`       | Optional configuration for the container runtime, such as containerd. This can include settings like logging, storage, and network options.
+| `nodeConfig.Instance`         | Optional configuration for the instance, such as instance type, AMI ID, and other instance-specific settings.
+| `nodeConfig.Kubelet`          | Optional configuration for the kubelet, such as resource limits, node labels, and other kubelet-specific settings. This can include options like `--node-labels`, `--register-with-taints`, and more. |
+
+<details>
+
+<summary> Template </summary>
+
+```yaml
+nodeCustomization:
+  al2023:
+    script::
+      <custom-shell-script>
+    nodeConfig:
+      Containerd:
+      Instance:
+      Kubelet:
+```
+
+</details>
+
+<details>
+
+<summary> Example </summary>
+
+```yaml hideClipboard
+nodeCustomization:
+  al2023:
+    script::
+      <custom-shell-script>
+    nodeConfig:
+      Containerd:
+      Instance:
+      Kubelet:
+```
+
+</details>
+
 ## Required IAM Permissions for Configuration
 
 You must ensure the AWS IAM user or role performing these actions has sufficient privileges. The following table is an
