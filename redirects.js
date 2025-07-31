@@ -929,9 +929,7 @@ let redirects = [
     from: "/vertex/install-palette-vertex/airgap/offline-docs/",
     to: "/downloads/offline-docs/",
   },
-  { from: "/audit-logs/kube-api-audit-logging/",
-    to: "/audit-logs/",
-  }
+  { from: "/audit-logs/kube-api-audit-logging/", to: "/audit-logs/" },
 ];
 
 if (packRedirects.length > 0) {
