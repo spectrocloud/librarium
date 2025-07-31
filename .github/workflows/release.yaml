@@ -100,17 +100,17 @@ jobs:
           aws s3 sync --cache-control 'public, max-age=0, s-maxage=604800' build/ s3://docs.spectrocloud.com --delete
           aws cloudfront create-invalidation --distribution-id ${{ secrets.DISTRIBUTION_ID }} --paths "/*"
 
-      - name: Slack Notification on Failure
-        if: ${{ failure() || env.BUILD_EXIT_CODE != '0' }}
-        uses: rtCamp/action-slack-notify@v2.3.3
-        env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
-          SLACK_USERNAME: "spectromate"
-          SLACK_ICON_EMOJI: ":robot_panic:"
-          SLACK_COLOR: "danger"
-          SLACKIFY_MARKDOWN: true
-          ENABLE_ESCAPES: true
-          SLACK_MESSAGE: "The self-hosted runner release job for `${{ github.workflow }}` in `${{ github.repository }}` failed at step: `${{ env.CURRENT_STEP }}`. [View details](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})."
+      # - name: Slack Notification on Failure
+      #   if: ${{ failure() || env.BUILD_EXIT_CODE != '0' }}
+      #   uses: rtCamp/action-slack-notify@v2.3.3
+      #   env:
+      #     SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
+      #     SLACK_USERNAME: "spectromate"
+      #     SLACK_ICON_EMOJI: ":robot_panic:"
+      #     SLACK_COLOR: "danger"
+      #     SLACKIFY_MARKDOWN: true
+      #     ENABLE_ESCAPES: true
+      #     SLACK_MESSAGE: "The self-hosted runner release job for `${{ github.workflow }}` in `${{ github.repository }}` failed at step: `${{ env.CURRENT_STEP }}`. [View details](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})."
 
 
 #  Use this workflow if you want to use the GitHub-hosted large runner. Useful for scenarios when you need a change to deploy faster than the self-hosted runner can build it.
