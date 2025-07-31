@@ -908,7 +908,7 @@ let redirects = [
   },
   { 
     from: "/audit-logs/kube-api-audit-logging/", 
-    to: "/audit-logs/" 
+    to: "/audit-logs/", 
   },
 ];
 
