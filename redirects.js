@@ -857,4 +857,3 @@ if (packRedirects.length > 0) {
 }
 
 module.exports = redirects;
-
