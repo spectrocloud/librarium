@@ -23,11 +23,12 @@ in a healthy state prior to the upgrade.
 To verify the health status of each MongoDB ReplicaSet member, use the following procedure based on whether TLS is
 configured with MongoDB.
 
-1. Log in to the [Palette](../enterprise-version/system-management/system-management.md#access-the-system-console) or [Palette VerteX](../vertex/system-management/system-management.md#access-the-system-console) system console.
+1. Log in to the [Palette](../enterprise-version/system-management/system-management.md#access-the-system-console) or
+   [Palette VerteX](../vertex/system-management/system-management.md#access-the-system-console) system console.
 
 2. From the left main menu, select **Enterprise Cluster**.
 
-3. On the **Overview** tab, download the **Kubernetes Config File**. 
+3. On the **Overview** tab, download the **Kubernetes Config File**.
 
 4. Open a terminal window and set the environment variable `KUBECONFIG` to point to kubeconfig file you downloaded.
 
@@ -40,11 +41,12 @@ configured with MongoDB.
 <TabItem label="With TLS" value="tls">
 
 5. Issue the following command to query the ReplicaSet for its current primary host, extract the Pod name, and save its
-   value as `MONGO_PRIMARY`. 
+   value as `MONGO_PRIMARY`.
 
    :::info
 
-   The values for `MONGODB_INITDB_ROOT_USERNAME` and `MONGODB_INITDB_ROOT_PASSWORD` do not need to be exported, as they are already defined within the MongoDB Pods.
+   The values for `MONGODB_INITDB_ROOT_USERNAME` and `MONGODB_INITDB_ROOT_PASSWORD` do not need to be exported, as they
+   are already defined within the MongoDB Pods.
 
    :::
 
@@ -121,7 +123,8 @@ configured with MongoDB.
 
    :::info
 
-   The values for `MONGODB_INITDB_ROOT_USERNAME` and `MONGODB_INITDB_ROOT_PASSWORD` do not need to be exported, as they are already defined within the MongoDB Pods.
+   The values for `MONGODB_INITDB_ROOT_USERNAME` and `MONGODB_INITDB_ROOT_PASSWORD` do not need to be exported, as they
+   are already defined within the MongoDB Pods.
 
    :::
 
