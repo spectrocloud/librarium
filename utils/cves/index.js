@@ -216,6 +216,10 @@ async function generateCVEs() {
       await fs.writeFile(filename, JSON.stringify(GlobalCVEData, null, 2));
 
       logger.info("Finished fetching security bulletins data.");
+
+      // Throw an error for testing purposes
+      logger.info("Throw error for testing purposes.");
+      process.exit(7);
     } catch (error) {
       logger.error(error);
       logger.error("Error:", error.response ? error.response.status : error.message);
