@@ -1,3 +1,6 @@
+# This workflow will post to Slack when a PR is labeled with "notify-slack". 
+# Additionally, it will notify the appropriate reviewers based on the current UTC hour.
+
 name: Ready for Review
 
 on:
@@ -13,11 +16,11 @@ concurrency:
 
 jobs:
   notify-slack:
-    if: contains(github.event.pull_request.labels.*.name, 'notify-slack')
+    if: contains(github.event.pull_request.labels.*.name, 'notify-slack') # Only run if the PR is labeled with "notify-slack"
     runs-on: ubuntu-latest
 
     env:
-      SLACK_USER_BEN: ${{ secrets.SLACK_USER_BEN }}
+      SLACK_USER_BEN: ${{ secrets.SLACK_USER_BEN }} # add users to GitHub Secrets and then reference them here.
       SLACK_USER_ADELINA: ${{ secrets.SLACK_USER_ADELINA }}
       SLACK_USER_LINUS: ${{ secrets.SLACK_USER_LINUS }}
       SLACK_USER_AMANDA: ${{ secrets.SLACK_USER_AMANDA }}
@@ -26,6 +29,17 @@ jobs:
       SLACK_USER_SVETA: ${{ secrets.SLACK_USER_SVETA }}
 
     steps:
+      - name: Check for prior Slack notification comment # This step checks if the PR has already been notified in Slack to avoid duplicate notifications.
+        id: check
+        run: |
+          COMMENTS=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments)
+          echo "$COMMENTS" | grep -q "<!-- slack-notified -->" && echo "notified=true" >> $GITHUB_OUTPUT || echo "notified=false" >> $GITHUB_OUTPUT
+
+      - name: Exit if already notified
+        if: steps.check.outputs.notified == 'true'
+        run: echo "Slack already notified. Exiting."
+
       - name: Get Current UTC Hour
         id: time
         run: echo "hour=$(date -u +'%H')" >> $GITHUB_OUTPUT
