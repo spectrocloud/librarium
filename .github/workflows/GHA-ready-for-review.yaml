@@ -1,6 +1,3 @@
-# This workflow is triggered on a pull request labeled with 'notify-slack'. It sends a Slack notification 
-# to alert the team that a PR is ready for review.
-
 name: Ready for Review
 
 on:
@@ -17,11 +14,50 @@ concurrency:
 jobs:
   notify-slack:
     if: contains(github.event.pull_request.labels.*.name, 'notify-slack')
-
     runs-on: ubuntu-latest
 
+    env:
+      SLACK_USER_BEN: ${{ secrets.SLACK_USER_BEN }}
+      SLACK_USER_ADELINA: ${{ secrets.SLACK_USER_ADELINA }}
+      SLACK_USER_LINUS: ${{ secrets.SLACK_USER_LINUS }}
+      SLACK_USER_AMANDA: ${{ secrets.SLACK_USER_AMANDA }}
+      SLACK_USER_CAROLINA: ${{ secrets.SLACK_USER_CAROLINA }}
+      SLACK_USER_LENNY: ${{ secrets.SLACK_USER_LENNY }}
+      SLACK_USER_SVETA: ${{ secrets.SLACK_USER_SVETA }}
+
     steps:
-      - name: Send Slack Notification
+      - name: Get Current UTC Hour
+        id: time
+        run: echo "hour=$(date -u +'%H')" >> $GITHUB_OUTPUT
+
+      - name: Choose Reviewers Based on Time
+        id: pick
+        run: |
+          HOUR=${{ steps.time.outputs.hour }}
+          REVIEWERS=""
+
+          if [ "$HOUR" -ge 7 ] && [ "$HOUR" -lt 15 ]; then
+            REVIEWERS+="<@$SLACK_USER_BEN> "
+          fi
+          if [ "$HOUR" -ge 10 ] && [ "$HOUR" -lt 18 ]; then
+            REVIEWERS+="<@$SLACK_USER_ADELINA> "
+          fi
+          if [ "$HOUR" -ge 11 ] && [ "$HOUR" -lt 19 ]; then
+            REVIEWERS+="<@$SLACK_USER_LINUS> "
+          fi
+          if [ "$HOUR" -ge 12 ] && [ "$HOUR" -lt 20 ]; then
+            REVIEWERS+="<@$SLACK_USER_AMANDA> "
+          fi
+          if [ "$HOUR" -ge 12 ] && [ "$HOUR" -lt 21 ]; then
+            REVIEWERS+="<@$SLACK_USER_CAROLINA> "
+          fi
+          if [ "$HOUR" -ge 15 ] && [ "$HOUR" -lt 22 ]; then
+            REVIEWERS+="<@$SLACK_USER_LENNY> <@$SLACK_USER_SVETA>"
+          fi
+
+          echo "reviewers=$REVIEWERS" >> $GITHUB_OUTPUT
+
+      - name: Notify Slack
         uses: rtCamp/action-slack-notify@v2.3.3
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
@@ -30,3 +66,4 @@ jobs:
           SLACK_COLOR: "#A020F0"
           SLACK_MESSAGE: |
             :review: *<${{ github.event.pull_request.html_url }}|${{ github.event.pull_request.title }}>* is ready for review!
+            Pinging: ${{ steps.pick.outputs.reviewers }}
