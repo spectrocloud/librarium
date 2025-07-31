@@ -171,6 +171,10 @@ an AWS account. This section guides you on how to create an EKS cluster in AWS t
   Management Service (KMS) key. If you do not have one, review
   [Enable Secrets Encryption for EKS Cluster](enable-secrets-encryption-kms-key.md) for guidance.
 
+- To use disk encryption, you must have created an AWS KMS key and set the appropriate configuration in the Kubernetes
+  layer of your cluster profile. Review [Enable Disk Encryption for EKS Cluster](enable-disk-encryption-eks-cluster.md)
+  for guidance.
+
 - If you are deploying your cluster in an [Amazon Secret](./add-aws-accounts.md#aws-secret-cloud-account-us) region, you
   must configure [Image Swap](../../../clusters/cluster-management/image-swap.md) in the Kubernetes layer of your
   [cluster profile](../../../profiles/cluster-profiles/cluster-profiles.md) to redirect public image requests to your
