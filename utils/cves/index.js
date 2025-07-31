@@ -172,6 +172,10 @@ async function generateCVEs() {
         ],
       });
 
+      // Throw an error for testing purposes
+      logger.info("Throw error for testing purposes.");
+      process.exit(7);
+
       // Fetching CVEs for OS-K8s images (kind: "os")
       const osK8sImages = await getSecurityBulletins({
         filters: [
@@ -216,10 +220,6 @@ async function generateCVEs() {
       await fs.writeFile(filename, JSON.stringify(GlobalCVEData, null, 2));
 
       logger.info("Finished fetching security bulletins data.");
-
-      // Throw an error for testing purposes
-      logger.info("Throw error for testing purposes.");
-      process.exit(7);
     } catch (error) {
       logger.error(error);
       logger.error("Error:", error.response ? error.response.status : error.message);
@@ -257,6 +257,10 @@ async function generateMarkdownForCVEs(GlobalCVEData) {
       logger.error(`File: ${failure.file}, Error: ${failure.error.message}`);
     });
   }
+
+  // Throw an error for testing purposes
+  logger.info("Throw error for testing purposes.");
+  process.exit(7);
 
   logger.success("All security bulletin markdown files generated.");
 }
