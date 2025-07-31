@@ -47,7 +47,7 @@ configured with MongoDB.
                --tlsAllowInvalidHostnames \
                admin \
                --quiet \
-               --eval "print(JSON.stringify(rs.isMaster()))"' 
+               --eval "print(JSON.stringify(rs.isMaster()))"'
    ) | jq --raw-output .primary | awk -F. '{print $1}'
    ```
 
