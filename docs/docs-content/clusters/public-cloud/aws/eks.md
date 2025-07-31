@@ -57,6 +57,10 @@ an AWS account. This section guides you on how to create an EKS cluster in AWS t
   Management Service (KMS) key. If you do not have one, review
   [Enable Secrets Encryption for EKS Cluster](enable-secrets-encryption-kms-key.md) for guidance.
 
+- To use disk encryption, you must have created an AWS KMS key and set the appropriate configuration in the Kubernetes
+  layer of your cluster profile. Review [Enable Disk Encryption for EKS Cluster](enable-disk-encryption-eks-cluster.md)
+  for guidance.
+
 - If you do not provide your own Virtual Private Cloud (VPC), Palette creates one for you with compute, network, and
   storage resources in AWS when it provisions Kubernetes clusters. Ensure there is sufficient capacity in the preferred
   AWS region to create the following resources. Note that Palette does not create these resources if you specify an
