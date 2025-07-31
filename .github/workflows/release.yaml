@@ -86,6 +86,12 @@ jobs:
         with:
           gh-token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Fail for testing purposes
+        run: |
+          echo "CURRENT_STEP=Fail for testing purposes" >> $GITHUB_ENV
+          logger.info("Throw error for testing purposes.")
+          exit 1
+
       - name: Upload to AWS
         if: ${{ env.BUILD_EXIT_CODE == '0' }}
         run: |
