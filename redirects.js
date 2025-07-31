@@ -906,6 +906,10 @@ let redirects = [
     from: "/clusters/public-cloud/deploy-k8s-cluster/",
     to: "/getting-started/",
   },
+  { 
+    from: "/audit-logs/kube-api-audit-logging/", 
+    to: "/audit-logs/" 
+  },
 ];
 
 if (packRedirects.length > 0) {
