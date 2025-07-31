@@ -20,8 +20,7 @@ in a healthy state prior to the upgrade.
 
 ### Debug Steps
 
-To verify the health status of each MongoDB ReplicaSet member, use the following procedure based on whether TLS is
-configured with MongoDB.
+To verify the health status of each MongoDB ReplicaSet member, use the following procedure based on whether you are upgrading Palette or Palette VerteX.
 
 1. Log in to the [Palette](../enterprise-version/system-management/system-management.md#access-the-system-console) or
    [Palette VerteX](../vertex/system-management/system-management.md#access-the-system-console) system console.
@@ -38,7 +37,78 @@ configured with MongoDB.
 
 <Tabs>
 
-<TabItem label="With TLS" value="tls">
+<TabItem label="Palette" value="palette">
+
+5. Issue the following command to query the ReplicaSet for its current primary host, extract the Pod name, and save its
+   value as `MONGO_PRIMARY`.
+
+   :::info
+
+   The values for `MONGODB_INITDB_ROOT_USERNAME` and `MONGODB_INITDB_ROOT_PASSWORD` do not need to be exported, as they
+   are already defined within the MongoDB Pods.
+
+   :::
+
+   ```shell
+   MONGO_PRIMARY=$(
+      kubectl exec \
+         --namespace hubble-system \
+         mongo-1 \
+         --container mongo \
+         -- \
+         mongosh \
+            --username "$MONGODB_INITDB_ROOT_USERNAME" \
+            --password "$MONGODB_INITDB_ROOT_PASSWORD" \
+            admin \
+            --quiet \
+            --eval "print(JSON.stringify(rs.hello()))" \
+      | jq --raw-output .primary \
+      | awk -F. '{print $1}'
+   )
+   ```
+
+6. Issue the following command to connect to the primary Pod and print each ReplicaSet member’s host, state, and health
+   status.
+
+   ```shell
+   kubectl exec \
+      --namespace hubble-system \
+      "${MONGO_PRIMARY}" \
+      --container mongo \
+      -- bash -c \
+      'mongosh \
+         --username "$MONGO_INITDB_ROOT_USERNAME" \
+         --password "$MONGO_INITDB_ROOT_PASSWORD" \
+         --host "$HOSTNAME" \
+         admin \
+         --quiet \
+   --eval "rs.status().members.forEach(m => printjson({host:m.name,state:m.stateStr,health:m.health}))"'
+   ```
+
+   All healthy members should have a `health` status of `1`. If the ReplicaSet members are healthy, proceed with
+   upgrading self-hosted Palette or VerteX.
+
+   ```shell title="Example output" hideClipboard {4,9,14}
+   {
+      host: 'mongo-1.mongo.hubble-system.svc.cluster.local:27017',
+      state: 'PRIMARY',
+      health: 1
+   }
+   {
+      host: 'mongo-0.mongo.hubble-system.svc.cluster.local:27017',
+      state: 'SECONDARY',
+      health: 1
+   }
+   {
+      host: 'mongo-2.mongo.hubble-system.svc.cluster.local:27017',
+      state: 'SECONDARY',
+      health: 1
+   }
+   ```
+
+</TabItem>
+
+<TabItem label="Palette VerteX" value="vertex">
 
 5. Issue the following command to query the ReplicaSet for its current primary host, extract the Pod name, and save its
    value as `MONGO_PRIMARY`.
@@ -91,77 +161,6 @@ configured with MongoDB.
             admin \
             --quiet \
             --eval "rs.status().members.forEach(m => printjson({host:m.name,state:m.stateStr,health:m.health}))"'
-   ```
-
-   All healthy members should have a `health` status of `1`. If the ReplicaSet members are healthy, proceed with
-   upgrading self-hosted Palette or VerteX.
-
-   ```shell title="Example output" hideClipboard {4,9,14}
-   {
-      host: 'mongo-1.mongo.hubble-system.svc.cluster.local:27017',
-      state: 'PRIMARY',
-      health: 1
-   }
-   {
-      host: 'mongo-0.mongo.hubble-system.svc.cluster.local:27017',
-      state: 'SECONDARY',
-      health: 1
-   }
-   {
-      host: 'mongo-2.mongo.hubble-system.svc.cluster.local:27017',
-      state: 'SECONDARY',
-      health: 1
-   }
-   ```
-
-</TabItem>
-
-<TabItem label="Without TLS" value="non-tls">
-
-5. Issue the following command to query the ReplicaSet for its current primary host, extract the Pod name, and save its
-   value as `MONGO_PRIMARY`.
-
-   :::info
-
-   The values for `MONGODB_INITDB_ROOT_USERNAME` and `MONGODB_INITDB_ROOT_PASSWORD` do not need to be exported, as they
-   are already defined within the MongoDB Pods.
-
-   :::
-
-   ```shell
-   MONGO_PRIMARY=$(
-      kubectl exec \
-         --namespace hubble-system \
-         mongo-1 \
-         --container mongo \
-         -- \
-         mongosh \
-            --username "$MONGODB_INITDB_ROOT_USERNAME" \
-            --password "$MONGODB_INITDB_ROOT_PASSWORD" \
-            admin \
-            --quiet \
-            --eval "print(JSON.stringify(rs.hello()))" \
-      | jq --raw-output .primary \
-      | awk -F. '{print $1}'
-   )
-   ```
-
-6. Issue the following command to connect to the primary Pod and print each ReplicaSet member’s host, state, and health
-   status.
-
-   ```shell
-   kubectl exec \
-      --namespace hubble-system \
-      "${MONGO_PRIMARY}" \
-      --container mongo \
-      -- bash -c \
-      'mongosh \
-         --username "$MONGO_INITDB_ROOT_USERNAME" \
-         --password "$MONGO_INITDB_ROOT_PASSWORD" \
-         --host "$HOSTNAME" \
-         admin \
-         --quiet \
-   --eval "rs.status().members.forEach(m => printjson({host:m.name,state:m.stateStr,health:m.health}))"'
    ```
 
    All healthy members should have a `health` status of `1`. If the ReplicaSet members are healthy, proceed with
