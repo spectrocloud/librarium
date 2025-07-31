@@ -20,7 +20,8 @@ in a healthy state prior to the upgrade.
 
 ### Debug Steps
 
-To verify the health status of each MongoDB ReplicaSet member, use the following procedure based on whether you are upgrading Palette or Palette VerteX.
+To verify the health status of each MongoDB ReplicaSet member, use the following procedure based on whether you are
+upgrading Palette or Palette VerteX.
 
 1. Log in to the [Palette](../enterprise-version/system-management/system-management.md#access-the-system-console) or
    [Palette VerteX](../vertex/system-management/system-management.md#access-the-system-console) system console.
