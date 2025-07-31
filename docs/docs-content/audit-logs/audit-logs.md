@@ -102,3 +102,11 @@ CloudWatch:
 - Stream Optional.
 - Confirm the information to complete the audit trail creation wizard.
 - The audit trail could be edited and deleted using the **three-dot Menu**.
+
+## Resources
+
+- [Kubernetes API parameters](https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/)
+
+- [Kubernetes Auditing Documentation](https://kubernetes.io/docs/tasks/debug/debug-cluster/audit/)
+
+<br />
