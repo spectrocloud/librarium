@@ -12,11 +12,11 @@ Virtual Machines (VMs) alongside containers in a Kubernetes host cluster. You ca
 [add-on cluster profile](../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-addon-profile.md)
 on top of an existing data center or edge cluster.
 
-![Diagram that explains the architecture behind Palette VMO.](/vm-management_architecture_vmo-architecture.webp)
+![Diagram that explains the architecture behind Palette VMO.](/vm-management_architecture_vmo-architecture-new.webp)
 
 For more detailed information about the technical architecture of VMO, refer to the
-[Spectro Cloud Resource Center](https://www.spectrocloud.com/resource-center). From the left **Main Menu**, click on the
-"virtual machines" topic to find the latest version of the Palette VMO Reference Architecture.
+[Spectro Cloud Resource Center](https://www.spectrocloud.com/resource-center). From the left main menu, select the
+**Virtual Machines** topic to find the latest version of the Palette VMO Reference Architecture.
 
 ## Palette VMO Components
 
