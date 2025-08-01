@@ -105,7 +105,7 @@
     "prettier": "3.5.3",
     "semantic-release": "^24.2.0",
     "test-links": "^0.0.1",
-    "ts-jest": "^29.3.4",
+    "ts-jest": "^29.4.0",
     "typescript": "^5.7.2",
     "typescript-plugin-css-modules": "^5.2.0",
     "webpconvert": "^3.0.1",
