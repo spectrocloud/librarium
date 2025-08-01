@@ -28,7 +28,14 @@ management.
   is because whenever a node is drained during an upgrade or for any other reason, the volumes will not dynamically move
   with the local path provisioner.
 
+- Locally managed multi-node clusters deployed in [agent mode](../../../../deployment-modes/agent-mode/agent-mode.md) do not support network overlay.
+
 ## Prerequisites
+
+- If your hosts are deployed in agent mode, ensure that your hosts use `systemd-networkd` and `systemd-resolved` for
+  interface and DNS management. Refer to
+  [Configure networkd to Prepare Host for Overlay Network](../../../../deployment-modes/agent-mode/overlay-preparation.md)
+  for more information.
 
 - Network access to the Edge device’s IP and port where Local UI is exposed. The default port is 5080.
 
@@ -53,7 +60,9 @@ management.
 
 - You must ensure your hosts have stable IP addresses. You have the following options to achieve a stable IP address:
 
-  - Use a static IP address. Contact your network administrator to assign the Edge host a static IP address.
+  - Use a static IP address. Contact your network administrator to assign the Edge host a static IP address and
+    [use the network block in your `user-data` file](../../edge-configuration/installer-reference.md#site-network-parameters)
+    to configure the static IP address.
   - Use Dynamic Host Configuration Protocol (DHCP) reservations to reserve an IP address in a DHCP network. Contact your
     network administrator to reserve IP addresses for your Edge hosts in a DHCP network.
   - Enable network overlay on your Edge cluster. Network overlay can only be enabled during cluster creation. For more
