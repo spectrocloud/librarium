@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## July 30, 2025 - Release 4.7.X
+## July 30, 2025 - Release 4.7.7
 
 <!-- prettier-ignore-start -->
 
