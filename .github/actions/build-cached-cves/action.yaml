@@ -56,7 +56,6 @@ runs:
       shell: bash
 
     - name: Slack Notification
-      if: ${{ failure() }}
       uses: rtCamp/action-slack-notify@v2.3.3
       env:
         SLACK_WEBHOOK: ${{ inputs.slack-webhook }}
