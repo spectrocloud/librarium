@@ -98,6 +98,10 @@ Palette. You will then create a cluster profile and use the registered host to d
 
   :::
 
+- If you plan on creating clusters that need to enable network overlay, consider adding specific user data blocks to
+  install and configure the necessary network prerequisites. Refer to
+  [Configure networkd to Prepare Host for Overlay Network](./overlay-preparation.md) for more information.
+
 - If installing the FIPS version of Agent Mode on a Rocky Linux edge host, you must configure your SELinux policies to
   grant rsync the required host permissions and ensure you enable cgroup V2.
 
