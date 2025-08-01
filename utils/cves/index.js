@@ -215,8 +215,6 @@ async function generateCVEs() {
       mkdirSync(dirname, { recursive: true });
       await fs.writeFile(filename, JSON.stringify(GlobalCVEData, null, 2));
 
-      throw new Error("Security bulletins data fetched failed for testing purposes.");
-
       logger.info("Finished fetching security bulletins data.");
     } catch (error) {
       logger.error(error);
