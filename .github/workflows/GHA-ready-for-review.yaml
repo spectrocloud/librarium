@@ -41,8 +41,9 @@ jobs:
 
       - name: Exit if already notified
         if: steps.check.outputs.notified == 'true'
+        continue-on-error: true
         run: |
-          echo "Workflow stopping because Slack was already notified."
+          echo "Slack already notified - skipping remaining steps."
 
       - name: Decode reviewer config (Base64)
         id: config
@@ -98,4 +99,12 @@ jobs:
             echo "Secure deletion complete."
           else
             echo "No reviewers.json file to delete."
+          fi
+      - name: Final Job Status Summary
+        if: always()
+        run: |
+          if [ "${{ steps.check.outputs.notified }}" == "true" ]; then
+            echo "✅ Job completed: Slack was already notified."
+          else
+            echo "✅ Job completed: Slack notification was sent in this run."
           fi
