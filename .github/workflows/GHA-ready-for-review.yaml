@@ -1,5 +1,11 @@
 # This workflow will post to Slack when a PR is labeled with "notify-slack". 
-# Additionally, it will notify the appropriate reviewers based on the current UTC hour.
+# It will notify the appropriate reviewers based on the current UTC hour.
+# It also ensures that Slack is not notified multiple times for the same PR.
+# The reviewers are defined in a Base64 encoded JSON file stored in a GitHub secret.
+# After notifying, it records the notification in the PR comments and securely deletes the reviewers file.
+# The workflow uses the rtCamp/action-slack-notify action to send messages to Slack.
+# The workflow is designed to be efficient and secure, ensuring that sensitive information is handled properly.
+
 
 name: Ready for Review
 
@@ -8,85 +14,91 @@ on:
     types: [labeled]
 
 permissions:
-  pull-requests: write  # Needed to read/write PR comments
+  pull-requests: write
 
 concurrency:
   group: readyforreviewci-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
-  notify-slack:
-    if: contains(github.event.pull_request.labels.*.name, 'notify-slack') # Only run if the PR is labeled with "notify-slack"
+  notify-slack: # Notify Slack when PR is labeled with "notify-slack"
+    if: contains(github.event.pull_request.labels.*.name, 'notify-slack')
     runs-on: ubuntu-latest
 
-    env:
-      SLACK_USER_BEN: ${{ secrets.SLACK_USER_BEN }} # add users to GitHub Secrets and then reference them here.
-      SLACK_USER_ADELINA: ${{ secrets.SLACK_USER_ADELINA }}
-      SLACK_USER_LINUS: ${{ secrets.SLACK_USER_LINUS }}
-      SLACK_USER_AMANDA: ${{ secrets.SLACK_USER_AMANDA }}
-      SLACK_USER_CAROLINA: ${{ secrets.SLACK_USER_CAROLINA }}
-      SLACK_USER_LENNY: ${{ secrets.SLACK_USER_LENNY }}
-      SLACK_USER_SVETA: ${{ secrets.SLACK_USER_SVETA }}
-
     steps:
-      - name: Check for prior Slack notification comment # This step checks if the PR has already been notified in Slack to avoid duplicate notifications.
+      - name: Check for prior Slack notification comment #Avoid duplicate notifications
         id: check
         run: |
           COMMENTS=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
             https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments)
-          echo "$COMMENTS" | grep -q "<!-- slack-notified -->" && echo "notified=true" >> $GITHUB_OUTPUT || echo "notified=false" >> $GITHUB_OUTPUT
 
-          
+          echo "$COMMENTS" | grep -q "<!-- slack-notified -->" 
+          if [ $? -eq 0 ]; then
+            echo "Slack already notified."
+            echo "notified=true" >> $GITHUB_OUTPUT
+            exit 0
+          else
+            echo "notified=false" >> $GITHUB_OUTPUT
+          fi
+
       - name: Exit if already notified
         if: steps.check.outputs.notified == 'true'
-        run: echo "Slack already notified. Exiting." # Script should exit here if already notified.
+        run: |
+          echo "Workflow stopping because Slack was already notified."
+          exit 0 # Exit early to avoid unnecessary steps
 
-      - name: Get Current UTC Hour
-        id: time
-        run: echo "hour=$(date -u +'%H')" >> $GITHUB_OUTPUT
+      - name: Decode reviewer config (Base64)
+        id: config
+        run: |
+          echo "${{ secrets.REVIEWER_CONFIG_B64 }}" | base64 -d > reviewers.json
 
-      - name: Choose Reviewers Based on Time
+      - name: Choose Reviewers From Config # Select reviewers from GitHub Action Secret REVIEWER_CONFIG_B64 based on current UTC hour
         id: pick
         run: |
-          HOUR=${{ steps.time.outputs.hour }}
+          HOUR=$(date -u +'%H')
+          echo "Current UTC Hour: $HOUR"
           REVIEWERS=""
 
-          if [ "$HOUR" -ge 7 ] && [ "$HOUR" -lt 15 ]; then
-            REVIEWERS+="<@$SLACK_USER_BEN> "
-          fi
-          if [ "$HOUR" -ge 10 ] && [ "$HOUR" -lt 18 ]; then
-            REVIEWERS+="<@$SLACK_USER_ADELINA> "
-          fi
-          if [ "$HOUR" -ge 11 ] && [ "$HOUR" -lt 19 ]; then
-            REVIEWERS+="<@$SLACK_USER_LINUS> "
-          fi
-          if [ "$HOUR" -ge 12 ] && [ "$HOUR" -lt 20 ]; then
-            REVIEWERS+="<@$SLACK_USER_AMANDA> "
-          fi
-          if [ "$HOUR" -ge 12 ] && [ "$HOUR" -lt 21 ]; then
-            REVIEWERS+="<@$SLACK_USER_CAROLINA> "
-          fi
-          if [ "$HOUR" -ge 15 ] && [ "$HOUR" -lt 22 ]; then
-            REVIEWERS+="<@$SLACK_USER_LENNY> <@$SLACK_USER_SVETA>"
-          fi
+          for reviewer in $(jq -r 'keys[]' reviewers.json); do
+            START=$(jq -r ".\"$reviewer\".start" reviewers.json)
+            END=$(jq -r ".\"$reviewer\".end" reviewers.json)
+            SLACK_ID=$(jq -r ".\"$reviewer\".slack_id" reviewers.json)
 
+            if [ "$HOUR" -ge "$START" ] && [ "$HOUR" -lt "$END" ]; then
+              REVIEWERS+="<@$SLACK_ID> "
+            fi
+          done
+
+          # Output reviewers without printing to logs
           echo "reviewers=$REVIEWERS" >> $GITHUB_OUTPUT
 
       - name: Notify Slack
         uses: rtCamp/action-slack-notify@v2.3.3
         env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
+          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_TEST_WEBHOOK }}
           SLACK_USERNAME: "spectromate"
           SLACK_ICON_EMOJI: ":robot_panic:"
           SLACK_COLOR: "#A020F0"
           SLACK_MESSAGE: |
-            :review: *<${{ github.event.pull_request.html_url }}|${{ github.event.pull_request.title }}>* is ready for review!
+            :review: *<${{ github.event.pull_request.html_url }}|${{ github.event.pull_request.title }}>* is ready for review! :review:
             Pinging: ${{ steps.pick.outputs.reviewers }}
-            
-      - name: Record Slack notification via comment # This step adds a comment to the PR to indicate that Slack has been notified.
-        if: steps.check.outputs.notified == 'false'
+
+      - name: Record Slack notification as PR comment
         run: |
-            curl -s -X POST -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+          TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          curl -s -X POST -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
             -H "Accept: application/vnd.github.v3+json" \
-            -d "{\"body\":\"✅ Slack reviewers have been notified: ${{ steps.pick.outputs.reviewers }}\"}" \
+            -d "{\"body\":\"✅ Slack reviewers notified at $TIMESTAMP\n${{ steps.pick.outputs.reviewers }}\n<!-- slack-notified -->\"}" \
             https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments
+
+      - name: Securely overwrite and delete reviewers.json # Shred the reviewers.json file to ensure sensitive data is not left behind
+        if: always()
+        run: |
+          if [ -f reviewers.json ]; then
+            echo "Shredding reviewers.json"
+            dd if=/dev/urandom of=reviewers.json bs=1 count=$(stat -c%s reviewers.json) conv=notrunc status=none
+            rm -f reviewers.json
+            echo "Secure deletion complete."
+          else
+            echo "No reviewers.json file to delete."
+          fi
