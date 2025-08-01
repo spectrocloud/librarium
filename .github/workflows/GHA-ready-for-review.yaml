@@ -38,7 +38,7 @@ jobs:
 
       - name: Exit if already notified
         if: steps.check.outputs.notified == 'true'
-        run: echo "Slack already notified. Exiting."
+        run: echo "Slack already notified. Exiting." # Script should exit here if already notified.
 
       - name: Get Current UTC Hour
         id: time
@@ -82,7 +82,7 @@ jobs:
             :review: *<${{ github.event.pull_request.html_url }}|${{ github.event.pull_request.title }}>* is ready for review!
             Pinging: ${{ steps.pick.outputs.reviewers }}
             
-      - name: Record Slack notification via comment
+      - name: Record Slack notification via comment # This step adds a comment to the PR to indicate that Slack has been notified.
         if: steps.check.outputs.notified == 'false'
         run: |
           curl -s -X POST -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
