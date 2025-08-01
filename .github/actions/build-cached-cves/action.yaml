@@ -8,6 +8,9 @@ inputs:
   gh-token:
     description: "GitHub Token for authentication"
     required: true
+  slack-webhook:
+    description: "Slack Webhook URL for fallback notification"
+    required: false
 
 runs:
   using: "composite"
@@ -56,7 +59,7 @@ runs:
       if: ${{ failure() }}
       uses: rtCamp/action-slack-notify@v2.3.3
       env:
-        SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_TEST_WEBHOOK}}
+        SLACK_WEBHOOK: ${{ inputs.slack-webhook }}
         SLACK_USERNAME: "spectromate"
         SLACK_ICON_EMOJI: ":robot_panic:"
         SLACK_COLOR: ${{ job.status }}
