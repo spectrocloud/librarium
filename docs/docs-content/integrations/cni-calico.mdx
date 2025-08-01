@@ -51,6 +51,28 @@ install:
     - /var/lib/calico
 ```
 
+### Connectivity Issues in Virtual Machine Environments
+
+Due to a [known issue with VMware's VMXNET3 adapter](https://github.com/cilium/cilium/issues/13096#issuecomment-723901955),
+which is widely used in different virtual machine management services, including VMware vSphere and Hyper-V, Calico Pods may face network connectivity issues.
+
+Before deploying clusters with Calico in VXLAN mode, disable checksum offloading on your virtual host using the following the command. Replace `<interface-name>` with the name of the network interface on your host. Refer to the [Calico known issue](github.com/projectcalico/calico/issues/9433) thread for more information.
+
+```shell
+ethtool -K <interface-name> tx off
+```
+
+Alternatively, if deploying an Edge host in a virtual machine environment using an VMXNET3 adapter and enabling an <VersionedLink text="overlay network" url="/clusters/edge/networking/vxlan-overlay /> for your cluster, add the following commands in the `user-data` file at the boot stage. Replace `<interface-name>` with the name of the network interface on your Edge host.
+
+  ```yaml {2-6}
+  stages:
+    initramfs:
+      - name: "Disable UDP segmentation"
+        commands:
+          - ethtool --offload <interface-name> tx-udp_tnl-segmentation off
+          - ethtool --offload <interface-name> tx-udp_tnl-csum-segmentation off
+  ```
+
 </TabItem>
 
 <TabItem label="3.26.x" value="3.26.x">
