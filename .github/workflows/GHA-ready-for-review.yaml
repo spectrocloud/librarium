@@ -29,15 +29,16 @@ jobs:
         id: check
         run: |
           COMMENTS=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
-            https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments)
+           https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments)
 
-          echo "$COMMENTS" | grep -q "<!-- slack-notified -->"
-          if [ $? -eq 0 ]; then
+          if echo "$COMMENTS" | grep -q "<!-- slack-notified -->"; then
             echo "Slack already notified."
             echo "notified=true" >> $GITHUB_OUTPUT
           else
+            echo "No Slack notification found yet."
             echo "notified=false" >> $GITHUB_OUTPUT
           fi
+
 
       - name: Exit if already notified # skip remaining steps but treat it as successful
         if: steps.check.outputs.notified == 'true'
