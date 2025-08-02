@@ -74,7 +74,7 @@ jobs:
         if: steps.check.outputs.notified == 'false'
         uses: rtCamp/action-slack-notify@v2.3.3
         env:
-          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
+          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_TEST_WEBHOOK }}
           SLACK_USERNAME: "spectromate"
           SLACK_ICON_EMOJI: ":robot_panic:"
           SLACK_COLOR: "#A020F0"
