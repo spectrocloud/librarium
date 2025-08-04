@@ -278,11 +278,12 @@ management mode to manage configurations, updates, and workloads.
    :::warning
 
    If your host is a virtual machine using a VMXNET3 adapter and you are planning to use
+
    <VersionedLink text="Flannel" url="/integrations/cni-flannel" /> for your CNI, include the following `initramfs`
-   stage in your `user-data` file, replacing `<interface-name>` with the name of the network interface on your Edge
-   host. This is due to a
-   [known issue with VMware's VMXNET3 adapter](https://github.com/cilium/cilium/issues/13096#issuecomment-723901955),
-   which is widely used in different virtual machine management services, including VMware vSphere and Hyper-V.
+stage in your `user-data` file, replacing `<interface-name>` with the name of the network interface on your Edge
+host. This is due to a
+[known issue with VMware's VMXNET3 adapter](https://github.com/cilium/cilium/issues/13096#issuecomment-723901955),
+which is widely used in different virtual machine management services, including VMware vSphere and Hyper-V.
 
    ```shell
      stages:
@@ -679,10 +680,11 @@ required Edge artifacts.
 :::warning
 
 If your host is a virtual machine using an VMXNET3 adapter and you are planning to use
+
 <VersionedLink text="Flannel" url="/integrations/cni-flannel" /> for your CNI, include the following `initramfs` stage
-in your `user-data` file. This is due to a
-[known issue with VMware's VMXNET3 adapter](https://github.com/cilium/cilium/issues/13096#issuecomment-723901955), which
-is widely used in different virtual machine management services, including VMware vSphere and Hyper-V.
+in your `user-data` file. This is due to a [known issue with VMware's VMXNET3
+adapter](https://github.com/cilium/cilium/issues/13096#issuecomment-723901955), which is widely used in different
+virtual machine management services, including VMware vSphere and Hyper-V.
 
     ```shell
       stages:
