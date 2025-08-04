@@ -11,6 +11,20 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## August 4, 2025 - Release 4.7.8
+
+### Improvements
+
+- Palette now requires that the `cluster.kubevipArgs.vip_ddns` value be set to `true` for clusters that use `kube-vip`
+  to provide a virtual IP address for [Edge](../clusters/edge/edge.md) clusters. Refer to the
+  [Publish Cluster Services with Kube-vip](../clusters/edge/networking/kubevip.md) guide for further information.
+
+### Bug Fixes
+
+- Fixed an issue that caused [EKS clusters](../clusters/public-cloud/aws/eks.md) using
+  [custom AMI images](../clusters/public-cloud/aws/eks.md#cloud-configuration-settings) to be stuck in the Provisioning
+  status.
+
 ## July 31, 2025 - Release 4.7.7
 
 <!-- prettier-ignore-start -->
