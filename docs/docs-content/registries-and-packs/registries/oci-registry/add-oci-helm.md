@@ -13,13 +13,17 @@ You can add an OCI type Helm registry to Palette and use the Helm Charts in your
 
 - Tenant admin access to Palette.
 
-- Credentials to access the OCI registry. If you are using an Amazon Elastic Container Registry (ECR), you must have the AWS credentials to an
-  IAM user or add a trust relationship to an IAM role so that Palette can access the registry.
+- Credentials to access the OCI registry. If you are using an Amazon Elastic Container Registry (ECR), you must have the
+  AWS credentials to an IAM user or add a trust relationship to an IAM role so that Palette can access the registry.
 
 - If the OCI registry is using a self-signed certificate, or a certificate that is not signed by a trusted certificate
   authority (CA), you will need the certificate to add the registry to Palette.
 
-- If you are using an Amazon ECR and your [Palette](../../../enterprise-version/enterprise-version.md) or [Palette VerteX](../../../vertex/vertex.md) instance is installed in an airgapped environment or an environment with limited internet access, you must whitelist the S3 endpoint that corresponds to the region of your Amazon ECR. This is because image layers are stored in S3, not the registry. The S3 endpoint uses the following format. Replace `<region>` with the region your ECR is hosted in.
+- If you are using an Amazon ECR and your [Palette](../../../enterprise-version/enterprise-version.md) or
+  [Palette VerteX](../../../vertex/vertex.md) instance is installed in an airgapped environment or an environment with
+  limited internet access, you must whitelist the S3 endpoint that corresponds to the region of your Amazon ECR. This is
+  because image layers are stored in S3, not the registry. The S3 endpoint uses the following format. Replace `<region>`
+  with the region your ECR is hosted in.
 
   ```shell
   prod-<region>-starport-layer-bucket.s3.<region>.amazonaws.com
@@ -29,9 +33,9 @@ You can add an OCI type Helm registry to Palette and use the Helm Charts in your
   prod-us-east-1-starport-layer-bucket.s3.us-east-1.amazonaws.com
   ```
 
-- If you are using an Amazon ECR, ensure you have the following Identity Access Management (IAM) permissions
-  attached to the IAM user or IAM role that Palette will use to access the registry. You can reduce the `Resource` scope
-  from `*` to the specific Amazon Resource Name (ARN) of the ECR you are using.
+- If you are using an Amazon ECR, ensure you have the following Identity Access Management (IAM) permissions attached to
+  the IAM user or IAM role that Palette will use to access the registry. You can reduce the `Resource` scope from `*` to
+  the specific Amazon Resource Name (ARN) of the ECR you are using.
 
   ```json
   {
@@ -134,12 +138,11 @@ registry you are adding.
 
 8. Provide the registry URL in the **Endpoint** field. Exclude the `https://` prefix.
 
-9. If you are using a private ECR, toggle the **Enable Authentication** option to expose the authentication
-   fields.
+9. If you are using a private ECR, toggle the **Enable Authentication** option to expose the authentication fields.
 
 10. Select the **AWS Authentication Method**. Choose **Credentials** if you want to provide the static AWS credentials
-    for an IAM user. Choose **STS** if you want to Palette to assume an IAM role that has access to the ECR
-    through the Security Token Service (STS). Refer to the table below to learn more about each credential type.
+    for an IAM user. Choose **STS** if you want to Palette to assume an IAM role that has access to the ECR through the
+    Security Token Service (STS). Refer to the table below to learn more about each credential type.
 
 #### Credentials
 
@@ -159,9 +162,9 @@ registry you are adding.
 :::warning
 
 If you selected **STS** as the authentication method, you must add a trust relationship to the IAM role you are using to
-access the ECR. Refer to the instructions exposed in the side-drawer to the right of the input field to review
-the IAM trust relationship changes you must add to your IAM role. Failure to add the trust relationship will result in
-an error when you attempt to validate the registry.
+access the ECR. Refer to the instructions exposed in the side-drawer to the right of the input field to review the IAM
+trust relationship changes you must add to your IAM role. Failure to add the trust relationship will result in an error
+when you attempt to validate the registry.
 
 :::
 
