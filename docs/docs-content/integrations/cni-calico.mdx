@@ -63,7 +63,7 @@ following the command. Replace `<interface-name>` with the name of the network i
 [Calico known issue #9433](https://github.com/projectcalico/calico/issues/9433) for more information.
 
 ```shell
-ethtool -K <interface-name> tx off
+ethtool --offload <interface-name> tx off
 ```
 
 Alternatively, if deploying an Edge host in a virtual machine environment using a VMXNET3 adapter and enabling an
