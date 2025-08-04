@@ -20,17 +20,23 @@ For guidance on how to add a custom pack to an OCI pack registry, check out the
 
 ## Prerequisites
 
-- Credentials to access the OCI registry. If you are using an AWS ECR registry, you must have the AWS credentials to an
+- Tenant admin access to Palette.
+
+- Credentials to access the OCI registry. If you are using an Amazon Elastic Container Registry (ECR), you must have the AWS credentials to an
   IAM user or add a trust relationship to an IAM role so that Palette can access the registry.
 
 - If the OCI registry is using a self-signed certificate, or a certificate that is not signed by a trusted certificate
   authority (CA), you will need the certificate to add the registry to Palette.
 
-- Tenant admin access to Palette.
+- If you are using an Amazon ECR in an airgapped or restricted network, you must whitelist the S3 endpoint that corresponds to the region of your Amazon ECR. This is because image layers are stored in S3, not the registry. The S3 endpoint uses the following format. Replace `<region>` with the region your ECR is hosted in.
 
-- If you are using an AWS ECR registry, ensure you have the following Identity Access Management (IAM) permissions
+  ```shell
+  prod-<region>-starport-layer-bucket.s3.<region>.amazonaws.com
+  ```
+
+- If you are using an Amazon ECR, ensure you have the following Identity Access Management (IAM) permissions
   attached to the IAM user or IAM role that Palette will use to access the registry. You can reduce the `Resource` scope
-  from `*` to the specific Amazon Resource Name (ARN) of the AWS ECR registry you are using.
+  from `*` to the specific Amazon Resource Name (ARN) of the ECR you are using.
 
   ```json
   {
@@ -112,7 +118,7 @@ registry you are adding.
 
 </TabItem>
 
-<TabItem value="aws" label="AWS ECR">
+<TabItem value="aws" label="Amazon ECR">
 
 1. Log in to the [Palette](https://console.spectrocloud.com) as a Tenant administrator.
 
@@ -134,11 +140,11 @@ registry you are adding.
    if the OCI registry URL is `https://registry.example.com` and the OCI Packs are stored in the `custom` repository,
    the base content path is `custom`.
 
-10. If you are using a private ECR registry, toggle the **Enable Authentication** option to expose the authentication
+10. If you are using a private ECR, toggle the **Enable Authentication** option to expose the authentication
     fields.
 
 11. Select the **AWS Authentication Method**. Choose **Credentials** if you want to provide the static AWS credentials
-    for an IAM user. Choose **STS** if you want to Palette to assume an IAM role that has access to the ECR registry
+    for an IAM user. Choose **STS** if you want to Palette to assume an IAM role that has access to the ECR
     through the Security Token Service (STS). Refer to the table below to learn more about each credential type.
 
 #### Credentials
@@ -159,7 +165,7 @@ registry you are adding.
 :::warning
 
 If you selected **STS** as the authentication method, you must add a trust relationship to the IAM role you are using to
-access the ECR registry. Refer to the instructions exposed in the side-drawer to the right of the input field to review
+access the ECR. Refer to the instructions exposed in the side-drawer to the right of the input field to review
 the IAM trust relationship changes you must add to your IAM role. Failure to add the trust relationship will result in
 an error when you attempt to validate the registry.
 
