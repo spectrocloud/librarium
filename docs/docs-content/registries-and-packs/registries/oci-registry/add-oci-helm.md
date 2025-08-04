@@ -141,7 +141,7 @@ registry you are adding.
 9. If you are using a private ECR, toggle the **Enable Authentication** option to expose the authentication fields.
 
 10. Select the **AWS Authentication Method**. Choose **Credentials** if you want to provide the static AWS credentials
-    for an IAM user. Choose **STS** if you want to Palette to assume an IAM role that has access to the ECR through the
+    for an IAM user. Choose **STS** if you want Palette to assume an IAM role that has access to the ECR through the
     Security Token Service (STS). Refer to the table below to learn more about each credential type.
 
 #### Credentials
