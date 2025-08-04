@@ -42,7 +42,7 @@ these values when deploying a cluster or performing Day-2 cluster operations.
 :::warning
 
 Do not modify the default `address` value. Changing this value makes the cluster inaccessible. If no value is provided
-for the `vip_ddns` variable, it defaults to `false` if the `address` is a valid IP address and `true` if it is a DNS.
+for the `vip_ddns` variable, it defaults to `false` if the `address` is a valid IP address and `true` if it is a domain name
 
 :::
 
