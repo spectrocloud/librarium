@@ -25,6 +25,10 @@ You can add an OCI type Helm registry to Palette and use the Helm Charts in your
   prod-<region>-starport-layer-bucket.s3.<region>.amazonaws.com
   ```
 
+  ```shell hideClipboard title="Example S3 endpoint"
+  prod-us-east-1-starport-layer-bucket.s3.us-east-1.amazonaws.com
+  ```
+
 - If you are using an Amazon ECR, ensure you have the following Identity Access Management (IAM) permissions
   attached to the IAM user or IAM role that Palette will use to access the registry. You can reduce the `Resource` scope
   from `*` to the specific Amazon Resource Name (ARN) of the ECR you are using.
