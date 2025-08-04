@@ -154,8 +154,6 @@ const OsCveTable: React.FC<{ dataOverride?: AllCVEList }> = ({ dataOverride }) =
           return;
         }
 
-        console.log(data);
-
         // Extract the OS CVE data from the provider array
         const osCveData = data.provider.map((item: ProviderCveItem) => {
           const { metadata } = item;
