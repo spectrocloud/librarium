@@ -21,7 +21,11 @@ tags: ["release-notes"]
 
 #### Breaking Changes {#breaking-changes-4.7.a}
 
-- Availability zones are now required for MAAS [node pools](../clusters/cluster-management/node-pool.md) when deploying [MAAS clusters](../clusters/data-center/maas/create-manage-maas-clusters.md). Availability zones are _not_ required when performing Day-2 node pool updates on MAAS clusters deployed prior to Palette version 4.7.a. Changing availability zones post-cluster deployment will trigger a [node pool repave](../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration).
+- Availability zones are now required for MAAS [node pools](../clusters/cluster-management/node-pool.md) when deploying
+  [MAAS clusters](../clusters/data-center/maas/create-manage-maas-clusters.md). Availability zones are _not_ required
+  when performing Day-2 node pool updates on MAAS clusters deployed prior to Palette version 4.7.a. Changing
+  availability zones post-cluster deployment will trigger a
+  [node pool repave](../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration).
 
 #### Features
 
