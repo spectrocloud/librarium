@@ -19,7 +19,7 @@ You can add an OCI type Helm registry to Palette and use the Helm Charts in your
 - If the OCI registry is using a self-signed certificate, or a certificate that is not signed by a trusted certificate
   authority (CA), you will need the certificate to add the registry to Palette.
 
-- If you are using an Amazon ECR in an airgapped or restricted network, you must whitelist the S3 endpoint that corresponds to the region of your Amazon ECR. This is because image layers are stored in S3, not the registry. The S3 endpoint uses the following format. Replace `<region>` with the region your ECR is hosted in.
+- If you are using an Amazon ECR and your [Palette](../../../enterprise-version/enterprise-version.md) or [Palette VerteX](../../../vertex/vertex.md) instance is installed in an airgapped environment or an environment with limited internet access, you must whitelist the S3 endpoint that corresponds to the region of your Amazon ECR. This is because image layers are stored in S3, not the registry. The S3 endpoint uses the following format. Replace `<region>` with the region your ECR is hosted in.
 
   ```shell
   prod-<region>-starport-layer-bucket.s3.<region>.amazonaws.com
