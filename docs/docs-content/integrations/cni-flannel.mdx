@@ -79,7 +79,7 @@ charts:
 Due to a [known issue with VMware's VMXNET3 adapter](https://github.com/cilium/cilium/issues/13096#issuecomment-723901955),
 which is widely used in different virtual machine management services, including VMware vSphere and Hyper-V, Flannel Pods may face network connectivity issues.
 
-If deploying an Edge host in a virtual machine environment using an VMXNET3 adapter, add the following commands in the `user-data` file at the boot
+If deploying an Edge host in a virtual machine environment using a VMXNET3 adapter, add the following commands in the `user-data` file at the boot
 stage. Replace `<interface-name>` with the name of the network interface on your Edge host.
 
   ```yaml {2-6}
