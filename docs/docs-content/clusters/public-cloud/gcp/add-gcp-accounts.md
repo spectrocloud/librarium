@@ -18,19 +18,12 @@ account in Palette.
 
 - The service account must, at a minimum, have the following roles.
 
-  - [Kubernetes Engine Admin](https://cloud.google.com/iam/docs/understanding-roles#kubernetes-engine-roles)
-
-  - [Compute Admin](https://cloud.google.com/iam/docs/understanding-roles#compute.admin)
-
-  - [Service Account User](https://cloud.google.com/iam/docs/understanding-roles#iam.serviceAccountUser)
-
-    - [Compute Admin](https://cloud.google.com/iam/docs/understanding-roles#compute.admin)
-
-    - [Storage Object Viewer](https://cloud.google.com/iam/docs/understanding-roles#storage.objectViewer)
-
-    - [Service Account Token Creator](https://cloud.google.com/iam/docs/understanding-roles#iam.serviceAccountTokenCreator)
-
-    <br />
+  - [Compute Admin](https://cloud.google.com/iam/docs/roles-permissions/compute#compute.admin) (`compute.admin`)
+  - [Kubernetes Engine Admin](https://cloud.google.com/iam/docs/roles-permissions/container#container.admin) (`container.admin`)
+  - [Service Account Token Creator](https://cloud.google.com/iam/docs/service-account-permissions#token-creator-role) (`iam.serviceAccountTokenCreator`)
+  - [Service Account User](https://cloud.google.com/iam/docs/service-account-permissions#user-role) (`iam.serviceAccountUser`)
+  - [Storage Object Viewer](https://cloud.google.com/iam/docs/roles-permissions/storage#storage.objectViewer) (`storage.objectViewer`) 
+  <br />
 
   :::info
 
