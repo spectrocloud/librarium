@@ -16,6 +16,8 @@ account in Palette.
   account, refer to
   [Creating and managing service accounts](https://cloud.google.com/iam/docs/creating-managing-service-accounts).
 
+<!-- prettier-ignore-start -->
+
 - The service account must, at a minimum, have the following roles.
 
   - [Compute Admin](https://cloud.google.com/iam/docs/roles-permissions/compute#compute.admin) (`compute.admin`)
@@ -27,7 +29,8 @@ account in Palette.
     (`iam.serviceAccountUser`)
   - [Storage Object Viewer](https://cloud.google.com/iam/docs/roles-permissions/storage#storage.objectViewer)
     (`storage.objectViewer`)
-    <br />
+
+  <br />
 
   :::info
 
@@ -35,6 +38,8 @@ account in Palette.
   [Required IAM Permission](required-permissions.md) for a detailed list of all permissions.
 
   :::
+
+<!-- prettier-ignore-end -->
 
 - Ensure you have access to the JSON credential file for your service account. For additional guidance, refer to the
   [GCP Credentials](https://developers.google.com/workspace/guides/create-credentials) documentation.
