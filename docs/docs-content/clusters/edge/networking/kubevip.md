@@ -32,7 +32,7 @@ these values when deploying a cluster or performing Day-2 cluster operations.
 | `vip_cidr`           | Sets the CIDR notation for the Virtual IP. A value of `32` denotes a single IP address in IPv4. | `32`          |
 | `cp_enable`          | Enables kube-vip control plane functionality.                                                   | `true`        |
 | `cp_namespace`       | The namespace where the lease will reside.                                                      | `kube-system` |
-| `vip_ddns`           | Enables Dynamic DNS support.                                                                    | `{{ .DDNS}}`  |
+| `vip_ddns`           | Enables Dynamic DNS support.                                                                    | `true`        |
 | `vip_leaderelection` | Enables Kubernetes LeaderElection.                                                              | `true`        |
 | `vip_leaseduration`  | Sets the lease duration in seconds.                                                             | `5`           |
 | `vip_renewdeadline`  | Specifies the deadline in seconds for renewing the lease.                                       | `3`           |
@@ -41,7 +41,8 @@ these values when deploying a cluster or performing Day-2 cluster operations.
 
 :::warning
 
-Do not modify the default `address` value. Changing this value makes the cluster inaccessible.
+Do not modify the default `address` value. Changing this value makes the cluster inaccessible. The `vip_ddns` value must
+be set to `true`.
 
 :::
 
@@ -53,7 +54,7 @@ Do not modify the default `address` value. Changing this value makes the cluster
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
-2. From the left **Main Menu** click **Clusters ** and select **Add a New Cluster**.
+2. From the left **Main Menu** click **Clusters** and select **Add a New Cluster**.
 
 3. Choose **Edge Native** for the cluster type and click **Start Edge Native Configuration**.
 
