@@ -213,6 +213,17 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 :::
 
+#### Breaking Changes {#breaking-changes-automation-4.7.0}
+
+- A new field `isTwoNodeCluster` has been introduced to the request body of the
+  [Updates the cluster configuration information](/api/v1/v-1-cloud-configs-edge-native-uid-cluster-config) API
+  endpoint. This field must now be set to `true` before setting the `twoNodeCandidatePriority` field on Edge hosts using
+  the
+  [Creates an Hybrid AWS cloud config's Edge-Native machine pool](/api/v1/v-1-aws-cloud-configs-edge-native-uid-machine-pool-create/)
+  and
+  [Updates the specified Hybrid AWS cluster cloud config's Edge-Native machine pool](/api/v1/v-1-aws-cloud-configs-edge-native-machine-pool-update/)
+  API endpoints.
+
 #### Features
 
 - The `content build` command of the [Palette CLI](../automation/palette-cli/palette-cli.md) now includes the
