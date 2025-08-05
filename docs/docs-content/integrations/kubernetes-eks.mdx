@@ -275,34 +275,47 @@ clientConfig:
 
 ## Node Customization
 
-The following sections relate to the customizable options within the `nodeCustomization.*` section.
+The following sections relate to the customizable options within the `nodeCustomization.*` section. These options only
+apply when you have selected to use a custom
+[Amazon Machine Image (AMI) Type](../clusters/public-cloud/aws/eks.md#cloud-configuration-settings) for worker node
+pools.
 
-This section only applies to worker node pools where you have selected to use a custom
-[Amazon Machine Image (AMI) Type](../clusters/public-cloud/aws/eks.md#cloud-configuration-settings), such as Amazon
-Linux 2 or Amazon Linux 2023.
+You can configure both Amazon Linux 2 (AL2) and Amazon Linux 2023 (AL2023) worker nodes using the `nodeCustomization`
+section. The configuration options differ between the two AMI types, as described in the following sections.
 
 :::info
 
 The `nodeCustomization` section is not included by default in the Kubernetes pack manifest. You can add it to your
-manifest in the top-level of the YAML file. Ensure it is not nested under any other section.
+manifest in the top-level of the YAML file. Ensure it is not nested under any other section. Examples are provided in
+the following sections for the Amazon Linux 2 and Amazon Linux 2023 AMI types.
 
 :::
 
+### Day 2 Usage Considerations
+
+Any additions or changes to the `nodeCustomization` section on day 2 for an active cluster will invoke a
+[worker node pool repave](../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration).
+
 ### Configure Amazon Linux 2 AMI Nodes
 
-If you have selected an Amazon Linux 2 AMI for one or more of your worker node groups, you can provide additional
-configuration as described in the following table.
+If you have selected an AL2 AMI for one or more of your worker node groups, you can provide additional configuration and
+command overrides as described in the following table.
 
-| Parameter             | Description                                                                                                                                                                                                                                                                 |
-| --------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `preKubeadmCommands`  | A list of shell commands to run before the `kubeadm` command is executed. These commands are run on each worker node before the cluster is joined.                                                                                                                          |
-| `postKubeadmCommands` | A list of shell commands to run after the `kubeadm` command is executed. These commands are run on each worker node after the cluster is joined. This can be useful for additional setup or configuration tasks that need to be performed after the node joins the cluster. |
+| Parameter             | Description                                                                                                                                                                                                                                                                                |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `preKubeadmCommands`  | A list of shell commands to run before the `kubeadm` command is executed. These commands are run on each worker node before they are bootstrapped to the cluster.                                                                                                                          |
+| `postKubeadmCommands` | A list of shell commands to run after the `kubeadm` command is executed. These commands are run on each worker node after they are bootstrapped to the cluster. This can be useful for additional setup or configuration tasks that need to be performed after the node joins the cluster. |
 
 <details>
 
 <summary> Example </summary>
 
 ```yaml
+## EKS settings
+managedControlPlane:
+---
+managedMachinePool:
+---
 nodeCustomization:
   al2:
     preKubeadmCommands:
@@ -321,12 +334,12 @@ nodeCustomization:
 
 ### Configure Amazon Linux 2023 AMI Nodes
 
-If you have selected an Amazon Linux 2023 AMI for one or more of your worker node groups, you can provide additional
-configuration as described in the following table.
+If you have selected an AL2023 AMI for one or more of your worker node groups, you can provide additional configuration
+and command overrides as described in the following table.
 
 | Parameter                                         | Type                   | Description                                                                                                                                                                                                                                                                                                                                                |
 | ------------------------------------------------- | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `userdataScript`                                  | String (block scalar)  | A custom multi-line Bash script that is executed on every worker node after `nodeadm` finishes. You can use it to install agents, pre-pull images, or run any extra bootstrap logic.                                                                                                                                                                       |
+| `userDataScript`                                  | String (block scalar)  | A custom multi-line Bash script that is executed on every worker node after `nodeadm` finishes. You can use it to install additional packages, pre-pull images, or execute any extra bootstrap logic (such as HTTP/HTTPS proxy configuration).                                                                                                             |
 | `cluster.name`                                    | String                 | Human-readable name of your EKS cluster.                                                                                                                                                                                                                                                                                                                   |
 | `cluster.apiServerEndpoint`                       | String (URL)           | Fully-qualified HTTPS URL for the cluster's `kube-apiserver`.                                                                                                                                                                                                                                                                                              |
 | `cluster.certificateAuthority`                    | String (base64)        | Base64-encoded string of your cluster's Certificate Authority (CA) chain.                                                                                                                                                                                                                                                                                  |
@@ -347,9 +360,14 @@ configuration as described in the following table.
 <summary> Example </summary>
 
 ```yaml
+## EKS settings
+managedControlPlane:
+---
+managedMachinePool:
+---
 nodeCustomization:
   al2023:
-    userdataScript: |
+    userDataScript: |
       #!/bin/bash
       set -euo pipefail
 
@@ -359,7 +377,7 @@ nodeCustomization:
       # Pre-cache commonly used container images
       nohup docker pull public.ecr.aws/eks-distro/kubernetes/pause:3.2 &
 
-      # Configure HTTP proxy if needed
+      # Configure HTTP/HTTPS proxy if needed
       cat > /etc/profile.d/http-proxy.sh << 'EOF'
       export HTTP_PROXY="http://proxy.example.com:3128"
       export HTTPS_PROXY="http://proxy.example.com:3128"
@@ -407,6 +425,29 @@ nodeCustomization:
 ```
 
 </details>
+
+### Node Customization Layout for AL2 and AL2023 Combined
+
+<br />
+
+```yaml
+## EKS settings
+managedControlPlane:
+...
+managedMachinePool:
+...
+nodeCustomization:
+  al2:
+    preKubeadmCommands:
+      - |
+        ...
+    postKubeadmCommands:
+      - |
+        ...
+  al2023:
+    userDataScript: |
+    ...
+```
 
 ## Required IAM Permissions for Configuration
 
