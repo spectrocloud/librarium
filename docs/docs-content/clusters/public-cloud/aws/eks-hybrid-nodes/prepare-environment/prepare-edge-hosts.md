@@ -273,30 +273,28 @@ management mode to manage configurations, updates, and workloads.
              passwd: kairos
    ```
 
-    <!-- prettier-ignore-start -->
-
    :::warning
 
-   If your host is a virtual machine using a VMXNET3 adapter and you are planning to use
+   <!-- prettier-ignore-start -->
 
+   If your host is a virtual machine using a VMXNET3 adapter and you are planning to use
    <VersionedLink text="Flannel" url="/integrations/cni-flannel" /> for your CNI, include the following `initramfs`
-stage in your `user-data` file, replacing `<interface-name>` with the name of the network interface on your Edge
-host. This is due to a
-[known issue with VMware's VMXNET3 adapter](https://github.com/cilium/cilium/issues/13096#issuecomment-723901955),
-which is widely used in different virtual machine management services, including VMware vSphere and Hyper-V.
+   stage in your `user-data` file, replacing `<interface-name>` with the name of the network interface on your Edge
+   host. This is due to a
+   [known issue with VMware's VMXNET3 adapter](https://github.com/cilium/cilium/issues/13096#issuecomment-723901955),
+   which is widely used in different virtual machine management services, including VMware vSphere and Hyper-V.
+   <!-- prettier-ignore-end -->
 
    ```shell
-     stages:
-       initramfs:
-         - name: "Disable UDP segmentation"
-           commands:
-             - ethtool --offload <interface-name> tx-udp_tnl-segmentation off
-             - ethtool --offload <interface-name> tx-udp_tnl-csum-segmentation off
+    stages:
+      initramfs:
+        - name: "Disable UDP segmentation"
+          commands:
+            - ethtool --offload <interface-name> tx-udp_tnl-segmentation off
+            - ethtool --offload <interface-name> tx-udp_tnl-csum-segmentation off
    ```
 
    :::
-
-    <!-- prettier-ignore-end -->
 
 5. Export the path to your user data file.
 

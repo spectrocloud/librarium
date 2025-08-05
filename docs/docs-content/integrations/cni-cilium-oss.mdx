@@ -31,11 +31,11 @@ Due to a
 is widely used in different virtual machine management services, including VMware vSphere and Hyper-V, Cilium Pods may
 face network connectivity issues.
 
-If deploying an Edge host in a virtual machine environment using a VMXNET3 adapter and enabling an
+<!-- prettier-ignore-start -->
 
-<VersionedLink text="overlay network" url="/clusters/edge/networking/vxlan-overlay" /> for your cluster, add the
-following commands in the `user-data` file at the boot stage. Replace `<interface-name>` with the name of the network
-interface on your Edge host.
+If deploying an Edge host in a virtual machine environment using a VMXNET3 adapter and enabling an <VersionedLink text="overlay network" url="/clusters/edge/networking/vxlan-overlay" /> for your cluster, add the following commands in the `user-data` file at the boot stage. Replace `<interface-name>` with the name of the network interface on your Edge host.
+
+<!-- prettier-ignore-end -->
 
 ```yaml {2-6}
 stages:
