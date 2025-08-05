@@ -301,10 +301,10 @@ Any additions or changes to the `nodeCustomization` section on day 2 for an acti
 If you have selected an AL2 AMI for one or more of your worker node groups, you can provide additional configuration and
 command overrides as described in the following table.
 
-| Parameter             | Description                                                                                                                                                                                                                                                                                |
-| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `preKubeadmCommands`  | A list of shell commands to run before the `kubeadm` command is executed. These commands are run on each worker node before they are bootstrapped to the cluster.                                                                                                                          |
-| `postKubeadmCommands` | A list of shell commands to run after the `kubeadm` command is executed. These commands are run on each worker node after they are bootstrapped to the cluster. This can be useful for additional setup or configuration tasks that need to be performed after the node joins the cluster. |
+| Parameter             | Description                                                                                                                                                                                                                                                                                       |
+| --------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `preKubeadmCommands`  | A list of shell commands to execute before the `kubeadm` command is executed. These commands are issued on each worker node before they are bootstrapped to the cluster.                                                                                                                          |
+| `postKubeadmCommands` | A list of shell commands to execute after the `kubeadm` command is executed. These commands are issued on each worker node after they are bootstrapped to the cluster. This can be useful for additional setup or configuration tasks that need to be performed after the node joins the cluster. |
 
 <details>
 
@@ -320,14 +320,14 @@ nodeCustomization:
   al2:
     preKubeadmCommands:
       - |
-        echo "[pre-kubeadm] ===== Setting sysctl params =====" | tee -a /var/log/kube_bootstrap.log
-        sysctl -w net.bridge.bridge-nf-call-iptables=1
-        sysctl -w net.ipv4.ip_forward=1
+        echo "[pre-kubeadm] ===== Setting sysctl params =====" | tee --append /var/log/kube_bootstrap.log
+        sysctl --write net.bridge.bridge-nf-call-iptables=1
+        sysctl --write net.ipv4.ip_forward=1
     postKubeadmCommands:
       - |
-        echo "[post-kubeadm] ===== Pulling troubleshooting tools =====" | tee -a /var/log/kube_bootstrap.log
+        echo "[post-kubeadm] ===== Pulling troubleshooting tools =====" | tee --append /var/log/kube_bootstrap.log
         crictl pull public.ecr.aws/aws-observability/aws-for-fluent-bit:latest
-        echo "[post-kubeadm] Done." | tee -a /var/log/kube_bootstrap.log
+        echo "[post-kubeadm] Done." | tee --append /var/log/kube_bootstrap.log
 ```
 
 </details>
@@ -358,7 +358,7 @@ nodeCustomization:
       set -euo pipefail
 
       # Install additional packages
-      yum install -y htop jq iptables-services
+      yum install --assumeyes htop jq iptables-services
 
       # Pre-cache commonly used container images
       nohup docker pull public.ecr.aws/eks-distro/kubernetes/pause:3.2 &
