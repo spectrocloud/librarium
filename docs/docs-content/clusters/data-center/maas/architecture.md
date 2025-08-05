@@ -33,6 +33,20 @@ using Canonical MAAS. Refer to the PCG deployment options section below to learn
 
 Refer to the [PCG Architecture](../../pcg/architecture.md) section to learn more about the PCG architecture.
 
+## Palette MAAS Distribution
+Palette provides the following distributions for MAAS environments.
+
+| Name | OS | Kubernetes Distribution | CNIs | CSIs |
+| ---- | -- | ----------------------- | ---- | ---- |
+| Palette eXtended Kubernetes (PXK) | Ubuntu, BYOOS | CNCF | Multiple. Refer to the <VersionedLink text="pack information" url="/integrations/packs/?pack=kubernetes" /> for the detailes. |
+| Canonical Kubernetes | Ubuntu | Canonical Kubernetes | Cilium.  Due to a [known issue](../../../release-notes/known-issues.md) in controller-mode deployments, Cilium is automatically installed by the Canonical Kubernetes bootstrap process and cannot be disabled. Since Palette requires a CNI to be specified in the cluster profile, select Custom CNI and set a placeholder value in `the manifests.byo-cni.contents.data.custom-cni` parameter. | Portworx |
+
+:::preview
+
+The **Canonical Kubernetes** distribution is a Tech Preview feature and is subject to change. Do not use this feature in production workloads.
+
+:::
+
 ## Custom API Server Endpoint for MAAS Clusters
 
 By default, Palette registers a DNS record in MAAS for the deployed cluster and links it to the IP addresses of the

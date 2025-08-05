@@ -460,8 +460,12 @@
     "description": "RKE2, also known as RKE Government, is Rancher's next-generation Kubernetes distribution. RKE2 is a fully conformant Kubernetes distribution that focuses security and compliance within the U.S. Federal Government sector."
   },
   {
+    "name": "kubernetes-ck8s",
+    "description": "Canonical Kubernetes delivers the Canonical Kubernetes distribution on MAAS environments in controller mode, enabling consistent, automated cluster operations. It provides a secure and stable Kubernetes stack that simplifies deployment and lifecycle management when used with Palette."
+  },
+  {
     "name": "edge-canonical",
-    "description": "Palette Optimized Canonical delivers the Canonical Kubernetes distribution and enables consistent, automated cluster operations. It provides a secure and stable Kubernetes stack that simplifies deployment and lifecycle management when used with Palette."
+    "description": "Palette Optimized Canonical delivers the Canonical Kubernetes distribution for edge environments, enabling consistent, automated cluster operations. It provides a secure and stable Kubernetes stack that simplifies deployment and lifecycle management when used with Palette."
   },
   {
     "name": "edge-rke2",
