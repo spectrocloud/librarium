@@ -340,20 +340,6 @@ and command overrides as described in the following table.
 | Parameter                                         | Type                   | Description                                                                                                                                                                                                                                                                                                                                                 |
 | ------------------------------------------------- | ---------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `userDataScript`                                  | String (block scalar)  | A custom multi-line Bash script that is executed as the root user on every worker node after all `nodeadm` operations are complete. You can use it to execute any extra bootstrap logic, such as install additional packages, pre-pull images, configure HTTP/HTTPS proxies, or inject Certificate Authority (CA) certificates into the system trust store. |
-| `cluster.name`                                    | String                 | Human-readable name of your EKS cluster.                                                                                                                                                                                                                                                                                                                    |
-| `cluster.apiServerEndpoint`                       | String (URL)           | Fully-qualified HTTPS URL for the cluster's `kube-apiserver`.                                                                                                                                                                                                                                                                                               |
-| `cluster.certificateAuthority`                    | String (base64)        | Base64-encoded string of your cluster's Certificate Authority (CA) chain.                                                                                                                                                                                                                                                                                   |
-| `cluster.cidr`                                    | String (CIDR)          | The service Classless Inter-Domain Routing (CIDR) IP range used to derive the cluster IP addresses.                                                                                                                                                                                                                                                         |
-| `cluster.enableOutpost`                           | Boolean                | - `true` = apply node settings specific to [AWS Outposts](https://docs.aws.amazon.com/outposts/latest/server-userguide/what-is-outposts.html). <br /> - `false` or omit = standard EKS settings.                                                                                                                                                            |
-| `cluster.id`                                      | String                 | Optional identifier for the cluster when `cluster.enableOutpost` is set to `true`.                                                                                                                                                                                                                                                                          |
-| `nodeConfig.Kubelet.config`                       | Key value map          | Provide key-value options to merge with the `nodeadm` defaults. Refer to the [KubeletConfiguration](https://kubernetes.io/docs/reference/config-api/kubelet-config.v1beta1/#kubelet-config-k8s-io-v1beta1-KubeletConfiguration) reference guide for the available configuration options.                                                                    |
-| `nodeConfig.Kubelet.flags`                        | List of strings        | Extra command-line flags appended to kubelet's default set. Each entry must be a full flag such as `--max-pods=110`. Refer to the [kubelet options](https://kubernetes.io/docs/reference/command-line-tools-reference/kubelet/) reference guide for the available flags.                                                                                    |
-| `nodeConfig.Containerd.config`                    | String (TOML)          | Raw Containerd TOML fragment merged with the default runtime configuration. Refer to the [containerd configuration TOML](https://github.com/containerd/containerd/blob/main/docs/man/containerd-config.toml.5.md) guide for more information.                                                                                                               |
-| `nodeConfig.Containerd.baseRuntimeSpec`           | Key value map          | Partial OCI runtime-spec merged into the default container spec. Refer to the [OCI runtime-spec](https://github.com/opencontainers/runtime-spec) documentation for more information.                                                                                                                                                                        |
-| `nodeConfig.Instance.localStorage.strategy`       | String (enum)          | Control how the [Amazon EC2 instance store](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/InstanceStorage.html) disks are used. <br /> - `RAID0` - stripe all disks for max throughput (no redundancy). <br /> - `RAID10` - stripe + mirror (performance + redundancy; needs a minimum of 4 disks). <br /> - `Mount` - mount each disk individually.  |
-| `nodeConfig.Instance.localStorage.mountPath`      | String                 | Mount point for the assembled volume or individual disks. Defaults to `/mnt/k8s-disks/`.                                                                                                                                                                                                                                                                    |
-| `nodeConfig.Instance.localStorage.disabledMounts` | List of strings (enum) | Use this option to specify directories to keep on the EBS root volume instead of an instance store. By default, all mounts are placed on the instance store. There are two built-in options available. <br /> - `Containerd` = `/var/lib/containerd` <br /> - `PodLogs` = `/var/log/pods`                                                                   |
-| `nodeConfig.FeatureGates.InstanceIdNodeName`      | Boolean                | When `true`, kubelet registers the node using its EC2 instance ID instead of the private DNS hostname.                                                                                                                                                                                                                                                      |
 
 <details>
 
@@ -398,45 +384,6 @@ nodeCustomization:
       update-ca-trust extract
 
       echo "[user-data] Custom CA installed and system trust store updated."
-
-    nodeConfig:
-      Cluster:
-        name: dev-usw2
-        apiServerEndpoint: https://ABCDEFG123456.gr7.us-west-2.eks.amazonaws.com
-        certificateAuthority: |
-          ...base64-encoded-PEM...
-        cidr: 172.20.0.0/16
-        enableOutpost: false # set true when nodes run on an AWS Outpost
-        # id: op-1234567890abcdef    # only needed if enableOutpost = true
-
-      Kubelet:
-        config:
-          maxPods: "130"
-          healthzPort: 10250
-        flags:
-          - "--node-labels=app=my-app,environment=production"
-
-      Containerd:
-        config: |
-          [plugins."io.containerd.grpc.v1.cri".containerd]
-            snapshotter = "overlayfs"
-
-        baseRuntimeSpec:
-          linux:
-            resources:
-              memory:
-                limit: 2147483648 # 2 GiB memory ceiling for all containers
-
-      Instance:
-        localStorage:
-          strategy: RAID0
-          mountPath: /mnt/fast-disks
-          disabledMounts:
-            - PodLogs
-            - Containerd
-
-      FeatureGates:
-        InstanceIdNodeName: true
 ```
 
 </details>
