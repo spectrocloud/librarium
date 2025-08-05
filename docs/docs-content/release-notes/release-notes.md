@@ -29,6 +29,13 @@ tags: ["release-notes"]
 
 #### Features
 
+- Amazon EKS node customization is now supported for custom AMIs, such as Amazon Linux 2 (AL2) and Amazon Linux 2023
+  (AL2023). This feature allows you to provide pre and post-kubeadm commands for AL2, and provide user data shell
+  scripts for AL2023. Refer to the
+  <VersionedLink text="Node Customization" url="/integrations/packs/?pack=kubernetes-eks&tab=custom#node-customization"/>
+  section of the Kubernetes EKS pack for configurable options available for these AMIs. For general guidance on
+  deploying EKS clusters, refer to the [Create and Manage AWS EKS Cluster](../clusters/public-cloud/aws/eks.md) guide.
+
 #### Improvements
 
 #### Deprecations and Removals
