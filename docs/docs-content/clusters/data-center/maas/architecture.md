@@ -38,7 +38,7 @@ Palette provides the following distributions for MAAS environments.
 
 | Name | OS | Kubernetes Distribution | CNIs | CSIs |
 | ---- | -- | ----------------------- | ---- | ---- |
-| Palette eXtended Kubernetes (PXK) | Ubuntu, BYOOS | CNCF | Multiple. Refer to the <VersionedLink text="pack information" url="/integrations/packs/?pack=kubernetes" /> for the detailes. |
+| Palette eXtended Kubernetes (PXK) | Ubuntu, BYOOS | CNCF | Multiple. Refer to the <VersionedLink text="pack information" url="/integrations/packs/?pack=kubernetes" /> for the details. |
 | Canonical Kubernetes | Ubuntu | Canonical Kubernetes | Cilium.  Due to a [known issue](../../../release-notes/known-issues.md) in controller-mode deployments, Cilium is automatically installed by the Canonical Kubernetes bootstrap process and cannot be disabled. Since Palette requires a CNI to be specified in the cluster profile, select Custom CNI and set a placeholder value in `the manifests.byo-cni.contents.data.custom-cni` parameter. | Portworx |
 
 :::preview
