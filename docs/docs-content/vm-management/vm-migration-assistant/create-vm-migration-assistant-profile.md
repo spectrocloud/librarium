@@ -28,7 +28,7 @@ Follow these steps to create a new add-on profile that will be applied to your e
 4. Fill out the basic information and ensure you select **Add-on** for the type. Click on **Next** to continue.
 
 5. Select **Add New Pack**. In the next window that displays, enter **Virtual Machine Migration Assistant** in the
-   **Filter by name** search bar. The pack is in the **Spectro Addon Repo** registry. Select the pack when it appears.
+   **Filter by name** search bar. The pack is in the **Palette Community Registry**. Select the pack when it appears.
 
 6. Palette displays the YAML file in the editor on the right. You can edit the YAML as needed. Review the following
    service console parameters and adjust to your requirements as needed.
