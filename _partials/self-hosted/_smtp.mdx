@@ -34,14 +34,14 @@ invitation email.
 
 4. Fill out the following fields.
 
-  | **Field**                    | **Description**                                                                                                                                                                           | **Required** |
-  | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
-  | **Outgoing Server**          | The host name of the SMTP server. For example, `smtp.gmail.com`.                                                                                                                           | Yes |
-  | **Outgoing Port**            | The port number of the SMTP server.                                                                                                                                                       | Yes |
-  | **From Email**               | The email address from which emails will be sent. Emails sent from {props.version} will be sent from this email address.                                                                      | Yes |
-  | **Username**                 | The username of the SMTP server.                                                                                                                                                          | Yes |
-  | **Password**                 | The password of the SMTP server. Certain SMTP servers, such as `smtp.gmail.com`, require app passwords instead of user passwords.                                                                                                                                                         | Yes |
-  | **Insecure Skip TLS Verify** | This option disables Transport Layer Security (TLS) certificate verification. Enable this option if your SMTP server is using a self-signed certificate or has a certificate that is not trusted by the system.  | No |
+    | **Field**                    | **Description**                                                                                                                                                                           | **Required** |
+    | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
+    | **Insecure Skip TLS Verify** | {props.tls_description}  | {props.tls_required} |
+    | **Outgoing Server**          | The host name of the SMTP server. For example, `smtp.gmail.com`.                                                                                                                           | Yes |
+    | **Outgoing Port**            | The port number of the SMTP server.                                                                                                                                                       | Yes |
+    | **From Email**               | Emails sent by {props.version} will use this email address as the sender.                                                                      | Yes |
+    | **Username**                 | The username of the SMTP server.                                                                                                                                                         | Yes |
+    | **Password**                 | The password of the SMTP server. Certain SMTP servers, such as `smtp.gmail.com`, require app passwords instead of user passwords.                                                                                                                                                         | Yes |
 
 5. Click **Validate configuration**. A success message is displayed if the configuration is valid; otherwise, an error message is displayed. Additional error details can be found in the {props.version} `system-<ID>-<ID>` container logs, located in the `hubble-system` namespace.
 
