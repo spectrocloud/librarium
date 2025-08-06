@@ -461,7 +461,7 @@
   },
   {
     "name": "kubernetes-ck8s",
-    "description": "Canonical Kubernetes delivers the Canonical Kubernetes distribution on MAAS environments in controller mode, enabling consistent, automated cluster operations. It provides a secure and stable Kubernetes stack that simplifies deployment and lifecycle management when used with Palette."
+    "description": "Canonical Kubernetes delivers the Canonical Kubernetes distribution for MAAS environments in controller mode, enabling consistent, automated cluster operations. It provides a secure and stable Kubernetes stack that simplifies deployment and lifecycle management when used with Palette."
   },
   {
     "name": "edge-canonical",
