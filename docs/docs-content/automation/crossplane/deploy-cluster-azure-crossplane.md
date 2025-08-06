@@ -107,7 +107,7 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in Azure.
     metadata:
       name: provider-palette
     spec:
-      package: xpkg.upbound.io/crossplane-contrib/provider-palette:v0.19.2
+      package: xpkg.upbound.io/crossplane-contrib/provider-palette:v0.23.8
     ```
 
     :::tip
@@ -132,7 +132,7 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in Azure.
 
     ```text hideClipboard
      NAME                          INSTALLED   HEALTHY   PACKAGE                                              AGE
-     provider-palette              True        True      crossplane-contrib/provider-palette:v0.12.0          61s
+     provider-palette              True        True      crossplane-contrib/provider-palette:v0.23.8          61s
     ```
 
 8.  Create a file to store a Kubernetes Secret containing your Palette API key. The Palette provider requires
@@ -214,6 +214,7 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in Azure.
       namespace: crossplane-system
     spec:
       forProvider:
+        name: "my-azure-cluster-profile"
         cloud: "azure"
         description: "Azure cluster profile"
         type: "cluster"
@@ -534,6 +535,7 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in Azure.
       namespace: crossplane-system
     spec:
       forProvider:
+        name: "my-azure-cluster"
         cloudConfig:
           - sshKey: "<public-ssh-key>"
             region: "eastus"

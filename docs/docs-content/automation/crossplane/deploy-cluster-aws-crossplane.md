@@ -108,7 +108,7 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in AWS.
     metadata:
       name: provider-palette
     spec:
-      package: xpkg.upbound.io/crossplane-contrib/provider-palette:v0.19.2
+      package: xpkg.upbound.io/crossplane-contrib/provider-palette:v0.23.8
     ```
 
     :::tip
@@ -133,7 +133,7 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in AWS.
 
     ```text hideClipboard
      NAME                          INSTALLED   HEALTHY   PACKAGE                                              AGE
-     provider-palette              True        True      crossplane-contrib/provider-palette:v0.12.0          61s
+     provider-palette              True        True      crossplane-contrib/provider-palette:v0.23.8          61s
     ```
 
 8.  Create a file to store a Kubernetes Secret containing your Palette API key. The Palette provider requires
@@ -218,6 +218,7 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in AWS.
         cloud: "aws"
         description: "AWS Crossplane cluster profile"
         type: "cluster"
+        name: "my-aws-cluster-profile"
         pack:
           - name: "ubuntu-aws"
             tag: "22.04"
@@ -624,6 +625,7 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in AWS.
       namespace: crossplane-system
     spec:
       forProvider:
+        name: "my-aws-cluster"
         cloudConfig:
           - sshKeyName: <ssh-key-name>
             region: us-east-1

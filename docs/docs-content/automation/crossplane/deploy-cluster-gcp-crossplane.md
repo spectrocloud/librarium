@@ -107,7 +107,7 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in GCP.
     metadata:
       name: provider-palette
     spec:
-      package: xpkg.upbound.io/crossplane-contrib/provider-palette:v0.19.2
+      package: xpkg.upbound.io/crossplane-contrib/provider-palette:v0.23.8
     ```
 
     :::tip
@@ -132,7 +132,7 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in GCP.
 
     ```text hideClipboard
      NAME                          INSTALLED   HEALTHY   PACKAGE                                              AGE
-     provider-palette              True        True      crossplane-contrib/provider-palette:v0.12.0          61s
+     provider-palette              True        True      crossplane-contrib/provider-palette:v0.23.8          61s
     ```
 
 8.  Create a file to store a Kubernetes Secret containing your Palette API key. The Palette provider requires
@@ -217,6 +217,7 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in GCP.
         cloud: "gcp"
         description: "GCP cluster profile"
         type: "cluster"
+        name: "my-gcp-cluster-profile"
         pack:
           - name: "ubuntu-gcp"
             tag: "22.04"
@@ -436,6 +437,7 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in GCP.
       namespace: crossplane-system
     spec:
       forProvider:
+        name: "my-gcp-cluster"
         cloudConfig:
           - project: "<project-name>"
             region: "us-east1"
