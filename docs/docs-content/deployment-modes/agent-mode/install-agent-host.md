@@ -38,7 +38,9 @@ Palette. You will then create a cluster profile and use the registered host to d
 - The FIPS-compliant version of Agent Mode is only available for Red Hat Enterprise Linux (RHEL) and Rocky Linux 8
   systems.
 
-- CanvOS versions prior to 4.6.21 do not support local management mode.
+- Palette versions prior to 4.6.32 do not support local management mode. Even if you build an ISO using Palette agent
+  and CanvOS version 4.6.21 or later, which support local management mode, the agent may be downgraded if your cluster
+  uses a content bundle built against a Palette instance older than 4.6.32. This results in deployment failure.
 
 ## Prerequisites
 
@@ -95,6 +97,10 @@ Palette. You will then create a cluster profile and use the registered host to d
   interfere with the Palette agent.
 
   :::
+
+- If you plan on creating clusters that need to enable network overlay, consider adding specific user data blocks to
+  install and configure the necessary network prerequisites. Refer to
+  [Configure networkd to Prepare Host for Overlay Network](./overlay-preparation.md) for more information.
 
 - If installing the FIPS version of Agent Mode on a Rocky Linux edge host, you must configure your SELinux policies to
   grant rsync the required host permissions and ensure you enable cgroup V2.
@@ -439,6 +445,37 @@ Palette. You will then create a cluster profile and use the registered host to d
              passwd: kairos
    ```
 
+   <!-- prettier-ignore-start -->
+
+   :::warning
+
+   If your setup meets the following conditions, include the following `initramfs` stage in your `user-data` file,
+   replacing `<interface-name>` with the name of the network interface on your Edge host:
+
+   - Your host is a virtual machine.
+   - The virtual machine uses a VMXNET3 adapter.
+   - You are planning to use _one_ of the following in your Edge cluster:
+
+     - An [overlay network](../../clusters/edge/networking/vxlan-overlay.md).
+     - <VersionedLink text="Flannel" url="/integrations/cni-flannel" /> for your CNI.
+
+     ```shell
+     stages:
+       initramfs:
+         - name: "Disable UDP segmentation"
+           commands:
+             - ethtool --offload <interface-name> tx-udp_tnl-segmentation off
+             - ethtool --offload <interface-name> tx-udp_tnl-csum-segmentation off
+     ```
+
+   This is due to a
+   [known issue with VMware's VMXNET3 adapter](https://github.com/cilium/cilium/issues/13096#issuecomment-723901955),
+   which is widely used in different virtual machine management services, including VMware vSphere and Hyper-V.
+
+   :::
+
+   <!-- prettier-ignore-end -->
+
 5. Export the path to your user data file.
 
    ```shell
@@ -555,8 +592,19 @@ internet.
 
 :::warning
 
-Ensure you use CanvOS version 4.6.21 or later to build Edge artifacts, as earlier versions do not support local
-management mode.
+Ensure your Palette instance is version 4.6.32 or later to build Edge artifacts, as earlier versions do not support
+local management mode.
+
+You can check the Palette agent version your Palette environment uses with the following command. Replace
+`<palette-endpoint>` with your Palette endpoint and `<api-key>` with your
+[Palette API key](../../user-management/authentication/api-key/api-key.md).
+
+```shell
+curl --location --request GET 'https://<palette-endpoint>/v1/services/stylus/version' --header 'Content-Type: application/json' --header 'Apikey: <api-key>'  | jq --raw-output '.spec.latestVersion.content | match("version: ([^\n]+)").captures[0].string'
+```
+
+The Palette agent version should be 4.6.21 or later, which corresponds to Palette instance version 4.6.32. If you are
+building a custom Edge ISO, ensure you use CanvOS version 4.6.21 or later as well.
 
 :::
 
@@ -625,6 +673,37 @@ management mode.
          name: "Configure user"
    EOF
    ```
+
+    <!-- prettier-ignore-start -->
+
+   :::warning
+
+   If your setup meets the following conditions, include the following `initramfs` stage in your `user-data` file,
+   replacing `<interface-name>` with the name of the network interface on your Edge host:
+
+   - Your host is a virtual machine.
+   - The virtual machine uses a VMXNET3 adapter.
+   - You are planning to use _one_ of the following in your Edge cluster:
+
+     - An [overlay network](../../clusters/edge/networking/vxlan-overlay.md).
+     - <VersionedLink text="Flannel" url="/integrations/cni-flannel" /> for your CNI.
+
+   ```shell
+   stages:
+     initramfs:
+       - name: "Disable UDP segmentation"
+         commands:
+           - ethtool --offload <interface-name> tx-udp_tnl-segmentation off
+           - ethtool --offload <interface-name> tx-udp_tnl-csum-segmentation off
+   ```
+
+   This is due to a
+   [known issue with VMware's VMXNET3 adapter](https://github.com/cilium/cilium/issues/13096#issuecomment-723901955),
+   which is widely used in different virtual machine management services, including VMware vSphere and Hyper-V.
+
+   :::
+
+    <!-- prettier-ignore-end -->
 
 6. Issue the following command confirm that your user data file was created successfully at the correct location.
 
