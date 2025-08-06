@@ -94,7 +94,7 @@ jobs:
         SLACK_COLOR: ${{ job.status }}
         SLACKIFY_MARKDOWN: true
         ENABLE_ESCAPES: true
-        SLACK_MESSAGE: "🦄 This PR adds missing .gitleaksignore entries from the version branch to master. Please review [the PR](${{ env.GITHUB_PR_URL }}) for more details."
+        SLACK_MESSAGE: "🦄 This PR adds missing .gitleaksignore entries from the version branch to master. Please review the [PR](${{ env.GITHUB_PR_URL }}) for more details."
     
     - name: Failure Slack Notification
       if: ${{ failure() }}
