@@ -40,7 +40,7 @@ Palette provides the following distributions for MAAS environments.
 | Name                              | OS            | Kubernetes Distribution | CNIs                                                                                                                         | CSIs     |
 | --------------------------------- | ------------- | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------- | -------- |
 | Palette eXtended Kubernetes (PXK) | Ubuntu, BYOOS | CNCF                    | Multiple. Refer to the <VersionedLink text="pack information" url="/integrations/packs/?pack=kubernetes" /> for the details. |
-| Canonical Kubernetes              | Ubuntu        | Canonical Kubernetes    | Cilium CNI (Canonical Kubernetes)                                                                                           | Portworx |
+| Canonical Kubernetes              | Ubuntu        | Canonical Kubernetes    | Cilium CNI (Canonical Kubernetes)                                                                                            | Portworx |
 
 :::preview
 
