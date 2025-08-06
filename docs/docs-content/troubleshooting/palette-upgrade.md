@@ -12,6 +12,183 @@ We recommend you review the [Release Notes](../release-notes/release-notes.md) a
 [Upgrade Notes](../enterprise-version/upgrade/upgrade.md) before attempting to upgrade Palette. Use this information to
 address common issues that may occur during an upgrade.
 
+## Self-Hosted Palette or Palette VerteX Upgrade Hangs
+
+Upgrading [self-hosted Palette](../enterprise-version/enterprise-version.md) or [Palette VerteX](../vertex/vertex.md)
+from version 4.6.x to 4.7.x can cause the upgrade to hang if any member of a MongoDB ReplicaSet is not fully synced and
+in a healthy state prior to the upgrade.
+
+### Debug Steps
+
+To verify the health status of each MongoDB ReplicaSet member, use the following procedure based on whether you are
+upgrading Palette or Palette VerteX.
+
+1. Log in to the [Palette](../enterprise-version/system-management/system-management.md#access-the-system-console) or
+   [Palette VerteX](../vertex/system-management/system-management.md#access-the-system-console) system console.
+
+2. From the left main menu, select **Enterprise Cluster**.
+
+3. On the **Overview** tab, download the **Kubernetes Config File**.
+
+4. Open a terminal window and set the environment variable `KUBECONFIG` to point to kubeconfig file you downloaded.
+
+   ```shell title="Example command" hideClipboard
+   export KUBECONFIG=~/Downloads/spectro-mgmt-cluster.kubeconfig
+   ```
+
+<Tabs>
+
+<TabItem label="Palette" value="palette">
+
+5. Issue the following command to query the ReplicaSet for its current primary host, extract the Pod name, and save its
+   value as `MONGO_PRIMARY`.
+
+   :::info
+
+   The values for `MONGODB_INITDB_ROOT_USERNAME` and `MONGODB_INITDB_ROOT_PASSWORD` do not need to be exported, as they
+   are already defined within the MongoDB Pods.
+
+   :::
+
+   ```shell
+   MONGO_PRIMARY=$(
+      kubectl exec \
+         --namespace hubble-system \
+         mongo-1 \
+         --container mongo \
+         -- \
+         mongosh \
+            --username "$MONGODB_INITDB_ROOT_USERNAME" \
+            --password "$MONGODB_INITDB_ROOT_PASSWORD" \
+            admin \
+            --quiet \
+            --eval "print(JSON.stringify(rs.hello()))" \
+      | jq --raw-output .primary \
+      | awk -F. '{print $1}'
+   )
+   ```
+
+6. Issue the following command to connect to the primary Pod and print each ReplicaSet member’s host, state, and health
+   status.
+
+   ```shell
+   kubectl exec \
+      --namespace hubble-system \
+      "${MONGO_PRIMARY}" \
+      --container mongo \
+      -- bash -c \
+      'mongosh \
+         --username "$MONGO_INITDB_ROOT_USERNAME" \
+         --password "$MONGO_INITDB_ROOT_PASSWORD" \
+         --host "$HOSTNAME" \
+         admin \
+         --quiet \
+   --eval "rs.status().members.forEach(m => printjson({host:m.name,state:m.stateStr,health:m.health}))"'
+   ```
+
+   All healthy members should have a `health` status of `1`. If the ReplicaSet members are healthy, proceed with
+   upgrading self-hosted Palette or VerteX.
+
+   ```shell title="Example output" hideClipboard {4,9,14}
+   {
+      host: 'mongo-1.mongo.hubble-system.svc.cluster.local:27017',
+      state: 'PRIMARY',
+      health: 1
+   }
+   {
+      host: 'mongo-0.mongo.hubble-system.svc.cluster.local:27017',
+      state: 'SECONDARY',
+      health: 1
+   }
+   {
+      host: 'mongo-2.mongo.hubble-system.svc.cluster.local:27017',
+      state: 'SECONDARY',
+      health: 1
+   }
+   ```
+
+</TabItem>
+
+<TabItem label="Palette VerteX" value="vertex">
+
+5. Issue the following command to query the ReplicaSet for its current primary host, extract the Pod name, and save its
+   value as `MONGO_PRIMARY`.
+
+   :::info
+
+   The values for `MONGODB_INITDB_ROOT_USERNAME` and `MONGODB_INITDB_ROOT_PASSWORD` do not need to be exported, as they
+   are already defined within the MongoDB Pods.
+
+   :::
+
+   ```shell
+   MONGO_PRIMARY=$(
+      kubectl exec \
+         --namespace hubble-system \
+         mongo-1 \
+         --container mongo \
+         -- bash -c \
+            'mongosh \
+               --username "$MONGODB_INITDB_ROOT_USERNAME" \
+               --password "$MONGODB_INITDB_ROOT_PASSWORD" \
+               --host "$HOSTNAME" \
+               --tls \
+               --tlsCAFile /var/mongodb/tls/ca.crt \
+               --tlsCertificateKeyFile /var/mongodb/tls/tls-combined.pem \
+               --tlsAllowInvalidHostnames \
+               admin \
+               --quiet \
+               --eval "print(JSON.stringify(rs.isMaster()))"'
+   ) | jq --raw-output .primary | awk -F. '{print $1}'
+   ```
+
+6. Issue the following command to connect to the primary Pod and print each ReplicaSet member’s host, state, and health
+   status.
+
+   ```shell
+   kubectl exec \
+      --namespace hubble-system \
+      "${MONGO_PRIMARY}" \
+      --container mongo \
+      -- bash -c \
+         'mongosh \
+            --username "$MONGODB_INITDB_ROOT_USERNAME" \
+            --password "$MONGODB_INITDB_ROOT_PASSWORD" \
+            --host "$HOSTNAME" \
+            --tls \
+            --tlsCAFile /var/mongodb/tls/ca.crt \
+            --tlsCertificateKeyFile /var/mongodb/tls/tls-combined.pem \
+            --tlsAllowInvalidHostnames \
+            admin \
+            --quiet \
+            --eval "rs.status().members.forEach(m => printjson({host:m.name,state:m.stateStr,health:m.health}))"'
+   ```
+
+   All healthy members should have a `health` status of `1`. If the ReplicaSet members are healthy, proceed with
+   upgrading self-hosted Palette or VerteX.
+
+   ```shell title="Example output" hideClipboard {4,9,14}
+   {
+      host: 'mongo-1.mongo.hubble-system.svc.cluster.local:27017',
+      state: 'PRIMARY',
+      health: 1
+   }
+   {
+      host: 'mongo-0.mongo.hubble-system.svc.cluster.local:27017',
+      state: 'SECONDARY',
+      health: 1
+   }
+   {
+      host: 'mongo-2.mongo.hubble-system.svc.cluster.local:27017',
+      state: 'SECONDARY',
+      health: 1
+   }
+   ```
+
+</TabItem>
+
+</Tabs>
+
 ## Ingress Errors
 
 If you receive the following error message when attempting to upgrade to Palette versions greater than Palette 3.4.X in
