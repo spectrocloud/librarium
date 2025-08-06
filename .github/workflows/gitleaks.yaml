@@ -1,3 +1,8 @@
+# This workflow is used to automatically sync new entries added to the .gitleaksignore file in versioned branches back to the master branch.
+# When a change to .gitleaksignore is pushed to a version-* branch, this workflow will compare it against the master .gitleaksignore.
+# If new entries are found that do not exist in master, a pull request will be opened to append the missing entries.
+# We need this workflow to comply with the weekly gitleaks scanning process executed by the security team.
+
 name: Sync gitleaksignore to master
 
 on:
