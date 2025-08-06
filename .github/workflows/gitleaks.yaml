@@ -56,10 +56,14 @@ jobs:
       run: |
         if [ ! -s to_add.txt ]; then
           echo "No new gitleaksignore entries to add to master."
+          echo "SHOULD_SYNC=false" >> $GITHUB_ENV
           exit 0
+        else
+          echo "SHOULD_SYNC=true" >> $GITHUB_ENV
         fi
 
     - name: Update .gitleaksignore in master
+      if: ${{ env.SHOULD_SYNC == 'true' }}
       run: |
         # Create a new branch from master
         git checkout -b "gitleaks-sync-${{ github.run_id }}" origin/master
@@ -73,6 +77,7 @@ jobs:
         git push origin HEAD
 
     - name: Create a PR in master with new .gitleaksignore entries
+      if: ${{ env.SHOULD_SYNC == 'true' }}
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
@@ -87,10 +92,10 @@ jobs:
         echo "GITHUB_PR_URL=$pr_url" >> $GITHUB_ENV
 
     - name: Success Slack Notification
-      if: success()
+      if: success() && env.SHOULD_SYNC == 'true'
       uses: rtCamp/action-slack-notify@v2.3.3
       env:
-        SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
+        SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_TEST_WEBHOOK }}
         SLACK_COLOR: ${{ job.status }}
         SLACKIFY_MARKDOWN: true
         ENABLE_ESCAPES: true
@@ -100,7 +105,7 @@ jobs:
       if: ${{ failure() }}
       uses: rtCamp/action-slack-notify@v2.3.3
       env:
-        SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
+        SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_TEST_WEBHOOK }}
         SLACK_COLOR: ${{ job.status }}
         SLACKIFY_MARKDOWN: true
         ENABLE_ESCAPES: true
