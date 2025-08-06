@@ -4,7 +4,7 @@
 # However, in the event we have to stop using the Algolia DocSearch v3 crawler. We can revert to our own custom crawler and index by uncommenting the code below.
 # We just need to make sure we update the GitHub Secrets with the Algolia App ID and Admin Key.
 # The Algolia App ID and Admin Key can be found in the Algolia dashboard. 
-# Refer to the internal team documenation https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/2203516932/Algolia for more information.
+# Refer to the internal team documentation https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/2203516932/Algolia for more information.
 # This workflow supports on-demand execution using the workflow_dispatch event.
 
 name: Algolia Crawler
