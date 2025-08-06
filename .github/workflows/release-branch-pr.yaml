@@ -1,4 +1,4 @@
-# This workflow is trigged when a PR is opened, synchronized, reopened, or ready for review, and the branch name matches the pattern release-[0-9]-[0-9], release-[0-9]-[0-9]-[0-9] or release-[0-9]-[0-9]-[a-z].
+# This workflow is trigged when a PR is opened, synchronized, reopened, or ready for review, and the branch name matches the pattern docs-rel-[0-9]-[0-9], docs-rel-[0-9]-[0-9]-[0-9] or docs-rel-[0-9]-[0-9]-[a-z].
 # In simple terms, this workflow targers a release preview branch.
 # Workflow attempts to build the site and configure Netlify to allow for preview builds. By default, Netlify does not create preview builds for pull requests that are not targeting the main branch.
 # The workflow uses the Netlify API to add the branch to the branch deploy list of branches that Netlify will build previews for.
@@ -13,9 +13,9 @@ on:
   pull_request:
     types: [opened, synchronize, reopened, ready_for_review]
     branches:
-      - "release-[0-9]-[0-9]"
-      - "release-[0-9]-[0-9]-[0-9]"
-      - "release-[0-9]-[0-9]-[a-z]"
+      - "docs-rel-[0-9]-[0-9]"
+      - "docs-rel-[0-9]-[0-9]-[0-9]"
+      - "docs-rel-[0-9]-[0-9]-[a-z]"
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
