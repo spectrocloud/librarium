@@ -218,7 +218,7 @@ customization.
       - The virtual machine uses a VMXNET3 adapter.
       - You are planning to use _one_ of the following in your Edge cluster:
 
-        - An [overlay network](../../networking/vxlan-overlay.md).
+        - An [overlay network](../networking/vxlan-overlay.md).
         - <VersionedLink text="Flannel" url="/integrations/cni-flannel" /> for your CNI.
 
       ```shell
