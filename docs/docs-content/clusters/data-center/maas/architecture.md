@@ -44,7 +44,7 @@ Palette provides the following distributions for MAAS environments.
 
 :::preview
 
-The **Canonical Kubernetes** MAAS distribution is a Tech Preview feature and is subject to change. Do not use this
+The **Canonical Kubernetes** pack for deployments in MAAS environments is a Tech Preview feature and is subject to change. Do not use this
 feature in production workloads.
 
 :::
