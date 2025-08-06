@@ -67,6 +67,16 @@ managedControlPlane:
   disableAssociateOIDCProvider: true
 ```
 
+### Karpenter Support
+
+Nodes provisioned through [Karpenter](https://karpenter.sh/docs/) are visible in Palette and supported for read-only
+operations, such as billing and monitoring. However, [Day-2 operations](../../cluster-management/cluster-management.md)
+are not supported.
+
+The **Managed by Karpenter** banner is displayed for any node pools that are provisioned using Karpenter.
+
+![Karpenter node in Palette](/public-cloud_aws_architecture_managed-by-karpenter.webp)
+
 ## AWS Instance Type and Pod Capacity
 
 Choose the instance type and the number of instances to be launched by calculating the number of expected pods. You
