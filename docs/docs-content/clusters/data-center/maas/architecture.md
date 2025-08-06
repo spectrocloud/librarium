@@ -37,15 +37,15 @@ Refer to the [PCG Architecture](../../pcg/architecture.md) section to learn more
 
 Palette provides the following distributions for MAAS environments.
 
-| Name                              | OS                              | Kubernetes Distribution | CNIs                                                                                                                         | CSIs     |
-| --------------------------------- | ------------------------------- | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------- | -------- |
+| Name                              | OS                              | Kubernetes Distribution | CNIs                                                                                                                         | CSIs                                                                                                                         |
+| --------------------------------- | ------------------------------- | ----------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
 | Palette eXtended Kubernetes (PXK) | Ubuntu, BYOOS                   | CNCF                    | Multiple. Refer to the <VersionedLink text="pack information" url="/integrations/packs/?pack=kubernetes" /> for the details. | Multiple. Refer to the <VersionedLink text="pack information" url="/integrations/packs/?pack=kubernetes" /> for the details. |
-| Canonical Kubernetes              | Ubuntu for Canonical Kubernetes | Canonical Kubernetes    | Cilium CNI (Canonical Kubernetes)                                                                                            | Portworx |
+| Canonical Kubernetes              | Ubuntu for Canonical Kubernetes | Canonical Kubernetes    | Cilium CNI (Canonical Kubernetes)                                                                                            | Portworx                                                                                                                     |
 
 :::preview
 
-The **Canonical Kubernetes** pack for deployments in MAAS environments is a Tech Preview feature and is subject to change. Do not use this
-feature in production workloads.
+The **Canonical Kubernetes** pack for deployments in MAAS environments is a Tech Preview feature and is subject to
+change. Do not use this feature in production workloads.
 
 :::
 
