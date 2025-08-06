@@ -4,8 +4,4 @@ npm run clean-api-docs
 
 make format-images
 
-if [[ "$OSTYPE" == "darwin"* ]]; then
-  sed -i '' '/^$/d' vale-spellcheck-ignore.txt   # macOS
-else
-  sed -i '/^$/d' vale-spellcheck-ignore.txt      # Linux
-fi
+make sanitize-ignore-file

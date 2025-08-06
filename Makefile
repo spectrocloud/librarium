@@ -247,6 +247,14 @@ check-writing: ## Run Vale on changed Markdown/MDX files
 		echo "✅ No changed Markdown or MDX files found."; \
 	fi
 
+sanitize-ignore-file:
+	@echo "🧹 Removing empty lines from vale-spellcheck-ignore.txt to prevent CI failures..."
+	@if [ "$$(uname)" = "Darwin" ]; then \
+		sed -i '' '/^$$/d' vale-spellcheck-ignore.txt; \
+	else \
+		sed -i '/^$$/d' vale-spellcheck-ignore.txt; \
+	fi
+
 ##@ Formatting Checks
 
 format: ## Apply Prettier formating to all files.
