@@ -4,30 +4,28 @@ on:
   push:
     branches:
       - 'version-*'
+      - 'doc-2070-gitleaks-version-branches' # Temp branch for testing purposes
     paths:
       - '.gitleaksignore'
-  # Manual trigger for testing purposes
   workflow_dispatch:
     inputs:
       branch:
-        description: 'Version branch to simulate a sync from'
-        required: true
-        default: 'version-3-4'
-
+        description: "Branch to sync from (for manual testing)"
+        required: false
+    
 concurrency:
   group: sync-gitleaksignore
   cancel-in-progress: false
 
 jobs:
-  sync-ignore:
+  sync-gitleaksignore:
     runs-on: ubuntu-latest
-
+    
     steps:
     - name: Checkout current branch
       uses: actions/checkout@v4
       with:
         fetch-depth: 0
-        # Use the branch from workflow_dispatch for testing purposes
         ref: ${{ github.event.inputs.branch || github.ref_name }}
 
     - name: Configure Git
@@ -35,17 +33,13 @@ jobs:
         git config --global user.name "github-actions[bot]"
         git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-    - name: Get current branch name and fetch master
-      id: vars
-      run: |
-        echo "BRANCH_NAME=${GITHUB_REF##*/}" >> $GITHUB_OUTPUT
-        git fetch origin master
-
     - name: Extract gitleaksignore entries from version branch
       run: |
+        echo "BRANCH_NAME=${{ github.event.inputs.branch || github.ref_name }}" >> $GITHUB_ENV
         cp .gitleaksignore version_ignore
 
         # Get master version of the file
+        git fetch origin master
         git checkout origin/master -- .gitleaksignore
         cp .gitleaksignore master_ignore
 
@@ -53,29 +47,23 @@ jobs:
         grep -vE '^\s*#|^\s*$' version_ignore | sort -u > version_clean
         grep -vE '^\s*#|^\s*$' master_ignore | sort -u > master_clean
 
-        # Find entries in version_clean not in master
+        # Find entries in version_clean not in master_clean
         comm -23 version_clean master_clean > to_add.txt
 
         echo "New entries to add:"
         cat to_add.txt || true
 
-    - name: Exit early if nothing to add
-      id: check_changes     
+    - name: Exit early if nothing to add  
       run: |
         if [ ! -s to_add.txt ]; then
           echo "No new gitleaksignore entries to add to master."
           exit 0
         fi
-        echo 'GITLEAKS_CHANGES=true' >> $GITHUB_OUTPUT
 
     - name: Update .gitleaksignore in master
-      if: ${{ steps.check_changes.outputs.GITLEAKS_CHANGES == 'true' }}
       run: |
         # Create a new branch from master
-        git checkout master
-        git pull origin master
-        branch_name="gitleaks-sync-${{ github.run_id }}"
-        git checkout -b "$branch_name"
+        git checkout -b "gitleaks-sync-${{ github.run_id }}" origin/master
 
         # Add new entries to .gitleaksignore
         echo "" >> .gitleaksignore
@@ -84,38 +72,32 @@ jobs:
 
         # Commit and push the changes
         git add .gitleaksignore
-        git commit -m "chore: sync .gitleaksignore with version branch"
-        git push origin "$branch_name"
+        git commit -m "chore: sync .gitleaksignore from $BRANCH_NAME"
+        git push origin HEAD
 
     - name: Create a PR in master with new .gitleaksignore entries
-      if: ${{ steps.check_changes.outputs.GITLEAKS_CHANGES == 'true' }}
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        pr_body='
-        ## Describe the Change
-        This PR updates the master .gitleaksignore file according to the new entries added to the version branch .gitleaksignore file.
-        '
-        output=$(gh pr create --base master --title "docs: update .gitleaksignore" --body "$pr_body")
-        pr_url=$(echo "$output" | grep -o "https://[^ ]*")        - name: Get current branch name and fetch master
-          id: vars
-          run: |
-            echo "BRANCH_NAME=${GITHUB_REF##*/}" >> $GITHUB_OUTPUT
-            git fetch origin master
-        echo "PR successfully created $pr_url."
+        pr_url=$(gh pr create \
+          --base master \
+          --head "gitleaks-sync-${{ github.run_id }}" \
+          --title "docs: update .gitleaksignore" \
+          --body "This PR syncs new .gitleaksignore entries from \`$BRANCH_NAME\` into master." \
+        | tee /dev/stderr | grep -o 'https://[^ ]*')
 
         # Save the PR URL as an environment variable
-        echo "GITHUB_CREATED_PERMISSIONS_PR=$pr_url" >> $GITHUB_ENV
+        echo "GITHUB_PR_URL=$pr_url" >> $GITHUB_ENV
 
     - name: Success Slack Notification
-      if: ${{ success() && steps.check_changes.outputs.GITLEAKS_CHANGES == 'true' }}
+      if: success()
       uses: rtCamp/action-slack-notify@v2.3.3
       env:
         SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_TEST_WEBHOOK }}
         SLACK_COLOR: ${{ job.status }}
         SLACKIFY_MARKDOWN: true
         ENABLE_ESCAPES: true
-        SLACK_MESSAGE: "This PR adds missing .gitleaksignore entries from the ${{ steps.vars.outputs.BRANCH_NAME }} branch. Please review ${{ env.GITHUB_CREATED_PERMISSIONS_PR }} for more details."
+        SLACK_MESSAGE: "🦄 This PR adds missing .gitleaksignore entries from the version branch to master. Please review ${{ env.GITHUB_PR_URL }} for more details."
     
     - name: Failure Slack Notification
       if: ${{ failure() }}
@@ -125,4 +107,4 @@ jobs:
         SLACK_COLOR: ${{ job.status }}
         SLACKIFY_MARKDOWN: true
         ENABLE_ESCAPES: true
-        SLACK_MESSAGE: 'The gitleaks sync job in `${{ github.repository }}` failed. [View details](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}).'
+        SLACK_MESSAGE: "❌ The gitleaks sync job in `${{ github.repository }}` failed. [View details](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})."
