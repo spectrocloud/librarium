@@ -9,4 +9,4 @@ tags: ["vertex", "management"]
 keywords: ["self-hosted", "vertex"]
 ---
 
-<PartialsComponent category="self-hosted" name="smtp" edition="VerteX" version="Palette VerteX" />
+<PartialsComponent category="self-hosted" name="smtp" edition="VerteX" version="Palette VerteX" tls_description="Due to FIPS compliance, Transport Layer Security (TLS) certificate verification cannot be disabled in Palette VerteX." tls_required="N/A" />
