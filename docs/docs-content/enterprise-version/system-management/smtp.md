@@ -9,4 +9,11 @@ tags: ["vertex", "management"]
 keywords: ["self-hosted", "vertex"]
 ---
 
-<PartialsComponent category="self-hosted" name="smtp" edition="Palette" version="Palette" tls_description="This option disables Transport Layer Security (TLS) certificate verification. Enable this option if your SMTP server is using a self-signed certificate or has a certificate that is not trusted by the system." tls_required="No" />
+<PartialsComponent
+  category="self-hosted"
+  name="smtp"
+  edition="Palette"
+  version="Palette"
+  tls_description="This option disables Transport Layer Security (TLS) certificate verification. Enable this option if your SMTP server is using a self-signed certificate or has a certificate that is not trusted by the system."
+  tls_required="No"
+/>
