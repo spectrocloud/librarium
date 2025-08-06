@@ -1,4 +1,4 @@
-# This workflow is triggered on push to any branch that starts with "release-". The primary purpose of this workflow is to create a preview of the upcoming release content and simulate the look and feel of the production site. 
+# This workflow is triggered on push to any branch that starts with "docs-rel-". The primary purpose of this workflow is to create a preview of the upcoming release content and simulate the look and feel of the production site. 
 # The domain used for the preview is docs-latest.spectrocloud.com. The workflow builds the site and uploads the content to an S3 bucket. The S3 bucket is configured to serve the content as a static website.
 # No update will occur in the event the build is unable to complete successfully. This is due to a scenario where an immediate failover from docs.specrocloud.com to docs-latest.spectrocloud.com is needed.
 # The workflow also posts a comment to the PR with the Netlify preview URL.
@@ -9,9 +9,9 @@ name: Release Branch Preview
 on:
   push:
     branches:
-      - "release-[0-9]-[0-9]"
-      - "release-[0-9]-[0-9]-[0-9]"
-      - "release-[0-9]-[0-9]-[a-z]"
+      - "docs-rel-[0-9]-[0-9]"
+      - "docs-rel-[0-9]-[0-9]-[0-9]"
+      - "docs-rel-[0-9]-[0-9]-[a-z]"
 
 env:
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
