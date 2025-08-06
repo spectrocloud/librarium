@@ -16,21 +16,21 @@ account in Palette.
   account, refer to
   [Creating and managing service accounts](https://cloud.google.com/iam/docs/creating-managing-service-accounts).
 
+<!-- prettier-ignore-start -->
+
 - The service account must, at a minimum, have the following roles.
 
-  - [Kubernetes Engine Admin](https://cloud.google.com/iam/docs/understanding-roles#kubernetes-engine-roles)
+  - [Compute Admin](https://cloud.google.com/iam/docs/roles-permissions/compute#compute.admin) (`compute.admin`)
+  - [Kubernetes Engine Admin](https://cloud.google.com/iam/docs/roles-permissions/container#container.admin)
+    (`container.admin`)
+  - [Service Account Token Creator](https://cloud.google.com/iam/docs/service-account-permissions#token-creator-role)
+    (`iam.serviceAccountTokenCreator`)
+  - [Service Account User](https://cloud.google.com/iam/docs/service-account-permissions#user-role)
+    (`iam.serviceAccountUser`)
+  - [Storage Object Viewer](https://cloud.google.com/iam/docs/roles-permissions/storage#storage.objectViewer)
+    (`storage.objectViewer`)
 
-  - [Compute Admin](https://cloud.google.com/iam/docs/understanding-roles#compute.admin)
-
-  - [Service Account User](https://cloud.google.com/iam/docs/understanding-roles#iam.serviceAccountUser)
-
-    - [Compute Admin](https://cloud.google.com/iam/docs/understanding-roles#compute.admin)
-
-    - [Storage Object Viewer](https://cloud.google.com/iam/docs/understanding-roles#storage.objectViewer)
-
-    - [Service Account Token Creator](https://cloud.google.com/iam/docs/understanding-roles#iam.serviceAccountTokenCreator)
-
-    <br />
+  <br />
 
   :::info
 
@@ -38,6 +38,8 @@ account in Palette.
   [Required IAM Permission](required-permissions.md) for a detailed list of all permissions.
 
   :::
+
+<!-- prettier-ignore-end -->
 
 - Ensure you have access to the JSON credential file for your service account. For additional guidance, refer to the
   [GCP Credentials](https://developers.google.com/workspace/guides/create-credentials) documentation.
