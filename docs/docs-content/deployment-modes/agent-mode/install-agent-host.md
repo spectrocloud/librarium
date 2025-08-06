@@ -445,31 +445,36 @@ Palette. You will then create a cluster profile and use the registered host to d
              passwd: kairos
    ```
 
-  <!-- prettier-ignore-start -->
+   <!-- prettier-ignore-start -->
 
-:::warning
+   :::warning
 
-If your host is a virtual machine using an VMXNET3 adapter and you are planning to enable an
-[overlay network](../../clusters/edge/networking/vxlan-overlay.md) on your Edge cluster, or if you are planning to use
+   If your setup meets the following conditions, include the following `initramfs` stage in your `user-data` file,
+   replacing `<interface-name>` with the name of the network interface on your Edge host:
 
-<VersionedLink text="Flannel" url="/integrations/cni-flannel" /> for your CNI, include the following `initramfs` stage
-in your `user-data` file, replacing `<interface-name>` with the name of the network interface on your Edge host. This is
-due to a
-[known issue with VMware's VMXNET3 adapter](https://github.com/cilium/cilium/issues/13096#issuecomment-723901955), which
-is widely used in different virtual machine management services, including VMware vSphere and Hyper-V.
+   - Your host is a virtual machine.
+   - The virtual machine uses a VMXNET3 adapter.
+   - You are planning to use _one_ of the following in your Edge cluster:
 
-    ```shell
-      stages:
-        initramfs:
-          - name: "Disable UDP segmentation"
-            commands:
-              - ethtool --offload <interface-name> tx-udp_tnl-segmentation off
-              - ethtool --offload <interface-name> tx-udp_tnl-csum-segmentation off
-    ```
+     - An [overlay network](../../clusters/edge/networking/vxlan-overlay.md).
+     - <VersionedLink text="Flannel" url="/integrations/cni-flannel" /> for your CNI.
 
-:::
+     ```shell
+     stages:
+       initramfs:
+         - name: "Disable UDP segmentation"
+           commands:
+             - ethtool --offload <interface-name> tx-udp_tnl-segmentation off
+             - ethtool --offload <interface-name> tx-udp_tnl-csum-segmentation off
+     ```
 
-  <!-- prettier-ignore-end -->
+   This is due to a
+   [known issue with VMware's VMXNET3 adapter](https://github.com/cilium/cilium/issues/13096#issuecomment-723901955),
+   which is widely used in different virtual machine management services, including VMware vSphere and Hyper-V.
+
+   :::
+
+   <!-- prettier-ignore-end -->
 
 5. Export the path to your user data file.
 
@@ -669,30 +674,36 @@ building a custom Edge ISO, ensure you use CanvOS version 4.6.21 or later as wel
    EOF
    ```
 
-  <!-- prettier-ignore-start -->
+    <!-- prettier-ignore-start -->
 
-:::warning
+   :::warning
 
-If your host is a virtual machine using an VMXNET3 adapter and you are planning to enable an
-[overlay network](../../clusters/edge/networking/vxlan-overlay.md) on your Edge cluster, or if you are planning to use
+   If your setup meets the following conditions, include the following `initramfs` stage in your `user-data` file,
+   replacing `<interface-name>` with the name of the network interface on your Edge host:
 
-<VersionedLink text="Flannel" url="/integrations/cni-flannel" /> for your CNI, include the following `initramfs` stage
-in your `user-data` file. This is due to a [known issue with VMware's VMXNET3
-adapter](https://github.com/cilium/cilium/issues/13096#issuecomment-723901955), which is widely used in different
-virtual machine management services, including VMware vSphere and Hyper-V.
+   - Your host is a virtual machine.
+   - The virtual machine uses a VMXNET3 adapter.
+   - You are planning to use _one_ of the following in your Edge cluster:
 
-    ```shell
-      stages:
-        initramfs:
-          - name: "Disable UDP segmentation"
-            commands:
-              - ethtool --offload <interface-name> tx-udp_tnl-segmentation off
-              - ethtool --offload <interface-name> tx-udp_tnl-csum-segmentation off
-    ```
+     - An [overlay network](../../clusters/edge/networking/vxlan-overlay.md).
+     - <VersionedLink text="Flannel" url="/integrations/cni-flannel" /> for your CNI.
 
-:::
+   ```shell
+   stages:
+     initramfs:
+       - name: "Disable UDP segmentation"
+         commands:
+           - ethtool --offload <interface-name> tx-udp_tnl-segmentation off
+           - ethtool --offload <interface-name> tx-udp_tnl-csum-segmentation off
+   ```
 
-  <!-- prettier-ignore-end -->
+   This is due to a
+   [known issue with VMware's VMXNET3 adapter](https://github.com/cilium/cilium/issues/13096#issuecomment-723901955),
+   which is widely used in different virtual machine management services, including VMware vSphere and Hyper-V.
+
+   :::
+
+    <!-- prettier-ignore-end -->
 
 6. Issue the following command confirm that your user data file was created successfully at the correct location.
 
