@@ -25,7 +25,6 @@ jobs:
     - name: Checkout current branch
       uses: actions/checkout@v4
       with:
-        fetch-depth: 0
         ref: ${{ github.event.inputs.branch || github.ref_name }}
 
     - name: Configure Git
@@ -66,9 +65,7 @@ jobs:
         git checkout -b "gitleaks-sync-${{ github.run_id }}" origin/master
 
         # Add new entries to .gitleaksignore
-        echo "" >> .gitleaksignore
         cat to_add.txt >> .gitleaksignore
-        echo "" >> .gitleaksignore
 
         # Commit and push the changes
         git add .gitleaksignore
@@ -97,7 +94,7 @@ jobs:
         SLACK_COLOR: ${{ job.status }}
         SLACKIFY_MARKDOWN: true
         ENABLE_ESCAPES: true
-        SLACK_MESSAGE: "🦄 This PR adds missing .gitleaksignore entries from the version branch to master. Please review ${{ env.GITHUB_PR_URL }} for more details."
+        SLACK_MESSAGE: "🦄 This PR adds missing .gitleaksignore entries from the version branch to master. Please review [the PR](${{ env.GITHUB_PR_URL }}) for more details."
     
     - name: Failure Slack Notification
       if: ${{ failure() }}
