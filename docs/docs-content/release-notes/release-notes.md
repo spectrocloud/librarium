@@ -11,6 +11,17 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## August 4, 2025 - Release 4.7.8
+
+### Bug Fixes
+
+- Fixed an issue that caused [EKS clusters](../clusters/public-cloud/aws/eks.md) using
+  [custom AMI images](../clusters/public-cloud/aws/eks.md#cloud-configuration-settings) to be stuck in the Provisioning
+  status.
+- Fixed an issue that prevented Palette from honoring the `cluster.kubevipArgs.vip_ddns` value on clusters that use
+  `kube-vip` to provide a virtual IP address for [Edge](../clusters/edge/edge.md) clusters. Refer to the
+  [Publish Cluster Services with Kube-vip](../clusters/edge/networking/kubevip.md) guide for further information.
+
 ## July 31, 2025 - Release 4.7.7
 
 <!-- prettier-ignore-start -->
@@ -202,6 +213,17 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 :::
 
+#### Breaking Changes {#breaking-changes-automation-4.7.0}
+
+- A new field `isTwoNodeCluster` has been introduced to the request body of the
+  [Updates the cluster configuration information](/api/v1/v-1-cloud-configs-edge-native-uid-cluster-config) API
+  endpoint. This field must now be set to `true` before setting the `twoNodeCandidatePriority` field on Edge hosts using
+  the
+  [Creates an Hybrid AWS cloud config's Edge-Native machine pool](/api/v1/v-1-aws-cloud-configs-edge-native-uid-machine-pool-create/)
+  and
+  [Updates the specified Hybrid AWS cluster cloud config's Edge-Native machine pool](/api/v1/v-1-aws-cloud-configs-edge-native-machine-pool-update/)
+  API endpoints.
+
 #### Features
 
 - The `content build` command of the [Palette CLI](../automation/palette-cli/palette-cli.md) now includes the
@@ -214,6 +236,11 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
   [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
   available. For more details, refer to the Terraform provider
   [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
+- Crossplane version 0.23.9 of the
+  [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette/v0.23.9)
+  is available. The provider now includes support for [public cloud](../clusters/public-cloud/public-cloud.md),
+  [VMware](../clusters/data-center/vmware/vmware.md), and [Canonical MAAS](../clusters/data-center/maas/maas.md)
+  clusters.
 
 #### Improvements
 

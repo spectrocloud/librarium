@@ -18,7 +18,7 @@ firmware. Trusted Boot consists of the following security measures:
   during the boot process of a device.
 - Measured boot. A security feature that works by measuring each component of the boot process and recording these
   measurements in a
-  [Trusted Platform Module (TPM)](https://www.intel.com/content/www/us/en/business/enterprise-computers/resources/trusted-platform-module.html).
+  [Trusted Platform Module (TPM)](https://www.intel.com/content/www/us/en/learn/what-is-a-trusted-platform-module.html).
   Only when it receives measurements with a valid signature does the TPM release the key to decrypt encrypted content.
 
 Together, these measures allow Trusted Boot to ensure the authenticity of the boot processes that are allowed to operate
