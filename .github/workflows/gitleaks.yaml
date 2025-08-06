@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - 'version-*'
-      - 'doc-2070-gitleaks-version-branches' # Temp branch for testing purposes
+      - 'doc-2070-gitleaks-version-branches'
     paths:
       - '.gitleaksignore'
   workflow_dispatch:
@@ -90,7 +90,7 @@ jobs:
       if: success()
       uses: rtCamp/action-slack-notify@v2.3.3
       env:
-        SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_TEST_WEBHOOK }}
+        SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
         SLACK_COLOR: ${{ job.status }}
         SLACKIFY_MARKDOWN: true
         ENABLE_ESCAPES: true
@@ -100,7 +100,7 @@ jobs:
       if: ${{ failure() }}
       uses: rtCamp/action-slack-notify@v2.3.3
       env:
-        SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_TEST_WEBHOOK }}
+        SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
         SLACK_COLOR: ${{ job.status }}
         SLACKIFY_MARKDOWN: true
         ENABLE_ESCAPES: true
