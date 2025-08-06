@@ -44,6 +44,10 @@ tags: ["release-notes"]
 
 #### Improvements
 
+- Nodes provisioned through [Karpenter](https://karpenter.sh/docs/) are now visible in Palette and supported for
+  read-only operations, such as billing and monitoring. However,
+  [Day-2 operations](../clusters/cluster-management/cluster-management.md) are not supported.
+
 #### Deprecations and Removals
 
 ### Edge

@@ -42,6 +42,10 @@ highlights pertaining to EKS when managed by Palette.
 
 - Spot instance support
 
+- Nodes provisioned through [Karpenter](https://karpenter.sh/docs/) are visible in Palette and supported for read-only
+  operations, such as billing and monitoring. However,
+  [Day-2 operations](../../cluster-management/cluster-management.md) are not supported.
+
 ![eks_cluster_architecture.webp](/clusters_aws_create-and-manage-aws-eks-cluster_architecture.webp)
 
 ### Worker Node Requirements
