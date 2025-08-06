@@ -691,3 +691,8 @@ e2793b8c82516c3beb421b33911ea2fdecb6648f:docs/docs-content/tutorials/vmo/vmo-maa
 2c45a58a4f6ac1a049b366e0200e396dd8937089:content/docs/19-kubernetes-knowlege-hub/00-how-to/02-how-to-retrieve-images-from-private-registry.md:generic-api-key:76
 c52047d3023bbad8bac935de28b9daa1fe81a678:prow/functions.sh:generic-api-key:30
 5721b9d4b0f255e95eb96e32683384aa7978bdee:prow/functions.sh:generic-api-key:30
+
+000000000:test/test.md:secret-key:123
+000000000:test/test.md:secret-key:456
+000000000:test/test.md:secret-key:789
+
