@@ -20,4 +20,3 @@ for pattern in "${DISALLOWED_PATTERNS[@]}"; do
     exit 1
   fi
 done
-
