@@ -6,6 +6,8 @@ npm run clean-api-docs
 
 make format-images
 
+make sanitize-ignore-file
+
 BRANCH_NAME=$(git symbolic-ref --short HEAD)
 
 # Don't allow commits to branches that contain "release" in their name
