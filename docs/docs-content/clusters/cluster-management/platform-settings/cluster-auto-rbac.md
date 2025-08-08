@@ -7,20 +7,14 @@ sidebar_position: 20
 tags: ["clusters", "cluster management"]
 ---
 
-Palette uses Automatic Cluster Role Bindings as a way to automatically apply appropriate cluster role bindings to
-clusters. When Automatic Cluster Role Bindings is enabled, any clusters created with Palette Identity Provider (IDP)
-enabled will automatically receive Role-Based Access Control (RBAC) bindings. This feature is disabled by default and
-activated at the tenant level. When configured, cluster role bindings are automatically applied to all clusters created
-and deployed at the tenant and project levels.
+**Automatic Cluster Role Bindings** is a feature in Palette that automatically applies the appropriate Kubernetes cluster role bindings to clusters based on user roles. This ensures that Role-Based Access Control (RBAC) permissions are consistently applied without requiring manual configuration.
 
-Any clusters that exist prior to enabling **Automatic Cluster Role Bindings** will receive the applicable role bindings
-as part of a system scheduler job that runs every 15 minutes. The scheduler also will update RBACs if user permissions
-have changed, a new user is added, or a user is removed.
+When **Automatic Cluster Role Bindings** is enabled, any clusters created with Palette Identity Provider (IDP) integration will automatically receive the correct RBAC bindings. These are applied based on the user's role in Palette and correspond to the standard Kubernetes cluster roles `cluster-admin`, `cluster-edit`, and `cluster-view`.
 
-Automatic Cluster Role Bindings correspond to the standard Kubernetes cluster roles `cluster-admin`, `cluster-edit`, and
-`cluster-view` and are assigned based on the user's roles in Palette. For more information about user roles, refer to
-[Roles and Permissions](../../../user-management/palette-rbac/palette-rbac.md). For more information about using Palette
-as an IDP, refer to [SAML and OIDC SSO](../../../user-management/saml-sso/saml-sso.md).
+**Automatic Cluster Role Bindings** is disabled by default and can be enabled at the tenant level. Once enabled, cluster role bindings are automatically applied to all newly created clusters, whether they are provisioned at the tenant or project level.
+Clusters created before enabling **Automatic Cluster Role Bindings** are updated via a system scheduler job that runs every 15 minutes. The scheduler also will update RBACs if user permissions are changed, a new user is added, or a user is removed.
+
+For more information about user roles, refer to [Roles and Permissions](../../../user-management/palette-rbac/palette-rbac.md). For more information about using Palette as an IDP, refer to [SAML and OIDC SSO](../../../user-management/saml-sso/saml-sso.md).
 
 ## Prerequisites
 
