@@ -7,7 +7,9 @@ sidebar_position: 20
 tags: ["clusters", "cluster management"]
 ---
 
-Palette provides Automatic Cluster Role Bindings as a way to automatically add appropriate cluster role bindings. When Automatic Cluster Role Bindings is enabled, newly created clusters that have Palette IDP enabled will have RBAC bindings set. This feature is set at the Tenant level but enables role binding at both Tenant and Project levels. The binding applied will be equivalent to the Kubernetes cluster role of `cluster-admin`, `cluster-edit`, or `cluster-view`. This will be based on the Palette user roles assigned. For more information about user roles, refer to [Roles and Permissions](../../../user-management/palette-rbac/palette-rbac.md). 
+Palette uses Automatic Cluster Role Bindings as a way to automatically apply appropriate cluster role bindings to new clusters. When Automatic Cluster Role Bindings is enabled, any newly created clusters with Palette Identity Provider (IDP) enabled will automatically receive Role-Based Access Control (RBAC) bindings. This feature is disabled by default and activated at the tenant level. When configured, cluster role bindings are automatically applied to all clusters created at the tenant and project levels.
+
+Automatic Cluster Role Bindings correspond to the standard Kubernetes cluster roles `cluster-admin`, `cluster-edit`, and `cluster-view` and are assigned based on the user's roles in Palette. For more information about user roles, refer to [Roles and Permissions](../../../user-management/palette-rbac/palette-rbac.md). 
 
 The automatic role binding cannot be edited as this is created by the Palette system.
 
@@ -15,7 +17,7 @@ Turning off this feature will disable automatic role binding.
 
 :::info
 
-If clusters exist before enabling Automatic Cluster Role Binding, they will get the role bindings as part of a system scheduler job that runs every 15 minutes. The scheduler also will update RBACs if user permissions have changed, a new user is added, or a user is removed.
+Any clusters that exist prior to enabling **Automatic Cluster Role Bindings** will receive the applicable role bindings as part of a system scheduler job that runs every 15 minutes. The scheduler also will update RBACs if user permissions have changed, a new user is added, or a user is removed.
 
 :::
 
@@ -23,31 +25,33 @@ If clusters exist before enabling Automatic Cluster Role Binding, they will get 
 
 - Tenant admin access to Palette.
 
-- An existing profile with Palette eXtended Kubernetes with Palette set as the OIDC Identity Provider. For steps on creating a cluster profile, refer to [Cluster Profile](../../../profiles/cluster-profiles/cluster-profiles.md) to get started.
+- An existing cluster profile with Palette eXtended Kubernetes with Palette set as the OIDC Identity Provider. For steps on creating a cluster profile, refer to our [Create Cluster Profiles](../../../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md) guide.
 
 ## Enablement
 
-1. Log in to [Palette](https://console.spectrocloud.com) as a Tenant administrator.
+1. Log in to [Palette](https://console.spectrocloud.com) as a tenant administrator.
 
-2. From the left **Main Menu**, select **Platform Settings**.
+2. From the left main menu, select **Tenant Settings**.
 
-3. Toggle the **Automatic Cluster Role Binding** button.
+3. From the **Tenant Settings Menu**, below **Platform**, select **Platform Settings**. 
 
-4. A pop-up box will ask you to confirm the action. Click **OK**.
+4. Toggle the **Automatic Cluster Role Bindings** button.
+
+5. A pop-up box prompts you to confirm the action. Click **OK**.
 
 ## Validate
 
-1. Log in to [Palette](https://console.spectrocloud.com).
+1. Log in to [Palette](https://console.spectrocloud.com) as a tenant administrator.
 
-2. Navigate to the left **Main Menu** and click on **Project Settings**.
+2. From the left main menu, select **Tenant Settings**.
 
-3. Select **Platform Settings**.
+3. From the **Tenant Settings Menu**, below **Platform**, select **Platform Settings**. 
 
-4. The **Cluster Auto Remediation** toggle button is checked.
+4. Ensure the **Automatic Cluster Role Bindings** toggle is set to active.
 
 5. Deploy a cluster with Palette IDP enabled and no RBAC cluster bindings set.
 
-6. Navigate to the left **Main Menu**, select **Audit Logs**.
+6. From the left main menu, select **Audit Logs**.
 
 7. Set the filter **Log Type** to **Update** and **Resource Type** to **Cluster**. 
 
