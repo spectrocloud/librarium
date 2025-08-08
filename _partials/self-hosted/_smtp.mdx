@@ -40,7 +40,7 @@ Anonymous SMTP configuration introduces additional security risks. We recommend 
 
     | **Field**                    | **Description**                                                                                                                                                                           | **Required** |
     | ---------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------ |
-    | **Insecure Skip TLS Verify** | This option disables Transport Layer Security (TLS) certificate verification. Enable this option if your SMTP server is using a self-signed certificate or has a certificate that is not trusted by the system.  | No |
+    | **Insecure Skip TLS Verify** | {props.tls_description}  | {props.tls_required} |
     | **Outgoing Server**          | The host name of the SMTP server. For example, `smtp.gmail.com`.                                                                                                                           | Yes |
     | **Outgoing Port**            | The port number of the SMTP server.                                                                                                                                                       | Yes |
     | **From Email**               | Emails sent by {props.version} will use this email address as the sender.                                                                      | Yes |

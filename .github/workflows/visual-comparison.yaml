@@ -12,7 +12,7 @@ name: Visual Comparison
 on:
   pull_request:
     types: [opened, reopened, synchronize, labeled]
-    branches-ignore: ["version-*", "release-*"]
+    branches-ignore: ["version-*", "docs-rel-*"]
 
 
 env:

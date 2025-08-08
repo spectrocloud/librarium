@@ -66,7 +66,9 @@ jobs:
             ! -path 'docs/docs-content/security-bulletins/**/*' \
             | xargs vale --output line --no-exit > vale-spellcheck-results-unfiltered.txt
           # Remove all lines contained in vale-spellcheck-ignore.txt using inverted matches -v.
+          # Clean up the vale-spellcheck-ignore.txt file by removing empty lines in case there are any.
           # Add || true to prevent the job from failing if no lines are found after filtering.
+          sed -i.bak '/^$/d' vale-spellcheck-ignore.txt
           grep -vFf vale-spellcheck-ignore.txt vale-spellcheck-results-unfiltered.txt > vale-spellcheck-results.txt || true
 
 
