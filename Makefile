@@ -250,6 +250,9 @@ check-writing: ## Run Vale on changed Markdown/MDX files
 sanitize-ignore-file:
 	./scripts/sanitize-ignore-file.sh
 
+check-branch-name:
+	./scripts/check_branch_name.sh
+
 ##@ Formatting Checks
 
 format: ## Apply Prettier formating to all files.
