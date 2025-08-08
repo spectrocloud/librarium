@@ -67,9 +67,9 @@ server. The region experiences a bad weather event that causes a sustained outag
 
   - Switches cannot implement features that block broadcasts between ports where Edge hosts are connected.
 
-- If you are launching your Edge hosts in virtual machine environments and you are using either Cilium or Flannel as
-  your Container Network Interface (CNI), ensure that you add the following commands in the `user-data` file at the boot
-  stage. Replace `<interface-name>` with the name of the network interface on your Edge host.
+- If your host is a virtual machine using a VMXNET3 adapter, ensure that you add the following commands in the
+  `user-data` file at the boot stage. Replace `<interface-name>` with the name of the network interface on your Edge
+  host.
 
   ```yaml {2-6}
   stages:
