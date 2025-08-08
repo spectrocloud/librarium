@@ -75,7 +75,7 @@ clean-api: ## Clean API docs
 	@echo "cleaning api docs"
 	npm run clean-api-docs
 	# Remove the sidebar file as it's not removed by the clean-api command
-	rm -f docs/api-content/api-docs/v1/sidebar.ts
+	rm -f docs/api-content/api-docs/v1/sidebar.ts && rm -f docs/api-content/api-docs/edge-v1/sidebar.ts
 
 clean-visuals:
 	@echo "Cleaning visual regression tests"
@@ -247,6 +247,12 @@ check-writing: ## Run Vale on changed Markdown/MDX files
 		echo "✅ No changed Markdown or MDX files found."; \
 	fi
 
+sanitize-ignore-file:
+	./scripts/sanitize-ignore-file.sh
+
+check-branch-name:
+	./scripts/check_branch_name.sh
+
 ##@ Formatting Checks
 
 format: ## Apply Prettier formating to all files.
@@ -358,7 +364,6 @@ generate-release-notes: ## Generate release notes only
 
 generate-release: ## Generate all release files except release notes
 	./scripts/release/generate-spectro-cli-reference.sh
-	./scripts/release/generate-compatibility-matrix.sh
 	./scripts/release/generate-downloads.sh
 	./scripts/release/generate-advanced-configuration.sh
 	./scripts/release/generate-install-palette-cli.sh
