@@ -85,6 +85,7 @@ jobs:
         uses: ./.github/actions/build-cached-cves
         with:
           gh-token: ${{ secrets.GITHUB_TOKEN }}
+          slack-webhook: ${{ secrets.SLACK_PRIVATE_SECURITY_WEBHOOK }}
 
       - name: Upload to AWS
         if: ${{ env.BUILD_EXIT_CODE == '0' }}
@@ -145,6 +146,13 @@ jobs:
         uses: ./.github/actions/build-cached-packs
         with:
           gh-token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Build with cached CVEs
+        if: ${{ env.BUILD_EXIT_CODE == '7' }}
+        uses: ./.github/actions/build-cached-cves
+        with:
+          gh-token: ${{ secrets.GITHUB_TOKEN }}
+          slack-webhook: ${{ secrets.SLACK_PRIVATE_SECURITY_WEBHOOK }}
 
       - name: Upload to AWS
         run: |
