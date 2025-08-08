@@ -39,7 +39,7 @@ as an IDP, refer to [SAML and OIDC SSO](../../../user-management/saml-sso/saml-s
 
 3. From the **Tenant Settings Menu**, below **Platform**, select **Platform Settings**.
 
-4. Toggle the **Automatic Cluster Role Bindings** button.
+4. Toggle the **Automatic Cluster Role Bindings** button to activate the feature.
 
 5. A pop-up box prompts you to confirm the action. Click **OK**.
 
