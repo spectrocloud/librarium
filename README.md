@@ -1125,11 +1125,11 @@ make format
 
 To create a new release, use the following steps:
 
-1. Create a release branch. Use the following naming pattern `release-X-X`
-2. Create a commit using the following commit message `feat: updating documentation for release-X-X`. Replace x-x with
+1. Create a release branch. Use the following naming pattern `docs-rel-X-X`
+2. Create a commit using the following commit message `feat: updating documentation for `docs-rel-X-X`. Replace x-x with
    the upcoming release number.
 3. Push up the commit and create a new pull request (PR).
-4. Merge PRs related to the upcoming release into the `release-X-X` branch.
+4. Merge PRs related to the upcoming release into the `docs-rel-X-X` branch.
 5. Merge the release branch.
 6. Create a new branch from the `master` branch. Use the following naming pattern `version-X-X`. This brach is used for
    versioning the documentation.

@@ -194,12 +194,6 @@ async function generateCVEs() {
       const filterdVertex = filterByUID(vertex.data, "VC-");
       const filterdVertexAirgap = filterByUID(vertexAirgap.data, "VA-");
 
-      // Debug logs
-      // logger.info(`Palette CVEs:", ${filterdPalette.length}`);
-      // logger.info(`Palette Airgap CVEs:", ${filterdPaletteAirgap.length}`);
-      // logger.info(`Vertex CVEs:", ${filterdVertex.length}`);
-      // logger.info(`Vertex Airgap CVEs:", ${filterdVertexAirgap.length}`);
-
       securityBulletins.set("palette", filterdPalette);
       securityBulletins.set("paletteAirgap", filterdPaletteAirgap);
       securityBulletins.set("vertex", filterdVertex);

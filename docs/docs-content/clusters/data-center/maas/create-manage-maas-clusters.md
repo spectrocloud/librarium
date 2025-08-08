@@ -26,7 +26,7 @@ create a Kubernetes cluster in MAAS that is managed by Palette.
   [Cluster Profiles](../../../profiles/cluster-profiles/cluster-profiles.md) for more information.
 
 - Verify that the required Operating System (OS) images you use in your cluster profiles are downloaded and available in
-  your MAAS environment. Review the [How to use standard images](https://maas.io/docs/about-standard-images) for
+  your MAAS environment. Review the [How to use standard images](https://canonical.com/maas/docs/about-images) for
   guidance on downloading OS images for MAAS.
 
 :::info
@@ -96,8 +96,8 @@ To deploy a new MAAS cluster:
         servers to only those that have at least the amount of CPU and Memory selected.
 
       - Tags: Specify the MAAS machine tags so that Palette can deploy nodes onto the MAAS machines that match the
-        provided tags. To learn more about MAAS tags, refer to the [MAAS Tags](https://maas.io/docs/about-device-labels)
-        documentation.
+        provided tags. To learn more about MAAS tags, refer to the
+        [MAAS Tags](https://canonical.com/maas/docs/about-machine-groups#p-22953-tags) documentation.
 
 11. You can configure the following cluster management features now if needed, or you can do it later:
 
@@ -155,8 +155,8 @@ infrastructure changes. Review instructions provided in the
 
 Ensure that the Operating System (OS) images selected for your cluster are downloaded and available for your MAAS
 configuration to eliminate errors in Palette. You can refer to the
-[How to use standard images](https://maas.io/docs/about-custom-images) guide for instructions on downloading OS images
-compatible with their respective MAAS environment.
+[How to use standard images](https://canonical.com/maas/docs/about-images) guide for instructions on downloading OS
+images compatible with their respective MAAS environment.
 
 :::
 
