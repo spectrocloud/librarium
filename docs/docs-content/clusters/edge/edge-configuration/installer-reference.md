@@ -183,8 +183,8 @@ Then the image tag will be updated with the prefix URL to the primary registry, 
 `https://10.10.100.45:30003/example.registry.com/palette-images`. Palette will do this for all registry mapping rules
 specified in the user data. This allows the Edge host to find and pull images that came from an external registry
 through the primary registry.
-<!-- prettier-ignore -->
 
+<!-- prettier-ignore -->
 Note that the Harbor Edge-Native Config pack is deprecated and will be removed in a future release. Refer to
 [Migrate from Harbor Edge-Native Config Pack](../site-deployment/deploy-custom-registries/migrate-edge-native-config.md)
 for guidance on transitioning to <VersionedLink text="Registry Connect" url="/integrations/packs/?pack=registry-connect" />.
