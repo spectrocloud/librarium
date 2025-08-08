@@ -13,7 +13,7 @@ Palette provides three platform settings in **Tenant Settings**:
 - **Cluster Auto Remediation** controls whether unhealthy nodes in Palette-provisioned clusters will automatically be
   replaced with new nodes.
 
-- **Automatic Cluster Role Bindings** injects Palette IDP users into Kubernetes clusters with necessary role bindings.   
+- **Automatic Cluster Role Bindings** injects Palette IDP users into Kubernetes clusters with necessary role bindings.
 
 These settings can be enabled at different scopes.
 
