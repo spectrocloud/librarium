@@ -53,6 +53,6 @@ Any clusters that exist prior to enabling **Automatic Cluster Role Bindings** wi
 
 6. From the left main menu, select **Audit Logs**.
 
-7. Set the filter **Log Type** to **Update** and **Resource Type** to **Cluster**. 
+7. Set the filter **Log Type** to **Update** and **Resource Type** to **Cluster**. Look for entries that indicate RBAC has been updated.
 
 ![A view of the audit logs showing automatic binding applying to clusters](/clusters_management-platform_settings-autorbac_binding_audit_logs.webp)
