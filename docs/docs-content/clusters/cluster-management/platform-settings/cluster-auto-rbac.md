@@ -7,19 +7,11 @@ sidebar_position: 20
 tags: ["clusters", "cluster management"]
 ---
 
-Palette uses Automatic Cluster Role Bindings as a way to automatically apply appropriate cluster role bindings to new clusters. When Automatic Cluster Role Bindings is enabled, any newly created clusters with Palette Identity Provider (IDP) enabled will automatically receive Role-Based Access Control (RBAC) bindings. This feature is disabled by default and activated at the tenant level. When configured, cluster role bindings are automatically applied to all clusters created at the tenant and project levels.
-
-Automatic Cluster Role Bindings correspond to the standard Kubernetes cluster roles `cluster-admin`, `cluster-edit`, and `cluster-view` and are assigned based on the user's roles in Palette. For more information about user roles, refer to [Roles and Permissions](../../../user-management/palette-rbac/palette-rbac.md). 
-
-The automatic role binding cannot be edited as this is created by the Palette system.
-
-Turning off this feature will disable automatic role binding. 
-
-:::info
+Palette uses Automatic Cluster Role Bindings as a way to automatically apply appropriate cluster role bindings to clusters. When Automatic Cluster Role Bindings is enabled, any clusters created with Palette Identity Provider (IDP) enabled will automatically receive Role-Based Access Control (RBAC) bindings. This feature is disabled by default and activated at the tenant level. When configured, cluster role bindings are automatically applied to all clusters created and deployed at the tenant and project levels. 
 
 Any clusters that exist prior to enabling **Automatic Cluster Role Bindings** will receive the applicable role bindings as part of a system scheduler job that runs every 15 minutes. The scheduler also will update RBACs if user permissions have changed, a new user is added, or a user is removed.
 
-:::
+Automatic Cluster Role Bindings correspond to the standard Kubernetes cluster roles `cluster-admin`, `cluster-edit`, and `cluster-view` and are assigned based on the user's roles in Palette. For more information about user roles, refer to [Roles and Permissions](../../../user-management/palette-rbac/palette-rbac.md). For more information about using Palette as an IDP, refer to [SAML and OIDC SSO](../../../user-management/saml-sso/saml-sso.md).
 
 ## Prerequisites
 
@@ -33,7 +25,7 @@ Any clusters that exist prior to enabling **Automatic Cluster Role Bindings** wi
 
 2. From the left main menu, select **Tenant Settings**.
 
-3. From the **Tenant Settings Menu**, below **Platform**, select **Platform Settings**. 
+3. From the **Tenant Settings Menu**, below **Platform**, select **Platform Settings**.
 
 4. Toggle the **Automatic Cluster Role Bindings** button.
 
@@ -45,13 +37,13 @@ Any clusters that exist prior to enabling **Automatic Cluster Role Bindings** wi
 
 2. From the left main menu, select **Tenant Settings**.
 
-3. From the **Tenant Settings Menu**, below **Platform**, select **Platform Settings**. 
+3. From the **Tenant Settings Menu**, below **Platform**, select **Platform Settings**.
 
 4. Ensure the **Automatic Cluster Role Bindings** toggle is set to active.
 
 5. Deploy a cluster with Palette IDP enabled and no RBAC cluster bindings set.
 
-6. From the left main menu, select **Audit Logs**.
+6. From to the left main menu, select **Audit Logs**.
 
 7. Set the filter **Log Type** to **Update** and **Resource Type** to **Cluster**. Look for entries that indicate RBAC has been updated.
 
