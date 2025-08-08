@@ -11,6 +11,113 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## August 16, 2025 - Release 4.7.X {#release-notes-4.7.a}
+
+### Security Notices
+
+- Review the [Security Bulletins](../security-bulletins/reports/reports.mdx) page for the latest security advisories.
+
+### Palette Enterprise {#palette-enterprise-4.7.a}
+
+#### Breaking Changes {#breaking-changes-4.7.a}
+
+- Availability zones are now required when creating MAAS [node pools](../clusters/cluster-management/node-pool.md).
+  - For [MAAS clusters](../clusters/data-center/maas/create-manage-maas-clusters.md) deployed prior to Palette version
+    4.7.a, selecting an availability zone is required when creating a new node pool; however, selecting an availability
+    zone is _not_ required when modifying an existing node pool, as modifying availability zones post-cluster deployment
+    will trigger a [node pool repave](../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration).
+  - For MAAS clusters deployed prior to 4.7.a, we recommend creating a new node pool with an availability zone selected
+    and migrating existing workloads to the new node pool when convenient. For guidance on migrating workloads, refer to
+    the [Taints and Tolerations](../clusters/cluster-management/taints.md) guide.
+
+#### Features
+
+<!-- prettier-ignore-start -->
+
+- Amazon EKS node customization is now supported for custom AMIs, such as Amazon Linux 2 (AL2) and Amazon Linux 2023 (AL2023).
+  This feature allows you to provide pre- and post-[kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/)
+  commands for AL2, and provide [user data](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html#launch-template-user-data)
+  customization in the form of shell scripts for AL2023. This functionality is provided through the Kubernetes EKS pack.
+
+  Refer to the <VersionedLink text="Node Customization" url="/integrations/packs/?pack=kubernetes-eks&tab=custom#node-customization"/>
+  section of the Kubernetes EKS pack for configurable options available for these AMIs. For general guidance on
+  deploying EKS clusters, refer to the [Create and Manage AWS EKS Cluster](../clusters/public-cloud/aws/eks.md) guide.
+
+<!-- prettier-ignore-end -->
+
+#### Improvements
+
+- Nodes provisioned through [Karpenter](https://karpenter.sh/docs/) are now visible in Palette and supported for
+  read-only operations, such as billing and monitoring. However,
+  [Day-2 operations](../clusters/cluster-management/cluster-management.md) are not supported.
+
+#### Deprecations and Removals
+
+### Edge
+
+#### Features
+
+#### Improvements
+
+#### Bug Fixes
+
+### VerteX
+
+#### Features
+
+- Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
+  [Palette section](#palette-enterprise-4.7.a) for more details.
+
+### Automation
+
+:::info
+
+Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible version of the Palette CLI.
+
+:::
+
+#### Features
+
+#### Improvements
+
+### Docs and Education
+
+### Packs
+
+#### Pack Notes
+
+#### OS
+
+| Pack Name | New Version |
+| --------- | ----------- |
+
+#### Kubernetes
+
+| Pack Name | New Version |
+| --------- | ----------- |
+
+#### CNI
+
+| Pack Name | New Version |
+| --------- | ----------- |
+
+#### CSI
+
+| Pack Name | New Version |
+| --------- | ----------- |
+
+#### Add-on Packs
+
+| Pack Name | New Version |
+| --------- | ----------- |
+
+#### FIPS Packs
+
+| Pack Name | New Version |
+| --------- | ----------- |
+
+#### Deprecations and Removals
+
 ## August 4, 2025 - Release 4.7.8
 
 ### Bug Fixes

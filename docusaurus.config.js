@@ -307,7 +307,7 @@ const config = {
     [
       pluginPacksAndIntegrationsData,
       {
-        repositories: ["Palette Registry", "Public Repo", "Spectro Addon Repo", "Palette Community Registry"],
+        repositories: ["Palette Registry", "Public Repo", "Palette Community Registry"],
       },
     ],
     pluginImportFontAwesomeIcons,

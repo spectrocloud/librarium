@@ -1,4 +1,5 @@
 export const packTypes = [
+  "ai",
   "app services",
   "authentication",
   "ingress",
@@ -17,6 +18,7 @@ export const packTypes = [
 ] as const;
 
 export const packTypeNames: Record<string, string> = {
+  ai: "AI",
   "app services": "App Services",
   authentication: "Authentication",
   ingress: "Ingress",
@@ -51,6 +53,7 @@ export const cloudProviderTypes = [
 export const layerTypes = ["k8s", "cni", "os", "csi"] as const;
 
 export const addOnTypes = [
+  "ai",
   "app services",
   "authentication",
   "ingress",
@@ -61,7 +64,6 @@ export const addOnTypes = [
   "security",
   "servicemesh",
   "system app",
-  "integreation",
   "integration",
 ] as const;
 

@@ -33,6 +33,22 @@ using Canonical MAAS. Refer to the PCG deployment options section below to learn
 
 Refer to the [PCG Architecture](../../pcg/architecture.md) section to learn more about the PCG architecture.
 
+## Palette MAAS Distribution
+
+Palette provides the following distributions for MAAS environments.
+
+| Name                              | Kubernetes Distribution | OS                              | CNIs                                                                                                                         | CSIs                                                                                                                         |
+| --------------------------------- | ----------------------- | ------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| Palette eXtended Kubernetes (PXK) | CNCF                    | Ubuntu, BYOOS                   | Multiple. Refer to the <VersionedLink text="pack information" url="/integrations/packs/?pack=kubernetes" /> for the details. | Multiple. Refer to the <VersionedLink text="pack information" url="/integrations/packs/?pack=kubernetes" /> for the details. |
+| Canonical Kubernetes              | Canonical Kubernetes    | Ubuntu for Canonical Kubernetes | Cilium CNI (Canonical Kubernetes)                                                                                            | Portworx                                                                                                                     |
+
+:::preview
+
+The **Canonical Kubernetes** pack for deployments in MAAS environments is a Tech Preview feature and is subject to
+change. Do not use this feature in production workloads.
+
+:::
+
 ## Custom API Server Endpoint for MAAS Clusters
 
 By default, Palette registers a DNS record in MAAS for the deployed cluster and links it to the IP addresses of the
