@@ -184,6 +184,9 @@ Then the image tag will be updated with the prefix URL to the primary registry, 
 specified in the user data. This allows the Edge host to find and pull images that came from an external registry
 through the primary registry.
 
+Note that the Harbor Edge-Native Config pack is deprecated and will be removed in a future release. Refer to [Migrate from Harbor Edge-Native Config Pack](../site-deployment/deploy-custom-registries/migrate-edge-native-config.md) for guidance on transitioning to <VersionedLink text="Registry Connect" url="/integrations/packs/?pack=registry-connect" />.
+The Registry Connect pack still uses `registryMappingRules`, but does not rewrite image references dynamically. Instead, it mirrors images into your external BYOR (Bring Your Own Registry). If you need image path rewriting, you must explicitly define `charts.registry-connect.config.registry.imageReplacementRules` in the Registry Connect pack YAML.
+
 :::
 
 ```yaml
