@@ -247,6 +247,12 @@ check-writing: ## Run Vale on changed Markdown/MDX files
 		echo "✅ No changed Markdown or MDX files found."; \
 	fi
 
+sanitize-ignore-file:
+	./scripts/sanitize-ignore-file.sh
+
+check-branch-name:
+	./scripts/check_branch_name.sh
+
 ##@ Formatting Checks
 
 format: ## Apply Prettier formating to all files.
@@ -358,7 +364,6 @@ generate-release-notes: ## Generate release notes only
 
 generate-release: ## Generate all release files except release notes
 	./scripts/release/generate-spectro-cli-reference.sh
-	./scripts/release/generate-compatibility-matrix.sh
 	./scripts/release/generate-downloads.sh
 	./scripts/release/generate-advanced-configuration.sh
 	./scripts/release/generate-install-palette-cli.sh
