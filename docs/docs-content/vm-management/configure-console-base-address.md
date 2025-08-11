@@ -21,7 +21,8 @@ machines, without additional navigation in the Palette UI.
   - The cluster must use the **Direct** preset on the
     <VersionedLink text="Virtual Machine Orchestrator" url="/integrations/packs/?pack=virtual-machine-orchestrator" />
     layer.
-  - Ensure that the [VM User Roles and Permissions](./rbac/vm-roles-permissions.md) are configured for your Palette user.
+  - Ensure that the [VM User Roles and Permissions](./rbac/vm-roles-permissions.md) are configured for your Palette
+    user.
 
 <!--prettier-ignore-end-->
 
