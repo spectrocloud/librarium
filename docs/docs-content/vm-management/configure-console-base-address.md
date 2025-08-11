@@ -6,7 +6,7 @@ sidebar_position: 40
 tags: ["vmo"]
 ---
 
-This guide provides step-by-step instructions on how to configure an address for the Virtual Machines tab of cluster
+This guide provides step-by-step instructions on how to configure an address for the **Virtual Machines** tab of clusters
 configured using Virtual Machine Orchestrator (VMO). This configuration allows you to have direct access to your virtual
 machines, without additional navigation in the Palette UI.
 
@@ -28,12 +28,12 @@ machines, without additional navigation in the Palette UI.
 
 ## Enablement
 
-1. Log into [Palette](https://console.spectrocloud.com).
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 2. From the left main menu, select **Clusters**. The cluster list appears. Select the VMO cluster you previously
-   deployed. The cluster **Overview** appears.
+   deployed.
 
-3. Download the [Kubeconfig](../clusters/cluster-management/kubeconfig.md) file, which allows you to connect to the
+3. From the cluster **Overview** tab, download the [Kubeconfig](../clusters/cluster-management/kubeconfig.md) file. This file allows you to connect to your
    deployed cluster.
 
 4. Navigate to your terminal window and set the environment variable `KUBECONFIG` to point to the file you downloaded.
@@ -54,12 +54,11 @@ machines, without additional navigation in the Palette UI.
     vm-dashboard   LoadBalancer   xxx.xxx.xxx.x  external-url.example.com          xxx:xxxxx/TCP   XXd
    ```
 
-6. Navigate back to [Palette](https://console.spectrocloud.com). The **Overview** tab of your cluster appears. Select
-   the **Profile** tab.
+6. Return to [Palette](https://console.spectrocloud.com). Select the **Profile** tab of your cluster.
 
 7. Select the **Virtual Machine Orchestrator** layer to edit it. Then, select \*\*Values. The values editor appears.
 
-8. Paste the external IP you made a note of in Step 5 in the
+8. Paste the external IP you made a note of in step 5 in the
    `charts.virtual-machine-orchestrator.appConfig.clusterInfo.consoleBaseAddress` field. Append `/v1` to the value.
 
    ```text hideClipboard title="Example value"
@@ -70,12 +69,12 @@ machines, without additional navigation in the Palette UI.
 
 ## Validation
 
-1. Log into [Palette](https://console.spectrocloud.com).
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 2. From the left main menu, select **Clusters**. The cluster list appears. Select the VMO cluster you previously
-   deployed. The cluster **Overview** appears.
+   deployed.
 
-3. Select the **Connect** button in the **Virtual Machine Dashboard** section. A new tab opens with the address you
+3. On the cluster **Overview** tab, select the **Connect** button in the **Virtual Machine Dashboard** section. A new tab opens with the address you
    configured and shows the virtual machines dashboard.
 
    ![Connect VM dashboard button](/vm-management_configure-console-base-address_connect-button.webp)
