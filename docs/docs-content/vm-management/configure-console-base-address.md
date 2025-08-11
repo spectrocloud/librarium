@@ -6,9 +6,9 @@ sidebar_position: 40
 tags: ["vmo"]
 ---
 
-This guide provides step-by-step instructions on how to configure an address for the **Virtual Machines** tab of
+This guide provides step-by-step instructions on how to configure an address for the **Virtual Machines** dashboard of
 clusters configured using Virtual Machine Orchestrator (VMO). This configuration allows you to have direct access to
-your virtual machines, without additional navigation in the Palette UI.
+your virtual machines, without needing to navigate to **Clusters** > cluster **Overview** > **Virtual Machines**.
 
 ## Prerequisites
 
@@ -56,7 +56,7 @@ your virtual machines, without additional navigation in the Palette UI.
 
 6. Return to [Palette](https://console.spectrocloud.com). Select the **Profile** tab of your cluster.
 
-7. Select the **Virtual Machine Orchestrator** layer to edit it. Then, select \*\*Values. The values editor appears.
+7. Select the **Virtual Machine Orchestrator** layer to edit it. Then, select **Values**. The values editor appears.
 
 8. Paste the external IP you made a note of in step 5 in the
    `charts.virtual-machine-orchestrator.appConfig.clusterInfo.consoleBaseAddress` field. Append `/v1` to the value.
@@ -80,4 +80,4 @@ your virtual machines, without additional navigation in the Palette UI.
    ![Connect VM dashboard button](/vm-management_configure-console-base-address_connect-button.webp)
 
 You can bookmark your configured address and access the VM dashboard for your cluster directly, without navigating
-through Palette. You will need to authenticate as usual to access it.
+through Palette. You will need to log in with your Palette user credentials as usual to access it.
