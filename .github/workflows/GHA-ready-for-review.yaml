@@ -1,5 +1,9 @@
-# This workflow is triggered on a pull request labeled with 'notify-slack'. It sends a Slack notification 
-# to alert the team that a PR is ready for review.
+# This workflow will post to Slack when a PR is labeled with "notify-slack". 
+# It will notify the appropriate reviewers based on the current UTC hour.
+# It also ensures that Slack is not notified multiple times for the same PR.
+# The reviewers are defined in a Base64 encoded JSON file stored in a GitHub secret.
+# After notifying, it records the notification in the PR comments and securely deletes the reviewers file.
+# The workflow is designed to be efficient and secure, ensuring that sensitive information is handled properly.
 
 name: Ready for Review
 
@@ -8,7 +12,7 @@ on:
     types: [labeled]
 
 permissions:
-  pull-requests: read
+  pull-requests: write
 
 concurrency:
   group: readyforreviewci-${{ github.ref }}
@@ -17,11 +21,69 @@ concurrency:
 jobs:
   notify-slack:
     if: contains(github.event.pull_request.labels.*.name, 'notify-slack')
-
     runs-on: ubuntu-latest
 
     steps:
-      - name: Send Slack Notification
+      - name: Check for prior Slack notification comment
+        id: check
+        run: |
+          COMMENTS=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments)
+
+          COMMENT_ID=$(echo "$COMMENTS" | jq '.[] | select(.body | contains("<!-- slack-notified -->")) | .id')
+
+          if [ -n "$COMMENT_ID" ]; then
+            echo "Slack already notified."
+            echo "notified=true" >> $GITHUB_OUTPUT
+            echo "comment_id=$COMMENT_ID" >> $GITHUB_OUTPUT
+          else
+            echo "notified=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Exit if already notified
+        if: steps.check.outputs.notified == 'true'
+        continue-on-error: true
+        run: echo "Slack already notified — skipping remaining steps."
+
+      - name: Decode reviewer config (Base64)
+        if: steps.check.outputs.notified == 'false'
+        id: config
+        run: |
+          echo "${{ secrets.REVIEWER_CONFIG_B64 }}" | base64 -d > reviewers.json
+
+      - name: Choose Reviewers From Config
+        if: steps.check.outputs.notified == 'false'
+        id: pick
+        run: |
+          HOUR=$(date -u +'%H')
+          DAY=$(date -u +%a | tr '[:upper:]' '[:lower:]')
+          echo "UTC Hour: $HOUR | Day: $DAY"
+
+          REVIEWERS=""
+
+          for reviewer in $(jq -r 'keys[]' reviewers.json); do
+            START=$(jq -r ".\"$reviewer\".start" reviewers.json)
+            END=$(jq -r ".\"$reviewer\".end" reviewers.json)
+            SLACK_ID=$(jq -r ".\"$reviewer\".slack_id" reviewers.json)
+
+            if jq -e ".\"$reviewer\".days" reviewers.json > /dev/null; then
+              DAYS=$(jq -r ".\"$reviewer\".days[]" reviewers.json | tr '\n' ' ')
+              [[ "$DAYS" != *"$DAY"* ]] && continue
+            fi
+
+            if [ "$HOUR" -ge "$START" ] && [ "$HOUR" -lt "$END" ]; then
+              REVIEWERS+="<@$SLACK_ID> "
+            fi
+          done
+
+          if [ -z "$REVIEWERS" ]; then
+            REVIEWERS="<!here> _(No reviewers available — notifying team)_"
+          fi
+
+          echo "reviewers=$REVIEWERS" >> $GITHUB_OUTPUT
+
+      - name: Notify Slack
+        if: steps.check.outputs.notified == 'false'
         uses: rtCamp/action-slack-notify@v2.3.3
         env:
           SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
@@ -30,3 +92,45 @@ jobs:
           SLACK_COLOR: "#A020F0"
           SLACK_MESSAGE: |
             :review: *<${{ github.event.pull_request.html_url }}|${{ github.event.pull_request.title }}>* is ready for review!
+            Pinging: ${{ steps.pick.outputs.reviewers }}
+
+      - name: Create or Update Slack comment manually
+        if: steps.check.outputs.notified == 'false'
+        run: |
+          TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
+          BODY="✅ Slack reviewers notified at $TIMESTAMP \n <!-- slack-notified -->"
+
+          if [ -n "${{ steps.check.outputs.comment_id }}" ]; then
+            echo "Updating existing comment..."
+            curl -s -X PATCH -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+              -H "Accept: application/vnd.github.v3+json" \
+              -d "$(jq -nc --arg body "$BODY" '{body: $body}')" \
+              https://api.github.com/repos/${{ github.repository }}/issues/comments/${{ steps.check.outputs.comment_id }}
+          else
+            echo "Creating new comment..."
+            curl -s -X POST -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+              -H "Accept: application/vnd.github.v3+json" \
+              -d "$(jq -nc --arg body "$BODY" '{body: $body}')" \
+              https://api.github.com/repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments
+          fi
+
+      - name: Securely overwrite and delete reviewers.json
+        if: always()
+        run: |
+          if [ -f reviewers.json ]; then
+            echo "Shredding reviewers.json"
+            dd if=/dev/urandom of=reviewers.json bs=1 count=$(stat -c%s reviewers.json) conv=notrunc status=none
+            rm -f reviewers.json
+            echo "Secure deletion complete."
+          else
+            echo "No reviewers.json file to delete."
+          fi
+
+      - name: Final Job Status Summary
+        if: always()
+        run: |
+          if [ "${{ steps.check.outputs.notified }}" == "true" ]; then
+            echo "✅ Job completed: Slack was already notified (comment updated if needed)."
+          else
+            echo "✅ Job completed: Slack notification was posted successfully."
+          fi

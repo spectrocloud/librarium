@@ -13,17 +13,14 @@ tags: ["release-notes"]
 
 ## August 4, 2025 - Release 4.7.8
 
-### Improvements
-
-- Palette now requires that the `cluster.kubevipArgs.vip_ddns` value be set to `true` for clusters that use `kube-vip`
-  to provide a virtual IP address for [Edge](../clusters/edge/edge.md) clusters. Refer to the
-  [Publish Cluster Services with Kube-vip](../clusters/edge/networking/kubevip.md) guide for further information.
-
 ### Bug Fixes
 
 - Fixed an issue that caused [EKS clusters](../clusters/public-cloud/aws/eks.md) using
   [custom AMI images](../clusters/public-cloud/aws/eks.md#cloud-configuration-settings) to be stuck in the Provisioning
   status.
+- Fixed an issue that prevented Palette from honoring the `cluster.kubevipArgs.vip_ddns` value on clusters that use
+  `kube-vip` to provide a virtual IP address for [Edge](../clusters/edge/edge.md) clusters. Refer to the
+  [Publish Cluster Services with Kube-vip](../clusters/edge/networking/kubevip.md) guide for further information.
 
 ## July 31, 2025 - Release 4.7.7
 
@@ -215,6 +212,17 @@ ensures successful upgrades between minor and patch versions on connected and ai
 Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible version of the Palette CLI.
 
 :::
+
+#### Breaking Changes {#breaking-changes-automation-4.7.0}
+
+- A new field `isTwoNodeCluster` has been introduced to the request body of the
+  [Updates the cluster configuration information](/api/v1/v-1-cloud-configs-edge-native-uid-cluster-config) API
+  endpoint. This field must now be set to `true` before setting the `twoNodeCandidatePriority` field on Edge hosts using
+  the
+  [Creates an Hybrid AWS cloud config's Edge-Native machine pool](/api/v1/v-1-aws-cloud-configs-edge-native-uid-machine-pool-create/)
+  and
+  [Updates the specified Hybrid AWS cluster cloud config's Edge-Native machine pool](/api/v1/v-1-aws-cloud-configs-edge-native-machine-pool-update/)
+  API endpoints.
 
 #### Features
 
