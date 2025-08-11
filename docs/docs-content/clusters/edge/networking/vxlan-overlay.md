@@ -65,6 +65,7 @@ server. The region experiences a bad weather event that causes a sustained outag
 
 - At least one Edge host registered with your Palette account.
 - Your cluster profile must have K3s, RKE2, or PXK-E as its Kubernetes distribution.
+  - Only single-node PXK-E clusters support network overlay. Multi-node PXK-E clusters do not support overlay.
 - All Edge hosts must be on the same Layer-2 network.
 - Broadcast messages must be allowed between all Edge hosts participating in the cluster.
 
