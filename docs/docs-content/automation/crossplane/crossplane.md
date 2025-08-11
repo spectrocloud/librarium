@@ -13,7 +13,7 @@ extending the Kubernetes API and enabling infrastructure resource provisioning a
 infrastructure providers.
 
 These resources, called
-[Managed Resources (MR)](https://docs.crossplane.io/latest/concepts/managed-resources/#managed-resource-fields) within
+[Managed Resources (MR)](https://docs.crossplane.io/v2.0/managed-resources/managed-resources/#managed-resource-fields) within
 the Crossplane environment, are essentially Kubernetes Custom Resource Definitions (CRDs) that represent infrastructure
 resources as native Kubernetes objects. Because they are Kubernetes objects, you can interact with them using standard
 commands like `kubectl describe`. When users create a managed resource, Crossplane interacts with the infrastructure
