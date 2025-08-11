@@ -85,4 +85,4 @@ machines, without additional navigation in the Palette UI.
    ![Connect VM dashboard button](/vm-management_configure-console-base-address_connect-button.webp)
 
 You can bookmark your configured address and access the VM dashboard for your cluster directly, without navigating
-through Palette. You will need to authenticate with Palette as usual to access it.
+through Palette. You will need to authenticate as usual to access it.
