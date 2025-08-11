@@ -1,8 +1,8 @@
 ---
-sidebar_label: "Configure Direct Access to Virtual Machines"
-title: "Configure Direct Access to Virtual Machines"
+sidebar_label: "Configure Direct Access to VM Dashboard"
+title: "Configure Direct Access to Virtual Machine Dashboard"
 description: "Learn how to configure a direct address to a cluster's virtual machines."
-sidebar_position: 30
+sidebar_position: 40
 tags: ["vmo"]
 ---
 
@@ -15,18 +15,13 @@ machines, without additional navigation in the Palette UI.
 - Access to [Palette](https://console.spectrocloud.com) multi-tenant SaaS or a dedicated SaaS installation. Learn more
   about Palette installations on the [Deployment Architecture Overview](../architecture/architecture-overview.md) page.
 
-<!--prettier-ignore-start-->
-
-  - Ensure that the [VM User Roles and Permissions](./rbac/vm-roles-permissions.md) are configured for your Palette user.
-
-<!--prettier-ignore-end-->
-
 - A workload cluster with VMO installed and configured. Refer to the [VMO](./vm-management.md) guide for details.
   <!--prettier-ignore-start-->
 
   - The cluster must use the **Direct** preset on the
     <VersionedLink text="Virtual Machine Orchestrator" url="/integrations/packs/?pack=virtual-machine-orchestrator" />
     layer.
+  - Ensure that the [VM User Roles and Permissions](./rbac/vm-roles-permissions.md) are configured for your Palette user.
 
 <!--prettier-ignore-end-->
 
@@ -54,7 +49,7 @@ machines, without additional navigation in the Palette UI.
    ```
 
    ```text hideClipboard title="Example output"
-    NAME           TYPE           CLUSTER-IP     EXTERNAL-IP                         PORT(S)         AGE
+    NAME           TYPE           CLUSTER-IP     EXTERNAL-IP                       PORT(S)         AGE
     vm-dashboard   LoadBalancer   xxx.xxx.xxx.x  external-url.example.com          xxx:xxxxx/TCP   XXd
    ```
 
