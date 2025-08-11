@@ -107,7 +107,9 @@ You can assign resource quotas for resource sharing among multiple users who hav
 
 :::info
 
-When using **GPU Allocation** you must use a whole number and must select the vendor from the dropdown. You must also ensure that the appropriate GPU device plugin is installed and compatible with your nodes to enforce the quota as Palette does not verify GPU vendor selection. 
+When using **GPU Allocation** you must use a whole number and must select the vendor from the dropdown. You must also
+ensure that the appropriate GPU device plugin is installed and compatible with your nodes to enforce the quota as
+Palette does not verify GPU vendor selection.
 
 At this time, NVIDIA is the only supported vendor.
 
@@ -133,7 +135,7 @@ pods, services and endpoints, config maps, and more.
 3. Navigate to the **Workloads** > **Namespaces** tab, and click the **Manage Namespaces** button. The **Settings** pane
    displays with **RBAC** preselected and the **Namespaces** tab opened by default.
 
-4. Click the three-dot menu on the namespace you want to delete and select **Remove**. 
+4. Click the three-dot menu on the namespace you want to delete and select **Remove**.
 
 5. Click **Save Changes**.
 
