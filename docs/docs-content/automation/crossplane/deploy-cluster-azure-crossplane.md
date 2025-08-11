@@ -27,27 +27,29 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in Azure.
   example. Refer to the [kind Quick Start](https://kind.sigs.k8s.io/docs/user/quick-start/) to learn how to install kind
   and create a cluster.
 - The following software is required and must be installed:
-  - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
-  - [Helm](https://helm.sh/docs/intro/install/) version v3.2.0 or later
   - [curl](https://curl.se/docs/install.html)
+  - [jq](https://jqlang.github.io/jq/download/)
+  - [Helm](https://helm.sh/docs/intro/install/) version v3.2.0 or later
+  - [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
   - A text editor such as Vi or [Nano](https://www.nano-editor.org). This guide uses Vi as an example.
 
 ## Deploy an Azure IaaS Cluster with Crossplane
 
-1.  Open up a terminal session and set the kubectl context to your kind cluster. Replace `<kind-cluster-name>` with the
-    name of your cluster.
+1.  Open a terminal session and set the kubectl context to your cluster. Replace `<cluster-name>` with the name of
+    your cluster.
 
     ```bash
-    kubectl cluster-info --context <kind-cluster-name>
+    kubectl cluster-info --context <cluster-name>
     ```
 
-    ```text hideClipboard
+    ```text hideClipboard title="Example output"
     Kubernetes control plane is running at https://127.0.0.1:65306
     CoreDNS is running at https://127.0.0.1:65306/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+
     To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
     ```
 
-2.  Next, add the Crossplane Helm chart. This will enable Crossplane to install all its Kubernetes components.
+2.  Next, add the Crossplane Helm chart.
 
     ```bash
     helm repo add \
@@ -55,12 +57,11 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in Azure.
     helm repo update
     ```
 
-    ```text hideClipboard
+    ```text hideClipboard title="Example output"
     "crossplane-stable" has been added to your repositories
     Hang tight while we grab the latest from your chart repositories...
-    ...Successfully got an update from the "ngrok" chart repository
+    ...Successfully got an update from the "ingress-nginx" chart repository
     ...Successfully got an update from the "crossplane-stable" chart repository
-    ...Successfully got an update from the "stable" chart repository
     Update Complete. ⎈Happy Helming!⎈
     ```
 
@@ -73,14 +74,32 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in Azure.
     --create-namespace
     ```
 
-    You can verify the installation with the `kubectl get pods` command. The output must contain two Crossplane pods in
-    the _Running_ status.
+    ```bash hideClipboard title="Example output"
+    NAME: crossplane
+    LAST DEPLOYED: Fri Aug  8 08:27:46 2025
+    NAMESPACE: crossplane-system
+    STATUS: deployed
+    REVISION: 1
+    TEST SUITE: None
+    NOTES:
+    Release: crossplane
+
+    Chart Name: crossplane
+    Chart Description: Crossplane is an open source Kubernetes add-on that enables platform teams to assemble infrastructure from multiple vendors, and expose higher level self-service APIs for application teams to consume.
+    Chart Version: 1.20.0
+    Chart Application Version: 1.20.0
+
+    Kube Version: v1.33.1
+    ```
+
+    Verify the installation with the `kubectl get pods` command. The output must contain two Crossplane pods with a
+    `Running` status.
 
     ```bash
     kubectl get pods --namespace crossplane-system
     ```
 
-    ```text hideClipboard
+    ```text hideClipboard title="Example output"
     NAME                                     READY   STATUS    RESTARTS   AGE
     crossplane-869d89c8f8-7jc6c              1/1     Running   0          20s
     crossplane-rbac-manager-784b496b-8mr6z   1/1     Running   0          20s
@@ -92,61 +111,80 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in Azure.
     mkdir crossplane-azure
     ```
 
-5.  Use a text editor of your choice to create a file for the Palette Crossplane provider configuration.
+5.  Fetch the latest version of the Palette Crossplane provider. Alternatively, identify your desired version from the
+    [Upbound Marketplace](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) and set the
+    value manually.
 
     ```bash
-    vi crossplane-azure/provider-palette.yaml
+    PALETTE_CROSSPLANE_PROVIDER_VERSION=$(curl -s https://api.github.com/repos/crossplane-contrib/provider-palette/releases/latest | jq -r .tag_name)
+    echo Palette Crossplane Provider Version: $PALETTE_CROSSPLANE_PROVIDER_VERSION
     ```
 
-6.  Paste the following Kubernetes configuration into the text editor window that opens. Press the `Escape` key, type
-    `:wq`, and press `Enter` to save the file and exit.
+6.  Create the following Kubernetes configuration for the Palette Crossplane provider.
 
-    ```yaml
+    ```bash
+    cat << EOF > crossplane-azure/provider-palette.yaml
     apiVersion: pkg.crossplane.io/v1
     kind: Provider
     metadata:
       name: provider-palette
     spec:
-      package: xpkg.upbound.io/crossplane-contrib/provider-palette:v0.19.2
+      package: xpkg.upbound.io/crossplane-contrib/provider-palette:$PALETTE_CROSSPLANE_PROVIDER_VERSION
+    EOF
     ```
 
-    :::tip
+    Verify that the file was created and populated with the expected Palette Crossplane provider version.
 
-    Access the [Upbound Marketplace](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) to
-    get the latest version of the Palette Crossplane provider.
+    ```bash
+    cat crossplane-azure/provider-palette.yaml
+    ```
 
-    :::
+    ```yaml hideClipboard title="Example output" {6}
+    apiVersion: pkg.crossplane.io/v1
+    kind: Provider
+    metadata:
+      name: provider-palette
+    spec:
+      package: xpkg.upbound.io/crossplane-contrib/provider-palette:v0.24.0
+    ```
 
-7.  Issue the command below to install the Palette Crossplane provider. Crossplane will install the CRDs that allow you
-    to create Palette resources directly inside Kubernetes.
+7.  Issue the command below to install the Palette Crossplane provider. Crossplane installs the CRDs that allow you to
+    create Palette resources directly inside Kubernetes.
 
     ```bash
     kubectl apply --filename crossplane-azure/provider-palette.yaml
     ```
 
-    You can check the installation with the `kubectl get providers` command.
+    ```bash hideClipboard title="Example output"
+    provider.pkg.crossplane.io/provider-palette created
+    ```
+
+    Check the installation with the `kubectl get providers` command.
 
     ```bash
     kubectl get providers
     ```
 
-    ```text hideClipboard
-     NAME                          INSTALLED   HEALTHY   PACKAGE                                              AGE
-     provider-palette              True        True      crossplane-contrib/provider-palette:v0.12.0          61s
+    ```text hideClipboard title="Example output"
+    NAME               INSTALLED   HEALTHY   PACKAGE                                                       AGE
+    provider-palette   True        True      xpkg.upbound.io/crossplane-contrib/provider-palette:v0.24.0   40s
     ```
 
-8.  Create a file to store a Kubernetes Secret containing your Palette API key. The Palette provider requires
-    credentials to create and manage resources.
+8.  Set the following variables for your Palette environment. Replace `<palette-api-key>` with your Palette API key,
+    `<palette-project-name>` with the name of the Palette project you are deploying your cluster in, and
+    `<palette-endpoint>` with the endpoint of your Palette environment.
 
     ```bash
-    vi crossplane-azure/secret-azure.yaml
+    PALETTE_API_KEY=<palette-api-key>
+    PALETTE_PROJECT_NAME=<palette-project-name>
+    PALETTE_HOST=<palette-endpoint>
     ```
 
-9.  Paste the following Kubernetes configuration into the text editor window that opens. Replace `<your-api-key>` with
-    your Palette API key and change the values of `project_name` and `host` according to your environment. Save the file
-    and exit.
+9.  Create a file to store the Kubernetes Secret containing your Palette API key and environment details. The Palette
+    provider requires credentials to create and manage resources.
 
-    ```yaml
+    ```bash
+    cat << EOF > crossplane-azure/secret-azure.yaml
     apiVersion: v1
     kind: Secret
     metadata:
@@ -156,28 +194,50 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in Azure.
     stringData:
       credentials: |
         {
-        "api_key": "<your-api-key>",
-        "project_name": "Default",
-        "host": "console.spectrocloud.com"
+        "api_key": "$PALETTE_API_KEY",
+        "project_name": "$PALETTE_PROJECT_NAME",
+        "host": "$PALETTE_HOST"
         }
+    EOF
     ```
 
-10. Create the Kubernetes secret.
+    Verify that the file was created and populated with the expected API key and environment values.
 
-    ```shell
+    ```bash
+    cat crossplane-azure/secret-azure.yaml
+    ```
+
+    ```yaml hideClipboard title="Example output" {10-12}
+    apiVersion: v1
+    kind: Secret
+    metadata:
+      name: palette-creds
+      namespace: crossplane-system
+    type: Opaque
+    stringData:
+      credentials: |
+      {
+      "api_key": "**************",
+      "project_name": "Default",
+      "host": "console.spectrocloud.com"
+      }
+    ```
+
+10. Create the Kubernetes Secret.
+
+    ```bash
     kubectl apply --filename crossplane-azure/secret-azure.yaml
     ```
 
-11. Next, create a file to store the `ProviderConfig` object. This object configures the Palette Crossplane provider
-    with the secret containing the Palette API key.
-
-    ```bash
-    vi crossplane-azure/providerconfig-azure.yaml
+    ```bash hideClipboard title="Example output"
+    secret/palette-creds created
     ```
 
-12. Paste the content below into the text editor window, save the file and exit.
+11. Create a file to store the `ProviderConfig` object. This object configures the Palette Crossplane provider with the
+    Secret containing the Palette API key.
 
-    ```yaml
+    ```bash
+    cat << EOF > crossplane-azure/providerconfig-azure.yaml
     apiVersion: palette.crossplane.io/v1beta1
     kind: ProviderConfig
     metadata:
@@ -189,22 +249,33 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in Azure.
           name: palette-creds
           namespace: crossplane-system
           key: credentials
+    EOF
     ```
 
-13. Create the Kubernetes `ProviderConfig` object.
+12. Create the Kubernetes `ProviderConfig` object.
 
-    ```shell
+    ```bash
     kubectl apply --filename crossplane-azure/providerconfig-azure.yaml
     ```
 
-14. Once the Palette Crossplane provider is installed and set up, create a file to store the Azure
+    ```bash hideClipboard title="Example output"
+    providerconfig.palette.crossplane.io/default created
+    ```
+
+13. Once the Palette Crossplane provider is installed and set up, create a file to store the Azure
     [cluster profile](../../profiles/cluster-profiles/cluster-profiles.md) configuration.
+
+    :::warning
+
+    We recommend creating the cluster profile file first and directly pasting the contents into the file. Redirecting cluster profile configurations from the terminal into the file can misinterpret escape characters, resulting in an invalid file.
+
+    :::
 
     ```bash
     vi crossplane-azure/cluster-profile-azure.yaml
     ```
 
-15. Paste the Kubernetes configuration below into the text editor window that opens. Save the file and exit.
+14. Paste the Kubernetes configuration below into the text editor window that opens. Save the file and exit.
 
     ```yaml
     apiVersion: cluster.palette.crossplane.io/v1alpha1
@@ -262,68 +333,66 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in Azure.
 
     :::tip
 
-    If you want to use different packs in your cluster profile, you can access the Palette UI and simulate creating a
-    cluster profile to gather the pack's required values. During the cluster profile creation, click the API button to
-    display the API payload. You will find the values of each packs' `name`, `tag`, `uid`, `registryUid`, and `values`
-    parameters.
+    If you want to use different packs in your cluster profile, use the Palette UI to simulate creating a
+    cluster profile to gather the pack's required values. During the cluster profile creation, select the **API** button in the top-right to display the API payload. Replace the values of each pack's `name`, `tag`, `uid`, `registryUid`, and `values` as necessary. For information on creating cliuster profiles, refer to our [Create Cluster Profiles](../../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md) guide.
 
     :::
 
-16. Create the cluster profile.
+15. Create the cluster profile in Palette.
 
     ```bash
     kubectl apply --filename crossplane-azure/cluster-profile-azure.yaml
     ```
 
-17. Issue the commands below to get the ID of the cluster profile once its creation is complete.
+    ```bash hideClipboard title="Example output"
+    profile.cluster.palette.crossplane.io/azure-crossplane-cluster-profile created
+    ```
+
+16. Issue the commands below to get the ID of the cluster profile once it is created and save it as a variable.
 
     ```bash
     kubectl wait --for=condition=Ready profile.cluster.palette.crossplane.io/azure-crossplane-cluster-profile
-    clusterProfileId=$(kubectl get profile.cluster.palette.crossplane.io azure-crossplane-cluster-profile --output jsonpath='{.status.atProvider.id}')
-    echo Cluster Profile ID: $clusterProfileId
+    CLUSTER_PROFILE_ID=$(kubectl get profile.cluster.palette.crossplane.io azure-crossplane-cluster-profile --output jsonpath='{.status.atProvider.id}')
+    echo Cluster Profile ID: $CLUSTER_PROFILE_ID
     ```
 
-    ```text hideClipboard
+    ```text hideClipboard title="Example output"
     profile.cluster.palette.crossplane.io/azure-crossplane-cluster-profile condition met
-    Cluster Profile ID: 6638e0eb8f42b22cb4d1d1bb
+    Cluster Profile ID: 68960ddf222fa7f0046e80ed
     ```
 
-18. Next, get the ID of your Azure cloud account registered in Palette by invoking the `cloudaccounts` Palette API.
-    Replace `<your-api-key>` with your Palette API key and `<azure-account-name>` with the name under which you
-    registered your Azure account in Palette.
+17. Next, set your Palette Azure account name as a variable. Replace `<azure-account-name>` with the name
+    under which you registered your Azure account in Palette. This is the display name that appears under **Cloud
+    Accounts** in **Tenant Settings** or **Project Settings**, _not_ the actual name of your Azure account.
 
     ```bash
-    curl --location --request GET 'https://api.spectrocloud.com/v1/cloudaccounts/azure' \
+    PALETTE_AZURE_CLOUD_ACCOUNT_NAME=<azure-account-name>
+    ```
+
+    In the example below, the Palette Azure account name is `spectro-cloud-azure`.
+
+    ![Azure account name in Palette](/automation_crossplane_deploy-cluster-azure-crossplane_azure-account-name-4-7.webp)
+
+18. Next, fetch the ID of your Azure cloud account registered in Palette by invoking the `cloudaccounts` Palette API.
+
+    ```bash
+    AZURE_CLOUD_ACCOUNT_ID=$(curl --location --request GET 'https://api.spectrocloud.com/v1/cloudaccounts/azure' \
     -H 'Accept: application/json' \
-    -H 'ApiKey: <your-api-key>' | jq '.items[] | select(.metadata.name == "<azure-account-name>") | .metadata.uid'
+    -H "ApiKey: $PALETTE_API_KEY" \
+    | jq --arg name "$PALETTE_AZURE_CLOUD_ACCOUNT_NAME" '.items[] | select(.metadata.name == $name) | .metadata.uid' -r)
+    echo Cloud Account ID: $AZURE_CLOUD_ACCOUNT_ID
     ```
 
-    ```text hideClipboard
-    "645981f0ab3ab8105fabc940"
-    ```
+19. Use the following command to create a file to store your Azure IaaS cluster configuration, replacing the following values: 
 
-    Copy the API response containing your Azure cloud account ID.
+    - `<public-ssh-key>` - The content of your Azure public SSH key.
+    - `<resource-group-name>` - Your Azure resource group name.
+    - `<azure-subscription-id>` - Your Azure subscription ID.
 
-19. Create a file to store the Azure IaaS cluster configuration.
+    Optionally, edit the region, availability zone, instance type, and number of cluster nodes according to your workload.
 
-    ```bash
-    vi crossplane-azure/cluster-azure.yaml
-    ```
-
-20. Paste the cluster configuration displayed below into the text editor window that opens:
-
-    - Replace `<public-ssh-key>` with the content of your public SSH key.
-    - Replace `<resource-group-name>` with your resource group name, and `<azure-subscription-id>` with your Azure
-      subscription ID.
-    - Replace `<cluster-profile-id>` and `<cloud-account-id>` with the IDs obtained in steps **17** and **18** of this
-      guide.
-
-    Optionally, you can edit the region, availability zone, instance type, and number of nodes of your cluster according
-    to your workload.
-
-    Once you are done making the alterations, save and exit the file.
-
-    ```yaml
+    ```bash {11,13-14}
+    cat << EOF > crossplane-azure/cluster-azure.yaml
     apiVersion: cluster.palette.crossplane.io/v1alpha1
     kind: Azure
     metadata:
@@ -331,6 +400,7 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in Azure.
       namespace: crossplane-system
     spec:
       forProvider:
+        name: azure-crossplane-cluster
         cloudConfig:
           - sshKey: "<public-ssh-key>"
             region: "eastus"
@@ -349,27 +419,32 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in Azure.
             name: controlplanepool
             controlPlane: true
         clusterProfile:
-          - id: <cluster-profile-id>
-        cloudAccountId: <cloud-account-id>
+          - id: $CLUSTER_PROFILE_ID
+        cloudAccountId: $AZURE_CLOUD_ACCOUNT_ID
       providerConfigRef:
         name: default
+    EOF
     ```
 
-21. Create the Azure IaaS cluster.
+20. Create the Azure IaaS cluster.
 
     ```bash
     kubectl apply --filename crossplane-azure/cluster-azure.yaml
     ```
 
-22. Wait for the cluster to be created. The cluster provisioning might take up to 20 minutes.
+    ```bash hideClipboard title="Example output"
+    azure.cluster.palette.crossplane.io/azure-crossplane-cluster created
+    ```
+
+21. Wait for the cluster to be created. Cluster provisioning may take up to 20 minutes.
 
     ```bash
     kubectl wait --for=condition=Ready azure.cluster.palette.crossplane.io/azure-crossplane-cluster --timeout=1h
     ```
 
-    Once ready, you should receive an output similar to the following.
+    Once ready, you should receive output similar to the following.
 
-    ```text hideClipboard
+    ```text hideClipboard title="Example output"
     azure.cluster.palette.crossplane.io/azure-crossplane-cluster condition met
     ```
 
@@ -377,7 +452,6 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in Azure.
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
-2. From the left **Main Menu**, click **Clusters**.
+2. From the left main menu, select **Clusters**.
 
-3. Verify the deployed cluster named `azure-crossplane-cluster` is displayed and has the **Running** and **Healthy**
-   status.
+3. Verify the deployed cluster named `azure-crossplane-cluster` is displayed and has a **Cluster Status** of **Running** and a **Health** status of **Healthy**.
