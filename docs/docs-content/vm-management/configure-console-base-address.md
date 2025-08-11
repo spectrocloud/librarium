@@ -6,9 +6,9 @@ sidebar_position: 40
 tags: ["vmo"]
 ---
 
-This guide provides step-by-step instructions on how to configure an address for the **Virtual Machines** tab of clusters
-configured using Virtual Machine Orchestrator (VMO). This configuration allows you to have direct access to your virtual
-machines, without additional navigation in the Palette UI.
+This guide provides step-by-step instructions on how to configure an address for the **Virtual Machines** tab of
+clusters configured using Virtual Machine Orchestrator (VMO). This configuration allows you to have direct access to
+your virtual machines, without additional navigation in the Palette UI.
 
 ## Prerequisites
 
@@ -33,8 +33,8 @@ machines, without additional navigation in the Palette UI.
 2. From the left main menu, select **Clusters**. The cluster list appears. Select the VMO cluster you previously
    deployed.
 
-3. From the cluster **Overview** tab, download the [Kubeconfig](../clusters/cluster-management/kubeconfig.md) file. This file allows you to connect to your
-   deployed cluster.
+3. From the cluster **Overview** tab, download the [Kubeconfig](../clusters/cluster-management/kubeconfig.md) file. This
+   file allows you to connect to your deployed cluster.
 
 4. Navigate to your terminal window and set the environment variable `KUBECONFIG` to point to the file you downloaded.
 
@@ -74,8 +74,8 @@ machines, without additional navigation in the Palette UI.
 2. From the left main menu, select **Clusters**. The cluster list appears. Select the VMO cluster you previously
    deployed.
 
-3. On the cluster **Overview** tab, select the **Connect** button in the **Virtual Machine Dashboard** section. A new tab opens with the address you
-   configured and shows the virtual machines dashboard.
+3. On the cluster **Overview** tab, select the **Connect** button in the **Virtual Machine Dashboard** section. A new
+   tab opens with the address you configured and shows the virtual machines dashboard.
 
    ![Connect VM dashboard button](/vm-management_configure-console-base-address_connect-button.webp)
 
