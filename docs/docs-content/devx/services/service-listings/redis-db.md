@@ -116,9 +116,9 @@ kubectl get secret  app-tarfful-redis-4-redis-auth \
 ## Next Steps
 
 You can add Redis to your application profile and start integrating Redis with your applications. To learn more about
-integrating Redis with your applications, check out the [Using Redis](https://redis.io/docs/manual/) documentation from
+integrating Redis with your applications, check out the [Using Redis](https://redis.io/docs/latest/) documentation from
 Redis.
 
 ## Resources
 
-- [Using Redis](https://redis.io/docs/manual/)
+- [Using Redis](https://redis.io/docs/latest/)
