@@ -196,6 +196,43 @@ additional functionality and capabilities that enhance the Palette experience.
   app="Palette Management Appliance"
 />
 
+## Upgrade Palette
+
+Follow the instructions to upgrade Palette using a content bundle. The content bundle is used to upgrade the Palette instance to the latest version.
+
+### Prerequisites
+
+<PartialsComponent
+  category="self-hosted"
+  name="upgrade-palette-prereqs"
+  edition="Palette"
+  version="Palette"
+  iso="Palette Enterprise"
+  app="Palette Management Appliance"
+/>
+
+### Enablement
+
+<PartialsComponent
+  category="self-hosted"
+  name="upgrade-palette-enablement"
+  edition="Palette"
+  version="Palette"
+  iso="Palette Enterprise"
+  app="Palette Management Appliance"
+/>
+
+### Validate
+
+<PartialsComponent
+  category="self-hosted"
+  name="upgrade-palette-validate"
+  edition="Palette"
+  version="Palette"
+  iso="Palette Enterprise"
+  app="Palette Management Appliance"
+/>
+
 ## Next Steps
 
 <PartialsComponent

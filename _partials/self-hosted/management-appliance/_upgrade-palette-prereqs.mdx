@@ -1,0 +1,14 @@
+---
+partial_category: self-hosted
+partial_name: upgrade-palette-prereqs
+---
+
+- A healthy {props.version} management cluster where you can access the Local UI of the leader node.
+
+  - Verify that your local machine can access the Local UI, as airgapped environments may have strict network policies preventing direct access.
+
+- If using an external registry, ensure your local machine has access to the external registry server and you have the necessary permissions to push images to the registry.
+
+- (Optional) The Palette CLI installed on your local machine if you prefer to use the command line for uploading packs. Refer to the <VersionedLink text="Palette CLI" url="/automation/palette-cli"/> guide for installation instructions.
+
+- Access to the [Artifact Studio](https://artifact-studio.spectrocloud.com/) to download the content bundle for {props.version}.
