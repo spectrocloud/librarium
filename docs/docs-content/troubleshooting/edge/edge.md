@@ -10,6 +10,43 @@ tags: ["edge", "troubleshooting"]
 
 The following are common scenarios that you may encounter when using Edge.
 
+## Scenario - `content-length: 0` Errors during Content Synchronization
+
+Unintended or non-graceful reboots during content bundle push operations can cause inconsistency in the primary
+registry, resulting in 0-byte blob files and subsequent `content-length: 0` errors during content synchronization.
+
+When operating a locally managed cluster, if you observe the `content-length: 0` error during content sync, follow the
+steps below to verify whether the error was caused by an inconsistency in the primary registry and to fix the issue.
+
+### Debug Steps
+
+1. Issue the following command and observe if there are files that are zero bytes in size.
+
+   ```bash
+   ls -la /usr/local/spectrocloud/peerbundle/sha256/
+   ```
+
+   If you observe output similar to the following, where the file size is zero, proceed to the next step.
+
+   ```
+   -rw------- 1 root root 0 Aug 11 01:52 /usr/local/spectrocloud/peerbundle/sha256
+   ```
+
+2. Issue the following command to remove all files with zero size.
+
+   ```bash
+   sudo find /usr/local/spectrocloud/peerbundle/sha256/ -type f -size 0 -delete
+   ```
+
+3. Restart the Palette agent service and verify that it is active.
+
+   ```bash
+   sudo systemctl restart spectro-stylus-agent.service
+   sudo systemctl status spectro-stylus-agent.service
+   ```
+
+This will resolve the issue and content sync will proceed normally.
+
 ## Scenario – PXK-E Clusters on RHEL and Rocky 8 Fail Kubernetes Initialization
 
 <VersionedLink text="Palette eXtended Kubernetes - Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> clusters
