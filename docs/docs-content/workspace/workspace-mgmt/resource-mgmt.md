@@ -65,7 +65,7 @@ refer to [Kubernetes documentation](https://kubernetes.io/docs/concepts/policy/r
 
 6. Click **Namespaces**.
 
-7. Under **Workspace Quota**, you can specify the amount of CPU, memory and GPU that the entire workspace is allowed to
+7. Under **Workspace Quota**, you can specify the amount of CPU, memory, and GPU that the entire workspace is allowed to
    consume. The default value is 0, which imposes no limit.
 
    ![Workspace Settings pane displaying Workspace Quota section of Namespaces tab](/workspace-management_resource-management_4-7.webp)
