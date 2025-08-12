@@ -1,0 +1,13 @@
+---
+partial_category: crossplane
+partial_name: palette-crossplane-provider-version
+---
+
+Fetch the latest version of the Palette Crossplane provider. Alternatively, identify your desired version from the
+[Upbound Marketplace](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) and set the
+value manually.
+
+```bash
+PALETTE_CROSSPLANE_PROVIDER_VERSION=$(curl --silent https://api.github.com/repos/crossplane-contrib/provider-palette/releases/latest | jq --raw-output .tag_name)
+echo Palette Crossplane Provider Version: $PALETTE_CROSSPLANE_PROVIDER_VERSION
+```
