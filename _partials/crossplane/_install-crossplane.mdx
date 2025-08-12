@@ -1,0 +1,74 @@
+---
+partial_category: crossplane
+partial_name: install-crossplane
+---
+
+1.  Open a terminal session and set the kubectl context to your cluster. Replace `<cluster-name>` with the name of
+    your cluster.
+
+    ```bash
+    kubectl cluster-info --context <cluster-name>
+    ```
+
+    ```text hideClipboard title="Example output"
+    Kubernetes control plane is running at https://127.0.0.1:65306
+    CoreDNS is running at https://127.0.0.1:65306/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+
+    To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
+    ```
+
+2.  Next, add the Crossplane Helm chart.
+
+    ```bash
+    helm repo add \
+    crossplane-stable https://charts.crossplane.io/stable
+    helm repo update
+    ```
+
+    ```text hideClipboard title="Example output"
+    "crossplane-stable" has been added to your repositories
+    Hang tight while we grab the latest from your chart repositories...
+    ...Successfully got an update from the "ingress-nginx" chart repository
+    ...Successfully got an update from the "crossplane-stable" chart repository
+    Update Complete. ⎈Happy Helming!⎈
+    ```
+
+3.  Install the Crossplane components using the `helm install` command.
+
+    ```bash
+    helm install crossplane \
+    crossplane-stable/crossplane \
+    --namespace crossplane-system \
+    --create-namespace
+    ```
+
+    ```bash hideClipboard title="Example output"
+    NAME: crossplane
+    LAST DEPLOYED: Fri Aug  8 08:27:46 2025
+    NAMESPACE: crossplane-system
+    STATUS: deployed
+    REVISION: 1
+    TEST SUITE: None
+    NOTES:
+    Release: crossplane
+
+    Chart Name: crossplane
+    Chart Description: Crossplane is an open source Kubernetes add-on that enables platform teams to assemble infrastructure from multiple vendors, and expose higher level self-service APIs for application teams to consume.
+    Chart Version: 1.20.0
+    Chart Application Version: 1.20.0
+
+    Kube Version: v1.33.1
+    ```
+
+    Verify the installation with the `kubectl get pods` command. The output must contain two Crossplane pods with a
+    `Running` status.
+
+    ```bash
+    kubectl get pods --namespace crossplane-system
+    ```
+
+    ```text hideClipboard title="Example output"
+    NAME                                     READY   STATUS    RESTARTS   AGE
+    crossplane-869d89c8f8-7jc6c              1/1     Running   0          20s
+    crossplane-rbac-manager-784b496b-8mr6z   1/1     Running   0          20s
+    ```
