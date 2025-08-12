@@ -43,15 +43,15 @@ your virtual machines, without needing to navigate to **Clusters** > cluster **O
    ```
 
 5. Execute the following command to find the `vm-dashboard` service deployed by the VMO pack. Make a note of the
-   external IP of the service.
+   external IP of the service. This could be a fully qualified domain name or an IP address.
 
    ```shell
    kubectl get services --namespace vm-dashboard
    ```
 
    ```text hideClipboard title="Example output"
-    NAME           TYPE           CLUSTER-IP     EXTERNAL-IP                       PORT(S)         AGE
-    vm-dashboard   LoadBalancer   xxx.xxx.xxx.x  external-url.example.com          xxx:xxxxx/TCP   XXd
+    NAME           TYPE           CLUSTER-IP   EXTERNAL-IP         PORT(S)         AGE
+    vm-dashboard   LoadBalancer   10.0.0.5     198.51.100.42       xxx:xxxxx/TCP   XXd
    ```
 
 6. Return to [Palette](https://console.spectrocloud.com). Select the **Profile** tab of your cluster.
@@ -62,10 +62,10 @@ your virtual machines, without needing to navigate to **Clusters** > cluster **O
    `charts.virtual-machine-orchestrator.appConfig.clusterInfo.consoleBaseAddress` field. Append `/v1` to the value.
 
    ```text hideClipboard title="Example value"
-    consoleBaseAddress: "https://external-url.example.com/v1"
+    consoleBaseAddress: "https://198.51.100.42/v1"
    ```
 
-9. Click **Save** to apply your changes. Wait for Palette to complete your cluster repave.
+9. Click **Save** to apply your changes. Wait for Palette to complete your cluster update.
 
 ## Validation
 
