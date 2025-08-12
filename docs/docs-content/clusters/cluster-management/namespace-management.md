@@ -39,6 +39,10 @@ The following steps will guide you on how to create a namespace.
 
 - A unique namespace name.
 
+### Limitations
+
+- When using **GPU Allocation**, NVIDIA is the only supported vendor.
+
 ### Create a Namespace in a Cluster
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
@@ -56,7 +60,7 @@ The following steps will guide you on how to create a namespace.
 5. Type a unique namespace name or a regular expression according to which Palette will assign names to namespaces in
    the **Namespace name or Regex** field and click **Confirm** at right.
 
-   ![Cluster Settings pane showing how to add new namespace](/clusters_cluster-management_namespace-create-new_4-7.webp)
+   ![Cluster Settings pane showing how to add new namespace](/clusters_cluster-management_ns-resource-quota_4-7.webp)
 
 6. You can assign resource quotas now or at a later time. To learn how, check out
    [Assign Resource Quotas](namespace-management.md#assign-resource-quotas).
@@ -102,22 +106,24 @@ You can assign resource quotas for resource sharing among multiple users who hav
 
 6. Click on the three-dot menu on the namespace and select **Edit**.
 
-![Cluster Settings pane displaying Workspace Quota section of Namespaces tab](/clusters_cluster-management_ns-resource-quota_4-7.webp)
+<!-- vale off -->
 
-7. Specify the number of CPUs and GPUs, and the amount of memory (in GB) to allocate to the namespace. The **Confirm**
+7. Specify the number of CPUs and GPUs, and the amount of memory (in GB) to allocate to the namespace. Click **Confirm** to
    your changes.
 
-:::info
+   When using **GPU Allocation** you must use a whole number and must select the vendor from the dropdown. You must also
+   ensure that the appropriate GPU device plugin is installed and compatible with your nodes to enforce the quota as
+   Palette does not verify GPU vendor selection.
 
-When using **GPU Allocation** you must use a whole number and must select the vendor from the dropdown. You must also
-ensure that the appropriate GPU device plugin is installed and compatible with your nodes to enforce the quota as
-Palette does not verify GPU vendor selection.
+   :::info
 
-Currently, NVIDIA is the only supported vendor.
+   Currently, NVIDIA is the only supported vendor.
 
-:::
+   :::
 
 8. Once you have made all needed changes, click **Save Changes**.
+
+<!-- vale on -->
 
 ## Delete a Namespace
 

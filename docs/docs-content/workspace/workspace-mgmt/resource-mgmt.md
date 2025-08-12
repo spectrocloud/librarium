@@ -51,6 +51,10 @@ refer to [Kubernetes documentation](https://kubernetes.io/docs/concepts/policy/r
 - You are logged in as a Palette user that has the permission to modify workspaces. For more information, refer to
   [Permissions](../../user-management/palette-rbac/permissions.md).
 
+### Limitations
+
+- When using **GPU Allocation**, NVIDIA is the only supported vendor.
+
 ### Procedure
 
 1. Log in to [Palette](https://console.spectrocloud.com).
@@ -65,6 +69,8 @@ refer to [Kubernetes documentation](https://kubernetes.io/docs/concepts/policy/r
 
 6. Click **Namespaces**.
 
+<!-- vale off -->
+
 7. Under **Workspace Quota**, you can specify the amount of CPU, memory, and GPU that the entire workspace is allowed to
    consume. The default value is 0, which imposes no limit.
 
@@ -75,11 +81,11 @@ refer to [Kubernetes documentation](https://kubernetes.io/docs/concepts/policy/r
    These will populate the same values in the **Cluster Quota**. You can alter these to be lower or higher than the
    **Namespace quote** as long as the total values are lower than the **Workspace Quota**.
 
-   :::info
-
    When using **GPU Allocation** you must use a whole number and must select the vendor from the dropdown. You must also
    ensure that the appropriate GPU device plugin is installed and compatible with your nodes to enforce the quota as
    Palette does not verify GPU vendor selection.
+
+   :::info
 
    At this time, NVIDIA is the only supported vendor.
 
@@ -113,6 +119,8 @@ refer to [Kubernetes documentation](https://kubernetes.io/docs/concepts/policy/r
    | Namespace 2 | 3 Gi, 3 CPU, 3 GPUs  | 1 Gi, 1 CPU, 1 GPU   |
 
    ![Workspace Settings pane displaying Workspace Quota section with values within quota](/workspace-management_workspace-within-quota_4-7.webp)
+
+<!-- vale on -->
 
 ### Validate
 
