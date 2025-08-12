@@ -177,19 +177,21 @@ Complete the following steps before deploying the airgap VerteX installation.
     - `OCI_PACK_REGISTRY`: The IP address or domain name of the OCI registry.
     - `OCI_IMAGE_BASE`: The namespace or repository name that hosts the VerteX images.
     <br />
-      ```shell
-      export OCI_IMAGE_REGISTRY=<harbor-endpoint>
-      export OCI_PACK_BASE=spectro-packs
-      export OCI_PACK_REGISTRY=<harbor-endpoint>
-      export OCI_IMAGE_BASE=spectro-images
-      ```
+    ```shell
+    export OCI_IMAGE_REGISTRY=<harbor-endpoint>
+    export OCI_PACK_BASE=spectro-packs
+    export OCI_PACK_REGISTRY=<harbor-endpoint>
+    export OCI_IMAGE_BASE=spectro-images
+    ```
+        
+    Consider the following example.
 
-      ```shell hideClipboard title="Example output"
-      export OCI_IMAGE_REGISTRY=example.internal.com
-      export OCI_PACK_BASE=spectro-packs
-      export OCI_PACK_REGISTRY=10.10.100.48
-      export OCI_IMAGE_BASE=spectro-images
-      ```
+    ```shell hideClipboard title="Example values"
+    export OCI_IMAGE_REGISTRY=example.internal.com
+    export OCI_PACK_BASE=spectro-packs
+    export OCI_PACK_REGISTRY=10.10.100.48
+    export OCI_IMAGE_BASE=spectro-images
+    ```
 
     </TabItem>
 
@@ -202,23 +204,25 @@ Complete the following steps before deploying the airgap VerteX installation.
     - `ECR_PACK_REGISTRY`: The IP address or domain name of the OCI registry.
     - `ECR_PACK_REGISTRY_REGION`: The AWS region where the ECR registry is located.
     <br />
-      ```shell
-      export ECR_IMAGE_REGISTRY=<ecr-endpoint>
-      export ECR_IMAGE_BASE=spectro-images
-      export ECR_IMAGE_REGISTRY_REGION=<ecr-region>
-      export ECR_PACK_REGISTRY=<ecr-endpoint>
-      export ECR_PACK_BASE=spectro-packs
-      export ECR_PACK_REGISTRY_REGION=<ecr-region>
-      ```
+    ```shell
+    export ECR_IMAGE_REGISTRY=<ecr-endpoint>
+    export ECR_IMAGE_BASE=spectro-images
+    export ECR_IMAGE_REGISTRY_REGION=<ecr-region>
+    export ECR_PACK_REGISTRY=<ecr-endpoint>
+    export ECR_PACK_BASE=spectro-packs
+    export ECR_PACK_REGISTRY_REGION=<ecr-region>
+    ```
 
-      ```shell hideClipboard title="Example output"
-      export ECR_IMAGE_REGISTRY=public.ecr.aws/1234567890
-      export ECR_IMAGE_BASE=spectro-images
-      export ECR_IMAGE_REGISTRY_REGION=us-east-1
-      export ECR_PACK_REGISTRY=123456789.dkr.ecr.us-east-1.amazonaws.com
-      export ECR_PACK_BASE=spectro-packs
-      export ECR_PACK_REGISTRY_REGION=us-east-1
-      ```
+    Consider the following example.
+
+    ```shell hideClipboard title="Example values"
+    export ECR_IMAGE_REGISTRY=public.ecr.aws/1234567890
+    export ECR_IMAGE_BASE=spectro-images
+    export ECR_IMAGE_REGISTRY_REGION=us-east-1
+    export ECR_PACK_REGISTRY=123456789.dkr.ecr.us-east-1.amazonaws.com
+    export ECR_PACK_BASE=spectro-packs
+    export ECR_PACK_REGISTRY_REGION=us-east-1
+    ```
 
     </TabItem>
 
