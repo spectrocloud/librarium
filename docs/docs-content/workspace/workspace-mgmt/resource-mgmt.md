@@ -105,7 +105,7 @@ refer to [Kubernetes documentation](https://kubernetes.io/docs/concepts/policy/r
 
    ![Workspace Settings pane displaying Workspace Quota section with values over quota](/workspace-management_workspace-over-quota_4-7.webp)
 
-   The following resource quota configuration is allowed because the total quota is 8 Gi, 8 CPUs and 8 GPUs.
+   The following resource quota configuration is allowed because the total quota is 8 Gi, 8 CPUs, and 8 GPUs.
 
    |             | Cluster 1            | Cluster 2            |
    | ----------- | -------------------- | -------------------- |
