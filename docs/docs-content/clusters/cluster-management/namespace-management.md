@@ -76,7 +76,7 @@ Validate that the namespace was successfully created.
 
 3. Select the cluster that contains the namespace you created and view its details.
 
-4. In the **Settings** pane, click **Cluster Settings** and then select **RBAC** > **Namespaces** tab.
+4. In the **Settings** pane, click **Cluster Settings**, and then select **RBAC** > **Namespaces** tab.
 
    The namespace you created will be listed under **Namespace Quota**.
 
