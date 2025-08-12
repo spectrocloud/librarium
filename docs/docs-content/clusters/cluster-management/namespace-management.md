@@ -100,7 +100,7 @@ You can assign resource quotas for resource sharing among multiple users who hav
 
 5. The **Settings** pane displays with **RBAC** > **Namespaces** preselected.
 
-6. Select the three-dot menu on the namespace and select **Edit**.
+6. Click on the three-dot menu on the namespace and select **Edit**.
 
 ![Cluster Settings pane displaying Workspace Quota section of Namespaces tab](/clusters_cluster-management_ns-resource-quota_4-7.webp)
 
