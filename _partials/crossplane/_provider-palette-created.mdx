@@ -1,0 +1,19 @@
+---
+partial_category: crossplane
+partial_name: provider-palette-created
+---
+    
+```bash hideClipboard title="Example output"
+provider.pkg.crossplane.io/provider-palette created
+```
+
+Check the installation with the `kubectl get providers` command.
+
+```bash
+kubectl get providers
+```
+
+```text hideClipboard title="Example output"
+NAME               INSTALLED   HEALTHY   PACKAGE                                                       AGE
+provider-palette   True        True      xpkg.upbound.io/crossplane-contrib/provider-palette:v0.24.0   40s
+```
