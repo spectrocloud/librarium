@@ -53,7 +53,8 @@ The following steps will guide you on how to create a namespace.
 
    ![Cluster Settings pane with the location where the namespace is listed](/clusters_cluster-management_namespace-create_4-7.webp)
 
-5. Type a unique namespace name or a regular expression according to which Palette will assign names to namespaces in the **Namespace name or Regex** field and click **Confirm** at right.
+5. Type a unique namespace name or a regular expression according to which Palette will assign names to namespaces in
+   the **Namespace name or Regex** field and click **Confirm** at right.
 
    ![Cluster Settings pane showing how to add new namespace](/clusters_cluster-management_namespace-create-new_4-7.webp)
 
