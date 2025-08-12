@@ -108,8 +108,8 @@ You can assign resource quotas for resource sharing among multiple users who hav
 
 <!-- vale off -->
 
-7. Specify the number of CPUs and GPUs, and the amount of memory (in GB) to allocate to the namespace. Click **Confirm** to
-   your changes.
+7. Specify the number of CPUs and GPUs, and the amount of memory (in GB) to allocate to the namespace. Click **Confirm**
+   to your changes.
 
    When using **GPU Allocation** you must use a whole number and must select the vendor from the dropdown. You must also
    ensure that the appropriate GPU device plugin is installed and compatible with your nodes to enforce the quota as
