@@ -56,6 +56,8 @@ tags: ["release-notes"]
 - [Workspace resource quotas](../workspace/workspace-mgmt/resource-mgmt.md#implement-resource-quotas) and
   [namespace resource quotas](../clusters/cluster-management/namespace-management.md#assign-resource-quotas) now support
   GPU limits. This feature currently supports Nvidia GPUs only.
+- Palette now supports the AI pack type. This category streamlines the grouping and finding of AI related packs. Refer
+  to the [Packs List](../integrations/integrations.mdx) to search and filter packs.
 
 #### Improvements
 
@@ -126,35 +128,103 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 #### Pack Notes
 
+- The Spectro Addon Repo registry has been removed from Palette multi-tenant SaaS. Refer to the
+  [Default Registries](../registries-and-packs/registries/registries.md#default-registries) for the list of registries
+  available to all SaaS tenants.
+
 #### OS
 
-| Pack Name | New Version |
-| --------- | ----------- |
+| Pack Name                       | New Version |
+| ------------------------------- | ----------- |
+| Ubuntu for Canonical K8s (MAAS) | 22.04       |
 
 #### Kubernetes
 
-| Pack Name | New Version |
-| --------- | ----------- |
+| Pack Name                                | New Version |
+| ---------------------------------------- | ----------- |
+| Canonical Kubernetes                     | 1.32        |
+| GKE                                      | 1.32        |
+| Palette eXtended Kubernetes              | 1.32.6      |
+| Palette eXtended Kubernetes              | 1.31.10     |
+| Palette eXtended Kubernetes              | 1.30.14     |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.33.3      |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.32.6      |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.31.10     |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.30.14     |
+| Palette Optimized Canonical              | 1.33.2      |
+| Palette Optimized Canonical              | 1.32.6      |
+| Palette Optimized K3s                    | 1.33.3      |
+| Palette Optimized K3s                    | 1.32.6      |
+| Palette Optimized K3s                    | 1.31.10     |
+| Palette Optimized K3s                    | 1.30.14     |
+| Palette Optimized RKE2                   | 1.33.3      |
+| Palette Optimized RKE2                   | 1.32.6      |
+| Palette Optimized RKE2                   | 1.31.10     |
+| Palette Optimized RKE2                   | 1.30.14     |
+| RKE2                                     | 1.32.6      |
+| RKE2                                     | 1.31.10     |
+| RKE2                                     | 1.30.14     |
 
 #### CNI
 
-| Pack Name | New Version |
-| --------- | ----------- |
+| Pack Name                  | New Version |
+| -------------------------- | ----------- |
+| Calico                     | 3.30.2      |
+| Calico (Azure)             | 3.30.2      |
+| Cilium CNI (Canonical K8s) | 1.16.3      |
+| Flannel                    | 0.27.0      |
 
 #### CSI
 
-| Pack Name | New Version |
-| --------- | ----------- |
+| Pack Name             | New Version |
+| --------------------- | ----------- |
+| Amazon EBS CSI        | 1.46.0      |
+| Amazon EFS            | 2.1.9       |
+| Azure Disk CSI Driver | 1.33.2      |
+| Longhorn              | 1.9.0       |
+| vSphere CSI           | 3.5.0       |
 
 #### Add-on Packs
 
-| Pack Name | New Version |
-| --------- | ----------- |
+| Pack Name                    | New Version |
+| ---------------------------- | ----------- |
+| Amazon EFS                   | 2.1.9       |
+| AWS Application Loadbalancer | 2.13.3      |
+| AWS Cluster Autoscaler Helm  | 1.33.0      |
+| Cilium Tetragon              | 1.4.1       |
+| ExternalDNS                  | 0.18.0      |
+| Flux2                        | 2.16.2      |
+| Longhorn                     | 1.9.0       |
+| Multus CNI Plugin            | 2.2.18      |
+| Nvidia GPU Operator          | 25.3.1      |
+| Open Policy Agent            | 3.19.2      |
+| VMO Namespace Management     | 1.0.3       |
+| Zot Registry                 | 0.1.67      |
 
 #### FIPS Packs
 
-| Pack Name | New Version |
-| --------- | ----------- |
+| Pack Name                                | New Version |
+| ---------------------------------------- | ----------- |
+| Azure Disk CSI Driver                    | 1.33.2      |
+| Calico                                   | 3.30.2      |
+| Calico (Azure)                           | 3.30.2      |
+| Flannel                                  | 0.27.0      |
+| Palette eXtended Kubernetes              | 1.32.6      |
+| Palette eXtended Kubernetes              | 1.31.10     |
+| Palette eXtended Kubernetes              | 1.30.14     |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.33.3      |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.32.6      |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.31.10     |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.30.14     |
+| Palette Optimized RKE2                   | 1.33.3      |
+| Palette Optimized RKE2                   | 1.32.6      |
+| Palette Optimized RKE2                   | 1.31.10     |
+| Palette Optimized RKE2                   | 1.30.14     |
+| RKE2                                     | 1.32.6      |
+| RKE2                                     | 1.31.10     |
+| RKE2                                     | 1.30.14     |
+| vSphere CSI                              | 3.5.0       |
+| Zot Registry                             | 0.1.67      |
 
 #### Deprecations and Removals
 
