@@ -67,8 +67,6 @@ tags: ["release-notes"]
 - <TpBadge /> The [Artifact Studio](../downloads/artifact-studio.md) has been improved to display a technical preview
   banner on all pages.
 
-#### Deprecations and Removals
-
 ### Edge
 
 :::info
@@ -77,14 +75,20 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 :::
 
-#### Features
-
 #### Improvements
 
 - [Remote shell](../clusters/edge/cluster-management/remote-shell.md) has now exited Tech Preview and is ready for
-  production workloads.
-
-#### Bug Fixes
+production workloads.
+<!-- prettier-ignore-start -->
+- The <VersionedLink text="Palette eXtended Kubernetes Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" />
+distribution now supports virtual network overlays for multi-node clusters deployed with
+[agent mode](../deployment-modes/agent-mode/agent-mode.md) or
+[appliance mode](../deployment-modes/appliance-mode/appliance-mode.md). Refer to the
+[Enable Overlay Network](../clusters/edge/networking/vxlan-overlay.md) guide for further details.
+<!-- prettier-ignore-end -->
+- The [Kubeconfig](../clusters/cluster-management/kubeconfig.md) file names of Edge clusters deployed with with
+  [agent mode](../deployment-modes/agent-mode/agent-mode.md) or
+  [appliance mode](../deployment-modes/appliance-mode/appliance-mode.md) now contain the cluster name.
 
 ### VerteX
 
@@ -103,6 +107,12 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 #### Features
 
+- All cluster Terraform resources now support the `gpu_limit` and `gpu_provider` fields to enforce GPU resource limits.
+  For more information, refer to the Spectro Cloud Terraform provider
+  [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
+- The Terraform resource `spectrocloud_workspace` now supports the `gpu_limit` and `gpu_provider` fields to enforce GPU
+  resource limits. For more information, refer to the Spectro Cloud Terraform provider
+  [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
 - Terraform version 0.24.1 of the
   [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
   available. For more details, refer to the Terraform provider
@@ -110,8 +120,6 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 - Crossplane version 0.24.1 of the
   [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette/v0.24.1)
   is available.
-
-#### Improvements
 
 ### Virtual Machine Orchestrator (VMO)
 
@@ -121,8 +129,6 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
   configured using [Virtual Machine Orchestrator](../vm-management/vm-management.md). Refer to the
   [Configure Direct Access to Virtual Machine Dashboard](../vm-management/configure-console-base-address.md) guide for
   further details.
-
-### Docs and Education
 
 ### Packs
 
@@ -225,8 +231,6 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 | RKE2                                     | 1.30.14     |
 | vSphere CSI                              | 3.5.0       |
 | Zot Registry                             | 0.1.67      |
-
-#### Deprecations and Removals
 
 ## August 4, 2025 - Release 4.7.8
 
