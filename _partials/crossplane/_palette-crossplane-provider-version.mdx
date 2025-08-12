@@ -8,6 +8,6 @@ Fetch the latest version of the Palette Crossplane provider. Alternatively, iden
 value manually.
 
 ```bash
-PALETTE_CROSSPLANE_PROVIDER_VERSION=$(curl -s https://api.github.com/repos/crossplane-contrib/provider-palette/releases/latest | jq -r .tag_name)
+PALETTE_CROSSPLANE_PROVIDER_VERSION=$(curl --silent https://api.github.com/repos/crossplane-contrib/provider-palette/releases/latest | jq --raw-output .tag_name)
 echo Palette Crossplane Provider Version: $PALETTE_CROSSPLANE_PROVIDER_VERSION
 ```
