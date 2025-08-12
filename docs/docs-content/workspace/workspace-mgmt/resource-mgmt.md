@@ -71,7 +71,7 @@ refer to [Kubernetes documentation](https://kubernetes.io/docs/concepts/policy/r
    ![Workspace Settings pane displaying Workspace Quota section of Namespaces tab](/workspace-management_resource-management_4-7.webp)
 
 8. If you want to limit resource use based on namespaces, click on the three-dot menu and select **Edit**. Enter the
-   desired CPU, memory and GPU limit in the **CPU Allocation**, **Memory Allocation** and **GPU Allocation** columns.
+   desired CPU, memory, and GPU limits in the **CPU Allocation**, **Memory Allocation**, and **GPU Allocation** columns.
    These will populate the same values in the **Cluster Quota**. You can alter these to be lower or higher than the
    **Namespace quote** as long as the total values are lower than the **Workspace Quota**.
 
