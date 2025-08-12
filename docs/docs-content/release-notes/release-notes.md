@@ -51,8 +51,8 @@ tags: ["release-notes"]
   that Role-Based Access Control (RBAC) permissions are consistently applied for all deployed clusters.
 - <TpBadge /> Palette now supports Canonical Kubernetes using the Ubuntu for Canonical Kubernetes OS pack. This feature
   currently supports the creation of [MAAS clusters](../clusters/data-center/maas/maas.md) with Canonical Kubernetes
-  version 1.32. Refer to the MAAS [Architecture](../clusters/data-center/maas/architecture.md#palette-maas-distribution) page for
-  further details.
+  version 1.32. Refer to the MAAS [Architecture](../clusters/data-center/maas/architecture.md#palette-maas-distribution)
+  page for further details.
 - [Workspace resource quotas](../workspace/workspace-mgmt/resource-mgmt.md#implement-resource-quotas) and
   [namespace resource quotas](../clusters/cluster-management/namespace-management.md#assign-resource-quotas) now support
   GPU limits. This feature currently supports Nvidia GPUs only.
@@ -64,8 +64,8 @@ tags: ["release-notes"]
 - Nodes provisioned through [Karpenter](https://karpenter.sh/docs/) are now visible in Palette and supported for
   read-only operations, such as billing and monitoring. However,
   [Day-2 operations](../clusters/cluster-management/cluster-management.md) are not supported.
-- <TpBadge /> The [Artifact Studio](../downloads/artifact-studio.md) has been improved to display a technical preview
-  banner on all pages.
+- <TpBadge /> A technical preview banner is now displayed on all [Artifact Studio](../downloads/artifact-studio.md)
+  pages.
 
 ### Edge
 
