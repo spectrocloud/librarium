@@ -325,44 +325,45 @@ The following permissions are required to deploy a PCG to OpenStack and for Pale
 
 8.  Next, provide the OpenStack environment configurations.
 
-    | **Parameter**                   | **Description**                                                                                                                                                                            |
-    | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-    | **OpenStack Identity Endpoint** | Enter the OpenStack Identity endpoint. Domain or IP address. Example: `https://openstack.mycompany.com/identity`.                                                                                    |
-    | **OpenStack Account Username**  | Enter your OpenStack account username.                                                                                                                                                                |
-    | **OpenStack Account Password**  | Enter your OpenStack account password.                                                                                                                                                                |
-    | **Allow Insecure Connection**   | Bypass x509 verification. Enter `y` if you are using an OpenStack instance with self-signed TLS certificates. Otherwise, enter `n`.                                 |
+    | **Parameter**                   | **Description**                                                                                                                                                                           |
+    | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **OpenStack Identity Endpoint** | Enter the OpenStack Identity endpoint. Domain or IP address. Example: `https://openstack.mycompany.com/identity`.                                                                         |
+    | **OpenStack Account Username**  | Enter your OpenStack account username.                                                                                                                                                    |
+    | **OpenStack Account Password**  | Enter your OpenStack account password.                                                                                                                                                    |
+    | **Allow Insecure Connection**   | Bypass x509 verification. Enter `y` if you are using an OpenStack instance with self-signed TLS certificates. Otherwise, enter `n`.                                                       |
     | **CA certificate Filepath**     | (Optional) Enter the CA certificate for the OpenStack environment. Provide the file path of the CA certificate on the installer host. Example: `/usr/local/share/ca-certificates/ca.crt`. |
-    | **Default Domain**              | Enter the default domain for the OpenStack environment.                                                                                                                                          |
-    | **Default Region**              | Enter the default region for the OpenStack environment.                                                                                                                                          |
-    | **Default Project**             | Enter the default project for the OpenStack environment.                                                                                                                                         |
+    | **Default Domain**              | Enter the default domain for the OpenStack environment.                                                                                                                                   |
+    | **Default Region**              | Enter the default region for the OpenStack environment.                                                                                                                                   |
+    | **Default Project**             | Enter the default project for the OpenStack environment.                                                                                                                                  |
 
     After providing the OpenStack environment configurations and credentials, the Palette CLI will query the OpenStack
-    environment to validate the credentials. If the credentials are valid, the installation process continues; otherwise, you are prompted to re-enter the credentials.
+    environment to validate the credentials. If the credentials are valid, the installation process continues;
+    otherwise, you are prompted to re-enter the credentials.
 
 9.  After the OpenStack environment configurations are validated, you are prompted to enter additional OpenStack
     configuration values.
 
-    | **Parameter**                             | **Description**                                                                                                                                                                                                                                                               |
-    | ----------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Domain**                                | Select the domain you want to target for the PCG deployment. Example: `Default`.                                                                                                                                                                                              |
-    | **Region**                                | Select a region for the PCG deployment.                                                                                                                                                                                                                                       |
-    | **Project**                               | Specify an OpenStack project to place the PCG cluster in.                                                                                                                                                                                                                     |
-    | **Placement Type**                        | Select a **Static** or **Dynamic** placement type. For static placement, cluster nodes are placed into existing networks. For dynamic placement, a new network is created.                                                                                                                   |
-    | **Network**                               | (Static placement only) Select an existing network.                                                                                                                                                                                                      |
-    | **Subnet**                                | (Static placement only) Select an existing subnet.                                                                                                                                                                                                       |
-    | **DNS Server(s)**                         | (Dynamic placement only) Enter a comma-separated list of DNS server IPs.                                                                                                                                                                                  |
-    | **Node CIDR**                             | (Dynamic placement only) Enter a node CIDR. Example: `10.55.0.0/24`.                                                                                                                                                                                      |
+    | **Parameter**                             | **Description**                                                                                                                                                                                                                                              |
+    | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+    | **Domain**                                | Select the domain you want to target for the PCG deployment. Example: `Default`.                                                                                                                                                                             |
+    | **Region**                                | Select a region for the PCG deployment.                                                                                                                                                                                                                      |
+    | **Project**                               | Specify an OpenStack project to place the PCG cluster in.                                                                                                                                                                                                    |
+    | **Placement Type**                        | Select a **Static** or **Dynamic** placement type. For static placement, cluster nodes are placed into existing networks. For dynamic placement, a new network is created.                                                                                   |
+    | **Network**                               | (Static placement only) Select an existing network.                                                                                                                                                                                                          |
+    | **Subnet**                                | (Static placement only) Select an existing subnet.                                                                                                                                                                                                           |
+    | **DNS Server(s)**                         | (Dynamic placement only) Enter a comma-separated list of DNS server IPs.                                                                                                                                                                                     |
+    | **Node CIDR**                             | (Dynamic placement only) Enter a node CIDR. Example: `10.55.0.0/24`.                                                                                                                                                                                         |
     | **SSH Public Key**                        | Provide the public OpenSSH key for the PCG cluster. Use this key when establishing an SSH connection with the PCG cluster. Your system default text editor, such as Vi, will open and prompt you to enter the SSH key. Save and exit the file when finished. |
-    | **Patch OS on boot**                      | Indicate whether to patch the OS of the PCG hosts on the first boot.                                                                                                                                                                                   |
-    | **Reboot nodes once OS patch is applied** | Indicate whether to reboot PCG nodes after OS patches are complete. This applies only if **Patch OS on boot** is enabled.                                                                                                                |
-    | **AZs**                                   | Select the availability zones for the PCG cluster.                                                                                                                                                                                                                            |
-    | **Flavor**                                | Specify the OpenStack Flavor for the PCG nodes.                                                                                                                                                                                                                               |
-    | **Number of Nodes**                       | Specify the number of nodes for the PCG cluster. Available options are **1** or **3**. We recommend three nodes for a High Availability (HA) cluster in a production environment.                                                                                                                                                                   |
-    | **Node Affinity**                         | Enter `y` to schedule all Palette pods on the control plane node.                                                                                                                                                                                                             |
+    | **Patch OS on boot**                      | Indicate whether to patch the OS of the PCG hosts on the first boot.                                                                                                                                                                                         |
+    | **Reboot nodes once OS patch is applied** | Indicate whether to reboot PCG nodes after OS patches are complete. This applies only if **Patch OS on boot** is enabled.                                                                                                                                    |
+    | **AZs**                                   | Select the availability zones for the PCG cluster.                                                                                                                                                                                                           |
+    | **Flavor**                                | Specify the OpenStack Flavor for the PCG nodes.                                                                                                                                                                                                              |
+    | **Number of Nodes**                       | Specify the number of nodes for the PCG cluster. Available options are **1** or **3**. We recommend three nodes for a High Availability (HA) cluster in a production environment.                                                                            |
+    | **Node Affinity**                         | Enter `y` to schedule all Palette pods on the control plane node.                                                                                                                                                                                            |
 
-10.   <PartialsComponent category="pcg" name="pcg-cluster-provisioning" edition="OpenStack" />
+10. <PartialsComponent category="pcg" name="pcg-cluster-provisioning" edition="OpenStack" />
 
-11.   <PartialsComponent category="pcg" name="pcg-kind-cleanup" />
+11. <PartialsComponent category="pcg" name="pcg-kind-cleanup" />
 
 ## Validate
 
@@ -370,7 +371,6 @@ The following permissions are required to deploy a PCG to OpenStack and for Pale
 
 ## Next Steps
 
-After you have successfully deployed the PCG into your OpenStack environment, you can deploy Kubernetes clusters in
-your OpenStack environment through Palette. Check out the
-[Deploying an OpenStack Cluster](../../data-center/openstack.md) guide to learn how to deploy a Kubernetes cluster in
-OpenStack that is managed by Palette.
+After you have successfully deployed the PCG into your OpenStack environment, you can deploy Kubernetes clusters in your
+OpenStack environment through Palette. Check out the [Deploying an OpenStack Cluster](../../data-center/openstack.md)
+guide to learn how to deploy a Kubernetes cluster in OpenStack that is managed by Palette.

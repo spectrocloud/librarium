@@ -101,21 +101,21 @@ is not required for the DNS records to be accessible from the internet.
 8. Provide the MAAS API key and the MAAS server URL.
 
    | **Parameter**       | **Description**                                                  |
-   | ------------------ | ---------------------------------------------------------------- |
+   | ------------------- | ---------------------------------------------------------------- |
    | **MAAS API Key**    | Enter the MAAS API key.                                          |
    | **MAAS Server URL** | Enter the MAAS server URL. Example: `http://10.1.1.1:5240/MAAS`. |
 
 9. Configure the PCG cluster. The values provided determine which machines should be selected in MAAS for the PCG
    deployment.
 
-   | **Parameter**                             | **Description**                                                                                       |
-   | ----------------------------------------- | ----------------------------------------------------------------------------------------------------- |
-   | **Domain**                                | Enter the MAAS domain.                                                                               |
-   | **Patch OS on boot**                      | Indicate whether to patch the OS of the PCG hosts on the first boot.           |
-   | **Reboot nodes once OS patch is applied** | Indicate whether to reboot PCG nodes after OS patches are applied. This applies only if **Patch OS on boot** is enabled.             |
-   | **Availability Zone**                     | Enter the availability zones for the PCG cluster.                                                    |
+   | **Parameter**                             | **Description**                                                                                                                                                                 |
+   | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Domain**                                | Enter the MAAS domain.                                                                                                                                                          |
+   | **Patch OS on boot**                      | Indicate whether to patch the OS of the PCG hosts on the first boot.                                                                                                            |
+   | **Reboot nodes once OS patch is applied** | Indicate whether to reboot PCG nodes after OS patches are applied. This applies only if **Patch OS on boot** is enabled.                                                        |
+   | **Availability Zone**                     | Enter the availability zones for the PCG cluster.                                                                                                                               |
    | **Number of Nodes**                       | Enter the number of nodes for the PCG cluster. Available options are **1** or **3**. We recommend three nodes for a High Availability (HA) cluster in a production environment. |
-   | **Node Affinity**                         | Select `y` to allow all Palette pods to be scheduled on control plane nodes.                          |
+   | **Node Affinity**                         | Select `y` to allow all Palette pods to be scheduled on control plane nodes.                                                                                                    |
 
    :::warning
 
@@ -124,9 +124,9 @@ is not required for the DNS records to be accessible from the internet.
 
    :::
 
-10.  <PartialsComponent category="pcg" name="pcg-cluster-provisioning" edition="MAAS" />
+10. <PartialsComponent category="pcg" name="pcg-cluster-provisioning" edition="MAAS" />
 
-11.  <PartialsComponent category="pcg" name="pcg-kind-cleanup" />
+11. <PartialsComponent category="pcg" name="pcg-kind-cleanup" />
 
 ## Validate
 
@@ -134,7 +134,7 @@ is not required for the DNS records to be accessible from the internet.
 
 ## Next Steps
 
-After you have successfully deployed the PCG in your MAAS environment, you can deploy Kubernetes clusters in your
-MAAS environment through Palette. Check out the
+After you have successfully deployed the PCG in your MAAS environment, you can deploy Kubernetes clusters in your MAAS
+environment through Palette. Check out the
 [Create and Manage MAAS Clusters](../../data-center/maas/create-manage-maas-clusters.md) guide to learn how to deploy a
 Kubernetes cluster in MAAS that is managed by Palette.

@@ -186,19 +186,19 @@ The following requirements apply to tags:
 
 8.  Next, fill out the VMware resource configurations.
 
-    | **Parameter**                                            | **Description**                                                                                                                                                                                                                                                               |
-    | -------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Datacenter**                                           | Enter the vSphere data center to target when deploying the PCG cluster.                                                                                                                                                                                                             |
-    | **Folder**                                               | Enter the folder to target when deploying the PCG cluster.                                                                                                                                                                                                                          |
-    | **Network**                                              | Enter the port group to connect the PCG cluster to.                                                                                                                                                                                                                    |
-    | **Resource Pool**                                        | Enter the resource pool to target when deploying the PCG cluster.                                                                                                                                                                                                                   |
-    | **Cluster**                                              | Enter the compute cluster to use for the PCG deployment.                                                                                                                                                                                                                            |
-    | **Select specific Datastore or use a VM Storage Policy** | Enter the datastore or VM Storage policy to apply to the PCG cluster.                                                                                                                                                                                                        |
-    | **Datastore**                                            | Enter the datastore to use for the PCG deployment.                                                                                                                                                                                                                                  |
-    | **Add another Fault Domain**                             | Specify any fault domains you would like to use.                                                                                                                                                                                                                              |
-    | **NTP Servers**                                          | Specify the IP address for any Network Time Protocol (NTP) servers the PCG cluster can reference. We recommend you specify at least one NTP server.                                                                                                                           |
-    | **SSH Public Key**                        | Provide the public OpenSSH key for the PCG cluster. Use this key when establishing an SSH connection with the PCG cluster. Your system default text editor, such as Vi, will open and prompt you to enter the SSH key. Save and exit the file when finished. |
-    | **Number of Nodes**                                      | Enter the number of nodes that will make up the cluster. Available options are **1** or **3**. We recommend three nodes for a High Availability (HA) cluster in a production environment.                                                                                           |
+    | **Parameter**                                            | **Description**                                                                                                                                                                                                                                              |
+    | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+    | **Datacenter**                                           | Enter the vSphere data center to target when deploying the PCG cluster.                                                                                                                                                                                      |
+    | **Folder**                                               | Enter the folder to target when deploying the PCG cluster.                                                                                                                                                                                                   |
+    | **Network**                                              | Enter the port group to connect the PCG cluster to.                                                                                                                                                                                                          |
+    | **Resource Pool**                                        | Enter the resource pool to target when deploying the PCG cluster.                                                                                                                                                                                            |
+    | **Cluster**                                              | Enter the compute cluster to use for the PCG deployment.                                                                                                                                                                                                     |
+    | **Select specific Datastore or use a VM Storage Policy** | Enter the datastore or VM Storage policy to apply to the PCG cluster.                                                                                                                                                                                        |
+    | **Datastore**                                            | Enter the datastore to use for the PCG deployment.                                                                                                                                                                                                           |
+    | **Add another Fault Domain**                             | Specify any fault domains you would like to use.                                                                                                                                                                                                             |
+    | **NTP Servers**                                          | Specify the IP address for any Network Time Protocol (NTP) servers the PCG cluster can reference. We recommend you specify at least one NTP server.                                                                                                          |
+    | **SSH Public Key**                                       | Provide the public OpenSSH key for the PCG cluster. Use this key when establishing an SSH connection with the PCG cluster. Your system default text editor, such as Vi, will open and prompt you to enter the SSH key. Save and exit the file when finished. |
+    | **Number of Nodes**                                      | Enter the number of nodes that will make up the cluster. Available options are **1** or **3**. We recommend three nodes for a High Availability (HA) cluster in a production environment.                                                                    |
 
 9.  Specify the IP pool configuration. You have the option to select a static placement or use Dynamic Host
     Configuration Protocol (DHCP). With static placement, an IP pool is created, and the PCG VMs are assigned IP
@@ -220,24 +220,26 @@ The following requirements apply to tags:
     | **IP End range**                           | Enter the last address in the PCG IP pool range.                                                                                   |
     | **Network Prefix**                         | Enter the network prefix for the IP pool range. Valid values are network CIDR subnet masks from the range `0 - 32`. Example: `18`. |
     | **Gateway IP Address**                     | Enter the IP address of the IP gateway.                                                                                            |
-    | **Name servers**                           | Enter a comma-separated list of DNS name server IP addresses.                                                                              |
-    | **Name server search suffixes (optional)** | Enter a comma-separated list of DNS search domains.                                                                                        |
+    | **Name servers**                           | Enter a comma-separated list of DNS name server IP addresses.                                                                      |
+    | **Name server search suffixes (optional)** | Enter a comma-separated list of DNS search domains.                                                                                |
 
     ##### DHCP Placement Configuration
 
-    | **Parameter**      | **Description**                             |
-    | ------------------ | ------------------------------------------- |
+    | **Parameter**      | **Description**                                     |
+    | ------------------ | --------------------------------------------------- |
     | **Search domains** | Enter a comma-separated list of DNS search domains. |
 
-10.  Specify the cluster boot configuration.
+10. Specify the cluster boot configuration.
+
 
     | **Parameter**                             | **Description**                                                                                                                                                |
     | ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
     | **Patch OS on boot**                      | Indicate whether to patch the OS of the PCG hosts on the first boot.                                                                                                                                                                                   |
     | **Reboot nodes once OS patch is applied** | Indicate whether to reboot PCG nodes after OS patches are complete. This applies only if **Patch OS on boot** is enabled.                                                                                                                |
 
-11.  Enter the vSphere Machine configuration for the Private Cloud Gateway. We recommend `M` or greater for production
+11. Enter the vSphere Machine configuration for the Private Cloud Gateway. We recommend `M` or greater for production
     workloads.
+
 
     | **Parameter** | **Description**                                                                                                                                                                                                                                                 |
     | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -260,9 +262,9 @@ The following requirements apply to tags:
     | ----------------- | ----------------------------------------------------------------- |
     | **Node Affinity** | Enter `y` to schedule all Palette pods on the control plane node. |
 
-13.  <PartialsComponent category="pcg" name="pcg-cluster-provisioning" edition="VMware vSphere" />
+13. <PartialsComponent category="pcg" name="pcg-cluster-provisioning" edition="VMware vSphere" />
 
-14.  <PartialsComponent category="pcg" name="pcg-kind-cleanup" />
+14. <PartialsComponent category="pcg" name="pcg-kind-cleanup" />
 
 ## Validate
 
