@@ -65,6 +65,7 @@ server. The region experiences a bad weather event that causes a sustained outag
 
 - At least one Edge host registered with your Palette account.
 - Your cluster profile must have K3s, RKE2, or PXK-E as its Kubernetes distribution.
+  - Only single-node PXK-E clusters support network overlay. Multi-node PXK-E clusters do not support overlay.
 - All Edge hosts must be on the same Layer-2 network.
 - Broadcast messages must be allowed between all Edge hosts participating in the cluster.
 
@@ -72,9 +73,9 @@ server. The region experiences a bad weather event that causes a sustained outag
     broadcasts between hosts.
   - Switches cannot implement features that block broadcasts between ports where Edge hosts are connected.
 
-- If you are launching your Edge hosts in virtual machine environments and you are using either Cilium or Flannel as
-  your Container Network Interface (CNI), ensure that you add the following commands in the `user-data` file at the boot
-  stage. Replace `<interface-name>` with the name of the network interface on your Edge host.
+- If your host is a virtual machine using a VMXNET3 adapter, ensure that you add the following commands in the
+  `user-data` file at the boot stage. Replace `<interface-name>` with the name of the network interface on your Edge
+  host.
 
   ```yaml {2-6}
   stages:
