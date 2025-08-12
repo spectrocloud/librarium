@@ -104,7 +104,8 @@ You can assign resource quotas for resource sharing among multiple users who hav
 
 ![Cluster Settings pane displaying Workspace Quota section of Namespaces tab](/clusters_cluster-management_ns-resource-quota_4-7.webp)
 
-7. Specify the number of CPUs and GPUs, and the amount of memory (in GB) to allocate to the namespace. The **Confirm** your changes.
+7. Specify the number of CPUs and GPUs, and the amount of memory (in GB) to allocate to the namespace. The **Confirm**
+   your changes.
 
 :::info
 
