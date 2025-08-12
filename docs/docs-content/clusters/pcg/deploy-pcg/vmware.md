@@ -231,27 +231,25 @@ The following requirements apply to tags:
 
 10. Specify the cluster boot configuration.
 
-
-    | **Parameter**                             | **Description**                                                                                                                                                |
-    | ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Patch OS on boot**                      | Indicate whether to patch the OS of the PCG hosts on the first boot.                                                                                                                                                                                   |
-    | **Reboot nodes once OS patch is applied** | Indicate whether to reboot PCG nodes after OS patches are complete. This applies only if **Patch OS on boot** is enabled.                                                                                                                |
+    | **Parameter**                             | **Description**                                                                                                           |
+    | ----------------------------------------- | ------------------------------------------------------------------------------------------------------------------------- |
+    | **Patch OS on boot**                      | Indicate whether to patch the OS of the PCG hosts on the first boot.                                                      |
+    | **Reboot nodes once OS patch is applied** | Indicate whether to reboot PCG nodes after OS patches are complete. This applies only if **Patch OS on boot** is enabled. |
 
 11. Enter the vSphere Machine configuration for the Private Cloud Gateway. We recommend `M` or greater for production
     workloads.
 
-
-    | **Parameter** | **Description**                                                                                                                                                                                                                                                 |
-    | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **S**         | 4 CPUs, 4 GB of memory, and 60 GB of storage                                                                                                                                                                                                                     |
-    | **M**         | 8 CPUs, 8 GB of memory, and 100 GB of storage                                                                                                                                                                                                                    |
-    | **L**         | 16 CPUs, 16 GB of memory, and 120 GB of storage                                                                                                                                                                                                                  |
+    | **Parameter** | **Description**                                                                                                                                                                                                                                             |
+    | ------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **S**         | 4 CPUs, 4 GB of memory, and 60 GB of storage                                                                                                                                                                                                                |
+    | **M**         | 8 CPUs, 8 GB of memory, and 100 GB of storage                                                                                                                                                                                                               |
+    | **L**         | 16 CPUs, 16 GB of memory, and 120 GB of storage                                                                                                                                                                                                             |
     | **Custom**    | Specify a custom configuration. If you select `Custom`, you are prompted to enter the number of CPUs, memory, and storage to allocate to the PCG VM. Refer to the [Custom Machine Configuration](#custom-machine-configuration) table for more information. |
 
     #### Custom Machine Configuration
 
-    | **Parameter** | **Description**                                           |
-    | ------------- | --------------------------------------------------------- |
+    | **Parameter** | **Description**                              |
+    | ------------- | -------------------------------------------- |
     | **CPU**       | The number of CPUs in the VM.                |
     | **Memory**    | The number of memory to allocate to the VM.  |
     | **Storage**   | The amount of storage to allocate to the VM. |
