@@ -24,6 +24,8 @@ Once Palette VerteX has been installed, you can download pack bundles and upload
 external registry. These pack bundles are used to create your cluster profiles. You will then be able to deploy clusters
 in your environment.
 
+## Third Party Packs
+
 There is an additional option to download and install the Third Party packs that provide complementary functionality to
 Palette VerteX. These packs are not required for Palette VerteX to function, but they do provide additional features and
 capabilities as described in the following table.
@@ -201,7 +203,8 @@ configuration scanning, penetration scanning, SBOM scanning, and conformance sca
 
 ## Upgrade Palette VerteX
 
-Follow the instructions to upgrade Palette VerteX using a content bundle. The content bundle is used to upgrade the Palette VerteX instance to the latest version.
+Follow the instructions to upgrade Palette VerteX using a content bundle. The content bundle is used to upgrade the
+Palette VerteX instance to the latest version.
 
 ### Prerequisites
 

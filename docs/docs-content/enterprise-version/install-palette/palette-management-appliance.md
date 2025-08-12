@@ -24,6 +24,8 @@ Once Palette has been installed, you can download pack bundles and upload them t
 external registry. These pack bundles are used to create your cluster profiles. You will then be able to deploy clusters
 in your environment.
 
+## Third Party Packs
+
 There is an additional option to download and install the Third Party packs that provide complementary functionality to
 Palette. These packs are not required for Palette to function, but they do provide additional features and capabilities
 as described in the following table.
@@ -198,7 +200,8 @@ additional functionality and capabilities that enhance the Palette experience.
 
 ## Upgrade Palette
 
-Follow the instructions to upgrade Palette using a content bundle. The content bundle is used to upgrade the Palette instance to the latest version.
+Follow the instructions to upgrade Palette using a content bundle. The content bundle is used to upgrade the Palette
+instance to the latest version.
 
 ### Prerequisites
 
