@@ -51,12 +51,12 @@ tags: ["release-notes"]
   that Role-Based Access Control (RBAC) permissions are consistently applied for all deployed clusters.
 - <TpBadge /> Palette now supports Canonical Kubernetes using the Ubuntu for Canonical Kubernetes OS pack. This feature
   currently supports the creation of [MAAS clusters](../clusters/data-center/maas/maas.md) with Canonical Kubernetes
-  version 1.32. Refer to the [Architecture](../clusters/data-center/maas/architecture.md#palette-maas-distribution) for
+  version 1.32. Refer to the MAAS [Architecture](../clusters/data-center/maas/architecture.md#palette-maas-distribution) page for
   further details.
 - [Workspace resource quotas](../workspace/workspace-mgmt/resource-mgmt.md#implement-resource-quotas) and
   [namespace resource quotas](../clusters/cluster-management/namespace-management.md#assign-resource-quotas) now support
   GPU limits. This feature currently supports Nvidia GPUs only.
-- Palette now supports the AI pack type. This category streamlines the grouping and finding of AI related packs. Refer
+- Palette now supports the AI pack type. This category streamlines the grouping and finding of AI-related packs. Refer
   to the [Packs List](../integrations/integrations.mdx) to search and filter packs.
 
 #### Improvements
@@ -119,7 +119,7 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
   [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
 - Crossplane version 0.24.1 of the
   [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette/v0.24.1)
-  is available.
+  is now available.
 
 ### Virtual Machine Orchestrator (VMO)
 
