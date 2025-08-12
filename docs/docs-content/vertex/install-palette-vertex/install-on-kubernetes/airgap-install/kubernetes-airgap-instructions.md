@@ -234,20 +234,7 @@ Complete the following steps before deploying the airgap VerteX installation.
 
     Upon completion, a success message will be displayed. The output is condensed for brevity.
 
-    ```shell hideClipboard {10}
-    Verifying archive integrity...  100%   MD5 checksums are OK. All good.
-    Uncompressing Airgap Setup - Version 4.0.17  100%
-    Setting up Packs
-    - Pushing Pack cni-calico:3.25.1
-    ...
-    Setting up Images
-    - Pushing image docker.io/kindest/kindnetd:v20230227-15197099
-    - Pushing image gcr.io/cloud-provider-vsphere/cpi/release/manager:v1.22.8
-    .....
-    Preparing Manifests Archive
-    Manifests are available in /tmp/spectro-manifests-1696971110.zip.
-    Setup Completed
-    ```
+    <PartialsComponent category="self-hosted" name="airgap-binary-execution" />
 
     :::info
 
