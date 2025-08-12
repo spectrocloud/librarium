@@ -1,5 +1,11 @@
+#!/bin/bash
+
 lint-staged
 
 npm run clean-api-docs
 
 make format-images
+
+make sanitize-ignore-file
+
+make check-branch-name
