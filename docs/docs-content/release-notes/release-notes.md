@@ -86,7 +86,7 @@ distribution now supports virtual network overlays for multi-node clusters deplo
 [appliance mode](../deployment-modes/appliance-mode/appliance-mode.md). Refer to the
 [Enable Overlay Network](../clusters/edge/networking/vxlan-overlay.md) guide for further details.
 <!-- prettier-ignore-end -->
-- The [Kubeconfig](../clusters/cluster-management/kubeconfig.md) file names of Edge clusters deployed with with
+- The [Kubeconfig](../clusters/cluster-management/kubeconfig.md) file names of Edge clusters deployed with
   [agent mode](../deployment-modes/agent-mode/agent-mode.md) or
   [appliance mode](../deployment-modes/appliance-mode/appliance-mode.md) now contain the cluster name.
 
