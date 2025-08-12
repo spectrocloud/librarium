@@ -19,13 +19,14 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in AWS.
 - A public [AWS](https://repost.aws/knowledge-center/create-and-activate-aws-account) cloud account with the required
   [IAM Policies](../../clusters/public-cloud/aws/required-iam-policies.md).
 - An SSH key pair available in the region where you want to deploy the cluster. Check out the AWS
-  [Create EC2 SSH Key Pair](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/create-key-pairs.html) page for guidance.
+  [Create EC2 SSH Key Pair](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/create-key-pairs.html) page for
+  guidance.
 - The AWS account must be registered in Palette. Follow the
   [Add an AWS Account to Palette](../../clusters/public-cloud/aws/add-aws-accounts.md) guide to register your account in
   Palette.
 - A Kubernetes cluster with at least 2 GB of RAM. This guide uses a [kind](https://kind.sigs.k8s.io) cluster as an
-  example. Refer to the [kind Quick Start](https://kind.sigs.k8s.io/docs/user/quick-start/) guide to learn how to install kind
-  and create a cluster.
+  example. Refer to the [kind Quick Start](https://kind.sigs.k8s.io/docs/user/quick-start/) guide to learn how to
+  install kind and create a cluster.
 - The following software must be installed on your host:
   - [curl](https://curl.se/docs/install.html)
   - [jq](https://jqlang.github.io/jq/download/)

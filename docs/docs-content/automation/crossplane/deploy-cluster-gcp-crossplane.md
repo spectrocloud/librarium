@@ -24,8 +24,8 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in GCP.
   [Register and Manage GCP Accounts](../../clusters/public-cloud/gcp/add-gcp-accounts.md) guide to register your account
   in Palette.
 - A Kubernetes cluster with at least 2 GB of RAM. This guide uses a [kind](https://kind.sigs.k8s.io) cluster as an
-  example. Refer to the [kind Quick Start](https://kind.sigs.k8s.io/docs/user/quick-start/) guide to learn how to install kind
-  and create a cluster.
+  example. Refer to the [kind Quick Start](https://kind.sigs.k8s.io/docs/user/quick-start/) guide to learn how to
+  install kind and create a cluster.
 - The following software must be installed on your host:
   - [curl](https://curl.se/docs/install.html)
   - [jq](https://jqlang.github.io/jq/download/)
@@ -35,75 +35,7 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in GCP.
 
 ## Deploy a GCP IaaS Cluster with Crossplane
 
-1.  Open a terminal session and set the kubectl context to your cluster. Replace `<cluster-name>` with the name of your
-    cluster.
-
-    ```bash
-    kubectl cluster-info --context <cluster-name>
-    ```
-
-    ```text hideClipboard title="Example output"
-    Kubernetes control plane is running at https://127.0.0.1:65306
-    CoreDNS is running at https://127.0.0.1:65306/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
-
-    To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
-    ```
-
-2.  Next, add the Crossplane Helm chart.
-
-    ```bash
-    helm repo add \
-    crossplane-stable https://charts.crossplane.io/stable
-    helm repo update
-    ```
-
-    ```text hideClipboard title="Example output"
-    "crossplane-stable" has been added to your repositories
-    Hang tight while we grab the latest from your chart repositories...
-    ...Successfully got an update from the "ingress-nginx" chart repository
-    ...Successfully got an update from the "crossplane-stable" chart repository
-    Update Complete. ⎈Happy Helming!⎈
-    ```
-
-3.  Install the Crossplane components using the `helm install` command.
-
-    ```bash
-    helm install crossplane \
-    crossplane-stable/crossplane \
-    --namespace crossplane-system \
-    --create-namespace
-    ```
-
-    ```bash hideClipboard title="Example output"
-    NAME: crossplane
-    LAST DEPLOYED: Fri Aug  8 08:27:46 2025
-    NAMESPACE: crossplane-system
-    STATUS: deployed
-    REVISION: 1
-    TEST SUITE: None
-    NOTES:
-    Release: crossplane
-
-    Chart Name: crossplane
-    Chart Description: Crossplane is an open source Kubernetes add-on that enables platform teams to assemble infrastructure from multiple vendors, and expose higher level self-service APIs for application teams to consume.
-    Chart Version: 1.20.0
-    Chart Application Version: 1.20.0
-
-    Kube Version: v1.33.1
-    ```
-
-    Verify the installation with the `kubectl get pods` command. The output must contain two Crossplane pods with a
-    `Running` status.
-
-    ```bash
-    kubectl get pods --namespace crossplane-system
-    ```
-
-    ```text hideClipboard title="Example output"
-    NAME                                     READY   STATUS    RESTARTS   AGE
-    crossplane-869d89c8f8-7jc6c              1/1     Running   0          20s
-    crossplane-rbac-manager-784b496b-8mr6z   1/1     Running   0          20s
-    ```
+<PartialsComponent category="crossplane" name="install-crossplane" />
 
 4.  Once Crossplane is installed, create a folder to store the Kubernetes configuration files.
 
@@ -111,14 +43,7 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in GCP.
     mkdir crossplane-gcp
     ```
 
-5.  Fetch the latest version of the Palette Crossplane provider. Alternatively, identify your desired version from the
-    [Upbound Marketplace](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) and set the
-    value manually.
-
-    ```bash
-    PALETTE_CROSSPLANE_PROVIDER_VERSION=$(curl -s https://api.github.com/repos/crossplane-contrib/provider-palette/releases/latest | jq -r .tag_name)
-    echo Palette Crossplane Provider Version: $PALETTE_CROSSPLANE_PROVIDER_VERSION
-    ```
+5.  <PartialsComponent category="crossplane" name="palette-crossplane-provider-version" />
 
 6.  Create the following Kubernetes configuration for the Palette Crossplane provider.
 
@@ -139,14 +64,7 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in GCP.
     cat crossplane-gcp/provider-palette.yaml
     ```
 
-    ```yaml hideClipboard title="Example output" {6}
-    apiVersion: pkg.crossplane.io/v1
-    kind: Provider
-    metadata:
-      name: provider-palette
-    spec:
-      package: xpkg.upbound.io/crossplane-contrib/provider-palette:v0.24.0
-    ```
+    <PartialsComponent category="crossplane" name="provider-palette-yaml" />
 
 7.  Issue the command below to install the Palette Crossplane provider. Crossplane installs the CRDs that allow you to
     create Palette resources directly inside Kubernetes.
@@ -155,30 +73,9 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in GCP.
     kubectl apply --filename crossplane-gcp/provider-palette.yaml
     ```
 
-    ```bash hideClipboard title="Example output"
-    provider.pkg.crossplane.io/provider-palette created
-    ```
+    <PartialsComponent category="crossplane" name="provider-palette-created" />
 
-    Check the installation with the `kubectl get providers` command.
-
-    ```bash
-    kubectl get providers
-    ```
-
-    ```text hideClipboard title="Example output"
-    NAME               INSTALLED   HEALTHY   PACKAGE                                                       AGE
-    provider-palette   True        True      xpkg.upbound.io/crossplane-contrib/provider-palette:v0.24.0   40s
-    ```
-
-8.  Set the following variables for your Palette environment. Replace `<palette-api-key>` with your Palette API key,
-    `<palette-project-name>` with the name of the Palette project you are deploying your cluster in, and
-    `<palette-endpoint>` with the endpoint of your Palette environment.
-
-    ```bash
-    PALETTE_API_KEY=<palette-api-key>
-    PALETTE_PROJECT_NAME=<palette-project-name>
-    PALETTE_HOST=<palette-endpoint>
-    ```
+8.  <PartialsComponent category="crossplane" name="palette-environment-variables" />
 
 9.  Create a file to store the Kubernetes Secret containing your Palette API key and environment details. The Palette
     provider requires credentials to create and manage resources.
@@ -207,21 +104,7 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in GCP.
     cat crossplane-gcp/secret-gcp.yaml
     ```
 
-    ```yaml hideClipboard title="Example output" {10-12}
-    apiVersion: v1
-    kind: Secret
-    metadata:
-      name: palette-creds
-      namespace: crossplane-system
-    type: Opaque
-    stringData:
-      credentials: |
-      {
-      "api_key": "**************",
-      "project_name": "Default",
-      "host": "console.spectrocloud.com"
-      }
-    ```
+    <PartialsComponent category="crossplane" name="secret-cloud-yaml" />
 
 10. Create the Kubernetes secret.
 
@@ -262,16 +145,7 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in GCP.
     providerconfig.palette.crossplane.io/default created
     ```
 
-13. Once the Palette Crossplane provider is installed and set up, create a file to store the GCP
-    [cluster profile](../../profiles/cluster-profiles/cluster-profiles.md) configuration.
-
-    :::warning
-
-    We recommend creating the cluster profile file first and directly pasting the contents into the file. Redirecting
-    cluster profile configurations from the terminal into the file can misinterpret escape characters, resulting in an
-    invalid file.
-
-    :::
+13. <PartialsComponent category="crossplane" name="cluster-profile-warning" />
 
     ```bash
     vi crossplane-gcp/cluster-profile-gcp.yaml
@@ -454,15 +328,7 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in GCP.
     | Network       | Public Repo  | `cni-calico`     | `3.30.1`         |
     | Storage       | Public Repo  | `csi-gcp-driver` | `1.15.4`         |
 
-    :::tip
-
-    If you want to use different packs in your cluster profile, use the Palette UI to simulate creating a cluster
-    profile to gather the pack's required values. During the cluster profile creation, select the **API** button in the
-    top-right to display the API payload. Replace the values of each pack's `name`, `tag`, `uid`, `registryUid`, and
-    `values` as necessary. For information on creating cliuster profiles, refer to our
-    [Create Cluster Profiles](../../profiles/cluster-profiles/create-cluster-profiles/create-cluster-profiles.md) guide.
-
-    :::
+    <PartialsComponent category="crossplane" name="cluster-profile-tip" />
 
 15. Create the cluster profile in Palette.
 
