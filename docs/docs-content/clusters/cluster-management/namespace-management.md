@@ -150,6 +150,6 @@ Validate that the namespace was successfully deleted.
 
 3. Select the cluster that contains the namespace you want to delete and view its details.
 
-4. In the **Settings** pane, select **Cluster Settings** and select **RBAC** > **Namespaces** tab.
+4. In the **Settings** pane, select **Cluster Settings**, and then select **RBAC** > **Namespaces** tab.
 
 The namespace you created is no longer listed under **Namespace Quota**.
