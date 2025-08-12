@@ -112,7 +112,7 @@ When using **GPU Allocation** you must use a whole number and must select the ve
 ensure that the appropriate GPU device plugin is installed and compatible with your nodes to enforce the quota as
 Palette does not verify GPU vendor selection.
 
-At this time, NVIDIA is the only supported vendor.
+Currently, NVIDIA is the only supported vendor.
 
 :::
 
