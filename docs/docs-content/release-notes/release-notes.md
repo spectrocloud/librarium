@@ -45,19 +45,42 @@ tags: ["release-notes"]
 
 <!-- prettier-ignore-end -->
 
+- Palette now provides a new platform setting for
+  [automatic cluster role bindings](../clusters/cluster-management/platform-settings/cluster-auto-rbac.md). This feature
+  allows Palette to automatically apply the appropriate Kubernetes cluster role bindings based on user roles, ensuring
+  that Role-Based Access Control (RBAC) permissions are consistently applied for all deployed clusters.
+- <TpBadge /> Palette now supports Canonical Kubernetes using the Ubuntu for Canonical Kubernetes OS pack. This feature
+  currently supports the creation of [MAAS clusters](../clusters/data-center/maas/maas.md) with Canonical Kubernetes
+  version 1.32. Refer to the [Architecture](../clusters/data-center/maas/architecture.md#palette-maas-distribution) for
+  further details.
+- [Workspace resource quotas](../workspace/workspace-mgmt/resource-mgmt.md#implement-resource-quotas) and
+  [namespace resource quotas](../clusters/cluster-management/namespace-management.md#assign-resource-quotas) now support
+  GPU limits. This feature currently supports Nvidia GPUs only.
+
 #### Improvements
 
 - Nodes provisioned through [Karpenter](https://karpenter.sh/docs/) are now visible in Palette and supported for
   read-only operations, such as billing and monitoring. However,
   [Day-2 operations](../clusters/cluster-management/cluster-management.md) are not supported.
+- <TpBadge /> The [Artifact Studio](../downloads/artifact-studio.md) has been improved to display a technical preview
+  banner on all pages.
 
 #### Deprecations and Removals
 
 ### Edge
 
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.7.a Palette release is 4.7.5.
+
+:::
+
 #### Features
 
 #### Improvements
+
+- [Remote shell](../clusters/edge/cluster-management/remote-shell.md) has now exited Tech Preview and is ready for
+  production workloads.
 
 #### Bug Fixes
 
@@ -79,6 +102,15 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 #### Features
 
 #### Improvements
+
+### Virtual Machine Orchestrator (VMO)
+
+#### Features
+
+- Palette now supports the configuration of a direct address for the **Virtual Machines** dashboard of clusters
+  configured using [Virtual Machine Orchestrator](../vm-management/vm-management.md). Refer to the
+  [Configure Direct Access to Virtual Machine Dashboard](../vm-management/configure-console-base-address.md) guide for
+  further details.
 
 ### Docs and Education
 
