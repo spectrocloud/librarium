@@ -96,7 +96,7 @@ refer to [Kubernetes documentation](https://kubernetes.io/docs/concepts/policy/r
    quota cannot exceed 8 Gi of memory, 8 CPUs and 8GPUs.
 
    The following resource quota configuration is not allowed for a workspace with 8 Gi of memory and 8 CPUs because the
-   resource quotas add up to 11 Gi, 11 CPUs and 11 GPUs.
+   resource quotas add up to 11 Gi, 11 CPUs, and 11 GPUs.
 
    |             | Cluster 1            | Cluster 2            |
    | ----------- | -------------------- | -------------------- |
