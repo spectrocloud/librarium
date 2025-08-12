@@ -1,0 +1,153 @@
+---
+partial_category: pcg
+partial_name: pcg-initial-installation
+---
+
+1.  On your Linux host with the Palette CLI installed, open a terminal session.
+
+2.  Create a Palette CLI encryption passphrase and set it as an environment variable. Replace `<palette-cli-encryption-passphrase>` with your passphrase.
+
+    ```shell
+    export PALETTE_ENCRYPTION_PASSWORD=<palette-cli-encryption-passphrase>
+    ```
+
+3.  Issue the following command to authenticate your Palette CLI installation with Palette. When prompted, enter the required information. Refer to
+    the table below for information about each parameter.
+
+    ```shell
+    palette login
+    ```
+
+    | **Parameter**                  | **Description**                                                                                                                                                                                                                                                    |
+    | :----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+    | **Spectro Cloud Console**      | Enter the Palette endpoint URL. When using the Palette SaaS service, enter `https://console.spectrocloud.com`. When using a self-hosted instance of Palette, enter the URL for that instance.                                                                      |
+    | **Allow Insecure Connection**  | Bypass x509 server Certificate Authority (CA) verification. Enter `y` if you are using a self-hosted Palette or Palette VerteX instance with self-signed TLS certificates and need to provide a file path to the instance CA. Otherwise, enter `n`. |
+    | **Spectro Cloud API Key**      | Enter your Palette API Key. Refer to the <VersionedLink text="Create API Key" url="/user-management/authentication/api-key/create-api-key" /> guide for more information.                                                                                                           |
+    | **Spectro Cloud Organization** | Select your Palette organization name.                                                                                                                                                                                                                             |
+    | **Spectro Cloud Project**      | Select the project you want to register your {props.edition} account in.                                                                                                                                                                                                  |
+    | **Acknowledge**                | Accept the login banner message. Login banner messages are only displayed if the tenant admin enabled a login banner.                                                                                                                                              |
+
+    :::info
+
+    The `CloudAccount.apiKey` and `Mgmt.apiKey` values in the **pcg.yaml** file are encrypted and cannot be manually
+    updated. To change these values, use the `palette pcg install --update-passwords` command. Refer to the <VersionedLink text="PCG command" url="/automation/palette-cli/commands/pcg#update-passwords" /> reference page for more information.
+
+    :::
+
+4.  Once you have authenticated your Palette CLI installation, start the PCG installer by issuing the following command. Refer to the
+    table below for information about each parameter.
+
+    ```bash
+    palette pcg install
+    ```
+
+    | **Parameter**                                        | **Description**                                                                                                                                                                                                                                                                    |
+    | :--------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Management Plane Type**                            | Select **Palette** or **VerteX**.                                                                                                                                                                                                                                                          |
+    | **Enable Ubuntu Pro (required for production)**      | Enter `y` if you want to use Ubuntu Pro and provide an Ubuntu Pro token. Otherwise, enter `n`.                                                                                                                                                                                      |
+    | **Select an image registry type**                    | For a non-airgap installation, choose `Default` to pull images from public image registries. This requires an internet connection. For airgapped installations, select `Custom` and point to your airgap support VM or a custom internal registry that contains the required images. |
+    | **Share PCG Cloud Account across platform Projects** | Enter `y` if you want the cloud account associated with the PCG to be available from all projects within your organization. Enter `n` if you want the cloud account to only be available at the tenant admin scope.                                                                |
+    | **Cloud Type**                                       | Select **{props.edition}**.                                                                                                                                                                                                                                                                  |
+    | **Private Cloud Gateway Name**                       | Enter a custom name for the PCG.                                                                                                                                                                                                                       |
+
+5. If configuring your PCG to use a proxied network, complete the following fields, as appropriate.
+
+    :::info
+
+    By default, proxy environment variables (`HTTPS_PROXY`, `HTTP_PROXY`, and `NO_PROXY`) configured during PCG installation are propagated to all PCG cluster nodes, as well as the nodes of all tenant workload clusters deployed with the PCG. However, proxy CA certificates are only propagated to PCG cluster nodes; they are not propagated the nodes of tenant workload clusters. 
+
+    :::
+
+    | **Parameter**                     | **Description**                                                                                                                                                                                                                                                                                                |
+   | :-------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **HTTPS Proxy**                   | Leave this blank unless you are using an HTTPS Proxy. This setting will be propagated to all PCG nodes in the cluster, as well as all tenant clusters using the PCG. Example: `https://USERNAME:PASSWORD@PROXYIP:PROXYPORT`.                                                                                                                   |
+   | **HTTP Proxy**                    | Leave this blank unless you are using an HTTP Proxy. This setting will be propagated to all PCG nodes in the cluster, as well as all tenant clusters using the PCG. Example: `http://USERNAME:PASSWORD@PROXYIP:PROXYPORT`.                                                                                                                     |
+   | **No Proxy**                      | Provide a list of local network CIDR addresses, hostnames, and domain names that should be excluded from being a proxy. This setting will be propagated to all the nodes to bypass the proxy server, as well as all tenant clusters using the PCG. Example for a self-hosted environment: `my.company.com,10.10.0.0/16`.                                     |
+   | **Proxy CA Certificate Filepath** | (Optional) Provide the file path of a CA certificate on the installer host. If provided, this CA certificate will be copied to each PCG node when deploying the PCG cluster, and the provided path will be used on the PCG cluster nodes. Example: `/usr/local/share/ca-certificates/ca.crt`. <br /><br /> Note that proxy CA certificates are _not_ automatically propagated to tenant clusters using the PCG; these certificates must be added at either the tenant level or cluster profile level in the OS layer.   |
+
+    <details>
+
+    <summary>Configure Proxy CA Certificate for Workload Clusters</summary>
+    
+    Proxy CA certificates must be added to workload clusters at the tenant level or cluster profile level in the OS layer. If configured at the tenant level, _all_ workload clusters provisioned from the tenant, with the exception of managed Kubernetes clusters (EKS, AKS, and GKE) and Edge clusters, will have the CA certificate injected into their cluster nodes; if configured at the cluster profile level, only workload clusters deployed using the cluster profile will be injected with the CA certificate.
+
+    To configure your proxy CA certificate for your workload clusters, use one of the following methods.
+
+    <Tabs>
+
+    <TabItem value="tenant" label="Tenant Settings">
+
+    Take the following approach to propagate your proxy server CA certificate to _all_ workload cluster nodes provisioned from the tenant, with the exception of managed Kubernetes clusters (EKS, AKS, and GKE) and Edge clusters.
+
+      1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+   
+      2. From the left main menu, select **Tenant Settings**. 
+   
+      3. From the **Tenant Settings Menu**, below **Platform**, select **Certificates**.
+   
+      4. Select **Add A New Certificate**.
+   
+      5. In the **Add Certificate** dialog, enter the **Certificate Name** and **Certificate** value. 
+   
+      6. **Confirm** your changes.
+
+    </TabItem>
+
+    <TabItem value="cluster-profile" label="Cluster Profile OS Layer">
+
+    Take the following approach to propagate proxy server CA certificates on a per-cluster basis.
+
+      1. Log in to [Palette](https://console.spectrocloud.com).
+   
+      2. From the left main menu, select **Profiles**.
+   
+      3. Choose an existing cluster profile or <VersionedLink text="create a new cluster profile" url="/profiles/cluster-profiles/create-cluster-profiles" />. For more information, refer to the <VersionedLink text="cluster profile" url="/profiles/cluster-profiles" /> guide.
+   
+      4. In the OS layer of your cluster profile, uncomment `kubeadmconfig`, `kubeadmconfig.files`, and `kubeadmconfig.files.content`, and add your CA certificate.
+      <br />
+            ```yaml hideClipboard title="Example OS layer configuration" 
+            kubeadmconfig:
+            # preKubeadmCommands:
+            # - echo "Executing pre kube admin config commands"
+            # - update-ca-certificates
+            # - 'systemctl restart containerd; sleep 3'
+            # - 'while [ ! -S /var/run/containerd/containerd.sock ]; do echo "Waiting for containerd..."; sleep 1; done'
+            # postKubeadmCommands:
+            # - echo "Executing post kube admin config commands"
+              files:
+            # - targetPath: /usr/local/share/ca-certificates/mycom.crt
+            #   targetOwner: "root:root"
+            #   targetPermissions: "0644"
+                content: |
+                  -----BEGIN CERTIFICATE-----
+                  ***************************
+                  -----END CERTIFICATE-----
+            ```
+
+      5. Select **Confirm Updates**.
+
+    </TabItem>
+
+    </Tabs>
+
+    </details>
+
+6. Enter the following network details.
+
+   | **Parameter**        | **Description**                                                                                                                                                                                        |
+   | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+   | **Pod CIDR**         | Enter the CIDR pool that will be used to assign IP addresses to pods in the PCG cluster. The pod IP addresses should be unique and not overlap with any machine IPs in the environment.                |
+   | **Service IP Range** | Enter the IP address range that will be used to assign IP addresses to services in the PCG cluster. The service IP addresses should be unique and not overlap with any machine IPs in the environment. |                                                                                                       |
+
+7. If you selected `Custom` for the image registry type, you are prompted to provide the following information.
+
+   | **Parameter**                                            | **Description**                                                                                                                                                                                                                                                    |
+   | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+   | **Registry Name**                                        | Assign a name to the custom registry.                                                                                                                                                                                                                              |
+   | **Registry Endpoint**                                    | Enter the endpoint or IP address for the custom registry. Example: `https://palette.example.com` or `https://10.10.1.0`.                                                                                                                                                 |
+   | **Registry Base Content Path**                           | Enter the base content path for the custom registry. Example: `spectro-images`.                                                                                                                                                                                          |
+   | **Configure Registry Mirror**                            | Customize the default mirror registry settings. Your system default text editor, such as Vi, will open and allow you to make any desired changes. When finished, save and exit the file.                   |
+   | **Allow Insecure Connection (Bypass x509 Verification)** | Bypass x509 CA verification. Enter `n` if using a custom registry with self-signed SSL certificates. Otherwise, enter `y`. If you enter `y`, you receive a follow-up prompt asking you to provide the file path to the CA certificate. |
+   | **Registry CA certificate Filepath**                     | (Optional) Enter the CA certificate for the custom registry. Provide the file path of the CA certificate on the installer host. Example: `/usr/local/share/ca-certificates/ca.crt`.                                                                               |
+   | **Registry Username**                                    | Enter the username for the custom registry.                                                                                                                                                                                                                              |
+   | **Password**                                             | Enter the password for the custom registry.                                                                                                                                                                                                                              |

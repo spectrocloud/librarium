@@ -49,7 +49,7 @@ also shared with the workload cluster during the cluster deployment.
 
 ### Network Proxy
 
-The PCG supports using a proxy server to access the internet if needed. 
+The PCG supports using a proxy server to access the internet if needed.
 
 We encourage you to review the [gRPC and Proxies](../../architecture/grps-proxy.md) reference page to better prepare for
 using a proxy server with the PCG. Depending on your network proxy configuration and software, you may need to make
@@ -57,10 +57,18 @@ updates to ensure compatibility with Palette.
 
 #### Palette CLI
 
-If you are installing the PCG through the
-Palette CLI, you can provide the proxy server details during installation. The proxy server details are saved as environment variables (`HTTPS_PROXY`, `HTTP_PROXY`, and `NO_PROXY`) and are propagated to all PCG cluster nodes, as well as the nodes of all tenant workload clusters deployed with the PCG. The provided proxy servers are then used by the PCG and workload clusters to access the internet.
+If you are installing the PCG through the Palette CLI, you can provide the proxy server details during installation. The
+proxy server details are saved as environment variables (`HTTPS_PROXY`, `HTTP_PROXY`, and `NO_PROXY`) and are propagated
+to all PCG cluster nodes, as well as the nodes of all tenant workload clusters deployed with the PCG. The provided proxy
+servers are then used by the PCG and workload clusters to access the internet.
 
-You can also provide Certificate Authority (CA) certificates for the proxy server during installation. However, proxy CA certificates are only propagated to each PCG cluster node; they are not propagated to the nodes of tenant clusters. Proxy CA certificates must be added to workload clusters at the tenant level or cluster profile level in the OS layer. If configured at the tenant level, _all_ workload clusters provisioned from the tenant, with the exception of managed Kubernetes clusters (EKS, AKS, and GKE) and Edge clusters, will have the CA certificate injected into their cluster nodes; if configured at the cluster profile level, only workload clusters deployed using the cluster profile will be injected with the CA certificate.
+You can also provide Certificate Authority (CA) certificates for the proxy server during installation. However, proxy CA
+certificates are only propagated to each PCG cluster node; they are not propagated to the nodes of tenant clusters.
+Proxy CA certificates must be added to workload clusters at the tenant level or cluster profile level in the OS layer.
+If configured at the tenant level, _all_ workload clusters provisioned from the tenant, with the exception of managed
+Kubernetes clusters (EKS, AKS, and GKE) and Edge clusters, will have the CA certificate injected into their cluster
+nodes; if configured at the cluster profile level, only workload clusters deployed using the cluster profile will be
+injected with the CA certificate.
 
 #### Existing Kubernetes Cluster
 
