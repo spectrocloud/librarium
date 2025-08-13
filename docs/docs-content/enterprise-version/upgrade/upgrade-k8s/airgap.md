@@ -150,9 +150,9 @@ Palette upgrade.
       export OCI_PACK_BASE=spectro-packs
       ```
 
-      Consider the following example for reference.
+      Consider the following example.
 
-      ```shell
+      ```shell hideClipboard title="Example values"
       export OCI_IMAGE_REGISTRY=example.internal.com
       export OCI_IMAGE_BASE=spectro-images
       export OCI_PACK_REGISTRY=10.10.100.48
@@ -179,9 +179,9 @@ Palette upgrade.
       export ECR_PACK_REGISTRY_REGION=<ecr-region>
       ```
 
-      Consider the following example for reference.
+      Consider the following example.
 
-      ```shell
+      ```shell hideClipboard title="Example values"
       export ECR_IMAGE_REGISTRY=public.ecr.aws/1234567890
       export ECR_IMAGE_BASE=spectro-images
       export ECR_IMAGE_REGISTRY_REGION=us-east-1
@@ -231,22 +231,7 @@ Palette upgrade.
     brevity). As a result of starting the binary, you should have a `spectro-manifests` archive in your temporary
     directory.
 
-    ```shell
-    Verifying archive integrity...  100%   MD5 checksums are OK. All good.
-    Uncompressing Airgap Setup - Version 4.0.17  100%
-    Setting up Packs
-    - Pushing Pack cni-calico:3.25.1
-    ...
-    Setting up Images
-    - Pushing image docker.io/kindest/kindnetd:v20230227-15197099
-    - Pushing image gcr.io/cloud-provider-vsphere/cpi/release/manager:v1.22.8
-    ...
-    // highlight-start
-    Preparing Manifests Archive
-    Manifests are available in /tmp/spectro-manifests-1696971110.zip. Extract the archive to a file server to serve as a Spectro Cloud Repository
-    // highlight-end
-    Setup Completed
-    ```
+    <PartialsComponent category="self-hosted" name="airgap-binary-execution" />
 
 7.  Move the `spectro-manifests` archive to a directory that your file server can access and use the following command
     template to unzip it.
