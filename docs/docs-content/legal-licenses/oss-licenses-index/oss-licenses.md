@@ -26,7 +26,7 @@ The following table lists the open source licenses tied to the libraries and mod
 | @types/react                                                                               | [MIT](https://opensource.org/license/mit/)                                |
 | @types/react-redux                                                                         | [MIT](https://opensource.org/license/mit/)                                |
 | @typescript-eslint/eslint-plugin                                                           | [MIT](https://opensource.org/license/mit/)                                |
-| @typescript-eslint/parser                                                                  | [MIT](https://opensource.org/license/mit/)                                |
+| @typescript-eslint/parser                                                                  | [BSD-2-Clause](https://opensource.org/license/bsd-2-clause)               |
 | ajv                                                                                        | [MIT](https://opensource.org/license/mit/)                                |
 | antd                                                                                       | [MIT](https://opensource.org/license/mit/)                                |
 | axios                                                                                      | [MIT](https://opensource.org/license/mit/)                                |
@@ -261,7 +261,7 @@ The following table lists the open source licenses tied to the libraries and mod
 | github.com/rancher/wrangler                                                                | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/robfig/cron                                                                     | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/russellhaering/gosaml2                                                          | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
-| github.com/santhosh-tekuri/jsonschema                                                      | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
+| github.com/santhosh-tekuri/jsonschema                                                      | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)               |
 | github.com/sassoftware/relic                                                               | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
 | github.com/secure-systems-lab/go-securesystemslib                                          | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/shopspring/decimal                                                              | [MIT](https://opensource.org/license/mit/)                                |
@@ -279,7 +279,7 @@ The following table lists the open source licenses tied to the libraries and mod
 | github.com/stretchr/objx                                                                   | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/stretchr/testify                                                                | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/stripe/stripe-go/v71                                                            | [MIT](https://opensource.org/license/mit/)                                |
-| github.com/theupdateframework/go-tuf                                                       | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
+| github.com/theupdateframework/go-tuf                                                       | [BSD-3-Clause](https://opensource.org/license/bsd-3-clause)               |
 | github.com/titanous/rocacheck                                                              | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/twpayne/go-vfs/v4                                                               | [MIT](https://opensource.org/license/mit/)                                |
 | github.com/txn2/txeh                                                                       | [Apache-2.0](https://www.apache.org/licenses/LICENSE-2.0)                 |
