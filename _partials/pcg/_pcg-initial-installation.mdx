@@ -70,9 +70,11 @@ partial_name: pcg-initial-installation
     <summary>Configure Proxy CA Certificate for Workload Clusters</summary>
     
     If you are configuring proxy CA certificates for your PCG, they must also be added to workload clusters at the tenant level or cluster profile level in the OS layer.
-    - If configured at the tenant level, _all_ workload clusters provisioned from the tenant, with the exception of managed Kubernetes clusters (EKS, AKS, and GKE) and Edge clusters, will have the CA certificate injected into their cluster nodes.
-    - If configured at the cluster profile level, only workload clusters deployed using the cluster profile will be injected with the CA certificate.
-
+    
+      - If configured at the tenant level, _all_ workload clusters provisioned from the tenant, with the exception of managed Kubernetes clusters (EKS, AKS, and GKE) and Edge clusters, will have the CA certificate injected into their cluster nodes.
+    
+      - If configured at the cluster profile level, only workload clusters deployed using the cluster profile will be injected with the CA certificate.
+    <br />
     To configure your proxy CA certificate for your workload clusters, use one of the following methods.
 
     <Tabs>
@@ -105,7 +107,7 @@ partial_name: pcg-initial-installation
    
       3. Choose an existing cluster profile or <VersionedLink text="create a new cluster profile" url="/profiles/cluster-profiles/create-cluster-profiles" />. For more information, refer to the <VersionedLink text="cluster profile" url="/profiles/cluster-profiles" /> guide.
    
-      4. In the OS layer of your cluster profile, uncomment `kubeadmconfig`, `kubeadmconfig.files`, and `kubeadmconfig.files.content`, and add your CA certificate.
+      4. In the OS layer of your cluster profile, add your CA certificate to the `content` field under `kubeadmconfig.files`.
       <br />
             ```yaml hideClipboard title="Example OS layer configuration" {1,9,13-16}
             kubeadmconfig:
