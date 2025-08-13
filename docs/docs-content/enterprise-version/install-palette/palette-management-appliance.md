@@ -119,14 +119,6 @@ Follow the instructions to upload packs to your Palette instance. Packs are used
 [cluster profiles](../../profiles/cluster-profiles/cluster-profiles.md) and deploy workload clusters in your
 environment.
 
-:::info
-
-If you are intending to upgrade Palette using a content bundle, you must upload the bundle to the internal Zot registry
-using Local UI. This is regardless of whether you are using an external registry or the internal Zot registry for your
-pack bundles.
-
-:::
-
 ### Prerequisites
 
 <PartialsComponent
@@ -202,6 +194,13 @@ additional functionality and capabilities that enhance the Palette experience.
 
 Follow the instructions to upgrade Palette using a content bundle. The content bundle is used to upgrade the Palette
 instance to the latest version.
+
+:::info
+
+The upgrade process will incur downtime for the Palette management cluster, but your workload clusters will remain
+operational.
+
+:::
 
 ### Prerequisites
 
