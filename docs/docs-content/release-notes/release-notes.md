@@ -67,6 +67,27 @@ tags: ["release-notes"]
 - <TpBadge /> A technical preview banner is now displayed on all [Artifact Studio](../downloads/artifact-studio.md)
   pages.
 
+#### Bug Fixes
+
+- Fixed an issue that caused errors on message broker pods after upgrading
+  [self-hosted Palette](../enterprise-version/enterprise-version.md) installations to version 4.7.4 or later.
+- Fixed an issue that caused validation errors to appear when
+  [adding Amazon ECR registries](../registries-and-packs/registries/oci-registry/add-oci-packs.md) hosted in
+  [AWS GovCloud](https://docs.aws.amazon.com/govcloud-us/latest/UserGuide/govcloud-ecr.html) to Palette.
+- Fixed an issue that caused [self-hosted Palette](../enterprise-version/enterprise-version.md) installations to allow
+passing open redirects in URLs.
+<!-- prettier-ignore-start -->
+- Fixed an issue that caused multiple repeated creations and reconciliations of the
+<VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack resources.
+<!-- prettier-ignore-end -->
+- Fixed an issue that caused
+  [sprig template functions](../registries-and-packs/pack-constraints.md#sprig-template-functions) to fail when being
+  used together with system and tenant scope [macros](../clusters/cluster-management/macros.md#scope-of-palette-macros).
+- Fixed an issue that caused the worker nodes of [MAAS](../clusters/data-center/maas/maas.md) clusters to be repaved in
+  parallel.
+- Fixed an issue that caused certificates to be incorrectly updated in cluster
+  [Kubeconfig](../clusters/cluster-management/kubeconfig.md) files after certificate updates.
+
 ### Edge
 
 :::info
@@ -89,6 +110,17 @@ distribution now supports virtual network overlays for multi-node clusters deplo
 - The [Kubeconfig](../clusters/cluster-management/kubeconfig.md) file names of Edge clusters deployed with
   [agent mode](../deployment-modes/agent-mode/agent-mode.md) or
   [appliance mode](../deployment-modes/appliance-mode/appliance-mode.md) now contain the cluster name.
+
+#### Bug Fixes
+
+- Fixed an issue that caused creation of locally deployed clusters to fail when adding custom `stylus.path` to the
+  `user-data` file.
+- Fixed an issue that caused Kubernetes upgrades to fail to apply on control plane nodes of
+  [agent mode](../deployment-modes/agent-mode/agent-mode.md) clusters.
+- Fixed an issue that caused single-node [Local UI](../clusters/edge/local-ui/local-ui.md) clusters configured with
+  addon packs to be stuck in the Provisioning state.
+- Fixed an issue that caused Palette to report single-node Edge clusters with invalid
+  [kube-vip configurations](../clusters/edge/networking/kubevip.md) as Healthy, even though they were unreachable.
 
 ### VerteX
 
@@ -120,6 +152,13 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 - Crossplane version 0.24.1 of the
   [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette/v0.24.1)
   is now available.
+
+#### Bug Fixes
+
+- Fixed an issue that prevented the taints configuration from being correctly applied to the
+  `spectrocloud_cluster_custom_cloud` Terraform resource.
+- Fixed an issue that caused the `spectrocloud_cluster_profile` resource to create invalid objects when cluster profile
+  variables are not correctly initialized before creation.
 
 ### Virtual Machine Orchestrator (VMO)
 
