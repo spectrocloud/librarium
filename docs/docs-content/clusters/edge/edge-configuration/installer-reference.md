@@ -190,7 +190,7 @@ Note that the Harbor Edge-Native Config pack is deprecated and will be removed i
 for guidance on transitioning to Registry Connect.
 
 The Registry Connect pack additionally supports `imageReplacementRules` (defined in the pack YAML under
-`charts.registry-connect.config.registry.imageReplacementRules`) that serves the same purpose as `registryMappingRules`.
+`charts.registry-connect.config.registry.imageReplacementRules`), which serve the same purpose as `registryMappingRules`.
 If you provide both settings, the configuration in `imageReplacementRules` takes precedence over `registryMappingRules`.
 
 :::
