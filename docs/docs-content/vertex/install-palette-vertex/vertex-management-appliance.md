@@ -193,51 +193,6 @@ configuration scanning, penetration scanning, SBOM scanning, and conformance sca
   app="VerteX Management Appliance"
 />
 
-## Upgrade Palette VerteX
-
-Follow the instructions to upgrade Palette VerteX using a content bundle. The content bundle is used to upgrade the
-Palette VerteX instance to the latest version.
-
-:::info
-
-The upgrade process will incur downtime for the Palette VerteX management cluster, but your workload clusters will
-remain operational.
-
-:::
-
-### Prerequisites
-
-<PartialsComponent
-  category="self-hosted"
-  name="upgrade-palette-prereqs"
-  edition="VerteX"
-  version="Palette VerteX"
-  iso="Palette VerteX"
-  app="VerteX Management Appliance"
-/>
-
-### Upload Packs
-
-<PartialsComponent
-  category="self-hosted"
-  name="upgrade-palette-enablement"
-  edition="VerteX"
-  version="Palette VerteX"
-  iso="Palette VerteX"
-  app="VerteX Management Appliance"
-/>
-
-### Validate
-
-<PartialsComponent
-  category="self-hosted"
-  name="upgrade-palette-validate"
-  edition="VerteX"
-  version="Palette VerteX"
-  iso="Palette VerteX"
-  app="VerteX Management Appliance"
-/>
-
 ## Next Steps
 
 <PartialsComponent
