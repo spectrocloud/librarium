@@ -107,7 +107,7 @@ partial_name: pcg-initial-installation
    
       4. In the OS layer of your cluster profile, uncomment `kubeadmconfig`, `kubeadmconfig.files`, and `kubeadmconfig.files.content`, and add your CA certificate.
       <br />
-            ```yaml hideClipboard title="Example OS layer configuration" 
+            ```yaml hideClipboard title="Example OS layer configuration" {1,9,13-16}
             kubeadmconfig:
               preKubeadmCommands:
               - echo "Executing pre kube admin config commands"
