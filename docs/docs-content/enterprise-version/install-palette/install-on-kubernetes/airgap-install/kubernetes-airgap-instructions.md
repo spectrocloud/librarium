@@ -182,7 +182,7 @@ Complete the following steps before deploying the airgap Palette installation.
 
       Consider the following example.
 
-      ```shell hideClipboard
+      ```shell hideClipboard title="Example values"
       export OCI_IMAGE_REGISTRY=example.internal.com
       export OCI_PACK_BASE=spectro-packs
       export OCI_PACK_REGISTRY=10.10.100.48
@@ -211,7 +211,7 @@ Complete the following steps before deploying the airgap Palette installation.
 
       Consider the following example.
 
-      ```shell hideClipboard
+      ```shell hideClipboard title="Example values"
       export ECR_IMAGE_REGISTRY=public.ecr.aws/1234567890
       export ECR_IMAGE_BASE=spectro-images
       export ECR_IMAGE_REGISTRY_REGION=us-east-1

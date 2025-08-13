@@ -150,9 +150,9 @@ Palette upgrade.
       export OCI_PACK_BASE=spectro-packs
       ```
 
-      Consider the following example for reference.
+      Consider the following example.
 
-      ```shell
+      ```shell hideClipboard title="Example values"
       export OCI_IMAGE_REGISTRY=example.internal.com
       export OCI_IMAGE_BASE=spectro-images
       export OCI_PACK_REGISTRY=10.10.100.48
@@ -179,9 +179,9 @@ Palette upgrade.
       export ECR_PACK_REGISTRY_REGION=<ecr-region>
       ```
 
-      Consider the following example for reference.
+      Consider the following example.
 
-      ```shell
+      ```shell hideClipboard title="Example values"
       export ECR_IMAGE_REGISTRY=public.ecr.aws/1234567890
       export ECR_IMAGE_BASE=spectro-images
       export ECR_IMAGE_REGISTRY_REGION=us-east-1
