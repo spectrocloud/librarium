@@ -37,9 +37,9 @@ partial_name: upgrade-palette-enablement
    The upload process starts automatically once the file is selected. You can monitor the upload progress in
    the **Upload Content** dialog.
 
-   Wait for the **Upload Successful** confirmation message to appear.
+   Wait for the **File(s) uploaded successfully** confirmation message or the green tick to appear next to the upload progress bar.
 
-10. On the **Content** page, wait for the content to finish syncing. This is indicated by the **Syncing content: N items are pending** banner that appears to the left of disk usage. This can take several minutes depending on the size of the content bundle and your internal network speed.
+10. On the **Content** page, wait for the content to finish syncing. This is indicated by the **Syncing content: N items are pending** banner that appears to the left of disk usage. The banner will disappear once the sync is complete. This can take several minutes depending on the size of the content bundle and your internal network speed.
 
 11. From the left main menu, click **Cluster** and select the **Configuration** tab.
 
@@ -119,11 +119,11 @@ During the upgrade process, the Palette system and tenant consoles will be unava
 
    ```shell hideClipboard title="Example Output"
    ...
-   INFO[0366] successfully copied all artifacts from local bundle /root/tmp/bundle-extract/spectro-appliance-4.7.3.tar to remote bundle 10.11.12.13:30003/spectro-content/bundle-definition:spectro-appliance-4.7.3
+   INFO[0366] successfully copied all artifacts from local bundle /root/tmp/bundle-extract/palette-enterprise-appliance-4.7.9.tar to remote bundle 10.11.12.13:30003/spectro-content/bundle-definition:palette-enterprise-appliance-4.7.9
    -----------------------------
    Push Summary
    -----------------------------
-   local bundle spectro-appliance-4.7.3 pushed to 10.11.12.13:30003/spectro-content
+   local bundle palette-enterprise-appliance-4.7.9 pushed to 10.11.12.13:30003/spectro-content
    ```
 
 7. Log in to the Local UI of the leader host of the {props.version} management cluster. By default, Local UI is accessible
@@ -331,11 +331,11 @@ When using an external registry, you must upload the content bundle to both the 
 
    ```shell hideClipboard title="Example Output"
    ...
-   INFO[0366] successfully copied all artifacts from local bundle /root/tmp/bundle-extract/spectro-appliance-4.7.3.tar to remote bundle 10.11.12.13:30003/spectro-content/bundle-definition:spectro-appliance-4.7.3
+   INFO[0366] successfully copied all artifacts from local bundle /root/tmp/bundle-extract/palette-enterprise-appliance-4.7.9.tar to remote bundle 10.11.12.13:30003/spectro-content/bundle-definition:palette-enterprise-appliance-4.7.9
    -----------------------------
    Push Summary
    -----------------------------
-   local bundle spectro-appliance-4.7.3 pushed to 10.11.12.13:30003/spectro-content
+   local bundle palette-enterprise-appliance-4.7.9 pushed to 10.11.12.13:30003/spectro-content
    ```
 
    </TabItem>
@@ -362,9 +362,9 @@ When using an external registry, you must upload the content bundle to both the 
     The upload process starts automatically once the file is selected. You can monitor the upload progress in
     the **Upload Content** dialog.
 
-    Wait for the **Upload Successful** confirmation message to appear.
+    Wait for the **File(s) uploaded successfully** confirmation message or the green tick to appear next to the upload progress bar.
 
-11. On the **Content** page, wait for the content to finish syncing. This is indicated by the **Syncing content: N items are pending** banner that appears to the left of disk usage. This can take several minutes depending on the size of the content bundle and your internal network speed.
+11. On the **Content** page, wait for the content to finish syncing. This is indicated by the **Syncing content: N items are pending** banner that appears to the left of disk usage. The banner will disappear once the sync is complete. This can take several minutes depending on the size of the content bundle and your internal network speed.
 
 12. From the left main menu, click **Cluster** and select the **Configuration** tab.
 
@@ -372,11 +372,17 @@ When using an external registry, you must upload the content bundle to both the 
 
 14. Review the changes for each profile carefully and ensure you are satisfied with the proposed updates. There may be changes to the profiles between versions that include addition or removal of properties.
 
+    :::warning
+
+    For some upgrade paths, you will need to re-enter the configuration you provided during the initial {props.version} installation. This includes the **OCI Pack Registry Password** and any other settings that were changed from the defaults.
+
+    :::
+
     Click **Confirm Changes** once satisfied.
 
 15. Click **Update** to start the upgrade process.
 
-During the upgrade process, the Palette system and tenant consoles will be unavailable and you will see a warning message when attempting to log in to them. You can monitor the upgrade progress in the **Overview** tab on the **Cluster** page.
+During the upgrade process, the Palette system and tenant consoles will be unavailable and you will see a warning message when attempting to log in to them. You can monitor the upgrade progress in the **Overview** tab on the **Cluster** page. The upgrade can take up to an hour to complete.
 
 </TabItem>
 
