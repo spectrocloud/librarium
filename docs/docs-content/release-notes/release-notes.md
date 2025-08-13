@@ -75,7 +75,7 @@ tags: ["release-notes"]
   [adding an Amazon ECR](../registries-and-packs/registries/oci-registry/add-oci-packs.md) hosted in
   [AWS GovCloud](https://docs.aws.amazon.com/govcloud-us/latest/UserGuide/govcloud-ecr.html) to Palette.
 - Fixed an issue that caused [self-hosted Palette](../enterprise-version/enterprise-version.md) installations to allow
-passing open redirects in URLs.
+passing open redirects in URLs using the `returnTo` parameter.
 <!-- prettier-ignore-start -->
 - Fixed an issue that caused multiple repeated creations and reconciliations of
 <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack resources.
