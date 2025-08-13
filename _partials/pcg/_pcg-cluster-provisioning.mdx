@@ -1,0 +1,33 @@
+---
+partial_category: pcg
+partial_name: pcg-cluster-provisioning
+---
+
+A new PCG configuration file is generated, and its location is displayed on the console.
+
+```bash hideClipboard title="Example output"
+==== PCG config saved ====
+Location: :/home/demo/.palette/pcg/pcg-20230706150945/pcg.yaml
+```
+
+The Palette CLI begins provisioning a PCG cluster in your {props.edition} environment. Take the following steps to monitor the progress of the PCG
+deployment.
+
+    1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+
+    2. From the left main menu, select **Tenant Settings**.
+
+    3. From the **Tenant Settings Menu**, below **Infrastructure**, select **Private Cloud Gateways**.
+
+    4. Select the PCG cluster being deployed. Use the **Events** tab to monitor the deployment progress of your PCG cluster.
+
+If you encounter issues during the installation, refer to our <VersionedLink text="PCG Troubleshooting" url="/troubleshooting/pcg" />
+guide. For additional assistance, reach out to our [Customer Support](https://spectrocloud.atlassian.net/servicedesk/customer/portals) team.
+
+:::warning
+
+You cannot modify a deployed PCG cluster. If you need to make changes to your PCG cluster, you must delete the existing PCG cluster
+and redeploy it with your updated configurations. For this reason, we recommend you save your PCG configuration file for future use. 
+Use the Palette CLI `--config-only` flag to save the PCG configuration file without deploying the PCG cluster. Refer to our <VersionedLink text="Generate a Configuration File" url="/automation/palette-cli/commands/pcg#generate-a-configuration-file" /> guide.
+
+:::
