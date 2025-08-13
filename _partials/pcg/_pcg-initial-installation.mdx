@@ -50,7 +50,7 @@ partial_name: pcg-initial-installation
     | **Cloud Type**                                       | Select **{props.edition}**.                                                                                                                                                                                                                                                                  |
     | **Private Cloud Gateway Name**                       | Enter a custom name for the PCG.                                                                                                                                                                                                                       |
 
-5. If configuring your PCG to use a proxy network, complete the following fields, as appropriate.
+5. If you want to configure your PCG to use a proxy network, complete the following fields, as appropriate.
 
     :::info
 
@@ -69,7 +69,9 @@ partial_name: pcg-initial-installation
 
     <summary>Configure Proxy CA Certificate for Workload Clusters</summary>
     
-    Proxy CA certificates must be added to workload clusters at the tenant level or cluster profile level in the OS layer. If configured at the tenant level, _all_ workload clusters provisioned from the tenant, with the exception of managed Kubernetes clusters (EKS, AKS, and GKE) and Edge clusters, will have the CA certificate injected into their cluster nodes; if configured at the cluster profile level, only workload clusters deployed using the cluster profile will be injected with the CA certificate.
+    If you are configuring proxy CA certificates for your PCG, they must also be added to workload clusters at the tenant level or cluster profile level in the OS layer.
+    - If configured at the tenant level, _all_ workload clusters provisioned from the tenant, with the exception of managed Kubernetes clusters (EKS, AKS, and GKE) and Edge clusters, will have the CA certificate injected into their cluster nodes.
+    - If configured at the cluster profile level, only workload clusters deployed using the cluster profile will be injected with the CA certificate.
 
     To configure your proxy CA certificate for your workload clusters, use one of the following methods.
 
@@ -107,17 +109,17 @@ partial_name: pcg-initial-installation
       <br />
             ```yaml hideClipboard title="Example OS layer configuration" 
             kubeadmconfig:
-            # preKubeadmCommands:
-            # - echo "Executing pre kube admin config commands"
-            # - update-ca-certificates
-            # - 'systemctl restart containerd; sleep 3'
-            # - 'while [ ! -S /var/run/containerd/containerd.sock ]; do echo "Waiting for containerd..."; sleep 1; done'
-            # postKubeadmCommands:
-            # - echo "Executing post kube admin config commands"
+              preKubeadmCommands:
+              - echo "Executing pre kube admin config commands"
+              - update-ca-certificates
+              - 'systemctl restart containerd; sleep 3'
+              - 'while [ ! -S /var/run/containerd/containerd.sock ]; do echo "Waiting for containerd..."; sleep 1; done'
+              postKubeadmCommands:
+              - echo "Executing post kube admin config commands"
               files:
-            # - targetPath: /usr/local/share/ca-certificates/mycom.crt
-            #   targetOwner: "root:root"
-            #   targetPermissions: "0644"
+              - targetPath: /usr/local/share/ca-certificates/mycom.crt
+                targetOwner: "root:root"
+                targetPermissions: "0644"
                 content: |
                   -----BEGIN CERTIFICATE-----
                   ***************************
