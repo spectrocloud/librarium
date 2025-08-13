@@ -199,7 +199,7 @@ Complete the following steps before deploying the airgap Palette installation.
 
       Consider the following example.
 
-      ```shell hideClipboard
+      ```shell hideClipboard title="Example values"
       export OCI_IMAGE_REGISTRY=example.internal.com
       export OCI_PACK_BASE=spectro-packs
       export OCI_PACK_REGISTRY=10.10.100.48
@@ -228,7 +228,7 @@ Complete the following steps before deploying the airgap Palette installation.
 
       Consider the following example.
 
-      ```shell hideClipboard
+      ```shell hideClipboard title="Example values"
       export ECR_IMAGE_REGISTRY=public.ecr.aws/1234567890
       export ECR_IMAGE_BASE=spectro-images
       export ECR_IMAGE_REGISTRY_REGION=us-east-1
@@ -249,20 +249,7 @@ Complete the following steps before deploying the airgap Palette installation.
 
     Upon completion, a success message will be displayed. The output in the example below is condensed for brevity.
 
-    ```shell hideClipboard {10}
-    Verifying archive integrity...  100%   MD5 checksums are OK. All good.
-    Uncompressing Airgap Setup - Version 4.0.17  100%
-    Setting up Packs
-    - Pushing Pack cni-calico:3.25.1
-    ...
-    Setting up Images
-    - Pushing image docker.io/kindest/kindnetd:v20230227-15197099
-    - Pushing image gcr.io/cloud-provider-vsphere/cpi/release/manager:v1.22.8
-    .....
-    Preparing Manifests Archive
-    Manifests are available in /tmp/spectro-manifests-1696971110.zip. Extract the archive to a file server to serve as a Spectro Cloud Repository
-    Setup Completed
-    ```
+    <PartialsComponent category="self-hosted" name="airgap-binary-execution" />
 
     :::info
 
