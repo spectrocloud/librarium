@@ -157,8 +157,8 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 - Fixed an issue that prevented the taints configuration from being correctly applied to the
   `spectrocloud_cluster_custom_cloud` Terraform resource.
-- Fixed an issue that caused the `spectrocloud_cluster_profile` resource to create invalid objects when cluster profile
-  variables are not correctly initialized before creation.
+- Fixed an issue that caused the `spectrocloud_cluster_profile` Terraform resource to create invalid objects when
+  cluster profile variables are not correctly initialized before creation.
 
 ### Virtual Machine Orchestrator (VMO)
 
