@@ -9,6 +9,7 @@ on:
   push:
     branches:
       - 'version-*'
+      - 'doc-2070-gitleaks'
     paths:
       - '.gitleaksignore'
   workflow_dispatch:
@@ -61,6 +62,7 @@ jobs:
         if [ ! -s to_add.txt ]; then
           echo "No new gitleaksignore entries to add to master."
           echo "SHOULD_SYNC=false" >> $GITHUB_ENV
+          rm -f version_ignore master_ignore version_clean master_clean to_add.txt
           exit 0
         else
           echo "SHOULD_SYNC=true" >> $GITHUB_ENV
@@ -72,8 +74,9 @@ jobs:
         # Create a new branch from master
         git checkout -b "gitleaks-sync-${{ github.run_id }}" origin/master
 
-        # Add new entries to .gitleaksignore
+        # Add new entries to .gitleaksignore, remove all blank lines
         cat to_add.txt >> .gitleaksignore
+        sed -i '/^\s*$/d' .gitleaksignore
 
         # Commit and push the changes
         git add .gitleaksignore
@@ -95,11 +98,18 @@ jobs:
         # Save the PR URL as an environment variable
         echo "GITHUB_PR_URL=$pr_url" >> $GITHUB_ENV
 
+    - name: Cleanup temporary files
+      if: always()
+      run: |
+        echo "Cleaning up temporary files..."
+        rm -f version_ignore master_ignore version_clean master_clean to_add.txt
+        echo "Cleanup complete."
+
     - name: Success Slack Notification
       if: success() && env.SHOULD_SYNC == 'true'
       uses: rtCamp/action-slack-notify@v2.3.3
       env:
-        SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
+        SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_TEST_WEBHOOK }}
         SLACK_COLOR: ${{ job.status }}
         SLACKIFY_MARKDOWN: true
         ENABLE_ESCAPES: true
@@ -109,7 +119,7 @@ jobs:
       if: ${{ failure() }}
       uses: rtCamp/action-slack-notify@v2.3.3
       env:
-        SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
+        SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_TEST_WEBHOOK }}
         SLACK_COLOR: ${{ job.status }}
         SLACKIFY_MARKDOWN: true
         ENABLE_ESCAPES: true
