@@ -72,12 +72,12 @@ tags: ["release-notes"]
 - Fixed an issue that caused errors on message broker pods after upgrading
   [self-hosted Palette](../enterprise-version/enterprise-version.md) installations to version 4.7.4 or later.
 - Fixed an issue that caused validation errors to appear when
-  [adding Amazon ECR registries](../registries-and-packs/registries/oci-registry/add-oci-packs.md) hosted in
+  [adding an Amazon ECR](../registries-and-packs/registries/oci-registry/add-oci-packs.md) hosted in
   [AWS GovCloud](https://docs.aws.amazon.com/govcloud-us/latest/UserGuide/govcloud-ecr.html) to Palette.
 - Fixed an issue that caused [self-hosted Palette](../enterprise-version/enterprise-version.md) installations to allow
 passing open redirects in URLs.
 <!-- prettier-ignore-start -->
-- Fixed an issue that caused multiple repeated creations and reconciliations of the
+- Fixed an issue that caused multiple repeated creations and reconciliations of
 <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack resources.
 <!-- prettier-ignore-end -->
 - Fixed an issue that caused
@@ -113,12 +113,12 @@ distribution now supports virtual network overlays for multi-node clusters deplo
 
 #### Bug Fixes
 
-- Fixed an issue that caused creation of locally deployed clusters to fail when adding custom `stylus.path` to the
+- Fixed an issue that caused the creation of locally deployed clusters to fail when adding a custom `stylus.path` to the
   `user-data` file.
-- Fixed an issue that caused Kubernetes upgrades to fail to apply on control plane nodes of
+- Fixed an issue that prevented Kubernetes upgrades from being applied to the control plane nodes of
   [agent mode](../deployment-modes/agent-mode/agent-mode.md) clusters.
 - Fixed an issue that caused single-node [Local UI](../clusters/edge/local-ui/local-ui.md) clusters configured with
-  addon packs to be stuck in the Provisioning state.
+  add-on packs to be stuck in the Provisioning state.
 - Fixed an issue that caused Palette to report single-node Edge clusters with invalid
   [kube-vip configurations](../clusters/edge/networking/kubevip.md) as Healthy, even though they were unreachable.
 
