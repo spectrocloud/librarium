@@ -217,7 +217,6 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 | Calico                     | 3.30.2      |
 | Calico (Azure)             | 3.30.2      |
 | Cilium CNI (Canonical K8s) | 1.16.3      |
-| Flannel                    | 0.27.0      |
 
 #### CSI
 
@@ -244,7 +243,6 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 | Nvidia GPU Operator          | 25.3.1      |
 | Open Policy Agent            | 3.19.2      |
 | VMO Namespace Management     | 1.0.3       |
-| Zot Registry                 | 0.1.67      |
 
 #### FIPS Packs
 
@@ -253,7 +251,6 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 | Azure Disk CSI Driver                    | 1.33.2      |
 | Calico                                   | 3.30.2      |
 | Calico (Azure)                           | 3.30.2      |
-| Flannel                                  | 0.27.0      |
 | Palette eXtended Kubernetes              | 1.32.6      |
 | Palette eXtended Kubernetes              | 1.31.10     |
 | Palette eXtended Kubernetes              | 1.30.14     |
@@ -269,7 +266,6 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 | RKE2                                     | 1.31.10     |
 | RKE2                                     | 1.30.14     |
 | vSphere CSI                              | 3.5.0       |
-| Zot Registry                             | 0.1.67      |
 
 ## August 4, 2025 - Release 4.7.8
 
