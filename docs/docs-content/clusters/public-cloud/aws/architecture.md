@@ -82,21 +82,10 @@ The **Managed by Karpenter** banner is displayed for any node pools that are pro
 - The following instance types are not supported by Palette and will not be included in
   [kch](../../../introduction/resource-usage-estimation.md) calculations.
 
-  - `t1`
-  - `m1`
-  - `c1`
-  - `cc2`
-  - `m2`
-  - `cr1`
-  - `cg1`
-  - `i2`
-  - `hs1`
-  - `m3`
-  - `c3`
-  - `r3`
+  - `t1`,`m1`,`c1`,`cc2`,`m2`,`cr1`,`cg1`,`i2`,`hs1`,`m3`,`c3`,`r3`
 
-- Palette only renders node pools that use a single instance type. If Karpenter launches different instance types in one
-  node pool, the mixed instance types will not be displayed in the node pool view.
+- Additionally, Palette only displays supported instance types, so any non-supported instance types launched by
+  Karpenter will not be displayed in the node pool view.
 
 - Karpenter-specific data is not shown for node pools managed by Karpenter, for example,
   [NodeClaims](https://karpenter.sh/preview/concepts/nodeclaims/) or
