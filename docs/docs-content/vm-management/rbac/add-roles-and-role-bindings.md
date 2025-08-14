@@ -23,8 +23,10 @@ learn more about role-based Access Control (RBAC) in Palette, review the
   [Create a VMO Profile](../create-vmo-profile.md) guide to learn more.
   <!-- prettier-ignore-start -->
 
-      - Configure OpenID Connect (OIDC) at the Kubernetes layer of your cluster profile to allow you to create role
-      bindings that map individual users or groups assigned within the OIDC provider's configuration to a role. Refer to the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" /> pack additional guidance for more information.
+  - Configure OpenID Connect (OIDC) at the Kubernetes layer of your cluster profile to allow you to create role bindings
+    that map individual users or groups assigned within the OIDC provider's configuration to a role. Refer to the
+    <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" />
+    pack additional guidance for more information.
 
   <!-- prettier-ignore-end -->
 
@@ -149,10 +151,10 @@ You can verify role creation and role binding is successful by following the ste
    ```
 
    ```text hideClipboard title="Example output"
-    Name:         spectro-on-demand-16823991360055847390
-    Labels:       spectrocloud.com/clusterId=689cd541dd4d6d26c98e60c8
-                  spectrocloud.com/clusterRbac=true
-    Annotations:  <none>
+   Name:         spectro-on-demand-16823991360055847390
+   Labels:       spectrocloud.com/clusterId=689cd541dd4d6d26c98e60c8
+                 spectrocloud.com/clusterRbac=true
+   Annotations:  <none>
     Role:
       Kind:  Role
       Name:  spectro-vm-viewer
