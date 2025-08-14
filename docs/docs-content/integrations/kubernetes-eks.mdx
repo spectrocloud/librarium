@@ -345,7 +345,7 @@ and command overrides as described in the following table.
 
 <summary> Example of proxy configuration and self-signed CA certificate injection </summary>
 
-The following example configures HTTP/HTTPS proxy settings and installs a Custom CA certificate, which is useful for
+The following example configures HTTP/HTTPS proxy settings and installs a custom CA certificate, which is useful for
 private registries or internal services secured with non-public CA certificates.
 
 ```bash title="Example command to create a self-signed CA certificate that expires in one year"
@@ -407,7 +407,7 @@ nodeCustomization:
 <summary> Example of containerd mirror registry configuration </summary>
 
 The following example configures containerd to use an internal registry mirror for upstream container images. This is
-useful for environments with restricted internet access or where you want to cache images locally. In this example, the
+useful for environments with restricted internet access or when you want to cache images locally. In this example, the
 internal mirror registry supports authentication headers and skipping TLS verification.
 
 ```yaml title="Example userDataScript for AL2023 nodes"
