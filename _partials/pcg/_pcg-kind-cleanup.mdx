@@ -1,0 +1,37 @@
+---
+partial_category: pcg
+partial_name: pcg-kind-cleanup
+---
+
+To avoid potential vulnerabilities, once your PCG cluster is deployed, remove the `kind` images that were installed
+in the environment where you initiated the installation.
+
+Issue the following command to list all instances of `kind` that exist in the environment.
+
+```shell
+docker images
+```
+
+```shell hideClipboard title="Example output"
+REPOSITORY     TAG        IMAGE ID       CREATED        SIZE
+kindest/node   v1.26.13   131ad18222cc   5 months ago   910MB
+```
+
+Then, use the following command template to remove all instances of `kind`. Replace `<tag>` with your `kind` image tag.
+
+```shell
+docker image rm kindest/node:<tag>
+```
+
+Consider the following example for reference.
+
+```shell hideClipboard title="Example command"
+docker image rm kindest/node:v1.26.13
+```
+
+```shell hideClipboard title="Example output"
+Untagged: kindest/node:v1.26.13
+Untagged: kindest/node@sha256:15ae92d507b7d4aec6e8920d358fc63d3b980493db191d7327541fbaaed1f789
+Deleted: sha256:131ad18222ccb05561b73e86bb09ac3cd6475bb6c36a7f14501067cba2eec785
+Deleted: sha256:85a1a4dfc468cfeca99e359b74231e47aedb007a206d0e2cae2f8290e7290cfd
+```
