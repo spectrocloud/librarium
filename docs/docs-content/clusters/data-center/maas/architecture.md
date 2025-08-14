@@ -33,6 +33,11 @@ using Canonical MAAS. Refer to the PCG deployment options section below to learn
 
 Refer to the [PCG Architecture](../../pcg/architecture.md) section to learn more about the PCG architecture.
 
+## Limitations
+
+The Canonical Kubernetes pack for deployments in MAAS environments is a Tech Preview feature and does not support
+clusters backup with [volume snapshots](../../cluster-management/backup-restore/backup-restore.md#volume-snapshots).
+
 ## Palette MAAS Distribution
 
 Palette provides the following distributions for MAAS environments.
