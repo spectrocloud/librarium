@@ -7,7 +7,7 @@ partial_name: upload-third-party-packs-enablement
 
 <TabItem value="internal-zot-registry" label="Internal Zot Registry">
 
-<Tabs>
+<Tabs groupId="upload-method">
 
 <TabItem label="Local UI Method" value="local-ui-method">
 
@@ -93,7 +93,7 @@ partial_name: upload-third-party-packs-enablement
 
    If you are using custom TLS certificates or choosing to skip TLS, use the appropriate flags as shown in the following examples.
 
-   <Tabs>
+   <Tabs groupId="tls-palette-cli">
 
    <TabItem label="Custom TLS Certificate" value="custom-tls-certificate">
 
@@ -188,7 +188,7 @@ partial_name: upload-third-party-packs-enablement
 7. Authenticate with your external registry using the command line or a GUI tool of your choice. The following examples
    demonstrate how to authenticate with an OCI registry using the [`oras`](https://oras.land/docs/) CLI tool and the Palette CLI.
 
-   <Tabs>
+   <Tabs groupId="external-registry-type">
 
    <TabItem label="Harbor" value="harbor">
 
@@ -196,7 +196,7 @@ partial_name: upload-third-party-packs-enablement
    If you are using a Harbor registry with a self-signed certificate, add the `--insecure` flag to the
    `oras` command.
 
-   <Tabs>
+   <Tabs groupId="tls-harbor">
 
    <TabItem label="Regular Certificate" value="regular-certificate">
 
@@ -225,7 +225,7 @@ partial_name: upload-third-party-packs-enablement
    [AWS ECR Authentication](https://docs.aws.amazon.com/AmazonECR/latest/userguide/getting-started-cli.html#cli-authenticate-registry)
    documentation for more information.
 
-   <Tabs>
+   <Tabs groupId="ecr-type">
 
    <TabItem label="Private ECR" value="private-ecr">
 
@@ -270,11 +270,11 @@ partial_name: upload-third-party-packs-enablement
 
 8. Upload the packs to the OCI registry. The following example commands upload the packs to the OCI registry in the `spectro-content` base path. Replace the values below with your environment configuration values.
 
-   <Tabs>
+   <Tabs groupId="external-registry-type">
 
-   <TabItem label="Harbor" value="harbor-upload">
+   <TabItem label="Harbor" value="harbor">
 
-   <Tabs>
+   <Tabs groupId="tls-harbor">
 
    <TabItem label="Regular Certificate" value="regular-certificate">
 
@@ -304,7 +304,7 @@ partial_name: upload-third-party-packs-enablement
 
    </TabItem>
 
-   <TabItem label="AWS ECR" value="aws-ecr-upload">
+   <TabItem label="AWS ECR" value="aws-ecr">
 
    ```shell title="Upload Third Party Pack to AWS ECR"
    oras push <aws-ecr-url>/spectro-content/<repository-name>:<tag> --file <path-to-third-party-zst>
@@ -322,7 +322,7 @@ partial_name: upload-third-party-packs-enablement
 
    If you are using custom TLS certificates or choosing to skip TLS, use the appropriate flags as shown in the following examples.
 
-   <Tabs>
+   <Tabs groupId="tls-palette-cli">
 
    <TabItem label="Custom TLS Certificate" value="custom-tls-certificate">
 
