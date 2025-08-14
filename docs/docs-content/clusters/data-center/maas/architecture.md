@@ -36,7 +36,7 @@ Refer to the [PCG Architecture](../../pcg/architecture.md) section to learn more
 ## Limitations
 
 The Canonical Kubernetes pack for deployments in MAAS environments is a Tech Preview feature and does not support
-clusters backup with [volume snapshots](../../cluster-management/backup-restore/backup-restore.md#volume-snapshots).
+cluster backups with [volume snapshots](../../cluster-management/backup-restore/backup-restore.md#volume-snapshots).
 
 ## Palette MAAS Distribution
 
