@@ -47,7 +47,7 @@ learn more about role-based Access Control (RBAC) in Palette, review the
    export KUBECONFIG=<path-to-downloaded-kubeconfig-file>
    ```
 
-5. Execute the following command to see all the `ClusterRole` templates that have been installed by the VMO pack.
+5. Execute the following command to list all of the `ClusterRole` templates that have been installed by the VMO pack.
    Palette provides the following four out-of-the-box Cluster roles for Palette Virtual Machine Orchestrator. Refer to
    the [VM User Roles and Permissions](./vm-roles-permissions.md) to learn more about each role.
 
@@ -66,7 +66,7 @@ learn more about role-based Access Control (RBAC) in Palette, review the
    privilege required. Execute the following command to copy the contents of the template to a YAML file.
 
    ```shell
-   kubectl get clusterrole spectro-vm-viewer -o yaml > spectro-vm-viewer-role.yaml
+   kubectl get clusterrole <cluster-role-name> --output yaml > role.yaml
    ```
 
 7. Open your manifest file with the editor of your choice and change the `kind` type to `Role`.
@@ -91,7 +91,7 @@ learn more about role-based Access Control (RBAC) in Palette, review the
    specified namespace of your cluster.
 
    ```shell
-   kubectl apply -f spectro-vm-viewer-role.yaml
+   kubectl apply --filename spectro-vm-viewer-role.yaml
    ```
 
    ```text hideClipboard title="Expected output"
