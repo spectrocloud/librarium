@@ -11,6 +11,54 @@ tags: ["security", "cve", "advisories"]
 Security advisories supplement <VersionedLink text="security bulletins" url="/security-bulletins/reports/" />, providing
 additional details regarding vulnerabilities and offering remediation steps.
 
+## Security Advisory 003 - Self-Deleting Nodes with OwnerReference
+
+- **Release Date**: August 14, 2025
+- **Last Updated**: August 14, 2025
+- **Severity**: Medium (5.4)
+- **Affected Versions**: v1.31.0 - v1.31.11, v1.32.0 - v1.32.7, and v1.33.0 - v1.33.3
+
+### Summary
+
+A recently disclosed vulnerability in the `NodeRestriction` admission controller allows node users to delete their own
+`Node` object by patching it with an `OwnerReference` to a cluster-scoped resource.
+
+Normally, node users are authorized to create and patch their own `Node` object but not delete it. However, the
+`NodeRestriction` controller does not block patches that set `OwnerReferences`, enabling a compromised node to delete
+and then recreate its own `Node` object.
+
+This recreation can bypass the usual restrictions on modifying taints or labels, allowing an attacker to change node
+scheduling behavior and control which pods run on the compromised node.
+
+This vulnerability affects all clusters using an affected Kubernetes version across all Palette Enterprise and Palette
+VerteX releases.
+
+For additional information regarding this advisory, refer to the
+[Kubernetes GitHub issue](https://github.com/kubernetes/kubernetes/issues/133471).
+
+### Recommended Actions
+
+:::info
+
+- This workaround will result in a cluster [repave](../../glossary-all.md#repavement).
+- This workaround is not applicable for cloud-managed clusters such as EKS, GKE, and AKS. Refer to your cloud provider
+  for steps on patching cloud-managed clusters.
+
+:::
+
+In the Kubernetes layer of the [infrastructure cluster profile](../../profiles/profiles.md) for the affected cluster,
+enable the `OwnerReferencesPermissionEnforcement` admission controller by adding it to the `enable-admission-plugins`
+argument under the `apiServer` section. After saving your changes, make sure to
+[update](../../clusters/cluster-management/cluster-updates.md) all affected clusters.
+
+When enabled, this admission controller prevents any user or service account from modifying an object’s
+`OwnerReferences` unless they have delete permission on the owner object (the object referenced in `OwnerReferences`).
+
+### Roadmap
+
+Patch releases for Kubernetes versions 1.31, 1.32, and 1.33 that address this vulnerability will be available in future
+Palette Enterprise and Palette VerteX releases. No patches will be available for 1.30 and older versions.
+
 ## Security Advisory 002 - Kubernetes Race Condition
 
 This advisory outlines security vulnerabilities related to the use of the `os.RemoveAll` function in Go, which affects
