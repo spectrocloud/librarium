@@ -46,7 +46,10 @@ For additional information regarding this advisory, refer to the
 
 :::
 
-In the Kubernetes layer of the [infrastructure cluster profile](../../profiles/profiles.md) for the affected cluster, enable the `OwnerReferencesPermissionEnforcement` admission controller by adding it to the `enable-admission-plugins` argument under the `apiServer` section. After saving your changes, make sure to [update](../../clusters/cluster-management/cluster-updates.md) all affected clusters.
+In the Kubernetes layer of the [infrastructure cluster profile](../../profiles/profiles.md) for the affected cluster,
+enable the `OwnerReferencesPermissionEnforcement` admission controller by adding it to the `enable-admission-plugins`
+argument under the `apiServer` section. After saving your changes, make sure to
+[update](../../clusters/cluster-management/cluster-updates.md) all affected clusters.
 
 When enabled, this admission controller prevents any user or service account from modifying an object’s
 `OwnerReferences` unless they have delete permission on the owner object (the object referenced in `OwnerReferences`).
