@@ -144,7 +144,7 @@ You can verify role creation and role binding is successful by following the ste
    default/spectro-on-demand-16823991360055847390
    ```
 
-   Execute the following command to review the configuration of the role binding you created in the Palette UI.
+6. Execute the following command to review the configuration of the role binding you created in the Palette UI.
 
    ```shell
    kubectl describe rolebinding <role-binding-name> --namespace <namespace>
