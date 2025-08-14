@@ -93,7 +93,7 @@ During the upgrade process, the {props.version} system and tenant consoles will 
 
    If you are using custom TLS certificates or choosing to skip TLS, use the appropriate flags as shown in the following examples.
 
-   <Tabs>
+   <Tabs groupId="tls-palette-cli">
 
    <TabItem label="Custom TLS Certificate" value="custom-tls-certificate">
 
@@ -189,7 +189,7 @@ When using an external registry, you must upload the content bundle to both the 
 5. Authenticate with your external registry using the command line or a GUI tool of your choice. The following examples
    demonstrate how to authenticate with an OCI registry using the [`oras`](https://oras.land/docs/) CLI tool and the Palette CLI.
 
-   <Tabs>
+   <Tabs groupId="external-registry-type">
 
    <TabItem label="Harbor" value="harbor">
 
@@ -197,7 +197,7 @@ When using an external registry, you must upload the content bundle to both the 
    If you are using a Harbor registry with a self-signed certificate, add the `--insecure` flag to the
    `oras` command.
 
-   <Tabs>
+   <Tabs groupId="tls-certificate">
 
    <TabItem label="Regular Certificate" value="regular-certificate">
 
@@ -226,7 +226,7 @@ When using an external registry, you must upload the content bundle to both the 
    [AWS ECR Authentication](https://docs.aws.amazon.com/AmazonECR/latest/userguide/getting-started-cli.html#cli-authenticate-registry)
    documentation for more information.
 
-   <Tabs>
+   <Tabs groupId="ecr-type">
 
    <TabItem label="Private ECR" value="private-ecr">
 
@@ -271,11 +271,11 @@ When using an external registry, you must upload the content bundle to both the 
 
 6. Upload the content bundle to the OCI registry. The following example commands upload the content bundle file to the OCI registry in the `spectro-content` base path. Replace the values below with your environment configuration values.
 
-   <Tabs>
+   <Tabs groupId="external-registry-type">
 
    <TabItem label="Harbor" value="harbor-upload">
 
-   <Tabs>
+   <Tabs groupId="tls-certificate">
 
    <TabItem label="Regular Certificate" value="regular-certificate">
 
@@ -311,7 +311,7 @@ When using an external registry, you must upload the content bundle to both the 
 
    If you are using custom TLS certificates or choosing to skip TLS, use the appropriate flags as shown in the following examples.
 
-   <Tabs>
+   <Tabs groupId="tls-palette-cli">
 
    <TabItem label="Custom TLS Certificate" value="custom-tls-certificate">
 
