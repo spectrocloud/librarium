@@ -343,9 +343,23 @@ and command overrides as described in the following table.
 
 <details>
 
-<summary> Example </summary>
+<summary> Example of proxy configuration and self-signed CA certificate injection </summary>
 
-```yaml
+The following example configures HTTP/HTTPS proxy settings and installs a Custom CA certificate, which is useful for
+private registries or internal services secured with non-public CA certificates.
+
+```bash title="Example command to create a self-signed CA certificate that expires in one year"
+openssl req -x509 -newkey rsa:4096 -nodes -keyout my-ca.key \
+  -sha256 -days 365 -out my-ca.crt \
+  -subj "/C=GB/O=Example Ltd/CN=Example Test Root CA" \
+  -addext "basicConstraints=critical,CA:TRUE,pathlen:0" \
+  -addext "keyUsage=critical,keyCertSign,cRLSign" \
+  -addext "subjectKeyIdentifier=hash" \
+  -addext "authorityKeyIdentifier=keyid:always" \
+  -set_serial 0x01
+```
+
+```yaml title="Example userDataScript for AL2023 nodes"
 ## EKS settings
 managedControlPlane:
 ---
@@ -357,12 +371,6 @@ nodeCustomization:
       #!/bin/bash
       set -euo pipefail
 
-      # Install additional packages
-      yum install --assumeyes htop jq iptables-services
-
-      # Pre-cache commonly used container images
-      nohup docker pull public.ecr.aws/eks-distro/kubernetes/pause:3.2 &
-
       # Configure HTTP/HTTPS proxy if needed
       cat > /etc/profile.d/http-proxy.sh << 'EOF'
       export HTTP_PROXY="http://proxy.example.com:3128"
@@ -371,19 +379,94 @@ nodeCustomization:
       EOF
 
       # Inject a custom CA certificate
-      cat > /etc/pki/ca-trust/source/anchors/myorganization-root-ca.crt <<'EOF_CERT'
+      cat <<EOF > /etc/pki/ca-trust/source/anchors/my-ca.crt
       -----BEGIN CERTIFICATE-----
       ...PEM-encoded root/intermediate CA...
       -----END CERTIFICATE-----
-      EOF_CERT
+      EOF
 
       # Make sure file permissions are correct
-      chmod 0644 /etc/pki/ca-trust/source/anchors/myorganization-root-ca.crt
+      chmod 0644 /etc/pki/ca-trust/source/anchors/my-ca.crt
 
-      # Rebuild the consolidated CA bundle
+      # Ensure the CA trust bundle is updated system-wide
       update-ca-trust extract
 
+      # Verify the custom CA certificate
+      openssl verify -CAfile /etc/ssl/certs/ca-bundle.crt /etc/pki/ca-trust/source/anchors/my-ca.crt
+
+      # Expected output
+      # /etc/pki/ca-trust/source/anchors/my-ca.crt: OK
+
       echo "[user-data] Custom CA installed and system trust store updated."
+```
+
+</details>
+
+<details>
+
+<summary> Example of containerd mirror registry configuration </summary>
+
+The following example configures containerd to use an internal registry mirror for upstream container images. This is
+useful for environments with restricted internet access or where you want to cache images locally. In this example, the
+internal mirror registry supports authentication headers and skipping TLS verification.
+
+```yaml title="Example userDataScript for AL2023 nodes"
+## EKS settings
+managedControlPlane:
+---
+managedMachinePool:
+---
+nodeCustomization:
+  al2023:
+    userDataScript: |
+      #!/bin/bash
+      set -o errexit
+      set -o pipefail
+      set -o nounset
+
+      echo "Creating containerd mirror configuration directory"
+      mkdir -p /etc/containerd/certs.d
+
+      # Your internal registry/gateway that fronts upstream registries.
+      INTERNAL_REGISTRY="my-subdomain.company.com/my-registry"
+      # Access credentials for the internal registry
+      AUTH_HEADER="Basic ...base64-encoded-credentials..."
+
+      # Upstream registries you want to mirror via the internal gateway
+      REGISTRIES=(
+        "docker.io"
+        "gcr.io"
+        "ghcr.io"
+        "k8s.gcr.io"
+        "registry.k8s.io"
+        "quay.io"
+        "us-docker.pkg.dev"
+        "us-east1-docker.pkg.dev"
+      )
+
+      # For each upstream registry listed, write
+      # /etc/containerd/certs.d/<registry>/hosts.toml
+      # that redirects pulls and resolves to https://${INTERNAL_REGISTRY}/<registry>
+      # using the provided Authorization header (AUTH_HEADER). This ensures all
+      # containerd traffic goes through your internal registry/gateway.
+      for REGISTRY in "${REGISTRIES[@]}"; do
+        MIRROR_PATH="/etc/containerd/certs.d/${REGISTRY}"
+        echo "Configuring mirror for ${REGISTRY}"
+        mkdir -p "${MIRROR_PATH}"
+        cat <<EOF > "${MIRROR_PATH}/hosts.toml"
+        server = "https://${REGISTRY}"
+        [host."https://${INTERNAL_REGISTRY}/${REGISTRY}"]
+          capabilities = ["pull", "resolve"]
+          skip_verify = true
+        [host."https://${INTERNAL_REGISTRY}/${REGISTRY}".header]
+          Authorization = ["${AUTH_HEADER}"]
+        EOF
+      done
+
+      echo "Restarting containerd to apply mirror configuration"
+      systemctl restart containerd
+
+      echo "Containerd mirror configuration complete."
 ```
 
 </details>
