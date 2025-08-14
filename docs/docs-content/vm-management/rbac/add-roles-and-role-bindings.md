@@ -168,7 +168,3 @@ You can verify role creation and role binding is successful by following the ste
 
 Now you are ready to deploy a VM. Review the [Deploy VM From a Template](../create-manage-vm/deploy-vm-from-template.md)
 guide to get started with the deployment process.
-
-## Resources
-
-- [VM User Roles and Permissions](./vm-roles-permissions.md)
