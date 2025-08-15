@@ -36,7 +36,7 @@ All Edge hosts must meet the following minimum hardware requirements.
 
 ARM64 support is only verified for the Nvidia Jetson Orin device family.
 
-## Virtual Machine Operator (VMO)
+## Virtual Machine Orchestrator (VMO)
 
 To operate VMO on edge clusters, the CPUs of the constituent Edge hosts must have the following virtualization
 technologies.
