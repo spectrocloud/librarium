@@ -20,11 +20,11 @@ partial_name: upload-packs-validate
 
 1. Use the following example `oras` commands to list the repositories in the OCI registry under the `spectro-content` base path. If you have changed the base content path from the default, replace `spectro-content` with the correct content path. Replace the remaining templated values with your environment configuration values.
 
-   <Tabs>
+   <Tabs groupId="external-registry-type">
 
-   <TabItem label="Harbor" value="harbor-list">
+   <TabItem label="Harbor" value="harbor">
 
-   <Tabs>
+   <Tabs groupId="tls-harbor">
 
    <TabItem label="Regular Certificate" value="regular-certificate">
 
@@ -46,7 +46,7 @@ partial_name: upload-packs-validate
 
    </TabItem>
 
-   <TabItem label="AWS ECR" value="aws-ecr-list">
+   <TabItem label="AWS ECR" value="aws-ecr">
 
    ```shell
    oras repo ls <aws-ecr-url>/spectro-content

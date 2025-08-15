@@ -51,6 +51,10 @@ refer to [Kubernetes documentation](https://kubernetes.io/docs/concepts/policy/r
 - You are logged in as a Palette user that has the permission to modify workspaces. For more information, refer to
   [Permissions](../../user-management/palette-rbac/permissions.md).
 
+### Limitations
+
+- When using **GPU Allocation**, NVIDIA is the only supported vendor.
+
 ### Procedure
 
 1. Log in to [Palette](https://console.spectrocloud.com).
@@ -65,34 +69,58 @@ refer to [Kubernetes documentation](https://kubernetes.io/docs/concepts/policy/r
 
 6. Click **Namespaces**.
 
-7. Under **Workspace Quota**, you can specify the amount of CPU and memory that the entire workspace is allowed to
+<!-- vale off -->
+
+7. Under **Workspace Quota**, you can specify the amount of CPU, memory, and GPU that the entire workspace is allowed to
    consume. The default value is 0, which imposes no limit.
 
-8. If you want to limit resource use based on namespaces, enter the desired CPU and memory limit in the **Allocate CPU**
-   and **Allocate memory** columns next to the namespace entry.
+   ![Workspace Settings pane displaying Workspace Quota section of Namespaces tab](/workspace-management_resource-management_4-7.webp)
+
+8. If you want to limit resource use based on namespaces, click on the three-dot menu and select **Edit**. Enter the
+   desired CPU, memory, and GPU limits in the **CPU Allocation**, **Memory Allocation**, and **GPU Allocation** columns.
+   These will populate the same values in the **Cluster Quota**. You can alter these to be lower or higher than the
+   **Namespace quote** as long as the total values are lower than the **Workspace Quota**.
+
+   When using **GPU Allocation** you must use a whole number and must select the vendor from the dropdown. You must also
+   ensure that the appropriate GPU device plugin is installed and compatible with your nodes to enforce the quota as
+   Palette does not verify GPU vendor selection.
+
+   :::info
+
+   At this time, NVIDIA is the only supported vendor.
+
+   :::
+
+   ![Workspace Settings pane displaying Workspace Quota section with values](/workspace-management_workspace-quota_4-7.webp)
 
    By default, the namespace in each cluster has the same resource limit. You can change this and enter the limit on the
    namespace in one particular cluster. You must ensure that resources configured to individual namespaces do not exceed
    the workspace quota when added together.
 
-   For example, if you have two clusters in the workspace and impose a workspace-level quota of 8 Gi of memory and 8
-   CPUs, when each instance of the namespace in each cluster is added together, the total memory and CPU quota cannot
-   exceed 8 Gi of memory and 8 CPUs.
+   For example, if you have two clusters in the workspace and impose a workspace-level quota of 8 Gi of memory, 8 CPUs,
+   and 8 GPUs; and when each instance of the namespace in each cluster is added together, the total memory, CPU, and GPU
+   quota cannot exceed 8 Gi of memory, 8 CPUs, and 8GPUs.
 
-   The following resource quota configuration is not allowed for a workspace with 8 Gi of memory and 8 CPUs because the
-   resource quotas add up to 11 Gi and 11 CPUs.
+   The following resource quota configuration is not allowed for a workspace with 8 Gi of memory, 8 CPUs, and 8 GPUs
+   because the resource quotas add up to 11 Gi, 11 CPUs, and 11 GPUs.
 
-   |             | Cluster 1    | Cluster 2    |
-   | ----------- | ------------ | ------------ |
-   | Namespace 1 | 4 Gi, 4 CPUs | 4 Gi, 4 CPUs |
-   | Namespace 2 | 2 Gi, 2 CPU  | 1 Gi, 1 CPU  |
+   |             | Cluster 1            | Cluster 2            |
+   | ----------- | -------------------- | -------------------- |
+   | Namespace 1 | 4 Gi, 4 CPUs, 4 GPUs | 4 Gi, 4 CPUs, 4 GPUs |
+   | Namespace 2 | 2 Gi, 2 CPU, 2 GPUs  | 1 Gi, 1 CPU, 1 GPU   |
 
-   The following resource quota configuration is allowed because the total quota is 8 Gi and 8 CPUs.
+   ![Workspace Settings pane displaying Workspace Quota section with values over quota](/workspace-management_workspace-over-quota_4-7.webp)
 
-   |             | Cluster 1    | Cluster 2    |
-   | ----------- | ------------ | ------------ |
-   | Namespace 1 | 2 Gi, 2 CPUs | 2 Gi, 2 CPUs |
-   | Namespace 2 | 3 Gi, 3 CPU  | 1 Gi, 1 CPU  |
+   The following resource quota configuration is allowed because the total quota is 8 Gi, 8 CPUs, and 8 GPUs.
+
+   |             | Cluster 1            | Cluster 2            |
+   | ----------- | -------------------- | -------------------- |
+   | Namespace 1 | 2 Gi, 2 CPUs, 2 GPUs | 2 Gi, 2 CPUs, 2 GPUs |
+   | Namespace 2 | 3 Gi, 3 CPU, 3 GPUs  | 1 Gi, 1 CPU, 1 GPU   |
+
+   ![Workspace Settings pane displaying Workspace Quota section with values within quota](/workspace-management_workspace-within-quota_4-7.webp)
+
+<!-- vale on -->
 
 ### Validate
 

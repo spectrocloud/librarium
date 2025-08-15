@@ -94,7 +94,7 @@ Agent mode binaries cannot be downloaded at this time.
 
    :::
 
-   ![Image of Create pack bundle](../../../static/assets/docs/images/downloads/downloads_artifact-studio-build-bundle.webp)
+   ![Image of Create pack bundle](../../../static/assets/docs/images/downloads/downloads_artifact-studio-build-bundle-4-7-a.webp)
 
 3. On the **Select Product** page, select either **Palette Enterprise Appliance** or **Palette Vertex Appliance**.
 
@@ -203,7 +203,7 @@ information on how to verify the authenticity and integrity of your bundles, ref
 
 2. In the **Create pack bundle** section, select **Browse Packs**.
 
-   ![Image showing where to download individual packs](../../../static/assets/docs/images/downloads/downloads_artifact-studio-browse-packs.webp)
+   ![Image showing where to download individual packs](../../../static/assets/docs/images/downloads/downloads_artifact-studio-browse-packs-4-7-a.webp)
 
 3. On the left menu, choose any applicable pack filters, such as **Product**, product **Version**, **Cloud type**, and
    **Layer type**. Beside the search bar are additional filters: infrastructure type (**AMD64** or **ARM64**), and FIPS
@@ -212,7 +212,7 @@ information on how to verify the authenticity and integrity of your bundles, ref
 4. After you have applied any necessary filters, navigate through the list of packs. Use the **Search** bar to filter
    your results further.
 
-   ![Image showing filter and search together](../../../static/assets/docs/images/downloads/downloads_artifact-studio-search-and-filter.webp)
+   ![Image showing filter and search together](../../../static/assets/docs/images/downloads/downloads_artifact-studio-search-and-filter-4-7-a.webp)
 
 5. When finished, select the **I'm not a robot** reCAPTCHA checkbox, and select **Download Bundle**. Alternatively, you
    can **Copy all URLs** so that you can download the applicable files later in an alternate manner of your choosing,
@@ -221,7 +221,7 @@ information on how to verify the authenticity and integrity of your bundles, ref
 6. The download begins. Each pack is downloaded as an individual ZST file (`<pack-name>.zst`) with an accompanying
    signature file (`<pack-name>.sig.bin`).
 
-   ![Image showing download of multiple packs](../../../static/assets/docs/images/downloads/downloads_artifact-studio-individual-packs-download.webp)
+   ![Image showing download of multiple packs](../../../static/assets/docs/images/downloads/downloads_artifact-studio-individual-packs-download-4-7-a.webp)
 
    :::tip
 

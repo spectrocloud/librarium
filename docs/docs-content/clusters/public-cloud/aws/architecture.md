@@ -67,6 +67,28 @@ managedControlPlane:
   disableAssociateOIDCProvider: true
 ```
 
+### Karpenter Support
+
+Nodes provisioned through [Karpenter](https://karpenter.sh/docs/) are visible in Palette and supported for read-only
+operations, such as billing and monitoring. However, [Day-2 operations](../../cluster-management/cluster-management.md)
+are not supported.
+
+The **Managed by Karpenter** banner is displayed for any node pools that are provisioned using Karpenter.
+
+![Karpenter node in Palette](/public-cloud_aws_architecture_managed-by-karpenter.webp)
+
+#### Known Limitations
+
+- Palette does not support the following instance types, and any non-supported instance types launched by Karpenter will
+  not be displayed in the node pool view. Additionally, they will not be included in
+  [kCh](../../../introduction/resource-usage-estimation.md) calculations.
+
+  - `t1`, `m1`, `c1`, `cc2`, `m2`, `cr1`, `cg1`, `i2`, `hs1`, `m3`, `c3`, `r3`
+
+- Palette does not display Karpenter-specific data for node pools managed by Karpenter, such as
+  [NodeClaims](https://karpenter.sh/preview/concepts/nodeclaims/) or
+  [Metrics](https://karpenter.sh/preview/reference/metrics/).
+
 ## AWS Instance Type and Pod Capacity
 
 Choose the instance type and the number of instances to be launched by calculating the number of expected pods. You

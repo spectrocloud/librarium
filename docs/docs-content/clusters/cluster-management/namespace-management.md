@@ -39,6 +39,10 @@ The following steps will guide you on how to create a namespace.
 
 - A unique namespace name.
 
+### Limitations
+
+- When using **GPU Allocation**, NVIDIA is the only supported vendor.
+
 ### Create a Namespace in a Cluster
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
@@ -49,27 +53,26 @@ The following steps will guide you on how to create a namespace.
 
 4. Navigate to the **Workloads** > **Namespaces** tab, and click the **Manage Namespaces** button.
 
-   <br />
-
    The **Settings** pane displays with **RBAC** preselected and the **Namespaces** tab opened by default.
 
-   ![Cluster Settings pane with three arrows that point respectively to Namespace Name field, Add to List button, and the location where the namespace is listed](/clusters_cluster-management_namespace-create.webp)
+   ![Cluster Settings pane with the location where the namespace is listed](/clusters_cluster-management_namespace-create_4-7.webp)
 
-5. Type a unique namespace name in the **Namespace name or Regex** field and click **Add to List** at right.
+5. Type a unique namespace name or a regular expression according to which Palette will assign names to namespaces in
+   the **Namespace name or Regex** field and click **Confirm** at right.
+
+   ![Cluster Settings pane showing how to add new namespace](/clusters_cluster-management_ns-resource-quota_4-7.webp)
 
 6. You can assign resource quotas now or at a later time. To learn how, check out
    [Assign Resource Quotas](namespace-management.md#assign-resource-quotas).
 
-   <br />
-
    For details on how to configure RBAC for namespaces, check out the
    [RBAC and NS Support](cluster-rbac.md#palette-roles-and-kubernetes-roles) guide.
+
+7. Once you have made all needed changes, click **Save Changes**.
 
 ### Validate
 
 Validate that the namespace was successfully created.
-
-<br />
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
@@ -77,11 +80,9 @@ Validate that the namespace was successfully created.
 
 3. Select the cluster that contains the namespace you created and view its details.
 
-4. In the **Settings** pane, click **RBAC** > **Namespaces** tab.
+4. In the **Settings** pane, click **Cluster Settings**, and then select **RBAC** > **Namespaces** tab.
 
-   <br />
-
-   The namespace you created will be listed under **Workspace Quota**.
+   The namespace you created will be listed under **Namespace Quota**.
 
 ## Assign Resource Quotas
 
@@ -97,19 +98,32 @@ You can assign resource quotas for resource sharing among multiple users who hav
 
 2. Navigate to the left **Main Menu** and click on **Clusters**.
 
-3. Select the cluster with the namespace to which you will assign workspace quotas.
+3. Select the cluster with the namespace to which you will assign cluster quotas.
 
 4. Navigate to the **Workloads** > **Namespaces** tab, and click the **Manage Namespaces** button.
 
 5. The **Settings** pane displays with **RBAC** > **Namespaces** preselected.
 
-6. Select the namespace listed in the **Workspace Quota** section.
+6. Click on the three-dot menu on the namespace and select **Edit**.
 
-![Cluster Settings pane displaying Workspace Quota section of Namespaces tab](/clusters_cluster-management_ns-resource-quota.webp)
+<!-- vale off -->
 
-<br />
+7. Specify the number of CPUs and GPUs, and the amount of memory (in GB) to allocate to the namespace. Click **Confirm**
+   to your changes.
 
-7. Type the number of CPU and Memory to allocate to the namespace, and save your changes.
+   When using **GPU Allocation** you must use a whole number and must select the vendor from the dropdown. You must also
+   ensure that the appropriate GPU device plugin is installed and compatible with your nodes to enforce the quota as
+   Palette does not verify GPU vendor selection.
+
+   :::info
+
+   Currently, NVIDIA is the only supported vendor.
+
+   :::
+
+8. Once you have made all needed changes, click **Save Changes**.
+
+<!-- vale on -->
 
 ## Delete a Namespace
 
@@ -129,8 +143,9 @@ pods, services and endpoints, config maps, and more.
 3. Navigate to the **Workloads** > **Namespaces** tab, and click the **Manage Namespaces** button. The **Settings** pane
    displays with **RBAC** preselected and the **Namespaces** tab opened by default.
 
-4. Select the namespace you want to delete, which is listed in the **Workspace Quota** section, and click the trash can
-   icon.
+4. Click the three-dot menu on the namespace you want to delete and select **Remove**.
+
+5. Click **Save Changes**.
 
 ### Validate
 
@@ -142,6 +157,6 @@ Validate that the namespace was successfully deleted.
 
 3. Select the cluster that contains the namespace you want to delete and view its details.
 
-4. In the **Settings** pane, click **RBAC** > **Namespaces** tab.
+4. In the **Settings** pane, select **Cluster Settings**, and then select **RBAC** > **Namespaces** tab.
 
-The namespace you created is no longer listed under **Workspace Quota**.
+The namespace you created is no longer listed under **Namespace Quota**.

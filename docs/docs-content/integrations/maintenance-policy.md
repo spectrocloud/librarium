@@ -19,14 +19,17 @@ in cluster profiles. Infrastructure packs are grouped as follows:
 
 Add-on packs provide additional functionality that you can add to your cluster profile and are grouped as follows:
 
+- AI
+- App Services
 - Authentication
 - Ingress
 - Load balancer
 - Logging
 - Monitoring
+- Registry
 - Security
-- Service mesh
-- System apps
+- Service Mesh
+- System Apps
 
 Check out the [Packs List](integrations.mdx) document, where you can use the filter buttons to display a list of Palette
 packs in each category and learn about the individual packs.
