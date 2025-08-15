@@ -119,21 +119,9 @@ depending on your environment. You can track events from the **Events** tab.
 
 You can verify role creation and role binding is successful by following the steps below.
 
-1. Log in to [Palette](https://console.spectrocloud.com).
-
-2. From the left main menu, click **Clusters** and select your cluster.
-
-3. From the cluster **Overview** tab, download the [Kubeconfig](../../clusters/cluster-management/kubeconfig.md) file.
-   This file allows you to connect to your deployed cluster.
-
-4. Open a terminal session and set the environment variable `KUBECONFIG` to point to the file you downloaded.
-
-   ```shell
-   export KUBECONFIG=<path-to-downloaded-kubeconfig-file>
-   ```
-
-5. Use the following command to ensure the role binding was successful.The command outputs the name of namespace and
-   name of your role binding, separated by a `/`.
+1. Use the following command to ensure the role binding was successful. The command outputs the name of namespace and
+   name of your role binding, separated by a `/`. Ensure that you are using the same terminal session where you set set
+   the `KUBECONFIG` environment variable to point to your cluster's kubeconfig file.
 
    ```shell
    ROLE_NAME=<role-name>
@@ -144,7 +132,7 @@ You can verify role creation and role binding is successful by following the ste
    default/spectro-on-demand-16823991360055847390
    ```
 
-6. Execute the following command to review the configuration of the role binding you created in the Palette UI.
+2. Execute the following command to review the configuration of the role binding you created in the Palette UI.
 
    ```shell
    kubectl describe rolebinding <role-binding-name> --namespace <namespace>
