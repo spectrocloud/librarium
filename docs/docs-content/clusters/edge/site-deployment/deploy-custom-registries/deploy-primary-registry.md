@@ -27,6 +27,12 @@ If you already have a cluster with the deprecated **Harbor Edge-Native Config** 
 Harbor registry using **Registry Connect**, refer to
 [Migrate from Harbor Edge-Native Config Pack](./migrate-edge-native-config.md).
 
+:::warning
+
+A primary registry is required for locally managed multi-node clusters without internet connectivity.
+
+:::
+
 ## Limitations
 
 - This feature is not supported on VerteX. If you are deploying a central cluster, you can only connect to a Palette
