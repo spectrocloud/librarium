@@ -120,8 +120,8 @@ depending on your environment. You can track events from the **Events** tab.
 You can verify role creation and role binding is successful by following the steps below.
 
 1. Use the following command to ensure the role binding was successful. The command outputs the name of namespace and
-   name of your role binding, separated by a `/`. Ensure that you are using the same terminal session where you set set
-   the `KUBECONFIG` environment variable to point to your cluster's kubeconfig file.
+   name of your role binding, separated by a `/`. Ensure that you are using the same terminal session where you set the
+   `KUBECONFIG` environment variable to point to your cluster's kubeconfig file.
 
    ```shell
    ROLE_NAME=<role-name>
