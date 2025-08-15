@@ -1,39 +1,125 @@
-# This workflow is required on all repositories in the organization. It is used to scan the repository for secrets using GitLeaks.
-# In the event of an error, the workflow will fail and the secrets will be displayed in the logs. Review the logs to determine the source of the secrets and remove them from the repository.
-# If the secret finding is a false positive, add the secret to the .gitleaksignore file in the repository.
+# This workflow is used to automatically sync new entries added to the .gitleaksignore file in versioned branches back to the master branch.
+# When a change to .gitleaksignore is pushed to a version-* branch, this workflow will compare it against the master .gitleaksignore.
+# If new entries are found that do not exist in master, a pull request will be opened to append the missing entries.
+# We need this workflow to comply with the weekly gitleaks scanning process executed by the security team.
 
-name: GitLeaks
-on: [pull_request]
+name: Sync gitleaksignore to master
 
+on:
+  push:
+    branches:
+      - 'version-*'
+    paths:
+      - '.gitleaksignore'
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: "Branch to sync from (for manual testing)"
+        required: false
+    
 concurrency:
-  group: gitleaks-${{ github.ref }}
-  cancel-in-progress: true
+  group: sync-gitleaksignore
+  cancel-in-progress: false
 
 jobs:
-  gitleaks-scan:
+  sync-gitleaksignore:
     runs-on: ubuntu-latest
-    container:
-      image: gcr.io/spectro-dev-public/bulwark/gitleaks:latest
-      env:
-        REPO: ${{ github.event.repository.name }}
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        GITLEAKS_CONFIG: config.toml
+    
     steps:
-      - name: run-bulwark-gitleaks-scan
-        shell: sh
-        env:
-          BRANCH: ${{ github.head_ref || github.ref_name }}
-        run: /workspace/bulwark -name CodeSASTGitLeaks -target $REPO -tags "branch:$BRANCH,options:--log-opts origin..HEAD"
+    - name: Checkout current branch
+      uses: actions/checkout@v4
+      with:
+        ref: ${{ github.event.inputs.branch || github.ref_name }}
 
-      - name: check-result
-        shell: sh
-        run: |
-          resultPath=./$REPO/gitleaks.json
-          cat $resultPath | grep -v \"Match\"\: | grep -v \"Secret\"\:
-          total_failed_tests=`cat $resultPath | grep \"Fingerprint\"\: | wc -l`
-          if [ "$total_failed_tests" -gt 0 ]; then
-            echo "GitLeaks validation check failed with above findings..."
-            exit 1
-          else
-            echo "GitLeaks validation check passed"
-          fi
+    - name: Configure Git
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+    - name: Extract gitleaksignore entries from version branch
+      run: |
+        echo "BRANCH_NAME=${{ github.event.inputs.branch || github.ref_name }}" >> $GITHUB_ENV
+        cp .gitleaksignore version_ignore
+
+        # Get master version of the file
+        git fetch origin master
+        git checkout origin/master -- .gitleaksignore
+        cp .gitleaksignore master_ignore
+
+        # Cleanup and sort both files (remove comments + blanks)
+        grep -vE '^\s*#|^\s*$' version_ignore | sort -u > version_clean
+        grep -vE '^\s*#|^\s*$' master_ignore | sort -u > master_clean
+
+        # Find entries in version_clean not in master_clean
+        comm -23 version_clean master_clean > to_add.txt
+
+        echo "New entries to add:"
+        cat to_add.txt || true
+
+    - name: Exit early if nothing to add  
+      run: |
+        if [ ! -s to_add.txt ]; then
+          echo "No new gitleaksignore entries to add to master."
+          echo "SHOULD_SYNC=false" >> $GITHUB_ENV
+          rm -f version_ignore master_ignore version_clean master_clean to_add.txt
+          exit 0
+        else
+          echo "SHOULD_SYNC=true" >> $GITHUB_ENV
+        fi
+
+    - name: Update .gitleaksignore in master
+      if: ${{ env.SHOULD_SYNC == 'true' }}
+      run: |
+        # Create a new branch from master
+        git checkout -b "gitleaks-sync-${{ github.run_id }}" origin/master
+
+        # Add new entries to .gitleaksignore, remove all blank lines
+        cat to_add.txt >> .gitleaksignore
+        sed -i '/^\s*$/d' .gitleaksignore
+
+        # Commit and push the changes
+        git add .gitleaksignore
+        git commit -m "chore: sync .gitleaksignore from $BRANCH_NAME"
+        git push origin HEAD
+
+    - name: Create a PR in master with new .gitleaksignore entries
+      if: ${{ env.SHOULD_SYNC == 'true' }}
+      env:
+        GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      run: |
+        pr_url=$(gh pr create \
+          --base master \
+          --head "gitleaks-sync-${{ github.run_id }}" \
+          --title "docs: update .gitleaksignore" \
+          --body "This PR syncs new .gitleaksignore entries from \`$BRANCH_NAME\` into master." \
+        | tee /dev/stderr | grep -o 'https://[^ ]*')
+
+        # Save the PR URL as an environment variable
+        echo "GITHUB_PR_URL=$pr_url" >> $GITHUB_ENV
+
+    - name: Cleanup temporary files
+      if: always()
+      run: |
+        echo "Cleaning up temporary files..."
+        rm -f version_ignore master_ignore version_clean master_clean to_add.txt
+        echo "Cleanup complete."
+
+    - name: Success Slack Notification
+      if: success() && env.SHOULD_SYNC == 'true'
+      uses: rtCamp/action-slack-notify@v2.3.3
+      env:
+        SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
+        SLACK_COLOR: ${{ job.status }}
+        SLACKIFY_MARKDOWN: true
+        ENABLE_ESCAPES: true
+        SLACK_MESSAGE: "🦄 This PR adds missing .gitleaksignore entries from the version branch to master. Please review the [PR](${{ env.GITHUB_PR_URL }}) for more details."
+    
+    - name: Failure Slack Notification
+      if: ${{ failure() }}
+      uses: rtCamp/action-slack-notify@v2.3.3
+      env:
+        SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_WEBHOOK }}
+        SLACK_COLOR: ${{ job.status }}
+        SLACKIFY_MARKDOWN: true
+        ENABLE_ESCAPES: true
+        SLACK_MESSAGE: "❌ The gitleaks sync job in `${{ github.repository }}` failed. [View details](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})."
