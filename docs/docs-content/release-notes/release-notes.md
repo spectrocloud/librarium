@@ -93,7 +93,7 @@ passing open redirects in URLs using the `returnTo` parameter.
 
 :::info
 
-The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.7.a Palette release is 4.7.5.
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.7.a Palette release is 4.7.7.
 
 :::
 
@@ -142,10 +142,8 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 - All cluster Terraform resources now support the `gpu_limit` and `gpu_provider` fields to enforce GPU resource limits.
   For more information, refer to the Spectro Cloud Terraform provider
-  [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
-- The Terraform resource `spectrocloud_workspace` now supports the `gpu_limit` and `gpu_provider` fields to enforce GPU
-  resource limits. For more information, refer to the Spectro Cloud Terraform provider
-  [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
+  [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs). The Terraform resource
+  `spectrocloud_workspace` now also supports these configurations.
 - Terraform version 0.24.1 of the
   [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
   available. For more details, refer to the Terraform provider
