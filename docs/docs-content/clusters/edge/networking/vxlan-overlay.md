@@ -55,21 +55,27 @@ server. The region experiences a bad weather event that causes a sustained outag
 - When adding multiple Edge hosts to an existing cluster with overlay enabled, failure to add one host will block the
   addition of the other hosts.
 
+- If you configured static IP on any host of your cluster using the
+  [Terminal User Interface (TUI)](../site-deployment/site-installation/initial-setup.md), enabling network overlay is
+  not supported. Static IPs reduce the need to configure an overlay network, but if you must use network overlay on top
+  of static IPs, you can configure the static IPs using the
+  [user data network block](../edge-configuration/installer-reference.md#site-network-parameters) instead.
+
 ## Prerequisites
 
 - At least one Edge host registered with your Palette account.
-- Your cluster profile must have K3s or RKE2 as its Kubernetes distribution.
+- Your cluster profile must have K3s, RKE2, or PXK-E as its Kubernetes distribution.
+  - Only single-node PXK-E clusters support network overlay. Multi-node PXK-E clusters do not support overlay.
 - All Edge hosts must be on the same Layer-2 network.
 - Broadcast messages must be allowed between all Edge hosts participating in the cluster.
 
   - For Virtual Machine (VM) Edge hosts in VMware, this means features such as promiscuous mode must be enabled to allow
     broadcasts between hosts.
-
   - Switches cannot implement features that block broadcasts between ports where Edge hosts are connected.
 
-- If you are launching your Edge hosts in virtual machine environments and you are using either Cilium or Flannel as
-  your Container Network Interface (CNI), ensure that you add the following commands in the `user-data` file at the boot
-  stage. Replace `<interface-name>` with the name of the network interface on your Edge host.
+- If your host is a virtual machine using a VMXNET3 adapter, ensure that you add the following commands in the
+  `user-data` file at the boot stage. Replace `<interface-name>` with the name of the network interface on your Edge
+  host.
 
   ```yaml {2-6}
   stages:
@@ -83,6 +89,14 @@ server. The region experiences a bad weather event that causes a sustained outag
   This is related to a
   [known issue with VMware's VMXNET3 adapter](https://github.com/cilium/cilium/issues/13096#issuecomment-723901955),
   which is widely used in different virtual machine management services, including VMware vSphere and Hyper-V.
+
+- If your host's physical IP address is static, ensure that you configure the IP address using the
+  [network block](../edge-configuration/installer-reference.md#site-network-parameters) in your `user-data` file.
+
+- If your hosts are deployed in [agent mode](../../../deployment-modes/agent-mode/agent-mode.md), ensure that your hosts
+  use `systemd-networkd` and `systemd-resolved` for interface and DNS management. Refer to
+  [Configure networkd to Prepare Host for Overlay Network](../../../deployment-modes/agent-mode/overlay-preparation.md)
+  for more information.
 
 ## Enable Overlay Network
 

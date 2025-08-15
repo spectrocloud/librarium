@@ -41,7 +41,9 @@ these values when deploying a cluster or performing Day-2 cluster operations.
 
 :::warning
 
-Do not modify the default `address` value. Changing this value makes the cluster inaccessible.
+Do not modify the default `address` value. Changing this value makes the cluster inaccessible. If no value is provided
+for the `vip_ddns` variable, it defaults to `false` if the `address` is a valid IP address and `true` if it is a domain
+name.
 
 :::
 
@@ -53,7 +55,7 @@ Do not modify the default `address` value. Changing this value makes the cluster
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
-2. From the left **Main Menu** click **Clusters ** and select **Add a New Cluster**.
+2. From the left **Main Menu** click **Clusters** and select **Add a New Cluster**.
 
 3. Choose **Edge Native** for the cluster type and click **Start Edge Native Configuration**.
 

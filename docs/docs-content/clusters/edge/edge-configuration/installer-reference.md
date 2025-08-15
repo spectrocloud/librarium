@@ -173,7 +173,7 @@ were downloaded when creating the [content bundle](../edgeforge-workflow/palette
 :::info
 
 <!-- prettier-ignore -->
-Palette will automatically update the image path when <VersionedLink text="Harbor Edge-Native Config" url="/integrations/packs/?pack=harbor-edge-native-config" />  pack is enabled. For example, if you have a registry mapping rule such as the following.
+Palette will automatically update the image path when <VersionedLink text="Harbor Edge-Native Config" url="/integrations/packs/?pack=harbor-edge-native-config" /> or <VersionedLink text="Registry Connect" url="/integrations/packs/?pack=registry-connect" />  pack is enabled. For example, if you have a registry mapping rule such as the following.
 
 ```yaml
 "us-docker.pkg.dev/palette-images": "example.registry.com/palette-images"
@@ -183,6 +183,16 @@ Then the image tag will be updated with the prefix URL to the primary registry, 
 `https://10.10.100.45:30003/example.registry.com/palette-images`. Palette will do this for all registry mapping rules
 specified in the user data. This allows the Edge host to find and pull images that came from an external registry
 through the primary registry.
+
+<!-- prettier-ignore -->
+Note that the Harbor Edge-Native Config pack is deprecated and will be removed in a future release. Refer to
+[Migrate from Harbor Edge-Native Config Pack](../site-deployment/deploy-custom-registries/migrate-edge-native-config.md)
+for guidance on transitioning to Registry Connect.
+
+The Registry Connect pack additionally supports `imageReplacementRules` (defined in the pack YAML under
+`charts.registry-connect.config.registry.imageReplacementRules`), which serve the same purpose as
+`registryMappingRules`. If you provide both settings, the configuration in `imageReplacementRules` takes precedence over
+`registryMappingRules`.
 
 :::
 
@@ -408,7 +418,7 @@ installation is complete.
 | `install.grub_options.extra_cmdline` | Kernel command-line parameters to add to the installer.                                                                                                       | Map of strings             | None    |
 | `install.partitions.persistent`      | A persistent partition object that you can configure for extra storage.                                                                                       | Object                     | None    |
 | `install.partitions.persistent.size` | The size of the persistent partition.                                                                                                                         | Integer                    | `0`     |
-| `install.partitions.persistent.fs`   | The file system type for the persistent partition.                                                                                                            | String                     | `''`    |
+| `install.partitions.persistent.fs`   | The file system type for the persistent partition. You must provide a value for this parameter (for example, `ext4`).                                         | String                     | `''`    |
 | `install.extra-partitions`           | The list of extra partitions to create. Each item accepts `name`, `size`, `fs`, and `label`.                                                                  | Array of partition objects | None    |
 | `install.extra-partitions[*].name`   | The name of the extra partition.                                                                                                                              | String                     | `''`    |
 | `install.extra-partitions[*].size`   | The size of the extra partition.                                                                                                                              | Integer                    | `0`     |
