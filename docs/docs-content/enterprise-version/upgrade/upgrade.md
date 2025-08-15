@@ -449,6 +449,9 @@ health status of MongoDB ReplicaSet members, refer to our
 |       4.1.7        |       4.2.7        | :white_check_mark: |
 
 </TabItem>
+
+<TabItem value="management-appliance" label="Palette Management Appliance" >
+</TabItem>
 </Tabs>
 
 ## Upgrade Guides
