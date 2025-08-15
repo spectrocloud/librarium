@@ -63,7 +63,8 @@ tags: ["release-notes"]
 
 - Nodes provisioned through [Karpenter](https://karpenter.sh/docs/) are now visible in Palette and supported for
   read-only operations, such as billing and monitoring. However,
-  [Day-2 operations](../clusters/cluster-management/cluster-management.md) are not supported.
+  [Day-2 operations](../clusters/cluster-management/cluster-management.md) are not supported. Refer to
+  [Karpenter Support](../clusters/public-cloud/aws/architecture.md#karpenter-support) for more details.
 - <TpBadge /> A technical preview banner is now displayed on all [Artifact Studio](../downloads/artifact-studio.md)
   pages.
 
