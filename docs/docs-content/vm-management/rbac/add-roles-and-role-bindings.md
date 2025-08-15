@@ -36,7 +36,7 @@ learn more about role-based Access Control (RBAC) in Palette, review the
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. From the left **Main Menu**, click **Clusters** and select your cluster.
+2. From the left main menu, click **Clusters** and select your cluster.
 
 3. From the cluster **Overview** tab, download the [Kubeconfig](../../clusters/cluster-management/kubeconfig.md) file.
    This file allows you to connect to your deployed cluster.
@@ -105,7 +105,7 @@ learn more about role-based Access Control (RBAC) in Palette, review the
     resource quotas. Click **Confirm** to save your configuration.
 
 11. Click on **Add New Binding** under the **Role Bindings** section. Select the namespace you configured from the
-    **Namespace** drop down. Fill in the name of the role you defined in Step 8. Then, add a user, group or service
+    **Namespace** drop-down. Fill in the name of the role you defined in Step 8. Then, add a user, group, or service
     account name in the **Subjects** section. Refer the
     [Create Role Bindings](../../clusters/cluster-management/cluster-rbac.md#create-role-bindings) guide for further
     information. Click **Confirm** to update the cluster.
@@ -121,7 +121,7 @@ You can verify role creation and role binding is successful by following the ste
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. From the left **Main Menu**, click **Clusters** and select your cluster.
+2. From the left main menu, click **Clusters** and select your cluster.
 
 3. From the cluster **Overview** tab, download the [Kubeconfig](../../clusters/cluster-management/kubeconfig.md) file.
    This file allows you to connect to your deployed cluster.
