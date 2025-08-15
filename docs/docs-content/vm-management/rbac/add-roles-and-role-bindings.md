@@ -110,7 +110,7 @@ learn more about role-based Access Control (RBAC) in Palette, review the
     [Create Role Bindings](../../clusters/cluster-management/cluster-rbac.md#create-role-bindings) guide for further
     information. Click **Confirm** to update the cluster.
 
-![Cluster role binding](/vm-management_rbac_add-roles-and-role-bindings_created-binding.webp)
+    ![Cluster role binding](/vm-management_rbac_add-roles-and-role-bindings_created-binding.webp)
 
 The cluster status displays as **Upgrading** on the **Cluster Overview** page. Upgrading can take several minutes
 depending on your environment. You can track events from the **Events** tab.
