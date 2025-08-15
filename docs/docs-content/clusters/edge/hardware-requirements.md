@@ -46,7 +46,7 @@ To use Trusted Boot, your Edge host must meet the following additional requireme
   [Check Hardware EFI Boot Limit](/docs/docs-content/clusters/edge/trusted-boot/edgeforge/check-efi-limit.md) for a
   rough estimate of your EFI boot limit. For a more precise determination, contact sales@spectrocloud.com.
 
-## Virtual Machine Operator (VMO)
+## Virtual Machine Orchestrator (VMO)
 
 To operate VMO on edge clusters, the CPUs of the constituent Edge hosts must have the following virtualization
 technologies.
