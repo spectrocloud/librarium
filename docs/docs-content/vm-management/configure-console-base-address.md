@@ -36,7 +36,7 @@ your virtual machines, without needing to navigate to **Clusters** > cluster **O
 3. From the cluster **Overview** tab, download the [Kubeconfig](../clusters/cluster-management/kubeconfig.md) file. This
    file allows you to connect to your deployed cluster.
 
-4. Navigate to your terminal window and set the environment variable `KUBECONFIG` to point to the file you downloaded.
+4. Open a terminal session and set the environment variable `KUBECONFIG` to point to the file you downloaded.
 
    ```shell
    export KUBECONFIG=<path-to-downloaded-kubeconfig-file>
