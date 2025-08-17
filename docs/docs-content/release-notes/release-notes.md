@@ -93,7 +93,7 @@ passing open redirects in URLs using the `returnTo` parameter.
 
 :::info
 
-The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.7.13 Palette release is 4.7.7.
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.7.13 Palette release is 4.7.9.
 
 :::
 
