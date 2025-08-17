@@ -43,14 +43,14 @@ tags: ["packs", "open-policy-agent", "security"]
 You can retrieve details about the Gatekeeper pack by using the following Terraform code.
 
 ```hcl
-data "spectrocloud_registry" "public_addon_registry" {
-  name = "Spectro Addon Repo"
+data "spectrocloud_registry" "community_registry" {
+  name = "Palette Community Registry"
 }
 
 data "spectrocloud_pack_simple" "gatekeeper" {
   name    = "gatekeeper"
   version = "3.8.0"
   type = "helm"
-  registry_uid = data.spectrocloud_registry.public_addon_registry.id
+  registry_uid = data.spectrocloud_registry.community_registry.id
 }
 ```
