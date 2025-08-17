@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## August 16, 2025 - Release 4.7.13 {#release-notes-4.7.a}
+## August 17, 2025 - Release 4.7.13 {#release-notes-4.7.a}
 
 ### Security Notices
 
@@ -93,7 +93,7 @@ passing open redirects in URLs using the `returnTo` parameter.
 
 :::info
 
-The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.7.a Palette release is 4.7.7.
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.7.13 Palette release is 4.7.7.
 
 :::
 
