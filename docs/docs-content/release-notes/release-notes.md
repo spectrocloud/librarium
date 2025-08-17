@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## August 16, 2025 - Release 4.7.X {#release-notes-4.7.a}
+## August 17, 2025 - Release 4.7.13 {#release-notes-4.7.a}
 
 ### Security Notices
 
@@ -23,10 +23,10 @@ tags: ["release-notes"]
 
 - Availability zones are now required when creating MAAS [node pools](../clusters/cluster-management/node-pool.md).
   - For [MAAS clusters](../clusters/data-center/maas/create-manage-maas-clusters.md) deployed prior to Palette version
-    4.7.a, selecting an availability zone is required when creating a new node pool; however, selecting an availability
+    4.7.13, selecting an availability zone is required when creating a new node pool; however, selecting an availability
     zone is _not_ required when modifying an existing node pool, as modifying availability zones post-cluster deployment
     will trigger a [node pool repave](../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration).
-  - For MAAS clusters deployed prior to 4.7.a, we recommend creating a new node pool with an availability zone selected
+  - For MAAS clusters deployed prior to 4.7.13, we recommend creating a new node pool with an availability zone selected
     and migrating existing workloads to the new node pool when convenient. For guidance on migrating workloads, refer to
     the [Taints and Tolerations](../clusters/cluster-management/taints.md) guide.
 
@@ -93,7 +93,7 @@ passing open redirects in URLs using the `returnTo` parameter.
 
 :::info
 
-The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.7.a Palette release is 4.7.7.
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.7.13 Palette release is 4.7.9.
 
 :::
 
