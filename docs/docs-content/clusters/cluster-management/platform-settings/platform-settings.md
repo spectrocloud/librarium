@@ -6,12 +6,14 @@ hiddenFromNav: false
 tags: ["clusters", "cluster management"]
 ---
 
-Palette provides two platform settings:
+Palette provides three platform settings in **Tenant Settings**:
 
 - **Pause Agent Upgrades** excludes a cluster or group of clusters from being upgraded once Palette upgrades.
 
 - **Cluster Auto Remediation** controls whether unhealthy nodes in Palette-provisioned clusters will automatically be
   replaced with new nodes.
+
+- **Automatic Cluster Role Bindings** injects Palette IDP users into Kubernetes clusters with necessary role bindings.
 
 These settings can be enabled at different scopes.
 
@@ -20,3 +22,5 @@ These settings can be enabled at different scopes.
 - [Pause Platform Upgrades](./pause-platform-upgrades.md)
 
 - [Cluster Auto Remediation](./cluster-auto-remediation.md)
+
+- [Automatic Cluster Role Bidnings](./cluster-auto-rbac.md)

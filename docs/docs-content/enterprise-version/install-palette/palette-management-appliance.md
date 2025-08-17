@@ -24,6 +24,8 @@ Once Palette has been installed, you can download pack bundles and upload them t
 external registry. These pack bundles are used to create your cluster profiles. You will then be able to deploy clusters
 in your environment.
 
+## Third Party Packs
+
 There is an additional option to download and install the Third Party packs that provide complementary functionality to
 Palette. These packs are not required for Palette to function, but they do provide additional features and capabilities
 as described in the following table.
@@ -116,14 +118,6 @@ guide.
 Follow the instructions to upload packs to your Palette instance. Packs are used to create
 [cluster profiles](../../profiles/cluster-profiles/cluster-profiles.md) and deploy workload clusters in your
 environment.
-
-:::info
-
-If you are intending to upgrade Palette using a content bundle, you must upload the bundle to the internal Zot registry
-using Local UI. This is regardless of whether you are using an external registry or the internal Zot registry for your
-pack bundles.
-
-:::
 
 ### Prerequisites
 
