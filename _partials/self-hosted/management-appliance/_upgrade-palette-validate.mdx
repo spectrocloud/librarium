@@ -1,0 +1,16 @@
+---
+partial_category: self-hosted
+partial_name: upgrade-palette-validate
+---
+
+1. Log in to the Local UI of the leader host of the {props.version} management cluster. By default, Local UI is accessible at `https://<node-ip>:5080`. Replace `<node-ip>` with the IP address of the leader host.
+
+2. From the left main menu, click **Cluster**.
+
+3. Check that the `palette-mgmt-plane` pack displays the upgraded version number and is in a **Running** status.
+
+4. Verify that you can log in to the {props.version} system console and no warning message is displayed.
+
+5. If you have configured a tenant, log in to the tenant console and verify that Palette displays the correct version number.
+
+   ![Palette version in tenant console](/enterprise-version_install-palette_palette-management-appliance_palette-tenant-version.webp)
