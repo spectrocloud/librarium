@@ -65,7 +65,7 @@
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-markdown": "10.1.0",
-    "react-select": "^5.10.0",
+    "react-select": "^5.10.2",
     "remark-gfm": "4.0.0",
     "sass": "^1.82.0",
     "semver": "^7.7.1"
