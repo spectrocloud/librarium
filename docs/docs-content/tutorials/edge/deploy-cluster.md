@@ -305,7 +305,7 @@ sudo ./earthly.sh +build-all-images
 Share your logs with an Earthly account (experimental)! Register for one at https://ci.earthly.dev.
 ```
 
-This command may take 15-20 minutes to finish depending on the hardware resources of the host machine. Upon completion,
+This command may take 15-60 minutes to finish depending on the hardware resources of the host machine. Upon completion,
 the command will display the manifest, as shown in the example below, that you will use in your cluster profile later in
 this tutorial. Note that the `system.xxxxx` attribute values in the manifest example are the same as what you defined
 earlier in the `.arg` file.
