@@ -11,6 +11,14 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## August 19, 2025 - Release 4.7.14
+
+### Bug Fixes
+
+- Fixed an issue that prevented
+  [HTTP-Proxies configured in Local UI](../clusters/edge/local-ui/host-management/configure-proxy.md) prior to cluster
+  creation from being applied correctly.
+
 ## August 17, 2025 - Release 4.7.13 {#release-notes-4.7.a}
 
 ### Security Notices
