@@ -20,7 +20,7 @@ security.
 
 ## Operating Systems
 
-The operating system that Palette uses for its Kubernetes management cluster is Ubuntu 20.04 LTS. We follow CIS
+The operating system that Palette uses for its Kubernetes management cluster is Ubuntu 22.04 LTS. We follow CIS
 standards to harden the operating system.
 
 These hardened images are used to launch control planes and worker nodes for the Kubernetes cluster hosting Palette.

@@ -100,8 +100,7 @@ management.
 
    :::warning
 
-   If you are using a version of the Palette agent that is earlier than 4.6.21, your locally managed clusters must have
-   a primary registry.
+   A primary registry is required for locally managed multi-node clusters without internet connectivity.
 
    :::
 

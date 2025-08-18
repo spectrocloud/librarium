@@ -48,6 +48,12 @@ to pass before moving to the next install order.
 
 :::
 
+## Deletion Order
+
+When you delete a cluster, Palette removes the add-on pack layers in the reverse order of their installation. Packs with
+the highest installation priority are deleted first, while those with the lowest priority are deleted last. This
+approach ensures that dependent resources are cleaned up in the correct order, avoiding issues during deletion.
+
 ## Resources
 
 - [Add a Pack](create-pack-addon.md)

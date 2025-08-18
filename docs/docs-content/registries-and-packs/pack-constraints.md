@@ -344,7 +344,7 @@ table lists the different layer types.
 | `k8s`   | The dependent pack can only be found in the Kubernetes layer of the Cluster Profile. The `k8s` layer contains packs such as <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" />, RKE2, k3s or MicroK8s. |
 | `cni`   | The dependent pack can only be found in the network layer of the Cluster Profile. The `cni` layer contains packs such as Calico, Cilium, Flannel and Antrea.                                                     |
 | `csi`   | The dependent pack can only be found in the storage layer of the Cluster Profile. The `csi` layer contains packs such as vSphere CSI, Amazon EBS CSI, Amazon EFS, Azure Disk and Portworx.                       |
-| `addon` | The dependent pack can only be found in the add-on layers of the Cluster Profile. The types of packs include `logging`, `monitoring`, `load balancer`, `authentication`, `ingress`, `security`, `app services`, `network`, `storage`, `registry`, `servicemesh`, and `system app`. The `addon` layer contains packs such as ArgoCD, Vault, Nginx, and many more.                                                  |
+| `addon` | The dependent pack can only be found in the add-on layers of the Cluster Profile. The types of packs include `logging`, `monitoring`, `load balancer`, `authentication`, `ingress`, `security`, `ai`, `app services`, `network`, `storage`, `registry`, `servicemesh`, and `system app`. The `addon` layer contains packs such as ArgoCD, Vault, Nginx, and many more.                                                  |
 
 <!-- prettier-ignore-end -->
 
