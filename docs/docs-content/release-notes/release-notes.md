@@ -15,7 +15,10 @@ tags: ["release-notes"]
 
 ### Bug Fixes
 
-- Fixed an issue that prevented [HTTP-Proxies](../clusters/edge/local-ui/host-management/configure-proxy.md) from being correctly applied when configured in Local UI prior to cluster creation.
+- Fixed an issue that prevented [HTTP-Proxies](../clusters/edge/local-ui/host-management/configure-proxy.md) from being
+  correctly applied when configured in Local UI prior to cluster creation.
+- Fixed an issue that prevented certain `hubble-system` pods from being scheduled when upgrading self-hosted Palette and
+  VerteX VMware vSphere installations from 4.6.x to 4.7.x.
 
 ## August 17, 2025 - Release 4.7.13 {#release-notes-4.7.a}
 
