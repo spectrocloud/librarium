@@ -123,9 +123,9 @@ You cannot change network overlay configurations after the cluster is created.
 
 <!-- prettier-ignore-start -->
 
-7.  Depending on your Palette version and the Container Network Interface (CNI) pack being used for your cluster,
-    you may need to modify the name of your Network Interface Controllers (NICs) on your Edge hosts. Beginning with
-    Palette version 4.7.13 and Palette Agent version 4.7.9, NIC Edge host modifications are needed only if using a
+7.  Depending on your Palette version and the Container Network Interface (CNI) pack you use for your cluster,
+    you may need to modify the name of your Network Interface Controllers (NICs) on your Edge hosts. Starting with
+    Palette Agent version 4.7.9 (Palette version 4.7.13), you only need to modify NICs on Edge hosts if you use a
     CNI pack other than <VersionedLink text="Calico" url="/integrations/cni-calico" />, 
     <VersionedLink text="Cilium" url="/integrations/cni-cilium-oss" />, or
     <VersionedLink text="Flannel" url="/integrations/cni-flannel" />.
@@ -160,7 +160,7 @@ You cannot change network overlay configurations after the cluster is created.
          Edge hosts to `scbr-100`. This is the name of the interface Palette creates on your Edge devices to establish the
          overlay network.
 
-         Following are the sections of the packs you need to change depending on which CNI pack you are using.
+         Change the following sections of the packs depending on which CNI pack you use.
 
          <Tabs>
 
