@@ -29,9 +29,26 @@ tags: ["release-notes"]
   after switching between **Proxied** and **Direct** access in the applied
   <VersionedLink url="/integrations/packs/?pack=virtual-machine-orchestrator" text="Virtual Machine Orchestrator" /> pack.
 - Fixed a UI issue where Edge host tags were not displayed in the **Tags** drop-down menu on the **Clusters > Edge Hosts** tab of
-  Palette.   
+  Palette. 
 
 <!-- prettier-ignore-end -->
+
+### Automation
+
+#### Features
+
+- Terraform version 0.24.2 of the
+  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
+  available. For more details, refer to the Terraform provider
+  [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
+- Crossplane version 0.24.2 of the
+  [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) is
+  now available.
+
+#### Bug Fixes
+
+- Fixed an issue in the `spectrocloud_sso` Terraform resource where `preferred_email` was not an accepted value for
+  `oidc.email` address.
 
 ## August 17, 2025 - Release 4.7.13 {#release-notes-4.7.a}
 
