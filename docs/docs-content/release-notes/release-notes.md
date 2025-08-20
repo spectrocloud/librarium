@@ -11,9 +11,11 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## August 20, 2025 - Release 4.7.15
+## August 21, 2025 - Release 4.7.15
 
 ### Bug Fixes
+
+<!-- prettier-ignore-start -->
 
 - Fixed an issue that prevented [HTTP-Proxies](../clusters/edge/local-ui/host-management/configure-proxy.md) from being
   correctly applied when configured in Local UI prior to cluster creation.
@@ -22,6 +24,12 @@ tags: ["release-notes"]
 - Fixed an issue that caused the Palette
   [Terminal User Interface (TUI)](../clusters/edge/site-deployment/site-installation/initial-setup.md) on Edge hosts to
   restart after entering **DNS Configuration** details.
+-  Fixed an issue that caused the [Virtual Machine Dashboard](../vm-management/configure-console-base-address.md)
+  **Connect** button to disappear for [Virtual Machine Orchestrator (VMO)](../vm-management/vm-management.md) clusters
+  after switching between **Proxied** and **Direct** access in the applied
+  <VersionedLink url="/integrations/packs/?pack=virtual-machine-orchestrator" text="Virtual Machine Orchestrator" /> pack.
+
+<!-- prettier-ignore-end -->
 
 ## August 17, 2025 - Release 4.7.13 {#release-notes-4.7.a}
 
