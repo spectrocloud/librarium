@@ -19,8 +19,8 @@ tags: ["release-notes"]
   correctly applied when configured in Local UI prior to cluster creation.
 - Fixed an issue that prevented certain `hubble-system` pods from being scheduled when upgrading self-hosted Palette and
   VerteX VMware vSphere installations from 4.6.x to 4.7.x.
-- Fixed an issue that caused the
-  [Terminal User Interface](../clusters/edge/site-deployment/site-installation/initial-setup.md) on Edge hosts to
+- Fixed an issue that caused the Palette
+  [Terminal User Interface (TUI)](../clusters/edge/site-deployment/site-installation/initial-setup.md) on Edge hosts to
   restart after entering **DNS Configuration** details.
 
 ## August 17, 2025 - Release 4.7.13 {#release-notes-4.7.a}
