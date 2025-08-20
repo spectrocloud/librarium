@@ -39,7 +39,7 @@ tags: ["release-notes"]
 
 - Terraform version 0.24.2 of the
   [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
-  available. For more details, refer to the Terraform provider
+  now available. For more details, refer to the Terraform provider
   [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
 - Crossplane version 0.24.2 of the
   [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) is
@@ -47,8 +47,8 @@ tags: ["release-notes"]
 
 #### Bug Fixes
 
-- Fixed an issue in the `spectrocloud_sso` Terraform resource where `preferred_email` was not an accepted value for
-  `oidc.email` address.
+- Fixed a `spectrocloud_sso` Terraform resource issue where `preferred_email` was not an accepted value for
+  `oidc.email`.
 
 ## August 17, 2025 - Release 4.7.13 {#release-notes-4.7.a}
 
