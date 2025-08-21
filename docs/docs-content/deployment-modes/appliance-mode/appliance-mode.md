@@ -17,12 +17,11 @@ need to create two artifacts: an installer ISO file and a provider image. The in
 supported distribution, with the Palette agent natively installed. The provider image is an image that combines the OS
 and the Kubernetes layer for your cluster.
 
-Depending on your business needs, you can deploy clusters in appliance mode in either a connected environment or
-airgapped environment. In connected environments, your hosts will register themselves with Palette based on the
-registration token you provide during the installer build. Once registered, you can then use the hosts as control plane
-nodes or worker nodes to create a cluster. In airgapped environments, you can use
-[Local UI](../../clusters/edge/local-ui/local-ui.md) to create the cluster, which does not require a connection to
-Palette.
+Depending on your business needs, you can deploy centrally managed or locally managed clusters in appliance mode. In
+centrally managed environments, your hosts will register with Palette based on the registration token you provide during
+the installer build. Once registered, you can use the hosts as control plane or worker nodes to create a cluster. In
+locally managed environments, you can use [Local UI](../../clusters/edge/local-ui/local-ui.md) to create the cluster,
+which does not require a connection to Palette.
 
 ![Architecture Diagram for Appliance Mode](/deployment-modes_appliance-mode.webp)
 
