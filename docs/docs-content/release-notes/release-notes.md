@@ -11,6 +11,28 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## August 21, 2025 - Release 4.7.15
+
+### Bug Fixes
+
+<!-- prettier-ignore-start -->
+
+- Fixed an issue that prevented [HTTP-Proxies](../clusters/edge/local-ui/host-management/configure-proxy.md) from being
+  correctly applied when configured in Local UI prior to cluster creation.
+- Fixed an issue that prevented certain `hubble-system` pods from being scheduled when upgrading self-hosted Palette and
+  VerteX VMware vSphere installations from 4.6.x to 4.7.x.
+- Fixed an issue that caused the Palette
+  [Terminal User Interface (TUI)](../clusters/edge/site-deployment/site-installation/initial-setup.md) on Edge hosts to
+  restart after entering **DNS Configuration** details.
+- Fixed a UI issue where the [Virtual Machine Dashboard](../vm-management/configure-console-base-address.md)
+  **Connect** button disappeared for [Virtual Machine Orchestrator (VMO)](../vm-management/vm-management.md) clusters
+  after switching between **Proxied** and **Direct** access in the applied
+  <VersionedLink url="/integrations/packs/?pack=virtual-machine-orchestrator" text="Virtual Machine Orchestrator" /> pack.
+- Fixed a UI issue where Edge host tags were not displayed in the **Tags** drop-down menu on the **Clusters > Edge Hosts** tab of
+  Palette. 
+
+<!-- prettier-ignore-end -->
+
 ## August 17, 2025 - Release 4.7.13 {#release-notes-4.7.a}
 
 ### Security Notices
