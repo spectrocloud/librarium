@@ -17,7 +17,7 @@ partial_name: upload-third-party-packs-validate
 
 <TabItem value="external-registry" label="External Registry">
 
-1. List the packs uploaded to your external registry using the Palette CLI. Replace `<registry-dns-or-ip>` with the DNS/IP address of your registry and `<registry-port>` with the port number of your registry. If you have changed the base content path from the default, replace `spectro-content` with the correct content path.
+1. Check that the packs have been successfully uploaded to your external registry using the Palette CLI. Replace `<registry-dns-or-ip>` with the DNS/IP address of your registry, `<registry-port>` with the port number of your registry (if applicable), and `<image-repository>` with the name of the image repository. If you have changed the base content path from the default, replace `spectro-content` with the correct content path.
 
    If you are using custom TLS certificates or choosing to skip TLS, use the appropriate flags as shown in the following examples.
 
@@ -27,7 +27,7 @@ partial_name: upload-third-party-packs-validate
 
    ```shell
    palette content list \
-   --repo <registry-dns-or-ip>:<registry-port>/spectro-content \
+   --repo <registry-dns-or-ip>:<registry-port>/spectro-content/<image-repository> \
    --ca-cert <path-to-ca-cert> \
    --tls-cert <path-to-tls-cert> \
    --tls-key <path-to-tls-key>
@@ -39,7 +39,7 @@ partial_name: upload-third-party-packs-validate
 
    ```shell
    palette content list \
-   --repo <registry-dns-or-ip>:<registry-port>/spectro-content \
+   --repo <registry-dns-or-ip>:<registry-port>/spectro-content/<image-repository> \
    --insecure
    ```
 
@@ -47,7 +47,18 @@ partial_name: upload-third-party-packs-validate
 
    </Tabs>
 
-2. Check that the Third Party packs you uploaded are listed in the output as a repository.
+2. Check that the Third Party images you uploaded are listed in the output as repositories with version tags.
+
+   ```shell hideClipboard title="Example command"
+   palette content list \
+   --repo external.registry.com/spectro-content/sonobuoy/sonobuoy
+   ```
+
+   ```shell hideClipboard title="Example output"
+   Listing bundles
+   harbor.teams.spectrocloud.com/docs-private/sonobuoy/sonobuoy:v0.57.1
+   harbor.teams.spectrocloud.com/docs-private/sonobuoy/sonobuoy:v0.57.2
+   ```
 
 </TabItem>
 
