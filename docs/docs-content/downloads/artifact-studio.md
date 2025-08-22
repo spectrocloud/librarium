@@ -255,3 +255,12 @@ For additional information on how Spectro Cloud signs artifacts, refer to our
 To verify the integrity and authenticity of your artifacts, you can do a checksum verification of the files downloaded.
 
 <PartialsComponent category="security" name="artifact-studio-signature-verification" />
+
+## Upload Packs to Management Appliances
+
+For information on uploading packs to your self-hosted Palette or Palette VerteX instance, refer to the appropriate
+guide:
+
+- [Upload Packs to Palette](../enterprise-version/install-palette/palette-management-appliance.md#upload-packs-to-palette)
+
+- [Upload Packs to Palette VerteX](../vertex/install-palette-vertex/vertex-management-appliance.md#upload-packs-to-palette-vertex)
