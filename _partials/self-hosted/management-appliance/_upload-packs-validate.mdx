@@ -18,53 +18,47 @@ partial_name: upload-packs-validate
 
 <TabItem value="external-registry" label="External Registry">
 
-1. Use the following example `oras` commands to list the repositories in the OCI registry under the `spectro-content` base path. If you have changed the base content path from the default, replace `spectro-content` with the correct content path. Replace the remaining templated values with your environment configuration values.
+1. Check that the packs have been successfully uploaded to your external registry using the Palette CLI. Replace `<registry-dns-or-ip>` with the DNS/IP address of your registry, `<registry-port>` with the port number of your registry (if applicable), and `<image-repository>` with the name of the image repository. If you have changed the base content path from the default, replace `spectro-content` with the correct content path.
 
-   <Tabs groupId="external-registry-type">
+   If you are using custom TLS certificates or choosing to skip TLS, use the appropriate flags as shown in the following examples.
 
-   <TabItem label="Harbor" value="harbor">
+   <Tabs groupId="tls-palette-cli">
 
-   <Tabs groupId="tls-harbor">
-
-   <TabItem label="Regular Certificate" value="regular-certificate">
+   <TabItem label="Custom TLS Certificate" value="custom-tls-certificate">
 
    ```shell
-   oras repo ls <harbor-url-or-ip>/spectro-content
+   palette content list \
+   --repo <registry-dns-or-ip>:<registry-port>/spectro-content/<image-repository> \
+   --ca-cert <path-to-ca-cert> \
+   --tls-cert <path-to-tls-cert> \
+   --tls-key <path-to-tls-key>
    ```
 
    </TabItem>
 
-   <TabItem label="Self-Signed Certificate" value="self-signed-certificate">
+   <TabItem label="Skip TLS" value="skip-tls">
 
    ```shell
-   oras repo ls --insecure <harbor-url-or-ip>/spectro-content
-   ```
-
-   </TabItem>
-
-   </Tabs>
-
-   </TabItem>
-
-   <TabItem label="AWS ECR" value="aws-ecr">
-
-   ```shell
-   oras repo ls <aws-ecr-url>/spectro-content
+   palette content list \
+   --repo <registry-dns-or-ip>:<registry-port>/spectro-content/<image-repository> \
+   --insecure
    ```
 
    </TabItem>
 
    </Tabs>
 
-   :::tip
+2. Check that the pack images you uploaded are listed in the output as repositories with version tags.
 
-   Be aware of the timeout period for the authentication token. The process of uploading images and packages to an OCI
-   registry can take approximately an hour. If the authentication token expires, you will need to re-authenticate to
-   the OCI registry and restart the upload process.
+   ```shell hideClipboard title="Example command"
+   palette content list \
+   --repo external.registry.com/spectro-content/us-docker.pkg.dev/palette-images/packs/metallb/0.15.2/controller
+   ```
 
-   :::
-
-2. Check that the pack bundles you uploaded are listed in the output as repositories.
+   ```shell hideClipboard title="Example output"
+   Listing bundles
+   external.registry.com/spectro-content/us-docker.pkg.dev/palette-images/packs/metallb/0.15.2/controller:v0.15.2
+   ```
 
 </TabItem>
 
