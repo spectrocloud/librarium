@@ -258,8 +258,8 @@ To verify the integrity and authenticity of your artifacts, you can do a checksu
 
 ## Upload Packs to Management Appliances
 
-For information on uploading packs to **Self-Hosted Palette**, refer to the
-[Upload Packs to Palette](../enterprise-version/install-palette/palette-management-appliance.md#upload-packs-to-palette).
+For information on uploading packs to your self-hosted Palette or Palette VerteX instance, refer to the appropriate guide:
 
-For information on uploading packs to **Palette Vertex**, refer to
-[Upload Packs to Palette VerteX](../vertex/install-palette-vertex/vertex-management-appliance.md#upload-packs-to-palette-vertex)
+- [Upload Packs to Palette](../enterprise-version/install-palette/palette-management-appliance.md#upload-packs-to-palette)
+
+- [Upload Packs to Palette VerteX](../vertex/install-palette-vertex/vertex-management-appliance.md#upload-packs-to-palette-vertex)
