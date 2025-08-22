@@ -185,77 +185,7 @@ partial_name: upload-third-party-packs-enablement
 
 6. Open a terminal on your local machine and navigate to the directory where the Third Party ZST files are located.
 
-7. Authenticate with your external registry using the command line or a GUI tool of your choice. The following examples
-   demonstrate how to authenticate with an OCI registry using the [`oras`](https://oras.land/docs/) CLI tool and the Palette CLI.
-
-   <Tabs groupId="external-registry-type">
-
-   <TabItem label="Harbor" value="harbor">
-
-   Use `oras` to log in to your OCI registry. Replace the values below with your environment configuration values.
-   If you are using a Harbor registry with a self-signed certificate, add the `--insecure` flag to the
-   `oras` command.
-
-   <Tabs groupId="tls-harbor">
-
-   <TabItem label="Regular Certificate" value="regular-certificate">
-
-   ```shell
-   oras login <registry-url-or-ip> --username '<username>' --password '<password>'
-   ```
-
-   </TabItem>
-
-   <TabItem label="Self-Signed Certificate" value="self-signed-certificate">
-
-   ```shell
-   oras login <registry-url-or-ip> --insecure --username '<username>' --password '<password>'
-   ```
-
-   </TabItem>
-
-   </Tabs>
-
-   </TabItem>
-
-   <TabItem label="AWS ECR" value="aws-ecr">
-
-   You can acquire the AWS ECR authentication command from the AWS ECR console. From the ECR repository details page,
-   click on the **View push commands** button to access the command. Refer to the
-   [AWS ECR Authentication](https://docs.aws.amazon.com/AmazonECR/latest/userguide/getting-started-cli.html#cli-authenticate-registry)
-   documentation for more information.
-
-   <Tabs groupId="ecr-type">
-
-   <TabItem label="Private ECR" value="private-ecr">
-
-   Use the following command to authenticate with AWS ECR. The output of the `aws` command is passed to `oras` to
-   authenticate with the ECR registry. Replace the values below with your environment configuration values.
-
-   ```shell
-   aws ecr get-login-password --region <aws-region> | oras login --username <aws-username> --password-stdin <aws-ecr-url>
-   ```
-
-   </TabItem>
-
-   <TabItem label="Public ECR" value="public-ecr">
-
-   For a public image repository, use the `docker` CLI instead of `oras`. Replace the values below with your
-   environment configuration values.
-
-   ```shell
-   aws ecr-public get-login-password --region <aws-region> | docker login --username <aws-username> --password-stdin <aws-ecr-public-url>
-   ```
-
-   </TabItem>
-
-   </Tabs>
-
-   </TabItem>
-
-   <TabItem label="Palette CLI" value="palette-cli">
-
-   Use the Palette CLI to log in to your external registry. Replace `<registry-dns-or-ip>` with the DNS/IP address of your registry, `<registry-port>` with the port number of your registry, `<username>` with your username, and `<password>` with your password.
+7. Use the Palette CLI to log in to your external registry. Replace `<registry-dns-or-ip>` with the DNS/IP address of your registry, `<registry-port>` with the port number of your registry (if applicable), `<username>` with your username, and `<password>` with your password.
 
    ```shell
    palette content registry-login \
@@ -264,61 +194,7 @@ partial_name: upload-third-party-packs-enablement
    --password <password>
    ```
 
-   </TabItem>
-
-   </Tabs>
-
-8. Upload the packs to the OCI registry. The following example commands upload the packs to the OCI registry in the `spectro-content` base path. Replace the values below with your environment configuration values.
-
-   <Tabs groupId="external-registry-type">
-
-   <TabItem label="Harbor" value="harbor">
-
-   <Tabs groupId="tls-harbor">
-
-   <TabItem label="Regular Certificate" value="regular-certificate">
-
-   ```shell title="Upload Third Party Pack with Regular Certificate"
-   oras push <harbor-url-or-ip>/spectro-content/<repository-name>:<tag> --file <path-to-third-party-zst>
-   ```
-
-   ```shell title="Upload Third Party Conformance Pack with Regular Certificate"
-   oras push <harbor-url-or-ip>/spectro-content/<repository-name>:<tag> --file <path-to-third-party-conformance-zst>
-   ```
-
-   </TabItem>
-
-   <TabItem label="Self-Signed Certificate" value="self-signed-certificate">
-
-   ```shell title="Upload Third Party Pack with Self-Signed Certificate"
-   oras push --insecure <harbor-url-or-ip>/spectro-content/<repository-name>:<tag> --file <path-to-third-party-zst>
-   ```
-
-   ```shell title="Upload Third Party Conformance Pack with Self-Signed Certificate"
-   oras push --insecure <harbor-url-or-ip>/spectro-content/<repository-name>:<tag> --file <path-to-third-party-conformance-zst>
-   ```
-
-   </TabItem>
-
-   </Tabs>
-
-   </TabItem>
-
-   <TabItem label="AWS ECR" value="aws-ecr">
-
-   ```shell title="Upload Third Party Pack to AWS ECR"
-   oras push <aws-ecr-url>/spectro-content/<repository-name>:<tag> --file <path-to-third-party-zst>
-   ```
-
-   ```shell title="Upload Third Party Conformance Pack to AWS ECR"
-   oras push <aws-ecr-url>/spectro-content/<repository-name>:<tag> --file <path-to-third-party-conformance-zst>
-   ```
-
-   </TabItem>
-
-   <TabItem label="Palette CLI" value="palette-cli">
-
-   Upload the packs to your external registry using the Palette CLI. Replace `<third-party-zst>` and `<third-party-conformance-zst>` with your downloaded pack bundle files, `<registry-dns-or-ip>` with the DNS/IP address of your registry, and `<registry-port>` with the port number of your registry. If you have changed the base content path from the default, replace `spectro-content` with the correct content path.
+8. Upload the packs to your external registry using the Palette CLI. Replace `<registry-dns-or-ip>` with the DNS/IP address of your registry and `<registry-port>` with the port number of your registry (if applicable). If you have changed the base content path from the default, replace `spectro-content` with the correct content path.
 
    If you are using custom TLS certificates or choosing to skip TLS, use the appropriate flags as shown in the following examples.
 
@@ -328,7 +204,7 @@ partial_name: upload-third-party-packs-enablement
 
    ```shell title="Upload Third Party Pack with Custom TLS Certificate"
    palette content push \
-   --registry <management-vip>:30003/spectro-content \
+   --registry <registry-dns-or-ip>:<registry-port>/spectro-content \
    --file <third-party-zst> \
    --ca-cert <path-to-ca-cert> \
    --tls-cert <path-to-tls-cert> \
@@ -337,7 +213,7 @@ partial_name: upload-third-party-packs-enablement
 
    ```shell title="Upload Third Party Conformance Pack with Custom TLS Certificate"
    palette content push \
-   --registry <management-vip>:30003/spectro-content \
+   --registry <registry-dns-or-ip>:<registry-port>/spectro-content \
    --file <third-party-conformance-zst> \
    --ca-cert <path-to-ca-cert> \
    --tls-cert <path-to-tls-cert> \
@@ -350,14 +226,14 @@ partial_name: upload-third-party-packs-enablement
 
    ```shell title="Upload Third Party Pack skipping TLS"
    palette content push \
-   --registry <management-vip>:30003/spectro-content \
+   --registry <registry-dns-or-ip>:<registry-port>/spectro-content \
    --file <third-party-zst> \
    --insecure
    ```
 
    ```shell title="Upload Third Party Conformance Pack skipping TLS"
    palette content push \
-   --registry <management-vip>:30003/spectro-content \
+   --registry <registry-dns-or-ip>:<registry-port>/spectro-content \
    --file <third-party-conformance-zst> \
    --insecure
    ```
@@ -370,16 +246,12 @@ partial_name: upload-third-party-packs-enablement
 
    ```shell hideClipboard title="Example Output"
    ...
-   INFO[0020] successfully copied all artifacts from local bundle /home/ubuntu/palette-cli/bin/tmp/bundle-extract/palette-thirdparty-bundle-4.7.3 to remote bundle external-registry:443/spectro-content/bundle-definition:bundle
+   INFO[0287] successfully copied all artifacts from local bundle /root/tmp/bundle-extract/palette-thirdparty-bundle-4.7.0 to remote bundle external.registry.com/spectro-content/bundle-definition:palette-thirdparty-bundle-4.7.0
    -----------------------------
    Push Summary
    -----------------------------
-   local bundle bundle pushed to external-registry:443/spectro-content
+   local bundle palette-thirdparty-bundle-4.7.0 pushed to external.registry.com/spectro-content
    ```
-
-   </TabItem>
-
-   </Tabs>
 
    :::tip
 
