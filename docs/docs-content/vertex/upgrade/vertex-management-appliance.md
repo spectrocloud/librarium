@@ -43,7 +43,7 @@ remain operational.
 
   <details>
 
-  <summary>Additional Steps for upgrading from 4.7.3</summary>
+  <summary>Additional steps for upgrading from 4.7.3</summary>
 
   1. Log in to the Local UI of the leader node of the Palette VerteX management cluster.
 
