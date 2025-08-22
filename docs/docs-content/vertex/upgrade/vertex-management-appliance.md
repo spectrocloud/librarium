@@ -38,6 +38,53 @@ remain operational.
   app="VerteX Management Appliance"
 />
 
+- If you are upgrading from version 4.7.3, you must perform the following additional steps to prepare your Palette
+  VerteX instance for the upgrade.
+
+  <details>
+
+  <summary>Additional Steps for upgrading from 4.7.3</summary>
+
+  1. Log in to the Local UI of the leader node of the Palette VerteX management cluster.
+
+  2. From the left main menu, click **Cluster**.
+
+  3. Under **Services**, click on the `zot` service port to open the internal Zot registry user interface in a new tab.
+
+  4. Log in to the internal Zot registry using the configured credentials.
+
+     :::tip
+
+     You can find the registry configuration in the **Cluster > Configuration** tab.
+
+     :::
+
+  5. In the search bar, enter `spectro-content/us-docker.pkg.dev/palette-images-fips/k8s/pause` and select the
+     corresponding repository.
+
+     If you have chosen a different base path for the registry, ensure you update the `spectro-content` part of the
+     search query accordingly.
+
+  6. Click the trash icon for each of the `3.8`, `3.9`, and `3.10` tags to delete them. Select the **DELETE** option in
+     the pop-up window when prompted for each tag.
+
+  7. If you are using an external registry, you must also delete the same image tags from your external registry.
+
+  </details>
+
+  :::caution
+
+  If these steps are not performed, you may encounter content sync failures for these image tags on the **Content** page
+  in Local UI. These errors will occur after uploading the content bundle to Local UI.
+
+  In addition, if any other image tags fail to sync after the upgrade, you must manually delete those tags from the
+  internal Zot registry and any external registry you are using. The following image is an example of a content sync
+  failure in Local UI.
+
+  ![Example content sync failure](/enterprise-version_upgrade_palette-management-appliance_content-sync-error_4.7.3.webp)
+
+  :::
+
 ## Upgrade Palette VerteX
 
 <PartialsComponent
