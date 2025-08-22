@@ -41,9 +41,6 @@ tags: ["release-notes"]
   [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
   now available. For more details, refer to the Terraform provider
   [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
-- Crossplane version 0.24.2 of the
-  [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) is
-  now available.
 
 #### Bug Fixes
 
