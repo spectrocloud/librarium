@@ -24,7 +24,7 @@ Enterprise Linux (RHEL) image with <VersionedLink text="Palette eXtended Kuberne
 - A valid [RHEL subscription](https://www.redhat.com/en/store/linux-platforms). You will need to provide the username
   and password for the subscription during the build process.
 
-- Access to the [Red Hat Developer Portal](https://developers.redhat.com/products/rhel/download?source=sso).
+- Access to the [Red Hat Developer Portal](https://developers.redhat.com/products/rhel/download).
 
 - The machine executing the commands must have the following hardware resources available:
 
@@ -93,10 +93,13 @@ Enterprise Linux (RHEL) image with <VersionedLink text="Palette eXtended Kuberne
     cd /home/ubuntu/output
     ```
 
-4.  Download the RHEL ISO file from the
-    [Red Hat Developer Portal](https://developers.redhat.com/products/rhel/download?source=sso) into the output
-    directory. Ensure you download the **x86_64 DVD ISO** and not the **x86_64 BOOT ISO**. Replace
-    `<iso-file-download-link>` in the command below with the direct link to download the RHEL ISO.
+4.  Download the desired RHEL 8 or RHEL 9 ISO file from the
+    [Red Hat Developer Portal](https://developers.redhat.com/products/rhel/download) into the `output` directory. Ensure
+    you download a `x86_64-dvd.iso` file and not a `x86_64-boot.iso` file.
+
+    Replace `<iso-file-download-link>` in the command below with the direct RHEL ISO download link. This link can be
+    obtained by beginning a download and opening your browser's web developer tools. Navigate to the **Network**
+    section, and select the `getting-started` file. The `DownloadURL` is found in the **Headers** section.
 
     This guide uses RHEL 8.8 as an example. Refer to the [Configuration Reference](../../config-reference.md) page for
     details on supported operating systems.
