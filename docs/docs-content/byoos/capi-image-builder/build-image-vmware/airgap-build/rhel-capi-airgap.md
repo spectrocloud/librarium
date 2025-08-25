@@ -12,7 +12,7 @@ tags: ["operating system", "byoos", "profiles", "pxk", "vmware", "airgap"]
 
 <!-- prettier-ignore-start -->
 
-This guide teaches you how to use the [CAPI Image Builder](../../capi-image-builder.md) tool in an airgapped environment to create a custom [Red Hat Enterprise Linux (RHEL)](https://developers.redhat.com) image with <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> for VMware vSphere and use the image to create a cluster profile.
+This guide teaches you how to use the [CAPI Image Builder](../../capi-image-builder.md) tool in an airgapped environment to create a custom [Red Hat Enterprise Linux (RHEL)](https://developers.redhat.com/) image with <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> for VMware vSphere and use the image to create a cluster profile.
 
 <!-- prettier-ignore-end -->
 
