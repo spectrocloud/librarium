@@ -1,8 +1,13 @@
 ---
-sidebar_label: "Palette Tutorials"
 title: "Welcome to Palette Tutorials"
+sidebar_label: "Palette Tutorials"
 sidebar_position: 0
 pagination_next: null
+description: "Introduction to Palette tutorials."
+hide_table_of_contents: false
+sidebar_custom_props:
+  icon: "book"
+tags: ["tutorials"]
 ---
 
 This documentation section provides hands-on tutorials you can complete in your environment to learn more about Palette
