@@ -48,7 +48,7 @@ Before you begin, ensure that you have the following prerequisites met.
 
 - The Linux VM must have connectivity to the internet and the VMware vSphere environment.
 
-- Access to the [Red Hat Developer Portal](https://developers.redhat.com/products/rhel/download?source=sso).
+- Access to the [Red Hat Developer Portal](https://developers.redhat.com/products/rhel/download).
 
 ## Build Custom Image
 
@@ -61,8 +61,8 @@ want to create a FIPS-compliant image or a non-FIPS-compliant image.
 1.  Open a terminal session and log in to the Linux VM.
 
 2.  Download the x86_64 RHEL ISO from the
-    [Red Hat Developer Portal](https://developers.redhat.com/products/rhel/download?source=sso). Make sure you download
-    the x86_64 DVD ISO and not the x86_64 BOOT ISO. This guide will use RHEL 8.8 as an example.
+    [Red Hat Developer Portal](https://developers.redhat.com/products/rhel/download). Make sure you download the x86_64
+    DVD ISO and not the x86_64 BOOT ISO. This guide will use RHEL 8.8 as an example.
 
     :::tip
 
@@ -309,8 +309,8 @@ want to create a FIPS-compliant image or a non-FIPS-compliant image.
 1. Open a terminal session and log in to the Linux VM.
 
 2. Download the x86_64 RHEL ISO from the
-   [Red Hat Developer Portal](https://developers.redhat.com/products/rhel/download?source=sso). Make sure you download
-   the x86_64 DVD ISO and not the x86_64 BOOT ISO. This guide will use RHEL 8.8 as an example.
+   [Red Hat Developer Portal](https://developers.redhat.com/products/rhel/download). Make sure you download the x86_64
+   DVD ISO and not the x86_64 BOOT ISO. This guide will use RHEL 8.8 as an example.
 
    :::tip
 
