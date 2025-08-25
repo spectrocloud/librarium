@@ -46,7 +46,7 @@ Konvoy. Make sure you have met all the prerequisites before you begin.
 <summary>Click to learn more about VMware vSphere RHEL templates</summary>
 
 You can download RHEL 8.8 or later ISO files from the
-[Red Hat Developer Portal](https://developers.redhat.com/products/rhel/download?source=sso). The ISO can be uploaded to
+[Red Hat Developer Portal](https://developers.redhat.com/products/rhel/download). The ISO can be uploaded to
 your vSphere Datastore and be used to deploy a VM. Deploy the VM and reference the ISO you uploaded to your Datastore as
 the input for the **CD/DVD Drive**.
 

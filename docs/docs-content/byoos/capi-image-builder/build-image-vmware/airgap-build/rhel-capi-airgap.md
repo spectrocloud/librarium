@@ -12,7 +12,7 @@ tags: ["operating system", "byoos", "profiles", "pxk", "vmware", "airgap"]
 
 <!-- prettier-ignore-start -->
 
-This guide teaches you how to use the [CAPI Image Builder](../../capi-image-builder.md) tool in an airgapped environment to create a custom [Red Hat Enterprise Linux (RHEL)](https://developers.redhat.com/) image with <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> for VMware vSphere and use the image to create a cluster profile.
+This guide teaches you how to use the [CAPI Image Builder](../../capi-image-builder.md) tool in an airgapped environment to create a custom [Red Hat Enterprise Linux (RHEL)](https://developers.redhat.com) image with <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> for VMware vSphere and use the image to create a cluster profile.
 
 <!-- prettier-ignore-end -->
 
@@ -25,7 +25,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 - Access to the VMware vSphere environment, including credentials and permission to create virtual machines.
 
 - A valid [RHEL subscription](https://www.redhat.com/en/store/linux-platforms) and access to the
-  [Red Hat Developer Portal](https://developers.redhat.com/products/rhel/download?source=sso).
+  [Red Hat Developer Portal](https://developers.redhat.com/products/rhel/download).
 
 - An airgapped instance of
   [Palette](../../../../enterprise-version/install-palette/install-on-vmware/airgap-install/install.md) or
@@ -42,7 +42,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
   - CAPI Image Builder compressed archive file. Contact your Palette support representative to obtain the latest version
     of the tool. This guide uses version 4.6.23 as an example.
 
-  - [RHEL ISO](https://developers.redhat.com/products/rhel/download?source=sso) version `8.8`. Ensure you download the
+  - [RHEL ISO](https://developers.redhat.com/products/rhel/download) version `8.8`. Ensure you download the
     `x86_64-dvd.iso` file and not the `x86_64-boot.iso` file, and make sure you have its SHA256 checksum available. This
     guide uses RHEL 8.8 as an example. Refer to the [Configuration Reference](../../config-reference.md) page for
     details on supported operating systems.

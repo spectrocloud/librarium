@@ -11,7 +11,7 @@ tags: ["operating system", "byoos", "profiles", "pxk", "vmware"]
 
 <!-- prettier-ignore-start -->
 
-This guide teaches you how to use the [CAPI Image Builder](../../capi-image-builder.md) tool to create a custom [Red Hat Enterprise Linux (RHEL)](https://developers.redhat.com/) image with <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> for VMware vSphere and use the image to create a cluster profile.
+This guide teaches you how to use the [CAPI Image Builder](../../capi-image-builder.md) tool to create a custom [Red Hat Enterprise Linux (RHEL)](https://developers.redhat.com) image with <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> for VMware vSphere and use the image to create a cluster profile.
 
 <!-- prettier-ignore-end -->
 
@@ -26,7 +26,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 - A valid [RHEL subscription](https://www.redhat.com/en/store/linux-platforms). You will need to provide the username
   and password for the subscription during the build process.
 
-- Access to the [Red Hat Developer Portal](https://developers.redhat.com/products/rhel/download?source=sso).
+- Access to the [Red Hat Developer Portal](https://developers.redhat.com/products/rhel/download).
 
 - The machine executing the commands must have the following hardware resources available:
 
@@ -105,7 +105,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
     ```
 
 4.  Download the desired RHEL 8 or RHEL 9 ISO file from the
-    [Red Hat Developer Portal](https://developers.redhat.com/products/rhel/download?source=sso) into the `output`
+    [Red Hat Developer Portal](https://developers.redhat.com/products/rhel/download) into the `output`
     directory. Ensure you download a `x86_64-dvd.iso` file and not a `x86_64-boot.iso` file.
 
     Replace `<iso-file-download-link>` in the command below with the direct RHEL ISO download link. This link can be
