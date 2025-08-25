@@ -23,8 +23,7 @@ Enterprise Linux (RHEL) image with <VersionedLink text="Palette eXtended Kuberne
 - Access to the VMware vSphere environment, including credentials and permission to create virtual machines.
 
 - A valid [RHEL subscription](https://www.redhat.com/en/store/linux-platforms) and access to the
-  [Red Hat Developer Portal](https://developers.redhat.com/products/rhel/download?source=sso). You will need to provide
-  the username and password for the subscription during the build process.
+  [Red Hat Developer Portal](https://developers.redhat.com/products/rhel/download).
 
 - An airgapped instance of
   [Palette](../../../../enterprise-version/install-palette/install-on-vmware/airgap-install/install.md) or
@@ -37,10 +36,12 @@ Enterprise Linux (RHEL) image with <VersionedLink text="Palette eXtended Kuberne
 
 - The following artifacts must be available in the root home directory of the airgap support VM. You can download the
   files in a system with internet access and then transfer them to your airgap environment.
+
   - CAPI Image Builder compressed archive file. Contact your Palette support representative to obtain the latest version
-    of the tool. This guide uses version `4.4.4` of the tool as an example.
-  - [RHEL ISO](https://developers.redhat.com/products/rhel/download?source=sso) version `8.8`. Ensure you download the
-    **x86_64 DVD ISO** and not the **x86_64 BOOT ISO**, and make sure you have its **SHA256** checksum available. This
+    of the tool. This guide uses version 4.6.23 as an example.
+
+  - [RHEL ISO](https://developers.redhat.com/products/rhel/download) version `8.8`. Ensure you download the
+    `x86_64-dvd.iso` file and not the `x86_64-boot.iso` file, and make sure you have its SHA256 checksum available. This
     guide uses RHEL 8.8 as an example. Refer to the [Configuration Reference](../../config-reference.md) page for
     details on supported operating systems.
   - Airgap Kubernetes pack binary of the version for which the image will be generated. This guide uses version `1.28.9`
