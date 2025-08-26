@@ -18,7 +18,7 @@ partial_name: installation-steps-prereqs
 
     - The first disk must be at least 250 GB and is used for the ISO stack. You specify the device in the `user-data` file during the ISO creation process in the first few steps.
 
-    - The second disk must be at least 500 GB and is used for the storage pool. The default device selected is `/dev/sdb` and you can change it during the cluster creation steps in Local UI.
+    - The second disk must be at least 500 GB and is used for the storage pool. The default device selected is `/dev/sdb`. You can change the default device during the cluster creation steps in Local UI.
 
       :::danger
 
@@ -42,7 +42,7 @@ partial_name: installation-steps-prereqs
 
   :::warning
 
-  - The ISO is only supported on Unified Extensible Firmware Interface (UEFI) systems. Ensure you configured the nodes to boot from the ISO in UEFI mode.
+  - The ISO is only supported on Unified Extensible Firmware Interface (UEFI) systems. Ensure you configure the nodes to boot from the ISO in UEFI mode.
   - For VMware environments, [Secure Boot](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/7-0/vsphere-virtual-machine-administration-guide-7-0/configuring-virtual-machine-optionsvm-admin/configuring-virtual-machine-boot-optionsvm-admin/enable-or-disable-uefi-secure-boot-for-a-virtual-machinevm-admin.html) is not supported. Ensure Secure Boot is disabled on the nodes before proceeding with the installation.
 
   :::

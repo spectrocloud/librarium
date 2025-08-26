@@ -3,65 +3,49 @@ partial_category: self-hosted
 partial_name: installation-steps-enablement
 ---
 
-1. Create a file called `user-data` using the following template and adjust the following parameters to your requirements:
+1. Create a file called `user-data` using the following template and replace `<storage-drive>` with the drive to use for the {props.version} ISO stack, such as `/dev/sda`.
+     
+   If the device is not specified, the default value is `auto`. This means the installer selects the largest available drive, which may not be the desired behavior, especially in multi-drive environments.
 
-   - `<storage-drive>` - Specify the drive to use for the {props.version} ISO stack, such as `/dev/sda`. If set to `auto`, the installer selects the largest available drive, which may not be the desired option.
-   - `<custom-user>` - Specify the custom user to create for the host. You will use this user to log in to the Palette Terminal User Interface (TUI) and Local UI later.
-   - `<custom-user-password>` - Specify the password for the custom user.
+   ```yaml {5}
+   #cloud-config
+   install:
+     reboot: false
+     poweroff: true
+     device: <storage-drive>
+     grub_options:
+       extra_cmdline: "fips=1 selinux=0"
+     bind_mounts:
+     - /etc/lvm
+     - /var/lib/drbd
+     - /var/lib/linstor.d
+     - /var/lib/piraeus-datastore
+     - /var/lib/calico
+  
+   stylus:
+     debug: false
+     trace: false
+     installationMode: airgap
+     skipStylusUpgrade: true
+     includeTui: true
 
-   <br />
-
-   ```yaml {5,47,50}
-    #cloud-config
-    install:
-    reboot: false
-    poweroff: true
-    device: <storage-drive>
-    grub_options:
-        extra_cmdline: "fips=1 selinux=0"
-    bind_mounts:
-    - /etc/lvm
-    - /var/lib/drbd
-    - /var/lib/linstor.d
-    - /var/lib/piraeus-datastore
-    - /var/lib/calico
-
-    stylus:
-    debug: false
-    trace: false
-    installationMode: airgap
-    skipStylusUpgrade: true
-    includeTui: true
-
-    stages:
-    after-reset:
-        - commands:
-            - |
-                sudo lvchange -an drbd-vg
-                sudo lvremove -f drbd-vg
-                sudo vgremove drbd-vg
-            if: "vgs drbd-vg >/dev/null 2>&1"
-            name: Wipe and prepare secondary SSD for CSI...
-    kairos-install.pre.after:
-        - commands:
-            - |
-                sudo lvchange -an drbd-vg
-                sudo lvremove -f drbd-vg
-                sudo vgremove drbd-vg
-            if: "vgs drbd-vg >/dev/null 2>&1"
-            name: Wipe and prepare secondary SSD for CSI...
-    initramfs.after:
-        - name: "Create local users"
-        users:
-            kairos:
-            groups:
-                - sudo
-            passwd: kairos
-            sudo: ALL=(ALL) NOPASSWD:ALL
-            <custom-user>:
-            groups:
-                - sudo
-            passwd: <custom-user-password>
+   stages:
+     after-reset:
+         - commands:
+             - |
+               sudo lvchange -an drbd-vg
+               sudo lvremove -f drbd-vg
+               sudo vgremove drbd-vg
+           if: "vgs drbd-vg >/dev/null 2>&1"
+           name: Wipe and prepare secondary SSD for CSI...
+     kairos-install.pre.after:
+         - commands:
+             - |
+               sudo lvchange -an drbd-vg
+               sudo lvremove -f drbd-vg
+               sudo vgremove drbd-vg
+           if: "vgs drbd-vg >/dev/null 2>&1"
+           name: Wipe and prepare secondary SSD for CSI...
    ```
 
 2. Create an empty `meta-data` file.
@@ -70,7 +54,7 @@ partial_name: installation-steps-enablement
    touch meta-data
    ```
 
-3. Create the user-data ISO file by using the following command.
+3. Create the user-data ISO using the following command.
 
    ```shell
    mkisofs -output user-data.iso -volid cidata -joliet -rock user-data meta-data
@@ -87,8 +71,8 @@ partial_name: installation-steps-enablement
 
    :::info
 
-   The user data ISO only contains configuration data. If you use a tool like [balenaEtcher](https://etcher.balena.io/) to
-   write the ISO file to a USB stick, it may display a warning stating that the user data ISO file is not bootable. You can
+   The user-data ISO only contains configuration data. If you use a tool like [balenaEtcher](https://etcher.balena.io/) to
+   write the ISO file to a USB stick, it may display a warning stating that the user-data ISO is not bootable. You can
    safely ignore this warning and continue writing the image to USB.
 
    :::
@@ -104,19 +88,20 @@ partial_name: installation-steps-enablement
 
    For example, in VMware vSphere, the VMs will have the {props.iso} ISO in **CD/DVD drive 1** and the user-data ISO in **CD/DVD drive 2**. Refer to the documentation of your infrastructure provider for specific instructions on how to attach and boot from multiple ISOs.
 
-8. Restart the nodes to start the installation process. Once the nodes have booted from the ISO, the GRand Unified
+8. Restart the nodes to start the installation process. Once the nodes are booted from the ISO, the GRand Unified
    Bootloader (GRUB) screen may be displayed with selectable options; this should be ignored as the installation will
    proceed automatically.
 
    Wait for the installation process to complete. This will take at least 15 minutes, depending on the resources
    available on the nodes. After completion, the nodes will reboot and display the Palette TUI.
 
-9. In the Palette TUI, enter the credentials you configured in step 1 for your custom user. This account will be used to log in to Local UI and for SSH access to the node.
+9. In the Palette TUI, provide credentials for the initial account. This account will be used to log in to Local UI and for SSH access to the node.
 
-   | **Field**    | **Description**                                    |
-   |--------------|----------------------------------------------------|
-   | **Username** | The `<custom-user>` configured in step 1.          |
-   | **Password** | The `<custom-user-password>` configured in step 1. |
+   | **Field**                | **Description**                            |
+   |--------------------------|--------------------------------------------|
+   | **Username**             | Provide a username to use for the account. |
+   | **Password**             | Enter a password for the account.          |
+   | **Confirm Password**     | Re-enter the password for confirmation.    |
 
    Press **ENTER** to continue.
 
@@ -167,7 +152,7 @@ partial_name: installation-steps-enablement
     is because Local UI uses a self-signed certificate. You can safely ignore this warning and proceed to Local
     UI.
 
-18. Log in to Local UI using the credentials you configured in step 1 for your custom user.
+18. Log in to Local UI using the credentials you provided in step 9.
 
 19. (Optional) If you need to configure a HTTP proxy server for the node, follow the steps in the <VersionedLink text="Configure HTTP-Proxy in Local UI" url="/clusters/edge/local-ui/host-management/configure-proxy"/> guide. When done, proceed to the next step.
 
