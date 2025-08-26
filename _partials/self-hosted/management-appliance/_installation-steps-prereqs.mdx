@@ -3,6 +3,8 @@ partial_category: self-hosted
 partial_name: installation-steps-prereqs
 ---
 
+- ISO management software installed on your local machine, such as [`mkisofs`](https://linux.die.net/man/8/mkisofs) or [`genisoimage`](https://linux.die.net/man/1/genisoimage).
+
 - Access to the [Artifact Studio](https://artifact-studio.spectrocloud.com/) to download the {props.iso} ISO.
 
 - A minimum of three nodes must be provisioned in advance for the Palette installation. We recommended the following
@@ -14,9 +16,17 @@ partial_name: installation-steps-prereqs
 
   - Two disks per node.
 
-    - The first disk must be at least 250 GB and is used for the ISO stack. The default device selected is `/dev/sda`.
+    - The first disk must be at least 250 GB and is used for the ISO stack. You specify the device in the `user-data` file during the ISO creation process in the first few steps.
 
-    - The second disk must be at least 500 GB and is used for the storage pool. The default device selected is `/dev/sdb`.
+    - The second disk must be at least 500 GB and is used for the storage pool. The default device selected is `/dev/sdb`. You can change the default device during the cluster creation steps in Local UI.
+
+      :::danger
+
+      The second disk is wiped as part of the installation process. If using an existing disk, ensure that you back up any important data before proceeding.
+
+      :::
+
+  - Two removable media connections must be available to attach both the {props.iso} ISO and the user-data ISO. These can be physical or virtual connections depending on your infrastructure provider.
 
 - The following network ports must be accessible on each node for Palette to operate successfully.
 
@@ -32,7 +42,8 @@ partial_name: installation-steps-prereqs
 
   :::warning
 
-  The ISO is only supported on Unified Extensible Firmware Interface (UEFI) systems. Ensure you configured the nodes to boot from the ISO in UEFI mode.
+  - The ISO is only supported on Unified Extensible Firmware Interface (UEFI) systems. Ensure you configure the nodes to boot from the ISO in UEFI mode.
+  - For VMware environments, [Secure Boot](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/7-0/vsphere-virtual-machine-administration-guide-7-0/configuring-virtual-machine-optionsvm-admin/configuring-virtual-machine-boot-optionsvm-admin/enable-or-disable-uefi-secure-boot-for-a-virtual-machinevm-admin.html) is not supported. Ensure Secure Boot is disabled on the nodes before proceeding with the installation.
 
   :::
 
