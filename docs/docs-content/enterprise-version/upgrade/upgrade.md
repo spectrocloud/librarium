@@ -458,7 +458,9 @@ health status of MongoDB ReplicaSet members, refer to our
 
 :::
 
-There are no verified upgrade paths for the Palette Management Appliance at this time.
+| **Source Version** | **Target Version** | **Support** |
+| :----------------: | :----------------: | :---------: |
+|       4.7.3        |       4.7.15       |     :x:     |
 
 </TabItem>
 
