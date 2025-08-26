@@ -3,62 +3,145 @@ partial_category: self-hosted
 partial_name: installation-steps-enablement
 ---
 
-1. Download the {props.iso} ISO from the [Artifact Studio](https://artifact-studio.spectrocloud.com/). Refer to the <VersionedLink text="Artifact Studio guide" url="/downloads/artifact-studio"/> for instructions on how to access and download the ISO.
+1. Create a file called `user-data` using the following template and adjust the following parameters to your requirements:
 
-2. Upload the ISO to your infrastructure provider. This can be done using the web interface of your infrastructure
-   provider or using command-line tools.
+   - `<storage-drive>` - Specify the drive to use for the {props.version} ISO stack, such as `/dev/sda`. If set to `auto`, the installer selects the largest available drive, which may not be the desired option.
+   - `<custom-user>` - Specify the custom user to create for the host. You will use this user to log in to the Palette Terminal User Interface (TUI) and Local UI later.
+   - `<custom-user-password>` - Specify the password for the custom user.
 
-   - For VMware vSphere, you can upload the ISO to a datastore using the vSphere Client or the `govc` CLI tool. Refer to the [vSphere](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/9-0/upload-iso-image-installation-media-for-a-guest-operating-system.html) or [govc](https://github.com/vmware/govmomi/tree/main/govc) documentation for more information.
-   - For Bare Metal, you can use tools like `scp` or `rsync` to transfer the ISO to the nodes, or use a USB drive to
+   <br />
+
+   ```yaml {5,47,50}
+    #cloud-config
+    install:
+    reboot: false
+    poweroff: true
+    device: <storage-drive>
+    grub_options:
+        extra_cmdline: "fips=1 selinux=0"
+    bind_mounts:
+    - /etc/lvm
+    - /var/lib/drbd
+    - /var/lib/linstor.d
+    - /var/lib/piraeus-datastore
+    - /var/lib/calico
+
+    stylus:
+    debug: false
+    trace: false
+    installationMode: airgap
+    skipStylusUpgrade: true
+    includeTui: true
+
+    stages:
+    after-reset:
+        - commands:
+            - |
+                sudo lvchange -an drbd-vg
+                sudo lvremove -f drbd-vg
+                sudo vgremove drbd-vg
+            if: "vgs drbd-vg >/dev/null 2>&1"
+            name: Wipe and prepare secondary SSD for CSI...
+    kairos-install.pre.after:
+        - commands:
+            - |
+                sudo lvchange -an drbd-vg
+                sudo lvremove -f drbd-vg
+                sudo vgremove drbd-vg
+            if: "vgs drbd-vg >/dev/null 2>&1"
+            name: Wipe and prepare secondary SSD for CSI...
+    initramfs.after:
+        - name: "Create local users"
+        users:
+            kairos:
+            groups:
+                - sudo
+            passwd: kairos
+            sudo: ALL=(ALL) NOPASSWD:ALL
+            <custom-user>:
+            groups:
+                - sudo
+            passwd: <custom-user-password>
+   ```
+
+2. Create an empty `meta-data` file.
+
+   ```shell
+   touch meta-data
+   ```
+
+3. Create the user-data ISO file by using the following command.
+
+   ```shell
+   mkisofs -output user-data.iso -volid cidata -joliet -rock user-data meta-data
+   ```
+
+4. Load the user-data ISO to a bootable device, such as a USB stick, or upload the ISO to a datastore in your VMware environment. You can use several software tools to create a bootable USB drive, such as [balenaEtcher](https://etcher.balena.io/).
+
+   - For VMware vSphere, you can upload the {props.iso} ISO to a datastore using the vSphere Client or the `govc` CLI tool. Refer to the [vSphere](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/9-0/upload-iso-image-installation-media-for-a-guest-operating-system.html) or [govc](https://github.com/vmware/govmomi/tree/main/govc) documentation for more information.
+   - For Bare Metal, you can use tools like `scp` or `rsync` to transfer the {props.iso} ISO to the nodes, or use a USB drive to
      boot the nodes from the ISO.
    - For Machine as a Service (MAAS), you can upload and deploy ISOs using Packer. Refer to the [MAAS documentation](https://maas.io/docs/about-images#p-17467-custom-images) for more information.
 
-   Ensure that the ISO is accessible to all nodes that will be part of the {props.version} management cluster.
+   Ensure that the user-data ISO is accessible to all nodes that will be part of the {props.version} management cluster.
 
-3. Boot each node from the ISO to install the necessary software for {props.version}. The installation process will
-   automatically configure the nodes with the required components, including the operating system, Kubernetes, CNI, and
-   CSI.
+   :::info
 
-4. Once the nodes have booted from the ISO, they will automatically start the installation process. The GRand Unified
+   The user data ISO only contains configuration data. If you use a tool like [balenaEtcher](https://etcher.balena.io/) to
+   write the ISO file to a USB stick, it may display a warning stating that the user data ISO file is not bootable. You can
+   safely ignore this warning and continue writing the image to USB.
+
+   :::
+
+5. Download the {props.iso} ISO from the [Artifact Studio](https://artifact-studio.spectrocloud.com/). Refer to the <VersionedLink text="Artifact Studio guide" url="/downloads/artifact-studio"/> for instructions on how to access and download the ISO.
+
+6. Upload the {props.iso} ISO to your infrastructure provider. This can be done using the web interface of your infrastructure
+   provider or using command-line tools.
+
+   Ensure that the {props.iso} ISO is accessible to all nodes that will be part of the {props.version} management cluster.
+
+7. Attach the {props.iso} ISO and the user-data ISO to the nodes and ensure the boot order is set to boot from the {props.iso} ISO first. 
+
+   For example, in VMware vSphere, the VMs will have the {props.iso} ISO in **CD/DVD drive 1** and the user-data ISO in **CD/DVD drive 2**. Refer to the documentation of your infrastructure provider for specific instructions on how to attach and boot from multiple ISOs.
+
+8. Restart the nodes to start the installation process. Once the nodes have booted from the ISO, the GRand Unified
    Bootloader (GRUB) screen may be displayed with selectable options; this should be ignored as the installation will
    proceed automatically.
 
    Wait for the installation process to complete. This will take at least 15 minutes, depending on the resources
-   available on the nodes. After completion, the nodes will reboot and display the Palette Terminal User Interface
-   (TUI).
+   available on the nodes. After completion, the nodes will reboot and display the Palette TUI.
 
-5. In the Palette TUI, provide credentials for the initial account. This account will be used to log in to Local UI and for SSH access to the node.
+9. In the Palette TUI, enter the credentials you configured in step 1 for your custom user. This account will be used to log in to Local UI and for SSH access to the node.
 
-   | **Field**                | **Description**                            |
-   |--------------------------|--------------------------------------------|
-   | **Username**             | Provide a username to use for the account. |
-   | **Password**             | Enter a password for the account.          |
-   | **Confirm Password**     | Re-enter the password for confirmation.    |
+   | **Field**    | **Description**                                    |
+   |--------------|----------------------------------------------------|
+   | **Username** | The `<custom-user>` configured in step 1.          |
+   | **Password** | The `<custom-user-password>` configured in step 1. |
 
    Press **ENTER** to continue.
 
-6. In the Palette TUI, the available configuration options are displayed and are described in the next three steps.
-   Use the **TAB** key or the up and down arrow keys to switch between fields. When you make a change, press **ENTER**
-   to apply the change. Use **ESC** to go back.
+10. In the Palette TUI, the available configuration options are displayed and are described in the next three steps.
+    Use the **TAB** key or the up and down arrow keys to switch between fields. When you make a change, press **ENTER**
+    to apply the change. Use **ESC** to go back.
 
-7. In **Hostname**, check the existing hostname and, optionally, change it to a new one.
+11. In **Hostname**, check the existing hostname and, optionally, change it to a new one.
 
-8. In **Host Network Adapters**, select a network adapter you would like to configure. By default, the network adapters
-   request an IP automatically from the Dynamic Host Configuration Protocol (DHCP) server. The CIDR block of an
-   adapter's possible IP address is displayed in the **Host Network Adapters** screen without selecting an individual
-   adapter.
+12. In **Host Network Adapters**, select a network adapter you would like to configure. By default, the network adapters
+    request an IP automatically from the Dynamic Host Configuration Protocol (DHCP) server. The CIDR block of an
+    adapter's possible IP address is displayed in the **Host Network Adapters** screen without selecting an individual
+    adapter.
 
-   In the configuration page for each adapter, you can change the IP addressing scheme of the adapter and choose a static
-   IP instead of DHCP. In Static IP mode, you will need to provide a static IP address and subnet mask, as well as the
-   address of the default gateway. Specifying a static IP will remove the existing DHCP settings.
+    In the configuration page for each adapter, you can change the IP addressing scheme of the adapter and choose a static
+    IP instead of DHCP. In Static IP mode, you will need to provide a static IP address and subnet mask, as well as the
+    address of the default gateway. Specifying a static IP will remove the existing DHCP settings.
 
-   You can also specify the Maximum Transmission Unit (MTU) for your network adapter. The MTU defines the largest size,
-   in bytes, of a packet that can be sent over a network interface without needing to be fragmented.
+    You can also specify the Maximum Transmission Unit (MTU) for your network adapter. The MTU defines the largest size,
+    in bytes, of a packet that can be sent over a network interface without needing to be fragmented.
 
-9. In **DNS Configuration**, specify the IP address of the primary and alternate name servers. You can optionally
-   specify a search domain.
+13. In **DNS Configuration**, specify the IP address of the primary and alternate name servers. You can optionally
+    specify a search domain.
 
-10. After you are satisfied with the configurations, navigate to **Quit** and press **ENTER** to finish the
+14. After you are satisfied with the configurations, navigate to **Quit** and press **ENTER** to finish the
     configuration. Press **ENTER** again on the confirmation prompt.
 
     After a few seconds, the terminal displays the **Device Info** and prompts you to provision the device through Local UI.
@@ -69,11 +152,11 @@ partial_name: installation-steps-enablement
 
     :::
 
-11. Ensure you complete the configuration on each node before proceeding to the next step.
+15. Ensure you complete the configuration on each node before proceeding to the next step.
 
-12. Decide on the host that you plan to use as the leader of the group. Refer to <VersionedLink text="Link Hosts" url="/clusters/edge/local-ui/cluster-management/link-hosts#leader-hosts"/> for more information about leader hosts.
+16. Decide on the host that you plan to use as the leader of the group. Refer to <VersionedLink text="Link Hosts" url="/clusters/edge/local-ui/cluster-management/link-hosts#leader-hosts"/> for more information about leader hosts.
 
-13. Access the Local UI of the leader host. Local UI is used to manage the {props.version} nodes and perform administrative
+17. Access the Local UI of the leader host. Local UI is used to manage the {props.version} nodes and perform administrative
     tasks. It provides a web-based interface for managing the {props.version} management cluster.
 
     In your web browser, go to `https://<node-ip>:5080`. Replace `<node-ip>` with the IP address of your node. If you
@@ -84,31 +167,31 @@ partial_name: installation-steps-enablement
     is because Local UI uses a self-signed certificate. You can safely ignore this warning and proceed to Local
     UI.
 
-14. Log in to Local UI using the credentials you provided in step 5.
+18. Log in to Local UI using the credentials you configured in step 1 for your custom user.
 
-15. (Optional) If you need to configure a HTTP proxy server for the node, follow the steps in the <VersionedLink text="Configure HTTP-Proxy in Local UI" url="/clusters/edge/local-ui/host-management/configure-proxy"/> guide. When done, proceed to the next step.
-
-16. From the left main menu, click **Linked Edge Hosts**.
-
-17. Click **Generate token**. The host begins generating tokens that you will use to link this host with other
-    hosts. The Base64 encoded token contains the IP address of the host, as well as an OTP that will expire in two
-    minutes. Once a token expires, the leader generates another token automatically.
-
-18. Click the **Copy** button to copy the token.
-
-19. Log in to Local UI on the host that you want to link to the leader host.
+19. (Optional) If you need to configure a HTTP proxy server for the node, follow the steps in the <VersionedLink text="Configure HTTP-Proxy in Local UI" url="/clusters/edge/local-ui/host-management/configure-proxy"/> guide. When done, proceed to the next step.
 
 20. From the left main menu, click **Linked Edge Hosts**.
 
-21. Click **Link this device to another**.
+21. Click **Generate token**. The host begins generating tokens that you will use to link this host with other
+    hosts. The Base64 encoded token contains the IP address of the host, as well as an OTP that will expire in two
+    minutes. Once a token expires, the leader generates another token automatically.
 
-22. In the pop-up box that appears, enter the token you copied from the leader host.
+22. Click the **Copy** button to copy the token.
 
-23. Click **Confirm**.
+23. Log in to Local UI on the host that you want to link to the leader host.
 
-24. Repeat steps 19-23 for every host you want to link to the leader host.
+24. From the left main menu, click **Linked Edge Hosts**.
 
-25. Confirm that all linked hosts appear in the **Linked Edge Hosts** table. The following columns should show the
+25. Click **Link this device to another**.
+
+26. In the pop-up box that appears, enter the token you copied from the leader host.
+
+27. Click **Confirm**.
+
+28. Repeat steps 23-27 for every host you want to link to the leader host.
+
+29. Confirm that all linked hosts appear in the **Linked Edge Hosts** table. The following columns should show the
     required statuses.
 
     | **Column**  | **Status** |
@@ -119,19 +202,19 @@ partial_name: installation-steps-enablement
 
     Content synchronization will take at least five minutes to complete, depending on your network resources.
 
-26. On the left main menu, click **Cluster**.
+30. On the left main menu, click **Cluster**.
 
-27. Click **Create cluster**.
+31. Click **Create cluster**.
 
-28. For **Basic Information**, provide a name for the cluster and optional tags in `key:value` format.
+32. For **Basic Information**, provide a name for the cluster and optional tags in `key:value` format.
 
-29. In **Cluster Profile**, the **Imported Applications preview** section displays the applications that are included
+33. In **Cluster Profile**, the **Imported Applications preview** section displays the applications that are included
     with the {props.app}. These applications are pre-configured and used to deploy your {props.version} management
     cluster.
 
     Leave the default options in place and click **Next**.
 
-30. In **Profile Config**, configure the cluster profile settings to your requirements. Review the following tables for
+34. In **Profile Config**, configure the cluster profile settings to your requirements. Review the following tables for
     the available options.
 
     #### Cluster Profile Options
@@ -160,9 +243,9 @@ partial_name: installation-steps-enablement
     | **Root Domain (Optional)**                    | The root domain for the registry. The default is set for the internal Zot registry, which is a virtual IP address assigned by [kube-vip](https://kube-vip.io/). If using an external registry, adjust this to the appropriate domain. | String                | **`{{.spectro.system.cluster.kubevip}}`** |
     | **Mongo Replicas** | The number of MongoDB replicas to create for the cluster. The accepted values are `1` or `3`. We recommend using **3** to provide high availability for the MongoDB database. _This value must match the **CSI Placement Count** value._ | Integer               | **`3`**                                   |
 
-31. Click **Next** when you are done.
+35. Click **Next** when you are done.
 
-32. In **Cluster Config**, configure the following options.
+36. In **Cluster Config**, configure the following options.
 
     #### Cluster Config Options
 
@@ -174,7 +257,7 @@ partial_name: installation-steps-enablement
 
     Click **Next** when you are done.
 
-33. In **Node Config**, configure the following options.
+37. In **Node Config**, configure the following options.
 
     :::important
 
@@ -223,9 +306,9 @@ partial_name: installation-steps-enablement
     | **NIC Name**             | The name of the network interface card (NIC) to use for the nodes. Leave on **Auto** to let the system choose the appropriate NIC, or select one manually from the drop-down menu.        | N/A           | **Auto**                                                                                         |
     | **Host Name (Optional)** | The hostname for the nodes. This is used to identify the nodes in the cluster. A generated hostname is provided automatically, which you can adjust to your requirements.                   | String        | **`edge-*`**                                                                                     |
 
-34. Click **Next** when you are done.
+38. Click **Next** when you are done.
 
-35. In **Review**, check that your configuration is correct. If you need to make changes, click on any of the sections
+39. In **Review**, check that your configuration is correct. If you need to make changes, click on any of the sections
     in the left sidebar to go back and edit the configuration.
 
     When you are satisfied with your configuration, click **Deploy Cluster**. This will start the cluster creation
@@ -235,17 +318,17 @@ partial_name: installation-steps-enablement
     on the **Cluster** page in the left main menu. The cluster is fully provisioned when the status changes to
     **Running** and the health status is **Healthy**.
 
-36. Once the cluster is provisioned, access the {props.version} system console using the virtual IP address (VIP) you configured
+40. Once the cluster is provisioned, access the {props.version} system console using the virtual IP address (VIP) you configured
     earlier. Open your web browser and go to `https://<vip-address>/system`. Replace `<vip-address>` with the VIP you
     configured for the cluster.
 
     The first time you visit the system console, a warning message about an untrusted TLS certificate may appear. This
     is expected, as you have not yet uploaded your TLS certificate. You can ignore this warning message and proceed.
 
-37. You will be prompted to log in to {props.version} system console. Use `admin` as the username and `admin` as the password.
+41. You will be prompted to log in to {props.version} system console. Use `admin` as the username and `admin` as the password.
     You will be prompted to change the password after logging in.
 
-38. In the **Account Info** window, provide the following information.
+42. In the **Account Info** window, provide the following information.
 
     | **Field**                | **Description**    |
     |--------------------------|--------------------|
