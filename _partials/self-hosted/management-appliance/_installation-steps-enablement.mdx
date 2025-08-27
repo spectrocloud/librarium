@@ -102,7 +102,7 @@ partial_name: installation-steps-enablement
 
 8. Restart the nodes to start the installation process.
 
-   If your nodes only support a single removable media connection, read and follow the additional steps below before restarting.
+   If your nodes only support a single removable media connection, read and follow the additional steps below before restarting your nodes.
 
    <details>
 
@@ -138,7 +138,7 @@ partial_name: installation-steps-enablement
       vi /oem/stylus_config.yaml
       ```
 
-   4. Add the `install.device` entry and replace `<storage-drive>` with the correct device name identified in step 2.
+   4. Add the following `install.device` section to your manifest, replacing `<storage-drive>` with the device name identified in step 2.
 
       ```yaml hideClipboard {6}
       #cloud-config
@@ -161,7 +161,7 @@ partial_name: installation-steps-enablement
       kairos-agent install
       ```
 
-      Once the command is issued, you can proceed to the next step.
+      Once the command is issued, proceed to the next step.
 
    </details>
 
