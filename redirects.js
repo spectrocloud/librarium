@@ -543,6 +543,34 @@ let redirects = [
     to: "/tutorials/clusters/edge/deploy-cluster",
   },
   {
+    from: "/tutorials/profiles/deploy-pack/",
+    to: "/tutorials/packs-registries/deploy-pack/",
+  },
+  {
+    from: "/tutorials/cluster-management/update-maintain/update-k8s-cluster/",
+    to: "/tutorials/profiles/update-k8s-cluster/",
+  },
+  {
+    from: "/tutorials/cluster-management/update-maintain/cluster-profile-variables",
+    to: "/tutorials/profiles/cluster-profile-variables/",
+  },
+  {
+    from: "/tutorials/edge/deploy-cluster/",
+    to: "/tutorials/clusters/edge/deploy-cluster/",
+  },
+  {
+    from: "/tutorials/edge/deploy-cluster-virtualbox/",
+    to: "/tutorials/clusters/edge/deploy-cluster-virtualbox/",
+  },
+  {
+    from: "/tutorials/cluster-deployment/pcg/deploy-app-pcg/",
+    to: "/tutorials/clusters/pcg/deploy-app-pcg/",
+  },
+  {
+    from: "/tutorials/cluster-deployment/pde/deploy-app/",
+    to: "/tutorials/pde/deploy-app/",
+  },
+  {
     from: "/security-bulletins/index/",
     to: "/unlisted/index/",
   },
