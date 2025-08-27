@@ -12,14 +12,14 @@ tags: ["devx", "app mode", "pde"]
 [Palette Dev Engine (PDE)](../../devx/devx.md) introduces, through App Mode, a simplified experience optimized for
 building, testing, deploying, and monitoring applications without the need to manage entire Kubernetes clusters.
 
-Explore the tutorial below to learn how to deploy Kubernetes applications using Palette Dev Engine.
+Explore the tutorial below to learn how to deploy applications using Palette Dev Engine.
 
 <SimpleCardGrid
   hideNumber="true"
   cards={[
     {
       title: "Deploy an Application using Palette Dev Engine",
-      description: "Learn how to deploy Kubernetes workloads with Palette Dev Engine.",
+      description: "Learn how to deploy workloads with Palette Dev Engine.",
       buttonText: "Learn more",
       url: "/tutorials/pde/deploy-app/",
     },
