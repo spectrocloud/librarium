@@ -10,15 +10,10 @@ sidebar_custom_props:
 tags: ["tutorials"]
 ---
 
-This documentation section provides hands-on tutorials you can complete in your environment to learn more about Palette
-and VerteX. Here, you will find tutorials covering the aspects of Palette you need to become a proficient user, as well
-as advanced topics that require more time and attention to comprehend. These tutorials will enable you to maximize
-Palette's ability to manage Kubernetes at scale. Check out the sections below to learn more about crucial Palette
-concepts.
-
-### Ready to Start Learning?
-
-Explore more through the following tutorial sections.
+This documentation section provides hands-on tutorials you can complete in your environment to learn more about Palette.
+Here, you will find tutorials covering the aspects of Palette you need to become a proficient user, as well as advanced
+topics that require more time and attention to comprehend. These tutorials will enable you to maximize Palette's ability
+to manage Kubernetes at scale. Check out the sections below to learn more about crucial Palette concepts.
 
 <!-- vale off -->
 
@@ -33,13 +28,13 @@ Explore more through the following tutorial sections.
     },
     {
       title: "Packs and Registries",
-      description: "Learn how to create and use Palette packs.",
+      description: "Learn how to create and use packs.",
       buttonText: "Learn more",
       url: "/tutorials/packs-registries/",
     },
     {
       title: "Profiles",
-      description: "Learn how to manage Palette cluster profiles.",
+      description: "Learn how to manage cluster profiles.",
       buttonText: "Learn more",
       url: "/tutorials/profiles/",
     },
