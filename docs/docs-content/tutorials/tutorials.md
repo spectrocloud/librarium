@@ -10,10 +10,12 @@ sidebar_custom_props:
 tags: ["tutorials"]
 ---
 
-This documentation section provides hands-on tutorials you can complete in your environment to learn more about Palette.
-Here, you will find tutorials covering the aspects of Palette you need to become a proficient user, as well as advanced
-topics that require more time and attention to comprehend. These tutorials will enable you to maximize Palette's ability
-to manage Kubernetes at scale. Check out the sections below to learn more about crucial Palette concepts.
+This section provides hands-on tutorials you can complete in your environment to learn more about Palette. Here, you
+will find tutorials covering the aspects of Palette you need to become a proficient user, as well as advanced topics
+that require more time and attention to comprehend. These tutorials will enable you to maximize Palette's ability to
+manage Kubernetes at scale.
+
+Check out the sections below to learn more about key Palette concepts.
 
 <!-- vale off -->
 
