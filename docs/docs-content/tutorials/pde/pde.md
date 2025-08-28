@@ -19,7 +19,7 @@ Explore the tutorial below to learn how to deploy applications using Palette Dev
   cards={[
     {
       title: "Deploy an Application using Palette Dev Engine",
-      description: "Learn how to deploy workloads with Palette Dev Engine.",
+      description: "Learn how to deploy applications with Palette Dev Engine.",
       buttonText: "Learn more",
       url: "/tutorials/pde/deploy-app/",
     },

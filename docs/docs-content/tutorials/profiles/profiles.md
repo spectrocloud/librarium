@@ -9,9 +9,9 @@ sidebar_custom_props:
 tags: ["profiles", "cluster profiles"]
 ---
 
-[Cluster profiles](../../profiles/profiles.md) are declarative, full-stack models that Palette uses to provision, scale,
-and maintain Kubernetes clusters. They are composed of layers, which can be Kubernetes manifests, Helm charts, or packs.
-A cluster profile enables you to customize the entire cluster infrastructure stack, from the operating system and
+[Cluster profiles](../../profiles/profiles.md) are declarative, full-stack models that Palette uses to provision and
+maintain Kubernetes clusters. They are composed of layers, which can be Kubernetes manifests, Helm charts, or packs. A
+cluster profile enables you to customize the entire cluster infrastructure stack, from the operating system and
 Kubernetes distribution to the Container Network Interface (CNI), Container Storage Interface (CSI), and add-on
 applications.
 
