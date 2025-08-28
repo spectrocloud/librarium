@@ -10,6 +10,116 @@ tags: ["troubleshooting", "self-hosted", "palette", "vertex"]
 
 Refer to the following sections to troubleshoot errors encountered when installing an Enterprise Cluster.
 
+## Scenario - VerteX Management Appliance Fails to Upgrade due to Stuck Linstor Satellite Pods
+
+When attempting to upgrade the VerteX Management Appliance, the `linstor-satellite.*` and `linstor-csi-node.*` pods may
+become stuck, which causes the upgrade process to stall. This is because the `linstor-satellite.*` pods may be using an
+incorrect [Distributed Replicated Block Device (DRBD)](https://linbit.com/drbd-user-guide/drbd-guide-9_0-en/) image for
+the `drbd-module-loader` container.
+
+To resolve this issue, you can check whether the pods are using an incorrect image and update them if necessary.
+
+### Debug Steps
+
+1. Use the following command to check the status of these pods in the `piraeus-system` namespace.
+
+   ```bash
+   kubectl get pods --namespace piraeus-system
+   ```
+
+   In the output, look for the status of the `linstor-satellite.*` pods.
+
+   ```shell hideClipboard title="Example output"
+   NAME                                                            READY   STATUS                  RESTARTS         AGE
+   ha-controller-2886l                                             1/1     Running                 0                25h
+   ha-controller-nnvqt                                             1/1     Running                 1 (29m ago)      25h
+   ha-controller-qhc26                                             1/1     Running                 1 (36m ago)      25h
+   linstor-controller-69b8ff6479-ccpzx                             1/1     Running                 0                31m
+   linstor-csi-controller-78c8bc4d55-5gk2b                         7/7     Running                 4 (28m ago)      38m
+   linstor-csi-node-dp8lm                                          0/3     Error                   0                25h
+   linstor-csi-node-r2hfv                                          0/3     Error                   0                25h
+   linstor-csi-node-tpt6h                                          3/3     Running                 0                25h
+   linstor-satellite.edge-1d3f3842cb0fdcef14b65cb510b5974f-5vkml   2/2     Running                 0                25h
+   linstor-satellite.edge-53583842350d90345a1f7251033cb228-8s7js   0/2     Init:CrashLoopBackOff   10 (2m54s ago)   26m
+   linstor-satellite.edge-c0913842383ebd183d13d1458bb762c5-78q97   0/2     Init:CrashLoopBackOff   11 (3m46s ago)   33m
+   piraeusoperator-piraeus-controller-manager-6f8988d598-b2v57     1/1     Running                 1 (28m ago)      25h
+   ```
+
+2. If any of the `linstor-satellite.*` pods are not in a **Running** state, use the following command to describe the
+   pods. Replace `<pod-name>` with the name of the Linstor satellite pod you want to inspect.
+
+   ```bash
+   kubectl describe pod <pod-name> --namespace piraeus-system
+   ```
+
+   Look for events indicating that the pod is attempting to use the `drbd9-jammy:v9.2.13` image for the
+   `drbd-module-loader` container, such as the following example.
+
+   ```shell hideClipboard title="Example output" {7,10}
+   ...
+   Events:
+     Type     Reason     Age                   From               Message
+     ----     ------     ----                  ----               -------
+     Normal   Scheduled  34m                   default-scheduler  Successfully assigned piraeus-system/linstor-satellite.edge-c0913842383ebd183d13d1458bb762c5-78q97 to edge-c0913842383ebd183d13d1458bb762c5
+     Warning  BackOff    26m (x6 over 31m)     kubelet            Back-off restarting failed container drbd-module-loader in pod linstor-satellite.edge-c0913842383ebd183d13d1458bb762c5-78q97_piraeus-system(71ea7db5-cc2c-4585-b1f7-fcc19bf14891)
+     Normal   Pulled     26m (x5 over 34m)     kubelet            Container image "us-docker.pkg.dev/palette-images-fips/packs/piraeus-operator/2.8.1/drbd9-jammy:v9.2.13" already present on machine
+     Normal   Created    26m (x5 over 34m)     kubelet            Created container: drbd-module-loader
+     Normal   Started    26m (x5 over 34m)     kubelet            Started container drbd-module-loader
+     Normal   Pulled     5m58s (x7 over 25m)   kubelet            Container image "us-docker.pkg.dev/palette-images-fips/packs/piraeus-operator/2.8.1/drbd9-jammy:v9.2.13" already present on machine
+     Normal   Created    5m58s (x7 over 25m)   kubelet            Created container: drbd-module-loader
+     Normal   Started    5m58s (x7 over 25m)   kubelet            Started container drbd-module-loader
+     Warning  BackOff    3m41s (x53 over 23m)  kubelet            Back-off restarting failed container drbd-module-loader in pod linstor-satellite.edge-c0913842383ebd183d13d1458bb762c5-78q97_piraeus-system(71ea7db5-cc2c-4585-b1f7-fcc19bf14891)
+   ```
+
+3. If any of the `linstor-satellite.*` pods are using the `drbd9-jammy:v9.2.13` image, issue the following command to
+   create a manifest that corrects the image reference for the `drbd-module-loader` container.
+
+   ```bash
+   kubectl apply -f - <<EOF
+   apiVersion: piraeus.io/v1
+   kind: LinstorSatelliteConfiguration
+   metadata:
+     name: custom-loader-image
+     namespace: piraeus-system
+   spec:
+     podTemplate:
+       spec:
+         initContainers:
+           - name: drbd-module-loader
+             image: us-docker.pkg.dev/palette-images-fips/packs/piraeus-operator/2.8.1/dbrd-loader:v2.8.1
+             imagePullPolicy: IfNotPresent
+   EOF
+   ```
+
+   ```shell hideClipboard title="Expected output"
+   linstorsatelliteconfiguration.piraeus.io/custom-loader-image created
+   ```
+
+4. Wait for the `linstor-satellite.*` pods to be recreated with the new image.
+
+5. Verify that the `drbd-module-loader` container is using the new image by describing the `linstor-satellite.*` pods.
+   Replace `<pod-name>` with the name of the pod you want to check. You may need to issue
+   `kubectl get pods --namespace piraeus-system` first as the pod names will have changed.
+
+   ```bash
+   kubectl describe pods <pod-name> --namespace piraeus-system
+   ```
+
+   Look for events indicating that the `drbd-module-loader` container is now using the `dbrd-loader:v2.8.1` image.
+
+   ```shell hideClipboard title="Example output" {6}
+   ...
+   Events:
+     Type    Reason     Age    From               Message
+     ----    ------     ----   ----               -------
+     Normal  Scheduled  4m44s  default-scheduler  Successfully assigned piraeus-system/linstor-satellite.edge-c0913842383ebd183d13d1458bb762c5-wfd4q to edge-c0913842383ebd183d13d1458bb762c5
+     Normal  Pulled     4m45s  kubelet            Container image "us-docker.pkg.dev/palette-images-fips/packs/piraeus-operator/2.8.1/dbrd-loader:v2.8.1" already present on machine
+     Normal  Created    4m45s  kubelet            Created container: drbd-module-loader
+     Normal  Started    4m44s  kubelet            Started container drbd-module-loader
+   ```
+
+The VerteX Management Appliance upgrade process will then continue. You can monitor the upgrade progress in Local UI.
+
 ## Scenario - Palette/VerteX Management Appliance Installation Stalled due to piraeus-operator Pack in Error State
 
 During the installation of the [Palette](../enterprise-version/install-palette/palette-management-appliance.md) or

@@ -103,6 +103,15 @@ remain operational.
   app="VerteX Management Appliance"
 />
 
+:::info
+
+If the upgrade process stalls, this may be due to the `linstor-satellite.*` pods not using the correct image for the
+`drbd-module-loader` container. Refer to
+[Scenario - VerteX Management Appliance Fails to Upgrade due to Stuck Linstor Satellite Pods](../../troubleshooting/enterprise-install.md#scenario---vertex-management-appliance-fails-to-upgrade-due-to-stuck-linstor-satellite-pods)
+for more information.
+
+:::
+
 ## Validate
 
 <PartialsComponent
