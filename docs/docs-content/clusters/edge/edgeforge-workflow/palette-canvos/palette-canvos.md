@@ -997,7 +997,7 @@ After building the Edge artifacts and creating an Edge cluster profile, the next
 image to prepare your Edge host. To learn more about utilizing Edge artifacts to prepare Edge hosts and deploy
 Palette-managed Edge clusters, we encourage you to check out the reference resources below.
 
-- [Deploy an Edge Cluster on VMware](../../../../tutorials/edge/deploy-cluster.md)
+- [Deploy an Edge Cluster on VMware](../../../../tutorials/clusters/edge/deploy-cluster.md)
 
 - [Installation](../../site-deployment/stage.md)
 

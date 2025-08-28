@@ -19,4 +19,4 @@ Check out the resource links below to learn more about Apps.
 
 - [App Logs](logs.md)
 
-- [Deploy an Application using the Palette Dev Engine](../../tutorials/cluster-deployment/pde/deploy-app.md)
+- [Deploy an Application using the Palette Dev Engine](../../tutorials/pde/deploy-app.md)

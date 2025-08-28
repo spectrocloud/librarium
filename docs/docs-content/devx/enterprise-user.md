@@ -41,7 +41,7 @@ started. Create your application profiles and deploy your applications to Palett
 
 Use the following resource to get started with PDE today.
 
-- [Tutorial](../tutorials/cluster-deployment/pde/deploy-app.md).
+- [Tutorial](../tutorials/pde/deploy-app.md).
 
 - Learn about [App Mode versus Cluster Mode](../introduction/palette-modes.md).
 

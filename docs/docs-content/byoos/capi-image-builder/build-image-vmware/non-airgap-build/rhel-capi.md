@@ -480,5 +480,5 @@ profile and deploy a VMware host cluster.
 
 After you have created an OS image with CAPI Image Builder and have it referenced in a cluster profile, you can deploy a
 VMware host cluster using the created cluster profile. Refer to the
-[Deploy App Workloads with a PCG](../../../../tutorials/cluster-deployment/pcg/deploy-app-pcg.md) tutorial for
-instructions on deploying a VMware host cluster.
+[Deploy App Workloads with a PCG](../../../../tutorials/clusters/pcg/deploy-app-pcg.md) tutorial for instructions on
+deploying a VMware host cluster.

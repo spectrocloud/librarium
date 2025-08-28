@@ -14,7 +14,7 @@ different from the legacy Pack registries. To interact with an OCI Pack registry
 :::tip
 
 For guidance on how to add a custom pack to an OCI pack registry, check out the
-[Deploy a Custom Pack](../../../tutorials/profiles/deploy-pack.md) tutorial.
+[Deploy a Custom Pack](../../../tutorials/packs-registries/deploy-pack.md) tutorial.
 
 :::
 

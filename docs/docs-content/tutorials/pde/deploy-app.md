@@ -32,7 +32,7 @@ To complete this tutorial, you will need the following items.
   - 20 GiB of Storage.
 
     If you don’t have a cluster group, check out the
-    [Create Cluster Group](../../../clusters/cluster-groups/cluster-groups.md) documentation to learn how to create one.
+    [Create Cluster Group](../../clusters/cluster-groups/cluster-groups.md) documentation to learn how to create one.
 
 If you select the Terraform workflow, you will need the following software installed.
 
@@ -52,7 +52,7 @@ following diagram illustrates the different layers that will power the tutorial 
 The top layer is Palette, which is the product platform. Palette can be used in two modes: app mode or cluster mode.
 Each mode is intended for different use cases and personas, but for this tutorial, you will use app mode. For an
 in-depth explanation of each mode’s differences, check out the
-[App Mode and Cluster Mode](../../../introduction/palette-modes.md) documentation.
+[App Mode and Cluster Mode](../../introduction/palette-modes.md) documentation.
 
 ## Deploy The Environment
 
@@ -206,7 +206,7 @@ In the next screen, assign the following values to the Postgres database.
 Take note of the **Output Variables** section. The Postgres service exposes several output variables to help other
 applications connect with the database. In the next section, you will use these output variables and other output
 variables that Palette exposes for each service. You can learn more about output variables by reviewing the app profile
-[output variables](../../../profiles/app-profiles/app-profile-output-vars.md) documentation.
+[output variables](../../profiles/app-profiles/app-profile-output-vars.md) documentation.
 
 Next, navigate to the top left side of the wizard screen and click on the **Actions** button **+**. Go ahead and select
 **Container Deployment**.
@@ -252,7 +252,7 @@ contains the Kubernetes DNS value of the Postgres service container.
 :::info
 
 To learn more about connecting different service layers, refer to the
-[Service Connectivity](../../../devx/services/connectivity.md) resource.
+[Service Connectivity](../../devx/services/connectivity.md) resource.
 
 :::
 
@@ -1167,7 +1167,7 @@ pack {
 
 All container services expose their service address, Kubernetes hostname, and the exposed service ports as output
 variables. You will use output variables frequently when creating app profiles. You can learn more about connecting
-services by referring to the [Service Connectivity](../../../devx/services/connectivity.md) documentation.
+services by referring to the [Service Connectivity](../../devx/services/connectivity.md) documentation.
 
 :::
 
@@ -1275,9 +1275,9 @@ configuration files.
 
 To learn more about Palette Dev Engine and its capabilities, check out the references resource below.
 
-- [Palette Modes](../../../introduction/palette-modes.md)
+- [Palette Modes](../../introduction/palette-modes.md)
 - [Spectro Cloud Terraform Provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs)
-- [App Profiles](../../../profiles/app-profiles/app-profiles.md)
-- [App Services](../../../devx/services/services.md)
-- [Palette Virtual Clusters](../../../devx/palette-virtual-clusters/palette-virtual-clusters.md)
+- [App Profiles](../../profiles/app-profiles/app-profiles.md)
+- [App Services](../../devx/services/services.md)
+- [Palette Virtual Clusters](../../devx/palette-virtual-clusters/palette-virtual-clusters.md)
 - [Hello Universe GitHub respository](https://github.com/spectrocloud/hello-universe)

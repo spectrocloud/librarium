@@ -222,8 +222,8 @@ use it in a Kubernetes deployment configuration. This allows you to pull images 
 restrictions or limitations.
 
 To learn more about Kubernetes and how to use it to deploy your application, check out
-[Palette's Dev Engine](../../tutorials/cluster-deployment/pde/deploy-app.md) and how it can reduce the challenges often
-encountered with deploying apps to Kubernetes. You can also read about
+[Palette's Dev Engine](../../tutorials/pde/deploy-app.md) and how it can reduce the challenges often encountered with
+deploying apps to Kubernetes. You can also read about
 [how to deploy a stateless frontend application](/kubernetes-knowlege-hub/tutorials/deploy-stateless-frontend-app) on
 Kubernetes or join our
 [slack channel](https://join.slack.com/t/spectrocloudcommunity/shared_invite/zt-1mw0cgosi-hZJDF_1QU77vF~qNJoPNUQ). Learn
