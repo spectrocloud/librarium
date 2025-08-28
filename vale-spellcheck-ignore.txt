@@ -23,4 +23,3 @@ docs/docs-content/clusters/public-cloud/gcp/required-permissions.md:120:105:Vale
 docs/docs-content/clusters/public-cloud/aws/eks.md:285:84:Vale.Spelling:Did you really mean 'Nodepool'?
 docs/docs-content/clusters/public-cloud/aws/eks.md:323:16:Vale.Spelling:Did you really mean 'Nodepool'?
 docs/docs-content/release-notes/release-notes.md:470:19:Vale.Spelling:Did you really mean 'Loadbalancer'?
-
