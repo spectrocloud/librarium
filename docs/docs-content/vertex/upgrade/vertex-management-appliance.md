@@ -75,13 +75,20 @@ remain operational.
   :::caution
 
   If these steps are not performed, you may encounter content sync failures for these image tags on the **Content** page
-  in Local UI. These errors will occur after uploading the content bundle to Local UI.
-
-  In addition, if any other image tags fail to sync after the upgrade, you must manually delete those tags from the
-  internal Zot registry and any external registry you are using. The following image is an example of a content sync
-  failure in Local UI.
+  in Local UI. These errors will occur after uploading the content bundle to Local UI. The following image is an example
+  of a content sync failure in Local UI.
 
   ![Example content sync failure](/enterprise-version_upgrade_palette-management-appliance_content-sync-error_4.7.3.webp)
+
+  In addition, on the **Diagnostics** page within the **Logs** tab, errors may be displayed relating to these image tags
+  that are similar to the following:
+
+  ```shell
+  Aug 27 12:44:06 edge-1d3f3842cb0fdcef14b65cb510b5974f stylus-operator.sh[18752]: time="2025-08-27T12:44:06Z" level=error msg="failed to push artifact to registrywriting index: PUT https://10.11.12.13:30003/v2/spectro-content/us-docker.pkg.dev/palette-images-fips/k8s/pause/manifests/3.9: MANIFEST_INVALID: manifest invalid; map[description:During upload, manifests undergo several checks ensuring validity. If those checks fail, this error MAY be returned, unless a more specific error is included. The detail will contain information the failed validation. reason:changing manifest media-type from \"application/vnd.docker.distribution.manifest.v2+json\" to \"application/vnd.docker.distribution.manifest.list.v2+json\" is disallowed reference:3.9]" version=v4.7.2 cluster
+  ```
+
+  If any other image tags fail to sync with a similar error after the content bundle is uploaded, you must manually
+  delete those tags from the internal Zot registry and any external registry you are using.
 
   :::
 
