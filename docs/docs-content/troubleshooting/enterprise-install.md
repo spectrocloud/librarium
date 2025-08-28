@@ -10,7 +10,7 @@ tags: ["troubleshooting", "self-hosted", "palette", "vertex"]
 
 Refer to the following sections to troubleshoot errors encountered when installing an Enterprise Cluster.
 
-## Scenario - VerteX Management Appliance Fails to Upgrade due to Stuck Linstor Satellite Pods
+## Scenario - VerteX Management Appliance Fails to Upgrade due to Stuck LINSTOR Satellite Pods
 
 When attempting to upgrade the VerteX Management Appliance, the `linstor-satellite.*` and `linstor-csi-node.*` pods may
 become stuck, which causes the upgrade process to stall. This is because the `linstor-satellite.*` pods may be using an
@@ -63,7 +63,7 @@ To resolve this issue, you can check whether the pods are using an incorrect ima
    ```
 
 7. If any of the `linstor-satellite.*` pods are not in a **Running** state, use the following command to describe the
-   pods. Replace `<pod-name>` with the name of the Linstor satellite pod you want to inspect.
+   pods. Replace `<pod-name>` with the name of the LINSTOR satellite pod you want to inspect.
 
    ```bash
    kubectl describe pod <pod-name> --namespace piraeus-system
@@ -92,7 +92,7 @@ To resolve this issue, you can check whether the pods are using an incorrect ima
    create a manifest that corrects the image reference for the `drbd-module-loader` container.
 
    ```bash
-   kubectl apply -f - <<EOF
+   kubectl apply --filename - <<EOF
    apiVersion: piraeus.io/v1
    kind: LinstorSatelliteConfiguration
    metadata:
