@@ -7,7 +7,7 @@ tags: ["data center", "maas"]
 ---
 
 Palette enables seamless integration with Canonical MAAS, allowing you to deploy and manage Kubernetes clusters directly
-on bare metal servers or on LXD virtual machines (VMs) . Palette achieves this through the Private Cloud Gateway (PCG),
+on bare metal servers or on LXD virtual machines . Palette achieves this through the Private Cloud Gateway (PCG),
 establishing a secure connection from the internal network to the internet-accessible Palette instance and effectively
 bypassing NAT gateways and firewalls.
 
