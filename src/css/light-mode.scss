@@ -92,6 +92,10 @@ html[data-theme="light"] {
     border-bottom: 1px solid var(--ifm-breadcrumb-item-background-active);
   }
 
+  .breadcrumbs__link {
+    color: var(--ifm-color-primary-darker);
+  }
+
   // .navbar__item.navbar__link.navbar__link--active {
   //   color: var(--ifm-navbar-link-hover-color);
   // }
