@@ -162,6 +162,7 @@ for branch in $branches; do
   in_breaking_changes=false
   release_number=""
   paragraph=""
+  in_code_section=false
   # Read the release notes file line by line.
   while IFS= read -r line; do
     # If the line is an H2 that contains "Release", we extract the number and begin processing.
@@ -192,6 +193,20 @@ for branch in $branches; do
       # If we are in breaking changes and the line is a heading then exit breaking changes mode. 
       if echo "$line" | grep -q '^[[:space:]]*#'; then
         in_breaking_changes=false
+        continue
+      fi
+
+      # If we are in breaking changes and the line starts a code block don't collapse into a paragraph.
+      if echo "$line" | grep -q '^[[:space:]]*```'; then
+        # Toggle in_code_section
+        in_code_section=! in_code_section
+        add_breaking_changes_body "$release_number" "$line"
+        continue
+      fi
+
+      # Don't strip any spacing or collapse lines while we are in the code section.
+      if $in_code_section; then
+        add_breaking_changes_body "$release_number" "$line"
         continue
       fi
 
