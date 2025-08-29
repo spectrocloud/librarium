@@ -98,6 +98,10 @@ html[data-theme="dark"] {
     color: var(--ifm-menu-color);
   }
 
+  .theme-code-block .token.comment {
+    color: #6baa8c !important;
+  }
+
   // .tabs__item {
   //   border-radius: 2px 2px 0 0;
   //   font-weight: 500;
