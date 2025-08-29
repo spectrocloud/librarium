@@ -14,10 +14,6 @@ use a remote shell session to access your centrally managed Edge host. This conn
 
 ![Diagram of the relationship between user, Palette, and Edge host in Remote Shell](/clusters_edge_cluster-mgmt_remote-shell.webp)
 
-:::preview
-
-:::
-
 You can generate temporary user credentials with root privileges or use an existing user on your Edge host. Temporary
 users have root privilege on the Edge host, allowing you the permissions often required to troubleshoot, but they must
 be enabled per Edge host by someone with sufficient permissions.

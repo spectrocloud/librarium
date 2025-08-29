@@ -24,7 +24,7 @@ additional cloud accounts that reference specific PCGs.
   Preferences**, and selecting **API keys**.
 
 For details, refer to the MAAS document on
-[how to add an API key](https://maas.io/docs/how-to-manage-user-access#p-9090-edit-sshapi-keys-ui).
+[how to add an API key](https://canonical.com/maas/docs/how-to-enhance-maas-security#p-9102-manage-api-keys).
 
 ## Register a MAAS Cloud Account
 

@@ -11,6 +11,333 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## August 21, 2025 - Release 4.7.15
+
+### Bug Fixes
+
+<!-- prettier-ignore-start -->
+
+- Fixed an issue that prevented [HTTP-Proxies](../clusters/edge/local-ui/host-management/configure-proxy.md) from being
+  correctly applied when configured in Local UI prior to cluster creation.
+- Fixed an issue that prevented certain `hubble-system` pods from being scheduled when upgrading self-hosted Palette and
+  VerteX VMware vSphere installations from 4.6.x to 4.7.x.
+- Fixed an issue that caused the Palette
+  [Terminal User Interface (TUI)](../clusters/edge/site-deployment/site-installation/initial-setup.md) on Edge hosts to
+  restart after entering **DNS Configuration** details.
+- Fixed a UI issue where the [Virtual Machine Dashboard](../vm-management/configure-console-base-address.md)
+  **Connect** button disappeared for [Virtual Machine Orchestrator (VMO)](../vm-management/vm-management.md) clusters
+  after switching between **Proxied** and **Direct** access in the applied
+  <VersionedLink url="/integrations/packs/?pack=virtual-machine-orchestrator" text="Virtual Machine Orchestrator" /> pack.
+- Fixed a UI issue where Edge host tags were not displayed in the **Tags** drop-down menu on the **Clusters > Edge Hosts** tab of
+  Palette. 
+
+<!-- prettier-ignore-end -->
+
+### Automation
+
+#### Features
+
+- Terraform version 0.24.2 of the
+  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
+  now available. For more details, refer to the Terraform provider
+  [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
+
+#### Bug Fixes
+
+- Fixed a `spectrocloud_sso` Terraform resource issue where `preferred_email` was not an accepted value for
+  `oidc.email`.
+
+## August 17, 2025 - Release 4.7.13 {#release-notes-4.7.a}
+
+### Security Notices
+
+- Review the [Security Bulletins](../security-bulletins/reports/reports.mdx) page for the latest security advisories.
+
+### Palette Enterprise {#palette-enterprise-4.7.a}
+
+#### Breaking Changes {#breaking-changes-4.7.a}
+
+- Availability zones are now required when creating MAAS [node pools](../clusters/cluster-management/node-pool.md).
+  - For [MAAS clusters](../clusters/data-center/maas/create-manage-maas-clusters.md) deployed prior to Palette version
+    4.7.13, selecting an availability zone is required when creating a new node pool; however, selecting an availability
+    zone is _not_ required when modifying an existing node pool, as modifying availability zones post-cluster deployment
+    will trigger a [node pool repave](../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration).
+  - For MAAS clusters deployed prior to 4.7.13, we recommend creating a new node pool with an availability zone selected
+    and migrating existing workloads to the new node pool when convenient. For guidance on migrating workloads, refer to
+    the [Taints and Tolerations](../clusters/cluster-management/taints.md) guide.
+
+#### Features
+
+<!-- prettier-ignore-start -->
+
+- Amazon EKS node customization is now supported for custom AMIs, such as Amazon Linux 2 (AL2) and Amazon Linux 2023 (AL2023).
+  This feature allows you to provide pre- and post-[kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/)
+  commands for AL2, and provide [user data](https://docs.aws.amazon.com/eks/latest/userguide/launch-templates.html#launch-template-user-data)
+  customization in the form of shell scripts for AL2023. This functionality is provided through the Kubernetes EKS pack.
+
+  Refer to the <VersionedLink text="Node Customization" url="/integrations/packs/?pack=kubernetes-eks&tab=custom#node-customization"/>
+  section of the Kubernetes EKS pack for configurable options available for these AMIs. For general guidance on
+  deploying EKS clusters, refer to the [Create and Manage AWS EKS Cluster](../clusters/public-cloud/aws/eks.md) guide.
+
+<!-- prettier-ignore-end -->
+
+- Palette now provides a new platform setting for
+  [automatic cluster role bindings](../clusters/cluster-management/platform-settings/cluster-auto-rbac.md). This feature
+  allows Palette to automatically apply the appropriate Kubernetes cluster role bindings based on user roles, ensuring
+  that Role-Based Access Control (RBAC) permissions are consistently applied for all deployed clusters.
+- <TpBadge /> Palette now supports Canonical Kubernetes using the Ubuntu for Canonical Kubernetes OS pack. This feature
+  currently supports the creation of [MAAS clusters](../clusters/data-center/maas/maas.md) with Canonical Kubernetes
+  version 1.32. Refer to the MAAS [Architecture](../clusters/data-center/maas/architecture.md#palette-maas-distribution)
+  page for further details.
+- [Workspace resource quotas](../workspace/workspace-mgmt/resource-mgmt.md#implement-resource-quotas) and
+  [namespace resource quotas](../clusters/cluster-management/namespace-management.md#assign-resource-quotas) now support
+  GPU limits. This feature currently supports Nvidia GPUs only.
+- Palette now supports the AI pack type. This category streamlines the grouping and finding of AI-related packs. Refer
+  to the [Packs List](../integrations/integrations.mdx) to search and filter packs.
+
+#### Improvements
+
+- Nodes provisioned through [Karpenter](https://karpenter.sh/docs/) are now visible in Palette and supported for
+  read-only operations, such as billing and monitoring. However,
+  [Day-2 operations](../clusters/cluster-management/cluster-management.md) are not supported. Refer to
+  [Karpenter Support](../clusters/public-cloud/aws/architecture.md#karpenter-support) for more details.
+- <TpBadge /> A technical preview banner is now displayed on all [Artifact Studio](../downloads/artifact-studio.md)
+  pages.
+
+#### Bug Fixes
+
+- Fixed an issue that caused errors on message broker pods after upgrading
+  [self-hosted Palette](../enterprise-version/enterprise-version.md) installations to version 4.7.4 or later.
+- Fixed an issue that caused validation errors to appear when
+  [adding an Amazon ECR](../registries-and-packs/registries/oci-registry/add-oci-packs.md) hosted in
+  [AWS GovCloud](https://docs.aws.amazon.com/govcloud-us/latest/UserGuide/govcloud-ecr.html) to Palette.
+- Fixed an issue that caused [self-hosted Palette](../enterprise-version/enterprise-version.md) installations to allow
+passing open redirects in URLs using the `returnTo` parameter.
+<!-- prettier-ignore-start -->
+- Fixed an issue that caused multiple repeated creations and reconciliations of
+<VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack resources.
+<!-- prettier-ignore-end -->
+- Fixed an issue that caused
+  [sprig template functions](../registries-and-packs/pack-constraints.md#sprig-template-functions) to fail when being
+  used together with system and tenant scope [macros](../clusters/cluster-management/macros.md#scope-of-palette-macros).
+- Fixed an issue that caused the worker nodes of [MAAS](../clusters/data-center/maas/maas.md) clusters to be repaved in
+  parallel.
+- Fixed an issue that caused certificates to be incorrectly updated in cluster
+  [Kubeconfig](../clusters/cluster-management/kubeconfig.md) files after certificate updates.
+
+### Edge
+
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.7.13 Palette release is 4.7.9.
+
+:::
+
+#### Improvements
+
+- [Remote shell](../clusters/edge/cluster-management/remote-shell.md) has now exited Tech Preview and is ready for
+production workloads.
+<!-- prettier-ignore-start -->
+- The <VersionedLink text="Palette eXtended Kubernetes Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" />
+distribution now supports virtual network overlays for multi-node clusters deployed with
+[agent mode](../deployment-modes/agent-mode/agent-mode.md) or
+[appliance mode](../deployment-modes/appliance-mode/appliance-mode.md). Refer to the
+[Enable Overlay Network](../clusters/edge/networking/vxlan-overlay.md) guide for further details.
+<!-- prettier-ignore-end -->
+- The [Kubeconfig](../clusters/cluster-management/kubeconfig.md) file names of Edge clusters deployed with
+  [agent mode](../deployment-modes/agent-mode/agent-mode.md) or
+  [appliance mode](../deployment-modes/appliance-mode/appliance-mode.md) now contain the cluster name.
+
+#### Bug Fixes
+
+- Fixed an issue that caused the creation of locally deployed clusters to fail when adding a custom `stylus.path` to the
+  `user-data` file.
+- Fixed an issue that prevented Kubernetes upgrades from being applied to the control plane nodes of
+  [agent mode](../deployment-modes/agent-mode/agent-mode.md) clusters.
+- Fixed an issue that caused single-node [Local UI](../clusters/edge/local-ui/local-ui.md) clusters configured with
+  add-on packs to be stuck in the Provisioning state.
+- Fixed an issue that caused Palette to report single-node Edge clusters with invalid
+  [kube-vip configurations](../clusters/edge/networking/kubevip.md) as Healthy, even though they were unreachable.
+
+### VerteX
+
+#### Features
+
+- Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
+  [Palette section](#palette-enterprise-4.7.a) for more details.
+
+### Automation
+
+:::info
+
+Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible version of the Palette CLI.
+
+:::
+
+#### Features
+
+- All cluster Terraform resources now support the `gpu_limit` and `gpu_provider` fields to enforce GPU resource limits.
+  For more information, refer to the Spectro Cloud Terraform provider
+  [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs). The Terraform resource
+  `spectrocloud_workspace` now also supports these configurations.
+- Terraform version 0.24.1 of the
+  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
+  available. For more details, refer to the Terraform provider
+  [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
+- Crossplane version 0.24.1 of the
+  [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette/v0.24.1)
+  is now available.
+
+#### Bug Fixes
+
+- Fixed an issue that prevented the taints configuration from being correctly applied to the
+  `spectrocloud_cluster_custom_cloud` Terraform resource.
+- Fixed an issue that caused the `spectrocloud_cluster_profile` Terraform resource to create invalid objects when
+  cluster profile variables are not correctly initialized before creation.
+
+### Virtual Machine Orchestrator (VMO)
+
+#### Features
+
+- Palette now supports the configuration of a direct address for the **Virtual Machines** dashboard of clusters
+  configured using [Virtual Machine Orchestrator](../vm-management/vm-management.md). Refer to the
+  [Configure Direct Access to Virtual Machine Dashboard](../vm-management/configure-console-base-address.md) guide for
+  further details.
+
+### Packs
+
+#### Pack Notes
+
+- The Spectro Addon Repo registry has been removed from Palette multi-tenant SaaS. Refer to the
+  [Default Registries](../registries-and-packs/registries/registries.md#default-registries) for the list of registries
+  available to all SaaS tenants.
+
+#### OS
+
+| Pack Name                       | New Version |
+| ------------------------------- | ----------- |
+| Ubuntu for Canonical K8s (MAAS) | 22.04       |
+
+#### Kubernetes
+
+| Pack Name                                | New Version |
+| ---------------------------------------- | ----------- |
+| Canonical Kubernetes                     | 1.32        |
+| GKE                                      | 1.32        |
+| Palette eXtended Kubernetes              | 1.32.6      |
+| Palette eXtended Kubernetes              | 1.31.10     |
+| Palette eXtended Kubernetes              | 1.30.14     |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.33.3      |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.32.6      |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.31.10     |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.30.14     |
+| Palette Optimized Canonical              | 1.33.2      |
+| Palette Optimized Canonical              | 1.32.6      |
+| Palette Optimized K3s                    | 1.33.3      |
+| Palette Optimized K3s                    | 1.32.6      |
+| Palette Optimized K3s                    | 1.31.10     |
+| Palette Optimized K3s                    | 1.30.14     |
+| Palette Optimized RKE2                   | 1.33.3      |
+| Palette Optimized RKE2                   | 1.32.6      |
+| Palette Optimized RKE2                   | 1.31.10     |
+| Palette Optimized RKE2                   | 1.30.14     |
+| RKE2                                     | 1.32.6      |
+| RKE2                                     | 1.31.10     |
+| RKE2                                     | 1.30.14     |
+
+#### CNI
+
+| Pack Name                  | New Version |
+| -------------------------- | ----------- |
+| Calico                     | 3.30.2      |
+| Calico (Azure)             | 3.30.2      |
+| Cilium CNI (Canonical K8s) | 1.16.3      |
+
+#### CSI
+
+| Pack Name             | New Version |
+| --------------------- | ----------- |
+| Amazon EBS CSI        | 1.46.0      |
+| Amazon EFS            | 2.1.9       |
+| Azure Disk CSI Driver | 1.33.2      |
+| Longhorn              | 1.9.0       |
+| vSphere CSI           | 3.5.0       |
+
+#### Add-on Packs
+
+| Pack Name                    | New Version |
+| ---------------------------- | ----------- |
+| Amazon EFS                   | 2.1.9       |
+| AWS Application Loadbalancer | 2.13.3      |
+| AWS Cluster Autoscaler Helm  | 1.33.0      |
+| Cilium Tetragon              | 1.4.1       |
+| ExternalDNS                  | 0.18.0      |
+| Flux2                        | 2.16.2      |
+| Longhorn                     | 1.9.0       |
+| Multus CNI Plugin            | 2.2.18      |
+| Nvidia GPU Operator          | 25.3.1      |
+| Open Policy Agent            | 3.19.2      |
+| VMO Namespace Management     | 1.0.3       |
+
+#### FIPS Packs
+
+| Pack Name                                | New Version |
+| ---------------------------------------- | ----------- |
+| Azure Disk CSI Driver                    | 1.33.2      |
+| Calico                                   | 3.30.2      |
+| Calico (Azure)                           | 3.30.2      |
+| Palette eXtended Kubernetes              | 1.32.6      |
+| Palette eXtended Kubernetes              | 1.31.10     |
+| Palette eXtended Kubernetes              | 1.30.14     |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.33.3      |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.32.6      |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.31.10     |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.30.14     |
+| Palette Optimized RKE2                   | 1.33.3      |
+| Palette Optimized RKE2                   | 1.32.6      |
+| Palette Optimized RKE2                   | 1.31.10     |
+| Palette Optimized RKE2                   | 1.30.14     |
+| RKE2                                     | 1.32.6      |
+| RKE2                                     | 1.31.10     |
+| RKE2                                     | 1.30.14     |
+| vSphere CSI                              | 3.5.0       |
+
+## August 4, 2025 - Release 4.7.8
+
+### Bug Fixes
+
+- Fixed an issue that caused [EKS clusters](../clusters/public-cloud/aws/eks.md) using
+  [custom AMI images](../clusters/public-cloud/aws/eks.md#cloud-configuration-settings) to be stuck in the Provisioning
+  status.
+- Fixed an issue that prevented Palette from honoring the `cluster.kubevipArgs.vip_ddns` value on clusters that use
+  `kube-vip` to provide a virtual IP address for [Edge](../clusters/edge/edge.md) clusters. Refer to the
+  [Publish Cluster Services with Kube-vip](../clusters/edge/networking/kubevip.md) guide for further information.
+
+## July 31, 2025 - Release 4.7.7
+
+<!-- prettier-ignore-start -->
+
+### Improvements
+
+- Clusters provisioned in [controller mode](../deployment-modes/controller-mode.md) using [Cluster API (CAPI)](https://cluster-api.sigs.k8s.io/) now support the configuration of [node taints](../clusters/cluster-management/taints.md).
+- The <VersionedLink text="Palette eXtended Kubernetes Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> distribution now supports virtual network overlays for single node clusters. Refer to the [Enable Overlay Network](../clusters/edge/networking/vxlan-overlay.md) guide for further details.
+- [Locally managed](../clusters/edge/local-ui/local-ui.md) clusters now support [network overlays](../clusters/edge/networking/vxlan-overlay.md).
+
+### Bug Fixes
+
+- Fixed an issue that caused certificates added through the <VersionedLink text="Registry Connect" url="/integrations/packs/?pack=registry-connect" /> pack to be incorrectly added on Edge clusters.
+- Fixed an issue that caused [registry mapping rules](../clusters/edge/edge-configuration/installer-reference.md#registry-mapping-rules) to be incorrectly applied for registries configured using the <VersionedLink text="Registry Connect" url="/integrations/packs/?pack=registry-connect" /> pack.
+- Fixed an issue that caused masked cluster profile variable values to be displayed as plain text in [Edge Management API](/api/introduction/#edge-management-api) calls.
+
+<!-- prettier-ignore-end -->
+
+## July 23, 2025 - Release 4.7.4
+
+### Bug Fixes
+
+- Fixed an issue where the Palette agent failed to start when using a [MAAS PCG](../clusters/pcg/deploy-pcg/maas.md)
+  with the `maas-preferred-subnet` ConfigMap.
+
 ## July 19, 2025 - Release 4.7.0 - 4.7.3 {#release-notes-4.7.0}
 
 ### Security Notices
@@ -177,6 +504,17 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 :::
 
+#### Breaking Changes {#breaking-changes-automation-4.7.0}
+
+- A new field `isTwoNodeCluster` has been introduced to the request body of the
+  [Updates the cluster configuration information](/api/v1/v-1-cloud-configs-edge-native-uid-cluster-config) API
+  endpoint. This field must now be set to `true` before setting the `twoNodeCandidatePriority` field on Edge hosts using
+  the
+  [Creates an Hybrid AWS cloud config's Edge-Native machine pool](/api/v1/v-1-aws-cloud-configs-edge-native-uid-machine-pool-create/)
+  and
+  [Updates the specified Hybrid AWS cluster cloud config's Edge-Native machine pool](/api/v1/v-1-aws-cloud-configs-edge-native-machine-pool-update/)
+  API endpoints.
+
 #### Features
 
 - The `content build` command of the [Palette CLI](../automation/palette-cli/palette-cli.md) now includes the
@@ -189,6 +527,11 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
   [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
   available. For more details, refer to the Terraform provider
   [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
+- Crossplane version 0.23.9 of the
+  [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette/v0.23.9)
+  is available. The provider now includes support for [public cloud](../clusters/public-cloud/public-cloud.md),
+  [VMware](../clusters/data-center/vmware/vmware.md), and [Canonical MAAS](../clusters/data-center/maas/maas.md)
+  clusters.
 
 #### Improvements
 

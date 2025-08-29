@@ -1,0 +1,271 @@
+---
+partial_category: self-hosted
+partial_name: upload-third-party-packs-enablement
+---
+
+<Tabs groupId="registry-type">
+
+<TabItem value="internal-zot-registry" label="Internal Zot Registry">
+
+<Tabs groupId="upload-method">
+
+<TabItem label="Local UI Method" value="local-ui-method">
+
+1. Navigate to the [Artifact Studio](https://artifact-studio.spectrocloud.com/) through a web browser, and under **Create pack bundle**, select **Build bundle**.
+
+2. Select the **{props.iso} Appliance** product on the **Product selection** step and select your current version on the **Version selection** step.
+
+3. On the **Use case** step, select the **Add-on only** option.
+
+4. On the **Configure bundle** step, enter `Palette Third Party` in the **Search packs** field and click **Search**. Alternatively, you can find the packs in the **thirdparty** category.
+
+   Click the checkbox next to the **Palette Third Party** and **Palette Third Party Conformance** packs to select them, and click **Next Step**.
+
+5. On the **Review and download** step, click the **I'm not a robot** reCAPTCHA checkbox, and then click the **Download bundle** button to begin the download. Alternatively, you can click the **Copy all URLs** button to copy the download URLs to your clipboard.
+
+   Wait until the packs have been downloaded to your local machine. The packs are downloaded in `.zst` format alongside a signature file in `sig.bin` format.
+
+   :::tip
+
+   Refer to the <VersionedLink text="Artifact Studio guide" url="/downloads/artifact-studio"/> for detailed guidance on how to verify the
+   integrity of the downloaded files using the provided signature file.
+
+   :::
+
+6. Log in to the Local UI of the leader host of the {props.version} management cluster. By default, Local UI is accessible
+   at `https://<node-ip>:5080`. Replace `<node-ip>` with the IP address of the leader host.
+
+7. From the left main menu, click **Content**.
+
+8. Click **Actions** in the top right and select **Upload Content** from the drop-down menu.
+
+9. Click the upload icon to open the file selection dialog and select the Third Party ZST files from your local
+   machine. Alternatively, you can drag and drop the files into the upload area.
+
+   The upload process starts automatically once the files are selected. You can monitor the upload progress in
+   the **Upload Content** dialog.
+
+   Wait for the **File(s) uploaded successfully** confirmation message or the green check mark to appear next to the upload progress bar.
+
+10. Log in to the {props.version} system console.
+
+11. From the left main menu, select **Administration**, and then select the **Pack Registries** tab.
+
+12. Select the three-dot menu for the **OCI Pack Registry** and click **Sync**.
+
+</TabItem>
+
+<TabItem label="Palette CLI Method" value="palette-cli-method">
+
+1. Navigate to the [Artifact Studio](https://artifact-studio.spectrocloud.com/) through a web browser, and under **Create pack bundle**, select **Build bundle**.
+
+2. Select the **{props.iso} Appliance** product on the **Product selection** step and select your current version on the **Version selection** step.
+
+3. On the **Use case** step, select the **Add-on only** option.
+
+4. On the **Configure bundle** step, enter `Palette Third Party` in the **Search packs** field and click **Search**. Alternatively, you can find the packs in the **thirdparty** category.
+
+   Click the checkbox next to the **Palette Third Party** and **Palette Third Party Conformance** packs to select them, and click **Next Step**.
+
+5. On the **Review and download** step, click the **I'm not a robot** reCAPTCHA checkbox, and then click the **Download bundle** button to begin the download. Alternatively, you can click the **Copy all URLs** button to copy the download URLs to your clipboard.
+
+   Wait until the packs have been downloaded to your local machine. The packs are downloaded in `.zst` format alongside a signature file in `sig.bin` format.
+
+   :::tip
+
+   Refer to the <VersionedLink text="Artifact Studio guide" url="/downloads/artifact-studio"/> for detailed guidance on how to verify the
+   integrity of the downloaded files using the provided signature file.
+
+   :::
+
+4. Open a terminal on your local machine and navigate to the directory where the Third Party ZST files are located.
+
+5. Use the Palette CLI to log in to the internal Zot registry. Replace `<management-vip>` with the VIP address of the {props.version} management cluster, `<username>` with your username, and `<password>` with your password. If you have changed the default port for the Zot registry, replace `30003` with the correct port number.
+
+   ```shell
+   palette content registry-login \
+   --registry https://<management-vip>:30003 \
+   --username <username> \
+   --password <password>
+   ```
+
+6. Upload the packs to the internal Zot registry using the Palette CLI. Replace `<third-party-zst>` and `<third-party-conformance-zst>` with your downloaded Third Party pack ZST files and `<management-vip>` with the VIP address of the {props.version} management cluster. If you have changed the default port or the base content path for the Zot registry, replace `30003` with the correct port number and `spectro-content` with the correct content path.
+
+   If you are using custom TLS certificates or choosing to skip TLS, use the appropriate flags as shown in the following examples.
+
+   <Tabs groupId="tls-palette-cli">
+
+   <TabItem label="Custom TLS Certificate" value="custom-tls-certificate">
+
+   ```shell title="Upload Third Party Pack with Custom TLS Certificate"
+   palette content push \
+   --registry <management-vip>:30003/spectro-content \
+   --file <third-party-zst> \
+   --ca-cert <path-to-ca-cert> \
+   --tls-cert <path-to-tls-cert> \
+   --tls-key <path-to-tls-key>
+   ```
+
+   ```shell title="Upload Third Party Conformance Pack with Custom TLS Certificate"
+   palette content push \
+   --registry <management-vip>:30003/spectro-content \
+   --file <third-party-conformance-zst> \
+   --ca-cert <path-to-ca-cert> \
+   --tls-cert <path-to-tls-cert> \
+   --tls-key <path-to-tls-key>
+   ```
+
+   </TabItem>
+
+   <TabItem label="Skip TLS" value="skip-tls">
+
+   ```shell title="Upload Third Party Pack skipping TLS"
+   palette content push \
+   --registry <management-vip>:30003/spectro-content \
+   --file <third-party-zst> \
+   --insecure
+   ```
+
+   ```shell title="Upload Third Party Conformance Pack skipping TLS"
+   palette content push \
+   --registry <management-vip>:30003/spectro-content \
+   --file <third-party-conformance-zst> \
+   --insecure
+   ```
+
+   </TabItem>
+
+   </Tabs>
+
+   The following example output is expected when an upload is successful.
+
+   ```shell hideClipboard title="Example Output"
+   ...
+   INFO[0020] successfully copied all artifacts from local bundle /home/ubuntu/palette-cli/bin/tmp/bundle-extract/palette-thirdparty-bundle-4.7.3 to remote bundle 10.11.12.13:30003/spectro-content/bundle-definition:bundle
+   -----------------------------
+   Push Summary
+   -----------------------------
+   local bundle bundle pushed to 10.11.12.13:30003/spectro-content
+   ```
+
+8. Log in to the {props.version} system console.
+
+9. From the left main menu, select **Administration**, and then select the **Pack Registries** tab.
+
+10. Select the three-dot menu for the **OCI Pack Registry** and click **Sync**.
+
+</TabItem>
+
+</Tabs>
+
+</TabItem>
+
+<TabItem value="external-registry" label="External Registry">
+
+1. Navigate to the [Artifact Studio](https://artifact-studio.spectrocloud.com/) through a web browser, and under **Create pack bundle**, select **Build bundle**.
+
+2. Select the **{props.iso} Appliance** product on the **Product selection** step and select your current version on the **Version selection** step.
+
+3. On the **Use case** step, select the **Add-on only** option.
+
+4. On the **Configure bundle** step, enter `Palette Third Party` in the **Search packs** field and click **Search**. Alternatively, you can find the packs in the **thirdparty** category.
+
+   Click the checkbox next to the **Palette Third Party** and **Palette Third Party Conformance** packs to select it, and click **Next Step**.
+
+5. On the **Review and download** step, click the **I'm not a robot** reCAPTCHA checkbox, and then click the **Download bundle** button to begin the download. Alternatively, you can click the **Copy all URLs** button to copy the download URLs to your clipboard.
+
+   Wait until the packs have been downloaded to your local machine. The packs are downloaded in `.zst` format alongside a signature file in `sig.bin` format.
+
+   :::tip
+
+   Refer to the <VersionedLink text="Artifact Studio guide" url="/downloads/artifact-studio"/> for detailed guidance on how to verify the
+   integrity of the downloaded files using the provided signature file.
+
+   :::
+
+6. Open a terminal on your local machine and navigate to the directory where the Third Party ZST files are located.
+
+7. Use the Palette CLI to log in to your external registry. Replace `<registry-dns-or-ip>` with the DNS/IP address of your registry, `<registry-port>` with the port number of your registry (if applicable), `<username>` with your username, and `<password>` with your password.
+
+   ```shell
+   palette content registry-login \
+   --registry https://<registry-dns-or-ip>:<registry-port> \
+   --username <username> \
+   --password <password>
+   ```
+
+8. Upload the packs to your external registry using the Palette CLI. Replace `<registry-dns-or-ip>` with the DNS/IP address of your registry and `<registry-port>` with the port number of your registry (if applicable). If you have changed the base content path from the default, replace `spectro-content` with the correct content path.
+
+   If you are using custom TLS certificates or choosing to skip TLS, use the appropriate flags as shown in the following examples.
+
+   <Tabs groupId="tls-palette-cli">
+
+   <TabItem label="Custom TLS Certificate" value="custom-tls-certificate">
+
+   ```shell title="Upload Third Party Pack with Custom TLS Certificate"
+   palette content push \
+   --registry <registry-dns-or-ip>:<registry-port>/spectro-content \
+   --file <third-party-zst> \
+   --ca-cert <path-to-ca-cert> \
+   --tls-cert <path-to-tls-cert> \
+   --tls-key <path-to-tls-key>
+   ```
+
+   ```shell title="Upload Third Party Conformance Pack with Custom TLS Certificate"
+   palette content push \
+   --registry <registry-dns-or-ip>:<registry-port>/spectro-content \
+   --file <third-party-conformance-zst> \
+   --ca-cert <path-to-ca-cert> \
+   --tls-cert <path-to-tls-cert> \
+   --tls-key <path-to-tls-key>
+   ```
+
+   </TabItem>
+
+   <TabItem label="Skip TLS" value="skip-tls">
+
+   ```shell title="Upload Third Party Pack skipping TLS"
+   palette content push \
+   --registry <registry-dns-or-ip>:<registry-port>/spectro-content \
+   --file <third-party-zst> \
+   --insecure
+   ```
+
+   ```shell title="Upload Third Party Conformance Pack skipping TLS"
+   palette content push \
+   --registry <registry-dns-or-ip>:<registry-port>/spectro-content \
+   --file <third-party-conformance-zst> \
+   --insecure
+   ```
+
+   </TabItem>
+
+   </Tabs>
+
+   The following example output is expected when an upload is successful.
+
+   ```shell hideClipboard title="Example Output"
+   ...
+   INFO[0287] successfully copied all artifacts from local bundle /root/tmp/bundle-extract/palette-thirdparty-bundle-4.7.0 to remote bundle external.registry.com/spectro-content/bundle-definition:palette-thirdparty-bundle-4.7.0
+   -----------------------------
+   Push Summary
+   -----------------------------
+   local bundle palette-thirdparty-bundle-4.7.0 pushed to external.registry.com/spectro-content
+   ```
+
+   :::tip
+
+   Be aware of the timeout period for the authentication token. If the authentication token expires, you will need to re-authenticate to
+   the OCI registry and restart the upload process.
+
+   :::
+
+9. Log in to the {props.version} system console.
+
+10. From the left main menu, select **Administration**, and then select the **Pack Registries** tab.
+
+11. Select the three-dot menu for your external registry and click **Sync**.
+
+</TabItem>
+
+</Tabs>

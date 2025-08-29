@@ -38,6 +38,15 @@ latest minor version available.
 
 :::
 
+:::warning
+
+Upgrading self-hosted Palette or Palette VerteX from version 4.6.x to 4.7.x can cause the upgrade to hang if any member
+of the MongoDB ReplicaSet is not fully synced and in a healthy state prior to the upgrade. For guidance on verifying the
+health status of MongoDB ReplicaSet members, refer to our
+[Troubleshooting](../../troubleshooting/palette-upgrade.md#self-hosted-palette-or-palette-vertex-upgrade-hangs) guide.
+
+:::
+
 <Tabs>
 <TabItem label="VMware" value="VMware">
 
@@ -45,6 +54,7 @@ latest minor version available.
 
 | **Source Version** | **Target Version** |    **Support**     |
 | :----------------: | :----------------: | :----------------: |
+|       4.7.3        |       4.7.13       | :white_check_mark: |
 |       4.6.41       |       4.7.3        | :white_check_mark: |
 
 **4.6.x**
@@ -253,6 +263,7 @@ latest minor version available.
 
 | **Source Version** | **Target Version** |    **Support**     |
 | :----------------: | :----------------: | :----------------: |
+|       4.7.3        |       4.7.13       | :white_check_mark: |
 |       4.6.41       |       4.7.3        | :white_check_mark: |
 
 **4.6.x**
@@ -440,6 +451,19 @@ latest minor version available.
 |       4.1.7        |       4.2.7        | :white_check_mark: |
 
 </TabItem>
+
+<TabItem value="management-appliance" label="VerteX Management Appliance" >
+
+:::preview
+
+:::
+
+| **Source Version** | **Target Version** | **Support** |
+| :----------------: | :----------------: | :---------: |
+|       4.7.3        |       4.7.15       |     :x:     |
+
+</TabItem>
+
 </Tabs>
 
 ## Upgrade Guides
@@ -451,3 +475,4 @@ Refer to the respective guide for guidance on upgrading your self-hosted Palette
 - [Airgap VMware](upgrade-vmware/airgap.md)
 - [Non-Airgap Kubernetes](upgrade-k8s/non-airgap.md)
 - [Airgap Kubernetes](upgrade-k8s/airgap.md)
+- [VerteX Management Appliance](vertex-management-appliance.md)

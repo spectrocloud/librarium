@@ -24,6 +24,20 @@ Once Palette has been installed, you can download pack bundles and upload them t
 external registry. These pack bundles are used to create your cluster profiles. You will then be able to deploy clusters
 in your environment.
 
+## Third Party Packs
+
+There is an additional option to download and install the Third Party packs that provide complementary functionality to
+Palette. These packs are not required for Palette to function, but they do provide additional features and capabilities
+as described in the following table.
+
+| **Feature**                                                                                                                           | **Included with Palette Third Party Pack** | **Included with Palette Third Party Conformance Pack** |
+| ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ | ------------------------------------------------------ |
+| [Backup and Restore](../../clusters/cluster-management/backup-restore/backup-restore.md)                                              | :white_check_mark:                         | :x:                                                    |
+| [Configuration Security](../../clusters/cluster-management/compliance-scan.md#configuration-security)                                 | :white_check_mark:                         | :x:                                                    |
+| [Penetration Testing](../../clusters/cluster-management/compliance-scan.md#penetration-testing)                                       | :white_check_mark:                         | :x:                                                    |
+| [Software Bill Of Materials (SBOM) scanning](../../clusters/cluster-management/compliance-scan.md#sbom-dependencies--vulnerabilities) | :white_check_mark:                         | :x:                                                    |
+| [Conformance Testing](../../clusters/cluster-management/compliance-scan.md#conformance-testing)                                       | :x:                                        | :white_check_mark:                                     |
+
 ## Architecture
 
 The ISO file is built with the Operating System (OS), Kubernetes distribution, Container Network Interface (CNI), and
@@ -105,14 +119,6 @@ Follow the instructions to upload packs to your Palette instance. Packs are used
 [cluster profiles](../../profiles/cluster-profiles/cluster-profiles.md) and deploy workload clusters in your
 environment.
 
-:::info
-
-If you are intending to upgrade Palette using a content bundle, you must upload the bundle to the internal Zot registry
-using Local UI. This is regardless of whether you are using an external registry or the internal Zot registry for your
-pack bundles.
-
-:::
-
 ### Prerequisites
 
 <PartialsComponent
@@ -140,6 +146,44 @@ pack bundles.
 <PartialsComponent
   category="self-hosted"
   name="upload-packs-validate"
+  edition="Palette"
+  version="Palette"
+  iso="Palette Enterprise"
+  app="Palette Management Appliance"
+/>
+
+## (Optional) Upload Third Party Packs
+
+Follow the instructions to upload the Third Party packs to your Palette instance. The Third Party packs contain
+additional functionality and capabilities that enhance the Palette experience.
+
+### Prerequisites
+
+<PartialsComponent
+  category="self-hosted"
+  name="upload-third-party-packs-prereqs"
+  edition="Palette"
+  version="Palette"
+  iso="Palette Enterprise"
+  app="Palette Management Appliance"
+/>
+
+### Upload Packs
+
+<PartialsComponent
+  category="self-hosted"
+  name="upload-third-party-packs-enablement"
+  edition="Palette"
+  version="Palette"
+  iso="Palette Enterprise"
+  app="Palette Management Appliance"
+/>
+
+### Validate
+
+<PartialsComponent
+  category="self-hosted"
+  name="upload-third-party-packs-validate"
   edition="Palette"
   version="Palette"
   iso="Palette Enterprise"

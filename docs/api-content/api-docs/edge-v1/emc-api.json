@@ -4060,6 +4060,10 @@
         "nodeRole": {
           "$ref": "#/definitions/v1NodeRole"
         },
+        "overlayIP": {
+          "description": "edge host overlay ip",
+          "type": "string"
+        },
         "role": {
           "description": "edge host role",
           "type": "string"
@@ -4193,12 +4197,7 @@
           "type": "string"
         },
         "type": {
-          "description": "Management type (local/remote)",
-          "type": "string",
-          "enum": [
-            "local",
-            "remote"
-          ]
+          "$ref": "#/definitions/v1ManagementMode"
         }
       }
     },
@@ -4232,6 +4231,7 @@
           "type": "string"
         },
         "labels": {
+          "description": "Labels are key-value pairs that can be used to organize and categorize resources.\n",
           "type": "object",
           "additionalProperties": {
             "type": "string"
@@ -4988,6 +4988,9 @@
       "properties": {
         "archiveUploadPath": {
           "type": "string"
+        },
+        "metadata": {
+          "$ref": "#/definitions/v1MetaData"
         },
         "variables": {
           "type": "array",
