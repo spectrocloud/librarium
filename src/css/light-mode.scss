@@ -51,6 +51,7 @@ html[data-theme="light"] {
   --custom-purple-alert-bg-color: #e8e1ea;
   --custom-byzantine-alert-bg-color: #f3d8e6;
 
+  // This is specific to menu items in the Tutorials tab.
   .theme-doc-sidebar-item-category-level-1 .menu__list-item {
     .menu__link:hover {
       background: var(--ifm-menu-color-background-active);
@@ -59,6 +60,12 @@ html[data-theme="light"] {
       color: var(--ifm-color-primary-dark);
       border-radius: 0;
     }
+  }
+
+  // This relates to menu items except in the Tutorials tab.
+  .menu__link.menu__link--active {
+    color: var(--ifm-color-primary-dark);
+    border-radius: 0;
   }
 
   // We must set the info color on details, as it is used for the details expand marker.
@@ -74,6 +81,11 @@ html[data-theme="light"] {
   .menu__list-item-collapsible:has(.sidebar-category-title):hover {
     background: var(--ifm-background-color) !important;
     cursor: default;
+  }
+
+  // The inactive left sidebar category headers in Tutorials. These are not clickable.
+  .menu__link.sidebar-category-title {
+    color: var(--ifm-color-primary-dark);
   }
 
   .sidebar-category-title[class*="active_"] {
