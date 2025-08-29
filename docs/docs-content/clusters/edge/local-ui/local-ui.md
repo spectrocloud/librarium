@@ -23,6 +23,14 @@ be able to access Local UI.
 - Refer to [Access Local UI](./host-management/access-console.md) for guidance on how to access Local UI and update your
   credentials.
 
+  :::info
+
+  Local UI supports displaying all time and date fields in Coordinated Universal Time (UTC), the browser’s local time
+  zone, or both simultaneously. To configure the preferred time and date format, navigate to the **User Menu** in the
+  upper-right corner and select **Time/Date Settings**.
+
+  :::
+
 - If you already included a content bundle and a cluster definition in your installer ISO, you can create a cluster in
   your locally managed Edge host using the resources in the ISO directly. Refer to
   [Create Local Cluster](./cluster-management/create-cluster.md) for guidance. Refer to
