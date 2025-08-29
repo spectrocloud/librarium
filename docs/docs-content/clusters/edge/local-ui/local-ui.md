@@ -25,8 +25,8 @@ be able to access Local UI.
 
   :::info
 
-  Local UI supports displaying all time and date fields in Coordinated Universal Time (UTC), the browser’s local time
-  zone, or both simultaneously. To configure the preferred time and date format, navigate to the **User Menu** in the
+  Local UI supports displaying all date and time values in Coordinated Universal Time (UTC), the browser’s local time
+  zone, or both simultaneously. To configure the preferred date and time format, navigate to the **User Menu** in the
   upper-right corner and select **Time/Date Settings**.
 
   :::
