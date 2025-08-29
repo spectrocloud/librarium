@@ -36,33 +36,49 @@ create_partials_file () {
 # $2 - body text of the breaking change
 add_breaking_changes_body() {
   release_number=$1
-  replaced=$(echo "$release_number" | tr '.' '_')  # Replace dots with underscores as they cause errors in partials
+  replaced=$(echo "$release_number" | tr '.' '_')
   filename="$BREAKING_CHANGES_PARTIALS_PATH/br_$replaced.mdx"
   new_line=$2
 
-  # Loop while there's at least one Markdown link [text](target)
-  # Note: simple regex stops at the first ')' in the URL (good enough for typical docs URLs).
-  while [[ $new_line =~ \[([^\]]+)\]\(([^)]+)\) ]]; do
-    full_match="${BASH_REMATCH[0]}"
-    link_text="${BASH_REMATCH[1]}"
-    full_link="${BASH_REMATCH[2]}"
+  # Loop: replace one Markdown link per pass, repeat until none remain
+  while :; do
+    # Extract prefix, first match, and suffix using awk (portable on macOS)
+    IFS=$'\n' read -r prefix match suffix < <(
+      awk '{
+        if (match($0, /\[[^]]+\]\([^)]*\)/)) {
+          pre = substr($0, 1, RSTART-1)
+          m   = substr($0, RSTART, RLENGTH)
+          post= substr($0, RSTART+RLENGTH)
+          print pre "\n" m "\n" post
+        } else {
+          print ""; print ""; print ""
+        }
+      }' <<< "$new_line"
+    )
 
-    # Decide replacement
-    replacement=""
+    # No match -> we're done
+    [[ -n "$match" ]] || break
 
-    # Skip full external links (http/https) and image links ending in .webp (don't convert)
-    if [[ $full_link == http* || $full_link == *.webp ]]; then
-      replacement="$full_match"
-    else
-      # Normalize: strip leading ../ or /
+    # Pull link_text and full_link from the matched [text](target)
+    link_text=$(echo "$match"   | sed -E 's/^\[([^]]+)\]\(.*\)$/\1/')
+    full_link=$(echo "$match"   | sed -E 's/^\[[^]]+\]\(([^)]*)\)$/\1/')
+
+    # Default: keep the original match (so we always advance the loop)
+    replacement="$match"
+
+    # Only transform if not external (http/https) and not an image ending in .webp
+    if [[ $full_link != http* && $full_link != *.webp ]]; then
+      # Normalize path
       clean_link="$full_link"
+
+      # Strip leading ../ or /
       [[ $clean_link == ../* ]] && clean_link="${clean_link:3}"
       [[ $clean_link == /*  ]] && clean_link="${clean_link:1}"
 
-      # Remove any #fragment
+      # Drop #fragment
       clean_link="${clean_link%%#*}"
 
-      # Remove .md or .mdx extensions
+      # Drop .md / .mdx extensions
       clean_link="${clean_link%.md}"
       clean_link="${clean_link%.mdx}"
 
@@ -75,13 +91,10 @@ add_breaking_changes_body() {
       fi
 
       link_url="/$clean_link"
-      jsx_link="<VersionedLink text=\"$link_text\" url=\"$link_url\" />"
-      replacement="$jsx_link"
+      replacement="<VersionedLink text=\"$link_text\" url=\"$link_url\" />"
     fi
 
-    # Rebuild the string: prefix + replacement + suffix (this advances past the match)
-    prefix="${new_line%%"$full_match"*}"
-    suffix="${new_line#*"$full_match"}"
+    # Rebuild the line, advancing past the processed match
     new_line="${prefix}${replacement}${suffix}"
   done
 
