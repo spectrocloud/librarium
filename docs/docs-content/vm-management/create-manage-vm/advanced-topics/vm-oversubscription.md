@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Over-commit Resources to Enhance VM Performance"
-title: "Over-commit Resources to Enhance VM Performance"
+sidebar_label: "Over-Commit Resources to Enhance VM Performance"
+title: "Over-Commit Resources to Enhance VM Performance"
 description: "Learn how to improve VM performance by maximizing virtual machine CPU and memory using Palette."
 icon: " "
 hide_table_of_contents: false
@@ -18,7 +18,7 @@ simultaneously.
 The hypervisor automatically over-commits CPU and memory. This means that more virtualized CPU and memory can be
 allocated to VMs than there are physical resources on the system.
 
-## Over-commit CPUs
+## Over-Commit CPUs
 
 KubeVirt offers the `cpuAllocationRatio` in its Custom Resource Definitions (CRD). This ratio is used to normalize the
 amount of CPU time the pod will request based on the number of virtual CPUs (vCPUs).
@@ -71,9 +71,22 @@ To learn about options for memory overcommitment, refer to
 
 ### Prerequisites
 
+- An active VMO cluster in Palette.
+
 ### Procedure
 
-You can make several changes to reduce the memory footprint and over-commit the per-VMI memory overhead.
+You can make several changes to reduce the memory footprint and over-commit the per-VirtualMachineInstance (VMI) memory
+overhead.
+
+Log in to [Palette](https://console.spectrocloud.com).
+
+2. From the left **Main Menu**, click on **Profiles**.
+
+3. Select the profile you use to create the cluster with the VMO pack.
+
+4. Select the VMO add-on layer of the cluster profile.
+
+5. You have several options to leverage:
 
 - Enable guest overhead over-commit by setting `spec.domain.resources.overcommitGuestOverhead` to true.
 
@@ -97,7 +110,12 @@ You can make several changes to reduce the memory footprint and over-commit the 
   ```
 
 - Enable implicit memory overcommit by setting `spec.configuration.developerConfiguration.memoryOvercommit` in the
-  KubeVirt CRD to a percentage of the desired memory overcommit.
+  KubeVirt CRD to a percentage of the desired memory overcommit. This will set the memory overcommitment for all VMs in
+  a VMO cluster.
+
+  :::info
+
+  :::
 
 ## Resources
 
