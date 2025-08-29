@@ -153,7 +153,15 @@ entries that were not configured to be displayed in Local UI.
 1. Log in to Local UI. For more information, refer to [Access Local UI Console](access-console.md).
 
 2. In the left **Main Menu**, click **Diagnostics**. Then click the **Logs** tab. You can view all audit log entries on
-   this page. Local UI will display log entries dated up to one year ago.
+   this page. Local UI displays log entries dated up to one year ago.
+
+   :::info
+
+   To configure the preferred **Date & Time** field format, navigate to the **User Menu** in the upper-right corner and
+   select **Time/Date Settings**. Local UI supports displaying values in Coordinated Universal Time (UTC), the browser’s
+   local time zone, or both simultaneously.
+
+   :::
 
 3. To download the log files, click the **Download** button in the upper-right corner. This will download all files in
    the `/var/log` folder, including the archived log files as well as any additional log files you configured to be
