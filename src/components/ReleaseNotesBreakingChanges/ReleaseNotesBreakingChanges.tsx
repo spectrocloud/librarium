@@ -255,7 +255,7 @@ export function ReleaseNotesBreakingChanges(): JSX.Element | null {
         </div>
       </div>
       {selectedFromVersion && selectedToVersion && (
-        <div className={styles.breakingChangesContainer}>
+        <div className={styles.breakingChangesTextContainer}>
           <h3>
             Breaking Changes from <strong>{selectedFromVersion.label}</strong> to <strong>{selectedToVersion.label}</strong>
           </h3>
