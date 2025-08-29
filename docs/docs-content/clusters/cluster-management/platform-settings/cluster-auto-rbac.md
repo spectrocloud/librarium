@@ -18,8 +18,8 @@ and correspond to the standard Kubernetes cluster roles `cluster-admin`, `cluste
 **Automatic Cluster Role Bindings** is disabled by default and can be enabled at the tenant level. Once enabled, cluster
 role bindings are automatically applied to all newly created clusters, whether they are provisioned at the tenant or
 project level. Clusters created before enabling **Automatic Cluster Role Bindings** are updated via a system scheduler
-job that runs every 15 minutes. The scheduler also will update RBACs if user permissions are changed, a new user is
-added, or a user is removed.
+job that runs every 15 minutes. The scheduler also will update RBAC bindings if user permissions are changed, a new user
+is added, or a user is removed.
 
 For more information about user roles, refer to
 [Roles and Permissions](../../../user-management/palette-rbac/palette-rbac.md). For more information about using Palette

@@ -12,9 +12,71 @@ partial_name: installation-steps-validate
 3. Check that the cluster status is **Running** and the health status is **Healthy**. In the **Applications** section on
    this page, the listed applications should be in the **Running** state.
 
-4. Log in to the {props.version} system console using the virtual IP address (VIP) you configured earlier. Open your web browser
+4. On the **Cluster** page, under **Environment**, click on the **Admin Kubeconfig File** to download it to your local machine.
+
+5. On your local machine, open a terminal session and export the `KUBECONFIG` environment variable to point to the downloaded `kubeconfig` file.
+
+   ```shell
+   export KUBECONFIG=/path/to/your/downloaded/kubeconfig
+   ```
+
+6. Issue the following command to verify the Palette installation.
+
+   ```bash
+   kubectl get pods --all-namespaces --output custom-columns="NAMESPACE:metadata.namespace,NAME:metadata.name,STATUS:status.phase" \
+   | grep --extended-regexp '^(cp-system|hubble-system|ingress-nginx|jet-system|ui-system)\s'
+   ```
+
+   Your output should look similar to the following.
+
+   ```shell hideClipboard
+   cp-system        spectro-cp-ui-5cb6d454f8-bndxb          Running
+   hubble-system    auth-5586c867ff-mk6wn                   Running
+   hubble-system    auth-5586c867ff-xm9mx                   Running
+   hubble-system    cloud-7bfd6c7f55-bmpkm                  Running
+   hubble-system    cloud-7bfd6c7f55-tmmjj                  Running
+   hubble-system    configserver-697cf95f9f-z2tr6           Running
+   hubble-system    event-8566675f7d-l7n8n                  Running
+   hubble-system    event-8566675f7d-v8cmz                  Running
+   hubble-system    event-8566675f7d-vtp8m                  Running
+   hubble-system    foreq-59f8c6c584-47npj                  Running
+   hubble-system    hashboard-5fcc8f448c-df5rj              Running
+   hubble-system    hashboard-5fcc8f448c-xs6mr              Running
+   hubble-system    hutil-5b49d6f5bc-5gcqc                  Running
+   hubble-system    hutil-5b49d6f5bc-plg9j                  Running
+   hubble-system    memstore-75b7d8bb5b-qtn7w               Running
+   hubble-system    mgmt-5874d55cf6-2gh52                   Running
+   hubble-system    mongo-0                                 Running
+   hubble-system    mongo-1                                 Running
+   hubble-system    mongo-2                                 Running
+   hubble-system    msgbroker-0                             Running
+   hubble-system    msgbroker-1                             Running
+   hubble-system    oci-proxy-6bc464cf58-wwksw              Running
+   hubble-system    reloader-reloader-59c87c446c-9cvk5      Running
+   hubble-system    specman-0                               Running
+   hubble-system    spectro-tunnel-647cf485b-xn87n          Running
+   hubble-system    spectrocluster-85bf89dcdb-llsjj         Running
+   hubble-system    spectrocluster-85bf89dcdb-m2c8w         Running
+   hubble-system    spectrocluster-85bf89dcdb-tp9lk         Running
+   hubble-system    spectrocluster-jobs-557bd5b798-fkzbm    Running
+   hubble-system    spectrossh-74db5544bf-5t24s             Running
+   hubble-system    system-6496bc487-cfchd                  Running
+   hubble-system    system-6496bc487-mlxjk                  Running
+   hubble-system    timeseries-7c4d6647b5-ckrnt             Running
+   hubble-system    timeseries-7c4d6647b5-jb9tp             Running
+   hubble-system    timeseries-7c4d6647b5-nl86q             Running
+   hubble-system    user-57f7759745-8fjx8                   Running
+   hubble-system    user-57f7759745-hxz4n                   Running
+   ingress-nginx    ingress-nginx-controller-m5z54          Running
+   ingress-nginx    ingress-nginx-controller-qsf6m          Running
+   ingress-nginx    ingress-nginx-controller-w64pz          Running
+   jet-system       jet-856db6655-k87k8                     Running
+   ui-system        spectro-ui-bcff7f675-lds2l              Running
+   ```
+
+7. Log in to the {props.version} system console using the virtual IP address (VIP) you configured earlier. Open your web browser
    and go to `https://<vip-address>/system`. Replace `<vip-address>` with the VIP you configured for the cluster.
 
-5. On the login page, use `admin` as the username and the new password you set during the initial login.
+8. On the login page, use `admin` as the username and the new password you set during the initial login.
 
-6. On the **Summary** page, check that the **On-prem system console is healthy** message is displayed.
+9. On the **Summary** page, check that the **On-prem system console is healthy** message is displayed.
