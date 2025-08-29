@@ -160,6 +160,7 @@ for branch in $branches; do
 
   in_breaking_changes=false
   release_number=""
+  paragraph=""
   # Read the release notes file line by line.
   while IFS= read -r line; do
     # If the line is an H2 that contains "Release", we extract the number and begin processing.
@@ -193,7 +194,20 @@ for branch in $branches; do
         continue
       fi
 
-      add_breaking_changes_body "$release_number" "$line"
+      # If we are in breaking changes and the line is not a heading then add it to the paragraph.
+      if echo "$line" | grep -q '^[[:space:]]*[^#]'; then
+        # Strip leading whitespace from line
+        stripped_line=$(echo "$line" | sed 's/^[[:space:]]*//')
+        paragraph="$paragraph $stripped_line"
+        continue
+      fi
+
+      # If we are in breaking changes and the line is empty process breaking change and reset paragraph. 
+      if echo "$line" | grep -q '^[[:space:]]*$'; then
+        add_breaking_changes_body "$release_number" "$paragraph"
+        paragraph=""
+      fi
+
     fi
 
   done < "$release_notes_path"
