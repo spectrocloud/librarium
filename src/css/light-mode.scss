@@ -56,7 +56,7 @@ html[data-theme="light"] {
       background: var(--ifm-menu-color-background-active);
     }
     .menu__link.menu__link--active {
-      color: var(--ifm-color-primary);
+      color: var(--ifm-color-primary-dark);
       border-radius: 0;
     }
   }
