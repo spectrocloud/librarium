@@ -121,84 +121,117 @@ You cannot change network overlay configurations after the cluster is created.
     cluster profile for Edge Native, refer to the
     [Create Edge Native Cluster Profile](../site-deployment/model-profile.md) guide.
 
-7.  In the Kubernetes layer of the cluster profile, on the **Values** tab, uncomment the parameter
-    `cluster.kubevipArgs.vip_interface` and set its value to `scbr-100`.
+<!-- prettier-ignore-start -->
 
-    ```yaml
-    cluster:
-      kubevipArgs:
-        vip_interface: "scbr-100"
-    ```
+7.  Depending on your Palette version and the Container Network Interface (CNI) pack you use for your cluster,
+    you may need to modify the name of your Network Interface Controllers (NICs) on your Edge hosts. Starting with
+    Palette Agent version 4.7.9 (Palette version 4.7.13), you only need to modify NICs on Edge hosts if you use a
+    CNI pack other than <VersionedLink text="Calico" url="/integrations/cni-calico" />, 
+    <VersionedLink text="Cilium" url="/integrations/cni-cilium-oss" />, or
+    <VersionedLink text="Flannel" url="/integrations/cni-flannel" />.
+    Follow the appropriate workflow based on your setup.
 
-8.  In the network layer of your cluster profile, specify the name of the Network Interface Controllers (NIC) on your
-    Edge hosts to be `scbr-100`. This is the name of the interface Palette creates on your Edge devices to establish the
-    overlay network.
+      <Tabs>
 
-    The following are the sections of the packs you need to change depending on which CNI pack you are using:
+      <TabItem value="Palette Agent >= 4.7.9" label="Palette Agent >= 4.7.9">
 
-          <Tabs>
+      If you are using a CNI pack other than
+      <VersionedLink text="Calico" url="/integrations/cni-calico" />,
+      <VersionedLink text="Cilium" url="/integrations/cni-cilium-oss" />, or
+      <VersionedLink text="Flannel" url="/integrations/cni-flannel" />, you must set the name of your NICs on your Edge hosts to `scbr-100`. 
+      This is the name of the interface Palette creates on your Edge devices to establish the overlay network. Refer to the
+      documentation of your selected CNI and configure it to make sure it picks
+      the NIC named `scbr-100` on your Edge host.
 
-    <TabItem value="calico" label="Calico">
+      </TabItem>
 
-    In the Calico pack YAML file, add `manifests.calico.env.calicoNode.FELIX_MTUIFACEPATTERN` and set its value to
-    `scbr-100`. Uncomment `manifests.calico.env.calicoNode.IP_AUTODETECTION_METHOD` and set its value to
-    `interface=scbr-100`.
+      <TabItem value="Palette Agent < 4.7.9" label="Palette Agent < 4.7.9">
 
-    ```yaml {8,11}
-    manifests:
-      calico:
-        ...
-        env:
-          # Additional env variables for calico-node
-          calicoNode:
-            #IPV6: "autodetect"
-            FELIX_MTUIFACEPATTERN: "scbr-100"
-            #CALICO_IPV6POOL_NAT_OUTGOING: "true"
-            #CALICO_IPV4POOL_CIDR: "192.168.0.0/16"
-            IP_AUTODETECTION_METHOD: "interface=scbr-100"
-    ```
+      1. In the Kubernetes layer of your cluster profile, on the **Values** tab, uncomment the parameter
+         `cluster.kubevipArgs.vip_interface` and set its value to `scbr-100`.
 
-          </TabItem>
+         ```yaml
+         cluster:
+           kubevipArgs:
+             vip_interface: "scbr-100"
+         ```
 
-    <TabItem value="flannel" label="Flannel">
+      2. In the network layer of your cluster profile, set the name of the NIC on your
+         Edge hosts to `scbr-100`. This is the name of the interface Palette creates on your Edge devices to establish the
+         overlay network.
 
-    In the Flannel pack YAML file, add the line `- "--iface=scbr-100"` in the default template under
-    `charts.flannel.args`.
+         Change the following sections of the packs depending on which CNI pack you use.
 
-    ```yaml {8}
-    charts:
-        flannel:
-            ...
-            # flannel command arguments
-            args:
-            - "--ip-masq"
-            - "--kube-subnet-mgr"
-            - "--iface=scbr-100"
-    ```
+         <Tabs>
 
-          </TabItem>
+         <TabItem value="calico" label="Calico">
 
-    <TabItem value="cilium" label="Cilium">
+         In the <VersionedLink text="Calico" url="/integrations/cni-calico" /> pack YAML file, add
+         `manifests.calico.env.calicoNode.FELIX_MTUIFACEPATTERN` and set its value to `scbr-100`. Uncomment
+         `manifests.calico.env.calicoNode.IP_AUTODETECTION_METHOD` and set its value to
+         `interface=scbr-100`.
 
-    You do not need to make any adjustments to the Cilium pack.
-
-          </TabItem>
-
-    <TabItem value="other" label="Other">
-
-    If you are using other CNIs, refer to the documentation of your selected CNI and configure it to make sure that it
-    picks the NIC named `scbr-100` on your Edge host.
+          ```yaml {8,11}
+          manifests:
+            calico:
+              ...
+              env:
+                # Additional env variables for calico-node
+                calicoNode:
+                  #IPV6: "autodetect"
+                  FELIX_MTUIFACEPATTERN: "scbr-100"
+                  #CALICO_IPV6POOL_NAT_OUTGOING: "true"
+                  #CALICO_IPV4POOL_CIDR: "192.168.0.0/16"
+                  IP_AUTODETECTION_METHOD: "interface=scbr-100"
+          ```
 
           </TabItem>
 
-    </Tabs>
+          <TabItem value="cilium" label="Cilium">
 
-9.  Review the rest of your cluster profile values and make changes as needed. Select **Next**.
+          You do not need to make any adjustments to the <VersionedLink text="Cilium" url="/integrations/cni-cilium-oss" /> pack.
 
-10. On the **Cluster Config** stage, toggle on **Enable overlay**. The **VIP** field disappears and is replaced by
+          </TabItem>
+
+          <TabItem value="flannel" label="Flannel">
+
+          In the <VersionedLink text="Flannel" url="/integrations/cni-flannel" /> pack YAML file, add the line
+          `- "--iface=scbr-100"` in the default template under `charts.flannel.args`.
+
+          ```yaml {8}
+          charts:
+            flannel:
+              ...
+              # flannel command arguments
+              args:
+              - "--ip-masq"
+              - "--kube-subnet-mgr"
+              - "--iface=scbr-100"
+          ```
+
+          </TabItem>
+
+          <TabItem value="other" label="Other">
+
+          If you are using other CNIs, refer to the documentation of your selected CNI and configure it to make sure that it
+          picks the NIC named `scbr-100` on your Edge host.
+
+          </TabItem>
+
+          </Tabs>
+
+      </TabItem>
+
+      </Tabs>
+
+<!-- prettier-ignore-end -->
+
+8.  Review your cluster profile values and make changes as needed. Select **Next**.
+
+9.  On the **Cluster Config** stage, toggle on **Enable overlay**. The **VIP** field disappears and is replaced by
     **Overlay CIDR range**.
 
-11. In the **Overlay CIDR range** field, provide a private IP range for your cluster to use. Ensure this range is not
+10. In the **Overlay CIDR range** field, provide a private IP range for your cluster to use. Ensure this range is not
     used by others in the same network environment. When you toggle on **Enable overlay**, Palette provides a default
     range that is typically unused. We suggest you keep the default range unless you have a specific IP range you want
     to use.
@@ -212,7 +245,7 @@ You cannot change network overlay configurations after the cluster is created.
 
     :::
 
-12. Finish configuring your cluster and select **Finish Configuration** to deploy the cluster. For more information,
+11. Finish configuring your cluster and select **Finish Configuration** to deploy the cluster. For more information,
     refer to [Create Cluster Definition](../site-deployment/cluster-deployment.md).
 
 ## Validate

@@ -175,21 +175,21 @@ Complete the following steps before deploying the airgap VerteX installation.
     - `OCI_PACK_REGISTRY`: The IP address or domain name of the OCI registry.
     - `OCI_IMAGE_BASE`: The namespace or repository name that hosts the VerteX images.
 
-    ```shell
-    export OCI_IMAGE_REGISTRY=<harbor-endpoint>
-    export OCI_PACK_BASE=spectro-packs
-    export OCI_PACK_REGISTRY=<harbor-endpoint>
-    export OCI_IMAGE_BASE=spectro-images
-    ```
+      ```shell
+      export OCI_IMAGE_REGISTRY=<harbor-endpoint>
+      export OCI_PACK_BASE=spectro-packs
+      export OCI_PACK_REGISTRY=<harbor-endpoint>
+      export OCI_IMAGE_BASE=spectro-images
+      ```
 
-    Example:
+      Consider the following example.
 
-    ```shell hideClipboard
-    export OCI_IMAGE_REGISTRY=example.internal.com
-    export OCI_PACK_BASE=spectro-packs
-    export OCI_PACK_REGISTRY=10.10.100.48
-    export OCI_IMAGE_BASE=spectro-images
-    ```
+      ```shell hideClipboard title="Example values"
+      export OCI_IMAGE_REGISTRY=example.internal.com
+      export OCI_PACK_BASE=spectro-packs
+      export OCI_PACK_REGISTRY=10.10.100.48
+      export OCI_IMAGE_BASE=spectro-images
+      ```
 
     </TabItem>
 
@@ -202,25 +202,25 @@ Complete the following steps before deploying the airgap VerteX installation.
     - `ECR_PACK_REGISTRY`: The IP address or domain name of the OCI registry.
     - `ECR_PACK_REGISTRY_REGION`: The AWS region where the ECR registry is located.
 
-    ```shell
-    export ECR_IMAGE_REGISTRY=<ecr-endpoint>
-    export ECR_IMAGE_BASE=spectro-images
-    export ECR_IMAGE_REGISTRY_REGION=<ecr-region>
-    export ECR_PACK_REGISTRY=<ecr-endpoint>
-    export ECR_PACK_BASE=spectro-packs
-    export ECR_PACK_REGISTRY_REGION=<ecr-region>
-    ```
+      ```shell
+      export ECR_IMAGE_REGISTRY=<ecr-endpoint>
+      export ECR_IMAGE_BASE=spectro-images
+      export ECR_IMAGE_REGISTRY_REGION=<ecr-region>
+      export ECR_PACK_REGISTRY=<ecr-endpoint>
+      export ECR_PACK_BASE=spectro-packs
+      export ECR_PACK_REGISTRY_REGION=<ecr-region>
+      ```
 
-    Example:
+      Consider the following example.
 
-    ```shell hideClipboard
-    export ECR_IMAGE_REGISTRY=public.ecr.aws/1234567890
-    export ECR_IMAGE_BASE=spectro-images
-    export ECR_IMAGE_REGISTRY_REGION=us-east-1
-    export ECR_PACK_REGISTRY=123456789.dkr.ecr.us-east-1.amazonaws.com
-    export ECR_PACK_BASE=spectro-packs
-    export ECR_PACK_REGISTRY_REGION=us-east-1
-    ```
+      ```shell hideClipboard title="Example values"
+      export ECR_IMAGE_REGISTRY=public.ecr.aws/1234567890
+      export ECR_IMAGE_BASE=spectro-images
+      export ECR_IMAGE_REGISTRY_REGION=us-east-1
+      export ECR_PACK_REGISTRY=123456789.dkr.ecr.us-east-1.amazonaws.com
+      export ECR_PACK_BASE=spectro-packs
+      export ECR_PACK_REGISTRY_REGION=us-east-1
+      ```
 
     </TabItem>
 
@@ -234,20 +234,7 @@ Complete the following steps before deploying the airgap VerteX installation.
 
     Upon completion, a success message will be displayed. The output is condensed for brevity.
 
-    ```shell hideClipboard {10}
-    Verifying archive integrity...  100%   MD5 checksums are OK. All good.
-    Uncompressing Airgap Setup - Version 4.0.17  100%
-    Setting up Packs
-    - Pushing Pack cni-calico:3.25.1
-    ...
-    Setting up Images
-    - Pushing image docker.io/kindest/kindnetd:v20230227-15197099
-    - Pushing image gcr.io/cloud-provider-vsphere/cpi/release/manager:v1.22.8
-    .....
-    Preparing Manifests Archive
-    Manifests are available in /tmp/spectro-manifests-1696971110.zip.
-    Setup Completed
-    ```
+    <PartialsComponent category="self-hosted" name="airgap-binary-execution" />
 
     :::info
 

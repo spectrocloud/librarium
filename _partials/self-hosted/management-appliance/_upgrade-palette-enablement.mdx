@@ -1,0 +1,285 @@
+---
+partial_category: self-hosted
+partial_name: upgrade-palette-enablement
+---
+
+<Tabs groupId="registry-type">
+
+<TabItem value="internal-zot-registry" label="Internal Zot Registry">
+
+{/* <Tabs groupId="upload-method">
+
+<TabItem label="Local UI Method" value="local-ui-method"> */}
+
+1. Navigate to the [Artifact Studio](https://artifact-studio.spectrocloud.com/) through a web browser, and under **Install {props.iso}**, click on the drop-down menu and select the version you want to upgrade your {props.app} to.
+
+2. Click **Show Artifacts** to display the **{props.iso} Artifacts** pop-up window. Click the **Download** button for the **Content bundle (including Ubuntu)**.
+
+3. Wait until the content bundle is downloaded to your local machine. The bundle is downloaded in `.tar.zst` format alongside a signature file in `sig.bin` format.
+
+   :::tip
+
+   Refer to the <VersionedLink text="Artifact Studio guide" url="/downloads/artifact-studio"/> for detailed guidance on how to verify the
+   integrity of downloaded files using the provided signature file.
+
+   :::
+
+4. Log in to the Local UI of the leader host of the {props.version} management cluster. By default, Local UI is accessible
+   at `https://<node-ip>:5080`. Replace `<node-ip>` with the IP address of the leader host.
+
+5. From the left main menu, click **Content**.
+
+6. Click **Actions** in the top right and select **Upload Content** from the drop-down menu.
+
+7. Click the **Upload** icon to open the file selection dialog and select the content bundle file from your local
+   machine. Alternatively, you can drag and drop the file into the upload area.
+
+   The upload process starts automatically once the file is selected. You can monitor the upload progress in
+   the **Upload Content** dialog.
+
+   Wait for the **File(s) uploaded successfully** confirmation message or the green check mark to appear next to the upload progress bar.
+
+8. On the **Content** page, wait for the content to finish syncing. This is indicated by the **Syncing content: (N) items are pending** banner that appears to the left of disk usage. The banner will disappear once the sync is complete. This can take several minutes depending on the size of the content bundle and your internal network speed.
+
+9. From the left main menu, click **Cluster** and select the **Configuration** tab.
+
+10. Click the **Update** drop-down menu and select **Review Changes**.
+
+11. Review the changes for each profile carefully and ensure you are satisfied with the proposed updates. There may be changes to the profiles between versions that include the addition or removal of properties.
+
+    :::warning
+
+    Some upgrade paths require you to re-enter the configuration values you provided during the initial {props.version} installation. This includes the **OCI Pack Registry Password** and any other non-default settings.
+
+    :::
+
+    Click **Confirm Changes** once satisfied.
+
+12. Click **Update** to start the upgrade process.
+
+During the upgrade process, the {props.version} system and tenant consoles will be unavailable, and a warning message will be displayed when attempting to log in. You can monitor the upgrade progress in the **Overview** tab on the **Cluster** page.
+
+{/* </TabItem>
+
+<TabItem label="Palette CLI Method" value="palette-cli-method">
+
+// The Palette CLI method is currently not working, so commenting this out until a future release.
+
+1. Navigate to the [Artifact Studio](https://artifact-studio.spectrocloud.com/) through a web browser, and under **Install {props.iso}**, click on the drop-down menu and select the version you want to upgrade your {props.app} to.
+
+2. Click **Show Artifacts** to display the **{props.iso} Artifacts** pop-up window. Click the **Download** button for the **Content bundle (including Ubuntu)**.
+
+3. Wait until the content bundle is downloaded to your local machine. The bundle is downloaded in `.tar.zst` format alongside a signature file in `sig.bin` format.
+
+   :::tip
+
+   Refer to the <VersionedLink text="Artifact Studio guide" url="/downloads/artifact-studio"/> for detailed guidance on how to verify the
+   integrity of downloaded files using the provided signature file.
+
+   :::
+
+4. Open a terminal on your local machine and navigate to the directory where the content bundle file is located.
+
+5. Use the Palette CLI to log in to the internal Zot registry. Replace `<management-vip>` with the VIP address of the {props.version} management cluster, `<username>` with your username, and `<password>` with your password. If you have changed the default port for the Zot registry, replace `30003` with the correct port number.
+
+   ```shell
+   palette content registry-login \
+   --registry https://<management-vip>:30003 \
+   --username <username> \
+   --password <password>
+   ```
+
+6. Upload the content bundle to the internal Zot registry using the Palette CLI. Replace `<content-bundle-zst>` with your downloaded content bundle file and `<management-vip>` with the VIP address of the {props.version} management cluster. If you have changed the default port or the base content path for the Zot registry, replace `30003` with the correct port number and `spectro-content` with the correct content path.
+
+   If you are using custom TLS certificates or choosing to skip TLS, use the appropriate flags as shown in the following examples.
+
+   <Tabs groupId="tls-palette-cli">
+
+   <TabItem label="Custom TLS Certificate" value="custom-tls-certificate">
+
+   ```shell
+   palette content push \
+   --registry <management-vip>:30003/spectro-content \
+   --file <content-bundle-zst> \
+   --ca-cert <path-to-ca-cert> \
+   --tls-cert <path-to-tls-cert> \
+   --tls-key <path-to-tls-key>
+   ```
+
+   </TabItem>
+
+   <TabItem label="Skip TLS" value="skip-tls">
+
+   ```shell
+   palette content push \
+   --registry <management-vip>:30003/spectro-content \
+   --file <content-bundle-zst> \
+   --insecure
+   ```
+
+   </TabItem>
+
+   </Tabs>
+
+   The following example output is expected when an upload is successful.
+
+   ```shell hideClipboard title="Example output"
+   ...
+   INFO[0366] successfully copied all artifacts from local bundle /root/tmp/bundle-extract/palette-enterprise-appliance-4.7.9.tar to remote bundle 10.11.12.13:30003/spectro-content/bundle-definition:palette-enterprise-appliance-4.7.9
+   -----------------------------
+   Push Summary
+   -----------------------------
+   local bundle palette-enterprise-appliance-4.7.9 pushed to 10.11.12.13:30003/spectro-content
+   ```
+
+7. Log in to the Local UI of the leader host of the {props.version} management cluster. By default, Local UI is accessible
+   at `https://<node-ip>:5080`. Replace `<node-ip>` with the IP address of the leader host.
+
+8. From the left main menu, click **Content**.
+
+9. On the **Content** page, wait for the content to finish syncing. This is indicated by the **Syncing content: (N) items are pending** banner that appears to the left of disk usage. This can take several minutes depending on the size of the content bundle and your internal network speed.
+
+10. From the left main menu, click **Cluster** and select the **Configuration** tab.
+
+11. Click the **Update** drop-down menu and select **Review Changes**.
+
+12. Review the changes for each profile carefully and ensure you are satisfied with the proposed updates. There may be changes to the profiles between versions that include the addition or removal of properties.
+
+    :::warning
+
+    Some upgrade paths require you to re-enter the configuration values you provided during the initial {props.version} installation. This includes the **OCI Pack Registry Password** and any other non-default settings.
+
+    :::
+
+    Click **Confirm Changes** once satisfied.
+
+13. Click **Update** to start the upgrade process.
+
+During the upgrade process, the {props.version} system and tenant consoles will be unavailable, and a warning message will be displayed when attempting to log in. You can monitor the upgrade progress in the **Overview** tab on the **Cluster** page.
+
+</TabItem>
+
+</Tabs> */}
+
+</TabItem>
+
+<TabItem value="external-registry" label="External Registry">
+
+:::info
+
+When using an external registry, you must upload the content bundle to both the external registry and the internal Zot registry as they both need to have the content for the upgrade process. The following steps include instructions for uploading the content bundle to both registries.
+
+:::
+
+1. Navigate to the [Artifact Studio](https://artifact-studio.spectrocloud.com/) through a web browser, and under **Install {props.iso}**, click on the drop-down menu and select the version you want to upgrade your {props.app} to.
+
+2. Click **Show Artifacts** to display the **{props.iso} Artifacts** pop-up window. Click the **Download** button for the **Content bundle (including Ubuntu)**.
+
+3. Wait until the content bundle is downloaded to your local machine. The bundle is downloaded in `.tar.zst` format alongside a signature file in `sig.bin` format.
+
+   :::tip
+
+   Refer to the <VersionedLink text="Artifact Studio guide" url="/downloads/artifact-studio"/> for detailed guidance on how to verify the
+   integrity of downloaded files using the provided signature file.
+
+   :::
+
+4. Open a terminal on your local machine and navigate to the directory where the content bundle file is located.
+
+5. Use the Palette CLI to log in to your external registry. Replace `<registry-dns-or-ip>` with the DNS/IP address of your registry, `<registry-port>` with the port number of your registry (if applicable), `<username>` with your username, and `<password>` with your password.
+
+   ```shell
+   palette content registry-login \
+   --registry https://<registry-dns-or-ip>:<registry-port> \
+   --username <username> \
+   --password <password>
+   ```
+
+6. Upload the file to your external registry using the Palette CLI. Replace `<content-bundle-zst>` with your downloaded content bundle file, `<registry-dns-or-ip>` with the DNS/IP address of your registry, and `<registry-port>` with the port number of your registry (if applicable). If you have changed the base content path from the default, replace `spectro-content` with the correct content path.
+
+   If you are using custom TLS certificates or choosing to skip TLS, use the appropriate flags as shown in the following examples.
+
+   <Tabs groupId="tls-palette-cli">
+
+   <TabItem label="Custom TLS Certificate" value="custom-tls-certificate">
+
+   ```shell
+   palette content push \
+   --registry <registry-dns-or-ip>:<registry-port>/spectro-content \
+   --file <content-bundle-zst> \
+   --ca-cert <path-to-ca-cert> \
+   --tls-cert <path-to-tls-cert> \
+   --tls-key <path-to-tls-key>
+   ```
+
+   </TabItem>
+
+   <TabItem label="Skip TLS" value="skip-tls">
+
+   ```shell
+   palette content push \
+   --registry <registry-dns-or-ip>:<registry-port>/spectro-content \
+   --file <content-bundle-zst> \
+   --insecure
+   ```
+
+   </TabItem>
+
+   </Tabs>
+
+   The following example output is expected when an upload is successful.
+
+   ```shell hideClipboard title="Example output"
+   ...
+   INFO[0366] successfully copied all artifacts from local bundle /root/tmp/bundle-extract/palette-enterprise-appliance-4.7.9.tar to remote bundle external.registry.com/spectro-content/bundle-definition:palette-enterprise-appliance-4.7.9
+   -----------------------------
+   Push Summary
+   -----------------------------
+   local bundle palette-enterprise-appliance-4.7.9 pushed to external.registry.com/spectro-content
+   ```
+
+   :::tip
+
+   Be aware of the timeout period for the authentication token. If the authentication token expires, you will need to re-authenticate to
+   the OCI registry and restart the upload process.
+
+   :::
+
+7. Log in to the Local UI of the leader host of the {props.version} management cluster. By default, Local UI is accessible
+   at `https://<node-ip>:5080`. Replace `<node-ip>` with the IP address of the leader host.
+
+8. From the left main menu, click **Content**.
+
+9. Click **Actions** in the top right and select **Upload Content** from the drop-down menu.
+
+10. Click the **Upload** icon to open the file selection dialog and select the content bundle file from your local
+    machine. Alternatively, you can drag and drop the file into the upload area.
+
+    The upload process starts automatically once the file is selected. You can monitor the upload progress in
+    the **Upload Content** dialog.
+
+    Wait for the **File(s) uploaded successfully** confirmation message or the green check mark to appear next to the upload progress bar.
+
+11. On the **Content** page, wait for the content to finish syncing. This is indicated by the **Syncing content: (N) items are pending** banner that appears to the left of disk usage. The banner will disappear once the sync is complete. This can take several minutes depending on the size of the content bundle and your internal network speed.
+
+12. From the left main menu, click **Cluster** and select the **Configuration** tab.
+
+13. Click the **Update** drop-down menu and select **Review Changes**.
+
+14. Review the changes for each profile carefully and ensure you are satisfied with the proposed updates. There may be changes to the profiles between versions that include the addition or removal of properties.
+
+    :::warning
+
+    Some upgrade paths require you to re-enter the configuration values you provided during the initial {props.version} installation. This includes the **OCI Pack Registry Password** and any other non-default settings.
+
+    :::
+
+    Click **Confirm Changes** once satisfied.
+
+15. Click **Update** to start the upgrade process.
+
+During the upgrade process, the {props.version} system and tenant consoles will be unavailable, and a warning message will be displayed when attempting to log in. You can monitor the upgrade progress in the **Overview** tab on the **Cluster** page.
+
+</TabItem>
+
+</Tabs>
