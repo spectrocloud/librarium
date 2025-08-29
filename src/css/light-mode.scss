@@ -108,6 +108,10 @@ html[data-theme="light"] {
     color: var(--ifm-color-primary-darker);
   }
 
+  .reactSelect__placeholder.css-1jqq78o-placeholder {
+    color: var(--ifm-menu-color);
+  }
+
   // .navbar__item.navbar__link.navbar__link--active {
   //   color: var(--ifm-navbar-link-hover-color);
   // }

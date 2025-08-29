@@ -92,6 +92,11 @@ html[data-theme="dark"] {
   .navbar {
     border-bottom: 1px solid var(--ifm-breadcrumb-item-background-active);
   }
+
+  .reactSelect__placeholder.css-1jqq78o-placeholder {
+    color: var(--ifm-menu-color);
+  }
+
   // .tabs__item {
   //   border-radius: 2px 2px 0 0;
   //   font-weight: 500;
