@@ -12,7 +12,7 @@ html[data-theme="light"] {
   --ifm-menu-color-active: var(--ifm-color-primary);
   --ifm-font-color-base: #161514;
   --ifm-heading-color: var(--ifm-font-color-base);
-  --ifm-navbar-link-color: #6a7494;
+  --ifm-navbar-link-color: #606986;
   --ifm-navbar-background-color: var(--ifm-background-color);
   --ifm-breadcrumb-item-background-active: var(--ifm-menu-color-background-active);
   --ifm-toc-link-color: var(--ifm-font-color-base);
@@ -91,6 +91,14 @@ html[data-theme="light"] {
   .navbar {
     border-bottom: 1px solid var(--ifm-breadcrumb-item-background-active);
   }
+
+  // .navbar__item.navbar__link.navbar__link--active {
+  //   color: var(--ifm-navbar-link-hover-color);
+  // }
+
+  // .navbar__item.navbar__link {
+  //   color: var(--ifm-font-color-base);
+  // }
 
   // .tabs__item {
   //   border-radius: 2px 2px 0 0;
