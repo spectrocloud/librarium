@@ -50,7 +50,7 @@ you pin a column, it will always be visible.
 | IP Address   | The IP address of the Edge host.                                                                                                                                                                                                                                                      | No               |
 | MAC Address  | The MAC address of the Edge host.                                                                                                                                                                                                                                                     | No               |
 | Architecture | The architecture of the Edge host's processor. Possible values are **AMD64** and **ARM64**.                                                                                                                                                                                           | No               |
-| GPU          | The Graphics Processing Unit (GPU) information of the Edge host, including the GPU model, vendor, memory, count, and Multi-Instance GPU (MIG) capability and strategy (MIG fields are applicable only for Nvidia devices).                                                            | No               |
+| GPU          | The Graphics Processing Unit (GPU) information of the Edge host, including the GPU model, vendor, memory, count, and Multi-Instance GPU (MIG) capability and strategy. The MIG fields are applicable only for Nvidia devices.                                                            | No               |
 
 ## Organize Edge Host Grid View
 
