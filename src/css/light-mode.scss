@@ -112,6 +112,14 @@ html[data-theme="light"] {
     color: var(--ifm-menu-color);
   }
 
+  .tabs__item.tabItem_LNqP {
+    color: var(--ifm-color-primary);
+  }
+
+  .tabs__item.tabItem_LNqP.tabs__item--active {
+    color: var(--ifm-color-primary-darkest);
+  }
+
   // .navbar__item.navbar__link.navbar__link--active {
   //   color: var(--ifm-navbar-link-hover-color);
   // }
