@@ -50,6 +50,7 @@ you pin a column, it will always be visible.
 | IP Address   | The IP address of the Edge host.                                                                                                                                                                                                                                                      | No               |
 | MAC Address  | The MAC address of the Edge host.                                                                                                                                                                                                                                                     | No               |
 | Architecture | The architecture of the Edge host's processor. Possible values are **AMD64** and **ARM64**.                                                                                                                                                                                           | No               |
+| GPU          | The Graphics Processing Unit (GPU) information of the Edge host, including the GPU model, vendor, memory, count, and Multi-Instance GPU (MIG) capability and strategy (MIG fields are applicable only for Nvidia devices).                                                            | No               |
 
 ## Organize Edge Host Grid View
 
@@ -73,15 +74,16 @@ certain columns, pin a column, filter Edge hosts by attribute, and order the Edg
 
 4. The following table lists the actions you can take to customize the grid view.
 
-   ![A screenshot of the Edge host grid view complete with arrows pointing to the elements referred to by the preceding table](/clusters_edge_site-deployment_edge-grid-view.webp)
+   ![A screenshot of the Edge host grid view complete with arrows pointing to the elements referred to by the preceding table](/clusters_site-deployment_edge-host-view_grid_4-7.webp)
 
-   | Action                         | Description                                                                                                                                                                          |
-   | ------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-   | Reorder Columns                | Click on the gear icon at the top right corner of the grid. In the list of scrollable columns, drag and drop the six dots icon to the left of each list item to reorder the columns. |
-   | Remove Column From View        | Click on the gear icon at the top right corner of the grid. In the list of scrollable columns, uncheck the columns you want to hide from view.                                       |
-   | Pin a Column                   | Click on the gear icon at the top right corner of the grid. In the list of scrollable columns, click on the pin icon to the right of the list item you want to pin.                  |
-   | Filter Edge Hosts by Attribute | At the top of the grid, click on **Tags**, **Status**, and **Architecture** depending on the attribute you want to filter by, and then choose the value you want to filter by.       |
-   | Order by a Column              | Click on the label row of the column you want to order by alphanumeric order. You can click it again to change the sort order. You can only sort by one column at a time.            |
+   | \#  | Action                         | Description                                                                                                                                                                   |
+   | --- | ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | 1   | Open the grid settings         | Click on the gear icon at the top right corner of the grid to perform actions 2, 3, and 4.                                                                                    |
+   | 2   | Reorder columns                | In the list of scrollable columns, drag and drop the six dots icon to the left of each list item to reorder the columns.                                                      |
+   | 3   | Remove column from view        | In the list of scrollable columns, uncheck the columns you want to hide from view.                                                                                            |
+   | 4   | Pin a column                   | In the list of scrollable columns, click on the pin icon to the right of the list item you want to pin.                                                                       |
+   | 5   | Filter Edge Hosts by attribute | At the top of the grid, click on **Tags**, **Status**, or **Architecture** depending on the attribute you want to filter by, and then choose the value you want to filter by. |
+   | 6   | Order by a column              | Click on the label row of the column you want to order by alphanumeric order. You can click it again to change the sort order. You can only sort by one column at a time.     |
 
 ### Validate
 
