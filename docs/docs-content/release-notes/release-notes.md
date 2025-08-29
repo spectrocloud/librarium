@@ -11,6 +11,13 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## September 1, 2025 - Release 4.7.X
+
+### Bug Fixes
+
+- Fixed an issue that caused [Azure IaaS clusters](../clusters/public-cloud/azure/create-azure-cluster.md) configured
+  with `fullyPrivateAddressing` to fail to deploy.
+
 ## August 21, 2025 - Release 4.7.15
 
 ### Bug Fixes
