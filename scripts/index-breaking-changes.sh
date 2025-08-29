@@ -35,66 +35,54 @@ create_partials_file () {
 # $1 - release number, example: 4.0.0
 # $2 - body text of the breaking change
 add_breaking_changes_body() {
-  release_number=$1  
+  release_number=$1
   replaced=$(echo "$release_number" | tr '.' '_')  # Replace dots with underscores as they cause errors in partials
   filename="$BREAKING_CHANGES_PARTIALS_PATH/br_$replaced.mdx"
-  line=$2
-  new_line="$line"
+  new_line=$2
 
-  # Loop through all markdown-style links
-  while [[ "$new_line" == *"["*"]("*")"* ]]; do
-    # Extract link text
-    link_text="${new_line#*\[}"
-    link_text="${link_text%%]*}"
+  # Loop while there's at least one Markdown link [text](target)
+  # Note: simple regex stops at the first ')' in the URL (good enough for typical docs URLs).
+  while [[ $new_line =~ \[([^\]]+)\]\(([^)]+)\) ]]; do
+    full_match="${BASH_REMATCH[0]}"
+    link_text="${BASH_REMATCH[1]}"
+    full_link="${BASH_REMATCH[2]}"
 
-    # Extract full link target (everything inside the first (...))
-    temp="${new_line#*](}"
-    full_link="${temp%%)*}"
+    # Decide replacement
+    replacement=""
 
-    # Skip full external links (http, https)
-    if [[ "$full_link" == http* ]]; then
-      break  # or use `continue` if inside a larger loop
-    fi
-
-    # Skip image links ending in .webp so we don't break images.
-    if [[ "$full_link" == *.webp ]]; then
-      break  # or use `continue` if you're looping over multiple matches
-    fi
-
-    # Normalize: remove leading ../ if present
-    if [[ "$full_link" == ../* ]]; then
-      clean_link="${full_link:3}"
-    elif [[ "$full_link" == /* ]]; then
-      clean_link="${full_link:1}"  # remove leading /
+    # Skip full external links (http/https) and image links ending in .webp (don't convert)
+    if [[ $full_link == http* || $full_link == *.webp ]]; then
+      replacement="$full_match"
     else
+      # Normalize: strip leading ../ or /
       clean_link="$full_link"
-    fi
+      [[ $clean_link == ../* ]] && clean_link="${clean_link:3}"
+      [[ $clean_link == /*  ]] && clean_link="${clean_link:1}"
 
-    # Remove any #fragment
-    clean_link="${clean_link%%#*}"
+      # Remove any #fragment
+      clean_link="${clean_link%%#*}"
 
-    # Remove .md or .mdx extensions
-    clean_link="${clean_link%.md}"
-    clean_link="${clean_link%.mdx}"
+      # Remove .md or .mdx extensions
+      clean_link="${clean_link%.md}"
+      clean_link="${clean_link%.mdx}"
 
-    # Build JSX
-    link_url="/$clean_link"
+      # Remove duplicate last segment if it equals previous (e.g., foo/foo.md)
+      IFS='/' read -r -a segments <<< "$clean_link"
+      len=${#segments[@]}
+      if (( len >= 2 )) && [[ "${segments[len-1]}" == "${segments[len-2]}" ]]; then
+        unset 'segments[len-1]'
+        clean_link=$(IFS='/'; echo "${segments[*]}")
+      fi
 
-    # Remove duplicate path segments for sections. 
-    # For example, enterprise-version/enterprise-version.md
-    IFS='/' read -ra segments <<< "$clean_link"
-    len=${#segments[@]}
-    if (( len >= 2 )) && [[ "${segments[len-1]}" == "${segments[len-2]}" ]]; then
-      unset 'segments[len-1]'
-      clean_link=$(IFS='/'; echo "${segments[*]}")
       link_url="/$clean_link"
+      jsx_link="<VersionedLink text=\"$link_text\" url=\"$link_url\" />"
+      replacement="$jsx_link"
     fi
 
-    markdown_link="[$link_text]($full_link)"
-    jsx_link="<VersionedLink text=\"$link_text\" url=\"$link_url\" />"
-
-    # Replace first instance only
-    new_line="${new_line/"$markdown_link"/$jsx_link}"
+    # Rebuild the string: prefix + replacement + suffix (this advances past the match)
+    prefix="${new_line%%"$full_match"*}"
+    suffix="${new_line#*"$full_match"}"
+    new_line="${prefix}${replacement}${suffix}"
   done
 
   echo "$new_line" >> "$filename"
