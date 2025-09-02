@@ -104,7 +104,7 @@
     "lint-staged": "^16.1.0",
     "netlify-cli": "^22.4.0",
     "prettier": "3.5.3",
-    "semantic-release": "^24.2.0",
+    "semantic-release": "^24.2.7",
     "test-links": "^0.0.1",
     "ts-jest": "^29.4.0",
     "typescript": "^5.7.2",
