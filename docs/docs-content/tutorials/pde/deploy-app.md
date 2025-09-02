@@ -94,7 +94,7 @@ information.
 Palette Dev Engine allows you to deploy up to two virtual clusters into the beehive cluster group. Each virtual cluster
 requires a minimum of 4 CPU, 4 GiB memory, and 2 GiB storage. When using the beehive cluster, you can allocate a maximum
 of 12 CPU, 16 Gib memory, and 20 GiB of storage. Check out the
-[Palette Dev Engine and Quotas](../../../devx/manage-dev-engine/resource-quota.md) documentation to learn more about
+[Palette Dev Engine and Quotas](../../devx/manage-dev-engine/resource-quota.md) documentation to learn more about
 limits.
 
 It will take a few minutes for the virtual cluster to deploy. In the meantime, navigate to the left **Main Menu** and

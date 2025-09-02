@@ -923,13 +923,13 @@ and the set of worker nodes is the worker pool.
 
 Provide the following details for the control plane pool.
 
-| **Field**                                             | **Value for the control-plane-pool**     |
-| ----------------------------------------------------- | ---------------------------------------- |
-| Node pool name                                        | control-plane-pool                       |
-| Allow worker capability                               | On                                       |
-| Additional Labels (Optional)                          | None                                     |
-| [Taints](../../clusters/cluster-management/taints.md) | Off                                      |
-| Pool Configuration > Edge Hosts                       | Choose one of the registered Edge hosts. |
+| **Field**                                                | **Value for the control-plane-pool**     |
+| -------------------------------------------------------- | ---------------------------------------- |
+| Node pool name                                           | control-plane-pool                       |
+| Allow worker capability                                  | On                                       |
+| Additional Labels (Optional)                             | None                                     |
+| [Taints](../../../clusters/cluster-management/taints.md) | Off                                      |
+| Pool Configuration > Edge Hosts                          | Choose one of the registered Edge hosts. |
 
 The screenshot below shows an Edge host added to the control plane pool.
 
