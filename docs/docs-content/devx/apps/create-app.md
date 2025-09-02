@@ -18,8 +18,8 @@ Use the following steps to create and deploy an app to a virtual cluster.
 :::info
 
 A tutorial is available to help you learn how to use Palette Dev Engine by deploying an application. Check out
-[Deploy an Application using Palette Dev Engine](../../tutorials/cluster-deployment/pde/deploy-app.md) to get started
-with Palette Dev Engine.
+[Deploy an Application using Palette Dev Engine](../../tutorials/pde/deploy-app.md) to get started with Palette Dev
+Engine.
 
 :::
 
