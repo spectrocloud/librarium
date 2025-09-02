@@ -28,7 +28,7 @@ concepts.
   <img src="/tutorials/tutorials_landing-page-intro.webp" width="75%" alt="Palette Users" />
 </div>
 
-### Ready to Start Learning?
+## Ready to Start Learning?
 
 Explore more through the following tutorials.
 
