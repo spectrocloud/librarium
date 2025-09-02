@@ -19,9 +19,9 @@ import { faTowerObservation } from '@fortawesome/free-solid-svg-icons';
 import { faLock } from '@fortawesome/free-solid-svg-icons';
 import { faGears } from '@fortawesome/free-solid-svg-icons';
 import { faScrewdriverWrench } from '@fortawesome/free-solid-svg-icons';
+import { faFlag } from '@fortawesome/free-solid-svg-icons';
 import { faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { faShield } from '@fortawesome/free-solid-svg-icons';
-import { faMicrochip } from '@fortawesome/free-solid-svg-icons';
 
 export const fontAwesomeIcons = {
   "cubes": faCubes,
@@ -45,7 +45,7 @@ export const fontAwesomeIcons = {
   "lock": faLock,
   "gears": faGears,
   "screwdriver-wrench": faScrewdriverWrench,
+  "flag": faFlag,
   "eye-slash": faEyeSlash,
-  "shield": faShield,
-  "microchip": faMicrochip
+  "shield": faShield
 };
