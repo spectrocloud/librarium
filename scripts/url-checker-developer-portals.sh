@@ -60,7 +60,7 @@ make_request_github () {
 # $1 - url
 make_request () {
     url=$1
-    status_code=$(curl -s -o /dev/null -w "%{http_code}" -A "URL-Checker" "$url")
+    status_code=$(curl -s -o /dev/null -w "%{http_code}" "$url")
     echo "$status_code"
 }
 
@@ -128,9 +128,7 @@ while IFS= read -r line; do
     # Skip if the URL is empty
     [[ -z "$url" ]] && continue
 
-    echo "Checking Developer Portal link: $url"
-
-    # Get the status code, either from GH or from the cache
+    # Get the status code, either from the remote or from the cache
     status_code=$(get_url_status_code "$url")
 
     code=$(echo "$status_code" | cut -d' ' -f1)
