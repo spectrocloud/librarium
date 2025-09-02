@@ -20,7 +20,8 @@
     "https://mysql.com/.*.*$$",
     "https://dev.mysql.com/doc/.*$$",
     "^https://github.com.*$$",
-    "https://www.intel.com/content/www/us/en/learn/what-is-a-trusted-platform-module.html"
+    "^https://developers.redhat.com.*$$",
+    "^https://www.intel.com.*$$"
   ],
   "verbosity": "error",
   "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.117 Safari/537.36"
