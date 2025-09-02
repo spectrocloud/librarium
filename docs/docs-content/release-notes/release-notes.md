@@ -867,7 +867,7 @@ to learn more about the changes introduced in this release.
   the fictional company Spacetastic to help you understand how to use Palette to manage your infrastructure.
 
 - A new tutorial for Edge is now available. The
-  [Deploy an Edge Cluster on VirtualBox](../tutorials/edge/deploy-cluster-virtualbox.md) tutorial provides a
+  [Deploy an Edge Cluster on VirtualBox](../tutorials/clusters/edge/deploy-cluster-virtualbox.md) tutorial provides a
   step-by-step guide to deploying an Edge cluster on VirtualBox. This tutorial is great for new users who want to learn
   more about Edge and gain hands-on experience without needing access to physical hardware.
 

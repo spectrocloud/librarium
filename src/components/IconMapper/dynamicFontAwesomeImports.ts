@@ -8,20 +8,21 @@ import { faHdd } from '@fortawesome/free-solid-svg-icons';
 import { faCloudArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { faNetworkWired } from '@fortawesome/free-solid-svg-icons';
 import { faServer } from '@fortawesome/free-solid-svg-icons';
+import { faRoad } from '@fortawesome/free-solid-svg-icons';
 import { faUsers } from '@fortawesome/free-solid-svg-icons';
+import { faBook } from '@fortawesome/free-solid-svg-icons';
+import { faShield } from '@fortawesome/free-solid-svg-icons';
 import { faWarehouse } from '@fortawesome/free-solid-svg-icons';
 import { faFlagCheckered } from '@fortawesome/free-solid-svg-icons';
 import { faPalette } from '@fortawesome/free-solid-svg-icons';
-import { faBook } from '@fortawesome/free-solid-svg-icons';
 import { faBookmark } from '@fortawesome/free-solid-svg-icons';
 import { faGavel } from '@fortawesome/free-solid-svg-icons';
 import { faTowerObservation } from '@fortawesome/free-solid-svg-icons';
 import { faLock } from '@fortawesome/free-solid-svg-icons';
 import { faGears } from '@fortawesome/free-solid-svg-icons';
 import { faScrewdriverWrench } from '@fortawesome/free-solid-svg-icons';
+import { faFlag } from '@fortawesome/free-solid-svg-icons';
 import { faEyeSlash } from '@fortawesome/free-solid-svg-icons';
-import { faShield } from '@fortawesome/free-solid-svg-icons';
-import { faMicrochip } from '@fortawesome/free-solid-svg-icons';
 
 export const fontAwesomeIcons = {
   "cubes": faCubes,
@@ -34,18 +35,19 @@ export const fontAwesomeIcons = {
   "cloud-arrow-down": faCloudArrowDown,
   "network-wired": faNetworkWired,
   "server": faServer,
+  "road": faRoad,
   "users": faUsers,
+  "book": faBook,
+  "shield": faShield,
   "warehouse": faWarehouse,
   "flag-checkered": faFlagCheckered,
   "palette": faPalette,
-  "book": faBook,
   "bookmark": faBookmark,
   "gavel": faGavel,
   "tower-observation": faTowerObservation,
   "lock": faLock,
   "gears": faGears,
   "screwdriver-wrench": faScrewdriverWrench,
-  "eye-slash": faEyeSlash,
-  "shield": faShield,
-  "microchip": faMicrochip
+  "flag": faFlag,
+  "eye-slash": faEyeSlash
 };

@@ -13,8 +13,8 @@ create an app profile that contains a Helm chart.
 :::info
 
 A tutorial is available to help you learn how to use Palette Dev Engine by deploying an application. Check out
-[Deploy an Application using Palette Dev Engine](../../../tutorials/cluster-deployment/pde/deploy-app.md) to get started
-with Palette Dev Engine.
+[Deploy an Application using Palette Dev Engine](../../../tutorials/pde/deploy-app.md) to get started with Palette Dev
+Engine.
 
 :::
 
@@ -98,9 +98,8 @@ Use the following steps to validate that your app profile is available and ready
 
 5. Deploy your application to a virtual cluster to verify all the required configurations and dependencies are correct.
    Review [Create and Manage Apps](../../../devx/apps/create-app.md) to learn how to deploy an app to a virtual cluster.
-   Check out the
-   [Deploy an Application using Palette Dev Engine](../../../tutorials/cluster-deployment/pde/deploy-app.md) tutorial
-   for a more in-depth guide.
+   Check out the [Deploy an Application using Palette Dev Engine](../../../tutorials/pde/deploy-app.md) tutorial for a
+   more in-depth guide.
 
 ## Next Steps
 
@@ -114,4 +113,4 @@ common third-party services such as databases, message queues, and more.
 
 - [Create and Manage Apps](../../../devx/apps/create-app.md)
 
-- [Deploy an Application using Palette Dev Engine](../../../tutorials/cluster-deployment/pde/deploy-app.md)
+- [Deploy an Application using Palette Dev Engine](../../../tutorials/pde/deploy-app.md)

@@ -33,6 +33,9 @@ import SystemAppIcon from "@site/static/assets/packs/system_app_layer.svg";
 import SecurityIcon from "@site/static/assets/packs/security_layer.svg";
 import AppServicesIcon from "@site/static/assets/packs/system_app_layer.svg";
 import MiscIcon from "@site/static/assets/packs/misc_layer.svg";
+import BookIcon from "@site/static/assets/icons/book-solid-full.svg";
+import FlagIcon from "@site/static/assets/icons/flag-checkered-solid-full.svg";
+import UsersIcon from "@site/static/assets/icons/users-solid-full.svg";
 import { IconProp } from "@fortawesome/fontawesome-svg-core";
 import { fontAwesomeIcons } from "./dynamicFontAwesomeImports";
 
@@ -76,6 +79,9 @@ export const icons: IconsMap = {
   security: <SecurityIcon />,
   serverless: <MiscIcon />,
   "app services": <AppServicesIcon />,
+  book: <BookIcon />,
+  flag: <FlagIcon />,
+  users: <UsersIcon />,
 };
 
 function IconMapper({ type }: { type: string }): React.ReactElement {
