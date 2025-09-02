@@ -382,8 +382,8 @@ internet bandwidth or air-gapped environments. You created a content bundle usin
 Next, you used the CanvOS utility to embed the content bundle and user data into an Edge installer ISO.
 
 As the next step, we recommend you check out the end-to-end tutorial,
-[Deploy an Edge Cluster on VMware](../../../../tutorials/edge/deploy-cluster.md). The tutorial provides a detailed
-walkthrough on deploying an Edge cluster in a VMware environment.
+[Deploy an Edge Cluster on VMware](../../../../tutorials/clusters/edge/deploy-cluster.md). The tutorial provides a
+detailed walkthrough on deploying an Edge cluster in a VMware environment.
 
 Check out the reference resources below to learn more about preparing an Edge host.
 

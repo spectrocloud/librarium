@@ -326,8 +326,8 @@ the following sections for a complete list of features, improvements, and known 
   Palette concepts and features to help them get started with Palette. Check out the
   [Getting Started](../getting-started/getting-started.md) page to learn more.
 
-- A new tutorial [Deploy Cluster Profile Updates](../tutorials/cluster-management/update-maintain/update-k8s-cluster.md)
-  is now available that guides you through the process of updating a cluster profile.
+- A new tutorial [Deploy Cluster Profile Updates](../tutorials/profiles/update-k8s-cluster.md) is now available that
+  guides you through the process of updating a cluster profile.
 
 - A new pack, [Hello Universe](https://github.com/spectrocloud/pack-central/tree/main/packs/hello-universe-1.1.1) is now
   available in the Pack community repository.
