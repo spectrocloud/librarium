@@ -86,10 +86,9 @@ Log in to [Palette](https://console.spectrocloud.com).
 
 4. Select the VMO add-on layer of the cluster profile.
 
-5. You have several options to leverage:
+5. You have several options to select from:
 
 - Enable guest overhead over-commit by setting `spec.domain.resources.overcommitGuestOverhead` to true.
-
 - Enable guest memory by setting `spec.domain.memory.guest` to a value higher than
   `spec.domain.resources.requests.memory`, as shown in the example.
 
@@ -113,7 +112,14 @@ Log in to [Palette](https://console.spectrocloud.com).
   KubeVirt CRD to a percentage of the desired memory overcommit. This will set the memory overcommitment for all VMs in
   a VMO cluster.
 
+  Within the VMO Pack, the path will be `charts.kubevirt.kubevirtResource.config.additionalDevConfig.memoryOvercommit`.
+
   :::info
+
+  When setting `memoryOvercommit: "150"`, the memory request is not explicitly set. As a result, it will be implicitly
+  set to reach memory overcommit of 150%. For example, when `spec.domain.memory.guest: 3072M`, the memory request is set
+  to 2048M, if not otherwise set. Note that the actual memory request depends on additional confiugration options such
+  as `OvercommitGuestOverhead`.
 
   :::
 
