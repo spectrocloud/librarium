@@ -30,19 +30,17 @@ with Microsoft Azure or Google Cloud Platform (GCP).
 
 - A Palette account.
 - A Palette API key if you choose to follow along using the [Terraform](#cluster-profile-variables-terraform-workflow)
-  workflow. Refer to the
-  [Create a Palette API Key ](../../getting-started/palette/aws/setup.md#create-a-palette-api-key) guide for further
-  instructions.
+  workflow. Refer to the [Create a Palette API Key ](../getting-started/palette/aws/setup.md#create-a-palette-api-key)
+  guide for further instructions.
 - A public cloud account registered in Palette. Refer to
-  [AWS](../../../../clusters/public-cloud/aws/add-aws-accounts/#aws-account),
-  [Azure](../../../../clusters/public-cloud/azure/azure-cloud/#add-azure-cloud-account) or
-  [Google Cloud](../../../../clusters/public-cloud/gcp/add-gcp-accounts/#create-account) to learn how to register a
-  cloud account.
+  [AWS](../../../clusters/public-cloud/aws/add-aws-accounts/#aws-account),
+  [Azure](../../../clusters/public-cloud/azure/azure-cloud/#add-azure-cloud-account) or
+  [Google Cloud](../../../clusters/public-cloud/gcp/add-gcp-accounts/#create-account) to learn how to register a cloud
+  account.
 - An SSH key available in the region where you plan to deploy the cluster.
-- Ensure that the
-  [Palette Community Registry](../../../registries-and-packs/registries/registries.md#default-registries) is available
-  in your Palette environment. Refer to the
-  [Add OCI Packs Registry](../../../registries-and-packs/registries/oci-registry/add-oci-packs.md) guide for additional
+- Ensure that the [Palette Community Registry](../../registries-and-packs/registries/registries.md#default-registries)
+  is available in your Palette environment. Refer to the
+  [Add OCI Packs Registry](../../registries-and-packs/registries/oci-registry/add-oci-packs.md) guide for additional
   guidance.
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/) or [Podman](https://podman.io/docs/installation)
   installed if you choose to follow along using the tutorial container.
@@ -202,7 +200,7 @@ This tutorial demonstrates the latter option.
 
 In [Palette](https://console.spectrocloud.com/), select your profile and ensure the drop-down menu is set to version
 1.0.0 . Select **Deploy** to deploy the cluster. Check out the
-[Deploy a Cluster](../../getting-started/palette/aws/deploy-k8s-cluster.md) tutorial for guidance on how to deploy a
+[Deploy a Cluster](../getting-started/palette/aws/deploy-k8s-cluster.md) tutorial for guidance on how to deploy a
 cluster. The cluster deployment process can take 15 to 30 minutes. You can use either the Palette UI or the kubectl tool
 to verify that the deployment was successful.
 
@@ -736,10 +734,10 @@ to leverage cluster profiles as a templating function.
 
 We encourage you to check out the following reference resources to learn more about Palette.
 
-- [Cluster Profiles](../../../profiles/cluster-profiles/cluster-profiles.md)
+- [Cluster Profiles](../../profiles/cluster-profiles/cluster-profiles.md)
 
-- [Palette Clusters](../../../clusters/clusters.md)
+- [Palette Clusters](../../clusters/clusters.md)
 
-- [Backup and Restore](../../../clusters/cluster-management/backup-restore/backup-restore.md)
+- [Backup and Restore](../../clusters/cluster-management/backup-restore/backup-restore.md)
 
-- [Deploy a Custom Pack](../../../tutorials/profiles/deploy-pack.md)
+- [Deploy a Custom Pack](../packs-registries/deploy-pack.md)
