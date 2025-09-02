@@ -38,10 +38,10 @@ tags: ["release-notes"]
   <VersionedLink text="Palette Optimized Canonical" url="/integrations/packs/?pack=edge-canonical" /> 1.32.8 and 1.33.4;
   <VersionedLink text="Palette eXtended Kubernetes Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> 1.31.12,
   1.32.8, and 1.33.4. This breaking change affects agent mode clusters only and does not impact appliance mode clusters.
-  For locally managed clusters, refer to
-  [Configure Palette Agent Version](clusters/edge/cluster-management/agent-upgrade-airgap.md) to upgrade the agent to
-  the latest version before upgrading Kubernetes packs. For centrally managed clusters, do not
-  [pause upgrades](clusters/cluster-management/platform-settings/pause-platform-upgrades.md) so the agent can upgrade
+  For locally managed clusters, refer to [Configure Palette Agent
+  Version](clusters/edge/cluster-management/agent-upgrade-airgap.md) to upgrade the agent to the latest version before
+  upgrading Kubernetes packs. For centrally managed clusters, do not [pause
+  upgrades](clusters/cluster-management/platform-settings/pause-platform-upgrades.md) so the agent can upgrade
   automatically.
 
 #### Features
