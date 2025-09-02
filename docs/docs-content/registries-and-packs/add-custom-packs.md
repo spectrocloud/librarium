@@ -11,8 +11,8 @@ You can add a custom pack to Palette to add new integrations or applications to 
 
 :::further
 
-Check out the tutorial [Deploy a Custom Pack](../tutorials/profiles/deploy-pack.md) to learn how to deploy a custom pack
-to a custom registry.
+Check out the tutorial [Deploy a Custom Pack](../tutorials/packs-registries/deploy-pack.md) to learn how to deploy a
+custom pack to a custom registry.
 
 :::
 

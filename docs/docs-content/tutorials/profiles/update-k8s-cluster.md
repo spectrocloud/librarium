@@ -25,8 +25,8 @@ Palette provides cluster profiles, which allow you to specify layers for your wo
 packages, or cluster manifests. Packs serve as blueprints to the provisioning and deployment process, as they contain
 the versions of the container images that Palette will install for you. Cluster profiles provide consistency across
 environments during the cluster creation process and when maintaining your clusters. Check out the
-[cluster profiles](../../../profiles/cluster-profiles/cluster-profiles.md) section to learn more about creating and
-using them.
+[cluster profiles](../../profiles/cluster-profiles/cluster-profiles.md) section to learn more about creating and using
+them.
 
 | Method                   | Description                                                                        | Cluster application process                                                                                                                                                                                |
 | ------------------------ | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -42,18 +42,18 @@ learn how to apply these changes using Palette or Terraform.
 
 Palette has backup and restore capabilities available for your mission-critical workloads. Ensure you have adequate
 backups before making any cluster profile version changes in your production environments. You can learn more in the
-[Backup and Restore](../../../clusters/cluster-management/backup-restore/backup-restore.md) section.
+[Backup and Restore](../../clusters/cluster-management/backup-restore/backup-restore.md) section.
 
 :::
 
 ## Prerequisites
 
 - An active Palette cluster. This tutorial builds upon steps in
-  [Getting Started](../../../getting-started/getting-started.md). Complete the steps for your preferred cloud provider.
-  - [Deploy a Cluster with Azure](../../getting-started/palette/azure/deploy-k8s-cluster.md)
-  - [Deploy a Cluster with AWS](../../getting-started/palette/aws/deploy-k8s-cluster.md)
-  - [Deploy a Cluster with GCP](../../getting-started/palette/gcp/deploy-k8s-cluster.md)
-  - [Deploy a Cluster with VMware](../../getting-started/palette/vmware/deploy-k8s-cluster.md)
+  [Getting Started](../../getting-started/getting-started.md). Complete the steps for your preferred cloud provider.
+  - [Deploy a Cluster with Azure](../getting-started/palette/azure/deploy-k8s-cluster.md)
+  - [Deploy a Cluster with AWS](../getting-started/palette/aws/deploy-k8s-cluster.md)
+  - [Deploy a Cluster with GCP](../getting-started/palette/gcp/deploy-k8s-cluster.md)
+  - [Deploy a Cluster with VMware](../getting-started/palette/vmware/deploy-k8s-cluster.md)
 
 ## Set Up Cluster
 
@@ -306,13 +306,13 @@ across your environments.
 
 We encourage you to check out the reference resources below to learn more about Palette.
 
-- [Cluster Profiles](../../../profiles/cluster-profiles/cluster-profiles.md)
+- [Cluster Profiles](../../profiles/cluster-profiles/cluster-profiles.md)
 
-- [Palette Clusters](../../../clusters/clusters.md)
+- [Palette Clusters](../../clusters/clusters.md)
 
-- [Backup and Restore](../../../clusters/cluster-management/backup-restore/backup-restore.md)
+- [Backup and Restore](../../clusters/cluster-management/backup-restore/backup-restore.md)
 
-- [Deploy a Custom Pack](../../../tutorials/profiles/deploy-pack.md)
+- [Deploy a Custom Pack](../../tutorials/packs-registries/deploy-pack.md)
 
 - [Hello Universe GitHub repository](https://github.com/spectrocloud/hello-universe)
 
@@ -320,12 +320,12 @@ We encourage you to check out the reference resources below to learn more about 
 
 This workflow can also be completed using Terraform by following the tutorials linked below.
 
-- [Deploy and Manage K8s Cluster with Terraform - Azure](../../getting-started/palette/azure/deploy-manage-k8s-cluster-tf.md)
+- [Deploy and Manage K8s Cluster with Terraform - Azure](../getting-started/palette/azure/deploy-manage-k8s-cluster-tf.md)
 
-- [Deploy and Manage K8s Cluster with Terraform - GCP](../../getting-started/palette/gcp/deploy-manage-k8s-cluster-tf.md)
+- [Deploy and Manage K8s Cluster with Terraform - GCP](../getting-started/palette/gcp/deploy-manage-k8s-cluster-tf.md)
 
-- [Deploy and Manage K8s with Terraform - AWS](../../getting-started/palette/aws/deploy-manage-k8s-cluster-tf.md)
+- [Deploy and Manage K8s with Terraform - AWS](../getting-started/palette/aws/deploy-manage-k8s-cluster-tf.md)
 
-- [Deploy and Manage K8s with Terraform - VMWare](../../getting-started/palette/vmware/deploy-manage-k8s-cluster-tf.md)
+- [Deploy and Manage K8s with Terraform - VMWare](../getting-started/palette/vmware/deploy-manage-k8s-cluster-tf.md)
 
 :::
