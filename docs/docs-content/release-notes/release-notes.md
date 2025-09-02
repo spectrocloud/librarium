@@ -29,8 +29,20 @@ tags: ["release-notes"]
 
 ### Edge
 
-- Palette CLI versions prior to 4.7.b do not support building content for local Edge cluster deployment on Palette 4.7.b or later because content created with older CLI versions lacks required images. We recommend [downloading](downloads/cli-tools.md) and using Palette CLI version 4.7.b or later to build content for Palette 4.7.b or later.
-- Edge clusters with the Palette agent versions prior to 4.7.b do not support upgrading to the following Kubernetes pack versions released in 4.7.b: <VersionedLink text="Palette Optimized Canonical" url="/integrations/packs/?pack=edge-canonical" /> 1.32.8 and 1.33.4; <VersionedLink text="Palette eXtended Kubernetes Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> 1.31.12, 1.32.8, and 1.33.4. This breaking change affects agent mode clusters only and does not impact appliance mode clusters. For locally managed clusters, refer to [Configure Palette Agent Version](clusters/edge/cluster-management/agent-upgrade-airgap.md) to upgrade the agent to the latest version before upgrading Kubernetes packs. For centrally managed clusters, do not [pause upgrades](clusters/cluster-management/platform-settings/pause-platform-upgrades.md) so the agent can upgrade automatically.
+- Palette CLI versions prior to 4.7.b do not support building content for local Edge cluster deployment on Palette 4.7.b
+  or later because content created with older CLI versions lacks required images. We recommend
+  [downloading](downloads/cli-tools.md) and using Palette CLI version 4.7.b or later to build content for Palette 4.7.b
+  or later.
+- Edge clusters with the Palette agent versions prior to 4.7.b do not support upgrading to the following Kubernetes pack
+  versions released in 4.7.b:
+  <VersionedLink text="Palette Optimized Canonical" url="/integrations/packs/?pack=edge-canonical" /> 1.32.8 and 1.33.4;
+  <VersionedLink text="Palette eXtended Kubernetes Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> 1.31.12,
+  1.32.8, and 1.33.4. This breaking change affects agent mode clusters only and does not impact appliance mode clusters.
+  For locally managed clusters, refer to
+  [Configure Palette Agent Version](clusters/edge/cluster-management/agent-upgrade-airgap.md) to upgrade the agent to
+  the latest version before upgrading Kubernetes packs. For centrally managed clusters, do not
+  [pause upgrades](clusters/cluster-management/platform-settings/pause-platform-upgrades.md) so the agent can upgrade
+  automatically.
 
 #### Features
 
