@@ -324,11 +324,11 @@ verify-rate-limited-links-ci: ## Check for broken URLs in production in a GitHub
 	@rm temp_rate_limit_report.json
 	@mv filtered_rate_limit_report.json scripts/link_rate_limit_report.json
 
-verify-github-links: ## Check for broken GitHub links
-	@echo "Checking for broken GitHub links in CI environment..."
-	@rm link_report_github.txt || echo "No report exists. Proceeding to scan step"
-	./scripts/url-checker-github.sh
-	@mv link_report_github.txt scripts/link_report_github.txt
+verify-developer-portal-links: ## Check for broken Developer Portal links
+	@echo "Checking for broken Developer Portal links in CI environment..."
+	@rm link_report_developer_portals.txt || echo "No report exists. Proceeding to scan step"
+	./scripts/url-checker-developer-portals.sh
+	@mv link_report_developer_portals.txt scripts/link_report_developer_portals.txt
 
 ###@ Image Formatting
 
