@@ -404,8 +404,8 @@ profile and deploy a VMware host cluster.
 24. Review the profile layers and click **Finish Configuration** to create the cluster profile.
 
 25. Deploy a VMware host cluster using the created cluster profile. Refer to the
-    [Deploy App Workloads with a PCG](../../../../tutorials/cluster-deployment/pcg/deploy-app-pcg.md) tutorial for
-    instructions on deploying a VMware host cluster.
+    [Deploy App Workloads with a PCG](../../../../tutorials/clusters/pcg/deploy-app-pcg.md) tutorial for instructions on
+    deploying a VMware host cluster.
 
 ## Validate
 
