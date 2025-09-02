@@ -331,8 +331,8 @@ notes below to learn more about the new features and improvements.
 
 ### Docs and Education
 
-- The [Deploy a Custom Pack](../tutorials/profiles/deploy-pack.md) tutorial has been updated to include instructions on
-  deploying a custom pack with a custom OCI Pack registry.
+- The [Deploy a Custom Pack](../tutorials/packs-registries/deploy-pack.md) tutorial has been updated to include
+  instructions on deploying a custom pack with a custom OCI Pack registry.
 
 - The Palette Offline Documentation container image is now cryptographically signed. You can verify the authenticity of
   the container image by using the [Cosign CLI](https://docs.sigstore.dev/signing/quickstart) and the public key. Refer

@@ -84,8 +84,8 @@ To complete this tutorial, you will need the following:
 
 - A Palette registration token for pairing Edge hosts with Palette. You will need tenant admin access to Palette to
   generate a new registration token. For detailed instructions, refer to the
-  [Create Registration Token](../../clusters/edge/site-deployment/site-installation/create-registration-token.md) guide.
-  Copy the newly created token to a clipboard or notepad file to use later in this tutorial.
+  [Create Registration Token](../../../clusters/edge/site-deployment/site-installation/create-registration-token.md)
+  guide. Copy the newly created token to a clipboard or notepad file to use later in this tutorial.
 
   The screenshot below shows a sample registration token in the **Tenant Settings** > **Registration Tokens** section in
   Palette.
@@ -181,14 +181,14 @@ View the newly created file to ensure the arguments are defined per your require
 cat .arg
 ```
 
-Refer to the [Build Edge Artifacts](../../clusters/edge/edgeforge-workflow/palette-canvos.md) guide to learn more about
-customizing arguments.
+Refer to the [Build Edge Artifacts](../../../clusters/edge/edgeforge-workflow/palette-canvos.md) guide to learn more
+about customizing arguments.
 
 ## Create User Data
 
-Next, you will create a [`user-data`](../../clusters/edge/edgeforge-workflow/prepare-user-data.md) file that embeds your
-[tenant registration token](../../clusters/edge/site-deployment/site-installation/create-registration-token.md) and Edge
-host's login credentials in the Edge Installer ISO image.
+Next, you will create a [`user-data`](../../../clusters/edge/edgeforge-workflow/prepare-user-data.md) file that embeds
+your [tenant registration token](../../../clusters/edge/site-deployment/site-installation/create-registration-token.md)
+and Edge host's login credentials in the Edge Installer ISO image.
 
 Issue the command below to save your tenant registration token to a local variable. Replace
 `<your-palette-registration-token>` with your actual registration token.
@@ -270,7 +270,7 @@ Kubernetes versions that you don't need from the JSON object corresponding to yo
 
 This speeds up build process and reduces the amount of space required for the build process. For an example of excluding
 a version from build, refer to
-[Build Edge Artifacts guide](../../clusters/edge/edgeforge-workflow/palette-canvos.md).
+[Build Edge Artifacts guide](../../../clusters/edge/edgeforge-workflow/palette-canvos.md).
 
 :::
 
@@ -375,7 +375,7 @@ docker push ttl.sh/ubuntu:k3s-1.27.2-v4.1.2-demo
 As a reminder, [ttl.sh](https://ttl.sh/) is a short-lived image registry. If you do not use these provider images in
 your cluster profile within 24 hours of pushing to _ttl.sh_, they will expire and must be re-pushed. If you want to use
 a different image registry, refer to the Advanced workflow in the
-[Build Edge Artifacts](../../clusters/edge/edgeforge-workflow/palette-canvos.md) guide to learn how to use another
+[Build Edge Artifacts](../../../clusters/edge/edgeforge-workflow/palette-canvos.md) guide to learn how to use another
 registry.
 
 :::
@@ -502,9 +502,9 @@ is an explanation of the options and sub-commands used below:
   `packer build` command has the following options:
 
   - The `-force` flag destroys any existing template.
-  - The `--var-file` option reads the `vsphere.hcl` file from the container. This file contains the VM template name,
-    VM configuration, and ISO file name to use. The VM configuration conforms to the
-    [minimum device requirements](../../clusters/edge/architecture.md#minimum-device-requirements).
+  - The `--var-file` option reads the `vsphere.hcl` file from the container. This file contains the VM template name, VM
+    configuration, and ISO file name to use. The VM configuration conforms to the
+    [minimum device requirements](../../../clusters/edge/architecture.md#minimum-device-requirements).
 
   The `vsphere.hcl` file content is shown below for your reference. This tutorial does not require you to modify these
   configurations.
@@ -676,7 +676,7 @@ select **Clusters**. Click on the **Edge Hosts** tab and verify the three VMs yo
 If the three Edge hosts are not displayed in the **Edge hosts** tab, the automatic registration failed. If this happens,
 you can manually register hosts by clicking the **Add Edge Hosts** button and pasting the Edge host ID. Repeat this host
 registration process for each of the three VMs. If you need help, the detailed instructions are available in the
-[Register Edge Host](../../clusters/edge/site-deployment/site-installation/edge-host-registration.md) guide.
+[Register Edge Host](../../../clusters/edge/site-deployment/site-installation/edge-host-registration.md) guide.
 
 ## Deploy a Cluster
 
@@ -773,7 +773,7 @@ Click on the **Next layer** button to add the following Kubernetes layer to your
 
 The pack version must match the version pushed to the _ttl.sh_ image registry. The `system.uri` attribute of the BYOOS
 pack will reference the Kubernetes version you select using the `{{ .spectro.system.kubernetes.version }}`
-[macro](../../clusters/cluster-management/macros.md).
+[macro](../../../clusters/cluster-management/macros.md).
 
 Click on the **Next layer** button, and add the following network layer. This example uses the Calico Container Network
 Interface (CNI). However, you can choose a different CNI pack that fits your needs, such as Flannel, Cilium, or Custom
@@ -898,13 +898,13 @@ and the set of worker nodes is the worker pool.
 
 Provide the following details for the control plane pool.
 
-| **Field**                                             | **Value for the control-plane-pool**     |
-| ----------------------------------------------------- | ---------------------------------------- |
-| Node pool name                                        | control-plane-pool                       |
-| Allow worker capability                               | On                                       |
-| Additional Labels (Optional)                          | None                                     |
-| [Taints](../../clusters/cluster-management/taints.md) | Off                                      |
-| Pool Configuration > Edge Hosts                       | Choose one of the registered Edge hosts. |
+| **Field**                                                | **Value for the control-plane-pool**     |
+| -------------------------------------------------------- | ---------------------------------------- |
+| Node pool name                                           | control-plane-pool                       |
+| Allow worker capability                                  | On                                       |
+| Additional Labels (Optional)                             | None                                     |
+| [Taints](../../../clusters/cluster-management/taints.md) | Off                                      |
+| Pool Configuration > Edge Hosts                          | Choose one of the registered Edge hosts. |
 
 The screenshot below shows an Edge host added to the control plane pool.
 
@@ -1064,12 +1064,12 @@ In addition, you can use Palette to manage the entire lifecycle of Edge clusters
 
 To learn more about Edge, check out the resources below.
 
-- [Build Edge Artifacts](../../clusters/edge/edgeforge-workflow/palette-canvos.md)
+- [Build Edge Artifacts](../../../clusters/edge/edgeforge-workflow/palette-canvos.md)
 
-- [Build Content Bundle](../../clusters/edge/edgeforge-workflow/build-content-bundle.md)
+- [Build Content Bundle](../../../clusters/edge/edgeforge-workflow/build-content-bundle.md)
 
-- [Model Edge Native Cluster Profile](../../clusters/edge/site-deployment/model-profile.md)
+- [Model Edge Native Cluster Profile](../../../clusters/edge/site-deployment/model-profile.md)
 
-- [Prepare Edge Hosts for Installation](../../clusters/edge/site-deployment/stage.md)
+- [Prepare Edge Hosts for Installation](../../../clusters/edge/site-deployment/stage.md)
 
-- [Perform Site Install](../../clusters/edge/site-deployment/site-installation/site-installation.md)
+- [Perform Site Install](../../../clusters/edge/site-deployment/site-installation/site-installation.md)

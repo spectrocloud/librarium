@@ -18,9 +18,9 @@ such as hospitals, rural areas, restaurants, and more.
 Edge clusters are Kubernetes clusters set up on Edge hosts, which can be bare metal or virtual machines.
 
 Before forming a cluster, the Edge hosts must be prepared and registered with Palette. This involves the
-[EdgeForge workflow](../../clusters/edge/edgeforge-workflow/edgeforge-workflow.md), which is responsible for building
-the required [Edge artifacts](../../clusters/edge/edgeforge-workflow/build-artifacts.md), such as the Installer ISO and
-Provider Images. Once these artifacts are built, you can use the Installer ISO to bootstrap the Edge installation on
+[EdgeForge workflow](../../../clusters/edge/edgeforge-workflow/edgeforge-workflow.md), which is responsible for building
+the required [Edge artifacts](../../../clusters/edge/edgeforge-workflow/build-artifacts.md), such as the Installer ISO
+and Provider Images. Once these artifacts are built, you can use the Installer ISO to bootstrap the Edge installation on
 your Edge host and the Provider Images to create a cluster profile.
 
 This tutorial will help you understand how the different Edge components work together. You will build and test the Edge
@@ -37,8 +37,8 @@ The diagram below illustrates how the components that will be deployed in this t
 To complete this tutorial, you will need the following prerequisites in place.
 
 - A host with _AMD64_ (also known as _x86_64_) processor architecture and access to the Internet. The host must meet the
-  [minimum requirements](../../clusters/edge/architecture.md#minimum-device-requirements) to build the artifacts and
-  allow the creation of a VM with the following specifications:
+  [minimum requirements](../../../clusters/edge/edgeforge-workflow/palette-canvos.md) to build the artifacts and allow
+  the creation of a VM with the following specifications:
   - 2 CPU
   - 8 GB memory
   - 100 GB storage
@@ -46,9 +46,9 @@ To complete this tutorial, you will need the following prerequisites in place.
 - Three available IP addresses on the same network as the host machine. One address is for the Edge host, one is for the
   cluster's Virtual IP (VIP) address, and one is for the MetalLB load balancer.
 - A [Palette account](https://www.spectrocloud.com/get-started) with
-  [tenant admin](../../tenant-settings/tenant-settings.md) access.
+  [tenant admin](../../../tenant-settings/tenant-settings.md) access.
 - A Palette tenant registration token. Refer to the
-  [Create a Registration Token](../../clusters/edge/site-deployment/site-installation/create-registration-token.md)
+  [Create a Registration Token](../../../clusters/edge/site-deployment/site-installation/create-registration-token.md)
   guide for instructions on how to create a token.
 - The following software installed:
   - A text editor such as Vi or Nano. This tutorial uses Vi as an example.
@@ -59,7 +59,7 @@ To complete this tutorial, you will need the following prerequisites in place.
 ## EdgeForge Workflow
 
 The first step to deploying an Edge cluster is to prepare your Edge host with all the required components. This process
-is called [EdgeForge](../../clusters/edge/edgeforge-workflow/edgeforge-workflow.md) and uses the
+is called [EdgeForge](../../../clusters/edge/edgeforge-workflow/edgeforge-workflow.md) and uses the
 [CanvOS](https://github.com/spectrocloud/CanvOS/blob/main/README.md) utility. In this section, you will build the
 Installer ISO and provider images Edge artifacts.
 
@@ -143,7 +143,7 @@ version tag.
 ### Create User Data
 
 Once the **.arg** file is ready, the next step is to create a
-[**user-data**](../../clusters/edge/edgeforge-workflow/prepare-user-data.md) file, which allows you to provide
+[**user-data**](../../../clusters/edge/edgeforge-workflow/prepare-user-data.md) file, which allows you to provide
 customized configuration to the Edge Installer ISO. In this tutorial, the file will be used to embed the Palette
 registration token, Palette endpoint, and Edge host login information into the Edge Installer ISO. The login credentials
 allow you to SSH into your Edge host.
@@ -315,8 +315,8 @@ k3s-1.29.6-v4.4.12-vbox-tutorial: digest: sha256:42f8805830c7fd3816bb27e8d710d17
 
 [ttl.sh](https://ttl.sh/) is free and does not require you to sign in to use it. However, this is a short-lived image
 registry, which means that the pushed images will expire after 24 hours. Refer to the
-[Build Edge Artifacts](../../clusters/edge/edgeforge-workflow/build-artifacts.md) guide to learn how to push images to a
-different registry.
+[Build Edge Artifacts](../../../clusters/edge/edgeforge-workflow/palette-canvos.md) guide to learn how to push images to
+a different registry.
 
 :::
 
@@ -669,6 +669,6 @@ configurations before deploying them in production.
 
 We encourage you to check the reference resources below to learn more about Palette Edge.
 
-- [Palette Edge](../../clusters/edge/edge.md)
-- [Edge Architecture](../../clusters/edge/architecture.md)
-- [EdgeForge Workflow](../../clusters/edge/edgeforge-workflow/edgeforge-workflow.md)
+- [Palette Edge](../../../clusters/edge/edge.md)
+- [Edge Architecture](../../../clusters/edge/architecture.md)
+- [EdgeForge Workflow](../../../clusters/edge/edgeforge-workflow/edgeforge-workflow.md)

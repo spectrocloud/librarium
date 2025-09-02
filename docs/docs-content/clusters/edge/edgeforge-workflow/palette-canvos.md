@@ -147,8 +147,8 @@ customization.
 
    :::
 
-   Using the arguments defined in the `.arg` file, the final provider images you generate will have the following
-   naming convention, `[IMAGE_REGISTRY]/[IMAGE_REPO]:[CUSTOM_TAG]`. For example, one of the provider images will be
+   Using the arguments defined in the `.arg` file, the final provider images you generate will have the following naming
+   convention, `[IMAGE_REGISTRY]/[IMAGE_REPO]:[CUSTOM_TAG]`. For example, one of the provider images will be
    `ttl.sh/ubuntu:k3s-1.27.2-v4.0.6-palette-learn`.
 
    ```bash
@@ -203,38 +203,38 @@ customization.
                - admin
              passwd: kairos
     EOF
-    ```
+   ```
 
     <!-- prettier-ignore-start -->
 
    :::warning
 
-    - If you haven't set a default project for the registration token, ensure that you provide the
-      `stylus.site.projectName` parameter with the value `Default` in `user-data`.
-    - If your setup meets the following conditions, include the following `initramfs` stage in your `user-data` file,
-      replacing `<interface-name>` with the name of the network interface on your Edge host:
+   - If you haven't set a default project for the registration token, ensure that you provide the
+     `stylus.site.projectName` parameter with the value `Default` in `user-data`.
+   - If your setup meets the following conditions, include the following `initramfs` stage in your `user-data` file,
+     replacing `<interface-name>` with the name of the network interface on your Edge host:
 
-      - Your host is a virtual machine.
-      - The virtual machine uses a VMXNET3 adapter.
-      - You are planning to use _one_ of the following in your Edge cluster:
+     - Your host is a virtual machine.
+     - The virtual machine uses a VMXNET3 adapter.
+     - You are planning to use _one_ of the following in your Edge cluster:
 
-        - An [overlay network](../networking/vxlan-overlay.md).
-        - <VersionedLink text="Flannel" url="/integrations/cni-flannel" /> for your CNI.
+       - An [overlay network](../networking/vxlan-overlay.md).
+       - <VersionedLink text="Flannel" url="/integrations/cni-flannel" /> for your CNI.
 
-      ```shell
-      stages:
-        initramfs:
-          - name: "Disable UDP segmentation"
-            commands:
-              - ethtool --offload <interface-name> tx-udp_tnl-segmentation off
-              - ethtool --offload <interface-name> tx-udp_tnl-csum-segmentation off
-      ```
+     ```shell
+     stages:
+       initramfs:
+         - name: "Disable UDP segmentation"
+           commands:
+             - ethtool --offload <interface-name> tx-udp_tnl-segmentation off
+             - ethtool --offload <interface-name> tx-udp_tnl-csum-segmentation off
+     ```
 
-      This is due to a
-      [known issue with VMware's VMXNET3 adapter](https://github.com/cilium/cilium/issues/13096#issuecomment-723901955),
-      which is widely used in different virtual machine management services, including VMware vSphere and Hyper-V.
+     This is due to a
+     [known issue with VMware's VMXNET3 adapter](https://github.com/cilium/cilium/issues/13096#issuecomment-723901955),
+     which is widely used in different virtual machine management services, including VMware vSphere and Hyper-V.
 
-    :::
+   :::
 
     <!-- prettier-ignore-end -->
 
@@ -924,6 +924,6 @@ After building the Edge artifacts and creating an Edge cluster profile, the next
 image to prepare your Edge host. To learn more about utilizing Edge artifacts to prepare Edge hosts and deploy
 Palette-managed Edge clusters, we encourage you to check out the reference resources below.
 
-- [Deploy an Edge Cluster on VMware](../../../tutorials/edge/deploy-cluster.md)
+- [Deploy an Edge Cluster on VMware](../../../tutorials/clusters/edge/deploy-cluster.md)
 
 - [Prepare Edge Host for Installation](../site-deployment/stage.md)

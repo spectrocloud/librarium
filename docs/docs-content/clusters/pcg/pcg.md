@@ -56,4 +56,4 @@ for OpenStack is 1.24.10 on all the Palette versions included below.
 
 - [Manage a PCG](./manage-pcg/manage-pcg.md)
 
-- [Deploy App Workloads with a PCG](../../tutorials/cluster-deployment/pcg/deploy-app-pcg.md)
+- [Deploy App Workloads with a PCG](../../tutorials/clusters/pcg/deploy-app-pcg.md)
