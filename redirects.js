@@ -551,10 +551,6 @@ let redirects = [
     to: "/tutorials/profiles/update-k8s-cluster/",
   },
   {
-    from: "/tutorials/cluster-management/update-maintain/cluster-profile-variables",
-    to: "/tutorials/profiles/cluster-profile-variables/",
-  },
-  {
     from: "/tutorials/edge/deploy-cluster/",
     to: "/tutorials/clusters/edge/deploy-cluster/",
   },
