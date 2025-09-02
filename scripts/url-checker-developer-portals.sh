@@ -3,9 +3,15 @@
 # Set variables for GitHub API
 ACCESS_TOKEN=$ACCESS_TOKEN
 DELAY=1  # seconds between requests
-LINKS_FILE="all_github_links.txt"
-BROKEN_LINKS_FILE="link_report_github.txt"
-CACHE_FILE="github_cache.txt"
+# Developer portal links to check with dots (.) escaped
+DEVELOPER_PORTAL_LINKS=(
+    "developers\.redhat\.com"
+    "www\.intel\.com"
+    "github\.com"
+)
+LINKS_FILE="all_links.txt"
+BROKEN_LINKS_FILE="link_report_developer_portals.txt"
+CACHE_FILE="developer_portal_cache.txt"
 TOO_MANY_REQUESTS=429
 MAX_RETRIES=5 # maximum number of retries for a single URL
 RETRY_DELAY=10  # increment seconds to wait before retrying
@@ -13,17 +19,20 @@ RETRY_DELAY=10  # increment seconds to wait before retrying
 # Create cache file if it doesn't exist
 touch "$CACHE_FILE"
 touch "$BROKEN_LINKS_FILE"
+touch "$LINKS_FILE"
 
-echo "⏭️ Starting checks for Github URLs in Docs."
+echo "⏭️ Starting checks for Developer Portal URLs in Docs."
 
-# Find all GitHub links in the documentation /docs and /partials directories.
+# Find all Developer Portal links in the documentation /docs and /partials directories.
 # Strip all parentheses and anchors from the links, as they will be heavily throttled by GitHub.
-grep -rHoE '\(https?://github\.com/[^") ]+' \
-    --include="*.md" \
-    --include="*.mdx" \
-    ./docs ./_partials | \
-    sed 's/[()]//g' | \
-    sed 's/#.*$//' > "$LINKS_FILE"
+for portal in "${DEVELOPER_PORTAL_LINKS[@]}"; do
+    grep -rHoE '\(https?://'"$portal"'/[^") ]+' \
+        --include="*.md" \
+        --include="*.mdx" \
+        ./docs ./_partials | \
+        sed 's/[()]//g' | \
+        sed 's/#.*$//' >> "$LINKS_FILE"
+done
 
 if [[ -n "$ACCESS_TOKEN" ]]; then
     echo "🔏 Access token found. We will use it for authentication where possible."
@@ -31,18 +40,27 @@ else
     echo "🟡 Access token not found. You may be rate-limited by GitHub."
 fi
 
-# Function to make a request to the URL and get the status code.
+# Function to make a request to the URL and get the status code for GitHub.
 # Params:
 # $1 - url
-make_request () {
+make_request_github () {
     url=$1
     status_code=""
     if [[ -n "$ACCESS_TOKEN" ]]; then
         status_code=$(curl -s -o /dev/null -w "%{http_code}" -H "Authorization: token $ACCESS_TOKEN" -A "Spectro-URL-Checker" "$url")
     else
-        status_code=$(curl -s -o /dev/null -w "%{http_code}" -A "URL-Checker" "$url")
+        status_code=$(make_request "$url")
     fi
     
+    echo "$status_code"
+}
+
+# Function to make a request to the URL and get the status code.
+# Params:
+# $1 - url
+make_request () {
+    url=$1
+    status_code=$(curl -s -o /dev/null -w "%{http_code}" -A "URL-Checker" "$url")
     echo "$status_code"
 }
 
@@ -56,7 +74,11 @@ retry_url_get() {
 
     while [[ $retries -lt $MAX_RETRIES ]]; do
         # Make the request and get the status code
-        status_code=$(make_request "$url")
+        if [[ $url == *"github"* ]]; then
+            status_code=$(make_request_github "$url")
+        else
+            status_code=$(make_request "$url")
+        fi
 
         code=$(echo "$status_code" | cut -d' ' -f1)
         # Check if the status code is 429 (Too Many Requests)
@@ -106,6 +128,8 @@ while IFS= read -r line; do
     # Skip if the URL is empty
     [[ -z "$url" ]] && continue
 
+    echo "Checking Developer Portal link: $url"
+
     # Get the status code, either from GH or from the cache
     status_code=$(get_url_status_code "$url")
 
@@ -119,7 +143,7 @@ while IFS= read -r line; do
     sleep $DELAY
 done < "$LINKS_FILE"
 
-echo "✅ Completed checks for Github URLs in Docs."
+echo "✅ Completed checks for Developer Portal URLs in Docs."
 
 # Cleanup
 rm -f $LINKS_FILE

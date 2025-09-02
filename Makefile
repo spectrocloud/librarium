@@ -30,8 +30,6 @@ VERIFY_URL_PATHS=$(shell find ./docs ./_partials \( -name "*.md" -o -name "*.mdx
 RATE_LIMITED_FILES_LIST:="docs/docs-content/security-bulletins/**/*.md" \
 	"docs/docs-content/security-bulletins/*.md" \
 	"docs/docs-content/unlisted/cve-reports.md" \
-	"docs/docs-content/clusters/edge/trusted-boot/trusted-boot.md" \
-	"docs/docs-content/byoos/capi-image-builder/build-image-vmware/non-airgap-build/rhel-capi.md"
 
 help: ## Display this help
 	@awk 'BEGIN {FS = ":.*##"; printf "\nUsage:\n  make \033[36m<target>\033[0m\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-15s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[0m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
@@ -326,11 +324,11 @@ verify-rate-limited-links-ci: ## Check for broken URLs in production in a GitHub
 	@rm temp_rate_limit_report.json
 	@mv filtered_rate_limit_report.json scripts/link_rate_limit_report.json
 
-verify-github-links: ## Check for broken GitHub links
-	@echo "Checking for broken GitHub links in CI environment..."
-	@rm link_report_github.txt || echo "No report exists. Proceeding to scan step"
-	./scripts/url-checker-github.sh
-	@mv link_report_github.txt scripts/link_report_github.txt
+verify-developer-portal-links: ## Check for broken Developer Portal links
+	@echo "Checking for broken Developer Portal links in CI environment..."
+	@rm link_report_developer_portals.txt || echo "No report exists. Proceeding to scan step"
+	./scripts/url-checker-developer-portals.sh
+	@mv link_report_developer_portals.txt scripts/link_report_developer_portals.txt
 
 ###@ Image Formatting
 
