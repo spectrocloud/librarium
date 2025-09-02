@@ -25,7 +25,7 @@ concepts.
   virtual machines and are managed by operators at remote sites.
 
 <div align="center" className="desktop-only-display">
-  <img src="/tutorials/tutorials_landing-page-intro.webp" width="75%" />
+  <img src="/tutorials/tutorials_landing-page-intro.webp" width="75%" alt="Palette Users" />
 </div>
 
 ### Ready to Start Learning?
