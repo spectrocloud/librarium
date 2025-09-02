@@ -18,6 +18,8 @@ applications.
 Explore the tutorials below to learn how to use cluster profiles for cluster updates and templating through cluster
 profile variables.
 
+<!-- vale off -->
+
 <SimpleCardGrid
   hideNumber="true"
   cards={[

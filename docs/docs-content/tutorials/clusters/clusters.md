@@ -17,6 +17,8 @@ centers, bare metal devices, and edge locations.
 
 Explore the tutorials below to learn how to deploy Palette clusters in public cloud, edge, and data center environments.
 
+<!-- vale off -->
+
 <SimpleCardGrid
   hideNumber="true"
   cards={[

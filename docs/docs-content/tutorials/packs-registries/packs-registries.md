@@ -16,6 +16,8 @@ manage Kubernetes environments across different teams and lifecycle stages.
 
 Explore the tutorial below to learn how to create and deploy a custom pack.
 
+<!-- vale off -->
+
 <SimpleCardGrid
   hideNumber="true"
   cards={[

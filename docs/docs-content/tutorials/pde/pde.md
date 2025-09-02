@@ -14,6 +14,8 @@ building, testing, deploying, and monitoring applications without the need to ma
 
 Explore the tutorial below to learn how to deploy applications using Palette Dev Engine.
 
+<!-- vale off -->
+
 <SimpleCardGrid
   hideNumber="true"
   cards={[
