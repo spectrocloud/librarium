@@ -33,7 +33,7 @@ amount of CPU time the pod will request based on the number of virtual CPUs (vCP
 
 2. From the left **Main Menu**, click on **Profiles**.
 
-3. Select the profile you use to create the cluster with the VMO pack.
+3. Select the cluster profile you used to create your VMO cluster.
 
 4. Select the VMO add-on layer of the cluster profile.
 
@@ -75,14 +75,14 @@ To learn about options for memory overcommitment, refer to
 
 ### Procedure
 
-You can make several changes to reduce the memory footprint and over-commit the per-VirtualMachineInstance (VMI) memory
-overhead.
+KubeVirt provides several configurations to help you reduce the memory footprint and over-commit the
+per-VirtualMachineInstance (VMI) memory overhead.
 
-Log in to [Palette](https://console.spectrocloud.com).
+1. Log in to [Palette](https://console.spectrocloud.com).
 
 2. From the left **Main Menu**, click on **Profiles**.
 
-3. Select the profile you use to create the cluster with the VMO pack.
+3. Select the cluster profile you used to create your VMO cluster.
 
 4. Select the VMO add-on layer of the cluster profile.
 
@@ -118,7 +118,7 @@ Log in to [Palette](https://console.spectrocloud.com).
 
   When setting `memoryOvercommit: "150"`, the memory request is not explicitly set. As a result, it will be implicitly
   set to reach memory overcommit of 150%. For example, when `spec.domain.memory.guest: 3072M`, the memory request is set
-  to 2048M, if not otherwise set. Note that the actual memory request depends on additional confiugration options such
+  to 2048M, if not otherwise set. Note that the actual memory request depends on additional configuration options such
   as `OvercommitGuestOverhead`.
 
   :::
