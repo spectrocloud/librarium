@@ -14,8 +14,8 @@ integrations with Spectro Cloud Palette.
 We welcome all contributions to the Spectro Cloud community packs, either by adding new packs or updating existing
 packs. You can read our
 [Contribution Guidelines](https://github.com/spectrocloud/pack-central?tab=readme-ov-file#contributing) in the community
-packs repository. Check out the [Deploy a Custom Pack](../tutorials/profiles/deploy-pack.md) tutorial to learn more
-about how to build and deploy your own custom pack.
+packs repository. Check out the [Deploy a Custom Pack](../tutorials/packs-registries/deploy-pack.md) tutorial to learn
+more about how to build and deploy your own custom pack.
 
 :::warning
 
