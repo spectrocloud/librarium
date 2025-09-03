@@ -65,6 +65,12 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 :::
 
+#### Breaking Changes
+
+- The `spectrocloud_macro` Terraform resource is no longer available. We recommend using the `spectrocloud_macros`
+  resource to create and manage service output variables and macros. For more information, refer to the Spectro Cloud
+  Terraform provider [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
+
 #### Features
 
 #### Improvements
