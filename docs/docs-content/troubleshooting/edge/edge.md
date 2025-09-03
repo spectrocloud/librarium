@@ -67,8 +67,8 @@ There are several possible ways to troubleshoot this issue:
 
 :::info
 
-To view all available versions of the `kernel-lt` (long-term support) package from ELRepo, run the following command on a
-system that uses `dnf`, such as RHEL, Rocky Linux, CentOS, or a compatible container.
+To view all available versions of the `kernel-lt` (long-term support) package from ELRepo, run the following command on
+a system that uses `dnf`, such as RHEL, Rocky Linux, CentOS, or a compatible container.
 
 ```bash
 dnf --showduplicates --enablerepo=elrepo-kernel list available kernel-lt
