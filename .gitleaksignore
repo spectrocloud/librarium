@@ -673,3 +673,6 @@ c0c63dc4222907cff4801266617c52c782fb01f7:docs/docs-content/vertex/install-palett
 c0c63dc4222907cff4801266617c52c782fb01f7:docs/docs-content/vertex/install-palette-vertex/install-on-kubernetes/install.md:docker-config-json:392
 c0c63dc4222907cff4801266617c52c782fb01f7:docs/docs-content/vertex/install-palette-vertex/install-on-kubernetes/airgap-install/install.md:docker-config-json:481
 e0ee671d59c7bfba4774d6babd3d79c9ad09ae64:docs/docs-content/troubleshooting/enterprise-install.md:docker-config-json:50
+663d80beddbd88106768863411be05187cc6152a:docs/docs-content/automation/crossplane/deploy-cluster-azure-crossplane.md:generic-api-key:252
+663d80beddbd88106768863411be05187cc6152a:docs/docs-content/automation/crossplane/deploy-cluster-aws-crossplane.md:generic-api-key:253
+663d80beddbd88106768863411be05187cc6152a:docs/docs-content/automation/crossplane/deploy-cluster-gcp-crossplane.md:generic-api-key:252
