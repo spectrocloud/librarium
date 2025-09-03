@@ -93,8 +93,8 @@ dnf --showduplicates --enablerepo=elrepo-kernel list available kernel-lt
        fi
    ```
 
-   Update the conditional block as in the example below to install the latest available version in the 5.4.x Long-Term Support (LTS) kernel
-   line using ELRepo.
+   Update the conditional block as in the example below to install the latest available version in the 5.4.x Long-Term
+   Support (LTS) kernel line using ELRepo.
 
    ```dockerfile
    RUN if [ "${OS_DISTRIBUTION}" = "rhel" ]; then \
