@@ -94,10 +94,12 @@ html[data-theme="dark"] {
     border-bottom: 1px solid var(--ifm-breadcrumb-item-background-active);
   }
 
+  // The "Select" text in Release Notes Tip admonition drop-down.
   .reactSelect__placeholder.css-1jqq78o-placeholder {
     color: var(--ifm-menu-color);
   }
 
+  // The text for code comments in code blocks
   .theme-code-block .token.comment {
     color: #6baa8c !important;
   }

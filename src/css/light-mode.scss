@@ -63,7 +63,7 @@ html[data-theme="light"] {
     }
   }
 
-  // This relates to menu items except in the Tutorials tab.
+  // This relates to menu items except those in the Tutorials tab.
   .menu__link.menu__link--active {
     color: var(--ifm-color-primary-dark);
     border-radius: 0;
@@ -105,29 +105,25 @@ html[data-theme="light"] {
     border-bottom: 1px solid var(--ifm-breadcrumb-item-background-active);
   }
 
+  // The text for the active breadcrumb link.
   .breadcrumbs__link {
     color: var(--ifm-color-primary-darker);
   }
 
+  // The "Select" text in Release Notes Tip admonition drop-down.
   .reactSelect__placeholder.css-1jqq78o-placeholder {
     color: var(--ifm-menu-color);
   }
 
+  // The text for for inactive tabs
   .tabs__item.tabItem_LNqP {
     color: var(--ifm-color-primary);
   }
 
+  // The text for active tabs
   .tabs__item.tabItem_LNqP.tabs__item--active {
     color: var(--ifm-color-primary-darkest);
   }
-
-  // .navbar__item.navbar__link.navbar__link--active {
-  //   color: var(--ifm-navbar-link-hover-color);
-  // }
-
-  // .navbar__item.navbar__link {
-  //   color: var(--ifm-font-color-base);
-  // }
 
   // .tabs__item {
   //   border-radius: 2px 2px 0 0;
