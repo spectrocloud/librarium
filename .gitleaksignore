@@ -679,3 +679,6 @@ c0c63dc4222907cff4801266617c52c782fb01f7:docs/docs-content/vertex/install-palett
 81df6cdf5f5a9d5794d331c4d32e97463181f99a:_partials/getting-started/_cluster_profile_import_vmware.mdx:generic-api-key:42
 8957072b9408259a9f8b768631bc70c41259e6df:docs/docs-content/user-management/authentication/api-key/delete-api-key.md:curl-auth-header:122
 8957072b9408259a9f8b768631bc70c41259e6df:docs/docs-content/user-management/authentication/api-key/delete-api-key.md:curl-auth-header:178
+f9d6b540cd474d1cf6b62bbad5453683abf388fa:docs/docs-content/automation/crossplane/deploy-cluster-aws-crossplane.md:generic-api-key:253
+f9d6b540cd474d1cf6b62bbad5453683abf388fa:docs/docs-content/automation/crossplane/deploy-cluster-gcp-crossplane.md:generic-api-key:252
+f9d6b540cd474d1cf6b62bbad5453683abf388fa:docs/docs-content/automation/crossplane/deploy-cluster-azure-crossplane.md:generic-api-key:252
