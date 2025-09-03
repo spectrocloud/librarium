@@ -125,6 +125,11 @@ html[data-theme="light"] {
     color: var(--ifm-color-primary-darkest);
   }
 
+  // The hashes next to headers.
+  .hash-link {
+    opacity: 0.8;
+  }
+
   // .tabs__item {
   //   border-radius: 2px 2px 0 0;
   //   font-weight: 500;
