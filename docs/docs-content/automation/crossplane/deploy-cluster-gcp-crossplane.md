@@ -54,7 +54,7 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in GCP.
     metadata:
       name: provider-palette
     spec:
-      package: xpkg.upbound.io/crossplane-contrib/provider-palette:$PALETTE_CROSSPLANE_PROVIDER_VERSION
+      package: crossplane-contrib/provider-palette:$PALETTE_CROSSPLANE_PROVIDER_VERSION
     EOF
     ```
 
@@ -93,7 +93,10 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in GCP.
         {
         "api_key": "$PALETTE_API_KEY",
         "project_name": "$PALETTE_PROJECT_NAME",
-        "host": "$PALETTE_HOST"
+        "host": "$PALETTE_HOST",
+        "ignore_insecure_tls_error": "true",
+        "retry_attempts": "1",
+        "trace": "true"
         }
     EOF
     ```
