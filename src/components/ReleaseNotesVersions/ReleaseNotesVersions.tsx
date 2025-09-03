@@ -1,6 +1,6 @@
 /* eslint-disable */
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useId } from "react";
 import { useHistory } from "@docusaurus/router";
 import Admonition from "@theme/Admonition";
 import { useVersions } from "@docusaurus/plugin-content-docs/client";
@@ -41,6 +41,20 @@ export function ReleaseNotesVersions(): JSX.Element | null {
   const [selectedVersion, setSelectedVersion] = useState<VersionOption | null>(null);
   const history = useHistory();
   const isBrowser = useIsBrowser();
+  const selectInputId = useId(); // unique & SSR-safe id for the inner input
+
+  // Visually-hidden helper to keep label available to AT without changing layout
+  const srOnly: React.CSSProperties = {
+    position: "absolute",
+    width: 1,
+    height: 1,
+    padding: 0,
+    margin: -1,
+    overflow: "hidden",
+    clip: "rect(0 0 0 0)",
+    whiteSpace: "nowrap",
+    border: 0,
+  };
 
   const versionsList = useVersions("default");
 
@@ -125,8 +139,12 @@ export function ReleaseNotesVersions(): JSX.Element | null {
           navigate to the release notes of the desired version.
         </p>
         <div className={styles.dropdownContainer}>
+          <label htmlFor={selectInputId} style={srOnly}>
+            Select release notes version
+          </label>
           <Select
             classNamePrefix="reactSelect"
+            inputId={selectInputId}
             onChange={handleVersionChange}
             value={selectedVersion}
             options={versions}
