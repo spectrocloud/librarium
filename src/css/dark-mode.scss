@@ -95,7 +95,7 @@ html[data-theme="dark"] {
   }
 
   // The "Select" text in Release Notes Tip admonition drop-down.
-  .reactSelect__placeholder.css-1jqq78o-placeholder {
+  [class*="reactSelect__placeholder"][class*="-placeholder"] {
     color: var(--ifm-menu-color);
   }
 

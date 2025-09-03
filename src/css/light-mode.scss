@@ -116,18 +116,19 @@ html[data-theme="light"] {
   }
 
   // The text for for inactive tabs
-  .tabs__item.tabItem_LNqP {
+  [class*="tabs__item"][class*="tabItem_"] {
     color: var(--ifm-color-primary);
   }
 
   // The text for active tabs
-  .tabs__item.tabItem_LNqP.tabs__item--active {
+  [class*="tabs__item"][class*="tabItem_"][class*="tabs__item--active"] {
     color: var(--ifm-color-primary-darkest);
   }
 
   // The hashes next to headers.
   .hash-link {
     opacity: 0.8;
+    color: var(--ifm-color-primary-dark);
   }
 
   // .tabs__item {
