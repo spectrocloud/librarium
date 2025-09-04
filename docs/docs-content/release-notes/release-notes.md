@@ -21,6 +21,10 @@ tags: ["release-notes"]
 
 #### Breaking Changes {#breaking-changes-4.7.b}
 
+- The `spec.jsonCredentialsFileUid` field in API requests is no longer available. Users who create GCP cloud accounts
+  using the API should use the `spec.jsonCredentials` field to supply their credentials in JSON format. Refer to the
+  [API documentation](/api/introduction) for further details.
+
 #### Features
 
 #### Improvements
@@ -33,6 +37,9 @@ tags: ["release-notes"]
   or later because content created with older CLI versions lacks required images. We recommend
   [downloading](downloads/cli-tools.md) and using Palette CLI version 4.7.b or later to build content for Palette 4.7.b
   or later.
+
+#### Breaking Changes
+
 - Edge clusters with the Palette agent versions prior to 4.7.b do not support upgrading to the following Kubernetes pack
   versions released in 4.7.b:
   <VersionedLink text="Palette Optimized Canonical" url="/integrations/packs/?pack=edge-canonical" /> 1.32.8 and 1.33.4;
