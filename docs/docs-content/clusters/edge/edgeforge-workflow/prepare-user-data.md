@@ -212,15 +212,15 @@ subject to change. For production workloads, create the `.arg` and `user-data` f
    ```yaml
    #cloud-config
    stages:
-   initramfs:
-     - users:
-         USERNAME:
-           passwd: ******
-           groups:
-           - sudo
-           ssh_authorized_keys:
-           - ssh-rsa AAAAB3N…
-       name: Create user and assign SSH key
+     initramfs:
+       - users:
+           USERNAME:
+             passwd: ******
+             groups:
+               - sudo
+             ssh_authorized_keys:
+               - ssh-rsa AAAAB3N…
+         name: Create user and assign SSH key
    ```
 
 #### Configure Proxy Settings (Optional)
