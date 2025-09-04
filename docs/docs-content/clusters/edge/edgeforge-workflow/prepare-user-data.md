@@ -145,7 +145,7 @@ subject to change. For production workloads, create the `.arg` and `user-data` f
    `stylus` parameter.
 
    ```yaml
-   #cloud-init
+   #cloud-config
    stylus:
      managementMode: local
    ```
@@ -186,7 +186,7 @@ subject to change. For production workloads, create the `.arg` and `user-data` f
    installs Amazon Systems Manager agent on your Edge host during the `after-install-chroot` stage.
 
    ```yaml
-   #cloud-init
+   #cloud-config
    stages:
      after-install-chroot:
        - name: "Install SSM"
@@ -210,7 +210,7 @@ subject to change. For production workloads, create the `.arg` and `user-data` f
    the list of authorized keys for that user.
 
    ```yaml
-   #cloud-init
+   #cloud-config
    stages:
    initramfs:
      - users:
@@ -255,7 +255,7 @@ subject to change. For production workloads, create the `.arg` and `user-data` f
    the Edge host to power off automatically post-installation.
 
    ```yaml
-   #cloud-init
+   #cloud-config
    install:
      poweroff: true
    ```
