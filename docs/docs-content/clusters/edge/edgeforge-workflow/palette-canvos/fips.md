@@ -222,7 +222,7 @@ image with.
     `kairos` and its password with your desired username and password.
 
     ```yaml
-    #cloud-init
+    #cloud-config
     install:
        grub_options:
          extra_cmdline: "fips=1 selinux=0"
@@ -239,7 +239,7 @@ image with.
             users:
                kairos:
                   groups:
-                  - admin
+                    - admin
                   passwd: kairos
     ```
 
