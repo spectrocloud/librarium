@@ -52,7 +52,7 @@ Installer configuration file and the OS pack support the usage of cloud-init sta
    change the installation mode to `airgap`. Add the `installationMode` parameter to under the `stylus` parameter.
 
    ```yaml
-   #cloud-init
+   #cloud-config
    stylus:
      installationMode: airgap
    ```
@@ -93,7 +93,7 @@ Installer configuration file and the OS pack support the usage of cloud-init sta
    installs Amazon Systems Manager agent on your Edge host during the `after-install-chroot` stage.
 
    ```yaml
-   #cloud-init
+   #cloud-config
    stages:
      after-install-chroot:
        - name: "Install SSM"
@@ -109,17 +109,17 @@ Installer configuration file and the OS pack support the usage of cloud-init sta
    the list of authorized keys for that user.
 
    ```yaml
-   #cloud-init
+   #cloud-config
    stages:
-    initramfs:
-      - users:
-          USERNAME:
-            passwd: ******
-            groups:
-            - sudo
-            ssh_authorized_keys:
-            - ssh-rsa AAAAB3N…
-        name: Create user and assign SSH key
+     initramfs:
+       - users:
+           USERNAME:
+             passwd: ******
+             groups:
+               - sudo
+             ssh_authorized_keys:
+               - ssh-rsa AAAAB3N…
+         name: Create user and assign SSH key
    ```
 
 ### Configure Proxy Settings (Optional)
@@ -150,7 +150,7 @@ automatically apply to application workloads. To configure applications to use t
    the Edge host to power off automatically post-installation.
 
    ```yaml
-   #cloud-init
+   #cloud-config
    install:
      poweroff: true
    ```
