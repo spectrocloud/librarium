@@ -44,14 +44,20 @@ You can attach this pack to a cluster profile. For more information, refer to
 [Cluster Profiles](../profiles/cluster-profiles/cluster-profiles.md). The pack installs the Spectro Proxy client in the
 workload clusters and configures the cluster's API server to point to a managed proxy server.
 
+<!-- prettier-ignore-start -->
+
 :::info
 
 This pack can be combined with the
-[Kubernetes dashboard](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/) pack to expose the
-Kubernetes dashboard. To learn more about exposing the Kubernetes dashboard, check out the
-[Enable Kubernetes Dashboard](../clusters/cluster-management/kubernetes-dashboard.md) guide.
+<VersionedLink text="Kubernetes Dashboard" url="/integrations/packs/?pack=k8s-dashboard" /> or
+<VersionedLink text="Spectro Kubernetes Dashboard" url="/integrations/packs/?pack=spectro-k8s-dashboard" /> packs.
+
+To learn more about exposing the Spectro Kubernetes Dashboard, check out the [Spectro Kubernetes Dashboard](../clusters/cluster-management/spectro-kubernetes-dashboard.md)
+guide.
 
 :::
+
+<!-- prettier-ignore-end -->
 
 ## Network Connectivity
 
@@ -299,6 +305,6 @@ data "spectrocloud_pack_simple" "spectro-proxy" {
 
 # References
 
-- [Enable Kubernetes Dashboard](../clusters/cluster-management/kubernetes-dashboard.md)
+- [Enable Spectro Kubernetes Dashboard](../clusters/cluster-management/spectro-kubernetes-dashboard.md)
 
 - [Terraform Data Resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/data-sources/pack)

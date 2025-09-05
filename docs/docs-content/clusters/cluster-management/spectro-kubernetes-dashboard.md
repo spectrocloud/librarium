@@ -10,10 +10,24 @@ tags: ["clusters", "cluster management", "dashboard"]
 The Spectro Kubernetes Dashboard is a customized version of the open source
 [Kubernetes Dashboard](https://github.com/kubernetes/dashboard) project. Kubernetes Dashboard is a general purpose,
 web-based UI for Kubernetes clusters. It allows users to manage and troubleshoot applications, as well as manage the
-cluster itself.
-
-For more information about the Kubernetes dashboard, visit the
+cluster itself. For more information about the Kubernetes Dashboard, visit the
 [Official Kubernetes Dashboard](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/) page.
+
+<!-- prettier-ignore-start -->
+
+The Spectro Kubernetes Dashboard is available as a
+<VersionedLink text="pack" url="/integrations/packs/?pack=spectro-k8s-dashboard" /> that can be added to your cluster
+profile. The pack reduces the complexity of deploying the standard Kubernetes Dashboard by creating required resources
+and roles.
+
+:::tip
+
+If you want to learn how to deploy the standard Kubernetes Dashboard instead, visit the
+<VersionedLink text="Kubernetes Dashboard pack page" url="/integrations/packs/?pack=k8s-dashboard"/>.
+
+:::
+
+<!-- prettier-ignore-end -->
 
 ## Prerequisites
 
@@ -38,18 +52,18 @@ For more information about the Kubernetes dashboard, visit the
 
 7. In the search field, search for and select the **Spectro Kubernetes Dashboard** pack.
 
-![Image of the pack search screen with the search result shown](/clusters_cluster-management_spectro-kubernetes-dashboard_select-dashboard-pack.webp)
+   ![Image of the pack search screen with the search result shown](/clusters_cluster-management_spectro-kubernetes-dashboard_select-dashboard-pack.webp)
 
 8. Select the most recent version and **Confirm** your changes.
 
-:::info
+   :::info
 
-Upgrading the Spectro Kubernetes Dashboard from older versions is not supported. To upgrade versions, you must remove
-the old Spectro Kubernetes Dashboard version from your cluster profile and add the desired version. The Spectro
-Kubernetes Dashboard reads metrics from a data store in the Kubernetes cluster. No data is lost during the upgrade
-process.
+   Upgrading the Spectro Kubernetes Dashboard from older versions is not supported. To upgrade versions, you must remove
+   the old Spectro Kubernetes Dashboard version from your cluster profile and add the desired version. The Spectro
+   Kubernetes Dashboard reads metrics from a data store in the Kubernetes cluster. No data is lost during the upgrade
+   process.
 
-:::
+   :::
 
 9. Leave the default values for the **Spectro Kubernetes Dashboard** pack and select **Confirm & Create** on the pack
    customization screen.
@@ -66,7 +80,7 @@ process.
 
 14. Click **Save Changes**.
 
-![Image showing the selection of the profile version to be applied to the selected cluster](/clusters_cluster-management_spectro-kubernetes-dashboard_apply-profile.webp)
+    ![Image showing the selection of the profile version to be applied to the selected cluster](/clusters_cluster-management_spectro-kubernetes-dashboard_apply-profile.webp)
 
 15. Select **Settings** from the top right, and click on **Cluster Settings**.
 
@@ -76,7 +90,7 @@ process.
 
 18. Leave the **Subject type** set to user, and enter the email address of the user in **Subject Name**.
 
-![Image showing how to create a Cluster Role Binding](/clusters_cluster-management_spectro-kubernetes-dashboard_add-role-binding.webp)
+    ![Image showing how to create a Cluster Role Binding](/clusters_cluster-management_spectro-kubernetes-dashboard_add-role-binding.webp)
 
 19. To add additional users, click **Add Subject** and repeat step 18. Click **Confirm** when you have finished.
 
@@ -84,7 +98,7 @@ process.
 
 21. Select your Kubernetes layer and set the OIDC to **Palette**.
 
-![Image of the Kubernetes OIDC selection page](/clusters_cluster-management_spectro-kubernetes-dashboard_select-kubernetes-pack.webp)
+    ![Image of the Kubernetes OIDC selection page](/clusters_cluster-management_spectro-kubernetes-dashboard_select-kubernetes-pack.webp)
 
 22. Click **Save Changes**
 
@@ -101,11 +115,11 @@ process.
 
 4. On the **Overview** tab, a new **Kubernetes Dashboard** row is displayed. Select the **Connect** button.
 
-![Image showing the Kubernetes Dashboard Connect button in the cluster overview screen](/clusters_cluster-management_spectro-kubernetes-dashboard_connect.webp)
+   ![Image showing the Kubernetes Dashboard Connect button in the cluster overview screen](/clusters_cluster-management_spectro-kubernetes-dashboard_connect.webp)
 
 5. The Spectro Kubernetes Dashboard is displayed.
 
-![Image showing a connected k8s dashboard with the Kubernetes-dashboard namespace selected](/clusters_cluster-management_spectro-kubernetes-dashboard_success.webp)
+   ![Image showing a connected k8s dashboard with the Kubernetes-dashboard namespace selected](/clusters_cluster-management_spectro-kubernetes-dashboard_success.webp)
 
 :::info
 
