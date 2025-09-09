@@ -914,5 +914,25 @@
   {
     "name": "wordpress-chart",
     "description": "WordPress is an open-source web content management system. It was originally created as a tool to publish blogs but has evolved to support publishing other web content, including more traditional websites, mailing lists and Internet forum, media galleries, membership sites, learning management systems, and online stores. "
+  },
+  {
+    "name": "openobserve",
+    "description": "OpenObserve is a free, open-source observability platform that unifies logs, metrics, and traces for monitoring applications and infrastructure, and can be deployed on-premises or in the cloud."
+  },
+  {
+    "name": "piraeus-csi",
+    "description": "Piraeus Operator is a free, open-source Kubernetes storage solution that deploys and manages LINSTOR clusters. It exposes dynamic provisioning of persistent volumes and snapshots to applications on-premises or in the cloud."
+  },
+  {
+    "name": "piraeus-operator",
+    "description": "Piraeus Operator is a free, open-source Kubernetes storage solution that deploys and manages LINSTOR clusters. It exposes dynamic provisioning of persistent volumes and snapshots to applications on-premises or in the cloud."
+  },
+  {
+    "name": "csi-piraeus-operator",
+    "description": "Piraeus Operator is a free, open-source Kubernetes storage solution that deploys and manages LINSTOR clusters. It exposes dynamic provisioning of persistent volumes and snapshots to applications on-premises or in the cloud."
+  },
+  {
+    "name": "piraeus-operator-addon",
+    "description": "Piraeus Operator is a free, open-source Kubernetes storage solution that deploys and manages LINSTOR clusters. It exposes dynamic provisioning of persistent volumes and snapshots to applications on-premises or in the cloud."
   }
 ]

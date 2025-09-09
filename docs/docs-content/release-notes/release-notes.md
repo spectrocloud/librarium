@@ -27,11 +27,30 @@ tags: ["release-notes"]
 
 #### Features
 
+- Palette now allows you to deploy and manage [MAAS Kubernetes clusters](../clusters/data-center/maas/maas.md) on LXD
+  virtual machines (VMs), enhancing resource efficiency by enabling users to host multiple control plane nodes on a
+  single robust physical node. Refer to the Create and Manage MAAS Clusters using LXD VMs guide for further information.
+- Palette and VerteX Management Appliance now supports Secure Boot. Refer to the
+  [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) guide for
+  further configuration information.
+- [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) now supports
+  single node installation. We do not recommend this setup for production environments.
+
 #### Improvements
+
+<!-- prettier-ignore-start -->
+- Palette now supports [automatic certificate renewal](../clusters/edge/cluster-management/certificate-renewal.md#automatic-renewal) for <VersionedLink text="Palette Optimized Canonical" url="/integrations/packs/?pack=edge-canonical" /> clusters deployed on [MAAS](../clusters/data-center/maas/maas.md) and [Edge](../clusters/edge/edge.md) clusters.
+<!-- prettier-ignore-end -->
 
 #### Deprecations and Removals
 
 ### Edge
+
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.7.b Palette release is 4.7.12.
+
+::
 
 - Palette CLI versions prior to 4.7.b do not support building content for local Edge cluster deployment on Palette 4.7.b
   or later because content created with older CLI versions lacks required images. We recommend
@@ -51,9 +70,10 @@ tags: ["release-notes"]
   upgrades](clusters/cluster-management/platform-settings/pause-platform-upgrades.md) so the agent can upgrade
   automatically.
 
-#### Features
-
 #### Improvements
+
+- The [Edge host grid view](../clusters/edge/site-deployment/edge-host-view.md) now supports the GPU attribute. It contains information about the Graphics Processing Unit (GPU) of the Edge host, including the GPU model, vendor, memory, count, and Multi-Instance GPU (MIG) capability and strategy. The MIG fields are currently applicable only for Nvidia devices.
+- [Local UI](../clusters/edge/local-ui/local-ui.md) now supports displaying all date and time values in Coordinated Universal Time (UTC), the browser’s local time zone, or both simultaneously.
 
 #### Bug Fixes
 
@@ -63,6 +83,7 @@ tags: ["release-notes"]
 
 - Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
   [Palette section](#palette-enterprise-4.7.b) for more details.
+- <TpBadge /> Palette VerteX now supports deploying Azure IaaS clusters to Azure Government Secret cloud. Users must enable the **AzureUsSecretCloud** feature flag in the VerteX system console and add Azure Government Secret certificates to a PCG before adding their Azure Government Secret cloud account and deploying clusters. Refer to the [Register and Manage Azure Cloud Account](../clusters/public-cloud/azure/azure-cloud.md) guide for further information.
 
 ### Automation
 
@@ -80,6 +101,14 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 #### Features
 
+- Terraform version 0.24.3 of the
+  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
+  available. For more details, refer to the Terraform provider
+  [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
+- Crossplane version 0.24.3 of the
+  [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette/v0.24.1)
+  is now available. This version supports [Crossplane v2](https://docs.crossplane.io/latest/whats-new/), which introduces resource namespacing.
+
 #### Improvements
 
 ### Docs and Education
@@ -87,6 +116,12 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 ### Packs
 
 #### Pack Notes
+
+<!-- prettier-ignore-start -->
+- The <VersionedLink text="Piraeus Operator" url="/integrations/packs/?pack=piraeus-csi" /> pack is now compatible with  Ubuntu 22.04 FIPS.
+- The [OpenTelemetry Monitoring Stack](../clusters/cluster-management/monitoring/open-telemetry.md) nows include tracing and logging capabilities. The stack now supports integration with both <VersionedLink text="Open Observe" url="/integrations/packs/?pack=openobserve" /> and external SaaS tools for observability.
+- The <VersionedLink text="Virtual Machine Orchestrator" url="/integrations/packs/?pack=virtual-machine-orchestrator" /> and <VersionedLink text="Virtual Machine Migration Assistant" url="/integrations/packs/?pack=vm-migration-assistant" /> packs are now verified.
+<!-- prettier-ignore-end -->
 
 #### OS
 
