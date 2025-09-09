@@ -3,6 +3,13 @@ partial_category: crossplane
 partial_name: provider-palette-created
 ---
     
+Issue the command below to install the Palette Crossplane provider. Crossplane installs the Custom Resource
+Definitions (CRDs) that allow you to create Palette resources directly inside Kubernetes.
+
+```bash
+kubectl apply --filename provider-palette.yaml
+```
+
 ```bash hideClipboard title="Example output"
 provider.pkg.crossplane.io/provider-palette created
 ```
@@ -15,5 +22,5 @@ kubectl get providers
 
 ```text hideClipboard title="Example output"
 NAME               INSTALLED   HEALTHY   PACKAGE                                                       AGE
-provider-palette   True        True      xpkg.upbound.io/crossplane-contrib/provider-palette:v0.24.0   40s
+provider-palette   True        True      xpkg.upbound.io/crossplane-contrib/provider-palette:v0.24.3   40s
 ```

@@ -1,0 +1,24 @@
+---
+partial_category: crossplane
+partial_name: cluster-profile-existing
+---
+
+1. Log in to [Palette](https://console.spectrocloud.com/). Ensure you log in as the correct tenant under which you
+will deploy your cluster, and select the appropriate project.
+
+2. From the left main menu, select **Clusters**.
+
+3. Select the cluster profile to use.
+
+4. In the browser address bar, copy the cluster profile ID. The profile ID is the last string in the address, which
+consists of 24 alphanumeric characters.
+
+    For example, if the full link to the cluster profile ID is
+    `https://console.spectrocloud.com/projects/6342eab2faa0813ead9082e0/profiles/cluster/689a4460ab5cs617a5afa29a`,
+    the ID is `689a4460ab5cs617a5afa29a`.
+
+5. Set the cluster profile ID as a variable. Replace `<cluster-profile-id>` with the value of your ID.
+
+    ```shell
+    CLUSTER_PROFILE_ID=<cluster-profile-id>
+    ```
