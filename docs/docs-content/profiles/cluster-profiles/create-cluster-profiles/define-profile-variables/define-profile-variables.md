@@ -33,7 +33,9 @@ The following table describes the differences between profile variables and macr
 
 ## Limitations
 
-- Palette does not support nesting profile variables within macros or other profile variables.
+- Nesting profile variables within macros or other profile variables is not supported.
+
+- Multi-line cluster profile variables are not supported.
 
 - Some packs may not support certain cluster profile variable data formats. If there is an existing schema constraint
   defined in the pack, the variable must satisfy the schema. Refer to the
