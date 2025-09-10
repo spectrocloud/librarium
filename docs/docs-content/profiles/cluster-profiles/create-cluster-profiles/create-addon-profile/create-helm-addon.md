@@ -63,7 +63,7 @@ Use the following steps to create a cluster profile by adding layers using Helm 
    [Profile Customization](../../../profile-customization.md).
 
    For examples of pack structure for a Helm chart-based pack, review
-   [Build a Pack](../../../../tutorials/profiles/deploy-pack.md#build-a-pack), and select the appropriate tab.
+   [Build a Pack](../../../../tutorials/packs-registries/deploy-pack.md#build-a-pack), and select the appropriate tab.
 
    :::
 

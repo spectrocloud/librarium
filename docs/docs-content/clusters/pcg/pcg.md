@@ -75,4 +75,4 @@ a PCG to an existing Kubernetes cluster. Refer to the
 
 - [Manage a PCG](./manage-pcg/manage-pcg.md)
 
-- [Deploy App Workloads with a PCG](../../tutorials/cluster-deployment/pcg/deploy-app-pcg.md)
+- [Deploy App Workloads with a PCG](../../tutorials/clusters/pcg/deploy-app-pcg.md)

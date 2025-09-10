@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Over-commit Resources to Enhance VM Performance"
-title: "Over-commit Resources to Enhance VM Performance"
+sidebar_label: "Over-Commit Resources to Enhance VM Performance"
+title: "Over-Commit Resources to Enhance VM Performance"
 description: "Learn how to improve VM performance by maximizing virtual machine CPU and memory using Palette."
 icon: " "
 hide_table_of_contents: false
@@ -18,7 +18,7 @@ simultaneously.
 The hypervisor automatically over-commits CPU and memory. This means that more virtualized CPU and memory can be
 allocated to VMs than there are physical resources on the system.
 
-## Over-commit CPUs
+## Over-Commit CPUs
 
 KubeVirt offers the `cpuAllocationRatio` in its Custom Resource Definitions (CRD). This ratio is used to normalize the
 amount of CPU time the pod will request based on the number of virtual CPUs (vCPUs).
@@ -33,7 +33,7 @@ amount of CPU time the pod will request based on the number of virtual CPUs (vCP
 
 2. From the left **Main Menu**, click on **Profiles**.
 
-3. Select the profile you use to create the cluster with the VMO pack.
+3. Select the cluster profile you used to create your VMO cluster.
 
 4. Select the VMO add-on layer of the cluster profile.
 
@@ -71,12 +71,24 @@ To learn about options for memory overcommitment, refer to
 
 ### Prerequisites
 
+- An active VMO cluster in Palette.
+
 ### Procedure
 
-You can make several changes to reduce the memory footprint and over-commit the per-VMI memory overhead.
+KubeVirt provides several configurations to help you reduce the memory footprint and over-commit the
+per-VirtualMachineInstance (VMI) memory overhead.
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. From the left **Main Menu**, click on **Profiles**.
+
+3. Select the cluster profile you used to create your VMO cluster.
+
+4. Select the VMO add-on layer of the cluster profile.
+
+5. You have several options to select from:
 
 - Enable guest overhead over-commit by setting `spec.domain.resources.overcommitGuestOverhead` to true.
-
 - Enable guest memory by setting `spec.domain.memory.guest` to a value higher than
   `spec.domain.resources.requests.memory`, as shown in the example.
 
@@ -97,7 +109,19 @@ You can make several changes to reduce the memory footprint and over-commit the 
   ```
 
 - Enable implicit memory overcommit by setting `spec.configuration.developerConfiguration.memoryOvercommit` in the
-  KubeVirt CRD to a percentage of the desired memory overcommit.
+  KubeVirt CRD to a percentage of the desired memory overcommit. This will set the memory overcommitment for all VMs in
+  a VMO cluster.
+
+  Within the VMO Pack, the path will be `charts.kubevirt.kubevirtResource.config.additionalDevConfig.memoryOvercommit`.
+
+  :::info
+
+  When setting `memoryOvercommit: "150"`, the memory request is not explicitly set. As a result, it will be implicitly
+  set to reach memory overcommit of 150%. For example, when `spec.domain.memory.guest: 3072M`, the memory request is set
+  to 2048M, if not otherwise set. Note that the actual memory request depends on additional configuration options such
+  as `OvercommitGuestOverhead`.
+
+  :::
 
 ## Resources
 
