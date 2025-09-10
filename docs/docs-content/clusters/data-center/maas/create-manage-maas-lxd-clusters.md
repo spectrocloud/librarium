@@ -38,17 +38,13 @@ Kubernetes pack allows you to configure a custom API server endpoint for your cl
 
 <!-- prettier-ignore-start -->
 
-This feature is only supported in Palette eXtended Kubernetes (PXK). Refer to the <VersionedLink
-  text="Custom API Server Endpoint for MAAS Clusters"
-  url="/integrations/packs/?pack=kubernetes"
-/>
-section of the pack Additional Guidance for further information.
+This feature is only supported in Palette eXtended Kubernetes (PXK). Refer to the <VersionedLink text="Custom API Server Endpoint for MAAS Clusters" url="integrations/packs/?pack=kubernetes" /> section of the pack Additional Guidance for further information.
 
 <!-- prettier-ignore-end -->
 
 :::
 
-## Deploy a MAAS Cluster
+## Deploy a MAAS Cluster with LXD enabled.
 
 1.  Log in to [Palette](https://console.spectrocloud.com).
 
