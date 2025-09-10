@@ -212,6 +212,13 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 | Palette eXtended Kubernetes              | 1.31.12     |
 | Zot Registry | 0.1.67 |
 
+## September 1, 2025 - Release 4.7.16
+
+### Bug Fixes
+
+- Fixed an issue where [Azure IaaS clusters](../clusters/public-cloud/azure/create-azure-cluster.md) configured with
+  `fullyPrivateAddressing` failed to deploy.
+
 ## August 21, 2025 - Release 4.7.15
 
 ### Bug Fixes
