@@ -48,8 +48,8 @@ jobs:
         run: |
           PR_COUNT=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
             "https://api.github.com/repos/${{ github.repository }}/pulls?state=open&per_page=100" | \
-            jq '[.[] | select(.user.login == "vault-token-factory-spectrocloud[bot]")] | length')
-          echo "Number of PRs created by vault-token-factory-spectrocloud: $PR_COUNT"
+            jq --arg n "${{ github.event.pull_request.number }}" '[.[] | select(.user.login == "vault-token-factory-spectrocloud[bot]" and (.title | contains("(#\($n))")))] | length')
+          echo "Number of backport PRs created by vault-token-factory-spectrocloud for this PR: $PR_COUNT"
           echo "pr_count=$PR_COUNT" >> $GITHUB_OUTPUT
 
       - name: Determine branch name
@@ -96,14 +96,14 @@ jobs:
           BEFORE_BACKPORTS=${{ steps.count_prs.outputs.pr_count }}
           NEW_COUNT=$(curl -s -H "Authorization: token $GITHUB_TOKEN" \
             "https://api.github.com/repos/${{ github.repository }}/pulls?state=open&per_page=100" | \
-            jq '[.[] | select(.user.login == "vault-token-factory-spectrocloud[bot]")] | length')
-          
+            jq --arg n "${{ github.event.pull_request.number }}" '[.[] | select(.user.login == "vault-token-factory-spectrocloud[bot]" and (.title | contains("(#\($n))")))] | length')
+
           MATCHED=${{ steps.check_labels.outputs.matched }}
-      
+
           echo "Before Backports Count: $BEFORE_BACKPORTS"
           echo "New PR Count: $NEW_COUNT"
           echo "Matched Backport Labels: $MATCHED"
-      
+
           if [ $((NEW_COUNT - BEFORE_BACKPORTS)) -eq $MATCHED ]; then
             echo "PR count increased by the expected amount."
             echo "missing_prs=0" >> $GITHUB_OUTPUT
@@ -113,7 +113,6 @@ jobs:
             echo "missing_prs=$MISSING_PR_COUNT" >> $GITHUB_OUTPUT
             exit 1
           fi
-      
 
       - name: Slack Notification
         if: ${{ failure() }}
