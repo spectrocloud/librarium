@@ -917,7 +917,7 @@
   },
   {
     "name": "openobserve",
-    "description": "OpenObserve is a free, open-source observability platform that unifies logs, metrics, and traces for monitoring applications and infrastructure, and can be deployed on-premises or in the cloud."
+    "description": "OpenObserve is a free, open-source observability platform that unifies logs, metrics, and traces for monitoring applications and infrastructure that can be deployed on-premises or in the cloud."
   },
   {
     "name": "piraeus-csi",
