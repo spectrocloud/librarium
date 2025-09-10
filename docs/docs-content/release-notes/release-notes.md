@@ -42,7 +42,15 @@ tags: ["release-notes"]
 - Palette now supports [automatic certificate renewal](../clusters/edge/cluster-management/certificate-renewal.md#automatic-renewal) for <VersionedLink text="Palette Optimized Canonical" url="/integrations/packs/?pack=edge-canonical" /> clusters deployed on [MAAS](../clusters/data-center/maas/maas.md) and [Edge](../clusters/edge/edge.md) clusters.
 <!-- prettier-ignore-end -->
 
-#### Deprecations and Removals
+#### Bug Fixes
+
+- Fixed an issue that caused incorrect registry validation errors when configuring a [pack registry](../registries-and-packs/registries/oci-registry/add-pack-oci/add-pack-oci.md) using an [AWS Gov Cloud ECR registry](https://docs.aws.amazon.com/govcloud-us/latest/UserGuide/govcloud-ecr.html).
+- Fixed an issue that allowed open redirects to be passed through Palette's login flow.
+<!-- prettier-ignore-start -->
+- Fixed an issue that caused the pods of the <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pack to be continuously reconciled.
+<!-- prettier-ignore-end -->
+- Fixed an issue that caused errors when [Sprig template functions](../registries-and-packs/pack-constraints.md#sprig-template-functions) are configured on custom manifests.
+- Fixed an issue that caused [MAAS](../clusters/data-center/maas/maas.md) worker nodes to be repaved in parallel.  
 
 ### Edge
 
@@ -77,6 +85,12 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 #### Bug Fixes
 
+- Fixed an issue that caused cluster creation to fail when adding a custom `stylus.path` to the `user-data` file.
+- Fixed an issue that caused Kubernetes upgrades of [agent mode](../deployment-modes/agent-mode/agent-mode.md) clusters to get stuck.
+- Fixed an issue that caused single node [Local UI](../clusters/edge/local-ui/local-ui.md) clusters to get stuck during provisioning when add-on packs are in a pending state.
+- Fixed an issue that incorrectly allowed configuring [Kube-vip](../clusters/edge/networking/kubevip.md) with unreachable IP addresses.
+- Fixed an issue that caused manually and automatically renewed certificates to fail to be updated in cluster [kubeconfig](../clusters/cluster-management/kubeconfig.md) files.
+
 ### VerteX
 
 #### Features
@@ -109,9 +123,10 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
   [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette/v0.24.1)
   is now available. This version supports [Crossplane v2](https://docs.crossplane.io/latest/whats-new/), which introduces resource namespacing.
 
-#### Improvements
+#### Bug Fixes
 
-### Docs and Education
+- Fixed an issue that caused errors when applying taints to the control plane pool using the Terraform and Crossplane providers.
+- Fixed an issue that allowed the creation of stale cluster profile objects without correctly initialized cluster profile variables.
 
 ### Packs
 
