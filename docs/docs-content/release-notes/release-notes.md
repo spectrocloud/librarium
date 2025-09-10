@@ -58,15 +58,14 @@ tags: ["release-notes"]
 
 The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.7.b Palette release is 4.7.12.
 
-::
+:::
+
+#### Breaking Changes
 
 - Palette CLI versions prior to 4.7.b do not support building content for local Edge cluster deployment on Palette 4.7.b
   or later because content created with older CLI versions lacks required images. We recommend
   [downloading](downloads/cli-tools.md) and using Palette CLI version 4.7.b or later to build content for Palette 4.7.b
   or later.
-
-#### Breaking Changes
-
 - Edge clusters with the Palette agent versions prior to 4.7.b do not support upgrading to the following Kubernetes pack
   versions released in 4.7.b:
   <VersionedLink text="Palette Optimized Canonical" url="/integrations/packs/?pack=edge-canonical" /> 1.32.8 and 1.33.4;
