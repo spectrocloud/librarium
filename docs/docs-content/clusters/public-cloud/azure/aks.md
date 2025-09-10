@@ -10,6 +10,10 @@ sidebar_position: 30
 Palette supports creating and managing Azure Kubernetes Service (AKS) clusters deployed to an Azure account. This guide
 explains how you can create an Azure AKS cluster managed by Palette.
 
+## Limitations
+
+- AKS clusters cannot be deployed in [Azure Government Secret](./azure-cloud.md#azure-government-secret) cloud.
+
 ## Prerequisites
 
 - An active Azure cloud account integrated with Palette. Review

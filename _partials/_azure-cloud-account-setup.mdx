@@ -5,34 +5,27 @@ partial_name: azure-cloud-account
 
 Use the following steps to add an Azure or Azure US Government account in Palette or Palette VerteX.
 
-:::warning
-
-<!-- prettier-ignore-start --> Beginning with Palette version 4.6.36, a <VersionedLink text="Private Cloud Gateway (PCG)" url="/clusters/pcg"/> is required to add an [Azure US Government](https://azure.microsoft.com/en-us/explore/global-infrastructure/government) cloud account.
-
-If you are using a <VersionedLink text="self-hosted Palette" url="/enterprise-version/enterprise-version"/> or <VersionedLink text="VerteX" url="/vertex/vertex"/> instance, a PCG is not required unless you configure both an Azure Public Cloud and Azure US Government account on the same installation. If you do not configure a PCG, you must install two instances of Palette or VerteX: one for Azure Public Cloud clusters and one for Azure US Government clusters. <!-- prettier-ignore-end -->
-
-:::
-
 1. Log in to [Palette](https://console.spectrocloud.com) or Palette VerteX as a tenant admin.
 
-2. From the left **Main Menu**, select **Tenant Settings**.
+2. From the left main menu, select **Tenant Settings**.
 
-3. Next, select **Cloud Accounts** in the **Tenant Settings Menu**.
+3. From the **Tenant Settings Menu**, select **Cloud Accounts**.
 
-4. Locate **Azure**, and click **+ Add Azure Account**.
+4. Locate **Azure** and select **Add Azure Account**.
 
 5. Fill out the following information, and click **Confirm** to complete the registration.
 
-| **Basic Information**             | **Description**                                                                                                                                                                                                                                                                                        |
-| --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Account Name**                  | A custom account name.                                                                                                                                                                                                                                                                                 |
-| **Tenant ID**                     | Unique tenant ID from Azure Management Portal.                                                                                                                                                                                                                                                         |
-| **Client ID**                     | Unique client ID from Azure Management Portal.                                                                                                                                                                                                                                                         |
-| **Client Secret**                 | Azure secret for authentication. Refer to Microsoft's reference guide for creating a [Client Secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application).                                              |
-| **Cloud**                         | Select **Azure Public Cloud** or **Azure US Government**.                                                                                                                                                                                                                                              |
-| **Tenant Name**                   | An optional tenant name.                                                                                                                                                                                                                                                                               |
-| **Disable Properties**            | This option prevents Palette and VerteX from creating Azure Virtual Networks (VNets) and other network resources on your behalf for static placement deployments. If you enable this option, all users must manually specify a pre-existing VNet, subnets, and security groups when creating clusters. |
-| **Connect Private Cloud Gateway** | Select this option to connect to a Private Cloud Gateway (PCG) if you have a PCG deployed in your environment. Refer to the PCG <VersionedLink text="Architecture" url="/clusters/pcg/architecture"/> page to learn more about a PCG.                                                                  |
+   | **Basic Information**             | **Description**                                                                                                                                                                                                                                                                                        |
+   | --------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+   | **Account Name**                  | Enter a custom account name.                                                                                                                                                                                                                                                                                 |
+   | **Cloud**                         | Select **{props.cloud_account}**.                                                                                                         |
+   | **Tenant ID**                     | Enter the unique tenant ID of your Azure subscription. This is found in the [Microsoft Entra admin center](https://entra.microsoft.com).                                                                                                                                                                                                                                                        |
+   | **Client ID**                     | Enter your unique client ID, also known as the user's object ID. This is found in the [Microsoft Entra admin center](https://entra.microsoft.com).                                                                                                                                                                                                                                                              |
+   | **Client Secret**                 | Azure secret for authentication. Refer to Microsoft's reference guide for creating a [Client Secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application).                                              |
+   | **Cloud**                         | Select **Azure Public Cloud** or **Azure US Government**.                                                                                                                                                                                                                                              |
+   | **Tenant Name**                   | An optional tenant name.                                                                                                                                                                                                                                                                               |
+   | **Disable Properties**            | This option prevents Palette and VerteX from creating Azure Virtual Networks (VNets) and other network resources on your behalf for static placement deployments. If you enable this option, all users must manually specify a pre-existing VNet, subnets, and security groups when creating clusters. |
+   | **Connect Private Cloud Gateway** | Select this option to connect to a Private Cloud Gateway (PCG) if you have a PCG deployed in your environment. Refer to the PCG <VersionedLink text="Architecture" url="/clusters/pcg/architecture"/> page to learn more about a PCG.                                                                  |
 
 6. After providing the required values, click the **Validate** button. If the client secret you provided is correct, a
    _Credentials validated_ success message with a green check is displayed.

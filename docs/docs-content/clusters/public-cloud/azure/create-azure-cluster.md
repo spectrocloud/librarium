@@ -19,6 +19,17 @@ to create an IaaS Kubernetes cluster in Azure that Palette manages.
 - Once the `fullyPrivateAddressing` parameter is set for your cluster, you cannot change its value. Changing the
   parameter value will result in errors until you return the value to its original configuration.
 
+### Azure Government Secret Limitations
+
+- Clusters deployed in [Azure Government Secret](./azure-cloud.md#azure-government-secret) cloud must use
+  [IP static placement](#static-placement-settings) and a
+  [private API server loadbalancer](#private-api-server-lb-settings) with a static IP.
+
+- Clusters deployed in [Azure Government Secret](./azure-cloud.md#azure-government-secret) cloud must reference an Azure
+  Virtual Hard Disk (VHD) image in the OS layer of the
+  [cluster profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md).
+  Contact our [Customer Support](https://spectrocloud.atlassian.net/servicedesk/customer/portals) team for the image.
+
 ## Prerequisites
 
 - Access to an Azure cloud account.
@@ -171,7 +182,7 @@ Use the following steps to deploy an Azure cluster.
     | **Storage Container**     | Optionally, if you will be using a custom storage container, use the **drop-down Menu** to select it. For information about use cases for custom storage, review [Azure Storage](../azure/architecture.md#azure-storage).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
     | **SSH Key**               | The public SSH key for connecting to the nodes. SSH key pairs must be pre-configured in your Azure environment. The key you select is inserted into the provisioned VMs. For more information, review Microsoft's [Supported SSH key formats](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys#supported-ssh-key-formats).                                                                                                                                                                                                                                                                                                                                                            |
     | **Static Placement**      | By default, Palette uses dynamic placement. This creates a new VNet for clusters with two subnets in different availability zones. Palette places resources in these clusters, manages the resources, and deletes them when the corresponding cluster is deleted.<br /><br />If you want to place resources into a pre-existing VNet, enable the **Static Placement** option, and fill out the input values listed in the [Static Placement](#static-placement-settings) table below. <br /> <br /> Select **Static Placement** for clusters where you want to use your network proxy configurations. To learn more about proxy configurations, check out [Proxy Configuration](./architecture.md#proxy-configuration). |
-    | **Private API Server LB** | _This option is only available when deploying clusters through a [Self Hosted PCG](../../pcg/deploy-pcg-k8s.md)._ Configure a private API server load balancer to enable private connectivity to your Kubernetes cluster. When enabled, this exposes the Kubernetes control plane endpoint on an internal Azure load balancer. If enabling, provide the additional input values as listed in the [Private API Server LB Settings](#private-api-server-lb-settings) table.                                                                                                                                                                                                                                               |
+    | **Private API Server LB** | _This option is only available when deploying clusters through a [self-hosted PCG](../../pcg/deploy-pcg-k8s.md)._ Configure a private API server load balancer to enable private connectivity to your Kubernetes cluster. When enabled, this exposes the Kubernetes control plane endpoint on an internal Azure load balancer. If enabling, provide the additional input values as listed in the [Private API Server LB Settings](#private-api-server-lb-settings) table.                                                                                                                                                                                                                                               |
 
     #### Static Placement Settings
 
@@ -187,21 +198,21 @@ Use the following steps to deploy an Azure cluster.
 
     #### Private API Server LB Settings
 
-    :::warning
+    :::info
 
-    Dynamic IP allocation is no longer supported for private API server load balancers. Select **Static** for **IP
-    Allocation Method** and enter an IP address in **Static IP**.
-
-    If you omit a static IP, cluster provisioning will fail.
+    - The option to enable a private API server loadbalancer is only available when deploying clusters through a
+      [self-hosted PCG](../../pcg/deploy-pcg-k8s.md).
+    - **Private API Server LB** be enabled if deploying clusters to
+      [Azure Government Secret](./azure-cloud.md#azure-government-secret) cloud.
 
     :::
 
-    | **Parameter**                   | **Description**                                                                                                                                                                                                                                                                                                                  |
-    | ------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Resource Group (Optional)**   | The Azure resource group that contains the **Private DNS zone** you want to use for the private API server load balancer. It can be different from the cluster’s own resource group. Leave blank to default to the selected cluster **Resource Group**.                                                                          |
-    | **Private DNS zone (Optional)** | The existing private DNS zone that will hold the A record of the private endpoint. After you choose a resource group, the dropdown lists the zones in that resource group. Select an existing zone, or leave it blank. If left blank, Palette will create a new zone in the chosen resource group.                               |
-    | **IP Allocation Method**        | How the load balancer virtual IP is assigned. <br /> - **Dynamic** (default) lets Azure pick the next free address in the subnet. _This option is no longer supported, you must assign a static IP._ <br /> - **Static** lets you choose a specific IP address for the load balancer that you supply in the **Static IP** field. |
-    | **Static IP**                   | The private IP address to use only when **IP Allocation Method** is set to **Static**. The address must be unused and inside the subnet delegated for the private API server load balancer.                                                                                                                                      |
+    | **Parameter**                   | **Description**                                                                                                                                                                                                                                                                                                         |
+    | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Resource Group (Optional)**   | The Azure resource group that contains the **Private DNS zone** you want to use for the private API server load balancer. It can be different from the cluster’s own resource group. Leave blank to default to the selected cluster **Resource Group**.                                                                 |
+    | **Private DNS zone (Optional)** | The existing private DNS zone that will hold the A record of the private endpoint. After you choose a resource group, the dropdown lists the zones in that resource group. Select an existing zone, or leave it blank. If left blank, Palette will create a new zone in the chosen resource group.                      |
+    | **IP Allocation Method**        | How the load balancer virtual IP is assigned. <br /> - **Static** (default) - Choose a specific IP address for the load balancer that you supply in the **Static IP** field. <br /> - **Dynamic** - Azure picks the next free address in the subnet. _This option is no longer supported. You must assign a static IP._ |
+    | **Static IP**                   | The private IP address to use only when **IP Allocation Method** is set to **Static**. The address must be unused and inside the subnet delegated for the private API server load balancer.                                                                                                                             |
 
 13. Click **Next** to continue.
 
