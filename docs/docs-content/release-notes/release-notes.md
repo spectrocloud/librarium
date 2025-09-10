@@ -123,37 +123,80 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 - The <VersionedLink text="Virtual Machine Orchestrator" url="/integrations/packs/?pack=virtual-machine-orchestrator" /> and <VersionedLink text="Virtual Machine Migration Assistant" url="/integrations/packs/?pack=vm-migration-assistant" /> packs are now verified.
 <!-- prettier-ignore-end -->
 
-#### OS
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
 #### Kubernetes
 
 | Pack Name | New Version |
 | --------- | ----------- |
+| GKE | 1.33 |
+| Kubernetes (AKS) | 1.33 |
+| Palette Optimized Canonical              | 1.33.4      |
+| Palette Optimized Canonical              | 1.32.8      |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.33.4      |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.32.8      |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.31.12     |
+| Palette eXtended Kubernetes              | 1.33.4      |
+| Palette eXtended Kubernetes              | 1.32.8      |
+| Palette eXtended Kubernetes              | 1.31.12     |
 
 #### CNI
 
 | Pack Name | New Version |
 | --------- | ----------- |
+| AWS VPC CNI (Helm) | 1.20.1 |
+| Calico | 3.30.2 |
+| Cilium | 1.17.6 |
+| Flannel | 0.27.2 |
 
 #### CSI
 
 | Pack Name | New Version |
 | --------- | ----------- |
+| Amazon EFS | 2.1.11 |
+| Amazon EFS | 2.1.10 |
+| Dell CSM Operator | 1.9.1 |
+| Rook-Ceph | 1.18.0 |
+| Rook-Ceph | 1.17.7 |
+| Piraeus Operator | 2.8.1 |
 
 #### Add-on Packs
 
 | Pack Name | New Version |
 | --------- | ----------- |
+| Argo CD | 8.3.0 |
+| AWS Application Loadbalancer | 2.13.4 |
+| Amazon EFS | 2.1.11 |
+| Amazon EFS | 2.1.10 |
+| Calico Network Policy | 3.30.2 |
+| Crossplane | 2.0.2 |
+| Dell CSM Operator | 1.9.1 |
+| Dex | 2.42.0 |
+| External Secrets Operator | 0.19.2 |
+| External Secrets Operator | 0.18.2 |
+| Flux2 | 2.16.4 |
+| Istio | 1.26.2 |
+| Kong | 2.51.0 |
+| Loki | 2.10.2 |
+| Nginx | 1.31.1 |
+| Rook-Ceph | 1.17.7 |
+| Prometheus Agent | 27.23.0 |
+| Prometheus - Grafana | 75.9.0 |
+| Upbound Crossplane | 2.0.1 |
+| Vault | 0.30.1 |
+| VMO Namespace Management | 1.0.4 |
+| Volume Snapshot Controller | 8.3.0 |
+| Zot Registry | 0.1.67 |
 
 #### FIPS Packs
 
 | Pack Name | New Version |
 | --------- | ----------- |
-
-#### Deprecations and Removals
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.33.4      |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.32.8      |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.31.12     |
+| Palette eXtended Kubernetes              | 1.33.4      |
+| Palette eXtended Kubernetes              | 1.32.8      |
+| Palette eXtended Kubernetes              | 1.31.12     |
+| Zot Registry | 0.1.67 |
 
 ## August 21, 2025 - Release 4.7.15
 
