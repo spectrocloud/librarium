@@ -40,7 +40,11 @@ to create an IaaS Kubernetes cluster in Azure that Palette manages.
 
 ## Prerequisites
 
-- Access to an Azure cloud account.
+- An active [Azure cloud account](https://portal.azure.com/) with sufficient resource limits and permissions to
+  provision compute, network, and security resources in the desired clouds and regions. Refer to our Azure
+  [Required Permissions](./required-permissions.md) guide for more information. If deploying a cluster to
+  [Azure Government Secret](./azure-cloud.md#azure-government-secret) cloud, you must have the required permissions for
+  [static placement](./required-permissions.md#static-placement-iaas-static-placement).
 
 - Palette integration with Azure account. Review [Register and Manage Azure Cloud Account](azure-cloud.md) for guidance.
 
@@ -48,9 +52,10 @@ to create an IaaS Kubernetes cluster in Azure that Palette manages.
   [SSH Keys](../../cluster-management/ssh/ssh-keys.md) guide for more information about creating and managing SSH keys
   in Palette.
 
-- An infrastructure cluster profile for Azure. Review
-  [Create an Infrastructure Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md)
-  for guidance.
+- An
+  [infrastructure cluster profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md)
+  or [full cluster profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-full-profile.md) for
+  Azure.
 
 - To use custom storage accounts or containers, you must create them before you create your cluster. All custom storage
   accounts and containers will be listed on the Cluster config page during the cluster creation process. For information
@@ -213,10 +218,9 @@ Use the following steps to deploy an Azure cluster.
 
     :::warning
 
-    If you enabled the **Disable Properties** setting when
-    [registering an Azure cloud account](./azure-cloud.md#add-azure-cloud-account), Palette cannot create network
-    resources on your behalf. In this case, when creating clusters, you must manually specify their virtual network
-    subnets and security groups.
+    If you enabled the **Disable Properties** setting when [registering an Azure cloud account](./azure-cloud.md),
+    Palette cannot create network resources on your behalf. In this case, when creating clusters, you must manually
+    specify their virtual network subnets and security groups.
 
     :::
 

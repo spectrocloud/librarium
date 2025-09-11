@@ -7,7 +7,7 @@ tags: ["public cloud", "azure"]
 sidebar_position: 10
 ---
 
-Palette and Palette VerteX support the following Azure clouds.
+Palette and Palette VerteX support deploying clusters to the following Azure clouds.
 
 | **Azure Cloud**                                                                                                                     | **Palette Support** | **Palette VerteX Support** |
 | ----------------------------------------------------------------------------------------------------------------------------------- | :-----------------: | :------------------------: |
@@ -20,21 +20,25 @@ authentication methods to register your cloud account.
 
 ## Azure Commercial
 
+[intro here]
+
 ### Prerequisites
 
 - A Palette or Palette VerteX instance with tenant admin access.
 
 - An active [Azure cloud account](https://portal.azure.com/) with sufficient resource limits and permissions to
-  provision compute, network, and security resources in the desired clouds and regions. Refer to the
-  [Required Permissions](./required-permissions.md) section for more information.
+  provision compute, network, and security resources in the desired clouds and regions. Refer to our Azure
+  [Required Permissions](./required-permissions.md) guide for more information.
 
 - An [Azure App](https://learn.microsoft.com/en-us/azure/app-service/overview) with valid credentials.
 
 ### Enablement
 
-<PartialsComponent category="palette-setup" name="azure-cloud-account" />
+<PartialsComponent category="palette-setup" name="azure-cloud-account" cloud_account="Azure Public Cloud" />
 
 ## Azure Government
+
+[intro here]
 
 ### Prerequisites
 
@@ -46,14 +50,18 @@ authentication methods to register your cloud account.
   clusters and one for Azure Government clusters.
 
 - An active [Azure cloud account](https://portal.azure.com/) with sufficient resource limits and permissions to
-  provision compute, network, and security resources in the desired clouds and regions. Refer to the
-  [Required Permissions](./required-permissions.md) section for more information.
+  provision compute, network, and security resources in the desired clouds and regions. Refer to our Azure
+  [Required Permissions](./required-permissions.md) guide for more information.
 
 - An [Azure App](https://learn.microsoft.com/en-us/azure/app-service/overview) with valid credentials.
 
 ### Enablement
 
+<PartialsComponent category="palette-setup" name="azure-cloud-account" cloud_account="Azure US Government" />
+
 ## Azure Government Secret
+
+[intro here]
 
 :::preview
 
@@ -61,33 +69,53 @@ authentication methods to register your cloud account.
 
 ### Limitations
 
+- You must use Palette VerteX to deploy clusters in Azure Government Secret cloud. Multi-tenant Palette SaaS and
+  self-hosted Palette instances do not support Azure Government Secret cloud.
+
 - Only [Azure IaaS clusters](./create-azure-cluster.md) can be deployed in Azure Government Secret cloud. AKS clusters
   are not supported.
 
 - Clusters deployed in Azure Government Secret cloud must use
-  [IP static placement](./create-azure-cluster.md#static-placement-settings) and a
-  [private API server loadbalancer](./create-azure-cluster.md#private-api-server-lb-settings) with a static IP.
+  [static placement](./create-azure-cluster.md#static-placement-settings) and a
+  [private API server load balancer](./create-azure-cluster.md#private-api-server-lb-settings) with a static IP. As a
+  result, a [PCG](../../pcg/pcg.md) must be set up and registered with Palette VerteX in order to deploy clusters. The
+  PCG must have a connection to Azure Government Secret cloud.
 
-- Clusters deployed in Azure Government Secret cloud must reference an Azure Virtual Hard Disk (VHD) image in the OS
-  layer of the
-  [cluster profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile.md).
-  Contact our [Customer Support](https://spectrocloud.atlassian.net/servicedesk/customer/portals) team for the image.
+- Clusters deployed in [Azure Government Secret](../../../clusters/public-cloud/azure/azure-cloud.md) cloud must
+  reference the appropriate Spectro Cloud Azure Government Secret Virtual Hard Disk (VHD) image in the cluster profile's
+  OS layer. The `<os-name-and-version>` and `<kubernetes-version>` referenced in the VHD image must match the OS and
+  Kubernetes layers specified in your cluster profile. Only certain OS and Kubernetes combinations are supported.
+  Contact our [Customer Support](https://spectrocloud.atlassian.net/servicedesk/customer/portals) team for details.
+
+  ```yaml
+  cloud:
+    azure:
+      sigImageId: "spectrocloudinfra2022/sig-spectrocloud-infra-<os-name-and-version>-<kubernetes-version>"
+  ```
 
 ### Prerequisites
 
 - A Palette VerteX instance with tenant admin access.
 
-- The **AzureUsSecretCloud** [feature flag] enabled.
+- The **AzureUsSecretCloud** [feature flag](../../../vertex/system-management/feature-flags.md) enabled.
 
-- A [PCG] set up and registered with Palette VerteX. The PCG must have a connection to Azure Government Secret cloud.
+- A [PCG](../../pcg/pcg.md) set up and registered with Palette VerteX. The PCG must have a connection to Azure
+  Government Secret cloud.
 
 - An active [Azure cloud account](https://portal.azure.com/) with sufficient resource limits and permissions to
-  provision compute, network, and security resources in the desired clouds and regions. Refer to the
-  [Required Permissions](./required-permissions.md) section for more information.
+  provision compute, network, and security resources in the desired clouds and regions. Refer to our Azure
+  [Required Permissions](./required-permissions.md#static-placement-iaas-static-placement) guide for more information.
 
 - An [Azure App](https://learn.microsoft.com/en-us/azure/app-service/overview) with valid credentials.
 
 ### Enablement
+
+<PartialsComponent
+  category="palette-setup"
+  name="azure-cloud-account"
+  cloud_account="Azure US Secret"
+  secret="A PCG is required for deploying clusters in Azure Government Secret cloud."
+/>
 
 ## Validate
 

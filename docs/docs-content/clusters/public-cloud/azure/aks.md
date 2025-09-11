@@ -185,10 +185,9 @@ to learn more about the ports used for communication.
 
     :::warning
 
-    If you enable the **Disable Properties** setting when
-    [registering an Azure cloud account](./azure-cloud.md#add-azure-cloud-account), Palette cannot create network
-    resources on your behalf. In this case, every time you deploy a cluster, you must manually specify its virtual
-    network subnets and security groups.
+    If you enable the **Disable Properties** setting when [registering an Azure cloud account](./azure-cloud.md),
+    Palette cannot create network resources on your behalf. In this case, every time you deploy a cluster, you must
+    manually specify its virtual network subnets and security groups.
 
     :::
 
