@@ -39,7 +39,7 @@ tags: ["release-notes"]
   or later because content created with older CLI versions lacks the required images. We recommend
   [downloading](downloads/cli-tools.md#palette-cli) and using Palette CLI version 4.7.b or later to build content for
   Palette 4.7.b or later.
-  
+
 <!-- prettier-ignore-start -->
 - Edge clusters with the Palette agent versions prior to 4.7.b do not support upgrading to the following Kubernetes pack
   versions released in 4.7.b:
