@@ -37,7 +37,7 @@ tags: ["release-notes"]
 
 - Palette CLI versions prior to 4.7.b do not support building content for local Edge cluster deployment on Palette 4.7.b
   or later because content created with older CLI versions lacks the required images. We recommend
-  [downloading](downloads/cli-tools.md) and using Palette CLI version 4.7.b or later to build content for Palette 4.7.b
+  [downloading](downloads/cli-tools.md#palette-cli) and using Palette CLI version 4.7.b or later to build content for Palette 4.7.b
   or later.
 
 - Edge clusters with the Palette agent versions prior to 4.7.b do not support upgrading to the following Kubernetes pack
@@ -50,6 +50,9 @@ tags: ["release-notes"]
   upgrading Kubernetes packs. For centrally managed clusters, do not [pause
   upgrades](clusters/cluster-management/platform-settings/pause-platform-upgrades.md) so the agent can upgrade
   automatically.
+
+- Palette Edge CLI does not support building content for local Edge cluster deployment in agent mode on Palette 4.7.b (Palette agent version 4.7.12) or later.
+We recommend [downloading](downloads/cli-tools.md#palette-cli) and using Palette CLI version 4.7.b or later instead. This breaking change affects agent mode clusters only and does not impact appliance mode clusters.
 
 #### Features
 
