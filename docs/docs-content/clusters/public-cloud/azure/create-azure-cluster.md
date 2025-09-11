@@ -22,29 +22,19 @@ to create an IaaS Kubernetes cluster in Azure that Palette manages.
 
 ### Azure Government Secret Limitations
 
-- Clusters deployed in [Azure Government Secret](./azure-cloud.md#azure-government-secret) cloud must use
-  [static placement](#static-placement-settings) and a
+- Clusters deployed in [Azure Government Secret](./azure-cloud.md#add-azure-government-secret-cloud-account) cloud must
+  use [static placement](#static-placement-settings) and a
   [private API server load balancer](#private-api-server-lb-settings) with a static IP.
 
-- Clusters deployed in [Azure Government Secret](../../../clusters/public-cloud/azure/azure-cloud.md) cloud must
-  reference the appropriate Spectro Cloud Azure Government Secret Virtual Hard Disk (VHD) image in the cluster profile's
-  OS layer. The `<os-name-and-version>` and `<kubernetes-version>` referenced in the VHD image must match the OS and
-  Kubernetes layers specified in your cluster profile. Only certain OS and Kubernetes combinations are supported.
-  Contact our [Customer Support](https://spectrocloud.atlassian.net/servicedesk/customer/portals) team for details.
-
-  ```yaml
-  cloud:
-    azure:
-      sigImageId: "spectrocloudinfra2022/sig-spectrocloud-infra-<os-name-and-version>-<kubernetes-version>"
-  ```
+- <PartialsComponent category="azure" name="azure-secret-os-layer" />
 
 ## Prerequisites
 
 - An active [Azure cloud account](https://portal.azure.com/) with sufficient resource limits and permissions to
   provision compute, network, and security resources in the desired clouds and regions. Refer to our Azure
   [Required Permissions](./required-permissions.md) guide for more information. If deploying a cluster to
-  [Azure Government Secret](./azure-cloud.md#azure-government-secret) cloud, you must have the required permissions for
-  [static placement](./required-permissions.md#static-placement-iaas-static-placement).
+  [Azure Government Secret](./azure-cloud.md#add-azure-government-secret-cloud-account) cloud, you must have the
+  required permissions for [static placement](./required-permissions.md#iaas-static-placement).
 
 - Palette integration with Azure account. Review [Register and Manage Azure Cloud Account](azure-cloud.md) for guidance.
 
@@ -144,18 +134,7 @@ Use the following steps to deploy an Azure cluster.
 
    :::warning
 
-   Clusters deployed in [Azure Government Secret](../../../clusters/public-cloud/azure/azure-cloud.md) cloud must
-   reference the appropriate Spectro Cloud Azure Government Secret Virtual Hard Disk (VHD) image in the cluster
-   profile's OS layer. The `<os-name-and-version>` and `<kubernetes-version>` referenced in the VHD image must match the
-   OS and Kubernetes layers specified in your cluster profile. Only certain OS and Kubernetes combinations are
-   supported. Contact our [Customer Support](https://spectrocloud.atlassian.net/servicedesk/customer/portals) team for
-   details.
-
-   ```yaml
-   cloud:
-     azure:
-       sigImageId: "spectrocloudinfra2022/sig-spectrocloud-infra-<os-name-and-version>-<kubernetes-version>"
-   ```
+   <PartialsComponent category="azure" name="azure-secret-os-layer" />
 
    :::
 
@@ -199,7 +178,7 @@ Use the following steps to deploy an Azure cluster.
 
    </details>
 
-10. To configure custom OpenID Connect (OIDC) for Azure clusters, refer to the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" /> pack additional details for further guidance.
+10.  To configure custom OpenID Connect (OIDC) for Azure clusters, refer to the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" /> pack additional details for further guidance.
 
     :::warning
 
@@ -224,16 +203,16 @@ Use the following steps to deploy an Azure cluster.
 
     :::
 
-    | **Parameter**                    | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-    | -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Subscription**                 | Choose the subscription that will be used to access Azure services.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
-    | **Region**                       | Choose the Azure region to provision the cluster.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
-    | **Resource Group**               | Select the name of the resource group that contains the Azure resources you will be accessing.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
-    | **Storage account (Optional)**   | (Optional) Use a storage account, if desired. For information about custom storage use cases, refer to our [Azure Storage](../azure/architecture.md#azure-storage) section.                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |
-    | **Storage container (Optional)** | (Optional) Use a custom storage container, if desired. For information about custom storage use cases, refer to our [Azure Storage](../azure/architecture.md#azure-storage) section.                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
-    | **SSH Key**                      | Select the public SSH key to use when connecting to the nodes. The SSH key pairs displayed are pulled from the Azure cloud account being used to deploy the cluster. The key you select is inserted into the provisioned VMs. For more information, review Microsoft's [Supported SSH key formats](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys#supported-ssh-key-formats).                                                                                                                                                                                                                               |
-    | **Static Placement**             | (Optional) By default, Palette uses dynamic placement. Select this option to place resources into a pre-existing VNet, and complete the fields listed in the [Static Placement](#static-placement-settings) table. **Static Placement** must be enabled for clusters where you want to use network proxy configurations and for clusters deployed in [Azure Government Secret](../../../clusters/public-cloud/azure/azure-cloud.md) cloud. To learn more about proxy configurations, check out [Proxy Configuration](./architecture.md#proxy-configuration).                                                                                    |
-    | **Private API Server LB**        | (Optional) This option is available only when deploying clusters through a [self-hosted PCG](../../pcg/deploy-pcg-k8s.md). This option _must_ be enabled if deploying clusters to [Azure Government Secret](./azure-cloud.md#azure-government-secret) cloud. <br /> <br /> Select this option to configure a private API server load balancer and enable private connectivity to your Kubernetes cluster, and complete the fields listed in the [Private API Server LB Settings](#private-api-server-lb-settings) table. The option **Private API Server LB** exposes the Kubernetes control plane endpoint on an internal Azure load balancer. |
+    | **Parameter**                    | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+    | -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Subscription**                 | Choose the subscription that will be used to access Azure services.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+    | **Region**                       | Choose the Azure region to provision the cluster.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+    | **Resource Group**               | Select the name of the resource group that contains the Azure resources you will be accessing.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+    | **Storage account (Optional)**   | (Optional) Use a storage account, if desired. For information about custom storage use cases, refer to our [Azure Storage](../azure/architecture.md#azure-storage) section.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
+    | **Storage container (Optional)** | (Optional) Use a custom storage container, if desired. For information about custom storage use cases, refer to our [Azure Storage](../azure/architecture.md#azure-storage) section.                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+    | **SSH Key**                      | Select the public SSH key to use when connecting to the nodes. The SSH key pairs displayed are pulled from the Azure cloud account being used to deploy the cluster. The key you select is inserted into the provisioned VMs. For more information, review Microsoft's [Supported SSH key formats](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys#supported-ssh-key-formats).                                                                                                                                                                                                                                                 |
+    | **Static Placement**             | (Optional) By default, Palette uses dynamic placement. Select this option to place resources into a pre-existing VNet, and complete the fields listed in the [Static Placement](#static-placement-settings) table. **Static Placement** must be enabled for clusters where you want to use network proxy configurations and for clusters deployed in [Azure Government Secret](../../../clusters/public-cloud/azure/azure-cloud.md) cloud. To learn more about proxy configurations, check out [Proxy Configuration](./architecture.md#proxy-configuration).                                                                                                      |
+    | **Private API Server LB**        | (Optional) This option is available only when deploying clusters through a [self-hosted PCG](../../pcg/deploy-pcg-k8s.md). This option _must_ be enabled if deploying clusters to [Azure Government Secret](./azure-cloud.md#add-azure-government-secret-cloud-account) cloud. <br /> <br /> Select this option to configure a private API server load balancer and enable private connectivity to your Kubernetes cluster, and complete the fields listed in the [Private API Server LB Settings](#private-api-server-lb-settings) table. The option **Private API Server LB** exposes the Kubernetes control plane endpoint on an internal Azure load balancer. |
 
     ### Static Placement Settings
 
@@ -255,7 +234,7 @@ Use the following steps to deploy an Azure cluster.
     :::warning
 
     **Private API Server LB** must be enabled if deploying clusters to
-    [Azure Government Secret](./azure-cloud.md#azure-government-secret) cloud.
+    [Azure Government Secret](./azure-cloud.md#add-azure-government-secret-cloud-account) cloud.
 
     :::
 

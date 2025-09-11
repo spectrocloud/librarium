@@ -15,10 +15,9 @@ Palette and Palette VerteX support deploying clusters to the following Azure clo
 | [Azure Government](https://azure.microsoft.com/en-us/explore/global-infrastructure/government)                                      | :white_check_mark:  |     :white_check_mark:     |
 | <TpBadge /> [Azure Government Secret](https://azure.microsoft.com/en-us/explore/global-infrastructure/government/national-security) |         :x:         |     :white_check_mark:     |
 
-This section explains how to add an Azure cloud account in Palette or Palette VerteX. You can use any of the following
-authentication methods to register your cloud account.
+This section explains how to add the appropriate Azure cloud account in Palette or Palette VerteX.
 
-## Azure Commercial
+## Add Azure Commercial Cloud Account
 
 [intro here]
 
@@ -34,9 +33,17 @@ authentication methods to register your cloud account.
 
 ### Enablement
 
-<PartialsComponent category="palette-setup" name="azure-cloud-account" cloud_account="Azure Public Cloud" />
+<PartialsComponent
+  category="palette-setup"
+  name="azure-cloud-account"
+  cloud_account_spectro="Azure Public Cloud"
+  cloud_account_actual="Azure Commercial"
+  edition="Palette or Palette VerteX"
+/>
 
-## Azure Government
+<PartialsComponent category="azure" name="azure-cloud-account-validate" edition="Palette or Palette VerteX" />
+
+## Add Azure Government Cloud Account
 
 [intro here]
 
@@ -57,9 +64,19 @@ authentication methods to register your cloud account.
 
 ### Enablement
 
-<PartialsComponent category="palette-setup" name="azure-cloud-account" cloud_account="Azure US Government" />
+<PartialsComponent
+  category="palette-setup"
+  name="azure-cloud-account"
+  cloud_account_spectro="Azure US Government"
+  cloud_account_actual="Azure Government"
+  edition="Palette or Palette VerteX"
+/>
 
-## Azure Government Secret
+### Validate
+
+<PartialsComponent category="azure" name="azure-cloud-account-validate" edition="Palette or Palette VerteX" />
+
+## Add Azure Government Secret Cloud Account
 
 [intro here]
 
@@ -81,17 +98,7 @@ authentication methods to register your cloud account.
   result, a [PCG](../../pcg/pcg.md) must be set up and registered with Palette VerteX in order to deploy clusters. The
   PCG must have a connection to Azure Government Secret cloud.
 
-- Clusters deployed in [Azure Government Secret](../../../clusters/public-cloud/azure/azure-cloud.md) cloud must
-  reference the appropriate Spectro Cloud Azure Government Secret Virtual Hard Disk (VHD) image in the cluster profile's
-  OS layer. The `<os-name-and-version>` and `<kubernetes-version>` referenced in the VHD image must match the OS and
-  Kubernetes layers specified in your cluster profile. Only certain OS and Kubernetes combinations are supported.
-  Contact our [Customer Support](https://spectrocloud.atlassian.net/servicedesk/customer/portals) team for details.
-
-  ```yaml
-  cloud:
-    azure:
-      sigImageId: "spectrocloudinfra2022/sig-spectrocloud-infra-<os-name-and-version>-<kubernetes-version>"
-  ```
+- <PartialsComponent category="azure" name="azure-secret-os-layer" />
 
 ### Prerequisites
 
@@ -104,7 +111,7 @@ authentication methods to register your cloud account.
 
 - An active [Azure cloud account](https://portal.azure.com/) with sufficient resource limits and permissions to
   provision compute, network, and security resources in the desired clouds and regions. Refer to our Azure
-  [Required Permissions](./required-permissions.md#static-placement-iaas-static-placement) guide for more information.
+  [Required Permissions](./required-permissions.md#iaas-static-placement) guide for more information.
 
 - An [Azure App](https://learn.microsoft.com/en-us/azure/app-service/overview) with valid credentials.
 
@@ -113,28 +120,48 @@ authentication methods to register your cloud account.
 <PartialsComponent
   category="palette-setup"
   name="azure-cloud-account"
-  cloud_account="Azure US Secret"
+  cloud_account_spectro="Azure US Secret"
+  cloud_account_actual="Azure Government Secret"
   secret="A PCG is required for deploying clusters in Azure Government Secret cloud."
+  edition="Palette VerteX"
 />
 
-## Validate
+### Validate
 
-You can verify your account is added.
+<PartialsComponent category="azure" name="azure-cloud-account-validate" edition="Palette VerteX" />
 
-1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
+## Edit Azure Cloud Account
+
+Use the following procedure to modify the details of your Azure cloud account .
+
+1. Log in to [Palette](https://console.spectrocloud.com) or Palette VerteX as a tenant admin.
 
 2. From the left main menu, select **Tenant Settings**.
 
-3. Next, on the **Tenant Settings Menu**, select **Cloud Accounts**.
+3. From the **Tenant Settings Menu**, select **Cloud Accounts**.
 
-4. The added cloud account is listed under **Azure** with all other available Azure cloud accounts.
+4. In the **Azure** section, locate the cloud account to edit. From the three-dot menu, select **Edit**.
 
-:::tip
+5. Modify your cloud account details as necessary. **Validate** your credentials, and **Confirm** your changes.
 
-Use the **three-dot Menu** in the row of the cloud account to edit Azure account information in Palette or remove the
-account from Palette.
+### Validate
 
-:::
+## Delete Azure Cloud Account
+
+Use the following procedure to remove your Azure cloud account from Palette or Palette VerteX.
+
+1. Log in to [Palette](https://console.spectrocloud.com) or Palette VerteX as a tenant admin.
+
+2. From the left main menu, select **Tenant Settings**.
+
+3. From the **Tenant Settings Menu**, select **Cloud Accounts**.
+
+4. In the **Azure** section, locate the cloud account to remove. From the three-dot menu, select **Delete**.
+
+5. A dialog prompts you to proceed with deleting you account. Select **OK** to proceed. Your Azure cloud account no
+   longer appears in the **Azure** section.
+
+### Validate
 
 ## Next Steps
 

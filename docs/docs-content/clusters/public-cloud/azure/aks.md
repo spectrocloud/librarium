@@ -12,7 +12,8 @@ explains how you can create an Azure AKS cluster managed by Palette.
 
 ## Limitations
 
-- AKS clusters cannot be deployed in [Azure Government Secret](./azure-cloud.md#azure-government-secret) cloud.
+- AKS clusters cannot be deployed in
+  [Azure Government Secret](./azure-cloud.md#add-azure-government-secret-cloud-account) cloud.
 
 ## Prerequisites
 
