@@ -34,7 +34,7 @@ tags: ["release-notes"]
 ### Edge
 
 - Palette CLI versions prior to 4.7.b do not support building content for local Edge cluster deployment on Palette 4.7.b
-  or later because content created with older CLI versions lacks required images. We recommend
+  or later because content created with older CLI versions lacks the required images. We recommend
   [downloading](downloads/cli-tools.md) and using Palette CLI version 4.7.b or later to build content for Palette 4.7.b
   or later.
 
