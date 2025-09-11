@@ -35,11 +35,11 @@ Use the following steps to resolve issues with incompatible stale Palette CLI bi
    the `$HOME/.palette/bin` directory. If you used the `--workspace` flag then the third-party binaries will be stored
    in the specified workspace directory.
 
-## Scenario - Update Configuration Files Credentials
+## Scenario - Update CLI Configuration Files Credentials
 
 The Palette CLI stores [encrypted](../automation/palette-cli/palette-cli.md#encryption) sensitive data such as the
-Palette API key, passwords, and other credentials in the configuration files. If you need to change the credentials due
-to a changed encryption passphrase or other reasons, you can update the configuration files by using the following
+Palette API key, passwords, and other credentials in the CLI configuration files. If you need to change the credentials due
+to a changed encryption passphrase or other reasons, you can update the CLI configuration files by using the following
 steps.
 
 ### Debug Steps
