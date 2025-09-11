@@ -70,12 +70,12 @@ packs.
 
 <!-- prettier-ignore-end -->
 
-7. When all the infrastructure layers are added, click on **Confirm**. Palette displays the profile stack with your
+1. When all the infrastructure layers are added, click on **Confirm**. Palette displays the profile stack with your
    specified pack layers.
 
-8. Click on **Next** to review the profile.
+2. Click on **Next** to review the profile.
 
-9. Click on **Finish Configuration** to create the cluster profile.
+3. Click on **Finish Configuration** to create the cluster profile.
 
 You now have an infrastructure cluster profile. You can reuse the profile and apply it to several clusters. Refer to the
 [Update a Cluster Profile](../modify-cluster-profiles/update-cluster-profile.md) guide for more information about update

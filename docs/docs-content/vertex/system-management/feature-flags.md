@@ -11,9 +11,8 @@ keywords: ["self-hosted", "vertex", "feature-flags"]
 
 Feature flags allow
 [system administrators](../system-management/account-management/account-management.md#system-administrators) to manage
-what features are available to the system's tenants. They can use this capability to roll out new features to
-{props.edition} tenants in a controlled manner or choose not to implement a feature for their tenants due to security or
-compliance reasons.
+what features are available to the system's tenants. They can use this capability to roll out new features to tenants in
+a controlled manner or choose not to implement a feature for their tenants due to security or compliance reasons.
 
 Features enabled by system administrators are applied to all tenants in the system. Once a feature is enabled, it cannot
 be disabled.
@@ -24,8 +23,6 @@ We recommend trying out new features in a test environment before enabling them 
 on the feature, enabling it may have a significant impact on the system and current workloads.
 
 :::
-
-Review the following section for detailed instructions on enabling and managing feature flags.
 
 ## Enable a Feature
 
@@ -42,12 +39,19 @@ Use the following steps to enable a feature flag.
 1. Log in to the system console. For additional guidance on accessing the system console, check out the
    [Access the System Console](../system-management/system-management.md#access-the-system-console) guide.
 
-2. From the left **Main Menu**, select **Administration**.
+2. From the left main menu, select **Administration**.
 
 3. Select the **Feature Flags** tab.
 
 4. Locate the feature you want to enable and toggle the switch on the right to enable it. You can also search for a
    feature by typing the feature name in the search bar.
+
+   Palette VerteX supports the following feature flags.
+
+   | **Feature Flag**       | **Description**                                                                                                                                                                      |
+   | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+   | **AwsSecretPartition** | Allows you to add an [AWS Secret Cloud](../../clusters/public-cloud/aws/add-aws-accounts.md#add-aws-secret-cloud-to-palette-vertex) account at **Tenant Settings > Cloud Accounts**. |
+   | **AzureUsSecretCloud** | Allows you to add an [Azure Government Secret](../../clusters/public-cloud/azure/azure-cloud.md#azure-government-secret) account at **Tenant Settings > Cloud Accounts**.            |
 
 ## Validate
 
