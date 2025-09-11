@@ -35,8 +35,8 @@ The following are architectural highlights of clusters deployed using agent mode
   - Custom installation paths for Kubernetes and its dependencies in [agent mode](../)
   - [Network overlay](../../../clusters/edge/networking/vxlan-overlay/)
 
-- Edge clusters deployed in agent mode with the Palette agent versions prior to 4.7.b do not support upgrading to the following Kubernetes pack
-  versions released in 4.7.b:
+- Edge clusters deployed in agent mode with the Palette agent versions prior to 4.7.b do not support upgrading to the
+  following Kubernetes pack versions released in 4.7.b:
   <VersionedLink text="Palette Optimized Canonical" url="/integrations/packs/?pack=edge-canonical" /> 1.32.8 and 1.33.4;
   <VersionedLink text="Palette eXtended Kubernetes Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> 1.31.12,
   1.32.8, and 1.33.4. For locally managed clusters, refer to [Configure Palette Agent
