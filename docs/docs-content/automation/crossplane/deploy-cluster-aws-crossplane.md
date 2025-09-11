@@ -166,6 +166,7 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in AWS.
                 tag: "22.04"
                 uid: "63bd0373764141c6622c3062"
                 registryUid: "5eecc89d0b150045ae661cef"
+                type: oci
                 values:
                   "# Spectro Golden images includes most of the hardening as per CIS Ubuntu Linux 22.04 LTS Server L1
                   v1.0.0 standards\n\n# Uncomment below section to\n# 1. Include custom files to be copied over to the
@@ -183,6 +184,7 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in AWS.
                 tag: "1.32.4"
                 uid: "687bbdf5511462f044b2c727"
                 registryUid: "5eecc89d0b150045ae661cef"
+                type: oci
                 values:
                   "# spectrocloud.com/enabled-presets: Kube Controller Manager:loopback-ctrlmgr,Kube
                   Scheduler:loopback-scheduler,Azure Disk Encryption
@@ -257,6 +259,7 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in AWS.
                 tag: "3.30.1"
                 uid: "687bbdcf511462ef363aa0b4"
                 registryUid: "5eecc89d0b150045ae661cef"
+                type: oci
                 values:
                   "# spectrocloud.com/enabled-presets: Microk8s:microk8s-false\npack:\n  content:\n    images:\n      -
                   image: us-docker.pkg.dev/palette-images/packs/calico/3.30.1/cni:v3.30.1\n      - image:
@@ -279,6 +282,7 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in AWS.
                 tag: "1.43.0"
                 uid: "687bbdd7511462ef75ba7ee1"
                 registryUid: "5eecc89d0b150045ae661cef"
+                type: oci
                 values:
                   "pack:\n  content:\n    images:\n      - image:
                   us-docker.pkg.dev/palette-images/packs/csi-aws-ebs/1.43.0/aws-ebs-csi-driver:v1.43.0\n      - image:
@@ -571,7 +575,7 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in AWS.
     4.  Issue the commands below to get the ID of the cluster profile once it is created and save it as a variable.
 
         ```bash
-        kubectl wait --for=condition=Ready profile.cluster.palette.crossplane.io/aws-crossplane-cluster-profile
+        kubectl wait --for=condition=Ready profile.cluster.palette.crossplane.io/aws-crossplane-cluster-profile --timeout=60s
         CLUSTER_PROFILE_ID=$(kubectl get profile.cluster.palette.crossplane.io aws-crossplane-cluster-profile --output jsonpath='{.status.atProvider.id}')
         echo Cluster Profile ID: $CLUSTER_PROFILE_ID
         ```
@@ -600,7 +604,7 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in AWS.
 15. Fetch the ID of your AWS cloud account registered in Palette by invoking the `cloudaccounts` Palette API.
 
     ```bash
-    AWS_CLOUD_ACCOUNT_ID=$(curl --location --request GET 'https://api.spectrocloud.com/v1/cloudaccounts/aws' \
+    AWS_CLOUD_ACCOUNT_ID=$(curl --location --request GET "https://api.${PALETTE_HOST}/v1/cloudaccounts/aws" \
     -H 'Accept: application/json' \
     -H "ApiKey: $PALETTE_API_KEY" \
     | jq --arg name "$PALETTE_AWS_CLOUD_ACCOUNT_NAME" '.items[] | select(.metadata.name == $name) | .metadata.uid' -r)
