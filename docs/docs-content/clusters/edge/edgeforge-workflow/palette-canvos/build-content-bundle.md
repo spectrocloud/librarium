@@ -41,7 +41,7 @@ Creating a content bundle provides several benefits that may address common use 
 - Organizations that want better control over the software used by their Edge hosts can use content bundles to ensure
   that only approved software is consumed.
 
-## Limitation
+## Limitations
 
 :::warning
 
