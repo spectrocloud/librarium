@@ -110,7 +110,7 @@ following steps.
         <TabItem label="Ubuntu Pro Token" value="token">
 
           ```shell
-          palette pcg install --config-file /path/to/ec.yaml --update-passwords --ubuntu-pro-token *************
+          palette pcg install --config-file /path/to/pcg.yaml --update-passwords --ubuntu-pro-token *************
           ```
 
         </TabItem>
@@ -118,7 +118,7 @@ following steps.
         <TabItem label="No Ubuntu Pro Token" value="no-token">
 
           ```shell
-          palette pgc install --config-file /path/to/ec.yaml --update-passwords
+          palette pcg install --config-file /path/to/pcg.yaml --update-passwords
           ```
 
         </TabItem>
@@ -135,7 +135,7 @@ following steps.
         <TabItem label="Ubuntu Pro Token" value="token">
 
           ```shell
-          palette tc install --config-file /path/to/ec.yaml --update-passwords --ubuntu-pro-token *************
+          palette tc install --config-file /path/to/tc.yaml --update-passwords --ubuntu-pro-token *************
           ```
 
         </TabItem>
@@ -143,7 +143,7 @@ following steps.
         <TabItem label="No Ubuntu Pro Token" value="no-token">
 
           ```shell
-          palette tc install --config-file /path/to/ec.yaml --update-passwords
+          palette tc install --config-file /path/to/tc.yaml --update-passwords
           ```
 
         </TabItem>
