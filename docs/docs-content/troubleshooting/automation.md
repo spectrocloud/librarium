@@ -39,7 +39,7 @@ Use the following steps to resolve issues with incompatible stale Palette CLI bi
 
 The Palette CLI stores [encrypted](../automation/palette-cli/palette-cli.md#encryption) sensitive data such as the
 Palette API key, passwords, and other credentials in the CLI configuration files. If you need to change the credentials
-due to a changed encryption passphrase or other reasons, you can update the CLI configuration file and component installation configuration files by using the following steps.
+due to a changed encryption passphrase or other reasons, you can update the CLI configuration file and the component installation configuration files by using the following steps.
 
 ### Debug Steps
 
