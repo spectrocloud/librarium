@@ -78,7 +78,7 @@ require a local Harbor registry. Built-in registries must be configured using ei
 
 - Palette Edge CLI does not support building content for local Edge cluster deployment in agent mode on Palette 4.7.b
   (Palette agent version 4.7.12) or later. [Download](../../../../downloads/cli-tools.md#palette-cli) and use Palette
-  CLI version 4.7.b instead. This limitation does not affect appliance mode cluster deployment.
+  CLI version 4.7.b or later instead. This limitation does not affect appliance mode cluster deployment.
 
 ## Prerequisites
 
