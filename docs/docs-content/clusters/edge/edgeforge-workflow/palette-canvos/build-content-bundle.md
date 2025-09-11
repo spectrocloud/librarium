@@ -67,7 +67,7 @@ require a local Harbor registry. Built-in registries must be configured using ei
   [download](../../../../downloads/cli-tools.md#palette-edge-cli) Palette Edge CLI version 4.5.3 or earlier to create
   content bundles.
 
-- Content bundles built with the Palette Edge CLI versions earlier than 4.5.20 do not support provisioning of multi-node
+- Content bundles built with Palette Edge CLI versions earlier than 4.5.20 do not support provisioning of multi-node
   clusters. [Download](../../../../downloads/cli-tools.md#palette-edge-cli) and use Palette Edge CLI version 4.5.20 or
   later to create content bundles.
 
