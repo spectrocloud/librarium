@@ -91,9 +91,19 @@ During the upgrade process, the {props.version} system and tenant consoles will 
 
 6. Upload the content bundle to the internal Zot registry using the Palette CLI. Replace `<content-bundle-zst>` with your downloaded content bundle file and `<management-vip>` with the VIP address of the {props.version} management cluster. If you have changed the default port or the base content path for the Zot registry, replace `30003` with the correct port number and `spectro-content` with the correct content path.
 
-   If you are using custom TLS certificates or choosing to skip TLS, use the appropriate flags as shown in the following examples.
+   If you are using regular TLS certificates, custom TLS certificates, or choosing to skip TLS, use the appropriate flags as shown in the following examples.
 
    <Tabs groupId="tls-palette-cli">
+
+   <TabItem label="Regular TLS Certificate" value="regular-tls-certificate">
+
+   ```shell
+   palette content push \
+   --registry <management-vip>:30003/spectro-content \
+   --file <content-bundle-zst>
+   ```
+
+   </TabItem>
 
    <TabItem label="Custom TLS Certificate" value="custom-tls-certificate">
 
@@ -197,9 +207,19 @@ When using an external registry, you must upload the content bundle to both the 
 
 6. Upload the file to your external registry using the Palette CLI. Replace `<content-bundle-zst>` with your downloaded content bundle file, `<registry-dns-or-ip>` with the DNS/IP address of your registry, and `<registry-port>` with the port number of your registry (if applicable). If you have changed the base content path from the default, replace `spectro-content` with the correct content path.
 
-   If you are using custom TLS certificates or choosing to skip TLS, use the appropriate flags as shown in the following examples.
+   If you are using regular TLS certificates, custom TLS certificates, or choosing to skip TLS, use the appropriate flags as shown in the following examples.
 
    <Tabs groupId="tls-palette-cli">
+
+   <TabItem label="Regular TLS Certificate" value="regular-tls-certificate">
+
+   ```shell
+   palette content push \
+   --registry <registry-dns-or-ip>:<registry-port>/spectro-content \
+   --file <content-bundle-zst>
+   ```
+
+   </TabItem>
 
    <TabItem label="Custom TLS Certificate" value="custom-tls-certificate">
 

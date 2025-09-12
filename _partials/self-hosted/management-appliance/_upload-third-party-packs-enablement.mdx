@@ -91,9 +91,25 @@ partial_name: upload-third-party-packs-enablement
 
 6. Upload the packs to the internal Zot registry using the Palette CLI. Replace `<third-party-zst>` and `<third-party-conformance-zst>` with your downloaded Third Party pack ZST files and `<management-vip>` with the VIP address of the {props.version} management cluster. If you have changed the default port or the base content path for the Zot registry, replace `30003` with the correct port number and `spectro-content` with the correct content path.
 
-   If you are using custom TLS certificates or choosing to skip TLS, use the appropriate flags as shown in the following examples.
+   If you are using regular TLS certificates, custom TLS certificates, or choosing to skip TLS, use the appropriate flags as shown in the following examples.
 
    <Tabs groupId="tls-palette-cli">
+
+   <TabItem label="Regular TLS Certificate" value="regular-tls-certificate">
+
+   ```shell title="Upload Third Party Pack with Regular TLS Certificate"
+   palette content push \
+   --registry <management-vip>:30003/spectro-content \
+   --file <third-party-zst>
+   ```
+
+   ```shell title="Upload Third Party Conformance Pack with Regular TLS Certificate"
+   palette content push \
+   --registry <management-vip>:30003/spectro-content \
+   --file <third-party-conformance-zst>
+   ```
+
+   </TabItem>
 
    <TabItem label="Custom TLS Certificate" value="custom-tls-certificate">
 
@@ -196,9 +212,25 @@ partial_name: upload-third-party-packs-enablement
 
 8. Upload the packs to your external registry using the Palette CLI. Replace `<registry-dns-or-ip>` with the DNS/IP address of your registry and `<registry-port>` with the port number of your registry (if applicable). If you have changed the base content path from the default, replace `spectro-content` with the correct content path.
 
-   If you are using custom TLS certificates or choosing to skip TLS, use the appropriate flags as shown in the following examples.
+   If you are using regular TLS certificates, custom TLS certificates, or choosing to skip TLS, use the appropriate flags as shown in the following examples.
 
    <Tabs groupId="tls-palette-cli">
+
+   <TabItem label="Regular TLS Certificate" value="regular-tls-certificate">
+
+   ```shell title="Upload Third Party Pack with Regular TLS Certificate"
+   palette content push \
+   --registry <registry-dns-or-ip>:<registry-port>/spectro-content \
+   --file <third-party-zst>
+   ```
+
+   ```shell title="Upload Third Party Conformance Pack with Regular TLS Certificate"
+   palette content push \
+   --registry <registry-dns-or-ip>:<registry-port>/spectro-content \
+   --file <third-party-conformance-zst>
+   ```
+
+   </TabItem>
 
    <TabItem label="Custom TLS Certificate" value="custom-tls-certificate">
 

@@ -62,7 +62,19 @@ v1.32.x. You can observe the following error in `kube-init` logs.
 There are several possible ways to troubleshoot this issue:
 
 - Rebuild the OS using RHEL or Rocky Linux 9.x, as they come with kernel 5.14+ by default.
-- [Update the kernel version](#debug-steps---update-the-kernel-version).
+- [Update the kernel version](#debug-steps---update-the-kernel-version) to 4.19 or later in the 4.x series, or to any
+  5.x or 6.x version.
+
+:::info
+
+To view all available versions of the `kernel-lt` (long-term support) package from ELRepo, run the following command on
+a system that uses `dnf`, such as RHEL, Rocky Linux, CentOS, or a compatible container.
+
+```bash
+dnf --showduplicates --enablerepo=elrepo-kernel list available kernel-lt
+```
+
+:::
 
 ### Debug Steps - Update the Kernel Version
 
@@ -81,7 +93,8 @@ There are several possible ways to troubleshoot this issue:
        fi
    ```
 
-   Update it as in the example below to install a supported kernel version using ELRepo.
+   Update the conditional block as in the example below to install the latest available version in the 5.4.x Long-Term
+   Support (LTS) kernel line using ELRepo.
 
    ```dockerfile
    RUN if [ "${OS_DISTRIBUTION}" = "rhel" ]; then \
@@ -94,8 +107,25 @@ There are several possible ways to troubleshoot this issue:
        fi
    ```
 
+   Alternatively, you can update the conditional block as in the example below to pin an exact version. Replace
+   `5.4.261-1.el8.elrepo` with the required version.
+
+   ```dockerfile
+   RUN if [ "${OS_DISTRIBUTION}" = "rhel" ]; then \
+       cp --archive /certs/. /etc/pki/ca-trust/source/anchors/ && \
+       update-ca-trust && \
+       dnf install --assumeyes https://www.elrepo.org/elrepo-release-8.el8.elrepo.noarch.rpm && \
+       dnf update --assumeyes && \
+       dnf --enablerepo=elrepo-kernel install --assumeyes \
+          kernel-lt-5.4.261-1.el8.elrepo \
+          kernel-lt-modules-extra-5.4.261-1.el8.elrepo && \
+      dnf clean all; \
+      fi
+   ```
+
 2. Rebuild the ISO and provider image and redeploy the cluster.
-3. After the deployment is complete, issue the following command on the node to ensure the kernel version is 5.x.
+3. After the deployment is complete, issue the following command on the node to ensure you updated the kernel version to
+   a supported one.
 
    ```shell
    uname --kernel-release
@@ -103,8 +133,8 @@ There are several possible ways to troubleshoot this issue:
 
 #### Debug Steps - Update the Kernel Version for Agent Mode
 
-1. Install a supported kernel version using ELRepo. Establish an SSH connection to the PXK-E node and issue the
-   following commands.
+1. Install the latest available version in the 5.4.x LTS kernel line using ELRepo. Establish an SSH connection to the
+   PXK-E node and issue the following commands.
 
    ```shell
    dnf install --assumeyes https://www.elrepo.org/elrepo-release-8.el8.elrepo.noarch.rpm
@@ -113,7 +143,19 @@ There are several possible ways to troubleshoot this issue:
    reboot
    ```
 
-2. Issue the following command after the reboot to ensure the kernel version is 5.x.
+   Alternatively, you can issue the following command to pin an exact version. Replace `5.4.261-1.el8.elrepo` with the
+   required version.
+
+   ```shell
+   dnf install --assumeyes https://www.elrepo.org/elrepo-release-8.el8.elrepo.noarch.rpm
+   dnf update --assumeyes
+   dnf --enablerepo=elrepo-kernel install --assumeyes \
+       kernel-lt-5.4.261-1.el8.elrepo \
+       kernel-lt-modules-extra-5.4.261-1.el8.elrepo
+   reboot
+   ```
+
+2. Issue the following command after the reboot to ensure you updated the kernel version to a supported one.
 
    ```shell
    uname --kernel-release

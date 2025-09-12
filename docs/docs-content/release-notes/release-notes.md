@@ -21,6 +21,10 @@ tags: ["release-notes"]
 
 #### Breaking Changes {#breaking-changes-4.7.b}
 
+- The `spec.jsonCredentialsFileUid` field in API requests is no longer available. Users who create GCP cloud accounts
+  using the API should use the `spec.jsonCredentials` field to supply their credentials in JSON format. Refer to the
+  [API documentation](/api/introduction) for further details.
+
 #### Features
 
 #### Improvements
@@ -29,10 +33,14 @@ tags: ["release-notes"]
 
 ### Edge
 
+#### Breaking Changes
+
 - Palette CLI versions prior to 4.7.b do not support building content for local Edge cluster deployment on Palette 4.7.b
-  or later because content created with older CLI versions lacks required images. We recommend
-  [downloading](downloads/cli-tools.md) and using Palette CLI version 4.7.b or later to build content for Palette 4.7.b
-  or later.
+  or later because content created with older CLI versions lacks the required images. We recommend
+  [downloading](downloads/cli-tools.md#palette-cli) and using Palette CLI version 4.7.b or later to build content for
+  Palette 4.7.b or later.
+
+<!-- prettier-ignore-start -->
 - Edge clusters with the Palette agent versions prior to 4.7.b do not support upgrading to the following Kubernetes pack
   versions released in 4.7.b:
   <VersionedLink text="Palette Optimized Canonical" url="/integrations/packs/?pack=edge-canonical" /> 1.32.8 and 1.33.4;
@@ -43,6 +51,12 @@ tags: ["release-notes"]
   upgrading Kubernetes packs. For centrally managed clusters, do not [pause
   upgrades](clusters/cluster-management/platform-settings/pause-platform-upgrades.md) so the agent can upgrade
   automatically.
+<!-- prettier-ignore-end -->
+
+- Palette Edge CLI does not support building content for local Edge cluster deployment in agent mode on Palette 4.7.b
+  (Palette agent version 4.7.12) or later. We recommend [downloading](downloads/cli-tools.md#palette-cli) and using
+  Palette CLI version 4.7.b or later instead. This breaking change affects agent mode clusters only and does not impact
+  appliance mode clusters.
 
 #### Features
 
@@ -64,6 +78,12 @@ tags: ["release-notes"]
 Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible version of the Palette CLI.
 
 :::
+
+#### Breaking Changes
+
+- The `spectrocloud_macro` Terraform resource is no longer available. We recommend using the `spectrocloud_macros`
+  resource to create and manage service output variables and macros. For more information, refer to the Spectro Cloud
+  Terraform provider [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
 
 #### Features
 
@@ -106,6 +126,13 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 | --------- | ----------- |
 
 #### Deprecations and Removals
+
+## September 1, 2025 - Release 4.7.16
+
+### Bug Fixes
+
+- Fixed an issue where [Azure IaaS clusters](../clusters/public-cloud/azure/create-azure-cluster.md) configured with
+  `fullyPrivateAddressing` failed to deploy.
 
 ## August 21, 2025 - Release 4.7.15
 

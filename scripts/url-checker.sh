@@ -29,10 +29,10 @@ echo "Pull request number: $PR_NUMBER"
 # Read JSON file contents into a variable
 JSON_CONTENT=$(cat link_report.json)
 JSON_RATE_LIMIT_CONTENT=$(cat link_rate_limit_report.json)
-GITHUB_BROKEN_LINKS_CONTENT=$(cat link_report_github.txt)
+DEVELOPER_PORTAL_BROKEN_LINKS_CONTENT=$(cat link_report_developer_portals.txt)
 
 # Check if files are empty
-if [[ -z "$JSON_CONTENT" ]] && [[ -z "$JSON_RATE_LIMIT_CONTENT" ]] && [[ -z "$GITHUB_BROKEN_LINKS_CONTENT" ]]; then
+if [[ -z "$JSON_CONTENT" ]] && [[ -z "$JSON_RATE_LIMIT_CONTENT" ]] && [[ -z "$DEVELOPER_PORTAL_BROKEN_LINKS_CONTENT" ]]; then
   echo "No broken links found"
   exit 0
 fi
@@ -72,7 +72,7 @@ for link in $(echo "${JSON_RATE_LIMIT_CONTENT}" | jq -c '.[]'); do
     COMMENT="${COMMENT}\n\n:link: Broken URL: ${url}  \n:red_circle: State: ${state}  \n:arrow_up: Parent Page: ${parent}\n\n"
 done
 
-for link in $(echo "${GITHUB_BROKEN_LINKS_CONTENT}"); do
+for link in $(echo "${DEVELOPER_PORTAL_BROKEN_LINKS_CONTENT}"); do
     ((BROKEN_LINK_COUNT++)) # All the links in this file are broken
     filename="${link%%:*}"  # everything before the first colon
     url="${link#*:}"        # everything after the first colon
