@@ -41,7 +41,7 @@ Creating a content bundle provides several benefits that may address common use 
 - Organizations that want better control over the software used by their Edge hosts can use content bundles to ensure
   that only approved software is consumed.
 
-## Limitation
+## Limitations
 
 :::warning
 
@@ -75,6 +75,10 @@ require a local Harbor registry. Built-in registries must be configured using ei
   4.7.b or later because content created with older CLI versions lacks the required images.
   [Download](../../../../downloads/cli-tools.md#palette-cli) and use Palette CLI version 4.7.b or later to build content
   for Palette 4.7.b or later.
+
+- Palette Edge CLI does not support building content for local Edge cluster deployment in agent mode on Palette 4.7.b
+  (Palette agent version 4.7.12) or later. [Download](../../../../downloads/cli-tools.md#palette-cli) and use Palette
+  CLI version 4.7.b or later instead. This limitation does not affect appliance mode cluster deployment.
 
 ## Prerequisites
 
