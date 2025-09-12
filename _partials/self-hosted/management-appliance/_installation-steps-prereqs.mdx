@@ -7,7 +7,7 @@ partial_name: installation-steps-prereqs
 
 - Access to the [Artifact Studio](https://artifact-studio.spectrocloud.com/) to download the {props.iso} ISO.
 
-- A minimum of three nodes must be provisioned in advance for the Palette installation. We recommended the following
+- {props.edition} can be installed on a single node or on three nodes. For production environments, we recommend that three nodes be provisioned in advance for the Palette installation. We recommended the following
   resources for each node. Refer to the Palette <PaletteVertexUrlMapper edition={props.edition} text="Size Guidelines" palettePath="/install-palette#size-guidelines" vertexPath="/install-palette-vertex#size-guidelines"/> for additional sizing information.
 
   - 8 CPUs per node.
@@ -45,9 +45,58 @@ partial_name: installation-steps-prereqs
   :::warning
 
   - The ISO is only supported on Unified Extensible Firmware Interface (UEFI) systems. Ensure you configure the nodes to boot from the ISO in UEFI mode.
-  - Palette Management Appliance does not support Secure Boot. Disable it on the nodes before proceeding with the installation.
-
   :::
+
+- Palette Management Appliance supports Secure Boot for Dell servers with UEFI and Hewlett Packard Enterprise iLO5. 
+Learn how to configure and install Secure Boot for Palette Management Appliance below.
+
+  <details>
+
+  <summary> How to install Secure Boot on Hewlett Packard Enterprise iLO 5 </summary>
+
+  Before you start, ensure that you have the `MOK.der` certificate file on your local computer and that you 
+  have iLO 5 access with privileges to launch the remote console and change BIOS settings. 
+  Reach out to your customer support representative if you do not have the `MOK.der` file.
+
+  1. Power on or reboot the server. When prompted during Power-On Self-Test (POST), press **F9** to enter **System Utilities**.
+  2. Select **System Configuration** and press **Enter**.
+  3. Select **BIOS/Platform Configuration (RBSU)** > **Server Security** > **Secure Boot Settings** > **Advanced Secure Boot Options**.
+  4. Select **DB – Allowed Signatures Database** > **Enroll Signature**. If Secure Boot is currently enabled, the **Enroll Signature** option will be unavailable. Temporarily disable Secure Boot and repeat the process.
+  5. Drag the `MOK.der` file from your desktop onto the iLO Remote Console window. iLO mounts it as a virtual USB device automatically.
+  6. Confirm any prompts.
+  7. Verify that the new entry appears under **DB – Allowed Signatures Database** > **View Signatures**.
+  8. Press **ESC** to exit the menus until the **Save and Exit** option is available.
+  9. Reboot the server.
+
+  </details>
+
+  <details>
+
+  <summary> How to install Secure Boot on Dell servers with UEFI </summary>
+
+  Before you start, ensure that you have the `MOK.der` certificate file on your local computer.
+  Reach out to your customer support representative if you do not have the `MOK.der` file.
+
+  1. Power on the server. Execute the following command to create a virtual CD/DVD drive containing a ISO file with the `MOK.der` certificate.
+      
+      ```
+      mkisofs -output key.iso -volid cidata -joliet -rock MOK.der
+      ```
+      Alternatively, you can save the file to a FAT32-formatted USB drive.
+
+  2. Reboot the server. When the Dell logo appears, press **F2**. The **System Setup** menu opens.
+  3. Select **System BIOS** > **Boot Settings**.
+  4. Ensure that the **Boot Mode** is set to **UEFI**.
+  5. Press **ESC** to return to **Boot Settings**.
+  6. Select **System Security** > **Secure Boot Settings**.
+  7. Toggle **Secure Boot** to **Enabled** and **Secure Boot Policy** to **Custom**.
+  8. Select **Secure Boot Custom Policy Settings** > **Authorized Signature Database (db)**.
+  9. Select **Import New Entry**. Then, select the virtual CD/DVD drive or USB drive containing the `MOK.der` file.
+  10. Save the changes. Press **ESC** to return to **Authorized Signature Database (db)**.
+  11. Select **View Entries**. The `MOK.der` file shows in the database as **DRBD Module Signing**.
+  12. Save the changes and reboot the server.
+
+  </details>
 
 - You can choose to use either an internal Zot registry that comes with Palette or an external registry of your choice. If using an external registry, you will need to provide the following information during the Palette installation process.
 
