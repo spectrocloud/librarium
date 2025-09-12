@@ -416,6 +416,10 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in GCP.
     echo Cloud Account ID: $GCP_CLOUD_ACCOUNT_ID
     ```
 
+    ```bash hideClipboard title="Example output"
+    Cloud Account ID: 67bdef49b2fc3ec6c1774686
+    ```
+
 16. Use the following command to create a file to store your GCP IaaS cluster configuration. Replace
     `<gcp-project-name>` with the name of your GCP project under which you will deploy your GCP cluster.
 

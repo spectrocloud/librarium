@@ -4,7 +4,6 @@ title: "Deploy an AWS IaaS Cluster with Crossplane"
 description: "Learn how to deploy an AWS IaaS cluster using the Spectro Cloud Crossplane provider."
 hide_table_of_contents: false
 sidebar_position: 20
-toc_max_heading_level: 4
 tags: ["crossplane", "aws", "iac", "infrastructure as code"]
 ---
 
