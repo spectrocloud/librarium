@@ -39,8 +39,8 @@ causing admission requests to fail.
 2. Issue the following commands on one of the control plane nodes.
 
    ```bash
-   kubectl delete secret -n spectro-system stylus-webhook-tls
-   kubectl delete svc -n spectro-system stylus-webhook
+   kubectl delete secret --namespace spectro-system stylus-webhook-tls
+   kubectl delete svc --namespace spectro-system stylus-webhook
    kubectl delete MutatingWebhookConfiguration stylus-webhook
    ```
 
