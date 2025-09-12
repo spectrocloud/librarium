@@ -148,7 +148,7 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in AWS.
     ```
 
     ```bash hideClipboard title="Example output"
-    providerconfig.palette.crossplane.io/default created
+    providerconfig.palette.crossplane.io/provider-palette created
     ```
 
 13. Create a cluster `Profile` object with Crossplane or use an existing cluster profile. If you are using an existing
@@ -698,7 +698,7 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in AWS.
     aws.cluster.palette.crossplane.io/aws-crossplane-cluster created
     ```
 
-18. Wait for the cluster to be created. Cluster provisioning may take up to an hour.
+18. Wait for the cluster to be created. Cluster provisioning may take up to one hour.
 
     ```bash
     kubectl wait --for=condition=Ready aws.cluster.palette.crossplane.io/aws-crossplane-cluster --timeout=1h

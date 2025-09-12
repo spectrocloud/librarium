@@ -146,7 +146,7 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in Azure.
     ```
 
     ```bash hideClipboard title="Example output"
-    providerconfig.palette.crossplane.io/default created
+    providerconfig.palette.crossplane.io/provider-palette created
     ```
 
 13. Create a cluster `Profile` object with Crossplane or use an existing cluster profile. If you are using an existing
