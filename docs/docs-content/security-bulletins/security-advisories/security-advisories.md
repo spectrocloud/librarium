@@ -1,6 +1,6 @@
 ---
-sidebar_label: "Security Advisory"
-title: "Security Advisory"
+sidebar_label: "Security Advisories"
+title: "Security Advisories"
 description: "Palette Security Advisories for Common Vulnerabilities and Exposures (CVEs)."
 icon: ""
 toc_max_heading_level: 4
@@ -10,6 +10,36 @@ tags: ["security", "cve", "advisories"]
 
 Security advisories supplement <VersionedLink text="security bulletins" url="/security-bulletins/reports/" />, providing
 additional details regarding vulnerabilities and offering remediation steps.
+
+## Security Advisory 004 - MongoDB: FIPS Mode Cryptographic Algorithm Use from Non-FIPS Providers
+
+- **Release Date**: September 11, 2025
+- **Last Updated**: September 11, 2025
+- **Severity**: High
+- **Applicable Deployments**: Self-Hosted Palette VerteX
+
+### Summary
+
+On September 11, 2025, Spectro Cloud became aware of a recently disclosed vulnerability related to the use of MongoDB
+servers configured for FIPS mode, in which MongoDB incorrectly enables the use of cryptographic algorithms from non-FIPS
+providers. This may allow client TLS connections to agree to use (negotiate) non-FIPS-compliant cryptographic algorithms
+even when FIPS mode is enabled on MongoDB. As a result, self-hosted Palette VerteX deployments, when running on a
+non-FIPS-compliant operating system or Kubernetes cluster, may allow negotiation of non-FIPS cryptographic algorithms.
+
+For additional information regarding this advisory, refer to
+[MongoDB Jira issue SERVER-109268](https://jira.mongodb.org/browse/SERVER-109268).
+
+### Recommended Actions
+
+By default, Spectro Cloud enforces FIPS-only mode on the MongoDB container. No action is required for self-hosted
+Palette VerteX installations that meet the documented FIPS prerequisites. However, self-hosted Palette VerteX instances
+that do _not_ meet the FIPS prerequisites outlined in our user documentation may be affected by this vulnerability.
+
+Customers should verify their Palette VerteX setup to ensure they are not affected.
+
+Refer to the applicable Palette VerteX prerequisites for more details:
+
+-
 
 ## Security Advisory 003 - Self-Deleting Nodes with OwnerReference
 
