@@ -46,9 +46,9 @@ causing admission requests to fail.
 
 3. Issue the following command on all cluster nodes to restart the Palette Agent’s operator service.
 
-```bash
-systemctl restart spectro-stylus-operator
-```
+   ```bash
+   systemctl restart spectro-stylus-operator
+   ```
 
 This will resolve the issue, and cluster creation will proceed normally.
 
