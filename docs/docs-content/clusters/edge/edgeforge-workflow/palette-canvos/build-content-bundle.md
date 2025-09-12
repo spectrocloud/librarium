@@ -41,7 +41,7 @@ Creating a content bundle provides several benefits that may address common use 
 - Organizations that want better control over the software used by their Edge hosts can use content bundles to ensure
   that only approved software is consumed.
 
-## Limitation
+## Limitations
 
 :::warning
 
@@ -62,14 +62,23 @@ require a local Harbor registry. Built-in registries must be configured using ei
 
 <!-- prettier-ignore-end -->
 
-- Edge content bundles created with Edge CLI version greater than `4.5.5`, are incompatible with Palette agent versions
-  before `4.5.4` due to a new format schema. If you are using an older version of the Palette agent, use the Edge CLI
-  version `4.5.3` or earlier to create content bundles. To download the latest version of the Edge CLI, visit the
-  [Downloads](../../../../downloads/cli-tools.md#palette-edge-cli) page.
+- Edge content bundles built with Palette Edge CLI versions later than 4.5.5 are incompatible with Palette agent
+  versions earlier than 4.5.4 due to a new format schema. If you are using an older version of the Palette agent,
+  [download](../../../../downloads/cli-tools.md#palette-edge-cli) Palette Edge CLI version 4.5.3 or earlier to create
+  content bundles.
 
-- Content bundles built with the Palette Edge CLI versions earlier than `4.5.20` cannot be used to provision multi-node
-  clusters. Download the latest version of the Palette Edge CLI from the
-  [Downloads](../../../../downloads/cli-tools.md#palette-edge-cli) page to build the content bundle instead.
+- Content bundles built with Palette Edge CLI versions earlier than 4.5.20 do not support provisioning of multi-node
+  clusters. [Download](../../../../downloads/cli-tools.md#palette-edge-cli) and use Palette Edge CLI version 4.5.20 or
+  later to create content bundles.
+
+- Palette CLI versions earlier than 4.7.b do not support building content for local Edge cluster deployment on Palette
+  4.7.b or later because content created with older CLI versions lacks the required images.
+  [Download](../../../../downloads/cli-tools.md#palette-cli) and use Palette CLI version 4.7.b or later to build content
+  for Palette 4.7.b or later.
+
+- Palette Edge CLI does not support building content for local Edge cluster deployment in agent mode on Palette 4.7.b
+  (Palette agent version 4.7.12) or later. [Download](../../../../downloads/cli-tools.md#palette-cli) and use Palette
+  CLI version 4.7.b or later instead. This limitation does not affect appliance mode cluster deployment.
 
 ## Prerequisites
 

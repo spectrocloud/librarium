@@ -11,6 +11,122 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## September 13, 2025 - Release 4.7.X {#release-notes-4.7.b}
+
+### Security Notices
+
+- Review the [Security Bulletins](../security-bulletins/reports/reports.mdx) page for the latest security advisories.
+
+### Palette Enterprise {#palette-enterprise-4.7.b}
+
+#### Breaking Changes {#breaking-changes-4.7.b}
+
+- The `spec.jsonCredentialsFileUid` field in API requests is no longer available. Users who create GCP cloud accounts
+  using the API should use the `spec.jsonCredentials` field to supply their credentials in JSON format. Refer to the
+  [API documentation](/api/introduction) for further details.
+
+#### Features
+
+#### Improvements
+
+#### Deprecations and Removals
+
+### Edge
+
+#### Breaking Changes
+
+- Palette CLI versions prior to 4.7.b do not support building content for local Edge cluster deployment on Palette 4.7.b
+  or later because content created with older CLI versions lacks the required images. We recommend
+  [downloading](downloads/cli-tools.md#palette-cli) and using Palette CLI version 4.7.b or later to build content for
+  Palette 4.7.b or later.
+
+<!-- prettier-ignore-start -->
+- Edge clusters with the Palette agent versions prior to 4.7.b do not support upgrading to the following Kubernetes pack
+  versions released in 4.7.b:
+  <VersionedLink text="Palette Optimized Canonical" url="/integrations/packs/?pack=edge-canonical" /> 1.32.8 and 1.33.4;
+  <VersionedLink text="Palette eXtended Kubernetes Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> 1.31.12,
+  1.32.8, and 1.33.4. This breaking change affects agent mode clusters only and does not impact appliance mode clusters.
+  For locally managed clusters, refer to [Configure Palette Agent
+  Version](clusters/edge/cluster-management/agent-upgrade-airgap.md) to upgrade the agent to the latest version before
+  upgrading Kubernetes packs. For centrally managed clusters, do not [pause
+  upgrades](clusters/cluster-management/platform-settings/pause-platform-upgrades.md) so the agent can upgrade
+  automatically.
+<!-- prettier-ignore-end -->
+
+- Palette Edge CLI does not support building content for local Edge cluster deployment in agent mode on Palette 4.7.b
+  (Palette agent version 4.7.12) or later. We recommend [downloading](downloads/cli-tools.md#palette-cli) and using
+  Palette CLI version 4.7.b or later instead. This breaking change affects agent mode clusters only and does not impact
+  appliance mode clusters.
+
+#### Features
+
+#### Improvements
+
+#### Bug Fixes
+
+### VerteX
+
+#### Features
+
+- Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
+  [Palette section](#palette-enterprise-4.7.b) for more details.
+
+### Automation
+
+:::info
+
+Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible version of the Palette CLI.
+
+:::
+
+#### Breaking Changes
+
+- The `spectrocloud_macro` Terraform resource is no longer available. We recommend using the `spectrocloud_macros`
+  resource to create and manage service output variables and macros. For more information, refer to the Spectro Cloud
+  Terraform provider [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
+
+#### Features
+
+#### Improvements
+
+### Docs and Education
+
+### Packs
+
+#### Pack Notes
+
+#### OS
+
+| Pack Name | New Version |
+| --------- | ----------- |
+
+#### Kubernetes
+
+| Pack Name | New Version |
+| --------- | ----------- |
+
+#### CNI
+
+| Pack Name | New Version |
+| --------- | ----------- |
+
+#### CSI
+
+| Pack Name | New Version |
+| --------- | ----------- |
+
+#### Add-on Packs
+
+| Pack Name | New Version |
+| --------- | ----------- |
+
+#### FIPS Packs
+
+| Pack Name | New Version |
+| --------- | ----------- |
+
+#### Deprecations and Removals
+
 ## September 1, 2025 - Release 4.7.16
 
 ### Bug Fixes
