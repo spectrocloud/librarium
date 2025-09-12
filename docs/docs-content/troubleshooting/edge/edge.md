@@ -20,9 +20,13 @@ x509: certificate signed by unknown authority ("Spectro Cloud")
 http: TLS handshake error ... remote error: tls: bad certificate
 ```
 
-As a result, core components such as CNI, Harbor, and cluster controllers never start. All pods remain in **Pending** or **Failed**  state. In the Local UI, packs display **Invalid date** in the **Started On** and **Completed On** fields.
+As a result, core components such as CNI, Harbor, and cluster controllers never start. All pods remain in **Pending** or
+**Failed** state. In the Local UI, packs display **Invalid date** in the **Started On** and **Completed On** fields.
 
-This issue occurs when the agent admission webhook (`MutatingWebhookConfiguration` object named `stylus-webhook`) and its Transport Layer Security (TLS) secret (`stylus-webhook-tls`) are temporarily mismatched due to a timing issue during cluster bootstrap. As a result, the Kubernetes API server rejects the certificate as signed by an unknown authority, causing admission requests to fail.
+This issue occurs when the agent admission webhook (`MutatingWebhookConfiguration` object named `stylus-webhook`) and
+its Transport Layer Security (TLS) secret (`stylus-webhook-tls`) are temporarily mismatched due to a timing issue during
+cluster bootstrap. As a result, the Kubernetes API server rejects the certificate as signed by an unknown authority,
+causing admission requests to fail.
 
 ### Debug Steps
 
@@ -31,6 +35,7 @@ This issue occurs when the agent admission webhook (`MutatingWebhookConfiguratio
    ```bash
    systemctl stop spectro-stylus-operator
    ```
+
 2. Issue the following commands on one of the control plane nodes.
 
    ```bash
@@ -38,11 +43,13 @@ This issue occurs when the agent admission webhook (`MutatingWebhookConfiguratio
    kubectl delete svc -n spectro-system stylus-webhook
    kubectl delete MutatingWebhookConfiguration stylus-webhook
    ```
-3.  Issue the following command on all cluster nodes to restart the Palette Agent’s operator service.
 
-   ```bash
-   systemctl restart spectro-stylus-operator
-   ```
+3. Issue the following command on all cluster nodes to restart the Palette Agent’s operator service.
+
+```bash
+systemctl restart spectro-stylus-operator
+```
+
 This will resolve the issue, and cluster creation will proceed normally.
 
 ## Scenario - `content-length: 0` Errors during Content Synchronization
