@@ -39,27 +39,51 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in AWS.
 
 <PartialsComponent category="crossplane" name="install-crossplane" />
 
-4.  Once Crossplane is installed, create a folder to store the Kubernetes configuration files. Navigate to the newly
-    created folder.
+1.  Once Crossplane is installed, create a folder to store the Kubernetes configuration files.
 
     ```bash
     mkdir crossplane-aws
-    cd crossplane-aws
     ```
 
-5.  <PartialsComponent category="crossplane" name="palette-crossplane-provider-version" />
+2.  <PartialsComponent category="crossplane" name="palette-crossplane-provider-version" />
 
-6.  <PartialsComponent category="crossplane" name="provider-palette-yaml" />
+3.  Create the following Kubernetes configuration for the Palette Crossplane provider.
 
-7.  <PartialsComponent category="crossplane" name="provider-palette-created" />
+    ```bash
+    cat << EOF > crossplane-aws/provider-palette.yaml
+    apiVersion: pkg.crossplane.io/v1
+    kind: Provider
+    metadata:
+      name: provider-palette
+    spec:
+      package: xpkg.upbound.io/crossplane-contrib/provider-palette:$PALETTE_CROSSPLANE_PROVIDER_VERSION
+    EOF
+    ```
 
-8.  <PartialsComponent category="crossplane" name="palette-environment-variables" />
+    Verify that the file was created and populated with the expected Palette Crossplane provider version.
 
-9.  Create a file to store the Kubernetes Secret containing your Palette API key and environment details. The Palette
+    ```bash
+    cat crossplane-aws/provider-palette.yaml
+    ```
+
+    <PartialsComponent category="crossplane" name="provider-palette-yaml" />
+
+4.  Issue the command below to install the Palette Crossplane provider. Crossplane installs the Custom Resource
+    Definitions (CRDs) that allow you to create Palette resources directly inside Kubernetes.
+
+    ```bash
+    kubectl apply --filename crossplane-aws/provider-palette.yaml
+    ```
+
+    <PartialsComponent category="crossplane" name="provider-palette-created" />
+
+5.  <PartialsComponent category="crossplane" name="palette-environment-variables" />
+
+6.  Create a file to store the Kubernetes Secret containing your Palette API key and environment details. The Palette
     provider requires credentials to create and manage resources.
 
     ```bash
-    cat << EOF > secret-aws.yaml
+    cat << EOF > crossplane-aws/secret-aws.yaml
     apiVersion: v1
     kind: Secret
     metadata:
@@ -82,26 +106,26 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in AWS.
     Verify that the file was created and populated with the expected API key and environment values.
 
     ```bash
-    cat secret-aws.yaml
+    cat crossplane-aws/secret-aws.yaml
     ```
 
     <PartialsComponent category="crossplane" name="secret-cloud-yaml" />
 
-10. Create the Kubernetes Secret.
+7.  Create the Kubernetes Secret.
 
     ```bash
-    kubectl apply --filename secret-aws.yaml
+    kubectl apply --filename crossplane-aws/secret-aws.yaml
     ```
 
     ```bash hideClipboard title="Example output"
     secret/palette-creds created
     ```
 
-11. Create a file to store the `ProviderConfig` object. This object configures the Palette Crossplane provider with the
+8.  Create a file to store the `ProviderConfig` object. This object configures the Palette Crossplane provider with the
     Secret containing the Palette API key.
 
     ```bash
-    cat << EOF > providerconfig-aws.yaml
+    cat << EOF > crossplane-aws/providerconfig-aws.yaml
     apiVersion: palette.crossplane.io/v1beta1
     kind: ProviderConfig
     metadata:
@@ -117,39 +141,41 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in AWS.
     EOF
     ```
 
-12. Create the Kubernetes `ProviderConfig` object.
+9.  Create the Kubernetes `ProviderConfig` object.
 
     ```bash
-    kubectl apply --filename providerconfig-aws.yaml
+    kubectl apply --filename crossplane-aws/providerconfig-aws.yaml
     ```
 
     ```bash hideClipboard title="Example output"
     providerconfig.palette.crossplane.io/default created
     ```
 
-13. Create a cluster `Profile` object with Crossplane or use an existing cluster profile. If you are using an existing
+10. Create a cluster `Profile` object with Crossplane or use an existing cluster profile. If you are using an existing
     cluster profile, your cluster profile packs must be compatible with the infrastructure your cluster will be deployed
     on.
 
     <Tabs>
-
-    <TabItem value="existing-cluster-profile" label="Existing Cluster Profile">
-
-    <PartialsComponent category="crossplane" name="cluster-profile-existing" />
-
-    </TabItem>
 
     <TabItem value="crossplane" label="New Cluster Profile with Crossplane">
 
     1.  <PartialsComponent category="crossplane" name="cluster-profile-warning" />
 
         ```bash
-        vi cluster-profile-aws.yaml
+        vi crossplane-aws/cluster-profile-aws.yaml
         ```
 
     2.  Paste the Kubernetes configuration below into the text editor window that opens. Save the file and exit.
 
-        ```yaml
+        :::tip
+
+        By default, Palette deploys the cluster in the project scope using the `project_name` defined in the Kubernetes
+        Secret file. To deploy the cluster in the tenant admin scope instead of the project scope, set the value of
+        `spec.forProvider.context` to `tenant`.
+
+        :::
+
+        ```yaml {13}
         apiVersion: cluster.palette.crossplane.io/v1alpha1
         kind: Profile
         metadata:
@@ -157,10 +183,12 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in AWS.
           namespace: crossplane-system
         spec:
           forProvider:
-            cloud: "aws"
-            description: "AWS Crossplane cluster profile"
             name: "aws-crossplane-cluster-profile"
+            description: "AWS Crossplane cluster profile"
+            cloud: "aws"
             type: "cluster"
+            version: "1.0.0"
+            context: project
             pack:
               - name: "ubuntu-aws"
                 tag: "22.04"
@@ -565,7 +593,7 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in AWS.
     3.  Create the cluster profile in Palette.
 
         ```bash
-        kubectl apply --filename cluster-profile-aws.yaml
+        kubectl apply --filename crossplane-aws/cluster-profile-aws.yaml
         ```
 
         ```bash hideClipboard title="Example output"
@@ -587,9 +615,15 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in AWS.
 
     </TabItem>
 
+    <TabItem value="existing-cluster-profile" label="Existing Cluster Profile">
+
+    <PartialsComponent category="crossplane" name="cluster-profile-existing" />
+
+    </TabItem>
+
     </Tabs>
 
-14. Next, set your Palette AWS account name as a variable. Replace `<aws-account-name>` with the name under which you
+11. Next, set your Palette AWS account name as a variable. Replace `<aws-account-name>` with the name under which you
     registered your AWS account in Palette. This is the display name that appears under **Cloud Accounts** in **Tenant
     Settings** or **Project Settings**, _not_ the actual name of your AWS account.
 
@@ -601,7 +635,7 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in AWS.
 
     ![AWS account name in Palette](/automation_crossplane_deploy-cluster-aws-crossplane_aws-account-name-4-7.webp)
 
-15. Fetch the ID of your AWS cloud account registered in Palette by invoking the `cloudaccounts` Palette API.
+12. Fetch the ID of your AWS cloud account registered in Palette by invoking the `cloudaccounts` Palette API.
 
     ```bash
     AWS_CLOUD_ACCOUNT_ID=$(curl --location --request GET "https://api.${PALETTE_HOST}/v1/cloudaccounts/aws" \
@@ -615,14 +649,14 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in AWS.
     Cloud Account ID: 67bdef49b2fc3ec6c1774686
     ```
 
-16. Use the following command to create a file to store your AWS IaaS cluster configuration. Replace `<ssh-key-name>`
+13. Use the following command to create a file to store your AWS IaaS cluster configuration. Replace `<ssh-key-name>`
     with the name of your AWS EC2 SSH key that belongs to the region where you want to deploy your cluster.
 
     Optionally, edit the region, availability zone, instance type, and number of cluster nodes according to your
     workload.
 
     ```bash {11}
-    cat << EOF > cluster-aws.yaml
+    cat << EOF > crossplane-aws/cluster-aws.yaml
     apiVersion: cluster.palette.crossplane.io/v1alpha1
     kind: Aws
     metadata:
@@ -654,17 +688,17 @@ how to use Crossplane to deploy a Palette-managed Kubernetes cluster in AWS.
     EOF
     ```
 
-17. Create the AWS IaaS cluster.
+14. Create the AWS IaaS cluster.
 
     ```bash
-    kubectl apply --filename cluster-aws.yaml
+    kubectl apply --filename crossplane-aws/cluster-aws.yaml
     ```
 
     ```bash hideClipboard title="Example output"
     aws.cluster.palette.crossplane.io/aws-crossplane-cluster created
     ```
 
-18. Wait for the cluster to be created. Cluster provisioning may take up to an hour.
+15. Wait for the cluster to be created. Cluster provisioning may take up to an hour.
 
     ```bash
     kubectl wait --for=condition=Ready aws.cluster.palette.crossplane.io/aws-crossplane-cluster --timeout=1h
