@@ -43,7 +43,7 @@ This issue occurs when the agent admission webhook (`MutatingWebhookConfiguratio
    ```bash
    systemctl restart spectro-stylus-operator
    ```
-This will resolve the issue and cluster creation will proceed normally.
+This will resolve the issue, and cluster creation will proceed normally.
 
 ## Scenario - `content-length: 0` Errors during Content Synchronization
 
