@@ -21,10 +21,10 @@ additional details regarding vulnerabilities and offering remediation steps.
 ### Summary
 
 On September 11, 2025, Spectro Cloud became aware of a recently disclosed vulnerability related to the use of MongoDB
-servers configured for FIPS mode, in which MongoDB incorrectly enables the use of cryptographic algorithms from non-FIPS
+servers configured for FIPS mode, in which MongoDB incorrectly allows the use of cryptographic algorithms from non-FIPS
 providers. This may allow client TLS connections to agree to use (negotiate) non-FIPS-compliant cryptographic algorithms
-even when FIPS mode is enabled on MongoDB. As a result, self-hosted Palette VerteX deployments, when running on a
-non-FIPS-compliant operating system or Kubernetes cluster, may allow negotiation of non-FIPS cryptographic algorithms.
+even when FIPS mode is enabled on MongoDB. As a result, self-hosted Palette VerteX deployments running on a
+non-FIPS-compliant OS or Kubernetes cluster may allow negotiation of non-FIPS cryptographic algorithms.
 
 For additional information regarding this advisory, refer to
 [MongoDB Jira issue SERVER-109268](https://jira.mongodb.org/browse/SERVER-109268).
@@ -32,14 +32,13 @@ For additional information regarding this advisory, refer to
 ### Recommended Actions
 
 By default, Spectro Cloud enforces FIPS-only mode on the MongoDB container. No action is required for self-hosted
-Palette VerteX installations that meet the documented FIPS prerequisites. However, self-hosted Palette VerteX instances
-that do _not_ meet the FIPS prerequisites outlined in our user documentation may be affected by this vulnerability.
+Palette VerteX instances installed on a FIPS-compliant OS or Kubernetes cluster, which is a
+[prerequisite](../../vertex/install-palette-vertex/install-on-kubernetes/install.md#prerequisites) for FIPS-compliant
+Palette VerteX installations. As a result, self-hosted Palette VerteX instances that do _not_ meet the FIPS
+prerequisites may be affected by this vulnerability.
 
-Customers should verify their Palette VerteX setup to ensure they are not affected.
-
-Refer to the applicable Palette VerteX prerequisites for more details:
-
--
+Customers should verify their Palette VerteX setup to ensure they are not affected. Affected customers should take the
+appropriate actions to secure their environment and meet the FIPS prerequisites.
 
 ## Security Advisory 003 - Self-Deleting Nodes with OwnerReference
 
