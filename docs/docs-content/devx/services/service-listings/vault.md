@@ -14,9 +14,9 @@ logoUrl: "/assets/icons/lock.svg"
 
 Palette Dev Engine (PDE) users can deploy Vault onto their virtual cluster using the out-of-the-box Vault offering.
 Vault deployed through PDE is using Banzai Cloud Bank-Vaults. Bank-Vaults is a wrapper for the official
-[Vault](https://www.vaultproject.io/) client. Vault is a tool that helps you securely manage and protect sensitive
-information, like passwords, API keys, and encryption keys. The Bank-Vaults client enhances the official Vault client by
-adding automatic token renewal, built-in Kubernetes support, and a dynamic database credential provider.
+[Vault](https://developer.hashicorp.com/vault) client. Vault is a tool that helps you securely manage and protect
+sensitive information, like passwords, API keys, and encryption keys. The Bank-Vaults client enhances the official Vault
+client by adding automatic token renewal, built-in Kubernetes support, and a dynamic database credential provider.
 
 Vault keeps these secrets safe by locking them in a virtual "vault" and only allows authorized users to access them.
 Vault also tracks who has accessed which secrets and when, making it easier to maintain security. You can use Vault to
