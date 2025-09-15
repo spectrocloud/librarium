@@ -34,7 +34,7 @@ with Microsoft Azure or Google Cloud Platform (GCP).
   guide for further instructions.
 - A public cloud account registered in Palette. Refer to
   [AWS](../../../../clusters/public-cloud/aws/add-aws-accounts/#aws-account),
-  [Azure](../../../clusters/public-cloud/azure/azure-cloud.md) or
+  [Azure](../../clusters/public-cloud/azure/azure-cloud.md) or
   [Google Cloud](../../../../clusters/public-cloud/gcp/add-gcp-accounts/#create-account) to learn how to register a
   cloud account.
 - An SSH key available in the region where you plan to deploy the cluster.

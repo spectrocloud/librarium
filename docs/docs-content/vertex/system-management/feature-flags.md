@@ -48,10 +48,10 @@ Use the following steps to enable a feature flag.
 
    Palette VerteX supports the following feature flags.
 
-   | **Feature Flag**       | **Description**                                                                                                                                                                             |
-   | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **AwsSecretPartition** | Allows you to add an [AWS Secret Cloud](../../clusters/public-cloud/aws/add-aws-accounts.md#add-aws-secret-cloud-to-palette-vertex) account at **Tenant Settings > Cloud Accounts**.        |
-   | **AzureUsSecretCloud** | Allows you to add an [Azure Government Secret](../../clusters/public-cloud/azure/azure-cloud.md#add-azure-government-secret-cloud-account) account at **Tenant Settings > Cloud Accounts**. |
+   | **Feature Flag**       | **Description**                                                                                                                                                                      |
+   | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+   | **AwsSecretPartition** | Allows you to add an [AWS Secret Cloud](../../clusters/public-cloud/aws/add-aws-accounts.md#add-aws-secret-cloud-to-palette-vertex) account at **Tenant Settings > Cloud Accounts**. |
+   | **AzureUsSecretCloud** | Allows you to add an [Azure Government Secret](../../clusters/public-cloud/azure/azure-cloud.md#azure-government-secret-cloud) account at **Tenant Settings > Cloud Accounts**.      |
 
 ## Validate
 
