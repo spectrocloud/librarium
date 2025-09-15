@@ -43,7 +43,8 @@ Kubernetes API server rejects the certificate as signed by an unknown authority,
    kubectl delete MutatingWebhookConfiguration stylus-webhook
    ```
 
-3. Issue the following command on all cluster nodes to restart the Palette Agent operator service and regenerate a new, consistent set of webhook resources.
+3. Issue the following command on all cluster nodes to restart the Palette Agent operator service and regenerate a new,
+   consistent set of webhook resources.
 
    ```bash
    systemctl restart spectro-stylus-operator
