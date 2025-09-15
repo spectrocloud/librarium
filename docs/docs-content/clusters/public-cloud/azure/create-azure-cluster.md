@@ -227,13 +227,13 @@ Take the following steps to deploy an Azure cluster.
 
     Each subnet allows you to specify the CIDR range and a security group.
 
-    | **Parameter**              | **Description**                                                        |
-    | -------------------------- | ---------------------------------------------------------------------- |
-    | **Network Resource Group** | Select the the logical container for grouping related Azure resources. |
-    | **Virtual Network**        | Select the VNet.                                                       |
-    | **CIDR Block**             | Select the IP address CIDR range.                                      |
-    | **Control Plane Subnet**   | Select the control plane subnet.                                       |
-    | **Worker Subnet**          | Select the worker network.                                             |
+    | **Parameter**              | **Description**                                                    |
+    | -------------------------- | ------------------------------------------------------------------ |
+    | **Network Resource Group** | Select the logical container for grouping related Azure resources. |
+    | **Virtual Network**        | Select the VNet.                                                   |
+    | **CIDR Block**             | Select the IP address CIDR range.                                  |
+    | **Control Plane Subnet**   | Select the control plane subnet.                                   |
+    | **Worker Subnet**          | Select the worker network.                                         |
 
     ### Private API Server LB Settings
 
