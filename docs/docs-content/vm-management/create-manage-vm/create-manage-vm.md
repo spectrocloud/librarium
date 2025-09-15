@@ -52,6 +52,7 @@ different node. Refer to the following resources to learn about VM management.
 :::warning
 
 Ensure that you delete all virtual machines before removing the
+
 <VersionedLink text="Virtual Machine Orchestrator" url="/integrations/packs/?pack=virtual-machine-orchestrator" /> pack
 from your cluster.
 
