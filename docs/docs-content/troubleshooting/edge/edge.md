@@ -44,7 +44,7 @@ causing admission requests to fail.
    kubectl delete MutatingWebhookConfiguration stylus-webhook
    ```
 
-3. Issue the following command on all cluster nodes to restart the Palette Agent’s operator service.
+3. Issue the following command on all cluster nodes to restart the Palette Agent operator service.
 
    ```bash
    systemctl restart spectro-stylus-operator
