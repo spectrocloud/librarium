@@ -59,7 +59,7 @@ Learn how to configure and install Secure Boot for Palette Management Appliance 
   Reach out to your customer support representative if you do not have the `MOK.der` file.
 
   1. Power on or reboot the server. When prompted during Power-On Self-Test (POST), press **F9** to enter **System Utilities**.
-  2. Select **System Configuration** and press **Enter**.
+  2. Select **System Configuration** and press **ENTER**.
   3. Select **BIOS/Platform Configuration (RBSU)** > **Server Security** > **Secure Boot Settings** > **Advanced Secure Boot Options**.
   4. Select **DB – Allowed Signatures Database** > **Enroll Signature**. If Secure Boot is currently enabled, the **Enroll Signature** option will be unavailable. Temporarily disable Secure Boot and repeat the process.
   5. Drag the `MOK.der` file from your desktop onto the iLO Remote Console window. iLO mounts it as a virtual USB device automatically.
@@ -77,7 +77,7 @@ Learn how to configure and install Secure Boot for Palette Management Appliance 
   Before you start, ensure that you have the `MOK.der` certificate file on your local computer.
   Reach out to your customer support representative if you do not have the `MOK.der` file.
 
-  1. Power on the server. Execute the following command to create a virtual CD/DVD drive containing a ISO file with the `MOK.der` certificate.
+  1. Power on the server. Execute the following command to create a virtual CD/DVD drive containing an ISO file with the `MOK.der` certificate.
       
       ```
       mkisofs -output key.iso -volid cidata -joliet -rock MOK.der
