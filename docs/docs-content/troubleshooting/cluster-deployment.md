@@ -12,37 +12,21 @@ The following steps will help you troubleshoot errors in the event issues arise 
 
 ## Scenario - CoreDNS Pods Stuck in Azure Government Secret Clusters
 
-When deploying an Azure IaaS cluster in Azure Government Secret cloud, you may encounter networking issues related to
-`coredns` pods never entering a `Ready` state. This can be the result of the control plane coming up before the
-Container Network Interface (CNI), preventing pods from being assigned an IP.
+When deploying an [Azure IaaS cluster](../clusters/public-cloud/azure/create-azure-cluster.md) in
+[Azure Government Secret](../clusters/public-cloud/azure/azure-cloud.md#azure-government-secret-cloud) cloud, you may
+encounter networking issues related to `coredns` pods never entering a `Ready` state. This can be the result of the
+control plane coming up before the Container Network Interface (CNI), preventing pods from being assigned IP addresses.
 
-### Debug Steps
-
-1. Log in to Palette VerteX.
-
-2. From to the left main menu, select **Clusters**.
-
-3. Select the cluster and download the [kubeconfig](../clusters/cluster-management/palette-webctl.md) file.
-
-4. Open a terminal window and set the environment variable `KUBECONFIG` to point to the kubeconfig file you downloaded.
-
-   ```bash
-   export KUBECONFIG=~/path/to/kubeconfig
-   ```
-
-5.
-
-To confirm the type of networking issue, download your cluster's
-[kubeconfig](../clusters/cluster-management/palette-webctl.md) file, and set the environment variable `KUBECONFIG` to
-point to the kubeconfig file you downloaded. Note the IP address of a worker node, and run the following command.
+To confirm if you are experiencing this issue, establish an SSH connection with one of your Azure IaaS cluster nodes,
+and run the following command.
 
 ```shell
 ls -1 /etc/cni/net.d
 ```
 
-If no file is found, paste the following `kubeadmconfig` object into the OS layer of your cluster profile. This creates
-a minimal, local CNI so that pods can start and CoreDNS can resolve, allowing you to bootstrap the rest of the cluster
-and pull the required images. Afterward, redeploy your cluster.
+If the directory is missing or empty, paste the following `kubeadmconfig` object into the OS layer of your cluster
+profile, and redeploy your cluster. This creates a minimal, local CNI so that pods can start and CoreDNS can resolve,
+allowing you to bootstrap the remainder of the cluster and pull the required images.
 
 ```yaml
 kubeadmconfig:

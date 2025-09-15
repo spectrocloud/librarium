@@ -13,7 +13,7 @@ from standard commercial deployments to highly regulated government workloads. B
 register your Azure cloud account so Palette or Palette VerteX can authenticate, provision, and manage resources on your
 behalf.
 
-The following table summarizes which Azure clouds are supported by Palette or Palette VerteX:
+The following table summarizes which Azure clouds are supported by Palette or Palette VerteX.
 
 | **Azure Cloud**                                                                                                                     | **Palette Support** | **Palette VerteX Support** |
 | ----------------------------------------------------------------------------------------------------------------------------------- | :-----------------: | :------------------------: |
@@ -23,15 +23,15 @@ The following table summarizes which Azure clouds are supported by Palette or Pa
 
 ## Add Azure Cloud Account
 
-Use the procedures in this section to add the appropriate Azure cloud account type to your Palette or Palette VerteX
+Use the procedures in this section to add the appropriate Azure cloud account to your Palette or Palette VerteX
 environment. Once registered, you can deploy clusters in your chosen Azure cloud.
 
 ### Azure Commercial Cloud
 
-Azure Commercial, also known as the Azure Public Cloud, is the default option for most clusters deployed in Azure cloud.
+Azure Commercial, also known as Azure Public Cloud, is the default option for most clusters deployed in Azure cloud.
 Adding your Azure Commercial account to Palette or Palette VerteX allows you to provision, manage, and scale clusters
-across a wide range of global regions with standard Azure services. This section walks you through the prerequisites and
-steps needed to register your Azure Commercial account.
+across a wide range of global regions with standard Azure services. This section discusses how to register your Azure
+Commercial account in Palette or Palette VerteX.
 
 #### Prerequisites
 
@@ -45,7 +45,7 @@ steps needed to register your Azure Commercial account.
 
 #### Enablement
 
-Use the following steps to add an Azure Commercial cloud account in Palette or Palette VerteX.
+Take the following steps to add an Azure Commercial cloud account in Palette or Palette VerteX.
 
 1. Log in to [Palette](https://console.spectrocloud.com) or Palette VerteX as a tenant admin.
 
@@ -65,28 +65,29 @@ Use the following steps to add an Azure Commercial cloud account in Palette or P
    | **Client ID**                     | Enter the unique application (client) ID of your Azure application. This is found in the [Microsoft Entra admin center](https://entra.microsoft.com).                                                                                                                                            |
    | **Client Secret**                 | Enter the secret value associated with your Azure application (client). Refer to Microsoft's reference guide for creating a [Client Secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application). |
    | **Tenant Name (Optional)**        | (Optional) Enter the name of your Azure tenant, if desired.                                                                                                                                                                                                                                      |
-   | **Disable Properties**            | Prevent Palette or Palette VerteX from creating Azure Virtual Networks (VNets) and other network resources on your behalf for static placement deployments. If you enable this option, you must manually specify a pre-existing VNet, subnets, and security groups when creating clusters.       |
+   | **Disable Properties**            | Prevent Palette or Palette VerteX from creating Azure Virtual Networks (VNets) and other network resources on your behalf for static placement deployments. If you enable this option, you must manually specify pre-existing VNets, subnets, and security groups when creating clusters.        |
    | **Connect Private Cloud Gateway** | Select this option to deploy clusters to Azure Commercial cloud through a [Private Cloud Gateway (PCG)](../../pcg/architecture.md). The PCG must be deployed and registered with Palette or Palette VerteX in order to select it from the drop-down.                                             |
 
-6. After providing the required values, select **Validate** to validate the combination of your **Tenant ID**, **Client
-   ID**, and **Client Secret**. If the provided values are correct, the message **Credentials validated** is displayed.
-   You cannot register your account until your credentials are validated.
+6. After providing the required values, **Validate** the combination of your **Tenant ID**, **Client ID**, and **Client
+   Secret**. If the provided values are correct, the message **Credentials validated** is displayed. You cannot register
+   your account until your credentials are validated.
 
 7. Once your cloud credentials are validated, select **Confirm** to register your Azure Commercial cloud with Palette or
    Palette VerteX.
 
 ### Azure Government Cloud
 
-Azure Government is a specialized cloud designed for U.S. government agencies and their partners, offering compliance
-with strict security and regulatory requirements. By adding your Azure Government account to Palette or Palette VerteX,
-you can deploy and manage clusters in environments that meet FedRAMP and other compliance standards. This section
-explains how to set up and register your Azure Government account to enable secure cluster operations.
+[Azure Government](https://azure.microsoft.com/en-us/explore/global-infrastructure/government) is a specialized cloud
+designed for U.S. government agencies and their partners, offering compliance with strict security and regulatory
+requirements. By adding your Azure Government account to Palette or Palette VerteX, you can deploy and manage clusters
+in environments that meet FedRAMP and other compliance standards. This section explains how to set up and register your
+Azure Government account to enable secure cluster operations.
 
 #### Prerequisites
 
 - A Palette or Palette VerteX instance with tenant admin access.
 
-- (Self-hosted Palette and Palette VerteX only) A Private Cloud Gateway (PCG) set up and registered with Palette or
+- (Self-hosted Palette and Palette VerteX only) A [PCG](../../pcg/architecture.md) set up and registered with Palette or
   Palette VerteX if you plan to register both an Azure Commercial and Azure Government account on the same installation.
   If you do not configure a PCG, you must install two instances of Palette or Palette VerteX: one for Azure Commercial
   clusters and one for Azure Government clusters.
@@ -99,7 +100,7 @@ explains how to set up and register your Azure Government account to enable secu
 
 #### Enablement
 
-Use the following steps to add an Azure Commercial cloud account in Palette or Palette VerteX.
+Take the following steps to add an Azure Commercial cloud account in Palette or Palette VerteX.
 
 1. Log in to [Palette](https://console.spectrocloud.com) or Palette VerteX as a tenant admin.
 
@@ -119,22 +120,23 @@ Use the following steps to add an Azure Commercial cloud account in Palette or P
    | **Client ID**                     | Enter the unique application (client) ID of your Azure application. This is found in the [Microsoft Entra admin center](https://entra.microsoft.com).                                                                                                                                            |
    | **Client Secret**                 | Enter the secret value associated with your Azure application (client). Refer to Microsoft's reference guide for creating a [Client Secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application). |
    | **Tenant Name (Optional)**        | (Optional) Enter the name of your Azure tenant, if desired.                                                                                                                                                                                                                                      |
-   | **Disable Properties**            | Prevent Palette or Palette VerteX from creating Azure Virtual Networks (VNets) and other network resources on your behalf for static placement deployments. If you enable this option, you must manually specify a pre-existing VNet, subnets, and security groups when creating clusters.       |
+   | **Disable Properties**            | Prevent Palette or Palette VerteX from creating Azure VNets and other network resources on your behalf for static placement deployments. If you enable this option, you must manually specify pre-existing VNets, subnets, and security groups when creating clusters.                           |
    | **Connect Private Cloud Gateway** | Select this option to deploy clusters to Azure Government cloud through a [PCG](../../pcg/architecture.md). The PCG must be deployed and registered with Palette or Palette VerteX in order to select it from the drop-down.                                                                     |
 
-6. After providing the required values, select **Validate** to validate the combination of your **Tenant ID**, **Client
-   ID**, and **Client Secret**. If the provided values are correct, the message **Credentials validated** is displayed.
-   You cannot register your account until your credentials are validated.
+6. After providing the required values, **Validate** the combination of your **Tenant ID**, **Client ID**, and **Client
+   Secret**. If the provided values are correct, the message **Credentials validated** is displayed. You cannot register
+   your account until your credentials are validated.
 
 7. Once your cloud credentials are validated, select **Confirm** to register your Azure Government cloud with Palette or
    Palette VerteX.
 
 ### Azure Government Secret Cloud
 
-Azure Government Secret is a highly restricted cloud environment designed for workloads that require classified data
-handling. Palette VerteX supports cluster deployments in Azure Government Secret cloud, providing flexibility for
-organizations that need to meet stringent security requirements. This section explains how to register an Azure
-Government Secret account with Palette VerteX.
+[Azure Government Secret](https://azure.microsoft.com/en-us/explore/global-infrastructure/government/national-security)
+is a highly restricted cloud environment designed for workloads that require classified data handling. Palette VerteX
+supports cluster deployments in Azure Government Secret cloud, providing flexibility for organizations that need to meet
+stringent security requirements. This section explains how to register an Azure Government Secret account with Palette
+VerteX.
 
 :::preview
 
@@ -173,7 +175,7 @@ Government Secret account with Palette VerteX.
 
 #### Enablement
 
-Use the following steps to add an Azure Government Secret cloud account in Palette VerteX.
+Take the following steps to add an Azure Government Secret cloud account in Palette VerteX.
 
 1. Log in to Palette VerteX as a tenant admin.
 
@@ -194,12 +196,12 @@ Use the following steps to add an Azure Government Secret cloud account in Palet
    | **Client Secret**                 | Enter the secret value associated with your Azure application (client). Refer to Microsoft's reference guide for creating a [Client Secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application). |
    | **Tenant Name (Optional)**        | (Optional) Enter the name of your Azure tenant, if desired.                                                                                                                                                                                                                                      |
    | **User Certificate**              | Paste the combined TLS certificate chain from Azure Government Secret cloud and your private registry.                                                                                                                                                                                           |
-   | **Disable Properties**            | Prevent Palette VerteX from creating Azure Virtual Networks (VNets) and other network resources on your behalf for static placement deployments. If you enable this option, you must manually specify a pre-existing VNet, subnets, and security groups when creating clusters.                  |
+   | **Disable Properties**            | Prevent Palette VerteX from creating Azure VNets and other network resources on your behalf for static placement deployments. If you enable this option, you must manually specify pre-existing VNets, subnets, and security groups when creating clusters.                                      |
    | **Connect Private Cloud Gateway** | Select this option to deploy clusters to Azure Commercial cloud through a [PCG](../../pcg/architecture.md). The PCG must be deployed and registered with Palette VerteX in order to select it from the drop-down. A PCG is required to deploy clusters in Azure Government Secret cloud.         |
 
-6. After providing the required values, select **Validate** to validate the combination of your **Tenant ID**, **Client
-   ID**, and **Client Secret**. If the provided values are correct, the message **Credentials validated** is displayed.
-   You cannot register your account until your credentials are validated.
+6. After providing the required values, **Validate** the combination of your **Tenant ID**, **Client ID**, and **Client
+   Secret**. If the provided values are correct, the message **Credentials validated** is displayed. You cannot register
+   your account until your credentials are validated.
 
 7. Once your cloud credentials are validated, select **Confirm** to register your Azure Government Secret cloud with
    Palette VerteX.
