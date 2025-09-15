@@ -30,7 +30,7 @@ causing admission requests to fail.
 
 ### Debug Steps
 
-1. Issue the following command on all cluster nodes to stop the Palette Agent’s operator service.
+1. Issue the following command on all cluster nodes to stop the Palette Agent operator service.
 
    ```bash
    systemctl stop spectro-stylus-operator
