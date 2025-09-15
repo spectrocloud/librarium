@@ -12,10 +12,13 @@ physical servers. The following are some architectural highlights of bare-metal 
 using Canonical MAAS. Refer to the PCG deployment options section below to learn more about PCG deployment.
 
 - Palette integrates with MAAS through Spectro Cloud’s open source Cloud Native Computing Foundation (CNCF)
-  [Cluster API provider](https://github.com/spectrocloud/cluster-api-provider-maas). Refer to the table below
+  [Cluster API provider](https://github.com/spectrocloud/cluster-api-provider-maas). Refer to the table below.
 
-- Palette provides a cloud-like experience for deploying clusters on bare metal servers. The result is increased
-  performance at minimal cost and operational effort.
+- Palette provides a cloud-like experience for deploying clusters on bare metal servers or using virtual machines (VMs)
+  that leverage MAAS LXD or bare metal. The result is increased performance and at minimal cost and operational effort.
+  The use of LXD VMs can also result in improved resource utilization.
+
+![Network flow from an architectural perspective of how MAAS LXD works with Palette](/clusters_data-center_maas_arch-diagram-maas-lxd_mk.webp)
 
 - A Private Cloud Gateway (PCG) that you install in a MAAS cloud using a local installer facilitates communication
   between Palette and MAAS. The PCG is necessary in MAAS environments where Palette does not have direct network access
@@ -29,7 +32,7 @@ using Canonical MAAS. Refer to the PCG deployment options section below to learn
 
   The diagram below illustrates how MAAS works with Palette using a PCG.
 
-  ![Network flow from an architectural perspective of how MAAS works with Palette](/clusters_data-center_maas_arch-diagram-new.webp)
+  ![Network flow from an architectural perspective of how MAAS works with Palette](/clusters_data-center_maas_arch-diagram-new-4-7-b.webp)
 
 Refer to the [PCG Architecture](../../pcg/architecture.md) section to learn more about the PCG architecture.
 
