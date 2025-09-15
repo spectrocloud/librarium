@@ -23,10 +23,9 @@ http: TLS handshake error ... remote error: tls: bad certificate
 As a result, core components such as CNI, Harbor, and cluster controllers never start. All pods remain in **Pending** or
 **Failed** state. In the Local UI, packs display **Invalid date** in the **Started On** and **Completed On** fields.
 
-This issue occurs when the `stylus-webhook` agent admission webhook and
-its Transport Layer Security (TLS) `stylus-webhook-tls` secret are temporarily mismatched due to a timing issue during
-cluster bootstrap. As a result, the Kubernetes API server rejects the certificate as signed by an unknown authority,
-causing admission requests to fail.
+This issue occurs when the `stylus-webhook` agent admission webhook and its Transport Layer Security (TLS)
+`stylus-webhook-tls` secret are temporarily mismatched due to a timing issue during cluster bootstrap. As a result, the
+Kubernetes API server rejects the certificate as signed by an unknown authority, causing admission requests to fail.
 
 ### Debug Steps
 
