@@ -50,7 +50,7 @@ causing admission requests to fail.
    systemctl restart spectro-stylus-operator
    ```
 
-This will resolve the issue, and cluster creation will proceed normally.
+This will resolve the issue, and cluster creation will proceed as expected.
 
 ## Scenario - `content-length: 0` Errors during Content Synchronization
 
