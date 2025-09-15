@@ -10,6 +10,10 @@ Palette supports creating and managing Kubernetes clusters deployed to a MAAS ac
 enabled. This section guides you on how to create a Kubernetes cluster in MAAS that use LXD VMs and is managed by
 Palette.
 
+:::preview
+
+:::
+
 ## Prerequisites
 
 - An installed PCG if you do not have a direct connection to the MAAS environment. Review
@@ -65,7 +69,10 @@ This feature is only supported in Palette eXtended Kubernetes (PXK). Refer to th
 9.  Review and override pack parameters as desired and click **Next**. By default, parameters for all packs are set with
     values defined in the cluster profile.
 
-10. Select a domain from the **Domain drop-down Menu** and click **Next**.
+10. Select a domain from the **Domain drop-down Menu**. Toggle the **Host LXD-Based Control Planes** button to use MAAS
+    bare metal as hypervisor and click **Next**.
+
+![Screenshot of demo - image to be replaced later](../../../../../static/assets/docs/images/clusters_data-center_maas_profile-lxd-4-7-b.webp)
 
 11. Configure the control plane and worker node pools. The following input fields apply to MAAS control plane and worker
     node pools. For a description of input fields that are common across target platforms refer to the
@@ -86,6 +93,17 @@ This feature is only supported in Palette eXtended Kubernetes (PXK). Refer to th
     #### Worker Pool configuration
 
     - Cloud configuration:
+
+      - Use LXD VMs: Select this option if you want worker nodes to use MAAS LXD instead of bare metal.
+
+      :::warning
+
+      This option will only be available if you have KVM and LXD enabled on MAAS, and you do not select **Host LXD-Based
+      Control Planes** in Step 10.
+
+      :::
+
+      ![Screenshot from demo - to be replaced](../../../../../static/assets/docs/images/clusters_data-center_mass_profile-lxd-worker-4-7-b.webp)
 
       - Resource Pool: The MAAS resource pool from which to select available servers for deployment. Filter available
         servers to only those that have at least the amount of CPU and Memory selected.
