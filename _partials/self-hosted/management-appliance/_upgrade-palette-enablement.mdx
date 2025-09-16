@@ -45,6 +45,16 @@ partial_name: upgrade-palette-enablement
 
 10. Click the **Update** drop-down menu and select **Review Changes**.
 
+   :::warning
+
+   Ensure that the configured Zot password matches the password that you used in
+   the <VersionedLink text="Palette Management Appliance installation" url="/enterprise-version/install-palette/palette-management-appliance"/>.
+   The Zot registry will be inaccessible post upgrade if the passwords do not match.
+
+   If you have forgotten the Zot password, you can connect to your Kubernetes cluster and retrieve it from the Zot secret.
+   
+   :::
+
 11. Review the changes for each profile carefully and ensure you are satisfied with the proposed updates. There may be changes to the profiles between versions that include the addition or removal of properties.
 
     :::warning
