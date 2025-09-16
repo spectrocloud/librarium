@@ -30,9 +30,9 @@ tags: ["release-notes"]
   following the subsequent prompts or deleting the respective configuration files:
   - [Palette CLI](../automation/palette-cli/install-palette-cli.md) (`palette.yaml`) - `palette login --api-key <key>`
   - [Enterprise Cluster (EC)](../automation/palette-cli/commands/ec.md) (`ec.yaml`) -
-    `palette ec install --config-file ec.yaml --update-passwords`
+    `palette ec install --config-file <ec-yaml-location> --update-passwords`
   - [Private Cloud Gateway (PGC)](../automation/palette-cli/commands/pcg.md) (`pcg.yaml`) -
-    `palette pcg install --config-file pcg.yaml --update-passwords`
+    `palette pcg install --config-file <pcg-yaml-location> --update-passwords`
 
 #### Features
 
