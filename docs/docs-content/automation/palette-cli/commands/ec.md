@@ -22,6 +22,14 @@ The `ec` command exposes the following subcommand.
 - `install` - Install a Palette Enterprise Cluster through an interactive wizard. A container runtime is required to
   install an EC cluster.
 
+## Limitations
+
+- Passwords set using Palette CLI version 4.7.1 or earlier are not compatible with Palette CLI version 4.7.2 or later.
+  As a result, users cannot use configuration files created using version 4.7.1 or earlier to perform Palette CLI
+  operations after upgrading to version 4.7.2 or later. Users must update their password by either running the command
+  `palette ec install --config-file <ec-yaml-location> --update-passwords` and completing the subsequent prompts or
+  deleting the existing `ec.yaml` file.
+
 ## Prerequisites
 
 - Docker is required to install a PCG cluster. Refer to the [Docker](https://docs.docker.com/get-docker/) documentation
