@@ -25,10 +25,10 @@ The `ec` command exposes the following subcommand.
 ## Limitations
 
 - Passwords set using Palette CLI version 4.7.1 or earlier are not compatible with Palette CLI version 4.7.2 or later.
-  As a result, users cannot use existing configuration files created using version 4.7.1 or earlier to perform Palette
-  CLI operations after upgrading to version 4.7.2 or later. Users must update their password by either running the
-  command `palette ec install --config-file <ec-yaml-location> --update-passwords` and completing the subsequent prompts
-  or deleting the existing `ec.yaml` file.
+  As a result, users cannot use configuration files created using version 4.7.1 or earlier to perform Palette CLI
+  operations after upgrading to version 4.7.2 or later. Users must update their password by either running the command
+  `palette ec install --config-file <ec-yaml-location> --update-passwords` and completing the subsequent prompts or
+  deleting the existing `ec.yaml` file.
 
 ## Prerequisites
 
