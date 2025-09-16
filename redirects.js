@@ -118,7 +118,7 @@ let redirects = [
   },
   {
     from: `/knowledgebase/how-to/reverse-proxy-dashboard/`,
-    to: `/clusters/cluster-management/kubernetes-dashboard/`,
+    to: `/clusters/cluster-management/spectro-kubernetes-dashboard/`,
   },
   {
     from: `/devx/cluster-groups/`,
@@ -958,6 +958,10 @@ let redirects = [
     to: "/downloads/offline-docs/",
   },
   { from: "/audit-logs/kube-api-audit-logging/", to: "/audit-logs/" },
+  {
+    from: `/clusters/cluster-management/kubernetes-dashboard/`,
+    to: `/clusters/cluster-management/spectro-kubernetes-dashboard/`,
+  },
 ];
 
 if (packRedirects.length > 0) {

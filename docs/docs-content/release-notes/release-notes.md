@@ -24,6 +24,15 @@ tags: ["release-notes"]
 - The `spec.jsonCredentialsFileUid` field in API requests is no longer available. Users who create GCP cloud accounts
   using the API should use the `spec.jsonCredentials` field to supply their credentials in JSON format. Refer to the
   [API documentation](/api/introduction) for further details.
+- The previous encryption library used in the [Palette CLI](../automation/palette-cli/palette-cli.md) has been
+  deprecated. As a result, users cannot use their existing configuration files to perform operations after upgrading to
+  Palette CLI version 4.7.2 or later. Users must update their passwords by either running the applicable commands and
+  following the subsequent prompts or deleting the respective configuration files:
+  - [Palette CLI](../automation/palette-cli/install-palette-cli.md) (`palette.yaml`) - `palette login --api-key <key>`
+  - [Enterprise Cluster (EC)](../automation/palette-cli/commands/ec.md) (`ec.yaml`) -
+    `palette ec install --config-file <ec-yaml-location> --update-passwords`
+  - [Private Cloud Gateway (PGC)](../automation/palette-cli/commands/pcg.md) (`pcg.yaml`) -
+    `palette pcg install --config-file <pcg-yaml-location> --update-passwords`
 
 #### Features
 
@@ -63,9 +72,11 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 #### Breaking Changes
 
 - Palette CLI versions prior to 4.7.b do not support building content for local Edge cluster deployment on Palette 4.7.b
-  or later because content created with older CLI versions lacks required images. We recommend
-  [downloading](downloads/cli-tools.md) and using Palette CLI version 4.7.b or later to build content for Palette 4.7.b
-  or later.
+  or later because content created with older CLI versions lacks the required images. We recommend
+  [downloading](downloads/cli-tools.md#palette-cli) and using Palette CLI version 4.7.b or later to build content for
+  Palette 4.7.b or later.
+
+<!-- prettier-ignore-start -->
 - Edge clusters with the Palette agent versions prior to 4.7.b do not support upgrading to the following Kubernetes pack
   versions released in 4.7.b:
   <VersionedLink text="Palette Optimized Canonical" url="/integrations/packs/?pack=edge-canonical" /> 1.32.8 and 1.33.4;
@@ -76,6 +87,12 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
   upgrading Kubernetes packs. For centrally managed clusters, do not [pause
   upgrades](clusters/cluster-management/platform-settings/pause-platform-upgrades.md) so the agent can upgrade
   automatically.
+<!-- prettier-ignore-end -->
+
+- Palette Edge CLI does not support building content for local Edge cluster deployment in agent mode on Palette 4.7.b
+  (Palette agent version 4.7.12) or later. We recommend [downloading](downloads/cli-tools.md#palette-cli) and using
+  Palette CLI version 4.7.b or later instead. This breaking change affects agent mode clusters only and does not impact
+  appliance mode clusters.
 
 #### Improvements
 

@@ -19,6 +19,13 @@ The Palette CLI is available for the following operating systems and architectur
 | -------------------- | ---------------- |
 | Linux                | amd64            |
 
+## Limitations
+
+- Passwords set using Palette CLI version 4.7.1 or earlier are not compatible with Palette CLI version 4.7.2 or later.
+  As a result, users cannot use configuration files created using version 4.7.1 or earlier to perform Palette CLI
+  operations after upgrading to version 4.7.2 or later. Users must update their password by either running the command
+  `palette login --api-key <key>` and completing the subsequent prompts or deleting the existing `palette.yaml` file.
+
 ## Prerequisites
 
 - A Palette account. Click [here](https://console.spectrocloud.com/) to create a Palette account.

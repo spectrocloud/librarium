@@ -27,12 +27,23 @@ The following are architectural highlights of clusters deployed using agent mode
 
 - The Palette Optimized Canonical distribution that supports Canonical Kubernetes is a Tech Preview feature and does not
   support the following:
+
   - Non-Edge environments
   - ARM64 architecture
   - OS other than Ubuntu
   - Palette VerteX
   - Custom installation paths for Kubernetes and its dependencies in [agent mode](../)
   - [Network overlay](../../../clusters/edge/networking/vxlan-overlay/)
+
+- Edge clusters deployed in agent mode with the Palette agent versions prior to 4.7.b do not support upgrading to the
+  following Kubernetes pack versions released in 4.7.b:
+  <VersionedLink text="Palette Optimized Canonical" url="/integrations/packs/?pack=edge-canonical" /> 1.32.8 and 1.33.4;
+  <VersionedLink text="Palette eXtended Kubernetes Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> 1.31.12,
+  1.32.8, and 1.33.4. For locally managed clusters, refer to [Configure Palette Agent
+  Version](../../clusters/edge/cluster-management/agent-upgrade-airgap.md) to upgrade the agent to the latest version
+  before upgrading Kubernetes packs. For centrally managed clusters, do not [pause
+  upgrades](../../clusters/cluster-management/platform-settings/pause-platform-upgrades.md) so the agent can upgrade
+  automatically.
 
 ## Supported Kubernetes Distributions
 
