@@ -24,15 +24,6 @@ tags: ["release-notes"]
 - The `spec.jsonCredentialsFileUid` field in API requests is no longer available. Users who create GCP cloud accounts
   using the API should use the `spec.jsonCredentials` field to supply their credentials in JSON format. Refer to the
   [API documentation](/api/introduction) for further details.
-- The previous encryption library used in the [Palette CLI](../automation/palette-cli/palette-cli.md) has been
-  deprecated. As a result, users cannot use their existing configuration files to perform operations using the Palette
-  CLI. Users must update their passwords by either running the applicable commands and following the subsequent prompts
-  or deleting the respective configuration files:
-  - [Palette CLI](../automation/palette-cli/install-palette-cli.md) (`palette.yaml`) - `palette login --api-key <key>`
-  - [Enterprise Cluster (EC)](../automation/palette-cli/commands/ec.md) (`ec.yaml`) -
-    `palette ec install --config-file ec.yaml --update-passwords`
-  - [Private Cloud Gateway (PGC)](../automation/palette-cli/commands/pcg.md) (`pcg.yaml`) -
-    `palette pcg install --config-file pcg.yaml --update-passwords`
 
 #### Features
 
