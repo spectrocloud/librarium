@@ -114,7 +114,7 @@ jobs:
         uses: Wandalen/wretry.action@v3
         with: 
           attempt_limit: 3
-          action: actions/download-artifact@v4
+          action: actions/download-artifact@v5
           with: |
             name: build
             path: build
@@ -140,7 +140,7 @@ jobs:
     steps:
 
     - name: Download blob reports from GitHub Actions Artifacts
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v5
       with:
         path: screenshots
         pattern: screenshots-*
