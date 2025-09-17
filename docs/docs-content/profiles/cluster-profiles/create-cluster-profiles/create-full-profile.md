@@ -66,8 +66,6 @@ and Storage. Next, add layers using add-on profiles to expand the functionality 
 
 10. Select **Finish Configuration** to create the cluster profile.
 
-<PartialsComponent category="profiles" name="create-profile-enablement" edition="Full" />
-
 ## Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com).
