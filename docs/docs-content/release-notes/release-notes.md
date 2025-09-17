@@ -102,6 +102,8 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 #### Pack Notes
 
+- Added instructions for configuring Cilium for agent mode Edge clusters to the <VersionedLink text="Cilium Additional Details" url="/integrations/packs/?pack=cni-cilium-oss&tab=custom" /> page. These instructions apply to Palette versions 4.2 and later.
+
 #### OS
 
 | Pack Name | New Version |
