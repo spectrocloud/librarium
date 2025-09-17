@@ -15,8 +15,12 @@ tags: ["packs", "calico", "network"]
 :::warning
 
 Limitations:
+
 - AWS, VMWare supports IP-in-IP encapsulation type. Azure supports VXLAN encapsulation type.
-- Edge clusters using Calico version 3.30.2 may fail with the following error: `Fatal: can't open lock file /run/xtables.lock: Is a directory`. For Edge cluster deployments, use [Calico CNI pack version 3.30.2-rev2](https://docs.spectrocloud.com/integrations/packs/?pack=cni-calico&version=3.30.2-rev2&parent=3.30.x&tab=main), which contains the fix for this issue.
+- Edge clusters using Calico version 3.30.2 may fail with the following error:
+  `Fatal: can't open lock file /run/xtables.lock: Is a directory`. For Edge cluster deployments, use
+  [Calico CNI pack version 3.30.2-rev2](https://docs.spectrocloud.com/integrations/packs/?pack=cni-calico&version=3.30.2-rev2&parent=3.30.x&tab=main),
+  which contains the fix for this issue.
 
 :::
 
