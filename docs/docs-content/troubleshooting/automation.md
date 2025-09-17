@@ -68,7 +68,7 @@ following steps.
         <TabItem label="No Ubuntu Pro Token" value="no-token">
 
           ```shell
-          palette login
+          palette login --api-key <key>
           ```
 
         </TabItem>
