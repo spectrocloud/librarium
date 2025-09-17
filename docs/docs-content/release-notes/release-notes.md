@@ -102,7 +102,7 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 #### Pack Notes
 
-- [Calico CNI pack version 3.30.2-rev2](https://docs.spectrocloud.com/integrations/packs/?pack=cni-calico&version=3.30.2-rev2&parent=3.30.x&tab=main) has been introduced. It includes the fix for the issue that causes Edge clusters using Calico version 3.30.2 to fail. Refer to <VersionedLink text="the pack's Additional Details" url="/integrations/packs/?pack=cni-calico&tab=additional-details" /> for more information.
+- [Calico CNI pack version 3.30.2-rev2](https://docs.spectrocloud.com/integrations/packs/?pack=cni-calico&version=3.30.2-rev2&parent=3.30.x&tab=main) has been introduced. It includes the fix for the issue that causes Edge clusters using Calico version 3.30.2 to fail. Refer to <VersionedLink text="the pack's Additional Details" url="/integrations/packs/?pack=cni-calico&tab=custom" /> for more information.
 
 #### OS
 
