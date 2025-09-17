@@ -17,7 +17,7 @@ jobs:
 
     steps:
       - name: Checkout Palette Samples Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with: 
           repository: spectrocloud/palette-samples
 
