@@ -42,6 +42,13 @@ Palette API key, passwords, and other credentials in the CLI configuration files
 due to a changed encryption passphrase or other reasons, you can update the CLI configuration files by using the
 following steps.
 
+:::tip
+
+Alternatively, you can delete the respective `palette.yaml`, `ec.yaml`, or `pcg.yaml` file, and the next time you need
+to perform related Palette CLI operations, you will be prompted to re-enter your credentials.
+
+:::
+
 ### Debug Steps
 
 1.  Log in to the machine where the Palette CLI is installed.
@@ -68,7 +75,7 @@ following steps.
         <TabItem label="No Ubuntu Pro Token" value="no-token">
 
           ```shell
-          palette login
+          palette login --api-key <key>
           ```
 
         </TabItem>
@@ -119,31 +126,6 @@ following steps.
 
           ```shell
           palette pcg install --config-file /path/to/pcg.yaml --update-passwords
-          ```
-
-        </TabItem>
-
-      </Tabs>
-
-6.  (Optional) Update any previous Palette TC install configuration file that was created using the previous encryption
-    passphrase. You can use the `tc install` command with the `--update-passwords` flag to update the passwords in the
-    configuration. Replace `/path/to/tc.yaml` with the path to the desired TC configuration file. If you are using
-    Ubuntu Pro, pass in the token using the `--ubuntu-pro-token` flag.
-
-    <!-- prettier-ignore -->
-      <Tabs>
-        <TabItem label="Ubuntu Pro Token" value="token">
-
-          ```shell
-          palette tc install --config-file /path/to/tc.yaml --update-passwords --ubuntu-pro-token *************
-          ```
-
-        </TabItem>
-        <!-- prettier-ignore -->
-        <TabItem label="No Ubuntu Pro Token" value="no-token">
-
-          ```shell
-          palette tc install --config-file /path/to/tc.yaml --update-passwords
           ```
 
         </TabItem>

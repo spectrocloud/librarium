@@ -22,11 +22,7 @@ The `pcg` command exposes the following subcommand.
 
 ## Limitations
 
-- Passwords set using Palette CLI version 4.7.1 or earlier are not compatible with Palette CLI version 4.7.2 or later.
-  As a result, users cannot use configuration files created using version 4.7.1 or earlier to perform Palette CLI
-  operations after upgrading to version 4.7.2 or later. Users must update their password by either running the command
-  `palette pcg install --config-file <pcg-yaml-location> --update-passwords` and completing the subsequent prompts or
-  deleting the existing `pcg.yaml` file.
+- <PartialsComponent category="palette-cli" name="credentials-breaking-change" />
 
 ## Prerequisites
 
@@ -51,6 +47,7 @@ by the `install` subcommand.
 | `-k`           | `--encryption-passphrase` | Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable `PALETTE_ENCRYPTION_PASSWORD`. Refer to the [Encryption](./../palette-cli.md#encryption) section for more information on encryption. | string   |
 | `-o`           | `--config-only`           | Generate configuration file only. This command will not proceed with installation.                                                                                                                                                                                                                                                                                          | boolean  |
 | `-h`           | `--help`                  | Help for the install command.                                                                                                                                                                                                                                                                                                                                               | boolean  |
+| -              | `--ubuntu-pro-token`      | The Canonical subscription token for [Ubuntu Pro](https://ubuntu.com/pro). An Ubuntu Pro subscription is required, and Ubuntu Pro must be enabled.                                                                                                                                                                                                                          | string   |
 | `-p`           | `--update-passwords`      | Use to update the PCG password. This does not proceed with installation. The `--config-file` flag must be provided. Default: false.                                                                                                                                                                                                                                         | boolean  |
 
 :::warning
