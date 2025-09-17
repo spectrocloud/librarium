@@ -32,12 +32,12 @@ jobs:
         run: |
           # Get all version branches from required-permissions-data repo
           echo "Fetching branches from required-permissions-data..."
-          source_branches=$(gh api repos/spectrocloud/required-permissions-data/branches --jq '[.[] | select(.name | test("^(main$|version-)")) | .name]')
+          source_branches=$(gh api repos/spectrocloud/required-permissions-data/branches --paginate --jq '[.[] | select(.name | test("^(main$|version-)")) | .name]')
           echo "Source branches: $source_branches"
           
           # Get all version branches from librarium repo
           echo "Fetching branches from librarium..."
-          target_branches=$(gh api repos/spectrocloud/librarium/branches --jq '[.[] | select(.name | test("^(master$|version-)")) | .name]')
+          target_branches=$(gh api repos/spectrocloud/librarium/branches --paginate --jq '[.[] | select(.name | test("^(master$|version-)")) | .name]')
           echo "Target branches: $target_branches"
           
           # Create matrix by matching branches
