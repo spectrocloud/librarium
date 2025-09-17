@@ -10,69 +10,6 @@ tags: ["troubleshooting", "cluster-deployment"]
 
 The following steps will help you troubleshoot errors in the event issues arise while deploying a cluster.
 
-## Scenario - CoreDNS Pods Stuck in Azure Government Secret Clusters
-
-When deploying an [Azure IaaS cluster](../clusters/public-cloud/azure/create-azure-cluster.md) in
-[Azure Government Secret](../clusters/public-cloud/azure/azure-cloud.md#azure-government-secret-cloud) cloud, you may
-encounter networking issues related to `coredns` pods never entering a `Ready` state. This can be the result of the
-control plane coming up before the Container Network Interface (CNI), preventing pods from being assigned IP addresses.
-
-To confirm if you are experiencing this issue, establish an SSH connection with one of your Azure IaaS cluster nodes,
-and run the following command.
-
-```shell
-ls -1 /etc/cni/net.d
-```
-
-If the directory is missing or empty, paste the following `kubeadmconfig` object into the OS layer of your cluster
-profile, and redeploy your cluster. This creates a minimal, local CNI so that pods can start and CoreDNS can resolve,
-allowing you to bootstrap the remainder of the cluster and pull the required images.
-
-```yaml
-kubeadmconfig:
-  files:
-    # 3. CNI configs moved to temp locations
-    - targetPath: "/tmp/custom-10-bridge.conf" # Temp location
-      targetOwner: "root"
-      targetPermissions: "0644"
-      contentEncoding: "base64"
-      content: "ewogICAgImNuaVZlcnNpb24iOiAiMC4zLjEiLAogICAgIm5hbWUiOiAiYnJpZGdlIiwKICAgICJ0eXBlIjogImJyaWRnZSIsCiAgICAiYnJpZGdlIjogImNuaW8wIiwKICAgICJpc0dhdGV3YXkiOiB0cnVlLAogICAgImlwTWFzcSI6IHRydWUsCiAgICAiaXBhbSI6IHsKICAgICAgICAidHlwZSI6ICJob3N0LWxvY2FsIiwKICAgICAgICAicmFuZ2VzIjogWwogICAgICAgICAgICBbeyJzdWJuZXQiOiAiMTkyLjE2OC4wLjAvMTYifV0KICAgICAgICBdLAogICAgICAgICJyb3V0ZXMiOiBbeyJkc3QiOiAiMC4wLjAuMC8wIn1dCiAgICB9Cn0="
-
-    - targetPath: "/tmp/custom-99-loopback.conf" # Temp location
-      targetOwner: "root"
-      targetPermissions: "0644"
-      contentEncoding: "base64"
-      content: "ewogICAgImNuaVZlcnNpb24iOiAiMC4zLjEiLAogICAgIm5hbWUiOiAibG8iLAogICAgInR5cGUiOiAibG9vcGJhY2siCn0="
-
-    # 4. Audit policy moved to temp location (DEFINITELY will cause duplicates)
-    - targetPath: "/tmp/custom-audit-policy.yaml" # Temp location
-      targetOwner: "root"
-      targetPermissions: "0644"
-      contentEncoding: "base64"
-      content: "YXBpVmVyc2lvbjogYXVkaXQuazhzLmlvL3YxCmtpbmQ6IFBvbGljeQpydWxlczoKLSBsZXZlbDogTWV0YWRhdGE="
-
-    # 5. Pod security config moved to temp location (DEFINITELY will cause duplicates)
-    - targetPath: "/tmp/custom-pod-security-standard.yaml" # Temp location
-      targetOwner: "root"
-      targetPermissions: "0644"
-      contentEncoding: "base64"
-      content: "YXBpVmVyc2lvbjogYXBpc2VydmVyLmNvbmZpZy5rOHMuaW8vdjEKa2luZDogQWRtaXNzaW9uQ29uZmlndXJhdGlvbgpwbHVnaW5zOgotIG5hbWU6IFBvZFNlY3VyaXR5CiAgY29uZmlndXJhdGlvbjoKICAgIGFwaVZlcnNpb246IHBvZC1zZWN1cml0eS5hZG1pc3Npb24uY29uZmlnLms4cy5pby92MWJldGExCiAgICBraW5kOiBQb2RTZWN1cml0eUNvbmZpZ3VyYXRpb24KICAgIGRlZmF1bHRzOgogICAgICBlbmZvcmNlOiAicmVzdHJpY3RlZCIKICAgICAgZW5mb3JjZS12ZXJzaW9uOiAibGF0ZXN0IgogICAgICBhdWRpdDogInJlc3RyaWN0ZWQiCiAgICAgIGF1ZGl0LXZlcnNpb246ICJsYXRlc3QiCiAgICAgIHdhcm46ICJyZXN0cmljdGVkIgogICAgICB3YXJuLXZlcnNpb246ICJsYXRlc3QiCiAgICBleGVtcHRpb25zOgogICAgICB1c2VybmFtZXM6IFtdCiAgICAgIHJ1bnRpbWVDbGFzc2VzOiBbXQogICAgICBuYW1lc3BhY2VzOiBba3ViZS1zeXN0ZW1d"
-
-  preKubeadmCommands:
-    # Create necessary directories first
-    - "mkdir -p /etc/cni/net.d"
-
-    # Copy your custom configs to final locations (this OVERWRITES any pack-provided files)
-    - "cp /tmp/custom-10-bridge.conf /etc/cni/net.d/10-bridge.conf"
-    - "cp /tmp/custom-99-loopback.conf /etc/cni/net.d/99-loopback.conf"
-    - "cp /tmp/custom-audit-policy.yaml /etc/kubernetes/audit-policy.yaml"
-    - "cp /tmp/custom-pod-security-standard.yaml /etc/kubernetes/pod-security-standard.yaml"
-
-  postKubeadmCommands:
-    - "systemctl restart containerd"
-    - "systemctl restart kubelet"
-```
-
 ## Scenario - PV/PVC Stuck in Pending Status for EKS Cluster Using AL2023 AMI
 
 After deploying an Amazon EKS cluster using an

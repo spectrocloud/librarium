@@ -348,16 +348,6 @@ To monitor the status of your cluster deployment, from the left main menu, selec
 The cluster **Overview** tab displays the status and health of your cluster, as well as deployment details. Refer to the
 **Events** tab to monitor the deployment in real time.
 
-:::warning
-
-If you experience network traffic issues when deploying a cluster to Azure Government Secret cloud, check the status of
-your `coredns` pods. If they are failing, you may need to make additional modifications to the OS layer of your cluster
-profile. For more information, refer to our
-[Troubleshooting](../../../troubleshooting/cluster-deployment.md#scenario---coredns-pods-stuck-in-azure-government-secret-clusters)
-guide.
-
-:::
-
 ## Validate
 
 Use the following steps to You can validate your cluster is up and in **Running** state.
