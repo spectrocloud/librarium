@@ -32,17 +32,17 @@ For agent mode Edge clusters, add the following stages to the OS pack YAML file 
 stages:
   boot.before:
     - name: "Ensure CNI directory permissions on restart"
-      if: '[ -d /opt/cni/bin ]'
+      if: "[ -d /opt/cni/bin ]"
       commands:
         - chown --recursive root:root /opt/cni/bin
   boot:
     - name: "Ensure CNI directory permissions on restart"
-      if: '[ -d /opt/cni/bin ]'
+      if: "[ -d /opt/cni/bin ]"
       commands:
         - chown --recursive root:root /opt/cni/bin
   boot.after:
     - name: "Ensure CNI directory permissions on restart"
-      if: '[ -d /opt/cni/bin ]'
+      if: "[ -d /opt/cni/bin ]"
       commands:
         - chown --recursive root:root /opt/cni/bin
 ```
