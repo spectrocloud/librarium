@@ -3,22 +3,30 @@ partial_category: crossplane
 partial_name: cluster-profile-existing
 ---
 
-1. Log in to [Palette](https://console.spectrocloud.com/). Ensure you log in as the correct tenant under which you
+1. Log in to [Palette](https://console.spectrocloud.com/). Ensure you log in as the tenant under which you
 will deploy your cluster, and select the appropriate project.
 
 2. From the left main menu, select **Clusters**.
 
 3. Select the cluster profile to use.
 
-4. In the browser address bar, copy the cluster profile ID. The profile ID is the last string in the URL, which
-consists of 24 alphanumeric characters.
-
-    For example, if the full link to the cluster profile ID is
-    `https://console.spectrocloud.com/projects/6342eab2faa0813ead9082e0/profiles/cluster/689a4460ab5cs617a5afa29a`,
-    the ID is `689a4460ab5cs617a5afa29a`.
-
-5. Set the cluster profile ID as a variable. Replace `<cluster-profile-id>` with the value of your ID.
+4. From the browser address bar, copy the cluster profile URL, and set it as a variable.
 
     ```shell
-    CLUSTER_PROFILE_ID=<cluster-profile-id>
+    URL=<cluster-profile-URL>
+    ```
+
+    ```shell hideClipboard title="Example URL"
+    URL=https://console.spectrocloud.com/projects/6342eab2faa0813ead9082e0/profiles/cluster/689a4460ab5cs617a5afa29a
+    ```
+
+5. Use the cluster profile URL to fetch the value of your cluster profile ID and set it as a variable. 
+
+    ```shell
+    CLUSTER_PROFILE_ID="$(basename "${URL%/}")"
+    echo Cluster Profile ID: $CLUSTER_PROFILE_ID
+    ```
+
+    ```shell hideClipboard title="Example output"
+    Cluster Profile ID: 689a4460ab5cs617a5afa29a
     ```
