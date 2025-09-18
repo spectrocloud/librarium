@@ -25,14 +25,12 @@ tags: ["release-notes"]
   using the API should use the `spec.jsonCredentials` field to supply their credentials in JSON format. Refer to the
   [API documentation](/api/introduction) for further details.
 - The previous encryption library used in the [Palette CLI](../automation/palette-cli/palette-cli.md) has been
-  deprecated. As a result, users cannot use their existing configuration files to perform operations after upgrading to
-  Palette CLI version 4.7.2 or later. Users must update their passwords by either running the applicable commands and
-  following the subsequent prompts or deleting the respective configuration files:
-  - [Palette CLI](../automation/palette-cli/install-palette-cli.md) (`palette.yaml`) - `palette login --api-key <key>`
-  - [Enterprise Cluster (EC)](../automation/palette-cli/commands/ec.md) (`ec.yaml`) -
-    `palette ec install --config-file <ec-yaml-location> --update-passwords`
-  - [Private Cloud Gateway (PGC)](../automation/palette-cli/commands/pcg.md) (`pcg.yaml`) -
-    `palette pcg install --config-file <pcg-yaml-location> --update-passwords`
+  deprecated. As a result, users cannot use their existing credentials, such as Palette API keys, passwords, and Ubuntu
+  Pro tokens, to perform operations after upgrading to Palette CLI version 4.7.2 or later. Users must update their
+  credentials by either running the applicable commands and following the subsequent prompts or deleting the respective
+  configuration files. Refer to our
+  [Troubleshooting](../troubleshooting/automation.md#scenario---update-cli-configuration-files-credentials) guide for
+  more information.
 
 #### Features
 
@@ -152,6 +150,16 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 - The [OpenTelemetry Monitoring Stack](../clusters/cluster-management/monitoring/open-telemetry.md) now includes tracing and logging capabilities. The stack now supports integration with both <VersionedLink text="Open Observe" url="/integrations/packs/?pack=openobserve" /> and external SaaS tools for observability.
 - The <VersionedLink text="Virtual Machine Orchestrator" url="/integrations/packs/?pack=virtual-machine-orchestrator" /> and <VersionedLink text="Virtual Machine Migration Assistant" url="/integrations/packs/?pack=vm-migration-assistant" /> packs are now verified.
 <!-- prettier-ignore-end -->
+- <VersionedLink text="Calico CNI pack version 3.30.2-rev2" url="/integrations/packs/?pack=cni-calico&version=3.30.2-rev2" /> has been added. This pack version resolves an issue that causes Edge clusters using Calico version 3.30.2 to fail. Refer to the <VersionedLink text="Calico Additional Details" url="/integrations/packs/?pack=cni-calico&version=3.30.2-rev2&tab=custom" /> page for more information.
+<!-- prettier-ignore-end -->
+- Instructions for configuring Cilium for agent mode Edge clusters have been added to the
+  <VersionedLink text="Cilium Additional Details" url="/integrations/packs/?pack=cni-cilium-oss&tab=custom" /> page.
+  These instructions apply to Palette versions 4.2 and later.
+
+#### OS
+
+| Pack Name | New Version |
+| --------- | ----------- |
 
 #### Kubernetes
 
