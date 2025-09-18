@@ -40,7 +40,7 @@ jobs:
           target_branches=$(gh api repos/spectrocloud/librarium/branches --paginate --jq '[.[] | select(.name | test("^(master$|version-)")) | .name]')
           echo "Target branches: $target_branches"
           
-          # Create matrix by matching branches
+          # Create matrix by matching branches (they must exist in both repos to be included)
           matrix=$(echo "$source_branches $target_branches" | jq -s '
             .[0] as $source | .[1] as $target |
             [
@@ -105,54 +105,51 @@ jobs:
           # Issue the permissions-sync script
           bash scripts/permissions-sync.sh
 
-      # - name: Create a PR with the Updated Permissions
-      #   if: ${{ env.CHANGES_DETECTED  == 'true'}}
-      #   env:
-      #     GH_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
-      #   run: |
-      #     # Create a new branch
-      #     branch_name="permissions-sync-${{ matrix.target }}-$(date +%Y%m%d%H%M%S)"
-      #     git checkout -b "$branch_name"
+      - name: Create a PR with the Updated Permissions
+        if: ${{ env.CHANGES_DETECTED  == 'true'}}
+        env:
+          GH_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
+        run: |
+          # Create a new branch
+          branch_name="permissions-sync-${{ matrix.target }}-$(date +%Y%m%d%H%M%S)"
+          git checkout -b "$branch_name"
 
-      #     # Retrieve backport labels
-      #     backport_labels=$(gh label list --json name --jq '.[].name' | grep -E '^(backport-version|auto-backport)' | paste -sd "," -)
+          # Commit and push the changes
+          git add _partials/permissions/
+          git commit -m "docs: update IAM permissions for ${{ matrix.target }}"
+          git push origin $branch_name
 
-      #     # Commit and push the changes
-      #     git add _partials/permissions/
-      #     git commit -m "docs: update IAM permissions for ${{ matrix.target }}"
-      #     git push origin $branch_name
+          # Create the pull request
+          pr_body='
+          ## Describe the Change
+          This PR updates the docs IAM permission files for branch `${{ matrix.target }}` according to the files available in the [`required-permissions-data`](https://github.com/spectrocloud/required-permissions-data) repository (branch: `${{ matrix.source }}`). 
+          The files are compared using the `scripts/permissions-sync.sh` script.
+          Please review this PR carefully before merging it and update the **Last Update** line for the permission that has been updated.'
+          output=$(gh pr create --base ${{ matrix.target }} --title "docs: update IAM permissions for ${{ matrix.target }}" --body "$pr_body")
+          pr_url=$(echo "$output" | grep -o "https://[^ ]*")
+          echo "PR successfully created $pr_url."
 
-      #     # Create the pull request
-      #     pr_body='
-      #     ## Describe the Change
-      #     This PR updates the docs IAM permission files for branch `${{ matrix.target }}` according to the files available in the [`required-permissions-data`](https://github.com/spectrocloud/required-permissions-data) repository (branch: `${{ matrix.source }}`). 
-      #     The files are compared using the `scripts/permissions-sync.sh` script.
-      #     Please review this PR carefully before merging it and update the **Last Update** line for the permission that has been updated.'
-      #     output=$(gh pr create --base ${{ matrix.target }} --title "docs: update IAM permissions for ${{ matrix.target }}" --body "$pr_body" --label "$backport_labels")
-      #     pr_url=$(echo "$output" | grep -o "https://[^ ]*")
-      #     echo "PR successfully created $pr_url."
+          # Save the PR URL as an environment variable
+          echo "GITHUB_CREATED_PERMISSIONS_PR=$pr_url" >> $GITHUB_ENV
 
-      #     # Save the PR URL as an environment variable
-      #     echo "GITHUB_CREATED_PERMISSIONS_PR=$pr_url" >> $GITHUB_ENV
+      - name: Success Slack Notification
+        if: ${{ env.GITHUB_CREATED_PERMISSIONS_PR  != ''}}
+        uses: rtCamp/action-slack-notify@v2.3.3
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_TEST_WEBHOOK }}
+          SLACK_COLOR: ${{ job.status }}
+          SLACKIFY_MARKDOWN: true
+          ENABLE_ESCAPES: true
+          SLACK_MESSAGE: 'A new PR with updated IAM permissions was created for branch `${{ matrix.target }}`. Please review ${{env.GITHUB_CREATED_PERMISSIONS_PR}} for more details.'
 
-      # - name: Success Slack Notification
-      #   if: ${{ env.GITHUB_CREATED_PERMISSIONS_PR  != ''}}
-      #   uses: rtCamp/action-slack-notify@v2.3.3
-      #   env:
-      #     SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_TEST_WEBHOOK }}
-      #     SLACK_COLOR: ${{ job.status }}
-      #     SLACKIFY_MARKDOWN: true
-      #     ENABLE_ESCAPES: true
-      #     SLACK_MESSAGE: 'A new PR with updated IAM permissions was created for branch `${{ matrix.target }}`. Please review ${{env.GITHUB_CREATED_PERMISSIONS_PR}} for more details.'
-
-      # - name: Failure Slack Notification
-      #   if: ${{ failure() }}
-      #   uses: rtCamp/action-slack-notify@v2.3.3
-      #   env:
-      #     SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_TEST_WEBHOOK }}
-      #     SLACK_COLOR: ${{ job.status }}
-      #     SLACKIFY_MARKDOWN: true
-      #     ENABLE_ESCAPES: true
-      #     SLACK_MESSAGE: 'The permissions update job for branch `${{ matrix.target }}` in `${{ github.repository }}` failed. [View details](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}).'
+      - name: Failure Slack Notification
+        if: ${{ failure() }}
+        uses: rtCamp/action-slack-notify@v2.3.3
+        env:
+          SLACK_WEBHOOK: ${{ secrets.SLACK_PRIVATE_TEAM_TEST_WEBHOOK }}
+          SLACK_COLOR: ${{ job.status }}
+          SLACKIFY_MARKDOWN: true
+          ENABLE_ESCAPES: true
+          SLACK_MESSAGE: 'The permissions update job for branch `${{ matrix.target }}` in `${{ github.repository }}` failed. [View details](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}).'
 
       
