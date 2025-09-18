@@ -42,7 +42,7 @@ The following are architectural highlights of clusters deployed using agent mode
     1.33.4;
   - <VersionedLink text="Palette eXtended Kubernetes Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> 1.31.12,
     1.32.8, and 1.33.4;
-  - <VersionedLink text="Palette Optimized K3S" url="/integrations/packs/?pack=kubernetes-gke" /> 1.33.2,
+  - <VersionedLink text="Palette Optimized K3S" url="/integrations/packs/?pack=edge-k3s" /> 1.33.2,
   - <VersionedLink text="Palette Optimized RKE2" url="/integrations/packs/?pack=edge-rke2" /> 1.33.2.
 
   For locally managed clusters, refer to
