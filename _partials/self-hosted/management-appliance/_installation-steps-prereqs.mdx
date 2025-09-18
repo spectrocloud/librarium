@@ -54,46 +54,50 @@ Learn how to configure and install Secure Boot for Palette Management Appliance 
 
   <summary> How to install Secure Boot on Hewlett Packard Enterprise iLO 5 </summary>
 
-  Before you start, ensure that you have the `MOK.der` certificate file on your local computer and that you 
-  have iLO 5 access with privileges to launch the remote console and change BIOS settings. 
-  Reach out to your customer support representative if you do not have the `MOK.der` file.
+  Before you begin, ensure that you have iLO 5 access with privileges to launch the remote console and change BIOS settings. 
+  You also need the `MOK.der` certificate file on your local computer.
+  Skip to step 4 if you have already downloaded the certificate file.
 
-  1. Power on or reboot the server. When prompted during Power-On Self-Test (POST), press **F9** to enter **System Utilities**.
-  2. Select **System Configuration** and press **ENTER**.
-  3. Select **BIOS/Platform Configuration (RBSU)** > **Server Security** > **Secure Boot Settings** > **Advanced Secure Boot Options**.
-  4. Select **DB – Allowed Signatures Database** > **Enroll Signature**. If Secure Boot is currently enabled, the **Enroll Signature** option will be unavailable. Temporarily disable Secure Boot and repeat the process.
-  5. Drag the `MOK.der` file from your desktop onto the iLO Remote Console window. iLO mounts it as a virtual USB device automatically.
-  6. Confirm any prompts.
-  7. Verify that the new entry appears under **DB – Allowed Signatures Database** > **View Signatures**.
-  8. Press **ESC** to exit the menus until the **Save and Exit** option is available.
-  9. Save the changes. Exit the menu and confirm to reboot the server.
+  1. Navigate to [Artifact Studio](https://artifact-studio.spectrocloud.com/).
+  2. Select the version corresponding to your {props.edition} installer. Then, select **Show Artifacts**. The artifact list appears.
+  3. **Download** the **MOK Key for Secure Boot** file.
+  4. Power on or reboot the server. When prompted during Power-On Self-Test (POST), press **F9** to enter **System Utilities**.
+  5. Select **System Configuration** and press **ENTER**.
+  6. Select **BIOS/Platform Configuration (RBSU)** > **Server Security** > **Secure Boot Settings** > **Advanced Secure Boot Options**.
+  7. Select **DB – Allowed Signatures Database** > **Enroll Signature**. If Secure Boot is currently enabled, the **Enroll Signature** option will be unavailable. Temporarily disable Secure Boot and repeat the process.
+  8. Drag the `MOK.der` file from your desktop onto the iLO Remote Console window. iLO mounts it as a virtual USB device automatically.
+  9. Confirm any prompts.
+  10. Verify that the new entry appears under **DB – Allowed Signatures Database** > **View Signatures**.
+  11. Press **ESC** to exit the menus until the **Save and Exit** option is available.
+  12. Save your changes. Exit the menu and reboot the server.
+
   </details>
 
   <details>
 
   <summary> How to install Secure Boot on Dell servers with UEFI </summary>
 
-  Before you start, ensure that you have the `MOK.der` certificate file on your local computer.
-  Reach out to your customer support representative if you do not have the `MOK.der` file.
-
-  1. Power on the server. Execute the following command to create a virtual CD/DVD drive containing an ISO file with the `MOK.der` certificate.
-      
+  Before you begin, you need the `MOK.der` certificate file on your local computer.
+  Skip to step 4 if you have already downloaded the certificate file.
+  
+  1. Navigate to [Artifact Studio](https://artifact-studio.spectrocloud.com/).
+  2. Select the version corresponding to your {props.edition} installer. Then, select **Show Artifacts**. The artifact list appears.
+  3. **Download** the **MOK Key for Secure Boot** file.
+  4. Power on the server. Execute the following command to create a virtual CD/DVD drive containing an ISO file with the `MOK.der` certificate. Alternatively, you can save the file to a FAT32-formatted USB drive.
       ```
       mkisofs -output key.iso -volid cidata -joliet -rock MOK.der
       ```
-      Alternatively, you can save the file to a FAT32-formatted USB drive.
-
-  2. Reboot the server. When the Dell logo appears, press **F2**. The **System Setup** menu opens.
-  3. Select **System BIOS** > **Boot Settings**.
-  4. Ensure that the **Boot Mode** is set to **UEFI**.
-  5. Press **ESC** to return to **Boot Settings**.
-  6. Select **System Security** > **Secure Boot Settings**.
-  7. Toggle **Secure Boot** to **Enabled** and **Secure Boot Policy** to **Custom**.
-  8. Select **Secure Boot Custom Policy Settings** > **Authorized Signature Database (db)**.
-  9. Select **Import New Entry**. Then, select the virtual CD/DVD drive or USB drive containing the `MOK.der` file.
-  10. Save the changes. Press **ESC** to return to **Authorized Signature Database (db)**.
-  11. Select **View Entries**. The `MOK.der` file shows in the database as **DRBD Module Signing**.
-  12. Save the changes. Exit the menu and confirm to reboot the server.
+  5. Reboot the server. When the Dell logo appears, press **F2**. The **System Setup** menu opens.
+  6. Select **System BIOS** > **Boot Settings**.
+  7. Ensure that the **Boot Mode** is set to **UEFI**.
+  8. Press **ESC** to return to **Boot Settings**.
+  9. Select **System Security** > **Secure Boot Settings**.
+  10. Toggle **Secure Boot** to **Enabled** and **Secure Boot Policy** to **Custom**.
+  11. Select **Secure Boot Custom Policy Settings** > **Authorized Signature Database (db)**.
+  12. Select **Import New Entry**. Then, select the virtual CD/DVD drive or USB drive containing the `MOK.der` file.
+  13. Save your changes. Press **ESC** to return to **Authorized Signature Database (db)**.
+  14. Select **View Entries**. The `MOK.der` file shows in the database as **DRBD Module Signing**.
+  15. Save your changes. Exit the menu and reboot the server.
 
   </details>
 
