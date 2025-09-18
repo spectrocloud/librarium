@@ -50,7 +50,7 @@ organization’s security and availability.
 
 ## FIPS 140-3
 
-![FIPS-Compliance](/docs_compliance_compliance_fips-logo.webp "#width=180px")
+<!-- ![FIPS-Compliance](/docs_compliance_compliance_fips-logo.webp "#width=180px") -->
 
 Spectro Cloud is validated against FIPS 140-3 with
 [Certificate number 5061](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/5061) in
