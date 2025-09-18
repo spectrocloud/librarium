@@ -9,12 +9,8 @@ partial_name: aws-eks-controller-policy
   "Version": "2012-10-17",
   "Statement": [
     {
-      "Action": [
-        "ssm:GetParameter"
-      ],
-      "Resource": [
-        "arn:*:ssm:*:*:parameter/aws/service/eks/optimized-ami/*"
-      ],
+      "Action": ["ssm:GetParameter"],
+      "Resource": ["arn:*:ssm:*:*:parameter/aws/service/eks/optimized-ami/*"],
       "Effect": "Allow"
     },
     {
@@ -23,9 +19,7 @@ partial_name: aws-eks-controller-policy
           "iam:AWSServiceName": "eks.amazonaws.com"
         }
       },
-      "Action": [
-        "iam:CreateServiceLinkedRole"
-      ],
+      "Action": ["iam:CreateServiceLinkedRole"],
       "Resource": [
         "arn:*:iam::*:role/aws-service-role/eks.amazonaws.com/AWSServiceRoleForAmazonEKS"
       ],
@@ -37,9 +31,7 @@ partial_name: aws-eks-controller-policy
           "iam:AWSServiceName": "eks-nodegroup.amazonaws.com"
         }
       },
-      "Action": [
-        "iam:CreateServiceLinkedRole"
-      ],
+      "Action": ["iam:CreateServiceLinkedRole"],
       "Resource": [
         "arn:*:iam::*:role/aws-service-role/eks-nodegroup.amazonaws.com/AWSServiceRoleForAmazonEKSNodegroup"
       ],
@@ -51,9 +43,7 @@ partial_name: aws-eks-controller-policy
           "iam:AWSServiceName": "eks-fargate.amazonaws.com"
         }
       },
-      "Action": [
-        "iam:CreateServiceLinkedRole"
-      ],
+      "Action": ["iam:CreateServiceLinkedRole"],
       "Resource": [
         "arn:*:iam::*:role/aws-service-role/eks-fargate-pods.amazonaws.com/AWSServiceRoleForAmazonEKSForFargate"
       ],
@@ -67,9 +57,7 @@ partial_name: aws-eks-controller-policy
         "iam:ListOpenIDConnectProviders",
         "iam:UpdateOpenIDConnectProviderThumbprint"
       ],
-      "Resource": [
-        "*"
-      ],
+      "Resource": ["*"],
       "Effect": "Allow"
     },
     {
@@ -82,18 +70,12 @@ partial_name: aws-eks-controller-policy
         "iam:TagRole",
         "iam:AttachRolePolicy"
       ],
-      "Resource": [
-        "arn:*:iam::*:role/*"
-      ],
+      "Resource": ["arn:*:iam::*:role/*"],
       "Effect": "Allow"
     },
     {
-      "Action": [
-        "iam:GetPolicy"
-      ],
-      "Resource": [
-        "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
-      ],
+      "Action": ["iam:GetPolicy"],
+      "Resource": ["arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"],
       "Effect": "Allow"
     },
     {
@@ -117,10 +99,7 @@ partial_name: aws-eks-controller-policy
         "eks:DescribeIdentityProviderConfig",
         "eks:DisassociateIdentityProviderConfig"
       ],
-      "Resource": [
-        "arn:*:eks:*:*:cluster/*",
-        "arn:*:eks:*:*:nodegroup/*/*/*"
-      ],
+      "Resource": ["arn:*:eks:*:*:cluster/*", "arn:*:eks:*:*:nodegroup/*/*/*"],
       "Effect": "Allow"
     },
     {
@@ -138,9 +117,7 @@ partial_name: aws-eks-controller-policy
         "eks:CreateFargateProfile",
         "eks:DeleteFargateProfile"
       ],
-      "Resource": [
-        "*"
-      ],
+      "Resource": ["*"],
       "Effect": "Allow"
     },
     {
@@ -149,12 +126,8 @@ partial_name: aws-eks-controller-policy
           "iam:PassedToService": "eks.amazonaws.com"
         }
       },
-      "Action": [
-        "iam:PassRole"
-      ],
-      "Resource": [
-        "*"
-      ],
+      "Action": ["iam:PassRole"],
+      "Resource": ["*"],
       "Effect": "Allow"
     },
     {
@@ -163,13 +136,8 @@ partial_name: aws-eks-controller-policy
           "kms:ResourceAliases": "alias/cluster-api-provider-aws-*"
         }
       },
-      "Action": [
-        "kms:CreateGrant",
-        "kms:DescribeKey"
-      ],
-      "Resource": [
-        "*"
-      ],
+      "Action": ["kms:CreateGrant", "kms:DescribeKey"],
+      "Resource": ["*"],
       "Effect": "Allow"
     }
   ]
