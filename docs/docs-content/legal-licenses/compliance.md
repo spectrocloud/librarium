@@ -63,10 +63,15 @@ For more information about the FIPS-enforced Palette edition, check out [Palette
 
 The module is tested against these configurations:
 
-- Red Hat Enterprise Linux 8 on Dell PowerEdge R440 with Intel Xeon Silver 4214R _with and without_ PAA
-- SUSE Linux Enterprise Server 15 on Dell PowerEdge R450 with Intel Xeon Silver 4309Y _with and without_ PAA
-- Ubuntu 18.04 on Dell PowerEdge R450 with Intel Xeon Silver 4309Y _with and without_ PAA
-- Ubuntu 20.04 on Dell PowerEdge R450 with Intel Xeon Silver 4309Y _with and without_ PAA
+- Android 13 running on Google Pixel 4a with Qualcomm Snapdragon 730 32-bit and 64-bit _with and without_ PAA
+- Android 13 running on Google Pixel 4XL with Qualcomm Snapdragon 855 32-bit and 64-bit _with and without_ PAA
+- Android 13 running on Google Pixel 5a with Qualcomm Snapdragon 765 32-bit and 64-bit _with and without_ PAA
+- Android 13 running on Google Pixel 6 Pro with Google Tensor 32-bit and 64-bit _with and without_ PAA
+- Android 13 running on Google Pixel 7 Pro with Google Tensor G2 32-bit and 64-bit _with and without_ PAA
+- Debian Linux 5.17.11 (Rodete) running on n2d with AMD EPYC 7B12 _with and without_ PAA
+- Google Prodimage with Linux 4.15.0 running on n1 with Intel Xeon E5 2696 v4 _with and without_ PAA
+- Google Prodimage with Linux 4.15.0 running on Tau t2a with Ampere Altra _with and without_ PAA
+- Google Prodimage with Linux 5.10.120 running on IN762 _with and without_ PAA
 
 ## Joint Certification Program
 
