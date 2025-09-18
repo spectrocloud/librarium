@@ -1,3 +1,8 @@
+# This workflow checks for permission updates in each version branch of the
+# `required-permissions-data` repository and creates PRs in Librarium to 
+# update IAM permission files accordingly. More information can be found in
+# https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/3163586576/Permissions+Update
+
 name: Permissions Update
 
 on:
@@ -5,9 +10,6 @@ on:
   schedule:
     - cron: "0 17 * * 2"
   workflow_dispatch:
-  push:
-    branches:
-      - doc-1982-librarium
 
 jobs:
   get-branches:
