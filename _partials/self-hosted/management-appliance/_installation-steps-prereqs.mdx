@@ -54,11 +54,10 @@ Learn how to configure and install Secure Boot for Palette Management Appliance 
 
   <summary> How to install Secure Boot on Hewlett Packard Enterprise iLO 5 </summary>
 
-  1. Before you start, ensure that you have iLO 5 access with privileges to launch the remote console and change BIOS settings. 
-  Additionally, you need the `MOK.der` certificate file on your local computer. Skip to Step 5 if you have already downloaded the certificate file.
+Before you begin, ensure that you have iLO 5 access with privileges to launch the remote console and change BIOS settings. You also need the `MOK.der` certificate file on your local computer. Skip to step 4 if you have already downloaded the certificate file.
   2. Navigate to [Artifact Studio](https://artifact-studio.spectrocloud.com/).
-  3. Select the version corresponding to your {props.edition} installer. Then, click **Show Artifacts**. The artifacts list appears.
-  4. Select **Download** from the **MOK Key for Secure Boot** section to download the file.
+  3. Select the version corresponding to your {props.edition} installer. Then, select **Show Artifacts**. The artifact list appears.
+  4. **Download** the **MOK Key for Secure Boot** file.
   5. Power on or reboot the server. When prompted during Power-On Self-Test (POST), press **F9** to enter **System Utilities**.
   6. Select **System Configuration** and press **ENTER**.
   7. Select **BIOS/Platform Configuration (RBSU)** > **Server Security** > **Secure Boot Settings** > **Advanced Secure Boot Options**.
@@ -67,7 +66,7 @@ Learn how to configure and install Secure Boot for Palette Management Appliance 
   10. Confirm any prompts.
   11. Verify that the new entry appears under **DB – Allowed Signatures Database** > **View Signatures**.
   12. Press **ESC** to exit the menus until the **Save and Exit** option is available.
-  13. Save the changes. Exit the menu and confirm to reboot the server.
+  13. Save your changes. Exit the menu and reboot the server.
 
   </details>
 
@@ -75,10 +74,10 @@ Learn how to configure and install Secure Boot for Palette Management Appliance 
 
   <summary> How to install Secure Boot on Dell servers with UEFI </summary>
 
-  1. Before you start, you need the `MOK.der` certificate file on your local computer. Skip to Step 5 if you have already downloaded the certificate file.
+Before you begin, you need the `MOK.der` certificate file on your local computer. Skip to step 4 if you have already downloaded the certificate file.
   2. Navigate to [Artifact Studio](https://artifact-studio.spectrocloud.com/).
-  3. Select the version corresponding to your {props.edition} installer. Then, click **Show Artifacts**. The artifacts list appears.
-  4. Select **Download** from the **MOK Key for Secure Boot** section to download the file.
+  3. Select the version corresponding to your {props.edition} installer. Then, select **Show Artifacts**. The artifact list appears.
+  4. **Download** the **MOK Key for Secure Boot** file.
   5. Power on the server. Execute the following command to create a virtual CD/DVD drive containing an ISO file with the `MOK.der` certificate.
 
       ```
@@ -93,9 +92,9 @@ Learn how to configure and install Secure Boot for Palette Management Appliance 
   11. Toggle **Secure Boot** to **Enabled** and **Secure Boot Policy** to **Custom**.
   12. Select **Secure Boot Custom Policy Settings** > **Authorized Signature Database (db)**.
   13. Select **Import New Entry**. Then, select the virtual CD/DVD drive or USB drive containing the `MOK.der` file.
-  14. Save the changes. Press **ESC** to return to **Authorized Signature Database (db)**.
+  14. Save your changes. Press **ESC** to return to **Authorized Signature Database (db)**.
   15. Select **View Entries**. The `MOK.der` file shows in the database as **DRBD Module Signing**.
-  16. Save the changes. Exit the menu and confirm to reboot the server.
+  16. Save your changes. Exit the menu and reboot the server.
 
   </details>
 
