@@ -48,12 +48,12 @@ organization’s security and availability.
 - Spectro Cloud’s SOC 2 Type II report is available upon request for any customers or prospects with a signed
   non-disclosure agreement in place.
 
-## FIPS 140-2
+## FIPS 140-3
 
-![FIPS-Compliance](/docs_compliance_compliance_fips-logo.webp "#width=180px")
+<!-- ![FIPS-Compliance](/docs_compliance_compliance_fips-logo.webp "#width=180px") -->
 
-Spectro Cloud is validated against FIPS 140-2 with
-[Certificate number 4349](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/4349) in
+Spectro Cloud is validated against FIPS 140-3 with
+[Certificate number 5061](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/5061) in
 compliance with the Cryptographic Module Validation Program (CMVP).
 
 Our Spectro Cloud Cryptographic Module is a general-purpose cryptographic library. The FIPS-enforced Palette VerteX
