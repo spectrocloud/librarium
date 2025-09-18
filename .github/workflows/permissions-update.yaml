@@ -51,7 +51,7 @@ jobs:
                 if ($target | index($s)) then {source: $s, target: $s} else empty end
               end
             ]
-          ')
+          ' | jq -c .)
           
           echo "Final matrix: $matrix"
           echo "matrix={\"include\":$matrix}" >> $GITHUB_OUTPUT
