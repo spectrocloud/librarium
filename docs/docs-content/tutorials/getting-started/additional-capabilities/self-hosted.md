@@ -35,7 +35,7 @@ virtualized and bare metal data centers (such as [VMware vSphere](https://www.vm
 locations (including air-gapped setups), which makes VerteX also appropriate for addressing challenges like intermittent
 connectivity or low bandwidth.
 
-Additionally, VerteX incorporates validated Federal Information Processing Standards (FIPS) 140-2 cryptographic modules
+Additionally, VerteX incorporates validated Federal Information Processing Standards (FIPS) 140-3 cryptographic modules
 into its management plane and the Kubernetes clusters it deploys. It secures data in motion through encrypted Transport
 Layer Security (TLS) communication channels, includes a suite of scanning tools, and offers CONUS support from a
 dedicated public sector team. These capabilities ensure robust data protection for your organization’s infrastructure
