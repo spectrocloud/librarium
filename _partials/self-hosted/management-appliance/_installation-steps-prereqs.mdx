@@ -83,12 +83,10 @@ Learn how to configure and install Secure Boot for Palette Management Appliance 
   1. Navigate to [Artifact Studio](https://artifact-studio.spectrocloud.com/).
   2. Select the version corresponding to your {props.edition} installer. Then, select **Show Artifacts**. The artifact list appears.
   3. **Download** the **MOK Key for Secure Boot** file.
-  4. Power on the server. Execute the following command to create a virtual CD/DVD drive containing an ISO file with the `MOK.der` certificate.
-
+  4. Power on the server. Execute the following command to create a virtual CD/DVD drive containing an ISO file with the `MOK.der` certificate. Alternatively, you can save the file to a FAT32-formatted USB drive.
       ```
       mkisofs -output key.iso -volid cidata -joliet -rock MOK.der
       ```
-    Alternatively, you can save the file to a FAT32-formatted USB drive.
   5. Reboot the server. When the Dell logo appears, press **F2**. The **System Setup** menu opens.
   6. Select **System BIOS** > **Boot Settings**.
   7. Ensure that the **Boot Mode** is set to **UEFI**.
