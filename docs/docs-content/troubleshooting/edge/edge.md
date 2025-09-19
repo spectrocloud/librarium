@@ -179,8 +179,8 @@ E0619 21:54:00.647219       1 leaderelection.go:327] error retrieving resource l
 ```
 
 Although DNS becomes available shortly after boot, `kube-vip` does not recover automatically. To fix this, stop and
-remove the container manually. The kubelet then restarts the component using the current system state.
-svetlana-efimova marked this conversation as resolved.
+remove the container manually. The kubelet then restarts the component using the current system state. svetlana-efimova
+marked this conversation as resolved.
 
 ### Debug Steps
 
@@ -196,7 +196,7 @@ svetlana-efimova marked this conversation as resolved.
    ```shell
    crictl stop <container-id> && crictl rm <container-id>
    ```
-   
+
 ## Scenario - IP Address not Assigned to Edge Host
 
 When you add a new VMware vSphere Edge host to an Edge cluster, the IP address may fail to be assigned to the Edge host
