@@ -77,9 +77,12 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 <!-- prettier-ignore-start -->
 - Edge clusters with the Palette agent versions prior to 4.7.b do not support upgrading to the following Kubernetes pack
   versions released in 4.7.b:
-  <VersionedLink text="Palette Optimized Canonical" url="/integrations/packs/?pack=edge-canonical" /> 1.32.8 and 1.33.4;
-  <VersionedLink text="Palette eXtended Kubernetes Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> 1.31.12,
-  1.32.8, and 1.33.4. This breaking change affects agent mode clusters only and does not impact appliance mode clusters.
+  - <VersionedLink text="Palette Optimized Canonical" url="/integrations/packs/?pack=edge-canonical" /> 1.32.8 and 1.33.4;
+  - <VersionedLink text="Palette eXtended Kubernetes Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> 1.31.12, 1.32.8, and 1.33.4;
+  - <VersionedLink text="Palette Optimized K3S" url="/integrations/packs/?pack=edge-k3s" />  1.33.2;
+  - <VersionedLink text="Palette Optimized RKE2" url="/integrations/packs/?pack=edge-rke2" /> 1.33.2.
+  
+  This breaking change affects agent mode clusters only and does not impact appliance mode clusters.
   For locally managed clusters, refer to [Configure Palette Agent
   Version](clusters/edge/cluster-management/agent-upgrade-airgap.md) to upgrade the agent to the latest version before
   upgrading Kubernetes packs. For centrally managed clusters, do not [pause
