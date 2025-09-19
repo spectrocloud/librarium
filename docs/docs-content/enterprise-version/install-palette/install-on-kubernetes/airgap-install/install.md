@@ -267,7 +267,8 @@ environment. Reach out to our support team if you need assistance.
     kubectl create --filename registry-secret.yaml
     ```
 
-    Install the image-swap chart using the following command. Point to the **values.yaml** file you configured in steps five through six.
+    Install the image-swap chart using the following command. Point to the **values.yaml** file you configured in steps
+    five through six.
 
     ```shell
     helm upgrade --values extras/image-swap/values.yaml \

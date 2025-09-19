@@ -56,73 +56,74 @@ artifacts at the same time.
 
 ## Build Provider Images
 
-1. Check out the [CanvOS](https://github.com/spectrocloud/CanvOS) GitHub repository containing the starter code.
+1.  Check out the [CanvOS](https://github.com/spectrocloud/CanvOS) GitHub repository containing the starter code.
 
-   ```bash
-   git clone https://github.com/spectrocloud/CanvOS.git
-   ```
+    ```bash
+    git clone https://github.com/spectrocloud/CanvOS.git
+    ```
 
-2. Change to the **CanvOS/** directory.
+2.  Change to the **CanvOS/** directory.
 
-   ```bash
-   cd CanvOS
-   ```
+    ```bash
+    cd CanvOS
+    ```
 
-3. View the available [git tag](https://github.com/spectrocloud/CanvOS/tags).
+3.  View the available [git tag](https://github.com/spectrocloud/CanvOS/tags).
 
-   ```bash
-   git tag
-   ```
+    ```bash
+    git tag
+    ```
 
-4. Check out the newest available tag. This guide uses the tag **v4.3.0** as an example.
+4.  Check out the newest available tag. This guide uses the tag **v4.3.0** as an example.
 
-   ```shell
-   git checkout v4.3.0
-   ```
+    ```shell
+    git checkout v4.3.0
+    ```
 
-5. Review the files relevant for this guide.
+5.  Review the files relevant for this guide.
 
-   - **.arg.template** - A sample **.arg** file that defines arguments to use during the build process.
+    - **.arg.template** - A sample **.arg** file that defines arguments to use during the build process.
 
-   - **Earthfile** - Contains a series of commands to create target artifacts.
+    - **Earthfile** - Contains a series of commands to create target artifacts.
 
-   - **earthly.sh** - Script to invoke the Earthfile, and generate target artifacts.
+    - **earthly.sh** - Script to invoke the Earthfile, and generate target artifacts.
 
-6. Issue the command below to assign an image tag value that will be used when creating the provider images. This guide
-   uses the value `palette-learn` as an example. However, you can assign any lowercase and alphanumeric string to the
-   `CUSTOM_TAG` argument.
+6.  Issue the command below to assign an image tag value that will be used when creating the provider images. This guide
+    uses the value `palette-learn` as an example. However, you can assign any lowercase and alphanumeric string to the
+    `CUSTOM_TAG` argument.
 
-   ```bash
-   export CUSTOM_TAG=palette-learn
-   ```
+    ```bash
+    export CUSTOM_TAG=palette-learn
+    ```
 
-7. Use the command below to save the image registry hostname in the `IMAGE_REGISTRY` argument. Before you execute the
-   command, replace `[REGISTRY-HOSTNAME]` in the declaration below with your Docker ID. Your image registry hostname
-   must comply with standard DNS rules and may not contain underscores.
+7.  Use the command below to save the image registry hostname in the `IMAGE_REGISTRY` argument. Before you execute the
+    command, replace `[REGISTRY-HOSTNAME]` in the declaration below with your Docker ID. Your image registry hostname
+    must comply with standard DNS rules and may not contain underscores.
 
-   ```bash
-   export IMAGE_REGISTRY=[REGISTRY-HOSTNAME]
-   ```
+    ```bash
+    export IMAGE_REGISTRY=[REGISTRY-HOSTNAME]
+    ```
 
-8. Issue the following command to use the Ubuntu OS distribution and use the 22.04 version.
+8.  Issue the following command to use the Ubuntu OS distribution and use the 22.04 version.
 
-   ```bash
-   export OS_DISTRIBUTION=ubuntu
-   export OS_VERSION=22.04
-   ```
+    ```bash
+    export OS_DISTRIBUTION=ubuntu
+    export OS_VERSION=22.04
+    ```
 
-    <!-- prettier-ignore -->
+     <!-- prettier-ignore -->
+
     :::warning
 
     If RHEL is the base OS for your <VersionedLink text="Palette eXtended Kubernetes - Edge (PXK-E)"
-    url="/integrations/packs/?pack=edge-k8s" /> cluster running Kubernetes v1.32.x or later, we recommend using RHEL 9.x
-    to avoid a
+     url="/integrations/packs/?pack=edge-k8s" /> cluster running Kubernetes v1.32.x or later, we recommend using RHEL
+    9.x to avoid a
     [known kernel compatibility issue](../../../../troubleshooting/edge/edge.md#scenario--pxk-e-clusters-on-rhel-and-rocky-8-fail-kubernetes-initialization).
 
     :::
 
-9. Open the **Earthfile** in the CanvOS directory. Under `build-provider-images`, remove the lines containing Kubernetes
-   versions that you do not need.
+9.  Open the **Earthfile** in the CanvOS directory. Under `build-provider-images`, remove the lines containing
+    Kubernetes versions that you do not need.
 
 10. Issue the command below to create an **.arg** file. The **.arg** file uses the default values for the remaining
     arguments.
