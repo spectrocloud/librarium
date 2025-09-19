@@ -33,7 +33,7 @@ to create an IaaS Kubernetes cluster in Azure that Palette manages.
   [static placement](#static-placement-settings) and a
   [private API server load balancer](#private-api-server-lb-settings) with a static IP.
 
-- <PartialsComponent category="azure" name="azure-secret-os-layer" />
+<PartialsComponent category="azure" name="azure-secret-layer-limitations" />
 
 ## Prerequisites
 
@@ -143,7 +143,7 @@ Take the following steps to deploy an Azure cluster.
 
    :::warning
 
-   <PartialsComponent category="azure" name="azure-secret-os-layer" />
+   <PartialsComponent category="azure" name="azure-secret-layer-limitations" />
 
    :::
 

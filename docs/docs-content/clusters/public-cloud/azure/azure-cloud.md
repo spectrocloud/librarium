@@ -156,7 +156,7 @@ VerteX.
   result, a [PCG](../../pcg/pcg.md) must be set up and registered with Palette VerteX in order to deploy clusters. The
   PCG must have a connection to Azure Government Secret cloud.
 
-- <PartialsComponent category="azure" name="azure-secret-os-layer" />
+<PartialsComponent category="azure" name="azure-secret-layer-limitations" />
 
 #### Prerequisites
 
