@@ -7,8 +7,8 @@ sidebar_position: 30
 tags: ["edge", "architecture"]
 ---
 
-In connected clusters, the Palette agent gets upgraded automatically with Palette upgrades, unless you
-explicitly [pause upgrades](../../cluster-management/platform-settings/pause-platform-upgrades.md).
+In connected clusters, the Palette agent gets upgraded automatically with Palette upgrades, unless you explicitly
+[pause upgrades](../../cluster-management/platform-settings/pause-platform-upgrades.md).
 
 In airgap clusters, the Palette agent is upgraded automatically only if you update a cluster with a cluster definition
 and content bundle built on a Palette instance after a version update. The Palette agent is then updated to match the
