@@ -50,12 +50,12 @@ tags: ["release-notes"]
 
 - Fixed an issue that caused the [VM Migration Assistant](../vm-management/vm-migration-assistant/vm-migration-assistant.md) to leave open connections after VM migrations.
 - Fixed an issue that incorrectly allowed the creation of [EKS Fargate](https://docs.aws.amazon.com/eks/latest/userguide/fargate.html) in [AWS GovCloud](../clusters/public-cloud/aws/add-aws-accounts.md#aws-govcloud-account-us).
-- Fixed an issue that prevented worker node pools from attaching newly created nodes on Azure IaaS clusters created using a Palette version prior to 4.6.32 to an outbound load balancer after upgrading Palette.
+- Fixed an issue where, on Azure IaaS clusters created using a Palette version prior to 4.6.32, scaling worker node pools did not attach newly created nodes to an outbound load balancer after upgrading to Palette version 4.6.32 or later and the cluster's Palette Agent version to 4.6.7 or later.
 - Fixed an issue that caused manifest layers creating using [Crossplane](../automation/crossplane/crossplane.md) to display incorrectly in the Palette UI.
 - Fixed an issue that caused [EKS nodes](../clusters/public-cloud/aws/eks.md#cloud-configuration-settings) customized with the `AL2_x86_64` AMI label to be incorrectly configured with Amazon Linux 2023 (AL2023).
 - Fixed an issue that caused the [Virtual Machine Orchestrator](../vm-management/vm-management.md) to incorrectly require admin permissions for managing persistent volume claims.
-- Fixed an issue that caused Palette to fail to delete nodes.
-- Fixed an issue that caused new DNS configurations to fail to apply without manual DNS pod restarts.
+- Fixed an issue that prevented Palette from deleting nodes.
+- Fixed an issue that prevented new DNS configurations from being applied without manually restarting the DNS pod.
 - Fixed an issue that caused CNI labels and annotations to be incorrectly applied to cluster namespaces.
 
 ### Edge
@@ -102,7 +102,7 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 #### Bug Fixes
 
 - Fixed an issue that caused incorrect [Kube-vip](../clusters/edge/networking/kubevip.md) validation errors to appear when worker nodes were removed and re-added to clusters.
-- Fixed an issue that caused [Local UI](../clusters/edge/local-ui/local-ui.md) incorrect ports when using VIP IP addresses.
+- Fixed an issue that caused incorrect [Local UI](../clusters/edge/local-ui/local-ui.md) ports when using VIP addresses.
 
 ### VerteX
 
