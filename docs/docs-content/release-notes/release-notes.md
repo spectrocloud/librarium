@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## September 13, 2025 - Release 4.7.X {#release-notes-4.7.b}
+## September 20, 2025 - Release 4.7.20 {#release-notes-4.7.b}
 
 ### Security Notices
 
@@ -159,19 +159,12 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
   <VersionedLink text="Cilium Additional Details" url="/integrations/packs/?pack=cni-cilium-oss&tab=custom" /> page.
   These instructions apply to Palette versions 4.2 and later.
 
-#### OS
-
-| Pack Name | New Version |
-| --------- | ----------- |
-
 #### Kubernetes
 
 | Pack Name | New Version |
 | --------- | ----------- |
 | GKE | 1.33 |
 | Kubernetes (AKS) | 1.33 |
-| Palette Optimized Canonical              | 1.33.4      |
-| Palette Optimized Canonical              | 1.32.8      |
 | Palette eXtended Kubernetes Edge (PXK-E) | 1.33.4      |
 | Palette eXtended Kubernetes Edge (PXK-E) | 1.32.8      |
 | Palette eXtended Kubernetes Edge (PXK-E) | 1.31.12     |
@@ -184,7 +177,7 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 | Pack Name | New Version |
 | --------- | ----------- |
 | AWS VPC CNI (Helm) | 1.20.1 |
-| Calico | 3.30.2 |
+| Calico | 3.30.2 - Revision 2 |
 | Cilium | 1.17.6 |
 | Flannel | 0.27.2 |
 
@@ -192,18 +185,24 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 | Pack Name | New Version |
 | --------- | ----------- |
+| Azure Disk | 1.31.2 - Revision 2 |
+| AWS EFS | 3.2.2 |
+| AWS EFS | 2.1.10 |
 | Amazon EFS | 2.1.11 |
 | Amazon EFS | 2.1.10 |
 | Dell CSM Operator | 1.9.1 |
+| Longhorn | 1.8.1 |
 | Rook-Ceph | 1.18.0 |
 | Rook-Ceph | 1.17.7 |
-| Piraeus Operator | 2.8.1 |
+| Piraeus Operator | 2.9.0 |
+| Volume Snapshot Controller | 8.3.0 |
 
 #### Add-on Packs
 
 | Pack Name | New Version |
 | --------- | ----------- |
 | Argo CD | 8.3.0 |
+| Argo CD | 8.1.4 |
 | AWS Application Loadbalancer | 2.13.4 |
 | Amazon EFS | 2.1.11 |
 | Amazon EFS | 2.1.10 |
@@ -214,7 +213,7 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 | External Secrets Operator | 0.19.2 |
 | External Secrets Operator | 0.18.2 |
 | Flux2 | 2.16.4 |
-| Istio | 1.26.2 |
+| Istio | 1.27.0 |
 | Kong | 2.51.0 |
 | Loki | 2.10.2 |
 | Nginx | 1.31.1 |
@@ -225,19 +224,19 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 | Vault | 0.30.1 |
 | VMO Namespace Management | 1.0.4 |
 | Volume Snapshot Controller | 8.3.0 |
-| Zot Registry | 0.1.67 |
 
 #### FIPS Packs
 
 | Pack Name | New Version |
 | --------- | ----------- |
+| Longhorn | 1.8.1 |
 | Palette eXtended Kubernetes Edge (PXK-E) | 1.33.4      |
 | Palette eXtended Kubernetes Edge (PXK-E) | 1.32.8      |
 | Palette eXtended Kubernetes Edge (PXK-E) | 1.31.12     |
 | Palette eXtended Kubernetes              | 1.33.4      |
 | Palette eXtended Kubernetes              | 1.32.8      |
 | Palette eXtended Kubernetes              | 1.31.12     |
-| Zot Registry | 0.1.67 |
+| Piraeus Operator | 2.9.0 |
 
 ## September 1, 2025 - Release 4.7.16
 
