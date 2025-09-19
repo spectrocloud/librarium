@@ -37,11 +37,11 @@ tags: ["release-notes"]
 - Palette now allows you to deploy and manage [MAAS Kubernetes clusters](../clusters/data-center/maas/maas.md) on LXD
   Virtual Machines (VMs), enhancing resource efficiency by enabling users to host multiple control plane nodes on a
   single robust physical node. Refer to the Create and Manage MAAS Clusters using LXD VMs guide for further information.
-- Palette and VerteX Management Appliance now supports Secure Boot. Refer to the
-  [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) guide for
-  further configuration information.
-- [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) now supports
-  single node installation. We do not recommend this setup for production environments.
+- <TpBadge /> Palette and VerteX Management Appliance now supports Secure Boot. Refer to the [Palette Management
+  Appliance](../enterprise-version/install-palette/palette-management-appliance.md) guide for further configuration
+  information.
+- <TpBadge /> [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) now
+  supports single node installation. We do not recommend this setup for production environments.
 
 #### Improvements
 
@@ -51,19 +51,21 @@ tags: ["release-notes"]
 
 #### Bug Fixes
 
-- Fixed an issue that caused incorrect registry validation errors when configuring a [pack registry](../registries-and-packs/registries/oci-registry/add-pack-oci/add-pack-oci.md) using an [AWS Gov Cloud Elastic Container Registry (ECR)](https://docs.aws.amazon.com/govcloud-us/latest/UserGuide/govcloud-ecr.html).
-- Fixed an issue that allowed open redirects to be passed through Palette's login flow.
-<!-- prettier-ignore-start -->
-- Fixed an issue that caused <VersionedLink text="Spectro Proxy" url="/integrations/packs/?pack=spectro-proxy" /> pods to be continuously reconciled.
-<!-- prettier-ignore-end -->
-- Fixed an issue that caused errors when [Sprig template functions](../registries-and-packs/pack-constraints.md#sprig-template-functions) are configured on custom manifests.
-- Fixed an issue that caused [MAAS](../clusters/data-center/maas/maas.md) worker nodes to be repaved in parallel.  
+- Fixed an issue that caused the [VM Migration Assistant](../vm-management/vm-migration-assistant/vm-migration-assistant.md) to leave open connections after VM migrations.
+- Fixed an issue that incorrectly allowed the creation of [EKS Fargate](https://docs.aws.amazon.com/eks/latest/userguide/fargate.html) in [AWS GovCloud](../clusters/public-cloud/aws/add-aws-accounts.md#aws-govcloud-account-us).
+- Fixed an issue that prevented worker node pools from attaching newly created nodes on Azure IaaS clusters created using a Palette version prior to 4.6.32 to an outbound load balancer after upgrading Palette.
+- Fixed an issue that caused manifest layers creating using [Crossplane](../automation/crossplane/crossplane.md) to display incorrectly in the Palette UI.
+- Fixed an issue that caused [EKS nodes](../clusters/public-cloud/aws/eks.md#cloud-configuration-settings) customized with the `AL2_x86_64` AMI label to be incorrectly configured with Amazon Linux 2023 (AL2023).
+- Fixed an issue that caused the [Virtual Machine Orchestrator](../vm-management/vm-management.md) to incorrectly require admin permissions for managing persistent volume claims.
+- Fixed an issue that caused Palette to fail to delete nodes.
+- Fixed an issue that caused new DNS configurations to fail to apply without manual DNS pod restarts.
+- Fixed an issue that caused CNI labels and annotations to be incorrectly applied to cluster namespaces.
 
 ### Edge
 
 :::info
 
-The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.7.b Palette release is 4.7.12.
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.7.b Palette release is 4.7.13.
 
 :::
 
@@ -102,11 +104,8 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 #### Bug Fixes
 
-- Fixed an issue that caused cluster creation to fail when adding a custom `stylus.path` to the `user-data` file.
-- Fixed an issue that caused Kubernetes upgrades of [agent mode](../deployment-modes/agent-mode/agent-mode.md) clusters to get stuck.
-- Fixed an issue that caused single node [Local UI](../clusters/edge/local-ui/local-ui.md) clusters to get stuck during provisioning when add-on packs are in a pending state.
-- Fixed an issue that incorrectly allowed configuring [Kube-vip](../clusters/edge/networking/kubevip.md) with unreachable IP addresses.
-- Fixed an issue that prevented manually and automatically renewed certificates from being updated in cluster [kubeconfig](../clusters/cluster-management/kubeconfig.md) files.
+- Fixed an issue that caused incorrect [Kube-vip](../clusters/edge/networking/kubevip.md) validation errors to appear when worker nodes were removed and re-added to clusters.
+- Fixed an issue that caused [Local UI](../clusters/edge/local-ui/local-ui.md) incorrect ports when using VIP IP addresses.
 
 ### VerteX
 
@@ -141,30 +140,31 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 #### Bug Fixes
 
-- Fixed an issue that caused errors when applying taints to the control plane pool using the Terraform and Crossplane providers.
-- Fixed an issue that allowed the creation of stale cluster profile objects without correctly initialized cluster profile variables.
+- Fixed an issue that caused [EKS clusters](../clusters/public-cloud/aws/eks.md) to be recreated when private and public access CIDRs are changed through Terraform.
 
 ### Packs
 
 #### Pack Notes
 
 <!-- prettier-ignore-start -->
+
 - The <VersionedLink text="Piraeus Operator" url="/integrations/packs/?pack=piraeus-csi" /> pack is now compatible with Ubuntu 22.04 FIPS.
 - The [OpenTelemetry Monitoring Stack](../clusters/cluster-management/monitoring/open-telemetry.md) now includes tracing and logging capabilities. The stack now supports integration with both <VersionedLink text="Open Observe" url="/integrations/packs/?pack=openobserve" /> and external SaaS tools for observability.
 - The <VersionedLink text="Virtual Machine Orchestrator" url="/integrations/packs/?pack=virtual-machine-orchestrator" /> and <VersionedLink text="Virtual Machine Migration Assistant" url="/integrations/packs/?pack=vm-migration-assistant" /> packs are now verified.
-<!-- prettier-ignore-end -->
 - <VersionedLink text="Calico CNI pack version 3.30.2-rev2" url="/integrations/packs/?pack=cni-calico&version=3.30.2-rev2" /> has been added. This pack version resolves an issue that causes Edge clusters using Calico version 3.30.2 to fail. Refer to the <VersionedLink text="Calico Additional Details" url="/integrations/packs/?pack=cni-calico&version=3.30.2-rev2&tab=custom" /> page for more information.
-<!-- prettier-ignore-end -->
 - Instructions for configuring Cilium for agent mode Edge clusters have been added to the
   <VersionedLink text="Cilium Additional Details" url="/integrations/packs/?pack=cni-cilium-oss&tab=custom" /> page.
   These instructions apply to Palette versions 4.2 and later.
+- The <VersionedLink text="Piraeus Operator" url="/integrations/packs/?pack=piraeus-csi" /> airgap pack binary is not available for download.
+
+<!-- prettier-ignore-end -->
 
 #### Kubernetes
 
-| Pack Name | New Version |
-| --------- | ----------- |
-| GKE | 1.33 |
-| Kubernetes (AKS) | 1.33 |
+| Pack Name                                | New Version |
+| ---------------------------------------- | ----------- |
+| GKE                                      | 1.33        |
+| Kubernetes (AKS)                         | 1.33        |
 | Palette eXtended Kubernetes Edge (PXK-E) | 1.33.4      |
 | Palette eXtended Kubernetes Edge (PXK-E) | 1.32.8      |
 | Palette eXtended Kubernetes Edge (PXK-E) | 1.31.12     |
@@ -174,69 +174,69 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 #### CNI
 
-| Pack Name | New Version |
-| --------- | ----------- |
-| AWS VPC CNI (Helm) | 1.20.1 |
-| Calico | 3.30.2 - Revision 2 |
-| Cilium | 1.17.6 |
-| Flannel | 0.27.2 |
+| Pack Name          | New Version         |
+| ------------------ | ------------------- |
+| AWS VPC CNI (Helm) | 1.20.1              |
+| Calico             | 3.30.2 - Revision 2 |
+| Cilium             | 1.17.6              |
+| Flannel            | 0.27.2              |
 
 #### CSI
 
-| Pack Name | New Version |
-| --------- | ----------- |
-| Azure Disk | 1.31.2 - Revision 2 |
-| AWS EFS | 3.2.2 |
-| AWS EFS | 2.1.10 |
-| Amazon EFS | 2.1.11 |
-| Amazon EFS | 2.1.10 |
-| Dell CSM Operator | 1.9.1 |
-| Longhorn | 1.8.1 |
-| Rook-Ceph | 1.18.0 |
-| Rook-Ceph | 1.17.7 |
-| Piraeus Operator | 2.9.0 |
-| Volume Snapshot Controller | 8.3.0 |
+| Pack Name                  | New Version         |
+| -------------------------- | ------------------- |
+| Azure Disk                 | 1.31.2 - Revision 2 |
+| AWS EFS                    | 3.2.2               |
+| AWS EFS                    | 2.1.10              |
+| Amazon EFS                 | 2.1.11              |
+| Amazon EFS                 | 2.1.10              |
+| Dell CSM Operator          | 1.9.1               |
+| Longhorn                   | 1.8.1               |
+| Rook-Ceph                  | 1.18.0              |
+| Rook-Ceph                  | 1.17.7              |
+| Piraeus Operator           | 2.9.0               |
+| Volume Snapshot Controller | 8.3.0               |
 
 #### Add-on Packs
 
-| Pack Name | New Version |
-| --------- | ----------- |
-| Argo CD | 8.3.0 |
-| Argo CD | 8.1.4 |
-| AWS Application Loadbalancer | 2.13.4 |
-| Amazon EFS | 2.1.11 |
-| Amazon EFS | 2.1.10 |
-| Calico Network Policy | 3.30.2 |
-| Crossplane | 2.0.2 |
-| Dell CSM Operator | 1.9.1 |
-| Dex | 2.42.0 |
-| External Secrets Operator | 0.19.2 |
-| External Secrets Operator | 0.18.2 |
-| Flux2 | 2.16.4 |
-| Istio | 1.27.0 |
-| Kong | 2.51.0 |
-| Loki | 2.10.2 |
-| Nginx | 1.31.1 |
-| Rook-Ceph | 1.17.7 |
-| Prometheus Agent | 27.23.0 |
-| Prometheus - Grafana | 75.9.0 |
-| Upbound Crossplane | 2.0.1 |
-| Vault | 0.30.1 |
-| VMO Namespace Management | 1.0.4 |
-| Volume Snapshot Controller | 8.3.0 |
+| Pack Name                    | New Version |
+| ---------------------------- | ----------- |
+| Argo CD                      | 8.3.0       |
+| Argo CD                      | 8.1.4       |
+| AWS Application Loadbalancer | 2.13.4      |
+| Amazon EFS                   | 2.1.11      |
+| Amazon EFS                   | 2.1.10      |
+| Calico Network Policy        | 3.30.2      |
+| Crossplane                   | 2.0.2       |
+| Dell CSM Operator            | 1.9.1       |
+| Dex                          | 2.42.0      |
+| External Secrets Operator    | 0.19.2      |
+| External Secrets Operator    | 0.18.2      |
+| Flux2                        | 2.16.4      |
+| Istio                        | 1.27.0      |
+| Kong                         | 2.51.0      |
+| Loki                         | 2.10.2      |
+| Nginx                        | 1.31.1      |
+| Rook-Ceph                    | 1.17.7      |
+| Prometheus Agent             | 27.23.0     |
+| Prometheus - Grafana         | 75.9.0      |
+| Upbound Crossplane           | 2.0.1       |
+| Vault                        | 0.30.1      |
+| VMO Namespace Management     | 1.0.4       |
+| Volume Snapshot Controller   | 8.3.0       |
 
 #### FIPS Packs
 
-| Pack Name | New Version |
-| --------- | ----------- |
-| Longhorn | 1.8.1 |
+| Pack Name                                | New Version |
+| ---------------------------------------- | ----------- |
+| Longhorn                                 | 1.8.1       |
 | Palette eXtended Kubernetes Edge (PXK-E) | 1.33.4      |
 | Palette eXtended Kubernetes Edge (PXK-E) | 1.32.8      |
 | Palette eXtended Kubernetes Edge (PXK-E) | 1.31.12     |
 | Palette eXtended Kubernetes              | 1.33.4      |
 | Palette eXtended Kubernetes              | 1.32.8      |
 | Palette eXtended Kubernetes              | 1.31.12     |
-| Piraeus Operator | 2.9.0 |
+| Piraeus Operator                         | 2.9.0       |
 
 ## September 1, 2025 - Release 4.7.16
 

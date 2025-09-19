@@ -934,5 +934,9 @@
   {
     "name": "piraeus-operator-addon",
     "description": "Piraeus Operator is a free, open-source Kubernetes storage solution that deploys and manages LINSTOR clusters. It exposes dynamic provisioning of persistent volumes and snapshots to applications on-premises or in the cloud."
+  },
+  {
+    "name": "postgresql",
+    "description": "Piraeus Operator is a free, open-source Kubernetes storage solution that deploys and manages LINSTOR clusters. It exposes dynamic provisioning of persistent volumes and snapshots to applications on-premises or in the cloud."
   }
 ]
