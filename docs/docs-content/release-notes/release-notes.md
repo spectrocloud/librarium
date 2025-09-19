@@ -34,11 +34,11 @@ tags: ["release-notes"]
 
 #### Features
 
-- <TpBadge /> Palette and VerteX Management Appliance now supports Secure Boot. Refer to the [Palette Management
+- <TpBadge /> Palette and VerteX Management Appliance now support Secure Boot. Refer to the [Palette Management
   Appliance](../enterprise-version/install-palette/palette-management-appliance.md) guide for further configuration
   information.
-- <TpBadge /> [Palette Management Appliance](../enterprise-version/install-palette/palette-management-appliance.md) now
-  supports single node installation. We do not recommend this setup for production environments.
+- <TpBadge /> Palette and VerteX Management Appliance now support single node installation. We do not recommend this
+  setup for production environments.
 
 #### Improvements
 
