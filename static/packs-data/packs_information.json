@@ -937,7 +937,7 @@
   },
   {
     "name": "postgresql",
-    "description": "Piraeus Operator is a free, open-source Kubernetes storage solution that deploys and manages LINSTOR clusters. It exposes dynamic provisioning of persistent volumes and snapshots to applications on-premises or in the cloud."
+    "description": "PostgreSQL is a powerful, open-source object-relational database system that uses and extends the SQL language. It is known for its reliability, feature robustness, and performance."
   },
   {
     "name": "zot-registry",
