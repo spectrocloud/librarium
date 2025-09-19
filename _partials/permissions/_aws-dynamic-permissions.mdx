@@ -138,12 +138,8 @@ partial_name: aws-dynamic-permissions
     },
     {
       "Effect": "Allow",
-      "Action": [
-        "iam:PassRole"
-      ],
-      "Resource": [
-        "arn:*:iam::*:role/*.cluster-api-provider-aws.sigs.k8s.io"
-      ]
+      "Action": ["iam:PassRole"],
+      "Resource": ["arn:*:iam::*:role/*.cluster-api-provider-aws.sigs.k8s.io"]
     }
   ]
 }
