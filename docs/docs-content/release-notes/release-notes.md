@@ -34,9 +34,6 @@ tags: ["release-notes"]
 
 #### Features
 
-- Palette now allows you to deploy and manage [MAAS Kubernetes clusters](../clusters/data-center/maas/maas.md) on LXD
-  Virtual Machines (VMs), enhancing resource efficiency by enabling users to host multiple control plane nodes on a
-  single robust physical node. Refer to the Create and Manage MAAS Clusters using LXD VMs guide for further information.
 - <TpBadge /> Palette and VerteX Management Appliance now supports Secure Boot. Refer to the [Palette Management
   Appliance](../enterprise-version/install-palette/palette-management-appliance.md) guide for further configuration
   information.
@@ -99,7 +96,7 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 #### Improvements
 
-- The [Edge host grid view](../clusters/edge/site-deployment/edge-host-view.md) now supports the Graphics Processing Unit (GPU) attribute. It contains information about the GPU of the Edge host, including the GPU model, vendor, memory, count, and Multi-Instance GPU (MIG) capability and strategy. MIG fields are applicable for Nvidia devices only.
+- [Edge host grid view](../clusters/edge/site-deployment/edge-host-view.md) now supports the Graphics Processing Unit (GPU) attribute. It contains information about the GPU of the Edge host, including the GPU model, vendor, memory, count, and Multi-Instance GPU (MIG) capability and strategy. MIG fields are applicable for Nvidia devices only.
 - [Local UI](../clusters/edge/local-ui/local-ui.md) now supports displaying all date and time values in Coordinated Universal Time (UTC), the browser’s local time zone, or both simultaneously.
 
 #### Bug Fixes
@@ -132,7 +129,7 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
 
 - Terraform version 0.24.4 of the
   [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
-  available. For more details, refer to the Terraform provider
+  now available. For more details, refer to the Terraform provider
   [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
 - Crossplane version 0.24.4 of the
   [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette)
