@@ -68,12 +68,13 @@ as a USB stick.
 
    :::
 
-5. Once the Edge host arrives at the physical site, load the USB drive to the Edge host before powering it on. The system boots from the internal disk, detects the USB drive, and automatically applies the additional user data.
+5. Once the Edge host arrives at the physical site, load the USB drive to the Edge host before powering it on. The
+   system boots from the internal disk, detects the USB drive, and automatically applies the additional user data.
 
 ## Validate
 
-You can validate that the ISO file is not corrupted by attempting to flash a bootable device. Most software that
-creates a bootable device will validate the ISO file before the flash process.
+You can validate that the ISO file is not corrupted by attempting to flash a bootable device. Most software that creates
+a bootable device will validate the ISO file before the flash process.
 
 ## Next Steps
 
