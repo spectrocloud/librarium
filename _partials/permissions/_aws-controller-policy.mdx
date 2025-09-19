@@ -85,9 +85,7 @@ partial_name: aws-controller-policy
         "iam:CreateOpenIDConnectProvider",
         "tag:GetResources"
       ],
-      "Resource": [
-        "*"
-      ],
+      "Resource": ["*"],
       "Effect": "Allow"
     },
     {
@@ -110,9 +108,7 @@ partial_name: aws-controller-policy
           "iam:AWSServiceName": "autoscaling.amazonaws.com"
         }
       },
-      "Action": [
-        "iam:CreateServiceLinkedRole"
-      ],
+      "Action": ["iam:CreateServiceLinkedRole"],
       "Resource": [
         "arn:*:iam::*:role/aws-service-role/autoscaling.amazonaws.com/AWSServiceRoleForAutoScaling"
       ],
@@ -124,9 +120,7 @@ partial_name: aws-controller-policy
           "iam:AWSServiceName": "elasticloadbalancing.amazonaws.com"
         }
       },
-      "Action": [
-        "iam:CreateServiceLinkedRole"
-      ],
+      "Action": ["iam:CreateServiceLinkedRole"],
       "Resource": [
         "arn:*:iam::*:role/aws-service-role/elasticloadbalancing.amazonaws.com/AWSServiceRoleForElasticLoadBalancing"
       ],
@@ -138,21 +132,15 @@ partial_name: aws-controller-policy
           "iam:AWSServiceName": "spot.amazonaws.com"
         }
       },
-      "Action": [
-        "iam:CreateServiceLinkedRole"
-      ],
+      "Action": ["iam:CreateServiceLinkedRole"],
       "Resource": [
         "arn:*:iam::*:role/aws-service-role/spot.amazonaws.com/AWSServiceRoleForEC2Spot"
       ],
       "Effect": "Allow"
     },
     {
-      "Action": [
-        "iam:PassRole"
-      ],
-      "Resource": [
-        "arn:*:iam::*:role/*.cluster-api-provider-aws.sigs.k8s.io"
-      ],
+      "Action": ["iam:PassRole"],
+      "Resource": ["arn:*:iam::*:role/*.cluster-api-provider-aws.sigs.k8s.io"],
       "Effect": "Allow"
     },
     {
@@ -161,9 +149,7 @@ partial_name: aws-controller-policy
         "secretsmanager:DeleteSecret",
         "secretsmanager:TagResource"
       ],
-      "Resource": [
-        "arn:*:secretsmanager:*:*:secret:aws.cluster.x-k8s.io/*"
-      ],
+      "Resource": ["arn:*:secretsmanager:*:*:secret:aws.cluster.x-k8s.io/*"],
       "Effect": "Allow"
     },
     {
@@ -175,9 +161,7 @@ partial_name: aws-controller-policy
         "s3:PutObjectAcl",
         "s3:PutObject"
       ],
-      "Resource": [
-        "arn:*:s3:::*"
-      ],
+      "Resource": ["arn:*:s3:::*"],
       "Effect": "Allow"
     }
   ]
