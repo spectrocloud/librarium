@@ -20,6 +20,10 @@ The `pcg` command exposes the following subcommand.
 
 - `install` - Install a PCG through an interactive wizard. A container runtime is required to install a PCG cluster.
 
+## Limitations
+
+- <PartialsComponent category="palette-cli" name="credentials-breaking-change" />
+
 ## Prerequisites
 
 - Docker is required to install a PCG cluster. Refer to the [Docker](https://docs.docker.com/get-docker/) documentation
