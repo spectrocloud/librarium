@@ -914,5 +914,69 @@
   {
     "name": "wordpress-chart",
     "description": "WordPress is an open-source web content management system. It was originally created as a tool to publish blogs but has evolved to support publishing other web content, including more traditional websites, mailing lists and Internet forum, media galleries, membership sites, learning management systems, and online stores. "
+  },
+  {
+    "name": "openobserve",
+    "description": "OpenObserve is a free, open-source observability platform that unifies logs, metrics, and traces for monitoring applications and infrastructure that can be deployed on-premises or in the cloud."
+  },
+  {
+    "name": "piraeus-csi",
+    "description": "Piraeus Operator is a free, open-source Kubernetes storage solution that deploys and manages LINSTOR clusters. It exposes dynamic provisioning of persistent volumes and snapshots to applications on-premises or in the cloud."
+  },
+  {
+    "name": "piraeus-operator",
+    "description": "Piraeus Operator is a free, open-source Kubernetes storage solution that deploys and manages LINSTOR clusters. It exposes dynamic provisioning of persistent volumes and snapshots to applications on-premises or in the cloud."
+  },
+  {
+    "name": "csi-piraeus-operator",
+    "description": "Piraeus Operator is a free, open-source Kubernetes storage solution that deploys and manages LINSTOR clusters. It exposes dynamic provisioning of persistent volumes and snapshots to applications on-premises or in the cloud."
+  },
+  {
+    "name": "piraeus-operator-addon",
+    "description": "Piraeus Operator is a free, open-source Kubernetes storage solution that deploys and manages LINSTOR clusters. It exposes dynamic provisioning of persistent volumes and snapshots to applications on-premises or in the cloud."
+  },
+  {
+    "name": "postgresql",
+    "description": "PostgreSQL is a powerful, open-source object-relational database system that uses and extends the SQL language. It is known for its reliability, feature robustness, and performance."
+  },
+  {
+    "name": "zot-registry",
+    "description": "Zot is an open-source container image registry that provides a secure and efficient way to store and manage container images. It is designed to work seamlessly with Kubernetes and other container orchestration platforms."
+  },
+  {
+    "name": "medik8s",
+    "description": "Medik8s is an open-source Kubernetes operator that automates the deployment and management of machine learning workloads on Kubernetes clusters."
+  },
+  {
+    "name": "nvidia-gpu-operator",
+    "description": "The NVIDIA GPU Operator is a Kubernetes operator that makes it easy to deploy and manage GPU resources on Kubernetes clusters. It automates the installation and configuration of the NVIDIA device plugin, the NVIDIA container runtime, and the NVIDIA GPU driver."
+  },
+  {
+    "name": "gloo",
+    "description": "Gloo is an open-source API gateway and ingress controller for Kubernetes. It provides advanced traffic management capabilities, including routing, load balancing, and security features."
+  },
+  {
+    "name": "opentelemetry",
+    "description": "OpenTelemetry is an open-source observability framework for cloud-native software. It provides APIs, libraries, agents, and instrumentation to enable observability for applications and services."
+  },
+  {
+    "name": "archivista",
+    "description": "Archivista is a graph and storage service for in-toto attestations. Archivista enables the discovery and retrieval of attestations for software artifacts."
+  },
+  {
+    "name": "coder-chart",
+    "description": "Coder is a platform for developing and deploying applications in the cloud. It provides a unified development environment and integrates with popular tools and services."
+  },
+  {
+    "name": "vmo-ns-mgmt",
+    "description": "VMO Namespace Management is a tool for managing Kubernetes namespaces in a multi-tenant environment. It provides features for namespace isolation, resource quotas, and access control."
+  },
+  {
+    "name": "csi-wekafsplugin",
+    "description": "CSI WekaFS Plugin is a Container Storage Interface (CSI) driver for Weka.io's file system. It enables the use of Weka.io's high-performance file system as a storage backend for Kubernetes."
+  },
+  {
+    "name": "tekton-chains",
+    "description": "Tekton Chains is a Kubernetes-native solution for signing and verifying the integrity of container images and other artifacts. It provides a framework for creating and managing digital signatures, ensuring the authenticity and provenance of software supply chains."
   }
 ]
