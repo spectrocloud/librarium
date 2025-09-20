@@ -280,7 +280,7 @@ many other security hardening features. Ubuntu Pro offers several more benefits 
 
 - Kernel Livepatch service to avoid reboots
 
-- FIPS 140-2 Level 1 certified crypto modules
+- FIPS 140-3 Level 1 certified crypto modules
 
 - Common Criteria EAL2
 
@@ -589,7 +589,7 @@ many other security hardening features. Ubuntu Pro offers several more benefits 
 
 - Kernel Livepatch service to avoid reboots
 
-- FIPS 140-2 Level 1 certified crypto modules
+- FIPS 140-3 Level 1 certified crypto modules
 
 - Common Criteria EAL2
 

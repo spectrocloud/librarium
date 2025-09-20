@@ -75,7 +75,7 @@ to perform related Palette CLI operations, you will be prompted to re-enter your
         <TabItem label="No Ubuntu Pro Token" value="no-token">
 
           ```shell
-          palette login
+          palette login --api-key <key>
           ```
 
         </TabItem>
