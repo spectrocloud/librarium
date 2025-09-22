@@ -11,6 +11,227 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## September 20, 2025 - Release 4.7.20 {#release-notes-4.7.b}
+
+### Security Notices
+
+- Review the [Security Bulletins](../security-bulletins/reports/reports.mdx) page for the latest security advisories.
+
+### Palette Enterprise {#palette-enterprise-4.7.b}
+
+#### Breaking Changes {#breaking-changes-4.7.b}
+
+- The `spec.jsonCredentialsFileUid` field in API requests is no longer available. Users who create GCP cloud accounts
+  using the API should use the `spec.jsonCredentials` field to supply their credentials in JSON format. Refer to the
+  [API documentation](/api/introduction) for further details.
+- The previous encryption library used in the [Palette CLI](../automation/palette-cli/palette-cli.md) has been
+  deprecated. As a result, users cannot use their existing credentials, such as Palette API keys, passwords, and Ubuntu
+  Pro tokens, to perform operations after upgrading to Palette CLI version 4.7.2 or later. Users must update their
+  credentials by either running the applicable commands and following the subsequent prompts or deleting the respective
+  configuration files. Refer to our
+  [Troubleshooting](../troubleshooting/automation.md#scenario---update-cli-configuration-files-credentials) guide for
+  more information.
+
+#### Features
+
+- <TpBadge /> Palette and VerteX Management Appliance now support Secure Boot. Refer to the [Palette Management
+  Appliance](../enterprise-version/install-palette/palette-management-appliance.md) guide for further configuration
+  information.
+- <TpBadge /> Palette and VerteX Management Appliance now support single node installation. We do not recommend this
+  setup for production environments.
+
+#### Improvements
+
+<!-- prettier-ignore-start -->
+- Palette now supports [automatic certificate renewal](../clusters/edge/cluster-management/certificate-renewal.md#automatic-renewal) for [MAAS](../clusters/data-center/maas/maas.md) and [Edge](../clusters/edge/edge.md) clusters using <VersionedLink text="Palette Optimized Canonical" url="/integrations/packs/?pack=edge-canonical" />.
+<!-- prettier-ignore-end -->
+
+#### Bug Fixes
+
+- Fixed an issue that caused the [VM Migration Assistant](../vm-management/vm-migration-assistant/vm-migration-assistant.md) to leave open connections after VM migrations.
+- Fixed an issue that incorrectly allowed the creation of [EKS Fargate](https://docs.aws.amazon.com/eks/latest/userguide/fargate.html) in [AWS GovCloud](../clusters/public-cloud/aws/add-aws-accounts.md#aws-govcloud-account-us).
+- Fixed an issue where, on Azure IaaS clusters created using a Palette version prior to 4.6.32, scaling worker node pools did not attach newly created nodes to an outbound load balancer after upgrading to Palette version 4.6.32 or later and the cluster's Palette Agent version to 4.6.7 or later.
+- Fixed an issue that caused manifest layers creating using [Crossplane](../automation/crossplane/crossplane.md) to display incorrectly in the Palette UI.
+- Fixed an issue that caused [EKS nodes](../clusters/public-cloud/aws/eks.md#cloud-configuration-settings) customized with the `AL2_x86_64` AMI label to be incorrectly configured with Amazon Linux 2023 (AL2023).
+- Fixed an issue that caused the [Virtual Machine Orchestrator](../vm-management/vm-management.md) to incorrectly require admin permissions for managing persistent volume claims.
+- Fixed an issue that prevented Palette from deleting nodes.
+- Fixed an issue that prevented new DNS configurations from being applied without manually restarting the DNS pod.
+- Fixed an issue that caused CNI labels and annotations to be incorrectly applied to cluster namespaces.
+
+### Edge
+
+:::info
+
+The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to the 4.7.20 Palette release is 4.7.13.
+
+:::
+
+#### Breaking Changes
+
+- Palette CLI versions prior to 4.7.20 do not support building content for local Edge cluster deployment on Palette 4.7.20
+  or later because content created with older CLI versions lacks the required images. We recommend
+  [downloading](downloads/cli-tools.md#palette-cli) and using Palette CLI version 4.7.20 or later to build content for
+  Palette 4.7.20 or later.
+
+<!-- prettier-ignore-start -->
+- Edge clusters with the Palette agent versions prior to 4.7.20 do not support upgrading to the following Kubernetes pack
+  versions released in 4.7.20:
+  <VersionedLink text="Palette Optimized Canonical" url="/integrations/packs/?pack=edge-canonical" /> 1.32.8 and 1.33.4;
+  <VersionedLink text="Palette eXtended Kubernetes Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> 1.31.12,
+  1.32.8, and 1.33.4. This breaking change affects agent mode clusters only and does not impact appliance mode clusters.
+  For locally managed clusters, refer to [Configure Palette Agent
+  Version](clusters/edge/cluster-management/agent-upgrade-airgap.md) to upgrade the agent to the latest version before
+  upgrading Kubernetes packs. For centrally managed clusters, do not [pause
+  upgrades](clusters/cluster-management/platform-settings/pause-platform-upgrades.md) so the agent can upgrade
+  automatically.
+<!-- prettier-ignore-end -->
+
+- Palette Edge CLI does not support building content for local Edge cluster deployment in agent mode on Palette 4.7.20
+  (Palette agent version 4.7.12) or later. We recommend [downloading](downloads/cli-tools.md#palette-cli) and using
+  Palette CLI version 4.7.20 or later instead. This breaking change affects agent mode clusters only and does not impact
+  appliance mode clusters.
+
+#### Improvements
+
+- [Edge host grid view](../clusters/edge/site-deployment/edge-host-view.md) now supports the Graphics Processing Unit (GPU) attribute. It contains information about the GPU of the Edge host, including the GPU model, vendor, memory, count, and Multi-Instance GPU (MIG) capability and strategy. MIG fields are applicable for Nvidia devices only.
+- [Local UI](../clusters/edge/local-ui/local-ui.md) now supports displaying all date and time values in Coordinated Universal Time (UTC), the browser’s local time zone, or both simultaneously.
+
+#### Bug Fixes
+
+- Fixed an issue that caused incorrect [Kube-vip](../clusters/edge/networking/kubevip.md) validation errors to appear when worker nodes were removed and re-added to clusters.
+- Fixed an issue that caused incorrect [Local UI](../clusters/edge/local-ui/local-ui.md) ports when using VIP addresses.
+
+### VerteX
+
+#### Features
+
+- Includes all Palette features, improvements, breaking changes, and deprecations in this release. Refer to the
+  [Palette section](#palette-enterprise-4.7.b) for more details.
+
+### Automation
+
+:::info
+
+Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible version of the Palette CLI.
+
+:::
+
+#### Breaking Changes
+
+- The `spectrocloud_macro` Terraform resource is no longer available. We recommend using the `spectrocloud_macros`
+  resource to create and manage service output variables and macros. For more information, refer to the Spectro Cloud
+  Terraform provider [documentation](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs).
+
+#### Features
+
+- Terraform version 0.24.4 of the
+  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) is
+  now available. For more details, refer to the Terraform provider
+  [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
+- Crossplane version 0.24.4 of the
+  [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette)
+  is now available. This version supports [Crossplane v2](https://docs.crossplane.io/latest/whats-new/).
+
+#### Bug Fixes
+
+- Fixed an issue that caused [EKS clusters](../clusters/public-cloud/aws/eks.md) to be recreated when private and public access CIDRs are changed through Terraform.
+
+### Packs
+
+#### Pack Notes
+
+<!-- prettier-ignore-start -->
+
+- The <VersionedLink text="Piraeus Operator" url="/integrations/packs/?pack=piraeus-csi" /> pack is now compatible with Ubuntu 22.04 FIPS.
+- The [OpenTelemetry Monitoring Stack](../clusters/cluster-management/monitoring/open-telemetry.md) now includes tracing and logging capabilities. The stack now supports integration with both <VersionedLink text="Open Observe" url="/integrations/packs/?pack=openobserve" /> and external SaaS tools for observability.
+- The <VersionedLink text="Virtual Machine Orchestrator" url="/integrations/packs/?pack=virtual-machine-orchestrator" /> and <VersionedLink text="Virtual Machine Migration Assistant" url="/integrations/packs/?pack=vm-migration-assistant" /> packs are now verified.
+- <VersionedLink text="Calico CNI pack version 3.30.2-rev2" url="/integrations/packs/?pack=cni-calico&version=3.30.2-rev2" /> has been added. This pack version resolves an issue that causes Edge clusters using Calico version 3.30.2 to fail. Refer to the <VersionedLink text="Calico Additional Details" url="/integrations/packs/?pack=cni-calico&version=3.30.2-rev2&tab=custom" /> page for more information.
+- Instructions for configuring Cilium for agent mode Edge clusters have been added to the
+  <VersionedLink text="Cilium Additional Details" url="/integrations/packs/?pack=cni-cilium-oss&tab=custom" /> page.
+  These instructions apply to Palette versions 4.2 and later.
+- The <VersionedLink text="Piraeus Operator" url="/integrations/packs/?pack=piraeus-csi" /> airgap pack binary is not available for download.
+
+<!-- prettier-ignore-end -->
+
+#### Kubernetes
+
+| Pack Name                                | New Version |
+| ---------------------------------------- | ----------- |
+| GKE                                      | 1.33        |
+| Kubernetes (AKS)                         | 1.33        |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.33.4      |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.32.8      |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.31.12     |
+| Palette eXtended Kubernetes              | 1.33.4      |
+| Palette eXtended Kubernetes              | 1.32.8      |
+| Palette eXtended Kubernetes              | 1.31.12     |
+
+#### CNI
+
+| Pack Name          | New Version         |
+| ------------------ | ------------------- |
+| AWS VPC CNI (Helm) | 1.20.1              |
+| Calico             | 3.30.2 - Revision 2 |
+| Cilium             | 1.17.6              |
+| Flannel            | 0.27.2              |
+
+#### CSI
+
+| Pack Name                  | New Version         |
+| -------------------------- | ------------------- |
+| Azure Disk                 | 1.31.2 - Revision 2 |
+| AWS EFS                    | 3.2.2               |
+| AWS EFS                    | 2.1.10              |
+| Amazon EFS                 | 2.1.11              |
+| Amazon EFS                 | 2.1.10              |
+| Dell CSM Operator          | 1.9.1               |
+| Longhorn                   | 1.8.1               |
+| Rook-Ceph                  | 1.18.0              |
+| Rook-Ceph                  | 1.17.7              |
+| Piraeus Operator           | 2.9.0               |
+| Volume Snapshot Controller | 8.3.0               |
+
+#### Add-on Packs
+
+| Pack Name                    | New Version |
+| ---------------------------- | ----------- |
+| Argo CD                      | 8.3.0       |
+| Argo CD                      | 8.1.4       |
+| AWS Application Loadbalancer | 2.13.4      |
+| Amazon EFS                   | 2.1.11      |
+| Amazon EFS                   | 2.1.10      |
+| Calico Network Policy        | 3.30.2      |
+| Crossplane                   | 2.0.2       |
+| Dell CSM Operator            | 1.9.1       |
+| Dex                          | 2.42.0      |
+| External Secrets Operator    | 0.19.2      |
+| External Secrets Operator    | 0.18.2      |
+| Flux2                        | 2.16.4      |
+| Istio                        | 1.27.0      |
+| Kong                         | 2.51.0      |
+| Loki                         | 2.10.2      |
+| Nginx                        | 1.31.1      |
+| Rook-Ceph                    | 1.17.7      |
+| Prometheus Agent             | 27.23.0     |
+| Prometheus - Grafana         | 75.9.0      |
+| Upbound Crossplane           | 2.0.1       |
+| Vault                        | 0.30.1      |
+| VMO Namespace Management     | 1.0.4       |
+| Volume Snapshot Controller   | 8.3.0       |
+
+#### FIPS Packs
+
+| Pack Name                                | New Version |
+| ---------------------------------------- | ----------- |
+| Longhorn                                 | 1.8.1       |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.33.4      |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.32.8      |
+| Palette eXtended Kubernetes Edge (PXK-E) | 1.31.12     |
+| Palette eXtended Kubernetes              | 1.33.4      |
+| Palette eXtended Kubernetes              | 1.32.8      |
+| Palette eXtended Kubernetes              | 1.31.12     |
+| Piraeus Operator                         | 2.9.0       |
+
 ## September 1, 2025 - Release 4.7.16
 
 ### Bug Fixes
