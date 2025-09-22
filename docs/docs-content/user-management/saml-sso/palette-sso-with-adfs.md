@@ -117,10 +117,10 @@ standard that Palette employs. You can only use the OIDC-based approach for Micr
 
     ![Select Access Control Policy](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_select-policy.webp)
 
-15. On the next screen, by default only the `openid` scope is ticked. However, to include the user's groups in the
-    OIDC claim, you need to also enable the `allatclaims` scope. If your AD FS server does not yet have an
-    `allatclaims` scope in the list, click **New scope...** and type `allatclaims` in the Name field, then click
-    **OK** to add it. Ensure both scopes are enabled and then click **Next**:
+15. On the next screen, by default only the `openid` scope is ticked. However, to include the user's groups in the OIDC
+    claim, you need to also enable the `allatclaims` scope. If your AD FS server does not yet have an `allatclaims`
+    scope in the list, click **New scope...** and type `allatclaims` in the Name field, then click **OK** to add it.
+    Ensure both scopes are enabled and then click **Next**:
 
     ![Enable Permitted Scopes](/palette-sso-with-adfs-images/how-to_palette-sso-with-adfs_enable-scopes.webp)
 

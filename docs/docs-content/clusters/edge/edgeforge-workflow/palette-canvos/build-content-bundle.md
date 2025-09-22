@@ -150,22 +150,22 @@ Creating a content bundle provides several benefits that may address common use 
    For example, the following JSON code provides access to two registries `ttl.sh` and `docker.io` with two
    username-password pairs.
 
-    ```json
-    {
-      "image": [
-        {
-          "endpoint": "ttl.sh",
-          "username": "admin",
-          "password": "*********"
-        },
-        {
-          "endpoint": "docker.io",
-          "username": "username",
-          "password": "*********"
-        }
-      ]
-    }
-    ```
+   ```json
+   {
+     "image": [
+       {
+         "endpoint": "ttl.sh",
+         "username": "admin",
+         "password": "*********"
+       },
+       {
+         "endpoint": "docker.io",
+         "username": "username",
+         "password": "*********"
+       }
+     ]
+   }
+   ```
 
    For Google Container Registry (GCR) access, you need to set the username field to `"_json_key"` and set the password
    to an JSON object containing the following fields.

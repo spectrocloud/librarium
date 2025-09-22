@@ -72,8 +72,8 @@ You can select **Bring Your Own OS (BYOOS)** as the OS pack for your cluster in 
 depend on the OS image that you have built. Refer to [Bring Your Own OS (BYOOS)](../../../byoos/byoos.md) for further
 guidance on building custom images.
 
-- For images built using the [Kubernetes Image Builder](../../../byoos/image-builder.md), the SSH username
-  is defined as the value for `ssh_username` in the corresponding OS JSON file. For example, the
+- For images built using the [Kubernetes Image Builder](../../../byoos/image-builder.md), the SSH username is defined as
+  the value for `ssh_username` in the corresponding OS JSON file. For example, the
   [Amazon Linux 2 JSON](https://github.com/kubernetes-sigs/image-builder/blob/main/images/capi/packer/ami/amazon-2.json#L11)
   sets the `ssh_username` value as `ec2-user`.
 
