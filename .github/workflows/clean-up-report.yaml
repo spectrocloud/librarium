@@ -25,7 +25,7 @@ jobs:
     steps:
 
       - name: Checkout GitHub Pages Branch
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         
       - name: Remove Branch From Netlify
         run: cd scripts && ./netlify_remove_branch.sh 
@@ -38,7 +38,7 @@ jobs:
       BRANCH_REPORTS_DIR: reports/${{ github.event.ref }}
     steps:
       - name: Checkout GitHub Pages Branch
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           ref: gh-pages
 
