@@ -50,8 +50,8 @@ management.
   :::warning
 
   Content bundles must be built with a Palette Edge CLI version that is later than `4.5.7`. Visit the
-  [Downloads](../../../../downloads/cli-tools.md#palette-edge-cli) page to download the appropriate version of the Palette
-  Edge CLI to build the content bundle.
+  [Downloads](../../../../downloads/cli-tools.md#palette-edge-cli) page to download the appropriate version of the
+  Palette Edge CLI to build the content bundle.
 
   :::
 
