@@ -19,6 +19,10 @@ The Palette CLI is available for the following operating systems and architectur
 | -------------------- | ---------------- |
 | Linux                | amd64            |
 
+## Limitations
+
+- <PartialsComponent category="palette-cli" name="credentials-breaking-change" />
+
 ## Prerequisites
 
 - A Palette account. Click [here](https://console.spectrocloud.com/) to create a Palette account.
@@ -64,7 +68,7 @@ palette version
 <!-- palette-cli-version-output -->
 
 ```shell hideClipboard
-Palette CLI version: 4.7.1
+Palette CLI version: 4.7.2
 ```
 
 ## Next Steps
