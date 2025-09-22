@@ -57,6 +57,7 @@ tags: ["release-notes"]
 - Fixed an issue that prevented Palette from deleting nodes.
 - Fixed an issue that prevented new DNS configurations from being applied without manually restarting the DNS pod.
 - Fixed an issue that caused CNI labels and annotations to be incorrectly applied to cluster namespaces.
+- Fixed an issue that prevented [cluster profile variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/create-cluster-profile-variables.md) from correctly being applied to the configuration of [direct access to Virtual Machine Dashboard](../vm-management/configure-console-base-address.md).
 
 ### Edge
 
