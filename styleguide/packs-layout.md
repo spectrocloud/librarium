@@ -82,7 +82,8 @@ Each numbered version tab has these headings:
 - Usage
   <br /> If several versions are supported, list them in tabs with the latest version at left. Label tabs as follows
   with a **.x** extension. Do not list specific versions. For example:
-  <br /> ![image](https://github.com/rahulhazra97/Documentation-Guide/assets/126905240/496fc564-0eab-4b06-b614-deb681024a32)
+  <br />
+  ![image](https://github.com/rahulhazra97/Documentation-Guide/assets/126905240/496fc564-0eab-4b06-b614-deb681024a32)
 
 </td>
 </tr> <!-- End Versions Supported row -->

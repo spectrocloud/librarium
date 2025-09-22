@@ -130,8 +130,7 @@ Use this approach if you are building a Kairos image from `Dockerfile.ubuntu` an
    :::info
 
    For more information on how to build provider images and ISO artifacts for Edge deployments and how to use them in
-   your cluster setup, refer to
-   [Build Edge Artifacts](../clusters/edge/edgeforge-workflow/palette-canvos.md).
+   your cluster setup, refer to [Build Edge Artifacts](../clusters/edge/edgeforge-workflow/palette-canvos.md).
 
    :::
 
@@ -165,9 +164,8 @@ configuration.
    :::info
 
    For more information on how to build provider images and ISO artifacts for Edge deployments and how to use them in
-   your cluster setup, refer to
-   [Build Edge Artifacts](../clusters/edge/edgeforge-workflow/palette-canvos.md). For details on
-   `Dockerfile` usage in EdgeForge, refer to the advanced workflow.
+   your cluster setup, refer to [Build Edge Artifacts](../clusters/edge/edgeforge-workflow/palette-canvos.md). For
+   details on `Dockerfile` usage in EdgeForge, refer to the advanced workflow.
 
    :::
 
@@ -478,8 +476,8 @@ Use the following debug steps to learn how to make these configuration changes a
     (Optional)** to provide your AWS VPC details. Click **Next** when complete.
 
 16. Configure the remaining settings as needed, and deploy the cluster. Refer to
-    [Create and Manage AWS EKS Cluster](../clusters/public-cloud/aws/eks.md) if you need
-    guidance on the available options.
+    [Create and Manage AWS EKS Cluster](../clusters/public-cloud/aws/eks.md) if you need guidance on the available
+    options.
 
 17. As soon as it is available, obtain the **API server endpoint** for the cluster.
 
