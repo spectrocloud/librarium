@@ -52,7 +52,7 @@ jobs:
           secrets: /providers/github/organizations/spectrocloud/token?org_name=spectrocloud token | VAULT_GITHUB_TOKEN
 
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Compress Images
         uses: calibreapp/image-actions@main
