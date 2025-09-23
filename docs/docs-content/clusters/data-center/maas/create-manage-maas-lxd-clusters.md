@@ -70,7 +70,7 @@ This feature is only supported in Palette eXtended Kubernetes (PXK). Refer to th
     values defined in the cluster profile.
 
 10. Select a domain from the **Domain drop-down Menu**. Toggle the **Host LXD-Based Control Planes** button to use MAAS
-    bare metal as hypervisor and click **Next**.
+    bare metal as hypervisor for the control plane components and click **Next**.
 
 ![Screenshot of demo - image to be replaced later](../../../../../static/assets/docs/images/clusters_data-center_maas_profile-lxd-4-7-b.webp)
 
