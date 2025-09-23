@@ -962,6 +962,33 @@ let redirects = [
     from: `/clusters/cluster-management/kubernetes-dashboard/`,
     to: `/clusters/cluster-management/spectro-kubernetes-dashboard/`,
   },
+  {
+    from: "/vertex/supported-platforms/",
+    to: "/self-hosted-setup/vertex/",
+  },
+  {
+    from: "/enterprise-version/install-palette/install-on-vmware/",
+    to: "/self-hosted-setup/palette/vmware",
+  },
+  {
+    from: "/enterprise-version/install-palette/install-on-kubernetes/",
+    to: "/self-hosted-setup/palette/kubernetes",
+  },
+  {
+    from: "/enterprise-version/install-palette/palette-management-appliance/",
+    to: "/self-hosted-setup/palette/management-appliance",
+  },
+  {
+    from: "/enterprise-version/install-palette/install-on-kubernetes/airgap-install/checklist/",
+    to: "/self-hosted-setup/palette/kubernetes/setup/airgap/environment-setup/",
+  },
+  {
+    from: [
+      "/enterprise-version/install-palette/install-on-vmware/airgap-install/environment-setup/",
+      "/enterprise-version/install-palette/install-on-vmware/airgap-install/checklist/",
+    ],
+    to: "/self-hosted-setup/palette/vmware/setup/airgap",
+  },
 ];
 
 if (packRedirects.length > 0) {
