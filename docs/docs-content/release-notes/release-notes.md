@@ -25,6 +25,10 @@ tags: ["release-notes"]
 
 #### Improvements
 
+- When viewing project platform settings in Palette, the
+  [Cluster Auto Remediation](../clusters/cluster-management/platform-settings/cluster-auto-remediation.md) settings are
+  now correctly labeled as an override to the tenant-level settings.
+
 #### Deprecations and Removals
 
 ### Edge
