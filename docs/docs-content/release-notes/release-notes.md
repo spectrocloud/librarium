@@ -15,7 +15,7 @@ tags: ["release-notes"]
 
 ### Breaking Changes
 
-- [AWS clusters](../clusters/public-cloud/aws/create-cluster.md) created with Palette versions 4.6.32 to 4.6.44 use
+- [AWS clusters](../clusters/public-cloud/aws/create-cluster.md) created with Palette versions 4.6.32 to 4.7.20 use
   [Instance Metadata Service Version 2 (IMDSv2)](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-options.html)
   `IMDSv2 (token optional)` enforcement. This is due to a change made to upstream Cluster API AWS (CAPA), which was
   later reverted.
