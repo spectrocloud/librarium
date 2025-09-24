@@ -80,14 +80,14 @@ jobs:
           secrets: /providers/github/organizations/spectrocloud/token?org_name=spectrocloud token | VAULT_GITHUB_TOKEN
 
       - name: Checkout Librarium Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with: 
           repository: spectrocloud/librarium
           ref: ${{ matrix.target }}
           token: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
 
       - name: Checkout required-permissions-data Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with: 
           repository: spectrocloud/required-permissions-data
           path: ${{ env.PATH_PERMISSIONS }}
