@@ -33,7 +33,7 @@ tags: ["release-notes"]
   [AWS account level](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-options.html#where-to-configure-instance-metadata-options).
 
   We recommend [pausing agent upgrades](../clusters/cluster-management/platform-settings/pause-platform-upgrades.md) on
-  the affected clusters and taking one of the following actions:
+  the affected clusters and taking one of the following actions before upgrading to Palette 4.7.x:
 
   - Set the metadata version to `IMDSv2 (token optional)` in your EC2 account defaults.
   - Upgrade your applications to use IMDSv2. Refer to the
