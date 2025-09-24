@@ -29,7 +29,7 @@ tags: ["release-notes"]
     [Configure the Instance Metadata Service options](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-options.html)
     guide for further information.
 
-  Beginning with Palette 4.6.x, newly created AWS nodes inherit the metadata version value set at the
+  Beginning with Palette 4.7.x, newly created AWS nodes inherit the metadata version value set at the
   [AWS account level](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-options.html#where-to-configure-instance-metadata-options).
 
   We recommend [pausing agent upgrades](../clusters/cluster-management/platform-settings/pause-platform-upgrades.md) on
