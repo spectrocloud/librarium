@@ -51,8 +51,7 @@ tags: ["release-notes"]
 
 - Fixed an issue that caused
   [AWS Instance Metadata Service (IMDS)](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-service.html)
-  configurations to be incorrectly inherited to [AWS clusters](../clusters/public-cloud/aws/create-cluster.md) upgraded
-  to Palette 4.6.32 to 4.6.44.
+  configurations to be incorrectly inherited by newly created [AWS cluster](../clusters/public-cloud/aws/create-cluster.md) node pools created with Palette 4.6.32 to 4.7.20.
 - Fixed an issue that caused Out-of-Memory (OOM) errors on `palette-controller-manager` pods.
 - Fixed an issue that prevented single node [overlay clusters](../clusters/edge/networking/vxlan-overlay.md) from
   provisioning correctly.
