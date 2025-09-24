@@ -49,6 +49,8 @@ the project-level value instead of the tenant-level value.
 
 4. Toggle the **Override Cluster Auto Remediation** button.
 
+   The **Cluster Auto Remediation** option appears when **Override Cluster Auto Remediation** is enabled.
+
 5. Toggle the **Cluster Auto Remediation** button to enable or disable the feature.
 
 6. A pop-up box will ask you to confirm the action. Click **OK**.
