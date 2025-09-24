@@ -39,7 +39,7 @@ The following components have been updated for Palette version 4.7.20 to 4.7.X.
 
 <!-- prettier-ignore-start -->
 
-- The <VersionedLink text="Karpenter" url="/integrations/packs/?pack=karpenter" /> pack is now verified. It has been updated to integrate with Karpenter 1.6. Additionally, Palette supports upgrades of existing Karpenter-managed nodes on [EKS clusters](../clusters/public-cloud/aws/eks.md).
+- The <VersionedLink text="Karpenter" url="/integrations/packs/?pack=karpenter" /> pack is now verified. It has been updated to integrate with Karpenter 1.6. Additionally, Palette supports upgrades of existing Karpenter-managed nodes on [EKS clusters](../clusters/public-cloud/aws/eks.md). Refer to [Karpenter Support](../clusters/public-cloud/aws/architecture.md#karpenter-support) for more details.
 
 <!-- prettier-ignore-end -->
 
