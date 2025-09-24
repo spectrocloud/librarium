@@ -11,6 +11,36 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## September 25, 2025 - Release 4.6.X
+
+### Breaking Changes
+
+- [EKS clusters](../clusters/public-cloud/aws/eks.md) created in Palette 4.6.32 to 4.6.44 have optional
+  [Instance Metadata Service Version 2 (IMDSv2)](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-service.html#instance-metadata-retrieval-examples)
+  enforcement. The creation of new node pools in these clusters will fail if the following conditions are met:
+
+  - The applications in your cluster use
+    [Instance Metadata Service Version 1 (IMDSv1)](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-service.html#instance-metadata-retrieval-examples-imdsv1).
+  - The AWS account used in the provisioning of your cluster is configured with IMDSv2 metadata version in EC2 account
+    defaults. Refer to the
+    [Configure the Instance Metadata Service options](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-options.html)
+    guide for further information.
+
+  We recommend [pausing agent upgrades](<(../clusters/cluster-management/platform-settings/pause-platform-upgrades.md)>)
+  on the affected clusters and taking one of the following actions:
+
+  - Set the metadata version to IMDSv2 (token optional) in your EC2 account defaults.
+  - Upgrade your applications to use IMDSv2. Refer to the
+    [Transition to using Instance Metadata Service Version 2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-metadata-transition-to-version-2.html)
+    guide for further information.
+
+### Bug Fixes
+
+- Fixed an issue that caused
+  [AWS Instance Metadata Service (IMDS)](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-service.html)
+  configuration to be incorrectly inherited to [EKS clusters](../clusters/public-cloud/aws/eks.md) upgraded to Palette
+  4.6.32 to 4.6.44.
+
 ## July 24, 2025 - Release 4.6.44
 
 ### Bug Fixes

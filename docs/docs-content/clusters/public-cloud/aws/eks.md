@@ -382,6 +382,12 @@ deployment progress.
 
 Provisioning an AWS EKS clusters can take several minutes.
 
+EKS clusters are configured with using the
+[AWS Instance Metadata Service (IMDS)](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-service.html)
+configuration specified by the EC2 account defaults. Refer to the
+[Configure the Instance Metadata Service options](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-options.html)
+guide for further information.
+
 :::
 
 For information on how to access your cluster using the kubectl CLI, review [Access EKS Cluster](#access-eks-cluster).
