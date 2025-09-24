@@ -34,6 +34,8 @@ Palette.
   your MAAS environment. Review the [How to use standard images](https://canonical.com/maas/docs/about-images) for
   guidance on downloading OS images for MAAS.
 
+- Verify that the hosts on MAAS support KVM or LXD virtual machines.
+
 :::info
 
 By default, Palette registers a DNS record in MAAS for the deployed cluster and links it to the IP addresses of the
