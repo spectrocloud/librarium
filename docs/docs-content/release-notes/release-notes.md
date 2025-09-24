@@ -15,13 +15,10 @@ tags: ["release-notes"]
 
 The following components have been updated for Palette version 4.7.20 to 4.7.X.
 
-### Improvements
-
-<!-- prettier-ignore-start -->
-
-- The <VersionedLink text="Karpenter" url="/integrations/packs/?pack=karpenter" /> pack is now verified. It has been updated to integrate with Karpenter 1.6. Additionally, Palette supports upgrades of existing Karpenter-managed nodes on [EKS clusters](../clusters/public-cloud/aws/eks.md).
-
-<!-- prettier-ignore-end -->
+| Component                                                                                                         | Version |
+| ----------------------------------------------------------------------------------------------------------------- | ------- |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.24.X  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.24.X  |
 
 ### Bug Fixes
 
@@ -37,6 +34,14 @@ The following components have been updated for Palette version 4.7.20 to 4.7.X.
   [cluster repaves](../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration).
 
 ### Packs
+
+#### Pack Notes
+
+<!-- prettier-ignore-start -->
+
+- The <VersionedLink text="Karpenter" url="/integrations/packs/?pack=karpenter" /> pack is now verified. It has been updated to integrate with Karpenter 1.6. Additionally, Palette supports upgrades of existing Karpenter-managed nodes on [EKS clusters](../clusters/public-cloud/aws/eks.md).
+
+<!-- prettier-ignore-end -->
 
 | Pack Name            | Layer  | FIPS | New Version |
 | -------------------- | ------ | ---- | ----------- |
