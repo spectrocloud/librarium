@@ -11,7 +11,51 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## September 26, 2025 - Component Updates {#component-updates-2025-39}
+
+The following components have been updated for Palette version 4.7.20 to 4.7.X.
+
+### Improvements
+
+<!-- prettier-ignore-start -->
+
+- The <VersionedLink text="Karpenter" url="/integrations/packs/?pack=karpenter" /> pack is now verified. It has been updated to integrate with Karpenter 1.6. Additionally, Palette supports upgrades of existing Karpenter-managed nodes on [EKS clusters](../clusters/public-cloud/aws/eks.md).
+
+<!-- prettier-ignore-end -->
+
+### Bug Fixes
+
+- Fixed an issue that caused
+  [full cluster repaves](../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration) on Healthy
+  clusters that initially timed out during Terraform creation. Refer to the
+  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) for
+  further information.
+- Fixed an issue that caused the
+  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) and
+  the [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette)
+  to fail to maintain node pool order, causing unnecessary
+  [cluster repaves](../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration).
+
+### Packs
+
+| Pack Name            | Layer  | FIPS | New Version |
+| -------------------- | ------ | ---- | ----------- |
+| Calico               | CNI    | No   | 3.30.3      |
+| Cilium Tetragon      | Add-on | No   | 1.5.0       |
+| Flannel              | CNI    | No   | 0.27.3      |
+| GCP CSI Driver       | CSI    | No   | 1.17.15     |
+| Kubernetes Dashboard | Add-on | No   | 7.13.0      |
+| Longhorn             | CSI    | Yes  | 1.9.0       |
+| Prometheus - Grafana | Add-on | No   | 77.3.0      |
+| Reloader             | Add-on | No   | 1.4.7       |
+
 ## September 20, 2025 - Release 4.7.20 {#release-notes-4.7.b}
+
+### Component Updates
+
+The following component updates are applicable to this release:
+
+- [September 26, 2025 - Component Updates](#component-updates-2025-39)
 
 ### Security Notices
 
