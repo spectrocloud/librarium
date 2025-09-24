@@ -16,6 +16,12 @@ The following prerequisites must be met before deploying a cluster to AWS:
 
 - Access to an AWS cloud account
 
+  - AWS clusters deployed by Palette use the
+    [AWS Instance Metadata Service (IMDS)](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-service.html)
+    configuration specified in the EC2 account defaults. Refer to the
+    [Configure the Instance Metadata Service options](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-options.html)
+    guide for further information.
+
 - You have added an AWS account in Palette. Review [Add AWS Account](add-aws-accounts.md) for guidance.
 
 - An infrastructure cluster profile. Review

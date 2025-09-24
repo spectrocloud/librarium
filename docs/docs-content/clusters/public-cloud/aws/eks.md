@@ -14,12 +14,6 @@ an AWS account. This section guides you on how to create an EKS cluster in AWS t
 
 - Access to an AWS cloud account.
 
-  - EKS clusters deployed by Palette use the
-    [AWS Instance Metadata Service (IMDS)](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-service.html)
-    configuration specified in the EC2 account defaults. Refer to the
-    [Configure the Instance Metadata Service options](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-options.html)
-    guide for further information.
-
 - Palette integration with AWS account. Review [Add AWS Account](add-aws-accounts.md) for guidance.
 
 <!-- prettier-ignore-start -->
