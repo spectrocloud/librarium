@@ -11,6 +11,52 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## September 25, 2025 - Release 4.7.X
+
+### Breaking Changes
+
+- [AWS clusters](../clusters/public-cloud/aws/create-cluster.md) created with Palette versions 4.6.32 to 4.6.44 use
+  [Instance Metadata Service Version 2 (IMDSv2)](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-options.html)
+  `IMDSv2 (token optional)` enforcement. This is due to a change made to upstream Cluster API AWS (CAPA), which was
+  later reverted.
+
+  The creation of new node pools in these clusters will fail if both of the following conditions are met:
+
+  - The applications in your cluster use
+    [Instance Metadata Service Version 1 (IMDSv1)](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-service.html#instance-metadata-retrieval-examples-imdsv1).
+  - The AWS account used to provision your cluster is configured with metadata version `IMDSv2 only (token required)` in
+    your EC2 account defaults. Refer to the
+    [Configure the Instance Metadata Service options](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-options.html)
+    guide for further information.
+
+  Beginning with Palette 4.6.x, newly created AWS nodes inherit the metadata version value set at the
+  [AWS account level](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-options.html#where-to-configure-instance-metadata-options).
+
+  We recommend [pausing agent upgrades](../clusters/cluster-management/platform-settings/pause-platform-upgrades.md) on
+  the affected clusters and taking one of the following actions:
+
+  - Set the metadata version to `IMDSv2 (token optional)` in your EC2 account defaults.
+  - Upgrade your applications to use IMDSv2. Refer to the
+    [Transition to using Instance Metadata Service Version 2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-metadata-transition-to-version-2.html)
+    guide for further information.
+
+### Improvements
+
+- <TpBadge /> Palette now allows you to deploy and manage [MAAS Kubernetes
+  clusters](../clusters/data-center/maas/maas.md) on LXD Virtual Machines (VMs), enhancing resource efficiency by
+  enabling users to host multiple control plane nodes on a single robust physical node. Refer to the Create and Manage
+  MAAS Clusters using LXD VMs guide for further information.
+
+### Bug Fixes
+
+- Fixed an issue that caused
+  [AWS Instance Metadata Service (IMDS)](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-service.html)
+  configurations to be incorrectly inherited to [AWS clusters](../clusters/public-cloud/aws/create-cluster.md) upgraded
+  to Palette 4.6.32 to 4.6.44.
+- Fixed an issue that caused Out-of-Memory (OOM) errors on `palette-controller-manager` pods.
+- Fixed an issue that prevented single node [overlay clusters](../clusters/edge/networking/vxlan-overlay.md) from
+  provisioning correctly.
+
 ## September 20, 2025 - Release 4.7.20 {#release-notes-4.7.b}
 
 ### Security Notices
