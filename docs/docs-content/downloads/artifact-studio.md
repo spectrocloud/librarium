@@ -46,7 +46,8 @@ representative or [open a support ticket](https://support.spectrocloud.com/).
 
    :::tip
 
-   If you do not have access to Artifact Studio, contact your Spectro Cloud representative or [open a support ticket](https://support.spectrocloud.com/).
+   If you do not have access to Artifact Studio, contact your Spectro Cloud representative or
+   [open a support ticket](https://support.spectrocloud.com/).
 
    :::
 
@@ -72,7 +73,8 @@ for more information on deploying Palette locally.
 
    :::tip
 
-   If you do not have access to Artifact Studio, contact your Spectro Cloud representative or [open a support ticket](https://support.spectrocloud.com/).
+   If you do not have access to Artifact Studio, contact your Spectro Cloud representative or
+   [open a support ticket](https://support.spectrocloud.com/).
 
    :::
 
