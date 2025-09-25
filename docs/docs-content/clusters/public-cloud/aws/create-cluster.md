@@ -21,6 +21,10 @@ The following prerequisites must be met before deploying a cluster to AWS:
     configuration specified in the EC2 account defaults. Refer to the
     [Configure the Instance Metadata Service options](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-options.html)
     guide for further information.
+  - The AWS account used for IMDS configuration needs to be assigned the `ec2:GetInstanceMetadataDefaults` permission.
+    Clusters will be launched with `IMDSv2 (token optional)` enforcement if this permission is not assigned. Refer to
+    the [AWS reference](https://docs.aws.amazon.com/cli/latest/reference/ec2/get-instance-metadata-defaults.html) guide
+    for further information.
 
 - You have added an AWS account in Palette. Review [Add AWS Account](add-aws-accounts.md) for guidance.
 
