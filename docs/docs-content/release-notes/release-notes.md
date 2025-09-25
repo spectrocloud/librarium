@@ -32,6 +32,11 @@ tags: ["release-notes"]
   Beginning with Palette 4.6.x, newly created AWS nodes inherit the metadata version value set at the
   [AWS account level](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-options.html#where-to-configure-instance-metadata-options).
 
+  The AWS account used for IMDS configuration needs to be assigned the `ec2:GetInstanceMetadataDefaults` permission.
+  Clusters will be launched with `IMDSv2 (token optional)` enforcement if this permission is not assigned. Refer to the
+  [AWS reference](https://docs.aws.amazon.com/cli/latest/reference/ec2/get-instance-metadata-defaults.html) guide for
+  further information.
+
   We recommend [pausing agent upgrades](../clusters/cluster-management/platform-settings/pause-platform-upgrades.md) on
   the affected clusters and taking one of the following actions before upgrading to Palette 4.6.x:
 
