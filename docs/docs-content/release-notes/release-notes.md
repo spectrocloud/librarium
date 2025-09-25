@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## September 25, 2025 - Release 4.6.X
+## September 25, 2025 - Release 4.6.45
 
 ### Breaking Changes
 
