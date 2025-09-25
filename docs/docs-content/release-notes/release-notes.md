@@ -23,8 +23,9 @@ The following components have been updated in Palette versions 4.7.20 - 4.7.X.
 ### Bug Fixes
 
 - Fixed an issue that caused the
-  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) and [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette)
-  to change the node pool order, causing unnecessary
+  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) and
+  [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) to
+  change the node pool order, causing unnecessary
   [cluster repaves](../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration).
 
 ### Packs
