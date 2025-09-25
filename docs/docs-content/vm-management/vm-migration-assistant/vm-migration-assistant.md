@@ -46,6 +46,12 @@ but have not been verified.
 | Ubuntu                       |       ✅       |       ❌       |
 | Windows Server 2019          |       ✅       |       ✅       |
 
+:::info
+
+Oracle Enterprise Linux (OEL) is supported for cold and warm migrations, but has not been officially verified.
+
+:::
+
 ## Resources
 
 - [Create a VM Migration Assistant Cluster Profile](./create-vm-migration-assistant-profile.md)
