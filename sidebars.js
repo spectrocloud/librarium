@@ -21,7 +21,7 @@ const privacyIconSVG = `
 function createPrivacyLink(includeIcon = true, extraClass = "") {
   const icon = includeIcon ? privacyIconSVG : "";
   return `
-    <a class="menu__link ${extraClass}" href="#" onClick="UC_UI.showSecondLayer();">
+    <a class="menu__link ${extraClass}" href="javascript:" id="SeersDoNotSell" role="button">
       ${icon}Privacy Settings
     </a>
   `;

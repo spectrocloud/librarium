@@ -39,16 +39,6 @@ function showLastUpdateTime() {
   return false;
 }
 
-/* IMPORTANT
-Any script added below must have the "data-usercentrics" attribute with the name of the script as the value. 
-We also need to notify marketing about the script being added so that they can update the Usercentrics CMP.
-Marketing needs to know what to label the script as, for example Analytics, Marketing, etc. And, if it's essential or not.
-Essential scripts are always loaded, non-essential scripts are loaded based on user consent.
-This is used to identify the script for Usercentrics CMP.
-Scripts also need to have the type attribute set to "text/plain" to prevent them from being executed by the browser in the event that the user has not given consent to the script.
-The exception to the text/plain rule is the Usercentrics CMP script which must be loaded as a script tag.
-To learn more about attributes and values, visit https://docs.usercentrics.com/#/direct-implementation-guide?id=change-script-type-textjavascript-becomes-textplain
-*/
 // The list of all scripts to be loaded on the site.
 const allScripts = [
   {
@@ -93,24 +83,24 @@ const allScripts = [
   },
   {
     src: "/scripts/fullstory.js",
-    type: "text/plain",
-    "data-usercentrics": "FullStory",
+    type: "text/javascript",
   },
   {
-    type: "text/plain",
+    type: "text/javascript",
     src: "/scripts/googleTagManager.js",
-    "data-usercentrics": "Google Tag Manager",
+    "dataLayer": "GTM-T2F9ZMS"
   },
   {
-    src: "https://web.cmp.usercentrics.eu/ui/loader.js",
-    id: "usercentrics-cmp",
+    src: "https://cdn.seersco.com/banners/55793/23380/cb.js",
+    id: "seers-cmp",
     async: "true",
-    "data-ruleset-id": "hVYLQFO7M6I5k4",
+    "data-key": process.env.SEERS_CMP_KEY,
+    "data-name": "CookieXray",
     type: "text/javascript",
   },
 ];
 
-// Load only Kapa and Usercentrics for local development.
+// Load only Kapa and Seers for local development.
 const localScripts = [allScripts[1], allScripts[2], allScripts[5]];
 
 /** @type {import('@docusaurus/types').Config} */
@@ -162,21 +152,21 @@ const config = {
       tagName: "link",
       attributes: {
         rel: "preconnect",
-        href: "https://api.usercentrics.eu",
+        href: "https://cdn.seersco.com",
       },
     },
     {
       tagName: "link",
       attributes: {
         rel: "preconnect",
-        href: "https://app.usercentrics.eu",
+        href: "https://cdn-auth.seersco.com",
       },
     },
     {
       tagName: "link",
       attributes: {
         rel: "preload",
-        href: "app.usercentrics.eu/browser-ui/latest/loader.js",
+        href: "https://cdn.seersco.com/banners/55793/23380/cb.js",
         as: "script",
       },
     },
