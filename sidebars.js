@@ -18,10 +18,8 @@ const privacyIconSVG = `
 `;
 
 function openPrivacySettings() {
-  console.log("Opening privacy settings...");
   const banner = document.getElementById("SeersCMPBannerMainBar");
   if (banner) {
-    console.log("Found banner, displaying it.");
     banner.style.display = "block";
   }
 }
