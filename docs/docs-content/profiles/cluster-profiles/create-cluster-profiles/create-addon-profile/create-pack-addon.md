@@ -15,26 +15,9 @@ Use the following steps to create a cluster profile by adding one or more layers
   [Roles and Permissions](../../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile)
   documentation for more information.
 
-## Add Pack to Add-on Profile
+## Create an Add-on Profile with Packs
 
-1. Log in to [Palette](https://console.spectrocloud.com/).
-
-2. From the left **Main Menu** click **Profiles**.
-
-3. Click on the **Add Cluster Profile** button.
-
-4. Fill out the following input values and ensure you select **Add-on** for the type. Click on **Next** to continue.
-
-   | **Field**       | **Description**                                                                                                                                                                                                   |
-   | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Name**        | A custom name for the cluster profile.                                                                                                                                                                            |
-   | **Version**     | Assign a version to the profile. You only need to specify a version if you create multiple versions of a profile using the same profile name. Default: `1.0.0`.                                                   |
-   | **Description** | Use the description to provide context about the profile.                                                                                                                                                         |
-   | **Type**        | **Add-on**                                                                                                                                                                                                        |
-   | **Tags**        | Assign any desired profile tags. Tags propagate to the Virtual Machines (VMs) deployed in the cloud or data center environment when clusters are created from this cluster profile. Example: `owner` or `region`. |
-
-   To learn more about creating multiple profile versions, check out
-   [Version a Cluster Profile](../../modify-cluster-profiles/version-cluster-profile.md).
+<PartialsComponent category="profiles" name="create-profile-enablement" edition="Add-on" />
 
 5. Select **Add New Pack**. In the next window that displays, choose a registry and select the pack to add to your
    profile. You can search packs by name.

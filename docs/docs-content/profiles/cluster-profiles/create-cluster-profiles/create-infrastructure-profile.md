@@ -10,6 +10,13 @@ tags: ["profiles", "cluster profiles"]
 Create an infrastructure profile by adding layers composed of an Operating System (OS), Kubernetes, Network, and Storage
 packs.
 
+:::info
+
+You cannot add add-on layers to an infrastructure cluster profile. To include both infrastructure and add-on layers in
+one profile, create a [full cluster profile](./create-full-profile.md) instead.
+
+:::
+
 ## Prerequisites
 
 - Your Palette account role must have the `clusterProfile.create` permission to create a profile. Refer to the
@@ -18,25 +25,7 @@ packs.
 
 ## Create Infrastructure Profile
 
-1. Log in to [Palette](https://console.spectrocloud.com/).
-
-2. From the left **Main Menu** click **Profiles**.
-
-3. Click on the **Add Cluster Profile** button.
-
-4. Fill out the following input values and ensure you select **Infrastructure** for the type. Click on **Next** to
-   continue.
-
-   | **Field**       | **Description**                                                                                                                                                                                                   |
-   | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Name**        | A custom name for the profile.                                                                                                                                                                                    |
-   | **Version**     | You only need to specify a version if you create multiple versions of a profile using the same profile name. Default: `1.0.0`.                                                                                    |
-   | **Description** | Use the description to provide context about the profile.                                                                                                                                                         |
-   | **Type**        | **Infrastructure**                                                                                                                                                                                                |
-   | **Tags**        | Assign any desired profile tags. Tags propagate to the Virtual Machines (VMs) deployed in the cloud or data center environment when clusters are created from this cluster profile. Example: `owner` or `region`. |
-
-   To learn more about creating multiple profile versions, check out
-   [Version a Cluster Profile](../modify-cluster-profiles/version-cluster-profile.md).
+<PartialsComponent category="profiles" name="create-profile-enablement" edition="Infrastructure" />
 
 5. Select the Infrastructure Provider, Managed Kubernetes, or Tech Preview cloud type for your environment and click
    **Next**.
