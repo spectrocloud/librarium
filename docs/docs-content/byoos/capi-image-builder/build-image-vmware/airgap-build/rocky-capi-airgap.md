@@ -80,7 +80,18 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
     sudo --login
     ```
 
-3.  Ensure all artifacts listed in the [Prerequisites](#prerequisites) section are available in the `root` home
+3.  Set your CAPI Image Builder version tag as a variable.
+
+    ```shell
+    CAPI_IMAGE_BUILDER_VERSION=<capi-image-builder-version-tag>
+    echo CAPI Image Builder version: $CAPI_IMAGE_BUILDER_VERSION
+    ```
+
+    ```shell title="Example output"
+    CAPI Image Builder version: v4.6.23
+    ```
+
+4.  Ensure all artifacts listed in the [Prerequisites](#prerequisites) section are available in the `root` home
     directory of the airgap support VM.
 
     ```shell
@@ -88,7 +99,8 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
     ```
 
     ```text hideClipboard title="Example output"
-    airgap-pack-kubernetes-1.30.5.bin  bin  capi-image-builder-v4.6.23.tgz  prep  Rocky-8-latest-x86_64-dvd.iso  snap
+    airgap-pack-kubernetes-1.30.5.bin  bin  capi-image-builder-v4.6.23.tgz  prep
+    rocky-8-latest-x86_64-dvd.iso  snap
     ```
 
     :::warning
@@ -98,50 +110,64 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 
     :::
 
-4.  Extract the CAPI Image Builder file. Replace `<tag>` with your CAPI Image Builder version.
+5.  Extract the CAPI Image Builder file.
 
     ```shell
-    tar --extract --gzip --file=capi-image-builder-<tag>.tgz
+    tar --extract --gzip --file=capi-image-builder-$CAPI_IMAGE_BUILDER_VERSION.tgz
     ```
 
-5.  Update the permissions of the `output` folder to allow the CAPI Builder tool to create directories and files within
+    The `root` home directory of your airgap support VM should now contain the following artifacts.
+
+    ```shell
+    ls
+    ```
+
+    ```shell hideClipboard title="Example output"
+    README  airgap-pack-kubernetes-1.30.5.bin  bin  capi-builder-v4.6.23.tar
+    capi-image-builder-v4.6.23.tgz  kickstart  output  prep  rocky-8-latest-x86_64-dvd.iso
+    rpmrepo  snap  yum-repo-v1.0.0.tar
+    ```
+
+6.  Update the permissions of the `output` folder to allow the CAPI Builder tool to create directories and files within
     it.
 
     ```shell
     chmod a+rwx output
     ```
 
-6.  Move the Rocky Linux ISO file to the `output` folder.
+7.  Move the Rocky Linux ISO file to the `output` folder.
 
     ```shell
-    mv Rocky-8-latest-x86_64-dvd.iso output/
+    mv rocky-8-latest-x86_64-dvd.iso output/
     ```
 
-7.  Copy the `ks.cfg.rocky8` file from the `kickstart` folder to the `output` folder as `ks.cfg`.
+8.  Copy the `ks.cfg.rocky8` file from the `kickstart` folder to the `output` folder as `ks.cfg`.
 
     ```shell
     cp kickstart/ks.cfg.rocky8 output/ks.cfg
     ```
 
-8.  Copy the `server.crt` file from the `/opt/spectro/ssl/` directory to the `rpmrepo` folder.
+9.  Copy the `server.crt` file from the `/opt/spectro/ssl/` directory to the `rpmrepo` folder.
 
     ```bash
     cp /opt/spectro/ssl/server.crt rpmrepo/
     ```
 
-9.  Open the `imageconfig` template file in an editor of your choice and fill in the required parameters. For a complete
-    list of parameters, refer to the [Configuration Reference](../../config-reference.md) page. Additionally, refer to
-    the [Compatibility Matrix](../../comp-matrix-capi-builder.md) for a list of supported Kubernetes versions and their
-    corresponding dependencies.
+10. Open the `imageconfig` template file in an editor of your choice and fill in the required parameters. This example
+    uses Vi.
 
-    The `imageconfig` file is the file used to personalize the base CAPI image for your cluster, which you can alter to
-    fit your needs. This includes specifying the OS type, Kubernetes version, whether the image should be FIPS
-    compliant, and more.
+    The `imageconfig` file is used to personalize the base CAPI image for your cluster, which you can alter to fit your
+    needs. This includes specifying the OS type, Kubernetes version, whether the image should be FIPS compliant, and
+    more.
 
     Use the example configuration below for building a Rocky 8 CAPI image in an airgapped environment. Replace
     `<iso-checksum>` with the Rocky ISO checksum. Replace the VMware-related placeholders with the values from your
     VMware vSphere environment. Additionally, replace `<airgap-vm-hostname>` with the hostname or IP address of your
     airgap support VM.
+
+    For a complete list of parameters, refer to the [Configuration Reference](../../config-reference.md) page.
+    Additionally, refer to the [Compatibility Matrix](../../comp-matrix-capi-builder.md) for a list of supported
+    Kubernetes versions and their corresponding dependencies.
 
     :::warning
 
@@ -150,7 +176,11 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 
     :::
 
-    ```text {4-5,9,13,19-22,30-31,38-46,64-65}
+    ```shell
+    vi ./output/imageconfig
+    ```
+
+    ```shell hideClipboard title="Example imageconfig file" {4-5,9,13,19-22,30-31,38-46,64-65}
      # Define the OS type and version here
      # os_version=rhel-8 | rhel-9 | rockylinux-8 | rockylinux-9
      # image_type=standard | fips
@@ -180,7 +210,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
      # rhel_subscription_pass=
 
      # Define ISO url(if image is rhel or rockylinux)
-     iso_name=Rocky-8-latest-x86_64-dvd.iso
+     iso_name=rocky-8-latest-x86_64-dvd.iso
      iso_checksum=<iso-checksum>
 
      # Define AWS infra details
@@ -226,7 +256,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 
     Once you are finished making changes, save and exit the file.
 
-10. (Optional) You can add custom Bash scripts (`.sh` files) to run before or after the build process. This feature is
+11. (Optional) You can add custom Bash scripts (`.sh` files) to run before or after the build process. This feature is
     available beginning with CAPI Image Builder version 4.6.23. If any scripts are found in the relevant directories,
     they are copied to an Ansible playbook.
 
@@ -241,27 +271,26 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
     chmod +x custom_scripts/pre/sample-script.sh
     ```
 
-11. Load the CAPI Image Builder container image with the command below. Replace `<tag>` with your CAPI Image Builder
-    version.
+12. Load the CAPI Image Builder container image with the command below.
 
         <Tabs>
         <TabItem value="Docker" label="Docker">
 
         ```shell
-        docker load < capi-builder-<tag>.tar
+        docker load < capi-builder-$CAPI_IMAGE_BUILDER_VERSION.tar
         ```
 
         </TabItem>
         <TabItem value="Podman" label="Podman">
 
         ```shell
-        podman load < capi-builder-<tag>.tar
+        podman load < capi-builder-$CAPI_IMAGE_BUILDER_VERSION.tar
         ```
 
         </TabItem>
         </Tabs>
 
-12. Load the Yum container image with the command below. The Yum container is used to serve the packages required by the
+13. Load the Yum container image with the command below. The Yum container is used to serve the packages required by the
     CAPI Image Builder.
 
         <Tabs>
@@ -281,7 +310,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
         </TabItem>
         </Tabs>
 
-13. Confirm that both container images were loaded correctly.
+14. Confirm that both container images were loaded correctly.
 
         <Tabs>
         <TabItem value="Docker" label="Docker">
@@ -310,7 +339,9 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
         </TabItem>
         </Tabs>
 
-14. Start the Yum container and assign its ID to the `BUILD_ID_YUM` variable.
+15. Start the Yum container and assign its ID to the `BUILD_ID_YUM` variable. The following command mounts the
+    `/root/rpmrepo` directory on your airgap support VM to the `/var/www/html/rpmrepo` directory of the Yum container,
+    runs the container on port 9000 of your VM, and detaches the container's output from the terminal.
 
         <Tabs>
         <TabItem value="Docker" label="Docker">
@@ -329,7 +360,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
         </TabItem>
         </Tabs>
 
-15. Execute the command below to visualize the Yum container logs.
+16. Execute the command below to visualize the Yum container logs.
 
         <Tabs>
         <TabItem value="Docker" label="Docker">
@@ -371,32 +402,34 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
         </TabItem>
         </Tabs>
 
-16. Issue the following command to upload the airgap Kubernetes pack to the airgap registry.
+17. Issue the following command to upload the airgap Kubernetes pack to the airgap registry.
 
     ```shell
     chmod +x airgap-pack-kubernetes-1.30.5.bin && \
     ./airgap-pack-kubernetes-1.30.5.bin
     ```
 
-17. Issue the command below to start the CAPI Image Builder container and assign the container ID to the `BUILD_ID_CAPI`
-    variable. The tool will create and configure a VM with Dynamic Host Configuration Protocol (DHCP) in your VMware
-    vSphere environment using the `image_name` defined in `imageconfig`. For this guide, the VM is named `rocky-8`. The
-    tool will then generate a Rocky 8 CAPI image from the VM and save it to the `output` directory.
+18. Issue the command below to start the CAPI Image Builder container and assign the container ID to the `BUILD_ID_CAPI`
+    variable. This command starts the container on the same network as your airgap support VM, mounts the `/root/output`
+    directory of your VM to the `/home/imagebuilder/output` directory of the CAPI Image Builder container, and detaches
+    the container's output from the terminal.
 
-    Replace `<tag>` with your CAPI Image Builder version.
+    The tool will create and configure a VM with Dynamic Host Configuration Protocol (DHCP) in your VMware vSphere
+    environment using the `image_name` defined in `imageconfig`. For this guide, the VM is named `rocky-8`. The tool
+    will then generate a Rocky 8 CAPI image from the VM and save it to the `output` directory.
 
         <Tabs>
         <TabItem value="Docker" label="Docker">
 
         ```bash
-        BUILD_ID_CAPI=$(docker run --net=host --volume /root/output:/home/imagebuilder/output --detach us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:<tag>)
+        BUILD_ID_CAPI=$(docker run --net=host --volume /root/output:/home/imagebuilder/output --detach us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:$CAPI_IMAGE_BUILDER_VERSION)
         ```
 
         </TabItem>
         <TabItem value="Podman" label="Podman">
 
         ```bash
-        BUILD_ID_CAPI=$(podman run --net=host --volume /root/output:/home/imagebuilder/output --detach us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:<tag>)
+        BUILD_ID_CAPI=$(podman run --net=host --volume /root/output:/home/imagebuilder/output --detach us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:$CAPI_IMAGE_BUILDER_VERSION)
         ```
 
         </TabItem>
@@ -421,21 +454,25 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
             Once you are finished making changes, save and exit the file.
 
         2.  Issue the command below to start the CAPI Image Builder container and assign the container ID to the `BUILD_ID_CAPI`
-            variable. The tool will use the `imageconfig` file to create and configure a VM with static IP placement in
-            your VMware vSphere environment. Replace `<tag>` with your CAPI Image Builder version.
+            variable. This command starts the container on the same network as your airgap support VM, mounts the `/root/output`
+            directory of your VM to the `/home/imagebuilder/output` directory of the CAPI Image Builder container, and detaches
+            the container's output from the terminal.
+
+            The tool will use the `imageconfig` file to create and configure a VM with static IP placement in
+            your VMware vSphere environment.
 
             <Tabs>
             <TabItem value="Docker" label="Docker">
 
              ```bash
-             BUILD_ID_CAPI=$(docker run --net=host --volume /root/output:/home/imagebuilder/output --detach us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:<tag>)
+             BUILD_ID_CAPI=$(docker run --net=host --volume /root/output:/home/imagebuilder/output --detach us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:$CAPI_IMAGE_BUILDER_VERSION)
              ```
             </TabItem>
 
             <TabItem value="Podman" label="Podman">
 
              ```bash
-             BUILD_ID_CAPI=$(podman run --net=host --volume /root/output:/home/imagebuilder/output --detach us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:<tag>)
+             BUILD_ID_CAPI=$(podman run --net=host --volume /root/output:/home/imagebuilder/output --detach us-docker.pkg.dev/palette-images/palette/imagebuilder/capi-builder:$CAPI_IMAGE_BUILDER_VERSION)
              ```
 
             </TabItem>
@@ -443,8 +480,8 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 
         </details>
 
-18. Execute the following command to view the CAPI Image Builder container logs and monitor the build progress. If you
-    added any custom scripts in step 10, the output will be displayed in the build log.
+19. Execute the following command to view the CAPI Image Builder container logs and monitor the build progress. If you
+    added any custom scripts in step 11, the output will be displayed in the build log.
 
         <Tabs>
 
@@ -472,7 +509,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 
     :::
 
-19. Once the build is complete, the Rocky 8 CAPI image will be downloaded to the `output` directory as the `image_name`
+20. Once the build is complete, the Rocky 8 CAPI image will be downloaded to the `output` directory as the `image_name`
     specified in the `imageconfig` file. For this example, the image is `rocky-8`. Once the image is created, the VM is
     deleted from VMware vSphere.
 
@@ -487,7 +524,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
         packer-manifest.json  rockylinux-8-kube-v1.30.5.mf  rockylinux-8-kube-v1.30.5.ovf  rocky-8-disk-0.vmdk  rockylinux-8-kube-v1.30.5.ova  rocky-8.ovf rockylinux-8-kube-v1.30.5.ova.sha256
         ```
 
-20. Copy the `rockylinux-8-kube-v1.30.5.ova` file to the home directory of the airgap support VM. Replace
+21. Copy the `rockylinux-8-kube-v1.30.5.ova` file to the home directory of the airgap support VM. Replace
     `<vm-username>` with your airgap support VM username.
 
     ```shell
@@ -503,8 +540,8 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
     scp -i <path-to-private-key> <vm-username>@<airgap-vm-hostname>:/home/<vm-username>/rockylinux-8-kube-v1.30.5.ova .
     ```
 
-21. To make the image available in VMware vSphere, log in to your environment and locate the `vcenter_folder` you
-    defined in step 9 of this guide.
+22. To make the image available in VMware vSphere, log in to your environment and locate the `vcenter_folder` you
+    defined in step 10 of this guide.
 
     :::tip
 
@@ -513,21 +550,21 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 
     :::
 
-22. Right-click the folder and select **Deploy OVF Template** to deploy a VM using the Rocky 8 OVA file that was built
-    in step 17 of this guide.
+23. Right-click the folder and select **Deploy OVF Template** to deploy a VM using the Rocky 8 OVA file that was built
+    in step 18 of this guide.
 
-23. In the **Deploy OVF Template** wizard, select **Local File > Upload Files**, and choose the OVA file located in the
+24. In the **Deploy OVF Template** wizard, select **Local File > Upload Files**, and choose the OVA file located in the
     `output` folder on your local machine. This guide uses `rockylinux-8-kube-v1.30.5.ova` as an example. Select
     **Next** to continue.
 
-24. Assign a name to the virtual machine, such as `rockylinux-8-kube-v1.30.5`, and choose the folder you created
+25. Assign a name to the virtual machine, such as `rockylinux-8-kube-v1.30.5`, and choose the folder you created
     previously as the target location. Select **Next** to proceed.
 
-25. Choose a compute resource and select **Next**.
+26. Choose a compute resource and select **Next**.
 
-26. Review the VM configuration, accept the license agreements, and select **Next**.
+27. Review the VM configuration, accept the license agreements, and select **Next**.
 
-27. Choose the storage location and network configuration and select **Next**. Then, select **Finish** to deploy the VM.
+28. Choose the storage location and network configuration and select **Next**. Then, select **Finish** to deploy the VM.
 
     :::warning
 
@@ -537,7 +574,7 @@ This guide teaches you how to use the [CAPI Image Builder](../../capi-image-buil
 
     :::
 
-28. Once the VM is created, right-click it and select **Convert to Template**. This will convert the VM into a Rocky 8
+29. Once the VM is created, right-click it and select **Convert to Template**. This will convert the VM into a Rocky 8
     image template that you can reference during the cluster profile creation.
 
 ### Validate
