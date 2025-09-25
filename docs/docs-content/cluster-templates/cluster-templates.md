@@ -4,6 +4,7 @@ title: "Cluster Templates"
 description: "Learn how Palette uses cluster templates to provide consistency and flexibility across Kubernetes
   clusters." # UPDATE
 hide_table_of_contents: false
+sidebar_position: 0
 sidebar_custom_props:
   icon: "object-ungroup"
 tags: ["cluster templates"]
@@ -21,7 +22,29 @@ A cluster template is an abstracted, reusable object designed to be attached to 
 repeatable way to deploy and govern a fleet consistently. It acts as a blueprint for repeatable deployments and
 consistent Day 2 operations
 
-<!-- Will need to add whatever the final definition is to our glossary -->
+---
+
+Similar to profile variable vs. macros, we should have a table that, at a high level, shows the key differences between
+deploying a cluster using the traditional cluster profile only method vs, cluster templates. Unsure if that should go
+here or on the cluster landing page (or both).ls
+
+We will likely need a tabbed flow on each cluster deployment page as well that discusses how to do it with a cluster
+template. The main change is that we have a new page: one before you select your cluster profile that asks if you want
+to use a profile or you want to use a template. From there, you select your template instead of a profile. Not sure
+where the flow diverges from that point onward... But this will affect a LOT of pages. Should probably have a mention on
+one of the first cluster template pages how this changes typical deployment.
+
+Will need to add whatever the final definition is to our glossary
+
+Will likely need to update the cluster profile variables page as well to explain a bit about how they interact with
+cluster templates (or, at least, point them to the cluster template page).
+
+When you deploy a cluster from a cluster template, the cluster's **Profile** tab will be locked/read-only. There will
+also be a new **Cluster Templates** tab. You can detach a cluster template from the cluster here (though I can't say I
+know what that does... Does it keep the cluster in its current state and with the applicable cluster profile? What
+happens to the policies? Are they just removed all together?)
+
+---
 
 Each cluster template has a UID, as does each policy.
 
@@ -69,8 +92,7 @@ Maintenance policy = upgrade policy. Maintenance is the official term.
 
 - Day-2 cluster template operations are not supported at this time.
 
-- Greenfield clusters only (not imported). Template is selected during cluster creation. This workflow is still being
-  developed.
+- Greenfield clusters only. Template is selected during cluster creation. This workflow is still being developed.
 
 - One policy type per cluster
 

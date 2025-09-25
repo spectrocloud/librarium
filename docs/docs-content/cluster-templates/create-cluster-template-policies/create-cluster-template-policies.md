@@ -7,4 +7,8 @@ sidebar_position: 0
 tags: ["cluster templates", "policies"]
 ---
 
-Test
+## Prerequisites
+
+- The <blank> feature flag enabled.
+
+- <blank> permissions

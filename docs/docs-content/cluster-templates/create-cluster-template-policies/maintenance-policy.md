@@ -7,4 +7,4 @@ sidebar_position: 10
 tags: ["cluster templates", "policies"]
 ---
 
-Test
+Maintenance policies are mandatory.
