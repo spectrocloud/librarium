@@ -48,7 +48,8 @@ but have not been verified.
 
 :::info
 
-Oracle Enterprise Linux (OEL) is supported for cold and warm migrations, but has not been officially verified.
+Oracle Enterprise Linux (OEL) is supported for cold and warm migrations, but has not been officially verified by Spectro
+Cloud.
 
 :::
 
