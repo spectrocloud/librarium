@@ -68,7 +68,7 @@ the [Palette eXtended Kubernetes](kubernetes.md) guide to learn more about PXK.
 ### PXK and Palette VerteX
 
 The PXK-E used in [Palette VerteX](../vertex/vertex.md) is compiled and linked with our
-[NIST-certified FIPS crypto module](../legal-licenses/compliance.md#fips-140-2). PXK-E is by default enabled with
+[NIST-certified FIPS crypto module](../legal-licenses/compliance.md#fips-140-3). PXK-E is by default enabled with
 [Ubuntu Pro](https://ubuntu.com/pro) with FIPS mode enabled. Additionally, the Operating System (OS) is hardened based
 on the NIST-800 standard. Refer to the
 [Build Edge Artifacts](../clusters/edge/edgeforge-workflow/palette-canvos/fips.md) guide to learn more on how to build

@@ -12,7 +12,7 @@ keywords: ["self-hosted", "vertex"]
 Federal Information Processing Standards (FIPS) is a series of standards developed by the National Institute of
 Standards and Technology (NIST) in the United States for computer security and encryption algorithms.
 
-FIPS 140-2 is a specific standard for security requirements for cryptographic modules. It outlines the criteria these
+FIPS 140-3 is a specific standard for security requirements for cryptographic modules. It outlines the criteria these
 modules must meet to ensure their security and integrity.
 
 ## FIPS Support in Clusters
@@ -47,7 +47,7 @@ are:
 
 All services in the management plane are FIPS compiled with Go using
 [BoringCrypto libraries](https://pkg.go.dev/crypto/internal/boring) and static linking. Refer to the
-[Spectro Cloud Cryptographic Module](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/4349)
+[Spectro Cloud Cryptographic Module](https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/5061)
 resource to learn about our NIST certificate.
 
 <br />

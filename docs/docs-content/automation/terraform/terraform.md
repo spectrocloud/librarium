@@ -7,8 +7,8 @@ sidebar_position: 0
 tags: ["terraform"]
 ---
 
-Palette supports the Infrastructure as Code (IaC) software tool, [Terraform](https://www.terraform.io/), to provide
-consistent CLI workflow support to multiple cloud providers.
+Palette supports the Infrastructure as Code (IaC) software tool, [Terraform](https://developer.hashicorp.com/terraform),
+to provide consistent CLI workflow support to multiple cloud providers.
 
 Terraform organizes cloud APIs into declarative configuration files, allowing users to define their infrastructure as
 code. Terraform validates configuration files and checks whether the execution plan for a configuration matches

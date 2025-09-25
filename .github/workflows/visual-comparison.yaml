@@ -61,7 +61,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Node.js Environment
         uses: actions/setup-node@v4
@@ -122,7 +122,7 @@ jobs:
         shardTotal: [4]
     steps:
       - name: Check out repository code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Node.js environment
         uses: actions/setup-node@v4
@@ -144,7 +144,7 @@ jobs:
         uses: Wandalen/wretry.action@v3
         with: 
           attempt_limit: 3
-          action: actions/download-artifact@v4
+          action: actions/download-artifact@v5
           with: |
             name: build
             path: build
@@ -170,7 +170,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Check out repository code
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
 
     - name: Setup Node.js environment
       uses: actions/setup-node@v4
@@ -186,7 +186,7 @@ jobs:
           attempt_delay: 60000 # 1 minute
     
     - name: Download blob reports from GitHub Actions Artifacts
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v5
       with:
         path: all-blob-reports
         pattern: blob-report-*
@@ -214,7 +214,7 @@ jobs:
     steps: 
 
     - name: Checkout GitHub Pages Branch
-      uses: actions/checkout@v4
+      uses: actions/checkout@v5
       with:
         ref: gh-pages  
 
@@ -225,7 +225,7 @@ jobs:
         git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
     - name: Download zipped HTML report
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v5
       with:
         name: report
         path: ${{ env.HTML_REPORT_URL_PATH }}

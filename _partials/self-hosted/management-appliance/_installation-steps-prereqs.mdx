@@ -7,7 +7,7 @@ partial_name: installation-steps-prereqs
 
 - Access to the [Artifact Studio](https://artifact-studio.spectrocloud.com/) to download the {props.iso} ISO.
 
-- A minimum of three nodes must be provisioned in advance for the Palette installation. We recommended the following
+- {props.edition} can be installed on a single node or on three nodes. For production environments, we recommend that three nodes be provisioned in advance for the Palette installation. We recommended the following
   resources for each node. Refer to the Palette <PaletteVertexUrlMapper edition={props.edition} text="Size Guidelines" palettePath="/install-palette#size-guidelines" vertexPath="/install-palette-vertex#size-guidelines"/> for additional sizing information.
 
   - 8 CPUs per node.
@@ -16,7 +16,9 @@ partial_name: installation-steps-prereqs
 
   - Two disks per node.
 
-    - The first disk must be at least 250 GB and is used for the ISO stack. You specify the device in the `user-data` file during the ISO creation process in the first few steps.
+    - The first disk must be at least 250 GB and is used for the {props.version} ISO stack. You specify the device in the `stylus_config.yaml` file during the initial Install {props.version} steps.
+    
+      If the device is not specified, the default value is `auto`. This means the installer selects the largest available drive, which may not be the desired behavior, especially in multi-drive environments.
 
     - The second disk must be at least 500 GB and is used for the storage pool. The default device selected is `/dev/sdb`. You can change the default device during the cluster creation steps in Local UI.
 
@@ -26,9 +28,7 @@ partial_name: installation-steps-prereqs
 
       :::
 
-  - We recommend at least two removable media connections to attach both the {props.iso} ISO and the user-data ISO. These can be physical or virtual connections depending on your infrastructure provider.
-
-    If your nodes only support a single removable media connection, you can still proceed by following the tips and additional steps mentioned in the Install {props.version} steps.
+  - At least one removable media connection must be available to attach the {props.iso} ISO. This can be a physical or virtual connection depending on your infrastructure provider.
 
 - The following network ports must be accessible on each node for Palette to operate successfully.
 
@@ -44,10 +44,65 @@ partial_name: installation-steps-prereqs
 
   :::warning
 
-  - The ISO is only supported on Unified Extensible Firmware Interface (UEFI) systems. Ensure you configure the nodes to boot from the ISO in UEFI mode.
-  - For VMware environments, [Secure Boot](https://techdocs.broadcom.com/us/en/vmware-cis/vsphere/vsphere/7-0/vsphere-virtual-machine-administration-guide-7-0/configuring-virtual-machine-optionsvm-admin/configuring-virtual-machine-boot-optionsvm-admin/enable-or-disable-uefi-secure-boot-for-a-virtual-machinevm-admin.html) is not supported. Ensure Secure Boot is disabled on the nodes before proceeding with the installation.
+  The ISO is only supported on Unified Extensible Firmware Interface (UEFI) systems. Ensure you configure the nodes to boot from the ISO in UEFI mode.
 
   :::
+
+- Palette Management Appliance supports Secure Boot for Dell servers with UEFI and Hewlett Packard Enterprise iLO5. 
+  Learn how to configure and install Secure Boot for Palette Management Appliance below.
+
+  <details>
+
+  <summary> How to install Secure Boot on Hewlett Packard Enterprise iLO 5 </summary>
+
+  Before you begin, ensure that you have iLO 5 access with privileges to launch the remote console and change BIOS settings. 
+  You also need the `MOK.der` certificate file on your local computer.
+  Skip to step 4 if you have already downloaded the certificate file.
+
+  1. Navigate to [Artifact Studio](https://artifact-studio.spectrocloud.com/).
+  2. Select the version corresponding to your {props.edition} installer. Then, select **Show Artifacts**. The artifact list appears.
+  3. **Download** the **MOK Key for Secure Boot** file.
+  4. Power on or reboot the server. When prompted during Power-On Self-Test (POST), press **F9** to enter **System Utilities**.
+  5. Select **System Configuration** and press **ENTER**.
+  6. Select **BIOS/Platform Configuration (RBSU)** > **Server Security** > **Secure Boot Settings** > **Advanced Secure Boot Options**.
+  7. Select **DB – Allowed Signatures Database** > **Enroll Signature**. If Secure Boot is currently enabled, the **Enroll Signature** option will be unavailable. Temporarily disable Secure Boot and repeat the process.
+  8. Drag the `MOK.der` file from your desktop onto the iLO Remote Console window. iLO mounts it as a virtual USB device automatically.
+  9. Confirm any prompts.
+  10. Verify that the new entry appears under **DB – Allowed Signatures Database** > **View Signatures**.
+  11. Press **ESC** to exit the menus until the **Save and Exit** option is available.
+  12. Save your changes. Exit the menu and reboot the server.
+
+  </details>
+
+  <details>
+
+  <summary> How to install Secure Boot on Dell servers with UEFI </summary>
+
+  Before you begin, you need the `MOK.der` certificate file on your local computer.
+  Skip to step 4 if you have already downloaded the certificate file.
+  
+  1. Navigate to [Artifact Studio](https://artifact-studio.spectrocloud.com/).
+  2. Select the version corresponding to your {props.edition} installer. Then, select **Show Artifacts**. The artifact list appears.
+  3. **Download** the **MOK Key for Secure Boot** file.
+  4. Power on the server. Execute the following command to create a virtual CD/DVD drive containing an ISO file with the `MOK.der` certificate. Alternatively, you can save the file to a FAT32-formatted USB drive.
+
+     ```
+     mkisofs -output key.iso -volid cidata -joliet -rock MOK.der
+     ```
+
+  5. Reboot the server. When the Dell logo appears, press **F2**. The **System Setup** menu opens.
+  6. Select **System BIOS** > **Boot Settings**.
+  7. Ensure that the **Boot Mode** is set to **UEFI**.
+  8. Press **ESC** to return to **Boot Settings**.
+  9. Select **System Security** > **Secure Boot Settings**.
+  10. Toggle **Secure Boot** to **Enabled** and **Secure Boot Policy** to **Custom**.
+  11. Select **Secure Boot Custom Policy Settings** > **Authorized Signature Database (db)**.
+  12. Select **Import New Entry**. Then, select the virtual CD/DVD drive or USB drive containing the `MOK.der` file.
+  13. Save your changes. Press **ESC** to return to **Authorized Signature Database (db)**.
+  14. Select **View Entries**. The `MOK.der` file shows in the database as **DRBD Module Signing**.
+  15. Save your changes. Exit the menu and reboot the server.
+
+  </details>
 
 - You can choose to use either an internal Zot registry that comes with Palette or an external registry of your choice. If using an external registry, you will need to provide the following information during the Palette installation process.
 

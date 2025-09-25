@@ -20,6 +20,10 @@ The `pcg` command exposes the following subcommand.
 
 - `install` - Install a PCG through an interactive wizard. A container runtime is required to install a PCG cluster.
 
+## Limitations
+
+- <PartialsComponent category="palette-cli" name="credentials-breaking-change" />
+
 ## Prerequisites
 
 - Docker is required to install a PCG cluster. Refer to the [Docker](https://docs.docker.com/get-docker/) documentation
@@ -43,6 +47,7 @@ by the `install` subcommand.
 | `-k`           | `--encryption-passphrase` | Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable `PALETTE_ENCRYPTION_PASSWORD`. Refer to the [Encryption](./../palette-cli.md#encryption) section for more information on encryption. | string   |
 | `-o`           | `--config-only`           | Generate configuration file only. This command will not proceed with installation.                                                                                                                                                                                                                                                                                          | boolean  |
 | `-h`           | `--help`                  | Help for the install command.                                                                                                                                                                                                                                                                                                                                               | boolean  |
+| -              | `--ubuntu-pro-token`      | The Canonical subscription token for [Ubuntu Pro](https://ubuntu.com/pro). An Ubuntu Pro subscription is required, and Ubuntu Pro must be enabled.                                                                                                                                                                                                                          | string   |
 | `-p`           | `--update-passwords`      | Use to update the PCG password. This does not proceed with installation. The `--config-file` flag must be provided. Default: false.                                                                                                                                                                                                                                         | boolean  |
 
 :::warning

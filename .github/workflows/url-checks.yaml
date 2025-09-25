@@ -20,7 +20,7 @@ jobs:
     steps:
       - id: checkout
         name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -36,8 +36,8 @@ jobs:
       - name: URL Rate Limit Checker
         run: make verify-rate-limited-links-ci
 
-      - name: Check for Broken Github Links
-        run: make verify-github-links
+      - name: Check for Broken Developer Portal Links
+        run: make verify-developer-portal-links
         env:
           ACCESS_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
   

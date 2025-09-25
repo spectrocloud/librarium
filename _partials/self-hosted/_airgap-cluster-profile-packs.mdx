@@ -3,88 +3,434 @@ partial_category: self-hosted
 partial_name: airgap-cluster-profile-packs
 ---
 
-| **File Name**                                                  | **Download URL**                                                                                                    |
-| -------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| `airgap-pack-argo-cd-8.0.1.bin`                                | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-argo-cd-8.0.1.bin                                |
-| `airgap-pack-argo-cd-7.9.0.bin`                                | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-argo-cd-7.9.0.bin                                |
-| `airgap-pack-aws-alb-2.13.3.bin`                               | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-aws-alb-2.13.3.bin                               |
-| `airgap-pack-aws-alb-2.13.2.bin`                               | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-aws-alb-2.13.2.bin                               |
-| `airgap-pack-aws-cluster-autoscaler-1.33.0.bin`                | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-aws-cluster-autoscaler-1.33.0.bin                |
-| `airgap-pack-aws-efs-2.1.9.bin`                                | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-aws-efs-2.1.9.bin                                |
-| `airgap-pack-aws-efs-2.1.7.bin`                                | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-aws-efs-2.1.7.bin                                |
-| `airgap-pack-cni-calico-3.30.2.bin`                            | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-cni-calico-3.30.2.bin                            |
-| `airgap-pack-cni-calico-azure-3.30.2.bin`                      | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-cni-calico-azure-3.30.2.bin                      |
-| `airgap-pack-cni-cilium-canonical-1.16.3.bin`                  | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-cni-cilium-canonical-1.16.3.bin                  |
-| `airgap-pack-cni-cilium-oss-1.17.4.bin`                        | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-cni-cilium-oss-1.17.4.bin                        |
-| `airgap-pack-cni-cilium-oss-1.16.10.bin`                       | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-cni-cilium-oss-1.16.10.bin                       |
-| `airgap-pack-cni-flannel-0.27.0.bin`                           | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-cni-flannel-0.27.0.bin                           |
-| `airgap-pack-cni-flannel-0.26.7.bin`                           | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-cni-flannel-0.26.7.bin                           |
-| `airgap-pack-csi-aws-ebs-1.46.0.bin`                           | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-aws-ebs-1.46.0.bin                           |
-| `airgap-pack-csi-aws-ebs-1.43.0.bin`                           | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-aws-ebs-1.43.0.bin                           |
-| `airgap-pack-csi-aws-efs-2.1.9.bin`                            | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-aws-efs-2.1.9.bin                            |
-| `airgap-pack-csi-aws-efs-2.1.7.bin`                            | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-aws-efs-2.1.7.bin                            |
-| `airgap-pack-csi-azure-1.33.2.bin`                             | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-azure-1.33.2.bin                             |
-| `airgap-pack-csi-longhorn-1.9.0.bin`                           | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-longhorn-1.9.0.bin                           |
-| `airgap-pack-csi-longhorn-1.8.1.bin`                           | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-longhorn-1.8.1.bin                           |
-| `airgap-pack-csi-longhorn-addon-1.9.0.bin`                     | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-longhorn-addon-1.9.0.bin                     |
-| `airgap-pack-csi-longhorn-addon-1.8.1.bin`                     | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-longhorn-addon-1.8.1.bin                     |
-| `airgap-pack-csi-vsphere-csi-3.5.0.bin`                        | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-vsphere-csi-3.5.0.bin                        |
-| `airgap-pack-edge-canonical-1.33.2.bin`                        | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-canonical-1.33.2.bin                        |
-| `airgap-pack-edge-canonical-1.32.6.bin`                        | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-canonical-1.32.6.bin                        |
-| `airgap-pack-edge-k3s-1.33.3.bin`                              | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.33.3.bin                              |
-| `airgap-pack-edge-k3s-1.33.1.bin`                              | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.33.1.bin                              |
-| `airgap-pack-edge-k3s-1.32.6.bin`                              | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.32.6.bin                              |
-| `airgap-pack-edge-k3s-1.32.4.bin`                              | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.32.4.bin                              |
-| `airgap-pack-edge-k3s-1.31.10.bin`                             | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.31.10.bin                             |
-| `airgap-pack-edge-k3s-1.31.8.bin`                              | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.31.8.bin                              |
-| `airgap-pack-edge-k3s-1.30.14.bin`                             | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.30.14.bin                             |
-| `airgap-pack-edge-k3s-1.30.12.bin`                             | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.30.12.bin                             |
-| `airgap-pack-edge-k8s-1.33.3.bin`                              | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.33.3.bin                              |
-| `airgap-pack-edge-k8s-1.33.1.bin`                              | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.33.1.bin                              |
-| `airgap-pack-edge-k8s-1.32.6.bin`                              | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.32.6.bin                              |
-| `airgap-pack-edge-k8s-1.32.4.bin`                              | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.32.4.bin                              |
-| `airgap-pack-edge-k8s-1.31.10.bin`                             | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.31.10.bin                             |
-| `airgap-pack-edge-k8s-1.31.8.bin`                              | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.31.8.bin                              |
-| `airgap-pack-edge-k8s-1.30.14.bin`                             | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.30.14.bin                             |
-| `airgap-pack-edge-k8s-1.30.12.bin`                             | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.30.12.bin                             |
-| `airgap-pack-edge-rke2-1.33.3.bin`                             | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.33.3.bin                             |
-| `airgap-pack-edge-rke2-1.33.1.bin`                             | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.33.1.bin                             |
-| `airgap-pack-edge-rke2-1.32.6.bin`                             | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.32.6.bin                             |
-| `airgap-pack-edge-rke2-1.32.4.bin`                             | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.32.4.bin                             |
-| `airgap-pack-edge-rke2-1.31.10.bin`                            | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.31.10.bin                            |
-| `airgap-pack-edge-rke2-1.31.8.bin`                             | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.31.8.bin                             |
-| `airgap-pack-edge-rke2-1.30.14.bin`                            | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.30.14.bin                            |
-| `airgap-pack-edge-rke2-1.30.12.bin`                            | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.30.12.bin                            |
-| `airgap-pack-external-dns-0.18.0.bin`                          | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-external-dns-0.18.0.bin                          |
-| `airgap-pack-external-dns-0.16.1.bin`                          | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-external-dns-0.16.1.bin                          |
-| `airgap-pack-external-secrets-operator-0.17.0.bin`             | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-external-secrets-operator-0.17.0.bin             |
-| `airgap-pack-flux-cd-2.16.2.bin`                               | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-flux-cd-2.16.2.bin                               |
-| `airgap-pack-istio-1.26.0.bin`                                 | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-istio-1.26.0.bin                                 |
-| `airgap-pack-istio-1.25.1.bin`                                 | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-istio-1.25.1.bin                                 |
-| `airgap-pack-kong-2.48.0.bin`                                  | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kong-2.48.0.bin                                  |
-| `airgap-pack-kubernetes-1.32.6.bin`                            | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.32.6.bin                            |
-| `airgap-pack-kubernetes-1.32.4.bin`                            | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.32.4.bin                            |
-| `airgap-pack-kubernetes-1.31.10.bin`                           | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.31.10.bin                           |
-| `airgap-pack-kubernetes-1.31.8.bin`                            | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.31.8.bin                            |
-| `airgap-pack-kubernetes-1.30.14.bin`                           | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.30.14.bin                           |
-| `airgap-pack-kubernetes-1.30.12.bin`                           | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.30.12.bin                           |
-| `airgap-pack-kubernetes-ck8s-1.32.bin`                         | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-ck8s-1.32.bin                         |
-| `airgap-pack-kubernetes-rke2-1.32.6-rke2r1-build20250618.bin`  | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.32.6-rke2r1-build20250618.bin  |
-| `airgap-pack-kubernetes-rke2-1.32.4-rke2r1-build20250423.bin`  | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.32.4-rke2r1-build20250423.bin  |
-| `airgap-pack-kubernetes-rke2-1.31.10-rke2r1-build20250618.bin` | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.31.10-rke2r1-build20250618.bin |
-| `airgap-pack-kubernetes-rke2-1.31.8-rke2r1-build20250423.bin`  | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.31.8-rke2r1-build20250423.bin  |
-| `airgap-pack-kubernetes-rke2-1.30.14-rke2r1-build20250618.bin` | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.30.14-rke2r1-build20250618.bin |
-| `airgap-pack-kubernetes-rke2-1.30.12-rke2r1-build20250423.bin` | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.30.12-rke2r1-build20250423.bin |
-| `airgap-pack-lb-metallb-helm-0.15.2.bin`                       | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-lb-metallb-helm-0.15.2.bin                       |
-| `airgap-pack-multus-cni-2.2.18.bin`                            | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-multus-cni-2.2.18.bin                            |
-| `airgap-pack-nginx-1.13.0.bin`                                 | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-nginx-1.13.0.bin                                 |
-| `airgap-pack-nginx-1.12.2.bin`                                 | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-nginx-1.12.2.bin                                 |
-| `airgap-pack-open-policy-agent-3.19.2.bin`                     | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-open-policy-agent-3.19.2.bin                     |
-| `airgap-pack-open-policy-agent-3.18.3.bin`                     | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-open-policy-agent-3.18.3.bin                     |
-| `airgap-pack-piraeus-operator-2.8.1.bin`                       | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-piraeus-operator-2.8.1.bin                       |
-| `airgap-pack-piraeus-operator-addon-2.8.1.bin`                 | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-piraeus-operator-addon-2.8.1.bin                 |
-| `airgap-pack-postgresql-1.22.1.bin`                            | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-postgresql-1.22.1.bin                            |
-| `airgap-pack-reloader-1.4.2.bin`                               | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-reloader-1.4.2.bin                               |
-| `airgap-pack-tetragon-1.4.1.bin`                               | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-tetragon-1.4.1.bin                               |
-| `airgap-pack-vault-0.30.0.bin`                                 | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-vault-0.30.0.bin                                 |
-| `airgap-pack-vmo-ns-mgmt-1.0.3.bin`                            | https://software-private.spectrocloud.com/airgap/packs/airgap-pack-vmo-ns-mgmt-1.0.3.bin                            |
+| **Pack Name** | **Pack Version** | **File Name and Download Link** | **Palette VerteX Version** |
+| --- | --- | --- | --- |
+| `argo-cd` | 8.3.0 | [`airgap-pack-argo-cd-8.3.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-argo-cd-8.3.0.bin) | 4.7.20 |
+| `argo-cd` | 8.1.4 | [`airgap-pack-argo-cd-8.1.4.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-argo-cd-8.1.4.bin) | 4.7.20 |
+| `argo-cd` | 8.0.1 | [`airgap-pack-argo-cd-8.0.1.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-argo-cd-8.0.1.bin) | 4.7.3 |
+| `argo-cd` | 7.9.0 | [`airgap-pack-argo-cd-7.9.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-argo-cd-7.9.0.bin) | 4.7.3 |
+| `argo-cd` | 7.8.8 | [`airgap-pack-argo-cd-7.8.8.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-argo-cd-7.8.8.bin) | 4.6.23 |
+| `aws-alb` | 2.13.4 | [`airgap-pack-aws-alb-2.13.4.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-aws-alb-2.13.4.bin) | 4.7.20 |
+| `aws-alb` | 2.13.3 | [`airgap-pack-aws-alb-2.13.3.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-aws-alb-2.13.3.bin) | 4.7.13 |
+| `aws-alb` | 2.13.2 | [`airgap-pack-aws-alb-2.13.2.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-aws-alb-2.13.2.bin) | 4.7.3 |
+| `aws-cluster-autoscaler` | 1.33.0 | [`airgap-pack-aws-cluster-autoscaler-1.33.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-aws-cluster-autoscaler-1.33.0.bin) | 4.7.13 |
+| `aws-cluster-autoscaler` | 1.32.0 | [`airgap-pack-aws-cluster-autoscaler-1.32.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-aws-cluster-autoscaler-1.32.0.bin) | 4.6.23 |
+| `aws-cluster-autoscaler` | 1.31.0 | [`airgap-pack-aws-cluster-autoscaler-1.31.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-aws-cluster-autoscaler-1.31.0.bin) | 4.6.6 |
+| `aws-efs` | 2.1.11 | [`airgap-pack-aws-efs-2.1.11.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-aws-efs-2.1.11.bin) | 4.7.20 |
+| `aws-efs` | 2.1.10 | [`airgap-pack-aws-efs-2.1.10.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-aws-efs-2.1.10.bin) | 4.7.20 |
+| `aws-efs` | 2.1.9 | [`airgap-pack-aws-efs-2.1.9.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-aws-efs-2.1.9.bin) | 4.7.13 |
+| `aws-efs` | 2.1.7 | [`airgap-pack-aws-efs-2.1.7.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-aws-efs-2.1.7.bin) | 4.7.3 |
+| `aws-efs` | 2.1.6 | [`airgap-pack-aws-efs-2.1.6.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-aws-efs-2.1.6.bin) | 4.6.23 |
+| `aws-efs` | 2.1.4 | [`airgap-pack-aws-efs-2.1.4.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-aws-efs-2.1.4.bin) | 4.6.6 |
+| `byoi-agent-mode` | 1.0.0 | [`airgap-pack-byoi-agent-mode-1.0.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-byoi-agent-mode-1.0.0.bin) | 4.5.3 |
+| `calico-network-policy` | 3.30.2 | [`airgap-pack-calico-network-policy-3.30.2.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-calico-network-policy-3.30.2.bin) | 4.7.20 |
+| `cni-aws-vpc-eks-helm` | 1.20.1 | [`airgap-pack-cni-aws-vpc-eks-helm-1.20.1.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-cni-aws-vpc-eks-helm-1.20.1.bin) | 4.7.20 |
+| `cni-calico` | 3.30.2-rev2 | [`airgap-pack-cni-calico-3.30.2-rev2.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-cni-calico-3.30.2-rev2.bin) | 4.7.20 |
+| `cni-calico` | 3.30.2 | [`airgap-pack-cni-calico-3.30.2.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-cni-calico-3.30.2.bin) | 4.7.13 |
+| `cni-calico` | 3.29.3 | [`airgap-pack-cni-calico-3.29.3.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-cni-calico-3.29.3.bin) | 4.6.33 |
+| `cni-calico` | 3.29.1 | [`airgap-pack-cni-calico-3.29.1.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-cni-calico-3.29.1.bin) | 4.5.21 |
+| `cni-calico` | 3.29.0 | [`airgap-pack-cni-calico-3.29.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-cni-calico-3.29.0.bin) | 4.5.15 |
+| `cni-calico` | 3.28.1 | [`airgap-pack-cni-calico-3.28.1.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-cni-calico-3.28.1.bin) | 4.4.18 |
+| `cni-calico` | 3.28.0 | [`airgap-pack-cni-calico-3.28.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-cni-calico-3.28.0.bin) | 4.4.11 |
+| `cni-calico` | 3.27.2 | [`airgap-pack-cni-calico-3.27.2.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-cni-calico-3.27.2.bin) | 4.4.6 |
+| `cni-calico` | 3.27.0 | [`airgap-pack-cni-calico-3.27.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-cni-calico-3.27.0.bin) | 4.3.6 |
+| `cni-calico-azure` | 3.30.2 | [`airgap-pack-cni-calico-azure-3.30.2.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-cni-calico-azure-3.30.2.bin) | 4.7.13  |
+| `cni-calico-azure` | 3.29.3 | [`airgap-pack-cni-calico-azure-3.29.3.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-cni-calico-azure-3.29.3.bin) | 4.6.33  |
+| `cni-calico-azure` | 3.29.0 | [`airgap-pack-cni-calico-azure-3.29.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-cni-calico-azure-3.29.0.bin) | 4.5.15  |
+| `cni-calico-azure` | 3.28.1 | [`airgap-pack-cni-calico-azure-3.28.1.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-cni-calico-azure-3.28.1.bin) | 4.4.18  |
+| `cni-calico-azure` | 3.28.0 | [`airgap-pack-cni-calico-azure-3.28.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-cni-calico-azure-3.28.0.bin) | 4.4.11  |
+| `cni-calico-azure` | 3.27.0 | [`airgap-pack-cni-calico-azure-3.27.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-cni-calico-azure-3.27.0.bin) | 4.3.6  |
+| `cni-cilium-canonical` | 1.16.3 | [`airgap-pack-cni-cilium-canonical-1.16.3.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-cni-cilium-canonical-1.16.3.bin) | 4.7.13 |
+| `cni-cilium-oss` | 1.17.6 | [`airgap-pack-cni-cilium-oss-1.17.6.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-cni-cilium-oss-1.17.6.bin) | 4.7.20 |
+| `cni-cilium-oss` | 1.17.4 | [`airgap-pack-cni-cilium-oss-1.17.4.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-cni-cilium-oss-1.17.4.bin) | 4.7.3 |
+| `cni-cilium-oss` | 1.17.1 | [`airgap-pack-cni-cilium-oss-1.17.1.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-cni-cilium-oss-1.17.1.bin) | 4.6.23 |
+| `cni-cilium-oss` | 1.16.10 | [`airgap-pack-cni-cilium-oss-1.16.10.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-cni-cilium-oss-1.16.10.bin) | 4.7.3 |
+| `cni-cilium-oss` | 1.16.3 | [`airgap-pack-cni-cilium-oss-1.16.3.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-cni-cilium-oss-1.16.3.bin) | 4.5.15 |
+| `cni-cilium-oss` | 1.16.0 | [`airgap-pack-cni-cilium-oss-1.16.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-cni-cilium-oss-1.16.0.bin) | 4.4.18 |
+| `cni-cilium-oss` | 1.15.7 | [`airgap-pack-cni-cilium-oss-1.15.7.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-cni-cilium-oss-1.15.7.bin) | 4.4.14 |
+| `cni-cilium-oss` | 1.15.3 | [`airgap-pack-cni-cilium-oss-1.15.3.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-cni-cilium-oss-1.15.3.bin) | 4.4.6 |
+| `cni-cilium-oss` | 1.15.1 | [`airgap-pack-cni-cilium-oss-1.15.1.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-cni-cilium-oss-1.15.1.bin) | 4.3.6 |
+| `cni-cilium-oss` | 1.14.7 | [`airgap-pack-cni-cilium-oss-1.14.7.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-cni-cilium-oss-1.14.7.bin) | 4.3.6 |
+| `cni-flannel` | 0.27.2 | [`airgap-pack-cni-flannel-0.27.2.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-cni-flannel-0.27.2.bin) | 4.7.20 |
+| `cni-flannel` | 0.27.0 | [`airgap-pack-cni-flannel-0.27.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-cni-flannel-0.27.0.bin) | 4.7.3 |
+| `cni-flannel` | 0.26.7 | [`airgap-pack-cni-flannel-0.26.7.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-cni-flannel-0.26.7.bin) | 4.7.3 |
+| `cni-flannel` | 0.26.1 | [`airgap-pack-cni-flannel-0.26.1.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-cni-flannel-0.26.1.bin) | 4.5.15 |
+| `cni-flannel` | 0.25.5 | [`airgap-pack-cni-flannel-0.25.5.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-cni-flannel-0.25.5.bin) | 4.4.18 |
+| `cni-flannel` | 0.24.3 | [`airgap-pack-cni-flannel-0.24.3.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-cni-flannel-0.24.3.bin) | 4.4.6 |
+| `csi-aws-ebs` | 1.46.0 | [`airgap-pack-csi-aws-ebs-1.46.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-aws-ebs-1.46.0.bin) | 4.7.13 | 
+| `csi-aws-ebs` | 1.43.0 | [`airgap-pack-csi-aws-ebs-1.43.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-aws-ebs-1.43.0.bin) | 4.7.3 | 
+| `csi-aws-ebs` | 1.41.0 | [`airgap-pack-csi-aws-ebs-1.41.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-aws-ebs-1.41.0.bin) | 4.6.23 | 
+| `csi-aws-ebs` | 1.35.0 | [`airgap-pack-csi-aws-ebs-1.35.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-aws-ebs-1.35.0.bin) | 4.5.20 | 
+| `csi-aws-ebs` | 1.26.1 | [`airgap-pack-csi-aws-ebs-1.26.1.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-aws-ebs-1.26.1.bin) | 4.3.6 | 
+| `csi-aws-efs` | 2.1.11 | [`airgap-pack-csi-aws-efs-2.1.11.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-aws-efs-2.1.11.bin) | 4.7.20 |
+| `csi-aws-efs` | 2.1.10 | [`airgap-pack-csi-aws-efs-2.1.10.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-aws-efs-2.1.10.bin) | 4.7.20 |
+| `csi-aws-efs` | 2.1.9 | [`airgap-pack-csi-aws-efs-2.1.9.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-aws-efs-2.1.9.bin) | 4.7.13 |
+| `csi-aws-efs` | 2.1.7 | [`airgap-pack-csi-aws-efs-2.1.7.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-aws-efs-2.1.7.bin) | 4.7.3 |
+| `csi-azure` | 1.33.2 | [`airgap-pack-csi-azure-1.33.2.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-azure-1.33.2.bin) | 4.7.13 |
+| `csi-azure` | 1.31.2-rev2 | [`airgap-pack-csi-azure-1.31.2-rev2.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-azure-1.31.2-rev2.bin) | 4.7.20 |
+| `csi-azure` | 1.31.2 | [`airgap-pack-csi-azure-1.31.2.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-azure-1.31.2.bin) | 4.6.6 |
+| `csi-local-path-provisioner` | 0.0.30 | [`airgap-pack-csi-local-path-provisioner-0.0.30.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-local-path-provisioner-0.0.30.bin) | 4.5.21 |
+| `csi-local-path-provisioner` | 0.0.25 | [`airgap-pack-csi-local-path-provisioner-0.0.25.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-local-path-provisioner-0.0.25.bin) | 4.3.6 |
+| `csi-local-path-provisioner-addon` | 0.0.30 | [`airgap-pack-csi-local-path-provisioner-addon-0.0.30.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-local-path-provisioner-addon-0.0.30.bin) | 4.5.21 |
+| `csi-longhorn` | 1.9.0 | [`airgap-pack-csi-longhorn-1.9.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-longhorn-1.9.0.bin) | 4.7.13 |
+| `csi-longhorn` | 1.8.1 | [`airgap-pack-csi-longhorn-1.8.1.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-longhorn-1.8.1.bin) | 4.7.3 |
+| `csi-longhorn` | 1.8.0 | [`airgap-pack-csi-longhorn-1.8.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-longhorn-1.8.0.bin) | 4.6.12 |
+| `csi-longhorn` | 1.6.0 | [`airgap-pack-csi-longhorn-1.6.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-longhorn-1.6.0.bin) | 4.3.6 |
+| `csi-longhorn-addon` | 1.9.0 | [`airgap-pack-csi-longhorn-addon-1.9.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-longhorn-addon-1.9.0.bin) | 4.7.13 |
+| `csi-longhorn-addon` | 1.8.1 | [`airgap-pack-csi-longhorn-addon-1.8.1.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-longhorn-addon-1.8.1.bin) | 4.7.3 |
+| `csi-longhorn-addon` | 1.8.0 | [`airgap-pack-csi-longhorn-addon-1.8.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-longhorn-addon-1.8.0.bin) | 4.6.12 |
+| `csi-longhorn-addon` | 1.6.0 | [`airgap-pack-csi-longhorn-addon-1.6.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-longhorn-addon-1.6.0.bin) | 4.3.6 |
+| `csi-portworx-generic` | 3.2.2 | [`airgap-pack-csi-portworx-generic-3.2.2.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-portworx-generic-3.2.2.bin) | 4.6.23 |
+| `csi-portworx-generic` | 3.2.0 | [`airgap-pack-csi-portworx-generic-3.2.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-portworx-generic-3.2.0.bin) | 4.5.15 |
+| `csi-portworx-generic` | 3.0.4 | [`airgap-pack-csi-portworx-generic-3.0.4.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-portworx-generic-3.0.4.bin) | 4.4.6 |
+| `csi-rook-ceph` | 1.18.0 | [`airgap-pack-csi-rook-ceph-1.18.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-rook-ceph-1.18.0.bin) | 4.7.20 |
+| `csi-rook-ceph` | 1.17.7 | [`airgap-pack-csi-rook-ceph-1.17.7.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-rook-ceph-1.17.7.bin) | 4.7.20 |
+| `csi-rook-ceph` | 1.15.6 | [`airgap-pack-csi-rook-ceph-1.15.6.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-rook-ceph-1.15.6.bin) | 4.5.21 |
+| `csi-rook-ceph` | 1.15.3 | [`airgap-pack-csi-rook-ceph-1.15.3.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-rook-ceph-1.15.3.bin) | 4.5.8 |
+| `csi-rook-ceph` | 1.13.1 | [`airgap-pack-csi-rook-ceph-1.13.1.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-rook-ceph-1.13.1.bin) | 4.3.6 |
+| `csi-rook-ceph-addon` | 1.18.0 | [`airgap-pack-csi-rook-ceph-addon-1.18.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-rook-ceph-addon-1.18.0.bin) | 4.7.20 |
+| `csi-rook-ceph-addon` | 1.17.7 | [`airgap-pack-csi-rook-ceph-addon-1.17.7.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-rook-ceph-addon-1.17.7.bin) | 4.7.20 |
+| `csi-rook-ceph-addon` | 1.15.6 | [`airgap-pack-csi-rook-ceph-addon-1.15.6.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-rook-ceph-addon-1.15.6.bin) | 4.5.21 |
+| `csi-rook-ceph-addon` | 1.15.3 | [`airgap-pack-csi-rook-ceph-addon-1.15.3.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-rook-ceph-addon-1.15.3.bin) | 4.5.8 |
+| `csi-rook-ceph-addon` | 1.13.1 | [`airgap-pack-csi-rook-ceph-addon-1.13.1.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-rook-ceph-addon-1.13.1.bin) | 4.3.6 |
+| `csi-rook-ceph-helm` | 1.16.3 | [`airgap-pack-csi-rook-ceph-helm-1.16.3.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-rook-ceph-helm-1.16.3.bin) | 4.6.12 |
+| `csi-rook-ceph-helm` | 1.14.9 | [`airgap-pack-csi-rook-ceph-helm-1.14.9.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-rook-ceph-helm-1.14.9.bin) | 4.5.3 |
+| `csi-rook-ceph-helm-addon` | 1.16.3 | [`airgap-pack-csi-rook-ceph-helm-addon-1.16.3.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-rook-ceph-helm-addon-1.16.3.bin) | 4.6.12 |
+| `csi-rook-ceph-helm-addon` | 1.14.9 | [`airgap-pack-csi-rook-ceph-helm-addon-1.14.9.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-rook-ceph-helm-addon-1.14.9.bin) | 4.5.3 |
+| `csi-vsphere-csi` | 3.5.0 | [`airgap-pack-csi-vsphere-csi-3.5.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-vsphere-csi-3.5.0.bin) | 4.7.13 |
+| `csi-vsphere-csi` | 3.3.1 | [`airgap-pack-csi-vsphere-csi-3.3.1.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-vsphere-csi-3.3.1.bin) | 4.4.18 |
+| `csi-vsphere-csi` | 3.3.0 | [`airgap-pack-csi-vsphere-csi-3.3.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-vsphere-csi-3.3.0.bin) | 4.4.14 |
+| `csi-vsphere-csi` | 3.2.0 | [`airgap-pack-csi-vsphere-csi-3.2.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-vsphere-csi-3.2.0.bin) | 4.4.11 |
+| `csi-vsphere-csi` | 3.1.2 | [`airgap-pack-csi-vsphere-csi-3.1.2.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-vsphere-csi-3.1.2.bin) | 4.3.6 |
+| `csi-vsphere-csi` | 3.1.0 | [`airgap-pack-csi-vsphere-csi-3.1.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-csi-vsphere-csi-3.1.0.bin) | 4.3.6 |
+| `custom_os` | 1.0.0 | [`airgap-pack-custom_os-1.0.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-custom_os-1.0.0.bin) | 4.3.6 |
+| `custom-cni` | 1.0.0 | [`airgap-pack-custom-cni-1.0.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-custom-cni-1.0.0.bin) | 4.5.3 |
+| `custom-csi` | 1.0.0 | [`airgap-pack-custom-csi-1.0.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-custom-csi-1.0.0.bin) | 4.5.3 |
+| `dex` | 2.42.0 | [`airgap-pack-dex-2.42.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-dex-2.42.0.bin) | 4.7.20 |
+| `edge-canonical` | 1.33.2 | [`airgap-pack-edge-canonical-1.33.2.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-canonical-1.33.2.bin) | 4.7.13 |
+| `edge-canonical` | 1.32.6 | [`airgap-pack-edge-canonical-1.32.6.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-canonical-1.32.6.bin) | 4.7.13 |
+| `edge-canonical` | 1.32.3 | [`airgap-pack-edge-canonical-1.32.3.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-canonical-1.32.3.bin) | 4.6.33 |
+| `edge-k3s` | 1.33.3 | [`airgap-pack-edge-k3s-1.33.3.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.33.3.bin) | 4.7.13 |
+| `edge-k3s` | 1.33.1 | [`airgap-pack-edge-k3s-1.33.1.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.33.1.bin) | 4.7.3 |
+| `edge-k3s` | 1.32.6 | [`airgap-pack-edge-k3s-1.32.6.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.32.6.bin) | 4.7.13 |
+| `edge-k3s` | 1.32.4 | [`airgap-pack-edge-k3s-1.32.4.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.32.4.bin) | 4.7.3 |
+| `edge-k3s` | 1.32.3 | [`airgap-pack-edge-k3s-1.32.3.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.32.3.bin) | 4.6.33 |
+| `edge-k3s` | 1.32.2 | [`airgap-pack-edge-k3s-1.32.2.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.32.2.bin) | 4.6.23 |
+| `edge-k3s` | 1.32.1 | [`airgap-pack-edge-k3s-1.32.1.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.32.1.bin) | 4.6.6 |
+| `edge-k3s` | 1.31.10 | [`airgap-pack-edge-k3s-1.31.10.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.31.10.bin) | 4.7.13 |
+| `edge-k3s` | 1.31.8 | [`airgap-pack-edge-k3s-1.31.8.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.31.8.bin) | 4.7.3 |
+| `edge-k3s` | 1.31.6 | [`airgap-pack-edge-k3s-1.31.6.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.31.6.bin) | 4.6.23 |
+| `edge-k3s` | 1.31.5 | [`airgap-pack-edge-k3s-1.31.5.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.31.5.bin) | 4.6.6 |
+| `edge-k3s` | 1.31.4 | [`airgap-pack-edge-k3s-1.31.4.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.31.4.bin) | 4.5.21 |
+| `edge-k3s` | 1.31.1 | [`airgap-pack-edge-k3s-1.31.1.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.31.1.bin) | 4.5.15 |
+| `edge-k3s` | 1.30.14 | [`airgap-pack-edge-k3s-1.30.14.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.30.14.bin) | 4.7.13 |
+| `edge-k3s` | 1.30.12 | [`airgap-pack-edge-k3s-1.30.12.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.30.12.bin) | 4.7.3 |
+| `edge-k3s` | 1.30.10 | [`airgap-pack-edge-k3s-1.30.10.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.30.10.bin) | 4.6.23 |
+| `edge-k3s` | 1.30.9 | [`airgap-pack-edge-k3s-1.30.9.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.30.9.bin) | 4.6.6 |
+| `edge-k3s` | 1.30.8 | [`airgap-pack-edge-k3s-1.30.8.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.30.8.bin) | 4.5.21 |
+| `edge-k3s` | 1.30.6 | [`airgap-pack-edge-k3s-1.30.6.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.30.6.bin) | 4.5.15 |
+| `edge-k3s` | 1.30.5 | [`airgap-pack-edge-k3s-1.30.5.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.30.5.bin) | 4.5.3 |
+| `edge-k3s` | 1.30.4 | [`airgap-pack-edge-k3s-1.30.4.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.30.4.bin) | 4.4.18 |
+| `edge-k3s` | 1.29.14 | [`airgap-pack-edge-k3s-1.29.14.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.29.14.bin) | 4.6.23 |
+| `edge-k3s` | 1.29.13 | [`airgap-pack-edge-k3s-1.29.13.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.29.13.bin) | 4.6.6 |
+| `edge-k3s` | 1.29.12 | [`airgap-pack-edge-k3s-1.29.12.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.29.12.bin) | 4.5.21 |
+| `edge-k3s` | 1.29.10 | [`airgap-pack-edge-k3s-1.29.10.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.29.10.bin) | 4.5.15 |
+| `edge-k3s` | 1.29.9 | [`airgap-pack-edge-k3s-1.29.9.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.29.9.bin) | 4.5.3 |
+| `edge-k3s` | 1.29.8 | [`airgap-pack-edge-k3s-1.29.8.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.29.8.bin) | 4.4.18 |
+| `edge-k3s` | 1.29.6 | [`airgap-pack-edge-k3s-1.29.6.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.29.6.bin) | 4.4.11 |
+| `edge-k3s` | 1.29.2 | [`airgap-pack-edge-k3s-1.29.2.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.29.2.bin) | 4.3.6 |
+| `edge-k3s` | 1.29.0 | [`airgap-pack-edge-k3s-1.29.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.29.0.bin) | 4.3.6 |
+| `edge-k3s` | 1.28.15 | [`airgap-pack-edge-k3s-1.28.15.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.28.15.bin) | 4.5.15 |
+| `edge-k3s` | 1.28.14 | [`airgap-pack-edge-k3s-1.28.14.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.28.14.bin) | 4.5.3 |
+| `edge-k3s` | 1.28.13 | [`airgap-pack-edge-k3s-1.28.13.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.28.13.bin) | 4.4.18 |
+| `edge-k3s` | 1.28.11 | [`airgap-pack-edge-k3s-1.28.11.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.28.11.bin) | 4.4.11 |
+| `edge-k3s` | 1.28.7 | [`airgap-pack-edge-k3s-1.28.7.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.28.7.bin) | 4.3.6 |
+| `edge-k3s` | 1.27.15 | [`airgap-pack-edge-k3s-1.27.15.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.27.15.bin) | 4.4.11 |
+| `edge-k3s` | 1.27.11 | [`airgap-pack-edge-k3s-1.27.11.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.27.11.bin) | 4.3.6 |
+| `edge-k3s` | 1.26.14 | [`airgap-pack-edge-k3s-1.26.14.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k3s-1.26.14.bin) | 4.3.6 |
+| `edge-k8s` | 1.33.4 | [`airgap-pack-edge-k8s-1.33.4.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.33.4.bin) | 4.7.20 |
+| `edge-k8s` | 1.33.3 | [`airgap-pack-edge-k8s-1.33.3.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.33.3.bin) | 4.7.13 |
+| `edge-k8s` | 1.33.1 | [`airgap-pack-edge-k8s-1.33.1.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.33.1.bin) | 4.7.3 |
+| `edge-k8s` | 1.32.8 | [`airgap-pack-edge-k8s-1.32.8.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.32.8.bin) | 4.7.20 |
+| `edge-k8s` | 1.32.6 | [`airgap-pack-edge-k8s-1.32.6.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.32.6.bin) | 4.7.13 |
+| `edge-k8s` | 1.32.4 | [`airgap-pack-edge-k8s-1.32.4.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.32.4.bin) | 4.7.3 |
+| `edge-k8s` | 1.32.3 | [`airgap-pack-edge-k8s-1.32.3.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.32.3.bin) | 4.6.33 |
+| `edge-k8s` | 1.32.2 | [`airgap-pack-edge-k8s-1.32.2.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.32.2.bin) | 4.6.23 |
+| `edge-k8s` | 1.31.12 | [`airgap-pack-edge-k8s-1.31.12.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.31.12.bin) | 4.7.20 |
+| `edge-k8s` | 1.31.10 | [`airgap-pack-edge-k8s-1.31.10.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.31.10.bin) | 4.7.13 |
+| `edge-k8s` | 1.31.8 | [`airgap-pack-edge-k8s-1.31.8.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.31.8.bin) | 4.7.3 |
+| `edge-k8s` | 1.31.7 | [`airgap-pack-edge-k8s-1.31.7.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.31.7.bin) | 4.6.33 |
+| `edge-k8s` | 1.31.6 | [`airgap-pack-edge-k8s-1.31.6.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.31.6.bin) | 4.6.12 |
+| `edge-k8s` | 1.31.5 | [`airgap-pack-edge-k8s-1.31.5.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.31.5.bin) | 4.6.12 |
+| `edge-k8s` | 1.31.4 | [`airgap-pack-edge-k8s-1.31.4.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.31.4.bin) | 4.5.21 |
+| `edge-k8s` | 1.31.1 | [`airgap-pack-edge-k8s-1.31.1.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.31.1.bin) | 4.5.21 |
+| `edge-k8s` | 1.30.14 | [`airgap-pack-edge-k8s-1.30.14.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.30.14.bin) | 4.7.13 |
+| `edge-k8s` | 1.30.12 | [`airgap-pack-edge-k8s-1.30.12.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.30.12.bin) | 4.7.3 |
+| `edge-k8s` | 1.30.11 | [`airgap-pack-edge-k8s-1.30.11.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.30.11.bin) | 4.6.33 |
+| `edge-k8s` | 1.30.10 | [`airgap-pack-edge-k8s-1.30.10.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.30.10.bin) | 4.6.12 |
+| `edge-k8s` | 1.30.9 | [`airgap-pack-edge-k8s-1.30.9.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.30.9.bin) | 4.6.6 |
+| `edge-k8s` | 1.30.8 | [`airgap-pack-edge-k8s-1.30.8.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.30.8.bin) | 4.5.21 |
+| `edge-k8s` | 1.30.6 | [`airgap-pack-edge-k8s-1.30.6.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.30.6.bin) | 4.5.15 |
+| `edge-k8s` | 1.30.5 | [`airgap-pack-edge-k8s-1.30.5.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.30.5.bin) | 4.5.3 |
+| `edge-k8s` | 1.30.4 | [`airgap-pack-edge-k8s-1.30.4.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.30.4.bin) | 4.4.18 |
+| `edge-k8s` | 1.29.14 | [`airgap-pack-edge-k8s-1.29.14.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.29.14.bin) | 4.6.12 |
+| `edge-k8s` | 1.29.13 | [`airgap-pack-edge-k8s-1.29.13.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.29.13.bin) | 4.6.6 |
+| `edge-k8s` | 1.29.12 | [`airgap-pack-edge-k8s-1.29.12.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.29.12.bin) | 4.5.21 |
+| `edge-k8s` | 1.29.10 | [`airgap-pack-edge-k8s-1.29.10.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.29.10.bin) | 4.5.15 |
+| `edge-k8s` | 1.29.9 | [`airgap-pack-edge-k8s-1.29.9.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.29.9.bin) | 4.5.3 |
+| `edge-k8s` | 1.29.8 | [`airgap-pack-edge-k8s-1.29.8.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.29.8.bin) | 4.4.18 |
+| `edge-k8s` | 1.29.7 | [`airgap-pack-edge-k8s-1.29.7.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.29.7.bin) | 4.4.14 |
+| `edge-k8s` | 1.29.6 | [`airgap-pack-edge-k8s-1.29.6.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.29.6.bin) | 4.4.11 |
+| `edge-k8s` | 1.29.0 | [`airgap-pack-edge-k8s-1.29.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.29.0.bin) | 4.3.6 |
+| `edge-k8s` | 1.28.15 | [`airgap-pack-edge-k8s-1.28.15.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.28.15.bin) | 4.5.15 |
+| `edge-k8s` | 1.28.14 | [`airgap-pack-edge-k8s-1.28.14.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.28.14.bin) | 4.5.3 |
+| `edge-k8s` | 1.28.13 | [`airgap-pack-edge-k8s-1.28.13.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.28.13.bin) | 4.4.18 |
+| `edge-k8s` | 1.28.12 | [`airgap-pack-edge-k8s-1.28.12.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.28.12.bin) | 4.4.14 |
+| `edge-k8s` | 1.28.11 | [`airgap-pack-edge-k8s-1.28.11.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.28.11.bin) | 4.4.11 |
+| `edge-k8s` | 1.28.9 | [`airgap-pack-edge-k8s-1.28.9.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.28.9.bin) | 4.4.6 |
+| `edge-k8s` | 1.28.5 | [`airgap-pack-edge-k8s-1.28.5.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.28.5.bin) | 4.3.6 |
+| `edge-k8s` | 1.27.16 | [`airgap-pack-edge-k8s-1.27.16.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.27.16.bin) | 4.4.14 |
+| `edge-k8s` | 1.27.15 | [`airgap-pack-edge-k8s-1.27.15.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.27.15.bin) | 4.4.11 |
+| `edge-k8s` | 1.27.11 | [`airgap-pack-edge-k8s-1.27.11.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.27.11.bin) | 4.4.6 |
+| `edge-k8s` | 1.27.9 | [`airgap-pack-edge-k8s-1.27.9.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.27.9.bin) | 4.3.6 |
+| `edge-k8s` | 1.26.15 | [`airgap-pack-edge-k8s-1.26.15.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.26.15.bin) | 4.4.6 |
+| `edge-k8s` | 1.26.12 | [`airgap-pack-edge-k8s-1.26.12.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-k8s-1.26.12.bin) | 4.3.6 |
+| `edge-native-byoi` | 2.1.0 | [`airgap-pack-edge-native-byoi-2.1.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-native-byoi-2.1.0.bin) | 4.5.15 |
+| `edge-native-byoi` | 1.0.0 | [`airgap-pack-edge-native-byoi-1.0.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-native-byoi-1.0.0.bin) | 4.3.6 |
+| `edge-native-ubuntu` | 22.04 | [`airgap-pack-edge-native-ubuntu-22.04.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-native-ubuntu-22.04.bin) | 4.3.6 |
+| `edge-rke2` | 1.33.3 | [`airgap-pack-edge-rke2-1.33.3.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.33.3.bin) | 4.7.13 |
+| `edge-rke2` | 1.33.1 | [`airgap-pack-edge-rke2-1.33.1.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.33.1.bin) | 4.7.3 |
+| `edge-rke2` | 1.32.6 | [`airgap-pack-edge-rke2-1.32.6.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.32.6.bin) | 4.7.13 |
+| `edge-rke2` | 1.32.4 | [`airgap-pack-edge-rke2-1.32.4.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.32.4.bin) | 4.7.3 |
+| `edge-rke2` | 1.32.3 | [`airgap-pack-edge-rke2-1.32.3.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.32.3.bin) | 4.6.33 |
+| `edge-rke2` | 1.32.2 | [`airgap-pack-edge-rke2-1.32.2.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.32.2.bin) | 4.6.23 |
+| `edge-rke2` | 1.31.10 | [`airgap-pack-edge-rke2-1.31.10.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.31.10.bin) | 4.7.13 |
+| `edge-rke2` | 1.31.8 | [`airgap-pack-edge-rke2-1.31.8.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.31.8.bin) | 4.7.3 |
+| `edge-rke2` | 1.31.7 | [`airgap-pack-edge-rke2-1.31.7.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.31.7.bin) | 4.6.33 |
+| `edge-rke2` | 1.31.6 | [`airgap-pack-edge-rke2-1.31.6.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.31.6.bin) | 4.6.23 |
+| `edge-rke2` | 1.31.5 | [`airgap-pack-edge-rke2-1.31.5.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.31.5.bin) | 4.6.12 |
+| `edge-rke2` | 1.31.4 | [`airgap-pack-edge-rke2-1.31.4.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.31.4.bin) | 4.5.21 |
+| `edge-rke2` | 1.31.1 | [`airgap-pack-edge-rke2-1.31.1.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.31.1.bin) | 4.5.15 |
+| `edge-rke2` | 1.30.14 | [`airgap-pack-edge-rke2-1.30.14.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.30.14.bin) | 4.7.13 |
+| `edge-rke2` | 1.30.12 | [`airgap-pack-edge-rke2-1.30.12.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.30.12.bin) | 4.7.3 |
+| `edge-rke2` | 1.30.11 | [`airgap-pack-edge-rke2-1.30.11.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.30.11.bin) | 4.6.33 |
+| `edge-rke2` | 1.30.10 | [`airgap-pack-edge-rke2-1.30.10.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.30.10.bin) | 4.6.23 |
+| `edge-rke2` | 1.30.8 | [`airgap-pack-edge-rke2-1.30.8.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.30.8.bin) | 4.5.21 |
+| `edge-rke2` | 1.30.6 | [`airgap-pack-edge-rke2-1.30.6.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.30.6.bin) | 4.5.15 |
+| `edge-rke2` | 1.30.5 | [`airgap-pack-edge-rke2-1.30.5.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.30.5.bin) | 4.5.8 |
+| `edge-rke2` | 1.30.4 | [`airgap-pack-edge-rke2-1.30.4.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.30.4.bin) | 4.5.3 |
+| `edge-rke2` | 1.30.3 | [`airgap-pack-edge-rke2-1.30.3.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.30.3.bin) | 4.4.18 |
+| `edge-rke2` | 1.29.14 | [`airgap-pack-edge-rke2-1.29.14.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.29.14.bin) | 4.6.23 |
+| `edge-rke2` | 1.29.12 | [`airgap-pack-edge-rke2-1.29.12.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.29.12.bin) | 4.5.21 |
+| `edge-rke2` | 1.29.10 | [`airgap-pack-edge-rke2-1.29.10.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.29.10.bin) | 4.5.15 |
+| `edge-rke2` | 1.29.9 | [`airgap-pack-edge-rke2-1.29.9.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.29.9.bin) | 4.5.8 |
+| `edge-rke2` | 1.29.8 | [`airgap-pack-edge-rke2-1.29.8.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.29.8.bin) | 4.5.3 |
+| `edge-rke2` | 1.29.7 | [`airgap-pack-edge-rke2-1.29.7.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.29.7.bin) | 4.4.18 |
+| `edge-rke2` | 1.29.6 | [`airgap-pack-edge-rke2-1.29.6.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.29.6.bin) | 4.4.14 |
+| `edge-rke2` | 1.29.5 | [`airgap-pack-edge-rke2-1.29.5.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.29.5.bin) | 4.4.11 |
+| `edge-rke2` | 1.29.4 | [`airgap-pack-edge-rke2-1.29.4.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.29.4.bin) | 4.4.6 |
+| `edge-rke2` | 1.29.3 | [`airgap-pack-edge-rke2-1.29.3.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.29.3.bin) | 4.3.6 |
+| `edge-rke2` | 1.29.0 | [`airgap-pack-edge-rke2-1.29.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.29.0.bin) | 4.3.6 |
+| `edge-rke2` | 1.28.15 | [`airgap-pack-edge-rke2-1.28.15.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.28.15.bin) | 4.5.15 |
+| `edge-rke2` | 1.28.14 | [`airgap-pack-edge-rke2-1.28.14.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.28.14.bin) | 4.5.8 |
+| `edge-rke2` | 1.28.13 | [`airgap-pack-edge-rke2-1.28.13.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.28.13.bin) | 4.5.3 |
+| `edge-rke2` | 1.28.12 | [`airgap-pack-edge-rke2-1.28.12.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.28.12.bin) | 4.4.18 |
+| `edge-rke2` | 1.28.11 | [`airgap-pack-edge-rke2-1.28.11.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.28.11.bin) | 4.4.14 |
+| `edge-rke2` | 1.28.10 | [`airgap-pack-edge-rke2-1.28.10.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.28.10.bin) | 4.4.11 |
+| `edge-rke2` | 1.28.9 | [`airgap-pack-edge-rke2-1.28.9.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.28.9.bin) | 4.4.6 |
+| `edge-rke2` | 1.28.7 | [`airgap-pack-edge-rke2-1.28.7.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.28.7.bin) | 4.3.6 |
+| `edge-rke2` | 1.28.5 | [`airgap-pack-edge-rke2-1.28.5.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.28.5.bin) | 4.3.6 |
+| `edge-rke2` | 1.27.15 | [`airgap-pack-edge-rke2-1.27.15.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.27.15.bin) | 4.4.14 |
+| `edge-rke2` | 1.27.14 | [`airgap-pack-edge-rke2-1.27.14.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.27.14.bin) | 4.4.11 |
+| `edge-rke2` | 1.27.13 | [`airgap-pack-edge-rke2-1.27.13.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.27.13.bin) | 4.4.6 |
+| `edge-rke2` | 1.27.11 | [`airgap-pack-edge-rke2-1.27.11.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.27.11.bin) | 4.3.6 |
+| `edge-rke2` | 1.27.9 | [`airgap-pack-edge-rke2-1.27.9.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.27.9.bin) | 4.3.6 |
+| `edge-rke2` | 1.26.15 | [`airgap-pack-edge-rke2-1.26.15.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.26.15.bin) | 4.4.6 |
+| `edge-rke2` | 1.26.14 | [`airgap-pack-edge-rke2-1.26.14.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.26.14.bin) | 4.3.6 |
+| `edge-rke2` | 1.26.12 | [`airgap-pack-edge-rke2-1.26.12.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-edge-rke2-1.26.12.bin) | 4.3.6 |
+| `external-dns` | 0.18.0 | [`airgap-pack-external-dns-0.18.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-external-dns-0.18.0.bin) | 4.7.13 |
+| `external-dns` | 0.16.1 | [`airgap-pack-external-dns-0.16.1.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-external-dns-0.16.1.bin) | 4.7.3 |
+| `external-secrets-operator` | 0.19.2 | [`airgap-pack-external-secrets-operator-0.19.2.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-external-secrets-operator-0.19.2.bin) | 4.7.20 |
+| `external-secrets-operator` | 0.18.2 | [`airgap-pack-external-secrets-operator-0.18.2.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-external-secrets-operator-0.18.2.bin) | 4.7.20 |
+| `external-secrets-operator` | 0.17.0 | [`airgap-pack-external-secrets-operator-0.17.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-external-secrets-operator-0.17.0.bin) | 4.7.3 |
+| `external-secrets-operator` | 0.13.0 | [`airgap-pack-external-secrets-operator-0.13.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-external-secrets-operator-0.13.0.bin) | 4.6.33 |
+| `flux-cd` | 2.16.4 | [`airgap-pack-flux-cd-2.16.4.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-flux-cd-2.16.4.bin) | 4.7.20 | 
+| `flux-cd` | 2.16.2 | [`airgap-pack-flux-cd-2.16.2.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-flux-cd-2.16.2.bin) | 4.7.13 | 
+| `generic-byoi` | 1.0.0 | [`airgap-pack-generic-byoi-1.0.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-generic-byoi-1.0.0.bin) | 4.3.6 |
+| `harbor` | 1.16.2 | [`airgap-pack-harbor-1.16.2.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-harbor-1.16.2.bin) | 4.6.23 |
+| `istio` | 1.27.0 | [`airgap-pack-istio-1.27.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-istio-1.27.0.bin) | 4.7.20 | 
+| `istio` | 1.26.2 | [`airgap-pack-istio-1.26.2.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-istio-1.26.2.bin) | 4.7.20 | 
+| `istio` | 1.26.0 | [`airgap-pack-istio-1.26.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-istio-1.26.0.bin) | 4.7.13 | 
+| `istio` | 1.25.1 | [`airgap-pack-istio-1.25.1.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-istio-1.25.1.bin) | 4.7.13 | 
+| `istio` | 1.24.0 | [`airgap-pack-istio-1.24.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-istio-1.24.0.bin) | 4.6.6 | 
+| `kong` | 2.51.0 | [`airgap-pack-kong-2.51.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kong-2.51.0.bin) | 4.7.20 | 
+| `kong` | 2.48.0 | [`airgap-pack-kong-2.48.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kong-2.48.0.bin) | 4.7.3 | 
+| `kong` | 2.47.0 | [`airgap-pack-kong-2.47.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kong-2.47.0.bin) | 4.6.6 | 
+| `kong` | 2.45.0 | [`airgap-pack-kong-2.45.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kong-2.45.0.bin) | 4.5.21 | 
+| `kubernetes` | 1.33.4 | [`airgap-pack-kubernetes-1.33.4.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.33.4.bin) | 4.7.20 |
+| `kubernetes` | 1.32.8 | [`airgap-pack-kubernetes-1.32.8.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.32.8.bin) | 4.7.20 |
+| `kubernetes` | 1.32.6 | [`airgap-pack-kubernetes-1.32.6.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.32.6.bin) | 4.7.13 |
+| `kubernetes` | 1.32.4 | [`airgap-pack-kubernetes-1.32.4.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.32.4.bin) | 4.7.3 |
+| `kubernetes` | 1.32.3 | [`airgap-pack-kubernetes-1.32.3.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.32.3.bin) | 4.6.33 |
+| `kubernetes` | 1.32.2 | [`airgap-pack-kubernetes-1.32.2.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.32.2.bin) | 4.6.12 |
+| `kubernetes` | 1.32.1 | [`airgap-pack-kubernetes-1.32.1.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.32.1.bin) | 4.6.6 |
+| `kubernetes` | 1.31.12 | [`airgap-pack-kubernetes-1.31.12.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.31.12.bin) | 4.7.20 |
+| `kubernetes` | 1.31.10 | [`airgap-pack-kubernetes-1.31.10.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.31.10.bin) | 4.7.13 |
+| `kubernetes` | 1.31.8 | [`airgap-pack-kubernetes-1.31.8.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.31.8.bin) | 4.7.3 |
+| `kubernetes` | 1.31.7 | [`airgap-pack-kubernetes-1.31.7.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.31.7.bin) | 4.6.33 |
+| `kubernetes` | 1.31.6 | [`airgap-pack-kubernetes-1.31.6.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.31.6.bin) | 4.6.12 |
+| `kubernetes` | 1.31.5 | [`airgap-pack-kubernetes-1.31.5.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.31.5.bin) | 4.6.6 |
+| `kubernetes` | 1.31.4 | [`airgap-pack-kubernetes-1.31.4.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.31.4.bin) | 4.5.21 |
+| `kubernetes` | 1.31.1 | [`airgap-pack-kubernetes-1.31.1.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.31.1.bin) | 4.5.15 |
+| `kubernetes` | 1.30.14 | [`airgap-pack-kubernetes-1.30.14.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.30.14.bin) | 4.7.13 |
+| `kubernetes` | 1.30.12 | [`airgap-pack-kubernetes-1.30.12.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.30.12.bin) | 4.7.3 |
+| `kubernetes` | 1.30.11 | [`airgap-pack-kubernetes-1.30.11.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.30.11.bin) | 4.6.33 |
+| `kubernetes` | 1.30.10 | [`airgap-pack-kubernetes-1.30.10.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.30.10.bin) | 4.6.12 |
+| `kubernetes` | 1.30.9 | [`airgap-pack-kubernetes-1.30.9.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.30.9.bin) | 4.6.6 |
+| `kubernetes` | 1.30.8 | [`airgap-pack-kubernetes-1.30.8.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.30.8.bin) | 4.5.21 |
+| `kubernetes` | 1.30.6 | [`airgap-pack-kubernetes-1.30.6.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.30.6.bin) | 4.5.15 |
+| `kubernetes` | 1.30.5 | [`airgap-pack-kubernetes-1.30.5.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.30.5.bin) | 4.5.3 |
+| `kubernetes` | 1.30.4 | [`airgap-pack-kubernetes-1.30.4.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.30.4.bin) | 4.4.18 |
+| `kubernetes` | 1.29.14 | [`airgap-pack-kubernetes-1.29.14.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.29.14.bin) | 4.6.12 |
+| `kubernetes` | 1.29.13 | [`airgap-pack-kubernetes-1.29.13.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.29.13.bin) | 4.6.6 |
+| `kubernetes` | 1.29.12 | [`airgap-pack-kubernetes-1.29.12.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.29.12.bin) | 4.5.21 |
+| `kubernetes` | 1.29.10 | [`airgap-pack-kubernetes-1.29.10.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.29.10.bin) | 4.5.15 |
+| `kubernetes` | 1.29.9 | [`airgap-pack-kubernetes-1.29.9.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.29.9.bin) | 4.5.3 |
+| `kubernetes` | 1.29.8 | [`airgap-pack-kubernetes-1.29.8.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.29.8.bin) | 4.4.18 |
+| `kubernetes` | 1.29.7 | [`airgap-pack-kubernetes-1.29.7.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.29.7.bin) | 4.4.14 |
+| `kubernetes` | 1.29.6 | [`airgap-pack-kubernetes-1.29.6.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.29.6.bin) | 4.4.11 |
+| `kubernetes` | 1.29.4 | [`airgap-pack-kubernetes-1.29.4.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.29.4.bin) | 4.4.6 |
+| `kubernetes` | 1.29.0 | [`airgap-pack-kubernetes-1.29.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.29.0.bin) | 4.3.6 |
+| `kubernetes` | 1.28.15 | [`airgap-pack-kubernetes-1.28.15.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.28.15.bin) | 4.5.15 |
+| `kubernetes` | 1.28.14 | [`airgap-pack-kubernetes-1.28.14.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.28.14.bin) | 4.5.3 |
+| `kubernetes` | 1.28.13 | [`airgap-pack-kubernetes-1.28.13.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.28.13.bin) | 4.4.18 |
+| `kubernetes` | 1.28.12 | [`airgap-pack-kubernetes-1.28.12.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.28.12.bin) | 4.4.14 |
+| `kubernetes` | 1.28.11 | [`airgap-pack-kubernetes-1.28.11.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.28.11.bin) | 4.4.11 |
+| `kubernetes` | 1.28.9 | [`airgap-pack-kubernetes-1.28.9.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.28.9.bin) | 4.4.6 |
+| `kubernetes` | 1.27.16 | [`airgap-pack-kubernetes-1.27.16.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.27.16.bin) | 4.4.14 |
+| `kubernetes` | 1.27.15 | [`airgap-pack-kubernetes-1.27.15.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.27.15.bin) | 4.4.11 |
+| `kubernetes` | 1.27.13 | [`airgap-pack-kubernetes-1.27.13.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.27.13.bin) | 4.4.6 |
+| `kubernetes` | 1.27.11 | [`airgap-pack-kubernetes-1.27.11.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.27.11.bin) | 4.3.6 |
+| `kubernetes` | 1.26.15 | [`airgap-pack-kubernetes-1.26.15.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.26.15.bin) | 4.3.6 |
+| `kubernetes` | 1.26.12 | [`airgap-pack-kubernetes-1.26.12.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.26.12.bin) | 4.3.6 |
+| `kubernetes` | 1.24.16 | [`airgap-pack-kubernetes-1.24.16.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-1.24.16.bin) | 4.5.8 |
+| `kubernetes-ck8s` | 1.32 | [`airgap-pack-kubernetes-ck8s-1.32.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-ck8s-1.32.bin) | 4.7.13 | 
+| `kubernetes-custom` | 1.0.0 | [`airgap-pack-kubernetes-custom-1.0.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-custom-1.0.0.bin) | 4.3.6 |
+| `kubernetes-aks` | 1.33 | [`airgap-pack-kubernetes-aks-1.33.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-aks-1.33.bin) | 4.7.20 |
+| `kubernetes-eks` | 1.32 | [`airgap-pack-kubernetes-eks-1.32.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-eks-1.32.bin) | 4.6.6 |
+| `kubernetes-eks` | 1.30 | [`airgap-pack-kubernetes-eks-1.30.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-eks-1.30.bin) | 4.5.20 |
+| `kubernetes-gke` | 1.33 | [`airgap-pack-kubernetes-gke-1.33.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-gke-1.33.bin) | 4.7.20 |
+| `kubernetes-microk8s` | 1.30 | [`airgap-pack-kubernetes-microk8s-1.30.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-microk8s-1.30.bin) | 4.6.6 |
+| `kubernetes-microk8s` | 1.29 | [`airgap-pack-kubernetes-microk8s-1.29.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-microk8s-1.29.bin) | 4.6.6 |
+| `kubernetes-rke2` | 1.32.6-rke2r1-build20250618 | [`airgap-pack-kubernetes-rke2-1.32.6-rke2r1-build20250618.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.32.6-rke2r1-build20250618.bin) | 4.7.13 |
+| `kubernetes-rke2` | 1.32.4-rke2r1-build20250423 | [`airgap-pack-kubernetes-rke2-1.32.4-rke2r1-build20250423.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.32.4-rke2r1-build20250423.bin) | 4.7.3 |
+| `kubernetes-rke2` | 1.32.3-rke2r1-build20250312 | [`airgap-pack-kubernetes-rke2-1.32.3-rke2r1-build20250312.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.32.3-rke2r1-build20250312.bin) | 4.6.33 |
+| `kubernetes-rke2` | 1.32.2-rke2r1-build20250213 | [`airgap-pack-kubernetes-rke2-1.32.2-rke2r1-build20250213.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.32.2-rke2r1-build20250213.bin) | 4.6.23 |
+| `kubernetes-rke2` | 1.32.1-rke2r1-build20250115 | [`airgap-pack-kubernetes-rke2-1.32.1-rke2r1-build20250115.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.32.1-rke2r1-build20250115.bin) | 4.6.6 |
+| `kubernetes-rke2` | 1.31.10-rke2r1-build20250618 | [`airgap-pack-kubernetes-rke2-1.31.10-rke2r1-build20250618.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.31.10-rke2r1-build20250618.bin) | 4.7.13 |
+| `kubernetes-rke2` | 1.31.8-rke2r1-build20250423 | [`airgap-pack-kubernetes-rke2-1.31.8-rke2r1-build20250423.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.31.8-rke2r1-build20250423.bin) | 4.7.3 |
+| `kubernetes-rke2` | 1.31.7-rke2r1-build20250312 | [`airgap-pack-kubernetes-rke2-1.31.7-rke2r1-build20250312.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.31.7-rke2r1-build20250312.bin) | 4.6.33 |
+| `kubernetes-rke2` | 1.31.6-rke2r1-build20250213 | [`airgap-pack-kubernetes-rke2-1.31.6-rke2r1-build20250213.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.31.6-rke2r1-build20250213.bin) | 4.6.23 |
+| `kubernetes-rke2` | 1.31.5-rke2r1-build20250115 | [`airgap-pack-kubernetes-rke2-1.31.5-rke2r1-build20250115.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.31.5-rke2r1-build20250115.bin) | 4.6.6 |
+| `kubernetes-rke2` | 1.31.4-rke2r1-build20241212 | [`airgap-pack-kubernetes-rke2-1.31.4-rke2r1-build20241212.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.31.4-rke2r1-build20241212.bin) | 4.5.21 |
+| `kubernetes-rke2` | 1.30.14-rke2r1-build20250618 | [`airgap-pack-kubernetes-rke2-1.30.14-rke2r1-build20250618.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.30.14-rke2r1-build20250618.bin) | 4.7.13 |
+| `kubernetes-rke2` | 1.30.12-rke2r1-build20250423 | [`airgap-pack-kubernetes-rke2-1.30.12-rke2r1-build20250423.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.30.12-rke2r1-build20250423.bin) | 4.7.3 |
+| `kubernetes-rke2` | 1.30.11-rke2r1-build20250312 | [`airgap-pack-kubernetes-rke2-1.30.11-rke2r1-build20250312.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.30.11-rke2r1-build20250312.bin) | 4.6.33 |
+| `kubernetes-rke2` | 1.30.10-rke2r1-build20250213 | [`airgap-pack-kubernetes-rke2-1.30.10-rke2r1-build20250213.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.30.10-rke2r1-build20250213.bin) | 4.6.23 |
+| `kubernetes-rke2` | 1.30.9-rke2r1-build20250116 | [`airgap-pack-kubernetes-rke2-1.30.9-rke2r1-build20250116.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.30.9-rke2r1-build20250116.bin) | 4.6.6 |
+| `kubernetes-rke2` | 1.30.8-rke2r1-build20241212 | [`airgap-pack-kubernetes-rke2-1.30.8-rke2r1-build20241212.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.30.8-rke2r1-build20241212.bin) | 4.5.21 |
+| `kubernetes-rke2` | 1.30.6-rke2r1-build20241023 | [`airgap-pack-kubernetes-rke2-1.30.6-rke2r1-build20241023.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.30.6-rke2r1-build20241023.bin) | 4.5.15 |
+| `kubernetes-rke2` | 1.30.5-rke2r1-build20240912 | [`airgap-pack-kubernetes-rke2-1.30.5-rke2r1-build20240912.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.30.5-rke2r1-build20240912.bin) | 4.5.8 |
+| `kubernetes-rke2` | 1.30.4-rke2r1-build20240815 | [`airgap-pack-kubernetes-rke2-1.30.4-rke2r1-build20240815.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.30.4-rke2r1-build20240815.bin) | 4.5.3 |
+| `kubernetes-rke2` | 1.30.3-rke2r1-build20240717 | [`airgap-pack-kubernetes-rke2-1.30.3-rke2r1-build20240717.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.30.3-rke2r1-build20240717.bin) | 4.4.18 |
+| `kubernetes-rke2` | 1.29.14-rke2r1-build20250213 | [`airgap-pack-kubernetes-rke2-1.29.14-rke2r1-build20250213.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.29.14-rke2r1-build20250213.bin) | 4.6.23 |
+| `kubernetes-rke2` | 1.29.13-rke2r1-build20250117 | [`airgap-pack-kubernetes-rke2-1.29.13-rke2r1-build20250117.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.29.13-rke2r1-build20250117.bin) | 4.6.6 |
+| `kubernetes-rke2` | 1.29.12-rke2r1-build20241212 | [`airgap-pack-kubernetes-rke2-1.29.12-rke2r1-build20241212.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.29.12-rke2r1-build20241212.bin) | 4.5.21 |
+| `kubernetes-rke2` | 1.29.10-rke2r1-build20241023 | [`airgap-pack-kubernetes-rke2-1.29.10-rke2r1-build20241023.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.29.10-rke2r1-build20241023.bin) | 4.5.15 |
+| `kubernetes-rke2` | 1.29.9-rke2r1-build20240912 | [`airgap-pack-kubernetes-rke2-1.29.9-rke2r1-build20240912.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.29.9-rke2r1-build20240912.bin) | 4.5.8 |
+| `kubernetes-rke2` | 1.29.8-rke2r1-build20240815 | [`airgap-pack-kubernetes-rke2-1.29.8-rke2r1-build20240815.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.29.8-rke2r1-build20240815.bin) | 4.5.3 |
+| `kubernetes-rke2` | 1.29.7-rke2r1-build20240717 | [`airgap-pack-kubernetes-rke2-1.29.7-rke2r1-build20240717.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.29.7-rke2r1-build20240717.bin) | 4.4.18 |
+| `kubernetes-rke2` | 1.29.6-rke2r1-build20240619 | [`airgap-pack-kubernetes-rke2-1.29.6-rke2r1-build20240619.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.29.6-rke2r1-build20240619.bin) | 4.4.14 |
+| `kubernetes-rke2` | 1.29.5-rke2r1-build20240515 | [`airgap-pack-kubernetes-rke2-1.29.5-rke2r1-build20240515.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.29.5-rke2r1-build20240515.bin) | 4.4.11 |
+| `kubernetes-rke2` | 1.29.4-rke2r1-build20240416 | [`airgap-pack-kubernetes-rke2-1.29.4-rke2r1-build20240416.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.29.4-rke2r1-build20240416.bin) | 4.4.6 |
+| `kubernetes-rke2` | 1.29.0-rke2r1-build20231213 | [`airgap-pack-kubernetes-rke2-1.29.0-rke2r1-build20231213.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.29.0-rke2r1-build20231213.bin) | 4.4.6 |
+| `kubernetes-rke2` | 1.28.15-rke2r1-build20241023 | [`airgap-pack-kubernetes-rke2-1.28.15-rke2r1-build20241023.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.28.15-rke2r1-build20241023.bin) | 4.5.15 |
+| `kubernetes-rke2` | 1.28.14-rke2r1-build20240912 | [`airgap-pack-kubernetes-rke2-1.28.14-rke2r1-build20240912.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.28.14-rke2r1-build20240912.bin) | 4.5.8 |
+| `kubernetes-rke2` | 1.28.13-rke2r1-build20240815 | [`airgap-pack-kubernetes-rke2-1.28.13-rke2r1-build20240815.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.28.13-rke2r1-build20240815.bin) | 4.5.3 |
+| `kubernetes-rke2` | 1.28.12-rke2r1-build20240717 | [`airgap-pack-kubernetes-rke2-1.28.12-rke2r1-build20240717.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.28.12-rke2r1-build20240717.bin) | 4.4.18 |
+| `kubernetes-rke2` | 1.28.11-rke2r1-build20240619 | [`airgap-pack-kubernetes-rke2-1.28.11-rke2r1-build20240619.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.28.11-rke2r1-build20240619.bin) | 4.4.14 |
+| `kubernetes-rke2` | 1.28.10-rke2r1-build20240514 | [`airgap-pack-kubernetes-rke2-1.28.10-rke2r1-build20240514.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.28.10-rke2r1-build20240514.bin) | 4.4.11 |
+| `kubernetes-rke2` | 1.28.9-rke2r1-build20240416 | [`airgap-pack-kubernetes-rke2-1.28.9-rke2r1-build20240416.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.28.9-rke2r1-build20240416.bin) | 4.4.6 |
+| `kubernetes-rke2` | 1.28.5-rke2r1-build20231220 | [`airgap-pack-kubernetes-rke2-1.28.5-rke2r1-build20231220.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.28.5-rke2r1-build20231220.bin) | 4.3.6 |
+| `kubernetes-rke2` | 1.27.15-rke2r1-build20240619 | [`airgap-pack-kubernetes-rke2-1.27.15-rke2r1-build20240619.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.27.15-rke2r1-build20240619.bin) | 4.4.14 |
+| `kubernetes-rke2` | 1.27.14-rke2r1-build20240515 | [`airgap-pack-kubernetes-rke2-1.27.14-rke2r1-build20240515.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.27.14-rke2r1-build20240515.bin) | 4.4.11 |
+| `kubernetes-rke2` | 1.27.13-rke2r1-build20240416 | [`airgap-pack-kubernetes-rke2-1.27.13-rke2r1-build20240416.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.27.13-rke2r1-build20240416.bin) | 4.4.6 |
+| `kubernetes-rke2` | 1.27.9-rke2r1-build20231220 | [`airgap-pack-kubernetes-rke2-1.27.9-rke2r1-build20231220.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.27.9-rke2r1-build20231220.bin) | 4.3.6 |
+| `kubernetes-rke2` | 1.26.12-rke2r1-build20231220 | [`airgap-pack-kubernetes-rke2-1.26.12-rke2r1-build20231220.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-kubernetes-rke2-1.26.12-rke2r1-build20231220.bin) | 4.3.6 |
+| `lb-metallb-helm` | 0.15.2 | [`airgap-pack-lb-metallb-helm-0.15.2.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-lb-metallb-helm-0.15.2.bin) | 4.7.3 |
+| `lb-metallb-helm` | 0.14.9 | [`airgap-pack-lb-metallb-helm-0.14.9.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-lb-metallb-helm-0.14.9.bin) | 4.5.21 |
+| `lb-metallb-helm` | 0.14.8 | [`airgap-pack-lb-metallb-helm-0.14.8.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-lb-metallb-helm-0.14.8.bin) | 4.4.18 |
+| `lb-metallb-helm` | 0.14.5 | [`airgap-pack-lb-metallb-helm-0.14.5.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-lb-metallb-helm-0.14.5.bin) | 4.4.14 |
+| `lb-metallb-helm` | 0.14.3 | [`airgap-pack-lb-metallb-helm-0.14.3.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-lb-metallb-helm-0.14.3.bin) | 4.4.6 |
+| `lb-metallb-helm` | 0.13.12 | [`airgap-pack-lb-metallb-helm-0.13.12.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-lb-metallb-helm-0.13.12.bin) | 4.3.6 |
+| `loki` | 4.7.20 | [`airgap-pack-loki-4.7.20.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-loki-4.7.20.bin) | 4.7.20 |
+| `multus-cni` | 2.2.18 | [`airgap-pack-multus-cni-2.2.18.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-multus-cni-2.2.18.bin) | 4.7.13 |
+| `nginx` | 1.13.1 | [`airgap-pack-nginx-1.13.1.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-nginx-1.13.1.bin) | 4.7.20 |
+| `nginx` | 1.13.0 | [`airgap-pack-nginx-1.13.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-nginx-1.13.0.bin) | 4.7.13 |
+| `nginx` | 1.12.2 | [`airgap-pack-nginx-1.12.2.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-nginx-1.12.2.bin) | 4.7.3 |
+| `nginx` | 1.11.5 | [`airgap-pack-nginx-1.11.5.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-nginx-1.11.5.bin) | 4.6.17 |
+| `nginx` | 1.11.3 | [`airgap-pack-nginx-1.11.3.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-nginx-1.11.3.bin) | 4.5.15 |
+| `nginx` | 1.11.2 | [`airgap-pack-nginx-1.11.2.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-nginx-1.11.2.bin) | 4.5.3 |
+| `nginx` | 1.10.0 | [`airgap-pack-nginx-1.10.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-nginx-1.10.0.bin) | 4.4.6 |
+| `nutanix-csi` | 2.6.6 | [`airgap-pack-nutanix-csi-2.6.6.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-nutanix-csi-2.6.6.bin) | 4.3.6 |
+| `open-policy-agent` | 3.19.2 | [`airgap-pack-open-policy-agent-3.19.2.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-open-policy-agent-3.19.2.bin) | 4.7.13 |
+| `open-policy-agent` | 3.18.3 | [`airgap-pack-open-policy-agent-3.18.3.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-open-policy-agent-3.18.3.bin) | 4.7.3 |
+| `open-policy-agent` | 3.18.1 | [`airgap-pack-open-policy-agent-3.18.1.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-open-policy-agent-3.18.1.bin) | 4.6.6 |
+| `opentelemetry` | 0.132.4 | [`airgap-pack-opentelemetry-0.132.4.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-opentelemetry-0.132.4.bin) | 4.7.20 |
+| `piraeus-operator` | 2.9.0 | [`airgap-pack-piraeus-operator-2.9.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-piraeus-operator-2.9.0.bin) | 4.7.20 |
+| `piraeus-operator` | 2.8.1 | [`airgap-pack-piraeus-operator-2.8.1.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-piraeus-operator-2.8.1.bin) | 4.7.3 |
+| `piraeus-operator-addon` | 2.9.0 | [`airgap-pack-piraeus-operator-addon-2.9.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-piraeus-operator-addon-2.9.0.bin) | 4.7.20 |
+| `piraeus-operator-addon` | 2.8.1 | [`airgap-pack-piraeus-operator-addon-2.8.1.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-piraeus-operator-addon-2.8.1.bin) | 4.7.3 |
+| `portworx-add-on` | 3.2.2 | [`airgap-pack-portworx-add-on-3.2.2.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-portworx-add-on-3.2.2.bin) | 4.6.23 |
+| `postgresql` | 1.22.1 | [`airgap-pack-postgresql-1.22.1.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-postgresql-1.22.1.bin) | 4.7.3 |
+| `prometheus-agent` | 27.23.0 | [`airgap-pack-prometheus-agent-27.23.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-prometheus-agent-27.23.0.bin) | 4.7.20 |
+| `prometheus-operator` | 75.9.0 | [`airgap-pack-prometheus-operator-75.9.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-prometheus-operator-75.9.0.bin) | 4.7.20 |
+| `prometheus-operator` | 70.2.1 | [`airgap-pack-prometheus-operator-70.2.1.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-prometheus-operator-70.2.1.bin) | 4.6.33 |
+| `prometheus-operator` | 68.4.4 | [`airgap-pack-prometheus-operator-68.4.4.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-prometheus-operator-68.4.4.bin) | 4.6.12 |
+| `prometheus-operator` | 67.5.0 | [`airgap-pack-prometheus-operator-67.5.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-prometheus-operator-67.5.0.bin) | 4.5.21 |
+| `prometheus-operator` | 65.3.1 | [`airgap-pack-prometheus-operator-65.3.1.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-prometheus-operator-65.3.1.bin) | 4.5.8 |
+| `prometheus-operator` | 58.6.0 | [`airgap-pack-prometheus-operator-58.6.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-prometheus-operator-58.6.0.bin) | 4.4.14 |
+| `prometheus-operator` | 57.0.1 | [`airgap-pack-prometheus-operator-57.0.1.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-prometheus-operator-57.0.1.bin) | 4.4.6 | 
+| `prometheus-operator` | 55.8.3 | [`airgap-pack-prometheus-operator-55.8.3.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-prometheus-operator-55.8.3.bin) | 4.3.6 | 
+| `registry-connect` | 0.1.0 | [`airgap-pack-registry-connect-0.1.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-registry-connect-0.1.0.bin) | 4.6.23 |
+| `reloader` | 1.4.2 | [`airgap-pack-reloader-1.4.2.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-reloader-1.4.2.bin) | 4.7.3 |
+| `reloader` | 1.2.0 | [`airgap-pack-reloader-1.2.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-reloader-1.2.0.bin) | 4.5.21 |
+| `reloader` | 1.0.107 | [`airgap-pack-reloader-1.0.107.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-reloader-1.0.107.bin) | 4.4.11 |
+| `reloader` | 1.0.74 | [`airgap-pack-reloader-1.0.74.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-reloader-1.0.74.bin) | 4.4.11 |
+| `spectro-k8s-dashboard` | 7.11.1 | [`airgap-pack-spectro-k8s-dashboard-7.11.1.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-spectro-k8s-dashboard-7.11.1.bin) | 4.6.33 |
+| `spectro-proxy` | 1.5.6 | [`airgap-pack-spectro-proxy-1.5.6.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-spectro-proxy-1.5.6.bin) | 4.7.20 |
+| `spectro-proxy` | 1.5.4 | [`airgap-pack-spectro-proxy-1.5.4.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-spectro-proxy-1.5.4.bin) | 4.5.3 |
+| `spectro-proxy` | 1.5.2 | [`airgap-pack-spectro-proxy-1.5.2.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-spectro-proxy-1.5.2.bin) | 4.3.6 |
+| `spectro-proxy` | 1.5.1 | [`airgap-pack-spectro-proxy-1.5.1.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-spectro-proxy-1.5.1.bin) | 4.3.6 |
+| `spectro-proxy` | 1.4.2 | [`airgap-pack-spectro-proxy-1.4.2.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-spectro-proxy-1.4.2.bin) | 4.3.6 |
+| `spectro-rbac` | 1.0.0 | [`airgap-pack-spectro-rbac-1.0.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-spectro-rbac-1.0.0.bin) | 4.6.33 |
+| `tetragon` | 1.4.1 | [`airgap-pack-tetragon-1.4.1.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-tetragon-1.4.1.bin) | 4.7.13 |
+| `tetragon` | 1.3.0 | [`airgap-pack-tetragon-1.3.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-tetragon-1.3.0.bin) | 4.6.6 |
+| `ubuntu-aws` | 22.04 | [`airgap-pack-ubuntu-aws-22.04.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-ubuntu-aws-22.04.bin) | 4.3.6 |
+| `ubuntu-azure` | 22.04 | [`airgap-pack-ubuntu-azure-22.04.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-ubuntu-azure-22.04.bin) | 4.3.6 |
+| `ubuntu-maas` | 22.04 | [`airgap-pack-ubuntu-maas-22.04.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-ubuntu-maas-22.04.bin) | 4.3.6 |
+| `ubuntu-maas-ck8s` | 22.04 | [`airgap-pack-ubuntu-maas-ck8s-22.04.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-ubuntu-maas-ck8s-22.04.bin) | 4.7.20 |
+| `ubuntu-vsphere` | 22.04 | [`airgap-pack-ubuntu-vsphere-22.04.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-ubuntu-vsphere-22.04.bin) | 4.3.6 |
+| `vault` | 0.30.1 | [`airgap-pack-vault-0.30.1.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-vault-0.30.1.bin) | 4.7.20 |
+| `vault` | 0.30.0 | [`airgap-pack-vault-0.30.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-vault-0.30.0.bin) | 4.7.3 |
+| `vault` | 0.29.1 | [`airgap-pack-vault-0.29.1.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-vault-0.29.1.bin) | 4.5.15 |
+| `vault` | 0.28.1 | [`airgap-pack-vault-0.28.1.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-vault-0.28.1.bin) | 4.5.3 |
+| `vault` | 0.27.0 | [`airgap-pack-vault-0.27.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-vault-0.27.0.bin) | 4.3.6 |
+| `vmo-ns-mgmt` | 1.0.4 | [`airgap-pack-vmo-ns-mgmt-1.0.4.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-vmo-ns-mgmt-1.0.4.bin) | 4.7.20 |
+| `vmo-ns-mgmt` | 1.0.3 | [`airgap-pack-vmo-ns-mgmt-1.0.3.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-vmo-ns-mgmt-1.0.3.bin) | 4.7.13 |
+| `volume-snapshot-controller` | 8.3.0 | [`airgap-pack-volume-snapshot-controller-8.3.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-volume-snapshot-controller-8.3.0.bin) | 4.7.20 |
+| `volume-snapshot-controller` | 8.1.0 | [`airgap-pack-volume-snapshot-controller-8.1.0.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-volume-snapshot-controller-8.1.0.bin) | 4.5.8 |
+| `volume-snapshot-controller` | 8.0.1 | [`airgap-pack-volume-snapshot-controller-8.0.1.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-volume-snapshot-controller-8.0.1.bin) | 4.4.18 |
+| `zot-registry` | 0.1.67-rev1 | [`airgap-pack-zot-registry-0.1.67-rev1.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-zot-registry-0.1.67-rev1.bin) | 4.7.20 |
+| `zot-registry` | 0.1.67-save-cert | [`airgap-pack-zot-registry-0.1.67-save-cert.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-zot-registry-0.1.67-save-cert.bin) | 4.7.20 |
+| `zot-registry` | 0.1.66 | [`airgap-pack-zot-registry-0.1.66.bin`](https://software-private.spectrocloud.com/airgap/packs/airgap-pack-zot-registry-0.1.66.bin) | 4.6.23 |
