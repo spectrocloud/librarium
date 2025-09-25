@@ -17,11 +17,20 @@ const privacyIconSVG = `
   </svg>
 `;
 
+function openPrivacySettings() {
+  console.log("Opening privacy settings...");
+  const banner = document.getElementById("SeersCMPBannerMainBar")
+  if (banner) {
+    console.log("Found banner, displaying it.");
+    banner.style.display="block";
+  }
+}
+
 // Function to create the privacy link
 function createPrivacyLink(includeIcon = true, extraClass = "") {
   const icon = includeIcon ? privacyIconSVG : "";
   return `
-    <a class="menu__link ${extraClass}" href="javascript:" id="SeersDoNotSell" role="button">
+    <a class="menu__link ${extraClass}" href="javascript:" id="SeersDoNotSell" role="button" onClick="openPrivacySettings()">
       ${icon}Privacy Settings
     </a>
   `;
