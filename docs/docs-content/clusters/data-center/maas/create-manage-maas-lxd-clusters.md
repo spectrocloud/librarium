@@ -1,13 +1,13 @@
 ---
-sidebar_label: "Create and Manage MAAS Clusters using LXD VMs"
-title: "Create and Manage MAAS Clusters using LXD VMs"
+sidebar_label: "Create and Manage MAAS Clusters Using LXD VMs"
+title: "Create and Manage MAAS Clusters Using LXD VMs"
 description: "Learn how to create and manage MAAS clusters using LXD VMs in Palette."
 hide_table_of_contents: false
 tags: ["data center", "maas", "lxd"]
 ---
 
-Palette supports creating and managing Kubernetes clusters deployed to a MAAS account with LXD virtual machines (VMs)
-enabled. This section guides you on how to create a Kubernetes cluster in MAAS that use LXD VMs and is managed by
+Palette supports creating and managing Kubernetes clusters deployed to a MAAS account with LXD Virtual Machines (VMs)
+enabled. This section guides you through how to create a Kubernetes cluster in MAAS that uses LXD VMs and is managed by
 Palette.
 
 :::preview
@@ -16,133 +16,123 @@ Palette.
 
 ## Prerequisites
 
-- An installed PCG if you do not have a direct connection to the MAAS environment. Review
-  [Deploy to MAAS](../../pcg/deploy-pcg/maas.md) for guidance.
 
-  If are self-hosting Palette and have a direct connection to the MAAS environment, you can select **Use System Private
-  Gateway**. To learn more about when you would use Palette's PCG or the System Private Gateway, refer to the
-  [Architecture](architecture.md) page to learn more.
+- A [MAAS account registered in Palette](register-manage-maas-cloud-accounts.md). All MAAS-registered Palette accounts must use either a System Private Gateway or Private Cloud Gateway (PCG) to connect to the MAAS environment. For more information on which PCG to use, refer to our MAAS [Architecture](architecture.md/#pcg-deployment-options) guide.
+     - If your Palette instance does not have a direct connection to the MAAS environment, you must manually [deploy a PCG cluster](../../pcg/deploy-pcg/maas.md) to your MAAS environment.
+     - If you are using a self-hosted Palette or Palette VerteX instance that has a direct connection to your MAAS environment, you can use Palette's [System Private Gateway](architecture.md/#system-private-gateway). 
 
-- A MAAS account registered in Palette. Refer to the
-  [Register and Manage MAAS Cloud Accounts](register-manage-maas-cloud-accounts.md) if you need to register a MAAS
-  account in Palette.
-
-- A cluster profile for the MAAS environment. Review
-  [Cluster Profiles](../../../profiles/cluster-profiles/cluster-profiles.md) for more information.
-
-- Verify that the required Operating System (OS) images you use in your cluster profiles are downloaded and available in
-  your MAAS environment. Review the [How to use standard images](https://canonical.com/maas/docs/about-images) for
+- A [cluster profile](../../../profiles/cluster-profiles/cluster-profiles.md) for the MAAS environment. The Operating System (OS) image used in your cluster profile must be downloaded and available in
+  your MAAS environment. Review [How to use standard images](https://canonical.com/maas/docs/about-images) for
   guidance on downloading OS images for MAAS.
 
-- Verify that the hosts on MAAS support KVM or LXD virtual machines.
 
+- MAAS hosts that support KVM or LXD VMs.
 :::info
-
-By default, Palette registers a DNS record in MAAS for the deployed cluster and links it to the IP addresses of the
-control plane nodes of the cluster. However, you may choose not to depend on MAAS for your cluster DNS record. The
-Kubernetes pack allows you to configure a custom API server endpoint for your cluster instead.
 
 <!-- prettier-ignore-start -->
 
-This feature is only supported in Palette eXtended Kubernetes (PXK). Refer to the <VersionedLink text="Custom API Server Endpoint for MAAS Clusters" url="integrations/packs/?pack=kubernetes" /> section of the pack Additional Guidance for further information.
+By default, Palette registers a DNS record in MAAS for the deployed cluster and links it to the IP addresses of the
+control plane nodes. However, you can use the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="integrations/packs/?pack=kubernetes&tab=custom#custom-api-server-endpoint-for-maas-clusters" /> pack to configure a custom API server endpoint for your cluster instead.
 
 <!-- prettier-ignore-end -->
 
 :::
 
-## Deploy a MAAS Cluster with LXD enabled.
+## Deploy a MAAS Cluster with LXD Enabled
 
 1.  Log in to [Palette](https://console.spectrocloud.com).
 
 2.  Ensure you are in the correct project scope.
 
-3.  From the left **Main Menu**, select **Clusters** and click **Add New Cluster**.
+3.  From the left main menu, select **Clusters**, and choose either **Create Cluster** or **Add New Cluster**.
 
-4.  In **Data Center**, select **MAAS**.
+4.  In the **Data Center** section, select **MAAS**.
 
 5.  In the bottom-right corner, click **Start MAAS Configuration**.
 
-6.  Provide basic cluster information: **Cluster name**, **Description**, and **Tags**.
+6.  Enter the basic information for your cluster, including the **Cluster name**, **Description**, and **Tags**. 
 
-7.  Select your MAAS cloud account from the **drop-down Menu** and click **Next**.
+7.  From the **Cloud Account** drop-down menu, select your MAAS cloud account, and click **Next**.
 
 8.  Select the cluster profile for your MAAS cluster.
 
-9.  Review and override pack parameters as desired and click **Next**. By default, parameters for all packs are set with
-    values defined in the cluster profile.
+9.  Review and override pack parameters as desired. Select **Next**.
 
-10. Select a domain from the **Domain drop-down Menu**. Toggle the **Host LXD-Based Control Planes** button to use MAAS
-    bare metal as hypervisor for the control plane components and click **Next**.
+10. Select a **Domain** from the drop-down menu. 
 
-![Screenshot of demo - image to be replaced later](../../../../../static/assets/docs/images/clusters_data-center_maas_profile-lxd-4-7-b.webp)
+11. To use a MAAS bare metal host as a hypervisor for your control plane components, activate the **Host LXD-Based Control Planes** switch. If you want to use MAAS LXD instead of bare metal, leave this option disabled. Select **Next**.
+
+![Activating the Host LXD-Based Control Planes switch](../../../../../static/assets/docs/images/clusters_data-center_maas_profile-lxd-4-7-b.webp)
 
 11. Configure the control plane and worker node pools. The following input fields apply to MAAS control plane and worker
-    node pools. For a description of input fields that are common across target platforms refer to the
-    [Node Pools](../../cluster-management/node-pool.md) management page. Click **Next** when you are done.
+    node pools. For a detailed list of input fields that are common across environments and their usage, refer to our
+    [Node Pools](../../cluster-management/node-pool.md/#node-pool-configuration-settings) guide. Select **Next** when finished.
 
-    #### Control Plane Pool configuration
+    #### Control Plane Pool Cloud Configuration
 
-    - Cloud configuration:
+| **Parameter** | **Description** |
+| --- | --- |
+| **Resource Pool** | The MAAS resource pool from which to select available servers for deployment. Filter available servers to only those that have at least the amount of CPU and Memory selected. |
+| **Tags** | Select one or more MAAS tags that machines must have to be included in the control plane pool. We recommend using MAAS automatic tags so that the pool membership updates dynamically as machines begin or cease to match the criteria. To learn more about MAAS automatic tags, refer to the [MAAS Tags](https://maas.cloud.cbh.kth.se/MAAS/docs/cli/how-to-tag-machines.html#heading--how-to-create-automatic-tags) documentation. |
 
-      - Resource Pool: The MAAS resource pool from which to select available servers for deployment. Filter available
-        servers to only those that have at least the amount of CPU and Memory selected.
+    #### Worker Pool Cloud Configuration
 
-    - Tags - You can specify tags to dynamically place nodes in a pool by using MAAS automatic tags. Specify the tag
-      values that you want to apply to all nodes in the node pool. To learn more about MAAS automatic tags, refer to the
-      [MAAS Tags](https://maas.cloud.cbh.kth.se/MAAS/docs/cli/how-to-tag-machines.html#heading--how-to-create-automatic-tags)
-      documentation.
+| **Parameter** | **Description** |
+| --- | --- |
+| **Use LXD VMs** | Select this option if you want your worker nodes to use MAAS LXD instead of bare metal. This option is only displayed if you have KVM or LXD enabled on MAAS and you did _not_ select **Host LXD-Based Control Planes** on step 11. |
+| **Resource Pool** | The MAAS resource pool from which to select available servers for deployment. Filter available servers to only those that have at least the amount of CPU and Memory selected. |
+| **Tags** | Specify the MAAS machine tags so that Palette can deploy nodes onto the MAAS machines that match the provided tags. To learn more about MAAS tags, refer to the [MAAS Tags](https://canonical.com/maas/docs/about-machine-groups#p-22953-tags) documentation. |
 
-    #### Worker Pool configuration
+      ![Use LXD VMs switch](/clusters_data-center_maas_profile-lxd-worker-4-7-b.webp)
 
-    - Cloud configuration:
+<!-- prettier-ignore-start -->
 
-      - Use LXD VMs: Select this option if you want worker nodes to use MAAS LXD instead of bare metal.
+12. On the **Optional cluster settings** page, select from among the items on the left menu to configure additional
+    options. Refer to applicable guide for additional information.
 
-      :::warning
+    | **Left Menu Item** | **Additional Information** |
+    | --- | --- |
+    | **Manage machines** | [OS Patching](../../cluster-management/os-patching.md) |
+    | **Schedule scans** | [Compliance Scan](../../cluster-management/compliance-scan.md#configuration-security) |
+    | **Schedule backups** | [Backup and Restore](../../cluster-management/backup-restore/backup-restore.md) |
+    | **RBAC** | - [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings) <br /> - <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" /> | 
 
-      This option will only be available if you have KVM and LXD enabled on MAAS, and you do not select **Host LXD-Based
-      Control Planes** in Step 10.
+<!-- prettier-ignore-end -->
 
-      :::
 
-      ![Screenshot from demo - to be replaced](../../../../../static/assets/docs/images/clusters_data-center_maas_profile-lxd-worker-4-7-b.webp)
+13. Select **Validate** to review the cluster configuration and settings summary.
 
-      - Resource Pool: The MAAS resource pool from which to select available servers for deployment. Filter available
-        servers to only those that have at least the amount of CPU and Memory selected.
+14. Select **Finish Configuration** to deploy the cluster. Provisioning can take several minutes.
 
-      - Tags: Specify the MAAS machine tags so that Palette can deploy nodes onto the MAAS machines that match the
-        provided tags. To learn more about MAAS tags, refer to the
-        [MAAS Tags](https://canonical.com/maas/docs/about-machine-groups#p-22953-tags) documentation.
-
-12. You can configure the following cluster management features now if needed, or you can do it later:
-
-    - Manage machines
-    - Schedule scans
-    - Schedule backups
-    - Role-based access control (RBAC)
-    - Location
-
-13. Review settings and deploy the cluster.
+To monitor the status of your cluster deployment, from the left main menu, select **Clusters** and choose your cluster.
+The cluster **Overview** tab displays the status and health of your cluster, as well as deployment details. Refer to the
+**Events** tab to monitor the deployment in real time.
 
 ## Validate
 
-You can validate your cluster is available by reviewing the cluster details page. Navigate to the left **Main Menu** and
-click **Clusters**. The **Clusters** page lists all available clusters that Palette manages. Select the cluster to
-review its details page. Ensure the **Cluster Status** field contains the value **Running**.
+Use the following steps to You can validate your cluster is up and in **Running** state.
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. Ensure you are in the correct project scope.
+
+3. From the left main menu, select **Clusters**. The **Clusters** page displays a list of all available clusters that
+   Palette manages.
+
+4. Select the cluster you deployed. On the **Overview** tab, ensure the **Cluster Status** is **Running** and that the
+   cluster has a **Health** status of **Healthy**.
 
 ## Delete a MAAS Cluster
 
-When you delete a MAAS cluster, all machines and associated storage disks that were created for the cluster are removed.
-
-Follow these steps to delete a MAAS cluster.
+Take the following steps to delete a MAAS cluster. Note that when you delete a MAAS cluster, all machines and associated storage disks that were created for the cluster are removed.
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
-2. Navigate to the **Main Menu** and click **Clusters**.
+2. From the left main menu, select **Clusters**.
 
 3. Select the cluster you want to delete.
 
-4. Click the **Settings drop-down Menu**, and choose **Delete**.
+4. In the top-right, select the **Settings** drop-down menu, and choose **Delete**.
 
 The cluster status is updated to **Deleting** while cluster resources are being deleted. When all resources are
 successfully deleted, the cluster status is updated to **Deleted** and the cluster is removed from the list. The delete
@@ -155,21 +145,20 @@ Upgrade a MAAS cluster to enhance the performance and functionality of the clust
 cluster, refer to [Manage Clusters](../../cluster-management/cluster-updates.md).
 
 To protect your data, we recommend you create a backup of your MAAS cluster before proceeding with any upgrades or
-infrastructure changes. Review instructions provided in the
-[Backup and Restore](../../cluster-management/backup-restore/backup-restore.md).
+infrastructure changes. Review our
+[Backup and Restore](../../cluster-management/backup-restore/backup-restore.md) guide for additional information.
 
 :::warning
 
-Ensure that the Operating System (OS) images selected for your cluster are downloaded and available for your MAAS
-configuration to eliminate errors in Palette. You can refer to the
-[How to use standard images](https://canonical.com/maas/docs/about-images) guide for instructions on downloading OS
-images compatible with their respective MAAS environment.
+Ensure that the OS image used in your cluster profile is downloaded and available in
+  your MAAS environment before attempting to upgrade your cluster. Review [How to use standard images](https://canonical.com/maas/docs/about-images) for
+  guidance on downloading compatible OS images for MAAS.
 
 :::
 
 ## Next Steps
 
-Now that you’ve deployed a MAAS cluster, you can start developing and deploying applications to your cluster. We
+Now that you have deployed a MAAS cluster, you can start developing and deploying applications to your cluster. We
 recommend you review the Day-2 operations and become familiar with the cluster management tasks. Check out the
 [Manage Clusters](../../cluster-management/cluster-management.md) documentation to learn more about Day-2
 responsibilities.

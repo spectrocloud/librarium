@@ -14,9 +14,7 @@ using Canonical MAAS. Refer to the PCG deployment options section below to learn
 - Palette integrates with MAAS through Spectro Cloud’s open source Cloud Native Computing Foundation (CNCF)
   [Cluster API provider](https://github.com/spectrocloud/cluster-api-provider-maas). Refer to the table below.
 
-- Palette provides a cloud-like experience for deploying clusters on bare metal servers or using virtual machines (VMs)
-  that leverage MAAS LXD or bare metal. The result is increased performance and at minimal cost and operational effort.
-  The use of LXD VMs can also result in improved resource utilization.
+- Palette provides a cloud-like experience for deploying clusters on MAAS-managed bare-metal servers or on LXD virtual machines created by MAAS. Bare metal typically provides near-native performance, while LXD VMs improve consolidation and resource utilization with minimal additional overhead.
 
 ![Network flow from an architectural perspective of how MAAS LXD works with Palette](/clusters_data-center_maas_arch-diagram-maas-lxd_mk.webp)
 
