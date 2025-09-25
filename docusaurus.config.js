@@ -88,7 +88,7 @@ const allScripts = [
   {
     type: "text/javascript",
     src: "/scripts/googleTagManager.js",
-    "dataLayer": "GTM-T2F9ZMS"
+    dataLayer: "GTM-T2F9ZMS",
   },
   {
     src: "https://cdn.seersco.com/banners/55793/23380/cb.js",
