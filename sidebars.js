@@ -22,7 +22,7 @@ function createPrivacyLink(includeIcon = true, extraClass = "") {
   const icon = includeIcon ? privacyIconSVG : "";
   return `
     <a class="menu__link ${extraClass}" href="javascript:" id="SeersDoNotSell" role="button" 
-      onClick="var b=document.getElementById('SeersCMPBannerMainBar'); if(b) b.style.display='block'; return false;">
+      onClick="var b=document.getElementById('SeersCMPBannerMainBar'); if(b) b.style.display='block';">
       ${icon}Privacy Settings
     </a>
   `;
