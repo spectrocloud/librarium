@@ -48,12 +48,13 @@ control plane nodes. However, you can use the <VersionedLink text="Palette eXten
 
 ## Deploy a MAAS Cluster with LXD Enabled
 
-Deploying a MAAS Cluster with LXD enabled can be done a couple of ways.
+You can deploy MAAS clusters with LXD in three ways:
 
-1. You can deploy the Host-Control Plane (HCP) using LXD, and then deploy the workload cluster with LXD VMs that will be
-   associated to the HCP.
-
-2. You can deploy the HCP to use bare metal and the workload cluster to use LXD VMs.
+| **Combinations** | **Host Control Plane (HCP) Cluster** | **Workload Cluster** |
+| ---------------- | ------------------------------------ | -------------------- |
+| **Option 1**     | LXD                                  | LXD                  |
+| **Option 2**     | Bare metal                           | LXD                  |
+| **Option 3**     | LXD                                  | Bare metal           |
 
 ### Deploy a Host LXD-Based Control Plane Cluster with LXD Enabled MAAS Hosts
 
@@ -80,10 +81,9 @@ Deploying a MAAS Cluster with LXD enabled can be done a couple of ways.
 11. To use a MAAS bare metal host as a hypervisor for your control plane components, activate the **Host LXD-Based
     Control Planes** switch. Select **Next**.
 
-![Activating the Host LXD-Based Control Planes switch](../../../../../static/assets/docs/images/clusters_data-center_maas_profile-lxd-4-7-b.webp)
+    ![Activating the Host LXD-Based Control Planes switch](../../../../../static/assets/docs/images/clusters_data-center_maas_profile-lxd-4-7-b.webp)
 
-12. Configure the control plane and, optionally, worker node pools. If you plan on using LXD for worker nodes, refer to
-    [Deploy a Workload Cluster with LXD Enabled MAAS Hosts](#deploy-a-workload-cluster-with-lxd-enabled-maas-hosts)
+12. Configure the control plane and, optionally, worker node pools.
 
     The following input fields apply to MAAS control plane and worker node pools. For a detailed list of input fields
     that are common across environments and their usage, refer to our
@@ -92,13 +92,10 @@ Deploying a MAAS Cluster with LXD enabled can be done a couple of ways.
 
     #### Cloud Configuration
 
-| **Parameter**     | **Description**                                                                                                                                                                                                                                               |
-| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Use LXD VMs**   | Select this option if you want your worker nodes to use MAAS LXD instead of bare metal. This option is only displayed if you have KVM or LXD enabled on MAAS and you did _not_ select **Host LXD-Based Control Planes** on step 12.                           |
-| **Resource Pool** | The MAAS resource pool from which to select available servers for deployment. Filter available servers to only those that have at least the amount of CPU and Memory selected.                                                                                |
-| **Tags**          | Specify the MAAS machine tags so that Palette can deploy nodes onto the MAAS machines that match the provided tags. To learn more about MAAS tags, refer to the [MAAS Tags](https://canonical.com/maas/docs/about-machine-groups#p-22953-tags) documentation. |
-
-      ![Use LXD VMs switch](/clusters_data-center_maas_profile-lxd-worker-4-7-b.webp)
+    | **Parameter**     | **Description**                                                                                                                                                                                                                                               |
+    | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Resource Pool** | The MAAS resource pool from which to select available servers for deployment. Filter available servers to only those that have at least the amount of CPU and Memory selected.                                                                                |
+    | **Tags**          | Specify the MAAS machine tags so that Palette can deploy nodes onto the MAAS machines that match the provided tags. To learn more about MAAS tags, refer to the [MAAS Tags](https://canonical.com/maas/docs/about-machine-groups#p-22953-tags) documentation. |
 
 <!-- prettier-ignore-start -->
 
@@ -238,6 +235,19 @@ infrastructure changes. Review our [Backup and Restore](../../cluster-management
 for additional information.
 
 ## Delete a MAAS Cluster
+
+#### Host cluster
+
+If the host cluster is running LXD VMs of one or more workload clusters, you must first update your workload clusters to
+use a different host cluster to run their control plane nodes. Not doing so can bring down the workload clusters.
+
+Once the host cluster is removed, or if the host cluster is not running on any LXD VMs, you can delete it as any other
+MAAS cluster. Workload cluster.
+
+#### Workload cluster
+
+LXD workload clusters can be deleted the same way as regular MAAS clusters. Doing so will also delete the LXD VMs
+running on the host cluster.
 
 Take the following steps to delete a MAAS cluster. Note that when you delete a MAAS cluster, all machines and associated
 storage disks that were created for the cluster are removed.
