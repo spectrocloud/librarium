@@ -29,7 +29,7 @@ using Canonical MAAS. Refer to the PCG deployment options section below to learn
 - Support for static IP addresses is available through [IP Pools](../../pcg/manage-pcg/create-manage-node-pool.md)
   provisioned in the PCG.
 
-- Dynamic Host Configuration Protocol (DHCP) is also supported. If you are using DHCP, Dynamic DNS is required.
+- Dynamic Host Configuration Protocol (DHCP) is also supported. If you are using DHCP, dynamic DNS is required.
 
 - When the PCG is installed, it registers itself with a Palette instance and enables secure communication between the
   SaaS portal and the private cloud environment. The gateway enables installation and end-to-end lifecycle management of
