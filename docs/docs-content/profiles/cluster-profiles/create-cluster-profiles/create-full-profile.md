@@ -20,7 +20,7 @@ and Storage. Next, add layers using add-on profiles to expand the functionality 
 
 <PartialsComponent category="profiles" name="create-profile-enablement" edition="Full" />
 
-5. Select the **Infrastructure provider** or **Managed Kubernetes** environment to deploy your cluster on, and select
+5. Choose the **Infrastructure provider** or **Managed Kubernetes** environment to deploy your cluster on, and select
    **Next**.
 
    <!-- :::info
@@ -35,42 +35,39 @@ and Storage. Next, add layers using add-on profiles to expand the functionality 
 
 <!-- prettier-ignore-start -->
 
-6. Configure the infrastructure layers by selecting the registry, pack name, and pack version for each layer. When
-   finished, select **Next Layer** to proceed to the next infrastructure layer.
+6. Configure the infrastructure layers by selecting the **Registry**, **Pack Name**, and **Pack Version** for each layer. Choose from among **Presets**, update pack **Values**, and create [cluster profile variables](../create-cluster-profiles/define-profile-variables/define-profile-variables.md) as needed. When finished, select **Next Layer** to proceed to the next infrastructure layer.
 
 
 
       | **Layer**            | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                |
       | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
       | **Operating System** | Select an OS to use with your Kubernetes clusters. Use the **Bring Your Own OS (BYOOS)** pack to use a different or custom OS. Refer to the [Bring Your Own OS (BYOOS)](../../../byoos/byoos.md) guide to learn more.                                                                                                                                                                                                                             |
-      | **Kubernetes**       | Select the Kubernetes distribution and version to use with the cluster. The **Palette eXtended Kubernetes (PXK)** pack allows you to manage OpenID Connect (OIDC) Identity Provider (IDP). This is particularly useful if your environment does not have an IDP configured, as you can use Palette as an IDP without having to configure a third-party IDP. Refer to the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" /> pack for more information. |
+      | **Kubernetes**       | Select the Kubernetes distribution and version to use with the cluster. The **Palette eXtended Kubernetes (PXK)** pack allows you to manage an OpenID Connect (OIDC) Identity Provider (IDP). This is particularly useful if your environment does not have an IDP configured, as you can use Palette in place of a third-party IDP. Refer to the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" /> pack for more information. |
       | **Network**          | Select a network pack to use with your cluster.                                                                                                                                                                                                                                                                                                                                                                                               |
       | **Storage**          | Select a storage pack to use with your cluster.                                                                                                                                                                                                                                                                                                                                                                                               |
 
 <!-- prettier-ignore-end -->
 
-7. Select the type of layer to add to the cluster profile. Choose from amongst additional
-   [add-on packs](../create-cluster-profiles/create-addon-profile/create-pack-addon.md),
-   [manifests](../create-cluster-profiles/create-addon-profile/create-manifest-addon.md), or
+7. Once your infrastructure layers are created, select the type of layer to add to the cluster profile. Choose from
+   among [add-on packs](../create-cluster-profiles/create-addon-profile/create-pack-addon.md),
+   [manifests](../create-cluster-profiles/create-addon-profile/create-manifest-addon.md), and
    [Helm charts](../create-cluster-profiles/create-addon-profile/create-helm-addon.md).
+
+   Fill out the required input fields for each layer. When finished with each layer, select **Confirm & Create** to add
+   it to the cluster profile.
 
    For more information about layers, applying pack versions, configuration parameters, and presets, refer to our
    [Profile Layers](../cluster-profiles.md#profile-layers) guide.
 
-8. Fill out the required input fields for each layer. When finished with each layer, select **Confirm & Create** to add
-   it to the cluster profile.
+8. Repeat step 7 to add additional layers. When finished, select **Next** to review the cluster profile.
 
-<!-- ![A view of the manfiest create process and the YAML code in the text editior](/clusters_imported-clusters_attach-add-on-profile_manfest-view.webp) -->
-
-9. Repeat steps 7 and 8 to add additional layers. When finished, select **Next** to review the cluster profile.
-
-10. Select **Finish Configuration** to create the cluster profile.
+9. Select **Finish Configuration** to create the cluster profile.
 
 ## Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. Navigate to the left main menu and select **Profiles**.
+2. From the left main menu, select **Profiles**.
 
 3. Select your cluster profile to review its layers or make changes.
 
@@ -82,7 +79,7 @@ we recommend [creating a new cluster profile version](../modify-cluster-profiles
 
 For general cluster deployment information, check out our [Clusters](../../../clusters/clusters.md) guide. For an
 end-to-end walkthrough of deploying a cluster on your desired infrastructure, refer to our
-[Getting Started](../../../tutorials/getting-started/palette/palette.md) guide.
+[Getting Started](../../../tutorials/getting-started/palette/palette.md) tutorials.
 
 ## Resources
 

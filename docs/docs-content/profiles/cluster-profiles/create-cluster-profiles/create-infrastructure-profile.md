@@ -27,10 +27,10 @@ one profile, create a [full cluster profile](./create-full-profile.md) instead.
 
 <PartialsComponent category="profiles" name="create-profile-enablement" edition="Infrastructure" />
 
-5. Select the Infrastructure Provider, Managed Kubernetes, or Tech Preview cloud type for your environment and click
+5. Choose the **Infrastructure provider** or **Managed Kubernetes** environment to deploy your cluster on, and select
    **Next**.
 
-   :::info
+   <!-- >:::info
 
    Cluster profiles created from a Tech Preview cloud type are intended for clusters that a cloud provider deploys using
    Palette's generic framework built upon the open source Cluster API (CAPI) initiative.
@@ -38,51 +38,48 @@ one profile, create a [full cluster profile](./create-full-profile.md) instead.
    When creating a profile using a Tech Preview cloud type, you do not have to specify anything for the OS or Kubernetes
    layers. Out-of-the-box packs are provided for the network and storage profile layers.
 
-   :::
-
-6. Configure the infrastructure layers by selecting the registry, pack name, and pack version for each layer. Click
-   **Next Layer** to configure each infrastructure layer.
-
-   For more information about layer types, applying pack versions, configuration parameters, and presets, review
-   [Profile Layers](../cluster-profiles.md#profile-layers).
+   ::: -->
 
 <!-- prettier-ignore-start -->
 
-   | **Layer**            | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                           |
-   | -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Operating System** | Select an OS to use with your Kubernetes clusters. Use **Bring Your Own OS (BYOOS)** if you want to upload your own OS images.                                                                                                                                                                                                                                                                                                                            |
-   | **Kubernetes**       | The Kubernetes pack to use with the cluster. Palette eXtended Kubernetes (PXK) allows you to manage OpenID Connect (OIDC) Identity Provider (IDP). This is particularly useful if your environment does not have an IDP configured - you can use Palette as an IDP without having to configure a third-party IDP. Refer to the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" /> pack additional guidance for more information. |
-   | **Network**          | Select a network pack to use with your clusters.                                                                                                                                                                                                                                                                                                                                                                                                          |
-   | **Storage**          | Select a storage pack to use with your clusters.                                                                                                                                                                                                                                                                                                                                                                                                          |
+6. Configure the infrastructure layers by selecting the **Registry**, **Pack Name**, and **Pack Version** for each layer. Choose from among **Presets**, update pack **Values**, and create [cluster profile variables](../create-cluster-profiles/define-profile-variables/define-profile-variables.md) as needed. When finished, select **Next Layer** to proceed to the next infrastructure layer.
 
-   As you add each layer, Palette displays the YAML file in the editor at right. You can edit the YAML as needed.
+      | **Layer**            | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                |
+      | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+      | **Operating System** | Select an OS to use with your Kubernetes clusters. Use the **Bring Your Own OS (BYOOS)** pack to use a different or custom OS. Refer to the [Bring Your Own OS (BYOOS)](../../../byoos/byoos.md) guide to learn more.                                                                                                                                                                                                                             |
+      | **Kubernetes**       | Select the Kubernetes distribution and version to use with the cluster. The **Palette eXtended Kubernetes (PXK)** pack allows you to manage an OpenID Connect (OIDC) Identity Provider (IDP). This is particularly useful if your environment does not have an IDP configured, as you can use Palette in place of a third-party IDP. Refer to the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" /> pack for more information. |
+      | **Network**          | Select a network pack to use with your cluster.                                                                                                                                                                                                                                                                                                                                                                                               |
+      | **Storage**          | Select a storage pack to use with your cluster.                                                                                                                                                                                                                                                                                                                                                                                               |
 
 <!-- prettier-ignore-end -->
 
-7. When all the infrastructure layers are added, click on **Confirm**. Palette displays the profile stack with your
-   specified pack layers.
+7. Upon adding your storage layer, select **Confirm**. Palette displays the cluster profile stack with your specified
+   pack layers.
 
-8. Click on **Next** to review the profile.
+8. If you need to make changes, select the applicable layer, and update your pack's configuration; otherwise, select
+   **Next** to review your cluster profile.
 
-9. Click on **Finish Configuration** to create the cluster profile.
-
-You now have an infrastructure cluster profile. You can reuse the profile and apply it to several clusters. Refer to the
-[Update a Cluster Profile](../modify-cluster-profiles/update-cluster-profile.md) guide for more information about update
-operations.
+9. Select **Finish Configuration** to create your cluster profile.
 
 ## Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. Navigate to left **Main Menu** and select **Profiles**.
+2. From the left main menu, select **Profiles**.
 
 3. Select your cluster profile to review its layers or make changes.
 
 ## Next Steps
 
-Now you are ready to deploy a cluster using the infrastructure cluster profile you created. If desired, you can add
-layers to your infrastructure profile using add-on profiles. For more information, check out the
-[Create an Add-on Profile](../create-cluster-profiles/create-addon-profile/create-addon-profile.md) guide.
+You can now deploy a cluster using the cluster profile you created. If you need to make changes to your cluster profile,
+we recommend [creating a new cluster profile version](../modify-cluster-profiles/version-cluster-profile.md) before
+[updating your cluster profile](../modify-cluster-profiles/update-cluster-profile.md). While you cannot add add-on
+layers directly to your infrastructure profile, if you want to deploy additional applications to a cluster and still use
+your infrastructure profile, consider using [add-on profiles](./create-addon-profile/).
+
+For general cluster deployment information, check out our [Clusters](../../../clusters/clusters.md) guide. For an
+end-to-end walkthrough of deploying a cluster on your desired infrastructure, refer to our
+[Getting Started](../../../tutorials/getting-started/palette/palette.md) tutorials.
 
 ## Resources
 
