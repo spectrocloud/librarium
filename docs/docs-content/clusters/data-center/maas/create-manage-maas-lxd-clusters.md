@@ -235,18 +235,18 @@ for additional information.
 
 ## Delete a MAAS Cluster
 
-#### Host cluster
+    #### Host cluster
 
-If the host cluster is running LXD VMs of one or more workload clusters, you must first update your workload clusters to
-use a different host cluster to run their control plane nodes. Not doing so can bring down the workload clusters.
+    If the host cluster is running LXD VMs of one or more workload clusters, you must first update your workload clusters to
+    use a different host cluster to run their control plane nodes. Not doing so can bring down the workload clusters.
 
-Once the host cluster is removed, or if the host cluster is not running on any LXD VMs, you can delete it as any other
-MAAS cluster. Workload cluster.
+    Once the host cluster is removed, or if the host cluster is not running on any LXD VMs, you can delete it as any other
+    MAAS cluster. Workload cluster.
 
-#### Workload cluster
+    #### Workload cluster
 
-LXD workload clusters can be deleted the same way as regular MAAS clusters. Doing so will also delete the LXD VMs
-running on the host cluster.
+    LXD workload clusters can be deleted the same way as regular MAAS clusters. Doing so will also delete the LXD VMs
+    running on the host cluster.
 
 Take the following steps to delete a MAAS cluster. Note that when you delete a MAAS cluster, all machines and associated
 storage disks that were created for the cluster are removed.
