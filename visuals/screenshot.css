@@ -36,9 +36,8 @@ Mermaid diagrams are rendered client-side and produce layout shifts
 
 /*
 Hide Cookie Consent banner
-
 */
-#usercentrics-root {
+#SeersCMPBannerMainBar {
   display: none !important;
 }
 
