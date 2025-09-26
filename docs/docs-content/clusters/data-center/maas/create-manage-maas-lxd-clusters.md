@@ -35,6 +35,9 @@ Palette.
 
 - MAAS hosts that support KVM or LXD VMs.
 
+- **LxdMaas** feature flag is enabled in the
+  [System Console](../../../enterprise-version/system-management/feature-flags.md)
+
 :::info
 
 <!-- prettier-ignore-start -->
@@ -48,13 +51,9 @@ control plane nodes. However, you can use the <VersionedLink text="Palette eXten
 
 ## Deploy a MAAS Cluster with LXD Enabled
 
-You can deploy MAAS clusters with LXD in three ways:
-
-| **Combinations** | **Host Control Plane (HCP) Cluster** | **Workload Cluster** |
-| ---------------- | ------------------------------------ | -------------------- |
-| **Option 1**     | LXD                                  | LXD                  |
-| **Option 2**     | Bare metal                           | LXD                  |
-| **Option 3**     | LXD                                  | Bare metal           |
+This is a two-step process. You start with deploying your Host cluster nodes on bare-metal MAAS servers that have LXD
+enabled. Then you deploy your workload cluster with its control plane nodes as LXD VMs that are managed by the Host
+cluster. Worker nodes would still be deployed on bare-metal MAAS servers.
 
 ### Deploy a Host LXD-Based Control Plane Cluster with LXD Enabled MAAS Hosts
 
@@ -164,8 +163,8 @@ The cluster **Overview** tab displays the status and health of your cluster, as 
 
 :::danger
 
-Ensure that the **Resource Pool** and **Tags** selections match the same values for the nodes of the host cluster. Not
-doing so may attempt to create LXD VMs on MAAS hosts that do not have LXD initialized and can lead to cluster
+Ensure that the **Resource Pool**, **Availablity Zones**, and **Tags** selections match the same values for the nodes of the host cluster. Not
+doing so may rsult in LXD VMs created on MAAS hosts that do not have LXD initialized and can lead to cluster
 provisioning failures.
 
 :::
