@@ -11,7 +11,54 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## September 26, 2025 - Component Updates {#component-updates-2025-39}
+
+The following components have been updated for Palette version 4.7.20.
+
+| Component                                                                                                         | Version |
+| ----------------------------------------------------------------------------------------------------------------- | ------- |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.24.5  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.24.5  |
+
+### Bug Fixes
+
+- Fixed an issue that caused the
+  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) and
+  [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) to
+  change the node pool order, causing unnecessary
+  [cluster repaves](../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration).
+
+### Packs
+
+#### Pack Notes
+
+<!-- prettier-ignore-start -->
+
+- The <VersionedLink text="Karpenter" url="/integrations/packs/?pack=karpenter" /> pack is now verified and has been updated to integrate with Karpenter 1.6. The updated version supports upgrading existing Karpenter-managed nodes on [EKS clusters](../clusters/public-cloud/aws/eks.md). Refer to our [Karpenter Support](../clusters/public-cloud/aws/architecture.md#karpenter-support) guide for more details.
+
+<!-- prettier-ignore-end -->
+
+| Pack Name            | Layer  | FIPS | New Version |
+| -------------------- | ------ | ---- | ----------- |
+| Calico               | CNI    | No   | 3.30.3      |
+| Cilium Tetragon      | Add-on | No   | 1.5.0       |
+| Flannel              | CNI    | No   | 0.27.3      |
+| Longhorn             | CSI    | Yes  | 1.9.0       |
+| Istio                | Add-on | No   | 1.26.2-rev2 |
+| Istio                | Add-on | No   | 1.26.0-rev2 |
+| Istio                | Add-on | No   | 1.25.1-rev2 |
+| Istio                | Add-on | No   | 1.24.3-rev2 |
+| Istio                | Add-on | No   | 1.24.0-rev2 |
+| Prometheus - Grafana | Add-on | No   | 77.3.0      |
+| Reloader             | Add-on | No   | 1.4.7       |
+
 ## September 20, 2025 - Release 4.7.20 {#release-notes-4.7.b}
+
+### Component Updates
+
+The following component updates are applicable to this release:
+
+- [September 26, 2025 - Component Updates](#component-updates-2025-39)
 
 ### Security Notices
 
