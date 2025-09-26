@@ -26,7 +26,8 @@ using Canonical MAAS. Refer to the PCG deployment options section below to learn
   provides this endpoint and also wraps the MAAS environment into a cloud account that you can target for cluster
   deployment in Palette. Refer to the section below to learn about the PCG deployment options you have.
 
-- Support for static IP addresses is available through IP Pools provisioned in the PCG.
+- Support for static IP addresses is available through [IP Pools](../../pcg/manage-pcg/create-manage-node-pool.md)
+  provisioned in the PCG.
 
 - Dynamic Host Configuration Protocol (DHCP) is also supported. If you are using DHCP, Dynamic DNS is required.
 

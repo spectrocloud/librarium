@@ -117,4 +117,4 @@ To use the new node pool, you will need to create a
 [MAAS LXD workload cluster](../../data-center/maas/create-manage-maas-lxd-clusters.md) with a static IP network.
 
 For VMware vSphere clusters, assign the node pool when configuring the cluster control plane and worker nodes. For MAAS
-LXD workload clusters, assign the node pool only for configuring the worker nodes.
+LXD workload clusters, assign the node pool only when configuring the worker nodes.

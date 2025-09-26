@@ -20,7 +20,7 @@ Palette.
   must use either a System Private Gateway or Private Cloud Gateway (PCG) to connect to the MAAS environment. For more
   information on which PCG to use, refer to our MAAS [Architecture](./architecture.md) guide.
 
-  - If you want to use a specific a static network range for the Workload cluster, ensure you have configured an IP Pool
+  - If you want to use a specific a static network range for the workload cluster, ensure you have configured an IP pool
     on the IP Address Management (IPAM) tab of the PCG.
 
   - If your Palette instance does not have a direct connection to the MAAS environment, you must manually
@@ -35,27 +35,27 @@ Palette.
 
 - MAAS hosts that support KVM or LXD VMs.
 
-- **LxdMaas** feature flag is enabled in the
-  [System Console](../../../enterprise-version/system-management/feature-flags.md)
+- The **LxdMaas** feature flag is enabled in the
+  [system console](../../../enterprise-version/system-management/feature-flags.md)
 
 :::info
 
 <!-- prettier-ignore-start -->
 
-By default, Palette registers a DNS record in MAAS for the deployed cluster and links it to the IP addresses of the
+By default, Palette registers a Domain Name System (DNS) record in MAAS for the deployed cluster and links it to the IP addresses of the
 control plane nodes. However, you can use the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="integrations/packs/?pack=kubernetes&tab=custom#custom-api-server-endpoint-for-maas-clusters" /> pack to configure a custom API server endpoint for your cluster instead.
 
 <!-- prettier-ignore-end -->
 
 :::
 
-## Deploy a MAAS Cluster with LXD Enabled
+## Deploy a MAAS Cluster with LXD-Enabled
 
-This is a two-step process. You start with deploying your Host cluster nodes on bare-metal MAAS servers that have LXD
-enabled. Then you deploy your workload cluster with its control plane nodes as LXD VMs that are managed by the Host
-cluster. Worker nodes would still be deployed on bare-metal MAAS servers.
+Deploying a MAAS cluster with LXD enabled is a two-step process. First, you deploy your host cluster nodes on bare-metal
+MAAS servers that have LXD enabled. Then, you deploy your workload cluster with its control plane nodes as LXD VMs that
+are managed by the host cluster. The worker nodes are still deployed on bare-metal MAAS servers.
 
-### Deploy a Host LXD-Based Control Plane Cluster with LXD Enabled MAAS Hosts
+### Deploy a Host Cluster with LXD-Enabled MAAS Hosts
 
 1.  Log in to [Palette](https://console.spectrocloud.com).
 
@@ -91,10 +91,11 @@ cluster. Worker nodes would still be deployed on bare-metal MAAS servers.
 
     #### Cloud Configuration
 
-    | **Parameter**     | **Description**                                                                                                                                                                                                                                               |
-    | ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-    | **Resource Pool** | The MAAS resource pool from which to select available servers for deployment. Filter available servers to only those that have at least the amount of CPU and Memory selected.                                                                                |
-    | **Tags**          | Specify the MAAS machine tags so that Palette can deploy nodes onto the MAAS machines that match the provided tags. To learn more about MAAS tags, refer to the [MAAS Tags](https://canonical.com/maas/docs/about-machine-groups#p-22953-tags) documentation. |
+    | **Parameter**          | **Description**                                                                                                                                                                                                                                               |
+    | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Resource Pool**      | The MAAS resource pool from which to select available servers for deployment. Filter available servers to only those that have at least the amount of **CPU** and **Memory** selected.                                                                        |
+    | **Availability zones** | Specify the Availability Zones.                                                                                                                                                                                                                               |
+    | **Tags**               | Specify the MAAS machine tags so that Palette can deploy nodes onto the MAAS machines that match the provided tags. To learn more about MAAS tags, refer to the [MAAS Tags](https://canonical.com/maas/docs/about-machine-groups#p-22953-tags) documentation. |
 
 <!-- prettier-ignore-start -->
 
@@ -118,7 +119,7 @@ To monitor the status of your cluster deployment, from the left main menu, selec
 The cluster **Overview** tab displays the status and health of your cluster, as well as deployment details. Refer to the
 **Events** tab to monitor the deployment in real time.
 
-### Deploy a Workload Cluster with LXD Enabled MAAS Hosts
+### Deploy a Workload Cluster with LXD VMs as Control Plane Nodes
 
 1.  Log in to [Palette](https://console.spectrocloud.com).
 
@@ -140,46 +141,47 @@ The cluster **Overview** tab displays the status and health of your cluster, as 
 
 10. Select a **Domain** from the drop-down menu.
 
-11. When creating a workload cluster that will leverage MAAS LXD or will use an existing Host LXD-Based Control Plane,
+11. When creating a workload cluster that will leverage MAAS LXD or will use an existing host LXD-based control plane,
     leave the **Host LXD-Based Control Planes** option disabled. Select **Next**.
 
-![Activating the Host LXD-Based Control Planes switch](../../../../../static/assets/docs/images/clusters_data-center_maas_profile-lxd-4-7-b.webp)
+    ![Activating the Host LXD-Based Control Planes switch](../../../../../static/assets/docs/images/clusters_data-center_maas_profile-lxd-4-7-b.webp)
 
 12. Configure the control plane and worker node pools. The following input fields apply to MAAS control plane and worker
     node pools. For a detailed list of input fields that are common across environments and their usage, refer to our
     [Node Pools](../../cluster-management/node-pool.md#node-pool-configuration-settings) guide. Select **Next** when
     finished.
 
-#### Cloud Configuration
+    #### Cloud Configuration
 
-| **Parameter**     | **Description**                                                                                                                                                                                                                                                                                                                                      |
-| ----------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Use LXD VMs**   | Select this option if you want your worker nodes to use MAAS LXD instead of bare metal. This option is only displayed if you have KVM or LXD enabled on MAAS and you did _not_ select **Host LXD-Based Control Planes** on step 12.                                                                                                                  |
-| **Resource Pool** | The MAAS resource pool from which to select available servers for deployment. Filter available servers to only those that have at least the amount of CPU and Memory selected.                                                                                                                                                                       |
-| **Tags**          | Specify the MAAS machine tags so that Palette can deploy nodes onto the MAAS machines that match the provided tags. If you are using Hosted LXD-Based Control Pane, the resource pool and tags must match. To learn more about MAAS tags, refer to the [MAAS Tags](https://canonical.com/maas/docs/about-machine-groups#p-22953-tags) documentation. |
-| **Network Type**  | This option is only available when **Use LXD VMs** is enabled. Select **DHCP** or **Static IP**. For **Static IP**, select **IP Address Management** drop down and choose the IP Pool for the workload cluster.                                                                                                                                      |
+    | **Parameter**          | **Description**                                                                                                                                                                                                                                                                                                                                                              |
+    | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Use LXD VMs**        | Select this option if you want your worker nodes control plane to be deployed on MAAS LXD VMs instead of a MAAS bare metal server. This option is only displayed if you have KVM or LXD enabled on MAAS and you did _not_ select **Host LXD-Based Control Planes** on step 12.                                                                                               |
+    | **Resource Pool**      | The MAAS resource pool from which to select available servers for deployment. Filter available servers to only those that have at least the amount of **CPU** and **Memory** selected.                                                                                                                                                                                       |
+    | **Availability zones** | Specify the Availability Zones. These should match the same zones used by the Hosted LXD-Based Control Plane.                                                                                                                                                                                                                                                                |
+    | **Tags**               | Specify the MAAS machine tags so that Palette can deploy nodes onto the MAAS machines that match the provided tags. If you are using a hosted LXD-Based Control Plane, the resource pool, availability zones, and tags must match. To learn more about MAAS tags, refer to the [MAAS Tags](https://canonical.com/maas/docs/about-machine-groups#p-22953-tags) documentation. |
+    | **Network Type**       | This option is only available when **Use LXD VMs** is enabled. Select **DHCP** or **Static IP**. For **Static IP**, select the **IP Address Management** drop-down menu, and choose the desired IP Pool for the workload cluster.                                                                                                                                            |
 
-<!-- prettier-ignore-start -->
+    <!-- prettier-ignore-start -->
 
-:::danger
+    :::danger
 
-Ensure that the **Resource Pool**, **Availablity Zones**, and **Tags** selections match the same values for the nodes of the host cluster. Not
-doing so may result in LXD VMs created on MAAS hosts that do not have LXD initialized and can lead to cluster
-provisioning failures.
+    Ensure that your **Resource Pool**, **Availability Zones**, and **Tags** selections match the same values used for
+    the host cluster nodes. Failure to do so may result in LXD VMs created on MAAS hosts that do not have LXD
+    initialized, which can lead to cluster provisioning failures.
 
-:::
+    :::
 
-![Screenshot of Cloud Configuration section in Node pools configuration](../../../../../static/assets/docs/images/clusters_data-center_maas_profile-lxd-cloud-config_4-7-b.webp)
+    ![Screenshot of Cloud Configuration section in Node pools configuration](../../../../../static/assets/docs/images/clusters_data-center_maas_profile-lxd-cloud-config_4-7-b.webp)
 
 13. On the **Optional cluster settings** page, select from among the items on the left menu to configure additional
     options. Refer to applicable guide for additional information.
 
-    | **Left Menu Item** | **Additional Information** |
-    | --- | --- |
-    | **Manage machines** | [OS Patching](../../cluster-management/os-patching.md) |
-    | **Schedule scans** | [Compliance Scan](../../cluster-management/compliance-scan.md#configuration-security) |
-    | **Schedule backups** | [Backup and Restore](../../cluster-management/backup-restore/backup-restore.md) |
-    | **RBAC** | - [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings) <br /> - <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" /> | 
+    | **Left Menu Item**   | **Additional Information**                                                                                                                                                                                        |
+    | -------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+    | **Manage machines**  | [OS Patching](../../cluster-management/os-patching.md)                                                                                                                                                            |
+    | **Schedule scans**   | [Compliance Scan](../../cluster-management/compliance-scan.md#configuration-security)                                                                                                                             |
+    | **Schedule backups** | [Backup and Restore](../../cluster-management/backup-restore/backup-restore.md)                                                                                                                                   |
+    | **RBAC**             | - [Create Role Bindings](../../cluster-management/cluster-rbac.md#create-role-bindings) <br /> - <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes&tab=custom" /> |
 
 <!-- prettier-ignore-end -->
 
@@ -216,11 +218,11 @@ guidance on downloading compatible OS images for MAAS.
 :::
 
 Updates can include changes to the cluster configuration, such as a Kubernetes upgrade, or a node configuration, such as
-changing the CPU/memory requirements or picking a different availability zone. These updates are orchestrated using a
-rolling repave of the cluster nodes. To learn more about managing a MAAS cluster, refer to
+changing the CPU or memory requirements, or picking a different availability zone. These updates are orchestrated using
+a rolling repave of the cluster nodes. To learn more about managing a MAAS cluster, refer to
 [Manage Clusters](../../cluster-management/cluster-updates.md).
 
-:::warning
+:::danger
 
 Host cluster updates can cause critical disruptions in the workload clusters and should not be performed.
 
@@ -229,24 +231,25 @@ Host cluster updates can cause critical disruptions in the workload clusters and
 Workload cluster updates function the same as regular MAAS clusters. Instead of provisioning new bare-metal hosts, new
 LXD VMs are created for the control plane nodes.
 
-To protect your data, we recommend you create a backup of your MAAS cluster before proceeding with any updates or
+To protect your data, we recommend creating a backup of your MAAS cluster before proceeding with any updates or
 infrastructure changes. Review our [Backup and Restore](../../cluster-management/backup-restore/backup-restore.md) guide
 for additional information.
 
 ## Delete a MAAS Cluster
 
-    #### Host cluster
+:::warning
 
-    If the host cluster is running LXD VMs of one or more workload clusters, you must first update your workload clusters to
-    use a different host cluster to run their control plane nodes. Not doing so can bring down the workload clusters.
+Before deleting a MAAS LXD cluster, consider the following:
 
-    Once the host cluster is removed, or if the host cluster is not running on any LXD VMs, you can delete it as any other
-    MAAS cluster. Workload cluster.
+- If the _host cluster_ currently runs LXD control planes for any workload clusters, you must first move the workload
+  clusters to a different host cluster. Deleting a host cluster that hosts control planes will bring the workload
+  clusters down. Once the host cluster is removed, or if the host cluster is not running on any LXD VMs, you can delete
+  it the same way as regular MAAS clusters.
 
-    #### Workload cluster
+- _Workload clusters_ can be deleted the same way as regular MAAS clusters. Deleting a workload cluster that uses LXD
+  will also delete the LXD VMs created for that workload cluster on the host cluster.
 
-    LXD workload clusters can be deleted the same way as regular MAAS clusters. Doing so will also delete the LXD VMs
-    running on the host cluster.
+:::
 
 Take the following steps to delete a MAAS cluster. Note that when you delete a MAAS cluster, all machines and associated
 storage disks that were created for the cluster are removed.
