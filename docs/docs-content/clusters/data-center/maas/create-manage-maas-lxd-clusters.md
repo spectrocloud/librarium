@@ -19,7 +19,7 @@ Palette.
 - A [MAAS account registered in Palette](register-manage-maas-cloud-accounts.md). All MAAS-registered Palette accounts
   must use either a System Private Gateway or Private Cloud Gateway (PCG) to connect to the MAAS environment. For more
   information on which PCG to use, refer to our MAAS
-  [Architecture](../../data-center/maas/architecture.md/#pcg-deployment-options) guide.
+  [Architecture](/clusters/data-center/data-center/maas/architecture.md/#pcg-deployment-options) guide.
 
   - If you want to use a specific a static network range for the Workload cluster, ensure you have configured an IP Pool
     on the IP Address Management (IPAM) tab of the PCG.
@@ -27,7 +27,8 @@ Palette.
   - If your Palette instance does not have a direct connection to the MAAS environment, you must manually
     [deploy a PCG cluster](../../pcg/deploy-pcg/maas.md) to your MAAS environment.
   - If you are using a self-hosted Palette or Palette VerteX instance that has a direct connection to your MAAS
-    environment, you can use Palette's [System Private Gateway](../maas/architecture.md/#system-private-gateway).
+    environment, you can use Palette's
+    [System Private Gateway](/clusters/data-center/maas/maas/architecture.md/#system-private-gateway).
 
 - A [cluster profile](../../../profiles/cluster-profiles/cluster-profiles.md) for the MAAS environment. The Operating
   System (OS) image used in your cluster profile must be downloaded and available in your MAAS environment. Review
@@ -88,8 +89,8 @@ Deploying a MAAS Cluster with LXD enabled can be done a couple of ways.
 
     The following input fields apply to MAAS control plane and worker node pools. For a detailed list of input fields
     that are common across environments and their usage, refer to our
-    [Node Pools](../../cluster-management/node-pool.md/#node-pool-configuration-settings) guide. Select **Next** when
-    finished.
+    [Node Pools](/clusters/data-center/cluster-management/node-pool.md/#node-pool-configuration-settings) guide. Select
+    **Next** when finished.
 
     #### Cloud Configuration
 
