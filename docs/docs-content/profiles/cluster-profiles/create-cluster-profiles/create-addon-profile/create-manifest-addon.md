@@ -18,24 +18,7 @@ create a cluster profile by adding layers using manifests.
 
 ## Add Manifest to Add-on Profile
 
-1. Log in to [Palette](https://console.spectrocloud.com/).
-
-2. From the left **Main Menu** click **Profiles**.
-
-3. Click on the **Add Cluster Profile** button.
-
-4. Fill out the following input values and ensure you select **Add-on** for the type. Click on **Next** to continue.
-
-   | **Field**       | **Description**                                                                                                                                                                                                   |
-   | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Name**        | A custom name for the cluster profile.                                                                                                                                                                            |
-   | **Version**     | Assign a version to the profile. You only need to specify a version if you create multiple versions of a profile using the same profile name. Default: `1.0.0`.                                                   |
-   | **Description** | Use the description to provide context about the profile.                                                                                                                                                         |
-   | **Type**        | **Add-on**                                                                                                                                                                                                        |
-   | **Tags**        | Assign any desired profile tags. Tags propagate to the Virtual Machines (VMs) deployed in the cloud or data center environment when clusters are created from this cluster profile. Example: `owner` or `region`. |
-
-   To learn how to create multiple profile versions, check out
-   [Version a Cluster Profile](../../modify-cluster-profiles/version-cluster-profile.md).
+<PartialsComponent category="profiles" name="create-profile-enablement" edition="Add-on" />
 
 5. Select **Add Manifest** and provide a display name for this layer. Optionally, you can specify the layer
    [install order](./create-addon-profile.md#install-order).
@@ -51,8 +34,8 @@ create a cluster profile by adding layers using manifests.
 
    :::warning
 
-   Palette requires a namespace using the `namespace` parameter in the configuration file to identify the namespace on
-   the target cluster. For more information about customizing with namespaces, refer to
+   Palette requires the `namespace` parameter in the configuration file to identify the namespace on the target cluster.
+   For more information about customizing with namespaces, refer to
    [Profile Customization](../../../profile-customization.md).
 
    For examples of pack structure for a manifest-based pack, review
