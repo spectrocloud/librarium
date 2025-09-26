@@ -164,7 +164,7 @@ The cluster **Overview** tab displays the status and health of your cluster, as 
 :::danger
 
 Ensure that the **Resource Pool**, **Availablity Zones**, and **Tags** selections match the same values for the nodes of the host cluster. Not
-doing so may rsult in LXD VMs created on MAAS hosts that do not have LXD initialized and can lead to cluster
+doing so may result in LXD VMs created on MAAS hosts that do not have LXD initialized and can lead to cluster
 provisioning failures.
 
 :::
