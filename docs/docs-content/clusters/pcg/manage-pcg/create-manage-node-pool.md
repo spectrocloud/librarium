@@ -111,6 +111,9 @@ Use the following steps to validate that the node pool was created.
 
 6. The new node pool should be listed in the **Node Pools** section.
 
-To use the new node pool, you will need to
-[create a VMware vSphere cluster](../../data-center/vmware/create-manage-vmware-clusters.md) with a static IP network
-and assign the node pool when configuring the cluster control plane and worker nodes.
+To use the new node pool, you will need to create a
+[VMware vSphere cluster](../../data-center/vmware/create-manage-vmware-clusters.md) or
+[MAAS LXD workload cluster](../../data-center/maas/create-manage-maas-lxd-clusters.md) with a static IP network.
+
+For VMware vSphere clusters, assign the node pool when configuring the cluster control plane and worker nodes. For MAAS
+LXD workload clusters, assign the node pool only for configuring the worker nodes.
