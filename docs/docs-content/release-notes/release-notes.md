@@ -11,9 +11,67 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## September 29, 2025 - Release 4.7.21
+
+### Component Updates
+
+The following component updates are applicable to this release:
+
+- [September 26, 2025 - Component Updates](#component-updates-2025-39) <!-- omit in toc -->
+
+### Breaking Changes
+
+- [AWS clusters](../clusters/public-cloud/aws/create-cluster.md) created with Palette versions 4.6.32 to 4.7.20 use
+  [Instance Metadata Service Version 2 (IMDSv2)](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-options.html)
+  `IMDSv2 (token optional)` enforcement. This is due to a change made to upstream Cluster API AWS (CAPA), which was
+  later reverted.
+
+  The creation of new node pools in these clusters will fail if both of the following conditions are met:
+
+  - The applications in your cluster use
+    [Instance Metadata Service Version 1 (IMDSv1)](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-service.html#instance-metadata-retrieval-examples-imdsv1).
+  - The AWS account used to provision your cluster is configured with metadata version `IMDSv2 only (token required)` in
+    your EC2 account defaults. Refer to the
+    [Configure the Instance Metadata Service options](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-options.html)
+    guide for further information.
+
+  Beginning with Palette 4.7.21, newly created AWS nodes inherit the metadata version value set at the
+  [AWS account level](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-options.html#where-to-configure-instance-metadata-options).
+
+  The AWS account used for IMDS configuration needs to be assigned the `ec2:GetInstanceMetadataDefaults` permission.
+  Clusters will be launched with `IMDSv2 (token optional)` enforcement if this permission is not assigned. Refer to the
+  [AWS reference](https://docs.aws.amazon.com/cli/latest/reference/ec2/get-instance-metadata-defaults.html) guide for
+  further information.
+
+  We recommend [pausing agent upgrades](../clusters/cluster-management/platform-settings/pause-platform-upgrades.md) on
+  the affected clusters and taking one of the following actions before upgrading to Palette 4.7.21:
+
+  - Set the metadata version to `IMDSv2 (token optional)` in your EC2 account defaults.
+  - Upgrade your applications to use IMDSv2. Refer to the
+    [Transition to using Instance Metadata Service Version 2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-metadata-transition-to-version-2.html)
+    guide for further information.
+
+### Improvements
+
+- <TpBadge /> Palette now allows you to deploy and manage [MAAS Kubernetes
+  clusters](../clusters/data-center/maas/maas.md) on LXD Virtual Machines (VMs), enhancing resource efficiency by
+  enabling users to host multiple control plane nodes on a single robust physical node. Refer to the [Create and Manage
+  MAAS Clusters using LXD VMs](../clusters/data-center/maas/create-manage-maas-lxd-clusters.md) guide for further
+  information.
+
+### Bug Fixes
+
+- Fixed an issue that caused
+  [AWS Instance Metadata Service (IMDS)](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-service.html)
+  configurations to be incorrectly inherited by newly created
+  [AWS cluster](../clusters/public-cloud/aws/create-cluster.md) node pools created with Palette 4.6.32 to 4.7.20.
+- Fixed an issue that caused Out-of-Memory (OOM) errors on `palette-controller-manager` pods.
+- Fixed an issue that prevented single node [overlay clusters](../clusters/edge/networking/vxlan-overlay.md) from
+  provisioning correctly.
+
 ## September 26, 2025 - Component Updates {#component-updates-2025-39}
 
-The following components have been updated for Palette version 4.7.20.
+The following components have been updated for Palette version 4.7.20 - 4.7.21.
 
 | Component                                                                                                         | Version |
 | ----------------------------------------------------------------------------------------------------------------- | ------- |
