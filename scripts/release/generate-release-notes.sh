@@ -12,7 +12,7 @@ RELEASE_NOTES_HEADING_PARAMETERISED_FILE="scripts/release/release-notes-heading-
 if ! check_env "RELEASE_DATE" || 
    ! check_env "RELEASE_NAME" ||  
    ! check_env "RELEASE_CANVOS" ||  
-   ! check_env "RELEASE_TERRAFORM_PROVIDER" ||  
+   ! check_env "RELEASE_TERRAFORM_VERSION" ||  
    ! check_env "RELEASE_VERSION" ; then
     echo "‼️  Skipping generate $RELEASE_NOTES_FILE due to missing environment variables. ‼️"
     exit 0
