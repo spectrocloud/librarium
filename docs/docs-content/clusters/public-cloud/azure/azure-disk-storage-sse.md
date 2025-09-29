@@ -26,7 +26,8 @@ You can use Disk Encryption Sets to encrypt your nodes' Operating System and dat
 
 :::warning
 
-Azure Disk Encryption for Virtual Machines and Virtual Machine Scale Sets is not supported for any Azure cluster.
+[Azure Disk Encryption for Virtual Machines and Virtual Machine Scale Sets](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/disk-encryption-overview)
+is not supported for any Azure cluster.
 
 :::
 
