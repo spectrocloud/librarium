@@ -1,0 +1,20 @@
+---
+partial_category: profiles
+partial_name: create-profile-enablement
+---
+
+1. Log in to [Palette](https://console.spectrocloud.com/).
+
+2. From the left main menu, select **Profiles**.
+
+3. In the top-right, select **Add Cluster Profile**.
+
+4. Complete the following fields. Ensure you select a cluster profile **Type** of **{props.edition}**. Select **Next** to continue.
+
+   | **Field**       | **Description**                                                                                                                                                                                                   |
+   | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Name**        | Enter a unique name for the cluster profile.                                                                                                                                                                            |
+   | **Version**     | Assign a version to the profile using semantic versioning. Version `1.0.0` is assigned automatically when creating a new cluster profile unless otherwise specified. You only need to specify a version if you create multiple versions of a profile using the same profile name. Refer to our <VersionedLink text="Version a Cluster Profile" url="/profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile" />  guide for more information.                                                    |
+   | **Description** | (Optional) Provide context about the profile.                                                                                                                                                         |
+   | **Type**        | Choose the type of cluster profile. Select **{props.edition}**.                                                                                                                                                                                                        |
+   | **Tags**        | (Optional) Assign any desired profile tags. Tags propagate to the VMs deployed in the cloud or data center environment when clusters are created from this cluster profile. Example: `owner` or `region`. |
