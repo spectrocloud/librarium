@@ -1,8 +1,9 @@
 ---
-sidebar_label: "Azure Disk Encryption"
-title: "Azure Disk Encryption"
+sidebar_label: "Azure Disk Storage Server-Side Encryption"
+title: "Azure Disk Storage Server-Side Encryption"
 description:
-  "How to enable disk encryption on your Azure IaaS cluster using Disk Encryption Sets with customer-managed keys"
+  "How to enable disk encryption on your Azure IaaS cluster using Azure Disk Storage Server-Side Encryption with
+  customer-managed keys"
 icon: ""
 hide_table_of_contents: false
 tags: ["public cloud", "azure", "encryption", "security"]
@@ -21,10 +22,17 @@ You can use Disk Encryption Sets to encrypt your nodes' Operating System and dat
 
 ## Limitations
 
-- Azure Disk Encryption is only supported on Azure IaaS clusters.
+- Azure Disk Storage Server-Side Encryption (SSE) is only supported on Azure IaaS clusters.
+
+:::warning
+
+[Azure Disk Encryption for Virtual Machines and Virtual Machine Scale Sets](https://learn.microsoft.com/en-us/azure/virtual-machines/linux/disk-encryption-overview)
+is not supported for any Azure cluster.
+
+:::
 
 <!-- prettier-ignore -->
-- Azure Disk Encryption is only supported when using the <VersionedLink text="Palette eXtended Kubernetes" url="/integrations/packs/?pack=kubernetes" /> pack.
+- Azure Disk Storage SSE is only supported when using the <VersionedLink text="Palette eXtended Kubernetes" url="/integrations/packs/?pack=kubernetes" /> pack.
 
 - If a key expires in your Key Vault, your cluster may experience operation failures. To resolve this, generate a new
   key in Key Vault and update your Disk Encryption Set to reference the new key.
