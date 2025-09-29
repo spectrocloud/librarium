@@ -948,6 +948,10 @@ let redirects = [
     to: "/downloads/offline-docs/",
   },
   { from: "/audit-logs/kube-api-audit-logging/", to: "/audit-logs/" },
+  {
+    from: `/clusters/public-cloud/azure/azure-disk-encryption/`,
+    to: `/clusters/public-cloud/azure/azure-disk-storage-sse/`,
+  },
 ];
 
 if (packRedirects.length > 0) {
