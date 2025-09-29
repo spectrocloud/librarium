@@ -7,15 +7,13 @@ sidebar_position: 0
 tags: ["profiles", "cluster profiles", "pack", "add-on"]
 ---
 
-Use the following steps to create a cluster profile by adding one or more layers using add-on packs.
+Take the following steps to create or edit a cluster profile by adding one or more layers using add-on packs.
 
 ## Prerequisites
 
-- Your Palette account role must have the `clusterProfile.create` permission to create a profile. Refer to the
-  [Roles and Permissions](../../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile)
-  documentation for more information.
+<PartialsComponent category="profiles" name="create-profile-prerequisites" />
 
-## Create an Add-on Profile with Packs
+## Create an Add-On Profile with Packs
 
 <PartialsComponent category="profiles" name="create-profile-enablement" edition="Add-on" />
 
@@ -28,21 +26,35 @@ Use the following steps to create a cluster profile by adding one or more layers
 
 8. Select **Confirm & Create** to return to the cluster profile overview page.
 
-9. If you want to add additional layers, repeat steps 5 and 6. If you need to make changes, select the applicable layer,
-   and update your pack's configuration; otherwise, select **Next** to review your cluster profile.
+9. Repeat steps 5 - 8 to add additional layers. If you need to make changes to an existing pack, select the applicable
+   layer, and update your pack's configuration. When finished, select select **Next** to review your cluster profile.
 
-10. Click on **Finish Configuration** to create the cluster profile.
-
-You now have an add-on cluster profile that contains one or more packs. You can reuse the profile and apply it to
-several clusters. Refer to the [Update Cluster Profile](../../modify-cluster-profiles/update-cluster-profile.md) guide
-for more information about update operations.
+10. Select **Finish Configuration** to create your cluster profile.
 
 ## Add Packs to an Existing Profile
 
-Instead of creating a cluster profile from scratch, you can also add additional packs to an existing
-[full](../create-full-profile.md) or add-on cluster profile. While you cannot add packs to an
-[infrastructure profile](../create-infrastructure-profile.md), you can add additional functionality to a cluster
-deployed with infrastructure profile by attaching an add-on profile to the cluster.
+<PartialsComponent category="profiles" name="add-on-existing-intro" edition="packs" />
+
+1. Log in to [Palette](https://console.spectrocloud.com/).
+
+2. From the left main menu, select **Profiles**.
+
+3. Select an existing full or add-on cluster profile. Use the **Profile Types** drop-down menu to help you locate
+   compatible **Full** and **Add-on** profiles.
+
+4. From the cluster profile menu, select **Add New Pack**.
+
+5. Use the search, **Registry**, **Type**, and **Verified** fields to locate and select your desired pack.
+
+6. Select your **Pack Version** and modify the pack **Values** as necessary. Modify the
+   [install order](create-addon-profile.md#install-order) if applicable.
+
+7. Select **Confirm & Create** to return to the cluster profile overview page.
+
+8. Repeat steps 4 - 7 to add additional packs to your cluster profile. When finished, select **Next** to review your
+   cluster profile.
+
+9. Select **Finish Configuration** to save your updated cluster profile.
 
 ## Validate
 
@@ -54,7 +66,11 @@ deployed with infrastructure profile by attaching an add-on profile to the clust
 
 ## Next Steps
 
-Now you can use the add-on profile with other profiles and across multiple environments, projects, and tenants.
+You now have an add-on cluster profile that contains one or more packs, which you can reuse and apply to multiple
+clusters in tandem with an [infrastructure](../create-infrastructure-profile.md) or
+[full cluster profile](../create-full-profile.md).
+
+<PartialsComponent category="profiles" name="create-profile-next-steps" />
 
 ## Resources
 
