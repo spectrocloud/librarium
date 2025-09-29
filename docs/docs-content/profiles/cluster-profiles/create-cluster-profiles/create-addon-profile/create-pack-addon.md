@@ -27,7 +27,7 @@ Take the following steps to create or edit a cluster profile by adding one or mo
 8. Select **Confirm & Create** to return to the cluster profile overview page.
 
 9. Repeat steps 5 - 8 to add additional layers. If you need to make changes to an existing pack, select the applicable
-   layer, and update your pack's configuration. When finished, select select **Next** to review your cluster profile.
+   layer, and update your pack's configuration. When finished, select **Next** to review your cluster profile.
 
 10. Select **Finish Configuration** to create your cluster profile.
 
