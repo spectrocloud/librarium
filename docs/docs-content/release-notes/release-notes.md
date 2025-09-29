@@ -55,8 +55,9 @@ The following component updates are applicable to this release:
 
 - <TpBadge /> Palette now allows you to deploy and manage [MAAS Kubernetes
   clusters](../clusters/data-center/maas/maas.md) on LXD Virtual Machines (VMs), enhancing resource efficiency by
-  enabling users to host multiple control plane nodes on a single robust physical node. Refer to the Create and Manage
-  MAAS Clusters using LXD VMs guide for further information.
+  enabling users to host multiple control plane nodes on a single robust physical node. Refer to the [Create and Manage
+  MAAS Clusters using LXD VMs](../clusters/data-center/maas/create-manage-maas-lxd-clusters.md) guide for further
+  information.
 
 ### Bug Fixes
 
