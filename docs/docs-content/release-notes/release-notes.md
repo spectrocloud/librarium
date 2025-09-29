@@ -570,11 +570,11 @@ about the rolling upgrade strategy.
 
 #### Features
 
-- Palette now supports Azure Disk Encryption for IaaS clusters deployed to Azure. This feature allows you to leverage
-  [Azure Key Vault](https://azure.microsoft.com/en-us/products/key-vault) for end-to-end encryption for Azure disks
-  attached to your IaaS clusters deployed to Azure. Refer to the
-  [Azure Disk Encryption](../clusters/public-cloud/azure/azure-disk-encryption.md) guide to learn more about this
-  feature.
+- Palette now supports Azure Disk Storage Server-Side for IaaS clusters deployed to Azure. This feature allows you to
+  leverage [Azure Key Vault](https://azure.microsoft.com/en-us/products/key-vault) for end-to-end encryption for Azure
+  disks attached to your IaaS clusters deployed to Azure. Refer to the
+  [Azure Disk Storage Server-Side Encryption](../clusters/public-cloud/azure/azure-disk-storage-sse.md) guide to learn
+  more about this feature.
 
 #### Improvements
 
