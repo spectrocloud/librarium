@@ -40,7 +40,7 @@ the same profile, create a [full cluster profile](./create-full-profile.md) inst
 
 <!-- prettier-ignore-start -->
 
-6. Configure the following infrastructure layers by selecting the **Registry**, **Pack Name**, and **Pack Version** for each layer. Choose from among **Presets**, update pack **Values**, and create [cluster profile variables](../create-cluster-profiles/define-profile-variables/define-profile-variables.md) as needed. When finished, select **Next Layer** to proceed to the next infrastructure layer.
+6. Configure the following infrastructure layers by selecting the **Registry**, **Pack Name**, and **Pack Version** for each layer. Choose from among **Presets** and update pack **Values** as needed. When finished, select **Next Layer** to proceed to the next infrastructure layer.
 
       | **Layer**            | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                |
       | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
