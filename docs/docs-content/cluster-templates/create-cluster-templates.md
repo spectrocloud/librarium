@@ -13,9 +13,10 @@ tags: ["cluster templates"]
 
 ## Prerequisites
 
-- The <blank> feature flag enabled.
+- The feature flag enabled.
 
-- <blank> permissions
+- permissions
+
 - An existing cluster profile.
 
 - An existing maintenance policy.

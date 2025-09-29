@@ -9,6 +9,6 @@ tags: ["cluster templates", "policies"]
 
 ## Prerequisites
 
-- The <blank> feature flag enabled.
+- The X feature flag enabled.
 
-- <blank> permissions
+- X permissions
