@@ -74,9 +74,9 @@ to create an IaaS Kubernetes cluster in Azure that Palette manages.
   [Private DNS Zones](https://learn.microsoft.com/en-us/azure/private-link/private-endpoint-dns).
 
 <!-- prettier-ignore -->
-- If you want to enable Azure Disk Encryption on your cluster, ensure you have created a Key Vault and Disk Encryption Set. Your cluster profile must also be configured to use the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> pack, and have the **Use Azure Disk Encryption** preset enabled.
+- If you want to enable Azure Disk Storage Server-Side Encryption on your cluster, ensure you have created a Key Vault and Disk Encryption Set. Your cluster profile must also be configured to use the <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> pack, and have the **Azure Disk Encryption Set** preset enabled.
 
-  Review [Azure Disk Encryption](./azure-disk-encryption.md) for guidance.
+  Review [Azure Disk Storage Server-Side Encryption](./azure-disk-storage-sse.md) for guidance.
 
 ## Deploy an Azure Cluster
 
