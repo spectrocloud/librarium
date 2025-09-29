@@ -29,7 +29,7 @@ tags: ["release-notes"]
     [Configure the Instance Metadata Service options](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-options.html)
     guide for further information.
 
-  Beginning with Palette 4.6.x, newly created AWS nodes inherit the metadata version value set at the
+  Beginning with Palette 4.6.45, newly created AWS nodes inherit the metadata version value set at the
   [AWS account level](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-options.html#where-to-configure-instance-metadata-options).
 
   The AWS account used for IMDS configuration needs to be assigned the `ec2:GetInstanceMetadataDefaults` permission.
@@ -38,7 +38,7 @@ tags: ["release-notes"]
   further information.
 
   We recommend [pausing agent upgrades](../clusters/cluster-management/platform-settings/pause-platform-upgrades.md) on
-  the affected clusters and taking one of the following actions before upgrading to Palette 4.6.x:
+  the affected clusters and taking one of the following actions before upgrading to Palette 4.6.45:
 
   - Set the metadata version to `IMDSv2 (token optional)` in your EC2 account defaults.
   - Upgrade your applications to use IMDSv2. Refer to the
