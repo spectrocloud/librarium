@@ -1,0 +1,1 @@
+- [{{RELEASE_DATE}} - Component Updates](#component-updates-{{RELEASE_COMPONENT_YEAR}}-{{RELEASE_COMPONENT_WEEK}}) <!-- omit in toc -->
