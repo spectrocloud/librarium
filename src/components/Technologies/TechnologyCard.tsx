@@ -21,7 +21,8 @@ interface TechnologyCardProps {
 
 export default function TechnologyCard({ name, title, logoUrl, type, slug, version, versions }: TechnologyCardProps) {
   const parentVersion =
-    versions?.find((tagVersion) => tagVersion.children.find((child) => child.title === version))?.title || "";
+    versions?.find((tagVersion) => tagVersion.children && tagVersion.children.find((child) => child.title === version))
+      ?.title || "";
   return (
     <div className={styles.card}>
       <Link
