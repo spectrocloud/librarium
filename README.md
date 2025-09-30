@@ -1375,7 +1375,7 @@ recognition, all environment variables used by these scripts are named using the
 | **Environment Variable**          | **Description**                                                 | **Example Value** |
 | --------------------------------- | --------------------------------------------------------------- | ----------------- |
 | `RELEASE_COMPONENT_YEAR`          | The year of the component update.                               | `2025`            |
-| `RELEASE_COMPONENT_WEEK`          | The week number of the component update.                        | `39`            |
+| `RELEASE_COMPONENT_WEEK`          | The week number of the component update.                        | `39`              |
 | `RELEASE_COMPONENT_START_VERSION` | The first Palette version that the component update applies to. | `4.7.20`          |
 | `RELEASE_COMPONENT_END_VERSION`   | The last Palette version that the component update applies to.  | `4.7.21`          |
 
