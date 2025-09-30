@@ -4,7 +4,7 @@ title: "Manage Password Blocklist"
 description: "Learn how to manage the password blocklist in Palette."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 50
+sidebar_position: 30
 tags: ["palette", "management", "account", "credentials"]
 keywords: ["self-hosted", "palette"]
 ---

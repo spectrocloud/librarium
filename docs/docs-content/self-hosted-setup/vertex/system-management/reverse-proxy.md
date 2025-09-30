@@ -1,10 +1,10 @@
 ---
-sidebar_label: "Configure Reverse Proxy"
-title: "Configure Reverse Proxy"
+sidebar_label: "Reverse Proxy Configuration"
+title: "Reverse Proxy Configuration"
 description: "Learn how to configure a reverse proxy for Palette VerteX."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 40
+sidebar_position: 110
 tags: ["vertex", "management"]
 keywords: ["self-hosted", "vertex"]
 ---

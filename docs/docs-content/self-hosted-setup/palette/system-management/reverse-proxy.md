@@ -1,10 +1,10 @@
 ---
-sidebar_label: "Configure Reverse Proxy"
-title: "Configure Reverse Proxy"
+sidebar_label: "Reverse Proxy Configuration"
+title: "Reverse Proxy Configuration"
 description: "Learn how to configure a reverse proxy for Palette."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 50
+sidebar_position: 90
 tags: ["palette", "management"]
 keywords: ["self-hosted", "enterprise"]
 ---

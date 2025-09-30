@@ -4,7 +4,7 @@ title: "Account Management"
 description: "Update and manage the user settings and credentials of the admin user."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 60
+sidebar_position: 10
 tags: ["vertex", "management", "account"]
 keywords: ["self-hosted", "vertex"]
 ---

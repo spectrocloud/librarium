@@ -1,10 +1,10 @@
 ---
-sidebar_label: "Allow Cluster Import"
-title: "Allow Cluster Import"
+sidebar_label: "Allow Cluster Imports"
+title: "Allow Cluster Imports"
 description: "Learn how to import clusters to Palette VerteX."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 20
+sidebar_position: 40
 tags: ["vertex", "non-fips"]
 keywords: ["self-hosted", "vertex"]
 ---

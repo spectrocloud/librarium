@@ -1,10 +1,10 @@
 ---
-sidebar_label: "Add System-Level Registry"
-title: "Add System-Level Registry"
+sidebar_label: "System-Level Registries"
+title: "System-Level Registries"
 description: "Learn how to add a system-level registry in Palette VerteX."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 20
+sidebar_position: 150
 tags: ["vertex", "management", "registry"]
 keywords: ["self-hosted", "vertex"]
 ---

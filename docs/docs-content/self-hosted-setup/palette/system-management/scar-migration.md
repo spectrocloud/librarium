@@ -1,12 +1,12 @@
 ---
-sidebar_label: "Migrate SCAR to OCI Registry"
-title: "Migrate Customer-Managed SCAR to OCI Registry"
+sidebar_label: "SCAR to OCI Registry Migration"
+title: "SCAR to OCI Registry Migration"
 description:
   "Learn how to migrate the Spectro Cloud Artifact Regisry (SCAR) content to the OCI registry used to host packs and
   images."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 125
+sidebar_position: 100
 tags: ["enterprise", "management", "scar"]
 keywords: ["self-hosted", "enterprise"]
 ---

@@ -1,9 +1,9 @@
 ---
-sidebar_label: "Override Registry Configuration"
-title: "Override Registry Configuration"
+sidebar_label: "Custom Image Registry Configuration"
+title: "Custom Image Registry Configuration"
 description: "Learn how to override the image registry configuration for Palette VerteX."
 hide_table_of_contents: false
-sidebar_position: 120
+sidebar_position: 70
 tags: ["vertex"]
 keywords: ["enterprise kubernetes", "multi cloud kubernetes"]
 ---

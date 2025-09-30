@@ -4,7 +4,7 @@ title: "Create and Manage System Accounts"
 description: "Learn how to create and manage system accounts in Palette VerteX."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 10
+sidebar_position: 20
 tags: ["vertex", "management", "account"]
 keywords: ["self-hosted", "vertex"]
 ---

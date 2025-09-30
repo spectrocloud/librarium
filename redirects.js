@@ -967,6 +967,10 @@ let redirects = [
     to: "/self-hosted-setup/vertex/",
   },
   {
+    from: "/enterprise-version/install-palette/",
+    to: "/self-hosted-setup/palette/",
+  },
+  {
     from: "/enterprise-version/install-palette/install-on-vmware/",
     to: "/self-hosted-setup/palette/vmware",
   },
@@ -979,6 +983,10 @@ let redirects = [
     to: "/self-hosted-setup/palette/management-appliance",
   },
   {
+    from: "/enterprise-version/upgrade/palette-management-appliance/",
+    to: "/self-hosted-setup/palette/management-appliance/upgrade.md",
+  },
+  {
     from: "/enterprise-version/install-palette/install-on-kubernetes/airgap-install/checklist/",
     to: "/self-hosted-setup/palette/kubernetes/setup/airgap/environment-setup/",
   },
@@ -988,6 +996,148 @@ let redirects = [
       "/enterprise-version/install-palette/install-on-vmware/airgap-install/checklist/",
     ],
     to: "/self-hosted-setup/palette/vmware/setup/airgap",
+  },
+  {
+    from: "/enterprise-version/system-management/account-management/email/",
+    to: "/self-hosted-setup/palette/system-management/account-management/credentials/",
+  },
+  {
+    from: "/enterprise-version/activate-installation/",
+    to: "/self-hosted-setup/palette/kubernetes/activate/",
+  },
+  {
+    from: "/enterprise-version/upgrade/upgrade-k8s/non-airgap/",
+    to: "/self-hosted-setup/palette/kubernetes/upgrade/non-airgap",
+  },
+  {
+    from: "/enterprise-version/upgrade/upgrade-k8s/airgap/",
+    to: "/self-hosted-setup/palette/kubernetes/upgrade/airgap",
+  },
+  {
+    from: "/enterprise-version/install-palette/install-on-kubernetes/uninstall/",
+    to: "/self-hosted-setup/palette/kubernetes/uninstall/",
+  },
+  {
+    from: "/enterprise-version/upgrade/upgrade-notes/",
+    to: "/self-hosted-setup/vertex/vmware/upgrade/",
+  },
+  {
+    from: ["/vertex/fips/fips-status-icons/", "/vertex/fips/fips-compliant-components/"],
+    to: "/self-hosted-setup/vertex/fips/",
+  },
+  {
+    from: ["/vertex/install-palette-vertex/", "/vertex/upgrade/"],
+    to: "/self-hosted-setup/vertex/",
+  },
+  {
+    from: "/vertex/install-palette-vertex/install-on-kubernetes/",
+    to: "/self-hosted-setup/vertex/kubernetes/",
+  },
+  {
+    from: "/vertex/install-palette-vertex/install-on-kubernetes/airgap-install/",
+    to: "/self-hosted-setup/vertex/kubernetes/setup/airgap/",
+  },
+  {
+    from: [
+      "/vertex/install-palette-vertex/install-on-kubernetes/airgap-install/kubernetes-airgap-instructions/",
+      "/vertex/install-palette-vertex/install-on-kubernetes/airgap-install/checklist/",
+    ],
+    to: "/self-hosted-setup/vertex/kubernetes/setup/airgap/environment-setup/",
+  },
+  {
+    from: "/vertex/install-palette-vertex/install-on-kubernetes/vertex-helm-ref/",
+    to: "/self-hosted-setup/vertex/kubernetes/setup/airgap/helm-reference/",
+  },
+  {
+    from: "/vertex/install-palette-vertex/install-on-kubernetes/install/",
+    to: "/self-hosted-setup/vertex/kubernetes/install/non-airgap/",
+  },
+  {
+    from: [
+      "/vertex/install-palette-vertex/install-on-kubernetes/airgap-install/",
+      "/vertex/install-palette-vertex/install-on-kubernetes/airgap-install/install/",
+    ],
+    to: "/self-hosted-setup/vertex/kubernetes/install/airgap/",
+  },
+  {
+    from: "/vertex/activate-installation/",
+    to: "/self-hosted-setup/vertex/kubernetes/activate/",
+  },
+  {
+    from: "/vertex/upgrade/upgrade-k8s/non-airgap/",
+    to: "/self-hosted-setup/vertex/kubernetes/upgrade/non-airgap",
+  },
+  {
+    from: "/vertex/upgrade/upgrade-k8s/airgap/",
+    to: "/self-hosted-setup/vertex/kubernetes/upgrade/airgap",
+  },
+  {
+    from: "/vertex/install-palette-vertex/install-on-kubernetes/uninstall/",
+    to: "/self-hosted-setup/vertex/kubernetes/uninstall/",
+  },
+  {
+    from: "/vertex/install-palette-vertex/install-on-vmware/",
+    to: "/self-hosted-setup/vertex/vmware/",
+  },
+  {
+    from: "/vertex/install-palette-vertex/install-on-vmware/vmware-system-requirements/",
+    to: "/self-hosted-setup/vertex/vmware/setup/non-airgap/vmware-system-requirements/",
+  },
+  {
+    from: "/vertex/install-palette-vertex/install-on-vmware/install/",
+    to: "/self-hosted-setup/vertex/vmware/install/non-airgap/",
+  },
+  {
+    from: [
+      "/vertex/install-palette-vertex/install-on-vmware/airgap-install/",
+      "/vertex/install-palette-vertex/install-on-vmware/airgap-install/environment-setup/",
+      "/vertex/install-palette-vertex/install-on-vmware/airgap-install/checklist/",
+      "/vertex/install-palette-vertex/airgap/",
+    ],
+    to: "/self-hosted-setup/vertex/vmware/setup/airgap/",
+  },
+  {
+    from: "/vertex/install-palette-vertex/install-on-vmware/airgap-install/environment-setup/vmware-vsphere-airgap-instructions/",
+    to: "/self-hosted-setup/vertex/vmware/setup/airgap/ova/",
+  },
+  {
+    from: "/vertex/install-palette-vertex/install-on-vmware/airgap-install/environment-setup/env-setup-vm-vertex/",
+    to: "/self-hosted-setup/vertex/vmware/setup/airgap/rhel-vm/",
+  },
+  {
+    from: "/vertex/install-palette-vertex/install-on-vmware/airgap-install/install/",
+    to: "/self-hosted-setup/vertex/vmware/install/airgap",
+  },
+  {
+    from: "/vertex/upgrade/upgrade-notes/",
+    to: "/self-hosted-setup/vertex/vmware/upgrade/",
+  },
+  {
+    from: "/vertex/upgrade/upgrade-vmware/non-airgap/",
+    to: "/self-hosted-setup/vertex/vmware/upgrade/non-airgap/",
+  },
+  {
+    from: "/vertex/upgrade/upgrade-vmware/airgap/",
+    to: "/self-hosted-setup/vertex/vmware/upgrade/airgap/",
+  },
+  {
+    from: "/vertex/install-palette-vertex/vertex-management-appliance/",
+    to: "/self-hosted-setup/vertex/management-appliance/",
+  },
+  {
+    from: "/vertex/upgrade/vertex-management-appliance/",
+    to: "/self-hosted-setup/vertex/management-appliance/upgrade/",
+  },
+  {
+    from: "/vertex/system-management/account-management/email/",
+    to: "/self-hosted-setup/vertex/system-management/account-management/credentials/",
+  },
+  {
+    from: [
+      "/vertex/system-management/configure-aws-sts-account/",
+      "/enterprise-version/system-management/configure-aws-sts-account/",
+    ],
+    to: "/clusters/public-cloud/aws/add-aws-accounts/configure-aws-sts-account",
   },
 ];
 

@@ -1,10 +1,10 @@
 ---
-sidebar_label: "Use non-FIPS Packs"
-title: "Use non-FIPS Packs"
+sidebar_label: "Use Non-FIPS Packs"
+title: "Use Non-FIPS Packs"
 description: "Add non-FIPS packs to VerteX cluster profiles."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 0
+sidebar_position: 20
 tags: ["vertex", "non-fips"]
 keywords: ["self-hosted", "vertex"]
 ---

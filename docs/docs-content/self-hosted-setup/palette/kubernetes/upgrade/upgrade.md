@@ -21,6 +21,15 @@ If your setup includes a PCG, make sure to
 [allow the PCG to upgrade automatically](../../clusters/pcg/manage-pcg/pcg-upgrade.md) before each major or minor
 Palette upgrade.
 
+## Upgrade Notes
+
+Refer to the following known issues before upgrading:
+
+- Upgrading self-hosted Palette or Palette VerteX from version 4.6.x to 4.7.x can cause the upgrade to hang if any
+  member of the MongoDB ReplicaSet is not fully synced and in a healthy state prior to the upgrade. For guidance on
+  verifying the health status of MongoDB ReplicaSet members, refer to our
+  [Troubleshooting](../../troubleshooting/palette-upgrade.md#self-hosted-palette-or-palette-vertex-upgrade-hangs) guide.
+
 ## Supported Upgrade Paths
 
 Refer to the following tables for the supported self-hosted Palette upgrade paths for
@@ -31,15 +40,6 @@ Refer to the following tables for the supported self-hosted Palette upgrade path
 
 Before upgrading Palette to a new major version, you must first update it to the latest patch version of the latest
 minor version available.
-
-:::
-
-:::warning
-
-Upgrading self-hosted Palette or Palette VerteX from version 4.6.x to 4.7.x can cause the upgrade to hang if any member
-of the MongoDB ReplicaSet is not fully synced and in a healthy state prior to the upgrade. For guidance on verifying the
-health status of MongoDB ReplicaSet members, refer to our
-[Troubleshooting](../../troubleshooting/palette-upgrade.md#self-hosted-palette-or-palette-vertex-upgrade-hangs) guide.
 
 :::
 

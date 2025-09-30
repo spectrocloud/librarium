@@ -5,7 +5,7 @@ description:
   "Learn how to add login and classification banners, also known as Authority to Operate (ATO) banners, in VerteX."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 100
+sidebar_position: 50
 tags: ["vertex", "management", "ato", "banner"]
 keywords: ["self-hosted", "vertex", "ato", "banner"]
 ---

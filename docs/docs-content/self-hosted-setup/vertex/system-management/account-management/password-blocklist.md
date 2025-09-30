@@ -4,7 +4,7 @@ title: "Manage Password Blocklist"
 description: "Learn how to manage the password blocklist in Palette VerteX."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 50
+sidebar_position: 40
 tags: ["vertex", "management", "account", "credentials"]
 keywords: ["self-hosted", "vertex"]
 ---

@@ -1,10 +1,10 @@
 ---
-sidebar_label: "Modify Cloud Provider Configuration"
-title: "Modify Cloud Provider Configuration"
+sidebar_label: "Cloud Provider Configuration"
+title: "Cloud Provider Configuration"
 description: "Learn how to modify the system-level cloud provider configuration in Palette."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 130
+sidebar_position: 50
 tags: ["management", "clouds"]
 keywords: ["self-hosted"]
 ---

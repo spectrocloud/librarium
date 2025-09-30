@@ -3,6 +3,7 @@ sidebar_label: "Palette VerteX"
 title: "Palette VerteX"
 description: "Learn how Palette VerteX enables regulated industries to meet stringent security requirements."
 hide_table_of_contents: false
+sidebar_position: 0
 tags: ["vertex"]
 keywords: ["self-hosted", "vertex"]
 ---

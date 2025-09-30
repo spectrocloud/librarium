@@ -1,10 +1,10 @@
 ---
-sidebar_label: "Use non-FIPS Features"
-title: "Use non-FIPS Features"
+sidebar_label: "Use Non-FIPS Features"
+title: "Use Non-FIPS Features"
 description: "Use non-FIPS features such as backup, restore, and scans."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 10
+sidebar_position: 30
 tags: ["vertex", "non-fips"]
 keywords: ["self-hosted", "vertex"]
 ---

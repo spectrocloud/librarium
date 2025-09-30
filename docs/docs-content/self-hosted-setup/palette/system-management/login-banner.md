@@ -5,7 +5,7 @@ description:
   "Learn how to add login and classification banners, also known as Authority to Operate (ATO) banners, in Palette."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 100
+sidebar_position: 40
 tags: ["enterprise", "management", "ato", "banner"]
 keywords: ["self-hosted", "enterprise", "ato", "banner"]
 ---
