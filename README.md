@@ -1270,11 +1270,29 @@ The scripts update the following files.
 The following table provides an overview of all the environment variables and which pages they are used on. For ease of
 recognition, all environment variables used by these scripts are named using the `RELEASE_` prefix.
 
+#### Release Notes
+
+| **Environment Variable**    | **Description**                                       | **Example Value**  |
+| --------------------------- | ----------------------------------------------------- | ------------------ |
+| `RELEASE_NAME`              | The internal release name.                            | `4-7-c`            |
+| `RELEASE_VERSION`           | The external release version.                         | `4.7.6`            |
+| `RELEASE_DATE`              | The date that the release takes place.                | `"March 18, 2025"` |
+| `RELEASE_CANVOS`            | The CanvOS version.                                   | `4.7.13`           |
+| `RELEASE_TERRAFORM_VERSION` | The version of the Terraform and Crossplane provider. | `0.24.5`           |
+
+#### Component Updates
+
+| **Environment Variable**          | **Description**                                                 | **Example Value** |
+| --------------------------------- | --------------------------------------------------------------- | ----------------- |
+| `RELEASE_COMPONENT_YEAR`          | The year of the component update.                               | `2025`            |
+| `RELEASE_COMPONENT_WEEK`          | The week number of the component update.                        | `39`              |
+| `RELEASE_COMPONENT_START_VERSION` | The first Palette version that the component update applies to. | `4.7.20`          |
+| `RELEASE_COMPONENT_END_VERSION`   | The last Palette version that the component update applies to.  | `4.7.21`          |
+
+#### Other Release Updates
+
 | **Environment Variable**             | **Description**                                                                                                                                                                                    | **Example Value**                                                     |
 | ------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| `RELEASE_NAME`                       | The internal release name.                                                                                                                                                                         | `4-5-c`                                                               |
-| `RELEASE_VERSION`                    | The external release version.                                                                                                                                                                      | `4.6.6`                                                               |
-| `RELEASE_DATE`                       | The date that the release takes place.                                                                                                                                                             | `"March 18, 2025"`                                                    |
 | `RELEASE_PALETTE_CLI_VERSION`        | The Palette CLI version.                                                                                                                                                                           | `4.6.0`                                                               |
 | `RELEASE_PALETTE_CLI_SHA`            | The SHA of the Palette CLI corresponding to the provided version.                                                                                                                                  | `07d63693a8c90483f6f000d4580cfd86f81178e4b96cfbd32e0f50955d57eec7`    |
 | `RELEASE_EDGE_CLI_VERSION`           | The Palette Edge CLI version.                                                                                                                                                                      | `4.6.3`                                                               |
@@ -1291,5 +1309,6 @@ recognition, all environment variables used by these scripts are named using the
 
 - `make init-release` creates placeholders for all the release related environment variables in your `.env` file. Use
   the placeholders to fill in the values relevant to the Palette release.
+- `make generate-component-updates` creates only the component updates skeleton in the Palette release notes.
 - `make generate-release-notes` creates only the release notes changes for the Palette release.
 - `make generate-release` creates all Palette release related updates, excluding release notes.
