@@ -1368,7 +1368,7 @@ recognition, all environment variables used by these scripts are named using the
 | `RELEASE_VERSION`           | The external release version.                         | `4.6.6`            |
 | `RELEASE_DATE`              | The date that the release takes place.                | `"March 18, 2025"` |
 | `RELEASE_CANVOS`            | The CanvOS version.                                   | `4.7.13`           |
-| `RELEASE_TERRAFORM_VERSION` | ThE version of the Terraform and Crossplane provider. | `0.24.5`           |
+| `RELEASE_TERRAFORM_VERSION` | The version of the Terraform and Crossplane provider. | `0.24.5`           |
 
 #### Component Updates
 
