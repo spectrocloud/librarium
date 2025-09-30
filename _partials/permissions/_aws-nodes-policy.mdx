@@ -25,7 +25,9 @@ partial_name: aws-nodes-policy
         "ec2:DescribeNetworkInterfaces",
         "ec2:DescribeInstanceTypes"
       ],
-      "Resource": ["*"],
+      "Resource": [
+        "*"
+      ],
       "Effect": "Allow"
     },
     {
@@ -33,7 +35,9 @@ partial_name: aws-nodes-policy
         "secretsmanager:DeleteSecret",
         "secretsmanager:GetSecretValue"
       ],
-      "Resource": ["arn:*:secretsmanager:*:*:secret:aws.cluster.x-k8s.io/*"],
+      "Resource": [
+        "arn:*:secretsmanager:*:*:secret:aws.cluster.x-k8s.io/*"
+      ],
       "Effect": "Allow"
     },
     {
@@ -45,7 +49,9 @@ partial_name: aws-nodes-policy
         "ssmmessages:OpenDataChannel",
         "s3:GetEncryptionConfiguration"
       ],
-      "Resource": ["*"],
+      "Resource": [
+        "*"
+      ],
       "Effect": "Allow"
     }
   ]

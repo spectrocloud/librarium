@@ -29,14 +29,6 @@ This feature does not apply to EKS or AKS clusters.
 
 ## Enablement
 
-:::info
-
-By default, the Cluster Auto Remediation setting inherits its value from the tenant settings. To override this behavior
-at the project level, follow the instructions for **Project Scope**. If overridden, all clusters in the project will use
-the project-level value instead of the tenant-level value.
-
-:::
-
 <Tabs groupId="clusterAutoRemediation">
 
 <TabItem value="projectScope" label="Project Scope">
@@ -47,13 +39,9 @@ the project-level value instead of the tenant-level value.
 
 3. Select **Platform Settings**.
 
-4. Toggle the **Override Cluster Auto Remediation** button.
+4. Toggle the **Cluster Auto Remediation** button.
 
-   The **Cluster Auto Remediation** option appears when **Override Cluster Auto Remediation** is enabled.
-
-5. Toggle the **Cluster Auto Remediation** button to enable or disable the feature.
-
-6. A pop-up box will ask you to confirm the action. Click **OK**.
+5. A pop-up box will ask you to confirm the action. Click **OK**.
 
 </TabItem>
 
@@ -65,7 +53,7 @@ the project-level value instead of the tenant-level value.
 
 3. Select **Platform Settings**.
 
-4. Toggle the **Cluster Auto Remediation** button to enable or disable the feature.
+4. Toggle the **Cluster Auto Remediation** button.
 
 5. A pop-up box will ask you to confirm the action. Click **OK**.
 
@@ -85,10 +73,7 @@ the project-level value instead of the tenant-level value.
 
 3. Select **Platform Settings**.
 
-4. The **Override Cluster Auto Remediation** toggle button is checked or unchecked based on the last action.
-
-5. If the **Override Cluster Auto Remediation** toggle button is checked, the **Cluster Auto Remediation** toggle button
-   will be visible and checked or unchecked based on the last action.
+4. The **Cluster Auto Remediation** toggle button is checked.
 
 </TabItem>
 
@@ -100,7 +85,7 @@ the project-level value instead of the tenant-level value.
 
 3. Select **Platform Settings**.
 
-4. The **Cluster Auto Remediation** toggle button is checked or unchecked based on the last action.
+4. The **Cluster Auto Remediation** toggle button is checked.
 
 </TabItem>
 
