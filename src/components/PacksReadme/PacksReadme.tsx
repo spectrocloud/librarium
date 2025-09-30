@@ -74,7 +74,9 @@ function versionChange(
 }
 
 function getParentVersion(version: string, packData: PackData) {
-  return packData.versions.find((tagVersion) => tagVersion.children.find((child) => child.title === version));
+  return packData.versions.find(
+    (tagVersion) => (tagVersion.children && tagVersion.children.find((child) => child.title === version)) || ""
+  );
 }
 
 function compareVersions(v1: string, v2: string): number {
