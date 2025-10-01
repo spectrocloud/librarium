@@ -104,6 +104,7 @@ add_breaking_changes_body() {
     new_line="${prefix}${replacement}${suffix}"
   done
 
+  echo >> "$filename"   # ensures file ends with a newline
   echo "$new_line" >> "$filename"
 }
 
