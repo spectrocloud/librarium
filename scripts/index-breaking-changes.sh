@@ -43,6 +43,7 @@ add_breaking_changes_body() {
   # If line is empty just append it and return
   if [ -z "$new_line" ]; then
     echo "" >> "$filename"
+    echo >> "$filename"   # ensures file ends with a newline
     return
   fi
 
@@ -104,7 +105,6 @@ add_breaking_changes_body() {
     new_line="${prefix}${replacement}${suffix}"
   done
 
-  echo >> "$filename"   # ensures file ends with a newline
   echo "$new_line" >> "$filename"
 }
 
