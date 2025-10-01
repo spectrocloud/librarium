@@ -44,7 +44,7 @@ The following components have been updated for Palette version 4.7.20 - 4.7.21.
 | Palette Optimized RKE2       | Kubernetes | No   | 1.33.5      |
 | Palette Optimized RKE2       | Kubernetes | No   | 1.32.9      |
 | Palette Optimized RKE2       | Kubernetes | No   | 1.31.13     |
-| Spectro Kubernetes Dashboard | Add-on     | Yes   | 7.13.0      |
+| Spectro Kubernetes Dashboard | Add-on     | Yes  | 7.13.0      |
 
 ## September 29, 2025 - Release 4.7.21
 
