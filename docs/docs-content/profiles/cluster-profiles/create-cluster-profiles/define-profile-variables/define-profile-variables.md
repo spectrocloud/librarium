@@ -31,6 +31,12 @@ The following table describes the differences between profile variables and macr
 | Supports optionality restrictions.                                         |          ✅          |    ❌     |
 | Supports [sprig template functions](https://masterminds.github.io/sprig/). |          ❌          |    ✅     |
 
+## Cluster Templates
+
+:::preview
+
+:::
+
 ## Limitations
 
 - Nesting profile variables within macros or other profile variables is not supported.

@@ -9,14 +9,14 @@ tags: ["cluster templates"]
 
 ## Limitations
 
-- Once a cluster profile is linked to a cluster template, the cluster profile cannot be modified.
+- Once a cluster profile is linked to a cluster template, the selected cluster profile version cannot be modified.
 
 ## Prerequisites
 
 - The feature flag enabled.
 
-- permissions
+- X permissions
 
-- An existing cluster profile.
+- An existing infrastructure or full cluster profile.
 
 - An existing maintenance policy.
