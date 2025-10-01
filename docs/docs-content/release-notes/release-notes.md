@@ -11,6 +11,41 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## October 3, 2025 - Component Updates {#component-updates-2025-40}
+
+The following components have been updated for Palette version 4.7.20 - 4.7.21.
+
+| Component                                                                                                         | Version |
+| ----------------------------------------------------------------------------------------------------------------- | ------- |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.24.X  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.24.X  |
+
+### Packs
+
+#### Pack Notes
+
+<!-- prettier-ignore-start -->
+
+- The <VersionedLink text="Spectro Kubernetes Dashboard" url="/integrations/packs/?pack=spectro-k8s-dashboard" /> pack version 7.13.0 is now FIPS compliant.
+
+<!-- prettier-ignore-end -->
+
+| Pack Name                    | Layer      | FIPS | New Version |
+| ---------------------------- | ---------- | ---- | ----------- |
+| Azure Disk                   | CSI        | No   | 1.33.4      |
+| Amazon EBS CSI               | CSI        | No   | 1.48.0      |
+| Cilium                       | CNI        | No   | 1.18.1      |
+| GCE Persistent Disk CSI      | CSI        | No   | 1.17.15     |
+| Prometheus Agent             | Add-on     | No   | 27.38.0     |
+| Prometheus - Grafana         | Add-on     | No   | 77.10.0     |
+| Palette Optimized K3s        | Kubernetes | No   | 1.33.5      |
+| Palette Optimized K3s        | Kubernetes | No   | 1.32.9      |
+| Palette Optimized K3s        | Kubernetes | No   | 1.31.13     |
+| Palette Optimized RKE2       | Kubernetes | No   | 1.33.5      |
+| Palette Optimized RKE2       | Kubernetes | No   | 1.32.9      |
+| Palette Optimized RKE2       | Kubernetes | No   | 1.31.13     |
+| Spectro Kubernetes Dashboard | Add-on     | Yes   | 7.13.0      |
+
 ## September 29, 2025 - Release 4.7.21
 
 ### Component Updates
@@ -18,6 +53,7 @@ tags: ["release-notes"]
 The following component updates are applicable to this release:
 
 - [September 26, 2025 - Component Updates](#component-updates-2025-39) <!-- omit in toc -->
+- [October 3, 2025 - Component Updates](#component-updates-2025-40) <!-- omit in toc -->
 
 ### Breaking Changes
 
@@ -117,6 +153,7 @@ The following components have been updated for Palette version 4.7.20 - 4.7.21.
 The following component updates are applicable to this release:
 
 - [September 26, 2025 - Component Updates](#component-updates-2025-39) <!-- omit in toc -->
+- [October 3, 2025 - Component Updates](#component-updates-2025-40) <!-- omit in toc -->
 
 ### Security Notices
 
