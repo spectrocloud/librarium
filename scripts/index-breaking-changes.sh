@@ -199,7 +199,12 @@ for branch in $branches; do
       # If we are in breaking changes and the line starts a code block don't collapse into a paragraph.
       if echo "$line" | grep -q '^[[:space:]]*```'; then
         # Toggle in_code_section
-        in_code_section=! in_code_section
+        if [[ "$in_code_section" == "true" ]]; then
+          in_code_section="false"
+        else
+          in_code_section="true"
+        fi
+        
         add_breaking_changes_body "$release_number" "$line"
         continue
       fi
