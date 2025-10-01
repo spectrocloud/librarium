@@ -161,7 +161,8 @@ for branch in $branches; do
 
   in_breaking_changes=false
   release_number=""
-  paragraph=""
+  # Variable to hold the current buffer text so that we can collapse versioned links on same line.
+  buffer=""
   in_code_section=false
   # Read the release notes file line by line.
   while IFS= read -r line; do
@@ -193,10 +194,15 @@ for branch in $branches; do
       # If we are in breaking changes and the line is a heading then exit breaking changes mode. 
       if echo "$line" | grep -q '^[[:space:]]*#'; then
         in_breaking_changes=false
+        # Flush the buffer if it has content.
+        if [ -n "$buffer" ]; then
+          add_breaking_changes_body "$release_number" "$buffer"
+          buffer=""
+        fi
         continue
       fi
 
-      # If we are in breaking changes and the line starts a code block don't collapse into a paragraph.
+      # If we are in breaking changes and the line starts a code block don't collapse or strip spaces.
       if echo "$line" | grep -q '^[[:space:]]*```'; then
         # Toggle in_code_section
         if [[ "$in_code_section" == "true" ]]; then
@@ -215,28 +221,29 @@ for branch in $branches; do
         continue
       fi
 
-      # If we are in breaking changes and the line is not a heading then add it to the paragraph.
+      # If we are in breaking changes and the line is not a heading then process it.
       if echo "$line" | grep -q '^[[:space:]]*[^#]'; then
-        append_line=$line
-        # If the line starts with <VersionedLink> then strip leading whitespace.
+        
+        # If the line starts with <VersionedLink> then strip leading whitespace and add it to the buffer.
         if echo "$line" | grep -q '^[[:space:]]*<VersionedLink'; then
           append_line=$(echo "$line" | sed 's/^[[:space:]]*//')
-        fi
-        # If the paragraph is not empty add a space before appending the new line. Else just set line value.
-        if [ -n "$paragraph" ]; then
-          paragraph="$paragraph $append_line"
-        else
-          paragraph="$append_line"
+          # If the buffer is not empty add a space before appending the new line. Else just set line value.
+          if [ -n "$buffer" ]; then
+            buffer="$buffer $append_line"
+          else
+            buffer="$append_line"
+          fi
+        else 
+          # Not a VersionedLink line so we need to flush the buffer if it has content.
+          if [ -n "$buffer" ]; then
+            add_breaking_changes_body "$release_number" "$buffer"
+            buffer=""
+          fi
+          # Set the line as the buffer so it is ready for the next versioned link.
+          buffer="$line"
         fi
         continue
       fi
-
-      # If we are in breaking changes and the line is empty process breaking change and reset paragraph. 
-      if echo "$line" | grep -q '^[[:space:]]*$'; then
-        add_breaking_changes_body "$release_number" "$paragraph"
-        paragraph=""
-      fi
-
     fi
 
   done < "$release_notes_path"
