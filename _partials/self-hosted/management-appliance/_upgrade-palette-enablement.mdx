@@ -11,7 +11,7 @@ partial_name: upgrade-palette-enablement
 
 <TabItem label="Local UI Method" value="local-ui-method"> */}
 
-1. Navigate to the [Artifact Studio](https://artifact-studio.spectrocloud.com/) through a web browser, and under **Install {props.iso}**, click on the drop-down menu and select the version you want to upgrade your {props.app} to.
+1. Navigate to the [Artifact Studio](https://artifact-studio.spectrocloud.com/) through a web browser and log in. Under **Install {props.iso}**, click on the drop-down menu and select the version you want to upgrade your {props.app} to.
 
 2. Click **Show Artifacts** to display the **{props.iso} Artifacts** pop-up window. Click the **Download** button for the **Content bundle (including Ubuntu)**.
 
@@ -45,6 +45,16 @@ partial_name: upgrade-palette-enablement
 
 10. Click the **Update** drop-down menu and select **Review Changes**.
 
+    :::warning
+
+    Ensure that the configured Zot password matches the password that you used when
+    installing Palette Management Appliance.
+    You cannot access the Zot registry post-upgrade if the passwords do not match.
+
+    If you have forgotten your Zot password, you can connect to your Kubernetes cluster and retrieve it from the Zot secret.
+   
+    :::
+
 11. Review the changes for each profile carefully and ensure you are satisfied with the proposed updates. There may be changes to the profiles between versions that include the addition or removal of properties.
 
     :::warning
@@ -65,7 +75,7 @@ During the upgrade process, the {props.version} system and tenant consoles will 
 
 // The Palette CLI method is currently not working, so commenting this out until a future release.
 
-1. Navigate to the [Artifact Studio](https://artifact-studio.spectrocloud.com/) through a web browser, and under **Install {props.iso}**, click on the drop-down menu and select the version you want to upgrade your {props.app} to.
+1. Navigate to the [Artifact Studio](https://artifact-studio.spectrocloud.com/) through a web browser and log in. Under **Install {props.iso}**, click on the drop-down menu and select the version you want to upgrade your {props.app} to.
 
 2. Click **Show Artifacts** to display the **{props.iso} Artifacts** pop-up window. Click the **Download** button for the **Content bundle (including Ubuntu)**.
 
@@ -91,9 +101,19 @@ During the upgrade process, the {props.version} system and tenant consoles will 
 
 6. Upload the content bundle to the internal Zot registry using the Palette CLI. Replace `<content-bundle-zst>` with your downloaded content bundle file and `<management-vip>` with the VIP address of the {props.version} management cluster. If you have changed the default port or the base content path for the Zot registry, replace `30003` with the correct port number and `spectro-content` with the correct content path.
 
-   If you are using custom TLS certificates or choosing to skip TLS, use the appropriate flags as shown in the following examples.
+   If you are using regular TLS certificates, custom TLS certificates, or choosing to skip TLS, use the appropriate flags as shown in the following examples.
 
    <Tabs groupId="tls-palette-cli">
+
+   <TabItem label="Regular TLS Certificate" value="regular-tls-certificate">
+
+   ```shell
+   palette content push \
+   --registry <management-vip>:30003/spectro-content \
+   --file <content-bundle-zst>
+   ```
+
+   </TabItem>
 
    <TabItem label="Custom TLS Certificate" value="custom-tls-certificate">
 
@@ -171,7 +191,7 @@ When using an external registry, you must upload the content bundle to both the 
 
 :::
 
-1. Navigate to the [Artifact Studio](https://artifact-studio.spectrocloud.com/) through a web browser, and under **Install {props.iso}**, click on the drop-down menu and select the version you want to upgrade your {props.app} to.
+1. Navigate to the [Artifact Studio](https://artifact-studio.spectrocloud.com/) through a web browser and log in. Under **Install {props.iso}**, click on the drop-down menu and select the version you want to upgrade your {props.app} to.
 
 2. Click **Show Artifacts** to display the **{props.iso} Artifacts** pop-up window. Click the **Download** button for the **Content bundle (including Ubuntu)**.
 
@@ -197,9 +217,19 @@ When using an external registry, you must upload the content bundle to both the 
 
 6. Upload the file to your external registry using the Palette CLI. Replace `<content-bundle-zst>` with your downloaded content bundle file, `<registry-dns-or-ip>` with the DNS/IP address of your registry, and `<registry-port>` with the port number of your registry (if applicable). If you have changed the base content path from the default, replace `spectro-content` with the correct content path.
 
-   If you are using custom TLS certificates or choosing to skip TLS, use the appropriate flags as shown in the following examples.
+   If you are using regular TLS certificates, custom TLS certificates, or choosing to skip TLS, use the appropriate flags as shown in the following examples.
 
    <Tabs groupId="tls-palette-cli">
+
+   <TabItem label="Regular TLS Certificate" value="regular-tls-certificate">
+
+   ```shell
+   palette content push \
+   --registry <registry-dns-or-ip>:<registry-port>/spectro-content \
+   --file <content-bundle-zst>
+   ```
+
+   </TabItem>
 
    <TabItem label="Custom TLS Certificate" value="custom-tls-certificate">
 

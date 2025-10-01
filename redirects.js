@@ -118,7 +118,7 @@ let redirects = [
   },
   {
     from: `/knowledgebase/how-to/reverse-proxy-dashboard/`,
-    to: `/clusters/cluster-management/kubernetes-dashboard/`,
+    to: `/clusters/cluster-management/spectro-kubernetes-dashboard/`,
   },
   {
     from: `/devx/cluster-groups/`,
@@ -524,23 +524,51 @@ let redirects = [
   // Redirects for tutorials that were removed from docs
   {
     from: "/registries-and-packs/deploy-pack",
-    to: "/tutorials/profiles/deploy-pack",
+    to: "/tutorials/packs-registries/deploy-pack",
   },
   {
     from: "/clusters/pcg/deploy-app-pcg",
-    to: "/tutorials/cluster-deployment/pcg/deploy-app-pcg",
+    to: "/tutorials/clusters/pcg/deploy-app-pcg",
   },
   {
     from: "/devx/apps/deploy-app",
-    to: "/tutorials/cluster-deployment/pde/deploy-app",
+    to: "/tutorials/pde/deploy-app",
   },
   {
     from: "/clusters/cluster-management/update-k8s-cluster",
-    to: "/tutorials/cluster-management/update-maintain/update-k8s-cluster",
+    to: "/tutorials/profiles/update-k8s-cluster",
   },
   {
     from: "/clusters/edge/site-deployment/deploy-cluster",
-    to: "/tutorials/edge/deploy-cluster",
+    to: "/tutorials/clusters/edge/deploy-cluster",
+  },
+  {
+    from: "/tutorials/profiles/deploy-pack/",
+    to: "/tutorials/packs-registries/deploy-pack/",
+  },
+  {
+    from: "/tutorials/cluster-management/update-maintain/update-k8s-cluster/",
+    to: "/tutorials/profiles/update-k8s-cluster/",
+  },
+  {
+    from: "/tutorials/cluster-management/update-maintain/cluster-profile-variables",
+    to: "/tutorials/profiles/cluster-profile-variables/",
+  },
+  {
+    from: "/tutorials/edge/deploy-cluster/",
+    to: "/tutorials/clusters/edge/deploy-cluster/",
+  },
+  {
+    from: "/tutorials/edge/deploy-cluster-virtualbox/",
+    to: "/tutorials/clusters/edge/deploy-cluster-virtualbox/",
+  },
+  {
+    from: "/tutorials/cluster-deployment/pcg/deploy-app-pcg/",
+    to: "/tutorials/clusters/pcg/deploy-app-pcg/",
+  },
+  {
+    from: "/tutorials/cluster-deployment/pde/deploy-app/",
+    to: "/tutorials/pde/deploy-app/",
   },
   {
     from: "/security-bulletins/index/",
@@ -930,6 +958,14 @@ let redirects = [
     to: "/downloads/offline-docs/",
   },
   { from: "/audit-logs/kube-api-audit-logging/", to: "/audit-logs/" },
+  {
+    from: `/clusters/cluster-management/kubernetes-dashboard/`,
+    to: `/clusters/cluster-management/spectro-kubernetes-dashboard/`,
+  },
+  {
+    from: `/clusters/public-cloud/azure/azure-disk-encryption/`,
+    to: `/clusters/public-cloud/azure/azure-disk-storage-sse/`,
+  },
 ];
 
 if (packRedirects.length > 0) {

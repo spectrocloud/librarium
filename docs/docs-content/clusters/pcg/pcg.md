@@ -39,6 +39,7 @@ a PCG to an existing Kubernetes cluster. Refer to the
 
 | **Palette Version** <!-- pcg-kubernetes-version-table --> | **Kubernetes Version** |
 | --------------------------------------------------------- | ---------------------- |
+| <!-- pcg-k8s-4.7.b --> 4.7.20                             | 1.31.8                 |
 | <!-- pcg-k8s-4-7-a --> 4.7.13                             | 1.31.8                 |
 | <!-- pcg-k8s-4-7-0 --> 4.7.3                              | 1.31.8                 |
 | <!-- pcg-k8s-4.6.x --> 4.6.40                             | 1.30.9                 |
@@ -75,4 +76,4 @@ a PCG to an existing Kubernetes cluster. Refer to the
 
 - [Manage a PCG](./manage-pcg/manage-pcg.md)
 
-- [Deploy App Workloads with a PCG](../../tutorials/cluster-deployment/pcg/deploy-app-pcg.md)
+- [Deploy App Workloads with a PCG](../../tutorials/clusters/pcg/deploy-app-pcg.md)

@@ -1,3 +1,8 @@
+# This workflow checks for permission updates in each version branch of the
+# `required-permissions-data` repository and creates PRs in Librarium to 
+# update IAM permission files accordingly. More information can be found in
+# https://spectrocloud.atlassian.net/wiki/spaces/DE/pages/3163586576/Permissions+Update
+
 name: Permissions Update
 
 on:
@@ -7,10 +12,61 @@ on:
   workflow_dispatch:
 
 jobs:
-  permissions-update:
+  get-branches:
     runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.create-matrix.outputs.matrix }}
+    steps:
+      - name: Retrieve Credentials
+        id: import-secrets
+        uses: hashicorp/vault-action@v3.4.0
+        with:
+          url: https://vault.prism.spectrocloud.com
+          method: approle
+          roleId: ${{ secrets.VAULT_ROLE_ID }}
+          secretId: ${{ secrets.VAULT_SECRET_ID }}
+          secrets: /providers/github/organizations/spectrocloud/token?org_name=spectrocloud token | VAULT_GITHUB_TOKEN
+
+      - name: Create branch matrix
+        id: create-matrix
+        env:
+          GH_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
+        run: |
+          # Get all version branches from required-permissions-data repo
+          echo "Fetching branches from required-permissions-data..."
+          source_branches=$(gh api repos/spectrocloud/required-permissions-data/branches --paginate --jq '[.[] | select(.name | test("^(main$|version-)")) | .name]')
+          echo "Source branches: $source_branches"
+          
+          # Get all version branches from librarium repo
+          echo "Fetching branches from librarium..."
+          target_branches=$(gh api repos/spectrocloud/librarium/branches --paginate --jq '[.[] | select(.name | test("^(master$|version-)")) | .name]')
+          echo "Target branches: $target_branches"
+          
+          # Create matrix by matching branches (they must exist in both repos to be included)
+          matrix=$(echo "$source_branches $target_branches" | jq -s '
+            .[0] as $source | .[1] as $target |
+            [
+              $source[] as $s |
+              if $s == "main" then
+                if ($target | index("master")) then {source: $s, target: "master"} else empty end
+              else
+                if ($target | index($s)) then {source: $s, target: $s} else empty end
+              end
+            ]
+          ' | jq -c .)
+          
+          echo "Final matrix: $matrix"
+          echo "matrix={\"include\":$matrix}" >> $GITHUB_OUTPUT
+
+  permissions-update:
+    needs: get-branches
+    runs-on: ubuntu-latest
+    strategy:
+      matrix: ${{ fromJson(needs.get-branches.outputs.matrix) }}
+      fail-fast: false # Do not stop all jobs if one fails
+      max-parallel: 1 # Run one job at a time to avoid rate limiting
     env: 
-      PATH_PERMISSIONS: required-permissions-data
+      PATH_PERMISSIONS: required-permissions-data # Used in permissions-sync.sh
 
     steps:
       - name: Retrieve Credentials
@@ -24,19 +80,19 @@ jobs:
           secrets: /providers/github/organizations/spectrocloud/token?org_name=spectrocloud token | VAULT_GITHUB_TOKEN
 
       - name: Checkout Librarium Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with: 
           repository: spectrocloud/librarium
-          fetch-depth: 0
+          ref: ${{ matrix.target }}
+          token: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
 
       - name: Checkout required-permissions-data Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with: 
           repository: spectrocloud/required-permissions-data
           path: ${{ env.PATH_PERMISSIONS }}
           token: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
-          ref: main
-          fetch-depth: 0
+          ref: ${{ matrix.source }}
 
       - name: Set Git User
         run: |
@@ -45,8 +101,8 @@ jobs:
 
       - name: Compare and Update the Permissions
         run: |
-          # Ensure we are in master
-          git checkout master
+          # Ensure we are in the correct branch
+          git checkout ${{ matrix.target }}
 
           # Issue the permissions-sync script
           bash scripts/permissions-sync.sh
@@ -57,24 +113,21 @@ jobs:
           GH_TOKEN: ${{ steps.import-secrets.outputs.VAULT_GITHUB_TOKEN }}
         run: |
           # Create a new branch
-          branch_name="permissions-sync-$(date +%Y%m%d%H%M%S)"
+          branch_name="permissions-sync-${{ matrix.target }}-$(date +%Y%m%d%H%M%S)"
           git checkout -b "$branch_name"
-
-          # Retrieve backport labels
-          backport_labels=$(gh label list --json name --jq '.[].name' | grep -E '^(backport-version|auto-backport)' | paste -sd "," -)
 
           # Commit and push the changes
           git add _partials/permissions/
-          git commit -m "docs: update IAM permissions"
+          git commit -m "docs: update IAM permissions for ${{ matrix.target }}"
           git push origin $branch_name
 
           # Create the pull request
           pr_body='
           ## Describe the Change
-          This PR updates the docs IAM permission files according to the files available in the [`required-permissions-data`](https://github.com/spectrocloud/required-permissions-data) repository. 
+          This PR updates the docs IAM permission files for branch `${{ matrix.target }}` according to the files available in the [`required-permissions-data`](https://github.com/spectrocloud/required-permissions-data) repository (branch: `${{ matrix.source }}`). 
           The files are compared using the `scripts/permissions-sync.sh` script.
           Please review this PR carefully before merging it and update the **Last Update** line for the permission that has been updated.'
-          output=$(gh pr create --base master --title "docs: update IAM permissions" --body "$pr_body" --label "$backport_labels")
+          output=$(gh pr create --base ${{ matrix.target }} --title "docs: update IAM permissions for ${{ matrix.target }}" --body "$pr_body")
           pr_url=$(echo "$output" | grep -o "https://[^ ]*")
           echo "PR successfully created $pr_url."
 
@@ -89,7 +142,7 @@ jobs:
           SLACK_COLOR: ${{ job.status }}
           SLACKIFY_MARKDOWN: true
           ENABLE_ESCAPES: true
-          SLACK_MESSAGE: 'A new PR with updated IAM permissions was created. Please review ${{env.GITHUB_CREATED_PERMISSIONS_PR}} for more details.'
+          SLACK_MESSAGE: 'A new PR with updated IAM permissions was created for branch `${{ matrix.target }}`. Please review ${{env.GITHUB_CREATED_PERMISSIONS_PR}} for more details.'
 
       - name: Failure Slack Notification
         if: ${{ failure() }}
@@ -99,6 +152,6 @@ jobs:
           SLACK_COLOR: ${{ job.status }}
           SLACKIFY_MARKDOWN: true
           ENABLE_ESCAPES: true
-          SLACK_MESSAGE: 'The permissions update job in `${{ github.repository }}` failed. [View details](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}).'
+          SLACK_MESSAGE: 'The permissions update job for branch `${{ matrix.target }}` in `${{ github.repository }}` failed. [View details](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}).'
 
       

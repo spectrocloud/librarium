@@ -29,6 +29,7 @@ env:
   DISABLE_SECURITY_INTEGRATIONS: ${{ secrets.DISABLE_SECURITY_INTEGRATIONS }}
   SHOW_LAST_UPDATE_TIME: ${{ secrets.SHOW_LAST_UPDATE_TIME }}
   DSO_AUTH_TOKEN: ${{ secrets.DSO_AUTH_TOKEN }}
+  SEERS_CMP_KEY: ${{ secrets.SEERS_CMP_KEY }}
 
 
 jobs:
@@ -38,7 +39,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Node.js Environment
         uses: actions/setup-node@v4
@@ -92,7 +93,7 @@ jobs:
         shardTotal: [4]
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Node.js Environment
         uses: actions/setup-node@v4
@@ -114,7 +115,7 @@ jobs:
         uses: Wandalen/wretry.action@v3
         with: 
           attempt_limit: 3
-          action: actions/download-artifact@v4
+          action: actions/download-artifact@v5
           with: |
             name: build
             path: build
@@ -140,7 +141,7 @@ jobs:
     steps:
 
     - name: Download blob reports from GitHub Actions Artifacts
-      uses: actions/download-artifact@v4
+      uses: actions/download-artifact@v5
       with:
         path: screenshots
         pattern: screenshots-*

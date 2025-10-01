@@ -10,6 +10,48 @@ tags: ["edge", "troubleshooting"]
 
 The following are common scenarios that you may encounter when using Edge.
 
+## Scenario - `x509: certificate signed by unknown authority` Errors during Agent Mode Cluster Creation
+
+Agent mode Edge cluster creation may fail with logs showing the following error.
+
+```shell
+failed calling webhook "pod-registry.spectrocloud.com": tls: failed to verify certificate:
+x509: certificate signed by unknown authority ("Spectro Cloud")
+http: TLS handshake error ... remote error: tls: bad certificate
+```
+
+As a result, core components such as CNI, Harbor, and cluster controllers never start. All pods remain in **Pending** or
+**Failed** state. In the Local UI, packs display **Invalid date** in the **Started On** and **Completed On** fields.
+
+This issue occurs when the `stylus-webhook` agent admission webhook and its Transport Layer Security (TLS)
+`stylus-webhook-tls` secret are temporarily mismatched due to a timing issue during cluster bootstrap. As a result, the
+Kubernetes API server rejects the certificate as signed by an unknown authority, causing admission requests to fail.
+
+### Debug Steps
+
+1. Issue the following command on all cluster nodes to stop the Palette Agent operator service.
+
+   ```bash
+   systemctl stop spectro-stylus-operator
+   ```
+
+2. Issue the following commands on one of the control plane nodes to remove the mismatched webhook resources.
+
+   ```bash
+   kubectl delete secret --namespace spectro-system stylus-webhook-tls
+   kubectl delete svc --namespace spectro-system stylus-webhook
+   kubectl delete MutatingWebhookConfiguration stylus-webhook
+   ```
+
+3. Issue the following command on all cluster nodes to restart the Palette Agent operator service and regenerate a new,
+   consistent set of webhook resources.
+
+   ```bash
+   systemctl restart spectro-stylus-operator
+   ```
+
+This will resolve the issue, and cluster creation will proceed as expected.
+
 ## Scenario - `content-length: 0` Errors during Content Synchronization
 
 Unintended or non-graceful reboots during content bundle push operations can cause inconsistency in the primary
@@ -62,7 +104,19 @@ v1.32.x. You can observe the following error in `kube-init` logs.
 There are several possible ways to troubleshoot this issue:
 
 - Rebuild the OS using RHEL or Rocky Linux 9.x, as they come with kernel 5.14+ by default.
-- [Update the kernel version](#debug-steps---update-the-kernel-version).
+- [Update the kernel version](#debug-steps---update-the-kernel-version) to 4.19 or later in the 4.x series, or to any
+  5.x or 6.x version.
+
+:::info
+
+To view all available versions of the `kernel-lt` (long-term support) package from ELRepo, run the following command on
+a system that uses `dnf`, such as RHEL, Rocky Linux, CentOS, or a compatible container.
+
+```bash
+dnf --showduplicates --enablerepo=elrepo-kernel list available kernel-lt
+```
+
+:::
 
 ### Debug Steps - Update the Kernel Version
 
@@ -81,7 +135,8 @@ There are several possible ways to troubleshoot this issue:
        fi
    ```
 
-   Update it as in the example below to install a supported kernel version using ELRepo.
+   Update the conditional block as in the example below to install the latest available version in the 5.4.x Long-Term
+   Support (LTS) kernel line using ELRepo.
 
    ```dockerfile
    RUN if [ "${OS_DISTRIBUTION}" = "rhel" ]; then \
@@ -94,8 +149,25 @@ There are several possible ways to troubleshoot this issue:
        fi
    ```
 
+   Alternatively, you can update the conditional block as in the example below to pin an exact version. Replace
+   `5.4.261-1.el8.elrepo` with the required version.
+
+   ```dockerfile
+   RUN if [ "${OS_DISTRIBUTION}" = "rhel" ]; then \
+       cp --archive /certs/. /etc/pki/ca-trust/source/anchors/ && \
+       update-ca-trust && \
+       dnf install --assumeyes https://www.elrepo.org/elrepo-release-8.el8.elrepo.noarch.rpm && \
+       dnf update --assumeyes && \
+       dnf --enablerepo=elrepo-kernel install --assumeyes \
+          kernel-lt-5.4.261-1.el8.elrepo \
+          kernel-lt-modules-extra-5.4.261-1.el8.elrepo && \
+      dnf clean all; \
+      fi
+   ```
+
 2. Rebuild the ISO and provider image and redeploy the cluster.
-3. After the deployment is complete, issue the following command on the node to ensure the kernel version is 5.x.
+3. After the deployment is complete, issue the following command on the node to ensure you updated the kernel version to
+   a supported one.
 
    ```shell
    uname --kernel-release
@@ -103,8 +175,8 @@ There are several possible ways to troubleshoot this issue:
 
 #### Debug Steps - Update the Kernel Version for Agent Mode
 
-1. Install a supported kernel version using ELRepo. Establish an SSH connection to the PXK-E node and issue the
-   following commands.
+1. Install the latest available version in the 5.4.x LTS kernel line using ELRepo. Establish an SSH connection to the
+   PXK-E node and issue the following commands.
 
    ```shell
    dnf install --assumeyes https://www.elrepo.org/elrepo-release-8.el8.elrepo.noarch.rpm
@@ -113,7 +185,19 @@ There are several possible ways to troubleshoot this issue:
    reboot
    ```
 
-2. Issue the following command after the reboot to ensure the kernel version is 5.x.
+   Alternatively, you can issue the following command to pin an exact version. Replace `5.4.261-1.el8.elrepo` with the
+   required version.
+
+   ```shell
+   dnf install --assumeyes https://www.elrepo.org/elrepo-release-8.el8.elrepo.noarch.rpm
+   dnf update --assumeyes
+   dnf --enablerepo=elrepo-kernel install --assumeyes \
+       kernel-lt-5.4.261-1.el8.elrepo \
+       kernel-lt-modules-extra-5.4.261-1.el8.elrepo
+   reboot
+   ```
+
+2. Issue the following command after the reboot to ensure you updated the kernel version to a supported one.
 
    ```shell
    uname --kernel-release

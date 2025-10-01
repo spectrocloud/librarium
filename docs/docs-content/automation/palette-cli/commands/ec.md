@@ -22,6 +22,10 @@ The `ec` command exposes the following subcommand.
 - `install` - Install a Palette Enterprise Cluster through an interactive wizard. A container runtime is required to
   install an EC cluster.
 
+## Limitations
+
+- <PartialsComponent category="palette-cli" name="credentials-breaking-change" />
+
 ## Prerequisites
 
 - Docker is required to install a PCG cluster. Refer to the [Docker](https://docs.docker.com/get-docker/) documentation
@@ -45,6 +49,7 @@ you for required values. Alternatively, you can use flags to generate a configur
 | `-k`       | `--encryption-passphrase` | Encryption passphrase to secure sensitive data. The passphrase must be between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character. Can be set through the environment variable `PALETTE_ENCRYPTION_PASSWORD`. Refer to the [Encryption](./../palette-cli.md#encryption) section for more information on encryption. | string  |
 | `-o`       | `--config-only`           | Generate configuration file only. This command will not proceed with installation.                                                                                                                                                                                                                                                                                          | boolean |
 | `-v`       | `--custom-values-file`    | Enterprise cluster custom values.yaml configuration file (optional). Use this to customize the cluster profile of the enterprise cluster. Refer to the [custom value file](#custom-value-file) section for more information.                                                                                                                                                | string  |
+| -          | `--ubuntu-pro-token`      | The Canonical subscription token for [Ubuntu Pro](https://ubuntu.com/pro). An Ubuntu Pro subscription is required, and Ubuntu Pro must be enabled.                                                                                                                                                                                                                          | string  |
 | `-p`       | `--update-passwords`      | Update passwords only. Do not proceed with installation. The `--config-file` flag must also be provided.                                                                                                                                                                                                                                                                    | string  |
 | `-t`       | `--update-tokens`         | Update authentication tokens only. Do not proceed with installation. The `--config-file` flag must be provided.                                                                                                                                                                                                                                                             | boolean |
 | -          | `--validate`              | Scan the environment and conduct validation before the enterprise cluster is installed.                                                                                                                                                                                                                                                                                     | boolean |

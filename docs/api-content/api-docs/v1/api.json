@@ -185,9 +185,6 @@
       "properties": {
         "jsonCredentials": {
           "type": "string"
-        },
-        "jsonCredentialsFileUid": {
-          "type": "string"
         }
       },
       "type": "object"
@@ -12054,6 +12051,26 @@
       ],
       "type": "object"
     },
+    "v1EventsMigrate": {
+      "description": "Event migration request",
+      "properties": {
+        "sourceVersion": {
+          "enum": [
+            "v1",
+            "v2"
+          ],
+          "type": "string"
+        },
+        "targetVersion": {
+          "enum": [
+            "v1",
+            "v2"
+          ],
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
     "v1EventsObjectsEntity": {
       "properties": {
         "resourceType": {
@@ -12470,6 +12487,23 @@
           "description": "Addresses is a map of PCI device entry name to its addresses.\nExample entry would be \"11:00.0 VGA compatible controller [0300]: NVIDIA\nCorporation Device [10de:1eb1] (rev a1)\"- > 0000_11_00_0\" The address is\nBDF (Bus Device Function) identifier format seperated by underscores. The\nfirst 4 bits are almost always 0000. In the above example 11 is Bus, 00\nis Device,0 is function. The values of these addreses are expected in hexadecimal\nformat\n",
           "type": "object"
         },
+        "gpuCount": {
+          "description": "Number of GPUs",
+          "format": "int32",
+          "type": "integer"
+        },
+        "memory": {
+          "description": "GPU memory specification",
+          "type": "string"
+        },
+        "migCapable": {
+          "description": "MIG capability flag",
+          "type": "boolean"
+        },
+        "migStrategy": {
+          "description": "MIG strategy configuration",
+          "type": "string"
+        },
         "model": {
           "description": "Model is the model of GPU, for a given vendor, for eg., TU104GL [Tesla T4]",
           "type": "string"
@@ -12532,10 +12566,6 @@
         "jsonCredentials": {
           "description": "Gcp cloud account json credentials",
           "type": "string"
-        },
-        "jsonCredentialsFileUid": {
-          "description": "Deprecated - Use jsonCredentials for Gcp account credentials; Reference of the credentials stored in the file",
-          "type": "string"
         }
       },
       "type": "object"
@@ -12566,10 +12596,6 @@
         "jsonCredentials": {
           "description": "Gcp cloud account json credentials",
           "type": "string"
-        },
-        "jsonCredentialsFileName": {
-          "description": "Reference of the credentials stored in the file",
-          "type": "string"
         }
       },
       "type": "object"
@@ -12579,10 +12605,6 @@
       "properties": {
         "jsonCredentials": {
           "description": "Gcp cloud account json credentials",
-          "type": "string"
-        },
-        "jsonCredentialsFileUid": {
-          "description": "Deprecated - Use jsonCredentials for Gcp account credentials; Reference of the credentials stored in the file",
           "type": "string"
         }
       },
@@ -15636,12 +15658,22 @@
           "description": "Domain name of the cluster to be provisioned",
           "type": "string"
         },
+        "enableLxdVm": {
+          "description": "enableLxdVm controls MaaS KVM host enablement for the Host ControlPlane cluster only.\nWhen true, Palette configures MaasMachineTemplate LXD settings so LXD initialization\nis triggered on nodes of this (host) cluster. This does not affect workload clusters.\nCannot be enabled for clusters where useLxdVm is enabled for any of the control plane machine pool configs.",
+          "type": "boolean",
+          "x-omitempty": false
+        },
         "sshKeys": {
           "description": "SSH keys specifies a list of ssh authorized keys for the 'spectro' user",
           "items": {
             "type": "string"
           },
           "type": "array"
+        },
+        "staticIp": {
+          "description": "whether this cluster should use dhcp or static IP, if false, use DHCP if this is set, then all machinepools should have staticIP with provided IPPool adding this as an additional standalone flag without relating to placement.Nework main reason is to enable more validation for placement.Network.StaticIP which should come together with valid Network.IPPool and Network.Name",
+          "type": "boolean",
+          "x-omitempty": false
         }
       },
       "required": [
@@ -15695,6 +15727,11 @@
           "format": "int32",
           "type": "integer"
         },
+        "minDiskSizeInGB": {
+          "description": "Minimum disk size in GiB",
+          "format": "int32",
+          "type": "integer"
+        },
         "minMemInMB": {
           "description": "Minimum memory in MiB",
           "format": "int32",
@@ -15736,8 +15773,16 @@
         "instanceType": {
           "$ref": "#/definitions/v1MaasInstanceType"
         },
+        "network": {
+          "$ref": "#/definitions/v1MaasNetworkConfigEntity"
+        },
         "resourcePool": {
           "type": "string"
+        },
+        "useLxdVm": {
+          "description": "useLxdVm enables on-demand LXD VM provisioning for this machine pool (workload clusters only).\nWhen true, machines in this pool are created as MAAS LXD-backed VMs instead of bare metal.",
+          "type": "boolean",
+          "x-omitempty": false
         }
       },
       "type": "object"
@@ -15753,6 +15798,10 @@
         "instanceType": {
           "$ref": "#/definitions/v1MaasInstanceType"
         },
+        "network": {
+          "$ref": "#/definitions/v1MaasNetworkConfigEntity",
+          "description": "network info"
+        },
         "resourcePool": {
           "description": "the resource pool",
           "type": "string"
@@ -15763,6 +15812,11 @@
             "type": "string"
           },
           "type": "array"
+        },
+        "useLxdVm": {
+          "description": "useLxdVm enables on-demand LXD VM provisioning for this machine pool (workload clusters only).\nWhen true, machines in this pool are created as MAAS LXD-backed VMs instead of bare metal.",
+          "type": "boolean",
+          "x-omitempty": false
         }
       },
       "required": [
@@ -15824,6 +15878,10 @@
         "name": {
           "type": "string"
         },
+        "network": {
+          "$ref": "#/definitions/v1MaasNetworkConfig",
+          "description": "network info"
+        },
         "nodeRepaveInterval": {
           "description": "Minimum number of seconds a node should be Ready, before the next node is selected for repave. Applicable only for workerpools in infrastructure cluster",
           "format": "int32",
@@ -15859,6 +15917,11 @@
         "useControlPlaneAsWorker": {
           "description": "if IsControlPlane==true && useControlPlaneAsWorker==true, then will remove control plane taint this will not be used for worker pools",
           "type": "boolean"
+        },
+        "useLxdVm": {
+          "description": "useLxdVm enables on-demand LXD VM provisioning for this machine pool (workload clusters only).\nWhen true, machines in this pool are created as MAAS LXD-backed VMs instead of bare metal.\nCannot be enabled for control plane machine pools when enableLxdVm is enabled in the cluster config.",
+          "type": "boolean",
+          "x-omitempty": false
         }
       },
       "required": [
@@ -15914,6 +15977,52 @@
       },
       "required": [
         "items"
+      ],
+      "type": "object"
+    },
+    "v1MaasNetworkConfig": {
+      "properties": {
+        "ipPool": {
+          "$ref": "#/definitions/v1IPPool",
+          "description": "when staticIP=true, need to provide IPPool"
+        },
+        "networkName": {
+          "description": "NetworkName is the name of the network in which VMs are created/located.",
+          "type": "string"
+        },
+        "parentPoolRef": {
+          "$ref": "#/definitions/v1ObjectReference",
+          "description": "ParentPoolRef reference to the ParentPool which allocates IPs for this IPPool"
+        },
+        "staticIp": {
+          "description": "support dhcp or static IP, if false, use DHCP",
+          "type": "boolean",
+          "x-omitempty": false
+        }
+      },
+      "required": [
+        "networkName"
+      ],
+      "type": "object"
+    },
+    "v1MaasNetworkConfigEntity": {
+      "properties": {
+        "networkName": {
+          "description": "NetworkName is the name of the network in which VMs are created/located.",
+          "type": "string"
+        },
+        "parentPoolUid": {
+          "description": "ParentPoolRef Uid to the ParentPool which allocates IPs for this IPPool",
+          "type": "string"
+        },
+        "staticIp": {
+          "description": "support dhcp or static IP, if false, use DHCP",
+          "type": "boolean",
+          "x-omitempty": false
+        }
+      },
+      "required": [
+        "networkName"
       ],
       "type": "object"
     },
@@ -51461,6 +51570,13 @@
             "type": "string"
           },
           {
+            "description": "Uid for the specific Azure cloud account",
+            "in": "query",
+            "name": "cloudAccountUid",
+            "required": true,
+            "type": "string"
+          },
+          {
             "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
             "in": "header",
             "name": "ProjectUid",
@@ -61958,6 +62074,170 @@
           "type": "string"
         }
       ]
+    },
+    "/v1/overlords/maas/{uid}/pools": {
+      "get": {
+        "operationId": "v1OverlordsUidMaasPoolsList",
+        "parameters": [
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(empty)",
+            "schema": {
+              "$ref": "#/definitions/v1IpPools"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Retrieves a list of IP Pools for the specified maas private gateway",
+        "tags": [
+          "overlords"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "post": {
+        "operationId": "v1OverlordsUidMaasPoolCreate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1IpPoolInputEntity"
+            }
+          },
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created successfully",
+            "headers": {
+              "AuditUid": {
+                "description": "Audit uid for the request",
+                "type": "string"
+              }
+            },
+            "schema": {
+              "$ref": "#/definitions/v1Uid"
+            }
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Creates an IP pool definition for the specified maas private gateway",
+        "tags": [
+          "overlords"
+        ]
+      }
+    },
+    "/v1/overlords/maas/{uid}/pools/{poolUid}": {
+      "delete": {
+        "operationId": "v1OverlordsUidMaasPoolDelete",
+        "parameters": [
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was deleted successfully"
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Deletes the maas private gateway's specified IP Pool data",
+        "tags": [
+          "overlords"
+        ]
+      },
+      "parameters": [
+        {
+          "in": "path",
+          "name": "uid",
+          "required": true,
+          "type": "string"
+        },
+        {
+          "in": "path",
+          "name": "poolUid",
+          "required": true,
+          "type": "string"
+        }
+      ],
+      "put": {
+        "operationId": "v1OverlordsUidMaasPoolUpdate",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "schema": {
+              "$ref": "#/definitions/v1IpPoolInputEntity"
+            }
+          },
+          {
+            "description": "A project UID is required for project-scoped resources and should be omitted when targeting tenant-scoped resources",
+            "in": "header",
+            "name": "ProjectUid",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "The resource was updated successfully"
+          }
+        },
+        "security": [
+          {
+            "ApiKey": []
+          },
+          {
+            "Authorization": []
+          }
+        ],
+        "summary": "Updates the maas private gateway's specified IP Pool data",
+        "tags": [
+          "overlords"
+        ]
+      }
     },
     "/v1/overlords/migrate": {
       "post": {

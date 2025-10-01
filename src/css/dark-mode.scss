@@ -7,13 +7,14 @@ html[data-theme="dark"] {
   --ifm-color-primary-lighter: #bfe3e2;
   --ifm-color-primary-lightest: var(--ifm-font-color-base);
   --ifm-font-color-base: #ddf4f3;
+  --ifm-simple-card-footer-btn-font-color: #ecf9f8;
   --ifm-background-color: #000f0f;
   --ifm-dropdown-background-color: #012121;
   --ifm-menu-color: var(--ifm-font-color-base);
   --ifm-menu-color-active: var(--ifm-color-primary);
   --ifm-heading-color: #e0dcd7;
   --ifm-breadcrumb-item-background-active: var(--ifm-dropdown-background-color);
-  --docusaurus-highlighted-code-line-bg: #666666;
+  --docusaurus-highlighted-code-line-bg: #0c403f;
   --ifm-menu-color-background-active: var(--ifm-dropdown-background-color);
   --ifm-navbar-link-color: #ffffff;
   --ifm-navbar-background-color: var(--ifm-background-color);
@@ -93,6 +94,22 @@ html[data-theme="dark"] {
   .navbar {
     border-bottom: 1px solid var(--ifm-breadcrumb-item-background-active);
   }
+
+  // The "Select" text in Release Notes Tip admonition drop-down.
+  [class*="reactSelect__placeholder"][class*="-placeholder"] {
+    color: var(--ifm-menu-color);
+  }
+
+  // The text for code comments in code blocks
+  .theme-code-block .token.comment {
+    color: #6baa8c !important;
+  }
+
+  // The hashes next to headers.
+  .hash-link {
+    opacity: 0.8;
+  }
+
   // .tabs__item {
   //   border-radius: 2px 2px 0 0;
   //   font-weight: 500;
