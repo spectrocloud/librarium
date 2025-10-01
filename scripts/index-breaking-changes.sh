@@ -40,6 +40,12 @@ add_breaking_changes_body() {
   filename="$BREAKING_CHANGES_PARTIALS_PATH/br_$replaced.mdx"
   new_line=$2
 
+  # If line is empty just append it and return
+  if [ -z "$new_line" ]; then
+    echo "" >> "$filename"
+    return
+  fi
+
   # Loop: replace one Markdown link per pass, repeat until none remain
   while :; do
     # Extract prefix, first match, and suffix using awk (portable on macOS)
