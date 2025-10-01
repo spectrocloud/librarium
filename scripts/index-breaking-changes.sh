@@ -254,7 +254,8 @@ for branch in $branches; do
           fi
           # If the line is empty add it to the body as is without buffering it.
           if [ -z "$line" ]; then
-            add_breaking_changes_body "$release_number" "$line"   
+            echo "Empty line found."   
+            add_breaking_changes_body "$release_number" "$line"
             continue
           fi
           
