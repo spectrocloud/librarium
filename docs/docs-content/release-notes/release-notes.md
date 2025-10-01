@@ -15,11 +15,6 @@ tags: ["release-notes"]
 
 The following components have been updated for Palette version 4.7.20 - 4.7.21.
 
-| Component                                                                                                         | Version |
-| ----------------------------------------------------------------------------------------------------------------- | ------- |
-| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.24.X  |
-| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.24.X  |
-
 ### Packs
 
 #### Pack Notes
