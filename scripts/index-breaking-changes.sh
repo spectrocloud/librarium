@@ -182,7 +182,7 @@ for branch in $branches; do
     fi
 
     # Find any breaking changes headings if we have detected the version heading.
-    # Breaking changes must be H3 or more.
+    # Breaking changes MUST be H3 or more.
     if [ -n "$release_number" ] && echo "$line" | grep -iq '^###\+#*[[:space:]]*Breaking changes'; then
       in_breaking_changes=true
       create_partials_file $release_number
@@ -204,7 +204,7 @@ for branch in $branches; do
         else
           in_code_section="true"
         fi
-        
+
         add_breaking_changes_body "$release_number" "$line"
         continue
       fi
@@ -217,9 +217,17 @@ for branch in $branches; do
 
       # If we are in breaking changes and the line is not a heading then add it to the paragraph.
       if echo "$line" | grep -q '^[[:space:]]*[^#]'; then
-        # Strip leading whitespace from line
-        stripped_line=$(echo "$line" | sed 's/^[[:space:]]*//')
-        paragraph="$paragraph $stripped_line"
+        append_line=$line
+        # If the line starts with <VersionedLink> then strip leading whitespace.
+        if echo "$line" | grep -q '^[[:space:]]*<VersionedLink'; then
+          append_line=$(echo "$line" | sed 's/^[[:space:]]*//')
+        fi
+        # If the paragraph is not empty add a space before appending the new line. Else just set line value.
+        if [ -n "$paragraph" ]; then
+          paragraph="$paragraph $append_line"
+        else
+          paragraph="$append_line"
+        fi
         continue
       fi
 
