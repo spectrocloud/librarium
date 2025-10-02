@@ -231,7 +231,7 @@ information on how to verify the authenticity and integrity of your bundles, ref
 4. After you have applied any necessary filters, navigate through the list of packs. Use the **Search** bar to filter
    your results further.
 
-   ![Image showing filter and search together](../../../static/assets/docs/images/downloads/downloads_artifact-studio-search-and-filter-4-7-a.webp)
+   ![Image showing filter and search together](../../../static/assets/docs/images/downloads_artifact-studio-search-and-filter-4-7-2025-41.webp)
 
 5. When finished, select the **I'm not a robot** reCAPTCHA checkbox, and select **Download Bundle**. Alternatively, you
    can **Copy all URLs** so that you can download the applicable files later in an alternate manner of your choosing,
@@ -240,7 +240,7 @@ information on how to verify the authenticity and integrity of your bundles, ref
 6. The download begins. Each pack is downloaded as an individual ZST file (`<pack-name>.zst`) with an accompanying
    signature file (`<pack-name>.sig.bin`).
 
-   ![Image showing download of multiple packs](../../../static/assets/docs/images/downloads/downloads_artifact-studio-individual-packs-download-4-7-a.webp)
+   ![Image showing download of multiple packs](../../../static/assets/docs/images/downloads_artifact-studio-ind-packs-dl-4-7-2025-41.webp)
 
    :::tip
 
