@@ -963,10 +963,6 @@ let redirects = [
     to: `/clusters/cluster-management/spectro-kubernetes-dashboard/`,
   },
   {
-    from: `/clusters/public-cloud/azure/azure-disk-encryption/`,
-    to: `/clusters/public-cloud/azure/azure-disk-storage-sse/`,
-  },
-  {
     from: "/vertex/supported-platforms/",
     to: "/self-hosted-setup/vertex/",
   },

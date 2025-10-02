@@ -11,112 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## September 29, 2025 - Release 4.7.21
-
-### Component Updates
-
-The following component updates are applicable to this release:
-
-- [September 26, 2025 - Component Updates](#component-updates-2025-39) <!-- omit in toc -->
-
-### Breaking Changes
-
-- [AWS clusters](../clusters/public-cloud/aws/create-cluster.md) created with Palette versions 4.6.32 to 4.7.20 use
-  [Instance Metadata Service Version 2 (IMDSv2)](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-options.html)
-  `IMDSv2 (token optional)` enforcement. This is due to a change made to upstream Cluster API AWS (CAPA), which was
-  later reverted.
-
-  The creation of new node pools in these clusters will fail if both of the following conditions are met:
-
-  - The applications in your cluster use
-    [Instance Metadata Service Version 1 (IMDSv1)](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-service.html#instance-metadata-retrieval-examples-imdsv1).
-  - The AWS account used to provision your cluster is configured with metadata version `IMDSv2 only (token required)` in
-    your EC2 account defaults. Refer to the
-    [Configure the Instance Metadata Service options](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-options.html)
-    guide for further information.
-
-  Beginning with Palette 4.7.21, newly created AWS nodes inherit the metadata version value set at the
-  [AWS account level](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-options.html#where-to-configure-instance-metadata-options).
-
-  The AWS account used for IMDS configuration needs to be assigned the `ec2:GetInstanceMetadataDefaults` permission.
-  Clusters will be launched with `IMDSv2 (token optional)` enforcement if this permission is not assigned. Refer to the
-  [AWS reference](https://docs.aws.amazon.com/cli/latest/reference/ec2/get-instance-metadata-defaults.html) guide for
-  further information.
-
-  We recommend [pausing agent upgrades](../clusters/cluster-management/platform-settings/pause-platform-upgrades.md) on
-  the affected clusters and taking one of the following actions before upgrading to Palette 4.7.21:
-
-  - Set the metadata version to `IMDSv2 (token optional)` in your EC2 account defaults.
-  - Upgrade your applications to use IMDSv2. Refer to the
-    [Transition to using Instance Metadata Service Version 2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instance-metadata-transition-to-version-2.html)
-    guide for further information.
-
-### Improvements
-
-- <TpBadge /> Palette now allows you to deploy and manage [MAAS Kubernetes
-  clusters](../clusters/data-center/maas/maas.md) on LXD Virtual Machines (VMs), enhancing resource efficiency by
-  enabling users to host multiple control plane nodes on a single robust physical node. Refer to the [Create and Manage
-  MAAS Clusters using LXD VMs](../clusters/data-center/maas/create-manage-maas-lxd-clusters.md) guide for further
-  information.
-
-### Bug Fixes
-
-- Fixed an issue that caused
-  [AWS Instance Metadata Service (IMDS)](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/configuring-instance-metadata-service.html)
-  configurations to be incorrectly inherited by newly created
-  [AWS cluster](../clusters/public-cloud/aws/create-cluster.md) node pools created with Palette 4.6.32 to 4.7.20.
-- Fixed an issue that caused Out-of-Memory (OOM) errors on `palette-controller-manager` pods.
-- Fixed an issue that prevented single node [overlay clusters](../clusters/edge/networking/vxlan-overlay.md) from
-  provisioning correctly.
-
-## September 26, 2025 - Component Updates {#component-updates-2025-39}
-
-The following components have been updated for Palette version 4.7.20 - 4.7.21.
-
-| Component                                                                                                         | Version |
-| ----------------------------------------------------------------------------------------------------------------- | ------- |
-| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.24.5  |
-| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.24.5  |
-
-### Bug Fixes
-
-- Fixed an issue that caused the
-  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) and
-  [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) to
-  change the node pool order, causing unnecessary
-  [cluster repaves](../clusters/cluster-management/node-pool.md#repave-behavior-and-configuration).
-
-### Packs
-
-#### Pack Notes
-
-<!-- prettier-ignore-start -->
-
-- The <VersionedLink text="Karpenter" url="/integrations/packs/?pack=karpenter" /> pack is now verified and has been updated to integrate with Karpenter 1.6. The updated version supports upgrading existing Karpenter-managed nodes on [EKS clusters](../clusters/public-cloud/aws/eks.md). Refer to our [Karpenter Support](../clusters/public-cloud/aws/architecture.md#karpenter-support) guide for more details.
-
-<!-- prettier-ignore-end -->
-
-| Pack Name            | Layer  | FIPS | New Version |
-| -------------------- | ------ | ---- | ----------- |
-| Calico               | CNI    | No   | 3.30.3      |
-| Cilium Tetragon      | Add-on | No   | 1.5.0       |
-| Flannel              | CNI    | No   | 0.27.3      |
-| Longhorn             | CSI    | Yes  | 1.9.0       |
-| Istio                | Add-on | No   | 1.26.2-rev2 |
-| Istio                | Add-on | No   | 1.26.0-rev2 |
-| Istio                | Add-on | No   | 1.25.1-rev2 |
-| Istio                | Add-on | No   | 1.24.3-rev2 |
-| Istio                | Add-on | No   | 1.24.0-rev2 |
-| Prometheus - Grafana | Add-on | No   | 77.3.0      |
-| Reloader             | Add-on | No   | 1.4.7       |
-
 ## September 20, 2025 - Release 4.7.20 {#release-notes-4.7.b}
-
-### Component Updates
-
-The following component updates are applicable to this release:
-
-- [September 26, 2025 - Component Updates](#component-updates-2025-39) <!-- omit in toc -->
 
 ### Security Notices
 
@@ -174,46 +69,37 @@ The [CanvOS](https://github.com/spectrocloud/CanvOS) version corresponding to th
 
 #### Breaking Changes
 
-- Palette CLI versions prior to 4.7.2 do not support building content for local Edge cluster deployment on Palette version 4.7.20
+- Palette CLI versions prior to 4.7.20 do not support building content for local Edge cluster deployment on Palette 4.7.20
   or later because content created with older CLI versions lacks the required images. We recommend
-  [downloading](downloads/cli-tools.md#palette-cli) and using Palette CLI version 4.7.2 or later to build content for
-  Palette version 4.7.20 or later.
+  [downloading](downloads/cli-tools.md#palette-cli) and using Palette CLI version 4.7.20 or later to build content for
+  Palette 4.7.20 or later.
 
 <!-- prettier-ignore-start -->
-
-- Edge clusters deployed in agent mode with a Palette cluster agent version prior to 4.7.7 do not support upgrading to the following Kubernetes pack
+- Edge clusters with the Palette agent versions prior to 4.7.20 do not support upgrading to the following Kubernetes pack
   versions released in 4.7.20:
-  
-  - <VersionedLink text="Palette Optimized Canonical" url="/integrations/packs/?pack=edge-canonical" /> 1.32.8 and 1.33.4
-  - <VersionedLink text="Palette eXtended Kubernetes Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> 1.31.12,
-  1.32.8, and 1.33.4
-  
-  This breaking change affects agent mode clusters only and does not impact appliance mode clusters.
+  <VersionedLink text="Palette Optimized Canonical" url="/integrations/packs/?pack=edge-canonical" /> 1.32.8 and 1.33.4;
+  <VersionedLink text="Palette eXtended Kubernetes Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> 1.31.12,
+  1.32.8, and 1.33.4. This breaking change affects agent mode clusters only and does not impact appliance mode clusters.
   For locally managed clusters, refer to [Configure Palette Agent
   Version](clusters/edge/cluster-management/agent-upgrade-airgap.md) to upgrade the agent to the latest version before
   upgrading Kubernetes packs. For centrally managed clusters, do not [pause
   upgrades](clusters/cluster-management/platform-settings/pause-platform-upgrades.md) so the agent can upgrade
   automatically.
-  
 <!-- prettier-ignore-end -->
 
-- The Palette Edge CLI does not support building content for local Edge cluster deployment in agent mode on Palette
-  version 4.7.20 or later (Palette host agent version 4.7.13 or later). We recommend
-  [downloading](downloads/cli-tools.md#palette-cli) and using Palette CLI version 4.7.2 or later instead. This breaking
-  change affects agent mode clusters only and does not impact appliance mode clusters.
+- Palette Edge CLI does not support building content for local Edge cluster deployment in agent mode on Palette 4.7.20
+  (Palette agent version 4.7.12) or later. We recommend [downloading](downloads/cli-tools.md#palette-cli) and using
+  Palette CLI version 4.7.20 or later instead. This breaking change affects agent mode clusters only and does not impact
+  appliance mode clusters.
 
 #### Improvements
 
-- [Edge host grid view](../clusters/edge/site-deployment/edge-host-view.md) now supports the Graphics Processing Unit
-  (GPU) attribute. It contains information about the GPU of the Edge host, including the GPU model, vendor, memory,
-  count, and Multi-Instance GPU (MIG) capability and strategy. MIG fields are applicable for Nvidia devices only.
-- [Local UI](../clusters/edge/local-ui/local-ui.md) now supports displaying all date and time values in Coordinated
-  Universal Time (UTC), the browser’s local time zone, or both simultaneously.
+- [Edge host grid view](../clusters/edge/site-deployment/edge-host-view.md) now supports the Graphics Processing Unit (GPU) attribute. It contains information about the GPU of the Edge host, including the GPU model, vendor, memory, count, and Multi-Instance GPU (MIG) capability and strategy. MIG fields are applicable for Nvidia devices only.
+- [Local UI](../clusters/edge/local-ui/local-ui.md) now supports displaying all date and time values in Coordinated Universal Time (UTC), the browser’s local time zone, or both simultaneously.
 
 #### Bug Fixes
 
-- Fixed an issue that caused incorrect [Kube-vip](../clusters/edge/networking/kubevip.md) validation errors to appear
-  when worker nodes were removed and re-added to clusters.
+- Fixed an issue that caused incorrect [Kube-vip](../clusters/edge/networking/kubevip.md) validation errors to appear when worker nodes were removed and re-added to clusters.
 - Fixed an issue that caused incorrect [Local UI](../clusters/edge/local-ui/local-ui.md) ports when using VIP addresses.
 
 ### VerteX
@@ -244,13 +130,12 @@ Check out the [CLI Tools](/downloads/cli-tools/) page to find the compatible ver
   now available. For more details, refer to the Terraform provider
   [release page](https://github.com/spectrocloud/terraform-provider-spectrocloud/releases).
 - Crossplane version 0.24.4 of the
-  [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) is
-  now available. This version supports [Crossplane v2](https://docs.crossplane.io/latest/whats-new/).
+  [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette)
+  is now available. This version supports [Crossplane v2](https://docs.crossplane.io/latest/whats-new/).
 
 #### Bug Fixes
 
-- Fixed an issue that caused [EKS clusters](../clusters/public-cloud/aws/eks.md) to be recreated when private and public
-  access CIDRs are changed through Terraform.
+- Fixed an issue that caused [EKS clusters](../clusters/public-cloud/aws/eks.md) to be recreated when private and public access CIDRs are changed through Terraform.
 
 ### Packs
 

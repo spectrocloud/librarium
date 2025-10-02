@@ -274,7 +274,7 @@ function generateCustomData(packsDescription) {
 function generateRoutes(packsAllData) {
   return packsAllData.map((pack) => {
     const parentVersion = pack.versions.find((version) => {
-      return (version.children && version.children.find((child) => child.title === pack.latestVersion)) || version;
+      return version.children.find((child) => child.title === pack.latestVersion);
     });
     let path = `/integrations/packs/${pack.name}/${pack.latestVersion}`;
     if (parentVersion && parentVersion.title) {

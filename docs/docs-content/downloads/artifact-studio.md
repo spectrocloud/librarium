@@ -35,21 +35,9 @@ There are four main artifact areas:
 
 :::
 
-## Access Artifact Studio
-
-Access to Artifact Studio is available to all Spectro Cloud customers. To gain access, contact your Spectro Cloud
-representative or [open a support ticket](https://support.spectrocloud.com/).
-
 ## Download Palette Enterprise
 
-1. Navigate to [Artifact Studio](https://artifact-studio.spectrocloud.com/) and log in.
-
-   :::tip
-
-   If you do not have access to Artifact Studio, contact your Spectro Cloud representative or
-   [open a support ticket](https://support.spectrocloud.com/).
-
-   :::
+1. Navigate to [Artifact Studio](https://artifact-studio.spectrocloud.com/).
 
 2. In the **Install Palette Enterprise** section, use the drop-down to select the version needed, and select **Show
    Artifacts**.
@@ -69,14 +57,7 @@ for more information on deploying Palette locally.
 
 ## Download Palette VerteX
 
-1. Navigate to [Artifact Studio](https://artifact-studio.spectrocloud.com/) and log in.
-
-   :::tip
-
-   If you do not have access to Artifact Studio, contact your Spectro Cloud representative or
-   [open a support ticket](https://support.spectrocloud.com/).
-
-   :::
+1. Navigate to [Artifact Studio](https://artifact-studio.spectrocloud.com/).
 
 2. In the **Install Palette VerteX** section, use the drop-down to select the version needed, and select **Show
    Artifacts**.
@@ -102,7 +83,7 @@ Agent mode binaries cannot be downloaded at this time.
 
 :::
 
-1. Navigate to [Artifact Studio](https://artifact-studio.spectrocloud.com/) and log in.
+1. Navigate to [Artifact Studio](https://artifact-studio.spectrocloud.com/).
 
 2. In the **Create pack bundle** section, select **Build bundle**.
 
@@ -218,7 +199,7 @@ information on how to verify the authenticity and integrity of your bundles, ref
 
 ## Download a Specific Pack
 
-1. Navigate to [Artifact Studio](https://artifact-studio.spectrocloud.com/) and log in.
+1. Navigate to [Artifact Studio](https://artifact-studio.spectrocloud.com/).
 
 2. In the **Create pack bundle** section, select **Browse Packs**.
 

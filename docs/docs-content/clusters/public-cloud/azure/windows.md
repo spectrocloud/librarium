@@ -83,7 +83,7 @@ After creating your Windows node pool, use the following steps to create an add-
 workload.
 
 13. Follow the
-    [Add a Manifest to an Add-on Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-manifest-addon.md)
+    [Add a Manifest to an Add-on Profile](../../../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-manifest-addon.md#add-manifest-to-add-on-profile)
     guide to create an add-on cluster profile with a custom manifest.
 
 14. Use the manifest provided below for a sample ASP.NET application. Alternatively, use your own Windows application

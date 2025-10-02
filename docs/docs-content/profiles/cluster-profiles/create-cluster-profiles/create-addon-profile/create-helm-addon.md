@@ -8,112 +8,86 @@ tags: ["profiles", "cluster profiles", "helm", "add-on"]
 ---
 
 You can extend the list of integrations by adding Helm charts from a public or private registry to your cluster profile.
-Take the following steps to create a cluster profile by adding layers using Helm charts.
+Use the following steps to create a cluster profile by adding layers using Helm charts.
 
 ## Prerequisites
 
-<PartialsComponent category="profiles" name="create-profile-prerequisites" />
+- Your Palette account role must have the `clusterProfile.create` permission to create a profile. Refer to the
+  [Roles and Permissions](../../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile)
+  documentation for more information.
 
-## Create an Add-On Profile with Helm Charts
-
-<PartialsComponent category="profiles" name="create-profile-enablement" edition="Add-on" />
-
-5. Select the **Add Helm Chart** drop-down menu and choose **Public packs** or **Private packs**.
-
-<Tabs groupId="registry-type">
-
-<TabItem value="public" label="Public Packs">
-
-6. To add a chart from a _public_ registry, make a selection from the **Registry** drop-down menu, and locate your
-   desired pack. When selected, the **Profile Layers** page appears, which displays the pack's details and configuration
-   file. Change the **Pack Version** if needed.
-
-7. (Optional) If desired, specify the layer [install order](./create-addon-profile.md#install-order).
-
-</TabItem>
-
-<TabItem value="private" label="Private Packs">
-
-6. To add a chart from a _private_ registry, on the **Profile Layers** page, select a **Registry** from the drop-down
-   menu. Next, select **Chart name** and **Chart version**.
-
-7. (Optional) If desired, add configurable **Chart Values** and specify the layer
-   [install order](./create-addon-profile.md#install-order).
-
-</TabItem>
-
-</Tabs>
-
-8. <PartialsComponent category="profiles" name="add-on-namespace" />
-
-9. When finished, select **Confirm & Create**.
-
-10. Repeat steps 5 - 9 to add additional Helm charts. When finished, select **Next** to review your cluster profile.
-
-11. Select **Finish Configuration** to create your cluster profile.
-
-## Add Helm Charts to an Existing Profile
-
-<PartialsComponent category="profiles" name="add-on-existing-intro" edition="Helm charts" />
+## Add Helm Chart to Add-on Profile
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
-2. From the left main menu, select **Profiles**.
+2. From the left **Main Menu** click **Profiles**.
 
-3. Select an existing full or add-on cluster profile. Use the **Profile Types** drop-down menu to help you locate
-   compatible **Full** and **Add-on** profiles.
+3. Click on the **Add Cluster Profile** button.
 
-4. From the cluster profile menu, select the **Add Helm Chart** drop-down menu and choose **Public packs** or **Private
-   packs**.
+4. Fill out the following input values and ensure you select **Add-on** for the type. Click on **Next** to continue.
 
-<Tabs groupId="registry-type">
+   | **Field**       | **Description**                                                                                                                                                                                                   |
+   | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Name**        | A custom name for the cluster profile.                                                                                                                                                                            |
+   | **Version**     | Assign a version to the profile. You only need to specify a version if you create multiple versions of a profile using the same profile name. Default: `1.0.0`.                                                   |
+   | **Description** | Use the description to provide context about the profile.                                                                                                                                                         |
+   | **Type**        | **Add-on**                                                                                                                                                                                                        |
+   | **Tags**        | Assign any desired profile tags. Tags propagate to the Virtual Machines (VMs) deployed in the cloud or data center environment when clusters are created from this cluster profile. Example: `owner` or `region`. |
 
-<TabItem value="public" label="Public Packs">
+   To learn how to create multiple profile versions, check out
+   [Version a Cluster Profile](../../modify-cluster-profiles/version-cluster-profile.md).
 
-5. To add a chart from a _public_ registry, make a selection from the **Registry** drop-down menu, and locate your
-   desired pack. When selected, the **Profile Layers** page appears, which displays the pack's details and configuration
-   file. Change the **Pack Version** if needed.
+5. Select **Add Helm Chart** and use the **drop-down Menu** to choose public or private packs.
 
-6. (Optional) If desired, specify the layer [install order](./create-addon-profile.md#install-order).
+6. To add a chart from a public registry, choose a Helm chart from the list displayed on the next page. You can search
+   charts by name. Pack details and the configuration file are displayed on the next page.
 
-</TabItem>
+   To add a chart from a private registry, select a registry from the **drop-down Menu** and provide the chart name and
+   version.
 
-<TabItem value="private" label="Private Packs">
+7. Configure parameters as needed. In the configuration file, ensure you specify a namespace. Otherwise, the chart will
+   deploy to the `Default` namespace.
 
-5. To add a chart from a _private_ registry, on the **Profile Layers** page, select a **Registry** from the drop-down
-   menu. Next, select **Chart name** and **Chart version**.
+   ```yaml
+   pack:
+     namespace: your_namespace_here
+   ```
 
-6. (Optional) If desired, add configurable **Chart Values** and specify the layer
+   Optionally, you can add configurable layer values and specify the layer
    [install order](./create-addon-profile.md#install-order).
 
-</TabItem>
+   :::warning
 
-</Tabs>
+   Palette requires a namespace using the `namespace` parameter in the configuration file to identify the namespace on
+   the target cluster. For more information about customizing with namespaces, refer to
+   [Profile Customization](../../../profile-customization.md).
 
-7. <PartialsComponent category="profiles" name="add-on-namespace" />
+   For examples of pack structure for a Helm chart-based pack, review
+   [Build a Pack](../../../../tutorials/packs-registries/deploy-pack.md#build-a-pack), and select the appropriate tab.
 
-8. When finished, select **Confirm & Create** to return to the cluster profile overview page.
+   :::
 
-9. Repeat steps 4 - 8 to add additional Helm charts to your cluster profile. When finished, select **Next** to review
-   your cluster profile.
+8. When you are done, click **Confirm & Create**, then click **Next** to review the profile.
 
-10. Select **Finish Configuration** to save your updated cluster profile.
+  <!-- ![A view of the manifest create process and the YAML code in the text editior](/clusters_imported-clusters_attach-add-on-profile_manfest-view.webp) -->
+
+9. Click **Finish Configuration** to create the cluster profile.
+
+You now have an add-on cluster profile that contains a Helm chart. You can reuse the profile and apply it to several
+clusters. Refer to the [Update Cluster Profile](../../modify-cluster-profiles/update-cluster-profile.md) guide for more
+information about update operations.
 
 ## Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. From the left main menu, select **Profiles**.
+2. Navigate to left **Main Menu** and select **Profiles**.
 
 3. Select your cluster profile to review its layers or make changes.
 
 ## Next Steps
 
-You now have an add-on cluster profile that contains one or more Helm charts, which you can reuse and apply to multiple
-clusters in tandem with an [infrastructure](../create-infrastructure-profile.md) or
-[full cluster profile](../create-full-profile.md).
-
-<PartialsComponent category="profiles" name="create-profile-next-steps" />
+Now you can use the add-on profile you created with other profiles.
 
 ## Resources
 

@@ -30,7 +30,6 @@ env:
   SHOW_LAST_UPDATE_TIME: ${{ secrets.SHOW_LAST_UPDATE_TIME }}
   DSO_AUTH_TOKEN: ${{ secrets.DSO_AUTH_TOKEN }}
   UNRELEASED_VERSION_BANNER: true
-  SEERS_CMP_KEY: ${{ secrets.SEERS_CMP_KEY }}
 
 
 concurrency:

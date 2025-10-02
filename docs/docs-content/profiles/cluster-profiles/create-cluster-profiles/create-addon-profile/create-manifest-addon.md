@@ -12,71 +12,74 @@ create a cluster profile by adding layers using manifests.
 
 ## Prerequisites
 
-<PartialsComponent category="profiles" name="create-profile-prerequisites" />
+- Your Palette account role must have the `clusterProfile.create` permission to create a profile. Refer to the
+  [Roles and Permissions](../../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile)
+  documentation for more information.
 
-## Create an Add-On Profile with Manifests
-
-<PartialsComponent category="profiles" name="create-profile-enablement" edition="Add-on" />
-
-5. Select **Add Manifest**, and provide a **Layer name** for this layer. This is the display name.
-
-6. (Optional) If desired, add configurable **Layer values** and specify the layer
-   [install order](./create-addon-profile.md#install-order).
-
-7. Select **New manifest** and provide a name for your custom manifest. When finished, select the check mark or press
-   **ENTER** to open the editor.
-
-8. <PartialsComponent category="profiles" name="add-on-namespace" />
-
-9. Repeat steps 7 - 8 to create additional manifests. When finished, select **Confirm & Create** to return to the
-   cluster profile overview page. If you need to make changes, select the applicable layer, and update your manifest
-   values; otherwise, select **Next** to review your cluster profile.
-
-10. Select **Finish Configuration** to create your cluster profile.
-
-## Add Manifests to an Existing Profile
-
-<PartialsComponent category="profiles" name="add-on-existing-intro" edition="manifests" />
+## Add Manifest to Add-on Profile
 
 1. Log in to [Palette](https://console.spectrocloud.com/).
 
-2. From the left main menu, select **Profiles**.
+2. From the left **Main Menu** click **Profiles**.
 
-3. Select an existing full or add-on cluster profile. Use the **Profile Types** drop-down menu to help you locate
-   compatible **Full** and **Add-on** profiles.
+3. Click on the **Add Cluster Profile** button.
 
-4. From the cluster profile menu, select **Add Manifest**, and provide a **Layer name** for this layer. This is the
-   display name.
+4. Fill out the following input values and ensure you select **Add-on** for the type. Click on **Next** to continue.
 
-5. (Optional) If desired, add configurable **Layer values** and specify the layer
+   | **Field**       | **Description**                                                                                                                                                                                                   |
+   | --------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+   | **Name**        | A custom name for the cluster profile.                                                                                                                                                                            |
+   | **Version**     | Assign a version to the profile. You only need to specify a version if you create multiple versions of a profile using the same profile name. Default: `1.0.0`.                                                   |
+   | **Description** | Use the description to provide context about the profile.                                                                                                                                                         |
+   | **Type**        | **Add-on**                                                                                                                                                                                                        |
+   | **Tags**        | Assign any desired profile tags. Tags propagate to the Virtual Machines (VMs) deployed in the cloud or data center environment when clusters are created from this cluster profile. Example: `owner` or `region`. |
+
+   To learn how to create multiple profile versions, check out
+   [Version a Cluster Profile](../../modify-cluster-profiles/version-cluster-profile.md).
+
+5. Select **Add Manifest** and provide a display name for this layer. Optionally, you can specify the layer
    [install order](./create-addon-profile.md#install-order).
 
-6. Select **New manifest** and provide a name for your custom manifest. When finished, select the check mark or press
-   **ENTER** to open the editor.
+6. Click on **New manifest** and provide a name for your custom manifest. Click on the check or press Enter to open the
+   editor.
 
-7. <PartialsComponent category="profiles" name="add-on-namespace" />
+7. Create your manifest. Ensure you specify a namespace. Otherwise, the manifest will deploy to the `Default` namespace.
 
-8. Repeat steps 4 - 8 to create additional layers with manifests; repeat steps 6 - 7 to add additional manifests to the
-   same layer of your cluster profile. When finished, select **Confirm & Create**, then select **Next** to review your
-   cluster profile.
+   ```yaml
+   namespace: your_namespace_here
+   ```
 
-9. Select **Finish Configuration** to save your updated cluster profile.
+   :::warning
+
+   Palette requires a namespace using the `namespace` parameter in the configuration file to identify the namespace on
+   the target cluster. For more information about customizing with namespaces, refer to
+   [Profile Customization](../../../profile-customization.md).
+
+   For examples of pack structure for a manifest-based pack, review
+   [Build a Pack](../../../../tutorials/packs-registries/deploy-pack.md#build-a-pack), and select the appropriate tab.
+
+   :::
+
+8. If you want to add more manifests, repeat steps 6 and 7. Otherwise, click **Confirm & Create**, then click **Next**
+   to review the profile.
+
+9. Click **Finish Configuration** to create the cluster profile.
+
+You now have an add-on cluster profile that contains one or more manifests. You can reuse the profile and apply it to
+several clusters. Refer to the [Update Cluster Profile](../../modify-cluster-profiles/update-cluster-profile.md) guide
+for more information about update operations.
 
 ## Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. From the left main menu, select **Profiles**.
+2. Navigate to left **Main Menu** and select **Profiles**.
 
 3. Select your cluster profile to review its layers or make changes.
 
 ## Next Steps
 
-You now have an add-on cluster profile that contains one or more Helm charts, which you can reuse and apply to multiple
-clusters in tandem with an [infrastructure](../create-infrastructure-profile.md) or
-[full cluster profile](../create-full-profile.md).
-
-<PartialsComponent category="profiles" name="create-profile-next-steps" />
+Now you can use the add-on profile you created with other profiles.
 
 ## Resources
 

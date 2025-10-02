@@ -362,10 +362,6 @@ generate-release-notes: ## Generate release notes only
 	./scripts/release/generate-release-notes.sh
 	make -s format > /dev/null 2>&1
 
-generate-component-updates: ## Generate component updates only
-	./scripts/release/generate-component-updates.sh
-	make -s format > /dev/null 2>&1
-
 generate-release: ## Generate all release files except release notes
 	./scripts/release/generate-spectro-cli-reference.sh
 	./scripts/release/generate-downloads.sh
@@ -376,29 +372,20 @@ generate-release: ## Generate all release files except release notes
 	make -s format > /dev/null 2>&1
 
 init-release:
-	grep -q "^# RELEASE NOTES" .env || echo "\n# RELEASE NOTES" >> .env
-	grep -q "^export RELEASE_NAME=" .env || echo "export RELEASE_NAME=" >> .env
-	grep -q "^export RELEASE_VERSION=" .env || echo "export RELEASE_VERSION=" >> .env
-	grep -q "^export RELEASE_DATE=" .env || echo "export RELEASE_DATE=" >> .env
-	grep -q "^export RELEASE_CANVOS=" .env || echo "export RELEASE_CANVOS=" >> .env
-	grep -q "^export RELEASE_TERRAFORM_VERSION=" .env || echo "export RELEASE_TERRAFORM_VERSION=" >> .env
-	grep -q "^# COMPONENT UPDATES" .env || echo "\n# COMPONENT UPDATES" >> .env
-	grep -q "^export RELEASE_COMPONENT_YEAR=" .env || echo "export RELEASE_COMPONENT_YEAR=" >> .env
-	grep -q "^export RELEASE_COMPONENT_WEEK=" .env || echo "export RELEASE_COMPONENT_WEEK=" >> .env
-	grep -q "^export RELEASE_COMPONENT_START_VERSION=" .env || echo "export RELEASE_COMPONENT_START_VERSION=" >> .env
-	grep -q "^export RELEASE_COMPONENT_END_VERSION=" .env || echo "export RELEASE_COMPONENT_END_VERSION=" >> .env
-	grep -q "^# OTHER RELEASE UPDATES" .env || echo "\n# OTHER RELEASE UPDATES" >> .env
-	grep -q "^export RELEASE_PALETTE_CLI_VERSION=" .env || echo "export RELEASE_PALETTE_CLI_VERSION=" >> .env
-	grep -q "^export RELEASE_PALETTE_CLI_SHA=" .env || echo "export RELEASE_PALETTE_CLI_SHA=" >> .env
-	grep -q "^export RELEASE_EDGE_CLI_VERSION=" .env || echo "export RELEASE_EDGE_CLI_VERSION=" >> .env
-	grep -q "^export RELEASE_EDGE_CLI_SHA=" .env || echo "export RELEASE_EDGE_CLI_SHA=" >> .env
-	grep -q "^export RELEASE_REGISTRY_VERSION=" .env || echo "export RELEASE_REGISTRY_VERSION=" >> .env
-	grep -q "^export RELEASE_SPECTRO_CLI_VERSION=" .env || echo "export RELEASE_SPECTRO_CLI_VERSION=" >> .env
-	grep -q "^export RELEASE_VMWARE_KUBERNETES_VERSION=" .env || echo "export RELEASE_VMWARE_KUBERNETES_VERSION=" >> .env
-	grep -q "^export RELEASE_VMWARE_OVA_URL=" .env || echo "export RELEASE_VMWARE_OVA_URL=" >> .env
-	grep -q "^export RELEASE_VMWARE_FIPS_OVA_URL=" .env || echo "export RELEASE_VMWARE_FIPS_OVA_URL=" >> .env
-	grep -q "^export RELEASE_HIGHEST_KUBERNETES_VERSION=" .env || echo "export RELEASE_HIGHEST_KUBERNETES_VERSION=" >> .env
-	grep -q "^export RELEASE_PCG_KUBERNETES_VERSION=" .env || echo "export RELEASE_PCG_KUBERNETES_VERSION=" >> .env
+	grep -q "^export RELEASE_NAME=" .env || echo "\nexport RELEASE_NAME=" >> .env
+	grep -q "^export RELEASE_VERSION=" .env || echo "\nexport RELEASE_VERSION=" >> .env
+	grep -q "^export RELEASE_DATE=" .env || echo "\nexport RELEASE_DATE=" >> .env
+	grep -q "^export RELEASE_PALETTE_CLI_VERSION=" .env || echo "\nexport RELEASE_PALETTE_CLI_VERSION=" >> .env
+	grep -q "^export RELEASE_PALETTE_CLI_SHA=" .env || echo "\nexport RELEASE_PALETTE_CLI_SHA=" >> .env
+	grep -q "^export RELEASE_EDGE_CLI_VERSION=" .env || echo "\nexport RELEASE_EDGE_CLI_VERSION=" >> .env
+	grep -q "^export RELEASE_EDGE_CLI_SHA=" .env || echo "\nexport RELEASE_EDGE_CLI_SHA=" >> .env
+	grep -q "^export RELEASE_REGISTRY_VERSION=" .env || echo "\nexport RELEASE_REGISTRY_VERSION=" >> .env
+	grep -q "^export RELEASE_SPECTRO_CLI_VERSION=" .env || echo "\nexport RELEASE_SPECTRO_CLI_VERSION=" >> .env
+	grep -q "^export RELEASE_VMWARE_KUBERNETES_VERSION=" .env || echo "\nexport RELEASE_VMWARE_KUBERNETES_VERSION=" >> .env
+	grep -q "^export RELEASE_VMWARE_OVA_URL=" .env || echo "\nexport RELEASE_VMWARE_OVA_URL=" >> .env
+	grep -q "^export RELEASE_VMWARE_FIPS_OVA_URL=" .env || echo "\nexport RELEASE_VMWARE_FIPS_OVA_URL=" >> .env
+	grep -q "^export RELEASE_HIGHEST_KUBERNETES_VERSION=" .env || echo "\nexport RELEASE_HIGHEST_KUBERNETES_VERSION=" >> .env
+	grep -q "^export RELEASE_PCG_KUBERNETES_VERSION=" .env || echo "\nexport RELEASE_PCG_KUBERNETES_VERSION=" >> .env	
 
 ###@ Aloglia Indexing
 

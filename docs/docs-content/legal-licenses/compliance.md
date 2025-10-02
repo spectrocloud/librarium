@@ -7,30 +7,29 @@ sidebar_position: 0
 tags: ["compliance", "soc2", "fips"]
 ---
 
-## ISO 27001:2022
+## ISO 27001
 
 ![ISO 27001 logo](/legal-licenses_compliance_iso-27001.webp "#width=300px")
 
 The International Organization for Standardization 27001 Standard (ISO 27001) is one of the leading international
-standards focused on information security. Spectro Cloud has obtained the ISO 27001:2022 Certification and undergoes
-periodic audits to maintain this certification. ISO 27001:2022 Certification provides assurances that Spectro Cloud is
-identifying and managing risks effectively, consistently, and measurably.
+standards focused on information security. Spectro Cloud has obtained the ISO 27001 Certification and undergoes periodic
+audits to maintain this certification. ISO 27001 Certification provides assurances that Spectro Cloud is identifying and
+managing risks effectively, consistently, and measurably.
 
-Below are some reasons why an ISO 27001:2022 Certification is important:
+Below are some reasons why an ISO 27001 Certification is important:
 
-- **Customer trust and confidence**: Clients and partners often look for assurances that their sensitive information is
-  handled securely. Achieving ISO 27001:2022 certification can enhance customer trust and confidence, potentially
-  leading to increased business opportunities.
+- Customer trust and confidence: Clients and partners often look for assurances that their sensitive information is
+  handled securely. Achieving ISO 27001 certification can enhance customer trust and confidence, potentially leading to
+  increased business opportunities.
 
-- **Risk Management**: By implementing ISO controls and measures, companies can mitigate these risks, protecting
-  sensitive data from unauthorized access or disclosure.
+- Risk Management: By implementing ISO controls and measures, companies can mitigate these risks, protecting sensitive
+  data from unauthorized access or disclosure.
 
-- **Legal and regulatory compliance**: Adhering to ISO 27001:2022 demonstrates a commitment to information security,
-  which can help organizations comply with various legal and regulatory requirements related to data protection and
-  privacy.
+- Legal and regulatory compliance: Adhering to ISO 27001 demonstrates a commitment to information security, which can
+  help organizations comply with various legal and regulatory requirements related to data protection and privacy.
 
-- **Global recognition**: ISO 27001:2022 is globally recognized. This helps organizations communicate their commitment
-  to information security across borders.
+- Global recognition: ISO 27001 is globally recognized. This helps organizations communicate their commitment to
+  information security across borders.
 
 ## SOC 2 Type II
 
