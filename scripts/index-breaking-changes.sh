@@ -115,6 +115,13 @@ clean_files() {
   done
 }
 
+# If ALL_VERSIONS_PATH file and BREAKING_CHANGES_PARTIALS_PATH directory already exist, skip the entire script.
+# This is to speed local development where we don't need to re-index every time.
+if [ -f "$ALL_VERSIONS_PATH" ] && [ -d "$BREAKING_CHANGES_PARTIALS_PATH" ]; then
+  echo "$ALL_VERSIONS_PATH file and $BREAKING_CHANGES_PARTIALS_PATH directory already exist. Skipping the script."
+  exit 0
+fi
+
 # Save the current branch name
 current_branch=$(git branch --show-current)
 
@@ -146,9 +153,7 @@ for b in $branches; do
   git fetch origin $b:$b
 done
 
-# Make sure we are in a clean state for repeatable runs.
-rm -rf $BREAKING_CHANGES_PARTIALS_PATH
-rm -f $ALL_VERSIONS_PATH
+# File doesn't exist, the directory will be handled by create_partials_file.
 touch $ALL_VERSIONS_PATH
 echo "[" >> $ALL_VERSIONS_PATH
 
