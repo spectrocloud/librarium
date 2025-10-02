@@ -7,6 +7,12 @@ partial_name: installation-steps-prereqs
 
 - Access to the [Artifact Studio](https://artifact-studio.spectrocloud.com/) to download the {props.iso} ISO.
 
+  :::tip
+
+  If you do not have access to Artifact Studio, contact your Spectro Cloud representative or [open a support ticket](https://support.spectrocloud.com/).
+
+  :::
+
 - {props.edition} can be installed on a single node or on three nodes. For production environments, we recommend that three nodes be provisioned in advance for the Palette installation. We recommended the following
   resources for each node. Refer to the Palette <PaletteVertexUrlMapper edition={props.edition} text="Size Guidelines" palettePath="/install-palette#size-guidelines" vertexPath="/install-palette-vertex#size-guidelines"/> for additional sizing information.
 
@@ -16,7 +22,9 @@ partial_name: installation-steps-prereqs
 
   - Two disks per node.
 
-    - The first disk must be at least 250 GB and is used for the ISO stack. You specify the device in the `user-data` file during the ISO creation process in the first few steps.
+    - The first disk must be at least 250 GB and is used for the {props.version} ISO stack. You specify the device in the `stylus_config.yaml` file during the initial Install {props.version} steps.
+    
+      If the device is not specified, the default value is `auto`. This means the installer selects the largest available drive, which may not be the desired behavior, especially in multi-drive environments.
 
     - The second disk must be at least 500 GB and is used for the storage pool. The default device selected is `/dev/sdb`. You can change the default device during the cluster creation steps in Local UI.
 
@@ -26,9 +34,7 @@ partial_name: installation-steps-prereqs
 
       :::
 
-  - We recommend at least two removable media connections to attach both the {props.iso} ISO and the user-data ISO. These can be physical or virtual connections depending on your infrastructure provider.
-
-    If your nodes only support a single removable media connection, you can still proceed by following the tips and additional steps mentioned in the Install {props.version} steps.
+  - At least one removable media connection must be available to attach the {props.iso} ISO. This can be a physical or virtual connection depending on your infrastructure provider.
 
 - The following network ports must be accessible on each node for Palette to operate successfully.
 
@@ -44,11 +50,12 @@ partial_name: installation-steps-prereqs
 
   :::warning
 
-  - The ISO is only supported on Unified Extensible Firmware Interface (UEFI) systems. Ensure you configure the nodes to boot from the ISO in UEFI mode.
+  The ISO is only supported on Unified Extensible Firmware Interface (UEFI) systems. Ensure you configure the nodes to boot from the ISO in UEFI mode.
+
   :::
 
 - Palette Management Appliance supports Secure Boot for Dell servers with UEFI and Hewlett Packard Enterprise iLO5. 
-Learn how to configure and install Secure Boot for Palette Management Appliance below.
+  Learn how to configure and install Secure Boot for Palette Management Appliance below.
 
   <details>
 
@@ -84,9 +91,11 @@ Learn how to configure and install Secure Boot for Palette Management Appliance 
   2. Select the version corresponding to your {props.edition} installer. Then, select **Show Artifacts**. The artifact list appears.
   3. **Download** the **MOK Key for Secure Boot** file.
   4. Power on the server. Execute the following command to create a virtual CD/DVD drive containing an ISO file with the `MOK.der` certificate. Alternatively, you can save the file to a FAT32-formatted USB drive.
-      ```
-      mkisofs -output key.iso -volid cidata -joliet -rock MOK.der
-      ```
+
+     ```
+     mkisofs -output key.iso -volid cidata -joliet -rock MOK.der
+     ```
+
   5. Reboot the server. When the Dell logo appears, press **F2**. The **System Setup** menu opens.
   6. Select **System BIOS** > **Boot Settings**.
   7. Ensure that the **Boot Mode** is set to **UEFI**.
