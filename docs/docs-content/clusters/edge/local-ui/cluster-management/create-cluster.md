@@ -22,13 +22,14 @@ management.
 
 - For hosts that are deployed in agent mode, all hosts must share the same Operating System (OS).
 
-<!-- prettier-ignore -->
+<!-- prettier-ignore-start -->
+
 - For multi-node clusters, do not use the
   <VersionedLink text="Local Path Provisioner Pack" url="/integrations/packs/?pack=csi-local-path-provisioner" />. This
   is because whenever a node is drained during an upgrade or for any other reason, the volumes will not dynamically move
   with the local path provisioner.
 
-- Locally managed multi-node clusters deployed in [agent mode](../../../../deployment-modes/agent-mode/agent-mode.md) do not support network overlay.
+<!-- prettier-ignore-end -->
 
 ## Prerequisites
 

@@ -35,6 +35,15 @@ tags: ["release-notes"]
 
 #### Features
 
+<!-- prettier-ignore-start -->
+
+- Overlay networks are now supported for the following cluster types. Refer to our [Enable Overlay Network](../clusters/edge/networking/vxlan-overlay.md#supported-clusters) guide for a comprehensive list of supported cluster combinations.
+  
+  - <VersionedLink text="Palette eXtended Kubernetes Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> - FIPS, single and multi-node clusters
+  - <VersionedLink text="Palette Optimized Canonical" url="/integrations/packs/?pack=edge-canonical" /> -  Agent Mode and Appliance Mode, centrally managed clusters
+
+<!-- prettier-ignore-end -->
+
 #### Improvements
 
 #### Bug Fixes

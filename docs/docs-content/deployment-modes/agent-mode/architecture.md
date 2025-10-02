@@ -33,7 +33,7 @@ The following are architectural highlights of clusters deployed using agent mode
   - OS other than Ubuntu
   - Palette VerteX
   - Custom installation paths for Kubernetes and its dependencies in [agent mode](../)
-  - [Network overlay](../../../clusters/edge/networking/vxlan-overlay/)
+  - [Network overlay](../networking/vxlan-overlay/) in locally managed Edge clusters.
 
 <!-- prettier-ignore-start -->
 

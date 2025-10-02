@@ -8,6 +8,10 @@ sidebar_position: 30
 tags: ["edge"]
 ---
 
+:::preview
+
+:::
+
 Edge clusters are often deployed in locations where network environments are not managed by teams that maintain the Edge
 deployments. However, a Kubernetes cluster, specifically several control plane components, requires stable IP addresses.
 In the case of an extended network outage, it is possible that your cluster components would lose their original IP
@@ -23,9 +27,26 @@ cluster from an outage.
 
 ![VxLAN Overlay Architecture](/clusters_edge_site-installation_vxlan-overlay_architecture.webp)
 
-:::preview
+## Supported Clusters
+
+The following table lists the various cluster combinations that support overlay networks.
+
+:::info
+
+The **FIPS** column is based on the cluster's Kubernetes pack, not the host OS.
 
 :::
+
+<!-- prettier-ignore-start -->
+
+| **Distribution**                                                                  |     **Agent**      |   **Appliance**    |     **Local**      |    **Central**     |  **Single Node**   |   **Multi-Node**   |    **Non-FIPS**    |      **FIPS**      |
+| --------------------------------------------------------------------------------- | :----------------: | :----------------: | :----------------: | :----------------: | :----------------: | :----------------: | :----------------: | :----------------: |
+| <VersionedLink text="Canonical" url="/integrations/packs/?pack=edge-canonical" /> | :white_check_mark: | :white_check_mark: |        :x:         | :white_check_mark: |        :x:         |        :x:         | :white_check_mark: |        :x:         |
+| <VersionedLink text="K3s" url="/integrations/packs/?pack=edge-k3s" />             | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |        :x:         |
+| <VersionedLink text="PXK-E" url="/integrations/packs/?pack=edge-k8s" />           | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+| <VersionedLink text="RKE2" url="/integrations/packs/?pack=edge-rke2" />           | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
+
+<!-- prettier-ignore-end -->
 
 ## When Should You Consider Enabling Overlay Network?
 
@@ -64,7 +85,17 @@ server. The region experiences a bad weather event that causes a sustained outag
 ## Prerequisites
 
 - At least one Edge host registered with your Palette account.
-- Your cluster profile must have K3s, RKE2, or PXK-E as its Kubernetes distribution.
+
+<!-- prettier-ignore-start -->
+- Your cluster profile must have one of the following Kubernetes distributions:
+  
+  - <VersionedLink text="Palette eXtended Kubernetes Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" />
+  - <VersionedLink text="Palette Optimized Canonical" url="/integrations/packs/?pack=edge-canonical" />
+  - <VersionedLink text="Palette Optimized K3s" url="/integrations/packs/?pack=edge-k3s" />
+  - <VersionedLink text="Palette Optimized RKE2" url="/integrations/packs/?pack=edge-rke2" />
+
+<!-- prettier-ignore-end -->
+
 - All Edge hosts must be on the same Layer-2 network.
 - Broadcast messages must be allowed between all Edge hosts participating in the cluster.
 
