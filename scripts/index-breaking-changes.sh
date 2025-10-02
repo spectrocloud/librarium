@@ -42,7 +42,6 @@ add_breaking_changes_body() {
 
   # If line is empty just append it and return
   if [ -z "$new_line" ]; then
-    echo "" >> "$filename"
     echo >> "$filename"   # ensures file ends with a newline
     return
   fi
@@ -196,8 +195,20 @@ for branch in $branches; do
       create_partials_file $release_number
       continue
     fi
-
+    
     if [ -n "$release_number" ] && $in_breaking_changes; then
+      
+      # If the line is empty, write the buffer then add it to the body as is without more processing.
+      if [ -z "$line" ]; then
+        # Flush the buffer if it has content.
+        if [ -n "$buffer" ]; then
+          add_breaking_changes_body "$release_number" "$buffer"
+          buffer=""
+        fi
+        add_breaking_changes_body "$release_number" "$line"
+        continue
+      fi
+
       # If we are in breaking changes and the line is a heading then exit breaking changes mode. 
       if echo "$line" | grep -q '^[[:space:]]*#'; then
         in_breaking_changes=false
@@ -228,15 +239,22 @@ for branch in $branches; do
         continue
       fi
 
+      # If the line is prettier-ignore-start or prettier-ignore-end skip it.
+      if echo "$line" | grep -q '^[[:space:]]*<!-- prettier-ignore-start -->'; then
+        continue
+      fi
+      if echo "$line" | grep -q '^[[:space:]]*<!-- prettier-ignore-end -->'; then
+        continue
+      fi
+      if echo "$line" | grep -q '^[[:space:]]*<!--prettier-ignore-start-->'; then
+        continue
+      fi
+      if echo "$line" | grep -q '^[[:space:]]*<!--prettier-ignore-end-->'; then
+        continue
+      fi
+
       # If we are in breaking changes and the line is not a heading then process it.
       if echo "$line" | grep -q '^[[:space:]]*[^#]'; then
-        # If the line is prettier-ignore-start or prettier-ignore-end skip it.
-        if echo "$line" | grep -q '^[[:space:]]*<!-- prettier-ignore-start -->'; then
-          continue
-        fi
-        if echo "$line" | grep -q '^[[:space:]]*<!-- prettier-ignore-end -->'; then
-          continue
-        fi
         # If the line starts with <VersionedLink> then strip leading whitespace and add it to the buffer.
         if echo "$line" | grep -q '^[[:space:]]*<VersionedLink'; then
           append_line=$(echo "$line" | sed 's/^[[:space:]]*//')
@@ -252,13 +270,6 @@ for branch in $branches; do
             add_breaking_changes_body "$release_number" "$buffer"
             buffer=""
           fi
-          # If the line is empty add it to the body as is without buffering it.
-          if [ -z "$line" ]; then
-            echo "Empty line found."   
-            add_breaking_changes_body "$release_number" "$line"
-            continue
-          fi
-          
           # Normal line. Set the line as the buffer so it is ready for the next versioned link.
           buffer="$line"
         fi
