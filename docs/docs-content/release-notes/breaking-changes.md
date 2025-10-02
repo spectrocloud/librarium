@@ -7,11 +7,14 @@ sidebar_position: 30
 tags: ["release-notes"]
 ---
 
-This page lists breaking changes introduced across Palette and Palette VerteX releases. This list can be used as guidance for upgrading [self-hosted Palette](../enterprise-version/enterprise-version.md) and [Palette VerteX](../vertex/vertex.md) installations.
+This page lists breaking changes introduced across Palette and Palette VerteX releases. This list can be used as
+guidance for upgrading [self-hosted Palette](../enterprise-version/enterprise-version.md) and
+[Palette VerteX](../vertex/vertex.md) installations.
 
 :::warning
 
-Check the [Palette Upgrade](../enterprise-version/upgrade/upgrade.md) and [VerteX Upgrade](../vertex/upgrade/upgrade.md) pages to ensure that you upgrade path is supported.
+Check the [Palette Upgrade](../enterprise-version/upgrade/upgrade.md) and [VerteX Upgrade](../vertex/upgrade/upgrade.md)
+pages to ensure that you upgrade path is supported.
 
 :::
 

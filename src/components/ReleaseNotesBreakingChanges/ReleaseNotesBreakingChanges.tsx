@@ -14,7 +14,7 @@ interface VersionOption {
   value: string;
 }
 
- interface Modules {
+interface Modules {
   [key: string]: Module;
 }
 
@@ -28,7 +28,6 @@ interface Module {
 
 const externalDomainURL = "legacy.docs.spectrocloud.com";
 
-
 interface CustomOptionProps extends OptionProps<VersionOption, false> {}
 
 const CustomOption: React.FC<CustomOptionProps> = (props) => {
@@ -37,33 +36,28 @@ const CustomOption: React.FC<CustomOptionProps> = (props) => {
   } = props;
 
   // Return the Option component with proper props spread and conditional rendering
-  return (
-    <components.Option {...props}>
-      {label}
-    </components.Option>
-  );
+  return <components.Option {...props}>{label}</components.Option>;
 };
 
-function compareVersions(a: string, b: string, direction: 'ASC' | 'DESC' = 'DESC'): number {
-  const aParts = a.split('.').map(Number);
-  const bParts = b.split('.').map(Number);
+function compareVersions(a: string, b: string, direction: "ASC" | "DESC" = "DESC"): number {
+  const aParts = a.split(".").map(Number);
+  const bParts = b.split(".").map(Number);
 
   for (let i = 0; i < 3; i++) {
     const aVal = aParts[i] || 0;
     const bVal = bParts[i] || 0;
 
     if (aVal !== bVal) {
-      return direction === 'ASC' ? aVal - bVal : bVal - aVal;
+      return direction === "ASC" ? aVal - bVal : bVal - aVal;
     }
   }
 
   return 0; // equal
 }
 
-
 function isGreaterVersion(a: string, b: string): boolean {
-  const aParts = a.split('.').map(Number);
-  const bParts = b.split('.').map(Number);
+  const aParts = a.split(".").map(Number);
+  const bParts = b.split(".").map(Number);
 
   for (let i = 0; i < 3; i++) {
     const aVal = aParts[i] || 0;
@@ -76,7 +70,7 @@ function isGreaterVersion(a: string, b: string): boolean {
 }
 
 function isVersionInRange(input: string, from: string, to: string): boolean {
-  const parse = (v: string) => v.split('.').map(Number);
+  const parse = (v: string) => v.split(".").map(Number);
 
   const [iMajor, iMinor, iPatch] = parse(input);
   const [fMajor, fMinor, fPatch] = parse(from);
@@ -95,14 +89,13 @@ function isVersionInRange(input: string, from: string, to: string): boolean {
   return isStrictlyGreaterThanFrom && isLessThanOrEqualToTo;
 }
 
-
 function getVersionsFromFile(): string[] {
   const versions: string[] = Versions;
-  versions.sort((a, b) => compareVersions(a, b, 'DESC'));
+  versions.sort((a, b) => compareVersions(a, b, "DESC"));
   return versions;
 }
 
-function getBreakingChangesBetweenVersions(from:string, to:string): string[] {
+function getBreakingChangesBetweenVersions(from: string, to: string): string[] {
   let breakingVersionsList: string[] = [];
   const module: Modules = require("@site/_partials");
   const partialKeys: string[] = Object.keys(module);
@@ -114,8 +107,8 @@ function getBreakingChangesBetweenVersions(from:string, to:string): string[] {
       breakingVersionsList.push(nameFrontMatter);
     }
   });
-  
-  breakingVersionsList.sort((a, b) => compareVersions(a, b, 'ASC'));
+
+  breakingVersionsList.sort((a, b) => compareVersions(a, b, "ASC"));
   return breakingVersionsList;
 }
 
@@ -128,9 +121,8 @@ export function ReleaseNotesBreakingChanges(): JSX.Element | null {
     return getBreakingChangesBetweenVersions(selectedFromVersion.value, selectedToVersion.value);
   }, [selectedFromVersion, selectedToVersion]);
 
-
   const versions: VersionOption[] = [
-    ...versionsList.map(( version) => ({
+    ...versionsList.map((version) => ({
       label: version,
       value: version,
     })),
@@ -138,8 +130,8 @@ export function ReleaseNotesBreakingChanges(): JSX.Element | null {
 
   const toVersionOptions = useMemo(() => {
     if (!selectedFromVersion) return versions;
-  
-    return versions.filter(v => isGreaterVersion(v.value, selectedFromVersion.value));
+
+    return versions.filter((v) => isGreaterVersion(v.value, selectedFromVersion.value));
   }, [selectedFromVersion, versions]);
 
   useEffect(() => {
@@ -160,7 +152,6 @@ export function ReleaseNotesBreakingChanges(): JSX.Element | null {
       if (savedFromVersionObj && savedFromVersionObj.value !== selectedFromVersion?.value) {
         setSelectedFromVersion(savedFromVersionObj);
       }
-
     }
   }, [versions]);
 
@@ -173,7 +164,6 @@ export function ReleaseNotesBreakingChanges(): JSX.Element | null {
       }
     }
   }, [versions]);
-
 
   const handleFromVersionChange = (selectedOption: VersionOption | null) => {
     setSelectedFromVersion(selectedOption);
@@ -223,7 +213,9 @@ export function ReleaseNotesBreakingChanges(): JSX.Element | null {
     }),
   };
 
-  if (isLegacy(externalDomainURL, useIsBrowser())) {
+  const legacy = isLegacy(externalDomainURL, useIsBrowser()); 
+  console.log("Is legacy:", legacy); 
+  if (legacy) {
     return (
       <Admonition type="tip">
         To find breaking changes between releases, check out the most recent
@@ -236,11 +228,14 @@ export function ReleaseNotesBreakingChanges(): JSX.Element | null {
     <div>
       <div className={styles.breakingChangesContainer}>
         <p>
-          Use the version selector below to find all the breaking changes between two releases. <br/> Start by selecting the current version you have installed.
+          Use the version selector below to find all the breaking changes between two releases. <br /> Start by
+          selecting the current version you have installed.
         </p>
         <div className={styles.dropdownContainer}>
           <div className={styles.dropdownGroupFirst}>
-            <label className={styles.dropdownLabel} htmlFor="version-select-1">Current Version:</label>
+            <label className={styles.dropdownLabel} htmlFor="version-select-1">
+              Current Version:
+            </label>
             <Select
               inputId="version-select-1"
               classNamePrefix="reactSelect"
@@ -255,7 +250,10 @@ export function ReleaseNotesBreakingChanges(): JSX.Element | null {
             <FontAwesomeIcon icon={faArrowRight} />
           </div>
           <div className={styles.dropdownGroupSecond}>
-            <label className={styles.dropdownLabel} htmlFor="version-select-2"> Target Version:</label>
+            <label className={styles.dropdownLabel} htmlFor="version-select-2">
+              {" "}
+              Target Version:
+            </label>
             <Select
               inputId="version-select-2"
               classNamePrefix="reactSelect"
@@ -272,9 +270,10 @@ export function ReleaseNotesBreakingChanges(): JSX.Element | null {
       {selectedFromVersion && selectedToVersion && (
         <div className={styles.breakingChangesTextContainer}>
           <h3>
-            Breaking Changes from <strong>{selectedFromVersion.label}</strong> to <strong>{selectedToVersion.label}</strong>
+            Breaking Changes from <strong>{selectedFromVersion.label}</strong> to{" "}
+            <strong>{selectedToVersion.label}</strong>
           </h3>
-          <br/>
+          <br />
           {breakingVersionsList.length === 0 ? (
             <div>No breaking changes found.</div>
           ) : (
@@ -293,6 +292,8 @@ export function ReleaseNotesBreakingChanges(): JSX.Element | null {
 
 // isLegacy checks if the URL is external or points to a versioned page.
 export function isLegacy(url: string, isBrowser: boolean): boolean {
+  console.log("isLegacy check for URL:", url);
+  console.log("isBrowser:", isBrowser);
   if (!isBrowser) {
     return false;
   }
@@ -304,12 +305,15 @@ export function isLegacy(url: string, isBrowser: boolean): boolean {
 
   // If URL contains version pattern like 5.7.x, treat it as legacy
   if (versionPattern.test(url)) {
+    console.log("URL matches version pattern, treating as legacy.");
     return true;
   }
 
   // Otherwise, compare against the current domain
-  return !currentDomain.includes(url);
+  const includesURL = currentDomain.includes(url)
+  console.log("Current domain:", currentDomain);
+  console.log(`Does current domain include "${url}"?`, includesURL);
+  return !includesURL;
 }
-
 
 export default ReleaseNotesBreakingChanges;

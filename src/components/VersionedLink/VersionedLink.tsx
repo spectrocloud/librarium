@@ -2,7 +2,6 @@ import React from "react";
 import GetVersionPath from "./CheckVersion";
 import styles from "./VersionedLink.module.scss";
 
-
 interface ComponentProperties {
   text?: string;
   url: string;
@@ -28,17 +27,33 @@ export default function VersionedLink(props: ComponentProperties) {
 
     // Component Mode detected
     if (props.component != null) {
-      return <a className={styles.inlineVersionedLink} href={versionedURL}>{props.component}</a>;
+      return (
+        <a className={styles.inlineVersionedLink} href={versionedURL}>
+          {props.component}
+        </a>
+      );
     }
 
     // Text mode detected
-    return <a className={styles.inlineVersionedLink} href={versionedURL}>{props.text}</a>;
+    return (
+      <a className={styles.inlineVersionedLink} href={versionedURL}>
+        {props.text}
+      </a>
+    );
   }
 
   // Component mode of versioned link detected without versioning
   if (props.component != null) {
-    return <a className={styles.inlineVersionedLink} href={props.url}>{props.component}</a>;
+    return (
+      <a className={styles.inlineVersionedLink} href={props.url}>
+        {props.component}
+      </a>
+    );
   }
 
-  return <a className={styles.inlineVersionedLink} href={props.url}>{props.text}</a>;
+  return (
+    <a className={styles.inlineVersionedLink} href={props.url}>
+      {props.text}
+    </a>
+  );
 }
