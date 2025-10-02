@@ -4,6 +4,9 @@ import Versions from "./versions.json";
 import Select, { components, OptionProps } from "react-select";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import useIsBrowser from "@docusaurus/useIsBrowser";
+import Admonition from "@theme/Admonition";
+import Link from "@docusaurus/Link";
 import PartialsComponent from "../PartialsComponent";
 
 interface VersionOption {
@@ -22,6 +25,9 @@ interface Module {
   };
   default: FunctionComponent;
 }
+
+const externalDomainURL = "legacy.docs.spectrocloud.com";
+
 
 interface CustomOptionProps extends OptionProps<VersionOption, false> {}
 
@@ -217,6 +223,15 @@ export function ReleaseNotesBreakingChanges(): JSX.Element | null {
     }),
   };
 
+  if (isLegacy(externalDomainURL, useIsBrowser())) {
+    return (
+      <Admonition type="tip">
+        To find breaking changes between releases, check out the most recent
+        <Link href="https://docs.spectrocloud.com/release-notes/breaking-changes"> Palette breaking changes.</Link>.
+      </Admonition>
+    );
+  }
+
   return (
     <div>
       <div className={styles.breakingChangesContainer}>
@@ -275,5 +290,26 @@ export function ReleaseNotesBreakingChanges(): JSX.Element | null {
     </div>
   );
 }
+
+// isLegacy checks if the URL is external or points to a versioned page.
+export function isLegacy(url: string, isBrowser: boolean): boolean {
+  if (!isBrowser) {
+    return false;
+  }
+
+  const currentDomain = window.location.hostname;
+
+  // Regex: matches versions like 4.6.x, 5.7.x, 12.34.x
+  const versionPattern = /\d+\.\d+\.x/;
+
+  // If URL contains version pattern like 5.7.x, treat it as legacy
+  if (versionPattern.test(url)) {
+    return true;
+  }
+
+  // Otherwise, compare against the current domain
+  return !currentDomain.includes(url);
+}
+
 
 export default ReleaseNotesBreakingChanges;

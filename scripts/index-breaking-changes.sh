@@ -153,7 +153,9 @@ for b in $branches; do
   git fetch origin $b:$b
 done
 
-# File doesn't exist, the directory will be handled by create_partials_file.
+# Remove files for repeatable runs.
+rm -rf $BREAKING_CHANGES_PARTIALS_PATH
+rm -f $ALL_VERSIONS_PATH
 touch $ALL_VERSIONS_PATH
 echo "[" >> $ALL_VERSIONS_PATH
 
