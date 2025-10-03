@@ -17,8 +17,8 @@ The following components have been updated for Palette version 4.7.20 - 4.7.21.
 
 ### Improvements
 
-- Access to [Artifact Studio](../downloads/artifact-studio.md) now requires authentication. To gain access, contact your Spectro Cloud
-representative or [open a support ticket](https://support.spectrocloud.com/).
+- Access to [Artifact Studio](../downloads/artifact-studio.md) now requires authentication. To gain access, contact your
+  Spectro Cloud representative or [open a support ticket](https://support.spectrocloud.com/).
 
 ### Packs
 
