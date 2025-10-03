@@ -1,11 +1,11 @@
 ---
-title: "Palette Management Appliance"
 sidebar_label: "Palette Management Appliance"
+title: "Palette Management Appliance"
 description: "Learn how to deploy self-hosted Palette to your environment using the Palette Management Appliance"
 hide_table_of_contents: false
 # sidebar_custom_props:
 #   icon: "chart-diagram"
-tags: ["palette management appliance", "self-hosted", "enterprise"]
+tags: ["management appliance", "self-hosted"]
 sidebar_position: 20
 ---
 
@@ -30,13 +30,13 @@ There is an additional option to download and install the Third Party packs that
 Palette. These packs are not required for Palette to function, but they do provide additional features and capabilities
 as described in the following table.
 
-| **Feature**                                                                                                                           | **Included with Palette Third Party Pack** | **Included with Palette Third Party Conformance Pack** |
-| ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ | ------------------------------------------------------ |
-| [Backup and Restore](../../clusters/cluster-management/backup-restore/backup-restore.md)                                              | :white_check_mark:                         | :x:                                                    |
-| [Configuration Security](../../clusters/cluster-management/compliance-scan.md#configuration-security)                                 | :white_check_mark:                         | :x:                                                    |
-| [Penetration Testing](../../clusters/cluster-management/compliance-scan.md#penetration-testing)                                       | :white_check_mark:                         | :x:                                                    |
-| [Software Bill Of Materials (SBOM) scanning](../../clusters/cluster-management/compliance-scan.md#sbom-dependencies--vulnerabilities) | :white_check_mark:                         | :x:                                                    |
-| [Conformance Testing](../../clusters/cluster-management/compliance-scan.md#conformance-testing)                                       | :x:                                        | :white_check_mark:                                     |
+| **Feature**                                                                                                                              | **Included with Palette Third Party Pack** | **Included with Palette Third Party Conformance Pack** |
+| ---------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------ | ------------------------------------------------------ |
+| [Backup and Restore](../../../clusters/cluster-management/backup-restore/backup-restore.md)                                              | :white_check_mark:                         | :x:                                                    |
+| [Configuration Security](../../../clusters/cluster-management/compliance-scan.md#configuration-security)                                 | :white_check_mark:                         | :x:                                                    |
+| [Penetration Testing](../../../clusters/cluster-management/compliance-scan.md#penetration-testing)                                       | :white_check_mark:                         | :x:                                                    |
+| [Software Bill Of Materials (SBOM) scanning](../../../clusters/cluster-management/compliance-scan.md#sbom-dependencies--vulnerabilities) | :white_check_mark:                         | :x:                                                    |
+| [Conformance Testing](../../../clusters/cluster-management/compliance-scan.md#conformance-testing)                                       | :x:                                        | :white_check_mark:                                     |
 
 ## Architecture
 

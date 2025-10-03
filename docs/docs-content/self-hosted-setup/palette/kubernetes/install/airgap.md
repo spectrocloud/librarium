@@ -1,12 +1,13 @@
 ---
-sidebar_label: "Install Palette"
-title: "Install Airgap Self-Hosted Palette"
-description: "Learn how to deploy self-hosted Palette to a Kubernetes cluster using a Helm Chart."
+sidebar_label: "Install Airgap Palette"
+title: "Install Airgap, Self-Hosted Palette on a Kubernetes Cluster"
+description:
+  "Learn how to deploy self-hosted Palette to a Kubernetes cluster using a Helm Chart in an airgapped environment."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 30
-tags: ["self-hosted", "enterprise", "airgap"]
-keywords: ["self-hosted", "enterprise"]
+tags: ["self-hosted", "airgap", "kubernetes", "helm"]
+keywords: ["self-hosted", "airgap", "kubernetes", "helm"]
 ---
 
 You can use the Palette Helm Chart to install Palette in a multi-node Kubernetes cluster in your airgap production
@@ -18,7 +19,7 @@ has the necessary network connectivity for self-hosted Palette to operate succes
 
 :::warning
 
-Complete the [Environment Setup](./kubernetes-airgap-instructions.md) steps before proceeding with the installation.
+Complete the [Environment Setup](../setup/airgap/environment-setup.md) steps before proceeding with the installation.
 
 :::
 
@@ -35,8 +36,8 @@ Complete the [Environment Setup](./kubernetes-airgap-instructions.md) steps befo
 - Ensure `unzip` or a similar extraction utility is installed on your system.
 
 - The Kubernetes cluster must be set up on a supported version of Kubernetes. Refer to the
-  [Kubernetes Requirements](../../install-palette.md#kubernetes-requirements) section to find the version required for
-  your Palette installation.
+  [Kubernetes Requirements](./install.md#kubernetes-requirements) section to find the version required for your Palette
+  installation.
 
 - Ensure the Kubernetes cluster does not have Cert Manager installed. Palette requires a unique Cert Manager
   configuration to be installed as part of the installation process. If Cert Manager is already installed, you must
@@ -51,7 +52,7 @@ Complete the [Environment Setup](./kubernetes-airgap-instructions.md) steps befo
   database user in Atlas.
 
 - We recommended the following resources for Palette. Refer to the
-  [Palette size guidelines](../../install-palette.md#size-guidelines) for additional sizing information.
+  [Palette size guidelines](./install.md#size-guidelines) for additional sizing information.
 
   - 8 CPUs per node.
 
@@ -92,8 +93,8 @@ Complete the [Environment Setup](./kubernetes-airgap-instructions.md) steps befo
   certificate file in the base64 format. You will need this to enable Palette to communicate with the network proxy
   server.
 
-- Access to the Palette Helm Charts. Refer to the [Access Palette](../../../enterprise-version.md#access-palette) for
-  instructions on how to request access to the Helm Chart.
+- Access to the Palette Helm Charts. Refer to the [Access Palette](../../palette.md#access-palette) for instructions on
+  how to request access to the Helm Chart.
 
 :::warning
 
@@ -208,14 +209,14 @@ environment. Reach out to our support team if you need assistance.
     :::tip
 
     If you need to override the image-swap registry configuration post-deployment, refer to the
-    [Override Registry Configuration](../../../system-management/registry-override.md) page for instructions.
+    [Override Registry Configuration](../../system-management/registry-override.md) page for instructions.
 
     :::
 
 8.  Open the **values.yaml** file in the **spectro-mgmt-plane** folder with a text editor of your choice. The
     **values.yaml** file contains the default values for the Palette installation parameters. However, you must populate
     the following parameters before installing Palette. You can learn more about the parameters on the **values.yaml**
-    file on the [Helm Configuration Reference](../palette-helm-ref.md) page.
+    file on the [Helm Configuration Reference](../setup/airgap/helm-reference.md) page.
 
     Ensure you provide the proper `ociImageRegistry.mirrorRegistries` values if you are using a self-hosted OCI
     registry. You can find the placeholder string in the `ociImageRegistry` section of the **values.yaml** file.
@@ -236,7 +237,7 @@ environment. Reach out to our support team if you need assistance.
 
     If you are installing Palette by pulling required images from a private mirror registry, you will need to provide
     the credentials to your registry in the **values.yaml** file. For more information, refer to
-    [Helm Configuration Reference](../palette-helm-ref.md#image-pull-secret).
+    [Helm Configuration Reference](../setup/airgap/helm-reference.md#image-pull-secret).
 
     :::
 
@@ -781,7 +782,7 @@ environment. Reach out to our support team if you need assistance.
     ![Screenshot of the Palette system console showing Username and Password fields.](/palette_installation_install-on-vmware_palette-system-console.webp)
 
 14. Log in to the system console using the following default credentials. Refer to the
-    [password requirements](../../../system-management/account-management/credentials.md#password-requirements-and-security)
+    [password requirements](../../system-management/account-management/credentials.md#password-requirements-and-security)
     documentation page to learn more about password requirements.
 
     | **Parameter** | **Value** |
@@ -792,19 +793,19 @@ environment. Reach out to our support team if you need assistance.
     After login, you will be prompted to create a new password. Enter a new password and save your changes. You will be
     redirected to the Palette system console. Use the username `admin` and your new password to log in to the system
     console. You can create additional system administrator accounts and assign roles to users in the system console.
-    Refer to the [Account Management](../../../system-management/account-management/account-management.md) documentation
+    Refer to the [Account Management](../../system-management/account-management/account-management.md) documentation
     page for more information.
 
 15. After login, a summary page is displayed. Palette is installed with a self-signed SSL certificate. To assign a
     different SSL certificate, you must upload the SSL certificate, SSL certificate key, and SSL certificate authority
     files to Palette. You can upload the files using the Palette system console. Refer to the
-    [Configure HTTPS Encryption](../../../system-management/ssl-certificate-management.md) page for instructions on how
-    to upload the SSL certificate files to Palette.
+    [Configure HTTPS Encryption](../../system-management/ssl-certificate-management.md) page for instructions on how to
+    upload the SSL certificate files to Palette.
 
     :::warning
 
     If you plan to deploy host clusters into different networks, you may require a reverse proxy. Check out the
-    [Configure Reverse Proxy](../../../system-management/reverse-proxy.md) guide for instructions on how to configure a
+    [Configure Reverse Proxy](../../system-management/reverse-proxy.md) guide for instructions on how to configure a
     reverse proxy for Palette.
 
     :::

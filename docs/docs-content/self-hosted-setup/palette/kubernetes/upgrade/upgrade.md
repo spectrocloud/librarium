@@ -1,3 +1,14 @@
+---
+sidebar_label: "Upgrade Palette"
+title: "Upgrade Self-Hosted Palette"
+description: "Learn how to upgrade your self-hosted Palette environment installed on a Kubernetes cluster."
+icon: ""
+hide_table_of_contents: false
+sidebar_position: 10
+tags: ["self-hosted", "helm", "kubernetes", "upgrade"]
+keywords: ["self-hosted", "helm", "kubernetes", "upgrade"]
+---
+
 :::danger
 
 The below content is from the former [Palette Upgrade](https://docs.spectrocloud.com/enterprise-version/upgrade/) page.
@@ -10,15 +21,15 @@ concerns, [reach out to our support team](http://support.spectrocloud.io/).
 
 :::tip
 
-If you are using Palette VerteX, refer to the [VerteX Upgrade](../../vertex/upgrade/upgrade.md) page for upgrade
-guidance.
+If you are using Palette VerteX, refer to the [VerteX Upgrade](../../../vertex/kubernetes/upgrade/upgrade.md) page for
+upgrade guidance.
 
 :::
 
 ### Private Cloud Gateway
 
 If your setup includes a PCG, make sure to
-[allow the PCG to upgrade automatically](../../clusters/pcg/manage-pcg/pcg-upgrade.md) before each major or minor
+[allow the PCG to upgrade automatically](../../../../clusters/pcg/manage-pcg/pcg-upgrade.md) before each major or minor
 Palette upgrade.
 
 ## Upgrade Notes
@@ -28,13 +39,13 @@ Refer to the following known issues before upgrading:
 - Upgrading self-hosted Palette or Palette VerteX from version 4.6.x to 4.7.x can cause the upgrade to hang if any
   member of the MongoDB ReplicaSet is not fully synced and in a healthy state prior to the upgrade. For guidance on
   verifying the health status of MongoDB ReplicaSet members, refer to our
-  [Troubleshooting](../../troubleshooting/palette-upgrade.md#self-hosted-palette-or-palette-vertex-upgrade-hangs) guide.
+  [Troubleshooting](../../../../troubleshooting/palette-upgrade.md#self-hosted-palette-or-palette-vertex-upgrade-hangs)
+  guide.
 
 ## Supported Upgrade Paths
 
-Refer to the following tables for the supported self-hosted Palette upgrade paths for
-[VMware](../install-palette/install-on-vmware/install-on-vmware.md) and
-[Kubernetes](../install-palette/install-on-kubernetes/install-on-kubernetes.md) installations.
+Refer to the following tables for the supported upgrade paths for self-hosted Palette environments installed on a
+[Kubernetes](../kubernetes.md) cluster.
 
 :::danger
 

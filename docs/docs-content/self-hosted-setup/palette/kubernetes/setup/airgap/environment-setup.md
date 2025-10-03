@@ -1,12 +1,13 @@
 ---
-sidebar_label: "Environment Setup"
-title: "Environment Setup"
-description: "Learn how to prepare Palette for an airgap install"
+sidebar_label: "Set Up Airgap Environment"
+title: "Set Up Airgap Environment"
+description:
+  "Set up your airgap environment in preparation to install self-hosted Palette on an existing Kubernetes cluster"
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 20
-tags: ["self-hosted", "enterprise", "airgap", "kubernetes"]
-keywords: ["self-hosted", "enterprise"]
+tags: ["self-hosted", "airgap", "kubernetes"]
+keywords: ["self-hosted", "airgap", "kubernetes"]
 ---
 
 ![Overview diagram of the pre-install steps eager-load](/enterprise-version_air-gap-repo_k8s-overview-order-diagram-clean.webp)
@@ -243,7 +244,7 @@ Complete the following steps before deploying the airgap Palette installation.
 
 13. Review the additional packs available for download. The supplemental packs are optional and not required for a
     successful installation. However, to create cluster profiles you may require several of the packs available for
-    download. Refer to the [Additional Packs](../../../../downloads/self-hosted-palette/additional-packs.md) resource
+    download. Refer to the [Additional Packs](../../../../../downloads/self-hosted-palette/additional-packs.md) resource
     for a list of available packs.
 
 14. Once you select the packs you want to install, download the pack binaries and start the binary to initiate the
@@ -281,4 +282,4 @@ Use the following steps to validate the airgap setup process completed successfu
 ## Next Steps
 
 You are now ready to install the airgap self-hosted Palette. You will specify your OCI registry during the installation
-process. Refer to the [Install Palette](./airgap-install.md) guide for detailed guidance on installing Palette.
+process. Refer to the [Install Palette](../../install/airgap.md) guide for detailed guidance on installing Palette.

@@ -5,8 +5,8 @@ description: "Review VMware system requirements and cloud account permissions."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 10
-tags: ["palette", "self-hosted", "vmware"]
-keywords: ["self-hosted", "enterprise"]
+tags: ["self-hosted", "vmware", "permissions"]
+keywords: ["self-hosted", "vmware", "permissions"]
 ---
 
 :::danger
@@ -44,12 +44,12 @@ guide if you need help creating a custom role in vSphere. The required custom ro
 
 - A root-level role with access to higher-level vSphere objects. This role is referred to as the _Spectro root role_.
   Check out the
-  [Root-Level Role Privileges](../../../clusters/data-center/vmware/permissions.md#spectro-root-role-privileges) table
-  for the list of privileges required for the root-level role.
+  [Root-Level Role Privileges](../../../../../clusters/data-center/vmware/permissions.md#spectro-root-role-privileges)
+  table for the list of privileges required for the root-level role.
 
 - A role with the required privileges for deploying VMs. This role is referred to as the _Spectro role_. Review the
-  [Spectro Role Privileges](../../../clusters/data-center/vmware/permissions.md#spectro-role-privileges) table for the
-  list of privileges required for the Spectro role.
+  [Spectro Role Privileges](../../../../../clusters/data-center/vmware/permissions.md#spectro-role-privileges) table for
+  the list of privileges required for the Spectro role.
 
 The user account you use to deploy Palette must have access to both roles. Each vSphere object required by Palette must
 have a

@@ -1,27 +1,27 @@
 ---
-sidebar_label: "Non-airgap"
-title: "Upgrade Palette Installed on VMware vSphere"
-description: "Learn how to upgrade self-hosted Palette in VMware vSphere."
+sidebar_label: "Upgrade Non-Airgap Palette"
+title: "Upgrade Self-Hosted, Non-Airgap Palette Installed on VMware"
+description: "Learn how to upgrade a self-hosted, non-airgap Palette environment installed on VMware vSphere."
 icon: ""
-sidebar_position: 0
-tags: ["palette", "self-hosted", "vmware", "non-airgap", "upgrade"]
-keywords: ["self-hosted", "enterprise"]
+sidebar_position: 20
+tags: ["self-hosted", "non-airgap", "vmware", "upgrade"]
+keywords: ["self-hosted", "non-airgap", "vmware", "upgrade"]
 ---
 
 This guide takes you through the process of upgrading a self-hosted Palette instance installed on VMware vSphere. Before
 upgrading Palette to a new major version, you must first update it to the latest patch version of the latest minor
-version available. Refer to the [Supported Upgrade Paths](../upgrade.md#supported-upgrade-paths) section for details.
+version available. Refer to the [Supported Upgrade Paths](./upgrade.md#supported-upgrade-paths) section for details.
 
 :::warning
 
 If you are upgrading from a Palette version that is older than 4.4.14, ensure that you have executed the utility script
 to make the CNS mapping unique for the associated PVC. For more information, refer to the
-[Troubleshooting guide](../../../troubleshooting/enterprise-install.md#scenario---non-unique-vsphere-cns-mapping).
+[Troubleshooting guide](../../../../troubleshooting/enterprise-install.md#scenario---non-unique-vsphere-cns-mapping).
 
 :::
 
 If your setup includes a PCG, you must also
-[allow the PCG to upgrade automatically](../../../clusters/pcg/manage-pcg/pcg-upgrade.md) before each major or minor
+[allow the PCG to upgrade automatically](../../../../clusters/pcg/manage-pcg/pcg-upgrade.md) before each major or minor
 Palette upgrade.
 
 ## Prerequisites
@@ -29,8 +29,8 @@ Palette upgrade.
 - Access to the Palette system console.
 - A diff or text comparison tool of your choice.
 - The Kubernetes cluster must be set up on a version of Kubernetes that is compatible to your upgraded version. Refer to
-  the [Kubernetes Requirements](../../install-palette/install-palette.md#kubernetes-requirements) section to find the
-  version required for your Palette installation.
+  the [Kubernetes Requirements](../install/install.md#kubernetes-requirements) section to find the version required for
+  your Palette installation.
 
 ## Upgrade
 

@@ -1,11 +1,11 @@
 ---
-sidebar_label: "Airgap"
-title: "Upgrade Airgap Palette Installed with Kubernetes"
-description: "Learn how to upgrade self-hosted airgap Palette."
+sidebar_label: "Upgrade Airgap Palette"
+title: "Upgrade Self-Hosted, Airgap Palette Installed on a Kubernetes Cluster"
+description: "Learn how to upgrade a self-hosted, airgapped Palette environment installed on a Kubernetes cluster."
 icon: ""
-sidebar_position: 10
-tags: ["palette", "self-hosted", "airgap", "kubernetes", "upgrade"]
-keywords: ["self-hosted", "enterprise", "airgap", "kubernetes"]
+sidebar_position: 30
+tags: ["self-hosted", "airgap", "kubernetes", "upgrade", "helm"]
+keywords: ["self-hosted", "airgap", "kubernetes", "upgrade", "helm"]
 ---
 
 This guide takes you through the process of upgrading a self-hosted airgap Palette instance installed on Kubernetes.
@@ -13,13 +13,13 @@ This guide takes you through the process of upgrading a self-hosted airgap Palet
 :::warning
 
 Before upgrading Palette to a new major version, you must first update it to the latest patch version of the latest
-minor version available. Refer to the [Supported Upgrade Paths](../upgrade.md#supported-upgrade-paths) section for
+minor version available. Refer to the [Supported Upgrade Paths](./upgrade.md#supported-upgrade-paths) section for
 details.
 
 :::
 
 If your setup includes a PCG, you must also
-[allow the PCG to upgrade automatically](../../../clusters/pcg/manage-pcg/pcg-upgrade.md) before each major or minor
+[allow the PCG to upgrade automatically](../../../../clusters/pcg/manage-pcg/pcg-upgrade.md) before each major or minor
 Palette upgrade.
 
 ## Prerequisites
@@ -30,8 +30,8 @@ Palette upgrade.
 - An OCI registry such as [Harbor](https://goharbor.io/) or [AWS ECR](https://aws.amazon.com/ecr/) configured and
   available to store the new Palette images and packs.
 
-- Access to the latest Palette airgap setup binary. Refer to [Access Palette](/enterprise-version/#access-palette) for
-  more details.
+- Access to the latest Palette airgap setup binary. Refer to [Access Palette](../../palette.md#access-palette) for more
+  details.
 
 - [`kubectl`](https://kubernetes.io/docs/tasks/tools/#kubectl) and [`helm`](https://helm.sh/docs/intro/install/)
   available in your system.
@@ -42,12 +42,11 @@ Palette upgrade.
 
 - `unzip` or a similar tool available in your system.
 
-- Access to the latest Palette Helm Chart. Refer to [Access Palette](/enterprise-version/#access-palette) for more
-  details.
+- Access to the latest Palette Helm Chart. Refer to [Access Palette](../../palette.md#access-palette) for more details.
 
 - The Kubernetes cluster must be set up on a version of Kubernetes that is compatible to your upgraded version. Refer to
-  the [Kubernetes Requirements](../../install-palette/install-palette.md#kubernetes-requirements) section to find the
-  version required for your Palette installation.
+  the [Kubernetes Requirements](../install/install.md#kubernetes-requirements) section to find the version required for
+  your Palette installation.
 
 ## Upgrade
 
@@ -233,7 +232,7 @@ Palette upgrade.
 
     <PartialsComponent category="self-hosted" name="airgap-binary-execution" />
 
-7.  Refer to the [Additional Packs](../../../downloads/self-hosted-palette/additional-packs.md) page and update the
+7.  Refer to the [Additional Packs](../../../../downloads/self-hosted-palette/additional-packs.md) page and update the
     packages you are currently using. You must update each package separately.
 
     :::info
@@ -302,8 +301,7 @@ Palette upgrade.
 
 12. Prepare the Palette configuration file `values.yaml`. If you saved `values.yaml` used during the Palette
     installation, you can reuse it for the upgrade. Alternatively, follow the
-    [Kubernetes Installation Instructions](../../install-palette/install-on-kubernetes/install.md) to populate your
-    `values.yaml`.
+    [Kubernetes Installation Instructions](../install/airgap.md) to populate your `values.yaml`.
 
     :::warning
 

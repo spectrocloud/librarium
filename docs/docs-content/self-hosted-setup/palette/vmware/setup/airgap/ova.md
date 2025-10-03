@@ -1,12 +1,12 @@
 ---
-sidebar_label: "Environment Setup with OVA"
-title: "Environment Setup with OVA"
-description: "Learn how to install Palette in an airgap environment."
+sidebar_label: "Set Up Environment with OVA"
+title: "Set Up Environment with OVA"
+description: "Learn how to set up a VM using an OVA to install self-hosted Palette in an airgap environment."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 20
-tags: ["self-hosted", "enterprise", "airgap", "vmware", "vsphere"]
-keywords: ["self-hosted", "enterprise"]
+tags: ["self-hosted", "airgap", "vmware"]
+keywords: ["self-hosted", "airgap", "vmware"]
 ---
 
 This guide helps you prepare your airgap environment for Palette installation using an OVA to deploy and initialize an
@@ -15,8 +15,7 @@ airgap support VM.
 :::info
 
 This guide is for preparing your airgap environment only. For instructions on installing Palette on VMware, check the
-[Install](../install.md) guide. A checklist of the steps you will complete to prepare your airgap environment for
-Palette is available on the [Checklist](../checklist.md) page.
+[Install](../../install/airgap.md) guide.
 
 :::
 
@@ -51,17 +50,17 @@ Palette.
 - Configure the Dynamic Host Configuration Protocol (DHCP) to access the airgap support VM via SSH. You can disable DHCP
   or modify the IP address after deploying the airgap support VM.
 
-- Review the required vSphere [permissions](../../../install-on-vmware/vmware-system-requirements.md) and ensure you've
-  created the proper custom roles and zone tags. Zone tagging enables dynamic storage allocation across fault domains
-  when provisioning workloads that require persistent storage. Refer to
-  [Zone Tagging](../../../install-on-vmware/vmware-system-requirements.md#zone-tagging) for information.
+- Review the required vSphere [permissions](vmware-system-requirements.md#vsphere-permissions) and ensure you've created
+  the proper custom roles and zone tags. Zone tagging enables dynamic storage allocation across fault domains when
+  provisioning workloads that require persistent storage. Refer to
+  [Zone Tagging](./vmware-system-requirements.md#zone-tagging) for information.
 
 :::info
 
 Self-hosted Palette installations provide a system Private Cloud Gateway (PCG) out-of-the-box and typically do not
 require a separate, user-installed PCG. However, you can deploy additional PCG instances to support provisioning into
 remote data centers without a direct incoming connection to Palette. To learn how to install a PCG on VMware, check out
-the [VMware](../../../../../clusters/pcg/deploy-pcg/vmware.md) guide.
+our [VMware PCG](../../../../../clusters/pcg/deploy-pcg/vmware.md) guide.
 
 :::
 
@@ -364,7 +363,7 @@ The default container runtime for OVAs is [Podman](https://podman.io/), not Dock
 
 22. In the **Deploy OVF Template** wizard, enter the following URL to import the Operating System (OS) and Kubernetes
     distribution OVA required for the installation. Refer to the
-    [Kubernetes Requirements](../../../install-palette.md#kubernetes-requirements) section to learn if the version of
+    [Kubernetes Requirements](../../install/install.md#kubernetes-requirements) section to learn if the version of
     Palette you are installing requires a new OS and Kubernetes OVA.
 
         Consider the following example for reference.
@@ -479,7 +478,8 @@ installed in the airgap support VM and ready to use.
     palette ec install
     ```
 
-Complete all the Palette CLI steps outlined in the [Install Palette](../install.md) guide from the airgap support VM.
+Complete all the Palette CLI steps outlined in the [Install Palette](../../install/airgap.md) guide from the airgap
+support VM.
 
 :::info
 

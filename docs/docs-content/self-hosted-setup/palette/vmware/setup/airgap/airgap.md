@@ -1,12 +1,12 @@
 ---
-sidebar_label: "Airgap Installation"
-title: "Airgap Installation"
-description: "Learn how to deploy self-hosted Palette in an airgapped environment."
+sidebar_label: "Airgap Environment"
+title: "Self-Hosted, Airgap Environment Overview"
+description: "Learn how to prepare for installing your self-hosted, airgapped Palette in VMware vSphere."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 0
-tags: ["self-hosted", "enterprise", "airgap"]
-keywords: ["self-hosted", "enterprise"]
+tags: ["self-hosted", "airgap", "vmware"]
+keywords: ["self-hosted", "airgap", "vmware"]
 ---
 
 You can install Palette in an airgap VMware vSphere environment. An airgap environment lacks direct access to the
@@ -51,11 +51,11 @@ This section helps you prepare your VMware vSphere airgap environment for Palett
 two methods to prepare your environment:
 
 1. If you have a Red Hat Enterprise Linux (RHEL) VM deployed in your environment, follow the
-   [Environment Setup with an Existing RHEL VM](./env-setup-vm.md) guide to learn how to prepare this VM for Palette
+   [Environment Setup with an Existing RHEL VM](./rhel-vm.md) guide to learn how to prepare this VM for Palette
    installation.
-2. If you do not have an RHEL VM, follow the [Environment Setup with OVA](./vmware-vsphere-airgap-instructions.md)
-   guide. This guide will show you how to use an OVA to deploy an airgap support VM in your VMware vSphere environment,
-   which will then assist with the Palette installation process.
+2. If you do not have an RHEL VM, follow the [Environment Setup with OVA](./ova.md) guide. This guide will show you how
+   to use an OVA to deploy an airgap support VM in your VMware vSphere environment, which will then assist with the
+   Palette installation process.
 
 ## Supported Platforms
 
@@ -65,18 +65,3 @@ The following table outlines the platforms supported for airgap VerteX installat
 | -------------- | ---------------- | ------------- |
 | VMware vSphere | Harbor           | ✅            |
 | VMware vSphere | AWS ECR          | ✅            |
-
-## Get Started
-
-To get started with an airgap Palette installation, begin by reviewing the
-[Environment Setup](./environment-setup/vmware-vsphere-airgap-instructions.md) guide.
-
-## Resources
-
-- [Environment Setup](./environment-setup/vmware-vsphere-airgap-instructions.md)
-
-- [Airgap Install Checklist](./checklist.md)
-
-- [Airgap Install](./airgap-install.md)
-
-- [Additional Packs](../../../../downloads/self-hosted-palette/additional-packs.md)

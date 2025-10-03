@@ -1,34 +1,32 @@
 ---
-sidebar_label: "Install Palette"
-title: "Install Palette"
-description: "Learn how to install Palette on VMware."
+sidebar_label: "Install Airgap Palette"
+title: "Install Airgap, Self-Hosted Palette on VMware"
+description: "Learn how to install airgap, self-hosted Palette on VMware vSphere using the Palette CLI"
 icon: ""
 sidebar_position: 30
 hide_table_of_contents: false
-tags: ["palette", "self-hosted", "vmware"]
-keywords: ["self-hosted", "enterprise"]
+tags: ["self-hosted", "vmware", "airgap", "cli"]
+keywords: ["self-hosted", "vmware", "airgap", "cli"]
 ---
 
 Palette can be installed on VMware vSphere in an airgap environment. When you install Palette, a three-node cluster is
 created. You use the interactive Palette CLI to install Palette on VMware vSphere. Refer to
-[Access Palette](../../../enterprise-version.md#access-palette) for instructions on requesting the required credentials
-and assets.
+[Access Palette](../../palette.md#access-palette) for instructions on requesting the required credentials and assets.
 
 ## Prerequisites
 
-- You have completed the [Environment Setup](./environment-setup/environment-setup.md) steps and deployed the airgap
-  support VM.
+- You have completed the [Environment Setup](../setup/airgap/airgap.md) steps and deployed the airgap support VM.
 
 - You will need to provide the Palette CLI an encryption passphrase to secure sensitive data. The passphrase must be
   between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character.
   Refer to the [Palette CLI Encryption](../../../../automation/palette-cli/palette-cli.md#encryption) section for more
   information.
 
-- Review the required VMware vSphere [permissions](../vmware-system-requirements.md). Ensure you have created the proper
-  custom roles and zone tags.
+- Review the required VMware vSphere [permissions](../setup/airgap/vmware-system-requirements.md). Ensure you have
+  created the proper custom roles and zone tags.
 
 - We recommended the following resources for Palette. Refer to the
-  [Palette size guidelines](../../install-palette.md#size-guidelines) for additional sizing information.
+  [Palette size guidelines](../install/install.md#size-guidelines) for additional sizing information.
 
   - 8 CPUs per VM.
 
@@ -56,7 +54,8 @@ and assets.
   - x509 SSL certificate authority file in base64 format. This file is optional.
 
 - Zone tagging is required for dynamic storage allocation across fault domains when provisioning workloads that require
-  persistent storage. Refer to [Zone Tagging](../../install-on-vmware/vmware-system-requirements.md) for information.
+  persistent storage. Refer to [Zone Tagging](../setup/airgap/vmware-system-requirements.md#zone-tagging) for
+  information.
 
 - Assigned IP addresses for application workload services, such as Load Balancer services.
 
@@ -71,7 +70,7 @@ and assets.
 Self-hosted Palette installations provide a system Private Cloud Gateway (PCG) out-of-the-box and typically do not
 require a separate, user-installed PCG. However, you can create additional PCGs as needed to support provisioning into
 remote data centers that do not have a direct incoming connection from the Palette console. To learn how to install a
-PCG on VMware, check out the [VMware](../../../../clusters/pcg/deploy-pcg/vmware.md) guide.
+PCG on VMware, check out our [VMware PCG](../../../../clusters/pcg/deploy-pcg/vmware.md) guide.
 
 :::
 
@@ -125,8 +124,8 @@ Use the following steps to install Palette.
     :::warning
 
     If you deployed the airgap support VM using a generic OVA, the Palette CLI may not be in the `usr/bin` path. Ensure
-    that you complete step **22** of the [Environment Setup](./environment-setup/vmware-vsphere-airgap-instructions.md)
-    guide, which installs the Palette airgap binary and moves the Palette CLI to the correct path.
+    that you complete step **22** of the [Environment Setup](../setup/airgap/ova.md) guide, which installs the Palette
+    airgap binary and moves the Palette CLI to the correct path.
 
     :::
 
@@ -354,13 +353,13 @@ Use the following steps to install Palette.
 
 18. Log in to the system console using the credentials provided in the Enterprise Cluster Details output. After login,
     you will be prompted to create a new password. Enter a new password and save your changes. Refer to the
-    [password requirements](../../../system-management/account-management/credentials.md#password-requirements-and-security)
+    [password requirements](../../system-management/account-management/credentials.md#password-requirements-and-security)
     documentation page to learn more about the password requirements.
 
     Use the username `admin` and your new password to log in to the system console. You can create additional system
     administrator accounts and assign roles to users in the system console. Refer to the
-    [Account Management](../../../system-management/account-management/account-management.md) documentation page for
-    more information.
+    [Account Management](../../system-management/account-management/account-management.md) documentation page for more
+    information.
 
     :::info
 
@@ -379,11 +378,11 @@ Use the following steps to install Palette.
 20. After login, a Summary page is displayed. Palette is installed with a self-signed SSL certificate. To assign a
     different SSL certificate you must upload the SSL certificate, SSL certificate key, and SSL certificate authority
     files to Palette. You can upload the files using the Palette system console. Refer to the
-    [Configure HTTPS Encryption](../../../system-management/ssl-certificate-management.md) page for instructions on how
-    to upload the SSL certificate files to Palette.
+    [Configure HTTPS Encryption](../../system-management/ssl-certificate-management.md) page for instructions on how to
+    upload the SSL certificate files to Palette.
 
 21. The last step is to start setting up a tenant. To learn how to create a tenant, check out the
-    [Tenant Management](../../../system-management/tenant-management.md) guide.
+    [Tenant Management](../../system-management/tenant-management.md) guide.
 
     ![Screenshot of the Summary page showing where to click Go to Tenant Management button.](/palette_installation_install-on-vmware_goto-tenant-management.webp)
 
@@ -422,13 +421,3 @@ You can also validate that a three-node Kubernetes cluster is launched and Palet
 ## Next Steps
 
 <PartialsComponent category="self-hosted" name="install-next-steps" edition="Palette" version="Palette" />
-
-## Resources
-
-- [Palette CLI](../../../../automation/palette-cli/install-palette-cli.md#download-and-setup)
-
-- [VMware System Requirements](../vmware-system-requirements.md)
-
-- [System Management](../../../system-management/system-management.md)
-
-- [Enterprise Install Troubleshooting](../../../../troubleshooting/enterprise-install.md)

@@ -1,12 +1,12 @@
 ---
-sidebar_label: "Uninstallation"
-title: "Uninstall Palette"
-description: "Learn how to uninstall a Palette installation from your cluster using Helm charts."
+sidebar_label: "Uninstall Palette"
+title: "Uninstall Self-Hosted Palette from a Kubernetes Cluster"
+description: "Learn how to uninstall self-hosted Palette from your Kubernetes cluster using Helm charts."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 40
-tags: ["self-hosted", "enterprise"]
-keywords: ["self-hosted", "enterprise"]
+tags: ["self-hosted", "uninstall", "kubernetes", "helm"]
+keywords: ["self-hosted", "uninstall," "kubernetes", "helm"]
 ---
 
 To uninstall Palette from your cluster, you need to uninstall Palette management plane and Cert Manager. Optionally, you

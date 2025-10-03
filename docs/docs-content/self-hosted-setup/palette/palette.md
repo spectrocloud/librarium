@@ -1,6 +1,6 @@
 ---
 sidebar_label: "Palette"
-title: "Palette"
+title: "Self-Hosted Palette"
 description: "Learn how to install and manage a self-hosted Palette environment."
 hide_table_of_contents: false
 tags: ["self-hosted"]
@@ -37,9 +37,13 @@ required to get started with self-hosted Palette.
 
 ## Supported Platforms
 
+:::danger
+
 The [following section](#content-to-be-refactored) contains the content from the former VerteX
 [Supported Platforms](https://docs.spectrocloud.com/vertex/supported-platforms/) page. Refactor this content to be a
 partial and use a table similar to the following to compare and contrast support between the platforms.
+
+:::
 
 | **Azure Cloud**                                                                                                                     | **Palette Support** | **Palette VerteX Support** |
 | ----------------------------------------------------------------------------------------------------------------------------------- | :-----------------: | :------------------------: |
@@ -113,12 +117,15 @@ The following versions of VMware vSphere are supported in VerteX.
 | **vSphere 7.0**   | ✅             |
 | **vSphere 8.0**   | ✅             |
 
-## Resources
+## Next Steps
 
-- [Installation](install-palette/install-palette.md)
+Get started with setting up self-hosted Palette on an existing [Kubernetes cluster](./kubernetes/kubernetes.md), your
+[VMware vSphere](./vmware/vmware.md) environment using the [Palette CLI](../../automation/palette-cli/palette-cli.md),
+or your desired bare metal or data center environment with the
+[Palette Management Appliance](./management-appliance/management-appliance.md) ISO.
 
-- [System Management](system-management/system-management.md)
-
-- [Upgrade Notes](upgrade/upgrade.md)
-
-- [Enterprise Install Troubleshooting](../../troubleshooting/enterprise-install.md)
+For guidance managing an existing installation, refer to our
+[System Management](./system-management/system-management.md) guide. For upgrading an existing self-hosted installation,
+consult the upgrade guide that aligns with your Palette installation method:
+[Kubernetes](./kubernetes/upgrade/upgrade.md), [VMware vSphere (Palette CLI)](./vmware/upgrade/upgrade.md), or
+[Palette Management Appliance](./management-appliance/upgrade.md).

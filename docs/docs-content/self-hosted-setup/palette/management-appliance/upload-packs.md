@@ -1,3 +1,12 @@
+---
+sidebar_label: "Upload Packs"
+title: "Upgrade Packs to Self-Hosted Palette Installed with Management Appliance"
+description: "Learn how to upgrade the Palette Management Appliance"
+hide_table_of_contents: false
+tags: ["management appliance", "self-hosted", "packs"]
+sidebar_position: 60
+---
+
 :::danger
 
 This has been split from the former
@@ -9,7 +18,7 @@ page.
 ## Upload Packs to Palette
 
 Follow the instructions to upload packs to your Palette instance. Packs are used to create
-[cluster profiles](../../profiles/cluster-profiles/cluster-profiles.md) and deploy workload clusters in your
+[cluster profiles](../../../profiles/cluster-profiles/cluster-profiles.md) and deploy workload clusters in your
 environment.
 
 ### Prerequisites

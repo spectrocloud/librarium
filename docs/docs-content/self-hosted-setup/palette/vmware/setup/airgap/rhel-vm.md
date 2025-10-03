@@ -1,12 +1,12 @@
 ---
-sidebar_label: "Environment Setup with RHEL"
-title: "Environment Setup with an Existing RHEL VM"
-description: "Learn how to prepare your airgap environment for Palette installation using an existing RHEL VM"
+sidebar_label: "Set Up Environment with RHEL"
+title: "Set Up Environment with an Existing RHEL VM"
+description: "Learn how to prepare your airgap environment for installing self-hosted Palette using an existing RHEL VM"
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 30
-tags: ["self-hosted", "enterprise", "airgap", "vmware", "vsphere", "rhel"]
-keywords: ["self-hosted", "enterprise"]
+tags: ["self-hosted", "airgap", "vmware", "rhel"]
+keywords: ["self-hosted", "airgap", "vmware", "rhel"]
 ---
 
 This guide helps you prepare your VMware vSphere airgap environment for Palette installation using an existing Red Hat
@@ -18,7 +18,7 @@ for hosting Palette images and assists in starting the Palette installation.
 :::info
 
 This guide is for preparing your airgap environment only. For instructions on installing Palette on VMware, refer to the
-[Install Palette](../install.md) guide.
+[Install Palette](../../install/airgap.md) guide.
 
 :::
 

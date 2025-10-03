@@ -1,12 +1,13 @@
 ---
-sidebar_label: "Non-Airgap Installation"
-title: "Install Non-Airgap Self-Hosted Palette"
-description: "Learn how to deploy self-hosted Palette to a Kubernetes cluster using a Helm Chart."
+sidebar_label: "Install Non-Airgap Palette"
+title: "Install Non-Airgap, Self-Hosted Palette on a Kubernetes Cluster"
+description:
+  "Learn how to deploy self-hosted Palette to a Kubernetes cluster using a Helm Chart in a non-airgap environment."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 10
-tags: ["self-hosted", "enterprise"]
-keywords: ["self-hosted", "enterprise"]
+tags: ["self-hosted", "kubernetes", "helm"]
+keywords: ["self-hosted", "kubernetes", "helm"]
 ---
 
 You can use the Palette Helm Chart to install Palette in a multi-node Kubernetes cluster in your production environment.
@@ -24,8 +25,8 @@ You can use the Palette Helm Chart to install Palette in a multi-node Kubernetes
 - Ensure `unzip` or a similar extraction utility is installed on your system.
 
 - The Kubernetes cluster must be set up on a supported version of Kubernetes. Refer to the
-  [Kubernetes Requirements](../install-palette.md#kubernetes-requirements) section to find the version required for your
-  Palette installation.
+  [Kubernetes Requirements](./install.md#kubernetes-requirements) section to find the version required for your Palette
+  installation.
 
 - Ensure the Kubernetes cluster does not have Cert Manager installed. Palette requires a unique Cert Manager
   configuration to be installed as part of the installation process. If Cert Manager is already installed, you must
@@ -40,7 +41,7 @@ You can use the Palette Helm Chart to install Palette in a multi-node Kubernetes
   database user in Atlas.
 
 - We recommended the following resources for Palette. Refer to the
-  [Palette size guidelines](../install-palette.md#size-guidelines) for additional sizing information.
+  [Palette size guidelines](./install.md#size-guidelines) for additional sizing information.
 
   - 8 CPUs per node.
 
@@ -82,10 +83,10 @@ You can use the Palette Helm Chart to install Palette in a multi-node Kubernetes
   server.
 
 - Ensure Palette has access to the required domains and ports. Refer to the
-  [Required Domains](../install-palette.md#proxy-requirements) section for more information.
+  [Required Domains](./install.md#proxy-requirements) section for more information.
 
-- Access to the Palette Helm Charts. Refer to the [Access Palette](../../enterprise-version.md#access-palette) for
-  instructions on how to request access to the Helm Chart
+- Access to the Palette Helm Charts. Refer to the [Access Palette](../../palette.md#access-palette) for instructions on
+  how to request access to the Helm Chart
 
 :::warning
 
@@ -134,7 +135,7 @@ your environment. Reach out to our support team if you need assistance.
 4.  Open the **values.yaml** in the **spectro-mgmt-plane** folder with a text editor of your choice. The **values.yaml**
     contains the default values for the Palette installation parameters, however, you must populate the following
     parameters before installing Palette. You can learn more about the parameters in the **values.yaml** file in the
-    [Helm Configuration Reference](palette-helm-ref.md) page.
+    [Helm Configuration Reference](../setup/non-airgap/helm-reference.md) page.
 
     | **Parameter**                             | **Description**                                                                                                                                                | **Type** |
     | ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
@@ -147,7 +148,7 @@ your environment. Reach out to our support team if you need assistance.
 
     If you are installing Palette by pulling required images from a private mirror registry, you will need to provide
     the credentials to your registry in the **values.yaml** file. For more information, refer to
-    [Helm Configuration Reference](palette-helm-ref.md#image-pull-secret).
+    [Helm Configuration Reference](../setup/non-airgap/helm-reference.md#image-pull-secret).
 
     :::
 

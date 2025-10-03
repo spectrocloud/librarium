@@ -1,28 +1,28 @@
 ---
-sidebar_label: "Airgap"
-title: "Upgrade Airgap Palette Installed on VMware vSphere"
-description: "Learn how to upgrade self-hosted airgap Palette in VMware."
+sidebar_label: "Upgrade Airgap Palette"
+title: "Upgrade Self-Hosted, Airgap Palette Installed on VMware"
+description: "Learn how to upgrade a self-hosted, airgap Palette environment installed on VMware vSphere."
 icon: ""
-sidebar_position: 10
-tags: ["palette", "self-hosted", "vmware", "airgap", "upgrade"]
-keywords: ["self-hosted", "enterprise"]
+sidebar_position: 30
+tags: ["self-hosted", "airgap", "vmware", "upgrade"]
+keywords: ["self-hosted", "airgap", "vmware", "upgrade"]
 ---
 
 This guide takes you through the process of upgrading a self-hosted airgap Palette instance installed on VMware vSphere.
 Before upgrading Palette to a new major version, you must first update it to the latest patch version of the latest
-minor version available. Refer to the [Supported Upgrade Paths](../upgrade.md#supported-upgrade-paths) section for
+minor version available. Refer to the [Supported Upgrade Paths](./upgrade.md#supported-upgrade-paths) section for
 details.
 
 :::warning
 
 If you are upgrading from a Palette version that is older than 4.4.14, ensure that you have executed the utility script
 to make the CNS mapping unique for the associated PVC. For more information, refer to the
-[Troubleshooting guide](../../../troubleshooting/enterprise-install.md#scenario---non-unique-vsphere-cns-mapping).
+[Troubleshooting guide](../../../../troubleshooting/enterprise-install.md#scenario---non-unique-vsphere-cns-mapping).
 
 :::
 
 If your setup includes a PCG, you must also
-[allow the PCG to upgrade automatically](../../../clusters/pcg/manage-pcg/pcg-upgrade.md) before each major or minor
+[allow the PCG to upgrade automatically](../../../../clusters/pcg/manage-pcg/pcg-upgrade.md) before each major or minor
 Palette upgrade.
 
 ## Prerequisites
@@ -31,8 +31,7 @@ Palette upgrade.
 
 - Access to the Palette airgap support Virtual Machine (VM) that you used for the initial Palette installation.
 
-- Refer to [Access Palette](../../enterprise-version.md#access-palette) to download the new airgap Palette installation
-  bin.
+- Refer to [Access Palette](../../palette.md#access-palette) to download the new airgap Palette installation bin.
 
 - Contact our Support Team at support@spectrocloud.com to learn if the new version of Palette requires a new OS and
   Kubernetes OVA. If necessary, they will provide you with a link to the OVA, which you will use to upgrade Palette.
@@ -40,8 +39,8 @@ Palette upgrade.
 - A diff or text comparison tool of your choice.
 
 - The Kubernetes cluster must be set up on a version of Kubernetes that is compatible to your upgraded version. Refer to
-  the [Kubernetes Requirements](../../install-palette/install-palette.md#kubernetes-requirements) section to find the
-  version required for your Palette installation.
+  the [Kubernetes Requirements](../install/install.md#kubernetes-requirements) section to find the version required for
+  your Palette installation.
 
 ## Upgrade
 
@@ -123,8 +122,8 @@ steps one through four. Otherwise, start at step five.
    curl --user <username>:<password> --output airgap-4.2.12.bin https://software.spectrocloud.com/airgap-v4.2.12.bin
    ```
 
-8. Refer to the [Additional Packs](../../../downloads/self-hosted-palette/additional-packs.md) page and update the packs
-   you are currently using. You must update each pack separately.
+8. Refer to the [Additional Packs](../../../../downloads/self-hosted-palette/additional-packs.md) page and update the
+   packs you are currently using. You must update each pack separately.
 
 9. Use the following command template to execute the new Palette airgap installation bin.
 

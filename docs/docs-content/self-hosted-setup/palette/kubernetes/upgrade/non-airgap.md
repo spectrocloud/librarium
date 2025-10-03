@@ -1,11 +1,11 @@
 ---
-sidebar_label: "Non-airgap"
-title: "Upgrade Palette Installed with Kubernetes"
-description: "Learn how to upgrade self-hosted non-airgap Palette with Helm and Kubernetes."
+sidebar_label: "Upgrade Non-Airgap Palette"
+title: "Upgrade Self-Hosted, Non-Airgap Palette Installed on a Kubernetes Cluster"
+description: "Learn how to upgrade a self-hosted, non-airgap Palette environment installed on a Kubernetes cluster."
 icon: ""
-sidebar_position: 0
-tags: ["palette", "self-hosted", "non-airgap", "kubernetes", "management", "upgrades"]
-keywords: ["self-hosted", "enterprise"]
+sidebar_position: 20
+tags: ["self-hosted", "non-airgap", "kubernetes", "upgrade", "helm"]
+keywords: ["self-hosted", "non-airgap", "kubernetes", "upgrade", "helm"]
 ---
 
 This guide takes you through the process of upgrading a self-hosted Palette instance installed with Helm on Kubernetes.
@@ -13,13 +13,13 @@ This guide takes you through the process of upgrading a self-hosted Palette inst
 :::warning
 
 Before upgrading Palette to a new major version, you must first update it to the latest patch version of the latest
-minor version available. Refer to the [Supported Upgrade Paths](../upgrade.md#supported-upgrade-paths) section for
+minor version available. Refer to the [Supported Upgrade Paths](./upgrade.md#supported-upgrade-paths) section for
 details.
 
 :::
 
 If your setup includes a PCG, you must also
-[allow the PCG to upgrade automatically](../../../clusters/pcg/manage-pcg/pcg-upgrade.md) before each major or minor
+[allow the PCG to upgrade automatically](../../../../clusters/pcg/manage-pcg/pcg-upgrade.md) before each major or minor
 Palette upgrade.
 
 ## Prerequisites
@@ -33,12 +33,11 @@ Palette upgrade.
 
 - `unzip` or a similar tool available in your system.
 
-- Access to the latest Palette Helm Chart. Refer to [Access Palette](/enterprise-version/#access-palette) for more
-  details.
+- Access to the latest Palette Helm Chart. Refer to [Access Palette](../../palette.md#access-palette) for more details.
 
 - The Kubernetes cluster must be set up on a version of Kubernetes that is compatible to your upgraded version. Refer to
-  the [Kubernetes Requirements](../../install-palette/install-palette.md#kubernetes-requirements) section to find the
-  version required for your Palette installation.
+  the [Kubernetes Requirements](../install/install.md#kubernetes-requirements) section to find the version required for
+  your Palette installation.
 
 ## Upgrade
 
@@ -83,8 +82,7 @@ match your environment.
 
 4. Prepare the Palette configuration file `values.yaml`. If you saved `values.yaml` used during the Palette
    installation, you can reuse it for the upgrade. Alternatively, follow the
-   [Kubernetes Installation Instructions](../../install-palette/install-on-kubernetes/install.md) to populate your
-   `values.yaml`.
+   [Kubernetes Installation Instructions](../install/non-airgap.md) to populate your `values.yaml`.
 
    :::warning
 

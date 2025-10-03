@@ -1,3 +1,12 @@
+---
+sidebar_label: "Install Palette"
+title: "Install Self-Hosted Palette Using Palette Management Appliance"
+description: "Learn how to install self-hosted Palette using the Palette Management Appliance"
+hide_table_of_contents: false
+tags: ["management appliance", "self-hosted", "install"]
+sidebar_position: 30
+---
+
 :::danger
 
 This has been split from the former
@@ -38,7 +47,7 @@ Follow the instructions to install Palette using the Palette Management Applianc
 
 If your installation is not successful, verify that the `piraeus-operator` pack was correctly installed. For more
 information, refer to the
-[Self-Hosted Installation - Troubleshooting](../../troubleshooting/enterprise-install.md#scenario---palettevertex-management-appliance-installation-stalled-due-to-piraeus-operator-pack-in-error-state)
+[Self-Hosted Installation - Troubleshooting](../../../troubleshooting/enterprise-install.md#scenario---palettevertex-management-appliance-installation-stalled-due-to-piraeus-operator-pack-in-error-state)
 guide.
 
 :::

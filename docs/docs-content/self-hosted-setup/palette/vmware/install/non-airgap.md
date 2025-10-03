@@ -1,24 +1,24 @@
 ---
-sidebar_label: "Non-Airgap Installation"
-title: "Install Palette on VMware"
-description: "Learn how to install Palette on VMware."
+sidebar_label: "Install Non-Airgap Palette"
+title: "Install Non-Airgap, Self-Hosted Palette on VMware"
+description: "Learn how to install non-airgap, self-hosted Palette on VMware vSphere using the Palette CLI"
 icon: ""
 sidebar_position: 20
 hide_table_of_contents: false
-tags: ["palette", "self-hosted", "vmware"]
-keywords: ["self-hosted", "enterprise"]
+tags: ["self-hosted", "vmware", "non-airgap", "cli"]
+keywords: ["self-hosted", "vmware", "non-airgap", "cli"]
 ---
 
 Palette can be installed on VMware vSphere with internet connectivity or in an airgap environment. When you install
 Palette, a three-node cluster is created. You use the interactive Palette CLI to install Palette on VMware vSphere.
-Refer to [Access Palette](../../enterprise-version.md#access-palette) for instructions on requesting repository access.
+Refer to [Access Palette](../../palette.md#access-palette) for instructions on requesting repository access.
 
 ## Prerequisites
 
 :::tip
 
 We recommend using the `--validate` flag with the `ec install` command to validate the installation. Check out the
-[Validate Environment](../../../automation/palette-cli/commands/ec.md#validate-environment) section of the EC command
+[Validate Environment](../../../../automation/palette-cli/commands/ec.md#validate-environment) section of the EC command
 for more information.
 
 :::
@@ -29,18 +29,18 @@ for more information.
   host.
 
 - Palette CLI installed and available. Refer to the Palette CLI
-  [Install](../../../automation/palette-cli/install-palette-cli.md#download-and-setup) page for guidance.
+  [Install](../../../../automation/palette-cli/install-palette-cli.md#download-and-setup) page for guidance.
 
 - You will need to provide the Palette CLI an encryption passphrase to secure sensitive data. The passphrase must be
   between 8 to 32 characters long and contain a capital letter, a lowercase letter, a digit, and a special character.
-  Refer to the [Palette CLI Encryption](../../../automation/palette-cli/palette-cli.md#encryption) section for more
+  Refer to the [Palette CLI Encryption](../../../../automation/palette-cli/palette-cli.md#encryption) section for more
   information.
 
-- Review the required VMware vSphere [permissions](vmware-system-requirements.md). Ensure you have created the proper
-  custom roles and zone tags.
+- Review the required VMware vSphere [permissions](../setup/non-airgap/vmware-system-requirements.md). Ensure you have
+  created the proper custom roles and zone tags.
 
 - We recommended the following resources for Palette. Refer to the
-  [Palette size guidelines](../install-palette.md#size-guidelines) for additional sizing information.
+  [Palette size guidelines](../install/install.md#size-guidelines) for additional sizing information.
 
   - 8 CPUs per VM.
 
@@ -68,12 +68,13 @@ for more information.
   - x509 SSL certificate authority file in base64 format. This file is optional.
 
 - Zone tagging is required for dynamic storage allocation across fault domains when provisioning workloads that require
-  persistent storage. Refer to [Zone Tagging](../install-on-vmware/vmware-system-requirements.md) for information.
+  persistent storage. Refer to [Zone Tagging](../setup/non-airgap/vmware-system-requirements.md#zone-tagging) for
+  information.
 
 - Assigned IP addresses for application workload services, such as Load Balancer services.
 
 - Ensure Palette has access to the required domains and ports. Refer to the
-  [Required Domains](../install-palette.md#proxy-requirements) section for more information.
+  [Required Domains](../install/install.md#proxy-requirements) section for more information.
 
 - A [StorageClass](https://kubernetes.io/docs/concepts/storage/storage-classes/) to manage persistent storage, with the
   annotation `storageclass.kubernetes.io/is-default-class` set to `true`. To override the default StorageClass for a
@@ -86,7 +87,7 @@ for more information.
 Self-hosted Palette installations provide a system Private Cloud Gateway (PCG) out-of-the-box and typically do not
 require a separate, user-installed PCG. However, you can create additional PCGs as needed to support provisioning into
 remote data centers that do not have a direct incoming connection from the Palette console. To learn how to install a
-PCG on VMware, check out the [VMware](../../../clusters/pcg/deploy-pcg/vmware.md) guide.
+PCG on VMware, check out our [VMware PCG](../../../../clusters/pcg/deploy-pcg/vmware.md) guide.
 
 :::
 
@@ -107,13 +108,13 @@ Use the following steps to install Palette.
     user account you will use to deploy the Palette installation.
 
 3.  Find the OVA download URL corresponding to your Palette version in the
-    [Kubernetes Requirements](../install-palette.md#kubernetes-requirements) section. Use the identified URL to import
+    [Kubernetes Requirements](../install/install.md#kubernetes-requirements) section. Use the identified URL to import
     the Operating System and Kubernetes distribution OVA required for the install. Place the OVA in the
     `spectro-templates` folder.
 
 4.  Append an `r_` prefix to the OVA name and remove the `.ova` suffix after the import. For example, the final output
     should look like `r_u-2204-0-k-12813-0`. This naming convention is required for the install process to identify the
-    OVA. Refer to the [Additional OVAs](../../../downloads/self-hosted-palette/additional-ovas.md) page for a list of
+    OVA. Refer to the [Additional OVAs](../../../../downloads/self-hosted-palette/additional-ovas.md) page for a list of
     additional OVAs you can download and upload to your vCenter environment.
 
     :::tip
@@ -135,14 +136,14 @@ Use the following steps to install Palette.
 
 6.  Issue the Palette `ec` command to install the enterprise cluster. The interactive CLI prompts you for configuration
     details and then initiates the installation. For more information about the `ec` subcommand, refer to
-    [Palette Commands](../../../automation/palette-cli/commands/commands.md).
+    [Palette Commands](../../../../automation/palette-cli/commands/commands.md).
 
     ```bash
     palette ec install
     ```
 
     You can also use the `--validate` flag to validate the installation prior to deployment. Refer to the
-    [Validate Environment](../../../automation/palette-cli/commands/ec.md#validate-environment) section of the EC
+    [Validate Environment](../../../../automation/palette-cli/commands/ec.md#validate-environment) section of the EC
     command for more information.
 
     ```bash
@@ -405,13 +406,3 @@ You can also validate that a three-node Kubernetes cluster is launched and Palet
 ## Next Steps
 
 <PartialsComponent category="self-hosted" name="install-next-steps" edition="Palette" version="Palette" />
-
-## Resources
-
-- [Palette CLI](../../../automation/palette-cli/install-palette-cli.md#download-and-setup)
-
-- [VMware System Requirements](vmware-system-requirements.md)
-
-- [System Management](../../system-management/system-management.md)
-
-- [Enterprise Install Troubleshooting](../../../troubleshooting/enterprise-install.md)

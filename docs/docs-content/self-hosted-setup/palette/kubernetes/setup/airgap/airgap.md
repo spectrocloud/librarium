@@ -1,12 +1,14 @@
 ---
-sidebar_label: "Airgap Installation"
-title: "Airgap Installation"
-description: "Learn how to deploy self-hosted Palette to a Kubernetes cluster using a Helm Chart."
+sidebar_label: "Airgap Environment"
+title: "Airgap Environment"
+description:
+  "Prepare your environment for installing self-hosted Palette on a Kubernetes cluster in an airgapped environment using
+  a Helm Chart."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 0
-tags: ["self-hosted", "enterprise", "airgap"]
-keywords: ["self-hosted", "enterprise"]
+tags: ["self-hosted", "airgap", "helm"]
+keywords: ["self-hosted", "airgap", "helm"]
 ---
 
 You can install self-hosted Palette in an airgap Kubernetes environment. An airgap environment lacks direct access to
@@ -53,18 +55,8 @@ The following table outlines the platforms supported for airgap VerteX installat
 | Kubernetes   | Harbor           | ✅            |
 | Kubernetes   | AWS ECR          | ✅            |
 
-## Get Started
+## Next Steps
 
-To get started with the airgap Palette installation, review the [Environment Setup](./kubernetes-airgap-instructions.md)
-page. The environment setup guide provides detailed instructions on how to prepare your airgap environment. After you
-have completed the environment setup, you can proceed with the [Install Palette](./install.md) guide.
-
-## Resources
-
-- [Environment Setup](kubernetes-airgap-instructions.md)
-
-- [Install Palette](./install.md)
-
-- [Checklist](checklist.md)
-
-- [Additional Packs](../../../../downloads/self-hosted-palette/additional-packs.md)
+To get started with the airgap Palette installation, review the [Environment Setup](./environment-setup.md) page. The
+environment setup guide provides detailed instructions on how to prepare your airgap environment. After you have
+completed the environment setup, you can proceed with the [Install Palette](../../install/airgap.md) guide.
