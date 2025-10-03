@@ -6,6 +6,18 @@ RELEASE_NOTES_PATH="docs/docs-content/release-notes/release-notes.md"
 OLD_RELEASE_NOTES_PATH="docs/docs-content/release-notes.md"
 BREAKING_CHANGES_PARTIALS_PATH="_partials/breaking-changes"
 ALL_VERSIONS_PATH="src/components/ReleaseNotesBreakingChanges/versions.json"
+WORKING_DIR=$(pwd)
+
+# Where to place worktrees (unique per run)
+WORKTREES_DIR="$(mktemp -d -t librarium-worktrees-XXXXXX)"
+echo "Using worktrees dir: $WORKTREES_DIR"
+
+cleanup() {
+  echo "Cleaning up worktrees..."
+  git worktree prune || true
+  rm -rf "$WORKTREES_DIR" || true
+}
+trap cleanup EXIT
 
 # Function to create partials file for breaking changes
 # Params:
@@ -133,25 +145,13 @@ fi
 echo "Current branch: $current_branch"
 
 # Fetch all branches from the remote
-git fetch -p origin
+git fetch --prune origin
 
-# Remove leading spaces and remote prefix (if any)
-# Sort and remove duplicates.
-# Exclude the version-3-4 branch.
-branches=$(
-    git branch -a | 
-    sed 's/ *//;s/remotes\/origin\///' | 
-    grep -E '^version-[0-9]+(-[0-9]+)*$' | 
-    grep -v '^version-3-4$' | 
-    sort | 
-    uniq
-)
-
-# Loop through each branch to fetch it locally
-for b in $branches; do
-  # Fetch the remote branch to corresponding local branch
-  git fetch origin $b:$b
-done
+# Get remote version branches (no locals, no HEAD), exclude version-3-4
+branches="$(git for-each-ref --format='%(refname:strip=3)' 'refs/remotes/origin/version-*' \
+  | grep -v '^HEAD$' \
+  | grep -v '^version-3-4$' \
+  | sort -u)"
 
 # Remove files for repeatable runs.
 rm -rf $BREAKING_CHANGES_PARTIALS_PATH
@@ -166,21 +166,31 @@ for branch in $branches; do
     release_notes_path="$OLD_RELEASE_NOTES_PATH"
   fi
 
-  # Switch to the version branch
-  git checkout "$branch"
+  wt_path="$WORKTREES_DIR/$b"
+  # Ensure the local branch exactly matches the remote tip (-B resets/creates)
+  # This prevents drift and avoids detached HEADs.
+  git worktree add --force -B "$b" "$wt_path" "origin/$b"
 
-  # Pull the latest changes 
-  git pull origin "$branch"
+  # Everything below runs isolated in the branch worktree
+  pushd "$wt_path" >/dev/null
 
   in_breaking_changes=false
   release_number=""
   # Variable to hold the current buffer text so that we can collapse versioned links on same line.
   buffer=""
   in_code_section=false
+  partial_created=false
   # Read the release notes file line by line.
   while IFS= read -r line; do
     # If the line is an H2 that contains "Release", we extract the number and begin processing.
     if echo "$line" | grep -q "##.*Release"; then
+      # If we were already processing a release and file, copy it to the current working directory.
+      if [ -n "$release_number" ] && [ "$partial_created" == "true" ]; then
+        replaced=$(echo "$release_number" | tr '.' '_')
+        filename="$BREAKING_CHANGES_PARTIALS_PATH/br_$replaced.mdx"
+        cp "$filename" "$WORKING_DIR/$filename"
+        partial_created=false
+      fi
       release_number=$(
         echo "$line" |
         cut -c4- |
@@ -200,6 +210,7 @@ for branch in $branches; do
     if [ -n "$release_number" ] && echo "$line" | grep -iq '^###\+#*[[:space:]]*Breaking changes'; then
       in_breaking_changes=true
       create_partials_file $release_number
+      partial_created=true
       continue
     fi
     
@@ -284,7 +295,13 @@ for branch in $branches; do
       fi
     fi
 
-  done < "$release_notes_path"
+  done < "$wt_path/$release_notes_path"
+
+  popd >/dev/null
+
+  # Remove the worktree to keep the workspace small
+  git worktree remove --force "$wt_path"
+  git branch -D "$branch" || true
 done
 
 clean_files
@@ -292,5 +309,5 @@ clean_files
 # Remove the last comma from the ALL_VERSIONS_PATH file
 sed '$s/,\s*$//' $ALL_VERSIONS_PATH > temp && mv temp $ALL_VERSIONS_PATH
 echo "]" >> $ALL_VERSIONS_PATH
-git checkout "$current_branch"
+git worktree prune
 echo "All branches checked. Current branch restored to: $current_branch"

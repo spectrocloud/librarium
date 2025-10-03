@@ -8,15 +8,12 @@ WORKING_DIR=$(pwd)
 git fetch --prune origin
 
 # Get remote version branches (no locals, no HEAD), exclude version-3-4
-mapfile -t branches < <(
-  git for-each-ref --format='%(refname:strip=3)' refs/remotes/origin/version-* \
+branches="$(git for-each-ref --format='%(refname:strip=3)' 'refs/remotes/origin/version-*' \
   | grep -v '^HEAD$' \
   | grep -v '^version-3-4$' \
-  | sort -u
-)
+  | sort -u)"
 
-echo "Found ${#branches[@]} version branches:"
-printf '  - %s\n' "${branches[@]}"
+echo "Found $branches version branches:"
 
 # Where to place worktrees (unique per run)
 WORKTREES_DIR="$(mktemp -d -t librarium-worktrees-XXXXXX)"
@@ -34,7 +31,7 @@ trap cleanup EXIT
 # export NODE_VERSION=20.14.0
 # export NPM_VERSION=10.8.1
 
-for b in "${branches[@]}"; do
+for b in $branches; do
   echo "==== Processing $b ===="
 
   wt_path="$WORKTREES_DIR/$b"
