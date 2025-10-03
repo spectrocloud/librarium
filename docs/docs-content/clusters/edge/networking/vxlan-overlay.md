@@ -123,10 +123,13 @@ server. The region experiences a bad weather event that causes a sustained outag
 - If your host's physical IP address is static, ensure that you configure the IP address using the
   [network block](../edge-configuration/installer-reference.md#site-network-parameters) in your `user-data` file.
 
-- If your hosts are deployed in [agent mode](../../../deployment-modes/agent-mode/agent-mode.md), ensure that your hosts
-  use `systemd-networkd` and `systemd-resolved` for interface and DNS management. Refer to
+- (Agent Mode only) By default, Edge hosts deployed using
+  [Appliance Mode](../../../deployment-modes/appliance-mode/appliance-mode.md) use `systemd-networkd` for interface
+  management and `systemd-resolved` for DNS resolution in overlay networks. If using
+  [Agent Mode](../../../deployment-modes/agent-mode/agent-mode.md), you must confirm that `systemd-networkd` and
+  `systemd-resolved` are installed on your Edge hosts and properly configured. Refer to our
   [Configure networkd to Prepare Host for Overlay Network](../../../deployment-modes/agent-mode/overlay-preparation.md)
-  for more information.
+  guide for more information.
 
 ## Enable Overlay Network
 

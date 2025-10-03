@@ -139,10 +139,14 @@ management mode to manage configurations, updates, and workloads.
     Required if you want Palette to manage Network Time Protocol (NTP).
   - [systemd-resolved](https://www.freedesktop.org/software/systemd/man/latest/systemd-resolved.service.html) - Required
     if you want Palette to manage Domain Name System (DNS) or if you plan to use overlay networks for clusters deployed
-    on your Edge host.
+    on your Edge host. Refer to our
+    [Configure networkd to Prepare Host for Overlay Network](../../../../../deployment-modes/agent-mode/overlay-preparation.md)
+    guide for information on installing and configuring `systemd-resolved`.
   - [systemd-networkd](https://www.freedesktop.org/software/systemd/man/latest/systemd-networkd.html) - Required if you
     want Palette to manage static IP addresses or if you plan to use overlay networks for clusters deployed on your Edge
-    host.
+    host. Refer to our
+    [Configure networkd to Prepare Host for Overlay Network](../../../../../deployment-modes/agent-mode/overlay-preparation.md)
+    guide for information on installing and configuring `systemd-networkd`.
   - [conntrack](https://conntrack-tools.netfilter.org/downloads.html) - Required for clusters that use PXK-E as its
     Kubernetes layer.
   - [iptables](https://linux.die.net/man/8/iptables)
