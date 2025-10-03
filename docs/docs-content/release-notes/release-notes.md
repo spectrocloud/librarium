@@ -35,8 +35,8 @@ The following components have been updated for Palette version 4.7.20 - 4.7.21.
 
 The following component updates are applicable to this release:
 
-- [September 26, 2025 - Component Updates](#component-updates-2025-39) <!-- omit in toc -->
 - [October 3, 2025 - Component Updates](#component-updates-2025-40) <!-- omit in toc -->
+- [September 26, 2025 - Component Updates](#component-updates-2025-39) <!-- omit in toc -->
 
 ### Breaking Changes
 
@@ -135,8 +135,8 @@ The following components have been updated for Palette version 4.7.20 - 4.7.21.
 
 The following component updates are applicable to this release:
 
-- [September 26, 2025 - Component Updates](#component-updates-2025-39) <!-- omit in toc -->
 - [October 3, 2025 - Component Updates](#component-updates-2025-40) <!-- omit in toc -->
+- [September 26, 2025 - Component Updates](#component-updates-2025-39) <!-- omit in toc -->
 
 ### Security Notices
 
