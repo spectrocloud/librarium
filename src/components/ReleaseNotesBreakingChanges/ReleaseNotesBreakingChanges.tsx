@@ -214,7 +214,6 @@ export function ReleaseNotesBreakingChanges(): JSX.Element | null {
   };
 
   const legacy = isLegacy(externalDomainURL, useIsBrowser()); 
-  console.log("Is legacy:", legacy); 
   if (legacy) {
     return (
       <Admonition type="tip">
@@ -292,28 +291,21 @@ export function ReleaseNotesBreakingChanges(): JSX.Element | null {
 
 // isLegacy checks if the URL is external or points to a versioned page.
 export function isLegacy(url: string, isBrowser: boolean): boolean {
-  console.log("isLegacy check for URL:", url);
-  console.log("isBrowser:", isBrowser);
   if (!isBrowser) {
     return false;
   }
 
-  const currentDomain = window.location.hostname;
-
   // Regex: matches versions like 4.6.x, 5.7.x, 12.34.x
   const versionPattern = /\d+\.\d+\.x/;
-
+  
   // If URL contains version pattern like 5.7.x, treat it as legacy
   if (versionPattern.test(url)) {
-    console.log("URL matches version pattern, treating as legacy.");
     return true;
   }
-
+  
+  const currentDomain = window.location.hostname;
   // Otherwise, compare against the current domain
-  const includesURL = currentDomain.includes(url)
-  console.log("Current domain:", currentDomain);
-  console.log(`Does current domain include "${url}"?`, includesURL);
-  return !includesURL;
+  return currentDomain.includes(url);
 }
 
 export default ReleaseNotesBreakingChanges;
