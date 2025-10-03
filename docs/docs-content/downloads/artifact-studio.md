@@ -136,13 +136,18 @@ Agent mode binaries cannot be downloaded at this time.
    Data centers include **MAAS**, **OpenStack**, and **vSphere**.
 
 7. On the **Configure bundle** page, select the **OS** layer to begin building your bundle. Only the packs compatible
-   with your previous selections are displayed. Choose an operating system and select **Next Layer**.
+   with your previous selections are displayed. Choose an operating system and use the **Select option** drop-down menu
+   to choose the desired version of your pack. Once selected, the pack appears in the **Selected items** pane on the
+   right. Select **Next Layer**.
 
-8. Choose your Kubernetes distribution and version and select **Next Layer**.
+8. Choose your Kubernetes distribution and use the **Select option** drop-down menu to choose the desired version of
+   your pack. Once selected, the pack appears in the **Selected items** pane on the right. Select **Next Layer**.
 
-9. Choose your networking pack and select **Next Layer**.
+9. Choose your networking pack and use the **Select option** drop-down menu to choose the desired version of your pack.
+   Once selected, the pack appears in the **Selected items** pane on the right. Select **Next Layer**.
 
-10. Choose your storage pack and select **Next Layer**.
+10. Choose your storage pack and use the **Select option** drop-down menu to choose the desired version of your pack.
+    Once selected, the pack appears in the **Selected items** pane on the right. Select **Next Layer**.
 
 11. Add additional packs to your bundle as needed. When finished, select **Add to Bundle**.
 
@@ -170,13 +175,18 @@ infrastructure type of **Edge Native** is assumed.
 :::
 
 6. On the **Configure bundle** page, select the **OS** layer to begin building your bundle. Only the packs compatible
-   with your previous selections are displayed in each layer. Choose an operating system and select **Next Layer**.
+   with your previous selections are displayed in each layer. Use the **Select option** drop-down menu to choose the
+   desired version of your pack. Once selected, the pack appears in the **Selected items** pane on the right. Choose an
+   operating system and select **Next Layer**.
 
-7. Choose your Kubernetes distribution and version and select **Next Layer**.
+7. Choose your Kubernetes distribution and use the **Select option** drop-down menu to choose the desired version of
+   your pack. Once selected, the pack appears in the **Selected items** pane on the right. Select **Next Layer**.
 
-8. Choose your networking pack and select **Next Layer**.
+8. Choose your networking pack and use the **Select option** drop-down menu to choose the desired version of your pack.
+   Once selected, the pack appears in the **Selected items** pane on the right. Select **Next Layer**.
 
-9. Choose your storage pack and select **Next Layer**.
+9. Choose your storage pack and use the **Select option** drop-down menu to choose the desired version of your pack.
+   Once selected, the pack appears in the **Selected items** pane on the right. Select **Next Layer**.
 
 10. Add additional packs to your bundle as needed. When finished, select **Add to Bundle**.
 
@@ -196,7 +206,9 @@ infrastructure type of **Edge Native** is assumed.
 <TabItem label="Add-On" value="addon">
 
 6. When you select **Add-on only**, you are automatically taken to the **Configure bundle** page. Here, you can search
-   for and select any packs you want to download. Select **Next Step** once you have selected your desired packs.
+   for and select any packs you want to download. Use the **Select option** drop-down menu to choose the desired version
+   of your pack. Once selected, the pack appears in the **Selected items** pane on the right. Select **Next Step** once
+   you have selected your desired packs.
 
 7. Confirm that the bundle specifications and content are correct. If you need to make any changes, return to the
    applicable page using the left menu. To add additional packs, select **Explore additional add-ons**.
@@ -229,18 +241,17 @@ information on how to verify the authenticity and integrity of your bundles, ref
    compliance (FIPS or non-FIPS).
 
 4. After you have applied any necessary filters, navigate through the list of packs. Use the **Search** bar to filter
-   your results further.
+   your results further. Use the **Select option** drop-down menu to choose the desired version of your pack. Once
+   selected, the pack appears in the **Selected items** pane on the right.
 
-   ![Image showing filter and search together](../../../static/assets/docs/images/downloads_artifact-studio-search-and-filter-4-7-2025-41.webp)
+   ![Image showing download of multiple packs](../../../static/assets/docs/images/downloads_artifact-studio-ind-packs-dl-4-7-2025-41.webp)
 
-5. When finished, select the **I'm not a robot** reCAPTCHA checkbox, and select **Download Bundle**. Alternatively, you
-   can **Copy all URLs** so that you can download the applicable files later in an alternate manner of your choosing,
-   such as via `curl`.
+5. Repeat step 4 until you have added all necessary packs. When finished, select the **I'm not a robot** reCAPTCHA
+   checkbox, and select **Download Bundle**. Alternatively, you can **Copy all URLs** so that you can download the
+   applicable files later in an alternate manner of your choosing, such as via `curl`.
 
 6. The download begins. Each pack is downloaded as an individual ZST file (`<pack-name>.zst`) with an accompanying
    signature file (`<pack-name>.sig.bin`).
-
-   ![Image showing download of multiple packs](../../../static/assets/docs/images/downloads_artifact-studio-ind-packs-dl-4-7-2025-41.webp)
 
    :::tip
 
