@@ -17,17 +17,19 @@ The following components have been updated for Palette version 4.7.20 - 4.7.21.
 
 ### Packs
 
-| Pack Name              | Layer      | FIPS | New Version |
-| ---------------------- | ---------- | ---- | ----------- |
-| Amazon EBS CSI         | CSI        | No   | 1.48.0      |
-| Prometheus Agent       | Add-on     | No   | 27.38.0     |
-| Prometheus - Grafana   | Add-on     | No   | 77.10.0     |
-| Palette Optimized K3s  | Kubernetes | No   | 1.33.5      |
-| Palette Optimized K3s  | Kubernetes | No   | 1.32.9      |
-| Palette Optimized K3s  | Kubernetes | No   | 1.31.13     |
-| Palette Optimized RKE2 | Kubernetes | No   | 1.33.5      |
-| Palette Optimized RKE2 | Kubernetes | No   | 1.32.9      |
-| Palette Optimized RKE2 | Kubernetes | No   | 1.31.13     |
+| Pack Name              | Layer      | Non-FIPS | FIPS     | New Version |
+| ---------------------- | ---------- | ---------| -------- | ----------- |
+| Amazon EBS CSI         | CSI        | :white_check_mark: | :x:          | 1.48.0      |
+| Amazon EBS CSI         | CSI        | :x: |    :white_check_mark:        | 1.46.0      |
+| Azure Disk CSI Driver  | CSI        | :white_check_mark: | :x:           | 1.33.4      |
+| Prometheus Agent       | Add-on     | :white_check_mark: | :x:           | 27.38.0     |
+| Prometheus - Grafana   | Add-on     | :white_check_mark: | :x:           | 77.10.0     |
+| Palette Optimized K3s  | Kubernetes | :white_check_mark: | :x:           | 1.33.5      |
+| Palette Optimized K3s  | Kubernetes | :white_check_mark: | :x:           | 1.32.9      |
+| Palette Optimized K3s  | Kubernetes | :white_check_mark: | :x:           | 1.31.13     |
+| Palette Optimized RKE2 | Kubernetes | :white_check_mark: | :white_check_mark:  | 1.33.5      |
+| Palette Optimized RKE2 | Kubernetes | :white_check_mark: | :white_check_mark: | 1.32.9      |
+| Palette Optimized RKE2 | Kubernetes | :white_check_mark: | :white_check_mark: | 1.31.13     |
 
 ## September 29, 2025 - Release 4.7.21
 
