@@ -27,6 +27,7 @@ After an edit has been made, the new settings will apply after the host reboots.
   - `stylus.site.deviceUIDPaths`
   - `stylus.site.tagsFromFile`
   - `stylus.site.tagsFromScript`
+  - `stylus.site.remoteShell.disable`
   - `stylus.localUI.port`
   - `stylus.includeTui`
   - `stylus.debug`
