@@ -47,6 +47,9 @@ The following table describes the differences between profile variables and macr
   Palette SaaS, but their values can be edited in [Local UI](../../../../clusters/edge/local-ui/local-ui.md) prior to
   deploying a cluster.
 
+- Palette SaaS supports the dropdown profile variable input type, allowing users to constrain the values to predefined
+  options.
+
 ## Next Steps
 
 Refer to the [Create Cluster Profile Variables](./create-cluster-profile-variables.md) guide to learn how to begin using
