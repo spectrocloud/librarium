@@ -166,10 +166,10 @@ for branch in $branches; do
     release_notes_path="$OLD_RELEASE_NOTES_PATH"
   fi
 
-  wt_path="$WORKTREES_DIR/$b"
+  wt_path="$WORKTREES_DIR/$branch"
   # Ensure the local branch exactly matches the remote tip (-B resets/creates)
   # This prevents drift and avoids detached HEADs.
-  git worktree add --force -B "$b" "$wt_path" "origin/$b"
+  git worktree add --force -B "$branch" "$wt_path" "origin/$branch"
 
   # Everything below runs isolated in the branch worktree
   pushd "$wt_path" >/dev/null
