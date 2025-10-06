@@ -1,12 +1,12 @@
 ---
 sidebar_label: "Account Management"
 title: "Account Management"
-description: "Update and manage the user settings and credentials of the admin user."
+description: "Learn about the different types of system administrators in self-hosted Palette."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 0
-tags: ["palette", "management", "account"]
-keywords: ["self-hosted", "palette"]
+tags: ["self-hosted", "management", "account"]
+keywords: ["self-hosted", "management", "account"]
 ---
 
 Self-hosted Palette supports the ability to have multiple system administrators with different roles and permissions.
@@ -79,11 +79,3 @@ To learn how to create and manage system administrator accounts, check out the
 As an admin user, you can update and manage your user settings, such as changing the email address and changing the
 credentials. You can also enable passkey to access the admin panel. The passkey feature supports both virtual passkey
 and physical passkey.
-
-## Resources
-
-- [Create and Manage System Accounts](./manage-system-accounts.md)
-
-- [Email Address](./email.md)
-
-- [User Credentials](./credentials.md)

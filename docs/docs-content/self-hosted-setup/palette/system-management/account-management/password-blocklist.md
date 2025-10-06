@@ -1,12 +1,12 @@
 ---
 sidebar_label: "Manage Password Blocklist"
 title: "Manage Password Blocklist"
-description: "Learn how to manage the password blocklist in Palette."
+description: "Learn how to prevent users from using certain passwords in self-hosted Palette with a password blocklist."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 30
-tags: ["palette", "management", "account", "credentials"]
-keywords: ["self-hosted", "palette"]
+tags: ["self-hosted", "management", "account", "credentials"]
+keywords: ["self-hosted", "management", "account", "credentials"]
 ---
 
 You can manage a password blocklist to prevent users from using common or weak passwords. The password blocklist is a

@@ -1,18 +1,18 @@
 ---
 sidebar_label: "System-Level Registries"
 title: "System-Level Registries"
-description: "Learn how to add a system-level registry in Palette."
+description: "Learn how to add a system-level registry in self-hosted Palette."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 130
-tags: ["enterprise", "management", "registry"]
-keywords: ["self-hosted", "enterprise"]
+tags: ["self-hosted", "management", "registry"]
+keywords: ["self-hosted", "management", "registry"]
 ---
 
 You can add a registry at the system level or tenant level. Registries added at the system level are available to all
 the tenants. Registries added at the tenant level are available only to that tenant. This section describes how to add a
 system-level registry. For guidance on adding a registry at the tenant scope, check out
-[Add Tenant-Level Registry](../../tenant-settings/add-registry.md).
+[Add Tenant-Level Registry](../../../tenant-settings/add-registry.md).
 
 ## Prerequisites
 
@@ -97,7 +97,3 @@ check when you added the registry. Use these steps to further verify the registr
 2. From the left **Main Menu** select **Administration**.
 
 3. Select the **Pack Registries** tab and verify the registry you added is listed and available.
-
-## Resources
-
-- [Add Tenant-Level Registry](../../tenant-settings/add-registry.md)

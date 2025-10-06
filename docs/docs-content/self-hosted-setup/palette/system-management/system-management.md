@@ -1,16 +1,16 @@
 ---
 sidebar_label: "System Management"
 title: "System Management"
-description: "Manage your Palette system settings."
+description: "Configure and manage your self-hosted Palette system settings."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 20
-tags: ["palette", "self-hosted", "management"]
-keywords: ["self-hosted", "enterprise"]
+tags: ["self-hosted", "management"]
+keywords: ["self-hosted", "management"]
 ---
 
 Palette contains many system settings you can configure to meet your organization's needs. These settings are available
-at the system level and are applied to all [tenants](../../glossary-all.md#tenant) in the system.
+at the system level and are applied to all [tenants](../../../glossary-all.md#tenant) in the system.
 
 :::warning
 
@@ -32,46 +32,34 @@ and appending the `/system` path to the URL. For example, if your Palette cluste
 
 Platform administrators can use the system console to perform the following operations:
 
-- [Account management](account-management/account-management.md)
-
-- [Create and Manage System Accounts](./account-management/account-management.md)
+- [Create and manage system administrators](account-management/account-management.md)
 
 - [Configure and manage SMTP settings](smtp.md).
 
-- [Configure and manage Pack registries](add-registry.md).
+- [Add system-level OCI-compliant pack registries](add-registry.md).
 
 - [Configure and manage SSL certificates](ssl-certificate-management.md).
 
-- [Enable backup and restore](backup-restore.md).
+- [Enable backup and restore for your self-hosted installation](backup-restore.md).
 
 - Configure DNS settings.
 
-- Setup alerts and notifications.
+- Set up alerts and notifications.
 
 - Enable metrics collection.
 
-- [Manage feature flags](./feature-flags.md).
+- [Enable tech preview features using feature flags](./feature-flags.md).
 
 - Manage Palette platform upgrades.
 
-- [Configure login banner](./login-banner.md).
+- [Configure login and classification banners](./login-banner.md).
 
-- [Manage tenants](tenant-management.md).
+- [Create and manage tenants](tenant-management.md).
 
-- [Override Registry Configuration](registry-override.md)
+- [Configure Palette to pull images from an alternate registry](registry-override.md)
 
 - Manage the Enterprise cluster and the profile layers and pack integrations that makeup the Enterprise cluster.
 
 - [Customize the login screen and dashboard interface](./customize-interface.md).
 
-Check out the following resources to learn more about these operations.
-
-## Resources
-
-- [Add a Tenant-Level Registry](add-registry.md)
-
-- [Tenant Management](tenant-management.md)
-
-- [Configure Reverse Proxy](reverse-proxy.md)
-
-- [SSL Certificate Management](ssl-certificate-management.md)
+- [Configure reverse proxy](reverse-proxy.md)

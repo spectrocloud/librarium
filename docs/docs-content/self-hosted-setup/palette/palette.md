@@ -45,11 +45,10 @@ partial and use a table similar to the following to compare and contrast support
 
 :::
 
-| **Azure Cloud**                                                                                                                     | **Palette Support** | **Palette VerteX Support** |
-| ----------------------------------------------------------------------------------------------------------------------------------- | :-----------------: | :------------------------: |
-| Azure Commercial (Public Cloud)                                                                                                     | :white_check_mark:  |     :white_check_mark:     |
-| [Azure Government](https://azure.microsoft.com/en-us/explore/global-infrastructure/government)                                      | :white_check_mark:  |     :white_check_mark:     |
-| <TpBadge /> [Azure Government Secret](https://azure.microsoft.com/en-us/explore/global-infrastructure/government/national-security) |         :x:         |     :white_check_mark:     |
+| **Azure Cloud**                                                                                | **Palette Support** | **Palette VerteX Support** |
+| ---------------------------------------------------------------------------------------------- | :-----------------: | :------------------------: |
+| Azure Commercial (Public Cloud)                                                                | :white_check_mark:  |     :white_check_mark:     |
+| [Azure Government](https://azure.microsoft.com/en-us/explore/global-infrastructure/government) | :white_check_mark:  |     :white_check_mark:     |
 
 ### Content to be Refactored
 

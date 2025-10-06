@@ -1,12 +1,12 @@
 ---
 sidebar_label: "Tenant Management"
 title: "Tenant Management"
-description: "Learn how to create and remove tenants in Palette."
+description: "Learn how to create and remove tenants in self-hosted Palette."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 140
-tags: ["palette", "self-hosted", "management"]
-keywords: ["self-hosted", "enterprise"]
+tags: ["self-hosted", "management"]
+keywords: ["self-hosted", "management"]
 ---
 
 Tenants are isolated environments in Palette that contain their own clusters, users, and resources. You can create
@@ -96,8 +96,8 @@ After the cleanup process completes, the tenant will be removed from the tenant 
 
 ### Validate
 
-1. Log in to the Palette system console. Refer to the [Access Palette](../enterprise-version.md#access-palette) section
-   for instructions on how to access the Palette system console.
+1. Log in to the Palette system console. Refer to the [Access Palette](../palette.md#access-palette) section for
+   instructions on how to access the Palette system console.
 
 2. Navigate to the left **Main Menu** and select **Tenant Management**.
 

@@ -1,12 +1,12 @@
 ---
 sidebar_label: "Backup and Restore"
 title: "Backup and Restore"
-description: "Learn how to enable backup and restore for self-hosted Palette."
+description: "Learn how to enable backup and restore for your self-hosted Palette cluster."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 30
-tags: ["palette", "management", "self-hosted", "backup", "restore"]
-keywords: ["self-hosted", "enterprise"]
+tags: ["self-hosted", "management", "backup", "restore"]
+keywords: ["self-hosted", "management", "backup", "restore"]
 ---
 
 You can enable backup and restore for your self-hosted Palette cluster to ensure that your Palette configuration data is

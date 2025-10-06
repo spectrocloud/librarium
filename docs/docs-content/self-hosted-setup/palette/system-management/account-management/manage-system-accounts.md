@@ -1,12 +1,12 @@
 ---
 sidebar_label: "Create and Manage System Accounts"
 title: "Create and Manage System Accounts"
-description: "Learn how to create and manage system accounts in Palette."
+description: "Learn how to create and manage system accounts in self-hosted Palette."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 10
-tags: ["palette", "management", "account"]
-keywords: ["self-hosted", "palette"]
+tags: ["self-hosted", "management", "account"]
+keywords: ["self-hosted", "management", "account"]
 ---
 
 You can create and manage system accounts if you have the Root Administrator or Account Administrator role in Palette.

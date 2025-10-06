@@ -1,12 +1,12 @@
 ---
 sidebar_label: "Reverse Proxy Configuration"
 title: "Reverse Proxy Configuration"
-description: "Learn how to configure a reverse proxy for Palette."
+description: "Learn how to configure a reverse proxy for self-hosted Palette."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 90
-tags: ["palette", "management"]
-keywords: ["self-hosted", "enterprise"]
+tags: ["self-hosted", "management"]
+keywords: ["self-hosted", "management"]
 ---
 
 You can configure a reverse proxy for Palette. The reverse proxy can be used by host clusters deployed in a private
@@ -51,8 +51,8 @@ Use the following steps to configure a reverse proxy server for Palette.
 
 2. Use a text editor and open the **values.yaml** file. Locate the `frps` section and update the following values in the
    **values.yaml** file. Refer to the
-   [Spectro Proxy Helm Configuration](../install-palette/install-on-kubernetes/palette-helm-ref.md#spectro-proxy) to
-   learn more about the configuration options.
+   [Spectro Proxy Helm Configuration](../kubernetes/setup/non-airgap/helm-reference.md) to learn more about the
+   configuration options.
 
 <br />
 

@@ -1,12 +1,12 @@
 ---
 sidebar_label: "Cloud Provider Configuration"
 title: "Cloud Provider Configuration"
-description: "Learn how to modify the system-level cloud provider configuration in Palette."
+description: "Learn how to modify the system-level cloud provider configuration in self-hosted Palette."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 50
-tags: ["management", "clouds"]
-keywords: ["self-hosted"]
+tags: ["self-hosted", "management", "clouds"]
+keywords: ["self-hosted", "management", "clouds"]
 ---
 
 Different cloud providers use different image formats to create virtual machines. Amazon Web Services (AWS), for

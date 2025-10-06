@@ -1,12 +1,12 @@
 ---
 sidebar_label: "Feature Flags"
 title: "Feature Flags"
-description: "Learn how to to use feature flags to manage features in Palette"
+description: "Learn how to to use feature flags to enable tech preview features in self-hosted Palette"
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 70
 tags: ["self-hosted", "management", "feature-flags"]
-keywords: ["self-hosted", "palette", "feature-flags"]
+keywords: ["self-hosted", "management", "feature-flags"]
 ---
 
 Feature flags allow

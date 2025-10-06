@@ -1,19 +1,19 @@
 ---
 sidebar_label: "System Address Management"
 title: "System Address Management"
-description: "Manage system address and SSL certificates in Palette."
+description: "Manage system address and SSL certificates in self-hosted Palette."
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 120
-tags: ["palette", "management"]
-keywords: ["self-hosted", "enterprise"]
+tags: ["self-hosted", "management"]
+keywords: ["self-hosted", "management"]
 ---
 
 Palette uses Secure Sockets Layer (SSL) certificates to secure internal and external communication with Hypertext
 Transfer Protocol Secure (HTTPS). External Palette endpoints, such as the
 [system console](../system-management/system-management.md#system-console),
-[Palette dashboard](../../introduction/dashboard.md), Palette API, and gRPC endpoints, are enabled by default with HTTPS
-using an auto-generated self-signed certificate.
+[Palette dashboard](../../../introduction/dashboard.md), Palette API, and gRPC endpoints, are enabled by default with
+HTTPS using an auto-generated self-signed certificate.
 
 ## Update System Address and Certificates
 
@@ -43,11 +43,11 @@ updating the system address may require manual reconciliation on deployed cluste
 - A utility or tool to convert the certificate and key files to base64-encoded strings. You can use the `base64` command
   in Unix-based systems. Alternatively, you can use an online tool to convert the files to base64-encoded strings.
 
-- If you installed Palette on [Kubernetes](../install-palette/install-on-kubernetes/install-on-kubernetes.md) and
-  specified a custom domain name, ensure that you created a certificate for that domain. If you did not specify a custom
-  domain name, or if you installed Palette on [VMware](../install-palette/install-on-vmware/install-on-vmware.md), you
-  must create a certificate for the Palette system console’s IP address. You can also specify a load balancer IP address
-  if you are using a load balancer to access Palette.
+- If you installed Palette on an existing [Kubernetes cluster](../kubernetes/install/install.md) and specified a custom
+  domain name, ensure that you created a certificate for that domain. If you did not specify a custom domain name, or if
+  you installed Palette on [VMware using the Palette CLI](../vmware/install/install.md), you must create a certificate
+  for the Palette system console’s IP address. You can also specify a load balancer IP address if you are using a load
+  balancer to access Palette.
 
 - The new SSL certificate must also include the previous DNS name or IP address in the Subject Alternative Name (SAN)
   field. This ensures that existing connections are not interrupted.
@@ -126,8 +126,8 @@ newly configured system address.
 
 - Palette access with a configured cloud account.
 
-- A cluster deployed prior to the system address update. Refer to the [Clusters](../../clusters/clusters.md) section for
-  further guidance.
+- A cluster deployed prior to the system address update. Refer to the [Clusters](../../../clusters/clusters.md) section
+  for further guidance.
 
 - `kubectl` installed. Use the Kubernetes [Install Tools](https://kubernetes.io/docs/tasks/tools/) page for further
   guidance.
@@ -142,7 +142,7 @@ newly configured system address.
 3. Select your cluster from the **Clusters** list. The cluster **Overview** tab displays.
 
 4. Download the kubeconfig file. This file allows you to connect to your deployed cluster. Check out the
-   [Kubeconfig](../../clusters/cluster-management/kubeconfig.md) page to learn more.
+   [Kubeconfig](../../../clusters/cluster-management/kubeconfig.md) page to learn more.
 5. Open a terminal window and set the environment variable `KUBECONFIG` to point to the file you downloaded.
 
    ```shell

@@ -4,7 +4,7 @@ title: "Palette VerteX"
 description: "Learn how Palette VerteX enables regulated industries to meet stringent security requirements."
 hide_table_of_contents: false
 sidebar_position: 0
-tags: ["vertex"]
+tags: ["self-hosted", "vertex"]
 keywords: ["self-hosted", "vertex"]
 ---
 
@@ -23,19 +23,22 @@ FIPS modules, which are accessible in our private artifact repository, extend Pa
 include security scans, powerful RBAC, and tamper-proof edge device images. Palette VerteX protects sensitive data in
 clusters across edge, bare metal, on-prem data centers, air-gapped environments, and cloud.
 
-To learn more about FIPS in Palette VerteX, check out the [FIPS](fips/fips.md) section.
+To learn more about FIPS in Palette VerteX, check out the [FIPS](./fips.md) section.
 
 ## Supported Platforms
+
+:::danger
 
 The [following section](#content-to-be-refactored) contains the content from the former VerteX
 [Supported Platforms](https://docs.spectrocloud.com/vertex/supported-platforms/) page. Refactor this content to be a
 partial and use a table similar to the following to compare and contrast support between the platforms.
 
-| **Azure Cloud**                                                                                                                     | **Palette Support** | **Palette VerteX Support** |
-| ----------------------------------------------------------------------------------------------------------------------------------- | :-----------------: | :------------------------: |
-| Azure Commercial (Public Cloud)                                                                                                     | :white_check_mark:  |     :white_check_mark:     |
-| [Azure Government](https://azure.microsoft.com/en-us/explore/global-infrastructure/government)                                      | :white_check_mark:  |     :white_check_mark:     |
-| <TpBadge /> [Azure Government Secret](https://azure.microsoft.com/en-us/explore/global-infrastructure/government/national-security) |         :x:         |     :white_check_mark:     |
+:::
+
+| **Azure Cloud**                                                                                | **Palette Support** | **Palette VerteX Support** |
+| ---------------------------------------------------------------------------------------------- | :-----------------: | :------------------------: |
+| Azure Commercial (Public Cloud)                                                                | :white_check_mark:  |     :white_check_mark:     |
+| [Azure Government](https://azure.microsoft.com/en-us/explore/global-infrastructure/government) | :white_check_mark:  |     :white_check_mark:     |
 
 ### Content to be Refactored
 
@@ -45,6 +48,7 @@ Palette VerteX supports the following infrastructure platforms for deploying Kub
 | ------------------ | ------------------------------------------------------------------------- |
 | **AWS**            | Refer to the [AWS](#aws) section for additional guidance.                 |
 | **AWS Gov**        | Refer to the [AWS](#aws) section for additional guidance.                 |
+| **AWS Secret**     | Refer to the [AWS](#aws) section for additional guidance.                 |
 | **Azure**          | Refer to the [Azure](#azure) section for additional guidance.             |
 | **Azure Gov**      | Refer to the [Azure](#azure) section for additional guidance.             |
 | **Dev Engine**     | Refer to the VerteX Engine section for additional guidance.               |
@@ -89,9 +93,8 @@ to learn more about the available regions.
 #### Dev Engine
 
 VerteX supports the [Dev Engine](../../devx/devx.md) platform for deploying virtual clusters. However, the Dev Engine
-platform is not FIPS compliant and requires you to enable the
-[non-FIPS setting](../vertex/system-management/enable-non-fips-settings/enable-non-fips-settings.md). Additionally,
-container deployment based workflows are not supported for airgap environments.
+platform is not FIPS compliant and requires you to enable the [non-FIPS setting](./fips.md#enable-non-fips-components).
+Additionally, container deployment based workflows are not supported for airgap environments.
 
 #### VMware vSphere
 
@@ -117,15 +120,3 @@ the following information in your email:
 
 Our dedicated support team will promptly get in touch with you to provide the necessary assistance and share the
 installer image, credentials, and an endpoint URL to access the FIPS registry.
-
-## Resources
-
-- [FIPS](fips/fips.md)
-
-- [Installation](install-palette-vertex/install-palette-vertex.md)
-
-- [System Management](system-management/system-management.md)
-
-- [Upgrade Notes](upgrade/upgrade.md)
-
-- [Enterprise Install Troubleshooting](../../troubleshooting/enterprise-install.md)

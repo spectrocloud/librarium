@@ -321,26 +321,6 @@ let redirects = [
     to: `/devx/services/service-listings/cockroach-db/`,
   },
   {
-    from: `/enterprise-version/system-console-dashboard/`,
-    to: `/enterprise-version/system-management/`,
-  },
-  {
-    from: `/enterprise-version/enterprise-cluster-management/`,
-    to: `/enterprise-version/system-management/`,
-  },
-  {
-    from: `/enterprise-version/monitoring/`,
-    to: `/enterprise-version/system-management/`,
-  },
-  {
-    from: `/enterprise-version/reverse-proxy/`,
-    to: `/enterprise-version/system-management/reverse-proxy/`,
-  },
-  {
-    from: `/enterprise-version/ssl-certificate-management/`,
-    to: `/enterprise-version/system-management/ssl-certificate-management/`,
-  },
-  {
     from: `/clusters/cluster-management/palette-lock-cluster/`,
     to: `/clusters/cluster-management/platform-settings/`,
   },
@@ -928,11 +908,8 @@ let redirects = [
   },
   // Self-Hosted Palette redirects for sidebar refactor
   {
-    from: ["/enterprise-version/", "/vertex/"],
-    to: "/self-hosted-setup/",
-  },
-  {
     from: [
+      "/enterprise-version/",
       "/enterprise-version/install-palette/",
       "/enterprise-version/on-prem-system-requirements/",
       "/enterprise-version/deploying-the-platform-installer/",
@@ -1047,10 +1024,88 @@ let redirects = [
     from: "/enterprise-version/upgrade/palette-management-appliance/",
     to: "/self-hosted-setup/palette/management-appliance/upgrade/",
   },
-
   {
-    from: "/enterprise-version/system-management/account-management/email/",
+    from: [
+      "/enterprise-version/system-management/",
+      "/enterprise-version/system-console-dashboard/",
+      "/enterprise-version/enterprise-cluster-management/",
+      "/enterprise-version/monitoring/",
+    ],
+    to: "/self-hosted-setup/palette/system-management/",
+  },
+  {
+    from: "/enterprise-version/system-management/account-management/",
+    to: "/self-hosted-setup/palette/system-management/account-management/",
+  },
+  {
+    from: "/enterprise-version/system-management/account-management/manage-system-accounts/",
+    to: "/self-hosted-setup/palette/system-management/account-management/manage-system-accounts/",
+  },
+  {
+    from: [
+      "/enterprise-version/system-management/account-management/credentials/",
+      "/enterprise-version/system-management/account-management/email/",
+    ],
     to: "/self-hosted-setup/palette/system-management/account-management/credentials/",
+  },
+  {
+    from: "/enterprise-version/system-management/account-management/password-blocklist/",
+    to: "/self-hosted-setup/palette/system-management/account-management/password-blocklist/",
+  },
+  {
+    from: "/enterprise-version/system-management/backup-restore/",
+    to: "/self-hosted-setup/palette/system-management/backup-restore/",
+  },
+  {
+    from: "/enterprise-version/system-management/login-banner/",
+    to: "/self-hosted-setup/palette/system-management/login-banner/",
+  },
+  {
+    from: "/enterprise-version/system-management/change-cloud-config/",
+    to: "/self-hosted-setup/palette/system-management/change-cloud-config/",
+  },
+  {
+    from: "/enterprise-version/system-management/registry-override/",
+    to: "/self-hosted-setup/palette/system-management/registry-override/",
+  },
+  {
+    from: "/enterprise-version/system-management/feature-flags/",
+    to: "/self-hosted-setup/palette/system-management/feature-flags/",
+  },
+  {
+    from: "/enterprise-version/system-management/customize-interface/",
+    to: "/self-hosted-setup/palette/system-management/customize-interface/",
+  },
+  {
+    from: ["/enterprise-version/system-management/reverse-proxy/", "/enterprise-version/reverse-proxy/"],
+    to: "/self-hosted-setup/palette/system-management/reverse-proxy/",
+  },
+  {
+    from: "/enterprise-version/system-management/scar-migration/",
+    to: "/self-hosted-setup/palette/system-management/scar-migration/",
+  },
+  {
+    from: "/enterprise-version/system-management/smtp/",
+    to: "/self-hosted-setup/palette/system-management/smtp/",
+  },
+  {
+    from: [
+      "/enterprise-version/system-management/ssl-certificate-management/",
+      "/enterprise-version/ssl-certificate-management/",
+    ],
+    to: "/self-hosted-setup/palette/system-management/ssl-certificate-management/",
+  },
+  {
+    from: "/enterprise-version/system-management/add-registry/",
+    to: "/self-hosted-setup/palette/system-management/add-registry/",
+  },
+  {
+    from: "/enterprise-version/system-management/tenant-management/",
+    to: "/self-hosted-setup/palette/system-management/tenant-management/",
+  },
+  {
+    from: "/vertex/",
+    to: "/self-hosted-setup/vertex/",
   },
   {
     from: "/enterprise-version/upgrade/upgrade-notes/",

@@ -1,12 +1,12 @@
 ---
 sidebar_label: "Manage User Credentials"
 title: "Manage User Credentials"
-description: "Update and manage the user credentials"
+description: "Update and manage system admin user credentials, including emails, passwords, passkeys, and API access"
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 20
-tags: ["palette", "management", "account", "credentials"]
-keywords: ["self-hosted", "palette"]
+tags: ["self-hosted", "management", "account", "credentials"]
+keywords: ["self-hosted", "management", "account", "credentials"]
 ---
 
 You can manage the credentials of the admin user by logging in to the system console. You can also enable passkeys to
@@ -39,7 +39,7 @@ minutes, the user can try to log in again. The default session timeout for syste
 
 The default timeout for tenant users is set to four hours. After four hours of inactivity, the user will be logged out
 of Palette. You can change the default session timeout value for tenant users by following the steps in the
-[Session Timeout](../../../tenant-settings/session-timeout.md) guide.
+[Session Timeout](../../../../tenant-settings/session-timeout.md) guide.
 
 Use the following sections to learn how to manage user credentials.
 
