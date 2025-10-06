@@ -24,8 +24,7 @@ The following component updates are applicable to this release:
 
 - Fixed an issue where the cluster management agent failed to initialize after a Palette upgrade when the cluster
   namespace annotation was missing. The Palette upgrade process now correctly preserves existing annotation.
-- Fixed an issue that caused the [Cluster API (CAPI)](https://cluster-api.sigs.k8s.io/) custom resource definitions to
-  fail to apply on cloud clusters.
+- Fixed an issue where the [Cluster API (CAPI)](https://cluster-api.sigs.k8s.io/) custom resource definitions failed to apply on cloud clusters.
 - Fixed an issue that prevented the [SSO client secret](../user-management/saml-sso/saml-sso.md) from being masked in
   the [Tenant Administration](../tenant-settings/tenant-settings.md) pages.
 
