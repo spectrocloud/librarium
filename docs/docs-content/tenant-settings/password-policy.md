@@ -42,7 +42,7 @@ If you want to change the default password policy, follow the steps below.
    | **Expiry Duration (Days)**           | If you have selected **Custom** expiry duration, specify a number of days for password expiry.                                                  |
    | **First Reminder (Days)**            | Specify when to send out a password expiry reminder email to users.                                                                         |
    | **Min Length**                       | Specify the minimum length of the password. The configured value must be between 6 and 128 and should not exceed the **Max Length**.        |
-   | **Max Length**                       | Specify the maximum length of the password. The configured value must be between 6 and 128 and should not be less than then **Min Length**. |
+   | **Max Length**                       | Specify the maximum length of the password. The configured value must be between 6 and 128 and should not be less than the **Min Length**. |
    | **Min Number Of Block Letters**      | Specify the minimum number of uppercase letters in the password. The configured value must be larger than 1.                                |
    | **Min Number Of Digits**             | Specify the minimum number of digits in the password. The configured value must be larger than 1.                                           |
    | **Min Number Of Small Letters**      | Specify the minimum number of lowercase letters in the password. The configured value must be larger than 1.                                |
