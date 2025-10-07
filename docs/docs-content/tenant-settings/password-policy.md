@@ -10,7 +10,7 @@ tags: ["tenant-administration", "security", "password"]
 
 Tenant administrators can update the password policy for Palette users. The default password policy is as follows.
 
-- The password must be at least 6 characters long.
+- The password must be at least six characters long.
 - The password must be at most 64 characters long.
 - The password expires after 365 days.
 - The password must contain at least one uppercase letter.
