@@ -34,19 +34,19 @@ If you want to change the default password policy, follow the steps below.
 
 4. Set up the password policy using the configuration fields.
 
-   | **Configuration**                    | **Description**                                                                                                                             |
-   | ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------- |
-   | **Enable Regex**                     | Enable if you want to specify the password policy using a regular expression.                                                               |
-   | **Regex**                            | Specify a regular expression that the passwords must conform to.                                                                            |
-   | **Expiry Duration**                  | Set a password expiry time. Select from **3 months**, **6 months**, and **Custom**.                                                          |
-   | **Expiry Duration (Days)**           | If you have selected **Custom** expiry duration, specify a number of days for password expiry.                                                  |
-   | **First Reminder (Days)**            | Specify the number of days before the password expires to send the first reminder email to users.|
-   | **Min Length**                       | Specify the minimum length of the password. The configured value must be between 6 and 128 and should not exceed the **Max Length**.        |
+   | **Configuration**                    | **Description**                                                                                                                            |
+   | ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
+   | **Enable Regex**                     | Enable if you want to specify the password policy using a regular expression.                                                              |
+   | **Regex**                            | Specify a regular expression that the passwords must conform to.                                                                           |
+   | **Expiry Duration**                  | Set a password expiry time. Select from **3 months**, **6 months**, and **Custom**.                                                        |
+   | **Expiry Duration (Days)**           | If you have selected **Custom** expiry duration, specify a number of days for password expiry.                                             |
+   | **First Reminder (Days)**            | Specify the number of days before the password expires to send the first reminder email to users.                                          |
+   | **Min Length**                       | Specify the minimum length of the password. The configured value must be between 6 and 128 and should not exceed the **Max Length**.       |
    | **Max Length**                       | Specify the maximum length of the password. The configured value must be between 6 and 128 and should not be less than the **Min Length**. |
-   | **Min Number Of Block Letters**      | Specify the minimum number of uppercase letters in the password. The configured value must be larger than 1.                                |
-   | **Min Number Of Digits**             | Specify the minimum number of digits in the password. The configured value must be larger than 1.                                           |
-   | **Min Number Of Small Letters**      | Specify the minimum number of lowercase letters in the password. The configured value must be larger than 1.                                |
-   | **Min Number Of Special Characters** | Specify the minimum number of special characters in the password. The configured value must be larger than 1.                               |
+   | **Min Number Of Block Letters**      | Specify the minimum number of uppercase letters in the password. The configured value must be larger than 1.                               |
+   | **Min Number Of Digits**             | Specify the minimum number of digits in the password. The configured value must be larger than 1.                                          |
+   | **Min Number Of Small Letters**      | Specify the minimum number of lowercase letters in the password. The configured value must be larger than 1.                               |
+   | **Min Number Of Special Characters** | Specify the minimum number of special characters in the password. The configured value must be larger than 1.                              |
 
 5. Click on **Save** to apply the changes.
 
