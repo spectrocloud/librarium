@@ -48,7 +48,7 @@ If you want to change the default password policy, follow the steps below.
    | **Min Number Of Small Letters**      | Specify the minimum number of lowercase letters in the password. The configured value must be larger than 1.                                |
    | **Min Number Of Special Characters** | Specify the minimum number of special characters in the password. The configured value must be larger than 1.                               |
 
-5. Click on **Save** to save the changes.
+5. Click on **Save** to apply the changes.
 
 ## Validate
 
