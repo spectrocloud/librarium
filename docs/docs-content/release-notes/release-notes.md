@@ -46,6 +46,8 @@ tags: ["release-notes"]
 
 #### Improvements
 
+- Remote shell access to an Edge host can now be enabled in Palette only if the field `stylus.site.remoteShell.disable` is omitted or set to `false` in the host’s `user-data` file before the host registers with Palette.
+
 #### Bug Fixes
 
 ### VerteX
