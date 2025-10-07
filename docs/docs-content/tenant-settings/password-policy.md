@@ -4,7 +4,7 @@ title: "Password Policy"
 description: "Learn how to configure the password policy for your Palette tenant."
 icon: ""
 hide_table_of_contents: false
-sidebar_position: 40
+sidebar_position: 50
 tags: ["tenant-administration", "security", "password"]
 ---
 
