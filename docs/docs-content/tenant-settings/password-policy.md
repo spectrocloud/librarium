@@ -32,7 +32,7 @@ If you want to change the default password policy, follow the steps below.
 
 3. From the **Tenant Settings Menu**, select **Password Policy**.
 
-4. Configure the password policy using the configuration fields.
+4. Set up the password policy using the configuration fields.
 
    | **Configuration**                    | **Description**                                                                                                                             |
    | ------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------- |
