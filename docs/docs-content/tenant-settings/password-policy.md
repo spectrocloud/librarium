@@ -39,7 +39,7 @@ If you want to change the default password policy, follow the steps below.
    | **Enable Regex**                     | Enable if you want to specify the password policy using a regular expression.                                                               |
    | **Regex**                            | Specify a regular expression that the passwords must conform to.                                                                            |
    | **Expiry Duration**                  | Set a password expiry time. Select from **3 months**, **6 months**, and **Custom**.                                                          |
-   | **Expiry Duration (Days)**           | If you have selected custom expiry duration, specify a number of days for password expiry.                                                  |
+   | **Expiry Duration (Days)**           | If you have selected **Custom** expiry duration, specify a number of days for password expiry.                                                  |
    | **First Reminder (Days)**            | Specify when to send out a password expiry reminder email to users.                                                                         |
    | **Min Length**                       | Specify the minimum length of the password. The configured value must be between 6 and 128 and should not exceed the **Max Length**.        |
    | **Max Length**                       | Specify the maximum length of the password. The configured value must be between 6 and 128 and should not be less than then **Min Length**. |
