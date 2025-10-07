@@ -73,8 +73,8 @@ guide to learn how to create a cluster profile.
     | IPv4 CIDR  | A CIDR block of IP addresses that follow the IPv4 standard.                                            |
     | IPv6       | Valid representation of an IPv6 address.                                                               |
 
-9.  If you have selected the **Dropdown** input type in Step 7, use **+ Add dropdown option** to add dropdown options.
-    The **Add dropdown option** window appears. The following table describes the available configuration fields. You
+9.  If you selected **Dropdown** for the **Input type** in step 7, select **Add dropdown option**.
+    The following table describes the available configuration fields. You
     must provide at least one dropdown option.
 
     | **Field**       | **Description**                                                                                                |
