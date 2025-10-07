@@ -50,7 +50,7 @@ If you want to change the default password, follow the steps below.
 
 5. Click on **Save** to save the changes.
 
-### Validate
+## Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
