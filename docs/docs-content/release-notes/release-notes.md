@@ -11,7 +11,7 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
-## October 6, 2025 - Release 4.7.X
+## October 7, 2025 - Release 4.7.23
 
 ### Component Updates
 
