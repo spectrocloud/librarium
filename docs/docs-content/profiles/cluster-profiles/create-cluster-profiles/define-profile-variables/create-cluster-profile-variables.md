@@ -73,15 +73,14 @@ guide to learn how to create a cluster profile.
     | IPv4 CIDR  | A CIDR block of IP addresses that follow the IPv4 standard.                                            |
     | IPv6       | Valid representation of an IPv6 address.                                                               |
 
-9.  If you selected **Dropdown** for the **Input type** in step 7, select **Add dropdown option**.
-    The following table describes the available configuration fields. You
-    must provide at least one dropdown option.
+9.  If you selected **Dropdown** for the **Input type** in step 7, select **Add dropdown option**. The following table
+    describes the available configuration fields. You must provide at least one dropdown option.
 
-    | **Field**       | **Description**                                                                                                |
-    | --------------- | -------------------------------------------------------------------------------------------------------------- |
-    | **Value**       | Value of the dropdown option. This field is required.                                                   |
+    | **Field**       | **Description**                                                                                           |
+    | --------------- | --------------------------------------------------------------------------------------------------------- |
+    | **Value**       | Value of the dropdown option. This field is required.                                                     |
     | **Label**       | Display name for the dropdown option. If no label is provided, the **Value** is used as the display name. |
-    | **Description** | Long form description of the dropdown option.                                                                  |
+    | **Description** | Long form description of the dropdown option.                                                             |
 
     Repeat this step for every dropdown option you want to add.
 
@@ -91,7 +90,7 @@ guide to learn how to create a cluster profile.
     | --------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
     | **Custom input validation** | Validate the cluster profile variable definition against a regular expression based on the [regexp](https://pkg.go.dev/regexp) engine.                                                                                                          |
     | **Required**                | Require a value for the cluster profile variable.                                                                                                                                                                                               |
-    | **Default value**           | Set a default value for the cluster profile variable. If the **Input type** is **Dropdown**, a default value must be specified using one of the configured dropdown options.                                                                   |
+    | **Default value**           | Set a default value for the cluster profile variable. If the **Input type** is **Dropdown**, a default value must be specified using one of the configured dropdown options.                                                                    |
     | **Mask value**              | Mask the cluster profile variable with asterisks in the layer YAML configuration. When you export a profile with masked variables, they will be masked in the exported profile. Upon import, you will be required to provide the masked values. |
     | **Hidden**                  | Hide the cluster profile variable during cluster deployment. If the variable is both hidden and required, it must have a default value set.                                                                                                     |
     | **Read-only**               | Prevent the cluster profile variable from being edited during cluster deployment. Read-only variables must have a default value set.                                                                                                            |
