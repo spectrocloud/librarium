@@ -80,7 +80,7 @@ guide to learn how to create a cluster profile.
     | **Field**       | **Description**                                                                                                |
     | --------------- | -------------------------------------------------------------------------------------------------------------- |
     | **Value**       | Value of the dropdown option. This field is required.                                                   |
-    | **Label**       | Display name for the dropdown option. If no label is provided, then the **Value** is used as the display name. |
+    | **Label**       | Display name for the dropdown option. If no label is provided, the **Value** is used as the display name. |
     | **Description** | Long form description of the dropdown option.                                                                  |
 
     Repeat this step for every dropdown option you want to add.
