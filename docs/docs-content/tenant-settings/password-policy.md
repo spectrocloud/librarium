@@ -5,7 +5,7 @@ description: "Learn how to configure the password policy for your Palette tenant
 icon: ""
 hide_table_of_contents: false
 sidebar_position: 40
-tags: ["tenant-administration", "session-timeout"]
+tags: ["tenant-administration", "security", "password"]
 ---
 
 Tenant administrators can update the password policy for Palette users. The default password policy is as follows.
