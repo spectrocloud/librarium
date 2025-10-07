@@ -28,7 +28,7 @@ If you want to change the default password policy, follow the steps below.
 
 1. Log in to [Palette](https://console.spectrocloud.com) as a tenant admin.
 
-2. Navigate to the left **Main Menu** and select **Tenant Settings**.
+2. Navigate to the left main menu and select **Tenant Settings**.
 
 3. From the **Tenant Settings Menu**, select **Password Policy**.
 
