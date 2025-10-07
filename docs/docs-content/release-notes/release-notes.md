@@ -21,6 +21,9 @@ tags: ["release-notes"]
 
 #### Breaking Changes {#breaking-changes-4.7.c}
 
+- Palette and VerteX [password policies](../tenant-settings/password-policy.md) are now capped to a maximum of 128
+  characters. This change applies only to new passwords.
+
 #### Features
 
 #### Improvements
@@ -37,6 +40,15 @@ tags: ["release-notes"]
 ### Edge
 
 #### Features
+
+<!-- prettier-ignore-start -->
+
+- Overlay networks are now supported for the following cluster types. Refer to our [Enable Overlay Network](../clusters/edge/networking/vxlan-overlay.md#supported-clusters) guide for a comprehensive list of supported cluster combinations.
+  
+  - <VersionedLink text="Palette eXtended Kubernetes Edge (PXK-E)" url="/integrations/packs/?pack=edge-k8s" /> - FIPS, single and multi-node clusters
+  - <VersionedLink text="Palette Optimized Canonical" url="/integrations/packs/?pack=edge-canonical" /> -  Agent Mode and Appliance Mode, centrally managed clusters
+
+<!-- prettier-ignore-end -->
 
 #### Improvements
 
