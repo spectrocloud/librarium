@@ -31,7 +31,7 @@ shell after 24 hours of inactivity, you need to re-enable it.
 
 - In your Edge host's `user-data` file, `stylus.site.remoteShell.disable` must be omitted or set to `false` before the
   Edge host registers with Palette. `false` is the default value for this attribute. If you set this value to `true`,
-  you cannot enable remote shell in Palette and the value cannot be changed after the host registers.
+  you cannot enable remote shell in Palette. The value cannot be changed after the host registers.
 
 - You are logged in as a Palette user who has the `edgehost.sshUpdate` permission in the project to which the Edge host
   is associated.
