@@ -18,7 +18,7 @@ Tenant administrators can update the password policy for Palette users. The defa
 - The password must contain at least one digit.
 - The password must contain at least one special character.
 
-If you want to change the default password, follow the steps below.
+If you want to change the default password policy, follow the steps below.
 
 ## Prerequisites
 
