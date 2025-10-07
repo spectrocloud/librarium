@@ -21,6 +21,9 @@ tags: ["release-notes"]
 
 #### Breaking Changes {#breaking-changes-4.7.c}
 
+- Palette and VerteX [password policies](../tenant-settings/password-policy.md) are now capped to a maximum of 128
+  characters. This change applies only to new passwords.
+
 #### Features
 
 #### Improvements
