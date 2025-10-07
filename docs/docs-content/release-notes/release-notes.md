@@ -31,6 +31,9 @@ tags: ["release-notes"]
 - When viewing project platform settings in Palette, the
   [Cluster Auto Remediation](../clusters/cluster-management/platform-settings/cluster-auto-remediation.md) settings are
   now correctly labeled as an override to the tenant-level settings.
+- [Cluster profile variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/create-cluster-profile-variables.md)
+  now support the dropdown input type. This improvement allows users to enforce the configuration of cluster profile
+  variables using predefined values only, reducing input errors and enhancing cluster profile validation.
 
 #### Deprecations and Removals
 
