@@ -53,9 +53,8 @@ The following components have been updated for Palette version 4.7.20 - 4.7.23.
 
 ### Bug Fixes
 
-- Fixed an issue that caused repeated reconciles when a
-  [`spectrocloud_backup_storage_location` resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/backup_storage_location)
-  was specified. This was due to the AWS secret key not being marked as sensitive.
+- Fixed an issue that caused repeated reconciliation when specifying a
+  [`spectrocloud_backup_storage_location` Terraform resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/backup_storage_location) due to AWS secret keys not being marked as sensitive.
 
 ### Packs
 
