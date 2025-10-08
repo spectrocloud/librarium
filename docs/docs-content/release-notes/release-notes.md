@@ -11,6 +11,62 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## October 10, 2025 - Component Updates {#component-updates-2025-41}
+
+The following components have been updated for Palette version 4.7.20 - 4.7.21.
+
+| Component                                                                                                         | Version |
+| ----------------------------------------------------------------------------------------------------------------- | ------- |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.25.0  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.25.0  |
+
+### Breaking Changes
+
+- To avoid unnecessary cluster repaves, the
+  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) no
+  longer fails if a timeout occurs during cluster provisioning. Instead, the provider logs an error and continues
+  provisioning in the background. Future Terraform executions reconcile the state of the cluster with the Terraform
+  state.
+
+  The
+  [`spectrocloud_cluster` data source](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/data-sources/cluster)
+  now exposes state and health attributes. We recommend using these to check that you can use to validate cluster
+  readiness before triggering any [cluster management](../clusters/cluster-management/cluster-management.md) operations.
+
+### Improvements
+
+- The
+  [`spectrocloud_virtual_machine` resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/virtual_machine)
+  now supports the `network_data` configuration under the
+  [`cloud_init_no_cloud` set](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/virtual_machine#cloud_init_no_cloud-1).
+  This allows you to supply network configuration when provisioning VMs.
+- The
+  [`spectrocloud_virtual_machine` resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/virtual_machine)
+  now supports DataVolume storage specification under the
+  [`data_volume_templates.spec` list](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/virtual_machine#nested-schema-for-data_volume_templatesspec).
+  Additionally, the resource now also supports VM creation with blank `pvc` and `storage` fields.
+
+### Bug Fixes
+
+- Fixed an issue that caused repeated reconciles when a
+  [`spectrocloud_backup_storage_location` resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/backup_storage_location)
+  was specified. This was due to the AWS secret key not being marked as sensitive.
+
+### Packs
+
+| Pack Name                   | Layer      | Non-FIPS           | FIPS               | New Version |
+| --------------------------- | ---------- | ------------------ | ------------------ | ----------- |
+| Argo CD                     | Add-on     | :white_check_mark: | :x:                | 8.5.7       |
+| AWS EFS                     | CSI        | :white_check_mark: | :x:                | 2.1.12      |
+| External Secrets Operator   | Add-on     | :white_check_mark: | :x:                | 0.20.1      |
+| Istio                       | Add-on     | :white_check_mark: | :x:                | 1.27.1      |
+| Nginx                       | Add-on     | :white_check_mark: | :x:                | 1.13.2      |
+| Open Policy Agent           | Add-on     | :white_check_mark: | :x:                | 3.20.1      |
+| Palette eXtended Kubernetes | Kubernetes | :white_check_mark: | :white_check_mark: | 1.33.5      |
+| Reloader                    | Add-on     | :white_check_mark: | :x:                | 1.4.8       |
+| Vault                       | Add-on     | :white_check_mark: | :x:                | 0.31.0      |
+| Zot Registry                | Add-on     | :white_check_mark: | :white_check_mark: | 0.1.82      |
+
 ## October 3, 2025 - Component Updates {#component-updates-2025-40}
 
 The following components have been updated for Palette version 4.7.20 - 4.7.21.
