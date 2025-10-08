@@ -28,9 +28,10 @@ The following components have been updated for Palette version 4.7.20 - 4.7.23.
   provisioning in the background. Future Terraform executions reconcile the state of the cluster with the Terraform
   state.
 
-  The
+  
+  For increased transparency in these situations, the
   [`spectrocloud_cluster` data source](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/data-sources/cluster)
-  now exposes state and health attributes. We recommend using these to check that you can use to validate cluster
+  now exposes state and health attributes. We recommend using these to validate cluster
   readiness before triggering any [cluster management](../clusters/cluster-management/cluster-management.md) operations.
 
 ### Improvements
