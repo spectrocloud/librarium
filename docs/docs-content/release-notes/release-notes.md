@@ -39,17 +39,17 @@ The following components have been updated for Palette version 4.7.20 - 4.7.23.
   [`spectrocloud_virtual_machine` resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/virtual_machine)
   has the following improvements:
 
-  - The resource now supports the `network_data` configuration under the
+  - `network_data` under the
     [`cloud_init_no_cloud` set](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/virtual_machine#cloud_init_no_cloud-1),
-    allowing you to supply network configuration when provisioning VMs.
-  - The resource now supports DataVolume storage specification under the
+    allowing you to supply network configurations when provisioning VMs.
+  - DataVolume storage under the
     [`data_volume_templates.spec` list](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/virtual_machine#nested-schema-for-data_volume_templatesspec).
-  - The resource now supports VM creation with blank `pvc` and `storage` fields under the
+  - VM creation with blank `pvc` and `storage` fields under the
     [`data_volume_templates.spec` list](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/virtual_machine#nested-schema-for-data_volume_templatesspec),
     allowing you to create VMs without these specifications.
-  - The resource now supports `boot_order` configuration under the
+  - `boot_order` under the
     [`disk` list](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/virtual_machine#nested-schema-for-disk),
-    allowing you to specify the ordering of boot devices.
+    allowing you to specify the order of boot devices.
 
 ### Bug Fixes
 
