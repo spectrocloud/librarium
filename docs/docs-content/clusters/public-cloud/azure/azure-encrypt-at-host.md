@@ -161,7 +161,7 @@ Use the following steps to enable disk encryption on a
 13. Select the remaining profile layers to finish the configuration.
 
 You can now [create a new Azure IaaS cluster](./create-azure-cluster.md) with disk encryption enabled using this cluster
-profile. Once the cluster is created, you can [validate disk encrypytion enablement](#validate-new-cluster-profile).
+profile. Once the cluster is created, you can [validate disk encryption enablement](#validate-new-cluster-profile).
 
 ### Validate {#validate-new-cluster-profile}
 
