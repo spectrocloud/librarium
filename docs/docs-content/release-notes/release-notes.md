@@ -30,9 +30,8 @@ tags: ["release-notes"]
   clusters deployed with Palette or [Palette VerteX](../vertex/vertex.md). Unlike [cluster
   profiles](../profiles/cluster-profiles/cluster-profiles.md), which define the cluster's software stack (including OS,
   Kubernetes distribution, network, storage, and add‑ons), cluster templates are a higher level abstraction that define
-  the governance stack. They reference existing cluster profiles and operational
-  [policies](./create-cluster-template-policies/create-cluster-template-policies.md), such as [maintenance
-  policies](./create-cluster-template-policies/maintenance-policy.md), and leverage [cluster profile
+  the governance stack. They reference existing cluster profiles and operational policies, such as maintenance policies,
+  and leverage [cluster profile
   variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/define-profile-variables.md)
   and [macros](../clusters/cluster-management/macros.md), allowing you to deploy, manage, and scale a synchronized fleet
   of clusters with minimal effort, while configuring environment-specific values where needed. Refer to the Cluster
