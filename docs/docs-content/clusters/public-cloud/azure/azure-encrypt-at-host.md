@@ -18,10 +18,11 @@ that data is protected from end-to-end.
 
 By default, Azure encrypts all managed disks with
 [platform-managed keys](https://learn.microsoft.com/en-us/azure/virtual-machines/disk-encryption#platform-managed-keys).
+If you want to use customer-managed keys, refer to
+[Azure Disk Storage Service-Side Encryption](./azure-disk-storage-sse.md) for more information. Consult the table below
+to determine which option is best for your environment.
 
 <!-- prettier-ignore -->
-Comparison of Server Side Encryption (SSE) vs Host-Based Encryption
-
 | Server Side Encryption (SSE)                                                                                               | Encryption at Host                                                                                   |
 | -------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
 | Only encrypts your data stored on Azure Managed Disks(OS and Data Disks). Does not encrypt temporary disks or disk caches. | Enhances Azure Disk Storage SSE. Encrypts Temp Disks and Disk Cache as well alongside Managed Disks. |
@@ -29,13 +30,9 @@ Comparison of Server Side Encryption (SSE) vs Host-Based Encryption
 | No special requirements                                                                                                    | Requires VM SKUs that support `EncryptionAtHost` capability                                          |
 | Enabled by default with platform-managed keys. Can opt to provide customer-managed keys via DES in `AzureMachineTemplate`  | Disabled by default                                                                                  |
 
-You can use Disk Encryption Sets to encrypt your nodes' Operating System and data disks by selecting a preset in the
-
-<VersionedLink text="Palette eXtended Kubernetes" url="/integrations/packs/?pack=kubernetes" /> pack.
-
 ## Limitations
 
-- Azure Disk Storage Server-Side Encryption (SSE) is only supported on Azure IaaS clusters.
+- Azure Encryption at Host is only supported on Azure IaaS clusters.
 
 :::warning
 
@@ -44,8 +41,18 @@ is not supported for any Azure cluster.
 
 :::
 
+<details>
+<summary>Check if VMs have ADE enabled.</summary>
+
+    To check if your VMs have ADE enabled, run the following Azure CLI command
+
+    ```shell
+    az vm encryption show --name <vm-name> --resource-group <rg-name>
+    ```
+
+</details>
 <!-- prettier-ignore -->
-- Azure Disk Storage SSE is only supported when using the <VersionedLink text="Palette eXtended Kubernetes" url="/integrations/packs/?pack=kubernetes" /> pack.
+- Azure Encryption at Host is only supported when using the <VersionedLink text="Palette eXtended Kubernetes" url="/integrations/packs/?pack=kubernetes" /> pack.
 
 - If a key expires in your Key Vault, your cluster may experience operation failures. To resolve this, generate a new
   key in Key Vault and update your Disk Encryption Set to reference the new key.
@@ -58,8 +65,24 @@ is not supported for any Azure cluster.
     [**Auto key rotation**](https://learn.microsoft.com/en-us/azure/virtual-machines/disk-encryption#automatic-key-rotation-of-customer-managed-keys)
     on your Disk Encryption Set so it can automatically use new key versions from your Key Vault.
 
-- Changing the Disk Encryption Set URI in the Palette eXtended Kubernetes pack configuration in
-  Palette will trigger a node repave.
+- VMs on Azure must be compatible with `encryptionAtHost` option
+
+<details>
+<summary>Azure CLI command to validate VM compatibility</summary>
+
+    Use the following command to validate which VMs are compatible with Encryption at Host. Change `<region-code>` to the region you will build your cluster in.
+
+    ```shell
+      az vm list-skus --location <region-code> --all \
+    --resource-type virtualMachines \
+    --query "[?capabilities[?name=='EncryptionAtHostSupported' && value=='True']].{VMName:name, EncryptionAtHost:capabilities[?name=='EncryptionAtHostSupported'].value | [0]}" \
+    --output table
+    ```
+
+</details>
+
+- Changing the Disk Encryption Set URI in the Palette eXtended Kubernetes pack configuration in Palette will trigger a
+  node repave.
 
 ## New Cluster Profile
 
