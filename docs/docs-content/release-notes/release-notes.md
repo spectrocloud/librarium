@@ -26,6 +26,18 @@ tags: ["release-notes"]
 
 #### Features
 
+- <TpBadge /> Cluster templates are reusable blueprints that define and enforce the desired state and lifecycle of
+  clusters deployed with Palette or [Palette VerteX](../vertex/vertex.md). Unlike [cluster
+  profiles](../profiles/cluster-profiles/cluster-profiles.md), which define the cluster's software stack (including OS,
+  Kubernetes distribution, network, storage, and add‑ons), cluster templates are a higher level abstraction that define
+  the governance stack. They reference existing cluster profiles and operational
+  [policies](./create-cluster-template-policies/create-cluster-template-policies.md), such as [maintenance
+  policies](./create-cluster-template-policies/maintenance-policy.md), and leverage [cluster profile
+  variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/define-profile-variables.md)
+  and [macros](../clusters/cluster-management/macros.md), allowing you to deploy, manage, and scale a synchronized fleet
+  of clusters with minimal effort, while configuring environment-specific values where needed. Refer to the Cluster
+  Templates section for further information.
+
 #### Improvements
 
 - When viewing project platform settings in Palette, the
@@ -34,6 +46,15 @@ tags: ["release-notes"]
 - [Cluster profile variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/create-cluster-profile-variables.md)
   now support the dropdown input type. This improvement allows users to enforce the configuration of cluster profile
   variables using predefined values only, reducing input errors and enhancing cluster profile validation.
+- Palette supports encryption at host of your Azure Kubernetes cluster using
+  [End-to-End encryption with platform-managed keys](https://learn.microsoft.com/en-us/azure/virtual-machines/disk-encryption#encryption-at-host---end-to-end-encryption-for-your-vm-data).
+  This ensures that encryption starts on the VM host itself, including temporary disks, operating system (OS), and data
+  disk caches. Refer to the Azure Encryption At Host for Azure IaaS guide for further information.
+- Velero has been upgraded to version 1.16, which is used internally by Palette for backing up and restoring clusters.
+  Existing clusters with backups configured will be automatically updated to Velero version 1.16, ensuring continuous
+  access to backup and restore functionality. Refer to the
+  [Backup and Restore](../clusters/cluster-management/backup-restore/backup-restore.md) page to learn more about backup
+  and restore tools in Palette.
 
 #### Deprecations and Removals
 
