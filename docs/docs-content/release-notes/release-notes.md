@@ -28,11 +28,10 @@ The following components have been updated for Palette version 4.7.20 - 4.7.23.
   provisioning in the background. Future Terraform executions reconcile the state of the cluster with the Terraform
   state.
 
-  
   For increased transparency in these situations, the
   [`spectrocloud_cluster` data source](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/data-sources/cluster)
-  now exposes state and health attributes. We recommend using these to validate cluster
-  readiness before triggering any [cluster management](../clusters/cluster-management/cluster-management.md) operations.
+  now exposes state and health attributes. We recommend using these attributes to validate cluster readiness before
+  triggering any [cluster management](../clusters/cluster-management/cluster-management.md) operations.
 
 ### Improvements
 
@@ -55,7 +54,8 @@ The following components have been updated for Palette version 4.7.20 - 4.7.23.
 ### Bug Fixes
 
 - Fixed an issue that caused repeated reconciliation when specifying a
-  [`spectrocloud_backup_storage_location` Terraform resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/backup_storage_location) due to AWS secret keys not being marked as sensitive.
+  [`spectrocloud_backup_storage_location` Terraform resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/backup_storage_location)
+  due to AWS secret keys not being marked as sensitive.
 
 ### Packs
 
