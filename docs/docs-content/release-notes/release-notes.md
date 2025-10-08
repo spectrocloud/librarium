@@ -36,7 +36,7 @@ The following components have been updated for Palette version 4.7.20 - 4.7.23.
 ### Improvements
 
 - The
-  [`spectrocloud_virtual_machine` resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/virtual_machine)
+  [`spectrocloud_virtual_machine` Terraform resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/virtual_machine)
   now supports the following configurations:
 
   - `network_data` under the
