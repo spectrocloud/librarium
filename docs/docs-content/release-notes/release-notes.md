@@ -13,7 +13,7 @@ tags: ["release-notes"]
 
 ## October 10, 2025 - Component Updates {#component-updates-2025-41}
 
-The following components have been updated for Palette version 4.7.20 - 4.7.21.
+The following components have been updated for Palette version 4.7.20 - 4.7.23.
 
 | Component                                                                                                         | Version |
 | ----------------------------------------------------------------------------------------------------------------- | ------- |
@@ -72,6 +72,25 @@ The following components have been updated for Palette version 4.7.20 - 4.7.21.
 | Vault                       | Add-on     | :white_check_mark: | :x:                | 0.31.0      |
 | Zot Registry                | Add-on     | :white_check_mark: | :white_check_mark: | 0.1.82      |
 
+## October 7, 2025 - Release 4.7.23
+
+### Component Updates
+
+The following component updates are applicable to this release:
+
+- [October 10, 2025 - Component Updates](#component-updates-2025-41) <!-- omit in toc -->
+- [October 3, 2025 - Component Updates](#component-updates-2025-40) <!-- omit in toc -->
+- [September 26, 2025 - Component Updates](#component-updates-2025-39) <!-- omit in toc -->
+
+### Bug Fixes
+
+- Fixed an issue where the cluster management agent failed to initialize after a Palette upgrade when the cluster
+  namespace annotation was missing. The Palette upgrade process now correctly preserves existing annotation.
+- Fixed an issue where the [Cluster API (CAPI)](https://cluster-api.sigs.k8s.io/) custom resource definitions failed to
+  apply on cloud clusters.
+- Fixed an issue that prevented the [SSO client secret](../user-management/saml-sso/saml-sso.md) from being masked in
+  the [Tenant Administration](../tenant-settings/tenant-settings.md) pages.
+
 ## October 3, 2025 - Component Updates {#component-updates-2025-40}
 
 The following components have been updated for Palette version 4.7.20 - 4.7.21.
@@ -103,6 +122,7 @@ The following components have been updated for Palette version 4.7.20 - 4.7.21.
 
 The following component updates are applicable to this release:
 
+- [October 10, 2025 - Component Updates](#component-updates-2025-41) <!-- omit in toc -->
 - [October 3, 2025 - Component Updates](#component-updates-2025-40) <!-- omit in toc -->
 - [September 26, 2025 - Component Updates](#component-updates-2025-39) <!-- omit in toc -->
 
@@ -203,6 +223,7 @@ The following components have been updated for Palette version 4.7.20 - 4.7.21.
 
 The following component updates are applicable to this release:
 
+- [October 10, 2025 - Component Updates](#component-updates-2025-41) <!-- omit in toc -->
 - [October 3, 2025 - Component Updates](#component-updates-2025-40) <!-- omit in toc -->
 - [September 26, 2025 - Component Updates](#component-updates-2025-39) <!-- omit in toc -->
 
