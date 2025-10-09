@@ -32,6 +32,19 @@ This page guides you through how access the console, and log in, and manage your
 
 3. You will be prompted to log in. Enter your username and password to log in.
 
+#### Login Security Behavior
+
+In case of several consecutive unsuccessful login attempts, Local UI enforces a short delay before you can attempt to
+log in again. The delay starts at one second and doubles with each subsequent failed attempt. By default, the delay
+mechanism begins after three unsuccessful login attempts.
+
+If you reach the maximum number of consecutive unsuccessful login attempts, Local UI temporarily blocks access for your
+user. By default, this lockout occurs after five consecutive failed attempts and lasts for 15 minutes.
+
+You can customize the default values in the `user-data` file for Edge hosts built with Palette agent version
+4.7.c-canvos or later. For more information, refer to the `stylus.localUI.login` parameters description in the
+[Edge Installer Configuration Reference](../../edge-configuration/installer-reference.md#palette-agent-parameters).
+
 ### Validate
 
 A successful login directs you to the Edge management console. Displayed is an overview of your Edge host.
