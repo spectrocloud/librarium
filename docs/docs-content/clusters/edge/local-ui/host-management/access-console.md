@@ -38,8 +38,7 @@ In case of several consecutive unsuccessful login attempts, Local UI enforces a 
 mechanism begins after three unsuccessful login attempts.
 
 If you reach the maximum number of consecutive unsuccessful login attempts, Local UI temporarily blocks access for your
-user. The default values are five for the maximum number of unsuccessful attempts and 15 minutes for the lockout
-duration.
+user. By default, this lockout occurs after five consecutive failed attempts and lasts for 15 minutes.
 
 You can customize these default values in the `user-data` file for Edge hosts built with Palette agent version
 4.7.c-canvos or later. For more information, refer to the `stylus.localUI.login` parameters description in the
