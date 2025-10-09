@@ -46,9 +46,9 @@ tags: ["release-notes"]
 
 #### Improvements
 
-- Remote shell access to an Edge host can now be enabled in Palette only if the parameter `stylus.site.remoteShell.disable`
-  is omitted or set to `false` in the host’s `user-data` file before the host registers with Palette. This change
-  applies to Edge hosts built with Palette agent version 4.7.c-canvos or later.
+- Remote shell access to an Edge host can now be enabled in Palette only if the parameter
+  `stylus.site.remoteShell.disable` is omitted or set to `false` in the host’s `user-data` file before the host
+  registers with Palette. This change applies to Edge hosts built with Palette agent version 4.7.c-canvos or later.
 
 #### Bug Fixes
 
