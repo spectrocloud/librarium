@@ -73,7 +73,7 @@ is not supported for any Azure cluster.
     Use the following command to validate which VMs are compatible with Encryption at Host. Change `<region-code>` to the region you will build your cluster in.
 
     ```shell
-      az vm list-skus --location <region-code> --all \
+    az vm list-skus --location <region-code> --all \
     --resource-type virtualMachines \
     --query "[?capabilities[?name=='EncryptionAtHostSupported' && value=='True']].{VMName:name, EncryptionAtHost:capabilities[?name=='EncryptionAtHostSupported'].value | [0]}" \
     --output table
