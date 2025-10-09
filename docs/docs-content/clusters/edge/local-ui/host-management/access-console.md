@@ -34,7 +34,8 @@ This page guides you through how access the console, and log in, and manage your
 
 #### Login Security Behavior
 
-In case of several consecutive unsuccessful login attempts, Local UI enforces a short delay before you can attempt to log in again. The delay starts at one second and doubles with each subsequent failed attempt. By default, the delay
+In case of several consecutive unsuccessful login attempts, Local UI enforces a short delay before you can attempt to
+log in again. The delay starts at one second and doubles with each subsequent failed attempt. By default, the delay
 mechanism begins after three unsuccessful login attempts.
 
 If you reach the maximum number of consecutive unsuccessful login attempts, Local UI temporarily blocks access for your
