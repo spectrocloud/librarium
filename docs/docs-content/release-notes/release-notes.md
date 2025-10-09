@@ -50,8 +50,8 @@ tags: ["release-notes"]
 
 <!-- prettier-ignore-end -->
 
-- The Local UI now supports configurable rate limiting and account lockout to protect against repeated failed login
-  attempts. By default, the Local UI applies an increasing delay after three consecutive failed login attempts and
+- Local UI now supports configurable rate limiting and account lockout to protect against repeated failed login
+  attempts. By default, Local UI applies an increasing delay after three consecutive failed login attempts and
   temporarily blocks access after five failures for 15 minutes. These settings can be customized in the `user-data` file
   for Edge hosts built with Palette agent version 4.7.c-canvos or later. For more information, refer to the
   `stylus.localUI.login` parameters description in the
