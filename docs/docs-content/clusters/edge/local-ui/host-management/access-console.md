@@ -34,17 +34,11 @@ This page guides you through how access the console, and log in, and manage your
 
 #### Login Security Behavior
 
-In case of several consecutive unsuccessful login attempts, you must wait for a short delay before attempting to log in
-again. The wait time starts at one second and doubles after each subsequent failed attempt. By default, the delay
-mechanism begins after three unsuccessful login attempts.
+In case of several consecutive unsuccessful login attempts, you must wait for a short delay before attempting to log in again. The wait time starts at one second and doubles after each subsequent failed attempt. By default, the delay mechanism begins after three unsuccessful login attempts.
 
-If you reach the maximum number of consecutive unsuccessful login attempts, the Local UI temporarily blocks access for
-your user. The default values are five for the maximum number of unsuccessful attempts and 15 minutes for the lockout
-duration.
+If you reach the maximum number of consecutive unsuccessful login attempts, Local UI temporarily blocks access for your user. The default values are five for the maximum number of unsuccessful attempts and 15 minutes for the lockout duration.
 
-You can customize these default values in the `user-data` file. For more information, refer to the
-`stylus.localUI.login` parameters description in the
-[Edge Installer Configuration Reference](../../edge-configuration/installer-reference.md#palette-agent-parameters).
+You can customize these default values in the `user-data` file for Edge hosts built with Palette agent version 4.7.c-canvos or later. For more information, refer to the `stylus.localUI.login` parameters description in the [Edge Installer Configuration Reference](../../edge-configuration/installer-reference.md#palette-agent-parameters).
 
 ### Validate
 
