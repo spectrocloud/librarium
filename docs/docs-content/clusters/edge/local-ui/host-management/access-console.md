@@ -32,6 +32,20 @@ This page guides you through how access the console, and log in, and manage your
 
 3. You will be prompted to log in. Enter your username and password to log in.
 
+#### Login Security Behavior
+
+In case of several consecutive unsuccessful login attempts, you must wait for a short delay before attempting to log in
+again. The wait time starts at one second and doubles after each subsequent failed attempt. By default, the delay
+mechanism begins after three unsuccessful login attempts.
+
+If you reach the maximum number of consecutive unsuccessful login attempts, the Local UI temporarily blocks access for
+your user. The default values are five for the maximum number of unsuccessful attempts and 15 minutes for the lockout
+duration.
+
+You can customize these default values in the `user-data` file. For more information, refer to the
+`stylus.localUI.login` parameters description in the
+[Edge Installer Configuration Reference](../../edge-configuration/installer-reference.md#palette-agent-parameters).
+
 ### Validate
 
 A successful login directs you to the Edge management console. Displayed is an overview of your Edge host.
