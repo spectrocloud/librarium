@@ -142,7 +142,7 @@ Use the following steps to enable disk encryption on a
 
 8. In **Configure Pack**, select **Values** in pack details, and click the **\</\>** button to show the YAML editor.
 
-9. On the right-hand side, click the **Presets drop-down Menu**, and select the **Enable Encryption Using
+9. (Optional) On the right-hand side, click the **Presets drop-down Menu**, and select the **Enable Encryption Using
    Customer-Managed Key** option.
 
 10. Scroll to the bottom of the YAML editor to view the additional configuration that was added.
@@ -151,6 +151,7 @@ Use the following steps to enable disk encryption on a
     cloud:
       azure:
         diskEncryptionSetID: ""
+        encryptionAtHost: true/false #set to true to enable Encryption at Host
     ```
 
 11. Fill in the `diskEncryptionSetID` with the Resource ID URI of your Disk Encryption Set.
@@ -177,6 +178,7 @@ Use the following steps to enable disk encryption on a
     cloud:
       azure:
         diskEncryptionSetID: "/subscriptions/subscriptionId/resourceGroups/resourceGroup/providers/Microsoft.Compute/diskEncryptionSets/diskEncryptionSet"
+        encryptionAtHost: true
     ```
 
 12. Make any other changes that you need and click **Next layer**.
