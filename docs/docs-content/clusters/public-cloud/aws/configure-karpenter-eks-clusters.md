@@ -1,15 +1,18 @@
 ---
-sidebar_label: "Configure Karpenter on EKS Clusters"
-title: "Configure Karpenter on EKS Clusters"
-description: "Learn how to configure Karpenter on EKS clusters with Palette."
+sidebar_label: "Configure Karpenter for EKS Clusters"
+title: "Configure Karpenter for EKS Clusters"
+description: "Learn how to configure Karpenter for EKS clusters with Palette."
 hide_table_of_contents: false
 tags: ["public cloud", "aws", "eks", "karpenter"]
 sidebar_position: 46
 ---
 
-The <VersionedLink text="Karpenter" url="/integrations/packs/?pack=karpenter"/> pack can be installed on EKS clusters to
-provide enhanced node provisioning and management. Karpenter automatically adjusts the size and capacity of your cluster
-based on the workload demands, ensuring optimal performance and resource utilization.
+The <VersionedLink text="Karpenter" url="/integrations/packs/?pack=karpenter"/> pack can be installed on Amazon EKS
+clusters for enhanced node provisioning.
+
+Karpenter analyzes pending pods and launches the most efficient EC2 capacity across instance types, sizes, Availability
+Zones, and more. As demand falls, it gracefully drains and removes underutilized nodes to reduce waste, whilst
+respecting any scheduling rules in place (labels, taints, and affinities).
 
 ## Install the Karpenter Pack
 
@@ -432,8 +435,11 @@ managed by Palette.
 
     :::
 
-Wait for the cluster repave to complete and the Karpenter pack to be deployed. This may take up to 10 minutes or more
-depending on the amount of worker nodes in your cluster.
+22. Wait for the cluster repave to complete and the Karpenter pack to be deployed. This may take up to 10 minutes or
+    more depending on the amount of worker nodes in your cluster.
+
+23. It is recommended to configure Karpenter to run on existing EKS node groups by using a `nodeAffinity` rule. This
+    ensures Karpenter is not provisioned on
 
 ### Validate
 
@@ -448,6 +454,14 @@ depending on the amount of worker nodes in your cluster.
    it is successfully deployed.
 
 ## Configure Karpenter NodePools
+
+The following steps show how to configure [Karpenter NodePools](https://karpenter.sh/docs/concepts/nodepools/) for your
+Amazon EKS cluster. NodePools specify the constraints for nodes Karpenter can provision and the associated
+[NodeClass](https://karpenter.sh/docs/concepts/nodeclasses/) supplies cloud settings like the Amazon Machine Image
+(AMI), subnets, and security groups to use.
+
+These steps show you how to create a default NodePool, but you can create multiple NodePools to suit your specific
+requirements.
 
 ### Prerequisites
 
@@ -478,11 +492,28 @@ depending on the amount of worker nodes in your cluster.
 8. Click the **New manifest** option and provide a name for the manifest, such as `karpenter-nodepool-manifest`. Click
    the tick icon to save the name.
 
-9. In the YAML editor, add a Karpenter NodePool configuration. In this example, we will create a default NodePool. This
-   configuration can be customized to fit your specific requirements. Refer to
-   [Karpenter NodePool examples](https://github.com/aws/karpenter-provider-aws/tree/main/examples/v1) to view example
-   configurations for a variety of use cases. The [Karpenter documentation](https://karpenter.sh/docs/concepts/) also
-   provides comprehensive information on the various configuration options.
+9. In the YAML editor, add a Karpenter NodePool configuration. This configuration can be customized to fit your specific
+   requirements. The [Karpenter documentation](https://karpenter.sh/docs/concepts/) provides comprehensive information
+   on the various configuration options. You can also check out the
+   [Karpenter NodePool examples](https://github.com/aws/karpenter-provider-aws/tree/main/examples/v1) to view
+   configurations for a variety of use cases.
+
+   In this example, we create a NodePool named `default` that provisions on-demand instances of the `c`, `m`, and `r`
+   [instance series](https://docs.aws.amazon.com/ec2/latest/instancetypes/instance-type-names.html). The instance
+   generation is set greater than `2`. The NodePool uses a NodeClass named `al2023-20250920` that references the Amazon
+   Linux 2023 AMI alias of `al2023@v20250920`.
+
+   There are three important aspects to note in this configuration:
+
+   - The `spec.role` field in the NodeClass must match the node role created in the Kubernetes layer under
+     `managedMachinePool.roleName`. This ensures that the nodes provisioned by Karpenter have the correct IAM role
+     associated with them.
+   - The `subnetSelectorTerms` and `securityGroupSelectorTerms` in the NodeClass use tags to discover the subnets and
+     security groups associated with the EKS cluster. Ensure these resources are tagged appropriately as outlined in the
+     [Prerequisites](#prerequisites) section for installing the Karpenter pack.
+   - Some instance types will not be displayed in the **Nodes** tab for the cluster in Palette. Refer to
+     [Karpenter Support - Known Limitations](./architecture.md#known-limitations) for a list of unsupported instance
+     types.
 
    ```yaml title="Default NodePool example"
    apiVersion: karpenter.sh/v1
@@ -559,9 +590,9 @@ depending on the amount of worker nodes in your cluster.
 
 ## Test Karpenter Node Provisioning
 
-To test Karpenter's ability to provision nodes based on workload demands, you can deploy a sample application and scale
-the number of replica pods for the deployment manually. This will trigger Karpenter to create new nodes to accommodate
-the workload or delete nodes when they are no longer needed.
+To test Karpenter's ability to provision nodes based on workload demands, deploy a sample application and manually scale
+the number of replicas for the deployment. This will create pending pods that trigger Karpenter to provision new nodes,
+then gracefully drain and remove idle nodes when they are no longer needed.
 
 ### Prerequisites
 
@@ -768,3 +799,202 @@ the workload or delete nodes when they are no longer needed.
    ip-11-12-13-14.ec2.internal    Ready    <none>   14h     v1.32.9-eks-113cf36
    ip-12-13-14-15.ec2.internal    Ready    <none>   14h     v1.32.9-eks-113cf36
    ```
+
+## (Optional) Set nodeAffinity for Karpenter and Critical Workloads
+
+It is recommended to configure Karpenter to run on existing EKS node groups by using a `nodeAffinity` rule. This ensures
+Karpenter is not provisioned on nodes it manages. You can achieve this by adding a `nodeAffinity` rule to the Karpenter
+deployment.
+
+Additionally, you may want to configure critical workloads (such as `coredns` and `metrics-server`) to run on the
+existing node groups to ensure they are not disrupted by Karpenter's consolidation and scaling activities.
+
+### Prerequisites
+
+- Your Palette account must have the **Cluster Profile Editor** and **Cluster Editor** permissions to configure
+  Karpenter NodePools. Refer to our
+  [Cluster Profile](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile) and
+  [Cluster](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster) role reference guides for
+  more information about roles and permissions.
+
+- AWS CLI must be installed and configured with the necessary permissions to
+  [obtain the kubeconfig file](https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html) for your eks
+  cluster. Refer to [Install the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+  for installation instructions and
+  [Configure the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html) for configuration
+  guidance.
+
+- Kubectl must be installed. Refer to
+  [Install and Configure kubectl](https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html) for
+  instructions.
+
+### Enablement Steps
+
+1. Issue the following command to connect to your EKS cluster. Replace `<eks-cluster-name>` with the name of your EKS
+   cluster and `<aws-region>` with the AWS region your cluster is in.
+
+   ```bash
+   aws eks update-kubeconfig --name <eks-cluster-name> --region <aws-region>
+   ```
+
+2. Issue the following command to list node groups in your EKS cluster. Identify the node groups you want Karpenter and
+   critical workloads to run on. Replace `<eks-cluster-name>` with the name of your EKS cluster.
+
+   ```bash
+   NODEGROUP=$(aws eks list-nodegroups --cluster-name "<eks-cluster-name>" --query 'nodegroups' --output text | tee /dev/tty)
+   ```
+
+   ```bash hideClipboard title="Example output"
+   new-worker--abcd        worker-pool-efgh
+   ```
+
+3. Log in to [Palette](https://console.spectrocloud.com).
+
+4. From the left main menu, click **Profiles**.
+
+5. Select the profile associated with your EKS cluster.
+
+6. Create a new version of the profile. For more information, refer to
+   [Version a Cluster Profile](../../../profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile.md).
+
+7. Click on the **karpenter** layer to edit the configuration.
+
+8. In **Pack Details**, select the **Values** option.
+
+9. In the YAML editor, add a `nodeAffinity` rule to the `spec.template.spec` section of the Karpenter deployment. This
+   rule ensures that Karpenter is scheduled only on nodes that belong to the specified node groups. Replace
+   `<node-group-1>` and `<node-group-2>` with the names of your node groups.
+
+   ```yaml title="Template for adding nodeAffinity to Karpenter" {12-16}
+   charts:
+     ...
+     karpenter:
+       ...
+       affinity:
+         nodeAffinity:
+           requiredDuringSchedulingIgnoredDuringExecution:
+             nodeSelectorTerms:
+               - matchExpressions:
+                   - key: karpenter.sh/nodepool
+                     operator: DoesNotExist
+                   - key: eks.amazonaws.com/nodegroup
+                     operator: In
+                     values:
+                     - <node-group-1>
+                     - <node-group-2>
+   ```
+
+   <details>
+
+   <summary>Click to see an example NodeAffinity configuration for Karpenter</summary>
+
+   ```yaml hideClipboard title="Example NodeAffinity for Karpenter" {12-16}
+   charts:
+     ...
+     karpenter:
+       ...
+       affinity:
+         nodeAffinity:
+           requiredDuringSchedulingIgnoredDuringExecution:
+             nodeSelectorTerms:
+               - matchExpressions:
+                   - key: karpenter.sh/nodepool
+                     operator: DoesNotExist
+                   - key: eks.amazonaws.com/nodegroup
+                     operator: In
+                     values:
+                     - new-worker--abcd
+                     - new-worker--efgh
+   ```
+
+   </details>
+
+10. Click **Confirm Updates**, followed by **Save Changes** in the cluster profile view.
+
+11. From the left main menu, click **Clusters** and select your EKS cluster from the list.
+
+12. Select the **Profile** tab.
+
+13. Click the version drop-down for the **INFRASTRUCTURE LAYERS** or **ADDON LAYERS** and select the new profile version
+    you created.
+
+14. Click **Review & Save**, followed by **Review changes in Editor** in the pop-up window.
+
+15. Click **Apply Changes** to update the cluster with the new profile version.
+
+16. You can also configure critical workloads to run on the existing node groups by adding a `nodeAffinity` rule to
+    their deployments. The following example shows how to add a `nodeAffinity` rule to the `coredns` deployment.
+
+    :::caution
+
+    Modifying critical workloads can affect cluster availability. Ensure you plan accordingly.
+
+    :::
+
+    <details>
+
+    <summary>Click to see an example nodeAffinity configuration for coredns</summary>
+
+    1. Issue the following command to connect to your EKS cluster. Replace `<eks-cluster-name>` with the name of your
+       EKS cluster and `<aws-region>` with the AWS region your cluster is in.
+
+       ```bash
+       aws eks update-kubeconfig --name <eks-cluster-name> --region <aws-region>
+       ```
+
+    2. Issue the following command to edit the deployment of your critical workload. In this example, we edit the
+       `kube-system/coredns` deployment. Replace `kube-system` and `coredns` with the namespace and name of your
+       critical workload deployment.
+
+       ```bash
+       kubectl edit deployment coredns --namespace kube-system
+       ```
+
+    3. In the YAML editor, add a `nodeAffinity` rule to the `spec.template.spec` section of the deployment. This rule
+       ensures that the workload is scheduled only on nodes that belong to the specified node groups. Replace
+       `<node-group-1>` and `<node-group-2>` with the names of your node groups.
+
+       ```yaml title="Template for adding nodeAffinity to critical workloads" {12-16}
+       spec:
+         ...
+         template:
+           ...
+           spec:
+             affinity:
+               nodeAffinity:
+                 requiredDuringSchedulingIgnoredDuringExecution:
+                   nodeSelectorTerms:
+                   - matchExpressions:
+                     ...
+                     - key: eks.amazonaws.com/nodegroup
+                       operator: In
+                       values:
+                       - worker-pool-wjnx
+                       - new-worker--o88u
+       ```
+
+    4. Save and exit the editor to apply the changes.
+
+       ```shell hideClipboard title="Expected output"
+       deployment.apps/coredns edited
+       ```
+
+    </details>
+
+### Validate
+
+1. Log in to [Palette](https://console.spectrocloud.com).
+
+2. From the left main menu, click **Clusters** and select your EKS cluster from the list.
+
+3. In the **Overview** tab, verify that the **Cluster Status** is **Running** without a loading icon and the **Health**
+   is **Healthy**.
+
+4. Verify that the Karpenter pack is listed under the **Cluster Profiles** section with a green circle indicating that
+   it is successfully updated.
+
+## Useful Links
+
+- [Karpenter Documentation](https://karpenter.sh/docs/)
+- [Karpenter NodePool examples](https://github.com/aws/karpenter-provider-aws/tree/main/examples/v1)
+- [Karpenter Best Practices for Amazon EKS](https://docs.aws.amazon.com/eks/latest/best-practices/karpenter.html)
