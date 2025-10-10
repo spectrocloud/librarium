@@ -47,6 +47,11 @@ partial_name: aws-nodes-policy
       ],
       "Resource": ["*"],
       "Effect": "Allow"
+    },
+    {
+      "Action": ["ec2:GetInstanceMetadataDefaults"],
+      "Resource": ["*"],
+      "Effect": "Allow"
     }
   ]
 }
