@@ -24,12 +24,15 @@ that define the governance stack. They reference existing cluster profiles and o
 [maintenance policies](./create-cluster-template-policies/maintenance-policy.md), and leverage
 [cluster profile variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/define-profile-variables.md)
 and [macros](../clusters/cluster-management/macros.md), allowing you to deploy, manage, and scale a synchronized fleet
-of clusters with minimal effort, while configuring environment-specific values where needed.
+of clusters with minimal effort and configure environment-specific values where needed.
 
 Cluster templates can be created at both the tenant and project scope. Cluster templates do not embed cluster profile
 and policy configurations but reference them as objects, allowing you to edit and replace them as needed.
 
-Cluster templates operations can be performed with Terraform, Crossplane, and APIs.
+Cluster templates can be managed using [Terraform](../automation/terraform/terraform.md),
+[Crossplane](../automation/crossplane/crossplane.md), the [Palette Go SDK](../automation/palette-sdk/palette-sdk.md),
+and [REST APIs](/api/introduction), enabling full infrastructure-as-code and programmatic automation for managing
+clusters declaratively.
 
 ![Diagram of cluster template architecture](/cluster-templates_diagram.webp)
 
