@@ -80,7 +80,9 @@ To complete this tutorial, you will need the following:
   root user.
 
 - An image management tool such as [Docker](https://docs.docker.com/engine/install/) or
-  [crane](https://github.com/google/go-containerregistry/blob/main/cmd/crane/README.md) is installed and available.
+  [crane](https://github.com/google/go-containerregistry/blob/main/cmd/crane/README.md) is installed and available. When
+  installing these tools, avoid using `snap` as this will create an isolated sandboxed environment that will not be
+  accessible by the commands used in this tutorial. Use `apt` instead.
 
   :::info
 
@@ -135,10 +137,10 @@ View the available [git tags](https://github.com/spectrocloud/CanvOS/tags).
 git tag
 ```
 
-Check out the newest available tag. This guide uses **v4.6.12** tag as an example.
+Check out the newest available tag. This guide uses **v4.7.14** tag as an example.
 
 ```bash
-git checkout v4.6.12
+git checkout v4.7.14
 ```
 
 ## Define Arguments
@@ -160,7 +162,7 @@ to ttl.sh are ephemeral and will expire after the 24 hrs time limit.
 
 Using the arguments defined in the `.arg` file, the final provider images you generate will have the following naming
 convention, `[IMAGE_REGISTRY]/[IMAGE_REPO]:[CUSTOM_TAG]`. In this example, the provider images will be
-`ttl.sh/ubuntu:k3s-1.32.1-v4.6.12-demo`. Refer to the `.arg.template` sample file in the current directory or the
+`ttl.sh/ubuntu:k3s-1.32.1-v4.7.14-demo`. Refer to the `.arg.template` sample file in the current directory or the
 [README](https://github.com/spectrocloud/CanvOS#readme) to learn more about the default values.
 
 ```bash
@@ -323,7 +325,7 @@ options:
   system.repo: ubuntu
   system.k8sDistribution: k3s
   system.osName: ubuntu
-  system.peVersion: v4.6.12
+  system.peVersion: v4.7.14
   system.customTag: demo
   system.osVersion: 22
 ```
@@ -360,22 +362,22 @@ docker images --filter=reference='*/*:*demo*'
 
 ```hideClipboard bash {2,3}
 REPOSITORY      TAG                                    IMAGE ID       CREATED       SIZE
-ttl.sh/ubuntu   k3s-1.32.1-v4.6.12-demo                145bc25ff5b4   2 hours ago   4.97GB
-ttl.sh/ubuntu   k3s-1.32.1-v4.6.12-demo_linux_amd64    145bc25ff5b4   2 hours ago   4.97GB
-ttl.sh/ubuntu   k3s-1.31.5-v4.6.12-demo                52ba5288cccd   2 hours ago   4.96GB
-ttl.sh/ubuntu   k3s-1.31.5-v4.6.12-demo_linux_amd64    52ba5288cccd   2 hours ago   4.96GB
-ttl.sh/ubuntu   k3s-1.31.4-v4.6.12-demo                8e089cc7292f   2 hours ago   4.96GB
-ttl.sh/ubuntu   k3s-1.31.4-v4.6.12-demo_linux_amd64    8e089cc7292f   2 hours ago   4.96GB
-ttl.sh/ubuntu   k3s-1.31.1-v4.6.12-demo                6ecfc962d208   2 hours ago   4.96GB
-ttl.sh/ubuntu   k3s-1.31.1-v4.6.12-demo_linux_amd64    6ecfc962d208   2 hours ago   4.96GB
-ttl.sh/ubuntu   k3s-1.30.9-v4.6.12-demo                34cdeab9d894   2 hours ago   4.96GB
-ttl.sh/ubuntu   k3s-1.30.9-v4.6.12-demo_linux_amd64    34cdeab9d894   2 hours ago   4.96GB
-ttl.sh/ubuntu   k3s-1.30.8-v4.6.12-demo                6491f9c28be5   2 hours ago   4.96GB
-ttl.sh/ubuntu   k3s-1.30.8-v4.6.12-demo_linux_amd64    6491f9c28be5   2 hours ago   4.96GB
-ttl.sh/ubuntu   k3s-1.30.6-v4.6.12-demo                dee339f3ceaa   2 hours ago   4.95GB
-ttl.sh/ubuntu   k3s-1.30.6-v4.6.12-demo_linux_amd64    dee339f3ceaa   2 hours ago   4.95GB
-ttl.sh/ubuntu   k3s-1.30.5-v4.6.12-demo                80f451092b91   2 hours ago   4.96GB
-ttl.sh/ubuntu   k3s-1.30.5-v4.6.12-demo_linux_amd64    80f451092b91   2 hours ago   4.96GB
+ttl.sh/ubuntu   k3s-1.32.1-v4.7.14-demo                145bc25ff5b4   2 hours ago   4.97GB
+ttl.sh/ubuntu   k3s-1.32.1-v4.7.14-demo_linux_amd64    145bc25ff5b4   2 hours ago   4.97GB
+ttl.sh/ubuntu   k3s-1.31.5-v4.7.14-demo                52ba5288cccd   2 hours ago   4.96GB
+ttl.sh/ubuntu   k3s-1.31.5-v4.7.14-demo_linux_amd64    52ba5288cccd   2 hours ago   4.96GB
+ttl.sh/ubuntu   k3s-1.31.4-v4.7.14-demo                8e089cc7292f   2 hours ago   4.96GB
+ttl.sh/ubuntu   k3s-1.31.4-v4.7.14-demo_linux_amd64    8e089cc7292f   2 hours ago   4.96GB
+ttl.sh/ubuntu   k3s-1.31.1-v4.7.14-demo                6ecfc962d208   2 hours ago   4.96GB
+ttl.sh/ubuntu   k3s-1.31.1-v4.7.14-demo_linux_amd64    6ecfc962d208   2 hours ago   4.96GB
+ttl.sh/ubuntu   k3s-1.30.9-v4.7.14-demo                34cdeab9d894   2 hours ago   4.96GB
+ttl.sh/ubuntu   k3s-1.30.9-v4.7.14-demo_linux_amd64    34cdeab9d894   2 hours ago   4.96GB
+ttl.sh/ubuntu   k3s-1.30.8-v4.7.14-demo                6491f9c28be5   2 hours ago   4.96GB
+ttl.sh/ubuntu   k3s-1.30.8-v4.7.14-demo_linux_amd64    6491f9c28be5   2 hours ago   4.96GB
+ttl.sh/ubuntu   k3s-1.30.6-v4.7.14-demo                dee339f3ceaa   2 hours ago   4.95GB
+ttl.sh/ubuntu   k3s-1.30.6-v4.7.14-demo_linux_amd64    dee339f3ceaa   2 hours ago   4.95GB
+ttl.sh/ubuntu   k3s-1.30.5-v4.7.14-demo                80f451092b91   2 hours ago   4.96GB
+ttl.sh/ubuntu   k3s-1.30.5-v4.7.14-demo_linux_amd64    80f451092b91   2 hours ago   4.96GB
 ...
 ```
 
@@ -391,7 +393,7 @@ registry. This image registry is free and does not require you to sign up to use
 ephemeral and will expire after 24 hours.
 
 ```bash
-docker push ttl.sh/ubuntu:k3s-1.32.1-v4.6.12-demo
+docker push ttl.sh/ubuntu:k3s-1.32.1-v4.7.14-demo
 ```
 
 :::warning
@@ -515,7 +517,7 @@ is an explanation of the options and sub-commands used below:
 - The `--env-file` option reads the `.packerenv` file.
 
 - The `--volume ` option mounts a local directory to our official tutorials container,
-  `ghcr.io/spectrocloud/tutorials:1.1.13`.
+  `ghcr.io/spectrocloud/tutorials:1.3.0`.
 
 - The `sh -c "source /edge/vmware/clone_vm_template/setenv.sh "` shell sub-command defines the GOVC environment
   variables, the number of VMs, a prefix string for the VM name, and the VM template name. Most of the GOVC environment
@@ -559,7 +561,7 @@ is an explanation of the options and sub-commands used below:
 
   Should you need to change the VM template name or VM settings defined in the `vsphere.hcl` file, or review the Packer
   script, you must open a bash session into the container using the
-  `docker run --interactive --tty --env-file .packerenv --volume "${ISOFILEPATH}:/edge/vmware/packer/build" ghcr.io/spectrocloud/tutorials:1.1.13 bash`
+  `docker run --interactive --tty --env-file .packerenv --volume "${ISOFILEPATH}:/edge/vmware/packer/build" ghcr.io/spectrocloud/tutorials:1.3.0 bash`
   command, and change to the `edge/vmware/packer` directory to make the modifications. After you finish the
   modifications, issue the `packer build -force --var-file=vsphere.hcl build.pkr.hcl` command inside the container to
   trigger the Packer build process. This command creates a VM template, so that you can skip the next step.
@@ -575,7 +577,7 @@ docker run --interactive --tty --rm \
   --env-file .packerenv \
   --env-file .goenv \
   --volume "${ISOFILEPATH}:/edge/vmware/packer/build" \
-  ghcr.io/spectrocloud/tutorials:1.1.13 \
+  ghcr.io/spectrocloud/tutorials:1.3.0 \
   sh -c "source /edge/vmware/clone_vm_template/setenv.sh && cd /edge/vmware/packer/ && packer init build.pkr.hcl && packer build -force --var-file=vsphere.hcl build.pkr.hcl"
 ```
 
@@ -606,7 +608,7 @@ GOVC requires the same VMware vCenter details as the environment variables you d
 The next step is to use the following `docker run` command to clone the VM template and provision three VMs. Here is an
 explanation of the options and sub-commands used below:
 
-- The `--env-file` option reads the `.goenv` file in our official `ghcr.io/spectrocloud/tutorials:1.1.13` tutorials
+- The `--env-file` option reads the `.goenv` file in our official `ghcr.io/spectrocloud/tutorials:1.3.0` tutorials
   container.
 
 - The `sh -c "cd edge/vmware/clone_vm_template/ && ./deploy-edge-host.sh"` shell sub-command changes to the container's
@@ -648,7 +650,7 @@ export GOVC_FOLDER="${vcenter_folder}"
 Suppose you have changed the VM template name in the previous step or need to change the number of VMs to provision. In
 that case, you must modify the `setenv.sh` script. To do so, you can reuse the container bash session from the previous
 step if it is still active, or you can open another bash session into the container using the
-`docker run --interactive --tty --env-file .goenv ghcr.io/spectrocloud/tutorials:1.1.13 bash` command. If you use an
+`docker run --interactive --tty --env-file .goenv ghcr.io/spectrocloud/tutorials:1.3.0 bash` command. If you use an
 existing container bash session, create the `.goenv` file described above and source it in your container environment.
 Next, change to the `edge/vmware/clone_vm_template` directory to modify the `setenv.sh` script, and issue the
 `./deploy-edge-host.sh` command to deploy the VMs.
@@ -660,7 +662,7 @@ Issue the following command to clone the VM template and provision three VMs.
 ```bash
 docker run --interactive --tty --rm \
   --env-file .goenv \
-  ghcr.io/spectrocloud/tutorials:1.1.13 \
+  ghcr.io/spectrocloud/tutorials:1.3.0 \
   sh -c "cd edge/vmware/clone_vm_template/ && ./deploy-edge-host.sh"
 ```
 
@@ -772,7 +774,7 @@ options:
   system.repo: ubuntu
   system.k8sDistribution: k3s
   system.osName: ubuntu
-  system.peVersion: v4.6.12
+  system.peVersion: v4.7.14
   system.customTag: demo
   system.osVersion: 22
 ```
@@ -1008,7 +1010,7 @@ following command to delete the Edge hosts.
 
 ```bash
 docker run --interactive --tty --rm --env-file .goenv \
-  ghcr.io/spectrocloud/tutorials:1.1.13 \
+  ghcr.io/spectrocloud/tutorials:1.3.0 \
   sh -c "cd edge/vmware/clone_vm_template/ && ./delete-edge-host.sh"
 ```
 
@@ -1031,22 +1033,22 @@ docker images
 Note the provider image name and tags, and use the following command syntax to remove all provider images.
 
 ```bash
-docker rmi ttl.sh/ubuntu:k3s-1.32.1-v4.6.12-demo
-docker rmi ttl.sh/ubuntu:k3s-1.32.1-v4.6.12-demo_linux_amd64
-docker rmi ttl.sh/ubuntu:k3s-1.31.5-v4.6.12-demo
-docker rmi ttl.sh/ubuntu:k3s-1.31.5-v4.6.12-demo_linux_amd64
-docker rmi ttl.sh/ubuntu:k3s-1.31.4-v4.6.12-demo
-docker rmi ttl.sh/ubuntu:k3s-1.31.4-v4.6.12-demo_linux_amd64
-docker rmi ttl.sh/ubuntu:k3s-1.31.1-v4.6.12-demo
-docker rmi ttl.sh/ubuntu:k3s-1.31.1-v4.6.12-demo_linux_amd64
-docker rmi ttl.sh/ubuntu:k3s-1.30.9-v4.6.12-demo
-docker rmi ttl.sh/ubuntu:k3s-1.30.9-v4.6.12-demo_linux_amd64
-docker rmi ttl.sh/ubuntu:k3s-1.30.8-v4.6.12-demo
-docker rmi ttl.sh/ubuntu:k3s-1.30.8-v4.6.12-demo_linux_amd64
-docker rmi ttl.sh/ubuntu:k3s-1.30.6-v4.6.12-demo
-docker rmi ttl.sh/ubuntu:k3s-1.30.6-v4.6.12-demo_linux_amd64
-docker rmi ttl.sh/ubuntu:k3s-1.30.5-v4.6.12-demo
-docker rmi ttl.sh/ubuntu:k3s-1.30.5-v4.6.12-demo_linux_amd64
+docker rmi ttl.sh/ubuntu:k3s-1.32.1-v4.7.14-demo
+docker rmi ttl.sh/ubuntu:k3s-1.32.1-v4.7.14-demo_linux_amd64
+docker rmi ttl.sh/ubuntu:k3s-1.31.5-v4.7.14-demo
+docker rmi ttl.sh/ubuntu:k3s-1.31.5-v4.7.14-demo_linux_amd64
+docker rmi ttl.sh/ubuntu:k3s-1.31.4-v4.7.14-demo
+docker rmi ttl.sh/ubuntu:k3s-1.31.4-v4.7.14-demo_linux_amd64
+docker rmi ttl.sh/ubuntu:k3s-1.31.1-v4.7.14-demo
+docker rmi ttl.sh/ubuntu:k3s-1.31.1-v4.7.14-demo_linux_amd64
+docker rmi ttl.sh/ubuntu:k3s-1.30.9-v4.7.14-demo
+docker rmi ttl.sh/ubuntu:k3s-1.30.9-v4.7.14-demo_linux_amd64
+docker rmi ttl.sh/ubuntu:k3s-1.30.8-v4.7.14-demo
+docker rmi ttl.sh/ubuntu:k3s-1.30.8-v4.7.14-demo_linux_amd64
+docker rmi ttl.sh/ubuntu:k3s-1.30.6-v4.7.14-demo
+docker rmi ttl.sh/ubuntu:k3s-1.30.6-v4.7.14-demo_linux_amd64
+docker rmi ttl.sh/ubuntu:k3s-1.30.5-v4.7.14-demo
+docker rmi ttl.sh/ubuntu:k3s-1.30.5-v4.7.14-demo_linux_amd64
 ...
 ```
 
