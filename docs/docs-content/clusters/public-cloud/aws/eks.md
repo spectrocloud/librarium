@@ -444,6 +444,10 @@ For guidance in setting up kubectl, review the [Kubectl](../../cluster-managemen
 
 - [Enable Secrets Encryption for EKS Cluster](enable-secrets-encryption-kms-key.md)
 
+- [Enable Disk Encryption for EKS Cluster](enable-disk-encryption-eks-cluster.md)
+
+- [Configure Karpenter for EKS Clusters](configure-karpenter-eks-clusters.md)
+
 <!-- prettier-ignore-start -->
 
 - <VersionedLink text="Palette eXtended Kubernetes (PXK)" url="/integrations/packs/?pack=kubernetes" /> pack
