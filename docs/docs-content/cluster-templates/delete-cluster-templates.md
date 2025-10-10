@@ -15,7 +15,8 @@ To delete a cluster template that is attached to a cluster, you must first delet
 template previously attached to the cluster. You cannot delete a cluster template that is linked to a cluster.
 
 Since cluster templates reference existing cluster profiles and template policies rather than embed them, when you
-delete a cluster template, the associated profiles and policies are _not_ deleted.
+delete a cluster template, the associated profiles and policies are _not_ deleted, allowing you to reuse the profiles
+and policies in other clusters.
 
 ## Prerequisites
 

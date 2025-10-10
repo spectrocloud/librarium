@@ -11,9 +11,7 @@ tags: ["cluster templates"]
 
 :::
 
-## Limitations
-
-- Once a cluster profile is linked to a cluster template, the cluster profile cannot be modified.
+Once a cluster profile is linked to a cluster template, the cluster profile cannot be modified.
 
 ## Prerequisites
 
@@ -25,7 +23,7 @@ tags: ["cluster templates"]
 
 - An existing [cluster template](./cluster-templates.md).
 
-## Modify a Cluster Template
+## Modify Cluster Templates
 
 - Three tabs: Overview, Policies, and Variable Values
 

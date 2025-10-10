@@ -15,8 +15,8 @@ tags: ["cluster templates"]
 fleet of clusters. By referencing [cluster profiles](../profiles/cluster-profiles/cluster-profiles.md) and operational
 [policies](./create-cluster-template-policies/create-cluster-template-policies.md), all while leveraging
 [cluster profile variables](../profiles/cluster-profiles/create-cluster-profiles/define-profile-variables/define-profile-variables.md)
-and [macros](../clusters/cluster-management/macros.md), clusters attached to cluster templates remain consistent while
-allowing environment overrides where necessary.
+and [macros](../clusters/cluster-management/macros.md), clusters attached to cluster templates remain consistent and
+allow environment overrides where necessary.
 
 ## Limitations
 
@@ -53,48 +53,50 @@ allowing environment overrides where necessary.
 6.  Use either of the following methods to add a maintenance policy to your cluster template:
 
     - Select the plus icon beside **Maintenance Policy** on the left menu.
+
     - Expand the **Maintenance policy** panel and **Select a maintenance policy**.
 
     ![Adding a maintenance policy to a cluster template](/cluster-templates_create-cluster-templates_add-maintenance-policy.webp)
 
-7.  The **Select a policy** window display a list of maintenance policies. In the menu bar, locate your policy by name,
+7.  The **Select a policy** drawer displays a list of maintenance policies. In the menu bar, locate your policy by name,
     **Type**, or **Tags**, select it, and **Confirm** your selection.
-
-    The **In Use Templates** column indicates if the maintenance policy is currently referenced by another cluster
-    template. Refer to our
-    [Create and Manage Cluster Template Policies](./create-cluster-template-policies/create-cluster-template-policies.md#view-cluster-template-policies)
-    guide for details on modifying the default display for policies.
 
         :::tip
 
-        If you do not have a maintenance policy that fits your needs, choose **Create a maintenance policy**. Refer to our [Maintenance Policies](./create-cluster-template-policies/maintenance-policy.md) guide for more information on creating a maintenance policy.
+        - If you do not have a maintenance policy that fits your needs, choose **Create a maintenance policy**. Refer to our [Maintenance Policies](./create-cluster-template-policies/maintenance-policy.md) guide for more information on creating a maintenance policy.
+
+        - The **In Use Templates** column indicates if the maintenance policy is currently referenced by another cluster template. Refer to our [Create and Manage Cluster Template Policies](./create-cluster-template-policies/create-cluster-template-policies.md#view-cluster-template-policies) guide for details on modifying the default display for policies.
 
         :::
 
+<!--prettier-ignore-start -->
+
 8.  The selected maintenance policy is displayed on the left menu and in the expanded **Maintenance policy** panel,
-    which provides an overview of the selected policy.
-
-    :::info
-
-    Once you select a maintenance policy, the option to add a maintenance policy is removed, as only one maintenance
-    policy can be linked to a cluster template at a time. To link a different policy, select either the three-dot menu
-    beside the maintenance policy in the left menu and choose **Replace**, or select **Replace** in the expanded
-    **Maintenance policy** panel.
-
-    :::
-
-9.  Use either of the following methods to add a cluster profile to your cluster template:
+    which provides an overview of the selected policy. Use either of the following methods to add a cluster profile to
+    your cluster template:
 
     - Select the plus icon beside **Linked Profiles** on the left menu.
+  
     - Expand the **Linked profiles** panel and select **Add Cluster Profile**.
 
-10. The **Select a profile** window displays a list of infrastructure and full cluster profiles compatible with the
+        :::info
+
+        Once you select a maintenance policy, the option to add a maintenance policy is removed, as only one maintenance
+        policy can be linked to a cluster template at a time. To link a different policy, select either the three-dot menu
+        beside the maintenance policy in the left menu and choose **Replace**, or select **Replace** in the expanded
+        **Maintenance policy** panel.
+
+        :::
+
+<!--prettier-ignore-end -->
+
+9.  The **Select a profile** drawer displays a list of infrastructure and full cluster profiles compatible with the
     infrastructure selected in step 4. Choose the desired cluster profile and **Confirm** your selection.
 
-11. The selected cluster profile is displayed on the left menu and in the expanded **Linked profiles** panel, which
+10. The selected cluster profile is displayed on the left menu and in the expanded **Linked profiles** panel, which
     provides an overview of the selected profile.
 
-12. Use the version drop-down menu to select the appropriate cluster profile version.
+11. Use the version drop-down menu to select the appropriate cluster profile version.
 
         ![Configuring a cluster template](/cluster-templates_create-cluster-templates_template-configuration.webp)
 
@@ -113,7 +115,7 @@ allowing environment overrides where necessary.
 
             :::
 
-13. Use the **Add Addon Profile** button to link
+12. Use the **Add Addon Profile** button to link
     [add-on profiles](../profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/create-addon-profile.md)
     to your cluster template. **Confirm** each edition, and ensure the correct profile version is selected. Add as many
     add-on profiles as necessary.
@@ -122,64 +124,39 @@ allowing environment overrides where necessary.
     and choose **Replace** or **Remove**; alternatively, select the three-dot menu beside the add-on profile version in
     the expanded **Linked profiles** panel and choose **Replace** or **Remove**.
 
-14. Once you have added all cluster profiles, select **Next Step**.
+13. Once you have added all applicable cluster profiles, select **Next Step**.
 
-15. Review your cluster template. To view the individual layers of your cluster profile stack, expand each cluster
+14. Review your cluster template. To view the individual layers of your cluster profile stack, expand each cluster
     profile panel. If any changes are needed, return to the **Previous** screen and make the required modifications;
-    otherwise, **Finalize** your cluster template.
-
-## View Cluster Templates
-
-To view existing cluster templates:
-
-1.  Log in to [Palette](https://console.spectrocloud.com).
-
-2.  From the left main menu, select **Cluster Configurations**.
-
-3.  Select the **Templates** tab to display a list cluster templates. Choose a cluster template to view additional
-    details.
-
-4.  Profile variables do not appear on the screen until a cluster is deployed with the template and values are assigned.
-
-### Validate
-
-Take the following steps to view a list of cluster templates.
-
-1.  Log in to [Palette](https://console.spectrocloud.com).
-
-2.  From the left main menu, select **Cluster Configurations**.
-
-3.  Select the **Templates** tab. Your completed cluster template appears on the **Cluster Configurations > Templates**
-    list.
+    otherwise, **Finalize** your cluster template. Your cluster template appears on the **Templates** list.
 
 ## Next Steps
 
 Once you have created your cluster template, you are ready to deploy a new cluster using your template. The process to
 deploy a cluster using a cluster template instead of individual cluster profiles is similar, with the exceptions that:
 
-- On **Cluster setup type** window, you must specify **Cluster Template** instead of **Cluster Profiles**.
+- On the **Cluster setup type** window, you must specify **Cluster Template** instead of **Cluster Profiles**.
 - You cannot make any adjustments to individual profile layers during the deployment workflow.
 
-Note that cluster templates can only be used to deploy new clusters. Certain Day-2 operations, such as attaching a
-cluster template to an existing cluster, are not supported at this time. Additionally, once a cluster template is
-attached to a cluster, it cannot be detached. For additional information, refer to the cluster deployment guide for your
-applicable infrastructure environment:
+Cluster profile variable values are assigned during the cluster deployment flow. Note that cluster templates can only be
+used to deploy new clusters. Certain Day-2 operations, such as attaching a cluster template to an existing cluster, are
+not supported at this time. Additionally, once a cluster template is attached to a cluster, it cannot be detached. For
+additional information, refer to the cluster deployment guide for your applicable infrastructure environment.
 
-| **Public Cloud**                                                     | **Data Center**                                                                   | **Edge**                                                              |
-| -------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
-| [AWS IaaS](../clusters/public-cloud/aws/create-cluster.md)           | [MAAS](../clusters/data-center/maas/create-manage-maas-clusters.md)               | [Edge Native](../clusters/edge/site-deployment/cluster-deployment.md) |
-| [EKS](../clusters/public-cloud/aws/eks.md)                           | [MAAS](../clusters/data-center/maas/create-manage-maas-clusters.md)               | -                                                                     |
-| [Azure IaaS](../clusters/public-cloud/azure/create-azure-cluster.md) | [MAAS LXD](../clusters/data-center/maas/create-manage-maas-lxd-clusters.md)       | -                                                                     |
-| [AKS](../clusters/public-cloud/azure/aks.md)                         | [Nutanix](../clusters/data-center/nutanix/create-manage-nutanix-cluster.md)       | -                                                                     |
-| [GCP IaaS](../clusters/public-cloud/gcp/create-gcp-iaas-cluster.md)  | [OpenStack](../clusters/data-center/openstack.md)                                 | -                                                                     |
-| [GKE](../clusters/public-cloud/gcp/create-gcp-gke-cluster.md)        | [VMware vSphere](../clusters/data-center/vmware/create-manage-vmware-clusters.md) | -                                                                     |
+| **Public Cloud (IaaS)**                                              | **Public Cloud (Managed)**                                    | **Data Center**                                                                   | **Edge**                                                              |
+| -------------------------------------------------------------------- | ------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| [AWS IaaS](../clusters/public-cloud/aws/create-cluster.md)           | [EKS](../clusters/public-cloud/aws/eks.md)                    | [MAAS](../clusters/data-center/maas/create-manage-maas-clusters.md)               | [Edge Native](../clusters/edge/site-deployment/cluster-deployment.md) |
+| [Azure IaaS](../clusters/public-cloud/azure/create-azure-cluster.md) | [AKS](../clusters/public-cloud/azure/aks.md)                  | [MAAS LXD](../clusters/data-center/maas/create-manage-maas-lxd-clusters.md)       | -                                                                     |
+| [GCP IaaS](../clusters/public-cloud/gcp/create-gcp-iaas-cluster.md)  | [GKE](../clusters/public-cloud/gcp/create-gcp-gke-cluster.md) | [Nutanix](../clusters/data-center/nutanix/create-manage-nutanix-cluster.md)       | -                                                                     |
+| -                                                                    | -                                                             | [OpenStack](../clusters/data-center/openstack.md)                                 | -                                                                     |
+| -                                                                    | -                                                             | [VMware vSphere](../clusters/data-center/vmware/create-manage-vmware-clusters.md) | -                                                                     |
 
 When a cluster is deployed using a cluster template, the cluster template is referenced above the cluster profiles.
 Select the template to view additional details. The template can also be viewed by selecting the **Cluster Template**
-tab on the cluster overview.
+tab of the cluster.
 
     ![Cluster deployed with cluster template](/cluster-templates_create-cluster-templates_deployed-cluster.webp)
 
 To make additional changes to your cluster template, refer to our
 [Modify Cluster Templates](./modify-cluster-templates.md) guide. If you no longer need your cluster template, you can
-[delete your cluster template](./delete-cluster-templates.md).
+[delete your cluster template](./delete-cluster-templates.md) as long as it is not attached to a cluster.

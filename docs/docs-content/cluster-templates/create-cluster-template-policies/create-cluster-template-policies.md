@@ -24,20 +24,18 @@ multiple cluster templates.
 
 ## Policies Tab
 
-From the left main menu, select **Cluster Configurations > Policies** tab to create, edit, and delete cluster template
+From the left main menu, select **Cluster Configurations > Policies** to create, edit, and delete cluster template
 policies. Use the menu bar to locate your policy by name, **Type**, or **Tags**. Select the column headers to sort in
 ascending or descending order.
 
-To change how the columns are displayed, select the gear icon on the right of the table to customize your view in any of
-the following ways:
+Select the gear icon on the right of the table to customize the list of policies in any of the following ways:
 
 - Clear and mark check boxes to hide and display columns.
 - Select and hold the three vertical dots beside each column and drag to rearrange the column order.
 - Select the pin icon to pin the column to the front of the table.
 - Select **Reset to Default** to revert your changes.
 
-Columns can be hidden, rearranged, and pinned to the front of the table as desired. The following table lists the
-available columns.
+The following table lists the available columns.
 
 | **Column**           | **Description**                                                                                                                                                                                                                                        |
 | -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
@@ -51,25 +49,24 @@ available columns.
 ### In Use Templates
 
 If a policy is linked to a cluster template, select the drawer trigger beside the policy to view which templates the
-policy is linked to. A window similar to the **Policies** tab is displayed, listing all cluster templates linked to the
+policy is linked to. A drawer similar to the **Policies** tab is displayed, listing all cluster templates linked to the
 selected policy.
 
 Use the menu bar to locate your template by name, infrastructure **Environment**, types of **Policies**, or **Tags**.
 Select the column headers to sort in ascending or descending order. Use the arrow beside **Tags** to view the
 **Policies** selected and **Clear All** or individual policies from the filter.
 
-Select the gear icon on the right of the table to modify the column display using the same methods used to modify the
-list of policies. Columns can be hidden, rearranged, and pinned to the front of the table as desired. The following
-table lists the available columns.
+Select the gear icon on the right of the table to customize the display using the same methods used to modify the list
+of policies. The following table lists the available columns.
 
-| **Column**          | **Description**                                                                                                                                                                                                                                       |
-| ------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Name**            | The name of the cluster template. Each template name must be unique.                                                                                                                                                                                  |
-| **Env**             | The infrastructure environment of the cluster template. This is based on the infrastructure or managed Kubernetes provider selected when creating the linked infrastructure or full cluster profile.                                                  |
-| **Last Modified**   | The date the template was last modified.                                                                                                                                                                                                              |
-| **In use clusters** | Specifies if the template is linked to an active cluster. If a template is linked, select the icon beside it to view details about the template. For more information, refer to our [Modify Cluster Templates](../modify-cluster-templates.md) guide. |
-| **Scope**           | Specifies if the template is part of the tenant or project scope.                                                                                                                                                                                     |
-| **Tags**            | Tags assigned to the template.                                                                                                                                                                                                                        |
+| **Column**          | **Description**                                                                                                                                                                                                                                              |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Name**            | The name of the cluster template. Each template name must be unique.                                                                                                                                                                                         |
+| **Env**             | The infrastructure environment of the cluster template. This is based on the infrastructure or managed Kubernetes provider selected when creating the linked infrastructure or full cluster profile.                                                         |
+| **Last Modified**   | The date the template was last modified.                                                                                                                                                                                                                     |
+| **In use clusters** | Specifies if the template is linked to an active cluster. If a template is linked, select the drawer icon beside it to view details about the template. For more information, refer to our [Modify Cluster Templates](../modify-cluster-templates.md) guide. |
+| **Scope**           | Specifies if the template is part of the tenant or project scope.                                                                                                                                                                                            |
+| **Tags**            | Tags assigned to the template.                                                                                                                                                                                                                               |
 
 ## Create and Edit Cluster Template Policies
 
@@ -82,7 +79,7 @@ any time, regardless of whether they are currently part of a cluster template th
 
 The fields and steps associated with creating and editing policies depend on the type of policy. At this time,
 maintenance policies are the only policy type. For detailed information on creating maintenance policies, refer to our
-[Maintenance Policy](./maintenance-policy.md) guide. |
+[Maintenance Policy](./maintenance-policy.md) guide.
 
 ## Delete Cluster Template Policies
 
