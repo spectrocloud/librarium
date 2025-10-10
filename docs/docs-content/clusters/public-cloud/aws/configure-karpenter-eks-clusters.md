@@ -800,11 +800,12 @@ gracefully drain and remove idle nodes when they are no longer needed.
    ip-12-13-14-15.ec2.internal    Ready    <none>   14h     v1.32.9-eks-113cf36
    ```
 
-## (Optional) Set nodeAffinity for Karpenter and Critical Workloads
+## (Optional) Set Node Affinity for Karpenter and Critical Workloads
 
 Karpenter [recommends](https://karpenter.sh/docs/getting-started/migrating-from-cas/#set-node-affinity) configuring
-Karpenter to run on existing EKS node groups by using a `nodeAffinity` rule. This ensures Karpenter is not provisioned
-on nodes it manages. You can achieve this by adding a `nodeAffinity` rule to the Karpenter deployment.
+Karpenter to run on existing EKS node groups by using a
+[Node Affinity](https://kubernetes.io/docs/tasks/configure-pod-container/assign-pods-nodes-using-node-affinity/) rule.
+This ensures Karpenter is not provisioned on nodes it manages.
 
 Additionally, you may want to configure
 [critical workloads](https://karpenter.sh/docs/getting-started/migrating-from-cas/#set-nodeaffinity-for-critical-workloads-optional)
@@ -813,7 +814,7 @@ Karpenter's consolidation and scaling activities.
 
 :::caution
 
-If a cluster repave occurs and the existing node groups are removed, you must update the `nodeAffinity` rules to
+If a cluster repave occurs and the existing node groups are removed, you must update the Node Affinity rules to
 reference the new node groups. If this is not done, Karpenter and critical workloads will not be scheduled.
 
 :::
@@ -932,8 +933,8 @@ reference the new node groups. If this is not done, Karpenter and critical workl
 
 15. Click **Apply Changes** to update the cluster with the new profile version.
 
-16. You can also configure critical workloads to run on the existing node groups by adding a `nodeAffinity` rule to
-    their deployments. The following example shows how to add a `nodeAffinity` rule to the `coredns` deployment.
+16. You can also configure critical workloads to run on the existing node groups by adding a Node Affinity rule to their
+    deployments. The following example shows how to add a Node Affinity rule to the CoreDNS deployment.
 
     :::caution
 
@@ -943,7 +944,7 @@ reference the new node groups. If this is not done, Karpenter and critical workl
 
     <details>
 
-    <summary> Click to display an example nodeAffinity configuration for coreDNS </summary>
+    <summary> Click to display an example nodeAffinity configuration for CoreDNS </summary>
 
     1. Issue the following command to connect to your EKS cluster. Replace `<eks-cluster-name>` with the name of your
        EKS cluster and `<aws-region>` with the AWS region where your cluster is located.
