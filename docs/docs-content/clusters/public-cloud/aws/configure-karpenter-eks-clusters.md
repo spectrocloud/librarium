@@ -10,9 +10,9 @@ sidebar_position: 46
 The <VersionedLink text="Karpenter" url="/integrations/packs/?pack=karpenter"/> pack can be installed on Amazon EKS
 clusters for enhanced node provisioning.
 
-Karpenter analyzes pending pods and launches the most efficient EC2 capacity across instance types, sizes, Availability
-Zones, and more. As demand falls, it gracefully drains and removes underutilized nodes to reduce waste, whilst
-respecting any scheduling rules in place (labels, taints, and affinities).
+Karpenter analyzes pending pods and launches the most efficient Amazon Elastic Compute Cloud (EC2) capacity across
+instance types, sizes, Availability Zones, and more. As demand falls, it gracefully drains and removes underutilized
+nodes to reduce waste, whilst respecting any scheduling rules in place (labels, taints, and affinities).
 
 ## Install the Karpenter Pack
 
@@ -24,21 +24,21 @@ managed by Palette.
 - An existing EKS cluster managed by Palette. Refer to [Create and Manage EKS Cluster](./eks.md) for guidance on
   creating an EKS cluster with Palette.
 
-- Your Palette account must have the **Cluster Profile Editor** and **Cluster Editor** permissions to install the
-  Karpenter pack. Refer to our
+- Your Palette account must have the Cluster Profile Editor and Cluster Editor permissions to install the Karpenter
+  pack. Refer to our
   [Cluster Profile](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile) and
   [Cluster](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster) role reference guides for
   more information about roles and permissions.
 
-- An IAM policy must be created using the following JSON template. This policy grants Karpenter the necessary
-  permissions to manage EC2 instances and interact with the EKS cluster. During the
+- An Identity and Access Management (IAM) policy must be created using the following JSON template. This policy grants
+  Karpenter the necessary permissions to manage EC2 instances and interact with the EKS cluster. When following the
   [Enablement Steps](#enablement-steps) section, you will reference this policy when configuring the Karpenter
   controller role in the cluster profile. For the sake of simplicity, the policy is named `karpenterControllerPolicy`.
   If you choose a different name, ensure you reference that name in the [Enablement Steps](#enablement-steps) section.
 
   Replace the following placeholders in the policy template:
 
-  - `<aws-partition>` - The AWS partition. This is usually `aws` for standard regions, `aws-cn` for China regions, or
+  - `<aws-partition>` - The AWS partition. This is usually `aws` for commercial regions, `aws-cn` for China regions, or
     `aws-us-gov` for GovCloud.
   - `<aws-account-id>` - Your AWS account ID.
   - `<eks-cluster-name>` - The name of your EKS cluster.
@@ -161,7 +161,7 @@ managed by Palette.
 
   <details>
 
-  <summary> Click to see an example policy with placeholders replaced </summary>
+  <summary> Click to display an example policy with placeholders replaced </summary>
 
   ```json hideClipboard
   {
@@ -292,19 +292,19 @@ managed by Palette.
 
   :::tip
 
-  The Karpenter documentation provides a quick method to tag the subnets and security groups using the AWS CLI. You can
-  find this method in the
+  The Karpenter documentation provides an efficient method to tag the subnets and security groups using the AWS CLI. You
+  can find this method in the
   [Karpenter documentation](https://karpenter.sh/docs/getting-started/migrating-from-cas/#add-tags-to-subnets-and-security-groups).
 
   If using this method, note the following:
 
   - The command to tag the subnets uses the existing node groups in the cluster to identify the subnets. If your node
     groups are only assigned to use a subset of the cluster's subnets, you may need to manually tag any additional
-    subnets that are not associated with the node groups.
+    subnets not associated with the node groups.
 
-  - If you are using a Z shell (ZSH) shell, the final command to tag the security groups needs to be modified slightly.
-    Change `--resources "${SECURITY_GROUPS}"` to `--resources "${=SECURITY_GROUPS}"` to ensure proper execution in ZSH.
-    This is only required if you have more than one security group to tag.
+  - If you are using a Z shell (ZSH), the final command to tag the security groups needs to be modified slightly. Change
+    `--resources "${SECURITY_GROUPS}"` to `--resources "${=SECURITY_GROUPS}"` to ensure proper execution in ZSH. This is
+    only required if you have more than one security group to tag.
 
   :::
 
@@ -312,7 +312,7 @@ managed by Palette.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. From the left main menu, click **Profiles**.
+2. From the left main menu, select **Profiles**.
 
 3. Select the profile associated with your EKS cluster.
 
@@ -356,8 +356,8 @@ managed by Palette.
          namespace: karpenter
    ```
 
-   The IAM role named `{{.spectro.system.cluster.name}}-karpenterControllerRole` will be created automatically by
-   Palette when the Karpenter pack is deployed to your cluster. For example, `my-eks-cluster-karpenterControllerRole`.
+   Palette automatically creates the IAM role named `{{.spectro.system.cluster.name}}-karpenterControllerRole` (for
+   example, `my-eks-cluster-karpenterControllerRole`) when the Karpenter pack is deployed to your cluster.
 
 9. In the YAML editor, add an entry to the `managedControlPlane.iamAuthenticatorConfig.mapRoles` and
    `managedMachinePool.roleName` sections for the IAM node role that will be used by Karpenter provisioned nodes.
@@ -396,8 +396,8 @@ managed by Palette.
      roleName: "{{.spectro.system.cluster.name}}-nodeRole"
    ```
 
-   The IAM role named `{{.spectro.system.cluster.name}}-nodeRole` will be created automatically by Palette when the
-   Karpenter pack is deployed to your cluster. For example, `my-eks-cluster-nodeRole`.
+   Palette automatically creates the IAM role named `{{.spectro.system.cluster.name}}-nodeRole` (for example,
+   `my-eks-cluster-nodeRole`) when the Karpenter pack is deployed to your cluster.
 
 10. Click **Confirm Updates** to save the changes to the Kubernetes layer.
 
@@ -417,12 +417,12 @@ managed by Palette.
 
 16. Click **Save Changes** to save the new profile version.
 
-17. From the left main menu, click **Clusters** and select your EKS cluster from the list.
+17. From the left main menu, select **Clusters** and select your EKS cluster from the list.
 
 18. Select the **Profile** tab.
 
 19. Click the version drop-down for the **INFRASTRUCTURE LAYERS** and select the new profile version you created. The
-    Karpenter pack should then display under the **ADDON LAYERS** section.
+    Karpenter pack then appears under the **ADDON LAYERS** section.
 
 20. Click **Review & Save**, followed by **Review changes in Editor** in the pop-up window.
 
@@ -438,17 +438,14 @@ managed by Palette.
 22. Wait for the cluster repave to complete and the Karpenter pack to be deployed. This may take up to 10 minutes or
     more depending on the amount of worker nodes in your cluster.
 
-23. It is recommended to configure Karpenter to run on existing EKS node groups by using a `nodeAffinity` rule. This
-    ensures Karpenter is not provisioned on
-
 ### Validate
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. From the left main menu, click **Clusters** and select your EKS cluster from the list.
+2. From the left main menu, select **Clusters** and select your EKS cluster from the list.
 
 3. On the **Overview** tab, check that the **Cluster Status** is **Running** without a loading icon and the **Health**
-   is **Healthy**.
+   shows **Healthy**.
 
 4. Verify that the Karpenter pack is listed under the **Cluster Profiles** section with a green circle indicating that
    it is successfully deployed.
@@ -456,17 +453,17 @@ managed by Palette.
 ## Configure Karpenter NodePools
 
 The following steps show how to configure [Karpenter NodePools](https://karpenter.sh/docs/concepts/nodepools/) for your
-Amazon EKS cluster. NodePools specify the constraints for nodes Karpenter can provision and the associated
-[NodeClass](https://karpenter.sh/docs/concepts/nodeclasses/) supplies cloud settings like the Amazon Machine Image
-(AMI), subnets, and security groups to use.
+Amazon EKS cluster. NodePools define provisioning constraints, while the associated
+[NodeClass](https://karpenter.sh/docs/concepts/nodeclasses/) specifies cloud settings such as the Amazon Machine Image
+(AMI), subnets, and security groups.
 
-These steps show you how to create a default NodePool, but you can create multiple NodePools to suit your specific
+These steps show you how to create a default NodePool, but you can create multiple NodePools to meet your specific
 requirements.
 
 ### Prerequisites
 
-- Your Palette account must have the **Cluster Profile Editor** and **Cluster Editor** permissions to configure
-  Karpenter NodePools. Refer to our
+- Your Palette account must have the Cluster Profile Editor and Cluster Editor permissions to configure Karpenter
+  NodePools. Refer to our
   [Cluster Profile](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile) and
   [Cluster](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster) role reference guides for
   more information about roles and permissions.
@@ -475,15 +472,15 @@ requirements.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. From the left main menu, click **Profiles**.
+2. From the left main menu, select **Profiles**.
 
 3. Click **Add Cluster Profile**.
 
 4. Fill in the basic information for the new profile and ensure the **Type** is set to **Add-on**.
 
-   The name of the profile should reflect its purpose, such as `karpenter-node-pool-my-eks-cluster`.
+   The profile name should reflect its purpose, for example, `karpenter-node-pool-my-eks-cluster`.
 
-5. Click **Next** when the information is filled out.
+5. After you fill out the required information, click **Next**.
 
 6. Click **Add Manifest**.
 
@@ -492,16 +489,16 @@ requirements.
 8. Click the **New manifest** option and provide a name for the manifest, such as `karpenter-nodepool-manifest`. Click
    the tick icon to save the name.
 
-9. In the YAML editor, add a Karpenter NodePool configuration. This configuration can be customized to fit your specific
-   requirements. The [Karpenter documentation](https://karpenter.sh/docs/concepts/) provides comprehensive information
-   on the various configuration options. You can also check out the
-   [Karpenter NodePool examples](https://github.com/aws/karpenter-provider-aws/tree/main/examples/v1) to view
-   configurations for a variety of use cases.
+9. In the YAML editor, add a Karpenter NodePool configuration. You can customize this configuration to meet your
+   specific requirements. The [Karpenter documentation](https://karpenter.sh/docs/concepts/) provides comprehensive
+   information on the various configuration options. Refer to the
+   [Karpenter NodePool examples](https://github.com/aws/karpenter-provider-aws/tree/main/examples/v1) for configuration
+   samples covering a variety of use cases
 
-   In this example, we create a NodePool named `default` that provisions on-demand instances of the `c`, `m`, and `r`
-   [instance series](https://docs.aws.amazon.com/ec2/latest/instancetypes/instance-type-names.html). The instance
-   generation is set greater than `2`. The NodePool uses a NodeClass named `al2023-20250920` that references the Amazon
-   Linux 2023 AMI alias of `al2023@v20250920`.
+   In the following example, we create a NodePool named `default` that provisions on-demand instances of the `c`, `m`,
+   and `r` [instance series](https://docs.aws.amazon.com/ec2/latest/instancetypes/instance-type-names.html). The
+   instance generation is set to greater than `2`. The NodePool uses a NodeClass named `al2023-20250920` that references
+   the Amazon Linux 2023 AMI alias of `al2023@v20250920`.
 
    There are three important aspects to note in this configuration:
 
@@ -569,13 +566,13 @@ requirements.
 
 11. Click **Next**, followed by **Finish Configuration** to create the new profile.
 
-12. From the left main menu, click **Clusters** and select your EKS cluster from the list.
+12. From the left main menu, select **Clusters** and select your EKS cluster from the list.
 
 13. Select the **Profile** tab.
 
 14. Click the plus icon next to **ADDON LAYERS** to add an add-on profile.
 
-15. Select the new add-on profile you created for the default Karpenter NodePool. Click **Confirm** once selected.
+15. Select the new add-on profile you created for the default Karpenter NodePool and click **Confirm**.
 
 16. Click **Save** to apply the NodePool configuration to your cluster.
 
@@ -583,7 +580,7 @@ requirements.
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. From the left main menu, click **Clusters** and select your EKS cluster from the list.
+2. From the left main menu, select **Clusters** and select your EKS cluster from the list.
 
 3. In the **Overview** tab, verify that the Karpenter NodePool profile is listed under the **Cluster Profiles** section
    with a green circle indicating that it is successfully deployed.
@@ -591,45 +588,48 @@ requirements.
 ## Test Karpenter Node Provisioning
 
 To test Karpenter's ability to provision nodes based on workload demands, deploy a sample application and manually scale
-the number of replicas for the deployment. This will create pending pods that trigger Karpenter to provision new nodes,
-then gracefully drain and remove idle nodes when they are no longer needed.
+the number of replicas for the deployment. This creates pending pods that trigger Karpenter to provision new nodes, then
+gracefully drain and remove idle nodes when they are no longer needed.
 
 ### Prerequisites
 
-- Your Palette account must have the **Cluster Profile Editor** and **Cluster Editor** permissions to configure
-  Karpenter NodePools. Refer to our
+- Your Palette account must have the Cluster Profile Editor and Cluster Editor permissions to configure Karpenter
+  NodePools. Refer to our
   [Cluster Profile](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile) and
   [Cluster](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster) role reference guides for
   more information about roles and permissions.
 
 - AWS CLI must be installed and configured with the necessary permissions to
-  [obtain the kubeconfig file](https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html) for your eks
-  cluster. Refer to [Install the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+  [obtain the kubeconfig file](https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html) for your EKS
+  cluster. Refer to
+  [AWS CLI install and update instructions](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html#getting-started-install-instructions)
   for installation instructions and
-  [Configure the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html) for configuration
-  guidance.
+  [Configuring settings for the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html) for
+  configuration guidance.
 
 - Kubectl must be installed. Refer to
-  [Install and Configure kubectl](https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html) for
-  instructions.
+  [Install or update kubectl](https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html#kubectl-install-update)
+  for instructions.
 
 ### Enablement Steps
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. From the left main menu, click **Profiles**.
+2. From the left main menu, select **Profiles**.
 
 3. Click **Add Cluster Profile**.
 
 4. Fill in the basic information for the new profile and ensure the **Type** is set to **Add-on**.
 
-   The name of the profile should reflect its purpose, such as `karpenter-test-deployment-my-eks-cluster`.
+   The profile name should reflect its purpose, for example, `karpenter-test-deployment-my-eks-cluster`.
 
-5. Click **Add Manifest**.
+5. After you fill out the required information, click **Next**
 
-6. Provide a name for the manifest layer, such as `karpenter-test-deployment-layer`.
+6. Click **Add Manifest**.
 
-7. Select the **Enter layer values** option and copy the following values into the YAML editor.
+7. Provide a name for the manifest layer, such as `karpenter-test-deployment-layer`.
+
+8. Select the **Enter layer values** option and copy the following values into the YAML editor.
 
    ```yaml title="Layer values"
    pack:
@@ -637,53 +637,53 @@ then gracefully drain and remove idle nodes when they are no longer needed.
      namespace: inflate
    ```
 
-8. Click the **New manifest** option and provide a name for the manifest, such as `karpenter-test-deployment`. Click the
+9. Click the **New manifest** option and provide a name for the manifest, such as `karpenter-test-deployment`. Click the
    tick icon to save the name.
 
-9. In the YAML editor, add a sample deployment configuration. This example creates a deployment named `inflate` with 0
-   replicas of the [pause](https://gallery.ecr.aws/eks-distro/kubernetes/pause) container.
+10. In the YAML editor, add a sample deployment configuration. This example creates a deployment named `inflate` with 0
+    replicas of the [pause](https://gallery.ecr.aws/eks-distro/kubernetes/pause) container.
 
-   ```yaml title="Sample deployment"
-   apiVersion: apps/v1
-   kind: Deployment
-   metadata:
-     name: inflate
-   spec:
-     replicas: 0
-     selector:
-       matchLabels:
-         app: inflate
-     template:
-       metadata:
-         labels:
-           app: inflate
-       spec:
-         terminationGracePeriodSeconds: 0
-         securityContext:
-           runAsUser: 1000
-           runAsGroup: 3000
-           fsGroup: 2000
-         containers:
-           - name: inflate
-             image: public.ecr.aws/eks-distro/kubernetes/pause:3.7
-             resources:
-               requests:
-                 cpu: 1
-             securityContext:
-               allowPrivilegeEscalation: false
-   ```
+    ```yaml title="Sample deployment"
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: inflate
+    spec:
+      replicas: 0
+      selector:
+        matchLabels:
+          app: inflate
+      template:
+        metadata:
+          labels:
+            app: inflate
+        spec:
+          terminationGracePeriodSeconds: 0
+          securityContext:
+            runAsUser: 1000
+            runAsGroup: 3000
+            fsGroup: 2000
+          containers:
+            - name: inflate
+              image: public.ecr.aws/eks-distro/kubernetes/pause:3.7
+              resources:
+                requests:
+                  cpu: 1
+              securityContext:
+                allowPrivilegeEscalation: false
+    ```
 
-10. Click **Confirm & Create**.
+11. Click **Confirm & Create**.
 
-11. From the left main menu, click **Clusters** and select your EKS cluster from the list.
+12. From the left main menu, select **Clusters** and select your EKS cluster from the list.
 
-12. Select the **Profile** tab.
+13. Select the **Profile** tab.
 
-13. Click the plus icon next to **ADDON LAYERS** to add an add-on profile.
+14. Click the plus icon next to **ADDON LAYERS** to add an add-on profile.
 
-14. Select the new add-on profile you created for the test deployment. Click **Confirm** once selected.
+15. Select the new add-on profile you created for the test deployment. Click **Confirm** once selected.
 
-15. Click **Save** to apply the test deployment to your cluster.
+16. Click **Save** to apply the test deployment to your cluster.
 
     Wait for the deployment to be applied. This may take a few minutes. Under the **Cluster Profiles** section in the
     **Overview** tab, the test deployment will have a green circle indicating that it is successfully deployed.
@@ -691,7 +691,7 @@ then gracefully drain and remove idle nodes when they are no longer needed.
 ### Validate
 
 1. Open a terminal session and issue the following command to connect to your EKS cluster. Replace `<eks-cluster-name>`
-   with the name of your EKS cluster and `<aws-region>` with the AWS region your cluster is in.
+   with the name of your EKS cluster and `<aws-region>` with the AWS region where your cluster is located.
 
    ```bash
    aws eks update-kubeconfig --name <eks-cluster-name> --region <aws-region>
@@ -710,14 +710,14 @@ then gracefully drain and remove idle nodes when they are no longer needed.
    deployment.apps/inflate scaled
    ```
 
-3. Monitor the Karpenter controller logs to observe the node provisioning activity. Issue the following command to view
-   the logs.
+3. Monitor the Karpenter controller logs to observe the node provisioning activity. Issue the following command to
+   display the logs.
 
    ```bash
    kubectl logs --follow --namespace karpenter --selector app.kubernetes.io/name=karpenter --container controller
    ```
 
-   You will notice log entries that indicate Karpenter is provisioning new nodes to accommodate the increased workload.
+   You can monitor log entries that indicate Karpenter is provisioning new nodes to accommodate the increased workload.
 
    ```shell hideClipboard title="Example Karpenter controller logs"
    {"level":"INFO","time":"2025-10-08T16:57:03.613Z","logger":"controller","message":"found provisionable pod(s)","commit":"4ff8cfe","controller":"provisioner","namespace":"","name":"","reconcileID":"a47f6276-1e00-4315-aba5-faaddae6e59f","Pods":"inflate/inflate-5c5f75666d-gkvwm, inflate/inflate-5c5f75666d-vnglw, inflate/inflate-5c5f75666d-pxzxt, inflate/inflate-5c5f75666d-5gnpz, inflate/inflate-5c5f75666d-vtmcn","duration":"97.580831ms"}
@@ -728,11 +728,11 @@ then gracefully drain and remove idle nodes when they are no longer needed.
    {"level":"INFO","time":"2025-10-08T16:57:43.744Z","logger":"controller","message":"initialized nodeclaim","commit":"4ff8cfe","controller":"nodeclaim.lifecycle","controllerGroup":"karpenter.sh","controllerKind":"NodeClaim","NodeClaim":{"name":"default-c54z5"},"namespace":"","name":"default-c54z5","reconcileID":"b0182dc3-a210-406e-8781-576ef5cb0e82","provider-id":"aws:///us-east-1a/i-08d0c987a45fcdecd","Node":{"name":"ip-10-11-12-13.ec2.internal"},"allocatable":{"cpu":"7910m","ephemeral-storage":"18181869946","hugepages-1Gi":"0","hugepages-2Mi":"0","memory":"14967996Ki","pods":"58"}}
    ```
 
-4. Back in Palette, select the **Nodes** tab for your EKS cluster. You will see new nodes being added to the cluster as
-   Karpenter provisions them to accommodate the increased workload. You may need to refresh your browser to see the new
-   nodes. The Karpenter-provisioned node pools will have the **Managed by Karpenter** banner.
+4. Back in Palette, select the **Nodes** tab for your EKS cluster. You can monitor new nodes being added to the cluster
+   as Karpenter provisions them to accommodate the increased workload. You may need to refresh your browser to display
+   the new nodes. The Karpenter-provisioned node pools will have the **Managed by Karpenter** banner.
 
-   Alternatively, you can issue the following command in your terminal to view the nodes in your cluster.
+   Alternatively, you can issue the following command in your terminal to display the nodes in your cluster.
 
    ```bash
    kubectl get nodes
@@ -748,7 +748,7 @@ then gracefully drain and remove idle nodes when they are no longer needed.
    ip-12-13-14-15.ec2.internal   Ready    <none>   13h   v1.32.9-eks-113cf36
    ```
 
-5. Issue the following command to scale down the deployment to 0 replicas. This will trigger Karpenter to terminate the
+5. Issue the following command to scale down the deployment to 0 replicas. This triggers Karpenter to terminate the
    nodes that were provisioned for the deployment.
 
    ```bash
@@ -765,7 +765,7 @@ then gracefully drain and remove idle nodes when they are no longer needed.
    kubectl logs --follow --namespace karpenter --selector app.kubernetes.io/name=karpenter --container controller
    ```
 
-   You will notice log entries that indicate Karpenter is terminating nodes that are no longer needed and creating new
+   You can monitor log entries that indicate Karpenter is terminating nodes that are no longer needed and creating new
    nodes if necessary.
 
    ```shell hideClipboard title="Example Karpenter controller logs"
@@ -779,12 +779,12 @@ then gracefully drain and remove idle nodes when they are no longer needed.
    {"level":"INFO","time":"2025-10-08T17:27:25.838Z","logger":"controller","message":"deleted nodeclaim","commit":"4ff8cfe","controller":"nodeclaim.lifecycle","controllerGroup":"karpenter.sh","controllerKind":"NodeClaim","NodeClaim":{"name":"default-c54z5"},"namespace":"","name":"default-c54z5","reconcileID":"c033c44e-c1bb-4be8-99de-23c28b2419cd","provider-id":"aws:///us-east-1a/i-08d0c987a45fcdecd","Node":{"name":"ip-10-11-12-13.ec2.internal"}}
    ```
 
-7. Back in Palette, select the **Nodes** tab for your EKS cluster. You will see nodes being removed from the cluster or
-   replaced with smaller instances as Karpenter scales down the node pool. You may need to refresh your browser to see
-   the updated node list.
+7. Back in Palette, select the **Nodes** tab for your EKS cluster. You can monitor nodes being removed from the cluster
+   or replaced with smaller instances as Karpenter scales down the node pool. You may need to refresh your browser to
+   display the updated node list.
 
-   Issue the following command to view the nodes in your cluster. You will see that the nodes provisioned by Karpenter
-   have been terminated and removed from the cluster.
+   Issue the following command to view the nodes in your cluster. Note that the nodes provisioned by Karpenter have been
+   terminated and removed from the cluster.
 
    ```bash
    kubectl get nodes
@@ -802,36 +802,46 @@ then gracefully drain and remove idle nodes when they are no longer needed.
 
 ## (Optional) Set nodeAffinity for Karpenter and Critical Workloads
 
-It is recommended to configure Karpenter to run on existing EKS node groups by using a `nodeAffinity` rule. This ensures
-Karpenter is not provisioned on nodes it manages. You can achieve this by adding a `nodeAffinity` rule to the Karpenter
-deployment.
+Karpenter [recommends](https://karpenter.sh/docs/getting-started/migrating-from-cas/#set-node-affinity) configuring
+Karpenter to run on existing EKS node groups by using a `nodeAffinity` rule. This ensures Karpenter is not provisioned
+on nodes it manages. You can achieve this by adding a `nodeAffinity` rule to the Karpenter deployment.
 
-Additionally, you may want to configure critical workloads (such as `coredns` and `metrics-server`) to run on the
-existing node groups to ensure they are not disrupted by Karpenter's consolidation and scaling activities.
+Additionally, you may want to configure
+[critical workloads](https://karpenter.sh/docs/getting-started/migrating-from-cas/#set-nodeaffinity-for-critical-workloads-optional)
+(such as `coredns` and `metrics-server`) to run on the existing node groups to ensure they are not disrupted by
+Karpenter's consolidation and scaling activities.
+
+:::caution
+
+If a cluster repave occurs and the existing node groups are removed, you must update the `nodeAffinity` rules to
+reference the new node groups. If this is not done, Karpenter and critical workloads will not be scheduled.
+
+:::
 
 ### Prerequisites
 
-- Your Palette account must have the **Cluster Profile Editor** and **Cluster Editor** permissions to configure
-  Karpenter NodePools. Refer to our
+- Your Palette account must have the Cluster Profile Editor and Cluster Editor permissions to configure Karpenter
+  NodePools. Refer to our
   [Cluster Profile](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster-profile) and
   [Cluster](../../../user-management/palette-rbac/project-scope-roles-permissions.md#cluster) role reference guides for
   more information about roles and permissions.
 
 - AWS CLI must be installed and configured with the necessary permissions to
-  [obtain the kubeconfig file](https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html) for your eks
-  cluster. Refer to [Install the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+  [obtain the kubeconfig file](https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html) for your EKS
+  cluster. Refer to
+  [AWS CLI install and update instructions](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html#getting-started-install-instructions)
   for installation instructions and
-  [Configure the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html) for configuration
-  guidance.
+  [Configuring settings for the AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html) for
+  configuration guidance.
 
 - Kubectl must be installed. Refer to
-  [Install and Configure kubectl](https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html) for
-  instructions.
+  [Install or update kubectl](https://docs.aws.amazon.com/eks/latest/userguide/install-kubectl.html#kubectl-install-update)
+  for instructions.
 
 ### Enablement Steps
 
 1. Issue the following command to connect to your EKS cluster. Replace `<eks-cluster-name>` with the name of your EKS
-   cluster and `<aws-region>` with the AWS region your cluster is in.
+   cluster and `<aws-region>` with the AWS region where your cluster is located.
 
    ```bash
    aws eks update-kubeconfig --name <eks-cluster-name> --region <aws-region>
@@ -850,7 +860,7 @@ existing node groups to ensure they are not disrupted by Karpenter's consolidati
 
 3. Log in to [Palette](https://console.spectrocloud.com).
 
-4. From the left main menu, click **Profiles**.
+4. From the left main menu, select **Profiles**.
 
 5. Select the profile associated with your EKS cluster.
 
@@ -886,7 +896,7 @@ existing node groups to ensure they are not disrupted by Karpenter's consolidati
 
    <details>
 
-   <summary>Click to see an example NodeAffinity configuration for Karpenter</summary>
+   <summary> Click to display an example NodeAffinity configuration for Karpenter </summary>
 
    ```yaml hideClipboard title="Example NodeAffinity for Karpenter" {12-16}
    charts:
@@ -904,14 +914,14 @@ existing node groups to ensure they are not disrupted by Karpenter's consolidati
                      operator: In
                      values:
                      - new-worker--abcd
-                     - new-worker--efgh
+                     - worker-pool-efgh
    ```
 
    </details>
 
 10. Click **Confirm Updates**, followed by **Save Changes** in the cluster profile view.
 
-11. From the left main menu, click **Clusters** and select your EKS cluster from the list.
+11. From the left main menu, select **Clusters** and select your EKS cluster from the list.
 
 12. Select the **Profile** tab.
 
@@ -933,10 +943,10 @@ existing node groups to ensure they are not disrupted by Karpenter's consolidati
 
     <details>
 
-    <summary>Click to see an example nodeAffinity configuration for coredns</summary>
+    <summary> Click to display an example nodeAffinity configuration for coreDNS </summary>
 
     1. Issue the following command to connect to your EKS cluster. Replace `<eks-cluster-name>` with the name of your
-       EKS cluster and `<aws-region>` with the AWS region your cluster is in.
+       EKS cluster and `<aws-region>` with the AWS region where your cluster is located.
 
        ```bash
        aws eks update-kubeconfig --name <eks-cluster-name> --region <aws-region>
@@ -950,9 +960,9 @@ existing node groups to ensure they are not disrupted by Karpenter's consolidati
        kubectl edit deployment coredns --namespace kube-system
        ```
 
-    3. In the YAML editor, add a `nodeAffinity` rule to the `spec.template.spec` section of the deployment. This rule
-       ensures that the workload is scheduled only on nodes that belong to the specified node groups. Replace
-       `<node-group-1>` and `<node-group-2>` with the names of your node groups.
+    3. In the editor, add a `nodeAffinity` rule to the `spec.template.spec` section of the deployment. This rule ensures
+       that the workload is scheduled only on nodes that belong to the specified node groups. Replace `<node-group-1>`
+       and `<node-group-2>` with the names of your node groups.
 
        ```yaml title="Template for adding nodeAffinity to critical workloads" {12-16}
        spec:
@@ -969,8 +979,8 @@ existing node groups to ensure they are not disrupted by Karpenter's consolidati
                      - key: eks.amazonaws.com/nodegroup
                        operator: In
                        values:
-                       - worker-pool-wjnx
-                       - new-worker--o88u
+                       - new-worker--abcd
+                       - worker-pool-efgh
        ```
 
     4. Save and exit the editor to apply the changes.
@@ -985,15 +995,15 @@ existing node groups to ensure they are not disrupted by Karpenter's consolidati
 
 1. Log in to [Palette](https://console.spectrocloud.com).
 
-2. From the left main menu, click **Clusters** and select your EKS cluster from the list.
+2. From the left main menu, select **Clusters** and select your EKS cluster from the list.
 
 3. In the **Overview** tab, verify that the **Cluster Status** is **Running** without a loading icon and the **Health**
-   is **Healthy**.
+   shows **Healthy**.
 
 4. Verify that the Karpenter pack is listed under the **Cluster Profiles** section with a green circle indicating that
    it is successfully updated.
 
-## Useful Links
+## Resources
 
 - [Karpenter Documentation](https://karpenter.sh/docs/)
 - [Karpenter NodePool examples](https://github.com/aws/karpenter-provider-aws/tree/main/examples/v1)
