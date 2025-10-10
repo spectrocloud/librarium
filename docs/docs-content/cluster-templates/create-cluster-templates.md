@@ -65,7 +65,7 @@ allow environment overrides where necessary.
 
         - If you do not have a maintenance policy that fits your needs, choose **Create a maintenance policy**. Refer to our [Maintenance Policies](./create-cluster-template-policies/maintenance-policy.md) guide for more information on creating a maintenance policy.
 
-        - The **In Use Templates** column indicates if the maintenance policy is currently referenced by another cluster template. Refer to our [Create and Manage Cluster Template Policies](./create-cluster-template-policies/create-cluster-template-policies.md#view-cluster-template-policies) guide for details on modifying the default display for policies.
+        - The **In Use Templates** column indicates if the maintenance policy is currently referenced by another cluster template. Refer to our [Create and Manage Cluster Template Policies](./create-cluster-template-policies/create-cluster-template-policies.md#policies-tab) guide for details on modifying the default display for policies.
 
         :::
 
