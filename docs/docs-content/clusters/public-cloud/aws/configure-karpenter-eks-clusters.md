@@ -876,7 +876,7 @@ reference the new node groups. If this is not done, Karpenter and critical workl
    rule ensures that Karpenter is scheduled only on nodes that belong to the specified node groups. Replace
    `<node-group-1>` and `<node-group-2>` with the names of your node groups.
 
-   ```yaml title="Template for adding nodeAffinity to Karpenter" {12-16}
+   ```yaml title="Template for adding Node Affinity to Karpenter" {12-16}
    charts:
      ...
      karpenter:
@@ -897,9 +897,9 @@ reference the new node groups. If this is not done, Karpenter and critical workl
 
    <details>
 
-   <summary> Click to display an example NodeAffinity configuration for Karpenter </summary>
+   <summary> Click to display an example Node Affinity configuration for Karpenter </summary>
 
-   ```yaml hideClipboard title="Example NodeAffinity for Karpenter" {12-16}
+   ```yaml hideClipboard {12-16}
    charts:
      ...
      karpenter:
@@ -944,7 +944,7 @@ reference the new node groups. If this is not done, Karpenter and critical workl
 
     <details>
 
-    <summary> Click to display an example nodeAffinity configuration for CoreDNS </summary>
+    <summary> Click to display example steps to add Node Affinity configuration for CoreDNS </summary>
 
     1. Issue the following command to connect to your EKS cluster. Replace `<eks-cluster-name>` with the name of your
        EKS cluster and `<aws-region>` with the AWS region where your cluster is located.
@@ -965,7 +965,7 @@ reference the new node groups. If this is not done, Karpenter and critical workl
        that the workload is scheduled only on nodes that belong to the specified node groups. Replace `<node-group-1>`
        and `<node-group-2>` with the names of your node groups.
 
-       ```yaml title="Template for adding nodeAffinity to critical workloads" {12-16}
+       ```yaml title="Template for adding Node Affinity to critical workloads" {12-16}
        spec:
          ...
          template:
