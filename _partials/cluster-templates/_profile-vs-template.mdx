@@ -1,0 +1,57 @@
+---
+partial_category: cluster-templates
+partial_name: profile-vs-template
+---
+
+import AdmonitionTypeTechPreview from '@theme/Admonition/Type/TechPreview';
+
+Choose between deploying your cluster using individual <VersionedLink text="cluster profiles" url="/profiles/cluster-profiles/" />
+or a single <VersionedLink text="cluster template" url="/cluster-templates" />. 
+
+<Tabs>
+
+<TabItem value="profiles" label="Cluster Profiles">
+
+    1. On the **Cluster setup type** window, choose **Cluster Profiles > Add Cluster Profile**.
+
+    2. Select the appropriate <VersionedLink text="full" url="/profiles/cluster-profiles/create-cluster-profiles/create-full-profile/" /> or 
+    <VersionedLink text="infrastructure cluster profile" url="/profiles/cluster-profiles/create-cluster-profiles/create-infrastructure-profile/" /> and **Confirm** your selection.
+
+    3. Review the layers of your cluster profile. Use the drop-down menus to select the appropriate cluster profile version, add necessary 
+    <VersionedLink text="add-on profiles" url="/profiles/cluster-profiles/create-cluster-profiles/create-addon-profile/" />, and make changes to YAML configuration files as needed. {props.additional_info} When finished, select **Next**.
+
+        :::tip
+   
+        For ease of reuse and to persist changes across clusters using the same cluster profile, we recommend <VersionedLink text="creating a new version of your cluster profile" url="/profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile" /> rather than making inline changes.
+
+        :::
+
+</TabItem>
+
+<TabItem value="template" label="Cluster Templates">
+
+    <AdmonitionTypeTechPreview />
+
+    1. On the **Cluster setup type** window, choose **Cluster Template > Select Cluster Template**.
+
+    2. Select the appropriate cluster template and **Confirm** your selection.
+
+    3. Expand the **Maintenance policy** and **Linked profiles** panels to review the configuration of your cluster template.
+
+        If you need to make any changes, such as swapping your <VersionedLink text="maintenance policy" url="/cluster-templates/create-cluster-template-policies/maintenance-policy" /> or
+        updating your cluster profile version, you must exit the cluster deployment workflow and
+        <VersionedLink text="modify your cluster template" url="/cluster-templates/modify-cluster-templates/" /> before proceeding. If no changes are needed, select **Next**.
+
+    4. Review the layers of your cluster profile. If no changes are needed, select **Next**.
+    
+        :::warning
+        
+        Cluster profile changes, such as modifying your cluster profile version, adding additional add-on profiles, and editing YAML configuration files, are not allowed when deploying a cluster. Once a cluster profile is linked to a cluster template, that version of the cluster profile is locked to prevent configuration drift across clusters. If you need to make changes, you must <VersionedLink text="create a new version of your cluster profile" url="/profiles/cluster-profiles/modify-cluster-profiles/version-cluster-profile" /> and <VersionedLink text="modify your cluster template" url="/cluster-templates/modify-cluster-templates/" /> to use the new version.
+
+        ![Edits to linked cluster profile versions are not allowed for cluster templates](/cluster-templates_locked-YAML-deployment.webp)
+
+        :::
+
+</TabItem>
+
+</Tabs>

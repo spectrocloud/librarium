@@ -7,16 +7,30 @@ sidebar_position: 20
 tags: ["cluster templates"]
 ---
 
+:::preview
+
+:::
+
 ## Limitations
 
 - Once a cluster profile is linked to a cluster template, the cluster profile cannot be modified.
 
 ## Prerequisites
 
-- The X feature flag enabled.
+- The **ClusterTemplate** [feature flag](../enterprise-version/system-management/feature-flags.md) enabled.
 
-- X permissions
+- The `clusterTemplate.update` permission to create cluster template policies. Refer to our
+  [Roles and Permissions](../user-management/palette-rbac/project-scope-roles-permissions.md#project) guide for more
+  information.
 
-- An existing cluster profile.
+- An existing [cluster template](./cluster-templates.md).
 
-- An existing maintenance policy.
+## Modify a Cluster Template
+
+- Three tabs: Overview, Policies, and Variable Values
+
+### Overview
+
+### Policies
+
+### Variable Values
