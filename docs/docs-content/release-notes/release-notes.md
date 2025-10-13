@@ -11,12 +11,119 @@ tags: ["release-notes"]
 
 <ReleaseNotesVersions />
 
+## October 10, 2025 - Component Updates {#component-updates-2025-41}
+
+The following components have been updated for Palette version 4.7.20 - 4.7.23.
+
+| Component                                                                                                         | Version |
+| ----------------------------------------------------------------------------------------------------------------- | ------- |
+| [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) | 0.25.0  |
+| [Spectro Cloud Crossplane provider](https://marketplace.upbound.io/providers/crossplane-contrib/provider-palette) | 0.25.0  |
+
+### Breaking Changes
+
+- To avoid unnecessary cluster repaves, the
+  [Spectro Cloud Terraform provider](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs) no
+  longer fails if a timeout occurs during cluster provisioning. Instead, the provider logs an error and continues
+  provisioning in the background. Future Terraform executions reconcile the state of the cluster with the Terraform
+  state.
+
+  For increased transparency in these situations, the
+  [`spectrocloud_cluster` data source](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/data-sources/cluster)
+  now exposes state and health attributes. We recommend using these attributes to validate cluster readiness before
+  triggering any [cluster management](../clusters/cluster-management/cluster-management.md) operations.
+
+### Improvements
+
+- The
+  [`spectrocloud_virtual_machine` Terraform resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/virtual_machine)
+  now supports the following configurations:
+
+  - `network_data` under the
+    [`cloud_init_no_cloud` set](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/virtual_machine#cloud_init_no_cloud-1),
+    allowing you to supply network configurations when provisioning VMs.
+  - DataVolume storage under the
+    [`data_volume_templates.spec` list](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/virtual_machine#nested-schema-for-data_volume_templatesspec).
+  - VM creation with blank `pvc` and `storage` fields under the
+    [`data_volume_templates.spec` list](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/virtual_machine#nested-schema-for-data_volume_templatesspec),
+    allowing you to create VMs without these specifications.
+  - `boot_order` under the
+    [`disk` list](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/virtual_machine#nested-schema-for-disk),
+    allowing you to specify the order of boot devices.
+
+### Bug Fixes
+
+- Fixed an issue that caused repeated reconciliation when specifying a
+  [`spectrocloud_backup_storage_location` Terraform resource](https://registry.terraform.io/providers/spectrocloud/spectrocloud/latest/docs/resources/backup_storage_location)
+  due to AWS secret keys not being marked as sensitive.
+
+### Packs
+
+| Pack Name                   | Layer      | Non-FIPS           | FIPS               | New Version |
+| --------------------------- | ---------- | ------------------ | ------------------ | ----------- |
+| Argo CD                     | Add-on     | :white_check_mark: | :x:                | 8.5.7       |
+| AWS EFS                     | CSI        | :white_check_mark: | :x:                | 2.1.12      |
+| External Secrets Operator   | Add-on     | :white_check_mark: | :x:                | 0.20.1      |
+| Istio                       | Add-on     | :white_check_mark: | :x:                | 1.27.1      |
+| Nginx                       | Add-on     | :white_check_mark: | :x:                | 1.13.2      |
+| Open Policy Agent           | Add-on     | :white_check_mark: | :x:                | 3.20.1      |
+| Palette eXtended Kubernetes | Kubernetes | :white_check_mark: | :white_check_mark: | 1.33.5      |
+| Reloader                    | Add-on     | :white_check_mark: | :x:                | 1.4.8       |
+| Vault                       | Add-on     | :white_check_mark: | :x:                | 0.31.0      |
+| Zot Registry                | Add-on     | :white_check_mark: | :white_check_mark: | 0.1.82      |
+
+## October 7, 2025 - Release 4.7.23
+
+### Component Updates
+
+The following component updates are applicable to this release:
+
+- [October 10, 2025 - Component Updates](#component-updates-2025-41) <!-- omit in toc -->
+- [October 3, 2025 - Component Updates](#component-updates-2025-40) <!-- omit in toc -->
+- [September 26, 2025 - Component Updates](#component-updates-2025-39) <!-- omit in toc -->
+
+### Bug Fixes
+
+- Fixed an issue where the cluster management agent failed to initialize after a Palette upgrade when the cluster
+  namespace annotation was missing. The Palette upgrade process now correctly preserves existing annotation.
+- Fixed an issue where the [Cluster API (CAPI)](https://cluster-api.sigs.k8s.io/) custom resource definitions failed to
+  apply on custom cloud clusters.
+- Fixed an issue that prevented the [SSO client secret](../user-management/saml-sso/saml-sso.md) from being masked in
+  the [Tenant Administration](../tenant-settings/tenant-settings.md) pages.
+
+## October 3, 2025 - Component Updates {#component-updates-2025-40}
+
+The following components have been updated for Palette version 4.7.20 - 4.7.21.
+
+### Improvements
+
+- Access to [Artifact Studio](../downloads/artifact-studio.md) now requires authentication. To gain access, contact your
+  Spectro Cloud representative or [open a support ticket](https://support.spectrocloud.com/).
+
+### Packs
+
+| Pack Name              | Layer      | Non-FIPS           | FIPS               | New Version |
+| ---------------------- | ---------- | ------------------ | ------------------ | ----------- |
+| Amazon EBS CSI         | CSI        | :white_check_mark: | :x:                | 1.48.0      |
+| Amazon EBS CSI         | CSI        | :x:                | :white_check_mark: | 1.46.0      |
+| Azure Disk CSI Driver  | CSI        | :white_check_mark: | :x:                | 1.33.4      |
+| Prometheus Agent       | Add-on     | :white_check_mark: | :x:                | 27.38.0     |
+| Prometheus - Grafana   | Add-on     | :white_check_mark: | :x:                | 77.10.0     |
+| Palette Optimized K3s  | Kubernetes | :white_check_mark: | :x:                | 1.33.5      |
+| Palette Optimized K3s  | Kubernetes | :white_check_mark: | :x:                | 1.32.9      |
+| Palette Optimized K3s  | Kubernetes | :white_check_mark: | :x:                | 1.31.13     |
+| Palette Optimized RKE2 | Kubernetes | :white_check_mark: | :white_check_mark: | 1.33.5      |
+| Palette Optimized RKE2 | Kubernetes | :white_check_mark: | :white_check_mark: | 1.32.9      |
+| Palette Optimized RKE2 | Kubernetes | :white_check_mark: | :white_check_mark: | 1.31.13     |
+
 ## September 29, 2025 - Release 4.7.21
 
 ### Component Updates
 
 The following component updates are applicable to this release:
 
+- [October 10, 2025 - Component Updates](#component-updates-2025-41) <!-- omit in toc -->
+- [October 3, 2025 - Component Updates](#component-updates-2025-40) <!-- omit in toc -->
 - [September 26, 2025 - Component Updates](#component-updates-2025-39) <!-- omit in toc -->
 
 ### Breaking Changes
@@ -116,6 +223,8 @@ The following components have been updated for Palette version 4.7.20 - 4.7.21.
 
 The following component updates are applicable to this release:
 
+- [October 10, 2025 - Component Updates](#component-updates-2025-41) <!-- omit in toc -->
+- [October 3, 2025 - Component Updates](#component-updates-2025-40) <!-- omit in toc -->
 - [September 26, 2025 - Component Updates](#component-updates-2025-39) <!-- omit in toc -->
 
 ### Security Notices
